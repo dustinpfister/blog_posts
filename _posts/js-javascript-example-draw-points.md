@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2022-01-23 13:25:24
-version: 1.23
+updated: 2022-01-23 13:27:27
+version: 1.24
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I worked out a new draw points method, or actually a [draw line method rather](https://www.javascripttutorial.net/web-apis/javascript-draw-line/) as what I want is a way to draw a collection of points rather than just one. This kind of method would be a typical method that I might use in one or more canvas examples that I am working on that would call for such a method, and would work with one or more methods that I can use to create and mutate a state that would be used by such a draw points method. I have made a method like this many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -117,6 +117,8 @@ After the points array I can then set the position of the center point for the d
 Now for a demo to try this draw points method out to make sure that it is working the way that I want it to. For this demo I will have a few files one of which is a utilities library, another is a points module, and the final javaScript file is a main javaScript file that will make use of all of the other files that i have wrote about in this post. The main file of interest in this example though would be the points.js file that is the current state of a module that I am using to cerate an instance of the kind of object that I use with this draw points method.
 
 ### 2.1 - utilities
+
+Here I have a [general utilizes library](/2021/08/06/js-javascript-example-utils/) that I am using in the rest of the source code of this example.
 
 ```js
 var utils = {};
