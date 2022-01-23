@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2022-01-23 14:22:33
-version: 1.16
+updated: 2022-01-23 14:24:55
+version: 1.17
 ---
 
 So today for yet another of my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a similar way to that of [Math.round](/2020/06/15/js-math-round/) in native javaScript. The lodash round method works more or less the same way, but with just one little additional feature that I just which the native methods had but does not that has to do with precession. Also in this post I will be writing about some related topics that have to do with formating numbers, something that comes up all the time when I am making a javaScript project.
@@ -91,7 +91,9 @@ console.log(formatMoney(-12)); // $0000.00
 
 So when it comes to using lodash just for this method alone that makes using the full lodash library kind of silly. It might be possible to just install the lodash round method alone as one way of going about addressing that. However it should not be to hard to work out or find some kind of user space solution for this sort of thing when it comes to roi8nding numbers. There are of course the Math methods that I have mentioned that should work just fine in most cases. Also it is not so hard to create a simple expression to address the lack of the precision argument in these methods.
 
-### 3.1 - 
+### 3.1 - The Math round method
+
+First off there is the round method of the Math object of course that will round a number to a whole number. This will work in the usual way where one half or higher will round up, while anything below one half will round down.
 
 ```js
 console.log( Math.round( 3.1 ) ); // 3
@@ -99,7 +101,9 @@ console.log( Math.round( 3.5 ) ); // 4
 console.log( Math.round( 3.9 ) ); // 4
 ```
 
-### 3.2 -
+### 3.2 - Math ceil, and Math.floor
+
+In some cases I might want to always round up, or always round down, for this there is Math.ceil and Math.floor.
 
 ```js
 console.log( Math.ceil( 3.1 ) ); // 4
