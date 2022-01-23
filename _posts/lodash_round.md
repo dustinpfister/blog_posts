@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2022-01-23 14:24:55
-version: 1.17
+updated: 2022-01-23 14:27:02
+version: 1.18
 ---
 
 So today for yet another of my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a similar way to that of [Math.round](/2020/06/15/js-math-round/) in native javaScript. The lodash round method works more or less the same way, but with just one little additional feature that I just which the native methods had but does not that has to do with precession. Also in this post I will be writing about some related topics that have to do with formating numbers, something that comes up all the time when I am making a javaScript project.
@@ -129,6 +129,8 @@ console.log( round(3.12345678, 4) ); // 3.1235
 console.log( round(3.12345678) );    // 3.12
 console.log( round(3.12345678, 0) ); // 3
 ```
+
+Although the toFixed method will work okay in most situations there are some rare, but possible situations in which one might get unexpected results. With that said if this kind of situation does present a problem this will require one to look into yet even more solutions for this kind of thing.
 
 ### 3.4  - User space round method
 
