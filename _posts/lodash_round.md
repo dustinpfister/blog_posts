@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2022-01-23 14:27:02
-version: 1.18
+updated: 2022-01-23 14:28:59
+version: 1.19
 ---
 
 So today for yet another of my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a similar way to that of [Math.round](/2020/06/15/js-math-round/) in native javaScript. The lodash round method works more or less the same way, but with just one little additional feature that I just which the native methods had but does not that has to do with precession. Also in this post I will be writing about some related topics that have to do with formating numbers, something that comes up all the time when I am making a javaScript project.
@@ -158,3 +158,6 @@ console.log( round(1.005, 2) ); // 1.01
 ## 4 - Conclusion
 
 So lodash methods like \_.round are methods that have at least one little feature that makes it a little more useful then just the plain old native method in core javaScript itself. Still it goes without saying that this method alone is not a good reason to make lodash part of you stack. Hopefully you are making great use of the less redundant methods in lodash like \_.merge, if it is part or your code base.
+
+If you enjoyed this post you might want to check out one of my many [other posts on lodash](/categories/lodash/), or my [main post on lodash in general](/2019/02/15/lodash/).
+
