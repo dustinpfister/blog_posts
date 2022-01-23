@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 952
-updated: 2022-01-23 12:29:21
-version: 1.13
+updated: 2022-01-23 12:31:06
+version: 1.14
 ---
 
 Continuing with a digital art collection of [javaScript examples](/2021/04/02/js-javascript-example/) I have made yet another quick project following the same general thought process with the others when it comes to sticking with a fairly simple idea, and getting the core of that idea done within the span of just few days. This time I wanted to make a digital art project that involves display objects that repentants fixed structures that spawn at the center of the canvas, and additional display objects that spawn from outside the canvas and move in to where the buildings are to attack and destroy these structures. The structures themselves also fight back, and both kinds of display units fire yet another kind of display object that is a shot object at each other. So then this digital art project is then something that resembles a kind of game, but because it is a digital art project that means I do not have to worry about UI design, save states, menus, and all kinds of additional features that I would need to work out of it where a game. This allows me to focus more so on just game logic, and also how the project looks as this is a digital art project.
@@ -20,7 +20,7 @@ With just about all of these javaScript examples I often have a [general utiliti
 
 One method that I have in here is a method similar to that of the [lodash get method](/2018/09/24/lodash_get/) where I can pass an object, then a string that is a path to a value in that object, and then an optional default value to return in the vent that there is not a value at that path location. Another method that I have here is a kind of get a value within a range by a number between 0 and 1 method. This is another kind of method that helps with something that seems to happen fairly often when making this kind of a project. That is that I give the method a value between 0 and 1, which can also be the result of a Math random call, and then the next values are a range of values, a kind of min and max so that they return value is the per value that is between these values.
 
-I then have my create canvas method that I started when working out my collection if vanilla javaScript canvas examples. When it comes to those examples I started each project from the ground up, as I do with these examples, rather than using [some kind of canvas framework](/2021/08/27/js-javascript-example-canvas-module/). 
+I then have my create canvas method that I started when working out my collection if vanilla javaScript canvas examples. When it comes to those examples I started each project from the ground up, as I do with these examples, rather than using [some kind of canvas framework](/2021/08/27/js-javascript-example-canvas-module/) for better or worse that is one of rules when it came to making that series of examples. However I made one little exception from one project to the next, and that exception was this method.
 
 ```js
 var utils = {};
