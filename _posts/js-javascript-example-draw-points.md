@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2022-01-23 12:53:10
-version: 1.21
+updated: 2022-01-23 13:21:49
+version: 1.22
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I worked out a new draw points method, or actually a [draw line method rather](https://www.javascripttutorial.net/web-apis/javascript-draw-line/) as what I want is a way to draw a collection of points rather than just one. This kind of method would be a typical method that I might use in one or more canvas examples that I am working on that would call for such a method, and would work with one or more methods that I can use to create and mutate a state that would be used by such a draw points method. I have made a method like this many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -116,7 +116,148 @@ After the points array I can then set the position of the center point for the d
 
 Now for a simple demo to try this draw points method out to make sure that it is working the way that I want it to. For this demo I will just have a simple draw.js file, and then add to it with my draw points file that I covered above. After that I think that I will just have everything else in the main.js file when it comes to creating the canvas element, creating an array of points arrays, and using the draw points method.
 
-### 2.2 - The main.js file
+### 2.1 - utilities
+
+```js
+var utils = {};
+ 
+//-------- ----------
+//  Array
+//-------- ----------
+ 
+// chunk and array
+utils.chunk = function (arr, size) {
+    var chunkedArr = [];
+    arr = arr || [];
+    size = size === undefined ? 1 : size;
+    for (var i = 0; i < arr.length; i += size) {
+        chunkedArr.push(arr.slice(i, i + size));
+    }
+    return chunkedArr;
+};
+ 
+//-------- ----------
+//  Object
+//-------- ----------
+ 
+// parse an object with defaults
+utils.defaults = function(obj, defaults){
+    return Object.assign({}, defaults, obj);
+};
+```
+
+### 2.2 - points module
+
+```js
+var pointMod = (function(){
+    var api = {};
+    // create box method
+    api.createBox = function(opt){
+        // parse options
+        opt = opt || {};
+        opt = utils.defaults(opt, {
+            x: 0, y: 0, w: 50, h: 50, fill: 'white', stroke: 'black', lineWidth: 6
+        });
+        // push points
+        var points = [[]],
+        i = 0,
+        len = 2 * 4,
+        hw = opt.w / 2,
+        hh = opt.h / 2;
+        while(i < len){
+            var pi = Math.floor(i / 2),
+            yi = Math.floor(pi / 2),
+            y = (opt.y - hh) + yi * opt.h,
+            x = (opt.x - hw) + ( yi === 0 ? pi % 2 : 1 - pi % 2 ) * opt.w;
+            points[0].push(x, y);
+            i += 2;
+        }
+        // push style opttions for the line
+        points[0].push('fill:' + opt.fill);
+        points[0].push('stroke:' + opt.stroke);
+        points[0].push('lineWidth:' + opt.lineWidth);
+        // return box points
+        return points;
+    };
+    // a createBox2 method that almost creates the same output as createBox method using the createEllipse method
+    api.createBox2 = function(opt){
+        // parse options
+        opt = opt || {};
+        opt = utils.defaults(opt, {
+            x: 0, y: 0, w: 50, h: 50, fill: 'white', stroke: 'black', lineWidth: 6, startDegree: 45 * 5
+        });
+        return api.createEllipse(utils.defaults({ r1: (opt.w / 2) * 1.4, r2: (opt.h / 2) * 1.4, points: 4 }, opt));
+    };
+    // create ellipse
+    api.createEllipse = function(opt){
+        // parse options
+        opt = opt || {};
+        opt = utils.defaults(opt, {
+            x: 0, y: 0, startDegree: 0, r1: 160, r2: 120, points: 30, fill: 'white', stroke: 'black', lineWidth: 6
+        });
+        // push points
+        var points = [[]],
+        i = 0,
+        len = opt.points * 2,
+        radianStart = Math.PI / 180 * opt.startDegree;
+        while(i < len){
+            var radian = radianStart + Math.PI * 2 / opt.points * (i / 2),
+            x = Math.round(opt.x + Math.cos(radian) * opt.r1),
+            y = Math.round(opt.y + Math.sin(radian) * opt.r2);
+            points[0].push(x, y);
+            i += 2;
+        }
+        // push style options for the line
+        points[0].push('fill:' + opt.fill);
+        points[0].push('stroke:' + opt.stroke);
+        points[0].push('lineWidth:' + opt.lineWidth);
+        points[0].push('close:true');
+        // return ellipse points
+        return points;        
+    };
+    // return a new points object that is numbers only
+    api.numbersOnly = function(points){
+        return points.map(function(line){
+            return line.filter(function(el){
+                return typeof el === 'number';
+            });
+        });
+    };
+    api.newChunked = function(points){
+        var nPoints = pointMod.numbersOnly( points );
+        return nPoints.map(function(line){
+            return utils.chunk( line, 2 );
+        });
+    };
+    // translate a single point with the given points object along with line and point index values
+    // by the given set of deltas
+    api.translatePT = function(points, lineIndex, ptIndex, dx, dy){
+        var line = points[lineIndex],
+        i = ptIndex * 2;
+        line[i] += dx;
+        line[i + 1] += dy;
+    };
+    // translate points
+    api.translatePoints = function(points, dx, dy){
+        points.forEach(function(line){
+            line.forEach(function(el, i){
+                if(typeof el === 'number'){
+                    if(i % 2 === 0){
+                       el += dx;
+                    }else{
+                       el += dy;
+                    }
+                    line[i] = Math.round(el);
+                }
+            });
+        });
+    };
+    // return the public api
+    return api;
+}());
+```
+
+### 2.3 - The main.js file
 
 Here I have the main javaScript file of the demo of the draw points method. In this main file I create the canvas element, and append it to the hard coded html. I then test out the draw points methods with two examples of the format that I had in mind. One is a literal from where I am just creating a literal array of arrays, and placing some points and settings into the arrays. The other way of creating one of these arrays or arrays is with a method from that I call to create something like this.
 
@@ -124,45 +265,29 @@ Here I have the main javaScript file of the demo of the draw points method. In t
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 document.getElementById('canvas-app').appendChild(canvas);
-canvas.width = 640;
-canvas.height = 480;
- 
+canvas.width = 640; canvas.height = 480;
 var sm = {
-   ver: 'r3'
+   ver: 'r3',
+   objects: []
 };
- 
-// literal of a points array
-var points = [
-    [25, 75, 175, 50, 17, 210, 'fill:red', 'stroke:lime'],
-    [100, 20, 165, 55, 22, 200, 'fill:false']
-];
- 
-// method that will create a points array
-var demoMethod = function () {
-    var i = 0,
-    radius = 100,
-    radian,
-    arr,
-    x,
-    y,
-    count = 8,
-    points = [];
-    while (i < count) {
-        radian = Math.PI * 2 / count * i;
-        x = Math.cos(radian) * radius;
-        y = Math.sin(radian) * radius;
-        arr = [Math.round(x), Math.round(y), 0, 0, 'stroke:white', 'close:false', 'lineWidth:' + (2 + i * 2)];
-        points.push(arr);
-        i += 1;
-    }
-    return points
-};
- 
+// using the pointMod.createEllipse method
+sm.objects.push(pointMod.createEllipse({
+    points: 40,
+    r1: 300, r2: 75,
+    x: canvas.width / 2, y: canvas.height / 2
+}));
+// creating a points object manually
+sm.objects.push([
+    [25, 75, 175, 50, 17, 110, 'fill:red', 'stroke:lime'],
+    [100, 20, 165, 25, 22, 130, 300, 130, 300, 20, 'fill:false', 'close:false']
+]);
+// drawing
 draw.background(ctx, canvas, 'blue');
-draw.points(ctx, points, 80, 5);
+// using the draw points method
+sm.objects.forEach(function(points){
+    draw.points(ctx, points, 0, 0);
+});
 draw.ver(sm, ctx, canvas);
- 
-draw.points(ctx, demoMethod(), 300, 150);
 ```
 
 When this is up and running the demo seems to work just fine. I get the shapes and colors that I would expect, so this draw points method seems to work great. When it comes to using this method in a project doing so is just a matter of working out the methods that I want that will create the arrays of arrays the way that they should be. 
