@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2022-01-23 12:44:52
-version: 1.19
+updated: 2022-01-23 12:50:05
+version: 1.20
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I worked out a new draw points method, or actually a [draw line method rather](https://www.javascripttutorial.net/web-apis/javascript-draw-line/) as what I want is a way to draw a collection of points rather than just one. This kind of method would be a typical method that I might use in one or more canvas examples that I am working on that would call for such a method, and would work with one or more methods that I can use to create and mutate a state that would be used by such a draw points method. I have made a method like this many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -108,7 +108,6 @@ var draw = (function(){
 ```
 
 When calling the method the first thing that I will want to give as an argument is the drawing context of the canvas element that I want to draw to. In some use case examples I might use this method to draw directly to a canvas element over and over again, however in other uses cases I might want to use this method to render a sprite sheet in the from of a canvas element just once.
-
 The next argument that I pass when using the method is the points array that I want to use with the method. This time the points array should not just be an array of points, but an array of arrays of points. In addition for each array of points I can put in some string values that will set values for a single line such as the stroke color, fill color, and if the line should be closed or not.
 
 After the points array I can then set the position of the center point for the drawing of the image, and also give an options options object at the end to set some default values for the various properties of each line. Now with all of this together the only thing that I want to do now is just put together a quick little demo to make sure that this method works the way I expected it to with the format of points arrays that I want to use with it.
@@ -170,7 +169,9 @@ When this is up and running the demo seems to work just fine. I get the shapes a
 
 ## 3 - Conclusion
 
-There are maybe a few more things here and there that i would like to add, but maybe I should only get around to doing that once I start using this in a real projects or two so I gain a better sense of what is actually needed for this. I do not care to spend time adding features that I think that I might want, or need, for now I just want to have want I know that I want and need. Which of of course just a better draw points method, and so far I think that I all ready have what it is that I wanted.
+There are maybe a few more things here and there that I would like to add, but maybe I should only get around to doing that once I start using this in a real project or two so I gain a better sense of what is actually needed for this. I do not care to spend time adding features that I think that I might want, or need, for now I just want to have want I know that I want and need. Which of of course just a better draw points method, and so far I think that I all ready have what it is that I wanted.
 
-I all ready have one canvas example in mind that I am sure that I would like to use this with whenI get around to putting a little more time into it. In time I am sure that I might want to use a method like this in a whole bunch of other projects that I might start at some point. It is just a question of creating methods that will create and return the array of arrays in the format that will work with this draw points method. When I get around to creating some new canvas examples, or updating some ones that I have all ready made then I might get around to edit this post a little, however I think there really is only so much more to add when it comes to this. For now you might want to check out my main post on [canvas examples](/2020/03/23/canvas-example/) if you have not done so all ready to see what I have together thus far.
+I all ready have one canvas example in mind that I am sure that I would like to use this with when I get around to putting a little more time into it. In time I am sure that I might want to use a method like this in a whole bunch of other projects that I might start at some point. It is just a question of creating methods that will create and return the array of arrays in the format that will work with this draw points method. When I get around to creating some new canvas examples, or updating some ones that I have all ready made then I might get around to edit this post a little, however I think there really is only so much more to add when it comes to this. For now you might want to check out my main post on [canvas examples](/2020/03/23/canvas-example/) if you have not done so all ready to see what I have together thus far.
+
+It has been a little while sense the last time I have editing this post, so now I can take a moment to make a quick update with respect to some related posts that have to do with this draw method. First off one of the main canvas examples that come to mind that use a system such as this for points is my [canvas example on drawing stars](/2020/02/12/canvas-example-star/)
 
