@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2022-01-23 12:50:05
-version: 1.20
+updated: 2022-01-23 12:53:10
+version: 1.21
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I worked out a new draw points method, or actually a [draw line method rather](https://www.javascripttutorial.net/web-apis/javascript-draw-line/) as what I want is a way to draw a collection of points rather than just one. This kind of method would be a typical method that I might use in one or more canvas examples that I am working on that would call for such a method, and would work with one or more methods that I can use to create and mutate a state that would be used by such a draw points method. I have made a method like this many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -173,5 +173,5 @@ There are maybe a few more things here and there that I would like to add, but m
 
 I all ready have one canvas example in mind that I am sure that I would like to use this with when I get around to putting a little more time into it. In time I am sure that I might want to use a method like this in a whole bunch of other projects that I might start at some point. It is just a question of creating methods that will create and return the array of arrays in the format that will work with this draw points method. When I get around to creating some new canvas examples, or updating some ones that I have all ready made then I might get around to edit this post a little, however I think there really is only so much more to add when it comes to this. For now you might want to check out my main post on [canvas examples](/2020/03/23/canvas-example/) if you have not done so all ready to see what I have together thus far.
 
-It has been a little while sense the last time I have editing this post, so now I can take a moment to make a quick update with respect to some related posts that have to do with this draw method. First off one of the main canvas examples that come to mind that use a system such as this for points is my [canvas example on drawing stars](/2020/02/12/canvas-example-star/)
+It has been a little while sense the last time I have editing this post, so now I can take a moment to make a quick update with respect to some related posts that have to do with this draw method. First off one of the main canvas examples that come to mind that use a system such as this for points is my [canvas example on drawing stars](/2020/02/12/canvas-example-star/). While I am writing this I am also working on one prototype that I have yet to write about in a post, but it has to do with a corresponding library that has to do with creating and mutating the kind of object that is used with this drawing method so I should get around to editing  this post once again with that.
 
