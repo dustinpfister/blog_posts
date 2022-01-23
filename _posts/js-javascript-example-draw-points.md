@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2022-01-23 12:41:00
-version: 1.18
+updated: 2022-01-23 12:44:52
+version: 1.19
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I worked out a new draw points method, or actually a [draw line method rather](https://www.javascripttutorial.net/web-apis/javascript-draw-line/) as what I want is a way to draw a collection of points rather than just one. This kind of method would be a typical method that I might use in one or more canvas examples that I am working on that would call for such a method, and would work with one or more methods that I can use to create and mutate a state that would be used by such a draw points method. I have made a method like this many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -19,7 +19,7 @@ So then in this post I will be going over a more advanced draw points method, an
 
 ## 1 - The draw_points.js file
 
-First off I want to go over the draw points javaScript file that will just create, or add to a draw object that it is used with. For this module I made a file where I place the draw points method in a javaScript iife, inside this iife I am going to create or append to a draw object that should be a property of the global object. This might not be the best way to go about doing this, in some projects I might add this method to a draw object in some other way, but for as far as this post is concerned I wanted to make a stand alone method.
+So then here I have a draw.js file with my draw points method that will draw a collection of points following a certain standard that I have worked out that I seem to be using in a few projects for better or worse. The way that I make this draw.js file is the same way that I make just about all my other draw.js files when working gout a project so the process of adding or removing this from a project would just be a simple as adding or removing the function that I am assigning to the points property of the api variable that I end up returning as the public API of the draw library.
 
 ```js
 var draw = (function(){
