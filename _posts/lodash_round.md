@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2022-01-23 13:47:32
-version: 1.13
+updated: 2022-01-23 14:17:27
+version: 1.14
 ---
 
 So today for yet another of my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a similar way to that of [Math.round](/2020/06/15/js-math-round/) in native javaScript. The lodash round method works more or less the same way, but with just one little additional feature that I just which the native methods had but does not that has to do with precession. Also in this post I will be writing about some related topics that have to do with formating numbers, something that comes up all the time when I am making a javaScript project.
@@ -89,7 +89,44 @@ console.log(formatMoney(-12)); // $0000.00
 
 ## 3 - Vanilla javaScript solutions
 
-So when it comes to using lodash just for this method alone that makes using the full lodash library kind of silly. It might be possible to just install the lodash round method alone as one way of going about addressing that. However it should not be to hard to work out or find some kind of user space solution for this sort of thing. Well after doing some digging I as able to find [this rounding solution](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round$revision/1383484) that seems to work okay, however I have not gone threw every possible number example to see if there is some kind of weir problem with it.
+So when it comes to using lodash just for this method alone that makes using the full lodash library kind of silly. It might be possible to just install the lodash round method alone as one way of going about addressing that. However it should not be to hard to work out or find some kind of user space solution for this sort of thing. 
+
+### 3.1 - 
+
+```js
+console.log( Math.round( 3.1 ) ); // 3
+console.log( Math.round( 3.5 ) ); // 4
+console.log( Math.round( 3.9 ) ); // 4
+```
+
+### 3.2 -
+
+```js
+console.log( Math.ceil( 3.1 ) ); // 4
+console.log( Math.ceil( 3.5 ) ); // 4
+console.log( Math.ceil( 3.9 ) ); // 4
+ 
+console.log( Math.floor( 3.1 ) ); // 3
+console.log( Math.floor( 3.5 ) ); // 3
+console.log( Math.floor( 3.9 ) ); // 3
+```
+
+### 3.3 -
+
+```js
+let round = (n, d) => {
+    d = d === undefined ? 2 : d;
+    return parseFloat( n.toFixed(d) );
+};
+ 
+console.log( round(3.12345678, 4) ); // 3.1235
+console.log( round(3.12345678) );    // 3.12
+console.log( round(3.12345678, 0) ); // 3
+```
+
+### 3.4  - User space round method
+
+Well after doing some digging I as able to find [this rounding solution](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round$revision/1383484) that seems to work okay, however I have not gone threw every possible number example to see if there is some kind of weir problem with it.
 
 
 ```js
