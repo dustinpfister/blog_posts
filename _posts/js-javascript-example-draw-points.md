@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2022-01-23 13:27:27
-version: 1.24
+updated: 2022-01-23 13:31:16
+version: 1.25
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I worked out a new draw points method, or actually a [draw line method rather](https://www.javascripttutorial.net/web-apis/javascript-draw-line/) as what I want is a way to draw a collection of points rather than just one. This kind of method would be a typical method that I might use in one or more canvas examples that I am working on that would call for such a method, and would work with one or more methods that I can use to create and mutate a state that would be used by such a draw points method. I have made a method like this many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -148,7 +148,9 @@ utils.defaults = function(obj, defaults){
 };
 ```
 
-### 2.2 - points module
+### 2.2 - The points module
+
+This is then the current state of a points model that is used to create and return a collection of points that is formated in a way that will work with the draw points method. For now there are a few methods that have to do with creating a starting geometry one of which is to create a box, and the other is to create an ellipse that can also be used to create a box as well as a circle.
 
 ```js
 var pointMod = (function(){
