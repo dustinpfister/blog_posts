@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2021-04-02 11:34:49
-version: 1.17
+updated: 2022-01-23 12:41:00
+version: 1.18
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I worked out a new draw points method, or actually a [draw line method rather](https://www.javascripttutorial.net/web-apis/javascript-draw-line/) as what I want is a way to draw a collection of points rather than just one. This kind of method would be a typical method that I might use in one or more canvas examples that I am working on that would call for such a method, and would work with one or more methods that I can use to create and mutate a state that would be used by such a draw points method. I have made a method like this many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -22,16 +22,32 @@ So then in this post I will be going over a more advanced draw points method, an
 First off I want to go over the draw points javaScript file that will just create, or add to a draw object that it is used with. For this module I made a file where I place the draw points method in a javaScript iife, inside this iife I am going to create or append to a draw object that should be a property of the global object. This might not be the best way to go about doing this, in some projects I might add this method to a draw object in some other way, but for as far as this post is concerned I wanted to make a stand alone method.
 
 ```js
-
-(function (global) {
+var draw = (function(){
  
-    var api = global.draw = global.draw || {}
+    var api = {};
+ 
+    // draw a background
+    api.background = function(ctx, canvas, style){
+        ctx.fillStyle = style || 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+ 
+    // draw version number
+    api.ver = function (sm, ctx, canvas) {
+        ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '14px arial';
+        ctx.fillText('version: ' + sm.ver, 5, canvas.height - 15);
+    };
  
     api.points = function (ctx, points, cx, cy, opt) {
         opt = opt || {};
         ctx.save();
         ctx.translate(cx, cy);
+        // for each line in points
         points.forEach(function (pointArray) {
+            // number of items in the array of point values/commands
             var len = pointArray.length,
             close = opt.close === undefined ? true : opt.close,
             fill = opt.fill === undefined ? 'black' : opt.fill,
@@ -41,10 +57,12 @@ First off I want to go over the draw points javaScript file that will just creat
             i = 2;
             ctx.beginPath();
             ctx.moveTo(pointArray[0], pointArray[1]);
+            // loop over the line
             while (i < len) {
                 el = pointArray[i];
                 if (typeof el === 'number') {
                     ctx.lineTo(el, pointArray[i + 1]);
+                    // step by two if numbers
                     i += 2;
                 } else {
                     var parts = el.split(':');
@@ -56,10 +74,14 @@ First off I want to go over the draw points javaScript file that will just creat
                     }
                     if (parts[0] === 'fill') {
                         fill = parts[1] || false;
+                        if(parts[1].toLowerCase() === 'false'){
+                            fill = false;
+                        }
                     }
                     if (parts[0] === 'lineWidth') {
                         lineWidth = parts[1] || 1;
                     }
+                    // step by one if one of these values
                     i += 1;
                 }
             }
@@ -78,8 +100,11 @@ First off I want to go over the draw points javaScript file that will just creat
         });
         ctx.restore();
     };
-}
-    (this));
+ 
+    // return the public api
+    return api;
+ 
+}());
 ```
 
 When calling the method the first thing that I will want to give as an argument is the drawing context of the canvas element that I want to draw to. In some use case examples I might use this method to draw directly to a canvas element over and over again, however in other uses cases I might want to use this method to render a sprite sheet in the from of a canvas element just once.
@@ -92,47 +117,36 @@ After the points array I can then set the position of the center point for the d
 
 Now for a simple demo to try this draw points method out to make sure that it is working the way that I want it to. For this demo I will just have a simple draw.js file, and then add to it with my draw points file that I covered above. After that I think that I will just have everything else in the main.js file when it comes to creating the canvas element, creating an array of points arrays, and using the draw points method.
 
-### 2.1 - A draw.js file
-
-For this example I will have just a simple draw.js module that will just contain a draw background method. In a real canvas project often I will end up having far more than just this going on in the module, but for now I want something basic that does not take away from the main event here. The idea here is that I load this file first, and then the draw points method that will then in turn be appended to this object. When I use the draw points method in an actual project I might add the method to the main draw javaScript file of the canvas project rather than doing something like this.
-
-```js
-var draw = {};
-
-draw.background = function(ctx, canvas, style){
-    ctx.fillStyle = style || 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-};
-```
-
 ### 2.2 - The main.js file
 
 Here I have the main javaScript file of the demo of the draw points method. In this main file I create the canvas element, and append it to the hard coded html. I then test out the draw points methods with two examples of the format that I had in mind. One is a literal from where I am just creating a literal array of arrays, and placing some points and settings into the arrays. The other way of creating one of these arrays or arrays is with a method from that I call to create something like this.
 
 ```js
-
 var canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 document.getElementById('canvas-app').appendChild(canvas);
-
-canvas.width = 320;
-canvas.height = 240;
+canvas.width = 640;
+canvas.height = 480;
  
-// literal
+var sm = {
+   ver: 'r3'
+};
+ 
+// literal of a points array
 var points = [
-    [25, 75, 175, 50, 17, 210, 'fill:green', 'stroke:lime'],
-    [30, 80, 165, 55, 22, 200, 'fill:red']
+    [25, 75, 175, 50, 17, 210, 'fill:red', 'stroke:lime'],
+    [100, 20, 165, 55, 22, 200, 'fill:false']
 ];
  
-// method
+// method that will create a points array
 var demoMethod = function () {
     var i = 0,
-    radius = 50,
+    radius = 100,
     radian,
     arr,
     x,
     y,
-    count = 5,
+    count = 8,
     points = [];
     while (i < count) {
         radian = Math.PI * 2 / count * i;
@@ -147,10 +161,9 @@ var demoMethod = function () {
  
 draw.background(ctx, canvas, 'blue');
 draw.points(ctx, points, 80, 5);
+draw.ver(sm, ctx, canvas);
  
-console.log(demoMethod());
- 
-draw.points(ctx, demoMethod(), 80, 100);
+draw.points(ctx, demoMethod(), 300, 150);
 ```
 
 When this is up and running the demo seems to work just fine. I get the shapes and colors that I would expect, so this draw points method seems to work great. When it comes to using this method in a project doing so is just a matter of working out the methods that I want that will create the arrays of arrays the way that they should be. 
