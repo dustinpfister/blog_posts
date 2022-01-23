@@ -51,9 +51,9 @@
 * 1,000+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_round (old, links)
-* 1,000+ words
-* have 5+ internal links for the post
+### ( done 01/23/2022 ) - lodash_round (old, links)
+* (done) 1,000+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/20/2022 ) - lodash_isarray ( old, links )
 * (done) 750+ words
