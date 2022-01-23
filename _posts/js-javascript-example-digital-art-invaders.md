@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 952
-updated: 2022-01-23 12:34:38
-version: 1.16
+updated: 2022-01-23 12:37:29
+version: 1.17
 ---
 
 Continuing with a digital art collection of [javaScript examples](/2021/04/02/js-javascript-example/) I have made yet another quick project following the same general thought process with the others when it comes to sticking with a fairly simple idea, and getting the core of that idea done within the span of just few days. This time I wanted to make a digital art project that involves display objects that repentants fixed structures that spawn at the center of the canvas, and additional display objects that spawn from outside the canvas and move in to where the buildings are to attack and destroy these structures. The structures themselves also fight back, and both kinds of display units fire yet another kind of display object that is a shot object at each other. So then this digital art project is then something that resembles a kind of game, but because it is a digital art project that means I do not have to worry about UI design, save states, menus, and all kinds of additional features that I would need to work out of it where a game. This allows me to focus more so on just game logic, and also how the project looks as this is a digital art project.
@@ -22,7 +22,7 @@ One method that I have in here is a method similar to that of the [lodash get me
 
 I then have my create canvas method that I started when working out my [collection if vanilla javaScript canvas examples](/2020/03/23/canvas-example/). When it comes to those examples I started each project from the ground up, as I do with these examples, rather than using [some kind of canvas framework](/2021/08/27/js-javascript-example-canvas-module/) for better or worse that is one of rules when it came to making that series of examples. However I made one little exception from one project to the next, and that exception was this method.
 
-I then have a number of typical methods that I use in almost every project like this such as a mathematical module method, and distance and bounding box method.
+I then have a number of typical methods that I use in almost every project like this such as a mathematical module method, and distance and bounding box method. I also have a few methods that have to do with working with angles.
 
 ```js
 var utils = {};
