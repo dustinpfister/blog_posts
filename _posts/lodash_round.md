@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2022-01-23 14:20:10
-version: 1.15
+updated: 2022-01-23 14:22:33
+version: 1.16
 ---
 
 So today for yet another of my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a similar way to that of [Math.round](/2020/06/15/js-math-round/) in native javaScript. The lodash round method works more or less the same way, but with just one little additional feature that I just which the native methods had but does not that has to do with precession. Also in this post I will be writing about some related topics that have to do with formating numbers, something that comes up all the time when I am making a javaScript project.
@@ -111,7 +111,9 @@ console.log( Math.floor( 3.5 ) ); // 3
 console.log( Math.floor( 3.9 ) ); // 3
 ```
 
-### 3.3 -
+### 3.3 - Using the toFixed method of a number with parseFloat
+
+There is also the toFixed method of the number prototype that will return a string form of a number to a given number of fixed decimal points. This string result can then be feed back to a method like parseFloat to convert it back to a number again.
 
 ```js
 let round = (n, d) => {
