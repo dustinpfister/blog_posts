@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 246
-updated: 2022-01-23 14:17:27
-version: 1.14
+updated: 2022-01-23 14:20:10
+version: 1.15
 ---
 
 So today for yet another of my posts on [lodash](https://lodash.com/) and corresponding topics I have come around to writing a quick post on the [\_.round](https://lodash.com/docs/4.17.10#round) method that can be used in a similar way to that of [Math.round](/2020/06/15/js-math-round/) in native javaScript. The lodash round method works more or less the same way, but with just one little additional feature that I just which the native methods had but does not that has to do with precession. Also in this post I will be writing about some related topics that have to do with formating numbers, something that comes up all the time when I am making a javaScript project.
@@ -89,7 +89,7 @@ console.log(formatMoney(-12)); // $0000.00
 
 ## 3 - Vanilla javaScript solutions
 
-So when it comes to using lodash just for this method alone that makes using the full lodash library kind of silly. It might be possible to just install the lodash round method alone as one way of going about addressing that. However it should not be to hard to work out or find some kind of user space solution for this sort of thing. 
+So when it comes to using lodash just for this method alone that makes using the full lodash library kind of silly. It might be possible to just install the lodash round method alone as one way of going about addressing that. However it should not be to hard to work out or find some kind of user space solution for this sort of thing when it comes to roi8nding numbers. There are of course the Math methods that I have mentioned that should work just fine in most cases. Also it is not so hard to create a simple expression to address the lack of the precision argument in these methods.
 
 ### 3.1 - 
 
