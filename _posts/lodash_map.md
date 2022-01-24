@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2022-01-24 08:54:18
-version: 1.10
+updated: 2022-01-24 08:55:38
+version: 1.11
 ---
 
 If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map). This [array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
@@ -118,11 +118,11 @@ console.log(toggled);
 
 ## 3 - Vanilla javascript alternatives to lodash map
 
-When it comes to vanilla javaScript alternatives to the lodash map method there is the [array map method](/2020/06/16/js-array-map/) of the array prototype.
+When it comes to vanilla javaScript alternatives to the lodash map method there is the [array map method](/2020/06/16/js-array-map/) of the [array prototype](/2018/12/10/js-array/).
 
 ### 3.1 - Simple example of Array.map
 
-The [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method will create a new array with what is returned by a given method that will be called for each element in the array. The first argument in the method that is passed is the current value of an element in the array, and the return keyword is used to return what will become the new value for the element in the array.
+The Array map method will create a new array with what is returned by a given method that will be called for each element in the array. The first argument in the method that is passed is the current value of an element in the array, and the return keyword is used to return what will become the new value for the element in the array.
 
 ```js
 // a simple array
