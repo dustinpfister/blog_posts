@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 494
-updated: 2022-01-24 10:51:38
-version: 1.16
+updated: 2022-01-24 11:05:15
+version: 1.17
 ---
 
 This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method which is a string method that is just a quick way of creating a new string that is a product of repeating another given string a number of given times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. 
@@ -32,7 +32,19 @@ Simple enough, but how hard is it to just do this with plain old vanilla javaScr
 
 The lodash fill method will create and return a new string with a given source string and a number of times you would like to have that string repeated. However there are a whole lot of other methods in lodash to be aware of when it comes to preforming similar tasks, as well as various other related tasks to what it is that the lodash repeat method does. In this section then I will be going over some additional lodash methods beyond just simply that of the lodash repeat method, but at this time I will not be getting into what there is to work with when it comes to javaScript alone. That I will reserve for a later section in this post if you would like to skip ahead to that though.
 
-### 2.1 - What about arrays and objects? Check out \_.times
+
+## 2.1 - Repeating with other lodash methods like fill, and join to create a string
+
+So there is the lodash repeat method when it comes to string methods, but then there are other methods such as the lodash fill array method. The lodash fill method is another method to be aware of when using lodash as it does more or less the same thing as lodash repeat only with arrays rather than strings.
+
+There is using the main lodash function as a way to wrap a new array that has a given element length, then using the fill method off of that to fill the array with zeros. After that I can then call the join method that will unwrap the whole thing and return a string. When using the join method I can pass an empty string that will result in nothing between the zeros.
+
+```js
+let str = 1 + _(new Array(8)).fill('0').join('');
+console.log(str); // '100000000'
+```
+
+### 2.2 - What about arrays and objects? Check out \_.times
 
 A similar method that comes to mind is the [lodash times](/2017/10/11/lodash_times/) method. This method is a method that just simply called a given function a number of given times. It is a quick convenient way of doing something that would otherwise require writing a loop.
 
@@ -58,22 +70,11 @@ let arr2 = _.dropRight(_.split(str2,','),1);
 console.log(arr2);
 ```
 
-## 3 - Repeating with other lodash methods like fill, and join to create a string
-
-So there is the lodash repeat method when it comes to string methods, but then there are other methods such as the lodash fill array method. The lodash fill method is another method to be aware of when using lodash as it does more or less the same thing as lodash repeat only with arrays rather than strings.
-
-There is using the main lodash function as a way to wrap a new array that has a given element length, then using the fill method off of that to fill the array with zeros. After that I can then call the join method that will unwrap the whole thing and return a string. When using the join method I can pass an empty string that will result in nothing between the zeros.
-
-```js
-let str = 1 + _(new Array(8)).fill('0').join('');
-console.log(str); // '100000000'
-```
-
-## 4 - vanilla javaScript alternatives to lodash \_.repeat and \_.times
+## 3 - vanilla javaScript alternatives to lodash \_.repeat and \_.times
 
 In this section I will be looking at some options when it comes to doing the same ting as the \_.repeat method only with just plain old vanilla javaScript by itself.
 
-### 4.1 - Making a repeat method with a while loop.
+### 3.1 - Making a repeat method with a while loop.
 
 No to hard to just making my own repeat method with a while loop after all. Sometimes I like to do this when it comes to lodash methods, most of the time it is supper easy to just put something together. However I have to admit doing this does have a tenancy to eat up a little time.
 
@@ -93,7 +94,18 @@ let bil = '1' + repeat('0', 9);
 console.log(bil); // 1000000000
 ```
 
-### 4.2 - Making a times, and repeat array method without lodash
+### 3.2 - Using the lodash split method to split an string into an array
+
+Another method to be aware of would be the split method that can be used to split a string into an array of values. So then I can use the repeat method to create a string and the use the spit method to split it into an array of the value that I am repeating.
+
+```js
+let str = _.repeat('1,', 5);
+let arr = _.split(str, ',');
+arr.pop();
+console.log(arr); // [ '1', '1', '1', '1', '1' ]
+```
+
+### 3.3 - Making a times, and repeat array method without lodash
 
 Making my own times method is not a big deal as well. The thing about it is that making a lot of these methods from the ground up is not so hard. It is not always the case with some lodash methods, such as merge, but it is not a big deal to make a high order function that accepts a function as an argument and then calls that function inside a few times.
 
@@ -119,6 +131,6 @@ let repeatArray = (arr, count) => {
 console.log( repeatArray([1,2,3], 3));
 ```
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 So the lodash repeat method is just a quick convenience method that can help to quickly do something that is not to hard with just plain old vanilla javaScript my itself. There is a lot of talk about the relevance of lodash these days as a lot of the functionality is baked into javaScripot itself. In addition a lot of the methods are like this that do not make a great case for the use of lodash compared to just working within the scope of native javaScript by itself.
