@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 494
-updated: 2022-01-24 11:13:13
-version: 1.19
+updated: 2022-01-24 11:16:13
+version: 1.20
 ---
 
 This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method which is a string method that is just a quick way of creating a new [string](/2019/01/25/js-javascript-string/) that is a product of repeating another given string a number of given times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. 
@@ -132,4 +132,6 @@ console.log( repeatArray([1,2,3], 3));
 
 ## 4 - Conclusion
 
-So the lodash repeat method is just a quick convenience method that can help to quickly do something that is not to hard with just plain old vanilla javaScript my itself. There is a lot of talk about the relevance of lodash these days as a lot of the functionality is baked into javaScript itself. In addition a lot of the methods are like this that do not make a great case for the use of lodash compared to just working within the scope of native javaScript by itself.
+So the lodash repeat method is just a quick convenience method that can help to quickly do something that is not to hard with just plain old vanilla javaScript my itself. There is a lot of talk about the relevance of lodash these days as a lot of the functionality is baked into javaScript itself. In addition a lot of the methods are like this that do not make a great case for the use of lodash compared to just working within the scope of native javaScript by itself. Still there are a lot or [redeeming qualities of lodash](/2019/02/15/lodash/), and certain core ideas surrounding the use of lodash compared to what is typical with javaScript alone. So then if you enjoyed this post you might want to check out on of my [many other posts on lodash](/categories/lodash/).
+
+
