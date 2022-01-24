@@ -36,10 +36,6 @@
 
 <!-- OLD POSTS -->
 
-### (  ) - lodash_repeat (old)
-* 1,000+ words
-* have 5+ internal links for the post
-
 ### (  ) - lodash_bind (old)
 * 750+ words
 * have 5+ internal links for the post
@@ -62,6 +58,10 @@
 ### (  ) - lodash_keyby (old links)
 * 750+ words
 * have 5+ internal links for the post
+
+### ( done 01/24/2022 ) - lodash_repeat (old)
+* (done) 1,000+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/24/2022 ) - lodash_map (old links)
 * (done) 1,000+ words
