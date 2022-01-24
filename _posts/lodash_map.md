@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2022-01-24 08:55:38
-version: 1.11
+updated: 2022-01-24 08:58:55
+version: 1.12
 ---
 
 If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map). This [array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
@@ -118,7 +118,7 @@ console.log(toggled);
 
 ## 3 - Vanilla javascript alternatives to lodash map
 
-When it comes to vanilla javaScript alternatives to the lodash map method there is the [array map method](/2020/06/16/js-array-map/) of the [array prototype](/2018/12/10/js-array/).
+When it comes to vanilla javaScript alternatives to the lodash map method there is the [array map method](/2020/06/16/js-array-map/) of the [array prototype](/2018/12/10/js-array/). One draw back with the array map method is that, well it is an array method rather than a collection method like in lodash. However this can easily be addressed by just making use of some additional vanilla javaScript features beyond just simply that of the array map method such as the [Object keys](/2018/12/15/js-object-keys/) static method that will return an array of public key names of any object, and with that there is also an Object.values method that will do the same as with Object keys only with values rather than key names.
 
 ### 3.1 - Simple example of Array.map
 
