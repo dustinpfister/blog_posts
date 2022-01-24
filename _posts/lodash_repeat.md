@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 494
-updated: 2020-07-13 13:44:17
-version: 1.15
+updated: 2022-01-24 10:51:38
+version: 1.16
 ---
 
 This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method which is a string method that is just a quick way of creating a new string that is a product of repeating another given string a number of given times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. 
@@ -22,14 +22,17 @@ So say I want to create a string that is a single string repeated a few times. F
 With that said if the full lodash utility library is available there is the lodash repeat method to work with then it comes to this sort of thing. I can  then use the lodash repeat method as a way to do just that and just get a string that is a fixed number of zeros. Just call the lodash repeat method and pass the string 0 as the first argument followed by the number of zeros I want after the string.
 
 ```js
-let _ = require('lodash');
 let bil = '1' + _.repeat('0', 9);
 console.log(bil); // 1000000000
 ```
 
 Simple enough, but how hard is it to just do this with plain old vanilla javaScript? not so hard, so lets look at some vanilla javaScript examples that do the same thing. Also lets explore some other topics as well such as how to go about doing the same thing only with arrays and objects.
 
-## 2 - What about arrays and objects? Check out \_.times
+## 2 - Other lodash methods
+
+The lodash fill method will create and return a new string with a given source string and a number of times you would like to have that string repeated. However there are a whole lot of other methods in lodash to be aware of when it comes to preforming similar tasks, as well as various other related tasks to what it is that the lodash repeat method does. In this section then I will be going over some additional lodash methods beyond just simply that of the lodash repeat method, but at this time I will not be getting into what there is to work with when it comes to javaScript alone. That I will reserve for a later section in this post if you would like to skip ahead to that though.
+
+### 2.1 - What about arrays and objects? Check out \_.times
 
 A similar method that comes to mind is the [lodash times](/2017/10/11/lodash_times/) method. This method is a method that just simply called a given function a number of given times. It is a quick convenient way of doing something that would otherwise require writing a loop.
 
