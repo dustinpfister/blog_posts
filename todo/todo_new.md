@@ -12,7 +12,7 @@
 
 ### () - new post #955 for 01/28/2022 - lodash_string
 
-### () - new post #954 for 01/24/2022 - js-javascript-example-pool-normalized
+### ( done 01/24/2022 ) - new post #954 for 01/24/2022 - js-javascript-example-pool-normalized
 
 ### ( done 01/21/2022 ) - new post #953 for 01/21/2022 - lodash_thru
 
