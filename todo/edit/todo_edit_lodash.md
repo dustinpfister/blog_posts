@@ -36,6 +36,22 @@
 
 <!-- OLD POSTS -->
 
+### (  ) - lodash_repeat (old)
+* 1,000+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_bind (old)
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_create (old)
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_extend (old)
+* 1,000+ words
+* have 5+ internal links for the post
+
 ### (  ) - lodash_last (old)
 * 1,000+ words
 * have 5+ internal links for the post
