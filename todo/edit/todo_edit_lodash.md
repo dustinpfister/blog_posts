@@ -16,10 +16,6 @@
 * get to 1000+ words
 * have 5+ internal links for the post
 
-### ( done 12/23/2021 ) - lodash_sample (links, old)
-* (done) get to 1,000+ words
-* (done) have 5+ internal links for the post
-
 
 <!-- WANT TO EXPAND -->
 
@@ -227,3 +223,4 @@
 
 ### ( done 11/22/2021 ) - lodash_array ( expand )
 * (done) get to 1000+ words
+
