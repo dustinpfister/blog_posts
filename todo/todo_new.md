@@ -4,11 +4,17 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### () - new post #955 for 01/28/2022 - lodash_
+### () - new post #958 for 02/07/2022 on js-javascript-example-tools-points
 
-### () - new post #954 for 01/24/2022 - js-javascript-example-tool-points
+### () - new post #957 for 02/04/2022 on threejs-
 
-### () - new post #953 for 01/21/2022 - lodash_thru
+### () - new post #956 for 01/31/2022 on js-javascript-example-source-layer
+
+### () - new post #955 for 01/28/2022 - lodash_string
+
+### () - new post #954 for 01/24/2022 - js-javascript-example-pool-normalized
+
+### ( done 01/21/2022 ) - new post #953 for 01/21/2022 - lodash_thru
 
 ### ( done 01/17/2022 ) - new post #952 for 01/17/2022 - js-javascript-example-digital-art-invaders
 
