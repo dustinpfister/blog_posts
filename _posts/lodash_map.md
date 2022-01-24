@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2022-01-24 09:15:11
-version: 1.15
+updated: 2022-01-24 09:17:24
+version: 1.16
 ---
 
 If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map). This [array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
@@ -40,9 +40,11 @@ console.log(source);
 // [ 1, 2, 3, 4, 5 ]
 ```
 
+So the lodash map method is a great way to create a new array, based off of the values of another source array, without mutating the source array in place.
+
 ### 1.2 - Lodash map is a collection method
 
-The map method in lodash is a so called [collection method](/2022/01/14/lodash_collection/), this means that the lodash map method can be used on plain old objects as well as Arrays.
+The map method in lodash is a so called [collection method](/2022/01/14/lodash_collection/), this means that the lodash map method can be used on plain old objects as well as Arrays. So then I can give just a plain old object as the source object for the lodash map method, and the values of that object will be used to create the new array that will be returned by lodahs map.
 
 ```js
 var obj = {foo: 'bar', answer: 42};
