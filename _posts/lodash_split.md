@@ -1,12 +1,12 @@
 ---
-title: _.split and String.split for splitting a string into substrings
+title: lodash split and String.split for splitting a string into substrings
 date: 2018-12-03 16:32:00
 tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2021-12-12 09:02:23
-version: 1.20
+updated: 2022-01-24 11:09:46
+version: 1.21
 ---
 
 So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern in the form of a string or a regular expression. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](/2021/07/14/js-string-split/) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
