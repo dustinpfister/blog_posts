@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2022-01-24 08:58:55
-version: 1.12
+updated: 2022-01-24 09:07:25
+version: 1.13
 ---
 
 If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map). This [array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
@@ -16,9 +16,11 @@ In [lodash](https://lodash.com/) there is also the [\_.map](https://lodash.com/d
 <!-- more -->
 
 
-## 1 - Simple \_.map example in lodash
+## 1 - Basics of the lodash map method
 
-So of course the same thing can be done with the \_.map method in lodash, and in more or less the same way. The only real difference compared to the native array map example is that I have to pass the array as the first argument as the lodash meth9od is not a prototype method but a stand alone method.
+In this first section I will be starting out with just a few basic examples that center around the lodash map method itself. Later in this post I will be looking into some more advanced examples of the method, as well as what there is to work with in native javaScript by itself.
+
+### 1.1 - Basic lodash map method example
 
 ```js
 var arr = [1,2,3,4,5];
@@ -33,15 +35,15 @@ console.log(arr);
 // [10,20,30,40,50]
 ```
 
-However \_.map in lodash is a collection method, so it can also be used on plain old objects as well, not just Arrays.
+### 1.2 - Lodash map is a collection method
+
+The map method in lodash is a so called [collection method](/2022/01/14/lodash_collection/), this means that the lodash map method can be used on plain old objects as well as Arrays.
 
 ```js
-var obj = {foo: 'bar', anwser: 42};
+var obj = {foo: 'bar', answer: 42};
  
 console.log(_.map(obj, function(item){
- 
     return item;
- 
 }));
 // ['bar',42]
 ```
@@ -116,7 +118,7 @@ console.log(toggled);
 // ]
 ```
 
-## 3 - Vanilla javascript alternatives to lodash map
+## 3 - Vanilla JavaScript alternatives to lodash map
 
 When it comes to vanilla javaScript alternatives to the lodash map method there is the [array map method](/2020/06/16/js-array-map/) of the [array prototype](/2018/12/10/js-array/). One draw back with the array map method is that, well it is an array method rather than a collection method like in lodash. However this can easily be addressed by just making use of some additional vanilla javaScript features beyond just simply that of the array map method such as the [Object keys](/2018/12/15/js-object-keys/) static method that will return an array of public key names of any object, and with that there is also an Object.values method that will do the same as with Object keys only with values rather than key names.
 
