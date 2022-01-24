@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2022-01-24 09:07:25
-version: 1.13
+updated: 2022-01-24 09:13:34
+version: 1.14
 ---
 
 If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map). This [array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
@@ -22,17 +22,22 @@ In this first section I will be starting out with just a few basic examples that
 
 ### 1.1 - Basic lodash map method example
 
+For a basic hello world style example of the lodash map method there is starting out with a simple array of numbers as a source array.
+
 ```js
-var arr = [1,2,3,4,5];
- 
-arr = _.map(arr, function(el){
- 
+let source = [1,2,3,4,5];
+// create a new array from the source array by preforming
+// an action with the given function for each element in the
+// source array using lodash map
+let b = _.map(source, function(el){
     return el * 10;
- 
 });
- 
-console.log(arr);
+// lodash map creates the new array and WILL NOT mutate the 
+// source array in place when doing so
+console.log(b);
 // [10,20,30,40,50]
+console.log(source);
+// [ 1, 2, 3, 4, 5 ]
 ```
 
 ### 1.2 - Lodash map is a collection method
