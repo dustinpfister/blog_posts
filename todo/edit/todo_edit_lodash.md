@@ -47,9 +47,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_map (old links)
-* 1,000+ words
-* have 5+ internal links for the post
+### ( done 01/24/2022 ) - lodash_map (old links)
+* (done) 1,000+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/23/2022 ) - lodash_round (old, links)
 * (done) 1,000+ words
