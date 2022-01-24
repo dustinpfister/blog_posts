@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 142
-updated: 2022-01-24 09:17:24
-version: 1.16
+updated: 2022-01-24 09:21:46
+version: 1.17
 ---
 
 If you work with javaScript a lot like I do chances are you are going to be aware of many of the methods that are part of the Array prototype, one of which is [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map). This [array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) can be used to map over all elements in an array by passing a function as the first argument when calling Array map off of an instance of an Array. In this method that is passed to array map the value of a current element in the array is available as the first argument in the method that ias passed, and the value that is returned in this method will become the new value for that current element.
@@ -155,4 +155,4 @@ Now that we have a basic example of the native array map meth9d out of the way l
 
 ## 4 - Conclusion
 
-So the lodash map method and native array map methods are useful native methods for a common task that comes up often when working with a javaScript project. However it is not a golden hammer when it comes to these kinds of methods, in some cases you will want to use filter and reduce for example. There are a lot of native and user space methods like array map and lodash map, it takes time to become familiar with all of these, but it is worth the investment of time to get solid with them and the reasons why one might have something more to ofter compared to the other.
+So the lodash map method and native array map methods are useful native methods for a common task that comes up often when working with a javaScript project. However it is not a golden hammer when it comes to these kinds of methods, in some cases you will want to use [filter](/2018/05/18/lodash_filter/) and [reduce](/2018/07/25/lodash_reduce/) for example. There are a lot of native and user space methods like array map and lodash map, it takes time to become familiar with all of these, but it is worth the investment of time to get solid with them and the reasons why one might have something more to ofter compared to the other. With that said if you enjoyed reading this post you might want to check out one of my [many other posts on lodash](/categories/lodash/), or maybe some of my vanilla javaScript examples when it comes to creating actually projects with javaScript alone rather than using lodash.
