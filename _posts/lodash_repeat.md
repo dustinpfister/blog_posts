@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 494
-updated: 2022-01-24 11:05:15
-version: 1.17
+updated: 2022-01-24 11:09:45
+version: 1.18
 ---
 
 This post is on the [lodash repeat](https://lodash.com/docs/4.17.11#repeat) method which is a string method that is just a quick way of creating a new string that is a product of repeating another given string a number of given times. This is something that comes up now and then when working with projects, and it is kind of nice to have a quick convenience method in place to save me the trouble of having to do this myself each time. 
@@ -44,7 +44,17 @@ let str = 1 + _(new Array(8)).fill('0').join('');
 console.log(str); // '100000000'
 ```
 
-### 2.2 - What about arrays and objects? Check out \_.times
+### 2.2 - Using the lodash split method to split an string into an array
+
+Another method to be aware of would be the [split method](/2018/12/03/lodash_split) that can be used to split a string into an array of values. So then I can use the repeat method to create a string and the use the spit method to split it into an array of the value that I am repeating.
+
+```js
+let str = _.repeat('1', 5);
+let arr = _.split(str, '');
+console.log(arr); // [ '1', '1', '1', '1', '1' ]
+```
+
+### 2.3 - What about arrays and objects? Check out \_.times
 
 A similar method that comes to mind is the [lodash times](/2017/10/11/lodash_times/) method. This method is a method that just simply called a given function a number of given times. It is a quick convenient way of doing something that would otherwise require writing a loop.
 
@@ -92,17 +102,6 @@ let repeat = (str, c) => {
  
 let bil = '1' + repeat('0', 9);
 console.log(bil); // 1000000000
-```
-
-### 3.2 - Using the lodash split method to split an string into an array
-
-Another method to be aware of would be the split method that can be used to split a string into an array of values. So then I can use the repeat method to create a string and the use the spit method to split it into an array of the value that I am repeating.
-
-```js
-let str = _.repeat('1,', 5);
-let arr = _.split(str, ',');
-arr.pop();
-console.log(arr); // [ '1', '1', '1', '1', '1' ]
 ```
 
 ### 3.3 - Making a times, and repeat array method without lodash
