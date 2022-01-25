@@ -1,12 +1,12 @@
 ---
-title: 33 javaScript examples and counting
+title: 34 javaScript examples and counting
 date: 2021-04-02 11:17:00
 tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2022-01-17 08:07:34
-version: 1.82
+updated: 2022-01-25 15:31:50
+version: 1.83
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language the real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples. Simply put there is learning by reading a blog post such as this one that you are reading right now, and if course that is great, but it is no replacement for learning by doing.
@@ -112,43 +112,47 @@ So there is having a simple expression like 3 \/ 4 that will result in a value b
 
 This is a javaScript example where I was experimenting with a simple grid in the center of a canvas that a player can built player units for a game This is one of sever javaScript examples where I am working out some basic logic in an independent project that I might in turn add to a game that I am making.
 
-### 1.24 - [Ratio module](/2021/04/13/js-javascript-example-ratio-module)
+### 1.24 - [Object pool library normalized](/2022/01/24/js-javascript-example-pool-normalized/)
+
+This is a new object pool library at least when compared to the project to which this is based on that I stated a while back. It is yet another object pool library, but this time I address a core problem that I ran into with the older one, making this one centered around the idea that it is a point in space that I am moving around first and foremost.
+
+### 1.25 - [Ratio module](/2021/04/13/js-javascript-example-ratio-module)
 
 This is a module that I made as a foundation for my orb module, which in turn might sever to be another modules that I will be using in at least one if not more canvas games. As the name suggests it has to do with ratios, and there is a great deal that comes up when working with them. For example say I have a set of numbers like 5,20,0,15 and I want a function that will return 1,4,0,3 when I pass the previous set of numbers to it. This module provides such a method that helps with this, and there are a whole bunch of other methods like that as well.
 
-### 1.25 - [Rotate and fire example](/2021/04/05/js-javascript-example-rotate-and-fire/)
+### 1.26 - [Rotate and fire example](/2021/04/05/js-javascript-example-rotate-and-fire/)
 
 This is an example where I worked out some basic logic for a turret defense game when it comes to how the turrets will behave when it comes to rotation and fire control. For example I could make it so that when a player clicks an area of a canvas a turret is just set to an angle that points to that location and then it fires a shot for every click of the canvas. However another way to program this kind of game is to have a rotation rate, as well as a fire rate, and for the turret to only fire once it gets within a certain angular range of the target location that was clicked.
 
-### 1.26 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
+### 1.27 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
 
 This is a skill point system that I put together to make use of in some canvas examples that might call for such a system. The general idea here is that in a game where there is an experience point system on each level some skill points will be given to the player. These skill points can then be invested into upgrades that have various effects on a main game state object.
 
-### 1.27 - [Sort planets](/2020/08/31/js-javascript-example-sort-planets/)
+### 1.28 - [Sort planets](/2020/08/31/js-javascript-example-sort-planets/)
 
 A simple sort of planets objects example that I might use if a future game if I ever get around to it. The idea of this example is that I just wanted to make a simple fun little example that makes use of the array sort method to which I wrote a quick blog post on. I wanted to go at least one step beyond just having a simple copy and paste hello world style example of array sort, and with that goal in mind I guess this example is more or less just that. I am not sure if I will every get around to expanding on this by making a real game based off of it, but in any case I all ready have an interesting starting point for something here to say the least.
 
-### 1.28 - [Tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
+### 1.29 - [Tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
 
 A tax brackets example that helps me to get a general idea of how a progressive tax system works when it comes to things like income tax. I would not use this as a way to do ones own taxes of course, but it is a module that I might use in one form or another in some kind of game where I might want a module such as this.
 
-### 1.29 - [Test Module](/2021/04/12/js-javascript-example-test-module/)
+### 1.30 - [Test Module](/2021/04/12/js-javascript-example-test-module/)
 
 This is a test module that can be used to run a collection of tests on a method to make sure that the results that the method returns are expected results when given a certain set of arguments. There are many popular frameworks out in the open web that have to do with this sort of thing. Many of those might prove to be a better solution than what I have slapped together here, but still I think that this is an important part of the process of creating, and certainly maintaining a real javaScript project.
 
-### 1.30 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
+### 1.31 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
 
 This is a simple trade simulator module that I might use as a starting point for a more advanced version that could be used in a game. The general idea here is that the player has a way to buy items as a certain rate, and then sell them at another rate later on. Depending if the rate goes up or down they will stand to gain or lose money. I have come across this kind of feature in games here and there in the past and I think it is a nice feature to have in certain types of games, so I made a simple starting point for this kind of feature.
 
-### 1.31 - [A turn based RPG game](/2021/12/10/js-javascript-example-turn-based-rpg/)
+### 1.32 - [A turn based RPG game](/2021/12/10/js-javascript-example-turn-based-rpg/)
 
 The aim with this example is to continue to expand on the source code of my grid unit movement javaScript example in which I worked out the basics for a simple turn based RPG style game. The focus here is to add additional features and see about improving the quality of the existing source code too while I am at it. As of this writing a custom state machine for the game has been added, as well as a menu system inspired by the super Nintendo game Secret of Mana. I have a lot more planed for this example, but thus far I think that I should stick to write about what I have all ready done rather than what the next steps are.
 
-### 1.32 - [utils module](/2021/08/06/js-javascript-example-utils/)
+### 1.33 - [utils module](/2021/08/06/js-javascript-example-utils/)
 
 This is a javaScript example of a general utility module, that is an example, not the example. The nature of this kind of module will differ from one project to another, but I created an example of a file that has the usual suspects that I have in such a module.
 
-### 1.33 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
+### 1.34 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
 Another basic example that makes use of some methods I work out in my percent module example. This is a canvas example that makes use of functions in my percent module that result in zig zag like movement across the canvas. This is then just one of many applications of the percent modules that I had in mind.
 
