@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 954
-updated: 2022-01-25 15:56:49
-version: 1.9
+updated: 2022-01-25 15:58:41
+version: 1.10
 ---
 
 Looks like I will be continuing to expand on my collection of [javaScript examples](/2021/04/02/js-javascript-example/) posts with a new examples as it just seems like the thing to do once I write about the [basics of javaScript](/2018/11/27/js-getting-started/). This week the example that I made is a new object pool library that I made for a recent digital art example earlier this month. After doing so I thought that this new object pool library deserves a [for post folder of its own in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-pool-normalized), and I should also maybe mack at least one if not more examples that make use of this library when it comes to making additional javaScript projects.
@@ -433,6 +433,8 @@ utils.shortestAngleDirection = function (a1, a2, scale) {
 ```
 
 ## 3 - Draw module
+
+I then have a draw module that will contain methods that are used to draw the state of various things to one or more canvas elements. For this project I then of course have a draw method that will render the current state of a display object to a canvas element.
 
 ```js
 var draw = (function(){
