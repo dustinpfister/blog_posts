@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 954
-updated: 2022-01-25 15:43:13
-version: 1.5
+updated: 2022-01-25 15:48:12
+version: 1.6
 ---
 
 Looks like I will be continuing to expand on my collection of [javaScript examples](/2021/04/02/js-javascript-example/) posts with a new examples as it just seems like the thing to do once I write about the [basics of javaScript](/2018/11/27/js-getting-started/). This week the example that I made is a new object pool library that I made for a recent digital art example earlier this month. After doing so I thought that this new object pool library deserves a [for post folder of its own in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-pool-normalized), and I should also maybe mack at least one if not more examples that make use of this library when it comes to making additional javaScript projects.
 
 This is not the first time I made this sort of library that I then end up using in one or more additional projects, in fact this is still very much based off of what I started in my [canvas examples series post on this subject of object pools](/2020/07/20/canvas-example-object-pool/). If you are not sure what an [object pool is](https://en.wikipedia.org/wiki/Object_pool_pattern) the general idea is more or less as the term descries, it is just a system of creating a pool of objects that are then used over and over again, rather than creating and destroying objects as needed.
+
+One major improvement that I wanted to make with this object pool library is how the object state is stored as well as rendered. The older object pool module that I based this on centered around the idea of having the x and y values of an object refer to the upper left corner of a display object. In this pool I wanted to change things with the various methods so that the x and y values refer to the center point of a display object actually, and then things are figured out from there.
 
 <!-- more -->
 
