@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2022-01-26 11:09:05
-version: 1.17
+updated: 2022-01-26 11:11:56
+version: 1.18
 ---
 
 If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. 
@@ -88,7 +88,7 @@ units.forEach((unit) => {
 console.log(keyed.a1.price); // 9
 ```
 
-the lodash keyby method is not one of the most compelling methods in lodash to warrant the need to continue using it. I can not say that I find myself doing this sort of thing often and when I need to it is not so hard to just go ahead and do so with just a few javaScript built in features.
+The lodash keyby method is not one of the most compelling methods in lodash to warrant the need to continue using it. I can not say that I find myself doing this sort of thing often and when I need to it is not so hard to just go ahead and do so with just a few javaScript built in features.
 
 ### 2.2 - The Object keys method to help work with collections
 
@@ -146,4 +146,6 @@ console.log(a);
 
 ## 3 - Conclusion
 
-So \_.keyBy is one of the many methods in lo dash that can come in handle now and then when a situation comes about that calls for it's use. If you have anything you might like to add, or have any questions or concerns about the content of this post please be sure to let me know in the comments, and thank you for reading.
+So The key by method in lodash is one of the many methods that can come in handle now and then when a situation comes about that calls for it's use. However it is also a method that can easily be replaced with just a little vanilla javaScript code actually. There is also just working out ones own custom utility library with methods that just cerate, populate and return objects in all kids of various ways, and only adding these methods when that are acutally needed.
+
+If you have anything you might like to add, or have any questions or concerns about the content of this post please be sure to let me know in the comments, and thank you for reading.
