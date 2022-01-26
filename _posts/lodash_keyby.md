@@ -5,13 +5,12 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2022-01-26 11:11:56
-version: 1.18
+updated: 2022-01-26 11:16:26
+version: 1.19
 ---
 
-If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. 
-
-The \_.keyBy method works a lot like [\_.groupBy](/2018/08/02/lodash_groupby/) only it will only create one object for each key. In this post I will be going over some use case examples of \_.keyBy, and some vanilla js alternatives for doing so as well when it comes to doing something like this with just native javaScript by itself.
+If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array, or collection in general, I can use the lodash [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that if [lodash](https://lodash.com/) is there to work with in a project. The \_.keyBy method works a lot like [\_.groupBy](/2018/08/02/lodash_groupby/), and also the \_.countBy methods only it will only create one key for each value in a source collection, rather than creating groups as needed for two or more elements that meet a condition, or give a count of elements that meet a condition. 
+There is also the question of doing what they key by methods does with just a little vanilla javaScript code when it comes to not bothering with lodash and just working with core javaScript also. With that said in this post I will be going over some use case examples of \_.keyBy, and some vanilla js alternatives for doing so as well when it comes to doing something like this with just native javaScript by itself.
 
 
 <!-- more -->
@@ -146,6 +145,6 @@ console.log(a);
 
 ## 3 - Conclusion
 
-So The key by method in lodash is one of the many methods that can come in handle now and then when a situation comes about that calls for it's use. However it is also a method that can easily be replaced with just a little vanilla javaScript code actually. There is also just working out ones own custom utility library with methods that just cerate, populate and return objects in all kids of various ways, and only adding these methods when that are acutally needed.
+So The key by method in lodash is one of the many methods that can come in handle now and then when a situation comes about that calls for it's use. However it is also a method that can easily be replaced with just a little vanilla javaScript code actually. There is also just working out ones own custom utility library with methods that just cerate, populate and return objects in all kids of various ways, and only adding these methods when that are actually needed.
 
 If you have anything you might like to add, or have any questions or concerns about the content of this post please be sure to let me know in the comments, and thank you for reading.
