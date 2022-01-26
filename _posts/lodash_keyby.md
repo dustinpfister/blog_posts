@@ -5,11 +5,12 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2022-01-26 11:16:26
-version: 1.19
+updated: 2022-01-26 11:17:33
+version: 1.20
 ---
 
-If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array, or collection in general, I can use the lodash [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that if [lodash](https://lodash.com/) is there to work with in a project. The \_.keyBy method works a lot like [\_.groupBy](/2018/08/02/lodash_groupby/), and also the \_.countBy methods only it will only create one key for each value in a source collection, rather than creating groups as needed for two or more elements that meet a condition, or give a count of elements that meet a condition. 
+If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array, or collection in general, I can use the lodash [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that if [lodash](https://lodash.com/) is there to work with in a project. The \_.keyBy method works a lot like [\_.groupBy](/2018/08/02/lodash_groupby/), and also the [\_.countBy methods](/2018/06/04/lodash_countby/) only it will only create one key for each value in a source collection, rather than creating groups as needed for two or more elements that meet a condition, or give a count of elements that meet a condition.
+ 
 There is also the question of doing what they key by methods does with just a little vanilla javaScript code when it comes to not bothering with lodash and just working with core javaScript also. With that said in this post I will be going over some use case examples of \_.keyBy, and some vanilla js alternatives for doing so as well when it comes to doing something like this with just native javaScript by itself.
 
 
