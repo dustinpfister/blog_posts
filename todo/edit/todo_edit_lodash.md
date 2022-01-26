@@ -51,9 +51,9 @@
 ### (  ) - lodash_join (old)
 * 750+ words
 
-### (  ) - lodash_keyby (old links)
-* 750+ words
-* have 5+ internal links for the post
+### ( done 01/26/2022 ) - lodash_keyby (old links)
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/24/2022 ) - lodash_repeat (old)
 * (done) 1,000+ words
