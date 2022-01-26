@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2022-01-26 10:48:30
-version: 1.13
+updated: 2022-01-26 10:58:08
+version: 1.14
 ---
 
 If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. 
@@ -91,6 +91,8 @@ console.log(keyed.a1.price); // 9
 So the lodash keyby method is not one of the most compelling methods in lodash to warrant the need to continue using it. I can not say that I find myself doing this sort of thing often and when I need to it is not so hard to just go ahead and do so with just a few javaScript built in features.
 
 ### 2.2 - The Object keys method to help work with collections
+
+The [object keys method](/2018/12/15/js-object-keys/), is one of many static methods attached to the main Object object in core javaScript. This keys method will return an array of public key names for any object that is passed to it. So then this is a typical first go to method when it comes to doing anything with a collection in general rather than just with arrays.
 
 ```js
 let source = {
