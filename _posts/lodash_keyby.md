@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2022-01-26 09:00:12
-version: 1.12
+updated: 2022-01-26 10:48:30
+version: 1.13
 ---
 
 If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. 
@@ -89,6 +89,56 @@ console.log(keyed.a1.price); // 9
 ```
 
 So the lodash keyby method is not one of the most compelling methods in lodash to warrant the need to continue using it. I can not say that I find myself doing this sort of thing often and when I need to it is not so hard to just go ahead and do so with just a few javaScript built in features.
+
+### 2.2 - The Object keys method to help work with collections
+
+```js
+let source = {
+    "bar": {x: 5, y: 37, id: 1},
+    "foo": {x: 0, y: 0, id: 7}
+};
+// using Object.keys to get an array of key named for
+// the source object. I can then use that key to get the value
+// for each key in the source object also and do whatever I need to
+// do when it comes to creating a new object
+let a = {};
+Object.keys(source).forEach(function(key){
+    let value = source[key];
+    a[value.id] = value;
+});
+console.log(a);
+// { '1': { x: 5, y: 37, id: 1 }, '7': { x: 0, y: 0, id: 7 } }
+```
+
+### 2.3 - Vjs methods for looping over a collection, and doing the same thing as keyby
+
+```js
+// vjs for each and key by collection methods
+let vjsEach = (source, func) => {
+    Object.keys(source).forEach(function (key, i, keys) {
+        func.call(source, source[key], key, source, i, keys)
+    });
+};
+ 
+let vjsKeyBy = (source, func) => {
+    let obj = {};
+    vjsEach(source, function (val, key) {
+        obj[func(val, key, source)] = val;
+    });
+    return obj;
+};
+ 
+// DEMO of vjsKeyby
+let source = {
+    "bar": {x: 5, y: 37, id: 1},
+    "foo": {x: 0, y: 0, id: 7}
+};
+let a = vjsKeyBy(source, function(val){
+    return val.id;
+});
+console.log(a);
+// { '1': { x: 5, y: 37, id: 1 }, '7': { x: 0, y: 0, id: 7 } }
+```
 
 ## 3 - Conclusion
 
