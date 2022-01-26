@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 311
-updated: 2022-01-26 10:58:08
-version: 1.14
+updated: 2022-01-26 11:02:23
+version: 1.15
 ---
 
 If I am ever in a situation in which I need to create an object with keys that are generated from the properties of objects in an array I can use the [lodash](https://lodash.com/) [\_.keyBy](https://lodash.com/docs/4.17.10#keyby) method to make quick work of that. 
@@ -113,6 +113,8 @@ console.log(a);
 ```
 
 ### 2.3 - Vjs methods for looping over a collection, and doing the same thing as keyby
+
+So then with the Object.keys method as well as array prototype methods like array for each it is possible to loop over the contents of any object, at least in terms of public keys. I can then use this as a basis to create functionally like that of the lodash key by method, but also many other similar methods like the lodash for each method, groupBy and countBy. The functionality of for each and the object keys method can be abstracted away into a kind of vanilla javaScript lodash for each style function, that function can then be called in one or more additional methods that will then be used to recreated the functionality of lodash key by.
 
 ```js
 // vjs for each and key by collection methods
