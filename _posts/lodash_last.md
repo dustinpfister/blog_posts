@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 495
-updated: 2020-07-18 19:01:12
-version: 1.13
+updated: 2022-01-27 11:06:38
+version: 1.14
 ---
 
-The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. On thing  about the lodash last method is that this method will not mutate the array that is given, so this makes the lodash last method a fairly simple example of a functional programing style pure function. However this might not be the best example of this talking point as to why devlopers should use lodash, or some other functional programing utility library.
+The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. On thing  about the lodash last method is that this method will not mutate the array that is given, so this makes the lodash last method a fairly simple example of a functional programing style pure function. However this might not be the best example of this talking point as to why developers should use lodash, or some other functional programing utility library.
 
 The act of getting the last element in an array is a fairly simple task as well though, so the lodash last method is not a great example of why javaScript developers should bother with lodash. Still in this post I will be taking a look at the \_.last method in lodash as well as other options when it comes to getting the last element in an array with just plain old vanilla javaScript by itself as well.
 
@@ -30,7 +30,7 @@ console.log(last); // 4
 console.log(arr); // [1,2,3,4]
 ```
 
-Simple enough, but what if I want the last element, and I want it to be removed from the array also in the procress of doing so? Also do I really need lodash to do this? Seems like this should be a simple enough task when it just comes to using javaScript by itself. Well there are other ways of getting the last element in the array, and removing it as well when doing so, with and without lodash. So lets look at some more examples of how to to get that last element in an array in javaScript.
+Simple enough, but what if I want the last element, and I want it to be removed from the array also in the process of doing so? Also do I really need lodash to do this? Seems like this should be a simple enough task when it just comes to using javaScript by itself. Well there are other ways of getting the last element in the array, and removing it as well when doing so, with and without lodash. So lets look at some more examples of how to to get that last element in an array in javaScript.
 
 ## 2 - lodash remove
 
