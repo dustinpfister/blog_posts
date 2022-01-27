@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 954
-updated: 2022-01-27 15:29:21
-version: 1.15
+updated: 2022-01-27 15:34:52
+version: 1.16
 ---
 
 Looks like I will be continuing to expand on my collection of [javaScript examples](/2021/04/02/js-javascript-example/) posts with a new examples as it just seems like the thing to do once I write about the [basics of javaScript](/2018/11/27/js-getting-started/). This week the example that I made is a new object pool library that I made for a recent digital art example earlier this month. After doing so I thought that this new object pool library deserves a [for post folder of its own in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-pool-normalized), and I should also maybe mack at least one if not more examples that make use of this library when it comes to making additional javaScript projects.
@@ -301,6 +301,9 @@ var poolMod = (function () {
 }
     ());
 ```
+
+I could go nuts adding additional methods to this module, but for now I am thinking that I should stick with just a very small core set of usual suspect methods. Many of the ideas that come to mind are specific to a certain kind of game, or just an idea of some kind of digital art type thing, such as having a method that will give me an average heading for a pool of objects or a subset of a pool of objects. That is an idea that I would want to keep in a specific application rather than writing it into the core of what this is.
+
 
 ## 2 - Utilities of this example
 
