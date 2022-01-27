@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 954
-updated: 2022-01-25 16:07:11
-version: 1.12
+updated: 2022-01-27 15:22:12
+version: 1.13
 ---
 
 Looks like I will be continuing to expand on my collection of [javaScript examples](/2021/04/02/js-javascript-example/) posts with a new examples as it just seems like the thing to do once I write about the [basics of javaScript](/2018/11/27/js-getting-started/). This week the example that I made is a new object pool library that I made for a recent digital art example earlier this month. After doing so I thought that this new object pool library deserves a [for post folder of its own in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-pool-normalized), and I should also maybe mack at least one if not more examples that make use of this library when it comes to making additional javaScript projects.
@@ -20,7 +20,7 @@ One major improvement that I wanted to make with this object pool library is how
 
 ## 1 - The pool normalized lib
 
-So then in this section I will want to start out with the state of the source code of the object pool library itself before continuing with additional dependencies and files to make use of this.
+So then in this section I will want to start out with the state of the source code of the object pool library itself before continuing with additional dependencies and files to make use of this library for the sake of having at least one or more demos of it. The public methods of this library can be divided into three categorizes on create methods, pool methods, and disp object methods. That is methods that are used to create a single display object, or a pool of such objects when it comes to create methods. Then there are methods that will do something with a whole pool of objects such as get a count of how many in the pool are currently active, while display object methods are for figuring out something with just one display object.
 
 ```js
 var poolMod = (function () {
