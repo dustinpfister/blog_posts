@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2022-01-27 10:35:37
-version: 1.19
+updated: 2022-01-27 10:43:46
+version: 1.20
 ---
 
 So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a [wrapper for a native javaScript method](/2019/11/01/lodash_wrapper_methods/) in this case the join method in the [array prototype](/2018/12/10/js-array/). This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash, it also will come into play often when chaining lodash methods.
@@ -78,4 +78,7 @@ console.log(str.split('/'));
 
 ## 4 - Conclusion
 
-The Array.join method has been in the javaScript spec for ages making \_.join one of the method in lodash where there is not much point of it being there aside from just making this consistent in the code, as this native method has great browser support going way back. Do not assume that this is the case of all lodash methods though, with some of them like [\_.map](/2018/02/02/lodash_map/), and [\_.fill](/2017/09/26/lodash_fill/) this is not the case.
+The Array.join method has been in the javaScript spec for ages making \_.join one of the method in lodash where there is not much point of it being there aside from just making this consistent in the code, as this native method has great browser support going way back. Do not assume that this is the case of all lodash methods though, with some of them like [\_.map](/2018/02/02/lodash_map/), and [\_.fill](/2017/09/26/lodash_fill/) this is not the case and it will still make more sense when it comes to the safely net aspect of lodash at least. Even if native methods are always going to be there for the target platforms of interest it still might make sense to continue using lodash, or some other user space solution for something rather than a native method, as it is not always just the safely net aspect that is a driving force to use methods like this. 
+
+Using a user space solution allows for me to use a non spec compliant method for something, which in some cases might be what I want actually, also when it comes to making my own user space solutions for something that allows for me to add any and add additional features that I might want or need. There is also the readability aspect of using a user space method over monkey patching something into javaScript itself that might not be a standard method, or is but am monkey patching it with something that is not spec compliant. In any case this is all stuff that constitutes [matters for other posts on lodash](/categories/lodash/), and maybe the lodash join method is not the best example of any of this.
+
