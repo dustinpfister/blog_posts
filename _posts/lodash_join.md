@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2022-01-27 10:32:41
-version: 1.18
+updated: 2022-01-27 10:35:37
+version: 1.19
 ---
 
 So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a [wrapper for a native javaScript method](/2019/11/01/lodash_wrapper_methods/) in this case the join method in the [array prototype](/2018/12/10/js-array/). This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash, it also will come into play often when chaining lodash methods.
@@ -39,6 +39,8 @@ console.log('split back:', _.split(str,'/'));
 ```
 
 ## 2 - Other lodash methods
+
+Now that I got the basics of the lodash join method out of the way, in this section I will be going over a few more examples that involve the use of more than just the lodash join method. I will still be sticking mainly with lodash methods here, reserving pure vanilla javaScript solutions for a latter section in this post.
 
 ### 2.2 - lodash join and chaining methods
 
