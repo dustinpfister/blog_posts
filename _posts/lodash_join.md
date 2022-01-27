@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2022-01-27 11:01:58
-version: 1.22
+updated: 2022-01-27 11:03:56
+version: 1.23
 ---
 
 So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a [wrapper for a native javaScript method](/2019/11/01/lodash_wrapper_methods/) in this case the join method in the [array prototype](/2018/12/10/js-array/). This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash, it also will come into play often when chaining lodash methods.
@@ -79,6 +79,8 @@ console.log(str.split('/'));
 
 ### 3.2 - The split method
 
+Just as with the lodash split method there is also the native string split method.
+
 ```js
 var str = '/home/dustin/github/test_lodash/';
 var folders = str.split('/');
@@ -87,6 +89,8 @@ console.log(folders);
 ```
 
 ### 3.3 - The filter method
+
+When I split a string into an array, in some cases I will end up with additional empty elements. This then gives rise for a need to have a way to filter out these typically unwanted extra elements. One way to go about doing this would be to make use of the array filter method.
 
 ```js
 var str = '/home/dustin/github/test_lodash/';
