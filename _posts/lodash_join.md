@@ -5,13 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2022-01-27 10:26:46
-version: 1.17
+updated: 2022-01-27 10:32:41
+version: 1.18
 ---
 
-So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a [wrapper for a native javaScript method](/2019/11/01/lodash_wrapper_methods/) in this case the join method in the [array prototype](/2018/12/10/js-array/). This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash.
+So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a [wrapper for a native javaScript method](/2019/11/01/lodash_wrapper_methods/) in this case the join method in the [array prototype](/2018/12/10/js-array/). This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash, it also will come into play often when chaining lodash methods.
 
-In any case this is a method that come sup a lot when working out all kinds of solutions for problems when working in a javaScript programing environment. The join method can be used to join all the elements of an array together with a given separator between each element, furnishing a string from those array elements. It can be thought of as the opposite of [\_.split](/2018/12/03/lodash_split/), or [String.split](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) that can be used to split a string down into an array of elements with a given separator. In any case this post will outline some examples of joining the elements of a javaScript array together into a string using the join method.
+In any case this is join method is a method that comes up a lot when working out all kinds of solutions for problems when working in a javaScript programing environment, with, or without lodash as part of a collection of libraries to work with. The join method can be used to join all the elements of an array together with a given separator between each element, furnishing a string from those array elements. It can be thought of as the opposite of [\_.split](/2018/12/03/lodash_split/), or the [split](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) string prototype method that can be used to split a string down into an array of elements with a given separator. 
+
+In any case this post will outline some examples of joining the elements of a javaScript array together into a string using the join method inside and outside of lodash. In the process of doing so I will also end up touching base on a lot or related topics as well surrounding the use of arrays and strings in general.
 
 <!-- more -->
 
