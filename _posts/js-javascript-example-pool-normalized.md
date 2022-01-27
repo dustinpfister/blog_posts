@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 954
-updated: 2022-01-27 15:48:33
-version: 1.21
+updated: 2022-01-27 15:51:43
+version: 1.22
 ---
 
 Looks like I will be continuing to expand on my collection of [javaScript examples](/2021/04/02/js-javascript-example/) posts with a new examples as it just seems like the thing to do once I write about the [basics of javaScript](/2018/11/27/js-getting-started/). This week the example that I made is a new object pool library that I made for a recent digital art example earlier this month. After doing so I thought that this new object pool library deserves a [for post folder of its own in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-pool-normalized), and I should also maybe mack at least one if not more examples that make use of this library when it comes to making additional javaScript projects.
@@ -598,4 +598,4 @@ loop();
 
 I will want to make at least a few revisions of this object pool library at one point or another, but only as needed. I think much of the additional features and functionality of this should be added on as additional libraries that build on top of this rather than making this project even more complex actually. I will be creating those projects in the not so distant future as I continue to work out even more javaScript project examples to write about in posts such as this.
 
-As I make additional javaScript example prototypes I will like to continue with the same general tone that I started with a few weeks back with my [digital art reduce pool javaScript example](/2021/12/31/js-javascript-example-digital-art-reduce-pool/).
+As I make additional javaScript example prototypes I will like to continue with the same general tone that I started with a few weeks back with my [digital art reduce pool javaScript example](/2021/12/31/js-javascript-example-digital-art-reduce-pool/). That is to start out with a very basic, minimal idea when it comes to what the end result is, at least at first. I often end up going nuts with features when making something, and while doing so I do not finish the most important core set of features first. I often seem to think in terms of continuing to work on a project indefinitely, and when it comes to that there is always the thought of "Oh I can just get to that later".
