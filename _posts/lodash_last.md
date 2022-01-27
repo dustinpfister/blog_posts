@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 495
-updated: 2022-01-27 11:50:13
-version: 1.19
+updated: 2022-01-27 11:52:38
+version: 1.20
 ---
 
 The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. On thing about the lodash last method is that this method will not mutate the source array that is given when compared to other similar methods such as the [array pop method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) in the native javaScript [array prototype](/2018/12/10/js-array/) that will not just give the last element in an array, but also remove that element from the source array to which the pop method is called off of. So even though this last method might prove to be very simple, it does something very simple in a specific way, and other methods might also again do a very specific kind of something in a slightly different kind of way.
@@ -15,8 +15,11 @@ So then the act of getting the last element in an array is a fairly simple task,
 
 <!-- more -->
 
+## 1 - The lodash last method
 
-## 1 - lodash last
+To start out with in this section I will just be going over the lodash last method alone. So this will be a very quick basic section as there is not much to cover when it comes to using just this one method.
+
+### 1.1 - lodash last
 
 The lodash last method works by just calling the method, and then passing the array to which I want the last element. When doing so it will give the last element in the array without removing it from the given source array.
 
