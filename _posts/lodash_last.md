@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 495
-updated: 2022-01-27 11:54:19
-version: 1.21
+updated: 2022-01-27 12:11:35
+version: 1.22
 ---
 
 The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. On thing about the lodash last method is that this method will not mutate the source array that is given when compared to other similar methods such as the [array pop method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) in the native javaScript [array prototype](/2018/12/10/js-array/) that will not just give the last element in an array, but also remove that element from the source array to which the pop method is called off of. So even though this last method might prove to be very simple, it does something very simple in a specific way, and other methods might also again do a very specific kind of something in a slightly different kind of way.
@@ -54,6 +54,28 @@ last = _.remove(arr, (el,i)=>{
 // solution for a fairly simple task
 console.log(last[0]); // 4
 console.log(arr); // [1,2,3,4]
+```
+
+### 2.2 - lodash head
+
+Because there is a method that gets the last element of an array that would mean that there is also a method that can be used to get the first, without mutating in place. There is, and such a method is called the lodash head method.
+
+```js
+let a = [1, 2, 3, 4];
+let b = _.head(a);
+console.log(b); // 1
+console.log(a); // [1, 2, 3, 4]
+```
+
+### 2.3 - lodash slice method
+
+There is also getting the last element, or any range of elements from an array using the slice method.
+
+```js
+let a = [1, 2, 3, 4];
+let b = _.slice(a, 3, 4)[0];
+console.log(b); // 4
+console.log(a); // [1, 2, 3, 4]
 ```
 
 It works sure, but for something so simple it is a bit much. The lodash remove method should be used when there is some far more complex set of criteria that is required when it comes to removing and returning the last element in an array.
