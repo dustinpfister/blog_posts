@@ -48,8 +48,8 @@
 * 1,000+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_join (old)
-* 750+ words
+### ( done 01/27/2022 ) - lodash_join (old)
+* (done) 750+ words
 
 ### ( done 01/26/2022 ) - lodash_keyby (old links)
 * (done) 750+ words
