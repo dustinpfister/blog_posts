@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 954
-updated: 2022-01-27 15:26:12
-version: 1.14
+updated: 2022-01-27 15:29:21
+version: 1.15
 ---
 
 Looks like I will be continuing to expand on my collection of [javaScript examples](/2021/04/02/js-javascript-example/) posts with a new examples as it just seems like the thing to do once I write about the [basics of javaScript](/2018/11/27/js-getting-started/). This week the example that I made is a new object pool library that I made for a recent digital art example earlier this month. After doing so I thought that this new object pool library deserves a [for post folder of its own in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-pool-normalized), and I should also maybe mack at least one if not more examples that make use of this library when it comes to making additional javaScript projects.
@@ -23,6 +23,8 @@ One major improvement that I wanted to make with this object pool library is how
 So then in this section I will want to start out with the state of the source code of the object pool library itself before continuing with additional dependencies and files to make use of this library for the sake of having at least one or more demos of it. The public methods of this library can be divided into three categorizes on create methods, pool methods, and disp object methods. That is methods that are used to create a single display object, or a pool of such objects when it comes to create methods. Then there are methods that will do something with a whole pool of objects such as get a count of how many in the pool are currently active, while display object methods are for figuring out something with just one display object.
 
 The main method of interest for getting started with using this object pool library would be to use the main create method. When doing so I can pass an options object that will contain all the logic that is used to update the pool for each active display object, as well as what to do when an object is spawned, and purged, or rather set active and inactive as objects are never created or destroyed once that main object pool object is created.
+
+Conditions are not set when creating the object pool as to go about spawning one or more objects from the pool, this is something that is to be determined when creating the over all larger app that will make use of this. Inside the body of a main app loop, the update method of a state object or whatever the case may be is where I will want to call the main spawn method of the module, when doing so I pass the object pool, along with a state object that I want to use and an additional spawn options object.
 
 ```js
 var poolMod = (function () {
