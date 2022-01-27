@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 495
-updated: 2022-01-27 11:16:56
-version: 1.16
+updated: 2022-01-27 11:30:19
+version: 1.17
 ---
 
-The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. On thing about the lodash last method is that this method will not mutate the source array that is given when compared to other similar methods such as the [array pop method](/2020/05/30/js-array-pop/) in native javaScript that will not just give the last element in an array, but also remove that element from the source array to which the pop method is called off of. So even though this last method might prove to be very simple, it does something very simple in a specific way, and other methods might also again do a very specific kind of something in a slightly different kind of way.
+The [lodash last](https://lodash.com/docs/4.17.11#last) method is an array method that can be used to get the last element in an array. On thing about the lodash last method is that this method will not mutate the source array that is given when compared to other similar methods such as the [array pop method](/2020/05/30/js-array-pop/) in the native javaScript [array prototype](/2018/12/10/js-array/) that will not just give the last element in an array, but also remove that element from the source array to which the pop method is called off of. So even though this last method might prove to be very simple, it does something very simple in a specific way, and other methods might also again do a very specific kind of something in a slightly different kind of way.
 
 So then the act of getting the last element in an array is a fairly simple task, so the lodash last method is not a great example of why javaScript developers should bother with lodash. Still in this post I will be taking a look at the \_.last method in lodash as well as other options when it comes to getting the last element in an array with just plain old vanilla javaScript by itself. So this will of course not just be a post on the lodash last method alone, as that would not be much of a post as there really is only so much to write about with this one.
 
