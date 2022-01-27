@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 256
-updated: 2022-01-27 10:47:05
-version: 1.21
+updated: 2022-01-27 11:01:58
+version: 1.22
 ---
 
 So with [lodash](https://lodash.com/) as well as with plain old vanilla js there are the methods [\_.join](https://lodash.com/docs/4.17.15#join) in lodash, and [Array.prototype.join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) when it comes to native javaScript. After taking a look at the source code for [lodash 4.17.15](https://raw.githubusercontent.com/lodash/lodash/4.17.15-npm/core.js) it would appear that the lodash \_.join method is just one of several methods in lodash that is just a [wrapper for a native javaScript method](/2019/11/01/lodash_wrapper_methods/) in this case the join method in the [array prototype](/2018/12/10/js-array/). This might seem pointless, but it does help to keep things consistent when it comes to just referencing native javaScript methods from within lodash, it also will come into play often when chaining lodash methods.
@@ -77,6 +77,25 @@ console.log(str.split('/'));
 // [ 'home', 'dustin', 'github', 'test_lodash' ]
 ```
 
+### 3.2 - The split method
+
+```js
+var str = '/home/dustin/github/test_lodash/';
+var folders = str.split('/');
+console.log(folders);
+// [ '', 'home', 'dustin', 'github', 'test_lodash', '' ]
+```
+
+### 3.3 - The filter method
+
+```js
+var str = '/home/dustin/github/test_lodash/';
+var folders = str.split('/').filter(function(str){
+    return str != '';
+});
+console.log(folders);
+//[ 'home', 'dustin', 'github', 'test_lodash' ]
+```
 
 ## 4 - Conclusion
 
