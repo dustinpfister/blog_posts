@@ -10,7 +10,7 @@
 
 ### () - new post #956 for 01/31/2022 on js-javascript-example-source-layer
 
-### () - new post #955 for 01/28/2022 - lodash_string
+### ( done 01/28/2022 ) - new post #955 for 01/28/2022 - lodash_string
 
 ### ( done 01/24/2022 ) - new post #954 for 01/24/2022 - js-javascript-example-pool-normalized
 
