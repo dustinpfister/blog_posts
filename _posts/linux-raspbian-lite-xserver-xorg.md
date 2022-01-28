@@ -5,15 +5,15 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 637
-updated: 2021-07-09 14:20:03
-version: 1.12
+updated: 2022-01-28 08:06:33
+version: 1.13
 ---
 
-When setting up a [Rasbian Linux OS, now known as Raspberry PI OS](https://en.wikipedia.org/wiki/Raspberry_Pi_OS) lite install I might just want to set up a server, or do something from the command line only. As such I might not always want, or even need any kind of desktop environment when it comes to this kind of striped now command line only image of the OS. 
+When setting up a [Rasbian Linux OS, now known as Raspberry PI OS](https://en.wikipedia.org/wiki/Raspberry_Pi_OS) lite clean install, the main reason for doing so is that I might just want to set up a server and not much of anything else. There are maybe some additional reasons why though such as just learning how to work with a Linux system from the command line only, as a lite install of Raspberry PI OS will just be that alone, at least for starters anyway. As such I might not always want, or even need any kind of desktop environment when it comes to this kind of striped now command line only image of the OS. 
 
-However often I might want at least some kind of desktop environment if I am still going to have the raspberry pi hooked up to a monitor and not go fully headless. When it comes to that, it might still be best to go with a desktop image rater than the lite version as doing so will make life a little easier. However in some cases I might want to experiment with some desktop environment other than the default [LXDE](https://en.wikipedia.org/wiki/LXDE) based environment that comes with the desktop version, and not have any additional blot that I do not want on the image.
+However often I might want at least some kind of desktop environment if I am still going to have the raspberry pi hooked up to a monitor and not go fully headless. When it comes to that, it might still be best to go with a desktop image rater than the lite version as doing so will make life a little easier. However in some cases I might want to experiment with some desktop environment other than the default [LXDE](https://en.wikipedia.org/wiki/LXDE) based environment that comes with the desktop version, and not have any additional bloat that I do not want on the OS image. In which case I might want to start out by just installing just the X Window System, and then choose a desktop environment that is very striped down with just the core set of features that I really need.
 
-So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Rasbian lite.
+So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Raspberry PI OS lite. I am not going to actually recommend blackbox as a desktop environment actually, it is generally a good idea to look into other options. However blackbox just happens to be a very light weight desktop environment that I have been aware of for a long time, at it seems like it is still available in many repositories.
 
 <!-- more -->
 
