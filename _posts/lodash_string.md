@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-28 10:54:11
-version: 1.7
+updated: 2022-01-28 10:57:32
+version: 1.8
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -30,6 +30,8 @@ console.log(a);
 So then the lodash split is an example of a method that will take a string as a first argument and then the method returns an array. Although the return value is an array the source that that method works with is very much a string, so then it is a kind of string method in lodash. However often one will need to also work with other lodash methods that are array methods, collection methods, or object methods in order to complete some kind of over all greater task. As you can see the end result of this example is an array with some empty strings as elements, as such I will typically want those elements removed, and then do something more with the array after that.
 
 ### 1.2 - The chain method with split, map and join
+
+So now that I have a very basic hello workd style example out of the way when it comes to string methods in lodash the next step might be something a little more advanced. When it comes to chaining methods in lodash there are a few options to choose from, one of which is the lodash chain method. When calling the chain method the first method that I can pass to it could be a string value, but then when it comes to calling another method off of chain it will then need to be a string method, or at least some method that will work with a string value. As with the basic example above this can be the split method again for examples as that is of course a string method in lodash.
 
 ```js
 let a = _.chain(',1,2,3,4,').split(',').compact().map((n) => Math.pow(2, n) ).join(' ').value();
