@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-28 10:52:42
-version: 1.6
+updated: 2022-01-28 10:54:11
+version: 1.7
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -27,7 +27,7 @@ console.log(a);
 // [ '', '1', '2', '3', '' ]
 ```
 
-So then the lodash split is an example of a method that will take a string as a first argument and then the method returns an array. Although the return value is an array the source that that method works with is very much a string, so then it is a kind of string method in lodash. However often one will need to also work with other lodash methods that are array methods, collection methods, or object methods in order to complete some kind of over all greater task.
+So then the lodash split is an example of a method that will take a string as a first argument and then the method returns an array. Although the return value is an array the source that that method works with is very much a string, so then it is a kind of string method in lodash. However often one will need to also work with other lodash methods that are array methods, collection methods, or object methods in order to complete some kind of over all greater task. As you can see the end result of this example is an array with some empty strings as elements, as such I will typically want those elements removed, and then do something more with the array after that.
 
 ### 1.2 - The chain method with split, map and join
 
