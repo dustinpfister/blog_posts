@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-28 10:46:59
-version: 1.4
+updated: 2022-01-28 10:50:03
+version: 1.5
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -24,8 +24,10 @@ Maybe a good hello would type of method to start out with would be the split met
 ```js
 let a = _.split(',1,2,3,', ',');
 console.log(a);
-// 2 4 8 16
+// [ '', '1', '2', '3', '' ]
 ```
+
+So then the lodash split is an example of a method that will take a string as a first argument and then the method returns an array.
 
 ### 1.2 - The chain method with split, map and join
 
