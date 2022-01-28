@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-28 11:13:09
-version: 1.12
+updated: 2022-01-28 11:17:33
+version: 1.13
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -66,6 +66,8 @@ console.log(_.deburr(spanish));
 ```
 
 ### 2.2 - lodash escape and escaping for html
+
+The escape method can be used to escape text so that it will redner as plain text rather than html. However it is just that kine of escape for text, when it comes to urls, or anything else to that effect this method will fall short.
 
 ```js
 let a = _.escape('Some times < text & code > things need to be escaped');
