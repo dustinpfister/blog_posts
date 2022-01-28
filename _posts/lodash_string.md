@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-28 10:44:39
-version: 1.3
+updated: 2022-01-28 10:46:59
+version: 1.4
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -18,6 +18,8 @@ This will be a quick post on string methods in the popular javaScript library kn
 In this section I will be starting out with a few quick examples of using lodash to work with strings. This will not be an overview of the various lodash string methods, or how to go about doing similar things without the use of lodash, as these are things that I will intend to get to in later sections in this post.
 
 ### 1.1 - Basic example using strings and lodash
+
+Maybe a good hello would type of method to start out with would be the split method, if I pass a string as the first argument an then a string to split by as the second the result will be an array where each element is a sub string between each instance of the string that was given to split the source string with.
 
 ```js
 let a = _.split(',1,2,3,', ',');
