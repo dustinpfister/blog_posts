@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-28 11:11:21
-version: 1.11
+updated: 2022-01-28 11:13:09
+version: 1.12
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -56,6 +56,8 @@ console.log(a);
 Now that I have some ery basics of string methods in lodash, and how to use them with other lodash methods, in this section I will be going over some of the various string methods in lodash. I will not be going over every one of them here of course, if you really want to know what each of them are you can always go to the lodash documentation website first and foremost. However I think I should at least briefly go over a few of them to say the least before moving on to something else in this post.
 
 ### 2.1 - The deburr method
+
+The lodash deburr method is a method that can be used to convert the characters of text from various languages to an equivalent character that is in the ASCII range.
 
 ```js
 let spanish = 'Jalapeño';
