@@ -5,15 +5,17 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-28 10:42:20
-version: 1.2
+updated: 2022-01-28 10:44:39
+version: 1.3
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
 
 <!-- more -->
 
-## 1 - The Baiscs of strings and working with lodash
+## 1 - The Basics of strings and working with lodash
+
+In this section I will be starting out with a few quick examples of using lodash to work with strings. This will not be an overview of the various lodash string methods, or how to go about doing similar things without the use of lodash, as these are things that I will intend to get to in later sections in this post.
 
 ### 1.1 - Basic example using strings and lodash
 
