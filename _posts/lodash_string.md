@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-28 11:17:33
-version: 1.13
+updated: 2022-01-28 11:19:03
+version: 1.14
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -76,6 +76,8 @@ console.log(a);
 ```
 
 ### 2.3 - lodash pad
+
+The lodash pad method, as well as several other similar methods can be used to create a new string that contains additional padding to the left or right of the string, up to a set size.
 
 ```js
 let an = 1503345; 
