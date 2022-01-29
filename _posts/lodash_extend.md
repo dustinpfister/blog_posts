@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2022-01-29 11:26:40
-version: 1.13
+updated: 2022-01-29 12:20:51
+version: 1.14
 ---
 
 When working with two or more objects there may come a need to combine them all together into a single object, and when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties, in addition there is also ways of making hidden properties by making use of the Object define property method. If that was not enough then there is also the nature of copying by reference rather than value with objects in javaScript, and also things like how to go about handing any and all recursive references, mainly the question of if they should refer to the new object, or should they be preserved as is.
@@ -56,11 +56,14 @@ So as you can see when I use \_.extend to combine objects a and b into a new emp
 \_.extend is very similar to [\_.assign](/2018/09/21/lodash_assign/), it works in almost the same way only it does not merge in prototype methods. In fact \_.extend is just an alias for \_.assignIn. So compared to \_.extend it will do the same thing, but without combining in prototype key name values.
 
 ```js
+let a = _.create({ proto_prop: 42}, { own_prop: 37 });
+let b = {
+    own_prop_two: true
+};
 // extend will assign own, and inherited properties
 console.log( _.extend({},a,b) ); // { own_prop: 37, proto_prop: 42, own_prop_two: true }
- 
 // _.assign will not assign inherited properties
-console.log( _.assign({},a,b) ); // { own_prop: 37, proto_prop: 42, own_prop_two: true }
+console.log( _.assign({},a,b) ); // { own_prop: 37, own_prop_two: true }
 ```
 
 ### 1.3 - Compared to \_.merge
@@ -78,11 +81,8 @@ let a = _.create({
     }, {
         own_prop: 37
     });
- 
 // another object, with just own properties
-let b = {
-    own_prop_two: true
-};
+let b = { own_prop_two: true};
  
 // extend will assign own, and inherited properties
 let c = _.extend({}, a, b);
@@ -105,6 +105,43 @@ a.nested_prop.foo = 'foobar';
 console.log(d.nested_prop.foo); // baz (no change to merged object)
 ```
 
-## 2 - Conclusion
+## 2 - Vanilla javaScript alternatives to lodash extend
+
+As I write new posts on lodash, as well as edit old ones I have found that it is generally a good idea to have at least one if not more sections on how to do what lodash does without lodash. In other words just about every lodash method has a native javaScript counterpart, or often it is not so hard to make a quick single stand alone method that does what a lodash method does. Some times a lodash methods might be a collection method rather than just an array method, a lodash method might do the same thing in a slightly different non spec kind of way, or making a vanilla javaScript solution will prove to be a little involved. However more often than not it is still not so hard to do the same thing that a lodash method does with native javaScript features if you are just familial with what there is to work with.
+
+### 2.1 - Object.create, and Object.getPrototypeOf
+
+```js
+let a = Object.create({
+    foo: 'bar'
+});
+ 
+console.log( Object.keys( a )); // []
+console.log( Object.keys( Object.getPrototypeOf(a) )); // ['foo']
+console.log( a.prototype); // undefined
+```
+
+### 2.2 - Using Object.assign, with Object.getPrototypeOf
+
+```js
+let a = Object.create({
+    foo: 'bar'
+});
+a.bar = 42;
+ 
+// so then assign by itself will not cut it, as that will
+// just assign own properties of objects
+let b = Object.assign({}, a)
+console.log(b) // {bar: 42}
+ 
+// however assign can be used in conjunction with the Object.getPrototypeOf method
+// to get a similar effect to that of the lodash extend method
+let c = Object.assign({}, a, Object.getPrototypeOf(a));
+console.log(c); // { bar: 42, foo: 'bar' }
+// c then also has an empty prototype object
+console.log( Object.getPrototypeOf(c) ); // {}
+```
+
+## 3 - Conclusion
 
 So that is my post on \_.extend for now, as my content on lodash continues to grow I will likely come back to this post to revise and expand on the content. It might be a good idea to add some vanilla js alternatives to \_.extend, or give some more detailed examples of its use. If there is anything you might like me to add, be sure to let me know in the comments section. Thanks for reading.
