@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-29 08:24:24
-version: 1.20
+updated: 2022-01-29 09:33:30
+version: 1.21
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -133,5 +133,5 @@ console.log(a); // 'This will can work'
 
 ## 4 - Conclusion
 
-String methods in lodash helper with various typical tasks with strings, but so do a wide range of methods that are there to work with in the String Prototype object of native javaScript by itself.
+String methods in lodash help with various typical tasks with strings, but so do a wide range of methods that are there to work with in the String Prototype object of native javaScript by itself. There are a lot of things to say about lodash when in comes to redeeming qualities, but many of those qualities have to do with reasons why one might prefer a user space method over an option that is built into javaScript itself. Also when it comes to user space options that is often not just a matter of using lodash over native javaScript, but working out some kind of custom application specific revision of lodash if that makes any sense. In any case getting into the subject in detail, and doing it justice is a matter for [another post](/categories/lodash/).
 
