@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2022-01-29 13:21:34
-version: 1.18
+updated: 2022-01-29 13:25:57
+version: 1.19
 ---
 
 When working with two or more objects there may come a need to combine them all together into a single object, and when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties, in addition there is also ways of making hidden properties by making use of the Object define property method. If that was not enough then there is also the nature of copying by reference rather than value with objects in javaScript, and also things like how to go about handing any and all recursive references, mainly the question of if they should refer to the new object, or should they be preserved as is.
@@ -111,7 +111,7 @@ As I write new posts on lodash, as well as edit old ones I have found that it is
 
 ### 2.1 - Object.create, and Object.getPrototypeOf
 
-Two major methods to start out with here might be [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create), as well as the [Object.getPrototypeOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf) methods.
+Two major methods to start out with here might be [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create), as well as the [Object.getPrototypeOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf) methods. Another useful Object method to be aware of is the [Object keys method](/2018/12/15/js-object-keys/) that will return an array of public key values for an object so this can be used as a way to know what properties of an object are own properties of an object, so this object keys method alone can be used as a kind of inverse of using object keys with this object get prototype method then.
 
 ```js
 let a = Object.create({
