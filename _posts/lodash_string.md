@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-28 11:24:18
-version: 1.15
+updated: 2022-01-29 08:12:52
+version: 1.16
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -86,8 +86,42 @@ console.log(_.padEnd(an,10,'0'));   // 1503345000
 console.log(_.padStart(an,10,'0')); // 0001503345
 ```
 
+## 3 - Vanilla javaScript and Strings
 
-## 3 - Conclusion
+### 3.1 - Spliting a string
+
+```js
+let a = ',1,2,3,'.split(',');
+console.log(a);
+// [ '', '1', '2', '3', '' ]
+```
+
+### 3.2 - Working with a chain
+
+```js
+let a = ',1,2,3,'.split(',')
+.reduce((acc, el) => {
+    if(el != ''){
+        acc.push(el);
+    }
+    return acc;
+}, [])
+.map((el)=>{
+    return Math.pow(2, el);
+})
+.join('-');
+console.log(a);
+// 2-4-8
+```
+
+### 3.2 - Search and replace
+
+```js
+let a = 'This will not work'.replace('not', 'can');
+console.log(a); // 'This will can work'
+```
+
+## 4 - Conclusion
 
 String methods in lodash helper with various typical tasks with strings, but so do a wide range of methods that are there to work with in the String Prototype object of native javaScript by itself.
 
