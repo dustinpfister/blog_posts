@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2022-01-29 09:54:16
-version: 1.11
+updated: 2022-01-29 10:01:40
+version: 1.12
 ---
 
 When working with many objects there some times comes a need to combine them all together, when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties, in addition there is also ways of making hidden properties. If that was not enough then there is also the nature of copying by reference rather than value with objects in javaScript as well. 
@@ -32,8 +32,6 @@ When a javaScript developer refers to an objects own properties, they typically 
 For a basic example of \_.extend I put together a quick example that involves an object that is made with \_.create that works in a very similar fashion to that of the native Object.create. The reason why this is important for a \_.extend example is that it will result in object that has a prototype object with some visible properties that will be combined when used with \_.extend which sets the method apart from other alternatives such as \_.assign, and \_.merge.
 
 ```js
-let _ = require('lodash');
- 
 // and object with own, and inherited properties
 let a = _.create({
         proto_prop: 42
@@ -55,7 +53,7 @@ So as you can see when I use \_.extend to combine objects a and b into a new emp
 
 ### 1.2 - Compared to \_.assign
 
-\_.extend is very similar to \_.assign, it works in almost the same way only it does not merge in prototype methods. In fact \_.extend is just an alias for \_.assignIn. So compared to \_.extend it will do the same thing, but without combining in prototype key name values.
+\_.extend is very similar to [\_.assign](/2018/09/21/lodash_assign/), it works in almost the same way only it does not merge in prototype methods. In fact \_.extend is just an alias for \_.assignIn. So compared to \_.extend it will do the same thing, but without combining in prototype key name values.
 
 ```js
 // extend will assign own, and inherited properties
