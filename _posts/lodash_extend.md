@@ -5,13 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2022-01-29 10:01:40
-version: 1.12
+updated: 2022-01-29 11:26:40
+version: 1.13
 ---
 
-When working with many objects there some times comes a need to combine them all together, when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties, in addition there is also ways of making hidden properties. If that was not enough then there is also the nature of copying by reference rather than value with objects in javaScript as well. 
+When working with two or more objects there may come a need to combine them all together into a single object, and when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties, in addition there is also ways of making hidden properties by making use of the Object define property method. If that was not enough then there is also the nature of copying by reference rather than value with objects in javaScript, and also things like how to go about handing any and all recursive references, mainly the question of if they should refer to the new object, or should they be preserved as is.
 
-In this post I will be writing about the [lodash](https://lodash.com/) object method known as [\_.extend](https://lodash.com/docs/4.17.10#extend), and how it compares to other methods in lodash. Hopefully this post will help eliminate some confusion that you might have with combining objects in javaScript, or reinforce what you all ready know, so lets get to it.
+In this post I will be writing about the [lodash](https://lodash.com/) object method known as [\_.extend](https://lodash.com/docs/4.17.10#extend), and how it compares to other methods in lodash that are used for combining objects together. Hopefully this post will help eliminate some confusion that you might have with combining objects in javaScript, or reinforce what you all ready know. If not in any case this is a somewhat complicated topic, but they only way to make process with it is to just start reading up on it, and also toy around with some examples at a first hand level.
 
 <!-- more -->
 
