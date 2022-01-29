@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2022-01-29 13:16:05
-version: 1.15
+updated: 2022-01-29 13:17:21
+version: 1.16
 ---
 
 When working with two or more objects there may come a need to combine them all together into a single object, and when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties, in addition there is also ways of making hidden properties by making use of the Object define property method. If that was not enough then there is also the nature of copying by reference rather than value with objects in javaScript, and also things like how to go about handing any and all recursive references, mainly the question of if they should refer to the new object, or should they be preserved as is.
@@ -110,6 +110,8 @@ console.log(d.nested_prop.foo); // baz (no change to merged object)
 As I write new posts on lodash, as well as edit old ones I have found that it is generally a good idea to have at least one if not more sections on how to do what lodash does without lodash. In other words just about every lodash method has a native javaScript counterpart, or often it is not so hard to make a quick single stand alone method that does what a lodash method does. Some times a lodash methods might be a collection method rather than just an array method, a lodash method might do the same thing in a slightly different non spec kind of way, or making a vanilla javaScript solution will prove to be a little involved. However more often than not it is still not so hard to do the same thing that a lodash method does with native javaScript features if you are just familial with what there is to work with.
 
 ### 2.1 - Object.create, and Object.getPrototypeOf
+
+Two major methods to start out with here might be Object.create, as well as the [Object.getPrototypeOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf) methods.
 
 ```js
 let a = Object.create({
