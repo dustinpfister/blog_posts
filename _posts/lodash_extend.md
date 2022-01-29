@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2022-01-29 13:17:21
-version: 1.16
+updated: 2022-01-29 13:18:45
+version: 1.17
 ---
 
 When working with two or more objects there may come a need to combine them all together into a single object, and when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties, in addition there is also ways of making hidden properties by making use of the Object define property method. If that was not enough then there is also the nature of copying by reference rather than value with objects in javaScript, and also things like how to go about handing any and all recursive references, mainly the question of if they should refer to the new object, or should they be preserved as is.
@@ -111,7 +111,7 @@ As I write new posts on lodash, as well as edit old ones I have found that it is
 
 ### 2.1 - Object.create, and Object.getPrototypeOf
 
-Two major methods to start out with here might be Object.create, as well as the [Object.getPrototypeOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf) methods.
+Two major methods to start out with here might be [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create), as well as the [Object.getPrototypeOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf) methods.
 
 ```js
 let a = Object.create({
@@ -126,7 +126,7 @@ console.log( a.prototype); // undefined
 ### 2.2 - Using Object.assign, with Object.getPrototypeOf
 
 
-When it comes to doing what the lodash extend method does there is a native Object.assign method, however using just that alone will not do what the lodash extend method does, as this method will just assign own properties of the objects. However if you can just simply get the desired prototype object, then adding it into the mix just like with extend would just have to involve using the Object.getPrototypeOf method for an object on top of just passing the object alone.
+When it comes to doing what the lodash extend method does there is a [native Object assign method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign), however using just that alone will not do what the lodash extend method does, as this method will just assign own properties of the objects. However if you can just simply get the desired prototype object, then adding it into the mix just like with extend would just have to involve using the Object.getPrototypeOf method for an object on top of just passing the object alone.
 
 ```js
 let a = Object.create({
