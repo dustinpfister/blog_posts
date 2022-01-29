@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-29 08:20:05
-version: 1.18
+updated: 2022-01-29 08:23:40
+version: 1.19
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -94,6 +94,8 @@ When it comes to Strings in javaScript there is of course everything that can be
 
 ### 3.1 - Splitting a string
 
+As with the lodash split method there is also a native split method in the string prototype.
+
 ```js
 let a = ',1,2,3,'.split(',');
 console.log(a);
@@ -101,6 +103,8 @@ console.log(a);
 ```
 
 ### 3.2 - Working with a chain
+
+Now for an example of a chain in native javaScript like that of the one in the basic section above. Here is am once again using the string split method to split a string into an array of sub strings. I then have an array, so I can then use array prototype methods like filter, and reduce both of which work well for getting rid of those empty string elements I do not want. There is then also an array map method that I can use to create new values for ease element in the resulting array, and also a join array method that can be used to set the array back to a string value.
 
 ```js
 let a = ',1,2,3,'.split(',')
