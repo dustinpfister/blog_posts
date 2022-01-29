@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-29 08:23:40
-version: 1.19
+updated: 2022-01-29 08:24:24
+version: 1.20
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -123,6 +123,8 @@ console.log(a);
 ```
 
 ### 3.2 - Search and replace
+
+The replace string method can be used to replace one or more instances of a text pattern with another.
 
 ```js
 let a = 'This will not work'.replace('not', 'can');
