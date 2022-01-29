@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2022-01-29 13:18:45
-version: 1.17
+updated: 2022-01-29 13:21:34
+version: 1.18
 ---
 
 When working with two or more objects there may come a need to combine them all together into a single object, and when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties, in addition there is also ways of making hidden properties by making use of the Object define property method. If that was not enough then there is also the nature of copying by reference rather than value with objects in javaScript, and also things like how to go about handing any and all recursive references, mainly the question of if they should refer to the new object, or should they be preserved as is.
@@ -29,7 +29,7 @@ When a javaScript developer refers to an objects own properties, they typically 
 
 ### 1.1 - A Basic example that makes use of \_.extend
 
-For a basic example of \_.extend I put together a quick example that involves an object that is made with \_.create that works in a very similar fashion to that of the native Object.create. The reason why this is important for a \_.extend example is that it will result in object that has a prototype object with some visible properties that will be combined when used with \_.extend which sets the method apart from other alternatives such as \_.assign, and \_.merge.
+For a basic example of \_.extend I put together a quick example that involves an object that is made with [\_.create](/2018/09/27/lodash_create/) that works in a very similar fashion to that of the native Object.create. The reason why this is important for a \_.extend example is that it will result in object that has a prototype object with some visible properties that will be combined when used with \_.extend which sets the method apart from other alternatives such as \_.assign, and \_.merge.
 
 ```js
 // and object with own, and inherited properties
@@ -68,7 +68,7 @@ console.log( _.assign({},a,b) ); // { own_prop: 37, own_prop_two: true }
 
 ### 1.3 - Compared to \_.merge
 
-The \_.merge method also works like \_.extend, but it will deep clone objects, rather than just simply referencing them. In some cases this might be preferred if for some reason I want everything to be copied into new objects that can be manipulated without changing the state of the objects from which they are created, and vis versa. In other cases it is not needed, or will actually result in undesired behavior as I do in fact want to work with references, as such \_.extend, or \_.assign would be the better choice.
+The [\_.merge method](/2017/11/17/lodash_merge/) also works like \_.extend, but it will deep clone objects, rather than just simply referencing them. In some cases this might be preferred if for some reason I want everything to be copied into new objects that can be manipulated without changing the state of the objects from which they are created, and vis versa. In other cases it is not needed, or will actually result in undesired behavior as I do in fact want to work with references, as such \_.extend, or \_.assign would be the better choice.
 
 ```js
 // and object with own, and inherited properties,
