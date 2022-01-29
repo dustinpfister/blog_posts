@@ -1,12 +1,12 @@
 ---
 title: The lodash _.extend method for combining objects, and alternatives
 date: 2018-10-01 11:57:00
-tags: [js,lodash]
+tags: [lodash]
 layout: post
 categories: lodash
 id: 294
-updated: 2022-01-29 13:25:57
-version: 1.19
+updated: 2022-01-29 13:26:52
+version: 1.20
 ---
 
 When working with two or more objects there may come a need to combine them all together into a single object, and when doing so things can get a little confusing. There are what is often referred to as the objects own properties, then there are inherited properties, in addition there is also ways of making hidden properties by making use of the Object define property method. If that was not enough then there is also the nature of copying by reference rather than value with objects in javaScript, and also things like how to go about handing any and all recursive references, mainly the question of if they should refer to the new object, or should they be preserved as is.
@@ -149,4 +149,4 @@ console.log( Object.getPrototypeOf(c) ); // {}
 
 ## 3 - Conclusion
 
-So that is my post on \_.extend for now, as my content on lodash continues to grow I will likely come back to this post to revise and expand on the content. It might be a good idea to add some vanilla js alternatives to \_.extend, or give some more detailed examples of its use. If there is anything you might like me to add, be sure to let me know in the comments section. Thanks for reading.
+So that is my post on \_.extend for now, as my [content on lodash](/categories/lodash/) continues to grow I will likely come back to this post to revise and expand on the content. It might be a good idea to add some vanilla js alternatives to \_.extend, or give some more detailed examples of its use. If there is anything you might like me to add, be sure to let me know in the comments section. Thanks for reading.
