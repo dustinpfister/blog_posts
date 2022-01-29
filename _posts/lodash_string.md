@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 955
-updated: 2022-01-29 09:33:30
-version: 1.21
+updated: 2022-01-29 09:38:16
+version: 1.22
 ---
 
 This will be a quick post on string methods in the popular javaScript library known as [lodash](https://lodash.com/docs/4.17.15). The main reason why I am bothering with this is that I have wrote posts on [lodash collection methods](/2022/01/14/lodash_collection) in general, as well as [object methods](/2019/02/13/lodash_object/), and [array methods](/2019/02/14/lodash_array/) in lodash, so then it makes sense to write a post on the general topic of working with strings and loash.
@@ -104,7 +104,7 @@ console.log(a);
 
 ### 3.2 - Working with a chain
 
-Now for an example of a chain in native javaScript like that of the one in the basic section above. Here is am once again using the string split method to split a string into an array of sub strings. I then have an array, so I can then use array prototype methods like filter, and reduce both of which work well for getting rid of those empty string elements I do not want. There is then also an array map method that I can use to create new values for ease element in the resulting array, and also a join array method that can be used to set the array back to a string value.
+Now for an example of a chain in native javaScript like that of the one in the basic section above. Here is am once again using the string split method to split a string into an array of sub strings. I then have an array, so I can then use array prototype methods like [filter](/2020/10/03/js-array-filter/), and [reduce](/2021/07/13/js-array-reduce/) both of which work well for getting rid of those empty string elements I do not want. There is then also an [array map method](/2020/06/16/js-array-map/) that I can use to create new values for each element in the resulting array, and also a [join array method](/2020/03/09/js-array-join/) that can be used to set the array back to a string value.
 
 ```js
 let a = ',1,2,3,'.split(',')
@@ -124,7 +124,7 @@ console.log(a);
 
 ### 3.2 - Search and replace
 
-The replace string method can be used to replace one or more instances of a text pattern with another.
+The [replace string method](/2019/04/08/js-string-replace/) can be used to replace one or more instances of a text pattern with another.
 
 ```js
 let a = 'This will not work'.replace('not', 'can');
