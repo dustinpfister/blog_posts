@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 321
-updated: 2022-01-30 07:54:22
-version: 1.21
+updated: 2022-01-30 07:56:00
+version: 1.22
 ---
 
 Getting the length of an array is a trivial matter in javaScript, but then there is getting the length of Objects in general that is a little not so trivial some times. In [lodash](https://lodash.com/) there is the [\_.size](https://lodash.com/docs/4.17.10#size) method that is a collection method that will work with both arrays, and objects to return the element length of an array, or the number of enumerable properties of a plain old object of any sort. However doing so is really not all that hard with just plain old javaScirpt by itself also. So in this post I will be quickly covering the \_.size method, but will also be going over vanilla js solutions for doing this as well.
@@ -54,7 +54,7 @@ Although the \_.size method nice in that it is a robust collection method that w
 
 ### 2.1 - The Array length Property
 
-So when dealing with an array the element length can easily be obtained with the length property, not much to write about with that.
+So when dealing with an array the element length can easily be obtained with the [length property](/2018/12/14/js-array-length/), not much to write about with that.
 
 ```js
 let a = [1, 2, 3, 4];
@@ -63,7 +63,7 @@ console.log(a.length); // 4
 
 ### 2.2 - Object.keys to get enumerable properties of an Object
 
-In ES5 spec javaScript Object.keys was introduced, unless you care about supporting ancient browsers the method will work just fine.
+In ES5 spec javaScript [Object.keys](/2018/12/15/js-object-keys/) was introduced, unless you care about supporting ancient browsers the method will work just fine.
 
 ```js
 let b = {
