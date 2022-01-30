@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 321
-updated: 2022-01-30 07:45:17
-version: 1.18
+updated: 2022-01-30 07:47:54
+version: 1.19
 ---
 
 Getting the length of an array is a trivial matter in javaScript, but then there is getting the length of Objects in general that is a little not so trivial some times. In [lodash](https://lodash.com/) there is the [\_.size](https://lodash.com/docs/4.17.10#size) method that is a collection method that will work with both arrays, and objects to return the element length of an array, or the number of enumerable properties of a plain old object of any sort. However doing so is really not all that hard with just plain old javaScirpt by itself also. So in this post I will be quickly covering the \_.size method, but will also be going over vanilla js solutions for doing this as well.
@@ -115,6 +115,8 @@ So then in this section I will be going over some ways to get the [data size of 
 
 ### 3.1 - Using a Buffer in nodejs
 
+In [nodejs the Buffer Class](/2018/02/07/nodejs-buffer/) is there to work with when it comes to these kinds of situations.
+
 ```js
 let sizeDataStr = (str) => {
    return Buffer.from(str).length
@@ -124,6 +126,8 @@ console.log(sizeDataStr('\u0080')); // 2
 ```
 
 ### 3.2 - Using the Blob constructor in Client side javaScript
+
+When it comes to using client side javaScript there are a few options that come to mind, one of which would be the [Blob Constructor](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
 
 ```html
 <script>
