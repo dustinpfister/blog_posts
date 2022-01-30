@@ -1,12 +1,12 @@
 ---
 title: Find the _.size of Arrays and Objects with lodash, and vanilla js
 date: 2018-11-04 16:22:00
-tags: [js,lodash]
+tags: [lodash]
 layout: post
 categories: lodash
 id: 321
-updated: 2022-01-30 07:02:53
-version: 1.15
+updated: 2022-01-30 07:38:05
+version: 1.16
 ---
 
 Getting the length of an array is a trivial matter in javaScript, but then there is getting the length of Objects in general that is a little not so trivial some times. In [lodash](https://lodash.com/) there is the [\_.size](https://lodash.com/docs/4.17.10#size) method that is a collection method that will work with both arrays, and objects to return the element length of an array, or the number of enumerable properties of a plain old object of any sort. However doing so is really not all that hard with just plain old javaScirpt by itself also. So in this post I will be quickly covering the \_.size method, but will also be going over vanilla js solutions for doing this as well.
@@ -107,6 +107,31 @@ console.log(Object.keys(obj).length); // 1
 console.log( Object.getOwnPropertyNames(obj).length ); // 2
 ```
 
-## 3 - Conclusion
+## 3 - Getting data Size
+
+### 3.1 - 
+
+```js
+let sizeDataStr = (str) => {
+   return Buffer.from(str).length
+};
+ 
+console.log(sizeDataStr('\u0080')); // 2
+```
+
+### 3.2 -
+
+```html
+<script>
+var sizeDataStr = function(str){
+    return new Blob([str]).size;
+};
+ 
+console.log( sizeDataStr('\u0020') );
+console.log( sizeDataStr('\u0080') );
+</script>
+```
+
+## 4 - Conclusion
 
 So maybe the \_.size method is not one of the most compelling methods that make using lodash worth the hassle, but there are still methods that are very useful, and are not baked into javaScript itself. Keep in mind that lodash methods can be installed on a per method basis, and when doing so maybe this one is a pass for me at least.
