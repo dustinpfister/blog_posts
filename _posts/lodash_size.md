@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 321
-updated: 2022-01-30 07:50:31
-version: 1.20
+updated: 2022-01-30 07:54:22
+version: 1.21
 ---
 
 Getting the length of an array is a trivial matter in javaScript, but then there is getting the length of Objects in general that is a little not so trivial some times. In [lodash](https://lodash.com/) there is the [\_.size](https://lodash.com/docs/4.17.10#size) method that is a collection method that will work with both arrays, and objects to return the element length of an array, or the number of enumerable properties of a plain old object of any sort. However doing so is really not all that hard with just plain old javaScirpt by itself also. So in this post I will be quickly covering the \_.size method, but will also be going over vanilla js solutions for doing this as well.
@@ -142,4 +142,4 @@ console.log( sizeDataStr('\u0080') );
 
 ## 4 - Conclusion
 
-So maybe the \_.size method is not one of the most compelling methods that make using lodash worth the hassle, but there are still methods that are very useful, and are not baked into javaScript itself. Keep in mind that lodash methods can be installed on a per method basis, and when doing so maybe this one is a pass for me at least.
+So maybe the \_.size method is not one of the most compelling methods that make using lodash worth the hassle, but there are still methods that are very useful, and are not baked into javaScript itself. Keep in mind that lodash methods can be installed on a per method basis, and when doing so maybe this one is a pass for me at least. There are also a lot of reasons why a developer might want to use some kind of user space solution to do things that can also be done with native methods, such as doing something in a non spec way, or having a great deal of backward compatibility without monkey patching. With that said if you enjoyed reading this post, you might like to read one of my [many other posts on lodash](/categories/lodash), there is also a main [mega post of sorts on lodash](/2019/02/15/lodash/) that I have wrote and expand on now and then as needed.
