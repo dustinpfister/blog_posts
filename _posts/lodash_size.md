@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 321
-updated: 2022-01-30 07:43:23
-version: 1.17
+updated: 2022-01-30 07:45:17
+version: 1.18
 ---
 
 Getting the length of an array is a trivial matter in javaScript, but then there is getting the length of Objects in general that is a little not so trivial some times. In [lodash](https://lodash.com/) there is the [\_.size](https://lodash.com/docs/4.17.10#size) method that is a collection method that will work with both arrays, and objects to return the element length of an array, or the number of enumerable properties of a plain old object of any sort. However doing so is really not all that hard with just plain old javaScirpt by itself also. So in this post I will be quickly covering the \_.size method, but will also be going over vanilla js solutions for doing this as well.
@@ -111,7 +111,9 @@ console.log( Object.getOwnPropertyNames(obj).length ); // 2
 
 The lodash size method has to do with just the size of collections, which makes sense for what it is within lodash when it comes to collections. However if you are thinking in terms of data size, rather than the size in terms of the total number of items in a collection then the lodash size method as well as vanilla javaScript alternatives are going to fall short. Using the length property of an array or string value will only give a correct data size if it just so happens to be a situation in which each element or character is one byte in size. However that might not always be the case when it comes to Unicode values, so using the lodash size method, or any kind of vanilla javaScript alternative will given wrong results for certain possible values.
 
-### 3.1 - 
+So then in this section I will be going over some ways to get the [data size of a string](https://stackoverflow.com/questions/2219526/how-many-bytes-in-a-javascript-string), in both nodejs and well as client side environments.
+
+### 3.1 - Using a Buffer in nodejs
 
 ```js
 let sizeDataStr = (str) => {
@@ -121,7 +123,7 @@ let sizeDataStr = (str) => {
 console.log(sizeDataStr('\u0080')); // 2
 ```
 
-### 3.2 -
+### 3.2 - Using the Blob constructor in Client side javaScript
 
 ```html
 <script>
