@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 956
-updated: 2022-01-31 15:13:19
-version: 1.14
+updated: 2022-01-31 15:15:57
+version: 1.15
 ---
 
 For a final new [javaScript example](/2021/04/02/js-javascript-example/) for this month at least I made what might prove to be the first of several tool type project examples. What I mean by this is that I might often want to create some kind of project where the aim is to create some kind of resource such as a sprite sheet, world map, or maybe just some kind of image asset actually. I do not care so take the time to create a full blown image editor from the ground up mind you when it comes to that I have come to [enjoy just using GIMP](https://en.wikipedia.org/wiki/GIMP) and moving on with my life. However often it might make sense to create some kind of custom image editor where I can open up a image file that I do not want to use directly as part of the image project, but to just serve as a source for a drawing that I will create in another canvas layer on top of this source layer.
@@ -17,7 +17,7 @@ So then this javaScript tool example will be a simple art program, however that 
 
 ## 1 - The source layer module
 
-The main event of this javaScript example is then the source layer module that I made, later in this post I will be going over some additional code that will have to do with making use of this to create a basic pain program.
+The main event of this javaScript example is then the source layer module that I made, later in this post I will be going over some additional code that will have to do with making use of this to create a basic pain program. There are two main methods of interest with this module one of which is the create method that will create and return a source layer object and the other has to do with creating a user interface that will be used to mutate such an object.
 
 ```js
 var sourceLayer = (function(){
