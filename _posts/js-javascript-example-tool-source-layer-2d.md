@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 956
-updated: 2022-01-31 15:22:38
-version: 1.17
+updated: 2022-01-31 15:26:32
+version: 1.18
 ---
 
 For a final new [javaScript example](/2021/04/02/js-javascript-example/) for this month at least I made what might prove to be the first of several tool type project examples. What I mean by this is that I might often want to create some kind of project where the aim is to create some kind of resource such as a sprite sheet, world map, or maybe just some kind of image asset actually. I do not care so take the time to create a full blown image editor from the ground up mind you when it comes to that I have come to [enjoy just using GIMP](https://en.wikipedia.org/wiki/GIMP) and moving on with my life. However often it might make sense to create some kind of custom image editor where I can open up a image file that I do not want to use directly as part of the image project, but to just serve as a source for a drawing that I will create in another canvas layer on top of this source layer.
@@ -434,6 +434,8 @@ sizeUpdate();
 ### 2.2 - The html file
 
 I then have some html that will work with the main javaScript file as well as of course the source layer module that I made for this over all tool. For this example I went with having canvas elements hard coded into the html rather than creating them with javaScript.
+
+All of the html that has to do with the drawing program is hard coded into this html, while the html that has to do with the source layer is created with a public method of the source layer module in the main javaScript file. I could not make up my mind one way or the other when it comes to that, maybe in some ways it would be better to just do everything with hard coded html actually. However in any case that aspect of the over all structure of this was not the main focus for me, that was just simply creating a program that works the way that I had in mind and when it comes to that it is working the way I want to it from an end users perspective.
 
 ```html
 <html>
