@@ -1,12 +1,12 @@
 ---
-title: 34 javaScript examples and counting
+title: 35 javaScript examples and counting
 date: 2021-04-02 11:17:00
 tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2022-01-25 15:31:50
-version: 1.83
+updated: 2022-01-31 14:29:16
+version: 1.84
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language the real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples. Simply put there is learning by reading a blog post such as this one that you are reading right now, and if course that is great, but it is no replacement for learning by doing.
@@ -140,19 +140,21 @@ A tax brackets example that helps me to get a general idea of how a progressive 
 
 This is a test module that can be used to run a collection of tests on a method to make sure that the results that the method returns are expected results when given a certain set of arguments. There are many popular frameworks out in the open web that have to do with this sort of thing. Many of those might prove to be a better solution than what I have slapped together here, but still I think that this is an important part of the process of creating, and certainly maintaining a real javaScript project.
 
-### 1.31 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
+### 1.31 - [Tool Source Layer Art Programe](/2022/01/31/js-javascript-example-tool-source-layer-2d/)
+
+### 1.32 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
 
 This is a simple trade simulator module that I might use as a starting point for a more advanced version that could be used in a game. The general idea here is that the player has a way to buy items as a certain rate, and then sell them at another rate later on. Depending if the rate goes up or down they will stand to gain or lose money. I have come across this kind of feature in games here and there in the past and I think it is a nice feature to have in certain types of games, so I made a simple starting point for this kind of feature.
 
-### 1.32 - [A turn based RPG game](/2021/12/10/js-javascript-example-turn-based-rpg/)
+### 1.33 - [A turn based RPG game](/2021/12/10/js-javascript-example-turn-based-rpg/)
 
 The aim with this example is to continue to expand on the source code of my grid unit movement javaScript example in which I worked out the basics for a simple turn based RPG style game. The focus here is to add additional features and see about improving the quality of the existing source code too while I am at it. As of this writing a custom state machine for the game has been added, as well as a menu system inspired by the super Nintendo game Secret of Mana. I have a lot more planed for this example, but thus far I think that I should stick to write about what I have all ready done rather than what the next steps are.
 
-### 1.33 - [utils module](/2021/08/06/js-javascript-example-utils/)
+### 1.34 - [utils module](/2021/08/06/js-javascript-example-utils/)
 
 This is a javaScript example of a general utility module, that is an example, not the example. The nature of this kind of module will differ from one project to another, but I created an example of a file that has the usual suspects that I have in such a module.
 
-### 1.34 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
+### 1.35 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
 Another basic example that makes use of some methods I work out in my percent module example. This is a canvas example that makes use of functions in my percent module that result in zig zag like movement across the canvas. This is then just one of many applications of the percent modules that I had in mind.
 
