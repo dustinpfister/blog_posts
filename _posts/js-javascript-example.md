@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2022-01-31 14:29:16
-version: 1.84
+updated: 2022-01-31 14:32:59
+version: 1.85
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language the real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples. Simply put there is learning by reading a blog post such as this one that you are reading right now, and if course that is great, but it is no replacement for learning by doing.
@@ -140,7 +140,9 @@ A tax brackets example that helps me to get a general idea of how a progressive 
 
 This is a test module that can be used to run a collection of tests on a method to make sure that the results that the method returns are expected results when given a certain set of arguments. There are many popular frameworks out in the open web that have to do with this sort of thing. Many of those might prove to be a better solution than what I have slapped together here, but still I think that this is an important part of the process of creating, and certainly maintaining a real javaScript project.
 
-### 1.31 - [Tool Source Layer Art Programe](/2022/01/31/js-javascript-example-tool-source-layer-2d/)
+### 1.31 - [Tool Source Layer Art Program](/2022/01/31/js-javascript-example-tool-source-layer-2d/)
+
+I started the first of what in time might become a few javaScript examples where the aim is to make a basic software tool of some kind that I might actually use now and then. The idea here with this project is to create a simple art program where I open up some kind of resource image and I can then use that resource image as a resource to draw on top of. In other words is is just a quick way to create a kind of basic art program where I will want to use some kind of resource to look at while drawing.
 
 ### 1.32 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
 
