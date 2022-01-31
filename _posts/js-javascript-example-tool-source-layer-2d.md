@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 956
-updated: 2022-01-31 14:34:52
-version: 1.2
+updated: 2022-01-31 14:37:52
+version: 1.3
 ---
 
 For a final new [javaScript example](/2021/04/02/js-javascript-example/) for this month at least I made what might prove to be the first of several tool type project examples. What I mean by this is that I might often want to create some kind of project where the aim is to create some kind of resource such as a sprite sheet, world map, or maybe just some kind of image asset actually. I do not care so take the time to create a full blown image editor from the ground up mind you when it comes to that I have come to enjoy just using GIMP and moving on with my life. However often it might make sense to create some kind of custom image editor where I can open up a image file that I do not want to use directly as part of the image project, but to just serve as a source for a drawing that I will create in another canvas layer on top of this source layer.
@@ -304,8 +304,9 @@ var sourceLayer = (function(){
 }());
 ```
 
-## 2 - Demo app that is a basic art programe
+## 2 - Demo app that is a basic art program
 
+Now that I have the source layer module worked out I will want to make a demo the makes use of this source layer module to create an over all tool. For this javaScript example the over all tool is a basic art program, and when it comes to this I do not care to create some kind of full blown image manipulation program of course, just something with a very crude set of features that I would want to start something that I would then continue to work on in such a program.
 
 ### 2.1 - main.js
 
