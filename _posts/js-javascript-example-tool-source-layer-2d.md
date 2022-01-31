@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 956
-updated: 2022-01-31 15:05:50
-version: 1.12
+updated: 2022-01-31 15:10:44
+version: 1.13
 ---
 
 For a final new [javaScript example](/2021/04/02/js-javascript-example/) for this month at least I made what might prove to be the first of several tool type project examples. What I mean by this is that I might often want to create some kind of project where the aim is to create some kind of resource such as a sprite sheet, world map, or maybe just some kind of image asset actually. I do not care so take the time to create a full blown image editor from the ground up mind you when it comes to that I have come to [enjoy just using GIMP](https://en.wikipedia.org/wiki/GIMP) and moving on with my life. However often it might make sense to create some kind of custom image editor where I can open up a image file that I do not want to use directly as part of the image project, but to just serve as a source for a drawing that I will create in another canvas layer on top of this source layer.
@@ -477,5 +477,5 @@ For this example I just wanted to make a simple source layer module as a way to 
 
 This example is also a kind of exercise for what it is that I intend to get into next month when it comes to the subject of writing desktop like software, and basic tools using javaScript and various web language tools. I have been putting off getting into election.js long enough I think and from what I have been gathering that is a great tool for working out such things when it comes to having the property binaries in a single package so that it is assured that everything that is needed will be in a single package. Anyway I do not want to write about it to much here as that is something that is off topic for this [collection of JavaScript posts](/categories/js/) in which I am typicality doing everything from the ground up.
 
-Although I might not use this art program that much, I ma use a great deal of what I worked out here might be used in additional future projects actually beyond that other javaScript example prototype that I just mentioned. I do have an idea rattling around for yet another javaScript art program but I am thinking  that it will be a [threejs example](/2021/02/19/threejs-examples/) actually rather than a vanilla javaScript example like with this post.
+Although I might not use this art program that much, I ma use a great deal of what I worked out here might be used in additional future projects actually beyond that other javaScript example prototype that I just mentioned. I do have an idea rattling around for yet another javaScript art program but I am thinking  that it will be a [threejs example](/2021/02/19/threejs-examples/) actually rather than a vanilla javaScript example like with this post. In fact that is the main reason why I called this example tool-source-layer-2d as I think that I would also like to have something like this only it will also work with [dae files](/2021/04/30/threejs-dae-collada-loader/). The dae file standard is the default standard that is used with [blender](https://en.wikipedia.org/wiki/Blender_%28software%29), which is of course a popular 3d modeling program.
 
