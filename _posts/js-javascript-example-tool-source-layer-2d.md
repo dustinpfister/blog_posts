@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 956
-updated: 2022-01-31 15:02:02
-version: 1.10
+updated: 2022-01-31 15:04:45
+version: 1.11
 ---
 
 For a final new [javaScript example](/2021/04/02/js-javascript-example/) for this month at least I made what might prove to be the first of several tool type project examples. What I mean by this is that I might often want to create some kind of project where the aim is to create some kind of resource such as a sprite sheet, world map, or maybe just some kind of image asset actually. I do not care so take the time to create a full blown image editor from the ground up mind you when it comes to that I have come to [enjoy just using GIMP](https://en.wikipedia.org/wiki/GIMP) and moving on with my life. However often it might make sense to create some kind of custom image editor where I can open up a image file that I do not want to use directly as part of the image project, but to just serve as a source for a drawing that I will create in another canvas layer on top of this source layer.
@@ -476,4 +476,6 @@ I then have some html that will work with the main javaScript file.
 For this example I just wanted to make a simple source layer module as a way to pull a basic feature out of another javaScript prototype that I was working on that had to do with a source layer. So in other words I was working on another project that is like this one only it was another kind of drawing program that has to do with creating a set of points. I might get around to writing a post on that one to at some point sooner or later, but I would like to do some more work on it before doing so, and I think that I will be wanting to work what I have made for this example into that one when it comes to making additional revisions of it.
 
 This example is also a kind of exercise for what it is that I intend to get into next month when it comes to the subject of writing desktop like software, and basic tools using javaScript and various web language tools. I have been putting off getting into election.js long enough I think and from what I have been gathering that is a great tool for working out such things when it comes to having the property binaries in a single package so that it is assured that everything that is needed will be in a single package. Anyway I do not want to write about it to much here as that is something that is off topic for this [collection of JavaScript posts](/categories/js/) in which I am typicality doing everything from the ground up.
+
+Although I might not use this art program that much, I ma use a great deal of what I worked out here might be used in additional future projects actually beyond that other javaScript example prototype that I just mentioned. I do have an idea rattling around for yet another javaScript art program but I am thinking  that it will be a threejs example actually rather than a vanilla javaScript example like with this post.
 
