@@ -8,18 +8,6 @@
 
 ### () - new post #957 for 02/04/2022 on threejs-
 
-### () - new post #956 for 01/31/2022 on js-javascript-example-source-layer
-
-### ( done 01/28/2022 ) - new post #955 for 01/28/2022 - lodash_string
-
-### ( done 01/24/2022 ) - new post #954 for 01/24/2022 - js-javascript-example-pool-normalized
-
-### ( done 01/21/2022 ) - new post #953 for 01/21/2022 - lodash_thru
-
-### ( done 01/17/2022 ) - new post #952 for 01/17/2022 - js-javascript-example-digital-art-invaders
-
-### ( done 01/14/2022 ) - new post #951 for 01/14/2022 - lodash_collection
-
 <!--###### ########## ########## #######-->
 ## threejs ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
@@ -31,6 +19,12 @@
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
+
+### ( done 01/31/2022 ) - new post #956 for 01/31/2022 - js-javascript-example-tool-source-layer-2d
+
+### ( done 01/24/2022 ) - new post #954 for 01/24/2022 - js-javascript-example-pool-normalized
+
+### ( done 01/17/2022 ) - new post #952 for 01/17/2022 - js-javascript-example-digital-art-invaders
 
 ### ( done 01/10/2022 ) - new post #950 - js-javascript-example-digital-art-unsteady-stars
 
@@ -64,6 +58,12 @@
 <!--###### ########## ########## #######-->
 ## Lodash ( /yyyy/mm/dd/lodash* )
 <!--###### ########## ########## #######-->
+
+### ( done 01/28/2022 ) - new post #955 for 01/28/2022 - lodash_string
+
+### ( done 01/21/2022 ) - new post #953 for 01/21/2022 - lodash_thru
+
+### ( done 01/14/2022 ) - new post #951 for 01/14/2022 - lodash_collection
 
 ### ( done 01/07/2022 ) - new post #949 for 01/07/2022 - lodash-tap
 
