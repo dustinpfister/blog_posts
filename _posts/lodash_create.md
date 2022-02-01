@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 290
-updated: 2022-02-01 15:16:11
-version: 1.12
+updated: 2022-02-01 15:19:52
+version: 1.13
 ---
 
 So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. This is a method that can be used to create a new object with a given object that will function as the new objects prototype object. If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
@@ -71,7 +71,7 @@ console.log(obj); // { x: 7, y: 20 }
 
 ### 2.2 - Using a constructor function
 
-Another way to go about creating a new object with a custom prototype would be to make a [constructor function](/2019/02/27/js-javascript-constructor/).
+Another way to go about creating a new object with a custom prototype would be to make a [constructor function](/2019/02/27/js-javascript-constructor/). Chances are you have all ready use one of these kinds of functions even if you are still very new to javaScript as there are a lot of built in examples of classes that involve the use of a prototype object such as the [Date class](/2019/02/14/js-javascript-date/), and the [Array class](/2018/12/10/js-array/) just to name a few in core javaScript alone. However it is also possible to create user define constructor functions of course, and when doing so one can define what the prototype of a class should be.
 
 ```js
 let MyClass = function(x, y){
