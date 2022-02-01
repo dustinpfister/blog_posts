@@ -1,12 +1,12 @@
 ---
 title: The _.create method in lodash, and native Object.create
 date: 2018-09-27 18:41:00
-tags: [js,lodash]
+tags: [lodash]
 layout: post
 categories: lodash
 id: 290
-updated: 2022-02-01 15:21:31
-version: 1.14
+updated: 2022-02-01 15:27:54
+version: 1.15
 ---
 
 So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. This is a method that can be used to create a new object with a given object that will function as the new objects prototype object. If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
@@ -91,7 +91,7 @@ console.log(obj); // { x: 7, y: 20 }
 
 ### 2.3 - The get prototype of object method
 
-Another useful method to be aware of when it come to learning a thing or two about the various ways to go about creating an object would be the get prototype of object method. As the name suggests this is what can be used to get and return the prototype object of any object.
+Another useful method to be aware of when it come to learning a thing or two about the various ways to go about creating an object would be the [get prototype of object method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf). As the name suggests this is what can be used to get and return the prototype object of any object.
 
 ```js
 let methods = {
@@ -113,4 +113,6 @@ console.log( Object.getPrototypeOf(obj) ); // { move: [Function: move] }
 
 In order to give the \_.create method justice I will also need to get into the concept of the prototype object in detail. However that is a matter for another post, in a whole other category, for now hopefully this post will help shed some like on the subject of the lodash create method, and its native counterpart.
 
-There is much more of course when it comes to knowing how to create objects from other objects that are collections with both lodash, and just plain on vanilla javaScript though. The lodash create method is just for creating an object with a given prorotype object, and additional objects for its starting properties.
+There is much more of course when it comes to knowing how to create objects from other objects that are collections with both lodash, and just plain on vanilla javaScript though. The lodash create method is just for creating an object with a given prototype object, and additional objects for its starting properties.
+
+If you enjoyed this post and think that you got something out of it you might want to check out one of my [many other posts on lodash](/categories/lodash/). When it comes to working with objects in general there are a whole lot of other lodash methods, and corresponding native alternatives to be aware of. Just a few good examples would be the [lodash clone](/2017/10/02/lodash_clone/), and [lodash clone deep](/2017/11/13/lodash_clonedeep/) methods when it comes to the topic of creating copies of objects.
