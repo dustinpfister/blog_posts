@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 290
-updated: 2022-02-01 14:42:29
-version: 1.10
+updated: 2022-02-01 15:10:24
+version: 1.11
 ---
 
 So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. This is a method that can be used to create a new object with a given object that will function as the new objects prototype object. If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
@@ -53,11 +53,56 @@ When can be done with the lodash create method can also be done with just plain 
 The javaScript native Object.create will not work the same way as \_.create, as I can not just pass any object as a second argument to set some own properties of the object. it must be an object where each property is an object, and the value property of that object is what will set the value of the own property of the object that will be made with Object.create. That might be a little confusing but the native method can be used to set all kinds of advanced values for each property this way. In fact by default the properties will not be writable, and must be set true in these objects.
 
 ```js
-let obj = Object.create(methods, {x: {value:5,writable: true},y: {value:15,writable: true}});
+let methods = {
+    move: function (x, y) {
+        this.x += x;
+        this.y += y;
+    }
+};
  
-obj.move(5, 5);
+let obj = Object.create(methods, {
+    x: {value:5, enumerable: true, writable: true}, 
+    y: {value:15, enumerable: true, writable: true}}
+);
  
-console.log(obj.x, obj.y); // 10 20
+obj.move(2, 5);
+console.log(obj); // { x: 7, y: 20 }
+```
+
+### 2.2 - Using a constructor function
+
+```js
+let MyClass = function(x, y){
+    this.x = x;
+    this.y = y;
+};
+ 
+MyClass.prototype.move = function (dx, dy) {
+    this.x += dx;
+    this.y += dy;
+};
+ 
+let obj = new MyClass(5, 15);
+obj.move(2, 5);
+console.log(obj); // { x: 7, y: 20 }
+```
+
+### 2.3 - The get prototype of object method
+
+```js
+let methods = {
+    move: function (x, y) {
+        this.x += x;
+        this.y += y;
+    }
+};
+ 
+let obj = Object.create(methods, {
+    x: {value:5, enumerable: true, writable: true}, 
+    y: {value:15, enumerable: true, writable: true}}
+);
+ 
+console.log( Object.getPrototypeOf(obj) ); // { move: [Function: move] }
 ```
 
 ## 3 - Conclusion
