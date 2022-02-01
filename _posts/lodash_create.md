@@ -1,15 +1,17 @@
 ---
-title: The _.create method in lodash, and native Object.create
+title: The create method in lodash, and native alternatives
 date: 2018-09-27 18:41:00
 tags: [lodash]
 layout: post
 categories: lodash
 id: 290
-updated: 2022-02-01 15:27:54
-version: 1.15
+updated: 2022-02-01 15:44:11
+version: 1.16
 ---
 
-So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. This is a method that can be used to create a new object with a given object that will function as the new objects prototype object. If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
+So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. These teo methods are ways of creating a new object with a given object that will function as the new objects prototype object. The prototype object is something that is separate from what is often called the own properties of the object, and with that said both of these methods also provide a way to create open properties for the new object also. However there are some very important differences between the two methods, the lodah create method works the way that I would want such a method to work in most cases. However the native method allows for a greater degree of flexibility when it comes to defining own properties of the object including the ability to make some of the own properties not enumerable for example.
+
+If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
 
 <!-- more -->
 
