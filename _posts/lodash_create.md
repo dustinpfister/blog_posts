@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 290
-updated: 2020-06-30 10:53:52
-version: 1.9
+updated: 2022-02-01 14:42:29
+version: 1.10
 ---
 
 So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. This is a method that can be used to create a new object with a given object that will function as the new objects prototype object. If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
@@ -19,7 +19,7 @@ This is a post on the lodash method \_.create, and it's native counter part [Obj
 
 Of course not all methods in lodash are baked into core javaScipt itself, and some that are do sometimes bring a bit more to the table, but \_.create is not the best example of this. So because I do not feel like writing one post for \_.create, and another for Object.create I will be sort of blending things together here, and just be writing mostly about the nature of the method itself, regardless if it is native or not.
 
-## 2 - A Basic example of \_.create
+### 1.1 - A Basic example of \_.create
 
 So for starters if I have an object that contains methods and I want to use those methods with an object there are a number of ways to go about doing that. If the methods are designed in a way in which they could be part of an objects prototype I can use something like Function.call, or another way would be to use \_.create to make it so the object of methods is the prototype object of the object that I want to use with the methods.
 
@@ -43,6 +43,10 @@ console.log(obj.x, obj.y); // 10 20
 ```
 
 Doing this differs from just making the method part of the object to begin with. For one thing if I where to make a whole bunch of objects with object.create, they will end up taking up less memory because they would all share the same set of methods. This also differs from making just a reference to the methods object as well because doing so would be defining a method as one of the actual own properties of the object rather than it's prototype. As prototype methods can act as a default of sorts if the method is not define in the own properties of the object.
+
+## 2 - Vanilla javaScript creation of objects with starting prototype objects
+
+When can be done with the lodash create method can also be done with just plain old javaScript by itself also.
 
 ### 2.1 - Using the native Object.create 
 
