@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 290
-updated: 2022-02-01 15:10:24
-version: 1.11
+updated: 2022-02-01 15:16:11
+version: 1.12
 ---
 
 So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) method or [\_.create](https://lodash.com/docs/4.17.10#create) in [lodash](https://lodash.com/) might come up now and then in many code examples. This is a method that can be used to create a new object with a given object that will function as the new objects prototype object. If you are still new to javaScript the prototype is something that you should become familial with at some point sooner or later, as it is a major part of javaScript development. In this post I will be giving some use case examples, and hopefully give at least a basic idea of what the create object method is all about.
@@ -15,7 +15,7 @@ So in javaScript the [Object.create](https://developer.mozilla.org/en-US/docs/We
 
 ## 1 - What to know about \_.create
 
-This is a post on the lodash method \_.create, and it's native counter part [Object.create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) that works almost same way. This makes the \_.create method in lodash one of many methods that make javaScript developers scratch there heads wondering why they are still bothering with lodash. 
+This is a post on the lodash method \_.create, and it's native counter part Object.create that works almost same way. This makes the \_.create method in lodash one of many methods that make javaScript developers scratch there heads wondering why they are still bothering with lodash. 
 
 Of course not all methods in lodash are baked into core javaScipt itself, and some that are do sometimes bring a bit more to the table, but \_.create is not the best example of this. So because I do not feel like writing one post for \_.create, and another for Object.create I will be sort of blending things together here, and just be writing mostly about the nature of the method itself, regardless if it is native or not.
 
@@ -46,7 +46,7 @@ Doing this differs from just making the method part of the object to begin with.
 
 ## 2 - Vanilla javaScript creation of objects with starting prototype objects
 
-When can be done with the lodash create method can also be done with just plain old javaScript by itself also.
+What can be done with the lodash create method can also be done with just plain old javaScript by itself also, when it comes to this the main method of interest would be the Object create method that I first mentioned in the beginning of this post. However there is a wide range of other tools that I think I should at least mention in this section when it comes to creating objects in vanilla javaScript.
 
 ### 2.1 - Using the native Object.create 
 
@@ -70,6 +70,8 @@ console.log(obj); // { x: 7, y: 20 }
 ```
 
 ### 2.2 - Using a constructor function
+
+Another way to go about creating a new object with a custom prototype would be to make a [constructor function](/2019/02/27/js-javascript-constructor/).
 
 ```js
 let MyClass = function(x, y){
