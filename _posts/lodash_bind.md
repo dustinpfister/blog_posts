@@ -5,13 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 305
-updated: 2022-02-02 10:46:59
-version: 1.22
+updated: 2022-02-02 10:51:48
+version: 1.23
 ---
 
-For today I thought I would write a post on the [\_.bind](https://lodash.com/docs/4.17.10#bind) in [lodash](https://lodash.com/), and also the concept of binding in general. In a nut shell the lodash bind method creates a new method from another method with the value of the this keyword binded to a given value. It is one of several methods of interest both in lodash and in general when it comes to the nature of the this keyword. 
+For today I thought I would write a post on the [\_.bind](https://lodash.com/docs/4.17.10#bind) in [lodash](https://lodash.com/), and also the concept of binding in general. In a nut shell the lodash bind method creates a new method from another method with the value of the this keyword binded to a given value. It is one of several methods of interest both in lodash and with javaScript in general when it comes to the nature of the this keyword. 
 
-There is also the native [Function.bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) that I should also touch base on here. However in this post I will be mainly writing about bind in an environment where lodash is part of the stack, and as such \_.bind is available. However I will also link to other relevant content that I have written in the past that elaborates on this more.
+Speaking of native javaScript there is also the native [Function bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) prototype method that I should also touch base on here as well as maybe some additional topics that have to do with native javaScript alone. There is a great deal more to be aware of with this sort of thing, but just with lodash bind and native counterparts, but all kinds of additional various this when it comes to the this keyword, own properties of objects and the nature of the prototype chain. So then this will not just be a post on lodash, but also in native sections on the topic of binding things in general.
 
 <!-- more -->
 
