@@ -37,9 +37,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_bind (old)
-* 750+ words
-* have 5+ internal links for the post
+### ( done 02/02/2022 ) - lodash_bind (old)
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 02/01/2022 ) - lodash_create (old)
 * (done) 750+ words
