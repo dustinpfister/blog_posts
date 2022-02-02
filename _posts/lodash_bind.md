@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 305
-updated: 2022-02-02 10:42:04
-version: 1.21
+updated: 2022-02-02 10:46:59
+version: 1.22
 ---
 
 For today I thought I would write a post on the [\_.bind](https://lodash.com/docs/4.17.10#bind) in [lodash](https://lodash.com/), and also the concept of binding in general. In a nut shell the lodash bind method creates a new method from another method with the value of the this keyword binded to a given value. It is one of several methods of interest both in lodash and in general when it comes to the nature of the this keyword. 
@@ -126,6 +126,8 @@ console.log(obj.x, obj.y); // 5,7
 ```
 
 ### 2.2 - Using the Function.prototype.apply method
+
+Another option for using a function that makes use of the this keyword to refer to own properties of an object is to now use a function that returns a new function, from a function and object, but that just directly calls the source function with a new value for this. In other words a function that woks just like bind, but it does not return a function, it just directly calls the source function with a given object as the value to use in place of this. There are two options for this in the native javaScript [function prototype one of which is apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply).
 
 ```js
 const step = function (dx, dy) {
