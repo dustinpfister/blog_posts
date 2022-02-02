@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 305
-updated: 2022-02-02 09:14:49
-version: 1.16
+updated: 2022-02-02 09:16:59
+version: 1.17
 ---
 
 For today I thought I would write a post on the [\_.bind](https://lodash.com/docs/4.17.10#bind) in [lodash](https://lodash.com/), and also the concept of binding in general. In a nut shell the lodash bind method creates a new method from another method with the value of the this keyword binded to a given value. It is one of several methods of interest both in lodash and in general when it comes to the nature of the this keyword. 
@@ -97,7 +97,9 @@ var t = setTimeout(user.say, 100); // Hello, fooman!
 t.name = 'fooman';
 ```
 
-## 2 - Vanilla javaScript altertaives to lodash bind
+## 2 - Vanilla javaScript alternatives to lodash bind
+
+Lodash is a great library with tones of useful methods, but it is also true that there is a whole lot to work with when it comes to just working with native javaScript alone also. In this section then I will be going over some quick examples that have involving doing what the lodash bind method does with just plain old javaScript by itself.
 
 ### 2.1 - Using Function.prototype.bind
 
