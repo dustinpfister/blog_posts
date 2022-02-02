@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 305
-updated: 2022-02-02 09:24:22
-version: 1.18
+updated: 2022-02-02 09:24:50
+version: 1.19
 ---
 
 For today I thought I would write a post on the [\_.bind](https://lodash.com/docs/4.17.10#bind) in [lodash](https://lodash.com/), and also the concept of binding in general. In a nut shell the lodash bind method creates a new method from another method with the value of the this keyword binded to a given value. It is one of several methods of interest both in lodash and in general when it comes to the nature of the this keyword. 
@@ -117,7 +117,7 @@ console.log(obj.x, obj.y); // 5,7
 
 ## 3 - Conclusion
 
-The bind method in lodash will work just fine for what it does, but so does the native alternative as a way to create functions with an object bound to it. There are a lot og good reasons why one will still want to use lodash, but not so much with respect to the bind method as native support for this is pretty good these days. There is not just thinking about lodash in terms of it being a safety net of sorts though, it seems like many developers thing that ways about it and that is not a good way to think of lodash. Often I am in a situation in which I want to do what a native method does, but not in the same way, for example a native method might mutate an object in place and I do not want to do that. So this issue of many native methods mutating in place is one reason, along with many others, to create some kind of custom user space utility library of some kind, and lodash is a good example of this.
+The bind method in lodash will work just fine for what it does, but so does the native alternative as a way to create functions with an object bound to it. There are a lot of good reasons why one will still want to use lodash, but not so much with respect to the bind method as native support for this is pretty good these days. There is not just thinking about lodash in terms of it being a safety net of sorts though, it seems like many developers thing that ways about it and that is not a good way to think of lodash. Often I am in a situation in which I want to do what a native method does, but not in the same way, for example a native method might mutate an object in place and I do not want to do that. So this issue of many native methods mutating in place is one reason, along with many others, to create some kind of custom user space utility library of some kind, and lodash is a good example of this.
 
 
 
