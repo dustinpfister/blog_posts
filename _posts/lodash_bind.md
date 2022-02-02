@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 305
-updated: 2022-02-02 10:28:47
-version: 1.20
+updated: 2022-02-02 10:42:04
+version: 1.21
 ---
 
 For today I thought I would write a post on the [\_.bind](https://lodash.com/docs/4.17.10#bind) in [lodash](https://lodash.com/), and also the concept of binding in general. In a nut shell the lodash bind method creates a new method from another method with the value of the this keyword binded to a given value. It is one of several methods of interest both in lodash and in general when it comes to the nature of the this keyword. 
@@ -106,13 +106,39 @@ Lodash is a great library with tones of useful methods, but it is also true that
 The native bind method of the function prototype object works in more or less the same manor \_.bind. Sense bind is a prototype method functions, I only need to call it off the function I want to bind with, and pass the object that I want to use in place of the this keyword.
 
 ```js
-// create an obj.step with Function.prototype.bind
-obj.step = step.bind(obj);
- 
+let obj = {
+    x: 0,
+    y: 0,
+    dx: 5,
+    dy: 7
+};
+// creating a step function with a function
+// expression, NOT an arrow function
+const step = function () {
+    this.x += this.dx;
+    this.y += this.dy;
+};
+// create a stepObj with Function.prototype.bind
+let stepObj = step.bind(obj);
 // I can now call step, and this will refer to obj
-obj.step();
- 
+stepObj();
 console.log(obj.x, obj.y); // 5,7
+```
+
+### 2.2 - Using the Function.prototype.apply method
+
+```js
+const step = function (dx, dy) {
+    this.x += dx;
+    this.y += dy;
+};
+ 
+let obj = {
+    x: 0,
+    y: 0
+};
+step.apply(obj, [7, 10])
+console.log(obj); // { x: 7, y: 10 }
 ```
 
 ## 3 - Conclusion
