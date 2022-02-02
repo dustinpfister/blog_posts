@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 305
-updated: 2022-02-02 09:16:59
-version: 1.17
+updated: 2022-02-02 09:24:22
+version: 1.18
 ---
 
 For today I thought I would write a post on the [\_.bind](https://lodash.com/docs/4.17.10#bind) in [lodash](https://lodash.com/), and also the concept of binding in general. In a nut shell the lodash bind method creates a new method from another method with the value of the this keyword binded to a given value. It is one of several methods of interest both in lodash and in general when it comes to the nature of the this keyword. 
@@ -15,7 +15,7 @@ There is also the native [Function.bind](https://developer.mozilla.org/en-US/doc
 
 <!-- more -->
 
-## 1 - what to know
+## 1 - Lodash bind and What to know first
 
 If you are not familiar with \_.bind, or Function.bind, it is a way to go about creating a new javaScript function with another JavaScript function, but with the value of the this keyword set to a given object. So bind is closely tied with the this keyword in javaScript, and is a way to make methods work with any object that they can potential work with. A while back I wrote a post about the [native call, apply, and bind](/2017/09/21/js-call-apply-and-bind/) methods that might also be of interest. Also if you are new to javaScript, and still do not know much about the [this keyword](/2017/04/14/js-this-keyword/) you will want to have a grasp on that as well.
 
@@ -73,7 +73,7 @@ So in any situation in which I want to get a method to work with an object, I ca
 
 ### 1.3 - When using settimeout
 
-When using a method like settimeout a function is passed as the first argument, followed by a delay in milliseconds. When doing so I am just passing the function, and what is attached to that function, not the parent object that it may be a part of. This might result in unexpected behavior in some examples.
+When using a method like [settimeout](/2018/12/06/js-settimeout/) a function is passed as the first argument, followed by a delay in milliseconds. When doing so I am just passing the function, and what is attached to that function, not the parent object that it may be a part of. This might result in unexpected behavior in some examples.
 
 ```js
 let user = {
@@ -103,7 +103,7 @@ Lodash is a great library with tones of useful methods, but it is also true that
 
 ### 2.1 - Using Function.prototype.bind
 
-The native Function.prototype.bind method works in more or less the same manor \_.bind. Sense bind is a prototype method functions, I only need to call it off the function I want to bind with, and pass the object that I want to use in place of the this keyword.
+The native bind method of the function prototype object works in more or less the same manor \_.bind. Sense bind is a prototype method functions, I only need to call it off the function I want to bind with, and pass the object that I want to use in place of the this keyword.
 
 ```js
 // create an obj.step with Function.prototype.bind
@@ -116,5 +116,8 @@ console.log(obj.x, obj.y); // 5,7
 ```
 
 ## 3 - Conclusion
+
+The bind method in lodash will work just fine for what it does, but so does the native alternative as a way to create functions with an object bound to it. There are a lot og good reasons why one will still want to use lodash, but not so much with respect to the bind method as native support for this is pretty good these days. There is not just thinking about lodash in terms of it being a safety net of sorts though, it seems like many developers thing that ways about it and that is not a good way to think of lodash. Often I am in a situation in which I want to do what a native method does, but not in the same way, for example a native method might mutate an object in place and I do not want to do that. So this issue of many native methods mutating in place is one reason, along with many others, to create some kind of custom user space utility library of some kind, and lodash is a good example of this.
+
 
 
