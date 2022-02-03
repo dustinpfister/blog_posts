@@ -32,10 +32,6 @@
 
 <!-- OLD POSTS -->
 
-### (  ) - lodash_set
-* 750+ words
-* have 5+ internal links for the post
-
 ### (  ) - lodash_reject
 * 750+ words
 * have 5+ internal links for the post
@@ -43,6 +39,10 @@
 ### (  ) - lodash_reverse (old)
 * 750+ words
 * have 5+ internal links for the post
+
+### ( done 02/02/2022 ) - lodash_set
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 02/02/2022 ) - lodash_bind (old)
 * (done) 750+ words
