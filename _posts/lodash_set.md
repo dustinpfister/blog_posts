@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 344
-updated: 2022-02-03 10:57:23
-version: 1.18
+updated: 2022-02-03 10:59:38
+version: 1.19
 ---
 
 A few months ago I wrote a post on the [get method](/2018/09/24/lodash_get/) in the popular javaScript utility library known as [lodash](https://lodash.com/) that is used for getting a property of an object by way of a path string, and returning a default value for the property in the event that the object property is undefined. When it comes to the default value that is given to the get method that is just a return value of get to use in the event that the property value is not in the source value, the get method as the name sugests just simply gets, it does not mutate the source object in any way.
@@ -73,7 +73,7 @@ console.log(_.get(foo,path)); // 42
 
 When I write new posts on lodash, as well as come around to edit older posts on lodash such as this one I have made a habit of having at least one section in the post that has to do with doing the same thing that can be done with lodash, only using native javaScript alone. In many cases there is just a native method that can be used to do the same thing, at which point it is just a question of what the deal is with browser support with that method, and if the version of lodash is being used will help push things back a little farther. There are also of course a lot of other things to take into account when making the choice to use a native method rather than some kind of user space solution. However in any case I think I should always have a section in each lodash post on this topic.
 
-When it comes to a vanilla javaScript alternative to the lodash set method I am not aware of any such native method, at least not when it comes to the Object prototype, and static methods of the main Object object in javaScript. However this is something where making a custom vanilla javaScript method is not so hard. I have found a lot of solutions on the open, web and have wrote one or two of my own in my time, and all of them seem to have a few things in common. One of which is the use of the [split string prototype method](/2021/07/14/js-string-split/) which can be used to split the given path string into an array of key names for desired bath to set for a source object.
+When it comes to a vanilla javaScript alternative to the lodash set method I am not aware of any such native method, at least not when it comes to the Object prototype, and static methods of the main Object object in javaScript. However this is something where making a custom vanilla javaScript method is not so hard. I have found a lot of solutions on the open, web and have wrote one or two of my own in my time, and all of them seem to have a few things in common. One of which is the use of the [split string prototype method](/2021/07/14/js-string-split/) which can be used to split the given path string into an array of key names for desired bath to set for a source object. Once this array of keys is created it is just a matter of using array shift, or some other kinds of means to loop threw these key names, and get or create objects as needed until that final key is reached at which point the given value is set for that path of the source object.
 
 ### 2.1 - Vanilla javaScript set method
 
