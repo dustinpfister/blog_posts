@@ -5,15 +5,15 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 344
-updated: 2022-02-03 09:11:52
-version: 1.13
+updated: 2022-02-03 09:13:27
+version: 1.14
 ---
 
 A few months ago I wrote a post on the [get method](/2018/09/24/lodash_get/) in the popular javaScript utility library known as [lodash](https://lodash.com/) that is used for getting a property of an object by way of a path string, and returning a default value for the property in the event that the object property is undefined. When it comes to the default value that is given to the get method that is just a return value of get to use in the event that the property value is not in the source value, the get method as the name sugests just simply gets, it does not mutate the source object in any way.
 
-So then becuase I wrote a post on the get method, it would make sense to write a post on the lodash [set](https://lodash.com/docs/4.17.10#set) method as well. The \_.set method works just like that of the \_.get method in lodash, only it can be used to set a property rather than getting it when using path strings to do so. Another lodash method that comes to mind that might be considered a part of this set of method is the [lodash \_.has](/2019/05/15/lodash_has/) method that can be used to not get, or set, but simply check it an object has a certain path or not, returning a boolean value for the result of the check rather than any value, or default value.
+So then because I wrote a post on the get method, it would make sense to write a post on the lodash [set](https://lodash.com/docs/4.17.10#set) method as well. The \_.set method works just like that of the \_.get method in lodash, only it can be used to set a property rather than getting it when using path strings to do so. Another lodash method that comes to mind that might be considered a part of this set of method is the [lodash \_.has](/2019/05/15/lodash_has/) method that can be used to not get, or set, but simply check it an object has a certain path or not, returning a boolean value for the result of the check rather than any value, or default value.
 
-However it might not be so hard to just do what these methods do with just plain vanilla javaScript by itself, so lets look a few quick examples of lodash set and other lodash methods, as well as any related topics that might come up as we do so.
+However it might not be so hard to just do what these methods do with just plain vanilla javaScript by itself, so lets look a few quick examples of lodash set and other lodash methods. While I am at it in this post I should also touch based on any related topics that might come up as I do so when it comes to just plain vanilla javaScript by itself.
 
 <!-- more -->
 
