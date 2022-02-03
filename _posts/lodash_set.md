@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 344
-updated: 2022-02-03 09:13:27
-version: 1.14
+updated: 2022-02-03 09:17:57
+version: 1.15
 ---
 
 A few months ago I wrote a post on the [get method](/2018/09/24/lodash_get/) in the popular javaScript utility library known as [lodash](https://lodash.com/) that is used for getting a property of an object by way of a path string, and returning a default value for the property in the event that the object property is undefined. When it comes to the default value that is given to the get method that is just a return value of get to use in the event that the property value is not in the source value, the get method as the name sugests just simply gets, it does not mutate the source object in any way.
@@ -19,7 +19,11 @@ However it might not be so hard to just do what these methods do with just plain
 
 Many of these tasks that the lodash \_.set and other related methods accomplish can also easily be done with just plain old javaScript. I guess the only talking point is if you find using string paths haves helpful or not.
 
-## 1 - Basic \_.set example
+## 1 - Some basic examples of lodash set
+
+In this section I will be starting out with just a few simple hello world style examples of the lodash set method.
+
+### 1.1 - Basic \_.set example
 
 The basic idea of \_.set is that a value can be set by just passing the object, and then a path in string format, followed by the value to set the property to. In the event that the property is not there then a path to it will be cerated, so it is a pretty robust litle way to make sure that object properties are always there in an object of interest.
 
@@ -51,7 +55,7 @@ _.set(enemy, path, true);
 console.log( _.get(enemy, path) ); // true
 ```
 
-### 2 - \_.set creates a path if it is not there
+### 1.2 - \_.set creates a path if it is not there
 
 It's not like setting a property of an object is all that hard without lodash, but this method allows for setting the value with a string format path which can be helpful in some situations. Another added benefit is that it can also be used to create paths in the event that they are not there as well.
 
@@ -65,6 +69,6 @@ _.set(foo, path, 42);
 console.log(_.get(foo,path)); // 42
 ```
 
-## 3 - Conclusion
+## 2 - Conclusion
 
 So I would not say that the lodash set method is one of the most interesting or even useful methods in lodash. When it comes down to it I can not say that I actually use the lodash set method in many of my projects, and also in addition I can not say that I am using lodash at all most of the time now that I think of it. There are native javaScript ways of doing the saem thing that the set methods does without the path feature that I can not say that I often really need actually, at least speaking from my experience thus far working on projects. Still if lodash is part of the stack of a project then this is one method that may come in handy now and then when it comes to setting values to objects.
