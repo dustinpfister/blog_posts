@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 344
-updated: 2022-02-03 09:17:57
-version: 1.15
+updated: 2022-02-03 10:40:47
+version: 1.16
 ---
 
 A few months ago I wrote a post on the [get method](/2018/09/24/lodash_get/) in the popular javaScript utility library known as [lodash](https://lodash.com/) that is used for getting a property of an object by way of a path string, and returning a default value for the property in the event that the object property is undefined. When it comes to the default value that is given to the get method that is just a return value of get to use in the event that the property value is not in the source value, the get method as the name sugests just simply gets, it does not mutate the source object in any way.
@@ -69,6 +69,62 @@ _.set(foo, path, 42);
 console.log(_.get(foo,path)); // 42
 ```
 
-## 2 - Conclusion
+## 2 - Vanilla javaScript alternatives to lodash set
+
+### 2.1 - Vanilla javaScript set method
+
+After doing some quick research I have found a question on stack over flow titled [Dynamic deep setting for a JavaScript object](https://stackoverflow.com/questions/6842795/dynamic-deep-setting-for-a-javascript-object). At the time of this edit of this post the top answer for the question was this.
+
+```js
+// https://stackoverflow.com/questions/6842795/dynamic-deep-setting-for-a-javascript-object
+// https://stackoverflow.com/a/20240290/2057445
+function setValue(obj, path, value) {
+  var a = path.split('.')
+  var o = obj
+  while (a.length - 1) {
+    var n = a.shift()
+    if (!(n in o)) o[n] = {}
+    o = o[n]
+  }
+  o[a[0]] = value
+};
+ 
+let foo = {};
+setValue(foo, 'bar.foobar.answer.to.life', 42);
+console.log(foo.bar.foobar.answer.to.life); // 42
+```
+
+### 2.2 - Another set method
+
+The first question that I found was a duplicate and as such there was a link to another question on the same topic titled [\"How to set object property \(of object property of..\) given its string name in JavaScript?\"](https://stackoverflow.com/questions/13719593/how-to-set-object-property-of-object-property-of-given-its-string-name-in-ja). 
+
+```js
+// https://stackoverflow.com/questions/13719593/how-to-set-object-property-of-object-property-of-given-its-string-name-in-ja
+/**
+ * Set the value of a deep property, creating new objects as necessary.
+ * @param {Object} obj The object to set the value on.
+ * @param {String|String[]} path The property to set.
+ * @param {*} value The value to set.
+ * @return {Object} The object at the end of the path.
+ * @author github.com/victornpb
+ * @see https://stackoverflow.com/a/46060952/938822
+ * @example
+ * setDeep(obj, 'foo.bar.baz', 'quux');
+ */
+function setDeep(obj, path, value) {
+    const props = typeof path === 'string' ? path.split('.') : path;
+    for (var i = 0, n = props.length - 1; i < n; ++i) {
+        obj = obj[props[i]] = obj[props[i]] || {};
+    }
+    obj[props[i]] = value;
+    return obj;
+}
+ 
+let foo = {};
+setDeep(foo, 'bar.foobar.answer.to.life', 42);
+console.log(foo.bar.foobar.answer.to.life); // 42
+```
+
+## 3 - Conclusion
 
 So I would not say that the lodash set method is one of the most interesting or even useful methods in lodash. When it comes down to it I can not say that I actually use the lodash set method in many of my projects, and also in addition I can not say that I am using lodash at all most of the time now that I think of it. There are native javaScript ways of doing the saem thing that the set methods does without the path feature that I can not say that I often really need actually, at least speaking from my experience thus far working on projects. Still if lodash is part of the stack of a project then this is one method that may come in handy now and then when it comes to setting values to objects.
