@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 344
-updated: 2022-02-03 11:13:45
-version: 1.20
+updated: 2022-02-03 11:16:18
+version: 1.21
 ---
 
 A few months ago I wrote a post on the [get method](/2018/09/24/lodash_get/) in the popular javaScript utility library known as [lodash](https://lodash.com/) that is used for getting a property of an object by way of a path string, and returning a default value for the property in the event that the object property is undefined. When it comes to the default value that is given to the get method that is just a return value of get to use in the event that the property value is not in the source value, the get method as the name sugests just simply gets, it does not mutate the source object in any way.
@@ -129,7 +129,9 @@ setDeep(foo, 'bar.foobar.answer.to.life', 42);
 console.log(foo.bar.foobar.answer.to.life); // 42
 ```
 
-### 2.3 - My utils.getPath and utils.setPath methods
+### 2.3 - My utils.getPath and utils.setPath methods from my turn based RPG javascript project example
+
+I have made a lot of vanilla javaScript project examples for my collection of posts on the topic of doing so. With that said while working on one of them where the aim was to make a turn based rpg game I have made a set and get path method for the general utilities library that I made for that example. The set method that I made for that game is as follows.
 
 ```js
 // from js-javascript-example-turn-based-rpg in my test_ vjs repository
