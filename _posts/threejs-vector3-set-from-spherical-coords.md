@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 957
-updated: 2022-02-04 12:30:06
-version: 1.9
+updated: 2022-02-04 12:33:40
+version: 1.10
 ---
 
 When it comes to working out all kinds of simple hello world type project examples using threejs for the sake of learning the basics of threejs, or just gaining a more solid understanding of the library regardless of experience, the Vector three Class might come up often when doing so. There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). 
@@ -35,7 +35,7 @@ For a very simple getting started type example of this method there is just call
 
 ## 2 - Basic Scene example
 
-So now that I am getting some values that look good there is now the question of starting to use this set from spherical coords method in at least one if not more basic scene examples. For this example of a basic threejs scene I am just going to be using this spherical coords method to position a mesh.
+So now that I am getting some values that look good there is now the question of starting to use this set from spherical coords method in at least one if not more basic scene examples. For this example of a basic threejs scene I am just going to be using this spherical coords method to position a mesh. I will not be doing anything fancy when it comes to light and animation so for the single method object that I will be positioning I will be using the THREE.SphereGeomrty constructor with the THREE.MeshBasicMaterial which is the typical go to material for any scene in which I am not doing anything with light.
 
 ```js
 (function () {
