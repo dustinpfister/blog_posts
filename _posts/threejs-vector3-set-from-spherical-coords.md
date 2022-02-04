@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 957
-updated: 2022-02-04 11:44:23
-version: 1.4
+updated: 2022-02-04 11:50:14
+version: 1.5
 ---
 
 When it comes to working out all kinds of simple hello world type project examples using threejs for the sake of learning the basics of threejs, or just gaining a more solid understanding of the library regardless of experience, the Vector three Class might come up often when doing so. There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). 
@@ -16,52 +16,19 @@ One this that often want to do when making any kind of project with three.js is 
 <!-- more -->
 
 
-## 1 - 
+## 1 - Very basic example of the setFromSphericalCoords Vector3 method
+
+For a very simple getting started type example of this method there is just calling the setFromSphericalCoords method off of an instance of Vector3, passing some arguments and see if I get a desired outcome with the values.
 
 ```js
 (function () {
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(20, 20));
-    scene.background = new THREE.Color('black');
- 
-    // camera
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    //camera.position.set(-17, 10, -17);
-    camera.position.setFromSphericalCoords(
-        25,
-        THREE.MathUtils.degToRad(70),
-        THREE.MathUtils.degToRad(225)
-    );
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
- 
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    var container = document.getElementById('demo');
-    container.appendChild(renderer.domElement);
-
-    // A Mesh with a Sphere for geometry and using the Standard Material
-    var mesh = new THREE.Mesh(
-        new THREE.SphereGeometry(3, 30, 30),
-        new THREE.MeshBasicMaterial({
-            color: new THREE.Color('red'),
-            wireframe: true
-        })
-    );
-    scene.add(mesh);
- 
-    // USING setFromSphericalCoords to set position of the Mesh
-    var radius = 10,
-    phi = THREE.MathUtils.degToRad(90),
-    theta = THREE.MathUtils.degToRad(270);
-    mesh.position.setFromSphericalCoords(radius, phi, theta);
- 
-    // render
-    renderer.render(scene, camera);
- 
+    var v = new THREE.Vector3(0,0,0);
+    var phi = THREE.MathUtils.degToRad(54.74),
+    theta = THREE.MathUtils.degToRad(45);
+    v.setFromSphericalCoords(10, phi, theta);
+    var p = document.createElement('p');
+    p.innerText = v.x.toFixed(2) + ', ' + v.y.toFixed(2) + ',' + v.z.toFixed(2);
+    document.body.appendChild(p);
 }
     ());
 ```
@@ -92,13 +59,7 @@ One this that often want to do when making any kind of project with three.js is 
     renderer.setSize(640, 480);
     var container = document.getElementById('demo');
     container.appendChild(renderer.domElement);
- 
-    // point light
-    //var pl = new THREE.PointLight(0xffffff);
-    //pl.position.set(2, 5, 3);
-    //camera.add(pl);
-    //scene.add(pl);
- 
+
     // A Mesh with a Sphere for geometry and using the Standard Material
     var mesh = new THREE.Mesh(
         new THREE.SphereGeometry(3, 30, 30),
