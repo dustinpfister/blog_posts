@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 957
-updated: 2022-02-04 12:44:57
-version: 1.13
+updated: 2022-02-04 12:49:55
+version: 1.14
 ---
 
 When it comes to working out all kinds of simple hello world type project examples using threejs for the sake of learning the basics of threejs, or just gaining a more solid understanding of the library regardless of experience, the Vector three Class might come up often when doing so. There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). 
@@ -95,4 +95,4 @@ So now that I am getting some values that look good there is now the question of
 
 ## 3 - Conclusion
 
-That will be it for now when it comes to this set from spherical coords method for now at least until I come around to do a bot more editing of this post. I may get around to doing that later thins month but I would not hold by breath on that I have a [whole lot of other posts on threejs](/categories/three-js/) that I have wrote over the years, and many of them need a great deal of editing also.
+That will be it for now when it comes to this set from spherical coords method for now at least until I come around to do a bot more editing of this post. I may get around to doing that later thins month but I would not hold by breath on that I have a [whole lot of other posts on threejs](/categories/three-js/) that I have wrote over the years, and many of them need a great deal of editing also. This is a subject that I do seem to keep coming back to now and then though So I am sure that there is more to add on this when I get around to it.
