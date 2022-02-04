@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 957
-updated: 2022-02-04 12:18:47
-version: 1.6
+updated: 2022-02-04 12:21:01
+version: 1.7
 ---
 
 When it comes to working out all kinds of simple hello world type project examples using threejs for the sake of learning the basics of threejs, or just gaining a more solid understanding of the library regardless of experience, the Vector three Class might come up often when doing so. There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). 
@@ -18,7 +18,7 @@ One this that often want to do when making any kind of project with three.js is 
 
 ## 1 - Very basic example of the setFromSphericalCoords Vector3 method
 
-For a very simple getting started type example of this method there is just calling the setFromSphericalCoords method off of an instance of Vector3, passing some arguments and see if I get a desired outcome with the values. The first argument that I want to pass to this method is the radius for the sphere, the second and third and then the angles that I want to use. The angle values that are used for this method, like many methods in javaScript will expect a radian value, not a degree value for the angles. Conversion is fairly easy when it comes to just doing a quick expression, but there is also a number of useful methods in the MathUtils object of threejs for making this kinds of conversions also.
+For a very simple getting started type example of this method there is just calling the setFromSphericalCoords method off of an instance of Vector3, passing some arguments and see if I get a desired outcome with the values. The first argument that I want to pass to this method is the radius for the sphere, the second and third and then the angles that I want to use. The angle values that are used for this method, like many methods in javaScript will expect a radian value, not a degree value for the angles. Conversion is fairly easy when it comes to just doing a quick expression, but there is also a number of useful methods in the [MathUtils object of threejs](https://threejs.org/docs/#api/en/math/MathUtils) for making this kinds of conversions also.
 
 ```js
 (function () {
