@@ -4,9 +4,11 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
+### () - new post #959 for 02/11/2022 on threejs-examples-tool-source-layer-3d
+
 ### () - new post #958 for 02/07/2022 on electionjs-
 
-### () - new post #957 for 02/04/2022 on threejs-examples-tool-source-layer-3d
+### () - new post #957 for 02/04/2022 on threejs-vector3-set-from-spherical-coords
 
 <!--###### ########## ########## #######-->
 ## threejs ( /yyyy/mm/dd/js-* )
