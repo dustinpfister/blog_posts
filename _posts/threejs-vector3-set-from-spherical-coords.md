@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 957
-updated: 2022-02-04 12:53:18
-version: 1.15
+updated: 2022-02-05 06:57:05
+version: 1.16
 ---
 
 When it comes to working out all kinds of simple hello world type project examples using threejs for the sake of learning the basics of threejs, or just gaining a more solid understanding of the library regardless of experience, the Vector three Class might come up often when doing so. There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). 
@@ -18,7 +18,9 @@ One this that often want to do when making any kind of project with three.js is 
 
 ## 1 - The basics of the set from spherical coords method and what else to know first
 
-In this section I will be starting out with a very basic example of just using the method directly with a few other threejs features. I assume that you know at least a thing or two when it comes to getting started with a front end javaScript project, if not getting into things of that nature is outside the scope of this post.
+In this section I will be starting out with a very basic example of just using the method directly with a few other threejs features. I assume that you know at least a thing or two when it comes to [getting started with a front end javaScript project](/2018/11/27/js-getting-started/), if not getting into things of that nature is outside the scope of this post. 
+
+Also all though I will be trying to keep the examples here fairly simple with threejs, there is still an awful lot to take in when it comes to everything there is to work with in the library. I have mentioned the Vector3 class of which I am writing a post about just one method in this class, there is then a wide range of other classes in the library that are major Classes to be aware of also. Such as Euler, and Object3d, just to name a hand full.
 
 ### - Version Numbers matter
 
