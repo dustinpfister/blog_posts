@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 957
-updated: 2022-02-05 06:57:05
-version: 1.16
+updated: 2022-02-05 07:01:00
+version: 1.17
 ---
 
 When it comes to working out all kinds of simple hello world type project examples using threejs for the sake of learning the basics of threejs, or just gaining a more solid understanding of the library regardless of experience, the Vector three Class might come up often when doing so. There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). 
@@ -24,7 +24,7 @@ Also all though I will be trying to keep the examples here fairly simple with th
 
 ### - Version Numbers matter
 
-The version of threejs that I was using for this example was r127.
+The version of threejs that I was using for this example was r127. Because of feedback that I have received about various things I have made a habit of always taking note of what version of threejs I was using when I made the examples in a blog post on threejs. The reason why is because threejs is a very fast moving library in terms of development, and code breaking changes are often made in each new revision.
 
 ### 1.1 - A Very basic example of the setFromSphericalCoords Vector3 method
 
