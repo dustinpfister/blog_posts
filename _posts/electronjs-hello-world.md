@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-07 16:04:49
-version: 1.3
+updated: 2022-02-07 16:07:36
+version: 1.4
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -18,7 +18,7 @@ One thing that I wanted to figure out right away was how to go about having a [c
 
 ## What to know first before getting started with election js
 
-It should go without saying but I will make sure to at least briefly mention this here in this section, but yes first and foremost you are going to want to have some experience with javaScritp first. That is when it comes to getting started with javaScript it might be best to start out with client side javaScript, and or nodejs alone first before getting into nodejs.
+It should go without saying but I will make sure to at least briefly mention this here in this section, but yes first and foremost you are going to want to have some experience with javaScript first. That is when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/) it might be best to start out with client side javaScript, and or nodejs alone first before getting into nodejs.
 
 
 ## 1 - The main javaScript file
