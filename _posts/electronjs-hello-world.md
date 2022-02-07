@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-07 16:37:38
-version: 1.10
+updated: 2022-02-07 16:42:24
+version: 1.11
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -28,7 +28,14 @@ There are a lot of good things to say about electron.js, the first and for most 
 
 ### Setting up the app folder
 
-You should have some experience creating nodejs app by themselves first, if so then you should know that you want to have a package.json file in the root of the application folder.
+You should have some experience creating nodejs app by themselves first, if so then you should know that you want to have a package.json file in the root of the application folder. So the basic process of starting a new app would be to create a new folder, then make that folder the current working directory. Then in that folder there is doing an npm init and then installing election and saving it as a dev dependency.
+
+```
+$ mkdir electronjs-hello-world
+$ cd electronjs-hello-world
+$ npm init
+$ npm install electron@10.4.7 --save-dev
+```
 
 ```
 {
