@@ -5,13 +5,13 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-07 15:51:45
-version: 1.1
+updated: 2022-02-07 15:54:47
+version: 1.2
 ---
 
-I have been putting getting started with election.js long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
+I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
 
-One thing that I wanted to figure out right away was how to go about having a custom native menu for the app. Sense this is a hello world app the default for this is a little more advanced than what is needed. So Right away i looked into how to go about having a custom template for the native menu, even for a hello world app.
+One thing that I wanted to figure out right away was how to go about having a [custom native menu](https://www.electronjs.org/docs/latest/api/menu) for the app. Sense this is a hello world app the default for this is a little more advanced than what is needed. So Right away i looked into how to go about having a custom template for the native menu, even for a hello world app.
 
 
 <!-- more -->
