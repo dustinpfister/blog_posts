@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-07 16:12:52
-version: 1.5
+updated: 2022-02-07 16:14:51
+version: 1.6
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -22,6 +22,26 @@ It should go without saying but I will make sure to at least briefly mention thi
 
 Nodejs should also be installed, and also when installing nodejs it is a good idea to be mindful of what version of Nodejs you are installing while you are at it. Also on top of that it is also a good idea to me mindful of what version of election you are going with also. So it might be a good idea to look into how to go about having more than one node binary at the ready on you computer, and know how to go about switching between them. If you just want to go with one version then it would be best to go with whatever the latest LTS is.
 
+## Setting up the app folder
+
+You should have some experience creating nodejs app by themselves first, if so then you should know that you want to have a package.json file in the root of the application folder.
+
+```
+{
+  "name": "hello-world",
+  "version": "0.0.0",
+  "description": "hello world",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Dustin Pfister",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "^10.4.7"
+  }
+}
+```
 
 ## 1 - The main javaScript file
 
