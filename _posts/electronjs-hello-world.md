@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-07 16:20:07
-version: 1.7
+updated: 2022-02-07 16:29:30
+version: 1.8
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -102,6 +102,8 @@ app.on('window-all-closed', function () {
 
 ## 2 - The index.html file
 
+In the main javaScript file I am loading an index.html file in the create window function. So there here is the html of that very file. This of course contains the desired hello world text, and while I was at it I also wanted to see if I can get external css files working out of the gate, and it would seem that I can.
+
 ```js
 <!DOCTYPE html>
 <html lang="en">
@@ -122,6 +124,8 @@ app.on('window-all-closed', function () {
 ```
 
 ## 3 - A style css file
+
+Here then is the extremal css file that I am using to just adjust the look of the app a little, and also for the sake of just starting work with something more than just a single index html file for the client system.
 
 ```js
 body{
