@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-02-08 16:42:41
-version: 1.28
+updated: 2022-02-08 16:47:14
+version: 1.29
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -21,7 +21,7 @@ Of course it goes without saying that you need a decent understanding of front e
 
 There is a lot that should be covered first before moving on to three.js, and I do not think I can cover all of it in a single blog post such as this. However I will try my best to cover at least some of the most impotent topics that one should know about before getting started with three.js.
 
-### 1.1 - make sure you are hosting what you are working on via HTTP rather than the file protocol
+### 1.1 - Make sure you are hosting what you are working on via HTTP rather than the file protocol
 
 One thing that I think should be worth mentioning is that three.js and any additional assets should be hosted via http rather than the [file protocol](/2020/09/21/js-getting-started-file-protocol/). In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl + o. It is then a good idea to host what is being worked on via http, even when working on it locally. 
 
@@ -33,11 +33,15 @@ Three.js is a project where the version number matters a lot, very significant c
 
 It seems like new revisions come out as often as once a month, and when they do there are a whole lot of changes. So I decided to structure things in a way in which I can make demos for each revision when I am working out my source code demos in my git hub repo where I store the source ode examples for this post.
 
-### 1.3 - Some knowledge of topics outside of geometry and other topics outside of javaScript is helpful
+### 1.3 - The source code examples for this post are on Github
+
+In my [test threejs Github repository I have the source code examples that I am using for this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-getting-started). In time I aim to hav a corresponding for post folder for each of my threejs posts as I get around to editing each of my older threejs posts.
+
+### 1.4 - Some knowledge of topics outside of geometry and other topics outside of javaScript is helpful
 
 It is worth mentioning that it is a good idea to at least know a thing or two about other topics that do not pertain to javaScript, or even computer programing in general, but classical mathematics. Subjects come to mind like [geometry](https://en.wikipedia.org/wiki/Geometry), [trigonometry](https://en.wikipedia.org/wiki/Trigonometry), and many others. Getting into those subjects goes beyond the scope of this simple getting started post, and are not the kind of things that one can become solid with overnight. However don't let that overwhelm you, as three.js is very easy to work with, and getting into three.js can lead to a desire to become more knowledgeable about those topics, and many more.
 
-### 1.4 - You might also want to install blender
+### 1.5 - You might also want to install blender
 
 Although it is not required for getting started at least, at some point you might want to install a 3d modeling program of some kind such as [blender](https://www.blender.org/). As you get into the depth of three.js there will come a time where you will want to create assets externally, and then import theme into three.js. There are official plug-ins for doing so, and the best supported and easiest to use one I have found is the one for blender.
 
