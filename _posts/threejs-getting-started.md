@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-02-08 16:23:20
-version: 1.24
+updated: 2022-02-08 16:30:44
+version: 1.25
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -145,9 +145,9 @@ This example will just draw a cube on the screen. So lets have a break down on e
 
 Full post on [Scene](/2018/05/03/threejs-scene/)
 
-The [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) is the space in which everything will go, your objects, cameras, and anything else that would be placed in a scene like a light source. Once you have a scene we will want to add things into it, like an object of some kind to look at with a camera. 
+The [Scene](https://threejs.org/docs/index.html#api/en/scenes/Scene) is the space in which everything will go, your objects, cameras, and anything else that would be placed in a scene like a light source. Once you have a scene we will want to add things into it, like an object of some kind to look at with a camera. 
 
-To do this I will want to call the Object3D add method, and give it a [Mesh](https://threejs.org/docs/index.html#api/objects/Mesh), that is composed of a [Geometry](https://threejs.org/docs/index.html#api/core/Geometry), and a [Material](https://threejs.org/docs/index.html#api/materials/Material). I will touch base on all of that, because you should have at least a basic knowledge of all of those things, but not get into depth here, as each of these things could use there own posts.
+To do this I will want to call the Object3D add method, and give it a [Mesh](https://threejs.org/docs/index.html#api/en/objects/Mesh), that is composed of a [Geometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry), and a [Material](https://threejs.org/docs/index.html#api/en/materials/Material). I will touch base on all of that, because you should have at least a basic knowledge of all of those things, but not get into depth here, as each of these things could use there own posts.
 
 ```js
 var scene = new THREE.Scene(); // Scene
@@ -164,7 +164,7 @@ scene.add(new THREE.Mesh( // Mesh
 
 Full post on [Camera](/2018/04/06/threejs-camera/)
 
-There is a core class Called [Camera](https://threejs.org/docs/index.html#api/cameras/Camera) that has some methods and properties that are shared across all camera types that are used in three.js. 
+There is a core class Called [Camera](https://threejs.org/docs/index.html#api/en/cameras/Camera) that has some methods and properties that are shared across all camera types that are used in three.js. 
 
 Like most objects in three.js, a Camera inherits from Object3D which gives it methods to help make changing the position, and orientation of the Camera pretty easy.
 
@@ -182,7 +182,7 @@ camera.position.set(250,250,250);
 camera.lookAT(0,0,0);
 ```
 
-There are then four camera types to choose from, in this post I am only briefly covering the [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera).
+There are then four camera types to choose from, in this post I am only briefly covering the [perspective camera](https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera).
 
 ### 3.5 - Geometry, Material, and Mesh.
 
@@ -206,15 +206,13 @@ If you are still fairly new to three.js but have some of the basics worked out m
 
 ### 4.1 - Object3D
 
-read my full [post on Object3D](/2018/04/23/threejs-object3d/)
-
-Yet another Class to mention is the [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) class, This is not something that you typically work with directly, but is a class that is used in many of the objects in three.js that helps to make working with three.js easy. It gives Objects like Camera, and Mesh methods like lookAT, and position.set.
+A real good class to start really learbing a thing ot two about would be the Object3D class, I wrote a [post on Object3D](/2018/04/23/threejs-object3d/), and there is also of course the [official docs on Object3D](https://threejs.org/docs/index.html#api/en/core/Object3D). This is not something that you typically work with directly, but is a class that is used in many of the objects in three.js that helps to make working with three.js easy. It gives Objects like Camera, and Mesh methods like lookAT, and position.set.
 
 ### 4.2 - Vector3
 
 Read my full [post on Vector3](/2018/04/15/threejs-vector3/)
 
-Another class of interest that you should at least be aware of is [vector3](https://threejs.org/docs/index.html#api/math/Vector3), This is what you want to use when defining a point in 3d Space.
+Another class of interest that you should at least be aware of is [vector3](https://threejs.org/docs/index.html#api/en/math/Vector3), This is what you want to use when defining a point in 3d Space.
 
 ### 4.2 - Check out my project examples
 
