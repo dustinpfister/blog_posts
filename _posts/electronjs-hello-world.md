@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-08 12:59:42
-version: 1.16
+updated: 2022-02-08 13:02:11
+version: 1.17
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -60,7 +60,7 @@ The key things to look at with the package.js file is the scripts key making sur
 
 In the main script I am going to want to require in a few things from electron, mainly the [main app constructor](https://www.electronjs.org/docs/latest/api/app), as well as [Browser Window](https://www.electronjs.org/docs/latest/api/browser-window) if I want to have a window for this app which I do. On top of those two constructors I am also going to want Menu as I want to have a custom menu for this app rather than the default one that has to many options for such a simple application.
 
-The next thing that I am doing in this example is creating the custom menu for this hello world example in which I just want to have a file menu, and a view menu. The file menu will just have a quit option, and the view menu will toggle full screen, and that is it. So the Basic idea for this is to create an object that will be the template for thee menu, and then pass this template object to the Menu.buildFromTemplate method the returned object will then be a menu to which I can pass to the Menu.setApplactionMenu method that then so far seems to work just fine to create a custom menu for an application.
+The next thing that I am doing in this example is creating the custom menu for this hello world example in which I just want to have a file menu, and a view menu. The file menu will just have a quit option, and the view menu will toggle full screen, and that is it. So the Basic idea for this is to create an object that will be the template for thee menu, and then pass this template object to the [Menu.buildFromTemplate](https://www.electronjs.org/docs/latest/api/menu#menubuildfromtemplatetemplate) method the returned object will then be a menu to which I can pass to the [Menu.setApplactionMenu](https://www.electronjs.org/docs/latest/api/menu#menusetapplicationmenumenu) method that then so far seems to work just fine to create a custom menu for an application. I am sure there is a great deal more to write about when it comes to Menus, but for now this is very much a hello world application so at this time I think I should move on.
 
 ```js
 // load app and BrowserWindow
