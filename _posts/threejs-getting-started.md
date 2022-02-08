@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-02-08 16:30:44
-version: 1.25
+updated: 2022-02-08 16:35:41
+version: 1.26
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -27,9 +27,9 @@ One think that I think should be worth mentioning is that three.js and any addit
 
 ### 1.2 - A word about three.js versions
 
-Three.js is a project where the version number matters a lot, very significant changes are still being made all the time. In this demo I am using [version r91](https://github.com/mrdoob/three.js/tree/r91/build).
+Three.js is a project where the version number matters a lot, very significant changes are still being made all the time. When I first wrote this post I was using [version r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I cam around to do a little editing I was using [version r127](https://github.com/mrdoob/three.js/tree/r127).
 
-It seems like new revisions come out as often as once a month, and when they do there are a whole lot of changes, so I decided to structure things in a way in which I can make demos for each revision.
+It seems like new revisions come out as often as once a month, and when they do there are a whole lot of changes. So I decided to structure things in a way in which I can make demos for each revision when I am working out my source code demos in my git hub repo where I store the source ode examples for this post.
 
 ### 1.3 - Some knowledge of topics outside of geometry and other topics outside of javaScript is helpful
 
