@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-02-08 16:35:41
-version: 1.26
+updated: 2022-02-08 16:40:55
+version: 1.27
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -23,7 +23,9 @@ There is a lot that should be covered first before moving on to three.js, and I 
 
 ### 1.1 - make sure you are hosting what you are working on via HTTP rather than the file protocol
 
-One think that I think should be worth mentioning is that three.js and any additional assets should be hosted via http rather than the file protocol. In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl+o. So it is a good idea to host what is being worked on via http, even when working on it locally. To do this one will need some way to set up and run some back end code, or at least some kind of static web sever to host a public folder via http.
+One thing that I think should be worth mentioning is that three.js and any additional assets should be hosted via http rather than the [file protocol](/2020/09/21/js-getting-started-file-protocol/). In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl + o. It is then a good idea to host what is being worked on via http, even when working on it locally. 
+
+To do this one will need some way to set up and run some back end code, or at least some kind of static web sever to host a public folder via http. There are a number of ways to go about doing this, but if you like javaScript as much as I do then you will want to have some sever side code that is a nodejs script of some kind. I have wrote a post on how to go about getting started with this sort of thing by just working with [nodejs by itself by making some kind of vanilla javaScript solution for a basic web sever](/2017/12/04/nodejs-simple-static-sever-file/).
 
 ### 1.2 - A word about three.js versions
 
