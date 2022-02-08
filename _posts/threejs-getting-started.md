@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-02-08 16:16:15
-version: 1.23
+updated: 2022-02-08 16:23:20
+version: 1.24
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -194,16 +194,15 @@ In order to see anything I will need to render it using something like Canvas, o
 
 ## 4 - Conclusion, and what to check out next
 
-Three.js is the kind of library where you really need to devote at least a solid month or more in order to start to get a little solid with it. I am still learning myself, but I think there are some additional aspects of this library that are very important, while others are kind of optional depending on the kind of projects you aim to make. For example if you want to make games you might want to know about the [lambert material](/2018/04/08/threejs-lambert-material/), as it is more efficient then the standard material. However if you aim to make something that does not need to run in real time you might choose to go with the standard material, as it gives a more realistic look.
+Three.js is the kind of library where you really need to devote at least a solid month or more in order to start to get a little solid with it. I am still learning myself, but I think there are some additional aspects of this library that are very important, while others are kind of optional depending on the kind of projects I aim to make. For example if I want to make games I might want to know about the [lambert material](/2018/04/08/threejs-lambert-material/), as it is more efficient then the standard material. However if I aim to make something that does not need to run in real time I might choose to go with the standard material, as it gives a more realistic look.
 
-There is a lot more to write about, but because this is just a getting started post, I thought I would just stick to writing about some of the most important aspects of three.js that one needs to be aware of in order to get anything done at all. 
+### 4.1 - This post is still a work in progress
 
-I First wrote this post back in April of 2018, and as of this writing it is now April of 2021, much has changed with three.js sense then and with that said I will continue to update this post now and then when I get some time to do so. As my content on three.js grows, and treat this as a good starting point to other posts of interest on three.js as I tinker with three.js more.
+I first wrote this post back in April of 2018, and as of this writing it is now February of 2022. Sense I first started this post much has changed with three.js sense then, and with that said I will continue to update this post when I get some time to do so. As my content on three.js grows, and I edit posts such as this one, I often will link to this post as a way to just pipe people to something that is a good starting point for threejs.
+
+### 4.x - More on the Box Geometry Constructor
+
 If you are still fairly new to three.js but have some of the basics worked out maybe it would be a good idea to work out a whole bunch of examples where you are just using the Box Geometry Constructor. There is not just having a Cube on the screen, but doing a whole word of things with that cube. For example there is moving it, rotating it, using an array of materials rather than just one, changing what the index values are for those materials, doing things with light and shadow and so forth. With that said maybe [my post on the Box Geometry Constructor](/2021/04/26/threejs-box-geometry/) will be a good next step from here.
-
-In the long run thought of course what really needs to happen sooner or later is to start making one or two real examples using three.js. That is some kind of game or animation type thing typically, so with that said maybe another step forward would be to [look at some of my basic project examples](/2021/02/19/threejs-examples/).
-
-For now I will cover some additional corners of three.js that I think stand out...
 
 ### 4.1 - Object3D
 
@@ -216,3 +215,11 @@ Yet another Class to mention is the [Object3D](https://threejs.org/docs/index.ht
 Read my full [post on Vector3](/2018/04/15/threejs-vector3/)
 
 Another class of interest that you should at least be aware of is [vector3](https://threejs.org/docs/index.html#api/math/Vector3), This is what you want to use when defining a point in 3d Space.
+
+### 4.2 - Check out my project examples
+
+In the long run thought of course what really needs to happen sooner or later is to start making one or two real examples using three.js. That is some kind of game or animation type thing typically, so with that said maybe another step forward would be to [look at some of my basic project examples](/2021/02/19/threejs-examples/).
+
+For now I will cover some additional corners of three.js that I think stand out...
+
+
