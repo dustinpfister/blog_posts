@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-08 13:05:34
-version: 1.18
+updated: 2022-02-08 13:10:35
+version: 1.19
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -62,7 +62,7 @@ In the main script I am going to want to require in a few things from electron, 
 
 The next thing that I am doing in this example is creating the custom menu for this hello world example in which I just want to have a file menu, and a view menu. The file menu will just have a quit option, and the view menu will toggle full screen, and that is it. So the Basic idea for this is to create an object that will be the template for thee menu, and then pass this template object to the [Menu.buildFromTemplate](https://www.electronjs.org/docs/latest/api/menu#menubuildfromtemplatetemplate) method the returned object will then be a menu to which I can pass to the [Menu.setApplactionMenu](https://www.electronjs.org/docs/latest/api/menu#menusetapplicationmenumenu) method that then so far seems to work just fine to create a custom menu for an application. I am sure there is a great deal more to write about when it comes to Menus, but for now this is very much a hello world application so at this time I think I should move on.
 
-The next step involves having a create window function in which I call the main BrowserWindow constructor function. When calling this constructor I am all ready aware of a few note worth options that are worth at least mentioning here. As one would expect there are very much width and height properties to set the starting size of the window.
+The next step involves having a create window function in which I call the main BrowserWindow constructor function. When calling this constructor I am all ready aware of a few note worth options that are worth at least mentioning here. As one would expect there are very much width and height properties to set the starting size of the window, however maybe one option that I should mention right away is the [webPrefernces object](https://www.electronjs.org/docs/latest/api/window-open) which comes into play when doing things such as node integration or not. For this example though, the main goal here is to just simply display hello world though, so for now moving on once again.
 
 
 ```js
