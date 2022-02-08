@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-08 13:34:56
-version: 1.22
+updated: 2022-02-08 14:12:49
+version: 1.23
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -179,4 +179,4 @@ h1{
 
 ## 4 - Concision
 
-That will be if for now then when it comes to getting started with electron.js at least. The next step is to just start making at least a few simple applications now such as maybe a text editor, or any kind of project in which I am opening, editing and saving some kind of file if not just plain text.
+That will be if for now then when it comes to getting started with electron.js at least. The next step is to just start making at least a few simple applications now such as maybe a text editor, or any kind of project in which I am opening, editing and saving some kind of file such as a simple text editor application or something to that effect.
