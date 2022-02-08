@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-02-08 17:18:20
-version: 1.34
+updated: 2022-02-08 17:19:09
+version: 1.35
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -254,7 +254,7 @@ If you are still fairly new to three.js but have some of the basics worked out m
 
 ### 5.3 - Object3D
 
-A real good class to start really learbing a thing ot two about would be the Object3D class, I wrote a [post on Object3D](/2018/04/23/threejs-object3d/), and there is also of course the [official docs on Object3D](https://threejs.org/docs/index.html#api/en/core/Object3D). This is not something that you typically work with directly, but is a class that is used in many of the objects in three.js that helps to make working with three.js easy. It gives Objects like Camera, and Mesh methods like lookAT, and position.set.
+A real good class to start really learning a thing ot two about would be the Object3D class, I wrote a [post on Object3D](/2018/04/23/threejs-object3d/), and there is also of course the [official docs on Object3D](https://threejs.org/docs/index.html#api/en/core/Object3D). This is not something that you typically work with directly, but is a class that is used in many of the objects in three.js that helps to make working with three.js easy. It gives Objects like Camera, and Mesh methods like lookAT, and position.set.
 
 ### 5.4 - Vector3
 
