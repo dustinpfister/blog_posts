@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-08 13:10:35
-version: 1.19
+updated: 2022-02-08 13:16:21
+version: 1.20
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -64,6 +64,7 @@ The next thing that I am doing in this example is creating the custom menu for t
 
 The next step involves having a create window function in which I call the main BrowserWindow constructor function. When calling this constructor I am all ready aware of a few note worth options that are worth at least mentioning here. As one would expect there are very much width and height properties to set the starting size of the window, however maybe one option that I should mention right away is the [webPrefernces object](https://www.electronjs.org/docs/latest/api/window-open) which comes into play when doing things such as node integration or not. For this example though, the main goal here is to just simply display hello world though, so for now moving on once again.
 
+After creating the instance of the BrowserWindow in the createWindow function I can not call various method off of the instance of BrowserWindow such as the loadFile method of the BrowserWindow class. The first argument to this loadFile method should be a relative URI path to an html file that is relative to the root name space of the application folder. So in other words if the index.html file is at the top level along with the package.json file and main.js file here, then I just pass the name of the file, which this case in just simple index.html.
 
 ```js
 // load app and BrowserWindow
