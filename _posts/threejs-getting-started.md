@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-02-08 16:52:14
-version: 1.30
+updated: 2022-02-08 17:09:10
+version: 1.31
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -198,29 +198,67 @@ To make some kind of object to look at I need it's geometry, I will also want to
 
 In order to see anything I will need to render it using something like Canvas, or webGL. In this post I just used the webGL renderer, but there are additional renderer's available in three.js, such as the canvas renderer that uses the 2d drawing context. That will be a lot slower, but it will give greater support on platforms that do not support webGL that well.
 
-## 4 - Conclusion, and what to check out next
+## 4 - Basic Animation loop example
+
+### 4.1 - The updated javaScript for an animation loop example
+
+```js
+(function () {
+    // ---------- ---------- ----------
+    // SCENE, CAMERA, and RENDERER
+    // ---------- ---------- ----------
+    let scene = new THREE.Scene(),
+    camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000),
+    renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ---------- ----------
+    // ADD A MESH
+    // ---------- ---------- ----------
+    let mesh = new THREE.Mesh(new THREE.BoxGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    // ---------- ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ---------- ----------
+    camera.position.set(250, 250, 250);
+    camera.lookAt(0,0,0);
+    renderer.setSize(640, 480);
+    let degree = 0, degreesPerSecond = 90, lt = new Date();
+    let loop = function(){
+        let now = new Date(), secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        degree += degreesPerSecond * secs;
+        degree %= 360;
+        mesh.rotation.x = THREE.MathUtils.degToRad(degree);
+        renderer.render(scene, camera);
+        lt = now;
+    };
+    loop();
+}());
+```
+
+## 5 - Conclusion, and what to check out next
 
 Three.js is the kind of library where you really need to devote at least a solid month or more in order to start to get a little solid with it. I am still learning myself, but I think there are some additional aspects of this library that are very important, while others are kind of optional depending on the kind of projects I aim to make. For example if I want to make games I might want to know about the [lambert material](/2018/04/08/threejs-lambert-material/), as it is more efficient then the standard material. However if I aim to make something that does not need to run in real time I might choose to go with the standard material, as it gives a more realistic look.
 
-### 4.1 - This post is still a work in progress
+### 5.1 - This post is still a work in progress
 
 I first wrote this post back in April of 2018, and as of this writing it is now February of 2022. Sense I first started this post much has changed with three.js sense then, and with that said I will continue to update this post when I get some time to do so. As my content on three.js grows, and I edit posts such as this one, I often will link to this post as a way to just pipe people to something that is a good starting point for threejs.
 
-### 4.x - More on the Box Geometry Constructor
+### 5.2 - More on the Box Geometry Constructor
 
 If you are still fairly new to three.js but have some of the basics worked out maybe it would be a good idea to work out a whole bunch of examples where you are just using the Box Geometry Constructor. There is not just having a Cube on the screen, but doing a whole word of things with that cube. For example there is moving it, rotating it, using an array of materials rather than just one, changing what the index values are for those materials, doing things with light and shadow and so forth. With that said maybe [my post on the Box Geometry Constructor](/2021/04/26/threejs-box-geometry/) will be a good next step from here.
 
-### 4.1 - Object3D
+### 5.3 - Object3D
 
 A real good class to start really learbing a thing ot two about would be the Object3D class, I wrote a [post on Object3D](/2018/04/23/threejs-object3d/), and there is also of course the [official docs on Object3D](https://threejs.org/docs/index.html#api/en/core/Object3D). This is not something that you typically work with directly, but is a class that is used in many of the objects in three.js that helps to make working with three.js easy. It gives Objects like Camera, and Mesh methods like lookAT, and position.set.
 
-### 4.2 - Vector3
+### 5.4 - Vector3
 
 Read my full [post on Vector3](/2018/04/15/threejs-vector3/)
 
 Another class of interest that you should at least be aware of is [vector3](https://threejs.org/docs/index.html#api/en/math/Vector3), This is what you want to use when defining a point in 3d Space.
 
-### 4.2 - Check out my project examples
+### 5.5 - Check out my project examples
 
 In the long run thought of course what really needs to happen sooner or later is to start making one or two real examples using three.js. That is some kind of game or animation type thing typically, so with that said maybe another step forward would be to [look at some of my basic project examples](/2021/02/19/threejs-examples/).
 
