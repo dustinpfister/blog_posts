@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-08 13:16:21
-version: 1.20
+updated: 2022-02-08 13:19:54
+version: 1.21
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -118,6 +118,8 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 });
 ```
+
+Another thing that I think that I should write about here with this hello world example is the webContents property of the instance of the BrowserWindow class, mainly the openDevTools method of this property. The first thing that I am going to want to do when making these kinds of application is to have a way to debug what I am working on as I start to make some kind of real application with electron, and calling this method is one way to go about getting that open in the browser window.
 
 ## 2 - The index.html file
 
