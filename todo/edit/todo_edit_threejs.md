@@ -13,12 +13,17 @@
 <!-- OLD -->
 
 ### () - threejs-dae-collada-loader
+* proof read
 
 ### () - threejs-cube-texture
+* proof read
 
 ### () - threejs-examples-guy-one
+* proof read
 
 ### () - threejs-euler
+* proof read
+* add one more example
 
-### () - threejs-getting-started
-
+### ( done 02/08/2022 ) - threejs-getting-started
+* (done) new example
