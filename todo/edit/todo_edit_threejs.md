@@ -21,9 +21,9 @@
 ### () - threejs-examples-guy-one
 * proof read
 
-### () - threejs-euler
-* proof read
-* add one more example
+### ( done 02/09/2022 ) - threejs-euler
+* (done) proof read
+* (done) add one more example
 
 ### ( done 02/08/2022 ) - threejs-getting-started
 * (done) new example
