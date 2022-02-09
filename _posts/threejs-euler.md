@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2022-02-09 12:28:17
-version: 1.27
+updated: 2022-02-09 12:30:55
+version: 1.28
 ---
 
 In [three js](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is the standard class in three.js that has to do with setting angles for the rotation of an object in three.js, or any other kind of task that would call for an instance of Euler. For example the rotation property of the Object3d class is an instance of Euler, and the [Object3d class](/2018/04/23/threejs-object3d/) is a base Class for many objects in three.js including things like a Mesh, Groups, and Cameras just to name a few examples of the kinds of objects that are placed in a Scene. Speaking of Scene objects that too is an example of an object that is based off of the Object3d Class and thus also has a rotation property that is an instance of Euler.
@@ -245,7 +245,7 @@ There is not just working with this instance of the Euler class that is stored i
 
 ## 6 - Conclusion
 
-The Euler Class is something that I work with all the time when it comes to rotating an object in three.js. There is mainly just knowing the set and clone methods of the Class and that is it. At least those two methods are the ones that I find myself actually using so far.
+The Euler Class is something that I work with all the time when it comes to rotating an object in three.js. There is mainly just knowing the set and clone methods of the Class and that is it. At least those two methods are the ones that I find myself using in various projects thus far. There is also not just using the Euler class alone, but also working with the various other methods in the Vector3 class, as well as the Object3d class to preform all kinds of typical tasks that come up when working on a project that involves the use of threejs.
 
 If you have not done so all ready it might make sense to also take a moment to look over the Vecor3 Class also when it comes to setting positions rather than the orientation of an object. Speaking of Objects there is also looking into the major base class of threejs that is Object3d, which contains the rotation property that is an instance of the Euler class used to rotate objects.
 
