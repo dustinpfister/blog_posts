@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2022-02-09 12:30:55
-version: 1.28
+updated: 2022-02-09 12:31:46
+version: 1.29
 ---
 
 In [three js](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is the standard class in three.js that has to do with setting angles for the rotation of an object in three.js, or any other kind of task that would call for an instance of Euler. For example the rotation property of the Object3d class is an instance of Euler, and the [Object3d class](/2018/04/23/threejs-object3d/) is a base Class for many objects in three.js including things like a Mesh, Groups, and Cameras just to name a few examples of the kinds of objects that are placed in a Scene. Speaking of Scene objects that too is an example of an object that is based off of the Object3d Class and thus also has a rotation property that is an instance of Euler.
@@ -185,7 +185,7 @@ loop();
 
 So now I have the basics of the Euler class out of the way, there are a few more methods but so far I can not say that I am using them that much in actual projects. For the most part I just want to use these methods to rotate some kind of object typically a mesh, but also groups and cameras.
 
-## 5 - The Vector3 apply Euler method
+## 5 - The Vector3 apply Euler method and setting position from Euler
 
 There is not just working with this instance of the Euler class that is stored in the rotation property of an object based off of Object3d, there is also creating a stand alone instance of Euler. There are then a number of things that can be done with this instance of Euler such as passing it to another method of another class that expects an instance of Euler as one of the arguments. A good example of that kind of method might be the apply Euler method of the Vector3 class.
 
