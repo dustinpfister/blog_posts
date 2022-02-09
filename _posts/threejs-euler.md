@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2022-02-09 12:31:46
-version: 1.29
+updated: 2022-02-09 12:35:39
+version: 1.30
 ---
 
 In [three js](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is the standard class in three.js that has to do with setting angles for the rotation of an object in three.js, or any other kind of task that would call for an instance of Euler. For example the rotation property of the Object3d class is an instance of Euler, and the [Object3d class](/2018/04/23/threejs-object3d/) is a base Class for many objects in three.js including things like a Mesh, Groups, and Cameras just to name a few examples of the kinds of objects that are placed in a Scene. Speaking of Scene objects that too is an example of an object that is based off of the Object3d Class and thus also has a rotation property that is an instance of Euler.
@@ -242,6 +242,8 @@ There is not just working with this instance of the Euler class that is stored i
 }
     ());
 ```
+
+Although something like this might work okay for setting the position of a mesh object by way of the Euler class and the Vector3 class apply Euler methods there are additional ways of doing this sort of thing. In the [Vector3 class there is a set from spherical coords method](/2022/02/04/threejs-vector3-set-from-spherical-coords/) for example that takes a radius and two angles to set a position.
 
 ## 6 - Conclusion
 
