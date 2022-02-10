@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-10 07:33:17
-version: 1.28
+updated: 2022-02-10 07:35:39
+version: 1.29
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry).
@@ -25,7 +25,7 @@ I trust that you have worked out at least the very basics of setting up a [scene
 
 ### 1.2 - It is nice to have a solid understanding of the Mesh, and Object3d classes
 
-There is just creating an instance of sphere geometry, but in order to do anything of interest with that geometry I am going to want to add it to a Mesh Object along with a material. The mesh object is based off of the object3d class which is a base class for a whole lot of other objects in three.js. This object3d class has properties that can be used to change position, and orientation, and has many other useful features such as the feature of adding additional child objects to the object that are also based on object3d. 
+There is just creating an instance of sphere geometry, but in order to do anything of interest with that geometry I am going to want to add it to a Mesh Object along with a material. The mesh object is based off of the [object3d class](/2018/04/23/threejs-object3d/) which is a base class for a whole lot of other objects in three.js. This object3d class has properties that can be used to change position, and orientation, and has many other useful features such as the feature of adding additional child objects to the object that are also based on object3d. 
 
 ### 1.3 - Version Numbers matter with three.js
 
