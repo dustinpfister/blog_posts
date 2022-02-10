@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-10 07:35:39
-version: 1.29
+updated: 2022-02-10 07:37:53
+version: 1.30
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry).
@@ -29,7 +29,7 @@ There is just creating an instance of sphere geometry, but in order to do anythi
 
 ### 1.3 - Version Numbers matter with three.js
 
-When I first wrote this post I was using version r127 of three.js. I have been playing around with three.js off and of for a long time now, and I can not say that much has changed with the Sphere Geometry constructor alone when it comes to code breaking changes. Still in many of these examples I am using many other features in three.js that might break when it comes to trying to use them with future versions of three.js.
+When I first wrote this post I was using version [r127 of three.js](https://github.com/mrdoob/three.js/releases/tag/r127), that was released in March of 2021. I have been playing around with three.js off and of for a long time now, and I can not say that much has changed with the Sphere Geometry constructor alone when it comes to code breaking changes. Still in many of these examples I am using many other features in three.js that might break when it comes to trying to use them with future versions of three.js, the same can be said if you are using an older version of threejs.
 
 ## 2 - Basic Sphere Geometry Example
 
