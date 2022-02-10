@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-10 07:27:18
-version: 1.26
+updated: 2022-02-10 07:29:19
+version: 1.27
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry).
@@ -21,7 +21,7 @@ In this post I will be writing about a few examples of the Sphere Geometry const
 
 ### 1.1 - Understand the basics of setting up a scene, camera, and renderer.
 
-I trust that you have worked out at least the very basics of setting up a scene object, and a cameras, and using this scene object and camera with a renderer such as the built in webgl renderer. If not you might want to read up [my getting started post on three.js](/2018/04/04/threejs-getting-started/), or some content on cameras and renderer's first.
+I trust that you have worked out at least the very basics of setting up a [scene object](/2018/05/03/threejs-scene/), cameras, and using this scene object and camera with a renderer such as the built in webgl renderer. If not you might want to read up [my getting started post on three.js](/2018/04/04/threejs-getting-started/), or some content on cameras and renderer's first.
 
 ### 1.2 - It is nice to have a solid understanding of the Mesh, and Object3d classes
 
