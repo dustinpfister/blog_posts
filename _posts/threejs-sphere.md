@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2021-05-26 15:26:02
-version: 1.23
+updated: 2022-02-10 07:12:16
+version: 1.24
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) all ready, but oddly enough I never got around to writing a thing or two about the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry), and everything that centers around it. Just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword and what is returned is a buffer geometry instance that will be a sphere, I can then add the geometry as the first argument to a Mesh along with a material and add it to a scene. However there is a great deal more to it than just that, with the constructor itself, and of course a great many things that branch off from it.
@@ -19,7 +19,7 @@ In this post I will be writing about a few examples of the Sphere Geometry const
 
 ### 1.1 - Understand the basics of setting up a scene, camera, and renderer.
 
-I trust that you have worked out at least the very basics of setting up a scene object, and a cameras, and using this scene object and camera with a renderer such as the built in webgl renderer. If not you might want to read up [my getting started post on three.js](/2018/04/04/threejs-gettingg-started/), or some content on cameras and renderer's first.
+I trust that you have worked out at least the very basics of setting up a scene object, and a cameras, and using this scene object and camera with a renderer such as the built in webgl renderer. If not you might want to read up [my getting started post on three.js](/2018/04/04/threejs-getting-started/), or some content on cameras and renderer's first.
 
 ### 1.2 - It is nice to have a solid understanding of the Mesh, and Object3d classes
 
