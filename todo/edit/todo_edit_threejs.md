@@ -9,6 +9,42 @@
 * get to 1,000+ words
 * have 5+ internal links for the post
 
+<!-- Fixed Links -->
+
+This is a collection of posts to which I fixed broken links on 02-10-2022, but I would like to do a proof read and add addtional links for each post also.
+
+### () - threejs-sphere
+* proof read
+* 5+ links
+
+### () - threejs-orbit-controls
+* proof read
+* 5+ links
+
+### () - threejs-object3d-traverse
+* proof read
+* 5+ links
+
+### () - threejs-mesh
+* proof read
+
+### () - threejs-examples-tree
+* proof read
+
+### () - threejs-examples-clock-basic
+* proof read
+* 5+ links
+
+### () - threejs-color
+* proof read
+
+### () - threejs-camera-move
+* proof read
+
+### () - threejs-box-helper
+* proof read
+* 5+ links
+
 
 <!-- OLD -->
 
