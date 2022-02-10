@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-10 08:08:43
-version: 1.35
+updated: 2022-02-10 08:13:18
+version: 1.36
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry).
@@ -35,7 +35,9 @@ When I first wrote this post I was using version [r127 of three.js](https://gith
 
 First things first when it comes to getting into the sphere geometry and that is starting out with just a basic striped down hello world type example. In this example I start out by creating a main scene object.
 
-I then create the camera that I will be using with the render function along with the scene object to draw the scene from a certain perspective, field of view and so forth the state of which is all stored in this camera object. I then set up my webgl renderer that will provide the render function that will be used to draw the scene, but first I need to add a Mesh object to the scene.
+I then create the camera that I will be using with the render function along with the scene object to draw the scene from a certain perspective, field of view and so forth the state of which is all stored in this camera object. Then calling the perspective camera constructor I am mindful of the values that I will be setting for the near and far render distances, the reason why I will be getting to shortly when it comes to the Mesh object that I will be adding to the scene. Once I have my camera object instance I can use the instance of the Vector3 Class stored in the position property to set the position of the camera as I can do with any object based off of the Object3d class. With that said I will want to move the camera in such a way that it will not be at the same location of the mesh object that i will be adding to the scene. I can also call the object3d look at method off of the instance of the camera to have it loot at a location such as 0,0,0 which is where I will be placing a Mesh object wit the Sphere Geometry.
+
+I then set up my webgl renderer that will provide the render function that will be used to draw the scene, but first I need to add a Mesh object to the scene.
 
 After that I create and add a Mesh object to the scene. When it comes to this Mesh Object the first argument that I pass to it should be a geometry, such as the Sphere geometry. So then here is where I call the THREE.SphereGeomoery constrictor with the new keyword to created this instance of a buffer geometry for the Mesh. For this example I am just directly calling the constructor as an argument to create and return the geometry rather than setting it to a variable first, this is a basic example after all, or at least i am trying to keep things as simple as possible here. After that I will want to pass a material as the second argument.
 
