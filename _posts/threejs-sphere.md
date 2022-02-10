@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-10 08:05:00
-version: 1.34
+updated: 2022-02-10 08:08:43
+version: 1.35
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry).
@@ -33,7 +33,11 @@ When I first wrote this post I was using version [r127 of three.js](https://gith
 
 ## 2 - Basic Sphere Geometry Example
 
-First things first when it comes to getting into the sphere geometry and that is starting out with just a basic striped down hello world type example. In this example I start out by creating a main scene object, after that I create and add a Mesh object to the scene. When it comes to this Mesh Object the first argument that I pass to it should be a geometry, such as the Sphere geometry. So then here is where I call the THREE.SphereGeomoery constrictor with the new keyword to created this instance of a buffer geometry for the Mesh. For this example I am just directly calling the constructor as an argument to create and return the geometry rather than setting it to a variable first, this is a basic example after all, or at least i am trying to keep things as simple as possible here. After that I will want to pass a material as the second argument.
+First things first when it comes to getting into the sphere geometry and that is starting out with just a basic striped down hello world type example. In this example I start out by creating a main scene object.
+
+I then create the camera that I will be using with the render function along with the scene object to draw the scene from a certain perspective, field of view and so forth the state of which is all stored in this camera object. I then set up my webgl renderer that will provide the render function that will be used to draw the scene, but first I need to add a Mesh object to the scene.
+
+After that I create and add a Mesh object to the scene. When it comes to this Mesh Object the first argument that I pass to it should be a geometry, such as the Sphere geometry. So then here is where I call the THREE.SphereGeomoery constrictor with the new keyword to created this instance of a buffer geometry for the Mesh. For this example I am just directly calling the constructor as an argument to create and return the geometry rather than setting it to a variable first, this is a basic example after all, or at least i am trying to keep things as simple as possible here. After that I will want to pass a material as the second argument.
 
 When I create the instance of the Sphere geometry I am passing just one argument that is the radius that I want for it. There are a fair number of other arguments that are also worth mentioning but those can be introduced in additional examples later on in this post. When it comes to materials for this example I went with the [depth material](/2021/05/04/threejs-depth-material/), there are a great number of other materials to go with, but getting into that would be a bit off topic. The main thing about the depth material is that it is a good starting material as it is one of several options that will work fine without a light source.
 
@@ -69,8 +73,6 @@ When I create the instance of the Sphere geometry I am passing just one argument
 }
     ());
 ```
-
-I then create the camera that I will be using for the render function, and when doing so I have decided to add a point light as a child of the camera. So because I added a point light to the camera I am going to want to add the camera to the scene along with the mesh object, otherwise the light that I added to it will have no effect. I then set up my webgl renderer and call the render function of that renderer pass in the scene as the first argument, followed by the camera.
 
 ## 2 - Width and Height segments
 
