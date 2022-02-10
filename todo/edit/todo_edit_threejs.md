@@ -11,7 +11,7 @@
 
 ### () - threejs-sphere
 * (done) start a for post folder in test threejs
-* go with depth material for basic example, and update content in that section linking to the depth material post
+* (done) go with depth material for basic example, and update content in that section linking to the depth material post
 * add link to for post folder in test threejs from blog post in the getting started section
 
 <!-- Fixed Links -->
