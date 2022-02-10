@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-30 15:18:51
-version: 1.33
+updated: 2022-02-10 07:00:18
+version: 1.34
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -228,4 +228,4 @@ I might get around to making a few more additional changes to this model at some
 
 I hope to get around to making some more three js examples in the near future as they prove to be quick, simple, basic projects at least when it comes to the ones that I like to make thus far. I have forgot how fun it can be to make these kinds of projects, and when I keep things simple progress and move along fast. 
 
-So far I have made a few additional simple models like this, such as one that is of a simple little [biplane example](/2021/02/17/threejs-example-biplane/), and also one that is a [group of biplane models](/2021/02/18/threejs-examples-biplane-group/). I might get around to making at least a few more examples that will start to be some kind of interesting animations, or artful like ting, but there is so more more to write about and learn about in the process.
+So far I have made a few additional simple models like this, such as one that is of a simple little [biplane example](/2021/02/17/threejs-examples-biplane/), and also one that is a [group of biplane models](/2021/02/18/threejs-examples-biplane-group/). I might get around to making at least a few more examples that will start to be some kind of interesting animations, or artful like ting, but there is so more more to write about and learn about in the process.
