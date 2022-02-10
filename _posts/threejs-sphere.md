@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-10 07:37:53
-version: 1.30
+updated: 2022-02-10 07:43:29
+version: 1.31
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry).
@@ -33,7 +33,7 @@ When I first wrote this post I was using version [r127 of three.js](https://gith
 
 ## 2 - Basic Sphere Geometry Example
 
-First thins first when it comes to getting into the sphere geometry and that is starting out with just a basic striped down hello world type example. In this example I start out by creating a main scene object that I will be passing to the render function of the renderer along with a camera later. After that I create and add a Mesh object to the scene, and when doing so I will pass an instance of the Sphere Geometry as the first argument of the Mesh constructor, and after that I will want to pass a material as the second argument.
+First things first when it comes to getting into the sphere geometry and that is starting out with just a basic striped down hello world type example. In this example I start out by creating a main scene object, after that I create and add a Mesh object to the scene. When it comes to this Mesh Object the first argument that I pass to it should be a geometry, such as the Sphere geometry. So then here is where I call the THREE.SphereGeomoery constrictor with the new keyword to created this instance of a buffer geometry for the Mesh. For this example I am just directly calling the constructor as an argument to create and return the geometry rather than setting it to a variable first, this is a basic example after all, or at least i am trying to keep things as simple as possible here. After that I will want to pass a material as the second argument.
 
 First this example when I create the instance of the Sphere geometry I am passing just one argument that is the radius that I want for it. There are a fair number of other arguments that are also worth mentioning but those can be introduced in additional examples later on in this post. When it comes to materials for this example I went with the standard material, there are a great number of other materials to go with, but getting into that would be a bit off topic. The main thing about the standard material is that it is a kind of material that will respond to a light source, so I set some properties for it that have to do with setting the color that will be used with a light source, and what the base color should be in the event of no light.
 
