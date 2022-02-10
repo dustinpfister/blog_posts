@@ -9,16 +9,18 @@
 * get to 1,000+ words
 * have 5+ internal links for the post
 
+### () - threejs-sphere
+* (done) start a for post folder in test threejs
+* go with depth material for basic example, and update content in that section linking to the depth material post
+* add link to for post folder in test threejs from blog post in the getting started section
+
 <!-- Fixed Links -->
 
 This is a collection of posts to which I fixed broken links on 02-10-2022, but I would like to do a proof read and add additional links for each post also.
 
-### () - threejs-sphere
-* proof read
+### ( done 02/10/2022 ) - threejs-sphere
+* (done) proof read
 * (done) 5+ links
-* start a for post folder in test threejs
-* go with depth material for basic example, and update content in that section linking to the depth material post
-* add link to for post folder in test threejs from blog post in the getting started section
 
 ### () - threejs-orbit-controls
 * proof read
