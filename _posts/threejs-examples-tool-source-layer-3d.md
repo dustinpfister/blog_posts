@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-12 11:03:38
-version: 1.1
+updated: 2022-02-12 11:09:24
+version: 1.2
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a 2d plain canvas javaScript project that I made a litle while back.
@@ -15,6 +15,10 @@ For this weeks post on threejs I made another simple [threejs project example](/
 
 
 ## 2 - The Main javaScript file
+
+In my main javaScript file I have code worked out for the scene layer of this project as well as additional code that has to do with updating the content of this scene layer.
+
+I have found a way to directly work with the Collada loader in revision 1 of this example. To do so I just need to pass the text content for the first argument of the parser, and then the path argument of the loader is used to know what the base url is when it comes to loading any additional assets that the dea file may use such as textures. So then there is a file input element that is used to load the dae file, and then there is also a dea path text input element that is used to set what the path os for any additional assets. The path set must be absolute relative to the view folder in my test threejs project folder.
 
 ```js
 (function () {
