@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-12 11:17:21
-version: 1.4
+updated: 2022-02-12 11:18:49
+version: 1.5
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on.
@@ -18,7 +18,7 @@ For this weeks post on threejs I made another simple [threejs project example](/
 
 ### 1.1 - The source code for this example is on Github
 
-The full source code for this project example, as well as the source code for older revisions, and any additional revisions to which I have not revised this content for possible can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tool-source-layer-3d) on Github.
+The full source code for this project example, as well as the source code for older revisions, and any additional revisions to which I have not revised this content for possible can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tool-source-layer-3d) on Github. If you want to reproduce what I am writing about here on you end it might be best to install the full project there, as I am making use of additional back end code, and dea models and so forth.
 
 ## 2 - The Main javaScript file
 
