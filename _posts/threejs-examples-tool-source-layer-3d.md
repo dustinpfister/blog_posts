@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-12 11:21:26
-version: 1.6
+updated: 2022-02-12 11:23:43
+version: 1.7
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on.
@@ -354,3 +354,7 @@ I have found a way to directly work with the Collada loader in revision 1 of thi
 }
     (this['DAE'] = {}));
 ```
+
+## 5 - Conlcusion
+
+This is it for now then, at least when it comes to revision 1 of this example as that Is the revision that I was writing about when I first started writing this blog post. I do have things planed out for future revisions in my todo list for this example, but that is a practice for all my other threejs examples also. I may or may not get around to actually making improvements to this.
