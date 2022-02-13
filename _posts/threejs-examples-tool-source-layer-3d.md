@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-13 10:16:59
-version: 1.22
+updated: 2022-02-13 10:18:21
+version: 1.23
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on. 
@@ -28,7 +28,7 @@ The full source code for this project example, as well as the source code for ol
 
 ### 1.2 - Version numbers matter with threejs
 
-When I was first working on this example I was using r127 of threejs, and I am also using 2.6.14 of vuejs.
+When I was first working on this example I was using [r127 of threejs](https://github.com/mrdoob/three.js/releases/tag/r127), and I am also using 2.6.14 of vuejs.
 
 ## 2 - The Main javaScript file
 
