@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-13 10:15:44
-version: 1.21
+updated: 2022-02-13 10:16:59
+version: 1.22
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on. 
@@ -20,7 +20,7 @@ There may be alternative ways of doing this sort of thing such as just creating 
 
 This is a project in which I am using threejs, as well as vuejs when it comes to front end libraries. I am also using one additional file on top of just threejs alone that is the Collada File loader that can be found in the threejs github repository. On top of that I am also making use of several javaScript files of my own that make use of these various files that have to do with threejs and vuejs, as well as a little back end code, and I am also using dae files are a resource for this art application example on top of that actually.
 
-So if you are still fairly new to javaScript this post might prove to be a little to advanced for you, also even if you have some experience with javaScript it still might be a bit of a pain to reproduce what I am writing about here on you end. So mayeb the best way would be to clone down my test vje github repository and do an npm install in order to set things up quick.
+So if you are still fairly new to javaScript this post might prove to be a little to advanced for you, also even if you have some experience with javaScript it still might be a bit of a pain to reproduce what I am writing about here on you end. So maybe the best way would be to clone down my test vje github repository and do an npm install in order to set things up quick. In any case in this section I will be going over a few quick points about this project example that one should e aware of before continuing to read the result of the content in this post.
 
 ### 1.1 - The source code for this example is on Github
 
