@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-13 09:53:40
-version: 1.16
+updated: 2022-02-13 09:57:45
+version: 1.17
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on.
@@ -29,6 +29,8 @@ When I was first working on this example I was using r127 of threejs, and I am a
 ## 2 - The Main javaScript file
 
 In my main javaScript file I have code worked out for the scene layer of this project as well as additional code that has to do with updating the content of this scene layer.
+
+For the source layer application I am doing the typical set of things that are true with any threejs application as such it is here that I am creating a scene, camera, light, and renderer objects that compose any other threejs object. On top of that thought I am also creating a vuejs instance that will serve as a way to create a template for a user interface that will be used to mutate settings for a vue data object, and then it will be these vue data object settings that will be used to then update values of the scene and render the new state of the scene.
 
 I have found a way to directly work with the Collada loader in revision 1 of this example. To do so I just need to pass the text content for the first argument of the parser, and then the path argument of the loader is used to know what the base url is when it comes to loading any additional assets that the dea file may use such as textures. So then there is a file input element that is used to load the dae file, and then there is also a dea path text input element that is used to set what the path os for any additional assets. The path set must be absolute relative to the view folder in my test threejs project folder.
 
@@ -169,7 +171,7 @@ I have an additional file that is all the source code that has to do with the dr
 
 With the canvas element that I append to a shared container element with the source layer I am attaching a number of events for pointer events. I went with pointer events rather than mouse and touch events alone because for this drawing module I did not care to go all out with features, I just wanted a simple clean, simple drawing application type thing to use on top of the source layer which is really the main focus of this project example. If I where to keep working on this I might want to have separate events for touch and mouse events and do things like have a custom right click menu and so forth, but for now I just want to keep things simple with this.
 
-Just like with the source layer application I have a vuew instance in which I am defining a template for a user interface that will be used to control things when it comes to various settings for the state of the drawing app. When it comes to a very simple drawing app I am still going to want to be able to do things like change brush size, color, and clear the canvas at the very least and the ui that this template creates allows for me to do just that by mutating a vue data object that contains those settings.
+Just like with the source layer application I have a vue instance in which I am defining a template for a user interface that will be used to control things when it comes to various settings for the state of the drawing app. When it comes to a very simple drawing app I am still going to want to be able to do things like change brush size, color, and clear the canvas at the very least and the ui that this template creates allows for me to do just that by mutating a vue data object that contains those settings.
 
 ```js
 (function () {
