@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-13 09:44:30
-version: 1.14
+updated: 2022-02-13 09:50:27
+version: 1.15
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on.
@@ -167,6 +167,8 @@ I have found a way to directly work with the Collada loader in revision 1 of thi
 
 I have an additional file that is all the source code that has to do with the draw canvas layer that I position on top of the source layer. So then where the source layer is the resource that I will be using for a reference as to what to draw, the draw layer on top of that is the layer where I will actually be drawing to with the mouse and or touch screen.
 
+With the canvas element that I append to a shared container element with the source layer I am attaching a number of events for pointer events. I went with pointer events rather than mouse and touch events alone because for this drawing module I did not care to go all out with features, I just wanted a simple clean, simple drawing application type thing to use on top of the source layer which is really the main focus of this project example. If I where to keep working on this I might want to have separate events for touch and mouse events and do things like have a custom right click menu and so forth, but for now I just want to keep things simple with this.
+
 ```js
 (function () {
  
@@ -265,7 +267,7 @@ I have an additional file that is all the source code that has to do with the dr
 
 A while back I started another [threejs project example that has to do with a dae files](/2021/06/25/threejs-examples-dae-tools/). When it comes to working just with threejs alone, as well as additional files in the repository there is the Collada Loader that can be used on top of just threejs alone. However this loader will just load whatever the state of the file is, and not preform any additional filtering when it comes to what it is in the file that I actually want to add to a scene. Also there might be more than one way that I would want to use the features of this Collada Loader, and so forth. As such there appears to be a need for at least a little additional javaScript code that acts as one little additional abstraction for loading dae files, and also I will want a place to park any and all additional code that has to do with dae files, beyond just that of what there is to work with when it comes to threejs and the Collada Loader alone, thus I am using a dae files module of my own for this project.
 
-This module contains a create method where I can set methods for events like what to do as a file is being loaded, what to do when the loading of a dae file is over an so forth. I can then pass this object as an argument when calling a lodad all method of the module and when doing so I can set additional options that have to do with a base url, along with one or more additional relative paths from that base url that are dea files that I want to load. However when it comes to the kind of project there might be alternative ways that I go about loading  a dae file that involve for example the File Input element to load a dae file in a local file system rather than that of making a scripted http call over a network. So in any case as to how to I go about parsing dae files I also have methods that have to do with filtering the end result, regardless of how that result was created.
+This module contains a create method where I can set methods for events like what to do as a file is being loaded, what to do when the loading of a dae file is over an so forth. I can then pass this object as an argument when calling a load all method of the module and when doing so I can set additional options that have to do with a base url, along with one or more additional relative paths from that base url that are dea files that I want to load. However when it comes to the kind of project there might be alternative ways that I go about loading  a dae file that involve for example the File Input element to load a dae file in a local file system rather than that of making a scripted http call over a network. So in any case as to how to I go about parsing dae files I also have methods that have to do with filtering the end result, regardless of how that result was created.
 
 ```js
 (function (api) {
