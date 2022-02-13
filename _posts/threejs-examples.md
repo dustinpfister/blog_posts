@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-06-25 16:54:37
-version: 1.34
+updated: 2022-02-13 10:25:51
+version: 1.35
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -33,13 +33,13 @@ This is an example of a backyard type scene that makes use of several modules th
 
 This example aims to be the start of a basic framework that I might use on top of three.js. Every time I start a new three.js project, or even just a simple example there is a lot of code that I find myself repeating over and over again. So it would make sense to pull some of this code into a collection of reusable functions, and maybe make this collection of functions part of an over all larger project.
 
-### [ 2.3 - A Biplane Example](/2021/02/17/threejs-examples-biplane/)
-
-The first example on this list is an example where I am making a simple biplane model to play around with. I am not taking the time to work out a serious model rather, but just slapping a bunch of box geometries together into an instance of [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/). I am then using the [Object3d.userData](/2021/02/16/threejs-userdata/) object to append some properties to an instance of one of these biplane models. The module that is used to create one of these is also the module that I use to update one of theme also.
-
-### [ 2.4 - A Biplane Group Example](/2021/02/18/threejs-examples-biplane-group/)
+### [ 2.3 - A Biplane Group Example](/2021/02/18/threejs-examples-biplane-group/)
 
 This is another example of a model but this time around I experimented with creating a model that is a model of models. This is taking the biplane model that I made and create a new model that is just working with a collection of these biplane models.
+
+### [ 2.4 - A Biplane Example](/2021/02/17/threejs-examples-biplane/)
+
+The first example on this list is an example where I am making a simple biplane model to play around with. I am not taking the time to work out a serious model rather, but just slapping a bunch of box geometries together into an instance of [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/). I am then using the [Object3d.userData](/2021/02/16/threejs-userdata/) object to append some properties to an instance of one of these biplane models. The module that is used to create one of these is also the module that I use to update one of theme also.
 
 ### [ 2.5 - Build a box ](/2021/05/17/threejs-examples-build-a-box/)
 
@@ -71,39 +71,43 @@ This is an example that I worked out that is an attempt at a 3d view for my Mr S
 
 If I get a solid idea for the core of what the game should be I might like to experiment with a 3d view for the game, so this example is just that.
 
-### [ 2.12 - nested groups](/2021/05/10/threejs-examples-nested-groups/)
+### [ 2.12 - Menus with threejs](/2021/12/03/threejs-examples-menus/) 
+
+### [ 2.13 - nested groups](/2021/05/10/threejs-examples-nested-groups/)
 
 An example that is a collection of mesh objects in a group nested in another group.
 
-### [ 2.13 - Mutate a plane ](/2021/06/11/threejs-examples-plane-mutate/)
+### [ 2.14 - Mutate a plane ](/2021/06/11/threejs-examples-plane-mutate/)
 
 Here i have a quick example that I worked out where I am mutating the position attribute of a plane geometry instance. This is one of a few examples that I worked out after logging some time learning more about working with the buffer geometry class in general. There is learning how to make a custom geometry from the ground up, but there is also learning how to just adjust a few things with a built in geometry also.
 
-### [ 2.14 - position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
+### [ 2.15 - position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
 
 This is an example where I have worked out a crude yet effective module that can be used to create a special kind of sphere wrap group. The main create method of this sphere wrap group returns a group that of course has a sphere as one of the children, however it then also has a surface group. I then have another public method of this module that will create and add a object wrap group to the surface group and then this object wrap group contains a mesh that will end up being positioned on top of the surface of the sphere.
 
-### [ 2.15 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
+### [ 2.16 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
 This is an example of a module that can be used to shake the whole scene that will work if I do not add the camera to the scene of course. However any object in three.js that is based off of object3d can also be used with this shake module.
 
-### [ 2.16  - Mutate a sphere ](/2021/06/10/threejs-examples-sphere-mutate/)
+### [ 2.17  - Mutate a sphere ](/2021/06/10/threejs-examples-sphere-mutate/)
 
 In this example I am just working out a helper method that will just move the position of the top point of a sphere geometry. This is just an example that I worked out after writing a bunch of posts on the buffer geometry class in threejs and when I did so I learned a lot more about what the various attributes are for a geometry class in causing the position attribute. So I thought that I should work out at least on or two more examples that have to do with creat8ng a custom geometry, or just mutating the values of a geometry that is created with one of the built in geometry constructors such a s the sphere geometry constructor.
 
-### [ 2.17 - Tree](/2019/07/30/threejs-examples-tree/)
-
-This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
-
-### [ 2.18 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
-
-This is a very basic static model of a tree that is just a sphere geometry placed on the top of a box geometry that has dimensions that look like a trunk of a tree. It is then one of the most simplistic models of this kind that I have made thus far, and might prove as a good starting point when it comes to making models this way.
+### [ 2.18 - source layer 3d](/2022/02/11/threejs-examples-tool-source-layer-3d/) 
 
 ### [ 2.19 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
 
 This is an example where I am using my simple tree sphere models and just creating a whole bunch of those and placing them around the surface of a sphere. It is then just a basic example of creating a main world type model and then having a whole bunch of instances of another model be a part of this kind of model.
 
-### [ 2.20 - Waves](/2018/11/14/threejs-examples-waves/) 
+### [ 2.20 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
+
+This is a very basic static model of a tree that is just a sphere geometry placed on the top of a box geometry that has dimensions that look like a trunk of a tree. It is then one of the most simplistic models of this kind that I have made thus far, and might prove as a good starting point when it comes to making models this way.
+
+### [ 2.21 - Tree](/2019/07/30/threejs-examples-tree/)
+
+This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
+
+### [ 2.22 - Waves](/2018/11/14/threejs-examples-waves/) 
 
 The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
 
