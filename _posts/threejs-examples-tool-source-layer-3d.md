@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-13 10:43:15
-version: 1.25
+updated: 2022-02-13 10:51:09
+version: 1.26
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on. 
@@ -377,4 +377,4 @@ This is it for now then, at least when it comes to revision 1 of this example as
 
 Even if I do not get around to make any and all additional improvements to this example there are a few things that I have done in this example that I have not done in any other threejs example of min thus far that I do aim to repeat in future examples, and also with additional revisions of older examples. Thus far with my threejs example I have been sticking mainly to just using threejs alone, however with this example I also made use of vuejs with the fron end system also rather than doing what I often do with is just having my own vanilla javaScript code alone on top of threejs. I have found that I do like using vuejs when it comes to a front end framework, and I have to say that it does help to keep this well organized compared to what I often do working with vanilla javaScript alone.
 
-Regardless of who many libraries I use with a project, compared to how much vanilla javaScritp code I right there is another things that I think I should keep up with when it comes to making additional projects. For this example I in a way I did not make just one application, but in a way to separate applications that can be used together in a single web page.
+Regardless of who many libraries I use with a project, compared to how much vanilla javaScritp code I right there is another things that I think I should keep up with when it comes to making additional projects. For this example I in a way I did not make just one application, but in a way to separate applications that can be used together in a single web page. That is that I though not of making just one single application but two or more applications that work together. When doing this sort of thing each application should still work well on its own. For this example I have code that is just used to create a scene, and another application that is just a simple drawing app. They could both be used on there own, but by making use of both of them in a certain way I can have this one application that is used to create and mutate the state of a scene, and other layer that is used to create an mutate the state of a drawing of that scene.
