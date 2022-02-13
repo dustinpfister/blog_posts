@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-02-13 10:30:19
-version: 1.36
+updated: 2022-02-13 10:33:52
+version: 1.37
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -71,7 +71,9 @@ This is an example that I worked out that is an attempt at a 3d view for my Mr S
 
 If I get a solid idea for the core of what the game should be I might like to experiment with a 3d view for the game, so this example is just that.
 
-### [ 2.12 - Menus with threejs](/2021/12/03/threejs-examples-menus/) 
+### [ 2.12 - Menus with threejs](/2021/12/03/threejs-examples-menus/)
+
+If you have not looked into working with a ray caster yet you might want to do so at some point, that truly is the case if you want to make some kind of user interface with threejs among other tasks in which a ray cater comes in handy. Simply put a ray caster is a way to go about finding out if one or more mesh objects have been clicked on by casting a ray from a position such as the position of the camera outward from the camera to get whatever mesh objects come in contact with that ray.
 
 ### [ 2.13 - nested groups](/2021/05/10/threejs-examples-nested-groups/)
 
