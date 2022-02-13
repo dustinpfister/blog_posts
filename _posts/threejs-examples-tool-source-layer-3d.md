@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-12 11:24:48
-version: 1.8
+updated: 2022-02-13 08:55:18
+version: 1.9
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on.
@@ -165,6 +165,8 @@ I have found a way to directly work with the Collada loader in revision 1 of thi
 
 ## 3 - The draw javaScript for for the draw canvas layer
 
+I have an additional file that is all the source code that has to do with the draw canvas layer that I position on top of the source layer. So then where the source layer is the resource that I will be using for a reference as to what to draw, the draw layer on top of that is the layer where I will actually be drawing to with the mouse and or touch screen.
+
 ```js
 (function () {
  
@@ -260,8 +262,6 @@ I have found a way to directly work with the Collada loader in revision 1 of thi
 
 
 ## 4 - The dae tools file
-
-SO then I have an additional file that is all the soucre code that has to do with the draw canvas layer that I position on top of the source layer.
 
 ```js
 (function (api) {
