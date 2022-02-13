@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-13 08:55:18
-version: 1.9
+updated: 2022-02-13 08:58:33
+version: 1.10
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on.
@@ -262,6 +262,8 @@ I have an additional file that is all the source code that has to do with the dr
 
 
 ## 4 - The dae tools file
+
+A while back I started another threejs project example that has to do with a dae files. When it comes to working just with threejs alone, as well as additional files in the repository there is the Collada Loader that can be used on top of just threejs alone.
 
 ```js
 (function (api) {
