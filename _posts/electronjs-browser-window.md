@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-14 16:32:11
-version: 1.9
+updated: 2022-02-14 16:34:38
+version: 1.10
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -109,6 +109,8 @@ app.on('window-all-closed', function () {
 ```
 
 So then I also have two menu templates in this example, one of which I have for the main window, and another for the child window. One key difference between the two is that I will want to be able to open a child window from the main window of course. To do so I just need to create an object for a sub menu of the file menu and in this object I will want to have a label with a value like new window. I then will want to have a click property for the object and for this click property I can then have a function where I define the javaScript that I want to run when this option is click. In this case I will want to call the create child window function to create yet another child window.
+
+Another key difference between the menu for the parent window and the child window is that I do not want a file menu at all for that menu. That is that I do not want to be able to quit the whole application from the child window, so I just did away with that menu all together. 
 
 ## 2 - The HTML Folder
 
