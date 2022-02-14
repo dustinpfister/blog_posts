@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-14 16:13:55
-version: 1.4
+updated: 2022-02-14 16:16:36
+version: 1.5
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -182,3 +182,4 @@ h1{
 
 ## 3 - Conclusion
 
+There is a great deal more to write about when it comes to the browser window class, this single post alone does not even make a dent in the surface. I will likely make future revisions to this post at some point in the future as a log more hours working with electron.js, but for now this will be it.
