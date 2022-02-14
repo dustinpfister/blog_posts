@@ -5,13 +5,13 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-14 16:19:12
-version: 1.6
+updated: 2022-02-14 16:21:08
+version: 1.7
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
 
-There is also one other class that I think that a developer should be aware of right alway also, which is the [Menu class](https://www.electronjs.org/docs/latest/api/menu). This Menu class as the name suggests is how to go about creating a custom menu for one or more windows in the application. So in todays example I am just going to be taking a few more steps forward with Menus also while looking more into what can be done with the browser window class, starting with maybe the set menu method of the browser window class. I have found thus far that this is the method that I am going to want to use when it comes to having more than one kind of menu for more than one kind of window.
+There is also one other class that I think that a developer should be aware of right alway also, which is the [Menu class](https://www.electronjs.org/docs/latest/api/menu). This Menu class as the name suggests is how to go about creating a custom menu for one or more windows in the application. So in todays example I am just going to be taking a few more steps forward from my [hello wold example that I started with](/2022/02/07/electronjs-hello-world/) with Menus also while looking more into what can be done with the browser window class, starting with maybe the set menu method of the browser window class. I have found thus far that this is the method that I am going to want to use when it comes to having more than one kind of menu for more than one kind of window.
 
 <!-- more -->
 
