@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-14 16:16:36
-version: 1.5
+updated: 2022-02-14 16:19:12
+version: 1.6
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -110,7 +110,9 @@ app.on('window-all-closed', function () {
 
 I then also have a html folder that I will be using to store the html files for both a main window as well as a child window. This will then also be used as a place to store any additional files that compose the client system for this electron js example.
 
-### 2.1 - window main
+### 2.1 - The window main html file
+
+The main html file for a main window of this example just has some text the says that this is the main window of the application. In the head of the html file I also also linking to a css file that is shared with the other html file that composes the html for a child window.
 
 ```html
 <!DOCTYPE html>
@@ -131,7 +133,7 @@ I then also have a html folder that I will be using to store the html files for 
 </html>
 ```
 
-### 2.2 - Window child
+### 2.2 - The Window child html file
 
 ```html
 <!DOCTYPE html>
