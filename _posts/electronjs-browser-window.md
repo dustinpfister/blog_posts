@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-15 11:50:57
-version: 1.15
+updated: 2022-02-15 11:55:15
+version: 1.16
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -32,12 +32,20 @@ One new Browser class method that I am using now in this example is the set menu
 ```js
 // load app and BrowserWindow
 const { app, Menu, BrowserWindow } = require('electron');
+const path = require('path');
 // Create A Child Window
 function createChildWindow() {
     const childWindow = new BrowserWindow({
             width: 320,
             height: 240,
-            backgroundColor: '#008888'
+            // the parent propery should be used with the main window so that when
+            // the main window is closed, all child windows will also close
+            parent: BrowserWindow.fromId(1),
+            backgroundColor: '#008888',
+            webPreferences: {
+                contextIsolation: true,
+                preload: path.resolve( __dirname, 'preload.js')
+            }
         });
     const menu = Menu.buildFromTemplate(ChildMenuTemplate);
     childWindow.setMenu(menu);
@@ -50,10 +58,13 @@ function createMainWindow() {
             width: 800,
             height: 600,
             backgroundColor: '#008888',
-            webPreferences: {}
+            webPreferences: {
+                contextIsolation: true,
+                preload: path.resolve( __dirname, 'preload.js')
+            }
         });
     // load the html file for the main window
-    mainWindow.loadFile('html/window_main.html')
+    mainWindow.loadFile('html/window_main.html');
     // Open the DevTools for debugging
     //mainWindow.webContents.openDevTools()
     // creating a starting child window
@@ -73,6 +84,7 @@ const MainMenuTemplate = [
             {
                 label: 'New Window',
                 click: function(){
+                    // window of id 1 should always be the parent window
                     createChildWindow();
                 }
             }
@@ -120,11 +132,25 @@ So then I also have two menu templates in this example, one of which I have for 
 
 Another key difference between the menu for the parent window and the child window is that I do not want a file menu at all for that menu. That is that I do not want to be able to quit the whole application from the child window, so I just did away with that menu all together. 
 
-## 2 - The HTML Folder
+## 2 - The preload javaScript file
+
+```js
+// preload with contextIsolation enabled
+const { contextBridge } = require('electron');
+// create an api for window objects in web pages
+contextBridge.exposeInMainWorld('api', {
+  func: function(){
+      return 'hello world';
+  }
+});
+console.log('preload');
+```
+
+## 3 - The HTML Folder
 
 I then also have a html folder that I will be using to store the html files for both a main window as well as a child window. This will then also be used as a place to store any additional files that compose the client system for this electron js example.
 
-### 2.1 - The window main html file
+### 3.1 - The window main html file
 
 The main html file for a main window of this example just has some text the says that this is the main window of the application. In the head of the html file I also also linking to a css file that is shared with the other html file that composes the html for a child window.
 
@@ -136,18 +162,20 @@ The main html file for a main window of this example just has some text the says
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Browser Window Demo</title>
+    <title>Browser Window Demo - Main Window</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div id="wrap_main">
-        <h1>Browser Window demo</h1>
+        <h1>Main Window</h1>
+        <textarea id="text_console" rows="10" cols="60"></textarea>
+        <script src="client.js"></script>
     </div>
   </body>
 </html>
 ```
 
-### 2.2 - The Window child html file
+### 3.2 - The Window child html file
 
 I then have a whole other html file for a child window of this example.
 
@@ -159,18 +187,25 @@ I then have a whole other html file for a child window of this example.
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Child Window</title>
+    <title>Browser Window Demo - Child Window</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div id="wrap_main">
-        <h4>Child Window</h4>
+        <h1>Child Window</h1>
     </div>
   </body>
 </html>
 ```
 
-### 2.3 - Style CSS
+### 3.3 - The client javaScript file
+
+```js
+var con = document.querySelector('#text_console');
+con.value = api.func();
+```
+
+### 3.4 - Style CSS
 
 I then have some shared css between the two html files.
 
@@ -180,26 +215,13 @@ body{
   color: #2a2a2a;
   margin: 0px;
   padding: 0px;
-}
-h1{
-   font-size: 40pt;
-   font-family: arial;
+  font-family: arial;
 }
 #wrap_main{
   position: absolute;
-  left: 25%;
-  top: 25%;
-  width: 50%;
-  height: 50%;
-  text-align: center; 
-  display: table;
-}
-#wrap_main h1 {
-  display:table-cell;
-  vertical-align:middle
 }
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 There is a great deal more to write about when it comes to the browser window class, this single post alone does not even make a dent in the surface. I will likely make future revisions to this post at some point in the future as a log more hours working with electron.js, but for now this will be it. As of this writing I am still fairly new to electron js, and I can see that this is the kind of framework that is going to take a while to learn this is and outs of.
