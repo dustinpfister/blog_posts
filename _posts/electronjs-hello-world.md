@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-15 10:21:47
-version: 1.28
+updated: 2022-02-15 10:30:11
+version: 1.29
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -25,6 +25,10 @@ Nodejs should also be installed, and also when installing nodejs it is a good id
 ### Why, or Why not electron.js?
 
 There are a lot of good things to say about electron.js, the first and for most thing about it is that it is just one of the best projects to go with if the aim is to create some kind of desktop application with javaScript, html, and css. It will make life a lot easier compared to trying to make such an application from the ground up, also there are a lot of concerns when it comes to packaging binaries to run the javaScript as when it comes to deployment one can not always be certain that a user will have chrome and nodejs installed on there system. So then what it comes to just working out some kind of [nodejs project without election](/2020/10/27/nodejs-example-chrome-app-mode/) there are ways of starting chrome from a nodejs script with the [child process](/2018/02/04/nodejs-child-process/) module, but I am making some assumptions about what there is to work with on the computer when doing something like that.
+
+### The full source code for this example is on Github
+
+I have set up a electronjs examples repository in my Github account that I will be using to park all the source code examples that I make while learning  and writing about electronjs. The source code examples for this post alone can be [found here](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-hello-world)
 
 ### Setting up the app folder
 
