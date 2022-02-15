@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-15 10:35:23
-version: 1.13
+updated: 2022-02-15 11:48:09
+version: 1.14
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -18,6 +18,10 @@ There is also one other class that I think that a developer should be aware of r
 ## What to know first before reading more on Browser Window
 
 The example that I am writing about in this post is a little more advanced then the hello world example that I made first. This is very much the second post on electronjs that I have wrote thus far, so much of what I am writing about here has to do with what the next steps are after getting stared with electron with a very basic example that just displays a message in a browser window. So I am taking some liberties here and assuming that you have at least a little experience thus far working with electron.
+
+### The full source code for this example is on Github
+
+I have set up a electronjs examples repository in my Github account that I will be using to park all the source code examples that I make while learning  and writing about electronjs. The source code examples for this post alone can be [found here](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-browser-window/) in the for post folder of the repository. This might in some cases be the best way to go about reproducing what I am working with here on your end.
 
 ## 1 - The main javaScript file
 
