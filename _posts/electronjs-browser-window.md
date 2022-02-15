@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-15 13:13:07
-version: 1.22
+updated: 2022-02-15 13:18:28
+version: 1.23
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -31,7 +31,9 @@ In the hello world example that I started out with I all ready made use of one b
 
 One new Browser Window class method that I am using now in this example is the [set menu method](https://www.electronjs.org/docs/latest/api/browser-window#winsetmenumenu-linux-windows) of the browser window class that I think I will now be using for every situation in which I will want a custom menu from now on. The reason why I say that is that in the hello world example I made use of the [set Application Menu](https://www.electronjs.org/docs/latest/api/menu#menusetapplicationmenumenu) of the Menu class, which seems to make it so that any calls to change the Menu after that will be ignored. It would seem thus far that if I want to change what the menu is on the fly, I will not want to use the menu class method to set what the custom menu is, but rather use this set Menu method of the Browser Window class. However this alone might still not be a done deal, as I am still not sure if the set menu method is what I want to use when making an application that will work on a wider range of operating systems.
 
-Another major point to make with this example is with the additional options used when calling the Browser Window class constructor, such as the backgroundColor, parent, and webPrefernecs properties. The background color prop is a way to set what the background color should be for a window before the content loads. When creating a child window I have found that I do want to make use of the parent property to set what the parent window is for the child window. There is one main thing to keep in mind with this parent property and that is that when I close the main parent window, that should also close any and all child windows as well. Well at least that is the kind of behavior that i would want in mode cases, if not for some reason then maybe the parent property is not all that important. Finally when it comes to getting into the long list of webPrefernces options I think that the context isolation property and the preload properties are good starting points over other options such as the node integration property.
+Another major point to make with this example is with the additional options used when calling the Browser Window class constructor, such as the backgroundColor, parent, and webPrefernecs properties. The background color prop is a way to set what the background color should be for a window before the content loads. When it comes to getting into the long list of webPrefernces options I think that the context isolation property and the preload properties are good starting points over other options such as the node integration property. In oder to define a public api for the client side system I will need to use additional classes an features in the preload javaScript file, more on that later in the section on that file.
+
+When creating a child window I have found that I do want to make use of the parent property to set what the parent window is for the child window. There is one main thing to keep in mind with this parent property and that is that when I close the main parent window, that should also close any and all child windows as well on top of that in such a case. Well at least that is the kind of behavior that I would want in mode cases, if not for some reason then maybe the parent property is not all that important it would seem. The value of the parent property should be a reference to the instance of browaerWindow that is the parent for this child window, and one way to go about getting such a reference if one is not all the ready would be to use the [BrowserWindow.fromId](https://www.electronjs.org/docs/latest/api/browser-window#browserwindowfromidid) static method.
 
 ```js
 // load app and BrowserWindow
