@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-15 12:20:55
-version: 1.17
+updated: 2022-02-15 12:30:39
+version: 1.18
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -25,9 +25,11 @@ I have set up a electronjs examples repository in my Github account that I will 
 
 ## 1 - The main javaScript file
 
-For the main javaScript file of this electron example I am then going to want to require in the app, Menu, and BrowserWindow class from electron. I will then want to have two functions for creating a window, one of which will be used to create the main window, and the other will be used to create a child window. In the hello world example that I started out with I all ready made use of one browser window class method that is the load file method that will load an html file that is relative to the root folder of the application folder. I am once again using the method to load html files, now one of each kind of window in this example.
+For the main javaScript file of this electron example I am then going to want to require in the app, Menu, and BrowserWindow class from electron. I will then want to have two functions for creating a window, one of which will be used to create the main window, and the other will be used to create a child window. 
 
-One new Browser class method that I am using now in this example is the set menu method of the browser window class that I think I will not be using for every situation in which I will want a custom menu from now on, even if it is just one window. The reason why I say that is that is that in the hello world example I made use of the set Application Menu of the Menu class, which seems to make it so that any calls to change the Menu after that will be ignored. It would seem thus far that is I want to change what the menu is on the fly I will not want to use the menu class method to set what the custom menu is, but rather use this set Menu method of the Browser Window class.
+In the hello world example that I started out with I all ready made use of one browser window class method that is the load file method that will load an html file that is relative to the root folder of the application folder. I am once again using the method to load html files, now one of each kind of window in this example that are in an html folder.
+
+One new Browser Window class method that I am using now in this example is the [set menu method](https://www.electronjs.org/docs/latest/api/browser-window#winsetmenumenu-linux-windows) of the browser window class that I think I will now be using for every situation in which I will want a custom menu from now on. The reason why I say that is that in the hello world example I made use of the [set Application Menu](https://www.electronjs.org/docs/latest/api/menu#menusetapplicationmenumenu) of the Menu class, which seems to make it so that any calls to change the Menu after that will be ignored. It would seem thus far that if I want to change what the menu is on the fly, I will not want to use the menu class method to set what the custom menu is, but rather use this set Menu method of the Browser Window class. However this alone might still not be a done deal, as I am still not sure if the set menu method is what I want to use when making an application that will work on a wider range of operating systems.
 
 ```js
 // load app and BrowserWindow
