@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 958
-updated: 2022-02-15 10:17:24
-version: 1.27
+updated: 2022-02-15 10:21:47
+version: 1.28
 ---
 
 I have been putting getting started with [election.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) long enough, so this year will be the year that I write at least a few posts on the subject while I am learning how to make election.ks apps. Whenever I learn something new I have to start somewhere, so as one would expect this will be a hello world example of an election app. For this hello world election app I started out with an example that I found at the [quick start guild of the election js website](https://www.electronjs.org/docs/v14-x-y/tutorial/quick-start). I then just made just a few chances from the example in a effort to make it even a little more reduced, but also addressed some things that I think should be address right away even for a hello world app. 
@@ -184,5 +184,7 @@ That will be if for now then when it comes to getting started with electron.js a
 Still there is the question of what to do next, with that said maybe the next step is to just start making at least a few simple applications now such as maybe a text editor, or art program of some kind. In other words any kind of project in which I am opening, editing and saving some kind of file such as a simple text file, png, or something to that effect. However to even get to the point in which I can make those kinds of applications I still need to learn and write about many other basic features of electron.js. With that said maybe a good next step first would be to just learn more about the [Browser window class](/2022/02/14/electronjs-browser-window/).
 
 There are a lot of options for the BrowserWindow class that I think might be a good next thing to look into more closely, and when doing so that quickly ends up branching off into a whole lot of other classes. For example when making use of the preload.js file by way of the preload path of the webProperries object of the BrowserWindow constructor options there is also the contextIsolation property that should be used with it. The [contextBridge class](https://www.electronjs.org/docs/latest/api/context-bridge) should then be used in the preload.js file to sync things up with certain things between the renderer and the main process of the electron application.
+
+There is also looking more into the Menu class that might also be a good move at this point, as well as BrowserWindow class methods that can be used with the Menu class. One thing that I have found out is that I tend to prefer to use the BrowserWindow set Menu method over that of the setApplicationMenu method of the Menu class as using that method seems to not work well when trying to create more than one menu for more than one kind of window. However there is also looking into how to go about making my own options in the Menu to preform various kinds of application specific tasks which is also something that will need to be covered sooner or later.
 
 With that said I will be coming out with a few [more posts on electron](/categories/electronjs/) in the coming weeks, at least that is part of the plan for new content as of late anyway.
