@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-15 12:38:36
-version: 1.19
+updated: 2022-02-15 12:45:09
+version: 1.20
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -138,7 +138,7 @@ Another key difference between the menu for the parent window and the child wind
 
 ## 2 - The preload javaScript file
 
-For this browser window class example I started working out a preload javaScript file that is used when creating a window in the main javaScript file by way of the preload option of the WebProperties object of the Browser window class options.
+For this browser window class example I started working out a preload javaScript file that is used when creating a window in the main javaScript file by way of the preload option of the WebProperties object of the Browser window class options. This preload file is used as a way to create additional api methods that can in turn be used in the front end javaScript of a project to preform certain actions that can only be done from the nodejs side of things. When it comes to not using context isolation I will then not need to bother with the contextBride class to create a public api for the window object. However so far I have found that this might be one of the best options to go with when it comes to starting to learn how to make electron apps in a way that are somewhat professional. When it comes to simple getting to learn how to use something time examples such as this one, maybe caring about security is not a high priority, but if the aim is to make some kind of real project at some point in the future, maybe it is best to learn these things sooner rather than later.
 
 ```js
 // preload with contextIsolation enabled
