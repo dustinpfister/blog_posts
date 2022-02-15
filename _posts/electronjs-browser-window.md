@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-15 12:45:09
-version: 1.20
+updated: 2022-02-15 13:08:40
+version: 1.21
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -154,7 +154,7 @@ console.log('preload');
 
 ## 3 - The HTML Folder
 
-I then also have a html folder that I will be using to store the html files for both a main window as well as a child window. This will then also be used as a place to store any additional files that compose the client system for this electron js example.
+I then also have a html folder that I will be using to store the html files for both a main window as well as a child window, as well as any and all additional files that will compose the client side system of the application. As of revision 1 of the example this includes two html files, a css file, and a single client.js file that is used to work with the public api that is being used by way of the preload.js file.
 
 ### 3.1 - The window main html file
 
