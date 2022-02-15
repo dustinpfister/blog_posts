@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-15 11:55:15
-version: 1.16
+updated: 2022-02-15 12:20:55
+version: 1.17
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -134,6 +134,8 @@ Another key difference between the menu for the parent window and the child wind
 
 ## 2 - The preload javaScript file
 
+For this browser window class example I started working out a preload javaScript file that is used when creating a window in the main javaScript file by way of the preload option of the WebProperties object of the Browser window class options.
+
 ```js
 // preload with contextIsolation enabled
 const { contextBridge } = require('electron');
@@ -199,6 +201,8 @@ I then have a whole other html file for a child window of this example.
 ```
 
 ### 3.3 - The client javaScript file
+
+For this example I then also have a little client side javaScript that is loaded from the html files.
 
 ```js
 var con = document.querySelector('#text_console');
