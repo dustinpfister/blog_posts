@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2022-02-15 16:43:39
-version: 1.26
+updated: 2022-02-15 16:45:53
+version: 1.27
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. Simply put, the box helper just draws a box outline around the area of an object that it is used with and doing so will help to get a better visual idea of what is going on with position, size, and orientation of the object.
@@ -29,7 +29,7 @@ When I first wrote this post I was using r104 of threejs, and the last time I ca
 
 ### 1.3 - The source code for the examples in this post and many others is on Github
 
-The source code for the examples I am writing about in this post can be found in my [test threejs git hub repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-box-helper).
+The source code for the examples I am writing about in this post can be found in my [test threejs git hub repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-box-helper). This is also the repository where I am parking the source code examples for all my [other posts on threejs beyond just this one](/categories/three-js/).
 
 ## 2 - Box helper basic example in threejs
 
