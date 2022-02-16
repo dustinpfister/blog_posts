@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2022-02-16 13:47:46
-version: 1.36
+updated: 2022-02-16 13:50:59
+version: 1.37
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to gaining some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. Simply put, the box helper just draws a box outline around the area of an object that it is used with, and doing so will help to get a better visual idea of what is going on with position, size, and orientation of the object.
@@ -162,7 +162,7 @@ However there are some things to be aware of such as what happens when I set the
 
 ## 4 - Using the scale property of an object
 
-Thus far I have covered examples that involve changing the position and rotation of mesh objects, and groups of mesh objects and if these changes update the box helper that is a child of such objects. There is yet another property of an object3d based object that would be used with a box helper that is of interest and the is the scale property. Asi with with position property the scale property is also an instance of the Vecvor3 class.
+Thus far I have covered examples that involve changing the position and rotation of mesh objects, and groups of mesh objects and if these changes update the box helper that is a child of such objects. There is yet another property of an object3d based object that would be used with a box helper that is of interest and the is the scale property. Asi with with position property the scale property is also an instance of the Vecvor3 class. By default the scale property vectror3 instance values are 1,1,1 which means the original size of the geometry, but these can be set to any value lower, lower or higher to change the scale of the mesh or group.
 
 ```js
 // scene and grid helper
