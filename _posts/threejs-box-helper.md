@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2022-02-16 10:33:08
-version: 1.31
+updated: 2022-02-16 10:35:32
+version: 1.32
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to gaining some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. Simply put, the box helper just draws a box outline around the area of an object that it is used with, and doing so will help to get a better visual idea of what is going on with position, size, and orientation of the object.
@@ -27,7 +27,7 @@ The box helper is great, but I often use it in conjunction with many other helpe
 
 ### 1.2 - version numbers matter with threejs
 
-When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing I was using r127 of threejs. I do not think much has changed with the box helper, and many of the other helpers for a long time, however many code breaking changes have been made with many other things in threejs between those two version numbers.
+When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing I was using r127 of threejs. I do not think much has changed with the box helper between those two revision numbers, and many of the other helpers for a long time. However many code breaking changes have been made with many other things in threejs, and that trend will likely continue moving forward with later versions of the library. If you run into problems with these examples on your end the first and for most thing you should check is the revision number you are using.
 
 ### 1.3 - The source code for the examples in this post and many others is on Github
 
