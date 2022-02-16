@@ -46,9 +46,9 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 ### () - threejs-camera-move
 * proof read
 
-### () - threejs-box-helper
-* proof read
-* 5+ links
+### ( done 02/16/2022 ) - threejs-box-helper
+* (done) proof read
+* (done) 5+ links
 
 
 <!-- OLD -->
