@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2022-02-16 13:41:18
-version: 1.35
+updated: 2022-02-16 13:47:46
+version: 1.36
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to gaining some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. Simply put, the box helper just draws a box outline around the area of an object that it is used with, and doing so will help to get a better visual idea of what is going on with position, size, and orientation of the object.
@@ -119,7 +119,7 @@ loop();
 
 ## 3 - A Box helper can be used with a group
 
-I often like to use groups when working out a three.js project, they are a great way of making a few meshes all part of a given area. I can then move and rotate this collection of mesh objects just like that of a single mesh object. So it is important for me to find out if this box helper will work okay with a group of mesh objects, and not just a single  mesh. After taking a moment to play around with a simple example of this it would seem that it does in fact work as I would expect. The Box helper will enclose the area in which all of the mesh objects are.
+I often like to use groups when working out a three.js project, they are a great way of making a few meshes all part of a given area. I can then move, rotate, scale and so forth this collection of mesh objects just like that of a single mesh object and the effects will update the group and all children of the group. So it is important for me to find out if this box helper will work okay with a group of mesh objects, and not just a single mesh. After taking a moment to play around with a simple example of this it would seem that it does in fact work as I would expect. The Box helper will enclose the area in which all of the mesh objects are.
 
 ```js
 // create a GROUP
@@ -161,6 +161,8 @@ renderer.render(scene, camera);
 However there are some things to be aware of such as what happens when I set the position of the group before adding meshes, and the box helper. There is also what happens when I add additional mesh objects to the group after the helper, and so forth.
 
 ## 4 - Using the scale property of an object
+
+Thus far I have covered examples that involve changing the position and rotation of mesh objects, and groups of mesh objects and if these changes update the box helper that is a child of such objects. There is yet another property of an object3d based object that would be used with a box helper that is of interest and the is the scale property. Asi with with position property the scale property is also an instance of the Vecvor3 class.
 
 ```js
 // scene and grid helper
