@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 12:19:45
-version: 1.40
+updated: 2022-02-17 12:22:38
+version: 1.41
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are a few options with cameras in threejs but the perspective camera is the one I typically use in most projects thus far.
@@ -217,4 +217,4 @@ For this example I am making a more advanced version of my basic animation loop 
 
 ## 3 - Conclusion
 
-So moving a camera is more or less the same as moving anything else in three.js that inherits from the Object3d class by making use of the position and rotation properties of the object, and cameras are no exception. So then I could get into making all kinds of examples that have to do with different ways to change the values of the position and rotation of a camera over time, but doing so is something that I should reserve for the object3d class in general not just cameras.
+So moving a camera is more or less the same as moving anything else in three.js that inherits from the Object3d class by making use of the position and rotation properties of the object, and cameras are no exception. So then I could get into making all kinds of examples that have to do with different ways to change the values of the position and rotation of a camera over time, but with the collection of examples thus far the basic idea, and much more beyind that has been covered in this post I think.
