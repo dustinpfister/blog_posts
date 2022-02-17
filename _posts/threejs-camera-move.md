@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 10:50:54
-version: 1.33
+updated: 2022-02-17 10:57:19
+version: 1.34
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far.
@@ -68,12 +68,12 @@ On Top of having a main FPS update value I can also have a septate FPS value for
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
     scene.add(mesh);
-    // starting pos for cameare
+    // starting pos for camera
     camera.position.set(10, 0, 0);
     camera.lookAt(mesh.position);
     // APP LOOP
     var secs = 0,
-    fps_update = 20,   // fps rate to update ( low fps for low CPU use, but chopy video )
+    fps_update = 20,   // fps rate to update ( low fps for low CPU use, but choppy video )
     fps_movement = 30, // fps rate to move camera
     frame = 0,
     frameMax = 90,
@@ -99,6 +99,8 @@ On Top of having a main FPS update value I can also have a septate FPS value for
 ```
 
 ## 2 - Camera movement helper example that moves the camera via javaScript code
+
+For this example I am making a more advanced version of my basic animation loop example that has to do with moving a camera. This time I have a move camera helper that takes a camera as an argument along with an update index number in the range of 0 to 1, and a function that will be used to create the values that will be used to change the camera position and orientation.
 
 ```js
 (function () {
@@ -171,7 +173,7 @@ On Top of having a main FPS update value I can also have a septate FPS value for
     methodSecs = 0,
     methodIndex = 0,
     methodName = '',
-    fps_update = 30,   // fps rate to update ( low fps for low CPU use, but chopy video )
+    fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
     fps_movement = 60, // fps rate to move camera
     frame = 0,
     frameMax = 600,
