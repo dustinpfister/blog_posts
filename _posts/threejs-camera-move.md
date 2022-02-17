@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 12:22:38
-version: 1.41
+updated: 2022-02-17 12:26:42
+version: 1.42
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are a few options with cameras in threejs but the perspective camera is the one I typically use in most projects thus far.
@@ -217,4 +217,7 @@ For this example I am making a more advanced version of my basic animation loop 
 
 ## 3 - Conclusion
 
-So moving a camera is more or less the same as moving anything else in three.js that inherits from the Object3d class by making use of the position and rotation properties of the object, and cameras are no exception. So then I could get into making all kinds of examples that have to do with different ways to change the values of the position and rotation of a camera over time, but with the collection of examples thus far the basic idea, and much more beyind that has been covered in this post I think.
+So moving a camera is more or less the same as moving anything else in three.js that inherits from the Object3d class by making use of the position and rotation properties of the object, and cameras are no exception. So then I could get into making all kinds of examples that have to do with different ways to change the values of the position and rotation of a camera over time, but with the collection of examples thus far the basic idea, and much more beyond that has been covered in this post I think.
+
+I do get around to editing my content on threejs from time to time, and this post is just one of many that I am sure I will come back to again at some point also. I all ready have many more ideas when it comes to additional examples, and improvements to the examples thus far. If you did enjoy what I have wrote about here, or thing that you have obtained something of value there is checking out one of [my other posts on threejs](/categories/three-js/).
+
