@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 10:30:45
-version: 1.27
+updated: 2022-02-17 10:38:51
+version: 1.28
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far.
@@ -39,7 +39,11 @@ When it comes to moving a camera the first thing you might want to figure out is
 
 However when it comes to moving a camera by way of some kind of application loop, or working out custom controls that will work a little differently from that of the orbit controls. Then it would make sense t start working out some examples like the ones in this post here. Still of you think that the official orbit controls will work okay, and you just want to move on to other things you might want to check out my post on [orbit controls](/2018/04/13/threejs-orbit-controls/).
 
-## 1 - A Basic cameare movement example with an animation loop function
+## 1 - A Basic camera movement example with an animation loop function
+
+In this section I will be starting out with a basic threejs example that has to do with moving a camera by way of an animation loop. So nothing major or fancy here, just a kind of hello world when it comes to moving a camera. If this sort of thing is new to you in general with front end javaScript you might want to start out looking into the [request animation frame](/2018/03/13/js-request-animation-frame/) method in client side javaScrit alone.
+
+I started out with just making an instance of the perspective camera like always when it comes to most typical projects. After that I want to have a scene with a gird helper, a renderer, and a mesh object to have something to look at other than the grid helper. I can then set a new position for the camera by just calling the set method of the Vetor3 instance as the value of the position property of the camerae. When doing so I often will also want to use the look at method of the camera also to make sure that the camera is also looking in the direction that I want at the new position.
 
 ```js
 (function () {
@@ -91,16 +95,6 @@ However when it comes to moving a camera by way of some kind of application loop
 ```
 
 ## 2 - Camera movement helper example that moves the camera via javaScript code
-
-In this section I will be starting out with a basic threejs example that has to do with moving a camera. I pulled everything that has to do with moving the camera into a function to help keep things more fine grain with this kind of task, and for now it is a move camera method that is always looking at the origin of the scene by using the look at method. So nothing major or fancy here, just a kind of hello world when it comes to moving a camera.
-
-Here is the move camera method for this example. I made it so that I just have to pass a reference to the camera that I want to move, and then a percent value in the form of a value between zero. The percent value is what is used to set the position of the camera by making it so a radian value is set between 0 and PI2. This radians value is then used in additional expressions to find x y and z.
-
-Now that I have a move camera method worked out I need to create a camera to pass to this helper function. When doing so there are a number of arguments to be aware of when using the perspective camera. There is the field of view, aspect ratio, and the near and far render settings for the camera.
-
-So then now I just need to work out the rest of the example when it comes to a scene, renderer, a mesh to look at, and a main app loop that makes use of the move camera method.
-
-This results in the camera moving around the mesh at the origin, and having the camera continue to look at the origin. A similar effect could be achieved by keeping the camera fixed, and rotating the mesh rather than the camera. However never the less this is one way to go about seeing all sides of the mesh.
 
 ```js
 (function () {
