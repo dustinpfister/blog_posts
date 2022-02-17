@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 10:57:19
-version: 1.34
+updated: 2022-02-17 12:00:29
+version: 1.35
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far.
@@ -97,6 +97,8 @@ On Top of having a main FPS update value I can also have a septate FPS value for
 }
     ());
 ```
+
+When this example is up and running the end result is having the camera at a location away from a mesh, and the camera is looking in the direction of the mesh. Over time the camera moves up and down, but only on the y axis, and I am not doing anything to change the rotation of the camera over time so the creating does not stay fixed on the mesh.
 
 ## 2 - Camera movement helper example that moves the camera via javaScript code
 
