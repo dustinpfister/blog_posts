@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 10:45:49
-version: 1.31
+updated: 2022-02-17 10:47:59
+version: 1.32
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far.
@@ -45,7 +45,7 @@ In this section I will be starting out with a basic threejs example that has to 
 
 I started out with just making an instance of the perspective camera like always when it comes to most typical projects. After that I want to have a scene with a gird helper, a renderer, and a mesh object to have something to look at other than the grid helper. I can then set a new position for the camera by just calling the set method of the Vetor3 instance as the value of the position property of the camerae. When doing so I often will also want to use the look at method of the camera also to make sure that the camera is also looking in the direction that I want at the new position.
 
-I then have the main app loop in which I will be moving the camera over time, and this is where things can get at least a little involved when it comes to moving a camera this way. There are many ways of making this like of animation update loop, some of which are a lot less complex than what I am doing here. However I have found that there are at least a few key features that one should always have in this kind of loop in order to have something that is in better shape for production. The first and foremost thing that comes to mind is to not update the scene each time the loop function is called, rather a date should be used to find out how many seconds have based sense the last update and use that as a means to update the scene or not.
+I then have the main app loop in which I will be moving the camera over time, and this is where things can get at least a little involved when it comes to moving a camera this way. There are many ways of making this like of animation update loop, some of which are a lot less complex than what I am doing here. However I have found that there are at least a few key features that one should always have in this kind of loop in order to have something that is in better shape for production. The first and foremost thing that comes to mind is to not update the scene each time the loop function is called, rather a date should be used to find out how many seconds have based sense the last update and use that as a means to update the scene or not. This way the client running the threejs program is not getting slammed and I can adjust how low I want to fps to be for updating the scene. However fps values will result in using less CPU overhead, but at the cost of choppy rather than smooth motion.
 
 ```js
 (function () {
