@@ -39,10 +39,6 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 ### () - threejs-color
 * proof read
 
-### () - threejs-camera-move
-* proof read
-
-
 <!-- OLD -->
 
 ### () - threejs-dae-collada-loader
@@ -55,6 +51,9 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 * proof read
 
 <!-- DONE -->
+
+### ( done 02/17/2022 ) - threejs-camera-move
+* (done) proof read
 
 ### ( done 02/16/2022 ) - threejs-box-helper
 * (done) proof read
