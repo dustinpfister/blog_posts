@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 12:13:08
-version: 1.38
+updated: 2022-02-17 12:17:05
+version: 1.39
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are a few options with cameras in threejs but the perspective camera is the one I typically use in most projects thus far.
@@ -19,7 +19,9 @@ So in this post I will be writing about some threejs examples that have to do wi
 
 ## Moving a camera in three.js and what to know first
 
-This is a post on how to move a camera in three.js a front end javaScript library that has to do with 3d modeling. This is not a getting started post on three.js, or javaScript in general so I assume that you have at least some background on this to get started with, otherwise you might have a hard time gaining something of value from reading this.
+This is a post on how to move a camera in three.js a front end javaScript library that has to do with 3d modeling. This is not a getting started post on three.js, or javaScript in general so I assume that you have at least some background on this to get started with, otherwise you might have a hard time gaining something of value from reading this content.
+
+If you are still very new to threejs I have all ready wrote a [getting started with threejs post](/2018/04/04/threejs-getting-started/) a long time ago now. I also have a post for [beginners of javaScript in general](/2018/11/27/js-getting-started/) that I have wrote, and edit every so often also.
 
 ### Version Numbers matter with three.js
 
