@@ -18,10 +18,6 @@
 
 This is a collection of posts to which I fixed broken links on 02-10-2022, but I would like to do a proof read and add additional links for each post also.
 
-### ( done 02/10/2022 ) - threejs-sphere
-* (done) proof read
-* (done) 5+ links
-
 ### () - threejs-orbit-controls
 * proof read
 * 5+ links
@@ -46,10 +42,6 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 ### () - threejs-camera-move
 * proof read
 
-### ( done 02/16/2022 ) - threejs-box-helper
-* (done) proof read
-* (done) 5+ links
-
 
 <!-- OLD -->
 
@@ -61,6 +53,16 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 
 ### () - threejs-examples-guy-one
 * proof read
+
+<!-- DONE -->
+
+### ( done 02/16/2022 ) - threejs-box-helper
+* (done) proof read
+* (done) 5+ links
+
+### ( done 02/10/2022 ) - threejs-sphere
+* (done) proof read
+* (done) 5+ links
 
 ### ( done 02/09/2022 ) - threejs-euler
 * (done) proof read
