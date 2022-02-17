@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 10:29:28
-version: 1.26
+updated: 2022-02-17 10:30:45
+version: 1.27
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far.
@@ -38,6 +38,57 @@ All of these classes are worth looking into in depth in order to really know how
 When it comes to moving a camera the first thing you might want to figure out is if you just want to move about in the scene using the mouse. I often use the Orbit Controls that are in the examples folder of the Three.js repository for many of my examples as a way to be able to have the basic typical movement right away. There are also a number of other options when it comes to official controls use in the official three.js examples, as well as many other useful libraries to work with in the examples folder.
 
 However when it comes to moving a camera by way of some kind of application loop, or working out custom controls that will work a little differently from that of the orbit controls. Then it would make sense t start working out some examples like the ones in this post here. Still of you think that the official orbit controls will work okay, and you just want to move on to other things you might want to check out my post on [orbit controls](/2018/04/13/threejs-orbit-controls/).
+
+## 1 - A Basic cameare movement example with an animation loop function
+
+```js
+(function () {
+    // CAMERA
+    var width = 640, height = 480,
+    fieldOfView = 40, aspectRatio = width / height,
+    near = 0.1, far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+    // SCENE
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(8, 8))
+    // RENDER
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(width, height);
+    // MESH
+    var mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    // starting pos for cameare
+    camera.position.set(10, 0, 0);
+    camera.lookAt(mesh.position);
+    // APP LOOP
+    var secs = 0,
+    fps_update = 20,   // fps rate to update ( low fps for low CPU use, but chopy video )
+    fps_movement = 30, // fps rate to move camera
+    frame = 0,
+    frameMax = 90,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / frameMax,
+        bias = (1 - Math.abs(per - 0.5) / 0.5);
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            // moving the camera
+            camera.position.set(10, -2 + 4 * bias, 0);
+            renderer.render(scene, camera);
+            frame += fps_movement * secs;
+            frame %= frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
 
 ## 2 - Camera movement helper example that moves the camera via javaScript code
 
