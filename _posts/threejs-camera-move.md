@@ -1,12 +1,12 @@
 ---
-title: Fun with moving a camera in threejs
+title: Moving a camera in threejs over time
 date: 2019-12-17 19:57:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 10:43:07
-version: 1.30
+updated: 2022-02-17 10:45:49
+version: 1.31
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far.
