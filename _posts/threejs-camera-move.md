@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 12:17:05
-version: 1.39
+updated: 2022-02-17 12:19:45
+version: 1.40
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are a few options with cameras in threejs but the perspective camera is the one I typically use in most projects thus far.
@@ -26,6 +26,10 @@ If you are still very new to threejs I have all ready wrote a [getting started w
 ### Version Numbers matter with three.js
 
 When I first wrote this post I was using r111 of three.js, and the last time I edited this post I was using r127. Three.js is a fast moving target when it comes to development, at some point in the future these three.js examples might break because of this. So be sure to always check the version number of three.js when working with these examples, or any three.js examples on the open web for that matter.
+
+### The source code that I am writing about in this post is on Github
+
+The source code examples that I am writing about here can be found in my [test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera-move).
 
 ### You should really look into the Object3d class when it comes to movement of objects in general in three.js
 
