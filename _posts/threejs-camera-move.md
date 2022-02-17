@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 10:38:51
-version: 1.28
+updated: 2022-02-17 10:40:27
+version: 1.29
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far.
@@ -44,6 +44,8 @@ However when it comes to moving a camera by way of some kind of application loop
 In this section I will be starting out with a basic threejs example that has to do with moving a camera by way of an animation loop. So nothing major or fancy here, just a kind of hello world when it comes to moving a camera. If this sort of thing is new to you in general with front end javaScript you might want to start out looking into the [request animation frame](/2018/03/13/js-request-animation-frame/) method in client side javaScrit alone.
 
 I started out with just making an instance of the perspective camera like always when it comes to most typical projects. After that I want to have a scene with a gird helper, a renderer, and a mesh object to have something to look at other than the grid helper. I can then set a new position for the camera by just calling the set method of the Vetor3 instance as the value of the position property of the camerae. When doing so I often will also want to use the look at method of the camera also to make sure that the camera is also looking in the direction that I want at the new position.
+
+I then have the main app loop in which I will be moving the camera over time, and this is where things can get at least a little involved when it comes to moving a camera this way.
 
 ```js
 (function () {
