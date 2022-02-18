@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 12:06:56
-version: 1.1
+updated: 2022-02-18 12:08:40
+version: 1.2
 ---
 
-I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project.
+I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the gird helper, so todays post will be just a few examples of using this kind of helper in a threejs project.
 
 <!-- more -->
 
