@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 12:29:29
-version: 1.8
+updated: 2022-02-18 12:31:10
+version: 1.9
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -19,7 +19,7 @@ There are a number of other things that can be done in place of using the gird h
 
 To start out with this Grid helper there is just having a very simple scene that just has the gird helper and nothing else at all. So then for this basic getting started type example I first create a [scene object](/2018/05/03/threejs-scene/), and then I create the grid helper and add the gird helper to the scene object. When calling the THREE.GridHelper [constructor function](/2019/02/27/js-javascript-constructor/) there are at least two argument that i will want to pass. The first is the over all size of the grid in terms of a size that will be used for both the width and height of the gird. The second argument is the number of divisions to have in the gird. With that said if I want a grid that is 8 by 8 with 1 by 1 tiles for each grid location, then I will want to pass 8 as the size, and 8 for the number of divisions.
 
-I will then want to create a camera such as an instance of the perspective camera and position the camera in a location to which I can get a good view of the helper. After moving the camera I will also want to set the orientation of the camera to make sure it is looking at the grid helper. One way to go about doing that would be to use the look at method to set a position that the camera should be looking at such as the 0,0,0 location.
+I will then want to create a camera such as an instance of the [perspective camera](/2018/04/07/threejs-camera-perspective/) and position the camera in a location to which I can get a good view of the helper. After moving the camera I will also want to set the orientation of the camera to make sure it is looking at the grid helper. One way to go about doing that would be to use the look at method to set a position that the camera should be looking at such as the 0,0,0 location.
 
 ```js
 (function () {
@@ -44,7 +44,7 @@ I will then want to create a camera such as an instance of the perspective camer
     ());
 ```
 
-Now that I have a scene with the grid helper attached, and a camera that can be used to look at it, i now just need to create a renderer. Once I have my renderer set up I can can the render method of the renderer and pass the scene and camera to render the scene from the perspective of the given camera.
+Now that I have a scene with the grid helper attached, and a camera that can be used to look at it, I now just need to create a renderer. Once I have my renderer set up I can can the render method of the renderer and pass the scene and camera to render the scene from the perspective of the given camera.
 
 ## 2 - Line color
 
