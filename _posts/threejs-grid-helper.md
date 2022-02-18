@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 12:37:11
-version: 1.11
+updated: 2022-02-18 12:39:00
+version: 1.12
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -78,7 +78,7 @@ There are a few additional options for the THREE.GridHelper Constructor, both of
 
 ## 3 - Moving a camera around a scene animation example
 
-I am thinking that I might want to have at least one advanced example of this grid helper that has to do with a basic animation loop of some kind.
+I am thinking that I might want to have at least one advanced example of this grid helper that has to do with a basic animation loop of some kind. WIth this example I just made a slight revision of an example that I made for [my post on camera movement](/2019/12/17/threejs-camera-move/) as a way to have this kind of example here.
 
 ```js
 (function () {
