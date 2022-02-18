@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 12:31:10
-version: 1.9
+updated: 2022-02-18 12:35:57
+version: 1.10
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -44,9 +44,11 @@ I will then want to create a camera such as an instance of the [perspective came
     ());
 ```
 
-Now that I have a scene with the grid helper attached, and a camera that can be used to look at it, I now just need to create a renderer. Once I have my renderer set up I can can the render method of the renderer and pass the scene and camera to render the scene from the perspective of the given camera.
+Now that I have a scene with the grid helper attached, and a camera that can be used to look at it, I now just need to [create a renderer](/2018/11/24/threejs-webglrenderer/). Once I have my renderer set up I can can the render method of the renderer and pass the scene and camera to render the scene from the perspective of the given camera.
 
 ## 2 - Line color
+
+There are a few additional options for the THREE.GridHelper Constructor, both of which have to do with setting the colors of the grid lines. If I want to change the center lines, if there are any, that will be done with the third argument, while the fourth argument can be use to set the color from the rest of the lines. The values given for a color can be a hex number, or an instance of [THREE.Color](/2021/05/03/threejs-color/) that can be used to create a color by a wide range of ways including just plain old name strings such as lime.
 
 ```js
 (function () {
