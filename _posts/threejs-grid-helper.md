@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 12:27:31
-version: 1.7
+updated: 2022-02-18 12:29:29
+version: 1.8
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -43,6 +43,8 @@ I will then want to create a camera such as an instance of the perspective camer
 }
     ());
 ```
+
+Now that I have a scene with the grid helper attached, and a camera that can be used to look at it, i now just need to create a renderer. Once I have my renderer set up I can can the render method of the renderer and pass the scene and camera to render the scene from the perspective of the given camera.
 
 ## 2 - Line color
 
