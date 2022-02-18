@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 13:08:41
-version: 1.18
+updated: 2022-02-18 13:27:43
+version: 1.19
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -18,6 +18,14 @@ There are a number of other things that can be done in place of using the gird h
 ## The Grid helper in threejs and what to know first
 
 This is then a post on the Grid helper one of many helper objects based on the [Object3d class](/2018/04/23/threejs-object3d/) in three.js that can be sued to display what the current states is of some kind of object such as a mesh or camera. The gird helper is typically added directly to a scene object as a way to just know what the current state of affairs are when it comes to the center location of the scene, and where certain objects are relative to each other.
+
+### The source code examples in this post are on Github
+
+The source code examples that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-grid-helper) on Github.
+
+### Version numbers matter
+
+When I first wrote this post I was using [r135 of threejs](https://github.com/mrdoob/three.js/releases/tag/r135) with the code examples.
 
 ## 1 - A Basic grid helper example
 
