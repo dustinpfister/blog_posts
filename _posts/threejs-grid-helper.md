@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 12:22:39
-version: 1.5
+updated: 2022-02-18 12:24:14
+version: 1.6
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -17,7 +17,7 @@ There are a number of other things that can be done in place of using the gird h
 
 ## 1 - A Basic grid helper example
 
-To start out with this Grid helper there is just having a very simple scene that just has the gird helper and nothing else at all. So then for this basic getting started type example I first create a scene object, and then I create the grid helper and add the gird helper to the scene object. When calling the THREE.GridHelper constructor function there are at least two argument that i will want to pass. The first is the over all size of the grid in terms of a size that will be used for both the width and height of the gird. The second argument is the number of divisions to have in the gird. With that said if I want a grid that is 8 by 8 with 1 by 1 tiles for each grild location, then I will want to pass 8 as the size, and 8 for the number of divisions.
+To start out with this Grid helper there is just having a very simple scene that just has the gird helper and nothing else at all. So then for this basic getting started type example I first create a [scene object](/2018/05/03/threejs-scene/), and then I create the grid helper and add the gird helper to the scene object. When calling the THREE.GridHelper [constructor function](/2019/02/27/js-javascript-constructor/) there are at least two argument that i will want to pass. The first is the over all size of the grid in terms of a size that will be used for both the width and height of the gird. The second argument is the number of divisions to have in the gird. With that said if I want a grid that is 8 by 8 with 1 by 1 tiles for each grild location, then I will want to pass 8 as the size, and 8 for the number of divisions.
 
 ```js
 (function () {
