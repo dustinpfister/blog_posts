@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 13:03:48
-version: 1.17
+updated: 2022-02-18 13:08:41
+version: 1.18
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -14,6 +14,10 @@ I have wrote a number of posts on the various helpers in three.js that can be us
 There are a number of other things that can be done in place of using the gird helper, such as having one or more objects in the scene that can replace what the gird helper is used for, as well as be a part of the scene itself. One of the typical things to do with that would be to use the [plane geometry constructor](/2019/06/05/threejs-plane/). When it comes to that kind of geometry there are ways to have an array of materials and then also work out some kind of pattern when it comes to using what material with what gird location. However when it comes to just having a grid in the scene to just make sure that objects are where they should be, or to just get a sense of what is going on with things when it comes to working out some kind of animation, the gird helper is a nice quick way of having a grid to look at.
 
 <!-- more -->
+
+## The Grid helper in threejs and what to know first
+
+This is then a post on the Grid helper one of many helper objects based on the [Object3d class](/2018/04/23/threejs-object3d/) in three.js that can be sued to display what the current states is of some kind of object such as a mesh or camera. The gird helper is typically added directly to a scene object as a way to just know what the current state of affairs are when it comes to the center location of the scene, and where certain objects are relative to each other.
 
 ## 1 - A Basic grid helper example
 
