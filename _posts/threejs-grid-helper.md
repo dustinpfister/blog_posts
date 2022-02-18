@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 12:14:25
-version: 1.3
+updated: 2022-02-18 12:17:45
+version: 1.4
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
 
-There are a number of other things that can be done in place of using the gird helper, such as having one or more objects in the scene that can replace what the gird helper is used for, as well as be a part of the scene itself. One of the typical things to do with that would be to use the [plane geometry constructor](/2019/06/05/threejs-plane/).
+There are a number of other things that can be done in place of using the gird helper, such as having one or more objects in the scene that can replace what the gird helper is used for, as well as be a part of the scene itself. One of the typical things to do with that would be to use the [plane geometry constructor](/2019/06/05/threejs-plane/). When it comes to that kind of geometry there are ways to have an array of materials and then also work out some kind of pattern when it comes to using what material with what gird location. However when it comes to just having a grid in the scene to just make sure that objects are where they should be, or to just get a sense of what is going on with things when it comes to working out some kind of animation, the gird helper is a nice quick way of having a grid to look at.
 
 <!-- more -->
 
