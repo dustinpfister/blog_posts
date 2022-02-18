@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-02-18 12:48:39
-version: 1.16
+updated: 2022-02-18 13:03:48
+version: 1.17
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -186,4 +186,4 @@ This example once again has a scene, and a gird helper attached to the scene. On
 
 So the grid helper has become a kind of started thing to add to a scene when I am working out one or more simple demos of doing some kind of task in a basic threejs project of one kind or another. This is the main reason why I have wrote a post on this actually, so that I ca have a content piece to link to from a whole lot of [other posts on threejs that I have wrote over the years](/categories/three-js) that I edit now and then in which I am using the Grid Helper.
 
-I guess that there is not much more to write about when it comes to the GridHelper alone, but maybe there is more to cover when it comes to other options for having something that will function as something that I often use the Grid helper for. The thing about it is that I often use the gird helper as a place holder for some other kind of object that should be a best or group actually that is a floor, or ground of some kind. I have mentioned the plan geometry, but I could also use a Box geometry, or a geometry that is loaded by way of an extremal file created in blender or something to that effect.
+I guess that there is not much more to write about when it comes to the GridHelper alone, but maybe there is more to cover when it comes to other options for having something that will function as something that I often use the Grid helper for. The thing about it is that I often use the gird helper as a place holder for some other kind of object that should be a best or group actually that is a floor, or ground of some kind. I have mentioned the plane geometry, but I could also use a [Box geometry](/2021/04/26/threejs-box-geometry/), or a geometry that is loaded by way of an extremal file created in blender or something to that effect. Maybe the best way to go about loading an external file would be to look into the [dea file AKA Collada file standard](/2021/04/30/threejs-dae-collada-loader/). Yet another option would be to find a way to generate some terrain by directly working with the [buffer geometry constructor](/2021/04/22/threejs-buffer-geometry/).
