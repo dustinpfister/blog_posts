@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-02-19 06:35:35
-version: 1.39
+updated: 2022-02-19 07:10:28
+version: 1.40
 ---
 
 When it comes to [threejs](https://threejs.org/) it looks like I never got around to writing a post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene, or the color of various properties of a material such as the color that will respond to light, or an emmisve color. 
@@ -307,7 +307,95 @@ loop();
 
 When it comes to some kind of simple random color example such as this there are a great number of things that I might want to change when it comes to creating random colors. However for the most part it might be just playing around with the expressions that are used to create a color.
 
-## 6 - Conclusion
+## 6 - Color add and equals methods
+
+In this example I am using the add method of a color class instance of each material or each mesh in a group of mesh objects. I just get a reference to the material that I am using for a mesh, and then I can call the add method of that color to add the values of another instance of THREE.Color to that color. I can also use the equals method to find out of a color is fully white or not, and of so I can set a new random color using a random color helper.
+
+```js
+var randomColor = function () {
+    var r = Math.random(),
+    g = Math.random(),
+    b = Math.random();
+    return new THREE.Color(r, g, b);
+};
+var randomPosition = function () {
+    var x = -3 + 4 * Math.random(),
+    y = -1 + 2 * Math.random(),
+    z = 2 + Math.random() * 5 * -1;
+    return new THREE.Vector3(x, y, z);
+};
+ 
+var createBoxGroup = function(){
+    // creating a group of mesh object with random colors
+    var group = new THREE.Group();
+    var i = 0,
+    len = 15;
+    while (i < len) {
+        var box = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.5, 0.5),
+            new THREE.MeshStandardMaterial({
+                color: randomColor()
+            }));
+        box.position.copy(randomPosition());
+        group.add(box);
+        i += 1;
+    }
+    return group;
+};
+ 
+// creating a scene
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(8,8))
+var group = createBoxGroup();
+scene.add(group);
+// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL
+var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
+light.position.set(1, 3, 2);
+scene.add(light);
+ 
+// camera
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+// renderer
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var lt = new Date(),
+frame = 0,
+maxFrame = 200,
+fps = 30;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(per - 0.5) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        group.children.forEach(function (box) {
+            var r = 0.05 * per,
+            g = r, b = r,
+            color = box.material.color;
+            color.add( new THREE.Color(r, g, b) );
+            color.r = color.r > 1 ? 1 : color.r;
+            color.g = color.g > 1 ? 1 : color.g;
+            color.b = color.b > 1 ? 1 : color.b;
+            if(color.equals(new THREE.Color(1,1,1))){
+                box.material.color = randomColor();
+            }
+        });
+        group.rotation.y = Math.PI * 2 * per;
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 7 - Conclusion
 
 Well I think that might be it for now at least when it comes to the THREE.Color constructor in three.js until I get around to editing this post. There is not just setting solid color values though when it comes to everything that has to do with color in three.js though. There is a great deal more to write about when it comes to color and the various types of texture maps there are to work with when ti comes to creating a material for example. With an alpha map for example I want to set the colors of the various pixels to colors that are gray scale rather than solid colors as gray scale colors are what are used to set levels of transparency for the alpha map. When creating a texture for a mesh I might often use a canvas element, so setting the color values for the texture might not make use of the THREE.Color constrictor but that is never the less one of many additional little details that have to do with color in three.js.
 
