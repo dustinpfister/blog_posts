@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-02-19 06:30:32
-version: 1.37
+updated: 2022-02-19 06:32:00
+version: 1.38
 ---
 
 When it comes to [threejs](https://threejs.org/) it looks like I never got around to writing a post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene, or the color of various properties of a material such as the color that will respond to light, or an emmisve color. 
@@ -31,7 +31,7 @@ When I first wrote this post I was using r127 of three.js which was a late versi
 
 ## The source code examples in this post, and in many others is on Github
 
-The source code examples that I am writing about in this post, as well as for many of my other posts on threejs, can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-color).
+The source code examples that I am writing about in this post, as well as for many of my [other posts on threejs](/categories/three-js/), can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-color).
 
 ## 1 - Basic color example involving setting the color property of a material
 
