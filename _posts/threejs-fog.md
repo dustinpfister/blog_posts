@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-02-20 12:28:43
-version: 1.47
+updated: 2022-02-20 12:34:22
+version: 1.48
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2) constructor functions, and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -171,10 +171,19 @@ You will want to make sure that you are using a material that can be effected by
 
 ## 4 - linear vs exponential fog
 
-There are two fog constructors in three.js, for the most part I have just covered the normal linear Fog constructor where the fog grows at a constant rate as the distance grows farther until the far distance is exceeded. There is another constructor that does the same thing, only at an exponential rate that can be defined by one of its arguments with not near, or far values. This fog just takes two arguments then, the color, and a value that represents the exponential rate at which the fog will grow denser.
+There are two build in fog constructors in three.js, one of with is linear in terms of the fog effect, while the other is exponential with it. The simple linear fog constructor is the THREE.Fog constructor that takes three arguments, the first is the fog color, and then the other two are the near and far distance values for the fog effect.
+
+So then the THREE.Fog constrictor can be used like this:
 
 ```js
-scene.fog = new THREE.FogExp2(fogColor, 0.1);
+scene.fog = new THREE.Fog(0xffffff, 0.25, 3);
+```
+
+The THREE.FogExp2 constructor then just takes two arguments, the color, and a value that represents the exponential rate at which the fog will grow denser.
+
+
+```js
+scene.fog = new THREE.FogExp2(0xffffff, 0.001);
 ```
 
 ## 5 - Conclusion
