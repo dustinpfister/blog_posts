@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-02-20 12:26:34
-version: 1.46
+updated: 2022-02-20 12:28:43
+version: 1.47
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2) constructor functions, and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -157,18 +157,15 @@ In this demo I put in a simple loop to have a mesh move back and forth from the 
 
 ## 3 - Check your materials
 
-You will want to make sure that you are using a material that can be effected my shadows. Some materials will not work with a fog, such as the [MeshNormalMaterial](https://threejs.org/docs/index.html#api/materials/MeshNormalMaterial). To help with this you can check the fog boolean which is a property of the base [Material class](https://threejs.org/docs/index.html#api/materials/Material).
+You will want to make sure that you are using a material that can be effected by fog. Some materials will not work with a fog, such as the [MeshNormalMaterial](https://threejs.org/docs/index.html#api/materials/MeshNormalMaterial). To help with this you can check the fog boolean which is a property of the base [Material class](https://threejs.org/docs/index.html#api/materials/Material). For example if I create an instance of the normal material the fog boolean for that material is false, while the fog boolean for a material that does support for such as Lambert will return true for this value.
 
 ```js
     var material = new THREE.MeshNormalMaterial();
- 
     console.log(material.fog); // false
- 
     var material = new THREE.MeshLambertMaterial({
             color: 0xff0000,
             emissive: 0x080808
         });
- 
     console.log(material.fog); // true
 ```
 
