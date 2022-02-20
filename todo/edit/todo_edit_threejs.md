@@ -17,18 +17,42 @@
 <!--  Search Console top 3 ( clicks ) -->
 
 ### () - threejs-fog (815 /3mo / 2-20)
+* proof read
+* start for post folder and link to from post
+* read me file in for post folder linking to post
+* at least 300 words for readme file
 
 ### () - threejs-canvas-texture (625 / 3mo / 2-20)
+* () proof read
+* () start for post folder and link to from post
+* () read me file in for post folder linking to post
+* () at least 300 words for readme file
 
 ### () - threejs-materials-transparent (573 / 3mo / 2-20)
+* proof read
+* start for post folder and link to from post
+* read me file in for post folder linking to post
+* at least 300 words for readme file
 
 <!--  Search Console top 3 ( impressions ) -->
 
 ### () - threejs-face3 (15.8k / 3mo / 2-20)
+* proof read
+* start for post folder and link to from post
+* read me file in for post folder linking to post
+* at least 300 words for readme file
 
 ### () - threejs-materials-transparent (12.9k / 3mo / 2-20)
+* proof read
+* start for post folder and link to from post
+* read me file in for post folder linking to post
+* at least 300 words for readme file
 
 ### () - threejs-vector3 (12.0k / 3mon / 2-20)
+* proof read
+* start for post folder and link to from post
+* read me file in for post folder linking to post
+* at least 300 words for readme file
 
 <!-- Fixed Links -->
 
