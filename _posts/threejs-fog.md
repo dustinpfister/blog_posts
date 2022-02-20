@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-02-20 12:10:39
-version: 1.41
+updated: 2022-02-20 12:13:29
+version: 1.42
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2) constructor functions, and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -33,7 +33,7 @@ The version of three.js is something that is important when writing post on it, 
 
 ### Be mindful of what material you are using when adding fog
 
-Not all materials will work with fog, for example the Normal Material will not work with fog, but the Lambert and standard materials will. If you have not done so before hand it might be a good idea to go over all the materials and work out some basic examples of each, and also play around with lights and so forth in order to get a better sense of what the options are for materials. I have [my post on materials in general](/2018/04/30/threejs-materials/), but for this post I will be sticking to the standard material as that seems to be one of the best options and not just because it supports fog.
+Not all materials will work with fog, for example the Normal Material will not work with fog, but the Lambert and standard materials will. If you have not done so before hand it might be a good idea to go over all the materials that there are to work with out of the box with threejs, and work out some basic examples of each. Also play around with lights and so forth in order to get a better sense of what the options are for materials that will not just work well with fog, but also light sources. I have [my post on materials in general](/2018/04/30/threejs-materials/), but for this post I will be sticking to the standard material as that seems to be one of the best general middle of the road type material options for light, fog, performance, and appearance.
 
 ### Read up more on the scene object in general
 
