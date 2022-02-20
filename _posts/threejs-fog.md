@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-02-20 08:16:33
-version: 1.35
+updated: 2022-02-20 09:55:40
+version: 1.36
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2) constructor functions, and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -19,7 +19,9 @@ In this post then, I will be going over a basic example of fog in a three.js pro
 
 ## 1 - Threejs fog and What to know before hand
 
-This is a post on how to go about adding fog to a scene object in a three.js project. You should have some knowledge of three.js, and javaScript development in general in order to get any benefit from this post. I have written a post on how to [get started with three.js](/2018/04/04/threejs-getting-started/) if you are completely new on how to work with three.js that might be a decent starting point when it comes to the very basics of threejs that I will not be getting into detail here in this post. In this section I will be going over some things that you might want to read up on more that are closely related to the topic of fog in threejs though, and any other things that you should be aware of before continuing reading this post.
+This is a post on how to go about adding fog to a scene object when making a project with the javaScript library known as three.js. You should have some knowledge of three.js to begin with there, and also additional skills that are required before even getting into threejs, such as basics javaScript development in general. Otherwise you might have a hard time befitting from what I am writing about in this post. 
+
+I have written a post on how to [get started with three.js](/2018/04/04/threejs-getting-started/) if you are completely new on how to work with three.js that might be a decent starting point. When it comes to [getting started with javaScript in general](/2018/11/27/js-getting-started/) I have wrote a number of posts on that before hand as well, so I will not be getting into detail about the basics of threejs and javaScript here. However In this section I will be going over some things that you might want to read up on more that are closely related to the topic of fog in threejs though.
 
 ### 1.1 - The source code examples here can be found on github
 
