@@ -16,11 +16,9 @@
 
 <!--  Search Console top 3 ( clicks ) -->
 
-### () - threejs-fog (815 /3mo / 2-20)
-* proof read
-* start for post folder and link to from post
-* read me file in for post folder linking to post
-* at least 300 words for readme file
+### ( done 02/20/2022 ) - threejs-fog (815 /3mo / 2-20)
+* (done) proof read
+* (done) new static example
 
 ### () - threejs-canvas-texture (625 / 3mo / 2-20)
 * () proof read
