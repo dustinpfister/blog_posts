@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-02-20 10:00:15
-version: 1.37
+updated: 2022-02-20 11:17:02
+version: 1.38
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2) constructor functions, and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -39,34 +39,80 @@ Not all materials will work with fog, for example the Normal Material will not w
 
 The scene.for property of of course a feature of the THREE.Scene class, and there is a [great deal more to know about this scene class](/2018/05/03/threejs-scene/) and the objects that it creates beyond just that of the fog property. For example there is the background property of the scene object which can be used to set a solid color background, or a [cube texture](/2018/04/22/threejs-cube-texture/) for the scene. There is also a great deal that branches off from the scene object such as the fact that a scene object is one of many objects in threejs that is based on the [Object3d class](/2018/04/23/threejs-object3d/), and that it is also a good idea to become familiar with the [THREE.Color](/2021/05/03/threejs-color/) class that can be used to create a color object for the background, as well as for the fog color of a scene.
 
-## 1 - An animation loop example of Fog
-
-A full working demo will require all the usual components that make up a fully functioning three.js project. There is nothing out of the norm when it comes to setting up the renderer as compared to working with things like shadows for example where there are some special properties that have to be set for the renderer, as well as mesh objects. With fog I just need to create a Fog for the scene.fog property using the THREE.FoxExp2 constructor, setting the color and density for the fog via the arguments.
+## 1 - 
 
 ```js
 (function () {
-    // Scene
+    // SCNEN
     var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(8, 8, 0xffffff, 0x000000))
+ 
     // ADDING BACKGROUND AND FOG
     fogColor = new THREE.Color(0x00af00);
     scene.background = fogColor;
     scene.fog = new THREE.FogExp2(fogColor, 0.5);
  
-    // A Material that DOES SUPPORT FOG
-    // being use in a Mesh
+    // Use a Material that SUPPORTS FOG
+    // when making a Mesh such as the standard material
     var mesh = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshStandardMaterial({
-                color: 0xff0000,
-                emissive: 0x080808
+                color: 0xff0000
             }));
     scene.add(mesh);
  
     // Camera
     var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
-    camera.position.set(1, 1, 1);
+    camera.position.set(2, 0.75, 2);
     camera.lookAt(0, 0, 0);
-    camera.add(new THREE.PointLight(0xffffff));
+    // adding a point light to the camera
+    var light = new THREE.PointLight(0xffffff);
+    light.position.y = 0.5;
+    camera.add(light);
+    scene.add(camera);
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+## 2 - An animation loop example of Fog
+
+A full working demo will require all the usual components that make up a fully functioning three.js project. There is nothing out of the norm when it comes to setting up the renderer as compared to working with things like shadows for example where there are some special properties that have to be set for the renderer, as well as mesh objects. With fog I just need to create a Fog for the scene.fog property using the THREE.FoxExp2 constructor, setting the color and density for the fog via the arguments.
+
+```js
+(function () {
+ 
+    // SCNEN
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(8, 8, 0xffffff, 0x000000))
+ 
+    // ADDING BACKGROUND AND FOG
+    fogColor = new THREE.Color(0x00af00);
+    scene.background = fogColor;
+    scene.fog = new THREE.FogExp2(fogColor, 0.5);
+ 
+    // Use a Material that SUPPORTS FOG
+    // when making a Mesh such as the standard material
+    var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({
+                color: 0xff0000
+            }));
+    scene.add(mesh);
+ 
+    // Camera
+    var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+    camera.position.set(2, 0.75, 2);
+    camera.lookAt(0, 0, 0);
+    // adding a point light to the camera
+    var light = new THREE.PointLight(0xffffff);
+    light.position.y = 0.5;
+    camera.add(light);
     scene.add(camera);
     // Render
     var renderer = new THREE.WebGLRenderer();
