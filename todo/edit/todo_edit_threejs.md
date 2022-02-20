@@ -2,7 +2,7 @@
 ## threejs ( /yyyy/mm/dd/threejs-* )
 <!--###### ########## ########## #######-->
 
-<!-- Not Finished -->
+<!-- Just more to add -->
 
 ### () - threejs-examples-menus (finish post)
 * start new section on state objects in test threejs
@@ -13,6 +13,22 @@
 * (done) start a for post folder in test threejs
 * (done) go with depth material for basic example, and update content in that section linking to the depth material post
 * add link to for post folder in test threejs from blog post in the getting started section
+
+<!--  Search Console top 3 ( clicks ) -->
+
+### () - threejs-fog (815 /3mo / 2-20)
+
+### () - threejs-canvas-texture (625 / 3mo / 2-20)
+
+### () - threejs-materials-transparent (573 / 3mo / 2-20)
+
+<!--  Search Console top 3 ( impressions ) -->
+
+### () - threejs-face3 (15.8k / 3mo / 2-20)
+
+### () - threejs-materials-transparent (12.9k / 3mo / 2-20)
+
+### () - threejs-vector3 (12.0k / 3mon / 2-20)
 
 <!-- Fixed Links -->
 
