@@ -5,15 +5,15 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-02-20 08:13:39
-version: 1.34
+updated: 2022-02-20 08:16:33
+version: 1.35
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2) constructor functions, and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
 
 A Fog is a nice effect to have for most projects as it allows for a more graceful transition from rendering something that is within range of a render distance, to no longer rendering when an object is to far from the camera, as apposed to the object just all of a sudden disappearing. Even if you have the far value of the camera set to a high value so that the object is just a single pixel before it is no longer rendered, it can still be a nice additional effect on top of the object just simply getting smaller. However with that said that alone is just one of many little additional details that have to do with the over all process of working fog into a scene. That is taking into account what the current values are for the near and far values of the camera and do then need to be tweaked, or given some kind of UI control also.
  
-So in this post I will be going over a basic example of fog in a three.js project, and will also be touching base on a few other three.js rated topics such as the nature of the [ mesh standard material](/2021/04/27/threejs-standard-material/) which is one option when it comes to [using a material](/2018/04/30/threejs-materials/) that will work with fog.
+In this post then, I will be going over a basic example of fog in a three.js project, and after that I will be getting into at least a few more examples also while I am at it. So then in the process of covering fog in threejs, I will also be touching base on a few other three.js rated topics such as the nature of the [ mesh standard material](/2021/04/27/threejs-standard-material/) which is one option when it comes to [using a material](/2018/04/30/threejs-materials/) that will work with fog, among many other things that will come up while adding fog to a scene.
 
 <!-- more -->
 
