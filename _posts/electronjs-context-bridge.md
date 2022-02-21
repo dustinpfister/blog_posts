@@ -5,11 +5,13 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-21 12:42:09
-version: 1.1
+updated: 2022-02-21 12:49:04
+version: 1.2
 ---
 
-The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default.
+The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
+
+In order to create some kind of example that exercises the use of the context bridge as well as the various other classes in electron.js that are closely related to the use of the context bridge class I will need to have some kind of basic project idea. So then for this example the basic project idea is just a simple text editor project. So then the general idea here is to have a text area element in the html file that will be used for the main Browser Window, and I will then be using some additional JavaScript code in a client side javaScript file to make use of the api defined in the preload.js file in which I am using the context bridge class. This api will contain methods that I can use to attach event handers for when an open and save as option are selected in the file Menu of the main browser window.
 
 <!-- more -->
 
