@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 11:04:27
-version: 1.15
+updated: 2022-02-22 11:06:51
+version: 1.16
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -223,4 +223,4 @@ In the body of the html file I have a single main wrap div, and then the text ar
 
 ## 4 - Conclusion
 
-The general idea that I had in mind when making this example is set and done all ready at this point. All I wanted to do is have a basic example of the contextBride class and how to use it to create a custom API in which I am not exposing everything to the front end system which is often the case with alternatives to that of the contextBride class when.
+The general idea that I had in mind when making this example is set and done all ready at this point. All I wanted to do is have a basic example of the contextBrige class and how to use it to create a custom API in which I am not exposing everything to the front end system which is often the case with alternatives to that of the contextBride class when. A simple text editor type program just strikes me as a good idea when it comes to getting started with this sort of thing, also it is a good starting point for a wide range of additional applications some of which I might actually want to use to get work done.
