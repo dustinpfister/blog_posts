@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 08:48:27
-version: 1.14
+updated: 2022-02-22 11:04:27
+version: 1.15
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -197,7 +197,9 @@ body{
 
 ### 3.3 - The main window html file
 
-This is then the html file that I am loading in main.js when creating the main browserWindow. In there I am juts using a typical set of values for the Content Security Policy.
+This is then the html file that I am loading in main.js when creating the main browserWindow in the main.js javaScript file that I covered above. In this html file I am just using a typical set of values for the Content Security Policy that do not seem to interfere with anything that I am doing with this example thus far. In the head of the html I have the standard title tag, and then I am also linking to an extremal css file while I am at it so that I do not have to bother with style elements here.
+
+In the body of the html file I have a single main wrap div, and then the text area element that will contain the loaded text of a file, or can be used to create and save a new text file. I then have just one script tag in which I am linking to my front end code that makes use of the API that I defined in peload.js
 
 ```html
 <!DOCTYPE html>
