@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 08:35:33
-version: 1.9
+updated: 2022-02-22 08:37:11
+version: 1.10
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -21,7 +21,7 @@ In order to create some kind of example that exercises the use of the context br
 
 This is a javaScript project example that has to do with using the context bride class in electron.js to create an API that will be used from the client side javaScript code of the electron.js application. So then there is a whole lot of things that should be known before hand that I am not going to get into detail here. I assume that you have at least a little experience when it comes to working with javaScript in general, if not you might want to take a step back and start out with a [getting started with javaScript type post](/2018/11/27/js-getting-started/). 
 
-I am also assuming that you have at least a little experience when it comes to not just client side javaScript but also sever side javaScript when it comes to using nodejs, if not you might want to start with some hello world type examples with nodejs alone. There are a whole lot of features to work with when it comes to just nodejs by itself, and using those features as well as user space libraries on top of nodjes other than that of electron is part of making some kind of real project with electron.js.
+I am also assuming that you have at least a little experience when it comes to not just client side javaScript but also sever side javaScript when it comes to using nodejs, if not you might want to start with some hello world type examples with nodejs alone. There are a whole lot of features to work with when it comes to just nodejs by itself, and using those features as well as user space libraries on top of nodjes other than that of electron is part of making some kind of real project with electron.js. Although I will be trying to keep this electronjs example fairly simple this is not a [getting started with electron.js type post, I have wrote that one before hand](/2022/02/07/electronjs-hello-world/).
 
 ### The full source code for this example is on Github
 
