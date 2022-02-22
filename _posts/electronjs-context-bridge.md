@@ -5,13 +5,15 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 08:25:36
-version: 1.7
+updated: 2022-02-22 08:31:49
+version: 1.8
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
 
-In order to create some kind of example that exercises the use of the context bridge as well as the various other classes in electron.js that are closely related to the use of the context bridge class I will need to have some kind of basic project idea. So then for this example the basic project idea is just a simple text editor project. So then the general idea here is to have a text area element in the html file that will be used for the main Browser Window, and I will then be using some additional JavaScript code in a client side javaScript file to make use of the api defined in the preload.js file in which I am using the context bridge class. This api will contain methods that I can use to attach event handers for when an open and save as option are selected in the file Menu of the main browser window.
+So then for this example the basic project idea is just a simple text editor project. The general idea here is to have a text area element in the html file that will be used for the main [Browser Window](/2022/02/14/electronjs-browser-window/), and I will then be using some additional JavaScript code in a client side javaScript file to make use of the API defined in the preload.js file in which I am using the context bridge class. This api will contain methods that I can use to attach event handers for when an open and save as option are selected in the file Menu of the main browser window.
+
+In order to create some kind of example that exercises the use of the context bridge as well as the various other classes in electron.js that are closely related to the use of the context bridge class I will need to have some kind of basic project idea. The main class that I have come to find that I need to use with the contextBride class is to also use the ipcRenderer class, this is what I will want to use to define what to do when I make calls of the send method of the webContext object in main.js. Speaking of the main.js file there are also a wide range of other classes that I am going to want to use there also such as the [dialog class](https://www.electronjs.org/docs/latest/api/dialog) which is what I need to use in order to create native dialog windows for opening and saving a file.
 
 <!-- more -->
 
