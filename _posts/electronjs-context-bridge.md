@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 11:27:52
-version: 1.19
+updated: 2022-02-22 11:29:59
+version: 1.20
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -27,10 +27,9 @@ I am also assuming that you have at least a little experience when it comes to n
 
 The full source code of this example can be found in my [examples electronjs repository](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-context-bridge) on Github. This is also where I am going to be parking the source code for all [my other electronjs examples](/categories/electronjs/) that I will be writing about in many of not all of these posts moving forward.
 
-
 ## 1 - The contextBridge class, and the preload.js file
 
-The content bridge class is what I am going to want to use when making a preload.js file for an over all electron application. Depending on what I am doing when it comes to an over all project, in some cases I might just need to require in the context bridge class and that is it, however typically I am going to want to also require in the [ipcRenderer class](https://www.electronjs.org/docs/latest/api/ipc-renderer) also.
+The content bridge class is what I am going to want to use when making a preload.js file for an over all electron application, that is unless for some reason I choose to go with an alternative such as node integration. Depending on what I am doing when it comes to an over all project, in some cases I might just need to require in the context bridge class and that is it, however typically I am going to want to also require in the [ipcRenderer class](https://www.electronjs.org/docs/latest/api/ipc-renderer) also which is another class that I should write a post or two on at some point as I keep working out some simple examples of electron.
 
 
 ```js
