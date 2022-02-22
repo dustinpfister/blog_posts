@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-22 11:48:41
-version: 1.26
+updated: 2022-02-22 11:52:29
+version: 1.27
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -237,4 +237,4 @@ body{
 There is a great deal more to write about when it comes to the browser window class, this single post alone does not even make a dent in the surface. I will likely make future revisions to this post at some point in the future as a log more hours working with electron.js, but for now this will be it. As of this writing I am still fairly new to electron js, and I can see that this is the kind of framework that is going to take a while to learn as there is a whole lot of ground to cover.
 
 In any case I think that the main goal of any future revisions of this example will still to just create a simple tech demo type application that just helps to demonstrate how to make use of certain critical features of the Browser Window class. However in order to really cover a great deal of what there is to work with in the browser window class I also need to at least work out some basics of many other classes while I am at it. Event with revision 1 of this example I think I have all ready covered certain basics of what I should be aware of, but in time I will want to make at least one, if not more additional revisions beyond this.
-The next post that I wrote after this post was my [post on the context bridge class](/2022/02/21/electronjs-context-bridge/) which might very well be a good next step after learning at least a few basic things about the browser window. In that post I learned a great deal  ore about the browser window class along with many other features of electron.js, and have all ready made a simple text editor application.
+The next post that I wrote after this post was my [post on the context bridge class](/2022/02/21/electronjs-context-bridge/) which might very well be a good next step after learning at least a few basic things about the browser window. In that post I learned a great deal more about the browser window class along with many other features of electron.js, and have all ready made a simple text editor application. In that post there is using the web properties object of a browser window to emit events that I can then define in the preload.js file of a custom api that can be used in the client side code of a project. In any case I [all ready have a few posts on electron.js](/categories/electronjs/), and I am sure that I will be writing at least a few more when it comes to this project for sure as this is clearly a great way to make desktop like applications with html css and javaScript.
