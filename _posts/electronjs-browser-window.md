@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-22 11:52:29
-version: 1.27
+updated: 2022-02-22 11:55:14
+version: 1.28
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -17,7 +17,7 @@ There is also one other class that I think that a developer should be aware of r
 
 ## What to know first before reading more on Browser Window
 
-The example that I am writing about in this post is a little more advanced then the hello world example that I made first. This is very much the second post on electronjs that I have wrote thus far, so much of what I am writing about here has to do with what the next steps are after getting stared with a very basic example that just displays a message in a browser window. So I am taking some liberties here and assuming that you have at least a little experience thus far working with electron. I am also assuming that you know a thing or two about how to program in general with javaScript, with both client side javaScript as well as how to work in a back end environment with javaScript also when it comes to using nodejs. If not getting into some basic examples of how to get started in those environments is outside the scope of this post.
+The example that I am writing about in this post is a little more advanced then the hello world example that I made first. This is very much the second post on electronjs that I have wrote thus far, so much of what I am writing about here has to do with what the next steps are after getting stared with a very basic example that just displays a message in a browser window. So I am taking some liberties here and assuming that you have at least a little experience thus far working with electron. I am also assuming that you know a thing or two about how to [program in general with javaScript](/2018/11/27/js-getting-started/), with both client side javaScript as well as how to work in a back end environment with javaScript also [when it comes to using nodejs](/2017/04/05/nodejs-helloworld/). If not getting into some basic examples of how to get started in those environments is outside the scope of this post.
 
 ### The full source code for this example is on Github
 
