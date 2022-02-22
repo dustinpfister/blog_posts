@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 11:34:59
-version: 1.22
+updated: 2022-02-22 11:39:12
+version: 1.23
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -81,7 +81,9 @@ console.log('preload');
 
 In the main javaScript file at the root name space of the project folder I am using the typical app and BrowserWIndow classes. On top of that I am also using a custom Menu, and I am also using the dialog class to create native open file and save file dialog menus.
 
-The main thing that I learned that was new for me at this point is how to emit events from the main process to the render process, and it would seem that one way to do so would be to call the send method of the web contents object of the browser window. For the open and save as options in the file menu of my menu I am using the send method to emit and event to which I have append handers in the preload.js file my way of the ipcRenderer class.
+So one new class that I starting working with in this example is the dialog class that can be used to create native menus for getting a file, or saving a file. For my open file menu option I am using the Show Open File Dialog method, and for my save as option in the file menu I am using the Show Save Dialog method.
+
+Another major thing that I learned that was new for me at this point is how to emit events from the main process to the render process, and it would seem that one way to do so would be to call the send method of the web contents object of the browser window. For the open and save as options in the file menu of my menu I am using the send method to emit and event to which I have append handers in the preload.js file my way of the ipcRenderer class.
 
 ```js
 // load app and BrowserWindow
