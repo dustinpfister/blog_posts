@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 11:18:02
-version: 1.17
+updated: 2022-02-22 11:23:47
+version: 1.18
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -164,7 +164,9 @@ Now that I have a custom API to use in a client side system that is created usin
 
 ### 3.1 - client.js file
 
-For the client javaScript file I am just getting a reference to a text area element that I have in the html file, and I am of course making use of the methods of the API that I defined in preload.js using the contextBride class.
+For the client javaScript file I am just getting a reference to a text area element that I have in the html file, and I am of course making use of the methods of the API that I defined in preload.js using the contextBride class. I call the on menu open file method of the API to define what needs to happen when it comes to the open option being used in the file menu of the browser window. Within the callback function I have the loaded text to work with, so I can then use that to just simply set the value of the text area element in my html markup code. When it comes to saving the state of the text area I again call my on menu save file method and in the body of that I call my save text method. \
+
+I can potentially add additional features that would also call the save text method when it comes to making a real text editor project when it comes to things like a save option rather than juts save as, as well as other actions that would case a save such as a keyboard shortcut.
 
 ```js
 var con = document.querySelector('#text_console');
