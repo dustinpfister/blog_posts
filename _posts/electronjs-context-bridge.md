@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 08:39:22
-version: 1.11
+updated: 2022-02-22 08:44:21
+version: 1.12
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -25,7 +25,7 @@ I am also assuming that you have at least a little experience when it comes to n
 
 ### The full source code for this example is on Github
 
-The full source code of this example can be fount in my [examples electronjs repository](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-context-bridge) on Github
+The full source code of this example can be found in my [examples electronjs repository](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-context-bridge) on Github. This is also where I am going to be parking the source code for all [my other electronjs examples](/categories/electronjs/) that I will be writing about in many of not all of these posts moving forward.
 
 
 ## 1 - The contextBridge class, and the preload.js file
