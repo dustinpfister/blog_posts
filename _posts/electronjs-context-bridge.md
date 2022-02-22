@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 08:19:41
-version: 1.5
+updated: 2022-02-22 08:22:31
+version: 1.6
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -160,6 +160,8 @@ Now that I have a custom API to use in a client side system that is created usin
 
 ### 3.1 - client.js file
 
+For the client javaScript file I am just getting a reference to a text area element that I have in the html file, and I am of course making use of the methods of the API that I defined in preload.js using the contextBride class.
+
 ```js
 var con = document.querySelector('#text_console');
  
@@ -174,6 +176,8 @@ myAPI.onMenuSaveFile(function(evnt, result){
 
 ### 3.2 - style.css
 
+I have just a little extranal css for this example.
+
 ```css
 body{
   background: #afafaf;
@@ -187,7 +191,9 @@ body{
 }
 ```
 
-### 3.3 - window main html file
+### 3.3 - The  main window html file
+
+This is then the html file that I am loading in main.js when creating the main browserWindow.
 
 ```html
 <!DOCTYPE html>
