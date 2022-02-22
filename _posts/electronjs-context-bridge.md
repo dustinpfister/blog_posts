@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-21 12:53:16
-version: 1.3
+updated: 2022-02-22 08:01:49
+version: 1.4
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -24,7 +24,10 @@ This is a javaScript project example that has to do with using the context bride
 The full source code of this example can be fount in my [examples electronjs repository](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-context-bridge) on Github
 
 
-## 1 - First off the preload.js file in which I am using the contextBride class
+## 1 - The contextBridge class, and the preload.js file
+
+The content bridge class is what I am going to want to use when making a preload.js file for an over all electron application. Depending on what I am doing when it comes to an over all project, in some cases I might just need to require in the context bridge class and that is it, however typically I am going to want to also require in the [ipcRenderer class](https://www.electronjs.org/docs/latest/api/ipc-renderer) also.
+
 
 ```js
 // preload with contextIsolation enabled
