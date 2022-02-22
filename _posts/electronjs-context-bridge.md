@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 962
-updated: 2022-02-22 08:01:49
-version: 1.4
+updated: 2022-02-22 08:19:41
+version: 1.5
 ---
 
 The [Context Bridge](https://www.electronjs.org/docs/latest/api/context-bridge) class in [electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) is what I need to use in late versions of electron.js to create a shared API with my client side javaScript code in such a way that I only expose what is needed in the front end. There are alternatives to this such as disabling context isolation and enabling node integration when creating a browser window, but still there are good reasons why this is the default. The main concern here has to do with security and that it is not generally such a good idea to expose all that nodejs has to work with to the client system.
@@ -74,9 +74,11 @@ console.log('preload');
 
 ## 2 - The main.js file
 
+In the main javaScript file at the root name space of the project folder I am using the typical app and BrowserWIndow classes. On top of that I am also using a custom Menu, and I am also using the dialog class to create native open file and save file dialog menus.
+
 ```js
 // load app and BrowserWindow
-const { app, dialog, Menu, BrowserWindow, ipcMain} = require('electron');
+const { app, dialog, Menu, BrowserWindow} = require('electron');
 const path = require('path');
 // Create the Main browser window.
 const createMainWindow = () => {
@@ -153,6 +155,8 @@ app.on('window-all-closed',  () => {
 ```
 
 ## 3 - Now the client system
+
+Now that I have a custom API to use in a client side system that is created using the contextBride class, and my main.js file that calls the send method for various events for opening and saving a file, I will now want to have a client system that works with all of this. For this simple contextBride example I wanted to keep the client system fairly simple, so it just consists of a single client.js file, a single html file, and I have went with an external css file as well.
 
 ### 3.1 - client.js file
 
