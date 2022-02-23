@@ -16,12 +16,6 @@
 
 <!--  Search Console top 3 ( clicks ) -->
 
-### () - threejs-canvas-texture (625 / 3mo / 2-20)
-* () proof read
-* () start for post folder and link to from post
-* () read me file in for post folder linking to post
-* () at least 300 words for readme file
-
 ### () - threejs-materials-transparent (573 / 3mo / 2-20)
 * proof read
 * start for post folder and link to from post
@@ -82,6 +76,10 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 * proof read
 
 <!-- DONE -->
+
+### ( done 02/23/2022 ) - threejs-canvas-texture (625 / 3mo / 2-20)
+* (done) proof read
+* (done) new example
 
 ### ( done 02/20/2022 ) - threejs-fog (815 /3mo / 2-20)
 * (done) proof read
