@@ -16,10 +16,6 @@
 
 <!--  Search Console top 3 ( clicks ) -->
 
-### ( done 02/20/2022 ) - threejs-fog (815 /3mo / 2-20)
-* (done) proof read
-* (done) new static example
-
 ### () - threejs-canvas-texture (625 / 3mo / 2-20)
 * () proof read
 * () start for post folder and link to from post
@@ -86,6 +82,10 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 * proof read
 
 <!-- DONE -->
+
+### ( done 02/20/2022 ) - threejs-fog (815 /3mo / 2-20)
+* (done) proof read
+* (done) new static example
 
 ### ( done 02/19/2022 ) - threejs-color
 * (done) proof read
