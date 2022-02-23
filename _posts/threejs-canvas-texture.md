@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-02-23 12:07:16
-version: 1.85
+updated: 2022-02-23 12:10:01
+version: 1.86
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. 
@@ -404,6 +404,8 @@ It should go without saying that this will use more overhead compared to a stati
 I have wrote a number of posts on threejs and as such I have [touched based on how to go about using more than one material](/2018/05/14/threejs-mesh-material-index/) with a mesh in threejs a while back all ready. However I am thinning that this is something that also deserves at least one of not more sections in this post also, as this can lead to some interesting projects even by making use of just the built in geometry constructors.
 
 ### 4.1 - The canvas module
+
+Once again I have a canvas module that will be used to create a object that will contain a reference to a texture, as well as all the other objects that I will want to grab at such as the canvas element, and drawing context. One major change from the other revisions of this module in the other sections thus far is the create cube method that will allow for me to create a cube with an array of materials rather than just one.
 
 ```js
 (function(api){
