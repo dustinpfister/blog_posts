@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-02-23 11:47:34
-version: 1.79
+updated: 2022-02-23 11:49:02
+version: 1.80
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. 
@@ -29,7 +29,7 @@ The [source code examples in this post](https://github.com/dustinpfister/test_th
 
 ### Version numbers matter with threejs
 
-When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was using r127. I do then make an effort to come around and edit my threejs posts now and then to fix anything that might brake in later versions of threejs. The library still moves pretty fast in terms of development compared to other projects where progress is kind of slow, so always be mindful of the version of threejs that is being used and how old content on the web might be.
+When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was using r135. I do make an effort to come around and edit my threejs posts now and then to fix anything that might brake in late versions of threejs. The library still moves pretty fast in terms of development compared to other projects where progress is kind of slow, so always be mindful of the version of threejs that is being used and how old content on the web might be.
 
 ### Start With just a quick canvas element and drawing to the 2d context
 
