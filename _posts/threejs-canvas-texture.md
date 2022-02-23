@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-02-23 11:51:21
-version: 1.81
+updated: 2022-02-23 11:58:43
+version: 1.82
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. 
@@ -21,11 +21,13 @@ There is a whole lot of ground to cover when it comes to getting into this sort 
 
 ## threejs, canvas textures, and what to know first
 
-In this post I will be going over a lot of source code examples that have to do with using the javaScript library known as threejs, along with various client side javaScript features. This is then not any [kind of getting started type post with threejs](/2018/04/04/threejs-getting-started/), or with [javaScript in general](/2018/11/27/js-getting-started/) for that matter. So I assume that you have at least some background when it comes to threejs, and also working in a client side javaScript environment in general. However in this section I will be going over a few things that you should be up to speed with at this point before continuing to read the rest of this post.
+In this post I will be going over a lot of source code examples that have to do with using the javaScript library known as threejs, along with various client side javaScript features. This is then not any [kind of getting started type post with threejs](/2018/04/04/threejs-getting-started/), or with [javaScript in general](/2018/11/27/js-getting-started/) for that matter. So I assume that you have at least some background with the basics of threejs, and client side javaScript development in general. 
 
-### Yes the source code examples here can be found on Github
+Regardless of what your level of experience is with threejs and javaScript, in this section I will be going over a few things that you should be up to speed with at this point before continuing to read the rest of this post.
 
-The [source code examples in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-canvas-texture) can be found in my test threejs repo, along with all the other examples of all the other posts I have wrote on threejs thus far. This is a repository that I keep working on a little fairly often when it comes to writing new content on threejs, as well as editing older content such as this post which I have edited many times thus far. If there is something that does not sit right with you about the source code examples here, there is making a comment in this post, but if you want to make a pull request my test threejs repo is where to go about doing that.
+### The source code examples here can be found on Github
+
+The [source code examples in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-canvas-texture) can be found in my test threejs repo, along with all the other examples of all the [other posts I have wrote on threejs thus far](/categories/three-js/). This is a repository that I keep working on a little fairly often when it comes to writing new content on threejs, as well as editing older content such as this post which I have edited many times thus far. If there is something that does not sit right with you about the source code examples here, there is making a comment in this post, but if you want to make a pull request my test threejs repo is where to go about doing that.
 
 ### Version numbers matter with threejs
 
@@ -33,7 +35,9 @@ When I first wrote this post I was using threejs version r91, and the last time 
 
 ### Start With just a quick canvas element and drawing to the 2d context
 
-I order to use a canvas as a texture I will of course need a reference to a canvas element, and I will also want to have something drawn on the canvas element. One way to create a canvas element would be to use the document.createElement method in client side javaScript to create and return a new canvas element object. The resulting canvas element does not have to be appended to the hard coded HTML, I just need to have one to give to the Canvas Texture constructor to create a texture object. As for drawing to the canvas element I am going to need to get a reference to the [2d drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) of the canvas element, and use the various methods of that context to draw to the canvas. Covering every little detail with this part of the process of creating canvas textures in threejs is naturally beyond the scope of this post, however I will cover a quick basic hello world type example here, and cover some more examples through the content of this post.
+I order to use a canvas as a texture I will of course need a reference to a canvas element, and I will also want to have something drawn on the canvas element. One way to create a canvas element would be to use the document.createElement method in client side javaScript to create and return a new canvas element object. The resulting canvas element does not have to be appended to the hard coded HTML, I just need to have one to give to the Canvas Texture constructor to create a texture object. 
+
+As for drawing to the canvas element I am going to need to get a reference to the [2d drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) of the canvas element, and use the various methods of that context to draw to the canvas. Covering every little detail with this part of the process of creating canvas textures in threejs is naturally beyond the scope of this post. I have a [whole other collection of posts](/categories/three-js/) that have to do with just canvas elements alone, including a [canvas examples mega post](/2020/03/23/canvas-example/) in which I link to the many canvas examples that I have made thus far over the years. I will cover a quick basic hello world type example here, and cover some more examples in the rest of the content of this post.
 
 The width and height values should be a base 2 number such as 8, 16, 32 and so forth else you might get webGl errors in the console. Aside from that concern so far it seems like you can just create and draw to a simple plane old canvas element like normal with the various context methods as with any other canvas project. So say you just want to start out with something very simple, just use the canvas 2d drawing context to create a texture that is just a square. In which case I might get together something where I just create the canvas, get a reference to the context, set the size, then use the fill style property, stroke style property, fill rect method, and stroke rect method.
 
