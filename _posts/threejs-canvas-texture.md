@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-02-23 10:17:53
-version: 1.78
+updated: 2022-02-23 11:47:34
+version: 1.79
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. 
@@ -395,7 +395,148 @@ I now just need a little more code to make use of the canvas module, for this I 
 
 It should go without saying that this will use more overhead compared to a static texture, so I would not go wild with it just yet, but it is pretty cool that I can do this.
 
-## 4 - Conclusion
+## 4 - Canvas animations and using more than one texture for a geometry
+
+### 4.1 - The canvas module
+
+```js
+(function(api){
+    // create and return a canvasObj with texture
+    api.createCanvasObject = function (state, drawFunc) {
+        drawFunc = drawFunc || canvasMod.draw;
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = 64;
+        canvas.height = 64;
+        var texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        var canvasObj = {
+            texture: texture,
+            canvas: canvas,
+            ctx: ctx,
+            state: state,
+            draw: function(){
+                drawFunc.call(state, ctx, canvas, state);
+                // making sure I am setting this to true each time
+                texture.needsUpdate = true;
+            }
+        };
+        canvasObj.draw();
+        return canvasObj;
+    };
+ 
+    // create a cube the makes use of one or more textures
+    api.createCube = function (texture) {
+        var materials = [];
+        if(texture instanceof Array){
+            texture.forEach(function(t){
+                t.magFilter = THREE.NearestFilter;
+                materials.push(new THREE.MeshStandardMaterial({
+                    map: t,
+                    side: THREE.DoubleSide
+                }));
+            });
+        }else{
+            materials = new THREE.MeshStandardMaterial({
+                map: texture
+            });
+        }
+        return new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), materials);
+    };
+ 
+}( this['canvasMod'] = {} ));
+```
+
+### 4.2 - The main javaScript file
+
+```js
+
+(function () {
+    // SCENE, CAMERA, LIGHT, RENDERER
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 100);
+    camera.position.set(1, 1, 1);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    var light = new THREE.PointLight();
+    light.position.set(0, 0, 0)
+    camera.add(light);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // state object
+    var state = {
+       frame: 0,
+       maxFrame: 300,
+       per: 0,
+       bias: 0,
+       fps: 30,
+       lt: new Date()
+    };
+    var drawBackground = function(ctx, canvas, state){
+        ctx.fillStyle = '#1a1a1a';
+        ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#afafaf';
+        ctx.strokeRect(0,0, canvas.width, canvas.height);
+    };
+    // drawBox function
+    var drawBox = function(ctx, canvas, state){
+        var x = canvas.width / 2 * state.bias, y = canvas.height / 2 * state.bias,
+        w = canvas.width - canvas.width * state.bias, h = canvas.height - canvas.height * state.bias;
+        drawBackground(ctx, canvas, state);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#00ff00';
+        ctx.strokeRect(x, y, w, h);
+    };
+    var drawCircle = function(ctx, canvas, state){
+        ctx.lineWidth = 3;
+        drawBackground(ctx, canvas, state);
+        ctx.strokeStyle = '#ff0000';
+        ctx.beginPath();
+        ctx.arc(
+           canvas.width / 2, canvas.height / 2,
+           32 * state.bias,
+           0, Math.PI * 2
+        );
+        ctx.stroke();
+    };
+    // create canvas objs
+    var canvasObjBox = canvasMod.createCanvasObject(state, drawBox);
+    var canvasObjCircle = canvasMod.createCanvasObject(state, drawCircle);
+    // using create cube method
+    var mesh = canvasMod.createCube([
+        canvasObjBox.texture,
+        canvasObjBox.texture,
+        canvasObjCircle.texture,
+        canvasObjCircle.texture,
+        canvasObjBox.texture,
+        canvasObjCircle.texture,]);
+    scene.add(mesh);
+    // Loop
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - state.lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / state.fps){
+            state.per = state.frame / state.maxFrame * 4 % 1,
+            state.bias = 1 - Math.abs(0.5 - state.per) / 0.5;
+            canvasObjBox.draw();
+            canvasObjCircle.draw();
+            mesh.rotation.y = Math.PI * 2 * (state.per / 4 % 1);
+            renderer.render(scene, camera);
+            state.frame += state.fps * secs;
+            state.frame = state.frame % state.maxFrame;
+            state.lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 5 - Conclusion
 
 That about does it when it comes to the basics at least when it comes to suing canvas elements to create textures in three.js. Of course there is much more to write about when it comes to working with textures, maps, materials, and [material index values](/2018/05/14/threejs-mesh-material-index/) but maybe all of those things are matters for other posts on three.js.
 
