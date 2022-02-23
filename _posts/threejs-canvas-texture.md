@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-02-23 11:49:02
-version: 1.80
+updated: 2022-02-23 11:51:21
+version: 1.81
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. 
@@ -19,9 +19,9 @@ There is a whole lot of ground to cover when it comes to getting into this sort 
 
 <!-- more -->
 
-## Getting started with threejs and canvas for textures
+## threejs, canvas textures, and what to know first
 
-In this post I will be going over a lot of source code examples that have to do with using the javaScript library know as threejs, along with various client side javaScript features such as canvas elements. This is then not any [kind of getting started type post with threejs](/2018/04/04/threejs-getting-started/), or javaScript in general for that matter. So I assume that you have at least some background when it comes to threejs, and also working in a client side javaScript environment in general. However in this section I will be going over a few things that you should be up to speed with at this point before continuing to read the rest of this post.
+In this post I will be going over a lot of source code examples that have to do with using the javaScript library known as threejs, along with various client side javaScript features. This is then not any [kind of getting started type post with threejs](/2018/04/04/threejs-getting-started/), or with [javaScript in general](/2018/11/27/js-getting-started/) for that matter. So I assume that you have at least some background when it comes to threejs, and also working in a client side javaScript environment in general. However in this section I will be going over a few things that you should be up to speed with at this point before continuing to read the rest of this post.
 
 ### Yes the source code examples here can be found on Github
 
