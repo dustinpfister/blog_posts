@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-02-23 12:00:39
-version: 1.83
+updated: 2022-02-23 12:02:19
+version: 1.84
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. 
@@ -542,5 +542,7 @@ It should go without saying that this will use more overhead compared to a stati
 
 ## 5 - Conclusion
 
-That about does it when it comes to the basics at least when it comes to suing canvas elements to create textures in three.js. Of course there is much more to write about when it comes to working with textures, maps, materials, and [material index values](/2018/05/14/threejs-mesh-material-index/) but maybe all of those things are matters for other posts on three.js.
+That about does it when it comes to the basics, and a little beyond just the basics at least when it comes to using canvas elements to create textures in three.js. Of course there is much more to write about when it comes to working with textures, maps, materials, and [material index values](/2018/05/14/threejs-mesh-material-index/) but maybe all of those things are matters for other posts on three.js.
+
+This is a post that I do come around to edit now and then, and with that said it is only a matter of time until I get around to expanding this post even more when it comes to this topic.
 
