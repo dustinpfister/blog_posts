@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-24 07:42:32
-version: 1.39
+updated: 2022-02-24 07:50:12
+version: 1.40
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry).
@@ -30,6 +30,10 @@ There is just creating an instance of sphere geometry, but in order to do anythi
 ###  Version Numbers matter with three.js
 
 When I first wrote this post I was using version [r127 of three.js](https://github.com/mrdoob/three.js/releases/tag/r127), that was released in March of 2021. I have been playing around with three.js off and of for a long time now, and I can not say that much has changed with the Sphere Geometry constructor alone when it comes to code breaking changes. Still in many of these examples I am using many other features in three.js that might break when it comes to trying to use them with future versions of three.js, the same can be said if you are using an older version of threejs.
+
+### The source code examples in this post are on Github
+
+All the source code examples in this post can be found in [my test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-sphere). As the name suggests this is where I am packing all the demos and examples not just for this post but all my other posts on threejs as well.
 
 ## 1 - Basic Sphere Geometry Example
 
@@ -313,4 +317,6 @@ That is it for now when it comes to there sphere geometry constructor in threejs
 
 ### 6.1 - Positioning things on the surface of a sphere
 
-I have wrote a few threejs project examples and one of them was an example where I wanted to [position some mesh objects on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/), I might get around to coming up with a simple example of it that I will then write about in this post when it comes to editing, but for now there is just checking out that post. This proved to be a fun little example and I might apply what I learned making it for some additional future projects examples. I also have a number of other [posts on threejs project examples](/2021/02/19/threejs-examples/) in general that might also be work checking out when it comes to finding additional material to read with three.js.
+I have wrote a few threejs project examples and one of them was an example where I wanted to [position some mesh objects on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/), I might get around to coming up with a simple example of it that I will then write about in this post when it comes to editing, but for now there is just checking out that post. This proved to be a fun little example and I might apply what I learned making it for some additional future projects examples. 
+
+If you enjoyed this post and would like to read more on threejs I have wrote a whole lot of [other posts on threejs of course](/categories/three-js/). There is sticking to just learning about the various built in geometry constructors, as well as all the other classes to work with in order to make some kind of project with threes. Sooner or later one will get to the point that they will want to make some kind of real project, or at least some prototypes that are a step in that direction to say the least. With that said I have a [post on threejs project examples](/2021/02/19/threejs-examples/) in general that I have made thus far which might also be work checking out when it comes to finding additional material to read with three.js.
