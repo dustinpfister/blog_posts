@@ -9,11 +9,6 @@
 * get to 1,000+ words
 * have 5+ internal links for the post
 
-### () - threejs-sphere
-* (done) start a for post folder in test threejs
-* (done) go with depth material for basic example, and update content in that section linking to the depth material post
-* add link to for post folder in test threejs from blog post in the getting started section
-
 <!--  Search Console top 3 ( clicks ) -->
 
 ### () - threejs-materials-transparent (573 / 3mo / 2-20)
@@ -76,6 +71,11 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 * proof read
 
 <!-- DONE -->
+
+### ( done 02/24/2022 ) - threejs-sphere
+* (done) start a for post folder in test threejs
+* (done) go with depth material for basic example, and update content in that section linking to the depth material post
+* (done) add link to for post folder in test threejs from blog post in the getting started section
 
 ### ( done 02/23/2022 ) - threejs-canvas-texture (625 / 3mo / 2-20)
 * (done) proof read
