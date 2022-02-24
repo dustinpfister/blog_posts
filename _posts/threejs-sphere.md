@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-24 09:45:37
-version: 1.44
+updated: 2022-02-24 09:46:44
+version: 1.45
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry). With most of my simple demos of threejs in which I just need to add a Mesh to a scene, and Mesh at all I often go with the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/), however the sphere geometry constructor is another good choice for that kind of situation also. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space.
@@ -139,7 +139,7 @@ The first argument can be used to set the radius, and the second and third argum
 
 In this example I am making a create dome helper method that is just like the helper that I made in a previous example but with a few changes. I am now using fixed static values for the width and height segments, and I am now passing some arguments for the four additional arguments that are used to set starting angles and sweep angles for the horizontal and vertical parts of the resulting sphere geometry. 
 
-With the values that I am passing this results in a dome like shape, however it will not be a closed dome, so I am making use of the side property of the material that I am using to make sure that both sides of the geometry and rendered. The value that I will want to pass for the side property will be the THREE.DoubleSide constant value, and it would be best to go with that rather than passing the number value assuming that the constant will always be there and always refer to double side rendering as it should.
+With the values that I am passing this results in a dome like shape, however it will not be a closed dome, so I am making use of the side property of the material that I am using to make sure that both sides of the geometry and rendered. The value that I will want to pass for the side property will be the [THREE.DoubleSide constant value](https://threejs.org/docs/#api/en/constants/Materials), and it would be best to go with that rather than passing the number value assuming that the constant will always be there and always refer to double side rendering as it should.
 
 ```js
 (function () {
