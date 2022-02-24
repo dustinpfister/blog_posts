@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-24 09:46:44
-version: 1.45
+updated: 2022-02-24 10:05:35
+version: 1.46
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry). With most of my simple demos of threejs in which I just need to add a Mesh to a scene, and Mesh at all I often go with the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/), however the sphere geometry constructor is another good choice for that kind of situation also. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space.
@@ -192,14 +192,29 @@ I might want to create an object that is a dome, but a dome with a cap on one si
 
 ```js
 (function () {
- 
-    var material = new THREE.MeshStandardMaterial({
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER SETUP
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(8, 8, 0xff0000));
+    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+    camera.position.set(2.5, 2.5, 2.5);
+    camera.lookAt(0, 0, 0);
+    var light = new THREE.PointLight(0xffffff); // point light
+    light.position.set(8,0,0)
+    camera.add(light);
+    scene.add(camera);
+    // render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // ADDING A MESH OBJECTS TO SCENE
+    // ---------- ----------
+    var material = new THREE.MeshPhongMaterial({
             color: 0xffff00,
-            emissive: 0x404040,
             side: THREE.DoubleSide
         });
- 
-    // create a Dome at helper
     var createDomeAt = function (x, z, rPer, r, cap) {
         r = r === undefined ? 0.5 : r;
         // mesh
@@ -211,7 +226,7 @@ I might want to create an object that is a dome, but a dome with a cap on one si
         if (cap) {
             var circle = new THREE.Mesh(
                     // USING A CIRCLE GEOMETRY
-                    new THREE.CircleGeometry(r, 30),
+                    new THREE.CircleGeometry(r, 30, 0, Math.PI * 2),
                     // standard material
                     material);
             circle.geometry.rotateX(Math.PI * 0.5);
@@ -221,32 +236,14 @@ I might want to create an object that is a dome, but a dome with a cap on one si
         mesh.geometry.rotateX(Math.PI * 2 * rPer);
         return mesh;
     };
- 
-    // creating a scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(8, 8, 0xff0000));
- 
     scene.add(createDomeAt(0, 0, 0.0));
     scene.add(createDomeAt(0, 1.5, 0.5, 0.75));
     scene.add(createDomeAt(1.5, 0, 0.5, 0.75, true));
- 
-    // camera
-    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-    camera.position.set(2.5, 2.5, 2.5);
-    camera.lookAt(0, 0, 0);
-    var light = new THREE.PointLight(0xffffff); // point light
-    light.position.x = 4;
-    light.position.y = -0.5;
-    camera.add(light);
-    scene.add(camera);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
     renderer.render(scene, camera);
- 
-}
-    ());
+}());
 ```
 
 ## 5 - Using more than one material with a sphere
