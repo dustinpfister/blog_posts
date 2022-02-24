@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-24 07:57:59
-version: 1.42
+updated: 2022-02-24 09:32:40
+version: 1.43
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry). With most of my simple demos of threejs in which I just need to add a Mesh to a scene, and Mesh at all I often go with the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/), however the sphere geometry constructor is another good choice for that kind of situation also. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space.
@@ -82,12 +82,31 @@ When I create the instance of the Sphere geometry I am passing just one argument
 
 ## 2 - Width and Height segments
 
-Now that I have a very basic example out of the way there is taking a look at some of the additional arguments of the sphere geometry constructor. In this example I am creating a helper function that will create and return a mesh that uses the Sphere geometry constructor for the geometry of the mesh. When calling this create sphere at helper I can pass a location in terms of an x and z position as to where to place the mesh, but I can also set the number of width and height sections.
+Now that I have a very basic example out of the way there is taking a look at some of the additional arguments of the sphere geometry constructor. In this example I am creating a helper function that will create and return a mesh that uses the Sphere constructor for the geometry of the mesh, along with the [standard material](/2021/04/27/threejs-standard-material/) to skin the mesh objects this time. 
+
+When calling this create sphere at helper I can pass a location in terms of a x and z position as to where to place the mesh, but I can also set the number of width and height sections of the sphere geometry. I am then calling this helper a few times placing each mesh in different locations of the scene, and with different settings for the width and height segments of each sphere geometry used.
 
 ```js
 (function () {
- 
-    // create a sphere at helper
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER SETUP
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(8, 8, 0xff0000));
+    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+    camera.position.set(0.5, 2.5, 2.5);
+    camera.lookAt(0, 0, 0);
+    var light = new THREE.PointLight(0xffffff); // point light
+    light.position.x = 1;
+    light.position.y = 1;
+    camera.add(light);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // ADDING A MESH OBJECTS TO SCENE
+    // ---------- ----------
     var createSphereAt = function (x, z, w, h, r) {
         w = w === undefined ? 30 : w;
         h = h === undefined ? 15 : h;
@@ -104,32 +123,14 @@ Now that I have a very basic example out of the way there is taking a look at so
         mesh.position.set(x, 0, z);
         return mesh;
     };
- 
-    // creating a scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(8, 8, 0xff0000));
- 
-    scene.add(createSphereAt(-2, 0, 20, 20));
+    scene.add(createSphereAt(-1.25, 0, 20, 20));
     scene.add(createSphereAt(0, 0, 10, 10));
-    scene.add(createSphereAt(2, 0, 5, 5));
- 
-    // camera
-    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-    camera.position.set(2.5, 2.5, 2.5);
-    camera.lookAt(0, 0, 0);
-    var light = new THREE.PointLight(0xffffff); // point light
-    light.position.x = 1;
-    light.position.y = 1;
-    camera.add(light);
-    scene.add(camera);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
+    scene.add(createSphereAt(1.25, 0, 5, 5));
+     // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
     renderer.render(scene, camera);
- 
-}
-    ());
+}());
 ```
 
 ## 3 - Making a dome shape with Sphere Geometry
