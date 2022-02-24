@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-10 08:16:05
-version: 1.38
+updated: 2022-02-24 07:42:32
+version: 1.39
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry).
@@ -15,23 +15,23 @@ Just like any other built in geometry constructor I just call THREE.SpeherGeomer
 
 <!-- more -->
 
-## 1 - Sphere Geometry in threejs and what to know first
+## Sphere Geometry in threejs and what to know first
 
 In this post I will be writing about a few examples of the Sphere Geometry constructor in a javaScript library known as three.js. I will be trying to keep these examples fairly simple, at least the first few at the top of the post anyway. However you should know at least a few things when it comes to the very basics of getting started with three.js and javaScript in general. I will not be going over little detail that should be known before hand, however in this section I will be briefly mentioning some things that come to mind that you should have solid first.
 
-### 1.1 - Understand the basics of setting up a scene, camera, and renderer.
+### Understand the basics of setting up a scene, camera, and renderer.
 
 I trust that you have worked out at least the very basics of setting up a [scene object](/2018/05/03/threejs-scene/), [cameras](/2018/04/06/threejs-camera/), and using this scene object and camera with a renderer such as the built in [webgl renderer](/2018/11/24/threejs-webglrenderer/). If not you might want to read up [my getting started post on three.js](/2018/04/04/threejs-getting-started/), or some content on cameras and renderer's first.
 
-### 1.2 - It is nice to have a solid understanding of the Mesh, and Object3d classes
+### It is nice to have a solid understanding of the Mesh, and Object3d classes
 
 There is just creating an instance of sphere geometry, but in order to do anything of interest with that geometry I am going to want to add it to a Mesh Object along with a material. The mesh object is based off of the [object3d class](/2018/04/23/threejs-object3d/) which is a base class for a whole lot of other objects in three.js. This object3d class has properties that can be used to change position, and orientation, and has many other useful features such as the feature of adding additional child objects to the object that are also based on object3d. 
 
-### 1.3 - Version Numbers matter with three.js
+###  Version Numbers matter with three.js
 
 When I first wrote this post I was using version [r127 of three.js](https://github.com/mrdoob/three.js/releases/tag/r127), that was released in March of 2021. I have been playing around with three.js off and of for a long time now, and I can not say that much has changed with the Sphere Geometry constructor alone when it comes to code breaking changes. Still in many of these examples I am using many other features in three.js that might break when it comes to trying to use them with future versions of three.js, the same can be said if you are using an older version of threejs.
 
-## 2 - Basic Sphere Geometry Example
+## 1 - Basic Sphere Geometry Example
 
 First things first when it comes to getting into the sphere geometry and that is starting out with just a basic striped down hello world type example. In this example I start out by creating a main scene object.
 
