@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-24 10:22:52
-version: 1.47
+updated: 2022-02-24 10:24:15
+version: 1.48
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry). With most of my simple demos of threejs in which I just need to add a Mesh to a scene, and Mesh at all I often go with the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/), however the sphere geometry constructor is another good choice for that kind of situation also. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space.
@@ -294,6 +294,7 @@ When it comes to doing this sort of thing with a sphere geometry or any buffer g
             geometry, // USING A SPHERE GEOMETRY
             materials // PASSING AN ARRAY OF MATERIALS
     );
+    scene.add(mesh);
     // ---------- ----------
     // CALLING RENDER OF RENDERER
     // ---------- ----------
