@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-24 10:05:35
-version: 1.46
+updated: 2022-02-24 10:22:52
+version: 1.47
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry). With most of my simple demos of threejs in which I just need to add a Mesh to a scene, and Mesh at all I often go with the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/), however the sphere geometry constructor is another good choice for that kind of situation also. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space.
@@ -254,10 +254,23 @@ When it comes to doing this sort of thing with a sphere geometry or any buffer g
 
 ```js
 (function () {
- 
-    // creating a scene
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER SETUP
+    // ---------- ----------
     var scene = new THREE.Scene();
- 
+    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+    camera.position.set(0.75, 1, 0.75);
+    var light = new THREE.PointLight(0xffffff); // point light
+    light.position.set(1, 1, 0);
+    camera.add(light);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // THE SPHERE
+    // ---------- ----------
     var materials = [
         new THREE.MeshStandardMaterial({
             color: 0xff0000,
@@ -267,9 +280,7 @@ When it comes to doing this sort of thing with a sphere geometry or any buffer g
             color: 0x00ff00,
             emissive: 0x202020
         })];
- 
     var geometry = new THREE.SphereGeometry(0.5, 15, 15);
- 
     var position = geometry.attributes.position,
     len = position.array.length,
     mi = 0,
@@ -279,32 +290,15 @@ When it comes to doing this sort of thing with a sphere geometry or any buffer g
         geometry.addGroup(i, 3, mi);
         i += 3;
     }
- 
-    // mesh
     var mesh = new THREE.Mesh(
-            // USING A SPHERE GEOMETRY
-            geometry,
-            // PASSING AN ARRAY OF MATERIALS
-            materials);
-    scene.add(mesh); // add the mesh to the scene
- 
-    // camera
-    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-    camera.position.set(0.75, 1, 0.75);
-    var light = new THREE.PointLight(0xffffff); // point light
-    light.position.x = 1;
-    light.position.y = 1;
-    camera.add(light);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
+            geometry, // USING A SPHERE GEOMETRY
+            materials // PASSING AN ARRAY OF MATERIALS
+    );
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
     renderer.render(scene, camera);
- 
-}
-    ());
+}());
 ```
 
 For more on this sort of topic you might want to check out my post on [material index values when working with an array of materials in a mesh object](/2018/05/14/threejs-mesh-material-index/).
