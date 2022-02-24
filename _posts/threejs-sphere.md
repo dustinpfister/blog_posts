@@ -1,12 +1,12 @@
 ---
-title: Sphere Geometry in threejs
+title: Spheres in threejs geometry, positioning, and more
 date: 2021-05-26 11:41:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-24 07:55:40
-version: 1.41
+updated: 2022-02-24 07:57:59
+version: 1.42
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry). With most of my simple demos of threejs in which I just need to add a Mesh to a scene, and Mesh at all I often go with the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/), however the sphere geometry constructor is another good choice for that kind of situation also. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space.
