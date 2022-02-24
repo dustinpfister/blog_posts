@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-24 09:32:40
-version: 1.43
+updated: 2022-02-24 09:45:37
+version: 1.44
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry). With most of my simple demos of threejs in which I just need to add a Mesh to a scene, and Mesh at all I often go with the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/), however the sphere geometry constructor is another good choice for that kind of situation also. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space.
@@ -135,14 +135,32 @@ When calling this create sphere at helper I can pass a location in terms of a x 
 
 ## 3 - Making a dome shape with Sphere Geometry
 
-Okay so the first argument can be used to set the radius, and the second and third arguments can be used to set the number of with and height segments to use for the sphere. The remaining arguments then have to do with setting angles and angle sweeps that allow for the creating of shapes like that of a dome like shape.
+The first argument can be used to set the radius, and the second and third arguments can be used to set the number of with and height segments to use for the sphere. The remaining arguments then have to do with setting angles and angle sweeps that allow for the creation of shapes like that of a dome like shape, among other options that can be created with these kinds of arguments.
 
-In this example I am making a create dome at helper method that is just like the helper that I made in a previous example but with a few changes. I am not using fixed static values for the width and height segments and I am not passing some arguments for the four additional arguments that are used to set starting angles and sweep angles for the horizontal and vertical parts of the sphere. With the values that I am passing this results in a dome like shape, however it will not be a closed dome, so I am making use of the side property of the material that I am using to make sure that both sides of the geometry and rendered.
+In this example I am making a create dome helper method that is just like the helper that I made in a previous example but with a few changes. I am now using fixed static values for the width and height segments, and I am now passing some arguments for the four additional arguments that are used to set starting angles and sweep angles for the horizontal and vertical parts of the resulting sphere geometry. 
+
+With the values that I am passing this results in a dome like shape, however it will not be a closed dome, so I am making use of the side property of the material that I am using to make sure that both sides of the geometry and rendered. The value that I will want to pass for the side property will be the THREE.DoubleSide constant value, and it would be best to go with that rather than passing the number value assuming that the constant will always be there and always refer to double side rendering as it should.
 
 ```js
 (function () {
- 
-    // create a Dome at helper
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER SETUP
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(8, 8, 0xff0000));
+    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+    camera.position.set(1.2, 0.8, 0);
+    camera.lookAt(0, 0, 0.4);
+    var light = new THREE.PointLight(0xffffff); // point light
+    light.position.set(1, 1, 0);
+    camera.add(light);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // ADDING A MESH OBJECTS TO SCENE
+    // ---------- ----------
     var createDomeAt = function (x, z, rPer, r) {
         r = r === undefined ? 0.5 : r;
         // mesh
@@ -159,31 +177,13 @@ In this example I am making a create dome at helper method that is just like the
         mesh.geometry.rotateX(Math.PI * 2 * rPer);
         return mesh;
     };
- 
-    // creating a scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(8, 8, 0xff0000));
- 
     scene.add(createDomeAt(0, 0, 0.0));
     scene.add(createDomeAt(0, 1, 0.5));
- 
-    // camera
-    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-    camera.position.set(2.0, 2.0, 2.0);
-    camera.lookAt(0, 0, 0);
-    var light = new THREE.PointLight(0xffffff); // point light
-    light.position.x = 1;
-    light.position.y = 1;
-    camera.add(light);
-    scene.add(camera);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
     renderer.render(scene, camera);
- 
-}
-    ());
+}());
 ```
 
 ## 4 - Using the Circle geometry with the sphere geometry to created a capped dome
