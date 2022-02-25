@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-02-25 09:49:59
-version: 1.29
+updated: 2022-02-25 09:53:45
+version: 1.30
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. 
@@ -119,7 +119,7 @@ Things get a little more involve when using a light source, when this is the cas
 
 ## 3 - Canvas elements and alpha maps
 
-Another kind of transparency is to get into using [alpha maps](/2019/06/06/threejs-alpha-map/) this is a kind of texture map that can be added to a mesh to set locations in a face that should be transparent. One way to do so would be to load extremal images as a way to load some textures for this sort of thing. However when it comes to just using a little javaScript code I can use canvas elements as a way to create textures which in turn can be used for a alpha map.
+Another kind of transparency is to get into using [alpha maps](/2019/06/06/threejs-alpha-map/) this is a kind of texture map that can be added to a material to set locations in a face that should be transparent, and if so by how much by using gray scale coloring. One way to do so would be to load extremal images as a way to create some textures for an alpha map as well as other kinds of maps. However when it comes to just using a little javaScript code I can use [canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) which in turn can also be used to create textures that can be used for an alpha map along with the other kinds of maps.
 
 So once again I added a bit more to what was once my basic example on transparency in threejs, by adding a method that will help me to make a texture for a map. There are a number of maps to work with when it comes to making a material, but for this example I will just be sticking to an alpha map for the glass cube. When drawing to the canvas element i will want to stick to using gray scale color values, when a color is black that will mean that area in the texture will be fully transparent, while white will mean fully opaque.
 
