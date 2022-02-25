@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-02-25 09:04:08
-version: 1.19
+updated: 2022-02-25 09:13:49
+version: 1.20
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the Basic material for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. Once I have the transparency value set to true it is then just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material, and that is it. However there might be a bit more to write about when it comes to a few more additional things that branch off from that, as there is a think or two about more advanced topics such as alpha maps, so lets get to it when it comes to transparency in threejs.
@@ -16,6 +16,10 @@ In [threejs](https://threejs.org/) there are a few things to know about when it 
 ## Making a mesh transparent, and what else to know
 
 In this post I am mainly writing about the transparent and opacity properties of materials as a way to adjust the transparency of a material of a mesh object. However there are a whole lot of other ways to go about making a mesh object visible or not, and there are also a lot of other things that you should be aware of before continuing to read this. I will not be getting into the basics of how to et started with three.js and javaScript in general here, but in this section I will be going over some things that you should have solid first.
+
+### The source code examples in this post are on Github
+
+The source code examples that I am writing about in this post can be found in my [test theejs repository on Guthub](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-materials-transparent). This is also where I park the source code examples for my [many other posts on threejs](/categories/three-js/).
 
 ### Version Numbers matter with three.js
 
