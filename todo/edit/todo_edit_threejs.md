@@ -20,12 +20,6 @@
 
 <!--  Search Console top 3 ( clicks ) -->
 
-### () - threejs-materials-transparent (573 / 3mo / 2-20)
-* proof read
-* start for post folder and link to from post
-* read me file in for post folder linking to post
-* at least 300 words for readme file
-
 <!--  Search Console top 3 ( impressions ) -->
 
 ### () - threejs-face3 (15.8k / 3mo / 2-20)
@@ -80,6 +74,11 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 * proof read
 
 <!-- DONE -->
+
+### ( done 02/25/2022 ) - threejs-materials-transparent (573 / 3mo / 2-20)
+* (done) proof read
+* (done) start for post folder and link to from post
+* (done) read me file in for post folder linking to post
 
 ### ( done 02/24/2022 ) - threejs-sphere
 * (done) start a for post folder in test threejs
