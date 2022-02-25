@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-02-25 09:58:54
-version: 1.32
+updated: 2022-02-25 10:01:11
+version: 1.33
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. 
@@ -199,4 +199,6 @@ For this example I also added an ambient light to make sure that there is always
 ## 4 - Conclusion
 
 So then transparency is something that can be set for a material as a whole, but it can also be set in at a texture level also when it comes to alpha maps. So then transparency can be something that can be very simple if we are taking the use of the basic material, and just setting the transparency of the whole material at a global level. However things can get a little involved when it comes to adding alpha maps to the mix, as that can lead to all kinds of additional things when it comes to sides, and directional light.
+
+I still thing I need to work out some more examples on this topic, and also how to deal with various tings that will come up when working with light and various maps that are used in a material to skin a geometry that are used together for a single mesh object.
 
