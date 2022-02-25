@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-02-25 09:36:12
-version: 1.26
+updated: 2022-02-25 09:41:41
+version: 1.27
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. 
@@ -30,7 +30,7 @@ When I first wrote this post I was using version r127 of three.js, and the last 
 
 ### The visible property of the Object3d class
 
-If I want to just make a mesh object, or just about any display object based off of object3d not visible for a while I can always just set the [visible boolean of the object](/2021/05/24/threejs-object3d-visible/) to false. There are also a number of other topics to cover when it comes to making an object completely not visible or not. There is just setting the visible boolean to false, but in some cases it might be a better idea to swap objects from a group that is attached to the scene and another group that is not that acts as a pool of sorts. In any case all of this is outside the scope of this post, here I assume that you just want to play around with the opacity of a material.
+If I want to just make a mesh object, or just about any display object based off of object3d not visible for a while I can always just set the [visible boolean of the object](/2021/05/24/threejs-object3d-visible/) to false. There are also a number of other topics to cover when it comes to making an object completely not visible or not beyond just that of the visibility boolean of an object3d based object and the transparency  and opacity properties of materials. For example there is adding one or more mesh objects to one or more [groups](/2018/05/16/threejs-grouping-mesh-objects/) and then adding and removing the groups to the main scene object that is used with the render function of a renderer as needed.
 
 ## 1 - Basic Transparency of the whole mesh with the Basic Material
 
