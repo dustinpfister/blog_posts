@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-02-25 09:56:34
-version: 1.31
+updated: 2022-02-25 09:58:54
+version: 1.32
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. 
@@ -123,9 +123,9 @@ Another kind of transparency is to get into using [alpha maps](/2019/06/06/three
 
 So once again I added a bit more to what was once my basic transparency example by adding a method that will help me to make a texture for a alpha map using a canvas element. When drawing to the canvas element I will want to stick to using gray scale color values, when a color is black that will mean that area in the texture will be fully transparent, while white will mean fully opaque. So I need to just set the stroke color, and or fill color values of the 2d canvas drawing context as needed when working gout the texture for the alpha map.
 
-Things will get a little involve beyond just that of adding the alpha map to the glass material though, I will want to play around with some additional material properties to get things to work the way that I want them to. For example there is the question of drawing just the front sides of a cube, or all sides. I might want to also play around with the depth function that is used for the material.
+Things will get a little involve beyond just that of adding the alpha map to the a material though, I will want to play around with some additional material properties to get things to work the way that I want them to. For example there is the question of drawing just the front sides of a cube, or all sides. I might want to also play around with the depth function that is used for the material.
 
-For this example I also added an ambient light to make sure that there is always a certain amount of base light for all surfaces.
+For this example I also added an ambient light to make sure that there is always a certain amount of base light for all surfaces, on top of the ushual point light that I like to use.
 
 ```js
 (function () {
