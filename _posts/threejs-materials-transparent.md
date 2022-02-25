@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-02-25 09:33:21
-version: 1.25
+updated: 2022-02-25 09:36:12
+version: 1.26
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. 
@@ -22,7 +22,7 @@ I will not be getting into the basics of how to [get started with three.js](/201
 
 ### The source code examples in this post are on Github
 
-The source code examples that I am writing about in this post can be found in my [test theejs repository on Guthub](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-materials-transparent). This is also where I park the source code examples for my [many other posts on threejs](/categories/three-js/).
+The source code examples that I am writing about in this post can be found in my [test theejs repository on Guthub](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-materials-transparent). This is also where I park the source code examples for my [many other posts on threejs](/categories/three-js/). This post on transparency like many of my other posts is still very much a work in progress, every so often I do get around to expanding posts with more examples while also improving the over all quality of older examples while I am at it. If you see something that should be fixed, or of you can thing of something that should be added there is the comments section in the bottom of this post, and also the test threejs repository where pull requests can be made.
 
 ### Version Numbers matter with three.js
 
