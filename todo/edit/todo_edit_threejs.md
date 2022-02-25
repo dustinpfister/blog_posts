@@ -9,6 +9,15 @@
 * get to 1,000+ words
 * have 5+ internal links for the post
 
+### () - threejs-materials-transparent
+* I am going to want one more example about transparency and lighting
+
+### ( ) - threejs-canvas-texture
+* of course there will likley always be more to write about with this one
+
+### ( ) - threejs-fog
+* look into a custom fog method with a height argument
+
 <!--  Search Console top 3 ( clicks ) -->
 
 ### () - threejs-materials-transparent (573 / 3mo / 2-20)
