@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-02-25 09:44:33
-version: 1.28
+updated: 2022-02-25 09:49:59
+version: 1.29
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. 
@@ -70,9 +70,9 @@ So now to start out with a basic example of transparency in threejs, and as such
 }());
 ```
 
-## 2 - Using a light source and the standard material
+## 2 - Using a light source and the Standard material
 
-Things get a little more involve when using a light source, when this is the case I will have to use a material that will respond to light. Once such material is the standard material rather than the basic material. Then I am going to need to add at least one light source, there are a number of options for that, the one I often go for is a point light. This is is a nice direction light that will shine light in all directions form the position at which it is located.
+Things get a little more involve when using a light source, when this is the case I will have to use a material that will respond to light so I can not use the basic material as it will not do that. There are a lot of options with materials that will respond to light to choose form, one such material is the standard material that strokes me as a good middle of the road type chose when it comes to this sort of thing when making choices between performance and how things look. Now that I have made a choice when it comes to materials I am going to need to add at least one light source, there are a number of options for that also of course, the one I often go for is a [point light](/2019/06/02/threejs-point-light/). This is is a nice kind of light that will shine light in all directions form the position at which it is located which works well for many of this kind of examples.
 
 ```js
 (function () {
