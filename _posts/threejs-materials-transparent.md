@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-02-25 09:27:32
-version: 1.23
+updated: 2022-02-25 09:31:33
+version: 1.24
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. 
@@ -16,7 +16,9 @@ Once I have the transparency property value of a material set to true, it is the
 
 ## Making a mesh transparent, and what else to know
 
-In this post I am mainly writing about the transparent and opacity properties of materials as a way to adjust the transparency of a material of a [mesh object](/2018/05/04/threejs-mesh/) in the javaScript library known as three.js. However there are a whole lot of other ways to go about making a mesh object visible or not, and there are also a lot of other things that you should be aware of before continuing to read this. I will not be getting into the basics of how to et started with three.js and javaScript in general here, but in this section I will be going over some things that you should have solid first.
+In this post I am mainly writing about the transparent and opacity properties of materials as a way to adjust the transparency of a material of a [mesh object](/2018/05/04/threejs-mesh/) in the javaScript library known as three.js. However there are a whole lot of other ways to go about making a mesh object visible or not, and there are also a lot of other things that you should be aware of before continuing to read the content of this post. 
+
+I will not be getting into the basics of how to [get started with three.js](/2018/04/04/threejs-getting-started/), and I also assume that you have a [fair amount of experience with client side javaScript in general](/2018/11/27/js-getting-started/) as well. In this section I will be going over some things that you should have solid first.
 
 ### The source code examples in this post are on Github
 
