@@ -5,12 +5,12 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-02-25 09:19:24
-version: 1.21
+updated: 2022-02-25 09:22:53
+version: 1.22
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. 
-Once I have the transparency property value of a material set to true, it is then just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material for the most part. However there might be a bit more to write about when it comes to a few more additional things that branch off from that, as there is a thing or two about more advanced topics such as alpha maps for example. Also things can get a little involves actually when we start brining light sources into the mix and how that should be handled. So in this post I will be covering the very basics of getting started with transparency when working with materials in threejs, but I will also have to at least write about a few things that have to do with other features of threejs while I am at it.
+Once I have the transparency property value of a material set to true, it is then just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material for the most part. However there might be a bit more to write about when it comes to a few more additional things that branch off from that, as there is a thing or two about more advanced topics such as [alpha maps](/2019/06/06/threejs-alpha-map/) for example. Also things can get a little involves actually when we start brining light sources into the mix and how that should be handled. So in this post I will be covering the very basics of getting started with transparency when working with materials in threejs, but I will also have to at least write about a few things that have to do with other features of threejs while I am at it.
 
 <!-- more -->
 
