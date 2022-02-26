@@ -5,17 +5,23 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-02-26 08:06:44
-version: 1.12
+updated: 2022-02-26 08:56:58
+version: 1.13
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
 
 There are a lot of options to choose from when it comes to light sources, and sense this post will be a general overview of light in threejs I will be going over what those options are. However there are also a whole lot of other things that branch off from the use of light sources that I am also going to want to write about also here.
 
-## Light in threejs and what to knwo first
+## Light in threejs and what to know first
 
-That being said there is not just going over what the options are when it comes to having one or more light sources in a scene, there is also a lot to cover when it comes to many other things that branch off from the use of light objects. For example there is also knowing how to move a light source around, so I will also have to cover a thing or two about various properties in the [object3d class](/2018/04/23/threejs-object3d/) while I am at it and much more that will pop up here and there. With some light sources such as ambient light the position of the light does not matter, however it does matter with many other kinds of lights such as directional lights and spotlights. Also when it comes to spot lights it is not the position but also rotation that matters so there is covering certain things with it comes to working with Vector3 and Euler classes.
+There is not just going over what the options are when it comes to having one or more light sources in a scene, there is also a lot to cover when it comes to many other things that branch off from the use of light objects. 
+
+## Read up more on the Object3d class if you have not done so yet
+
+Many of the light options such as point lights, and sport lights require the use of many features of the object3d class in order to get a desired end result with them. So it is a good idea to know thing or two about various properties in the [object3d class](/2018/04/23/threejs-object3d/) namely the position and rotation properties. 
+
+With some light sources such as ambient light the position of the light does not matter, however it does matter with many other kinds of lights. When it comes to spot lights for example I will want to set the position of the light, and also the orientation of the light so that it is focus on a desired target of interest in the scene.
 
 ### Know at least a thing or two about materials
 
@@ -28,7 +34,7 @@ When I first wrote this post I was using r135 of threejs.
 
 ### The source code exmaples in this post are on Github
 
-The souce code example that I am wriitng about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-light).
+The source code example that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-light).
 
 <!-- more -->
 
