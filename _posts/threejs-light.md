@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-02-26 08:56:58
-version: 1.13
+updated: 2022-02-26 08:58:46
+version: 1.14
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -30,7 +30,7 @@ I should also write at last a thing or two about materials also while I am at it
 
 ### Version numbers matter
 
-When I first wrote this post I was using r135 of threejs.
+When I first wrote this post I was using r135 of threejs, if you run to any problems the first thing you will want to check is the version number that you are using. Threejs is a fast moving project in terms of its development and code breaking changes are made to it now and then with each revision number moving forward.
 
 ### The source code exmaples in this post are on Github
 
