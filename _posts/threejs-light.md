@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-02-26 08:58:46
-version: 1.14
+updated: 2022-02-26 09:02:40
+version: 1.15
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -32,7 +32,7 @@ I should also write at last a thing or two about materials also while I am at it
 
 When I first wrote this post I was using r135 of threejs, if you run to any problems the first thing you will want to check is the version number that you are using. Threejs is a fast moving project in terms of its development and code breaking changes are made to it now and then with each revision number moving forward.
 
-### The source code exmaples in this post are on Github
+### The source code examples in this post are on Github
 
 The source code example that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-light).
 
@@ -82,7 +82,7 @@ Maybe one of the best options to choose from to get started with when it come to
 
 ### 2 - Static directional light example
 
-[Directional light](/2019/06/04/threejs-directional-light/) in a way is just a slightly more advanced kind of ambient light in which the position of the direction light matters.
+[Directional light](/2019/06/04/threejs-directional-light/) in a way is just a slightly more advanced kind of ambient light in which the position of the direction light matters. As the name suggests light travels in one direction, but it does so in a parallel kind of way rather than being focused in a specific area light with spotlights, or outward in all directions like with point lights. For this reason a directional light might be one of the best options for having a sun light effect, but when doing so I might still want to have ambient light as well to still have a base amount of light for all surfaces.
 
 ```js
 (function () {
