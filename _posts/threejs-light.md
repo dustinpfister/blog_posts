@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-02-25 12:45:21
-version: 1.2
+updated: 2022-02-26 07:29:01
+version: 1.3
 ---
 
-When making a threejs project there will be at least some projects in which I might want to add one or more light sources to a scene. This will of course be the case if I want to see anything at all with certain materials if they do not have an emmisve color or emissive map. Speaking of emmsive maps and colors that is just one of many things that also comes to mind when thinking about everything there is to work with when it comes to light in threejs. That being said there is not just going over what the options are when it comes to having one or more light sources in a scene, there is also a lot to cover when it comes to the materials that will respond to light sources also. There is also knowing how to move a light source around if it is a kind of light where the position of the light matters, so I will also have to cover a thing or two about various properties in the object3d class while I am at it and much more that will pop up here and there.
+When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). This will of course be the case if I want to see anything at all with certain materials if they do not have an emmisve color or [emissive map](/2021/06/22/threejs-emissive-map). Speaking of emmsive maps and colors that is just one of many things that also comes to mind when thinking about everything there is to work with when it comes to light in threejs. That being said there is not just going over what the options are when it comes to having one or more light sources in a scene, there is also a lot to cover when it comes to the materials that will respond to light sources also. There is also knowing how to move a light source around if it is a kind of light where the position of the light matters, so I will also have to cover a thing or two about various properties in the object3d class while I am at it and much more that will pop up here and there.
 
 <!-- more -->
 
