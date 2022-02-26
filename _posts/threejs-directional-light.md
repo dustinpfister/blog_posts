@@ -5,13 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2021-06-02 10:19:17
-version: 1.23
+updated: 2022-02-26 07:56:20
+version: 1.24
 ---
 
-In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of adding light to a scene. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer. 
+In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of [adding light to a scene](/2022/02/25/threejs-light/). Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer. 
 
-A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing, because with directional light, the light is coming from a certain direction to a certain target location. With ambient light a base light intensity is just applied for all materials in a scene and the location of the ambient light in world space does not really matter. A directional light is also like a spot light in the sense that it is coming from a certain location to a certain target location, but not in a cone like manner as with the spot light. With direction light it is just direction that is really of concern and that is just it, so it differs greatly from point lights and spot lights. So in this post I thought I would work out just a few quick examples of this kind of lighting option. 
+A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing, because with directional light, the light is coming from a certain direction to a certain target location. With ambient light a base light intensity is just applied for all materials in a scene and the location of the ambient light in world space does not really matter. 
+
+A directional light is also like a spot light in the sense that it is coming from a certain location to a certain target location, but not in a cone like manner as with the spot light. With direction light it is just direction that is really of concern and that is just it, so it differs greatly from point lights and spot lights. So in this post I thought I would work out just a few quick examples of this kind of lighting option. 
 
 <!-- more -->
 
@@ -22,6 +24,7 @@ The subject of light is a little involved with three.js, but should not be to ha
 ### 1.1 - Know a thing or two about materials
 
 It is really not that hard to create and add add a light source to a threejs project, However just adding a light should to an scene object, or some other kind of object based off of object3d is just part of the process of doing things with light. It is also required to know that not all materials will respond to light sources, such as the mesh basic material, and the mesh normal material just to name a few that are not going to work with light. When I work with light I often go with the standard material, but there are some additional options when it comes to materials.
+
 ### 1.2 - The version number of threejs is important
 
 When I made the code examples for this post I was using threejs revision 127. I do not think that much has changed with direction light for a real long time, however I can not say the same for a whole lot of other features of threejs. At some point in the future it is possible that the code examples here might break, so it is a good idea to always take into account what the version number is that you are using as well as the version number that was used by the author of a code example on the open web.
