@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-02-26 07:56:20
-version: 1.8
+updated: 2022-02-26 07:58:52
+version: 1.9
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -111,6 +111,8 @@ Maybe one of the best options to choose from to get started with when it come to
 ```
 
 ## 3 - Directional light animation example
+
+To gain a better sen of what is going on with directional light it might be a good idea to work in some controls that can be used to change the position of the directional light, or have some kind of animation loop. For this example I will be doing the latter and will also be writing about additional examples such when it comes to other light source examples in the post from here on out.
 
 ```js
 (function () {
