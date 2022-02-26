@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-02-26 07:58:52
-version: 1.9
+updated: 2022-02-26 07:59:56
+version: 1.10
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -184,3 +184,4 @@ To gain a better sen of what is going on with directional light it might be a go
 
 ## 4 - Conclusion
 
+I have wrote a number of posts on light in threejs thus far, but I have not yet wrte a post on light in general until now. 
