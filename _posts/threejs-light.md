@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-02-26 07:35:11
-version: 1.4
+updated: 2022-02-26 07:37:33
+version: 1.5
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). This will of course be the case if I want to see anything at all with certain materials if they do not have an emmisve color or [emissive map](/2021/06/22/threejs-emissive-map). 
 
 Speaking of emmsive maps and colors that is just one of many things that also comes to mind when thinking about everything there is to work with when it comes to light in threejs. That being said there is not just going over what the options are when it comes to having one or more light sources in a scene, there is also a lot to cover when it comes to many other things that branch off from the use of light objects. For example there is also knowing how to move a light source around, so I will also have to cover a thing or two about various properties in the [object3d class](/2018/04/23/threejs-object3d/) while I am at it and much more that will pop up here and there. With some light sources such as ambient light the position of the light does not matter, however it does matter with many other kinds of lights such as directional lights and spotlights. Also when it comes to spot lights it is not the position but also rotation that matters so there is covering certain things with it comes to working with Vector3 and Euler classes.
+
+I should also write at last a thing or two about materials also while I am at it, because the choice of material matters a lot when it comes to light also. For example when I was first starting out with threejs I was using materials like the Normal material, basic material, and depth materials, these are great options for many various reasons, but not of them will work with light sources.
 
 <!-- more -->
 
