@@ -5,13 +5,15 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 964
-updated: 2022-02-28 14:14:06
-version: 1.4
+updated: 2022-02-28 14:19:05
+version: 1.5
 ---
 
 This month I [started learning electronjs](/2022/02/07/electronjs-hello-world/), and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules in electron. So for todays post on electron I thought I would create a quick example centered around the [app module of electron](https://www.electronjs.org/docs/latest/api/app), and the various features that I should be aware of in that specific module. The main thing that the app module is used for would be to attach event handers for a wide range of events that happen when an application starts, is used, and closed. For example there is attaching an event handler for the ready event that should fire once Electron has finished initializing. Sense there is a ready event it goes without saying that there is also will-quit, and quit events that can be used to define some logic that should fire when an application is being closed.
 
-This app module is one of the many [main process](https://www.electronjs.org/docs/latest/glossary#main-process) modules to work with that should not be confused with other modules that are used for a preload script, or render process as it often seems to be called. 
+This app module is one of the many [main process](https://www.electronjs.org/docs/latest/glossary#main-process) modules to work with that should not be confused with other modules that are used for a preload script, or render process as it often seems to be called.
+
+In this post then I will be going over the source code of an electronjs example that just makes use of a few features of the app module in electronjs. This will not be a comprehensive example of course, as there are a whole lot of features for this one that will have to be coved in any and all future posts on electronjs. However when it comes to learning electron, or anything really, one must start somewhere, and this will then be a kind of hello world type example but with the app module specify. While doing so I will need to also write about at least a few other modules in electronjs such as the [BrowserWindow module](/2022/02/14/electronjs-browser-window/), and the ipcRender module sense I will want to have a front end for this example.
 
 <!-- more -->
 
