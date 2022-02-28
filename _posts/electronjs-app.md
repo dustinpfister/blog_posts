@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 964
-updated: 2022-02-28 14:35:04
-version: 1.8
+updated: 2022-02-28 14:39:08
+version: 1.9
 ---
 
 This month I [started learning electronjs](/2022/02/07/electronjs-hello-world/), and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules in electron. So for todays post on electron I thought I would create a quick example centered around the [app module of electron](https://www.electronjs.org/docs/latest/api/app), and the various features that I should be aware of in that specific module. The main thing that the app module is used for would be to attach event handers for a wide range of events that happen when an application starts, is used, and closed. For example there is attaching an event handler for the ready event that should fire once Electron has finished initializing. Sense there is a ready event it goes without saying that there is also will-quit, and quit events that can be used to define some logic that should fire when an application is being closed.
@@ -20,6 +20,7 @@ In this post then I will be going over the source code of an electronjs example 
 ## The app module in electron and what to know first
 
 This is a post on just one of many modules that are used in electronjs called the app module. This is not any kind of getting started post with electronjs, [nodejs](/2017/04/05/nodejs-helloworld/), or [javaScript in general](/2018/11/27/js-getting-started/). Although I will be keeping this example fairly basic, I hope that you have at least some experience with what is required before hand.
+
 ### This source code example is on Github
 
 I also have the source code for this example, as well as the source code examples for [all my other posts on electronjs](/categories/electronjs/) thus far on Github in my [examples-electronjs repository](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-app)
@@ -130,3 +131,7 @@ demoAPI.getInfo();
   </body>
 </html>
 ```
+
+## 4 - Conclusion
+
+There is a great deal more to write about with the app module, and a whole world more to write about when it comes to electron as a whole as well of course. However what I wanted to do is just have a kind of central post on this module, not a post on just one specific feature of this module. I have a lot of topics that I like to write about on this site, but if I do work with electron more I am sure I will be writing more posts on this app module a well as the many other electronjs, nodejs, and client side features there are to work with when it comes to making some kind of desktop application this way.
