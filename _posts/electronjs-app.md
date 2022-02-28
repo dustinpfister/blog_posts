@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 964
-updated: 2022-02-28 14:25:12
-version: 1.6
+updated: 2022-02-28 14:32:39
+version: 1.7
 ---
 
 This month I [started learning electronjs](/2022/02/07/electronjs-hello-world/), and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules in electron. So for todays post on electron I thought I would create a quick example centered around the [app module of electron](https://www.electronjs.org/docs/latest/api/app), and the various features that I should be aware of in that specific module. The main thing that the app module is used for would be to attach event handers for a wide range of events that happen when an application starts, is used, and closed. For example there is attaching an event handler for the ready event that should fire once Electron has finished initializing. Sense there is a ready event it goes without saying that there is also will-quit, and quit events that can be used to define some logic that should fire when an application is being closed.
@@ -70,7 +70,9 @@ app.on('window-all-closed',  () => {
 });
 ```
 
-## 2 - preload.js
+## 2 - The preload.js file and ipcRenderer
+
+In the main process I am using a preload script that will be used to create a custom API that can then be used in my front end javaScript code. More on the front end code in the next section in which I will be going over the index html file that contains that code.
 
 ```js
 // preload with contextIsolation enabled
@@ -97,6 +99,8 @@ contextBridge.exposeInMainWorld('demoAPI', demoAPI);
 ```
 
 ## 3 - The index.html file
+
+Now for the index html file that I am loading when creating the main browser window in the main javaScrit file. For this example I am doing away with all the security meta tags that should be used in real projects, but when it comes to a simple tech demo such as this I guess they might not really be needed. This allows for me to make use of inline script tags for this file, so I do not have to park my front end javaScript in yet another file.
 
 ```html
 <!DOCTYPE html>
