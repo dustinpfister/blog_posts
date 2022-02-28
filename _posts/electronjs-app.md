@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 964
-updated: 2022-02-28 14:59:21
-version: 1.11
+updated: 2022-02-28 15:02:51
+version: 1.12
 ---
 
 This month I [started learning electronjs](/2022/02/07/electronjs-hello-world/), and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules in electron. So for todays post on electron I thought I would create a quick example centered around the [app module of electron](https://www.electronjs.org/docs/latest/api/app), and the various features that I should be aware of in that specific module. The main thing that the app module is used for would be to attach event handers for a wide range of events that happen when an application starts, is used, and closed. For example there is attaching an event handler for the ready event that should fire once Electron has finished initializing. Sense there is a ready event it goes without saying that there is also will-quit, and quit events that can be used to define some logic that should fire when an application is being closed.
@@ -74,6 +74,8 @@ app.on('window-all-closed',  () => {
   if (process.platform !== 'darwin') app.quit()
 });
 ```
+
+This might be it for the main javaScript file for this example, and with that just about everything that I am doing with the app module alone with this one. Although it might be possible to create an electron application just using the app module I would say that is a little overkill for that kind of application as I would just work with nodejs alone for that kind of project. So then the rest of this post has to do with the various other files of the example that I am making use of from this main javaScript file such as the preload script and the index html file.
 
 ## 2 - The preload.js file and ipcRenderer
 
