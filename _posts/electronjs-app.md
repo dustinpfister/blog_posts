@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 964
-updated: 2022-02-28 14:32:39
-version: 1.7
+updated: 2022-02-28 14:35:04
+version: 1.8
 ---
 
 This month I [started learning electronjs](/2022/02/07/electronjs-hello-world/), and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules in electron. So for todays post on electron I thought I would create a quick example centered around the [app module of electron](https://www.electronjs.org/docs/latest/api/app), and the various features that I should be aware of in that specific module. The main thing that the app module is used for would be to attach event handers for a wide range of events that happen when an application starts, is used, and closed. For example there is attaching an event handler for the ready event that should fire once Electron has finished initializing. Sense there is a ready event it goes without saying that there is also will-quit, and quit events that can be used to define some logic that should fire when an application is being closed.
@@ -19,7 +19,7 @@ In this post then I will be going over the source code of an electronjs example 
 
 ## The app module in electron and what to know first
 
-This is a post on just one of many modules that are used in electronjs called the app module. This is not any kind of getting started post with electronjs, nodejs, or javaScript in general. Although I will be keeping this example fairly basic, I hope that you have at least some experience with what is required before hand.
+This is a post on just one of many modules that are used in electronjs called the app module. This is not any kind of getting started post with electronjs, [nodejs](/2017/04/05/nodejs-helloworld/), or [javaScript in general](/2018/11/27/js-getting-started/). Although I will be keeping this example fairly basic, I hope that you have at least some experience with what is required before hand.
 ### This source code example is on Github
 
 I also have the source code for this example, as well as the source code examples for [all my other posts on electronjs](/categories/electronjs/) thus far on Github in my [examples-electronjs repository](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-app)
@@ -100,7 +100,7 @@ contextBridge.exposeInMainWorld('demoAPI', demoAPI);
 
 ## 3 - The index.html file
 
-Now for the index html file that I am loading when creating the main browser window in the main javaScrit file. For this example I am doing away with all the security meta tags that should be used in real projects, but when it comes to a simple tech demo such as this I guess they might not really be needed. This allows for me to make use of inline script tags for this file, so I do not have to park my front end javaScript in yet another file.
+Now for the index html file that I am loading when creating the main browser window in the main javaScrit file. For this example I am doing away with all the security meta tags that should be used in real projects, but when it comes to a simple tech demo such as this I guess they might not really be needed. This allows for me to make use of inline [script tags](/2019/01/19/js-script-tag/) for this file, so I do not have to park my front end javaScript in yet another file.
 
 ```html
 <!DOCTYPE html>
