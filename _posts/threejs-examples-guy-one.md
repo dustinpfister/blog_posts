@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2021-04-29 15:12:15
-version: 1.15
+updated: 2022-02-28 08:41:35
+version: 1.16
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. It would seem that I could write a lot more just when it comes to basic, and not so basic features of the library, and maybe with that alone there will always be something more to write about. However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -17,17 +17,17 @@ So when it comes to the kinds of over all scenes that I would like to make, I wi
 
 <!-- more -->
 
-## 1 - Basic three.js guy model and what to know before hand
+## Basic three.js guy model and what to know before hand
 
 This is a post on using three.js to make a very crude guy module using built in three.js features and geometries only along with a little javaScript code. There are other more standard ways of making a model that might prove to be a better option in the long run, but I kind of like just making simple modules like this with javaScript code alone.
 
 This is not a getting started post on three.js, let along javaScript in general, so if you want to reproduce what I have worked out here I trust you have at least some grasp on the basics at least when it comes to doing something with three.js and a little client side javaScript.
 
-### 1.1 - Version Numbers matter with three.js
+### Version Numbers matter with three.js
 
 This is something that I have found that I just need to repeat over and over again in every three.js post. When I first made this model I was using three.js version r91. I then just made a few quick, simple changes to the model to make it work with version r127, which was the version I was using when I wrote this. Always look at dates of posts when reading content on the open web that have to do with a javaScript library, especially such a fast moving one like three.js as code breaking changes are made often with this one.
 
-## 2 - The guy.js file
+###  The guy.js file
 
 Here I have the source code of my first basic guy model. When I made this I was thinking in terms of having a base class that I might built on top of when it comes to making additional variants of this kind of thing for better or worse. When it comes to actually using this though I have made other modules that are just like this only they take a more functional approach. However what I really care about is to just have a very crude basic guy, or person type module that I can just skin with some textures by hacking over the materials that are being used a little. With that said this is more or less what I hand in mind when it comes to having something to that effect.
 
@@ -170,7 +170,7 @@ var Guy = (function () {
 
 So then the whole idea is to just have a way to create an instance of one of these, and then just use the prototype methods to work with the model in a project. With that said maybe I should take the moment to go over just one little demo that makes use of this for what it is worth.
 
-## 3 - A Basic demo of the guy.js module
+## 1 - A Basic demo of the guy.js module
 
 Now to test out this guy model to see if things work out okay so far, and it would seem that they do. Here I am creating not one, not two, but three instances of this guy model. For each guy model I am doing something a little different, where one is just shaking there head, another is moving there arms up and down, and another is being really animated in a few ways.
 
