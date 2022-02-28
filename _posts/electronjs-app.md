@@ -5,13 +5,19 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 964
-updated: 2022-02-28 13:55:04
-version: 1.2
+updated: 2022-02-28 14:11:13
+version: 1.3
 ---
 
-This month I [started learning electronjs](/2022/02/07/electronjs-hello-world/), and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules in electron. So for todays post on electron I thought I would create a quick example centered around the [app module of electron](https://www.electronjs.org/docs/latest/api/app), and the various features that I should be aware of in that specific module.
+This month I [started learning electronjs](/2022/02/07/electronjs-hello-world/), and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules in electron. So for todays post on electron I thought I would create a quick example centered around the [app module of electron](https://www.electronjs.org/docs/latest/api/app), and the various features that I should be aware of in that specific module. The main thing that the app module is used for would be to attach event handers for a wide range of events that happen when an application starts, is used, and closed. For example there is attaching an event handler for the ready event that should fire once Electron has finished initializing. Sense there is a ready event it goes without saying that there is also will-quit, and quit events that can be used to define some logic that should fire when an application is being closed.
+
+This app module is one of the many [main process](https://www.electronjs.org/docs/latest/glossary#main-process) modules to work with that should not be confused with other modules that are used for a preload script, or render process as it often seems to be called. 
 
 <!-- more -->
+
+## The app module in electron and what to know first
+
+This is a post on just one of many modules that are used in electronjs called the app module. This is not any kinf of getting started post with electronjs, nodejs, or javaScript in general. Although I will be keeping this example fairly basic, I hope that you have at least some experience with what is required before hand.
 
 
 ## 1 - The main javaScript file and the app module
