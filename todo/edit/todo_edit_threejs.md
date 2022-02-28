@@ -18,6 +18,9 @@
 ### ( ) - threejs-fog
 * look into a custom fog method with a height argument
 
+### () - threejs-light
+* I am going to want some more examples
+
 <!--  Search Console top 3 ( clicks ) -->
 
 <!--  Search Console top 3 ( impressions ) -->
