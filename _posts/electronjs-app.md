@@ -5,11 +5,11 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 964
-updated: 2022-02-28 13:44:37
-version: 1.1
+updated: 2022-02-28 13:55:04
+version: 1.2
 ---
 
-This month I started learning electronjs, and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules, and methods to work with when making a project with electron.
+This month I [started learning electronjs](/2022/02/07/electronjs-hello-world/), and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules in electron. So for todays post on electron I thought I would create a quick example centered around the [app module of electron](https://www.electronjs.org/docs/latest/api/app), and the various features that I should be aware of in that specific module.
 
 <!-- more -->
 
