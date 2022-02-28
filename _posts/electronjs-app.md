@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 964
-updated: 2022-02-28 14:39:08
-version: 1.9
+updated: 2022-02-28 14:53:34
+version: 1.10
 ---
 
 This month I [started learning electronjs](/2022/02/07/electronjs-hello-world/), and although I all ready have some prototypes together for actual projects, I still think I have a lot to learn about the various modules in electron. So for todays post on electron I thought I would create a quick example centered around the [app module of electron](https://www.electronjs.org/docs/latest/api/app), and the various features that I should be aware of in that specific module. The main thing that the app module is used for would be to attach event handers for a wide range of events that happen when an application starts, is used, and closed. For example there is attaching an event handler for the ready event that should fire once Electron has finished initializing. Sense there is a ready event it goes without saying that there is also will-quit, and quit events that can be used to define some logic that should fire when an application is being closed.
@@ -29,6 +29,8 @@ I also have the source code for this example, as well as the source code example
 ## 1 - The main javaScript file and the app module
 
 When making an electron.js project one of the first and for most files that I am going to need is a main.js file at the root of the project folder. It is in this file that I will be requiring in the app module along with BrowserWindow, and ipcMain. The browserWidnow Module is what I am going to be using to create a window in which to have a front end for this example, and the ipcMain module is what I am going to use to define at least one event that I will be using with a preload script that will be used to create a custom api for this front end.
+
+For this example I am using the app.whenReady method to define what should happen when the applaction fir starts. For this example I just want to create the main browser window instance in the ready event, and inside the function that is used to do this I am using also use the app.getPath method. This get path method is then yet another app module feature to get what the path is to the documents folder for the current user in the os as well as a lot of other paths like that depending on the string value given as the first argument when calling it.
 
 ```js
 // load app and BrowserWindow
