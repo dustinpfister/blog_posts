@@ -21,6 +21,9 @@
 ### () - threejs-light
 * I am going to want some more examples
 
+### () - threejs-spotlights
+* expand more on new sections
+
 <!--  Search Console top 3 ( clicks ) -->
 
 <!--  Search Console top 3 ( impressions ) -->
@@ -71,12 +74,6 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 * proof read
 * update with ffmpeg info
 
-### () - threejs-spotlights
-* proof read
-* start for post folder
-* link to for post folder
-* section on materials
-
 ### () - threejs-buffer-geometry-loader
 * proof read
 
@@ -88,6 +85,12 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 
 
 <!-- DONE -->
+
+### ( done 03/01/2022 ) - threejs-spotlights
+* (done) proof read
+* (done) start for post folder
+* (done) link to for post folder
+* (done) section on materials
 
 ### ( done 02/28/2022 ) - threejs-examples-guy-one
 * (done) proof read
