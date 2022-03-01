@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 13:33:13
-version: 1.33
+updated: 2022-03-01 13:33:59
+version: 1.34
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -299,6 +299,8 @@ spotLight.penumbra = .5;
 ```
 
 ### 4.1 - Full example of this
+
+Now for an animation loop example in which I am mutating values of a spotlight over time.
 
 ```js
 (function () {
