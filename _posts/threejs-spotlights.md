@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 09:01:56
-version: 1.23
+updated: 2022-03-01 09:06:09
+version: 1.24
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -29,7 +29,7 @@ The last time I edited this post I was using three.js 0.127.0 \( or just simply 
 
 ## 1 - Basic example of spotlight use
 
-When starting out with a basic example of  a spotlight in three.js, at a very minimum I would want to create an instance of a spotlight by calling the THREE.SpotLight constructor with the new keyword, and then save that instance to a variable. Once I have my instance I would want to change its position using the Object3D position.set method to a point far away from the origin, or position it wherever I want it to be. I will then want to also make sure that the spotlight is facing the object that i want to shine light on.
+When starting out with a basic example of a spotlight in three.js, at a very minimum I would want to create an instance of a spotlight by calling the THREE.SpotLight constructor with the new keyword, and then assign that instance to a variable. Once I have my instance of a spotlight I would want to change its position using the set method of the instance of Vector3 at the position property of the spotlight to a point far away from the object that I want to shine light on. I will then want to also make sure that the spotlight is facing the object that I want to shine light on by one means or another.
 
 ```js
 // SPOTLIGHT
