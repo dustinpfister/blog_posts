@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 12:20:43
-version: 1.25
+updated: 2022-03-01 12:23:58
+version: 1.26
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -40,7 +40,8 @@ scene.add(spotLight);
 
 Assuming that I have a mesh of some kind at the origin of my scene that is equipped with a material that responds to light such as the [standard material](/2021/04/27/threejs-standard-material/), I should have a basic working example of a spotlight going on. That is that if I also have the usual scene, renderer, and camera all set up to make this an actual functioning demo of a spotlight.
 
-like this:
+Also when creating the instance of a spotlight there are a total of 6 arguments that can be given to the constructor that set various relevant values for the spotlight. The first is the color of the light, and then the intensity which is the standard for just about all lights in threejs actually. After that there are values that have to do just with a spotlight, such as the distance over which the light will decay, the angle from the center of the cone at which the spotlight will cover, as well as penumbra and decay rate values.
+
 ```js
 (function () {
     // SCENE, CAMERA, RENDERER
