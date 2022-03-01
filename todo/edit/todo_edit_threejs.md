@@ -73,6 +73,9 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 
 ### () - threejs-spotlights
 * proof read
+* start for post folder
+* link to for post folder
+* section on materials
 
 ### () - threejs-buffer-geometry-loader
 * proof read
