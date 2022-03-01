@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 13:30:33
-version: 1.32
+updated: 2022-03-01 13:33:13
+version: 1.33
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -384,6 +384,8 @@ spotLight.penumbra = .5;
 
 ## 5 - Static spotlight helper example
 
+If you want to see what is going on with the spotlight, by having a way of showing the current area of the cone with some lines, there is no need to make your own object for dong so. There is a special helper class in three.js just for this purpose. To use this helper I just need to create an instance of new THREE.SpotLightHelper and pass a reference to the spotlight that I want to use the helper with. I will then want to pass reference to the resulting spot like helper to the spotlights add method so that the helper is a child of the spotlight.
+
 ```js
 (function () {
     // SCENE, CAMERA, RENDERER
@@ -423,7 +425,7 @@ spotLight.penumbra = .5;
 
 ## 6 - Spotlight helper animation loop exmaple
 
-If you want to see what is going on with the spotlight, by having a way of showing the current area of the cone with some lines, there is no need to make your own object for dong so. There is a special helper class in three.js just for this purpose. To use this helper I just need to create an instance of new THREE.SpotLightHelper and pass a reference to the spotlight that I want to use the helper with. I will then want to pass reference to the resulting spot like helper to the spotlights add method so that the helper is a child of the spotlight.
+So I have a static scene example of the spotlight helper, but I am thinking that I should also have an animation loop example for this sort of thing also.
 
 ```js
 (function () {
