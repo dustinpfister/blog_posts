@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 12:48:37
-version: 1.28
+updated: 2022-03-01 12:50:43
+version: 1.29
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -25,7 +25,7 @@ Regardless of what your level of experience is with three.js there is a whole lo
 
 This is something that I should mention in every three.js post, three.js is a javaScript project where the version number is very important, more so than usual I would say. New versions of three.js come out all the time, and when they do it's not exactly just some spelling fixes in the readme file. Often there are many major, project breaking changes that are made with the public API of the library that will result in code breaking changes with a whole worked of code examples on the open web.
 
-The last time I edited this post I was using three.js 0.127.0 \( or just simply r127 \) that came out in March of 2021, and when I first wrote this post I was using three.js r91 released in March of 2018. If you run into problems with the code examples here there are a lot of things to check, and the version number is without question one of them
+The last time I edited this post I was [using three.js r135](https://github.com/mrdoob/three.js/releases/tag/r135) that came out in November of 2021, and when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91) released in March of 2018. If you run into problems with the code examples here there are a lot of things to check, and the version number is without question one of them
 
 ### The source code example for this post and many others are on github
 
