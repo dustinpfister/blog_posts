@@ -4,7 +4,7 @@
 
 <!-- Just more to add -->
 
-### () - threejs-examples-menus (finish post)
+### () - threejs-examples-menus ( finish post )
 * start new section on state objects in test threejs
 * get to 1,000+ words
 * have 5+ internal links for the post
@@ -13,7 +13,7 @@
 * I am going to want one more example about transparency and lighting
 
 ### ( ) - threejs-canvas-texture
-* of course there will likley always be more to write about with this one
+* of course there will likely always be more to write about with this one
 
 ### ( ) - threejs-fog
 * look into a custom fog method with a height argument
@@ -67,16 +67,26 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 
 <!-- OLD -->
 
+### () - threejs-export-webm-whammy
+* proof read
+
+### () - threejs-spotlights
+* proof read
+
+### () - threejs-buffer-geometry-loader
+* proof read
+
 ### () - threejs-dae-collada-loader
 * proof read
 
 ### () - threejs-cube-texture
 * proof read
 
-### () - threejs-examples-guy-one
-* proof read
 
 <!-- DONE -->
+
+### ( done 02/28/2022 ) - threejs-examples-guy-one
+* (done) proof read
 
 ### ( done 02/25/2022 ) - threejs-materials-transparent (573 / 3mo / 2-20)
 * (done) proof read
