@@ -1,12 +1,12 @@
 ---
-title: spotlights in three.js
+title: Spotlights in three.js
 date: 2018-04-11 13:24:00
 tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 08:51:39
-version: 1.20
+updated: 2022-03-01 08:57:04
+version: 1.21
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -15,11 +15,11 @@ Spotlights as the name suggests is a light that will concentrate light in a cone
 
 <!-- more -->
 
-## 1 - What to know before hand
+## Sportlights in threejs, and what to know before hand
 
-This is not a [getting started](/2018/04/04/threejs-getting-started/) post on three.js, or javaScript in general. I assume that you have at least a basic working knowledge on javaScript, and that you have your feet wet with three.js. If not I have other posts that may help.
+This is not a [getting started](/2018/04/04/threejs-getting-started/) post on three.js, or [javaScript in general](/2018/11/27/js-getting-started/) for that matter. I assume that you have at least a basic working knowledge on javaScript, and that you have your feet wet with three.js. If not the content of this post might still prove to be a little to advanced for you until you get up to speed with the core skills that are required before hand that are outside the scope of this post.
 
-In this post I will not be covering materials in three.js in detail, but I also assume that you know that in three.js some materials respond to a light source, and others do not.
+Regardless of what your level of experience is with three.js there is a whole lot the branches off from the use of spot lights, and at times it might be required to refresh on cretin things here and there. As such in this section I will be going over what some of those things might be.
 
 ## 1.1 - The Three.js version matters
 
