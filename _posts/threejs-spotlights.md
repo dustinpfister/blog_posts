@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 12:50:43
-version: 1.29
+updated: 2022-03-01 12:59:25
+version: 1.30
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -220,54 +220,29 @@ Just like the objects that will case or receive shadows, you will want to set th
 
 ```js
 (function () {
- 
-    // Scene
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0f0f0f);
- 
-    // Camera
     camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 5000);
     camera.position.set(500, 500, 500);
     camera.lookAt(0, 0, 0);
- 
-    // A CUBE
+    var renderer = new THREE.WebGLRenderer();
+    renderer.shadowMap.enabled = true;
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    // ---------- ----------
+    // MESH OBJECTS
+    // ---------- ----------
     var cube = new THREE.Mesh(
             new THREE.BoxGeometry(200, 200, 200),
-            new THREE.MeshLambertMaterial({
+            new THREE.MeshStandardMaterial({
                 color: 0xff0000
             }));
     cube.position.set(0, 150, 0);
     cube.castShadow = true;
     scene.add(cube);
- 
-    // RENDER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.shadowMap.enabled = true;
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(320, 240);
- 
-    // SpotLight
-    var spotLight = new THREE.SpotLight(0xffffff);
-    // I must at least set the caseShadow boolean
-    // of the spotLight to true
-    spotLight.castShadow = true;
- 
-    // additional shadow properties of interest
-    spotLight.shadow.mapSize.width = 128;
-    spotLight.shadow.mapSize.height = 128;
-    spotLight.shadow.camera.near = 1;
-    spotLight.shadow.camera.far = 1000;
- 
-    // additional spotlight properties of interest
-    spotLight.intensity = 2;
-    spotLight.penumbra = .5;
-    spotLight.angle = Math.PI / 2.5;
-    spotLight.distance = 1000;
- 
-    spotLight.position.set(-250, 350, 250);
-    scene.add(spotLight);
- 
-    // add plane to the scene
     var plane = new THREE.Mesh(
             new THREE.PlaneBufferGeometry(3000, 3000, 8, 8),
             new THREE.MeshStandardMaterial({
@@ -277,12 +252,30 @@ Just like the objects that will case or receive shadows, you will want to set th
     plane.rotation.x = Math.PI / 2;
     plane.receiveShadow = true; // the plane will receive a shadow
     scene.add(plane);
- 
-    // render what we have
+    // ---------- ----------
+    // SPOTLIGHT
+    // ---------- ----------
+    var spotLight = new THREE.SpotLight(0xffffff);
+    // I must at least set the caseShadow boolean
+    // of the spotLight to true
+    spotLight.castShadow = true;
+    // additional shadow properties of interest
+    spotLight.shadow.mapSize.width = 64;
+    spotLight.shadow.mapSize.height = 64;
+    spotLight.shadow.camera.near = 1;
+    spotLight.shadow.camera.far = 1000;
+    // additional spotlight properties of interest
+    spotLight.intensity = 2;
+    spotLight.penumbra = .5;
+    spotLight.angle = Math.PI / 2.5;
+    spotLight.distance = 1000;
+    spotLight.position.set(-250, 350, 250);
+    scene.add(spotLight);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
     renderer.render(scene, camera);
- 
-}
-    ());
+}());
 ```
 
 ## 4 - Spotlight geometry and other metrics
