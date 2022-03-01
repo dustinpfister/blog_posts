@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 13:26:20
-version: 1.31
+updated: 2022-03-01 13:30:33
+version: 1.32
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -21,6 +21,10 @@ This is not a [getting started](/2018/04/04/threejs-getting-started/) post on th
 
 Regardless of what your level of experience is with three.js there is a whole lot the branches off from the use of spot lights, and at times it might be required to refresh on cretin things here and there. As such in this section I will be going over what some of those things might be.
 
+### Materials matter with spotlights and light in general
+
+I will not be getting into every little detail about materials as that is a matter for one or more other posts completely. However I will say that one major thing to check if you are running into problems is to double check what kind of material you are using to skin your mesh objects. Many materials like that of the basic material, normal material, and the depth material will not respond to a light source at all. Also when it comes to material that will respond to light they will not do so in the same way, for example I have come to find that I like to use the standard material, over the lamber material when it comes to using spotlights in a project.
+
 ### The Three.js version matters
 
 This is something that I should mention in every three.js post, three.js is a javaScript project where the version number is very important, more so than usual I would say. New versions of three.js come out all the time, and when they do it's not exactly just some spelling fixes in the readme file. Often there are many major, project breaking changes that are made with the public API of the library that will result in code breaking changes with a whole worked of code examples on the open web.
@@ -29,7 +33,7 @@ The last time I edited this post I was [using three.js r135](https://github.com/
 
 ### The source code example for this post and many others are on github
 
-The soucre code examples that I am writing about in this post can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-spotlights).
+The source code examples that I am writing about in this post can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-spotlights).
 
 ## 1 - Basic example of spotlight use
 
