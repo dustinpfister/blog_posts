@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 09:06:09
-version: 1.24
+updated: 2022-03-01 12:20:43
+version: 1.25
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -29,7 +29,7 @@ The last time I edited this post I was using three.js 0.127.0 \( or just simply 
 
 ## 1 - Basic example of spotlight use
 
-When starting out with a basic example of a spotlight in three.js, at a very minimum I would want to create an instance of a spotlight by calling the THREE.SpotLight constructor with the new keyword, and then assign that instance to a variable. Once I have my instance of a spotlight I would want to change its position using the set method of the instance of Vector3 at the position property of the spotlight to a point far away from the object that I want to shine light on. I will then want to also make sure that the spotlight is facing the object that I want to shine light on by one means or another.
+When starting out with a basic example of a spotlight in three.js, at a very minimum I would want to create an instance of a spotlight by calling the THREE.SpotLight constructor with the new keyword, and then assign that instance to a variable. Once I have my instance of a spotlight I would want to change its position using the set method of the instance of Vector3 at the position property of the spotlight to a point far away from the object that I want to shine light on.
 
 ```js
 // SPOTLIGHT
@@ -38,47 +38,54 @@ spotLight.position.set(350, 340, 170);
 scene.add(spotLight);
 ```
 
-Assuming that I have a mesh of some kind at the origin of my scene that is equipped with a material that responds to light such as the [Lambert material](/2018/04/08/threejs-lambert-material/), I should have a basic working example of reflectance going on. I will also need the usual scene, renderer, and camera all set up to make this an actual function demo.
+Assuming that I have a mesh of some kind at the origin of my scene that is equipped with a material that responds to light such as the [standard material](/2021/04/27/threejs-standard-material/), I should have a basic working example of a spotlight going on. That is that if I also have the usual scene, renderer, and camera all set up to make this an actual functioning demo of a spotlight.
 
 like this:
 ```js
 (function () {
- 
-    // SPOTLIGHT
-    var spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.position.set(4.2, 3.4, 1.7);
- 
-    // scene
+    // SCENE, CAMERA, RENDERER
     var scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0f0f0f);
-    // ADD THE SPOTLIGHT TO THE SCENE
-    scene.add(spotLight);
- 
-    // A MESH with Lambert Material
-    // which responds to a light source.
-    var cube = new THREE.Mesh(
-            new THREE.BoxGeometry(3, 3, 3),
-            new THREE.MeshLambertMaterial({
-                color: 0xff0000
-            }));
-    scene.add(cube);
- 
-    // camera
-    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
-    camera.position.set(5, 5, 5);
+    scene.background = new THREE.Color('#0f0f0f');
+    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(5, 8, 12);
     camera.lookAt(0,0,0);
-    // renderer
     var renderer = new THREE.WebGLRenderer();
     document.getElementById('demo').appendChild(renderer.domElement);
     renderer.setSize(640, 480);
-    // render what we have
+    // SPOTLIGHT
+    var color = new THREE.Color('white'),
+    intensity = 1,
+    distance = 30,
+    angle = Math.PI * 0.05,
+    penumbra = 0.25,
+    decay = 0.5;
+    var spotLight = new THREE.SpotLight(color, intensity, distance, angle, penumbra, decay);
+    spotLight.position.set(8, 8, 0);
+    scene.add(spotLight);
+    scene.add( new THREE.AmbientLight(0xffffff, 0.07));
+   // MESH OBJECTS
+    var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({
+                color: 0xff0000
+            }));
+    cube.position.set(0, 1, 0);
+    scene.add(cube);
+    var floor = new THREE.Mesh(
+            new THREE.BoxGeometry(10, 1, 10),
+            new THREE.MeshStandardMaterial({
+                color: 0x008800
+            }));
+    scene.add(floor);
+    // RENDER
     renderer.render(scene, camera);
- 
 }
     ());
 ```
 
-By default a spotlight will point at the origin (0,0,0), because the mesh I am using in this demo is located at the origin, and I am not moving anything around, this works just okay with the default settings when it comes to things like the angle of the cone, and the light intensity. However if I want to change the target point that the spotlight is pointing at, and tweak some additional values, there is a great deal more to know about spotlights. Also there is more to know about materials as well, after all a material is what will respond to a light source. There is also a helper class that can be used to get a sense of what is going on with the spotlight by showing some lines that indicate it's present status with respect to it's position, angle, and what it is pointing at. In addition there is what to do in order to get shadows working if interested, so lets get to it.
+By default a spotlight will point at the origin \(0,0,0\), because the mesh I am using in this demo is located at the origin, and I am not moving anything around, this works just okay with the default settings when it comes to the target value of the spotlight. However if I want to change the target point that the spotlight is pointing at, and tweak some additional values, there is a great deal more to know about spotlights. 
+
+There is more to know about materials as well, after all a material is what will respond to a light source such as the spotlight here. There is also a helper class that can be used to get a sense of what is going on with the spotlight by showing some lines that indicate it's present status with respect to it's position, angle, and what it is pointing at. In addition there is what to do in order to get shadows working if interested, so not that I have a basic example out of the way lets now move on to some additional examples of the spotlight.
 
 ## 2 - Changing the target of the spotlight
 
