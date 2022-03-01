@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-03-01 12:59:25
-version: 1.30
+updated: 2022-03-01 13:26:20
+version: 1.31
 ---
 
 There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
@@ -294,22 +294,142 @@ spotLight.intensity = 2;
 spotLight.penumbra = .5;
 ```
 
-## 5 - Spotlight helper
+### 4.1 - Full example of this
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color('#0f0f0f');
+    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(5, 8, 12);
+    camera.lookAt(0,0,0);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    // ---------- ----------
+    // SPOTLIGHT
+    // ---------- ----------
+    var color = new THREE.Color('white'),
+    intensity = 1,
+    distance = 30,
+    angle = Math.PI * 0.05,
+    penumbra = 0.25,
+    decay = 0.5;
+    var spotLight = new THREE.SpotLight(color, intensity, distance, angle, penumbra, decay);
+    spotLight.position.set(5, 20, 0);
+    scene.add(spotLight);
+    scene.add( new THREE.AmbientLight(0xffffff, 0.07));
+    // ---------- ----------
+    // MESH OBJECTS
+    // ---------- ----------
+    var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({
+                color: 0xff0000
+            }));
+    cube.position.set(0, 1, 0);
+    scene.add(cube);
+    var floor = new THREE.Mesh(
+            new THREE.BoxGeometry(10, 1, 10),
+            new THREE.MeshStandardMaterial({
+                color: 0x008800
+            }));
+    scene.add(floor);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER IN AN ANIMATION LOOP
+    // ---------- ----------
+    // APP LOOP
+    var secs = 0,
+    fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
+    fps_movement = 60, // fps rate to move camera
+    frame = 0,
+    frameMax = 600,
+    lt = new Date(),
+    spotTarget = new THREE.Object3D(); // spotlight target
+    spotLight.target = spotTarget; // set spotLight target for spotLight
+    scene.add(spotTarget); // add spotLight target to the scene
+    // update
+    var update = function(){
+        var per = Math.round(frame) / frameMax,
+        bias = 1 - Math.abs(0.5 - per) / 0.5,
+        radian = Math.PI * 2 * per;
+        spotLight.intensity = 0.1 + bias;
+        spotLight.angle = 0.05 + 0.15 * bias;
+        spotTarget.position.set( Math.cos(radian) * 3, 0, Math.sin(radian) * 3);
+    };
+    // loop
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            update();
+            renderer.render(scene, camera);
+            frame += fps_movement * secs;
+            frame %= frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 5 - Static spotlight helper example
+
+```js
+(function () {
+    // SCENE, CAMERA, RENDERER
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color('#0f0f0f');
+    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(5, 8, 12);
+    camera.lookAt(0,0,0);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    // ---------- ----------
+    // SPOTLIGHT WITH HELPER
+    // ---------- ----------
+    var spotLight = new THREE.SpotLight(new THREE.Color('white'), 0.5, 10, 0.5, 1);
+    spotLight.position.set(3, 3, 0);
+    spotLight.add(new THREE.SpotLightHelper(spotLight))
+    scene.add(spotLight);
+   // MESH OBJECTS
+    var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({
+                color: 0xff0000
+            }));
+    cube.position.set(0, 1, 0);
+    scene.add(cube);
+    var floor = new THREE.Mesh(
+            new THREE.BoxGeometry(10, 1, 10),
+            new THREE.MeshStandardMaterial({
+                color: 0x008800
+            }));
+    scene.add(floor);
+    // RENDER
+    renderer.render(scene, camera);
+}());
+```
+
+## 6 - Spotlight helper animation loop exmaple
 
 If you want to see what is going on with the spotlight, by having a way of showing the current area of the cone with some lines, there is no need to make your own object for dong so. There is a special helper class in three.js just for this purpose. To use this helper I just need to create an instance of new THREE.SpotLightHelper and pass a reference to the spotlight that I want to use the helper with. I will then want to pass reference to the resulting spot like helper to the spotlights add method so that the helper is a child of the spotlight.
 
 ```js
 (function () {
- 
     // SCENE
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0a0a0a);
- 
     // CAMERA
     var camera = new THREE.PerspectiveCamera(40, 320 / 240, 1, 5000);
     camera.position.set(8, 8, 8);
     camera.lookAt(0, 0, 0);
- 
     // CUBE
     var cube = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
@@ -321,13 +441,11 @@ If you want to see what is going on with the spotlight, by having a way of showi
     cube.position.set(0, 0.5, 0);
     cube.castShadow = true;
     scene.add(cube);
- 
     // RENDER
     var renderer = new THREE.WebGLRenderer();
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
     document.getElementById('demo').appendChild(renderer.domElement);
- 
     // spotlight
     var spotLight = new THREE.SpotLight(0xffffff),
     spotLightHelper = new THREE.SpotLightHelper(spotLight);
@@ -340,7 +458,6 @@ If you want to see what is going on with the spotlight, by having a way of showi
     spotLight.add(spotLightHelper);
     scene.add(spotLight);
     scene.add(spotLight.target);
- 
     // add plane to the scene
     var plane = new THREE.Mesh(
             new THREE.PlaneBufferGeometry(8, 8),
@@ -352,10 +469,8 @@ If you want to see what is going on with the spotlight, by having a way of showi
     plane.rotation.x = Math.PI / 2;
     plane.receiveShadow = true;
     scene.add(plane);
- 
     // INIT
     renderer.setSize(640, 480);
- 
     // LOOP
     var frame = 0,
     maxFrame = 500,
@@ -381,12 +496,9 @@ If you want to see what is going on with the spotlight, by having a way of showi
             lt = now;
         }
     };
- 
     loop();
- 
 }
     ());
- 
 ```
 
 Te sport light helper then gives me a great idea of what is going on with the state of the spotlight, I can the adjust the various values for the spotlight until I get something that will work well with the project that I am working on.
