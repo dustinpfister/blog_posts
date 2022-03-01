@@ -5,11 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2021-05-02 12:45:14
-version: 1.18
+updated: 2022-03-01 08:50:12
+version: 1.19
 ---
 
-There are lights, and there is having a camera, and then there is having some action or movement in a scene. In this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). Spotlights as the name suggests is a directional light that will concentrate light in a cone like shape at a given target. This kind of light source differs from other options that will just brighten things up in general such as with [ambient light](/2018/11/02/threejs-ambientlight/), or give a cylinder like beam of light that where all rays move in a single parallel direction such as the case with [directional light](/2019/06/04/threejs-directional-light/). So then in addition to adding directional or ambient light to a project, spotlights can be used as an additional kind of light source that can be moved around and focus light in on a specific area.
+There are lights, and there is having a camera, and then there is having some action in a scene object in threejs. So then in this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the options to work with in threejs with lighting a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/).
+
+Spotlights as the name suggests is a light that will concentrate light in a cone like shape at a given target location. This kind of light the  differs a great deal from other options that will just brighten things up in general such as with ambient light, or give a cylinder like beam of light where all rays move in a single parallel direction such as the case with directional light. So then in addition to adding directional or ambient light to a project, spotlights can be used as an additional kind of light source that can be moved around, and focus light in on a specific area.
 
 <!-- more -->
 
