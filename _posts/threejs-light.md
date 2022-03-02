@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-03-02 09:30:19
-version: 1.19
+updated: 2022-03-02 09:33:35
+version: 1.20
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -201,6 +201,8 @@ To gain a better sen of what is going on with directional light it might be a go
 Spotlights are a pretty cool feature to play around with, and in certain projects I might want to use one or more of them. I have [wrote a post in which I get into spotlights in detail](/2018/04/11/threejs-spotlights/), with very simple getting started type examples upwards to examples that make use of most of the features to be aware f when using spotlights. For this post I will be going over a custom example that I made just for this post that I think covers all of the various feature that I would want to be aware of when making use of them when it comes to the argument values, and also updating what the target and helper values in an animation loop.
 
 When it comes to the THREE.Spotlight constructor the first two arguments are for the color and intensity which is the standard set of values for all lights as usual. After that there is distance, angle, penumbra, and decay. The distance is the distance over which the light will effect a surface, while the angle is the angle from the center of the code. The additional values that I might want to adjust then are penumbra, and decay. The penumbra is a kind of shading for the outer part of the spotlight area, and decay as the name suggests is the rate at which the light will decay over the distance.
+
+Another major aspect of a spotlight is the target property f the light which is the object that the spot light should be focus on. This object can be a mesh object, or any object based off of the object3d class including just a plain object3d instance which is what I was using in this example. So I can then move the spot light itself, and also move the target object as a way to control the origin at which the light is coming from as well as what the spotlight is focused on.
 
 ```js
 (function () {
