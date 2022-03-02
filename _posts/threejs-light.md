@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-02-26 09:07:19
-version: 1.16
+updated: 2022-03-02 09:22:50
+version: 1.17
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -196,7 +196,91 @@ To gain a better sen of what is going on with directional light it might be a go
     ());
 ```
 
-## 4 - Conclusion
+## 4 - SpotLights
+
+Spotlights are a pretty cool feature to play around with, and in certain projects I might want to use one or more of them. I have wrote a post in which I get into spotlights in detail, with very simple getting started tyoe examples upwards to examples that make use of most of the features to be aware f when using spotlights. For this post I will be going over a custom example that I made just for this post that I think covers all of the various feature that I would want to be aware of when making use of them when it comes to the argument values, and also updating what the target and helper values in an animation loop.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    // creating a scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(6, 6));
+    // camera
+    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
+    camera.position.set(3, 3, 3);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    // render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // SPORTLIGHT
+    // ---------- ----------
+    var distance = 10,
+    angle = Math.PI / 180 * 20,
+    penumbra = 1,
+    decay = 0.5;
+    var light = new THREE.SpotLight(0xffffff, 1, distance, angle, penumbra, decay);
+    var target = new THREE.Object3D();
+    var lightHelper = new THREE.SpotLightHelper(light);
+    light.target = target;
+    light.add( lightHelper );
+    scene.add(target);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x2a2a2a, 0.3));
+    // ---------- ----------
+    // ADDING A FEW MESH OBJECTS TO THE SCENE
+    // ---------- ----------
+    var mesh1 = new THREE.Mesh(
+            new THREE.PlaneGeometry(5,5),
+            new THREE.MeshPhongMaterial( { color: new THREE.Color('cyan') } )
+    );
+    mesh1.rotation.x = -1.57;
+    scene.add(mesh1);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER IN AN ANIMATION LOOP
+    // ---------- ----------
+    // APP LOOP
+    var secs = 0,
+    fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
+    fps_movement = 30, // fps rate to move camera
+    frame = 0,
+    frameMax = 120,
+    lt = new Date();
+    // update
+    var update = function(){
+        var per = Math.round(frame) / frameMax,
+        bias = 1 - Math.abs(0.5 - per) / 0.5,
+        radian = Math.PI * 2 * per;
+        // setting target position
+        target.position.set(Math.cos(radian) * 1.5, 0, Math.sin(radian) * 1.5);
+        // setting spot light position
+        light.position.set(-2 + 4 * bias, 0.25 + 1.25 * bias, 0);
+        lightHelper.update();
+    };
+    // loop
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            update();
+            renderer.render(scene, camera);
+            frame += fps_movement * secs;
+            frame %= frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 5 - Conclusion
 
 I have wrote a number of posts on light in threejs thus far, but I have not yet write a post on light in general until now. I am sure that there is a great deal about light in threejs that I have missed, so there will be edits of this post in the future for sure, and maybe at a higher frequency that usual when it comes to editing. I just about always have some ideas drafted out when it comes to what to do with future edits of a post and this post on light in general with threejs is not exception of course. I will want to add at least a few more examples that have to do with more advanced topics for sure, but when it comes to that I still need to figure it out for myself.
 
