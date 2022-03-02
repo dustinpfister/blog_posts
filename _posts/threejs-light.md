@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-03-02 09:33:35
-version: 1.20
+updated: 2022-03-02 09:36:13
+version: 1.21
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -283,6 +283,8 @@ Another major aspect of a spotlight is the target property f the light which is 
 }
     ());
 ```
+
+One more additional feature that I like to use when adjusting things with a spot light is the spot light helper which will help to get a visual idea of what is going on with a spot light. There is also the update method of this kind of object that I will want to call when changing values of the spotlight instance over time.
 
 ## 5 - Conclusion
 
