@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-03 08:33:01
-version: 1.34
+updated: 2022-03-03 08:45:31
+version: 1.35
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -19,19 +19,19 @@ This post is then about the Vector3 constructor that is a useful class for vario
 
 Vector3 instances are also used when creating geometry that will be used in a mesh, and there are also many properties in various objects that expect an instance of Vector3. There are also a whole bunch of useful methods that can be used for typical tasks such as finding the distance between two points in space, or to copy the values of one vector instance to another. While I am looking into the vector3 class I might also touch base one some other Class instances of interest such as the [Euler class](/2021/04/28/threejs-euler/) which is like Vecor3 only it deals with angles rather than a position.
 
-## 1 - The THREE.Vector3 class and What to know first
+## The THREE.Vector3 class and What to know first
 
 This is a post on three.js in which I am writing about the Vector3 constructor, and the various properties but mainly methods of the class that there are to work with. So then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on three.js, or javaScipt in general, and I expect for you to have at least a little background on those topics. 
 
-### 1.1 - Check out arrow helpers also
+### Check out arrow helpers also
 
 There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/11/10/threejs-arrow-helper/) that can be sued to create and add a helper to a scene that can be used to know the direction of a vector.
 
-### 1.2 - Three.js version number matters.
+### Three.js version number matters.
 
 Three.js is a project where the version number matters, when I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r127. However some of the code examples here where still made when I was using a much older version of threejs, so if the code examples in this post or [any three.js post](/categories/three-js/) of mine no longer work that might be a reason why. When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
 
-## 2 - Basic example of a THREE.Vector3 class instance
+## 1 - Basic example of a THREE.Vector3 class instance
 
 To create a single instance of Vector3 I just need to call the constructor and pass three arguments that are the x, y, and z values of the vector. Doing so will set the starting values for the x, y, and z properties of the Vector3 instance that is returned by the constructor. I can then use this instance of Vector3 to set the position of a mesh object by calling the Vector3 copy method of a Vector3 instance stored as a position property of anything that is based off of the Object3d class such as a Mesh Object. Another option for doing so would be to use the set method which would allow for me to set the value of a Vector3 instance with values from another instance of Vector3, or by nay means of producing a desired numerical value such as the result of a javaScript expression.
 
@@ -89,11 +89,11 @@ To create a single instance of Vector3 I just need to call the constructor and p
 
 There are only 3 public properties of a Vector3 instance that are of interest which are of course is the x , y, and z properties of the Vector3 object that is returned when calling the constructor. To my knowledge there are only four properties in total, the fourth being the isVector3 property which should always be true. Every thing else of interest in a Vector3 instance is a method, such as the length method that will give the current Euclidean distance, or distance from the origin.
 
-## 3 - Setting the values of a Vector3 instance
+## 2 - Setting the values of a Vector3 instance
 
 Setting the values of a Vector3 instance can be done by just setting the values directly, that is the I can just set a desired number value to say the x property of the instance. However there is also the set prototype method of the class that can be called off of an instance of vector3 and then values can be passed by way of the arguments of the set method.
 
-### 3.1 - Basic example of the Vector3.set method
+### 2.1 - Basic example of the Vector3.set method
 
 One of the many use case examples of the set method is to just use it as a way to change the position of a Mesh object, or any object based off of the Object3d class such as a Camera. The position property of anything based off of the Object3d class is an instance of the Vector3 class, and as such has the set method in the prototype as a way to go about setting the values for that instance.
 
@@ -137,7 +137,7 @@ One of the many use case examples of the set method is to just use it as a way t
     ());
 ```
 
-### 3.2 - Set objects in a circle e around the center of a group example of Vector3.set
+### 2.2 - Set objects in a circle e around the center of a group example of Vector3.set
 
 In this example I will once again be using the set method to set the position of objects, this time it is a collection of mesh objects that are children of a group.
 
@@ -193,7 +193,7 @@ In this example I will once again be using the set method to set the position of
     ());
 ```
 
-### 3.3 - Setting objects onto the surface of a sphere example of Vector3.set
+### 2.3 - Setting objects onto the surface of a sphere example of Vector3.set
 
 Now for a more advanced example of the Vector3 set method that might help one to gain a better understanding of how although a vector can be used for position, it can also be used as a way to store direction.
 
@@ -266,7 +266,7 @@ Now for a more advanced example of the Vector3 set method that might help one to
     ());
 ```
 
-## 4 - Object3d and vector3
+## 3 - Object3d and vector3
 
 A very important base class in three.js is [Object3D](https://threejs.org/docs/index.html#api/core/Object3D). Many constructors in three.js such as Camera, Mesh, ect inherit from Object3d. The reason why I bring this up is because there are a few properties in this base class the expect an instance of Vector3. Manly Object3D.position, and Object3D.scale.
 
@@ -284,7 +284,7 @@ A very important base class in three.js is [Object3D](https://threejs.org/docs/i
 
 Because Vector3 is the constructor that is used to represent a point in 3d space in three.js, it's use is to be expected in any situation in which its use is appropriate. Therefor it pays to have a solid foundational understanding of this constructor.
 
-## 5 - Adding, diving, and multiplying Vectors
+## 4 - Adding, diving, and multiplying Vectors
 
 Vectors can be added together with the add method, which is pretty straight forward. There are also methods for diving, and multiplying as well.
 
@@ -305,7 +305,7 @@ To quickly add a scalar values to all three values there is addScalar.
     console.log(vec.x, vec.y, vec.z); // 13 13 17
 ```
 
-## 6 - Finding the distance between two vectors.
+## 5 - Finding the distance between two vectors.
 
 The length method of Vector3 returns the distance from the origin, but what if you want the distance from another instance of Vector3? For that there is the distance method.
 
@@ -315,7 +315,7 @@ b = new THREE.Vector3(10, 5, 10);
 console.log(a.distanceTo(b)); // 5
 ```
 
-## 7 - Clone, and Copy
+## 6 - Clone, and Copy
 
 If you want to make an independent copy of a vector you can use the clone method, and if you want to copy in the values of one vector into another there is the copy method.
 
@@ -339,7 +339,7 @@ If you want to make an independent copy of a vector you can use the clone method
 
 Remember that objects are copied by reference in in javaScript so you will want to use one of these methods or some other similar method to make copies of a vector.
 
-## 8 - Normalize a Vector
+## 7 - Normalize a Vector
 
 Normalizing a vector will keep it's direction from the origin the same, but change its distance from it to a unit vector of 1.
 
@@ -354,7 +354,7 @@ Normalizing a vector will keep it's direction from the origin the same, but chan
     console.log(vec.length()); // 1
 ```
 
-## 9 - Create Geometry Vertices with Vector3
+## 8 - Create Geometry Vertices with Vector3
 
 Although I will not be getting into making custom geometry in detail, doing so will often involve the use of Vector3 to create the array of vertices. The faces will then reference them by the index value of the vertex in the vertices array of the geometry.
 
@@ -392,7 +392,7 @@ Although I will not be getting into making custom geometry in detail, doing so w
     geometry.computeFlatVertexNormals();
 ```
 
-## 10 - Making Lines with Vector3
+## 9 - Making Lines with Vector3
 
 Read my [full post on lines](/2018/04/19/threejs-line/).
 
@@ -412,7 +412,7 @@ scene.add(new THREE.Line(geometry, new THREE.LineBasicMaterial({
 })));
 ```
 
-## 11 - Changing a Vector3 value in a geometry
+## 10 - Changing a Vector3 value in a geometry
 
 This can be done by having a reference to the vertex that you want to change, and then just go ahead and change it's position with the set method, or any other method that will have an impact on it's values. When doing this the changes might not take effect with respect to the instance of geometry, so you will need to make sure that the verticesNeedUpdate property of the geometry is set to true.
 
@@ -498,6 +498,6 @@ This can be done by having a reference to the vertex that you want to change, an
 
 It can go without saying that doing this can result in something that might eat up a lot of overhead, but is necessary from making things that mimic fabric, and the surface of water.
 
-## 12 - Conclusion
+## 11 - Conclusion
 
 Vectors are a big part of working with three.js, all the objects contain them as a way of defining points in space. Many properties of Objects are instances of Vector three as well such as Object3d.position that can be used to set the position of a Mesh, Camera or any other find of Object in a Scene. So having a solid understanding of where there is to work with when it comes to Vector three is important, as it will come up often.
