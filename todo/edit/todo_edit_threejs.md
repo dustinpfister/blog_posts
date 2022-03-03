@@ -25,6 +25,9 @@
 ### () - threejs-spotlights
 * expand more on new sections
 
+### ( ) - threejs-vector3
+* finish for post folder for current state of content
+
 <!--  Search Console top 3 ( clicks ) -->
 
 <!--  Search Console top 3 ( impressions ) -->
@@ -44,7 +47,7 @@
 ### () - threejs-vector3 (12.0k / 3mon / 2-20)
 * proof read
 * start for post folder and link to from post
-* read me file in for post folder linking to post
+* readme file in for post folder linking to post
 * at least 300 words for readme file
 
 <!-- Fixed Links -->
