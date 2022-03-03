@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-03 09:22:19
-version: 1.41
+updated: 2022-03-03 09:24:56
+version: 1.42
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -33,7 +33,7 @@ In the introduction of this post I mentioned the [Euler class](/2021/04/28/three
 
 ### Check out arrow helpers also
 
-There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/11/10/threejs-arrow-helper/) that can be sued to create and add a helper to a scene that can be used to know the direction of a vector.
+There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/11/10/threejs-arrow-helper/) that can be used to create and add a helper to a scene that will show the direction of a vector. This can be very useful to find  out what the current state of affairs is with a single Vector3 class, and there are also many other useful helpers like that of the arrow helper.
 
 ## 1 - Basic example of a THREE.Vector3 class instance
 
