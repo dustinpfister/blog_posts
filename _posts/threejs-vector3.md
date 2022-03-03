@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-03 09:27:22
-version: 1.43
+updated: 2022-03-03 09:30:43
+version: 1.44
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -30,6 +30,10 @@ Three.js is a project where the version number matters, when I first wrote this 
 Although I come around to do a little editing now and then, and when I do so I also take a second look at some of the source code examples, some of the code examples here where still made when I was using a much older version of threejs. So if the code examples in this post or [any three.js post](/categories/three-js/) of mine no longer work that might be a reason why. 
 
 When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
+
+### The source code examples in this post are on Github
+
+I have a for post folder set up in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3) where I will be keeping the source code examples for this post.
 
 ### There is also the Euler class for angles
 
