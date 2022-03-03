@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-03 09:20:51
-version: 1.40
+updated: 2022-03-03 09:22:19
+version: 1.41
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -23,17 +23,17 @@ This will be a fairly lengthy post then as there is a lot of going to cover with
 
 This is a post on three.js in which I am writing about the Vector3 constructor, and the various properties, methods of the class that there are to work with. There is then also going to be an awful lot of overlap between the Vetor3 class and various other features of threejs, so then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on three.js, or [javaScipt in general](/2018/11/27/js-getting-started/). I expect for you to have at least a little background when it comes to the very basics of setting up a threejs project when it comes to client side javaScript. 
 
-### Check out arrow helpers also
-
-There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/11/10/threejs-arrow-helper/) that can be sued to create and add a helper to a scene that can be used to know the direction of a vector.
-
 ### Three.js version number matters.
 
 Three.js is a project where the version number matters, when I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r127. However some of the code examples here where still made when I was using a much older version of threejs, so if the code examples in this post or [any three.js post](/categories/three-js/) of mine no longer work that might be a reason why. When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
 
 ### There is also the Euler class for angles
 
-While I am looking into the vector3 class I might also touch base one some other Class instances of interest such as the [Euler class](/2021/04/28/threejs-euler/) which is like Vector3 only it deals with angles rather than a position. Like that of the Vector3 class a Euler class also has x, y and z properties, but the expected value range is in radians rather than just any number value. The y value for a Euler instance then has to do with the angle at which an object should be rotated on the y axis rather than the position of an object along the y axis.
+In the introduction of this post I mentioned the [Euler class](/2021/04/28/threejs-euler/) which is like Vector3 only it deals with angles rather than a position. Like that of the Vector3 class a Euler class also has x, y and z properties, but the expected value range is in radians rather than just any number value. The y value for a Euler instance then has to do with the angle at which an object should be rotated on the y axis rather than the position of an object along the y axis.
+
+### Check out arrow helpers also
+
+There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/11/10/threejs-arrow-helper/) that can be sued to create and add a helper to a scene that can be used to know the direction of a vector.
 
 ## 1 - Basic example of a THREE.Vector3 class instance
 
