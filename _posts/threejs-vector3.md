@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-03 08:47:53
-version: 1.36
+updated: 2022-03-03 09:13:33
+version: 1.37
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -16,8 +16,6 @@ Although an instance of Vector3 can very much be used to set a position of somet
 This post is then about the Vector3 constructor that is a useful class for various things in a three.js project. A 3d Vector3 Instance consists of an x, y, and z value which makes it useful for plotting a single point in 3d space, but these values can also be in the range of numbers between 0 and 1 which can then be raised by a multiplier, and in some ways can be translated to angles and directions that have to do with the rotation of an object rather than its position. There are all kinds of use cases that will come up here and there for Vector3 such as finding [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) via the length method of the Vector3 instance, which is the distance from the vector to the origin for example.
 
 <!-- more -->
-
-Vector3 instances are also used when creating geometry that will be used in a mesh, and there are also many properties in various objects that expect an instance of Vector3. There are also a whole bunch of useful methods that can be used for typical tasks such as finding the distance between two points in space, or to copy the values of one vector instance to another. While I am looking into the vector3 class I might also touch base one some other Class instances of interest such as the [Euler class](/2021/04/28/threejs-euler/) which is like Vecor3 only it deals with angles rather than a position.
 
 ## The THREE.Vector3 class and What to know first
 
@@ -30,6 +28,10 @@ There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/
 ### Three.js version number matters.
 
 Three.js is a project where the version number matters, when I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r127. However some of the code examples here where still made when I was using a much older version of threejs, so if the code examples in this post or [any three.js post](/categories/three-js/) of mine no longer work that might be a reason why. When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
+
+### There is also the Euler class for angles
+
+While I am looking into the vector3 class I might also touch base one some other Class instances of interest such as the [Euler class](/2021/04/28/threejs-euler/) which is like Vector3 only it deals with angles rather than a position. Like that of the Vector3 class a Euler class also has x, y and z properties, but the expected value range is in radians rather than just any number value. The y value for a Euler instance then has to do with the angle at which an object should be rotated on the y axis rather than the position of an object along the y axis.
 
 ## 1 - Basic example of a THREE.Vector3 class instance
 
@@ -97,18 +99,15 @@ One of the many use case examples of the set method is to just use it as a way t
 
 ```js
 (function () {
- 
     // scene
     var scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(9, 9));
- 
     // creating a mesh called cube and adding it to a scene
     // by default it will be located at 0,0,0
     var cube = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshNormalMaterial());
     scene.add(cube);
- 
     // creating a mesh called cube2 and adding it to the scene
     var cube2 = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
@@ -118,24 +117,20 @@ One of the many use case examples of the set method is to just use it as a way t
     // TO SET THE POSTION OF cube2
     cube2.position.set(2, 0, 0);
     scene.add(cube2);
- 
     // CAMERA
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
- 
     // USING THE SET METHOD TO SET THE POSITION OF THE CAMERA
     camera.position.set(3, 3, 3);
- 
     camera.lookAt(0, 0, 0);
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
     renderer.render(scene, camera);
- 
 }
     ());
 ```
 
-## 3 - Set objects in a circle e around the center of a group example of Vector3.set
+## 3 - Set objects in a circle around the center of a group example of Vector3.set
 
 In this example I will once again be using the set method to set the position of objects, this time it is a collection of mesh objects that are children of a group.
 
