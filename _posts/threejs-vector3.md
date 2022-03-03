@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-03 09:30:43
-version: 1.44
+updated: 2022-03-03 09:37:03
+version: 1.45
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -142,11 +142,10 @@ One of the many use case examples of the set method is to just use it as a way t
 
 ## 3 - Set objects in a circle around the center of a group example of Vector3.set
 
-In this example I will once again be using the set method to set the position of objects, this time it is a collection of mesh objects that are children of a group.
+In this example I will once again be using the set method to set the position of objects, this time it is a collection of mesh objects that are children of a group, and they will be positioned in a circle like formation.
 
 ```js
 (function () {
- 
     // simple create cube helper
     var createCube = function(){
         var cube = new THREE.Mesh(
@@ -154,7 +153,6 @@ In this example I will once again be using the set method to set the position of
             new THREE.MeshNormalMaterial());
         return cube;
     };
- 
     // CREATE AND RETURN A GROUP OF CUBES
     // WHERE EACH CUBE IS POSITIONED IN A
     // CIRCLE AROUND THE CENTER OF THE GROUP
@@ -175,14 +173,11 @@ In this example I will once again be using the set method to set the position of
         }
         return group;
     };
- 
     // scene
     var scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(9, 9));
- 
     var cubeCircle = createCubeCircle();
     scene.add(cubeCircle);
- 
     // CAMERA
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
     camera.position.set(5, 5, 5);
@@ -191,7 +186,6 @@ In this example I will once again be using the set method to set the position of
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
     renderer.render(scene, camera);
- 
 }
     ());
 ```
