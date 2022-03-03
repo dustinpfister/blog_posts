@@ -19,7 +19,8 @@
 * look into a custom fog method with a height argument
 
 ### () - threejs-light
-* I am going to want some more examples
+* (done) I will want a spot light example
+* I will want a point light example
 
 ### () - threejs-spotlights
 * expand more on new sections
