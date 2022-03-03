@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-03 09:40:02
-version: 1.46
+updated: 2022-03-03 09:42:15
+version: 1.47
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -142,7 +142,7 @@ One of the many use case examples of the set method is to just use it as a way t
 
 ## 3 - Set objects in a circle around the center of a group example of Vector3.set
 
-In this example I will once again be using the set method to set the position of objects, this time it is a collection of mesh objects that are children of a group, and they will be positioned in a circle like formation. SPeaking of groups that is yet another feature of threejs that will come into play a lot when I want to make two or more instances of Mesh objects, or any kind of Object really that is based off of Object3d children  of another Object that can then be moved and rotated and when doing so effects all children of that Object.
+In this example I will once again be using the set method to set the position of objects, this time it is a collection of mesh objects that are [children of a group](/2018/05/16/threejs-grouping-mesh-objects/), and they will be positioned in a circle like formation. SPeaking of groups that is yet another feature of threejs that will come into play a lot when I want to make two or more instances of Mesh objects, or any kind of Object really that is based off of Object3d children  of another Object that can then be moved and rotated and when doing so effects all children of that Object.
 
 ```js
 (function () {
