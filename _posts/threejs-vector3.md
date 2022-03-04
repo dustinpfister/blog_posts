@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-04 09:08:54
-version: 1.48
+updated: 2022-03-04 10:38:20
+version: 1.49
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -282,18 +282,46 @@ This should not be thought of as any kind of definitive solution for this sort o
 
 ## 5 - Object3d and vector3
 
-A very important base class in three.js is [Object3D](https://threejs.org/docs/index.html#api/core/Object3D). Many constructors in three.js such as Camera, Mesh, ect inherit from Object3d. The reason why I bring this up is because there are a few properties in this base class the expect an instance of Vector3. Manly Object3D.position, and Object3D.scale.
+A very important base class in three.js is the [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) class that is at the hart of many objects in threejs. Constructors such as Camera, Mesh, Group, and many more inherit from the base Object3d class. The reason why I bring this up is because there are a few properties in this base class the expect an instance of Vector3. Manly the Object3D.position, and Object3D.scale properties, so in this example I will be going a quick example of using the Object3d class, and also methods of the Vector3 class such as the copy method that can be used to copy the values of one instance of vector3 to another.
 
 ```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // OBJECT3d position property
+    // ---------- ----------
+    // creating a plain base instance of object3d
     var obj = new THREE.Object3D();
- 
+    console.log(JSON.stringify(obj.position));
     // {"x":0,"y":0,"z":0}
-    console.log(JSON.stringify(obj.position));
- 
     obj.position.set(1, 2, 3);
- 
-    // {"x":1,"y":2,"z":3}
     console.log(JSON.stringify(obj.position));
+    // {"x":1,"y":2,"z":3}
+    // mesh
+    var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    // a mesh is also based on object3D and as such also has a
+    // position property the copy method can be used to copy the values
+    // of one instance of vector 3 to another
+    mesh.position.copy(obj.position);
+    scene.add(mesh);
+    // ---------- ----------
+    // RENDER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 Because Vector3 is the constructor that is used to represent a point in 3d space in three.js, it's use is to be expected in any situation in which its use is appropriate. Therefor it pays to have a solid foundational understanding of this constructor.
