@@ -1,12 +1,12 @@
 ---
 title: Vector3 in three.js for points in space
 date: 2018-04-15 20:18:00
-tags: [js,canvas,three.js]
+tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-03 09:42:15
-version: 1.47
+updated: 2022-03-04 09:08:54
+version: 1.48
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -190,13 +190,28 @@ In this example I will once again be using the set method to set the position of
     ());
 ```
 
-## 4 - Setting objects onto the surface of a sphere example of Vector3.set
+## 4 - Setting objects onto the surface of a sphere example of the Vector3 set method
 
-Now for a more advanced example of the Vector3 set method that might help one to gain a better understanding of how although a vector can be used for position, it can also be used as a way to store direction.
+Now for a more advanced example of the Vector3 set method that might help one to gain a better understanding of how a vector can be used for positioning things with an example that has to do with position one mesh onto the surface of a another mesh object that is a sphere. 
+
+This should not be thought of as any kind of definitive solution for this sort of thing, there are a lot of ways of going about doing this, as such I have [wrote a project example post that is detected to this topic](/2021/05/14/threejs-examples-position-things-to-sphere-surface/) that I revise from time to time with other solutions some of which might prove to be better for other specific cases.
 
 ```js
 (function () {
- 
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // HELPER FUNCTIONS
+    // ---------- ----------
     // simple create cube helper
     var createCube = function(){
         var cube = new THREE.Mesh(
@@ -204,7 +219,6 @@ Now for a more advanced example of the Vector3 set method that might help one to
             new THREE.MeshNormalMaterial());
         return cube;
     };
- 
     // set on sphere helper
     var setOnSphereFromPos = function(mesh, x, y, z, alt){
          var dir = new THREE.Vector3(x, y, z).normalize();
@@ -214,7 +228,6 @@ Now for a more advanced example of the Vector3 set method that might help one to
          pos.z = dir.z * alt;
          mesh.position.copy(pos);
     };
- 
     var setOnSphere = function(mesh, lat, long, alt){
         var latBias = Math.abs(lat - 0.5) / 0.5;
         var radian = Math.PI * 2 * long,
@@ -223,40 +236,44 @@ Now for a more advanced example of the Vector3 set method that might help one to
         y = alt * latBias * (lat > 0.5 ? -1 : 1);
         setOnSphereFromPos(cube, x, y, z, alt);
     };
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
- 
+    // ---------- ----------
+    // ADDING MESH OBJECTS TO SCENE
+    // ---------- ----------
     var sphere = new THREE.Mesh(
         new THREE.SphereGeometry(1.5, 30, 30),
         new THREE.MeshNormalMaterial({wireframe:true}));
     scene.add(sphere);
- 
     var cube = createCube();
     scene.add(cube);
- 
-    //setOnSphereFromPos(cube, 5, 0, 0, 2);
     setOnSphere(cube, 0.1, 0.3, 2);
- 
     cube.lookAt(0, 0, 0);
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var lat = 0.1;
+    // ---------- ----------
+    // LOOP
+    // ---------- ----------
+    var sm = {
+        lat: 0,
+        frame: 0,
+        maxFrame: 180,
+        fps: 30,
+        lt: new Date(),
+        per: 0,
+        bias: 0
+    };
     var loop = function(){
+        var now = new Date(),
+        secs = (now - sm.lt) / 1000;
         requestAnimationFrame(loop);
-        setOnSphere(cube, lat, 0, 2);
-        lat += 0.1;
-        lat %= 1;
-        cube.lookAt(0, 0, 0);
-        renderer.render(scene, camera);
+        if(secs >= 1 / sm.fps){
+            sm.frame += sm.fps * secs;
+            sm.frame %= sm.maxFrame;
+            sm.per = sm.frame / sm.maxFrame;
+            sm.bias = 1 - Math.abs(0.5 - sm.per) / 0.5;
+            sm.lat = sm.bias;
+            setOnSphere(cube, sm.lat, 0, 2);
+            cube.lookAt(0, 0, 0);
+            renderer.render(scene, camera);
+            sm.lt = new Date();
+        }
     };
     loop();
 }
