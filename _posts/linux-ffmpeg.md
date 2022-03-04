@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-04 14:22:08
-version: 1.5
+updated: 2022-03-04 14:27:43
+version: 1.6
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -28,14 +28,18 @@ There is another problem that I also noticed right away and that was that the ou
 
 ## 2 - Codecs and  pixel formats
 
+My first thought as to why the export videos where not working in VLC must be that by default ffmpeg mjust be using some kind of codec or some kind of advanced feature that will work with ffmpeg and certain other programs but not with many other media players. First off I would like to know what codecs I have to work with and to do that there is the codecs option that can be used to find out what codecs there are to work with.
+
 ```
 $ ffmpeg -codecs
 $ ffmpeg -pix_fmts
 ```
 
+There is also the pixel formats option that is another useful option that will list what all the options are when it comes to pixel formats.
+
 ## 3 - Using the pixel format option to get the output video to work with Programs like VLC, Windows Media Player, and so forth
 
-So now about [addressing the issue that has to do with the output videos not working in media player programs like that of VLC](https://superuser.com/a/705070) by setting a better value for the pixel format option, well better in terms of getting it to work in a wider range of media players rather than the quality of the video at least.
+So now about [addressing the issue that has to do with the output videos not working in media player programs like that of VLC](https://superuser.com/a/705070). It turns out that the problem was not so much with the codec, but the fixle format that was being used by default. So then by setting a better value for the pixel format option, well better in terms of getting it to work in a wider range of media players rather than the quality of the video at least, I as able to get the exports working in VLC.
 
 ```
 $ ffmpeg -framerate 30 -i ./frames/frame-%04d.png -pix_fmt yuv420p video.mp4
