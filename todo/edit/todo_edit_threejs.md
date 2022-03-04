@@ -44,12 +44,6 @@
 * read me file in for post folder linking to post
 * at least 300 words for readme file
 
-### () - threejs-vector3 (12.0k / 3mon / 2-20)
-* proof read
-* start for post folder and link to from post
-* readme file in for post folder linking to post
-* at least 300 words for readme file
-
 <!-- Fixed Links -->
 
 This is a collection of posts to which I fixed broken links on 02-10-2022, but I would like to do a proof read and add additional links for each post also.
@@ -89,6 +83,12 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 
 
 <!-- DONE -->
+
+### ( done 03/04/2022 ) - threejs-vector3 (12.0k / 3mon / 2-20)
+* (done) proof read
+* (done) start for post folder and link to from post
+* (done) readme file in for post folder linking to post
+* (done) at least 300 words for readme file
 
 ### ( done 03/01/2022 ) - threejs-spotlights
 * (done) proof read
