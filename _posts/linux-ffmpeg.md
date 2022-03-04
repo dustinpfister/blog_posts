@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-04 14:14:06
-version: 1.4
+updated: 2022-03-04 14:22:08
+version: 1.5
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -16,9 +16,15 @@ The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create video
 
 ## 1 - Basic example of creating a video from a collection of frames
 
+When I was first starting out with ffmpeg I was in a situation in which I was using a program of mind that exports video as a collection of frames where I have a png file for each frame. I then Just wanted to create an mp4 video file from this collection of image files.
+
 ```
 $ ffmpeg -framerate 30 -i ./frames/frame-%04d.png video.mp4
 ```
+
+One thing that I noticed is that the order in which options are passed is important, and can result in differing output results. For example I was creating an animation project that consisted of 600 image files, and at a frame rate of 30 the end result should be a 20 second video, but yet I was ending up with a 24 second video. After some quick research reading the manual page, and other sources I have found that I was just messing up with the order of the options and now I am getting a 20 second video for that specific collection of frames.
+
+There is another problem that I also noticed right away and that was that the output videos where not working in every program that I would use to playback a video. Mainly it was not working in Video Lan Client, so that lead be to believe that I must be neglecting a few additional options beyond just that of frame rate and input. So then lets look at some more examples of ffmpeg to get to the bottom of this.
 
 ## 2 - Codecs and  pixel formats
 
