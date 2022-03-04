@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-04 14:27:43
-version: 1.6
+updated: 2022-03-04 14:31:00
+version: 1.7
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -39,11 +39,13 @@ There is also the pixel formats option that is another useful option that will l
 
 ## 3 - Using the pixel format option to get the output video to work with Programs like VLC, Windows Media Player, and so forth
 
-So now about [addressing the issue that has to do with the output videos not working in media player programs like that of VLC](https://superuser.com/a/705070). It turns out that the problem was not so much with the codec, but the fixle format that was being used by default. So then by setting a better value for the pixel format option, well better in terms of getting it to work in a wider range of media players rather than the quality of the video at least, I as able to get the exports working in VLC.
+So now about [addressing the issue that has to do with the output videos not working in media player programs like that of VLC](https://superuser.com/a/705070). It turns out that the problem was not so much with the codec, but the pixel format that was being used by default. So then by setting a better value for the pixel format option, well better in terms of getting it to work in a wider range of media players rather than the quality of the video at least, I as able to get the exports working in VLC.
 
 ```
 $ ffmpeg -framerate 30 -i ./frames/frame-%04d.png -pix_fmt yuv420p video.mp4
 ```
+
+In the version of ffmpeg that I as using it seems that it was defaulting to h264 in terms of the codec which works fine in the version of vlc that I was using. Maybe there are some reasons why I would want to use some other codec, but that might be a matter for another section in this post or maybe even a whole other post completely. So far things seem to be working great in terms of what I am exporting so for now I might just want to look into some options when it comes to filters.
 
 ## 4 - Using a scale filter to create a new collection of frames
 
