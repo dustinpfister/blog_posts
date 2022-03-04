@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-04 14:31:00
-version: 1.7
+updated: 2022-03-04 14:32:47
+version: 1.8
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -28,7 +28,7 @@ There is another problem that I also noticed right away and that was that the ou
 
 ## 2 - Codecs and  pixel formats
 
-My first thought as to why the export videos where not working in VLC must be that by default ffmpeg mjust be using some kind of codec or some kind of advanced feature that will work with ffmpeg and certain other programs but not with many other media players. First off I would like to know what codecs I have to work with and to do that there is the codecs option that can be used to find out what codecs there are to work with.
+My first thought as to why the export videos where not working in VLC must be that by default ffmpeg must be using some kind of codec or some kind of advanced feature that will work with ffmpeg and certain other programs but not with many other media players. First off I would like to know what codecs I have to work with and to do that there is the codecs option that can be used to find out what codecs there are to work with.
 
 ```
 $ ffmpeg -codecs
