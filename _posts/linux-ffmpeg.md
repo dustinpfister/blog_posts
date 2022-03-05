@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-05 11:41:07
-version: 1.13
+updated: 2022-03-05 11:47:39
+version: 1.14
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -71,12 +71,24 @@ $ ffmpeg -i ./frames/frame-%04d.png -vf crop=320:240:160:120 ./frames-crop/frame
 
 ## 6 - Using a noise filter to create a new collection of frames
 
-
+One last quick filter example before moving on, this time the noise filter.
 
 ```
 $ mkdir -p ./frames-noise
 $ ffmpeg -i ./frames/frame-%04d.png -vf noise=alls=20:allf=t+u ./frames-noise/frame-%04d.png
 ```
 
-## 7 - Conclusion
+## 7 - Concatenating video files with ffmpeg, ls, awk, piping and rediection
+
+So far all of my ffmpeg examples here have to do with creating one collection of frames from another collection of frames, or creating a video from a collection of frames. However the source files can also of course be other video files, and also a collection of them in order of how they should be for a final video. In this example I am once again creating a video from my source collection of frames, but then I am creating another video from that video, and then another video that is the concatenation of those two videos.
+
+```
+$ ffmpeg -y -framerate 30 -i ./frames/frame-%04d.png -pix_fmt yuv420p video1.mp4
+$ ffmpeg -y -i ./video1.mp4 -vf setpts=2.5*PTS video2.mp4
+$ ls video[0-9]*.mp4 | awk '{ printf "file \x27%s\x27\n", $0 }' > videos.txt
+$ cat ./videos.txt
+$ ffmpeg -f concat -i videos.txt -c copy video-concat.mp4
+```
+
+## 8 - Conclusion
 
