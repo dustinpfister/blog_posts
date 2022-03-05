@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-05 11:59:51
-version: 1.16
+updated: 2022-03-05 12:11:37
+version: 1.17
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -78,7 +78,7 @@ $ mkdir -p ./frames-noise
 $ ffmpeg -i ./frames/frame-%04d.png -vf noise=alls=20:allf=t+u ./frames-noise/frame-%04d.png
 ```
 
-## 7 - Concatenating video files with ffmpeg, ls, awk, piping and rediection
+## 7 - Concatenating video files with ffmpeg, ls, awk, piping and redirection
 
 So far all of my ffmpeg examples here have to do with creating one collection of frames from another collection of frames, or creating a video from a collection of frames. However the source files can also of course be other video files, and also a collection of them in order of how they should be for a final video. In this example I am once again creating a video from my source collection of frames, but then I am creating another video from that video, and then another video that is the concatenation of those two videos.
 
@@ -93,4 +93,7 @@ $ ffmpeg -f concat -i videos.txt -c copy video-concat.mp4
 ```
 
 ## 8 - Conclusion
+
+So far I have just scratched the surface with what can be done with ffmpeg and various other linux commands. There is a whole lot more to write about of course when it comes to the topic of filters alone with ffmpeg, just looking at the official docs with that one there are a whole lot of them to work with. I am thinking that I am going to want to write at least a few more posts on this command in future Linux category posts, also i am sure that this will be a post that I will come around to edit now and then as well.
+
 
