@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2022-03-05 12:17:25
-version: 1.9
+updated: 2022-03-05 12:58:54
+version: 1.10
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first basic commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls command will come into play.
@@ -68,14 +68,16 @@ $ ls -a
 
 So this is a good option to be aware of, and I generally always use it with the ls command to make sure that I am seeing everything there is in a folder. However what if I just want to list hidden files? Well regular expressions come to mind so lets look at least one more example on listing hidden files and folders with the Linux ls command.
 
-### 2.2 - Use regular expressions
+### 2.2 - Use glob patterns
 
-Another option for listing hidden files and folders in a path would be to get into using regular expressions. Learning a thing or two about regular expressions is not just a good idea for using the Linux ls command too, as all kinds of commands in Linux such as find and grep just to name a few also can make use of regular expressions.
+Another option for listing hidden files and folders in a path would be to get into using glob patterns. Learning a thing or two about glob patterns is not just a good idea for using the Linux ls command too, as all kinds of commands in Linux also use globs as a way to do basic pattern matching type tasks.
 
 ```
 $ ls .[^.]*
 .hide.txt
 ```
+
+There might be some limitations to glob patterns though which will give rise to looking into other options such as piping output from the ls command into something that can be used to preform more complex pattern matching such as the grep command.
 
 ## 3 - Long listing format
 
@@ -114,6 +116,8 @@ $ ls file* | xargs cat | wc -w
 3
 ```
 
-## 5 - Conclusion
+## 5 - Using linux
+
+## 6 - Conclusion
 
 So the Linux ls command is one of those commands that a Linus user should know about just to gain that basic degree of understanding when it comes to navigating around the command line. There is still a few things to be aware of even when it comes to just a basic command such as this. Hopefully this post has covered at least the basics of the Linux ls command, but also a bit more than just that also.
