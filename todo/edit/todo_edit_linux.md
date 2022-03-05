@@ -8,10 +8,9 @@
 * include ffmpeg post example on video concatenation  that appends lines to begging and end of each line from ls output
 
 ## () - linux-ls
-* have an example that uses the range sysntax 
-```
-$ ls file[0-9].txt
-```
+* (done) have an example that uses the range sysntax 
+* finish writing about examples thus far on range for section 5
+* I might want to add at least a grep example for section 5
 
 <!-- world count / links -->
 
