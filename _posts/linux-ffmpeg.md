@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-04 14:32:47
-version: 1.8
+updated: 2022-03-05 08:23:32
+version: 1.9
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -48,6 +48,10 @@ $ ffmpeg -framerate 30 -i ./frames/frame-%04d.png -pix_fmt yuv420p video.mp4
 In the version of ffmpeg that I as using it seems that it was defaulting to h264 in terms of the codec which works fine in the version of vlc that I was using. Maybe there are some reasons why I would want to use some other codec, but that might be a matter for another section in this post or maybe even a whole other post completely. So far things seem to be working great in terms of what I am exporting so for now I might just want to look into some options when it comes to filters.
 
 ## 4 - Using a scale filter to create a new collection of frames
+
+So now that I have the basic idea of how to go about creating a video from a collection of frames out of the way I am thinking that I should look into what there is to work with when it comes to filters in ffmpeg. These filters can be applied to an output that is a video file, and in many cases that might very well be what I want to do. However the output can also be another collection of image files for each frame also.
+
+What this means is that the program that I am using to create the collection of image files can be used to export a collection of high resolution frames, and then from there I can use the scale filter in ffmpeg to create video files for that high resolution, and then videos for one or more lower resolutions also. However if I want another collection of frames because for one reason or another that is how I have to import into another program I can again use ffmpeg to do that by just using the same pattern for input as output only changing what the target path is for the files.
 
 ```
 $ mkdir -p ./frames-scale
