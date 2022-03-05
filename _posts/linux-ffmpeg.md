@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-05 08:47:20
-version: 1.12
+updated: 2022-03-05 11:41:07
+version: 1.13
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -62,12 +62,16 @@ So then say I again have a collection of source frames each with a resolution of
 
 ## 5 - Using a crop filter to create a new collection of frames
 
+There are a whole lot of filters to work with, so many that there is no way I will even be able to get around to write about every one of them, at least not in this single main post on ffmpeg at least. Still I think I should cover at least one or two additional filters before moving on to additional examples. So on top of scaling there is also cropping, and with that said there is of course a filter for that also.
+
 ```
 $ mkdir -p ./frames-crop
 $ ffmpeg -i ./frames/frame-%04d.png -vf crop=320:240:160:120 ./frames-crop/frame-%04d.png
 ```
 
 ## 6 - Using a noise filter to create a new collection of frames
+
+
 
 ```
 $ mkdir -p ./frames-noise
