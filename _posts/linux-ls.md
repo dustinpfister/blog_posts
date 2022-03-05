@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2022-03-05 12:58:54
-version: 1.10
+updated: 2022-03-05 13:02:04
+version: 1.11
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first basic commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls command will come into play.
@@ -116,7 +116,29 @@ $ ls file* | xargs cat | wc -w
 3
 ```
 
-## 5 - Using linux
+## 5 - Using a range glob pattern with linux ls
+
+### 5.1 - Create files bash script
+
+```
+c=0
+while [ $c -le 10 ]
+do
+  #d=$(printf "%03d" $c)
+  fn="file${c}.txt" 
+  echo $fn
+  echo "This is file ${fn}" > $fn
+  c=$(( $c + 1 ))
+done
+```
+
+### 5.2 - Using a range to just list some of the files
+
+```
+$ ./create-files.sh
+$ ls file[1-3].txt
+$ rm *.txt
+```
 
 ## 6 - Conclusion
 
