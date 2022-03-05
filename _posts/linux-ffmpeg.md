@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-05 08:30:31
-version: 1.11
+updated: 2022-03-05 08:47:20
+version: 1.12
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -58,16 +58,16 @@ $ mkdir -p ./frames-scale
 $ ffmpeg -i ./frames/frame-%04d.png -vf scale=320:240 ./frames-scale/frame-%04d.png
 ```
 
-So then say I again have a collection of source frames each with a resolution of 640x480 in a frames folder, and I want to create a whole other folder of frames that is scaled down to say 320x240. The first think I did is to use the [mkdir command](/2021/06/30/linux-mkdir/) to create the new folder in which I will be placing the new frame images. After that hust like before I can use a pattern for the input frames when using the -i option, but then for output I will want to use the -vf option to make use of the scale filter. There are several formats for setting the width and height of the desired output resolution, for this example I went with a colon but other formats will work.
+So then say I again have a collection of source frames each with a resolution of 640x480 in a frames folder, and I want to create a whole other folder of frames that is scaled down to say 320x240. The first think I did is to use the [mkdir command](/2021/06/30/linux-mkdir/) to create the new folder in which I will be placing the new frame images. After that just like before I can use a pattern for the input frames when using the -i option, but then for output I will want to use the -vf option to make use of the scale filter. There are several formats for setting the width and height of the desired output resolution, for this example I went with a colon but other formats will work.
 
-## 5 - Using a scale filter to create a new collection of frames
+## 5 - Using a crop filter to create a new collection of frames
 
 ```
 $ mkdir -p ./frames-crop
 $ ffmpeg -i ./frames/frame-%04d.png -vf crop=320:240:160:120 ./frames-crop/frame-%04d.png
 ```
 
-## 6 - Using a scale filter to create a new collection of frames
+## 6 - Using a noise filter to create a new collection of frames
 
 ```
 $ mkdir -p ./frames-noise
