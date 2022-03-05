@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 741
-updated: 2020-11-13 13:08:33
-version: 1.11
+updated: 2022-03-05 13:02:04
+version: 1.12
 ---
 
 The [Linux chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) command is the tool that is used to set file access permissions in a Linux system, along with most other POSIX systems for that matter. The [chmod command](https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/) can be used with other commands such as ls -l to find out what the current state is with permissions, and do something to change that state.
@@ -15,7 +15,7 @@ The chmod command also comes into play when it comes to making a bash script, or
 
 <!-- more -->
 
-## 1 - Uisng the Linux ls -l command to check status of permissions before using chmod
+## 1 - Using the Linux ls -l command to check status of permissions before using chmod
 
 Before using the Linux chmod command to change file access permissions it is first necessary to check the current status of file access permissions. One simple command for doing to is the [Linux ls command with the -l option](/2020/10/14/linux-ls/) to print a long from of all and any files found.
 
@@ -64,7 +64,7 @@ The best way to go about using chmod is to call the command followed by a set of
     - = no permission
 ```
 
-## 3 - Making a script exacutabule, or not, with +x and -x
+## 3 - Making a script executable, or not, with +x and -x
 
 One thing that I often find myself doing is using chmod to make a script that I wrote executable. Often a script is very much executable before hand, it is just that I need to call the binary that is used to run it first, and then pass the script I want to run as an argument to that binary. So what I really mean here is to make it so the script can just be run directly by making use of the proper shebang at the top of the script.
 
@@ -106,9 +106,9 @@ bash: ./basic.sh: Permission denied
 
 The current user does not have permission to run the script. Assuming that the current user has the authority to change the status of the file access permissions of the script, all that needs to happen is to just change the permissions of the script so that it can be execute for the current user. This is where the chmod command comes into play, there are a few ways to do about setting the permissions for executing a script, not just for the current user, but everyone.
 
-### 3.3 - Checking status of script, and making it exacutabule with chmod +x
+### 3.3 - Checking status of script, and making it executable with chmod +x
 
-So to check the status of basic.sh I just need to use the ls -l command to check the permsiions of the file.
+So to check the status of basic.sh I just need to use the ls -l command to check the permissions of the file.
 
 ```
 $ ls -l basic.sh
@@ -127,7 +127,7 @@ hello world
 
 This makes it so the script can be run for the current user, but it also makes it executable for all users in the current group, and everyone for that matter. So then there is the question of how to go about setting the status of this back, and there is also the question of how to have more fine grain control over this. So with that said lets look at just a few more chmod examples.
 
-### 3.4 - Make the script NOT exacutabule any more with chmod -x
+### 3.4 - Make the script NOT executable any more with chmod -x
 
 So now say that I have an executable script, and I want to make it so it can [no longer be executed](https://superuser.com/questions/541143/how-to-set-a-file-as-not-executable). To set things back to the way they where I just need to use the chmod -x command.
 
