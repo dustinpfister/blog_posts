@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-05 11:47:39
-version: 1.14
+updated: 2022-03-05 11:52:25
+version: 1.15
 ---
 
 The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
@@ -81,6 +81,8 @@ $ ffmpeg -i ./frames/frame-%04d.png -vf noise=alls=20:allf=t+u ./frames-noise/fr
 ## 7 - Concatenating video files with ffmpeg, ls, awk, piping and rediection
 
 So far all of my ffmpeg examples here have to do with creating one collection of frames from another collection of frames, or creating a video from a collection of frames. However the source files can also of course be other video files, and also a collection of them in order of how they should be for a final video. In this example I am once again creating a video from my source collection of frames, but then I am creating another video from that video, and then another video that is the concatenation of those two videos.
+
+To pull this off ffmppeg will be used to create the first video1.mp4 from frames, then again I will be using ffmpeg to create video2.mp4 from video1.mp4 and apply a filter for that video such as the setpts filter that will increase the length of this new video. Then I will be using the Linux ls command to get a list of these video files and pipe that to the Linux awk command to create a videos.txt file. I can then take a look at the state of this videos.txt file with a command like that of the Linux cat command if I want to. In any case this kind of text file can then be used as an input source for ffmpeg to create yet another video that is the concatenation of video1.mp4 and video2.mp4
 
 ```
 $ ffmpeg -y -framerate 30 -i ./frames/frame-%04d.png -pix_fmt yuv420p video1.mp4
