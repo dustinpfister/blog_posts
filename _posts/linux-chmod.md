@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 741
-updated: 2022-03-05 13:02:04
-version: 1.12
+updated: 2022-03-05 13:02:35
+version: 1.13
 ---
 
 The [Linux chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) command is the tool that is used to set file access permissions in a Linux system, along with most other POSIX systems for that matter. The [chmod command](https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/) can be used with other commands such as ls -l to find out what the current state is with permissions, and do something to change that state.
@@ -143,7 +143,7 @@ bash: ./basic.sh: Permission denied
 
 Simple enough, we are now back to where we were. However what if I just want to make it so the current use can run the script, but not any other user, except for root or course. Well octal modes do help to give better control over this, and all other values for that matter.
 
-### 3.5 - Using ocal modes to set just the values that are wanted
+### 3.5 - Using octal modes to set just the values that are wanted
 
 Although the +x, and -x options for Linux chmod are convenient, they are no substitute for the fine grain control over file access permissions that is gained by using octal modes. An octal mode is just simply a set of three octal digits for each group to which file access permissions apply, the owner, the owners group, and everyone. An octal digit of 7 will mean to read, write, and execute. So if I want the owner of the file to have all permissions, then I will want to start off the set of digits with 7. After that I will want to set lower values for all other groups, such as 4 which would be read only.
 
