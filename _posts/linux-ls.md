@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2022-03-05 13:02:04
-version: 1.11
+updated: 2022-03-05 13:05:50
+version: 1.12
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first basic commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls command will come into play.
@@ -118,6 +118,8 @@ $ ls file* | xargs cat | wc -w
 
 ## 5 - Using a range glob pattern with linux ls
 
+There are at least a few things that can be done with glob patterns using just the Linux ls command alone. One that I find myself using a lot is the asterisk, bit of course there are a few other options such as the range option that can be used with square brackets. In this section then I will be going over a few quick examples that have to do with creating a bunch of files that follow a given pattern and then using just the Linux ls command alone to list just a few files with a given range of numbers.
+
 ### 5.1 - Create files bash script
 
 ```
@@ -130,6 +132,10 @@ do
   echo "This is file ${fn}" > $fn
   c=$(( $c + 1 ))
 done
+```
+
+```
+$ chmod 777 create-files.sh
 ```
 
 ### 5.2 - Using a range to just list some of the files
