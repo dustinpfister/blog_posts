@@ -2,6 +2,19 @@
 ## linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
 
+<!-- I just want to expand -->
+
+## () - linux-awk
+* include ffmpeg post example on video concatenation  that appends lines to begging and end of each line from ls output
+
+## () - linux-ls
+* have an example that uses the range sysntax 
+```
+$ ls file[0-9].txt
+```
+
+<!-- world count / links -->
+
 ### () - linux-tar
 * get to 500+ words
 * get to 1,000+ words
