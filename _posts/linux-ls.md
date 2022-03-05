@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2022-03-05 13:05:50
-version: 1.12
+updated: 2022-03-05 13:12:48
+version: 1.13
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first basic commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls command will come into play.
@@ -122,6 +122,8 @@ There are at least a few things that can be done with glob patterns using just t
 
 ### 5.1 - Create files bash script
 
+Here I have a quick bash script that will create a bunch of files
+
 ```
 c=0
 while [ $c -le 10 ]
@@ -134,17 +136,23 @@ do
 done
 ```
 
+Use chmod to make the script executable
+
 ```
 $ chmod 777 create-files.sh
 ```
 
 ### 5.2 - Using a range to just list some of the files
 
+So I can use my create files script to create a bunch of text files, now I want to use the ls command to just list files that have a number between 1 and 3 for the first digit.
+
 ```
 $ ./create-files.sh
 $ ls file[1-3].txt
 $ rm *.txt
 ```
+
+This works okay so far but there is a limitation with this such as the question of how to go about also listing the file that ends with 10 without listing everything else. Also when it comes to creating a whole bunch of files like this it might not always be a good idea to name them this way if I have control over doing so, as it might be better to pad files with zeros.
 
 ## 6 - Conclusion
 
