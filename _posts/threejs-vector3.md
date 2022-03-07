@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-07 13:52:10
-version: 1.50
+updated: 2022-03-07 13:54:40
+version: 1.51
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -328,7 +328,7 @@ Because Vector3 is the constructor that is used to represent a point in 3d space
 
 ## 6 - Adding, diving, and multiplying Vectors
 
-Vectors can be added together with the add method, which is pretty straight forward. There are also methods for diving, and multiplying as well that can often prove to be useful in various types of situations.
+Vectors can be added together with the add method, which is pretty straight forward. There are also methods for diving, and multiplying as well that can often prove to be useful in various types of situations. These kinds of methods can then also be used in conjunction with many others in a chain. For example I can use the set method as a way to just define a kind of direction that I want and when doing so I can use any values that i want to do so assuming that I then normalized this, then I can use the multiply scalar method to set the desired length or magnitude with that set direction.
 
 ```js
 (function () {
