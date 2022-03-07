@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-04 10:38:20
-version: 1.49
+updated: 2022-03-07 13:52:10
+version: 1.50
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -328,23 +328,45 @@ Because Vector3 is the constructor that is used to represent a point in 3d space
 
 ## 6 - Adding, diving, and multiplying Vectors
 
-Vectors can be added together with the add method, which is pretty straight forward. There are also methods for diving, and multiplying as well.
+Vectors can be added together with the add method, which is pretty straight forward. There are also methods for diving, and multiplying as well that can often prove to be useful in various types of situations.
 
 ```js
-    var vec = new THREE.Vector3(.25, 1, 5);
-    vec.add(new THREE.Vector3(.25, 1, 2));
- 
-    console.log(vec.x, vec.y, vec.z); // 0.5 2 7
-```
-
-To quickly add a scalar values to all three values there is addScalar.
-
-```js
-    // addScalar
-    var vec = new THREE.Vector3(3, 3, 7);
-    vec.addScalar(10);
- 
-    console.log(vec.x, vec.y, vec.z); // 13 13 17
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH
+    // ---------- ----------
+    var mkMesh = function(){
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    };
+    // center mesh
+    scene.add(mkMesh());
+    // adding a vector to this mesh position
+    var mesh1 = mkMesh();
+    mesh1.position.add(new THREE.Vector3(3, 0, 2));
+    scene.add(mesh1);
+   // using set, normalize, and multiplyScalar
+    var mesh2 = mkMesh();
+    mesh2.position.set(-1,0,-1).normalize().multiplyScalar(6);
+    scene.add(mesh2);
+    // ---------- ----------
+    // RENDER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 ## 7 - Finding the distance between two vectors.
