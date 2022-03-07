@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-07 14:00:54
-version: 1.52
+updated: 2022-03-07 14:21:34
+version: 1.53
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -376,9 +376,43 @@ I will want to write more about normalization of vectors later in this post in a
 The length method of Vector3 returns the distance from the origin, but what if you want the distance from another instance of Vector3? For that there is the distance method.
 
 ```js
-var a = new THREE.Vector3(10, 10, 10),
-b = new THREE.Vector3(10, 5, 10);
-console.log(a.distanceTo(b)); // 5
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH
+    // ---------- ----------
+    var mkMesh = function(){
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    };
+    scene.add(mkMesh());
+ 
+    var m1 = mkMesh();
+    m1.position.set(0, 0, 4);
+    scene.add(m1);
+    var m2 = mkMesh();
+    var d = m1.position.distanceTo(new THREE.Vector3(0,0,0));
+    m2.position.copy(m1.position).normalize().multiplyScalar(d / 2);
+    console.log(m2.position);
+    scene.add(m2);
+    // ---------- ----------
+    // RENDER
+    // ---------- ----------
+    renderer.render(scene, camera);
+ 
+}
+    ());
 ```
 
 ## 8 - Clone, and Copy
