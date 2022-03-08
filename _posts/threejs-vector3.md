@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-08 10:06:22
-version: 1.54
+updated: 2022-03-08 10:13:00
+version: 1.55
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -417,24 +417,54 @@ The length method of Vector3 returns the distance from the origin, but what if I
 
 ## 8 - Clone, and Copy
 
-If you want to make an independent copy of a vector you can use the clone method, and if you want to copy in the values of one vector into another there is the copy method.
+If I want to make an independent copy of a vector I can use the clone method which will return a whole new instance of vector3 with the same values of the instance of vector3 that I called the method off of. I can then mutate this new instance of vector3 without mutating any of the values of the source instance that I call the clone method off of. There is also a copy method but that is not use to create a copy of a vector3 like clone does, but rather copy the values of one instance of vector three into another, so then the copy method can be used as an alternative to the set method that involves setting an instance of vector three with another instance of vector3 rather than that of number values.
 
 ```js
-    // clone
-    var original = new THREE.Vector3(10, 10, 10),
-    copy = original.clone();
-    copy.x += 5;
- 
-    console.log(copy.x); // 15
-    console.log(original.x); // 10
- 
-    // copy
-    var a = new THREE.Vector3(1, 2, 1),
-    copy = new THREE.Vector3().copy(a);
-    copy.z += 2;
- 
-    console.log(a.z); // 1
-    console.log(copy.z); // 3
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH
+    // ---------- ----------
+    var mkMesh = function(){
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    };
+    // using the vector3 copy method to copy position
+    // of m1 to position of m2
+    var m1 = mkMesh();
+    m1.position.set(2,0,0);
+    scene.add(m1);
+    var m2 = mkMesh();
+    m2.position.copy(m1.position);
+    m2.position.y = 2;
+    scene.add(m2);
+    // using the clone method of Vector3 to create a copy of
+    // the position of m3, so that I can mutate a copy rather than
+    // than the source of m3, that I then use to set the position of m4
+    var m3 = mkMesh();
+    m3.position.set(-2,0,2);
+    scene.add(m3);
+    var v = m3.position.clone().add(new THREE.Vector3(0, 2, 0));
+    var m4 = mkMesh();
+    m4.position.copy(v);
+    scene.add(m4);
+    // ---------- ----------
+    // RENDER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 Remember that objects are copied by reference in in javaScript so you will want to use one of these methods or some other similar method to make copies of a vector.
