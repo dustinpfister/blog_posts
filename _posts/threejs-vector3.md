@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-08 10:50:50
-version: 1.57
+updated: 2022-03-08 10:57:21
+version: 1.58
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -25,15 +25,13 @@ This is a post on three.js in which I am writing about the Vector3 constructor, 
 
 ### Three.js version numbers matter a lot.
 
-Three.js is a project where the version number matters, when I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r135. 
-
-Although I come around to do a little editing now and then, and when I do so I also take a second look at some of the source code examples, some of the code examples here where still made when I was using a much older version of threejs. So if the code examples in this post or [any three.js post](/categories/three-js/) of mine no longer work that might be a reason why. 
+Three.js is a project where the version number matters a lot, more so then what you might have grown accustom to when it comes to other libraries. When I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r135 with the later examples that I am keep at the top of this content. I still have older examples here that i am now pushing down to the bottom of this text, and the latest version that I am using with them is r111, those code examples will break in late versions of threejs.
 
 When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
 
 ### The source code examples in this post are on Github
 
-I have a for post folder set up in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3) where I will be keeping the source code examples for this post.
+I have a for post folder set up in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3) where I will be keeping the source code examples for this post, as well as for my [many other posts on threejs](/categories/three-js/).
 
 ### There is also the Euler class for angles
 
