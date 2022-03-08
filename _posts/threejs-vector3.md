@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-08 10:33:36
-version: 1.56
+updated: 2022-03-08 10:50:50
+version: 1.57
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -510,24 +510,47 @@ Normalizing a vector will keep the direction from the origin the same, but chang
     ());
 ```
 
-## 10 - Create Geometry Vertices with Vector3
+## Old EXAMPLES ( r111 and before ) that make use of the Geometry constructor
+
+When I first wrote this post I was using r91 of three.js, and the last version of threejs that I was using in my test threejs repository before the Geometry constructor was removed was r111. Last time I cam around to do a little editing with this post version r111 is still the latest version of threeejs that I was using to get these examples to work, they will break in late version of threejs that not longer have the Geometry constructor built in.
+
+
+### Create Geometry Vertices with Vector3
 
 Although I will not be getting into making custom geometry in detail, doing so will often involve the use of Vector3 to create the array of vertices. The faces will then reference them by the index value of the vertex in the vertices array of the geometry.
 
 ```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(-7, 4, 7);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH
+    // ---------- ----------
+    var mkMesh = function(){
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 3, 1),
+            new THREE.MeshNormalMaterial());
+    };
     var geometry = new THREE.Geometry();
- 
     // create vertices with Vector3
     geometry.vertices.push(
-        new THREE.Vector3(1, 1, 1),
+        new THREE.Vector3(5, 3, 1),
         new THREE.Vector3(1, 1, -1),
-        new THREE.Vector3(1, -1, 1),
+        new THREE.Vector3(1, -3, 1),
         new THREE.Vector3(1, -1, -1),
         new THREE.Vector3(-1, 1, -1),
         new THREE.Vector3(-1, 1, 1),
         new THREE.Vector3(-1, -1, -1),
         new THREE.Vector3(-1, -1, 1));
- 
     // faces are made with the index
     // values of from the vertices array
     geometry.faces.push(
@@ -543,12 +566,22 @@ Although I will not be getting into making custom geometry in detail, doing so w
         new THREE.Face3(7, 2, 0),
         new THREE.Face3(1, 3, 4),
         new THREE.Face3(3, 6, 4));
- 
     geometry.normalize();
     geometry.computeFlatVertexNormals();
+    var mesh = new THREE.Mesh(
+            geometry,
+            new THREE.MeshNormalMaterial());
+    mesh.scale.set(6,6,6)
+    scene.add(mesh);
+    // ---------- ----------
+    // RENDER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
-## 11 - Making Lines with Vector3
+### Making Lines with Vector3
 
 Read my [full post on lines](/2018/04/19/threejs-line/).
 
@@ -568,7 +601,7 @@ scene.add(new THREE.Line(geometry, new THREE.LineBasicMaterial({
 })));
 ```
 
-## 12 - Changing a Vector3 value in a geometry
+### Changing a Vector3 value in a geometry
 
 This can be done by having a reference to the vertex that you want to change, and then just go ahead and change it's position with the set method, or any other method that will have an impact on it's values. When doing this the changes might not take effect with respect to the instance of geometry, so you will need to make sure that the verticesNeedUpdate property of the geometry is set to true.
 
@@ -654,6 +687,6 @@ This can be done by having a reference to the vertex that you want to change, an
 
 It can go without saying that doing this can result in something that might eat up a lot of overhead, but is necessary from making things that mimic fabric, and the surface of water.
 
-## 13 - Conclusion
+## Conclusion
 
 Vectors are a big part of working with three.js, all the objects contain them as a way of defining points in space. Many properties of Objects are instances of Vector three as well such as Object3d.position that can be used to set the position of a Mesh, Camera or any other find of Object in a Scene. So having a solid understanding of where there is to work with when it comes to Vector three is important, as it will come up often.
