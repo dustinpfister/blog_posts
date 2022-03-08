@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-08 11:00:25
-version: 1.59
+updated: 2022-03-08 11:03:15
+version: 1.60
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -688,3 +688,5 @@ It can go without saying that doing this can result in something that might eat 
 ## Conclusion
 
 The Vector3 class is then a major class that will be used a whole lot in threejs projects, it is used as a way to go about setting positions of things in a scene, but the various methods are also used to set new positions by making use of tricks that have to do with the length of a vector. That is that there is knowing a thing or two about how a vector is not just position but also direction, and how the length of a vector can be adjusted without changing the direction.
+
+It is not to say there are not a whole lot of other classes in threejs that are not a bit deal also. Another major class that I often look into now and again when  I spend a little to much time away from threejs is the Euler class, and the object3d class. The Euler class has more to do with the rotation of objects, but there is also ways of converting from one to another. The object3d class is the base class of a mesh object, and as such in contains properties like the position property as well as the scale property both of which are instances of Vector3.
