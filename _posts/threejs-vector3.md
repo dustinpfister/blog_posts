@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-07 14:21:34
-version: 1.53
+updated: 2022-03-08 10:06:22
+version: 1.54
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -373,7 +373,7 @@ I will want to write more about normalization of vectors later in this post in a
 
 ## 7 - Finding the distance between two vectors.
 
-The length method of Vector3 returns the distance from the origin, but what if you want the distance from another instance of Vector3? For that there is the distance method.
+The length method of Vector3 returns the distance from the origin, but what if I want the distance from one instance of vector3 to another that might not be the origin then I will want to use the distanceTo method of the vector3 class.
 
 ```js
 (function () {
