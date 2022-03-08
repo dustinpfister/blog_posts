@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-08 10:13:00
-version: 1.55
+updated: 2022-03-08 10:33:36
+version: 1.56
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -471,17 +471,43 @@ Remember that objects are copied by reference in in javaScript so you will want 
 
 ## 9 - Normalize a Vector
 
-Normalizing a vector will keep it's direction from the origin the same, but change its distance from it to a unit vector of 1.
+Normalizing a vector will keep the direction from the origin the same, but change its distance from it to a unit vector of just one. From there it additional methods like the of the multiply scalar method can be used to set any desired length alone that same direction. For example I can create a mesh and place it at a given position, I can then use that mesh position with methods like the copy method to set a whole much of mesh objects to the same position as that mesh, but then normalize, and then use multiply scalar to set each mesh on its own position that is the same direction, but with different unit lengths.
 
 ```js
-    var vec = new THREE.Vector3(7, 7, 7);
- 
-    console.log(vec.length()); // 12.12...
- 
-    vec.normalize();
- 
-    console.log(vec.x, vec.y, vec.z); // 0.57... 0.57... 0.57...
-    console.log(vec.length()); // 1
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(-7, 4, 7);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH
+    // ---------- ----------
+    var mkMesh = function(){
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 3, 1),
+            new THREE.MeshNormalMaterial());
+    };
+    var m1 = mkMesh();
+    m1.position.set(-3, 1.5,-3);
+    scene.add(m1);
+    [3, 1.5, 0, -1.5, -3, -4.5,-6].forEach(function(scalar){
+        var mX = mkMesh();
+        mX.position.copy(m1.position).normalize().multiplyScalar(scalar);
+        scene.add(mX);
+    });
+    // ---------- ----------
+    // RENDER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 ## 10 - Create Geometry Vertices with Vector3
