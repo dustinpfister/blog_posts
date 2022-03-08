@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-03-08 10:57:21
-version: 1.58
+updated: 2022-03-08 11:00:25
+version: 1.59
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -687,4 +687,4 @@ It can go without saying that doing this can result in something that might eat 
 
 ## Conclusion
 
-Vectors are a big part of working with three.js, all the objects contain them as a way of defining points in space. Many properties of Objects are instances of Vector three as well such as Object3d.position that can be used to set the position of a Mesh, Camera or any other find of Object in a Scene. So having a solid understanding of where there is to work with when it comes to Vector three is important, as it will come up often.
+The Vector3 class is then a major class that will be used a whole lot in threejs projects, it is used as a way to go about setting positions of things in a scene, but the various methods are also used to set new positions by making use of tricks that have to do with the length of a vector. That is that there is knowing a thing or two about how a vector is not just position but also direction, and how the length of a vector can be adjusted without changing the direction.
