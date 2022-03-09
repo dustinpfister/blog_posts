@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-03-09 07:22:34
-version: 1.22
+updated: 2022-03-09 07:24:08
+version: 1.23
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -288,7 +288,7 @@ One more additional feature that I like to use when adjusting things with a spot
 
 ## 5 - Point lights
 
-Another great option for lighting is point lights.
+Another great option for lighting is [point lights](/2019/06/02/threejs-point-light/) which as the name suggests will shine light outward in all directions.
 
 ```js
 (function () {
