@@ -25,8 +25,6 @@
 ### () - threejs-spotlights
 * expand more on new sections
 
-### ( ) - threejs-vector3
-* finish for post folder for current state of content
 
 <!--  Search Console top 3 ( clicks ) -->
 
@@ -83,6 +81,9 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 
 
 <!-- DONE -->
+
+### ( done 03/08/2022 ) - threejs-vector3
+* (done) finish for post folder for current state of content
 
 ### ( done 03/04/2022 ) - threejs-vector3 (12.0k / 3mon / 2-20)
 * (done) proof read
