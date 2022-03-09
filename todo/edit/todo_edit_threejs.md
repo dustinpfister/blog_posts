@@ -18,10 +18,6 @@
 ### ( ) - threejs-fog
 * look into a custom fog method with a height argument
 
-### () - threejs-light
-* (done) I will want a spot light example
-* I will want a point light example
-
 ### () - threejs-spotlights
 * expand more on new sections
 
@@ -81,6 +77,10 @@ This is a collection of posts to which I fixed broken links on 02-10-2022, but I
 
 
 <!-- DONE -->
+
+### ( done 03/09/2022 ) - threejs-light
+* (done) I will want a spot light example
+* (done) I will want a point light example
 
 ### ( done 03/08/2022 ) - threejs-vector3
 * (done) finish for post folder for current state of content
