@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-03-02 09:36:13
-version: 1.21
+updated: 2022-03-09 07:22:34
+version: 1.22
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -286,7 +286,78 @@ Another major aspect of a spotlight is the target property f the light which is 
 
 One more additional feature that I like to use when adjusting things with a spot light is the spot light helper which will help to get a visual idea of what is going on with a spot light. There is also the update method of this kind of object that I will want to call when changing values of the spotlight instance over time.
 
-## 5 - Conclusion
+## 5 - Point lights
+
+Another great option for lighting is point lights.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    // creating a scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(6, 6));
+    // camera
+    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
+    camera.position.set(3, 3, 3);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    // render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // POINT LIGHT
+    // ---------- ----------
+    var light = new THREE.PointLight(0xffffff, 1);
+    light.add(new THREE.Mesh(new THREE.SphereGeometry(0.05, 20, 20)));
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x2a2a2a, 0.3));
+    // ---------- ----------
+    // ADDING A FEW MESH OBJECTS TO THE SCENE
+    // ---------- ----------
+    var mesh1 = new THREE.Mesh(
+            new THREE.PlaneGeometry(5,5),
+            new THREE.MeshPhongMaterial( { color: new THREE.Color('cyan') } )
+    );
+    mesh1.rotation.x = -1.57;
+    scene.add(mesh1);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER IN AN ANIMATION LOOP
+    // ---------- ----------
+    // APP LOOP
+    var secs = 0,
+    fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
+    fps_movement = 30, // fps rate to move camera
+    frame = 0,
+    frameMax = 120,
+    lt = new Date();
+    // update
+    var update = function(){
+        var per = Math.round(frame) / frameMax,
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        light.position.set(-2 + 4 * bias, 2, 0);
+    };
+    // loop
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            update();
+            renderer.render(scene, camera);
+            frame += fps_movement * secs;
+            frame %= frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 6 - Conclusion
 
 I have wrote a number of posts on light in threejs thus far, but I have not yet write a post on light in general until now. I am sure that there is a great deal about light in threejs that I have missed, so there will be edits of this post in the future for sure, and maybe at a higher frequency that usual when it comes to editing. I just about always have some ideas drafted out when it comes to what to do with future edits of a post and this post on light in general with threejs is not exception of course. I will want to add at least a few more examples that have to do with more advanced topics for sure, but when it comes to that I still need to figure it out for myself.
 
