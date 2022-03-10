@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 966
-updated: 2022-03-10 07:38:10
-version: 1.5
+updated: 2022-03-10 07:41:25
+version: 1.6
 ---
 
 This year I wanted to start looking into how to go about using electronjs, and so far I have a small collection of tech demos, and hello world type programs that make use of various features of electronjs to make desktop applications with html and javaScript. Over the long term though I am going to want to make at least one or two actual programs that I use to make some kind of content. With that said I have a simple text editor program in the works, but for todays post I am going to be writing about the current state of something that I have been putting a whole lot more time into to make videos that I am calling VideoGround.
@@ -637,4 +637,6 @@ VIDEO.update = function(state, scene, camera, secs, per, bias){
 ## 3 - Conclusion
 
 This might prove to be a project that I might very well continue to work on, that should go without saying if I do end up using this every day to make videos. Future plains with it will involve not just adding every feature that I can think of, but rather be a little more reserved about making the program more complex. At this point I am a little more interested in making the application as it currently stands more solid as there are a fair number of bugs that I would like to work out with it, and I am just not complicate happy with the over all structurer as it currently stands as revision 3.
+
+That is not to say that I do not have ideas for additional features, I do, many of them have to do with automating things that I am currently doing manually. For example making use of the child process module to call ffmpeg to create a final video from exported frame images rather than doing so mainly from the command line. I am currently using some bash aliases, but I should just be able to do that from within VideoGround.
 
