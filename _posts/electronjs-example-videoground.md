@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 966
-updated: 2022-03-11 07:32:41
-version: 1.8
+updated: 2022-03-11 07:36:14
+version: 1.9
 ---
 
 This year I wanted to start looking into how to go about using electronjs, and so far I have a small collection of tech demos, and hello world type programs that make use of various features of electronjs to make desktop applications with html and javaScript. Over the long term though I am going to want to make at least one or two actual programs that I use to make some kind of content. With that said I have a simple text editor program in the works, but for todays post I am going to be writing about the current state of something that I have been putting a whole lot more time into to make videos that I am calling VideoGround.
@@ -34,7 +34,7 @@ function createMainWindow() {
             height: 700,
             backgroundColor: '#008888',
             webPreferences: {
-                // I tried to disable webSecurity to see if that would fix the isshue with CSP and vuejs (did not work)
+                // I tried to disable webSecurity to see if that would fix the issue with CSP and vuejs (did not work)
                 webSecurity: true,
                 contextIsolation: true,
                 preload: path.resolve( __dirname, 'preload.js')
@@ -65,6 +65,8 @@ app.on('window-all-closed', function () {
 ```
 
 ### 1.2 - The Menu
+
+I am going to want to have a custom menu for this application, and this will likely be the case for just about all future electron js applications as well. When it comes to the Menu of an application I could just make that part of the mainjavaScript file but I have found that I like to pull the object that I will be using with the Menu.buildFromTemplate method into a separate file and just require that in when creating the window.
 
 ```js
 // load app and BrowserWindow
