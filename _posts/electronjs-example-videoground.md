@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 966
-updated: 2022-03-11 08:06:23
-version: 1.10
+updated: 2022-03-11 08:20:58
+version: 1.11
 ---
 
 This year I wanted to start looking into how to go about using electronjs, and so far I have a small collection of tech demos, and hello world type programs that make use of various features of electronjs to make desktop applications with html and javaScript. Over the long term though I am going to want to make at least one or two actual programs that I use to make some kind of content. With that said I have a simple text editor program in the works, but for todays post I am going to be writing about the current state of something that I have been putting a whole lot more time into to make videos that I am calling VideoGround.
@@ -167,7 +167,7 @@ module.exports = MainMenuTemplate;
 
 ### 1.3 - The preload file
 
-This is the preload file that I am using to create an API that I can then used in the front end code of the application.
+This is the preload file that I am using to create an API that I can then used in the front end code of the application. This is then where I have a collection of methods that have to do with things like writing a frame png file when exporting a video to a folder in which I will be creating a video file. There is also directly exporting as a video from the browser, but I have found that doing so will often break as new versions of chromium come out. Even if I go that way in any future versions I am still going to want to have this feature as one of several export options.
 
 ```js
 // preload with contextIsolation enabled
