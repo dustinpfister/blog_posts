@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 966
-updated: 2022-03-11 07:15:29
-version: 1.7
+updated: 2022-03-11 07:32:41
+version: 1.8
 ---
 
 This year I wanted to start looking into how to go about using electronjs, and so far I have a small collection of tech demos, and hello world type programs that make use of various features of electronjs to make desktop applications with html and javaScript. Over the long term though I am going to want to make at least one or two actual programs that I use to make some kind of content. With that said I have a simple text editor program in the works, but for todays post I am going to be writing about the current state of something that I have been putting a whole lot more time into to make videos that I am calling VideoGround.
@@ -20,6 +20,8 @@ Over the years I have wrote a whole [lot of posts on threejs](/categories/three-
 The core of the electron application that is video ground as of revision 3 consists of three files, a main javaScript file, a Menu file, and a preload file. There are of course a lot of additional files that have to do with the client system, and then even more files when it comes to making video projects. However in this first section I will be sticking to just the typical root level files of the electronjs application.
 
 ### 1.1 - The main javaScript file
+
+When it comes to the web preferences of the main browser window I am explicitly setting contextIsolation to true. Even though I am using an older version of electron for this application this is the default for newer versions and I am thinking that I should get accustomed to working with it for the sake of any and all future electron projects I might make.
 
 ```js
 // load app and BrowserWindow
