@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 966
-updated: 2022-03-11 08:23:02
-version: 1.12
+updated: 2022-03-11 08:28:04
+version: 1.13
 ---
 
 This year I wanted to start looking into how to go about using electronjs, and so far I have a small collection of tech demos, and hello world type programs that make use of various features of electronjs to make desktop applications with html and javaScript. Over the long term though I am going to want to make at least one or two actual programs that I use to make some kind of content. With that said I have a simple text editor program in the works, but for todays post I am going to be writing about the current state of something that I have been putting a whole lot more time into to make videos that I am calling VideoGround.
@@ -251,7 +251,9 @@ contextBridge.exposeInMainWorld('videoAPI', videoAPI);
 
 So then I have the javaScript files that have to do with the main process, and also setting up features for the render process of this electronjs application project example. However now there is the question of that html file that I am loading in the main javaScript file, and everything that branches off from that.
 
-### 2.1 -
+### 2.1 - The main html file
+
+The main html file that I load for the browser window in main.js also loads a whole bunch of additional javaScript files, and also provided some hard coded html that I work off of within those files. With that said on top of using electron I am also using threejs and vue.js when it comes to the client side code. Of course I need to use threejs because that is what I want to use when rendering each frame of a video, however I also want to use vuejs when it comes to working out user interface components as I have found that it just works out a lot better compared to what happens for me when I just go all out native with that.
 
 ```html
 <!DOCTYPE html>
