@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 967
-updated: 2022-03-14 09:06:17
-version: 1.4
+updated: 2022-03-14 09:08:36
+version: 1.5
 ---
 
 Every once in a while I want to delete end of line characters, or transform characters from some standard input when piping two or more Linux commands together. So far I have found that the [Linux awk](/2021/07/02/linux-awk/) command might be the best tool for the job when it comes to thing and just about everything else when it comes to text processing type tasks. However there are also a lot of various alternative commands that come up and one of them is the Linux tr command.
@@ -26,7 +26,9 @@ $ echo -e 'foo;\nbar;\n' | tr -d '\n'
 foo;bar;$
 ```
 
-### 1.2 - cat
+### 1.2 - The cat command
+
+The echo command is great for creating some standard output from the command line, however often the text source that I want to use is in a file. In that situation I will then want to use some kind of command to read the contents of that fle and then pipe that into the tr command. A common command that is often used for that kind of task would be the cat command.
 
 ```
 echo -e 'foo;\nbar;\n' > mess.txt;
