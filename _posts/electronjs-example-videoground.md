@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 966
-updated: 2022-03-14 08:43:45
-version: 1.16
+updated: 2022-03-14 08:47:27
+version: 1.17
 ---
 
 This year I wanted to start looking into how to go about using electronjs, and so far I have a small collection of tech demos, and hello world type programs that make use of various features of electronjs to make desktop applications with html and javaScript. Over the long term though I am going to want to make at least one or two actual programs that I use to make some kind of content. With that said I have a simple text editor program in the works, but for todays post I am going to be writing about the current state of something that I have been putting a whole lot more time into to make videos that I am calling VideoGround.
@@ -520,7 +520,10 @@ I am going to want to have at least one if not more features in the page that ar
     ());
 ```
 
-### 2.5 - ui video code
+### 2.5 - The ui video code file
+
+On top of having a user interface for playing back the video I am also going to want to have a user interface for mutating the state of the video itself.
+
 
 ```js
 (function () {
