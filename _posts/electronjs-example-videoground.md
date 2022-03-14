@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 966
-updated: 2022-03-11 08:33:19
-version: 1.15
+updated: 2022-03-14 08:43:45
+version: 1.16
 ---
 
 This year I wanted to start looking into how to go about using electronjs, and so far I have a small collection of tech demos, and hello world type programs that make use of various features of electronjs to make desktop applications with html and javaScript. Over the long term though I am going to want to make at least one or two actual programs that I use to make some kind of content. With that said I have a simple text editor program in the works, but for todays post I am going to be writing about the current state of something that I have been putting a whole lot more time into to make videos that I am calling VideoGround.
@@ -457,6 +457,8 @@ When I first started this project I just wanted to have a single javaScript to j
 ```
 
 ### 2.4 - ui playback
+
+I am going to want to have at least one if not more features in the page that are used to interact with the state of the current video project that I am working on with this. One feature that I will want to have is a few buttons and various other input elements that have to do with just playing back the video, stopping the video, stepping the current frame forward and backward, and also to jump to a specific frame.
 
 ```js
 (function () {
