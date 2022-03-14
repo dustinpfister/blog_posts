@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 967
-updated: 2022-03-14 09:04:09
-version: 1.3
+updated: 2022-03-14 09:06:17
+version: 1.4
 ---
 
 Every once in a while I want to delete end of line characters, or transform characters from some standard input when piping two or more Linux commands together. So far I have found that the [Linux awk](/2021/07/02/linux-awk/) command might be the best tool for the job when it comes to thing and just about everything else when it comes to text processing type tasks. However there are also a lot of various alternative commands that come up and one of them is the Linux tr command.
@@ -17,7 +17,9 @@ Every once in a while I want to delete end of line characters, or transform char
 
 In this section I will then be starting out with just a few basic, quick examples of the Linux tr command.
 
-### 1.1 - echo
+### 1.1 - Just using echo to pipe something into tr
+
+Many of these commands work by taking something in from the standard input, so in order to use it this way I must find some way to create some standard output to pipe into the tr command. One way to do so would be to use the Linux echo bash built in command.
 
 ```
 $ echo -e 'foo;\nbar;\n' | tr -d '\n'
