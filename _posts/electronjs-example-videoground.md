@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 966
-updated: 2022-03-15 08:05:49
-version: 1.22
+updated: 2022-03-15 08:07:17
+version: 1.23
 ---
 
 This year I wanted to start looking into how to go about using electronjs, and so far I have a small collection of tech demos, and hello world type programs that make use of various features of electronjs to make desktop applications with html and javaScript. So far I all ready have wrote my [getting started post on electronjs](/2022/02/07/electronjs-hello-world/), and a [few others on top](/categories/electronjs/) of that. However over the long term though I am going to want to make at least one or two actual programs that I use to make some kind of content, such as a text editor, an art program of some kind, or maybe even something that can be used to make a video project of some kind. With that said I have a simple text editor program in the works, but for todays post I am going to be writing about the current state of something that I have been putting a whole lot more time into to make videos that I am calling VideoGround.
@@ -17,7 +17,7 @@ Over the years I have wrote a whole [lot of posts on threejs](/categories/three-
 
 ## What to know first
 
-This is not a getting started type post on electronjs, threejs, vuejs, javaScript in general as well as any and all additional subjects that need to be covered first before making something like this. If you are still fairly new to javaScript in general it would be best to start out with some simple examples of javaScript alone in various environments for doing so. Also this might not be the best example of an electronjs application starting point, rather this is the first actual application that I have made that I am actually using to create some kind of content.
+This is not a getting started type post on electronjs, threejs, vuejs, javaScript in general as well as any and all additional subjects that need to be covered first before making something like this. If you are still fairly new to javaScript in general it would be best to start out with some [simple examples of javaScript alone](/2018/11/27/js-getting-started/) in various environments for doing so. Also this might not be the best example of an electronjs application starting point, rather this is the first actual application that I have made that I am actually using to create some kind of content.
 
 ## 1 - The root electronjs files
 
