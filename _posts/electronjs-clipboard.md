@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 968
-updated: 2022-03-15 11:50:47
-version: 1.2
+updated: 2022-03-15 11:53:28
+version: 1.3
 ---
 
 I still want to write at least a few more posts on electronjs, before moving on to focusing on other topics as that just strokes me as the thing to do if I am going to start a new collection of content on something. Anyway when it comes to making an electron application one of many things that comes to mind is how to go about copying something that might be in the clipboard of an operating system into my electronjs application as well as the inversion of doing so. In other ways there must be a way in electron to handle the whole copy and paste thing. With that said there is a clipboard class that can be used as a means to both read and write to the clipboard of the house OS which allows for making use of this common OS feature to transfer some kind of content from one application to another.
@@ -26,15 +26,21 @@ In the main javaScript file I have some events for what to do when the applicati
 
 ## 2 - The menu file
 
+In the menu file I am using the clipboard class to read the contents of the clipboard for a paste option in the edit menu.
+
 ```js
 ```
 
 ## 3 - preload
 
+Here I ahve the preload file that I am using to define the API to use in the front end code.
+
 ```js
 ```
 
 ## 4 - The index html file
+
+Now for the front end code where I am attaching an event hander for the action paste event of the API that I am defining in preload.js
 
 ```html
 ```
