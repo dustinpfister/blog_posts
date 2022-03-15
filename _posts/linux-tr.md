@@ -5,15 +5,15 @@ tags: [linux]
 layout: post
 categories: linux
 id: 967
-updated: 2022-03-15 08:17:13
-version: 1.9
+updated: 2022-03-15 08:20:03
+version: 1.10
 ---
 
 Every once in a while I want to delete end of line characters, or transform characters from some standard input when piping two or more Linux commands together. So far I have found that the [Linux awk](/2021/07/02/linux-awk/) command might be the best tool for the job when it comes to thing and just about everything else when it comes to text processing type tasks. However there are also a lot of various alternative commands that come up and one of them is the Linux tr command.
 
 <!-- more -->
 
-## Basic Linux tr examples
+## 1 - Basic Linux tr examples
 
 In this section I will then be starting out with just a few basic, quick examples of the Linux tr command. However in the process of doing so I will also be making use of a number of other basic commands in Linux, as well as various bash features such as piping.
 
@@ -65,4 +65,6 @@ $ du -b rnd.txt
 
 ## 3 - Conclusion
 
-That is if for the Linux tr command, at least for now anyway until the  next time that I come around to do a little editing with this post.
+That is if for the Linux tr command, at least for now anyway until the  next time that I come around to do a little editing with this post. ALthough I have wrote a post on awk, that is a command that might be best to learn how to use when it comes to these sorts of things. The awk command can be used to transform and remove characters, but it can also be used to do just about everything else that there is to do with text processing.
+
+
