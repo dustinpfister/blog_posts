@@ -5,19 +5,19 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 968
-updated: 2022-03-17 15:11:55
-version: 1.7
+updated: 2022-03-17 15:14:41
+version: 1.8
 ---
 
 I still want to write at least a few more posts on electronjs, before moving on to focusing on other topics as that just strokes me as the thing to do if I am going to start a new collection of content on something. Anyway when it comes to making an electron application one of many things that comes to mind is how to go about copying something that might be in the clipboard of an operating system into my electronjs application as well as the inversion of doing so. In other words there must be a way in electron to handle the whole copy and paste thing with text, images, and data in general so that I can move content easily to and from my electron application and other applications. 
 
-So with that said of course there is a class for this sort of thing which is the [clipboard class](/https://www.electronjs.org/docs/latest/api/clipboard/) that can be used as a means to both read and write to the clipboard of the house OS which allows for making use of this common OS feature to transfer some kind of content from one application to another. In this post then I will be going over a simple example of this class, and while I am in the process of doing so I will of course also touch base on a wide range of other electronjs features.
+So with that said of course there is a class for this sort of thing which is the [clipboard class](https://www.electronjs.org/docs/latest/api/clipboard/) that can be used as a means to both read and write to the clipboard of the house OS which allows for making use of this common OS feature to transfer some kind of content from one application to another. In this post then I will be going over a simple example of this class, and while I am in the process of doing so I will of course also touch base on a wide range of other electronjs features.
 
 <!-- more -->
 
 ## The clipboard class and what to know first
 
-This is then a post on a simple hello world example of the clipboard class in electron.js, that also serves as a basic getting started type example of electron js application in general also when it comes to things like a preload file that I am suing to create a public API that is used in the front end javaScript code.
+This is then a post on a simple hello world example of the clipboard class in electron.js, that also serves as a basic getting started type example of electron js application in general. Still this is not a [getting started with electron](/2022/02/07/electronjs-hello-world/) type post as I have all ready wrote that one a little while back.
 
 ## 1 - The main javaScript file
 
