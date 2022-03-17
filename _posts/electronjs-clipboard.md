@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 968
-updated: 2022-03-17 16:18:49
-version: 1.17
+updated: 2022-03-17 16:20:02
+version: 1.18
 ---
 
 I still want to write at least a few more posts on electronjs, before moving on to focusing on other topics as that just strokes me as the thing to do if I am going to start a new collection of content on something. Anyway when it comes to making an electron application one of many things that comes to mind is how to go about copying something that might be in the clipboard of an operating system into my electronjs application as well as the inversion of doing so. In other words there must be a way in electron to handle the whole copy and paste thing with text, images, and data in general so that I can move content easily to and from my electron application and other applications. 
@@ -131,7 +131,7 @@ contextBridge.exposeInMainWorld('cbDemoAPI', cbDemoAPI);
 
 ## 4 - The index html file
 
-Now for the front end code where I am attaching an event hander for the action paste event of the API that I am defining in preload.js. When I select the paste option from the edit menu the current text contents of the clipboard will be inserted in the current location of the text area. This project then opened a cam or worms sort of speak when it comes to various features of text area elements that until now I was only somewhat aware of. In the front end code I slapped together this get caret position method that is base off of what I have found in this [post on the topic that was written all the way back in 2005 but still works fine today](/https://www.vishalon.net/blog/javascript-getting-and-setting-caret-position-in-textarea/).
+Now for the front end code where I am attaching an event hander for the action paste event of the API that I am defining in preload.js. When I select the paste option from the edit menu the current text contents of the clipboard will be inserted in the current location of the text area. This project then opened a cam or worms sort of speak when it comes to various features of text area elements that until now I was only somewhat aware of. In the front end code I slapped together this get caret position method that is base off of what I have found in this [post on the topic that was written all the way back in 2005 but still works fine today](https://www.vishalon.net/blog/javascript-getting-and-setting-caret-position-in-textarea/).
 
 When it comes to inserting text I went with a quick solution that just has to do with using the string slice method to create two string parts using the value from the object that is returned by the get caret position function, then I just concatenate.
 
