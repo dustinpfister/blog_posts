@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 968
-updated: 2022-03-17 15:23:37
-version: 1.11
+updated: 2022-03-17 15:25:14
+version: 1.12
 ---
 
 I still want to write at least a few more posts on electronjs, before moving on to focusing on other topics as that just strokes me as the thing to do if I am going to start a new collection of content on something. Anyway when it comes to making an electron application one of many things that comes to mind is how to go about copying something that might be in the clipboard of an operating system into my electronjs application as well as the inversion of doing so. In other words there must be a way in electron to handle the whole copy and paste thing with text, images, and data in general so that I can move content easily to and from my electron application and other applications. 
@@ -103,9 +103,9 @@ const MainMenuTemplate = [
 module.exports = MainMenuTemplate;
 ```
 
-## 3 - preload
+## 3 - The preload  file and the action pase event
 
-Here I have the preload file that I am using to define the API to use in the front end code.
+Here I have the preload file that I am using to define the API to use in the front end code. For this example I just want to define a on method that I can use to attach for the action paste event in my front end code.
 
 ```js
 // preload with contextIsolation enabled
