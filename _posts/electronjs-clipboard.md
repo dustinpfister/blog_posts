@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 968
-updated: 2022-03-15 11:53:28
-version: 1.3
+updated: 2022-03-17 11:08:25
+version: 1.4
 ---
 
 I still want to write at least a few more posts on electronjs, before moving on to focusing on other topics as that just strokes me as the thing to do if I am going to start a new collection of content on something. Anyway when it comes to making an electron application one of many things that comes to mind is how to go about copying something that might be in the clipboard of an operating system into my electronjs application as well as the inversion of doing so. In other ways there must be a way in electron to handle the whole copy and paste thing. With that said there is a clipboard class that can be used as a means to both read and write to the clipboard of the house OS which allows for making use of this common OS feature to transfer some kind of content from one application to another.
@@ -33,7 +33,7 @@ In the menu file I am using the clipboard class to read the contents of the clip
 
 ## 3 - preload
 
-Here I ahve the preload file that I am using to define the API to use in the front end code.
+Here I have the preload file that I am using to define the API to use in the front end code.
 
 ```js
 ```
@@ -46,3 +46,6 @@ Now for the front end code where I am attaching an event hander for the action p
 ```
 
 ## 5 - Conclusion
+
+That will be it for now when it comes to the clipboard class in electron, I just wanted to make a quick getting started type example when it comes to using it and I would say that is what I have together here all ready.
+
