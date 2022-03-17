@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 968
-updated: 2022-03-17 15:30:19
-version: 1.14
+updated: 2022-03-17 15:35:57
+version: 1.15
 ---
 
 I still want to write at least a few more posts on electronjs, before moving on to focusing on other topics as that just strokes me as the thing to do if I am going to start a new collection of content on something. Anyway when it comes to making an electron application one of many things that comes to mind is how to go about copying something that might be in the clipboard of an operating system into my electronjs application as well as the inversion of doing so. In other words there must be a way in electron to handle the whole copy and paste thing with text, images, and data in general so that I can move content easily to and from my electron application and other applications. 
@@ -158,5 +158,7 @@ cbDemoAPI.on('actionPaste', (a, b) => {
 
 ## 5 - Conclusion
 
-That will be it for now when it comes to the clipboard class in electron, I just wanted to make a quick getting started type example when it comes to using it and I would say that is what I have together here all ready. Like all my other posts on this site I might come around to do a little editing at one point or another, but there is still only so much that I would change with this example. The aim was just a simple demo of the clipboard class, not some kind of full application of some kind in which this is just one little element of an over all final product.
+That will be it for now when it comes to the clipboard class in electron, I just wanted to make a quick getting started type example when it comes to using it and I would say that is what I have together here all ready. Like all my other posts on this site I might come around to do a little editing at one point or another, but there is still only so much that I would change with this example. The aim was just a simple demo of the clipboard class, not some kind of full application of some kind in which this is just one little element of an over all final product. When it cokes to an actual product of some kind I have a basic text editor application in the works, but the project that I have put the most time into thus far is my [video application](/2022/03/10/electronjs-example-videoground/) that I have made that uses threejs and vuejs as part of the front end code.
+
+If you enjoyed this post and think you got something out of reading it, you might want to check out [one of my growing list of other posts on electronjs](/categories/electronjs).
 
