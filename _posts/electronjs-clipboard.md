@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 968
-updated: 2022-03-17 15:35:57
-version: 1.15
+updated: 2022-03-17 16:13:08
+version: 1.16
 ---
 
 I still want to write at least a few more posts on electronjs, before moving on to focusing on other topics as that just strokes me as the thing to do if I am going to start a new collection of content on something. Anyway when it comes to making an electron application one of many things that comes to mind is how to go about copying something that might be in the clipboard of an operating system into my electronjs application as well as the inversion of doing so. In other words there must be a way in electron to handle the whole copy and paste thing with text, images, and data in general so that I can move content easily to and from my electron application and other applications. 
@@ -142,14 +142,36 @@ Now for the front end code where I am attaching an event hander for the action p
   </head>
   <body>
       <div>
+        <textarea cols="60" rows="20"></textarea>
       </div>
       <script>
+let text = document.querySelector('textarea');
+ 
+// https://www.vishalon.net/blog/javascript-getting-and-setting-caret-position-in-textarea/
+const getCaretPosition = (ctrl) => {
+    if (ctrl.selectionStart || ctrl.selectionStart == '0') {
+        return {
+            'start': ctrl.selectionStart,
+            'end': ctrl.selectionEnd
+        };
+    } else {
+        return {
+            'start': 0,
+            'end': 0
+        };
+    }
+};
  
 // attach and event for 'actionPaste event'
-cbDemoAPI.on('actionPaste', (a, b) => {
-    console.log('yeah');
-    console.log(a);
-    console.log(b);
+cbDemoAPI.on('actionPaste', (evnt, content) => {
+    
+    let pos = getCaretPosition(text);
+    
+    let a = text.value.slice(0, pos.start),
+    b = text.value.slice(pos.end, text.value.length);
+    let str = a + content + b;
+    text.value = str;
+
 });
       </script>
   </body>
