@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 968
-updated: 2022-03-17 15:28:14
-version: 1.13
+updated: 2022-03-17 15:30:19
+version: 1.14
 ---
 
 I still want to write at least a few more posts on electronjs, before moving on to focusing on other topics as that just strokes me as the thing to do if I am going to start a new collection of content on something. Anyway when it comes to making an electron application one of many things that comes to mind is how to go about copying something that might be in the clipboard of an operating system into my electronjs application as well as the inversion of doing so. In other words there must be a way in electron to handle the whole copy and paste thing with text, images, and data in general so that I can move content easily to and from my electron application and other applications. 
@@ -17,7 +17,7 @@ So with that said of course there is a class for this sort of thing which is the
 
 ## The clipboard class and what to know first
 
-This is then a post on a simple hello world example of the clipboard class in electron.js, that also serves as a basic getting started type example of electron js application in general. Still this is not a [getting started with electron](/2022/02/07/electronjs-hello-world/) type post as I have all ready wrote that one a little while back. I also assume that you know a thing or two when it comes to client side javaScript as well as how to go about working in a nodejs environment, if not the basics of these things are outside the scope of this post.
+This is then a post on a simple hello world example of the clipboard class in electron.js, that also serves as a basic getting started type example of electron js application in general. Still this is not a [getting started with electron](/2022/02/07/electronjs-hello-world/) type post as I have all ready wrote that one a little while back. I also assume that you know a thing or two when it comes to [client side javaScript](/2018/11/27/js-getting-started/) as well as how to go about working in a [nodejs environment](/2017/04/05/nodejs-helloworld/), if not the basics of these things are outside the scope of this post.
 
 ### The full source code and additional notes are up on github.
 
