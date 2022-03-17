@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 968
-updated: 2022-03-17 15:25:14
-version: 1.12
+updated: 2022-03-17 15:28:14
+version: 1.13
 ---
 
 I still want to write at least a few more posts on electronjs, before moving on to focusing on other topics as that just strokes me as the thing to do if I am going to start a new collection of content on something. Anyway when it comes to making an electron application one of many things that comes to mind is how to go about copying something that might be in the clipboard of an operating system into my electronjs application as well as the inversion of doing so. In other words there must be a way in electron to handle the whole copy and paste thing with text, images, and data in general so that I can move content easily to and from my electron application and other applications. 
@@ -103,7 +103,7 @@ const MainMenuTemplate = [
 module.exports = MainMenuTemplate;
 ```
 
-## 3 - The preload  file and the action pase event
+## 3 - The preload  file and the action paste event
 
 Here I have the preload file that I am using to define the API to use in the front end code. For this example I just want to define a on method that I can use to attach for the action paste event in my front end code.
 
@@ -134,9 +134,29 @@ contextBridge.exposeInMainWorld('cbDemoAPI', cbDemoAPI);
 Now for the front end code where I am attaching an event hander for the action paste event of the API that I am defining in preload.js
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>ClipBoard class example</title>
+  </head>
+  <body>
+      <div>
+      </div>
+      <script>
+ 
+// attach and event for 'actionPaste event'
+cbDemoAPI.on('actionPaste', (a, b) => {
+    console.log('yeah');
+    console.log(a);
+    console.log(b);
+});
+      </script>
+  </body>
+</html>
 ```
 
 ## 5 - Conclusion
 
-That will be it for now when it comes to the clipboard class in electron, I just wanted to make a quick getting started type example when it comes to using it and I would say that is what I have together here all ready.
+That will be it for now when it comes to the clipboard class in electron, I just wanted to make a quick getting started type example when it comes to using it and I would say that is what I have together here all ready. Like all my other posts on this site I might come around to do a little editing at one point or another, but there is still only so much that I would change with this example. The aim was just a simple demo of the clipboard class, not some kind of full application of some kind in which this is just one little element of an over all final product.
 
