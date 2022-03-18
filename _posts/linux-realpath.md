@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 969
-updated: 2022-03-18 13:06:08
-version: 1.14
+updated: 2022-03-18 13:08:13
+version: 1.15
 ---
 
 When writing a [bash script](/2020/11/27/linux-bash-script/) or two I will often want to resolve a relative path to an absolute one. For this kind of task there is using the Linux dirname command to get a folder from a path that might contain a file in the path string, but the resulting path might end up being a relative path rather than and absolute one, so then there is piping that result to an additional command called the [Linux realpath command](https://linux.die.net/man/1/realpath). 
@@ -81,4 +81,4 @@ echo $0
 
 ## 4 - Conclusion
 
-That will be it for now then, I just wanted to write a quick post on the use of the realpath command for the sake of helping me to remember that there is this command to work with when it comes to the common and typical task when writing bash scripts. When it comes to other hight level programing environments there are often similar modules and libraries to work with many of which are built into the binary that is used to run the script. This is the case when it comes to nodejs with respect to the built in path module, which would be anther option when it comes to this sort of thing, however that is assuming that nodejs is installed in the os image
+That will be it for now then, I just wanted to write a quick post on the use of the realpath command for the sake of helping me to remember that there is this command to work with when it comes to the common and typical task when writing bash scripts. When it comes to other hight level programing environments there are often similar modules and libraries to work with many of which are built into the binary that is used to run the script. This is the case when it comes to [nodejs with respect to the built in path module](/2017/12/27/nodejs-paths), mainly there is the [resolve method of the path module](/2020/04/07/nodejs-path-resolve/) that is of interest here, which would be anther option when it comes to this sort of thing, however that is assuming that nodejs is installed in the os image
