@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2021-09-16 14:42:23
-version: 1.14
+updated: 2022-03-18 12:51:56
+version: 1.15
 ---
 
 This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quickly cover the topic of positional parameters. What this means is the arguments that are given when the bash script is called from the command line, or another bash script. For example if I call the [Linux ls](/2020/10/14/linux-ls/) command with the -l option, then the -l option can be thought of as a positional parameter. In nodejs for example these kinds of positional parameters, or arguments if you prefer can be obtained from the [process global](/2018/02/11/nodejs-process) in nodejs.
@@ -80,7 +80,7 @@ $ bash -c "./basic.sh 1 2"
 ./basic.sh - 1 - 2
 ```
 
-Here I am calling the bash command first and then using the c option that will make bash run the following string as a command. This then means that when a bash script is called there is yet another set of parameters to be aware of. There are the positionals, then the special parameters, and then there are the parameters of the bash command itself. This is why it is important to refer to positionals as such, to help elemnate confusion with all these other sets of parameters that are at play.
+Here I am calling the bash command first and then using the c option that will make bash run the following string as a command. This then means that when a bash script is called there is yet another set of parameters to be aware of. There are the positionals, then the special parameters, and then there are the parameters of the bash command itself. This is why it is important to refer to positionals as such, to help eliminate confusion with all these other sets of parameters that are at play.
 
 So then lets look at a few more examples of bash script parameters in general now.
 
