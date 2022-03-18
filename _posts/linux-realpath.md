@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 969
-updated: 2022-03-18 12:14:02
-version: 1.6
+updated: 2022-03-18 12:15:55
+version: 1.7
 ---
 
 When writing a [bash script](/2020/11/27/linux-bash-script/) or two I will often want to resolve a relative path to an absolute one. For this kind of task there is using the Linux dirname command to get a folder from a path that might contain a file in the path string, but the resulting path might end up being a relative path rather than and absolute one, so then there is piping that result to an additional command called the [Linux realpath command](https://linux.die.net/man/1/realpath). 
@@ -30,7 +30,7 @@ Simple enough, but what if I just want the folder to that file, or just the file
 
 ## 2 - bash script example
 
-Now for a simple bash script example that makes use of the various commands to see what happens when I feed each of them the relative path of ".".
+Now for a simple bash script example that makes use of the various commands to see what happens when I feed each of them the relative path of ".". For path scripts I have found that it might not be required to use a shebang at the top of the file, but I still think it is a good practice to do so in order to make it clear that this is a bash script rather than some other kind of script that might be called directly from the command line.
 
 ```
 #!/bin/bash
