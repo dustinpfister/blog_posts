@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 642
-updated: 2022-03-18 13:11:03
-version: 1.8
+updated: 2022-03-18 13:15:26
+version: 1.9
 ---
 
 In nodejs there is the [path module](/2017/12/27/nodejs-paths/) and the [resolve method](https://nodejs.org/api/path.html#path_path_resolve_paths) of that module than can be used to resolve a relative path to an absolute path. A relative path can be a string representation of the current working directory, or to some other path that is relative to an assumed starting point. It is generally a good idea to think more so in terms of absolute paths to things rather than relative ones to help eliminate confusion, and as such I generally use absolute paths unless for some reason I must use relative ones.
@@ -49,4 +49,6 @@ In many nodejs projects it is important to have a string grasp as to the differe
 
 ## 3 - Conclusion
 
-So the path resolve method is the standard go to method for making sure that a string value of a path resolves to an absolute path. There is much more to writ about when it comes to things that have to do with paths and nodejs though. For example there is looping backward one folder at a time from the current working directory looking for something to find out of the current working directory is a git folder or not. That of course is a matter for another post though.
+So the path resolve method is the standard go to method for making sure that a string value of a path resolves to an absolute path. There is much more to write about when it comes to things that have to do with paths and nodejs though. For example there is looping backward one folder at a time from the current working directory looking for something to find out of the current working directory is a git folder or not.
+
+There is also how to go about resolving paths in other programing environments as well, for example when writing a bash script that will run in an environment in which nodejs might nit be installed I will want to know how to resolve paths in that kind of environment. With that said in bash there is often the [realpath command](/2022/03/18/linux-realpath/) that can typically be used to resolve an relative path into an absolute one in that kind of environment.
