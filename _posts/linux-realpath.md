@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 969
-updated: 2022-03-18 13:00:27
-version: 1.12
+updated: 2022-03-18 13:02:07
+version: 1.13
 ---
 
 When writing a [bash script](/2020/11/27/linux-bash-script/) or two I will often want to resolve a relative path to an absolute one. For this kind of task there is using the Linux dirname command to get a folder from a path that might contain a file in the path string, but the resulting path might end up being a relative path rather than and absolute one, so then there is piping that result to an additional command called the [Linux realpath command](https://linux.die.net/man/1/realpath). 
@@ -63,7 +63,7 @@ Now that I have some basic examples out of the way when it comes to using the re
 
 Getting the current working directory is simple enough as I can just use the pwd command, but getting the script path might require a little legwork. When it comes to [positional parameters](/2020/12/10/linux-bash-script-parameters-positional/) the very first positional should be the path to the current script when calling a bash script directly that has been made executable. The path however might be relative though, and on top of that it will contain the file name of the script also. So then I will want to use the dirname command to just get a folder name, and then also use the relpath command if I want an absolute path. 
 
-So for this bash script example I am creating a variable called dir\_script that will be the absolute path to the current script. I am using command substitution to call the dirname command as passing it the value of the first positional argument, then I am [piping that result](/2020/10/09/linux-pipe/) to the [xargs command](/2020/09/26/linux-xargs/) that I am using the realpath so that the piped in result of dirname is used to realpath. 
+So for this bash script example I am creating a variable called dir\_script that will be the absolute path to the current script. I am using command substitution to call the dirname command as passing it the value of the first positional argument, then I am [piping that result](/2020/10/09/linux-pipe/) to the [xargs command](/2020/09/26/linux-xargs/) that I am using the realpath so that the piped in result of dirname is used to realpath. The end result is then an absolute path to the folder that contains the script that I can then use as a base path for anything else that I might want from that location, such as additional scripts or other assets related to the use of the bash script.
 
 ```
 #!/bin/bash
