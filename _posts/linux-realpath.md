@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 969
-updated: 2022-03-18 12:09:10
-version: 1.5
+updated: 2022-03-18 12:14:02
+version: 1.6
 ---
 
 When writing a [bash script](/2020/11/27/linux-bash-script/) or two I will often want to resolve a relative path to an absolute one. For this kind of task there is using the Linux dirname command to get a folder from a path that might contain a file in the path string, but the resulting path might end up being a relative path rather than and absolute one, so then there is piping that result to an additional command called the [Linux realpath command](https://linux.die.net/man/1/realpath). 
@@ -30,6 +30,8 @@ Simple enough, but what if I just want the folder to that file, or just the file
 
 ## 2 - bash script example
 
+Now for a simple bash script example that makes use of the various commands to see what happens when I feed each of them the relative path of ".".
+
 ```
 #!/bin/bash
  
@@ -44,6 +46,14 @@ echo "dirname: $( dirname . )";      # .
 echo "realpath: $( realpath . )";    # /usr/lib/locale
 echo -e "**********\n";
 ```
+
+If you are new to writing bash scripts, then just save the above bash code as something like s2-bash.sh in your home folder. Then open up a terminal window to the folder that contains the script and use chmod to make the script executable. After that the script ca be called directly without having to call the bash command first.
+
+```
+$ chmod 777 s2-bash.sh
+./s2-bash.sh
+```
+
 
 ## 3 - Get path to script with dirname, xargs, and realpath
 
