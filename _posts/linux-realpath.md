@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 969
-updated: 2022-03-18 12:22:41
-version: 1.9
+updated: 2022-03-18 12:51:56
+version: 1.10
 ---
 
 When writing a [bash script](/2020/11/27/linux-bash-script/) or two I will often want to resolve a relative path to an absolute one. For this kind of task there is using the Linux dirname command to get a folder from a path that might contain a file in the path string, but the resulting path might end up being a relative path rather than and absolute one, so then there is piping that result to an additional command called the [Linux realpath command](https://linux.die.net/man/1/realpath). 
@@ -59,7 +59,9 @@ $ chmod 777 s2-bash.sh
 
 ## 3 - Get path to script with dirname, xargs, and realpath
 
-Now that I have some basic examples out of the way when it comes to using the realpath command and writing a basic bash script I am now going to want to make at least one if not more basic bash script examples here.
+Now that I have some basic examples out of the way when it comes to using the realpath command and writing a basic bash script I am now going to want to make at least one if not more basic bash script examples here. With that said when making a bash script I will often want to know what the current working path is, but I might also want to know what the path is that contains the script that is running. Often these two paths might be the same, but in some cases they are not so I need a way to get this value. 
+
+Getting the current working directory is simple enough as I can just use the pwd command, but getting the script path might require a little legwork. When it comes to spheshal paramaters 
 
 ```
 #!/bin/bash
