@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 642
-updated: 2020-04-14 16:12:21
-version: 1.7
+updated: 2022-03-18 13:11:03
+version: 1.8
 ---
 
-In nodejs there is the path module and the [resolve method](https://nodejs.org/api/path.html#path_path_resolve_paths) of that module than can be used to resolve a relative path to an absolute path. A relative path can be a string representation of the current working directory, or to some other relative path to a resource. It is generally a god idea to think more so in terms of absolute paths to things rather than relative ones to help eliminate confusion.
+In nodejs there is the [path module](/2017/12/27/nodejs-paths/) and the [resolve method](https://nodejs.org/api/path.html#path_path_resolve_paths) of that module than can be used to resolve a relative path to an absolute path. A relative path can be a string representation of the current working directory, or to some other path that is relative to an assumed starting point. It is generally a good idea to think more so in terms of absolute paths to things rather than relative ones to help eliminate confusion, and as such I generally use absolute paths unless for some reason I must use relative ones.
 
 <!-- more -->
 
