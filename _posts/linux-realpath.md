@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 969
-updated: 2022-03-18 12:51:56
-version: 1.10
+updated: 2022-03-18 12:58:58
+version: 1.11
 ---
 
 When writing a [bash script](/2020/11/27/linux-bash-script/) or two I will often want to resolve a relative path to an absolute one. For this kind of task there is using the Linux dirname command to get a folder from a path that might contain a file in the path string, but the resulting path might end up being a relative path rather than and absolute one, so then there is piping that result to an additional command called the [Linux realpath command](https://linux.die.net/man/1/realpath). 
@@ -61,7 +61,9 @@ $ chmod 777 s2-bash.sh
 
 Now that I have some basic examples out of the way when it comes to using the realpath command and writing a basic bash script I am now going to want to make at least one if not more basic bash script examples here. With that said when making a bash script I will often want to know what the current working path is, but I might also want to know what the path is that contains the script that is running. Often these two paths might be the same, but in some cases they are not so I need a way to get this value. 
 
-Getting the current working directory is simple enough as I can just use the pwd command, but getting the script path might require a little legwork. When it comes to spheshal paramaters 
+Getting the current working directory is simple enough as I can just use the pwd command, but getting the script path might require a little legwork. When it comes to [positional parameters](/2020/12/10/linux-bash-script-parameters-positional/) the very first positional should be the path to the current script when calling a bash script directly that has been made executable. The path however might be relative though, and on top of that it will contain the file name of the script also. So then I will want to use the dirname command to just get a folder name, and then also use the relpath command if I want an absolute path. 
+
+So for this bash script example I am creating a variable called dir\_script that will be the absolute path to the current script. I am using command substitution to call the dirname command as passing it the value of the first positional argument, then I am piping that result to the [xargs command](/2020/09/26/linux-xargs/). 
 
 ```
 #!/bin/bash
