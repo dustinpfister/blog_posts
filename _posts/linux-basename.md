@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 905
-updated: 2022-03-18 13:17:59
-version: 1.20
+updated: 2022-03-18 13:23:34
+version: 1.21
 ---
 
 When working out a bash script I might want to get just the base name of a path to a file or folder, one way to do so might be to use the [linux cut](/2020/11/19/linux-cut/) command, but there is also the [linux basename](https://www.geeksforgeeks.org/basename-command-in-linux-with-examples/) command that can be used for this task. The command works by passing a single argument to the command that should be a string value of a path to a file, the result that will be spit out to the standard output will then just be the base name of the path. 
@@ -15,6 +15,14 @@ So then this basename command is a fairly basic command, but when it comes to wr
 
 
 <!-- more -->
+
+## The basename command and what to know first
+
+This is a post on the use of the basename command, and many other relevant topics that branch off from that command. This is not a getting started type post with Linux and bash in general though, so I assume that you have at least a little experience thus far when it comes to working with bash and a terminal window. In any case in this section I will be going over a few key points about basename, and other things that you might want to be aware of before reading the rest of this post.
+
+### There is also dirname, and realpath
+
+On top of the basename command there is also the dirname command, and the [realpath command](/2022/03/18/linux-realpath/). The basename command is what I will want to use to just get a file name of a path, or the top most folder name. When it comes to getting the containing folder name of a path I would want to use the dirname, and to resolve a relative path to an absolute one I would want to use realpath.
 
 ## 1 - Basic example of the Linux basename command
 
