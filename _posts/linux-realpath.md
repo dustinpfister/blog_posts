@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 969
-updated: 2022-03-19 10:53:54
-version: 1.17
+updated: 2022-03-19 10:58:50
+version: 1.18
 ---
 
 When writing a [bash script](/2020/11/27/linux-bash-script/) or two I will often want to resolve a relative path to an absolute one. For this kind of task there is using the Linux dirname command to get a folder from a path that might contain a file in the path string, but the resulting path might end up being a relative path rather than and absolute one, so then there is piping that result to an additional command called the [Linux realpath command](https://linux.die.net/man/1/realpath). 
@@ -18,7 +18,7 @@ In some cases I might also want to get the filename also when working with paths
 
 ## - The realpath command and what to know before hand
 
-This is a post on the realpath command that can be used to resolve a relative path to an absolute path in an environment that has this to work with such as Linux. There is onoy so much to write about when it comes to this command alone, as such much of this post also has to do with various other aspects of bash and a typical Linux environment.
+This is a post on the realpath command that can be used to resolve a relative path to an absolute path in an environment that has this to work with such as Linux. There is only so much to write about when it comes to this command alone, as such much of this post also has to do with various other aspects of bash and a typical Linux environment.
 
 ### - The bash code examples used in this post are on Github
 
