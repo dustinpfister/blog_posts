@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 969
-updated: 2022-03-19 09:42:27
-version: 1.16
+updated: 2022-03-19 10:53:54
+version: 1.17
 ---
 
 When writing a [bash script](/2020/11/27/linux-bash-script/) or two I will often want to resolve a relative path to an absolute one. For this kind of task there is using the Linux dirname command to get a folder from a path that might contain a file in the path string, but the resulting path might end up being a relative path rather than and absolute one, so then there is piping that result to an additional command called the [Linux realpath command](https://linux.die.net/man/1/realpath). 
@@ -16,7 +16,11 @@ In some cases I might also want to get the filename also when working with paths
 
 <!-- more -->
 
-## - The bash code examples used in this post are on Github
+## - The realpath command and what to know before hand
+
+This is a post on the realpath command that can be used to resolve a relative path to an absolute path in an environment that has this to work with such as Linux. There is onoy so much to write about when it comes to this command alone, as such much of this post also has to do with various other aspects of bash and a typical Linux environment.
+
+### - The bash code examples used in this post are on Github
 
 I have bash script examples for this post up on my [demos linux github repository](https://github.com/dustinpfister/demos_linux/tree/master/forpost/linux-realpath).
 
@@ -32,7 +36,7 @@ $ realpath ./.bashrc
 
 Simple enough, but what if I just want the folder to that file, or just the filename? Well the realpath command is just one tool in the toolbox of commands such as this, other note worthy commands that are also relevant here are dirname, and basename. There is also knowing how to use many of the other features in bash such as piping and parameter expansion to preform various other tasks that are needed to do what is often needed. So lets look at a few more example of this kind of command, and some bash script examples.
 
-## 2 - bash script example
+## 2 - A basic bash script example
 
 Now for a simple bash script example that makes use of the various commands to see what happens when I feed each of them the relative path of ".". For path scripts I have found that it might not be required to use a shebang at the top of the file, but I still think it is a good practice to do so in order to make it clear that this is a bash script rather than some other kind of script that might be called directly from the command line.
 
