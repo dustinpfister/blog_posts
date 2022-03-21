@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 970
-updated: 2022-03-21 15:22:17
-version: 1.7
+updated: 2022-03-21 15:27:02
+version: 1.8
 ---
 
 For todays post on electronjs I will be going over a quick example of the [send method of the webContents object](https://www.electronjs.org/docs/latest/api/web-contents#contentssendchannel-args) of a [browser window object](/2022/02/14/electronjs-browser-window/) instance. The reason why I am writing a post on this is because even though I have only wrote a [few example of electronjs thus far](/categories/electronjs/) I can all ready see that this will be a feature that I will be using with a lot of future projects.
@@ -18,6 +18,8 @@ The general idea here is that the send method is a way to go about emitting an e
 ## The send method of the webContents object and what to know first
 
 In this post I am going over the source code of a simple electronjs application in which I am using the send method of a webContents object to emit and event that is fired when a custom option is selected in a custom menu. I intend to keep the example in this post fairly simple, but I am still operating under the assumption that you have at least some basic working knowledge of javaScript, both client side and ever side along with various other skills that are required before hand.
+
+If you are still fairly new to javaScript you might want to take a step back and read a [getting started with javaScript in general](/2018/11/27/js-getting-started/) post. There is also learning how to work with [nodejs by itself](/2017/04/05/nodejs-helloworld/) also outside of electronjs which is also something that should be done at least a little to gain a better understand of what there is to work with in nodejs alone.
 
 ### The source code example here is on Github
 
