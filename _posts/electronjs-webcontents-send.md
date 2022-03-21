@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 970
-updated: 2022-03-21 15:17:46
-version: 1.5
+updated: 2022-03-21 15:19:12
+version: 1.6
 ---
 
 For todays post on electronjs I will be going over a quick example of the [send method of the webContents object](https://www.electronjs.org/docs/latest/api/web-contents#contentssendchannel-args) of a [browser window object](/2022/02/14/electronjs-browser-window/) instance. The reason why I am writing a post on this is because even though I have only wrote a [few example of electronjs thus far](/categories/electronjs/) I can all ready see that this will be a feature that I will be using with a lot of future projects.
@@ -19,11 +19,11 @@ The general idea here is that the send method is a way to go about emitting an e
 
 ### The source code example here is on Github
 
-The source code example that I am writing about here is on Github along with any additional assets that I might be using for this example. I also have all the source code examples for my various other posts on electronjs thus far located in the same repository.
+The [source code example that I am writing about here is on Github](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-webcontents-send) along with any additional assets that I might be using for this example. I also have all the source code examples for my various other posts on electronjs thus far located in the same repository.
 
 ## 1 - The main javaScript file
 
-So then in the root location of the project folder I have a main.js file, as with just about any other electronjs project. It is in this main javaScript file that I will be calling the send method of the webContents object of the mian browser window object.
+So then in the root location of the project folder I have a main.js file, as with just about any other electronjs project. It is in this main javaScript file that I will be calling the send method of the webContents object of the main browser window object.
 
 ```js
 // load app and BrowserWindow
