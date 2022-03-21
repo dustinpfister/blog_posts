@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 970
-updated: 2022-03-21 15:15:12
-version: 1.4
+updated: 2022-03-21 15:17:46
+version: 1.5
 ---
 
 For todays post on electronjs I will be going over a quick example of the [send method of the webContents object](https://www.electronjs.org/docs/latest/api/web-contents#contentssendchannel-args) of a [browser window object](/2022/02/14/electronjs-browser-window/) instance. The reason why I am writing a post on this is because even though I have only wrote a [few example of electronjs thus far](/categories/electronjs/) I can all ready see that this will be a feature that I will be using with a lot of future projects.
@@ -14,6 +14,12 @@ For todays post on electronjs I will be going over a quick example of the [send 
 The general idea here is that the send method is a way to go about emitting an event for a render process, and so my attaching an event hander for a method that I define in my preload script, it can be used as a way to replay to a custom menu option in the browser window. Speaking of preload scripts, and custom menus, this example will also be a good starting point for these things, however this is still not a [getting started with electron type post](/2022/02/07/electronjs-hello-world/) as I have wrote that one all ready.
 
 <!-- more -->
+
+## The send method of the webContents object and what to know first
+
+### The source code example here is on Github
+
+The source code example that I am writing about here is on Github along with any additional assets that I might be using for this example. I also have all the source code examples for my various other posts on electronjs thus far located in the same repository.
 
 ## 1 - The main javaScript file
 
