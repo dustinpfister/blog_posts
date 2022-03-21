@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 970
-updated: 2022-03-21 15:09:19
-version: 1.2
+updated: 2022-03-21 15:11:19
+version: 1.3
 ---
 
 For todays post on electronjs I will be going over a quick example of the [send method of the webContents object](https://www.electronjs.org/docs/latest/api/web-contents#contentssendchannel-args) of a [browser window object](/2022/02/14/electronjs-browser-window/) instance. The reason why I am writing a post on this is because even though I have only wrote a [few example of electronjs thus far](/categories/electronjs/) I can all ready see that this will be a feature that I will be using with a lot of future projects.
@@ -16,6 +16,8 @@ The general idea here is that the send method is a way to go about emitting an e
 <!-- more -->
 
 ## 1 - The main javaScript file
+
+So then in the root location of the project folder I have a main.js file, as with just about any other electronjs project. It is in this main javaScript file that I will be calling the send method of the webContents object of the mian browser window object.
 
 ```js
 // load app and BrowserWindow
