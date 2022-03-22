@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 970
-updated: 2022-03-22 11:53:35
-version: 1.13
+updated: 2022-03-22 12:52:43
+version: 1.14
 ---
 
 For todays post on electronjs I will be going over a quick example of the [send method of the webContents object](https://www.electronjs.org/docs/latest/api/web-contents#contentssendchannel-args) of a [browser window object](/2022/02/14/electronjs-browser-window/) instance. The reason why I am writing a post on this is because even though I have only wrote a [few example of electronjs thus far](/categories/electronjs/) I can all ready see that this will be a feature that I will be using with a lot of future projects.
@@ -186,7 +186,7 @@ API.on('infoOS', (event, osObj) => {
 </html>
 ```
 
-With the hard coded html the main element of interest is just the text area element that I am just using as a way to dump the results that are obtained when selecting one of the options in the info menu of the browser window. After that I have just a single script tag in which I have some javaScript code in which I am attaching for those events that I have mentioned in the preload javaScript file.
+With the hard coded html the main element of interest is just the text area element that I am just using as a way to dump the results that are obtained when selecting one of the options in the info menu of the browser window. After that I have just a single script tag in which I have some javaScript code in which I am attaching for those events that I have mentioned in the preload javaScript file. With that said each time one of them fire the content of the text area element will update with the value of the object that is returned that I can use in the body of the callback functions given when attaching for the events. I can then use the json stringify method to convert the objects to a string format of them for the text content of the textarea element.
 
 ## 4 - Conclusion
 
