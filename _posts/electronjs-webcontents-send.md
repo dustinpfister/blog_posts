@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 970
-updated: 2022-03-21 15:29:09
-version: 1.9
+updated: 2022-03-22 11:42:28
+version: 1.10
 ---
 
 For todays post on electronjs I will be going over a quick example of the [send method of the webContents object](https://www.electronjs.org/docs/latest/api/web-contents#contentssendchannel-args) of a [browser window object](/2022/02/14/electronjs-browser-window/) instance. The reason why I am writing a post on this is because even though I have only wrote a [few example of electronjs thus far](/categories/electronjs/) I can all ready see that this will be a feature that I will be using with a lot of future projects.
@@ -103,7 +103,7 @@ app.on('window-all-closed', function () {
 
 ## 2 - The preload javaScript file
 
-Here I then have the preload script in which I am defining what to do when the infoPkg or infoOS events are emitted in the main javaScript file.
+Here I then have the preload script in which I am defining what to do when the infoPkg or infoOS events are emitted in the main javaScript file. If you are still somewhat new to electronjs this preload file is a way to go about defining some methods to use in the client side javaScript code of the over all application. So for this example I am creating an API called just simply API that you will see me using later on in the index html file later in this post.
 
 ```js
 const { contextBridge, ipcRenderer} = require('electron');
