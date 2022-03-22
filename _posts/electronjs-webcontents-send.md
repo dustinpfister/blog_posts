@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 970
-updated: 2022-03-22 11:49:18
-version: 1.12
+updated: 2022-03-22 11:53:35
+version: 1.13
 ---
 
 For todays post on electronjs I will be going over a quick example of the [send method of the webContents object](https://www.electronjs.org/docs/latest/api/web-contents#contentssendchannel-args) of a [browser window object](/2022/02/14/electronjs-browser-window/) instance. The reason why I am writing a post on this is because even though I have only wrote a [few example of electronjs thus far](/categories/electronjs/) I can all ready see that this will be a feature that I will be using with a lot of future projects.
@@ -142,7 +142,7 @@ contextBridge.exposeInMainWorld('API', API);
 
 ## 3 - The index html file
 
-Now for that main index html file that I am loading in the main javaScript file when creating the main browser window instance of the application example. For this example I am doing everything in a single html file, I am doing this for the sake of trying to keep things more easy to follow, but in a real project you might and to break things down more, and also not use inline scripting.
+Now for that main index html file that I am loading in the main javaScript file when creating the main browser window instance of the application example. For this example I am doing everything in a single html file, I am doing this for the sake of trying to keep things more easy to follow, but in a real project you might and to break things down more, and also not use in-line scripting.
 
 ```html
 <!DOCTYPE html>
@@ -185,6 +185,8 @@ API.on('infoOS', (event, osObj) => {
   </body>
 </html>
 ```
+
+With the hard coded html the main element of interest is just the text area element that I am just using as a way to dump the results that are obtained when selecting one of the options in the info menu of the browser window. After that I have just a single script tag in which I have some javaScript code in which I am attaching for those events that I have mentioned in the preload javaScript file.
 
 ## 4 - Conclusion
 
