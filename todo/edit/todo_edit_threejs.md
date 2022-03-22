@@ -17,6 +17,7 @@
 
 ### ( ) - threejs-fog
 * look into a custom fog method with a height argument
+* link to videoground video
 
 ### () - threejs-spotlights
 * expand more on new sections
