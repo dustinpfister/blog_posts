@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2022-03-23 12:28:38
-version: 1.4
+updated: 2022-03-23 12:29:47
+version: 1.5
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -94,6 +94,8 @@ The copy method of the Vector 3 class allows for me to copy the values of one in
 ```
 
 ## 3 - Translate, normalize and scalar
+
+One additional method that I might also pull into the mix is the add method that can be used to translate from a set point.
 
 ```js
 (function () {
