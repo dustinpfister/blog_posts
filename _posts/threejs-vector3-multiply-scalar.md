@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2022-03-23 12:07:45
-version: 1.1
+updated: 2022-03-23 12:15:18
+version: 1.2
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the multiply scalar method which will be the main focal point of this post today.
@@ -15,6 +15,8 @@ One major part of doing anything interesting with threejs is learning how to go 
 
 
 ## 1 - Basic Vector3 multiply scalar example
+
+For a basic example of this multiply scalar method there is starting out with just using the typical set method to set an initial length for the vector that is greater than 0. Once I have a non zero length for the vector I can then use the multiply scalar method to multiply that length by any desired value that I give as the first argument when calling the multiply scalar method.
 
 ```js
 (function () {
