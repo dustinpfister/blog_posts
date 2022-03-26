@@ -5,11 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-26 11:35:19
-version: 1.1
+updated: 2022-03-26 11:58:41
+version: 1.2
 ---
 
-I like working with raspberry pis, not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. Anyway when it comes to using a raspberry pi in genera I often find myself re-imaging sd cards a lot, and each time I do so I need to setup everything the way that I want it. I have to set a background image that pertains to a certain use case for the os image of the sd card so I know right away what kind of setup I am dealing with for example, but there are many other little things that I like to adjust each time also. For example changing the value of the \$PS1 variable in a bashrc file so I have a custom command prompt each time I open a new terminal window because I do not like the default one with a clean raspberry pi os install.
+I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
+
+Anyway when it comes to using a Raspberry PI in general I often find myself re-imaging sd cards a lot, and each time I do so I need to setup everything the way that I want it again which can get a bit annoying. I have to set a background image that pertains to a certain use case for the OS image of the sd card so I know right away what kind of setup I am dealing with for example. That is that I like to have a single background image, or set of background images that I would want to have on the screen to let me know that the current sd card that I am using is an OS image that is setup for getting work done rather than doing something fun, or experimental. Another thing that I often like to change is the value of the \$PS1 variable that is set in a bashrc file, so I have a custom command prompt each time I open a new terminal window as I do not like the default one with a clean Raspberry PI OS install.
 
 <!-- more -->
 
