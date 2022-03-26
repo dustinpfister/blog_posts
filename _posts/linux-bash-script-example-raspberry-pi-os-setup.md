@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-26 12:02:25
-version: 1.3
+updated: 2022-03-26 12:08:55
+version: 1.4
 ---
 
 I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
@@ -19,10 +19,12 @@ In this post then I will be going over some bash scripts that have to do with a 
 
 ## 1 - The main setup.sh script
 
+This is the state of the main setup.sh script that I have at the root of the project folder which I would call in order to run the full setup process. When calling the setup script from the command line the first argument that I give is the setup type which I default to 'work'. The other options are 'exper' which means experimental as in setting up and OS image to try something out that might end up messing up the OS image such as building and installing custom software, and 'play' which means installing software like [retroarch](https://en.wikipedia.org/wiki/RetroArch).
+
 ```
 #!/bin/bash
 
-# What kind of setup? options are work, experiment, and play
+# What kind of setup? options are 'work', 'exper', and 'play'
 setup_type=${1:-work};
 dir_script=$(dirname $0 | xargs realpath);
 dir_home=$(echo $HOME);
