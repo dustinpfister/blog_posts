@@ -1,12 +1,12 @@
 ---
 title: Linux Bashrc file command aliases
-date: 2020-11-30 12:409:00
+date: 2020-11-30 12:49:00
 tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2020-11-30 16:52:56
-version: 1.11
+updated: 2022-03-26 13:05:41
+version: 1.12
 ---
 
 In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some [bash aliases](https://opensource.com/article/19/7/bash-aliases) for commands.
