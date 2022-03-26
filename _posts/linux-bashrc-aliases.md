@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2022-03-26 13:15:46
-version: 1.13
+updated: 2022-03-26 13:18:30
+version: 1.14
 ---
 
 In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some [bash aliases](https://opensource.com/article/19/7/bash-aliases) for commands.
@@ -19,9 +19,9 @@ I can also make it so an alias is a call to a bash script, and from there I can 
 
 ## 1 - First off the ~/.bashrc file
 
-First off in the home folder of the current user there should be a hidden .bashrc file, if not one should be written however at least some care should be taken when doing so. having such a file will override any system wide files for what is going on so they should be looked at as a way to know how to get started with such a file at a user level.
+First off in the home folder of the current user there should be a hidden .bashrc file, if not one should be written however at least some care should be taken when doing so. Having such a file will override any system wide files for what is going on so they should be looked at as a way to know how to get started with such a file at a user level.
 
-In any case if the file is there it would be a good idea to start out by taking a look at it.
+In any case if the file is there it would be a good idea to start out by taking a look at it. So there is starting out by using the [Linux cd](/2021/02/10/linux-cd/) command to change the current working directory to the home folder, and using [Linux cat](/2020/11/11/linux-cat/) to print the contents of the file to the standard output of a terminal.
 
 ```
 $ cd ~
