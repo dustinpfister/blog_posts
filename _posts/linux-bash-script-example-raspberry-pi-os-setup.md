@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-26 12:16:15
-version: 1.6
+updated: 2022-03-26 12:25:47
+version: 1.7
 ---
 
 I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
@@ -49,7 +49,7 @@ echo -e "\n"
 
 This is the part script that has to do with copying over a background image that is in the project folder, over to the home folder location. On top of that the only other thing this script does is also set that image that gets copied over to the current desktop background image, and also set any other additional values such as the wallpaper mode such as 'center' or 'fit'.
 
-Copying over the image file from the project folder to a home folder location is simple enough I just need to use the Linux cp command to do so and there is not much to wrote about when it comes to using that one. I just need to have the path to the source image as the first argument, and then the location to copy to as the second argument. Things might just get a little tricky when it comes to setting the image that is copied to the home folder as the background image from the command line. In Raspberry PI OS the pcmanfm command is what I can use to set that image as the wallpaper, while I am at it I can also use this command to set the wallpaper mode as well. There are a few options for this, but for my set of setup scripts I just went with fit mode.
+Copying over the image file from the project folder to a home folder location is simple enough I just need to use the Linux cp command to do so and there is not much to wrote about when it comes to using that one. I just need to have the path to the source image as the first argument, and then the location to copy to as the second argument. Things might just get a little tricky when it comes to setting the image that is copied to the home folder as the background image from the command line. In Raspberry PI OS the [pcmanfm command](https://manpages.debian.org/testing/pcmanfm/pcmanfm.1.en.html) is what I can use to set that image as the wallpaper, while I am at it I can also use this command to set the wallpaper mode as well. There are a few options for this, but for my set of setup scripts I just went with fit mode. The main options for pcmanfm are --set-wallpaper which is what to use to set the location of a file to use for the wallpaper, and then there is also the --wallpaper-mode option to set the mode to something like the 'fit' mode.
 
 
 
