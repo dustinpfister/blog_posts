@@ -5,13 +5,15 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-26 11:58:41
-version: 1.2
+updated: 2022-03-26 12:02:25
+version: 1.3
 ---
 
 I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
 
 Anyway when it comes to using a Raspberry PI in general I often find myself re-imaging sd cards a lot, and each time I do so I need to setup everything the way that I want it again which can get a bit annoying. I have to set a background image that pertains to a certain use case for the OS image of the sd card so I know right away what kind of setup I am dealing with for example. That is that I like to have a single background image, or set of background images that I would want to have on the screen to let me know that the current sd card that I am using is an OS image that is setup for getting work done rather than doing something fun, or experimental. Another thing that I often like to change is the value of the \$PS1 variable that is set in a bashrc file, so I have a custom command prompt each time I open a new terminal window as I do not like the default one with a clean Raspberry PI OS install.
+
+In this post then I will be going over some bash scripts that have to do with a setup script that will automate this process of setting up a new sd card just the way that I like it. There is a main setup.sh file that can be called that will run over each part script that preforms some kind of task such as copying over and setting a background image, or backing up and creating a custom bashrc file at the home path. However if I do things the way I that they should be done each part script should also work on its own if I just want to do one little thing in this collection of setup scripts.
 
 <!-- more -->
 
