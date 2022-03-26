@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-26 12:27:59
-version: 1.8
+updated: 2022-03-26 12:41:32
+version: 1.9
 ---
 
 I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
@@ -82,7 +82,7 @@ pcmanfm --set-wallpaper="/home/pi/Pictures/rpi-bg.png" --wallpaper-mode="fit"
 
 ## 2.2 - The basrc file script part2.sh
 
-For part2 of my setup scripts there is the question of the bashrc file which is one of many little files throughout a Raspberry PI OS image that I would like to customize at least a little.
+For part2 of my setup scripts there is the question of the [bashrc file](https://www.journaldev.com/41479/bashrc-file-in-linux) which is one of many little files throughout a Raspberry PI OS image that I would like to customize at least a little. This is a script is used for a wide range of things that have to do with setting up a terminal session such as how to format the bash prompt, setup aliases for lengthy commands that I type often, and much more. A default bashrc file is setup for the pi user in a clean Raspberry PI OS image, so part of the process of writing my own bashrc file would involve renaming that file to something like .bashrc_backup before writing over the file. So then the general idea of this script is to just backup any bashrc file that might all ready be there, and then create a copy of a source file writing over the bashrc file with that source.
 
 ```
 #!/bin/bash
