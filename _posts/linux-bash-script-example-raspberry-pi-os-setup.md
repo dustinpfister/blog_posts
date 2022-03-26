@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-26 12:08:55
-version: 1.4
+updated: 2022-03-26 12:11:28
+version: 1.5
 ---
 
 I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
@@ -46,6 +46,8 @@ echo -e "\n"
 ```
 
 ## 2.1 - The background image part1.sh
+
+This is the part script that has to do with copying over a background image that is in the project folder, over to the home folder location. On top of that the only other thing this script does is also set that image that gets copied over to the current desktop background image, and also set any other additional values such as the wallpaper mode such as 'center' or 'fit'.
 
 ```
 #!/bin/bash
