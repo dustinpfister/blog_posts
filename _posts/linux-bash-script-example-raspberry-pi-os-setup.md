@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-26 12:41:32
-version: 1.9
+updated: 2022-03-26 12:44:22
+version: 1.10
 ---
 
 I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
@@ -120,6 +120,8 @@ fi
 # now that we have a backup for .bashrc sets write a new one from the source
 cat ${PATH_SOURCE} > .bashrc;
 ```
+
+I opted to use the Linux cat command with redirection over the cp command for writing over the bashrc file as I was thinking in terms of doing something more than just copying the file. However as of this writing I am not doing anything more than that, so I could change that back to just using the cp command if I can not think of
 
 ## 3 - Conclusion
 
