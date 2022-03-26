@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 751
-updated: 2022-03-26 13:05:41
-version: 1.12
+updated: 2022-03-26 13:15:46
+version: 1.13
 ---
 
 In the home folder of most Linux systems that use bash as the command shell there should be a hidden file called .bashrc. This file will be called each time I start a new terminal window, so it is a good place to do things like set what the format of the bash command prompt should be. However there are many other things that I can do with the script, and one such thing that is pretty helpful is setting up some [bash aliases](https://opensource.com/article/19/7/bash-aliases) for commands.
@@ -220,4 +220,6 @@ So these seem to work great, and now something that used to take up a but of tim
 
 ## 5 - Conclusion
 
-So I am sure that I will be finding more to write about with Linux aliases as time goes by. However this really is something that should be figured out on a per user basis. Whatever a single users work flow is that is what should be created in a bash script, or aliases type form. One user might use a different set of command line tools, or they might be using a slightly different distribution. However the basic idea of aliases should be more or less the same in most Linux systems where bash is used as the command line interface shell.
+So I am sure that I will be finding more to write about with Linux aliases as time goes by. However this really is something that should be figured out on a per user basis. Whatever a single users work flow is that is what should be set up when it comes to working out what aliases should be. One user might use a different set of command line tools, or they might be using a slightly different distribution where the options in terms of commands will be a little different. However the basic idea of aliases should be more or less the same in most Linux systems where bash is used as the command line interface shell.
+
+I like to use Raspberry PI single noard computers, and for the most part thus far I like to stick to using Raspberry PI OS in terms of the OS to run on a Raspberry PI. When it comes to using a raspberry PI the OS image is housed on a MicroSd card, and with that said I have more than one card, and I re-image them every now and then. With that said sense I first wrote this post I have now [started a bash script example](/2022/03/25/linux-bash-script-example-raspberry-pi-os-setup/) that is a bunch of additional scripts that have to do with a custom setup of a raspberry ps os image. One of the scripts has to do with copying over a custom bashrc file, and I also intend to set up custom aliese with this setup script also.
