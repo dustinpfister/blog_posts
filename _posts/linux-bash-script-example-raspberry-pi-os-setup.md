@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-26 12:25:47
-version: 1.7
+updated: 2022-03-26 12:27:59
+version: 1.8
 ---
 
 I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
@@ -81,6 +81,8 @@ pcmanfm --set-wallpaper="/home/pi/Pictures/rpi-bg.png" --wallpaper-mode="fit"
 ```
 
 ## 2.2 - The basrc file script part2.sh
+
+For part2 of my setup scripts there is the question of the bashrc file which is one of many little files throughout a Raspberry PI OS image that I would like to customize at least a little.
 
 ```
 #!/bin/bash
