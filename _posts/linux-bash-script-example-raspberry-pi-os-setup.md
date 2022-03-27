@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-27 12:05:31
-version: 1.14
+updated: 2022-03-27 12:16:10
+version: 1.15
 ---
 
 I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
@@ -20,6 +20,10 @@ In this post then I will be going over some bash scripts that have to do with a 
 ## My Raspberry PI OS bash script setup file, and what to know first
 
 This is a post on the state of a bash script that I use to setup a Raspberry PI OS image on an sd card after imaging it from one of the image options that can be found on the Raspberry PI foundation website. I assume that you know enough to get that far at least when it comes to getting started with a clean OS Image. This post is also not a [getting started type post with bash scripts in general](/2020/11/27/linux-bash-script/) as well, I have wrote a post to that effect before hand. This is then a slightly more advanced post then when it comes to what the next step is once one starts to learn the basics of bash scripts which is of course to start using bash to automate work that would otherwise have to be done manually, such as all the various actions that need to be preformed to set up an OS image the way that one likes it, which is what this post is about.
+
+### - Full source and other assets are up on Github
+
+All of the scripts as well as additional assets and notes can be found in a folder in my [demos Linux Github repository](https://github.com/dustinpfister/demos_linux/tree/master/forpost/linux-bash-script-example-raspberry-pi-os-setup).
 
 ## 1 - The main setup.sh script
 
