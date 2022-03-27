@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 972
-updated: 2022-03-26 13:05:41
-version: 1.11
+updated: 2022-03-27 11:05:45
+version: 1.12
 ---
 
 I like working with [Raspberry PI single board computers](https://en.wikipedia.org/wiki/Raspberry_Pi), not so much when it comes to making hardware projects but actually using them as a replacement for what would otherwise be an energy hogging desktop computer when it comes to getting work done. 
@@ -16,6 +16,10 @@ Anyway when it comes to using a Raspberry PI in general I often find myself re-i
 In this post then I will be going over some bash scripts that have to do with a setup script that will automate this process of setting up a new sd card just the way that I like it. There is a main setup.sh file that can be called that will run over each part script that preforms some kind of task such as copying over and setting a background image, or backing up and creating a custom bashrc file at the home path. However if I do things the way I that they should be done each part script should also work on its own if I just want to do one little thing in this collection of setup scripts.
 
 <!-- more -->
+
+## My Raspberry PI OS bash script setup file, and what to know first
+
+This is a post on the state of a bash script that I use to setup a Raspberry PI OS image on an sd card after imaging it from one of the image options that can be found on the Raspberry PI foundation website.
 
 ## 1 - The main setup.sh script
 
