@@ -5,17 +5,17 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 973
-updated: 2022-03-29 09:18:20
-version: 1.4
+updated: 2022-03-29 09:23:17
+version: 1.5
 ---
 
-There are a number of static methods in the browserWindow class in electronjs, one of which is a method that will create and return a collection of all browser windows currently open. This post will then be a quick example of the use of this static method of the browserWindow class. While I am at it I will of course be touching base on a bunch of additional features in electronjs in general, such as the preload script, and various events for the browser window class. Mainly the close and ready to show events of the Browser window class that I will be using to update a simple message in each browser window when a new window is opened or closed. So if you are still fairly new to electronjs as well this might prove to be a good exercise in order to gain some insight to various features that have to do with a collection of browser windows.
+There are a number of static methods in the browserWindow class in electronjs, one of which is a [static method that will create and return a collection of all browser windows currently open](https://www.electronjs.org/docs/latest/api/browser-window#browserwindowgetallwindows). This post will then be a quick example of the use of this static method of the browserWindow class. While I am at it I will of course be touching base on a bunch of additional features in electronjs in general, such as the preload script, and various events for the browser window class. Mainly the close and ready to show events of the Browser window class that I will be using to update a simple message in each browser window when a new window is opened or closed. So if you are still fairly new to electronjs as well this might prove to be a good exercise in order to gain some insight to various features that have to do with a collection of browser windows.
 
 <!-- more -->
 
 ## The get all windows static method in the Browser Window class.
 
-This is a post on an electronjs example of the get all browser windows method, which is one of several static methods of the Browser Window class. With that said this is not a getting started post with [the Browser Window class](/2022/02/14/electronjs-browser-window/), or [electronjs in general](/2022/02/07/electronjs-hello-world/) for that matter.
+This is a post on an electronjs example of the get all browser windows method, which is one of several static methods of the Browser Window class. With that said this is not a getting started post with [the Browser Window class](/2022/02/14/electronjs-browser-window/), or [electronjs in general](/2022/02/07/electronjs-hello-world/) for that matter. I also assume that you have at least some background when it comes to working with [client side javaScript](/2018/11/27/js-getting-started/), and [nodejs in general](/2017/04/05/nodejs-helloworld/) as well. If not getting started with those topics is outside the scope of this post.
 
 ### The full source is on Github
 
