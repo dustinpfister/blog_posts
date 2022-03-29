@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 973
-updated: 2022-03-29 09:26:14
-version: 1.6
+updated: 2022-03-29 09:29:17
+version: 1.7
 ---
 
 There are a number of static methods in the browserWindow class in electronjs, one of which is a [static method that will create and return a collection of all browser windows currently open](https://www.electronjs.org/docs/latest/api/browser-window#browserwindowgetallwindows). This post will then be a quick example of the use of this static method of the browserWindow class. While I am at it I will of course be touching base on a bunch of additional features in electronjs in general, such as the preload script, and various events for the browser window class. Mainly the close and ready to show events of the Browser window class that I will be using to update a simple message in each browser window when a new window is opened or closed. So if you are still fairly new to electronjs as well this might prove to be a good exercise in order to gain some insight to various features that have to do with a collection of browser windows.
@@ -24,6 +24,8 @@ If you do have at least some experience with electronjs and all additional skill
 The full source code for this example is on my [examples electronjs repository](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-browser-window-get-all-windows).
 
 ## 1 - The main javaScript file
+
+In every electronjs application there will typically be at least one main javaScript file at the root of the project folder that will serve as the entry point for the over all application. IT is in the body of this code that I will be using this get all windows method of the browser window class. So then with that said I am of course requiring in the Browser Window class, along with the usual app class, and I am also maig use of the Menu class as well.
 
 ```js
 // load app, Menu, and BrowserWindow
