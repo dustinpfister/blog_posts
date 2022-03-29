@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 973
-updated: 2022-03-29 09:49:54
-version: 1.11
+updated: 2022-03-29 09:52:56
+version: 1.12
 ---
 
 There are a number of static methods in the browserWindow class in electronjs, one of which is a [static method that will create and return a collection of all browser windows currently open](https://www.electronjs.org/docs/latest/api/browser-window#browserwindowgetallwindows). This post will then be a quick example of the use of this static method of the browserWindow class. While I am at it I will of course be touching base on a bunch of additional features in electronjs in general, such as the preload script, and various events for the browser window class. Mainly the close and ready to show events of the Browser window class that I will be using to update a simple message in each browser window when a new window is opened or closed. So if you are still fairly new to electronjs as well this might prove to be a good exercise in order to gain some insight to various features that have to do with a collection of browser windows.
@@ -119,7 +119,7 @@ app.on('window-all-closed', function () {
 
 ## 2 - The preload file
 
-I will want to have a preload javaScript file to define at least one method that I can then use to attach some event handers that will fire when a browser window is closed, or when a new one is created.
+I will want to have a preload javaScript file to define at least one method that I can then use to attach some event handers that will fire when a browser window is closed, or when a new one is created. So then I am defining just one public method for the API in this example which is the on method that I can then use in my front end code to attach events for the two events that I have.
 
 ```js
 const { contextBridge, ipcRenderer} = require('electron');
@@ -153,7 +153,7 @@ contextBridge.exposeInMainWorld('API', API);
 
 ## 3 - The index html file
 
-In the main javaScript file on top of using a preload script, I am also loading an index html file when it comes to having a little front end code.
+In the main javaScript file on top of using a preload script, I am also loading an index html file when it comes to having a little front end code. In the html of this example I have have a single paragraph element that I will be updating the text content for each time one of the events fire. If things work the way that they should each window will display the id number for the window, along with a simple count of how many windows there are.
 
 ```html
 <!DOCTYPE html>
