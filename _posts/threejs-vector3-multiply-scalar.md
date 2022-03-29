@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2022-03-29 10:23:22
-version: 1.12
+updated: 2022-03-29 10:28:42
+version: 1.13
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
+
+The multiply scalar method is a way to adjust the unit length of the vector without chaining anything with the direction of the vector. In other words it is a way to change the position of the vector, but only along a ray that comes out from an origin that is found by way of the current values of the Vector. I often use this multiply scalar method in combination with other Vector3 methods such as the normlized method that will set the unit length of the vector to that of one, which would be a good starting point before using a method like the multiply scalar method. So then in this post I will be going over example of the multiply scalar method, but also many other Vector3 class features and various features of threejs in general as always.
 
 <!-- more -->
 
