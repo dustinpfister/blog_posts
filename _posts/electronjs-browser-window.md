@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 960
-updated: 2022-02-22 11:55:14
-version: 1.28
+updated: 2022-03-29 10:14:24
+version: 1.29
 ---
 
 The [Browser Window class](https://www.electronjs.org/docs/latest/api/browser-window) is one of the first Classes in [Electron.js](https://en.wikipedia.org/wiki/Electron_%28software_framework%29) that one will want to work with. It is possible to have an electron app without using it, but chances are I am going to want to have at least one if not more windows to work with, and to do so I will want to use this class. 
@@ -18,10 +18,13 @@ There is also one other class that I think that a developer should be aware of r
 ## What to know first before reading more on Browser Window
 
 The example that I am writing about in this post is a little more advanced then the hello world example that I made first. This is very much the second post on electronjs that I have wrote thus far, so much of what I am writing about here has to do with what the next steps are after getting stared with a very basic example that just displays a message in a browser window. So I am taking some liberties here and assuming that you have at least a little experience thus far working with electron. I am also assuming that you know a thing or two about how to [program in general with javaScript](/2018/11/27/js-getting-started/), with both client side javaScript as well as how to work in a back end environment with javaScript also [when it comes to using nodejs](/2017/04/05/nodejs-helloworld/). If not getting into some basic examples of how to get started in those environments is outside the scope of this post.
-
 ### The full source code for this example is on Github
 
 I have set up a electronjs examples repository in my Github account that I will be using to park all the source code examples that I make while learning  and writing about electronjs. The source code examples for this post alone can be [found here](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-browser-window/) in the for post folder of the repository. This might in some cases be the best way to go about reproducing what I am working with here on your end.
+
+### I have more basic posts on the Browser Windoe class
+
+This is my first post on the browser window class, and when I wrote it I was still fairly new to using electronjs. Sense then I have wrote one new post on a single method of the browser window class that has to do with one of the static methods of that class that has to do with getting all the current open windows.
 
 ## 1 - The main javaScript file
 
