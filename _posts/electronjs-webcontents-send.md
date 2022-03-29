@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 970
-updated: 2022-03-22 12:52:43
-version: 1.14
+updated: 2022-03-29 10:03:27
+version: 1.15
 ---
 
 For todays post on electronjs I will be going over a quick example of the [send method of the webContents object](https://www.electronjs.org/docs/latest/api/web-contents#contentssendchannel-args) of a [browser window object](/2022/02/14/electronjs-browser-window/) instance. The reason why I am writing a post on this is because even though I have only wrote a [few example of electronjs thus far](/categories/electronjs/) I can all ready see that this will be a feature that I will be using with a lot of future projects.
@@ -190,4 +190,4 @@ With the hard coded html the main element of interest is just the text area elem
 
 ## 4 - Conclusion
 
-I just wanted to make a quick example of the send method of the web contents object, for the sake of my own reference for the most part. When it comes to some actually project examples I have a few ideas on the drawing board at least, but I still think that I need to work out a few more basic examples like this just for the sake of learning the basics of electronjs thus far.
+I just wanted to make a quick example of the send method of the web contents object, for the sake of my own reference for the most part. When it comes to some actually project examples I have a few ideas on the drawing board at least, but I still think that I need to work out a few more basic examples like this just for the sake of learning the basics of electronjs thus far. That is not to say that this is nit a feature that I find myself using often, it most certainly is all ready, in just about any example in which I need to trigger custom client side events.
