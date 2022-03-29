@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2022-03-29 10:18:36
-version: 1.11
+updated: 2022-03-29 10:23:22
+version: 1.12
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -102,7 +102,9 @@ The copy method of the Vector 3 class allows for me to copy the values of one in
 
 ## 3 - Translate, normalize and scalar
 
-One additional method that I might also pull into the mix is the add method that can be used to translate from a set point. This add method can be used to add another Vector to the vector value after copy if I want to make adjustments to direction before normalizing and scaling, or it can be used after doing so as a way to adjust things that way.
+One additional method that I might also pull into the mix is the add method that can be used to translate from a set point. This add method can be used to add another Vector to the vector value after the use of a method like that of copy or set if I want to make adjustments to direction before normalizing and scaling. Or it can be used after doing so as a way to adjust things after normalizing and scaling.
+
+For this example I am not also creating and positioning mesh objects in the body of a function that I am passing to the [array for each method](/2019/02/16/js-javascript-foreach/). The array that I am calling for each off of then contains data for each method object that I want in the form of nested arrays with number values that can be used to set position and a scalar value to use after normalizing that position..
 
 ```js
 (function () {
