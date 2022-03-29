@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 973
-updated: 2022-03-29 09:41:50
-version: 1.9
+updated: 2022-03-29 09:45:36
+version: 1.10
 ---
 
 There are a number of static methods in the browserWindow class in electronjs, one of which is a [static method that will create and return a collection of all browser windows currently open](https://www.electronjs.org/docs/latest/api/browser-window#browserwindowgetallwindows). This post will then be a quick example of the use of this static method of the browserWindow class. While I am at it I will of course be touching base on a bunch of additional features in electronjs in general, such as the preload script, and various events for the browser window class. Mainly the close and ready to show events of the Browser window class that I will be using to update a simple message in each browser window when a new window is opened or closed. So if you are still fairly new to electronjs as well this might prove to be a good exercise in order to gain some insight to various features that have to do with a collection of browser windows.
@@ -25,7 +25,9 @@ The full source code for this example is on my [examples electronjs repository](
 
 ## 1 - The main javaScript file
 
-In every electronjs application there will typically be at least one main javaScript file at the root of the project folder that will serve as the entry point for the over all application. IT is in the body of this code that I will be using this get all windows method of the browser window class. So then with that said I am of course requiring in the Browser Window class, along with the usual app class, and I am also maig use of the Menu class as well.
+In every electronjs application there will typically be at least one main javaScript file at the root of the project folder that will serve as the entry point for the over all application. IT is in the body of this code that I will be using this get all windows method of the browser window class. So then with that said I am of course requiring in the Browser Window class, along with the usual app class, and I am also making use of the Menu class as well in this example.
+
+I want to require in the Menu class because the general idea that I have for this example is to just have a simple file menu that can be used to just quit the whole application, or create a new window. Each time a new window is created, or closed, this will trigger one of two events that can then be used as a way to update the state of the content in any and all reaming windows. With that said I will need a custom Menu for this example, so if you still have not got into hot to go about dong that this example might prove to be a good starting point for that sort of thing as well.
 
 ```js
 // load app, Menu, and BrowserWindow
