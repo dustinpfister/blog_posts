@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2022-03-30 15:07:49
-version: 1.18
+updated: 2022-03-30 15:10:12
+version: 1.19
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/linux-bash-script/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
@@ -166,4 +166,4 @@ The Linux wc command is a useful command for a wide range of reasons, as the nam
 
 That is it for named parameters in bash shell scripts, when it comes to additional resources on bash the best option if of course the [manual page on bash](https://linux.die.net/man/1/bash). The manual is very long, and does not include a lot of examples, which warrants a need for posts like this. Still the man page will cover the topic of named parameters with the getopts built in bash command, and a whole lot more in great detail.
 
-When it comes to my content here there is my main post on [bash scripts](/2020/11/27/bash-scripts/), but there is also my post on [parameters in general in bash](/2020/11/06/linux-bash-script-parameters/) that might be worth checking out.
+When it comes to my content here there is my main post on [bash scripts](/2020/11/27/linux-bash-script/), but there is also my post on [parameters in general in bash](/2020/11/16/linux-bash-script-parameters/) that might be worth checking out.
