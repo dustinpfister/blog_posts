@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2022-03-30 15:07:50
-version: 1.16
+updated: 2022-03-30 15:11:35
+version: 1.17
 ---
 
 This post on [bash scripts](/2020/11/27/linux-bash-script/) will quickly cover the topic of positional parameters. What this means is the arguments that are given when the bash script is called from the command line, or another bash script. For example if I call the [Linux ls](/2020/10/14/linux-ls/) command with the -l option, then the -l option can be thought of as a positional parameter. In nodejs for example these kinds of positional parameters, or arguments if you prefer can be obtained from the [process global](/2018/02/11/nodejs-process) in nodejs.
@@ -131,4 +131,4 @@ positionals: 1 2
 
 The positional parameters of a script are the first set of parameters that I have become aware of while learning bash. However there are of course a number of other sets of parameters that I should be aware of when writing bash scripts also. In addition there are other topics to write about when it comes to parameters in bash scripts. When it comes to basic scripts just working with positionals alone is okay, however what if I do make a bash script that can take up to say 10 arguments? With that said there should be a way to parse positional arguments into named arguments.
 
-So one next step from here that might come to mind is to read my post on [parsing positional arguments into named options](/2020/12/09/linux-bash-script-parameters-named/)  by way of option parsing with the getopts bash built in command. There is also my [main post on bash parameters](/2020/11/16/linux-bash-parameters/) in general also.
+So one next step from here that might come to mind is to read my post on [parsing positional arguments into named options](/2020/12/09/linux-bash-script-parameters-named/)  by way of option parsing with the getopts bash built in command. There is also my [main post on bash parameters](/2020/11/16/linux-bash-script-parameters/) in general also.
