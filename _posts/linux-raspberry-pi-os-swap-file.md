@@ -5,11 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 702
-updated: 2022-03-30 14:37:19
-version: 1.6
+updated: 2022-03-30 14:40:41
+version: 1.7
 ---
 
-This month I have set up a new image on an sd card for my raspberry PI 3B+ and aim to start to transition into seeing if I can use a raspberry PI to get work done over my old windows 10 computer that is causes me a great deal a grief. So the new image I am working with is a clean Raspberry PI OS desktop image without the recommended software, so far I think going with this kind of image is best when it comes to just getting going with raspberry PI OS, but one thing that I see that I would like to adjust is the swap file size. I was able to find a [decent post on swap file size in rasbian](https://www.bitpi.co/2015/02/11/how-to-change-raspberry-pis-swapfile-size-on-rasbian/) that still seems to work okay for me if I just want to increase the size a little. However I thought I would write my own post on this on anyway just for the sake of having my own content on this, and to add anything more that might come up when it comes to swap files and Raspberry PI OS.
+This month I have set up a new image on an sd card for my raspberry PI 3B+ and aim to start to transition into seeing if I can use a raspberry PI to get work done over my old windows 10 computer that is causing me a great deal a grief. So the new image I am working with is a clean Raspberry PI OS desktop image without the recommended software, so far I think going with this kind of image is best when it comes to just getting going with raspberry PI OS, but there are always at least a few things that I like to adjust. One thing that I see that I would like to adjust is the swap file size, as I would say the default size of it is to small. 
+
+I was able to find a [decent post on swap file size in rasbian](https://www.bitpi.co/2015/02/11/how-to-change-raspberry-pis-swapfile-size-on-rasbian/) that still seems to work okay for me if I just want to increase the size a little. However I thought I would write my own post on this anyway just for the sake of having my own content on this topic.
 
 <!-- more -->
 
