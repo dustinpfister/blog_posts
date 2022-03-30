@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 702
-updated: 2022-03-30 14:40:41
-version: 1.7
+updated: 2022-03-30 14:45:49
+version: 1.8
 ---
 
 This month I have set up a new image on an sd card for my raspberry PI 3B+ and aim to start to transition into seeing if I can use a raspberry PI to get work done over my old windows 10 computer that is causing me a great deal a grief. So the new image I am working with is a clean Raspberry PI OS desktop image without the recommended software, so far I think going with this kind of image is best when it comes to just getting going with raspberry PI OS, but there are always at least a few things that I like to adjust. One thing that I see that I would like to adjust is the swap file size, as I would say the default size of it is to small. 
@@ -59,4 +59,6 @@ CONF_SWAPSIZE=1024
 
 ## 2 - Conclusion
 
-There is more to write about when it comes to swap files, and also swap partitions also with Raspberry PI OS and Linux in general actually. If I hook something up to the raspberry PI that has faster drive index speeds compared to the SD Card it would be nice to set up a spawn file, or swap partition on that volume to help increase speed with swap. However it is also worth mentioning that if I really need more swap space that is also an indication that I am maybe using to much memory to begin with actually. Better options compare to doing things with swap would be to have a newer raspberry PI with more RAM, or to see about what I can do to use less RAM and thus not have a need for much if any swap space to begin with.
+There is more to write about when it comes to swap files, and also swap partitions also with Raspberry PI OS. If I hook something up to the raspberry PI that has faster drive index speeds compared to the SD Card it would be nice to set up a swap file, or swap partition on that volume to help increase speed with swap. However it is also worth mentioning that if I really need more swap space that is also an indication that I am maybe using to much memory to begin with actually. Better options compared to doing things with swap would be to have a newer raspberry PI model with more RAM, or to see about what I can do to use less RAM and thus not have a need for much if any swap space to begin with. 
+
+When I first wrote this post I was using a Raspberry PI 3 that has only 1 GB or RAM which is still a lot if I just use very simple tools for what I want to do with it, but I would run out of ram now and then using it with the kinds of programs I would like to use. At the time of this writing I am not using a Raspberry PI 4 with 8GB of RAM, and I have to say that now I do not even think about swap space that much as I have more than enough head room with physical RAM.
