@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 759
-updated: 2022-03-18 12:51:56
-version: 1.15
+updated: 2022-03-30 15:07:50
+version: 1.16
 ---
 
-This post on [bash scripts](/2020/11/27/linux-bash-scripts/) will quickly cover the topic of positional parameters. What this means is the arguments that are given when the bash script is called from the command line, or another bash script. For example if I call the [Linux ls](/2020/10/14/linux-ls/) command with the -l option, then the -l option can be thought of as a positional parameter. In nodejs for example these kinds of positional parameters, or arguments if you prefer can be obtained from the [process global](/2018/02/11/nodejs-process) in nodejs.
+This post on [bash scripts](/2020/11/27/linux-bash-script/) will quickly cover the topic of positional parameters. What this means is the arguments that are given when the bash script is called from the command line, or another bash script. For example if I call the [Linux ls](/2020/10/14/linux-ls/) command with the -l option, then the -l option can be thought of as a positional parameter. In nodejs for example these kinds of positional parameters, or arguments if you prefer can be obtained from the [process global](/2018/02/11/nodejs-process) in nodejs.
 
 When it comes to bash scripts there are actually several sets of parameters to be aware of. There is the set of parameters that have to do with the bash command itself, there are a number of special parameters to work with, and then there is the set of parameters for the script that is called with bash. I have wrote a post on bash parameters in general, however in this post the focus will be just on positionals alone.
 
