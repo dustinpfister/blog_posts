@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 15:28:45
-version: 1.45
+updated: 2022-03-30 15:19:54
+version: 1.46
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
 
-In a previous Linux post on bash scripts I wrote about [special parameters](/2020/12/08/linux-bash-script-parameters/) one of which is the \$\? parameter. This parameter will give the exit status of the last command that was called in the shell. With that said what the test command does is it, well, preforms some kind of test and then will exit with a status code of 0 if all goes well with that test, else it will exit with 1.
+In a previous Linux post on bash scripts I wrote about [special parameters](/2020/12/08/linux-bash-script-parameters-special/) one of which is the \$\? parameter. This parameter will give the exit status of the last command that was called in the shell. With that said what the test command does is it, well, preforms some kind of test and then will exit with a status code of 0 if all goes well with that test, else it will exit with 1.
 
 The test command by itself will not produce any output to the standard output of the bash console, so often it should be used in conjunction with a other commands and bash features with the special parameter that contains the exit status to produce some kind of output. However often when the test command is used it is when making bash scripts and thus it is just used as a way to make some kind of choice when it comes to doing something or not, as such that is likely why it will not produce any output unless something is done to make it do so.
 
@@ -177,9 +177,9 @@ So then in this section I will be going over some examples of this kind of scrip
 
 ### 3.1 - Creating a bash script
 
-So first off there is of course getting into [writing bash scripts](/2020/11/27/linux-bash-scripts/) when it comes to this sort of thing. The basic process of this is to just place bash commands into a file, then make the file executable with the [chmod command](/2020/11/13/linux-chmod/), or call the file with the bash command. Even if I do just run the script with bash rather than calling it directly I still think it is a good idea to place a shebang that will point to the binary that will be used to run this script, in this case it would be the bash command.
+So first off there is of course getting into [writing bash scripts](/2020/11/27/linux-bash-script/) when it comes to this sort of thing. The basic process of this is to just place bash commands into a file, then make the file executable with the [chmod command](/2020/11/13/linux-chmod/), or call the file with the bash command. Even if I do just run the script with bash rather than calling it directly I still think it is a good idea to place a shebang that will point to the binary that will be used to run this script, in this case it would be the bash command.
 
-So then to make a bash script that will check a folder for markdown files I will want to use the [ls command](/2020/10/14/linux-ls/) with a [positional parameter](/2020/12/10/linux-bash-script-parameters/) that is the folder to check for markdown files. I will then [want to pipe](/2020/10/09/linux-pipe/) that [to grep](/2020/09/14/linux-grep/) and use that to get a filtered list of files that are just markdown files. The filtered list of markdown files can then in turn be piped into the [Linux wc command](/2020/10/13/linux-wc/) with the -l option that will be the number of lines, which would then be the number of markdown files. I can then use a from of [parameter expansion](/2020/12/04/linux-bash-script-parameter-expansion/) to set this result to a shell variable, and that variable can then be used with the test command, by way of an if statement to test if the result is greater than zero or not. I can also set a status shell variable and default the code to 1, in the event that the count is grater than 0 then I can set the value of the status variable to, you guessed it 0. At the end of the script I then just need to use the [Linux exit command](/2021/03/12/linux-exit/) and pass the value of the status variable to it.
+So then to make a bash script that will check a folder for markdown files I will want to use the [ls command](/2020/10/14/linux-ls/) with a [positional parameter](/2020/12/10/linux-bash-script-parameters-positional/) that is the folder to check for markdown files. I will then [want to pipe](/2020/10/09/linux-pipe/) that [to grep](/2020/09/14/linux-grep/) and use that to get a filtered list of files that are just markdown files. The filtered list of markdown files can then in turn be piped into the [Linux wc command](/2020/10/13/linux-wc/) with the -l option that will be the number of lines, which would then be the number of markdown files. I can then use a from of [parameter expansion](/2020/12/04/linux-bash-script-parameter-expansion/) to set this result to a shell variable, and that variable can then be used with the test command, by way of an if statement to test if the result is greater than zero or not. I can also set a status shell variable and default the code to 1, in the event that the count is grater than 0 then I can set the value of the status variable to, you guessed it 0. At the end of the script I then just need to use the [Linux exit command](/2021/03/12/linux-exit/) and pass the value of the status variable to it.
 
 ```bash
 #!/bin/bash
