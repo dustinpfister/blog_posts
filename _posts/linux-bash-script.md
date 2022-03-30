@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 750
-updated: 2020-11-27 15:58:42
-version: 1.20
+updated: 2022-03-30 15:02:20
+version: 1.21
 ---
 
 
@@ -156,7 +156,7 @@ $ ./count-files.sh
 
 Even more examples might be call for when it comes to piping, but you should get the basic idea. The thing about this is to just read over what a command can do when it comes to what a command will take from the standard input, and how the output of a command can be formated.
 
-## 3 - [Bash scripts and variables](/2020/10/29/linux-enviornment-variables/)
+## 3 - [Bash scripts and variables](/2020/10/29/linux-environment-variables/)
 
 When making a bash script variables can be used as a way to store values that can then be used again in a later part of a script one or more times. In this section I will be going over the basics of variables, and other related topics such as how to capture the output of a command as a value for a variable and how to do basic math operations.
 
