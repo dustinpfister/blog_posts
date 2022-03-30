@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2021-10-09 13:08:56
-version: 1.16
+updated: 2022-03-30 15:07:49
+version: 1.17
 ---
 
-One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/linux-bash-scripts/) thus far is [Parameter Expansion](https://wiki.bash-hackers.org/syntax/pe). There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
+One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/linux-bash-script/) thus far is [Parameter Expansion](https://wiki.bash-hackers.org/syntax/pe). There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
 
 There are also several other forms of parameter expansion, each of which might deserve there own post actually. However I often have a central post on topics such as this where I at least cover the basics of each, so this will be that kind of post when it comes to the various forms of parameter expansion in bash.
 
