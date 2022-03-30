@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 702
-updated: 2022-03-30 14:48:24
-version: 1.9
+updated: 2022-03-30 14:59:57
+version: 1.10
 ---
 
 This month I have set up a new image on an sd card for my raspberry PI 3B+ and aim to start to transition into seeing if I can use a raspberry PI to get work done over my old windows 10 computer that is causing me a great deal a grief. So the new image I am working with is a clean Raspberry PI OS desktop image without the recommended software, so far I think going with this kind of image is best when it comes to just getting going with raspberry PI OS, but there are always at least a few things that I like to adjust. One thing that I see that I would like to adjust is the swap file size, as I would say the default size of it is to small. 
@@ -63,4 +63,4 @@ There is more to write about when it comes to swap files, and also swap partitio
 
 When I first wrote this post I was using a Raspberry PI 3 that has only 1 GB or RAM which is still a lot if I just use very simple tools for what I want to do with it, but I would run out of ram now and then using it with the kinds of programs I would like to use. At the time of this writing I am not using a Raspberry PI 4 with 8GB of RAM, and I have to say that now I do not even think about swap space that much as I have more than enough head room with physical RAM.
 
-I might get around to editing this post again at some point, I often do sooner or later with much of  my content on this site. For now if you enjoyed reading this you might want to check out one of my [many other posts on Linux in general](/categories/linux/).
+I might get around to editing this post again at some point, I often do sooner or later with much of  my content on this site. For now if you enjoyed reading this you might want to check out one of my [many other posts on Linux in general](/categories/linux/). There are a lot of other various little tasks that I would like to do when setting up a new RaspberryOS Image beyond just adjusting the spawn file size such as [setting up bash command aliases](/2020/11/30/linux-bashrc-aliases/). When it comes to [learning a think or two about write bash scripts](/2020/11/27/linux-bash-script/) you might even go so far as learning how to write a bash script that can be used to automate the process of setting up a Raspberry PI OS sd card just the way that you like it. When it comes to that kind of script I have [started a version of that kind of script for myself](/2022/03/25/linux-bash-script-example-raspberry-pi-os-setup/).
