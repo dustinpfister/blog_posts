@@ -5,15 +5,15 @@ tags: [linux]
 layout: post
 categories: linux
 id: 742
-updated: 2020-12-10 13:40:11
-version: 1.15
+updated: 2022-03-30 15:07:51
+version: 1.16
 ---
 
-When writing a [bash script in Linux](/2020/11/27/linux-bash-scripts/) there might come a time where I might want to pass one or more [arguments for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). With that said there is starting out with positional parameters, but it is important to refer to positional parameters as such. That is becuase parameters can refer to a number of things in bash scripts other than just simple basic positional parameters.
+When writing a [bash script in Linux](/2020/11/27/linux-bash-script/) there might come a time where I might want to pass one or more [arguments for a script](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script). With that said there is starting out with positional parameters, but it is important to refer to positional parameters as such. That is because parameters can refer to a number of things in bash scripts other than just simple basic positional parameters.
 
-There is knowing how to access arguments for a call of a script, and there is also knowing how to find out how many arguments where given when the script was called in total. There is also doing something for all arguments that are given like how the Linux cat command works when giving file names as arguments. So on top of positional parameters there are also a number of special paramaters for tasks such as getting all the paramaters, and the count of paramaters.
+There is knowing how to access arguments for a call of a script, and there is also knowing how to find out how many arguments where given when the script was called in total. There is also doing something for all arguments that are given like how the Linux cat command works when giving file names as arguments. So on top of positional parameters there are also a number of special parameters for tasks such as getting all the parameters, and the count of parameters.
 
-There is also the bash command itself, and any argumnets that might be based to the bash command before the script or command that is called. So then there is yet another set of parameters or argumnets to be aware of. In addition there is also parsing the positional argumnets into a form that can be described as named parameters. That is making a script that will except arguments in a simular way to that of many of the Linux commands that one might be familour with.
+There is also the bash command itself, and any arguments that might be based to the bash command before the script or command that is called. So then there is yet another set of parameters or arguments to be aware of. In addition there is also parsing the positional arguments into a form that can be described as named parameters. That is making a script that will except arguments in a similar way to that of many of the Linux commands that one might be familiar with.
 
 So then in this post I will be going over some bash script examples where I am going over each of the kinds of parameters to be aware of.
 
