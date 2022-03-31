@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2022-03-31 12:16:26
-version: 1.23
+updated: 2022-03-31 12:19:10
+version: 1.24
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a [number of posts on nodejs](/categories/node-js/) it including the various built in modules as well as many npm packages. The thing about nodejs is that it is very much sever side javaScript, or general programing style javaScript if you prefer, and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -97,7 +97,7 @@ console.log(process.argv); // what arguments there are to work with
 
 ## 7 - Styling terminal output
 
-For this [I have found chalk](/2017/05/31/nodejs-chalk/) be sure to check that out if you want to do anything with color in the console. If for some reason you do not want to use an npm package for changing the color of terminal output then the other option for color would be to [look into ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/).
+For this [I have found chalk](/2017/05/31/nodejs-chalk/) be sure to check that out if you want to do anything with color in the console. If for some reason you do not want to use an npm package for changing the color of terminal output then the other option for color would be to [look into ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/). It will prove to be a little more time consuming of course but there is a whole lot more to gain by doing things the hard way. The ANSI codes can be used to do much more than just set the color of the text in terminals that support color of course. If you are wondering how to go about making some kind of user interface in a terminal window from the ground up the way to do so would be with these ANSI codes.
 
 ## 8 - Looping over files recursively
 
