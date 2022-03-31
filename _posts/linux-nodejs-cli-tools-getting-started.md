@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2022-03-31 11:37:27
-version: 1.12
+updated: 2022-03-31 11:41:12
+version: 1.13
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a [number of posts on nodejs](/categories/node-js/) it including the various built in modules as well as many npm packages. The thing about nodejs is that it is very much sever side javaScript, or general programing style javaScript if you prefer, and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -19,9 +19,9 @@ In this post I will be going over just the basics of making a simple node CLI to
 
 ## 1 - Getting started
 
-I assume that node.js is installed, and that you have [basic working knowledge of javaScript in general](/2018/11/27/js-getting-started/). and know a thing or two about how to work with a Command Line Interface such as bash in Linux, and most posix systems, or cmd.exe or powerShell in windows. I often use Linux and assume that what I make will still work okay in an Apple Darwin/OSX environment. In any case what I am going over in this post should work okay in any Operating system environment, it is only when using the [child process module](/2018/02/04/nodejs-child-process/) that you might want to be careful about what commands you are using and how you are using them.
+I assume that node.js is installed, and that you have [basic working knowledge of javaScript in general](/2018/11/27/js-getting-started/). I also assume that you know a thing or two about how to work with a Command Line Interface such as bash in Linux, or cmd in windows. In any case what I am going over in this post should work okay in any Operating system environment, or at least I can not thing of any reasy why it would not. It is largely a problem of concern when using the [child process module](/2018/02/04/nodejs-child-process/) that you might want to be careful about what commands you are using and how you are using them as what it is might not always be there.
 
-To make a CLI tool with node.js I would start by making a new folder in a place where I get projects done such as the home folder, or my documents folder, or what have you. At which point I would make it the current working directory, and set up a new node project by calling npm init to make my package.json file for the new project.
+To make a CLI tool with node.js I would start by making a new folder in a place where I get projects done such as the home folder, or my documents folder in windows. At which point I would make it the current working directory, and set up a new node project by calling npm init to make my starting package.json file for the new project.
 
 ```
 $ mkdir cli-tool
