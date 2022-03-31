@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2022-03-31 12:06:05
-version: 1.21
+updated: 2022-03-31 12:13:22
+version: 1.22
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a [number of posts on nodejs](/categories/node-js/) it including the various built in modules as well as many npm packages. The thing about nodejs is that it is very much sever side javaScript, or general programing style javaScript if you prefer, and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -110,3 +110,5 @@ However there are a whole lot of other ways to go about looping over the content
 Maybe I will make some more examples that do something a bit more interesting for this post at some point in the future when and if I get around to preforming additional edits of this post. For now I guess I will just reference some posts that I have written before that are relevant to the process of making nodejs global scripts. 
 
 Of course I have many [posts on node.js](/categories/node-js/) that are worth checking out that have to do with making global scripts, and working with nodejs in general. When it comes to launching an external command in a nodejs script there is the child process module as I have mentioned earlier. More specificity it is the [spawn method of the child process module](/2019/08/02/nodejs-child-process-spawn/) that would be used more often than not, along with the [other typical option which would be the exec method](/2020/10/21/nodejs-child-process-exec/).
+
+Although what I am writing about in this post has to do with something that should work okay in most OS environments, this is one of my [Linux category posts](/categories/linux/). What is nice about environments like nodejs, and python is that if things are done right the scripts should be fairly portable when it comes to running them is OS environments outside of the of Linux. However when it comes to really working things out in Linux, and just Linux, it would make more sense to [learn a thing or two about writing bash scripts](/2020/11/27/linux-bash-script/).
