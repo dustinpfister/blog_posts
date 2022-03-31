@@ -5,11 +5,11 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2020-10-03 11:51:46
-version: 1.9
+updated: 2022-03-31 11:31:13
+version: 1.10
 ---
 
-So because I have been messing around with node.js a whole lot more lately, and have written a number of posts on it including many npm packages. The thing about nodejs is that it is very much sever side javaScript and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
+So because I have been messing around with node.js a whole lot more lately, and have written a [number of posts on nodejs](/categories/node-js/) it including the various built in modules as well as many npm packages. The thing about nodejs is that it is very much sever side javaScript, or general programing style javaScript if you prefer, and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
 
 The basic process is that I just need to have a nodejs shebang at the top of a javaScript file that will be the main file that will run. In addition to this I just need to have a bin key in my package.json file that will serve as a way to name what the command will be and to point to the file that will run when that command is called. After that I just need to install the nodejs project globally to make it a command that I can run anywhere on my computer.
 
