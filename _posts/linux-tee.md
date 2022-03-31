@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 719
-updated: 2022-03-31 12:26:13
-version: 1.10
+updated: 2022-03-31 12:33:38
+version: 1.11
 ---
 
 The [Linux tee](https://linuxize.com/post/linux-tee-command/) command can be used to redirect the standard output of one command to [one or more files and or commands](https://unix.stackexchange.com/questions/28503/how-can-i-send-stdout-to-multiple-commands). So if I am ever in a situation in which I want to split the standard out put of a command and then do more that one thing with that output in a single line then the Linux tee command is my friend when it comes to this.
@@ -18,7 +18,7 @@ In this post I will be going over several examples of the Linux tee command comb
 
 ## 1 - Linux tee basic example
 
-In order to use The Linux tee command first I need some standard output. So for the sake of an example say I just want to create a file called disk.txt from the output of the df command, but I also want to standard output of the df command to continue along to the console on top of that. For that I just need to pipe the output of the df command to the tee command, and then just give one file name to which I want the output of df saved. 
+In order to use The Linux tee command first I need some standard output. So for the sake of an example say I just want to create a file called disk.txt from the output of the [Linux df command](/2020/11/23/linux-df/), but I also want to standard output of the df command to continue along to the console on top of that. For that I just need to pipe the output of the df command to the tee command, and then just give one file name to which I want the output of df saved. 
 
 ```
 $ df -h / | tee disk.txt
@@ -28,13 +28,13 @@ This will result in the standard output of df saved in the disk.txt file, and on
 
 ## 2 - Append to a file rather that writing over it
 
-By default the tee command will overwrite a file each time rather than appending data to a file each time it is called. So if for some reason I want to append data to a file rather that write over it each time there is an append option  for the tee command itself, but there is also of course redirection appending of standard output also.
+By default the tee command will overwrite a file each time rather than appending data to a file each time it is called. So if for some reason I want to append data to a file rather that write over it each time there is an append option for the tee command itself, but there is also of course redirection appending of standard output also.
 
 ```
 $ df -h / | tee -a disk_log.txt
 ```
 
-However it might be best to just learn more about how redirection works in Linux. The nice thing about redirection is that it will work with all commands even if they do not support an option of appending to a file rather than overwriting.
+However it might be best to just learn more about how redirection works in Linux. The nice thing about redirection is that it will work with all commands even if they do not support an option of appending to a file rather than overwriting. So then in some cases redirection might be the only way to write output to a file if there is not option for doing so in the command that I am using.
 
 ```
 $ df -h / | tee >(cat >> disk_log.txt) >(grep root >> disk_log_clean.txt)
@@ -42,7 +42,7 @@ $ df -h / | tee >(cat >> disk_log.txt) >(grep root >> disk_log_clean.txt)
 
 ## 2 - Two or more files with Linux tee
 
-If I want to write two more than one file then I just need to give more file names.
+If I want to write two or more files then one way would be to go about just gong more than one file name to write to. So if I just one three files each with the same copy of the output I could just do something like this:
 
 ```
 $ df -h / | tee disk1.txt disk2.txt disk3.txt
@@ -52,7 +52,7 @@ However if I want to run the output from df threw some commands first for each f
 
 ## 3 - Two or more files with redirection threw commands first
 
-The Linux tee command can be used in combination with piping and redirection to create two or more files from the standard output of one command. In addition I can not just redirect to files but also run the results threw some additional commands like grep.
+The Linux tee command can be used in combination with piping and redirection to create two or more files from the standard output of one command. In addition I can not just redirect to files but also run the results threw some additional commands like that of the [grep command](/2020/09/14/linux-grep/) first which is a typical command that comes up a lot when processing the output of commands.
 
 So say I want to take the output of the free command and use grep to take just the line on memory and write that to one file, and then take the same standard output and again use grep to write a file with just the output from the swap line to another file, and finally just write the full standard output to one last file. This can be done with a combination of piping, and redirection. 
 
