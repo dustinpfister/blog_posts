@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2022-03-31 11:50:13
-version: 1.17
+updated: 2022-03-31 11:54:52
+version: 1.18
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a [number of posts on nodejs](/categories/node-js/) it including the various built in modules as well as many npm packages. The thing about nodejs is that it is very much sever side javaScript, or general programing style javaScript if you prefer, and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -89,7 +89,7 @@ Now I can cd to any path in my CLI and call cli-tool to get 'hello-CLI!' logged 
 
 ## 6 - Option parsing in node.js
 
-I will not get into detail with it here, but I have written a post on a dependency that I use to help with option parsing called [nopt](/2017/05/05/nodejs-nopt/). If you want to go vanilla process.argv is what is of interest when it comes to doing something involving arguments accepted from the CLI.
+I will not get into detail with it here, but I have written a post on a dependency that I use to help with option parsing called [nopt](/2017/05/05/nodejs-nopt/). There are a whole lot of other npm package options when it comes to option parsing thought so it might be a good idea to look into some additional options when it comes to [working with positional arguments given from the command line in nodejs](/2018/07/31/nodejs-ways-to-parse-cli-options/). If you want to go vanilla process.argv is what is of interest when it comes to doing something involving arguments accepted from the CLI.
 
 ```js
 console.log(process.argv); // what arguments there are to work with
