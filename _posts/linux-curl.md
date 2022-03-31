@@ -5,11 +5,12 @@ tags: [linux]
 layout: post
 categories: linux
 id: 711
-updated: 2022-03-31 12:38:59
-version: 1.11
+updated: 2022-03-31 12:41:00
+version: 1.12
 ---
 
-the [Linux curl](https://www.mit.edu/afs.new/sipb/user/ssen/src/curl-7.11.1/docs/curl.html) command is a way to download a file from a given URL, but it is also a bit more than just that. It can also be used to make various kinds of http requests from the command line such a POST requests, and can also be used as an FTP client. So the curl command is a helpful little command to be aware of when it comes to getting data from a public URL, or anything to that effect outside of a web browser.
+The [Linux curl](https://www.mit.edu/afs.new/sipb/user/ssen/src/curl-7.11.1/docs/curl.html) command is a way to download a file from a given URL, but it is also a bit more than just that. It can also be used to make various kinds of http requests from the command line such a POST requests, and can also be used as an FTP client, along with many other various use cases. 
+So the curl command is a helpful little command to be aware of when it comes to getting data from a public URL, or anything to that effect outside of a web browser. So in this post I will be going over just a few quick, simple use case examples of the Linux curl command just for the sake of getting started with it.
 
 <!-- more -->
 
