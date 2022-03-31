@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 719
-updated: 2020-10-08 16:55:16
-version: 1.8
+updated: 2022-03-31 12:24:28
+version: 1.9
 ---
 
 The [Linux tee](https://linuxize.com/post/linux-tee-command/) command can be used to redirect the standard output of one command to [one or more files and or commands](https://unix.stackexchange.com/questions/28503/how-can-i-send-stdout-to-multiple-commands). In this post I will be going over several examples of the Linux tee command combined with both pupping and redirection of standard out pout two many files at once in one command line.
@@ -77,4 +77,6 @@ Swap:          1023           7        1016
 
 ## 4 - Conclusion
 
-To the Linux tee command is one of several commands that come to mind when it comes to learning a thing or two about piping, and redirection of standard output from a command.  One post of mine that is worth checking out is one the [Linux xargs](/2020/09/26/linux-xargs/) command that has to do with using standard output from a command as arguments for a command rather than piping it to the standard input of a command. Another related post that is worth checking out would be my post on [linux redirection](/2020/10/02/linux-redirection/) of standard output.
+To the Linux tee command is one of several commands that come to mind when it comes to learning a thing or two about piping, and redirection of standard output from a command into the started input of one or more additional commands. One post of mine that is worth checking out is one the [Linux xargs](/2020/09/26/linux-xargs/) command that has to do with using standard output from a command as arguments for a command rather than piping it to the standard input of a command. 
+
+Another related post that is worth checking out would be my post on [linux redirection](/2020/10/02/linux-redirection/) of standard output into that of a file. Also there is taking a moment to learn more about [piping in general in Linux](/2020/10/09/linux-pipe/) of course as there is a whole world of Linux commands that can be used together to get all kinds of things done.
