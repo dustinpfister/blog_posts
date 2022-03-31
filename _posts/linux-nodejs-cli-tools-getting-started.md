@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2022-03-31 11:57:22
-version: 1.19
+updated: 2022-03-31 12:00:52
+version: 1.20
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a [number of posts on nodejs](/categories/node-js/) it including the various built in modules as well as many npm packages. The thing about nodejs is that it is very much sever side javaScript, or general programing style javaScript if you prefer, and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -101,7 +101,9 @@ For this [I have found chalk](/2017/05/31/nodejs-chalk/) be sure to check that o
 
 ## 8 - Looping over files recursively
 
-I have wrote a [post on an npm package called node-dir](/2017/11/05/nodejs-node-dir/). It allows for working with the content of a bunch of files that are placed in a complex file structurer. I can set a match pattern using regular expressions, and I find it more useful then just using readDir in the fs module of node itself.
+I have wrote a [post on an npm package called node-dir](/2017/11/05/nodejs-node-dir/) which is one of the first npm package that I was working with when it comes to walking over the contents of a file system in nodejs. It allows for working with the content of a bunch of files that are placed in a complex file structure. I can set a match pattern using regular expressions, and I find it more useful then just using readDir in the fs module of node itself.
+
+However there are a whole lot of other ways to go about looping over the contents of a local file system. So I have [also wrote one post thus far on this specific topic of file system walking in general in nodejs](/2018/07/20/nodejs-ways-to-walk-a-file-system/).
 
 ## 9 - Conclusion
 
