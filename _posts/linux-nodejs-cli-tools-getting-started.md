@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2022-03-31 11:49:01
-version: 1.16
+updated: 2022-03-31 11:50:13
+version: 1.17
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a [number of posts on nodejs](/categories/node-js/) it including the various built in modules as well as many npm packages. The thing about nodejs is that it is very much sever side javaScript, or general programing style javaScript if you prefer, and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -52,7 +52,7 @@ So then a file called index.js at the root name sapce along with the package.jso
 
 It also stands to reason that it would be a good idea to make sure that I am not using a name that is used by another popular project in general when it comes to the possibly that other people might use my command line tool. So even when it comes to just checking out what is installed in my local system it also makes sense to check out what is popular in terms of projects in order to make sure that I am not going to be causing any conflicts.
 
-If need be I can always make the actual command names a little lengthly, and then just encourage people who use it to learn how to set up there own [bash command aliases](/2020/11/30/linux-bashrc-aliases/).
+If need be I can always make the actual command names a little lengthly, and then just encourage people who use it to learn how to set up there own [bash command aliases](/2020/11/30/linux-bashrc-aliases/). This is something that I think people should learn about sooner or later anyway if they find themselves entering lengthly commands with lots of options over and over again in the terminal.
 
 ## 3 - The node.js shebang
 
