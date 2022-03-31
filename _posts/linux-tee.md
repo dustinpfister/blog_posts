@@ -5,11 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 719
-updated: 2022-03-31 12:24:28
-version: 1.9
+updated: 2022-03-31 12:26:13
+version: 1.10
 ---
 
-The [Linux tee](https://linuxize.com/post/linux-tee-command/) command can be used to redirect the standard output of one command to [one or more files and or commands](https://unix.stackexchange.com/questions/28503/how-can-i-send-stdout-to-multiple-commands). In this post I will be going over several examples of the Linux tee command combined with both pupping and redirection of standard out pout two many files at once in one command line.
+The [Linux tee](https://linuxize.com/post/linux-tee-command/) command can be used to redirect the standard output of one command to [one or more files and or commands](https://unix.stackexchange.com/questions/28503/how-can-i-send-stdout-to-multiple-commands). So if I am ever in a situation in which I want to split the standard out put of a command and then do more that one thing with that output in a single line then the Linux tee command is my friend when it comes to this.
+
+In this post I will be going over several examples of the Linux tee command combined with both pupping and redirection of standard out pout two many files at once in one command line.
 
 <!-- more -->
 
