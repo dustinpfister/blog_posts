@@ -5,8 +5,8 @@ tags: [linux,node.js]
 layout: post
 categories: linux
 id: 90
-updated: 2022-03-31 11:41:12
-version: 1.13
+updated: 2022-03-31 11:43:57
+version: 1.14
 ---
 
 So because I have been messing around with node.js a whole lot more lately, and have written a [number of posts on nodejs](/categories/node-js/) it including the various built in modules as well as many npm packages. The thing about nodejs is that it is very much sever side javaScript, or general programing style javaScript if you prefer, and as such it is important to know how to make a script file into something that can be used as a stand alone command that can be executed in a command line such as bash. So I thought I would put a post together to help remind me of the few steps to make in order to [make a global CLI tool in javaScript with node.js](https://blog.bitsrc.io/how-to-build-a-command-line-cli-tool-in-nodejs-b8072b291f81).
@@ -53,11 +53,13 @@ and a file called index.js is what will be called when doing so. I do what I can
 
 ## 3 - The node.js shebang
 
-I have wrote a [post on the node.js shebang](/2017/03/26/linux_shebang/) a few months ago, but did not get into detail about how to make a full featured CLI tool using node.js. In short it is just something that I need to place at the very top of a script to help state the binary that needs to be used in oder to run the script. Because I am using javaScript as my programing environment, I need to use the node.js shebang that looks like this:
+In short a shebang is just something that I need to place at the very top of a script to help state the binary that needs to be used in oder to run the script. Because I am using javaScript as my programing environment, I need to use the node.js shebang that will typically look like something like this:
 
 ```
 #!/usr/bin/env node
 ```
+
+The path might need to change a little from time to time but the end result is more or less the same. In any case this is just a way of letting something like bash know where the binary should be in order to run this script.
 
 ## 4 - The index.js file
 
