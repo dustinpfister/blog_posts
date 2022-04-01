@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2022-04-01 12:11:48
-version: 1.8
+updated: 2022-04-01 12:15:06
+version: 1.9
 ---
 
 One major part of [learning how to use threejs](https://threejs.org/docs/#api/en/core/Object3D) is to get a solid grasp on what there is to work with in the [object3d class](/2018/04/23/threejs-object3d/). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class. So once one gets an idea as to what the position property of the Object3d class is all about for example, they can also apply that same understanding to Mesh objects, Groups, Cameras and even a whole Scene object of the feel inclined to do so.
@@ -21,6 +21,8 @@ Speaking of looping over objects in a scene there is also the children property 
 ## 1 - Basic example of the type property of an Object3d instance as well as other objects
 
 For a very basic kind of getting started or hello world type example of the type property of objects in threejs there is starting out with some example that is just a basic [scene object](/2018/05/03/threejs-scene/) with objects added of various types. So then I made a quick example where I am just creating a main scene object along with the other typical objects that I want for any threejs project such as a [camera](/2018/04/06/threejs-camera/) and [renderer](/2018/11/24/threejs-webglrenderer/). When making the camera I made sure to add the camera to the scene object so that it is a child of the scene object so that it will be one of the objects to loop over later in the code.
+
+After setting up my scene object, camera, and renderer I will now want to add at least a few [mesh objects](/2018/05/04/threejs-mesh/) to the scene. For this I made a quick function that will create and return a new Mesh object that uses the built in box geometry constructor for the geometry of the mesh, and also uses the normal material for the mesh when it comes to adding texture for the geometry of the mesh object.
 
 ```js
 (function () {
@@ -72,3 +74,4 @@ For a very basic kind of getting started or hello world type example of the type
 ## 2 - Conclusion
 
 The type property of just about almost any object in threejs is then one of the ways that I will go about fining out what kind of object I am working with in threejs. This might work well when it comes to most objects in threejs, but I have not look into seeing if this type property is also set for all other kinds of objects in threejs. Also I have to say that checking the type of object this way is no substitute for other means of finding the type of object that are more true to that of javaScript in general such as checking the constructor property of the object, or using the instanceof operator.
+
