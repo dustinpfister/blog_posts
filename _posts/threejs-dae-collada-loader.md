@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2022-04-01 13:11:57
-version: 1.17
+updated: 2022-04-01 13:14:45
+version: 1.18
 ---
 
 I would like to look into the extremal file formats more with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file loader. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files. This format uses an XML schema as a way to store data for all objects in a blender project, so right off the bat I like it for that reason as it is a plain text file format that I can just use right away with blender by itself when it comes to creating the files.
@@ -21,7 +21,9 @@ This is a post on using the ColladaLoader which can be added on top of three.js 
 
 ### Version Numbers matter with three.js
 
-When I wrote this post I was using r127 of three.js, in the future this code might break on later versions. I try to do a half way decent job of editing files, but I have a lot of pots boiling with that. So if the code breaks the first thing you should check is what version of three.js you are using, it really matters a lot.
+When I wrote this post I was using r127 of three.js, in the future this code might break on later versions as code breaking changes are made to the library often. So if the code breaks the first thing you should check is what version of three.js you are using, it really matters a lot, more so than other libraries where the code is just more or less being maintained at a fixed state in terms of the state of the public API.
+
+ I try to do a half way decent job of editing files, but I have a lot of pots boiling when it comes to all the other various posts on threejs as well as whole other topics completely. 
 
 ### Start Playing around with blender a little at least
 
