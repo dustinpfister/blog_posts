@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-04-01 12:41:50
-version: 1.18
+updated: 2022-04-01 12:43:09
+version: 1.19
 ---
 
 In [three.js](https://threejs.org/) you might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a box, resulting in a background that is can be descrive then as a kind of cube texture, or skybox if you prefer. You might also want to have that kind of texture placed over the surface of some kind of mesh as well. In three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture).
@@ -21,7 +21,7 @@ This is not a post for people that are new to three.js. If you are new to three.
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using r91 of three.js, and the last time I edited this post I was using r127. Three.js is still a very fast moving projects, and code breaking changes happen with it all the time. Always be aware of what version of three.js you are using, and in general when it comes to various javaScript libraries.
+When I first wrote this post I was using r91 of three.js, and the last time I edited this post I was using r127. Three.js is still a very fast moving project, and code breaking changes happen with it all the time. Always be aware of what version of three.js you are using when working with various random code examples that make use of threejs on the open web as version numbers very much matter with this project.
 
 ###  Having some images
 
