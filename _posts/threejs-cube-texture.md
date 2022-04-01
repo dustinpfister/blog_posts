@@ -1,12 +1,12 @@
 ---
-title: Adding a cube texture to a mesh in three.js
+title: Working with a cube texture threejs to set up a skyBox, and other related tasks
 date: 2018-04-22 18:35:00
 tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-04-01 12:54:07
-version: 1.21
+updated: 2022-04-01 12:58:22
+version: 1.22
 ---
 
 In [three.js](https://threejs.org/) you might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a box, resulting in a background that is can be described then as a kind of cube texture, or skybox if you prefer. You might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
