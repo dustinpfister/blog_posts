@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2022-04-01 12:19:13
-version: 1.11
+updated: 2022-04-01 12:21:34
+version: 1.12
 ---
 
 One major part of [learning how to use threejs](https://threejs.org/docs/#api/en/core/Object3D) is to get a solid grasp on what there is to work with in the [object3d class](/2018/04/23/threejs-object3d/). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class. So once one gets an idea as to what the position property of the Object3d class is all about for example, they can also apply that same understanding to Mesh objects, Groups, Cameras and even a whole Scene object of the feel inclined to do so.
@@ -70,6 +70,8 @@ After setting up my scene object, camera, and renderer I will now want to add at
 }
     ());
 ```
+
+So now that I have a scene object with all these various kinds of objects added to the scene object as children I might want to have a way to go about looping over the children of the scene object, and then preform some kind of action for each type of object that is encountered. One way to do that would be to just loop over the contents of the children property of the scene object and check the type property of each objects, using that as a way to kniw of an specific action should be preformed or not.
 
 ## 2 - Conclusion
 
