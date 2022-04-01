@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2022-04-01 15:53:11
-version: 1.28
+updated: 2022-04-01 16:20:17
+version: 1.29
 ---
 
 I would like to look into the various external file formats more that I can use with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file format. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files, so it would seem to be a good choice just for that reason alone for starters. Aside from easy exporting, and importing with blender, this DAE format uses an XML schema as a way to store data for all objects in a blender project also. For me that is another good reason why I should go with this one as it is a plain text file format that means that in a pinch I can edit a few things here and there with a plain old text editor if I need to for some reason.
@@ -17,7 +17,7 @@ Once I have a Collada file exported from blender it is then just a question of h
 
 ## DAE AKA Collada files with three.js and what to know first
 
-This is a post on using the ColladaLoader which can be added on top of three.js to load Collada files with a DAE file extension which is the default file format used in blender. So this is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general. It is also not a getting started post with blender also which is what I generally like to use in order to create dae files to begin with. The subject here is just using the Collada file loader in the examples folder of the three.js repository to load an external dae file into a three.js scene object.
+This is a post on using the ColladaLoader which can be added on top of three.js to load Collada files with a DAE file extension which is the default file format used in blender. So this is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), and [client side javaScript in general](/2018/11/27/js-getting-started/). It is also not a getting started post with blender also which is what I generally like to use in order to create dae files to begin with. The subject here is just using the Collada file loader in the examples folder of the three.js repository to load an external dae file into a three.js scene object.
 
 ### Version Numbers matter with three.js
 
@@ -27,8 +27,7 @@ When I wrote this post I was using r127 of three.js, and the last time I got aro
 
 ### The source code examples in this post are on Github
 
-The source code examples that I am write about i  this post can be [found up on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-dae-collada-loader).
-
+The source code examples that I am write about in this post can be [found up on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-dae-collada-loader) in my text threejs repository.
 
 ### Start Playing around with blender a little at least
 
@@ -36,11 +35,11 @@ In order to create a dea file a program like blender has to be used to create an
 
 ### You will need additional javaScript files beyond just that of three.js
 
-On top of loading the usual three.js file, the Collada file loader will also need to be loaded first before any additional javaScript that makes use of three.js and the  Collada loader. In many of these examples I am also using the Orbit Controls file which is yet another external files that can be located in the examples folder.
+On top of loading the usual three.js file, the Collada file loader will also need to be loaded first before any additional javaScript that makes use of three.js and the Collada loader. In many of these examples I am also using the Orbit Controls file which is yet another external files that can be located in the examples folder. On top of all of this there is also the dae files themselves along with any additional texture files that will also need to be loaded along with that f the dae file.
 
 ### I am running this example by way of http rather the the file protocol
 
-I am running this example by way of http rather than the file protocol, this should go without saying, but this is something that I seems to need to repeat in many posts. One way or another all the assets that I am using when it comes to three.js, additional javaScript files, and dae files are all being hosted by way of http even when I am juts working with thinks locally. If you are trying to get this to work by opening an html file in the browser rather than navigating to a public folder that is being hosted by way of local host you might run into errors. Again this topic and many others are covered in my [getting starred post with three.js post](/2018/04/04/threejs-getting-started/), sometimes it is just called for to take a step backward when trying to work out something.
+I am running this example by way of http rather than the file protocol, this should go without saying, but this is something that it would seem that I need to repeat in many posts. One way or another all the assets that I am using when it comes to three.js, additional javaScript files, and dae files are all being hosted by way of http even when I am juts working with thinks locally. If you are trying to get this to work by opening an html file in the browser rather than navigating to a public folder that is being hosted by way of local host you might run into errors. Again this topic and many others are covered in my [getting starred post with three.js post](/2018/04/04/threejs-getting-started/), sometimes it is just called for to take a step backward when trying to work out something.
 
 ## 1 - Load a single dae file
 
