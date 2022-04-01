@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2022-04-01 12:21:34
-version: 1.12
+updated: 2022-04-01 12:24:24
+version: 1.13
 ---
 
 One major part of [learning how to use threejs](https://threejs.org/docs/#api/en/core/Object3D) is to get a solid grasp on what there is to work with in the [object3d class](/2018/04/23/threejs-object3d/). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class. So once one gets an idea as to what the position property of the Object3d class is all about for example, they can also apply that same understanding to Mesh objects, Groups, Cameras and even a whole Scene object of the feel inclined to do so.
@@ -17,6 +17,11 @@ Speaking of looping over objects in a scene there is also the children property 
 
 <!-- more -->
 
+## The type property of objects in threejs and what to know first
+
+### The source code examples here are on Github
+
+The source code examples that I am writing about here can be found in my [test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-type). This is also where I am keeping the source code examples that I am writing about for all my other various posts on threejs, so there is a whole lot of code examples to look at for what it is worth.
 
 ## 1 - Basic example of the type property of an Object3d instance as well as other objects
 
