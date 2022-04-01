@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2022-04-01 15:13:51
-version: 1.22
+updated: 2022-04-01 15:38:47
+version: 1.23
 ---
 
 I would like to look into the various external file formats more that I can use with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file format. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files, so it would seem to be a good choice just for that reason alone for starters. Aside from easy exporting, and importing with blender, this DAE format uses an XML schema as a way to store data for all objects in a blender project also. For me that is another good reason why I should go with this one as it is a plain text file format that means that in a pinch I can edit a few things here and there with a plain old text editor if I need to for some reason.
@@ -98,7 +98,65 @@ Still for this basic example I just wanted to load a single object in the dae fi
 
 After I  have what I wanted from the file added to my main three.js scene, I just started my main app loop function in which I am rendering the scene, and updating the orbit controls that i am also making use of that I can then use to look at the module that I have loaded.
 
-## 2 - Conclusion
+## 2 - Setting the resource URL and using a Custom Loading Manager
+
+```js
+
+(function () {
+    // SCENE, CAMERA, RENDERER, and LIGHT SOURCE
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color('cyan');
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+    var pl = new THREE.PointLight(0xffffff);
+    pl.position.set(2, 5, 3);
+    scene.add(pl);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+ 
+    // APP LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        renderer.render(scene, camera);
+        controls.update();
+    };
+ 
+    // starting a custom manager
+    var manager = new THREE.LoadingManager();
+    manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+        console.log('manager.onStart');
+    };
+    manager.onLoad = function ( ) {
+        console.log('manager.onLoad: Dae and textures now loaded.');
+        // start the app loop
+        loop();
+    };
+    manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+        console.log('manager.onProgress: ' + itemsLoaded + '/' + itemsTotal);
+    };
+    manager.onError = function ( url ) {};
+ 
+    // CREATE A COLLADALOADER INSTANCE
+    var loader = new THREE.ColladaLoader(manager);
+    // SETTING THE BASE RESOURCE URL FOR TEXTTURES
+    loader.setResourcePath('/dae/guy2/guy2-skin-mrg1/');
+    // THEN LOADING AS USHUAL
+    loader.load('/dae/guy2/guy2.dae', function (result) {
+        console.log('cb of loader.load');
+        // adding the child that I want to the scene
+        scene.add(result.scene.children[2]);
+    });
+ 
+}
+    ());
+```
+
+## 3 - Conclusion
 
 The dae format seems to work okay thus far, in order to really know what I can do with the Collada format I am going to need to look into how to use blender more. I am thinking for now I will want to just focus on making simple static models, but there is also looking into how to go about create animations for a dae file also that can then be used in three.js with the Animation mixer. However maybe all of that is a matter for a whole other post, for now I just waned to have this kind of getting started type post.
 
