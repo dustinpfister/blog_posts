@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2022-04-01 12:30:51
-version: 1.16
+updated: 2022-04-01 12:34:03
+version: 1.17
 ---
 
 One major part of [learning how to use threejs](https://threejs.org/docs/#api/en/core/Object3D) is to get a solid grasp on what there is to work with in the [object3d class](/2018/04/23/threejs-object3d/). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class. So once one gets an idea as to what the position property of the Object3d class is all about for example, they can also apply that same understanding to Mesh objects, Groups, Cameras and even a whole Scene object of the feel inclined to do so.
@@ -33,7 +33,7 @@ The version of threejs that I was using when I first wrote this post was r135.
 
 For a very basic kind of getting started or hello world type example of the type property of objects in threejs there is starting out with some example that is just a basic [scene object](/2018/05/03/threejs-scene/) with objects added of various types. So then I made a quick example where I am just creating a main scene object along with the other typical objects that I want for any threejs project such as a [camera](/2018/04/06/threejs-camera/) and [renderer](/2018/11/24/threejs-webglrenderer/). When making the camera I made sure to add the camera to the scene object so that it is a child of the scene object so that it will be one of the objects to loop over later in the code.
 
-After setting up my scene object, camera, and renderer I will now want to add at least one instance iof the Object3d class. While I am at it I think I will also want to add at least a few [mesh objects](/2018/05/04/threejs-mesh/) to the object3d instance as children of it. For this I made a quick function that will create and return a new Mesh object that uses the built in box geometry constructor for the geometry of the mesh, and also uses the normal material for the mesh when it comes to adding texture for the geometry of the mesh object. I then created an array of arrays where each nested array is a set of values that i want to set for the position of each mesh object. I am then just looping over this array of arrays and using the Function apply protoype method with the set method of the vector3 class instance of the position property of each of these mesh objects that I want to create. I then of course add each mesh object to the Object3d class instance in the body of the function that I am passing to array for each while doing this.
+After setting up my scene object, camera, and renderer I will now want to add at least one instance iof the Object3d class. While I am at it I think I will also want to add at least a few [mesh objects](/2018/05/04/threejs-mesh/) to the object3d instance as children of it. For this I made a quick function that will create and return a new Mesh object that uses the built in box geometry constructor for the geometry of the mesh, and also uses the normal material for the mesh when it comes to adding texture for the geometry of the mesh object. I then created an [array of arrays](/2020/03/31/js-array-multidimensional/) where each nested array is a set of values that I want to set for the position of each mesh object. I am then just looping over this array of arrays and using the [Function apply prototype method](/2017/09/21/js-call-apply-and-bind/) with the [set method of the vector3 class instance](/2018/04/15/threejs-vector3/) of the position property of each of these mesh objects that I want to create. I then of course add each mesh object to the Object3d class instance in the body of the function that I am passing to array for each while doing this.
 
 ```js
 (function () {
