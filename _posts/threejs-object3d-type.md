@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2022-04-01 12:29:17
-version: 1.15
+updated: 2022-04-01 12:30:51
+version: 1.16
 ---
 
 One major part of [learning how to use threejs](https://threejs.org/docs/#api/en/core/Object3D) is to get a solid grasp on what there is to work with in the [object3d class](/2018/04/23/threejs-object3d/). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class. So once one gets an idea as to what the position property of the Object3d class is all about for example, they can also apply that same understanding to Mesh objects, Groups, Cameras and even a whole Scene object of the feel inclined to do so.
@@ -19,7 +19,7 @@ Speaking of looping over objects in a scene there is also the children property 
 
 ## The type property of objects in threejs and what to know first
 
-This is a post on the type property of various objects in threejs that include the Object3d base class as well as a wide range of other objects many of which are based on the object3d class. I am assuming that you have at least a little experience working with threejs, as well as with client side javaScript in general. If not you might find what it is that I am writing about here a little hard to follow. As such I often write this kind of section in my posts as a way to outline some things that you should know first before continuing to read the rest of the content.
+This is a post on the type property of various objects in threejs that include the Object3d base class as well as a wide range of other objects many of which are based on the object3d class. I am assuming that you have at [least a little experience working with threejs](/2018/04/04/threejs-getting-started/), as well as with [client side javaScript in general](/2018/11/27/js-getting-started/). If not you might find what it is that I am writing about here a little hard to follow. As such I often write this kind of section in my posts as a way to outline some things that you should know first before continuing to read the rest of the content.
 
 ### The source code examples here are on Github
 
