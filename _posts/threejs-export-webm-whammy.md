@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2022-04-02 12:33:05
-version: 1.25
+updated: 2022-04-02 12:38:44
+version: 1.26
 ---
 
 When I am playing around with [three.js](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. Now there may be a great number of ways to go about doing this sort of thing actually on [stack overflow I saw an example the makes use of some built in browser features](https://stackoverflow.com/questions/50681683/how-to-save-canvas-animation-as-gif-or-webm) as a way to go about capturing video from a canvas element on the fly. However what I have in mind is something where I can create a video on a frame by frame basis rather than recoding for an amount of time.
@@ -15,9 +15,13 @@ To help with this I have come across a project called [whammy](https://github.co
 
 <!-- more -->
 
-## What to know
+## Exporting as WebM from threejs and what to know first
 
 This is a post on exporting a three.js animation to webm using an additional javaScript project called whammy. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/) or javaScript in general, So i will not be getting into detail about each of the various details about making a three.js project in this post. However I will like to other relevant posts where appropriate.
+
+### USING WHAMMY NO LONGER WORKS FOR ME IN LATE VERSIONS OF CHROME
+
+There is not just being mindful of the version of threejs that is being used, but also the version numbers of the web browsers that I am running code in, and also the version number of whammy. In late versions of chrome using whammy seems to no loner work, and it also looks like the whammy library is not being supported also to make matters worse. It would seem like the root cause of this has to do with code breaking changes that have been bade with respect to the [URL.createObjectURL method](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL). Thus far I have not found a way to fix what has happened using more modern means of doing so.
 
 ### Version numbers matter
 
