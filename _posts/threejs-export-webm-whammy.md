@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2022-04-02 12:38:44
-version: 1.26
+updated: 2022-04-02 12:50:03
+version: 1.27
 ---
 
 When I am playing around with [three.js](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. Now there may be a great number of ways to go about doing this sort of thing actually on [stack overflow I saw an example the makes use of some built in browser features](https://stackoverflow.com/questions/50681683/how-to-save-canvas-animation-as-gif-or-webm) as a way to go about capturing video from a canvas element on the fly. However what I have in mind is something where I can create a video on a frame by frame basis rather than recoding for an amount of time.
@@ -17,7 +17,7 @@ To help with this I have come across a project called [whammy](https://github.co
 
 ## Exporting as WebM from threejs and what to know first
 
-This is a post on exporting a three.js animation to webm using an additional javaScript project called whammy. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/) or javaScript in general, So i will not be getting into detail about each of the various details about making a three.js project in this post. However I will like to other relevant posts where appropriate.
+This is a post on exporting a three.js animation to webm using an additional javaScript project called whammy. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/) or [javaScript in general](/2018/11/27/js-getting-started/), so I will not be getting into detail about each of the various details about making a three.js project in this post. However I will like to other relevant posts where appropriate.
 
 ### USING WHAMMY NO LONGER WORKS FOR ME IN LATE VERSIONS OF CHROME
 
@@ -46,9 +46,9 @@ encoder = new Whammy.Video(fps);
 
 ### 1.2 - The animate method
 
-Next I have an animation method. Here I am using the current values of my frame, and maxFrame variables to find a percentage value that I then use to set the status of the frame animation for the current frame. For this animation I am just moving the position of the camera, and having it look at a simple mesh of a cube with the camera.lookAt method.
+Next I have an animation method that will be used to update the scene, call the renderer, and use the whammy exporter. Here I am using the current values of my frame, and maxFrame variables to find a percentage value that I then use to set the status of the frame animation for the current frame. For this animation I am just moving the position of the camera, and having it look at a simple mesh of a cube with the [lookAt method](/2021/05/13/threejs-object3d-lookat/) that is called off of the camera.
 
-In the body of this method I request another animation frame for the method over and over again as long as the current frame index is lower than the maxFrame value that I set. Each time after rendering I add the current state of the canvas to the encoder with the encoder.add method, by creating a dataUrl of the image/webp type. The whammy documentation says that I can just add the canvas, but I run into an error when doing that.
+In the body of this method I [request another animation frame](/2018/03/13/js-request-animation-frame/) for the method over and over again as long as the current frame index is lower than the maxFrame value that I set. Each time after rendering I add the current state of the canvas to the encoder with the encoder.add method, by creating a dataUrl of the image/webp type. The whammy documentation says that I can just add the canvas, but I run into an error when doing that.
 
 ```js
 // loop
@@ -137,7 +137,7 @@ animate();
 
 ## 2 - Conclusion
 
-So far this seems like one of the best options for converting a simple three.js looping animation to a stand alone webm file. I might till want to look into other options, but some of them are more complex then that need to be, or I could not find a way to build the file on a frame by frame basis which is what I want to do. 
+So far this seems like one of the best options for converting a simple three.js looping animation to a stand alone webm file, or at least it was until things broke with it. So then I will still want to look into other options for this sort of thing, but some of them are more complex then that need to be, or I could not find a way to build the file on a frame by frame basis which is what I want to do. Because of the code breaking changes that have happed as of thins writing I have been r3educed to having to use a solution that involves creating a collection of PNG files and then using the [program ffmpeg to create a video](/2022/03/04/linux-ffmpeg/) file that way.
 
 Still the use of whammy will allow me to create a webm file of an animation using three.js, from there it is just a question of what I do with that. With that said I have found that I like to use a [program called Open Shot](https://www.openshot.org/) to create a finished video with audio. I could also use just about any video editing program with one or more webm files crated with whammy, and then do editing and any additional processing to create a finished product of some kind.
 
