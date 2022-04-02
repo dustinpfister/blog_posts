@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-04-02 11:18:10
-version: 1.19
+updated: 2022-04-02 11:39:34
+version: 1.20
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/) the popular javaScript library for working with 3d models. The Buffer Geometry Loader is one of several options in threejs when it comes to extremal asset loaders, some of which might prove to be a better option depending on what needs to happen.
@@ -176,9 +176,9 @@ A basic example of the loader will involve creating an instance of the loader, a
 
 The callback gives just one argument that is the geometry that can be used to make a mesh that can then be added to the scene, at which point the external geometry can be rendered. Aside from that I do not have to do anything out of the usual with respect to the scene, camera, and renderer as it is just another way to acquire a geometry to create a mesh.
 
-## 2 - Additional callbacks
+## 2 - Additional callbacks when calling the load method of the buffer geometry loader
 
-If desired additional callbacks can be given to the load method for reporting load progress, and handing errors if they happen.
+If desired additional callbacks can be given to the load method for reporting load progress, and handing errors if they happen. One way to go about dong this is to just give additional callbacks when calling the load function of the buffer geometry loader. So when calling the load method the first argument should be a string value to the json file that I want to load, and then a callback when the file is loaded as usual. However after that I can give an additional callback that will fire when it comes to the progress of the file that is being loaded, and after that yet another that will fire for any errors that might happen.
 
 ```js
 // load a resource
