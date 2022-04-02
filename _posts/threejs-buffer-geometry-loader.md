@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-04-02 09:57:09
-version: 1.14
+updated: 2022-04-02 10:27:45
+version: 1.15
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/). The Buffer Geometry Loader is one of several loaders in three.js that can be used to load an external JSON asset. 
@@ -29,6 +29,10 @@ Also when it comes to making a 3d model with a 3d modeling program I have come t
 I know there are a lot of projects where newer versions just patch programing mistakes, and the actual use of the project renames the same when it comes to the use of the public API. This is not so true with three.js, major changes happen often that result in code breaking changes. When I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91) that was release in March of 2018, and the last time I edited the post I was using r127 of three.js that was released in March of 2021.
 
 Also in this post I am using blender 2.79 also released in March of 2018. When it comes to using the io_three plug-in it is important to use a late version of blender.
+
+### The source code examples here, as well as additional assets can be found on Github
+
+The source code examples that I am write about here in this post can also be found in the [for post folder of my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-loader). This is also where I park the source code for my many other posts on threejs. On top of the javaScript files I also have additional assets there such as the buffer geometry files that I am loading into the example with the buffer geometry loader..
 
 ### Why use the buffered geometry loader?
 
