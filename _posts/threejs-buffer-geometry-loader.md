@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-04-02 11:14:23
-version: 1.18
+updated: 2022-04-02 11:18:10
+version: 1.19
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/) the popular javaScript library for working with 3d models. The Buffer Geometry Loader is one of several options in threejs when it comes to extremal asset loaders, some of which might prove to be a better option depending on what needs to happen.
@@ -19,7 +19,7 @@ As of the last time I edited this post, one of the other options when it comes t
 
 ## The buffer Geometry loader and what to know first
 
-This is an advanced post on three.js that has to do with the buffered geometry loader, it is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional skills needed before getting into three.js to begin with when it comes to [client side javaScrpt in general](/2018/11/27/js-getting-started/). This post has to do with Buffered Geometry, but I will not be getting into that in depth in this post. I assume that you have a good grasp on what is required before hand, and are here because you want to learn ins and outs of the buffered geometry loader in three.js.
+This is an advanced post on three.js that has to do with the buffered geometry loader, it is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional skills needed before getting into three.js to begin with when it comes to [client side javaScrpt in general](/2018/11/27/js-getting-started/). This post has to do with Buffered Geometry, but I will not be getting into that in depth in this post at least. I assume that you have a good grasp on what is required before hand, and are here because you want to learn the ins and outs of the buffered geometry loader in three.js, rather than buffer geometry in general. If you want to read up more on the [buffer geometry constrictor and various other topics that branch off from that I have wrote a post on that topic](/2021/04/22/threejs-buffer-geometry/).
 
 Also when it comes to making a 3d model with a 3d modeling program I have come to prefer blender, I am also going to be covering the use of the io_three blender plug-in that is used to export a model to the JSON format that is used by this loader.
 
@@ -214,5 +214,5 @@ loader.load(
 
 There are many more loaders, some of which do more than just load geometry after all there are many other kinds of assets to use rather than just geometry such as textures, and materials. It is possible to load other assets besides just geometry as well with some of the built in loaders, however maybe those are all matters for another post. 
 
-In this post I also did not get into depth about [Buffer Geometry Constructor](/2021/04/22/threejs-buffer-geometry/), and why it is that you might want to use Buffered geometry over plain old [Geometry Constructor](/2018/04/14/threejs-geometry/) which is now no longer part of the core of three.js as of r127.
+In this post I also did not get into depth about Buffer Geometry Constructor, and why it is that you might want to use Buffered geometry over the plain old [Geometry Constructor](/2018/04/14/threejs-geometry/) which is now no longer part of the core of three.js itself as of r127 forward.
 
