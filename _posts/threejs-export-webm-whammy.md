@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2021-05-02 17:06:04
-version: 1.24
+updated: 2022-04-02 12:33:05
+version: 1.25
 ---
 
 When I am playing around with [three.js](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. Now there may be a great number of ways to go about doing this sort of thing actually on [stack overflow I saw an example the makes use of some built in browser features](https://stackoverflow.com/questions/50681683/how-to-save-canvas-animation-as-gif-or-webm) as a way to go about capturing video from a canvas element on the fly. However what I have in mind is something where I can create a video on a frame by frame basis rather than recoding for an amount of time.
@@ -15,19 +15,19 @@ To help with this I have come across a project called [whammy](https://github.co
 
 <!-- more -->
 
-## 1 - What to know
+## What to know
 
 This is a post on exporting a three.js animation to webm using an additional javaScript project called whammy. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/) or javaScript in general, So i will not be getting into detail about each of the various details about making a three.js project in this post. However I will like to other relevant posts where appropriate.
 
-### 1.1 - Version numbers matter
+### Version numbers matter
 
 When I last edited this post I was using thee.js r127, and when I first wrote this post I was using three.js r91. Also it would seem that whammy is not being maintained, however I think that is not always such a bad thing with what it is that I intend to use if for, and as long as it still works I do not see any major problem. I am sure that there might be other options for this sort of thing, but I will always want to use something that works more or less the same way by passing frames one at a time, rather than recoding on the fly video.
 
-## 2 - Exporting a simple rotating cube example
+## 1 - Exporting a simple rotating cube example
 
 For the sake of keeping this post simple and to the point I will just be using a simple rotating cube example for this post. This will help to take the focus away from the animation and place it more so with the process of exporting an three.js animation to webm with whammy. Using whammy is fairly simple, but there are a few pitfalls that I have ran into. Nothing major, but I will be going over them here.
 
-### 2.1 - Create Whammy instance, and setup some variables
+### 1.1 - Create Whammy instance, and setup some variables
 
 Once I have both whammy, and three.js included in my html with script tags, I start off by setting some variables that I will be using to help with the movement of the animation. Using whammy starts off by just calling the Whammy.Video constructor passing the desired frame rate for the exported video. This will return an encoder that I can use to add frames one by one in a render loop, and then them I am done I just need to call a compile method from this encoder.
 
@@ -40,7 +40,7 @@ maxFrame = fps * seconds,
 encoder = new Whammy.Video(fps);
 ```
 
-### 2.2 - The animate method
+### 1.2 - The animate method
 
 Next I have an animation method. Here I am using the current values of my frame, and maxFrame variables to find a percentage value that I then use to set the status of the frame animation for the current frame. For this animation I am just moving the position of the camera, and having it look at a simple mesh of a cube with the camera.lookAt method.
 
@@ -87,7 +87,7 @@ var animate = function () {
 
 Once the animation is over, and all the frames have been added using the encoder.add method, I then call the encoder.compile method that will output a blob than can then be used to create a data url which is what I do with the exportVid method.
 
-### 2.3 - The export Video method
+### 1.3 - The export Video method
 
 When the encoder is finished compiling, a callback will fire with a blob passed as the first argument for that callback. I Can then use the URL.createObjectURL method to convert the blob to a data url. This data url can then be used as the src attribute when making a video element.
 
@@ -105,7 +105,7 @@ var exportVid = function (blob) {
 
 I make sure to set the controls attribute to true, so that I can play the video element. In addition in chrome there is a download option for the video as well.
 
-### 2.4 - The Three.js scene, camera, mesh, and renderer
+### 1.4 - The Three.js scene, camera, mesh, and renderer
 
 So here I just set up the usual scene, camera, mesh, and renderer. Once I do that I call the animate method to get the ball running with this.
 
@@ -131,7 +131,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 animate();
 ```
 
-## 3 - Conclusion
+## 2 - Conclusion
 
 So far this seems like one of the best options for converting a simple three.js looping animation to a stand alone webm file. I might till want to look into other options, but some of them are more complex then that need to be, or I could not find a way to build the file on a frame by frame basis which is what I want to do. 
 
