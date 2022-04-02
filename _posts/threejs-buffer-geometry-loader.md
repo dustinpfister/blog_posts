@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-04-02 11:39:34
-version: 1.20
+updated: 2022-04-02 11:51:01
+version: 1.21
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/) the popular javaScript library for working with 3d models. The Buffer Geometry Loader is one of several options in threejs when it comes to extremal asset loaders, some of which might prove to be a better option depending on what needs to happen.
@@ -181,33 +181,67 @@ The callback gives just one argument that is the geometry that can be used to ma
 If desired additional callbacks can be given to the load method for reporting load progress, and handing errors if they happen. One way to go about dong this is to just give additional callbacks when calling the load function of the buffer geometry loader. So when calling the load method the first argument should be a string value to the json file that I want to load, and then a callback when the file is loaded as usual. However after that I can give an additional callback that will fire when it comes to the progress of the file that is being loaded, and after that yet another that will fire for any errors that might happen.
 
 ```js
-// load a resource
-loader.load(
+
+(function () {
  
-    // URL
-    'loader-buffer-geometry/js/three_2.json',
+    // Scene
+    var scene = new THREE.Scene();
  
-    // Load Done
-    function ( geometry ) {
-        // create a mesh with the geometry
-        // and a material, and add it to the scene
-        var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({}));
-        scene.add(mesh);
+    // Camera
+    var camera = new THREE.PerspectiveCamera(65, 4 / 3, .5, 10);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
  
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    var light = new THREE.PointLight(0xffffff, 1, 100);
+    light.position.set(2, 2, 2);
+    scene.add(light);
+ 
+    var light2 = new THREE.PointLight(0xffffff, 1, 100);
+    light2.position.set(-2, -2, -2);
+    scene.add(light2);
+ 
+    var frame = 0,
+    maxFrame = 200,
+    mesh;
+    var loop = function () {
+        var per = frame / maxFrame;
+        requestAnimationFrame(loop);
+        mesh.rotation.set(Math.PI / 2, Math.PI * 2 * per, 0);
         // render the scene
         renderer.render(scene, camera);
-    },
+        frame += 1;
+        frame %= maxFrame;
+    };
  
-    // Progress
-    function ( xhr ) {
-        console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-    },
+    // Loader
+    var loader = new THREE.BufferGeometryLoader();
  
-    // Error
-    function ( err ) {
-        console.log( 'An error happened' );
-    }
-);
+    // load a resource
+    loader.load(
+        // URL
+        '/forpost/threejs-buffer-geometry-loader/buffer-geo/three_2.json',
+        // Load Done
+        function ( geometry ) {
+            var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({}));
+            scene.add(mesh);
+            renderer.render(scene, camera);
+        },
+        // Progress
+        function ( xhr ) {
+            console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+        },
+        // Error
+        function ( err ) {
+            console.log( 'An error happened' );
+        }
+    );
+}
+    ());
 ```
 
 ## 3 - Conclusion
