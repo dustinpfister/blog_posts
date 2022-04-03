@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-04-03 12:46:37
-version: 1.29
+updated: 2022-04-03 12:48:20
+version: 1.30
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering a scene object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object, and I often like to go with the the [standard material](/2021/04/27/threejs-standard-material/) as it is a good over all choice for the most part. However there are some good things to write about when it comes to the depth material, as well as some other options for materials that work right away without a light source. There is also what branches off from the use of the depth material when it comes to things like the arguments that are given when creating a camera for a scene, namely the near and far values.
@@ -22,6 +22,9 @@ This is a post on the depth material in three.js, as such I expect for you to at
 ### Version Numbers matter with three.js
 
 When I first wrote this post I was using r127 of three.js, and the lat time I cam around to doing a little editing of this post I was using r135. Always be aware of what version of three.js is being used in an example code braking changes are introduced with three.js often. I have been writing posts on three.js now and then sense r91, and from that point to now I do not think much has changed with the depth material alone. Still I have got into the habit of mentioning  this in every post from now on.
+### The source code examples in this post are on Github
+
+The source code examples on the depth material that I am writing about here can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-depth-material).
 
 ### You might want to read up more on the perspective camera
 
