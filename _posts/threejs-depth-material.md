@@ -5,19 +5,19 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-04-03 10:22:42
-version: 1.26
+updated: 2022-04-03 10:28:20
+version: 1.27
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering a scene object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object, and I often like to go with the the [standard material](/2021/04/27/threejs-standard-material/) as it is a good over all choice for the most part. However there are some good things to write about when it comes to the depth material, as well as some other options for materials that work right away without a light source. There is also what branches off from the use of the depth material when it comes to things like the arguments that are given when creating a camera for a scene, namely the near and far values.
 
-So in this post I thought I would write about a few examples about this kind of material, and in the process of doing so I think I will be touching base on some things that have to do with cameras also. For example there is adjusting the near and far values of a camera as a way to change how the depth material looks and when doing so a method needs to be called each time to update the projection matrix.
+So in this post I thought I would write about a few examples about this depth material, and in the process of doing so I think I will be touching base on some things that have to do with cameras also. For example there is adjusting the near and far values of a camera as a way to change how the depth material looks and when doing so a method needs to be called each time to update the projection matrix.
 
 <!-- more -->
 
 ## The Depth Material and what to know first
 
-This is a post on the depth material in three.js, as such I expect for you to at least understand the basics of creating a three.js project. If not there is looking into one or more getting started type posts on three.js, and also maybe javaScript in general. On top of knowing the very basis of getting started on three.js there is maybe a few more things that a developer should look into more with cameras, and certain base classes such as the Vector3 and Object3d classes, but that goes without saying for just about any three.js example. Still in this section I will just be outline a few things that you should know about before continuing reading with this post.
+This is a post on the depth material in three.js, as such I expect for you to at least understand the basics of creating a three.js project. If not there is looking into one or more [getting started type posts on three.js](/2018/04/04/threejs-getting-started/), and also maybe [javaScript in general](/2018/11/27/js-getting-started/). On top of knowing the very basis of getting started on three.js there is maybe a few more things that a developer should look into more with cameras, and certain base classes such as the [Vector3](/2018/04/15/threejs-vector3/) and Object3d classes, that are used to do things like setting the position of the camera. In this section I will be outlining a few things that you should know about before continuing reading the rest if this post.
 
 ### Version Numbers matter with three.js
 
