@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2021-05-05 10:48:01
-version: 1.22
+updated: 2022-04-03 13:02:21
+version: 1.23
 ---
 
 As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Three.js](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It is still possible to use it of course it just needs to be added as an additional asset for a project on top of just three js by itself. It would seem that the motivation behind doing so was because support for webGL is now pretty good in general when it comes to modern web browsers which mode people who visit my website do in fact use.
@@ -15,19 +15,19 @@ For the most part these days there is no need to bother with the 2d canvas power
 
 <!-- more -->
 
-## 1 - WebGL in three.js and what to know before hand
+## WebGL in three.js and what to know before hand
 
 This is a post on feature testing for web gl, and using the software renderer in three js in the event that there is no webGL support at all. This is a not a getting started post with three.js, webGL, or javaScript in general. So then I assume that you have at least some background with three.js and javaScript.
 
-### 1.1 - Version numbers matter
+### Version numbers matter
 
-When writing this post I was using [revision 104 of three.js](https://github.com/mrdoob/three.js/tree/r104), and on top of that I am also using some additional assets in the renderer's folder of the js folder in the examples folder of the three.js repo. When it comes to rendering a three js scene with a renderer other than the built in webGL renderer additional assets must be used to provide that additional way of rendering, one note worth example might be the 2d canvas drawing api renderer.
+When writing this post I was using [revision 104 of three.js](https://github.com/mrdoob/three.js/tree/r104), and on top of that I am also using some additional assets in the renderer's folder of the js folder in the examples folder of the three.js repo. When it comes to rendering a three js scene with a renderer other than the built in webGL renderer additional assets must be used to provide that additional way of rendering, one note worth example might be the 2d canvas drawing API renderer.
 
-## 2 - Using the Software Renderer in the event there is no WebGl support
+## 1 - Using the Software Renderer in the event there is no WebGl support
 
 In this section I will be going over an example that feature tests for the presence of webgl, and in the event that the client does not support web gl use the 2d canvas powered software renderer over the built in webGL renderer.
 
-### 2.1 - The html
+### 1.1 - The html
 
 In order to get this demo to work on top of using r104 of three.js the [projector.js](https://github.com/mrdoob/three.js/blob/r104/examples/js/renderers/Projector.js) and [softwareRenderer.js](https://github.com/mrdoob/three.js/blob/r104/examples/js/renderers/SoftwareRenderer.js) files will also need to be loaded in as well. Projector.js will need to be loaded after three.js and before softwareRenderer.js as that file depends on projector.js and projector.js depends on three.js
 
@@ -50,7 +50,7 @@ In order to get this demo to work on top of using r104 of three.js the [projecto
 
 So in the html of this example I am linking to three.js like normal, but I am also linking to the additional assets in the github repo as well. I am also linking to some additional assets that feature test for webGL and render a scene differently depending on the state of webGL support in the client which are as follows.
 
-### 2.2 - The webgl.js file
+### 1.2 - The webgl.js file
 
 Here is my webgl.js file that just contains one method that is just a slightly modified version of what is also in the three.js repo. This method just simply returns true of the client supports webGL 1, and false if that is not the case.
 
@@ -69,7 +69,7 @@ var isWebGL = function (ctxNum) {
 
 If you want to use the official webgl.js file here is a link to that in the repo. The file adds some additional functionality but for the most part it is just to feature test for webGL. Feature testing for just webGL by itself is not always enough also, for example a client count support webGL by itself, but that does not mean that all the features of the three js webGL renderer will work as expected. I can confirm that this is sometimes that case with some clients.
 
-### 2.3 - The setup.js file
+### 1.3 - The setup.js file
 
 Here I have the setup.js file that makes use of the webGL method in webgl.js, as well as the additional assets depending if webGl is supported or not.
 
@@ -125,11 +125,11 @@ if (isWebGL()) {
 }
 ```
 
-## 3 - More on the webGL renderer
+## 2 - More on the webGL renderer
 
 In this post I am mostly writing about feature testing for webGL and then doing something different in the event that webGL is not supported. However I am not really getting into the webGL renderer in detail as I have wrote a [post on the webGL renderer](/2018/11/24/threejs-webglrenderer/) in detail a while back and there is therefore no need to do so here.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 Even if a client does support webgl that does not mean that all the webgl features will work as expected. A simple check if webgl is there or not will result in a true response with a simple feature test for webgl alone, but things will still not render as expected.
 
