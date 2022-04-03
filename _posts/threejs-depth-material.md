@@ -1,12 +1,12 @@
 ---
-title: The Depth Material in threejs
+title: The Depth Material, near, and far camera values in threejs
 date: 2021-05-04 13:32:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-04-03 10:20:35
-version: 1.24
+updated: 2022-04-03 10:21:11
+version: 1.25
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering a scene object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object, and I often like to go with the the standard material as it is a good over all choice for the most part. However there are some good things to write about when it comes to the depth material, as well as some other options for materials that work right away without a light source. There is also what branches off from the use of the depth material when it comes to things like the arguments that are given when creating a camera for a scene, namely the near and far values.
