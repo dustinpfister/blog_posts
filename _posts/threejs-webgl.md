@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2022-04-03 13:02:21
-version: 1.23
+updated: 2022-04-03 13:07:46
+version: 1.24
 ---
 
 As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Three.js](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It is still possible to use it of course it just needs to be added as an additional asset for a project on top of just three js by itself. It would seem that the motivation behind doing so was because support for webGL is now pretty good in general when it comes to modern web browsers which mode people who visit my website do in fact use.
@@ -17,7 +17,7 @@ For the most part these days there is no need to bother with the 2d canvas power
 
 ## WebGL in three.js and what to know before hand
 
-This is a post on feature testing for web gl, and using the software renderer in three js in the event that there is no webGL support at all. This is a not a getting started post with three.js, webGL, or javaScript in general. So then I assume that you have at least some background with three.js and javaScript.
+This is a post on feature testing for web gl, and using the software renderer in three js in the event that there is no webGL support at all. This is a not a [getting started post with three.js](/2018/04/04/threejs-getting-started/), webGL, or javaScript in general. So then I assume that you have at least some background with three.js and javaScript.
 
 ### Version numbers matter
 
