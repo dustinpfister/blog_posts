@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-04-03 12:48:20
-version: 1.30
+updated: 2022-04-03 12:57:15
+version: 1.31
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering a scene object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object, and I often like to go with the the [standard material](/2021/04/27/threejs-standard-material/) as it is a good over all choice for the most part. However there are some good things to write about when it comes to the depth material, as well as some other options for materials that work right away without a light source. There is also what branches off from the use of the depth material when it comes to things like the arguments that are given when creating a camera for a scene, namely the near and far values.
@@ -125,5 +125,7 @@ There is playing around with the position and rotation of the mesh object also, 
 
 ## 3 - Conclusion
 
-So the  the depth material is as the name suggests it is a way to go about showing some depth of on object without having to bother with directional light when it comes to other materials that can help to show some sense of depth that way such as with the standard material. More often than not I will end up going with a material like the standard material when it comes to working on an actual project of one kind or another, however the depth material can prove to be useful to know what is going on with values of interest that have to do with depth, and the camera.
+So the depth material as the name suggests is a way to go about showing some depth of on object without having to bother with one or ore light sources. When it comes to other materials that can help to show some sense of depth often a few light sources will need to be used to do so. There is also thinking in terms of just using color maps with a material like the basic material, and just work out something that will help show a sense of depth using static textures which would be yet another option for this sort of thing. 
+
+More often than not I will end up going with a material like the standard material when it comes to working on an actual project of one kind or another. The reason why is because I can use a light source with the standard material and color maps as a way to show depth, but I can also use emissive maps and work out textures for showing depth like I would with the basic material. However the depth material can prove to be useful to know what is going on with values of interest that have to do with depth, and the camera.
 
