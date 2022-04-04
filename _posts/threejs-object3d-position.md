@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-04-04 11:25:30
-version: 1.13
+updated: 2022-04-04 11:44:41
+version: 1.14
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the [Vector3 class](/2018/04/15/threejs-vector3/), and setting the values of this will set the position of an object on interest. Sense [the Object3d class](/2018/04/23/threejs-object3d/) is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, once one learns how to set the position of one object that learn how to set the position of just about almost everything in threejs at least when it comes to objects. The [position property of an instance of Buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) is a whole other topic of concern, but many of the basic ideas are the same when it comes to the values that have to do with position.
@@ -60,6 +60,52 @@ The set method of the Vector3 instance would be one way to go about setting the 
 
 It would be a good idea to [look into the Vector3 class more](/2018/04/15/threejs-vector3/) at some point if you have not done so, as like that of the Object3d class it will come up a lot. For example in this basic example n instance of Vector3 can be used as a value to give to the [Object3d.lookAt method](/2021/05/13/threejs-object3d-lookat/). Here I am making a clone of the position property of the mesh and then using the add method of the copy of the Vector3 instance to translate the position for the camera to look at making it a position that is slightly lower than the actually position of the mesh object.
 
-## 2 - Conclusion
+## 2 - Setting the position of a parent and child
+
+There is not just setting the position of a single object, but also all the children of a parent object as well as the parent object as a whole. In other words the add method of the scene object is not just a method of the scene object, but yet another method of the Object3d class to which the scene object is another example of an object that is based off of the object 3d class. Yes the scene object also has a position property and if desired that can be used as a way to change the position of a whole scene relative to what is often called world space. However for now when it comes to this section I will be going over an example that make use of the THREE.Group constructor as a way to have a parent and child kind of situation with the position of objects.
+
+```js
+(function () {
+    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // CREATING A GROUP WITH CHILDREN
+    var group = new THREE.Group();
+    var i = 0, len = 30, radian, radius, x, y, z;
+    while(i < len){
+        var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+        radian = Math.PI * 2 * 4 / len * i;
+        radius = 1;
+        x = Math.cos(radian) * radius;
+        y = 10 / 2 * -1 + 10 * ( i / len);
+        z = Math.sin(radian) * radius;
+        // SETTING THE POSITION OF JUST THIS MESH
+        mesh.position.set(x, y, z);
+        group.add(mesh);
+        i += 1;
+    }
+    scene.add(group);
+ 
+    // SETTING POSITION OF THE GROUP
+    group.position.set(-5,0,-5)
+ 
+    // POSITON AND ROTATION OF CAMERA
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 1, 0);
+ 
+    // render static scene
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+## 3 - Conclusion
 
 The position property of the Object3d class is one feature of threejs that I find myself using all the time in projects, as the name suggests it is how to go about setting the current position of something in an over all project. The rotation property and the look at method of the object3d class is also of interest of course when it comes to setting the orientation of objects as well. There are also a whole lot of other features in threejs that are closely related to the position property also that I should maybe mention in this conclusion section when it comes to fuhrer reading topics related to this. One such feature that comes to mind right away is the [Raycaster class](/2021/05/18/threejs-raycaster/). If you are wondering how to go about getting a position on the surface of the geometry of a mesh object this raycaster class is a very helpful toll for that kind of thing.
