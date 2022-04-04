@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-04-04 11:44:41
-version: 1.14
+updated: 2022-04-04 11:46:02
+version: 1.15
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the [Vector3 class](/2018/04/15/threejs-vector3/), and setting the values of this will set the position of an object on interest. Sense [the Object3d class](/2018/04/23/threejs-object3d/) is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, once one learns how to set the position of one object that learn how to set the position of just about almost everything in threejs at least when it comes to objects. The [position property of an instance of Buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) is a whole other topic of concern, but many of the basic ideas are the same when it comes to the values that have to do with position.
@@ -62,7 +62,7 @@ It would be a good idea to [look into the Vector3 class more](/2018/04/15/threej
 
 ## 2 - Setting the position of a parent and child
 
-There is not just setting the position of a single object, but also all the children of a parent object as well as the parent object as a whole. In other words the add method of the scene object is not just a method of the scene object, but yet another method of the Object3d class to which the scene object is another example of an object that is based off of the object 3d class. Yes the scene object also has a position property and if desired that can be used as a way to change the position of a whole scene relative to what is often called world space. However for now when it comes to this section I will be going over an example that make use of the THREE.Group constructor as a way to have a parent and child kind of situation with the position of objects.
+There is not just setting the position of a single object, but also all the children of a parent object as well as the parent object as a whole. In other words the add method of the scene object is not just a method of the scene object, but yet another method of the Object3d class to which the scene object is another example of an object that is based off of the object 3d class. Yes the scene object also has a position property and if desired that can be used as a way to change the position of a whole scene relative to what is often called world space. However for now when it comes to this section I will be going over an example that make use of the [THREE.Group constructor](/2018/05/16/threejs-grouping-mesh-objects/) as a way to have a parent and child kind of situation with the position of objects.
 
 ```js
 (function () {
