@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2021-05-06 17:02:10
-version: 1.11
+updated: 2022-04-04 16:05:28
+version: 1.12
 ---
 
-Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole scene. When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object, and if I do not add the camera to the scene I can see the shake. In the event that I do need to add the camera to the scene then the shake object can be applied to an object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) such as a group or a camera.
+Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole scene object. When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
 
-This shake module might then work out okay when it comes to adding some kind of screen shake effect to a three.js project. For the sake of trying to keep things short, simple and too the point I did not go over board with feature for thus module, but there are still a few more additional things that I might want to add or change.
+This shake module might then work out okay when it comes to adding some kind of screen shake effect to a three.js project. For the sake of trying to keep things short, simple and too the point, I did not go over board with feature for thus module. The core of the idea is that I just need a way to randomly move an object around within a range, or apply some other kind of logic to produce the shake effect.
 
 <!-- more -->
 
