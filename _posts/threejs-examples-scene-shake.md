@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2022-04-04 16:12:46
-version: 1.13
+updated: 2022-04-04 16:14:13
+version: 1.14
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole [scene object](/2018/05/03/threejs-scene/). When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera that I am suing to render the scene to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
@@ -103,7 +103,7 @@ There might be many more features I might want to add to something like this, an
 
 ## 3 - Base demo of the shake module where I am shaking the whole scene
 
-Now that I have my shake module together I am going to want a little more javaScript code that will serve as a way to test this module out. Much of this example is just more of the same when it comes to any other simple three.js code example, of full blown project in which I create a scene, one or more mesh objects, a camera, and a renderer. However one important thing to note os that if I want to use the shake with the scene object like I am doing in this example then I am going to want to not add the camera to the scene.
+Now that I have my shake module together I am going to want a little more javaScript code that will serve as a way to test this module out. Much of this example is just more of the same when it comes to any other simple three.js code example, of full blown project in which I create a scene, one or more mesh objects, a camera, and a renderer. However one important thing to note is that if I want to use the shake with the scene object like I am doing in this example then I am going to want to not add the camera to the scene.
 
 ```js
 (function () {
