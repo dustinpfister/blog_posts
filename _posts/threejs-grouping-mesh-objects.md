@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-04-04 16:41:16
-version: 1.28
+updated: 2022-04-04 16:45:55
+version: 1.29
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each by moving the position of a group object rather than each individual mesh object. In addition to this A group object also has all kinds of properties that are inherited from object3d on top of that of just the position and rotation properties such as the name and user data objects. So I can set a custom name for a group, and also park all kinds of user data and methods in the user data object of a group.
@@ -26,6 +26,10 @@ When it comes to grouping two ore more Mesh Objects together it may be preferabl
 ### Version numbers matter
 
 I also often try to mention that three.js is a project where the version number matters a great deal, in this post I am using [three.js r91](https://github.com/mrdoob/three.js/tree/r91).
+
+### The source code examples in this post are on Github
+
+The source code examples that I am writing about in this post can be found in [my test threejs Github Repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-grouping-mesh-objects).
 
 ## 1 - Basic Mesh Group example in three.js
 
