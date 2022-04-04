@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-07-04 12:43:00
-version: 1.27
+updated: 2022-04-04 16:41:16
+version: 1.28
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each by moving the position of a group object rather than each individual mesh object. In addition to this A group object also has all kinds of properties that are inherited from object3d on top of that of just the position and rotation properties such as the name and user data objects. So I can set a custom name for a group, and also park all kinds of user data and methods in the user data object of a group.
@@ -15,19 +15,19 @@ Also for one reason or another it is often a good idea to have a way to group tw
 
 <!-- more -->
 
-## 1 - Groups in threejs and what else to know
+## Groups in threejs and what else to know
 
 This is not a post on three.js for beginners, I have a post for that, and if you are still fairly to threejs you might want to [start by reading some kind of getting started post on threejs first](/2018/04/04/threejs-getting-started/). The main focus in this post has to do with creating a group of two or more or more [Mesh Object](/2018/05/04/threejs-mesh/) instances to create a single Group that can then be worked with by itself in a scene. These groups of objects can from complex shapes composed of many mesh objects using a collection of built in geometry constructors and materials. So then I assume that you have at least a basic working knowledge of three.js, and of course javaScript in general. 
 
-### 1.1 - THREE.Object3D vs THREE.Group
+### THREE.Object3D vs THREE.Group
 
 When it comes to grouping two ore more Mesh Objects together it may be preferable to use the Group constructor in place of just using Object3D by itself. However as far as I can tell there is not much of any difference other than it makes the readability of your code more clear as to what the object is. The fat of the matter is that when it comes to grouping things together such a task can be done with any object that is based off the Object3d class. This includes Groups, Mesh objects, Cameras, various helpers, and even a whole Scene object.
 
-### 1.2 - Version numbers matter
+### Version numbers matter
 
 I also often try to mention that three.js is a project where the version number matters a great deal, in this post I am using [three.js r91](https://github.com/mrdoob/three.js/tree/r91).
 
-## 2 - Basic Mesh Group example in three.js
+## 1 - Basic Mesh Group example in three.js
 
 For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh Normal Material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
 
@@ -78,7 +78,7 @@ Once I have my group together I can do something like changing the position, rot
     ());
 ```
 
-## 3 - Rotation of geometry to make it line up with the front of a mesh object
+## 2 - Rotation of geometry to make it line up with the front of a mesh object
 
 In some cases I will want to rotate the geometry that I am using with a mesh so that the front of the geometry will line up with the front of the mesh object, so that things will look the way I want it to when using something like the object3d look at method. For example say I have a group of cone geometries and I want the point of the cones to face the center of the group, or maybe I want them to face away from the center. To do this I will just want to call the rotate x method of the buffer geometry class instance that is the cone geometry and adjust the rotation alone that axis so that it is the way it should be relative to the face of the mesh object. When doing this I will typically just want to rotate the geometry once, and then use th object3d level properties and methods to adjust orientation of the mesh objects.
 
@@ -140,7 +140,7 @@ In some cases I will want to rotate the geometry that I am using with a mesh so 
     ());
 ```
 
-## 4 - The object3d look at method, getting world position, and groups
+## 3 - The object3d look at method, getting world position, and groups
 
 One nice feature of the [object3d class is the look at method](/2021/05/13/threejs-object3d-lookat/), that helps a lot when it comes to setting the orientation of an object such as a group. I can call this method off of an instance of something that is based off of object3d and pass a position in the from of a few number arguments, or a single instance of vector3. This method works fine in most situations but there are a few draw backs and limitations one of which is that the look at method will always set the orientation of the object relative to world space rather than a space that is relative to a group.
 
@@ -195,7 +195,7 @@ renderer.render(scene, camera);
 
 In this example I am once again using the rotate x method of the cone geometry to make it so the point of the cone geometry is line up with the front of the mesh object that is using the cone geometry. I am then adding this cone geometry to a group, along with another child object that is a cube. I am then changing the position of the group so that it is at a location other than the origin. Because I am using the get world position method of the cube to set the values of a vector3 instance and using that with the look at method, this results in the cone pointing to the cube at its location relative to the group, rather than its location relative to world space.
 
-## 5 - Example of grouping with a camera
+## 4 - Example of grouping with a camera
 
 Grouping is basically whenever you use the add property of anything that inherits from the Object3D class and it is not just Groups that are based on the Object3d class. The Object3d class is a base class of many other objects in threejs which includes things like cameras, as such I can use the add method to add things like lights, and a Mesh, and position them relative to the camera. 
 
@@ -262,7 +262,7 @@ So then say for example I want to have a point light on top of camera, and a Mes
     ());
 ```
 
-## 6 - Using Grouping when making a Model
+## 5 - Using Grouping when making a Model
 
 Grouping comes in handy when I want to make a Constructor function that will include a group of Mesh Object instances that can be added to a Scene that will constitute some kind of model. The group will typically be one of many properties of the constructor, and will also contain methods that I can use on that group.
 
@@ -463,7 +463,7 @@ So I would use it in a main.js file to make something like this:
 
 This results in three instances of the model, each with different radius, count of boxes, and color. I am also changing the state of one of theme in a loop, by calling one of the methods of the model, as well as by directly working with the group instance as it has all the [Object3D](/2018/04/23/threejs-object3d/) methods to play with that will effect the group as a whole when used.
 
-## 7 - Conclusion
+## 6 - Conclusion
 
 Grouping is a useful in three.js projects, don't forget that it is also something that you can do with anything in three.js that inherits from the Object3D class. So not only can you use grouping with Mesh Object instances, it can also be done with things like lights, and cameras, and also even additional groups.
 
