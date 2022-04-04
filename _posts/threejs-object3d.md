@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-04-04 12:03:23
-version: 1.45
+updated: 2022-04-04 12:05:19
+version: 1.46
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
@@ -42,7 +42,7 @@ Typically I do not work with the class directly, I work with something that inhe
     console.log(JSON.stringify(obj3d.position));
 ```
 
-Here I made just a simple example where I am just playing with the position property, which is an instance of Vector3. Vector3 is yet another class in threejs that a developer should be familiar with as it has to do with a single point in 3d space, so it goes without saying that class will come up a lot also.
+Here I made just a simple example where I am just playing with the [position property of the object3d class](/2022/04/04/threejs-object3d-position/), which is an instance of Vector3. Vector3 is yet another class in threejs that a developer should be familiar with as it has to do with a single point in 3d space, so it goes without saying that class will come up a lot also.
 
 The position property of Object3d can be used to set the center point of the object in a Scene. In the case that the Object is a child of another object it would be the position relative to the parent Object.
 
