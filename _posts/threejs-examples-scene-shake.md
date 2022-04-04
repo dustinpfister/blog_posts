@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2022-04-04 16:05:28
-version: 1.12
+updated: 2022-04-04 16:12:46
+version: 1.13
 ---
 
-Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole scene object. When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
+Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole [scene object](/2018/05/03/threejs-scene/). When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera that I am suing to render the scene to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
 
 This shake module might then work out okay when it comes to adding some kind of screen shake effect to a three.js project. For the sake of trying to keep things short, simple and too the point, I did not go over board with feature for thus module. The core of the idea is that I just need a way to randomly move an object around within a range, or apply some other kind of logic to produce the shake effect.
 
@@ -17,7 +17,7 @@ This shake module might then work out okay when it comes to adding some kind of 
 
 ## 1 - The shake module three.js example and what to know first
 
-In this post I am writing about a module that works on top of three.js to proved a way to create and update a screen or object shake effect. This is not a getting started type post on three.js, or any additional skills that are required in order to extract something of value from reading this. However in this section I will be briefly writing about a few things that you should know about before reading more.
+In this post I am writing about a module that works on top of three.js to provide a way to create and update a screen or object shake effect. This is not a [getting started type post on three.js](/2018/04/04/threejs-getting-started/), or any additional skills that are required in order to extract something of value from reading this. However in this section I will be briefly writing about a few things that you should know about before reading more.
 
 ### 1.1 - Version Numbers matter with three.js
 
@@ -27,9 +27,9 @@ When I made this shake module and the demos that make use of it I was using thre
 
 First off I will want to go over the shake module first before getting into any kind of demo that makes use of this module. This module had a public create method that I can use in a project to create an instance of a shake object, this object will contain data about the current state of the shake object. Main value of interest with the shake object are the active flag and values that have to do with the current intensity of the position and angle range of the shake effect.
 
-After the create effect I have a roll effect which will change the current state of the instances of Euler and Vector3 that are used to set the position of the object to which the shake object is applied to. And speaking of doing that I also have one more additional public method that is used to do just that apply the current state of shake object to a given object in three.js hat inherits from three.js. This object can be the scene object which is what I originally intended to use this with, but it can also be used with any other object based on object3d such as a group, mesh, or camera.
+After the create effect I have a roll effect which will change the current state of the instances of [Euler](/2021/04/28/threejs-euler/) and [Vector3](/2018/04/15/threejs-vector3/) that are used to [set the position of the object](/2022/04/04/threejs-object3d-position/) to which the shake object is applied to. And speaking of doing that I also have one more additional public method that is used to do just that apply the current state of shake object to a given object in three.js hat inherits from three.js. This object can be the scene object which is what I originally intended to use this with, but it can also be used with any other object based on object3d such as a group, mesh, or camera.
 
-I am making use of the user data object of the object3d class as a way to park what the original values where for the position and orientation of the object that was passed to it. When the active flag is false the values park there will be used to set the position and orientation of the object, else a set of values in the shake object will be used that can bu updated with a roll method.
+I am making use of the [user data object](/2021/02/16/threejs-userdata/) of the object3d class as a way to park what the original values where for the position and orientation of the object that was passed to it. When the active flag is false the values park there will be used to set the position and orientation of the object, else a set of values in the shake object will be used that can bu updated with a roll method.
 
 ```js
 (function (api) {
@@ -100,6 +100,7 @@ I am making use of the user data object of the object3d class as a way to park w
 ```
 
 There might be many more features I might want to add to something like this, and also maybe change the whole way that I go about creating the shake values to begin with even. However for the sake of this post, and also for the example itself maybe it would be best to try to keep this module relative simple and not go to far beyond what I all ready have here. Also much of the logic that comes to mind when it comes to setting the active flag and updating the roll, and setting the values for position and rotation range values will change a little from one use case to another anyway. So then maybe much more of what comes to mind should not be baked into the module, but just be additional logic in the demo that will be using this module.
+
 ## 3 - Base demo of the shake module where I am shaking the whole scene
 
 Now that I have my shake module together I am going to want a little more javaScript code that will serve as a way to test this module out. Much of this example is just more of the same when it comes to any other simple three.js code example, of full blown project in which I create a scene, one or more mesh objects, a camera, and a renderer. However one important thing to note os that if I want to use the shake with the scene object like I am doing in this example then I am going to want to not add the camera to the scene.
