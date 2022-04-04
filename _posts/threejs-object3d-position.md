@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-04-04 11:01:22
-version: 1.4
+updated: 2022-04-04 11:03:46
+version: 1.5
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the [Vector3 class](/2018/04/15/threejs-vector3/), and setting the values of this will set the position of an object on interest. Sense [the Object3d class](/2018/04/23/threejs-object3d/) is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, once one learns how to set the position of one object that learn how to set the position of just about almost everything in threejs at least when it comes to objects. The position property of an instance of Buffer geometry is a whole other topic of concern, but many of the basic ideas are the same when it comes to the values that have to do with position.
@@ -16,6 +16,8 @@ The [position property of the Object3d class in threejs](https://threejs.org/doc
 ## 1 - Basic example of the position property of Object3d
 
 To start things off here is a basic example of the position property that involves just setting the position of a single mesh object, and a camera both of which are based off of the Object3d class. As with any threejs example I set up my scene object, camera, and renderer and when doing so I also often add a Grid helper to the scene as well if it is going to just be some simple example like this. I then create a single mesh object using th Box geometry constrictor and the normal material and add that to the scene object. Now that I have a scene and a few objects in the scene such as the mesh object and the camera, I can use the position property of these objects to set the position of them in the scene.
+
+The set method of the Vector3 instance would be one way to go about setting the value of the position of something such as the mesh object. With this method I can just call the set method off of the instance of Vector3 at the position property of say the mesh object and pass number literals for a desired fixed position of the mesh object, and sense this is a basic example I can also do the same for the camera as well.
 
 ```js
 (function () {
