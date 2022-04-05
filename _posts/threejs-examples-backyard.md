@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2022-04-05 08:37:23
-version: 1.17
+updated: 2022-04-05 08:42:46
+version: 1.18
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
@@ -15,17 +15,17 @@ Still what I wanted to do is have at least one or more collections of mesh objec
 
 <!-- more -->
 
-## 1 - What to know fist
+## This backyard threejs scene examples and what to know fist
 
-This is a full threejs project example in which I am making use of all kinds of features in three.js to make something that is starting to look like a final product of some kind. So it should go without saying that this is not in any way a getting started type post for people that are new to three.js.
+This is a full threejs project example in which I am making use of all kinds of features in three.js to make something that is starting to look like a final product of some kind. So it should go without saying that this is not in any way a [getting started type post for people that are new to three.js](/2018/04/04/threejs-getting-started/).
 
-### 1.1 - version numbers used
+### version numbers used
 
 When I started this example I was using r127 of three.js, and last i check the example works okay on top of that version of three.js.
 
-## 2 - The canvas texture module
+## 1 - The canvas texture module
 
-I wanted to have a way to create some quick textures for this example without having to bother with extremal image assets. So the way that I often choose to do that is to make use of canvas elements. This module provides a create canvas texture helper where I just have to give a draw method and an image size and the result is a texture that I can use as a map for a material. I also have a few built in methods that make use of this to quickly create some basic textures that are just random color grids, to just quickly add some texture to materials.
+I wanted to have a way to create some quick textures for this example without having to bother with extremal image assets. So the way that I often choose to do that is to make use of [canvas elements as a way to go about adding textures to a threejs project](/2018/04/17/threejs-canvas-texture/). So for this project I made a canvas texture module that provides a create canvas texture helper where I just have to give a draw method and an image size and the result is a texture that I can use as a map for a material. I also have a few built in methods that make use of this to quickly create some basic textures that are just random color grids, to just quickly add some texture to materials.
 
 ```js
 (function (canvasTextureMod) {
@@ -89,7 +89,7 @@ I wanted to have a way to create some quick textures for this example without ha
     (this['canvasTextureMod'] = {}));
 ```
 
-## 3 - The guy module
+## 2 - The guy module
 
 This is another copied of my basic guy module that I worked out for one of my other three.js examples. So then this is just yet another one of my crude models where i am creating something just using the built in three.js geometry constructors rather than creating a professionally made module in blender and then importing it.
 
@@ -242,7 +242,7 @@ This is another copied of my basic guy module that I worked out for one of my ot
     (this['GuyMod'] = {}));
 ```
 
-## 4 - Hamster wheel
+## 3 - Hamster wheel
 
 I also wanted to place my hamster wheel model into the backyard scene, just for the hell of it. In my main example post of this model I made it so my guy model was running inside of it, but for this example I just want to place the model in there just to have something more in the scene. It seems like I was going in the direction of just turning this example into some kind of crude clock like example, so I intended to have the wheel spin in relation to some kind of unit of time.
 
@@ -369,7 +369,7 @@ I also wanted to place my hamster wheel model into the backyard scene, just for 
     (this['WheelMod'] = {}));
 ```
 
-## 5 - House
+## 4 - House
 
 This is a backyard type scene, so of course I need to add a house, and for that I went with the house module example that I made. In fact this backyard example is more or less just a far more advanced version of that starting point. In that example I just wanted to make a crude house module like that of my many other crude yet effective type modules. Nothing fancy with this one though except for that I experimented with making a custom geometry for a small triangle type area of the house.
 
@@ -451,7 +451,7 @@ This is a backyard type scene, so of course I need to add a house, and for that 
     (this['HouseMod'] = {}));
 ```
 
-## 6 - Main javaScript file
+## 5 - Main javaScript file
 
 Now I am going to want a fair amount of additional javaScript code and a few more mesh objects and so forth that I have not yet packed away into there own files. So then I am going to want a main.js javaScript file just like with any other major three.js example where I create my main scene object, as well as a camera, renderer, and animation loop method.
 
@@ -671,7 +671,7 @@ In the main application loop I am updating the position of various mesh objects,
 
 For this example I also wanted to add a sky map just for the sake of having something other than a solid color background. For this I made use of the cube texture loader to load a collection of cube texture image files the should be at a given absolute path when hosting this. However in the event that there is an error loading the texture does not load I just create a default texture using canvas generated content.
 
-## 7 - Conclusion
+## 6 - Conclusion
 
 This has tuned out to be an interesting project in that it is more of a situation in which I am using a whole bunch of other projects to create one big main project. I am not sure if I want to put more time into this one or not though, but I am sure that I am going to want to start creating at least a few more examples like this as I think that this is just what needs to happen if I keep working on three.js code examples. There is only so much to write about when it comes to the basics of the framework itself, sooner or later I am going to want to start making things with this library.
 
