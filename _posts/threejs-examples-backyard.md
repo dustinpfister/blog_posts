@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2022-04-05 11:02:51
-version: 1.21
+updated: 2022-04-05 11:05:12
+version: 1.22
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
@@ -22,6 +22,10 @@ This is a full threejs project example in which I am making use of all kinds of 
 ### version numbers used
 
 When I started this example I was using r127 of three.js back in may of 2021. The last time I came around to doing a little editing I was using r135, and last I check the example works okay on top of that version of three.js.
+
+### The source code examples that I am writing about here are on Github
+
+the source code examples that I am writing about in this post can be found in my [test threejs repository on Github](/https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-backyard). This is also where I am parking the source code for all my other posts on threejs, including the various other examples that I am in turn also using in this example.
 
 ## 1 - The canvas texture module
 
