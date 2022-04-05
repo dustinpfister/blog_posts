@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2022-04-05 08:42:46
-version: 1.18
+updated: 2022-04-05 08:46:06
+version: 1.19
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
@@ -91,7 +91,7 @@ I wanted to have a way to create some quick textures for this example without ha
 
 ## 2 - The guy module
 
-This is another copied of my basic guy module that I worked out for one of my other three.js examples. So then this is just yet another one of my crude models where i am creating something just using the built in three.js geometry constructors rather than creating a professionally made module in blender and then importing it.
+This is a copy of my [basic guy module that I worked out for one of my other three.js examples](/2021/04/29/threejs-examples-guy-one/). This is just yet another one of my crude models where I am creating something just using the built in three.js geometry constructors rather than creating a professionally made module in blender and then importing it. Animation of the guy is then achieved by making use of one of the various methods that can be used to create a simple walk cycle or something to that effect, another alternative is to just work out some custom logic to move the arms or legs in a novel way, but I am not getting into that sort of thing with this example at least.
 
 ```js
 (function (GuyMod) {
