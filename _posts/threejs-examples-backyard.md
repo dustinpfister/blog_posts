@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2022-04-05 08:46:06
-version: 1.19
+updated: 2022-04-05 08:49:35
+version: 1.20
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
@@ -244,7 +244,7 @@ This is a copy of my [basic guy module that I worked out for one of my other thr
 
 ## 3 - Hamster wheel
 
-I also wanted to place my hamster wheel model into the backyard scene, just for the hell of it. In my main example post of this model I made it so my guy model was running inside of it, but for this example I just want to place the model in there just to have something more in the scene. It seems like I was going in the direction of just turning this example into some kind of crude clock like example, so I intended to have the wheel spin in relation to some kind of unit of time.
+I also wanted to place my [hamster wheel model into the backyard scene](/2021/04/19/threejs-examples-hamster-wheel/), just for the hell of it to make the scene a little more interesting. In my main example post of this model I made it so my guy model was running inside of it, but for this example I just want to place the model in there just to have something more in the scene. It seems like I was going in the direction of just turning this example into some kind of crude clock like example, so I intended to have the wheel spin in relation to some kind of unit of time.
 
 ```js
 (function (WheelMod) {
@@ -369,9 +369,9 @@ I also wanted to place my hamster wheel model into the backyard scene, just for 
     (this['WheelMod'] = {}));
 ```
 
-## 4 - House
+## 4 - The House model
 
-This is a backyard type scene, so of course I need to add a house, and for that I went with the house module example that I made. In fact this backyard example is more or less just a far more advanced version of that starting point. In that example I just wanted to make a crude house module like that of my many other crude yet effective type modules. Nothing fancy with this one though except for that I experimented with making a custom geometry for a small triangle type area of the house.
+This is a backyard type scene, so of course I need to add a house, and for that I went with the [house module example that I made](/2021/04/23/threejs-examples-house/). In fact this backyard example is more or less just a far more advanced version of that starting point. In that example I just wanted to make a crude house module like that of my many other crude yet effective type modules. Nothing fancy with this one though except for that I experimented with making a custom geometry for a small triangle type area of the house.
 
 ```js
 (function (HouseMod) {
