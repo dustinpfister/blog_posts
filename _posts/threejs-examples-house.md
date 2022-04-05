@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2021-06-27 08:30:02
-version: 1.21
+updated: 2022-04-05 08:58:09
+version: 1.22
 ---
 
 Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. This time it will be yet another one of my models that is just a collection of mesh object using the built in threejs geometry constructors rather than an external file of one type or another.
@@ -191,5 +191,7 @@ When this demo is up an running things seem to be working as I would expect for 
 
 ## 3 - Conclusion
 
-So this is not much to look at for now, but as I make more models like this I think I will eventually start something where I am working with a bunch of models like this to produce an over all larger project. I am not interested in making games with three.js at this time, I think a project like that would end up eating up to much time, however simple crude animations might work it I am willing to put in enough time.
+So this is not much to look at for now, but as I make more models like this I think I will eventually start something where I am working with a bunch of models like this to produce an over all larger project. In fact sense I first wrote this post I have got around to writing another post on another examples that is a more advanced version of this example that is just that. I have come to just simply calling it [the backyard scene example](/2021/05/07/threejs-examples-backyard/) for now and it includes this house model along with many others that I have made thus far.
+
+I am not interested in making games with three.js at this time, I think a project like that would end up eating up to much time, however simple crude animations might work if I am willing to put in enough time and energy to do so.
 
