@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2022-04-05 09:01:15
-version: 1.24
+updated: 2022-04-05 11:25:24
+version: 1.25
 ---
 
 I am experiencing a kind of burn out because I spend a great deal of time doing what I think I need to do, rather than what I want to do. Sadly often I end up spending all day writing these posts, and simple source code examples for such posts. As such there often is no time and energy left over for working on any kind of real project that I truly would like to work on when it comes to making things that are useful, or at least mildly amusing in some way. So I thought that some kind of [threejs example](/2021/02/19/threejs-examples/) would be a nice break from the usual kind of post where I am just writing about some kind of method in a framework, or some kind of native javaScript feature.
@@ -16,15 +16,18 @@ Anyway when it comes to starting to make something that is starting to look like
 
 <!-- more -->
 
-## 1 - What to know before hand
+## My Hamster wheel models, and what to know before hand
 
 This is a threejs example that is intended for people that all ready have a solid grasp on the basics of threejs and are now looking to start making some actual projects of some kind using the library. So this is not a [getting stared post on threejs](/2018/04/04/threejs-getting-started/), let alone [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have at least some basic working knowledge of threejs and javaScript and thus might gain something of value from reading this when it comes to reading up more on these topics. In this section I will not be getting into every little detail that you show know before hand, but I will be touching base on some topics that you should have solid at this point because they are relevant to the source code of this threejs animation example.
 
-### 1.1 - version numbers matter with threejs
+<iframe width="320" height="180" src="https://www.youtube.com/embed/evvbFFwIEXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+### Version numbers matter with threejs
 
 For this example I was using threejs version r127, in many of my older posts I was using older versions of threejs in some of them I was using r91. There are some javaScript libraries where much has not changed in the last few years, and as such older code will still work just fine. However this is not the case with threejs, it is a very fast moving library in terms of development so if this code is breaking the first thing you should check is the version number of threejs that is being used.
 
-## 2 - The Wheel Model
+## 1 - The Wheel Model
 
 First off is my wheel module that will create and return a hamster wheel model that I can then add to a scene object in a main javaScript file that will make use of this model. This module has just one public method that will create and return an object that contains a few instances of the [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor. There is not update method for this model because the only animation effect would be to just rotate the wheel part of the hamster wheel model and that can easily be done when it comes to writing a little additional code outside of this model.
 
@@ -147,7 +150,7 @@ First off is my wheel module that will create and return a hamster wheel model t
 }( this['WheelMod'] = {} ));
 ```
 
-## 3 - A Guy Model
+## 2 - A Guy Model
 
 I am now going to want to also have a simple guy model to place inside the wheel of the hamster wheel model. This is a model that I worked out before hand, however I often do end up reusing them in additional projects, and I think it would prove to be a nice touch for this example.
 
@@ -285,7 +288,7 @@ I am now going to want to also have a simple guy model to place inside the wheel
 }( this['GuyMod'] = {} ));
 ```
 
-## 4 - A main.js file
+## 3 - A main.js file
 
 Now I am just going to want a little more javaScript code that will make use of these modules that I made, along with the usual suspects of any other threejs example.
 
@@ -353,7 +356,7 @@ Now I am just going to want a little more javaScript code that will make use of 
 }());
 ```
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 So this turned out to be a fun little project, however like always there is still room for more when it comes to having a little fun with this one. There is using canvas elements as textures for one or more faces of one or more of the meshes, so that might be a nice addition when it comes to maybe putting a little more time into this one at some point. I am thinking about maybe doing something with canvas elements as a way to add some texture when it comes to having some expressions for the face of the guy module, and maybe some more interesting movement for it while I am at it. However I think that the wheel model is more or less solid when it comes to what it is that I had in mind for this, that is working just great and I think I am fairly happy with how that came out.
 
