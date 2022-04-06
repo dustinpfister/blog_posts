@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2022-04-06 08:49:49
-version: 1.32
+updated: 2022-04-06 08:52:06
+version: 1.33
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. The built in wireframe mode will work okay for the most part, but many might not like the look of it, so there is a need to look for [additional ways to create a wireframe such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -17,11 +17,11 @@ So then this post will be on wireframe mode in threejs, the basic use of the pro
 
 ## Wire frame mode of a material in three.js and what to know first
 
-This is a post on wire frames in three.js which is a javaScript library for working with 3d modeling. This is not a getting started type post on three.js as well as many addition skills that might be needed in order to gain something of value from reading this.
+This is a post on wire frames in three.js which is a javaScript library for working with 3d modeling. This is not a [getting started type post on three.js](/2018/04/04/threejs-getting-started/) as well as many addition skills that might be needed in order to gain something of value from reading this.
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using r111 of three.js, and the last time I cam around to do a little editing of this content I was testing things out on r127. Code breaking changes are introduced to three.js all the time, si I need to repate this in every three.js post regardless of what the post might be on. When it comes to just using the wire frame mode boolean of a material I can not say that has changed much, but other aspects of these examples might break in future versions of three.js.
+When I first wrote this post I was using r111 of three.js, and the last time I cam around to do a little editing of this content I was testing things out on r127. Code breaking changes are introduced to three.js all the time, so I need to repeat this in every three.js post regardless of what the post might be on. When it comes to just using the wire frame mode boolean of a material I can not say that has changed much, but other aspects of these examples might break in future versions of three.js.
 
 ## 1 - Basic wire frame demo
 
