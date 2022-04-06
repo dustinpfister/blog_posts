@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-04-06 09:04:42
-version: 1.34
+updated: 2022-04-06 09:08:38
+version: 1.35
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -17,7 +17,7 @@ The [three plane](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) con
 
 ## Plane Geometry in three.js and what to know first
 
-In this post I am writing about the plane geometry constructor in threejs a javaScript library that has to do with 3d modeling. As such I expect that you have spent at least a little time [learning how to get started with three.js](/2018/04/04/threejs-getting-started/), and how to program in general with client side javaScript. In any case in this section I will be going over a few things that you might want to read up on a bit more before really getting into the plane geometry constructor.
+In this post I am writing about the plane geometry constructor in threejs a javaScript library that has to do with 3d modeling. As such I expect that you have spent at least a little time [learning how to get started with three.js](/2018/04/04/threejs-getting-started/), and how to [program in general with client side javaScript](/2018/11/27/js-getting-started/). In any case in this section I will be going over a few things that you might want to read up on a bit more before really getting into the plane geometry constructor.
 
 ### version Numbers matter
 
@@ -31,7 +31,7 @@ It might be a good idea to read up more on the [Buffer Geometry class](/2021/04/
 
 So a plane geometry can be made by just calling the THREE.PlaneGeometry constructor and then passing the desired width and height of the plane in terms of the object size as the first two arguments. When it comes to the segment width and height of the plane an additional two arguments can be used to set that width and height of the plane geometry also in terms of the segment width and height.
 
-The Plane geometry can then be used with a mesh and material object like any other built in geometry constructor in three js to produce a display object that can then be added to a scene. So A Basic example of the three plane geometry constructor might look something like this.
+The Plane geometry can then be used with a mesh and material, like that of the [basic material](/2018/05/05/threejs-basic-material/) for example, like any other built in geometry constructor in three js to produce a display object that can then be added to a scene. So A Basic example of the three plane geometry constructor might look something like this.
 
 ```js
 var scene = new THREE.Scene();
