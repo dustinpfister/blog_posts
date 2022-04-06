@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2022-04-06 08:59:03
-version: 1.35
+updated: 2022-04-06 09:02:05
+version: 1.36
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. The built in wireframe mode will work okay for the most part, but many might not like the look of it, so there is a need to look for [additional ways to create a wireframe such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -29,7 +29,7 @@ When I first wrote this post I was using r111 of three.js, and the last time I c
 
 ## 1 - Basic wire frame demo
 
-Like many of my other three.js posts I like to start off with a very basic example of something, and get that out of the way before moving on to more complex examples, of just simply other ways of doing more or less the same thing. The easiest way to get started with wire frames is to just set the wire frame property of a material like that of the basic material to true, and that will just about wrap it up.
+Like many of my other three.js posts I like to start off with a very basic example of something, and get that out of the way before moving on to more complex examples, of just simply other ways of doing more or less the same thing. The easiest way to get started with wire frames is to just set the wire frame property of a material like that of the [basic material](/2018/05/05/threejs-basic-material/) to true, and that will just about wrap it up.
 
 ```js
 (function () {
