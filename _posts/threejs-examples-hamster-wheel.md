@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2022-04-06 08:47:02
-version: 1.26
+updated: 2022-04-06 08:48:14
+version: 1.27
 ---
 
 Some times I end up experiencing a kind of burn out because I spend a great deal of time doing what I think I need to do, rather than what I want to do. Sadly often I end up spending all day writing these posts, and simple source code examples for such posts. As such there often is no time and energy left over for working on any kind of real project that I truly would like to work on when it comes to making things that are useful, or at least mildly amusing in some way. So I thought that some kind of [threejs example](/2021/02/19/threejs-examples/) would be a nice break from the usual kind of post where I am just writing about some kind of method in a framework, or some kind of native javaScript feature.
@@ -25,7 +25,7 @@ This is a threejs example that is intended for people that all ready have a soli
 
 ### Version numbers matter with threejs
 
-For this example I was using threejs version r127, in many of my older posts I was using older versions of threejs in some of them I was using r91. There are some javaScript libraries where much has not changed in the last few years, and as such older code will still work just fine. However this is not the case with threejs, it is a very fast moving library in terms of development so if this code is breaking the first thing you should check is the version number of threejs that is being used.
+For this example I was using threejs version r127 when I first started the over all project. There are some javaScript libraries where much has not changed in the last few years, and as such older code will still work just fine. However this is not the case with threejs, it is a very fast moving library in terms of development so if this code is breaking the first thing you should check is the version number of threejs that is being used.
 
 ## 1 - The Wheel Model
 
