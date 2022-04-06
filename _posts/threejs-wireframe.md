@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2022-04-06 08:52:06
-version: 1.33
+updated: 2022-04-06 08:53:49
+version: 1.34
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. The built in wireframe mode will work okay for the most part, but many might not like the look of it, so there is a need to look for [additional ways to create a wireframe such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -17,7 +17,7 @@ So then this post will be on wireframe mode in threejs, the basic use of the pro
 
 ## Wire frame mode of a material in three.js and what to know first
 
-This is a post on wire frames in three.js which is a javaScript library for working with 3d modeling. This is not a [getting started type post on three.js](/2018/04/04/threejs-getting-started/) as well as many addition skills that might be needed in order to gain something of value from reading this.
+This is a post on wire frames in three.js which is a javaScript library for working with 3d modeling. This is not a [getting started type post on three.js](/2018/04/04/threejs-getting-started/) as well as many addition skills that might be needed in order to gain something of value from reading this. Still I will take a moment at least in this section to outline some things to brush up on first before making use of wire frame mode, as well as other ways of having a wire frame like look when it comes to making textures.
 
 ### Version Numbers matter with three.js
 
