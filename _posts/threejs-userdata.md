@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-04-07 09:15:00
-version: 1.40
+updated: 2022-04-07 09:17:06
+version: 1.41
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in this object.
@@ -27,7 +27,7 @@ I get emails and blog comments that had to do with code breaking chnages that ha
 
 ### The source code examples in this post are on Github
 
-The source code examples that I am writing about here in this post are up [on Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-userdata).
+The source code examples that I am writing about here in this post are up [on Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-userdata). So if there is something that you want to bring up there is the comments section at the bottom of this post, as well as making a pull request at the test threejs repo on Github.
 
 ## 1 - Basic User Data Object3d Example with rotating cubes
 
