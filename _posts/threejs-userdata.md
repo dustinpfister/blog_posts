@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-04-07 08:11:01
-version: 1.31
+updated: 2022-04-07 08:12:26
+version: 1.32
 ---
 
-In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mesh object, and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in this object.
+In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in this object.
 
 It is a good idea to place any data that has to do with an application itself in this user data object as that will help to make sure that it is done in a safe way that will not conflict with anything internal with three.js. Many other libraries and frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object. Just adding custom stuff to the object itself can cause problems in the event that there is a conflict, also making use of the user object helps to make things more clear as to what has to do with the logic of the application and what is part of threejs.
 
