@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-13 16:21:01
-version: 1.28
+updated: 2022-04-07 09:22:42
+version: 1.29
 ---
 
 When it comes to getting a reference to a mesh object in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. 
@@ -15,19 +15,19 @@ When it comes to the Object3d class in three.js there is an id property of each 
 
 <!-- more -->
 
-## 1 - Object3d name property, and learning the basics first
+## Object3d name property, and learning the basics first
 
 This is a post on the name property of the object3d class in three.js that is an empty string by default, but can be used to set a unique value that will act as a way to get a reference to the object at a later point in a body of javaScript code. This is an advanced post on three.js where I am just writing about one little property and some corresponding prototype method in the object3d class. I will not be getting into detail about the object3d class and everything that it is based off of in this post. It should also go without saying that I will not be getting into the basics of creating a three.js project in general also, and assume that you have at least some background working with this javaScript library.
 
-### - 1.1 Version Numbers are a big deal with three.js
+### Version Numbers are a big deal with three.js
 
 When I wrote this post I was using three.js revision r127 of three.js which was a late version of three.js at the time that I first wrote this post in May of 2021. In the future code breaking changes might be made that will case these code examples to no longer work, and such changes might happen sooner rather than later as three.js is a project that is moving fairly fast when it comes to development.
 
-### 1.2 - Might want to read up more on the Object3d class in general
+### Might want to read up more on the Object3d class in general
 
 There is a great deal more to be aware of when it comes to working with the object3d class so it would be a good idea to read up more on the [object3d class in general](/2018/04/23/threejs-object3d/) if you have some time to do so. The object3d class is a major base class in three.js, and here are a lot of other objects that are based off of the Object3d class such as Mesh objects, cameras, Groups, and even the Scene object just to name a few things. So when it comes to learning something about the Object3d class such as the name property this is then something that can be applies to everything that is built on top of Object3d. SO the name property can be set for a mesh object, but it can also be set for things like groups, and cameras.
 
-## 2 - Basic get by name example
+## 1 - Basic get by name example
 
 So then I should start off with a basic getting started type example with the name property and the get by name method of the object3d class. In this example I create a group using the THREE.Group constructor which is also based on the Object3d class, so I set a name property for it. In then add to mesh objects to this group, each of them I also set a name for called just simply box1 and box2. Later on in the example I can then call the get object by name method off of the group to get the first box object in the group. I can then do something simple to that mesh object such as changing the rotation of the object.
 
@@ -74,7 +74,7 @@ renderer.render(scene, camera);
 
 That is then the basic idea of the name property it is just like that of the id property when it comes to HTML elements. I can set a string value to a mesh object, and then I can get a reference to that mesh object later by using a method that can be used to get a reference to the object by this name string value. However in order to really get what this is all about solid I might want to work out at least a few more examples that prove to be something that is at least starting to look like some kind of actual project.
 
-## 3 - Using get by name to set custom values for each box in a group
+## 2 - Using get by name to set custom values for each box in a group
 
 Now that I have the basic idea of what the name property is used for it is time to move into making a more complex example where I am using the name property and the get by name property to get at specific objects and change there properties to desired values. When it comes to making an actual project with three.js I often like to make simple little animations using models that are just groups of mesh objects. When doing so I often have many parts of these kinds of models so it makes sense to use this name property as a way to set names for the various parts, or just use this as a way to set and change values of the mesh objects to make a kind of crude model of something.
 
@@ -179,13 +179,13 @@ loop();
 
 So then this is starting to look like something kind of interesting now, however there is a great deal that I would like to add and change. In this example I just have one instance of this object 1 model of sorts, and of course things will get a little weird when I have more than one group with the same name, and then each of those groups having the same set of names for each child. So maybe I should get around to making at least one or two more examples where I am working out some kind of system for creating and setting name values for mesh objects and groups of such objects..
 
-## 4 - A model where I am setting truly unique name values for each mesh object of interest
+## 3 - A model where I am setting truly unique name values for each mesh object of interest
 
 The name property of object3d is then a great way to set some string values for each mesh object of interest and then use that as a way to get and set values for mesh objects that have a given unique string value. In this example I am taking the basic idea that I started in the previous example and am not going just a little farther with it by making name values that are unique for all parent and child mesh objects.
 
 It might make sense to go all out with name values by making sure that all mesh objects have their one unique values as this will enable me to get any mesh object that I want by calling the get by name value off from the scene object. However this might also prove to be overkill assuming that I can also get a reference of a group object by some other means. In any case when it comes to having more than one instance of a group of mesh objects it just starts to make more sense to do something to this effect.
 
-### 4.1 - The Box Group module
+### 3.1 - The Box Group module
 
 The logic that I first worked out in my previous example is now pulled into its own module. This is just something that I often end up doing when I start to make something that is starting to look like an actual project rather than just a simple copy and paste code snippet. The main feature of interest with this module with respect to the theme of this post is the create box group method at the top of the source code. In the body of this function I am setting names that should end up being unique for the group, and also each child of the group.
 
@@ -281,7 +281,7 @@ The logic that I first worked out in my previous example is now pulled into its 
     (this['BoxGroup'] = {}));
 ```
 
-### 4.2 - A main.js module
+### 3.2 - A main.js module
 
 Now that I have my code that has to do with the creation and mutation of these model objects pulled into an additional separate file the main javaScript file is now a little lighter. I can now just create a scene and then start creating and adding these groups of objects to the scene by calling the create method of the module.
 
@@ -339,7 +339,7 @@ var loop = function () {
 loop();
 ```
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 The name property is one of the many basic things about three.js that I should get into the habit of using, but just never really took the time to look into. It is true that I will not be using every little feature of every little class when it comes to using three.js to make an actual project. However I think that the name property is just one of these little aspects of three.js that I should be using often when making my crude yet effective modules that are just groups of mesh objects.
 
