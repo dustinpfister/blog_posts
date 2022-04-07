@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2022-04-07 11:15:07
-version: 1.11
+updated: 2022-04-07 11:18:44
+version: 1.12
 ---
 
 It has been a few months sense the last time I started a new post on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) so then with that said I think it might be called for to write a new [three example](/2021/02/19/threejs-examples/) type post. This time I was thinking about slapping together a quick project that makes use of Raycaster to create a simple yet effective menu system. If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](https://threejs.org/docs/#api/en/core/Raycaster) at some point sooner or layer of you like playing around with threejs. The Raycasetr constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. So then the use of a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
@@ -154,4 +154,4 @@ For now the basic idea of what I want to happen seems to work just fine as expec
 
 It has been a while sense I worked on anything with threejs so I am a little rusty when it comes to working with it. However it would seem that my content on threejs is taking off a little so it seems like I might be writing some new content on three.js as well as editing my older content while I am at it soon.
 
-This example alone as well as many of the other simple project examples I have made thus far are in a dire need of a little more work. This is why thinks have sowed down a little when it comes to writing new posts, this content as well as many others that I have write before need to be revised now and then.
+This example alone as well as many of the other simple project examples I have made thus far are in a need of a little more work of course. This is why things have slowed down a little when it comes to writing new posts, this content as well as many others that I have write before need to be revised a little. I have poked my head in and edited this content piece a little at this time, but I can not say that this example has a high priority for me when it comes to putting a little more time into it. I seem to me more interested in using threejs as a way to make programs that have to do with making videos, rather than some kind of menu system.
