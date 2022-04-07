@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-10 16:05:52
-version: 1.29
+updated: 2022-04-07 08:04:57
+version: 1.30
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -17,15 +17,15 @@ So in this post I will be going over a few simple examples of the user data prop
 
 <!-- more -->
 
-## 1 - Objected user data and what to know first
+## Objected user data and what to know first
 
 This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with and over all application, or module that runs on top of three.js in a client side javaScript environment. So then this is not really a post for people that are new to three.js, as I think that you should have at least some background with the library and javaScript in general before getting into these kinds of examples. There might still be at least a few things that I should cover before getting into the user data examples, so in this section I will be getting those things out of the way.
 
-### 1.1 - Version numbers matter with three.js
+### Version numbers matter with three.js
 
 I get emails and comments that tell me that this is something that I just need to mention in every post on three.js. When I write this post I was using r125 of three.js when I first started writing it. The last time I came around to do a little editing I was using r127 of three.js. Code breaking changes are made to three.js often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to edit the post.
 
-## 2 - Basic User Data Object3d Example with rotating cubes
+## 1 - Basic User Data Object3d Example with rotating cubes
 
 This will be a basic getting started example of the user data object of the object3d class. In this example I have a create cube helper that will create and return a mesh that uses the Box geometry, and the normal material. In this create cube function I am using the userData object as a way to set some rotation rates for each angle in an instance of THREE.Euler in radians per second. There rotation rates as well as the starting position of the cube can be set by way of the create cube helper functions arguments.
 
@@ -102,11 +102,11 @@ I then also have a function that will update a given cube by these rates in the 
 
 So after I create the main scene object for the example I then create an instance of THREE.Group, and then create and add a bunch of these cube objects that use the user data object with my create cube helper. In the body of my animation loop I then call the update cube method by looping over all the children of this group, and calling the update cube function for each of them. The end result is then having each of these cubes rotate in different ways and rates, because of there unique values in the userData object.
 
-## 3 - The userData object can also be used in groups becuase that is also based on object3d
+## 2 - The userData object can also be used in groups becuase that is also based on object3d
 
 So now that I have the basic idea out of the way it is time to get into having some fun with the user data object. In this section I will be writing about a module that I made where I am using the user data object as a way to set values for an instance of THREE.Group, and then I also have user data objects for each mesh in the group. Just like that of Mesh objects the THREE.Group class is also based off the Object3d Class so there is also a user Data object for an instance of a Group. So when it comes to creating a group that is a collection of Mesh objects, or any number of additional objects I can use the user data object of a group to park any values that will apply to the group as a whole.
 
-### 3.1 - A Cube Groups module
+### 2.1 - A Cube Groups module
 
 For this example I made a cube groups module that has a main create method that will create and return an Instance of THREE.Group. Inside the body of this create method I am assigning all kinds of values for the group as a whole by way of the user data object of the group. With that said I can set values like the total number of frames for the group animation, as well as the frame rate at which that animation will update. I can also pass options that will set user data objects for each mesh also though, for example I can set the number of rotations for each axis for each cube, and each instance of this cube groups is a collection of eight cubes.
 
@@ -218,7 +218,7 @@ Another major public method of this module is the update method where the first 
     (this['CubeGroupMod'] = {}));
 ```
 
-### 3.2 - Using the Cube Groups module
+### 2.2 - Using the Cube Groups module
 
 Now that I have this cube groups module worked out it is time to test things out with the usual three.js setup. In this main javaScript file where I create my three.js scene as well as the camera, renderer and so forth I decided to create a few instances of this cube group created with this cube group module of mine. For tow instances of the cube group I decided to leave things more or less to the hard coded defaults aside from the frame counts and frame speeds. I also made one additional cube group instance where I really started playing around with all of the various values for one of these cube  groups.
 
@@ -292,7 +292,7 @@ Now that I have this cube groups module worked out it is time to test things out
 
 So then this example has turned into a somewhat interesting example of using the user data object of the object3d class with both mesh objects as well as groups. However there are a lot of other kinds of objects based in three.js such as cameras and even the whole scene object that contains just about everything of interest when rendering a three.js project. The user data object can be used with one or more mesh objects as well as groups, I can also nest groups, and also part data for other objects such as cameras and helpers. So maybe I should get into at least a few more examples of this user data object as a way to really start to exercise what user data is all about when it comes to making my own projects and examples with three.js
 
-## 4 - Another example of Spheres changing position and setting back when the go out of range.
+## 3 - Another example of Spheres changing position and setting back when the go out of range.
 
 This example will not be anything to involved so it will be just a single file that contains all the threejs code as well as my own user data code. 
 
@@ -412,7 +412,7 @@ So once I have my helpers that create and return a group of mesh objects I just 
 
 The result of this then is a bunch of spheres start out positioned at the center origin point and then move out from there in random directions and speeds. When the distance of a mesh goes out of the rang that I set with the MAX DIST value then the user data values get set to new values, and the position of the mesh goes back to the origin.
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 So the user data object is one way to go about having some custom data set to a given mesh object, or any object in threejs that inherits from object 3d such as a camera object. There might be other ways of going about doing this sort of thing though such as having two sets of objects, one would be a collection of mesh objects in threejs, and another would be an independent array of user data objects. However it is good to know that there is an official object in every object based on the Object3d class that can be used as a way to go about packing application and module specific data. This allows me to create three.js modules that returned mesh objects, or groups, rather than my own weired object standards where there is a property that is a group or mesh. Which is a habit that I am not going to start to break because that sounds like a good idea to me.
 
