@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-04-07 09:10:09
-version: 1.39
+updated: 2022-04-07 09:15:00
+version: 1.40
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in this object.
@@ -23,7 +23,7 @@ This is a post on some examples that make use of the object3d user data object a
 
 ### Version numbers matter with three.js
 
-I get emails and comments that tell me that this is something that I just need to mention in every post on three.js. When I write this post I was using r125 of three.js when I first started writing it. The last time I came around to do a little editing I was using r127 of three.js. Code breaking changes are made to three.js often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to edit the post.
+I get emails and blog comments that had to do with code breaking chnages that happend in older source code examples. As such that tells me that I just need to mention in every post on three.js what version I was using. When I first wrote this post I was using r125 of three.js. The last time I came around to do a little editing I was using r135 of three.js and at that point at least the source code examples still seem to work fine on my end for what it is worth. Code breaking changes are made to three.js often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to editing the post.
 
 ### The source code examples in this post are on Github
 
