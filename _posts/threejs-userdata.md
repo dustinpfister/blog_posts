@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-04-07 08:12:26
-version: 1.32
+updated: 2022-04-07 08:14:28
+version: 1.33
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in this object.
@@ -19,7 +19,7 @@ So in this post I will be going over a few simple examples of the user data prop
 
 ## Objected user data and what to know first
 
-This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with and over all application, or module that runs on top of three.js in a client side javaScript environment. So then this is not really a post for people that are new to three.js, as I think that you should have at least some background with the library and javaScript in general before getting into these kinds of examples. There might still be at least a few things that I should cover before getting into the user data examples, so in this section I will be getting those things out of the way.
+This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with and over all application, or module that runs on top of three.js in a client side javaScript environment. So then this is not really a [post for people that are new to three.js](/2018/04/04/threejs-getting-started/), as I think that you should have at least some background with the library and [javaScript in general](/2018/11/27/js-getting-started/) before getting into these kinds of examples. There might still be at least a few things that I should cover before getting into the user data examples, so in this section I will be getting those things out of the way.
 
 ### Version numbers matter with three.js
 
