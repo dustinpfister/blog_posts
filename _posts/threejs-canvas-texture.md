@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-02-23 12:17:39
-version: 1.89
+updated: 2022-04-07 14:58:41
+version: 1.90
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. 
@@ -19,11 +19,13 @@ There is a whole lot of ground to cover when it comes to getting into this sort 
 
 <!-- more -->
 
-## threejs, canvas textures, and what to know first
+## Canvas textures in threejs, and what to know first
 
 In this post I will be going over a lot of source code examples that have to do with using the javaScript library known as threejs, along with various client side javaScript features. This is then not any [kind of getting started type post with threejs](/2018/04/04/threejs-getting-started/), or with [javaScript in general](/2018/11/27/js-getting-started/) for that matter. So I assume that you have at least some background with the basics of threejs, and client side javaScript development in general. 
 
 Regardless of what your level of experience is with threejs and javaScript, in this section I will be going over a few things that you should be up to speed with at this point before continuing to read the rest of this post.
+
+<iframe width="320" height="180" src="https://www.youtube.com/embed/wy5cQ_cwqEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### The source code examples here can be found on Github
 
