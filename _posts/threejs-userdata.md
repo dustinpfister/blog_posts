@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-04-07 08:14:28
-version: 1.33
+updated: 2022-04-07 08:16:15
+version: 1.34
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in this object.
@@ -27,7 +27,7 @@ I get emails and comments that tell me that this is something that I just need t
 
 ## 1 - Basic User Data Object3d Example with rotating cubes
 
-This will be a basic getting started example of the user data object of the object3d class. In this example I have a create cube helper that will create and return a mesh that uses the Box geometry, and the normal material. In this create cube function I am using the userData object as a way to set some rotation rates for each angle in an instance of THREE.Euler in radians per second. There rotation rates as well as the starting position of the cube can be set by way of the create cube helper functions arguments.
+This will be a basic getting started example of the user data object of the object3d class. In this example I have a create cube helper that will create and return a mesh that uses the [Box geometry](/2021/04/26/threejs-box-geometry/), and the [normal material](/2021/06/23/threejs-normal-material/). In this create cube function I am using the userData object as a way to set some rotation rates for each angle in an instance of THREE.Euler in radians per second. There rotation rates as well as the starting position of the cube can be set by way of the create cube helper functions arguments.
 
 I then also have a function that will update a given cube by these rates in the user data object by way of a given time delta value. This function will then need to be called in the body of some kind of main animation loop function that uses request animation frame that I have at the bottom of the source code example.
 
