@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-04-07 08:59:22
-version: 1.38
+updated: 2022-04-07 09:10:09
+version: 1.39
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in this object.
@@ -117,7 +117,6 @@ For this example I made a cube groups module that has a main create method that 
 Another major public method of this module is the update method where the first argument is a cube group that I have created with this modules create method, and the second argument is a time delta in seconds. Inside this update method I am updating the position and rotation of each cube in the group based on values set to the user data object of the group, as well as each cube.
 
 ```js
-
 (function (api) {
  
     var ANGLES_A = [225, 315, 135, 45];
