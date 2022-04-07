@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2022-04-07 11:04:48
-version: 1.9
+updated: 2022-04-07 11:07:00
+version: 1.10
 ---
 
 It has been a few months sense the last time I started a new post on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) so then with that said I think it might be called for to write a new [three example](/2021/02/19/threejs-examples/) type post. This time I was thinking about slapping together a quick project that makes use of Raycaster to create a simple yet effective menu system. If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](https://threejs.org/docs/#api/en/core/Raycaster) at some point sooner or layer of you like playing around with threejs. The Raycasetr constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. So then the use of a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
@@ -27,6 +27,7 @@ Also the source code for this threejs example can be found in [my test threejs r
 ## 1 A Basic example of this threejs powered menu system
 
 In this section I will be starting out with just the basics of what needs to happen first in order to get this menu system up and running. The main thing is that I have at least one javaScript sm.js file that provides a means to create what I am calling a state machine object. This library just has one public method thus far that is used to create and return a main state machine object. This state machine object can then be used in a main app loop of a main javaScript file thus far. 
+
 As of this writing the state of this sm.js is not so great, so things will likely change a whole lot in any future reversions of this examples when I get around to editing this post next. However much of the core functionality that I had in mind is all ready working, so maybe only so much more will need to change.
 
 In any case this is kind of an advanced post on threejs so I assume  that you know at least a little when it comes to using threejs and javaScript in general. If not you might want to step back and start out with something aimed more for developers that are new to threejs such as the [getting started with threejs post](/2018/04/04/threejs-getting-started/) that I wrote a while back.
@@ -123,7 +124,7 @@ var smMod = (function(){
 
 ### 1.2 - Basic example of this so far
 
-Now for just a basic hello world style example of this sm module this far.
+Now for just a basic hello world style example of this sm module this far. With that said I guess that there is just calling the create sm object method of the module to get my sm object. I will then just need to make sure that I am calling the render method of the object in the body of my main animation loop of the example.
 
 ```js
 var sm = smMod.createSMObject();
