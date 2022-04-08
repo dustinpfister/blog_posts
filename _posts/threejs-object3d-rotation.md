@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-08 13:05:16
-version: 1.2
+updated: 2022-04-08 13:10:57
+version: 1.3
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
+
+When it comes to just setting the local rotation of an object by way of this property, one way is by using something like the set method of the Euler class to set the rotation of the object to a given set of Euler angles in terms of radian values. In other worlds values between 0, and Math.PI \* \2. If you have a hard time thinking in radians there are tools that can be used to preform a quick conversion in the MathUtils object. There is a bit more to it than just that though, for example in some cases I might want to set the orientation of a geometry of a mesh object rather than the mesh object itself. There are other related tools and topics that I should also take a moment to cover while I am at it.
 
 <!-- more -->
 
