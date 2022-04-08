@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-08 13:40:03
-version: 1.9
+updated: 2022-04-08 13:42:51
+version: 1.10
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
@@ -146,5 +146,5 @@ Now for a simple animation example using the request animation frame method in t
 
 ## 3 - Conclusion
 
-The rotation property is then what I often used in order to set the rotation of an object such as a mesh object, group or camera. There is also the position property of the object3d class that holds an instance of the Vector3 class that is what is used to store and change the position of the object as well.
+The rotation property is then what I often used in order to set the rotation of an object such as a mesh object, group or camera. There is also the position property of the object3d class that holds an instance of the Vector3 class that is what is used to store and change the position of the object as well. There are a whole lot of other properties as well as method to be aware of in the object3d class that come into play allot when making one or more threejs projects such as the scale property and the lookAT method just to name a few.
 
