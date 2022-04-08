@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-08 12:57:28
-version: 1.0
+updated: 2022-04-08 13:00:50
+version: 1.1
 ---
 
-The rotation property of the object3d class in threejs stores and instance of the THREE.Euler class and stores the current rotation, or orientation of an object.
+The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. Sense this is a property of the base class known as Object3d the rotation property can be used to set the rotation of Mesh Objects, Groups, Cameras, and just about anything else that is based off of the Object3D class including event a whole Scene Object.
 
 <!-- more -->
 
