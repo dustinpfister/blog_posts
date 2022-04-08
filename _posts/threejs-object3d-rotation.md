@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-08 13:17:54
-version: 1.5
+updated: 2022-04-08 13:30:44
+version: 1.6
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
@@ -17,7 +17,7 @@ When it comes to just setting the local rotation of an object by way of this pro
 
 ## The rotation property of the object3d class and what to know first
 
-In this post I am going over some examples of the rotation property of the object3d class in the javaScript library known as threejs. This is not a getting started type post on threejs, let alone client side web development in general, so I assume that you have at least some background when it comes to these things.
+In this post I am going over some examples of the rotation property of the object3d class in the javaScript library known as threejs. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), let alone client side web development in general, so I assume that you have at least some background when it comes to these things.
 
 ### Be mindful of version numbers with threejs
 
@@ -28,6 +28,8 @@ When I first wrote this post I was using r135 of threejs, which was still a fair
 The source code examples that I am writing about in this post [are up on Gitub](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-rotation).
 
 ## 1 - Basic example of the rotation property of Object3d
+
+To start out with rotation and the object3d class I made this quick static scene example that involves just a few mesh objects created with the box geometry constructor and the normal material.
 
 ```js
 (function () {
@@ -67,7 +69,9 @@ The source code examples that I am writing about in this post [are up on Gitub](
     ());
 ```
 
-## 2 - Animation example of rotation
+## 2 - Animation example of rotation and groups
+
+Now for a simple animation example using the request animation frame method in the body of a loop function. Also while I am at it I also made the cubes all children of a group rather than the scene object. So then in this animation example I am using the rotation property of the object3d class to rotate each child of the group over time, as well as the group as a whole.
 
 ```js
 (function () {
