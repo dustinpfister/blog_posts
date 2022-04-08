@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-08 13:33:48
-version: 1.7
+updated: 2022-04-08 13:37:20
+version: 1.8
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
@@ -29,7 +29,7 @@ The source code examples that I am writing about in this post [are up on Gitub](
 
 ## 1 - Basic example of the rotation property of Object3d
 
-To start out with rotation and the object3d class I made this quick static scene example that involves just a few mesh objects created with the box geometry constructor and the normal material.
+To start out with rotation and the object3d class I made this quick static scene example that involves just a few mesh objects created with the box geometry constructor and the normal material. After setting up the scene object, camera, and renderer I then have a simple create cube helper that will create and return one of these cubes. I am then just calling the array for each method off of an array if values that I want to use for rotations of the y value for each cube that I will be creating and adding to the scene in the body of a function that I give to array for each.
 
 ```js
 (function () {
