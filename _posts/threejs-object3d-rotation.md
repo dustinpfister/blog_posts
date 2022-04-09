@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-09 10:10:11
-version: 1.14
+updated: 2022-04-09 10:13:10
+version: 1.15
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
@@ -146,7 +146,9 @@ Now for a simple animation example using the request animation frame method in t
 
 ## 3 - The look at method as a way to set rotation
 
-There is working with the rotation property of an object directly, but then there is also using the [lookAt method of the object3d class](/2021/05/13/threejs-object3d-lookat/) as a way to set rotation. This look at method works by just passing a position in terms of a set of three numbers that are values for x, y and z values, or an instance of Vector3 such as the position property of an object.
+There is working with the rotation property of an object directly, but then there is also using the [lookAt method of the object3d class](/2021/05/13/threejs-object3d-lookat/) as a way to set rotation. This look at method works by just passing a position in terms of a set of three numbers that are values for x, y and z values, or an instance of Vector3 such as the position property of an object that is the position that I want an object to look at.
+
+For this example then I am creating a group of cubes by using a while loop to create and position each cube that I want. I am then looping over the children of the group and calling the look at method for each cube having each child look at the child in front of it, or behind in the case of the last child in the group.
 
 ```js
 (function () {
