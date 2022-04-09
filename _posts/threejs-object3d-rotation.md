@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-08 13:42:51
-version: 1.10
+updated: 2022-04-09 10:02:39
+version: 1.11
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
@@ -144,7 +144,67 @@ Now for a simple animation example using the request animation frame method in t
     ());
 ```
 
-## 3 - Conclusion
+## 3 - The look at method as a way to set rotation
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color('#0f0f0f');
+    scene.add(new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(2, 4, 8);
+    camera.lookAt(0,0,0);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    // ---------- ----------
+    // MESH OBJECTS
+    // ---------- ----------
+    var mkCube = function(){
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    };
+    // creating and positioning mesh objects
+    var theCubes = new THREE.Group();
+    scene.add(theCubes);
+    var i = 0, len = 7;
+    while(i < len){
+        var cube = mkCube(),
+        p = i / (len - 1 );
+        //position of each cube
+        var x = -3 + 6 * p,
+        y = -1.5 + 3 * p,
+        z = -4 + Math.sin(Math.PI * p) * 6;
+        cube.position.set(x, y, z);
+        theCubes.add(cube);
+        i += 1;
+    }
+    // using look at for each cube to set rotation of each cube
+    theCubes.children.forEach(function(cube, i, arr){
+        var i2 = i + 1, cube2;
+        if(i === 0){
+            i2 = 1;
+        }
+        if(i >= arr.length - 1){
+            i2 = arr.length - 2;
+        }
+        cube2 = arr[i2];
+        cube.lookAt(cube2.position);
+    });
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
+
+## 4 - Conclusion
 
 The rotation property is then what I often used in order to set the rotation of an object such as a mesh object, group or camera. There is also the position property of the object3d class that holds an instance of the Vector3 class that is what is used to store and change the position of the object as well. There are a whole lot of other properties as well as method to be aware of in the object3d class that come into play allot when making one or more threejs projects such as the scale property and the lookAT method just to name a few.
 
