@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2021-06-15 11:51:53
-version: 1.27
+updated: 2022-04-10 08:57:17
+version: 1.28
 ---
 
 The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. A Vector with a [euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) of one is often referred to as a [unit vector](https://en.wikipedia.org/wiki/Unit_vector), and what is nice about this kind of vector is that it can quickly be scaled up by just simply multiplying the values of the normalized vector by a desired magnitude that is any value other than one to result in any vector that is along a given line that is the direction of the vector.
@@ -21,7 +21,9 @@ This is a post on using the Vector3 normalize method, and other related features
 
 ### 1.1 - You might want to read up more on Vector3 in general
 
-There is checking out my main post on the [Vector3 class](/2018/04/15/threejs-vector3/) where I am going over the Vector3 class in general. Normalizing a Vector is a major part of becoming proficient with the Vector3 class, but there is a great deal more to it when it comes to the basics of Vector3, as well as other various methods of the class. The think to keep in mind here is that the normalize method will just set the length of a vector to one, but that is it. What if I want to set direction of a Vector by a set of given angles in terms of radians or degrees for example? I will be going over some additional methods other than just the normalize method here, but there is a great deal more to be aware of that can be used with the normalize method, and I will not be getting to all of it here.
+There is checking out my main post on the [Vector3 class](/2018/04/15/threejs-vector3/) where I am going over the Vector3 class in general. Normalizing a Vector is a major part of becoming proficient with the Vector3 class, but there is a great deal more to it when it comes to the basics of Vector3, as well as other various methods of the class. 
+
+The thing to keep in mind here is that the normalize method will just set the length of a vector to one, while preserving the direction of the Vector, but that is it. What if I want to set direction of a Vector by a set of given angles in terms of radians or degrees for example? I will be going over some additional methods other than just the normalize method here, but there is a great deal more to be aware of that can be used with the normalize method, and I will not be getting to all of it here.
 
 ### 1.2 - Version Numbers matter
 
@@ -29,7 +31,7 @@ When I first wrote this post I was using r127 of threejs which was a late versio
 
 ## 2 - Basic Vector3 normalize example
 
-In this basic example I am creating an instance of THREE.Vector3 that is not normalized, and then just calling the normalized method of the Vector3 instance to get a normalized vector. The value of the Vector before normalizing it was -20, 0, 0, and the value after normalizing it is -1, 0, 0. So in other words the direction of the Vector is preserved but the length of the vector is reduced to a magnitude of 1. Once the vector is normalized I cal call a method like multiply scalar off of the normalized vector to set any desired magnitude, or distance if you prefer while preserving the direction of the Vector.
+In this basic example I am creating an instance of THREE.Vector3 that is not normalized, and then just calling the normalized method of the Vector3 instance to get a normalized vector. The value of the Vector before normalizing it was -20, 0, 0, and the value after normalizing it is -1, 0, 0. So in other words the direction of the Vector is preserved but the length of the vector is reduced to a magnitude of 1. Once the vector is normalized I cal call a [method like multiply scalar](/2022/03/23/threejs-vector3-multiply-scalar/) off of the normalized vector to set any desired magnitude, or distance if you prefer while preserving the direction of the Vector.
 
 ```js
 (function () {
@@ -66,7 +68,7 @@ In this basic example I am creating an instance of THREE.Vector3 that is not nor
 
 ## 3 - Some more on the concept of vector length
 
-So then the normalize method will set the length of any vector to a length of 1, and then from there the length can easily be adjusted to any desired length. Also when it comes to the subject of the length of a vector the Vector3.length method can be used to find out what the current length of any vector is. So then the noramize method combined with a method like multiply scalar can be used to set the length of a vector while the length method can be used as a way to get what that length is.
+So then the normalize method will set the length of any vector to a length of 1, and then from there the length can easily be adjusted to any desired length. Also when it comes to the subject of the length of a vector the Vector3.length method can be used to find out what the current length of any vector is. So then the normalize method combined with a method like multiply scalar can be used to set the length of a vector while the length method can be used as a way to get what that length is.
 
 ```js
 (function () {
