@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2022-04-10 08:50:21
-version: 1.19
+updated: 2022-04-10 08:52:19
+version: 1.20
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -30,7 +30,7 @@ The version of threejs that I was using when I first wrote this post was r135. C
 
 ### The source code examples in this post are also on Github
 
-I have the source code examples in this post up on [my test threejs Github Repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-multiply-scalar).
+I have the source code examples in this post up on [my test threejs Github Repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-multiply-scalar). This is also where I am packing the source code examples for my many oter posts on threejs.
 
 ## 1 - Basic Vector3 multiply scalar example
 
