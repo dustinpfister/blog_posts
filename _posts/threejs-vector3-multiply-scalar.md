@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2022-04-10 08:45:17
-version: 1.18
+updated: 2022-04-10 08:50:21
+version: 1.19
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -20,7 +20,9 @@ The multiply scalar method is a way to adjust the unit length of the vector with
 This is a post on using the multiply scalar method of the [Vector3 class](/2018/04/15/threejs-vector3/) in the javaScript library known as threejs. This is not a getting [started type post with threejs](/2018/04/04/threejs-getting-started/), and I also assume that you have at least a little experience with [client side javaScript in general](/2018/11/27/js-getting-started/) also. There are many a few other topics beyond the basic of threejs that you should also be aware of at this point, so in this section I will be quickly going over some of them.
 ### Look into what else there is to work worth in the Vector3 class
 
-I have wrote a post on the [normalize method](/2021/06/14/threejs-vector3-normlize/) of the Vector3 class a while back also which is something that is worth looking into more if you have not done so. What this method does is it sets the unit length of a vector to that of one while preserving the direction of the vector. From there a method like that of multiply scalar can be used to easily set any desired vector unit length.
+I have wrote a post on the [normalize method](/2021/06/14/threejs-vector3-normalize/) of the Vector3 class a while back also which is something that is worth looking into more if you have not done so. What this method does is it sets the unit length of a vector to that of one while preserving the direction of the vector. From there a method like that of multiply scalar can be used to easily set any desired vector unit length. In other words think in terms of a ray starting at an origin and then moving outward into space from there. Every point that lays on this ray going outward has the same direction, but the length is what will be different.
+
+There are many other useful methods in the Vector3 class that can be used together in a chain such as the add method that can be used to translate from a given vector with another vector. I will be touching base on a lot of these methods in this post but it would be best to look into Vector3 as a whole in greater detail.
 
 ### Be mindful of version numbers
 
