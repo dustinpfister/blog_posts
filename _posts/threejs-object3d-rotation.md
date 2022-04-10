@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-10 08:25:49
-version: 1.18
+updated: 2022-04-10 08:26:30
+version: 1.19
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
@@ -213,6 +213,73 @@ The end result is more or less what I had in mind for this example, but I think 
 ## 4 - Rotating geometry and Mesh objects
 
 The rotation property effects just the local rotation of the object in which I set the rotation property. In addition to this there is also setting the rotation properties of any nested children, or in the case of Mesh objects there is rotating or changing he state of the geometry that is used with the Mesh.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color('#0f0f0f');
+    scene.add(new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(2, 4, 8);
+    camera.lookAt(0,0,0);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    // ---------- ----------
+    // MESH OBJECTS
+    // ---------- ----------
+    var mkCone = function(){
+        var cone = new THREE.Mesh(
+            new THREE.ConeGeometry(0.125, 0.66, 30, 30),
+            new THREE.MeshNormalMaterial());
+        // Rotating the geometry of each cone once
+        cone.geometry.rotateX(1.57);
+        return cone;
+    };
+    // get position helper
+    var getPos = function(i, len){
+        var p = i / (len - 1 ),
+        x = -8 + 15 * p,
+        y = -1.5 + 3 * p,
+        z = -8 + Math.sin(Math.PI * p) * 12;
+        return new THREE.Vector3(x, y, z);
+    };
+    // creating and positioning mesh objects
+    var theCones = new THREE.Group();
+    scene.add(theCones);
+    var i = 0, len = 20;
+    while(i < len){
+        var cone = mkCone();
+        //cone.position.set(x, y, z);
+        cone.position.copy(getPos(i , len))
+        theCones.add(cone);
+        i += 1;
+    }
+    // using look at for each cube to set rotation of each cube
+    theCones.children.forEach(function(cone, i, arr){
+        var i2 = i + 1, 
+        cone2, vec;
+        if(i === 0){
+            i2 = 1;
+        }
+        if(i >= arr.length - 1){
+            vec = getPos(len, len);
+        }else{
+            vec = arr[i2].position;
+        }
+        cone.lookAt(vec);
+    });
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
 
 ## 5 - Conclusion
 
