@@ -5,27 +5,27 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 863
-updated: 2022-04-10 09:02:45
-version: 1.9
+updated: 2022-04-10 09:04:17
+version: 1.10
 ---
 
 This will be a post on a nested groups [threejs example](/2021/02/19/threejs-examples/) that I made today that is a continuation of what I started with my post on use example of the user data object in the object3d class. The user data object of the Object3d class is a standard object for everything based on object3d for parking application or module specific data to help make sure that there are no conflicts with properties that are used with three.js. When making my own code for an over all three.js project I am going to end up with a log of my own properties and javaScript code that updates those properties. I could do something where I keep all of my own code separate, and then apply that to mesh objects, groups, cameras and so forth. However another way of attaching my own user data to anything in three.js that is based off of the object3d class would be to append it to this user data object.
 
 <!-- more -->
 
-## 1 - What to know first before reading more about this three.js example
+## What to know first before reading more about this three.js example
 
 This is one of my many three.js examples that makes use of the client side [javaScript library known as three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). This post is intended for javaScript developers that have learned a thing or two about the basics and are not looking into how to go about getting started when it comes to making some actual projects of some kind with three.js. So I assume that you have at least some background with the [basics of three.js](/2018/04/04/threejs-getting-started/), and know at least a thing or two about [javaScript in general](/2018/11/27/js-getting-started/). So I will not be touching base on the basics of three.js and javaScript here, but in this section I will be going over a few things that I think you should read up mre on before getting into this example.
 
-### 1.1 - Version Numbers matter with three.js
+### Version Numbers matter with three.js
 
 When I first wrote this post I was using three.js revision r127, as such the code here might break in future versions of three.js.
 
-### 1.2 - Read up more on the user data property of the Object3d class
+### Read up more on the user data property of the Object3d class
 
 This example is an advanced continuation of [one of the examples that I worked out for my post on the user data object](/2021/02/16/threejs-userdata/) of the object3d class. This object is the official object in a Mesh, Group, Camera, or anything the is based on the object3d class that can be used to park user defined data. This user defined data is just data that belongs to a given object of some kind of a three.js project that has to do with ones own code rather than three.js internal logic. Speaking of the [object3d class](/2018/04/23/threejs-object3d/) it might be a good idea to read up more on that class in general as it is a major part of three.js that I tend to use just about all the time.
 
-## 2 - The cube groups module
+## 1 - The cube groups module
 
 This is the cube group module that I started in my post that has to do with the user data object of the object3d class. I do not think that I did much to it when it comes to changes from what I wrote about in that post, but still I think I should write a thing or two about it here as I am using it in my main nested groups module that I will be getting to later in this post.
 
@@ -142,7 +142,7 @@ This cube groups module will return a group of mesh objects where each mesh obje
     (this['CubeGroupMod'] = {}));
 ```
 
-## 3 - The nested groups module
+## 2 - The nested groups module
 
 Here I now I have my main nested groups module that will create an return a main group that I will be adding to the scene in my main javaScript file. The general idea I have here is to have a main module like this that will return a group object, and then everything else the composes the example that is attached to that group as a child. This group will contain additional groups, and thus be a situation in which I am dealing with nested groups, thus the name of this example.
 
@@ -276,7 +276,7 @@ I then have a create world group helper that will contain all the instances of m
     (this['NestedGroupsMod'] = {}));
 ```
 
-## 4 - The main javaScript file
+## 3 - The main javaScript file
 
 The main javaScript file of this example is then pretty thin as much of the logic is pulled away into the nested groups module. I do not even create a camera here in as I typically would in most other projects because this time I want the camera to be part of the nested groups module.
 
@@ -312,7 +312,7 @@ The main javaScript file of this example is then pretty thin as much of the logi
 
 When I have this example up and running I end up with a pretty cool looking scene, but there is still more I think I would like to change around a little when it comes to making this a little more interesting maybe. I like how everything is pretty animated and that it is all combined together into this one main module. If I get more time to work on this example I might want to break things down more by having separates modules for the light objects, as well as maybe bring some additional modules that I have worked out in other examples into this scene.
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 This turned out to just be a quick fun example just for the sake of having a little fun with three.js, after all this is a pretty cool library and I would like to just create weird stuff with it. However I did not just play around with threejs just for the sake of making another project example like this, I would like to get into the habit of making use of the user data object as a way to go about packing data that has to do with my own javaScript code when making one or more modules. Doing so will make it so that the create methods that I make for my modules will return an object that is based off of Object3d rather than having that kind of object be a property of some kind of weird custom object format.
 
