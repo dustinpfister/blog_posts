@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 863
-updated: 2021-05-10 16:28:25
-version: 1.8
+updated: 2022-04-10 09:02:45
+version: 1.9
 ---
 
 This will be a post on a nested groups [threejs example](/2021/02/19/threejs-examples/) that I made today that is a continuation of what I started with my post on use example of the user data object in the object3d class. The user data object of the Object3d class is a standard object for everything based on object3d for parking application or module specific data to help make sure that there are no conflicts with properties that are used with three.js. When making my own code for an over all three.js project I am going to end up with a log of my own properties and javaScript code that updates those properties. I could do something where I keep all of my own code separate, and then apply that to mesh objects, groups, cameras and so forth. However another way of attaching my own user data to anything in three.js that is based off of the object3d class would be to append it to this user data object.
@@ -15,9 +15,9 @@ This will be a post on a nested groups [threejs example](/2021/02/19/threejs-exa
 
 ## 1 - What to know first before reading more about this three.js example
 
-This is one of my many three.js examples that makes use of the client side [javaScript library known as three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). This post is intended for javaScript developers that have learned a thing or two about the basics and are not looking into how to go about getting started when it comes to making some actual projects of some kind with three.js. So I assume that you have at least some background with the basics of three.js, and know at least a thing or two about javaScript in general. So I will not be touching base on the basics of three.js and javaScript here, but in this section I will be going over a few things that I think you should read up mre on before getting into this example.
+This is one of my many three.js examples that makes use of the client side [javaScript library known as three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). This post is intended for javaScript developers that have learned a thing or two about the basics and are not looking into how to go about getting started when it comes to making some actual projects of some kind with three.js. So I assume that you have at least some background with the [basics of three.js](/2018/04/04/threejs-getting-started/), and know at least a thing or two about [javaScript in general](/2018/11/27/js-getting-started/). So I will not be touching base on the basics of three.js and javaScript here, but in this section I will be going over a few things that I think you should read up mre on before getting into this example.
 
-### 1.1 - version Numbers matter with three.js
+### 1.1 - Version Numbers matter with three.js
 
 When I first wrote this post I was using three.js revision r127, as such the code here might break in future versions of three.js.
 
