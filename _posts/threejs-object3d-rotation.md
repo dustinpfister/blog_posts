@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-09 10:23:00
-version: 1.17
+updated: 2022-04-10 08:25:49
+version: 1.18
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
@@ -210,7 +210,11 @@ For this example then I am creating a group of cubes by using a while loop to cr
 
 The end result is more or less what I had in mind for this example, but I think that I will need to write about at least one if not more examples about this sort of thing. The situation here works okay because each of the cubes look more or less the same on each side, for some other mesh objects this might not always be the case with the nature of the geometry. The thing about this is that the rotation property and the look at method are ways of setting the rotation of the object, but not the geometry of a mesh object. In some cases I might want to adjust the rotation not just of a mesh object, but also the geometry at least once in order to change what the 'front' of the geometry is.
 
-## 4 - Conclusion
+## 4 - Rotating geometry and Mesh objects
+
+The rotation property effects just the local rotation of the object in which I set the rotation property. In addition to this there is also setting the rotation properties of any nested children, or in the case of Mesh objects there is rotating or changing he state of the geometry that is used with the Mesh.
+
+## 5 - Conclusion
 
 The rotation property is then what I often used in order to set the rotation of an object such as a mesh object, group or camera. There is also the position property of the object3d class that holds an instance of the Vector3 class that is what is used to store and change the position of the object as well. There are a whole lot of other properties as well as method to be aware of in the object3d class that come into play allot when making one or more threejs projects such as the scale property and the lookAT method just to name a few.
 
