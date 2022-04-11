@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-04-07 10:52:05
-version: 1.27
+updated: 2022-04-11 15:09:18
+version: 1.28
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also. When it comes to the basics of threejs one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). 
@@ -20,6 +20,8 @@ This then will be a post on using the scale property of the Object3d class that 
 ## The Object3d scale property and what to know first
 
 I trust that you have covered the basics at least when it comes to [getting up and running with three.js](/2018/04/04/threejs-getting-started/) and javaScript, as i will not be getting into detail with that here. This post is intended for people that have at least some background with javaScript, and have worked out at least a few simple examples of three.js for starters. I will be keeping the examples here fairly simple, at least at the top of the post, but there are still some basic things you should know about before continuing to read this.
+
+<iframe width="320" height="180" src="https://www.youtube.com/embed/jpcjC3jedrQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Version Numbers matter with three.js
 
