@@ -5,14 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-04-12 13:01:48
-version: 1.5
+updated: 2022-04-12 13:03:45
+version: 1.6
 ---
 
 Baked into threejs there are a number of Math utilities that can be  used to helper with various tasks. This object is packed with a whole bunch of useful methods for typical tasks such as converting a degree value to a radian value for example. However there is not just thinking in terms of what there is to work with, but also what is missing. With that said I think I should also write about one or more additional things that are not in this math utils object, but should maybe be there, or in any case might have to do with a kind of custom math utils object.
 
 <!-- more -->
 
+## The math utils method and what to know first
+
+This is a post on some of the features of the Math utils method in the javaScript library known as threejs. I am assuming that you have all ready got up to speed with the basics when it comes to getting started with threejs, and also have at least some background when it comes to client side web programing to begin with.
 
 ## 1 - Basic example of threejs math utilities using degree to radian method
 
