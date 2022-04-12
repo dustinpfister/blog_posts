@@ -5,13 +5,17 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2022-04-12 14:01:49
-version: 1.21
+updated: 2022-04-12 14:05:35
+version: 1.22
 ---
 
-In [three.js](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. Still the material supports a few options when it comes to texture maps, there is the basic color map, but there is are a few more options such as an alpha map also. Still there are even more options when it comes to texture maps with other materials that will respond to light sources such as the [standard material](/2021/04/27/threejs-standard-material/).
+In [three.js](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified. Also it is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. 
 
-The Basic material is then a good starting point to work with, but of course the material does have its draw backs. For example if I want to do anything with light, and many additional texture maps that have to do with light, I am going to want to use something like the standard material, or Lambert material along with a few other options. However still the basic material can often prove to work out okay for many basic examples, and even full projects actually because I do not always want to bother with light sources. So today I thought I would continue expanding my [collection of posts on three.js](/categories/three-js/) by writing a post on the basic material, and what it has to offer when making a three.js project. This will be some basic examples of the materials, but also a few examples in which I am getting into textures created with canvas elements.
+Still the basic material supports a few options when it comes to texture maps, there is the basic color map, but there is are a few more options such as an alpha map for example. Still there are even more options when it comes to texture maps with other materials that will respond to light sources such as the [standard material](/2021/04/27/threejs-standard-material/) which I have found to be my usual go to material.
+
+The Basic material is then an okay starting point to work with, but of course the material does have its draw backs. For example if I want to do anything with light, and many additional texture maps that have to do with light, I am going to want to use something like the standard material, the [Lambert material](/2018/04/08/threejs-lambert-material/), or one of the many other options to work with. However still the basic material can often prove to work out okay for many basic examples, and even full projects actually because I do not always want to bother with light sources. 
+
+So today I thought I would continue expanding my [collection of posts on three.js](/categories/three-js/) by writing a post on the basic material, and what it has to offer when making a three.js project. This will be some basic examples of the materials, but also a few examples in which I am getting into textures created with canvas elements.
 
 <!-- more -->
 
@@ -191,4 +195,4 @@ For this example of an alpha map I once again used a canvas element as a way to 
 
 ## 5 - Conclusion
 
-The basic material is just as the name suggests, there are other materials to use in three.js if you want to do something more advanced but the basic material gets the job done when it comes to simple projects. There is of course the [Lambert material](/2018/04/08/threejs-lambert-material/) that is a good choice if you want to do something involving light in a real time environment. There are of course many other [materials](/2018/04/30/threejs-materials/) to chose from when working with a [mesh](/2018/05/04/threejs-mesh/) as well that might have better values to offer when it comes to how things look compared to how much resources they eat up. 
+The basic material is just as the name suggests, there are other materials to use in three.js if you want to do something more advanced but the basic material gets the job done when it comes to simple projects. There is of course the Lambert material that is a good choice if you want to do something involving light in a real time environment. There are of course many other [materials](/2018/04/30/threejs-materials/) to chose from when working with a [mesh](/2018/05/04/threejs-mesh/) as well that might have better values to offer when it comes to how things look compared to how much resources they eat up. 
