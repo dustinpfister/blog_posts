@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-05-14 15:39:32
-version: 1.20
+updated: 2022-04-12 14:07:00
+version: 1.21
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a spot light.
@@ -17,19 +17,19 @@ In this post I will be going over a quick examples of the point light in three j
 
 <!-- more -->
 
-## 1 - Point lights in threejs and what to know before hand
+## Point lights in threejs and what to know before hand
 
 The example in this post is a little involved but so is any three.js project when it comes to all the various aspects of three.js that a developer needs understand in order o do anything interesting with three.js. I assume that you have at least some background with three.js and javaScript in general as I will not be getting into the basics with three.js and javaScript here. If you like you might want to check out [my getting started post on three.js](/2018/04/04/threejs-getting-started/), and also check out the official website when it comes to how to get up and running with the basic of three.js.
 
-### 1.1 - Version Numbers matter
+### Version Numbers matter
 
 When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing in terms of both text and code I was using r127 of three.js. I can not say that much has changed with the point light alone between those two version numbers, but of course a great deal has changes with many other things in three.js. In any case always be mindful of what version of three.js you are using when playing around with threejs code examples on the open web not everything odes a good job of keeping their content up to date with this.
 
-## 2 - A point light example in three.js
+## 1 - A point light example in three.js
 
 This example I put together makes use of a few point lights that shine light in all directions in a three.js scene. In addition to having some point lights in a scene there is also a need to have some objects in the scene as well, so for this example I also made a method that creates cubes as well. 
 
-### 2.1 - The add point light method
+### 1.1 - The add point light method
 
 Here I have a method that I am using in this example to create a point light, add it to a given scene, and return a reference to that point light also in the process of doing so. I often like to take a more functional approach with helper functions, but three.js is a more object oriented type library so there are a lot of functions that mutate objects in place and so forth. 
 
@@ -51,7 +51,7 @@ var addPointLight = function (scene, color, x, y, z) {
 
 Now that I have this helpful add point light helper I think I will want another helper to add a mesh, then a setup where I create my scene object and so forth along with an animation loop in order to have a full example of some kind up and running.
 
-### 2.2 - The add cube method
+### 1.2 - The add cube method
 
 When creating any kind of mesh for a scene it is important to use a material that will respond to light of course, so I am using the standard material rather than the basic material for the cubes. For this example I am using a helper method that will create and add a cube for a given scene object like this.
 
@@ -69,7 +69,7 @@ var addCube = function (scene, size, x, y, z) {
 };
 ```
 
-### 2.3 - The scene setup
+### 1.3 - The scene setup
 
 Now that I have some methods that I can used to create one or more point lights and some cubes for starters, lets used those methods to add point lights and mesh objects to a scene object. So then first I will want a main scene object for that I just create a one with the THREE.Scene constructor. Once I have a scene object I can now use that add point light and add cube methods to add lights and cubes to the scene.
 
@@ -101,7 +101,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 
 One I have my scene and lights set up I can also setup a camera and a renderer as well that will be used to look at the scene from a given position and then render that view with the scene object using the renderer in the main animation loop that I will be getting to next
 
-### 2.4 - The app loop
+### 1.4 - The app loop
 
 Here I have the loop of the project in which I will be rendering the current state of the scene as well as updating the scene also over time. When it comes to making animation loops I will just about always use the request animation frame method which is the typical go to method for these kinds of functions in client side javaScript. I will want to have a few variables with a scope outside of that of the function for storing things like the last time an update was preformed and so forth.
 
@@ -148,6 +148,6 @@ loop();
 
 The result when this example is up and ruining is a cool little effect where I have all these point lights shining different colors on to cube objects that are skinned with a material that is while in color.
 
-## 3 - Conclusion
+## 2 - Conclusion
 
 The point like is one of the typical light sources that I like to go with just about all of the time when I make my own three.js examples. However often do like to add an additional mesh to the light so that I know where the light source is while I am at it like I did with the example in this post. The other typical light source that I like to use is the ambient light, which is a way to just have a base amount of light for all the mesh objects in the scene. So ambient light and point lights are mu usual go to light sources. However there are still some additional options that might prove to be a better choice in some situations. It is said that a directional light instance would be best to reproduce day light, and also now and then it might be a good idea to go with a spot light actually.
