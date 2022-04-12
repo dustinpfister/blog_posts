@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-04-12 13:31:31
-version: 1.11
+updated: 2022-04-12 13:39:48
+version: 1.12
 ---
 
 Baked into threejs there are a number of Math utilities that can be  used to helper with various tasks. This object is packed with a whole bunch of useful methods for typical tasks such as converting a degree value to a radian value for example. However there is not just thinking in terms of what there is to work with, but also what is missing. With that said I think I should also write about one or more additional things that are not in this math utils object, but should maybe be there, or in any case might have to do with a kind of custom math utils object.
@@ -86,6 +86,44 @@ One thing that seems to come up a lot with threejs, and many javaScript projects
         x = THREE.MathUtils.clamp(x, -4.5, 4.5);
         var z = THREE.MathUtils.randFloat(-100, 100);
         z = THREE.MathUtils.clamp(z, -4.5, 4.5);
+        mesh.position.set(x, 0, z)
+        i += 1;
+    }
+    camera.position.set(8, 8, 8);
+    camera.lookAt( 0, 0, 0 );
+    // render static scene
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+## 3 - Euclidean Modulo
+
+As I have mentioned in the clamp example there is not just clamping, but also wrapping number values. In this example I am again doing more or less the same thing as in the clamp example, but now I am using the Euclidean Modulo method to wrap numbers rather than clamping them.
+
+```js
+(function () {
+    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // USING THE RANDFLOAT and euclideanModulo METHODs
+    var i = 0,
+    len = 30;
+    while(i < len){
+        var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+        scene.add(mesh);
+        var x = THREE.MathUtils.randFloat(-7, 7);
+        x = -4.5 + THREE.MathUtils.euclideanModulo(x, 9);
+        var z = THREE.MathUtils.randFloat(-100, 100);
+        z = -4.5 + THREE.MathUtils.euclideanModulo(z, 9);
         mesh.position.set(x, 0, z)
         i += 1;
     }
