@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-04-12 13:27:30
-version: 1.9
+updated: 2022-04-12 13:29:21
+version: 1.10
 ---
 
 Baked into threejs there are a number of Math utilities that can be  used to helper with various tasks. This object is packed with a whole bunch of useful methods for typical tasks such as converting a degree value to a radian value for example. However there is not just thinking in terms of what there is to work with, but also what is missing. With that said I think I should also write about one or more additional things that are not in this math utils object, but should maybe be there, or in any case might have to do with a kind of custom math utils object.
@@ -60,6 +60,8 @@ The use of radians comes up a whole lot and not just with javaScript related fea
 ```
 
 ## 2 - The clamp and rand float methods
+
+One thing that seems to come up a lot with threejs, and many javaScript projects in general actually is the subject of clamping and wrapping values. With that said here in threejs there is a clamp method that will clamp a given value to a given range that is all given by way of function arguments.
 
 ```js
 (function () {
