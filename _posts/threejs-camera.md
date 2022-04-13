@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2021-05-16 10:03:47
-version: 1.27
+updated: 2022-04-13 08:14:43
+version: 1.28
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a render method in order to view anything in a scene.
@@ -15,27 +15,27 @@ In three.js there are a few cameras to work with, but typically you will want to
 
 <!-- more -->
 
-## 1 - Camera Objects in three.js and what to know first
+## Camera Objects in three.js and what to know first
 
 This is a post on cameras in general when working with three.js in a client side javaScript environment. There is a great deal more to be aware of beyond just that of working with cameras when it comes to working out even some basic examples of three.js, so if you are still pretty new to three.js it might be best to start out with some kind of getting started with three.js type post. I will not be going over every little detail about three.js in general here though, but I will be going over some of the core things to be aware of with cameras. In this section I will be outlining some things you should be aware of before getting into cameras in greater detail.
 
-### 1.1 - Always check your version numbers when using three.js
+### Always check your version numbers when using three.js
 
 When I first wrote this post I was using three.js version r91, and the last time I came around to do a little editing I was using r127.
 
-### 1.2 - The Camera Class
+### The Camera Class
 
 The actual [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera) is the base Class for all camera used in three.js. This class just gives a few properties and methods for doing things like cloning the camera. I never use is directly, but it is the base class for all cameras in threejs.
 
-### 1.3 - Camera Class is based on the Object3D CLass
+### Camera Class is based on the Object3D CLass
 
 All instances of Camera gain a whole bunch of common properties and methods from The Object3D class, that is also a class that is worth checking out and learning about in detail. This allows for me to easily work with the camera by using methods like lookAt to set the orientation of a camera to look at a point in world space. There is bunch of other methods and properties that apply to the use of cameras, but also many other objects that come compose a scene object in three.js. So learning about the Object3d class applies to use use of cameras but also a whole range of other objects to work with when making a project.
 
-## 2 - Perspective Camera
+## 1 - Perspective Camera
 
 The most commonly used camera might be the [perspective camera](/2018/04/07/threejs-camera-perspective/), and if you are only going to stick with one, it might be a good idea to make it this one. The perspective camera mimics the way that the human eye actually sees, and is thus often that is what is desired. When creating an instance of this kind of camera I need to pass a filed of view value, followed by a ratio and then a near and far render distance value.
 
-### 2.1 - Basic perspective camera example
+### 1.1 - Basic perspective camera example
 
 When it comes to using the perspective camera class I just need to call the THREE.perspectiveCamera constructor when doing so i will want to pass a few arguments to the constructor function. The first value is a field of view value, followed by an aspect ratio number, then near and far values for the camera when it comes to the render distance.
 
@@ -75,7 +75,7 @@ When it comes to using the perspective camera class I just need to call the THRE
     ());
 ```
 
-### 2.2 - Changing aspect and field of view in a loop
+### 1.2 - Changing aspect and field of view in a loop
 
 One thing that I might want to do now and then is adjust the aspect ratio and field of view of a perspective camera in a loop. To do so I can just set the values for the aspect and fov properties of the camera instance, however there is one additional step that I must do after changing those values which is to call the update projection matrix method. Calling this update projection matrix method is something that must be preformed when it comes to changing just several other static values when it comes to a camera.
 
@@ -163,11 +163,11 @@ One thing that I might want to do now and then is adjust the aspect ratio and fi
     ());
 ```
 
-## 3 - Orthographic camera
+## 2 - Orthographic camera
 
 Another option when it comes to cameras that I might actually use in a project is the [orthographic camera](/2018/05/17/threejs-camera-orthographic/). this type of camera is more in tune with how objects actually exist in 3d space rather than how they look with the human eye when it comes to perspective.
 
-## 4 - Basic move camera example
+## 3 - Basic move camera example
 
 One of the basic things that a developer would like to know how to do when first getting started with threejs is to move a camera. The Camera base class inherits from the object3d class so it has a position and rotation property just like any other object in threejs. The position property is what can be used to change the position of the camera, however you also typically want to use this in conjunction with the rotation property or a method like look at to set the rotation to a desired point of interest also.
 
@@ -227,7 +227,7 @@ In this example I worked out a basic move camera method that moves the camera ar
 
 If you have not done so all ready it might be a good idea to read up more on the Object3d class when it comes to these useful properties and methods as I use them all the time when working with things in a threejs scene.
 
-## 5 - The near and far values and the depth material
+## 4 - The near and far values and the depth material
 
 Another thing that might come up when it comes to working with a camera is what values to give the constructor when it comes to the near and far values. I often just pass number literals for these values, but in some cases this is something that I might want to be able to adjust threw a user interface, an animation loop, or something to that effect. However even then the question is what to set when it comes to the range for these values. How close is to close, and how far is to far can be good questions for these values. One thing to do that might help is to use the depth material for all objects in the scene, and then adjust things until the situation looks good.
 
@@ -301,6 +301,6 @@ The depth material is a special kind of materials that will render in different 
     ());
 ```
 
-## 6 - Conclusion
+## 5 - Conclusion
 
 There is much more to cover when it comes to cameras in threejs, however hopefully this post will help cover the very basics of cameras at least. When it comes to additional reading it might be a good idea to look more into the [object3d class](/2018/04/23/threejs-object3d/) if you have not done so before hand, as this class applies to cameras and many other objects in three.js such as Mesh objects, Groups, and a whole scene for that matter.
