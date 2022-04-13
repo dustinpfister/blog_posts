@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-04-12 13:53:09
-version: 1.15
+updated: 2022-04-13 07:29:13
+version: 1.16
 ---
 
 Baked into threejs there are a number of Math utilities that can be  used to helper with various tasks. This object is packed with a whole bunch of useful methods for typical tasks such as converting a degree value to a radian value for example. However there is not just thinking in terms of what there is to work with, but also what is missing. With that said I think I should also write about one or more additional things that are not in this math utils object, but should maybe be there, or in any case might have to do with a kind of custom math utils object.
@@ -137,6 +137,41 @@ A long time ago I wrote a post on the subject of [what is wrong with the modulo 
     ());
 ```
 
-## 4 - Conclusion
+## 4 - The seeded random method
+
+There is using the plain old Math random method and also many other methods that are based off of it. However all of these options are not deterministic in nature, that is that when called they will not give the same numbers each time.
+
+```js
+(function () {
+    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // USING THE SEEDED RANDOM
+    var i = 0,
+    len = 5;
+    while(i < len){
+        var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+        scene.add(mesh);
+        var x = -5 + THREE.MathUtils.seededRandom() * 10;
+        var z = -5 + THREE.MathUtils.seededRandom() * 10;
+        mesh.position.set(x, 0, z);
+        i += 1;
+    }
+    camera.position.set(8, 8, 8);
+    camera.lookAt( 0, 0, 0 );
+    // render static scene
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+## 5 - Conclusion
 
 The math utils method then have a whole bunch of useful methods that I find myself using often, however it does not have everything that I might expect to have in such a collection of methods. Although I guess I should not expect everything to be there actually because there is still what there is to work with in the core javaScript math object also of course. Also some of the things that come to mind are methids that I can not say that I use all that often such as an [nth root method](/2020/03/11/js-nth-root/) for example.
