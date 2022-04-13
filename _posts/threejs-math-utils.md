@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-04-13 07:29:13
-version: 1.16
+updated: 2022-04-13 07:33:56
+version: 1.17
 ---
 
 Baked into threejs there are a number of Math utilities that can be  used to helper with various tasks. This object is packed with a whole bunch of useful methods for typical tasks such as converting a degree value to a radian value for example. However there is not just thinking in terms of what there is to work with, but also what is missing. With that said I think I should also write about one or more additional things that are not in this math utils object, but should maybe be there, or in any case might have to do with a kind of custom math utils object.
@@ -139,7 +139,7 @@ A long time ago I wrote a post on the subject of [what is wrong with the modulo 
 
 ## 4 - The seeded random method
 
-There is using the plain old Math random method and also many other methods that are based off of it. However all of these options are not deterministic in nature, that is that when called they will not give the same numbers each time.
+There is using the plain old Math random method and also many other methods that are based off of it. However all of these options are not deterministic in nature, that is that when called they will not give the same numbers each time. In other words some times I might want to have some kind of solution where I have random numbers in a range, but each time I reload the page I get the same set of random numbers. So then they are not really random, but predictable, yet they look kind of random if that makes any sense.
 
 ```js
 (function () {
