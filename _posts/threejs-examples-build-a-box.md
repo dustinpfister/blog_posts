@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 868
-updated: 2022-04-14 11:14:28
-version: 1.18
+updated: 2022-04-14 11:18:02
+version: 1.19
 ---
 
 I would like to start using three.js to work out a basic model, like I all ready did with my [guy model](/2021/04/29/threejs-examples-guy-one/) for example, only now I would like to do something practical such as creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood. These equal lengths of wood that are created from the dimensions of a single board will then end up being represented by a collection of five mesh objects in a group. I can then rotate an position these lengths to form what would become a finished product that is just a simple open box.
@@ -15,7 +15,9 @@ I would like to start using three.js to work out a basic model, like I all ready
 
 ## 1 - Building a box with three.js and what to know before hand
 
-This is a post on a three.js example that helps be get a crude visual idea of what the situation will be if I cut a length of wood into 5 equal pieces to create an open box without a lid just for the sake of starting out with using three.js as a way to design some basic things that I can then build in real life using wood and simple hand tools maybe. So then this is not a getting started type post for three.js or any additional skills that are required in order to get something of values from reading this.
+This is a post on a three.js example that helps be get a crude visual idea of what the situation will be if I cut a length of wood into 5 equal pieces to create an open box without a lid. I am doing this just for the sake of starting out with using three.js as a way to design some basic things that I can then build in real life using wood and simple hand tools maybe. 
+
+So then this is not a [getting started type post for three.js](/2018/04/04/threejs-getting-started/) or any additional skills that are required in order to get something of values from reading this. Also using threejs alone for thins sort of thing seems like making something very simple more complex than it needs to be. If you are more interested in just designing and building things it might be better to just lean a thing or two about using a modeling program that all ready exists to design what you want to build.
 
 ### 1.1 - Version Numbers matter with three.js
 
