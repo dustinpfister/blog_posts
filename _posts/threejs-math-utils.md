@@ -5,11 +5,12 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-04-13 07:33:56
-version: 1.17
+updated: 2022-04-14 11:05:21
+version: 1.18
 ---
 
-Baked into threejs there are a number of Math utilities that can be  used to helper with various tasks. This object is packed with a whole bunch of useful methods for typical tasks such as converting a degree value to a radian value for example. However there is not just thinking in terms of what there is to work with, but also what is missing. With that said I think I should also write about one or more additional things that are not in this math utils object, but should maybe be there, or in any case might have to do with a kind of custom math utils object.
+Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be  used to help with various tasks such as clamping values. Othe things that can be done with the various methods include things such as converting a degree value to a radian value, or getting random values and pseudo random values. 
+However there is not just thinking in terms of what there is to work with, but also what is missing when it comes to a collection of methods such as this. With that said I think I should also write about one or more additional things that are not in this math utils object, but should maybe be there. Even though there are some usual suspect type methods to work with here I can not say that this is a replacement for some kind of additional utility library.
 
 <!-- more -->
 
