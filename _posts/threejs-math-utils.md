@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-04-14 11:05:21
-version: 1.18
+updated: 2022-04-14 11:07:58
+version: 1.19
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be  used to help with various tasks such as clamping values. Othe things that can be done with the various methods include things such as converting a degree value to a radian value, or getting random values and pseudo random values. 
@@ -16,15 +16,15 @@ However there is not just thinking in terms of what there is to work with, but a
 
 ## The math utils method and what to know first
 
-This is a post on some of the features of the Math utils method in the javaScript library known as threejs. I am assuming that you have all ready got up to speed with the basics when it comes to [getting started with threejs](/2018/04/04/threejs-getting-started/), and also have at least some background when it comes to client side web programing to begin with.
+This is a post on some of the features of the Math utils method in the javaScript library known as threejs. I am assuming that you have all ready got up to speed with the basics when it comes to [getting started with threejs](/2018/04/04/threejs-getting-started/). I am also assuming that you have at least some background when it comes to client side web programing to begin with as well.
 
 ### Version Numbers matter
 
-When  I first wrote this post I was using r135 of threejs with was still a fairly late version of threejs at the time. Always check what version you are using when reproducing things on you end as code breaking changes are made to threejs often.
+When I first wrote this post I was using r135 of threejs with was still a fairly late version of threejs at the time. Always check what version you are using when reproducing things on you end as code breaking changes are made to threejs often.
 
 ### Source code example in this post are on Github
 
-The source code examples that I am writing about in this post [are up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-math-utils).
+The source code examples that I am writing about in this post [are up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-math-utils). This is also where I am parking the source code examples for all y other various posts on threejs.
 
 ## 1 - Basic example of threejs math utilities using degree to radian method when setting the position of a mesh
 
