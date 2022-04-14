@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2022-04-14 11:28:17
-version: 1.18
+updated: 2022-04-14 11:30:36
+version: 1.19
 ---
 
 When making a [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/) in a [scene object](/2018/05/03/threejs-scene/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/), and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -15,15 +15,15 @@ There is just getting started with the very basics when it comes to ray casting 
 
 <!-- more -->
 
-## 1 - Clicking a Mesh in three.js and what to know before hand
+## Clicking a Mesh in three.js and what to know before hand
 
 This is a post on using the THREE.Raycaster class in three.js as a way to help with the process of clicking on a mesh object. This is then a post on a topic that might prove to be a little to advanced for some developers that are still a little to new with [three.js](/2018/04/04/threejs-getting-started/) and [javaScript](/2018/11/27/js-getting-started/). In this section I will then be going over a few topics that are worth checking out for the first time, or refreshing on before continuing with the rest of the continent here.
 
-### 1.1 - version Numbers matter with three.js
+### version Numbers matter with three.js
 
 When I made these examples and wrote this post I was using r127 of three.js which was still a fairly later version of three.js as of this writing. Code breaking changes are always made with three.js as new revision s come out so if you run into problems with getting this to work on your end that might be the first thing you should check actually.
 
-## 2 - A Basic Raycaster example
+## 1 - A Basic Raycaster example
 
 The main method of interest with the Raycaster class is the intersect objects method, but in order to set the state of the Raycaster instance first I will want to use the set from camera method. In order to use the set from camera method of course I am going to need an instance of a camera, but I am also going to need a Vector2 instance that is the mouse position in the canvas.
 
@@ -116,11 +116,11 @@ var loop = function () {
 loop();
 ```
 
-## 3 - Cube Group Raycaster class example
+## 2 - Cube Group Raycaster class example
 
 For this example of the Raycaster class I decided to make use of a module that I made for my [post on nested groups in three.js](/2021/05/10/threejs-examples-nested-groups/) that is a kind of cube group model. This module is just a way to create a group of eight mesh objects where each mesh object has an instance of the built in box geometry of three.js as its geometry. These eight mesh objects are positioned in such a way so that they from a larger cube of cubes sort of speak. I can then use an update method of the cube group module to update the state of ones of these cube groups so that the cubes expand outward from the center of the group, and back again.
 
-### 3.1 - Cube Group module
+### 2.1 - Cube Group module
 
 Here I have the state of the cube group module as I have used it for this example. I did not change much with this from what I have worked out in the for the other three.js example post. Still I often do make a few minor changes here and there with these when I use them in other projects, so I just got into the habit of always posing what it is that I am using here.
 
@@ -247,7 +247,7 @@ Here I have the state of the cube group module as I have used it for this exampl
     (this['CubeGroupMod'] = {}));
 ```
 
-### 3.2 - the main javaScript file
+### 2.2 - the main javaScript file
 
 Now for a main javaScript file in which I am using the Raycaster class to run an animation for any and all cube groups that intersect when using a Raycater. When it comes to working with an instance of this cube group of mine it is a little different from working with a collection of mesh objects, as what I am dealing with here is a collection of groups of mesh objects. However the situation is not all that more involved as I just need to loop over the collection of cube groups, and pass the children of each group to the intersects objects method. I can then just the the first mesh object if any and just use the parent property of that mesh to get a reference to the group of cube mesh objects. I can then set the active flag of the cube group to true.
 
@@ -349,6 +349,6 @@ loop();
 
 So then the outcome of this is more or less what I had in mind when it comes to what I wanted to do. When I mouse over a cube group the cube group beginnings an animation loop, until the loop is over at which point the active false ends up getting set back to false. Maybe not the most interesting example, but I wanted to do something at least a little more advanced then just the usual basic copy and paste cook book style code examples.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 So then the raycaster class is a useful tool to go about clicking on mesh objects in three.js. However I am sure that there are many uses for the class that will come up when it comes to writing scripts that update some kind of simulation also when it comes to getting a collection of mesh objects from a given object outward or anything to that effect. I think that there might be a need for maybe a few more basic examples of this kind of class as I am sure that there are a number of issues that will come up here and there when using this class. Not just with the class itself, but also when it comes to three.js, and javaScript in general. For example many of the examples that I have worked out as of this writing will just work with a mouse, but I did not do anything when it comes to working with touch devices, and this day in age I have to take that into account when making any kind of production project.
