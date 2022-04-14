@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-04-14 11:07:58
-version: 1.19
+updated: 2022-04-14 11:11:08
+version: 1.20
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be  used to help with various tasks such as clamping values. Othe things that can be done with the various methods include things such as converting a degree value to a radian value, or getting random values and pseudo random values. 
@@ -175,4 +175,6 @@ There is using the plain old Math random method and also many other methods that
 
 ## 5 - Conclusion
 
-The math utils method then have a whole bunch of useful methods that I find myself using often, however it does not have everything that I might expect to have in such a collection of methods. Although I guess I should not expect everything to be there actually because there is still what there is to work with in the core javaScript math object also of course. Also some of the things that come to mind are methids that I can not say that I use all that often such as an [nth root method](/2020/03/11/js-nth-root/) for example.
+The math utils object is then a whole bunch of useful methods that I find myself using often, however it does not have everything that I might expect to have in such a collection of methods. Although I guess I should not expect everything to be there actually because there is still what there is to work with in the core javaScript math object also of course. Speaking of which that is of course something that you show know a thing or two aboutat this time when it comes to usig methods like Math.cos, and [Math.atan2](/2019/03/19/js-math-atan2/) for example.
+
+Also some of the things that come to mind are methods that I can not say that I use all that often such as an [nth root method](/2020/03/11/js-nth-root/) for example.
