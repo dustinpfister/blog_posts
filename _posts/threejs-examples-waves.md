@@ -1,15 +1,15 @@
 ---
-title: A Three js example making waves for the first time
+title: A waves example using javaScript and threejs
 date: 2018-11-14 16:45:00
-tags: [js,three.js]
+tags: [three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2021-05-17 16:06:43
-version: 1.23
+updated: 2022-04-14 11:20:36
+version: 1.24
 ---
 
-So I wanted to start making some posts on [three.js examples](/2021/02/19/threejs-examples/), rather that the usual posts on just simple examples of certain basic things here and there, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of buffered geometry that is a set of points that move in a wave like pattern.
+So I wanted to start making some posts on [three.js examples](/2021/02/19/threejs-examples/), rather that the usual posts on just simple examples of certain basic things here and there, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of [buffered geometry](/2021/04/22/threejs-buffer-geometry/) that is a set of points that move in a wave like pattern.
 
 So this threejs example might be a good starting point when it comes to figuring out how to go about creating a custom geometry with a little javaScript code, and also how to work with the Buffer Geometry constructor. In this example I am just creating the points of a geometry though, so I will be using the THREE.Points constructor and the points material rather than the usual mesh constructor.
 
