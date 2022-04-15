@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-04-15 13:07:47
-version: 1.2
+updated: 2022-04-15 13:11:47
+version: 1.3
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
@@ -15,7 +15,9 @@ When it comes to using data textures as a way to create textures with javaScrrip
 
 <!-- more -->
 
-## 1 - basic data texture example
+## 1 - A basic data texture example
+
+For a simple example of this data texture thing in threejs I made this quick example that involves starting at a value of 32 for the red channel and adding 128 over the length of the total number of pixles for the image. I am then also doing something similar for the green channel just subtracting rather than adding.
 
 ```js
 // scene, camera, and renderer
