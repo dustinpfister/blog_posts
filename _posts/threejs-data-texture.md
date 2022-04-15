@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-04-15 13:32:19
-version: 1.8
+updated: 2022-04-15 13:36:33
+version: 1.9
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
@@ -21,7 +21,7 @@ This is a post on using the THREE.DataTexture constructor in threejs to create a
 
 ### version numbers matter
 
-The version of threejs that I was using when I first wrote this posr was r135
+The version of threejs that I was using when I first wrote this post was r135
 
 ### The source code in this post is up on Github
 
@@ -32,6 +32,8 @@ The source code examples that I am writing about in this post can be found in my
 For a simple example of this data texture thing in threejs I made this quick example that involves starting at a value of 32 for the red channel and adding 128 over the length of the total number of pixels for the image. I am then also doing something similar for the green channel just subtracting rather than adding.
 
 I start out by making my usual [scene object](/2018/05/03/threejs-scene/) along with a [camera](/2018/04/06/threejs-camera/) and [web gl renderer](/2018/11/24/threejs-webglrenderer/) just like with any other threejs project. AFter that I will want to create an instance of a unit8Array where the length is equal to the number of pixels times four. So I just need to figure out that the width and height of the texture should be and then multiply that to get a size in terms of a total number of pixels. I can then use this size value times four to set the length of the typed array, and also use it as a way to know if I should stop looping or not when it comes to setting the values for this array.
+
+I then have a loop in which I am figuring out what the values should be for each red, green, blue, and alpha channle value for each pxile. I can have an index for each pixel and then just figure out what the actual index value in the array is by just multiplying by four and then adding fro there for each channel value. Once I have my array in the state that I want it for the texture the next step is to then pass that array as an argument when calling the THREE.DataTextyre [constructor function](/2019/02/27/js-javascript-constructor/).
 
 ```js
 // scene, camera, and renderer
