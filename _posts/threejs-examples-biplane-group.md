@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2022-04-16 09:39:29
-version: 1.30
+updated: 2022-04-16 09:47:42
+version: 1.31
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. So in other words in this example I will take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. So then this will just be a kind of group or groups, and then I will be moving this group of groups independently of each individual biplane group that is a child of one of these groups.
@@ -18,7 +18,7 @@ I do not think I want to sink to much time into this, but it can still prove to 
 
 ## The biplane group model and what to know first
 
-This is a post on a three.js example where I am creating a Group of Groups of Mesh objects that come together to look like something that is a biplane. I am then creating a number of these bi plane groups so there is then yet another level of this going on when using it in a main javaScript file. So then the example here might prove to be a little advanced for people who are still relatively new to three.js, but it might still not prove to be to complex. In any case in this section I will be going over a few things that you should be aware of before continuing to read the rest of this post.
+This is a post on a three.js example where I am creating a Group of Groups of Mesh objects that come together to look like something that is a biplane. I am then creating a number of these bi plane groups so there is then yet another level of this going on when using it in a main javaScript file. So then the example here might prove to be a little advanced for people who are still [relatively new to three.js](/2018/04/04/threejs-getting-started/), but it might still not prove to be to complex. In any case in this section I will be going over a few things that you should be aware of before continuing to read the rest of this post.
 
 ### Version Numbers matter with three.js
 
