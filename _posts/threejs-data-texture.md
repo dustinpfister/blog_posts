@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-04-16 08:50:38
-version: 1.13
+updated: 2022-04-16 08:52:26
+version: 1.14
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
@@ -121,6 +121,8 @@ renderer.render(scene, camera);
 ```
 
 ## 3 - Using the math random method
+
+Now for a quick example using the [math random](/2020/04/21/js-math-random/) method to create color channel values.
 
 ```js
 // scene, camera, and renderer
