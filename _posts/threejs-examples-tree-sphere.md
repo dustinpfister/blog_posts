@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2022-04-16 09:24:17
-version: 1.23
+updated: 2022-04-16 09:26:52
+version: 1.24
 ---
 
 I wrote a post on a [simple crude three model example](/2019/07/30/threejs-examples-tree/) using [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree that is more of the [Deciduous](https://en.wikipedia.org/wiki/Deciduous) rather than evergreen type.
 
-So it goes without saying that I am going for a kind of style where I am just making simple basic models using the built in three.js geometries. This is then a fairly [basic threejs example](/2021/02/19/threejs-examples/) of this kind of model but there are still a few basic things that I need to work out when it comes to creating these kinds of groups of mesh objects. One thing to be aware of is what happens when I use the object3d look at method with out of these. For this tree model I would want for the look at method to make it so that the bottom of the trunk is what is facing the position that I give to the look at method. 
+So it goes without saying that I am going for a kind of style where I am just making simple basic models using the built in three.js geometries. In the long run though it might be best to look into how to go about making models in blender and then importing them into threejs by way of something like the [dae file loader](/2021/04/30/threejs-dae-collada-loader/).
+
+This is then a fairly [basic threejs example](/2021/02/19/threejs-examples/) of this kind of model but there are still a few basic things that I need to work out when it comes to creating these kinds of groups of mesh objects. One thing to be aware of is what happens when I use the object3d look at method with out of these. For this tree model I would want for the look at method to make it so that the bottom of the trunk is what is facing the position that I give to the look at method. 
 
 <!-- more -->
 
