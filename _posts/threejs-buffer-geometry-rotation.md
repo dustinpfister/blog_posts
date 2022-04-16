@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2022-04-16 09:07:23
-version: 1.19
+updated: 2022-04-16 09:11:18
+version: 1.20
 ---
 
-When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](/2018/04/23/threejs-object3d/) that stores an instance of the [Euler class](/2021/04/28/threejs-euler/). When it comes to a [Mesh object] which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with anu children that might be added to the mesh objects as well. 
+When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](/2018/04/23/threejs-object3d/) that stores an instance of the [Euler class](/2021/04/28/threejs-euler/). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
 
-However it is also worth pointing out that the geometry of a mesh object can also be rotated independently of a mesh objects orientation as well, and in some cases I might want to do that rather than rotating the mesh object, or any parent object of the mesh. More often than not it is the orientation of a mesh object or a group of mesh objects that I want to rotate, however in some cases I will want to adjust the orientation of a geometry relative to the orientation of a mesh object that contains a geometry. So in this post I will be going over the basics of how to rotate a geometry rather than a mesh object.
+However it is also worth pointing out that the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) of a mesh object can also be rotated independently of a mesh objects orientation as well, and in some cases I might want to do that rather than rotating the mesh object, or any parent object of the mesh. More often than not it is the orientation of a mesh object or a [group of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/) that I want to rotate, however in some cases I will want to adjust the orientation of a geometry relative to the orientation of a mesh object that contains a geometry.
 
 When it comes to rotating a buffer geometry there are a number of methods that are of interest for this kind of task. Often I end up using a method like that of the [rotateX method](https://threejs.org/docs/#api/en/core/BufferGeometry.rotateX) however just like that of the Object3d class there is also a [look at method](https://threejs.org/docs/#api/en/core/BufferGeometry.lookAt) that might also work in some cases. However I think it might be best to use these methods only once to make the geometry line up with what would be expected when using an object3d level method or property value to set an orientation of a mesh object that contains a geometry. In this post I will be going over a few examples that will showcase this sort of thing.
 
