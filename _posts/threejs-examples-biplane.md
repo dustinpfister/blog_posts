@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-05-23 10:11:33
-version: 1.17
+updated: 2022-04-16 09:39:29
+version: 1.18
 ---
 
 When it comes to [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project. With that said there is the prim and proper way of going about creating a 3d model of something, and that is all fine and good, but it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a [Biplane](https://en.wikipedia.org/wiki/Biplane) using just the built in three.js geometry constructors mainly the [box geometry](/2021/04/26/threejs-box-geometry/) constructor and [groups](/2018/05/16/threejs-grouping-mesh-objects/).
@@ -15,15 +15,15 @@ This example will involve create a bunch of mesh objects, combining them into a 
 
 <!-- more -->
 
-## 1 - What to know first
+## What to know first
 
 This is a post on a full working three.js project example of a little looping animation of a simple biplane model made from mesh objects using the built in three.js geometry constructor functions. In this example I am also making use of a number of other features built into three.js such as groups. So this post is not intended for developers that are still a little new to three.js, as I assume that you have at least covered some of the basics when it comes to using three.js and javaScript to create some kind of scene. So I will not be covering the very basic of three.js itself here, however I will be going over a few things that I think that you should have solid at this point before continuing to read this post.
 
-### 1.1 - Version Numbers matter with three.js
+### Version Numbers matter with three.js
 
 When I first wrote this post I was using r125 of three.js and I have also been doing a fare about or editing of this post as i continue to refine this basic three.js model. The last time I edited this post then I was using three.js version r127. I have made a habit of mentioning what version numbers I am using in every three.js post that I write, and also make note of it as I edit older posts also. Code braking changes are made to three.js all the time, so I think doing so is called for.
 
-## 2 - The biplane module
+## 1 - The biplane module
 
 The idea here is to create a javaScript module that will create and return an instance of a [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) which is just a way to pack a whole bunch of Mesh objects into a single group. An instance of THREE.Group like a Mesh object also inherits from the [Object3d class](/2018/04/23/threejs-object3d/), and as such also has a userData object which is the standard object that is to be used to place app specific data. Such as the current radian value for a prop on a biplane.
 
@@ -134,13 +134,13 @@ var Biplane = (function () {
     ());
 ```
 
-## 3 - An example making use of the biplane model so far
+## 2 - An example making use of the biplane model so far
 
 So then now it is just a question of having a main javaScript file where I am making use of this model directly or indirectly by way of another main world module of some kind. In this section I will be doing all the usual when it comes to making a threejs project such as creating a scene, camera, and renderer when it comes to the typical main javaScript file where I often do such things. However before I get to write about that file there are a bunch of additional modules that I would like to use with this biplane module of mine. I will want to have a module to create something that will serve as some ground, and it should have something to sever as a texture so that I know that the plane is moving around. In other worlds it would be nice to have something to serve as a frame of reference. Also I am sure that when it comes to using this biplane module I am going to use it in a way where I will be creating one or more instances of it in a main world module that will contain the ground, lights, and anything else I might want to add to the over all scene.
 
 So then in this section I will be going over all the additional files that I am using to do something interesting with this biplane module.
 
-### 3.1 - A utils module
+### 2.1 - A utils module
 
 I have a general utility module for this example that I am using in the main world module, and any additional areas in the over all example. Here in this module I have a get per values method that will create and return a collection of values that I use to update the position and rotation of objects by a frame over max frame values.
 
@@ -176,7 +176,7 @@ utils.normalizeRadian = function (radian) {
 };
 ```
 
-### 3.2 - a Tile Index module
+### 2.2 - a Tile Index module
 
 This is a tile index module that I borrowed from [my post on the plane geometry constructor](/2019/06/05/threejs-plane/). This tile index module is a nice little module that I can use to quickly create a plane geometry with a checkered texture. As you might suspect I will be using this module to create a geometry and mesh that will serve as the ground of this little animation loop example of this biplane.
 
@@ -284,7 +284,7 @@ This is a tile index module that I borrowed from [my post on the plane geometry 
     (this['TileMod'] = {}));
 ```
 
-### 3.3 - A world module
+### 2.3 - A world module
 
 I will then want a main world module that will be used to wrap everything g that I want together into one main module.
 
@@ -346,7 +346,7 @@ I will then want a main world module that will be used to wrap everything g that
     (this['worldMod'] = {}));
 ```
 
-### 3.4 - The main JavaScript file
+### 2.4 - The main JavaScript file
 
 Now I just need a little additional javaScript code to make use of the main world module and everythjng that it is built on top of, including of course the biplane module.
 
@@ -389,7 +389,7 @@ Now I just need a little additional javaScript code to make use of the main worl
 
 The result of all of this then is having two biplane models one is the default lime color, and the other I made red. The props spin at two different speeds, and that is just about it for now. the next step would be to create another project where I am making use of this model, and maybe a few more just like it to create some kind of scene.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 I like to make models this way, I can just slap something together and it just works. I am sure that in a real project I might run into problems sooner or later. However yet again maybe not if the final project is some kind of video rather than a game. What really matters is how things look, and this kind of very low poly look is kind of nice I think.
 
