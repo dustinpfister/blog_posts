@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 872
-updated: 2022-04-16 09:17:07
-version: 1.18
+updated: 2022-04-16 09:18:11
+version: 1.19
 ---
 
 Earlier this week I wrote a [post on a simple tree model](/2021/05/19/threejs-examples-tree-sphere/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model [positioned on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/). With that said I am going to want to have a main world module that will create and position a collection of three models, and it will also make use of some additional features that I have worked out in other examples, such as using [canvas elements to create textures](/2018/04/17/threejs-canvas-texture/) for the trees as well as the world sphere itself.
@@ -15,19 +15,19 @@ So this time around the [three.js example](/2021/02/19/threejs-examples/) in thi
 
 <!-- more -->
 
-## 1 - What to know first with this World of tree sphere models in three.js
+## What to know first with this World of tree sphere models in three.js
 
 This is a post on a three.js project example in which I am creating a main world module that makes use of another model that is used to create an instance of a crude tree module that I worked out in another post. In this post I am making use of a while lot of features to work with in three.js, but for the most part I am sticking to using just built in geometries, and materials, and not doing anything to off the rails. Still this is not a post that is intended for developers that are new to three.js, and even if you have some experience with three.js there are still a few things that you might want to brush up on before reading more on this example.
 
-### 1.1 - Version numbers matter with three.js
+### Version numbers matter with three.js
 
 When this post was written I was using three.js revision 127 of three.js. Just like with any other javaScript library it is impotent to keep in mind which version of the library is being used when working out source code examples, as code breaking changes are often made to the public api of the library.
 
-### 1.2 - Experiment with creating simple models that are just groups of mesh objects
+### Experiment with creating simple models that are just groups of mesh objects
 
 I have wrote a number of posts thus far that have to do with crating a model that is really just a group of mesh objects. It is these mesh objects that are used to create an over all model that looks like something. This kind of approach might be crude compared to the more professional way of doing this sort of thing that would just involve a single geometry, however I have found that this kind of model still works fine with what it is that I would like to do with three.js. This simple tree sphere model is a simple static example of this kind of module that might serve as a good basic starting point for making this sort of thing. However I also have a number of other more complex modules that have some kind of animation that can be used with them.
 
-## 2 - The World model
+## 1 - The World model
 
 The main module of this three.js example is then a module that makes use of the tree module that I first started working out in another example. I will be getting to that module later in this post but the root module of everything is what I think I should start out with for now. In this world module I have just two public methods one to create a single world object, and then another to update the state of one of these world objects. Inside the body of this world module I have a number of helper methods including a helper method that will create and position a collection of the tree sphere models.
 
@@ -143,7 +143,7 @@ The main module of this three.js example is then a module that makes use of the 
     (this['WorldMod'] = {}));
 ```
 
-## 3 - The tree model
+## 2 - The tree model
 
 Here I have the source code of the tree sphere model that i will be using in the world module. The state of the source code is not all the different form what I world out for my example on this tree model by itself. It is just that this time around I am writing a whole bunch more code around this as a way to do something more with it.
 
@@ -207,7 +207,7 @@ Here I have the source code of the tree sphere model that i will be using in the
     (this['TreeSphereMod'] = {}));
 ```
 
-## 4 - Going to make use of canvas textures for this example
+## 3 - Going to make use of canvas textures for this example
 
 A while back I worked out another example where I was making use of canvas elements as a way to quickly create some textures to use with materials with a little javaScript code rather than external images. I thought that would be a nice touch to this example as a way to just quickly generate some texture for the trees and the world itself also.
 
@@ -273,7 +273,7 @@ A while back I worked out another example where I was making use of canvas eleme
     (this['canvasTextureMod'] = {}));
 ```
 
-## 5 - The main javaScript file
+## 4 - The main javaScript file
 
 Just like with any other three.js example of mine I am always going to want to have some kind of main javaScript file. In some examples that are simple enough I might just have this file alone, but in more complex examples such as this one there are just a few core features that are just about always parked here. In this file I create my scene object, renderer, and main application animation loop. this is also where I will just end up placing anything else that might come up before it ends up having some kind of module of its own, or because I am not sure where to go with it.
 
@@ -403,6 +403,6 @@ In this main javaScript file I am creating some custom materials for the sphere 
     ());
 ```
 
-## 6 - Conclusion
+## 5 - Conclusion
 
 This example has proved to be a half way decent exercise with a great many various topics in three.js that I am using together to create a single project. There is having a single model of a tree that is composed of just a sphere and a box geometry of a trunk, but then there is getting into having a collection of these kinds of models, and also beginning a number of other things into play in order to make a somewhat interesting over all scene. This was more or less the goal with this three.js example, and I am to make at least a few more examples such as this when it comes to making something that is at least starting to look like some kind of finished product.
