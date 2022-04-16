@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 872
-updated: 2022-04-16 09:18:11
-version: 1.19
+updated: 2022-04-16 09:20:50
+version: 1.20
 ---
 
 Earlier this week I wrote a [post on a simple tree model](/2021/05/19/threejs-examples-tree-sphere/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model [positioned on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/). With that said I am going to want to have a main world module that will create and position a collection of three models, and it will also make use of some additional features that I have worked out in other examples, such as using [canvas elements to create textures](/2018/04/17/threejs-canvas-texture/) for the trees as well as the world sphere itself.
@@ -17,7 +17,9 @@ So this time around the [three.js example](/2021/02/19/threejs-examples/) in thi
 
 ## What to know first with this World of tree sphere models in three.js
 
-This is a post on a three.js project example in which I am creating a main world module that makes use of another model that is used to create an instance of a crude tree module that I worked out in another post. In this post I am making use of a while lot of features to work with in three.js, but for the most part I am sticking to using just built in geometries, and materials, and not doing anything to off the rails. Still this is not a post that is intended for developers that are new to three.js, and even if you have some experience with three.js there are still a few things that you might want to brush up on before reading more on this example.
+This is a post on a three.js project example in which I am creating a main world module that makes use of another model that is used to create an instance of a crude tree module that I worked out in another post. In this post I am making use of a whole lot of features to work with in three.js, but for the most part I am sticking to using just built in geometries, and materials, and not doing anything to off the rails. 
+
+Still this is not a [post that is intended for developers that are new to three.js](/2018/04/04/threejs-getting-started/), and even if you have some experience with three.js there are still a few things that you might want to brush up on before reading more on this example.
 
 ### Version numbers matter with three.js
 
@@ -405,4 +407,4 @@ In this main javaScript file I am creating some custom materials for the sphere 
 
 ## 5 - Conclusion
 
-This example has proved to be a half way decent exercise with a great many various topics in three.js that I am using together to create a single project. There is having a single model of a tree that is composed of just a sphere and a box geometry of a trunk, but then there is getting into having a collection of these kinds of models, and also beginning a number of other things into play in order to make a somewhat interesting over all scene. This was more or less the goal with this three.js example, and I am to make at least a few more examples such as this when it comes to making something that is at least starting to look like some kind of finished product.
+This example has proved to be a half way decent exercise with a great many various topics in three.js that I am using together to create a single project. There is having a single model of a tree that is composed of just a sphere and a [box geometry](/2021/04/26/threejs-box-geometry/) of a trunk, but then there is getting into having a collection of these kinds of models, and also beginning a number of other things into play in order to make a somewhat interesting over all scene. This was more or less the goal with this three.js example, and I am to make at least a few more examples such as this when it comes to making something that is at least starting to look like some kind of finished product.
