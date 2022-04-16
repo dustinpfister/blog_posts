@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-04-15 13:36:33
-version: 1.9
+updated: 2022-04-16 08:32:58
+version: 1.10
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
@@ -21,7 +21,7 @@ This is a post on using the THREE.DataTexture constructor in threejs to create a
 
 ### version numbers matter
 
-The version of threejs that I was using when I first wrote this post was r135
+The version of threejs that I was using when I first wrote this post was r135. I also quikly checked that the source code examples also seem to work well in just about every major version of threejs that I have been using when writing these posts going back as far as r91. Still code breaking changes might be made at some point in the future so one should always be mindful of the version of threejs that they are using when reading about and using threejs source code examples on the open web.
 
 ### The source code in this post is up on Github
 
