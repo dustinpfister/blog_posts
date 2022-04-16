@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2022-04-16 09:31:56
-version: 1.23
+updated: 2022-04-16 09:36:50
+version: 1.24
 ---
 
-When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in [constructor functions](/2019/02/27/js-javascript-constructor/) that can be used to make most basic shapes such as the [Box geometry Constructor](/2021/04/26/threejs-box-geometry/), and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
+When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in [constructor functions](/2019/02/27/js-javascript-constructor/) that can be used to make most basic shapes such as the [Box geometry Constructor](/2021/04/26/threejs-box-geometry/), and the [Sphere Geometry Constructor](/2021/05/26/threejs-sphere/) just to name a new. These constructors can be used to quickly create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then in turn be used with a materials to produce an over all [mesh object](/2018/05/04/threejs-mesh/) that can then be added to a [scene object](/2018/05/03/threejs-scene/) of an over all threejs project. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
 
 There is also getting into ways to go about coming up with a custom geometry by way of an extremal file, or directly working with the buffered geometry constructor and a little javaScript code to create custom geometries. However I have come to find that I like to make simple crude yet effective modules that are just groups of these basic built in shapes. The Box and Sphere constructors are great basic tools for these kinds of models, but some of the other shapes can come into play also, so it makes sense to look into them also.
 
@@ -17,7 +17,7 @@ There is also getting into ways to go about coming up with a custom geometry by 
 
 ## This is a post on three js
 
-This is a post on a built in geometry constructor in three js that can be used to make a cone shape buffer geometry that can then be used with a materials to compose a mesh object. This is not a getting started post on three js let alone javaScript in general so I assume that you have at least some exposure with three js. I will not be going over every little basic detail in this section, but I can take the time to cover some basic that you should know by now when looking into all the various built in geometry constructors to work with in three.js.
+This is a post on a built in geometry constructor in three js that can be used to make a cone shape buffer geometry that can then be used with a materials to compose a mesh object. This is not a [getting started post on three js](/2018/04/04/threejs-getting-started/) let alone javaScript in general so I assume that you have at least some exposure with three js. I will not be going over every little basic detail in this section, but I can take the time to cover some basic that you should know by now when looking into all the various built in geometry constructors to work with in three.js.
 
 ### Check your version numbers
 
