@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-04-16 08:42:23
-version: 1.11
+updated: 2022-04-16 08:46:50
+version: 1.12
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
@@ -33,7 +33,7 @@ For a simple example of this data texture thing in threejs I made this quick exa
 
 I start out by making my usual [scene object](/2018/05/03/threejs-scene/) along with a [camera](/2018/04/06/threejs-camera/) and [web gl renderer](/2018/11/24/threejs-webglrenderer/) just like with any other threejs project. AFter that I will want to create an instance of a unit8Array where the length is equal to the number of pixels times four. So I just need to figure out that the width and height of the texture should be and then multiply that to get a size in terms of a total number of pixels. I can then use this size value times four to set the length of the typed array, and also use it as a way to know if I should stop looping or not when it comes to setting the values for this array.
 
-I then have a loop in which I am figuring out what the values should be for each red, green, blue, and alpha channle value for each pxile. I can have an index for each pixel and then just figure out what the actual index value in the array is by just multiplying by four and then adding fro there for each channel value. Once I have my array in the state that I want it for the texture the next step is to then pass that array as an argument when calling the THREE.DataTextyre [constructor function](/2019/02/27/js-javascript-constructor/).
+I then have a loop in which I am figuring out what the values should be for each red, green, blue, and alpha channel value for each pixel. I can have an index for each pixel and then just figure out what the actual index value in the array is by just multiplying by four and then adding fro there for each channel value. Once I have my array in the state that I want it for the texture the next step is to then pass that array as an argument when calling the THREE.DataTextyre [constructor function](/2019/02/27/js-javascript-constructor/).
 
 ```js
 // scene, camera, and renderer
@@ -72,6 +72,8 @@ renderer.render(scene, camera);
 ```
 
 ## 2 - Distance to method of the Vector2 class
+
+I have wrote a number of posts at this point on the Vector3 class in threejs that is without question one of the major classes in threejs that a developer should become familiar with. However there is also the Vector2 class that has to do with just plain old 2d points which also will come into play when doing things like working with the raycaster class, or in this case making 2d textures with a little javaScript code and the data texture constructor.
 
 ```js
 // scene, camera, and renderer
