@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2022-04-16 09:43:21
-version: 1.19
+updated: 2022-04-16 09:45:39
+version: 1.20
 ---
 
 When it comes to [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project. 
@@ -288,7 +288,7 @@ This is a tile index module that I borrowed from [my post on the plane geometry 
 
 ### 2.3 - A world module
 
-I will then want a main world module that will be used to wrap everything g that I want together into one main module.
+I will then want a main world module that will be used to wrap everything together. So then this is a situation in which I have a main world group object and then a whole bunch more objects that helper to create an over all world to look at beyond just that of the little biplane model.
 
 ```js
 (function (api) {
