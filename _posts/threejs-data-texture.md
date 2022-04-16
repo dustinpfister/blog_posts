@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-04-16 08:52:26
-version: 1.14
+updated: 2022-04-16 08:55:42
+version: 1.15
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
@@ -161,6 +161,8 @@ renderer.render(scene, camera);
 ```
 
 ## 4 - The seeded random method of the Math Utils object
+
+I just also wrote a new post on the [math utils object](/2022/04/11/threejs-math-utils/) in threejs, and one interesting method in there is a seeded random method that will work like math random, with one little difference. Each time I reload the page I see the same texture rather than a new one. So then  this seeded random method is a way to get an effect like that of what happens when using the math random method, but in a deterministic kind of way which is cool.
 
 ```js
 // scene, camera, and renderer
