@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-05-23 15:00:31
-version: 1.29
+updated: 2022-04-16 09:39:29
+version: 1.30
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. So in other words in this example I will take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. So then this will just be a kind of group or groups, and then I will be moving this group of groups independently of each individual biplane group that is a child of one of these groups.
@@ -16,15 +16,15 @@ I do not think I want to sink to much time into this, but it can still prove to 
 
 <!-- more -->
 
-## 1 - The biplane group model and what to know first
+## The biplane group model and what to know first
 
 This is a post on a three.js example where I am creating a Group of Groups of Mesh objects that come together to look like something that is a biplane. I am then creating a number of these bi plane groups so there is then yet another level of this going on when using it in a main javaScript file. So then the example here might prove to be a little advanced for people who are still relatively new to three.js, but it might still not prove to be to complex. In any case in this section I will be going over a few things that you should be aware of before continuing to read the rest of this post.
 
-### 1.1 - Version Numbers matter with three.js
+### Version Numbers matter with three.js
 
 When I first wrote this post I was using r125 of three.js, and the last time I cam around to do a little editing I was using r127 of three.js which was a late version of three.js in April of 2021. Code breaking changes are made to three.js all the time so when working with code examples on the open web make sure that what you are working with is up to date.
 
-## 2 - Biplane Group model
+## 1 - Biplane Group model
 
 First off is the biplane group that will create a group of groups where each nested group is an instance of my biplane model. I wrote a post on that yesterday, but I will be getting to the copy of the model in the next section also anyway even though not much has changed with that for this example. So then in this section I will then be covering this new model that is actually just a collection of models where each model is one of my little biplane models.
 
@@ -122,7 +122,7 @@ var BiplaneGroup = (function () {
 There is a great deal that I could do when it comes to working out what the logic should be when it comes to updating the position of each plane relative to the origin of the bi plane group. However I think for now I will do something simple were each biplane just moves up and down a little, and also have each first child of the group do a rotation. When it comes to making this kind of model I think what really matters first and foremost is to get the biplane model solid, and then this kind of module will change a little from one animation to the next.
 
 
-## 3 - Biplane model
+## 2 - Biplane model
 
 Here is the source code of the biplane model that I am using in the biplane group model. The source code for this is not all that different from what I worked out in yesterdays post. It is just a way of creating a threejs group that is a collection of mesh objects each using the box geometry constructor to just slap something together that looks like a little bi plane. Just like many other modules like this I have a main create method that i can use to create just one group of mesh objects that will be one of the biplanes. I then have a number of methods that I can use to update the state of one of a given biplane.
 
@@ -249,7 +249,7 @@ var Biplane = (function () {
     ());
 ```
 
-## 4 - The main javaScript file
+## 3 - The main javaScript file
 
 Now for some additional javaScript to make use of this new biplane group model. I start off with a scene and a camera like always with just about any of these examples like always. However with this example I am using materials that will respond to light so in this example I will want a light source, and when it comes to adding a light source I went with a [point light](/2019/06/02/threejs-point-light) and I also wanted to add at least a little [ambient light](/2018/11/02/threejs-ambientlight/) also. This is a typical situation with light where I have a baseline amount of light and then something like a point light to help show some depth with the materials that I am using with the biplanes.
 
@@ -334,7 +334,7 @@ I then set up my renderer and also a main application loop. It is inside this an
 
 The final result of all of this is having a cool little animation of sorts where there are all these bi plane groups moving from one side of the scene over to the other side at various speeds. I might want to add and change a whole lot of things here and there when it doe come to the idea of putting even more time into this one. However for now I think that this is more or less what I had in mind for this example that was just a little exercise of sorts and that is about it.
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 This was a fun quick little side project where I continued with another quick simple side project with the biplane model. Still if I can not think of some kind of long term project with this, or something like this I do not think I will be putting to much time into something like this. I have a whole lot of other little side projects like this and some of them should get more attention. 
 
