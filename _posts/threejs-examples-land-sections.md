@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 803
-updated: 2022-04-17 09:03:47
-version: 1.15
+updated: 2022-04-17 09:10:25
+version: 1.16
 ---
 
-I have been neglecting my content on [threejs](https://threejs.org/), so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some [actual examples](/2021/02/19/threejs-examples/) using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my [Mr Sun game](/2020/11/03/canvas-example-game-mr-sun/) that I have been working on and off for a while.
+I have been neglecting my content on [threejs](https://threejs.org/), so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts also while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs, and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some [actual examples](/2021/02/19/threejs-examples/) using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my [Mr Sun game](/2020/11/03/canvas-example-game-mr-sun/) that I have been working on and off for a while.
 
 The basic idea of my Mr Sun game is to have a display object that represents a sun, and then a bunch of land sections surrounding the sun. It is then possible to move the sun object around and by doing so that effects the surrounding land section objects. There is then all kinds of other ideas that branch off from there and I have many projects that are just that. Still the basic idea is simple enough and I think it would not be so hard to make a basic threejs example that is another way to go about creating that basic idea at least.
 
@@ -17,7 +17,7 @@ The basic idea of my Mr Sun game is to have a display object that represents a s
 
 ## What to know first before continuing
 
-This is a post on a threejs project example prototype that has to do with a basic game mechanic that I was exploring with an idea for a game. This is then not a getting started on three.js kind of post and I assume that you have at least some background with the basics of three.js and also of course know a thing or two about javaScript in general. So I will not be going over every little basic feature of three.js here, however I often like to start off my threejs posts with a section like this in which I write about a few things that you might want to read up more before continuing to read the rest f the post.
+This is a post on a threejs project example prototype that has to do with a basic game mechanic that I was exploring with an idea for a game. This is then not a [getting started on three.js](/2018/04/04/threejs-getting-started/) kind of post and I assume that you have at least some background with the basics of three.js and also of course know a thing or two about javaScript in general. So I will not be going over every little basic feature of three.js here, however I often like to start off my threejs posts with a section like this in which I write about a few things that you might want to read up more before continuing to read the rest f the post.
 
 ### Version numbers matter with three.js
 
