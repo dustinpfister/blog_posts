@@ -5,27 +5,27 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2022-04-17 08:58:42
-version: 1.25
+updated: 2022-04-17 09:02:44
+version: 1.26
 ---
 
-There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible) in threejs, this property is a boolean value that is set to true by default, and is used as a way to inform a renderer if the given mesh should even be rendered or not to begin with. 
+There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible) in threejs, this property is a boolean value that is set to true by default, and is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
 
-However it is true there are also a number of other subjects of interest such as setting the [transparency property of materials](/2021/04/21/threejs-materials-transparent/) for example that will will still make an object render it is thus that an opacity value can be set to zero that will have a similar visual effect. Other options that come to mind would involve moving mesh objects from one group that is added to a scene object to another group that is not as a scene object is what is passed to the renderer if the object is not a child of the scene object that in turn would also be a way to control visibility. Yet another way to active this kind of effect would be to make use of the [layers feature of threejs](/2021/06/04/threejs-object3d-layers/).
+However it is true there are also a number of other subjects of interest such as setting the [transparency property of materials](/2021/04/21/threejs-materials-transparent/) for example that will will still make an object render it is thus that an opacity value can be set to zero that will have a similar visual effect. Other option that come to mind would involve moving mesh objects from one group that is added to a [scene object](/2018/05/03/threejs-scene/) to another group that is not as a scene object is what is passed to the renderer if the object is not a child of the scene object that in turn would also be a way to control visibility. Yet another way to active this kind of effect would be to make use of the [layers feature of threejs](/2021/06/04/threejs-object3d-layers/).
 
 So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics and code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
 
 <!-- more -->
 
-## 1 - Visibility of objects in threejs and what to get solid first
+## Visibility of objects in threejs and what to get solid first
 
 This is a post on three.js and how to go about making objects in a scene visible or not. I will not be getting into the very basic of three.js here I assume that you have gone beyond a basic getting started type example when it co es to working with the library at this point, and are not just interested in learning a few things about how to go about setting visibly of objects in a scene. I will be trying to keep many of these examples simple and to the point so that they might still not be that far beyond people that are new to three.js. However there are maybe still a few things that you should be aware of, or refresh on before continuing reading this post. So in this section I will be going over these things.
 
-### 1.1 - Version Numbers matter in three.js
+### Version Numbers matter in three.js
 
 When I wrote this post and made the examples for it I was using threejs version r127, which was still a fairly late version of threejs at the time of this writing. I have found that I just need to mentioning what versions I was suing when writing a post on three.js, and that doing so is impotent more so than many other libraries that move a little slower when it comes to development.
 
-### 1.2 - Might want to read up more on Object3d in general
+### Might want to read up more on Object3d in general
 
 One way to go about making a mesh object visible or not is to just set the visible property of the mesh to false and be done with it. This visible property is not a property of a Mesh object though but the base class of mesh which is object3d. There are a great number of other features in object3d and other classes in three.js that are based off of object3d such as groups. 
 
@@ -33,11 +33,11 @@ It is not like using the visible property is the only way to go about doing this
 
 In this post I will be going over some examples that have a lot to do with object3d and how to use features of the class to make objects visible or not. However this object3d class is worth spending a fair about of time to work with just to get a fell for what there is to work with when using this class. So you might want to check out [my main post on object3d](/2018/04/23/threejs-object3d/) that might prove to be a good resource for learning more about this class in general.
 
-### 1.3 - There are also properties of materials that might be of interest
+### There are also properties of materials that might be of interest
 
 There is a lot to be said about the object3d class and how that can be used to make it so objects will or will not show up in a scene. However there is also maybe a thing or two to be said about the materials that are used to skin mesh objects that are based off of object3d also. Many materials will support a transparency boolean that when set will apply a transparency effect for the material, and opacity property can then be set form 0 to 1 to set the level of transparency for the material.
 
-## 2 - Making a mesh visible or not with the Object3d.visible property
+## 1 - Making a mesh visible or not with the Object3d.visible property
 
 The first and foremost feature in three.js that comes to mind when it comes to making an object visible or not would be to just set the visible boolean of the object to false. This might prove to be one of the most easy ways to go about doing this, so it would make sense to start out with a basic example of just using the visible boolean. Here then I have an example where I am just creating a single mesh object, setting the visible boolean value to false, and then adding the mesh to the scene. I then have a simple loop where I am toggling the boolean value of the visible property between true and false a set number of times per second.
 
@@ -75,7 +75,7 @@ loop();
 
 That is it more or less when it comes to just using the visible boolean, sure the conditions that are used to set the value of the property might change up a little now and then. However if I just simple want to set the visibly of an object to false without having to do something like removing a reference from one group and placing it into a pool or sorts, or setting the position of the mesh to a distance far away from the camera or something to that effect this will work.
 
-## 3 - There is just moving an object out of range of the camera
+## 2 - There is just moving an object out of range of the camera
 
 The visibility property of an object is one way to make it so an object is not visible, however there are of course many ways to go about getting a similar result. One of which would be to just move the object out of range of the render distance of the camera that is being used with the render method of the renderer that I am using. The typically camera that I often use for an example is the perspective camera and with the kind of camera there is the near and var values of the camera that I can set via arguments when calling the constructor of the perspective camera. If I then just simply move a mesh object to a location where the object is just to near, or to far away from the camera, then the object will not render.
 
@@ -127,7 +127,7 @@ loop();
 
 In this example I am just simply using the position property of a mesh object to move that mesh object into and out of range of a camera as a way to make the mesh visible and not visible by just making use of the near and far value of the camera as a means to do so. There is also the ides of not moving the mesh object, but moving the camera back and forth as a way to change the visibility of the mesh object. There is also yet even another way to go about doing so which would involve adjusting the near and far values of the camera and keep the camera and mesh in fixed locations. When doing so I need to call the update projection matrix method of the camera to do so.
 
-## 4 - Removing a child from the scene, or a group that was added to the scene
+## 3 - Removing a child from the scene, or a group that was added to the scene
 
 Maybe another important thing to keep in mind is that a mesh object will not render in a scene, if it is not part of that scene. There is creating a mesh object and not adding it to a scene object that is passed to the render method, and when doing so the mesh will of course not render because it is not in that scene. So there is creating a reference to a mesh object, and then adding and removing that mesh object to and from the scene as needed.
 
@@ -171,7 +171,7 @@ This kind of solution might prove to be the way that I will want to do things wh
 
 If I just set the visibility of a mesh to false that will just make it no longer visible, it will still very much be a part of the group, and as such will still be part of the update cycle and that can often lead to undesired results. So a better way might be to create a group that will serve as an object pool of sorts, and this object pool does not need to be added to the scene object that will be passed to the render method. Mesh Objects can just be moved from this object pool to the scene or a group that will be subject to an update procedure and back again as needed. This way mesh objects that are not being used will not be visible, and they will also not be taken into account when updating the scene.
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 So I hope that this post help to clear up some things when it comes to setting the visibly of on object in three.js. If not then I guess you will just need to work out some additional examples of your own, and keep looking until you find or make something that will work for you. However just about every solution that comes to mind for me will be ways that just change the visibility of an object and that is all, or something that changes other properties of the object, makes the object a child of some other parent object that is not added to the scene, or removing the object completely.
 
