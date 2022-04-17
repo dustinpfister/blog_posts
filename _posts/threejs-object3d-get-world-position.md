@@ -5,34 +5,34 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2021-05-25 12:59:27
-version: 1.17
+updated: 2022-04-17 09:08:06
+version: 1.18
 ---
 
-In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is getting into using groups as a way to compartmentalize a collection of mesh objects, and when doing so there is using the look at method to get a mesh to look at another child object of the group, or some other group. When doing so it is important to remember that the look at method will always case the object to look at something relative to world space, and not that position retaliative to the group. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space, rather than the position property of the object which is a position relative to the group rather than world space.
+In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](/2018/05/16/threejs-grouping-mesh-objects/) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](/2021/05/13/threejs-object3d-lookat/) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). When doing so it is important to remember that the look at method will always case the object to look at something relative to world space, and not that position retaliative to the group. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space, rather than the position property of the object which is a position relative to the group rather than world space.
 
 Knowing the difference between world space and space that is relative to a group, or any object that is based off of Object3d is one of the many little details that one should get familiar with at one point or another when it comes to making projects with three.js. So in this post I will be going over a few examples of this sort of thing when it comes to world space and group space in three.js.
 
 
 <!-- more -->
 
-## 1 - Getting world position in threejs and what to know first
+## Getting world position in threejs and what to know first
 
 In this post I will be writing about the [get world position method in the object3d base class](https://stackoverflow.com/questions/15098479/how-to-get-the-global-world-position-of-a-child-object) in the javaScript library known as three.js. So the content here has to do with just one little issue in an over all larger library that is written in a specific programing language called javaScript. I assume that you have at least some basic working knowledge of how to get up and running with the basics at least, because I am not going to do that here in this post. However I always like to start off my three.js posts with a section like this in which I outline some things that you should be aware of before continuing to read the rest of the content.
 
-### 1.1 - version numbers matter in three.js
+### Version numbers matter in three.js
 
 When I first wrote this post I was using revision 127 of threejs which was a late version of threejs as of April of 2021. When it comes to just the get world position method of the object3d class I do not think much has changed over the years, however a great deal has changed throughout the library. Code breaking changes are introduced to three.js all the time so if the code examples are not working as expected always check your version numbers first.
 
-### 1.2 - Read my more on the look at method of object3d and what it has to do with world space
+### Read up more on the look at method of object3d and what it has to do with world space
 
 There is working out not just one but many examples of the look at method of the object3d class to get a feel for where and when the method is useful, but also to become aware of the drawbacks in some situations. The methods works great but it will always look at a position that is relative to world space. Using the get world position method of the object 3d class can help with this, but even then there are some situations in which I am just going to need to work out another solution to set the orientation of an object.
 
-### 1.3 - learn a thing or two about groups and object3d in general beyond just this post
+### learn a thing or two about groups and object3d in general beyond just this post
 
 The use of the get world position often ends up going hand in hand with the use of groups, or in any way shape or form the use of objects that are a child of a parent object. That parent object can be a group, but it can also be anything that is based off of object3d, including even the scene object.
 
-## 2 - Basic group example of look at using and not using get world position
+## 1 - Basic group example of look at using and not using get world position
 
 In this example I am making a helper function that will create and return a group that I can then add to a scene object. This group object contains two mesh objects, one of which is a cone, and the other is a cube. In this helper function that creates the group I am doing a rotation of the geometry of the cone once to make it so that the orientation of the cone geometry lines up with the face of the mesh object. So it is now just a question of using the look at method of the cone mesh to have it point at something where the tip of the cone is facing the given direction.
 
@@ -97,7 +97,7 @@ renderer.render(scene, camera);
 
 With the group in which I am using the get world position method as a way to get a position to pass to look at the cone points to the cube that is inside the group. However the group where I am just passing the position of the cube to the look at method that cone is not pointing to the cube, it is however pointing to a position where the cube world be if that position value was relative to the world rather that the parent group object. So then this example helps to show the difference, and why in some cases I will want to use the get world position method when working with an object that is a child of a group.
 
-## 3 - Conclusion
+## 2 - Conclusion
 
 The get world position method of the object3d class seems to work well for the sake of having a way to go about getting an instance of Vector3 that is relative to a fixed static world space rather than a parent instance of object3d such as a group, or even a scene. The look at method will always point to a position that it is given relative to world space, so it is nice to always have a way to go about getting that kind of position by just calling a method that will always return that kind of position.
 
