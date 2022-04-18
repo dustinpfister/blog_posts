@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2022-04-18 11:02:37
-version: 1.26
+updated: 2022-04-18 11:09:49
+version: 1.27
 ---
 
 When working with a [Mesh Object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the geometry of the Mesh. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. In some cases I might be fine with using the same material for all the faces, I just want to do something with the [uv attribute of the buffered geometry](/2021/06/09/threejs-buffer-geometry-attributes-uv/) instance. That is to change what the offset values in a geometry that are used for a texture that is use for one or more of the various maps that are used for the material. However another option might be to have not just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -29,9 +29,9 @@ This is a post on the mesh class object and three.js and how to use an array of 
 
 When it comes to using the built in geometry constructors to create an instance of buffer geometry groups and material index values for them are set up for you and it is just a matter of looping over the groups of the geometry and changing the index values to the desired value if needed. However when it comes to making a custom geometry, as well as some of the built in geometries adding groups is something that needs to be done manually. In any case it makes sense to look into the [buffer geometry in greater detail](/2021/04/22/threejs-buffer-geometry/) beyond the scope of just this post alone.
 
-## 1 - New example with groups array using r127
+## 1 - New example with groups array using r135
 
-So the first example that I should cover here is an example that makes use of a new version of threejs, as of this writing I was using r127. In any case the process is somewhat similar an array of materials must be used rather than just a single material. After that it is just a matter of making sure that each face has the proper index value in the materials array set.
+So the first example that I should cover here is an example that makes use of a new version of threejs, as of this writing I was using r135 over the older versions that I use when writing about older features of threejs. In any case the process is somewhat similar an array of materials must be used rather than just a single material. After that it is just a matter of making sure that each face has the proper index value in the materials array set.
 
 In late versions of threejs that only support the use of Buffered Geometry in the core of the library itself there should be a groups array for a geometry. This is now the array of face objects that contain material index properties. When it comes to this example I am using the built in Box Geometry constructor that will create and return a buffered geometry, and on top of that there will be index values set for it by default that will work well with an array of materials that is a collection of six materials one for each side. However what if I just want to use three? In that case I will want to do something to make sure that I am only using index values in that range, such as looping over the groups object and setting the material index values that way.
 
