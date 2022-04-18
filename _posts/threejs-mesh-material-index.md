@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2022-04-18 10:42:59
-version: 1.23
+updated: 2022-04-18 10:44:35
+version: 1.24
 ---
 
 When working with a [Mesh Object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the geometry of the Mesh. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. In some cases I might be fine with using the same material for all the faces, I just want to do something with the [uv attribute of the buffered geometry](/2021/06/09/threejs-buffer-geometry-attributes-uv/) instance. That is to change what the offset values in a geometry that are used for a texture that is use for one or more of the various maps that are used for the material. However another option might be to have not just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -17,7 +17,7 @@ When working with an array of materials there is a property of a [face3](/2018/0
 
 ## What to know before getting into Mesh Material index values
 
-It should go without saying that this is not a getting started post with three.js, and I also will not be getting into the basics of javaScript and any additional topics that you should have a solid grasp on before hand. Still in this section I will be going over some of the things that you show know before getting into mesh material index values. If you thing that you know what you need to know with that you can of course skip over this section.
+It should go without saying that this is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/), and I also will not be getting into the basics of javaScript, and any additional topics that you should have a solid grasp on before hand. Still in this section I will be going over some of the things that you show know before getting into mesh material index values of group objects of a buffer geometry instance.
 
 ### Version Numbers matter big time with three.js
 
