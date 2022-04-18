@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2022-04-18 11:09:49
-version: 1.27
+updated: 2022-04-18 11:11:46
+version: 1.28
 ---
 
 When working with a [Mesh Object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the geometry of the Mesh. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. In some cases I might be fine with using the same material for all the faces, I just want to do something with the [uv attribute of the buffered geometry](/2021/06/09/threejs-buffer-geometry-attributes-uv/) instance. That is to change what the offset values in a geometry that are used for a texture that is use for one or more of the various maps that are used for the material. However another option might be to have not just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -22,6 +22,10 @@ It should go without saying that this is not a [getting started post with three.
 ### Version Numbers matter big time with three.js
 
 Three.js has been, and as of this writing still is, a fast moving target of a library when it comes to development. When I first wrote this post back in May of 2018 I was using r91 of threejs, and at this time there is now an r135 which is what I am observing at the time that I have edited this post last. Between these two versions of threejs a whole lot of code breaking changes have happened, and this will likely continue to be the case moving forward.
+
+### The source code examples in this post are on Github
+
+The source code examples that I am writing about in this post as well as for my many other posts on threejs can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-mesh-material-index).
 
 ### It might be good to look over the Buffer Geometry class in detail if you can get around to it
 
