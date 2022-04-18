@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2022-04-18 10:46:28
-version: 1.25
+updated: 2022-04-18 11:02:37
+version: 1.26
 ---
 
 When working with a [Mesh Object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the geometry of the Mesh. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. In some cases I might be fine with using the same material for all the faces, I just want to do something with the [uv attribute of the buffered geometry](/2021/06/09/threejs-buffer-geometry-attributes-uv/) instance. That is to change what the offset values in a geometry that are used for a texture that is use for one or more of the various maps that are used for the material. However another option might be to have not just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -93,10 +93,8 @@ A basic example of this would be to just have an array of instances of some kind
 
 ```js
 (function () {
- 
     // REVISION 91 was used for this example
     console.log(THREE.REVISION);
- 
     // an array of materials
     var materials = [
         new THREE.MeshBasicMaterial({
@@ -109,7 +107,6 @@ A basic example of this would be to just have an array of instances of some kind
             color: 0x0000ff
         })
     ];
- 
     // create the mesh
     var geometry = new THREE.BoxGeometry(1, 1, 1);
     // set material index values
@@ -121,7 +118,6 @@ A basic example of this would be to just have an array of instances of some kind
     var mesh = new THREE.Mesh(
             geometry,
             materials);
- 
     // SCENE
     var scene = new THREE.Scene();
     // add mesh to scene
@@ -129,23 +125,14 @@ A basic example of this would be to just have an array of instances of some kind
     // some helpers
     scene.add(new THREE.FaceNormalsHelper(mesh, 2, 0x00ff00, 1));
     scene.add(new THREE.VertexNormalsHelper(mesh, 2, 0xff0000, 1));
- 
     // camera, orbit controls, renderer
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
     camera.position.set(2, 2, 2);
     camera.lookAt(0, 0, 0);
-    var controls = new THREE.OrbitControls(camera);
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
-    // loop
-    var loop = function () {
-        requestAnimationFrame(loop);
-        renderer.render(scene, camera);
-    };
- 
-    loop();
- 
+    renderer.render(scene, camera);
 }
     ());
 ```
