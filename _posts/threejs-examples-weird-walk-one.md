@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-19 11:57:51
-version: 1.10
+updated: 2022-04-19 12:00:01
+version: 1.11
 ---
 
 Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/) that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the hight of the mesh objects from its full scale to zero and back again.
@@ -129,6 +129,8 @@ var weirdGuy = (function(){
 ```
 
 ### 1.1 - basic demo of the weird guy module
+
+Now for a simple demo of this weird guy module to start out with at least. For this I create my usual scene object, camera and renderer like with any other threejs project. On top of that I am also using a light source code this demo as I want to add light on top of the emissive values of the materials I am using to help show depth better.
 
 ```js
 (function () {
