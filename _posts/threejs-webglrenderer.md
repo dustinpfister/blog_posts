@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-04-19 10:34:14
-version: 1.31
+updated: 2022-04-19 10:34:41
+version: 1.32
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/),  and at least one [mesh object](/2018/05/04/threejs-mesh/) to look at that is composed of a [geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). There also needs to be a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed on top of all of this and that is a renderer. 
@@ -194,11 +194,9 @@ Another option for setting up and animation loop in which the render function wi
     ());
 ```
 
-## 3 - WebGL browser support
+## 3 - Conclusion
 
 In the event that there is no support for webGL in a client browser there are ways of feature testing for webGL and then using another kind of renderer to render a scene that makes use of the 2d canvas drawing api, or some other way or rendering other than that of webGL. For more on this topic check out my other post that has to do with [feature testing on webGL](/2019/06/11/threejs-webgl/).
-
-## 4 - Conclusion
 
 The WebGL renderer is the default renderer that I often go with mainly because it is a renderer that is built into the core of three.js itself. Many of the other renderer options have to be added by way of an additional external file, or do not have the same set of features such is the case with the SVG renderer for example. Some of these other renderer's might still prove to be a good choice in some situations though, it is just that so far I can not say that I have found myself in situations in which I need to work with these other options.
 
