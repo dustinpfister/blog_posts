@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-19 11:07:45
-version: 1.5
+updated: 2022-04-19 11:09:14
+version: 1.6
 ---
 
-Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few mesh objects that come together to from a group of objects that look like a little guy model of sorts. The walk cycle that I had in mind
+Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few mesh objects that come together to from a group of objects that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the scale method of the object3d class to set the scale of jyst the hight of the mesh objects from its full scale to zero and back again.
 
 <!-- more -->
 
