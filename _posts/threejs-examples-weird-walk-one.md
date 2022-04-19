@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-19 12:18:08
-version: 1.15
+updated: 2022-04-19 12:21:19
+version: 1.16
 ---
 
 Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/) that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the hight of the mesh objects from its full scale to zero and back again.
@@ -196,3 +196,5 @@ The end result here is then just a very simple walk cycle of my weird little guy
 ## 2 - Conclusion
 
 This is not the first kind of example that I have made that is like this, maybe the oldest example of this sort of thing would be my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I first made a few years ago now. i have made a lot of other projects that are also like this one, but have not really got into using these to make some kind of final product. That might change moving forward, especially if I do start working on threejs related stuff alone when it comes to what kind of direction I take with this website.
+
+When it comes to this specific example though I think the nest step is maybe working otu at least a few more demos that make use of the module, and also maybe expand the model a little more. When it comes to the walk cycle I think I have things set and down, but I might want at least one more walk cycle method that I can use to transition from a walk state to a standing state, and maybe a few more methods that have to do with the movement of arms, and also the expression of the face. Aside from that I think I just about have a final done deal with much about what this idea was at least for what that is worth.
