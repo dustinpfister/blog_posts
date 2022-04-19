@@ -5,19 +5,19 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2022-04-19 08:46:33
-version: 1.17
+updated: 2022-04-19 10:09:11
+version: 1.18
 ---
 
-When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in [JavaScript Date class](/2019/02/14/js-javascript-date/) along with the [request animation frame method](/2018/03/13/js-request-animation-frame/). However thus far I can not say that I have been making use of the Built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to this constructor and why it might be a good idea to go with this in place of the way that I have been making animation loops thus far. 
+When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in [JavaScript Date class](/2019/02/14/js-javascript-date/) along with the [request animation frame method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). However thus far I can not say that I have been making use of the built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to things like this Clock constructor and why it might be a good idea to go with this in place of what I have been making animation loops with thus far. 
 
-So in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance) mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that.
+So in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance), and mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that object.
 
 <!-- more -->
 
 ## THREE.Clock and what to know first
 
-This is a post on using the THREE.Clock class in the javaScript library known as three.js. In this post I am also using a lot of other features of the library, and client side javaScript in general that I will not be getting into detail here. So I assume that you have at least some experience working with threejs, and client side javaScript, otherwise you might end up having a hard time gaining something of value from reading this. So in this section I will be mentioning some things that you might want to look into if you feel you need to take a step back.
+This is a post on using the THREE.Clock class in the javaScript library known as three.js that is used to work with 3d objects in a client side web environment. In this post I am also using a lot of other features of the library, and client side javaScript in general that I will not be getting into detail here. So I assume that you have at [least some experience working with threejs](/2018/04/04/threejs-getting-started/), and client side javaScript, otherwise you might end up having a hard time gaining something of value from reading this. So in this section I will be mentioning some things that you might want to look into if you feel you need to take a step back.
 
 ### There are some client side javaScript features you should be aware of.
 
@@ -25,7 +25,7 @@ The use of the THREE.Clock class can be used with, or as a replacement for the b
 
 ### Version Numbers matter with threejs
 
-WhenI first wrote this post I was using r127 of threejs, always be mindful of what version of threejs you are suing and what version the developer of a content piece like this was suing when looking at threejs examples on the open web. Threejs is a fast moving project in terms of development and code breaking changes are made to it often.
+When I first wrote this post I was using r127 of threejs, always be mindful of what version of threejs you are suing and what version the developer of a content piece like this was suing when looking at threejs examples on the open web. Threejs is a fast moving project in terms of development and code breaking changes are made to it often.
 
 ## 1 - Basic loop example using THREE.Clock
 
