@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2022-04-19 10:12:27
-version: 1.19
+updated: 2022-04-19 10:15:19
+version: 1.20
 ---
 
 When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in [JavaScript Date class](/2019/02/14/js-javascript-date/) along with the [request animation frame method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). However thus far I can not say that I have been making use of the built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to things like this Clock constructor and why it might be a good idea to go with this in place of what I have been making animation loops with thus far. 
@@ -126,7 +126,9 @@ loop();
 
 ## 3 - Cap FPS example
 
-One thing that is impotent to be aware of when it comes to these loop functions is having a way to limit the number or frames that are being rendered for every second. If no effort is made to do so the example might prove to eat up to much processor overhead on many clients and result in a bad user experience. It might be best to have some way to let users let what the target frame rate should be when it comes to some kind of options menu in a user interface. However maybe a good starting point would be to cope up with some kind of hard coded frame rate that still works well, while still being a low frame rate. Basically the lower the frame rate the lower the load on the processor and graphics adapter of the client, that means it will then use less power, and also have more resources to do other things that might be going on in the page.
+One thing that is important to be aware of when it comes to these loop functions is having a way to limit the number or frames that are being rendered for every second. If no effort is made to do so the example might prove to eat up to much processor overhead on many clients and result in a bad user experience. 
+
+It then might be best to have some way to let users set what the target frame rate should be when it comes to some kind of options menu in a user interface. However maybe a good starting point would be to come up with some kind of hard coded frame rate that still works well, while still being a low frame rate. Basically the lower the frame rate the lower the load on the processor and graphics adapter of the client, that means it will then use less power, and also have more resources to do other things that might be going on in the page. The cost of this though is choppy animation as the target frame rate approaches zero, still I have found that setting a frame rate as low as 24 fps still looks pretty good.
 
 ```js
 // A STATE OBJECT WITH A THREE.CLOCK INSTANCE
