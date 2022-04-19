@@ -5,13 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-19 11:03:33
-version: 1.3
+updated: 2022-04-19 11:05:41
+version: 1.4
 ---
 
 Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few mesh objects that come together to from a group of objects that look like a little guy model of sorts. The walk cycle that I had in mind
 
 <!-- more -->
+
+## Werid walk guy threejs example and what to know first
+
+This is a post in which I am writing about a simple threejs project example of a weird walk guy module. This is a javaScript module that will cerate and return an instance of THREE.Group that I can then add to an over all threejs scene object. I also add a few methods that helper with the process of updating the state of this group of objects.
 
 
 ## 1 - The weird guy module and basic demo
