@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-04-19 09:00:57
-version: 1.28
+updated: 2022-04-19 10:27:47
+version: 1.29
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/),  and at least one [mesh object](/2018/05/04/threejs-mesh/) to look at that is composed of a [geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). There also needs to be a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed on top of all of this and that is a renderer. 
@@ -17,19 +17,19 @@ In older versions of three.js there was both a 2d canvas renderer, and webgl ren
 
 ## The webGl renderer i n threejs and What to know first
 
-There is more than one option when it comes to rendering a three.js scene and camera with a renderer in threejs, maybe not so much with the core library but there are some additional render options in the github repo examples folder. The 2d canvas renderer is another option, but many three.js features will not work with it, it renders a lot slower, and as of three.js r98 it is not even part of three.js anymore. So for the most part it just makes sense to just use the web gl renderer as support for web gl is now pretty good with modern web browsers.
+There is more than one option when it comes to rendering a three.js scene and camera with a renderer in threejs, there are a few other options in the core threejs library, but there are some additional render options in the github repo examples folder also. The 2d canvas renderer is another option, but many three.js features will not work with it, it renders a lot slower. So for the most part it just makes sense to just use the web gl renderer as support for web gl is now pretty good with modern web browsers, and there is then not much of a need to bother with the 2d canvas renderer.
 
 ### Version numbers matter
 
-In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) when I first wrote the post which was released in November of 2018, and the last time I edited this post I was using r127 which was still a late version of three.js in early 2021. In the r98 of three.s the canvas renderer was removed, there where also a number of other significant changes in that version. I also fixed some code breaking changes with these examples and they seem to be workin fine with r127 as of this writing. Still lots of code breaking changes are made to threejs all the time so if the code in this example, or any of my three.js examples breaks be sure to check the revision number of the three.js file you are using first.
+In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) when I first wrote the post which was released in November of 2018, and the last time I edited this post I was using r127 which was still a late version of three.js in early 2021. In the r98 of three.s the canvas renderer was removed, there where also a number of other significant changes in that version. I also fixed some code breaking changes with these examples and they seem to be working fine with r127 as of this writing. Still lots of code breaking changes are made to threejs all the time so if the code in this example, or any of my three.js examples breaks be sure to check the revision number of the three.js file you are using first.
 
 ## 1 - Basic three.js example using the WebGLRenderer
 
-To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the web gl renderer. Once I have my web gl renderer instance I can then call methods like setSize to set the native size of the canvas that is to be used to render my project. I can also use the render function of the renderer to draw the current state of a scene with a camera. So in this example I will be creating a basic scene, and camera just for the sake of having a basic full working getting started type example.
+To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the web gl renderer. Once I have my web gl renderer instance I can then call methods like the set size method to set the native size of the canvas that is to be used to render my project. I can also use the render function of the renderer to draw the current state of a scene with a scene object and a camera. In this example I will be creating a basic scene, and a camera just for the sake of having a basic full working getting started type example of the web gl renderer in threejs.
 
-So for this basic example I just create a web gl renderer by calling the THREE.WebGlRenderere constructor, and then use the set size method to set the view port side of the canvas it will be using. The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my html.
+For this basic example I just create a web gl renderer by calling the THREE.WebGlRenderere constructor with the new keyword just like with nay other [constructor function](/2019/02/27/js-javascript-constructor/) in javaScript. Then I use the set size method to set the view port side of the canvas it will be using. The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my hard coded html. For this example I am using the [get element by id method](/2018/12/27/js-document-getelementbyid/) to gain a reference to a container element in my html with an id of demo.
 
-Now that I have the renderer I will want a scene object with something to look at attached to it, and a camera. So the nest step is to just create a new scene object, and then a camera too such as the perspective camera. I then created a Mesh with a simple geometry and material for it, and made sure to ass the mesh to the scene object. Now I can use the render function of the web gl renderer, with that said all I have to do is call the render function, pass the scene object as the first argument, and the camera as the second argument.
+Now that I have the renderer I will want a scene object with something to look at attached to it, and a camera. So the nest step is to just create a new scene object, and then a camera too such as the perspective camera. I then created a Mesh with a simple geometry and material for it, and made sure to add the mesh to the scene object. Now I can use the render function of the web gl renderer, with that said all I have to do is call the render function. When calling the render function I pass the scene object as the first argument, and the camera as the second argument.
 
 ```js
 (function () {
@@ -58,8 +58,6 @@ Now that I have the renderer I will want a scene object with something to look a
 }
     ());
 ```
-
-To render the scene I just need to pass the scene, and camera to the render method of the webGLRenderer instance.
 
 ## 2 - Making a render loop
 
