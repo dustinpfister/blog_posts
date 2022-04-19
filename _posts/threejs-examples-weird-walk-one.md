@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-19 12:26:30
-version: 1.18
+updated: 2022-04-19 12:28:19
+version: 1.19
 ---
 
 Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/) that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the hight of the mesh objects from its full scale to zero and back again.
@@ -19,7 +19,7 @@ This is a post in which I am writing about a simple threejs project example of a
 
 ### Version numbers matter
 
-Ween I first made this example I was using r135 of threejs, if the code examples here are breaking for you on your end that would be the first thing I would check.
+When I first made this example I was using r135 of threejs, if the code examples here are breaking for you on your end that would be the first thing I would check. The threejs library is still a project that moves very fast in terms of its development and maintenance so code breaking changes happen often.
 
 ### The source code examples in this post are on Github
 
