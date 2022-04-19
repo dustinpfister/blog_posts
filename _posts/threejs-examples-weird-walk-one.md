@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-19 12:24:12
-version: 1.17
+updated: 2022-04-19 12:26:30
+version: 1.18
 ---
 
 Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/) that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the hight of the mesh objects from its full scale to zero and back again.
@@ -191,7 +191,7 @@ Now for a simple demo of this weird guy module to start out with at least. For t
     ());
 ```
 
-The end result here is then just a very simple walk cycle of my weird little guy model, and thus far this is more or less what I had in mind. When it comes to working on this at least a little more there is only s much more to do then such as what more needs to happen with the arms and face to make it look more interesting.
+The end result here is then just a very simple walk cycle of my weird little guy model, and thus far this is more or less what I had in mind. When it comes to working on this at least a little more there is only s much more to do then such as what more needs to happen with the arms and face to make it look more interesting. There will then need to be at least a few more demos of this, and while I am at it maybe at least a few revisions of the weird guy model with that as well as I will want to least a few more features beyeond just the simple walk cycle.
 
 ## 2 - Conclusion
 
