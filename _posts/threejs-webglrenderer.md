@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-04-19 10:27:47
-version: 1.29
+updated: 2022-04-19 10:30:13
+version: 1.30
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/),  and at least one [mesh object](/2018/05/04/threejs-mesh/) to look at that is composed of a [geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). There also needs to be a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed on top of all of this and that is a renderer. 
@@ -61,7 +61,7 @@ Now that I have the renderer I will want a scene object with something to look a
 
 ## 2 - Making a render loop
 
-Many of the projects I make with three.js are just simple looping animations. To have a loop I just need to call the render method in a method that is going to be called over and over again using something like the request animation frame method. There is a wide range of ways to go about doing something like this so I will not be getting into the full depth of this topic here. However I should cover at last one or two examples of this kind of loop using threejs  and native javaScript features.
+Many of the projects I make with three.js are just simple looping animations where I update a scene and then need to redraw over and over again. To have a loop I just need to call the render method in a method that is going to be called over and over again using something like the request animation frame method, or I can also use [THREE.Clock](/2021/05/28/threejs-clock/) when it comes to tools built into the core of threejs. There is a wide range of ways to go about doing something like this so I will not be getting into the full depth of this topic here. However I should cover at last one or two examples of this kind of loop using threejs and native javaScript features so that will be the deal in this section.
 
 ### 2.1 - Using request animation frame
 
