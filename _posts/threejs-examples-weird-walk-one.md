@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-19 11:12:43
-version: 1.7
+updated: 2022-04-19 11:15:30
+version: 1.8
 ---
 
 Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/) that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the hight of the mesh objects from its full scale to zero and back again.
@@ -17,6 +17,13 @@ Todays post on threejs will be just a new [project example post](/2021/02/19/thr
 
 This is a post in which I am writing about a simple threejs project example of a weird walk guy module. This is a javaScript module that will cerate and return an instance of THREE.Group that I can then add to an over all threejs [scene object](/2018/05/03/threejs-scene/). I also add a few methods that helper with the process of updating the state of this group of objects. This is not the first example of this kind of module that I have made using threejs, and I also do not think it will be the last for at least a little while longer at least. I have come to like making models like this, but it there is the more professional way of doing this kind of thing with it comes to making something in blender and then exporting from there.
 
+### Version numbers matter
+
+Ween I first made this example I was using r135 of threejs, if the code examples here are breaking for you on your end that would be the first thing I would check.
+
+### The source code examples in this post are on Github
+
+The source code examples that I am writing about in this post as well as with many others can be found in my [test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-walk-one).
 
 ## 1 - The weird guy module and basic demo
 
