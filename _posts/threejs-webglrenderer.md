@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-04-19 08:52:36
-version: 1.26
+updated: 2022-04-19 08:55:38
+version: 1.27
 ---
 
-There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a scene object,  and at least one mesh to look at that is composed of a geometry, and a material. There also needs to be a camera to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed on top of all of this and that is a renderer. 
+There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/),  and at least one [mesh object](/2018/05/04/threejs-mesh/) to look at that is composed of a [geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). There also needs to be a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed on top of all of this and that is a renderer. 
 
 In older versions of three.js there was both a 2d canvas and webgl renderer but in later versions it has been removed, and now when making a three.js project I am pretty much always working with the webgl renderer. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
 
