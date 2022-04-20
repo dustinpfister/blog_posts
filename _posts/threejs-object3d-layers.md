@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2022-04-20 06:47:01
-version: 1.20
+updated: 2022-04-20 06:52:07
+version: 1.21
 ---
 
-There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with this visible property of the obejct3d class or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the [layers property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D.layers) which contains an instance of the [Layers class](https://threejs.org/docs/index.html#api/en/core/Layers) that can be used as a way to go about setting objects to different layers. It is then possible to [set what layers a camera should draw](https://stackoverflow.com/questions/34099808/how-to-make-objects-visible-to-only-one-camera-in-a-three-js-scene) which is then a way to go about having control over the visibility of objects.
+There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with this [visible property of the obejct3d class](https://threejs.org/docs/#api/en/core/Object3D.visible) or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the [layers property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D.layers) which contains an instance of the [Layers class](https://threejs.org/docs/index.html#api/en/core/Layers) that can be used as a way to go about setting objects to different layers. 
 
-Any object in threejs that is based on the object3d class such as a Mesh, Group, or Camera has a layers property that by default is set to just layer 0. When using the render function of a renderer such as the web gl renderer as scene object is passed as the first argument followed by a reference to a camera to use to render a view of the scene. When doing so the camera used will only render objects that are enabled for one or more of the layer index values enabled for the camera.
+It is then possible to [set what layers a camera should draw](https://stackoverflow.com/questions/34099808/how-to-make-objects-visible-to-only-one-camera-in-a-three-js-scene) which is then a way to go about having control over the visibility of objects.
+
+Any object in threejs that is based on the [object3d class](/2018/04/23/threejs-object3d/) such as a [Mesh](/2018/05/04/threejs-mesh/), [Group](/2018/05/16/threejs-grouping-mesh-objects/), or [Camera](/2018/04/06/threejs-camera/) has a layers property that by default is set to just layer 0. When using the render function of a renderer such as the [web gl renderer](/2018/11/24/threejs-webglrenderer/) as [scene object](/2018/05/03/threejs-scene/) is passed as the first argument followed by a reference to a camera to use to render a view of the scene. When doing so the camera used will only render objects that are enabled for one or more of the layer index values enabled for the camera.
 
 <!-- more -->
 
