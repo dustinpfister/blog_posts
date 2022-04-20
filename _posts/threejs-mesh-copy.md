@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-06-03 11:36:01
-version: 1.26
+updated: 2022-04-20 06:36:58
+version: 1.27
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a mesh object. When doing so there is the idea of just copied the own properties of the mesh object, but then there is also the question of nested properties of the mesh object such as child objects that have been attached, the geometry of the mesh, and materials.
@@ -19,15 +19,15 @@ So then this will be a quick post on the mesh clone method in threejs that can b
 
 <!-- more -->
 
-## 1 - What to know first before getting into copying a mesh
+## What to know first before getting into copying a mesh
 
 This is a post on the clone method of a THREE.Mesh class instance in three.js that can be used to copy the mesh and the children of it also. As such you should have at least some background when it comes to the basics of getting started with three.js, and client side javaScript in general. If not chances are you might not gain much of anything from reading this.
 
-### 1.1 - Version Numbers matter big time with three.js
+### Version Numbers matter big time with three.js
 
 When I first write this post I was using version r111 of three.js, and the last time I edited this post I was using r127 when I came around to doing a little editing. I can not say much has changed with the mesh clone method at least between these two versions, however a lot has changed to many other threejs features, and these changes can often result in code breaking. always be mindful of the version of threejs that you are using, and the version that was used when a code example was authored and published to the web.
 
-## 2 - Mesh copy basic example
+## 1 - Mesh copy basic example
 
 To copy a mesh in threejs all I need to do is just call the clone method of a mesh object instance, and what will be returned is a copy of that mesh. It is just important to know what a copy of a mesh object is and what it is not. The resulting copy is a copy of things like the position and rotation of the mesh, but not the state of the geometry that it is using, or whatever might be going on with the materials that are being used. 
 
@@ -67,7 +67,7 @@ renderer.render(scene, camera);
 
 This results in a bunch of mesh objects placed around the original mesh object, I am also having each of the new mesh objects face the position of the original mesh object. So each copy can have its own position, and rotation, but they still share the same reference to the same objects when it comes to geometry and materials.
 
-## 3 - Mesh copy will not copy the material used, so changes to the original material will effect the clones.
+## 2 - Mesh copy will not copy the material used, so changes to the original material will effect the clones.
 
 When copying a Mesh it is the Mesh that will be copied, but not the material that the mesh is using. This is what I would expect to happen, but never the less I should write a quick section about this away.
 
@@ -126,7 +126,7 @@ renderer.render(scene, camera);
 
 So when I change the color of the material used in the original mesh to green from red, that will result in all the mesh objects that are cloned from that mesh to change to that color. The same will happen to the original when I change the color that way. If this is a desired effect then there is no problem, if it is not a desired effect then there are a number of ways to address this. One way would be to just drop the use of the mesh clone method and just make new Mesh objects along with geometries all together. However I am sure that there are other ways of making it so each mesh has its own independent material while still using the same geometry.
 
-## 4 - Changes to the geometry will effect all the copies of the mesh also
+## 3 - Changes to the geometry will effect all the copies of the mesh also
 
 The clone method of a mesh will just clone the mesh object and not the material, or the geometry. So just like with the material used by all clones, any change to the geometry of the original or any clone will also effect all copies. For example if I again have a situation in which I make a whole bunch of copies from an original mesh object, and then do something like change the material index values of the geometry used by the original that in turn will effect all the copies also.
 
@@ -191,7 +191,7 @@ original.geometry.groups.forEach(function (face, i) {
 renderer.render(scene, camera);
 ```
 
-## 5 - Using a create helper to create stand alone mesh objects with there own geometry and material
+## 4 - Using a create helper to create stand alone mesh objects with there own geometry and material
 
 Using the clone method might be the way that I would want to go about creating a whole much of copies of some kind of main mesh object because doing so results in just copied the mesh and the children of the mesh. This results in a more efficient way of creating a whole bunch of mesh objects that all share the same geometry and materials. Often it might just be mesh objects level property values that I will want to change up a little here and there, so this kind of approach will not result in a problem. However in some cases I will want each mesh to have its own geometry and material values. So when it comes to this kind of situation I often just drop the use of the mesh clone method all together and just create stand alone mesh, as well as stand alone geometry, and material objects for each mesh
 
@@ -252,7 +252,7 @@ renderer.setSize(640, 480);
 renderer.render(scene, camera);
 ```
 
-## 6 - Conclusion
+## 5 - Conclusion
 
 So then the Mesh clone method will indeed clone a mesh object, and also any children it might have. However that is it, the method will not deep clone everything when it comes to what might be going on with the geometry and material. When I get some more time to work on this one I think I could stand to work out a few more examples on this topic. There is what the Mesh clone method does, and there is what the Mesh clone method does not do.
 
