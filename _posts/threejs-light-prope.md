@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2021-06-19 07:08:13
-version: 1.22
+updated: 2022-04-20 10:11:52
+version: 1.23
 ---
 
 When [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) version r104 was introduced a few light probes feature where added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another assets of interest in the repository that are being used with this new three.js feature. 
@@ -15,31 +15,31 @@ So I played around with the light probe in three.js, and as such I should take a
 
 <!-- more -->
 
-## 1 - Light Probes and what to know before hand
+## Light Probes and what to know before hand
 
-This is an advanced post on three.js and a new feature that was introduced in revision 104 of this javaScript library. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or javaScript in general for that matter. So it would be a good idea to start with some basics before getting into light probes and other advanced three.js topics if you are new to three.js.
+This is an advanced post on three.js and a new feature that was introduced in revision 104 of this javaScript library. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/) for that matter. So it would be a good idea to start with some basics before getting into light probes and other advanced three.js topics if you are new to three.js.
 
 From what I have gathered so far it seems that light probes are a way to pull in light from a given point and then use that in conjunction with environment maps that can be used with a mesh. They can allow for some interesting effects when it comes to backgrounds and reflections of that background in a mesh.
 
-### 1.1 - Revision 104+ of three.js as well as one additional asset needed
+### Revision 104+ of three.js as well as one additional asset needed
 
 To use this feature you will need revision 104 or later of three.js, as this is a new feature that was introduced in that revision. If you are using and older version of three.js the code example here will of course break, and the only practical way to get it to work would be to just use a later  version of threejs, which is something that you should consider doing anyway and not just for this reason. 
 
-### 1.2 - Know the basics of light and materials in threejs first
+### Know the basics of light and materials in threejs first
 
 Another thing that you should have solid before messing around with light probes is to first know a thing or two about working with light in a threejs project. There is going to need to be a light source of course and when it comes to that there are a few options. However for post projects my first go to option for a [light source is a point light](/2019/06/02/threejs-point-light/) which is what I will be using in this example. There are also the very [basics of materials](/2018/04/30/threejs-materials/) that are worth mentioning also when it comes to light sources and that is that not all materials will respond to light sources. Just like light sources there are a few options when it comes to materials that will respond to one or more light sources, but for this example I will be going with the standard material which is one such option.
 
-### 1.3 - Know a think or two about cube textures
+### Know a think or two about cube textures
 
 The example that I worked out makes use of what is called a [cube texture](/2018/04/22/threejs-cube-texture/), and when it comes to this subject that also in turn deserves a whole other post, or more when it comes to what these kinds of textures are all about. One use case is to use this kind of texture for what is called a skybox, and that is what I will be using for the environment map of the standard material of a sphere in this example.
 
-### 1.4 - An additional file that can be found in the examples folder needs to be added
+### An additional file that can be found in the examples folder needs to be added
 
 In addition to knowing the basics of threejs and javaScript, using at least revision 104 plus of threejs, knowing the basics of light and light sensitive materials, and cube textures there is one more additional little thing to know before getting into the use of light probes. There is one more additional asset that you will need to get this example working. That asset can be found in the three.js repository and is called [LightProbeGenerator.js](https://github.com/mrdoob/three.js/blob/master/examples/js/lights/LightProbeGenerator.js) which can be found in the examples folder of the main threejs repository along with many other useful external files that can be used on top of the threejs library by itself. 
 
 This file will need to be linked to along with three.js in the html of a project making use of the new light probe feature. last i check when editing this post to make sure things are still working for r127 there are now to methods that are added with this file. One if the fromCubeTexture method, and the other is a fromCubeRenderTarget method. In this example I am using the  fromCubeTexture and I have not yet looked into what the other method is all about just yet.
 
-## 2 - Light probe example in threejs r104
+## 1 - Light probe example in threejs r104
 
 I tried to make the official example in the repository a little more simple to follow, but could only get away with crunching things down so much. The basic thing to do is create the light probe by calling the [THREE.LightProbe constructor](https://threejs.org/docs/#api/en/lights/LightProbe) with the new keyword. Once you have that it can be added to the scene, and positioned somewhere just like a point light or anything to that effect.
 
@@ -117,7 +117,7 @@ new THREE.CubeTextureLoader()
 
 Playing around with the intensity property of the light probe can then be used as a way to get an idea of what kind of effect a light probe has on an object that makes use of the cube texture as an environment map. The light prob itself does not emit any light of its own, which is why I still needed to add the point light for this example. What is really going on here is that the light probe is having an impact on how light that is moving throw the 3d space effects the cube texture.
 
-## 3 - Conclusion
+## 2 - Conclusion
 
 That is it for now then when it comes to light probes in threejs, I do get around to editing my content now and then and it would be nice to make a few moire examples of this, some of which might prove to be a little more simple.
 
