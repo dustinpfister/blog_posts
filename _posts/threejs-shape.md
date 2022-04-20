@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2022-04-20 06:33:01
-version: 1.36
+updated: 2022-04-20 06:35:01
+version: 1.37
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then be used in a [mesh object](/2018/05/04/threejs-mesh/). So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -15,7 +15,7 @@ Today I thought I would look into making a few quick examples of the [Shape](htt
 
 ## The Shape Constructor and what to know first
 
-This is a post on the THREE.Shape class in the javaScript library known as threejs, so it should go without saying that you should have at least some [basic knowledge of threejs](/2018/04/04/threejs-getting-started/) in order to gain something of value from reading this post. I will not be getting into the very basics of threejs and client side javaScript in general here, so if you are still fairly new to threejs you might want to start out with a getting started type post on threejs. Still in this section I will go over at least a few key details about some things that you might want to read up on more when getting into the shape constructor.
+This is a post on the THREE.Shape class in the javaScript library known as threejs, so it should go without saying that you should have at least some basic knowledge of threejs in order to gain something of value from reading this post. I will not be getting into the very basics of threejs and client side javaScript in general here, so if you are still fairly new to threejs you might want to start out with a [getting started type post on threejs](/2018/04/04/threejs-getting-started/). Still in this section I will go over at least a few key details about some things that you might want to read up on more when getting into the shape constructor.
 
 ### Also look into the path class
 
