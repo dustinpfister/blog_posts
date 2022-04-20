@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-19 12:28:19
-version: 1.19
+updated: 2022-04-20 12:13:05
+version: 1.20
 ---
 
 Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/) that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the hight of the mesh objects from its full scale to zero and back again.
@@ -191,9 +191,265 @@ Now for a simple demo of this weird guy module to start out with at least. For t
     ());
 ```
 
-The end result here is then just a very simple walk cycle of my weird little guy model, and thus far this is more or less what I had in mind. When it comes to working on this at least a little more there is only s much more to do then such as what more needs to happen with the arms and face to make it look more interesting. There will then need to be at least a few more demos of this, and while I am at it maybe at least a few revisions of the weird guy model with that as well as I will want to least a few more features beyeond just the simple walk cycle.
+The end result here is then just a very simple walk cycle of my weird little guy model, and thus far this is more or less what I had in mind. When it comes to working on this at least a little more there is only s much more to do then such as what more needs to happen with the arms and face to make it look more interesting. There will then need to be at least a few more demos of this, and while I am at it maybe at least a few revisions of the weird guy model with that as well as I will want to least a few more features beyond just the simple walk cycle.
 
-## 2 - Conclusion
+## 2 - Moving the arms, ground mesh, and data textures
+
+I was off to a good start with the first form of this weird guy module, as well as the additional code that I was using to make a short dmeo of what I made. However I think that I should put at least a little more time into this one before moving on to the next thing. There is just a little more that I would like to see done with this example, and that is to also have moment for the arms, and also a better demo where the weird guy is walking along on a repeating background.
+
+### 2.1 - the weird guy module
+
+```js
+// ********** **********
+// WEIRD GUY MODULE
+// r1 - adding a setArms method, and data textures
+// ********** **********
+var weirdGuy = (function(){
+    // DATA TEXTURE FOR MATERIALS
+    var width = 20, height = 100;
+    var size = width * height;
+    var data = new Uint8Array( 4 * size );
+    for ( let i = 0; i < size; i ++ ) {
+        var stride = i * 4;
+        //var x = i % width;
+        //var y = Math.floor(i / width);
+        var v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
+        //var v = y % 2 === 0 ? 255 - 200 * (x / width) : 55 + 200 * (x / width);
+        data[ stride ] = v;
+        data[ stride + 1 ] = v;
+        data[ stride + 2 ] = v;
+        data[ stride + 3 ] = 255;
+    }
+    var texture = new THREE.DataTexture( data, width, height );
+    texture.needsUpdate = true;
+    // MATERIALS
+    var materials = [
+        new THREE.MeshStandardMaterial( { map: texture, emissive: 0x9a8800, emissiveIntensity: 0.9, wireframe:false } ),
+        new THREE.MeshStandardMaterial( { map: texture, emissive: 0x00aaff, emissiveIntensity: 0.4 } ),
+        new THREE.MeshStandardMaterial( { map: texture, emissive: 0xffffff, emissiveIntensity: 0.8 } ),
+        new THREE.MeshStandardMaterial( { map: texture, emissive: 0x1a1a1a, emissiveIntensity: 0.1 } )
+    ];
+    var api = {};
+    // create a new weird guy
+    api.create = function(opt){
+        opt = opt || {};
+        var guy = new THREE.Group();
+        guy.name = opt.guyID || 'guy';
+        // BODY
+        var body = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 2.0, 1),
+            materials[0]
+        );
+        body.position.y = 0.25;
+        body.name = guy.name + '_body';
+        guy.add(body);
+        // EYES
+        ['eye1', 'eye2'].forEach(function(nameStr, i){
+            var eye = new THREE.Mesh(
+                new THREE.SphereGeometry(0.2, 30, 30),
+                materials[2]
+            );
+            eye.name = guy.name + '_' + nameStr;
+            eye.position.set(-0.2 + 0.4 * i, 0.2, 0.5);
+            var innerEye = new THREE.Mesh(
+                new THREE.SphereGeometry(0.1, 30, 30),
+                materials[3]
+            );
+            innerEye.position.set(0, 0, 0.125);
+            eye.add(innerEye);
+            body.add(eye);
+        });
+        // ADD MOUTH
+        var mouth = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.125, 0.25),
+            materials[3]
+        );
+        mouth.name = guy.name + '_mouth';
+        mouth.position.set(0, -0.3, 0.5);
+        body.add(mouth);
+        // ADD ARMS
+        ['arm1', 'arm2'].forEach(function(nameStr, i){
+            var arm = new THREE.Mesh(
+                new THREE.BoxGeometry(0.25, 1.0, 0.25),
+                materials[0]
+            );
+            arm.geometry.translate( 0, 0.5, 0 );
+            arm.name = guy.name + '_' + nameStr;
+            arm.position.set(-0.625 + 1.25 * i, 0.5, 0);
+            var tri = new THREE.Mesh(
+                new THREE.BoxGeometry(0.25, 1.0, 0.25),
+                materials[0]
+            );
+            tri.geometry.translate( 0, 0.5, 0 );
+            tri.name = guy.name + '_' + nameStr + '_tri';
+            tri.position.set(0, 1, 0);
+            tri.rotation.set(-1, 0, 0);
+            arm.add(tri); 
+            body.add(arm);
+        });
+        // ADD PELVIS
+        var pelvis = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 0.5, 1),
+            materials[1]
+        );
+        pelvis.name = guy.name + '_pelvis';
+        pelvis.position.set(0, -1.0, 0);
+        guy.add(pelvis);
+        // ADD LEGS
+        ['leg1', 'leg2'].forEach(function(nameStr, i){
+            var leg = new THREE.Mesh(
+                new THREE.BoxGeometry(0.25, 1.5, 1),
+                materials[1]
+            );
+            leg.name = guy.name + '_' + nameStr;
+            leg.position.set(-0.25 + 0.5 * i, -1, 0);
+            pelvis.add(leg);
+        });
+        return guy;
+    };
+    // setWalk
+    api.setWalk = function(guy, walkPer){
+        var leg1 = guy.getObjectByName(guy.name + '_leg1'),
+        leg2 = guy.getObjectByName(guy.name + '_leg2')
+        // set scale of legs
+        leg1.scale.y = walkPer;
+        leg2.scale.y = 1 - walkPer;
+        // adjust position of legs
+        leg1.position.y = -1.0 + 0.75 * (1 - walkPer);
+        leg2.position.y = -1.0 + 0.75 * walkPer;   
+    };
+    // set arms method
+    api.setArm = function(guy, armNum, a1, a2){
+        armNum = armNum === undefined ? 1 : armNum;
+        armNum = armNum <= 0 ? 1: armNum;
+        a1 = a1 === undefined ? 0 : a1;
+        a2 = a2 === undefined ? 0 : a2;
+        var arm = guy.getObjectByName(guy.name + '_arm' + armNum);
+        arm.rotation.x = Math.PI / 180 * a1;
+        // set tri rotation
+        arm.children[0].rotation.x = Math.PI / 180 * a2;
+    };
+    // return the api
+    return api;
+}());
+```
+
+### 2.2 - The demo
+
+```js
+(function () {
+    // ********** **********
+    // SCENE, CAMERA, LIGHT, and RENDERER
+    // ********** **********
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color('cyan');
+    var camera = new THREE.PerspectiveCamera(50, 8 / 9, 0.05, 100);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 1.5, 0);
+    scene.add(camera);
+    var dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    dl.position.set(5, 10, 1);
+    scene.add(dl);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ********** **********
+    // HELPER METHODS
+    // ********** **********
+    // give frame, maxframe, and count to get values like per, bias, ect
+    var getFrameValues = function(frame, maxFrame, count){
+        count = count === undefined ? 1 : count;
+        var values = {
+            frame: frame, 
+            maxFrame: maxFrame
+        };
+        values.per = frame / maxFrame * count % 1;
+        values.bias = 1 - Math.abs(0.5 - values.per) / 0.5;
+        return values;
+    };
+    // ********** **********
+    // GROUND MESH
+    // ********** **********
+    var width = 20, height = 100;
+    var size = width * height;
+    var data = new Uint8Array( 4 * size );
+    for ( let i = 0; i < size; i ++ ) {
+        var stride = i * 4;
+        var x = i % width;
+        var y = Math.floor(i / width);
+        //var v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
+        var v = y % 2 === 0 ? 255 - 200 * (x / width) : 55 + 200 * (x / width);
+        data[ stride ] = 0;
+        data[ stride + 1 ] = v;
+        data[ stride + 2 ] = 0;
+        data[ stride + 3 ] = 255;
+    }
+    var texture = new THREE.DataTexture( data, width, height );
+    texture.needsUpdate = true;
+    var ground = new THREE.Mesh( new THREE.BoxGeometry(20, 1, 100), new THREE.MeshStandardMaterial({
+        map: texture
+    }) );
+    ground.position.y = -0.5;
+    scene.add(ground);
+    // ********** **********
+    // WEIRD GUY INSTANCE
+    // ********** **********
+    var guy = weirdGuy.create({
+        guyID: 'mrguy1'
+    });
+    guy.position.y = 2.75;
+    scene.add(guy);
+    weirdGuy.setWalk(guy, 0);
+    // ********** **********
+    // ANIMATION LOOP
+    // ********** **********
+    var frame = 0,
+    maxFrame = 300,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / 24) {
+            // update guy position over mesh
+            var v = getFrameValues(frame, maxFrame, 1);
+            guy.position.z = -10 + 20 * v.per;
+            // set walk
+            var v = getFrameValues(frame, maxFrame, 40);
+            weirdGuy.setWalk(guy, v.bias);
+            // setting arms
+            var v1 = getFrameValues(frame, maxFrame, 10);
+            var v2 = getFrameValues(frame, maxFrame, 80);
+            var a2 = 360 - (80 + 20 * v2.bias);
+            weirdGuy.setArm(guy, 1, 185 - 10 * v1.bias, a2 );
+            weirdGuy.setArm(guy, 2, 175 + 10 * v1.bias, a2 );
+            // body rotation
+            var v = getFrameValues(frame, maxFrame, 1);
+            var body = guy.getObjectByName(guy.name + '_body');
+            body.rotation.y = -0.5 + 1 * v.bias;
+            //var v = getFrameValues(frame, maxFrame, 40);
+            //weirdGuy.setArm(guy, 1, 180 - 90 * v.bias, 300 );
+            //weirdGuy.setArm(guy, 2, 90 + 90 * v.bias, 300 );
+            // update camera
+            var v = getFrameValues(frame, maxFrame, 1);
+            camera.position.copy(guy.position).add(new THREE.Vector3(4, 2, 4));
+            var a = new THREE.Vector3(0, 0, 0);
+            guy.getWorldPosition(a);
+            camera.lookAt(a.add(new THREE.Vector3( 1 - 2 * v.bias, -1, 0)));
+            // draw
+            renderer.render(scene, camera);
+            frame += 20 * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+
+## Conclusion
 
 This is not the first kind of example that I have made that is like this, maybe the oldest example of this sort of thing would be my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I first made a few years ago now. i have made a lot of other projects that are also like this one, but have not really got into using these to make some kind of final product. That might change moving forward, especially if I do start working on threejs related stuff alone when it comes to what kind of direction I take with this website. I have found myself stuck in a pattern of coming up with ideas just for the sake of having something to write about and that is something that I would like to stop in favor of doing the inversion of that. Making projects that are cool by themselves and then maybe writing about them a little.
 
