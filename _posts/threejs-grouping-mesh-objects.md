@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-04-07 14:58:42
-version: 1.31
+updated: 2022-04-20 14:42:53
+version: 1.32
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each by moving the position of a group object rather than each individual mesh object. In addition to this A group object also has all kinds of properties that are inherited from object3d on top of that of just the position and rotation properties such as the name and user data objects. So I can set a custom name for a group, and also park all kinds of user data and methods in the user data object of a group.
@@ -19,7 +19,7 @@ Also for one reason or another it is often a good idea to have a way to group tw
 
 This is not a post on three.js for beginners, I have a post for that, and if you are still fairly to threejs you might want to [start by reading some kind of getting started post on threejs first](/2018/04/04/threejs-getting-started/). The main focus in this post has to do with creating a group of two or more or more [Mesh Object](/2018/05/04/threejs-mesh/) instances to create a single Group that can then be worked with by itself in a scene. These groups of objects can from complex shapes composed of many mesh objects using a collection of built in geometry constructors and materials. So then I assume that you have at least a basic working knowledge of three.js, and of course javaScript in general. 
 
-<iframe width="320" height="180" src="https://www.youtube.com/embed/3JW--vfkxPg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/3JW--vfkxPg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### THREE.Object3D vs THREE.Group
 
