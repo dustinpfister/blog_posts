@@ -5,17 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 860
-updated: 2022-04-20 07:38:17
-version: 1.19
+updated: 2022-04-20 07:45:57
+version: 1.20
 ---
 
-There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I wrote a post on one of these camera control options which was the orbit controls a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
+There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I [wrote a post on one of these camera control options which was the orbit controls](/2018/04/13/threejs-orbit-controls/) a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
 
 <!-- more -->
 
 ## Fly Controls in three.js and what to know first
 
-In this post I am writing about the official three.js fly controls in three.js which is a javaScript library that can be used to work with 3d models. So then this is not a getting started type post with three.js as I have wrote a post on that topic before. However in this section I will be going over a few quick things to know about before continuing with the code examples that I am writing about here with the three.js fly controls.
+In this post I am writing about the official three.js fly controls in three.js which is a javaScript library that can be used to work with 3d models. So then this is not a [getting started type post with three.js](/2018/04/04/threejs-getting-started/) as I have wrote a post on that topic before. However in this section I will be going over a few quick things to know about before continuing with the code examples that I am writing about here with the three.js fly controls.
 
 ### Make sure that you have added the fly controls after adding three.js in the html
 
@@ -27,7 +27,7 @@ When I wrote this post I was using [r127 of three.js](https://github.com/mrdoob/
 
 ## 1 - Basic fly controls example
 
-Now that I have the basic out of the way when it comes to getting started with things, lets take a look at a basic fly controls example. Like always I start off by creating a scene object just like with any other three.js example, and I am then also going to want to have something to look at. For this I made a few mesh objects one to serve as a kind of ground object, and then another as just some additional object at the center of the scene. Nothing special this is a post on fly controls after all so I really do just want something to look at and that is all. After that I set up the renderer that I want to use for this example and for that I went with the typical web gl renderer.
+Now that I have the basics out of the way when it comes to getting started with things, lets take a look at a simple fly controls example. Like always I start off by creating a [scene object](/2018/05/03/threejs-scene/) just like with any other three.js example. Once I have my scene object I am then also going to want to have something to look at in this scene, so for this I made a few [mesh objects](/2018/05/04/threejs-mesh/) one to serve as a kind of ground object, and then another as just some additional object at the center of the scene. Nothing special when it comes to display objects this is a post on fly controls after all so I really do just want something to look at and that is all. After that I set up the renderer that I want to use for this example and for that I went with the typical [web gl renderer](/2018/11/24/threejs-webglrenderer/).
 
 ```js
 (function () {
@@ -81,7 +81,9 @@ Now that I have the basic out of the way when it comes to getting started with t
     ());
 ```
 
-So now that I have all the basic stuff in place when it comes to having a scene object as well as something to look at in terms of one or more mesh objects, a camera object, and a renderer all in place now I can get to the actual fly controls. To use the Fly Controls I just need to call the THREE.FlyControls constructor that is added by way of the additional files in the examples folder of the three.js github repo that I mentioned in the basic section of this post. When calling the constructor the first argument that I am going to want to pass is a reference to the camera object that I want to control with the fly controls, followed by a dom element reference that should typically be the dom element used by the renderer that I am using. AFter that I am more often than not going to want to save the returned instance of fly controls to a variable or object property to set some additional values, and also to call the update method in a main app loop method.
+So now that I have all the basic stuff in place when it comes to having a scene object as well as something to look at in terms of one or more mesh objects, a camera object, and a renderer all in place now I can get to the actual fly controls. To use the Fly Controls I just need to call the THREE.FlyControls constructor that is added by way of the additional files in the examples folder of the three.js github repo that I mentioned in the basic section of this post. 
+
+When calling the constructor the first argument that I am going to want to pass is a reference to the [camera object](/2018/04/06/threejs-camera/) that I want to control with the fly controls, followed by a dom element reference that should typically be the dom element used by the renderer that I am using. After that I am more often than not going to want to save the returned instance of fly controls to a variable or object property to set some additional values, and also to call the update method in a main app loop method.
 
 When it comes to the additional properties there is the draw to look boolean that I have chose to set to true from the default false value of the controls. There is also the movement speed, and rotation speed values that I have played around with a little and it would seem that these are the per second deltas to use when passing a time delta value when calling the update method.
 
@@ -91,5 +93,5 @@ There is then how to go about using the fly controls when and if you do get them
 
 ## 2 - Conclusion
 
-So that is all that I have to say about the official fly controls in three.js so far, when I get some time to edit this post I will be sure to expand things when and if I get the time to do so. For now there is maybe taking a moment to look into some of the other official controls to worth with such as the [orbit controls](/2018/04/13/threejs-orbit-controls/) also, before considering to look into how to get started with making ones own custom camera controls. I think that I will be getting around to working one or two demos about making custom controls sooner or later, but for now I just like to make use of what there is to work with that is official to just save some time.
+So that is all that I have to say about the official fly controls in three.js so far, when I get some time to edit this post I will be sure to expand things when and if I get the time to do so. For now there is maybe taking a moment to look into some of the other official controls to worth with such as the orbit controls also, before considering to look into how to get started with making ones own custom camera controls. I think that I will be getting around to working one or two demos about making custom controls sooner or later, but for now I just like to make use of what there is to work with that is official to just save some time.
 
