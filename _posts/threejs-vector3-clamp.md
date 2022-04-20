@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2022-04-20 10:19:05
-version: 1.26
+updated: 2022-04-20 10:20:06
+version: 1.27
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values rather that wrapping them.
@@ -15,19 +15,19 @@ When it comes to clamping Vectors there is the idea of having two Vectors that w
 
 <!-- more -->
 
-## 1 - What to know before hand
+## Vector3 clamping What to know before hand
 
 This is a post on using the Vector3 clamp methods to clamp a vector between a min and max range. And when doing so for this post at least I am sticking mainly with where there is to work with in the Vector3 prototype alone rather than looking into additional examples of this sort of thing. So then I trust that you have [covered the very basics when it comes to getting up and running with threejs](/2018/04/04/threejs-getting-started/) in general, and have not got to the point where you are just learning more about working with the Vector3 class.
 
-### 1.1 - Look into the Vector3 class in general
+### Look into the Vector3 class in general
 
 In this post I am just going over a few methods in the [Vector 3 class](/2018/04/15/threejs-vector3/) that has to do with creating and working with one or more Vectors in threejs when it comes to setting bounds for them. However there is a great deal more to learn about the class and Vectors in general.
 
-### 1.2 - Version numbers matter with threejs
+### Version numbers matter with threejs
 
 When I wrote this post I was using threejs r127 when it comes to testing out source code examples. I have got into the habit of making sure that I always mentioning the version of threejs that I am using when it comes to write a post on the subject. The main reason why is because threejs is still a very fast moving project in terms of development and code breaking changes are happing all the time with it as a result.
 
-## 2 - Basic example of the THREE.Vector3 clamp method.
+## 1 - Basic example of the THREE.Vector3 clamp method.
 
 So in this example I am using the Vector3 clamp method to just make it so that any value that I set for the [position](/2022/04/04/threejs-object3d-position/) of a [mesh object](/2018/05/04/threejs-mesh/) that ends up getting clamped within a min and max Vector range. So the way this works is I just call the Vector3.clamp method and pass the vector that I want to clamp as the first argument followed by two additional arguments that are the min and max ranges for the Vector if the form of additional Vector3 instances.
 
@@ -62,7 +62,7 @@ So in this example I am using the Vector3 clamp method to just make it so that a
     ());
 ```
 
-## 3 - Clamping Vectors by length rather than a box area with Vector3.clampLength
+## 2 - Clamping Vectors by length rather than a box area with Vector3.clampLength
 
 There is clamping vectors into a box like area with the clamp method, but another option is the clamp length method that is more of a sphere like area. This method is somewhat similar to the clamp method only in place of Vector3 instances for setting the min and max values for the range, there is just setting the min and max values with a length values in the from of just javaScript numbers. Another way of thinking about this is an inner and outer radius in terms of two spheres that are both centered over the same origin.
 
@@ -98,7 +98,7 @@ There is clamping vectors into a box like area with the clamp method, but anothe
 
 The subject of clamping a vector by length goes hand in hand with many other related topics such as what a length of a vector is, and also what a normalized vector with a length of 1 is. Getting into this subject might be a little off topic, but the basic idea is that a length of 1 is a radius of 1 from the origin. So by clamping the length of a vector from 0.5 to 1 will make it so that the distance from the origin to the vector will always be between those values.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 So then these clamp methods are helpful for making sure that a given point will never leave a given range, but they are not the best choice for other applications that come to mind. One such other application would have to do with collision detection, where I do not always want to clamp or wrap a point to a rang, but to just simply know if the point is in or out of a given range.
 
