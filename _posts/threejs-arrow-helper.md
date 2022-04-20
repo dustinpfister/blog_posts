@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2022-04-20 12:00:37
-version: 1.39
+updated: 2022-04-20 12:03:33
+version: 1.40
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create objects that helper to visualize what is going on with state of various components of a threejs project, the arrow helper is one of these such methods. 
@@ -43,9 +43,7 @@ The source code examples that I am writing about in this post can also be found 
 
 ### 1 - Basic Example of a ArrowHelper in threejs
 
-So a basic example of an Arrow helper would involve setting a direction, origin, length, and color by passing those values to the THREE.ArrowHelper constructor in that order. 
-
-The direction and origin should be insistences of THREE.Vector3 which is one of several constructors that you should be aware of when making a three.js project. I will not be getting into detail with this constructor here, but I have [wrote a post on vector three](/2018/04/15/threejs-vector3/) of course that you might want to check out if you have not done so.
+So a basic example of an Arrow helper would involve setting a direction, origin, length, and color by passing those values to the THREE.ArrowHelper constructor in that order. The direction and origin should be insistences of THREE.Vector3 which is one of several constructors that you should be aware of when making a three.js project. 
 
 The length should be a number value consistent with the desired length relative to the other values of the camera and objects in the scene, and the color should be a hex value, but can also be a number of other kinds of values depending on the version of tree.js that is being used. In late versions of three.js just about all of the usual options for setting color seem to work okay.
 
@@ -67,6 +65,8 @@ scene.add( new THREE.ArrowHelper(
 // RENDER SCENE WITH CAMERA 
 renderer.render(scene, camera);
 ```
+
+This is then just a simple getting started type example of the arrow helper where I just have a lime green arrow pointing upward from the origin of the scene. This is then more or less all that one will need to know then for the most part, however maybe it is called for to have at least a few more examples that have to to with changing these values over time.
 
 ## 2 - Change direction example of the arrow helper method
 
