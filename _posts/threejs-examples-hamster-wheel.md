@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2022-04-06 08:48:14
-version: 1.27
+updated: 2022-04-20 16:37:40
+version: 1.28
 ---
 
 Some times I end up experiencing a kind of burn out because I spend a great deal of time doing what I think I need to do, rather than what I want to do. Sadly often I end up spending all day writing these posts, and simple source code examples for such posts. As such there often is no time and energy left over for working on any kind of real project that I truly would like to work on when it comes to making things that are useful, or at least mildly amusing in some way. So I thought that some kind of [threejs example](/2021/02/19/threejs-examples/) would be a nice break from the usual kind of post where I am just writing about some kind of method in a framework, or some kind of native javaScript feature.
@@ -20,7 +20,7 @@ Anyway when it comes to starting to make something that is starting to look like
 
 This is a threejs example that is intended for people that all ready have a solid grasp on the basics of threejs and are now looking to start making some actual projects of some kind using the library. So this is not a [getting stared post on threejs](/2018/04/04/threejs-getting-started/), let alone [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have at least some basic working knowledge of threejs and javaScript and thus might gain something of value from reading this when it comes to reading up more on these topics. In this section I will not be getting into every little detail that you show know before hand, but I will be touching base on some topics that you should have solid at this point because they are relevant to the source code of this threejs animation example.
 
-<iframe width="320" height="180" src="https://www.youtube.com/embed/evvbFFwIEXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video" src="https://www.youtube.com/embed/evvbFFwIEXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ### Version numbers matter with threejs
