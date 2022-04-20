@@ -5,35 +5,35 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-06-01 11:35:39
-version: 1.19
+updated: 2022-04-20 06:19:59
+version: 1.20
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be another basic [project example of threejs](/2021/02/19/threejs-examples/), this time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
 
-When making one threejs demo after another I have found that there are patterns that I keep repeating over and over again when it comes to setting up a basic scene. There is typically always setting up a scene object, creating an instance of a perspective camera, and of course a renderer. On top of that I often have some kind of main application loop in which I am update the state of a scene, and rendering that scene over and over again. So it would make sense to create something in which I am creating abstractions for all of this, so I can just like to one more additional external file beyond that of just three.js, and write less code when it comes to what sets the specific demo, or project, apart from everything else.
+When making one threejs demo after another I have found that there are patterns that I keep repeating over and over again when it comes to setting up a basic scene. There is typically always setting up a [scene object](/2018/05/03/threejs-scene/), creating an instance of a [perspective camera](/2018/04/07/threejs-camera-perspective/), and of course a [renderer](/2018/11/24/threejs-webglrenderer/) to draw the scene from the perspective of the camera to a canvas element. On top of that I often have some kind of main application loop in which I am updating the state of a scene, and rendering that scene over and over again. Sense there is so much going on and I keep repeating it over and over again it would make sense to create something in which I am creating abstractions for all of this. Once I have that set up the way I like it I can just link to one more additional external files beyond that of just three.js, and write less code when it comes to making a new project.
 
-For now I am not interesting in doing anything to involve when it comes to making some kind of framework or library built on top of threejs. What I want is a way to just have things like an application loop, and some mash creation type stuff abstracted away into an external file that I can then link to and then just add a few things that have to do with a specific code example. This way I can have just a single main.js file where I just call a main create method of this framework, and pass an options object with a few methods and proprieties as a way to make a quick simple looping animation.
+For now I am not interesting in doing anything to involved when it comes to making some kind of framework or library built on top of threejs. What I want is a way to just have things like an application loop, and some mash creation type stuff abstracted away into an external file that I can then link to and then just add a few things that have to do with a specific code example. This way I can have just a single main.js file where I just call a main create method of this framework, and pass an options object with a few methods and proprieties as a way to make a quick simple looping animation.
 
-There is a wide range of different ways that I could go when it comes to this sort of thing. However as far as this post is concerned I am just going to stick with a general exercise, rather than something that is specific for games, stochastic animations, or some other general use case of threejs.
+There is a wide range of different ways that I could go when it comes to this sort of thing. However as far as this post is concerned I am just going to stick with a general exercise, rather than something that is specific for games, stochastic or deterministic animations, or some other general use case of threejs.
 
 <!-- more -->
 
-## 1 - A Basic threejs framework example and what to know first
+## A Basic threejs framework example and what to know first
 
 I will not be getting into the very basics of threejs and javaScript in general here of course. This post is on a topic of interest when it comes to having at least some working knowledge of javaScript in general, as well as using threejs. However in this section I think I should go over at least some things that should be understood before reading the rest of the content of this post.
 
-### 1.1 - What is a framework to begin with anyway?
+### What is a framework to begin with anyway?
 
 This is a post on a basic threejs framework starting point, and because it is a very basic starting point technically it might not really be a framework to begin with. However that all depends on what your definitions of framework, library, and module are to begin with. The general idea that I have in mind is to create something that is almost a finished application by itself actually, and using it is just a matter of adding a few additional lines of code that that act as a way to soft code this almost finished application to create, you guessed it a finished application. 
 
 I would say that what I have in mind here would constitute something that could be called a framework, however it might also loosely fit the definition of a module actually as it is also a single stand alone file ready to be used by itself. However that would only be true assuming that threejs is always there to work with as that is the only dependency with this framework starting point. So all ready it is something that requires a few files in order to produce something that starts to look like a finished product. If I where to counting working on this to make something far more advanced I might end up having a whole bunch of modules all working together to create this single stand alone framework that I can work within.
 
-### 1.2 - Version Numbers matter with three.js
+### Version Numbers matter with three.js
 
 When I first wrote this post and the source code of the framework I as using threejs revision 127.
 
-## 2 - The source code of the basic framework
+## 1 - The source code of the basic framework
 
 For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-iife/) and attaching all the public methods to a single global object property called threeFrame. When it comes to public methods of this framework, so far I just have two, one to create an instance of this main frame work API, and another that will just create a simple cube mesh.
 
@@ -113,7 +113,7 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
 }(typeof threeFrame === 'undefined' ? this['threeFrame'] = {} : threeFrame));
 ```
 
-## 3 - Now just a single use case example of the framework
+## 2 - Now just a single use case example of the framework
 
 Now that I have my basic framework together it is time to create a simple demo of this to make sure that it is working out okay thus far. To start out with this I do not need to do anything fancy, just a simple rotating cube like demo will work just fine for now.
 
@@ -143,7 +143,7 @@ So when this is all up and running it would seem that things are working out as 
 
 There is all ready a great deal that I might want to change and add, but for now I think I just want to be happy with this as a basic starting point. When it comes to adding more on top of this that might change a great deal depending on what I want to do with threejs, making some kind of game is not the same thing as making some kind of looping animation that I might want to export to a stand alone video file contain of some kind.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 Well I was able to slap this basic framework example together in a flash today, but it is still very mush just that a basic framework. Still something like this might still prove to work okay when it comes to making very simple examples that just involve some kind of looping animation type effect. I am sure that I might make at least a few more examples such as this where I might add at least a few more additional features here and there as needed.
 
