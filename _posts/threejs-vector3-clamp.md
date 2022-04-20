@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2021-06-16 15:11:58
-version: 1.25
+updated: 2022-04-20 10:19:05
+version: 1.26
 ---
 
-When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the Vector3 class prototype when it comes to clamping values rather that wrapping them.
+When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values rather that wrapping them.
 
 When it comes to clamping Vectors there is the idea of having two Vectors that will be min and max Vectors, this results in some kind of box like area in which a vector can be clamped into. There is another general idea when it comes to clamping vectors that has to do more so with setting a limit in terms of the Euclidean length which will result in a sphere like area in which values can be clamped to. I suppose that there are all kinds of other ideas that come to mind when it comes to more complex examples of this sort of thing, but those are the two general basic ideas for starters. When it comes to these two general ideas there is the [Vector3.clamp](https://threejs.org/docs/index.html#api/en/math/Vector3.clamp), and [Vector3.clampLength](https://threejs.org/docs/index.html#api/en/math/Vector3.clampLength) methods in the Vector three class to work with.
 
@@ -29,7 +29,7 @@ When I wrote this post I was using threejs r127 when it comes to testing out sou
 
 ## 2 - Basic example of the THREE.Vector3 clamp method.
 
-So in this example I am using the Vector3 clamp method to just make it so that any value that I set for the position of a cube ends up getting clamped within a min and max Vector range. So the way this works is I just call the Vector3.clamp method and pass the vector that I want to clamp as the first argument followed by two additional arguments that are the min and max ranges for the Vector if the form of additional Vector3 instances.
+So in this example I am using the Vector3 clamp method to just make it so that any value that I set for the [position](/2022/04/04/threejs-object3d-position/) of a [mesh object](/2018/05/04/threejs-mesh/) that ends up getting clamped within a min and max Vector range. So the way this works is I just call the Vector3.clamp method and pass the vector that I want to clamp as the first argument followed by two additional arguments that are the min and max ranges for the Vector if the form of additional Vector3 instances.
 
 ```js
 (function () {
@@ -102,4 +102,6 @@ The subject of clamping a vector by length goes hand in hand with many other rel
 
 So then these clamp methods are helpful for making sure that a given point will never leave a given range, but they are not the best choice for other applications that come to mind. One such other application would have to do with collision detection, where I do not always want to clamp or wrap a point to a rang, but to just simply know if the point is in or out of a given range.
 
-I did not get around to every little detail when it comes to setting boundaries for Vector3 values in general. I think I did more or less cover what there is to work with when it comes to clamping values at least, but I did not get into solutions that have to do with wrapping values. When it comes to that it would seem that there is no built in solution for doing so in the Vector3 prototype by itself at least. So it would seem that in order to Wrap values I will need to come up with my own solutions for doing so. There is also getting into more advanced solutions when it comes to just clamping values also, as I just covered the two basic ways of doing so here. So hopefully at some point in the future I will get around to expanding this post with additional examples on clamping vector's, and possible also some warping examples to which would be nice.
+I did not get around to every little detail when it comes to setting boundaries for Vector3 values in general. I think I did more or less cover what there is to work with when it comes to clamping values at least, but I did not get into solutions that have to do with [wrapping values](/2018/07/22/phaser-math-wrap-and-clamp/). When it comes to that it would seem that there is no built in solution for doing so in the Vector3 prototype by itself at least. So it would seem that in order to Wrap values I will need to come up with my own solutions for doing so. 
+
+There is also getting into more advanced solutions when it comes to just clamping values also, as I just covered the two basic ways of doing so here. So hopefully at some point in the future I will get around to expanding this post with additional examples on clamping vector's, and possible also some warping examples to which would be nice.
