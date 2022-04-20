@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-06-11 12:13:08
-version: 1.36
+updated: 2022-04-20 11:33:44
+version: 1.37
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -42,40 +42,21 @@ The direction and origin should be insistences of THREE.Vector3 which is one of 
 The length should be a number value consistent with the desired length relative to the other values of the camera and objects in the scene, and the color should be a hex value, but can also be a number of other kinds of values depending on the version of tree.js that is being used. In late versions of three.js just about all of the usual options for setting color seem to work okay.
 
 ```js
-
-// scene
+// SCENE, CAMERA, and RENDERER
 var scene = new THREE.Scene();
- 
-// ARROW HELPER
-var up = new THREE.ArrowHelper(
-        // first argument is the direction
-        new THREE.Vector3(0, 2, 0).normalize(),
-        // second argument is the origin
-        new THREE.Vector3(0, 0, 0),
-        // length
-        2.2,
-        // color
-        0x00ff00);
-scene.add(up);
- 
-// camera
+scene.add( new THREE.GridHelper(10, 10) );
 var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-camera.position.set(0, 2.5, 2.5);
+camera.position.set(2.0, 2.0, 2.0);
 camera.lookAt(0, 0, 0);
- 
-// cube
-var geometry = new THREE.BoxGeometry(2, 2, 2);
-var material = new THREE.MeshBasicMaterial({
-        color: 0xff0000,
-        wireframe: true
-    });
-var cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
- 
-// RENDERER
 var renderer = new THREE.WebGLRenderer();
 document.getElementById('demo').appendChild(renderer.domElement);
- 
+// ARROW HELPER
+scene.add( new THREE.ArrowHelper(
+        new THREE.Vector3(0, 2, 0).normalize(),  // first argument is the direction
+        new THREE.Vector3(0, 0, 0),              // second argument is the origin
+        2.0,                                     // length
+        0x00ff00));                              // color 
+// RENDER SCENE WITH CAMERA 
 renderer.render(scene, camera);
 ```
 
