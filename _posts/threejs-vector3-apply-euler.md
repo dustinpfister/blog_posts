@@ -5,7 +5,7 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-04-20 10:24:27
+updated: 2022-04-20 10:26:04
 version: 1.34
 ---
 
