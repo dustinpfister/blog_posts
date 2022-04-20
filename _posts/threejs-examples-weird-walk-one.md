@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-20 12:16:22
-version: 1.21
+updated: 2022-04-20 12:18:52
+version: 1.22
 ---
 
 Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/) that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the hight of the mesh objects from its full scale to zero and back again.
@@ -336,7 +336,9 @@ var weirdGuy = (function(){
 }());
 ```
 
-### 2.2 - The demo
+### 2.2 - The demo with ground mesh and additional code for changing the state of the weird guy
+
+So now it is time to test out this new weird guy module to see how things look. With that said when it comes to the demo for this new weird guy module I made a ground mesh, and I also made it so I am suing data textures as a way to add some texture to the ground mesh. In place of using the math utils seeded random method I chose to make a texture that repeates better.
 
 ```js
 (function () {
