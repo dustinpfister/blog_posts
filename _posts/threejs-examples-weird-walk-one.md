@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-20 12:13:05
-version: 1.20
+updated: 2022-04-20 12:16:22
+version: 1.21
 ---
 
 Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/) that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the hight of the mesh objects from its full scale to zero and back again.
@@ -197,7 +197,9 @@ The end result here is then just a very simple walk cycle of my weird little guy
 
 I was off to a good start with the first form of this weird guy module, as well as the additional code that I was using to make a short dmeo of what I made. However I think that I should put at least a little more time into this one before moving on to the next thing. There is just a little more that I would like to see done with this example, and that is to also have moment for the arms, and also a better demo where the weird guy is walking along on a repeating background.
 
-### 2.1 - the weird guy module
+### 2.1 - The weird guy module with set arms method and data textures
+
+So with this new version of the weird guy module I added an additional public method that has to do with setting the rotation values of the arms. Also while I was at it I made it so that the arms are composed of two mesh objects rater than just one. The one additional thing that I changed that is a good step forward is that I made use of data textures as a way to have some texture for the built in materials that I am using for the weird guy.
 
 ```js
 // ********** **********
