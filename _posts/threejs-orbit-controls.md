@@ -5,11 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 173
-updated: 2022-04-20 09:26:57
-version: 1.25
+updated: 2022-04-20 09:31:12
+version: 1.26
 ---
 
-It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch, it would just involve some event handlers that would be used to set the position and rotation of the camera using some [Object3D](https://threejs.org/docs/#api/core/Object3D) class methods maybe. However there is some additional resources in the three.js project repository itself that can be used to quickly set this up in a flash which can be found in the examples folder of the repository. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
+It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch, it would just involve some [event handlers](/2019/01/16/js-event-listeners/) that would be used to set the [position](/2022/04/04/threejs-object3d-position/) and [rotation](/2022/04/08/threejs-object3d-rotation/) of the camera using some [Object3D](https://threejs.org/docs/#api/core/Object3D) class methods maybe. 
+
+However there is some additional resources in the three.js project repository itself that can be used to quickly set some orbit controls in a flash which can be found in the examples folder of the repository. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
 
 The Orbit Controls solution that can be found in the three.js examples folder in the github repo of the project can be used to quickly set up a solution for panning, zooming, and changing the orientation of a camera with the mouse, keyboard, and touch events. So then these source code examples will need threejs, as well as OrbitControls.js on top of the additional code that I am going over in this post.
 
@@ -266,7 +268,7 @@ controls.dampingFactor = .2;
 
 ## 8 - Disables right clicking on the page
 
-One thing about the Orbit Controls is that it ends up disabling right clicking on the page in which I am using it, in most cases this does not present a problem. If for some reason it does the reason why is because event.preventDefault() is used in an on context menu event handler in the Orbit Controls source file, disabling it would be as simple as just commenting it out or removing the code all together.
+One thing about the Orbit Controls is that it ends up disabling right clicking on the page in which I am using it, in most cases this does not present a problem. If for some reason it does the reason why is because event.preventDefault is used in an on context menu event handler in the Orbit Controls source file, disabling it would be as simple as just commenting it out or removing the code all together.
 
 The code of interest looks like this
 ```js
