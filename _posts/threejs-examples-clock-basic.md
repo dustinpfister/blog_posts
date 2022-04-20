@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2022-02-10 06:57:03
-version: 1.28
+updated: 2022-04-20 09:41:18
+version: 1.29
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love if it make it all about work and no play. With that being said [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun and exciting javaScript, rather than dull but useful jaavScript. Sure there might prove to be many examples of practical application of threejs to write about, however I often see it more as something to play with when it comes to making simple animations, games, and toy like projects. 
@@ -17,19 +17,19 @@ This is an example type post in which I am making a threejs project where things
 
 <!-- more -->
 
-## 1 - This is a threejs example
+## This is a threejs example
 
-This is a post on a three.js example of a basic analog clock using threejs and a little additional javaScript code on top of the use of this library. This is not a getting started post on threejs, canvas, or javaScript in general so I assume that you have at least some background with these topics. I will however be going over at least a few basic points when it comes to things that you should know, or refresh on a little before getting into reading the rest of this post.
+This is a post on a three.js example of a basic analog clock using threejs and a little additional javaScript code on top of the use of this library. This is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), [canvas](/2017/05/17/canvas-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/) so I assume that you have at least some background with these topics. I will however be going over at least a few basic points when it comes to things that you should know, or refresh on a little before getting into reading the rest of this post.
 
-### 1.1 - version numbers matter
+### version numbers matter
 
 When I first wrote this post I was using three.js version r111, and the last time I came around to test out that this example is still working, and do a little editing I was using r127 of three.js. between those two version numbers there have been a few major changes, however none of them seem to have effected anything with this basic clock example at least.
 
-## 2 - The clock.js module
+## 1 - The clock.js module
 
 Whenever I make a clock using javaScript I work out a basic module that has to do with creating an object that contains properties that are used to render the current view of the clock. This module can be just a collection of methods, and that is often how I make them.
 
-### 2.1 - The cerate face points method
+### 1.1 - The cerate face points method
 
 I started out making the clock.js file of this threejs example by just having an object literal. this module will just be a bunch of public methods so this kind of module design will work okay. I then created a method that I can use to create an array of 3d points that will be the points at which I will place a bunch of cubes that will at as marks for each hour there is in a day.
 
@@ -59,7 +59,7 @@ clock.createFacePoints = function (cx, cy, cz, radius) {
 };
 ```
 
-### 2.2 - Create hand points
+### 1.2 - Create hand points
  
 I also have a method like that of my create face points method, only this one can be used to create and update the points for each cube that will be a hand of sorts on the surface of the clock.
 
@@ -81,7 +81,7 @@ clock.createHandPoints = function (clockObj, cx, cy, cz, radius) {
 };
 ```
 
-### 2.3 - The get clock object method
+### 1.3 - The get clock object method
 
 Each clock.js file that I make for this kind of project has a method that can be used to create a clock object of sorts. This object has all kinds of properties that can then be passed to my other clock module methods.
 
@@ -100,11 +100,11 @@ clock.get = function (date) {
 };
 ```
 
-## 3 - The main.js file
+## 2 - The main.js file
 
 So now that I have my clock.js module I can now work out some methods that make used of threejs to create groups of cubes for a face of a clock as well has hands on the clock. In this section then I will be writing about the rest of the javaScript code for this example that I have in one traditional main.js javaScript file. Here I have methods that create and update mesh objects, and have all the usual suspects when  it comes to a scene object, camera, and so forth.
 
-### 3.1 - Create the face cubes
+### 2.1 - Create the face cubes
 
 Here I have a method the creates and returns a THREEJS Group of cubes one for each hour of the day. I am using the clock create face points method to get the points of interest.
 
@@ -123,7 +123,7 @@ var createFaceCubes = function (material) {
 };
 ```
 
-### 3.2 - Create the hand cubes
+### 2.2 - Create the hand cubes
 
 I also have a methods the creates cubes for each hand of the clock. This method works a little differently as it returns an api of sorts. The group that is added to the scene is one of the properties of the api, and there there is also an update method of the api. The update method accepts a clock object created with my clock modules get method, and that is then what is used to update the children of the group of cubes that represent the hands of the clock.
 
@@ -149,7 +149,7 @@ createHandCubes = function (material) {
 };
 ```
 
-### 3.3 - The rest of the threejs example
+### 2.3 - The rest of the threejs example
 
 I then have the rest of the code of this threejs example that contains the usual suspects from any other three.js project example. Here I create the scene, camera, and renderer just as with any other three.js example. However here I am of course using the create hand cubes method to create the mesh objects that will serve as the hands of the clock, and of course I am updating the values of those method objects in a main animation loop in which I am passing the current system time as a time to use to the the values of them.
 
@@ -192,7 +192,7 @@ var loop = function () {
 loop();
 ```
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 This basic clock example was a good start at least when it comes to making this kind of project with three.js, but I think that there is still a great deal more work to do even when it comes to making a simple clock example such as this. Still I think there the basic idea of what I hand in mind is there, I like to have a simple module that i can use to create and update some values that I can then use to set or change the position of some mesh objects.
 
