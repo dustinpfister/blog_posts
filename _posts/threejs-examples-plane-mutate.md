@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2022-04-21 11:17:41
-version: 1.24
+updated: 2022-04-21 11:45:08
+version: 1.25
 ---
 
 There is still a great deal more to learn when it comes to the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the various prototype methods of the class, but also playing around with the various attributes when it comes to learning how to go about making custom geometry. When making a custom geometry there are a few attributes to be aware of, but the first and foremost attribute that comes to mind for me at least would be the positions attribute.
@@ -39,7 +39,7 @@ The source code examples of this post can be found in [my test threejs repositor
 
 ## 1 - The plane mutation example as it currently stands
 
-So then here is the source code of my plane geometry mutation threejs example as it stands when I first started this post. The idea that I had in mind here is to just work out a module, or even just a single method that I can use to just adjust the y position of a given vertex in the plane geometry just for the sake of starting out with something very simple with this. 
+So then here is the source code of my plane geometry mutation threejs example as it was when I first started this post. For a better revision of this example you might want to skip over to the next section, as for now I am keeping this here for the sake of just writing about what the first steps with this where. The idea that I had in mind here is to just work out a module, or even just a single method that I can use to just adjust the y position of a given vertex in the plane geometry just for the sake of starting out with something very simple with this. 
 
 I have this adjust plane point helper method then, and in the body of the function I am getting a reference to the position property of a geometry that I pass to it as the first argument. This function then adjusts the y value of a given vertex index to a given y value, and then sets the needs update boolean of the position attribute. That alone will of course change the position of a given vertex, however there is more to it than just that. If I use a material like the normal material or any material that will respond to light things will not look just right, and the main reason why that would be is because I just changed position values and did not change anything when it comes to the normal attribute values.
 
@@ -116,6 +116,89 @@ loop();
 This example is working okay at least thus far when it comes to a simple plane geometry mutation type example, however there is a bit more work to do on this one when and if I can get around to it. I am in a good place thus far when it comes to adjusting the position values at least, however I will want to see if I can work out something when it comes to setting the normal values also. 
 
 There is also the question of the uv attribute also, which I may or may not want to adjust also when it comes to this sort of thing. That attribute has to do with offsets when it comes to using a texture, and when it comes to that the default values that are created with the plane geometry constructor might still work okay for the direction I want to go with this.
+
+## 2 - The new and improved revision that uses compute vertex normals, the vertex normals helper, and data textures.
+
+```js
+// SCENE, LIGHT, CAMERA, RENDERER, and CONTROLS
+var scene = new THREE.Scene();
+var light = new THREE.PointLight(0xffffff, 1);
+light.position.set(5, 3, 0);
+scene.add(light);
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 100);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+camera.add(light);
+scene.add(camera);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+// ADJUST PLANE POINT HELPER
+var adjustPlanePoint = function (geo, vertIndex, yAdjust) {
+    // get position and normal
+    var position = geo.getAttribute('position');
+    var normal = geo.getAttribute('normal');
+    var i = vertIndex * 3;
+    // ADJUSTING POSITION ( Y Only for now )
+    position.array[i + 1] = yAdjust;
+    position.needsUpdate = true;
+    // ADJUSTING NORMALS USING computeVertexNormals method
+    geo.computeVertexNormals();
+};
+// MESH
+var geo = new THREE.PlaneGeometry(1, 1, 2, 2);
+geo.rotateX(Math.PI * 1.5);
+document.getElementById('demo').appendChild(renderer.domElement);
+// USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
+// Using the seeded random method of the MathUtils object
+var width = 16, height = 16;
+var size = width * height;
+var data = new Uint8Array( 4 * size );
+for ( let i = 0; i < size; i ++ ) {
+    var stride = i * 4;
+    var v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
+    data[ stride ] = v;
+    data[ stride + 1 ] = v;
+    data[ stride + 2 ] = v;
+    data[ stride + 3 ] = 255;
+}
+var texture = new THREE.DataTexture( data, width, height );
+texture.needsUpdate = true;
+var plane = new THREE.Mesh(
+        geo,
+        new THREE.MeshStandardMaterial({ color: 0xffffff, map: texture }));
+scene.add(plane);
+// USING THE THREE.VertexNormalsHelper method
+const helper = new THREE.VertexNormalsHelper( plane, 2, 0x00ff00, 1 );
+scene.add(helper);
+// LOOP
+var lt = new Date(),
+state = {
+    frame: 0,
+    maxFrame: 90,
+    per: 0,
+    bias: 0
+};
+var update = function (secs, per, bias, state) {
+    adjustPlanePoint(geo, 1, 0.75 - 1.00 * bias);
+    adjustPlanePoint(geo, 0, 0 + 0.75 * bias);
+    helper.update();
+};
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    state.per = state.frame / state.maxFrame;
+    state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
+    update(secs, state.per, state.bias, state);
+    renderer.render(scene, camera);
+    state.frame += 4 * secs;
+    state.frame %= state.maxFrame;
+    lt = now;
+};
+loop();
+```
 
 ## Conclusion
 
