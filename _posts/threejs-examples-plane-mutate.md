@@ -5,31 +5,31 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2021-06-11 14:29:41
-version: 1.17
+updated: 2022-04-21 10:34:53
+version: 1.18
 ---
 
 There is still a great deal more to learn when it comes to [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the class itself, but playing around with the various attributes when it comes to learning how to go about making custom geometry. So in this post I will be going over the current state of a [threejs example](/2021/02/19/threejs-examples/) where I am just mutating the position attribute of a plane geometry as a way to start to learn how to mess around with the values of a simple starting geometry in threejs. I do not aim to do anything to advanced here because I have found that there is a lot to be aware of when it comes to just moving a single point in a geometry, as it is often not just a mater of changing the position of a single vertex and one might assume. In some cases I have to move a few points actually, and also I have found that I run into problems with lighting that will require adjusting values in the normal attribute also.
 
 <!-- more -->
 
-## 1 - Mutating the positions of a plane geometry and what to know first
+## Mutating the positions of a plane geometry and what to know first
 
 This is post that has to do with changing the values of the position attribute in a plane geometry in the javaScript library know as threejs. So then this is a somewhat advanced post that has to do with a subject that one might get around to after logging a fair about of time learning the basics of the library first. What I mean by that is after progressing far beyond a simple hello world style rotating cube type example there is the question of what comes to mind when it comes to getting into advanced topics with threejs. There are many a few things that come to mind, but one of them is how to go about making custom geometry constructors. What I am working out here might not really be that, however it might be a first step in that direction that involves just playing around with the values of a geometry created with one of the built in geometry constructors such as the plane geometry constrictor.
 
-### 1.1 - Read up more on the THREE.PlaneGeometry constructor in general
+### Read up more on the THREE.PlaneGeometry constructor in general
 
 In this post I am just playing around with the position attribute of a geometry created with the [THREE.PlaneGeometry constructor which might be worth checking out](/2019/06/05/threejs-plane/) in general. The plane geometry constructor is a good starting place to learn how to do all kinds of things with a geometry as it is a fairly basic, simple kind of geometry of course. However there is still a lot to be aware of when it comes to things like the group array, and material index values whe using an array of materials for example.
 
-### 1.2 - Read up more on buffer geometry in general
+### Read up more on buffer geometry in general
 
 before getting into working on examples like this it might also be a good idea to read up more on the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) class in general. Also it is important to know the differences between the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/), [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/), and [uv](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes of a geometry. When it comes to the subject of this post it would be the position and normal attributes that will be the most important to learn the basic of first.
 
-### 1.3 - Version Numbers matter
+### Version Numbers matter
 
-When I made this threejs example I was using threejs r127 which as a late version as of early 2021. I do come around to editing these posts now and then, but often a great deal of time might pass and the code examples will break with later version of threejs.
+When I first made this threejs example I was using threejs r127 which as a late version as of early 2021. The last time I came around to do a little editing with this post I found that the example is also working fine with r135 of threejs. However changes are made to the public API of threejs all the time that can lead to code breaking changes, so always be mindful of what version of threejs you are using on your end.
 
-## 2 - The plane mutation example as it currently stands
+## 1 - The plane mutation example as it currently stands
 
 So then here is the source code of my plane geometry mutation threejs example as it currently stands. The idea that I had in mind here is to just work out a module, or even just a single method that I can use to just adjust the y position of a given vertex in the plane geometry. So then I have this adjust plane point helper method and in the body of the function I am getting a reference to the position property of a geometry that I pass to it as the first argument. This function then adjusts the y value of a given vertex index to a given y value, and then sets the needs update boolean of the position attribute. That alone will of course change the position of a given vertex, however there is more to it than just that. If I use a material like the normal material or any material that will respond to light things will not look just right, and the main reason why that would be is because I just changed position values and did not change anything when it comes to the normal attribute values.
 
@@ -38,6 +38,21 @@ As of this writing I am just changing the direction of the corresponding normal 
 
 
 ```js
+// SCENE, LIGHT, CAMERA, RENDERER, and CONTROLS
+var scene = new THREE.Scene();
+var light = new THREE.PointLight(0xffffff, 0.5);
+light.position.set(3, 3, 3);
+scene.add(light);
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 100);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+camera.add(light);
+scene.add(camera);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+// ADJUST PLANE POINT HELPER
 var adjustPlanePoint = function (geo, vertIndex, yAdjust) {
     // get position and normal
     var position = geo.getAttribute('position');
@@ -53,39 +68,16 @@ var adjustPlanePoint = function (geo, vertIndex, yAdjust) {
     normal.array[i + 2] = v.z;
     normal.needsUpdate = true;
 };
- 
-var scene = new THREE.Scene();
- 
+// MESH
 var geo = new THREE.PlaneGeometry(1, 1, 2, 2);
 geo.rotateX(Math.PI * 1.5);
- 
-// using the adjust plane point method
-adjustPlanePoint(geo, 0, 0.5);
- 
 var plane = new THREE.Mesh(
         geo,
         new THREE.MeshStandardMaterial({
-            color: 'red',
-            emissive: 'gray',
-            side: THREE.DoubleSide
+            color: 0xffffff
         }));
 scene.add(plane);
- 
-var light = new THREE.PointLight(0xffffff, 0.5);
-light.position.set(3, 1, 0);
-//scene.add(light);
- 
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 100);
-camera.position.set(1, 1, 1);
-camera.lookAt(0, 0, 0);
-camera.add(light);
-scene.add(camera);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
+// LOOP
 var lt = new Date(),
 state = {
     frame: 0,
@@ -93,22 +85,17 @@ state = {
     per: 0,
     bias: 0
 };
- 
 var update = function (secs, per, bias, state) {
- 
-    adjustPlanePoint(geo, 4, 0 + 0.75 * bias);
- 
+    adjustPlanePoint(geo, 1, 0.75 - 1.00 * bias);
+    adjustPlanePoint(geo, 0, 0 + 0.75 * bias);
 };
- 
 var loop = function () {
     var now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     state.per = state.frame / state.maxFrame;
     state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
- 
     update(secs, state.per, state.bias, state);
- 
     renderer.render(scene, camera);
     state.frame += 4 * secs;
     state.frame %= state.maxFrame;
@@ -121,7 +108,7 @@ So then this example is working okay at least those far when it comes to a simpl
 
 There is also the question of the uv attribute also, which I may or may not want to adjust also when it comes to this sort of thing. That attribute has to do with offsets when it comes to using a texture, and when it comes to that the default values that are created with the plane geometry constructor might still work okay for the direction I want to go with this.
 
-## 3 - Conclusion
+## Conclusion
 
 I will have to come back to this example sooner or later when it comes to working on getting a better grasp on the various things to be aware of when mutating the position attribute of a buffer geometry class. A plane geometry created with the built in THREE.PlaneGeometry constructor just strokes me as a good starting point when it comes to starting to learn the basics of this sort of thing. It would be nice if I could just move a single point and be done with it, however the process is not always just that simple it would seem. In some cases I will not just want to just change the position of a vertex, but the position of a few vertices, and also there is updating the values of the normals also so that light will look the way that it should with the new position values.
 
