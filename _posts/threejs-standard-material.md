@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2022-04-21 12:25:59
-version: 1.35
+updated: 2022-04-21 12:28:46
+version: 1.36
 ---
 
 A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is on of several options with materials that make use of light sources. When it comes to mesh materials in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all round options.
@@ -34,6 +34,10 @@ There are a number of options to chose from when it comes to light sources, the 
 ### Version Numbers matter with three.js
 
 When I wrote this post I was using r127 of three.js which was a later version of threejs in early 2021. I do not think much has changed with the standard material in some time now, but code breaking changes are made every now and then with many other aspects of the library.
+
+## The source code examples in this post can be found on Github
+
+The source code examples that I am writing about in this post can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-standard-material).
 
 ## 1 - Basic example of the standard material
 
