@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-04-21 16:09:12
-version: 1.39
+updated: 2022-04-21 16:12:16
+version: 1.40
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -75,9 +75,9 @@ If I get a solid idea for the core of what the game should be I might like to ex
 
 If you have not looked into working with a ray caster yet you might want to do so at some point, that truly is the case if you want to make some kind of user interface with threejs among other tasks in which a ray cater comes in handy. Simply put a ray caster is a way to go about finding out if one or more mesh objects have been clicked on by casting a ray from a position such as the position of the camera outward from the camera to get whatever mesh objects come in contact with that ray.
 
-### [ 2.13 - nested groups](/2021/05/10/threejs-examples-nested-groups/)
+### [ 2.13 - Nested groups](/2021/05/10/threejs-examples-nested-groups/)
 
-An example that is a collection of mesh objects in a group nested in another group.
+An example that is a collection of mesh objects in a group nested in another group that I made just for the hell of it mostly. However I did not make this just for the intrinsic value of doing so, there are a few things that I need to be aware of when it comes to nesting objects within objects mainly when it comes to things like the position attribute and the use of the look at method in the object3d class. In other words there is local position and world space positions and knowing what the difference is between the two.
 
 ### [ 2.14 - Mutate a plane ](/2021/06/11/threejs-examples-plane-mutate/)
 
