@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2022-04-21 10:45:27
-version: 1.21
+updated: 2022-04-21 11:08:49
+version: 1.22
 ---
 
 There is still a great deal more to learn when it comes to the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the various prototype methods of the class, but also playing around with the various attributes when it comes to learning how to go about making custom geometry. When making a custom geometry there are a few attributes to be aware of, but the first and foremost attribute that comes to mind for me at least would be the positions attribute.
@@ -23,15 +23,19 @@ I assume that you have at least some background with threejs, and client side ja
 
 ### Read up more on the THREE.PlaneGeometry constructor in general
 
-In this post I am just playing around with the position attribute of a geometry created with the [THREE.PlaneGeometry constructor which might be worth checking out](/2019/06/05/threejs-plane/) in general. The plane geometry constructor is a good starting place to learn how to do all kinds of things with a geometry as it is a fairly basic, simple kind of geometry of course. However there is still a lot to be aware of when it comes to things like the group array, and material index values when using an array of materials for example.
+In this post I am just playing around with the position attribute of a geometry created with the [THREE.PlaneGeometry constructor which might be worth checking out](/2019/06/05/threejs-plane/) in general. The plane geometry constructor is a good starting place to learn how to do all kinds of things with a geometry as it is a fairly simple kind of geometry. However there is still a lot to be aware of when it comes to things like the [group array, and material index values](/2018/05/14/threejs-mesh-material-index/) when using an array of materials for example.
 
 ### Read up more on buffer geometry in general
 
-before getting into working on examples like this it might also be a good idea to read up more on the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) class in general. Also it is important to know the differences between the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/), [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/), and [uv](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes of a geometry. When it comes to the subject of this post it would be the position and normal attributes that will be the most important to learn the basic of first.
+Before getting into working on examples like this it might also be a good idea to read up more on the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) class in general as there are a lot to be aware of with this one. Also it is important to know the differences between the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/), [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/), and [uv](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes of a geometry. When it comes to the subject of this post it would be the position, and normal attributes that will be the most important to learn the basic of first.
 
 ### Version Numbers matter
 
 When I first made this threejs example I was using threejs r127 which as a late version as of early 2021. The last time I came around to do a little editing with this post I found that the example is also working fine with r135 of threejs. However changes are made to the public API of threejs all the time that can lead to code breaking changes, so always be mindful of what version of threejs you are using on your end.
+
+### The source code examples in this post are also on Github
+
+The source code examples of this post can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-plane-mutate).
 
 ## 1 - The plane mutation example as it currently stands
 
