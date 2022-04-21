@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2022-04-21 12:04:42
-version: 1.31
+updated: 2022-04-21 12:07:13
+version: 1.32
 ---
 
 There is still a great deal more to learn when it comes to the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the various prototype methods of the class, but also playing around with the various attributes when it comes to learning how to go about making custom geometry. When making a custom geometry there are a few attributes to be aware of, but the first and foremost attribute that comes to mind for me at least would be the positions attribute.
@@ -210,7 +210,7 @@ When it comes to making the texture that is used for the plane geometry I am als
 
 ## Conclusion
 
-I will have to come back to this example sooner or later when it comes to working on getting a better grasp on the various things to be aware of when mutating the position attribute of a buffer geometry class. A plane geometry created with the built in THREE.PlaneGeometry constructor just strikes me as a good starting point when it comes to starting to learn the basics of this sort of thing. 
+I will have to come back to this example sooner or later when it comes to working on making a better kind of copy and paste solution for a kind of plane geometry that I might like to result from one project to the next, including the various video type projects that I have come to enjoy making as of late. A plane geometry created with the built in THREE.PlaneGeometry constructor just strikes me as a good starting point when it comes to starting to learn the basics of this sort of thing which is the mutation of buffer geometry position attribute values.
 
 It would be nice if I could just move a single point and be done with it, however the process is not always just that simple it would seem. In some cases I will not just want to just change the position of a vertex, but the position of a few vertices, and also there is updating the values of the normals also so that light will look the way that it should with the new position values.
 
