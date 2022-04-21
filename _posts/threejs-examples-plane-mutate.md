@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2022-04-21 11:57:04
-version: 1.29
+updated: 2022-04-21 12:02:37
+version: 1.30
 ---
 
 There is still a great deal more to learn when it comes to the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the various prototype methods of the class, but also playing around with the various attributes when it comes to learning how to go about making custom geometry. When making a custom geometry there are a few attributes to be aware of, but the first and foremost attribute that comes to mind for me at least would be the positions attribute.
@@ -204,11 +204,13 @@ var loop = function () {
 loop();
 ```
 
-So on top of the use of the compute vertex normals method, and the additional helper that shows what the current state of the normals array is another change that I made at this point was to add a texture for the color map of the material that I am using for the mesh object. There are a number of ways to create textures with a little javaScript code in threejs, often I like to go with the canvas texture constructor as a way to create textures using canvas elements and the 2d drawing context. However another option to work with when it comes to this sort of thing would be data textures which is what I have when with here.
+So on top of the use of the compute vertex normals method, and the additional helper that shows what the current state of the normals array is another change that I made at this point was to add a texture for the color map of the material that I am using for the mesh object. There are a number of ways to create textures with a little javaScript code in threejs, often I like to go with the [canvas texture constructor](/2018/04/17/threejs-canvas-texture/) as a way to create textures using canvas elements and the 2d drawing context. However another option to work with when it comes to this sort of thing would be [data textures](/2022/04/15/threejs-data-texture/) which is what I have when with here.
+
+When it comes to making the texture that is used for the plane geometry I am also making use of another note worthy method in the core of the threejs library which is the [seeded random method of the math utils object](/2022/04/11/threejs-math-utils/).
 
 ## Conclusion
 
-I will have to come back to this example sooner or later when it comes to working on getting a better grasp on the various things to be aware of when mutating the position attribute of a buffer geometry class. A plane geometry created with the built in THREE.PlaneGeometry constructor just strokes me as a good starting point when it comes to starting to learn the basics of this sort of thing. 
+I will have to come back to this example sooner or later when it comes to working on getting a better grasp on the various things to be aware of when mutating the position attribute of a buffer geometry class. A plane geometry created with the built in THREE.PlaneGeometry constructor just strikes me as a good starting point when it comes to starting to learn the basics of this sort of thing. 
 
 It would be nice if I could just move a single point and be done with it, however the process is not always just that simple it would seem. In some cases I will not just want to just change the position of a vertex, but the position of a few vertices, and also there is updating the values of the normals also so that light will look the way that it should with the new position values.
 
