@@ -1,12 +1,12 @@
 ---
-title: Threejs examples in the works
+title: 23 threejs examples that showcase many of the features of the library
 date: 2021-02-19 14:42:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-04-21 16:12:16
-version: 1.40
+updated: 2022-04-21 16:14:31
+version: 1.41
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -21,7 +21,7 @@ There is the official set of [threejs examples](https://threejs.org/examples/) t
 
 If you are new to three.js you might want to start off with a getting started post on three.js when it comes to learning the very basics. After that there is a whole lot more to learn about when it comes to all the various little features there are to work with when it comes to using the library.
 
-## 2 - The lost of three.js examples so far
+## 2 - The list of three.js examples so far
 
 Here is the list of my threejs simple project examples thus far, at this time I do not have them broken down into categories but if I keep up with this it is only a matter of time until I will have to do something to that effect.
 
@@ -83,11 +83,11 @@ An example that is a collection of mesh objects in a group nested in another gro
 
 Here I have a quick example that I worked out where I am mutating the position attribute of a buffer geometry instance created with the plane geometry constructor. This is one of a few examples that I worked out after logging some time learning more about working with the buffer geometry class in general. There is learning how to make a custom geometry from the ground up, but there is also learning how to just adjust a few things with a built in geometry also such as the plane geometry that is a good starting point for this sort of thing.
 
-### [ 2.15 - position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
+### [ 2.15 - Position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
 
 This is an example where I have worked out a crude yet effective module that can be used to create a special kind of sphere wrap group. The main create method of this sphere wrap group returns a group that of course has a sphere as one of the children, however it then also has a surface group. I then have another public method of this module that will create and add a object wrap group to the surface group and then this object wrap group contains a mesh that will end up being positioned on top of the surface of the sphere.
 
-### [ 2.16 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
+### [ 2.16 - Scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
 This is an example of a module that can be used to shake the whole scene that will work if I do not add the camera to the scene of course. However any object in three.js that is based off of object3d can also be used with this shake module.
 
@@ -95,7 +95,7 @@ This is an example of a module that can be used to shake the whole scene that wi
 
 In this example I am just working out a helper method that will just move the position of the top point of a sphere geometry. This is just an example that I worked out after writing a bunch of posts on the buffer geometry class in threejs and when I did so I learned a lot more about what the various attributes are for a geometry class in causing the position attribute. So I thought that I should work out at least on or two more examples that have to do with creat8ng a custom geometry, or just mutating the values of a geometry that is created with one of the built in geometry constructors such a s the sphere geometry constructor.
 
-### [ 2.18 - source layer 3d](/2022/02/11/threejs-examples-tool-source-layer-3d/) 
+### [ 2.18 - Source layer 3d](/2022/02/11/threejs-examples-tool-source-layer-3d/) 
 
 I wanted to make the first of what might in time be a few tools that are used to create some kind of content such as an image of some kind or so forth. The aim with this example then was to create a kind of art program where I am using threejs to create a scene with one or more dea files that I load into the scene that is drawn as a resource layer. I can then change all kids of values with these objects in the scene including the position, and orientation of the of the camera. I then have one or more additional canvas layers on top of this resource layer that I then draw on free hand, and then desired end product is some kind of 2d image based off of the state of the scene.
 
@@ -115,7 +115,7 @@ This is a typical example when it comes to starting to get a list like this toge
 
 The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
 
-### [ 2.23 - Werid walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
+### [ 2.23 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
 
 This is another one of my example that is a kind of model that is created by just having a bunch of mesh objects grouped together. This one is just the first of what might become a few examples that are like my guy one model only the goal is to have a weird walk cycle for them. I might like to have a few more features when it comes to the over all look and function of the weird walk model here, but the main idea is to just have a weird and interesting walk cycle.
 
