@@ -1,12 +1,12 @@
 ---
-title: Mutating a point in a plane with threejs
+title: Mutating a point in the geometry created with the plane geometry constrictor with threejs
 date: 2021-06-11 13:32:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2022-04-21 11:08:49
-version: 1.22
+updated: 2022-04-21 11:13:59
+version: 1.23
 ---
 
 There is still a great deal more to learn when it comes to the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the various prototype methods of the class, but also playing around with the various attributes when it comes to learning how to go about making custom geometry. When making a custom geometry there are a few attributes to be aware of, but the first and foremost attribute that comes to mind for me at least would be the positions attribute.
