@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2022-04-21 11:53:08
-version: 1.27
+updated: 2022-04-21 11:55:04
+version: 1.28
 ---
 
 There is still a great deal more to learn when it comes to the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the various prototype methods of the class, but also playing around with the various attributes when it comes to learning how to go about making custom geometry. When making a custom geometry there are a few attributes to be aware of, but the first and foremost attribute that comes to mind for me at least would be the positions attribute.
@@ -119,7 +119,7 @@ There is also the question of the uv attribute also, which I may or may not want
 
 ## 2 - The new and improved revision that uses compute vertex normals, the vertex normals helper, and data textures.
 
-When I came around to edit this post in April of 2022 I made a number of improvements that needed to happen with this. Maybe the best change at this point was the choice to use the compute vertex normals method of the instance of the buffer geometry after changing the positions attribute values. In the older revision of this example I was thinking in terms of having to manual update the values of the normal attribute, and although in some cases I might have to do that, as far as this example is concerned that is not called for it would seem. Still there is the question of knowing what the current state is of the normals attribute of a buffer geometry and with that said that is another change that I made with this when it comes to making use of the THREE.VertexNormalsHelper constructor.
+When I came around to edit this post in April of 2022 I made a number of improvements that needed to happen with this. Maybe the best change at this point was the choice to use the compute vertex normals method of the instance of the buffer geometry after changing the positions attribute values. In the older revision of this example I was thinking in terms of having to manual update the values of the normal attribute, and although in some cases I might have to do that, as far as this example is concerned that is not called for it would seem. Still there is the question of knowing what the current state is of the normals attribute of a buffer geometry and with that said that is another change that I made with this when it comes to making use of the [THREE.VertexNormalsHelper constructor](https://threejs.org/docs/#examples/en/helpers/VertexNormalsHelper).
 
 The THREE.VertexNormalsHelper is another example of something in threejs that might not be built into the core of threejs itself, but can be added by way of an additional file on top of that of threejs itself. In other words this is another external file that I am using on top of threejs in addition to the orbit controls that I am all ready using, so that is three javaScript files now not including the additional code in my main javaScript file.
 
@@ -203,6 +203,8 @@ var loop = function () {
 };
 loop();
 ```
+
+So on top of the use of the compute vertex normals method, and the additional helper that shows what the current state of the normals array is another change that I made at this point was to add a texture for the color map of the material that I am using for the mesh object.
 
 ## Conclusion
 
