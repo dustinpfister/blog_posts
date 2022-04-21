@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2022-04-21 12:07:13
-version: 1.32
+updated: 2022-04-21 16:06:50
+version: 1.33
 ---
 
 There is still a great deal more to learn when it comes to the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the various prototype methods of the class, but also playing around with the various attributes when it comes to learning how to go about making custom geometry. When making a custom geometry there are a few attributes to be aware of, but the first and foremost attribute that comes to mind for me at least would be the positions attribute.
@@ -20,6 +20,8 @@ So in this post I will be going over the current state of a [threejs example](/2
 This is a post that has to do with changing the values of the position attribute in a plane geometry in the javaScript library know as threejs. So then this is a somewhat advanced post that has to do with a subject that one might get around to after logging a fair about of time [learning the basics of the library first](/2018/04/04/threejs-getting-started/). What I mean by that is after working out a simple hello world style rotating cube type example there is the question of what comes to mind when it comes to getting into advanced topics with threejs. There is no single answer to that kind of question but one answer might be to look into the buffer geometry class more which is what this post is about.
 
 I assume that you have at least some background with threejs, and client side javaScript alone at this point. I will not be getting into every little detail about what you show know before hand here then. However I do often use this first section as a place to outline some things that you might want to read up more on before constituting to read the rest of the post.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/r29ChWLYVZY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Read up more on the THREE.PlaneGeometry constructor in general
 
