@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2022-04-21 11:45:08
-version: 1.25
+updated: 2022-04-21 11:49:56
+version: 1.26
 ---
 
 There is still a great deal more to learn when it comes to the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the various prototype methods of the class, but also playing around with the various attributes when it comes to learning how to go about making custom geometry. When making a custom geometry there are a few attributes to be aware of, but the first and foremost attribute that comes to mind for me at least would be the positions attribute.
@@ -118,6 +118,8 @@ This example is working okay at least thus far when it comes to a simple plane g
 There is also the question of the uv attribute also, which I may or may not want to adjust also when it comes to this sort of thing. That attribute has to do with offsets when it comes to using a texture, and when it comes to that the default values that are created with the plane geometry constructor might still work okay for the direction I want to go with this.
 
 ## 2 - The new and improved revision that uses compute vertex normals, the vertex normals helper, and data textures.
+
+When I came around to edit this post in April of 2022 I made a number of improvements that needed to happen with this. Maybe the best change at this point was the choice to use the compute vertex normals method of the instance of the buffer geometry after changing the positions attribute values. In the older revision of this example I was thinking in terms of having to manual update the values of the normal attribute, and although in some cases I might have to do that, as far as this example is concerned that is not called for it would seem. Still there is the question of knowing what the current state is of the normals attribute of a buffer geometry and with that said that is another change that I made with this when it comes to making use of the THREE.VertexNormalsHelper constructor.
 
 ```js
 // SCENE, LIGHT, CAMERA, RENDERER, and CONTROLS
