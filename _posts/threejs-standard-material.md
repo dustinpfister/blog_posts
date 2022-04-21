@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2022-04-21 12:47:24
-version: 1.38
+updated: 2022-04-21 12:52:33
+version: 1.39
 ---
 
 A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is one of [several options with materials](https://blog.cjgammon.com/threejs-materials/) that make use of [light sources](/2022/02/25/threejs-light/). When it comes to mesh materials in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all around options to work with.
@@ -29,11 +29,12 @@ There is the [Mesh Normal Material](/2021/06/23/threejs-normal-material/) that i
 
 ### Be mindful of the differences with the color property compared to the baisc material
 
-One of the major reasons why I would use the standard material is because I want to do something involving one or more light sources. When it comes to the Basic Material I just need to worry about the color property when it comes to setting a solid color for the mesh. I then will maybe just use a color map with the basic material as a way to go about adding some texture. I can do the same with the standard material it is just that now I would want to set a solid color for the mesh using the emissve property as any color that I set with the color property will only show up when a light source of some kind is present.
+One of the major reasons why I would use the standard material is because I want to do something involving one or more light sources. When it comes to the Basic Material I just need to worry about the color property when it comes to setting a solid color for the mesh. I then will maybe just use a color map with the basic material as a way to go about adding some texture. 
+I can do the same with the standard material as I would with the basic material, it is just that now I would want to set a solid color for the mesh using the emissve property rather than the color property in order to get the same effect. The reason why is that any color that I set with the color property with the standard material will only show up when a light source of some kind is present. The emissive map property is then what I would want to use in place of the map property with the basic material.
 
 ### Know the options when it comes to light sources
 
-There are a number of options to chose from when it comes to light sources, the two I generally find myself going with are the [point light](/2019/06/02/threejs-point-light/), and an [ambient light](/2018/11/02/threejs-ambientlight/).
+There are a number of options to chose from when it comes to light sources, the two I generally find myself going with are the [point light](/2019/06/02/threejs-point-light/), and an [ambient light](/2018/11/02/threejs-ambientlight/), but there are a lot of other options of course.
 
 ### Version Numbers matter with three.js
 
