@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2021-06-20 11:27:40
-version: 1.34
+updated: 2022-04-21 12:25:59
+version: 1.35
 ---
 
 A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is on of several options with materials that make use of light sources. When it comes to mesh materials in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all round options.
@@ -15,27 +15,27 @@ There are some additional materials that might be worth mentioning as contenders
 
 <!-- more -->
 
-## 1 - The standard material and what to know first
+## The standard material and what to know first
 
 This is a post on the standard material in three.js that is used along with a geometry to skin a Mesh object that can then be added to a scene. There is a great deal that you should be aware of before getting into the depth of what there is to know about when it comes to materials specifically, so in other words this is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/) let alone javaScript in general. So I assume that you have worked out at least a few basic examples of three.js, and are not just looking into what the options are when it comes to skinning a mesh object. I will not be going over all the little basics that you should know at this point, but I will be going over a few things that you might want to read up more on in this section.
 
-### 1.1 - There are many other basic options with materials
+### There are many other basic options with materials
 
 The standard material is still just one of many options with the various [mesh materials](/2018/04/30/threejs-materials/) to work with in threejs. The standard material is a good option when it comes to creating a final state of a project, however there are a number of other options that work well as place holders when it comes to focusing on other aspects of a project that have to do with the state of a geometry, or how a scene should be updated over time. There is the Mesh Normal Material that is great for seeing what the the current state of the normal property of a geometry is. Another good starting option is the [depth material](/2021/05/04/threejs-depth-material/) that will render the faces of a geometry based on the position of the geometry to a camera and the near and far settings of the camera.
 
-### 1.2 - Be mindful of the differences with the color property compared to the baisc material
+### Be mindful of the differences with the color property compared to the baisc material
 
 One of the major reasons why I would use the standard material is because I want to do something involving one or more light sources. When it comes to the Basic Material I just need to worry about the color property when it comes to setting a solid color for the mesh. I then will maybe just use a color map with the basic material as a way to go about adding some texture. I can do the same with the standard material it is just that now I would want to set a solid color for the mesh using the emissve property as any color that I set with the color property will only show up when a light source of some kind is present.
 
-### 1.3 - Know the options when it comes to light sources
+### Know the options when it comes to light sources
 
 There are a number of options to chose from when it comes to light sources, the two I generally find myself going with are the [point light](/2019/06/02/threejs-point-light/), and an [ambient light](/2018/11/02/threejs-ambientlight/).
 
-### 1.4 - Version Numbers matter with three.js
+### Version Numbers matter with three.js
 
 When I wrote this post I was using r127 of three.js which was a later version of threejs in early 2021. I do not think much has changed with the standard material in some time now, but code breaking changes are made every now and then with many other aspects of the library.
 
-## 2 - Basic example of the standard material
+## 1 - Basic example of the standard material
 
 First off lets start with a very basic example of the standard material, by creating a cube using the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/) for the geometry to use for the mesh. Next I will create an instance of the standard material for the mesh that will use a solid color of red. However this will not work out as you might expect when it comes to using the basic material, as when I just use the standard material itself without a light source I will not see anything. The reason why is because a light source is needed in order to see the color, and if I want to have a color that will always show up no mater what I will want to use the emissive property.
 
@@ -44,38 +44,29 @@ For this example though I am not going to do anything to advanced when it comes 
 I will then want to add at least one of not more light sources to the scene. For this example I am going with the Point light which I create with the THREE.PointLight constructor. I could position this point light by itself and add it directly to the scene, but I often like to make it a child of another object in the scene such as another mesh object, or even a child of the camera. For this example I made it a child of a mesh object where I am using the sphere geometry for it along with the basic material. This way I can see where the point light is located in the scene.
 
 ```js
-// creating a box with the standard material
-var box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshStandardMaterial({ color: 'red'}));
- 
-// creating a scene
+// SCENE, CAMERA, RENDERER
 var scene = new THREE.Scene();
- 
-// add the box mesh to the scene
-scene.add(box);
- 
-// adding a light source
-var sun = new THREE.Mesh(
-        new THREE.SphereGeometry(0.5, 40, 40),
-        new THREE.MeshBasicMaterial());
-sun.add(new THREE.PointLight(0xffffff, 1));
-sun.position.set(8, 4, 2);
-scene.add(sun);
- 
-// camera and renderer
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(0.8, 1.3, 0.8);
+camera.position.set(1.0, 1.7, 2.0);
 camera.lookAt(0, 0, 0);
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
+// LIGHT
+var dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(8, 4, 2);
+scene.add(dl);
+// CREATING A MESH WITH THE STANDARD MATERIAL
+scene.add( new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshStandardMaterial( { color: 'red'} ) ) );
+// camera and renderer
 renderer.render(scene, camera);
 ```
 
 Just like any other threejs example I will also want a camera and a renderer, for this example I went with the perspective camera and the Web GL renderer which are my usual suspects for just about everything that I do with threejs. With this example up and running I get a red cube, but the color will be a little different depending on the position of the point light and the location of the face of the cube.
 
-## 3 - Using a color map and a light source
+## 2 - Using a color map and a light source
 
 What is great about the standard material is that there are a lot of texture maps that can be used with the standard material. There is having a regular color map like that of the basic material, it is just that one needs to use a light source with it just like with the plain solid color setting. There are a number of ways to create a texture, typically I might want to load an external file to do so. However for these kinds of examples I like to go with some kind of solution that avoids bothering with external images by making use of a solution that involves using canvas elements and a little javaScript code.
 
@@ -159,7 +150,7 @@ var loop = function () {
 loop();
 ```
 
-## 4 - The emissive map and other related properties
+## 3 - The emissive map and other related properties
 
 Now for one more map example this time using the emissve map option to make it so that the material will still show something at least even if there is not light at all. With the basic material there is just having a color map, but with the standard material the color map will only should up when there is some light. The functionally of the basic material color map can still show up though I just need to do so by having an emissve map.
 
@@ -248,7 +239,7 @@ loop();
 
 Another options when it comes to something like this is to use some ambient light on top of a point light as this will make sure that the color map will always show up at least a little. However one nice thing about this is that I can make the emissive map something completely different from that of the regular color map.
 
-## 5 - Conclusion
+## Conclusion
 
 More often than not the standard material is my default go to material that I use with just about every project in which I start playing around with light. There is a great deal more to write about when it comes to the various kind of maps to work with when it comes to using this material. When it comes to getting more into the details of this material I might come around to edit this post, or write some new ones as I get around to it. For now there is my main post on [mesh materials](/2018/04/30/threejs-materials/) in general in which I briefly go over most of the materials that are built into three.js.
 
