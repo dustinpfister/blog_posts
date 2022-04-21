@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2022-04-21 12:55:27
-version: 1.40
+updated: 2022-04-21 16:04:44
+version: 1.41
 ---
 
 A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is one of [several options with materials](https://blog.cjgammon.com/threejs-materials/) that make use of [light sources](/2022/02/25/threejs-light/). When it comes to mesh materials in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all around options to work with.
@@ -20,6 +20,8 @@ There are some additional materials that might be worth mentioning as contenders
 This is a post on the standard material in three.js that is used along with a geometry to skin a [Mesh object](/2018/05/04/threejs-mesh/) that can then be added to a [scene object](/2018/05/03/threejs-scene/). There is a great deal that you should be aware of before getting into the depth of what there is to know about when it comes to materials specifically, so in other words this is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/) let alone [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have worked out at least a few basic examples of three.js, and are not just looking into what the options are when it comes to skinning a mesh object. 
 
 I will not be going over all the little basics that you should know at this point, but I will be going over a few things that you might want to read up more on in this section.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/hVai9au72Ns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### There are many other basic options with materials
 
