@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2022-04-21 11:55:04
-version: 1.28
+updated: 2022-04-21 11:57:04
+version: 1.29
 ---
 
 There is still a great deal more to learn when it comes to the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the various prototype methods of the class, but also playing around with the various attributes when it comes to learning how to go about making custom geometry. When making a custom geometry there are a few attributes to be aware of, but the first and foremost attribute that comes to mind for me at least would be the positions attribute.
@@ -204,7 +204,7 @@ var loop = function () {
 loop();
 ```
 
-So on top of the use of the compute vertex normals method, and the additional helper that shows what the current state of the normals array is another change that I made at this point was to add a texture for the color map of the material that I am using for the mesh object.
+So on top of the use of the compute vertex normals method, and the additional helper that shows what the current state of the normals array is another change that I made at this point was to add a texture for the color map of the material that I am using for the mesh object. There are a number of ways to create textures with a little javaScript code in threejs, often I like to go with the canvas texture constructor as a way to create textures using canvas elements and the 2d drawing context. However another option to work with when it comes to this sort of thing would be data textures which is what I have when with here.
 
 ## Conclusion
 
