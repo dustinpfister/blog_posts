@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2022-04-22 15:35:16
-version: 1.38
+updated: 2022-04-22 15:44:44
+version: 1.39
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -139,62 +139,42 @@ There is the scene override property of a scene that will do exactly as you woul
 
 ```js
 (function () {
- 
     // create a Scene
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0xafafaf);
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 100);
+    camera.position.set(2.5, 2.5, 2.5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
  
     // can set an override material for everything
     scene.overrideMaterial = new THREE.MeshDepthMaterial();
- 
     // just adding a 1x1x1 cube with the default
     // MeshBasicMaterial and random color for faces
     // when added to the scene like this
     scene.add(new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1)));
- 
     // adding another 1x1x1 cube but this time I am giving
     // and instance of MeshBasicMaterial in which I am setting
     // the face color of the faces to red
     var cube2 = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
- 
             new THREE.MeshBasicMaterial({
- 
                 color: 0x00ff00
- 
             }));
     cube2.position.set(-2, 0, 0);
     scene.add(cube2);
- 
     // a sphere using the lamber material in wire frame mode
     var sphere = new THREE.Mesh(
             new THREE.SphereGeometry(1, 20, 20),
- 
             new THREE.MeshLambertMaterial({
- 
                 emissive: 0x00004a
- 
             }));
     sphere.position.set(0, 0, -2);
     scene.add(sphere);
- 
-    // add a CAMERA to it so we can see something
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 100);
- 
-    // position The camera away from the origin
-    // and have it look at the origin
-    // by default that is where something goes.
-    camera.position.set(2.5, 2.5, 2.5);
-    camera.lookAt(0, 0, 0);
- 
-    // we need a RENDERER to render the scene
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
     // render the scene with the camera
     renderer.render(scene, camera);
- 
 }
     ());
 ```
@@ -217,21 +197,34 @@ Be sure to read my full [post on the Object3D](/2018/04/23/threejs-object3d/) cl
 There is a lot that could be written about this, and how it applies the a scene object, but one interesting thing is that if I play with the instance of [Vector3](/2018/04/15/threejs-vector3/) that is stored in the position property of my scene instance this will change the position of the whole Scene, and everything in it that is added relative to the scene.
 
 ```js
-    var frame = 0,
-    maxFrame = 50,
-    loop = function () {
-        var per = frame / maxFrame,
-        bias = Math.abs(.5 - per) / .5;
-        requestAnimationFrame(loop);
-        // using Object3D properties to change
-        // the position and rotation of a scene
-        scene.position.set(0, 1 * bias, 0);
-        scene.rotation.set(Math.PI * 2 * per, 0, 0);
-        renderer.render(scene, camera);
-        frame += 1;
-        frame %= maxFrame;
-    };
-    loop();
+// CREATE A SCENE
+var scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+camera.position.set(2, 1, 2);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+var container = document.getElementById('demo') || document.body;
+container.appendChild(renderer.domElement);
+var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// LOOP
+var frame = 0,
+maxFrame = 50,
+loop = function () {
+    var per = frame / maxFrame,
+    bias = Math.abs(.5 - per) / .5;
+    requestAnimationFrame(loop);
+    // using Object3D properties to change
+    // the position and rotation of a scene
+    scene.position.set(0, 1 * bias, 0);
+    scene.rotation.set(Math.PI * 2 * per, 0, 0);
+    renderer.render(scene, camera);
+    frame += 1;
+    frame %= maxFrame;
+};
+loop();
 ```
 
 ## Conclusion
