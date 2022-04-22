@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-04-22 11:45:42
-version: 1.13
+updated: 2022-04-22 11:47:16
+version: 1.14
 ---
 
 The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-geometry/), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after that when it is also a good idea to work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). In some cases I might have to work this out manually, however in most cases just calling the compute vertex normals method will work just fine, which is what this post is about today.
@@ -24,7 +24,7 @@ The source code examples that I write about here in this post can be found in th
 
 ### Version numbers matter with threejs
 
-The version of threejs that I was using when I first wrote this post was r135.
+The version of threejs that I was using when I first wrote this post was r135. I have got myself into the habit of also making sire I write down what version of threejs that I am uisng when writing a post on a threejs example or two. Code breaking changes are made to the library often.
 
 ## 1 - Basic compute vertex normals method example
 
