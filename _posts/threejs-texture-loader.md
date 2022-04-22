@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-04-22 11:54:20
-version: 1.28
+updated: 2022-04-22 11:56:47
+version: 1.29
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). Many of these features are basic things that I should have wrote about a long time ago, one of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few. 
@@ -29,9 +29,11 @@ If you prefer to use some other javaScript library for scripting http requests s
 
 In these examples I am using an absolute path to a file that I am hosting locally with the system that I am using. I will not be getting into the specifics about the differences between absolute and relative paths here as that is a bit off topic. However if you do not know what I am taking about then you should [read up more on the topic of absolute and relative paths](http://www.differencebetween.net/technology/difference-between-absolute-and-relative-path/) as it is something that you should get solid sooner or later.
 
-### Canvas elements can also be used to create textures
+### Canvas elements, and data textures can also be used to create textures
 
 I think I should also mention here that it is possible to use [canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture) that can then be used for the maps of materials. That is creating an image with the 2d drawing context of a canvas element, and then create a texture with the THREE.CanvasTexture constructor or even just the THREE.Texture constructor actually. This is the main way that I like to make textures with javaScript code rather than an external image file.
+
+On top of being able to use canvas elements and everything there is to work with in the 2d drawing context of canvas elements there are also [data textures](/2022/04/15/threejs-data-texture/).
 
 ### Version Numbers matter
 
