@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-04-22 10:31:56
-version: 1.1
+updated: 2022-04-22 10:34:43
+version: 1.2
 ---
 
 The process of creating a custom geometry, or mutating a built in geometry in threejs might be a little involved, but still there is only so much to be aware of to get started. The first step might be to work out the positions attribute which is the values for the actual points in space. However after that when it is also a good idea to work out what the deal should be with the normals attribute. In some cases I might have to work this out manually, however in most cases just calling the compute vertex normals method will work just fine, which is what this post is about today.
@@ -57,3 +57,7 @@ When working with one of the built in geometry constructors the normals are work
 }
     ());
 ```
+
+## Conclusion
+
+The compute vertex normals method will work just fine for most cases as a way to create, or update the normals attribute of a buffer geometry instance. However there are some cases in which I might need to manually edit these values also, so I can not just call this method and be done with it all the time.
