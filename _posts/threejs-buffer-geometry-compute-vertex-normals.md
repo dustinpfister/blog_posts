@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-04-22 11:39:29
-version: 1.11
+updated: 2022-04-22 11:43:53
+version: 1.12
 ---
 
 The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-geometry/), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after that when it is also a good idea to work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). In some cases I might have to work this out manually, however in most cases just calling the compute vertex normals method will work just fine, which is what this post is about today.
@@ -190,7 +190,7 @@ var loop = function () {
 loop();
 ```
 
-This is a hacked over source code example of what I worked out for my [threejs example on mutation of plane geometry](/2021/06/11/threejs-examples-plane-mutate/) that I will likely comes back to at some point again.
+This is a hacked over source code example of what I worked out for my [threejs example on mutation of plane geometry](/2021/06/11/threejs-examples-plane-mutate/) that I will likely comes back to at some point again. There are a lot of other threejs features as well as client side javaScript features that I am making use of in this example that I should also write about for a sec here as well. When it comes to creating a quick texture with javaScript code I am making use of a [data texture](/2022/04/15/threejs-data-texture/) to do so, which is one of several options for doing so on top of other options like making use of [canvas textures](/2018/04/17/threejs-canvas-texture/).
 
 ## Conclusion
 
