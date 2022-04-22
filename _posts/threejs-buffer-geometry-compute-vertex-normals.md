@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-04-22 10:51:34
-version: 1.7
+updated: 2022-04-22 10:57:42
+version: 1.8
 ---
 
 The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-geometry/), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after that when it is also a good idea to work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). In some cases I might have to work this out manually, however in most cases just calling the compute vertex normals method will work just fine, which is what this post is about today.
@@ -74,3 +74,5 @@ So now that I have a normals attribute with this geometry I can now use a [light
 ## Conclusion
 
 The compute vertex normals method will work just fine for most cases as a way to create, or update the normals attribute of a buffer geometry instance. However there are some cases in which I might need to manually edit these values also, so I can not just call this method and be done with it all the time.
+
+The general though process that I have when making a geometry is that first I need to just work out the positions attribute, then I need to get the normals attribute working as it should. However there is then the question of what the next step is after the positions and normals attribute are looking good. With that said I would say that the next thing I would want to figure out would be the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) which is important when it comes to working out what the offsets of textures should be. There are some additional things after that as well though such as what the deal should be when it comes to [groups, and material index values](/2018/05/14/threejs-mesh-material-index/) when using an array of materials to skin a mesh object rather than juts one.
