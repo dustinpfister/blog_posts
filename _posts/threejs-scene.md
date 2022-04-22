@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2022-04-22 15:12:12
-version: 1.36
+updated: 2022-04-22 15:18:29
+version: 1.37
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -45,7 +45,7 @@ There is also a lot to cover when it comes to the base class of a Mesh object wh
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using three.js r91, and the last time I edited this post and did some testing and editing of the source code examples I was using r127. I have made an effort of making sure I mentioning what version of threejs I am using when making these posts as threejs is a pretty fast moving project, and code breaking changes happen often.
+When I first wrote this post I was using three.js r91, and the last time I edited this post and did some testing and editing of the source code examples I was using r135. I have made an effort of making sure I mention what version of threejs I am using when making these posts as threejs is a pretty fast moving project, and code breaking changes happen often.
 
 ## 1 - Basic example of THREE.Scene
 
