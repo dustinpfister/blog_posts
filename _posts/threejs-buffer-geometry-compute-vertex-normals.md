@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-04-22 11:31:49
-version: 1.9
+updated: 2022-04-22 11:36:23
+version: 1.10
 ---
 
 The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-geometry/), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after that when it is also a good idea to work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). In some cases I might have to work this out manually, however in most cases just calling the compute vertex normals method will work just fine, which is what this post is about today.
@@ -73,7 +73,7 @@ So now that I have a normals attribute with this geometry I can now use a [light
 
 ## 2 - The THREE.VertexNormalsHelper
 
-In order to really get an idea of what is going on with the state of the normals array of a geometry it might be best to make use of the THREE.VertexNormalsHelper that can be added to an example by way of one additional javaScript file that can be found in the threejs repository. There is a whole lot to work with when it comes to the core of the threejs library alone, but there are also a number of additional files in to form of helpers, loaders and controls. For this example I am not just making use of the vertex normals helper, but also the orbit controls that can also be added by way of an additional javaScript file as well.
+In order to really get an idea of what is going on with the state of the normals array of a geometry it might be best to make use of the THREE.VertexNormalsHelper that can be added to an example by way of one additional javaScript file that can be found in the threejs repository. There is a whole lot to work with when it comes to the core of the threejs library alone, but there are also a number of additional files in to form of helpers, loaders and controls. For this example I am not just making use of the vertex normals helper, but also the [orbit controls](/2018/04/13/threejs-orbit-controls/) that can also be added by way of an additional javaScript file as well.
 
 ```js
 // SCENE, LIGHT, CAMERA, RENDERER, and CONTROLS
@@ -187,6 +187,8 @@ var loop = function () {
 };
 loop();
 ```
+
+This is a hacked over source code example of what I worked out for my [threejs example on mutation of plane geometry](/2021/06/11/threejs-examples-plane-mutate/) that I will likely comes back to at some point again.
 
 ## Conclusion
 
