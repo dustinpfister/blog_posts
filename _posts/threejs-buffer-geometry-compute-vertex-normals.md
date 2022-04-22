@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-04-22 10:34:43
-version: 1.2
+updated: 2022-04-22 10:39:00
+version: 1.3
 ---
 
 The process of creating a custom geometry, or mutating a built in geometry in threejs might be a little involved, but still there is only so much to be aware of to get started. The first step might be to work out the positions attribute which is the values for the actual points in space. However after that when it is also a good idea to work out what the deal should be with the normals attribute. In some cases I might have to work this out manually, however in most cases just calling the compute vertex normals method will work just fine, which is what this post is about today.
@@ -57,6 +57,8 @@ When working with one of the built in geometry constructors the normals are work
 }
     ());
 ```
+
+So now that I have a normals attribute with this geometry I can now use a light source and see the material when using a material like that of the standard material with a light source. Although that might be the case there is still one additional attribute that I will need to add to the geometry in order for this to be a done deal in terms of the core set of attributes that are needed which would be the uv attribute. However for the sake of this post I think I should first cover a few more examples that focus more so on the state of this normals attribute and how to know what the state of it is.
 
 ## Conclusion
 
