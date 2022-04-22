@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-04-22 11:51:07
-version: 1.27
+updated: 2022-04-22 11:54:20
+version: 1.28
 ---
 
-There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
+There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). Many of these features are basic things that I should have wrote about a long time ago, one of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few. 
+
+There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the [dae file loader](/2021/04/30/threejs-dae-collada-loader/).
 
 When it comes to my various threejs examples that I make for these posts I often like to use canvas elements are a way to create quick simple textures with javaScript code. However I am sure there will be times when it comes to starting to work on an actually project with threejs that I will want to use external image files rather than some kind of solution that involves a little javaScript code.
 
@@ -149,7 +151,7 @@ loadTextureCollection(urlArray)
 
 If all goes well the end result will be an array of textures that will be available in the next then function call of the promise returned by the load texture collection helper. However I think it is always a good idea to have something in place that will fire in the event that sometime goes wrong loading the files. For this example I just create a single cube that makes use of the normal material, rater than two cubes that use each of the textures with the basic material.
 
-This is something that I put together pretty fast, and there are a lot of other features I might want to add when it comes to turning this into some kind of actual support library or something to that effect. However say you all ready have a great way to go about loading a whole bunch of image files just the way you like to, and you jusy want to create textures with those images that are loaded all ready. Well you do not have to use the texture loader, in that case the THREE.Texture constrictor can just be called and a reference to each image can be passed as the first argument for the texture constrictor.
+This is something that I put together pretty fast, and there are a lot of other features I might want to add when it comes to turning this into some kind of actual support library or something to that effect. However say you all ready have a great way to go about loading a whole bunch of image files just the way you like to, and you just want to create textures with those images that are loaded all ready. Well you do not have to use the texture loader, in that case the THREE.Texture constrictor can just be called and a reference to each image can be passed as the first argument for the texture constrictor.
 
 ## Conclusion
 
