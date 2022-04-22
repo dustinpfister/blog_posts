@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-04-22 11:43:53
-version: 1.12
+updated: 2022-04-22 11:45:42
+version: 1.13
 ---
 
 The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-geometry/), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after that when it is also a good idea to work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). In some cases I might have to work this out manually, however in most cases just calling the compute vertex normals method will work just fine, which is what this post is about today.
@@ -20,7 +20,7 @@ This is a post centered around a single method of the [buffer geometry class](ht
 
 ### The source code examples in this post are on Github
 
-The source code examples that I write about here in this post can be found in the for post folder of my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-compute-vertex-normals).
+The source code examples that I write about here in this post can be found in the for post folder of my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-compute-vertex-normals). This is also where I am parking the source code for my many other post on threejs, as well as many more draft demos that I also have parked there.
 
 ### Version numbers matter with threejs
 
