@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2022-04-22 15:02:58
-version: 1.35
+updated: 2022-04-22 15:12:12
+version: 1.36
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -22,6 +22,8 @@ This is an post on [three.js](https://threejs.org/) and even then this is just a
 If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) that might be worth checking out as there is always more to learn when it comes to javaScript alone. 
 
 I then assume that you have at least some basic working knowledge of the basics of threejs and JavaScript, so I will not be getting into that here. However in this section I will quickly cover a few things that you might want to read up more on when it comes to getting a more solid understanding of the scene objects, and some other related topics that you show know in order to do something with a scene object.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/T0tM14OummQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### In order to view a scene you will want to known how to set up a renderer
 
