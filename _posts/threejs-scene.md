@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2022-04-22 15:18:29
-version: 1.37
+updated: 2022-04-22 15:35:16
+version: 1.38
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -47,6 +47,10 @@ There is also a lot to cover when it comes to the base class of a Mesh object wh
 
 When I first wrote this post I was using three.js r91, and the last time I edited this post and did some testing and editing of the source code examples I was using r135. I have made an effort of making sure I mention what version of threejs I am using when making these posts as threejs is a pretty fast moving project, and code breaking changes happen often.
 
+### The source code examples in this post are on Github
+
+The source code examples that I am writing about in this post can be found on Github in [my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-scene).
+
 ## 1 - Basic example of THREE.Scene
 
 First off I will want to create the scene by just calling the THREE.Scene constructor with the new keyword, and saving the result of that to a variable. This result will be my scene object but there at least a little more to do if I want to actual see something. At a minimum beyond just having a scene object I will want to have at least some kind of mesh object to look at added to a Scene.  For now this mesh object could just be a mesh that used a geometry from one of the built in geometry constructors in three.js such as [THREE.BoxGeometry](https://threejs.org/docs/index.html#api/geometries/BoxGeometry), and then I can use something like the Normal material which does not require a light source.
@@ -56,28 +60,22 @@ Unless I aim to do something headless with a scene and one or more mesh objects,
 So a basic example of THREE.Scene might look something like this:
 
 ```js
-(function () {
- 
-    // CREATE A SCENE
-    var scene = new THREE.Scene();
- 
-    // add a Mesh to look at
-    var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
-    mesh.position.set(0, 0, -2);
-    scene.add(mesh);
-    // add a CAMERA to it so we can see something
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(1, 1, 1); // position the camera away from the mesh
-    camera.lookAt(mesh.position); // look at the mesh
-    // we need a RENDERER to render the scene
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    var container = document.getElementById('demo') || document.body;
-    container.appendChild(renderer.domElement);
-    // render the scene with the camera
-    renderer.render(scene, camera);
-}
-    ());
+// CREATE A SCENE
+var scene = new THREE.Scene();
+// add a CAMERA to it so we can see something
+var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+camera.position.set(2, 1, 2); // position the camera away from the mesh
+camera.lookAt(0, 0, 0); // look at 0,0,0
+// we need a RENDERER to render the scene
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+var container = document.getElementById('demo') || document.body;
+container.appendChild(renderer.domElement);
+// add a Mesh to look at
+var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// render the scene with the camera
+renderer.render(scene, camera);
 ```
 
 If I did not give a normal material when creating the mesh then by default a Mesh will use the Basic material with a random color used to paint the faces of the geometry. Of course I could create an instance of some other material, or give a color or texture to another instance of basic material that I would then give as the second argument to the Mesh constructor. However getting into materials in depth might be a bot off topic, I have wrote a a post on materials in general anyway so I do not care to repeat that all here. I will however be getting into the properties of THREE.Scene including the material override property, more on that later.
@@ -87,11 +85,27 @@ If I did not give a normal material when creating the mesh then by default a Mes
 A property of interest in a scene instance is the [scene.fog Property](/2018/04/16/threejs-fog/) which can be used to add a fog effect to that will effect mesh objects that use materials that are effected by a fog. When adding a fog I typically keep the background color, and the color of the fog the same, and stick to using materials that will work with a fog like that of the standard material.
 
 ```js
-var scene = new THREE.Scene(),
-fogColor = new THREE.Color(0xffffff);
- 
+// CREATE A SCENE
+var scene = new THREE.Scene();
+var fogColor = new THREE.Color(0xffffff);
 scene.background = fogColor;
-scene.fog = new THREE.FogExp2(fogColor, 0.1);
+scene.fog = new THREE.FogExp2(fogColor, 0.4);
+// add a CAMERA to it so we can see something
+var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+camera.position.set(2, 1, 2); // position the camera away from the mesh
+camera.lookAt(0, 0, 0); // look at 0,0,0
+// we need a RENDERER to render the scene
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+var container = document.getElementById('demo') || document.body;
+container.appendChild(renderer.domElement);
+// add a Mesh to look at with the Standard Material
+var mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1), 
+    new THREE.MeshStandardMaterial( { emissive: 0xff0000 } ));
+scene.add(mesh);
+// render the scene with the camera
+renderer.render(scene, camera);
 ```
 
 There are two kinds of fog that can be added to a scene in three.js which are [Fog](https://threejs.org/docs/index.html#api/scenes/Fog), and [FogExp2](https://threejs.org/docs/index.html#api/scenes/FogExp2). The regular Fog constructor will add a fog that works in a linear way, while the FogExp2 constructor works in an exponential way.
@@ -101,7 +115,20 @@ There are two kinds of fog that can be added to a scene in three.js which are [F
 It goes without saying that an important part of the scene instance is the background property. By default it is a solid black color, but it can be set to another solid color using THREE.Color.
 
 ```js
-scene.background = THREE.Color(0xffffff);
+// CREATE A SCENE
+var scene = new THREE.Scene();
+// background
+scene.background = new THREE.Color(0xffffff);
+var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+camera.position.set(2, 1, 2); 
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+var container = document.getElementById('demo') || document.body;
+container.appendChild(renderer.domElement);
+var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+scene.add(mesh);
+renderer.render(scene, camera);
 ```
 
 If you want to use a texture, or a cube texture that can be used as well. I have written a [post on how to used a cube texture](/2018/04/22/threejs-cube-texture/) in which I get into how to go about doing just that in detail. The process of doing so is a little complicated when it comes to using a cube texture that was made before hand, and making a skymap can prove to be a little involved. However it is a pretty cool background effect that can result in this texture that one can see in all directions so it is worth looking into more for sure.
