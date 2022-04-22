@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-04-22 11:56:47
-version: 1.29
+updated: 2022-04-22 12:06:22
+version: 1.30
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). Many of these features are basic things that I should have wrote about a long time ago, one of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few. 
@@ -38,6 +38,10 @@ On top of being able to use canvas elements and everything there is to work with
 ### Version Numbers matter
 
 When I wrote this post and the examples for this post I was using r127 of threejs. I have got into the habit of making sure I always make note of the version of threejs that I am using since there are always code breaking changes being made to the library.
+
+### The source code examples in this post are on Github
+
+In my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-texture-loader) on Github the source code examples that I am writing about here can be found. I am also parking the source code examples for my many other posts on threejs there as well.
 
 ## 1 - Basic texture loader example
 
