@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2022-04-22 14:57:25
-version: 1.34
+updated: 2022-04-22 15:02:58
+version: 1.35
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -17,19 +17,29 @@ There is a great deal of other things to cover when it comes to a scene object t
 
 ## The scene object What to know first
 
-This is an post on [three.js](https://threejs.org/) and even then this is just a general post that covers just one little constructor known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to three.js you might want to start with [my getting started post on three.js](/2018/04/04/threejs-getting-started/) as a starting point an three.js. If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) that might be worth checking out if you are still fairly new to JavaScript in general. So then I assume that you have at least some basic working knowledge of the basics of threejs and JavaScript, so I will not be getting into the basics of these topics here. However in this section I will quickly cover a few things that you might want to read up more on when it comes to getting a more solid understanding of the scene objects, and some other related topics that you show know in order to do something with a scene object.
+This is an post on [three.js](https://threejs.org/) and even then this is just a general post that covers just one little constructor function known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to three.js you might want to start with [my getting started post on three.js](/2018/04/04/threejs-getting-started/) as a starting point. 
+
+If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) that might be worth checking out as there is always more to learn when it comes to javaScript alone. 
+
+I then assume that you have at least some basic working knowledge of the basics of threejs and JavaScript, so I will not be getting into that here. However in this section I will quickly cover a few things that you might want to read up more on when it comes to getting a more solid understanding of the scene objects, and some other related topics that you show know in order to do something with a scene object.
 
 ### In order to view a scene you will want to known how to set up a renderer
 
-The scene object is a main object that will contain all of the objects that compose the objects of a threejs project. However in order to view the state of one of these scene objects it is called for to use some kind of renderer as a way to view the current state of the scene object. The typical render that I often go with these days as of r127 is the [Web Gl renderer](/2018/11/24/threejs-webglrenderer/), as browser support for web gl is now pretty good compared to the way things where a few years ago. In older versions of threejs inclining the ones I was using when I first wrote this post there was also the 2d canvas renderer which is not removed from the core of threejs. It is still possible to use [some alternative renderer's](https://github.com/mrdoob/three.js/tree/r127/examples/js/renderers) which can be found in the examples folder of the threejs git hub repository.
+The scene object is a main object that will contain all of the objects that compose the over all scene that we are going to be looking at. However in order to view the state of one of these scene objects it is called for to use some kind of renderer as a way to view the current state of the scene object with a camera. 
+
+The typical render that I often go with these days as of r127 is the [Web Gl renderer](/2018/11/24/threejs-webglrenderer/), as browser support for web gl is now pretty good compared to the way things where a few years ago. In older versions of threejs including the ones I was using when I first wrote this post there was also the 2d canvas renderer. It is still possible to use [some alternative renderer's](https://github.com/mrdoob/three.js/tree/r127/examples/js/renderers) which can be found in the examples folder of the threejs Github repository.
 
 ### In order to use a renderer with a scene you will also need a camera
 
-In order to use the render function of a renderer I will need to pass the scene object to it, but I will also need to pass a camera to use also. There is a lot to cover when it comes to what the options are with cameras, but I typically like to just go with the [perspective camera](/2018/04/07/threejs-camera-perspective/). The camera object can or can not be added to the scene object, but often I will add it to the scene anyway. if I add some kind of child object to the camera that I want to effect the scene such as a light source then I will have to add the camera t the scene of else those children will not be in the scene naturally.
+In order to use the render function of a renderer I will need to pass the scene object to it, but I will also need to pass a camera to use also. There is a lot to cover when it comes to what the options are with cameras, but I typically like to just go with the [perspective camera](/2018/04/07/threejs-camera-perspective/). 
+
+The camera object can or can not be added to the scene object, but often I will add it to the scene anyway. If I add some kind of child object to the camera that I want to effect the scene such as a light source then I will have to add the camera to the scene or else those children will not be in the scene naturally.
 
 ### Mesh objects, Geometry, Materials, and the Object3d base class
 
-In order to have something to look at in a scene I am going to want to create and add at least one or more [mesh objects](/2018/05/04/threejs-mesh/). In order to create a mesh object I will want to have a geometry, and one or more [materials](/2018/04/30/threejs-materials/) by which to style that geometry. There is also a lot to cover when it comes to the base class of a Mesh object which is also a base class of a scene object called Object3d. For example when I call the add method of a scene object and add an object as a child of the scene object that is a method of the object3d class and not the scene class. The same add method can be used with mesh objects, cameras, groups, and anything else that is based off of object3d.
+In order to have something to look at in a scene I am going to want to create and add at least one or more [mesh objects](/2018/05/04/threejs-mesh/). In order to create a mesh object I will want to have a geometry, and one or more [materials](/2018/04/30/threejs-materials/) by which to style that geometry. 
+
+There is also a lot to cover when it comes to the base class of a Mesh object which is also a base class of a scene object called Object3d. For example when I call the add method of a scene object and add an object as a child of the scene object that is a method of the object3d class and not the scene class. The same add method can be used with mesh objects, cameras, groups, and anything else that is based off of object3d.
 
 ### Version Numbers matter with three.js
 
