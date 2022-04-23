@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-04-23 14:25:45
-version: 1.33
+updated: 2022-04-23 14:27:46
+version: 1.34
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task.
@@ -75,7 +75,7 @@ Now that I have a scene object, and a mesh added to the scene with a geometry an
 
 ## 2 - Mutating the normal attribute to see how that changes the appearance when using the Normal Material
 
-The normals are set up the way that they should be typically when using a built in geometry constrictor such as the Box Geometry constructor that I am using in these examples. However when it comes to debugging problems with the normal attribute of a geometry there is knowing how it is topically not suppose to look. To gain a sense of what this looks like there is taking a moment to just mutate a few values in the normal attribute of the geometry.
+The normals are set up the way that they should be typically when using a built in geometry constrictor such as the Box Geometry constructor that I am using in these examples. However when it comes to debugging problems with the normal attribute of a geometry there is knowing how it should look. To gain a sense of what this looks like there is taking a moment to just mutate a few values in the normal attribute of the geometry, just for the sake of seeing what happens when the normals are not in a state in which they should be in.
 
 ```js
 // scene
