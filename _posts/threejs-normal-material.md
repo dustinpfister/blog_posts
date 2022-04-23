@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2021-06-23 14:59:42
-version: 1.27
+updated: 2022-04-23 12:51:22
+version: 1.28
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial). The normal material will render colors to the faces of a geometry by way of the state of the normal attribute of the buffer geometry. The normal attribute is an array of values that corresponds with the position attribute that is used to set what the direction is of each vertex rather than the position. The normal attribute is a must have attribute when it comes to using any material that has to do with light as the normal material is used for that, but it is also needed for a material such as the normal material.
@@ -14,27 +14,26 @@ The normal material can be used as a way to find out if there are problems with 
 
 <!-- more -->
 
-## 1 - The normal material and what you should know first
+## The normal material and what you should know first
 
 In this post I am going over a few javaScript source code examples that make use of the normal material in the library known as threejs. So I trust that you have at least some knowledge of how to get up and running with the very [basics of threejs](/2018/04/04/threejs-getting-started/) when it comes to linking to the library and creating a scene object and so forth. I will not be getting into the very basics of threejs let alone JavaScript in general here, but I will be quickly going over some things that you show read up more on if you have not done so before hand at this point.
 
-### 1.1 - read up more on what the normal attribute of a buffer geometry is
+### read up more on what the normal attribute of a buffer geometry is
 
 It might be a good idea to take some time to gain a [deeper understanding of the normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) of  buffer geometry instance. I have wrote a post on the topic of the normal attribute alone that might be worth reading when it comes to getting that deeper understand of what the normal attribute is all about. Crossing that bridge is something that one will just need to do sooner or later when it comes to making custom geometry, but when it comes to sticking to the built in geometry constructors it is possible to wait on this one as the normal attributes are all ready set up for you when using these constructors.
-
-### 1.2 - there is much more to geometry beyond that of the normal attribute of course
+### There is much more to geometry beyond that of the normal attribute of course
 
 So there is the normal attribute of a buffer geometry instance, but then there are other major attributes of a buffer geometry such as the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [uv attributes](/2021/06/09/threejs-buffer-geometry-attributes-uv/) along with a number of other attributes that might come into play also. There is also a wide range of additional prototype methods and properties of a [buffer geometry instance](/2021/04/22/threejs-buffer-geometry/) that are also worth looking into more at some point sooner or later.
 
-### 1.3 - There are other options when it comes to materials
+### There are other options when it comes to materials
 
 The mesh normal material is just one of [many material options in threejs](/2018/04/30/threejs-materials/) so it might be a good idea to read some post that serves as a general overview of all the options when it comes to materials. The main feature of interest with the normal material is just rendering textures for the faces of a geometry using the state of the normals of a geometry, but not taking into account anything that might be going on when it comes to light sources.
 
-### 1.4 - Version Numbers matter
+### Version Numbers matter
 
 When I first wrote this post I was using r127 of threejs.
 
-## 2 - Basic example using the normal material
+## 1 - Basic example using the normal material
 
 In this section I am going to be writing about a hello world of mesh normal material examples. So in a way this is just a very basic getting started example of threejs in general actually as I do still like to start out my threejs posts with very basic examples before getting into anything that might be a bot more advanced.
 
@@ -63,7 +62,7 @@ renderer.render(scene, camera);
 
 Now that I have a scene object, and a mesh added to the scene with a geometry and a material I can now just create a camera and a renderer.
 
-## 3 - Mutating the normal attribute to see how that changes the appearance when using the Normal Material
+## 2 - Mutating the normal attribute to see how that changes the appearance when using the Normal Material
 
 The normals are set up the way that they should be typically when using a built in geometry constrictor such as the Box Geometry constructor that I am using in these examples. However when it comes to debugging problems with the normal attribute of a geometry there is knowing how it is topically not suppose to look. To gain a sense of what this looks like there is taking a moment to just mutate a few values in the normal attribute of the geometry.
 
@@ -94,7 +93,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-## 4 - Conclusion
+## Conclusion
 
 The normal material is often by default go to material when I am working out things that do not have to do with materials and textures and lighting just yet. The normal material is often a set up from using the basic material with just a solid color and not much of anything else as just results in a blob of color in the canvas rather than something that looks like a solid shape. The mesh normal material is one way to show that there are sides to an object, however there are some additional options when it comes to a simple place holder material such as the depth material, or using the basic material just adding a simple place holder texture to it.
 
