@@ -5,11 +5,14 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-04-23 14:00:09
-version: 1.30
+updated: 2022-04-23 14:14:52
+version: 1.31
 ---
 
-One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial). The normal material will render colors to the faces of a geometry by way of the state of the normal attribute of the buffer geometry. The normal attribute is an array of values that corresponds with the position attribute that is used to set what the direction is of each vertex rather than the position. The normal attribute is a must have attribute when it comes to using any material that has to do with light as the normal material is used for that, but it is also needed for a material such as the normal material.
+One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task.
+
+The normal material will render colors to the faces of a geometry by way of the state of the [normal attribute of the buffer geometry geometry instance](https://stackoverflow.com/questions/35204824/three-buffergeometry-vertex-normals-and-face-normals) used with the [mesh object](/2018/05/04/threejs-mesh/). The normal attribute is an array of values that corresponds with the position attribute that is used to set what the direction is of each vertex rather than the position. The normal attribute is a must have attribute when it comes to using any material that has to do with light such as with the [standard material](/2021/04/27/threejs-standard-material/), but it is also needed for a material such as the normal material which will help show what the deal is with the state of this kind of buffer geometry attribute.
+
 The normal material can be used as a way to find out if there are problems with the normal attribute of a geometry as there is a certain look that an object should have when using it. However it might not be the best took for the job as there are other things to work with in the core of the threejs library such as arrow helpers. In addition there are additional external files that can be used on top of threejs that will add a kind of normal helper which might be the best tool for the job.
 
 <!-- more -->
@@ -18,7 +21,7 @@ The normal material can be used as a way to find out if there are problems with 
 
 In this post I am going over a few javaScript source code examples that make use of the normal material in the library known as threejs. So I trust that you have at least some knowledge of how to get up and running with the very [basics of threejs](/2018/04/04/threejs-getting-started/) when it comes to linking to the library and creating a scene object and so forth. I will not be getting into the very basics of threejs let alone JavaScript in general here, but I will be quickly going over some things that you show read up more on if you have not done so before hand at this point.
 
-### read up more on what the normal attribute of a buffer geometry is
+### Read up more on what the normal attribute of a buffer geometry is
 
 It might be a good idea to take some time to gain a [deeper understanding of the normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) of  buffer geometry instance. I have wrote a post on the topic of the normal attribute alone that might be worth reading when it comes to getting that deeper understand of what the normal attribute is all about. Crossing that bridge is something that one will just need to do sooner or later when it comes to making custom geometry, but when it comes to sticking to the built in geometry constructors it is possible to wait on this one as the normal attributes are all ready set up for you when using these constructors.
 ### There is much more to geometry beyond that of the normal attribute of course
