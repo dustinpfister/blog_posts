@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-04-23 14:21:07
-version: 1.32
+updated: 2022-04-23 14:25:45
+version: 1.33
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task.
@@ -44,9 +44,11 @@ The source code examples that I am writing about in this post can be found in my
 
 ## 1 - Basic example using the normal material
 
-In this section I am going to be writing about a hello world of mesh normal material examples. So in a way this is just a very basic getting started example of threejs in general actually as I do still like to start out my threejs posts with very basic examples before getting into anything that might be a bot more advanced.
+In this section I am going to be writing about a simple hello world style example of mesh normal material. So in a way this is just a very basic getting started example of threejs in general actually as I do still like to start out my threejs posts with very basic examples before getting into anything that might be a bit more advanced.
 
-I start out the source code example by creating a scene object, and then after that I will want to create a mesh object and add that mesh object to the scene. When creating a mesh object I am going to want to pass a geometry as the first argument, and then a material as the second argument. There is getting into creating a custom geometry, but when doing so I will need to create the normal attribute manually. So for this basic example I will be using one of the built in geometry constructors such as the THREE.BoxGeometry constructor, this will have the normal attribute set up to begin with. After I have my geometry and pass it as the first argument to the mesh constructor, I then just need a material to use with the geometry of the mesh object, and for this I am of course using the Normal Material. For this example I am just calling the THREE.MeshNormalMaterial constructor by itself without passing any options to it.
+I start out the source code example by creating a [scene object](/2018/05/03/threejs-scene/), and then after that I will want to create a mesh object and add that mesh object to the scene as a child by ising the add method of the scene object. When creating a mesh object I am going to want to pass a geometry as the first argument, and then a material as the second argument. There is getting into creating a custom geometry, but when doing so I will need to create the normal attribute manually. So for this basic example I will be using one of the built in geometry constructors such as the THREE.BoxGeometry constructor, this will have the normal attribute set up to begin with. 
+
+After I have my geometry and pass it as the first argument to the mesh constructor, I then just need a material to use with the geometry of the mesh object, and for this I am of course using the Normal Material. For this example I am just calling the THREE.MeshNormalMaterial constructor by itself without passing any options to it. I then pass this normal material instance as the second argument for the mesh object.
 
 ```js
 // scene
@@ -69,7 +71,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-Now that I have a scene object, and a mesh added to the scene with a geometry and a material I can now just create a camera and a renderer.
+Now that I have a scene object, and a mesh added to the scene with a geometry and a material I can now just create a camera and a renderer as I would for any other threejs example. I then move the camera way from the mesh and make sure that the camera is looking at the mesh object. After that I can now use the render method of the renderer to draw the current state of the scene object with a given camera object.
 
 ## 2 - Mutating the normal attribute to see how that changes the appearance when using the Normal Material
 
