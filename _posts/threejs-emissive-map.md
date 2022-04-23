@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-04-23 12:38:20
-version: 1.34
+updated: 2022-04-23 12:45:19
+version: 1.35
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -49,7 +49,7 @@ The source code examples that I am writing about in this post can be found in my
 
 ## 1 - Data texture example of an emissive map
 
-This example of emissive maps that I made makes use of data textures as a way to create the texture that will be used for an emissive map.
+This example of emissive maps that I made makes use of data textures as a way to create the texture that will be used for an emissive map. This is a way of creating a texture by making an instance of a unit8Array and then having values between 0 and 255 for each color channel, including alpha, for each pixle. To quickly just create a texture with random color values purely or the sake of having an emissive map texture I am using the seeded random method of the math utils object and then using function arguments to change what the values are for each color channel.
 
 ```js
 // create data texture helper
