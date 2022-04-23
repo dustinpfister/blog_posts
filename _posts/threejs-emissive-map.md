@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-04-23 10:05:59
-version: 1.28
+updated: 2022-04-23 11:08:22
+version: 1.29
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -19,11 +19,15 @@ However there is not just thinking in terms of simple solid colors for mesh obje
 
 ## Emissive maps and what to know first
 
-There is a great deal that one should be aware of before getting into emissive maps in threejs. Of course it should go without saying that you should know at least a thing or two about [the very basics of staring a threejs project](/2018/04/04/threejs-getting-started/), and how to work with client side javaScript in general. So I will not be getting into every little detail about what should be known before hand, but I can take a moment to mention at least a few things that you might want to read up on first.
+There is a great deal that one should be aware of before getting into emissive maps in threejs. Of course it should go without saying that you should know at least a thing or two about [the very basics of staring a threejs project](/2018/04/04/threejs-getting-started/), and how to work with [client side javaScript in general](/2018/11/27/js-getting-started/). So I will not be getting into every little detail about what should be known before hand, but I can take a moment to mention at least a few things that you might want to read up on first in this section.
 
-### The texture loader and canvas textures.
+### The texture loader, canvas textures, and data textures.
 
-The emissive map is a kind of texture map for a material, and in order to use any of these texture maps you will need, well, a texture. A texture can be loaded in with something like the three.js built in [texture loader](/2021/06/21/threejs-texture-loader/), or if you have another means to load image files they can be passed as an argument to the THREE.Texture constructor. When it comes to creating a texture with a little javaScript code one way to go about doing so would be to make use of [canvas elements](/2018/04/17/threejs-canvas-texture/), and the 2d drawing context as a way to create textures that way.
+The emissive map is a kind of texture map for a material, and in order to use any of these texture maps you will need, well yeah a texture. When it comes to loading an external file such as a PNG file something like the three.js built in [texture loader](/2021/06/21/threejs-texture-loader/) can be used to do so. 
+
+If you have some other means to load image files as an image object in client side javaScript terms then another options would be to use the THREE.Texture constructor function to create an instance of the kind of object that is used for these kinds of various maps of materials. 
+
+When it comes to creating a texture with a little javaScript code rather than some kind of external image asset, one way to go about doing so would be to make use of [canvas elements](/2018/04/17/threejs-canvas-texture/), and the 2d drawing context as a way to create textures that way by making use of the THREE.CanvasTexture constrictor. Yet another option for creating textures with javaScript code would be to make use of the THREE.dataTextyre constructor, this way one can create textures with a type array of color channel data.
 
 ### Read up more on materials to know your options
 
