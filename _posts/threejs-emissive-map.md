@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-04-23 12:37:14
-version: 1.33
+updated: 2022-04-23 12:38:20
+version: 1.34
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -48,6 +48,8 @@ When I wrote this post for the first time I was using r127 of threejs which was 
 The source code examples that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-emissive-map).
 
 ## 1 - Data texture example of an emissive map
+
+This example of emissive maps that I made makes use of data textures as a way to create the texture that will be used for an emissive map.
 
 ```js
 // create data texture helper
