@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-04-23 11:15:49
-version: 1.31
+updated: 2022-04-23 12:30:21
+version: 1.32
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -41,9 +41,70 @@ For the most part thought I like to go with [ambient light](/2018/11/02/threejs-
 
 ### Version numbers matter
 
-When I wrote this post for the first time I was using r127 of threejs which was a late version of threejs that was released in early 2021.
+When I wrote this post for the first time I was using r127 of threejs which was a late version of threejs that was released in early 2021. The last time that I came around to do a little editing of this post I was using r135 of threejs and the old example as well as the new one I made at that point on data texture worked fine with that version of threejs. Still code breaking changes are made to threejs often so always be mindful of the version number that you are using.
 
-## 1 - Basic emissive map example
+## 1 - data textyre example of an emissive map
+
+```js
+// create data texture helper
+var createDataTexture = function (rPer, gPer, bPer) {
+    rPer = rPer || 0;
+    gPer = gPer || 0;
+    bPer = bPer || 0;
+    var width = 16,
+    height = 16;
+    var size = width * height;
+    var data = new Uint8Array(4 * size);
+    for (let i = 0; i < size; i++) {
+        var stride = i * 4;
+        var v = Math.floor(THREE.MathUtils.seededRandom() * 255);
+        data[stride] = v * rPer;
+        data[stride + 1] = v * gPer;
+        data[stride + 2] = v * bPer;
+        data[stride + 3] = 255;
+    }
+    var texture = new THREE.DataTexture(data, width, height);
+    texture.needsUpdate = true;
+    return texture;
+};
+// create emissive cube helper
+var createCube = function (emissiveMap, map, emissiveIntensity) {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshStandardMaterial({
+            color: new THREE.Color(1, 1, 1),
+            map: map || null,
+            emissiveIntensity: emissiveIntensity || 0,
+            emissive: new THREE.Color(1, 1, 1),
+            emissiveMap: emissiveMap || null
+        }));
+};
+// scene
+var scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10));
+// mesh objects
+[ [[1,1,1], 1], [[0,0,1], 0.25], [[0,1,0], 0.1] ].forEach(function(cubeArgs, i, arr){
+    var emissiveMap = createDataTexture.apply(null, cubeArgs[0]);
+    var map = null;
+    var box = createCube(emissiveMap, map, cubeArgs[1]);
+    box.position.x = -5 + 10 * (i / arr.length);
+    scene.add(box);
+});
+// light
+var light = new THREE.PointLight(new THREE.Color(1, 1, 1), 0.25);
+light.position.set(8, 10, 2);
+scene.add(light);
+// camera, render
+var camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+## 2 - canavs texture example of an emissive map
 
 In this section I will be writing about a quick basic example of an emissive map where I am creating the emissive map with a canvas element rather than loading an external texture. So for this example I have a create canvas texture helper that I can call and then pass a function that will be by draw function that will be called to create the texture with the 2d drawing context.
 
@@ -52,13 +113,14 @@ I then have my create emiisve map helper that will create and return the texture
 I also have one more helper function for this example and that is one that will create and return a mesh object that will make use of a material that has an emissive map created with the other above helper functions. I am calling the create emissive map as a way to create and return the texture that I want to use for the emissive map. In addition to this there are a few more properties that are worth taking about for the material. One of which is the emissive intensity property that can be used to adjust the intensity of the emissive glow effect. There is then also adjusting what the solid emissive, and regular color values are. In any case the emisisve color is the color that will be the glow effect, and as such it should be just about any desired color other than the default black.
 
 ```js
+// create canvas texture helper
 var createCanvasTexture = function (draw) {
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
     draw(ctx, canvas);
     return new THREE.CanvasTexture(canvas);
 };
- 
+// create emissive map helper
 var createEmissiveMap = function(){
     var COLOR_EMISSIVE_MAP_FRONT = new THREE.Color(1, 1, 1);
     return createCanvasTexture(function (ctx, canvas) {
@@ -66,7 +128,7 @@ var createEmissiveMap = function(){
         ctx.strokeRect(1, 1, canvas.width - 1, canvas.height - 1);
     });
 };
- 
+// create emissive cube helper
 var createEmissiveCube = function(){
     return new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
@@ -77,19 +139,15 @@ var createEmissiveCube = function(){
             emissiveMap: createEmissiveMap()
         }));
 };
- 
 // scene
 var scene = new THREE.Scene();
- 
 // mesh
 var box = createEmissiveCube();
 scene.add(box);
- 
 // light
 var light = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
 light.position.set(8, 6, 2);
 scene.add(light);
- 
 // camera, render
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(1, 1, 1);
