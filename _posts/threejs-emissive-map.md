@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-04-23 09:57:26
-version: 1.27
+updated: 2022-04-23 10:05:59
+version: 1.28
 ---
 
-There are a lot of texture maps that can be used with the various materials in[threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the basic material, or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will every get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps). Emissive maps are kind of cool because they allow for a kind of glow effect for a material that will always be in effect regardless of what the situation might be with lighting.
+There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
 
-When I am working with a material that will respond to a light source such as the standard material, there is the color property of the material that can be used to set a base color for the material. This color property will work a little different with the standard material compared to other materials like the basic material in that the color will only show up when there is some light in effect. So then there should be some kind of color property that will work with the standard material in the same way as the color property in the basic material in that it can be used to set a color that will always show up regardless of what the situation is with lighting. This color property of interest is the emissive property that can be used in conjunction with the color property to set a color that will always show up.
+When I am working with a material that will respond to a light source such as the standard material, there is the color property of the material that can be used to set a base color for the material. This color property will work a little different with the standard material compared to other materials like the basic material in that the color will only show up when there is some light in effect. So then there should be some kind of color property that will work with the standard material in the same way as the color property in the basic material in that it can be used to set a color that will always show up regardless of what the situation is with lighting. This is where the emissive property comes into play to set a color that will always show up.
 
-However there is not just thinking in terms of simple solid colors for objects, there is also getting into textures. With the basic material there is using the map property as a way to set a simple color map, and such a property is also there when it comes to the standard material, but again as with color it will only show up if there is light. This is where the emissive map comes into play, it is a way to set what areas of a texture are effected by an emissive color and intensity.
+However there is not just thinking in terms of simple solid colors for mesh objects, there is also getting into textures. With the basic material there is using the map property as a way to set a simple color map. When it comes to the standard material, there is also a map property but as with the color property it will only work with light. So then there is also the emissive map property that can be used in place of the map property when compared to the basic material.
 
 <!-- more -->
 
@@ -96,7 +96,7 @@ renderer.render(scene, camera);
 
 The end result of this then is a cube where the sides are lit up a little because of the presence of the light source in the form of a point light. However regardless of what the lighting situation is with a side all the areas effected by the emissive map are glowing a little with the color that I set with the emissive property.
 
-## 2 - Conclusion
+## Conclusion
 
 That will be it for now when it comes to emissive maps, I wanted to write at least something about them for now at least so this should work for the moment. There might be a great deal more to write about with this subject but I think for the most part a great deal of it has to do with other aspects of the threejs library beyond just that of the emissive map property of a material that supports this.
 
