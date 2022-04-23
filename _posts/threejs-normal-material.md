@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-04-23 14:27:46
-version: 1.34
+updated: 2022-04-23 14:34:47
+version: 1.35
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task.
@@ -106,6 +106,9 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-The normal material is often by default go to material when I am working out things that do not have to do with materials and textures and lighting just yet. The normal material is often a set up from using the basic material with just a solid color and not much of anything else as just results in a blob of color in the canvas rather than something that looks like a solid shape. The mesh normal material is one way to show that there are sides to an object, however there are some additional options when it comes to a simple place holder material such as the depth material, or using the basic material just adding a simple place holder texture to it.
+The normal material is often my default go to material when I am working out things that do not have to do with materials and textures and lighting just yet. The normal material is often a step up from using the basic material with just a solid color, and not much of anything else as just results in a blob of color in the canvas rather than something that looks like a solid shape. The mesh normal material is one way to show that there are sides to an object, however there are some additional options when it comes to a simple place holder material such as the [depth material](/2021/05/04/threejs-depth-material/), or using the basic material just adding a simple texture to it by way of a [data texture](/2022/04/15/threejs-data-texture/), or a [canvas texture](/2018/04/17/threejs-canvas-texture/).
 
-I can not say that I use the normal material when it comes to making any kind of final product though, unless that final product is to outline the nature of the normal attribute of a geometry. Even then I think I should add more to the example that just simply use the normal material. It is also called for to show the direction of each vertex in the geometry also, and that is something that would need to be done with arrow helpers, or better yet some kind of external library that can be used to create arrow helpers for all vertices's in the position attribute, or at least a few that are currently of interest when it comes to debugging things with a geometry.
+I can not say that I use the normal material when it comes to making any kind of final product though, unless that final product is to outline the nature of the normal attribute of a geometry, then it goes without saying that this is the idea material to use. Even then I think I should add more to the example that just simply use the normal material, such as arrow helpers or the vertex helper to really show what the current state of things are with the normals. 
+
+The vertex normals helper is the best tool for the job when it comes to showing the direction of each vertex in the geometry. Most of the time I would want all of them to just point outward form the center of the geometry, but in some cases I might need to do something weird.
+
