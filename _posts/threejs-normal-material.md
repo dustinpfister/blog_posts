@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-04-23 14:50:33
-version: 1.38
+updated: 2022-04-23 14:51:34
+version: 1.39
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task.
@@ -108,7 +108,7 @@ Although this example might help to show what happens when the normals are not s
 
 ## 3 - The vertex normals helper
 
-If I need to debug something that is going on with a normals attribute the use of the normal material is a good start, but in order to really get a good visual idea of what is going on I will want to use the THREE.VertexNormalsHelper. This helper is not baked into the core of the threejs library and as such must be added to a project example by way of an additional file that can be found in the examples folder of the threejs Github repository. In this example I am also making use of the orbit controls which is another such external file that must be added to a project on top of that of threejs by itself.
+If I need to debug something that is going on with a normals attribute the use of the normal material is a good start, but in order to really get a good visual idea of what is going on I will want to use the THREE.VertexNormalsHelper. This helper is not baked into the core of the threejs library and as such must be added to a project example by way of an additional file that can be found in the examples folder of the threejs Github repository. In this example I am also making use of the [orbit controls](/2018/04/13/threejs-orbit-controls/) which is another such external file that must be added to a project on top of that of threejs by itself.
 
 ```js
 // SCENE, LIGHT, CAMERA, RENDERER, and CONTROLS
