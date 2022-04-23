@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-04-23 11:08:22
-version: 1.29
+updated: 2022-04-23 11:09:43
+version: 1.30
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -27,7 +27,7 @@ The emissive map is a kind of texture map for a material, and in order to use an
 
 If you have some other means to load image files as an image object in client side javaScript terms then another options would be to use the THREE.Texture constructor function to create an instance of the kind of object that is used for these kinds of various maps of materials. 
 
-When it comes to creating a texture with a little javaScript code rather than some kind of external image asset, one way to go about doing so would be to make use of [canvas elements](/2018/04/17/threejs-canvas-texture/), and the 2d drawing context as a way to create textures that way by making use of the THREE.CanvasTexture constrictor. Yet another option for creating textures with javaScript code would be to make use of the THREE.dataTextyre constructor, this way one can create textures with a type array of color channel data.
+When it comes to creating a texture with a little javaScript code rather than some kind of external image asset, one way to go about doing so would be to make use of [canvas elements](/2018/04/17/threejs-canvas-texture/), and the 2d drawing context as a way to create textures that way by making use of the THREE.CanvasTexture constrictor. Yet another option for creating textures with javaScript code would be to make use of the [THREE.dataTexture constructor](/2022/04/15/threejs-data-texture/), this way one can create textures with a type array of color channel data.
 
 ### Read up more on materials to know your options
 
