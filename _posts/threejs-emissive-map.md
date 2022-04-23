@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-04-23 12:45:19
-version: 1.35
+updated: 2022-04-23 12:47:56
+version: 1.36
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -168,5 +168,5 @@ The end result of this then is a cube where the sides are lit up a little becaus
 
 ## Conclusion
 
-That will be it for now when it comes to emissive maps, I wanted to write at least something about them for now at least so this should work for the moment. There might be a great deal more to write about with this subject but I think for the most part a great deal of it has to do with other aspects of the threejs library beyond just that of the emissive map property of a material that supports this.
+That will be it for now when it comes to emissive maps, I wanted to write at least something about them for now at least so this should work for the moment. There might be a great deal more to write about with this subject but I think for the most part a great deal of it has to do with other aspects of the threejs library beyond just that of the emissive map property of a material that supports this. There is not just having an emiaaive map, but also a regular color map on top of that, and also there is the solid colors for but the regular color that is effected by a light source as well as the emissive color as well. On top of all of that there is also the emissive intensity value that is also something that I might want to adjust when it comes to this sort of thing.
 
