@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-04-23 12:51:22
-version: 1.28
+updated: 2022-04-23 13:58:34
+version: 1.29
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial). The normal material will render colors to the faces of a geometry by way of the state of the normal attribute of the buffer geometry. The normal attribute is an array of values that corresponds with the position attribute that is used to set what the direction is of each vertex rather than the position. The normal attribute is a must have attribute when it comes to using any material that has to do with light as the normal material is used for that, but it is also needed for a material such as the normal material.
@@ -31,7 +31,7 @@ The mesh normal material is just one of [many material options in threejs](/2018
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r127 of threejs.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to doing a little editing here I was using r135.
 
 ## 1 - Basic example using the normal material
 
