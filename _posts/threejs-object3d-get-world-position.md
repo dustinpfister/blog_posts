@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-04-24 09:18:02
-version: 1.21
+updated: 2022-04-24 09:22:24
+version: 1.22
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](/2018/05/16/threejs-grouping-mesh-objects/) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](/2021/05/13/threejs-object3d-lookat/) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). 
@@ -24,7 +24,7 @@ In this post I will be writing about the [get world position method in the objec
 
 ### Version numbers matter in three.js
 
-When I first wrote this post I was using revision 127 of threejs which was a late version of threejs as of April of 2021. When it comes to just the get world position method of the object3d class I do not think much has changed over the years, however a great deal has changed throughout the library. Code breaking changes are introduced to three.js all the time so if the code examples are not working as expected always check your version numbers first.
+When I first wrote this post I was using revision 127 of threejs which was a late version of threejs as of April of 2021. When I cam around to editing this post I have found that the basic example that I have made for this post did in fact break with r135. In older versions of threejs I did not have to give a target vector as the first and only argument, but now the method will not work if I do note give one. Code breaking changes are introduced to three.js all the time, this is just one of may examples of this sort of thing when it comes to code breaking changes with the pubic API. So if the code examples are not working as expected always check your version numbers first.
 
 ### Read up more on the look at method of object3d and what it has to do with world space
 
