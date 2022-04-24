@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-04-24 09:22:24
-version: 1.22
+updated: 2022-04-24 09:24:38
+version: 1.23
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](/2018/05/16/threejs-grouping-mesh-objects/) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](/2021/05/13/threejs-object3d-lookat/) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). 
 
 When Working with nested objects, and the look at method of the objecy3d class, it is important to remember that the look at method will always have the object to look at something relative to world space, not local space, or space relative to the parent object if you prefer. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space, rather than the position property of the object which is a position relative to the group rather than world space. There is one weird thing about it though which is that a target vector3 instance must be given when it comes to late versions of threejs at least r135+ last I checked.
 
-Knowing the difference between world space, and space that is relative to a group, or any object that is based off of Object3d is one of the many little details that one should get familiar with at one point or another when it comes to making projects with three.js. So in this post I will be addressing this issue with some source code that has to do with nested mesh obejcts and the use of this get world space method.
+Knowing the difference between world space, and space that is relative to a group, or any object that is based off of Object3d is one of the many little details that one should get familiar with at one point or another when it comes to making projects with three.js. So in this post I will be addressing this issue with some source code that has to do with nested mesh objects and the use of this get world space method.
 
 
 <!-- more -->
@@ -25,6 +25,10 @@ In this post I will be writing about the [get world position method in the objec
 ### Version numbers matter in three.js
 
 When I first wrote this post I was using revision 127 of threejs which was a late version of threejs as of April of 2021. When I cam around to editing this post I have found that the basic example that I have made for this post did in fact break with r135. In older versions of threejs I did not have to give a target vector as the first and only argument, but now the method will not work if I do note give one. Code breaking changes are introduced to three.js all the time, this is just one of may examples of this sort of thing when it comes to code breaking changes with the pubic API. So if the code examples are not working as expected always check your version numbers first.
+
+### The source code examples in this post are up on Github
+
+The source code examples that I am writing about in this post can be found on Github in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-get-world-position).
 
 ### Read up more on the look at method of object3d and what it has to do with world space
 
