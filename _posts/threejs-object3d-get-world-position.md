@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-04-17 09:08:06
-version: 1.18
+updated: 2022-04-24 09:04:03
+version: 1.19
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](/2018/05/16/threejs-grouping-mesh-objects/) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](/2021/05/13/threejs-object3d-lookat/) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). When doing so it is important to remember that the look at method will always case the object to look at something relative to world space, and not that position retaliative to the group. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space, rather than the position property of the object which is a position relative to the group rather than world space.
@@ -39,7 +39,8 @@ In this example I am making a helper function that will create and return a grou
 So everything in my create group helper method seems to work jyst fine when it comes to creating a group with two children. So now there is just creating two instances of this group as a way to showcase what the difference is between just passing the position property of the cube to the look at method of the cone, compared to using the get world position method.
 
 ```js
-var createGroup = function () {
+var createGroup = function (color) {
+    color = color || new THREE.Color(1, 1, 1);
     // creating a group
     var group = new THREE.Group();
     // creating and adding a pointer mesh to the group
@@ -54,8 +55,8 @@ var createGroup = function () {
     // creating and adding a cube
     var cube = group.userData.cube = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    cube.position.set(0, 0, 4);
+            new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 0.5 }));
+    cube.position.set(0, 0, 1);
     group.add(cube);
     // box helper for the group
     group.add(new THREE.BoxHelper(group));
@@ -66,12 +67,12 @@ var createGroup = function () {
 var scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(5, 5));
  
-var group = createGroup(); // group 1
+var group = createGroup(0xff0000); // group 1
 scene.add(group);
-group.position.set(-2.0, 0, -2.0);
-var group2 = createGroup(); // group2
+group.position.set(-2.0, 0, 0.0);
+var group2 = createGroup(0x00ff00); // group2
 scene.add(group2);
-group2.position.set(2.0, 0, -2.0);
+group2.position.set(2.0, 0, 0.0);
  
 // the first group in am just using the look at method, and passing
 // the value of the cube.position instance of vector3. THIS RESULTS IN THE
@@ -81,8 +82,10 @@ group.userData.pointer.lookAt(group.userData.cube.position);
  
 // IF I WANT TO HAVE THE POINTER LOOK AT THE CUBE
 // THAT IS A CHILD OF THE GROUP, THEN I WILL WANT TO ADJUST
-// FOR THAT FOR THIS THERE IS THE getWorldPosition Method
-group2.userData.pointer.lookAt(group2.userData.cube.getWorldPosition());
+// FOR THAT FOR THIS THERE IS THE getWorldPosition METHOD
+var v = new THREE.Vector3(0, 0, 0);
+group2.userData.cube.getWorldPosition(v);
+group2.userData.pointer.lookAt(v);
  
 // camera and renderer
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
