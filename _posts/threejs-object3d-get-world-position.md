@@ -1,12 +1,12 @@
 ---
-title: Getting world position of any object in three.js
+title: Getting world position of any Object3D Class based object in three.js
 date: 2021-05-25 11:45:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-04-24 09:14:35
-version: 1.20
+updated: 2022-04-24 09:18:02
+version: 1.21
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](/2018/05/16/threejs-grouping-mesh-objects/) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](/2021/05/13/threejs-object3d-lookat/) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). 
@@ -20,7 +20,7 @@ Knowing the difference between world space, and space that is relative to a grou
 
 ## Getting world position in threejs and what to know first
 
-In this post I will be writing about the [get world position method in the object3d base class](https://stackoverflow.com/questions/15098479/how-to-get-the-global-world-position-of-a-child-object) in the javaScript library known as three.js. So the content here has to do with just one little issue in an over all larger library that is written in a specific programing language called javaScript. I assume that you have at least some basic working knowledge of how to get up and running with the basics at least, because I am not going to do that here in this post. However I always like to start off my three.js posts with a section like this in which I outline some things that you should be aware of before continuing to read the rest of the content.
+In this post I will be writing about the [get world position method in the object3d base class](https://stackoverflow.com/questions/15098479/how-to-get-the-global-world-position-of-a-child-object) in the javaScript library known as three.js. So the content here has to do with just one little issue in an over all larger library that is written in a specific programing language called [javaScript](/2018/11/27/js-getting-started/). I assume that you have at least some basic working knowledge of how to get up and running with the basics at least, because I am not going to do that here in this post. However I always like to start off my three.js posts with a section like this in which I outline some things that you should be aware of before continuing to read the rest of the content.
 
 ### Version numbers matter in three.js
 
