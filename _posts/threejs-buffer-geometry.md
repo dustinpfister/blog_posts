@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-04-25 09:49:20
-version: 1.39
+updated: 2022-04-25 10:00:01
+version: 1.40
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -49,43 +49,40 @@ I now just need to add this geometry to a mesh by calling the mesh constructor, 
 
 ```js
 (function () {
+
+    // SCENE, CAMERA, RENDERER
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) );
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(0, 1, 3);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
  
-    // GEOMETRY
+    // GEOMETRY, MESH
     var geometry = new THREE.BufferGeometry();
     var vertices = new Float32Array([
-                0, 0, 0,
+                -1, 0, 0,
                 1, 0, 0,
-                1, 1, 0
+                1, 1.25, 0
             ]);
-    // create position property
     geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
- 
-    // MESH with GEOMETRY, and Basic MATERIAL
-    var custom = new THREE.Mesh(
+    var mesh = new THREE.Mesh(
             geometry,
             new THREE.MeshBasicMaterial({
                 side: THREE.DoubleSide
             }));
- 
-    // SCENE
-    var scene = new THREE.Scene();
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(0, 0.5, 3);
- 
-    // add custom to the scene
-    scene.add(custom);
+    scene.add(mesh);
+    camera.lookAt(mesh.position)
  
     // RENDER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
     renderer.render(scene, camera);
  
 }
     ());
 ```
+
+This might be okay when it comes to just starting out, but there is a great deal more to do on top of just this even when it comes to just playing around with a single triangle. You will notice for example that I used the THREE.DocubleSide value for the side property of the basic material that I am using to skin the triangle here. So there is then the question of being able to set which side of the triangle is the 'front side', and also lots of other things that have to do with textures. So lets look at a few more examples that have to do with creating a custom buffer geometry instance from the ground up.
 
 ## 2 - Creating a normal attribute and using the normal material
 
