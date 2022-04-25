@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-04-25 10:15:50
-version: 1.42
+updated: 2022-04-25 10:37:53
+version: 1.43
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -138,7 +138,72 @@ So if I take my basic example that I worked out above and switch to the normal m
 
 This might prove to be a good start at least, but in order to really know what is going on with face normals I might need to use some kind of helper to see what the direction of each normal vector is. With that said in this example I am making use of the THREE.VertextNormalsHelper which I can add to a project on top of the threejs file. This file should be located in the examples folder of the threejs Github repository. When using the normals helper it is clear that the normals attribute is what is used to find out what side of a triable is the front side of it which is why I am using the THREE.BackSide and THREE.FrontSide values for the side values of the materials that I am using for these mesh objects.
 
-## 3 - Material index values and groups
+## 3 - The uv attribute
+
+```js
+(function () {
+    // SCENE, CAMERA, RENDERER, LIGHT
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(0, 0.5, 3);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(1, 3, 2)
+    scene.add(dl);
+ 
+    // MESH with GEOMETRY, and Normal MATERIAL
+    var geometry = new THREE.BufferGeometry();
+    var vertices = new Float32Array([
+                0, 0, 0,
+                1, 0, 0,
+                1, 1, 0
+            ]);
+    // create position property
+    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+    // compute vertex normals
+    geometry.computeVertexNormals();
+    // creating a uv
+    var uvs = new Float32Array([
+                0, 1, 1, 1
+            ]);
+    geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+    // data texture
+    var width = 4,
+    height = 4;
+    var size = width * height;
+    var data = new Uint8Array(4 * size);
+    for (let i = 0; i < size; i++) {
+        var stride = i * 4;
+        var v = Math.floor(THREE.MathUtils.seededRandom() * 255);
+        data[stride] = v;
+        data[stride + 1] = v;
+        data[stride + 2] = v;
+        data[stride + 3] = 255;
+    }
+    var texture = new THREE.DataTexture(data, width, height);
+    texture.needsUpdate = true;
+    var mesh1 = new THREE.Mesh(
+            geometry,
+            new THREE.MeshStandardMaterial({
+                map: texture,
+                side: THREE.FrontSide
+            }));
+    mesh1.rotateY(Math.PI * 0.15);
+    mesh1.position.x = -0.50;
+    scene.add(mesh1);
+    // vertex helper
+    var vertHelper = new THREE.VertexNormalsHelper(mesh1, 0.5, 0x00ff00);
+    scene.add(vertHelper)
+ 
+    // RENDER
+    renderer.render(scene, camera);
+}());
+```
+
+## 4 - Material index values and groups
 
 So how about material index values for a geometry that consists of more then one face? Well this is where the add group method comes into play as it can be used to create an array of group objects where each group object contains a material index property. For this example I am then going to want to have just a slightly more complex geometry in which I now have two triangle in space rather than just one. Sense that is the case I and then call the add group method twice to create two face objects for each triangle while doing so I can set what the material index values should be.
 
@@ -203,7 +268,7 @@ Now that I have that done when I create a mesh with this geometry I can now pass
     ());
 ```
 
-## 4 - Working with light
+## 5 - Working with light
 
 Now it is time to see how a custom geometry works with a situation involving a little light, and the use of a materials that will respond to light. With that said this one might prove to be a little bit of a work in progress at least at the point that I started writing this post anyway. When I have this example up and running it seems to work okay, but the colors do not always look the way that I think they should as I move them around. A quick fix for this was to just add a little ambient light rather than just having a point light like I typically do in many of my examples.
 
@@ -311,7 +376,7 @@ Now it is time to see how a custom geometry works with a situation involving a l
     ());
 ```
 
-## 5 - Rotation and translation of buffer geometry
+## 6 - Rotation and translation of buffer geometry
 
 When I add a geometry to a Mesh object the resulting Mesh object is based off of Object3d and as such it has a position and rotation property that can be used as a way to translate and rotate the mesh object as a whole. However I think that it is important to point out that this is the way to go about moving a geometry around once the translation and rotation of a geometry is in the initial fixed state that I want. If that is not the case I will want to adjust that using the translate and rotation methods of the Buffer geometry class instance, and not that of the containing mesh object. When doing this sort of thing I typically will only want to adjust the position and rotation of the geometry just once, when it comes to updating things over and over again in a loop I will want to stick to the object3d values that there are to work with.
 
