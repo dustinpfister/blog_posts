@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-04-25 10:37:53
-version: 1.43
+updated: 2022-04-25 10:41:35
+version: 1.44
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -139,6 +139,8 @@ So if I take my basic example that I worked out above and switch to the normal m
 This might prove to be a good start at least, but in order to really know what is going on with face normals I might need to use some kind of helper to see what the direction of each normal vector is. With that said in this example I am making use of the THREE.VertextNormalsHelper which I can add to a project on top of the threejs file. This file should be located in the examples folder of the threejs Github repository. When using the normals helper it is clear that the normals attribute is what is used to find out what side of a triable is the front side of it which is why I am using the THREE.BackSide and THREE.FrontSide values for the side values of the materials that I am using for these mesh objects.
 
 ## 3 - The uv attribute
+
+There is then the position attribute, the normals attribute and then one more major attribute of interest in order to make a geometry that will work well with most materials and that is the uv attribute. This is there I store data that will have to do with texture offset data. So in order to really get a sense of what the deal is with this uv attribute on top of how to create the attribute I will also want to have a texture for the material that I use with the mesh as well. When it comes to learning a thing or two about buffer geometry it might be a good idea to make use of a [data texture](/2022/04/15/threejs-data-texture/) as a way to crate the texture with javaScript code.
 
 ```js
 (function () {
