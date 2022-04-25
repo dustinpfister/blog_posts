@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-04-25 10:00:01
-version: 1.40
+updated: 2022-04-25 10:01:40
+version: 1.41
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -35,7 +35,7 @@ In order to do anything interesting with a geometry in threejs I am going to wan
 
 ### Version Numbers matter with threejs.
 
-When I first wrote this post I was using r127 of threejs, and the code here may very well break on older or newer version of threejs. I do try to do my best to keep my threejs content up to date, but at times it might be a while between edits.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to doing a little editing I was using r135 and found that these examples are still working okay with that revision as well. Still at some point in the future the code here may very well break on older or newer version of threejs. I do try to do my best to keep my threejs content up to date, but at times it might be a while between edits.
 
 ## 1 - The position attribute, and a Basic starting point for the Buffer Geometry Constructor in threejs
 
