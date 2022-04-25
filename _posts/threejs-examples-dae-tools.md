@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2021-06-26 11:33:45
-version: 1.40
+updated: 2022-04-25 09:22:26
+version: 1.41
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to create groups of mesh objects, and then having methods that mutate the position, rotation, and scale properties of these mesh objects. I do still like those kinds of models and I also thing that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -17,31 +17,31 @@ In this post then I will be going over what I have thus far when it comes to a s
 
 <!-- more -->
 
-## 1 - The ColladaLoader.js file, the dae tools
+## The ColladaLoader.js file, the dae tools
 
 The source code that I am writing about in this post constitutes a javaScript module that I wrote that depends on threejs and one additional external file that can be found in the threejs github repository. This one additional file is a Collada, or dae file if you prefer, external asset loader. It also involves creating at least one dae file which is the default file format used when exporting something from blender.
 
 So then this is a more advanced post on the subject of threejs rather than any kind of [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or javaScript in general. There are also many additional little things that you would need to be aware of before reading this that I will not be getting into detail with here. However I always like to start off a post on threejs with this kind of section where I outline what those additional things are that you should know before hand.
 
-### 1.1 - Source code for my dae tools module, test demos, and more is at my test threejs github repo
+### Source code for my dae tools module, test demos, and more is at my test threejs github repo
 
 The [full source code of the dae tools module](https://github.com/dustinpfister/test_threejs/tree/master/views/js/utils/dae_tools) can be found at my test threejs github repository. When I first wrote this post I as writing about v0.2.0 of this dae tools module, if I work on the module more there might be later versions.
 
 In addition to the source code of the dae tools module the test threejs repo also [holds all the test demos of dae tools module](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-dae-tools) that I am writing about here. In addition to that I also have the [dae files](https://github.com/dustinpfister/test_threejs/tree/master/views/dae) that I am loading, as well as much more that is all threejs related in the repo that I keep working on a little just about every day.
 
-### 1.2 - A program like blender will need to be used to create or edit dae files
+### A program like blender will need to be used to create or edit dae files
 
 On top of using more than one external javaScript file not including my own code I will also want to have at least one if not more dea files to load, that also have additional textures to load. I am not going to be getting into the basic of blender here, also I am still fairly new to using blender anyway. At the time of this writing I learned enough to create a basic project in blender, and how to add textures and custom uvs to a mesh object. So you will want to get to that point at least when it comes to looking into additional resources on the web that have to do with learning blender.
 
-### 1.3 - These source code examples require threejs, and ColladaLoader.js
+### These source code examples require threejs, and ColladaLoader.js
 
 These source code examples built on top of two files that should be loaded in a page first. Just like all other three.js examples of course three.js needs to be loaded in the page, but on top of that the Collada Loader also needs to be loaded. A copy of the [Collada Loader can be found in the examples folder](https://github.com/mrdoob/three.js/blob/r127/examples/js/loaders/ColladaLoader.js) of the github repository of threejs. When pulling a copy down from there make use it is a copy that will work with the version of threejs that you are using such as r127 which is what I was using when I first wrote this post.
 
-### 1.4 - Version numbers matter
+### Version numbers matter
 
-When I wrote this post i was mainly using r127 of threejs and the state of the Collada loader that was at the same tag point in the github repo.
+When I wrote this post I was mainly using r127 of threejs and the state of the Collada loader that was at the same tag point in the github repo.
 
-## 2 - The source code for the dea tools module
+## 1 - The source code for the dea tools module
 
 First off I should go over the source code of my dae tools module that I was using at the time of this writing. The first thing that I would like to get solid is a public method that can be used to load a single dae file, and do so in a way that will work well with all typical use case examples of thus module. So for this I have a load one method that serves as an abstraction for what I currently see as a best use case example of the Collada loader. However I am also going to want to have a way to create some kind of standard state object to be used with the load one method, and any additional methods that will need to work with such a state object.
 
@@ -148,7 +148,7 @@ The load one method might work okay when it comes to loading just one dae file, 
 
 I will want to have a module that is more than just an abstraction of the dae loader and the built in loader manager class in the core of threejs. So far I have one additional public method beyond that load one method and the create method and that is the create group method. This is what I can call to create an [instance of THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) with only the mesh objects of a dea result and not any additional objects that might be in the file such as a [camera](/2018/04/07/threejs-camera-perspective/) or a [point light](/2019/06/02/threejs-point-light/).
 
-## 3 - Loading a single dae file with my dae tools module and ColladaLoader.js
+## 2 - Loading a single dae file with my dae tools module and ColladaLoader.js
 
 The first thing that I am going to want to test out is that the load one method will work as expected when it comes to loading a single dae file with textures, and drawing to the canvas just once. So for this example I am just calling the load one method, loading just a single dae file which also has some textures to load, adding just the mesh objects of the result to a main scene object, and then calling the render method of the web gl renderer just once.
 
@@ -195,7 +195,7 @@ The first thing that I am going to want to test out is that the load one method 
 
 When this example runs the end result is what I want to happen, the model shows up with the textures on the surfaces of the model. When I do not use an instance of THREE.LoadingManager as a way to set an on load callback, and just use the dae loader alone, this is not the result that I have. So it would seem that I have the most important part of this sort of thing down, but there might still be a little more room for improvement when it comes to having a progress meter maybe for one thing.
 
-## 4 - Load all method demo
+## 3 - Load all method demo
 
 For now I am also going to want at least one additional demo of the load all public method. This method is what I will typically be using in most projects sense I will typically be working with more than one dae file asset. With this load all method I pass an instance of the dae objects instance create with the DAE.create method like before, however things are a little different with the additional options. In the options object that I pass I can set a base urls, followed by an array of relative url paths to each file that I want to load.
 
@@ -259,7 +259,7 @@ For now I am also going to want at least one additional demo of the load all pub
     ());
 ```
 
-## 5 - Conclusion
+## Conclusion
 
 This dae tools module might prove to be just one of many additional works in progress when it comes to what I have together those far with respect to additional modules where I am working on top of threejs and the additional assets in the github repo. 
 
