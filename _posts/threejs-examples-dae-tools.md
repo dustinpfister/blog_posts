@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2022-04-25 09:41:14
-version: 1.44
+updated: 2022-04-25 09:43:26
+version: 1.45
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects, and textures by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to [create groups](/2018/05/16/threejs-grouping-mesh-objects/) of [mesh objects](/2018/05/04/threejs-mesh/), and then having methods that mutate the [position](/2022/04/04/threejs-object3d-position/), [rotation](/2022/04/08/threejs-object3d-rotation/), and [scale](/2021/05/11/threejs-object3d-scale/) properties of these mesh objects. One of my first examples of this kind of project would be my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I started a long time ago. I do still like those kinds of models and I also think that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -19,7 +19,7 @@ In this post then I will be going over what I have thus far when it comes to a s
 
 ## The ColladaLoader.js file, the dae tools
 
-The source code that I am writing about in this post constitutes a javaScript module that I wrote that depends on threejs and one additional external file that can be found in the threejs github repository. This one additional file is a Collada, or dae file if you prefer, external asset loader. It also involves creating at least one dae file which is the default file format used when exporting something from blender.
+The source code that I am writing about in this post constitutes a javaScript module that I wrote that depends on threejs and one additional external file that can be found in the threejs github repository. This one additional file is a Collada, or dae file if you prefer, external asset loader that will load the xml data as well as any additional textures use in the file. It also involves creating at least one dae file which is the default file format used when exporting something from blender.
 
 So then this is a more advanced post on the subject of threejs rather than any kind of [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or javaScript in general. There are also many additional little things that you would need to be aware of before reading this that I will not be getting into detail with here. However I always like to start off a post on threejs with this kind of section where I outline what those additional things are that you should know before hand.
 
