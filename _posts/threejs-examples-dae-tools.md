@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2022-04-25 09:22:26
-version: 1.41
+updated: 2022-04-25 09:32:41
+version: 1.42
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to create groups of mesh objects, and then having methods that mutate the position, rotation, and scale properties of these mesh objects. I do still like those kinds of models and I also thing that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -39,7 +39,7 @@ These source code examples built on top of two files that should be loaded in a 
 
 ### Version numbers matter
 
-When I wrote this post I was mainly using r127 of threejs and the state of the Collada loader that was at the same tag point in the github repo.
+When I first wrote this post I was mainly using r127 of threejs, and the state of the Collada loader for that revision point in the github repo as well. In addition at the time that I came around to doing a little editing of this post I have found that the examples are still working okay with r135 as well, but thuse are the only revisions that I have tested with the source code examples here.
 
 ## 1 - The source code for the dea tools module
 
@@ -263,6 +263,6 @@ For now I am also going to want at least one additional demo of the load all pub
 
 This dae tools module might prove to be just one of many additional works in progress when it comes to what I have together those far with respect to additional modules where I am working on top of threejs and the additional assets in the github repo. 
 
-There are some additional features and changes that I might want to make with this module, but still only so much as I would like to not waste time making features that I think I will need only feaures that I will in fact actually use. So for now I think I will want to spend more time making some actual projects in terms of videos, and more models for suh projects for now, when doing so I will get a better sense of what needs to be added or changed. 
+There are some additional features and changes that I might want to make with this module, but still only so much as I would like to not waste time making features that I think I will need only features that I will in fact actually use. So for now I think I will want to spend more time making some actual projects in terms of videos, and more models for such projects for now, when doing so I will get a better sense of what needs to be added or changed. 
 
 In time I might get around to editing this post when I have a more up to date version of the dae tools module, and some additional use case examples, but for now this is all I have to write about.
