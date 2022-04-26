@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2022-04-26 11:14:05
-version: 1.25
+updated: 2022-04-26 11:19:10
+version: 1.26
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) which will come into play when it comes to figuring out how light should effect a surface, it is also used to find out what side of triangle should be the front side as well. So then this normals attribute is an important part of creating a custom geometry which in my view is what I typical think of next after working out the [position attribute of a geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/).
@@ -35,7 +35,7 @@ In this post I am looking into normal maps, but there are many other kinds of ma
 
 ### Know your options with materials
 
-The normal map is a kind of map that effects lighting, so it does not make sense to use a normal map when it comes to using a material such as the basic material, the normal material, or any kind of material that does not support normal maps. In the source code examples here I am sticking to using just the [standard material](/2021/04/27/threejs-standard-material/) which is one options that supports the normal map feature, there are some other options to be aware of so be sure to [read up more on materials in general](/2018/04/30/threejs-materials/) if you have not done so.
+The normal map is a kind of map that effects lighting, so it does not make sense to use a normal map when it comes to using a material such as the basic material, or any kind of material that does not support normal maps. In the source code examples here I am sticking to using just the [standard material](/2021/04/27/threejs-standard-material/) which is one options that supports the normal map feature, there are some other options to be aware of so be sure to [read up more on materials in general](/2018/04/30/threejs-materials/) if you have not done so.
 
 ### Be mindful of the version numbers used with three.js
 
