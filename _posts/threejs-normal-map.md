@@ -5,15 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2022-04-26 11:07:31
-version: 1.23
+updated: 2022-04-26 11:09:36
+version: 1.24
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) which will come into play when it comes to figuring out how light should effect a surface, it is also used to find out what side of triangle should be the front side as well. So then this normals attribute is an important part of creating a custom geometry which in my view is what I typical think of next after working out the [position attribute of a geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/).
 
-However it todays post I will be writing about a special kind of texture that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap).
-
-A normal map is just one of many options to work with when it comes to the various kinds of texture maps such as emissive maps, alpha maps, and just plain old color maps.
+However in todays post I will be writing about a special kind of texture map that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap). A normal map is just one of many options to work with when it comes to the various kinds of texture maps such as emissive maps, alpha maps, and just plain old color maps. I can not say that I use normal maps that often thus far, but this is still a topic of interest when it comes to threejs in general so I took a moment to work out some examples and write this post.
 
 <!-- more -->
 
