@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2022-04-26 11:09:36
-version: 1.24
+updated: 2022-04-26 11:14:05
+version: 1.25
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) which will come into play when it comes to figuring out how light should effect a surface, it is also used to find out what side of triangle should be the front side as well. So then this normals attribute is an important part of creating a custom geometry which in my view is what I typical think of next after working out the [position attribute of a geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/).
@@ -17,15 +17,17 @@ However in todays post I will be writing about a special kind of texture map tha
 
 ## What to know first before getting into normal maps
 
-This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), I assume that you have at least some background working with threejs, javaScript, and client side web development in general. So I will not be getting into every little detail about the very basics of what you should know at this point. However in this section I will be quickly going over some things that you might want to read up more on if you need to.
+This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), so I assume that you have at least some background working with threejs, javaScript, and client side web development in general. So I will not be getting into every little detail about the very basics of what you should know at this point. However in this section I will be quickly going over some things that you might want to read up more on as needed. There is the fact that in order to make a normal map you still need to create a texture, so there is learing about what the options are with that for example.
 
 ### The source code here can be found on github
 
 The source code for these [examples can be found in the for post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-map) folder of my test threejs repository. If for some reason you want to make a pull request with one or the source code examples here that would be the place to do it. There is also the comments section of this blog post that can also be used as a way to bring something to my attention with this content.
 
-### Look into the texture loader, or canvas texture constructor to create textures
+### Look into the texture loader, canvas texture, and data texture constructors to create textures
 
-In order to do anything with a normal map, or any kind of texture map for that matter I am going to want a texture to use for the map. One way to go about getting a texture to work with would be to use the [threejs built in texture loader](/2021/06/21/threejs-texture-loader/), and another way would be to load images by some other means and then use the texture constructor to create a texture object to be used in a material. However there are ways to go about creating textures with just javaScript code alone without having to bother with external images, and one way would be to use [canvas elements, and the THREE.Canvas Texture](/2018/04/17/threejs-canvas-texture/) constructor.
+In order to do anything with a normal map, or any kind of texture map for that matter I am going to want a texture to use for the map. One way to go about getting a texture to work with would be to use the [threejs built in texture loader](/2021/06/21/threejs-texture-loader/), and another way would be to load images by some other means and then use the texture constructor to create a texture object to be used in a material. 
+
+However there are ways to go about creating textures with just javaScript code alone without having to bother with external images, and one way would be to use [canvas elements, and the THREE.Canvas Texture](/2018/04/17/threejs-canvas-texture/) constructor. This is the way that I am making textures for the examples here in this post. There are some additional options when it comes to making textres by way of javaScript code though, one other favorite option of mine would be the [data texture constructor](/2022/04/15/threejs-data-texture/).
 
 ### There are many other options for texture maps
 
