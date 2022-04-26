@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-04-26 09:31:43
-version: 1.43
+updated: 2022-04-26 09:36:36
+version: 1.44
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
 
-There is the official set of [threejs examples](https://threejs.org/examples/) that I think people should check out first and foremost before looking at other peoples examples on random blogs such as this one. However there is always looking into yet even more examples of what can be done with threejs and as far as my site is concerned this is the current standing set of examples that I have together thus far.
+There is the official set of [threejs examples](https://threejs.org/examples/) that I think people should check out first and foremost before looking at other peoples examples on random blogs such as this one. Many of these examples though are the kind of examples like that of many of my other blog posts on threejs that have to do with various features of the library. There is the the actually project examples that are shown at the root name space of the threejs website, many of which are great examples of what can be done with the library. However there is always looking into yet even more examples of what can be done with threejs that are like that, and this is then a list of what I have togetaher with that thus far.
 
 <!-- more -->
 
