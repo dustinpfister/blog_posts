@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-04-26 10:40:35
-version: 1.15
+updated: 2022-04-26 10:42:44
+version: 1.16
 ---
 
 Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examples-weird-walk-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) that I just a continuation of that example. This time I made some changes that have to do with how I go about adding textures to a module that I make this way my making another file that helps me with the process of making [data textures](/2022/04/15/threejs-data-texture/). 
@@ -32,7 +32,7 @@ In this section I will be going over the source code of the basic idea of this e
 
 ### 1.1 - The data textures module
 
-Here I have the source code for the data textures module that I will be using to create textures for the weird walk guy, as well as additional mesh objects that I create in the main javaScript example for this. This module consists of a few public methods one of which will return a texture created from the given color channel data array in the form of a [unit8array](/2020/04/02/js-unit8array/), and the others are various way of going about creating that kind of an array. I have a for each pxel method that where I can given a function in which I can define logic that is to be used to create the red, green, blue, and alpha values for each color channel of each pixel. I then have additional options for creating textures with this, but the general idea is the same, one way or another crate a texture by way of the THREE.DataTexture constructor.
+Here I have the source code for the data textures module that I will be using to create textures for the weird walk guy, as well as additional mesh objects that I create in the main javaScript example for this. This module consists of a few public methods one of which will return a texture created from the given color channel data array in the form of a [unit8array](/2020/04/02/js-unit8array/), and the others are various way of going about creating that kind of an array. I have a for each pixel method that where I can given a function in which I can define logic that is to be used to create the red, green, blue, and alpha values for each color channel of each pixel. I then have additional options for creating textures with this, but the general idea is the same, one way or another crate a texture by way of the THREE.DataTexture constructor.
 
 ```js
 // ********** **********
@@ -261,7 +261,7 @@ var weirdGuy2 = (function(){
 
 ### 1.3 - The main javaScript file for this
 
-I have my data textures file, and I now also have my weird guy module that I can use to create an instance of this guy module that will have a weird and amusing walk cycle. So now I just need a little additional javaScript code that will create a simple animation loop in which I am using at least one instance of this guy module.
+I have my data textures file, and I now also have my weird guy module that I can use to create an instance of this guy module that will have a weird and amusing walk cycle. So now I just need a little additional javaScript code that will create a simple animation loop in which I am using at least one instance of this guy module. On top of using the weird guy two module to create an instance of the weird walk guy I also am making use of the for each pixel method of the data texture module to create a custom texture for the ground mesh that I am also using in the scene.
 
 ```js
 (function () {
