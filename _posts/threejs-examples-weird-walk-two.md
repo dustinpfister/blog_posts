@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-04-26 09:53:37
-version: 1.5
+updated: 2022-04-26 10:00:47
+version: 1.6
 ---
 
 Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examples-weird-walk-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) that I just a continuation of that example. This time I made some changes that have to do with how I go about adding textures to a module that I make this way my making another file that helps me with the process of making [data textures](/2022/04/15/threejs-data-texture/). 
@@ -16,7 +16,9 @@ Of course I also made some additional changes when it comes to how the walk happ
 <!-- more -->
 
 
-## 1 - The first revision of this example
+## 1 - The crude idea up and running
+
+In this section I will be going over the source code of the basic idea of this example, in the Github repository this is in the basic section folder the corresponds to what I am writing about here. The goal with this was to just start with what I all ready worked out with the first weird walk example, but now I just want to have a slightly different walk cycle, and also while I am at it make a javaScript file that has more to do with creating textures with the data texture constructor rather than that if the canvas texture constructor.
 
 ### 1.1 - The date textures module
 
