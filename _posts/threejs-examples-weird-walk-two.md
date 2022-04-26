@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-04-26 10:22:42
-version: 1.12
+updated: 2022-04-26 10:25:29
+version: 1.13
 ---
 
 Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examples-weird-walk-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) that I just a continuation of that example. This time I made some changes that have to do with how I go about adding textures to a module that I make this way my making another file that helps me with the process of making [data textures](/2022/04/15/threejs-data-texture/). 
@@ -17,7 +17,11 @@ Of course I also made some additional changes when it comes to how the walk happ
 
 ## This weird walk two example and what to know first
 
-This is a post on a project example that make use of threejs, and consists of several javaScript files to create a crude yet effective informal model. This is not in any way a post on the topic of getting started with threejs as well as any additional skills that are required before hand in order to get something of value from reading this.
+This is a post on a project example that make use of threejs, and consists of several javaScript files to create a crude yet effective informal model. This is not in any way a post on the [topic of getting started with threejs](/2018/04/04/threejs-getting-started/) as well as any additional skills that are required before hand in order to get something of value from reading this.
+
+### Version numbers matter
+
+When I first started writing this post I was using r135 of threejs with the source code examples. I was able to get this example up and ruining fine with that revision of threejs, but I am sure that it will end up breaking at some point in the future. I do take the tie to come around and do a little editing of each if these threejs posts, but it might be a while until I come around again.
 
 ## 1 - The crude idea up and running
 
