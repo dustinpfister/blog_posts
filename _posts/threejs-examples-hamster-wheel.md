@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2022-04-20 16:37:40
-version: 1.28
+updated: 2022-04-26 11:43:56
+version: 1.29
 ---
 
 Some times I end up experiencing a kind of burn out because I spend a great deal of time doing what I think I need to do, rather than what I want to do. Sadly often I end up spending all day writing these posts, and simple source code examples for such posts. As such there often is no time and energy left over for working on any kind of real project that I truly would like to work on when it comes to making things that are useful, or at least mildly amusing in some way. So I thought that some kind of [threejs example](/2021/02/19/threejs-examples/) would be a nice break from the usual kind of post where I am just writing about some kind of method in a framework, or some kind of native javaScript feature.
@@ -27,7 +27,7 @@ This is a threejs example that is intended for people that all ready have a soli
 
 For this example I was using threejs version r127 when I first started the over all project. There are some javaScript libraries where much has not changed in the last few years, and as such older code will still work just fine. However this is not the case with threejs, it is a very fast moving library in terms of development so if this code is breaking the first thing you should check is the version number of threejs that is being used.
 
-## 1 - The Wheel Model
+### 1.1 - The Wheel Model
 
 First off is my wheel module that will create and return a hamster wheel model that I can then add to a scene object in a main javaScript file that will make use of this model. This module has just one public method that will create and return an object that contains a few instances of the [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor. There is not update method for this model because the only animation effect would be to just rotate the wheel part of the hamster wheel model and that can easily be done when it comes to writing a little additional code outside of this model.
 
@@ -150,7 +150,7 @@ First off is my wheel module that will create and return a hamster wheel model t
 }( this['WheelMod'] = {} ));
 ```
 
-## 2 - A Guy Model
+### 1.2 - A Guy Model
 
 I am now going to want to also have a simple guy model to place inside the wheel of the hamster wheel model. This is a model that I worked out before hand, however I often do end up reusing them in additional projects, and I think it would prove to be a nice touch for this example.
 
@@ -288,7 +288,7 @@ I am now going to want to also have a simple guy model to place inside the wheel
 }( this['GuyMod'] = {} ));
 ```
 
-## 3 - A main.js file
+### 1.3 - A main.js file
 
 Now I am just going to want a little more javaScript code that will make use of these modules that I made, along with the usual suspects of any other threejs example.
 
@@ -356,7 +356,7 @@ Now I am just going to want a little more javaScript code that will make use of 
 }());
 ```
 
-## 4 - Conclusion
+## Conclusion
 
 So this turned out to be a fun little project, however like always there is still room for more when it comes to having a little fun with this one. There is using canvas elements as textures for one or more faces of one or more of the meshes, so that might be a nice addition when it comes to maybe putting a little more time into this one at some point. I am thinking about maybe doing something with canvas elements as a way to add some texture when it comes to having some expressions for the face of the guy module, and maybe some more interesting movement for it while I am at it. However I think that the wheel model is more or less solid when it comes to what it is that I had in mind for this, that is working just great and I think I am fairly happy with how that came out.
 
