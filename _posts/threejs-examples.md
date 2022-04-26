@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-04-21 16:14:31
-version: 1.41
+updated: 2022-04-26 09:27:04
+version: 1.42
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -118,6 +118,10 @@ The is a basic example of some waves which strokes me as another simple example 
 ### [ 2.23 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
 
 This is another one of my example that is a kind of model that is created by just having a bunch of mesh objects grouped together. This one is just the first of what might become a few examples that are like my guy one model only the goal is to have a weird walk cycle for them. I might like to have a few more features when it comes to the over all look and function of the weird walk model here, but the main idea is to just have a weird and interesting walk cycle.
+
+### [ 2.24 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
+
+This is a more advanced example of the first weird walk guy example, continuing to work on adding more to the example in an effort to just make a weird and interesting looping animation.
 
 ## 3 - Conclusion
 
