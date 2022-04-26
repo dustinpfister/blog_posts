@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-04-26 10:14:33
-version: 1.10
+updated: 2022-04-26 10:15:30
+version: 1.11
 ---
 
 Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examples-weird-walk-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) that I just a continuation of that example. This time I made some changes that have to do with how I go about adding textures to a module that I make this way my making another file that helps me with the process of making [data textures](/2022/04/15/threejs-data-texture/). 
@@ -366,4 +366,5 @@ I have my data textures file, and I now also have my weird guy module that I can
 
 ## Conclusion
 
-This weird guy module might be something to which I might make one or two more additional examples in which I am continuing to branch off and add even more to the over all state of what the example is. There is in time making another example like that of the backyard scene example that I made a while back in which I am creating an example that is actually a combination of many examples being used together to create an over all scene.
+This weird guy module might be something to which I might make one or two more additional examples in which I am continuing to branch off and add even more to the over all state of what the example is. There is in time making another example like that of the [backyard scene example](/2021/05/07/threejs-example-backyard/) that I made a while back in which I am creating an example that is actually a combination of many examples being used together to create an over all scene.
+
