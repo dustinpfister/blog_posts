@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-04-26 09:42:52
-version: 1.46
+updated: 2022-04-26 09:46:01
+version: 1.47
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -25,7 +25,7 @@ Here is the list of my threejs simple project examples thus far, at this time I 
 
 ### [ 2.1 - A Backyard ](/2021/05/07/threejs-examples-backyard/)
 
-This is an example of a backyard type scene that makes use of several modules that create groups of mesh objects.
+This is an example of a backyard type scene that makes use of several modules that create groups of mesh objects. This includes my first guy model that is just a bunch of mesh objects grouped together, with the use of canvas textures as a way to draw a face on one of the sides of a box geometry that acts as a head.
 
 ### [ 2.2 - A Basic Framework](/2021/04/20/threejs-examples-basic-framework/)
 
