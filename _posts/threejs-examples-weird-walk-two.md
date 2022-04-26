@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-04-25 13:26:47
-version: 1.1
+updated: 2022-04-26 09:22:34
+version: 1.2
 ---
 
-last week I started a weird walk guy threejs example, and as such this week I think I will make another example that I just a continuation of that example. This time I made some changes that have to do with how I go about adding textures to a module that I make this way my making another file that helps me with the process of making data textures.
+Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-example-weird-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) that I just a continuation of that example. This time I made some changes that have to do with how I go about adding textures to a module that I make this way my making another file that helps me with the process of making data textures.
 
 <!-- more -->
 
