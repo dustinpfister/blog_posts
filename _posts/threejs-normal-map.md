@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2021-06-30 15:23:58
-version: 1.20
+updated: 2022-04-26 10:53:13
+version: 1.21
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the normal attribute of a geometry which will come into play when it comes to figuring out how light should effect a surface. However it todays post I will be writing about a special kind of texture that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap).
@@ -15,31 +15,31 @@ A normal map is just one of many options to work with when it comes to the vario
 
 <!-- more -->
 
-## 1 - What to know first before getting into normal maps
+## What to know first before getting into normal maps
 
 This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), I assume that you have at least some background working with threejs, javaScript, and client side web development in general. So I will not be getting into every little detail about the very basics of what you should know at this point. However in this section I will be quickly going over some things that you might want to read up more on if you need to.
 
-### 1.1 - The source code here can be found on github
+### The source code here can be found on github
 
 The source code for these [examples can be found in the for post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-map) folder of my test threejs repository. If for some reason you want to make a pull request with one or the source code examples here that would be the place to do it. There is also the comments section of this blog post that can also be used as a way to bring something to my attention with this content.
 
-### 1.2 - Look into the texture loader, or canvas texture constructor to create textures
+### Look into the texture loader, or canvas texture constructor to create textures
 
 In order to do anything with a normal map, or any kind of texture map for that matter I am going to want a texture to use for the map. One way to go about getting a texture to work with would be to use the [threejs built in texture loader](/2021/06/21/threejs-texture-loader/), and another way would be to load images by some other means and then use the texture constructor to create a texture object to be used in a material. However there are ways to go about creating textures with just javaScript code alone without having to bother with external images, and one way would be to use [canvas elements, and the THREE.Canvas Texture](/2018/04/17/threejs-canvas-texture/) constructor.
 
-### 1.3 - There are many other options for texture maps
+### There are many other options for texture maps
 
 In this post I am looking into normal maps, but there are many other kinds of maps that you should also be aware of. If you are first starting out with this sort of thing I might be better to start out with the usual simple color map, or maybe a [emissive map](/2021/06/22/threejs-emissive-map/) when it comes to working with a material that will react to one or more light sources.
 
-### 1.4 - Know your options with materials
+### Know your options with materials
 
 The normal map is a kind of map that effects lighting, so it does not make sense to use a normal map when it comes to using a material such as the basic material, the normal material, or any kind of material that does not support normal maps. In the source code examples here I am sticking to using just the [standard material](/2021/04/27/threejs-standard-material/) which is one options that supports the normal map feature, there are some other options to be aware of so be sure to [read up more on materials in general](/2018/04/30/threejs-materials/) if you have not done so.
 
-### 1.5 - Me mindful of the version numbers used with three.js
+### Be mindful of the version numbers used with three.js
 
 When I wrote this post I was using r127 of threejs which was a later version of threejs in early 2021. As time goes by yet even more code breaking changes might be made to the library that will cause the source code examples here to no longer work.
 
-## 2 - Basic normal map example
+## 1 - Basic normal map example
 
 In order to make even a basic getting started type example of the use of a normal map, I am first going to need a texture. So then I am going to want to either load an external image file with something like the texture loader, or create a texture with javaScriot code alone using something like canvas elements. When it comes to writing examples for these kinds of threejs features I like to stick to pure javaScript solutions so I will be using a canvas element to create the texture that I will be using for the normal map. So at the top of the source code of this example I have a create canvas texture helper that will create a canvas element, draw to it with a given draw function, and then return a texture using the THREE.CanvasTexture constructor.
 
@@ -98,7 +98,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-## 3 - Animation loop example
+## 2 - Animation loop example
 
 In order to gain a better sense of what kind of effect the normal map has to the surface of a mesh I am going to want to make some kind of animation loop, and change some values over time. I could change things like the position of the point light that I am using, or rotate the cube. However I am thinking that it is the texture that I am using for the normal map that should be changing over time to see what the effect is when I change rgb values used when drawing to the canvas.
 
@@ -192,7 +192,7 @@ var loop = function () {
 loop();
 ```
 
-## 4 - Conclusion
+## Conclusion
 
 So far I can not say that I am using normal maps that often, in fact thus far I am not using them at all. However if I really truly get into 3d modeling at some point I am sure that I might want to create these kinds of maps now and then to adjust things a little when it comes to lighting.
 
