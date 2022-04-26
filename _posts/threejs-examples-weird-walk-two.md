@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-04-26 09:51:42
-version: 1.4
+updated: 2022-04-26 09:53:37
+version: 1.5
 ---
 
 Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examples-weird-walk-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) that I just a continuation of that example. This time I made some changes that have to do with how I go about adding textures to a module that I make this way my making another file that helps me with the process of making [data textures](/2022/04/15/threejs-data-texture/). 
 
-Of course I also made some additional changes when it comes to how the walk happens, with the first one I was thinking that it would be cool to just have to mesh objects for legs, and have just one axis of each leg scale up and down as a kind of crude yet amusing walk cycle. For this example I am thinking that it would be cool to have a walk cycle where the legs are two or more mesh objects that rotate at certain pivot locations.
+Of course I also made some additional changes when it comes to how the walk happens, with the first one I was thinking that it would be cool to just have to mesh objects for legs, and have just one axis of each leg scale up and down as a kind of crude yet amusing walk cycle. For this example I am thinking that it would be cool to have a walk cycle where the legs are two or more mesh objects that rotate at certain pivot locations. However as with the first weird walk cycle example do so in a very weird way in which the thighs of the weird walk guy move forward from the rest of the body very far so the look is in no way natural. So in other words when it comes to this weird walk guy example, just like with the first example, I am going in a kind of weird for the sake of weird kind of direction.
 
 <!-- more -->
 
