@@ -1,17 +1,15 @@
 ---
-title: 23 threejs examples that showcase many of the features of the library
+title: 24 threejs examples that showcase many of the features of the library
 date: 2021-02-19 14:42:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-04-26 09:27:04
-version: 1.42
+updated: 2022-04-26 09:31:43
+version: 1.43
 ---
 
-I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
-
-I have wrote a few posts on some things that are a set of current standing threejs examples though, and as such I think I should have a single post in which I cover each of them a little and of course link to each post where I get into the example in greater detail. I seem to do this sort of thing with just about every collection of content that I write for a given framework such as vuejs, or a feature of client side javaScript and HTML 5 such as the canvas element. So of course it would make sense to do the same for threejs also.
+I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
 
 There is the official set of [threejs examples](https://threejs.org/examples/) that I think people should check out first and foremost before looking at other peoples examples on random blogs such as this one. However there is always looking into yet even more examples of what can be done with threejs and as far as my site is concerned this is the current standing set of examples that I have together thus far.
 
