@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-04-26 10:08:14
-version: 1.8
+updated: 2022-04-26 10:11:05
+version: 1.9
 ---
 
 Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examples-weird-walk-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) that I just a continuation of that example. This time I made some changes that have to do with how I go about adding textures to a module that I make this way my making another file that helps me with the process of making [data textures](/2022/04/15/threejs-data-texture/). 
@@ -250,6 +250,8 @@ var weirdGuy2 = (function(){
 ```
 
 ### 1.3 - The main javaScript file for this
+
+I have my data textures file, and I now also have my weird guy module that I can use to create an instance of this guy module that will have a weird and amusing walk cycle. So now I just need a little additional javaScript code that will create a simple animation loop in which I am using at least one instance of this guy module.
 
 ```js
 (function () {
