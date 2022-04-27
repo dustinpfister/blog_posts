@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 12:17:56
-version: 1.40
+updated: 2022-04-27 09:40:07
+version: 1.41
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -17,32 +17,32 @@ There are also things like knowing how to position a camera, and set the orienta
 
 <!-- more -->
 
-## 1 - What to know before hand
+## The perspective camera, and what to know before hand
 
 This is not an [introduction to three.js](/2018/04/04/threejs-getting-started/), or any additional skills that are required first in order to start working with something like three.js such as javaScript, and web programing in general. I assume that you have working knowledge of javaScript, and have started working with some basic three.js examples. However if you feel that you could stand to gain a deeper understanding of perspective cameras in three.js this post might be of value to you. In this section I will still be going over a few things that you might want to read up more on if you are still fairly new to threejs, or have still not picked up every little detail just yet that might be good to know.
 
-### 1.1 - The source code examples in this post and many more are on my github account
+### The source code examples in this post and many more are on my github account
 
 The source code examples for this post, as well as my many other posts can be found in [my test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera-perspective). If for some reason you want to make a pull request that would be where to do it, there is also the comments section of this blog post that can be used to bring something up
 
-### 1.2 - There is also looking into the base Camera Class and what the other options are with cameras
+### There is also looking into the base Camera Class and what the other options are with cameras
 
 there is also looking into the [base camera class](/2018/04/06/threejs-camera/) in threejs, as well as what the other options are with cameras. For the most part though I have to say that I almost always just use the perspective camera in just about every source code example, and project. Still there are some other options, and one option that I might want to use once in a while would be the [orthographic camera](/2018/05/17/threejs-camera-orthographic/).
 
-### 1.3 - Read up more on the Object3d base class
+### Read up more on the Object3d base class
 
 It might be a good idea to read up more on the [object3d class](/2018/04/23/threejs-object3d/) that is a base class of a Camera, and many other objects in threejs. In this post I will be going over some examples that make use of the position, and rotation properties of a Perspective Camera object which are properties that are inherited by the Object3d class. There is also the nature of the values of these position and rotation properties where they are instances of the [Vector3](/2018/04/15/threejs-vector3/), and [Euler](/2021/04/28/threejs-euler/) classes, which are also worth checking out in detail at one point or another.
 
-### 1.4 - Version Numbers Matter
+### Version Numbers Matter
 
 When I first wrote this post I was using threejs version r91, and the last time I cam around to do some editing and make sure the source code examples are working I was using r127. There have been an awful lot of changes that have happened to threejs between the two version numbers, which have resulted in an awful lot of code breaking changes. it is also safe to assume that this trend will continue moving forward, so I got into the habit of always making sure that I mention what the version numbers are when I wrote a post as well as when I edited the post last.
 
 
-## 2 - Basic example of the perspective camera constructor
+## 1 - Basic example of the perspective camera constructor
 
 In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on many other topics on threejs while I am at it. It is still a good idea to have a strong foundational understanding of all of the typical constructors that are used to even create a simple starting example such as the one in this section, so I will see about linking to other posts as needed with this. 
 
-### 2.1 - A Basic source code example
+### 1.1 - A Basic source code example
 
 So then here is a very basic copy and past threejs example of the threejs perspective camera where I am just creating a Camera, as well as a [Scene Object](/2018/05/03/threejs-scene/), a [Mesh object](/2018/05/04/threejs-mesh/) with a [Geometry](/2021/04/22/threejs-buffer-geometry/) and a [Material](/2018/04/30/threejs-materials/), and a [renderer](/2018/11/24/threejs-webglrenderer/). 
 
@@ -77,27 +77,27 @@ I am just creating an instance of the perspective camera with the constructor, a
 
 Once I have a camera instance I can pass that to the render method that I am using along with a scene to view the scene with that camera. I should make sure that the camera is positioned, and rotated in a way in which I am looking at something in the scene. One way is to use the position property, and [look at methods](/2021/05/13/threejs-object3d-lookat/) of the camera instance both of which are Object3d class features.
 
-### 2.2 - Understanding Viewing frustum.
+### 1.2 - Understanding Viewing frustum.
 
 A [Viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum) cam be thought of as a pyramid of vision that exists in front of a camera. Any object that lays inside of the pyramid will be rendered, while anything outside of it will not which will help to reduce overhead in very complex scenes that may contain a great number of mesh objects. This pyramid can be defined by a [field of view](https://en.wikipedia.org/wiki/Field_of_view) in terms of an angle in y direction. As well as additional values that define the aspect ratio of this view, as well as values that define where the top of the pyramid begins, and ends, in other words view distance, or range of you prefer.
 
-#### 2.3 - Field of view
+### 1.3 - Field of view
 
 The first argument that is given to the three.js perspective camera constructor is the field of view. The value expected should be a Number representing an angle in degrees not radians. I am not always so sure what the best value might be for this, the general way of dealing with it has been to just play around with different static values until I get something that looks okay. However looking at all [kinds of various examples on this on the open web](https://stackoverflow.com/questions/57959190/three-js-update-the-fov-value-of-a-perspective-camera-and-keep-the-same-camera-d) I am sure there are ways of coming up with or finding some kind of system that will work well for setting this value as well as the aspect ratio value.
 
-#### 2.4 - Aspect ratio
+### 1.4 - Aspect ratio
 
 The aspect ratio is the second argument that is given to the three.js perspective camera constructor. This value is the width divided by the height of the desired ratio and as such can often be created by just dividing the width and height of the dome element canvas, or the values that will be set for such as canvas when setting up a renderer. Typically you might want to set this to something like 16 over 9, or 4 over 3. Whatever value you set will be used to determine the width and height of the near, and far rectangles of the pyramid of vision, but not the distance between these rectangles as that is what the nest arguments are for.
 
-#### 2.5 - Near distance
+### 1.5 - Near distance
 
 This is the near bound of the frustum, any object that is from this distance, outward to the far distance will be rendered if it is inside the pyramid of vision.
 
-#### 2.6 - Far distance
+### 1.6 - Far distance
 
 This is for course the far distance of the view pyramid. It is also the distance at which the aspect ratio of the field of view will be at it's largest, the bottom of the pyramid. If you are ever asking yourself, how far is to far, this value is of interest, as anything the exists beyond this distance will not be rendered.
 
-## 3 - Changing the pyramid of vision during runtime with the updateProjectionMatrix method
+## 2 - Changing the pyramid of vision during runtime with the updateProjectionMatrix method
 
 With most projects typically I will be setting some values for the camera just once, and then change values that are part of the Object3D class for instance if I want to move the position, and orientation of the camera. Still if I want to change any of the properties that are used to create the geometry of the view pyramid, I might need to make use of a method that needs to be called after I change those values in order to update the projection matrix. The method to do this is then called the update projection matrix method which will need to be called when changing values like field of view, aspect, near, and far. If this method is not called then any changes made to these values will not take effect.
 
@@ -162,7 +162,7 @@ However if I make a change to a value that has to do with the position, rotation
     ());
 ```
 
-## 4 - Mutation of near and far values and the depth material
+## 3 - Mutation of near and far values and the depth material
 
 The near and far values are used to set the the range in terms of how close is to close, and how far is to far when it comes to rendering something in a scene. There is also the depth material that can be used with a mesh as a way to gain a better sense of what is going on with these values. So in this example I am using the depth material to skin a mesh, and also mutating the near and far values of the camera over time.
 
@@ -230,7 +230,7 @@ The near and far values are used to set the the range in terms of how close is t
     ());
 ```
 
-## 5 - The camera helper, and more than one camera
+## 4 - The camera helper, and more than one camera
 
 There is also making use of a camera helper as a way to gain a good idea as to what is going on with the current state of the view pyramid of a perspective camera. However in order to gain a good view of what is going on it might also be a good idea to have more than one camera, one that will have the helper, and the other to get an outside perspective of what is going on with that camera. So in this example I have two cameras one of which is making use of the camera helper, and the other I am using to gain this outside perspective of what is going on with this camera and its current values for near, far, fov, and so forth.
 
@@ -306,7 +306,7 @@ There is also making use of a camera helper as a way to gain a good idea as to w
     ());
 ```
 
-## 6 - Perspective Camera and mutation of View, Position, and rotation values.
+## 5 - Perspective Camera and mutation of View, Position, and rotation values.
 
 So for a threejs example of the perspective camera I threw together this full copy and past style example. When up and running there is a cube, and a plain added to a scene, and the perspective camera is used to look at it. In addition there is a loop in which I am changing the aspect ratio and field of view of the camera, via the cameras properties for these values. When doing so I of course need to call the update projection matrix method of the camera, or else the changes to values that have to do with the view will not take effect. In this example I am also making use of the position property and the look at at methods of the camera to change the position of the camera over time, and also make sure that the camera is always looking at the center of the scene.
 
@@ -394,15 +394,15 @@ So for a threejs example of the perspective camera I threw together this full co
     ());
 ```
 
-## 7 - Camera Constructor
+## 6 - Camera Constructor
 
 Perspective Camera inherits from the Camera constructor, as such the perspective Camera shares certain properties, and methods with all other cameras in three.js. I will not be getting into this class in depth with this post, but for now it is important to know that this class adds some properties and methods that are uniform across all cameras used in three.js, including a method that can be used to clone a camera.
 
-## 8 - Object3D constructor
+## 7 - Object3D constructor
 
 The Camera class in turn also inherits from Object3D, this class is what helps to make Objects including a camera easy to work with in three.js. Like the Camera Class I will not get into detail as it is a little off topic, and it deserves a post of it's own. However if you are interested in learning how to move the camera, or change it's orientation this is the Class of interest for that.
 
-## 9 - Conclusion
+## Conclusion
 
 The perspective camera is my default go to camera for just about every three.js code example, and project that I have made thus far with threejs and a little additional javaScript code. I can not say that this is a subject that I want to get to deep into, because there is so much more to be aware of when it comes to using three.js and cameras are just one little part of the library as a whole. So I would not go nuts with really getting into cameras, as there are so many other topics that might be of greater importance first. Such as getting into blender to create external assets in the form of dae files, or some other container format, and loading them into a project as a way to create custom geometry. There is then so much more when it comes to materials, textures, and the various kinds of maps of materials that can make use of textures. The list goes on and on, so that is why I generally just like to go with the perspective camera and move on, because there is a great deal more to move on to in order to become professional with threejs.
 
