@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2022-04-27 14:32:51
-version: 1.26
+updated: 2022-04-27 14:33:53
+version: 1.27
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write a post on just because I put a little time into making it. I stopped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
@@ -681,5 +681,5 @@ For this example I also wanted to add a sky map just for the sake of having some
 
 ## 6 - Conclusion
 
-This has tuned out to be an interesting project in that it is more of a situation in which I am using a whole bunch of other projects to create one big main project. I am not sure if I want to put more time into this one or not though, but I am sure that I am going to want to start creating at least a few more examples like this as I think that this is just what needs to happen if I keep working on three.js code examples. There is only so much to write about when it comes to the basics of the framework itself, sooner or later I am going to want to start making things with this library.
+This has tuned out to be an interesting project in that it is more of a situation in which I am using a whole bunch of other projects to create one big main project. I am not sure if I want to put more time into this one or not though, but I am sure that I am going to want to start creating at least a few more examples like this as I think that this is just what needs to happen if I keep working on three.js code examples. There is only so much to write about when it comes to the basics of the threejs library itself, sooner or later I am going to want to start making things with this library.
 
