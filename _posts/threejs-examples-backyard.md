@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2022-04-05 11:05:12
-version: 1.22
+updated: 2022-04-27 14:13:53
+version: 1.23
 ---
 
-For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
+For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write a post on just because I put a little time into making it. I stopped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
 
-Still what I wanted to do is have at least one or more collections of mesh objects where I am starting to create something that is starting to look like some kind of finished scene of some kind just, for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
+Still what I wanted to do is have at least one or more collections of mesh objects where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
+
+This might in time prove to be just one of several more additional future projects that is a composition of several other examples. There is just only so much to write about when it comes to the features of the library itself, so sooner or later I just have to start making some kind of full project that is some kind of animation, game, or some kind of application.
 
 <!-- more -->
 
