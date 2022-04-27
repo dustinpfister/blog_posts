@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2022-04-16 09:45:39
-version: 1.20
+updated: 2022-04-27 14:06:24
+version: 1.21
 ---
 
 When it comes to [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project. 
@@ -24,6 +24,10 @@ This is a post on a full working three.js project example of a little looping an
 ### Version Numbers matter with three.js
 
 When I first wrote this post I was using r125 of three.js and I have also been doing a fare about or editing of this post as i continue to refine this basic three.js model. The last time I edited this post then I was using three.js version r127. I have made a habit of mentioning what version numbers I am using in every three.js post that I write, and also make note of it as I edit older posts also. Code braking changes are made to three.js all the time, so I think doing so is called for.
+
+### Source code up on Github
+
+The source code that I have together for this [post thus far is up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-biplane/).
 
 ## 1 - The biplane module
 
