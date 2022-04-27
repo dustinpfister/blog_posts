@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2022-04-27 09:23:42
-version: 1.27
+updated: 2022-04-27 09:26:47
+version: 1.28
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -15,7 +15,7 @@ When using any kind of built in geometry, instances of Face3 are created automat
 
 <!-- more -->
 
-## What to know before you continue reading
+## The face3 constructor, and what to know before you continue reading
 
 This is an advanced post on three.js which is a javaScript library that is used to work with things in 3d space. If you are new to three.js you might want to start with my [getting started post on three.js](/2018/04/04/threejs-getting-started/) first. Face3 is just one of several constructors of interest when making a custom geometry. Other constructors of interest are [Vector3](/2018/04/15/threejs-vector3/), and of course [Geometry](/2018/04/14/threejs-geometry/).
 
@@ -40,6 +40,8 @@ The source code examples here are [in my test threejs github](https://github.com
 One of the main reasons I would bother with the Face3 constructor has to do with creating faces to begin with if they are not there. However even when using a built in geometry constrictor with the face3 objects in place to begin with, I might still want to change the material index value. So the Face3 class is closely related to working with an array of materials for a mesh rather than just one. In my post on [Mesh objects and working with an array of materials](/2018/05/14/threejs-mesh-material-index/) I have got around to touching base on how to use an array of materials with late versions of threejs using the groups array of a buffer geometry.
 
 ## 1 - Example of using Groups in r125+ (face3 replacement )
+
+Now that the face3 constructor is a really old feature of threejs that only applies to revisions of threejs that are fairly out of date now I am thinking that I should have at least one example of the groups array that is what I am using as a replacement for the face3 class now. To get an index of what this is about one quick way to do so would be to use an array of materials for a mesh object and play around with the material index values of a box geometry that is used with the mesh.
 
 ```js
 (function () { 
