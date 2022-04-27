@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2022-04-27 08:53:03
-version: 1.26
+updated: 2022-04-27 09:23:42
+version: 1.27
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -19,7 +19,7 @@ When using any kind of built in geometry, instances of Face3 are created automat
 
 This is an advanced post on three.js which is a javaScript library that is used to work with things in 3d space. If you are new to three.js you might want to start with my [getting started post on three.js](/2018/04/04/threejs-getting-started/) first. Face3 is just one of several constructors of interest when making a custom geometry. Other constructors of interest are [Vector3](/2018/04/15/threejs-vector3/), and of course [Geometry](/2018/04/14/threejs-geometry/).
 
-## THE CODE HERE WILL BREAK IF YOU ARE USING A NEW VERSION OF THREEJS (r125+)
+## MANY OF THE CODE EXAMPELS IN THIS POST BREAK IF YOU ARE USING A NEW VERSION OF THREEJS (r125+)
 
 This is a post on the old Face3 constructor of the three.js library that is used to work with 3d graphics using javaScript. The code examples here might still work okay on older versions of threejs, but on newer versions of threejs the code will of course break. As of revision r125 the Geometry Constructor was removed, and as of revision 5126 the Face3 constructor was also removed.
 
@@ -29,7 +29,7 @@ Still I might leave this post up for the sake of historical reasons, if you are 
 
 ### Version numbers Matter
 
-As of this writing three.js is a project that is still being developed fairly fast, so version numbers are of great concern. In this post I was using [three.js 0.91.0 aka r91](https://github.com/mrdoob/three.js/tree/r91/build) when I first make the source code examples, and the last version that I tested them on was r111.
+As of this writing three.js is a project that is still being developed fairly fast, so version numbers are of great concern. In this post I was using [three.js 0.91.0 aka r91](https://github.com/mrdoob/three.js/tree/r91/build) when I first make the source code examples, and the last version that I tested the threejs examples of face4 constructor with was r111. The last time I came around to doing some editing of this post I included one example that has to do with the groups property of a buffer geometry instance that would be the modern replacement for this, and with that example I was using r135.
 
 ### The source code examples here are on github
 
@@ -39,7 +39,36 @@ The source code examples here are [in my test threejs github](https://github.com
 
 One of the main reasons I would bother with the Face3 constructor has to do with creating faces to begin with if they are not there. However even when using a built in geometry constrictor with the face3 objects in place to begin with, I might still want to change the material index value. So the Face3 class is closely related to working with an array of materials for a mesh rather than just one. In my post on [Mesh objects and working with an array of materials](/2018/05/14/threejs-mesh-material-index/) I have got around to touching base on how to use an array of materials with late versions of threejs using the groups array of a buffer geometry.
 
-## 1 - Basic Example of Face3
+## 1 - Example of using Groups in r125+ (face3 replacement )
+
+```js
+(function () { 
+    // SCENE, CAMERA, RENDER
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(1.5, 1.5, 1.5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // USING GROUPS
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    [ 0, 1, 2, 0, 1, 2 ].forEach( function(mi, i){
+        geometry.groups[i].materialIndex = mi;
+    });
+    // MESH
+    var mesh = new THREE.Mesh(geometry, [
+        new THREE.MeshBasicMaterial( { color: 0x0000ff } ),
+        new THREE.MeshBasicMaterial( { color: 0x00ffff } ),
+        new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
+    ]);
+    scene.add(mesh);
+    // render
+    renderer.render(scene, camera);
+}());
+```
+
+## 2 - Basic Example of Face3
 
 For a basic demo of face3 I put together an example where I am just making a single triangle from an array of just three vertices. The Geometry constructor is used to create an instance of geometry, once I have that I will want to populate the instance of geometry with vertices by adding an array of Vector3 instances. Vector3 of course is another constructor that is used in three.js to create a point in space.
 
@@ -105,7 +134,7 @@ So for now I have something like this:
     ());
 ```
 
-## 2 - The order of indexes with face3
+## 3 - The order of indexes with face3
 
 To some extent when making faces I am just playing connect the dots with vertices, but it is not always just that simple, as the order of index values does matter. When creating a mesh with the geometry, I also give a material. When it comes to materials there is the side property of a material which is used to set which side of a face3 instance that is to be rendered with the material. This property expects an integer value the default of which is stored in the [constant THREE.FrontSide](https://threejs.org/docs/#api/constants/Materials) which as of this writing is a value of zero.
 
@@ -113,7 +142,7 @@ What I am driving at here is that the order of the indexes is what is used to fi
 
 There are two ways of fixing this one is to just make it so both sides are always rendered no matter what by setting the side value of your material to THREE.DoubleSide. This will make it so that both sides of the face are always rendered with the material, but the best way of fixing this would be to just get the index order right.
 
-### 2.1 - Setting Three.DoubleSide for the side property of the material
+### 3.1 - Setting Three.DoubleSide for the side property of the material
 
 One way to address this problem is to just make it so that both side of a face will be rendered rater than just the front side of the face. However one major draw back of this is that it will eat up more overhead of course, so it really is best to just know how to set what side of a face is the front side.
 
@@ -126,7 +155,7 @@ scene.add(mesh);
 
 This is also just a useful property to be aware of for use with certain Models anyway, for example if I have a plane and I want a material rendered on both sides.
 
-### 2.2 - Just getting the vertex index order right for the Face3 instances
+### 3.2 - Just getting the vertex index order right for the Face3 instances
 
 The other way is to just get the index values right in which case the default THREE.FrontSide is not a problem when rendering. So it is a good idea to just figure out what the proper order is for the index values to given the the Face3 constructor.
 
@@ -180,7 +209,7 @@ Consider the following:
 
 Notice that with the first instance of Face3 I am starting with index 0 then counting up, while with the other instance I am staring with the last index and counting backwards. This results in the Front side of both faces being on opposite sides relative to each other.
 
-## 3 - The Material index property
+## 4 - The Material index property
 
 If in case you did not know, it is possible to give an array of materials to the mesh constructor, rather than just one. In this case there should be some way to set which material should be used for which insistence of face3. For this there is the material index property of a face3 instance. So the process of having control over this is to just loop over the array of face3 objects, and set the desired material index value for each face.
 
