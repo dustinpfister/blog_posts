@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2022-04-27 14:15:52
-version: 1.24
+updated: 2022-04-27 14:25:53
+version: 1.25
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write a post on just because I put a little time into making it. I stopped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
@@ -94,6 +94,8 @@ I wanted to have a way to create some quick textures for this example without ha
 }
     (this['canvasTextureMod'] = {}));
 ```
+
+There are additional options for creating a texture with javaScript code, one of which would be the [data texture constructor](/2022/04/15/threejs-data-texture/) that will work with raw data in the form of a uint8array.
 
 ## 2 - The guy module
 
