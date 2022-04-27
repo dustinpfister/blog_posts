@@ -5,13 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2022-04-27 09:26:47
-version: 1.28
+updated: 2022-04-27 09:29:59
+version: 1.29
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
 
-When using any kind of built in geometry, instances of Face3 are created automatically, or at least they where, and still are if you are using an older version of threejs. So whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3 when using the old Geometry Constructor. One of the main properties of interest with an instance of Face3 is the material index property, this comes into play when it comes to working with an array of materials, rather than just a single material when using a geometry with a Mesh Object. In new versions of threejs it is now the groups array of a geometry that would seem to be where these kinds of objects are now, and the use of the add group method is how to create them.
+When using any kind of built in geometry, instances of Face3 are created automatically, or at least they where, and still are if you are using an older version of threejs. So whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3 when using the old Geometry Constructor. One of the main properties of interest with an instance of Face3 is the material index property, this comes into play when it comes to working with an array of materials, rather than just a single material when using a geometry with a Mesh Object. 
+
+In new versions of threejs it is now the groups array of a geometry that would seem to be where these kinds of objects are now, and the use of the add group method is how to create them. This is still an old post on the face3 constructor, but when it comes to this edit, as well as many future edits this is what I am gong to start to write about at the top of the post, and start to push the older face3 stuff to the bottom of this content piece.
 
 <!-- more -->
 
