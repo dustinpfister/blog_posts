@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2022-04-27 14:33:53
-version: 1.27
+updated: 2022-04-27 14:38:04
+version: 1.28
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write a post on just because I put a little time into making it. I stopped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
@@ -20,6 +20,8 @@ This might in time prove to be just one of several more additional future projec
 ## This backyard threejs scene examples and what to know fist
 
 This is a full threejs project example in which I am making use of all kinds of features in three.js to make something that is starting to look like a final product of some kind. So it should go without saying that this is not in any way a [getting started type post for people that are new to three.js](/2018/04/04/threejs-getting-started/). I then assume that you have logged a fair amount of time playing around with threejs, as well as with client side javaScript in general.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/o21ABjF0UVs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### version numbers used
 
