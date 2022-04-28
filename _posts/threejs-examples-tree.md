@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2022-02-10 07:00:18
-version: 1.34
+updated: 2022-04-28 15:52:16
+version: 1.35
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -19,27 +19,29 @@ This kind of example is a very basic getting started type example when it comes 
 
 <!-- more -->
 
-## 1 - Before continuing with this three js example post
+## Three threejs tree model, and what to know before continuing with this post
 
 This is a post on using the javaScript library known as three.js that can be used to create and work with 3d objects in a client side JavaScript environment. This is not a [getting started post on three js](/2018/04/04/threejs-getting-started/) by itself as well as how to use the many various constructors functions in threejs, as well as [what a constructor function is to begin with](/2019/02/27/js-javascript-constructor/). So then I assume that you have at least some background with the basics when it comes to using three js, as well as javaScript programing in general. If not you might have a hard time following the content of this post as I am using a lot of features in the source code that you should have at least some understanding of before hand. I will not be getting into every little detail that you show know at this point here, but I will be outline some things tht you might want to read up on more before continuing with this post.
 
-### 1.1 - The source code for these demos and the three module are on github
+<iframe class="youtube_video" src="https://www.youtube.com/embed/1y4XpWfx_Ao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### The source code for these demos and the three module are on github
 
 The module itself can be found in the [modules group folder](https://github.com/dustinpfister/test_threejs/tree/master/views/js/modules_group/tree/0.0.0) of my test threejs repository, while the demos that make use of it can be found in the [for post folder](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tree) for this blog post.
 
-### 1.2 - Read up on THREE.Group, THREE.Mesh, and the Object3d base class in general
+### Read up on THREE.Group, THREE.Mesh, and the Object3d base class in general
 
 This model of a tree is a collection of Mesh Objects that are part of a Group that are in turn a part of another Group. There is reading up more on the Mesh class, and also the Group class, but it might be best to read up more on the [Object3d class in general](/2018/04/23/threejs-object3d/). The Object3d class is a base class of Mesh objects, Groups, Cameras, and even a whole Scene object. So my learning everything there is to know about the Object3d class it is then possible to apply that to all kinds of other objects in three.js.
 
-### 1.3 - Do not just stop with this example when it comes to making trees
+### Do not just stop with this example when it comes to making trees
 
 There are a lot of ways of going about making tree models even when it comes to the crude informal style that I like to make them with. This is an example where I am making a whole bunch of mesh objects using the cone geometry, but another nice way to just quickly make something that looks a little like a three is to just place a sphere on top of a box or cylinder geometry and calling it a day. In fact I [have another tree model worked out](/2021/05/19/threejs-examples-tree-sphere/) that is just that simple, and if you ask me it still works when it comes to a crude low Polly art style.
 
-### 1.4 - Be sure to check the version number you are using
+###  Be sure to check the version number you are using
 
 When I first wrote this post and the source code of the example here I was using revision 106 of threejs, and the last time I tested things out and did a little editing of this post I was using revision 127 of threejs. Code breaking changes are made to threejs all the time so be mindful of what version you are using when working with threejs code example on the open web.
 
-## 2 - The tree constructor
+## 1 - The tree constructor
 
 So now lets get to the source code of this basic tree model that are present is just a single constructor function that will create and return an instance of this Tree Class. This tree class has many properties to it, but the main property of interest here is the group property that contains an instance of THREE.Group. It is this group that I will want to add to a scene object when it comes to using this in an over all threejs project.
 
@@ -155,7 +157,7 @@ Tree.setConePos = function (coneObj, secObj) {
 
 When I use the model to create an instance of the tree model there are a wide range of options that I can give alone with methods that are to be called for each cone that I can use to override some of the values that are used to position and size the cones.
 
-## 3 - Basic example of the tree model
+## 2 - Basic example of the tree model
 
 So now it is is time to just work out a basic threejs scene just to make sure that this tree model works the way that I expect it to. First off I create a scene object, and camera, and renderer just like with any other three.js example. I will be using a custom material when calling the tree constructor that will respond to light so I am adding a white point light to the scene object.  In addition I am also using the [three js built in orbit controls](/2018/04/13/threejs-orbit-controls/) in this example so I can just move around the camera and look at the tree.
 
@@ -198,7 +200,7 @@ Then what it comes to creating and adding a tree to the scene object I just call
     ());
 ```
 
-## 4 - Using the forConeValues option
+## 3 - Using the forConeValues option
 
 If for some reason I want to use a custom expression when it comes to setting the position, rotation, or any other value on a cone by cone basis of the cones I can use the forConeValues option as one way to go about doing so.
 
@@ -222,7 +224,7 @@ scene.add(tree.group);
 
 This feature was just added in just for the heck of it, and I am not sure if this is a feature that I would really want or need in this kind of project. I also made this tree constructor back before I was aware of an object3d method known as object3d.traverse that I can also use as a way to loop over all the mesh objects of a group. So at some point in the future it is possible that I might remove this feature actually.
 
-## 5 - Conclusion
+## Conclusion
 
 I might get around to making a few more additional changes to this model at some point in the future, but only if I start to actually use this in a project or two. As of the last time I edited this post I can not say that I made these kinds of models this way anymore in the from of a class, but rather returning a public API with a create method. So that is one thing that I might change at some point, but there is also maybe adding some additional features when it comes to updating the state of the tree when it comes to making it a but animated. I can not say that this is a feature that I would use often though so maybe doing something like that would prove to be wasting time adding features that I do not really want or need, or can be part of the application code.
 
