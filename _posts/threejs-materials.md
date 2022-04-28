@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2022-04-28 09:50:22
-version: 1.32
+updated: 2022-04-28 10:27:38
+version: 1.33
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -68,18 +68,37 @@ The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasic
 
 
 ```js
-// CUBE
-scene.add(new THREE.Mesh(
- 
-    // box GEOMETRY
-    new THREE.BoxGeometry(1, 1, 1),
- 
-    // basic MATERIAL
-    new THREE.MeshBasicMaterial({
-        color: 0xff0000
-    })
- 
-));
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) )
+    scene.background = new THREE.Color('blue');
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 10);
+    camera.position.set(1.3, 1.5, 1.3);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // INSTANCE OF THE BASIC MATERIAL
+    var material = new THREE.MeshBasicMaterial({
+            color: 0xff0000
+    });
+    // MESH with Box Geometry with the 
+    scene.add(new THREE.Mesh(
+        // box GEOMETRY
+        new THREE.BoxGeometry(1, 1, 1),
+        material
+    ));
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();         // UPDATE CONTROLS
+        renderer.render(scene, camera); // render
+    };
+    loop();
+}
+    ());
 ```
 
 This comes in handy when I just want to quickly add some solid color to a mesh, or do something involving just a color map.
@@ -89,16 +108,38 @@ This comes in handy when I just want to quickly add some solid color to a mesh, 
 This is another basic material that is not used for anything advanced involving a light source, and shadows. The [depth material](/2021/05/04/threejs-depth-material/) can be used to show some depth to a mesh, rather than just having a solid color painted on each face like with the basic material without a texture map.
 
 ```js
-// CUBE
-scene.add(new THREE.Mesh(
- 
-    // box GEOMETRY
-    new THREE.BoxGeometry(1, 1, 1),
- 
-    // Depth MATERIAL
-    new THREE.MeshDepthMaterial()
- 
-));
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) )
+    scene.background = new THREE.Color('blue');
+    // NEAR AND FAR VALUES MATTER WITH THE DEPTH MATERIAL
+    var near = 0.5,
+    far = 100;
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, near, far);
+    camera.position.set(1.3, 1.5, 1.3);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // INSTANCE OF THE DEPTH MATERIAL
+    var material = new THREE.MeshDepthMaterial();
+    // MESH with Box Geometry with the 
+    scene.add(new THREE.Mesh(
+        // box GEOMETRY
+        new THREE.BoxGeometry(1, 1, 1),
+        material
+    ));
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();         // UPDATE CONTROLS
+        renderer.render(scene, camera); // render
+    };
+    loop();
+}
+    ());
 ```
 
 Depth is based off the near, and far plane of the camera when can be set when creating the camera, and can also be changed in a loop by calling a special update method. White areas indicate that an area of the mesh is closer to the camera, while darker areas indicate that the area of the mesh is farther away.
@@ -107,9 +148,7 @@ There does not appear to be much to write about in terms of other properties to 
 
 ```js
 var material = new THREE.MeshDepthMaterial({
- 
     depthPacking: THREE.RGBADepthPacking
- 
 });
 ```
 
@@ -120,16 +159,43 @@ Read my [full post](/2018/04/08/threejs-lambert-material/) on the Lambert materi
 This is the first material I started working with when getting into the use of lights and shadows. In some ways the [Lambert material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial) is a good choice for a reflective material as the algorithm used for reflecting light is more efficient compared to the other options, although I might not say that it is th best looking compared to the alternatives.
 
 ```js
-// Cube
-var cube = new THREE.Mesh(
-    new THREE.BoxGeometry(100, 100, 100),
-    new THREE.MeshLambertMaterial({
-        color: 0xff0000,
-        emissive: 0x3a3a3a
-    })
-);
-cube.position.set(0, 100, 0);
-scene.add(cube);
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) )
+    scene.background = new THREE.Color('blue');
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+    camera.position.set(1.3, 1.5, 1.3);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // I WILL WANT A LIGHT SOURCE
+    var dl = new THREE.DirectionalLight(0xffffff, 0.5);
+    dl.position.set(4, 2, 1);
+    scene.add(dl);
+    // INSTANCE OF THE LAMBERT MATERIAL
+    var material = new THREE.MeshLambertMaterial({
+        color: 0xffffff,
+        emissive: 0xff0000,
+        emissiveIntensity: 0.5
+    });
+    // MESH with Box Geometry with the 
+    scene.add(new THREE.Mesh(
+        // box GEOMETRY
+        new THREE.BoxGeometry(1, 1, 1),
+        material
+    ));
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();         // UPDATE CONTROLS
+        renderer.render(scene, camera); // render
+    };
+    loop();
+}
+    ());
 ```
 
 the main thing to understand here is when just setting a solid color, the color that is set with the color property is actually the color that will show up when a white light source shines on it. The emissive property is what is used to set a solid color that is to show up no matter what, which differs from you might be used to with the basic material that you might have started with like I did.
@@ -139,14 +205,35 @@ the main thing to understand here is when just setting a solid color, the color 
 The [normal material](/2021/06/23/threejs-normal-material/) has to do with [vector normals](https://en.wikipedia.org/wiki/Normal_%28geometry%29) that exist in the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) that is used with the mesh object. Coloring of the shape is based on the direction of the vector normals then, but the material does not take into account anything that is going on with light in a scene unlike other materials that make use of the normal attribute of the geometry.
 
 ```js
-var cube = new THREE.Mesh(
- 
-    geometry,
- 
-    // Material
-    new THREE.MeshNormalMaterial()
-);
-scene.add(cube);
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) )
+    scene.background = new THREE.Color('blue');
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+    camera.position.set(1.3, 1.5, 1.3);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // INSTANCE OF THE NORMAL MATERIAL
+    var material = new THREE.MeshNormalMaterial();
+    // MESH with Box Geometry with the 
+    scene.add(new THREE.Mesh(
+        // box GEOMETRY
+        new THREE.BoxGeometry(1, 1, 1),
+        material
+    ));
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();         // UPDATE CONTROLS
+        renderer.render(scene, camera); // render
+    };
+    loop();
+}
+    ());
 ```
 
 I will not be getting into normals in detail here as that is a matter for another post. However I will mention that there is a useful helper method o get a sense of what is going on with the vector normals of a geometry.
@@ -163,27 +250,42 @@ That should help give you an idea of what is going on, and how the shape is bein
 The [phong material](https://threejs.org/docs/index.html#api/materials/MeshPhongMaterial) is another option for a material that will respond to a light source. Unlike the Lambert material this is a better option for specular highlights making it a good choice for any kind of surface that should be shiny like metal or varnished wood.
 
 ```js
-// Sphere
-scene.add(new THREE.Mesh(
- 
-    // Sphere GEOMETRY
-    new THREE.SphereGeometry(1, 20, 20),
- 
-    // phong MATERIAL
-    new THREE.MeshPhongMaterial({
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) )
+    scene.background = new THREE.Color('blue');
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+    camera.position.set(3, 3, 3);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // I WILL WANT A LIGHT SOURCE
+    var dl = new THREE.DirectionalLight(0xffffff, 1.0);
+    dl.position.set(4, 2, 1);
+    scene.add(dl);
+    // INSTANCE OF THE PHONG MATERIAL
+    var material = new THREE.MeshPhongMaterial({
         color: 0xff0000,
-        emissive: 0x2a0000,
- 
-        shininess: 10,
-        specular: 0xffffff
-    })
- 
-));
- 
-// SPOTLIGHT
-var spotLight = new THREE.SpotLight(0xffffff);
-spotLight.position.set(1.25, 1.25, 1.25);
-scene.add(spotLight);
+        shininess: 120
+    });
+    // MESH with SPJHERE Geometry with the material 
+    scene.add(new THREE.Mesh(
+        // SPHERE GEOMETRY
+        new THREE.SphereGeometry(1, 30, 30),
+        material
+    ));
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();         // UPDATE CONTROLS
+        renderer.render(scene, camera); // render
+    };
+    loop();
+}
+    ());
 ```
 
 To get this material working great It might be best to use some kind of directional light source such as a spotlight. The specular property can be used to set the color of the shine, by default it is a very dark gray.
@@ -197,44 +299,136 @@ Because this material supports light it is called for to use this material with 
 Unlike the phong material this material does not support specular highlights, but it would appear that is the only feature lost of interest compared to phong.
 
 ```js
-// Sphere
-scene.add(new THREE.Mesh(
-    // box GEOMETRY
-    new THREE.SphereGeometry(1, 20, 20),
- 
-    // phong MATERIAL
-    new THREE.MeshStandardMaterial({
-    color: 0xff0000,
-    emissive: 0x2a0000
-})));
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) )
+    scene.background = new THREE.Color('blue');
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+    camera.position.set(3, 3, 3);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // I WILL WANT A LIGHT SOURCE
+    var dl = new THREE.DirectionalLight(0xffffff, 1.0);
+    dl.position.set(4, 2, 1);
+    scene.add(dl);
+    // INSTANCE OF THE STANDARD MATERIAL
+    var material = new THREE.MeshStandardMaterial({
+        color: 0xff0000
+    });
+    // MESH with SPJHERE Geometry with the material 
+    scene.add(new THREE.Mesh(
+        // SPHERE GEOMETRY
+        new THREE.SphereGeometry(1, 30, 30),
+        material
+    ));
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();         // UPDATE CONTROLS
+        renderer.render(scene, camera); // render
+    };
+    loop();
+}
+    ());
 ```
 
 ## 7 - Mesh Physical and toon Materials
 
 Another two materials in three.js that can be used with a mesh are the [Physical](https://threejs.org/docs/index.html#api/materials/MeshPhysicalMaterial), and [Toon](https://threejs.org/docs/index.html#api/materials/MeshToonMaterial) materials. Both of these materials are like that of the standard material, and phong materials respectfully, but with additional features. The physical material is like the standard material but gives a greater deal of control over reflectivity, while the toon material is just like phong only with toon shading.
 
+```js
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) )
+    scene.background = new THREE.Color('blue');
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+    camera.position.set(3, 3, 3);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // I WILL WANT A LIGHT SOURCE
+    var dl = new THREE.DirectionalLight(0xffffff, 1.0);
+    dl.position.set(4, 2, 1);
+    scene.add(dl);
+    // INSTANCE OF THE PHYSICAL MATERIAL
+    var material = new THREE.MeshPhysicalMaterial({
+        color: 0xff0000
+    });
+    // MESH with SPHERE Geometry with the material 
+    scene.add(new THREE.Mesh(
+        // SPHERE GEOMETRY
+        new THREE.SphereGeometry(1, 30, 30),
+        material
+    ));
+    // INSTANCE OF THE TOON MATERIAL
+    var material = new THREE.MeshToonMaterial({
+        color: 0xff0000
+    });
+    // MESH with SPHERE Geometry with the material 
+    var mesh = new THREE.Mesh(
+        // SPHERE GEOMETRY
+        new THREE.SphereGeometry(1, 30, 30),
+        material
+    );
+    mesh.position.x = -3;
+    scene.add(mesh);
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();         // UPDATE CONTROLS
+        renderer.render(scene, camera); // render
+    };
+    loop();
+}
+    ());
+```
+
 ## 8 - The Points Material
 
-There is one Material in three.js that can be used to set display just points in a geometry which can come in handy some times.
+There is one Material in three.js that can be used to display just the points in a geometry which can come in handy some times. If for some reason I want to create my own custom geometry in which I only care about points in space and nothing at all then I will want to have at least a position attribute of the buffer geometry instance that I will the use with the THREE.Points constructor rather than the usual mesh constructor.
 
 ```js
-    var pointsGeometry = new THREE.Geometry();
-    var i = 0;
-    while (i < 500) {
- 
-        var star = new THREE.Vector3();
-        star.set(
-            THREE.Math.randFloatSpread(45),
-            THREE.Math.randFloatSpread(45),
-            THREE.Math.randFloatSpread(45));
- 
-        pointsGeometry.vertices.push(star);
- 
-        i += 1;
- 
-    }
- 
-    scene.add(new THREE.Points(pointsGeometry, new THREE.PointsMaterial({color: 0x00afaf})));
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) )
+    scene.background = new THREE.Color('blue');
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+    camera.position.set(3, 3, 3);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // GEOETRY WITH JUST A POSITIONS ATTRIBUTE
+    var geometry = new THREE.BufferGeometry();
+    var vertices = new Float32Array([
+                0, 0, 0,
+                1, 0, 0,
+                1, 1, 0
+            ]);
+    // create position property
+    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+    // POINTS WITH POINTS MATERIAL
+    var material = new THREE.PointsMaterial( { color: 0x00afaf } );
+    var points = new THREE.Points(geometry, material)
+    scene.add(points);
+    // LOOP
+    var loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();         // UPDATE CONTROLS
+        renderer.render(scene, camera); // render
+    };
+    loop();
+}
+    ());
 ```
 
 For more on Points and the points material I have [written a post](/2018/05/12/threejs-points-material/) on the subject, it's fun to just play with points in space when you have some time.
