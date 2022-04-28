@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2022-04-20 06:44:49
-version: 1.30
+updated: 2022-04-28 11:43:31
+version: 1.31
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but then there is also the question of nested properties of the mesh object such as [child objects that have been attached](/2018/05/16/threejs-grouping-mesh-objects/), the [geometry](/2021/04/22/threejs-buffer-geometry/) of the mesh, and [materials](/2018/04/30/threejs-materials/).
@@ -22,6 +22,8 @@ So then this will be a quick post on the mesh clone method in threejs that can b
 ## What to know first before getting into copying a mesh
 
 This is a post on the clone method of a THREE.Mesh class instance in three.js that can be used to copy the mesh and the children of it also. As such you should have at least some background when it comes to the basics of [getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general. If not chances are you might not gain much of anything from reading this.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/ErhvuGKkDAM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Version Numbers matter big time with three.js
 
