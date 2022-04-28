@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2022-04-28 09:10:48
-version: 1.31
+updated: 2022-04-28 09:27:06
+version: 1.32
 ---
 
 In [three.js](https://threejs.org/) there are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if I want to make a geometry by way of some javaScript code, rather than external json data? This is where the [Geometry constructor](https://threejsfundamentals.org/threejs/lessons/threejs-custom-geometry.html) comes into play, or at least it did before version r125 of threejs. With that said, when I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the [Buffered Geometry](https://threejs.org/docs/index.html#api/core/BufferGeometry) constructor, and the other was the Geometry constructor. This post is on the plain Geometry constructor that is now deprecated as r125+ of threejs, so it would be best these days to look into my [post on the Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at this time.
@@ -268,12 +268,15 @@ This is typically what I will always want to do with a geometry, after all it is
 
 In Other words think of this Geometry as being relative to the center of a Cube, or Sphere if you prefer, and then you are going to move and rotate this object in a Scene that might contain many such objects. So chances are you are going to want it centered to this relative origin, and scaled to a certain standard.
 
-## 4 - Scale a geometry
+## 4 - Scale and rotation of a geometry
 
-If you want to scale a geometry, it can be done with the scale method. This is something that might typically be done only once if it is a static Geometry. There is also a scale method with the Mesh that will be available when using the geometry, this is what should be typically used in a loop.
+If I want to scale a geometry, it can be done with the scale method method of the geometry instance. This is something that might typically be done only once if it is a static Geometry. There is also a [scale property with the Mesh](/2021/05/11/threejs-object3d-scale/) object that will be available when using the geometry, this is what should be typically used in a loop. However maybe getting into that would be a matter for a whole other post.
+
+When it does come to working with the old geometry constructor I can then do something like this to normalize, scale, and rotate the geometry as a way to adjust the state of the geometry relative to the local space of the mesh object that will contain this geometry.
 
 ```js
-geometry.scale(5,5,1);
+    // NORMALIZE AND SCALE THE GEOMETRY
+    geometry.normalize().scale(0.5, 1.5, 0.5).rotateY(Math.PI / 180 * -10);
 ```
 
 ## Conclusion
