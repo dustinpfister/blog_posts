@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2022-04-28 10:35:08
-version: 1.36
+updated: 2022-04-28 10:38:51
+version: 1.37
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -64,7 +64,7 @@ The most used materials should be the ones that are used with a Mesh to bring st
 
 ## 1 - Mesh Basic Material
 
-The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is as the name suggests, it is the kind of material that I would use if I do not aim to do anything special with shading, shadows and so forth. The basic material will not respond to a light source, and the faces will be filled with a solid color, or a given texture.
+The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is as the name suggests, it is the kind of material that I would use if I do not aim to do anything special with shading, shadows and so forth. The basic material will not respond to a light source, and the faces will be filled with a solid color, or a given texture when it comes to the map attribute.
 
 
 ```js
@@ -101,7 +101,7 @@ The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasic
     ());
 ```
 
-This comes in handy when I just want to quickly add some solid color to a mesh, or do something involving just a color map.
+This comes in handy when I just want to quickly add some solid color to a mesh, but one draw back is that it will always show the geometry as one bug blob of color. In order to show and kind of sense of depth it is called for to add some texture to the mesh object by way of some kind of texture.
 
 ## 2 - Mesh Depth Material
 
