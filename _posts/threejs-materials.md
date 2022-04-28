@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2022-04-28 10:38:51
-version: 1.37
+updated: 2022-04-28 10:40:13
+version: 1.38
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -101,7 +101,7 @@ The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasic
     ());
 ```
 
-This comes in handy when I just want to quickly add some solid color to a mesh, but one draw back is that it will always show the geometry as one bug blob of color. In order to show and kind of sense of depth it is called for to add some texture to the mesh object by way of some kind of texture.
+This comes in handy when I just want to quickly add some solid color to a mesh, but one draw back is that it will always show the geometry as one bug blob of color. In order to show and kind of sense of depth it is called for to add some texture to the mesh object by way of some kind of texture. There are a number of ways of going about doing this such as using the texture loader to load in a texture from an external image, but there are also a number of ways of doing so that will involve the use of some javaScript code to create a texture.
 
 ## 2 - Mesh Depth Material
 
