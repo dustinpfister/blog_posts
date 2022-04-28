@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2022-04-28 10:32:43
-version: 1.35
+updated: 2022-04-28 10:35:08
+version: 1.36
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -437,4 +437,4 @@ For more on Points and the points material I have [written a post](/2018/05/12/t
 
 So far I have just only scratched the surface when it comes to materials in threejs as there is a whole lot more to cover when it comes to additional things that branch off from the topic of just materials. it should go without saying that there is a great deal more to write about when it comes to th finer points of each mesh material. In addition there is more to say about the base material class, and other matters with materials such as using an array of materials with a mesh object rather than just one and how to set up or change material index values.
 
-I might give three.js another month at least, and in that time I might come around to updating this post as well as many others as I write more demos.
+This is one of my oldest posts on threejs that I wrote, and when I first started the source code examples I was using r91 which was what I was using back in 2018. Sense then a whole lot has changed with threejs in terms of features that have changed and in some cases have been out right remove completely. As such I do get around to editing my content now and then, and I all ready have some plans in place when it comes to future edits of this post.
