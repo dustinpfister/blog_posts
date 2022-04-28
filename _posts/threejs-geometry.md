@@ -5,11 +5,11 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2022-04-28 09:34:13
-version: 1.33
+updated: 2022-04-28 09:35:41
+version: 1.34
 ---
 
-In [three.js](https://threejs.org/) there are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if I want to make a geometry by way of some javaScript code, rather than external json data, or by [loading a DAE file](/2021/04/30/threejs-dae-loader/)? This is where the [Geometry constructor](https://threejsfundamentals.org/threejs/lessons/threejs-custom-geometry.html) comes into play, or at least it did before version r125 of threejs when it was removed. 
+In [three.js](https://threejs.org/) there are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if I want to make a geometry by way of some javaScript code, rather than external json data, or by [loading a DAE file](/2021/04/30/threejs-dae-collada-loader/)? This is where the [Geometry constructor](https://threejsfundamentals.org/threejs/lessons/threejs-custom-geometry.html) comes into play, or at least it did before version r125 of threejs when it was removed. 
 
 When I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the [Buffered Geometry](https://threejs.org/docs/index.html#api/core/BufferGeometry) constructor, and the other was the Geometry constructor to which this blog post is about. So because this post is on the plain Geometry constructor that is now deprecated as r125+ of threejs, it would be best these days to look into my [post on the Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at this time. I do poke my head in here now and then to do a little editing, and clean up and expand code, but I do so using a revision of threejs that is now fairly out of date.
 
