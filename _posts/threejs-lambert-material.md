@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2022-04-29 06:42:02
-version: 1.20
+updated: 2022-04-29 06:44:55
+version: 1.21
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
@@ -25,11 +25,9 @@ It is named after [Johann Heinrich Lambert](https://en.wikipedia.org/wiki/Johann
 
 ### Why use the Lambert Material?
 
-There are materials in three.js that do not respond to a light source, and then there are materials that do respond to lights, the Lamber Material is one of several options that do respond to a light source.
+There are materials in three.js that do not respond to a light source, and then there are materials that do respond to lights, the Lamber Material is one of several options that do respond to a light source. From what I have gathered the Lambert material is one of the faster solutions for having a reflective material that will respond to a light source. If you are interested in knowing why, you might choose to read more about [Lambertian reflectance](https://en.wikipedia.org/wiki/Lambertian_reflectance) and [Gouraud shading](https://en.wikipedia.org/wiki/Gouraud_shading) in order to get into the details.
 
-From what I have gathered this is one of the faster solutions for having a reflective material that will respond to a light source. If you are interested in knowing why, you might choose to read more about [Lambertian reflectance](https://en.wikipedia.org/wiki/Lambertian_reflectance) and [Gouraud shading](https://en.wikipedia.org/wiki/Gouraud_shading).
-
-I often like to develop on systems like a raspberry pi that only has so much resources to work with when it comes to memory and CPU overhead. So I tend to try to keep my models very low poly, and also make use of materials such as the Lambert material to make better use of what I have to work with on platforms such as this. However overall it might still be better to go with the standard material in some cases.
+I often like to develop on systems like a raspberry pi that only has so much resources to work with when it comes to memory and CPU overhead. So I tend to try to keep my models very low poly, and also make use of materials such as the Lambert material to make better use of what I have to work with on platforms such as this. However overall it might still be better to go with the standard material in some cases such as when making video projects where I just need to work about how my frames look and higher processing over head just means I have to wait a little longer for my frames to render.
 
 ### The Lambert Material needs a light source
 
