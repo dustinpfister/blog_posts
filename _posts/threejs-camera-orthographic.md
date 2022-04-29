@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-04-29 09:44:12
-version: 1.33
+updated: 2022-04-29 09:50:17
+version: 1.34
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With this kind of camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the side as the distance from the camera goes up. 
@@ -348,12 +348,7 @@ var CubeStack = (function () {
 
 ### 3.2 - The Main javaScript file in which I am createing an array of cameras
 
-In the main javaScript file I am then going to want to create an array of cameras actually rather than just the usual single perspective camera that I do in just about almost all of my threejs examples.
-
-Any code that I will want to apply to all cameras I will of course put in the forEach loop, such as setting the position, and zoom level of the cameras.
-
-In order to get a good sense of the difference between the orthographic camera compared to the typical perspective camera, I will want an array of cameras. One will be an instance of THREE.PerspectiveCamera that is what I often use in most projects, while the other will be THREE.OrthographicCamera.
-
+In order to get a good sense of the difference between the orthographic camera compared to the typical perspective camera, I will want an array of cameras. One will be an instance of THREE.PerspectiveCamera that is what I often use in most projects, while the other will be THREE.OrthographicCamera. So then in the main javaScript file I created this array of cameras actually than just the usual single perspective camera that I do in just about almost all of my threejs examples. Any code that I will want to apply to all cameras I will of course put in the forEach loop, such as setting the position, and zoom level of the cameras.
 
 ```js
 (function () {
@@ -423,5 +418,7 @@ When all goes well this will result in a rotating scene that looks like a bunch 
 
 ## Conclusion
 
-I just about all three.js projects I am typicality going to want to go with the perspective camera actually when it comes to features of three.js that I am actually using. Still if I am going to use a camera other that the perspective camera I would say that the orthographic camera is at the top if the list.
+In just about all three.js projects I am typicality going to want to go with the perspective camera actually when it comes to features of three.js that I am actually using most of the time. Still if I am going to use a camera other that the perspective camera I would say that the orthographic camera is at the top if the list. It does result in a cool kind of visual look that I think will also prove to be usful for certain games, and animations that I might choose to make from time to time.
+
+However in any case I think the coolest thing that I made while working on this post was this cube stack module that I might want to come back to again and again every once in a while. In fact I think it might be a good idea to crate another threejs project example in which I am creating and working with a grid of these with different settings when it comes to the count of cube in each cube stack.
 
