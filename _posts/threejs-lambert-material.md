@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2022-04-29 07:05:23
-version: 1.23
+updated: 2022-04-29 07:19:04
+version: 1.24
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
@@ -149,6 +149,63 @@ To set the color value that is not effected by light you will want to set the em
 ```
 
 This will make all the area of the plane that is not effected by the spot light a shade of gray, rather than the default which is black. In addition to being able to set the emissive color, the intensity can also be set from a 0 to one value, it is also possible to define a texture that will modulate with the emissive color using the emmsiveMap property. To set a texture that will function as the regular color map, you will want to use the plain old map property.
+
+## 3 - The map property and data textures
+
+Like many other materials in threejs there are a number of options for adding texture to the material, one such option would me the map property which is how to define a texture that will respond to a light source.
+
+```js
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
+    camera.position.set(500, 500, 500);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // data texture
+    var width = 16,
+    height = 16;
+    var size = width * height;
+    var data = new Uint8Array(4 * size);
+    for (let i = 0; i < size; i++) {
+        var stride = i * 4;
+        var v = Math.floor(THREE.MathUtils.seededRandom() * 255);
+        data[stride] = v;
+        data[stride + 1] = v;
+        data[stride + 2] = v;
+        data[stride + 3] = 255;
+    }
+    var texture = new THREE.DataTexture(data, width, height);
+    texture.needsUpdate = true;
+    // add plane to the scene
+    var plane = new THREE.Mesh(
+            new THREE.PlaneGeometry(1500, 1500, 8, 8),
+            new THREE.MeshLambertMaterial({
+                color: 0xffffff,
+                map: texture,
+                emissive: 0x004a4a,
+                emissiveIntensity: 0.75,
+                side: THREE.DoubleSide
+            }));
+    plane.rotation.x = Math.PI / 2;
+    scene.add(plane);
+    scene.add( new THREE.AmbientLight(0xffffff, 0.05));
+    // SPOTLIGHT
+    var spotLight = new THREE.SpotLight(0xffffff, 1, 300, Math.PI / 180 * 40, 1, 0),
+    spotLightHelper = new THREE.SpotLightHelper(spotLight);
+    spotLight.add(spotLightHelper);
+    scene.add(spotLight);
+    spotLight.position.set(150, 200, -100);
+    spotLightHelper.update();
+ 
+    // render
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
 
 ## Conclusion
 
