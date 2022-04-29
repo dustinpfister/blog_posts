@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-04-29 08:54:33
-version: 1.31
+updated: 2022-04-29 09:33:44
+version: 1.32
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With this kind of camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the side as the distance from the camera goes up. 
@@ -247,46 +247,68 @@ Now that I have the model I can use it in a demo. I will want to make a demo tha
 ### 3.1 - The cube stack module
 
 ```js
-// Cube Stack example for s2-cube-stack example in threejs-camera-orthographic
+// Cube Stack example for s3-compare-to-perspective example in threejs-camera-orthographic
 var CubeStack = (function () {
-    // the stack constructor
-    return function (opt) {
-        var boxCount,
-        box,
-        x,
-        y,
-        z,
-        plane,
-        boxArray = [],
-        boxIndex = 0;
+    // the public api
+    var api = {};
+    // create data texture helper
+    var createDataTexture = function (width, height) {
+        // data texture
+        width = width || 16,
+        height = height || 16;
+        var size = width * height;
+        var data = new Uint8Array(4 * size);
+        for (let i = 0; i < size; i++) {
+            var stride = i * 4;
+            var v = Math.floor(THREE.MathUtils.seededRandom() * 255);
+            data[stride] = v;
+            data[stride + 1] = v;
+            data[stride + 2] = v;
+            data[stride + 3] = 255;
+        }
+        var texture = new THREE.DataTexture(data, width, height);
+        texture.needsUpdate = true;
+        return texture;
+    };
+    // create the plane
+    var createPlane = function (opt) {
         opt = opt || {};
-        this.boxCount = opt.boxCount === undefined ? 15 : opt.boxCount;
-        this.gx = 5;
-        this.gy = 5;
-        // this is what can be added to the scene
-        this.group = new THREE.Group();
-        plane = new THREE.Mesh(
+        var plane = new THREE.Mesh(
                 // plane geometry
-                new THREE.PlaneGeometry(this.gx, this.gy, this.gx, this.gy),
+                new THREE.PlaneGeometry(opt.gx, opt.gy, opt.gx, opt.gy),
                 // materials
                 new THREE.MeshStandardMaterial({
                     color: 0x00ff00,
-                    emissive: 0x0a0a0a
+                    map: createDataTexture(opt.gx * 4, opt.gy * 4),
+                    emissive: 0x0a0a0a,
+                    side: THREE.DoubleSide
                 }));
         plane.position.set(0, -0.5, 0);
         plane.rotation.set(-Math.PI / 2, 0, 0);
-        this.group.add(plane);
+        return plane;
+    };
+    // append mesh objects
+    var appendBoxMeshObjects = function (group, opt) {
+        opt = opt || {};
+        opt.boxCount = opt.boxCount === undefined ? 30 : opt.boxCount;
+        var boxIndex = 0,
+        boxArray = [],
+        x,
+        y,
+        z,
+        box;
         // place some boxes on the plane
-        while (boxIndex < this.boxCount) {
+        while (boxIndex < opt.boxCount) {
             box = new THREE.Mesh(
                     new THREE.BoxGeometry(1, 1, 1),
                     new THREE.MeshStandardMaterial({
                         color: 0x00ffff,
-                        emissive: 0x0a0a0a
+                        map: createDataTexture(8, 8),
+                        emissive: 0x1a1a1a
                     }));
-            x = Math.floor(this.gx * Math.random());
+            x = Math.floor(opt.gx * Math.random());
             y = 0;
-            z = Math.floor(this.gy * Math.random());
+            z = Math.floor(opt.gy * Math.random());
             if (boxArray[z] === undefined) {
                 boxArray[z] = [];
             }
@@ -296,14 +318,28 @@ var CubeStack = (function () {
             boxArray[z][x].push(box);
             y = boxArray[z][x].length - 1;
             box.position.set(
-                -2 + x,
+                (opt.gx / 2 * -1 + 0.5) + x,
                 y,
-                -2 + z);
-            this.group.add(box);
+                (opt.gy / 2 * -1 + 0.5) + z)
+            group.add(box);
             boxIndex += 1;
         }
     };
-}());
+    // public create method
+    api.create = function (opt) {
+        opt = opt || {};
+        opt.gx = opt.gx === undefined ? 5 : opt.gx;
+        opt.gy = opt.gy === undefined ? 5 : opt.gy;
+        var group = new THREE.Group();
+        appendBoxMeshObjects(group, opt)
+        var plane = createPlane(opt);
+        group.add(plane);
+        return group;
+    };
+    // retrun public api
+    return api;
+}
+    ());
 ```
 
 ### 3.2 - The Main javaScript file in which I am createing an array of cameras
@@ -319,12 +355,13 @@ In order to get a good sense of the difference between the orthographic camera c
 (function () {
     // SCENE, RENDERER, LIGHT
     var scene = new THREE.Scene();
-    // RENDER
+    scene.background = new THREE.Color(0.25, 0.25, 0.25);
+    scene.add(new THREE.GridHelper(10,10));
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
     var light = new THREE.PointLight();
-    light.position.set(0, 3, 1);
+    light.position.set(0, 3, 6);
     scene.add(light);
     // CAMERAS
     var width = 3.2,
@@ -356,10 +393,9 @@ In order to get a good sense of the difference between the orthographic camera c
         }
     });
     // STACK
-    // create an instance of the CubeStack Model
-    // and add it to the scene
-    var stack = new CubeStack();
-    scene.add(stack.group);
+    var stack = CubeStack.create({gx: 7, gy: 4, boxCount: 35});
+    stack.position.set(0, 0.6, 0)
+    scene.add(stack);
     // lOOP
     var frame = 0,
     maxFrame = 1000;
@@ -369,7 +405,8 @@ In order to get a good sense of the difference between the orthographic camera c
         // camera index
         ci = Math.floor(per * 8 % 2);
         requestAnimationFrame(loop);
-        stack.group.rotation.set(0, Math.PI * 2 * per, 0);
+        //stack.group.rotation.set(0, Math.PI * 2 * per, 0);
+        stack.rotation.set(0, Math.PI * 2 * per, 0);
         renderer.render(scene, cameras[ci]);
         frame += 1;
         frame = frame % maxFrame;
