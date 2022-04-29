@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-04-29 09:33:44
-version: 1.32
+updated: 2022-04-29 09:44:12
+version: 1.33
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With this kind of camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the side as the distance from the camera goes up. 
@@ -242,9 +242,13 @@ I then created and added to the scene an instance of this cube stack model that 
 
 ## 3 - The Three.js Orthographic Camera Example compared to the perspective camera
 
-Now that I have the model I can use it in a demo. I will want to make a demo that will show the difference between the two most common camera types by comparing what is rendered using an orthographic camera to that of a perspective camera. To do this I will want to use more than one camera in my demo.
+This cube stack modules that I made is kind of cool, but there is a lot more that I would like to add to it and fix. I will also want to make a demo that will show the difference between the two most common camera types by comparing what is rendered using an orthographic camera to that of a perspective camera. To do this I will want to use more than one camera in my demo by hvaing an array of cameras rather than just one camera and switch between the two as part of an update loop.
 
-### 3.1 - The cube stack module
+### 3.1 - The new cube stack module for this example
+
+I will be getting to what I did in the main javaScript example for thus post shortly, however for now I will want to go over what I changed in this cube stack module. For one thing I wanted to go with a module destine that is more in line with how I go about making these kinds of modules now where I have a create public method that I call to create the main object. Speaking of the main object I also now like to make it so that the main object is something based off the object3d class such as  mesh object or in this case a group.
+
+In this new cube stack module I made a whole bunch of little fixes and changes when it comes to arguments and how the position of cubes is adjusted. However one of the coolest changes that I have made is to make use of [data textures](/2022/04/15/threejs-data-texture/) as a way to add at least a little texture to the mesh objects that I am adding to each stack of cubes.
 
 ```js
 // Cube Stack example for s3-compare-to-perspective example in threejs-camera-orthographic
