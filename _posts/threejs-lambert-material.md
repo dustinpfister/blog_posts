@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2022-04-29 06:47:06
-version: 1.22
+updated: 2022-04-29 07:05:23
+version: 1.23
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
@@ -69,13 +69,13 @@ For a simple example I put together a scene containing a cube, and plane both of
 (function () {
     // Scene
     var scene = new THREE.Scene();
- 
-    // Camera
     var camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
     camera.position.set(500, 500, 500);
     camera.lookAt(0, 0, 0);
- 
-    // Cube
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // MESH OF A BOX GEOMETRY AND THE LAMBERT MATERIAL
     var cube = new THREE.Mesh(
             new THREE.BoxGeometry(100, 100, 100),
             new THREE.MeshLambertMaterial({
@@ -83,38 +83,24 @@ For a simple example I put together a scene containing a cube, and plane both of
             }));
     cube.position.set(0, 100, 0);
     scene.add(cube);
- 
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // background
-    scene.background = new THREE.Color(0x000000);
- 
-    // add plane to the scene
+    // MESH OF A PLANE GEOMETRY AND THE LAMBERT MATERIAL
     var plane = new THREE.Mesh(
-            new THREE.PlaneBufferGeometry(1500, 1500, 8, 8),
+            new THREE.PlaneGeometry(1500, 1500, 8, 8),
             new THREE.MeshLambertMaterial({
                 color: 0x00afaf,
                 side: THREE.DoubleSide
             }));
     plane.rotation.x = Math.PI / 2;
     scene.add(plane);
- 
-    // spotlight, and spotLight helper
-    var spotLight = new THREE.SpotLight(),
+    // SPOTLIGHT
+    var spotLight = new THREE.SpotLight(0xffffff, 1, 300, Math.PI / 180 * 40, 1, 0),
     spotLightHelper = new THREE.SpotLightHelper(spotLight);
     spotLight.add(spotLightHelper);
     scene.add(spotLight);
- 
-    // set position of spotLight,
-    // and helper bust be updated when doing that
-    spotLight.position.set(100, 200, -100);
+    spotLight.position.set(150, 200, -100);
     spotLightHelper.update();
- 
+    // render
     renderer.render(scene, camera);
- 
 }
     ());
 ```
@@ -123,21 +109,43 @@ This results in reflection in a manner that is expected with light reflecting fr
 
 ## 2 - The emissive, and color properties
 
-Unlike materials like the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial), the Lambert Material does not just have a single color for filling the faces of an polygon. There is a color that is shown when it is effected by a light source, and then there is a color that it is by default regardless if there is any light or not.
+Unlike materials like the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial), the Lambert Material does not just have a single color for filling the faces of a geometry. There is a color that is shown when it is effected by a light source, and then there is a color that it is by default regardless if there is any light or not which would be the emissive color.
 
-To set the color value that is not effected by light you will want to set the emissve property of the Lambert material, and use the color property to set the color that is to be reflected when effected by a light source.
+To set the color value that is not effected by light you will want to set the emissve property of the Lambert material, and use the color property to set the color that is to be reflected when effected by a light source. When doing so there is also the emissive Intensity property that can be used to adjust the intestacy of this emissive color.
 
-for example say we add the emissive property to the material that I gave in the plain to this:
 ```js
-// add plane to the scene
-var plane = new THREE.Mesh(
-    new THREE.PlaneBufferGeometry(1500, 1500, 8, 8),
-    new THREE.MeshLambertMaterial({
-        color: 0x00afaf,
-        emissive: 0x2a2a2a,
-        emissiveIntensity: .5,
-        side: THREE.DoubleSide
-}));
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
+    camera.position.set(500, 500, 500);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // add plane to the scene
+    var plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(1500, 1500, 8, 8),
+        new THREE.MeshLambertMaterial({
+            color: 0x00afaf,
+            emissive: 0x004a4a,
+            emissiveIntensity: 0.75,
+            side: THREE.DoubleSide
+    }));
+    plane.rotation.x = Math.PI / 2;
+    scene.add(plane);
+    // SPOTLIGHT
+    var spotLight = new THREE.SpotLight(0xffffff, 1, 300, Math.PI / 180 * 40, 1, 0),
+    spotLightHelper = new THREE.SpotLightHelper(spotLight);
+    spotLight.add(spotLightHelper);
+    scene.add(spotLight);
+    spotLight.position.set(150, 200, -100);
+    spotLightHelper.update();
+    // render
+    renderer.render(scene, camera);
+ 
+}
+    ());
 ```
 
 This will make all the area of the plane that is not effected by the spot light a shade of gray, rather than the default which is black. In addition to being able to set the emissive color, the intensity can also be set from a 0 to one value, it is also possible to define a texture that will modulate with the emissive color using the emmsiveMap property. To set a texture that will function as the regular color map, you will want to use the plain old map property.
