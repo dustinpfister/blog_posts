@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2022-04-29 08:16:27
-version: 1.29
+updated: 2022-04-29 08:31:41
+version: 1.30
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
@@ -59,7 +59,7 @@ The source code examples I am writing about in this post can be found on my [tes
 
 ### Version numbers matter
 
-When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was using r127. Always be mindful of what the version of threejs is that is being used in examples on the open web, threejs moves very fast with development, more so than many other projects. So code breaking changes come into play all the time, as such I have got into habit of mentioning what version I was using when I first wrote a post, and also when I edited the post last.
+When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was using r135 when making sure that the examples still work okay. Always be mindful of what the version of threejs is that is being used in examples on the open web, threejs moves very fast with development, more so than many other projects. So code breaking changes come into play all the time, as such I have got into habit of mentioning what version I was using when I first wrote a post, and also when I edited the post last.
 
 ## 1 - Basic Lambert Material Example
 
