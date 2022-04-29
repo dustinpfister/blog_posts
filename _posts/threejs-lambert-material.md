@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2022-04-29 07:21:21
-version: 1.25
+updated: 2022-04-29 07:49:25
+version: 1.26
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
@@ -153,6 +153,7 @@ This will make all the area of the plane that is not effected by the spot light 
 ## 3 - The map property and data textures
 
 Like many other materials in threejs there are a number of options for adding texture to the material, one such option would me the map property which is how to define a texture that will respond to a light source. In order to use one of these properties I will need some kind of texture first and one way to go about creating a texture without having to bother with loading an external image asset first would be to use [data textures](/2022/04/15/threejs-data-texture/).
+In threejs the THREE.DataTexture constructor is one of several options for creating a texture by way of some javaScript code rather that loading an image first. In order to use if first I need to create an instance of a uint8array, then it is just a matter of creating the color channel data for the array. For this example I just want to make a simple pseudo random gray scale texture so I am just creating a random value between 0 and 255 and setting that for read, green, and blue for each pixel, then always setting 255 for the alpha channel for a pixel.
 
 ```js
 (function () {
