@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2022-04-29 06:37:36
-version: 1.19
+updated: 2022-04-29 06:42:02
+version: 1.20
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
@@ -17,7 +17,7 @@ If you are just getting started with three.js you might be familiar with at leas
 
 ## The Lambert material and what to know first
 
-I assume you have at least a basic working knowledge of three.js, and are now interested in learning more about the material options used in three.js. If you have no background with threejs at all then I have my take on the subject of [getting started](/2018/04/04/threejs-getting-started/) on three.js. Also it should go without saying that you should have at least some background working with javaScript by itself, and many other things that have to do with client side javaScript development. In this case I might not get into everything that you should know before hand in the section, but I will be touching base on some things briefly here.
+If you have no experience with threejs at all then I have my take on the subject of [getting started](/2018/04/04/threejs-getting-started/) on three.js. Also it should go without saying that you should have at least some background working with javaScript by itself, if not I have my [main getting started with javaScript](/2018/11/27/js-getting-started/) type post also. In this case I might not get into everything that you should know before hand in the section, but I will be touching base on some things briefly here.
 
 ### Why the name Lambert?
 
