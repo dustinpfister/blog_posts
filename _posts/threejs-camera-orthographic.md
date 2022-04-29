@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-04-29 09:50:17
-version: 1.34
+updated: 2022-04-29 09:57:22
+version: 1.35
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With this kind of camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the side as the distance from the camera goes up. 
@@ -31,7 +31,7 @@ The [source code examples](https://github.com/dustinpfister/test_threejs/tree/ma
 
 ### Version numbers matter in three.js
 
-When I first wrote this post back in May of 2018 I as using revision r91 of three.js, and as of this writing I was using r127 of three.js last time I came around to doing a little editing with this post. With that said I have got into the habit of briefly mentioning what versions I was using when first writing this, and also when I took a moment to review how the code example work with late versions of three.js.
+When I first wrote this post back in May of 2018 I as using revision r91 of three.js, and as of this writing I was using r135 of three.js last time I came around to doing a little editing with this post. With that said I have got into the habit of briefly mentioning what versions I was using when first writing this, and also when I took a moment to review how the code example work with late versions of three.js.
 
 ## 1 - A basic example of the Orthographic Camera
 
