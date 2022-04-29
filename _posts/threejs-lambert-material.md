@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2022-04-29 06:44:55
-version: 1.21
+updated: 2022-04-29 06:47:06
+version: 1.22
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
@@ -31,7 +31,7 @@ I often like to develop on systems like a raspberry pi that only has so much res
 
 ### The Lambert Material needs a light source
 
-First off the Lambert material needs a light source. If you use the material without any light source shining on it, and you have a black background, you may end up staring at a black screen. So before we get into the material, lets just take a moment to touch base a lights just for a moment.
+First off the Lambert material needs a light source, unless I am going to just go with emissive maps at least. If you use the material without any light source shining on it, and you have a black background, you may end up staring at a black screen when first getting started with this kind of material. So before we get into the material, lets just take a moment to touch base a lights just for a moment.
 
 ```js
 // spotlight
