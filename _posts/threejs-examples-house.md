@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2022-04-05 08:58:09
-version: 1.22
+updated: 2022-04-30 11:56:10
+version: 1.23
 ---
 
 Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. This time it will be yet another one of my models that is just a collection of mesh object using the built in threejs geometry constructors rather than an external file of one type or another.
@@ -15,15 +15,17 @@ My general idea that I have in mind is that if I make enough of these kinds of m
 
 <!-- more -->
 
-## 1 - What to know before continuing with this Three.js house model
+## What to know before continuing with this Three.js house model
 
 This is a post on using the javaScript library known as three.js to create a simple 3d scene with built in geometries and the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry). I trust that you have at least some background with three.js and javaScript otherwise you might end up having a hard time gaining something of value from this post. Of course you should at this post have a solid understating of the basics at least when it comes to creating a scene in three.js, and also how to use [Groups](/2018/05/16/threejs-grouping-mesh-objects/), and [Orbit Controls](/2018/04/13/threejs-orbit-controls/).
 
-### 1.1 - Version Numbers matter with three.js
+<iframe class="youtube_video" src="https://www.youtube.com/embed/Hor4TTLhIvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Version Numbers matter with three.js
 
 When I started this post I was using three.js r127 which was a later version of three.js in April of 2021, in the future this version will most likely be out of data and the code might break. So if you are running into problems where this code is not working for you the first thing to check might be to make use that you are using a version of three.js that will work with this to begin with.
 
-## 2 - The House Module
+## 1 - The House Module
 
 So now for the house module where I will be pulling all the javaScript code that I am using to create this simple crude model of a house. Inside the body of an IIFE I have an object that contains default materials to use with the house that can be replaced when using the model.
 
@@ -109,7 +111,7 @@ I then have the create method of the module which as of this writing is the one 
     (this['HouseMod'] = {}));
 ```
 
-## 3 - Now for a Demo of this
+## 2 - Now for a Demo of this
 
 So now I am going to want to test out this house model by setting up a scene, and maybe at least one more attentional mesh that will serve as the ground of an over all larger scene. When it comes to really using this I will want to have at least a few more mesh objects, and models like this including a person model, but maybe that is all a matter for another post.
 
@@ -189,7 +191,7 @@ loop();
 
 When this demo is up an running things seem to be working as I would expect for this thus far. I have a simple little house on a plane, and the directional light is resulting in shadows being casted onto the plain from the house. There is nit much more to write about at this point, but if I come up with some additional things to play with maybe I can come up with something a little ore interesting.
 
-## 3 - Conclusion
+## Conclusion
 
 So this is not much to look at for now, but as I make more models like this I think I will eventually start something where I am working with a bunch of models like this to produce an over all larger project. In fact sense I first wrote this post I have got around to writing another post on another examples that is a more advanced version of this example that is just that. I have come to just simply calling it [the backyard scene example](/2021/05/07/threejs-examples-backyard/) for now and it includes this house model along with many others that I have made thus far.
 
