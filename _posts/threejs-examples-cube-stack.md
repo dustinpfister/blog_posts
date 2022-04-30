@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-04-30 13:37:43
-version: 1.5
+updated: 2022-04-30 13:39:27
+version: 1.6
 ---
 
 A long time ago now I made a cube stack module that I used in my [post on the orographic camera](/2018/05/17/threejs-camera-orthographic/). As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my [threejs example posts](/2021/02/19/threejs-examples/). So I copied over the current state if the cube stack module into a new folder, and started making some chances to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
@@ -215,6 +215,8 @@ var CubeStack = (function () {
 ```
 
 ### 1.3 - Main javaScript file
+
+Now that I have my cube stack module in decent shape I will want to have a little more javaScript code that make use of the module to create one of these cube stack objects in a scene object of an over all threejs project.
 
 ```js
 (function () {
