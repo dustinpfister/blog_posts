@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-04-30 13:16:53
-version: 1.2
+updated: 2022-04-30 13:31:43
+version: 1.3
 ---
 
 A long time ago now I made a cube stack module that I used in my post on the orographic camera. As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my threejs example posts. So I copied over the current state if the cube stack module into a new folder, and started making some chances to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
@@ -16,6 +16,10 @@ A long time ago now I made a cube stack module that I used in my post on the oro
 
 
 ## 1 - First state of this cube Stack threejs example
+
+In this section I will be going over the cube stack example as it was when I first wrote this blog post. Over time I will likely come around to doing a little editing of this post, and when doing so I also often make some changes to the state of the source code of the example as well.
+
+When I first started this project I just wanted to make a few changes to what I all ready had when it comes to the example for my blog post on the orthographic camera. I wanted to make any needed changes when it comes to things like arguments for the create method of the module, but I also wanted to start an object that will contain effects that can be used to change the state of the cube stacks.
 
 ### 1.1 - The data textures module
 
