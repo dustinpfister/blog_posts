@@ -5,14 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-04-30 13:55:19
-version: 1.10
+updated: 2022-04-30 13:57:23
+version: 1.11
 ---
 
 A long time ago now I made a cube stack module that I used in my [post on the orographic camera](/2018/05/17/threejs-camera-orthographic/). As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my [threejs example posts](/2021/02/19/threejs-examples/). So I copied over the current state if the cube stack module into a new folder, and started making some chances to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
 
 <!-- more -->
 
+## The cube stack module threejs example, and what to know first
+
+This is a post on a javaScrip module that created and returns an object that is a group with additional groups and mesh objects attached working on top of the javaScript library known as threejs.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/uxYi8UyITU8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
