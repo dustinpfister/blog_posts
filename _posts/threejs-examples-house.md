@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2022-04-30 11:56:10
-version: 1.23
+updated: 2022-04-30 12:06:03
+version: 1.24
 ---
 
-Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. This time it will be yet another one of my models that is just a collection of mesh object using the built in threejs geometry constructors rather than an external file of one type or another.
+Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind in one or more future projects. This time it will be yet another one of my models that is [just a group](/2018/05/16/threejs-grouping-mesh-objects/) collection of [mesh objects](/2018/05/04/threejs-mesh/) using the built in threejs geometry constructors rather than an external file of one type or another such as the DAE file standard.
 
 My general idea that I have in mind is that if I make enough of these kinds of models I can use them to make an over all larger scene that will include a house model like this, along with some trees, cars, people and other similar objects that can then be used to make some kind of crude animation.
 
