@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-04-30 14:09:09
-version: 1.15
+updated: 2022-04-30 14:11:25
+version: 1.16
 ---
 
 A long time ago now I made a cube stack module that I used in my [post on the orographic camera](/2018/05/17/threejs-camera-orthographic/). As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my [threejs example posts](/2021/02/19/threejs-examples/). So I copied over the current state if the cube stack module into a new folder, and started making some chances to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
@@ -294,6 +294,8 @@ For this demo I made just a single instance of the cube stack object with custom
 }
     ());
 ```
+
+Thus far this module seems to be working great when it comes to just having a way to create a kind of object that is Just a collection of nested objects that I can then change and mutate in all kinds of different ways. I all ready have a lot of ideas when it comes to additional changes for future revisions of this cube stack module, but the core idea of what I want with this seems to all ready be working well.
 
 ## Conclusion
 
