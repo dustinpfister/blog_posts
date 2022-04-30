@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-04-30 13:46:38
-version: 1.9
+updated: 2022-04-30 13:55:19
+version: 1.10
 ---
 
 A long time ago now I made a cube stack module that I used in my [post on the orographic camera](/2018/05/17/threejs-camera-orthographic/). As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my [threejs example posts](/2021/02/19/threejs-examples/). So I copied over the current state if the cube stack module into a new folder, and started making some chances to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
@@ -24,7 +24,7 @@ When I first started this project I just wanted to make a few changes to what I 
 
 ### 1.1 - The data textures module
 
-For this example I wanted to have a module that I would use to add textures to the cubes with data textures.
+For this example I wanted to have a module that I would use to add textures to the cubes with [data textures](/2022/04/15/threejs-data-texture/). This is a module that I have worked out for other projects actually and have been copied it form one project to another, making little changes as needed here and there. The basic idea with this is that I am just creating textures from javaScript code rather than that of making use of an exterior image assets that must be loaded first. Another way of doing this sort of thing would be to make use of [canvas textures](/2018/04/17/threejs-canvas-texture/) which is also a way to create textures with javaScript code, only with the 2d drawing context of canvas elements rather than raw color channel data.
 
 ```js
 // ********** **********
