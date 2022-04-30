@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-04-29 11:17:22
-version: 1.1
+updated: 2022-04-30 13:16:53
+version: 1.2
 ---
 
-A long time ago now I made a cube stack module that I used in my post on the orographic camera. As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my threejs example posts.
+A long time ago now I made a cube stack module that I used in my post on the orographic camera. As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my threejs example posts. So I copied over the current state if the cube stack module into a new folder, and started making some chances to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
 
 <!-- more -->
 
