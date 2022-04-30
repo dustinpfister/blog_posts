@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-04-30 14:14:17
-version: 1.17
+updated: 2022-04-30 14:15:45
+version: 1.18
 ---
 
 A long time ago now I made a cube stack module that I used in my [post on the orographic camera](/2018/05/17/threejs-camera-orthographic/). As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my [threejs example posts](/2021/02/19/threejs-examples/). So I copied over the current state if the cube stack module into a new folder, and started making some chances to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
@@ -120,6 +120,8 @@ var datatex = (function () {
 ### 1.2 - The cube stack module
 
 Now for the source code for the cube stack module which at this time has two public methods of interest, one of which is the crate method, and the other is the apply effect method. The create method as the name suggests is what I will be calling in the code that makes use of this module to create a single instance of this cube stack object. There is then making use of what is now just one, but in time might prove to be a full effects that are built into the module itself. In future revisions of this example I might also allow for a way to create external plug ins as a way to extend the effects object, but for now I just have one such effect in the effects object that scales the group that contains all the cubes rather that each cube.
+
+I then have a number of private helper functions for creating the plane on which the cubes will be stacked, as well as for appending cubes to the cube group of the main group object.
 
 ```js
 // Cube Stack example for s3-compare-to-perspective example in threejs-camera-orthographic
