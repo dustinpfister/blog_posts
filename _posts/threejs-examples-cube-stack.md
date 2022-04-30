@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-04-30 13:41:27
-version: 1.7
+updated: 2022-04-30 13:44:29
+version: 1.8
 ---
 
 A long time ago now I made a cube stack module that I used in my [post on the orographic camera](/2018/05/17/threejs-camera-orthographic/). As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my [threejs example posts](/2021/02/19/threejs-examples/). So I copied over the current state if the cube stack module into a new folder, and started making some chances to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
@@ -283,4 +283,4 @@ Now that I have my cube stack module in decent shape I will want to have a littl
 
 ## Conclusion
 
-What is the next step with this cube stack example is the question now at this point. I have been making a number of videos for each of my blog posts that I have wrote thus far, this post is one such post that I have made for that can be viewed at the top of this content here.
+What is the next step with this cube stack example is the question now at this point. I have been making a number of videos for each of my blog posts that I have wrote thus far, this post is one such post that I have made for that can be viewed at the top of this content here. I am thinking that I might want to make at least one more threejs example that is a kind of grid where each tile location in the gird is a single instance of this cube stack object. There is then working out much more in terms of effects that can be applied for all instances of this kind of object as well as on an instance by instance bases. The main goal I have in mind here is to start a new series of videos where I am creating videos first and foremost and then maybe writing one or two blog posts about them rather than the other way around.
