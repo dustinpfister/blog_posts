@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2022-05-01 10:47:28
-version: 1.27
+updated: 2022-05-01 10:53:04
+version: 1.28
 ---
 
 When working with [materials in three js](/2018/04/30/threejs-materials/) many of the materials support one or more types of maps for skinning a geometry, one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent. So then an aplha map will come into play when it comes to working things out with [transparency in a three.js project](/2021/04/21/threejs-materials-transparent/) along with the the transparency and opacity properties of a material.
@@ -95,6 +95,10 @@ renderer.render(scene, camera);
 The transparent property of the material also needs to be set to true, and a renderer that supports transparency also needs to be used. The usual webGl renderer worked just fine for me in this example, but other renderer options may not support this feature. Still that is the basic idea to create a texture that is in gray scale and then just add that texture to the alpha map property of the material to which I want to add an alpha map for.
 
 ## 2 - Animation loop example of an alpha map
+
+So now that I have a basic, static example out of the way maybe the next step is to do something involving an animation loop using request animation frame. When I made the first video for this post I took the basic example and reworked what I was doing to update the canvas texture. So then I made another example based off of that that I now have for this new section on alpha maps and using canvas textures for such maps.
+
+When it comes to updating a canvas texture all I need to do is just update the state of the canvas element that was used for the texture object, and then just make sure that the needs update property of the texture is set to true.
 
 ```js
 var scene = new THREE.Scene();
