@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2022-05-01 10:27:45
-version: 1.25
+updated: 2022-05-01 10:33:58
+version: 1.26
 ---
 
 When working with [materials in three js](/2018/04/30/threejs-materials/) many of the materials support one or more types of maps for skinning a geometry, one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent. So then an aplha map will come into play when it comes to working things out with [transparency in a three.js project](/2021/04/21/threejs-materials-transparent/) along with the the transparency and opacity properties of a material.
@@ -35,7 +35,11 @@ It is a good idea to really look into what the options are when it comes to mate
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using three.js version r104, and the last time I edited this post I was using r127. Three.js is still being developed and is moving pretty fast, in the future there might come another time where this code might break. So if things are not working out for you with this example, and many other examples on the open Internet the first thing you should check is the version of three.js that you are using.
+When I first wrote this post I was using three.js version r104, and the last time I edited this post I was using r135. Three.js is still being developed and is moving pretty fast, in the future there might come another time where this code might break. So if things are not working out for you with this example, and many other examples on the open Internet the first thing you should check is the version of three.js that you are using.
+
+### Source code is up on Github
+
+The source code examples in this post are up on [Github in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-alpha-map).
 
 ## 1 - Alpha map example in three js
 
