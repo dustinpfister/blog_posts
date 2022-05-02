@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 07:07:38
-version: 1.29
+updated: 2022-05-02 08:36:33
+version: 1.30
 ---
 
-A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. This mesh object can then be placed in a scene object which can then be pass to a render to render an over all scene with one or more of these mesh objects in it.
+A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
 
-The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructors that I find myself using often as I get into making three.js projects. It is typically what is used for any kind of 3d Object that will be placed in a [Scene](/2018/05/03/threejs-scene/) that will be some kind of object to look at or interact with then the is based off the [Object3d class](/2018/04/23/threejs-object3d/).
+The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructor functions that I find myself using often as I get into making three.js projects. What is great about mesh objects is that they are one of many objects in threejs that have the [Object3d class](/2018/04/23/threejs-object3d/) as a base class. So then when it comes to something like learning how to use the position property of a mesh object, that knowledge can then also be applied to cameras, groups, and anything else in threejs that is based off of the object3d class.
 
 <!-- more -->
 
