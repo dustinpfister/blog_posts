@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 09:41:12
-version: 1.39
+updated: 2022-05-02 09:42:56
+version: 1.40
 ---
 
 A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
@@ -237,6 +237,8 @@ There will comes times now and then in which I will want to make a single mesh o
 ```
 
 ## 5 - The look at method of the object3d class and rotation of geometry
+
+Another method of interest that I think I should touch base with in this post is the [look at method of the object 3d class](/2021/05/13/threejs-object3d-lookat/).
 
 ```js
 (function () {
