@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 08:49:16
-version: 1.32
+updated: 2022-05-02 08:51:01
+version: 1.33
 ---
 
 A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
@@ -33,7 +33,9 @@ There is learning how to go about making custom geometries with javaScript code,
 
 ### At some point you might want to read more on the Object3d, Vercor3 and Euler classes also
 
-A mesh object is based off of the Object3d class, and there are many additional objects in three.js that are based off of it also beyond just Mesh Objects. The Vector3 class also comes up a lot in code examples of three.js which is used for creating and working with a vector, or point in 3d space. With a mesh object the position property of a mesh is an instance of vector3 and that is what can be used to set and change the position of a mesh Object. There is also the Euler class that is like vecor3 only we are dealing with angles rather than a position.
+A mesh object is based off of the Object3d class, and there are many additional objects in three.js that are based off of it also beyond just Mesh Objects. [The Vector3 class](/2018/04/15/threejs-vector3/) also comes up a lot in code examples of three.js which is used for creating and working with a vector, or point in 3d space. With a mesh object the position property of a mesh is an instance of vector3 and that is what can be used to set and change the position of a mesh Object. 
+
+There is also the [Euler class](/2021/04/28/threejs-euler/) that is like vecor3 only we are dealing with angles rather than a position.
 
 ## 1 - Basic example of using a mesh
 
@@ -125,9 +127,9 @@ It is important to note that THREE.Mesh is just one of many constructors in thre
     ());
 ```
 
-Here I am using the Object3D position property that stores an instance of [Vector3](/2018/04/15/threejs-vector3/) that can be used to change what should be the center point of the Mesh geometry assuming it has been normalized. That might come off as a mouth full so maybe another way of explaining it is that there is a point in space in which the geometry of the mesh is relative to. The position property can be used to change the value of that point in space.
+Here I am using the Object3D position property that stores an instance of Vector3 that can be used to change what should be the center point of the Mesh geometry assuming it has been normalized. That might come off as a mouth full so maybe another way of explaining it is that there is a point in space in which the geometry of the mesh is relative to. The position property can be used to change the value of that point in space.
 
-Also In this demo I am using the rotation property, which is another useful property that is inherited from, use guessed it, Object3D. This rotation property stores an instance of the [Euler class](/2021/04/28/threejs-euler/) which is like vercor3 only we are taking angles rather than a matrix position.
+Also In this demo I am using the rotation property, which is another useful property that is inherited from, use guessed it, Object3D. This rotation property stores an instance of the Euler class which is like vercor3 only we are taking angles rather than a matrix position.
 
 ## 3 - Using an array of materials
 
