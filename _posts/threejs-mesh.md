@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 08:36:33
-version: 1.30
+updated: 2022-05-02 08:44:33
+version: 1.31
 ---
 
 A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
@@ -17,7 +17,9 @@ The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of 
 
 ## Threejs Mesh objects and what to know before continuing
 
-This is a post on making and working with a Mesh in the javaScript library called three.js. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone javaScipt in general. So I assume that you have at least some background with client side javaScript, and know how to set up a basic threejs project. There are some additional things that a devoper should be aware of when it comes to working with a mesh object, I will not be getting into all of it in this post of course, however in this section I think I will at least touch base on a few things.
+This is a post on making and working with a Mesh object in the javaScript library called three.js. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone with javaScipt in general, and any additional skills that are needed before hand. 
+
+I then assume that you have at least some background with client side javaScript, and know how to set up a basic threejs project. There are some additional things that a developer should be aware of when it comes to working with a mesh object though that I think that I should at least briefly mention before getting to the full soure code examples in this post.
 
 ### Version Numbers matter with three.js
 
@@ -25,7 +27,9 @@ The last time I edited this post I was using version r127 of three.js, and when 
 
 ### Geometry and materials are needed to create a mesh object
 
-When creating a mesh instance the first argument that is passed to the mesh constructor is a geometry, followed by a second argument that is a single material, or an array of materials that will be used to skin that geometry. The mesh is then an object that contains the geometry and materials, or references to such things. So then it pays to know a thing or two about how to go about creating a geometry, and to know what the options are with materials.
+When creating a mesh instance the first argument that is passed to the mesh constructor is a geometry, followed by a second argument that is a single material, or an array of materials that will be used to skin that geometry. The mesh is then an object that contains references to the geometry and materials that are used to compose the over all content of the mesh object. So then it pays to know a thing or two about how to go about creating a geometry, and to know what the options are with materials.
+
+There is learning how to go about making custom geometries with javaScript code, or also from an extremal resource such as json or a DAE file. However when it comes to just starting out, and also creating certain kinds of projects where built in geometry constructors will work fine there are constructors like that of the [THREE.BoxGeometry constructor](/2021/04/26/threejs-box-geometry/).
 
 ### At some point you might want to read more on the Object3d, Vercor3 and Euler classes also
 
