@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 09:47:09
-version: 1.41
+updated: 2022-05-02 15:46:01
+version: 1.42
 ---
 
 A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
@@ -20,6 +20,8 @@ The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of 
 This is a post on making and working with a Mesh object in the javaScript library called three.js. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone with javaScipt in general, and any additional skills that are needed before hand. 
 
 I then assume that you have at least some background with client side javaScript, and know how to set up a basic threejs project. There are some additional things that a developer should be aware of when it comes to working with a mesh object though that I think that I should at least briefly mention before getting to the full source code examples in this post.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/vZImQE_ikng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Geometry and materials are needed to create a mesh object
 
