@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 09:37:12
-version: 1.38
+updated: 2022-05-02 09:41:12
+version: 1.39
 ---
 
 A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
@@ -192,6 +192,8 @@ I have a post on this in which I get into this in detail but I can also provide 
 So then the process of skinning a mesh is just a matter of passing an array of materials to the mesh constructor rather than just a single material. After that it is just a question of making sure that the material index values are what they should be when it comes to the instance of the geometry that is being used with the mesh.
 
 ## 4 - Making copies of a mesh object
+
+There will comes times now and then in which I will want to make a single mesh object and then make [many copies of that single mesh object](/2019/12/18/threejs-mesh-copy/). For this task there is the clone method of the mesh object that can be used to create a kind of shallow copy of a mesh object. What I mean by a sallow copy is that this will be a copy of the mesh object itself but not always all nested objects of that mesh object, at least not when it comes to the material as this example will demonstrate.
 
 ```js
 (function () {
