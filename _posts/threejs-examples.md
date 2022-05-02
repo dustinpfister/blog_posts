@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-05-02 15:40:06
-version: 1.48
+updated: 2022-05-02 15:43:09
+version: 1.49
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -47,9 +47,13 @@ I wanted to make a quick simple three.js project that will helper me to just get
 
 This is just a Basic clock example which is another kind of example that I like to make when working with a new framework like threejs or any kind of canvas framework. Clocks are nice because they are generally easy to make, but yet there is also still all kinds of room for improvement when it comes to going in a new and interesting direction with it.
 
-### [ 2.7 - A Basic Clock Example](/2022/04/29/threejs-examples-cube-stack/)
+### [ 2.7 - Cube Stack Example](/2022/04/29/threejs-examples-cube-stack/)
 
-### [ 2.8 - A Basic Clock Example](/2022/05/02/threejs-examples-cube-stack-grid/)
+I while back I made a cool little example for my blog post on the orthographic camera, for this example I took that source code and added a lot more to it.
+
+### [ 2.8 - Cube Stack Grid Example](/2022/05/02/threejs-examples-cube-stack-grid/)
+
+I wanted to continue with my cube stack module and make an example that is a grid where each tile in the grid is an instance of my cube stack module.
 
 ### [ 2.9 - A dea file tools module ](/2021/06/25/threejs-examples-dae-tools/)
 
