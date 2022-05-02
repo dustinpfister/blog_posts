@@ -5,31 +5,31 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-02-10 07:03:33
-version: 1.27
+updated: 2022-05-02 07:05:05
+version: 1.28
 ---
 
 A Mesh is used in [three.js](https://threejs.org/) to create triangular polygon based mesh Object with a [geometry](/2018/04/14/threejs-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructors that I find myself using often as I get into making three.js projects. It is typically what is used for any kind of 3d Object that will be placed in a [Scene](/2018/05/03/threejs-scene/) that will be some kind of object to look at or interact with then the is based off the [Object3d class](/2018/04/23/threejs-object3d/).
 
 <!-- more -->
 
-## 1 - Threejs Mesh objects and what to know before continuing
+## Threejs Mesh objects and what to know before continuing
 
 This is a post on making and working with a Mesh in the javaScript library called three.js. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone javaScipt in general. So I assume that you have at least some background with client side javaScript, and know how to set up a basic threejs project. There are some additional things that a devoper should be aware of when it comes to working with a mesh object, I will not be getting into all of it in this post of course, however in this section I think I will at least touch base on a few things.
 
-### 1.1 - Version Numbers matter with three.js
+### Version Numbers matter with three.js
 
 The last time I edited this post I was using version r127 of three.js, and when I first wrote this post I was using version r91 of three.js. Between r91 and r127 a whole lot of code breaking changes have happened, so always check what version of three.js you are using when looking at old code examples of three.js on the open web.
 
-### 1.2 - Geometry and materials are needed to create a mesh object
+### Geometry and materials are needed to create a mesh object
 
 When creating a mesh instance the first argument that is passed to the mesh constructor is a geometry, followed by a second argument that is a single material, or an array of materials that will be used to skin that geometry. The mesh is then an object that contains the geometry and materials, or references to such things. So then it pays to know a thing or two about how to go about creating a geometry, and to know what the options are with materials.
 
-### 1.3 - At some point you might want to read more on the Object3d, Vercor3 and Euler classes also
+### At some point you might want to read more on the Object3d, Vercor3 and Euler classes also
 
 A mesh object is based off of the Object3d class, and there are many additional objects in three.js that are based off of it also beyond just Mesh Objects. The Vector3 class also comes up a lot in code examples of three.js which is used for creating and working with a vector, or point in 3d space. With a mesh object the position property of a mesh is an instance of vector3 and that is what can be used to set and change the position of a mesh Object. There is also the Euler class that is like vecor3 only we are dealing with angles rather than a position.
 
-## 2 - Basic example of using a mesh
+## 1 - Basic example of using a mesh
 
 A Basic example of using a mesh would involve creating an instance of a Mesh with the THREE.Mesh constructor, passing it the geometry that I want to use. Be default the basic material will be used with a random color, so if I want to use something else for a [material](/2018/04/30/threejs-materials/) then you I want to pass that to the Mesh Constructor as the second argument. The result can then be saved to a variable, or just directly added to the scene as there are ways of still getting a reference to the mesh by way of the children property of the scene object.
 
@@ -62,7 +62,7 @@ So then the Basic idea here is to create a scene object, then create and add a M
 So then this is a basic hello world type example of three.js where I am just looking at a cube. Now that I have that out of the way I can start to get to some more complex examples.
 
 
-## 3 - Moving a Mesh
+## 2 - Moving a Mesh
 
 It is important to note that THREE.Mesh is just one of many constructors in three.js that inherit from [Object3D](/2018/04/23/threejs-object3d/) which would be worth checking out in detail because much of what applies for a mesh will also apply for a camera, groups, a light source, and even a whole scene because all those things are built on top of Object3d. However for now it is a good idea to just know that Object3D brings a whole bunch of methods, and properties to THREE.Mesh that can be used to do things like moving the mesh around, and changing its rotation.
 
@@ -123,7 +123,7 @@ Here I am using the Object3D position property that stores an instance of [Vecto
 
 Also In this demo I am using the rotation property, which is another useful property that is inherited from, use guessed it, Object3D. This rotation property stores an instance of the [Euler class](/2021/04/28/threejs-euler/) which is like vercor3 only we are taking angles rather than a matrix position.
 
-## 4 - Using an array of materials
+## 3 - Using an array of materials
 
 One thing about a mesh is that a [material index](/2018/05/14/threejs-mesh-material-index/) can be with and array of materials when skinning a geometry of a mesh. So then it is possible to pass an array of materials rather than just a single instance of some kind of mesh material. When doing this the material index value of the face instances in the geometry is of interest when it comes to assigning what material is used for what face of the geometry. 
 
@@ -179,7 +179,7 @@ I have a post on this in which I get into this in detail but I can also provide 
 
 So then the process of skinning a mesh is just a matter of passing an array of materials to the mesh constructor rather than just a single material. After that it is just a question of making sure that the material index values are what they should be when it comes to the instance of the geometry that is being used with the mesh.
 
-## 5 - Conclusion
+## Conclusion
 
 There is not much more to write about with Mesh, at least not at this time. However that is not at all the case with many other topics that branch off from Mesh such as [geometry](/2018/04/14/threejs-geometry/), [materials](/2018/04/30/threejs-materials/), [Object3D](/2018/04/23/threejs-object3d/), [Vector3](/2018/04/15/threejs-vector3/), the [Scene object](/2018/05/03/threejs-scene/), and [many more](/categories/three-js/) just when it comes to the basics of three.js.
 
