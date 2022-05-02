@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 08:56:12
-version: 1.34
+updated: 2022-05-02 09:07:58
+version: 1.35
 ---
 
 A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
@@ -70,7 +70,7 @@ So then the Basic idea here is to create a scene object, then create and add a M
 So then this is a basic hello world type example of three.js where I am just looking at a cube. Now that I have that out of the way I can start to get to some more complex examples.
 
 
-## 2 - Moving a Mesh
+## 2 - Moving and rotating a Mesh object
 
 It is important to note that THREE.Mesh is just one of many constructors in three.js that inherit from Object3D which would be worth checking out in detail because much of what applies for a mesh will also apply for a camera, groups, a light source, and even a whole scene because all those things are built on top of Object3d. However for now it is a good idea to just know that Object3D brings a whole bunch of methods, and properties to THREE.Mesh that can be used to do things like moving the mesh around, and changing its rotation.
 
