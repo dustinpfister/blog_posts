@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 08:51:01
-version: 1.33
+updated: 2022-05-02 08:56:12
+version: 1.34
 ---
 
 A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
 
-The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructor functions that I find myself using often as I get into making three.js projects. What is great about mesh objects is that they are one of many objects in threejs that have the [Object3d class](/2018/04/23/threejs-object3d/) as a base class. So then when it comes to something like learning how to use the position property of a mesh object, that knowledge can then also be applied to cameras, groups, and anything else in threejs that is based off of the object3d class.
+The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructor functions that I find myself using often as I get into making three.js projects. What is great about mesh objects is that they are one of many objects in threejs that have the [Object3d class](https://threejs.org/docs/#api/en/core/Object3D) as a base class. So then when it comes to something like learning how to use the position property of a mesh object, that knowledge can then also be applied to cameras, groups, and anything else in threejs that is based off of the object3d class.
 
 <!-- more -->
 
@@ -31,11 +31,11 @@ When creating a mesh instance the first argument that is passed to the mesh cons
 
 There is learning how to go about making custom geometries with javaScript code, or also from an extremal resource such as json or a DAE file. However when it comes to just starting out, and also creating certain kinds of projects where built in geometry constructors will work fine there are constructors like that of the [THREE.BoxGeometry constructor](/2021/04/26/threejs-box-geometry/).
 
-### At some point you might want to read more on the Object3d, Vercor3 and Euler classes also
+### At some point you might want to read more on the Object3d, Vector3 and Euler classes also
 
-A mesh object is based off of the Object3d class, and there are many additional objects in three.js that are based off of it also beyond just Mesh Objects. [The Vector3 class](/2018/04/15/threejs-vector3/) also comes up a lot in code examples of three.js which is used for creating and working with a vector, or point in 3d space. With a mesh object the position property of a mesh is an instance of vector3 and that is what can be used to set and change the position of a mesh Object. 
+A mesh object is based off of the [Object3d class](/2018/04/23/threejs-object3d/), and there are many additional objects in three.js that are based off of it also beyond just Mesh Objects. [The Vector3 class](/2018/04/15/threejs-vector3/) also comes up a lot in code examples of three.js which is used for creating and working with a vector, or point in 3d space. With a mesh object the [position property](/2022/04/04/threejs-object3d-position/) of a mesh is an instance of vector3 and that is what can be used to set and change the position of a mesh Object. Another property of instance for mesh objects is the [scale property](/2021/05/11/threejs-object3d-scale/) which is also an instance of this Vector3 class.
 
-There is also the [Euler class](/2021/04/28/threejs-euler/) that is like vecor3 only we are dealing with angles rather than a position.
+There is also the [Euler class](/2021/04/28/threejs-euler/) that is like vector3 only we are dealing with angles rather than a position. So with that said the [rotation property](/2022/04/08/threejs-object3d-rotation/) of a mesh object, as well as anything else based off of object 3d class.
 
 ## 1 - Basic example of using a mesh
 
