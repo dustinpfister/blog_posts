@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 09:42:56
-version: 1.40
+updated: 2022-05-02 09:47:09
+version: 1.41
 ---
 
 A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
@@ -238,7 +238,9 @@ There will comes times now and then in which I will want to make a single mesh o
 
 ## 5 - The look at method of the object3d class and rotation of geometry
 
-Another method of interest that I think I should touch base with in this post is the [look at method of the object 3d class](/2021/05/13/threejs-object3d-lookat/).
+Another method of interest that I think I should touch base with in this post is the [look at method of the object 3d class](/2021/05/13/threejs-object3d-lookat/). This is a method that I have used with the camera object in just about all of the examples in this post thus far. Because it is often used with a camera object new developers might assume that this is a method of a camera object, but it is actually a method of the object3d class. because the mesh object like a camera is also based off of object 3d I can also use this look at method as a way to have a mesh object face a position in word space.
+
+However when it comes to a mesh object I might often need to adjust what the 'front' of the geometry is, for this tasks I will want to use the [rotate methods of an instance of buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/).
 
 ```js
 (function () {
