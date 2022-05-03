@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2022-04-12 14:05:35
-version: 1.22
+updated: 2022-05-03 16:05:11
+version: 1.23
 ---
 
 In [three.js](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified. Also it is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. 
@@ -22,6 +22,8 @@ So today I thought I would continue expanding my [collection of posts on three.j
 ## 1 - What to know before reading up more on the Basic Material
 
 This is a post on the basic material used in three.js, one of several options when it comes to skinning a mesh object. If you are new to three.js, you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on three.js. I will not be getting into detail with the very basic of three.js here, however of course I will be keeping many of these examples fairly simple. There are still a few things that you should maybe know before continuing to read this post on the basic material along so in this section I will be just outlining some of these things.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/2SaiqtO_yQA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### 1.1 - Version Numbers are impotent with three.js
 
