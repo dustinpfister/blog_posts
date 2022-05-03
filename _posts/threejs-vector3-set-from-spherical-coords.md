@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 957
-updated: 2022-02-05 07:01:00
-version: 1.17
+updated: 2022-05-03 10:55:38
+version: 1.18
 ---
 
 When it comes to working out all kinds of simple hello world type project examples using threejs for the sake of learning the basics of threejs, or just gaining a more solid understanding of the library regardless of experience, the Vector three Class might come up often when doing so. There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). 
@@ -16,7 +16,7 @@ One this that often want to do when making any kind of project with three.js is 
 <!-- more -->
 
 
-## 1 - The basics of the set from spherical coords method and what else to know first
+## The basics of the set from spherical coords method and what else to know first
 
 In this section I will be starting out with a very basic example of just using the method directly with a few other threejs features. I assume that you know at least a thing or two when it comes to [getting started with a front end javaScript project](/2018/11/27/js-getting-started/), if not getting into things of that nature is outside the scope of this post. 
 
@@ -26,7 +26,7 @@ Also all though I will be trying to keep the examples here fairly simple with th
 
 The version of threejs that I was using for this example was r127. Because of feedback that I have received about various things I have made a habit of always taking note of what version of threejs I was using when I made the examples in a blog post on threejs. The reason why is because threejs is a very fast moving library in terms of development, and code breaking changes are often made in each new revision.
 
-### 1.1 - A Very basic example of the setFromSphericalCoords Vector3 method
+### A Very basic example of the setFromSphericalCoords Vector3 method
 
 For a very simple getting started type example of this method there is just calling the setFromSphericalCoords method off of an instance of Vector3, passing some arguments and see if I get a desired outcome with the values. The first argument that I want to pass to this method is the radius for the sphere, the second and third and then the angles that I want to use. The angle values that are used for this method, like many methods in javaScript will expect a radian value, not a degree value for the angles. Conversion is fairly easy when it comes to just doing a quick expression, but there is also a number of useful methods in the [MathUtils object of threejs](https://threejs.org/docs/#api/en/math/MathUtils) for making this kinds of conversions also.
 
@@ -43,7 +43,7 @@ For a very simple getting started type example of this method there is just call
     ());
 ```
 
-## 2 - Basic Scene example
+## 1 - Basic Scene example
 
 So now that I am getting some values that look good there is now the question of starting to use this set from spherical coords method in at least one if not more basic scene examples. For this example of a basic threejs scene I am just going to be using this spherical coords method to position a mesh. I will not be doing anything fancy when it comes to light and animation so for the single method object that I will be positioning I will be using the [THREE.SphereGeomrty](/2021/05/26/threejs-sphere/) constructor with the [THREE.MeshBasicMaterial](/2018/05/05/threejs-basic-material/) which is the typical go to material for any scene in which I am not doing anything with light.
 
@@ -97,6 +97,6 @@ When it comes to mesh object, camera object, or any object that is based off of 
     ());
 ```
 
-## 3 - Conclusion
+## Conclusion
 
 That will be it for now when it comes to this set from spherical coords method for now at least until I come around to do a bot more editing of this post. I may get around to doing that later thins month but I would not hold by breath on that I have a [whole lot of other posts on threejs](/categories/three-js/) that I have wrote over the years, and many of them need a great deal of editing also. This is a subject that I do seem to keep coming back to now and then though So I am sure that there is more to add on this when I get around to it.
