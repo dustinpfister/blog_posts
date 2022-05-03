@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-02 15:46:01
-version: 1.2
+updated: 2022-05-03 10:58:23
+version: 1.3
 ---
 
 Last week I made a cube stack [threejs example](/2021/02/19/threejs-examples/) that was based off of an older example that I made for an old post for the orographic camera. I made a whole lot of improvements to that dusty old example for that post, and not for todays threejs example I thought it would be cool to start another project example that is a grid of these cube stack objects actually.
@@ -16,7 +16,7 @@ Last week I made a cube stack [threejs example](/2021/02/19/threejs-examples/) t
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/5rQZM4X5fYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## 1 - The first stae of the cube stack grind module
+## 1 - The first state of the cube stack grind module
 
 ```js
 // Cube Stack Grid example from threejs-examples-cube-stack-grid
@@ -95,3 +95,7 @@ var CubeStackGrid = (function () {
 }
     ());
 ```
+
+## Conclusion
+
+So far I have all the basic features in place that I wanted with this threejs example when it comes to having control over what the size of each cube stack should be and the width and height of the grid of cube stacks. The long term plane with this was to just have a system for creating some kind of interesting looking visual thing, and to at least some extent I think I all ready have that.
