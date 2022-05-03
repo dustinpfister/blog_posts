@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2022-04-20 12:03:33
-version: 1.40
+updated: 2022-05-03 10:55:36
+version: 1.41
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create objects that helper to visualize what is going on with state of various components of a threejs project, the arrow helper is one of these such methods. 
@@ -22,6 +22,8 @@ So then in this post I will be going over some basic examples of arrow helpers, 
 This is a post on using the built in arrow helpers in three.js to get a visual on directions in a three.js project. This is a fairly simple post, well at least when it comes to the very basics of using the constructor at least, but it is still not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have at least a little background when it comes to those topics and are just interested in reading more about how to use the library in new and interesting ways when it comes to helper methods, and all kinds of things that might branch off from there. 
 
 So I will not be going over every little detail when it comes to the very basics, however in this section I will be going over a few things that you might want to know before continuing to read the rest of this post
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/XW762oGXAZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Read up  ore on the object3d class
 
