@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-03 10:58:23
-version: 1.3
+updated: 2022-05-03 11:01:12
+version: 1.4
 ---
 
 Last week I made a cube stack [threejs example](/2021/02/19/threejs-examples/) that was based off of an older example that I made for an old post for the orographic camera. I made a whole lot of improvements to that dusty old example for that post, and not for todays threejs example I thought it would be cool to start another project example that is a grid of these cube stack objects actually.
@@ -17,6 +17,12 @@ Last week I made a cube stack [threejs example](/2021/02/19/threejs-examples/) t
 <iframe class="youtube_video" src="https://www.youtube.com/embed/5rQZM4X5fYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 1 - The first state of the cube stack grind module
+
+This is an example that is a continuation of what I worked out in a previsions threejs example, and when it comes to the source code of that example I did not change much of anything. I will include that here in this section but it will just be more of the same when it comes to what I all ready wrote about in that post.
+
+### 1.1 - The cube stack grid module
+
+So then here is the current state of the cube stack module that I can use to create a grid of cube stack objects.
 
 ```js
 // Cube Stack Grid example from threejs-examples-cube-stack-grid
