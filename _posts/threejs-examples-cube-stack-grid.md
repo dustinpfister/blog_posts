@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 15:18:12
-version: 1.18
+updated: 2022-05-04 15:20:57
+version: 1.19
 ---
 
 Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cube-stack/ ) that was based off of an older example that I made for an [old post for the orographic camera](/2018/05/17/threejs-camera-orthographic/). I made a whole lot of improvements to that dusty old example for that post, and now for todays [threejs example ](/2021/02/19/threejs-examples/) I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
@@ -295,7 +295,7 @@ var CubeStack = (function () {
 
 ### 1.3 - The data textures module
 
-I am using this data textures module to create textures for the cube stack module, which in turn is then use by the cube stack grid module.
+I am using this data textures module to create textures for the cube stack module, which in turn is then use by the cube stack grid module. I have wrote a post on data texture alone if you would like to read up more on this specific thing alone when it comes to textures and materials. Another option for adding texture with just javaScript code alone would be to make use of canvas elements, and there is also of course loading external image assets as well by making use of the data texture loader.
 
 ```js
 // ********** **********
