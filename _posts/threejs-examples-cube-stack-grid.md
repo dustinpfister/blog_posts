@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 15:02:27
-version: 1.12
+updated: 2022-05-04 15:04:18
+version: 1.13
 ---
 
 Last week I made a cube stack [threejs example](/2021/02/19/threejs-examples/) that was based off of an older example that I made for an old post for the orographic camera. I made a whole lot of improvements to that dusty old example for that post, and now for todays threejs example I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
@@ -35,6 +35,8 @@ This is an example that is a continuation of what I worked out in a previsions t
 ### 1.1 - The cube stack grid module
 
 So then here is the current state of the cube stack module that I can use to create a grid of cube stack objects. For now this module just has a single public methods that I use in my main javaScript file to create and instance of this cube stack grid object. The rest of what I have in the module is just hard coded defaults or options that I can or should set in the code that uses the module.
+
+The general idea here is that I call the create method of this module and when doing so I pass some options for the create method. There are of course options for setting the width and height of the cube stack grid, but there are also options for setting what the width and height should be for each cube stack object also.
 
 ```js
 // Cube Stack Grid example from threejs-examples-cube-stack-grid
