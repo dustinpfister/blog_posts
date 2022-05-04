@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2022-05-04 10:56:39
-version: 1.23
+updated: 2022-05-04 11:14:04
+version: 1.24
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -22,10 +22,6 @@ So there is a great deal to know about when it comes to making lines in three.js
 This is a post on just one little aspect of three.js which is a javaScript project that allows for doing things involving solid geometry. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional aspects of [javaScript in general](/2018/11/27/js-getting-started/) that are required in order to work with the library. You will want to know about the [Vector3 constructor](/2018/04/15/threejs-vector3/) as that is what is used to define points in 3d space in three.js. You should also be aware of [Materials](/2018/04/30/threejs-materials/), [Cameras](/2018/04/06/threejs-camera/), [Renderer's](/2018/11/24/threejs-webglrenderer/), and the [Scene Object](/2018/05/03/threejs-scene/) that are all needed to make a three.js project which are also basic things that you should know about before hand in a getting started type post.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/Cs5QXW0xldQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-### Version Numbers matter
-
-As I say in every three.js post of mine, three.js is a project where the version number matters big time. When I first wrote this post I was using [three.js 0.91.0](https://github.com/mrdoob/three.js/tree/r91) \( or just r91 for short \), and the last time I edited the post I was using three.s r127. Sense then many code breaking changes have happened in three.js with all sorts of things, and when it comes to lines the geometry now has to be an Instance of Buffer Geometry.
 
 ### A word On Materials when working with lines.
 
@@ -71,6 +67,14 @@ In general I will want to use the Buffer Geometry constructor to create the geom
                 color: 0x0000ff
             }));
 ```
+
+### Version Numbers matter
+
+As I say in every three.js post of mine on three.js the project is a project in which the version number matters big time. When I first wrote this post I was using [three.js 0.91.0](https://github.com/mrdoob/three.js/tree/r91) \( or just r91 for short \), and the last time I edited the post I was using three.s r135. Sense then many code breaking changes have happened in three.js with all sorts of things, and when it comes to lines the geometry now has to be an Instance of Buffer Geometry.
+
+### Source code examples are up on Github
+
+The source code examples that I am written about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-line).
 
 #### Using the Geometry Constructor \( removed as of r125+ \)
 
