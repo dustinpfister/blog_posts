@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 15:15:11
-version: 1.17
+updated: 2022-05-04 15:18:12
+version: 1.18
 ---
 
 Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cube-stack/ ) that was based off of an older example that I made for an [old post for the orographic camera](/2018/05/17/threejs-camera-orthographic/). I made a whole lot of improvements to that dusty old example for that post, and now for todays [threejs example ](/2021/02/19/threejs-examples/) I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
@@ -119,6 +119,8 @@ var CubeStackGrid = (function () {
 ### 1.2 - The cube stack module
 
 This is the source code for the other threejs example that I did before this to which I am using for each cell in the grid of cube stack objects here. I did not change much of anything with this when making this example I am just parking it here again just for the hell of it then.
+
+There are still just two public methods one of which is a create method that will create a cube stack object, and the other is a way to apply one of several built in effects that mutate the state of one of these objects. When it comes to creating textures for the mesh objects that are added to each group of each tile I am making use of another javaScript file that I have made that will crate textures with javaScript code.
 
 ```js
 // Cube Stack example for s3-compare-to-perspective example in threejs-camera-orthographic
