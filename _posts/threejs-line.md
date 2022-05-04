@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2022-04-02 12:59:20
-version: 1.22
+updated: 2022-05-04 10:56:39
+version: 1.23
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -20,6 +20,8 @@ So there is a great deal to know about when it comes to making lines in three.js
 ## What you should know before hand
 
 This is a post on just one little aspect of three.js which is a javaScript project that allows for doing things involving solid geometry. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional aspects of [javaScript in general](/2018/11/27/js-getting-started/) that are required in order to work with the library. You will want to know about the [Vector3 constructor](/2018/04/15/threejs-vector3/) as that is what is used to define points in 3d space in three.js. You should also be aware of [Materials](/2018/04/30/threejs-materials/), [Cameras](/2018/04/06/threejs-camera/), [Renderer's](/2018/11/24/threejs-webglrenderer/), and the [Scene Object](/2018/05/03/threejs-scene/) that are all needed to make a three.js project which are also basic things that you should know about before hand in a getting started type post.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/Cs5QXW0xldQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Version Numbers matter
 
