@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-04-10 08:37:06
-version: 1.61
+updated: 2022-05-04 14:25:13
+version: 1.62
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -22,6 +22,8 @@ This will be a fairly lengthy post then as there is a lot of going to cover with
 ## The THREE.Vector3 class and What to know first
 
 This is a post on three.js in which I am writing about the Vector3 constructor, and the various properties, methods of the class that there are to work with. There is then also going to be an awful lot of overlap between the Vetor3 class and various other features of threejs, so then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on three.js, or [javaScipt in general](/2018/11/27/js-getting-started/). I expect for you to have at least a little background when it comes to the very basics of setting up a threejs project when it comes to client side javaScript. 
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/eqdDI6_EXNM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Three.js version numbers matter a lot.
 
