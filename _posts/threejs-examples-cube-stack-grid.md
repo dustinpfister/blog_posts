@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 14:44:44
-version: 1.8
+updated: 2022-05-04 14:53:55
+version: 1.9
 ---
 
 Last week I made a cube stack [threejs example](/2021/02/19/threejs-examples/) that was based off of an older example that I made for an old post for the orographic camera. I made a whole lot of improvements to that dusty old example for that post, and now for todays threejs example I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
@@ -107,6 +107,8 @@ var CubeStackGrid = (function () {
 ```
 
 ### 1.2 - The cube stack module
+
+This is the source code for the other threejs example that I did before this to which I am using for each cell in the grid of cube stack objects here. I did not change much of anything with this when making this example I am just parking it here again just for the hell of it then.
 
 ```js
 // Cube Stack example for s3-compare-to-perspective example in threejs-camera-orthographic
