@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 15:25:38
-version: 1.20
+updated: 2022-05-04 15:30:17
+version: 1.21
 ---
 
 Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cube-stack/ ) that was based off of an older example that I made for an [old post for the orographic camera](/2018/05/17/threejs-camera-orthographic/). I made a whole lot of improvements to that dusty old example for that post, and now for todays [threejs example ](/2021/02/19/threejs-examples/) I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
@@ -379,7 +379,9 @@ var datatex = (function () {
 
 ### 1.4 - The main javaScript file
 
-So now finally for just a little more javaScript code that make use of the cube stack ground module and thus the additional javaScript modules to which the module is built on top of.
+So now finally for just a little more javaScript code that make use of the cube stack grid module and thus the additional javaScript modules to which the module is built on top of. For this file I set up my usual objects with any threeis project when it comes to things like the scene object, camera, and renderer. After that of course I am going to want to create an instance of my cube stack grid.
+
+So then I am going to want to call that create method of the cube stack grid module, but first I will want to create some values for what I want to see when it comes to options for a cube stack instance. Then for this example I am just making  an array of number literals for the indices of each object in this pallet of cube stack options as I have come to call it. Now that I have that out of the way I can create my instance of the cube stack grid.
 
 ```js
 (function () {
