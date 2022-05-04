@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 14:55:00
-version: 1.10
+updated: 2022-05-04 14:56:31
+version: 1.11
 ---
 
 Last week I made a cube stack [threejs example](/2021/02/19/threejs-examples/) that was based off of an older example that I made for an old post for the orographic camera. I made a whole lot of improvements to that dusty old example for that post, and now for todays threejs example I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
@@ -366,6 +366,8 @@ var datatex = (function () {
 ```
 
 ### 1.4 - The main javaScript file
+
+So now finally for just a little more javaScript code that make use of the cube stack ground module and thus the additional javaScript modules to which the module is built on top of.
 
 ```js
 (function () {
