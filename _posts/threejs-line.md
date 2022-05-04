@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2022-05-04 11:14:04
-version: 1.24
+updated: 2022-05-04 11:35:28
+version: 1.25
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -176,43 +176,121 @@ If I am using an older version of three.js or can somehow get the old geometry c
 
 I often place these examples just to have a complete copy and paste, functioning example, and also to cover some additional things that must be done with respect to the other components that make up a three.js project. Although in this case nothing special needs to be done compared to any other example this time around. Just the usual pitfalls to look out for such as making sure the camera is positioned away from, and looking at, what you are working with.
 
-## 2 - Using 2d lines made in a canvas project with three.js
+## 2 - Create Points helper function
+
+```js
+(function () {
+ 
+    // Scene
+    var scene = new THREE.Scene();
+     var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // create points helper
+    var createPoints = function(len, rotationCount, height, maxRadius){
+        rotationCount = rotationCount === undefined ? 8 : rotationCount;  // number of rotations
+        height = height === undefined ? 5 : height;
+        maxRadius = maxRadius === undefined ? 5 : maxRadius;
+        var yDelta = height / len;
+        var points = [];
+        var i = 0, v, radian, radius, per;
+        while(i < len){
+            per = i / ( len - 1 );
+            radian = Math.PI * 2 * rotationCount * per;
+            radius = maxRadius  * per;
+            v = new THREE.Vector3();
+            v.x = Math.cos(radian) * radius;
+            v.z = Math.sin(radian) * radius;
+            v.y = i * yDelta;
+            points.push(v);
+            i += 1;
+        };
+        return points;
+    };
+ 
+    // update lines group
+    var updateLinesGroup = function(lines, rs, rDelta, height, radius){
+        lines.children.forEach(function(line, i, arr){
+            var per = (i + 1) / arr.length;
+            line.geometry.setFromPoints( createPoints(150, rs + rDelta * per, height, radius) );
+        });
+    };
+ 
+    // create lines group
+    var lines = new THREE.Group();
+    var lineCount = 12;
+    var colors = [0x00ff00, 0xff0000, 0x0000ff, 0xff00ff, 0x00ffff, 0xffff00];
+    var i = 0;
+    while(i < lineCount){
+        var per = i / lineCount;
+        var points = createPoints(100, 1 + 0.2 * per, 0, 5);
+        var geometry = new THREE.BufferGeometry().setFromPoints( points );
+        var line = scene.userData.line = new THREE.Line(
+            geometry,
+            new THREE.LineBasicMaterial({
+                color: colors[i % colors.length],
+                linewidth: 6
+            }));
+        lines.add(line);
+        i += 1;
+    }
+    scene.add(lines);
+ 
+    updateLinesGroup(lines, 0.5, 1.4, 10, 4);
+    lines.position.y = -8;
+ 
+    // Render
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
+
+## 3 - Using 2d lines made in a canvas project with three.js
 
 I have wrote a [full post on using canvas to make a texture](/2018/04/17/threejs-canvas-texture/) in three.js, and when doing so there is drawing 2d lines on a canvas element and then using that to skin the face of a geometry. So then because I wrote a post on that in great detail I will not be getting into that here, but I think it is worth mentioning in this post.
 
 How it is done in a nut shell is to use the 2d canvas drawing context line methods to draw a line like normal, then pass the canvas to the Texture constructor, or better yet the CanvasTexture constructor that is put in place for this specific purpose. The texture can then be used with a material that is used in a Mesh for the various types of maps such as the plain color map, alpha map, and so forth. The Mesh can then use any geometry that will have one or more faces that will make use of the texture.
 
-### 2.1 - Example using canvas to draw a line for a texture
+### 3.1 - Example using canvas to draw a line for a texture
 
 The Basic idea here is to just create a canvas, draw lines to the canvas using the 2d drawing context, and then create a texture with the canvas element. When it comes to using a canvas to create a texture in three.js there is the canvas texture constructor, but the regular texture constructor can also be used by just setting the needs update boolean to true. The resulting texture can the be used with a materials such as the basic material by making the texture the value of something like the map property of the material.
 
 ```js
-    // GEOMETRY
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
- 
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(1.4, 1.4, 1.4);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
     // CANVAS
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
- 
     canvas.width = 8;
     canvas.height = 8;
- 
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = '#ff00ff';
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
- 
     var texture = new THREE.Texture(canvas);
     texture.needsUpdate = true;
- 
+    // GEOMETRY
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
     // MATERIAL
     var material = new THREE.MeshBasicMaterial({
             map: texture
         });
- 
     // MESH
     var mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
+    // render
+    renderer.render(scene, camera);
 ```
 
 I will not be getting into the canvas 2d drawing api in detail here, but because it is another way of drawing lines in three.js it is sure worth mentioning to say the least.
