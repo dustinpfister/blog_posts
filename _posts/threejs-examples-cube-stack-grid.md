@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 15:31:22
-version: 1.22
+updated: 2022-05-04 15:32:53
+version: 1.23
 ---
 
 Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cube-stack/ ) that was based off of an older example that I made for an [old post for the orographic camera](/2018/05/17/threejs-camera-orthographic/). I made a whole lot of improvements to that dusty old example for that post, and now for todays [threejs example ](/2021/02/19/threejs-examples/) I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
@@ -446,4 +446,4 @@ So then I am going to want to call that create method of the cube stack grid mod
 
 ## Conclusion
 
-So far I have all the basic features in place that I wanted with this threejs example when it comes to having control over what the size of each cube stack should be and the width and height of the grid of cube stacks. The long term plane with this was to just have a system for creating some kind of interesting looking visual thing, and to at least some extent I think I all ready have that.
+So far I have all the basic features in place that I wanted with this threejs example when it comes to having control over what the size of each cube stack should be and the width and height of the grid of cube stacks. The long term plan with this was to just have a system for creating some kind of interesting looking visual thing, and to at least some extent I think I all ready have that. The next step would be to just add a few more features when it comes to effects, and batter control over how to go about generating textures to be used for one or more of the cubes in each stack.
