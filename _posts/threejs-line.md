@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2022-05-04 11:35:28
-version: 1.25
+updated: 2022-05-04 11:37:43
+version: 1.26
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -178,6 +178,8 @@ I often place these examples just to have a complete copy and paste, functioning
 
 ## 2 - Create Points helper function
 
+I made a demo video for this post that can be seen above, when doing so I made a create points helper for the sake of making a demo that is a little more interesting than what I have thus far with examples of the THREE.Line constructor. So I thought I should have a quick section in which I have the source code that I was suing for the demo in that video.
+
 ```js
 (function () {
  
@@ -297,5 +299,5 @@ I will not be getting into the canvas 2d drawing api in detail here, but because
 
 ## 3 - Conclusion
 
-So that is it for now when it comes to drawing lines in three.js, I am sure that there might be more to write about on this topic in the future but I have to get some time to work on some more examples first. There is not just using the Line constructor, but also creating some kind of custom tube line geometry that can then be skeined with any of the materials that are used for solid geometries. That is something that I would like to look into more sooner or later whenI can get around to it.
+So that is it for now when it comes to drawing lines in three.js, I am sure that there might be more to write about on this topic in the future but I have to get some time to work on some more examples first. There is not just using the Line constructor, but also creating some kind of custom tube line geometry that can then be skeined with any of the materials that are used for solid geometries. That is something that I would like to look into more sooner or later when I can get around to it.
 
