@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2022-02-28 09:34:30
-version: 1.22
+updated: 2022-05-04 14:25:12
+version: 1.23
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it, and also what to do when it comes to starting some kind of actual project using threejs rath than just quick simple tech demos that I write about in these [posts on threejs](/categories/three-js/). It would seem that I could write a lot more just when it comes to basic, and not so basic features of the library, and maybe with that alone there will always be something more to write about. However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -22,6 +22,8 @@ So when it comes to the kinds of over all scenes that I would like to make, I wi
 This is a post on using three.js to make a very crude guy module using built in three.js features and geometries along with a little javaScript code. There are other more standard ways of making a model that might prove to be a better option in the long run, but I kind of like just making simple modules like this with javaScript code alone thus far.
 
 This is not a [getting started post on three.js then](/2018/04/04/threejs-getting-started/), let alone javaScript in general, and any and all additional skills that are required before hand in other to really get something of value from reading this. So if you want to reproduce what I have worked out here I trust you have at least some grasp on the basics at least when it comes to doing something with three.js and a little client side javaScript.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/u5tRAChrMfM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Version Numbers matter with three.js
 
