@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 15:12:22
-version: 1.16
+updated: 2022-05-04 15:15:11
+version: 1.17
 ---
 
 Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cube-stack/ ) that was based off of an older example that I made for an [old post for the orographic camera](/2018/05/17/threejs-camera-orthographic/). I made a whole lot of improvements to that dusty old example for that post, and now for todays [threejs example ](/2021/02/19/threejs-examples/) I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
@@ -15,7 +15,7 @@ Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cub
 
 ## This cube stack module and what to know first
 
-This is a post on some source code that I am using to create a grid where each grid is another nested grid where each tile location is a stack of one or more cubes. The nest result with this is then just a kind of cool looking visual effect that can be used in all kinds of different ways depending on additional code that I add that makes use of it.
+This is a post on some source code that I am using to create a grid where each grid is another nested grid where each tile location is a stack of one or more cubes. The nest result with this is then just a kind of cool looking visual effect that can be used in all kinds of different ways depending on additional code that I add that makes use of it. This is not in any way a kind of [getting started with threejs](/2018/04/04/threejs-getting-started/) and [javaScript](/2018/11/27/js-getting-started/) type post, I assume that you have a fair amounf of experience working with this library and language.
 
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/5rQZM4X5fYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
