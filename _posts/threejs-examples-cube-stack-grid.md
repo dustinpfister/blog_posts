@@ -5,13 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 14:33:43
-version: 1.6
+updated: 2022-05-04 14:40:26
+version: 1.7
 ---
 
 Last week I made a cube stack [threejs example](/2021/02/19/threejs-examples/) that was based off of an older example that I made for an old post for the orographic camera. I made a whole lot of improvements to that dusty old example for that post, and now for todays threejs example I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
 
 <!-- more -->
+
+## This cube stack module and what to know first
+
+This is a post on some source code that I am using to create a grid where each grid is another nested grid where each tile location is a stack of one or more cubes. The nest result with this is then just a kind of cool looking visual effect that can be used in all kinds of different ways depending on additional code that I add that makes use of it.
 
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/5rQZM4X5fYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
