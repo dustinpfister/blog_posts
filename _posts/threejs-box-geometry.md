@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2022-04-19 10:39:03
-version: 1.48
+updated: 2022-05-06 14:42:14
+version: 1.49
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post on the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -18,6 +18,8 @@ This will then be a basic post, or at least it will start out that way, for thos
 ## Box Geometry in thee.js and what to know first
 
 This is a post on the Box Geometry Constructor in three.js, and many little related topics that branch off from that specific constructor function in the javaScript library known as threejs. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), but many of the examples here will be not so far beyond that point. Still I assume that you know how to set up a basic client side javaScript project as I will not be getting into the very basics of setting things up. If however you have got your hello world example up and running but would like to learn more about just playing around with a cube, or box of some kind with threejs and a little javaScript code you might gain something of value from reading this post. In any case in this section I will be going over a few things that you might want to read up more before really getting into using the box geometry constructor, as well as the Mesh objects that are often used with such a geometry.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/B52qkEjf8K8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Version Numbers matter with three.js
 
