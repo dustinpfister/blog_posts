@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2022-05-07 12:11:47
-version: 1.13
+updated: 2022-05-07 12:16:10
+version: 1.14
 ---
 
 For todays post on a [threejs example](/2021/02/19/threejs-examples/) I wanted to make a quick project that has to do with how the [lookAt method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object, or in this case a group of objects. For the most part that method works well, and is very easy to use, I just call the method off of the object that is based off of object3d, typically a camera, but it can be any other object3d based object, and pass the position that I want the object to look at.
@@ -26,7 +26,7 @@ I have wrote posts on the [Object3d lookAt method](/2021/05/13/threejs-object3d-
 
 ## Read up more on the apply Euler method of Vector3 as well as Vector3 in general.
 
-In this example I am not just using the look at method, but also the apply Euler method of the Vector3 class along with the Euler class to set the position of mesh objects. With that said I have wrote a [post on the apply Euler method itself](/2021/06/18/threejs-vector3-apply-euler/), as well as another on the [Vector3 class in general](/2018/04/15/threejs-vector3/).
+In this example I am not just using the look at method, but also the apply Euler method of the Vector3 class along with the Euler class to set the position of mesh objects. With that said I have wrote a [post on the apply Euler method itself](/2021/06/18/threejs-vector3-apply-euler/), as well as another on the [Vector3 class in general](/2018/04/15/threejs-vector3/). When it comes to using the apply Euler method I need to have a Vector3 instance with a value other than 0,0,0 and when calling the method I need to pass an instance of the [Euler class](/2021/04/28/threejs-euler/) which is yet even another class that is worth looking into further.
 
 ### Version Numbers matter
 
