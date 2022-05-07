@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2022-05-07 12:03:05
-version: 1.11
+updated: 2022-05-07 12:06:47
+version: 1.12
 ---
 
 For todays post on a [threejs example](/2021/02/19/threejs-examples/) I wanted to make a quick project that has to do with how the [lookAt method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object, or in this case a group of objects. For the most part that method works well, and is very easy to use, I just call the method off of the object that is based off of object3d, typically a camera, but it can be any other object3d based object, and pass the position that I want the object to look at.
@@ -159,3 +159,7 @@ var loop = function () {
 };
 loop();
 ```
+
+## Conclusion
+
+This example helped me get a good visual idea of what the deal is with the use of the look at method and how it sets rotation for objects. The result is that the lookAt method will work just fine for most situations in which I would want to use it, but there are a few use cases in which it will now work the way that I would want it to. For example using it to set the rotation of a biplane model that might do a loop or two in a scene, when it comes to that I will need to do a bit more than just use the lookAt method, for find some other solution completely actually.
