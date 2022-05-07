@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2022-05-07 11:50:48
-version: 1.7
+updated: 2022-05-07 11:53:20
+version: 1.8
 ---
 
 For todays post on a [threejs example](/2021/02/19/threejs-examples/) I wanted to make a quick project that has to do with how the [lookAt method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object, or in this case a group of objects. For the most part that method works well, and is very easy to use, I just call the method off of the object that is based off of object3d, typically a camera, but it can be any other object3d based object, and pass the position that I want the object to look at.
@@ -22,7 +22,7 @@ This is one of my many posts on a threejs project example, this one has to do wi
 
 ### There is reading more on the Object3d lookAt method and object3d class in general
 
-I have wrote posts on the [Object3d lookAt method](/2021/05/13/threejs-object3d-lookat/) as well as the [object3d class](/2018/04/23/threejs-object3d/) in general.
+I have wrote posts on the [Object3d lookAt method](/2021/05/13/threejs-object3d-lookat/) as well as the [object3d class](/2018/04/23/threejs-object3d/) in general. I use the look at method all the time in just about all of my source code examples when it comes to setting the rotation of a camera, however it can also be used with objects in general beyond just that of cameras. In this example I am using the lookAt method to set to orientation of mesh objects which like cameras are also based on the object3d class.
 
 ### Version Numbers matter
 
