@@ -5,20 +5,24 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2022-05-07 11:45:30
-version: 1.6
+updated: 2022-05-07 11:50:48
+version: 1.7
 ---
 
-For todays post on a [threejs example](/2021/02/19/threejs-examples/) I wanted to make a quick project that has to do with how the [lookAt method of the object3d class](/2021/05/13/threejs-object3d-lookat/) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object, or in this case a group of objects. For the most part that method works well, and is very easy to use, I just call the method off of the object that is based off of object3d, typically a camera, but it can be any other object3d based object, and pass the position that I want the object to look at.
+For todays post on a [threejs example](/2021/02/19/threejs-examples/) I wanted to make a quick project that has to do with how the [lookAt method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object, or in this case a group of objects. For the most part that method works well, and is very easy to use, I just call the method off of the object that is based off of object3d, typically a camera, but it can be any other object3d based object, and pass the position that I want the object to look at.
 
 <!-- more -->
 
 
 ## This threejs example of the lookAt, and applyEuler methods in threejs and what to know first
 
-This is one of my many posts on a threejs project example, this one has to do with using the object3d lookAt method and the Vector3 apply Eueler method. This is then not any kind of getting started with threejs kind of post, and I assume that you have at least a little experience working with threejs and client side javaScript in general. I will then not be getting into every little detail that you should know before hand in this section, but I will mention a few things you might want to read up more on before and if you have not done so thus far at this point.
+This is one of my many posts on a threejs project example, this one has to do with using the object3d lookAt method and the Vector3 apply Eueler method. This is then not any kind of [getting started with threejs](/2018/04/04/threejs-getting-started/) kind of post, and I assume that you have at least a little experience working with threejs and client side javaScript in general. I will then not be getting into every little detail that you should know before hand in this section, but I will mention a few things you might want to read up more on before and if you have not done so thus far at this point.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/jLvd_e_uBLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### There is reading more on the Object3d lookAt method and object3d class in general
+
+I have wrote posts on the [Object3d lookAt method](/2021/05/13/threejs-object3d-lookat/) as well as the [object3d class](/2018/04/23/threejs-object3d/) in general.
 
 ### Version Numbers matter
 
