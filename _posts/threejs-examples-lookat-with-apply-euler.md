@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2022-05-07 12:01:57
-version: 1.10
+updated: 2022-05-07 12:03:05
+version: 1.11
 ---
 
 For todays post on a [threejs example](/2021/02/19/threejs-examples/) I wanted to make a quick project that has to do with how the [lookAt method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object, or in this case a group of objects. For the most part that method works well, and is very easy to use, I just call the method off of the object that is based off of object3d, typically a camera, but it can be any other object3d based object, and pass the position that I want the object to look at.
@@ -38,7 +38,7 @@ The source code for this example can be found in my [test threejs repository](ht
 
 ## 1 - The first version of this threejs example
 
-For this example I have everything that I want packed into a single javaScript file, at least when it comes to this first revision to which I might expand on at a later point in the future when and if I get to it. Anyway I start out the file with the usual set of objects that I will want for any threejs project my creating the scene object, camera and renderer. After that I am adding a light source in the form of a directional light, after that I get into some helper functions that I am going to be using to create an update the collection of mesh objects for this. Finally I have an app loop but for now it is just a way to make to so that the orbit controls will work.
+For this example I have everything that I want packed into a single javaScript file, at least when it comes to this first revision to which I might expand on at a later point in the future when and if I get to it. Anyway I start out the file with the usual set of objects that I will want for any threejs project my creating the scene object, camera and renderer. After that I am adding a light source in the form of a directional light, after that I get into some helper functions that I am going to be using to create an update the collection of mesh objects for this. Finally I have an app loop but for now it is just a way to make to so that the [orbit controls will work](/2018/04/13/threejs-orbit-controls/).
 
 ```js
 //******** **********
