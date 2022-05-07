@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2022-05-07 12:16:10
-version: 1.14
+updated: 2022-05-07 12:21:27
+version: 1.15
 ---
 
-For todays post on a [threejs example](/2021/02/19/threejs-examples/) I wanted to make a quick project that has to do with how the [lookAt method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object, or in this case a group of objects. For the most part that method works well, and is very easy to use, I just call the method off of the object that is based off of object3d, typically a camera, but it can be any other object3d based object, and pass the position that I want the object to look at.
+For todays post on a [threejs example](/2021/02/19/threejs-examples/) I wanted to make a quick project that has to do with how the [lookAt method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object, or in this case a group of objects. For the most part that method works well, and is very easy to use, I just call the method off of the object that is based off of object3d, typically a camera, but it can be any other object3d based object, and pass the position that I want the object to look at. However in some cases the end result may not work the way that I want it to, so I can not just turn my brain off and not think about this kind of stuff at all some of the time.
+
+This example then should help to show what I mean by this as it is a whole bunch of objects positioned around the origin and the are all made to look at the origin with the lookAt method. However two objects of interest might be at the top of the over all area where one plain is positioned one way and the other is flipped around completely. this is not always such a bad thing, but it is if what I want to do is make an animation in which this kind of object is of that of a plane that might make a motion like that of a loop.
 
 <!-- more -->
 
