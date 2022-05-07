@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-05-06 14:45:21
-version: 1.50
+updated: 2022-05-07 12:23:36
+version: 1.51
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -78,6 +78,8 @@ This is an example that I worked out that is an attempt at a 3d view for my Mr S
 If I get a solid idea for the core of what the game should be I might like to experiment with a 3d view for the game, so this example is just that.
 
 ### [ 2.14 - Vector3 apply Euler and lookAt](/2022/05/06/threejs-examples-lookat-with-apply-euler/) 
+
+This is an example that shows something that might prove to be a problem when using the look at method of the object3d class. it is not that the look at method is broken, it is just that it works a certain way that is fine in most cases, but not in others.
 
 ### [ 2.15 - Menus with threejs](/2021/12/03/threejs-examples-menus/)
 
