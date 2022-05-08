@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2022-05-08 08:43:05
-version: 1.38
+updated: 2022-05-08 09:40:27
+version: 1.39
 ---
 
-In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to gaining some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. Simply put, the box helper just draws a box outline around the area of an object that it is used with, and doing so will help to get a better visual idea of what is going on with position, size, and orientation of the object.
+In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to gaining some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. Simply put, the box helper just draws a box outline around the area of an object that it is used with, and doing so will help to get a better visual idea of what is going on with position, scale, and orientation of the object.
 
-There are maybe a few little problems here and there that might come up when using the box helper though. For example one might expect that when a mesh is moved or rotated that box will move and rotate with the mesh object, however this is not always the case. Typically I will want to add a box helper to the object that I have created it for as a child, so that when I move or rotate that object the box helper will move or rotate with it. However even then there are some situations in which I will want to update the box helper when it comes to something like changing the side of the mesh object or something to that effect as that will not just update on its own. 
+There are maybe a few little problems here and there that might come up when using the box helper though. For example one might expect that when a mesh is moved or rotated that box will move and rotate with the mesh object, however this is not always the case. Typically I will want to add a box helper to the object that I have created it for as a child, so that when I move or rotate that object the box helper will move or rotate with it. Another way would be to use a method that can update the state of this box helper object by using a set from object method that is a prototype method of this box helper class. 
 
 In this post I will be going over a few quick examples of the box helper in three.js that might help to address some of these issues that might pop up when unseeing it. As such I will not just be writing about the box helper, but also a wide range of other things that can be applied elsewhere when it comes to working with a three.js project in general.
 
@@ -27,7 +27,7 @@ The box helper is great, but I often use it in conjunction with many other helpe
 
 ### version numbers matter with threejs
 
-When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing I was using r127 of threejs. I do not think much has changed with the box helper between those two revision numbers, and many of the other helpers for a long time. However many code breaking changes have been made with many other things in threejs, and that trend will likely continue moving forward with later versions of the library. If you run into problems with these examples on your end the first and for most thing you should check is the revision number you are using.
+When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing I was using r135 of threejs. I do not think much has changed with the box helper between those two revision numbers, and many of the other helpers for a long time. However many code breaking changes have been made with many other things in threejs, and that trend will likely continue moving forward with later versions of the library. If you run into problems with these examples on your end the first and for most thing you should check is the revision number you are using.
 
 ### The source code for the examples in this post and many others is on Github
 
@@ -216,7 +216,55 @@ var loop = function () {
 loop();
 ```
 
-## 5 - Conclusion
+## 5 - using the set from object method as a way to update the box helper
+
+In one above example I fixed issues that have to do with updating an object by maing the box helper a child of the object to which I want to use the box helper with. Although this might work okay in most situations maybe the best way to go about handling this sort of thing would be to use the set from object method of the box helper class. This way I can just call this method each time I update an object, and I do not have to make the helper a child of the object when doing this. Also if I want to I can change what object I am using the helper with all together.
+
+```js
+// scene, camera, grid helper
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(5, 5, 5);
+camera.lookAt(1, 0, 1);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+// A MESH OBJECT WITH A BOX HELPER OF THE MESH
+// ADDED AS A CHILD OF THE MESH
+var mesh1 = new THREE.Mesh(
+        new THREE.ConeGeometry(0.5, 3, 30, 30),
+        new THREE.MeshNormalMaterial());
+scene.add(mesh1);
+// ADDING A BOX HELPER TO THE SCENE OBJECT
+var boxHelper = new THREE.BoxHelper(mesh1, 0xffff00);
+scene.add(boxHelper);
+// LOOP
+var frame = 0,
+maxFrame = 90,
+fps = 30,
+lt = new Date();
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000,
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        mesh1.position.z = 5 * bias;
+        mesh1.rotation.x = Math.PI * 2 * per;
+        // UPDAING BOX HELPER FOR THE OBJECT
+        boxHelper.setFromObject(mesh1);
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+```
+
+## Conclusion
 
 The box helper is then one of several kinds of helpers that can be used to gain a sense of what is going on with a three.js project by just simply adding a box like area around a mesh, group, or just about anything based off of the object3d class. Although the box helper will help to gain insight as to what is going on with an area, it will not help to shed light on what is going on in terms of directions, or other various factors that are at play. So then another useful helper is the [arrow helper](https://threejs.org/docs/#api/en/helpers/ArrowHelper) that can be used to know which way is what in a scene.
 
