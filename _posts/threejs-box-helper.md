@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2022-05-08 09:40:27
-version: 1.39
+updated: 2022-05-08 14:02:23
+version: 1.40
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to gaining some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. Simply put, the box helper just draws a box outline around the area of an object that it is used with, and doing so will help to get a better visual idea of what is going on with position, scale, and orientation of the object.
@@ -20,6 +20,8 @@ In this post I will be going over a few quick examples of the box helper in thre
 ## The Box helper in threejs and what to know first
 
 The Box helper is one of several helper classes in threejs that help to gain a better visual understanding of the situation that is going on with a scene. Speaking of threejs, this is not in any way a getting started type post on threejs, or any additional skills that are requires to work with threejs and client side web development in general. I trust that you have at least a little basic understanding of how to get started with three.js, and the javaScript programing language, if not this post might still prove to be a little to advanced for now. I will not be going over the very basics of threejs here, but in this section I will be going over some things that you should understand at this point before continuing to read the other sections of this post.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/LvRUbSqwJ4Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### There are many other useful helpers in threejs use them
 
