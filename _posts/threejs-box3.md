@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-05-09 09:31:43
-version: 1.6
+updated: 2022-05-09 09:46:37
+version: 1.7
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max instance of the Vector3 class. This Box can then be used for things like getting another Vector3 instance that is the size of the box. There is creating a new instance of the box3 class and then using that as a way to preform some kind of an action on an object such as scaling that object to the size of the instance of the box3 class. There is also creating an instance of box3 from an object that all ready exists in a scene, and doing something else with that kind of box such as suing it to position an object in space for example. There are many other use case examples of this class, so it goes without saying that I should write at least one if not a few posts on this class, so to start off with that I am writing this post.
@@ -58,6 +58,38 @@ var mesh = new THREE.Mesh(
         new THREE.MeshNormalMaterial());
 scene.add(mesh);
 mesh.scale.copy(s);
+// render
+renderer.render(scene, camera);
+```
+
+## 2 - Creating a BOX3 from a mesh, and suing that to set the position of the mesh
+
+Some times I might not want to set the size of an object from a BOX3 but rather create a Box3 from an object, and then use that BOX3 to know how to position an object relative to the ground, or some point of interest.
+
+```js
+var scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10))
+var camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0.4, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+// mesh object
+var mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+// UISNG COMPUTE BOUNDING BOX OF THE GEOMETRY
+// TO CREATE A BOX3 for the mesh at the boundingBox
+// property of the geometry
+mesh.geometry.computeBoundingBox();
+// GETTING SIZE
+var s = new THREE.Vector3();
+var box3 = mesh.geometry.boundingBox;
+box3.getSize(s);
+// USING SIZE VECTOR3 to set Y position of mesh
+mesh.position.y = s.y / 2;
+scene.add(mesh);
 // render
 renderer.render(scene, camera);
 ```
