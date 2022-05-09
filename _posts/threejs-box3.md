@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-05-09 09:25:42
-version: 1.5
+updated: 2022-05-09 09:31:43
+version: 1.6
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max instance of the Vector3 class. This Box can then be used for things like getting another Vector3 instance that is the size of the box. There is creating a new instance of the box3 class and then using that as a way to preform some kind of an action on an object such as scaling that object to the size of the instance of the box3 class. There is also creating an instance of box3 from an object that all ready exists in a scene, and doing something else with that kind of box such as suing it to position an object in space for example. There are many other use case examples of this class, so it goes without saying that I should write at least one if not a few posts on this class, so to start off with that I am writing this post.
@@ -61,3 +61,9 @@ mesh.scale.copy(s);
 // render
 renderer.render(scene, camera);
 ```
+
+## Conclusion
+
+The Box3 class is then a useful tool for various tasks what will come up when working with a project. It can be used to create a box by way of two vectors and then that box can be used as a way to scale or position an object in all kinds of various ways. I can also use it to create a box from an object that all ready has a set of values that I want with size, but I just want to get a vector that reflects what that size is so that I know to go about positing it.
+
+I am sure that there will be many more use case examples of this box3 class that will come up now and then. I do make an effort to edit my content, so I am sure that I will expand this post a bit more as I get around to fining or making more examples to write about here.
