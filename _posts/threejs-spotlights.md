@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-05-09 06:40:09
-version: 1.38
+updated: 2022-05-09 06:41:45
+version: 1.39
 ---
 
 In this post will will be covering the subject of adding light to a scene in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
@@ -29,9 +29,9 @@ I will not be getting into every little detail about [materials as that is a mat
 
 ### The Three.js version matters
 
-This is something that I should mention in every three.js post, three.js is a javaScript project where the version number is very important, more so than usual I would say. New versions of three.js come out all the time, and when they do it's not exactly just some spelling fixes in the readme file. Often there are many major, project breaking changes that are made with the public API of the library that will result in code breaking changes with a whole worked of code examples on the open web.
-
 The last time I edited this post I was [using three.js r135](https://github.com/mrdoob/three.js/releases/tag/r135) that came out in November of 2021, and when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91) released in March of 2018. If you run into problems with the code examples here there are a lot of things to check, and the version number is without question one of them
+
+This is something that I should mention in every three.js post, three.js is a javaScript project where the version number is very important, more so than usual I would say. New versions of three.js come out all the time, and when they do it's not exactly just some spelling fixes in the readme file. Often there are many major, project breaking changes that are made with the public API of the library that will result in code breaking changes with a whole worked of code examples on the open web.
 
 ### The source code example for this post and many others are on github
 
