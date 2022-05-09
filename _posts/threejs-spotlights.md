@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-05-09 06:46:14
-version: 1.40
+updated: 2022-05-09 06:49:51
+version: 1.41
 ---
 
 In this post will will be covering the subject of adding light to a scene in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
@@ -427,9 +427,9 @@ If you want to see what is going on with the spotlight, by having a way of showi
 }());
 ```
 
-## 6 - Spotlight helper animation loop exmaple
+## 6 - Spotlight helper animation loop example
 
-So I have a static scene example of the spotlight helper, but I am thinking that I should also have an animation loop example for this sort of thing also.
+So I have a static scene example of the spotlight helper, but I am thinking that I should also have an animation loop example for this sort of thing also. The only main thing that I need to do is to just simply call the update method of the spot light helper object in the loop after updating the state of the spot light that I made the helper for.
 
 ```js
 (function () {
