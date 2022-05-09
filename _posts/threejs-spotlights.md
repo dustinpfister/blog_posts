@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-05-09 06:36:39
-version: 1.37
+updated: 2022-05-09 06:40:09
+version: 1.38
 ---
 
 In this post will will be covering the subject of adding light to a scene in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
@@ -25,7 +25,7 @@ Regardless of what your level of experience is with three.js there is a whole lo
 
 ### Materials matter with spotlights and light in general
 
-I will not be getting into every little detail about materials as that is a matter for one or more other posts completely. However I will say that one major thing to check if you are running into problems is to double check what kind of material you are using to skin your mesh objects. Many materials like that of the basic material, normal material, and the depth material will not respond to a light source at all. Also when it comes to material that will respond to light they will not do so in the same way, for example I have come to find that I like to use the standard material, over the lamber material when it comes to using spotlights in a project.
+I will not be getting into every little detail about [materials as that is a matter for one or more other posts completely](/2018/04/30/threejs-materials/). However I will say that one major thing to check if you are running into problems is to double check what kind of material you are using to skin your mesh objects. Many materials like that of the basic material, normal material, and the depth material WILL NOT respond to a light source at all. Also when it comes to materials that WILL respond to light they will not do so in the same way, for example I have come to find that [I like to use the standard material](/2021/04/27/threejs-standard-material/), over the [lamber material](/2018/04/08/threejs-lambert-material/) when it comes to using spotlights in a project.
 
 ### The Three.js version matters
 
