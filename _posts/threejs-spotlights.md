@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-05-09 06:41:45
-version: 1.39
+updated: 2022-05-09 06:46:14
+version: 1.40
 ---
 
 In this post will will be covering the subject of adding light to a scene in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
@@ -513,9 +513,11 @@ So I have a static scene example of the spotlight helper, but I am thinking that
 
 Te sport light helper then gives me a great idea of what is going on with the state of the spotlight, I can the adjust the various values for the spotlight until I get something that will work well with the project that I am working on.
 
-## 6 - Conclusion
+## Conclusion
 
-There is much more to know about spotlights, and lights in general as well as the differences in the materials that respond to lights like the spotlight. As I author more content on three.js, and update more demos, I often get around to updating by older content on three.js now and then, and this post is no exception to this. When I first wrote this post back in 2018 I was using r91 of three.js, and a of this writing I was using r127, and it would look like not much of anything has changed when it comes to spotlights at least.
+There is much more to know about spotlights, and lights in general as well as the differences in the materials that respond to lights like the spotlight as well as with light in general. Yet another kind of light to work with in three.js is the [point light](/2019/06/02/threejs-point-light/) that can be used to shine light in all directions from a given point in the scene. This is the kind of light that I often fine myself using in examples as I tend to like that kind of nature of the point light. 
 
-Yet another kind of light to work with in three.js is the [point light](/2019/06/02/threejs-point-light/) that can be used to shine light in all directions from a given point in the scene. This is the kind of light that I often fine myself using in examples as I tend to like that kind of nature of the point light. There is also zeroing in a usual option when it comes to materials also, and with that I often like to go with the [standard material](/2021/04/27/threejs-standard-material/) I have my reasons why that get a little involved buy simple put it just strikes me as a well balanced material.
+There is also zeroing in a usual option when it comes to materials also, and with that I often like to go with the standard material. I have my reasons why I like the standard material, and those reasons get a little involved, but simple put it just strikes me as a well balanced material. It is not to say that there are not contenders when it comes to the other options though, such as the phong material that is pretty cool because it supports highlights.
+
+As I author more content on three.js, and create more demos, I often get around to updating my older content on three.js now and then as well, and this post is no exception to this. When I first wrote this post back in 2018 I was using r91 of three.js, and as of this writing I was using r135, and it would look like not much of anything has changed when it comes to spotlights at least.
 
