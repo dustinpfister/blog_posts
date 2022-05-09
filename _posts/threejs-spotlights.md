@@ -1,12 +1,12 @@
 ---
-title: Spotlights in three.js
+title: Spotlights in three.js, creating them, and updating them.
 date: 2018-04-11 13:24:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-05-09 06:36:02
-version: 1.36
+updated: 2022-05-09 06:36:39
+version: 1.37
 ---
 
 In this post will will be covering the subject of adding light to a scene in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
