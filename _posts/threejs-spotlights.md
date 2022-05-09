@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-05-09 06:49:51
-version: 1.41
+updated: 2022-05-09 06:52:47
+version: 1.42
 ---
 
 In this post will will be covering the subject of adding light to a scene in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
@@ -286,7 +286,7 @@ Just like the objects that will case or receive shadows, you will want to set th
 
 ## 4 - Spotlight geometry and other metrics
 
-There are a number of properties that can be used to change the geometry of the cone that composes the area of the spotlight. two major values that may come to mind are the angle of the cone, as well as the distance.
+There are a number of properties that can be used to change the geometry of the cone that composes the area of the spotlight. two major values that may come to mind are the angle of the cone, as well as the distance. It is nit to say that there are not many other properties of interest when it comes to spot lights though, other values that I might want to adjust over time world be intensity and color, but as far as geometry of the cone is concerted it is mainly just the distance and angle values.
 
 ```js
 spotLight.angle = Math.PI / 2.5;
