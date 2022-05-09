@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-05-09 09:46:37
-version: 1.7
+updated: 2022-05-09 09:52:30
+version: 1.8
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max instance of the Vector3 class. This Box can then be used for things like getting another Vector3 instance that is the size of the box. There is creating a new instance of the box3 class and then using that as a way to preform some kind of an action on an object such as scaling that object to the size of the instance of the box3 class. There is also creating an instance of box3 from an object that all ready exists in a scene, and doing something else with that kind of box such as suing it to position an object in space for example. There are many other use case examples of this class, so it goes without saying that I should write at least one if not a few posts on this class, so to start off with that I am writing this post.
@@ -64,7 +64,7 @@ renderer.render(scene, camera);
 
 ## 2 - Creating a BOX3 from a mesh, and suing that to set the position of the mesh
 
-Some times I might not want to set the size of an object from a BOX3 but rather create a Box3 from an object, and then use that BOX3 to know how to position an object relative to the ground, or some point of interest.
+Some times I might not want to set the size of an object from a BOX3 but rather create a Box3 from an object, and then use that BOX3 to know how to position an object relative to the ground, or some point of interest. When it comes to an instance of buffer geometry there is a method of geometry called the compute bounding box method that will create a box3 instance for the bounding box property of the geometry. So then say that I have an object and I want to know how high it is so that I can set the y position of this object to one half of this height. One way to go about doing this would be to make use of the compute bounding box method, and then use get size method of Box3 to get a Vector that I can then use to set the position property of the mesh object.
 
 ```js
 var scene = new THREE.Scene();
