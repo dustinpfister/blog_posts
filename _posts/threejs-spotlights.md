@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-05-09 06:57:41
-version: 1.44
+updated: 2022-05-09 16:07:43
+version: 1.45
 ---
 
 In this post will will be covering the subject of adding light to a scene in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
@@ -22,6 +22,8 @@ For the most part the use of a spotlight is pretty strait forward, just create a
 This is not a [getting started](/2018/04/04/threejs-getting-started/) post on three.js, or [javaScript in general](/2018/11/27/js-getting-started/) for that matter. I assume that you have at least a basic working knowledge on javaScript, and that you have your feet wet with three.js. If not the content of this post might still prove to be a little to advanced for you until you get up to speed with the core skills that are required before hand that are outside the scope of this post.
 
 Regardless of what your level of experience is with three.js there is a whole lot the branches off from the use of spot lights, and at times it might be required to refresh on cretin things here and there. As such in this section I will be going over what some of those things might be.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/L3-Dbqc3S8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Materials matter with spotlights and light in general
 
