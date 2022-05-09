@@ -5,13 +5,17 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-05-09 09:12:33
-version: 1.3
+updated: 2022-05-09 09:16:58
+version: 1.4
 ---
 
-The box3 class in the javaScript library known as threejs is a way to create a box in the from of a min and max instance of the Vector3 class. This Box can then be used for things like getting another vector3 instance that is the size of the box. There is creating a new instance of the box3 class and then using that as a way to preform some kind of an action on an object such as scaling that object to the size of the instance of the box3 class. There is also creating an instance of box3 from an object that all ready exists in a scene, and doing something else with that kind of box such as suing it to position an object in space for example. There are many other use case examples of this class, so it goes without saying that I should write at least one if not a few posts on this class, so to start off with that I am writing this post.
+The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max instance of the Vector3 class. This Box can then be used for things like getting another Vector3 instance that is the size of the box. There is creating a new instance of the box3 class and then using that as a way to preform some kind of an action on an object such as scaling that object to the size of the instance of the box3 class. There is also creating an instance of box3 from an object that all ready exists in a scene, and doing something else with that kind of box such as suing it to position an object in space for example. There are many other use case examples of this class, so it goes without saying that I should write at least one if not a few posts on this class, so to start off with that I am writing this post.
 
 <!-- more -->
+
+## The Box3 class in threejs and what to know first
+
+The content of this blod post has to do with a general overview of a single class in a javaScript library known as threejs. This is then not a post intended for people that have no experience at all with threejs, let alone with javaScript in general. You should have some background with javaScript and client side web development in general, also there are a lot of additional things you should be aware of with threejs also. I will nt be getting into detail with everything that you should be aware of at this point, but I often use this first section to quickly mention some things you might want to read up more on before hand if you have not done so.
 
 ## 1 - Basic scaling a mesh object example of the Box3 class 
 
