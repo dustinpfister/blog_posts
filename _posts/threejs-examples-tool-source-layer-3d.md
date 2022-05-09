@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-05-09 06:07:11
-version: 1.27
+updated: 2022-05-09 06:10:17
+version: 1.28
 ---
 
-For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on. 
+For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas layers positioned on top of that source layer that I draw on. 
 
-There may be alternative ways of doing this sort of thing such as just creating a scene the way that I want to, adjust the position of the camera and so forth and then just take a still picture and open that still picture up in an image editing program like GIMP, then create another layer on top of that and draw to that layer. However maybe there are some things that I can do that justify making a custom art program of sorts, if so this example is an attempt at doing just that.
+There may be alternative ways of doing this sort of thing such as just creating a scene the way that I want to, adjust the position of the camera and so forth and then just take a still picture and open that still picture up in an image editing program like GIMP. Any decent image manipulation program such as GIMP will have layers as a feature, so I can add the still of the scene as a source layer, then create another layer on top of that and draw to that. 
+
+However maybe there are some things that I can do that justify making a custom art program of sorts, if so this example is an attempt at doing just that.
 
 <!-- more -->
 
