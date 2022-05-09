@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-02-13 10:51:09
-version: 1.26
+updated: 2022-05-09 06:07:11
+version: 1.27
 ---
 
 For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d plain canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas slayers positioned on top of that source layer that I draw on. 
@@ -16,21 +16,21 @@ There may be alternative ways of doing this sort of thing such as just creating 
 <!-- more -->
 
 
-## 1 - What to know first
+## This source layer threejs project example, and what to know first
 
 This is a project in which I am using threejs, as well as vuejs when it comes to front end libraries. I am also using one additional file on top of just threejs alone that is the Collada File loader that can be found in the threejs github repository. On top of that I am also making use of several javaScript files of my own that make use of these various files that have to do with threejs and vuejs, as well as a little back end code, and I am also using dae files are a resource for this art application example on top of that actually.
 
 So if you are still fairly new to javaScript this post might prove to be a little to advanced for you, also even if you have some experience with javaScript it still might be a bit of a pain to reproduce what I am writing about here on you end. So maybe the best way would be to clone down my test vje github repository and do an npm install in order to set things up quick. In any case in this section I will be going over a few quick points about this project example that one should e aware of before continuing to read the result of the content in this post.
 
-### 1.1 - The source code for this example is on Github
+### The source code for this example is on Github
 
 The full source code for this project example, as well as the source code for older revisions, and any additional revisions to which I have not revised this content for possible can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tool-source-layer-3d) on Github. If you want to reproduce what I am writing about here on you end it might be best to install the full project there, as I am making use of additional back end code, and dea models and so forth.
 
-### 1.2 - Version numbers matter with threejs
+### Version numbers matter with threejs
 
 When I was first working on this example I was using [r127 of threejs](https://github.com/mrdoob/three.js/releases/tag/r127), and I am also using 2.6.14 of vuejs.
 
-## 2 - The Main javaScript file
+## 1 - The Main javaScript file
 
 In my main javaScript file I have code worked out for the scene layer of this project as well as additional code that has to do with updating the content of this scene layer.
 
@@ -169,7 +169,7 @@ I have found a way to directly work with the Collada loader in revision 1 of thi
     ());
 ```
 
-## 3 - The draw javaScript for for the draw canvas layer
+## 2 - The draw javaScript for for the draw canvas layer
 
 I have an additional file that is all the source code that has to do with the draw canvas layer that I position on top of the source layer. So then where the source layer is the resource that I will be using for a reference as to what to draw, the draw layer on top of that is the layer where I will actually be drawing to with the mouse and or touch screen.
 
@@ -271,7 +271,7 @@ Just like with the source layer application I have a vue instance in which I am 
 ```
 
 
-## 4 - The dae tools file
+## 3 - The dae tools file
 
 A while back I started another [threejs project example that has to do with a dae files](/2021/06/25/threejs-examples-dae-tools/). When it comes to working just with threejs alone, as well as additional files in the repository there is the Collada Loader that can be used on top of just threejs alone. However this loader will just load whatever the state of the file is, and not preform any additional filtering when it comes to what it is in the file that I actually want to add to a scene. Also there might be more than one way that I would want to use the features of this Collada Loader, and so forth. As such there appears to be a need for at least a little additional javaScript code that acts as one little additional abstraction for loading dae files, and also I will want a place to park any and all additional code that has to do with dae files, beyond just that of what there is to work with when it comes to threejs and the Collada Loader alone, thus I am using a dae files module of my own for this project.
 
@@ -371,7 +371,7 @@ This module contains a create method where I can set methods for events like wha
     (this['DAE'] = {}));
 ```
 
-## 5 - Conclusion
+## Conclusion
 
 This is it for now then, at least when it comes to revision 1 of this example as that Is the revision that I was writing about when I first started writing this blog post. I do have things planed out for future revisions in my todo list for this example, but that is a practice for all my other threejs examples also.
 
