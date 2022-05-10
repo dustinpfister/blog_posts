@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 06:59:32
-version: 1.45
+updated: 2022-05-10 07:00:46
+version: 1.46
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -19,9 +19,7 @@ So in this post I will be writing about some threejs examples that have to do wi
 
 ## Moving a camera in three.js and what to know first
 
-This is a post on how to move a camera in three.js a front end javaScript library that has to do with 3d modeling. This is not a getting started post on three.js, or javaScript in general so I assume that you have at least some background on this to get started with, otherwise you might have a hard time gaining something of value from reading this content.
-
-If you are still very new to threejs I have all ready wrote a [getting started with threejs post](/2018/04/04/threejs-getting-started/) a long time ago now. I also have a post for [beginners of javaScript in general](/2018/11/27/js-getting-started/) that I have wrote, and edit every so often also.
+This is a post on how to move a camera in three.js a front end javaScript library that has to do with 3d modeling. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/) so I assume that you have at least some background on this to get started with, otherwise you might have a hard time gaining something of value from reading this content.
 
 ### Version Numbers matter with three.js
 
