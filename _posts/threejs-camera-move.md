@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 09:46:13
-version: 1.48
+updated: 2022-05-10 09:50:47
+version: 1.49
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -100,7 +100,107 @@ On top of having a main FPS update value I can also have a septate FPS value for
 
 When this example is up and running the end result is having the camera at a location away from a mesh, and the camera is still looking in the direction of the mesh. In most cases I will not just want to set the position of the camera but also adjust the rotation of the camera as well one way or another, however that will be something I will be getting into more so inn the nest example here. Over time the camera moves, and I am not doing anything to change the rotation of the camera over time so the camera does not stay fixed on the mesh.
 
-## 2 - Camera movement helper example that moves the camera via javaScript code
+## 2 - The look at method
+
+```js
+(function () {
+    // SCENE, CAMERA, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10))
+    var width = 640, height = 480,
+    fieldOfView = 40, aspectRatio = width / height,
+    near = 0.1, far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(width, height);
+    // MESH
+    var mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    // SETTING CAMERA POSITION ONCE HERE
+    camera.position.set(0, 5, 5);
+    // APP LOOP
+    var secs = 0,
+    fps_update = 20,
+    fps_movement = 30,
+    frame = 0,
+    frameMax = 300,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / frameMax,
+        bias = (1 - Math.abs(per - 0.5) / 0.5);
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            // CALLING THE LOOKAT METHOD OF THE CAMERA
+            camera.lookAt(mesh.position);
+            // MOVEING THE MESH OBJECT BUT NOT THE CAMERA
+            mesh.position.x = -5 + 10 * bias
+            renderer.render(scene, camera);
+            frame += fps_movement * secs;
+            frame %= frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 3 - Object relative position
+
+```js
+(function () {
+    // SCENE, CAMERA, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10))
+    var width = 640, height = 480,
+    fieldOfView = 40, aspectRatio = width / height,
+    near = 0.1, far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(width, height);
+    // MESH
+    var mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    // APP LOOP
+    var secs = 0,
+    fps_update = 20,
+    fps_movement = 30,
+    frame = 0,
+    frameMax = 300,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / frameMax,
+        bias = (1 - Math.abs(per - 0.5) / 0.5);
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            // MOVEING THE MESH OBJECT
+            mesh.position.x = -5 + 10 * bias
+            // SETTING POSITION OF THE CAMERA RELATIVE TO THE POSITION OF THE MESH
+            camera.position.copy(mesh.position).add( new THREE.Vector3(3, 3 - 6 * bias, 3) );
+            // CALLING THE LOOKAT METHOD OF THE CAMERA
+            camera.lookAt(mesh.position);
+            renderer.render(scene, camera);
+            frame += fps_movement * secs;
+            frame %= frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 4 - Camera movement helper example that moves the camera via javaScript code
 
 For this example I am making a more advanced version of my basic animation loop example that has to do with moving a camera. This time I have a move camera helper that takes a camera as an argument along with an update index number in the range of 0 to 1, and a function that will be used to create the values that will be used to change the camera position and orientation. So now the idea is more or less the same as the first animation loop example, but now I am creating additional code that has to do with creating a camera, with values attached to the [userData object](/2021/02/16/threejs-userdata/) of the camera. If you are not aware of the user data object of a camera or any object in threejs that is based off of the object3d class, the user data object is just simply an object where I can pack values that have to do with my own custom system for an object such as a camera.
 
