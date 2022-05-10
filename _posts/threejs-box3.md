@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-05-10 11:04:20
-version: 1.15
+updated: 2022-05-10 11:07:58
+version: 1.16
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max instance of the Vector3 class. This Box can then be used for things like getting another Vector3 instance that is the size of the box. There is creating a new instance of the box3 class and then using that as a way to preform some kind of an action on an object such as scaling that object to the size of the instance of the box3 class. There is also creating an instance of box3 from an object that all ready exists in a scene, and doing something else with that kind of box such as suing it to position an object in space for example. There are many other use case examples of this class, so it goes without saying that I should write at least one if not a few posts on this class, so to start off with that I am writing this post.
@@ -125,7 +125,7 @@ renderer.render(scene, camera);
 
 ## 4 - Seeded random example
 
-This example involves positioning a bunch of mesh objects inside the bounds of an instance of the Box3 class. While I am at it I can also take a moment to mention the [seeded random method of the math utils objects of threejs](/2022/04/11/threejs-math-utils/). As you might expect this seeded random method works like that of the [math random method in core javaScript](/2020/04/21/), but it will result in the same value each time I reload the page.
+This example involves positioning a bunch of mesh objects inside the bounds of an instance of the Box3 class. While I am at it I can also take a moment to mention the [seeded random method of the math utils objects of threejs](/2022/04/11/threejs-math-utils/). As you might expect this seeded random method works like that of the [math random method in core javaScript](/2020/04/21/js-math-random/), but it will result in the same value each time I reload the page.
 
 ```js
 var scene = new THREE.Scene();
