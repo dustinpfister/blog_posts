@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 15:06:37
-version: 1.52
+updated: 2022-05-10 15:16:32
+version: 1.53
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -205,6 +205,8 @@ So far I have covered some simple examples that have to do with just changing th
 ```
 
 ## 4 - Updating things by way of sequences
+
+One thing that I have found that I like to do when making video type projects using threejs is to have some kind of system that can be used to break things down into many parts, or sequences if you prefer. This way I have have some kind of setup where I define an array of objects and each object can be given an update method. Each update method of each object would have access to a main sequence object with values that have to do with the progress of the over all video, but also values that have to do with the progress of the current part, or sequence.
 
 ### 4.1 - The sequences file
 
