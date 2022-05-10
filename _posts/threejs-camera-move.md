@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 09:50:47
-version: 1.49
+updated: 2022-05-10 10:01:00
+version: 1.50
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -101,6 +101,8 @@ On top of having a main FPS update value I can also have a septate FPS value for
 When this example is up and running the end result is having the camera at a location away from a mesh, and the camera is still looking in the direction of the mesh. In most cases I will not just want to set the position of the camera but also adjust the rotation of the camera as well one way or another, however that will be something I will be getting into more so inn the nest example here. Over time the camera moves, and I am not doing anything to change the rotation of the camera over time so the camera does not stay fixed on the mesh.
 
 ## 2 - The look at method
+
+There is more to moving the camera that just moving the position of the camera in world space, there is also setting the rotation of the camera that can also be tough of as a kind of movement as well. There is learning how to work out all kinds of ways to manual setting the state of the Euler instance of the rotation property of a camera, but maybe the easiest way to go about setting the rotation of a camera would be to make use of the look at method of the object3d class.
 
 ```js
 (function () {
