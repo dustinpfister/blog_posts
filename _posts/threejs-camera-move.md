@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 15:16:32
-version: 1.53
+updated: 2022-05-10 15:18:06
+version: 1.54
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -210,6 +210,8 @@ One thing that I have found that I like to do when making video type projects us
 
 ### 4.1 - The sequences file
 
+Here I have a javaScript file that I am using to define a system for this sort of thing when it comes to sequences.
+
 ```js
 var seqHooks = (function () {
     var api = {};
@@ -260,6 +262,8 @@ var seqHooks = (function () {
 ```
 
 ### 4.2 - main example of the the sequences file
+
+I then just want to have some additional code that I can then use to demo this sequence module.
 
 ```js
 (function () {
