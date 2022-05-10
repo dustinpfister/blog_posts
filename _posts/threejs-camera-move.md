@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 10:01:00
-version: 1.50
+updated: 2022-05-10 10:03:38
+version: 1.51
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -153,6 +153,8 @@ There is more to moving the camera that just moving the position of the camera i
 ```
 
 ## 3 - Object relative position
+
+So far I have covered some simple examples that have to do with just changing th rotation and the position of the camera. However when  it comes to setting the position of the camera I am doing so in terms of world space, or maybe a kind of relative space but relative to that is the scene object rather than a child of the scene object such as the one mesh object that I have in these examples thus far.
 
 ```js
 (function () {
