@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 10:03:38
-version: 1.51
+updated: 2022-05-10 15:06:37
+version: 1.52
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -204,7 +204,157 @@ So far I have covered some simple examples that have to do with just changing th
     ());
 ```
 
-## 4 - Camera movement helper example that moves the camera via javaScript code
+## 4 - Updating things by way of sequences
+
+### 4.1 - The sequences file
+
+```js
+var seqHooks = (function () {
+    var api = {};
+    // HELPERS
+    var getPer = function(a, b){
+        return a / b;
+    };
+    var getBias = function(per){
+        return 1 - Math.abs( 0.5 - per ) / 0.5;
+    };
+    // set frame method
+    api.setFrame = function(seq, frame){
+        seq.frame = frame;
+        seq.per = getPer(seq.frame, seq.frameMax);
+        seq.bias = getBias(seq.per);
+        // update object index
+        seq.objectIndex = 0;
+        var i = 0, len = seq.objects.length;
+        while(i < len){
+            var obj = seq.objects[i];
+            var per2 = 1;
+            if(seq.objects[i + 1] != undefined){
+                per2 = seq.objects[i + 1].per;
+            }
+            // if this is the current object update object 
+            // index as well as other relavent values
+            if(seq.per >= obj.per && seq.per < per2){
+                seq.objectIndex = i;
+                seq.partFrameMax = Math.floor( (per2 - obj.per) * seq.frameMax );
+                seq.partFrame = seq.frame - Math.floor(seq.frameMax * obj.per);
+                seq.partPer = getPer(seq.partFrame, seq.partFrameMax);
+                seq.partBias = getBias(seq.partPer);
+                break;
+            }
+            i += 1;
+        }
+        // call before hook
+        seq.beforeObjects(seq);
+        // call update for current object
+        var obj = seq.objects[seq.objectIndex];
+        obj.update(seq, seq.partPer, seq.partBias);
+        // call after objects hook
+        seq.afterObjects(seq);
+    };
+    return api;
+}
+    ());
+```
+
+### 4.2 - main example of the the sequences file
+
+```js
+(function () {
+    // SCENE, CAMERA, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10))
+    var width = 640, height = 480,
+    fieldOfView = 40, aspectRatio = width / height,
+    near = 0.1, far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(width, height);
+    // MESH
+    var mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    var mesh2 = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 30, 30),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh2);
+    // a sequences object
+    var seq = {
+        objectIndex: 0,
+        per: 0,
+        bias: 0,
+        frame: 0,
+        frameMax: 300,
+        beforeObjects: function(seq){
+            var r = Math.PI * 2 * seq.per;
+            var x = Math.cos(r) * 4;
+            var z = Math.sin(r) * 4;
+            mesh2.position.set(x, 0, z);
+        },
+        afterObjects: function(seq){
+            camera.lookAt(mesh.position);
+        },
+        objects: [
+            {
+                per: 0,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(10, 10, 10);
+                }
+            },
+            {
+                per: 0.25,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(10 - 20 * partPer, 10, 10);
+                }
+            },
+            {
+                per: 0.30,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(-10, 10 - 7 * partPer, 10);
+                }
+            },
+            {
+                per: 0.35,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(-10, 3, 10);
+                    var x = 10 * partBias;
+                    camera.lookAt(mesh.position.clone().add(new THREE.Vector3(x, 0, 0)));
+                }
+            },
+            {
+                per: 0.75,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(-10, 3 - 10 * partPer, 10 - 30 * partPer);
+                }
+            }
+        ]
+    };
+    // APP LOOP
+    var secs = 0,
+    fps_update = 10,
+    fps_movement = 30,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            
+            seqHooks.setFrame(seq, seq.frame)
+            renderer.render(scene, camera);
+            seq.frame += fps_movement * secs;
+            seq.frame %= seq.frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 5 - Camera movement helper example that moves the camera via javaScript code
 
 For this example I am making a more advanced version of my basic animation loop example that has to do with moving a camera. This time I have a move camera helper that takes a camera as an argument along with an update index number in the range of 0 to 1, and a function that will be used to create the values that will be used to change the camera position and orientation. So now the idea is more or less the same as the first animation loop example, but now I am creating additional code that has to do with creating a camera, with values attached to the [userData object](/2021/02/16/threejs-userdata/) of the camera. If you are not aware of the user data object of a camera or any object in threejs that is based off of the object3d class, the user data object is just simply an object where I can pack values that have to do with my own custom system for an object such as a camera.
 
