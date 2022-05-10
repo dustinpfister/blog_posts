@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-02-17 12:26:42
-version: 1.42
+updated: 2022-05-10 06:51:00
+version: 1.43
 ---
 
-Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all, so having some fun with threejs now and then is called for. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are a few options with cameras in threejs but the perspective camera is the one I typically use in most projects thus far.
+Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).
 
 There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. Then there is also having the position and rotation of a camera be subject to event handlers that are attached to a kind of input element, or they are fired by a user input device of one kind or another. So then I can control the camera with my mouse, and or keyboard which is nice when I am working on a project and I would like to see how things look from all kinds of different perspectives by changing what that is.
 
