@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 15:18:06
-version: 1.54
+updated: 2022-05-10 15:21:36
+version: 1.55
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -210,7 +210,9 @@ One thing that I have found that I like to do when making video type projects us
 
 ### 4.1 - The sequences file
 
-Here I have a javaScript file that I am using to define a system for this sort of thing when it comes to sequences.
+Here I have a javaScript file that I am using to define a system for this sort of thing when it comes to sequences. I might make a whole other project based on what I worked out here, but for now with this I just have a set frame public method and I am just going to create an object formated the way I need it to be in the main javaScript file later on.
+
+On top of having update methods for each sequence object, I will also want to be able to define hook functions that will be called before and after the call of the current update method in the objects array. This way I can use the before objects hook to update the state of a mesh object that will change over the whole span of the video, or set defaults for things. The after objects hook would be a good place to do anything that I would want to always do with the camera or an object for every frame and override anything that might happen before.
 
 ```js
 var seqHooks = (function () {
