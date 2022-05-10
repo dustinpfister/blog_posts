@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2022-05-10 15:24:55
-version: 1.25
+updated: 2022-05-10 15:27:37
+version: 1.26
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with [materials](/2018/04/30/threejs-materials/) that respond to light such as the [standard material](/2021/04/27/threejs-standard-material/) it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. Ambient Light differs from [other light sources](/2022/02/25/threejs-light/) in that it will evenly illuminate materials evenly from all directions, actually direction is not really even taken into account with this kind of light source. By adding an ambient light it will just simply light up all surfaces of all mesh objects that are skinned with a material that will respond to light when it is added to the scene object. 
@@ -21,7 +21,7 @@ So then in this post I will just be going over a few quick examples of using amb
 
 This is a post on adding [ambient light](https://en.wikipedia.org/wiki/Shading#Ambient_lighting) to a three.js project to set a base amount of light for all mesh object materials. This is not a getting started post on three.js or javaScript in general as getting into the very basics is outside the scope of this post. So I assume that you have gone beyond the hello world stage of three.js at thins point and are now just trying to figure out some of the basics when it comes to light sources. Being aware of ambient light is just one of several options when it comes to adding a light source to a three.js project, so it is something that one should at least be aware of.
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/ovlzYRxivjE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video" src="https://www.youtube.com/embed/tZYqkZYOK2I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### 1.1 - What version of three.js are you using?
 
