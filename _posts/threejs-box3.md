@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-05-09 16:07:42
-version: 1.10
+updated: 2022-05-10 10:05:42
+version: 1.11
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max instance of the Vector3 class. This Box can then be used for things like getting another Vector3 instance that is the size of the box. There is creating a new instance of the box3 class and then using that as a way to preform some kind of an action on an object such as scaling that object to the size of the instance of the box3 class. There is also creating an instance of box3 from an object that all ready exists in a scene, and doing something else with that kind of box such as suing it to position an object in space for example. There are many other use case examples of this class, so it goes without saying that I should write at least one if not a few posts on this class, so to start off with that I am writing this post.
@@ -18,7 +18,6 @@ The [box3 class in the javaScript library known as threejs](https://threejs.org/
 The content of this blog post has to do with a general overview of a single class in a javaScript library known as threejs. This is then not a [post intended for people that have no experience at all with threejs](/2018/04/04/threejs-getting-started/), let alone with [javaScript in general](/2018/11/27/js-getting-started/). You should have some background with javaScript and client side web development in general, also there are a lot of additional things you should be aware of with threejs also. I will not be getting into detail with everything that you should be aware of at this point, but I often use this first section to quickly mention some things you might want to read up more on before hand if you have not done so.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/9H3OmGlsdzc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ### Check out the Vector3 class
 
 In order to create an instance of the THREE.Box3 [constructor function](/2019/02/27/js-javascript-constructor/) in threejs from scratch at least I will need to pass two instances of [the Vector3 class](/2018/04/15/threejs-vector3/). This is a class that one should look into further as it will come up a whole lot and not just when it comes to using the Box3 class. The Vector3 class is also used to set the position and scale of objects, and can also be used to create custom geometers, arrays of points, as well as many other various tasks that have to do with 3d space in general.
