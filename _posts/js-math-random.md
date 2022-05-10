@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-12-22 15:13:43
-version: 1.82
+updated: 2022-05-10 11:07:57
+version: 1.83
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -569,9 +569,11 @@ bars.forEach(function(bar, i){
 
 ## 8 - Conclusion
 
-So that is it for now when it comes to random numbers and javaScript using the build in Math random method. In the event that I get some more time, or that I find something more to write about when it comes to the Math.random method, and other things surrounding random numbers in general I will expand this post a bit more as I have a few times all ready.
+So that is it for now when it comes to random numbers and javaScript using the built in Math random method. In the event that I get some more time, or that I find something more to write about when it comes to the Math.random method, and other things surrounding random numbers in general I will expand this post a bit more as I have a few times all ready.
 
 For now there is maybe reading up more on the various other features of the Math object. It might not be needed to go threw all of them but one of the methods I use often is the [Math atan2](/2019/03/19/js-math-atan2) method which is useful for finding angles between two points for example. There is also getting int using all kinds of formulas that make use of the [math pi](/2020/06/05/js-math-pi/) constant, and also looking into the [natural logarithm](/2018/12/26/js-math-log/) method also.
 
 When it comes to learning a language other then that of javaScript there is the [random standard library in python](/2021/01/22/python-standard-library-random/). That library contains a method just like Math.random, but also a number of other methods for various features that often need to be added by a user space library, or a little additional javaScript code such as with the examples outlined in this post.
+
+Also there are many javaScript libraries that have random methods in them and often they are not just simply wrappers or abstractions of the core javaScript math.random method. For example in the [math utils object of the threejs library there is a seeded random method](/2022/04/11/threejs-math-utils/).
 
