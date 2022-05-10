@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 15:21:36
-version: 1.55
+updated: 2022-05-10 15:24:56
+version: 1.56
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -21,9 +21,7 @@ So in this post I will be writing about some threejs examples that have to do wi
 
 This is a post on how to move a camera in three.js a front end javaScript library that has to do with 3d modeling. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/) so I assume that you have at least some background on this to get started with, otherwise you might have a hard time gaining something of value from reading this content.
 
-### Version Numbers matter with three.js
 
-When I first wrote this post I was using r111 of three.js, and the last time I edited this post I was using r127. Three.js is a fast moving target when it comes to development, at some point in the future these three.js examples might break because of this. So be sure to always check the version number of three.js when working with these examples, or any three.js examples on the open web for that matter.
 
 ### You should really look into the Object3d class when it comes to movement of objects in general in three.js
 
@@ -42,6 +40,10 @@ However when it comes to moving a camera by way of some kind of application loop
 ### The source code that I am writing about in this post is on Github
 
 The source code examples that I am writing about here can be found in my [test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera-move).
+
+### Version Numbers matter with three.js
+
+When I first wrote this post I was using r111 of three.js, and the last time I edited this post I was using r127. Three.js is a fast moving target when it comes to development, at some point in the future these three.js examples might break because of this. So be sure to always check the version number of three.js when working with these examples, or any three.js examples on the open web for that matter.
 
 ## 1 - A Basic camera movement example with an animation loop function
 
