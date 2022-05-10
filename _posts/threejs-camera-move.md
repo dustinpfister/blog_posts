@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2022-05-10 09:02:26
-version: 1.47
+updated: 2022-05-10 09:46:13
+version: 1.48
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -47,23 +47,22 @@ The source code examples that I am writing about here can be found in my [test t
 
 In this section I will be starting out with a basic threejs example that has to do with moving a camera by way of an animation loop. So nothing major or fancy here, just a kind of hello world when it comes to moving a camera. If this sort of thing is new to you in general with front end javaScript you might want to start out looking into the [request animation frame](/2018/03/13/js-request-animation-frame/) method in client side javaScrit alone.
 
-I started out with just making an instance of the perspective camera like always when it comes to most typical projects. After that I want to have a scene with a gird helper, a renderer, and a mesh object to have something to look at other than the grid helper. I can then set a new position for the camera by just calling the set method of the Vetor3 instance as the value of the position property of the camerae. When doing so I often will also want to use the look at method of the camera also to make sure that the camera is also looking in the direction that I want at the new position.
+I started out this example like that of any other threejs example when it comes to the usual set of objects. What I mean by that is having a scene object, camera, and renderer set up. After that I just created a single mesh object that I will be leaving at the default origin location.
 
-I then have the main app loop in which I will be moving the camera over time, and this is where things can get at least a little involved when it comes to moving a camera this way. There are many ways of making this like of animation update loop, some of which are a lot less complex than what I am doing here. However I have found that there are at least a few key features that one should always have in this kind of loop in order to have something that is in better shape for production. The first and foremost thing that comes to mind is to not update the scene each time the loop function is called, rather a date should be used to find out how many seconds have based sense the last update and use that as a means to update the scene or not. This way the client running the threejs program is not getting slammed and I can adjust how low I want to fps to be for updating the scene. However fps values will result in using less CPU overhead, but at the cost of choppy rather than smooth motion.
+I then have the main app loop in which I will be moving the camera over time, and this is where things can get at least a little involved when it comes to moving a camera this way. There are many ways of making this kind of animation update loop, some of which are a lot less complex than what I am doing here. However I have found that there are at least a few key features that one should always have in this kind of loop in order to have something that is in better shape for production. 
+The first and foremost thing that comes to mind is to not update the scene each time the loop function is called, rather a date should be used to find out how many seconds have based sense the last update and use that as a means to update the scene or not. This way the client running the threejs program is not getting slammed and I can adjust how low I want to fps to be for updating the scene. However fps values will result in using less CPU overhead, but at the cost of choppy rather than smooth motion.
 
-On Top of having a main FPS update value I can also have a septate FPS value for how to go about updating the frame rate of the animation. This way I can update the scene at a very low frame rate, but still update the position of the camera at a higher frame rate.
+On top of having a main FPS update value I can also have a septate FPS value for how to go about updating the frame rate of the animation. This way I can update the scene at a very low frame rate, but still update the position of the camera at a higher frame rate.
 
 ```js
 (function () {
-    // CAMERA
+    // SCENE, CAMERA, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(20, 20))
     var width = 640, height = 480,
     fieldOfView = 40, aspectRatio = width / height,
     near = 0.1, far = 1000,
     camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    // SCENE
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(8, 8))
-    // RENDER
     var renderer = new THREE.WebGLRenderer();
     document.getElementById('demo').appendChild(renderer.domElement);
     renderer.setSize(width, height);
@@ -72,15 +71,12 @@ On Top of having a main FPS update value I can also have a septate FPS value for
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
     scene.add(mesh);
-    // starting pos for camera
-    camera.position.set(10, 0, 0);
-    camera.lookAt(mesh.position);
     // APP LOOP
     var secs = 0,
     fps_update = 20,   // fps rate to update ( low fps for low CPU use, but choppy video )
     fps_movement = 30, // fps rate to move camera
     frame = 0,
-    frameMax = 90,
+    frameMax = 300,
     lt = new Date();
     var loop = function () {
         var now = new Date(),
@@ -89,8 +85,8 @@ On Top of having a main FPS update value I can also have a septate FPS value for
         bias = (1 - Math.abs(per - 0.5) / 0.5);
         requestAnimationFrame(loop);
         if(secs > 1 / fps_update){
-            // moving the camera
-            camera.position.set(10, -2 + 4 * bias, 0);
+            // MOVING THE CAMERA IN THE LOOP
+            camera.position.set(3 * bias, 1 + 2 * bias, 10);
             renderer.render(scene, camera);
             frame += fps_movement * secs;
             frame %= frameMax;
@@ -102,7 +98,7 @@ On Top of having a main FPS update value I can also have a septate FPS value for
     ());
 ```
 
-When this example is up and running the end result is having the camera at a location away from a mesh, and the camera is looking in the direction of the mesh. Over time the camera moves up and down, but only on the y axis, and I am not doing anything to change the rotation of the camera over time so the creating does not stay fixed on the mesh.
+When this example is up and running the end result is having the camera at a location away from a mesh, and the camera is still looking in the direction of the mesh. In most cases I will not just want to set the position of the camera but also adjust the rotation of the camera as well one way or another, however that will be something I will be getting into more so inn the nest example here. Over time the camera moves, and I am not doing anything to change the rotation of the camera over time so the camera does not stay fixed on the mesh.
 
 ## 2 - Camera movement helper example that moves the camera via javaScript code
 
