@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-05-11 07:06:26
-version: 1.24
+updated: 2022-05-11 08:42:14
+version: 1.25
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project such as with the arrow helper for example. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -94,7 +94,9 @@ There are a few additional options for the THREE.GridHelper Constructor, both of
     ());
 ```
 
-## 3 - 
+## 3 - Setting the line width of a grid helper
+
+Like many of the helpers in threejs the grid helper makes use of the line segments material which has a line width property. However setting any width higher than that of 1 might not work for all platforms. From my experience setting a line width higher than one works for me in Raspberry PI OS for example, but not in windows 10. This is then one reason why it might be a good idea to look into alternative options for this kind of thing, such as making use of a plane geometry, and a mesh object for example.
 
 ```js
 (function () {
