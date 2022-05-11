@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-05-11 06:48:08
-version: 1.21
+updated: 2022-05-11 06:53:19
+version: 1.22
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project such as with the arrow helper for example. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -19,7 +19,11 @@ However when it comes to just having a grid in the scene to just make sure that 
 
 ## The Grid helper in threejs and what to know first
 
-This is then a post on the Grid helper one of many helper objects based on the [Object3d class](/2018/04/23/threejs-object3d/) in three.js that can be sued to display what the current states is of some kind of object such as a mesh or camera. The gird helper is typically added directly to a scene object as a way to just know what the current state of affairs are when it comes to the center location of the scene, and where certain objects are relative to each other.
+This is then a post on the Grid helper one of many helper objects in the javaScript librray called threejs. The gird helper is typically added directly to a scene object as a way to just know what the current state of affairs are when it comes to the center location of the scene, and where certain objects are relative to each other.
+
+### Read up more on Object3d class in general
+
+A grid helper is one of many objects in threejs that is based off of the [Object3d class](/2018/04/23/threejs-object3d/). Other examples of objects that are based off of object3d include Mesh objects, cameras, and even whole scene objects. What this means is that there are a collection of properties and methods for a grid helper that can also be used with any object in general that is based off of this object3d class. So then this is a class that is worth reading up more on if you are new to threejs, and also if you have a fair amount of experience also actually as I am still learning more about this class and many others also even though I have been at this sort of thing for a long time now.
 
 ### The source code examples in this post are on Github
 
