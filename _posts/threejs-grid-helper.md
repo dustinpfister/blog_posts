@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-05-11 06:45:41
-version: 1.20
+updated: 2022-05-11 06:48:08
+version: 1.21
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project such as with the arrow helper for example. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
 
 There are a number of other things that can be done in place of using the grid helper, such as having one or more objects in the scene that can replace what the gird helper is used for, as well as be a part of the scene itself. One of the typical things to do with that would be to use the [plane geometry constructor](/2019/06/05/threejs-plane/) to create a crude yet effective kind of ground mesh. When it comes to that kind of geometry there are ways to have an array of materials, and then also work out some kind of pattern when it comes to using what material with what gird location. There is also just making a single texture for the surface of the plane geometry as well, using another option such as the box geometry, or going so far as making some kind of custom geometry.
 
-However when it comes to just having a grid in the scene to just make sure that objects are where they should be, or to just get a sense of what is going on with things when it comes to working out some kind of animation, the gird helper is a nice quick way of having a grid to look at.
+However when it comes to just having a grid in the scene to just make sure that objects are where they should be, or to just get a sense of what is going on with things when it comes to working out some kind of animation, the gird helper is a nice quick way of having a grid to look at rather than just space. There are a few things to be aware of when using this Grid helper constructor, so at least a few quick example of this are called for that I will be parking in this content.
 
 <!-- more -->
 
