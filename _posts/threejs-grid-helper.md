@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-05-11 08:42:14
-version: 1.25
+updated: 2022-05-11 10:07:14
+version: 1.26
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project such as with the arrow helper for example. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -20,6 +20,9 @@ However when it comes to just having a grid in the scene to just make sure that 
 ## The Grid helper in threejs and what to know first
 
 This is then a post on the Grid helper one of many helper objects in the javaScript library called threejs. The gird helper is typically added directly to a scene object as a way to just know what the current state of affairs are when it comes to the center location of the scene, and where certain objects are relative to each other. However the Grid helper can be added to any object based off of the object3d class beyond just that of the scene object. Speaking of the object3d class I assume that you have at least a little knowledge of that and of course the basics of threejs as well as javaScript in general. I will be writing about a few things you show know before hand here in this section but will not be getting into to much detail as I do nt want to go to far of topic.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/ac8r80MsvO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### Read up more on Object3d class in general
 
