@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-05-12 09:31:16
-version: 1.43
+updated: 2022-05-12 09:55:03
+version: 1.44
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emissive values, and much more.
@@ -307,7 +307,58 @@ loop();
 
 When it comes to some kind of simple random color example such as this there are a great number of things that I might want to change when it comes to creating random colors. However for the most part it might be just playing around with the expressions that are used to create a color.
 
-## 6 - Color add and equals methods
+## 6 - Mutation of color value over time
+
+So I have covered some example that have to do with creating an instance of color, and using that color when it comes to things like setting the background color of a scene object, or colors that can be used when drawing to a canvas element to be used for a texture in an emissive map. Now I am thinking that I will wan to make at least one of not more examples that have to do with mutation of a color object instance over time.
+
+```js
+// SCENE, CAMERA, RENDERER
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(8,8))
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL
+var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
+light.position.set(1, 3, 2);
+scene.add(light);
+// Mesh
+var color = new THREE.Color(1, 0, 0);
+var material = new THREE.MeshStandardMaterial({
+    color: color
+})
+var mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 30, 30),
+    material
+);
+scene.add(mesh);
+// LOOP
+var lt = new Date(),
+frame = 0,
+maxFrame = 200,
+fps = 30;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(per - 0.5) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        material.color.setRGB(bias, 1 - bias, 0);
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+
+};
+loop();
+```
+
+## 7 - Color add and equals methods
 
 In this example I am using the add method of a color class instance of each material or each mesh in a group of mesh objects. I just get a reference to the material that I am using for a mesh, and then I can call the add method of that color to add the values of another instance of THREE.Color to that color. I can also use the equals method to find out of a color is fully white or not, and of so I can set a new random color using a random color helper.
 
