@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-05-12 14:03:38
-version: 1.1
+updated: 2022-05-12 14:06:18
+version: 1.2
 ---
 
 When it comes to starting to make some kind of actual product with threejs rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences.
@@ -15,6 +15,8 @@ When it comes to starting to make some kind of actual product with threejs rathe
 
 
 ## 1 - First revision of this video sequences hooks module
+
+In this section I will be going over the first revision of this sequence hooks module, which might also be the only revision if I never have a need to improve this or fix any bugs. Anyway in this section I will be going over two files then, one of which is the sequence hooks javaScript file itself, and the other is just a demo of this module that tests out the features of this module.
 
 ### 1.1 - The module
 
