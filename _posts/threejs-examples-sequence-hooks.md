@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-05-12 14:11:49
-version: 1.4
+updated: 2022-05-12 14:15:17
+version: 1.5
 ---
 
 When it comes to starting to make some kind of actual product with threejs rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences.
@@ -148,7 +148,7 @@ var seqHooks = (function () {
 
 ### 1.2 - Demo script
 
-So now for a demo script just for the sake of making sure that this module is working out okay just the way I like it to. I am thinking that I should test out the default feature when it comes to setting secs values for each object, but also a few more nested sequence objects that make use of the per values like I have been doing thus far with the older sequence module.
+So now for a demo script just for the sake of making sure that this module is working out okay just the way I like it to. I am thinking that I should test out the default feature when it comes to setting secs values for each object, but also a few more nested sequence objects that make use of the per values like I have been doing thus far with the older sequence module. So then I maybe it would be a good idea to have two mesh objects one of which is mutated by making use of one or more nested sequence objects that will be used in a main sequence objects, and then another mesh object that will just be mutated with over time in the before objects method of the main sequence object.
 
 ```js
 (function () {
