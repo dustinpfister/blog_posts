@@ -5,10 +5,298 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-05-12 13:48:21
-version: 1.0
+updated: 2022-05-12 14:03:38
+version: 1.1
 ---
 
 When it comes to starting to make some kind of actual product with threejs rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences.
 
 <!-- more -->
+
+
+## 1 - First revision of this video sequences hooks module
+
+### 1.1 - The module
+
+```js
+// seq-hooks-r0.js
+// sequence hooks library from threejs-examples-sequence-hooks
+var seqHooks = (function () {
+    var api = {};
+    // HELPERS
+    var getPer = function(a, b){
+        return a / b;
+    };
+    var getBias = function(per){
+        return 1 - Math.abs( 0.5 - per ) / 0.5;
+    };
+    // update the given seq object by way of a frame, and maxFrame value
+    api.setFrame = function(seq, frame, frameMax){
+        seq.frame = frame === undefined ? 0 : frame;
+        seq.frameMax = frameMax === undefined ? 100 : frameMax;
+        // set main per and bias values
+        seq.per = getPer(seq.frame, seq.frameMax);
+        seq.bias = getBias(seq.per);
+        // update object index
+        seq.objectIndex = 0;
+        var i = 0, len = seq.objects.length;
+        while(i < len){
+            var obj = seq.objects[i];
+            var per2 = 1;
+            if(seq.objects[i + 1] != undefined){
+                per2 = seq.objects[i + 1].per;
+            }
+            // if this is the current object update object 
+            // index as well as other relevant values
+            if(seq.per >= obj.per && seq.per < per2){
+                seq.objectIndex = i;
+                seq.partFrameMax = Math.floor( (per2 - obj.per) * seq.frameMax );
+                seq.partFrame = seq.frame - Math.floor(seq.frameMax * obj.per);
+                seq.partPer = getPer(seq.partFrame, seq.partFrameMax);
+                seq.partBias = getBias(seq.partPer);
+                break;
+            }
+            i += 1;
+        }
+        // call before hook
+        seq.beforeObjects(seq);
+        // call update for current object
+        var obj = seq.objects[seq.objectIndex];
+        if(obj){
+            seq.obj = obj;
+            obj.update(seq, seq.partPer, seq.partBias, obj);
+        }
+        // call after objects hook
+        seq.afterObjects(seq);
+    };
+    // get total secs value helper
+    var getTotalSecs = function(seq){
+        return seq.objects.reduce(function(acc, obj){ return acc + (obj.secs || 0) }, 0);
+    };
+    // just get an array of per values based on sec values for each object, and DO NOT MUTATE the seq object
+    api.getPerValues = function(seq){
+        var secsTotal = getTotalSecs(seq);
+        var perValues = [];
+        var i = 0, len = seq.objects.length;
+        while(i < len){
+            var per = perValues[i - 1];
+            if( per === undefined ){
+                perValues.push(0);
+            }else{
+                var perDelta = seq.objects[i - 1].secs / secsTotal;
+                perValues.push( parseFloat( ( per + perDelta ).toFixed(4) ) );         
+            }
+            i += 1;
+        }
+        return perValues;
+    };
+    // get a target frames value
+    api.getTargetFrames = function(seq, fps){
+        fps = fps === undefined ? 30 : fps;
+        var secsTotal = getTotalSecs(seq);
+        return Math.ceil(secsTotal * fps);
+    };
+    // set per values
+    api.setPerValues = function(seq, fps){
+        // set seq.totalSecs
+        seq.totalSecs = getTotalSecs(seq);
+        // set per values
+        api.getPerValues(seq).forEach(function(per, i){
+            seq.objects[i].per = per;
+        });
+        // set frameMax
+        seq.frameMax = api.getTargetFrames(seq, fps);
+        return seq;
+    };
+    // create new seq object method
+    var noop = function(){};
+    api.create = function(opt){
+        opt = opt || {};
+        opt.setPerValues = opt.setPerValues === undefined ? true : false;
+        var seq = {};
+        seq.objectIndex = 0;
+        seq.per = 0;
+        seq.bias = 0;
+        seq.frame = 0;
+        seq.frameMax = 100;
+        // parse hooks
+        seq.beforeObjects = opt.beforeObjects || noop;
+        seq.afterObjects = opt.afterObjects || noop;
+        // parse objects
+        seq.objects = opt.objects || [];
+        seq.objects = seq.objects.map(function(obj){
+            obj.per = obj.per === undefined ? 0 : obj.per;
+            obj.secs = obj.secs === undefined ? 0 : obj.secs;
+            obj.data = obj.data || {};
+            obj.update = obj.update || noop;
+            return obj;
+        });
+        // set per values is part of the create process
+        if(opt.setPerValues){
+            api.setPerValues(seq, opt.fps === undefined ? 30: opt.fps);
+        }
+        return seq;
+    };
+    // return public api
+    return api;
+}());
+```
+
+### 1.2 - Demo script
+
+```js
+(function () {
+    // SCENE, CAMERA, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10))
+    var width = 640, height = 480,
+    fieldOfView = 40, aspectRatio = width / height,
+    near = 0.1, far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(width, height);
+    // MESH
+    var mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    var mesh2 = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 30, 30),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh2);
+    // seq object for mesh1 that scales the mesh
+    var seq_mesh1_scale = seqHooks.create({
+        setPerValues: false,
+        beforeObjects: function(seq){
+            mesh1.scale.set(1, 1, 1);
+        },
+        objects: [
+            {
+                per: 0,
+                update: function(seq, partPer, partBias){
+                    var s = 1 + 2 * partPer;
+                    mesh1.scale.set(s, s, s);
+                }
+            },
+            {
+                per: 0.15,
+                update: function(seq, partPer, partBias){
+                    mesh1.scale.set(3, 3, 3);                    
+                }
+            },
+            {
+                per: 0.25,
+                update: function(seq, partPer, partBias){
+                    var s = 3 - 2 * partPer;
+                    mesh1.scale.set(s, s, s);                    
+                }
+            }
+        ]
+    });
+    // seq object for mesh1 that rotates the mesh
+    var seq_mesh1_rotate = seqHooks.create({
+        setPerValues: false,
+        beforeObjects: function(seq){
+            mesh1.scale.set(1, 1, 1);
+            mesh1.rotation.set(0, 0, 0);
+            mesh1.rotation.y = Math.PI * 4 * seq.per;
+        },
+        objects: [
+            {
+                per: 0,
+                update: function(seq, partPer, partBias){
+                    mesh1.rotation.x = Math.PI * 1.5;
+                }
+            },
+            {
+                per: 0.5,
+                update: function(seq, partPer, partBias){
+                    mesh1.rotation.x = Math.PI;
+                }
+            }
+        ]
+    });
+    // A MAIN SEQ OBJECT
+    var seq = seqHooks.create({
+        beforeObjects: function(seq){
+            var r = Math.PI * 2 * seq.per;
+            var x = Math.cos(r) * 4;
+            var z = Math.sin(r) * 4;
+            mesh2.position.set(x, 0, z);
+        },
+        afterObjects: function(seq){
+            camera.lookAt(mesh1.position);
+        },
+        objects: [
+            {
+                per: 0,
+                secs: 3,
+                update: function(seq, partPer, partBias){
+                    // seq_mesh1
+                    seqHooks.setFrame(seq_mesh1_scale, seq.partFrame, seq.partFrameMax);
+                    // camera
+                    camera.position.set(10, 10, 10);
+                }
+            },
+            {
+                secs: 1,
+                update: function(seq, partPer, partBias){
+                    // camera
+                    camera.position.set(10 - 20 * partPer, 10, 10);
+                }
+            },
+            {
+                secs: 1,
+                update: function(seq, partPer, partBias){
+                    // camera
+                    camera.position.set(-10, 10 - 7 * partPer, 10);
+                }
+            },
+            {
+                secs: 3,
+                update: function(seq, partPer, partBias){
+                    // camera
+                    camera.position.set(-10, 3, 10);
+                    var x = 10 * partBias;
+                    camera.lookAt(mesh1.position.clone().add(new THREE.Vector3(x, 0, 0)));
+                }
+            },
+            {
+                secs: 10,
+                update: function(seq, partPer, partBias){
+                    // seq_mesh1
+                    seqHooks.setFrame(seq_mesh1_rotate, seq.partFrame, seq.partFrameMax);
+                    // camera
+                    camera.position.set(-10, 3 - 10 * partPer, 10 - 30 * partPer);
+                }
+            }
+        ]
+    });
+    // APP LOOP
+    var secs = 0,
+    fps_update = 10,
+    fps_movement = 30,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            // update by hooks
+            seqHooks.setFrame(seq, seq.frame, seq.frameMax);
+            renderer.render(scene, camera);
+            seq.frame += fps_movement * secs;
+            seq.frame %= seq.frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+## Conclusion
+
+This is looking good so far and I think that I will be using this in place of a similar module that I made before hand that I have been using to make my videos thus far. With that sequence module I have found that there are a few features that I should have in a module such as this that I now have which is great. Mainly it was the before and after objects hooks that I wanted to have the most, but a few more ideas came up that I think I will be using now and then for future video projects.
+
+I am sure that I will end up running into other problems that might result in me wanting to have just a few more additional features on top of what I am working with all ready here with this module. So at some point in the future I will likely make another revision of this module, or maybe a whole other project based off of what I worked out here.
