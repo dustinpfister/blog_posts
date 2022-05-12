@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-05-12 14:32:25
-version: 1.9
+updated: 2022-05-12 14:36:23
+version: 1.10
 ---
 
 When it comes to starting to make some kind of actual product with threejs rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
@@ -20,8 +20,15 @@ While I was making this module I also thought of a whole bunch of other features
 
 ## This video sequences module and what to know first
 
-This is a post on the source code of a javaScript module, and a little additional demo code that I aim to use to make threejs powered videos for my various blog posts here, as well as other video projects that I might start or continue to work in in the future. It should go without saying but I will make it clear here, this is an advanced post on the subject of threejs and client side web programing using javaScript, so I am taking some liberties and assuming that you have at least a little background with these topics.
+This is a post on the source code of a javaScript module, and a little additional demo code that I aim to use to make threejs powered videos for my various blog posts here, as well as other video projects that I might start or continue to work in in the future. It should go without saying but I will make it clear here, this is an advanced post on the [subject of threejs](/2018/04/04/threejs-getting-started/) and client side [web programing using javaScript](/2018/11/27/js-getting-started/), so I am taking some liberties and assuming that you have at least a little background with these topics.
 
+### source code is up on github
+
+The source code examples I am writing about here can also be found in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-sequence-hooks).
+
+### Version numbers matter
+
+I was using r135 of threejs when testing this out.
 
 ## 1 - First revision of this video sequences hooks module
 
