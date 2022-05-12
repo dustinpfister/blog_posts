@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-05-12 14:15:17
-version: 1.5
+updated: 2022-05-12 14:20:59
+version: 1.6
 ---
 
 When it comes to starting to make some kind of actual product with threejs rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences.
+
+These sequences are just a way of having not just one update method, but an array of update methods with a current index for an update method that will be set based on a percent value that is based off of a current frame index value relative to that of a max frame value. This is something that I have all ready done with a sequence module that I have all ready made for my various video projects, one collection of which has to do with making video embeds for these blog posts. Anyway after using the module that I have made before for a while now I have found that there are a number of additional features that I should add, one of which is to not just have a collection of objects with an update method, but also before and after hook methods that will always fire before and after the calling of the current update method. This way I can use the before hook to set values that are a kind of default value for the sequence object, rather than repeating lines of code for each update method.
 
 <!-- more -->
 
