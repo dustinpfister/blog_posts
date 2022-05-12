@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-05-12 09:28:58
-version: 1.42
+updated: 2022-05-12 09:31:16
+version: 1.43
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emissive values, and much more.
@@ -23,7 +23,7 @@ This is a post on the THREE.Color constructor in the javaScript library three.js
 
 ### A Transparent effect is a whole other can of worms
 
-When it comes to working with color in a general client side javaScript environment there are ways of having an alpha channel for a color. In the THREE.Color class there are just properties for red, green, and blue, but not for an alpha channel. If is of course possible to make [materials transparent](/2021/04/21/threejs-materials-transparent/), but doing so involves setting the transparency boolean for the material to true. Then it is the opacity property of a material that will act as the alpha channel value. 
+When it comes to working with color in a general client side javaScript environment there are ways of having an alpha channel for a color. In the THREE.Color class there are just properties for red, green, and blue, but not for an alpha channel. It is of course possible to make [materials transparent](/2021/04/21/threejs-materials-transparent/), but doing so involves setting the transparency boolean for the material to true, and then it is the opacity property of a material that will act as the alpha channel value. 
 
 ### Version Numbers matter with three.js
 
@@ -395,7 +395,7 @@ var loop = function () {
 loop();
 ```
 
-## 7 - Conclusion
+## Conclusion
 
 Well I think that might be it for now at least when it comes to the THREE.Color constructor in three.js until I get around to editing this post. There is not just setting solid color values though when it comes to everything that has to do with color in three.js though. There is a great deal more to write about when it comes to color and the various types of texture maps there are to work with when ti comes to creating a material for example. With an alpha map for example I want to set the colors of the various pixels to colors that are gray scale rather than solid colors as gray scale colors are what are used to set levels of transparency for the alpha map. When creating a texture for a mesh I might often use a canvas element, so setting the color values for the texture might not make use of the THREE.Color constrictor but that is never the less one of many additional little details that have to do with color in three.js.
 
