@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-05-12 09:23:05
-version: 1.41
+updated: 2022-05-12 09:28:58
+version: 1.42
 ---
 
-When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emmsive values, and much more.
+When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emissive values, and much more.
 
 What is nice about the THREE.Color class is that the class is packed with a number of features that allow for me to create a color in a number of different ways, including just passing three numbers for red, green and blue color channel values in the form of a number between 0 and 1 as arguments when calling the constructor function. Regardless of how I create the color what is returned is an instance of THREE.Color, rather than a string value for a color, and as such there is a red, green, and blue property of the object. There are also a great number of prototype methods that have to do with mutating these values, or returning values based off the state of these properties, or changing the state of the color. For example there is a get hex method that will return a hex string value of the color, and a set RGB method that will change the value of the color by r, g, and b values.
 
@@ -19,7 +19,7 @@ So in this post I will be going over a number of typical use case examples of th
 
 ## THREE.Color and what to know first
 
-This is a post on the THREE.Color constructor in three.js that is used to create an object that represents a certain color that can be used for various other features in threejs. This is not a post on the [basics of getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general, so I assume that you have at least some background, and just want to learn more about color in three.js. Still in this section I will be going over a few key details that you might want to be aware of before hand if you are nit all ready.
+This is a post on the THREE.Color constructor in the javaScript library three.js, this is not a post on the [basics of getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general, so I assume that you have at least some background with these subjects before hand. I will then not be getting into great detail about threejs as well as the subject of color in general when it comes to client side javaScript. Still in this section I will be going over a few key details that you might want to read up more on that are relevant to the rest of the content of this post.
 
 ### A Transparent effect is a whole other can of worms
 
