@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-05-12 14:36:23
-version: 1.10
+updated: 2022-05-12 14:42:24
+version: 1.11
 ---
 
-When it comes to starting to make some kind of actual product with threejs rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
+When it comes to starting to make some kind of actual product with [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
 
 These sequences are just a way of having not just one update method, but an array of update methods with a current index for an update method that will be set based on a percent value that is based off of a current frame index value relative to that of a max frame value. This is something that I have all ready done with a sequence module that I have all ready made for my various video projects, one collection of which has to do with making video embeds for these blog posts. Anyway after using the module that I have made before for a while now I have found that there are a number of additional features that I should add, one of which is to not just have a collection of objects with an update method, but also before and after hook methods that will always fire before and after the calling of the current update method. This way I can use the before hook to set values that are a kind of default value for the sequence object, rather than repeating lines of code for each update method.
 
@@ -21,6 +21,10 @@ While I was making this module I also thought of a whole bunch of other features
 ## This video sequences module and what to know first
 
 This is a post on the source code of a javaScript module, and a little additional demo code that I aim to use to make threejs powered videos for my various blog posts here, as well as other video projects that I might start or continue to work in in the future. It should go without saying but I will make it clear here, this is an advanced post on the [subject of threejs](/2018/04/04/threejs-getting-started/) and client side [web programing using javaScript](/2018/11/27/js-getting-started/), so I am taking some liberties and assuming that you have at least a little background with these topics.
+
+### Know at least the basics of a the request animation frame method or the threejs clock object
+
+In client side javaScript there is the [request animation frame method](/2018/03/13/js-request-animation-frame/) that is often what is used to set up a basic animation loop. There are a few other options for this sort of thing such as set time out, but when it comes to rendering rather than updating a model it is mostly just the request animation frame method that is used. I often just use this method, but there is also a [threejs built in clock feature](/2021/05/28/threejs-clock/) for this sot of thing as well.
 
 ### source code is up on github
 
@@ -36,7 +40,7 @@ In this section I will be going over the first revision of this sequence hooks m
 
 ### 1.1 - The sequence hooks module
 
-Here I have the source code of the module itself for the state of the first revision of it. When it comes to this there are a few public methods but for the most part there are just the cerate and set frame methods that I will just be using for most if not all projects. In a video poject I will be using the create method to create a standard sequence object, and then that object is what I will be passing to the set frame method that will in turn call the before objects hook method first, then one of the update methods for th current object in the objects array, and then of course the after objects hook.
+Here I have the source code of the module itself for the state of the first revision of it. When it comes to this there are a few public methods but for the most part there are just the cerate and set frame methods that I will just be using for most if not all projects. In a video project I will be using the create method to create a standard sequence object, and then that object is what I will be passing to the set frame method that will in turn call the before objects hook method first, then one of the update methods for th current object in the objects array, and then of course the after objects hook.
 
 ```js
 // seq-hooks-r0.js
