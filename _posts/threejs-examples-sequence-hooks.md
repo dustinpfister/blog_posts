@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-05-12 14:06:18
-version: 1.2
+updated: 2022-05-12 14:09:49
+version: 1.3
 ---
 
 When it comes to starting to make some kind of actual product with threejs rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences.
@@ -18,7 +18,9 @@ When it comes to starting to make some kind of actual product with threejs rathe
 
 In this section I will be going over the first revision of this sequence hooks module, which might also be the only revision if I never have a need to improve this or fix any bugs. Anyway in this section I will be going over two files then, one of which is the sequence hooks javaScript file itself, and the other is just a demo of this module that tests out the features of this module.
 
-### 1.1 - The module
+### 1.1 - The sequence hooks module
+
+Here I have the source code of the module itself for the state of the first revision of it. When it comes to this there are a few public methods but for the most part there are just the cerate and set frame methods that I will just be using for most if not all projects. In a video poject I will be using the create method to create a standard sequence object, and then that object is what I will be passing to the set frame method that will in turn call the before objects hook method first, then one of the update methods for th current object in the objects array, and then of course the after objects hook.
 
 ```js
 // seq-hooks-r0.js
