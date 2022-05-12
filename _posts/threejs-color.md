@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-05-12 09:58:09
-version: 1.45
+updated: 2022-05-12 10:00:16
+version: 1.46
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emissive values, and much more.
@@ -28,6 +28,10 @@ When it comes to working with color in a general client side javaScript environm
 ### Check out more on what there is to know about materials
 
 There are a number of reasons as to why I would want to create an instance of threejs, one of which is to create a value to be used with one of the various properties of one or more kinds of materials. However what properties are what when it comes to creating or change a color value will change a little from one material to another. For example when it comes to the basic material it is more or less just the color property that I care about, but when it comes to the standard material there is the color and emissive property that I need to be aware of.
+
+### Creating textures from javaScript code
+
+Another use case for the threejs color class is to use it to create one or more colors that I will then use to create textures by way of javaScript code rather and a static external image asset. There are a number of ways to do this such as with the data texture constructor, or the canvas texture constructor.
 
 ### Version Numbers matter with three.js
 
