@@ -1,12 +1,12 @@
 ---
-title: 27 threejs examples that showcase many of the features of the library
+title: 28 threejs examples that showcase many of the features of the library
 date: 2021-02-19 14:42:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-05-07 12:23:36
-version: 1.51
+updated: 2022-05-12 13:51:18
+version: 1.52
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -101,35 +101,39 @@ This is an example where I have worked out a crude yet effective module that can
 
 This is an example of a module that can be used to shake the whole scene that will work if I do not add the camera to the scene of course. However any object in three.js that is based off of object3d can also be used with this shake module.
 
-### [ 2.20  - Mutate a sphere ](/2021/06/10/threejs-examples-sphere-mutate/)
+### [ 2.20 - Video sequence hooks ](/2022/05/12/threejs-examples-sequence-hooks/)
+
+When it comes to making videos I have found that I like to break down things into what I have come to call sequences.
+
+### [ 2.21  - Mutate a sphere ](/2021/06/10/threejs-examples-sphere-mutate/)
 
 In this example I am just working out a helper method that will just move the position of the top point of a sphere geometry. This is just an example that I worked out after writing a bunch of posts on the buffer geometry class in threejs and when I did so I learned a lot more about what the various attributes are for a geometry class in causing the position attribute. So I thought that I should work out at least on or two more examples that have to do with creat8ng a custom geometry, or just mutating the values of a geometry that is created with one of the built in geometry constructors such a s the sphere geometry constructor.
 
-### [ 2.21 - Source layer 3d](/2022/02/11/threejs-examples-tool-source-layer-3d/) 
+### [ 2.22 - Source layer 3d](/2022/02/11/threejs-examples-tool-source-layer-3d/) 
 
 I wanted to make the first of what might in time be a few tools that are used to create some kind of content such as an image of some kind or so forth. The aim with this example then was to create a kind of art program where I am using threejs to create a scene with one or more dea files that I load into the scene that is drawn as a resource layer. I can then change all kids of values with these objects in the scene including the position, and orientation of the of the camera. I then have one or more additional canvas layers on top of this resource layer that I then draw on free hand, and then desired end product is some kind of 2d image based off of the state of the scene.
 
-### [ 2.22 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
+### [ 2.23 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
 
 This is an example where I am using my simple tree sphere models and just creating a whole bunch of those and placing them around the surface of a sphere. It is then just a basic example of creating a main world type model and then having a whole bunch of instances of another model be a part of this kind of model.
 
-### [ 2.23 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
+### [ 2.24 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
 
 This is a very basic static model of a tree that is just a sphere geometry placed on the top of a box geometry that has dimensions that look like a trunk of a tree. It is then one of the most simplistic models of this kind that I have made thus far, and might prove as a good starting point when it comes to making models this way.
 
-### [ 2.24 - Tree](/2019/07/30/threejs-examples-tree/)
+### [ 2.25 - Tree](/2019/07/30/threejs-examples-tree/)
 
 This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
 
-### [ 2.25 - Waves](/2018/11/14/threejs-examples-waves/) 
+### [ 2.26 - Waves](/2018/11/14/threejs-examples-waves/) 
 
 The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
 
-### [ 2.26 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
+### [ 2.27 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
 
 This is another one of my example that is a kind of model that is created by just having a bunch of mesh objects grouped together. This one is just the first of what might become a few examples that are like my guy one model only the goal is to have a weird walk cycle for them. I might like to have a few more features when it comes to the over all look and function of the weird walk model here, but the main idea is to just have a weird and interesting walk cycle.
 
-### [ 2.27 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
+### [ 2.28 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
 
 This is a more advanced example of the first weird walk guy example, continuing to work on adding more to the example in an effort to just make a weird and interesting looping animation.
 
