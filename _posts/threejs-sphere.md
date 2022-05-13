@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-05-13 09:19:59
-version: 1.58
+updated: 2022-05-13 10:04:52
+version: 1.59
 ---
 
 In [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry constructor functions built into the core of the threejs library itself to create a geometry by way of javaScript code rather than loading an external file. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space. There is thinking in terms of a 3d grid of sorts, and then there is thinking in terms of concentric spheres radiating outward from an origin. In other words there is thinking in terms of x,y, and z as a way to find a point in space, and then there is thinking in terms of a radius or Vector length if you prefer, and then two angles often called something like [phi and theta](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
@@ -307,6 +307,79 @@ When it comes to doing this sort of thing with a sphere geometry or any buffer g
 ```
 
 For more on this sort of topic you might want to check out my post on [material index values when working with an array of materials in a mesh object](/2018/05/14/threejs-mesh-material-index/).
+
+## 6 - Moving objects along surface of sphere with Vector length and the apply Euler method
+
+As I have mentioned in the intro of this post it is a good idea to look into the Vector3 class more when it comes to learning how to position things along the surface of a sphere. There are of course a number of ways in order to do this sort of thing, and when it comes to positing objects to the surface of mesh objects in general it might be best to go with a ray caster. Still it is a good idea to work out at least one, if not a few exercises that have to do with vector length.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER SETUP
+    // ---------- ----------
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10))
+    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var light = new THREE.PointLight(0xffffff, 1.5); // point light
+    light.position.set(1, 2, 3);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0xafafaf, 0.15));
+    // ---------- ----------
+    // MESH OBJECTS USING SPHERE GEOMERTY
+    // ---------- ----------
+    var sphere = new THREE.Mesh(new THREE.SphereGeometry(1, 30,30), new THREE.MeshStandardMaterial());
+    scene.add(sphere);
+    var sphere2 = new THREE.Mesh(new THREE.SphereGeometry(0.1, 30,30), new THREE.MeshStandardMaterial({color: 0xff0000}));
+    scene.add(sphere2);
+    // ---------- ----------
+    // Vector3
+    // ---------- ----------
+    // using apply Euler method to change direction and length
+    var setMeshPos = function(mesh, deg1, deg2, vecLength){
+        deg1 = deg1 === undefined ? 0 : deg1;
+        deh2 = deg2 === undefined ? 0 : deg2;
+        vecLength = vecLength === undefined ? 1.1: vecLength;
+        var homeVec = new THREE.Vector3(vecLength, 0, 0);
+        var a = THREE.MathUtils.degToRad(deg1),
+        b = THREE.MathUtils.degToRad(deg2);
+        mesh.position.copy(homeVec).applyEuler( new THREE.Euler(0, a, b) );
+    };
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // loop
+    var deg1 = 0,
+    deg2 = 45,
+    degPerSec = 90,
+    a = 0,
+    aMax = 30,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = ( now - lt ) / 1000;
+        requestAnimationFrame(loop);
+        deg2 = Math.sin(Math.PI * 2 * ( a / aMax )) / Math.PI * 90;
+        setMeshPos(sphere2, deg1, deg2, 1.1);
+        deg1 += degPerSec * secs;
+        deg1 %= 360;
+        a += 1;
+        a %= aMax;
+        // UPDATE CONTROLS
+        controls.update();
+        renderer.render(scene, camera);
+        lt = now;
+    };
+ 
+    loop();
+}());
+```
 
 ## Conclusion
 
