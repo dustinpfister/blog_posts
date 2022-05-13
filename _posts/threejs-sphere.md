@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-05-13 09:18:26
-version: 1.57
+updated: 2022-05-13 09:19:59
+version: 1.58
 ---
 
 In [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry constructor functions built into the core of the threejs library itself to create a geometry by way of javaScript code rather than loading an external file. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space. There is thinking in terms of a 3d grid of sorts, and then there is thinking in terms of concentric spheres radiating outward from an origin. In other words there is thinking in terms of x,y, and z as a way to find a point in space, and then there is thinking in terms of a radius or Vector length if you prefer, and then two angles often called something like [phi and theta](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
@@ -308,11 +308,11 @@ When it comes to doing this sort of thing with a sphere geometry or any buffer g
 
 For more on this sort of topic you might want to check out my post on [material index values when working with an array of materials in a mesh object](/2018/05/14/threejs-mesh-material-index/).
 
-## 6 - Conclusion
+## Conclusion
 
 That is it for now when it comes to there sphere geometry constructor in threejs and a hold bunch of other little side topics that stem off from the use of the constructor. There is knowing all the arguments of the sphere geometry constrictor and how they can be used to help make smoother or more course sphere surfaces, and also how to make other sphere like shapes such as a dome. However it is not just a question or learning a thing or two about the Sphere Geometry constructor though, learning a think or two about Mesh Objects, Object3d in general, materials, and the other geometry constructors helper to get to a point where one can start to make crude models that are just collections of mesh objects using these built in constructors.
 
-### 6.1 - Positioning things on the surface of a sphere
+### Positioning things on the surface of a sphere
 
 I have wrote a few threejs project examples and one of them was an example where I wanted to [position some mesh objects on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/), I might get around to coming up with a simple example of it that I will then write about in this post when it comes to editing, but for now there is just checking out that post. This proved to be a fun little example and I might apply what I learned making it for some additional future projects examples. 
 
