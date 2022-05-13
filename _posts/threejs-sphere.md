@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-05-13 10:08:58
-version: 1.60
+updated: 2022-05-13 11:26:21
+version: 1.61
 ---
 
 In [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry constructor functions built into the core of the threejs library itself to create a geometry by way of javaScript code rather than loading an external file. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space. There is thinking in terms of a 3d grid of sorts, and then there is thinking in terms of concentric spheres radiating outward from an origin. In other words there is thinking in terms of x,y, and z as a way to find a point in space, and then there is thinking in terms of a radius or Vector length if you prefer, and then two angles often called something like [phi and theta](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
@@ -18,6 +18,8 @@ When it comes to making a sphere geometry just like any other built in geometry 
 ## Sphere Geometry in threejs and what to know first
 
 In this post I will be writing about a few examples of the Sphere Geometry constructor, and also various things that have to do with spheres in general in a javaScript library known as three.js. I will be trying to keep these examples fairly simple, at least the first few at the top of the post anyway. However you should know at least a few things when it comes to the [very basics of getting started with three.js](/2018/04/04/threejs-getting-started/) and [javaScript in general](/2018/11/27/js-getting-started/). I will not be going over little detail that should be known before hand, however in this section I will be briefly mentioning some things that come to mind that you should have solid first.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/L6buxtRbjBg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Understand the basics of setting up a scene, camera, and renderer.
 
