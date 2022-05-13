@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-05-13 10:04:52
-version: 1.59
+updated: 2022-05-13 10:08:58
+version: 1.60
 ---
 
 In [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry constructor functions built into the core of the threejs library itself to create a geometry by way of javaScript code rather than loading an external file. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space. There is thinking in terms of a 3d grid of sorts, and then there is thinking in terms of concentric spheres radiating outward from an origin. In other words there is thinking in terms of x,y, and z as a way to find a point in space, and then there is thinking in terms of a radius or Vector length if you prefer, and then two angles often called something like [phi and theta](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
@@ -311,6 +311,8 @@ For more on this sort of topic you might want to check out my post on [material 
 ## 6 - Moving objects along surface of sphere with Vector length and the apply Euler method
 
 As I have mentioned in the intro of this post it is a good idea to look into the Vector3 class more when it comes to learning how to position things along the surface of a sphere. There are of course a number of ways in order to do this sort of thing, and when it comes to positing objects to the surface of mesh objects in general it might be best to go with a ray caster. Still it is a good idea to work out at least one, if not a few exercises that have to do with vector length.
+
+In this example I have made a set mesh pos helper method that creates and instance of a Vector3 with a default length of 1.1 which I can change by way of an option argument. The reason why I went with 1.1 is because I made the radius of one sphere 1, and th other smaller sphere 0.1. Anyway I am using this home Vector with a length of 1.1 as a kind of starting position for the mesh by using he vector3 copy method to copy the value to the position property of the mesh. Then I am using the apply Euler method as a way to set the phi and these angles. 
 
 ```js
 (function () {
