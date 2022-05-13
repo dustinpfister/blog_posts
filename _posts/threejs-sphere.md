@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-02-24 10:24:15
-version: 1.48
+updated: 2022-05-13 07:09:12
+version: 1.49
 ---
 
-I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) over the years, but I never got around to writing one on the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry). With most of my simple demos of threejs in which I just need to add a Mesh to a scene, and Mesh at all I often go with the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/), however the sphere geometry constructor is another good choice for that kind of situation also. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space.
+In [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry constructor functions built into the core of the threejs library itself to create a geometry by way of javaScript code rather than loading an external file. With most of my simple demos of threejs in which I just need to add a Mesh to a scene, and Mesh at all I often go with the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/), however the sphere geometry constructor is another good choice for that kind of situation also. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space.
 
 Just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword and what is returned is a [buffer geometry instance](/2021/04/22/threejs-buffer-geometry/) of a sphere, I can then add the geometry as the first argument to a [Mesh Object](/2018/05/04/threejs-mesh/) along with a [Material](/2018/04/30/threejs-materials/) as the second argument when calling the THREE.Mesh constructor. However there is a great deal more to it than just that, with the constructor itself, and of course a great many things that branch off from it.
 
