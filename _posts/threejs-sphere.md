@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-05-13 09:16:56
-version: 1.56
+updated: 2022-05-13 09:18:26
+version: 1.57
 ---
 
 In [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry constructor functions built into the core of the threejs library itself to create a geometry by way of javaScript code rather than loading an external file. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space. There is thinking in terms of a 3d grid of sorts, and then there is thinking in terms of concentric spheres radiating outward from an origin. In other words there is thinking in terms of x,y, and z as a way to find a point in space, and then there is thinking in terms of a radius or Vector length if you prefer, and then two angles often called something like [phi and theta](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
@@ -37,7 +37,7 @@ When I first wrote this post I was using version [r127 of three.js](https://gith
 
 ### The source code examples in this post are on Github
 
-All the source code examples in this post can be found in [my test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-sphere). As the name suggests this is where I am packing all the demos and examples not just for this post but all my other posts on threejs as well.
+All the source code examples in this post can be found in [my test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-sphere). As the name suggests this is where I am parking all the demos and examples not just for this post but all my [other posts on threejs as well](/categories/three-js/).
 
 ## 1 - Basic Sphere Geometry Example
 
