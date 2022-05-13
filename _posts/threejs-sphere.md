@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-05-13 09:02:23
-version: 1.54
+updated: 2022-05-13 09:12:01
+version: 1.55
 ---
 
 In [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry constructor functions built into the core of the threejs library itself to create a geometry by way of javaScript code rather than loading an external file. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space. There is thinking in terms of a 3d grid of sorts, and then there is thinking in terms of concentric spheres radiating outward from an origin. In other words there is thinking in terms of x,y, and z as a way to find a point in space, and then there is thinking in terms of a radius or Vector length if you prefer, and then two angles often called something like [phi and theta](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
@@ -21,11 +21,15 @@ In this post I will be writing about a few examples of the Sphere Geometry const
 
 ### Understand the basics of setting up a scene, camera, and renderer.
 
-I trust that you have worked out at least the very basics of setting up a [scene object](/2018/05/03/threejs-scene/), [cameras](/2018/04/06/threejs-camera/), and using this scene object and camera with a renderer such as the built in [webgl renderer](/2018/11/24/threejs-webglrenderer/). If not you might want to read up [my getting started post on three.js](/2018/04/04/threejs-getting-started/), or some content on cameras and renderer's first.
+I trust that you have worked out at least the very basics of setting up a [scene object](/2018/05/03/threejs-scene/), [cameras](/2018/04/06/threejs-camera/), and using this scene object and camera with a renderer such as the built in [webgl renderer](/2018/11/24/threejs-webglrenderer/). if not then there is much to cover when it comes to just setting up a basic hello world type project forst when it comes to the basics of threejs and javaScript.
 
 ### It is nice to have a solid understanding of the Mesh, and Object3d classes
 
-There is just creating an instance of sphere geometry, but in order to do anything of interest with that geometry I am going to want to add it to a Mesh Object along with a material. The mesh object is based off of the [object3d class](/2018/04/23/threejs-object3d/) which is a base class for a whole lot of other objects in three.js. This object3d class has properties that can be used to change position, and orientation, and has many other useful features such as the feature of adding additional child objects to the object that are also based on object3d. 
+There is just creating an instance of sphere geometry, but in order to do anything of interest with that geometry I am going to want to add it to a Mesh Object along with a material. The mesh object is based off of the [object3d class](/2018/04/23/threejs-object3d/) which is a base class for a whole lot of other objects in three.js. This object3d class has properties that can be used to change position, and orientation, and has many other useful features such as the feature of adding additional child objects to the object that are also based on object3d.
+
+### There is knowing a thing or two about "vector length" and various things about the Vector3 class
+
+There is not just creating a sphere, but also learning how to position objects in a spherical kind of way. There are a lot of ways of going about doing this sort of thing of course. However one major thing to look into more when it comes to this sort of thing has to do with the [Vector3 class](/2018/04/15/threejs-vector3/), specifically the length property of an instance of such a class.
 
 ###  Version Numbers matter with three.js
 
