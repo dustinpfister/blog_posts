@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2022-05-14 14:26:07
-version: 1.28
+updated: 2022-05-14 14:34:29
+version: 1.29
 ---
 
 In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer at this time.
@@ -19,7 +19,9 @@ So then directional light is kind of like that of point lights and [spotlights](
 
 ## Directional light in threejs and what to know first
 
-The subject of light is a little involved with three.js, but should not be to hard to do for most javaScript developers that have some experience. If you still need to take a step back when it comes to the very basics of threejs I will be keeping these examples fairly simple, but it would likely be best to start out with some kind of [getting started post on threejs](/2018/04/04/threejs-getting-started/). So I will not be getting into the very basics of threejs and javaScript here. However I will mentioning a few things in this section that you should have an understanding of before continuing to read he rest of this post.
+The subject of light in threejs can get a little involved, but should not be to hard to do for most javaScript developers that have some experience. I would say that there are mainly a few things that one should at least be aware of when it comes to materials as not all materials will even work with lights to begin with. There are a few more things beyond that, but much of it is stuff that you should all ready know at least a little about when starting out with your first few hello world type examples involving materials like the normal material, depth material, or basic material that will not work with light.
+
+If you still need to take a step back when it comes to the very basics of threejs I will be keeping these examples fairly simple, but it would likely be best to start out with some kind of [getting started post on threejs](/2018/04/04/threejs-getting-started/). So I will not be getting into the very basics of threejs and javaScript here. However I will mention a few things in this section that you should have an understanding of before continuing.
 
 ### Know a thing or two about materials
 
