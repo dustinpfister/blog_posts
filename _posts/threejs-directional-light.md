@@ -5,13 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2022-05-14 14:20:33
-version: 1.26
+updated: 2022-05-14 14:23:52
+version: 1.27
 ---
 
 In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer at this time.
 
 A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing, because with directional light, the light is coming from a certain direction. With ambient light a base light intensity is just applied for all materials in a scene and the location of the ambient light in world space does not really matter. It is still not the same thing as a point light through as the light is coming in one direction all throughout the scene rather than radiating outward from a point.
+
+So then directional light is kind of like that of point lights and sport lights in that I want to set a desired value for the position property of the object that is returned when calling the THREE.DirectionalLight constructor. However when doing so I can also make use of a normalized Vector3 instance value, as the direction and not so much the magnitude of that directional that matters with directional light. When it comes to spot lights and point lights it is both direction and position that matter.
 
 <!-- more -->
 
