@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2022-05-14 14:36:52
-version: 1.30
+updated: 2022-05-14 14:44:53
+version: 1.31
 ---
 
 In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer at this time.
@@ -27,7 +27,9 @@ If you still need to take a step back when it comes to the very basics of threej
 
 It is require to know that not all materials will respond to light sources, such as the mesh basic material, and the mesh normal material just to name a few that are not going to work with light. When I work with light I often go with the [standard material](/2021/04/27/threejs-standard-material/), but there are some additional options such as the Lambert material and the Phong material.
 
-### The Vector3 class
+### The Vector3 class, and the object3d position property
+
+At this time you should know at least a little about the [object3d class](/2018/04/23/threejs-object3d/), and mainly the [position property of the object3d class](/2022/04/04/threejs-object3d-position/) that is an instance of the [Vector3 class](/2018/04/15/threejs-vector3/). When it comes to a directional light the position property is what is used to set, well, the direction.
 
 ### The version number of threejs is important
 
