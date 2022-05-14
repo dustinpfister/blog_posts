@@ -5,15 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2022-05-14 14:16:52
-version: 1.25
+updated: 2022-05-14 14:20:33
+version: 1.26
 ---
 
-In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of [adding light to a scene](/2022/02/25/threejs-light/). Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer. 
+In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer at this time.
 
-A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing, because with directional light, the light is coming from a certain direction to a certain target location. With ambient light a base light intensity is just applied for all materials in a scene and the location of the ambient light in world space does not really matter. 
-
-A directional light is also like a spot light in the sense that it is coming from a certain location to a certain target location, but not in a cone like manner as with the spot light. With direction light it is just direction that is really of concern and that is just it, so it differs greatly from point lights and spot lights. So in this post I thought I would work out just a few quick examples of this kind of lighting option. 
+A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing, because with directional light, the light is coming from a certain direction. With ambient light a base light intensity is just applied for all materials in a scene and the location of the ambient light in world space does not really matter. It is still not the same thing as a point light through as the light is coming in one direction all throughout the scene rather than radiating outward from a point.
 
 <!-- more -->
 
