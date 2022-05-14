@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2022-05-14 15:01:59
-version: 1.34
+updated: 2022-05-14 15:16:03
+version: 1.35
 ---
 
 In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer at this time.
@@ -37,7 +37,7 @@ The source code exmaples in this post can also be found in [my test threejs repo
 
 ### The version number of threejs is important
 
-When I made the code examples for this post I was using threejs revision 127. I do not think that much has changed with direction light for a real long time, however I can not say the same for a whole lot of other features of threejs. At some point in the future it is possible that the code examples here might break, so it is a good idea to always take into account what the version number is that you are using as well as the version number that was used by the author of a code example on the open web.
+When I made the code examples for this post I was using threejs revision 127, and the last time I ca around to doing some editing here I was using r135. I do not think that much has changed with direction light for a real long time, however I can not say the same for a whole lot of other features of threejs. At some point in the future it is possible that the code examples here might break, so it is a good idea to always take into account what the version number is that you are using as well as the version number that was used by the author of a code example on the open web.
 
 ## 1 - Directional Light threejs example
 
