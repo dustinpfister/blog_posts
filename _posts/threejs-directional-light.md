@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2022-05-14 14:44:53
-version: 1.31
+updated: 2022-05-14 14:48:32
+version: 1.32
 ---
 
 In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer at this time.
@@ -37,7 +37,7 @@ When I made the code examples for this post I was using threejs revision 127. I 
 
 ## 1 - Directional Light threejs example
 
-So here I have a basic example of a directional light as a way to have some light in a scene that will work with a material that responds to light such as the standard material. To create an instance of directional light in three js I just need to call the THREE.DirectionalLight constructor and add the resulting instance of that constructor to the scene object. When calling the constructor I can pass a color as the fist argument, and an intensity level as a value between zero and one as the second argument.
+So here I have a basic example of a directional light as a way to have some light in a scene that will work with a material that responds to light such as the standard material. To create an instance of directional light in three js I just need to call the THREE.DirectionalLight constructor and add the resulting instance of that constructor to the scene object. When calling the constructor I can pass a [color](/2021/05/03/threejs-color/) as the fist argument, and an intensity level as a value between zero and one as the second argument.
 
 ```js
 // SCENE
