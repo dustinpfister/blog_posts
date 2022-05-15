@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-05-15 10:41:10
-version: 1.26
+updated: 2022-05-15 10:43:41
+version: 1.27
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/) object. When adding mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way when compared to another. This is the case when comparing the standard material to that of the basic material, the standard material will react to light sources while the basic material will not. 
@@ -17,16 +17,17 @@ There are a lot of options to choose from when it comes to light sources, and se
 
 There is not just going over what the options are when it comes to having one or more light sources in a scene, there is also a lot to cover when it comes to many other things that branch off from the use of light objects. 
 
-## Read up more on the Object3d class if you have not done so yet
-
-Many of the light options such as point lights, and sport lights require the use of many features of the object3d class in order to get a desired end result with them. So it is a good idea to know thing or two about various properties in the [object3d class](/2018/04/23/threejs-object3d/) namely the position and rotation properties. 
-
-With some light sources such as ambient light the position of the light does not matter, however it does matter with many other kinds of lights. When it comes to spot lights for example I will want to set the position of the light, and also the orientation of the light so that it is focus on a desired target of interest in the scene.
-
 ### Know at least a thing or two about materials
 
-In some cases I might need to ad at least one light source in order to see anything at all, this will of course be the case the scene is composed of mesh that all use a materials like the [standard material](/2021/04/27/threejs-standard-material/) and do not have an emmisve color or [emissive map](/2021/06/22/threejs-emissive-map). Speaking of emmsive maps and colors that is just one of many things that also comes to mind when thinking about everything there is to work with when it comes to light in threejs. 
-I should also write at last a thing or two about materials also while I am at it, because the choice of material matters a lot when it comes to light also. For example when I was first starting out with threejs I was using materials like the Normal material, basic material, and depth materials, these are great options for many various reasons, but not of them will work with light sources.
+In some cases I might need to ad at least one light source in order to see anything at all, this will of course be the case if the scene is composed of mesh that all use a material like the [standard material](/2021/04/27/threejs-standard-material/), and do not have an emmisve color, or [emissive map](/2021/06/22/threejs-emissive-map). 
+
+Speaking of emmsive maps and colors that is just one of many things that also comes to mind when thinking about everything there is to work with when it comes to light and materials in threejs. I should also write at last a thing or two about materials also while I am at it, because the choice of material matters a lot when it comes to light. For example when I was first starting out with threejs I was using materials like the Normal Material, Basic material, and Depth materials, these are great options for many various reasons, but not of them will work with light sources.
+
+## Read up more on the Object3d class if you have not done so yet
+
+Many of the light options such as point lights, and spotlights require the use of many features of the object3d class in order to get a desired end result with them. So it is a good idea to know thing or two about various properties in the [object3d class](/2018/04/23/threejs-object3d/) namely the position and rotation properties. 
+
+With some light sources such as ambient light the position of the light does not matter, however it does matter with many other kinds of lights. When it comes to spot lights for example I will want to set the position of the light, and also the orientation of the light so that it is focus on a desired target of interest in the scene.
 
 ### Version numbers matter
 
