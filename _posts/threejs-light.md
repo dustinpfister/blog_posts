@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-05-15 10:38:21
-version: 1.25
+updated: 2022-05-15 10:41:10
+version: 1.26
 ---
 
-When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
+When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/) object. When adding mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way when compared to another. This is the case when comparing the standard material to that of the basic material, the standard material will react to light sources while the basic material will not. 
 
-There are a lot of options to choose from when it comes to light sources, and sense this post will be a general overview of light in threejs I will be going over what those options are. However there are also a whole lot of other things that branch off from the use of light sources that I am also going to want to write about also here.
+There are a lot of options to choose from when it comes to light sources, and sense this post will be a general overview of light in threejs I will be going over what some of those options are. However there are also a whole lot of other things that branch off from the use of light sources that I am also going to want to write about also here while I am at it.
 
 ## Light in threejs and what to know first
 
