@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-03-09 07:24:08
-version: 1.23
+updated: 2022-05-15 10:34:43
+version: 1.24
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -357,7 +357,48 @@ Another great option for lighting is [point lights](/2019/06/02/threejs-point-li
     ());
 ```
 
-## 6 - Conclusion
+## 6 - Hemisphere Light
+
+For the most part I like to stick with a certain core set of light options such as directional light, and ambient light. However there are a few other options that could prove to be a good choice for certain projects, such as the Hemisphere light.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    // creating a scene
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(6, 6));
+    var camera = new THREE.PerspectiveCamera(40, 640 / 480, 0.6, 100);
+    camera.position.set(5, 4, 5);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // ---------- ----------
+    // Hemisphere Light
+    // ---------- ----------
+    const light = new THREE.HemisphereLight( 0x00afff, 0xffaf00, 1 );
+    scene.add( light );
+    // ---------- ----------
+    // ADDING MESH OBJECT TO THE SCENE
+    // ---------- ----------
+    var mesh1 = new THREE.Mesh(
+            new THREE.BoxGeometry(2, 2, 2),
+            new THREE.MeshPhongMaterial( { color: new THREE.Color('white') } )
+    );
+    mesh1.rotation.set(0, Math.PI * 1.95, Math.PI * 0.35)
+    scene.add(mesh1);
+    // ---------- ----------
+    // RENDER static scene
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+## Conclusion
 
 I have wrote a number of posts on light in threejs thus far, but I have not yet write a post on light in general until now. I am sure that there is a great deal about light in threejs that I have missed, so there will be edits of this post in the future for sure, and maybe at a higher frequency that usual when it comes to editing. I just about always have some ideas drafted out when it comes to what to do with future edits of a post and this post on light in general with threejs is not exception of course. I will want to add at least a few more examples that have to do with more advanced topics for sure, but when it comes to that I still need to figure it out for myself.
 
