@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-05-15 10:34:43
-version: 1.24
+updated: 2022-05-15 10:38:21
+version: 1.25
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding one or more mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way from one material to another. 
@@ -359,7 +359,7 @@ Another great option for lighting is [point lights](/2019/06/02/threejs-point-li
 
 ## 6 - Hemisphere Light
 
-For the most part I like to stick with a certain core set of light options such as directional light, and ambient light. However there are a few other options that could prove to be a good choice for certain projects, such as the Hemisphere light.
+For the most part I like to stick with a certain core set of light options such as directional light, and ambient light. However there are a few other options that could prove to be a good choice for certain projects, such as the [Hemisphere light](https://threejs.org/docs/#api/en/lights/HemisphereLight). This is a kind of light source that comes from above the scene and it will rage from a sky color to a ground color given in the form of the first two arguments when calling the constructor function.
 
 ```js
 (function () {
