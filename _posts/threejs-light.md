@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-05-15 10:43:41
-version: 1.27
+updated: 2022-05-15 10:45:26
+version: 1.28
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/) object. When adding mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way when compared to another. This is the case when comparing the standard material to that of the basic material, the standard material will react to light sources while the basic material will not. 
@@ -15,7 +15,7 @@ There are a lot of options to choose from when it comes to light sources, and se
 
 ## Light in threejs and what to know first
 
-There is not just going over what the options are when it comes to having one or more light sources in a scene, there is also a lot to cover when it comes to many other things that branch off from the use of light objects. 
+There is not just going over what the options are when it comes to having one or more light sources in a scene, there is also a lot to cover when it comes to many other things that branch off from the use of lights. I will not be getting into detail with every little thing that will come up, however in this opening section I will mention a few things that you might want to read up more on before getting into everything that has to do with light. 
 
 ### Know at least a thing or two about materials
 
