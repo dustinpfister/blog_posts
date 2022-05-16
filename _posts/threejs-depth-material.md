@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-05-16 09:39:47
-version: 1.34
+updated: 2022-05-16 10:47:28
+version: 1.35
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render a texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering such a mesh object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object without having to bother with external image assets or a code means to generate texture, often I find myself going with the normal material when it comes ot this kind of place holder material but the depth material would be another option.
@@ -125,6 +125,89 @@ loop();
 ```
 
 There is playing around with the position and rotation of the mesh object also, but this helps to gain what the deal is with the near and far values of a camera and how that can effect how a mesh with the depth material is effected by those values.
+
+## 3 - Custom depth material using basic material and data textures
+
+On thing that I wanted to find out is how to go about making some kind of custom depth material. Like many things in programing there is more than one way to go about doing this, but for this section I will be going over a way to get a desired effect by making use of data textures and various features of the mesh basic material.
+
+```js
+// scene, camera, and renderer
+var scene = new THREE.Scene();
+scene.background = new THREE.Color(0.1,0.1,0.1)
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+// HELPER FUNCTIONS
+ 
+var getMeshDPer = function(mesh, camera, maxDist){
+    var d1 = mesh.position.distanceTo( camera.position );
+    d1 = d1 > maxDist ? maxDist : d1;
+    return d1 / maxDist;
+};
+ 
+var createDepthData = function(mesh, camera, maxDist, width, height){
+    var size = width * height;
+    var data = new Uint8Array( 4 * size );
+ 
+    // d1 - distance from mesh to camera
+    //var d1 = mesh.position.distanceTo( camera.position );
+    //d1 = d1 > maxDist ? maxDist : d1;
+    var d1Per = getMeshDPer(mesh, camera, maxDist);
+    for ( let i = 0; i < size; i ++ ) {
+        var stride = i * 4,
+        x = i % width,
+        y = Math.floor(i / width),
+        v2 = new THREE.Vector2(x, y),
+        // d1 - px distance from center of canvas
+        d2 = v2.distanceTo( new THREE.Vector2(width / 2, height / 2) ),
+        d2Per = d2 / (width / 2);
+        d2Per = d2Per > 1 ? 1 : d2Per;
+        // set r, g, b, and alpha data values
+        var v = 255 - Math.floor(245 * d2Per) * ( 1 - d1Per );
+        data[ stride ] = v;
+        data[ stride + 1 ] = v;
+        data[ stride + 2 ] = v;
+        data[ stride + 3 ] = 255;
+    }
+    return data;
+};
+ 
+var createDistBox = function(camera, x, y, z, maxDist){
+    var maxDist = 10;
+    var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+           color: 0xffffff,
+           transparent: true,
+           opacity: 1
+        })
+    );
+    box.position.set(x, y, z);
+    // texture
+    var width = 16, height = 16;
+    var data = createDepthData(box, camera, maxDist, width, height);
+    var texture = new THREE.DataTexture( data, width, height );
+    texture.needsUpdate = true;
+    box.material.map = texture;
+    // transparency
+    box.material.opacity = 1 - parseFloat( getMeshDPer(box, camera, maxDist).toFixed(2) );
+    return box;
+};
+var box1 = createDistBox(camera, 0, 0, 0, 10);
+scene.add(box1);
+var box2 = createDistBox(camera, -2, 0, -3.25, 10);
+scene.add(box2);
+var box2 = createDistBox(camera, -5.5, 0, -3.25, 10);
+scene.add(box2);
+var box3 = createDistBox(camera, 2.15, 1.15, 1.1, 10);
+scene.add(box3);
+ 
+// render
+renderer.render(scene, camera);
+```
 
 ## Conclusion
 
