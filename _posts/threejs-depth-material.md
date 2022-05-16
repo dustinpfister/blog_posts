@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-04-03 12:57:15
-version: 1.31
+updated: 2022-05-16 09:35:09
+version: 1.32
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering a scene object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object, and I often like to go with the the [standard material](/2021/04/27/threejs-standard-material/) as it is a good over all choice for the most part. However there are some good things to write about when it comes to the depth material, as well as some other options for materials that work right away without a light source. There is also what branches off from the use of the depth material when it comes to things like the arguments that are given when creating a camera for a scene, namely the near and far values.
@@ -19,13 +19,6 @@ So in this post I thought I would write about a few examples about this depth ma
 
 This is a post on the depth material in three.js, as such I expect for you to at least understand the basics of creating a three.js project. If not there is looking into one or more [getting started type posts on three.js](/2018/04/04/threejs-getting-started/), and also maybe [javaScript in general](/2018/11/27/js-getting-started/). On top of knowing the very basis of getting started on three.js there is maybe a few more things that a developer should look into more with cameras, and certain base classes such as the [Vector3](/2018/04/15/threejs-vector3/) and Object3d classes, that are used to do things like setting the position of the camera. In this section I will be outlining a few things that you should know about before continuing reading the rest if this post.
 
-### Version Numbers matter with three.js
-
-When I first wrote this post I was using r127 of three.js, and the lat time I cam around to doing a little editing of this post I was using r135. Always be aware of what version of three.js is being used in an example code braking changes are introduced with three.js often. I have been writing posts on three.js now and then sense r91, and from that point to now I do not think much has changed with the depth material alone. Still I have got into the habit of mentioning  this in every post from now on.
-### The source code examples in this post are on Github
-
-The source code examples on the depth material that I am writing about here can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-depth-material).
-
 ### You might want to read up more on the perspective camera
 
 There are a [few options when it comes to cameras in three.js](/2018/04/06/threejs-camera/), but the typical camera that i use just about all the time would of course be the [perspective camera](/2018/04/07/threejs-camera-perspective/). Each time I create an instance of a perspective camera there are a few arguments that I pass to the constructor such as the filed of view, aspect ratio, and the near and far render values of the camera. When it comes to the depth material it is the position from the camera, and the near and far settings that are used to set what the state of the color should be when rendering a texture for the mesh that uses the depth material.
@@ -33,6 +26,14 @@ There are a [few options when it comes to cameras in three.js](/2018/04/06/three
 ### Check out Object3d, Vector3, and Euler if you have not done so
 
 So then the near and far values of a camera are used for the depth material, but there is also the position of the mesh from the camera, and also the orientation of the mesh and or camera that will have an effect also. With that said it might be a good idea to look into the [Object3d class](/2018/04/23/threejs-object3d/) a bot more if you are still relative new to three.js at this time. The object3d class is a base class of other class objects in three.js such as Mesh, and Camera. The position property of Object3d is an instance of Vector3 and this can be used to set the position of a Mesh object, and also a camera for that matter. However any mesh might have high and low areas often, so there should be a way to rotate a mesh and or a camera with that there is the rotation property of Object3d that is an instance of Euler.
+
+### Version Numbers matter with three.js
+
+When I first wrote this post I was using r127 of three.js, and the lat time I cam around to doing a little editing of this post I was using r135. Always be aware of what version of three.js is being used in an example code braking changes are introduced with three.js often. I have been writing posts on three.js now and then sense r91, and from that point to now I do not think much has changed with the depth material alone. Still I have got into the habit of mentioning  this in every post from now on.
+
+### The source code examples in this post are on Github
+
+The source code examples on the depth material that I am writing about here can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-depth-material).
 
 ## 1 - Basic Depth Material example
 
@@ -123,7 +124,7 @@ loop();
 
 There is playing around with the position and rotation of the mesh object also, but this helps to gain what the deal is with the near and far values of a camera and how that can effect how a mesh with the depth material is effected by those values.
 
-## 3 - Conclusion
+## Conclusion
 
 So the depth material as the name suggests is a way to go about showing some depth of on object without having to bother with one or ore light sources. When it comes to other materials that can help to show some sense of depth often a few light sources will need to be used to do so. There is also thinking in terms of just using color maps with a material like the basic material, and just work out something that will help show a sense of depth using static textures which would be yet another option for this sort of thing. 
 
