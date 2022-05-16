@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-05-16 09:35:09
-version: 1.32
+updated: 2022-05-16 09:38:36
+version: 1.33
 ---
 
-The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering a scene object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object, and I often like to go with the the [standard material](/2021/04/27/threejs-standard-material/) as it is a good over all choice for the most part. However there are some good things to write about when it comes to the depth material, as well as some other options for materials that work right away without a light source. There is also what branches off from the use of the depth material when it comes to things like the arguments that are given when creating a camera for a scene, namely the near and far values.
+The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render a texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering such a mesh object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object without having to bother with external image assets or a code means to generate texture, often I find myself going with the normal material when it comes ot this kind of place holder material but the depth material would be another option.
+
+When it comes to a final choice in materials I often like to go with the the [standard material](/2021/04/27/threejs-standard-material/) as it is a good over all choice for the most part when it comes to the various maps that it supports. However there are some good things to write about when it comes to the depth material, as well as some other options for materials that work right away without a light source. There is also what branches off from the use of the depth material when it comes to things like the arguments that are given when creating a camera for a scene, namely the near and far values.
 
 So in this post I thought I would write about a few examples about this depth material, and in the process of doing so I think I will be touching base on some things that have to do with cameras also. For example there is adjusting the near and far values of a camera as a way to change how the depth material looks and when doing so a method needs to be called each time to update the projection matrix.
 
