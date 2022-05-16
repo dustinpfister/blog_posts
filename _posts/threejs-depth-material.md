@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-05-16 10:56:21
-version: 1.37
+updated: 2022-05-16 11:00:53
+version: 1.38
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render a texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering such a mesh object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object without having to bother with external image assets or a code means to generate texture, often I find myself going with the normal material when it comes ot this kind of place holder material but the depth material would be another option.
@@ -210,6 +210,8 @@ scene.add(box3);
 // render
 renderer.render(scene, camera);
 ```
+
+Another way to go about creating textures with a little javaScript code would be to make use of [canvas elements](/2018/04/17/threejs-canvas-texture/) to do so. The process would be more or less the same, but what would be nice about that is that I can use all kinds of methods in the 2d drawing context of canvas element sot create the textures.
 
 ## Conclusion
 
