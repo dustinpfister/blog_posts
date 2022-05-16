@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-05-16 09:38:36
-version: 1.33
+updated: 2022-05-16 09:39:47
+version: 1.34
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render a texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering such a mesh object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object without having to bother with external image assets or a code means to generate texture, often I find myself going with the normal material when it comes ot this kind of place holder material but the depth material would be another option.
@@ -23,7 +23,7 @@ This is a post on the depth material in three.js, as such I expect for you to at
 
 ### You might want to read up more on the perspective camera
 
-There are a [few options when it comes to cameras in three.js](/2018/04/06/threejs-camera/), but the typical camera that i use just about all the time would of course be the [perspective camera](/2018/04/07/threejs-camera-perspective/). Each time I create an instance of a perspective camera there are a few arguments that I pass to the constructor such as the filed of view, aspect ratio, and the near and far render values of the camera. When it comes to the depth material it is the position from the camera, and the near and far settings that are used to set what the state of the color should be when rendering a texture for the mesh that uses the depth material.
+There are a [few options when it comes to cameras in three.js](/2018/04/06/threejs-camera/), but the typical camera that I use just about all the time would of course be the [perspective camera](/2018/04/07/threejs-camera-perspective/). Each time I create an instance of a perspective camera there are a few arguments that I pass to the constructor such as the filed of view, aspect ratio, and the near and far render values of the camera. When it comes to the depth material it is the position from the camera, and the near and far settings that are used to set what the state of the color should be when rendering a texture for the mesh that uses the depth material.
 
 ### Check out Object3d, Vector3, and Euler if you have not done so
 
