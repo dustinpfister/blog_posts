@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-04-16 08:59:41
-version: 1.16
+updated: 2022-05-16 11:06:57
+version: 1.17
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
@@ -202,4 +202,8 @@ renderer.render(scene, camera);
 
 ## 5 - Conclusion
 
-The use of data textures to create textures for threejs geometries can then prove to be a little useful here and there then. However I am not sure if this is what I will want to always use, even when it comes to this sort of thing. For the most part I do still like to use canvas elements to create textures as there are a lot of useful methods to work with in the 2d drawing context. When it comes to really working out modules I, and also uv wrapping while doing so I sometimes think the best way to go would be external image files when it comes to working with dae files for a project.
+The use of data textures to create textures for threejs geometries can then prove to be a little useful here and there then. However I am not sure if this is what I will want to always use, even when it comes to this sort of thing. For the most part I do still like to use canvas elements to create textures as there are a lot of useful methods to work with in the 2d drawing context. 
+
+When it comes to really working out modules I, and also uv wrapping while doing so I sometimes think the best way to go would be external image files when it comes to working with dae files for a project.
+
+Thus far I have found that I do some times like to use data textures over that of canvas elements when it comes to just quickly creating texture with raw data created with javaScritp code and some quick expressions. One example that I have made thus far as of late was for my [post on the depth material where I made a kind of custom depth material](/2021/05/04/threejs-data-texture/) that is create just using the basic material with a texture created with, you guessed it, a data texture.
