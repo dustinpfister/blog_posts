@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-05-16 11:00:53
-version: 1.38
+updated: 2022-05-16 12:28:57
+version: 1.39
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render a texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering such a mesh object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object without having to bother with external image assets or a code means to generate texture, often I find myself going with the normal material when it comes ot this kind of place holder material but the depth material would be another option.
@@ -20,6 +20,8 @@ So in this post I thought I would write about a few examples about this depth ma
 ## The Depth Material and what to know first
 
 This is a post on the depth material in three.js, as such I expect for you to at least understand the basics of creating a three.js project. If not there is looking into one or more [getting started type posts on three.js](/2018/04/04/threejs-getting-started/), and also maybe [javaScript in general](/2018/11/27/js-getting-started/). On top of knowing the very basis of getting started on three.js there is maybe a few more things that a developer should look into more with cameras, and certain base classes such as the [Vector3](/2018/04/15/threejs-vector3/) and Object3d classes, that are used to do things like setting the position of the camera. In this section I will be outlining a few things that you should know about before continuing reading the rest if this post.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/Xxhg8eB6ojU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### You might want to read up more on the perspective camera
 
