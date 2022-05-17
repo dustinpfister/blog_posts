@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2022-05-17 14:16:12
-version: 1.7
+updated: 2022-05-17 14:18:33
+version: 1.8
 ---
 
 When working on a project that involves threejs and a little javaScript, say I am in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -81,6 +81,8 @@ For this basic example of the Vector3 lerp method I will be using the vector3 se
 ```
 
 ## 2 - Using Math pow in an expression to create an alpha value
+
+Now that I have the basic example out of the way it is clear what the lerp method does, but now there is the question of how to go about lerping in a way that is not so linear. One way would be to just go about working out some kind of expression for the alpha value that makes used of the Math.pow method for example.
 
 ```js
 (function () {
