@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2022-05-17 14:05:39
-version: 1.3
+updated: 2022-05-17 14:07:40
+version: 1.4
 ---
 
 When working on a project that involves threejs and a little javaScript, say I am in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -15,6 +15,9 @@ This lerp method can just be called of of an instance of Vector3, and when doing
 
 <!-- more -->
 
+## The Lerp Vector3 class method and what to know first
+
+This is a post that centers around just a single method of the Vector3 class in the javaScript library known as threejs. There is a lot of other ground to cover that I am not going to be getting into detail in this post, but I often use this opening section as a place to write about a few things that you should know about before hand.
 
 ## 1 - Basic vector3 lerp example
 
