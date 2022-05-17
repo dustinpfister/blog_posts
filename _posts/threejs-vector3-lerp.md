@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2022-05-17 14:13:45
-version: 1.6
+updated: 2022-05-17 14:16:12
+version: 1.7
 ---
 
 When working on a project that involves threejs and a little javaScript, say I am in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -32,6 +32,8 @@ When I first wrote this post I was using r135 of threejs.
 The source code examples in this post can also be found in my test threejs Github repository.
 
 ## 1 - Basic vector3 lerp example
+
+For this basic example of the Vector3 lerp method I will be using the vector3 set method as a way to set the position property of a mesh object to a given home location of 5,0,0 and then use the lerp method to lerp from 5,0,0 to -5,0,0 over the course of a certain number of frames and back again.
 
 ```js
 (function () {
