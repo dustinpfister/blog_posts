@@ -1,12 +1,12 @@
 ---
-title: Three js geometry cone examples
+title: Cone geometry examples in threejs
 date: 2019-07-31 16:48:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2022-05-17 10:32:37
-version: 1.27
+updated: 2022-05-17 10:34:00
+version: 1.28
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in [constructor functions](/2019/02/27/js-javascript-constructor/) that can be used to make most basic shapes such as the [Box geometry Constructor](/2021/04/26/threejs-box-geometry/), and the [Sphere Geometry Constructor](/2021/05/26/threejs-sphere/) just to name a new. These constructors can be used to quickly create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then in turn be used with a materials to produce an over all [mesh object](/2018/05/04/threejs-mesh/) that can then be added to a [scene object](/2018/05/03/threejs-scene/) of an over all threejs project. 
@@ -17,7 +17,7 @@ There is also getting into ways to go about coming up with a custom geometry by 
 
 <!-- more -->
 
-## This is a post on three js
+## Cone geometry in threejs and what to know first
 
 This is a post on a built in geometry constructor in three js that can be used to make a cone shape buffer geometry that can then be used with a materials to compose a mesh object. This is not a [getting started post on three js](/2018/04/04/threejs-getting-started/) let alone javaScript in general so I assume that you have at least some exposure with three js. I will not be going over every little basic detail in this section, but I can take the time to cover some basic that you should know by now when looking into all the various built in geometry constructors to work with in three.js.
 
