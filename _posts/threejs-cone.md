@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2022-05-17 10:25:49
-version: 1.25
+updated: 2022-05-17 10:27:55
+version: 1.26
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in [constructor functions](/2019/02/27/js-javascript-constructor/) that can be used to make most basic shapes such as the [Box geometry Constructor](/2021/04/26/threejs-box-geometry/), and the [Sphere Geometry Constructor](/2021/05/26/threejs-sphere/) just to name a new. These constructors can be used to quickly create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then in turn be used with a materials to produce an over all [mesh object](/2018/05/04/threejs-mesh/) that can then be added to a [scene object](/2018/05/03/threejs-scene/) of an over all threejs project. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -21,7 +21,10 @@ This is a post on a built in geometry constructor in three js that can be used t
 
 ### Check your version numbers
 
-When I first wrote this post I was using version r106 of three.js and the last time I got around to do a little editing with this post I as using r127. When it comes to the cone geometry constructor alone it would seem that not much has changes from an user perspective. However code breaking changes are made to three.js all the time, so if things are not working on your end with code examples in this post, or any three.js post on the open web for that matter take into account what version you are using and the version that the author of the example was using first
+When I first wrote this post I was using version r106 of three.js and the last time I got around to do a little editing with this post I as using r135. When it comes to the cone geometry constructor alone it would seem that not much has changes from an user perspective. However code breaking changes are made to three.js all the time, so if things are not working on your end with code examples in this post, or any three.js post on the open web for that matter take into account what version you are using and the version that the author of the example was using first
+### Source code examples are also on Github
+
+The source code examples that I made for this post are also up on Github in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-cone).
 
 ## 1 - Three js geometry cone basic example
 
@@ -173,7 +176,7 @@ Often a cone geometry might be used as a way to go about pointing to something i
 
 Getting into this subject in detail might be a little off topic, but if interested you might want to check out my post on [rotating buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/) in three.js. However I will just bring up one thing when it comes to rotating geometry in threejs and that is that it is something that such typically be done only once. When it comes to this issue the geometry just needs to be rotated so that things line up when using the object3d look at method of the mesh object. It is the object3d level methods and properties that should always be used to change the position and rotation of an over all mesh object.
 
-## 5 - Conclusion
+## Conclusion
 
 So the cone geometry constructor is yet another basic tool in the toolbox when it comes to quickly creating basic geometries in three.js. The various arguments can be tweaked to create other typical shapes also of course. For example to make a four sided pyramid I just need to set a value of 4 for the radial segments argument.
 
