@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2022-05-17 12:17:26
-version: 1.1
+updated: 2022-05-17 14:00:40
+version: 1.2
 ---
 
-Say I am in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new position. There are a number of ways of doing that, but in the Vector3 class there is a method that can be used to quickly preform a kind of linear lerp from one point to another that I think I should write a blog post on.
+When working on a project that involves threejs and a little javaScript, say I am in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
 
 <!-- more -->
 
