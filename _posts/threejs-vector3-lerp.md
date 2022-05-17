@@ -5,11 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2022-05-17 14:00:40
-version: 1.2
+updated: 2022-05-17 14:05:39
+version: 1.3
 ---
 
 When working on a project that involves threejs and a little javaScript, say I am in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
+
+This lerp method can just be called of of an instance of Vector3, and when doing so the point I want to lerp to can be passed as the first argument, and an alpha value can then also be passed as a second argument. This alpha value is just simply a value between 0 and 1 that is a magnitude between these two points that the vector should be changed. Often I will not want to just use the lerp method alone though, often I used it in combination with other vector3 class methods such as the clone, copy, and set methods.
 
 <!-- more -->
 
