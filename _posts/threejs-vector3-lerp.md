@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2022-05-18 11:28:26
-version: 1.15
+updated: 2022-05-18 11:32:11
+version: 1.16
 ---
 
 When working on a project that involves threejs and a little javaScript, say I am in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -157,6 +157,8 @@ Now that I have the basic example out of the way it is clear what the lerp metho
 ```
 
 ## 3 - Using the Vector3 clone, lerp, and add methods to create lines with an array of Vector3 instances
+
+A few years back I wrote a [post on the subject of lines in threejs](/2018/04/19/threejs-line/) which is an alternative to using a Mesh object in which I am just dealing with lines in 2d space. Anyway the general way that I would go about making a line is to create an array of Vector3 class instances and then pass that array to the set from points method of the buffer geometry class. I can then use the resulting geometry with the THREE.Line constructor along with a choice in line materials to create a line object that I can then add to the scene object.
 
 ```js
 (function () {
