@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-05-18 09:46:03
-version: 1.50
+updated: 2022-05-18 10:00:16
+version: 1.51
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
@@ -46,11 +46,11 @@ Here I made just a simple example where I am just playing with the [position pro
 
 The position property of Object3d can be used to set the center point of the object in a Scene. In the case that the Object is a child of another object it would be the position relative to the parent Object.
 
-## 3 - Rotation of an Object3d instance
+## 2 - Rotation of an Object3d instance
 
 Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the Euler Class, Which is the Class used in three.js that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles). So when creating or changing the values of a Euler class instance there are three angles that need to be given in the form of a radian value between 0 and Math.PI \* 2. The set method of a Euler class instance can be used to set the values of these angles by passing three angle values for the Euler instance. Another way to set the value of a Euler class instance is to use the copy method that will set the values of the Euler class instance from which the copy method is called to the given Euler Class instance.
 
-### 3.1 - Basic Object3d rotation example using set and copy of the Euler class
+### 2.1 - Basic Object3d rotation example using set and copy of the Euler class
 
 In this example I am directly creating an instance of Object3d, and then using the Euler set method to set some angles for the rotation of this instance of Object3d. I then create a full Mesh object which has Object3d as a base class, so there is a corresponding rotation property of the mesh object that also have an instance of Euler as the value. I then call the copy method of the rotation property of the mesh and pass the rotation property value to it, and the result is the mesh object being set to the same values as this instance of Object3d.
 
@@ -86,7 +86,7 @@ In this example I am directly creating an instance of Object3d, and then using t
 
 I will not get into the Euler Class in detail here, but it is similar to [Vector3](/2018/04/15/threejs-vector3/) only when using the set method you want to give [radians](https://en.wikipedia.org/wiki/Radian) rather than, and x, y, z position in the scene.
 
-### 3.2 - Setting the Rotation by making use of the Object3d lookAt method
+### 2.2 - Setting the Rotation by making use of the Object3d lookAt method
 
 One very useful method of the [Object3d class is the lookAt method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) which is another way to go about setting the rotation value of an instance of Objected or anything that is based on top of Object3d such as a Mesh object. The look at method can be passed three primitive values for a position in vector space, or an instance of Vector3 such as the position property of another object based off of object3d such as a Camera.
 
@@ -119,7 +119,7 @@ One very useful method of the [Object3d class is the lookAt method](https://thre
 
 So then there is using the look at method, and then there is working directly with the instance of Euler. However in any case this is a major part of what the Object3d class is about. There is setting the position of an object, and then there is setting the orientation of an object.
 
-### 3.3 - Basic spin animation example of a rotation
+### 2.3 - Basic spin animation example of a rotation
 
 Now I think I should get into at least one or more simple animations that involve just playing around with the Euler instance of a Mesh object, or some other things that make use of the Object3d class and thus the rotation property of the class. To start off with maybe it would be good to just have a simple rotating or spinning cube animation example.
 
@@ -179,7 +179,7 @@ Now I think I should get into at least one or more simple animations that involv
     ());
 ```
 
-### 3.4 - An rotation animation making a mesh following a point moving up and down on the z axis
+### 2.4 - An rotation animation making a mesh following a point moving up and down on the z axis
 
 In this object3d rotation animation example I have an instance of vector3 in a state object along with many other little values that have to do with updating the state of an animation. This vector3 instance in the state object is juts having its z axis value move up and down along the z axis and that is it. I can then use that instance of verctor3 to set the position of a mesh object that has a sphere as a geometry. In addition sense this is a demo about rotation I can set the orientation of another mesh object of a box to look at this instance of vector3 with the lookAt method.
 
@@ -255,7 +255,7 @@ In this object3d rotation animation example I have an instance of vector3 in a s
 
 So then this is where things can start to get a little run with it comes to playing around with rotation and position. There is not much to look at here, but it is a start at least when it comes to really getting up and running with three.js. When this demo is up and running a sphere is moving up and down along the z axis, and the box ends up facing that sphere. However there is doing much more with rotations than just having a box face another mesh.
 
-## 4 - Examples of use in other constructors
+## 3 - Examples of use in other constructors
 
 There are many objects in three.js that inherit from object3D, which is why this is a good class to have a solid understanding of as it applies to a lot of different objects in three.js. When it comes to setting the position and orientation of a perspective camera for example the Object3d position property is the way to go about doing so. The Object3d look at method can also be used to set the rotation of the camera to look at a given point or object.
 
@@ -282,13 +282,13 @@ low.position.y = -1;
 
 There are also various lights and helper objects also that all inherit from Object3d. So the Object3d class is a common class that can be used to move, and rotate any and all objects in a scene. 
 
-## 5 - Full demo of Object3D that uses the class as a way to group
+## 4 - Full demo of Object3D that uses the class as a way to group
 
 The [Three.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor also inherits from Object3d and is a way of grouping objects together into a collection. However the add method of Object3d is in all objects that inherit from Object3d, and as such grouping can be done with any such object, including just a stand alone instance of Object3d.
 
 I try to make it a habit to have at least one copy and past working demo of what it is that I am writing about in each blog post of mine. In this demo I am making use of an instance of Object3D to group some cubes together. I am also working with many other objects that inherit from Object3D, using the position, and rotation properties often.
 
-### 5.1 - A Create Cube Stack method
+### 4.1 - A Create Cube Stack method
 
 So I started off this example of Object3d by creating an createCubeStack helper method. This method will return an object that contains a group property that is what will be added to the scene later on, and also a set method that can be used to change the stack of the stack relative to a value between zero and one.
 
@@ -333,7 +333,7 @@ var createCubeStack = function (original) {
 
 So now that I have a helper method worked out it would be nice to test it out with a scene, renderer, and main app loop, so lets take a look at that then.
 
-### 5.2 - The rest of the Object3d example
+### 4.2 - The rest of the Object3d example
 
 So then here I have the rest of the example that makes use of the create cube stack helper. I create a scene, camera, and renderer just like with any threejs example. However I now use my create cube stack helper to create an cube stack object which contains a group property. That group property is then what I add to the scene, and the set method of the cube stack object is what I use to update the stack in a main app loop.
 
@@ -378,15 +378,15 @@ When this example is up and running I get a stack of cubes rotating around and m
 
 It may be true that Object3D by itself is not intended to be used from grouping as there is a separate constructor for that, called simply enough [Group](https://threejs.org/docs/index.html#api/objects/Group). Still Object3D by itself seems to work okay by itself good enough for this simple demo on Object3D.
 
-## 6 - The name property of the Object3d class
+## 5 - The name property of the Object3d class
 
 Yet another note worthy aspect of the [Object3d class is the name property of the class](/2021/05/12/threejs-object3d-get-by-name/) as well as the get object by name method of Object3d. This name property is a way to set a unique name for an object, once that is done the get object by name method can be used as a way to gain a reference to the object at a later point in a body of javaScipt code.
 
-## 7 - Setting the Scale of an object
+## 6 - Setting the Scale of an object
 
 The [scale property](/2021/05/11/threejs-object3d-scale/) of an instance of Object3d contains and instance of Vector3 that can be used to change the scale of an object. By default the values for this vector3 instance are 1,1,1 but they can be changed to something like 2,2,2 which would cause the object to be scaled up to a size that is twice the side of the objects original size. So it would go without saying that this also proves to be a very useful property in the object3d class along with position and rotation.
 
-## 8 - The user data object.
+## 7 - The user data object.
 
 The [user data object](/2021/02/16/threejs-userdata/) is the standard go to object in an instance of Object3d that can be used to park user defined data. In other words when it comes to me making my own modules and applications based off of three.js and I want to append some data to an object in three.js this user data object is how I can go about doing so without messing up anything that three.js depends on.
 
