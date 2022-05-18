@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-05-18 10:00:16
-version: 1.51
+updated: 2022-05-18 10:46:33
+version: 1.52
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
@@ -257,7 +257,7 @@ So then this is where things can start to get a little run with it comes to play
 
 ## 3 - Examples of use in other constructors
 
-There are many objects in three.js that inherit from object3D, which is why this is a good class to have a solid understanding of as it applies to a lot of different objects in three.js. When it comes to setting the position and orientation of a perspective camera for example the Object3d position property is the way to go about doing so. The Object3d look at method can also be used to set the rotation of the camera to look at a given point or object.
+There are many objects in three.js that inherit from object3D, which is why this is a good class to have a solid understanding of as it applies to a lot of different objects. When it comes to setting the position and orientation of a perspective camera for example the Object3d position and rotation properties is the way to go about doing so. The Object3d look at method can also be used to set the rotation of the camera to look at a given point or object. However all of this does not just apply to cameras, but all objects based off of object3d. So the look at method can be used to have a camera look at an mesh object, and the same method can also be used to make that mesh obect face the camera as well sense the look at method is a method of the object3d class.
 
 Camera's such as the perspective camera inherit from Object3D
 
