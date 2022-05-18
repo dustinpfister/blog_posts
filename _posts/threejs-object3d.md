@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-05-18 10:49:37
-version: 1.53
+updated: 2022-05-18 10:50:52
+version: 1.54
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
@@ -262,6 +262,8 @@ There are many objects in three.js that inherit from object3D, which is why this
 In this section I will then be going over some source code examples that have to do with using object3d features in the various different kinds of objects that are based off of object3d.
 
 ### 3.1 - Camera objects are based off of object3d
+
+The camera based class is based off of the object3d class, so when it comes to working with a camera such as the perspective camera I can use object3d features as a way to set the position and rotation of a camera.
 
 ```js
 (function () {
