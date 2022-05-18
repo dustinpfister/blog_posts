@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-05-18 10:54:35
-version: 1.56
+updated: 2022-05-18 15:49:30
+version: 1.57
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
@@ -34,16 +34,33 @@ The source code examples that I am writing about in this post can be found in my
 Typically I do not work with the class directly, I work with something that inherits properties and methods from Object3d. Still if for some reason I want to work with the class directly I can do so via the THREE.Object3d constructor. When doing so I just call the constructor with the new keyword just like with any other constructor function in javaScript. The returned result of the constructor is then an instance of this object3d class.
 
 ```js
+(function () {
+    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.1, 100);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
     // Object 3d position
     var obj3d = new THREE.Object3D();
- 
     // {"x":0,"y":0,"z":0}
     console.log(JSON.stringify(obj3d.position));
- 
-    obj3d.position.set(3, 4, 5);
- 
+    obj3d.position.set(-3, 4, 4);
     // {"x":3,"y":4,"z":5}
     console.log(JSON.stringify(obj3d.position));
+    // A mesh object is based off of Object3d
+    var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, obj3d.position.y * 2, 1), new THREE.MeshNormalMaterial() );
+    scene.add(mesh);
+    mesh.position.copy(obj3d.position);
+    // A Camera is also based on object3d
+    camera.position.set(15, 15, -15);
+    camera.lookAt(mesh.position);
+    // render static scene
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 Here I made just a simple example where I am just playing with the [position property of the object3d class](/2022/04/04/threejs-object3d-position/), which is an instance of Vector3. Vector3 is yet another class in threejs that a developer should be familiar with as it has to do with a single point in 3d space, so it goes without saying that class will come up a lot also.
