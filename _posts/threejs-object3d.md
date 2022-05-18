@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-05-18 10:52:31
-version: 1.55
+updated: 2022-05-18 10:54:35
+version: 1.56
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
@@ -23,7 +23,11 @@ This is not a [getting started post on three.js](/2018/04/04/threejs-getting-sta
 
 ### Version Numbers matter with three.js big time
 
-As with any post on three.js the version number matters a lot, when I first started this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I updated the post I was using [r127 of threejs](https://github.com/mrdoob/three.js/tree/r127). Three.js is a project in motion so if any code in this post or any other threejs post breaks it might very well be because of the version number that you are using. At least that is the first thing that you should check.
+As with any post on three.js the version number matters a lot, when I first started this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I updated the post I was using [r135 of threejs](https://github.com/mrdoob/three.js/tree/r135). Three.js is a project in motion so if any code in this post or any other threejs post breaks it might very well be because of the version number that you are using. At least that is the first thing that you should check.
+
+### Source code examples are up on Github
+
+The source code examples that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d) on Github.
 
 ## 1 - A Very Basic example of Object3d using the position property
 
