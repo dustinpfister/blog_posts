@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-05-18 15:52:07
-version: 1.58
+updated: 2022-05-18 15:53:58
+version: 1.59
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
@@ -20,6 +20,9 @@ In this post I will be going over many of the basics of what the Object3d class 
 ## The Object3d class and what to know before hand
 
 This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or javaScript in general, but an advanced topic on [three.js](/categories/three-js/). With that said I expect that you have some basic working knowledge of what there is to know before hand when it comes to the very basics of three.js, and client side javaScript in general.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/Hu-O_rzrAd8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### Version Numbers matter with three.js big time
 
