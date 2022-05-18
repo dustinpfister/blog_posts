@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2022-05-18 11:59:53
-version: 1.19
+updated: 2022-05-18 12:03:10
+version: 1.20
 ---
 
 When working on a project that involves threejs and a little javaScript, say I am in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -204,7 +204,9 @@ So sense the process of creating a line involves making an array of Vector3 clas
 
 ## 4 - Using the apply Euler method with lerp and add as well with lines
 
-Another cool method of the [Vector3 class is the apply Euler method](/2021/06/18/threejs-vector3-apply-euler/), and speaking of the apply Euler method there is also the [Euler class as well](/2021/04/28/threejs-euler/).
+Another cool method of the [Vector3 class is the apply Euler method](/2021/06/18/threejs-vector3-apply-euler/), and speaking of the apply Euler method there is also the [Euler class as well](/2021/04/28/threejs-euler/). The Euler class is like the Vector3 class only it has to do with angles rather that Vectors, for example the rotation property of anything based off of object3d is an instance of Euler.
+
+Anyway for this example of the vector3 lerp method I wanted to just do something with the lerp method combines with the apply Euler method and add methods of the Vector3 class. The result this time is a weird and interesting kind of line that I made with these methods.
 
 ```js
 (function () {
