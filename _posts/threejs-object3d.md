@@ -5,11 +5,11 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-04-04 12:05:19
-version: 1.46
+updated: 2022-05-18 08:12:54
+version: 1.47
 ---
 
-The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
+The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
 
 The Object3d class adds a whole bunch of common properties, and methods for any kind of object in a project that needs to have a position, and orientation in a scene. Properties of the Object3d class can be used to set the position, and rotation of an object along with many other common things that are shared across all such objects in a scene. Once you know a thing or two about the Object3D class the same methods and properties can be applied to any and all objects that inherent from this Object3D base class.
 
@@ -390,7 +390,7 @@ The [scale property](/2021/05/11/threejs-object3d-scale/) of an instance of Obje
 
 The [user data object](/2021/02/16/threejs-userdata/) is the standard go to object in an instance of Object3d that can be used to park user defined data. In other words when it comes to me making my own modules and applications based off of three.js and I want to append some data to an object in three.js this user data object is how I can go about doing so without messing up anything that three.js depends on.
 
-## 9 - Conclusion
+## Conclusion
 
 From here you might choose to make some more demos that have to do with exercising the use of working with objects in three.js. There is working out some examples that involve using the rotation and position properties in an instance of a camera to change the position and orientation of a camera over time. 
 
