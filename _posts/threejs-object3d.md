@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-05-18 15:53:58
-version: 1.59
+updated: 2022-05-18 15:55:33
+version: 1.60
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
@@ -72,7 +72,9 @@ The position property of Object3d can be used to set the center point of the obj
 
 ## 2 - Rotation and position properties of the Object3d class
 
-Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the Euler Class, Which is the Class used in three.js that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles). So when creating or changing the values of a Euler class instance there are three angles that need to be given in the form of a radian value between 0 and Math.PI \* 2. The set method of a Euler class instance can be used to set the values of these angles by passing three angle values for the Euler instance. Another way to set the value of a Euler class instance is to use the copy method that will set the values of the Euler class instance from which the copy method is called to the given Euler Class instance.
+Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the Euler Class, Which is the Class used in three.js that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles). So when creating or changing the values of a Euler class instance there are three angles that need to be given in the form of a radian value between 0 and Math.PI \* 2. 
+
+The set method of a Euler class instance can be used to set the values of these angles by passing three angle values for the Euler instance. Another way to set the value of a Euler class instance is to use the copy method that will set the values of the Euler class instance from which the copy method is called to the given Euler Class instance. So then in this section I will be going over at least a few examples of rotation, but also position while I am at it also.
 
 ### 2.1 - Basic Object3d rotation example using set and copy of the Euler class
 
