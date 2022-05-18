@@ -5,13 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-05-18 08:12:54
-version: 1.47
+updated: 2022-05-18 08:15:00
+version: 1.48
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
 
-The Object3d class adds a whole bunch of common properties, and methods for any kind of object in a project that needs to have a position, and orientation in a scene. Properties of the Object3d class can be used to set the position, and rotation of an object along with many other common things that are shared across all such objects in a scene. Once you know a thing or two about the Object3D class the same methods and properties can be applied to any and all objects that inherent from this Object3D base class.
+The Object3d class adds a whole bunch of common properties, and methods for any kind of object in a project that needs to have a position, orientation, scale and so forth. So then there are properties of the Object3d class that can be used to set the position, and rotation of an object along with many other common things that are shared across all such objects.
 
 In this post I will be going over many of the basics of what the Object3d class is all about in three.js, there is working with the class directly. However more often than not it is a class that I am working with indirectly each time i want to move or rotate a camera, mesh object, or anything to that effect. In the process of going over the Object3d class I will also be touching base on many other classes that are important in three.js also, such as the [Vector3](/2018/04/15/threejs-vector3/) class and the [Euler Class](/2021/04/28/threejs-euler/).
 
