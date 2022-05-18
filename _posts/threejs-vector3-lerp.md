@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2022-05-18 11:09:02
-version: 1.14
+updated: 2022-05-18 11:28:26
+version: 1.15
 ---
 
 When working on a project that involves threejs and a little javaScript, say I am in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -152,6 +152,49 @@ Now that I have the basic example out of the way it is clear what the lerp metho
         lt = now;
     };
     loop();
+}
+    ());
+```
+
+## 3 - Using the Vector3 clone, lerp, and add methods to create lines with an array of Vector3 instances
+
+```js
+(function () {
+    // SCENE, CAMERA, RENDERER, LIGHT
+    let scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
+    let camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(-8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    let renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    scene.add(camera);
+    // createing an array of Vector3 instances
+    // using clone, LERP, and add methods
+    var points = [];
+    var v1 = new THREE.Vector3(5, 0, 5),
+    v2 = new THREE.Vector3(-5, 0, -5);
+    var i = 0, len = 100;
+    while(i < len){
+        var per = i / ( len - 1 ),
+        x = Math.cos( Math.PI * 6 * per ),
+        y = -2 + 4 * per;
+        points.push( v1.clone().lerp(v2, per).add( new THREE.Vector3(x, y ,0) ) );
+        i += 1;
+    }
+    // geometry from points array
+    var geometry = new THREE.BufferGeometry().setFromPoints( points );
+    // line object
+    var line = new THREE.Line(
+            geometry,
+            new THREE.LineBasicMaterial({
+                color: 0x0000ff,
+                linewidth: 6
+            }));
+    scene.add(line)
+    // render
+    renderer.render(scene, camera);
 }
     ());
 ```
