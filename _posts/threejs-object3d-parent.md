@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2022-05-19 09:32:38
-version: 1.27
+updated: 2022-05-19 09:34:53
+version: 1.28
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. Not all of it is hard to work with also, much of it is just a matter of being aware of it for the most part. For example one such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property of an object. That is where the children property might be a collection of other objects that are descendants of an object, the parent property is, well the parent of the current object of course.
 
-Say I am looping over all the objects of a scene object using something like that of the object3d transverse method, and for each mesh object I want to take a look at what the parent object of the mesh object. Say that in the scene there may be some mesh objects that are part of a group and the user data object of the group may have some data that I will want to use when applying some changes to the mesh object. There are a range of other use case situations where I will want to get at the parent object, such as when working with raycasting and groups of objects.
+Say I am looping over all the objects of a scene object using something like that of the object3d transverse method, and for each mesh object I want to take a look at what the parent object of the mesh object. Say that in the scene there may be some mesh objects that are part of a group and the user data object of the group may have some data that I will want to use when applying some changes to the mesh object.
 
-So then in this post I will be going over a few examples that make use of the parent property of objects that are based on the object3d class. While I am at it I might also touch base on a wide range of other threejs related topics that might also be work checking into in detail, so lets get to it.
+However I can not say that I use the parent property that much, and maybe the reason why is because often there are other ways of having references to objects at the ready, such as having names for every object in the scene. So then in this post I will be going over a few examples that make use of the parent property of objects that are based on the object3d class. While I am at it I might also touch base on a wide range of other threejs related topics that might also be work checking into in detail, so lets get to it.
 
 <!-- more -->
 
