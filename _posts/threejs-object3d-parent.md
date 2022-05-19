@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2022-05-19 09:34:53
-version: 1.28
+updated: 2022-05-19 10:11:48
+version: 1.29
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. Not all of it is hard to work with also, much of it is just a matter of being aware of it for the most part. For example one such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property of an object. That is where the children property might be a collection of other objects that are descendants of an object, the parent property is, well the parent of the current object of course.
@@ -28,6 +28,10 @@ The [obejct3d class is worth checking out in detail](/2018/04/23/threejs-object3
 ### Take a look at names as yet another way to get a reference to an object.
 
 The parent property is one of many ways to go about getting a reference to an object that is based on object 3d from another objects that is based on object3d. The parent property is indeed useful for what it is intended for, however in a major project it might be a good idea to work out some kind of system when it comes to setting the [name values of objects](/2021/05/12/threejs-object3d-get-by-name/) and using the get by name method.
+
+### Source code is up on Github
+
+The source code examples in this post are also up on [Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-parent).
 
 ### version numbers matter
 
