@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-05-20 05:52:45
-version: 1.43
+updated: 2022-05-20 06:14:21
+version: 1.44
 ---
 
-In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in an object such as a mesh, group, camera, or whole scene object.
+In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the object3d class, which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in an object such as a mesh, group, camera, or whole scene object.
 
 If I need to park some custom application data that has to do with a specific object, it is a good idea to do so by adding it to this user data object, as that will help to make sure that it is done in a safe way that will not conflict with anything internal with threejs. Many other libraries and frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object also, and it makes sense to use it as that is what it is there for. 
 
@@ -19,11 +19,15 @@ So then just adding custom stuff to the root of an object3d based object itself 
 
 ## Object user data and what to know first
 
-This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with and over all application, or module that runs on top of three.js in a client side javaScript environment. So then this is not really a [post for people that are new to three.js](/2018/04/04/threejs-getting-started/), as I think that you should have at least some background with the library and [javaScript in general](/2018/11/27/js-getting-started/) before getting into these kinds of examples. There might still be at least a few things that I should cover before getting into the user data examples, so in this section I will be getting those things out of the way.
+This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with an over all application, or module that runs on top of three.js in a client side javaScript environment. So then this is not really a [post for people that are new to three.js](/2018/04/04/threejs-getting-started/), as I think that you should have at least some background with the library and [javaScript in general](/2018/11/27/js-getting-started/) before getting into these kinds of examples. There might still be at least a few things that I should cover before getting into the user data examples, so in this section I will be getting those things out of the way.
+
+## Read up more on the object3d class in general
+
+There is a whole lot more to write about when it comes to the [oject3d class in threejs](/2018/04/23/threejs-object3d/), as well as a whole lot of other classes an with that methods and properties that branch off of object3d. What is great about this class is that it is a pretty big deal in threejs as it is a base class for a wide range of objects. So by learning about one little feature such as the user data object, this can be applied to any object in threejs that is based off of the object3d class.
 
 ### Version numbers matter with three.js
 
-I get emails and blog comments that had to do with code breaking chnages that happend in older source code examples. As such that tells me that I just need to mention in every post on three.js what version I was using. When I first wrote this post I was using r125 of three.js. The last time I came around to do a little editing I was using r135 of three.js and at that point at least the source code examples still seem to work fine on my end for what it is worth. Code breaking changes are made to three.js often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to editing the post.
+I get emails and blog comments that had to do with code breaking changes that happened in older source code examples. As such that tells me that I just need to mention in every post on three.js what version I was using. When I first wrote this post I was using r125 of three.js. The last time I came around to do a little editing I was using r135 of three.js and at that point at the source code examples still seem to work fine on my end for what it is worth. Code breaking changes are made to three.js often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to editing the post.
 
 ### The source code examples in this post are on Github
 
