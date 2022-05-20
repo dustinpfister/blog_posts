@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 988
-updated: 2022-05-20 14:10:27
-version: 1.4
+updated: 2022-05-20 14:12:26
+version: 1.5
 ---
 
 I have some ideas for videos that involve a gird of objects the position of which will move, but will also wrap around when also. In other words I would like to have some kind of simple javaScript module in which I can define an array of source objects, and then have an array of index values for tile location in the grid where each index value refers to an object to clone from the source objects array. So then this kind of module could be used in all kinds of ways when it comes to making some kind of looping world that I can then move around in. The module can be used with a number of other components that involve additional objects that might be elements of the main focus of the over all video, but this module would be a nice way to have some kind of repeating background.
@@ -21,6 +21,8 @@ So this post will be on what I have together at this time for what I am calling 
 In this section I will be going over the first revision of the object grid wrap module itself as well as demo code that helps to show that this will work they way I want it to. For this first revision I all ready have all of the core ideas that i wanted up and running and there may or may not be a need for an additional revision. I can create an instance of a THREE.Group using the create method of the object grid module that has children added and positioned from the array of source objects and index values that I give. The other core idea that I wanted also seems to be working well when it comes to moving these objects around and having them loop back.
 
 ### 1.1 - The object grid wrap module
+
+Here I have the source code for the module that I had in mind that creates and returns a public API with a few useful methods. There is the create method that I can call to create and return a new grid object, as well as additional methods to change and update this grid object.
 
 ```js
 //******** **********
