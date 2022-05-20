@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-05-20 06:14:21
-version: 1.44
+updated: 2022-05-20 06:18:36
+version: 1.45
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the object3d class, which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in an object such as a mesh, group, camera, or whole scene object.
@@ -35,9 +35,9 @@ The source code examples that I am writing about here in this post are up [on Gi
 
 ## 1 - Basic User Data Object3d Example with rotating cubes
 
-This will be a basic getting started example of the user data object of the object3d class. In this example I have a create cube helper that will create and return a mesh that uses the [Box geometry](/2021/04/26/threejs-box-geometry/), and the [normal material](/2021/06/23/threejs-normal-material/). In this create cube function I am using the userData object as a way to set some rotation rates for each angle in an instance of THREE.Euler in radians per second. There rotation rates as well as the starting position of the cube can be set by way of the create cube helper functions arguments.
+In this example I have a create cube helper that will create and return a mesh that uses the [Box geometry](/2021/04/26/threejs-box-geometry/), and the [normal material](/2021/06/23/threejs-normal-material/), and while I am at it add a value to the user data object of the mesh object. In this create cube function I am using the userData object as a way to set some rotation rates for each angle in an instance of THREE.Euler in radians per second. There rotation rates as well as the starting position of the cube can be set by way of the create cube helper functions arguments.
 
-I then also have a function that will update a given cube by these rates in the user data object by way of a given time delta value. This function will then need to be called in the body of some kind of main animation loop function that uses [request animation frame](/2018/03/13/js-request-animation-frame/) that I have at the bottom of the source code example.
+I then also have a function that will update a given cube by these rates in the user data object by way of a given time delta value in seconds. This function will then need to be called in the body of some kind of main animation loop function that uses a client side javaScritp feature such as [request animation frame](/2018/03/13/js-request-animation-frame/) that I have at the bottom of the source code example.
 
 ```js
 (function () {
@@ -419,7 +419,7 @@ So once I have my helpers that create and return a group of mesh objects I just 
 
 The result of this then is a bunch of spheres start out positioned at the center origin point and then move out from there in random directions and speeds. When the distance of a mesh goes out of the rang that I set with the MAX DIST value then the user data values get set to new values, and the position of the mesh goes back to the origin.
 
-## 4 - Conclusion
+## Conclusion
 
 So the user data object is one way to go about having some custom data set to a given mesh object, or any object in threejs that inherits from object 3d such as a camera object. There might be other ways of going about doing this sort of thing though such as having two sets of objects, one would be a collection of mesh objects in threejs, and another would be an independent array of user data objects. However it is good to know that there is an official object in every object based on the Object3d class that can be used as a way to go about packing application and module specific data. This allows me to create three.js modules that returned mesh objects, or groups, rather than my own weired object standards where there is a property that is a group or mesh. Which is a habit that I am not going to start to break because that sounds like a good idea to me.
 
