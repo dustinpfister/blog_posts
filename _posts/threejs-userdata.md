@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-05-20 05:44:42
-version: 1.42
+updated: 2022-05-20 05:52:45
+version: 1.43
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in an object such as a mesh, group, camera, or whole scene object.
 
-It is a good idea to place any data that has to do with an application itself in this user data object as that will help to make sure that it is done in a safe way that will not conflict with anything internal with three.js. Many other libraries and frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object. Just adding custom stuff to the object itself can cause problems in the event that there is a conflict, also making use of the user object helps to make things more clear as to what has to do with the logic of the application and what is part of threejs.
+If I need to park some custom application data that has to do with a specific object, it is a good idea to do so by adding it to this user data object, as that will help to make sure that it is done in a safe way that will not conflict with anything internal with threejs. Many other libraries and frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object also, and it makes sense to use it as that is what it is there for. 
 
-So in this post I will be going over a few simple examples of the user data property of the object3d class. Nothing major for starers, but I think I would like to get into some more advanced examples if I can get to it in order to really help showcase what this object is for when it comes to being creative and having a little fun with three.js.
+So then just adding custom stuff to the root of an object3d based object itself can cause problems in the event that there is a conflict. Also making use of the user object helps to make things more clear as to what has to do with the logic of the application and what is part of threejs itself so I would say that this also helps with code readability. With that said, in this post I will be going over a few simple examples of the user data object of the object3d class. Nothing major for starers at least, but I think I would like to get into some more advanced examples if I can get to it in order to really help showcase what this object is for when it comes to being creative and having a little fun with three.js.
 
 <!-- more -->
 
