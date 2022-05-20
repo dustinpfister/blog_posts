@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2022-04-07 09:17:06
-version: 1.41
+updated: 2022-05-20 05:44:42
+version: 1.42
 ---
 
-In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in this object.
+In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the [object3d class](/2018/04/23/threejs-object3d/), which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in an object such as a mesh, group, camera, or whole scene object.
 
 It is a good idea to place any data that has to do with an application itself in this user data object as that will help to make sure that it is done in a safe way that will not conflict with anything internal with three.js. Many other libraries and frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object. Just adding custom stuff to the object itself can cause problems in the event that there is a conflict, also making use of the user object helps to make things more clear as to what has to do with the logic of the application and what is part of threejs.
 
@@ -17,7 +17,7 @@ So in this post I will be going over a few simple examples of the user data prop
 
 <!-- more -->
 
-## Objected user data and what to know first
+## Object user data and what to know first
 
 This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with and over all application, or module that runs on top of three.js in a client side javaScript environment. So then this is not really a [post for people that are new to three.js](/2018/04/04/threejs-getting-started/), as I think that you should have at least some background with the library and [javaScript in general](/2018/11/27/js-getting-started/) before getting into these kinds of examples. There might still be at least a few things that I should cover before getting into the user data examples, so in this section I will be getting those things out of the way.
 
