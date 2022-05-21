@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 988
-updated: 2022-05-21 07:58:46
-version: 1.14
+updated: 2022-05-21 08:06:13
+version: 1.15
 ---
 
 I have some ideas for videos that involve a gird of objects the position of which will move, but will also wrap around when also. In other words I would like to have some kind of simple javaScript module in which I can define an array of source objects, and then have an array of index values for tile location in the grid where each index value refers to an object to clone from the source objects array. So then this kind of module could be used in all kinds of ways when it comes to making some kind of looping world that I can then move around in. The module can be used with a number of other components that involve additional objects that might be elements of the main focus of the over all video, but this module would be a nice way to have some kind of repeating background.
@@ -27,6 +27,10 @@ This is a blog post on a javaScript module that I made that can be used to creat
 In this object grid module I am taking an array of source objects and then creating new objects based off of those source objects. When doing so there is calling the clone method of the object that I want to make a copy of, but this will just create a copy of a mesh object or group objects itself and not with any nested object such as with a material or geometry that is used. This is one of the reasons why I have added an option that allows for me to pass a custom method for cloning objects, I have what I have made for this when it comes to a built in method for cloning, but I am sure there will be situations in which I might want to use a custom method for this sort of thing.
 
 I have wrote a number of posts in the past about this subject when it comes to my posts on the [lodash clone](/2017/10/02/lodash_clone/), and [lodash clone deep methods](/2017/11/13/lodash_clonedeep/).
+
+### Wrapping, clamping, and Euclidean Modulo
+
+In the past I have wrote a number of posts on the subject of wrapping and clamping which is a subject that seems to come up a whole lot when making all kinds of various projects. I have an old collection of content on the [game framework phaser in which I wrote a post on the built in wrap](/2018/07/22/phaser-math-wrap-and-clamp/) method that works well in the project. I have also wrote a post on the subject of [core javaScript and the built in modulo operator](/2017/09/02/js-whats-wrong-with-modulo/) and what the deal is with that when it comes to negative numbers. However this is a post on the threejs library and when it comes to this project there is a [Euclidean Modulo method in the Math utils library](/2022/04/11/threejs-math-utils/).
 
 ### Version numbers matter
 
