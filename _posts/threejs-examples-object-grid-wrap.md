@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 988
-updated: 2022-05-21 08:06:13
-version: 1.15
+updated: 2022-05-21 08:09:34
+version: 1.16
 ---
 
 I have some ideas for videos that involve a gird of objects the position of which will move, but will also wrap around when also. In other words I would like to have some kind of simple javaScript module in which I can define an array of source objects, and then have an array of index values for tile location in the grid where each index value refers to an object to clone from the source objects array. So then this kind of module could be used in all kinds of ways when it comes to making some kind of looping world that I can then move around in. The module can be used with a number of other components that involve additional objects that might be elements of the main focus of the over all video, but this module would be a nice way to have some kind of repeating background.
@@ -46,7 +46,7 @@ In this section I will be going over the first revision of the object grid wrap 
 
 ### 1.1 - The object grid wrap module
 
-Here I have the source code for the module that I had in mind that creates and returns a public API with a few useful methods. There is the create method that I can call to create and return a new grid object, as well as additional methods to change and update this grid object.
+Here I have the source code for the module that I had in mind that creates and returns a public API with a few useful methods. There is the create method that I can call to create and return a new grid object, as well as additional methods to change and update this grid object. On top of the public methods I have a number of private helper functions for this like getting the true tile home position of an object, as well as other kinds of positions such as positions that are created with alpha values from these given home locations. Also I have a number of hard coded defaults for the various options for the create method so I have something of interest at least when I just call the create method by itself.
 
 ```js
 //******** **********
