@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 988
-updated: 2022-05-21 07:56:03
-version: 1.13
+updated: 2022-05-21 07:58:46
+version: 1.14
 ---
 
 I have some ideas for videos that involve a gird of objects the position of which will move, but will also wrap around when also. In other words I would like to have some kind of simple javaScript module in which I can define an array of source objects, and then have an array of index values for tile location in the grid where each index value refers to an object to clone from the source objects array. So then this kind of module could be used in all kinds of ways when it comes to making some kind of looping world that I can then move around in. The module can be used with a number of other components that involve additional objects that might be elements of the main focus of the over all video, but this module would be a nice way to have some kind of repeating background.
@@ -272,3 +272,7 @@ var loop = function () {
 };
 loop();
 ```
+
+## Conclusion
+
+So far so good with this object grid wrap module, I have a basic idea of what I wanted in mind and that basic idea is now up and running. I am sure that I will want to make at least one if not more revisions of this though, but in order to really be sure of what is needed in terms of new features and what needs to be fixed I will want to make at least a few if not more projects that make use of this module.
