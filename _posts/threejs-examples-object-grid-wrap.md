@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 988
-updated: 2022-05-21 07:41:42
-version: 1.11
+updated: 2022-05-21 07:53:16
+version: 1.12
 ---
 
 I have some ideas for videos that involve a gird of objects the position of which will move, but will also wrap around when also. In other words I would like to have some kind of simple javaScript module in which I can define an array of source objects, and then have an array of index values for tile location in the grid where each index value refers to an object to clone from the source objects array. So then this kind of module could be used in all kinds of ways when it comes to making some kind of looping world that I can then move around in. The module can be used with a number of other components that involve additional objects that might be elements of the main focus of the over all video, but this module would be a nice way to have some kind of repeating background.
@@ -21,6 +21,10 @@ This is a blog post on a javaScript module that I made that can be used to creat
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/JqVIlrvMwHs
 " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Read up on the subject of shallow and deep cloning of objects
+
+In this object grid module I am taking an array of source objects and then creating new objects based off of those source objects. When doing so there is calling the clone method of the object that I want to make a copy of, but this will just create a copy of a mesh object or group objects itself and not with any nested object such as with a material or geometry that is used. This is one of the reasons why I have added an option that allows for me to pass a custom method for cloning objects, I have what I have made for this when it comes to a built in method for cloning, but I am sure there will be situations in which I might want to use a custom method for this sort of thing.
 
 ### Version numbers matter
 
