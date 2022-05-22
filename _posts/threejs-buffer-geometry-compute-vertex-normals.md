@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-04-22 11:47:16
-version: 1.14
+updated: 2022-05-22 12:22:53
+version: 1.15
 ---
 
 The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-geometry/), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after that when it is also a good idea to work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). In some cases I might have to work this out manually, however in most cases just calling the compute vertex normals method will work just fine, which is what this post is about today.
@@ -17,6 +17,8 @@ The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-ge
 ## The compute vertex normals method and what to know first
 
 This is a post centered around a single method of the [buffer geometry class](https://threejs.org/docs/#api/en/core/BufferGeometry) in the popular javaScript library known as three.js. This is not a post that is a general overview of the buffer geometry class in general, or a [getting started type post with threejs](/2018/04/04/threejs-getting-started/), javaScript and any other additional skills that are needed before hand. So I assume that you have at least a little background when it comes to the core set of skills that are needed in order to gain something of value from reading this.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/yApc9lnw53o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### The source code examples in this post are on Github
 
