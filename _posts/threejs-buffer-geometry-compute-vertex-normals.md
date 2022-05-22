@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-05-22 12:22:53
-version: 1.15
+updated: 2022-05-22 12:33:11
+version: 1.16
 ---
 
-The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-geometry/), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after that when it is also a good idea to work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). In some cases I might have to work this out manually, however in most cases just calling the compute vertex normals method will work just fine, which is what this post is about today.
+The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-geometry/), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started at least when it comes to this. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after the position array is in a good state it is also a good idea to work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). 
+
+In some cases I might have to work this out manually it would seem, however in most cases just calling the compute vertex normals method of the buffer geometry class will work just fine, which is what this post is about today.
 
 
 <!-- more -->
