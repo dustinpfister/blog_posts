@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 989
-updated: 2022-05-25 11:24:13
-version: 1.9
+updated: 2022-05-25 11:26:52
+version: 1.10
 ---
 
 I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. So today I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object that looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
@@ -327,6 +327,8 @@ var ObjectGridWrap = (function(){
 ```
 
 ### 1.3 - Demo code for r0 of weird walk three
+
+The demo that I made for this weird walk module is then just a simple walking loop in which I am just rotating the weird walk three object. I am just rotating the weird walk model and not doing anything with the position attribute of the root object, so I am then then changing the state of the object grid wrap as a way to produce the illusion of movement.
 
 ```js
 //******** **********
