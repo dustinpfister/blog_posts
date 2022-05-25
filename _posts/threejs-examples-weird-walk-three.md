@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 989
-updated: 2022-05-25 10:50:35
-version: 1.2
+updated: 2022-05-25 10:54:41
+version: 1.3
 ---
 
-I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hot a bit of a wall when it comes to leaning more about the library itself, for the moment at least, so now I am thinking I should mainly focus on just making actual project examples with the library.
+I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. So today I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object that looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
 
 <!-- more -->
 
