@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 989
-updated: 2022-05-25 11:05:30
-version: 1.7
+updated: 2022-05-25 11:17:38
+version: 1.8
 ---
 
 I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. So today I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object that looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
@@ -25,7 +25,7 @@ The version of threejs that I was using when I first made this module and wrote 
 
 ### Latest source is on Github
 
-The latest source code for this module as well as many others can be found in my [test threejs repository]().
+The latest source code for this module as well as many others can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-walk-three).
 
 
 ## First version of weird walk three, and other additional files
@@ -33,6 +33,8 @@ The latest source code for this module as well as many others can be found in my
 In this section I will be going over the source code of the first version of this weird walk three module as well as additional files that I ma using to get the over all demo that I made for it up and running as well.
 
 ### 1.1 - The weird walk module r0
+
+Often when I make a module such as this I will have a create method that will create and return a new instance of the module, and then one or more additional models that will update the state of the module in various ways. However for this idea all I really generally want to do with it is just rotate the main root object along one or maybe two axis as a way to create a walk cycle for it and that is about it. So for the first version of this at least I have just a single create method and that is it, when it comes to the public methods of the module at least.
 
 ```js
 //******** **********
