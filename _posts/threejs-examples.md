@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-05-20 14:05:12
-version: 1.53
+updated: 2022-05-25 11:28:48
+version: 1.54
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -140,6 +140,10 @@ This is another one of my example that is a kind of model that is created by jus
 ### [ 2.29 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
 
 This is a more advanced example of the first weird walk guy example, continuing to work on adding more to the example in an effort to just make a weird and interesting looping animation.
+
+### [ 2.30 - Weird walk guy 3](/2022/05/24/threejs-examples-weird-walk-three/) 
+
+I wanted to make yet another one of these weird walk examples to which I might make a few more of.
 
 ## Conclusion
 
