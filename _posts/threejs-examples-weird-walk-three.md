@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 989
-updated: 2022-05-25 11:26:52
-version: 1.10
+updated: 2022-05-25 11:34:05
+version: 1.11
 ---
 
 I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. So today I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object that looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
@@ -460,3 +460,9 @@ var loop = function () {
 };
 loop();
 ```
+
+## Conclusion
+
+That will be it for now when it comes to this weird walk three module, but I am sure that I will be doing at least a little more editing with this example as it still does not look the way that I want it to. I all ready have one additional revision in the works as I write this, and I might want to make one more before moving on to the next thing. Much of what I want to change has to do with the geometry of the foot mesh, for the first version the foot mesh is just a box geometry and I am not doing anything out of the ordinary with my various examples when it comes to making a custom geometry or textures to make it look more like, well a foot. 
+
+In my first revision of the module I am trying my luck with the shape constructor and extrude geometry as to get something closer to what I have in mind for this, but I might have to go the distance and actually make a custom foot geometry in order to really get this to loom they way that I want it to possibly.
