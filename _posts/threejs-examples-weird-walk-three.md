@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 989
-updated: 2022-05-25 11:38:31
-version: 1.12
+updated: 2022-05-25 11:46:29
+version: 1.13
 ---
 
 I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. So today I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object that looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
@@ -21,7 +21,9 @@ This is a post on a javaScript module that I am calling weird walk three which a
 
 ### This is a kind of informal model, there are other ways of making something like this.
 
-This javaScript module is one of many examples that I have made that I would call a kind of informal model. What I mean by that is that this is that my weird walk three module creates and returns an instance of THREE.Group that contains children that are additional groups and THREE.Mesh objects. The geometries of the mesh objects are cerated using the various threejs built in geometry constructor functions lie the THREE.BocGeoetry constructor function.
+This javaScript module is one of many examples that I have made that I would call a kind of informal model. What I mean by that is that this is that my weird walk three module creates and returns an instance of THREE.Group that contains children that are additional groups and THREE.Mesh objects. The geometries of the mesh objects are cerated using the various threejs built in geometry constructor functions lie the THREE.BoxGeometry constructor function.
+
+There are other ways of making a model that can be thought of as being a little more in track with how they are made from a professional perspective of course which is what I have come to refer to them as informal models.
 
 ### Version numbers matter
 
