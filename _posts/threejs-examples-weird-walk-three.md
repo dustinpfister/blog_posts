@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 989
-updated: 2022-05-25 11:51:19
-version: 1.15
+updated: 2022-05-25 11:56:04
+version: 1.16
 ---
 
 I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. So today I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object that looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
@@ -24,6 +24,10 @@ This is a post on a [javaScript module](/2019/03/12/js-javascript-module/) that 
 This javaScript module is one of many examples that I have made that I would call a kind of informal model. What I mean by that is that this is that my weird walk three module creates and returns an instance of [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) that contains children that are additional groups and [THREE.Mesh](/2018/05/04/threejs-mesh/) objects. The geometries of the mesh objects are cerated using the various threejs built in geometry constructor functions lie the [THREE.BoxGeometry](/2021/04/26/threejs-box-geometry/) constructor function.
 
 There are other ways of making a model that can be thought of as being a little more in track with how they are made from a professional perspective of course which is what I have come to refer to them as informal models.
+
+### There are my other weird walk modules
+
+As the name suggests there should be two other threejs examples that came before this one, and yes because I am bad at naming things they are called [weird walk one](/2022/04/18/threejs-examples-weird-walk-one/) and [weird walk two](/2022/04/25/threejs-examples-weird-walk-two/). This new weird walk module is a bot of a break away from them though as this is not just an example in which I am building on top of what I started with but making a whole new module from the ground up.
 
 ### Version numbers matter
 
