@@ -5,19 +5,28 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 989
-updated: 2022-05-25 10:59:19
-version: 1.5
+updated: 2022-05-25 11:03:47
+version: 1.6
 ---
 
 I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. So today I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object that looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
 
 <!-- more -->
 
-### The werid walk three module and what to know first
+## The weird walk three module and what to know first
 
 This is a post on a javaScript module that I am calling weird walk three which as the name suggests is the third project where I am making a kind of informal module that is of some kind of character that is just going threw a walk cycle of sorts. This is not a post for people that are new to threejs or javaScript in general I have wrote those posts a ling time ago and will nit be getting into detail about the basics of these subjects here. However I do often have an opening section such as this to just write about a few things you might want to read up more on before continue to read the rest of the post.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/ZBIW8gQmdGE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Version numbers matter
+
+The version of threejs that I was using when I first made this module and wrote this post was r135.
+
+### Latest source is on Github
+
+The latest source code for this module as well as many others can be found in my [test threejs repository]().
+
 
 ## First version of weird walk three, and other additional files
 
