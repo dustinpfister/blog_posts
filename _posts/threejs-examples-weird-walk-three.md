@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 989
-updated: 2022-05-25 11:56:04
-version: 1.16
+updated: 2022-05-25 11:59:55
+version: 1.17
 ---
 
 I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. So today I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object that looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
@@ -28,6 +28,10 @@ There are other ways of making a model that can be thought of as being a little 
 ### There are my other weird walk modules
 
 As the name suggests there should be two other threejs examples that came before this one, and yes because I am bad at naming things they are called [weird walk one](/2022/04/18/threejs-examples-weird-walk-one/) and [weird walk two](/2022/04/25/threejs-examples-weird-walk-two/). This new weird walk module is a bot of a break away from them though as this is not just an example in which I am building on top of what I started with but making a whole new module from the ground up.
+
+### I am also using my new object grid wrap examples to make an over all scene with the weird walk module
+
+When making the over all scene that will serve as a demo of the module I also wanted to make use of new new object grid wrap module that I started recently. This is a project where the aim is to create a grid of objects where I have one of several kinds of objects at each grid location. On top of that there are also public methods that allow for me to change the positions of these objects in  such a way that they loop around, and when I want to I can also have them loop around in 2 directions.
 
 ### Version numbers matter
 
