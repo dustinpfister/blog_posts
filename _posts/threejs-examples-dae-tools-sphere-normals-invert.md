@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 990
-updated: 2022-06-02 12:06:14
-version: 1.15
+updated: 2022-06-02 12:12:08
+version: 1.16
 ---
 
 As of late I have been editing some of my older threejs content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related subjects and alternatives. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use with a cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved, and I have a lot of pots boiling on top of this that makes me want to look for a kind of simple place holder solution for now. There are a lot of issues that come up when trying to make one of these cube textures, for one thing I need to start with a texture that is seamless in all directions, and on top of that I need to have a way to mutate the state of the texture so that it does not look like I am in inside a cube.
@@ -26,6 +26,8 @@ This is an advanced post on the subject of using the javaScript library known as
 This example makes use of the DAE file, or Collada File loader that can be found in the threejs repository. I have all ready [wrote a blog post on this DAE loader a while back](/2021/04/30/threejs-dae-collada-loader/) and thus assume that you know a thing or two about these various additional assets to work with in the threejs repository. Also I am making use of an [additional module that I made a while back](/2021/06/25/threejs-examples-dae-tools/) where I am building on top of this DAE loader, but this is mainly just some abstractions and additional methods that I have found that I like to have when working with DAE assets thus far.
 
 ### Source code and DAE assets are up on Guthub
+
+On top of using threejs and additional javaScript files such as the DAE loader, I am also loading an extremal DAE file that I exported from a blender file. It would be best to learn how to do reproduce this kind of thing in blender, but I also have [a copy of the dae file](https://github.com/dustinpfister/test_threejs/tree/master/views/dae/sphere-normal-invert) that I am loading in my test threejs repository. In the for post folder of this repo [I also have copies of the source code examples](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-dae-tools-sphere-normals-invert) I am writing about here, and this is also where I am parking the source code for my [many other posts on threejs](/categories/three-js/) that I write about on this website.
 
 ### Version numbers matter
 
