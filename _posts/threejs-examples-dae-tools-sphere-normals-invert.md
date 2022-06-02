@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 990
-updated: 2022-06-02 12:23:03
-version: 1.18
+updated: 2022-06-02 12:28:20
+version: 1.19
 ---
 
 As of late I have been editing some of my older [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related subjects and alternatives. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use with a cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved, and I have a lot of pots boiling on top of this that makes me want to look for a kind of simple place holder solution for now. There are a lot of issues that come up when trying to make one of these cube textures, for one thing I need to start with a texture that is seamless in all directions, and on top of that I need to have a way to mutate the state of the texture so that it does not look like I am in inside a cube.
@@ -243,4 +243,4 @@ This is the source code for the DAE tools module that I made a while back that I
 
 As of late the direction I seem to be going in with threejs is using the library to make Videos, and when it comes to this kind of application the bottom line with whatever I am doing is how the frames turn out. With that said this seems to be a kind of solution that I would say works out okay when it comes to that, and the kind of style that I have in mind. However I would not say that this is an end when it comes to looking into this sort of thing more.
 
-
+Creating a background for scenes in threejs strikes me as just one of many things that can end up being a total time consuming rabbit hole if I do not first find a half way decent place holder solution for it which is what this is. If I am happy with the idea of manly creating textures that I then use with the uv map of a sphere that has inverted normals then I can go with this and move on to the next thing. With that said I think I can go with something like this when it comes to just making some that works okay and moving on, at least when it comes to making my videos at least. However I am sure that this is yet another topic that I will have to come back to again at some point when it comes to slowly moving forward with every little thing that comes up when doing this kind of work.
