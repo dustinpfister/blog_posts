@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-05-31 15:13:17
-version: 1.56
+updated: 2022-06-02 11:35:16
+version: 1.57
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -59,7 +59,7 @@ I wanted to continue with my cube stack module and make an example that is a gri
 
 A module that serves as a basic set of tools when it comes to loading and processing a collection of dea files for a scene.
 
-### [ 2.10 - DAE TOOLS and a Sphere with inverted normals ](/2022/05/31/threejs-examples-dae-tools=sphere-normals-invert/)
+### [ 2.10 - DAE TOOLS and a Sphere with inverted normals ](/2022/05/31/threejs-examples-dae-tools-sphere-normals-invert/)
 
 ### [ 2.11 - My First basic guy model](/2021/04/29/threejs-examples-guy-one/)
 
