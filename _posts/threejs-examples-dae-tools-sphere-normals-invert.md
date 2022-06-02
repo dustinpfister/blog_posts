@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 990
-updated: 2022-06-02 12:05:23
-version: 1.14
+updated: 2022-06-02 12:06:14
+version: 1.15
 ---
 
 As of late I have been editing some of my older threejs content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related subjects and alternatives. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use with a cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved, and I have a lot of pots boiling on top of this that makes me want to look for a kind of simple place holder solution for now. There are a lot of issues that come up when trying to make one of these cube textures, for one thing I need to start with a texture that is seamless in all directions, and on top of that I need to have a way to mutate the state of the texture so that it does not look like I am in inside a cube.
@@ -28,6 +28,8 @@ This example makes use of the DAE file, or Collada File loader that can be found
 ### Source code and DAE assets are up on Guthub
 
 ### Version numbers matter
+
+When I first wrote this blog post I was using r135 of threejs.
 
 ## 1 - First version of this inverted normals sphere DAE file example
 
