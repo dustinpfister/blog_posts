@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 990
-updated: 2022-06-02 12:12:08
-version: 1.16
+updated: 2022-06-02 12:20:12
+version: 1.17
 ---
 
-As of late I have been editing some of my older threejs content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related subjects and alternatives. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use with a cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved, and I have a lot of pots boiling on top of this that makes me want to look for a kind of simple place holder solution for now. There are a lot of issues that come up when trying to make one of these cube textures, for one thing I need to start with a texture that is seamless in all directions, and on top of that I need to have a way to mutate the state of the texture so that it does not look like I am in inside a cube.
+As of late I have been editing some of my older [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related subjects and alternatives. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use with a cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved, and I have a lot of pots boiling on top of this that makes me want to look for a kind of simple place holder solution for now. There are a lot of issues that come up when trying to make one of these cube textures, for one thing I need to start with a texture that is seamless in all directions, and on top of that I need to have a way to mutate the state of the texture so that it does not look like I am in inside a cube.
 
 While I look into the subject of making these kinds of textures the thought occurred that there should be more than one way to go about doing this sort of thing, such as just having a sphere and inverting the normals attribute so that the front side of the sphere is the inside of the sphere. Then there is making a texture to use with the inner surface of this sphere, and making all of this part of a DAE file that I can then just load, scale up as needed, and have fixed at the center of the scene object. I can then have a situation in which the camera and all additional objects of interest are inside this kind of sky sphere, and I can then just draw on the surface of this sphere as a way to create a kind of background for one or more over all projects. This is then a post on a [threejs example](/2021/02/19/threejs-examples/) in which I am doing this as an alternative way of making a kind of cube texture.
 
@@ -38,6 +38,10 @@ When I first wrote this blog post I was using r135 of threejs.
 In this section I will be going over what I have together thus far when it comes to the source code of this example. In this section I am just going over the source code as the state of the sphere as well as the state with textures is all something that I have worked out in an external dae file that I am loading with my DAE tools module that I worked out in another example.
 
 ### 1.1 - The main javaScript file
+
+In the main javaScript file of this example I am creating my scene object, camera, renderer, and light source just like that of any other typical threejs example. I am then also working out an animation loop in which I will want to have a camera just look around as a way to just make sure that the end result of what I am making looks okay at least.
+
+The main thing that stands out as far as this example goes is that I am calling the load one method of my DAE tools module that I made in a previous example. I will be going over a copy of the source code of this module in the next sub section, but for now the main thing here is that this is just the way that I thus far like to load not just a dae file, but also any additional textures that the dae file needs to load also. This load one method will return a promise that should resolve when the dae file as well as all textures used in the dae file are finished loading.
 
 ```js
 (function () {
