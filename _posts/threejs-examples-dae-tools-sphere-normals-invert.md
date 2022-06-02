@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 990
-updated: 2022-06-02 12:00:31
-version: 1.13
+updated: 2022-06-02 12:05:23
+version: 1.14
 ---
 
 As of late I have been editing some of my older threejs content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related subjects and alternatives. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use with a cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved, and I have a lot of pots boiling on top of this that makes me want to look for a kind of simple place holder solution for now. There are a lot of issues that come up when trying to make one of these cube textures, for one thing I need to start with a texture that is seamless in all directions, and on top of that I need to have a way to mutate the state of the texture so that it does not look like I am in inside a cube.
@@ -16,6 +16,8 @@ While I look into the subject of making these kinds of textures the thought occu
 <!-- more -->
 
 ## Inverting Sphere normals, and what to know before hand
+
+This is an advanced post on the subject of using the javaScript library known as threejs as well as a number of additional assets to create a kind of sky sphere to serve as a kind of background for a threejs project other than that of a solid color or fixed single texture. I am then taking a lot of liberties here and assuming that you have at least a fair amount of experience with threejs, javaScript, and also using blender as a way to create and export DAE files as a preferred way of creating external assets to load into a scene object.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/nznbbT525Mk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
