@@ -5,16 +5,25 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 990
-updated: 2022-06-02 11:43:20
-version: 1.9
+updated: 2022-06-02 11:49:14
+version: 1.10
 ---
 
 As of late I have been editing some of my older threejs content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related topics. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use with a cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved and I have a lot of pots boiling. There are a lot of issues that come up when trying to make one, for one thing I need to start with a texture that is seamless in all directions and on top of that I need to have a way to mutate the state of the texture so that It does not look like I am in inside a cube. While I look into the subject of aiming these kinds of textures though the thought occurred that there should be more than one way to go about doing this sort of thing, such as having a sphere and inverting the normals, then making a texture to use with the inner surface of this sphere. This is then a post on a [threejs example](/2021/02/19/threejs-examples/) in which I am doing this as an alternative way of making a kind of cube texture.
 
 <!-- more -->
 
+## Inverting Sphere normals, and what to know before hand
+
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/nznbbT525Mk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+### This example makes use of the DAE loader that must be added on top of threejs
+
+This example makes use of the DAE file, or Collada File loader that can be found in the threejs repository. I have all ready [wrote a blog post on this DAE loader a while back](/2021/04/30/threejs-dae-loader/) and thus assume that you know a thing or two about these various additional assets to wokr with in the threejs repository.
+
+### Source code and DAE assets are up on Guthub
+
+### Version numbers matter
 
 ## 1 - First version of this inverted normals sphere DAE file example
 
