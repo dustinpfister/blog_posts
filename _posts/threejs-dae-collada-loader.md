@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2022-04-01 16:23:16
-version: 1.30
+updated: 2022-06-03 11:39:52
+version: 1.31
 ---
 
-I would like to look into the various external file formats more that I can use with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file format. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files, so it would seem to be a good choice just for that reason alone for starters. Aside from easy exporting, and importing with blender, this DAE format uses an XML schema as a way to store data for all objects in a blender project also. For me that is another good reason why I should go with this one as it is a plain text file format that means that in a pinch I can edit a few things here and there with a plain old text editor if I need to for some reason.
+I would like to look into the various external file formats more that I can use with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file format. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is a format option that I can use out of the box in [blender](https://www.blender.org/) to export files, so it would seem to be a good choice just for that reason alone for starters. Aside from easy exporting, and importing with blender, this DAE format uses an XML schema as a way to store data for the state of an over all scene export as well. For me that is another good reason why I should go with this one as it is a plain text file format that means that in a pinch I can edit a few things here and there with a plain old text editor if I need to for some reason. Also it allows for me to structure things in a way in which I can reused textures and so forth rather than having everything packed together in a single binary format.
 
 Once I have a Collada file exported from blender it is then just a question of how to load that file into a three.js scene with a little javaScript code. The Collada file loader is not built into three.js itself, but it can be added by way of an external file that can be found in the examples folder of the three.js github repository. The DAE loader is fairly easy to use, but there are still just a few things here and there to be aware of that call for a post on this subject.
 
