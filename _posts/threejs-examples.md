@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-06-06 12:05:47
-version: 1.59
+updated: 2022-06-06 12:09:16
+version: 1.60
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -82,6 +82,8 @@ This is an example that I worked out that is an attempt at a 3d view for my Mr S
 If I get a solid idea for the core of what the game should be I might like to experiment with a 3d view for the game, so this example is just that.
 
 ### [ 2.15 - Lines Sphere Circles](/2022/06/03/threejs-examples-lines-sphere-circles/) 
+
+I wanted a module that will return a group where each child is an instance of a three line that is one of many circles that compose a sphere like shape. I can then work out a number of ways to create animations from there with addtional code.
 
 ### [ 2.16 - Vector3 apply Euler and lookAt](/2022/05/06/threejs-examples-lookat-with-apply-euler/) 
 
