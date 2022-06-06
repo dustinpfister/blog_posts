@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-06-06 12:28:54
-version: 1.9
+updated: 2022-06-06 12:33:03
+version: 1.10
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a sphere like shape. So the general idea is to make a javaScript module that has a create method that will return a group of lines, where each line is one circle that forms something that will look like a sphere. I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations.
@@ -20,6 +20,10 @@ This is a post on some javaScript code built on top of the library known as thre
 ### Read up more on the THREE.Line constructor
 
 In this example I am creating an instance of THREE.Group and adding a bunch of Lines as children for this group. The THREE.Line object is one of several alternative options to the ushual THREE.Mesh object when it comes to adding objects to a scene that contain some kind of content.
+
+### Check out Buffer geometry and Vector3 classes
+
+In this example I am creating an array of Vector3 class instances and then passing this array to the set from points method of the buffer geometry class as a way to create a geometry. I am then passing the resulting geometry along with a line material as arguments of the three line constructor. So then there is taking a moment tot read up more on the buffer geometry class as well as the Vetor3 class if yo have not done so before hand. There are a lot of useful methods in the buffer geometry class such as this set from points method, and the Vector3 class also has a lot of great stuff to work with when it comes to playing around with vectors.
 
 ### The source code is also on Github
 
