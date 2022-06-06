@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-06-06 12:01:16
-version: 1.2
+updated: 2022-06-06 12:02:22
+version: 1.3
 ---
 
-When it comes to making lines in threejs I wanted to make an example in which I have a collection of lines that form a sphere like shape. So the general idea is to make a javaScript module that has a create method that will return a group of lines, where each line is one circle that forms something that will look like a sphere. I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations.
+When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a sphere like shape. So the general idea is to make a javaScript module that has a create method that will return a group of lines, where each line is one circle that forms something that will look like a sphere. I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations.
 
 <!-- more -->
 
