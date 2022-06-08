@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-06-08 12:25:12
-version: 1.13
+updated: 2022-06-08 12:36:56
+version: 1.14
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a sphere like shape. So the general idea is to make a javaScript module that has a create method that will return a group of lines, where each line is one circle that forms something that will look like a sphere. I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations.
@@ -127,6 +127,8 @@ loop();
 In the first revision of this example I got the basic idea of what I wanted working okay, but I wanted to make at least one more additional revision of this example to further refine the core idea here. In the first version of the example I have all my code in a single javaScript file which is fine when first starting out with an idea but when it comes to making some kind of example that is a little more potable the next step is to make a kind of module with what I worked out and that is what I did in this first revision of the example.
 
 ### 2.1 - A stand alone module for this
+
+The javaScript module that I then made based off of my first version of this example is then a module that has just two public functions for now. The public methods have to do with creating a group that is an array of lines that from the sphere like shape, and the other public method has to do with setting the state of the lines by way of set by frame method.
 
 ```js
 //******** **********
@@ -272,6 +274,8 @@ var LinesSphereCircles = (function(){
 ```
 
 ### 2.2 - Main javascript file demo
+
+When it comes to my main javaScript file now I can now just call a few lines of code to create a group of lines.
 
 ```js
 //******** **********
