@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-06-08 12:52:58
-version: 1.16
+updated: 2022-06-08 12:59:45
+version: 1.17
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a sphere like shape. So the general idea is to make a javaScript module that has a create method that will return a group of lines, where each line is one circle that forms something that will look like a sphere. I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations.
@@ -276,6 +276,8 @@ var LinesSphereCircles = (function(){
 ### 2.2 - Main JavaScript file demo
 
 When it comes to my main javaScript file now I can now just call a few lines of code to create a group of lines using the module rather than having it all in one file. So then after setting up the usual scene object and various other usual suspects I can then just call the create method of my Line Sphere Circles module. When doing so I can now provide a whole bunch of options that can be used to adjust things like the array of colors to use for the lines, the width of the lines for browsers that support thicker lines, and so forth.
+
+One of the coolest feature thus far though is the for point option that I can use to mutate the state of the array of points to use to create the lines. I have a few built in options for this that I ca use by providing a string for the name of the built in for point method, but I can also work out custom methods as needed as well by using a function for the value of the option. In this demo of the module I cam also using my set by frame method as a way to mutate the state of a group of lines that uses the built in sea shell for point method that I made while playing around with things.
 
 ```js
 //******** **********
