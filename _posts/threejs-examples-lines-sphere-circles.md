@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-06-08 12:36:56
-version: 1.14
+updated: 2022-06-08 12:50:34
+version: 1.15
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a sphere like shape. So the general idea is to make a javaScript module that has a create method that will return a group of lines, where each line is one circle that forms something that will look like a sphere. I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations.
@@ -273,9 +273,9 @@ var LinesSphereCircles = (function(){
 }());
 ```
 
-### 2.2 - Main javascript file demo
+### 2.2 - Main JavaScript file demo
 
-When it comes to my main javaScript file now I can now just call a few lines of code to create a group of lines.
+When it comes to my main javaScript file now I can now just call a few lines of code to create a group of lines using the module rather than having it all in one file. So then after setting up the usual scene object and various other usual suspects I can then just call the create method of my Line Sphere Circles module.
 
 ```js
 //******** **********
@@ -293,8 +293,20 @@ document.getElementById('demo').appendChild(renderer.domElement);
 //******** **********
 // LINES
 //******** **********
+ 
+// plain
+var g1 = LinesSphereCircles.create({ maxRadius: 4, pointsPerCircle: 20 });
+g1.position.set(-10,0,0)
+scene.add(g1);
+ 
+// seeded random
+var g2 = LinesSphereCircles.create({ maxRadius: 8, forPoint: 'seededRandom' });
+g2.position.set(-5,-2,-25)
+scene.add(g2);
+ 
+// seashell
 var opt = {
-    circleCount: 10,
+    circleCount: 20,
     maxRadius: 4,
     pointsPerCircle: 30,
     colors: [0x004444, 0x00ffff],
@@ -304,8 +316,8 @@ var opt = {
         opt.minRadius = 1 + 3 * bias;
     }
 };
-var g = LinesSphereCircles.create(opt);
-scene.add(g);
+var g3 = LinesSphereCircles.create(opt);
+scene.add(g3);
  
 //******** **********
 // LOOP
@@ -320,9 +332,7 @@ var loop = function () {
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if(secs > 1 / fps){
- 
-        LinesSphereCircles.setByFrame(g, frame, frameMax, opt)
- 
+        LinesSphereCircles.setByFrame(g3, frame, frameMax, opt)
         renderer.render(scene, camera);
         frame += fps * secs;
         frame %= frameMax;
