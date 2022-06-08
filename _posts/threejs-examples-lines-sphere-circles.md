@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-06-06 12:36:28
-version: 1.12
+updated: 2022-06-08 12:25:12
+version: 1.13
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a sphere like shape. So the general idea is to make a javaScript module that has a create method that will return a group of lines, where each line is one circle that forms something that will look like a sphere. I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations.
@@ -121,6 +121,213 @@ var loop = function () {
 };
 loop();
 ```
+
+## 2 - Stand alone module, and for point methods for mutation of points
+
+In the first revision of this example I got the basic idea of what I wanted working okay, but I wanted to make at least one more additional revision of this example to further refine the core idea here. In the first version of the example I have all my code in a single javaScript file which is fine when first starting out with an idea but when it comes to making some kind of example that is a little more potable the next step is to make a kind of module with what I worked out and that is what I did in this first revision of the example.
+
+### 2.1 - A stand alone module for this
+
+```js
+//******** **********
+// Lines sphere circles module - from THREEJS-EXAMPLES-LINES-SPHERE-CIRCLES ( r1 )
+// By Dustin Pfister : https://dustinpfister.github.io/
+//******** **********
+var LinesSphereCircles = (function(){
+    //******** **********
+    // BUILT IN "forPoint" METHODS
+    //******** **********
+    var forPoint = {};
+    // seeded random for point method example
+    forPoint.seededRandom = function(v, s, opt){
+        // min and max radius used
+        opt.minRadius = opt.minRadius === undefined ? 0.5: opt.minRadius;
+        var scalar = opt.minRadius + (opt.maxRadius - opt.minRadius) * THREE.MathUtils.seededRandom();
+        return v.clone().normalize().multiplyScalar(scalar);
+    };
+    // seaShell method
+    forPoint.seaShell = function(v, s, opt){
+        opt.minRadius = opt.minRadius === undefined ? 1.5: opt.minRadius;
+        var scalar =  opt.minRadius + (opt.maxRadius - opt.minRadius) * s.cPer;
+        return v.clone().normalize().multiplyScalar(scalar);
+    };
+    //******** **********
+    // HELPER FUNCTIONS
+    //******** **********
+    // createSphereCirclePoints - return an array of Vector3 instances that is
+    // just one circle for an over all sphere
+    //api.createSphereCirclePoints = function(opt, maxRadius, circleCount, circleIndex, pointsPerCircle){
+    var createSphereCirclePoints = function(circleIndex, opt){
+        // options object
+        opt = opt || {};
+        opt.r1 = opt.r1 === undefined ? 1 : opt.r1;
+        opt.r2 = opt.r2 === undefined ? 1 : opt.r2;
+        opt.maxRadius = opt.maxRadius === undefined ? 1: opt.maxRadius;
+        opt.circleCount = opt.circleCount === undefined ? 4: opt.circleCount;
+        opt.pointsPerCircle = opt.pointsPerCircle === undefined ? 10: opt.pointsPerCircle;
+        opt.forPoint = opt.forPoint || null;
+        // if opt.forPoint is a string use a built in for point method
+        if(typeof opt.forPoint === 'string'){
+            opt.forPoint = forPoint[opt.forPoint];
+        }
+        opt.forOpt = opt.forOpt || null;
+        // the current index for this circle over all circles
+        circleIndex = circleIndex || 0;
+        // create points
+        var points = [];
+        var s = {};
+        s.sPer = circleIndex / opt.circleCount;
+        s.radius = Math.sin( Math.PI * opt.r1 * s.sPer ) * opt.maxRadius;
+        s.y = Math.cos( Math.PI * opt.r2 * s.sPer ) * opt.maxRadius;
+        s.i = 0;
+        // buch points for the current circle
+        while(s.i < opt.pointsPerCircle){
+            // might want to subtract 1 or 0 for this cPer expression
+            s.cPer =  s.i / ( opt.pointsPerCircle - 1 );
+            s.radian = Math.PI * 2 * s.cPer;
+            s.v = new THREE.Vector3();
+            s.v.x = Math.cos(s.radian) * s.radius;
+            s.v.y = s.y;
+            s.v.z = Math.sin(s.radian) * s.radius;
+            // use a for point method if one is given
+            if(opt.forPoint){
+                points.push( opt.forPoint(s.v, s, opt) );
+            }else{
+                points.push(s.v);
+            }
+            s.i += 1;
+        }
+        return points;
+    };
+    // create a single THREE.Line for a collection of circles
+    var createLine = function(points, color, linewidth){
+        color =  color || 0xffffff;
+        linewidth = linewidth || 0;
+        var geometry = new THREE.BufferGeometry().setFromPoints(points);
+        return new THREE.Line(
+            geometry,
+            new THREE.LineBasicMaterial({
+                color: color,
+                linewidth: linewidth
+            })
+        );      
+    };
+    // parseOpt
+    var parseOpt = function(opt){
+        opt = opt || {};
+        opt.circleCount = opt.circleCount === undefined ? 10 : opt.circleCount;
+        opt.colors = opt.colors || [0xff0000,0x00ff00,0x0000ff];
+        opt.linewidth = opt.linewidth === undefined ? 1 : opt.linewidth;
+        return opt;
+    };
+    //******** **********
+    // CREATE GROUP
+    //******** **********
+    // public api
+    var api = {};
+    // create a group where each child is a THREE.Line for a circle in the sphere of circles
+    api.create = function(opt){
+        opt = parseOpt(opt);
+        var lineGroup = new THREE.Group();
+        lineGroup.userData.opt = opt;
+        var i = 1;
+        while(i < opt.circleCount + 1){
+            // create points for this circle
+            var points = createSphereCirclePoints(i, opt);
+            // create Line and add to group
+            lineGroup.add( createLine(points, opt.colors[i % opt.colors.length], opt.linewidth) );
+            i += 1;
+        };
+        return lineGroup;
+    };
+    // set state of lineGroup by frame / maxFrame, and optional new opt object
+    api.setByFrame = function(lineGroup, frame, frameMax, opt){
+        frame = frame === undefined ? 0 : frame;
+        frameMax = frameMax === undefined ? 30 : frameMax;
+        opt = opt || lineGroup.userData.opt;
+        opt = lineGroup.userData.opt = parseOpt(opt);
+        var i = 0;
+        while(i < opt.circleCount){
+            // mutate options before calling createSphereCirclePoints
+            if(opt.forOpt){
+                var per = frame / frameMax,
+                bias = 1 - Math.abs(0.5 - per) / 0.5;
+                opt.forOpt(opt, per, bias, frame, frameMax);
+            }
+            // create points for this circle
+            var points = createSphereCirclePoints(i + 1, opt),
+            line = lineGroup.children[i];
+            line.geometry.setFromPoints(points);
+            //line.material.color = opt.colors[i % opt.colors.length];
+            //line.material.linewidth = opt.linewidth;
+            // create Line and add to group
+            //lineGroup.add( createLine(points, opt.colors[i % opt.colors.length], opt.linewidth) );
+            i += 1;
+        };
+ 
+    };
+    // return public API
+    return api;
+}());
+```
+
+### 2.2 - Main javascript file demo
+
+```js
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+var scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// LINES
+//******** **********
+var opt = {
+    circleCount: 10,
+    maxRadius: 4,
+    pointsPerCircle: 30,
+    colors: [0x004444, 0x00ffff],
+    linewidth: 4,
+    forPoint: 'seaShell',
+    forOpt: function(opt, per, bias, frame, frameMax){
+        opt.minRadius = 1 + 3 * bias;
+    }
+};
+var g = LinesSphereCircles.create(opt);
+scene.add(g);
+ 
+//******** **********
+// LOOP
+//******** **********
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+var fps = 15,
+lt = new Date(),
+frame = 0,
+frameMax = 300;
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps){
+ 
+        LinesSphereCircles.setByFrame(g, frame, frameMax, opt)
+ 
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
+```
+
 
 ## Conclusion
 
