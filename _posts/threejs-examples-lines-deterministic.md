@@ -5,10 +5,393 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2022-06-10 14:59:46
-version: 1.0
+updated: 2022-06-11 11:08:13
+version: 1.1
 ---
 
 This week the focus was just on working out one new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a group of lines. I did a lot of other things this week of coarse that has to do with playing around with tube geometry, but that might be a matter for another future threejs example that will be similar to this one. This example is just a project in which I continued with my lat threejs example that also had to do with creating a group of lines but the goal was just to create a group of lines that form a sphere of sorts and then mutate things from there. With this example what I wanted to do is make a similar system of sorts, but to make it so that a group of lines that form a sphere is just one of many options.
 
 <!-- more -->
+
+## 1 - First version of the line group module and some plugins for types
+
+### 1.1 - The line group module itself
+
+```js
+//******** **********
+// Lines Grpoup module - ( r0 )
+// By Dustin Pfister : https://dustinpfister.github.io/
+//******** **********
+var LineGroup = (function(){
+    var DEFAULT_FORLINESTYLE = function(m, i){
+        m.linewidth = 4;
+        m.color = new THREE.Color( ['red', 'lime', 'white', 'blue', 'purple'][ i % 5] );
+    };
+    //******** **********
+    // BUILT IN TYPE(S)
+    //******** **********
+    var TYPES = {};
+    // just a 'tri' built in type will be built in for now to mainly serve as an example
+    // on how to make custom types built into the module itself
+    TYPES.tri = {
+        key: 'tri',
+        // default options such as the number of lines, and how many points per line
+        // these are options that should be given just once when creating the line group
+        opt: {
+            lineCount: 3,
+            pointsPerLine: 80,
+            forLineStyle: function(m, i){
+                m.linewidth = 4;
+                m.color = new THREE.Color( 'lime' );
+            }
+        },
+        // base data for the lines that can be changed when calling set method these are then
+        // values that define starting conditions for a determinstic animation
+        baseData:{
+            // the three home vectors to use that define the starting positions
+            // of the three Vectors of the triangle
+            homeVectors: [
+                new THREE.Vector3(3, 0, 0),
+                new THREE.Vector3(-3, 0, 3),
+                new THREE.Vector3(-3, 0, -3)
+            ],
+            lerpVectors: [],
+            rBase: 2,
+            rDelta: 8
+        },
+        // called just once in LineGroup.create before lines are created, this can be used to
+        // generate options once rather than on a frame by frame basis
+        create: function(opt, lineGroup){
+        },
+        // for frame method used to set the current 'state' with 'baseData', and 'frameData' objects
+        forFrame : function(state, baseData, frameData, lineGroup){
+            var ud = lineGroup.userData;
+            var i = 0, len = ud.opt.lineCount;
+            // for this tri type I want to create an array of three Vectors
+            // based on the home vectors of the base data
+            state.vectors = [];
+            state.t = 1 - frameData.bias;
+            state.rCount = baseData.rBase + baseData.rDelta * frameData.bias;
+            while(i < len){
+                var v = state.vectors[i] = new THREE.Vector3();
+                var hv = baseData.homeVectors[i] || new THREE.VEctor3();
+                var lv = baseData.lerpVectors[i] || new THREE.Vector3();
+                v.copy(hv).lerp(lv, frameData.bias)
+                i += 1;
+            }
+        },
+        // create/update points of a line in the line group with 'current state' object
+        forLine : function(points, state, lineIndex, lineCount, lineGroup){
+            var ud = lineGroup.userData;
+            var i = 0, len = ud.opt.pointsPerLine;
+            // start and end points
+            var vs = state.vectors[lineIndex],
+            ve = state.vectors[ (lineIndex + 1) % 3 ];
+            while(i < len){
+                var pPer = i / (len - 1),
+                pBias = 1 - Math.abs(0.5 - pPer) / 0.5;
+                var v1 = new THREE.Vector3();
+                var dx = 0,
+                dy = 3 * Math.cos( Math.PI * state.rCount *  pBias) * state.t,
+                dz = 0;
+                v1.copy(vs).lerp( ve, i / ( len - 1 ) ).add(new THREE.Vector3(dx, dy, dz));
+                points[i].copy(v1);
+                i += 1;
+            }
+        }
+    };
+    //******** **********
+    // PUBLIC API
+    //******** **********
+    var api = {};
+    // create a type
+    api.create = function(typeKey, opt){
+        typeKey = typeKey || 'tri';
+        typeObj = TYPES[typeKey];
+        // make the line group
+        var lineGroup = new THREE.Group();
+        // the opt object
+        // use given option, or default options to create an opt object
+        opt = opt || {};
+        Object.keys( typeObj.opt ).forEach(function(key){
+            opt[key] = opt[key] || typeObj.opt[key]; 
+        });
+        // create blank points
+        var groupPoints = [];
+        var lineIndex = 0;
+        while(lineIndex < opt.lineCount){
+            var pointIndex = 0;
+            var points = [];
+            while(pointIndex < opt.pointsPerLine){
+                points.push( new THREE.Vector3() )
+                pointIndex += 1;
+            }
+            groupPoints.push(points);
+            lineIndex += 1;
+        }
+        // user data object
+        var ud = lineGroup.userData; 
+        ud.typeKey = typeKey;
+        ud.opt = opt;
+        ud.groupPoints = groupPoints;
+        ud.forLineStyle = opt.forLineStyle || DEFAULT_FORLINESTYLE;
+        // call create hook
+        typeObj.create(opt, lineGroup);
+        // call set for first time
+        api.set(lineGroup, 0, 30, {});
+        return lineGroup;
+    };
+    // load a type
+    api.load = function(typeObj){
+        typeObj.baseData = typeObj.baseData || {}; 
+        TYPES[typeObj.key] = typeObj;
+    };
+    // set a line group with the given frame, maxFrame, and initState
+    api.set = function(lineGroup, frame, frameMax, baseData){
+        var ud = lineGroup.userData,
+        typeKey = ud.typeKey,
+        typeObj = TYPES[typeKey];
+        // parse baseData
+        baseData = ud.baseData = baseData || {};
+        Object.keys( typeObj.baseData ).forEach(function(key){
+            baseData[key] = baseData[key] === undefined ? typeObj.baseData[key]: baseData[key]; 
+        });
+        // state object
+        var state = {};
+        // frame data object
+        var frameData = {
+            frame: frame,
+            frameMax: frameMax
+        };
+        frameData.per = frameData.frame / frameData.frameMax;
+        frameData.bias = 1 - Math.abs(0.5 - frameData.per) / 0.5;
+        // call for frame method of type to update state object
+        typeObj.forFrame(state, baseData, frameData, lineGroup);
+        // create or update lines
+        ud.groupPoints.forEach(function(points, lineIndex){
+            // call for line to update points
+            typeObj.forLine(points, state, lineIndex, ud.opt.lineCount, lineGroup);
+            // get current line            
+            var line = lineGroup.children[lineIndex];
+            // no line? create and add it
+            if( !line ){
+                // create and add the line
+                var geo = new THREE.BufferGeometry();
+                // calling set from points once, when making the line
+                // for the first time should work okay
+                geo.setFromPoints(points);
+                // create the line for the first time
+                line = new THREE.Line(geo, new THREE.LineBasicMaterial());
+                // !?!? Using the add method is needed, but I might still need to make sure
+                // that the index numbers are as they should be maybe...
+                //lineGroup.children[lineIndex] = line;
+                lineGroup.add(line);
+            }
+            // so then I have a line and I just need to update the position attribute
+            // but I can not just call the set from points method as that will result in
+            // a loss of context error
+            var geo = line.geometry,
+            pos = geo.getAttribute('position');
+            points.forEach(function(v, i){
+                pos.array[i * 3] = v.x;
+                pos.array[i * 3 + 1] = v.y;
+                pos.array[i * 3 + 2] = v.z;
+            });
+            pos.needsUpdate = true;
+            ud.forLineStyle(line.material, lineIndex, ud)
+            
+        });
+    };
+    // return public API
+    return api;
+}());
+```
+
+### 1.2 - Circle stack plug-in
+
+```js
+//******** **********
+// Lines Group circleStack plug-in for line-group.js in the threejs-examples-lines-deterministic project
+// By Dustin Pfister : https://dustinpfister.github.io/
+LineGroup.load({
+    key: 'circleStack',
+    // default options such as the number of lines, and how many points per line
+    opt: {
+        lineCount: 5,
+        pointsPerLine: 30
+    },
+    baseData:{
+        radiusMax : 3,
+        yDelta: 0.25,
+        waveCount: 2
+    },
+    // called just once in LineGroup.create before lines are created
+    create: function(opt, lineGroup){
+    },
+    // for frame method used to set the current 'state' with 'baseData', and 'frameData'
+    forFrame : function(state, baseData, frameData, lineGroup){
+        state.radius = [];
+        state.yDelta = baseData.yDelta;
+        // figure radius and other state values for each circle
+        var ud = lineGroup.userData;
+        var i = 0, len = ud.opt.lineCount;
+        var rDiff = baseData.radiusMax - baseData.radiusMin;
+        while(i < len){
+            var radian = Math.PI * baseData.waveCount * ( ( 1 / len * i + frameData.per) % 1);
+            state.radius[i] = Math.cos(radian) * baseData.radiusMax;
+            i += 1;
+        }
+    },
+    // create/update points of a line in the line group with 'current state' object
+    forLine : function(points, state, lineIndex, lineCount, lineGroup){
+         var ud = lineGroup.userData;
+         var i = 0, len = ud.opt.pointsPerLine;
+         while(i < len){
+             var v1 = new THREE.Vector3();
+             var cPer = i / (len - 1);
+             var r = Math.PI * 2 * cPer; 
+             v1.x = Math.cos(r) * state.radius[lineIndex];
+             v1.z = Math.sin(r) * state.radius[lineIndex];
+             v1.y = state.yDelta * lineIndex;
+             points[i].copy(v1);
+             i += 1;
+         }
+    }
+});
+```
+
+### 1.2 - Sphere Circles plug-in
+
+```js
+//******** **********
+// Lines Group sphereCircles plug-in for line-group.js in the threejs-examples-lines-deterministic project
+// By Dustin Pfister : https://dustinpfister.github.io/
+LineGroup.load({
+    key: 'sphereCircles',
+    // default options such as the number of lines, and how many points per line
+    opt: {
+        lineCount: 15,
+        pointsPerLine: 30,
+        forLineStyle: function(m, i){
+            m.linewidth = 4;
+            m.color = new THREE.Color( ['lime', 'cyan', 'green'][ i % 3] );
+        }
+    },
+    baseData:{
+        maxRadius: 4,
+        yAdjust: 1,
+        radiusAdjust: 0.25,
+        r1: 1,
+        r2: 1
+    },
+    // called just once in LineGroup.create before lines are created
+    create: function(opt, lineGroup){
+    },
+    // for frame method used to set the current 'state' with 'baseData', and 'frameData'
+    forFrame : function(state, baseData, frameData, lineGroup){
+        state.circleCount = lineGroup.userData.opt.lineCount;
+        state.maxRadius = baseData.maxRadius - baseData.maxRadius * baseData.radiusAdjust * frameData.bias;
+        state.r1 = baseData.r1;
+        state.r2 = baseData.r2;
+        state.yAdjust = baseData.yAdjust * frameData.bias;
+        // figure radius and other state values for each circle
+        var ud = lineGroup.userData;
+        var i = 0, len = ud.opt.lineCount;
+        while(i < len){
+            i += 1;
+        }
+    },
+    // create/update points of a line in the line group with 'current state' object
+    forLine : function(points, state, lineIndex, lineCount, lineGroup){
+         var ud = lineGroup.userData;
+         var i = 0, len = ud.opt.pointsPerLine;
+        var s = {};
+        s.sPer = (lineIndex + 0) / state.circleCount;
+        s.radius = Math.sin( Math.PI * state.r1 * s.sPer ) * state.maxRadius;
+        s.y = Math.cos( Math.PI * state.r2 * s.sPer ) * state.maxRadius * state.yAdjust;
+        s.i = 0;
+         while(i < len ){
+            s.cPer =  i / ( len - 1 );
+            s.radian = Math.PI * 2 * s.cPer;
+            s.v = new THREE.Vector3();
+            s.v.x = Math.cos(s.radian) * s.radius;
+            s.v.y = s.y;
+            s.v.z = Math.sin(s.radian) * s.radius;
+             points[i].copy(s.v);
+             i += 1;
+         }
+    }
+});
+```
+
+### 1.3 - Main javaScript file
+
+```js
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+var scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(10, 10, 0);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// LINES GROUP(s)
+//******** **********
+// built in 'tri' type
+var lg1Base = {
+    homeVectors: [
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, 0, 0)
+    ], 
+    lerpVectors: [
+        new THREE.Vector3(-5, 0, -5),
+        new THREE.Vector3(-5, 0, 5),
+        new THREE.Vector3(5, 0, 0)
+    ],
+    rBase: 0,
+    rDelta: 2
+};
+var lg1 = LineGroup.create();
+lg1.position.set(3, 0, 0);
+lg1.scale.set(0.5, 0.5, 0.5)
+scene.add(lg1);
+// the 'circleStack' type
+var lg2 = LineGroup.create('circleStack', { lineCount: 20 } );
+lg2.position.set(-5, 0, -5);
+scene.add(lg2);
+// the 'sphereCircles' type base off my other lines example
+var lg3 = LineGroup.create('sphereCircles', { } );
+lg3.position.set(-5, 0, 5);
+scene.add(lg3);
+//******** **********
+// LOOP
+//******** **********
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+var fps = 30,
+lt = new Date(),
+frame = 0,
+frameMax = 90;
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps){
+        // update line group (s)
+        LineGroup.set(lg1, frame, frameMax, lg1Base);
+        LineGroup.set(lg2, frame, frameMax, {});
+        LineGroup.set(lg3, frame, frameMax, {});
+        // render
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
+```
