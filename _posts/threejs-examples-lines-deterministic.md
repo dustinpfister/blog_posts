@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2022-06-11 11:22:58
-version: 1.5
+updated: 2022-06-11 11:26:10
+version: 1.6
 ---
 
 This week the focus was just on working out one new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a group of lines. I did a lot of other things this week of coarse that has to do with playing around with tube geometry, but that might be a matter for another future threejs example that will be similar to this one. This example is just a project in which I continued with my lat threejs example that also had to do with creating a group of lines but the goal was just to create a group of lines that form a sphere of sorts and then mutate things from there. With this example what I wanted to do is make a similar system of sorts, but to make it so that a group of lines that form a sphere is just one of many options.
@@ -267,6 +267,8 @@ LineGroup.load({
 ```
 
 ### 1.2 - Sphere Circles plug-in
+
+The whole idea of this project was to make a module that provides a way to create a more flexible from of what I worked out for my lines sphere circles example where the collection of lines that I made for that example is just one way to go about using the module. So then I should be able to just quickly create a plug-in that is more of less the same code that I worked out for that example as a plug-in for this line group module and sure enough here it is and it seems to work fine just far.
 
 ```js
 //******** **********
