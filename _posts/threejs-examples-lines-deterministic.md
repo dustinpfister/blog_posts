@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2022-06-11 11:08:13
-version: 1.1
+updated: 2022-06-11 11:15:21
+version: 1.2
 ---
 
 This week the focus was just on working out one new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a group of lines. I did a lot of other things this week of coarse that has to do with playing around with tube geometry, but that might be a matter for another future threejs example that will be similar to this one. This example is just a project in which I continued with my lat threejs example that also had to do with creating a group of lines but the goal was just to create a group of lines that form a sphere of sorts and then mutate things from there. With this example what I wanted to do is make a similar system of sorts, but to make it so that a group of lines that form a sphere is just one of many options.
@@ -395,3 +395,8 @@ var loop = function () {
 };
 loop();
 ```
+
+## Conclusion
+
+This lines group module is shaping up to be what it is that I had in kind when I started working on it, but I am not sure if I would want to put much more time into further refining this project or not. I am sure that I would if I end up using this on a day to day basis that goes without saying, but I am not sure of that will end up being the case with this project or not. In the event that I do start using something like this on a day to day basic I am currently of the mindset that I might want to do so with yet another example that is similar to this one, only it will involve the use of TubeGeometry rather than that of lines as there is a lot more that can be done with that compared to lines.
+
