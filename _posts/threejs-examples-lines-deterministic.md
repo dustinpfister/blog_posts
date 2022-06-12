@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2022-06-12 13:06:26
-version: 1.9
+updated: 2022-06-12 13:10:24
+version: 1.10
 ---
 
 This week the focus was just on working out one new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a group of lines. I did a lot of other things this week of coarse that has to do with playing around with tube geometry, but that might be a matter for another future threejs example that will be similar to this one. This example is just a project in which I continued with my lat threejs example that also had to do with creating a group of lines but the goal was just to create a group of lines that form a sphere of sorts and then mutate things from there. With this example what I wanted to do is make a similar system of sorts, but to make it so that a group of lines that form a sphere is just one of many options.
@@ -14,6 +14,8 @@ This week the focus was just on working out one new [threejs example](/2021/02/1
 <!-- more -->
 
 ## This Deterministic line group module threejs example and what to know first
+
+This is one of many threejs example that I have made after acquiring a fair amount of experience before hand with threejs as well as with javaScript in general. So in other words this is not a post for developers that might be new to threejs and client side javaScript, and as such I will not be getting into basic things about the library and language that you should know before hand. However I do still use these opening sections to cover a few things that you might want to read up more on before continuing with the rest of this post.
 
 ### Source code is also up on Github
 
