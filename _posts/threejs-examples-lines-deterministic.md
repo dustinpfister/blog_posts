@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2022-06-12 13:11:31
-version: 1.11
+updated: 2022-06-12 13:16:30
+version: 1.12
 ---
 
 This week the focus was just on working out one new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a group of lines. I did a lot of other things this week of coarse that has to do with playing around with tube geometry, but that might be a matter for another future threejs example that will be similar to this one. This example is just a project in which I continued with my lat threejs example that also had to do with creating a group of lines but the goal was just to create a group of lines that form a sphere of sorts and then mutate things from there. With this example what I wanted to do is make a similar system of sorts, but to make it so that a group of lines that form a sphere is just one of many options.
@@ -27,7 +27,7 @@ When I wrote this post I was using r140 of threejs and the code in this post as 
 
 ## 1 - First version of the line group module and some plug-ins for types
 
-In this section I will be going over the source code of the line group module that helper me with the process of creating and updating a collection of lines that are children of a group.
+In this section I will be going over the source code of the line group module that helps me with the process of creating and updating a collection of lines that are children of a group. In additional to the module itself I have also worked out a few types as I am calling them thus far when it comes to objects that define the logic for creating an updating the state of a group of lines. In the module itself I have a single built in line group type to mainly serve as a guide when knowing how to go about making a custom line group for the module.
 
 ### 1.1 - The line group module itself
 
