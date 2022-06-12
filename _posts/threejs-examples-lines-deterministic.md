@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2022-06-12 13:20:59
-version: 1.14
+updated: 2022-06-12 13:25:04
+version: 1.15
 ---
 
 This week the focus was just on working out one new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a group of lines. I did a lot of other things this week of coarse that has to do with playing around with tube geometry, but that might be a matter for another future threejs example that will be similar to this one. This example is just a project in which I continued with my lat threejs example that also had to do with creating a group of lines but the goal was just to create a group of lines that form a sphere of sorts and then mutate things from there. With this example what I wanted to do is make a similar system of sorts, but to make it so that a group of lines that form a sphere is just one of many options.
@@ -15,11 +15,15 @@ This week the focus was just on working out one new [threejs example](/2021/02/1
 
 ## This Deterministic line group module threejs example and what to know first
 
-This is one of many threejs example that I have made after acquiring a fair amount of experience before hand with threejs as well as with javaScript in general. So in other words this is not a post for developers that might be new to threejs and client side javaScript, and as such I will not be getting into basic things about the library and language that you should know before hand. However I do still use these opening sections to cover a few things that you might want to read up more on before continuing with the rest of this post.
+This is one of many threejs example that I have made after acquiring a fair amount of experience before hand with threejs as well as with javaScript in general. So in other words this is not a post for developers that might be [new to threejs](/2018/04/04/threejs-getting-started/) and client side javaScript, and as such I will not be getting into basic things about the library and language that you should know before hand. However I do still use these opening sections to cover a few things that you might want to read up more on before continuing with the rest of this post.
 
 ### Read up more on lines and line materials
 
 The module that I have made that I am writing about can be used to create an instance of a threejs group where each child of the group is an [instance of a line](/2018/04/19/threejs-line). A line in threejs is one alternative to that of the typical [mesh object](/2018/05/04/threejs-mesh/) that is used to add content to an over all scene object.
+
+### Check out more on the buffer geometry class
+
+One major aspect of this module has to do with setting and updating the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of an instance of [buffer geometry](/2021/04/22/threejs-buffer-geometry/) using the set from points method as well as an alternative method that is better for updating the geometry rather than creating it for the first time.
 
 ### Source code is also up on Github
 
