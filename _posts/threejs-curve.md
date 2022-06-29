@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2022-06-29 15:19:23
-version: 1.15
+updated: 2022-06-29 15:21:23
+version: 1.16
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic that can then be used with the tube geometry constructor as the first argument for the function. This geometry can then be use with a mesh object which allows for making line like structures but because it is with mesh object rather than lines objects I can use mesh materials like the basic or phong materials.
@@ -28,6 +28,8 @@ Getting into the use of the curve class and the typically corresponding tube geo
 ## 1 - Basic THREE.Curve and THREE.TubeGeometry example
 
 When it comes to the curve and tube geometry constructors in threejs one has to start somewhere, so for this example I will be doing just that with the THREE.Curve constructor and the tube geometry constructor. For this example I am starting out with the usual features when it comes to things like setting up a scene object, camera, and renderer. In additional the the usual features I am also adding a [light source](/2022/02/25/threejs-light/) as I will be going with the [standard material](/2021/04/27/threejs-standard-material/) for this example when setting  up the mesh object that will use the tube geometry later.
+
+When it comes to using the curve base class I will want to extend the base class and define a constructor as well as a get point method. It is in this get point method that I will be defining the logic that is used to create the curve.
 
 ```js
 //******** **********
@@ -52,7 +54,7 @@ scene.add( new THREE.AmbientLight(0xffffff, 0.05) )
 //******** **********
 // CURVE, TubeGeometry, Mesh
 //******** **********
-// basic cuve class extending three curve
+// basic curve class extending three curve
 class BasicCurve extends THREE.Curve {
     constructor() {
         super();
