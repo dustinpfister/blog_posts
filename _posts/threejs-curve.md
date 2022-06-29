@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2022-06-29 16:04:02
-version: 1.25
+updated: 2022-06-29 16:06:03
+version: 1.26
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic that can then be used with the [tube geometry constructor](https://threejs.org/docs/#api/en/geometries/TubeGeometry) as the first argument for the function. This geometry can then be use with a mesh object which allows for making line like structures but because it is with mesh object rather than lines objects I can use mesh materials like the basic or phong materials.
@@ -143,7 +143,7 @@ renderer.render(scene, camera);
 
 ## 3 - The buffer geometry copy method an a basic animation example using a curve
 
-Thus far I just have some static scene examples of this curve class out of the way, so then I should have at least one example that involves an animation loop then.
+Thus far I just have some static scene examples of this curve class out of the way, so then I should have at least one example that involves an animation loop then. One way to go about doing this might involve creating a new curve object with update arguments in the body of the loop that I can then use to make an updated geometry. In can then make use of the copy method of the buffer geometry instance in the mesh object to copy this update geometry to the geometry object instance of the mesh objects as a way to update the geometry.
 
 ```js
 //******** **********
