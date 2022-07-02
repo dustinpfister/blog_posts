@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2022-07-02 12:28:35
-version: 1.6
+updated: 2022-07-02 12:30:02
+version: 1.7
 ---
 
 Not to long ago I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method of the Vector3 class can be used to transition the state of one vector to another by way of giving a point to transition to and an alpha value between 0 and 1 that is the magnitude to move the point. Lately I thought about using this as a way to lerp the points of a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of one geometry back and forth from one geometry to another.
@@ -100,5 +100,5 @@ So then the core of this idea is to just have a function that I can use to pass 
 
 ## Conclusion
 
-That is one way to make some animation of sorts, not the way as there is a whole lot of other things to write about when it comes to covering some ground with animation in threejs. I have done a little reading on animation clips in threejs and thus far have found that may be the best route to go when it comes to really working out a real model of sorts for one or more projects.
+That is one way to make some animation of sorts, not the way as there is a whole lot of other things to write about when it comes to covering some ground with animation in threejs. I have done a little reading on animation clips in threejs and thus far have found that may be the best route to go when it comes to really working out a real model of sorts for one or more projects. However I have been putting of getting into how to go about getting started with that, and for the moment have been looking into all kinds of various other ways to go about updating the state of a geometry.
 
