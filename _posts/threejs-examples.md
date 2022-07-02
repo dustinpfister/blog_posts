@@ -1,12 +1,12 @@
 ---
-title: 33 threejs examples that showcase many of the features of the library
+title: 34 threejs examples that showcase many of the features of the library
 date: 2021-02-19 14:42:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-06-12 13:06:27
-version: 1.63
+updated: 2022-07-02 12:23:19
+version: 1.64
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -81,79 +81,82 @@ This is an example that I worked out that is an attempt at a 3d view for my Mr S
 
 If I get a solid idea for the core of what the game should be I might like to experiment with a 3d view for the game, so this example is just that.
 
-### [ 2.15 - Lines Group Module ](/2022/06/10/threejs-examples-lines-deterministic/) 
+### [ 2.15 - Lerp position attributes of buffer geometries](/2022/07/01/threejs-examples-lerp-geo/) 
+
+Lerping the positions of one buffer geometry to another one.
+
+### [ 2.16 - Lines Group Module ](/2022/06/10/threejs-examples-lines-deterministic/) 
 
 A more generic kind of line group module compared to another similar example where the goal was to just create a group of lines that from a sphere.
 
-### [ 2.16 - Lines Sphere Circles](/2022/06/03/threejs-examples-lines-sphere-circles/) 
+### [ 2.17 - Lines Sphere Circles](/2022/06/03/threejs-examples-lines-sphere-circles/) 
 
 I wanted a module that will return a group where each child is an instance of a three line that is one of many circles that compose a sphere like shape. I can then work out a number of ways to create animations from there with addtional code.
 
-### [ 2.17 - Vector3 apply Euler and lookAt](/2022/05/06/threejs-examples-lookat-with-apply-euler/) 
+### [ 2.18 - Vector3 apply Euler and lookAt](/2022/05/06/threejs-examples-lookat-with-apply-euler/) 
 
 This is an example that shows something that might prove to be a problem when using the look at method of the object3d class. it is not that the look at method is broken, it is just that it works a certain way that is fine in most cases, but not in others.
 
-### [ 2.18 - Menus with threejs](/2021/12/03/threejs-examples-menus/)
+### [ 2.19 - Menus with threejs](/2021/12/03/threejs-examples-menus/)
 
 If you have not looked into working with a ray caster yet you might want to do so at some point, that truly is the case if you want to make some kind of user interface with threejs among other tasks in which a ray cater comes in handy. Simply put a ray caster is a way to go about finding out if one or more mesh objects have been clicked on by casting a ray from a position such as the position of the camera outward from the camera to get whatever mesh objects come in contact with that ray.
 
-### [ 2.19 - Nested groups](/2021/05/10/threejs-examples-nested-groups/)
+### [ 2.20 - Nested groups](/2021/05/10/threejs-examples-nested-groups/)
 
 An example that is a collection of mesh objects in a group nested in another group that I made just for the hell of it mostly. However I did not make this just for the intrinsic value of doing so, there are a few things that I need to be aware of when it comes to nesting objects within objects mainly when it comes to things like the position attribute and the use of the look at method in the object3d class. In other words there is local position and world space positions and knowing what the difference is between the two.
 
-### [ 2.20 - Object grid Wrap ](/2022/05/20/threejs-examples-object-grid-wrap/)
+### [ 2.21 - Object grid Wrap ](/2022/05/20/threejs-examples-object-grid-wrap/)
 
 I wanted to make a quick simple object grid module type project where I can create this grid of objects that are cloned from an array of source objects and an array of index values for these source objects for each tile in the grid. On top of that the objects will loop around in all directions as I move around as well.
 
-### [ 2.21 - Mutate a plane ](/2021/06/11/threejs-examples-plane-mutate/)
+### [ 2.22 - Mutate a plane ](/2021/06/11/threejs-examples-plane-mutate/)
 
 Here I have a quick example that I worked out where I am mutating the position attribute of a buffer geometry instance created with the plane geometry constructor. This is one of a few examples that I worked out after logging some time learning more about working with the buffer geometry class in general. There is learning how to make a custom geometry from the ground up, but there is also learning how to just adjust a few things with a built in geometry also such as the plane geometry that is a good starting point for this sort of thing.
 
-### [ 2.22 - Position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
+### [ 2.23 - Position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
 
 This is an example where I have worked out a crude yet effective module that can be used to create a special kind of sphere wrap group. The main create method of this sphere wrap group returns a group that of course has a sphere as one of the children, however it then also has a surface group. I then have another public method of this module that will create and add a object wrap group to the surface group and then this object wrap group contains a mesh that will end up being positioned on top of the surface of the sphere.
 
-### [ 2.23 - Scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
+### [ 2.24 - Scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
 This is an example of a module that can be used to shake the whole scene that will work if I do not add the camera to the scene of course. However any object in three.js that is based off of object3d can also be used with this shake module.
 
-### [ 2.24 - Video sequence hooks ](/2022/05/12/threejs-examples-sequence-hooks/)
+### [ 2.25 - Video sequence hooks ](/2022/05/12/threejs-examples-sequence-hooks/)
 
 When it comes to making videos I have found that I like to break down things into what I have come to call sequences.
 
-### [ 2.25  - Mutate a sphere ](/2021/06/10/threejs-examples-sphere-mutate/)
+### [ 2.26  - Mutate a sphere ](/2021/06/10/threejs-examples-sphere-mutate/)
 
 In this example I am just working out a helper method that will just move the position of the top point of a sphere geometry. This is just an example that I worked out after writing a bunch of posts on the buffer geometry class in threejs and when I did so I learned a lot more about what the various attributes are for a geometry class in causing the position attribute. So I thought that I should work out at least on or two more examples that have to do with creat8ng a custom geometry, or just mutating the values of a geometry that is created with one of the built in geometry constructors such a s the sphere geometry constructor.
 
-### [ 2.26 - Source layer 3d](/2022/02/11/threejs-examples-tool-source-layer-3d/) 
+### [ 2.27 - Source layer 3d](/2022/02/11/threejs-examples-tool-source-layer-3d/) 
 
 I wanted to make the first of what might in time be a few tools that are used to create some kind of content such as an image of some kind or so forth. The aim with this example then was to create a kind of art program where I am using threejs to create a scene with one or more dea files that I load into the scene that is drawn as a resource layer. I can then change all kids of values with these objects in the scene including the position, and orientation of the of the camera. I then have one or more additional canvas layers on top of this resource layer that I then draw on free hand, and then desired end product is some kind of 2d image based off of the state of the scene.
 
-### [ 2.27 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
+### [ 2.28 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
 
 This is an example where I am using my simple tree sphere models and just creating a whole bunch of those and placing them around the surface of a sphere. It is then just a basic example of creating a main world type model and then having a whole bunch of instances of another model be a part of this kind of model.
 
-### [ 2.28 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
+### [ 2.29 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
 
 This is a very basic static model of a tree that is just a sphere geometry placed on the top of a box geometry that has dimensions that look like a trunk of a tree. It is then one of the most simplistic models of this kind that I have made thus far, and might prove as a good starting point when it comes to making models this way.
 
-### [ 2.29 - Tree](/2019/07/30/threejs-examples-tree/)
+### [ 2.30 - Tree](/2019/07/30/threejs-examples-tree/)
 
 This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
 
-### [ 2.30 - Waves](/2018/11/14/threejs-examples-waves/) 
+### [ 2.31 - Waves](/2018/11/14/threejs-examples-waves/) 
 
 The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
 
-### [ 2.31 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
+### [ 2.32 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
 
 This is another one of my example that is a kind of model that is created by just having a bunch of mesh objects grouped together. This one is just the first of what might become a few examples that are like my guy one model only the goal is to have a weird walk cycle for them. I might like to have a few more features when it comes to the over all look and function of the weird walk model here, but the main idea is to just have a weird and interesting walk cycle.
 
-### [ 2.32 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
-
+### [ 2.33 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
 This is a more advanced example of the first weird walk guy example, continuing to work on adding more to the example in an effort to just make a weird and interesting looping animation.
 
-### [ 2.33 - Weird walk guy 3](/2022/05/24/threejs-examples-weird-walk-three/) 
+### [ 2.34 - Weird walk guy 3](/2022/05/24/threejs-examples-weird-walk-three/) 
 
 I wanted to make yet another one of these weird walk examples to which I might make a few more of.
 
