@@ -1,12 +1,12 @@
 ---
-title: 34 threejs examples that showcase many of the features of the library
+title: 35 threejs examples that showcase many of the features of the library
 date: 2021-02-19 14:42:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-07-02 12:23:19
-version: 1.64
+updated: 2022-07-13 14:09:14
+version: 1.65
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -149,14 +149,16 @@ This is a typical example when it comes to starting to get a list like this toge
 
 The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
 
-### [ 2.32 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
+### [ 2.32 - Weird face one](/2022/07/08/threejs-examples-weird-face-one/) 
+
+### [ 2.33 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
 
 This is another one of my example that is a kind of model that is created by just having a bunch of mesh objects grouped together. This one is just the first of what might become a few examples that are like my guy one model only the goal is to have a weird walk cycle for them. I might like to have a few more features when it comes to the over all look and function of the weird walk model here, but the main idea is to just have a weird and interesting walk cycle.
 
-### [ 2.33 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
+### [ 2.34 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
 This is a more advanced example of the first weird walk guy example, continuing to work on adding more to the example in an effort to just make a weird and interesting looping animation.
 
-### [ 2.34 - Weird walk guy 3](/2022/05/24/threejs-examples-weird-walk-three/) 
+### [ 2.35 - Weird walk guy 3](/2022/05/24/threejs-examples-weird-walk-three/) 
 
 I wanted to make yet another one of these weird walk examples to which I might make a few more of.
 
