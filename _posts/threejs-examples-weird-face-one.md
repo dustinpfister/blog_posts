@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-13 14:02:36
-version: 1.1
+updated: 2022-07-13 14:09:14
+version: 1.2
 ---
 
-This week the main threejs project that I worked on a little was my weird face project in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet.
+This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face project in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet.
 
 <!-- more -->
 
