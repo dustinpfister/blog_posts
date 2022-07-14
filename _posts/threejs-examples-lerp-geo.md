@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2022-07-14 08:50:42
-version: 1.11
+updated: 2022-07-14 08:52:53
+version: 1.12
 ---
 
 Not to long ago I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method of the Vector3 class can be used to transition the state of one vector to another by way of giving a point to transition to and an alpha value between 0 and 1 that is the magnitude to move the point. Lately I thought about using this as a way to lerp the points of a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of one geometry back and forth from one geometry to another. So then todays post will be on a [threejs example](/2021/02/19/threejs-examples/) in which I am working out a crude yet effective proof of concept of this idea of lerping the state of a geometry between two states.
@@ -17,7 +17,7 @@ So in other words I am thinking in terms of having two geometries with similar, 
 
 ## Lerping two geometries, and what to know first
 
-This is a post on an advanced topic of threejs that has to do with the position attributes of buffer geometry instances, and one way to go about transitioning between the two. 
+This is a post on an advanced topic of threejs that has to do with the position attributes of buffer geometry instances, and one way to go about transitioning between the two. In other words threre is creating two geometries both with a similar count of points and lerping all the points from one state to another for another geometry that is the geometry used for a mesh object.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/atEMaHaAVjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
