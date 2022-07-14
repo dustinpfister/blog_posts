@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2022-07-14 08:52:53
-version: 1.12
+updated: 2022-07-14 08:55:43
+version: 1.13
 ---
 
 Not to long ago I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method of the Vector3 class can be used to transition the state of one vector to another by way of giving a point to transition to and an alpha value between 0 and 1 that is the magnitude to move the point. Lately I thought about using this as a way to lerp the points of a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of one geometry back and forth from one geometry to another. So then todays post will be on a [threejs example](/2021/02/19/threejs-examples/) in which I am working out a crude yet effective proof of concept of this idea of lerping the state of a geometry between two states.
@@ -20,10 +20,16 @@ So in other words I am thinking in terms of having two geometries with similar, 
 This is a post on an advanced topic of threejs that has to do with the position attributes of buffer geometry instances, and one way to go about transitioning between the two. In other words threre is creating two geometries both with a similar count of points and lerping all the points from one state to another for another geometry that is the geometry used for a mesh object.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/atEMaHaAVjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ### There are many other ways to create a kind of animated model
 
 If you feel that this topic might be a little to advance for you now, there is taking a step back and thinking more in terms of creating animations by just moving mesh objects around. This is how I first started out with this sort of thing a long time ago now with my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I made a few years back now at this point.
+### The source code in this post can also be found on Github
+
+The source code examples that I am writing about here can be [found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-lerp-geo/).
+
+### Version Numbers matter
+
+When I first wrote this post I was using r140 of threejs and the examples where working fine on my end with that revision.
 
 ## 1 - The general idea of this lerping of position arrays
 
