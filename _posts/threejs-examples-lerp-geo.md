@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2022-07-14 08:55:43
-version: 1.13
+updated: 2022-07-14 09:04:41
+version: 1.14
 ---
 
 Not to long ago I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method of the Vector3 class can be used to transition the state of one vector to another by way of giving a point to transition to and an alpha value between 0 and 1 that is the magnitude to move the point. Lately I thought about using this as a way to lerp the points of a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of one geometry back and forth from one geometry to another. So then todays post will be on a [threejs example](/2021/02/19/threejs-examples/) in which I am working out a crude yet effective proof of concept of this idea of lerping the state of a geometry between two states.
@@ -33,7 +33,9 @@ When I first wrote this post I was using r140 of threejs and the examples where 
 
 ## 1 - The general idea of this lerping of position arrays
 
-So then the core of this idea is to just have a function that I can use to pass a geometry that I want to change, and then two geometries that are the state that I want to start at that can be called something like geoA, and the state that I want to change to that would then be geoB. The last argument would then be the alpha value to use between these two states.
+So then the core of this idea is to just have a function that I can use to pass a geometry that I want to change, and then two geometries that are the state that I want to start at that can be called something like geoA, and the state that I want to change to that would then be geoB. The last argument would then be the alpha value to use between these two states that is a value between and including 0 and 1.
+
+So inside the body of the lerp geometry function I use the get attribute function of the buffer geometry class to get the position attributes of geoA and GeoB I can then just loop over the position attribute of the geometry I want to update and use the Vector3 class to create two points in space for both geoA and geoB.
 
 ```js
 (function () {
