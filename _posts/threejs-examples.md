@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-07-14 10:07:21
-version: 1.66
+updated: 2022-07-14 10:09:31
+version: 1.67
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -151,7 +151,7 @@ The is a basic example of some waves which strokes me as another simple example 
 
 ### [ 2.32 - Weird face one](/2022/07/08/threejs-examples-weird-face-one/) 
 
-Updating the state of a geometries is something that can be done in a wide range of ways. There is looking into use bones as a way to do so, but then there is also just working out all kinds of various ways that have to do with updating the state of geometry using a little javaScript code.
+Updating the state of a geometries is something that can be done in a wide range of ways. There is looking into use bones as a way to do so, but then there is also just working out all kinds of various ways that have to do with updating the state of geometry using a little javaScript code. For this weird face one example I am using the lerp geometry method that I made for a previous example to lerp between to states of a geometry for a mouth of a weird looking face. On top of that I am also making use of other ways of creating a kind of animation my just moving the position of mesh objects which is what I am using with the eyes of this weird face model.
 
 ### [ 2.33 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
 
