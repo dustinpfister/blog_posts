@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2022-07-13 14:07:11
-version: 1.8
+updated: 2022-07-14 08:48:02
+version: 1.9
 ---
 
 Not to long ago I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method of the Vector3 class can be used to transition the state of one vector to another by way of giving a point to transition to and an alpha value between 0 and 1 that is the magnitude to move the point. Lately I thought about using this as a way to lerp the points of a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of one geometry back and forth from one geometry to another. So then todays post will be on a [threejs example](/2021/02/19/threejs-examples/) in which I am working out a crude yet effective proof of concept of this idea of lerping the state of a geometry between two states.
@@ -100,5 +100,6 @@ So then the core of this idea is to just have a function that I can use to pass 
 
 ## Conclusion
 
-That is one way to make some animation of sorts, not the way as there is a whole lot of other things to write about when it comes to covering some ground with animation in threejs. I have done a little reading on animation clips in threejs and thus far have found that may be the best route to go when it comes to really working out a real model of sorts for one or more projects. However I have been putting of getting into how to go about getting started with that, and for the moment have been looking into all kinds of various other ways to go about updating the state of a geometry.
+That is one way to make some animation of sorts, however there are also a lot of other ways of doing this sort of thing some of which might prove to be a better choice. I have done a little reading on animation clips in threejs and thus far have found that may be the best route to go when it comes to really working out a real model of sorts for one or more projects. 
+I have been putting of getting into how to go about getting started with bones and animation clips for a while. For one thing I have run into some technical problems getting even the official threejs examples working on my preferred platform for getting work done, but that would not ally for more popular platforms that most people use. Anyway for the moment I have been looking into all kinds of various other ways to go about updating the state of a geometry beyond that of making ringed models in blender. When it comes to this there is just working out soltions like what I made here to just mutate the position attributes of geometries.
 
