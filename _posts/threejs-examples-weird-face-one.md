@@ -5,11 +5,12 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-13 14:29:39
-version: 1.3
+updated: 2022-07-14 08:29:30
+version: 1.4
 ---
 
-This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face project in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/). Although these kinds of models work okay when it comes to a very crude kind of style, I am thinking that I should make an effector to go in the direction of making a more professional kind of model that involves geometries that are created in a program like blender and that is what this example is for what it is worth.
+This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
+Although these kinds of informal models that are just groups of mesh objects with built in geometries work okay when it comes to a very crude kind of style, I am thinking that I should make an effort to go in the direction of making a more professional kind of model to at least some extent. This kind of hybrid model that I have in mind involves geometries that are created in a program like blender, and then I use my lerp geometry method to allow for animation of certain features, for this werid face one model I am doing this with the mouth.
 
 <!-- more -->
 
