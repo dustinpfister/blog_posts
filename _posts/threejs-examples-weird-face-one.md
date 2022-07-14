@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-14 15:50:07
-version: 1.8
+updated: 2022-07-14 15:53:07
+version: 1.9
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -19,6 +19,9 @@ Although these kinds of informal models that are just groups of mesh objects wit
 There are a number of things that you might want to look into first before reading more about this specific threejs example as this example goes beyond the [very basics of threejs](/2018/04/04/threejs-getting-started/) a fare amount. For one thing this example does not just use threejs alone but also the dae file loader as well as orbit controls. So there is more than one javaScript file being used just when it comes to what there is to work with in the threejs repository on github alone. Although I will not be going over every little detail that you should know before hand I do use this first section to mention at least a few things you might want to read up more on first.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/AzuB6ExUE64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+## Check out the dae file loader as a way to load assets that are exported from blender
+
+This example makes use of a DAE file that I have made for it alone with a fair amount of javaScript code. In order to load dae files I need to add the DAE file loader on top of just threejs alone. I have wrote a [blog post on this topic of loading DAE files](/2021/04/30/threejs-dae-collada-loader/) before a long time ago so I will not be getting into this in deatil here.
 
 ## 1 - The weird face module
 
