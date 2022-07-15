@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-07-15 09:48:43
-version: 1.6
+updated: 2022-07-15 09:59:56
+version: 1.7
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -34,17 +34,17 @@ When I wrote this post I was testing out the source code here with r140 of three
 
 ## 1 - Starting out with a single main javaScript file and a new opacity effect for the object grid wrap module
 
-Like with many of my threejs example projects I often start out with a ushual copy and paste cook book style block of code that sets up just a basic threejs scene object, camera, and renderer. I then just start writing some code that ends up being a crude yet effetice starting point for the specfic project idea in the main javaScript file. For this section I will then be wrtiing about this main javaScript file that is the first version of what I want, and I will also be touching base on the source code of a new opcity effect plug in for revision 2 of my object grid wrap module.
+Like with many of my threejs example projects I often start out with a usual copy and paste cook book style block of code that sets up just a basic threejs scene object, camera, and renderer. I then just start writing some code that ends up being a crude yet effective starting point for the specific project idea in the main javaScript file. For this section I will then be writing about this main javaScript file that is the first version of what I want, and I will also be touching base on the source code of a new opacity effect plug in for revision 2 of my object grid wrap module.
 
 ### 1.1 - The main javaScript file
 
-In the main javaScript file I have the ushual set of objects that I am cretaing such as the scene object, camera, and renderer. On top ox this I am also setting up a few light sources as I will be going with the standard material when it comes to skining the mesh objects that will be used in the grid.
+In the main javaScript file I have the usual set of objects that I am creating such as the scene object, camera, and renderer. On top ox this I am also setting up a few light sources as I will be going with the standard material when it comes to skinning the mesh objects that will be used in the grid.
 
-To help with the process of cretaing the collection of source objects for the grid I have a few helper functions that I can use to quikcly create the desired objects that will be coned for each grid location. So I have a make cube helper, and another helper function that will create each of the slope objects that I can work with when it comes to cretaing a land grid.
+To help with the process of creating the collection of source objects for the grid I have a few helper functions that I can use to quickly create the desired objects that will be coned for each grid location. So I have a make cube helper, and another helper function that will create each of the slope objects that I can work with when it comes to creating a land grid.
 
-Now that I have my ushual collection of threejs objects, and some helper functions for createing mesh objects, I can now create my grid object using the object grid wrap module. To do so I call the create method of the object grid wrap module, and pass an object containg all the options to use when setting up the grid. For the source objects I am of course calling the helper functions with the desired argumets for each object index. For now when it comes to cretaing the array of index values for each grid location I am just working out a array litertal of primatives. On top of the source object index values I will also want to have an array of values that are the altatude values for each mesh object also, for this I am also working this out manualy and just having arrays of primatives for these values as well.
+Now that I have my usual collection of threejs objects, and some helper functions for creating mesh objects, I can now create my grid object using the object grid wrap module. To do so I call the create method of the object grid wrap module, and pass an object containing all the options to use when setting up the grid. For the source objects I am of course calling the helper functions with the desired arguments for each object index. For now when it comes to creating the array of index values for each grid location I am just working out a array literal of primitives. On top of the source object index values I will also want to have an array of values that are the altitude values for each mesh object also, for this I am also working this out manually and just having arrays of primitives for these values as well.
 
-When it comes to setting up some effects to use for this grid I am using opacity2 which is a new altertaive to the origian opacity effect that I made for the object grid wrap module that I made for this project. I will be getting into this in detail later in this section, but the basic idea is to have it so that opacity does not start to go down right away, but after a certain distance from the center of the grid.
+When it comes to setting up some effects to use for this grid I am using opacity2 which is a new alternative to the original opacity effect that I made for the object grid wrap module that I made for this project. I will be getting into this in detail later in this section, but the basic idea is to have it so that opacity does not start to go down right away, but after a certain distance from the center of the grid.
 
 ```js
 //******** **********
