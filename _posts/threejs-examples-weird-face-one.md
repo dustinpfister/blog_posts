@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-14 15:58:23
-version: 1.11
+updated: 2022-07-15 10:21:25
+version: 1.12
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -29,6 +29,8 @@ This example makes use of a DAE file that I have made for it alone with a fair a
 The full source code as well as the DAE files that I am using for this example can be found in my [test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-face-1).
 
 ## 1 - The weird face module
+
+For the weird face module I have just a few methods that are used to update the state of one of these weird face objects that I load into a project by way of a DAE file loader. When doing so the main root object of the weird face object is the nose object to which the eyes and mouth are children off. So then I have a set mouth method and set eye method that both take the nose object as the first argument along with the additional values that are use to update the state of the weird face object.
 
 ```js
 // WERID FACE CONTROLS
