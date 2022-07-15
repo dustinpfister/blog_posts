@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-07-15 09:59:56
-version: 1.7
+updated: 2022-07-15 10:12:57
+version: 1.8
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -197,4 +197,52 @@ var loop = function () {
     }
 };
 loop();
+```
+
+### 1.2 - The new opacity effect plug in
+
+For this project example I made a new opacity effect plug in for r2 of my object grid wrap module that seems to be working great so far and as such I might make this part of a collection of standard effects for future revisions of the module. With my first opacity effect objects will begin to loose opacity from the very center of the grid, which more often than not is not what I want to happen when adding an opacity effect to projects that make use of the object grid wrap module. So then in this new opacity effect I am still doing more or less the same thing as with the first opacity effect it is just that now I have a way to set a value between 0 and 1 that will be the minimum remaining distance from center where opacity loss will start.
+
+```js
+/*********
+ Opcaity2 effect for object-grid-wrap.js r2
+*********/
+(function(){
+    // set opacity helper function
+    var setOpacity = function(obj_root, alpha){
+        obj_root.traverse(function(obj){
+            // any object with a material
+            if(obj.material){
+                if(obj.material instanceof Array){
+                    obj.material.forEach(function(m){
+                        m.transparent = true;
+                        m.opacity = alpha;
+                    });
+                }else{
+                    obj.material.transparent = true;
+                    obj.material.opacity = alpha;
+                }
+            }
+        });
+    };
+    ObjectGridWrap.load( {
+        EFFECTS : {
+            // opacity2 works by only lowering the alpha value once objData.b value
+            // is lower than of equal to a min value such as 0.25. A 'minB' value of the 
+            // userData object of the grid can be used to change this
+            opacity2 : function(grid, obj, objData, ud){
+                var minB = grid.userData.minB === undefined ? 0.5: grid.userData.minB;
+                if(objData.b <= minB){
+                   var alpha = objData.b / minB;
+                   alpha = alpha < 0 ? 0 : alpha;
+                   // using Math.pow for smoother change
+                   alpha = Math.pow(1.75, 8 * alpha) / Math.pow(1.75, 8)
+                   setOpacity(obj, alpha);
+                }else{
+                   setOpacity(obj, 1);
+                }
+            }
+        }
+    } );
+}());
 ```
