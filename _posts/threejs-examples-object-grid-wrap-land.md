@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-07-15 10:12:57
-version: 1.8
+updated: 2022-07-15 10:16:51
+version: 1.9
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -246,3 +246,8 @@ For this project example I made a new opacity effect plug in for r2 of my object
     } );
 }());
 ```
+
+## conclusion
+
+This project is looking good so far even thought I just have a ruff starting point thus far. The state of the source code is not where I would like it to be, but when it comes to the final outcome with how things look I would say I all ready have a done deal with this. Any additional revisions of this project will likely involve better ways of creating the grid that involve passing just one array literal to create the state of the land, as well as maybe ways to generate the state of the grid also. Another thing that comes to mind is just having a wider collection of source objects that are used to create the state of the grid as well.
+
