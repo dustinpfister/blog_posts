@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-07-15 09:25:07
-version: 1.3
+updated: 2022-07-15 09:32:52
+version: 1.4
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -17,18 +17,176 @@ When it comes to using this object grid wrap module I need to define a collectio
 
 ## The land object grid wrap module and what to know first
 
-This is one of my many threejs example posts in which I am going over some source code for somehting that is the start of an actual project of some kind using threejs rather than just yet another simple demo of a threejs feature of one kind or another. So then this is not at all in any way a post for people that are [new to threejs](/2018/04/04/threejs-getting-started/) or javaScript in general. So I will not be going over various threejs let alone javaScript basics here, however in this section I will be wrtiing about a few things that you might want to read up more on before continung with the rest of this post.
+This is one of my many threejs example posts in which I am going over some source code for something that is the start of an actual project of some kind using threejs rather than just yet another simple demo of a threejs feature of one kind or another. So then this is not at all in any way a post for people that are [new to threejs](/2018/04/04/threejs-getting-started/) or javaScript in general. So I will not be going over various threejs let alone javaScript basics here, however in this section I will be writing about a few things that you might want to read up more on before continuing with the rest of this post.
 
 ### Check out Shape and Extrude geometry if you have not done so
 
-In this example I am using the threehs Shape constructor to create an instance of a 2d shape with the built in threejs shape class. I can then use one of these shape classes to create an anstance of Extrude geometry that is just a 2d shape with a little depth added to it. For this project example this is what I am using to create mesh objects that will be slopes in the object grid that will resemble land. However this is of course somehting that you might want to read up more on in detail and with that said I wrote a [blog post on this subject of shapes and Extrude geometry in threejs](/2021/06/01/threejs-shape/).
+In this example I am using the threejs Shape constructor to create an instance of a 2d shape with the built in threejs shape class. I can then use one of these shape classes to create an instance of Extrude geometry that is just a 2d shape with a little depth added to it. For this project example this is what I am using to create mesh objects that will be slopes in the object grid that will resemble land. However this is of course something that you might want to read up more on in detail and with that said I wrote a [blog post on this subject of shapes and Extrude geometry in threejs](/2021/06/01/threejs-shape/).
 
 ### The source code here is also on Github
 
-The source code that I am writing about here can also be found in my [test threejs reposatory](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-object-grid-wrap-land).
+The source code that I am writing about here can also be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-object-grid-wrap-land).
 
 ### Version Numbers matter
 
 When I wrote this post I was testing out the source code here with r140 of threejs and everything was working okay on my end with that revision of threejs.
 
 
+## 1 - Starting out with a single main javaScript file and a new opacity effect for the object grid wrap module
+
+Like with many of my threejs example projects I often start out with a ushual copy and paste cook book style block of code that sets up just a basic threejs scene object, camera, and renderer. I then just start writing some code that ends up being a crude yet effetice starting point for the specfic project idea in the main javaScript file. For this section I will then be wrtiing about this main javaScript file that is the first version of what I want, and I will also be touching base on the source code of a new opcity effect plug in for revision 2 of my object grid wrap module.
+
+### 1.1 - The main javaScript file
+
+```js
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+var scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+//scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0xffffff) )
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(-10, 10, 10);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// LIGHT
+//******** **********
+var dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(8, 2, 4);
+scene.add(dl);
+scene.add( new THREE.AmbientLight(0xffffff, 0.05 ) )
+ 
+//******** **********
+// MESH OBJECTS
+//******** **********
+ 
+var MATERIAL_LAND = new THREE.MeshStandardMaterial({color: new THREE.Color('green')})
+ 
+// MESH basic cube
+var makeCube = function(size){
+    size = size === undefined ? 1 : size;
+    var cube = new THREE.Mesh(
+        new THREE.BoxGeometry(size, size, size), 
+        MATERIAL_LAND
+    );
+    return cube
+};
+ 
+// MAKE MESH SLOPE HELPER
+var makeSlopeMesh = function(alphaR, size){
+    alphaR = alphaR === undefined ? 0 : alphaR;
+    size = size === undefined ? 1 : size;
+    var shape_slope = new THREE.Shape();
+    var hSize = size / 2;
+    shape_slope.moveTo(hSize, hSize);
+    shape_slope.lineTo(hSize * -1, hSize * -1);
+    shape_slope.lineTo(hSize, hSize * -1);
+    // geometry
+    var geometry = new THREE.ExtrudeGeometry(shape_slope, {
+        depth: size,
+        bevelEnabled: false
+    });
+    geometry.computeBoundingBox();
+    geometry.center();
+    geometry.rotateY( Math.PI * 2 * alphaR );
+    var slope = new THREE.Mesh( geometry, MATERIAL_LAND);
+    return slope;
+}
+ 
+//******** **********
+// GRID
+//******** **********
+ 
+var tw = 10,
+th = 10,
+space = 2;
+var grid = ObjectGridWrap.create({
+    spaceW: space + 0.05,
+    spaceH: space + 0.05,
+    tw: tw,
+    th: th,
+    dAdjust: 1.25,
+    effects: ['opacity2'],
+    sourceObjects: [
+        makeCube(space),
+        makeSlopeMesh(0.00, space),
+        makeSlopeMesh(0.25, space),
+        makeSlopeMesh(0.50, space),
+        makeSlopeMesh(0.75, space)
+    ],
+
+    objectIndices: [
+        0,4,0,0,0,0,0,0,0,0,
+        1,0,3,0,0,0,0,0,0,0,
+        1,0,3,0,4,4,4,4,0,0,
+        0,2,0,4,0,0,0,0,4,0,
+        0,0,1,0,0,0,4,0,0,3,
+        0,0,1,0,0,1,0,3,0,3,
+        0,0,0,2,0,0,2,0,0,3,
+        0,4,0,0,1,0,0,0,2,0,
+        1,0,3,0,1,0,0,3,0,0,
+        0,2,0,0,0,2,2,0,0,0,
+    ]
+});
+scene.add(grid);
+ 
+// I will want to have some way to set altitude for each
+// cloned mesh object in the gird
+var altitude = [
+        0,1,0,0,0,0,0,0,0,0,
+        1,1,1,0,0,0,0,0,0,0,
+        1,1,1,0,1,1,1,1,0,0,
+        0,1,0,1,1,1,1,1,1,0,
+        0,0,1,1,1,1,2,1,1,1,
+        0,0,1,1,1,2,2,2,1,1,
+        0,0,0,1,1,1,2,1,1,1,
+        0,1,0,0,1,1,1,1,1,0,
+        1,1,1,0,1,1,1,1,0,0,
+        0,1,0,0,0,1,1,0,0,0,
+];
+grid.children.forEach(function(obj, i){
+    var alt = altitude[i];
+    obj.geometry = obj.geometry.clone();
+    obj.geometry.translate(0, alt * space, 0)
+});
+// base position for whone grid
+grid.position.set(0, 0.5, 0);
+ 
+// adjust 'minB' value for opacity2 effect
+grid.userData.minB = 0.3;
+ 
+console.log(grid.userData)
+ 
+//******** **********
+// LOOP
+//******** **********
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+var fps = 30,
+lt = new Date(),
+frame = 0,
+maxFrame = 300;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5,
+    secs = (now - lt) / 1000,
+    ud = grid.userData;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps){
+
+        // set position of the grid
+        ObjectGridWrap.setPos(grid, ( 1 - per ) * 2, 0 );
+        // update grid by current alphas and effects
+        ObjectGridWrap.update(grid);
+
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+```
