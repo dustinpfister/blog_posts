@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-07-15 09:56:22
-version: 1.68
+updated: 2022-07-15 09:58:02
+version: 1.69
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -110,6 +110,8 @@ An example that is a collection of mesh objects in a group nested in another gro
 I wanted to make a quick simple object grid module type project where I can create this grid of objects that are cloned from an array of source objects and an array of index values for these source objects for each tile in the grid. On top of that the objects will loop around in all directions as I move around as well.
 
 ### [ 2.22 - Object grid Wrap land ](/2022/07/25/threejs-examples-object-grid-wrap-land/)
+
+Continuing with my object grid wrap module I made this additional example in which I am building on top of the module with addtioanl code that sets up a grid in a way in which I have something that looks like land.
 
 ### [ 2.23 - Mutate a plane ](/2021/06/11/threejs-examples-plane-mutate/)
 
