@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-15 10:21:25
-version: 1.12
+updated: 2022-07-17 09:08:12
+version: 1.13
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -280,3 +280,4 @@ let lerpGeo = function(geo, geoA, geoB, alpha){
 
 ## Conclusion
 
+This has turned out to be a fun project and I like how the end result has turned out when it comes to making a video at least. Still I am not sure if I can say that this is the way that I will want to make assets for various kinds of models at this time. I do think that for now I want to make assets that are more or less just collections of static geometries for the most part, it is just that for video projects there is the idea of having a collection of geometries for a single object such as a mouth of a face and having a way to transition between them. This then seems to work okay so far, but I am sure I will run into problems when it comes to battle testing this.
