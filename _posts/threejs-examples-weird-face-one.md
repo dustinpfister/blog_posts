@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-19 10:42:35
-version: 1.14
+updated: 2022-07-19 10:45:30
+version: 1.15
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -32,6 +32,10 @@ Recently I compleated another threejs example project that has to do with creati
 ### Full source code and additional DAE assets are at github
 
 The full source code as well as the DAE files that I am using for this example can be found in my [test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-face-1).
+
+### Version numbers matter
+
+When I was first writing this post I was uing r140 of threejs along with recent versions of the DAE file loader and orbit controls and everything was working just fine on my end.
 
 ## 1 - The weird face module
 
