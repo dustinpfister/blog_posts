@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-07-19 10:19:50
-version: 1.12
+updated: 2022-07-19 10:27:38
+version: 1.13
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -249,14 +249,14 @@ For this project example I made a new opacity effect plug in for r2 of my object
 }());
 ```
 
-## 2 – Stand alone object grid wrap land module ( r2 )
+## 2 - Stand alone object grid wrap land module ( r2 )
 
 After working out the crude basic idea of what I want to get done I now just need to create a new javaScript file in which I am taking what I worked out in the main javaScript file and turn it into a stand alone javaScript file. This way I can take this land module with me from project to project just like with the other javaScript file assets that I am working on top of with the object grid module itself, and the additional effect file that I made.
 
 At the time of this writing I all ready compleated two revisions of this land module that works on top of my object grid module, so in this section I will be writing about what I have done thus far with r2 of the land module. So then I will also be covering all of the features that I started in r1 of the module as well in this section.
 
 
-### 2.1 – The object grid wrap land javascript file
+### 2.1 - The object grid wrap land javascript file
 
 The main method of interest with this module is the create method which is what I will be calling in my main javaScript file to create a land grid. In the body of this create function I will in turn also be calling the create method of my object grid wrap module, so the main thing about this create method is to just set up the proper options, and do any addtional custom work after creating the grid that needs to get done. 
 
@@ -498,7 +498,9 @@ var ObjectGridWrapLand = (function(){
 }());
 ```
 
-### 2.2 – The new main.js file
+### 2.2 - The new main.js file
+
+There is the the question of having a little demo of the use of the module in a main javaScript file with the ushual scene object and so forth so then lets get to that here. After setting up my ushual collection fo objects that I want to have with just about any other threejs example I then also set up a few light sources as I am going with the standard material here and color maps. There is then calling the create method of the land module and prefroming any other addtional tasks that I want to do to set up this land grid whenit comes to doing things like adding addtional mesh objects anc children for each land tile that are trees or anothing to that effect. Finally I will want to set up a basic animation loop function and update the state of the object grid wrap with the typical methods for doing so.
 
 ```js
 //******** **********
