@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-19 10:45:30
-version: 1.15
+updated: 2022-07-19 10:55:05
+version: 1.16
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -40,6 +40,8 @@ When I was first writing this post I was uing r140 of threejs along with recent 
 ## 1 - The weird face module
 
 For the weird face module I have just a few methods that are used to update the state of one of these weird face objects that I load into a project by way of a DAE file loader. When doing so the main root object of the weird face object is the nose object to which the eyes and mouth are children off. So then I have a set mouth method and set eye method that both take the nose object as the first argument along with the additional values that are use to update the state of the weird face object.
+
+When it comes to the mouth I am suing my new lerp geometry method and when calling the method I need to give a m0 argument that is the current state of the geometry, and also a m1 argument that is the geometry that I want to lerp to. When it comes to moving the eyes of the model this is where I am still just changing object3d values of the eyes as a way to change the state of them.
 
 ```js
 // WERID FACE CONTROLS
@@ -76,6 +78,8 @@ weridFace.setEye = function(nose, eyeIndex, a, b, scale){
 ```
 
 ## 2 - The lerp geo function
+
+Here is the source code of the lerp geometry funciton that I worked on in an older threejs project example. It works by passing the geokerty that I want to update as the first argument, then I pass a starting and ending geometry state alone with an alpha value between the two that will be 0 to 1 value between the two geometies to set the first gemetry that I am updating. I am then using the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/) to set the position of each vertex by way of a simple linear lerp between the points, and while I am also at it I update the normals attribute as well by just calling the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
 
 ```js
 let lerpGeo = function(geo, geoA, geoB, alpha){
