@@ -5,11 +5,12 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-17 09:08:12
-version: 1.13
+updated: 2022-07-19 10:42:35
+version: 1.14
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
+
 Although these kinds of informal models that are just groups of mesh objects with built in geometries work okay when it comes to a very crude kind of style, I am thinking that I should make an effort to go in the direction of making a more professional kind of model to at least some extent. This kind of hybrid model that I have in mind involves geometries that are created in a program like blender, and then I use my lerp geometry method to allow for animation of certain features, for this weird face one model I am doing this with the mouth.
 
 <!-- more -->
@@ -23,6 +24,10 @@ There are a number of things that you might want to look into first before readi
 ## Check out the dae file loader as a way to load assets that are exported from blender
 
 This example makes use of a DAE file that I have made for it alone with a fair amount of javaScript code. In order to load dae files I need to add the DAE file loader on top of just threejs alone. I have wrote a [blog post on this topic of loading DAE files](/2021/04/30/threejs-dae-collada-loader/) before a long time ago so I will not be getting into this in detail here.
+
+### This is an example in which I am building off of an additional threejs project that has to do with animating geometry
+
+Recently I compleated another threejs example project that has to do with creating a method that lerps all of the points of the position attribute of a geometry from one state to another. That is that I create a mesh object with a geometry as well as two or more addtional geomeries with a simular, or idealy identical count of vertices and then use this lerp method to trasiation from one position state to another. I have all ready wrote a [post on this lerp geomerty method](/2022/07/01/threejs-examples-lerp-geo/) so I will not be getting into that in detail at least in this post.
 
 ### Full source code and additional DAE assets are at github
 
