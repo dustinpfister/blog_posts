@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 988
-updated: 2022-07-19 11:20:14
-version: 1.17
+updated: 2022-07-19 11:29:30
+version: 1.18
 ---
 
 I have some ideas for videos that involve a gird of objects the position of which will move, but will also wrap around when also. In other words I would like to have some kind of simple javaScript module in which I can define an array of source objects, and then have an array of index values for tile location in the grid where each index value refers to an object to clone from the source objects array. So then this kind of module could be used in all kinds of ways when it comes to making some kind of looping world that I can then move around in. The module can be used with a number of other components that involve additional objects that might be elements of the main focus of the over all video, but this module would be a nice way to have some kind of repeating background.
@@ -277,6 +277,10 @@ loop();
 ```
 
 ## 2 - Plug in system, arrays of materials, and many little things fixed in r2 thus far
+
+Sense I first wrote this post I have made two revisions of the state of the source code of this object grid wrap module and I am sure that there will be at least a few more as I seem to be using this module now and then in my many various threejs blog posts videos to have a looping grid of objects that composes some kind of interetsing scene.
+
+Anyway the main fetaure of intest thus fra here sense the first version is that I have added a plug in system for a way to go baout adding various effects that I want to use with an object grid such as an opacity effect. When it comes to the core set of files that I have for r2, thus far I just have one plug in that is a core set of effects. When it comes to built in effects thus far there are none actually as I am thinking that making effects are somehting that I might want to do as a project to project type thing when using this. That is not to say there there will end up being a few ushual methods that I will want to take with me to each new project it is just that I have found that thus far I might want to even park thoses in an optional external file for now at least.
 
 ### 2.1 - r2 of the object grid wrap module
 
