@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 988
-updated: 2022-07-19 11:29:30
-version: 1.18
+updated: 2022-07-19 11:43:01
+version: 1.19
 ---
 
 I have some ideas for videos that involve a gird of objects the position of which will move, but will also wrap around when also. In other words I would like to have some kind of simple javaScript module in which I can define an array of source objects, and then have an array of index values for tile location in the grid where each index value refers to an object to clone from the source objects array. So then this kind of module could be used in all kinds of ways when it comes to making some kind of looping world that I can then move around in. The module can be used with a number of other components that involve additional objects that might be elements of the main focus of the over all video, but this module would be a nice way to have some kind of repeating background.
@@ -284,6 +284,8 @@ Anyway the main fetaure of intest thus fra here sense the first version is that 
 
 ### 2.1 - r2 of the object grid wrap module
 
+Now for the state of the source code of the main object grid wrap module in which I have made a number of changes. The major changes are that I have removed the built in effects thus far and parked them in an exteral file. I can then load this external file with the load method of the module. Other addtional changes are some more options for the create method that allow for changing the size of each tile, but for the most part it is the plug in system that is the big deal here.
+
 ```js
 //******** **********
 // ObjectGridWrap module - r2 - for threejs-examples-object-grid-wrap post
@@ -481,6 +483,8 @@ var ObjectGridWrap = (function(){
 
 ### 2.2 - Core effects plug in
 
+Now that I have a plug in system for effects here I have the source code of the first effects plug in that I can use to load what was the built in effects of the first version. For now the state of the plug in object contains just one public key that is EFFECTS which in turn is an object of effect funcitons that I want to add to the object grid wrap module. I did things this way as I am thinging forward for the sake of addtional future revisions in which I might want to load addtional thigns beyind just that of effects for the object grid wrap module such as cloner funcitons, and any other stuff that might end up being added along the way.
+
 ```js
 (function(){
     var setOpacity = function(obj_root, alpha){
@@ -529,9 +533,13 @@ var ObjectGridWrap = (function(){
     } );
 }());
 ```
+
+I can not say that I am happy with the opacity effect here, which is one of the major reasons what I want to start doing this as I am sure that I will want to make at least one if not more addtional opacity effects to say the least.
  
-### 2.3 - Demo of r2
- 
+### 2.3 - Demo of r2 of object grid wrap
+
+For the sake of this post I made a demo of r2 of object grid wrap that makes use of some of the effects functions of the core effects plug in. All seems to work well with this revision of the moduel thus far, in order to gain a better sense of what needs to change with any and all future revisions I will of coures need to just keep making more porjects with this.
+
 ```js
 //******** **********
 // SCENE, CAMERA, RENDERER
