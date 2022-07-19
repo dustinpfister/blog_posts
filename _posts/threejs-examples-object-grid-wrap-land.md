@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-07-19 09:58:05
-version: 1.11
+updated: 2022-07-19 10:19:50
+version: 1.12
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -249,9 +249,20 @@ For this project example I made a new opacity effect plug in for r2 of my object
 }());
 ```
 
-## 2 – Stand alone Object grid wrap land module
+## 2 – Stand alone object grid wrap land module ( r2 )
+
+After working out the crude basic idea of what I want to get done I now just need to create a new javaScript file in which I am taking what I worked out in the main javaScript file and turn it into a stand alone javaScript file. This way I can take this land module with me from project to project just like with the other javaScript file assets that I am working on top of with the object grid module itself, and the additional effect file that I made.
+
+At the time of this writing I all ready compleated two revisions of this land module that works on top of my object grid module, so in this section I will be writing about what I have done thus far with r2 of the land module. So then I will also be covering all of the features that I started in r1 of the module as well in this section.
+
 
 ### 2.1 – The object grid wrap land javascript file
+
+The main method of interest with this module is the create method which is what I will be calling in my main javaScript file to create a land grid. In the body of this create function I will in turn also be calling the create method of my object grid wrap module, so the main thing about this create method is to just set up the proper options, and do any addtional custom work after creating the grid that needs to get done. 
+
+The main thing that needs to get done after cretaing the grid then is to adjust the geometry of each tile in the gird so that each land tile grid mesh geomeyry is set at a desired altatue. This is done by looping over each tile in the grid and using the clone method of the buffer geomety class to clone a copy of the geomerty for the mesh, and then using the translate method of the geometry to set the proper altatue that is set by way of an addtional option that is given when calling the create method.
+
+As of r2 of the land module I have added support for built in data textures for the various land mesh objects that are created for the source objects array that is used when creating the grid. This way I can quickly get up and running making a custom land scene and not bother adding textures for the land tiles as they are all ready there to begin with by default. However I might still want to call this set data textures public method when creating the grid in the main javaScript file to make it so that there is more than one texture that is used.
 
 ```js
 //******** **********
