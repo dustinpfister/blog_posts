@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-07-19 09:43:37
-version: 1.10
+updated: 2022-07-19 09:58:05
+version: 1.11
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -247,6 +247,391 @@ For this project example I made a new opacity effect plug in for r2 of my object
         }
     } );
 }());
+```
+
+## 2 – Stand alone Object grid wrap land module
+
+### 2.1 – The object grid wrap land javascript file
+
+```js
+//******** **********
+// ObjectGridWrap module land module - r2
+//******** **********
+var ObjectGridWrapLand = (function(){
+    // public API
+    var api = {};
+    // make data texture helper
+    var makeDataTexture = function(width, height, vHigh, vLow){
+        var size = width * height;
+        var data = new Uint8Array( 4 * size );
+        for ( let i = 0; i < size; i ++ ) {
+            var stride = i * 4;
+            var v = Math.floor( vLow + THREE.MathUtils.seededRandom() * ( vHigh - vLow ) );
+            data[ stride ] = v;
+            data[ stride + 1 ] = v;
+            data[ stride + 2 ] = v;
+            data[ stride + 3 ] = 255;
+        }
+        var texture = new THREE.DataTexture( data, width, height );
+        texture.needsUpdate = true;
+        return texture;
+    };
+    // default material for land mesh objects
+    var MATERIAL_LAND = new THREE.MeshStandardMaterial({ 
+        color: new THREE.Color('green'), 
+        map: makeDataTexture(16, 16, 120, 255)
+    });
+    //******** **********
+    // MESH OBJECTS
+    //******** **********
+    // MESH basic cube
+    var makeCube = function(material, size){
+        size = size === undefined ? 1 : size;
+        var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(size, size, size), 
+            material
+        );
+        // not a slope
+        cube.userData.isSlope = false;
+        cube.userData.isCorner = false;
+        cube.userData.isInvert = false;
+        return cube
+    };
+    // MAKE MESH SLOPE HELPER
+    var makeSlopeMesh = function(material, size, alphaR){
+        alphaR = alphaR === undefined ? 0 : alphaR;
+        size = size === undefined ? 1 : size;
+        var shape_slope = new THREE.Shape();
+        var hSize = size / 2;
+        shape_slope.moveTo(hSize, hSize);
+        shape_slope.lineTo(hSize * -1, hSize * -1);
+        shape_slope.lineTo(hSize, hSize * -1);
+        // geometry
+        var geometry = new THREE.ExtrudeGeometry(shape_slope, {
+            depth: size,
+            bevelEnabled: false
+        });
+        // uv fix ( ceil values like 0.97... to 1 )
+        var uv = geometry.getAttribute('uv');
+        uv.array.forEach(function(n, i){
+            uv.array[i] = Math.ceil(n);
+            uv.array[i] = uv.array[i] < 1 ? 0 : 1;
+        });
+        uv.needsUpdate = true;
+        geometry.computeBoundingBox();
+        geometry.center();
+        geometry.rotateY( Math.PI * 2 * alphaR );
+        var slope = new THREE.Mesh( geometry, material);
+        // is a slope
+        slope.userData.isSlope = true;
+        slope.userData.isCorner = false;
+        slope.userData.isInvert = false;
+        return slope;
+    }
+    // MAKE CORNER MESH HELPER
+    var makeCornerMesh = function(material, size, alphaR, invert){
+        alphaR = alphaR === undefined ? 0 : alphaR;
+        size = size === undefined ? 1 : size;
+        invert = invert || false;
+        var geometry = new THREE.PlaneGeometry(size, size, 1, 1);
+        // get pos attribute
+        var pos = geometry.getAttribute('position');
+        if(invert){
+            [5,8,11].forEach(function(i){
+                pos.array[i] = size;
+            })
+        }else{
+            pos.array[2] = size;
+ 
+        }
+        pos.needsUpdate = true;
+        geometry.computeVertexNormals();
+        // rotate and translate
+        geometry.rotateX( Math.PI * 1.5 );
+        geometry.translate(0, size / 2 * -1 ,0);
+        geometry.rotateY( Math.PI * 2 * alphaR);
+        var corner = new THREE.Mesh( geometry, material);
+        // not a slope
+        corner.userData.isSlope = true;
+        corner.userData.isCorner = true;
+        corner.userData.isInvert = invert;
+        return corner;
+    };
+    //******** **********
+    //  CREATE METHOD
+    //******** **********
+    api.create = function(opt){
+        opt = opt || {};
+        opt.crackSize = opt.crackSize === undefined ? 0.1 : opt.crackSize;
+        opt.tw = opt.tw === undefined ? 4: opt.tw;
+        opt.th = opt.th === undefined ? 2: opt.th;
+        opt.dAdjust = opt.dAdjust === undefined ? 1.20: opt.dAdjust;
+        var space = opt.space = opt.space === undefined ? 2: opt.space;
+        opt.effects = opt.effects || ['opacity2'];
+        opt.MATERIAL_LAND = opt.MATERIAL_LAND || MATERIAL_LAND;
+        var meshSize = space - opt.crackSize;
+        opt.sourceObjects = [
+            makeCube(opt.MATERIAL_LAND, meshSize),
+            makeSlopeMesh(opt.MATERIAL_LAND, meshSize, 0.00),
+            makeSlopeMesh(opt.MATERIAL_LAND, meshSize, 0.25),
+            makeSlopeMesh(opt.MATERIAL_LAND, meshSize, 0.50),
+            makeSlopeMesh(opt.MATERIAL_LAND, meshSize, 0.75),
+            makeCornerMesh(opt.MATERIAL_LAND, meshSize, 0.00),
+            makeCornerMesh(opt.MATERIAL_LAND, meshSize, 0.25),
+            makeCornerMesh(opt.MATERIAL_LAND, meshSize, 0.50),
+            makeCornerMesh(opt.MATERIAL_LAND, meshSize, 0.75),
+            makeCornerMesh(opt.MATERIAL_LAND, meshSize, 0.00, true),
+            makeCornerMesh(opt.MATERIAL_LAND, meshSize, 0.25, true),
+            makeCornerMesh(opt.MATERIAL_LAND, meshSize, 0.50, true),
+            makeCornerMesh(opt.MATERIAL_LAND, meshSize, 0.75, true)
+        ];
+        opt.objectIndices = opt.objectIndices || [
+            0,0,1,3,
+            0,0,1,3
+        ];
+        var grid = ObjectGridWrap.create(opt);
+        // I will want to have some way to set altitude for each
+        // cloned mesh object in the gird
+        var altitude = opt.altitude || [
+            0,0,1,1,
+            0,0,1,1
+        ];
+        grid.children.forEach(function(obj, i){
+            var alt = altitude[i];
+            obj.geometry = obj.geometry.clone();
+            obj.geometry.translate(0, alt * space, 0)
+        });
+        // base position for whone grid
+        grid.position.set(0, 0.5, 0);
+        var ud = grid.userData; 
+        // adjust 'minB' value for opacity2 effect
+        ud.minB = 0.3;
+        ud.space = opt.space;
+        ud.tw = opt.tw;
+        ud.th = opt.th;
+        ud.opt = opt;
+        return grid;
+    };
+    //******** **********
+    //  ADD AT METHOD
+    //******** **********
+    api.addAt = function(grid, mesh, ix, y){
+        var tile = 0,
+        ud = grid.userData;
+        if(y === undefined){
+            tile = grid.children[ix];
+        }else{
+            var w = grid.userData.tw;
+            tile = grid.children[ y * w + ix];
+        }
+        var box = new THREE.Box3();
+        tile.geometry.computeBoundingBox();
+        box.copy( tile.geometry.boundingBox ).applyMatrix4( tile.matrixWorld );
+        // on cubes add half hight, on slopes add 0
+        mesh.geometry.computeBoundingBox();
+        var v = new THREE.Vector3();
+        mesh.geometry.boundingBox.getSize(v);
+        // figure out yDelta value starting with a 
+        // default value that should work okay for cubes
+        var yDelta = v.y / 2;
+        // if the tile is a slope?
+        if(tile.userData.isSlope){
+            yDelta = v.y / 2 - ud.space * 0.75;
+        }
+        // if the tile is a corner
+        if(tile.userData.isCorner){
+            yDelta = v.y / 2 - ud.space;
+            if(tile.userData.isInvert){
+               yDelta = v.y / 2 - ud.space * 0.5;
+            }
+        }
+        mesh.position.y = box.max.y + yDelta;
+        tile.add(mesh);
+    };
+    //******** **********
+    //  setDataTextures
+    //******** **********
+ 
+    var DEFAULT_DATATEXT = [
+        ['#00ff00', 8, 8, 180, 255],
+        ['#00ff00', 8, 8, 64, 255],
+        ['#00ff00', 8, 8, 80, 160],
+        ['#00ff6f', 8, 8, 180, 255],
+        ['#aaff6f', 8, 8, 100, 255],
+        ['#00ff6f', 8, 8, 80, 160]
+    ];
+ 
+    api.setDataTextures = function(grid, dataText){
+ 
+        dataText = dataText || DEFAULT_DATATEXT;
+ 
+        var materials = [];
+        dataText.forEach(function(d){
+            materials.push(new THREE.MeshStandardMaterial({
+                color: new THREE.Color(d[0]),
+                map: makeDataTexture(d[1], d[2], d[3], d[4])
+            }));
+        });
+
+        // seeded random material index values
+        var i = 0, len = grid.userData.tw * grid.userData.th;
+        while(i < len){
+           var mi = Math.floor(THREE.MathUtils.seededRandom() * materials.length);
+           grid.children[i].material = materials[mi].clone();
+           i += 1;
+        }
+ 
+    };
+    // return public API
+    return api;
+}());
+```
+
+### 2.2 – The new main.js file
+
+```js
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+var scene = new THREE.Scene();
+scene.background = new THREE.Color('#00afaf');
+//scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0xffffff) )
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(-10, 10, -5);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// LIGHT
+//******** **********
+var dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(-8, 2, 4);
+scene.add(dl);
+//camera.add(dl);
+//scene.add(camera);
+scene.add( new THREE.AmbientLight(0xffffff, 0.05 ) )
+//******** **********
+// GRID
+//******** **********
+var grid = ObjectGridWrapLand.create({
+    tw: 14,
+    th: 14,
+    crackSize: 0,
+    //effects:[],
+    altitude: [
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,1,1,1,0,0,0,1,1,1,1,0,
+        0,0,0,1,1,1,0,0,0,1,1,1,1,0,
+        0,0,0,1,1,1,0,0,0,1,1,1,1,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,1,1,1,1,0,0,0,0,0,0,0,
+        0,1,1,1,1,1,1,0,0,0,0,0,0,0,
+        0,1,2,2,2,1,1,0,0,0,0,0,0,0,
+        0,1,2,2,2,1,1,0,0,0,1,1,1,0,
+        0,1,2,2,2,1,1,0,0,0,1,1,1,0,
+        0,1,1,1,1,1,0,0,0,0,1,1,1,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    ],
+    objectIndices: [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 7, 4, 6, 0, 0, 0, 7, 4, 4, 6, 0,
+        0, 0, 0, 1, 0, 3, 0, 0, 0, 1, 0, 0, 3, 0,
+        0, 0, 0, 8, 2, 5, 0, 0, 0, 8, 2, 2, 5, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 7, 4, 4, 6, 0, 0, 0, 0, 0, 0, 0,
+        0, 7, 4, 9, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0,
+        0, 1, 7, 4, 6, 0, 3, 0, 0, 0, 0, 0, 0, 0,
+        0, 1, 1, 0, 3, 0, 3, 0, 0, 0, 7, 4, 6, 0,
+        0, 1, 8, 2, 5,11, 5, 0, 0, 0, 1, 0, 3, 0,
+        0, 8, 2, 2, 2, 5, 0, 0, 0, 0, 8, 2, 5, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    ]
+});
+grid.scale.set(1, 1, 1);
+ 
+ObjectGridWrapLand.setDataTextures(grid)
+ 
+scene.add(grid);
+//******** **********
+// ADDING CHILD MESH OBJECTS
+//******** **********
+var mkCone = function(height){
+    return new THREE.Mesh(
+        new THREE.ConeGeometry(0.5, height, 30, 30),
+        new THREE.MeshStandardMaterial({color: new THREE.Color('#00ff88')})
+    );
+};
+// can make another system that involves a grid if index values
+// but with child objects
+var mkMeshFunctions = [
+    null,
+    function(){
+        return mkCone(2)
+    },
+    function(){
+        return mkCone(3)
+    },
+    function(){
+        return mkCone(4)
+    }
+];
+// object index grid
+[
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,2,0,0,0,0,0,0,0,1,0,0,
+    0,0,1,0,0,0,3,0,0,1,2,0,0,0,
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,1,0,1,1,0,0,
+    0,0,0,1,0,0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,1,0,1,2,1,0,0,
+    0,0,2,0,0,0,0,0,0,2,0,0,0,0,
+    0,0,0,1,0,0,0,2,1,0,1,1,0,0,
+    0,0,1,0,0,0,0,1,0,1,3,3,0,1,
+    0,1,0,1,0,1,2,0,1,2,1,1,2,0,
+    0,0,0,0,2,0,0,1,0,3,1,1,0,0,
+    0,1,0,1,0,1,0,0,0,1,2,3,1,1,
+    0,0,0,0,0,0,0,0,0,0,1,0,1,0
+].forEach(function(objIndex, i){
+    var mkMesh = mkMeshFunctions[objIndex];
+    if(mkMesh){
+        var mesh = mkMesh(),
+        x = i % grid.userData.tw,
+        y = Math.floor(i / grid.userData.tw)
+        ObjectGridWrapLand.addAt(grid, mesh, x, y);
+    }
+});
+//******** **********
+// LOOP
+//******** **********
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+var fps = 30,
+lt = new Date(),
+frame = 0,
+maxFrame = 600;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5,
+    secs = (now - lt) / 1000,
+    ud = grid.userData;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps){
+        // set position of the grid
+        ObjectGridWrap.setPos(grid, ( 1 - per ) * 2, Math.sin( Math.PI * 2 * per ) * 0.5 );
+        // update grid by current alphas and effects
+        ObjectGridWrap.update(grid);
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## conclusion
