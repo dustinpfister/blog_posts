@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-19 11:02:18
-version: 1.17
+updated: 2022-07-19 11:06:52
+version: 1.18
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -27,7 +27,7 @@ This example makes use of a DAE file that I have made for it alone with a fair a
 
 ### This is an example in which I am building off of an additional threejs project that has to do with animating geometry
 
-Recently I compleated another threejs example project that has to do with creating a method that lerps all of the points of the position attribute of a geometry from one state to another. That is that I create a mesh object with a geometry as well as two or more addtional geomeries with a simular, or idealy identical count of vertices and then use this lerp method to trasiation from one position state to another. I have all ready wrote a [post on this lerp geomerty method](/2022/07/01/threejs-examples-lerp-geo/) so I will not be getting into that in detail at least in this post.
+Recently I completed another threejs example project that has to do with creating a method that lerps all of the points of the position attribute of a geometry from one state to another. That is that I create a mesh object with a geometry as well as two or more additional geometries with a similar, or ideally identical count of vertices and then use this lerp method to transition from one position state to another. I have all ready wrote a [post on this lerp geometry method](/2022/07/01/threejs-examples-lerp-geo/) so I will not be getting into that in detail at least in this post.
 
 ### Full source code and additional DAE assets are at github
 
@@ -35,7 +35,7 @@ The full source code as well as the DAE files that I am using for this example c
 
 ### Version numbers matter
 
-When I was first writing this post I was uing r140 of threejs along with recent versions of the DAE file loader and orbit controls and everything was working just fine on my end.
+When I was first writing this post I was using r140 of threejs along with recent versions of the DAE file loader and orbit controls and everything was working just fine on my end.
 
 ## 1 - The weird face module
 
@@ -79,7 +79,7 @@ weridFace.setEye = function(nose, eyeIndex, a, b, scale){
 
 ## 2 - The lerp geo function
 
-Here is the source code of the lerp geometry funciton that I worked on in an older threejs project example. It works by passing the geokerty that I want to update as the first argument, then I pass a starting and ending geometry state alone with an alpha value between the two that will be 0 to 1 value between the two geometies to set the first gemetry that I am updating. I am then using the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/) to set the position of each vertex by way of a simple linear lerp between the points, and while I am also at it I update the normals attribute as well by just calling the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
+Here is the source code of the lerp geometry function that I worked on in an older threejs project example. It works by passing the geometry that I want to update as the first argument, then I pass a starting and ending geometry state alone with an alpha value between the two that will be 0 to 1 value between the two geometries to set the first geometry that I am updating. I am then using the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/) to set the position of each vertex by way of a simple linear lerp between the points, and while I am also at it I update the normal attribute as well by just calling the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
 
 ```js
 let lerpGeo = function(geo, geoA, geoB, alpha){
@@ -111,7 +111,7 @@ let lerpGeo = function(geo, geoA, geoB, alpha){
 
 ## 3 - Dae tools module
 
-Another file that I am using for this example is my DAE tools file, this is yet another file on top of the DAE loader itself that is an addtional threejs file that can be found in the threejs github reposatory. This is yet another one of my threejs examples that is a kind of work in progress, I have found that there are often some addtional things that I want to do with DAE files beyond that of just loading them but I am not fully sure what that all is at this point so the module is a little thin and is for the most part just some abstractions for using the loader that help be to make sure that I am using it in a way that works well when loading one or more dae files along with any addtional texture assets.
+Another file that I am using for this example is my DAE tools file, this is yet another file on top of the DAE loader itself that is an additional threejs file that can be found in the threejs github repository. This is yet another one of my threejs examples that is a kind of work in progress, I have found that there are often some additional things that I want to do with DAE files beyond that of just loading them but I am not fully sure what that all is at this point so the module is a little thin and is for the most part just some abstractions for using the loader that help be to make sure that I am using it in a way that works well when loading one or more dae files along with any additional texture assets.
 
 ```js
 // dae tools r2
@@ -211,7 +211,7 @@ Another file that I am using for this example is my DAE tools file, this is yet 
 
 ## 4 - Main javaScript file
 
-Now I can load the dae files that I want to use, set up some local varibules, along with an animation loops and the ushual threejs objects to create a scene.
+Now I can load the dae files that I want to use, set up some local variables, along with an animation loops and the usual threejs objects to create a scene. At the bottom of the main file I am using the create and load all method of my dae tools module to load two dae files one of which is the main file, and the additional one contains mouth geometry options. This is just the way that I made the model thus far and in any future revisions of this I might go with some kind of standard where I have all the objects that I want in a single DAE file.
 
 ```js
 (function () {
