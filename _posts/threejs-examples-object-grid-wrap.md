@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 988
-updated: 2022-07-19 11:43:01
-version: 1.19
+updated: 2022-07-20 10:19:52
+version: 1.20
 ---
 
 I have some ideas for videos that involve a gird of objects the position of which will move, but will also wrap around when also. In other words I would like to have some kind of simple javaScript module in which I can define an array of source objects, and then have an array of index values for tile location in the grid where each index value refers to an object to clone from the source objects array. So then this kind of module could be used in all kinds of ways when it comes to making some kind of looping world that I can then move around in. The module can be used with a number of other components that involve additional objects that might be elements of the main focus of the over all video, but this module would be a nice way to have some kind of repeating background.
@@ -278,13 +278,13 @@ loop();
 
 ## 2 - Plug in system, arrays of materials, and many little things fixed in r2 thus far
 
-Sense I first wrote this post I have made two revisions of the state of the source code of this object grid wrap module and I am sure that there will be at least a few more as I seem to be using this module now and then in my many various threejs blog posts videos to have a looping grid of objects that composes some kind of interetsing scene.
+Sense I first wrote this post I have made two revisions of the state of the source code of this object grid wrap module and I am sure that there will be at least a few more as I seem to be using this module now and then in my many various threejs blog posts videos to have a looping grid of objects that composes some kind of interesting scene.
 
-Anyway the main fetaure of intest thus fra here sense the first version is that I have added a plug in system for a way to go baout adding various effects that I want to use with an object grid such as an opacity effect. When it comes to the core set of files that I have for r2, thus far I just have one plug in that is a core set of effects. When it comes to built in effects thus far there are none actually as I am thinking that making effects are somehting that I might want to do as a project to project type thing when using this. That is not to say there there will end up being a few ushual methods that I will want to take with me to each new project it is just that I have found that thus far I might want to even park thoses in an optional external file for now at least.
+Anyway the main feature of interest thus far here sense the first version is that I have added a plug in system for a way to go about adding various effects that I want to use with an object grid such as an opacity effect. When it comes to the core set of files that I have for r2, thus far I just have one plug in that is a core set of effects. When it comes to built in effects thus far there are none actually as I am thinking that making effects are something that I might want to do as a project to project type thing when using this. That is not to say there there will end up being a few usual methods that I will want to take with me to each new project it is just that I have found that thus far I might want to even park those in an optional external file for now at least.
 
 ### 2.1 - r2 of the object grid wrap module
 
-Now for the state of the source code of the main object grid wrap module in which I have made a number of changes. The major changes are that I have removed the built in effects thus far and parked them in an exteral file. I can then load this external file with the load method of the module. Other addtional changes are some more options for the create method that allow for changing the size of each tile, but for the most part it is the plug in system that is the big deal here.
+Now for the state of the source code of the main object grid wrap module in which I have made a number of changes. The major changes are that I have removed the built in effects thus far and parked them in an external file. I can then load this external file with the load method of the module. Other additional changes are some more options for the create method that allow for changing the size of each tile, but for the most part it is the plug in system that is the big deal here.
 
 ```js
 //******** **********
@@ -483,7 +483,7 @@ var ObjectGridWrap = (function(){
 
 ### 2.2 - Core effects plug in
 
-Now that I have a plug in system for effects here I have the source code of the first effects plug in that I can use to load what was the built in effects of the first version. For now the state of the plug in object contains just one public key that is EFFECTS which in turn is an object of effect funcitons that I want to add to the object grid wrap module. I did things this way as I am thinging forward for the sake of addtional future revisions in which I might want to load addtional thigns beyind just that of effects for the object grid wrap module such as cloner funcitons, and any other stuff that might end up being added along the way.
+Now that I have a plug in system for effects here I have the source code of the first effects plug in that I can use to load what was the built in effects of the first version. For now the state of the plug in object contains just one public key that is EFFECTS which in turn is an object of effect functions that I want to add to the object grid wrap module. I did things this way as I am thinking forward for the sake of additional future revisions in which I might want to load additional things beyond just that of effects for the object grid wrap module such as clone functions, and any other stuff that might end up being added along the way.
 
 ```js
 (function(){
@@ -534,11 +534,11 @@ Now that I have a plug in system for effects here I have the source code of the 
 }());
 ```
 
-I can not say that I am happy with the opacity effect here, which is one of the major reasons what I want to start doing this as I am sure that I will want to make at least one if not more addtional opacity effects to say the least.
+I can not say that I am happy with the opacity effect here, which is one of the major reasons what I want to start doing this as I am sure that I will want to make at least one if not more additional opacity effects to say the least.
  
 ### 2.3 - Demo of r2 of object grid wrap
 
-For the sake of this post I made a demo of r2 of object grid wrap that makes use of some of the effects functions of the core effects plug in. All seems to work well with this revision of the moduel thus far, in order to gain a better sense of what needs to change with any and all future revisions I will of coures need to just keep making more porjects with this.
+For the sake of this post I made a demo of r2 of object grid wrap that makes use of some of the effects functions of the core effects plug in. All seems to work well with this revision of the module thus far, in order to gain a better sense of what needs to change with any and all future revisions I will of course need to just keep making more projects with this.
 
 ```js
 //******** **********
@@ -647,4 +647,6 @@ loop();
 
 ## Conclusion
 
-So far so good with this object grid wrap module, I have a basic idea of what I wanted in mind and that basic idea is now up and running. I am sure that I will want to make at least one if not more revisions of this though, but in order to really be sure of what is needed in terms of new features and what needs to be fixed I will want to make at least a few if not more projects that make use of this module.
+So far so good with this object grid wrap module, I have a basic idea of what I wanted in mind and that basic idea is now up and running. At this point I might want to make yet another revision at some point, but in order to really be sure of what is needed in terms of new features and what needs to be fixed I will want to make at least a few if not more projects that make use of this module. I have a bad habit of making some projects far more complex than they need to be, and the general idea with this is working so I want to maybe slow down a little and focus more so on making additional examples with this module.
+
+With that said as of this latest edit of this post I have made one new additional example in which I am working on top of this object grid wrap module. If you would like to check this out it is my [object grid wrap land module example post](/2022/07/25/threejs-examples-object-grid-wrap-land).
