@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-07-20 10:01:18
-version: 1.47
+updated: 2022-07-20 10:11:32
+version: 1.48
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emissive values, and much more.
@@ -23,7 +23,7 @@ This is a post on the THREE.Color constructor in the javaScript library three.js
 
 ### A Transparent effect is a whole other can of worms
 
-When it comes to working with color in a general client side javaScript environment there are ways of having an alpha channel for a color. In the THREE.Color class there are just properties for red, green, and blue, but not for an alpha channel. It is of course possible to make [materials transparent](/2021/04/21/threejs-materials-transparent/), but doing so involves setting the transparency boolean for the material to true, and then it is the opacity property of a material that will act as the alpha channel value. 
+When it comes to working with color in a general client side javaScript environment there are ways of having an alpha channel for a color. In the THREE.Color class there are just properties for red, green, and blue, but not for an alpha channel. It is of course possible to make [materials transparent](/2021/04/21/threejs-materials-transparent/), but doing so involves setting the transparency Boolean for the material to true, and then it is the opacity property of a material that will act as the alpha channel value. 
 
 ### Check out more on what there is to know about materials
 
@@ -456,7 +456,9 @@ loop();
 
 ## 8 - For Pix method using Data Textures and THREE.Color
 
-Sense I first wrote this [blog post I wrote a blog post on data textures](/2022/04/15/threejs-data-texture/) which is another option when it comes to making a texture from javaScript code rather an external image asset. When working out what the color values should be for each pixel the THREE.Color class can come in handy for making some kind of abstraction where I can pass a function that will be called for each pixel location in a texture. In this section I am doing just that when making a create data texture helper function that will take a forPix function as one of the options. In the body of this for pix function I am passing an instance of THREE.Color as on eof the arguments, and this is also the value that should be returned by the function.
+Sense I first wrote this [blog post I wrote a blog post on data textures](/2022/04/15/threejs-data-texture/) which is another option when it comes to making a texture from javaScript code rather an external image asset. When working out what the color values should be for each pixel the THREE.Color class can come in handy for making some kind of abstraction where I can pass a function that will be called for each pixel location in a texture. In this section I am doing just that when making a create data texture helper function that will take a forPix function as one of the options. In the body of this for pix function I am passing an instance of THREE.Color as one of the arguments, and this is also the value that should be returned by the function.
+
+By default the forPix function will use the Seeded Random method of the Math utils object in threejs as a way to get a value between 0 and 255 that I then set for each color channel using the set rgb method of the color class.
 
 ```js
 //******** **********
@@ -470,9 +472,7 @@ let createDataTexture = function(opt){
     // default for pix method
     opt.forPix = opt.forPix || function(color, x, y, i, opt){
         let v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
-        color.r = v;
-        color.g = v;
-        color.b = v;
+        color.setRGB(v, v, v);
         return color;
     };
     let size = opt.width * opt.height;
@@ -541,6 +541,7 @@ var loop = function () {
         frame %= maxFrame;
         lt = now;
     }
+
 };
 loop();
 ```
