@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-07-20 10:11:32
-version: 1.48
+updated: 2022-07-20 11:54:23
+version: 1.49
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emissive values, and much more.
@@ -20,6 +20,9 @@ So in this post I will be going over a number of typical use case examples of th
 ## THREE.Color and what to know first
 
 This is a post on the THREE.Color constructor in the javaScript library three.js, this is not a post on the [basics of getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general, so I assume that you have at least some background with these subjects before hand. I will then not be getting into great detail about threejs as well as the subject of color in general when it comes to client side javaScript. Still in this section I will be going over a few key details that you might want to read up more on that are relevant to the rest of the content of this post.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/QFYxHbt83os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### A Transparent effect is a whole other can of worms
 
