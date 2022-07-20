@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-05-16 11:09:44
-version: 1.19
+updated: 2022-07-20 10:28:10
+version: 1.20
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
@@ -21,7 +21,7 @@ This is a post on using the THREE.DataTexture constructor in threejs to create a
 
 ### version numbers matter
 
-The version of threejs that I was using when I first wrote this post was r135. I also quikly checked that the source code examples also seem to work well in just about every major version of threejs that I have been using when writing these posts going back as far as r91. Still code breaking changes might be made at some point in the future so one should always be mindful of the version of threejs that they are using when reading about and using threejs source code examples on the open web.
+The version of threejs that I was using when I first wrote this post was r135. I also quickly checked that the source code examples also seem to work well in just about every major version of threejs that I have been using when writing these posts going back as far as r91. Still code breaking changes might be made at some point in the future so one should always be mindful of the version of threejs that they are using when reading about and using threejs source code examples on the open web.
 
 ### The source code in this post is up on Github
 
@@ -31,7 +31,7 @@ The source code examples that I am writing about in this post can be found in my
 
 For a simple example of this data texture thing in threejs I made this quick example that involves starting at a value of 32 for the red channel and adding 128 over the length of the total number of pixels for the image. I am then also doing something similar for the green channel just subtracting rather than adding.
 
-I start out by making my usual [scene object](/2018/05/03/threejs-scene/) along with a [camera](/2018/04/06/threejs-camera/) and [web gl renderer](/2018/11/24/threejs-webglrenderer/) just like with any other threejs project. AFter that I will want to create an instance of a unit8Array where the length is equal to the number of pixels times four. So I just need to figure out that the width and height of the texture should be and then multiply that to get a size in terms of a total number of pixels. I can then use this size value times four to set the length of the typed array, and also use it as a way to know if I should stop looping or not when it comes to setting the values for this array.
+I start out by making my usual [scene object](/2018/05/03/threejs-scene/) along with a [camera](/2018/04/06/threejs-camera/) and [web gl renderer](/2018/11/24/threejs-webglrenderer/) just like with any other threejs project. After that I will want to create an instance of a unit8Array where the length is equal to the number of pixels times four. So I just need to figure out that the width and height of the texture should be and then multiply that to get a size in terms of a total number of pixels. I can then use this size value times four to set the length of the typed array, and also use it as a way to know if I should stop looping or not when it comes to setting the values for this array.
 
 I then have a loop in which I am figuring out what the values should be for each red, green, blue, and alpha channel value for each pixel. I can have an index for each pixel and then just figure out what the actual index value in the array is by just multiplying by four and then adding fro there for each channel value. Once I have my array in the state that I want it for the texture the next step is to then pass that array as an argument when calling the THREE.DataTextyre [constructor function](/2019/02/27/js-javascript-constructor/).
 
@@ -200,10 +200,104 @@ scene.add(box);
 renderer.render(scene, camera);
 ```
 
+## 5 – Having a helper function that has some kind of for pixel function option
+
+Thus far all of these data texture examples are just blocks of code that create a single texture. When it comes to making a real project with data textures I will likely want to make a number of them, and do so in different ways. To keep myself from repeating the same code over and over again each time I want to make a data texture I can then make some kind of helper function and pass some values that will result in the kind of texture that I want.
+
+When doing so the first feature that comes to mind that I would want to have in this kind of helper function would be an option that I can use to define the logic that is used to create the texture. In other words a kind of for pixel function that would have some kind of hard coded value.
+
+```js
+//******** **********
+// DATA TEXTURE HELPER
+//******** **********
+// create data texture method
+let createDataTexture = function(opt){
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16: opt.width; 
+    opt.height = opt.height === undefined ? 16: opt.height;
+    // default for pix method
+    opt.forPix = opt.forPix || function(color, x, y, i, opt){
+        let v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
+        color.r = v;
+        color.g = v;
+        color.b = v;
+        return color;
+    };
+    let size = opt.width * opt.height;
+    let data = new Uint8Array( 4 * size );
+    for ( let i = 0; i < size; i ++ ) {
+        let stride = i * 4,
+        x = i % opt.width,
+        y = Math.floor(i / opt.width),
+        color = opt.forPix( new THREE.Color(), x, y, i, opt);
+        data[ stride ] = color.r;
+        data[ stride + 1 ] = color.g;
+        data[ stride + 2 ] = color.b;
+        data[ stride + 3 ] = 255;
+    }
+    let texture = new THREE.DataTexture( data, opt.width, opt.height );
+    texture.needsUpdate = true;
+    return texture;
+};
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(8,8))
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL THAT I AM USING
+//******** **********
+var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
+light.position.set(1, 3, 2);
+scene.add(light);
+//******** **********
+// MESH OBJECTS WITH DATA TEXTURES
+//******** **********
+// default sudo random texture
+var tex1 = createDataTexture();
+var mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: tex1
+    })
+);
+scene.add(mesh1);
+//******** **********
+// LOOP
+//******** **********
+var lt = new Date(),
+frame = 0,
+maxFrame = 200,
+fps = 20;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(per - 0.5) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // new data texture for mesh1
+        mesh1.material.map = createDataTexture();
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+
+};
+loop();
+```
+
 ## Conclusion
 
 The use of data textures to create textures for threejs geometries can then prove to be a little useful here and there then. However I am not sure if this is what I will want to always use, even when it comes to this sort of thing. For the most part I do still like to use canvas elements to create textures as there are a lot of useful methods to work with in the 2d drawing context. 
 
 When it comes to really working out modules I, and also uv wrapping while doing so I sometimes think the best way to go would be external image files when it comes to working with dae files for a project.
 
-Thus far I have found that I do some times like to use data textures over that of canvas elements when it comes to just quickly creating texture with raw data created with javaScritp code and some quick expressions. One example that I have made thus far as of late was for my [post on the depth material where I made a kind of custom depth material](/2021/05/04/threejs-depth-material/) that is create just using the basic material with a texture created with, you guessed it, a data texture.
+Thus far I have found that I do some times like to use data textures over that of canvas elements when it comes to just quickly creating texture with raw data created with javaScript code and some quick expressions. One example that I have made thus far as of late was for my [post on the depth material where I made a kind of custom depth material](/2021/05/04/threejs-depth-material/) that is create just using the basic material with a texture created with, you guessed it, a data texture.
