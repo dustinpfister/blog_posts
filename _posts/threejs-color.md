@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-05-12 10:00:16
-version: 1.46
+updated: 2022-07-20 10:01:18
+version: 1.47
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emissive values, and much more.
@@ -445,6 +445,97 @@ var loop = function () {
             }
         });
         group.rotation.y = Math.PI * 2 * per;
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 8 - For Pix method using Data Textures and THREE.Color
+
+Sense I first wrote this [blog post I wrote a blog post on data textures](/2022/04/15/threejs-data-texture/) which is another option when it comes to making a texture from javaScript code rather an external image asset. When working out what the color values should be for each pixel the THREE.Color class can come in handy for making some kind of abstraction where I can pass a function that will be called for each pixel location in a texture. In this section I am doing just that when making a create data texture helper function that will take a forPix function as one of the options. In the body of this for pix function I am passing an instance of THREE.Color as on eof the arguments, and this is also the value that should be returned by the function.
+
+```js
+//******** **********
+// DATA TEXTURE HELPER
+//******** **********
+// create data texture method
+let createDataTexture = function(opt){
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16: opt.width; 
+    opt.height = opt.height === undefined ? 16: opt.height;
+    // default for pix method
+    opt.forPix = opt.forPix || function(color, x, y, i, opt){
+        let v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
+        color.r = v;
+        color.g = v;
+        color.b = v;
+        return color;
+    };
+    let size = opt.width * opt.height;
+    let data = new Uint8Array( 4 * size );
+    for ( let i = 0; i < size; i ++ ) {
+        let stride = i * 4,
+        x = i % opt.width,
+        y = Math.floor(i / opt.width),
+        color = opt.forPix( new THREE.Color(), x, y, i, opt);
+        data[ stride ] = color.r;
+        data[ stride + 1 ] = color.g;
+        data[ stride + 2 ] = color.b;
+        data[ stride + 3 ] = 255;
+    }
+    let texture = new THREE.DataTexture( data, opt.width, opt.height );
+    texture.needsUpdate = true;
+    return texture;
+};
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(8,8))
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL THAT I AM USING
+//******** **********
+var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
+light.position.set(1, 3, 2);
+scene.add(light);
+//******** **********
+// MESH OBJECTS WITH DATA TEXTURES
+//******** **********
+// default sudo random texture
+var tex1 = createDataTexture();
+var mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: tex1
+    })
+);
+scene.add(mesh1);
+//******** **********
+// LOOP
+//******** **********
+var lt = new Date(),
+frame = 0,
+maxFrame = 200,
+fps = 20;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(per - 0.5) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // new data texture for mesh1
+        mesh1.material.map = createDataTexture();
         renderer.render(scene, camera);
         frame += fps * secs;
         frame %= maxFrame;
