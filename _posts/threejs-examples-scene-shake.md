@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2022-07-21 14:25:39
-version: 1.17
+updated: 2022-07-21 14:39:22
+version: 1.18
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole [scene object](/2018/05/03/threejs-scene/). When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera that I am suing to render the scene to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
@@ -26,9 +26,13 @@ In this post I am writing about a module that works on top of three.js to provid
 
 When I made this shake module and the demos that make use of it I was using three.js version r127. In the future it is possible that the code examples here will break on newer versions of three.js as code breaking changes are made all the time to three.js. Always take care to note how old a post is, or any mentions of versions of external assets used when making use of code examples on the open web.
 
-### 1.1 - The shake module ( r0 ) and event driven demo
+## 1 - The shake module ( r0 ) and event driven demo
 
-This module has a public create method that I can use in a project to create an instance of what I am calling a shake object. This shake object will contain data about the current state of the shake such as the max values to use for postion and rotation ranges. The shake object as of this first version also contains the current actual euler and vector3 instance to use to offset a given object for a current frame tick.
+In this section I will be going over the state of the first version of this shake module and an event driven demo of the module. This crude start of the module is a little weird, but never the less when used as intended it will result in a kind of shake effect.
+
+### 1.1 - The shake module ( r0 )
+
+This module has a public create method that I can use in a project to create an instance of what I am calling a shake object. This shake object will contain data about the current state of the shake such as the max values to use for position and rotation ranges. The shake object as of this first version also contains the current actual euler and vector3 instance to use to offset a given object for a current frame tick.
 
 After the create method I have a roll public method which will change the current state of the [Euler](/2021/04/28/threejs-euler/) and [Vector3](/2018/04/15/threejs-vector3/) class instances that are used to [set the position of the object](/2022/04/04/threejs-object3d-position/) to which the shake object is applied to. Speaking of applying a shake object to an object3d based object such as a scene object, to do that I also have one more additional public method that is used to apply the current state of shake object. This object can be the scene object which is what I originally intended to use this with, but it can also be used with any other object based on object3d such as a group, mesh, or camera.
 
@@ -204,9 +208,13 @@ For this demo of the shake module I am using events as a way to adjust the shake
 
 ## 2 - Update method, range values, and animation demo of shake.js ( r1 )
 
-Sense I first wrote this post I have thus far made one revision of this shake.js module. So far I just made a few changes that have to do with makiking it so that there are just two public methods of ineterst to work with which ar the create and update methods. All the other methods are now interal helper functions rather than addtional methods that I must call. On top of this I thought I should also make a demo of the module that is an animation loop example, rather than that of an event driven example as I did for my first version of this shakle module exmaple.
+Sense I first wrote this post I have thus far made one revision of this shake.js module. So far I just made a few changes that have to do with making it so that there are just two public methods of interest to work with which ar the create and update methods. All the other methods are now internal helper functions rather than additional methods that I must call. On top of this I thought I should also make a demo of the module that is an animation loop example, rather than that of an event driven example as I did for my first version of this shake module example.
 
 ### 2.1 - The shake.js file (r1)
+
+With this first revision of the shake.js module I wanted to make it so that I now just have two public methods, a create method and an update method. This seems to often be the typical case with many of my modules thus far. That is that I have a create method that I use to create a kind of object then have at least one method that will act on that object such as an update method.
+
+Sense I now just have two public methods in this module there are three general sections of the code. An area with internal helper methods, then a section for both of the public methods that I can use outside of the module in some code that will make use of this module.
 
 ```js
 /*   r1 of shake.js for threejs-examples-scene-shake
@@ -302,13 +310,18 @@ Sense I first wrote this post I have thus far made one revision of this shake.js
 }
     (this['ShakeMod'] = {}));
 ```
+Beyond reducing the number of public methods I also added a few features that I think are needed thus far. When it comes to create options I now do not set fixed starting values for the pos and deg shake object properties, but rather I set to arrays that are range values for the pos and deg values. I then can set a fixed intensity values, but when using this in a project this intensity value is something that I will want to mutate in the code. 
+
+Another major change is the introduction of an obj property that is an object to which the shake object is to be applied to. The idea here then is that when I create the shake object I pass a ref to the object that I would like to have the shake apply to rather than having to call a separate method after updating the shake object alone.
 
 ### 2.2 - The animation loop example of shake.js
+
+Now for a demo of this improved version of the shake module that is an animation loop rather than an event driven demo.
 
 ```js
 (function () {
     //******** **********
-    // SCENE, CAMNERA, RENDERER
+    // SCENE, CAMERA, RENDERER
     //******** **********
     var scene = new THREE.Scene();
     // camera DO NOT ADD TO SCENE
@@ -329,7 +342,7 @@ Sense I first wrote this post I have thus far made one revision of this shake.js
     box.position.set(0, 0.5, 0);
     scene.add(box);
     //******** **********
-    // STATE OBJECT INCLDUING SHAKE OBJECT
+    // STATE OBJECT INCLUDING SHAKE OBJECT
     //******** **********
     var canvas = renderer.domElement;
     var state = {
