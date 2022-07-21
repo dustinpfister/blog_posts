@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2022-07-21 14:39:22
-version: 1.18
+updated: 2022-07-21 14:43:36
+version: 1.19
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole [scene object](/2018/05/03/threejs-scene/). When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera that I am suing to render the scene to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
@@ -115,14 +115,14 @@ Now that I have my shake module together I am going to want a little more javaSc
 ```js
 (function () {
     //******** **********
-    // SCENE, CAMNERA, RENDERER
+    // SCENE, CAMERA, RENDERER
     //******** **********
     var scene = new THREE.Scene();
     // camera DO NOT ADD TO SCENE
     var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
     camera.position.set(5, 5, 5);
     camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();     // render
+    var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
     //******** **********
@@ -136,66 +136,41 @@ Now that I have my shake module together I am going to want a little more javaSc
     box.position.set(0, 0.5, 0);
     scene.add(box);
     //******** **********
-    // STATE OBJECT INCLDUING SHAKE OBJECT
+    // STATE OBJECT INCLUDING SHAKE OBJECT
     //******** **********
-    var canvas = renderer.domElement;
     var state = {
-        //frame: 0,
-        //maxFrame: 3000,
+        frame: 0,
+        maxFrame: 300,
         fps: 30,
         lt: new Date(),
-        shake: ShakeMod.create() // ADJUSTING pos and DEG by EVENTS
+        shake: ShakeMod.create({
+            obj: scene,
+            posRange: [0.25, 0.5],
+            degRange: [5, 20],
+            active: true
+        })
     };
-    //******** **********
-    // EVENTS
-    //******** **********
-    var pointerDown = function () {
-        state.shake.active = true;
-    };
-    var pointerUp = function () {
-        state.shake.active = false;
-    };
-    var pointerMove = function (shake, canvas) {
-        return function (e) {
-            e.preventDefault();
-            var canvas = e.target,
-            box = canvas.getBoundingClientRect(),
-            x = e.clientX - box.left,
-            y = e.clientY - box.top;
-            if (e.changedTouches) {
-                x = e.changedTouches[0].clientX - box.left;
-                y = e.changedTouches[0].clientY - box.top;
-            };
-            // Adjust pos and deg based on pointer position
-            shake.pos = x / canvas.width * 0.95;
-            shake.deg = y / canvas.height * 18;
-        };
-    };
-    // mouse
-    renderer.domElement.addEventListener('mousedown', pointerDown);
-    renderer.domElement.addEventListener('mousemove', pointerMove(state.shake, canvas));
-    renderer.domElement.addEventListener('mouseup', pointerUp);
-    renderer.domElement.addEventListener('mouseout', pointerUp);
-    // touch
-    renderer.domElement.addEventListener('touchstart', pointerDown);
-    renderer.domElement.addEventListener('touchmove', pointerMove(state.shake, canvas));
-    renderer.domElement.addEventListener('touchend', pointerUp);
-    renderer.domElement.addEventListener('touchcancel', pointerUp);
     //******** **********
     // UPDATE AND LOOP
     //******** **********
     var update = function (state, secs) {
-        ShakeMod.roll(state.shake);
-        ShakeMod.applyToObject3d(state.shake, scene);
+        ShakeMod.update(state.shake);
     };
     // loop
     var loop = function () {
+        state.per = state.frame / state.maxFrame;
+        state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
         var now = new Date();
         secs = (now - state.lt) / 1000;
         requestAnimationFrame(loop);
         if (secs > 1 / state.fps) {
+            // changing intesnity value over time
+            state.shake.intensity = state.bias;
+            // update, render, step frame
             update(state, secs);
             renderer.render(scene, camera);
+            state.frame += state.fps * secs;
+            state.frame %= state.maxFrame;
             state.lt = now;
         }
     };
@@ -344,7 +319,6 @@ Now for a demo of this improved version of the shake module that is an animation
     //******** **********
     // STATE OBJECT INCLUDING SHAKE OBJECT
     //******** **********
-    var canvas = renderer.domElement;
     var state = {
         frame: 0,
         maxFrame: 300,
