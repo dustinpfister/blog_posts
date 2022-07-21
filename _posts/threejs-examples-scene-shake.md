@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2022-04-04 16:14:13
-version: 1.14
+updated: 2022-07-21 14:09:09
+version: 1.15
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole [scene object](/2018/05/03/threejs-scene/). When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera that I am suing to render the scene to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
@@ -18,6 +18,9 @@ This shake module might then work out okay when it comes to adding some kind of 
 ## 1 - The shake module three.js example and what to know first
 
 In this post I am writing about a module that works on top of three.js to provide a way to create and update a screen or object shake effect. This is not a [getting started type post on three.js](/2018/04/04/threejs-getting-started/), or any additional skills that are required in order to extract something of value from reading this. However in this section I will be briefly writing about a few things that you should know about before reading more.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/IYVYW74BdhE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### 1.1 - Version Numbers matter with three.js
 
