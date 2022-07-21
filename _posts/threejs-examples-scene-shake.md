@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2022-07-21 14:19:02
-version: 1.16
+updated: 2022-07-21 14:25:39
+version: 1.17
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole [scene object](/2018/05/03/threejs-scene/). When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera that I am suing to render the scene to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
@@ -35,8 +35,11 @@ After the create method I have a roll public method which will change the curren
 I am making use of the [user data object](/2021/02/16/threejs-userdata/) of the object3d class as a way to park what the original values where for the position and orientation of the object that was passed to it. When the active flag is false the values park there will be used to set the position and orientation of the object, else a set of values in the shake object will be used that can bu updated with a roll method.
 
 ```js
+/*   r0 of shake.js for threejs-examples-scene-shake
+ *
+ *
+ */
 (function (api) {
- 
     // degree to radian
     var deg = function (deg) {
         return Math.PI / 180 * deg;
@@ -53,7 +56,6 @@ I am making use of the [user data object](/2021/02/16/threejs-userdata/) of the 
         max = deg(state.deg * 2);
         return min + max * Math.random();
     };
- 
     // create
     api.create = function (opt) {
         opt = opt || {};
@@ -66,7 +68,6 @@ I am making use of the [user data object](/2021/02/16/threejs-userdata/) of the 
         };
         return shake;
     };
- 
     // just make a roll
     api.roll = function (shake) {
         shake.euler.x = rndDeg(shake);
@@ -76,7 +77,6 @@ I am making use of the [user data object](/2021/02/16/threejs-userdata/) of the 
         shake.vector.y = rndPos(shake);
         shake.vector.z = rndPos(shake);
     };
- 
     // apply a new shake to object3d
     api.applyToObject3d = function (shake, obj3d) {
         // save home data
@@ -92,12 +92,12 @@ I am making use of the [user data object](/2021/02/16/threejs-userdata/) of the 
             obj3d.rotation.copy(shake.euler);
             obj3d.position.copy(shake.vector);
         } else {
+            // else set back to home location
             var sd = obj3d.userData.shakeData;
             obj3d.rotation.copy(sd.homeEuler);
             obj3d.position.copy(sd.homeVector);
         }
     }
- 
 }
     (this['ShakeMod'] = {}));
 ```
@@ -110,40 +110,41 @@ Now that I have my shake module together I am going to want a little more javaSc
 
 ```js
 (function () {
-    // scene and grid helper
+    //******** **********
+    // SCENE, CAMNERA, RENDERER
+    //******** **********
     var scene = new THREE.Scene();
+    // camera DO NOT ADD TO SCENE
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();     // render
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //******** **********
+    // GRID HELPER AND MESH OBJECT
+    //******** **********
     var gridHelper = new THREE.GridHelper(5, 5);
     scene.add(gridHelper);
-    // box is a MESH base off of OBJECT3D
     var box = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshNormalMaterial());
     box.position.set(0, 0.5, 0);
     scene.add(box);
-    // camera DO NOT ADD TO SCENE
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // state object
+    //******** **********
+    // STATE OBJECT INCLDUING SHAKE OBJECT
+    //******** **********
     var canvas = renderer.domElement;
     var state = {
-        frame: 0,
-        maxFrame: 3000,
+        //frame: 0,
+        //maxFrame: 3000,
         fps: 30,
         lt: new Date(),
-        shake: ShakeMod.create({
-            deg: 5.25,
-            pos: 0.1,
-            active: false
-        })
+        shake: ShakeMod.create() // ADJUSTING pos and DEG by EVENTS
     };
- 
-    // events
+    //******** **********
+    // EVENTS
+    //******** **********
     var pointerDown = function () {
         state.shake.active = true;
     };
@@ -176,20 +177,179 @@ Now that I have my shake module together I am going to want a little more javaSc
     renderer.domElement.addEventListener('touchmove', pointerMove(state.shake, canvas));
     renderer.domElement.addEventListener('touchend', pointerUp);
     renderer.domElement.addEventListener('touchcancel', pointerUp);
- 
-    // update
+    //******** **********
+    // UPDATE AND LOOP
+    //******** **********
     var update = function (state, secs) {
-        if (state.shake.active) {
-            //state.shake.pos = 0.05 + 1.9 * state.bias;
-            //state.shake.deg = 0.50 + 18 * state.bias;
-            ShakeMod.roll(state.shake);
-        } else {
-            state.frame = 0;
-        }
-        //ShakeMod.update(state.shake, secs);
+        ShakeMod.roll(state.shake);
         ShakeMod.applyToObject3d(state.shake, scene);
     };
- 
+    // loop
+    var loop = function () {
+        var now = new Date();
+        secs = (now - state.lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / state.fps) {
+            update(state, secs);
+            renderer.render(scene, camera);
+            state.lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+For this demo of the shake module I am using events as a way to adjust the shake pos and deg properties based on the position of a touch move or mouse move event on the canvas element. It is tempting to pull some of this into the module, but I think that this sort of thing will end up changing a little from one use case example to the next actually.
+
+## 2 - Update method, range values, and animation demo of shake.js ( r1 )
+
+Sense I first wrote this post I have thus far made one revision of this shake.js module. So far I just made a few changes that have to do with makiking it so that there are just two public methods of ineterst to work with which ar the create and update methods. All the other methods are now interal helper functions rather than addtional methods that I must call. On top of this I thought I should also make a demo of the module that is an animation loop example, rather than that of an event driven example as I did for my first version of this shakle module exmaple.
+
+### 2.1 - The shake.js file (r1)
+
+```js
+/*   r1 of shake.js for threejs-examples-scene-shake
+ *       * just an update public method
+ *       * posRange, degRange, and intensity values
+ */
+(function (api) {
+/********* **********
+  HELPERS
+********** *********/
+    // degree to radian
+    var deg = function (deg) {
+        return Math.PI / 180 * deg;
+    };
+    // random pos value for an axis
+    var rndPos = function (state) {
+        var min = state.pos * -1,
+        max = state.pos * 2;
+        return min + max * Math.random();
+    };
+    // random pos value for an axis
+    var rndDeg = function (state) {
+        var min = deg(state.deg * -1),
+        max = deg(state.deg * 2);
+        return min + max * Math.random();
+    };
+    // just make a roll
+    var roll = function (shake) {
+        shake.euler.x = rndDeg(shake);
+        shake.euler.y = rndDeg(shake);
+        shake.euler.z = rndDeg(shake);
+        shake.vector.x = rndPos(shake);
+        shake.vector.y = rndPos(shake);
+        shake.vector.z = rndPos(shake);
+    };
+    // apply a new shake to object3d
+    var applyToObject3d = function (shake, obj3d) {
+        // save home data
+        if (!obj3d.userData.shakeData) {
+            obj3d.userData.shakeData = {
+                homeVector: new THREE.Vector3().copy(obj3d.position),
+                homeEuler: new THREE.Euler().copy(obj3d.rotation)
+            };
+        }
+        // if shake is active
+        if (shake.active) {
+            // copy shake.euler, and shake.vector to object
+            obj3d.rotation.copy(shake.euler);
+            obj3d.position.copy(shake.vector);
+        } else {
+            // else set back to home location
+            var sd = obj3d.userData.shakeData;
+            obj3d.rotation.copy(sd.homeEuler);
+            obj3d.position.copy(sd.homeVector);
+        }
+    };
+/********* **********
+  CREATE METHOD
+********** *********/
+    api.create = function (opt) {
+        opt = opt || {};
+        var shake = {
+            obj: opt.scene || opt.obj || new THREE.Object3D(), // new obj prop for shake obj
+            posRange: opt.posRange || [0, 0.5],
+            degRange: opt.degRange || [0, 2.25],
+            intensity: opt.intensity || 0,
+            pos: 0,
+            deg: 0,
+            euler: new THREE.Euler(0, 0, 0),
+            vector: new THREE.Vector3(0, 0, 0),
+            active: opt.active || false
+        };
+        return shake;
+    };
+/********* **********
+  UPDATE METHOD
+********** *********/
+    // update the given shake object
+    api.update = function(shake){
+        // new shake.deg and shake.pos values
+        var pMin = shake.posRange[0] * shake.intensity,
+        pMax = shake.posRange[1] * shake.intensity;
+        shake.pos = pMin + ( pMax - pMin ) * Math.random();
+        // new deg value
+        var dMin = shake.degRange[0] * shake.intensity,
+        dMax = shake.degRange[1] * shake.intensity;
+        shake.deg = dMin + ( dMax - dMin ) * Math.random();
+        // new roll for euler and vector values
+        roll(shake);
+        // apply to the shake.obj prop
+        applyToObject3d(shake, shake.obj);
+    };
+}
+    (this['ShakeMod'] = {}));
+```
+
+### 2.2 - The animation loop example of shake.js
+
+```js
+(function () {
+    //******** **********
+    // SCENE, CAMNERA, RENDERER
+    //******** **********
+    var scene = new THREE.Scene();
+    // camera DO NOT ADD TO SCENE
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //******** **********
+    // GRID HELPER AND MESH OBJECT
+    //******** **********
+    var gridHelper = new THREE.GridHelper(5, 5);
+    scene.add(gridHelper);
+    var box = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    box.position.set(0, 0.5, 0);
+    scene.add(box);
+    //******** **********
+    // STATE OBJECT INCLDUING SHAKE OBJECT
+    //******** **********
+    var canvas = renderer.domElement;
+    var state = {
+        frame: 0,
+        maxFrame: 300,
+        fps: 30,
+        lt: new Date(),
+        shake: ShakeMod.create({
+            obj: scene,
+            posRange: [0.25, 0.5],
+            degRange: [5, 20],
+            active: true
+        })
+    };
+    //******** **********
+    // UPDATE AND LOOP
+    //******** **********
+    var update = function (state, secs) {
+        ShakeMod.update(state.shake);
+    };
     // loop
     var loop = function () {
         state.per = state.frame / state.maxFrame;
@@ -198,6 +358,9 @@ Now that I have my shake module together I am going to want a little more javaSc
         secs = (now - state.lt) / 1000;
         requestAnimationFrame(loop);
         if (secs > 1 / state.fps) {
+            // changing intesnity value over time
+            state.shake.intensity = state.bias;
+            // update, render, step frame
             update(state, secs);
             renderer.render(scene, camera);
             state.frame += state.fps * secs;
@@ -210,9 +373,8 @@ Now that I have my shake module together I am going to want a little more javaSc
     ());
 ```
 
-For this demo of the shake module I am using events as a way to adjust the shake pos and deg properties based on the position of a touch move or mouse move event on the canvas element. It is tempting to pull some of this into the module, but I think that this sort of thing will end up changing a little from one use case example to the next actually.
 
-## 4 - Conclusion
+## Conclusion
 
 This turned out to be a quick fun little example of using three.js as a way to create a scene shake module, that can also be used to shake other objects in a three.js environment. When it comes to suing this in projects in which I end up adding the camera to the scene then of course I am not going to want to make the scene object the object to which the shake applies then as the camera will then be relative to the scene object and things will not end up shaking. That kind of problem is easily fixed though by just wrapping everything that I want to shake into a group and then make that group the object that I use with my public method that apples the shake object to a three.js object based off of object 3d.
 
