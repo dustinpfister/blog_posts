@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2022-07-21 14:43:36
-version: 1.19
+updated: 2022-07-21 14:48:00
+version: 1.20
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole [scene object](/2018/05/03/threejs-scene/). When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera that I am suing to render the scene to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
@@ -21,6 +21,9 @@ In this post I am writing about a module that works on top of three.js to provid
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/IYVYW74BdhE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+### Source code is up on Github
+
+The source code examples that I am writing about here can also be found in my text [threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-scene-shake)
 
 ### Version Numbers matter with three.js
 
