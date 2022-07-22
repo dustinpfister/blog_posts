@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2022-07-22 09:08:44
-version: 1.17
+updated: 2022-07-22 10:34:39
+version: 1.18
 ---
 
 There are many built in geometry constructors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of buffer geometry by way of calling a function and passing a few arguments to define certain aspects of the geometry that is created by way of a [javaScript constructor function](/2019/02/27/js-javascript-constructor/). One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder.
@@ -124,6 +124,157 @@ while(i < len - 1){
 renderer.render(scene, camera);
 ```
 
+## 3 – Animation loop example that works by updating object3d values
+
+Say I would like to make an animation in which I have two sets of vectors and I would like to lerp between them to create a current third set of vectors. This third set of vectors would then be used to update the state of the group of capsule geometry mesh objects.
+
+There are two general ideas that come to mind when it comes to this one of which would be to create a new geometry on each update and set the state of the geometry of each mesh object to this new geometry, while the other would just one a single geometry for all mesh objects and just scale the mesh object rather than creating a new geometry for each mesh object each time. For this section I am doing the deal that involves just scaling.
+
+```js
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+var scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(-10, 5, 10);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// LIGHT
+//******** **********
+var dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(-3, 6, 0).normalize();
+scene.add(dl);
+scene.add( new THREE.AmbientLight(0xffffff, 0.03))
+//******** **********
+// HELPERS
+//******** **********
+// update a capsule line group with the given array of vector3 class instances
+var updateCapsuleLine = function(group, vectors, thickness){
+    // defaults for arguments
+    vectors = vectors || [];
+    thickness = thickness === undefined ? 0.25: thickness;
+    var i = 0,
+    len = vectors.length;
+    while(i < len - 1){
+        var v = vectors[i] || new THREE.Vector3(),
+        nv = vectors[i + 1] || new THREE.Vector3(),
+        d = v.distanceTo(nv); // distance from current vector to next vector
+        var mesh = group.children[i];
+        // set scale
+        mesh.scale.set(thickness, thickness, d / 2.0);
+        // position should be a mid point between v and nv
+        var mv = v.clone().add(nv).divideScalar(2);
+        mesh.position.copy(mv);
+        //  and set rotation
+        mesh.lookAt(nv);
+        i += 1;
+    }
+
+};
+// create and return a new group of mesh objects using the capsule geometry
+// using a aray of vector3 class instances
+var createCapsuleLine = function(vectors, material, capsuleGeo){
+    // defaults for arguments
+    vectors = vectors || [];
+    material = material || new THREE.MeshNormalMaterial({});
+    capsuleGeo = capsuleGeo || new THREE.CapsuleGeometry(0.25, 1.5, 20, 20);
+    // create a group and add that to the scene
+    var group = new THREE.Group();
+    // make mesh objects and add them to the group
+    var i = 0,
+    len = vectors.length;
+    while(i < len - 1){
+        var v = vectors[i] || new THREE.Vector3(),
+        nv = vectors[i + 1] || new THREE.Vector3(),
+        d = v.distanceTo(nv); // distance from current vector to next vector
+        var mesh = new THREE.Mesh(
+            capsuleGeo,
+            material);
+        // adjust geo to work well with lookAt
+        mesh.geometry.rotateX(Math.PI * 0.5);
+        group.add(mesh);
+        i += 1;
+    }
+    // update for first time
+    updateCapsuleLine(group, vectors, 1);
+    // return the group
+    return group;
+};
+// array of array of axis values to array of Vector3 class instances
+// if it is all ready an array of vector3S then return clones
+var vectorArrayToVector3Array = function(vectorArray){
+    return vectorArray.map(function(a){
+        if(a instanceof Array){
+            return new THREE.Vector3( a[0], a[1], a[2] );
+        }
+        // assume that it is all ready a Vector3 and return a clone
+        return a.clone();
+    });
+};
+//******** **********
+// VECTORS AND CAPSULE GROUP ONE
+//******** **********
+var vectors1 = vectorArrayToVector3Array([
+    [0, 0, 0 ],
+    [ 0, -5, -5 ],
+    [ 0, -5, 0 ],
+    [ 0, 1, 4 ],
+    [ 4, 1, 4 ],
+    [ 4, 5, 4 ],
+    [ 4, 5, -5 ],
+    [ -5, 5, -5 ]
+]);
+var vectors2 = vectorArrayToVector3Array([
+    [0, 3, 0 ],
+    [ 10, -6, -8 ],
+    [ -5, -5, 0 ],
+    [ 0, -2, 4 ],
+    [ 8, 1, 4 ],
+    [ 0, 5, 4 ],
+    [ 4, 6, -5 ],
+    [ -5, -5, -5 ]
+]);
+var vectors = vectorArrayToVector3Array(vectors1);
+var g1 = createCapsuleLine(vectors, new THREE.MeshStandardMaterial());
+scene.add( g1 );
+//******** **********
+// LOOP
+//******** **********
+var fps = 30,
+lt = new Date(),
+frame = 0,
+maxFrame = 300;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps){
+        // lerp between vectors1 and vectors2 for vectors
+        vectors = vectors.map(function(v, i){
+            var v1 = vectors1[i],
+            v2 = vectors2[i];
+            return v1.clone().lerp(v2, bias);
+        });
+        // update g1 with current state of vectors
+        updateCapsuleLine(g1, vectors, 2 - 1.5 * bias);
+        // render, step frame
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+```
+
+Although this seems to work okay the capsules start to look more like weird oval like shapes. So I might want to look into making a similar example to this that involves creating a new geometry for each mesh object on each update.
+
 ## Conclusion
 
-The capsule geometry is then yet another built in way to go about creating a geometry for a mesh object. Although there may be some drawbacks with doing so I have found that the capsule geometry works okay for creating a tube like path in 3d space, but I am still thinking that the best way to go about doing this sort of thing would be to use curves and tube geometry, or some kind of sultion for doing so. 
+The capsule geometry is then yet another built in way to go about creating a geometry for a mesh object. Although there may be some drawbacks with doing so I have found that the capsule geometry works okay for creating a tube like path in 3d space, but I am still thinking that the best way to go about doing this sort of thing would be to use curves and tube geometry, or some kind of solution for doing so. 
