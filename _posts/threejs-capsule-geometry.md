@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2022-07-22 08:41:04
-version: 1.7
+updated: 2022-07-22 08:42:49
+version: 1.8
 ---
 
 There are many built in geometry constructors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of buffer geometry by way of calling a function and passing a few arguments to define certain aspects of the geometry that is created by way of a [javaScript constructor function](/2019/02/27/js-javascript-constructor/). One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder.
@@ -42,6 +42,8 @@ renderer.render(scene, camera);
 ```
 
 ## 2 - Group of mesh objects using the capsule geometry
+
+Now that I have got the basic example out of the way it is time to start to get into some more involved examples. For this section I am starting to look into he idea of creating a kind of path in space with mesh objects and capsule geometries.
 
 ```js
 //******** **********
