@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2022-07-22 08:33:11
-version: 1.5
+updated: 2022-07-22 08:36:12
+version: 1.6
 ---
 
 There are many built in geometry constructors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of buffer geometry by way of calling a function and passing a few arguments to define certain aspects of the geometry that is created by way of a [javaScript constructor function](/2019/02/27/js-javascript-constructor/). One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder.
@@ -41,7 +41,7 @@ scene.add(mesh);
 renderer.render(scene, camera);
 ```
 
-## 2 - group of mesh objects using the capsule geometry
+## 2 - Group of mesh objects using the capsule geometry
 
 ```js
 //******** **********
@@ -102,3 +102,7 @@ while(i < len - 1){
 //******** **********
 renderer.render(scene, camera);
 ```
+
+## Conclusion
+
+The capsule geometry is then yet another built in way to go about creating a geometry for a mesh object. Although there may be some drawbacks with doing so I have found that the capsule geometry works okay for creating a tube like path in 3d space, but I am still thinking that the best way to go about doing this sort of thing would be to use curves and tube geometry, or some kind of sultion for doing so. 
