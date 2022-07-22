@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2022-07-22 10:34:39
-version: 1.18
+updated: 2022-07-22 12:44:08
+version: 1.19
 ---
 
 There are many built in geometry constructors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of buffer geometry by way of calling a function and passing a few arguments to define certain aspects of the geometry that is created by way of a [javaScript constructor function](/2019/02/27/js-javascript-constructor/). One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder.
@@ -33,7 +33,7 @@ The source code examples that I am writing about in this post as well as my [man
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r140 of threejs with the source code examples and things where working fine on my end with that version of the library.
+When I first wrote this post I was using r140 of threejs with the source code examples and things where working fine on my end with that version of the library. This capsule geometry constructor is still a fairly new feature in threejs and as such the source code examples here will break on any version of theejs that is older than [r139 as that is the revision at which this capsule geometry feature was added to the core of treejs](https://github.com/mrdoob/three.js/releases/tag/r139).
 
 ## 1 - Basic hello world style example of the capsule geometry
 
