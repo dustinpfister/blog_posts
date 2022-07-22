@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2022-07-22 08:50:01
-version: 1.10
+updated: 2022-07-22 08:52:34
+version: 1.11
 ---
 
 There are many built in geometry constructors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of buffer geometry by way of calling a function and passing a few arguments to define certain aspects of the geometry that is created by way of a [javaScript constructor function](/2019/02/27/js-javascript-constructor/). One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder.
@@ -17,7 +17,7 @@ The nature of the capsule geometry is interesting as with a little code it can m
 
 ## Capsule Geometry and what to know first
 
-This is not a getting started with threejs type post, let alone with javaScript in general as well. So I assume that you have at least some background with threejs to begin with, if not you might find this post hard to follow. Even if you have some background with threejs you migt want to read up more on some additional topics before continuing with the rest of this post.
+This is not a getting started with threejs type post, let alone with javaScript in general as well. So I assume that you have at least some background with threejs to begin with, if not you might find this post hard to follow. Even if you have some background with threejs you might want to read up more on some additional topics before continuing with the rest of this post. In the opening of this post I mentioned the curve class as well as the tube geometry, which is one of many ways to go about drawing a something that is like a line in 3d space. However there are a number of other ways to do so that are also worth looking into when it comes to this sort of thing, some of wich I will be briefly covering in this section.
 
 ## 1 - Basic hello world style example of the capsule geometry
 
