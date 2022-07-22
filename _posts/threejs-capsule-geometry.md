@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2022-07-22 09:04:28
-version: 1.16
+updated: 2022-07-22 09:08:44
+version: 1.17
 ---
 
 There are many built in geometry constructors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of buffer geometry by way of calling a function and passing a few arguments to define certain aspects of the geometry that is created by way of a [javaScript constructor function](/2019/02/27/js-javascript-constructor/). One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder.
@@ -22,6 +22,10 @@ This is not a [getting started with threejs](/2018/04/04/threejs-getting-started
 ### Read up more on the Vector3 class
 
 In the more advance examples that I am writing about in this post I am making heavy use of [Vector3 class features](/2018/04/15/threejs-vector3/). This is a major class in threejs that has to do with a state of a vector in 3d space. It is useful for many various tasks that have to do with specific points in space, as such it is used for things like the position property of anything based off of the [obect3d base class](/2018/04/23/threejs-object3d/) such a [mesh objects](/2018/05/04/threejs-mesh/).
+
+### There is also the Line constructor for drawing lines in space
+
+Another option for drawing lines in space would be the [THREE.Line constructor](/2018/04/19/threejs-line/) that can easily be used to draw a line in space with an array of points rather that an instance of the curve class. However one major drawback of this is that it will only work with line materials rather than mesh materials. So if I want to add texture and various maps and make use of other feature sin the various mesh materials I will want to use tube geometry, or make use of some kind of solution that involves a collection  of mesh objects using the capsule geometry.
 
 ### Source code can also be found on Github
 
