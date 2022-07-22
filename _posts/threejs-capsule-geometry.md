@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2022-07-22 12:44:08
-version: 1.19
+updated: 2022-07-22 12:45:29
+version: 1.20
 ---
 
 There are many built in geometry constructors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of buffer geometry by way of calling a function and passing a few arguments to define certain aspects of the geometry that is created by way of a [javaScript constructor function](/2019/02/27/js-javascript-constructor/). One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder.
@@ -26,6 +26,8 @@ In the more advance examples that I am writing about in this post I am making he
 ### There is also the Line constructor for drawing lines in space
 
 Another option for drawing lines in space would be the [THREE.Line constructor](/2018/04/19/threejs-line/) that can easily be used to draw a line in space with an array of points rather that an instance of the curve class. However one major drawback of this is that it will only work with line materials rather than mesh materials. So if I want to add texture and various maps and make use of other feature sin the various mesh materials I will want to use tube geometry, or make use of some kind of solution that involves a collection  of mesh objects using the capsule geometry.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/2iJYFI6axsY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Source code can also be found on Github
 
