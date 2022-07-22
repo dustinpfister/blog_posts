@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2022-07-22 08:36:12
-version: 1.6
+updated: 2022-07-22 08:41:04
+version: 1.7
 ---
 
 There are many built in geometry constructors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of buffer geometry by way of calling a function and passing a few arguments to define certain aspects of the geometry that is created by way of a [javaScript constructor function](/2019/02/27/js-javascript-constructor/). One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder.
@@ -18,7 +18,7 @@ The nature of the capsule geometry is interesting as with a little code it can m
 
 ## 1 - Basic hello world style example of the capsule geometry
 
-I always like to start out a post like this with a very basic getting started type example, so in this section I will be getting this one out of the way so I can then move on to the good stuff. Here as with any other quick simple threejs example I am creating a scene object, camera, and setting up a renderer. After that I will want to cerate a single mesh object ans add it as a child of the scene object and when doing so I will of course be using the capsule geometry constructor for this mesh object.
+I always like to start out a post like this with a very basic getting started type example, so in this section I will be getting this one out of the way so I can then move on to the good stuff. Here as with any other quick simple threejs example I am creating a scene object, camera, and setting up a renderer. After that I will want to cerate a single mesh object ans add it as a child of the scene object and when doing so I will of course be using the capsule geometry constructor for this mesh object. When doing so the first argument is the radius of the capsule, followed by length, and values for the number of cap and radius sub divisions. When it comes to materials I am just going with the normals material for this example as I do not care to do anything fancy with light and textures for this example.
 
 ```js
 // SCENE, CAMERA, RENDERER
