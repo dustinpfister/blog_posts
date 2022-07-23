@@ -1,12 +1,12 @@
 ---
 title: THREEJS Looping land animation using the Object grid wrap module
-date: 2022-07-25 08:55:00
+date: 2022-07-15 08:55:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-07-19 10:31:57
-version: 1.14
+updated: 2022-07-23 12:27:42
+version: 1.15
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
