@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 988
-updated: 2022-07-20 10:19:52
-version: 1.20
+updated: 2022-07-23 12:28:29
+version: 1.21
 ---
 
 I have some ideas for videos that involve a gird of objects the position of which will move, but will also wrap around when also. In other words I would like to have some kind of simple javaScript module in which I can define an array of source objects, and then have an array of index values for tile location in the grid where each index value refers to an object to clone from the source objects array. So then this kind of module could be used in all kinds of ways when it comes to making some kind of looping world that I can then move around in. The module can be used with a number of other components that involve additional objects that might be elements of the main focus of the over all video, but this module would be a nice way to have some kind of repeating background.
@@ -649,4 +649,4 @@ loop();
 
 So far so good with this object grid wrap module, I have a basic idea of what I wanted in mind and that basic idea is now up and running. At this point I might want to make yet another revision at some point, but in order to really be sure of what is needed in terms of new features and what needs to be fixed I will want to make at least a few if not more projects that make use of this module. I have a bad habit of making some projects far more complex than they need to be, and the general idea with this is working so I want to maybe slow down a little and focus more so on making additional examples with this module.
 
-With that said as of this latest edit of this post I have made one new additional example in which I am working on top of this object grid wrap module. If you would like to check this out it is my [object grid wrap land module example post](/2022/07/25/threejs-examples-object-grid-wrap-land).
+With that said as of this latest edit of this post I have made one new additional example in which I am working on top of this object grid wrap module. If you would like to check this out it is my [object grid wrap land module example post](/2022/07/15/threejs-examples-object-grid-wrap-land).
