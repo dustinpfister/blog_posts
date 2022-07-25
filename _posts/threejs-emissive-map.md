@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-07-25 13:29:39
-version: 1.39
+updated: 2022-07-25 13:31:29
+version: 1.40
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an [alpha map](/2019/06/06/threejs-alpha-map/) to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -169,6 +169,8 @@ renderer.render(scene, camera);
 The end result of this then is a cube where the sides are lit up a little because of the presence of the light source in the form of a point light. However regardless of what the lighting situation is with a side all the areas effected by the emissive map are glowing a little with the color that I set with the emissive property.
 
 ## 3 - Animation loop with directional light and updating textures
+
+When I write posts on subjects like this I have come to find that I should make at least one of not more animation loop examples. So this section will be about a quick example that involves a animation lop function powered by the request animation frame method.
 
 ```js
 //******** **********
