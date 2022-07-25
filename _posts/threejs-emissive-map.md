@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-07-25 15:03:19
-version: 1.41
+updated: 2022-07-25 15:06:30
+version: 1.42
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an [alpha map](/2019/06/06/threejs-alpha-map/) to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -306,6 +306,8 @@ var loop = function () {
 };
 loop();
 ```
+
+On top of also updating the texture used for both of the map and emissive map, I am also changing the location of a directional light as a way to show that as the light moves that will effect the map. That is that the light source will effect the noise texture used with the map, but it will not do anything with the emssive map as that will always show up no matter what regardless of what the state if with light in the scene object.
 
 ## Conclusion
 
