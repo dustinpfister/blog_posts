@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2022-07-22 12:45:29
-version: 1.20
+updated: 2022-07-25 10:59:48
+version: 1.21
 ---
 
 There are many built in geometry constructors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of buffer geometry by way of calling a function and passing a few arguments to define certain aspects of the geometry that is created by way of a [javaScript constructor function](/2019/02/27/js-javascript-constructor/). One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder.
@@ -19,6 +19,10 @@ The nature of the capsule geometry is interesting as with a little code it can m
 
 This is not a [getting started with threejs](/2018/04/04/threejs-getting-started/) type post, let alone with javaScript in general as well. So I assume that you have at least some background with threejs to begin with, if not you might find this post hard to follow. Even if you have some background with threejs you might want to read up more on some additional topics before continuing with the rest of this post. In the opening of this post I mentioned the curve class as well as the tube geometry, which is one of many ways to go about drawing a something that is like a line in 3d space. However there are a number of other ways to do so that are also worth looking into when it comes to this sort of thing, some of which I will be briefly covering in this section.
 
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/2iJYFI6axsY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
 ### Read up more on the Vector3 class
 
 In the more advance examples that I am writing about in this post I am making heavy use of [Vector3 class features](/2018/04/15/threejs-vector3/). This is a major class in threejs that has to do with a state of a vector in 3d space. It is useful for many various tasks that have to do with specific points in space, as such it is used for things like the position property of anything based off of the [obect3d base class](/2018/04/23/threejs-object3d/) such a [mesh objects](/2018/05/04/threejs-mesh/).
@@ -27,7 +31,6 @@ In the more advance examples that I am writing about in this post I am making he
 
 Another option for drawing lines in space would be the [THREE.Line constructor](/2018/04/19/threejs-line/) that can easily be used to draw a line in space with an array of points rather that an instance of the curve class. However one major drawback of this is that it will only work with line materials rather than mesh materials. So if I want to add texture and various maps and make use of other feature sin the various mesh materials I will want to use tube geometry, or make use of some kind of solution that involves a collection  of mesh objects using the capsule geometry.
 
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/2iJYFI6axsY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Source code can also be found on Github
 
