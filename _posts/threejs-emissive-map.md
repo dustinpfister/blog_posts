@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-07-25 13:31:29
-version: 1.40
+updated: 2022-07-25 15:03:19
+version: 1.41
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an [alpha map](/2019/06/06/threejs-alpha-map/) to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -170,7 +170,9 @@ The end result of this then is a cube where the sides are lit up a little becaus
 
 ## 3 - Animation loop with directional light and updating textures
 
-When I write posts on subjects like this I have come to find that I should make at least one of not more animation loop examples. So this section will be about a quick example that involves a animation lop function powered by the request animation frame method.
+When I write posts on subjects like this I have come to find that I should make at least one of not more animation loop examples. The main thing here might be how to go about creating a new texture on each frame tick with data textures or canvas elements. So this section will be about a quick example that involves a animation lop function powered by the request animation frame method, and in the body of this loop method I will be creating anew textures each frame tick.
+
+To create new textures with data textures I went with some code that I made for my video ground project that I just hacked over a little. The main thing about this data texture module is that I have a for each mix public method that is a function that I can use to quickly create a data texture with some javaScript logic that will be applied for each pixel. This is what I will be using to then make two additional helper functions that will create and return a new texture each time that it is called. One helper function will return just random noise and this is what I will be using for the color map of this example, the other will return a circle area, and will take one argument that can be used to adjust the radius which is what I will be using for the emissive map.
 
 ```js
 //******** **********
