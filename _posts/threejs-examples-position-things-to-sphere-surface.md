@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2022-07-26 11:55:52
-version: 1.24
+updated: 2022-07-26 12:03:51
+version: 1.25
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic [threejs project examples](/2021/02/19/threejs-examples/). Today I think I will write about another basic project idea and this time it is a simple module for [creating a group](/2018/05/16/threejs-grouping-mesh-objects/) that contains one [Mesh object](/2018/05/04/threejs-mesh/) that contains a [sphere for the geometry](/2021/05/26/threejs-sphere/), and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -19,9 +19,16 @@ When writing the source code for this example I ended up exercising a few method
 
 ##  This Sphere Surface Mesh Placement example and what to know first before getting into
 
-This is a post on a three.js project example that is a module that I can use to create a sphere, with other mesh objects positioned onto the surface of the sphere. This is then a post that is on a somewhat advance topic, and is then not any kind of post that has to do with the [basics of getting started with threejs](/2018/04/04/threejs-getting-started/).
+This is a post on a three.js project example that is a module that I can use to create a sphere, with other mesh objects positioned onto the surface of the sphere. This is then a post that is on a somewhat advance topic, and is then not any kind of post that has to do with the [basics of getting started with threejs](/2018/04/04/threejs-getting-started/). I will not be getting into basic things about threejs and javaScript in general in this post, but I do still often write about a few things you might want to read up more on in these opening sections.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/QSdjTqOvJVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+### Check out the Vector3 class
+
+There are a lot of usful methods in the vector3 class that can be used to help with this sort of thing. One such method is the [set from spherical coords method](/2022/02/04/theejs-vector3-set-from-spherical-coords/) of vector3, but there is also the [apply euler](/2021/06/18/threejs-vector3-apply-euler/) method that can be used with a collection of other methods in the class also.
+
+### Raycaster is worth looking into also
+
+The [raycaster class](/2021/05/18/threejs-raycaster/) could also be used to do this sort of thing. A raycaster might prove to be a little overkill when it comes to a sphere, but it would prove to be more flexible when it comes to geometry in general beyond just that of a sphere.
 
 ### Version Numbers matter with three.js
 
