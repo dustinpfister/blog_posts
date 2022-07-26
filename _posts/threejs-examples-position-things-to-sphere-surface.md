@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2022-07-26 12:03:51
-version: 1.25
+updated: 2022-07-26 12:05:14
+version: 1.26
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic [threejs project examples](/2021/02/19/threejs-examples/). Today I think I will write about another basic project idea and this time it is a simple module for [creating a group](/2018/05/16/threejs-grouping-mesh-objects/) that contains one [Mesh object](/2018/05/04/threejs-mesh/) that contains a [sphere for the geometry](/2021/05/26/threejs-sphere/), and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -24,7 +24,7 @@ This is a post on a three.js project example that is a module that I can use to 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/QSdjTqOvJVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ### Check out the Vector3 class
 
-There are a lot of usful methods in the vector3 class that can be used to help with this sort of thing. One such method is the [set from spherical coords method](/2022/02/04/theejs-vector3-set-from-spherical-coords/) of vector3, but there is also the [apply euler](/2021/06/18/threejs-vector3-apply-euler/) method that can be used with a collection of other methods in the class also.
+There are a lot of usful methods in the vector3 class that can be used to help with this sort of thing. One such method is the [set from spherical coords method](/2022/02/04/threejs-vector3-set-from-spherical-coords/) of vector3, but there is also the [apply euler](/2021/06/18/threejs-vector3-apply-euler/) method that can be used with a collection of other methods in the class also.
 
 ### Raycaster is worth looking into also
 
