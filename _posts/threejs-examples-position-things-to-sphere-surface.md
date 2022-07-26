@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2022-07-26 11:49:18
-version: 1.22
+updated: 2022-07-26 11:53:21
+version: 1.23
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic [threejs project examples](/2021/02/19/threejs-examples/). Today I think I will write about another basic project idea and this time it is a simple module for [creating a group](/2018/05/16/threejs-grouping-mesh-objects/) that contains one [Mesh object](/2018/05/04/threejs-mesh/) that contains a [sphere for the geometry](/2021/05/26/threejs-sphere/), and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -67,6 +67,8 @@ Sense I am taking a whole new approach to this sort of thing with this revision 
 ```
 
 ### 1.2 - Demo of r1
+
+When creating a project with this module I can now just create mesh objects however I like when it comes to the mesh that is the sphere an any number of other mesh objects that i would like to place on the surface of the sphere. For this demo I just make a single mesh with a sphere geometry, and one other mesh using the box geometry. In the body of the app loop function I am then using the position of sphere method, and then the look at method of the object3d class as a way to set rotation of the object that I am placing on the sphere.
 
 ```js
 //******** **********
