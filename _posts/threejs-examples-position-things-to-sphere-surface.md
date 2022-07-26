@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2022-04-13 08:09:13
-version: 1.20
+updated: 2022-07-26 11:43:44
+version: 1.21
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic [threejs project examples](/2021/02/19/threejs-examples/). Today I think I will write about another basic project idea and this time it is a simple module for [creating a group](/2018/05/16/threejs-grouping-mesh-objects/) that contains one [Mesh object](/2018/05/04/threejs-mesh/) that contains a [sphere for the geometry](/2021/05/26/threejs-sphere/), and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -14,17 +14,28 @@ I still have some more writing when it comes to all the various little methods a
 I am sure that there are a number of ways of going about doing this sort of thing, but the example that I worked out that I will be writing about here involves rotating a group, and then just changing the position of a child of this group as a way to go about doing this. In any case the general idea that I have in mind here is to actually have some kind of 2d coordinate system when it comes to latitude and longitude type values. That is that i just want to have a way to position a mesh object onto the surface of a sphere by way of just setting two values that will determine the position of the sphere on the surface.
 
 When writing the source code for this example I ended up exercising a few methods and features of three.js that are worth writing about also that can apply to a great many other things. For example there is using the look at method of the object3d class to get a mesh object to look at the center of the sphere. However when doing so I want to mesh to look at the actual center of the sphere rather than the location relative to world space so I am also using the get world position method of the object3d class to do so. However because I am always having the mesh objects look at the center of the sphere I will also want to make sure that the geometries of the mesh objects are always looking up away from the sphere, or in any other direction that I might want apart from the downward direction. So to help with this there are methods to work with when it comes to an instance of Buffer Geometry to change the orientation of the geometry independent from that of the mesh object.
+
 <!-- more -->
 
-## 1 - What to know first before getting into this Sphere Surface Mesh Placement example
+##  This Sphere Surface Mesh Placement example and what to know first before getting into
 
-This is a post on a three.js project example that is a module that I can use to create a sphere, with other mesh objects positioned onto the surface of the sphere. This is then not any kind of post that has to do with the [basics of getting started with threejs](/2018/04/04/threejs-getting-started/).
+This is a post on a three.js project example that is a module that I can use to create a sphere, with other mesh objects positioned onto the surface of the sphere. This is then a post that is on a somewhat advance topic, and is then not any kind of post that has to do with the [basics of getting started with threejs](/2018/04/04/threejs-getting-started/).
 
-### 1.1 - Version Numbers matter with three.js
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/QSdjTqOvJVY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Version Numbers matter with three.js
 
 When I wrote this post I was using three.js version r127 which was a late version of three.js at of April of 2021. Always be mindful of the dates of posts, as well as the dates at which I have last updated them. many code breaking changes are introduced to three.js that will case code examples such as the ones I have outline here to stop working. I do make an effort to update my content and the code examples in them now and then, but I have a whole lot of other posts on three.js and other categories that are also in need of some editing.
 
-## 2 - The Sphere wrap module
+## 1 - Using Vector3 Copy, add, and Apply Euler methods with the radius of the Sphere class instance of the Sphere Geometry ( r1 )
+
+When I first wrote this blog post I was writing about the first version of the example that was a solution involving the use of groups as a way to get a desired end result. With r1 of the example I am now making use of a collection of vector3 class methods along with the radius property of the sphere class as a way to get a desired end result.
+
+
+
+## 2 - The first version of this example ( r0 )
+
+### 2.1 - The Sphere wrap module
 
 In this section I will be going over the source code of this sphere warp module that creates an instance of a special group that contains a sphere as a child, along with another group that contains object wrap groups. Each object wrap group then contains a Mesh Object. The system is a little convoluted, and I am sure than in time I might be able to find or more elegant solution for this sort of thing, however when  it just comes to how things look the module seems to work as I expect it to.
 The main create wrap method is what I will be using in the main javaScript file of a project that uses this module to create an instance of this sphere wrap group. The value that is returned by the create wrap method is an instance of the THREE.Group class which is of course based on object3d. So the object that is returned by the create method can just be directly passed to the add method of the scene object when I use this module. I then park any additional data that I will be using with my other methods in the user data object of this main wrap method and any other groups and mesh objects as needed.
@@ -100,7 +111,7 @@ To add a Mesh object to be placed on the surface of the sphere I will want to us
 
 I then also have my set object to lat and long method that is what I can use to set the position of the mesh relative to a location on the surface of the sphere. When calling this method I pass the wrap object as the first object followed by the name of the object I want to set the position for. I can then set a latitude and longitude values in the form of numbers between 0 and 1. I then also have an additional argument that can be used to adjust the distance from the center of the sphere.
 
-## 3 - Time to test this module out
+### 2.2 - Time to test this module out
 
 In this section I will now be going over one demo of this module to test things out and make sure that everything is working as it should before toying with the idea of using this module in additional examples. In this demo of the sphere wrap module I set up an instance of a scene object, and then also set up my camera and renderer as well as an an animation loop method like many other such three.js examples.
 
@@ -191,7 +202,7 @@ loop();
 
 In the main animation loop of this demo I am moving the objects in the surface of one of the sphere wrap instances, and also moving the sphere wrap group itself. It would seem that everything is working they way that it should thus far with this the objects on the surface move as they should along the surface of the sphere, and the whole group moves when I change those values.
 
-## 4 - Conclusion
+## Conclusion
 
 I learned a lot about three.js while working on this example, and a whole lot of other examples that I worked on this week. There are still a few methods and properties of classes like the object3d class that I have just not been using that much thus far, but now have a better understand of the class and why I some times need to use methods like the get world position method of the object 3d class. As such much of what I have worked out here will apply to future edits of other three.js posts, and examples when it comes to addressing some problems that I have discovered with some of my older work.
 
