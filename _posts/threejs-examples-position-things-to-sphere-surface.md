@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2022-07-26 11:43:44
-version: 1.21
+updated: 2022-07-26 11:49:18
+version: 1.22
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic [threejs project examples](/2021/02/19/threejs-examples/). Today I think I will write about another basic project idea and this time it is a simple module for [creating a group](/2018/05/16/threejs-grouping-mesh-objects/) that contains one [Mesh object](/2018/05/04/threejs-mesh/) that contains a [sphere for the geometry](/2021/05/26/threejs-sphere/), and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -31,7 +31,99 @@ When I wrote this post I was using three.js version r127 which was a late versio
 
 When I first wrote this blog post I was writing about the first version of the example that was a solution involving the use of groups as a way to get a desired end result. With r1 of the example I am now making use of a collection of vector3 class methods along with the radius property of the sphere class as a way to get a desired end result.
 
+### 1. new sphere wrap module
 
+Sense I am taking a whole new approach to this sort of thing with this revision I made some major changes from the ground up, and for now the sphere wrap module now just has a single public method. This single method now is the position to sphere method where I pass a mesh that has sphere trigonometry as the first argument, then the object I want to position to the sphere as the second argument. After that I can give lat and long values in 0 to 1 number form, along with an altitude arguyemt as the final argument when calling the method.
+
+```js
+/*  sphere_wrap.js - r1 - from threejs-examples-position-things-to-sphere-surface
+ *  
+ */
+(function (api) {
+    // position a mesh to a sphere mesh with a given lat, long, and alt
+    api.positionToSphere = function(sphereMesh, mesh, lat, long, alt){
+        // defaults for lat, long, and alt
+        lat = lat === undefined ? 0 : lat;
+        long = long === undefined ? 0 : long;
+        alt = alt === undefined ? 0 : alt;
+        // get geometry of the sphere mesh
+        var sGeo = sphereMesh.geometry;
+        // computer bounding sphere for geometry of the sphere mesh
+        sGeo.computeBoundingSphere();
+        // use radius value of Sphere instance at 
+        // boundingSphere of the geometry of sphereMesh
+        var radius = sGeo.boundingSphere.radius;
+        // position mesh to position of sphereMesh, and translate
+        // from there using lat, long, alt, and radius of sphereMesh
+        // using the copy, add, and apply Euler methods of the Vector3 class
+        var v1 = new THREE.Vector3(0, radius + alt, 0);
+        var x = Math.PI * lat;
+        var z = Math.PI * 2 * long;
+        var e1 = new THREE.Euler(x, 0, z)
+        mesh.position.copy(sphereMesh.position).add(v1).applyEuler(e1);
+    };
+}
+    (this['SphereWrap'] = {}));
+```
+
+### 1.2 - Demo of r1
+
+```js
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(3.0, 3.0, 3.0);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// MESH OBJECTS
+//******** **********
+var sphere1 = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 30, 30),
+    new THREE.MeshNormalMaterial({wireframe: true})
+);
+scene.add(sphere1);
+var box1 =  new THREE.Mesh(
+    new THREE.BoxGeometry(0.5, 0.5, 0.5),
+    new THREE.MeshNormalMaterial()
+);
+scene.add(box1);
+//******** **********
+// LOOP
+//******** **********
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+var lt = new Date(),
+frame = 0,
+maxFrame = 100,
+fps = 30;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+ 
+        // position to sphere
+        var p = per * 6 % 1,
+        b = 1 - Math.abs(0.5 - p) / 0.5;
+        SphereWrap.positionToSphere(sphere1, box1, 0.75 - 0.5 * b, per, 0.25);
+ 
+        // using lookAt method to set box rotation
+        box1.lookAt(sphere1.position);
+ 
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+}
+loop();
+```
 
 ## 2 - The first version of this example ( r0 )
 
