@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-07-27 08:06:16
-version: 1.38
+updated: 2022-07-27 08:09:18
+version: 1.39
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
@@ -27,7 +27,7 @@ In most situations the Orthographic Camera may not be the best choice for a proj
 
 ### Be mindful of the base camera and object3d classes
 
-There is also reading up more on the [base camera class in threejs](/2018/04/06/threejs-camera/) that contains what there is to worth with across all types of cameras. There are properties in the base class like isCamera as well as methods like the get world direction. On top of the base camera class there is also the object3d class that is not only a base class of the camera class, but also a base class of many objects in threejs including mesh objects, groups, and even whole scene objects.
+There is also reading up more on the [base camera class in threejs](/2018/04/06/threejs-camera/) that contains what there is to worth with across all types of cameras. There are properties in the base class like isCamera as well as methods like the get world direction. On top of the base camera class there is also the [object3d class](/2018/04/23/threejs-object3d/) that is not only a base class of the camera class, but also a base class of many objects in threejs including mesh objects, groups, and even whole scene objects.
 
 ### The source code in this post is on github
 
