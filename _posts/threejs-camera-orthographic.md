@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-07-27 09:57:50
-version: 1.42
+updated: 2022-07-27 11:01:31
+version: 1.43
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
@@ -85,13 +85,13 @@ After setting up the camera the way I want it I then created a scene object, add
 
 ## 2 - A Orthographic Camera example involving a fun little code stack module
 
-In this example I am just using the Orthographic Camera alone to look at a random cube stack module instance thing that I made for this post alone. This cube stack thing resembles a small city scape or something to that effect, but it is really just to have something that is composed mainly of a bunch of cubes that are all the same uniform size.
+In this example I am just using the Orthographic Camera alone to look at a random cube stack module instance thing that I made for this post alone. This cube stack thing resembles a small cityscape or something to that effect, but it is really just to have something that is composed mainly of a bunch of cubes that are all the same uniform size.
 
 ### 2.1 - The Cube Stack Model
 
-So In order to appreciate the differences between the orthographic, and perspective cameras in three.js I will first need some kind of scene that will help express that well. So that being said I made a model that I think will help make a scene that can do that very well.
+In order to appreciate the differences between the orthographic, and perspective cameras in three.js I will first need some kind of scene that will help express that well. So that being said I made a model that I think will help make a scene that can do that very well.
 
-The model will generate a scene consisting of a plane, and a whole bunch of cubes randomly positioned over the plane, and on top of each other. This will result in something that might resemble a city, with many high buildings at different heights, or something to that effect.
+For this first version of the cube stack module I just have a function returned that will generate a group object. I made the main function and only function that is returned a constructor function, so I will be using the new keyword when calling it in the main javaScript file that will make use of this.
 
 ```js
 var CubeStack = (function () {
@@ -249,11 +249,11 @@ After that I can use set method of the Vector3 instance of the position property
     ());
 ```
 
-I then created and added to the scene an instance of this cube stack model that I made. Arther that is set and done I set up and append to the html an instance of a WebGl renderer. I am then going to want to have a main animation loop in which I will be changing the position of the camera and make it so that the camera will orbit around this cube stack module.
+I then created and added to the scene an instance of this cube stack model that I made. After that is set and done I set up and append to the html an instance of a WebGl renderer. I am then going to want to have a main animation loop in which I will be changing the position of the camera and make it so that the camera will orbit around this cube stack module.
 
 ## 3 - The Three.js Orthographic Camera Example compared to the perspective camera
 
-This cube stack modules that I made is kind of cool, but there is a lot more that I would like to add to it and fix. I will also want to make a demo that will show the difference between the two most common camera types by comparing what is rendered using an orthographic camera to that of a perspective camera. To do this I will want to use more than one camera in my demo by hvaing an array of cameras rather than just one camera and switch between the two as part of an update loop.
+This cube stack modules that I made is kind of cool, but there is a lot more that I would like to add to it and fix. I will also want to make a demo that will show the difference between the two most common camera types by comparing what is rendered using an orthographic camera to that of a perspective camera. To do this I will want to use more than one camera in my demo by having an array of cameras rather than just one camera and switch between the two as part of an update loop.
 
 ### 3.1 - The new cube stack module for this example
 
@@ -427,9 +427,81 @@ In order to get a good sense of the difference between the orthographic camera c
 
 When all goes well this will result in a rotating scene that looks like a bunch of buildings. The example will switch between camera 0 \(perspective\), and camera 1 \(orthographic\). If you take the time to reproduce this you will notice that it is easier to tell what the size is of things.
 
+## 4 – updating the parameters of a orthographic camera over time
+
+Just like that of the perspective camera there is also an update projection matrix method of the camera that I will want to call when changing any of the values that are set when calling the constructor for the first time. So if I want to change the left, right, top, bottom, near, or far values in an update loop I will want to call this function after making the changes or else what I have done will not take effect.
+
+```js
+(function () {
+    //******** **********
+    // SCENE, RENDERER, LIGHT
+    //******** **********
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color(0.25, 0.25, 0.25);
+    scene.add(new THREE.GridHelper(10,10));
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var light = new THREE.PointLight();
+    light.position.set(0, 3, 6);
+    scene.add(light);
+    //******** **********
+    // CAMERA
+    //******** **********
+    var width = 4.0,
+    height = 4.0;
+    var camera = new THREE.OrthographicCamera(
+            -width,
+            width,
+            height,
+            -height,
+            0.01,
+            100);
+    camera.position.set(5,2,5);
+    camera.lookAt(0, 0, 0);
+    //******** **********
+    // MESH
+    //******** **********
+    var material = new THREE.MeshNormalMaterial();
+    var m1 = new THREE.Mesh( new THREE.BoxGeometry(1,1,1), material );
+    m1.position.set(0, 0.5, 0);
+    scene.add( m1 );
+    var m2 = new THREE.Mesh( new THREE.BoxGeometry(1,3,1), material );
+    m2.position.set(-3, 1.5, 1);
+    scene.add( m2 );
+    var m3 = new THREE.Mesh( new THREE.BoxGeometry(1,3,1), material );
+    m3.position.set(3, 1.5, -1);
+    scene.add( m3 );
+    //******** **********
+    // lOOP
+    //******** **********
+    var frame = 0,
+    maxFrame = 300;
+    var loop = function () {
+        var per = frame / maxFrame;
+        requestAnimationFrame(loop);
+        // SETTING LEFT, RIGHT, TOP, AND BOTTOM PROPS
+        var b = 1 - Math.abs(0.5 - per) / 0.5;
+        width = 4 + 4 * b;
+        height = 4 - 2 * b;
+        camera.left = width * -1;
+        camera.right = width;
+        camera.top = height;
+        camera.bottom = height * -1;
+        // CALLING UPDATE PROJECTION MATRIX METHOD
+        camera.updateProjectionMatrix();
+        // render, step
+        renderer.render(scene, camera);
+        frame += 1;
+        frame = frame % maxFrame;
+    };
+    loop();
+}());
+```
+
 ## Conclusion
 
-In just about all three.js projects I am typicality going to want to go with the perspective camera actually when it comes to features of three.js that I am actually using most of the time. Still if I am going to use a camera other that the perspective camera I would say that the orthographic camera is at the top if the list. It does result in a cool kind of visual look that I think will also prove to be usful for certain games, and animations that I might choose to make from time to time.
+In just about all three.js projects I am typicality going to want to go with the perspective camera actually when it comes to features of three.js that I am actually using most of the time. Still if I am going to use a camera other that the perspective camera I would say that the orthographic camera is at the top if the list. It does result in a cool kind of visual look that I think will also prove to be useful for certain games, and animations that I might choose to make from time to time.
 
 However in any case I think the coolest thing that I made while working on this post was this cube stack module that I might want to come back to again and again every once in a while. In fact I think it might be a good idea to crate another threejs project example in which I am creating and working with a grid of these with different settings when it comes to the count of cube in each cube stack.
 
