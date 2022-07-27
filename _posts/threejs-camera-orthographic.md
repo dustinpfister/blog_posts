@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-07-27 11:01:31
-version: 1.43
+updated: 2022-07-27 11:03:08
+version: 1.44
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
@@ -427,7 +427,7 @@ In order to get a good sense of the difference between the orthographic camera c
 
 When all goes well this will result in a rotating scene that looks like a bunch of buildings. The example will switch between camera 0 \(perspective\), and camera 1 \(orthographic\). If you take the time to reproduce this you will notice that it is easier to tell what the size is of things.
 
-## 4 – updating the parameters of a orthographic camera over time
+## 4 - updating the parameters of a orthographic camera over time
 
 Just like that of the perspective camera there is also an update projection matrix method of the camera that I will want to call when changing any of the values that are set when calling the constructor for the first time. So if I want to change the left, right, top, bottom, near, or far values in an update loop I will want to call this function after making the changes or else what I have done will not take effect.
 
