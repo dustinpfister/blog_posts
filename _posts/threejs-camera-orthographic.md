@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-07-27 08:09:18
-version: 1.39
+updated: 2022-07-27 08:17:52
+version: 1.40
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
@@ -39,7 +39,7 @@ When I first wrote this post back in May of 2018 I as using revision r91 of thre
 
 ## 1 - A basic example of the Orthographic Camera
 
-First off it would be best to just start out with a simple getting started type example with the orthographic camera. So in this example I am just creating an instance of the orthographic camera with the THREE.OrthographicCamera, and storing the returned instance of the camera to a variable. When doing to the set of arguments that I pass to the constructor will differ a little from the usual perspective camera constructor. In place of values that have to do with field of view, aspect ratio and so forth there are values for setting the left, right, top, and bottom values of a box. After that there is just setting the near and far render distance values just like with the perspective camera.
+First off it would be best to just start out with a simple getting started type example with the orthographic camera. So in this example I am just creating an instance of the orthographic camera with the THREE.OrthographicCamera [constructor function](/2019/02/27/js-javascript-constructor/), and storing the returned instance of the camera to a variable called camera. When doing so the set of arguments that I pass to the constructor will differ a little from the usual perspective camera constructor as the arguments are used to define a box like area. In other words in place of values that have to do with field of view, aspect ratio and so forth there are values for setting the left, right, top, and bottom values of a box like shape in space rather than that of a pyramid. After that there is just setting the near and far render distance values just like with the perspective camera to define a render distance as always.
 
 ```js
 (function () {
@@ -75,6 +75,10 @@ First off it would be best to just start out with a simple getting started type 
 }
     ());
 ```
+
+Once I have my instance of the orthographic camera I can use camera and object3d base classes and properties as with any other camera. For example I can use the instance of vector3 stored at the position property to set the position of the camera in space, and the look at method as a way to set rotation both of which are object3d features.
+
+After setting up the camera the way I want it I then created a scene object, added a mesh to look at and also set up the renderer that i want to use for the example. I can now use the render method of the renderer with a scene object, and my camera object to draw the contents of the scene using the orthographic camera.
 
 ## 2 - A Orthographic Camera example involving a fun little code stack module
 
