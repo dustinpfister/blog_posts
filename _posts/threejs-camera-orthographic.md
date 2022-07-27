@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-07-27 07:56:00
-version: 1.36
+updated: 2022-07-27 08:01:11
+version: 1.37
 ---
 
-In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
+In [three.js](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
 
 I often do use the perspective camera as with most of the projects I work on I want to use a camera that works like that of the human eye, but the main other camera of interest outside of that would be the orthographic camera first and foremost. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why I might want to use it with certain projects.
 
@@ -17,13 +17,13 @@ I often do use the perspective camera as with most of the projects I work on I w
 
 ## The Orthographic Camera and what to know first
 
-This is a post on the Orthographic Camera in the javaScript library known as three.js, it is [not a getting started post on ether three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/). I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now just looking into all the other little details about three.js here and there when it comes to things like the options when it comes to cameras. 
+This is a post on the Orthographic Camera in the javaScript library known as three.js, it is [not a getting started post on ether three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/). I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now at a point where you are looking into what your options are when it comes to cameras.
 
 So I will not be getting into all kinds of various little details about threejs and JavaScript in general here of course. However in this section I will be going over some points you should be aware of before continuing to read the rest of the content.
 
 ### Might be a good idea to look into other camera options
 
-In most situations the Orthographic Camera may not be the best choice for a project. For most typical projects I would go with the [Perspective camera](/2018/04/07/threejs-camera-perspective/) that reproduces they way that the human eye sees. In any case the Orthographic Camera is just one option when it comes to cameras that might prove to be a better option with certain projects in which I want the side of objects to remain constant regardless of distance.
+In most situations the Orthographic Camera may not be the best choice for a project so there are looming into what the other options are with cameras. For most typical projects I would go with the [Perspective camera](/2018/04/07/threejs-camera-perspective/) that reproduces they way that the human eye sees. There is also reading up more on the [base camera class in threejs](/2018/04/06/threejs-camera/) that contains what there is to worth with acrros all types of cameras.
 
 ### The source code in this post is on github
 
