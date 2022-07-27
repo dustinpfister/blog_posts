@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-07-27 08:17:52
-version: 1.40
+updated: 2022-07-27 08:21:02
+version: 1.41
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
@@ -354,7 +354,7 @@ var CubeStack = (function () {
     ());
 ```
 
-### 3.2 - The Main javaScript file in which I am createing an array of cameras
+### 3.2 - The Main javaScript file in which I am creating an array of cameras
 
 In order to get a good sense of the difference between the orthographic camera compared to the typical perspective camera, I will want an array of cameras. One will be an instance of THREE.PerspectiveCamera that is what I often use in most projects, while the other will be THREE.OrthographicCamera. So then in the main javaScript file I created this array of cameras actually than just the usual single perspective camera that I do in just about almost all of my threejs examples. Any code that I will want to apply to all cameras I will of course put in the forEach loop, such as setting the position, and zoom level of the cameras.
 
