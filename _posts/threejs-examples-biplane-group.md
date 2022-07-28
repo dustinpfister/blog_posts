@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2022-07-28 13:42:31
-version: 1.33
+updated: 2022-07-28 13:44:43
+version: 1.34
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. 
@@ -20,7 +20,7 @@ I do not think I want to sink to much time into this, but it can still prove to 
 
 ## The biplane group model and what to know first
 
-This is a post on a three.js example where I am creating a Group of Groups of Mesh objects that come together to look like something that is a biplane. I am then creating a number of these bi plane groups so there is then yet another level of this going on when using it in a main javaScript file. So then the example here might prove to be a little advanced for people who are still [relatively new to three.js](/2018/04/04/threejs-getting-started/), but it might still not prove to be to complex. In any case in this section I will be going over a few things that you should be aware of before continuing to read the rest of this post.
+This is a post on a three.js example where I am creating a Group of Groups, or [nested groups](/2021/05/10/threejs-examples-nested-groups/) if you prefer and then each child group is a collection of Mesh objects that come together to look like something that is a biplane. I am then creating a number of these bi plane groups so there is then yet another level of this going on when using it in a main javaScript file. So then the example here might prove to be a little advanced for people who are still [relatively new to three.js](/2018/04/04/threejs-getting-started/), but it might still not prove to be to complex. In any case in this section I will be going over a few things that you should be aware of before continuing to read the rest of this post.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/Mq37hBHx-Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
