@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 15:24:08
-version: 1.37
+updated: 2022-07-29 14:05:17
+version: 1.38
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -20,7 +20,7 @@ https://www.npmjs.com/package/glob). The npm package glob is a great solution fo
 
 This is a post on the npm package known as glob that allows for matching files that fit a given glob pattern. Out of the box it might not be a complete file system walker depending on how you would go about defining such a thing. However for more information on file system walkers you might want to check out my [post on ways to walk a file system in nodejs](/2018/07/20/nodejs-ways-to-walk-a-file-system/) to know about some options that are all ready out there before taking the time to make a file system walker.
 
-I will be keeping the examples in this section farily simple, however this is still not a [getting started type post on nodejs](/2017/04/05/nodejs-helloworld/), or [javaScript in general](/2018/11/27/nodejs-glob/).
+I will be keeping the examples in this section farily simple, however this is still not a [getting started type post on nodejs](/2017/04/05/nodejs-helloworld/), or [javaScript in general](/2018/11/27/js-getting-started/).
 
 ### 1.1 - Version numbers matter
 
