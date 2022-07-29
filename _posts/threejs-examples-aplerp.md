@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 998
-updated: 2022-07-29 09:17:54
-version: 1.6
+updated: 2022-07-29 09:20:36
+version: 1.7
 ---
 
 A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector3-lerp/) of the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3.lerp) in the javaScript library known as [threejs](https://en.wikipedia.org/wiki/Three.js). The lerp method can be used to move a vector from one state to another given state in the form of another instance of the vector3, and an alpha value as a number between 0 and 1. This method alone works well, when it comes to simple linear lerping. In other words moving a vector from one point to another in the from of a kind of straight line between the two points of interest. Also when doing the typical index over length value as a way to create an alpha value the rate at which the point moves does so in a fixed, single delta value. These limitations then give rise in an interest to find, or develop some kind of advanced lerping module that builds on top of the vector3 method.
@@ -200,6 +200,8 @@ So then I am using the create sphere group method that also makes use of the oth
 ```
 
 ### 1.2 - More on the pow built in get alpha method
+
+I would like to make another demo for r0 of the advanced lerp module where I am creating a collection of groups all using the pow1 built in method. For each group I am then tweaking the parameters that I can give to the pow1 method and for this example I will be tweaking the e parameter rather than the base for each group.
 
 ```js
 // demo of r0 of aplerp.js for threejs-examples-aplerp
