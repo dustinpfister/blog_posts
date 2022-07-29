@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 998
-updated: 2022-07-29 09:01:57
-version: 1.3
+updated: 2022-07-29 09:11:05
+version: 1.4
 ---
 
 A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector3-lerp/) of the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3.lerp) in the javaScript library known as [threejs](https://en.wikipedia.org/wiki/Three.js). The lerp method can be used to move a vector from one state to another given state in the form of another instance of the vector3, and an alpha value as a number between 0 and 1. This method alone works well, when it comes to simple linear lerping. In other words moving a vector from one point to another in the from of a kind of straight line between the two points of interest. Also when doing the typical index over length value as a way to create an alpha value the rate at which the point moves does so in a fixed, single delta value. These limitations then give rise in an interest to find, or develop some kind of advanced lerping module that builds on top of the vector3 method.
@@ -19,6 +19,10 @@ A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector
 This might prove to be the kind of project where I will end up making at least a few revisions, but not mater what there is always the starting point. So then in this section I will be outlining what I have thus far in the first version \( r0 \) of my advance lerp module. There is going over the state of the module itself, but also taking a look at a number of demos of the module also just for the sake of testing out that the module works okay and that I am getting the kinds of results that I would like to have when using it in some kind of actual project. I have some planes when it comes to the use of this module as a foundation for many additional projects so I would like to try my best to get this fairly solid right away.
 
 ### 1.1 - The ap lerp module
+
+The advanced lerp module returns three public methods as of r0, one of which is the lerp method that works in a similar way to that of the vector3 lerp method but with additional options that can be passed. Another method can be used to create and return an array of vector3 class instances that are between two vectors, which also makes use of the same internal lerp helper function. A final third public method can be used to quickly create a group of mesh objects that use the sphere geometry and normal material as a way to get a sense of what is going on when using the ap lerp method when making a few demos of it.
+
+When it come to using the lerp method or the get points between method I will want to choose a built in get alha method, or write my own. For ro of this project there are just two built in lerp methods, 'simp', and 'pow1' the default of which is pow1. The simp built in as the same suggest is just a simple regular lerp which defeats the purpose of using this whole thing kind of, but I figure I will still want to have that as a built in option. Speaking of get alpha methods as the name suggest this is the method that will be used to generate the alpha method that will then in turn be used for the vector3 lerp method. So at the core of this is still th built in threejs lerp method, and all of this additional code is just a kind of framework for creating alpha values for the use of that method.
 
 ```js
 // apLerp module -r0 prototype
