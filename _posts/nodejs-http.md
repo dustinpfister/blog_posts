@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 13:26:22
-version: 1.36
+updated: 2022-07-29 14:04:00
+version: 1.37
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -333,4 +333,4 @@ req.end();
 
 So the built in nodejs http module can be used to make http requests from node, as well as set up a server that can respond to requests from a client system. When it comes to checking out a package that might make things a litter easier there is the [node request](/2017/05/23/nodejs-request) npm package that might be of interest, although there are many other user space solutions for this sort of thing. 
 
-Also when it comes to setting up a web server it might still be best to go with a framework such as express. When it comes to express I have a [getting started type post on the express framework](/2018/05/21/express-getting-started/), as well as many other related posts on responding to incoming http requests from a client system using express. I also have a [post on making a simple reusable static sever nodeje file](/2017/12/04/nodejs-simple-static-server-file/) that I often copy and past into various projects where I want and need such a script. I also have yet another simple example type post on yet another file that is based off of my simple [static sever file example, but it will also respond to post requests](/2021/09/10/nodejs-simple-http-request-get-post-system/).
+Also when it comes to setting up a web server it might still be best to go with a framework such as express. When it comes to express I have a [getting started type post on the express framework](/2018/05/21/express-getting-started/), as well as many other related posts on responding to incoming http requests from a client system using express. I also have a [post on making a simple reusable static sever nodeje file](/2017/12/04/nodejs-simple-static-sever-file/) that I often copy and past into various projects where I want and need such a script. I also have yet another simple example type post on yet another file that is based off of my simple [static sever file example, but it will also respond to post requests](/2021/09/10/nodejs-simple-http-request-get-post-system/).
