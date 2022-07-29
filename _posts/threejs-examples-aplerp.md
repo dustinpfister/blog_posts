@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 998
-updated: 2022-07-29 09:40:23
-version: 1.12
+updated: 2022-07-29 09:41:19
+version: 1.13
 ---
 
 A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector3-lerp/) of the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3.lerp) in the javaScript library known as [threejs](https://en.wikipedia.org/wiki/Three.js). The lerp method can be used to move a vector from one state to another given state in the form of another instance of the vector3, and an alpha value as a number between 0 and 1. This method alone works well, when it comes to simple linear lerping. In other words moving a vector from one point to another in the from of a kind of straight line between the two points of interest. Also when doing the typical index over length value as a way to create an alpha value the rate at which the point moves does so in a fixed, single delta value. These limitations then give rise in an interest to find, or develop some kind of advanced lerping module that builds on top of the vector3 method.
@@ -20,6 +20,10 @@ This is one of my many [threejs project example blog posts](/2021/02/19/threejs-
 ### The source code is on Github also
 
 The source code that I am writing about here can also be found in [my test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-aplerp). This is project that I might continue working on for a while so the state of the code here might be a little out of date compared to what I have there between edits of this content that might prove to be few and far between.
+
+### Version numbers matter
+
+When I first started this post I was using r140 of threejs
 
 ## 1 - The first version of my apLerp javaScript module that runs on top of threejs
 
