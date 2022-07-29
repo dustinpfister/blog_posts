@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-07-29 09:53:07
-version: 1.70
+updated: 2022-07-29 09:56:33
+version: 1.71
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -24,6 +24,8 @@ If you are new to three.js you might want to start off with a [getting started p
 Here is the list of my threejs simple project examples thus far, at this time I do not have them broken down into categories but if I keep up with this it is only a matter of time until I will have to do something to that effect.
 
 ### [ 2.1 - Advanced lerping module  ](/2022/07/29/threejs-examples-aplerp/)
+
+The lerp method of the vector3 class is a nice way to make a basic transition between two points of interest. However after that there is looking into how to go about doing something like that but in very different ways such as a movement that starts out slow, then moves faster, and then slows down again. With that said this example is a kind of advanced lerp module where there are a number of built in get alpha methods, and I also write new get aloha methods that I may or may not built into future revisions of th module.
 
 ### [ 2.2 - A Backyard ](/2021/05/07/threejs-examples-backyard/)
 
