@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 998
-updated: 2022-07-29 09:20:36
-version: 1.7
+updated: 2022-07-29 09:23:36
+version: 1.8
 ---
 
 A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector3-lerp/) of the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3.lerp) in the javaScript library known as [threejs](https://en.wikipedia.org/wiki/Three.js). The lerp method can be used to move a vector from one state to another given state in the form of another instance of the vector3, and an alpha value as a number between 0 and 1. This method alone works well, when it comes to simple linear lerping. In other words moving a vector from one point to another in the from of a kind of straight line between the two points of interest. Also when doing the typical index over length value as a way to create an alpha value the rate at which the point moves does so in a fixed, single delta value. These limitations then give rise in an interest to find, or develop some kind of advanced lerping module that builds on top of the vector3 method.
@@ -252,6 +252,8 @@ I would like to make another demo for r0 of the advanced lerp module where I am 
 ```
 
 ### 1.3 - A parabola get alpha method prototype
+
+This is another demo in which I am creating a prototype of a get alpha method based off of an expression for creating a parabola. Thus far the get alpha method seems to work okay, but at this time I do not think I will be making this a built in option for any future revisions of this module. Thats okay though as that is the general idea that I have here, tired yet true get aloha methods will be built in, any any experimental get alpha methods will just be demos like this, or get pulled into some kind of optional pliug in.
 
 ```js
 // demo of r0 of aplerp.js for threejs-examples-aplerp
