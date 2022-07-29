@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 998
-updated: 2022-07-29 09:12:14
-version: 1.5
+updated: 2022-07-29 09:17:54
+version: 1.6
 ---
 
 A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector3-lerp/) of the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3.lerp) in the javaScript library known as [threejs](https://en.wikipedia.org/wiki/Three.js). The lerp method can be used to move a vector from one state to another given state in the form of another instance of the vector3, and an alpha value as a number between 0 and 1. This method alone works well, when it comes to simple linear lerping. In other words moving a vector from one point to another in the from of a kind of straight line between the two points of interest. Also when doing the typical index over length value as a way to create an alpha value the rate at which the point moves does so in a fixed, single delta value. These limitations then give rise in an interest to find, or develop some kind of advanced lerping module that builds on top of the vector3 method.
@@ -124,6 +124,10 @@ var apLerp = (function () {
 ```
 
 ### 1.2 - Basic demo of the core features of apLerp
+
+Now that I have my module in a state that is looking good at least I will want to make at least one, if not a few demos of the module just for the sake of making sure that it is working okay. For this first basic demo of the advanced lerp module I am creating a basic scene as always and then testing out the lerp method of the module by just calling it with some vectors and options and just longing the results to the console. When using the simp and pow one method that vectors that are being returned look good, so but I will want to test out the other methods as well here.
+
+So then I am using the create sphere group method that also makes use of the other public method to create a collection of sphere geometries. I use this method to create two groups, one for each built in get alpha method and add them to my scene object. The result is then what I would expect a line of mesh objects where each mesh is an equal distance apart with the simp built in get alpha, and then that not being the case with my pow1 built in method.
 
 ```js
 // demo of r0 of aplerp.js for threejs-examples-aplerp
