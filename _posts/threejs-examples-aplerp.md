@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 998
-updated: 2022-07-29 12:21:32
-version: 1.15
+updated: 2022-07-29 13:44:58
+version: 1.16
 ---
 
 A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector3-lerp/) of the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3.lerp) in the javaScript library known as [threejs](https://en.wikipedia.org/wiki/Three.js). The lerp method can be used to move a vector from one state to another given state in the form of another instance of the vector3, and an alpha value as a number between 0 and 1. This method alone works well, when it comes to simple linear lerping. In other words moving a vector from one point to another in the from of a kind of straight line between the two points of interest. Also when doing the typical index over length value as a way to create an alpha value the rate at which the point moves does so in a fixed, single delta value. These limitations then give rise in an interest to find, or develop some kind of advanced lerping module that builds on top of the vector3 method.
@@ -23,6 +23,10 @@ This is one of my many [threejs project example blog posts](/2021/02/19/threejs-
 ### read up more on monotonic functions
 
 One thing that is related to this module would be the topic of [monotonic functions](/2021/07/26/js-function-monotonic/). This is mainly true when it comes to making what I am calling a get alpha method to use with the advanced lerp module. The reason why I say that is that the alpha values that I want to return should at least stay the same, if not go up, as the alpha value that i give them goes from 0 to 1. The general idea here is to just find novel and interesting was of how to go about creating alpha values that do not go up in a straight line, linear, or fixed kind of fashion.
+
+### Check out the vector3 class in detail
+
+This advanced lerp module involves creating what I am calling get alpha methods that create alpha values that are then used with the Vector3 class lerp method. The [Vector3 class itself is worth checking gout in detail](/2018/04/15/threejs-vector3/) if you have not do so before hand as there is a great range of methods to work with when working with an instance of Vector3.
 
 ### The source code is on Github also
 
