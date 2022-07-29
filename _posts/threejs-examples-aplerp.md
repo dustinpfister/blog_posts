@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 998
-updated: 2022-07-29 09:41:19
-version: 1.13
+updated: 2022-07-29 09:49:33
+version: 1.14
 ---
 
 A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector3-lerp/) of the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3.lerp) in the javaScript library known as [threejs](https://en.wikipedia.org/wiki/Three.js). The lerp method can be used to move a vector from one state to another given state in the form of another instance of the vector3, and an alpha value as a number between 0 and 1. This method alone works well, when it comes to simple linear lerping. In other words moving a vector from one point to another in the from of a kind of straight line between the two points of interest. Also when doing the typical index over length value as a way to create an alpha value the rate at which the point moves does so in a fixed, single delta value. These limitations then give rise in an interest to find, or develop some kind of advanced lerping module that builds on top of the vector3 method.
@@ -16,6 +16,10 @@ A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector
 ## The advantage lerp javaScript module and what to know before reading more
 
 This is one of my many [threejs project example blog posts](/2021/02/19/threejs-examples/) in which I am writing about some kind of full blown project built on top of threejs. This is then not in any way a kind of blog post for people that are [new to threejs](/2018/04/04/threejs-getting-started/) and javaScript in general so I will not be getting into basic features of the library or javaScript in general here. However I often use these opening sections to write about a few things that you might want to read up more on before counting to read the rest of the content.
+
+### read up more on monotonic functions
+
+One thing that is related to this module would be the topic of [monotonic functions](/2021/07/26/js-function-monotonic/). This is mainly true when it comes to making what I am calling a get alpha method to use with the advanced lerp module. The reason why I say that is that the alpha values that I want to return should at least stay the same, if not go up, as the alpha value that i give them goes from 0 to 1. The general idea here is to just find novel and interesting was of how to go about creating alpha values that do not go up in a straight line, linear, or fixed kind of fashion.
 
 ### The source code is on Github also
 
