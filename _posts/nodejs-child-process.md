@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 144
-updated: 2020-10-26 16:37:07
-version: 1.7
+updated: 2022-07-29 13:58:25
+version: 1.8
 ---
 
 So for February I was plaining to [expand my catalog](/categories/node-js/) on [node.js](https://nodejs.org/en/) related content by getting into writing a bunch of demos on [core node.js modules](https://nodejs.org/dist/latest-v8.x/docs/api/), rather than what I have been doing for the most part before hand which is writing about npm packages. Looking over what I have so far, I never got around to writing about the [child_process module](https://nodejs.org/dist/latest-v8.x/docs/api/child_process.html) yet, so I thought I would give that one a go.
@@ -53,7 +53,7 @@ Spawn is an alternative to another method in the child_process module called exe
 
 ### 1.2 - The exec method
 
-The spawn method woks by just passing the command name as a string, and then any additional commands must be pass as elements in an array as the second argument. The [exec method](/2020/10/21/nodejs-child-process.exec/) in the child process module works more or less the same way, ony the whole command options and all can be passed as a single string as the first argument.
+The spawn method woks by just passing the command name as a string, and then any additional commands must be pass as elements in an array as the second argument. The [exec method](/2020/10/21/nodejs-child-process-exec/) in the child process module works more or less the same way, ony the whole command options and all can be passed as a single string as the first argument.
 
 ```
 let exec = require('child_process').exec,
