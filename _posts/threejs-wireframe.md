@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2022-08-03 10:32:00
-version: 1.39
+updated: 2022-08-03 10:34:55
+version: 1.40
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
@@ -21,7 +21,11 @@ This is a post on wire frames in three.js which is a javaScript library for work
 
 ### Know your materials
 
-The wireframe option is one of many options of various materials that support a wireframe mode. If you have not gone over the [various options with materials](/2018/04/30/threejs-materials/) then that is something that you should take a moment to look over when you get a moment. For most of my examples that I make for my various posts on threejs I often like to go with the [standard material](/2021/04/27/threejs-standard-material/) as it is a good all around material for most use cases. Still looking into the other options is very much called for depending on a rage of factors such as making the choice of using a light source or not.
+The wire frame option is one of many options of various materials that support a wire frame mode. If you have not gone over the [various options with materials](/2018/04/30/threejs-materials/) then that is something that you should take a moment to look over when you get a moment. For most of my examples that I make for my various posts on threejs I often like to go with the [standard material](/2021/04/27/threejs-standard-material/) as it is a good all around material for most use cases. However as far as the built in wire frame mode is concerned a material option that does not respond to light such as the basic of normal material will work just fine. 
+
+Still looking into the other options is very much called for depending on a rage of factors such as making the choice of using a light source or not. When it comes to the subject of light with wire frame mode it might not matter that much, but with some of the alternative solutions that have to do with making textures it will matter if I go with the map property and the standard material.
+
+
 ### Version Numbers matter with three.js
 
 When I first wrote this post I was using r111 of three.js, and the last time I cam around to do a little editing of this content I was testing things out on r127. Code breaking changes are introduced to three.js all the time, so I need to repeat this in every three.js post regardless of what the post might be on. When it comes to just using the wire frame mode boolean of a material I can not say that has changed much, but other aspects of these examples might break in future versions of three.js.
