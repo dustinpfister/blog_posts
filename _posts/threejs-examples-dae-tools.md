@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2022-08-04 11:47:49
-version: 1.47
+updated: 2022-08-04 11:50:59
+version: 1.48
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects, and textures by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to [create groups](/2018/05/16/threejs-grouping-mesh-objects/) of [mesh objects](/2018/05/04/threejs-mesh/), and then having methods that mutate the [position](/2022/04/04/threejs-object3d-position/), [rotation](/2022/04/08/threejs-object3d-rotation/), and [scale](/2021/05/11/threejs-object3d-scale/) properties of these mesh objects. One of my first examples of this kind of project would be my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I started a long time ago. I do still like those kinds of models and I also think that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -35,7 +35,7 @@ On top of using more than one external javaScript file not including my own code
 
 ### These source code examples require threejs, and ColladaLoader.js
 
-These source code examples built on top of two files that should be loaded in a page first. Just like all other three.js examples of course three.js needs to be loaded in the page, but on top of that the Collada Loader also needs to be loaded. A copy of the [Collada Loader can be found in the examples folder](https://github.com/mrdoob/three.js/blob/r127/examples/js/loaders/ColladaLoader.js) of the github repository of threejs. When pulling a copy down from there make use it is a copy that will work with the version of threejs that you are using such as r127 which is what I was using when I first wrote this post.
+These source code examples built on top of two files that should be loaded in a page first. Just like all other three.js examples of course three.js needs to be loaded in the page, but on top of that the [Collada Loader](/2021/04/30/threejs-dae-collada-loader/) also needs to be loaded. A copy of the [Collada Loader can be found in the examples folder](https://github.com/mrdoob/three.js/blob/r127/examples/js/loaders/ColladaLoader.js) of the github repository of threejs. When pulling a copy down from there make use it is a copy that will work with the version of threejs that you are using such as r127 which is what I was using when I first wrote this post.
 
 ### Version numbers matter
 
