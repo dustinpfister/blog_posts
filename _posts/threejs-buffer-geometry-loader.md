@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-08-04 11:19:14
-version: 1.26
+updated: 2022-08-04 11:24:10
+version: 1.27
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [three.js](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen.
@@ -248,7 +248,42 @@ If desired additional callbacks can be given to the load method for reporting lo
 
 ### 3 - To JSON text and back
 
+To create JSON text from a buffer geomerty instance I will first want to call the to non indexed method of the buffer gometry class, and then call the to json method to get an object that is formated the way that I want it. If I do not call the non index method I can end up with a formater that will not work well with the parser of the buffer geometry loader as of r140. Anway once I have the object that looks good I can then just pass that to the JSON.stringify method to get the text that can then in turn be saved as a json file that will then work with the parser.
 
+If I have some text that I just simply want to parse I can create an instance of the Buffer Geomerty Loader and call the parse method diretcly. When doing so I will want to pass the text to the JSON.pasre method and then pass an object to the parser as it exspected and object rather than text.
+
+```js
+
+(function () {
+    //******** *********
+    // Scene, Camera, renderer
+    //******** *********
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(65, 4 / 3, .5, 10);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //******** *********
+    // BUFFER GEOMETRY TO TEXT
+    //******** *********
+    var geo = new THREE.SphereGeometry(1, 10, 10);
+    // make sure to use to non indexed before calling to json
+    var buffObj = geo.toNonIndexed().toJSON();
+    var text = JSON.stringify(buffObj);
+    //******** *********
+    // TEXT TO BUFFER GEOMETRY
+    //******** *********
+    const loader = new THREE.BufferGeometryLoader();
+    var obj = JSON.parse(text);
+    var geo2 = loader.parse( obj );
+    var mesh = new THREE.Mesh(geo2)
+    scene.add(mesh)
+    renderer.render(scene, camera)
+}
+    ());
+```
 
 ## Conclusion
 
