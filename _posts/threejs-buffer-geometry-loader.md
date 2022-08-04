@@ -5,11 +5,11 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-08-04 08:56:12
-version: 1.23
+updated: 2022-08-04 09:25:58
+version: 1.24
 ---
 
-In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/) the popular javaScript library for working with 3d models. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen.
+In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [three.js](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen.
 
 In three.js if I want to import a 3d model that has been created in a 3d modeling program like [blender](https://www.blender.org/), and if I want to use the built in buffer geometry loader, it will have to be converted to a standard JSON format used by three.js. Luckily there is an official plugin to do just that for blender at least in the three.js repositories [exporters folder](https://github.com/mrdoob/three.js/tree/r92/utils/exporters/blender) of r92 of threejs. As of r93+ the exporter has been removed from the reposaptory but the same old exporter should still work okay with the version of blener that is being used, if not doing this might prove to be a little involved. 
 
@@ -93,9 +93,12 @@ So for this post I will be writing about the blender plug-in, and as of late I h
 
 ### Setting up the blender plugin
 
-The [readme file](https://github.com/mrdoob/three.js/blob/r91/utils/exporters/blender/README.md) at the repository covers this process well, and it is pretty quick, easy, and painless. You just copy and paste the contents of the plug-in folder to a path on your computers file system. the path depends on your operating system, and the version of blender used.
+The [readme file](https://github.com/mrdoob/three.js/blob/r92/utils/exporters/blender/README.md) at the repository covers this process well, and it is pretty quick, easy, and painless. The readme states that you will need blender version 2.73.0 or later, when I got this working I was using 2.79.0 but have not tested it out on any newer versions of blender. 
 
-some windows, and posix examples of what that path might be:
+To get this working I just copy and paste the contents of the plug-in folder to a path on my computers file system. The path depends on your operating system, and the version of blender used.
+
+Some windows, and posix examples of what that path might be:
+
 ```
 C:\Program Files\Blender Foundation\Blender\2.7X\scripts\addons
 C:\Users\USERNAME\AppData\Roaming\Blender Foundation\Blender\2.6X\scripts\addons
