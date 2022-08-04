@@ -5,13 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-08-04 09:25:58
-version: 1.24
+updated: 2022-08-04 11:14:27
+version: 1.25
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [three.js](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen.
 
-In three.js if I want to import a 3d model that has been created in a 3d modeling program like [blender](https://www.blender.org/), and if I want to use the built in buffer geometry loader, it will have to be converted to a standard JSON format used by three.js. Luckily there is an official plugin to do just that for blender at least in the three.js repositories [exporters folder](https://github.com/mrdoob/three.js/tree/r92/utils/exporters/blender) of r92 of threejs. As of r93+ the exporter has been removed from the reposaptory but the same old exporter should still work okay with the version of blener that is being used, if not doing this might prove to be a little involved. 
+In three.js if I want to import a 3d model that has been created in a 3d modeling program like [blender](https://www.blender.org/), and if I want to use the built in buffer geometry loader, it will have to be converted to a standard JSON format used by three.js. Luckily there is an official plugin to do just that for blender at least in the three.js repositories [exporters folder](https://github.com/mrdoob/three.js/tree/r92/utils/exporters/blender) of r92 of threejs. As of r93+ the exporter has been removed from the repository but the same old exporter should still work okay with the version of blender that is being used, if not doing this might prove to be a little involved. 
 
 As of the last time I edited this post, one of the other options when it comes to loading assets into three.js that I like best would be the [Collada file loader](/2021/04/30/threejs-dae-collada-loader/). This collada file loader allows me to load files that are in a format that works out of the box with blender without having to bother with external plug-ins to add the export functionality. The collada file format is also a great format not just for geometry but also with materials, as well as a way to load additional external assets such as textures. This way I do not have to bother adding a plugin to blender, but I do have to add an additional file on top of threejs to load Collada Files as that loader is not built into the core of three.js like that of the Buffer Geometry loader.
 
@@ -19,19 +19,11 @@ As of the last time I edited this post, one of the other options when it comes t
 
 ## The buffer Geometry loader and what to know first
 
-This is an advanced post on three.js that has to do with the buffered geometry loader, it is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional skills needed before getting into three.js to begin with when it comes to [client side javaScrpt in general](/2018/11/27/js-getting-started/). This post has to do with Buffered Geometry, but I will not be getting into that in depth in this post at least. I assume that you have a good grasp on what is required before hand, and are here because you want to learn the ins and outs of the buffered geometry loader in three.js, rather than buffer geometry in general. If you want to read up more on the [buffer geometry constrictor and various other topics that branch off from that I have wrote a post on that topic](/2021/04/22/threejs-buffer-geometry/).
+This is an advanced post on three.js that has to do with the buffered geometry loader, it is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional skills needed before getting into three.js to begin with when it comes to [client side javaScrpt in general](/2018/11/27/js-getting-started/). 
 
-Also when it comes to making a 3d model with a 3d modeling program I have come to prefer blender, I am also going to be covering the use of the io_three blender plug-in that is used to export a model to the JSON format that is used by this loader.
+### Know a thing or two about the buffer geometry class
 
-### Version Numbers matter.
-
-I know there are a lot of projects where newer versions just patch programing mistakes, and the actual use of the project renames the same when it comes to the use of the public API. This is not so true with three.js, major changes happen often that result in code breaking changes. When I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91) that was release in March of 2018, and the last time I edited the post I was using r127 of three.js that was released in March of 2021.
-
-Also in this post I am using blender 2.79 also released in March of 2018. When it comes to using the io_three plug-in it is important to use a late version of blender.
-
-### The source code examples here, as well as additional assets can be found on Github
-
-The source code examples that I am write about here in this post can also be found in the [for post folder of my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-loader). This is also where I park the source code for my many other posts on threejs. On top of the javaScript files I also have additional assets there such as the buffer geometry files that I am loading into the example with the buffer geometry loader..
+This post has to do with Buffered Geometry, but I will not be getting into that in depth in this post as there is a lot to write about and it would be a bit off topic. So I assume that you have a good grasp on what is required before hand when it comes to the buffer geometry class, and are here because you want to learn the ins and outs of the buffered geometry loader in three.js. If you want to read up more on the [buffer geometry constrictor and various other topics that branch off from that I have wrote a post on that topic](/2021/04/22/threejs-buffer-geometry/).
 
 ### Why use the buffered geometry loader?
 
@@ -83,13 +75,9 @@ The format of a json file that can be loaded with the buffered geometry loader s
 
 ### Choosing a 3d modeling program
 
-In order to load buffered geometry you first must have such geometry to load in the first place. Typically you will create a model in a 3d modeling program, and one way or another produce a JSON file that resembles the example I have given.
+In order to load buffered geometry you first must have such geometry to load in the first place. Typically I will create a model in a 3d modeling program, and one way or another produce a JSON file that resembles the example I have given.
 
-The only 3d modeling programs I have some experience with so far are [sketchup](https://www.sketchup.com/), and [blender](https://www.blender.org/). Sketchup is a fairly easy to use program, but is not open source, blender on the other hand is.
-
-The process of exporting from sketchup to blender is a [little involved](https://github.com/mrdoob/three.js/wiki/Using-SketchUp-Models). It can be done but requires an additional Collada file loader that can be [found in the examples folder](https://github.com/mrdoob/three.js/blob/r91/examples/js/loaders/ColladaLoader.js) of the three.js repository. If you make use of that it is also off topic anyway, because this post is about the buffered geometry loader, and making use of the Collada file loader will be making use of an alternative to the buffered geometry loader.
-
-So for this post I will be writing about the blender plug-in, and as of late I have been using blender over sketchup. It is open source, and also a bit more professional when it comes to this sort of thing anyway. In the three.js repositories exporters folder there is the io_three plugin that can be used to export a model to the JSON format used by the loader.
+These days I am mainly just using blender when it comes to making a geometry with a program that I will then want to export to use in threejs as one format or another.
 
 ### Setting up the blender plugin
 
@@ -109,6 +97,15 @@ C:\Users\USERNAME\AppData\Roaming\Blender Foundation\Blender\2.6X\scripts\addons
 ```
 
 Wherever it is you are looking for, it is the add ons folder that is used by blender. Out of the box there should be a bunch of plug-ins there before hand, you just want to add the io_three plug-in to the collection there.
+
+### Version Numbers matter.
+
+I know there are a lot of projects where newer versions just patch programming mistakes, and the actual use of the project renames the same when it comes to the use of the public API. This is not so true with three.js, major changes happen often that result in code breaking changes. When I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91) that was release in March of 2018, and the last time I edited the post I was using r140 of three.js that was released in August of 2022.
+
+
+### The source code examples here, as well as additional assets can be found on Github
+
+The source code examples that I am write about here in this post can also be found in the [for post folder of my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-loader). This is also where I park the source code for my many other posts on threejs. On top of the javaScript files I also have additional assets there such as the buffer geometry files that I am loading into the example with the buffer geometry loader..
 
 ## 1 - Basic demo using the buffered geometry loader.
 
@@ -247,7 +244,11 @@ If desired additional callbacks can be given to the load method for reporting lo
     ());
 ```
 
-## 3 - Conclusion
+### 3 - To JSON text and back
+
+
+
+## Conclusion
 
 There are many more loaders, some of which do more than just load geometry after all there are many other kinds of assets to use rather than just geometry such as textures, and materials. It is possible to load other assets besides just geometry as well with some of the built in loaders, however maybe those are all matters for another post. 
 
