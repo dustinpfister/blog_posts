@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2022-08-04 11:39:54
-version: 1.46
+updated: 2022-08-04 11:47:49
+version: 1.47
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects, and textures by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to [create groups](/2018/05/16/threejs-grouping-mesh-objects/) of [mesh objects](/2018/05/04/threejs-mesh/), and then having methods that mutate the [position](/2022/04/04/threejs-object3d-position/), [rotation](/2022/04/08/threejs-object3d-rotation/), and [scale](/2021/05/11/threejs-object3d-scale/) properties of these mesh objects. One of my first examples of this kind of project would be my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I started a long time ago. I do still like those kinds of models and I also think that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -291,7 +291,7 @@ For now I am also going to want at least one additional demo of the load all pub
 
 ## 4 - Convert DAE to Buffer geometry
 
-I have got around to ediing my post on the [buffer geomerty loader](/2018/04/12/threejs-buffer-geometry-loader/), and when doing so I was intersetd in looking into ways of going about converting dae files inot buffer geometry files. So I got around to updaing this dae tools example to include some quick methds that have to do with this kind of feature.
+I have got around to editing my post on the [buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/), and when doing so I was interested in looking into ways of going about converting dae files into buffer geometry files. So I got around to updating this dae tools example to include some quick methods that have to do with this kind of feature.
 
 ```js
 (function () {
