@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-08-04 11:29:04
-version: 1.28
+updated: 2022-08-04 15:18:41
+version: 1.29
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [three.js](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen.
@@ -20,6 +20,9 @@ As of the last time I edited this post, one of the other options when it comes t
 ## The buffer Geometry loader and what to know first
 
 This is an advanced post on three.js that has to do with the buffered geometry loader, it is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional skills needed before getting into three.js to begin with when it comes to [client side javaScrpt in general](/2018/11/27/js-getting-started/). 
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/ELCdtbx8DPc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### Know a thing or two about the buffer geometry class
 
