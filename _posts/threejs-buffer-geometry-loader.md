@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-08-04 11:14:27
-version: 1.25
+updated: 2022-08-04 11:19:14
+version: 1.26
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [three.js](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen.
@@ -35,7 +35,9 @@ The good thing about the Buffer Geometry loader is that it is one of the loaders
 
 ### The JSON file format
 
-The format of a json file that can be loaded with the buffered geometry loader should have a type of "BufferedGeometry" in it's meta data. A simple example that I made in blender and exported with the io_three plug in looks like this:
+The format of a json file that can be loaded with the buffered geometry loader should have a type of "BufferedGeometry" in it's meta data. There are to general ways to generate this file format from some kind of resource. In blender if I added the io three plugin I can use that as a way to generate this type of file. The other general way to go about cretaing this kind of file would be to use the to json method of the buffer geometry class combined with the JSON.stringify method to preoduce text that can then be saves as a json file that in turn coubd be used with the loader, more on that in a later section. 
+
+For now it might be a good idea to just take  aquick look at how this json is formated. A simple example that I made in blender and exported with the io_three plug in looks like this:
 
 ```js
 {
