@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2022-06-03 11:39:52
-version: 1.31
+updated: 2022-08-04 11:44:51
+version: 1.32
 ---
 
 I would like to look into the various external file formats more that I can use with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file format. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is a format option that I can use out of the box in [blender](https://www.blender.org/) to export files, so it would seem to be a good choice just for that reason alone for starters. Aside from easy exporting, and importing with blender, this DAE format uses an XML schema as a way to store data for the state of an over all scene export as well. For me that is another good reason why I should go with this one as it is a plain text file format that means that in a pinch I can edit a few things here and there with a plain old text editor if I need to for some reason. Also it allows for me to structure things in a way in which I can reused textures and so forth rather than having everything packed together in a single binary format.
@@ -19,16 +19,6 @@ Once I have a Collada file exported from blender it is then just a question of h
 
 This is a post on using the ColladaLoader which can be added on top of three.js to load Collada files with a DAE file extension which is the default file format used in blender. So this is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), and [client side javaScript in general](/2018/11/27/js-getting-started/). It is also not a getting started post with blender also which is what I generally like to use in order to create dae files to begin with. The subject here is just using the Collada file loader in the examples folder of the three.js repository to load an external dae file into a three.js scene object.
 
-### Version Numbers matter with three.js
-
-When I wrote this post I was using r127 of three.js, and the last time I got around to doing a little editing I was using r135. In the future this code might break on later versions as code breaking changes are made to the library often. So if the code breaks the first thing you should check is what version of three.js you are using, it really matters a lot, more so than other libraries where the code is just more or less being maintained at a fixed state in terms of the state of the public API.
-
- I try to do a half way decent job of editing files, but I have a lot of pots boiling when it comes to all the other various posts on threejs as well as whole other topics completely. 
-
-### The source code examples in this post are on Github
-
-The source code examples that I am write about in this post can be [found up on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-dae-collada-loader) in my text threejs repository.
-
 ### Start Playing around with blender a little at least
 
 In order to create a dea file a program like blender has to be used to create and export such a file. You do not have to learn everything about using it at this point, exporting the default cube that is added when first starting blender will work as a starting file to load. However the whole point of doing this is to get into the swing of creating files in blender that can then be loaded into a three.js project.
@@ -40,6 +30,20 @@ On top of loading the usual three.js file, the Collada file loader will also nee
 ### I am running this example by way of http rather the the file protocol
 
 I am running this example by way of http rather than the file protocol, this should go without saying, but this is something that it would seem that I need to repeat in many posts. One way or another all the assets that I am using when it comes to three.js, additional javaScript files, and dae files are all being hosted by way of http even when I am juts working with thinks locally. If you are trying to get this to work by opening an html file in the browser rather than navigating to a public folder that is being hosted by way of local host you might run into errors. Again this topic and many others are covered in my [getting starred post with three.js post](/2018/04/04/threejs-getting-started/), sometimes it is just called for to take a step backward when trying to work out something.
+
+### There is also my dae tools threejs examples project
+
+This post has to do with a few examples involving working with the dae file loader alone, rather than some kind of addtional moduel built on top of it. As I work with the dae loader there are going to be various tasks that will come up, and things that I will want to do a certian way that results in a need for some kind of addtuonal utlity librray to park some of these methids that I willw ant to use over and over again. So then I have a [DAE tools threejs project example](/2021/06/25/threejs-examples-dae-tools/) that is my current stadning take on this kind of project that I come around to revising now and then.
+
+### Version Numbers matter with three.js
+
+When I wrote this post I was using r127 of three.js, and the last time I got around to doing a little editing I was using r135. In the future this code might break on later versions as code breaking changes are made to the library often. So if the code breaks the first thing you should check is what version of three.js you are using, it really matters a lot, more so than other libraries where the code is just more or less being maintained at a fixed state in terms of the state of the public API.
+
+ I try to do a half way decent job of editing files, but I have a lot of pots boiling when it comes to all the other various posts on threejs as well as whole other topics completely. 
+
+### The source code examples in this post are on Github
+
+The source code examples that I am write about in this post can be [found up on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-dae-collada-loader) in my text threejs repository.
 
 ## 1 - Load a single dae file
 
