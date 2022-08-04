@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2022-04-25 09:43:26
-version: 1.45
+updated: 2022-08-04 11:39:54
+version: 1.46
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects, and textures by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to [create groups](/2018/05/16/threejs-grouping-mesh-objects/) of [mesh objects](/2018/05/04/threejs-mesh/), and then having methods that mutate the [position](/2022/04/04/threejs-object3d-position/), [rotation](/2022/04/08/threejs-object3d-rotation/), and [scale](/2021/05/11/threejs-object3d-scale/) properties of these mesh objects. One of my first examples of this kind of project would be my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I started a long time ago. I do still like those kinds of models and I also think that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -50,9 +50,11 @@ So the first public method that I have is the DAE.create method that will create
 So then there is the load one method that I worked out which will be one of the main events of this kind of module. One problem that I ran into right away when it came to writing an abstraction for the Collada Loader had to do with [a problem that comes up when it comes to having textures that need to be loaded on top of the dae file by itself](https://discourse.threejs.org/t/how-to-wait-for-a-loaders-textures-to-all-be-loaded-too/25304). The on done call back of the Collada loader will fire when the dae file is loaded, but before all the additional textures are loaded when a dae file has additional textures that need to be loaded on top of the text of the dae file alone. This might not present a problem when it comes to a project in which the model will be used in an animation loop, it will just result in there not being any textures for the model until they are loaded. However in a use case example in which I just call the render method once, that will of course be a problem. So to resolve this I need to make use of the on load property of an instance of a [THREE.LoadingManager](https://threejs.org/docs/#api/en/loaders/managers/LoadingManager) and pass that instance as a argument to the Collada Loader constructor.
 
 ```js
+// dae-tools.js - r3 - for threejs-examples-dae-tools
+// * added methods for getting buffer geomerty text
 (function (api) {
  
-    // create aa daeObjects state object
+    // create a daeObjects state object
     api.create = function (opt) {
         opt = opt || {};
         var state = {
@@ -139,7 +141,33 @@ So then there is the load one method that I worked out which will be one of the 
         group.rotation.copy(result.scene.rotation);
         return group;
     };
- 
+    
+    api.getMeshObjects = function(daeObjects, resultIndex){
+        resultIndex = resultIndex === undefined ? 0 : resultIndex;
+        var result = daeObjects.results[resultIndex];
+        var meshObjects = new THREE.Group();
+        result.scene.traverse(function(obj){
+            if(obj.type === 'Mesh'){
+                meshObjects.add(obj);
+            }
+        });
+        return meshObjects;
+    };
+    
+    // get buffer geometry text that can then be used with the buffer geometry loader
+    api.getBufferGeoText = function(daeObjects, resultIndex, meshIndex){
+        resultIndex = resultIndex === undefined ? 0 : resultIndex;
+        meshIndex = meshIndex === undefined ? 0 : meshIndex;
+        var meshGroup = api.getMeshObjects(daeObjects, resultIndex);
+        var mesh = meshGroup.children[meshIndex];
+        // return text for the mesh
+        return JSON.stringify( mesh.geometry.toNonIndexed().toJSON() );
+    };
+    // buffer geometry text to geomerry
+    api.fromBufferGeoText = function(text){
+        var loader = new THREE.BufferGeometryLoader();
+        return loader.parse( JSON.parse(text) );
+    };
 }
     (this['DAE'] = {}));
 ```
@@ -147,6 +175,8 @@ So then there is the load one method that I worked out which will be one of the 
 The load one method might work okay when it comes to loading just one dae file, but in most projects where I am actually using this module I will want to load a whole bunch of these files. So then I have a load all on top of my load one method, in this load all method I am using [Promise.all](/2019/06/24/js-promise-all/) and [Array.map](/2020/06/16/js-array-map/) create create a promise that is an array of promise objects where each promise is a promise object returned by my load one method.
 
 I will want to have a module that is more than just an abstraction of the dae loader and the built in loader manager class in the core of threejs. So far I have one additional public method beyond that load one method and the create method and that is the create group method. This is what I can call to create an [instance of THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) with only the mesh objects of a dea result and not any additional objects that might be in the file such as a [camera](/2018/04/07/threejs-camera-perspective/) or a [point light](/2019/06/02/threejs-point-light/).
+
+As of revision 3 of the dae tools file I have added a few more public metods that have to do with coverting dae files to buffer geomerty files. I will be getting into this in more detail in a later section of this post.
 
 ## 2 - Loading a single dae file with my dae tools module and ColladaLoader.js
 
@@ -255,6 +285,60 @@ For now I am also going to want at least one additional demo of the load all pub
         ]
     });
  
+}
+    ());
+```
+
+## 4 - Convert DAE to Buffer geometry
+
+I have got around to ediing my post on the [buffer geomerty loader](/2018/04/12/threejs-buffer-geometry-loader/), and when doing so I was intersetd in looking into ways of going about converting dae files inot buffer geometry files. So I got around to updaing this dae tools example to include some quick methds that have to do with this kind of feature.
+
+```js
+(function () {
+    //******** **********
+    // SCENE, CAMERA RENDERER
+    //******** **********
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(20, 20));
+    scene.background = new THREE.Color('cyan');
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(-15, 15, -15);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //******** **********
+    // DAE OBJECTS
+    //******** **********
+    var i = 0;
+    var daeObjects = DAE.create({
+        onLoad: function(daeObjects, results){
+             // THE getBufferGeoText method can be used to get buffer geometry text
+             var text = DAE.getBufferGeoText(daeObjects, 1);
+             // this text can then be used to create a JSON file that will work with the
+             // THREE.BufferGeomertyLoader or I can pass it to the DAE.fromBufferGeoText method
+             console.log(text);
+             // back to geo
+             var geo = DAE.fromBufferGeoText(text);
+             console.log(geo);
+             // mesh from geo
+             var mesh = new THREE.Mesh(geo);
+             scene.add(mesh);
+             // render
+             renderer.render(scene, camera);
+        }
+    });
+    //******** **********
+    // load all
+    //******** **********
+    DAE.loadAll(daeObjects, {
+        baseUrl: '/dae',
+        relUrls: [
+            'rpi4/rpi4_start_box.dae',
+            'obj/obj.dae'
+        ]
+    });
 }
     ());
 ```
