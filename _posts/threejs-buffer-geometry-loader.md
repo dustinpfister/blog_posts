@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2022-08-04 11:24:10
-version: 1.27
+updated: 2022-08-04 11:29:04
+version: 1.28
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [three.js](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen.
@@ -248,9 +248,9 @@ If desired additional callbacks can be given to the load method for reporting lo
 
 ### 3 - To JSON text and back
 
-To create JSON text from a buffer geomerty instance I will first want to call the to non indexed method of the buffer gometry class, and then call the to json method to get an object that is formated the way that I want it. If I do not call the non index method I can end up with a formater that will not work well with the parser of the buffer geometry loader as of r140. Anway once I have the object that looks good I can then just pass that to the JSON.stringify method to get the text that can then in turn be saved as a json file that will then work with the parser.
+To create JSON text from a buffer geometry instance I will first want to call the to non indexed method of the buffer geometry class, and then call the to json method to get an object that is formatted the way that I want it. If I do not call the non index method I can end up with a format that will not work well with the parser of the buffer geometry loader as of r140. Anyway once I have the object that looks good I can then just pass that to the JSON.stringify method to get the text that can then in turn be saved as a json file that will then work with the parser.
 
-If I have some text that I just simply want to parse I can create an instance of the Buffer Geomerty Loader and call the parse method diretcly. When doing so I will want to pass the text to the JSON.pasre method and then pass an object to the parser as it exspected and object rather than text.
+If I have some text that I just simply want to parse I can create an instance of the Buffer Geometry Loader and call the parse method directly. When doing so I will want to pass the text to the JSON.pasre method and then pass an object to the parser as it expected and object rather than text.
 
 ```js
 
@@ -290,4 +290,6 @@ If I have some text that I just simply want to parse I can create an instance of
 There are many more loaders, some of which do more than just load geometry after all there are many other kinds of assets to use rather than just geometry such as textures, and materials. It is possible to load other assets besides just geometry as well with some of the built in loaders, however maybe those are all matters for another post. 
 
 In this post I also did not get into depth about Buffer Geometry Constructor, and why it is that you might want to use Buffered geometry over the plain old [Geometry Constructor](/2018/04/14/threejs-geometry/) which is now no longer part of the core of three.js itself as of r127 forward.
+
+Another project that might be worth checking out is my [dae tools threejs example](/2021/06/25/threejs-examples-dae-tools). This is a project where I am building on top of the DAE file loader, and in late versions of the example I have worked out some methods that have to go with converting dae files to buffer geometry json files.
 
