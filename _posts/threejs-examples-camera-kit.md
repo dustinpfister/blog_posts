@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 999
-updated: 2022-08-05 09:08:00
-version: 1.1
+updated: 2022-08-05 09:17:16
+version: 1.2
 ---
 
-This week I started a new [threejs project example](/2021/02/19/threejs-examples/) that I am calling camera kit, that aims to be my module for parking all kinds of methods that has to do with updaing the position and target location of a [camera such as a persepective](/2018/04/07/threejs-camera-perspective/) camera. The idea for this project came to me when woking on [last weeks threejs example which was my aplerp module]() which is a project that has to do with cretaing values to use for the alpha argument of the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/). The aplerp module has to do with moving a point in space from one point to another in a way that is not so linear, that is not a fixed delta for each frame when upading a vector. So for this project I will be building on top of the aplerp module to create another module that is centered around tasks that have to do with updating a camera.
+This week I started a new [threejs project example](/2021/02/19/threejs-examples/) that I am calling camera kit, that aims to be my module for parking all kinds of methods that has to do with updaing the position and target location of a camera such as a [persepective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera). The idea for this project came to me when woking on last weeks threejs example which was my aplerp module which is a project that has to do with cretaing values to use for the alpha argument of the [lerp method of the vector3 class](). 
+
+The aplerp module has to do with moving a point in space from one point to another in a way that is not so linear, that is not a fixed delta for each frame when upading a vector. So for this project I will be building on top of the aplerp module to create another module that is centered around tasks that have to do with updating a camera.
 
 
 <!-- more -->
@@ -24,7 +26,13 @@ Last week I wrote a post on the aplerp module. As of this writing I am using r0 
 
 ### Read up more on the perspective camera, the base camera class, and object3D
 
-If you are still somewhat new to threejs you might want to read up more on the perspective camera, the base camera class, and the object3d class. The perspective camera in threejs is the camera option that renders a scene object in such a way that replacres the way that the human eye sees, thus it is often the typical camera that I use for most projects. However there are a number of other options when it comes to camera so it also makes sesne to know what there is to work with when it comes to features shared accross all cameras in the base camera class. Speaking of the base camera class there is also checking out the object3d class that is not only a base class of the camera class but many other objects such as mesh objects, groups, and whole scene objects actually. Even if you are not new to threejs you might still want to read up more on these now and then, as I find myself still doing so even though I have a lot of experence working with threejs, there is a lot to take in with this one after all.
+If you are still somewhat new to threejs you might want to read up more on [the perspective camera](/2018/04/07/threejs-camera-perspective/), the base [camera class](/2018/04/06/threejs-camera/), and the [object3d class](/2018/04/23/threejs-object3d/). The perspective camera in threejs is the camera option that renders a [scene object](/2018/05/03/threejs-scene/) in such a way that replacres the way that the human eye sees, thus it is often the typical camera that I use for most projects. 
+
+However there are a number of other options when it comes to camera so it also makes sesne to know what there is to work with when it comes to features shared accross all cameras in the base camera class. Speaking of the base camera class there is also checking out the object3d class that is not only a base class of the camera class but many other objects such as mesh objects, groups, and whole scene objects actually. Even if you are not new to threejs you might still want to read up more on these now and then, as I find myself still doing so even though I have a lot of experence working with threejs, there is a lot to take in with this one after all.
+
+### The Vector3 lerp method and the class in general
+
+There is bypassing the use of the aplerp method that I made and just working directly with the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/). I would be a good idea to work out at leat a few demos using the method to get a first hand expernce as to how it works as a way to trasition one instance of Vector3 to another instance of Vector3. Also speaking of the vector3 class, yeah it would be a good idea to [check Vector3 out more](/2018/04/15/threejs-vector3/) at some point when you get the time as that is yet another major class in threejs that I find myself uisng all the time.
 
 
 
