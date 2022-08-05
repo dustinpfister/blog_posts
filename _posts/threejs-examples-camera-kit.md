@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 999
-updated: 2022-08-05 09:32:57
-version: 1.4
+updated: 2022-08-05 09:59:54
+version: 1.5
 ---
 
 This week I started a new [threejs project example](/2021/02/19/threejs-examples/) that I am calling camera kit, that aims to be my module for parking all kinds of methods that has to do with updaing the position and target location of a camera such as a [persepective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera). The idea for this project came to me when woking on last weeks threejs example which was my aplerp module which is a project that has to do with cretaing values to use for the alpha argument of the [lerp method of the vector3 class](). 
@@ -44,7 +44,13 @@ When I wrote this post I was using r140 of theejs and everything was working fin
 
 ## 1 - First version of the camera kit module and demos
 
+For the very first version of camera kit I started out with just a few methods that will work with any camera, and in fact any object that is based oof of the object3d class actaully. This will likey change with future revisions of the module, but for now I will just be writing about the first state of this threejs example. This will include a general overview of the module itself, as well as a few demos that make use of the public methods of the module. Once again I will not be getting into the aplerp module that I am using for the sin lerp method as I have covred that all ready in an older post.
+
 ### 1.1 - The source code of camera kit r0
+
+I went with the tired yet true IIFE pattern as a way to make a javaScript module as I typically do for these sorts of things, and will be returning a public api to a single variable that may or may not be glpobal depedning on how I go about packaing this whe using it in a porject. Thus far I have three public methods and a single private function that I am uisng for the apLerp lperp methid as a get alpha function. The get alpha funciton is a big deal when it comes to using the aplerp method as this is a funciton that will create an alpha value that will then be used with vector3 lerp method in the internal code of the aplerp module.
+
+Thus far when working with the aplerp module I have a few built in get alpha methods and a number of other such methods that I am making outside of the module and using with the aplerp lper method by way of the getAlpha function option when calling the method. One of these was a demo in which I am using Math.sin in the process of working out an expressions to create the aalpha values that seems to work well with a general idea of what I want to have in terms of camera movement.
 
 ```js
 // cameraKit module - r0 - from threejs-examples-camera-kit
@@ -119,6 +125,8 @@ var cameraKit = (function () {
 
 ### 1.2 - Plain lerp method demo
 
+The plain lerp method of the camera kit module was added to just have a simple abstarction of a plain, normal, liear lerp movement 0f a camera from one Vector3 to another. This is the kind of camera movement that I have been doing thus far for many of my videos that I have been making for these posts on threejs. It would be nice to have a custom cut abstraction for a few lines of code that I find myself writing over and over gaian.
+
 ```js
 // demo of camera-kit
 (function () {
@@ -168,6 +176,8 @@ var cameraKit = (function () {
 
 ### 1.3 - Sin Lerp method demo
 
+Now that I have the plain lerp method example out of the way it is now time for a quick demo of the first method that really makes camera kit a little interetsting whch would be the sin lerp method. When using this method I might want to adjust the bMulti option a little which is a value that is used to adjust the spacing of points. When used well with tweaked values I get a nice effect where the camera starts out moving fast but slows down as the camera reaches a half way point, then picks up speed again.
+
 ```js
 // demo of camera-kit
 (function () {
@@ -216,6 +226,8 @@ var cameraKit = (function () {
 ```
 
 ### 1.4 - The circle around method demo
+
+The circle around method helps with another typical task that I find myself doing often which is to just move the camera around a fixed target location from a given starting point.
 
 ```js
 // demo of camera-kit
