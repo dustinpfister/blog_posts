@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 999
-updated: 2022-08-05 10:09:26
-version: 1.6
+updated: 2022-08-05 15:38:22
+version: 1.7
 ---
 
 This week I started a new [threejs project example](/2021/02/19/threejs-examples/) that I am calling camera kit, that aims to be my module for parking all kinds of methods that has to do with updating the position and target location of a camera such as a [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera). The idea for this project came to me when working on last weeks threejs example which was my aplerp module which is a project that has to do with creating values to use for the alpha argument of the [lerp method of the vector3 class](). 
@@ -19,6 +19,9 @@ The aplerp module has to do with moving a point in space from one point to anoth
 ## The camera kit threejs example and what to be aware of
 
 The camera kit module builds on top of additional projects that I have made along with threejs and many core and client side javaScript features. Simply put this is not a post intended for developers that are new to javaScript in general, the threejs library and some of my older projects that I am also making use of here to create an over all final result in terms of a video project. However I do still always take a moment to write a thing or two about what you might want to read up more on before continuing to read the rest of this content.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/C89ItzAIprQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### The aplerp module threejs example
 
