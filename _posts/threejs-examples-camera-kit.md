@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 999
-updated: 2022-08-05 09:30:26
-version: 1.3
+updated: 2022-08-05 09:32:57
+version: 1.4
 ---
 
 This week I started a new [threejs project example](/2021/02/19/threejs-examples/) that I am calling camera kit, that aims to be my module for parking all kinds of methods that has to do with updaing the position and target location of a camera such as a [persepective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera). The idea for this project came to me when woking on last weeks threejs example which was my aplerp module which is a project that has to do with cretaing values to use for the alpha argument of the [lerp method of the vector3 class](). 
@@ -264,7 +264,7 @@ var cameraKit = (function () {
 
 ## Conclusion
 
-When working on my various video projects that I am making so that I have some videos to embed for these posts I find myself repeating code over and over agaian for various tasks that have to do with camera movement and other camera update related tasks. So it makes total sense to at least start and revise a module such as this that I can make part of my personal stack of modules that I then use over and over again from one video to the next. There seems to be a growing list of modules such as this, one of which would be my [object grid wrap module](/2022/05/20/threejs-examples-object-grid-wrap/), as well as another module in which I built on top of that [module that has to do with cretaing a kind of land scene](/2022/07/15/threejs-examples-object-grid-warp-land/).
+When working on my various video projects that I am making so that I have some videos to embed for these posts I find myself repeating code over and over agaian for various tasks that have to do with camera movement and other camera update related tasks. So it makes total sense to at least start and revise a module such as this that I can make part of my personal stack of modules that I then use over and over again from one video to the next. There seems to be a growing list of modules such as this, one of which would be my [object grid wrap module](/2022/05/20/threejs-examples-object-grid-wrap/), as well as another module in which I built on top of that [module that has to do with cretaing a kind of land scene](/2022/07/15/threejs-examples-object-grid-wrap-land/).
 
 
 
