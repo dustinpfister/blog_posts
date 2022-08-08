@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2022-08-08 12:57:56
-version: 1.24
+updated: 2022-08-08 16:43:51
+version: 1.25
 ---
 
 When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](https://threejs.org/docs/#api/en/core/Object3D) that stores an instance of the [Euler class](https://threejs.org/docs/#api/en/math/Euler). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
@@ -24,10 +24,6 @@ This is a post on using methods of a buffer geometry instance to rotate just a g
 <iframe class="youtube_video" src="https://www.youtube.com/embed/65N2KLaBSUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### Version Numbers matter in three.js
-
-When I wrote this post I was using revision number 127 of three.js. Code braking changes are made to three.js often so it is possible that the code examples here might not work on later versions of three.js. Always be mindful of the version of three.js that you are using, and how old any content is on three.js.
-
 ### Read up more on Vector3 and the Euler classes
 
 If are not familial with the [Vector3](/2018/04/15/threejs-vector3/) and [Euler classes](/2021/04/28/threejs-euler/) now would be a good time to look into these and have at least some basic understanding of what they are used for. A Vector3 class instance is used to represent a position in space, and a Euler class instance is used to represent an orientation of an object in space. The two classes are somewhat similar in terms of properties and methods but the values that are used with them are very different. The vecor3 class is a position so the values are x y, and z cornets, while with Euler there is a similar set of values but the values used are radian values that represent angles rather than a position.
@@ -38,7 +34,15 @@ It should go without saying why the Euler class is important when it comes to ro
 
 There is rotating a geometry and then there is rotating something that contains that geometry. A geometry is often used with a Mesh, and a mesh is based off of the [Object3d class](/2018/04/23/threejs-object3d/). The Mesh if what should often be what is used to set orientation first and foremost, it is just that there are some situations in which the orientation of a geometry will need to be adjusted too at least once.
 
-## 1 - Rotation of a cone geometry and using object3d.lookAt to have the point of the cone face something
+### Version Numbers matter in three.js
+
+When I wrote this post I was using revision number 127 of three.js. Code braking changes are made to three.js often so it is possible that the code examples here might not work on later versions of three.js. Always be mindful of the version of three.js that you are using, and how old any content is on three.js.
+
+### Source code is also up on Github
+
+I also have the source code examples that I am writing about up on [Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-rotation).
+
+## 2 - Rotation of a cone geometry and using object3d.lookAt to have the point of the cone face something
 
 A good starting example of buffer geometry rotation in combination with mesh object rotation might be to start out with an instance of the built in cone geometry constructor, and rotating that geometry so that it will work as expected when using the look at method of a mesh object. The basic idea here is to create a cone geometry and then use the rotateX method to rotate that geometry on the x axis by one half of the value of Math.PI. I can then use this geometry with a mesh object, and then when using the look at method of the mesh instance the point of the cone will be pointing to the location in world space given to the look at method.
 
