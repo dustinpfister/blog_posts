@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2022-08-08 16:43:51
-version: 1.25
+updated: 2022-08-08 17:00:29
+version: 1.26
 ---
 
 When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](https://threejs.org/docs/#api/en/core/Object3D) that stores an instance of the [Euler class](https://threejs.org/docs/#api/en/math/Euler). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
@@ -42,9 +42,38 @@ When I wrote this post I was using revision number 127 of three.js. Code braking
 
 I also have the source code examples that I am writing about up on [Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-rotation).
 
+## 1 - Basic example of the rotation methods of the buffer geometry class
+
+For a basic example I just quickly put together a little source code in which I create a very basic scene, and have a single mesh object. For this mesh object I am using the built in cone geometry constructor to create a geometry, and I am going with the normal material. Once I have a mesh object I can call buffer geometry method soff of the geometry proper of the mesh object including the various rotation methods.
+
+```js
+(function () {
+    // SCENE, CAMERA, RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(6, 8, 6);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // MESH
+    var cone = new THREE.Mesh(
+            new THREE.ConeGeometry(1.5, 10, 30, 30),
+            new THREE.MeshNormalMaterial());
+    // USING BUFFER GEOMERTY rotateX, rotateY, and rotateX METHODS
+    cone.geometry.rotateX(Math.PI * 0.5);
+    cone.geometry.rotateY(Math.PI * 0.25);
+    cone.geometry.rotateZ(Math.PI * 0.75);
+    scene.add(cone)
+    // RENDER
+    renderer.render(scene, camera);
+}());
+```
+
 ## 2 - Rotation of a cone geometry and using object3d.lookAt to have the point of the cone face something
 
-A good starting example of buffer geometry rotation in combination with mesh object rotation might be to start out with an instance of the built in cone geometry constructor, and rotating that geometry so that it will work as expected when using the look at method of a mesh object. The basic idea here is to create a cone geometry and then use the rotateX method to rotate that geometry on the x axis by one half of the value of Math.PI. I can then use this geometry with a mesh object, and then when using the look at method of the mesh instance the point of the cone will be pointing to the location in world space given to the look at method.
+A example of buffer geometry rotation in combination with mesh object rotation might be to start out with an instance of the built in cone geometry constructor, and rotating that geometry so that it will work as expected when using the look at method of a mesh object. The basic idea here is to create a cone geometry and then use the rotateX method to rotate that geometry on the x axis by one half of the value of Math.PI. I can then use this geometry with a mesh object, and then when using the look at method of the mesh instance the point of the cone will be pointing to the location in world space given to the look at method.
 
 So now I can create the cone geometry and rotate it the way that it should be facing once, and I can now use the look at method of the mesh that contains the geometry to have the cone face the direction I want it to. To test this out I created and added a cube to a scene as an object to have the cone point at. So once I have my cube mesh object I can now just pass the position property of the cube to the look at method of the mesh object that contains the cone geometry. The result is then the desired outcome where the tip of the cone is pointing to the location of the cube.
 
