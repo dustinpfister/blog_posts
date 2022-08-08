@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2022-08-08 12:53:55
-version: 1.23
+updated: 2022-08-08 12:57:56
+version: 1.24
 ---
 
-When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](/2018/04/23/threejs-object3d/) that stores an instance of the [Euler class](/2021/04/28/threejs-euler/). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
+When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](https://threejs.org/docs/#api/en/core/Object3D) that stores an instance of the [Euler class](https://threejs.org/docs/#api/en/math/Euler). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
 
 However it is also worth pointing out that the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) of a mesh object can also be rotated independently of a mesh objects orientation as well. In some cases I might want to rotate a geometry that rather than rotating the mesh object, or any parent object of the mesh. More often than not it is the orientation of a mesh object or a [group of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/) that I want to rotate, however in some cases I will want to adjust the orientation of a geometry relative to the orientation of a mesh object that contains a geometry.
 
@@ -30,13 +30,13 @@ When I wrote this post I was using revision number 127 of three.js. Code braking
 
 ### Read up more on Vector3 and the Euler classes
 
-If are not familial with the Vector3 and Euler classes now would be a good time to look into these and have at least some basic understanding of what they are used for. A Vector3 class instance is used to represent a position in space, and a Euler class instance is used to represent an orientation of an object in space. The two classes are somewhat similar in terms of properties and methods but the values that are used with them are very different. The vecor3 class is a position so the values are x y, and z cornets, while with Euler there is a similar set of values but the values used are radian values that represent angles rather than a position.
+If are not familial with the [Vector3](/2018/04/15/threejs-vector3/) and [Euler classes](/2021/04/28/threejs-euler/) now would be a good time to look into these and have at least some basic understanding of what they are used for. A Vector3 class instance is used to represent a position in space, and a Euler class instance is used to represent an orientation of an object in space. The two classes are somewhat similar in terms of properties and methods but the values that are used with them are very different. The vecor3 class is a position so the values are x y, and z cornets, while with Euler there is a similar set of values but the values used are radian values that represent angles rather than a position.
 
 It should go without saying why the Euler class is important when it comes to rotating a geometry, but the vector3 class is also of interest when it comes to using something like the look at method as a way to set the orientation of a geometry or a mesh object as the value passed to such a method when using just one argument needs to be an instance of vector3.
 
 ### Check out the Object3d class also.
 
-There is rotating a geometry and then there is rotating something that contains that geometry. A geometry is often used with a Mesh, and a mesh is based off of the Object3d class. The Mesh if what should often be what is used to set orientation first and foremost, it is just that there are some situations in which the orientation of a geometry will need to be adjusted too at least once.
+There is rotating a geometry and then there is rotating something that contains that geometry. A geometry is often used with a Mesh, and a mesh is based off of the [Object3d class](/2018/04/23/threejs-object3d/). The Mesh if what should often be what is used to set orientation first and foremost, it is just that there are some situations in which the orientation of a geometry will need to be adjusted too at least once.
 
 ## 1 - Rotation of a cone geometry and using object3d.lookAt to have the point of the cone face something
 
