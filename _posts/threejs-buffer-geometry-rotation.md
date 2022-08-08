@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2022-08-08 10:48:29
-version: 1.21
+updated: 2022-08-08 10:50:59
+version: 1.22
 ---
 
 When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](/2018/04/23/threejs-object3d/) that stores an instance of the [Euler class](/2021/04/28/threejs-euler/). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
@@ -22,6 +22,7 @@ When it comes to rotating a buffer geometry there are a number of methods that a
 This is a post on using methods of a buffer geometry instance to rotate just a geometry independent of any orientation of a mesh object that might use this geometry. The content of this post is then on a topic that might be a little advanced for people that are still relatively new to three.js and javaScript in general. However I will take a moment to cover some basics in this section that you should take a moment to get solid with before continuing reading this post of you have not done so all ready.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/65N2KLaBSUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### Version Numbers matter in three.js
 
