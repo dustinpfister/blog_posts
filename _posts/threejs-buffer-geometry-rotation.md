@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2022-08-08 10:50:59
-version: 1.22
+updated: 2022-08-08 12:53:55
+version: 1.23
 ---
 
 When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](/2018/04/23/threejs-object3d/) that stores an instance of the [Euler class](/2021/04/28/threejs-euler/). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
 
-However it is also worth pointing out that the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) of a mesh object can also be rotated independently of a mesh objects orientation as well, and in some cases I might want to do that rather than rotating the mesh object, or any parent object of the mesh. More often than not it is the orientation of a mesh object or a [group of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/) that I want to rotate, however in some cases I will want to adjust the orientation of a geometry relative to the orientation of a mesh object that contains a geometry.
+However it is also worth pointing out that the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) of a mesh object can also be rotated independently of a mesh objects orientation as well. In some cases I might want to rotate a geometry that rather than rotating the mesh object, or any parent object of the mesh. More often than not it is the orientation of a mesh object or a [group of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/) that I want to rotate, however in some cases I will want to adjust the orientation of a geometry relative to the orientation of a mesh object that contains a geometry.
 
 When it comes to rotating a buffer geometry there are a number of methods that are of interest for this kind of task. Often I end up using a method like that of the [rotateX method](https://threejs.org/docs/#api/en/core/BufferGeometry.rotateX) however just like that of the Object3d class there is also a [look at method](https://threejs.org/docs/#api/en/core/BufferGeometry.lookAt) that might also work in some cases. However I think it might be best to use these methods only once to make the geometry line up with what would be expected when using an object3d level method or property value to set an orientation of a mesh object that contains a geometry. In this post I will be going over a few examples that will showcase this sort of thing.
 
@@ -86,7 +86,7 @@ So now I can create the cone geometry and rotate it the way that it should be fa
 
 In this example I am just rendering a static scene once, however it would not take that much more work to create a simple animation in which I am moving the cube around and having the cone continue to point in the direction of the cube. When doing so the general idea here is to rotate the geometry just once to get the geometry to face the right direction within the mesh object, then change the rotation of the mesh object in the loop as needs when needed to create the animation rather than rotating the geometry.
 
-## 2 - Conclusion
+## Conclusion
 
 That is it for now when it comes to rotating a geometry in three.js, I did just want to touch base on this topic for now. If I do get more time to work on editing my three.js content more I am sure I will come around to adding a few more examples with this as I think doing so is called for. The main thing to keep in mind is that a geometry can be rotated in its own way separately from any mesh, or additional containing group of a mesh object. When rotating a geometry this is something that should often just be done once though just as a way to make sure that the front of a geometry is lines up with the front of a containing mesh object.
 
