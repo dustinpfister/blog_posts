@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-04-25 10:41:35
-version: 1.44
+updated: 2022-08-09 10:16:04
+version: 1.45
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -380,55 +380,76 @@ Now it is time to see how a custom geometry works with a situation involving a l
 
 ## 6 - Rotation and translation of buffer geometry
 
-When I add a geometry to a Mesh object the resulting Mesh object is based off of Object3d and as such it has a position and rotation property that can be used as a way to translate and rotate the mesh object as a whole. However I think that it is important to point out that this is the way to go about moving a geometry around once the translation and rotation of a geometry is in the initial fixed state that I want. If that is not the case I will want to adjust that using the translate and rotation methods of the Buffer geometry class instance, and not that of the containing mesh object. When doing this sort of thing I typically will only want to adjust the position and rotation of the geometry just once, when it comes to updating things over and over again in a loop I will want to stick to the object3d values that there are to work with.
+When I add a geometry to a Mesh object the resulting Mesh object is based off of Object3d and as such it has a position and rotation property that can be used as a way to translate and rotate the mesh object as a whole. However I think that it is important to point out that this is the way to go about moving a geometry around once the translation and rotation of a geometry is in the initial fixed state that I want. If that is not the case I will want to adjust that using the translate and rotation methods of the Buffer geometry class instance, and not that of the containing mesh object. 
 
+When doing this sort of thing I typically will only want to adjust the position and rotation of the geometry just once, when it comes to updating things over and over again in a loop I will want to stick to the object3d values that there are to work with.
+
+In the even that I do want to update the geometry over and over again I tend to run into problems compared to what I am used to when working with the Euler class that I deal with when working with the rotation property of an mesh object. The main problem that I run into is that the rotation methods of buffer geometry apply deltas to the current state of the geometry rather than setting the rotation from a kind of home position. One way to address this would be to use the copy method to always set the geometry to a desired starting state, and then translate from there as I am doing in this sections source code example.
 
 ```js
 (function () {
-    // SCENE
+    //******** **********
+    // SCENE, CAMERA, RENDER
+    //******** **********
     var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
- 
-    // geometry
-    var geometry = new THREE.BufferGeometry();
-    var vertices = new Float32Array([
-                0, 0, 0, // triangle 1
-                1, 0, 0,
-                1, 1, 0
-            ]);
-    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-    // TRANSLATE AND ROTATE
-    geometry.rotateZ(Math.PI / 180 * 135);
-    geometry.translate(0.75, 0, 0);
- 
-    // mesh
-    var custom = new THREE.Mesh(
-            geometry,
-            new THREE.MeshBasicMaterial({
-                color: 'red',
-                side: THREE.DoubleSide
-            }));
-    scene.add(custom);
-    // render, camera, and loop
+    scene.add(new THREE.GridHelper(7, 7)); // grid helper for the scene
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(6, 8, 6);
+    camera.lookAt(0, 0, 0);
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(1, 2, 4);
-    camera.lookAt(0, 0, 0);
+    //******** **********
+    // MESH OBJECTS
+    //******** **********
+    var mesh1 = new THREE.Mesh(
+        new THREE.ConeGeometry(0.25, 2, 30, 30),
+        new THREE.MeshNormalMaterial()
+    );
+    mesh1.position.set(-1.5, 0, 0);
+    scene.add(mesh1);
+    var mesh2 = new THREE.Mesh(
+        new THREE.ConeGeometry(0.25, 2, 30, 30),
+        new THREE.MeshNormalMaterial()
+    );
+    mesh2.position.set(1.5, 0, 0);
+    scene.add(mesh2);
+    // CHILD MESH OBEJECTS
+    var childMaterial = new THREE.MeshNormalMaterial({ 
+        transparent: true,
+        opacity: 0.5
+    });
+    mesh1.add( new THREE.Mesh(
+        new THREE.BoxGeometry(2, 2, 2),
+        childMaterial) );
+    mesh2.add( new THREE.Mesh(
+        new THREE.BoxGeometry(2, 2, 2),
+        childMaterial) );
+    //******** **********
+    // LOOP
+    //******** **********
     var frame = 0,
     maxFrame = 200,
     fps_target = 24,
     lt = new Date();
     var loop = function () {
         var now = new Date(),
-        secs = (now - lt) / 1000;
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = Math.abs(.5 - per) / .5;
         requestAnimationFrame(loop);
         if (secs >= 1 / fps_target) {
-            var per = frame / maxFrame,
-            bias = Math.abs(.5 - per) / .5,
-            r = -Math.PI * 2 * per;
-            custom.rotation.set(0, Math.PI * 2 * per, 0);
+            // ROTATION OF GEOMETRY COMPARED TO MESH
+            var rx = Math.PI * 2 * per,
+            rz = Math.PI * 8 * per;
+            // USING COPY AND ROTATION METHODS
+            mesh1.geometry.copy( new THREE.ConeGeometry(0.25, 2, 30, 30) );
+            mesh1.geometry.rotateX( rx );
+            mesh1.geometry.rotateZ( rz );
+            // USING OBJECT3D ROTATION PROPERTY OF MESH2 to ROTATE THE MESH OBJECT
+            // RATHER THAN THE GEOMETRY
+            mesh2.rotation.set(rx ,0, rz)
+            // render, step frame, ect...
             renderer.render(scene, camera);
             frame += 1;
             frame %= maxFrame;
