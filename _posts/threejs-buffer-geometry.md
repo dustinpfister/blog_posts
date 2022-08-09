@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-08-09 10:29:39
-version: 1.47
+updated: 2022-08-09 10:33:58
+version: 1.48
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -502,6 +502,8 @@ After calling the to josn method the end result will end up being an object that
 ```
 
 ## 8 - loading JSON text
+
+If I have a josn file to load that is formated the way as I have outline in the above example for doing so I can use the buffer geometry loader to load the json text file. I just need to cerate an instance of the threejs buffer geometry loader, and then call the load method of the loader instance that is returned when calling the constructor function with the new keyword.
 
 ```js
 (function () {
