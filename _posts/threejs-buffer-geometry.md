@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-08-09 10:16:04
-version: 1.45
+updated: 2022-08-09 10:20:31
+version: 1.46
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -457,6 +457,104 @@ In the even that I do want to update the geometry over and over again I tend to 
         }
     };
     loop();
+}
+    ());
+```
+
+## 7 - Converting buffer geometry to JSON TEXT
+
+```js
+(function () {
+    //******** *********
+    // Scene, Camera, renderer
+    //******** *********
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(65, 4 / 3, .5, 10);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //******** *********
+    // BUFFER GEOMETRY TO TEXT
+    //******** *********
+    var geo = new THREE.SphereGeometry(1, 10, 10);
+    // make sure to use to non indexed before calling to json
+    var buffObj = geo.toNonIndexed().toJSON();
+    var text = JSON.stringify(buffObj);
+    //******** *********
+    // TEXT TO BUFFER GEOMETRY
+    //******** *********
+    const loader = new THREE.BufferGeometryLoader();
+    var obj = JSON.parse(text);
+    var geo2 = loader.parse( obj );
+    var mesh = new THREE.Mesh(geo2)
+    scene.add(mesh)
+    renderer.render(scene, camera)
+}
+    ());
+```
+
+## 8 - loading JSON text
+
+```js
+(function () {
+ 
+    // Scene
+    var scene = new THREE.Scene();
+ 
+    // Camera
+    var camera = new THREE.PerspectiveCamera(65, 4 / 3, 0.1, 100);
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, 0, 0);
+ 
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    var pl = new THREE.PointLight(0xffffff, 1, 100);
+    pl.position.set(5, 5, 5);
+    scene.add(pl);
+ 
+    var frame = 0,
+    maxFrame = 200,
+    mesh;
+    var loop = function () {
+        var per = frame / maxFrame;
+        requestAnimationFrame(loop);
+        mesh.rotation.set(Math.PI / 2, Math.PI * 2 * per, 0);
+        // render the scene
+        renderer.render(scene, camera);
+        frame += 1;
+        frame %= maxFrame;
+    };
+ 
+    // Loader
+    var loader = new THREE.BufferGeometryLoader();
+ 
+    // load a resource
+    loader.load(
+        // resource URL
+        //'/forpost/threejs-buffer-geometry-loader/buffer-geo/three_2.json',
+ 
+        '/json/static/box_house1_solid.json',
+ 
+        // onLoad callback
+        function (geometry) {
+        // create a mesh with the geometry
+        // and a material, and add it to the scene
+        mesh = new THREE.Mesh(
+                geometry,
+                new THREE.MeshStandardMaterial({
+                    color: 0x00ff0000,
+                    emissive: 0x2a2a2a,
+                    side: THREE.DoubleSide
+                }));
+        scene.add(mesh);
+        loop();
+    });
+ 
 }
     ());
 ```
