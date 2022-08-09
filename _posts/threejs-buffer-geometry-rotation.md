@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2022-08-08 17:00:29
-version: 1.26
+updated: 2022-08-09 10:06:46
+version: 1.27
 ---
 
 When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](https://threejs.org/docs/#api/en/core/Object3D) that stores an instance of the [Euler class](https://threejs.org/docs/#api/en/math/Euler). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
@@ -118,6 +118,87 @@ So now I can create the cone geometry and rotate it the way that it should be fa
 ```
 
 In this example I am just rendering a static scene once, however it would not take that much more work to create a simple animation in which I am moving the cube around and having the cone continue to point in the direction of the cube. When doing so the general idea here is to rotate the geometry just once to get the geometry to face the right direction within the mesh object, then change the rotation of the mesh object in the loop as needs when needed to create the animation rather than rotating the geometry.
+
+## 3 - Using the copy method with rotation methods, and comparing to object3d rotation property
+
+There is rotation of the buffer geometry, and then there is rotation of the object that contains the geometry which in most cases is a mesh object. I often think of rotation of buffer geometry as a way to set the orientation of the geometry just once, and when it comes to updating often over time I will typically want to use the instance of the Euler class stored at the rotation property of the containing mesh object.
+
+Still in some cases I might want to rotation geometry over time often, even though it might be expensive in terms of system resources to do so. When doing so I might want to set the rotation in a way that is similar to what I am used to when it comes to using to rotation property of object3d where I can use the set methods, rather than using a delta each frame tick. One way to go about doing this would be to use the copy method of the buffer geometry class to always set the geometry to a kind of starting home position, and then translate.
+
+```js
+(function () {
+    //******** **********
+    // SCENE, CAMERA, RENDER
+    //******** **********
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(7, 7)); // grid helper for the scene
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(6, 8, 6);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //******** **********
+    // MESH OBJECTS
+    //******** **********
+    var mesh1 = new THREE.Mesh(
+        new THREE.ConeGeometry(0.25, 2, 30, 30),
+        new THREE.MeshNormalMaterial()
+    );
+    mesh1.position.set(-1.5, 0, 0);
+    scene.add(mesh1);
+    var mesh2 = new THREE.Mesh(
+        new THREE.ConeGeometry(0.25, 2, 30, 30),
+        new THREE.MeshNormalMaterial()
+    );
+    mesh2.position.set(1.5, 0, 0);
+    scene.add(mesh2);
+    // CHILD MESH OBEJECTS
+    var childMaterial = new THREE.MeshNormalMaterial({ 
+        transparent: true,
+        opacity: 0.5
+    });
+    mesh1.add( new THREE.Mesh(
+        new THREE.BoxGeometry(2, 2, 2),
+        childMaterial) );
+    mesh2.add( new THREE.Mesh(
+        new THREE.BoxGeometry(2, 2, 2),
+        childMaterial) );
+    //******** **********
+    // LOOP
+    //******** **********
+    var frame = 0,
+    maxFrame = 200,
+    fps_target = 24,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = Math.abs(.5 - per) / .5;
+        requestAnimationFrame(loop);
+        if (secs >= 1 / fps_target) {
+            // ROTATION OF GEOMETRY COMPARED TO MESH
+            var rx = Math.PI * 2 * per,
+            rz = Math.PI * 8 * per;
+            // USING COPY AND ROTATION METHODS
+            mesh1.geometry.copy( new THREE.ConeGeometry(0.25, 2, 30, 30) );
+            mesh1.geometry.rotateX( rx );
+            mesh1.geometry.rotateZ( rz );
+            // USING OBJECT3D ROTATION PROPERTY OF MESH2 to ROTATE THE MESH OBJECT
+            // RATHER THAN THE GEOMETRY
+            mesh2.rotation.set(rx ,0, rz)
+            // render, step frame, ect...
+            renderer.render(scene, camera);
+            frame += 1;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
 
 ## Conclusion
 
