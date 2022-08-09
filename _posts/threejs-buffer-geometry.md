@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-08-09 10:33:58
-version: 1.48
+updated: 2022-08-09 10:36:17
+version: 1.49
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -140,7 +140,7 @@ This might prove to be a good start at least, but in order to really know what i
 
 ## 3 - The uv attribute
 
-There is then the position attribute, the normals attribute and then one more major attribute of interest in order to make a geometry that will work well with most materials and that is the uv attribute. This is there I store data that will have to do with texture offset data. So in order to really get a sense of what the deal is with this uv attribute on top of how to create the attribute I will also want to have a texture for the material that I use with the mesh as well. When it comes to learning a thing or two about buffer geometry it might be a good idea to make use of a [data texture](/2022/04/15/threejs-data-texture/) as a way to crate the texture with javaScript code.
+There is then the position attribute, the normals attribute and then one more major attribute of interest in order to make a geometry that will work well with most materials and that is the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/). This is there I store data that will have to do with texture offset data. So in order to really get a sense of what the deal is with this uv attribute on top of how to create the attribute I will also want to have a texture for the material that I use with the mesh as well. When it comes to learning a thing or two about buffer geometry it might be a good idea to make use of a [data texture](/2022/04/15/threejs-data-texture/) as a way to crate the texture with javaScript code.
 
 ```js
 (function () {
