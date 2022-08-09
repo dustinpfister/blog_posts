@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-08-09 10:40:03
-version: 1.51
+updated: 2022-08-09 10:43:35
+version: 1.52
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -465,9 +465,9 @@ In the even that I do want to update the geometry over and over again I tend to 
 
 One thing that I would like to do now and then is to convert the current state of a buffer geometry instance to a standard JOSN format that I can then sore as a file or some other from of storage. Later I would then use some kind of means to load this json data as a way to create a geometry form the stored json data.
 
-Built into threejs itself there is the buffer geometry loader, in a later section in this post I should have at least one example of that here, but first in order to use that loader I will need some JOSN to load. When doing so I have found that the first thing that I want to do is call the to non index method, if I do not when calling the to JSON method I will get a different from of json when the buffer geometry is the product of one of the built in geometry constrictors.
+Built into threejs itself there is the buffer geometry loader, in a later section in this post I should have at least one example of that here, but first in order to use that loader I will need some JOSN to load. When doing so I have found that the first thing that I want to do is call the to [non index method](https://threejs.org/docs/#api/en/core/BufferGeometry.toNonIndexed), if I do not when calling the to JSON method I will get a different from of json when the buffer geometry is the product of one of the built in geometry constrictors.
 
-After calling the to josn method the end result will end up being an object that is ready to use with the JSON stringify method. After passing the object to the strignify method the end result will then be JSON text that I can store as a file and then use with the loader. Alliteratively there is working directly with the parse method of the buffer geometry loader, when using the the first argument is expected to be an object so I will want to pass the text to the JSON parse method first.
+After calling the [to josn method](https://threejs.org/docs/#api/en/core/BufferGeometry.toJSON) the end result will end up being an object that is ready to use with the [JSON stringify method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). After passing the object to the strignify method the end result will then be JSON text that I can store as a file and then use with the loader. Alliteratively there is working directly with the parse method of the buffer geometry loader, when using the the first argument is expected to be an object so I will want to pass the text to the [JSON parse method](/2020/02/28/js-json-parse/) first.
 
 ```js
 (function () {
