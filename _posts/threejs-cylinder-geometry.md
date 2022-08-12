@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-08-12 10:52:29
-version: 1.3
+updated: 2022-08-12 11:04:13
+version: 1.4
 ---
 
 I took the time to write a post or two on some of the various built in geometry constructor functions that there are to work with in threejs such as the box geometry constructor. However I have not yet got around to writing one on cylinder geometry, so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. One interesting thing about the cylinder geometry constructor is that I can give both a top, and bottom radius and when doing so I can set a radius of zero for one of these which allows me to use this is a replacement for the cone geometry constructor. So like many of the other built in geometry constructors I can make a few shapes other than that of a cylinder actually depending on the argument values that I give when calling it.
@@ -107,6 +107,12 @@ renderer.render(scene, camera);
 
 ## 3 - Groups and cylinder geometry
 
+One of many things to be aware of when it comes to geometry in threejs is the groups attribute of a geometry. This is something that comes into play when dealing with an array of materials rather than just one. When doing so the question comes up as to how to get about defining what material will be used where and this is what the groups property of the geometry is for.
+
+I have wrote a post on the material index property of the objects that are used in groups and arrays of materials before hand so I will not be getting into this one in two much detail here. However I think I should make at least one example that quickly shows what the deal is with the default state of groups when calling the constructor.
+
+With that said I can give an array of three materials rather than just one for the materials argument when making the mesh object. When doing so the material at index value 0 will be used for the side of the cylinder, while the other two index values will be used for the top and bottom caps of the cylinder.
+
 ```js
 //******** **********
 // SCENE, GRID HELPER, CAMERA, RENDERER
@@ -153,3 +159,4 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
+That will be it for now at least when it comes to the cylinder geometry constructor in threejs. Even now and then I do come around to do a little editing so I am sure I will expand this post at some point in the future when doing so.
