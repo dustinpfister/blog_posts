@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-08-12 10:30:13
-version: 1.2
+updated: 2022-08-12 10:52:29
+version: 1.3
 ---
 
 I took the time to write a post or two on some of the various built in geometry constructor functions that there are to work with in threejs such as the box geometry constructor. However I have not yet got around to writing one on cylinder geometry, so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. One interesting thing about the cylinder geometry constructor is that I can give both a top, and bottom radius and when doing so I can set a radius of zero for one of these which allows me to use this is a replacement for the cone geometry constructor. So like many of the other built in geometry constructors I can make a few shapes other than that of a cylinder actually depending on the argument values that I give when calling it.
@@ -15,11 +15,25 @@ I took the time to write a post or two on some of the various built in geometry 
 
 ## Cylinder Geometry and what to know first
 
+This is a post on the Cylinder geometry constructor in the javaScript library known as threejs. Although I will be keeping many of the source code examples in this post fairly simple, this is not a getting started with threejs kind of post and I assume that you have at least a little experience with the library before hand. Although I will not be getting into every little detail that you should know at this point, I will take a moment to write about a few things that you migth want to read up more on before continuing to read the rest of this post.
+
+### Read up more on Buffer Geometry in general
+
+The cylinder geometry constructor is just one of many options to go about creating a geometry in treejs by calling a function and passing a few arguments. There are other options when it comes to built in geometry constructor functions of course, but there is also learning how to work with the constructor directly to create custom geometry with javaScript code. There are also other options when it comes to getting a geometry by means of some kind of data source in the from of an external fine such as the buffer geometry loader and the DAE file loader.
+
 ### Source code is on Github
+
+The source code examples that I am writing about here can also be found in my test threejs repository on github.
 
 ### Version numbers matter
 
+When I first wrote this post I was using r140 of threejs.
+
 ## 1 - A Basic Cylinder geometry example
+
+To start out with I am going to have an example that is just the usual setup with a scene object, camera, and render along with just one mesh object. When it comes to the mesh object I will of course be using the Cylinder geometry constrictor and I will not be doing anything fancy with materials and lighting here.
+
+When making a mesh object to add to the scene I first need a geometry and one way to do so would be to call the Cylinder geometry constructor. When doing so the first two arguments are for setting the top and bottom radius values for the cylinder. The third argument is for setting the length of the cylinder, and after that the fourth and firth arguments are for setting what the count should be for radial and height segments. There are additional arguments after that but for now I think I should just stick with these argument for the sake of this basic example.
 
 ```js
 //******** **********
