@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-08-12 11:43:06
-version: 1.7
+updated: 2022-08-12 11:45:45
+version: 1.8
 ---
 
 I took the time to write a post or two on some of the various built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor. However I have not yet got around to writing one on [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry), so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. 
@@ -163,7 +163,7 @@ renderer.render(scene, camera);
 
 There are a few more arguments to work with when making a cylinder geometry when calling the constructor function. The one after the radian and height segments counts is a Boolean to set open caps as true or not, the default with this one is false which means that there will be caps for the cylinder. After that the last options  have to do with setting a starting radian position and a radian delta from that starting position.
 
-There is the Math utils object that contains useful methods for quickly converting from degree to radians. Also if I am going to have open caps I might want to set the side property value of the material that I am using to a value that will be double side, so that both sides of a face are render rather than just the front side.
+There is the [Math utils object](/2022/04/11/threejs-math-utils/) that contains useful methods for quickly converting from degree to radians. Also if I am going to have open caps I might want to set the side property value of the material that I am using to a value that will be double side, so that both sides of a face are render rather than just the front side.
 
 ```js
 //******** **********
