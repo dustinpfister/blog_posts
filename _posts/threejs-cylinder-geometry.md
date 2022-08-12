@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-08-12 14:27:31
-version: 1.10
+updated: 2022-08-12 14:33:50
+version: 1.11
 ---
 
 I took the time to write a post or two on some of the various built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor. However I have not yet got around to writing one on [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry), so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. 
@@ -205,7 +205,9 @@ renderer.render(scene, camera);
 
 ## 5 – Points and Lines
 
-There is also using points and lines in place of the usual mesh object.
+There is also using points and lines in place of the usual mesh object. If I want to use points I just pass the geometry to the points constructor rather than mesh, and when doing so I have to use the points material rather than one of the mesh materials. One option I might want to adjust with the points material would be the size option as often the size of the points are two big when doing this. 
+
+Another alternative option to the mesh object would be the lines, or lines segment constructor. When doing this I can just pass the geometry as the first option also, but some times I might want to pass in threw the edges geometry constructor first. In any case just like with the points constructor I can not use any of the mesh materials and then have to use one of the special line materials in place of doing so.
 
 ```js
 //******** **********
