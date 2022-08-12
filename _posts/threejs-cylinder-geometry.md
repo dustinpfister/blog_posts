@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-08-12 11:23:48
-version: 1.6
+updated: 2022-08-12 11:43:06
+version: 1.7
 ---
 
 I took the time to write a post or two on some of the various built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor. However I have not yet got around to writing one on [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry), so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. 
@@ -159,8 +159,50 @@ scene.add(mesh2);
 renderer.render(scene, camera);      
 ```
 
+## 4 - Open caps and additional arguments
+
+There are a few more arguments to work with when making a cylinder geometry when calling the constructor function. The one after the radian and height segments counts is a Boolean to set open caps as true or not, the default with this one is false which means that there will be caps for the cylinder. After that the last options  have to do with setting a starting radian position and a radian delta from that starting position.
+
+There is the Math utils object that contains useful methods for quickly converting from degree to radians. Also if I am going to have open caps I might want to set the side property value of the material that I am using to a value that will be double side, so that both sides of a face are render rather than just the front side.
+
+```js
+//******** **********
+// SCENE, GRID HELPER, CAMERA, RENDERER
+//******** **********
+let scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+let renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// MESH
+//******** **********
+var mesh1 = new THREE.Mesh(
+     // Cylinder Geometry Constructor call using all arguments
+     new THREE.CylinderGeometry(3, 3, 3, 20, 20,
+        true, // true is for open caps
+        THREE.MathUtils.degToRad(45), // start radian
+        THREE.MathUtils.degToRad(220)   // rdaian length
+     ),
+     // Using the normals material and making sure to use Double side
+     new THREE.MeshNormalMaterial({
+         side: THREE.DoubleSide
+     })
+);
+scene.add(mesh1);
+//******** **********
+// RENDER
+//******** **********
+renderer.render(scene, camera);      
+```
+
 ## Conclusion
 
-That will be it for now at least when it comes to the cylinder geometry constructor in threejs. Every now and then I do come around to do a little editing so I am sure I will expand this post at some point in the future when doing so. However there might only be so much more to write about when it comes to the cone geometry constructor alone rather than topics that apply to geometry in general.
+That will be it for now at least when it comes to the cylinder geometry constructor in threejs. Every now and then I do come around to do a little editing so I am sure I will expand this post at some point in the future when doing so.
+ However there might only be so much more to write about when it comes to the cone geometry constructor alone rather than topics that apply to geometry in general.
 
 When it comes to additional related topics to read more about you might want to check out the many other built in constructors such as the [Sphere geometry](/2021/05/26/threejs-sphere/), [Edge geometry](/2021/05/31/threejs-edges-geometry/), and [Capsule geometry](/2022/07/22/threejs-capsule-geometry/) constructors just to name a few. There is also looking into the many other ways to create or load in geometry such as making a custom geometry with javaScript code by starting with the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/). When it comes to loading an external, fine there is the built in buffer geometry loader, but I tend to prefer the [DAE file loader](/2021/04/30/threejs-dae-collada-loader/) for that sort of thing.
