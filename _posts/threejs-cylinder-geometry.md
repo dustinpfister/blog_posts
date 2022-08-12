@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-08-12 11:12:26
-version: 1.5
+updated: 2022-08-12 11:23:48
+version: 1.6
 ---
 
 I took the time to write a post or two on some of the various built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor. However I have not yet got around to writing one on [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry), so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. 
@@ -21,7 +21,7 @@ This is a post on the Cylinder geometry constructor in the javaScript library kn
 
 ### Read up more on Buffer Geometry in general
 
-The cylinder geometry constructor is just one of many options to go about creating a geometry in treejs by calling a function and passing a few arguments. There are other options when it comes to built in geometry constructor functions of course, but there is also learning how to work with the constructor directly to create custom geometry with javaScript code as well as various commone features with [buffer geometry in general](/2021/04/22/threejs-buffer-geometry/). There are also other options when it comes to getting a geometry by means of some kind of data source in the from of an external fine such as the buffer geometry loader and the DAE file loader.
+The cylinder geometry constructor is just one of many options to go about creating a geometry in treejs by calling a function and passing a few arguments. There are other options when it comes to built in geometry constructor functions of course, but there is also learning how to work with the constructor directly to create custom geometry with javaScript code as well as various common features with [buffer geometry in general](/2021/04/22/threejs-buffer-geometry/). There are also other options when it comes to getting a geometry by means of some kind of data source in the from of an external fine such as the buffer geometry loader and the DAE file loader.
 
 ### Source code is on Github
 
@@ -161,4 +161,6 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-That will be it for now at least when it comes to the cylinder geometry constructor in threejs. Even now and then I do come around to do a little editing so I am sure I will expand this post at some point in the future when doing so.
+That will be it for now at least when it comes to the cylinder geometry constructor in threejs. Every now and then I do come around to do a little editing so I am sure I will expand this post at some point in the future when doing so. However there might only be so much more to write about when it comes to the cone geometry constructor alone rather than topics that apply to geometry in general.
+
+When it comes to additional related topics to read more about you might want to check out the many other built in constructors such as the [Sphere geometry](/2021/05/26/threejs-sphere/), [Edge geometry](/2021/05/31/threejs-edges-geometry/), and [Capsule geometry](/2022/07/22/threejs-capsule-geometry/) constructors just to name a few. There is also looking into the many other ways to create or load in geometry such as making a custom geometry with javaScript code by starting with the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/). When it comes to loading an external, fine there is the built in buffer geometry loader, but I tend to prefer the [DAE file loader](/2021/04/30/threejs-dae-collada-loader/) for that sort of thing.
