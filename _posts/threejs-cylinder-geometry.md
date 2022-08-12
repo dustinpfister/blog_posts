@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-08-12 10:24:54
-version: 1.1
+updated: 2022-08-12 10:30:13
+version: 1.2
 ---
 
-I took the time to write a post or two on some of the various built in geometry constructor functions that there are to work with in threejs such as the box geometry constructor. However I have not yet got around to writing one on cylinder geometry, so I though that this weeks post should be just a quick post on this constrcuor as well on top of the older ones that I have wrote. One interesting thing about the cylinder geometry constrcuor is that I can give both a top, and bottom radius and when doing so I can set a radius of zero for one of these which allows me to use this is a replacment for the cone geometry constructor. So like many of the other built in geometry constrcuors I can make a few shapes other than that of a cylinder actaully depepding on the argument values that I give when calling it.
+I took the time to write a post or two on some of the various built in geometry constructor functions that there are to work with in threejs such as the box geometry constructor. However I have not yet got around to writing one on cylinder geometry, so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. One interesting thing about the cylinder geometry constructor is that I can give both a top, and bottom radius and when doing so I can set a radius of zero for one of these which allows me to use this is a replacement for the cone geometry constructor. So like many of the other built in geometry constructors I can make a few shapes other than that of a cylinder actually depending on the argument values that I give when calling it.
 
 <!-- more -->
 
@@ -19,7 +19,7 @@ I took the time to write a post or two on some of the various built in geometry 
 
 ### Version numbers matter
 
-## 1 - A Basic Cylinder geomerty example
+## 1 - A Basic Cylinder geometry example
 
 ```js
 //******** **********
@@ -46,7 +46,11 @@ scene.add(mesh);
 renderer.render(scene, camera);      
 ```
 
-## 2 - A Basic Cylinder geomerty example
+## 2 – Making a Cone with Cylinder Geometry
+
+A while back I did write a blog post on the cone geometry constructor as a way to make cone shapes. However it would seem that the cylinder geometry constructor can also be used to make this kind of shape, and thus proves to be a little more flexible when it comes to making various typical shapes for a scene.
+
+When calling the cylinder geometry constructor as covered in the basic example the first two arguments that I give are used to set the top, and bottom radius values. So then to make a cone shape I just need to set a value of zero for one of these first two arguments.
 
 ```js
 //******** **********
