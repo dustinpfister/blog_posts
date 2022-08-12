@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-08-12 11:45:45
-version: 1.8
+updated: 2022-08-12 11:55:40
+version: 1.9
 ---
 
 I took the time to write a post or two on some of the various built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor. However I have not yet got around to writing one on [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry), so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. 
@@ -198,6 +198,46 @@ scene.add(mesh1);
 // RENDER
 //******** **********
 renderer.render(scene, camera);      
+```
+
+## 5 – Points and Lines
+
+There is also using points and lines in place of the usual mesh object.
+
+```js
+//******** **********
+// SCENE, GRID HELPER, CAMERA, RENDERER
+//******** **********
+let scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+let renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+//******** **********
+// POINTS
+//******** **********
+var points = new THREE.Points(
+     new THREE.CylinderGeometry(0.75, 0.75, 4, 20, 20),
+new THREE.PointsMaterial( { color: 0x00afaf, size: 0.1 } )
+);
+scene.add(points);
+//******** **********
+// LINES
+//******** **********
+var lines = new THREE.LineSegments(
+     new THREE.EdgesGeometry( new THREE.CylinderGeometry(0.75, 0.75, 4, 20, 20) )
+);
+lines.position.set(0, 0, 3);
+scene.add(lines);
+ 
+//******** **********
+// RENDER
+//******** **********
+renderer.render(scene, camera);
 ```
 
 ## Conclusion
