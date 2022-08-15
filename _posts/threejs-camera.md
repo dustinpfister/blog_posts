@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2022-08-15 12:32:31
-version: 1.30
+updated: 2022-08-15 13:58:55
+version: 1.31
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor function options, once an instance of a camera is obtained it does not need to be added to the [scene object](/2018/05/03/threejs-scene/), although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a [render method](/2018/11/24/threejs-webglrenderer) in order to view anything in a scene.
@@ -44,10 +44,9 @@ When it comes to using the perspective camera class I just need to call the THRE
 
 ```js
 (function () {
-    // a scene is needed to place objects in
-    var scene = new THREE.Scene();
- 
-    // so here I am setting the values of the perspective camera
+    //******** **********
+    // CAMERA
+    //******** **********
     var fieldOfView = 40,
     width = 4 * 160,
     height = 3 * 160,
@@ -55,24 +54,26 @@ When it comes to using the perspective camera class I just need to call the THRE
     near = 1,
     far = 1000,
     camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
- 
-    // In order to see anything I will also need a renderer
-    // to use with my scene, and camera
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    //******** **********
+    // SCENE, RENDERER
+    //******** **********
+    var scene = new THREE.Scene();
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(width, height);
-    // I must append the dom element used by the renderer to the html
-    // that I am using.
     document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // add a cube to the scene
-    cube = new THREE.Mesh(
+    //******** **********
+    // MESH
+    //******** **********
+    var cube = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshNormalMaterial());
     scene.add(cube);
     cube.position.set(0, 0, 0);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(cube.position);
- 
+    //******** **********
+    // RENDER SCENE WITH CAMERA
+    //******** **********
     renderer.render(scene, camera);
 }
     ());
@@ -84,25 +85,23 @@ One thing that I might want to do now and then is adjust the aspect ratio and fi
 
 ```js
 (function () {
- 
-    // a scene is needed to place objects in
-    var scene = new THREE.Scene();
- 
-    // so here I am setting the values of the perspective camera
+    //******** **********
+    // CAMERA
+    //******** **********
     var fieldOfView = 45,
     aspectRatio = 16 / 9,
     near = 1,
     far = 1000,
     camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
- 
-    // In order to see anything I will also need a renderer
-    // to use with my scene, and camera
+    //******** **********
+    // SCENE, RENDERER
+    //******** **********
+    var scene = new THREE.Scene();
     var renderer = new THREE.WebGLRenderer();
-    // I must append the dom element used by the renderer to the html
-    // that I am using.
     document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // initialize method
+    //******** **********
+    // INIT, UPDATE, and LOOP 
+    //******** **********
     var init = function () {
         // add plane to the scene
         var plane = new THREE.Mesh(
@@ -114,7 +113,7 @@ One thing that I might want to do now and then is adjust the aspect ratio and fi
         plane.rotation.x = Math.PI / 2;
         scene.add(plane);
         // add a cube to the scene
-        cube = new THREE.Mesh(
+        var cube = new THREE.Mesh(
                 new THREE.BoxGeometry(200, 200, 200),
                 new THREE.MeshNormalMaterial({}));
         cube.position.set(0, 100, 0);
@@ -129,7 +128,6 @@ One thing that I might want to do now and then is adjust the aspect ratio and fi
         // 16:9 aspect ratio canvas
         renderer.setSize(640, 480);
     };
- 
     // update method
     var update = function (per) {
         var bias = 1 - Math.abs(.5 - per) / .5;
@@ -139,7 +137,6 @@ One thing that I might want to do now and then is adjust the aspect ratio and fi
         // I must call this to get it to work
         camera.updateProjectionMatrix();
     };
- 
     // loop
     var frame = 0,
     frameMax = 30 * 10,
@@ -157,11 +154,9 @@ One thing that I might want to do now and then is adjust the aspect ratio and fi
             lt = now;
         }
     };
- 
     // call init, and start loop
     init();
     loop();
- 
 }
     ());
 ```
@@ -304,6 +299,6 @@ The depth material is a special kind of materials that will render in different 
     ());
 ```
 
-## 5 - Conclusion
+## Conclusion
 
 There is much more to cover when it comes to cameras in threejs, however hopefully this post will help cover the very basics of cameras at least. When it comes to additional reading it might be a good idea to look more into the [object3d class](/2018/04/23/threejs-object3d/) if you have not done so before hand, as this class applies to cameras and many other objects in three.js such as Mesh objects, Groups, and a whole scene for that matter.
