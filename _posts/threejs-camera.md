@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2022-08-15 13:58:55
-version: 1.31
+updated: 2022-08-15 14:10:55
+version: 1.32
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor function options, once an instance of a camera is obtained it does not need to be added to the [scene object](/2018/05/03/threejs-scene/), although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a [render method](/2018/11/24/threejs-webglrenderer) in order to view anything in a scene.
@@ -163,7 +163,44 @@ One thing that I might want to do now and then is adjust the aspect ratio and fi
 
 ## 2 - Orthographic camera
 
-Another option when it comes to cameras that I might actually use in a project is the [orthographic camera](/2018/05/17/threejs-camera-orthographic/). this type of camera is more in tune with how objects actually exist in 3d space rather than how they look with the human eye when it comes to perspective.
+Another option when it comes to cameras that I might actually use in a project is the [orthographic camera](/2018/05/17/threejs-camera-orthographic/). This type of camera is more in tune with how objects actually exist in 3d space rather than how they look with the human eye when it comes to perspective.
+
+### 2.1 - Basic Orthographic camera example
+
+```js
+(function () {
+    // CAMERA
+    var left = -3.2,
+    right = 3.2,
+    top = 2.4,
+    bottom = -2.4,
+    near = 0.01,
+    far = 100,
+    camera = new THREE.OrthographicCamera(
+            left,
+            right,
+            top,
+            bottom,
+            near,
+            far);
+    camera.position.set(2, 2, 2); // position camera
+    camera.lookAt(0, 0, 0);       // have camera look at 0,0,0
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    // mesh
+    scene.add(new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial()));
+    // renderer
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    renderer.render(scene, camera);
+}
+    ());
+```
 
 ## 3 - Basic move camera example
 
