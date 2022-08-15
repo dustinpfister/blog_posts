@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2022-08-15 14:10:55
-version: 1.32
+updated: 2022-08-15 14:16:39
+version: 1.33
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor function options, once an instance of a camera is obtained it does not need to be added to the [scene object](/2018/05/03/threejs-scene/), although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a [render method](/2018/11/24/threejs-webglrenderer) in order to view anything in a scene.
@@ -22,9 +22,6 @@ This is a post on cameras in general when working with three.js in a client side
 <iframe class="youtube_video" src="https://www.youtube.com/embed/M-ouXl_5QA0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### Always check your version numbers when using three.js
-
-When I first wrote this post I was using three.js version r91, and the last time I came around to do a little editing I was using r127.
 
 ### The Camera Class
 
@@ -33,6 +30,14 @@ The actual [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera
 ### Camera Class is based on the Object3D CLass
 
 All instances of Camera gain a whole bunch of common properties and methods from The Object3D class, that is also a class that is worth checking out and learning about in detail. This allows for me to easily work with the camera by using methods like lookAt to set the orientation of a camera to look at a point in world space. There is bunch of other methods and properties that apply to the use of cameras, but also many other objects that come compose a scene object in three.js. So learning about the Object3d class applies to use use of cameras but also a whole range of other objects to work with when making a project.
+
+### Source code examples are also up on Github
+
+The full collection of source code examples that I am writing about here can also be fond in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera) on Github
+
+### Always check your version numbers when using three.js
+
+When I first wrote this post I was using three.js version r91, and the last time I came around to do a little editing I was using r140.
 
 ## 1 - Perspective Camera
 
@@ -166,6 +171,8 @@ One thing that I might want to do now and then is adjust the aspect ratio and fi
 Another option when it comes to cameras that I might actually use in a project is the [orthographic camera](/2018/05/17/threejs-camera-orthographic/). This type of camera is more in tune with how objects actually exist in 3d space rather than how they look with the human eye when it comes to perspective.
 
 ### 2.1 - Basic Orthographic camera example
+
+When calling the Orthographic camera constructor function the set of arguments differ from the perspective camera. In place of giving values that have to do with field of view, aspect ration and so forth I am giving values that define a cube like area in which the camera will view.
 
 ```js
 (function () {
