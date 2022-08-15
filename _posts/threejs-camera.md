@@ -1,12 +1,12 @@
 ---
-title: Cameras in three.js
+title: Camera options in threejs, and other details such as updating and movement
 date: 2018-04-06 11:14:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2022-08-15 14:16:39
-version: 1.33
+updated: 2022-08-15 14:21:54
+version: 1.34
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor function options, once an instance of a camera is obtained it does not need to be added to the [scene object](/2018/05/03/threejs-scene/), although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a [render method](/2018/11/24/threejs-webglrenderer) in order to view anything in a scene.
