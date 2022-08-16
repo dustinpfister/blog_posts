@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-08-16 14:07:30
-version: 1.15
+updated: 2022-08-16 14:12:58
+version: 1.16
 ---
 
 When it comes to starting to make some kind of actual product with [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
@@ -733,7 +733,9 @@ var seqHooks = (function () {
 
 ### 2.1 - Demo of new getPer, getBias and getSinBias methods
 
-I then will want to work out at least one demo that takes these new get percent methods out.
+I then will want to work out at least one demo that tests these new get percent methods out. With that it would seem that the public methods of the seqhooks main global work great. I am not sure if I will need them or not but I do not thing that these should just be internal or usable for the current state of sequence objects alone.
+
+It would seem that the methods that I added for the seq object work great, and the new get sin bias method results in some cool camera movement and mutation of values effects with fov and so forth.
 
 ```js
 (function () {
