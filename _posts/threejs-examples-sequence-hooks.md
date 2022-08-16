@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-08-16 13:59:55
-version: 1.14
+updated: 2022-08-16 14:07:30
+version: 1.15
 ---
 
 When it comes to starting to make some kind of actual product with [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
@@ -851,7 +851,7 @@ I then will want to work out at least one demo that takes these new get percent 
 
 ### 2.2 - Fix for partFrame bug in r0, still allows for older functionally depending of seq.pff value
 
-There is then also the question of my new expressions that are used to set the part frame and part frame max values. 
+There is then also the question of my new expressions that are used to set the part frame and part frame max values. I need to make sure that things look good when using them and that the part percent values do not equal, let alone go over the value of 1. It would seem that the hard coded expressions that I am using for this work well, but there might come a time where I will run into some weird rendering issues again. To address this I can use the new seq.pff value to change to another built in function that sets these part frame values, including the old expressions from r0. In addition I can also define a custom function for this if need be by just setting the value of seg.pff to a function in which I define the expressions I want to use rather than a string value.
 
 ```js
 (function () {
@@ -943,6 +943,8 @@ There is then also the question of my new expressions that are used to set the p
     loop();
 }());
 ```
+
+This might be a killing a mosquito with a cannon kind of situation, but if the r1 expressions work well long enough I might remove this bloat in any future revisions of this and just use the r1 expressions alone for this.
 
 ## Conclusion
 
