@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-08-16 13:33:51
-version: 1.13
+updated: 2022-08-16 13:59:55
+version: 1.14
 ---
 
 When it comes to starting to make some kind of actual product with [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
@@ -20,7 +20,7 @@ While I was making this module I also thought of a whole bunch of other features
 
 ## This video sequences module and what to know first
 
-This is a post on the source code of a javaScript module, and a little additional demo code that I aim to use to make threejs powered videos for my various blog posts here, as well as other video projects that I might start or continue to work in in the future. It should go without saying but I will make it clear here, this is an advanced post on the [subject of threejs](/2018/04/04/threejs-getting-started/) and client side [web programing using javaScript](/2018/11/27/js-getting-started/), so I am taking some liberties and assuming that you have at least a little background with these topics.
+This is a post on the source code of a javaScript module, and a little additional demo code that I aim to use to make threejs powered videos for my various blog posts here, as well as other video projects that I might start or continue to work in in the future. It should go without saying but I will make it clear here, this is an advanced post on the [subject of threejs](/2018/04/04/threejs-getting-started/) and client side [web programming using javaScript](/2018/11/27/js-getting-started/), so I am taking some liberties and assuming that you have at least a little background with these topics.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/hBUt0Jc0lL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -29,19 +29,19 @@ This is a post on the source code of a javaScript module, and a little additiona
 
 In client side javaScript there is the [request animation frame method](/2018/03/13/js-request-animation-frame/) that is often what is used to set up a basic animation loop. There are a few other options for this sort of thing such as set time out, but when it comes to rendering rather than updating a model it is mostly just the request animation frame method that is used. I often just use this method, but there is also a [threejs built in clock feature](/2021/05/28/threejs-clock/) for this sot of thing as well.
 
-### source code is up on github
-
-The source code examples I am writing about here can also be found in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-sequence-hooks).
-
 ### Version numbers matter
 
-I was using r135 of threejs when testing this out.
+I was using r135 of threejs when I first wrote this post, and the last time I came around to doing some editing for r1 of the module I was using r140. On my end everything was working fine with these versions of threejs.
+
+### source code is up on github
+
+The source code examples I am writing about here can also be found in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-sequence-hooks) On Github. This is a pretty major module that I use regularly when making my various demo videos for these blog posts including this one. I have two versions of this module thus far, both of which I am writing about here in this post, however I might all ready have later revisions in the works at the repo, and it might be a long time until I come around to doing some more editing here.
 
 ## 1 - First version of this video sequences hooks module
 
 In this section I will be going over the first revision of this sequence hooks module, which might also be the only revision if I never have a need to improve this or fix any bugs. Anyway in this section I will be going over two files then, one of which is the sequence hooks javaScript file itself, and the other is just a demo of this module that tests out the features of this module.
 
-Here I have the source code of the module itself for the state of the first revision of it. When it comes to this there are a few public methods but for the most part there are just the cerate and set frame methods that I will just be using for most if not all projects. In a video project I will be using the create method to create a standard sequence object, and then that object is what I will be passing to the set frame method that will in turn call the before objects hook method first, then one of the update methods for th current object in the objects array, and then of course the after objects hook.
+Here I have the source code of the module itself for the state of the first revision of it. When it comes to this there are a few public methods but for the most part there are just the create and set frame methods that I will just be using for most if not all projects. In a video project I will be using the create method to create a standard sequence object, and then that object is what I will be passing to the set frame method that will in turn call the before objects hook method first, then one of the update methods for the current object in the objects array, and then of course the after objects hook.
 
 ```js
 // seq-hooks-r0.js
@@ -169,6 +169,8 @@ var seqHooks = (function () {
 
 ### 1.1 - Basic hello world type example
 
+For this basic demo of the sequence hooks module I will be using the before objects hook to define some default values for a camera, as well as setting the rotation of a mesh over the whole duration of the video. I am then using the after objects hook to make sure that I am always calling the update projection matrix method of the camera after setting values for the camera in the before objects hook as well as the current update method in the objects array of the sequence object.
+
 ```js
 (function () {
     // SCENE, CAMERA, and RENDERER
@@ -243,6 +245,8 @@ var seqHooks = (function () {
 ```
 
 ### 1.2 - Part Frame example
+
+One thing that I have found to be a problem with r0 of the sequence hooks module has to do with the expressions that I am using to set the values of the part frame and part frame max properties of the sequence object. In some cases this can result in part percent values that are over that of 1 which I would consider not valid and results in weird rendering issues in some videos. This is then the first major bug that I would like to fix in r1, along with adding other feature that I think I should have in this now that I have used it for a long time when making [videos for the javaweaver channel on youtube](https://www.youtube.com/user/javaweaver).
 
 ```js
 (function () {
@@ -484,7 +488,13 @@ So now for a demo script just for the sake of making sure that this module is wo
 }());
 ```
 
-## 2 - Revision r1 of the sequnce hooks module
+## 2 - Revision r1 of the sequence hooks module
+
+I have been using r0 of this module for a few months now, and have found that there are a few features that I should add to help keep me from having to repeat the same code over and over again from on video to the next. That is that I would like to have a get per method that I can call of the seq object to get a value from 0 to 1 that will change depending on the current fame rather to a max frame value for the video as a whole, or a current sequence object. This is all ready the case with a static value but I would like to be able to pass a count argument that will change the number of times 0 progress to 1 over the duration of a sequence or video as a whole.
+
+On top of having a get percent function I would also like to have a get bias function that goes from 0 to 1 back to zero a count of times in a linear way. Also I would like another function that works like this get bias function only it uses the Math sin method to do so in a not so linear way.
+
+There is also the part frame bug that I wanted to tackle in this revision, and so so in a way where I can still use the buggy old behavior if I want to if it turns out that my newer expressions do not work as expect in all situations. With that said all of this has been addresses and added in r1 of the module here.
 
 ```js
 /* seq-hooks-r1.js - sequence hooks library from threejs-examples-sequence-hooks
@@ -723,6 +733,8 @@ var seqHooks = (function () {
 
 ### 2.1 - Demo of new getPer, getBias and getSinBias methods
 
+I then will want to work out at least one demo that takes these new get percent methods out.
+
 ```js
 (function () {
     //******** **********
@@ -837,7 +849,9 @@ var seqHooks = (function () {
 }());
 ```
 
-### 2.2 - Fix for partFrame bug in r0, still allows for older functionaly dpeding of seg.pff value
+### 2.2 - Fix for partFrame bug in r0, still allows for older functionally depending of seq.pff value
+
+There is then also the question of my new expressions that are used to set the part frame and part frame max values. 
 
 ```js
 (function () {
