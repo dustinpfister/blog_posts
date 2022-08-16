@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-05-12 16:47:45
-version: 1.12
+updated: 2022-08-16 13:33:51
+version: 1.13
 ---
 
 When it comes to starting to make some kind of actual product with [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
@@ -37,11 +37,9 @@ The source code examples I am writing about here can also be found in my [test t
 
 I was using r135 of threejs when testing this out.
 
-## 1 - First revision of this video sequences hooks module
+## 1 - First version of this video sequences hooks module
 
 In this section I will be going over the first revision of this sequence hooks module, which might also be the only revision if I never have a need to improve this or fix any bugs. Anyway in this section I will be going over two files then, one of which is the sequence hooks javaScript file itself, and the other is just a demo of this module that tests out the features of this module.
-
-### 1.1 - The sequence hooks module
 
 Here I have the source code of the module itself for the state of the first revision of it. When it comes to this there are a few public methods but for the most part there are just the cerate and set frame methods that I will just be using for most if not all projects. In a video project I will be using the create method to create a standard sequence object, and then that object is what I will be passing to the set frame method that will in turn call the before objects hook method first, then one of the update methods for th current object in the objects array, and then of course the after objects hook.
 
@@ -169,7 +167,169 @@ var seqHooks = (function () {
 }());
 ```
 
-### 1.2 - Demo script
+### 1.1 - Basic hello world type example
+
+```js
+(function () {
+    // SCENE, CAMERA, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    camera = new THREE.PerspectiveCamera(40, 640 / 480, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    // MESH
+    var mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    // A MAIN SEQ OBJECT
+    var seq = seqHooks.create({
+        // before current object hook
+        beforeObjects: function(seq){
+             // default value for camera
+             camera.fov = 60;
+             camera.aspect = 640 / 480;
+             camera.position.set(10, 10, 10);
+             camera.lookAt(0, 0, 0);
+             // always rotate mesh object
+             mesh1.rotation.y = Math.PI * 2 * seq.per;
+        },
+        // after current object hook
+        afterObjects: function(seq){
+             // always update the projection matrix so that any values
+             // like fov or aspect take effect from before hook, and 
+             // current update method in seq.objects
+             camera.updateProjectionMatrix();
+        },
+        // the objects for eac sequence
+        objects: [
+            {
+                secs: 1,
+                update: function(seq, partPer, partBias){
+                    camera.fov = 10 + 50 * partPer;
+                }
+            },
+            {
+                secs: 3,
+                update: function(seq, partPer, partBias){
+                     var w = 640 - 320 * partPer;
+                     var h = 480 + 240 * partPer;
+                     camera.aspect = w / h;
+                }
+            }
+        ]
+    });
+    // APP LOOP
+    var secs = 0,
+    fps_update = 30,
+    fps_movement = 30,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            // update by hooks
+            seqHooks.setFrame(seq, seq.frame, seq.frameMax);
+            renderer.render(scene, camera);
+            seq.frame += fps_movement * secs;
+            seq.frame %= seq.frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+### 1.2 - Part Frame example
+
+```js
+(function () {
+    // SCENE, CAMERA, and RENDERER
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10))
+    var width = 640, height = 480,
+    fieldOfView = 40, aspectRatio = width / height,
+    near = 0.1, far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(width, height);
+    // MESH
+    var mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    var mesh2 = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 30, 30),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh2);
+    
+    // A MAIN SEQ OBJECT
+    var seq = seqHooks.create({
+        beforeObjects: function(seq){
+            mesh2.position.set(4 - 8 * seq.bias, 0, 1);
+            //!!! I get werid partper values in r0 THOUGH
+            if(seq.partPer >= 1){
+                console.log(seq.objectIndex, seq.partPer.toFixed(2), seq.frame + ' / ' + seq.frameMax)
+            }
+        },
+        objects: [
+            {
+                secs: 1,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(10 - 20 * partPer, 10, 10);
+                    camera.lookAt(mesh1.position);
+                }
+            },
+            {
+                secs: 3,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(-10, 10, 10 - 20 * partPer);
+                    camera.lookAt(mesh1.position);
+                }
+            },
+            {
+                secs: 2,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(-10, 10 - 20 * partPer, -10);
+                    camera.lookAt(mesh1.position);
+                }
+            },
+            {
+                secs: 3,
+                update: function(seq, partPer, partBias){
+                    var a = -10 + 20 * partPer;
+                    camera.position.set(a, a, a);
+                    camera.lookAt(mesh1.position);
+                }
+            }
+        ]
+    });
+    // APP LOOP
+    var secs = 0,
+    fps_update = 30,
+    fps_movement = 30,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            // update by hooks
+            seqHooks.setFrame(seq, seq.frame, seq.frameMax);
+            renderer.render(scene, camera);
+            seq.frame += fps_movement * secs;
+            seq.frame %= seq.frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+### 1.3 - using more than one seq object example
 
 So now for a demo script just for the sake of making sure that this module is working out okay just the way I like it to. I am thinking that I should test out the default feature when it comes to setting secs values for each object, but also a few more nested sequence objects that make use of the per values like I have been doing thus far with the older sequence module. So then I maybe it would be a good idea to have two mesh objects one of which is mutated by making use of one or more nested sequence objects that will be used in a main sequence objects, and then another mesh object that will just be mutated with over time in the before objects method of the main sequence object.
 
@@ -211,14 +371,14 @@ So now for a demo script just for the sake of making sure that this module is wo
             {
                 per: 0.15,
                 update: function(seq, partPer, partBias){
-                    mesh1.scale.set(3, 3, 3);                    
+                    mesh1.scale.set(3, 3, 3);
                 }
             },
             {
                 per: 0.25,
                 update: function(seq, partPer, partBias){
                     var s = 3 - 2 * partPer;
-                    mesh1.scale.set(s, s, s);                    
+                    mesh1.scale.set(s, s, s);
                 }
             }
         ]
@@ -305,6 +465,452 @@ So now for a demo script just for the sake of making sure that this module is wo
     // APP LOOP
     var secs = 0,
     fps_update = 10,
+    fps_movement = 30,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            // update by hooks
+            seqHooks.setFrame(seq, seq.frame, seq.frameMax);
+            renderer.render(scene, camera);
+            seq.frame += fps_movement * secs;
+            seq.frame %= seq.frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+## 2 - Revision r1 of the sequnce hooks module
+
+```js
+/* seq-hooks-r1.js - sequence hooks library from threejs-examples-sequence-hooks
+ *    * added an seq.getPer method
+ *    * added an seq.getBias and seq.getSinBias methods
+ *    * new public methods for getPer, getBias, and getSinBias
+ *    * added an seg.pff (Part Frame Function) that can be set via create options
+ *    * pff function is used to set what expressions to use to get partFrame and partFrame max values
+ *    * three built in pff functions 'r0', 'r0Cap', and 'r1' with a default of 'r1'
+ *    * can define a custom pff function if needed by just using a function rather than string value for seq.pff
+ */
+var seqHooks = (function () {
+    var api = {};
+    //******** **********
+    // SET PART FRAME FUNCTIONS
+    //******** **********
+    var partFrameFunctions = {
+        // expressions used in r0
+        r0: function(seq, per2, obj){
+            seq.partFrameMax = Math.floor( (per2 - obj.per) * seq.frameMax );
+            seq.partFrame = seq.frame - Math.floor( seq.frameMax * obj.per );
+        },
+        r0cap: function(seq, per2, obj){
+            partFrameFunctions['r0'](seq, per2, obj);
+            seq.partFrame = seq.partFrame >= seq.partFrameMax ? seq.partFrameMax - 1 : seq.partFrame;
+        },
+        // new expression for r1
+        r1: function(seq, per2, obj){
+            seq.partFrameMax = Math.round( (per2 - obj.per) * seq.frameMax );
+            seq.partFrame = Math.floor(seq.frame - seq.frameMax * obj.per);
+        }
+    }
+    //******** **********
+    // HELPERS
+    //******** **********
+    // no operation
+    var noop = function(){};
+    // internal get per method
+    var getPer = function(a, b){
+        return a / b;
+    };
+    // internal get bias method
+    var getBias = function(per){
+        return 1 - Math.abs( 0.5 - per ) / 0.5;
+    };
+    // get total secs value helper
+    var getTotalSecs = function(seq){
+        return seq.objects.reduce(function(acc, obj){ return acc + (obj.secs || 0) }, 0);
+    };
+    // get sin bias helper
+    var getSinBias = function(per){
+        var b = getBias(per);
+        return Math.sin( Math.PI * 0.5 * b );
+    };
+    // create and return a getPer method to be used as seq.getPer
+    var createGetPerMethod = function(seq){
+        return function(count, objectPer){
+            // by default return current 1 count per value for the current sequence object
+            count = count === undefined ? 1 : count;
+            objectPer = objectPer === undefined ? true: objectPer;
+            // if I want a objectPer value
+            var a = seq.partFrame, b = seq.partFrameMax;
+            // not object per
+            if(!objectPer){
+                a = seq.frame; 
+                b = seq.frameMax;
+            }
+            // base p value
+            var p = getPer(a, b);
+            // return base p value effected by count
+            return p * count % 1;
+        };
+    };
+    // create a get bias method to be used for sm.getBias
+    var createGetBiasMethod = function(seq){
+        return function(count, objectPer){
+            var per = seq.getPer(count, objectPer);
+            return getBias(per);
+        };
+    };
+    // create a get bias method to be used for sm.getBias
+    var createGetSinBiasMethod = function(seq){
+        return function(count, objectPer){
+            var per = seq.getPer(count, objectPer);
+            return getSinBias(per);
+        };
+    };
+    //******** **********
+    // CREATE - create and return a new seq object
+    //******** **********
+    // create new seq object method
+    api.create = function(opt){
+        opt = opt || {};
+        opt.setPerValues = opt.setPerValues === undefined ? true : false;
+        var seq = {};
+        seq.objectIndex = 0;
+        seq.per = 0;
+        seq.bias = 0;
+        seq.frame = 0;
+        seq.frameMax = 100;
+        seq.pff = opt.pff || 'r1';
+        // parse hooks
+        seq.beforeObjects = opt.beforeObjects || noop;
+        seq.afterObjects = opt.afterObjects || noop;
+        // parse objects
+        seq.objects = opt.objects || [];
+        seq.objects = seq.objects.map(function(obj){
+            obj.per = obj.per === undefined ? 0 : obj.per;
+            obj.secs = obj.secs === undefined ? 0 : obj.secs;
+            obj.data = obj.data || {};
+            obj.update = obj.update || noop;
+            return obj;
+        });
+        // set per values is part of the create process
+        if(opt.setPerValues){
+            api.setPerValues(seq, opt.fps === undefined ? 30: opt.fps);
+        }
+        // create get per method for this object
+        seq.getPer = createGetPerMethod(seq);
+        seq.getBias = createGetBiasMethod(seq);
+        seq.getSinBias = createGetSinBiasMethod(seq);
+        return seq;
+    };
+    //******** **********
+    // SET FRAME
+    //******** **********
+    // update the given seq object by way of a frame, and maxFrame value
+    api.setFrame = function(seq, frame, frameMax){
+        seq.frame = frame === undefined ? 0 : frame;
+        seq.frameMax = frameMax === undefined ? 100 : frameMax;
+        // just making sure frame value is vaild
+        seq.frame = seq.frame % frameMax;
+        // set main per and bias values
+        seq.per = getPer(seq.frame, seq.frameMax);
+        seq.bias = getBias(seq.per);
+        // update object index
+        seq.objectIndex = 0;
+        var i = 0, len = seq.objects.length;
+        while(i < len){
+            var obj = seq.objects[i];
+            var per2 = 1;
+            if(seq.objects[i + 1] != undefined){
+                per2 = seq.objects[i + 1].per;
+            }
+            // if this is the current object update object 
+            // index as well as other relevant values
+            if(seq.per >= obj.per && seq.per < per2){
+                seq.objectIndex = i;
+                // fix for #0 still allows for using old methid for setting partFrame values if needed
+                // while also allowing for addtional custom fix if needed by setting seq.pff to a function
+                // see partFrameFunctions above for examples
+                if(typeof seq.pff === 'function'){
+                    seq.pff(seq, per2, obj);
+                }else{
+                    partFrameFunctions[seq.pff](seq, per2, obj);
+                }
+                // set partPer and partBias
+                seq.partPer = getPer(seq.partFrame, seq.partFrameMax);
+                seq.partBias = getBias(seq.partPer);
+                seq.partSinBias = getSinBias(seq.partPer);
+                break;
+            }
+            i += 1;
+        }
+        // call before hook
+        seq.beforeObjects(seq);
+        // call update for current object
+        var obj = seq.objects[seq.objectIndex];
+        if(obj){
+            seq.obj = obj;
+            obj.update(seq, seq.partPer, seq.partBias, seq.partSinBias, obj);
+        }
+        // call after objects hook
+        seq.afterObjects(seq);
+    };
+    //******** **********
+    // PUBLIC GET PER AND BIAS METHODS
+    //******** **********
+    api.getPer = function(a, b, count){
+        a = a === undefined ? 0 : a;
+        b = b === undefined ? 1 : b;
+        count = count === undefined ? 1 : count;
+        var per = a / b;
+        return per * count % 1;
+    };
+    api.getBias = function(a, b, count){
+        var per = api.getPer(a, b, count);
+        return getBias(per);
+    };
+    api.getSinBias = function(a, b, count){
+        var per = api.getPer(a, b, count);
+        return getSinBias(per);
+    };
+    //******** **********
+    // OTHER PUBLIC METHODS
+    //******** **********
+    // just get an array of per values based on sec values for each object, and DO NOT MUTATE the seq object
+    api.getPerValues = function(seq){
+        var secsTotal = getTotalSecs(seq);
+        var perValues = [];
+        var i = 0, len = seq.objects.length;
+        while(i < len){
+            var per = perValues[i - 1];
+            if( per === undefined ){
+                perValues.push(0);
+            }else{
+                var perDelta = seq.objects[i - 1].secs / secsTotal;
+                perValues.push( parseFloat( ( per + perDelta ).toFixed(4) ) );
+            }
+            i += 1;
+        }
+        return perValues;
+    };
+    // get a target frames value
+    api.getTargetFrames = function(seq, fps){
+        fps = fps === undefined ? 30 : fps;
+        var secsTotal = getTotalSecs(seq);
+        return Math.ceil(secsTotal * fps);
+    };
+    // set per values
+    api.setPerValues = function(seq, fps){
+        // set seq.totalSecs
+        seq.totalSecs = getTotalSecs(seq);
+        // set per values
+        api.getPerValues(seq).forEach(function(per, i){
+            seq.objects[i].per = per;
+        });
+        // set frameMax
+        seq.frameMax = api.getTargetFrames(seq, fps);
+        return seq;
+    };
+    // return public api
+    return api;
+}());
+```
+
+### 2.1 - Demo of new getPer, getBias and getSinBias methods
+
+```js
+(function () {
+    //******** **********
+    // SCENE, CAMERA, and RENDERER
+    //******** **********
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10))
+    var width = 640, height = 480,
+    fieldOfView = 40, aspectRatio = width / height,
+    near = 0.1, far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(width, height);
+    //******** **********
+    // MESH
+    //******** **********
+    var mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    var mesh2 = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 30, 30),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh2);
+    //******** **********
+    // PUBLIC seqHooks.getPer
+    //******** **********
+    console.log( seqHooks.getPer(2, 10, 1) ); // 0.2
+    console.log( seqHooks.getPer(2, 10, 2) ); // 0.4
+    console.log( seqHooks.getBias(2, 10, 1) ); // 0.4
+    console.log( seqHooks.getBias(2, 10, 2) ); // 0.8
+    console.log( seqHooks.getSinBias(2, 10, 1) ); // 0.5877852522924731
+    console.log( seqHooks.getSinBias(2, 10, 2) ); // 0.9510565162951535
+    //******** **********
+    // CREATE seq objects using seq.getPer
+    //******** **********
+    // A MAIN SEQ OBJECT
+    var seq = seqHooks.create({
+        // before current seq.objects
+        beforeObjects: function(seq){
+            // mesh1
+            var r = Math.PI * 2 * seq.per;
+            var x = Math.cos(r) * 2;
+            var z = Math.sin(r) * 2;
+            mesh1.position.set(x, 0, z);
+            mesh1.lookAt(mesh2.position);
+            // defaults for camera
+            camera.fov = 40;
+        },
+        // after current seq.objects
+        afterObjects: function(seq){
+            // always update camera matrix after beforeObjects hook, 
+            // and current update in seq.objects
+            camera.updateProjectionMatrix();
+        },
+        // array of objects for each sequnce
+        objects: [
+            {
+                secs: 3,
+                update: function(seq, partPer, partBias, partSinBias){
+                    var p = seq.getPer(4);
+                    var r = Math.PI * 2 * p,
+                    x = Math.cos(r) * 5,
+                    z = Math.sin(r) * 5;
+                    mesh2.position.set(x, 0, z);
+                    // camera
+                    var b = seq.getSinBias(4);
+                    camera.fov = 40 - 15 * b;
+                    camera.position.set(10, 10, 10 - 5 * partSinBias);
+                    camera.lookAt(0, 0, 0);
+                }
+            },
+            {
+                secs: 3,
+                update: function(seq, partPer, partBias){
+                    var p = seq.getPer(2);
+                    var r = Math.PI * 2 * p,
+                    x = Math.cos(r) * 5,
+                    z = Math.sin(r) * 5;
+                    mesh2.position.set(x, z, 0);
+                    // camera
+                    var b = seq.getBias(2);
+                    camera.fov = 40 - 15 * b;
+                    camera.position.set(10, 10, 10);
+                    camera.lookAt(0, 0, 0);
+                }
+            }
+        ]
+    });
+    //******** **********
+    // APP LOOP
+    //******** **********
+    var secs = 0,
+    fps_update = 30,
+    fps_movement = 30,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            // update by hooks
+            seqHooks.setFrame(seq, seq.frame, seq.frameMax);
+            renderer.render(scene, camera);
+            seq.frame += fps_movement * secs;
+            seq.frame %= seq.frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+### 2.2 - Fix for partFrame bug in r0, still allows for older functionaly dpeding of seg.pff value
+
+```js
+(function () {
+    //********
+    // SCENE, CAMERA, and RENDERER
+    //********
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    camera = new THREE.PerspectiveCamera(40, 640 / 480, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    // MESH
+    var mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    var mesh2 = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 30, 30),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh2);
+    
+    // A MAIN SEQ OBJECT
+    var seq = seqHooks.create({
+        beforeObjects: function(seq){
+            mesh2.position.set(4 - 8 * seq.bias, 0, 1);
+            // this will still happen depeding on the method used to get partFrame and partFrame max values
+            // uncomment to use old 'r0' expressions of define custom
+            //seq.pff = 'r0';
+            //seq.pff = 'r0cap';
+            //seq.pff = function(seq, per2, obj){
+            //        seq.partFrameMax = Math.ceil( (per2 - obj.per) * seq.frameMax );
+            //        seq.partFrame = Math.floor(seq.frame - seq.frameMax * obj.per);
+            //};
+            if(seq.partPer >= 1){
+                console.log(seq.objectIndex, seq.partPer.toFixed(2), seq.partFrame + ' / ' + seq.partFrameMax)
+            }
+        },
+        objects: [
+            {
+                secs: 1,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(10 - 20 * partPer, 10, 10);
+                    camera.lookAt(mesh1.position);
+                }
+            },
+            {
+                secs: 3,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(-10, 10, 10 - 20 * partPer);
+                    camera.lookAt(mesh1.position);
+                }
+            },
+            {
+                secs: 2,
+                update: function(seq, partPer, partBias){
+                    camera.position.set(-10, 10 - 20 * partPer, -10);
+                    camera.lookAt(mesh1.position);
+                }
+            },
+            {
+                secs: 3,
+                update: function(seq, partPer, partBias){
+                    var a = -10 + 20 * partPer;
+                    camera.position.set(a, a, a);
+                    camera.lookAt(mesh1.position);
+                }
+            }
+        ]
+    });
+    // APP LOOP
+    var secs = 0,
+    fps_update = 30,
     fps_movement = 30,
     lt = new Date();
     var loop = function () {
