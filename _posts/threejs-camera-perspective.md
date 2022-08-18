@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2022-08-18 12:54:06
-version: 1.45
+updated: 2022-08-18 12:56:00
+version: 1.46
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects for this reason.
@@ -398,6 +398,8 @@ So for a threejs example of the perspective camera I threw together this full co
 ```
 
 ## 6 - The zoom property
+
+Although mutation of the field of view property of a camera can result in a kind of zoom effect, it might be better to use the zoom property as a way to adjust thins over time. The default value for this zoom property is 1 and it can be set to values below and above one as a way to set a kind of zoom effect for the camera.
 
 ```js
 (function () {
