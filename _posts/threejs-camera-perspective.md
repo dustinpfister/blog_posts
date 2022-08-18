@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2022-08-15 12:31:17
-version: 1.43
+updated: 2022-08-18 12:29:40
+version: 1.44
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects for this reason.
@@ -20,6 +20,9 @@ There are also things like knowing how to position a camera, and set the orienta
 ## The perspective camera, and what to know before hand
 
 This is not an [introduction to three.js](/2018/04/04/threejs-getting-started/), or any additional skills that are required first in order to start working with something like three.js such as javaScript, and web programing in general. I assume that you have working knowledge of javaScript, and have started working with some basic three.js examples. However if you feel that you could stand to gain a deeper understanding of perspective cameras in three.js this post might be of value to you. In this section I will still be going over a few things that you might want to read up more on if you are still fairly new to threejs, or have still not picked up every little detail just yet that might be good to know.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/8kc1egTCLrE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### The source code examples in this post and many more are on my github account
 
