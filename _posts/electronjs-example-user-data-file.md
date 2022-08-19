@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1001
-updated: 2022-08-19 09:00:41
-version: 1.11
+updated: 2022-08-19 11:31:15
+version: 1.12
 ---
 
 While working on my [electronjs](https://www.electronjs.org/) application that I use to make videos for my you tube channel, and thus also video embeds for my blog posts on threejs I ran into a situation in which I needed to share state data between the renderer and main process. The way of typically doing this is a little convoluted as it requires [IPC](https://en.wikipedia.org/wiki/Inter-process_communication) messaging between the render and main process my way of using the send methods and defining event handers with the on methods of the [IPC Main](https://www.electronjs.org/docs/latest/api/ipc-main) and [IPC Renderer](https://www.electronjs.org/docs/latest/api/ipc-renderer) classes.
@@ -27,29 +27,29 @@ In this example I am using the [home dir method of the os module](/2020/05/20/no
 
 The full source code for this election example, as well as many others can be found in my [electronjs example Github repository](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-user-data-file).
 
-## 1- The main javaScript file
-
-In my main javaScript file I have a number of helper functions that I am using to check if a user data folder is there to begin with, and of so create it. In other worlds I want to do something that is like the [mkdir -p command in Linux](/2021/06/30/linux-mkdir) to make sure that a folder in which I want to park data for the current user is there to begin with. In older versions of nodejs this was a little involved and required the use of an [npm package like that of mkdirp](/2017/11/14/nodejs-mkdirp/). However in newer versions of node it would seem that native support for recursive creation of folders works well with just the native fs.mkdir method of the file system module in nodejs.
-
-On top of having a helper funciton to create the user data folder I have another function that will check if a user data file is in the folder or not. In the event that the file is not there it will create a new one using hard coded settings in the main javaScript file.
+## 1 - The user data module
 
 ```js
-// load app and BrowserWindow
-const { app, dialog, Menu, BrowserWindow} = require('electron');
+// user-data.js - common user data methods to use in main.js and preload.js
 const path = require('path');
 const os = require('os');
 const fs = require('fs');
 const promisify = require('util').promisify;
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
-//******** **********
-// CREATE USER DATA FOLDER AND FILE HELPERS
-//******** **********
+ 
 // dirs
 const dir_home = os.homedir();
 const dir_userdata = path.join(dir_home, '.userDataApp');
 const uri_data = path.join(dir_userdata, 'data.json');
-// create the user data folder if it is not there
+ 
+// hard coded default data file state
+const data_default = {
+    dir_open_start: dir_home, // dir to look for files when doing an open for the first time
+    file_name: null            // no file by default
+};
+ 
+// create user data folder
 const createUserDataFolder = function(){
     return new Promise((resolve, reject) => {
         fs.mkdir(dir_userdata, { recursive: true }, (err) => {
@@ -62,10 +62,7 @@ const createUserDataFolder = function(){
         });
     });
 };
-// hard coded default data file state
-const data_default = {
-    dir_open_start: dir_home // dir to look for files when doing an open for the first time
-};
+ 
 // create the data file if it is not there
 const createUserDataFile = function(){
     console.log(uri_data);
@@ -85,6 +82,80 @@ const createUserDataFile = function(){
         return Promise.reject(e);
     });
 };
+ 
+// public api
+var api = module.exports = {};
+ 
+// create any missinbg user data files and folders, shuld be called each time main.js starts
+api.create = function(){
+    return createUserDataFolder()
+    .then(()=>{
+    // create the user data file if it is not there
+        return createUserDataFile();
+    });
+};
+ 
+// get the user data
+api.get = () => {
+    return readFile(uri_data, 'utf8')
+    .then((jText)=>{
+        try{
+            return JSON.parse(jText);
+        }catch(e){
+            return Promise.reject(e);
+        }
+    });
+};
+ 
+// set a user data key
+api.set = (key, value) => {
+    // first get curent set of data
+    return api.get()
+    .then((obj)=>{
+        // update key and write new data
+        obj[key] = value;
+        return writeFile(uri_data, JSON.stringify(obj));
+    });
+};
+ 
+// read file current file based on user data
+api.readFile = () => {
+    return api.get()
+    .then((obj)=>{
+       if(obj.file_name){
+          return readFile( path.join(obj.dir_open_start, obj.file_name), 'utf8' );
+       }else{
+          return Promise.reject( new Error('file name is null') )
+       }
+    });
+};
+ 
+// save given text to file with current settings
+api.saveFile = (text) => {
+    text = text || '';
+    return api.get()
+    .then((obj)=>{
+       if(obj.file_name){
+          return writeFile( path.join(obj.dir_open_start, obj.file_name), text, 'utf8' );
+       }else{
+          return Promise.reject( new Error('file name is null') )
+       }
+    });
+};
+```
+
+## 2 - The main javaScript file
+
+In my main javaScript file I have a number of helper functions that I am using to check if a user data folder is there to begin with, and of so create it. In other worlds I want to do something that is like the [mkdir -p command in Linux](/2021/06/30/linux-mkdir) to make sure that a folder in which I want to park data for the current user is there to begin with. In older versions of nodejs this was a little involved and required the use of an [npm package like that of mkdirp](/2017/11/14/nodejs-mkdirp/). However in newer versions of node it would seem that native support for recursive creation of folders works well with just the native fs.mkdir method of the file system module in nodejs.
+
+On top of having a helper funciton to create the user data folder I have another function that will check if a user data file is in the folder or not. In the event that the file is not there it will create a new one using hard coded settings in the main javaScript file.
+
+```js
+// load app and BrowserWindow
+const { app, dialog, Menu, BrowserWindow} = require('electron');
+const path = require('path');
+// using user-data.js module for main.js and preload.js
+const userData = require(path.join(__dirname, 'user-data.js'));
 //******** **********
 // CREATE MAIN WINDOW FUNCTION
 //******** **********
@@ -122,13 +193,24 @@ const MainMenuTemplate = [
                 label: 'Open',
                 click: () => {
                     const mainWindow = BrowserWindow.fromId(1);
-                    dialog.showOpenDialog(BrowserWindow.fromId(1), {
-                        properties: ['openFile']
-                    }).then((result) => {
-                        mainWindow.webContents.send('menu-open-file', result);
-                    }).catch((err) => {
-                        // error getting file path
+                    // get user data, and use current value for
+                    // dir_open_start as defaultPath for showOpenDialog
+                    userData.get()
+                    .then((uDat)=>{
+                        return dialog.showOpenDialog(BrowserWindow.fromId(1), {
+                            defaultPath: uDat.dir_open_start,
+                            properties: ['openFile']
+                        })
                     })
+                   .then((result) => {
+                        // only fire fileOpen event for renderer if not canceled
+                        if(!result.canceled){
+                            mainWindow.webContents.send('fileOpen', result);
+                        }
+                    }).catch((err) => {
+                        // error
+                        console.warn(err.message);
+                    });
                 }
             },
             // SAVE A FILE
@@ -136,12 +218,21 @@ const MainMenuTemplate = [
                 label: 'Save As',
                 click: () => {
                     const mainWindow = BrowserWindow.fromId(1);
-                    dialog.showSaveDialog(BrowserWindow.fromId(1), {
-                        properties: ['showHiddenFiles']
-                    }).then((result) => {
-                        mainWindow.webContents.send('menu-save-file', result);
+                    userData.get()
+                    .then((uDat)=>{
+                        return dialog.showSaveDialog(BrowserWindow.fromId(1), {
+                            defaultPath: uDat.dir_open_start,
+                            properties: ['showHiddenFiles']
+                        })
+                    })
+                   .then((result) => {
+                        // only fire fileSave event for renderer if not canceled
+                        if(!result.canceled){
+                            mainWindow.webContents.send('fileSave', result);
+                        }
                     }).catch((err) => {
-                        // error getting file path
+                        // error
+                        console.warn(err.message);
                     });
                 }
             }
@@ -153,11 +244,8 @@ const MainMenuTemplate = [
 //******** **********
 // the 'ready' event
 app.whenReady().then(() => {
-    // create the user data folder if it is not there to begin with
-    createUserDataFolder()
-    // create the user data file if it is not there
-    createUserDataFile()
-    // if all goes well with user data folder
+    // do a create check of the user data folder
+    userData.create()
     .then(()=>{
         console.log('ready to create the main window now, and start the rest of the app.');
         createMainWindow();
@@ -180,7 +268,7 @@ app.on('window-all-closed',  () => {
 });
 ```
 
-## 2 - The preload file
+## 3 - The preload file
 
 I will want to have a way to get at the state of the user data file from my front end code, so in my preload javaScript file I have a get user data method that will read the current state of this file.
 
@@ -188,33 +276,54 @@ I will want to have a way to get at the state of the user data file from my fron
 // preload with contextIsolation enabled
 const { contextBridge, ipcRenderer } = require('electron');
 const path = require('path');
-const os = require('os');
-const fs = require('fs');
-const promisify = require('util').promisify;
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
- 
-// dirs
-const dir_home = os.homedir();
-const dir_userdata = path.join(dir_home, '.userDataApp');
-const uri_data = path.join(dir_userdata, 'data.json');
+// using user-data.js module for main.js and preload.js
+const userData = require(path.join(__dirname, 'user-data.js'));
  
 var UserDataApp = {};
+// get and set user data helpers
+UserDataApp.getUserData = userData.get;
+UserDataApp.setUserData = userData.set;
+UserDataApp.readFile = userData.readFile;
+UserDataApp.saveFile = userData.saveFile;
  
-UserDataApp.getUserData = () => {
-    return readFile(uri_data, 'utf8')
-    .then((jText)=>{
-        try{
-            return JSON.parse(jText);
-        }catch(e){
-            return Promise.reject(e);
-        }
+//******** **********
+// EVENTS
+//******** **********
+ 
+var EVENTS = {};
+ 
+EVENTS.fileOpen = function(callback){
+    ipcRenderer.on('fileOpen', function(evnt, result) {
+        const filePath = result.filePaths[0];
+        // UPDATE STATE ON EACH FILE OPEN
+        UserDataApp.setUserData('dir_open_start', path.dirname(filePath) )
+        .then(()=>{
+            return UserDataApp.setUserData('file_name', path.basename(filePath) )
+         })
+        .then(()=>{
+            // call front end callback with result
+            callback(evnt, result)
+        });
     });
 };
  
-UserDataApp.setUserData = () => {
-    
-    
+EVENTS.fileSave = function(callback){
+    ipcRenderer.on('fileSave', function(evnt, result) {
+        const filePath = result.filePath;
+        // UPDATE STATE ON EACH FILE OPEN
+        UserDataApp.setUserData('dir_open_start', path.dirname(filePath) )
+        .then(()=>{
+            return UserDataApp.setUserData('file_name', path.basename(filePath) )
+         })
+        .then(()=>{
+            // call front end callback with result
+            callback(evnt, result)
+        });
+    });
+};
+ 
+UserDataApp.on = function(eventName, callback){
+   EVENTS[eventName](callback);
 };
  
 //******** **********
@@ -224,31 +333,67 @@ UserDataApp.setUserData = () => {
 contextBridge.exposeInMainWorld('UserDataApp', UserDataApp);
 ```
 
-## 3 - The client system
+## 4 - The client system
 
 Now that I have my main and prealod files out of the way I will want to have a little front end code for this to make sure that my preload functions are working the way that they should be.
 
-### 3.1 - The client.js javaScript file
+### 4.1 - The client.js javaScript file
 
 When the Browser window is up and running it will call the get user data method to get the current state of the user data file.
 
 ```js
 var con = document.querySelector('#text_console');
+var con2 = document.querySelector('#text_content');
  
-con.value += 'App Start \n';
+// logger
+var logger = function(mess){
+    con.value += mess + '\n';
+};
  
-UserDataApp.getUserData()
-.then((dataObj) => {
-    console.log(dataObj);
-    con.value += 'dir_open_start: ' + dataObj.dir_open_start + '\n';
-})
-.catch((e) => {
-    console.warn(e.message);
-    con.value += 'err: ' + e.message + '\n';
-})
+logger('App Start: ');
+// get user data
+var getUserData = function(){
+    return UserDataApp.getUserData()
+    // log current state
+    .then((dataObj) => {
+        logger('Got User Data: ');
+        logger('dir_open_start: ' + dataObj.dir_open_start);
+        logger('file_name: ' + dataObj.file_name);
+    })
+    .then((uDat)=>{
+        return UserDataApp.readFile();
+    })
+    .then((text)=>{
+         logger('text read worked: ');
+         con2.value = text;
+    })
+    .catch((e) => {
+        logger('Err: ' + e.message);
+    });
+};
+ 
+// get user data for the first time
+getUserData();
+ 
+// EVENTS
+UserDataApp.on('fileOpen', function(evnt, result){
+    logger('File open event:');
+    getUserData();
+});
+ 
+UserDataApp.on('fileSave', function(evnt, result){
+    logger('File Save event:');
+    UserDataApp.saveFile(con2.value)
+    .then(()=>{
+        logger('looks like save worked.');
+    })
+    .catch((e) => {
+        logger('Err: ' + e.message);
+    });
+});
 ```
 
-### 3.2 - The window\_main.html file
+### 4.2 - The window\_main.html file
 
 Here I have the html that I am using for this example
 
@@ -262,7 +407,10 @@ Here I have the html that I am using for this example
   </head>
   <body>
     <div id="wrap_main">
-        <textarea id="text_console" rows="20" cols="60"></textarea>
+        <h4>Content:</h4>
+        <textarea id="text_content" rows="15" cols="80"></textarea>
+        <h4>Console:</h4>
+        <textarea id="text_console" rows="8" cols="80"></textarea>
         <script src="client.js"></script>
     </div>
   </body>
