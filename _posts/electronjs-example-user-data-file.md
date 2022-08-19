@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1001
-updated: 2022-08-19 08:42:18
-version: 1.5
+updated: 2022-08-19 08:46:17
+version: 1.6
 ---
 
 While working on my [electronjs](https://www.electronjs.org/) application that I use to make videos for my you tube channel, and thus also video embeds for my blog posts on threejs I ran into a situation in which I needed to share state data between the renderer and main process. The way of typically doing this is a little convoluted as it requires [IPC](https://en.wikipedia.org/wiki/Inter-process_communication) messaging between the render and main process my way of using the send methods and defining event handers with the on methods of the [IPC Main](https://www.electronjs.org/docs/latest/api/ipc-main) and [IPC Renderer](https://www.electronjs.org/docs/latest/api/ipc-renderer) classes.
@@ -28,6 +28,8 @@ In this example I am using the [home dir method of the os module](/2020/05/20/no
 The full source code for this election example, as well as many others can be found in my [electronjs example Github repository](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-user-data-file).
 
 ## 1- The main javaScript file
+
+In my main javaScript file I have a number of helper functions that I am using to check if a user data folder is there to begin with, and of so create it. In other worlds I want to do something that is like the mkdirp command in Linux to make sure that a folder in which I want to park data for the current user is there to begin with. In older versions of nodejs this was a little involved and required the use of an npm package like that of mkdirp. However in newer versions of node it would seem that native support for recursive creation of folders works well with just the native fs.mkdir method of the file system module in nodejs.
 
 ```js
 // load app and BrowserWindow
@@ -238,7 +240,7 @@ UserDataApp.getUserData()
 })
 ```
 
-### 3.2 Te window\_main.html file
+### 3.2 - The window\_main.html file
 
 ```html
 <!DOCTYPE html>
