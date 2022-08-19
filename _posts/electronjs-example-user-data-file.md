@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1001
-updated: 2022-08-19 08:49:44
-version: 1.8
+updated: 2022-08-19 08:51:22
+version: 1.9
 ---
 
 While working on my [electronjs](https://www.electronjs.org/) application that I use to make videos for my you tube channel, and thus also video embeds for my blog posts on threejs I ran into a situation in which I needed to share state data between the renderer and main process. The way of typically doing this is a little convoluted as it requires [IPC](https://en.wikipedia.org/wiki/Inter-process_communication) messaging between the render and main process my way of using the send methods and defining event handers with the on methods of the [IPC Main](https://www.electronjs.org/docs/latest/api/ipc-main) and [IPC Renderer](https://www.electronjs.org/docs/latest/api/ipc-renderer) classes.
@@ -181,6 +181,8 @@ app.on('window-all-closed',  () => {
 ```
 
 ## 2 - The preload file
+
+I will want to have a way to get at the state of the user data file from my front end code, so in my preload javaScript file I have a get user data method that will read the current state of this file.
 
 ```js
 // preload with contextIsolation enabled
