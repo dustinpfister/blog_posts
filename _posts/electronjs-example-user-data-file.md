@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1001
-updated: 2022-08-19 08:54:09
-version: 1.10
+updated: 2022-08-19 09:00:41
+version: 1.11
 ---
 
 While working on my [electronjs](https://www.electronjs.org/) application that I use to make videos for my you tube channel, and thus also video embeds for my blog posts on threejs I ran into a situation in which I needed to share state data between the renderer and main process. The way of typically doing this is a little convoluted as it requires [IPC](https://en.wikipedia.org/wiki/Inter-process_communication) messaging between the render and main process my way of using the send methods and defining event handers with the on methods of the [IPC Main](https://www.electronjs.org/docs/latest/api/ipc-main) and [IPC Renderer](https://www.electronjs.org/docs/latest/api/ipc-renderer) classes.
@@ -271,5 +271,5 @@ Here I have the html that I am using for this example
 
 ## Conclusion
 
-
+I had a general idea of what I wanted to do with this example, I wanted to create and refine some things with this kind of user data file and folder before making major changes to my videoground application. What it is that I have worked out here might me worked into a future revision of the video ground project as there is a lot that I would like to do with a user data folder. With that application I could use the user data folder as a standard location to park frame images when I use my export to frames feature of that application. In future revisions in which I might also use [ffmpeg](/2022/03/04/linux-ffmpeg/) as a way to create final videos this can also be used to place such files by default. There are all kinds of things that I would also like to store as user data such as a default start location when opening files that I thing would improve my workfloaw a little such as what I have worked out for this example on the user data folder.
 
