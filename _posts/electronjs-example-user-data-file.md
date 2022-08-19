@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1001
-updated: 2022-08-19 08:48:07
-version: 1.7
+updated: 2022-08-19 08:49:44
+version: 1.8
 ---
 
 While working on my [electronjs](https://www.electronjs.org/) application that I use to make videos for my you tube channel, and thus also video embeds for my blog posts on threejs I ran into a situation in which I needed to share state data between the renderer and main process. The way of typically doing this is a little convoluted as it requires [IPC](https://en.wikipedia.org/wiki/Inter-process_communication) messaging between the render and main process my way of using the send methods and defining event handers with the on methods of the [IPC Main](https://www.electronjs.org/docs/latest/api/ipc-main) and [IPC Renderer](https://www.electronjs.org/docs/latest/api/ipc-renderer) classes.
@@ -30,6 +30,8 @@ The full source code for this election example, as well as many others can be fo
 ## 1- The main javaScript file
 
 In my main javaScript file I have a number of helper functions that I am using to check if a user data folder is there to begin with, and of so create it. In other worlds I want to do something that is like the [mkdir -p command in Linux](/2021/06/30/linux-mkdir) to make sure that a folder in which I want to park data for the current user is there to begin with. In older versions of nodejs this was a little involved and required the use of an [npm package like that of mkdirp](/2017/11/14/nodejs-mkdirp/). However in newer versions of node it would seem that native support for recursive creation of folders works well with just the native fs.mkdir method of the file system module in nodejs.
+
+On top of having a helper funciton to create the user data folder I have another function that will check if a user data file is in the folder or not. In the event that the file is not there it will create a new one using hard coded settings in the main javaScript file.
 
 ```js
 // load app and BrowserWindow
