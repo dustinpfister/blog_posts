@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1001
-updated: 2022-08-19 08:51:22
-version: 1.9
+updated: 2022-08-19 08:54:09
+version: 1.10
 ---
 
 While working on my [electronjs](https://www.electronjs.org/) application that I use to make videos for my you tube channel, and thus also video embeds for my blog posts on threejs I ran into a situation in which I needed to share state data between the renderer and main process. The way of typically doing this is a little convoluted as it requires [IPC](https://en.wikipedia.org/wiki/Inter-process_communication) messaging between the render and main process my way of using the send methods and defining event handers with the on methods of the [IPC Main](https://www.electronjs.org/docs/latest/api/ipc-main) and [IPC Renderer](https://www.electronjs.org/docs/latest/api/ipc-renderer) classes.
@@ -226,7 +226,11 @@ contextBridge.exposeInMainWorld('UserDataApp', UserDataApp);
 
 ## 3 - The client system
 
-### 3.1 - client.js
+Now that I have my main and prealod files out of the way I will want to have a little front end code for this to make sure that my preload functions are working the way that they should be.
+
+### 3.1 - The client.js javaScript file
+
+When the Browser window is up and running it will call the get user data method to get the current state of the user data file.
 
 ```js
 var con = document.querySelector('#text_console');
@@ -245,6 +249,8 @@ UserDataApp.getUserData()
 ```
 
 ### 3.2 - The window\_main.html file
+
+Here I have the html that I am using for this example
 
 ```html
 <!DOCTYPE html>
