@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-08-05 10:14:16
-version: 1.72
+updated: 2022-08-19 14:35:23
+version: 1.73
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs. That is until I started a collection of posts has to do with making some kind of real application rather than just demos of various features of the library. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -38,6 +38,9 @@ This example aims to be the start of a basic framework that I might use on top o
 ### [ 2.4 - A Biplane Group Example](/2021/02/18/threejs-examples-biplane-group/)
 
 This is another example of a model but this time around I experimented with creating a model that is a model of models. This is taking the biplane model that I made and create a new model that is just working with a collection of these biplane models.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/Mq37hBHx-Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### [ 2.5 - A Biplane Example](/2021/02/17/threejs-examples-biplane/)
 
@@ -76,9 +79,15 @@ In this example I wanted to work out an alternative to that of using a cube text
 
 This is my first basic guy model that I made that is very crude, yet still seems to work okay as long as I am okay with going with a very crude basic style when it comes to animation. Some times that kind of angle will work okay actually if the over all project makes up for it. In any case this is my first attempt at this kind of model, and in time I am sure it will not be my last, but hey I have to start somewhere when it comes to this kind of thing.
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/u5tRAChrMfM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ### [ 2.14 - Hamster Wheel](/2021/04/19/threejs-examples-hamster-wheel/) 
 
 This is a fun example that I made that is a human sized hamster wheel, and I placed a simple person model inside the hamster wheel. This is one that I keep coming back to now and then because I can help but feel that I am expressing something that is very reliable for many people here.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/evvbFFwIEXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### [ 2.15 - House](/2021/04/23/threejs-examples-house/) 
 
@@ -117,6 +126,10 @@ An example that is a collection of mesh objects in a group nested in another gro
 ### [ 2.23 - Object grid Wrap ](/2022/05/20/threejs-examples-object-grid-wrap/)
 
 I wanted to make a quick simple object grid module type project where I can create this grid of objects that are cloned from an array of source objects and an array of index values for these source objects for each tile in the grid. On top of that the objects will loop around in all directions as I move around as well.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/JqVIlrvMwHs
+" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### [ 2.24 - Object grid Wrap land ](/2022/07/25/threejs-examples-object-grid-wrap-land/)
 
@@ -165,6 +178,9 @@ The is a basic example of some waves which strokes me as another simple example 
 ### [ 2.35 - Weird face one](/2022/07/08/threejs-examples-weird-face-one/) 
 
 Updating the state of a geometries is something that can be done in a wide range of ways. There is looking into use bones as a way to do so, but then there is also just working out all kinds of various ways that have to do with updating the state of geometry using a little javaScript code. For this weird face one example I am using the lerp geometry method that I made for a previous example to lerp between to states of a geometry for a mouth of a weird looking face. On top of that I am also making use of other ways of creating a kind of animation my just moving the position of mesh objects which is what I am using with the eyes of this weird face model.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/AzuB6ExUE64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### [ 2.36 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
 
