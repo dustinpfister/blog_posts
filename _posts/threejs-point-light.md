@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2022-08-23 11:44:21
-version: 1.24
+updated: 2022-08-23 11:47:12
+version: 1.25
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a [number of options when it comes to light sources](/2022/02/25/threejs-light/) for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a [spot light](/2018/04/11/threejs-spotlights/).
@@ -23,6 +23,9 @@ The example in this post is a little involved but so is any three.js project whe
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/2TDkh51y7SM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+### Source code is on Github
+
+I have the source code examples that I am [writing about in this post up on github also](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-point-light).
 
 ### Version Numbers matter
 
