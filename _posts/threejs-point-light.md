@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2022-08-23 15:31:22
-version: 1.26
+updated: 2022-08-23 15:37:59
+version: 1.27
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a [number of options when it comes to light sources](/2022/02/25/threejs-light/) for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a [spot light](/2018/04/11/threejs-spotlights/).
@@ -29,9 +29,13 @@ I have the source code examples that I am [writing about in this post up on gith
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing in terms of both text and code I was using r127 of three.js. I can not say that much has changed with the point light alone between those two version numbers, but of course a great deal has changes with many other things in three.js. In any case always be mindful of what version of three.js you are using when playing around with threejs code examples on the open web not everything odes a good job of keeping their content up to date with this.
+When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing in terms of both text and code I was using r140 of three.js. I can not say that much has changed with the point light alone between those two version numbers, but of course a great deal has changes with many other things in three.js. In any case always be mindful of what version of three.js you are using when playing around with threejs code examples on the open web not everything odes a good job of keeping their content up to date with this.
 
 ## 1 - Basic Point Light example
+
+First off a basic hello world style example of the point light. Here I am starting out with the usual scene object followed by a camera, and a renderer as with any threejs example I will need these objects.
+
+After I have my typical set of objects to work with I can now create a point light and add it to my scene objects. To do this I call the THREE.PointLight [constructor function](/2019/02/27/js-javascript-constructor/) with the new keyword. When doing so I can pass a color as the first argument, and an intensity as a second argument when calling the constructor. The return product of calling the constructor will then be a new instance of the point light and I can then do things like setting the position of the light, and when I am ready I can go ahead and make it a child of the scene object.
 
 ```js
 (function () {
