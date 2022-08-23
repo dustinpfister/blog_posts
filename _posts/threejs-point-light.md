@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2022-04-12 14:11:30
-version: 1.23
+updated: 2022-08-23 11:44:21
+version: 1.24
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a [number of options when it comes to light sources](/2022/02/25/threejs-light/) for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a [spot light](/2018/04/11/threejs-spotlights/).
@@ -20,6 +20,9 @@ In this post I will be going over a quick examples of the point light in three j
 ## Point lights in threejs and what to know before hand
 
 The example in this post is a little involved but so is any three.js project when it comes to all the various aspects of three.js that a developer needs understand in order o do anything interesting with three.js. I assume that you have at least some background with three.js and javaScript in general as I will not be getting into the basics with three.js and javaScript here. If you like you might want to check out [my getting started post on three.js](/2018/04/04/threejs-getting-started/), and also check out the official website when it comes to how to get up and running with the basic of three.js.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/2TDkh51y7SM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### Version Numbers matter
 
@@ -148,6 +151,6 @@ loop();
 
 The result when this example is up and ruining is a cool little effect where I have all these point lights shining different colors on to cube objects that are skinned with a material that is while in color.
 
-## 2 - Conclusion
+## Conclusion
 
 The point like is one of the typical light sources that I like to go with just about all of the time when I make my own three.js examples. However often do like to add an additional mesh to the light so that I know where the light source is while I am at it like I did with the example in this post. The other typical light source that I like to use is the ambient light, which is a way to just have a base amount of light for all the mesh objects in the scene. So ambient light and point lights are mu usual go to light sources. However there are still some additional options that might prove to be a better choice in some situations. It is said that a directional light instance would be best to reproduce day light, and also now and then it might be a good idea to go with a spot light actually.
