@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-08-23 09:08:26
-version: 1.24
+updated: 2022-08-23 09:29:05
+version: 1.25
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object in three.js that is based off of the object3d class and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at, and the result is that the object ends up looking at that point in space. However things might not always work the way that I might expect it to, and one reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is also an instance of object3d that can have its position changed.
@@ -127,7 +127,7 @@ renderer.render(scene, camera);
 
 If I want to have a mesh face a child within a group then I am going to want to do something to adjust the values that I give to look at to point to the equivalent location of the mesh object in world space. I could create an new instance of Vector3 and then manually do the math to get the desired position in world space rather than the position relative to the group position. However there is another useful Object3d method in the class that can be used to make quick work of this kind of task called [Object3d.getWorldPosition](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition).
 
-As of around r127 foorward it is now required to create a new instance of Vector3 and pass that as an argument when calling the get world space method. Failing to do so with later versions of threejs such as r140 that I tested this out on last will result in an error.
+As of around r127 forward it is now required to create a new instance of Vector3 and pass that as an argument when calling the get world space method. Failing to do so with later versions of threejs such as r140 that I tested this out on last will result in an error.
 
 ```js
 // creating a scene
