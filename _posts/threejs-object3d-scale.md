@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-08-23 08:37:34
-version: 1.30
+updated: 2022-08-23 08:39:07
+version: 1.31
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also. When it comes to the basics of threejs one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). 
@@ -23,6 +23,10 @@ I trust that you have covered the basics at least when it comes to [getting up a
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/jpcjC3jedrQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
+### Source code is on Github
+
+The examples in this post and my many other posts on threejs can be [found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-scale).
 
 ### Version Numbers matter with three.js
 
