@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-08-23 09:08:25
-version: 1.30
+updated: 2022-08-23 09:29:04
+version: 1.31
 ---
 
 When getting into the subjects of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
@@ -30,7 +30,7 @@ There is a great deal more to write about when it comes to [buffer geometry](/20
 
 ### Version Numbers matter
 
-When I made these source code examples, and first wrote this post I was using revision 127 of threejs.
+When I made these source code examples, and first wrote this post I was using revision 127 of threejs. I do come around to doing a little editing of these posts now and then, and the last time I check that everything was working okay I was using r140.
 
 ## 1 - Basic example of the position attribute of a buffer geometry
 
@@ -40,13 +40,19 @@ If you are still a little confused about all this maybe it would be best to just
 
 ```js
 (function () {
- 
-    // scene
+    //******** **********
+    // scene, camera, render
+    //******** **********
     var scene = new THREE.Scene();
- 
-    // GEOMETRY - starting with a cube
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(2, 2, 2);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //******** **********
+    // GEOMETRY, MESH - starting with a cube and looking at position attribute
+    //******** **********
     var geometry = new THREE.BoxGeometry(1, 1, 1);
- 
     // check out the position attribute of a cube
     var position = geometry.getAttribute('position');
     console.log( position.count ); // 24
@@ -56,29 +62,20 @@ If you are still a little confused about all this maybe it would be best to just
     console.log( index.count );      // 36
     console.log( 2 * 6 );            // 12 ( number of triangles )
     console.log( index.count / 3);   /* 12 (index.count / 3 === number of triangles ) */
- 
     // mutating a position
     var vertIndex = index.array[0] * 3;
     position.array[vertIndex] = 1;
     position.needsUpdate = true;
- 
-    
     // use the geometry with a mesh
     var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
         side: THREE.DoubleSide
     }));
     scene.add(mesh);
-    // camera, render
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
     camera.lookAt(mesh.position);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
+    //******** **********
+    // RENDER
+    //******** **********
     renderer.render(scene, camera);
- 
- 
 }
     ());
 ```
