@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2022-08-24 10:39:18
-version: 1.33
+updated: 2022-08-24 13:26:12
+version: 1.34
 ---
 
 The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. 
@@ -27,9 +27,9 @@ There is checking out my main post on the [Vector3 class](/2018/04/15/threejs-ve
 
 The thing to keep in mind here is that the normalize method will just set the length of a vector to one, while preserving the direction of the Vector, but that is it. What if I want to set direction of a Vector by a set of given angles in terms of radians or degrees for example? I will be going over some additional methods other than just the normalize method here, but there is a great deal more to be aware of that can be used with the normalize method, and I will not be getting to all of it here.
 
-### SOurce code is also up on Github
+### Source code is also up on GitHub
 
-On my github account I have a repo in which I am parking all the source code examples for my [various posts on threejs](/categories/three-js/) including this one. With that said all the examples here can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-normalize) on Github.
+On my GitHub account I have a repository in which I am parking all the source code examples for my [various posts on threejs](/categories/three-js/) including this one. With that said all the examples here can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-normalize) on Github.
 
 ### Version Numbers matter
 
@@ -299,7 +299,9 @@ One way to make this kind of method would be to make use of the [apply Euler met
 
 ## 5 - Animation example 
 
-Now for an example that might help to really visualize what the deal is with normalization and length of vector3 instances. This example involves creating a group of groups where each end child node is a mesh object that uses the capsule geometry.
+Now for an example that might help to really visualize what the deal is with normalization and unit length of vector3 instances. This example involves creating a group of groups where each end child node is a mesh object that uses the capsule geometry. I am then using buffer geometry and object3d class methods and properties to make it so that each capsule geometry of each mesh is alight in such a way that each end is between 0 and a fixed end vector unit length.
+
+The general idea here is to pick a few directions and use the capsule geometry as a way to mark those directions. I can then make one or more mesh objects and have them move along one or more of the directions.
 
 ```js
 
