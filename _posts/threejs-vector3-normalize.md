@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2022-08-24 09:03:05
-version: 1.31
+updated: 2022-08-24 09:10:15
+version: 1.32
 ---
 
 The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. 
@@ -33,7 +33,9 @@ On my github account I have a repo in which I am parking all the source code exa
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r127 of threejs which was a late version of threejs as or min 2021, but even then was not the latest version. I have made a habit of mentioning what version of threejs I am using when writing new threejs posts, and also add a section like this to older posts when I get around to doing a little editing. Maybe this is something that I should do with just about any javaScript library actually, but threejs seems to be moving along real fast compared to other javaScript projects where development is very slow.
+When I first wrote this post I was using r127 of threejs which was a late version of threejs as or min 2021, and the last time I cam around to do some edited I was testing these examples out on r140. Things where working fine on my end with those versions.
+
+I have made a habit of mentioning what version of threejs I am using when writing new threejs posts, and also add a section like this to older posts when I get around to doing a little editing. Maybe this is something that I should do with just about any javaScript library actually, but threejs seems to be moving along real fast compared to other javaScript projects where development is very slow.
 
 ## 1 - Basic Vector3 normalize example
 
