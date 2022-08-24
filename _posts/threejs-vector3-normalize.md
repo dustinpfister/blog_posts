@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2022-08-24 09:00:04
-version: 1.30
+updated: 2022-08-24 09:03:05
+version: 1.31
 ---
 
 The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. 
@@ -26,6 +26,10 @@ This is a post on using the Vector3 normalize method, and other related features
 There is checking out my main post on the [Vector3 class](/2018/04/15/threejs-vector3/) where I am going over the Vector3 class in general. Normalizing a Vector is a major part of becoming proficient with the Vector3 class, but there is a great deal more to it when it comes to the basics of Vector3, as well as other various methods of the class. 
 
 The thing to keep in mind here is that the normalize method will just set the length of a vector to one, while preserving the direction of the Vector, but that is it. What if I want to set direction of a Vector by a set of given angles in terms of radians or degrees for example? I will be going over some additional methods other than just the normalize method here, but there is a great deal more to be aware of that can be used with the normalize method, and I will not be getting to all of it here.
+
+### SOurce code is also up on Github
+
+On my github account I have a repo in which I am parking all the source code examples for my [various posts on threejs](/categories/three-js/) including this one. With that said all the examples here can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-normalize) on Github.
 
 ### Version Numbers matter
 
