@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 863
-updated: 2022-04-28 15:52:14
-version: 1.12
+updated: 2022-08-25 08:33:19
+version: 1.13
 ---
 
 This will be a post on a nested groups [threejs example](/2021/02/19/threejs-examples/) that I made today that is a continuation of what I started with my post on use of the user data object in the object3d class. The user data object of the Object3d class is a standard object for everything based on object3d for parking application specific data to help make sure that there are no conflicts with properties that are used with three.js. 
@@ -20,6 +20,7 @@ When making my own code for an over all three.js project I am going to end up wi
 This is one of my many three.js examples that makes use of the client side [javaScript library known as three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). This post is intended for javaScript developers that have learned a thing or two about the basics and are not looking into how to go about getting started when it comes to making some actual projects of some kind with three.js. So I assume that you have at least some background with the [basics of three.js](/2018/04/04/threejs-getting-started/), and know at least a thing or two about [javaScript in general](/2018/11/27/js-getting-started/). So I will not be touching base on the basics of three.js and javaScript here, but in this section I will be going over a few things that I think you should read up mre on before getting into this example.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/3hN1kC7mH6k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### Version Numbers matter with three.js
 
