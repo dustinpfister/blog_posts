@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2022-08-25 08:42:34
-version: 1.37
+updated: 2022-08-25 09:05:26
+version: 1.38
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -42,7 +42,9 @@ The module itself can be found in the [modules group folder](https://github.com/
 
 When I first wrote this post and the source code of the example here I was using revision 106 of threejs, and the last time I tested things out and did a little editing of this post I was using revision 140 of threejs. Code breaking changes are made to threejs all the time so be mindful of what version you are using when working with threejs code example on the open web.
 
-## 1 - The tree constructor
+## 1 - First version of the tree.js module
+
+### 1.0 - The tree constructor
 
 So now lets get to the source code of this basic tree model that are present is just a single constructor function that will create and return an instance of this Tree Class. This tree class has many properties to it, but the main property of interest here is the group property that contains an instance of THREE.Group. It is this group that I will want to add to a scene object when it comes to using this in an over all threejs project.
 
@@ -51,6 +53,11 @@ When calling the constructor function there are a number of options that I can p
 I am not doing much of anything with the prototype at the time of this writing, but it contains a few static methods. This might change if I ever get around to doing more work on this at some point in the future.
 
 ```js
+/*  tree.js - r0 - from threejs-examples-tree
+ *  https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tree
+ *
+ *
+ */
 var Tree = function (opt) {
     // options
     opt = opt || {};
@@ -84,6 +91,7 @@ var Tree = function (opt) {
         // standard radius and length
         // and set default radius and y position of section
         secObj.stdRadius = this.coneMaxRadius - this.coneRadiusReduction * (secObj.i / this.sections);
+        //secObj.stdLength = this.coneMaxLength - this.coneLengthReduction * (Math.pow(2, secObj.i) - 1) / Math.pow(2, this.sections);
         secObj.stdLength = this.coneMaxLength - (this.coneLengthReduction * (secObj.i / this.sections) );
         secObj.radius = secObj.stdLength - secObj.stdLength / 2;
         secObj.y = secObj.stdRadius * 2 * secObj.i;
@@ -129,7 +137,7 @@ var Tree = function (opt) {
     // call on done if given
     this.onDone.call(this);
 };
- 
+// static default cone object
 Tree.defaultConeObj = function (tree, coneObj, secObj) {
     coneObj.per = coneObj.i / tree.conesPerSection;
     coneObj.radian = Math.PI * 2 * coneObj.per;
@@ -147,7 +155,7 @@ Tree.defaultConeObj = function (tree, coneObj, secObj) {
     coneObj.thetaStart = 0;
     coneObj.thetaLength = Math.PI * 2;
 };
- 
+// set the cone position
 Tree.setConePos = function (coneObj, secObj) {
     var radian = coneObj.radian;
     coneObj.x = Math.cos(radian) * secObj.radius;
@@ -158,7 +166,7 @@ Tree.setConePos = function (coneObj, secObj) {
 
 When I use the model to create an instance of the tree model there are a wide range of options that I can give alone with methods that are to be called for each cone that I can use to override some of the values that are used to position and size the cones.
 
-## 2 - Basic example of the tree model
+### 1.1 - Basic example of the tree model
 
 So now it is is time to just work out a basic threejs scene just to make sure that this tree model works the way that I expect it to. First off I create a scene object, and camera, and renderer just like with any other three.js example. I will be using a custom material when calling the tree constructor that will respond to light so I am adding a white point light to the scene object.  In addition I am also using the [three js built in orbit controls](/2018/04/13/threejs-orbit-controls/) in this example so I can just move around the camera and look at the tree.
 
@@ -201,13 +209,18 @@ Then what it comes to creating and adding a tree to the scene object I just call
     ());
 ```
 
-## 3 - Using the forConeValues option
+### 1.2 - Using the forConeValues option
 
 If for some reason I want to use a custom expression when it comes to setting the position, rotation, or any other value on a cone by cone basis of the cones I can use the forConeValues option as one way to go about doing so.
 
 ```js
-// TREE with custom forConeValues method
-var tree = new Tree({
+
+(function () {
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(15, 15));
+    // USING FOR CONE
+    var tree = new Tree({
         coneMaterial: new THREE.MeshStandardMaterial({
             color: 0x00af00
         }),
@@ -220,10 +233,76 @@ var tree = new Tree({
             cone.z = Math.sin(cone.radian) * radius;
         }
     });
-scene.add(tree.group);
+    scene.add(tree.group);
+    // render, camera, light
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(10, 10, 10);
+    scene.add(camera);
+    var light = new THREE.PointLight(0xffffff);
+    camera.add(light);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    camera.lookAt(0, 2, 0);
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 This feature was just added in just for the heck of it, and I am not sure if this is a feature that I would really want or need in this kind of project. I also made this tree constructor back before I was aware of an object3d method known as object3d.traverse that I can also use as a way to loop over all the mesh objects of a group. So at some point in the future it is possible that I might remove this feature actually.
+
+### 1.3 - loop example
+
+```js
+
+(function () {
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(15, 15));
+    // BASIC TREE
+    var tree = new Tree({
+            sections: 8,
+            conesPerSection: 16,
+            coneMaterial: new THREE.MeshStandardMaterial({
+                color: 0x00af00
+            })
+        });
+    scene.add(tree.group);
+    // render, camera, light
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, 2, 0);
+    scene.add(camera);
+    var light = new THREE.PointLight(0xffffff);
+    camera.add(light);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    camera.lookAt(0, 2, 0);
+    // LOOP
+    var fps = 30,
+    lt = new Date(),
+    frame = 0,
+    maxFrame = 300;
+    var loop = function () {
+        var now = new Date(),
+        per = frame / maxFrame,
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps){
+            tree.group.children.forEach(function(coneGroup, i){
+                coneGroup.rotation.y = Math.PI / 180 * 90 * per * (i + 1);
+            });
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
 
 ## Conclusion
 
