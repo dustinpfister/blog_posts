@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 863
-updated: 2022-08-25 08:33:19
-version: 1.13
+updated: 2022-08-25 08:37:35
+version: 1.14
 ---
 
 This will be a post on a nested groups [threejs example](/2021/02/19/threejs-examples/) that I made today that is a continuation of what I started with my post on use of the user data object in the object3d class. The user data object of the Object3d class is a standard object for everything based on object3d for parking application specific data to help make sure that there are no conflicts with properties that are used with three.js. 
@@ -22,9 +22,13 @@ This is one of my many three.js examples that makes use of the client side [java
 <iframe class="youtube_video" src="https://www.youtube.com/embed/3hN1kC7mH6k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+### Source code is up on Github
+
+The source code examples that I am wriirng about in this post can also be found in my ;test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-nested-groups).
+
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using three.js revision r127, as such the code here might break in future versions of three.js.
+When I first wrote this post I was using three.js revision r127, and things where working fine for me then with that version. Also I do get around to editing my content on threejs a post or two at a time, and the last time I came around to edit this I was using r140. Again the examples here where working fine with that revision of threejs as well, however code breaking changes are made to threejs often so always me mindful of what revision number you are using.
 
 ### Read up more on the user data property of the Object3d class
 
