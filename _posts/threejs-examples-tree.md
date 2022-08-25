@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2022-04-28 15:52:16
-version: 1.35
+updated: 2022-08-25 08:33:20
+version: 1.36
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -25,6 +25,7 @@ This is a post on using the javaScript library known as three.js that can be use
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/1y4XpWfx_Ao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
 ### The source code for these demos and the three module are on github
 
 The module itself can be found in the [modules group folder](https://github.com/dustinpfister/test_threejs/tree/master/views/js/modules_group/tree/0.0.0) of my test threejs repository, while the demos that make use of it can be found in the [for post folder](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tree) for this blog post.
@@ -39,7 +40,7 @@ There are a lot of ways of going about making tree models even when it comes to 
 
 ###  Be sure to check the version number you are using
 
-When I first wrote this post and the source code of the example here I was using revision 106 of threejs, and the last time I tested things out and did a little editing of this post I was using revision 127 of threejs. Code breaking changes are made to threejs all the time so be mindful of what version you are using when working with threejs code example on the open web.
+When I first wrote this post and the source code of the example here I was using revision 106 of threejs, and the last time I tested things out and did a little editing of this post I was using revision 140 of threejs. Code breaking changes are made to threejs all the time so be mindful of what version you are using when working with threejs code example on the open web.
 
 ## 1 - The tree constructor
 
