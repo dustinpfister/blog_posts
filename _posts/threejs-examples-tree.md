@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2022-08-25 09:05:26
-version: 1.38
+updated: 2022-08-25 09:10:24
+version: 1.39
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -43,6 +43,8 @@ The module itself can be found in the [modules group folder](https://github.com/
 When I first wrote this post and the source code of the example here I was using revision 106 of threejs, and the last time I tested things out and did a little editing of this post I was using revision 140 of threejs. Code breaking changes are made to threejs all the time so be mindful of what version you are using when working with threejs code example on the open web.
 
 ## 1 - First version of the tree.js module
+
+In this section I will be going over the first version of the threejs module, and a gew examples of that version. As of this writing this is also the only version of the module still. However in future edits I might now make a new revision of the source code sense I do not make them this way any more.
 
 ### 1.0 - The tree constructor
 
@@ -252,6 +254,8 @@ If for some reason I want to use a custom expression when it comes to setting th
 This feature was just added in just for the heck of it, and I am not sure if this is a feature that I would really want or need in this kind of project. I also made this tree constructor back before I was aware of an object3d method known as object3d.traverse that I can also use as a way to loop over all the mesh objects of a group. So at some point in the future it is possible that I might remove this feature actually.
 
 ### 1.3 - loop example
+
+Now for an animation loop example of the tree module which should prove to be a little fun. Sense this tree object contains a group property that in turn is a group of groups, I can loop over each group and rotate each group on the y axis. When doing so I can use the index value of each group to adjust the rate at which the rotation of each group of cones will rotate. This will result in a nice effect where each group of cones will rotate at differing rates.
 
 ```js
 
