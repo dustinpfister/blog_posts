@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2022-08-25 08:33:20
-version: 1.36
+updated: 2022-08-25 08:42:34
+version: 1.37
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -26,10 +26,6 @@ This is a post on using the javaScript library known as three.js that can be use
 <iframe class="youtube_video" src="https://www.youtube.com/embed/1y4XpWfx_Ao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### The source code for these demos and the three module are on github
-
-The module itself can be found in the [modules group folder](https://github.com/dustinpfister/test_threejs/tree/master/views/js/modules_group/tree/0.0.0) of my test threejs repository, while the demos that make use of it can be found in the [for post folder](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tree) for this blog post.
-
 ### Read up on THREE.Group, THREE.Mesh, and the Object3d base class in general
 
 This model of a tree is a collection of Mesh Objects that are part of a Group that are in turn a part of another Group. There is reading up more on the Mesh class, and also the Group class, but it might be best to read up more on the [Object3d class in general](/2018/04/23/threejs-object3d/). The Object3d class is a base class of Mesh objects, Groups, Cameras, and even a whole Scene object. So my learning everything there is to know about the Object3d class it is then possible to apply that to all kinds of other objects in three.js.
@@ -37,6 +33,10 @@ This model of a tree is a collection of Mesh Objects that are part of a Group th
 ### Do not just stop with this example when it comes to making trees
 
 There are a lot of ways of going about making tree models even when it comes to the crude informal style that I like to make them with. This is an example where I am making a whole bunch of mesh objects using the cone geometry, but another nice way to just quickly make something that looks a little like a three is to just place a sphere on top of a box or cylinder geometry and calling it a day. In fact I [have another tree model worked out](/2021/05/19/threejs-examples-tree-sphere/) that is just that simple, and if you ask me it still works when it comes to a crude low Polly art style.
+
+### The source code for these demos and the three module are on github
+
+The module itself can be found in the [modules group folder](https://github.com/dustinpfister/test_threejs/tree/master/views/js/modules_group/tree/0.0.0) of my test threejs repository, while the demos that make use of it can be found in the [for post folder](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tree) for this blog post.
 
 ###  Be sure to check the version number you are using
 
