@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1002
-updated: 2022-08-26 14:28:21
-version: 1.7
+updated: 2022-08-26 14:30:53
+version: 1.8
 ---
 
 Not to long ago I made a [threejs example](/2021/02/19/threejs-examples/) about a function that will [update the values of one position attribute of a buffer geometry as a lerp](/2022/07/01/threejs-examples-lerp-geo/) between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry? In other words a kind of many object tween between more than one state of similar geometries. I wanted to make my own kind of system for this sort of thing then that works by using a function similar to my lerp geometry function, but using it to lerp not just once, but a few times, and create a mean between all of the results. This mean between several lerps of geometries will then be what is used to update the geometry of a single mesh object. In this post I will then be writing about the current state of the source code of what I have together thus far for this system.
@@ -23,7 +23,7 @@ The main thing about this javaScript module is making a way to go about updating
 
 ### Check out the DAE file loader
 
-I this module I have a load method and the load method depeds on one additonal extreal file beyod that of just threejs. This addtonal file is the DAE file loader that can be found in the examples folder of the threejs reposaptory on github. It might be a good idea to look into this loader in general more if you ahve not done so before hand. I tend to like the DAE file format when it comes to loading exterial assets into a threejs project. However there are also, may other options, incldiig optiosn that are built into threejs itself, such is the case with the buffer geometry loader.
+I this module I have a load method and the load method depends on one additional external file beyond that of just threejs. This additional file is the DAE file loader that can be found in the examples folder of the threejs repository on github. It might be a good idea to look into this loader in general more if you have not done so before hand. I tend to like the DAE file format when it comes to loading external assets into a threejs project. However there are also, may other options, including options that are built into threejs itself, such is the case with the buffer geometry loader.
 
 ### source code, and other assets are on Github
 
