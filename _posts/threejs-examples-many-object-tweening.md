@@ -5,13 +5,31 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1002
-updated: 2022-08-26 14:08:38
-version: 1.5
+updated: 2022-08-26 14:22:16
+version: 1.6
 ---
 
 Not to long ago I made a threejs example about a function that will update the values of one position attribute of a buffer geometry as a lerp between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry? In other words a kind of many object tween between more than one state of similar geometries. I wanted to make my own kind of system for this sort of thing then that works by using a function similar to my lerp geometry function, but using it to lerp not just once, but a few times, and create a mean between all of the results. This mean between several lerps of geometries will then be what is used to update the geometry of a single mesh object. In this post I will then be writing about the current state of the source code of what I have together thus far for this system.
 
 <!-- more -->
+
+## The tween many threejs example and what to be aware of first
+
+This is a post in which I am writing a thing or two about this javaScript module that I made along with a few quick demos of it while I am at it. This module works on top of the library known as threejs, as well as some additional assets such as the DAE file loader, as well as a DAE file that contains the geometries that I want to use with this module. This is not a post for people that are new to threejs then, as well as client side javaScript as well for that matter. I will not be getting into every little detail that you should know before hand here of course. However as usual I often start my posts with a new sections that outline some things that you might want to read up more on before continuing to read the rest of this post.
+
+### Read or refresh on the BufferGeometry class.
+
+The main thing about this javaScript module is making a way to go about updating attributes of a buffer geometry instance such as the position property. If you do not know what the position property of a buffer geometry instance is you might want to read up more on that topic. While you are at it you might want to read up more on the other core attributes such as the normal attribute and the uv attribute as well. There is a whole lot to be ware of when it comes to the buffer geometry class in general.
+
+### source code, and other assets are on Github
+
+The source code for the module and demos can be found in the [for post folder of my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-many-object-tweening). In addition to this I also have the [DAE file that I am using](https://github.com/dustinpfister/test_threejs/tree/master/views/dae/many-object-tweening) in there as well. The first prototype that I made that lead to this project is also in the [demo folder](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r140/proto-many-object-tweening) in test threejs.
+
+I also have copies of threejs and the DAE loader there as well. However it might be best to always get there from the official threejs repo which is also on Github.
+
+### Version Numbers Matter
+
+I was using r140 of threejs when I first made these source code examples, and wrote this blog post for the first time.
 
 
 ## 1 - First version of my tween-many module and demos of it
