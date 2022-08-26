@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1002
-updated: 2022-08-26 11:10:35
-version: 1.1
+updated: 2022-08-26 11:15:07
+version: 1.2
 ---
 
-Not to long ago I made a threejs example about a function that will update the values of one position attribute of a buffer geometry as a lerp between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry?
+Not to long ago I made a threejs example about a function that will update the values of one position attribute of a buffer geometry as a lerp between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry? In other words a kind of many object tween between more than one state of simular geometries. I wanted to make my own kid of system for this sort of thing then that works by using a function simular to my lerp geomerty function, but using it to lerp not just once, but a few times, and create a mean between all of the results. This mean between several lerps of geometies will then be what is used to update the geometry of a single mesh object. In this post I will then be writing about the current state of the source code of what I have togetahr thus far for this system.
 
 <!-- more -->
 
