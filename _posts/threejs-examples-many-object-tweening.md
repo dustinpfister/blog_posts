@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1002
-updated: 2022-08-26 11:15:07
-version: 1.2
+updated: 2022-08-26 11:22:15
+version: 1.3
 ---
 
 Not to long ago I made a threejs example about a function that will update the values of one position attribute of a buffer geometry as a lerp between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry? In other words a kind of many object tween between more than one state of simular geometries. I wanted to make my own kid of system for this sort of thing then that works by using a function simular to my lerp geomerty function, but using it to lerp not just once, but a few times, and create a mean between all of the results. This mean between several lerps of geometies will then be what is used to update the geometry of a single mesh object. In this post I will then be writing about the current state of the source code of what I have togetahr thus far for this system.
@@ -14,7 +14,9 @@ Not to long ago I made a threejs example about a function that will update the v
 <!-- more -->
 
 
-## 1 - First version of my tween-many module
+## 1 - First version of my tween-many module and demos of it
+
+In this secton then I will be going over the first version r0 of this tween many javaScript module, and in addition a few demos of the module as well of course. When it comes to this first revision I just wanted to still focus on just the position attribute for now, so when updating the normals attribute I am using the compute vertex normals method to do so in the demos. When it comes to getting this to work up to speed for the vishin that I have in mind I will need to use the normals, in the dae file as I am sure that there will be some objects where using the compute vertex normals method will not give me the result that I want. However getting into all of that, and addtional things that might come up with textures will be a matter for future revisions when I get to them.
 
 ### 1.0 - The tween-many.js file source code ( r0 ) 
 
