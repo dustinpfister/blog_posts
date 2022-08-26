@@ -5,17 +5,22 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1002
-updated: 2022-08-26 14:37:36
-version: 1.9
+updated: 2022-08-26 15:58:50
+version: 1.10
 ---
 
 Not to long ago I made a [threejs example](/2021/02/19/threejs-examples/) about a function that will [update the values of one position attribute of a buffer geometry as a lerp](/2022/07/01/threejs-examples-lerp-geo/) between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry? In other words a kind of many object tween between more than one state of similar geometries. I wanted to make my own kind of system for this sort of thing then that works by using a function similar to my lerp geometry function, but using it to lerp not just once, but a few times, and create a mean between all of the results. This mean between several lerps of geometries will then be what is used to update the geometry of a single mesh object. In this post I will then be writing about the current state of the source code of what I have together thus far for this system.
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/xfzR932YClU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The tween many threejs example and what to be aware of first
 
 This is a post in which I am writing a thing or two about this javaScript module that I made along with a few quick demos of it while I am at it. This module works on top of the [library known as threejs](https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene), as well as some additional assets such as the DAE file loader, as well as a DAE file that contains the geometries that I want to use with this module. This is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) then, as well as client side javaScript as well for that matter. I will not be getting into every little detail that you should know before hand here of course. However as usual I often start my posts with a new sections that outline some things that you might want to read up more on before continuing to read the rest of this post.
+
+
 
 ### Read or refresh on the BufferGeometry class.
 
