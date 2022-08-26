@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1002
-updated: 2022-08-26 14:30:53
-version: 1.8
+updated: 2022-08-26 14:37:36
+version: 1.9
 ---
 
 Not to long ago I made a [threejs example](/2021/02/19/threejs-examples/) about a function that will [update the values of one position attribute of a buffer geometry as a lerp](/2022/07/01/threejs-examples-lerp-geo/) between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry? In other words a kind of many object tween between more than one state of similar geometries. I wanted to make my own kind of system for this sort of thing then that works by using a function similar to my lerp geometry function, but using it to lerp not just once, but a few times, and create a mean between all of the results. This mean between several lerps of geometries will then be what is used to update the geometry of a single mesh object. In this post I will then be writing about the current state of the source code of what I have together thus far for this system.
@@ -15,17 +15,17 @@ Not to long ago I made a [threejs example](/2021/02/19/threejs-examples/) about 
 
 ## The tween many threejs example and what to be aware of first
 
-This is a post in which I am writing a thing or two about this javaScript module that I made along with a few quick demos of it while I am at it. This module works on top of the [library known as threejs](https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene), as well as some additional assets such as the DAE file loader, as well as a DAE file that contains the geometries that I want to use with this module. This is not a post for people that are new to threejs then, as well as client side javaScript as well for that matter. I will not be getting into every little detail that you should know before hand here of course. However as usual I often start my posts with a new sections that outline some things that you might want to read up more on before continuing to read the rest of this post.
+This is a post in which I am writing a thing or two about this javaScript module that I made along with a few quick demos of it while I am at it. This module works on top of the [library known as threejs](https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene), as well as some additional assets such as the DAE file loader, as well as a DAE file that contains the geometries that I want to use with this module. This is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) then, as well as client side javaScript as well for that matter. I will not be getting into every little detail that you should know before hand here of course. However as usual I often start my posts with a new sections that outline some things that you might want to read up more on before continuing to read the rest of this post.
 
 ### Read or refresh on the BufferGeometry class.
 
-The main thing about this javaScript module is making a way to go about updating attributes of a buffer geometry instance such as the position property. If you do not know what the position property of a buffer geometry instance is you might want to read up more on that topic. While you are at it you might want to read up more on the other core attributes such as the normal attribute and the uv attribute as well. There is a whole lot to be ware of when it comes to the buffer geometry class in general.
+The main thing about this javaScript module is making a way to go about updating attributes of a buffer geometry instance such as the position property. If you do not know what the [position property of a buffer geometry instance is you might want to read up more on that topic](/2021/06/07/threejs-buffer-geometry-attributes-position/). While you are at it you might want to read up more on the other core attributes such as the [normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) and the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) as well. There is a whole lot to be ware of when it comes to the buffer geometry class in general.
 
 ### Check out the DAE file loader
 
-I this module I have a load method and the load method depends on one additional external file beyond that of just threejs. This additional file is the DAE file loader that can be found in the examples folder of the threejs repository on github. It might be a good idea to look into this loader in general more if you have not done so before hand. I tend to like the DAE file format when it comes to loading external assets into a threejs project. However there are also, may other options, including options that are built into threejs itself, such is the case with the buffer geometry loader.
+I this module I have a load method and the load method depends on one additional external file beyond that of just threejs. This additional file is the DAE file loader that can be found in the examples folder of the threejs repository on github. It might be a good idea to [look into this DAE loader](/2021/04/30/threejs-dae-collada-loader/) in general more if you have not done so before hand. I tend to like the DAE file format when it comes to loading external assets into a threejs project. However there are also, may other options, including options that are built into threejs itself, such is the case with the buffer geometry loader.
 
-### source code, and other assets are on Github
+### Source code, and other assets are on Github
 
 The source code for the module and demos can be found in the [for post folder of my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-many-object-tweening). In addition to this I also have the [DAE file that I am using](https://github.com/dustinpfister/test_threejs/tree/master/views/dae/many-object-tweening) in there as well. The first prototype that I made that lead to this project is also in the [demo folder](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r140/proto-many-object-tweening) in test threejs.
 
@@ -38,7 +38,7 @@ I was using r140 of threejs when I first made these source code examples, and wr
 
 ## 1 - First version of my tween-many module and demos of it
 
-In this section then I will be going over the first version r0 of this tween many javaScript module, and in addition a few demos of the module as well of course. When it comes to this first revision I just wanted to still focus on just the position attribute for now, so when updating the normal attribute I am using the compute vertex normal method to do so in the demos. When it comes to getting this to work up to speed for the idea that I have in mind I will need to use the normal, in the DAE file as I am sure that there will be some objects where using the compute vertex normal method will not give me the result that I want. However getting into all of that, and additional things that might come up with textures will be a matter for future revisions when I get to them.
+In this section then I will be going over the first version r0 of this tween many javaScript module, and in addition a few demos of the module as well of course. When it comes to this first revision I just wanted to still focus on just the position attribute for now, so when updating the normal attribute I am using the [compute vertex normal method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) to do so in the demos. When it comes to getting this to work up to speed for the idea that I have in mind I will need to use the normal, in the DAE file as I am sure that there will be some objects where using the compute vertex normal method will not give me the result that I want. However getting into all of that, and additional things that might come up with textures will be a matter for future revisions when I get to them.
 
 ### 1.0 - The tween-many.js file source code ( r0 ) 
 
