@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1002
-updated: 2022-08-26 13:59:27
-version: 1.4
+updated: 2022-08-26 14:08:38
+version: 1.5
 ---
 
 Not to long ago I made a threejs example about a function that will update the values of one position attribute of a buffer geometry as a lerp between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry? In other words a kind of many object tween between more than one state of similar geometries. I wanted to make my own kind of system for this sort of thing then that works by using a function similar to my lerp geometry function, but using it to lerp not just once, but a few times, and create a mean between all of the results. This mean between several lerps of geometries will then be what is used to update the geometry of a single mesh object. In this post I will then be writing about the current state of the source code of what I have together thus far for this system.
@@ -185,6 +185,8 @@ var tweenMany = (function () {
 
 For a basic example of the tween many module I made an example where I am using the load method to create the source object. Then I am making just one mesh, and updating that between just two options. So then there is not anything really special with this demo compared to just using the lerp geometry method by itself actually. However I do like to at least keep basic examples, well basic, and this also should that I can still do the same thing with the lerp method alone when I just give one set of arguments in the state array when calling the tween method.
 
+Speaking of using the tween method that might be the main item of interest to look at when it comes to this demo. When I call it I give the geometry I want to tween as the first argument, but then I do give a start and end geometry with an alpha value but an array that contains and array of these values. In this basic example it might seem like making the situation more complex than it needs to be, bit when it comes to having more than one array of these arguments then the complexity is justified.
+
 ```js
 (function () {
     //-------- ----------
@@ -353,4 +355,4 @@ Now for at least one example of what this is really about with an example where 
 
 ## Conclusion
 
-
+That will be it for now when it comes to this threejs project example that has to do with the mutation of geometry over time. I am sure that I will want to make at least a few revision of this module, so I will likely be doing a little editing of this post in the future. Also I can see this module being one assets that I use along with many others when it comes to some kind of future threejs examples that is actually a collection of these examples being used together.
