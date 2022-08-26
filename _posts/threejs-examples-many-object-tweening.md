@@ -5,20 +5,22 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1002
-updated: 2022-08-26 11:22:15
-version: 1.3
+updated: 2022-08-26 13:59:27
+version: 1.4
 ---
 
-Not to long ago I made a threejs example about a function that will update the values of one position attribute of a buffer geometry as a lerp between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry? In other words a kind of many object tween between more than one state of simular geometries. I wanted to make my own kid of system for this sort of thing then that works by using a function simular to my lerp geomerty function, but using it to lerp not just once, but a few times, and create a mean between all of the results. This mean between several lerps of geometies will then be what is used to update the geometry of a single mesh object. In this post I will then be writing about the current state of the source code of what I have togetahr thus far for this system.
+Not to long ago I made a threejs example about a function that will update the values of one position attribute of a buffer geometry as a lerp between one geometry and another. However what if I am doing just that, but all of a sudden I need to stop, and then start lerping to yet another geometry? In other words a kind of many object tween between more than one state of similar geometries. I wanted to make my own kind of system for this sort of thing then that works by using a function similar to my lerp geometry function, but using it to lerp not just once, but a few times, and create a mean between all of the results. This mean between several lerps of geometries will then be what is used to update the geometry of a single mesh object. In this post I will then be writing about the current state of the source code of what I have together thus far for this system.
 
 <!-- more -->
 
 
 ## 1 - First version of my tween-many module and demos of it
 
-In this secton then I will be going over the first version r0 of this tween many javaScript module, and in addition a few demos of the module as well of course. When it comes to this first revision I just wanted to still focus on just the position attribute for now, so when updating the normals attribute I am using the compute vertex normals method to do so in the demos. When it comes to getting this to work up to speed for the vishin that I have in mind I will need to use the normals, in the dae file as I am sure that there will be some objects where using the compute vertex normals method will not give me the result that I want. However getting into all of that, and addtional things that might come up with textures will be a matter for future revisions when I get to them.
+In this section then I will be going over the first version r0 of this tween many javaScript module, and in addition a few demos of the module as well of course. When it comes to this first revision I just wanted to still focus on just the position attribute for now, so when updating the normal attribute I am using the compute vertex normal method to do so in the demos. When it comes to getting this to work up to speed for the idea that I have in mind I will need to use the normal, in the DAE file as I am sure that there will be some objects where using the compute vertex normal method will not give me the result that I want. However getting into all of that, and additional things that might come up with textures will be a matter for future revisions when I get to them.
 
 ### 1.0 - The tween-many.js file source code ( r0 ) 
+
+The current state of the tween many module consists of several public methods along with a number of internal helper functions. The general use case would be to use the create source object method or the load method to one way or another have a collection of source objects from a DAE file of objects to choose from. Then once I have that, use the create mesh method to make a new mesh object with cloned geometry from one of the source objects. I can then use the tween method to update the geometry using two or more options from the DAE file.
 
 ```js
 /*   tween-many.js - r0 - from threejs-examples-many-object-tweening
@@ -181,6 +183,8 @@ var tweenMany = (function () {
 
 ### 1.1 - Basic example of the tween method, as well as other public methods
 
+For a basic example of the tween many module I made an example where I am using the load method to create the source object. Then I am making just one mesh, and updating that between just two options. So then there is not anything really special with this demo compared to just using the lerp geometry method by itself actually. However I do like to at least keep basic examples, well basic, and this also should that I can still do the same thing with the lerp method alone when I just give one set of arguments in the state array when calling the tween method.
+
 ```js
 (function () {
     //-------- ----------
@@ -251,6 +255,8 @@ var tweenMany = (function () {
 ```
 
 ### 1.2 - tweening many objects at once
+
+Now for at least one example of what this is really about with an example where I am giving more than one array of arguments when it comes to start, and end geometry and an alpha value. With this example I am tweeing between box1 and box2, while also doing so with box1 and box3. On top of that I am also doing a third tween between box1 and box4 as well, all at the same time. The end result of this is a fairly interesting effect.
 
 ```js
 (function () {
@@ -343,6 +349,8 @@ var tweenMany = (function () {
     });
 }
     ());
-
 ```
- 
+
+## Conclusion
+
+
