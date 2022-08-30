@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-07-23 12:27:42
-version: 1.15
+updated: 2022-08-30 17:09:04
+version: 1.16
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -256,7 +256,7 @@ After working out the crude basic idea of what I want to get done I now just nee
 At the time of this writing I all ready complicated two revisions of this land module that works on top of my object grid module, so in this section I will be writing about what I have done thus far with r2 of the land module. So then I will also be covering all of the features that I started in r1 of the module as well in this section.
 
 
-### 2.1 - The object grid wrap land javascript file
+### 2.0 - The object grid wrap land javascript file
 
 The main method of interest with this module is the create method which is what I will be calling in my main javaScript file to create a land grid. In the body of this create function I will in turn also be calling the create method of my object grid wrap module, so the main thing about this create method is to just set up the proper options, and do any additional custom work after creating the grid that needs to get done. 
 
@@ -498,7 +498,7 @@ var ObjectGridWrapLand = (function(){
 }());
 ```
 
-### 2.2 - The new main.js file
+### 2.1 - The new main.js file
 
 There is the the question of having a little demo of the use of the module in a main javaScript file with the usual scene object and so forth so then lets get to that here. After setting up my usual collection of objects that I want to have with just about any other threejs example I then also set up a few light sources as I am going with the standard material here and color maps. There is then calling the create method of the land module and preforming any other additional tasks that I want to do to set up this land grid when it comes to doing things like adding additional mesh objects as children for each land tile that are trees or anything to that effect. Finally I will want to set up a basic animation loop function and update the state of the object grid wrap with the typical methods for doing so.
 
