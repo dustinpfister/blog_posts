@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-08-31 10:35:01
-version: 1.18
+updated: 2022-08-31 10:39:56
+version: 1.19
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -25,9 +25,9 @@ This is one of my many threejs example posts in which I am going over some sourc
 
 In this example I am using the threejs Shape constructor to create an instance of a 2d shape with the built in threejs shape class. I can then use one of these shape classes to create an instance of Extrude geometry that is just a 2d shape with a little depth added to it. For this project example this is what I am using to create mesh objects that will be slopes in the object grid that will resemble land. However this is of course something that you might want to read up more on in detail and with that said I wrote a [blog post on this subject of shapes and Extrude geometry in threejs](/2021/06/01/threejs-shape/).
 
-### The source code, as well as addtional assets is on Github
+### The source code, as well as additional assets is on Github
 
-The source code that I am writing about here can also be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-object-grid-wrap-land). There is also the for [post folder for my object grid wrap module](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-object-grid-wrap) that I am working on top of that can also be found in that repository. In addtional as of r3 of the land grid module I am also using a DAE file as a way to park custom geomery that I would like to use with this project, this [asset can also be found in the test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/dae/land-set-one) as well.
+The source code that I am writing about here can also be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-object-grid-wrap-land). There is also the for [post folder for my object grid wrap module](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-object-grid-wrap) that I am working on top of that can also be found in that repository. In addition as of r3 of the land grid module I am also using a DAE file as a way to park custom geometry that I would like to use with this project, this [asset can also be found in the test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/dae/land-set-one) as well.
 
 ### Version Numbers matter
 
@@ -649,13 +649,13 @@ loop();
 
 ## 3 - Using a DAE file for land tiles with several demos (r3) 
 
-This is a module that I am sure that I will be using over and over again in various video projects, as such I have made yet another revision of the module. In r3 of the land grid module many of the changes have to do with making use of DAE file that contains the various objects with geomenties that are used for the land tiles. At this point though I can still use the module built in functions to greate the mesh objects as well on top of this feature. Many various improvements have been made while working on this, but the over all state of the code is till a little messy. So I will likley want to make a few more revisions after this still until I have somehting fairly solid. Still the main idea of what i wnated to get done with this revision seems to be working well and I can use a DAE file as a way to park many objects to use for the land tiles, on top of this I ma also using the DAE file as a place to park addtional objects that I would liek to use a child objects of land tile objects in the gird as well.
+This is a module that I am sure that I will be using over and over again in various video projects, as such I have made yet another revision of the module. In r3 of the land grid module many of the changes have to do with making use of DAE file that contains the various objects with geometries that are used for the land tiles. At this point though I can still use the module built in functions to create the mesh objects as well on top of this feature. Many various improvements have been made while working on this, but the over all state of the code is till a little messy. So I will likely want to make a few more revisions after this still until I have something fairly solid. Still the main idea of what I wanted to get done with this revision seems to be working well and I can use a DAE file as a way to park many objects to use for the land tiles, on top of this I ma also using the DAE file as a place to park additional objects that I would like to use a child objects of land tile objects in the gird as well.
 
 ### 3.0 - The land module ( r3 ) 
 
-One major change is the intrudyction of many public methods that have to do with the process of loading a DAE file, or procressing the result object in the event that a DAE file has all ready been loaded before hand. So then there is a load method which is what I can use to just load and process the dae file I want to use, but then also the create source object method that will create a source object from a result that has all reayd been loaded before hand which is the case when I make my videos. 
+One major change is the introduction of many public methods that have to do with the process of loading a DAE file, or processing the result object in the event that a DAE file has all ready been loaded before hand. So then there is a load method which is what I can use to just load and process the dae file I want to use, but then also the create source object method that will create a source object from a result that has all ready been loaded before hand which is the case when I make my videos. 
 
-Many of the chnages that I added here should be added to my DAE tools project, at which point a lot of what i have here will be removed as I will be using the methods in that module. Also I think I will be loosing the methods that are used to create built in geometry as well, but that will all be a matter for future revisions of the land grid module.
+Many of the changes that I added here should be added to my DAE tools project, at which point a lot of what i have here will be removed as I will be using the methods in that module. Also I think I will be loosing the methods that are used to create built in geometry as well, but that will all be a matter for future revisions of the land grid module.
 
 ```js
 //******** **********
@@ -1007,7 +1007,7 @@ var ObjectGridWrapLand = (function(){
 
 ### 3.1 - Basic demo of the module using DAE objects
 
-Here then I have basic exmaple of this new land grid module where I am using the new load method as a way to obtain a state object. This state object contains the raw result object that is optained whe using the dae file loader. However it also has some addtional objects that have gone threw some processing that are in a formate that I can work with better. This state object also incudes an object that I can directly use to update the source objects property of a grid options object that I can then use for my create method of the land object module. I can then create and update my grid object that same as before, hwoever now I am using objects from the dae file rather than the built in ones. As such this allows for a whole lot more when it comes to the land tiles as Ican create all kind sof differing geomertes in beled for the various types of land tiles.
+Here then I have basic example of this new land grid module where I am using the new load method as a way to obtain a state object. This state object contains the raw result object that is obtained when using the DAE file loader. However it also has some additional objects that have gone threw some processing that are in a format that I can work with better. This state object also includes an object that I can directly use to update the source objects property of a grid options object that I can then use for my create method of the land object module. I can then create and update my grid object that same as before, whoever now I am using objects from the DAE file rather than the built in ones. As such this allows for a whole lot more when it comes to the land tiles as I can create all kinds of differing geometries in blender for the various types of land tiles.
 
 ```js
 //******** **********
@@ -1104,7 +1104,7 @@ ObjectGridWrapLand.load('/dae/land-set-one/land-set-1c.dae')
 
 ### 3.2 - Adding child objects from the DAE file also
 
-In the land set one DAE file I also have added a number of objects that are trees that I would like to add as child objects. In this demo I am doing just that by making use of source object that is created in the load method. The end result is then a scene where I have all the land tiles that I would like then also a whole nunch of child objects that are various typoes of threes. As of this writing I have just three types of threes to choose from, but I am also adjusting the scale and y rotation as a way to have a little more variation with things.
+In the land set one DAE file I also have added a number of objects that are trees that I would like to add as child objects. In this demo I am doing just that by making use of source object that is created in the load method. The end result is then a scene where I have all the land tiles that I would like then also a whole bunch of child objects that are various types of threes. As of this writing I have just three types of threes to choose from, but I am also adjusting the scale and y rotation as a way to have a little more variation with things.
 
 The core idea of what I want seems to be working well so far though, I could just start making more objects to choose from in terms of both land tile options as well as child objects to place in the scene.
 
@@ -1296,7 +1296,7 @@ ObjectGridWrapLand.load('/dae/land-set-one/land-set-1c.dae')
 
 ### 3.3 - Using DAE file objects for land tiles, as well as built in geo still
 
-One more demo to test out that the built in functions for createing land tiles still work fine. So for this demo I am creating two grids and adding them to the scene object. One grid is created using the objects that I have added in from a DAE file, and the other is using the objects that are created using the built in functions.
+One more demo to test out that the built in functions for creating land tiles still work fine. So for this demo I am creating two grids and adding them to the scene object. One grid is created using the objects that I have added in from a DAE file, and the other is using the objects that are created using the built in functions.
 
 ```js
 //******** **********
