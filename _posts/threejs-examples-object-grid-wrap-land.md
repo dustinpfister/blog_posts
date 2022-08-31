@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 996
-updated: 2022-08-31 10:39:56
-version: 1.19
+updated: 2022-08-31 11:31:04
+version: 1.20
 ---
 
 This week I took another look at my [object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that I made a while ago, and when doing so I made some revised versions of that source code. While I was at it I thought I would start a [new threejs example project](/2021/02/19/threejs-examples/) that will be another javaScript file in which I am building on top of this object grid wrap module that is a way to create a grid with a collection of mesh objects that looks like some land in terms of terrain at least. 
@@ -15,11 +15,12 @@ When it comes to using this object grid wrap module I need to define a collectio
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/ke-r9KtRYeo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The land object grid wrap module and what to know first
 
 This is one of my many threejs example posts in which I am going over some source code for something that is the start of an actual project of some kind using threejs rather than just yet another simple demo of a threejs feature of one kind or another. So then this is not at all in any way a post for people that are [new to threejs](/2018/04/04/threejs-getting-started/) or javaScript in general. So I will not be going over various threejs let alone javaScript basics here, however in this section I will be writing about a few things that you might want to read up more on before continuing with the rest of this post.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/CFFCF6lGmHc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Check out Shape and Extrude geometry if you have not done so
 
@@ -254,6 +255,9 @@ For this project example I made a new opacity effect plug in for r2 of my object
 After working out the crude basic idea of what I want to get done I now just need to create a new javaScript file in which I am taking what I worked out in the main javaScript file and turn it into a stand alone javaScript file. This way I can take this land module with me from project to project just like with the other javaScript file assets that I am working on top of with the object grid module itself, and the additional effect file that I made.
 
 At the time of this writing I all ready complicated two revisions of this land module that works on top of my object grid module, so in this section I will be writing about what I have done thus far with r2 of the land module. So then I will also be covering all of the features that I started in r1 of the module as well in this section.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/CFFCF6lGmHc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
 ### 2.0 - The object grid wrap land javascript file
