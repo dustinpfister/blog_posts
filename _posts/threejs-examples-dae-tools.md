@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2022-08-04 11:50:59
-version: 1.48
+updated: 2022-08-31 12:23:33
+version: 1.49
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects, and textures by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to [create groups](/2018/05/16/threejs-grouping-mesh-objects/) of [mesh objects](/2018/05/04/threejs-mesh/), and then having methods that mutate the [position](/2022/04/04/threejs-object3d-position/), [rotation](/2022/04/08/threejs-object3d-rotation/), and [scale](/2021/05/11/threejs-object3d-scale/) properties of these mesh objects. One of my first examples of this kind of project would be my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I started a long time ago. I do still like those kinds of models and I also think that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -41,7 +41,7 @@ These source code examples built on top of two files that should be loaded in a 
 
 When I first wrote this post I was mainly using r127 of threejs, and the state of the Collada loader for that revision point in the github repo as well. In addition at the time that I came around to doing a little editing of this post I have found that the examples are still working okay with r135 as well, but thuse are the only revisions that I have tested with the source code examples here.
 
-## 1 - The source code for the dea tools module
+## 1 - The source code for the dea tools module ( r3 )
 
 First off I should go over the source code of my dae tools module that I was using at the time of this writing. The first thing that I would like to get solid is a public method that can be used to load a single dae file, and do so in a way that will work well with all typical use case examples of thus module. So for this I have a load one method that serves as an abstraction for what I currently see as a best use case example of the Collada loader. However I am also going to want to have a way to create some kind of standard state object to be used with the load one method, and any additional methods that will need to work with such a state object.
 
@@ -178,7 +178,7 @@ I will want to have a module that is more than just an abstraction of the dae lo
 
 As of revision 3 of the dae tools file I have added a few more public metods that have to do with coverting dae files to buffer geomerty files. I will be getting into this in more detail in a later section of this post.
 
-## 2 - Loading a single dae file with my dae tools module and ColladaLoader.js
+### 1.1 - Loading a single dae file with my dae tools module and ColladaLoader.js
 
 The first thing that I am going to want to test out is that the load one method will work as expected when it comes to loading a single dae file with textures, and drawing to the canvas just once. So for this example I am just calling the load one method, loading just a single dae file which also has some textures to load, adding just the mesh objects of the result to a main scene object, and then calling the render method of the web gl renderer just once.
 
@@ -225,7 +225,7 @@ The first thing that I am going to want to test out is that the load one method 
 
 When this example runs the end result is what I want to happen, the model shows up with the textures on the surfaces of the model. When I do not use an instance of THREE.LoadingManager as a way to set an on load callback, and just use the dae loader alone, this is not the result that I have. So it would seem that I have the most important part of this sort of thing down, but there might still be a little more room for improvement when it comes to having a progress meter maybe for one thing.
 
-## 3 - Load all method demo
+### 1.2 - Load all method demo
 
 For now I am also going to want at least one additional demo of the load all public method. This method is what I will typically be using in most projects sense I will typically be working with more than one dae file asset. With this load all method I pass an instance of the dae objects instance create with the DAE.create method like before, however things are a little different with the additional options. In the options object that I pass I can set a base urls, followed by an array of relative url paths to each file that I want to load.
 
@@ -289,7 +289,7 @@ For now I am also going to want at least one additional demo of the load all pub
     ());
 ```
 
-## 4 - Convert DAE to Buffer geometry
+### 1.3 - Convert DAE to Buffer geometry
 
 I have got around to editing my post on the [buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/), and when doing so I was interested in looking into ways of going about converting dae files into buffer geometry files. So I got around to updating this dae tools example to include some quick methods that have to do with this kind of feature.
 
