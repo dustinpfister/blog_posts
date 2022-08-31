@@ -6,6 +6,15 @@ At the time of this writing the build process involves the use of the node.js po
 
 On top of just the markdown files I also have a number of scripts that I am using to run over the collection of content. In additional I also have notes as to what it is I should be doing when it comes to improving, and expanding the collection of content.
 
+<div align="center">
+    <a href="https://www.youtube.com/watch?v=AzuB6ExUE64">
+        <img src="https://img.youtube.com/vi/AzuB6ExUE64/0.jpg" style="width:50%;">
+    </a><br>
+    <p>
+        <a href="https://dustinpfister.github.io/2022/07/08/threejs-examples-weird-face-one/">Weird Face one</a>
+    </p>
+</div>
+
 ## The /scripts folder
 
 So then on top of just using this as a place to park my markdown files there are also a few scripts that I have made that I am using in the process of figuring out where I should be focusing my time and energy with this.
