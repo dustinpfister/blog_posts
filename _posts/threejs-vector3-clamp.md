@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2022-04-20 10:20:06
-version: 1.27
+updated: 2022-09-01 12:05:47
+version: 1.28
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values rather that wrapping them.
@@ -62,7 +62,94 @@ So in this example I am using the Vector3 clamp method to just make it so that a
     ());
 ```
 
-## 2 - Clamping Vectors by length rather than a box area with Vector3.clampLength
+## 2 - Animation loop example
+
+```js
+
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(4, 4));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // get a random axis
+    var randAxis = function () {
+        return (0.25 + 1.25 * Math.random()) * (Math.random() < 0.5 ? -1 : 1);
+    };
+    // create group
+    var createGroup = function () {
+        var group = new THREE.Group();
+        var i = 0,
+        len = 20;
+        while (i < len) {
+            var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+            var ud = mesh.userData;
+            var start_dir = ud.start_dir = new THREE.Vector3();
+            ud.alpha = 0;
+            ud.dr = 0.05 + 0.95 * Math.random();
+            start_dir.x = randAxis();
+            start_dir.y = randAxis();
+            start_dir.z = randAxis();
+            mesh.position.copy(start_dir.normalize().multiplyScalar(2));
+            group.add(mesh);
+            i += 1;
+        }
+        return group;
+    };
+    // update group
+    var update = function (group, delta) {
+        group.children.forEach(function (mesh, i) {
+            var ud = mesh.userData;
+            var start_dir = ud.start_dir;
+            var pos = mesh.position;
+            ud.alpha += delta * ud.dr;
+            pos.copy(start_dir.clone().normalize().multiplyScalar(ud.alpha));
+            pos.clamp(
+                new THREE.Vector3(-2, -2, -2),
+                new THREE.Vector3(2, 2, 2));
+            if (Math.abs(pos.x) === 2 || Math.abs(pos.z) === 2) {
+                ud.alpha = 0;
+            }
+        });
+    };
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    var group = createGroup();
+    scene.add(group);
+    var frame = 0,
+    maxFrame = 300,
+    fps = 20,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            update(group, 0.1);
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 3 - Clamping Vectors by length rather than a box area with Vector3.clampLength
 
 There is clamping vectors into a box like area with the clamp method, but another option is the clamp length method that is more of a sphere like area. This method is somewhat similar to the clamp method only in place of Vector3 instances for setting the min and max values for the range, there is just setting the min and max values with a length values in the from of just javaScript numbers. Another way of thinking about this is an inner and outer radius in terms of two spheres that are both centered over the same origin.
 
@@ -98,7 +185,7 @@ There is clamping vectors into a box like area with the clamp method, but anothe
 
 The subject of clamping a vector by length goes hand in hand with many other related topics such as what a length of a vector is, and also what a normalized vector with a length of 1 is. Getting into this subject might be a little off topic, but the basic idea is that a length of 1 is a radius of 1 from the origin. So by clamping the length of a vector from 0.5 to 1 will make it so that the distance from the origin to the vector will always be between those values.
 
-## 3 - Conclusion
+## Conclusion
 
 So then these clamp methods are helpful for making sure that a given point will never leave a given range, but they are not the best choice for other applications that come to mind. One such other application would have to do with collision detection, where I do not always want to clamp or wrap a point to a rang, but to just simply know if the point is in or out of a given range.
 
