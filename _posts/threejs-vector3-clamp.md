@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2022-09-01 14:51:03
-version: 1.31
+updated: 2022-09-01 14:54:22
+version: 1.32
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values rather that wrapping them.
@@ -25,11 +25,11 @@ In this post I am just going over a few methods in the [Vector 3 class](/2018/04
 
 ### Source code is up on Github
 
-The source code examples that I am wrtiing about in this post can be found in my [test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-clamp).
+The source code examples that I am writing about in this post can be found in my [test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-clamp).
 
 ### Version numbers matter with threejs
 
-When I wrote this post I was using threejs r127 when it comes to testing out source code examples. I have got into the habit of making sure that I always mentioning the version of threejs that I am using when it comes to write a post on the subject. The main reason why is because threejs is still a very fast moving project in terms of development and code breaking changes are happing all the time with it as a result.
+When I wrote this post I was using threejs r127 when it comes to testing out source code examples. I have got into the habit of making sure that I always mentioning the version of threejs that I am using when it comes to write a post on the subject. The main reason why is because threejs is still a very fast moving project in terms of development and code breaking changes are happening all the time with it as a result.
 
 ## 1 - Basic example of the THREE.Vector3 clamp method.
 
@@ -102,9 +102,9 @@ There is clamping vectors into a box like area with the clamp method, but anothe
 
 The subject of clamping a vector by length goes hand in hand with many other related topics such as what a length of a vector is, and also what a normalized vector with a length of 1 is. Getting into this subject might be a little off topic, but the basic idea is that a length of 1 is a radius of 1 from the origin. So by clamping the length of a vector from 0.5 to 1 will make it so that the distance from the origin to the vector will always be between those values.
 
-## 3 - a wrap method
+## 3 - A wrap method
 
-Some times I might not want to have a vector clamped to a set of vectors that from a box, or using length values, but rather I would like to have things wrap around. Sadly it would seem that there is no wrap method in the Vector3 class, at least not of this writing with r140 of the librray anyway. However there are some core tools to start out with in the math utils librray such as the [Euclidean Modulo method](https://threejs.org/docs/#api/en/math/MathUtils.euclideanModulo) that will be a good start when it comes to wraping values. The soluation that I would out for this is a little involved, but I managed to make ground with it by just thinking in trems of what i need to do on a axis by axis bases.
+Some times I might not want to have a vector clamped to a set of vectors that from a box, or using length values, but rather I would like to have things wrap around. Sadly it would seem that there is no wrap method in the Vector3 class, at least not of this writing with r140 of the library anyway. However there are some core tools to start out with in the math utils object such as the [Euclidean Modulo method](https://threejs.org/docs/#api/en/math/MathUtils.euclideanModulo) that will be a good start when it comes to wrapping values. The solution that I would out for this is a little involved, but I managed to make ground with it by just thinking in terms of what i need to do on a axis by axis bases.
 
 ```js
 (function () {
@@ -213,7 +213,7 @@ Some times I might not want to have a vector clamped to a set of vectors that fr
 
 ## 4 - Animation loop example
 
-To get a real idea as to how the clamp method might come in handy I will want to have some kind of animation loop example. For this first animation loop example I have a whole bunch of mesh objects that start out at the center of a group and then move out my making use of a value that i use with the multiply scalar method. When moving the mesh objects I use the clamp method as a way to make sure that the mesh objects are not moving out of bounds and I am also reseting an alpha value while doing so to create a kind of crude animation loop type thing.
+To get a real idea as to how the clamp method might come in handy I will want to have some kind of animation loop example. For this first animation loop example I have a whole bunch of mesh objects that start out at the center of a group and then move out my making use of a value that I use with the multiply scalar method. When moving the mesh objects I use the clamp method as a way to make sure that the mesh objects are not moving out of bounds and I am also resetting an alpha value while doing so to create a kind of crude animation loop type thing.
 
 ```js
 (function () {
@@ -307,7 +307,7 @@ To get a real idea as to how the clamp method might come in handy I will want to
 
 ## 5 - Animation loop example two making use of clamp, clamp length, and my wrap method
 
-For my next animaiton loop exmaple I am making use of all of the core ideas that i have covred in this post. This is just a more advanced verstion of the first animation loop example where I can set a clamp type when cretaing a group of mesh objects. Inside the update metod this clamp type is then used as a way to find out what kind of metod should be used to make the mesh objects say in a given area.
+For my next animation loop example I am making use of all of the core ideas that i have covered in this post. This is just a more advanced version of the first animation loop example where I can set a clamp type when creating a group of mesh objects. Inside the update method this clamp type is then used as a way to find out what kind of method should be used to make the mesh objects say in a given area.
 
 ```js
 (function () {
