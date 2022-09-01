@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2022-09-01 12:07:19
-version: 1.29
+updated: 2022-09-01 14:40:13
+version: 1.30
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values rather that wrapping them.
@@ -62,12 +62,154 @@ So in this example I am using the Vector3 clamp method to just make it so that a
     ());
 ```
 
-## 2 - Animation loop example
+## 3 - Clamping Vectors by length rather than a box area with Vector3.clampLength
+
+There is clamping vectors into a box like area with the clamp method, but another option is the clamp length method that is more of a sphere like area. This method is somewhat similar to the clamp method only in place of Vector3 instances for setting the min and max values for the range, there is just setting the min and max values with a length values in the from of just javaScript numbers. Another way of thinking about this is an inner and outer radius in terms of two spheres that are both centered over the same origin.
+
+```js
+(function () {
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(5, 5));
+ 
+    // creating a mesh
+    var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+ 
+    mesh.position.set(0, 5, -5);
+    mesh.position.clampLength(0.5, 1);
+    console.log(mesh.position);
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
+
+The subject of clamping a vector by length goes hand in hand with many other related topics such as what a length of a vector is, and also what a normalized vector with a length of 1 is. Getting into this subject might be a little off topic, but the basic idea is that a length of 1 is a radius of 1 from the origin. So by clamping the length of a vector from 0.5 to 1 will make it so that the distance from the origin to the vector will always be between those values.
+
+## 3 - a wrap method
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(4, 4));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // mod method
+    var mod = function (a, b) {
+        return THREE.MathUtils.euclideanModulo(a, b);
+    };
+    // wrap and axis
+    var wrapAxis = function(vec, vecMin, vecMax, axis){
+        axis = axis || 'x';
+        var maxD = new THREE.Vector2(vecMin[axis], 0).distanceTo( new THREE.Vector2(vecMax[axis], 0) );
+        var d = new THREE.Vector2(vec[axis], 0).distanceTo( new THREE.Vector2(vecMin[axis], 0) );
+        if(maxD === 0){
+           vec[axis] = 0;
+        }else{
+            if(vec[axis] >= vecMax[axis]){
+                vec[axis] = vecMin[axis] + mod(d, maxD);
+            }
+            if(vec[axis] < vecMin[axis]){
+                vec[axis] = vecMax[axis] - mod(d, maxD);
+            }
+        }
+    };
+    // wrap a vector
+    var wrapVector = function (vec, vecMin, vecMax) {
+        vecMin = vecMin || new THREE.Vector3(0, 0, 0);
+        vecMax = vecMax || new THREE.Vector3(1, 1, 1);
+        wrapAxis(vec, vecMin, vecMax, 'x');
+        wrapAxis(vec, vecMin, vecMax, 'y');
+        wrapAxis(vec, vecMin, vecMax, 'z');
+    };
+    // create group
+    var createGroup = function () {
+        var group = new THREE.Group();
+        var i = 0,
+        len = 50;
+        while (i < len) {
+            var mesh = new THREE.Mesh(
+                new THREE.BoxGeometry(1.0, 1.0, 1.0), 
+                new THREE.MeshNormalMaterial({
+                    transparent: true,
+                    opacity: 0.60
+                })
+            );
+            mesh.position.x = -2 + 4 * Math.random();
+            mesh.position.y = -2 + 4 * Math.random();
+            mesh.position.z = -2 + 4 * Math.random();
+            group.add(mesh);
+            i += 1;
+        }
+        return group;
+    };
+    // update a group
+    var updateGroup = function (group, secs, bias) {
+       group.children.forEach(function(mesh){
+            mesh.position.x += (2 - 4 * bias) * secs;
+            mesh.position.y += (-2 + 4 * bias ) * secs;
+            mesh.position.z += 2 * secs;
+            wrapVector(
+                mesh.position,
+                new THREE.Vector3(-2, -2, -2),
+                new THREE.Vector3(2, 2, 2));
+        });
+    };
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    var group = createGroup();
+    scene.add(group);
+    var frame = 0,
+    maxFrame = 300,
+    fps = 20,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            updateGroup(group, secs, bias)
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 4 - Animation loop example
 
 To get a real idea as to how the clamp method might come in handy I will want to have some kind of animation loop example.
 
 ```js
-
 (function () {
     //-------- ----------
     // SCENE, CAMERA, RENDERER
@@ -91,9 +233,15 @@ To get a real idea as to how the clamp method might come in handy I will want to
     var createGroup = function () {
         var group = new THREE.Group();
         var i = 0,
-        len = 20;
+        len = 50;
         while (i < len) {
-            var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+            var mesh = new THREE.Mesh(
+                new THREE.BoxGeometry(1.0, 1.0, 1.0), 
+                new THREE.MeshNormalMaterial({
+                    transparent: true,
+                    opacity: 0.50
+                })
+            );
             var ud = mesh.userData;
             var start_dir = ud.start_dir = new THREE.Vector3();
             ud.alpha = 0;
@@ -151,41 +299,160 @@ To get a real idea as to how the clamp method might come in handy I will want to
     ());
 ```
 
-## 3 - Clamping Vectors by length rather than a box area with Vector3.clampLength
-
-There is clamping vectors into a box like area with the clamp method, but another option is the clamp length method that is more of a sphere like area. This method is somewhat similar to the clamp method only in place of Vector3 instances for setting the min and max values for the range, there is just setting the min and max values with a length values in the from of just javaScript numbers. Another way of thinking about this is an inner and outer radius in terms of two spheres that are both centered over the same origin.
+## 5 - Animation loop example two making use of clamp, clamp length, and my wrap method
 
 ```js
 (function () {
- 
-    // scene
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
     var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(5, 5));
- 
-    // creating a mesh
-    var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    scene.add(mesh);
- 
-    mesh.position.set(0, 5, -5);
-    mesh.position.clampLength(0.5, 1);
-    console.log(mesh.position);
- 
-    // CAMERA
+    scene.add(new THREE.GridHelper(4, 4));
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
     camera.position.set(5, 5, 5);
     camera.lookAt(0, 0, 0);
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    var dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(8, 1, 2)
+    scene.add(dl);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // mod method
+    var mod = function (a, b) {
+        return THREE.MathUtils.euclideanModulo(a, b);
+    };
+    // wrap and axis
+    var wrapAxis = function(vec, vecMin, vecMax, axis){
+        axis = axis || 'x';
+        var maxD = new THREE.Vector2(vecMin[axis], 0).distanceTo( new THREE.Vector2(vecMax[axis], 0) );
+        var d = new THREE.Vector2(vec[axis], 0).distanceTo( new THREE.Vector2(vecMin[axis], 0) );
+        if(maxD === 0){
+           vec[axis] = 0;
+        }else{
+            if(vec[axis] >= vecMax[axis]){
+                vec[axis] = vecMin[axis] + mod(d, maxD);
+            }
+            if(vec[axis] < vecMin[axis]){
+                vec[axis] = vecMax[axis] - mod(d, maxD);
+            }
+        }
+    };
+    // wrap a vector
+    var wrapVector = function (vec, vecMin, vecMax) {
+        vecMin = vecMin || new THREE.Vector3(0, 0, 0);
+        vecMax = vecMax || new THREE.Vector3(1, 1, 1);
+        wrapAxis(vec, vecMin, vecMax, 'x');
+        wrapAxis(vec, vecMin, vecMax, 'y');
+        wrapAxis(vec, vecMin, vecMax, 'z');
+    };
+    // get a random axis
+    var randAxis = function () {
+        return (0.25 + 1.25 * Math.random()) * (Math.random() < 0.5 ? -1 : 1);
+    };
+    // create group
+    var createGroup = function (clampType, color) {
+        clampType = clampType || 'clamp';
+        color = color || 0xffffff;
+        var group = new THREE.Group();
+        var i = 0,
+        len = 10;
+        while (i < len) {
+            var mesh = new THREE.Mesh(
+                new THREE.BoxGeometry(1.0, 1.0, 1.0), 
+                new THREE.MeshPhongMaterial({
+                    color: color,
+                    transparent: true,
+                    opacity: 0.60
+                })
+            );
+            var ud = mesh.userData;
+            var start_dir = ud.start_dir = new THREE.Vector3();
+            ud.alpha = 0;
+            ud.dr = 0.05 + 0.95 * Math.random();
+            ud.clampType = clampType;
+            start_dir.x = randAxis();
+            start_dir.y = randAxis();
+            start_dir.z = randAxis();
+            mesh.position.copy(start_dir.normalize().multiplyScalar(2));
+            group.add(mesh);
+            i += 1;
+        }
+        return group;
+    };
+    // update group
+    var update = function (group, delta) {
+        group.children.forEach(function (mesh, i) {
+            var ud = mesh.userData;
+            var start_dir = ud.start_dir;
+            var pos = mesh.position;
+            ud.alpha += delta * ud.dr;
+            pos.copy(start_dir.clone().normalize().multiplyScalar(ud.alpha));
+            // clamp type
+            if(ud.clampType === 'clamp'){
+                pos.clamp(
+                    new THREE.Vector3(-2, -2, -2),
+                    new THREE.Vector3(2, 2, 2));
+                if (Math.abs(pos.x) === 2 || Math.abs(pos.z) === 2) {
+                    ud.alpha = 0;
+                }
+            }
+            // if clamp type is length
+            if(ud.clampType === 'length'){
+                pos.clampLength(0.1, 2);
+                mesh.lookAt(group.position);
+                if(pos.length() === 2){
+                    ud.alpha = 0;
+                }
+            }
+            // if clamp type is wrap
+            if(ud.clampType === 'wrap'){
+                wrapVector(
+                    pos,
+                    new THREE.Vector3(-2, -2, -2),
+                    new THREE.Vector3(2, 2, 2));
+                //ud.alpha = ud.alpha % 2;
+            }
+        });
+    };
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    var group1 = createGroup('clamp', 0xff0000);
+    scene.add(group1);
+    var group2 = createGroup('length', 0x00ff00);
+    scene.add(group2);
+    var group3 = createGroup('wrap', 0x00ffff);
+    scene.add(group3);
+    var frame = 0,
+    maxFrame = 300,
+    fps = 20,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            update(group1, 0.1);
+            update(group2, 0.1);
+            update(group3, 0.1);
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
 }
     ());
 ```
-
-The subject of clamping a vector by length goes hand in hand with many other related topics such as what a length of a vector is, and also what a normalized vector with a length of 1 is. Getting into this subject might be a little off topic, but the basic idea is that a length of 1 is a radius of 1 from the origin. So by clamping the length of a vector from 0.5 to 1 will make it so that the distance from the origin to the vector will always be between those values.
 
 ## Conclusion
 
