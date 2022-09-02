@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2022-09-02 07:36:05
-version: 1.1
+updated: 2022-09-02 07:42:54
+version: 1.2
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries or limitations in terms of the possible range of values. In the past I have wrote one [blog post on the clamp method of the Vector3 class](/2021/06/16/threejs-vector3-clamp/), and that is one way to go about applying limitations. That is that when a vector goes out of a set range it will be clamped to a value that is within the range, and do so in a box kind of area as it is used by passing two vector3 class instances that define the lowermost and uppermost corners of the box. In that post I also wrote about the clamp length method that works by giving number values that define a min and max vector unit length. This is yet another option that works well, but then both work by clamping values rather than wrapping values. That is that some times when a Vector3 instance goes out of range I might not want to clamp it, but wrap it around to an opposite side of an area.
@@ -14,6 +14,10 @@ Often I might be in a situation with a [threejs project](https://threejs.org/doc
 I covered the idea of wrapping rather than clamping in my older blog post on the clamp method, but I am thinking that this is a topic that does also deserve a content piece of its own as well. So today I will be writing about a few quick source code examples that have ti do with wrapping Vector3 class instances rather than clamping them.
 
 <!-- more -->
+
+## Wrapping Vector3 class instances in threejs, and what to know first
+
+There are a few things that you might want to read about first before hand with threejs as well as core javaScript in general. When it comes to threejs there is of course the very basics of getting started with the library, as well as specifics about the Vector3 class in general. When it comes to core javaScript there is a lot to wrote about when it comes to the built in modulo operator and what not to use in in many situations as well. I am not going to want to get into all of it in detail here in this post as I have done so in older posts on the subjects I am referring to. In this section I will just be briefly write about a few things to be aware of, and link to other content as needed.
 
 ## 1 - The deal with modulo and wrapping values
 
