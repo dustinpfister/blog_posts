@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2022-09-02 08:01:27
-version: 1.4
+updated: 2022-09-03 08:00:33
+version: 1.5
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries or limitations in terms of the possible range of values. In the past I have wrote one [blog post on the clamp method of the Vector3 class](/2021/06/16/threejs-vector3-clamp/), and that is one way to go about applying limitations. That is that when a vector goes out of a set range it will be clamped to a value that is within the range, and do so in a box kind of area as it is used by passing two vector3 class instances that define the lowermost and uppermost corners of the box. In that post I also wrote about the clamp length method that works by giving number values that define a min and max vector unit length. This is yet another option that works well, but then both work by clamping values rather than wrapping values. That is that some times when a Vector3 instance goes out of range I might not want to clamp it, but wrap it around to an opposite side of an area.
@@ -184,7 +184,7 @@ The process of making a wrap method from the ground up might prove to be a littl
 
 ## 4 - A Wrap vector3 class instance method
 
-Now that I have a method that seems to work okay for one axis all I need to do to make a warp method for Vector3 or Vector2 is to just call the method for each axis.
+Now that I have a method that seems to work okay for one axis all I need to do to make a wrap method for Vector3 is to just call the method for each axis. What is great about this is that in order to make solutions that will also work for the Vector2 class the only major change is to just call the wrap axis for x and y only when making the wrap vector method. Also if I put more time into researching other solutions for this, and fine a better way of wrapping an axis, I can just recreate the wrap axis method, and leave everything else as is.
 
 ```js
 (function () {
