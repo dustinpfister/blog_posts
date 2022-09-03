@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2022-09-03 08:11:33
-version: 1.6
+updated: 2022-09-03 08:19:24
+version: 1.7
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries or limitations in terms of the possible range of values. In the past I have wrote one [blog post on the clamp method of the Vector3 class](/2021/06/16/threejs-vector3-clamp/), and that is one way to go about applying limitations. That is that when a vector goes out of a set range it will be clamped to a value that is within the range, and do so in a box kind of area as it is used by passing two vector3 class instances that define the lowermost and uppermost corners of the box. In that post I also wrote about the clamp length method that works by giving number values that define a min and max vector unit length. This is yet another option that works well, but then both work by clamping values rather than wrapping values. That is that some times when a Vector3 instance goes out of range I might not want to clamp it, but wrap it around to an opposite side of an area.
@@ -33,7 +33,7 @@ I was using r140 of threejs when I first wrote this post.
 
 ## 1 - The deal with modulo and wrapping values
 
-First off here is a quick example that helps to show what the deal is with the built in javaScript modulo operator compared to using the euclidean modulo method in the math utils object.
+First off here is a quick example that helps to show what the deal is with the built in javaScript modulo operator compared to using the euclidean modulo method in the math utils object. I have two sets of mesh objects that I would like to wrap, and I am trying to do so by just using modulo alone. When I use the core javaScript modulo operator the end result is that I get the outcome that I want, but only with positive numbers, negative numbers result in the object going out of the desired range. When I use the euclidean modulo method I do get a desired outcome where the mesh object loops back around within the desired range.
 
 ```js
 (function () {
@@ -103,6 +103,8 @@ First off here is a quick example that helps to show what the deal is with the b
 }
     ());
 ```
+
+However even though things are working the way that I want them to with the euclidean modulo method it is still working in a way that is relative to zero forward rather than in a way that can work with a range that might go into negative numbers. Still the general idea of wrapping is there, from here forward I just need to find ways to adjust the range.
 
 ## 2 - Wrap just one axis
 
