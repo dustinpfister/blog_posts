@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2022-09-05 12:16:35
-version: 1.10
+updated: 2022-09-05 12:30:31
+version: 1.11
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries or limitations in terms of the possible range of values. In the past I have wrote one [blog post on the clamp method of the Vector3 class](/2021/06/16/threejs-vector3-clamp/), and that is one way to go about applying limitations. That is that when a vector goes out of a set range it will be clamped to a value that is within the range, and do so in a box kind of area as it is used by passing two vector3 class instances that define the lowermost and uppermost corners of the box. In that post I also wrote about the clamp length method that works by giving number values that define a min and max vector unit length. This is yet another option that works well, but then both work by clamping values rather than wrapping values. That is that some times when a Vector3 instance goes out of range I might not want to clamp it, but wrap it around to an opposite side of an area.
@@ -202,7 +202,9 @@ The code that I worked out for this solution involves making two instances of th
 
 ### 2.2 - Wrap Axis method bassed off the Math.Wrap method from Phaser
 
-I have wrote a blog post or two on the game framework called phaser in the past and I remeber that the math object of the framework has a wrap method.
+I have wrote a blog post or two on the game framework called phaser in the past and I remeber that the math object of the [framework has a wrap method](https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js). This method does seem to work the way that I would want it to, but with a few exceptions one of which has to do with NaN values when given the value 0 for the min or max values of the range that i would like to wrap to. This can be fixed fairly wasily though of course by just adding some code that will return 0 for such a case of cource. While I am at it there is also making use of the Math.min and Math.max methods to I do not have to wory so much about the oder of the arguments when calling the method.
+
+The end result is a warp method that I like better that the more complex solution involving the distance to method, that still seems to give the same end results for the [domain that I given the function](/2021/07/27/js-function-domain/) thus far.
 
 ```js
 (function () {
@@ -220,15 +222,26 @@ I have wrote a blog post or two on the game framework called phaser in the past 
     //-------- ----------
     // HELPERS
     //-------- ----------
-    // Wrap method from Phaser ( https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js )
-    var Wrap = function (value, min, max){
+    // Wrap method based off of the method from Phaser3 
+    // ( https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js )
+    // * Added some code for case: Wrap(0, 0, 0)
+    // * Using Math.min and Math.max so that Wrap(value, 2, 10) is same as Wrap(value, 10, 2)
+    //
+    var wrap = function (value, a, b){
+        // get min and max this way
+        var max = Math.max(a, b);
+        var min = Math.min(a, b);
+        // return 0 for Wrap(value, 0, 0);
+        if(max === 0 && min === 0){
+             return 0;
+        }
         var range = max - min;
         return (min + ((((value - min) % range) + range) % range));
     };
     // wrap an axis
     var wrapAxis = function(vec, vecMin, vecMax, axis){
         axis = axis || 'x';
-        vec[axis] = Wrap( vec[axis], vecMin[axis], vecMax[axis] );
+        vec[axis] = wrap( vec[axis], vecMin[axis], vecMax[axis] );
         return vec;
     };
     //-------- ----------
@@ -286,13 +299,16 @@ Now that I have a method that seems to work okay for one axis all I need to do t
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
     // Wrap method based off of the method from Phaser3 
     // ( https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js )
-    // * just added some code for case : Wrap(0, 0, 0)
-    // * using Math.min and Math.max
+    // * Added some code for case: Wrap(0, 0, 0)
+    // * Using Math.min and Math.max so that Wrap(value, 2, 10) is same as Wrap(value, 10, 2)
     //
-    var Wrap = function (value, a, b){
-        // get min and max this way so Wrap(value, 2, 10) is same as Wrap(value, 10, 2)
+    var wrap = function (value, a, b){
+        // get min and max this way
         var max = Math.max(a, b);
         var min = Math.min(a, b);
         // return 0 for Wrap(value, 0, 0);
@@ -305,7 +321,7 @@ Now that I have a method that seems to work okay for one axis all I need to do t
     // wrap an axis
     var wrapAxis = function(vec, vecMin, vecMax, axis){
         axis = axis || 'x';
-        vec[axis] = Wrap( vec[axis], vecMin[axis], vecMax[axis] );
+        vec[axis] = wrap( vec[axis], vecMin[axis], vecMax[axis] );
         return vec;
     };
     // wrap a vector
