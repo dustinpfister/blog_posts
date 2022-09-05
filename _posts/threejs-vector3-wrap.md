@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2022-09-03 10:54:49
-version: 1.8
+updated: 2022-09-05 11:38:18
+version: 1.9
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries or limitations in terms of the possible range of values. In the past I have wrote one [blog post on the clamp method of the Vector3 class](/2021/06/16/threejs-vector3-clamp/), and that is one way to go about applying limitations. That is that when a vector goes out of a set range it will be clamped to a value that is within the range, and do so in a box kind of area as it is used by passing two vector3 class instances that define the lowermost and uppermost corners of the box. In that post I also wrote about the clamp length method that works by giving number values that define a min and max vector unit length. This is yet another option that works well, but then both work by clamping values rather than wrapping values. That is that some times when a Vector3 instance goes out of range I might not want to clamp it, but wrap it around to an opposite side of an area.
@@ -110,9 +110,11 @@ First off here is a quick example that helps to show what the deal is with the b
 
 However even though things are working the way that I want them to with the euclidean modulo method it is still working in a way that is relative to zero forward rather than in a way that can work with a range that might go into negative numbers. Still the general idea of wrapping is there, from here forward I just need to find ways to adjust the range.
 
-## 2 - Wrap just one axis
+## 2 - A Wrap Axis method 
 
-The process of making a wrap method from the ground up might prove to be a little involved, at least when it comes to making one from the ground up without looking into what is out there on the open Internet so much anyway. In any case there is taking an approach in which I am figuring out that I need to do on a axis my axis bases which just seems like the thing to do. That is because once I figure out something that works well for one axis, then it is generally just a mater of applying the same logic to all other axis values, at least that would seem to be the case with this anyway with respect to the way that I want to do it.
+The process of making a wrap method from the ground up might prove to be a little involved, at least when it comes to making one from the ground up without looking into what is out there on the open Internet at least. In any case there is taking an approach in which I am figuring out that I need to do on a axis by axis bases which just seems like the thing to do. Wjat is good about this is that once I figure out something that works well for one axis, then it is generally just a mater of applying the same logic to all other axis values, at least that would seem to be the case with this anyway with respect to the way that I want to do it.
+
+### 2.1 - Using the distance to method along with euclidean modulo
 
 The code that I worked out for this solution involves making two instances of the Vector2 class and then calling the distance to method of each to get an idea of what the max distance from 0 is as well as the current distance is. Once I have these two values I can use them with the euclidean modulo method to get how mush I need to add to the min vector or subtract from the max vector for the current axis.
 
@@ -190,9 +192,7 @@ The code that I worked out for this solution involves making two instances of th
     ());
 ```
 
-## 4 - A Wrap vector3 class instance method
-
-Now that I have a method that seems to work okay for one axis all I need to do to make a wrap method for Vector3 is to just call the method for each axis. What is great about this is that in order to make solutions that will also work for the Vector2 class the only major change is to just call the wrap axis for x and y only when making the wrap vector method. Also if I put more time into researching other solutions for this, and fine a better way of wrapping an axis, I can just recreate the wrap axis method, and leave everything else as is.
+### 2.2 - Wrap Axis method bassed off the Math.Wrap method from Phaser
 
 ```js
 (function () {
@@ -210,25 +210,93 @@ Now that I have a method that seems to work okay for one axis all I need to do t
     //-------- ----------
     // HELPERS
     //-------- ----------
-    // mod method
-    var mod = function (a, b) {
-        return THREE.MathUtils.euclideanModulo(a, b);
+    // Wrap method from Phaser ( https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js )
+    var Wrap = function (value, min, max){
+        var range = max - min;
+        return (min + ((((value - min) % range) + range) % range));
     };
-    // wrap and axis
+    // wrap an axis
     var wrapAxis = function(vec, vecMin, vecMax, axis){
         axis = axis || 'x';
-        var maxD = new THREE.Vector2(vecMin[axis], 0).distanceTo( new THREE.Vector2(vecMax[axis], 0) );
-        var d = new THREE.Vector2(vec[axis], 0).distanceTo( new THREE.Vector2(vecMin[axis], 0) );
-        if(maxD === 0){
-           vec[axis] = 0;
-        }else{
-            if(vec[axis] >= vecMax[axis]){
-                vec[axis] = vecMin[axis] + mod(d, maxD);
-            }
-            if(vec[axis] < vecMin[axis]){
-                vec[axis] = vecMax[axis] - mod(d, maxD);
-            }
+        vec[axis] = Wrap( vec[axis], vecMin[axis], vecMax[axis] );
+        return vec;
+    };
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    var mesh1 = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    mesh1.position.set(0, 0, 0);
+    scene.add(mesh1);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    var vMin = new THREE.Vector3(-2, 0, 0),
+    vMax  = new THREE.Vector3(2, 0, 0);
+    var frame = 0,
+    maxFrame = 300,
+    fps = 20,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            // warp one axis
+            mesh1.position.x += (-5 + 10 * bias) * secs
+            wrapAxis(mesh1.position, vMin, vMax, 'x');
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
         }
+    };
+    loop();
+}
+    ());
+```
+
+## 3 - A Wrap vector3 class instance method
+
+Now that I have a method that seems to work okay for one axis all I need to do to make a wrap method for Vector3 is to just call the method for each axis. What is great about this is that in order to make solutions that will also work for the Vector2 class the only major change is to just call the wrap axis for x and y only when making the wrap vector method. Also if I put more time into researching other solutions for this, and fine a better way of wrapping an axis, I can just recreate the wrap axis method, and leave everything else as is.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(4, 4));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // Wrap method based off of the method from Phaser3 
+    // ( https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js )
+    // * just added some code for case : Wrap(0, 0, 0)
+    // * using Math.min and Math.max
+    //
+    var Wrap = function (value, a, b){
+        // get min and max this way so Wrap(value, 2, 10) is same as Wrap(value, 10, 2)
+        var max = Math.max(a, b);
+        var min = Math.min(a, b);
+        // return 0 for Wrap(value, 0, 0);
+        if(max === 0 && min === 0){
+             return 0;
+        }
+        var range = max - min;
+        return (min + ((((value - min) % range) + range) % range));
+    };
+    // wrap an axis
+    var wrapAxis = function(vec, vecMin, vecMax, axis){
+        axis = axis || 'x';
+        vec[axis] = Wrap( vec[axis], vecMin[axis], vecMax[axis] );
+        return vec;
     };
     // wrap a vector
     var wrapVector = function (vec, vecMin, vecMax) {
