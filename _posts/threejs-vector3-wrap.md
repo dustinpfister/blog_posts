@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2022-09-05 11:38:18
-version: 1.9
+updated: 2022-09-05 12:16:35
+version: 1.10
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries or limitations in terms of the possible range of values. In the past I have wrote one [blog post on the clamp method of the Vector3 class](/2021/06/16/threejs-vector3-clamp/), and that is one way to go about applying limitations. That is that when a vector goes out of a set range it will be clamped to a value that is within the range, and do so in a box kind of area as it is used by passing two vector3 class instances that define the lowermost and uppermost corners of the box. In that post I also wrote about the clamp length method that works by giving number values that define a min and max vector unit length. This is yet another option that works well, but then both work by clamping values rather than wrapping values. That is that some times when a Vector3 instance goes out of range I might not want to clamp it, but wrap it around to an opposite side of an area.
@@ -25,7 +25,15 @@ A long time ago I wrote a [blog post on the built in modulo operator](/2017/09/0
 
 ### The Math utils object in threejs
 
-In these examples on wrapping a vector in threejs I am making use of a method in the math utils object in threejs that is a kind of modulo operation that differs from what is baked into javaScript itself. There are a number of other methods to be aware of in the math utils object also, so it would be a good idea to [look into the math utils object more](/2022/04/11/threejs-math-utils/) if you have not done so before hand.
+In these examples on wrapping a vector in threejs I am making use of a method in the math utils object in threejs that is a kind of modulo operation that differs from what is baked into javaScript itself. There are a number of other methods to be aware of in the math utils object also, so it would be a good idea to [look into the math utils object more](/2022/04/11/threejs-math-utils/) if you have not done so before hand. Many of the methods are ushual suspect type methods that I would use, but there is also a few methods that I would like to see there but they are missing, one of which would be a wrap method at least as of r140 backward. Thats okay though as maybe many of the methods should actaully be part of some other librray actaully that can be used with threejs or any javaScript projet for that matter.
+
+### Making a custom cut utility libaray with a wrap method
+
+When I was working on a whole bunch of vanilla [javaScript projects I started a general utilties library](/2021/08/06/js-javascript-example-utils/) that just contains a collection of methods that I find myself copying nad pasting from one project to another. One of the methods in the librray is a wrap method, along with a clamp method as well. 
+
+### Wrap methods in other librraies
+
+In the Math object of the [Game Framework called phaser there is a wrap method](/2018/07/22/phaser-math-wrap-and-clamp/), and I have found that method works okay with a few exceptions with certain sets of argumnets. In any cases there is looking inot the source code of various projects that have librraies like this to see how they are prefroming a certin kind of task such as this.
 
 ### Source code is on Github
 
@@ -193,6 +201,8 @@ The code that I worked out for this solution involves making two instances of th
 ```
 
 ### 2.2 - Wrap Axis method bassed off the Math.Wrap method from Phaser
+
+I have wrote a blog post or two on the game framework called phaser in the past and I remeber that the math object of the framework has a wrap method.
 
 ```js
 (function () {
