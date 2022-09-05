@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2022-09-05 12:39:58
-version: 1.13
+updated: 2022-09-05 15:55:03
+version: 1.14
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries or limitations in terms of the possible range of values. In the past I have wrote one [blog post on the clamp method of the Vector3 class](/2021/06/16/threejs-vector3-clamp/), and that is one way to go about applying limitations. That is that when a vector goes out of a set range it will be clamped to a value that is within the range, and do so in a box kind of area as it is used by passing two vector3 class instances that define the lowermost and uppermost corners of the box. In that post I also wrote about the clamp length method that works by giving number values that define a min and max vector unit length. This is yet another option that works well, but then both work by clamping values rather than wrapping values. That is that some times when a Vector3 instance goes out of range I might not want to clamp it, but wrap it around to an opposite side of an area.
@@ -382,6 +382,234 @@ Now that I have a method that seems to work okay for one axis all I need to do t
         requestAnimationFrame(loop);
         if (secs > 1 / fps) {
             updateGroup(group, secs, bias)
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 4 - A wrap Vector module and some demos
+
+Having a wrap vector method seems like the kind of tool that I would want to take with me from project to project. So then in this section I will be writing about the start of a wrap vector module that I might turn into a separate full blown project that I will make one of my threejs example posts.  There are a few ideas that come to mind for advanced features, but for now I think this module might just need to have one public method that will wrap a vector that I give it. On top of that I might want to also make a wrap number method public as well while I am at it so for now maybe that will be it for this project, as far as this post goes at least anyway.
+
+### 4.0 - A wrap Vector module
+
+```js
+/* vector-wrap.js - r0 - A Wrap Vector Module prototype 
+ *     for the post: https://dustinpfister.github.io/2022/09/02/threejs-vector3-wrap
+ * 
+ *
+ */
+var wrapVector = (function () {
+    // Wrap method based off of the method from Phaser3 
+    // ( https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js )
+    // * Added some code for case: Wrap(0, 0, 0)
+    // * Using Math.min and Math.max so that Wrap(value, 2, 10) is same as Wrap(value, 10, 2)
+    //
+    var wrap = function (value, a, b){
+        // get min and max this way
+        var max = Math.max(a, b);
+        var min = Math.min(a, b);
+        // return 0 for Wrap(value, 0, 0);
+        if(max === 0 && min === 0){
+             return 0;
+        }
+        var range = max - min;
+        return (min + ((((value - min) % range) + range) % range));
+    };
+    // wrap an axis
+    var wrapAxis = function(vec, vecMin, vecMax, axis){
+        axis = axis || 'x';
+        vec[axis] = wrap( vec[axis], vecMin[axis], vecMax[axis] );
+        return vec;
+    };
+    // Main wrap a vector method of public api
+    var api = function (vec, vecMin, vecMax) {
+        vecMin = vecMin || new THREE.Vector3(0, 0, 0);
+        vecMax = vecMax || new THREE.Vector3(1, 1, 1);
+        Object.keys(vec).forEach(function(axis){
+            wrapAxis(vec, vecMin, vecMax, axis);
+        });
+        return vec;
+    };
+    // make wrap method public
+    api.wrap = wrap;
+    // return api
+    return api;
+}());
+```
+
+### 4.1 - Basic demo of the module
+
+```js
+(function () {
+    // works well with Vector2
+    var v = new THREE.Vector2(5, 2);
+    console.log( wrapVector( v , new THREE.Vector2(-3, -3), new THREE.Vector2(3, 3) ) );
+    //-------- ----------
+    // SCENE, CAMERA RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(4, 4));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    var mesh1 = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    mesh1.position.set(0, 0, 0);
+    scene.add(mesh1);
+    var mesh2 = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    mesh2.position.set(0, 0, -1.5);
+    scene.add(mesh2);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    var vMin = new THREE.Vector3(-2, -1, -2),
+    vMax  = new THREE.Vector3(2, 1, 2);
+    var frame = 0,
+    maxFrame = 300,
+    fps = 20,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            // warp one axis
+            mesh1.position.x += (-5 + 10 * bias) * secs;
+            mesh2.position.y += (-5 + 10 * bias) * secs;
+            // wrap vector
+            wrapVector(mesh1.position, vMin, vMax);
+            wrapVector(mesh2.position, vMin, vMax);
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+
+### 4.2 - Seeded Random example
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(4, 4));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // create group
+    var createGroup = function (count, spread, ppsMin, ppsMax, meshSize, boundSize, gitDir) {
+        spread = spread === undefined ? 5 : spread;
+        count = count === undefined ? 50 : count;
+        ppsMin = ppsMin === undefined ? 0.5 : ppsMin;
+        ppsMax = ppsMax === undefined ? 2 : ppsMax;
+        meshSize = meshSize === undefined ? 1 : meshSize;
+        boundSize = boundSize === undefined ? 4 : boundSize;
+        var group = new THREE.Group();
+        var gud = group.userData;
+        gud.meshSize = meshSize;
+        gud.boundSize = boundSize;
+        var i = 0;
+        while (i < count) {
+            var mesh = new THREE.Mesh(
+                new THREE.BoxGeometry(gud.meshSize, gud.meshSize, gud.meshSize), 
+                new THREE.MeshNormalMaterial({
+                    transparent: true,
+                    opacity: 0.60
+                })
+            );
+            // start position
+            mesh.position.x = spread * THREE.MathUtils.seededRandom();
+            mesh.position.y = spread * THREE.MathUtils.seededRandom();
+            mesh.position.z = spread * THREE.MathUtils.seededRandom();
+            // user data values, pps and direction
+            var ud = mesh.userData;
+            ud.pps = ppsMin + (ppsMax - ppsMin) * THREE.MathUtils.seededRandom();
+            ud.dir = gitDir ? gitDir(group, mesh, i) : new THREE.Vector3(0, 1, 0).normalize();
+            group.add(mesh);
+            i += 1;
+        }
+        return group;
+    };
+    // update a group
+    var updateGroup = function (group, secs, bias) {
+       var gud = group.userData;
+       var bs = gud.boundSize / 2;
+       var ms = gud.meshSize / 2;
+       var a = bs * -1 + ms;
+       var b = bs - ms;
+       var vMin = new THREE.Vector3(a, a, a);
+       var vMax = new THREE.Vector3(b, b, b);
+       group.children.forEach(function(mesh){
+            var ud = mesh.userData;
+            mesh.position.x += ud.dir.x * ud.pps * secs;
+            mesh.position.y += ud.dir.y * ud.pps * secs;
+            mesh.position.z += ud.dir.z * ud.pps * secs;
+            wrapVector(
+                mesh.position,
+                vMin,
+                vMax);
+        });
+    };
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // group1 uses default values
+    var group1 = createGroup();
+    scene.add(group1);
+    // group2 uses custom values
+    var group2 = createGroup(100, 5, 0.125, 0.25, 0.25, 4, () => {
+        return new THREE.Vector3(
+            -5 + 10 * THREE.MathUtils.seededRandom(),
+            -5 + 10 * THREE.MathUtils.seededRandom(),
+            -5 + 10 * THREE.MathUtils.seededRandom());
+    });
+    group2.position.set(-7, 0, 0);
+    scene.add(group2);
+    var frame = 0,
+    maxFrame = 300,
+    fps = 20,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            updateGroup(group1, secs, bias);
+            updateGroup(group2, secs, bias);
             renderer.render(scene, camera);
             frame += fps * secs;
             frame %= maxFrame;
