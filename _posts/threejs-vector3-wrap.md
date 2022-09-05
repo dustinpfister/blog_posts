@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2022-09-05 15:55:03
-version: 1.14
+updated: 2022-09-05 15:59:38
+version: 1.15
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries or limitations in terms of the possible range of values. In the past I have wrote one [blog post on the clamp method of the Vector3 class](/2021/06/16/threejs-vector3-clamp/), and that is one way to go about applying limitations. That is that when a vector goes out of a set range it will be clamped to a value that is within the range, and do so in a box kind of area as it is used by passing two vector3 class instances that define the lowermost and uppermost corners of the box. In that post I also wrote about the clamp length method that works by giving number values that define a min and max vector unit length. This is yet another option that works well, but then both work by clamping values rather than wrapping values. That is that some times when a Vector3 instance goes out of range I might not want to clamp it, but wrap it around to an opposite side of an area.
@@ -398,6 +398,8 @@ Now that I have a method that seems to work okay for one axis all I need to do t
 Having a wrap vector method seems like the kind of tool that I would want to take with me from project to project. So then in this section I will be writing about the start of a wrap vector module that I might turn into a separate full blown project that I will make one of my threejs example posts.  There are a few ideas that come to mind for advanced features, but for now I think this module might just need to have one public method that will wrap a vector that I give it. On top of that I might want to also make a wrap number method public as well while I am at it so for now maybe that will be it for this project, as far as this post goes at least anyway.
 
 ### 4.0 - A wrap Vector module
+
+The module that I have together then thus far just makes use of the wrap method based off of the one from Phaser, along with the wrap axis method. I then create a public api that is a function and make the main function of the module the wrap vector method. I am thinking that will be the main feature of interest with this that I will be using over and over again in projects, so maybe that is all that I need to do with this one for the most part. The only other thing that I did is make the wrap method public as I might want to do this sort of thing with a number rather than a vector class instance in some cases.
 
 ```js
 /* vector-wrap.js - r0 - A Wrap Vector Module prototype 
