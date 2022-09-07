@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2022-09-07 12:41:33
-version: 1.24
+updated: 2022-09-07 12:48:08
+version: 1.25
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two points in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting the distance between two points in vector space. So in todays post I will be looking into some simple examples of using this methods in threejs projects.
@@ -188,6 +188,136 @@ I also have another method that will check the distance between two points and r
 The result is then cube2 moving to cube1 and going slower as it gets closer to cube1. When cube2 gets to close to cube1 then a new random position is set for cube2, and the process starts all over again. In this example I am not just using the distance to method, but a whole bunch of methods in the Vector3 class all of which deserve a post, and a few examples on there own. 
 
 For example take a look at the method that has to do with getting a new random position, in there I am creating a new Vector, and then calling the random method to make it so that all the values for the vector are random numbers between 0 and 1. I then want to make sure that I get a vector that will be going in all possible directions, so I subtract 0.5 from all axis values. The [normalize](/2021/06/14/threejs-vector3-normalize/) method make sure that I am dealing with a vector that has a vector unit length of 1, which can then be easily scaled up to any distance from the origin by just multiplying.
+
+## 3 - Using length, and distance to methods to set opacity and rotation with group of mesh objects
+
+The length method is a way to go about getting the current vector unit length which is also a kind of distance to the origin of the Vector at least. In some cases then this length can be used as a way to get the value that I want it is just the it will always be the distance to the origin rather than another point of interest. In this example I am using the length method to get the distance to the origin and I am using that as a way to set an opacity effect. On top of this I am also using the distance to method but to create another kind of effect that has to do with the rotation of the mesh objects.
+
+
+```js
+(function () {
+    //-------- ----------
+    // HELPER FUNCTIONS
+    //-------- ----------
+    // opaicty effect using length method which is distance to origin
+    let opacityEffect = (mesh) =>  {
+        mesh.material.opacity = 1 - mesh.position.length() / 5;
+    };
+    // rotation effect using the distanceTo method
+    let rotationEffect = (group, mesh) =>  {
+        let minDist = 5;
+        group.children.forEach( (child) => {
+            mesh.lookAt(0, 0, 0);
+            if(child != mesh){
+                let d = mesh.position.distanceTo(child.position);
+                if(d < minDist){
+                    let p = d / minDist;
+                    let ud = mesh.userData;
+                    ud.rp += p;
+                    ud.rp %= 1;
+                    mesh.rotation.z += Math.PI / 180 * ud.maxDegPerChid * ud.rp;
+                }
+            }
+        })
+    };
+    // get a start position by passing two values that are 0 - 1
+    let getStartPosition = (a, b) => {
+        a = a === undefined ? 0 : a;
+        b = b === undefined ? 0 : b;
+        let pos = new THREE.Vector3( 5, 0, 0);
+        let e = new THREE.Euler(0, a * Math.PI * 2, b * Math.PI * 2);
+        return pos.applyEuler(e);
+    };
+    // get a seeded random start position
+    let getSeededRandomStartPosition = function(){
+        return getStartPosition(
+            THREE.MathUtils.seededRandom(), 
+            THREE.MathUtils.seededRandom() );
+    };
+    // set new mesh user data
+    let newMeshUserData = (mesh) => {
+        // user data
+        let ud = mesh.userData;
+        ud.startPos = getSeededRandomStartPosition();
+        ud.alphaDelta = 0.1 + 0.5 * THREE.MathUtils.seededRandom();
+        ud.alpha = 0;
+        ud.rp = 0;
+        ud.maxDegPerChid = 5 + 355 * THREE.MathUtils.seededRandom();
+    };
+    // create group
+    let createGroup = () => {
+        let group = new THREE.Group();
+        let i = 0, count = 100;
+        while(i < count){
+            // create mesh object
+            let mesh = new THREE.Mesh( 
+                new THREE.BoxGeometry(1,1,1), 
+                new THREE.MeshNormalMaterial({
+                    transparent: true
+                }) );
+            // user data
+            let ud = mesh.userData;
+            newMeshUserData(mesh);
+            // start pos, lookAt, add to group
+            mesh.position.copy( ud.startPos );
+            group.add(mesh);
+            i += 1;
+        }
+        return group;
+    };
+    // update group
+    let updateGroup = function(group, secs){
+        secs = secs === undefined ? 0 : secs;
+        group.children.forEach( (mesh) => {
+            let ud = mesh.userData;
+            ud.alpha += ud.alphaDelta * secs;
+            ud.alpha = ud.alpha > 1 ? 1 : ud.alpha;
+            // new positon using start pos in userData and lerping from there
+            mesh.position.copy(ud.startPos).lerp( new THREE.Vector3(), ud.alpha );
+            // new data if alpha === 1
+            if(ud.alpha === 1){
+                newMeshUserData(mesh);
+            }
+            // opaicty effect
+            opacityEffect(mesh);
+            rotationEffect(group, mesh);
+        });
+    };
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    let scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    let camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(8, 10, 8);
+    camera.lookAt(0, 0, 0);
+    let renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // OBJECTS
+    //-------- ----------
+    let group = createGroup();
+    scene.add(group);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    let lt = new Date(),
+    fps = 30;
+    let loop = function () {
+        let now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            updateGroup(group, secs);
+            lt = now;
+            renderer.render(scene, camera);
+        }
+    };
+    loop();
+}
+    ());
+```
 
 ## Conclusion
 
