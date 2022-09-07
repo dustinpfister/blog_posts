@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2022-04-20 10:09:18
-version: 1.22
+updated: 2022-09-07 10:20:09
+version: 1.23
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two points in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting the distance between two points in vector space. So in todays post I will be looking into some simple examples of using this methods in threejs projects.
@@ -181,6 +181,6 @@ The result is then cube2 moving to cube1 and going slower as it gets closer to c
 
 For example take a look at the method that has to do with getting a new random position, in there I am creating a new Vector, and then calling the random method to make it so that all the values for the vector are random numbers between 0 and 1. I then want to make sure that I get a vector that will be going in all possible directions, so I subtract 0.5 from all axis values. The [normalize](/2021/06/14/threejs-vector3-normalize/) method make sure that I am dealing with a vector that has a vector unit length of 1, which can then be easily scaled up to any distance from the origin by just multiplying.
 
-## 3 - Conclusion
+## Conclusion
 
 That will be it for now at least when it comes to the distance to method in threejs, there is of course way more examples that I could make, but I only have some much time to work with. There are a lot of other related topics that I might not have go to just yet when it comes to distance to such as the subject of collision detection. The distance to method could be used to rig up a crud yet effective kind of collection detection that has to do with a spherical distance from one point to another of course, but there are other things to work with that might be a better option when it comes to that sort of thing.
