@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2022-09-07 12:48:08
-version: 1.25
+updated: 2022-09-07 12:59:52
+version: 1.26
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two points in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting the distance between two points in vector space. So in todays post I will be looking into some simple examples of using this methods in threejs projects.
@@ -245,9 +245,10 @@ The length method is a way to go about getting the current vector unit length wh
         ud.maxDegPerChid = 5 + 355 * THREE.MathUtils.seededRandom();
     };
     // create group
-    let createGroup = () => {
+    let createGroup = (count) => {
+        count = count === undefined ? 10 : count;
         let group = new THREE.Group();
-        let i = 0, count = 100;
+        let i = 0;;
         while(i < count){
             // create mesh object
             let mesh = new THREE.Mesh( 
@@ -297,8 +298,14 @@ The length method is a way to go about getting the current vector unit length wh
     //-------- ----------
     // OBJECTS
     //-------- ----------
-    let group = createGroup();
-    scene.add(group);
+    let group1 = createGroup(80);
+    scene.add(group1);
+    let group2 = createGroup(20);
+    group2.position.set(-10, 0, 0);
+    scene.add(group2);
+    let group3 = createGroup(20);
+    group3.position.set(0, 0, -10);
+    scene.add(group3);
     //-------- ----------
     // LOOP
     //-------- ----------
@@ -309,7 +316,9 @@ The length method is a way to go about getting the current vector unit length wh
         secs = (now - lt) / 1000;
         requestAnimationFrame(loop);
         if (secs > 1 / fps) {
-            updateGroup(group, secs);
+            updateGroup(group1, secs);
+            updateGroup(group2, secs);
+            updateGroup(group3, secs);
             lt = now;
             renderer.render(scene, camera);
         }
