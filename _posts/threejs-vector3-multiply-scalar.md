@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2022-04-10 08:52:19
-version: 1.20
+updated: 2022-09-08 14:24:07
+version: 1.21
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -26,7 +26,7 @@ There are many other useful methods in the Vector3 class that can be used togeth
 
 ### Be mindful of version numbers
 
-The version of threejs that I was using when I first wrote this post was r135. Code breaking changes are made to threejs often so check your version numbers first and for most if any of these code examples are breaking on versions of threejs later than r135.
+The version of threejs that I was using when I first wrote this post was r135, and the last time I came around to do some editing I was using r140. Code breaking changes are made to threejs often so check your version numbers first and for most if any of these code examples are breaking on versions of threejs later than r140.
 
 ### The source code examples in this post are also on Github
 
@@ -153,7 +153,215 @@ For this example I am not also creating and positioning mesh objects in the body
     ());
 ```
 
-## 4 - Conclusion
+## 4 - Apply Euler and setting direction along with length
+
+Another Vector3 class method that has proven to be useful is the apply Euler method. Where a vector3 class is used to define a direction and a unit length from the direction, or just simply a position in space, the Euler class is all about angles. So then say that I want to have a way to set the position of a mesh in space by giving a vector unit length, and then a few more arguments that are used to define what the direction is. Such a method can be made by making use of the apply Euler method along with the multiply scalar method.
+
+In this example I have a helper function called set by length where I give a mesh object, and then a vector unit length that I want. After that I can give two angles and if I want a custom start direction to adjust from.
+
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(7, 7, 7);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // set position of mesh based on vector unit length along with a and b values
+    // relative to a standard start position
+    const setByLength = function(mesh, len, a, b, startDir){
+        startDir = startDir || new THREE.Vector3(1, 0, 0);
+        const pi2 = Math.PI * 2,
+        eul = new THREE.Euler(
+            0, 
+            a % 1 * pi2,
+            b % 1 * pi2);
+        // using copy to start at startDir, then applying the Euler. After that normalize and multiplyScalar
+        return mesh.position.copy( startDir ).applyEuler( eul ).normalize().multiplyScalar(len);
+    };
+    // get a bias value
+    const getBias = function(n, d, count){
+        let per = n / d * count % 1;
+        return 1 - Math.abs(0.5 - per) / 0.5;
+    };
+    //-------- ----------
+    // OBJECTS
+    //-------- ----------
+    const mesh1 = new THREE.Mesh( new THREE.BoxGeometry(1,1,1), new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    let frame = 0,
+    maxFrame = 300,
+    fps = 20,
+    lt = new Date();
+    const loop = function () {
+        let now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            // USING SET BY LENGTH HELPER
+            let len = 1 + 4 * getBias(frame, maxFrame, 6);
+            let a = frame / maxFrame;
+            let b = -0.125 + 0.25 * getBias(frame, maxFrame, 10);
+            setByLength(mesh1, len, a, b);
+            // look at, render, step, ...
+            mesh1.lookAt(0, 0, 0);
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+    //-------- ----------
+    // CONTROLS
+    //-------- ----------
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}
+    ());
+```
+
+## 5 - Art Example One
+
+I think I have the basic idea of the multiply scalar method covered now and then some when it comes to some additional methods that will often come into play along with it. In this example I want to make a kind of art project type thing where the goal is to just make a collection of mesh objects that look interesting when they move around in the scene. As with by apply Euler example in this post I am once gain using that helper function that I worked out in that example, but now with some additional helper functions that can be used to create and update a standard kind of group object.
+
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    let dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(-10, 3, -5);
+    scene.add(dl);
+    let al = new THREE.AmbientLight(0xffffff, 0.15);
+    scene.add(al);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // set position of mesh based on vector unit length along with a and b values
+    // relative to a standard start position
+    const setByLength = function(mesh, len, a, b, startDir){
+        startDir = startDir || new THREE.Vector3(1, 0, 0);
+        const pi2 = Math.PI * 2,
+        eul = new THREE.Euler(
+            0, 
+            a % 1 * pi2,
+            b % 1 * pi2);
+        // using copy to start at startDir, then applying the Euler. After that normalize and multiplyScalar
+        return mesh.position.copy( startDir ).applyEuler( eul ).normalize().multiplyScalar(len);
+    };
+    // get a bias value
+    const getBias = function(alpha, count){
+        let per = alpha * count % 1;
+        return 1 - Math.abs(0.5 - per) / 0.5;
+    };
+    // update a group
+    //const updateGroup = function(group, gAlpha, alphaAdjust, lenBiasCount, bBiasCount){
+    const updateGroup = function(group, gAlpha, opt){
+        gAlpha = gAlpha === undefined ? 0 : gAlpha; 
+        opt = opt || {};
+        opt.alphaAdjust = opt.alphaAdjust === undefined ? 1 : opt.alphaAdjust;
+        opt.lenBiasCount = opt.lenBiasCount === undefined ? 5 : opt.lenBiasCount;
+        opt.bBiasCount = opt.bBiasCount === undefined ? 5 : opt.bBiasCount;
+        opt.lenRange = opt.lenRange || [3, 8];
+        opt.bRange = opt.bRange || [-0.125, 0.125];
+        let i = 0, count = group.children.length;
+        while(i < count){
+            let mesh = group.children[i];
+            let iAlpha = i / count;
+            let alpha = ( iAlpha + gAlpha ) / opt.alphaAdjust;
+            let len = opt.lenRange[0] + (opt.lenRange[1] - opt.lenRange[0]) * getBias(alpha, opt.lenBiasCount);
+            let a = alpha;
+            let b = opt.bRange[0] + (opt.bRange[1] - opt.bRange[0]) * getBias(alpha, opt.bBiasCount);
+            setByLength(mesh, len, a, b);
+            // next child
+            nextChild = group.children[i + 1];
+            if(i === count - 1){
+               nextChild = group.children[i - 1];
+            }
+            mesh.lookAt(nextChild.position);
+            i += 1;
+        }
+        return group;
+    };
+    // create a group
+    const createGroup = function(count, s){
+        count = count === undefined ? 10 : count;
+        s = s === undefined ? 1 : s;
+        let i = 0;
+        let group = new THREE.Group();
+        while(i < count){
+            let mesh = new THREE.Mesh(
+                new THREE.BoxGeometry(s, s, s),
+                new THREE.MeshPhongMaterial({
+                }));
+            group.add(mesh);
+            i += 1;
+        }
+        updateGroup(group, 0);
+        return group;
+    };
+    //-------- ----------
+    // OBJECTS
+    //-------- ----------
+    let group1 = createGroup(120, 0.6);
+    scene.add(group1);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    let frame = 0,
+    maxFrame = 900,
+    fps = 20,
+    lt = new Date();
+    const loop = function () {
+        let now = new Date(),
+        secs = (now - lt) / 1000,
+        fAlpha = frame / maxFrame;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            updateGroup(group1, fAlpha, {
+                lenRange: [1, 6],
+                bRange: [-0.125, 0.2 * getBias(fAlpha, 8)]
+            });
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+    //-------- ----------
+    // CONTROLS
+    //-------- ----------
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}
+    ());
+```
+
+## Conclusion
 
 So then the multiply scalar method is one of many tools in the toolbox that is the Vector3 class. This Vecotr3 class comes up when it comes to just about anything that has to do with a single point in space, so it is used for the value of the position attribute of the [Object3d class](/2018/04/23/threejs-object3d/) as well as with many other features in the over all library. With that said the multiply scalar method is a great tool for increasing the unit length of a vector without messing around with the direction of it.
 
