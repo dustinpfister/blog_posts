@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 09:46:27
-version: 1.2
+updated: 2022-09-09 10:15:38
+version: 1.3
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in threejs has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
@@ -20,6 +20,10 @@ There are a lot of features that come to mind when it comes to wrapping values i
 
 
 ## 1 - The first version of threejs-wrap.js \( r0 \), and some demos of the features thus far
+
+In this section I will be going over the state of the source code of the first version of this threejs wrap module, and of course I need to have at least a few demos of it as well. The module follows the  usual IIFE pattern for making a javaScript module that I can then use elsewhere with mu various front end javaScript. The public API is a plain old javaScript object with a bunch of public methods attached to it that will do things like wrap number values as well as various classes such as a Vector3 class.
+
+The first and foremost method in the module that I am making public is the wrap method which is more of less the same compared to a method that I worked out in my blog post on this subject. In that post the focus was more about figuring out how to go about making a simple warp value method that will work well in all cases including negative numbers. In this post I am just going with one method that I worked out that seems to function well that was based off of a [wrap method I found in a popular javaScript game framework called Phaser](/2018/07/22/phaser-math-wrap-and-clamp/). So then for this module I am focusing more on what I can do with a wrap method when applying this to the use of the threejs library.
 
 ```js
 /* threejs-wrap.js - r0 - A THREEJS Wrap Module
@@ -82,6 +86,8 @@ const wrapMod = (function () {
     return api;
 }());
 ```
+
+On top of the wrap method that will work well whe I just want to wrap a number primative there are also wrap vector, wrap vector length, and wrap euler methods. I have a liot of ideas for addtional methods that I might want to add on top of this, but many of these ideas should be added in any and all futuire revisions of the module if it comes to that. For now I think that these methods alone are what I want to have at the ready.
 
 ### 1.1 - Wrap Method demo
 
