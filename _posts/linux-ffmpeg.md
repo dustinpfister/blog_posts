@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-09-09 11:16:15
-version: 1.19
+updated: 2022-09-09 11:23:45
+version: 1.20
 ---
 
 The [ffmpeg command](https://www.videoproc.com/resource/ffmpeg-commands.htm) can be used to create videos from a collection of frames, as well as a wide range of other tasks that have to do with video editing. For example on top of creating a video from a whole bunch of frames in the form of image files, a new collection of frames can be made with ffmpeg from a video file also. In addition I can create new frames or videos with ffmpeg with one or more filters applied to scale, crop, add noise and so much more as there is a whole lot to work with it. 
@@ -96,8 +96,8 @@ $ cat ./videos.txt
 $ ffmpeg -f concat -i videos.txt -c copy video-concat.mp4
 ```
 
-## 8 - Conclusion
+## Conclusion
 
-So far I have just scratched the surface with what can be done with ffmpeg and various other linux commands. There is a whole lot more to write about of course when it comes to the topic of filters alone with ffmpeg, just looking at the official docs with that one there are a whole lot of them to work with. I am thinking that I am going to want to write at least a few more posts on this command in future Linux category posts, also i am sure that this will be a post that I will come around to edit now and then as well.
+So far I have just scratched the surface with what can be done with ffmpeg and various other Linux commands on top of that when it comes to monkeying around in bash. There is a whole lot more to write about of course when it comes to the topic of [filters alone with ffmpeg](https://ffmpeg.org/ffmpeg-filters.html) as there are a whole lot of them. I am thinking that I am going to want to write at least a few more posts on this command in future [Linux category posts](/categories/linux/). Also I am sure that this will be a post that I will come around to edit now and then as well as I find out more that can be done with ffmpeg and other Linux and bash features.
 
 
