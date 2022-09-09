@@ -5,13 +5,16 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 09:38:28
-version: 1.1
+updated: 2022-09-09 09:46:27
+version: 1.2
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in threejs has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
 
-There are two general ways of going about treating bounderies one of which is to clamp them so that it is just not possible to continue out of a desired bounds, the other way though is to wrap them so that the value wraps around to an oposite side. I have [wrote a post on the wraping of the Vector3 class recently](/2022/09/02/threejs-vector3-wrap/), but I thought that I should continue with this and make a more refined wrap module as a [threejs example project](/2021/02/19/threejs-examples/).
+There are two general ways of going about treating boundaries one of which is to clamp them so that it is just not possible to continue out of a desired bounds, the other way though is to wrap them so that the value wraps around to an opposite side. I have [wrote a post on the wrapping of the Vector3 class recently](/2022/09/02/threejs-vector3-wrap/), but I thought that I should continue with this and make a more refined wrap module as a [threejs example project](/2021/02/19/threejs-examples/) which is what this post is about.
+
+There are a lot of features that come to mind when it comes to wrapping values in threejs beyond just having a simple wrap value method that works well. There is having a method that will wrap a Vector to a box like area, but I would also like to have a method that is the wrap equivalent of that clamp length method as well. There are a whole lot of other classes beyond that of the vector3 class so I would like to have wrap methods that also work well with the [Euler class](/2021/04/28/threejs-euler/) that is the go to class for angles rather than vectors. Also there are many projects in which this wrap method, or similar methods for wrapping would be useful such as with my [object grid wrap project](/2022/05/20/threejs-examples-object-grid-wrap/).
+
 
 <!-- more -->
 
