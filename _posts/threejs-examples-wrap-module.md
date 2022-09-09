@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 10:59:24
-version: 1.10
+updated: 2022-09-09 14:01:41
+version: 1.11
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
@@ -162,7 +162,102 @@ The first public method that I might want to test out is the plain wrap number m
     ());
 ```
 
-### 1.2 - Wrap Vector method demo
+### 1.2 - Wrap Euler method demo
+
+So is I just want to have a wrap method the one that I am using in this module seems to work well. However chances are that I am going to want to also have a number of methods that I can use to wrap not just a number but a class instance in threejs such as a Euler class instance. By default I will just want for it to make sure that the values for each axis stay in the range of zero to PI times 2, however I will of course also want it to work well with ranges that might include negative numbers. 
+
+In this demo I have a mesh that uses the cone geometry and I am rotating the mesh over time. When doing so I am using my wrap Euler method to keep the rotation of the mesh wrapped to a given range for the y axis.
+
+Also while working on this example I wanted to make a get alpha method that will work like the wrap method but give me an alpha value in the range of 0 to 1 that I can then use to set things like opacity. The helper method that I worked out for this seems to work well thus far for this kind of task and as such I might include it in future revisions of this module.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // make a cone with the geometry adjusted so that it points to x+ by default
+    const makeCone = (len, radius) => {
+        len = len === undefined ? 3 : len;
+        radius = radius === undefined ? 0.5 : radius;
+        const mesh = new THREE.Mesh(
+            new THREE.ConeGeometry(radius, len, 20, 20),
+            new THREE.MeshNormalMaterial({
+                transparent: true,
+                opacity: 0.5
+            }));
+        mesh.geometry.rotateX( Math.PI * 0.5 );
+        mesh.geometry.rotateY( Math.PI * 0.5 );
+        return mesh;
+    };
+    const getAlpha = (value, vMin, vMax) => {
+        const range = Math.abs(vMax - vMin);
+        // is min >= 0 ?
+        if(vMin >= 0){
+            //return wrapMod.wrap(value, vMin, vMax) / range;
+        }
+        // vMax is also less than 0
+        if(vMax < 0){
+            //return ( wrapMod.wrap( value, vMin, vMax ) + Math.abs( vMin ) ) / range;
+        }
+        // vMax is 0 or higher ( also looks like I might have a one liner here )
+        return Math.abs( vMin - wrapMod.wrap(value, vMin, vMax) ) / range;
+    };
+    //-------- ----------
+    // TESTING OUT getAlpha HELPER ( seems to work okay for these and demo )
+    //-------- ----------
+    console.log( getAlpha( 6, 0, 10 ) );       // 0.6
+    console.log( getAlpha( -14, -20, -10 ) );  // 0.6
+    console.log( getAlpha( 2, -10, 10 ) );     // 0.6
+    console.log( getAlpha( -1.4, -5, 1 ) );    // 0.6
+    console.log( getAlpha( 2, -1, 5) ); // 0.5
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const mesh1 = makeCone(7, 2);
+    scene.add(mesh1);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    let pi2 = Math.PI * 2,
+    eMin = new THREE.Euler(0, pi2 * 0.5 * -1, 0),
+    eMax = new THREE.Euler(pi2, pi2 * 0.25, pi2),
+    degPerSec = 20,
+    fps = 20,
+    lt = new Date();
+    const loop = function () {
+        let now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            // updating and wraping the Euler in as mesh rotation property
+            mesh1.rotation.y += Math.PI / 180 * degPerSec * secs;
+            wrapMod.wrapEuler(mesh1.rotation, eMin, eMax);
+            mesh1.material.opacity = 1 - Math.abs( 0.5 - getAlpha(mesh1.rotation.y, eMin.y, eMax.y) ) / 0.5;
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    loop();
+    //-------- ----------
+    // CONTROLS
+    //-------- ----------
+    let controls = new THREE.OrbitControls(camera, renderer.domElement)
+}
+    ());
+```
+
+### 1.3 - Wrap Vector method demo
 
 Most of the time I will like to wrap a vector to a box like area that I can define by using two additional instances of Vector3 that are use to set the min and max values for vectors. In other words a wrap style method of the vector3 clamp method which I am demoing in this example here.
 
@@ -226,7 +321,7 @@ Most of the time I will like to wrap a vector to a box like area that I can defi
     ());
 ```
 
-### 1.3 - Wrap Vector Length demo
+### 1.4 - Wrap Vector Length demo
 
 The subject of vector unit length is a major part of that the vector3 class is all about. A Vector is after all a state of direction and magnitude, or length if you prefer. So then any Vector can have a certain direction and the length can be adjusted while not doing anything with the direction which will result in a Vector moving directly outward, or in the direction of the origin. In the vector3 class there is a clamp length method that can be used to clamp the length of the vector, and for this module I made a wrap vector length method that does the same thing only by wrapping rather than clamping.
 
