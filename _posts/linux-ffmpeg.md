@@ -5,11 +5,15 @@ tags: [linux]
 layout: post
 categories: linux
 id: 965
-updated: 2022-03-05 12:11:37
-version: 1.17
+updated: 2022-09-09 11:12:51
+version: 1.18
 ---
 
-The [ffmpeg command](https://ffmpeg.org/ffmpeg.html) can be used to create videos from a collection of frames, as well as a wide range of other tasks such as creating a new collection of frames with one or more filters applied to scale, crop, and noise and much more. So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg.
+The [ffmpeg command](https://www.videoproc.com/resource/ffmpeg-commands.htm) can be used to create videos from a collection of frames, as well as a wide range of other tasks. For example on top of creating a video from a whole bunch of frames in the form of image files a new collection of frames can be made with ffmpeg with one or more filters applied to scale, crop, add noise and much more. 
+
+So when it comes to just about anything video related in Linux this is the default goto solution for editing video from the command line. There are a lot of other great programs to work with in Linux to edit video though, such as OpenShot which is one of my favorite options thus far. However often a great many of these video editing programs are for the most part just graphical front ends for ffmpeg which does all the leg work in the background.
+
+When it comes to really learning a thing or two about ffmpeg there is always the [man page](https://ffmpeg.org/ffmpeg.html) that helps. However if you are like me then that of course is not the reason why you are here. There are just so many little uses cases that apply to one specif little thing, so then there is looking at various forums and blog posts such as this. 
 
 <!-- more -->
 
