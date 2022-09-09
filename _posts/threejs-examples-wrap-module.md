@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 10:53:54
-version: 1.8
+updated: 2022-09-09 10:56:03
+version: 1.9
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
@@ -19,7 +19,7 @@ There are a lot of features that come to mind when it comes to wrapping values i
 
 ## Wrapping values in threejs and what to be aware of first
 
-This is a post in which I am writing about a module that has to do with wrapping number values as well as the values of various classes in the javaScript library known as threejs. In core javascript there is the modulo operator, but this operator will not work as expected in all cases which gives rise for a interest in other additional methods of doing so such as mathematical or euclidean modulo. having the right modulo method is one thing about this wrapping of values in javaScript, but there is also a lot that one should know about threejs in general as well before hand. Simply put this is not a [getting started with javaScript](/2018/11/27/js-getting-started/) type post, and with that also any additional javaScript libraries written in javaScript such as therejs. I will not be getting into detail about every little feature that you should know before hand then, but I do use this first section to being up a few things at least.
+This is a post in which I am writing about a module that has to do with wrapping number values as well as the values of various classes in the javaScript library known as threejs. In core javascript there is the modulo operator, but this operator will not work as expected in all cases which gives rise for a interest in other additional methods of doing so such as [mathematical or euclidean modulo](https://en.wikipedia.org/wiki/Modulo_operation#Variants_of_the_definition). having the right modulo method is one thing about this wrapping of values in javaScript, but there is also a lot that one should know about threejs in general as well before hand. Simply put this is not a [getting started with javaScript](/2018/11/27/js-getting-started/) type post, and with that also any additional javaScript libraries written in javaScript such as therejs. I will not be getting into detail about every little feature that you should know before hand then, but I do use this first section to being up a few things at least.
 
 ### The deal with modulo in javaScript
 
