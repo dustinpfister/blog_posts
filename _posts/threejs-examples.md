@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-09-09 09:51:06
-version: 1.76
+updated: 2022-09-09 09:52:16
+version: 1.77
 ---
 
 
@@ -198,7 +198,7 @@ This is a more advanced example of the first weird walk guy example, continuing 
 
 I wanted to make yet another one of these weird walk examples to which I might make a few more of.
 
-### [ 2.40 - Wrap values module](/2022/05/24/threejs-examples-wrap-module/)
+### [ 2.40 - Wrap values module](/2022/09/09/threejs-examples-wrap-module/)
 
 There are a lot of methods that have to do with clamping values to a set of bounds, but I am not seeing that many that have to do with wrapping values to bounds. In other words when a value reaches a limit there are a lot of choices to make that value just stop and not go beyond the set limit. However there is a lack of methods that helper with the process of having a value wrap back around to the opposite side of a box or sphere like area. So then I made this threejs wrap module that contains a number of methods that can be used to help with the process of wrapping rather than clamping values like numbers, as well as threejs class stuff like Vector, and Euler class instances.
 
