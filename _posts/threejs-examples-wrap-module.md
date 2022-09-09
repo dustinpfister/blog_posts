@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 10:56:03
-version: 1.9
+updated: 2022-09-09 10:59:24
+version: 1.10
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
@@ -31,7 +31,7 @@ Speaking of the modulo operator and alternative ways of doing so, the [math util
 
 ### Source is up on Github
 
-The source code that I am writing about here can be found in my test threejs repository on Github.
+The source code that I am writing about here can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-wrap-module). This is where I also park the source code for my [many other posts on threejs](/categories/three-js/) project examples, as well as the various features of threejs alone.
 
 ### Version numbers matter
 
