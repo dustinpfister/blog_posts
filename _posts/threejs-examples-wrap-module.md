@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 10:50:54
-version: 1.7
+updated: 2022-09-09 10:53:54
+version: 1.8
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
@@ -19,15 +19,15 @@ There are a lot of features that come to mind when it comes to wrapping values i
 
 ## Wrapping values in threejs and what to be aware of first
 
-This is a post in which I am writing about a module that has to do with wrapping number values as well as the values of various classes in the javaScript library known as threejs. In core javascript there is the modulo operator, but this operator will not work as expected in all cases which gives rise for a interest in other additional methods of doing so such as mathematical or euclidean modulo. having the right modulo method is one thing about this wrapping of values in javaScript, but there is also a lot that one should know about threejs in general as well before hand. Simply put this is not a getting started with javaScript type post, and with that also any additional javaScript libraries written in javaScript such as therejs. I will not be getting into detail about every little feature that you should know before hand then, but I do use this first section to being up a few things at least.
+This is a post in which I am writing about a module that has to do with wrapping number values as well as the values of various classes in the javaScript library known as threejs. In core javascript there is the modulo operator, but this operator will not work as expected in all cases which gives rise for a interest in other additional methods of doing so such as mathematical or euclidean modulo. having the right modulo method is one thing about this wrapping of values in javaScript, but there is also a lot that one should know about threejs in general as well before hand. Simply put this is not a [getting started with javaScript](/2018/11/27/js-getting-started/) type post, and with that also any additional javaScript libraries written in javaScript such as therejs. I will not be getting into detail about every little feature that you should know before hand then, but I do use this first section to being up a few things at least.
 
 ### The deal with modulo in javaScript
 
-The modulo operator in core javaScript will work fine in most cases except for some cases in which it will not. The deal is that the built in javaScript modulo operator is not really broken it is just that there is more than one kind of modulo operator when it comes to how negative number should be handled. This is what in some cases a special kind of modulo operator must be used that works differently compared to that of the built in operator in javaScript. There are a lot of libraries that will have this kind of method built in and threejs is once such library.
+The [modulo operator in core javaScript](/2017/09/02/js-whats-wrong-with-modulo/) will work fine in most cases except for some cases in which it will not. The deal is that the built in javaScript modulo operator is not really broken it is just that there is more than one kind of modulo operator when it comes to how negative number should be handled. This is what in some cases a special kind of modulo operator must be used that works differently compared to that of the built in operator in javaScript. There are a lot of libraries that will have this kind of method built in and threejs is once such library.
 
 ### The math utils object in threejs
 
-Speaking of the modulo operator and alternative ways of doing so, the math utils object is where one will find the  euclidean modulo method that works great with negative numbers. This will work fine but it is still a method that will take just two arguments as it works like that of an operator that will also only work with two values. So then one will still need to adjust for this some how if that is what is to be used to wrap. In this module I worked out yet another way to wrap values but the expression used to do so is similar to that of many of these modulo methods I am seeing on the open web.
+Speaking of the modulo operator and alternative ways of doing so, the [math utils object is where one will find the  euclidean modulo method](/2022/04/11/threejs-math-utils/) that works great with negative numbers. This will work fine but it is still a method that will take just two arguments as it works like that of an operator that will also only work with two values. So then one will still need to adjust for this some how if that is what is to be used to wrap. In this module I worked out yet another way to wrap values but the expression used to do so is similar to that of many of these modulo methods I am seeing on the open web.
 
 ### Source is up on Github
 
