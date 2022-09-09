@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 10:21:50
-version: 1.4
+updated: 2022-09-09 10:28:30
+version: 1.5
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in threejs has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
@@ -146,7 +146,8 @@ The first public method that I might want to test out is the plain wrap number m
 
 ### 1.2 - Wrap Vector method demo
 
-Most of the time I will like to wrap a vector to a box like area that I can define by using two addtional instances of Vector3 that are use to set the min and max values for vectors. In other words a wrap style method of the vector3 clamp method which I am demoing in this example here.
+Most of the time I will like to wrap a vector to a box like area that I can define by using two additional instances of Vector3 that are use to set the min and max values for vectors. In other words a wrap style method of the vector3 clamp method which I am demoing in this example here.
+
 
 ```js
 (function () {
@@ -209,7 +210,10 @@ Most of the time I will like to wrap a vector to a box like area that I can defi
 
 ### 1.3 - Wrap Vector Length demo
 
-In the vector3 class there is a clamp length method and for this module I made a wrap vector length method that does the same thing only by wrapping rather than clamping.
+The subject of vector unit length is a major part of that the vector3 class is all about. A Vector is after all a state of direction and magnitude, or length if you prefer. So then any Vector can have a certain direction and the length can be adjusted while not doing anything with the direction which will result in a Vector moving directly outward, or in the direction of the origin. In the vector3 class there is a clamp length method that can be used to clamp the length of the vector, and for this module I made a wrap vector length method that does the same thing only by wrapping rather than clamping.
+
+So then with the wrap vector length method when the length of the vector reaches the max value the vector length will wrap back around to the beginning rather than just stopping at the end.
+
 
 ```js
 (function () {
