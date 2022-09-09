@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 14:53:06
-version: 1.12
+updated: 2022-09-09 15:44:35
+version: 1.13
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
@@ -16,6 +16,9 @@ There are two general ways of going about treating boundaries one of which is to
 There are a lot of features that come to mind when it comes to wrapping values in threejs beyond just having a simple wrap value method that works well. There is having a method that will wrap a Vector to a box like area, but I would also like to have a method that is the wrap equivalent of that clamp length method as well. There are a whole lot of other classes beyond that of the vector3 class so I would like to have wrap methods that also work well with the [Euler class](/2021/04/28/threejs-euler/) that is the go to class for angles rather than vectors. Also there are many projects in which this wrap method, or similar methods for wrapping would be useful such as with my [object grid wrap project](/2022/05/20/threejs-examples-object-grid-wrap/).
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/7SMoZTwDAPY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Wrapping values in threejs and what to be aware of first
 
