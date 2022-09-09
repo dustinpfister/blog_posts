@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 10:15:38
-version: 1.3
+updated: 2022-09-09 10:21:50
+version: 1.4
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in threejs has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
@@ -87,9 +87,12 @@ const wrapMod = (function () {
 }());
 ```
 
-On top of the wrap method that will work well whe I just want to wrap a number primative there are also wrap vector, wrap vector length, and wrap euler methods. I have a liot of ideas for addtional methods that I might want to add on top of this, but many of these ideas should be added in any and all futuire revisions of the module if it comes to that. For now I think that these methods alone are what I want to have at the ready.
+On top of the wrap method that will work well when I just want to wrap a number primitive there are also wrap vector, wrap vector length, and wrap Euler methods. I have a lot of ideas for additional methods that I might want to add on top of this, but many of these ideas should be added in any and all future revisions of the module if it comes to that. For now I think that these methods alone are what I want to have at the ready.
+
 
 ### 1.1 - Wrap Method demo
+
+The first public method that I might want to test out is the plain wrap number method. I am sure that there will end up being all kinds of little cases here and there where I will want to use a wrap method for some number value somewhere. Now just with threejs features, but also when working out some more additional code of my own of course. So then in this demo I am just using the wrap method of the module to wrap the x value of the position of a mesh object that I am updating over time.
 
 ```js
 (function () {
@@ -142,6 +145,8 @@ On top of the wrap method that will work well whe I just want to wrap a number p
 ```
 
 ### 1.2 - Wrap Vector method demo
+
+Most of the time I will like to wrap a vector to a box like area that I can define by using two addtional instances of Vector3 that are use to set the min and max values for vectors. In other words a wrap style method of the vector3 clamp method which I am demoing in this example here.
 
 ```js
 (function () {
@@ -203,6 +208,8 @@ On top of the wrap method that will work well whe I just want to wrap a number p
 ```
 
 ### 1.3 - Wrap Vector Length demo
+
+In the vector3 class there is a clamp length method and for this module I made a wrap vector length method that does the same thing only by wrapping rather than clamping.
 
 ```js
 (function () {
