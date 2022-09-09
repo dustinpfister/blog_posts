@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 10:28:30
-version: 1.5
+updated: 2022-09-09 10:33:20
+version: 1.6
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in threejs has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
@@ -274,5 +274,7 @@ So then with the wrap vector length method when the length of the vector reaches
 ```
 
 ## Conclusion
+
+This is a module that I will likely be using in various projects, and with that I will most likely be adding features to it as needed. There is also looking at some of my older projects and seeing how they might be improved by making this module a dependency of the project or rethinking authoring the source code based on what I have worked out here in this module and the wrap method that I came up with when coding and researching what is out there all ready on the open web. One major project that I seem to sue often is my object grid wrap module that is using a different kind of method for wrapping compared to what I am using here.
 
 
