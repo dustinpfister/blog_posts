@@ -5,12 +5,254 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1004
-updated: 2022-09-09 09:31:45
-version: 1.0
+updated: 2022-09-09 09:38:28
+version: 1.1
 ---
 
 The [vector3 class](/2018/04/15/threejs-vector3/) in threejs has a [clamp method](/2021/06/16/threejs-vector3-clamp/) that will clamp a vector3 instance to a given min and max vector range that forms a box area of sorts. On top of this clamp method there is also a clamp length method that will do the same as the clamp method only with respect to the vectors unit length so it will clamp the vector to a sphere like area. In addition to that of the clamp methods in the vector3 class there is also a clamp method in the Math Utils object as well, but I am not seeing any wrap methods in the Vector3 class.
 
-There are two general ways of going about treating bounderies one of which is to clamp them so that it is just not possible to continue out of a desired bounds, the other way though is to wrap them so that the value wraps around to an oposite side. I have [wrote a post on the wraping of the Vector3 class recently](/2022/09/02/threejs-vector3/wrap/), but I thought that I should continue with this and make a more refined wrap module as a [threejs example project](/2021/02/19/threejs-examples/).
+There are two general ways of going about treating bounderies one of which is to clamp them so that it is just not possible to continue out of a desired bounds, the other way though is to wrap them so that the value wraps around to an oposite side. I have [wrote a post on the wraping of the Vector3 class recently](/2022/09/02/threejs-vector3-wrap/), but I thought that I should continue with this and make a more refined wrap module as a [threejs example project](/2021/02/19/threejs-examples/).
 
 <!-- more -->
+
+
+## 1 - The first version of threejs-wrap.js \( r0 \), and some demos of the features thus far
+
+```js
+/* threejs-wrap.js - r0 - A THREEJS Wrap Module
+ *     for the post: https://dustinpfister.github.io/2022/09/09/threejs-examples-wrap-module/
+ */
+const wrapMod = (function () {
+    // public API
+    const api = {};
+    // Wrap method based off of the method from Phaser3 
+    // ( https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js )
+    // * Added some code for case: Wrap(0, 0, 0)
+    // * Using Math.min and Math.max so that Wrap(value, 2, 10) is same as Wrap(value, 10, 2)
+    //
+    const wrap = api.wrap = function (value, a, b){
+        // get min and max this way
+        let max = Math.max(a, b);
+        let min = Math.min(a, b);
+        // return 0 for Wrap(value, 0, 0);
+        if(max === 0 && min === 0){
+             return 0;
+        }
+        let range = max - min;
+        return (min + ((((value - min) % range) + range) % range));
+    };
+    // wrap an axis
+    const wrapAxis = function(vec, vecMin, vecMax, axis){
+        axis = axis || 'x';
+        vec[axis] = wrap( vec[axis], vecMin[axis], vecMax[axis] );
+        return vec;
+    };
+    // Wrap a vector method of public api
+    api.wrapVector = function (vec, vecMin, vecMax) {
+        vecMin = vecMin || new THREE.Vector3(-1, -1, -1);
+        vecMax = vecMax || new THREE.Vector3(1, 1, 1);
+        Object.keys(vec).forEach(function(axis){
+            wrapAxis(vec, vecMin, vecMax, axis);
+        });
+        return vec;
+    };
+    // wrap a vector by unit length
+    api.wrapVectorLength = function (vec, minLength, maxLength) {
+        minLength = minLength === undefined ? 0 : minLength;
+        maxLength = maxLength === undefined ? 0 : maxLength;
+        let len = wrap(vec.length(), minLength, maxLength);
+        vec.normalize().multiplyScalar(len);
+        return vec;
+    };
+    // wrap a Euler
+    // Wrap a vector method of public api
+    const PI2 = Math.PI * 2;
+    api.wrapEuler = function (eu, euMin, euMax) {
+        euMin = euMin || new THREE.Euler(0, 0, 0);
+        euMax = euMax || new THREE.Euler(PI2, PI2, PI2);
+        eu.x = wrap(eu.x, euMin.x, euMax.x);
+        eu.y = wrap(eu.y, euMin.y, euMax.y);
+        eu.z = wrap(eu.z, euMin.z, euMax.z);
+        return eu;
+    };
+    // return api
+    return api;
+}());
+```
+
+### 1.1 - Wrap Method demo
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    var mesh1 = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    var x =0,
+    unitsPerSec = 2,
+    fps = 20,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            x += unitsPerSec * secs;
+            // USING THRE wrapMod.wrap METHOD WITH A VALUE
+            x = wrapMod.wrap(x, -4.5, 4.5);
+            mesh1.position.x = x;
+            
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    loop();
+    //-------- ----------
+    // CONTROLS
+    //-------- ----------
+    let controls = new THREE.OrbitControls(camera, renderer.domElement)
+}
+    ());
+```
+
+### 1.2 - Wrap Vector method demo
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    var mesh1 = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    var dir = new THREE.Euler(0, 0, 1),
+    unitsPerSec = 2,
+    vecMin = new THREE.Vector3(-4.5,-4.5,-4.5),
+    vecMax = new THREE.Vector3(4.5,4.5,4.5),
+    fps = 20,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            // update dir
+            dir.x += Math.PI / 180 * 5 * secs;
+            dir.y += Math.PI / 180 * 45 * secs;
+            wrapMod.wrapEuler(dir);
+            // figure delta
+            let delta = new THREE.Vector3(0, 0, 1);
+            delta = delta.applyEuler(dir).normalize().multiplyScalar(unitsPerSec * secs);
+            // USING wrapMod main method to wrap mesh1.position
+            mesh1.position.add(delta);
+            wrapMod.wrapVector(mesh1.position, vecMin, vecMax);
+            mesh1.lookAt(0, 0, 0);
+            // render
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    loop();
+    //-------- ----------
+    // CONTROLS
+    //-------- ----------
+    let controls = new THREE.OrbitControls(camera, renderer.domElement)
+}
+    ());
+```
+
+### 1.3 - Wrap Vector Length demo
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    var mesh1 = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    var dir = new THREE.Euler(0, 0, 1),
+    unitsPerSec = 4,
+    vecMin = new THREE.Vector3(-4.5,-4.5,-4.5),
+    vecMax = new THREE.Vector3(4.5,4.5,4.5),
+    fps = 20,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            // update dir
+            dir.y += Math.PI / 180 * 40 * secs;
+            wrapMod.wrapEuler(dir);
+            // figure delta
+            let delta = new THREE.Vector3(0, 0, 1);
+            delta = delta.applyEuler(dir).normalize().multiplyScalar(unitsPerSec * secs);
+            // USING wrapMod main method to wrap mesh1.position
+            mesh1.position.add(delta);
+            wrapMod.wrapVectorLength(mesh1.position, 2.5, 4.5);
+            mesh1.lookAt(0, 0, 0);
+            // render
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    loop();
+    //-------- ----------
+    // CONTROLS
+    //-------- ----------
+    let controls = new THREE.OrbitControls(camera, renderer.domElement)
+}
+    ());
+```
+
+## Conclusion
+
+
