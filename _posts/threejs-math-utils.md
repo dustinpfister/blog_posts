@@ -5,18 +5,21 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-04-14 11:35:47
-version: 1.21
+updated: 2022-09-12 09:03:52
+version: 1.22
 ---
 
-Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be  used to help with various tasks such as clamping values. Othe things that can be done with the various methods include things such as converting a degree value to a radian value, or getting random values and pseudo random values. 
-However there is not just thinking in terms of what there is to work with, but also what is missing when it comes to a collection of methods such as this. With that said I think I should also write about one or more additional things that are not in this math utils object, but should maybe be there. Even though there are some usual suspect type methods to work with here I can not say that this is a replacement for some kind of additional utility library.
+Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. 
+
+However there is not just thinking in terms of what there is to work with, but also what is missing when it comes to a collection of methods such as this. With that said I think I should also write about one or more additional things that are not in this math utils object, but should maybe be there. Even though there are some usual suspect type methods to work with here I can not say that this is a replacement for some kind of additional utility library outside of threejs. As I still find myself writing my own code for various things in order to fill in the gap sort of speak.
+
+Speaking of filling in the gap when it comes to making my own module for the kinds of methods in the math utils object, sense I am always working on top of threejs I can just simply wrap many of the methods in the Math utils object. For one example of what I mean by this when it comes to the subject of wrapping a value, maybe I need to still need to make my own own method for that, but when it comes to having a clamp method I can have that just call the clamp method in the Math Utils object.
 
 <!-- more -->
 
 ## The math utils method and what to know first
 
-This is a post on some of the features of the Math utils method in the javaScript library known as threejs. I am assuming that you have all ready got up to speed with the basics when it comes to [getting started with threejs](/2018/04/04/threejs-getting-started/). I am also assuming that you have at least some background when it comes to client side web programing to begin with as well.
+This is a post on some of the features of the Math utils method in the javaScript library known as threejs. I am assuming that you have all ready got up to speed with the basics when it comes to [getting started with threejs](/2018/04/04/threejs-getting-started/). I am also assuming that you have at least some background when it comes to client side web programming to begin with as well.
 
 ### Version Numbers matter
 
@@ -102,7 +105,7 @@ One thing that seems to come up a lot with threejs, and many javaScript projects
 
 As I have mentioned in the clamp example there is not just clamping, but also wrapping number values. In this example I am again doing more or less the same thing as in the clamp example, but now I am using the Euclidean Modulo method to wrap numbers rather than clamping them. 
 
-A long time ago I wrote a post on the subject of [what is wrong with the modulo operator](/2017/09/02/js-whats-wrong-with-modulo/) in core javaScript syntax. The main thing about modulo in javaScript is that it is not that there is something wrong with the modulo operator, it is just that it goes by a process that is a little difference from hat some ming have grown accustom to in other programing languages. So then there is becoming aware of what Euclidean Modulo is compared to what is used in javaScript and how this is what most might expect modulo to work with negative numbers.
+A long time ago I wrote a post on the subject of [what is wrong with the modulo operator](/2017/09/02/js-whats-wrong-with-modulo/) in core javaScript syntax. The main thing about modulo in javaScript is that it is not that there is something wrong with the modulo operator, it is just that it goes by a process that is a little difference from hat some might have grown accustom to in other programming languages. So then there is becoming aware of what Euclidean Modulo is compared to what is used in javaScript and how this is what most might expect modulo to work with negative numbers.
 
 ```js
 (function () {
@@ -173,9 +176,8 @@ There is using the plain old Math random method and also many other methods that
     ());
 ```
 
-## 5 - Conclusion
+## Conclusion
 
 The math utils object is then a whole bunch of useful methods that I find myself using often, however it does not have everything that I might expect to have in such a collection of methods. Although I guess I should not expect everything to be there actually because there is still what there is to work with in the core javaScript math object also of course. Speaking of the math object in core javaScript that is of course something that you show know a thing or two about at this time when it comes to using methods like Math.cos, and [Math.atan2](/2019/03/19/js-math-atan2/) for example. There is no need to add any of these such methods of course to the math utils object of threejs when it comes to all of these such methods as they are there to work with when it comes to native javaScript alone.
 
 Also some of the things that come to mind are methods that I can not say that I use all that often such as an [nth root method](/2020/03/11/js-nth-root/) for example. That is an example of the kind of method that should not be in threejs because it is for the most part unneeded bulk. On the rare occasion that I do need an nth root method for whatever reason that is something that I can add by way of another library, or even a single stand alone method.
-
