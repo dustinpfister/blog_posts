@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-09-12 10:47:21
-version: 1.26
+updated: 2022-09-12 12:14:20
+version: 1.27
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. 
@@ -17,15 +17,18 @@ Speaking of filling in the gap when it comes to making my own module for the kin
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/TQMbcHB89RY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The math utils method and what to know first
 
 This is a post on some of the features of the Math utils object in the javaScript library known as threejs. I am assuming that you have all ready got up to speed with the basics when it comes to [getting started with threejs](/2018/04/04/threejs-getting-started/). I am also assuming that you have at least some background when it comes to client side web programming to begin with as well. I will not be getting into detail about many basic things that you should know at this point. However I do often use this first section of a post to outline at least a few things that you might want to also read up more on before getting to the rest of this.
 
-### There is a Clamp methid but no Wrap method in Math utils
+### There is a Clamp method but no Wrap method in Math utils
 
 Many libraries will have a clamp method that will clamp a value to the range of a given max and min value, and threejs is no exception with this as there is very much a clamp method in the math utils object. However there is not just clamping values but also wrapping values as well. That is that on top of having a method that will clamp a value between a min and max value in that it will just not let the value go lower or higher there would also be a wrap method that will wrap a value that goes beyond max back to the min value and vice versa. it would seem that there is no wrap method in the math utils object, thus I have to get this method by using or making something outside of the library. There is however an Euclidean Modulo method that is kind of similar to what I would expect, it is just that I also would like to have something that works a little differently when it comes to negative numbers.
 
-I have wrote a [blog post on this subject of wrapping Vectors and primatives](/2022/09/02/threejs-vector3-wrap/) in which I was able to find a decent wrap method, and I also made [one of my threejs project examples that is a wrap module](/2022/09/09/threejs-examples-wrap-module/) in which I am building on top of this kind of thing. Also with some of these examples I am using a wrap method that I came up with when working on those source code examples.
+I have wrote a [blog post on this subject of wrapping Vectors and primitives](/2022/09/02/threejs-vector3-wrap/) in which I was able to find a decent wrap method, and I also made [one of my threejs project examples that is a wrap module](/2022/09/09/threejs-examples-wrap-module/) in which I am building on top of this kind of thing. Also with some of these examples I am using a wrap method that I came up with when working on those source code examples.
 
 ### Source code example in this post are on Github
 
@@ -312,7 +315,7 @@ When this example is up and running group2 will just move at the fixed rate that
 
 ## Conclusion
 
-The math utils object is then a whole bunch of useful methods that I find myself using often, however it does not have everything that I might expect to have in such a collection of methods. Although I guess I should not expect everything to be there actually because there is still what there is to work with in the core javaScript math object of course. Also there is a whole world of javaScript code out there on the open internet to study, and with that said one great librray that I keep checking out again and again is [angles.js](https://www.npmjs.com/package/angles), as such I made [my own javaScript module based off of the source code from that one](/2021/04/16/js-javascript-example-angles-module/) as it is a good one when it comes to various things with angles.
+The math utils object is then a whole bunch of useful methods that I find myself using often, however it does not have everything that I might expect to have in such a collection of methods. Although I guess I should not expect everything to be there actually because there is still what there is to work with in the core javaScript math object of course. Also there is a whole world of javaScript code out there on the open Internet to study, and with that said one great library that I keep checking out again and again is [angles.js](https://www.npmjs.com/package/angles), as such I made [my own javaScript module based off of the source code from that one](/2021/04/16/js-javascript-example-angles-module/) as it is a good one when it comes to various things with angles.
 
 Speaking of the math object in core javaScript that is something that you show know a thing or two about at this time when it comes to using methods like Math.cos, and [Math.atan2](/2019/03/19/js-math-atan2/) for example. There is no need to add any of these such methods of course to the math utils object of threejs when it comes to all of these such methods as they are there to work with when it comes to native javaScript alone.
 
