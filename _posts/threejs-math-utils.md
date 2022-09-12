@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-09-12 10:12:13
-version: 1.23
+updated: 2022-09-12 10:38:16
+version: 1.24
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. 
@@ -19,15 +19,23 @@ Speaking of filling in the gap when it comes to making my own module for the kin
 
 ## The math utils method and what to know first
 
-This is a post on some of the features of the Math utils method in the javaScript library known as threejs. I am assuming that you have all ready got up to speed with the basics when it comes to [getting started with threejs](/2018/04/04/threejs-getting-started/). I am also assuming that you have at least some background when it comes to client side web programming to begin with as well.
+This is a post on some of the features of the Math utils object in the javaScript library known as threejs. I am assuming that you have all ready got up to speed with the basics when it comes to [getting started with threejs](/2018/04/04/threejs-getting-started/). I am also assuming that you have at least some background when it comes to client side web programming to begin with as well. I will not be getting into detail about many basic things that you should know at this point. However I do often use this first section of a post to outline at least a few things that you might want to also read up more on before getting to the rest of this.
 
-### Version Numbers matter
+### There is a Clamp methid but no Wrap method in Math utils
 
-When I first wrote this post I was using r135 of threejs with was still a fairly late version of threejs at the time. Always check what version you are using when reproducing things on you end as code breaking changes are made to threejs often.
+Many libraries will have a clamp method that will clamp a value to the range of a given max and min value, and threejs is no exception with this as there is very much a clamp method in the math utils object. However there is not just clamping values but also wrapping values as well. That is that on top of having a method that will clamp a value between a min and max value in that it will just not let the value go lower or higher there would also be a wrap method that will wrap a value that goes beyond max back to the min value and vice versa. it would seem that there is no wrap method in the math utils object, thus I have to get this method by using or making something outside of the library. There is however an Euclidean Modulo method that is kind of similar to what I would expect, it is just that I also would like to have something that works a little differently when it comes to negative numbers.
+
+I have wrote a [blog post on this subject of wrapping Vectors and primatives](o/2022/09/02/threejs-vector3-wrap/) in which I was able to find a decent wrap method, and I also made [one of my threejs project examples that is a wrap module](/2022/09/09/threejs-examples-wrap-module/) in which I am building on top of this kind of thing. Also with some of these examples I am using a wrap method that I came up with when working on those source code examples.
+
 
 ### Source code example in this post are on Github
 
 The source code examples that I am writing about in this post [are up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-math-utils). This is also where I am parking the source code examples for all y other various posts on threejs.
+
+
+### Version Numbers matter
+
+When I first wrote this post I was using r135, and the last time I came around to do some editing of this post I made sure all the examples where still working okay with r140. Always check what version you are using when reproducing things on you end, as code breaking changes are made to threejs often.
 
 ## 1 - Basic example of threejs math utilities using degree to radian method when setting the position of a mesh
 
