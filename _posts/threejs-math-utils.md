@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-09-12 10:38:55
-version: 1.25
+updated: 2022-09-12 10:47:21
+version: 1.26
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. 
@@ -27,11 +27,9 @@ Many libraries will have a clamp method that will clamp a value to the range of 
 
 I have wrote a [blog post on this subject of wrapping Vectors and primatives](/2022/09/02/threejs-vector3-wrap/) in which I was able to find a decent wrap method, and I also made [one of my threejs project examples that is a wrap module](/2022/09/09/threejs-examples-wrap-module/) in which I am building on top of this kind of thing. Also with some of these examples I am using a wrap method that I came up with when working on those source code examples.
 
-
 ### Source code example in this post are on Github
 
-The source code examples that I am writing about in this post [are up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-math-utils). This is also where I am parking the source code examples for all y other various posts on threejs.
-
+The source code examples that I am writing about in this post [are up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-math-utils). This is also where I am parking the source code examples for all [my other various posts on threejs](/categories/three-js/).
 
 ### Version Numbers matter
 
@@ -314,6 +312,8 @@ When this example is up and running group2 will just move at the fixed rate that
 
 ## Conclusion
 
-The math utils object is then a whole bunch of useful methods that I find myself using often, however it does not have everything that I might expect to have in such a collection of methods. Although I guess I should not expect everything to be there actually because there is still what there is to work with in the core javaScript math object also of course. Speaking of the math object in core javaScript that is of course something that you show know a thing or two about at this time when it comes to using methods like Math.cos, and [Math.atan2](/2019/03/19/js-math-atan2/) for example. There is no need to add any of these such methods of course to the math utils object of threejs when it comes to all of these such methods as they are there to work with when it comes to native javaScript alone.
+The math utils object is then a whole bunch of useful methods that I find myself using often, however it does not have everything that I might expect to have in such a collection of methods. Although I guess I should not expect everything to be there actually because there is still what there is to work with in the core javaScript math object of course. Also there is a whole world of javaScript code out there on the open internet to study, and with that said one great librray that I keep checking out again and again is [angles.js](https://www.npmjs.com/package/angles), as such I made [my own javaScript module based off of the source code from that one](/2021/04/16/js-javascript-example-angles-module/) as it is a good one when it comes to various things with angles.
+
+Speaking of the math object in core javaScript that is something that you show know a thing or two about at this time when it comes to using methods like Math.cos, and [Math.atan2](/2019/03/19/js-math-atan2/) for example. There is no need to add any of these such methods of course to the math utils object of threejs when it comes to all of these such methods as they are there to work with when it comes to native javaScript alone.
 
 Also some of the things that come to mind are methods that I can not say that I use all that often such as an [nth root method](/2020/03/11/js-nth-root/) for example. That is an example of the kind of method that should not be in threejs because it is for the most part unneeded bulk. On the rare occasion that I do need an nth root method for whatever reason that is something that I can add by way of another library, or even a single stand alone method.
