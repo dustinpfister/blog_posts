@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2022-09-12 10:38:16
-version: 1.24
+updated: 2022-09-12 10:38:55
+version: 1.25
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. 
@@ -25,7 +25,7 @@ This is a post on some of the features of the Math utils object in the javaScrip
 
 Many libraries will have a clamp method that will clamp a value to the range of a given max and min value, and threejs is no exception with this as there is very much a clamp method in the math utils object. However there is not just clamping values but also wrapping values as well. That is that on top of having a method that will clamp a value between a min and max value in that it will just not let the value go lower or higher there would also be a wrap method that will wrap a value that goes beyond max back to the min value and vice versa. it would seem that there is no wrap method in the math utils object, thus I have to get this method by using or making something outside of the library. There is however an Euclidean Modulo method that is kind of similar to what I would expect, it is just that I also would like to have something that works a little differently when it comes to negative numbers.
 
-I have wrote a [blog post on this subject of wrapping Vectors and primatives](o/2022/09/02/threejs-vector3-wrap/) in which I was able to find a decent wrap method, and I also made [one of my threejs project examples that is a wrap module](/2022/09/09/threejs-examples-wrap-module/) in which I am building on top of this kind of thing. Also with some of these examples I am using a wrap method that I came up with when working on those source code examples.
+I have wrote a [blog post on this subject of wrapping Vectors and primatives](/2022/09/02/threejs-vector3-wrap/) in which I was able to find a decent wrap method, and I also made [one of my threejs project examples that is a wrap module](/2022/09/09/threejs-examples-wrap-module/) in which I am building on top of this kind of thing. Also with some of these examples I am using a wrap method that I came up with when working on those source code examples.
 
 
 ### Source code example in this post are on Github
