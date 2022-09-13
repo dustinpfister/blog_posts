@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-04-10 08:26:30
-version: 1.19
+updated: 2022-09-13 11:10:30
+version: 1.20
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
@@ -281,7 +281,166 @@ The rotation property effects just the local rotation of the object in which I s
     ());
 ```
 
-## 5 - Conclusion
+## 5 - Setting position from rotation with the apply euler method of the Vector3 class
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#0f0f0f');
+    const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(0, 5, 10);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    // ---------- ----------
+    // HELPERS
+    // ---------- ----------
+    const makeMesh = () => {
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial() );
+    };
+    const degToRad = (deg) => {
+         return THREE.MathUtils.degToRad(deg);
+    };
+    const getBias = (a, b, count) => {
+        count = count === undefined ? 1 : count;
+        return THREE.MathUtils.pingpong(  a / b  * ( 2  * count ), 1);
+    }; 
+    // ---------- ----------
+    // SCENE CHILD OBJECTS
+    // ---------- ----------
+    scene.add( new THREE.GridHelper(10, 10) );
+    const mesh1 = makeMesh();
+    scene.add(mesh1);
+    const mesh2 = makeMesh();
+    scene.add(mesh2);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 120;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const vStart = new THREE.Vector3(0, 0, 1);
+    const update = function(frame, frameMax){
+        const per = frame / frameMax;
+        // setting rotation of mesh1
+        mesh1.rotation.x = degToRad(90 * getBias(frame, frameMax, 1));
+        mesh1.rotation.y = degToRad(360) * per;
+        mesh1.rotation.z = 0;
+        // using the state of the rotation of mesh1 to effect the position of mesh2
+        let radius = 5 - 4 * getBias(frame, frameMax, 4);
+        mesh2.position.copy(vStart).applyEuler( mesh1.rotation ).normalize().multiplyScalar(radius);
+        mesh2.lookAt(mesh1.position);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 6 - Setting rotation from position using the set from Vector3 Euler class method
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#0f0f0f');
+    const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(0, 5, 10);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    // ---------- ----------
+    // HELPERS
+    // ---------- ----------
+    const makeMesh = () => {
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial() );
+    };
+    const degToRad = (deg) => {
+         return THREE.MathUtils.degToRad(deg);
+    };
+    const getBias = (a, b, count) => {
+        count = count === undefined ? 1 : count;
+        return THREE.MathUtils.pingpong(  a / b  * ( 2  * count ), 1);
+    }; 
+    // ---------- ----------
+    // SCENE CHILD OBJECTS
+    // ---------- ----------
+    scene.add( new THREE.GridHelper(10, 10) );
+    const mesh1 = makeMesh();
+    scene.add(mesh1);
+    const mesh2 = makeMesh();
+    scene.add(mesh2);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 120;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const v = new THREE.Vector3(0, 0, 0);
+    const update = function(frame, frameMax){
+        // state of vector
+        v.x = 2;
+        v.y = 1.5 - 3 * getBias(frame, frameMax, 8);
+        v.z = -5 + 10 * getBias(frame, frameMax, 1);
+        // just set position of mesh1 to the vector
+        mesh1.position.copy(v);
+        // setting mesh2 rotation based on state of vector
+        mesh2.rotation.setFromVector3(v.clone().normalize());
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## Conclusion
 
 The rotation property is then what I often used in order to set the rotation of an object such as a mesh object, group or camera. There is also the position property of the object3d class that holds an instance of the Vector3 class that is what is used to store and change the position of the object as well. There are a whole lot of other properties as well as method to be aware of in the object3d class that come into play allot when making one or more threejs projects such as the scale property and the lookAT method just to name a few.
 
