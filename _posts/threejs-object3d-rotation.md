@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-09-13 11:45:02
-version: 1.23
+updated: 2022-09-13 11:54:31
+version: 1.24
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the THREE.Euler class for the current rotation of an object. This rotation property is just one value of the base class known as Object3d that is the base of many objects in the library such as [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and many others including even whole [Scene Objects](/2018/05/03/threejs-scene/).
@@ -31,7 +31,9 @@ When it comes to setting the position of an object3d class based object there is
 
 ### A whole lot more to know with object3d, and also the various objects based off of object3d
 
-The [object3d class](/2018/04/23/threejs-object3d/) is a base class of many objects in threejs such as cameras and mesh objects.
+The [object3d class](/2018/04/23/threejs-object3d/) is a base class of many objects in threejs such as cameras and mesh objects. The rotation proper of this class is just one property of the class along with additional properties that have to do with things like position and the scale of the object. There is then also a whole lot of useful methods with this class that one should also be aware of that are related to setting the rotation of the class, as well as doing just about everything else I would want to do with an object that is based off of this class.
+
+There is then also what to be aware of when it comes to additional properties on top of the object3d class. For example a Mesh object will also have a geometry and a material property. An instance of a perspective camera will have a field of view property and methods to update the state of the camera when certain camera specific values are mutated.
 
 ### The Source code examples in this post are on github
 
@@ -39,9 +41,7 @@ The source code examples that I am writing about in this post [are up on Gitub](
 
 ### Be mindful of version numbers with threejs
 
-When I first wrote this post I was using r135 of threejs, which was still a fairly new version of threejs at the time I started this post. I take a moment to always mention what version I was using when wrote a post on threejs because I have been using it long enough to know that code breaking changes are made to the library often.
-
-
+When I first wrote this post I was using r135 of threejs, which was still a fairly new version of threejs at the time I started this post. The last time I came around to do some editing I made sure all the examples are still working fine with r140. I take a moment to always mention what version I was using when wrote a post on threejs because I have been using it long enough to know that code breaking changes are made to the library often.
 
 ## 1 - Basic example of the rotation property of Object3d
 
@@ -84,6 +84,8 @@ To start out with rotation and the object3d class I made this quick static scene
 }
     ());
 ```
+
+The x, y, and z properties for each axis can be updated this way, or the set method can be used to do so. In any case I want to think in terms of radians, or convert degrees to radian values if I prefer to think that way which I often do. Another way to set the state would be to mutate a separate instance of the Euler class and then use the copy method of the Euler class at the rotation property and pass this separate Euler class instance.
 
 ## 2 - Animation example of rotation and groups
 
