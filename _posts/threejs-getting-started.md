@@ -5,13 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-09-13 12:20:46
-version: 1.37
+updated: 2022-09-13 12:40:02
+version: 1.38
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
 
-Also three.js is one of those javaScript projects that is just plain awesome. Working with solid geometric space is one of the main reasons why I got into programing in the first place, so of course I need to write about this one, how can I not? So this will be a getting started post, that will kick off at least a first few [additional posts](/categories/three-js/) on this subject, and I can see it going beyond that easy.
+Also three.js is one of those javaScript projects that is just plain awesome. Working with solid geometric space is one of the main reasons why I got into programming in the first place, so of course I need to write about this one, how can I not? So this will be a getting started post, that will kick off at least a first few [additional posts](/categories/three-js/) on this subject, and I can see it going beyond that easy.
 
 <!-- more -->
 
@@ -38,7 +38,7 @@ It seems like new revisions come out as often as once a month, and when they do 
 
 ### Some knowledge of topics outside of geometry and other topics outside of javaScript is helpful
 
-It is worth mentioning that it is a good idea to at least know a thing or two about other topics that do not pertain to javaScript, or even computer programing in general, but classical mathematics. Subjects come to mind like [geometry](https://en.wikipedia.org/wiki/Geometry), [trigonometry](https://en.wikipedia.org/wiki/Trigonometry), and many others. Getting into those subjects goes beyond the scope of this simple getting started post, and are not the kind of things that one can become solid with overnight. However don't let that overwhelm you, as three.js is very easy to work with, and getting into three.js can lead to a desire to become more knowledgeable about those topics, and many more.
+It is worth mentioning that it is a good idea to at least know a thing or two about other topics that do not pertain to javaScript, or even computer programming in general, but classical mathematics. Subjects come to mind like [geometry](https://en.wikipedia.org/wiki/Geometry), [trigonometry](https://en.wikipedia.org/wiki/Trigonometry), and many others. Getting into those subjects goes beyond the scope of this simple getting started post, and are not the kind of things that one can become solid with overnight. However don't let that overwhelm you, as three.js is very easy to work with, and getting into three.js can lead to a desire to become more knowledgeable about those topics, and many more.
 
 ### You might also want to install blender
 
@@ -54,7 +54,7 @@ In my [test threejs Github repository I have the source code examples that I am 
 
 ### Version Numbers matter
 
-This is one of the first blog posts that I have wrote on threejs way back in 2018, at that time I was using r91 of the library. Snese then a whole lot of code breaking changes have been made to the library so be mindful of that.
+This is one of the first blog posts that I have wrote on threejs way back in 2018, at that time I was using r91 of the library. The last time I came around to do a little editing I made some major changes to the examples here and they are working fine with r140 of the library. Although I do what I can to keep my content on threejs up to date, many of the posts might still be a bit dated. Always be mindful of what version of threejs you are using as this is still a fast moving project.
 
 ## 1 - A basic overview of how to make a three.js project
 
@@ -217,30 +217,46 @@ For a basic animation loop example I then took the source code for the general o
     // ---------- ---------- ----------
     // SCENE, CAMERA, and RENDERER
     // ---------- ---------- ----------
-    let scene = new THREE.Scene(),
-    camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000),
-    renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+    camera.position.set(250, 250, 250);
+    camera.lookAt(0,0,0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     // ---------- ---------- ----------
     // ADD A MESH
     // ---------- ---------- ----------
     let mesh = new THREE.Mesh(new THREE.BoxGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
     scene.add(mesh);
-    // ---------- ---------- ----------
+    // ---------- ----------
     // ANIMATION LOOP
-    // ---------- ---------- ----------
-    camera.position.set(250, 250, 250);
-    camera.lookAt(0,0,0);
-    renderer.setSize(640, 480);
-    let degree = 0, degreesPerSecond = 90, lt = new Date();
-    let loop = function(){
-        let now = new Date(), secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        degree += degreesPerSecond * secs;
-        degree %= 360;
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 120;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        const degree = 360 * (frame / frameMax);
         mesh.rotation.x = THREE.MathUtils.degToRad(degree);
-        renderer.render(scene, camera);
-        lt = now;
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
     };
     loop();
 }());
@@ -273,5 +289,4 @@ Another class of interest that you should at least be aware of is [vector3](http
 In the long run thought of course what really needs to happen sooner or later is to start making one or two real examples using three.js. That is some kind of game or animation type thing typically, so with that said maybe another step forward would be to [look at some of my basic project examples](/2021/02/19/threejs-examples/).
 
 For now I will cover some additional corners of three.js that I think stand out...
-
 
