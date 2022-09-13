@@ -17,6 +17,7 @@ let createDirObject = (dirname) => {
         script_folder: path.join(blog_root, 'scripts'),
         app_folder: path.join(blog_root, 'scripts/apps'),
         cli_folder: path.join(blog_root, 'scripts/cli'),
+        lib_folder: path.join(blog_root, 'scripts/lib'),
         posts: path.join(blog_root, '_posts')
     };
 

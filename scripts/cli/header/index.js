@@ -3,7 +3,7 @@ let path = require('path');
 let dirs = require( path.join(__dirname, '../paths/index.js') ).createDirObject(__dirname);
 
 // header lib
-let header = require( path.join(dirs.this_script, 'header.js') );
+let header = require( path.join(dirs.lib_folder, '/header/index.js') );
 
 // file system, and options
 let fs = require('fs'),
