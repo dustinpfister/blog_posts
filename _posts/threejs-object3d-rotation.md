@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-09-13 11:54:31
-version: 1.24
+updated: 2022-09-13 16:39:20
+version: 1.25
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the THREE.Euler class for the current rotation of an object. This rotation property is just one value of the base class known as Object3d that is the base of many objects in the library such as [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and many others including even whole [Scene Objects](/2018/05/03/threejs-scene/).
@@ -16,6 +16,8 @@ When it comes to just setting the local rotation of an object by way of this pro
 There is a bit more to this sort of thing beyond just setting rotation with number values though, for example in some cases I might want to set the orientation of a geometry of a mesh object rather than the mesh object itself. For example I might want to set the orientation of a cone geometry so that the tip of the cone is the front face. With this sort of this there is setting the rotation of the geometry once, then using the object3d rotation property from there. That is just one example that I will be getting to in this post along with many others such as setting rotation from position and the inverse of doing so.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/837fOzGk7XA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## The rotation property of the object3d class and what to know first
 
