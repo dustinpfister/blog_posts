@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-05-11 10:07:14
-version: 1.26
+updated: 2022-09-13 12:15:27
+version: 1.27
 ---
 
 I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project such as with the arrow helper for example. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -46,19 +46,17 @@ I will then want to create a camera such as an instance of the [perspective came
 (function () {
     // SCENE
     var scene = new THREE.Scene();
- 
     // GRID HELPER
     var size = 8;
     var divisions = 8;
     scene.add(new THREE.GridHelper(size, divisions))
- 
     // CAMERA
     var camera = new THREE.PerspectiveCamera(40, 640 / 480, 0.1, 100);
     camera.position.set(8, 5, 8);
     camera.lookAt(0, 0, 0);
     // RENDER
     var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     renderer.setSize(640, 480);
     renderer.render(scene, camera);
 }
@@ -75,7 +73,6 @@ There are a few additional options for the THREE.GridHelper Constructor, both of
 (function () {
     // SCENE
     var scene = new THREE.Scene();
- 
     // GRID HELPER
     var size = 8;
     var divisions = 8;
@@ -83,14 +80,13 @@ There are a few additional options for the THREE.GridHelper Constructor, both of
     var colorLinesGrid = new THREE.Color('lime');
     var helper = new THREE.GridHelper(size, divisions, colorLinesCenter, colorLinesGrid);
     scene.add(helper)
- 
     // CAMERA
     var camera = new THREE.PerspectiveCamera(40, 640 / 480, 0.1, 100);
     camera.position.set(8, 5, 8);
     camera.lookAt(0, 0, 0);
     // RENDER
     var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     renderer.setSize(640, 480);
     renderer.render(scene, camera);
 }
@@ -121,7 +117,7 @@ Like many of the helpers in threejs the grid helper makes use of the line segmen
     camera.lookAt(0, 0, 0);
     // RENDER
     var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     renderer.setSize(640, 480);
     renderer.render(scene, camera);
 }
@@ -136,11 +132,9 @@ This example once again has a scene, and a gird helper attached to the scene. On
 
 ```js
 (function () {
- 
     var getBias = function(per){
         return 1 - Math.abs(per - 0.5) / 0.5;
     };
- 
     // create camera helper
     var createCamera = function(opt){
         opt = opt || {};
@@ -151,9 +145,7 @@ This example once again has a scene, and a gird helper attached to the scene. On
         camera.userData.subject = new THREE.Vector3();
         return camera;
     };
- 
     var camMoveMethod = {};
- 
     // follow subject1 method
     camMoveMethod.flyAround = function(camera, per){
         var bias = getBias(per),
@@ -166,7 +158,6 @@ This example once again has a scene, and a gird helper attached to the scene. On
             lookAt: camera.userData.subject
         };
     };
- 
     // move camera update helper
     var moveCamera = function (camera, per, moveFunc) {
         var camState = moveFunc(camera, per);
@@ -175,16 +166,14 @@ This example once again has a scene, and a gird helper attached to the scene. On
         camera.position.copy(camState.position)
         camera.lookAt(camState.lookAt);
     };
- 
     // CAMERA
     var camera = createCamera();
- 
     // SCENE
     var scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(8, 8))
     // RENDER
     var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     renderer.setSize(640, 480);
     // MESH
     var mesh = new THREE.Mesh(
@@ -192,9 +181,7 @@ This example once again has a scene, and a gird helper attached to the scene. On
         new THREE.MeshNormalMaterial());
     mesh.position.set(3, 0, 0);
     scene.add(mesh);
- 
     camera.userData.subject = mesh.position;
- 
     // APP LOOP
     var secs = 0,
     methodSecs = 0,
