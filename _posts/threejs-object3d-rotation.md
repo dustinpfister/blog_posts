@@ -5,27 +5,29 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-09-13 11:36:19
-version: 1.22
+updated: 2022-09-13 11:45:02
+version: 1.23
 ---
 
-The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the THREE.Euler and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the base class known as Object3d so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
+The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the THREE.Euler class for the current rotation of an object. This rotation property is just one value of the base class known as Object3d that is the base of many objects in the library such as [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and many others including even whole [Scene Objects](/2018/05/03/threejs-scene/).
 
-When it comes to just setting the local rotation of an object by way of this property, one way is by using something like the set method of the Euler class to set the rotation of the object to a given set of Euler angles in terms of radian values. In other worlds values between 0, and Math.PI \* \2. If you have a hard time thinking in radians there are tools that can be used to preform a quick conversion in the MathUtils object. There is a bit more to it than just that though, for example in some cases I might want to set the orientation of a geometry of a mesh object rather than the mesh object itself. There are other related tools and topics that I should also take a moment to cover while I am at it.
+When it comes to just setting the local rotation of an object by way of this property, one way is by using something like the set method of Euler to set the rotation of the object to a given set of Euler angles in terms of radian values in the form of javaScript numbers, in other worlds values between 0, and Math.PI \* 2. If you have a hard time thinking in radians there are tools that can be used to preform a quick conversion in the MathUtils object, also the expressions are not so hard to just work out when it comes to vanilla javaScript code. 
+
+There is a bit more to this sort of thing beyond just setting rotation with number values though, for example in some cases I might want to set the orientation of a geometry of a mesh object rather than the mesh object itself. For example I might want to set the orientation of a cone geometry so that the tip of the cone is the front face. With this sort of this there is setting the rotation of the geometry once, then using the object3d rotation property from there. That is just one example that I will be getting to in this post along with many others such as setting rotation from position and the inverse of doing so.
 
 <!-- more -->
 
 ## The rotation property of the object3d class and what to know first
 
-In this post I am going over some examples of the rotation property of the object3d class in the javaScript library known as threejs. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), let alone client side web development in general. I do what I can to try to keep these examples easy to follow of course, but I am still takeing some liberties as to what it is that you are ware of before hand. I will not be getting into every little deatil about threejs and client side javaScript here, but I will take a momnent to mention a few things in this oening section that are related to the rotation of object3d based objects.
+In this post I am going over some examples of the rotation property of the object3d class in the javaScript library known as threejs. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), let alone client side web development in general. I do what I can to try to keep these examples easy to follow of course, but I am still taking some liberties as to what it is that you are ware of before hand. I will not be getting into every little detail about threejs and client side javaScript here, but I will take a moment to mention a few things in this opening section that are related to the rotation of object3d based objects.
 
 ### The Euler class is worth checking out in detail of course
 
-The value of the rotation property in the object3d class is an instance of the [Euler class wich is worth checking out in detail](/2021/04/28/threejs-euler/). This is the ushual go to class for just about everything that has to do with angles in threejs, as such it will come up a lot in source code examples.
+The value of the rotation property in the object3d class is an instance of the [Euler class wich is worth checking out in detail](/2021/04/28/threejs-euler/). This is the usual go to class for just about everything that has to do with angles in threejs, as such it will come up a lot in source code examples.
 
-### There is also the position propery of object3d, and the Vector3 class
+### There is also the position property of object3d, and the Vector3 class
 
-When it comes to setting the position of an object3d class based object there is the position propery which is an instance of the [Vector3 class](/2018/04/15/threejs-vector3/). There is a whole lot to be aware with repect to the methods that there are to work with in this Vector3 class an how many of them relate to, or work with Euler class instances. There is also just having some basic idea of what a Vector ins in general. Maybe people might think that it is the state of a position, and it is, but it is also directon and what is often called vector unit length.
+When it comes to setting the position of an object3d class based object there is the position property which is an instance of the [Vector3 class](/2018/04/15/threejs-vector3/). There is a whole lot to be aware with respect to the methods that there are to work with in this Vector3 class an how many of them relate to, or work with Euler class instances. There is also just having some basic idea of what a Vector ins in general. Maybe people might think that it is the state of a position, and it is, but it is also direction and what is often called vector unit length.
 
 ### A whole lot more to know with object3d, and also the various objects based off of object3d
 
@@ -465,4 +467,3 @@ In this example I am creating and updating a Vector3 class instance. With mesh1 
 ## Conclusion
 
 The rotation property is then what I often used in order to set the rotation of an object such as a mesh object, group or camera. There is also the position property of the object3d class that holds an instance of the Vector3 class that is what is used to store and change the position of the object as well. There are a whole lot of other properties as well as method to be aware of in the object3d class that come into play allot when making one or more threejs projects such as the scale property and the lookAT method just to name a few.
-
