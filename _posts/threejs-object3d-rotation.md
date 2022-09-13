@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2022-09-13 11:10:30
-version: 1.20
+updated: 2022-09-13 11:23:13
+version: 1.21
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the [THREE.Euler class](/2021/04/28/threejs-euler/) and stores the current rotation, or orientation of an object. This rotation property is a key value pair of the [base class known as Object3d](/2018/04/23/threejs-object3d/) so then it can be used to set the rotation of [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and just about anything else that is based off of the Object3D class including event a whole [Scene Object](/2018/05/03/threejs-scene/).
@@ -283,6 +283,10 @@ The rotation property effects just the local rotation of the object in which I s
 
 ## 5 - Setting position from rotation with the apply euler method of the Vector3 class
 
+A really cool and useful method in the Vector3 class is the apply Euler method which is the usual go to method for setting the state of a vector3 class based on the state of a Euler class such as the one at the rotation property of a an object3d class based object such as a mesh object. 
+
+When I use the apply Euler method I will often define some kind of start position and start out my copying that to the position property of what I want to effect. This start position is more for the purpose of defining what the start direction should be rather than vector unit length. After I set a start position I can then use the apply Euler method as a way to change the direction relative to the start direction, normalize, and then use a method like multiply scalar to set the desired vector unit length.
+
 ```js
 (function () {
     // ---------- ----------
@@ -362,6 +366,10 @@ The rotation property effects just the local rotation of the object in which I s
 ```
 
 ## 6 - Setting rotation from position using the set from Vector3 Euler class method
+
+Okay so there is using the apply Euler method of the Vector3 class to set position based on rotation, but what if I want to do the inverse of that? In other words to set the rotation of an object based on the state of a Vector3 class instance. In the Euler class there is a set from Vector3 method, so there you go the name says it all.
+
+In this example I am creating and updating a Vector3 class instance. With mesh1 I am just simply coping the current state of this vector3 instance to the position property as a way to know the current state of the Vector. With that out of the way with mesh2 I am using this set from vector method to set the rotation of the mesh object based on the state of this vector3 instance. When doing so I might want to clone and normalize the vector depending on the desired outcome.
 
 ```js
 (function () {
