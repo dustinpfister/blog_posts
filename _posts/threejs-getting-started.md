@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-09-13 12:40:02
-version: 1.38
+updated: 2022-09-13 12:43:10
+version: 1.39
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -77,33 +77,35 @@ As such the html of one of my demos looks like this for the moment.
 
 ```html
 <html>
-  <head>
-    <title>test_threejs demos</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <meta name="google" content="notranslate">
-  </head>
-  <body>
-    <div class="nav_container container">
-      <div><h1>three.js demos</h1></div>
-      <div> 
-        <a href="/">HOME</a> | 
-        <a href="/demos">DEMOS</a> | 
-        <a href="/videos">VIDEOS</a> | 
-        <a href="/sprite-sheets">SPRITE SHEETS</a> | 
-        <a href="/forpost">FOR POST</a>
-      </div>
+<head>
+<title>test_threejs demos</title>
+<link rel="stylesheet" href="/css/style.css">
+<meta name="google" content="notranslate">
+</head>
+<body>
+<div class="nav_container">
+    <div class="nav_content">
+        <div class="nav_title" ><h1>three.js demos</h1></div>
+        <div class="nav_links"> 
+            <a href="/">HOME</a> | 
+            <a href="/demos">DEMOS</a> | 
+            <a href="/videos">VIDEOS</a> | 
+            <a href="/sprite-sheets">SPRITE SHEETS</a> | 
+            <a href="/forpost">FOR POST</a>
+        </div>
     </div>
-    <div class="content_container container">
-      <h1>ForPost: threejs-getting-started</h1>
-      <div id="demo"></div>
-      <br>
-      <script src="/js/threejs/0.127.0/three.min.js"></script>
-      <script src="/forpost/threejs-getting-started/s3-basic-overview/js/main.js"></script>
-      <br>
-      <br>
-      <br>
-    </div>
-  </body>
+</div>
+<div class="content_container container">
+<h1>ForPost: threejs-getting-started</h1>
+<div id="demo"></div>
+<br>
+<script src="/js/threejs/0.140.0/three.min.js"></script>
+<script src="/forpost/threejs-getting-started/s1-basic/js/main.js"></script>
+<br>
+<br>
+<br>
+</div>
+</body>
 </html>
 ```
 
@@ -124,8 +126,11 @@ A very typical example for getting started with three.js indeed, but still it wo
     // to use with my scene, and camera
     let renderer = new THREE.WebGLRenderer();
     // I must append the dom element used by the renderer to the html
-    // that I am using.
-    document.getElementById('demo').appendChild(renderer.domElement);
+    // that I am using. 
+    // !!!HERE I AM USING document.body IN THEN EVENT THAT YOU ARE
+    // JUST COPYING THIS OVER BUT YOU SHOUD CHANGE THIS FOR WHAT IS GOING ON
+    // WITH YOUR HTML 
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     // ---------- ---------- ----------
     // ADD A MESH
     // ---------- ---------- ----------
@@ -147,6 +152,7 @@ A very typical example for getting started with three.js indeed, but still it wo
     // finally I call renderer.render to draw the current
     // state of the scene, from the perspective of the camera
     renderer.render(scene, camera);
+ 
 }
     ());
 ```
