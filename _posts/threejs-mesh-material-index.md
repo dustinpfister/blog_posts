@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2022-09-14 10:11:18
-version: 1.30
+updated: 2022-09-14 10:55:19
+version: 1.31
 ---
 
 When working with a [Mesh Object]() in [three.js](https://threejs.org/) a single instance of a material can be passed to the mesh constructor as the second argument, after the geometry, which will be used to skin the geometry of the Mesh. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. Often just the use of one material is fine as the state of the uv attribute of the buffered geometry instance is in a state in which it will work well with the textures that I am using in the material. However another option might be to have not just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -39,67 +39,151 @@ Three.js has been, and as of this writing still is, a fast moving target of a li
 
 The source code examples that I am writing about in this post as well as for my many other posts on threejs can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-mesh-material-index).
 
-## 1 - New example with groups array using r135
-
-So the first example that I should cover here is an example that makes use of a new version of threejs, as of this writing I was using r135 over the older versions that I use when writing about older features of threejs. In any case the process is somewhat similar an array of materials must be used rather than just a single material. After that it is just a matter of making sure that each face has the proper index value in the materials array set.
-
-In late versions of threejs that only support the use of Buffered Geometry in the core of the library itself there should be a groups array for a geometry. This is now the array of face objects that contain material index properties. When it comes to this example I am using the built in Box Geometry constructor that will create and return a buffered geometry, and on top of that there will be index values set for it by default that will work well with an array of materials that is a collection of six materials one for each side. However what if I just want to use three? In that case I will want to do something to make sure that I am only using index values in that range, such as looping over the groups object and setting the material index values that way.
+## 1 - basic static example of an array of materials with a Box Geometry
 
 ```js
-
 (function () {
- 
-    // REVISION 127 was used for this example
-    console.log(THREE.REVISION);
- 
-    // ARRAY OF MATERIALS
-    var materials = [
-        new THREE.MeshBasicMaterial({
-            color: 0xff0000
-        }),
-        new THREE.MeshBasicMaterial({
-            color: 0x00ff00
-        }),
-        new THREE.MeshBasicMaterial({
-            color: 0x0000ff
-        })
-    ];
- 
-    // geometry
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
- 
-    // SET THE INDEX VALUES FOR EACH FACE
-    geometry.groups.forEach(function (face, i) {
-        face.materialIndex = Math.floor(i % materials.length);
-    });
- 
-    // mesh
-    var mesh = new THREE.Mesh(
-            // geometry as first argument
-            geometry,
-            // array of materials as the second argument
-            materials);
-    // scene, add mesh
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
     var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) ); 
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(1, 1, 1);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPER FUNCTION
+    //-------- ----------
+    const mkMaterial = (color, opacity) => {
+        return new THREE.MeshBasicMaterial({
+            color: color,
+            side: THREE.DoubleSide,
+            transparent: true,
+            opacity: opacity
+        })
+    };
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    var mesh = new THREE.Mesh(
+        // geometry as first argument
+        new THREE.BoxGeometry(1, 1, 1),
+        // array of materials as the second argument
+        [
+            mkMaterial(0xff0000, 0.75),
+            mkMaterial(0x00ff00, 0.75),
+            mkMaterial(0x0000ff, 0.50),
+            mkMaterial(0xff00ff, 0.50),
+            mkMaterial(0xffff00, 0.25),
+            mkMaterial(0x00ffff, 0.25)
+        ]
+    );
+    mesh.rotation.set(0.6, 0.8, 0.4);
     scene.add(mesh);
-    // camera, renderer
+    // ---------- ----------
+    // RENDER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+## 2 - New example with groups array using r125+
+
+In this section I will be going over the source code of an example that shows how to mutate material index values of a built in geometry using by looping over the groups array and setting the desired material index values. Once again this is an example where I am using a geometry created with the built in box geometry constrcuor that has the groups array set up for me all ready. The main diffrenec here is that I am using less than six materials so I need to loop over the groups array and set material index values that are in the range of the length of the array of materials given.
+
+So once agian I create an array of materials, this time I am going with the phong material for each and just changing up the color. Sense I am using a material that will work with a light source I am also adding a dierction light so that I will see somehting as i am just using the color property of the phong material. Anyway this time around although I have an array of materials this time I want to just work with two materails, which is less than six, so I will want to adjust the material index values in the group array.
+
+With that said when I create the box geometry I just loop over the groups array and set all of the material index values to values thart are in the range of the length of this array of materials.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) ); 
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
     camera.position.set(2, 2, 2);
     camera.lookAt(0, 0, 0);
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(3, 2, 1);
+    scene.add(dl);
+    //-------- ----------
+    // ARRAY OF MATERIALS
+    //-------- ----------
+    var materials = [
+        new THREE.MeshPhongMaterial({
+            color: 0xff0000
+        }),
+        new THREE.MeshPhongMaterial({
+            color: 0x00ff00
+        })
+    ];
+    //-------- ----------
+    // GEOMETRY AND GROUPS
+    //-------- ----------
+    var geometry = new THREE.BoxGeometry(1, 1, 1); // Box geometry with groups set up
+    // SET THE INDEX VALUES FOR EACH FACE
+    geometry.groups.forEach(function (face, i) {
+        face.materialIndex = Math.floor(i % materials.length);
+    });
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    var mesh = new THREE.Mesh(
+            // geometry as first argument
+            geometry,
+            // array of materials as the second argument
+            materials);
+    scene.add(mesh);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 300;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        const alpha = frame / frameMax;
+        mesh.rotation.x = THREE.MathUtils.degToRad(360 * alpha);
+        mesh.rotation.y = THREE.MathUtils.degToRad(360 * 4 * alpha);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
 }
     ());
 ```
 
-The situation will change up a little from one situation to the next, but the basic idea is there.
+## 3 - Old Basic Example of an array of materials, and face material index values using r91.
 
-## 2 - Old Basic Example of an array of materials, and face material index values using r91.
-
-A basic example of this would be to just have an array of instances of some kind of Mesh Material such as the Mesh Basic Material. Once I have an array the materials can be used by setting the material index value of all face3 instances in the geometry that I am using to point to the corresponding index of the material in the array of materials that I want to use with a given face.
+If I am using a really old revision of threejs then I might want to be using the faces array. A basic example of this would be to just have an array of instances of some kind of Mesh Material such as the Mesh Basic Material. Once I have an array the materials can be used by setting the material index value of all face3 instances in the geometry that I am using to point to the corresponding index of the material in the array of materials that I want to use with a given face.
 
 ```js
 (function () {
@@ -151,7 +235,7 @@ Using modulo to get the remainder when diving the current face index over the le
 
 ## Conclusion
 
-When starting to make a real project of one kind or another it is important to know how to go about doing this sort of thing of course. Event when it comes to developing some kind of crude yet effective kind of style for 3d modeling I am still going to want to know how to skin different faces with different materials.
+When starting to make a real project of one kind or another it is important to know how to go about doing this sort of thing of course. Even when it comes to developing some kind of crude yet effective kind of style for 3d modeling I am still going to want to know how to skin different faces with different materials.
 
 ### More Examples of Material index values
 
