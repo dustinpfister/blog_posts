@@ -1,6 +1,6 @@
 let path = require('path');
 let dirs = require( path.join(__dirname, '../../paths/index.js') ).createDirObject(__dirname);
-let header = require( path.join(dirs.cli_folder, 'header/header.js') ),
+let header = require( path.join(dirs.lib_folder, 'header/index.js') ),
 fs = require('fs');
 
 module.exports = {
