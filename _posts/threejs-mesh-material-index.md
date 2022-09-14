@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2022-09-14 11:07:37
-version: 1.33
+updated: 2022-09-14 11:38:47
+version: 1.34
 ---
 
 When working with a [Mesh Object]() in [three.js](https://threejs.org/) a single instance of a material can be passed to the mesh constructor as the second argument, after the geometry, which will be used to skin the geometry of the Mesh. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. Often just the use of one material is fine as the state of the uv attribute of the buffered geometry instance is in a state in which it will work well with the textures that I am using in the material. However another option might be to have not just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -187,7 +187,64 @@ With that said when I create the box geometry I just loop over the groups array 
     ());
 ```
 
-## 3 - Old Basic Example of an array of materials, and face material index values using r91.
+## 3 - create groups of a built in geometry that does not have one
+
+The box geometry is a great starting point for this sort of thing as there is a groups array is all ready set up for me. Often I might just need to adjust the material index values, but if I just use six materials for each face then I do not even need to do that. This is however not always the case with many of the other built in geometry constructors though such as the plane geometry. However maybe the plane geometry is a good built in geometry constructor to start with when it comes to learning a thing or two about how to go about adding groups to a geometry.
+
+For this example I want to create a plane geometry that is 5 by 5 in terms of unit size, but just 2 by 2 when it comes to the grid size of the plane. I want to then use to materials to skin this plane but when I do so nothing happens, and the reason why is because the groups are not set up for me out of the box. This is not to big of a deal though as all I need to do is just make a few calls of the add group method of the buffer geometry class.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(4, 7, 4);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // GEOMETRY AND GROUPS
+    //-------- ----------
+    // new plane geometry
+    var geometry = new THREE.PlaneGeometry(5, 5, 2, 2);
+    geometry.rotateX(Math.PI * 1.5);
+    // adding groups
+    // give a start vertex index, count of vertex and material index for each call
+    geometry.addGroup(0, 6, 0);
+    geometry.addGroup(6, 6, 1);
+    geometry.addGroup(12, 6, 1);
+    geometry.addGroup(18, 6, 0);
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    var mesh = new THREE.Mesh(
+        // geometry as first argument
+        geometry,
+        // array of materials as the second argument
+        [
+            new THREE.MeshBasicMaterial({
+                color: 0xff0000
+            }),
+            new THREE.MeshBasicMaterial({
+                color: 0x00ff00
+            })
+        ]
+    );
+    scene.add(mesh);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+When calling the app group method the first argument is a start vertex index, followed by a count of vertices to use in the call. The final argument when calling add group is then the material index in the array of materials that I would like to use for the group. The end result of these few calls is then a group array in the buffer geometry of this plane set up to use two materials in a checkered kind of way.
+
+## 4 - Old Basic Example of an array of materials, and face material index values using r91.
 
 If I am using a really old revision of threejs then I might want to be using the faces array. A basic example of this would be to just have an array of instances of some kind of Mesh Material such as the Mesh Basic Material. Once I have an array the materials can be used by setting the material index value of all face3 instances in the geometry that I am using to point to the corresponding index of the material in the array of materials that I want to use with a given face.
 
