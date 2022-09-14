@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2022-09-14 10:09:11
-version: 1.29
+updated: 2022-09-14 10:11:18
+version: 1.30
 ---
 
 When working with a [Mesh Object]() in [three.js](https://threejs.org/) a single instance of a material can be passed to the mesh constructor as the second argument, after the geometry, which will be used to skin the geometry of the Mesh. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. Often just the use of one material is fine as the state of the uv attribute of the buffered geometry instance is in a state in which it will work well with the textures that I am using in the material. However another option might be to have not just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -149,14 +149,14 @@ A basic example of this would be to just have an array of instances of some kind
 
 Using modulo to get the remainder when diving the current face index over the length of materials will result in an effect where each material is used in an alternating fashion. I can write different expressions to get different effects, but you should get the basic idea. The process is to have a collection of materials, and then do what is necessary to see that each face is painted with the desired material.
 
-## 3 - Conclusion
+## Conclusion
 
 When starting to make a real project of one kind or another it is important to know how to go about doing this sort of thing of course. Event when it comes to developing some kind of crude yet effective kind of style for 3d modeling I am still going to want to know how to skin different faces with different materials.
 
-### 3.1 - More Examples of Material index values
+### More Examples of Material index values
 
 On my post on the [sphere geometry constructor](/2021/05/26/threejs-sphere/) I worked out an example that has to do with creating groups for a sphere geometry. However maybe the best additional post on this topic thus far would be my [post on the plane geometry constructor](/2019/06/05/threejs-plane/) where I worked out a few more examples of this sort of thing.
 
-### 3.2 - Additional THREEJS reading
+### Additional THREEJS reading
 
 To really get a solid grasp on working with material index values, as well as the materials themselves, and everything that branches off from that it would be best to just start making one or two actual projects of some kind and learn as you go. At least I have found that is the best way to go about things speaking from my experience thus far. With that said it might be a good idea to check out some of my threejs project examples thus far, one that stands out when it comes to material index values would be my [guy on a hamster wheel example](/2021/04/19/threejs-examples-hamster-wheel/) where I am making use of material index values, and canvas generated textures for those materials.
