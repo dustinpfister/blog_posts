@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2022-09-14 10:55:19
-version: 1.31
+updated: 2022-09-14 10:57:40
+version: 1.32
 ---
 
 When working with a [Mesh Object]() in [three.js](https://threejs.org/) a single instance of a material can be passed to the mesh constructor as the second argument, after the geometry, which will be used to skin the geometry of the Mesh. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. Often just the use of one material is fine as the state of the uv attribute of the buffered geometry instance is in a state in which it will work well with the textures that I am using in the material. However another option might be to have not just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -27,13 +27,13 @@ When it comes to using one of the built in geometry constructors such as the Box
 
 ### Using an array of materials is not a replacement for UV Mapping
 
-Using an array of materials is just one tool in the toolbox when it comes to having control over materials that are used for a geometry in a mesh object. The first and formost thing that should be considred though is what is going on with UV mapping and how that can be used to skin the geometry as desired. The [UV attribute of the buffer geometry instance](/2021/06/09/threejs-buffer-geometry-attributes-uv/) is an array of offset values that corespond to areas in a texture that are used to skin that specfic area of the geometry. Getting into understanding this subject in depth can prove to be a little involved but it is how to go about making a geometry look they way I want it to with just one material.
+Using an array of materials is just one tool in the toolbox when it comes to having control over materials that are used for a geometry in a mesh object. The first and foremost thing that should be considered though is what is going on with UV mapping and how that can be used to skin the geometry as desired. The [UV attribute of the buffer geometry instance](/2021/06/09/threejs-buffer-geometry-attributes-uv/) is an array of offset values that correspond to areas in a texture that are used to skin that specific area of the geometry. Getting into understanding this subject in depth can prove to be a little involved but it is how to go about making a geometry look they way I want it to with just one material.
 
-Even when I do use UV mapping there might be a situation in which I might want to use one material for one area of a geometry and another for the rest. For example say I want to use the Lambert material for an area of a geometry that should be wood, and the rest of the geomerty I want to use the Phong material for metal surfaces. In such a case uv mapping and arrays of materials with group objects all go hand in hand to get the desired end outcome.
+Even when I do use UV mapping there might be a situation in which I might want to use one material for one area of a geometry and another for the rest. For example say I want to use the Lambert material for an area of a geometry that should be wood, and the rest of the geometry I want to use the Phong material for metal surfaces. In such a case uv mapping and arrays of materials with group objects all go hand in hand to get the desired end outcome.
 
 ### Version Numbers matter big time with three.js
 
-Three.js has been, and as of this writing still is, a fast moving target of a library when it comes to development. When I first wrote this post back in May of 2018 I was using r91 of threejs, and at this time there is now an r140 which is what I am observing at the time that I have edited this post last. Between these two versions of threejs a whole lot of code breaking changes have happened, and this will likely continue to be the case moving forward. Always be mindful of the revision number of threejs that you are using when redaing about threejs examples on the open web, much of the content is out dated.
+Three.js has been, and as of this writing still is, a fast moving target of a library when it comes to development. When I first wrote this post back in May of 2018 I was using r91 of threejs, and at this time there is now an r140 which is what I am observing at the time that I have edited this post last. Between these two versions of threejs a whole lot of code breaking changes have happened, and this will likely continue to be the case moving forward. Always be mindful of the revision number of threejs that you are using when reading about threejs examples on the open web, much of the content is out dated.
 
 ### The source code examples in this post are on Github
 
@@ -93,11 +93,11 @@ The source code examples that I am writing about in this post as well as for my 
 
 ## 2 - New example with groups array using r125+
 
-In this section I will be going over the source code of an example that shows how to mutate material index values of a built in geometry using by looping over the groups array and setting the desired material index values. Once again this is an example where I am using a geometry created with the built in box geometry constrcuor that has the groups array set up for me all ready. The main diffrenec here is that I am using less than six materials so I need to loop over the groups array and set material index values that are in the range of the length of the array of materials given.
+In this section I will be going over the source code of an example that shows how to mutate material index values of a built in geometry using by looping over the groups array and setting the desired material index values. Once again this is an example where I am using a geometry created with the built in box geometry constructor that has the groups array set up for me all ready. The main difference here is that I am using less than six materials so I need to loop over the groups array and set material index values that are in the range of the length of the array of materials given.
 
-So once agian I create an array of materials, this time I am going with the phong material for each and just changing up the color. Sense I am using a material that will work with a light source I am also adding a dierction light so that I will see somehting as i am just using the color property of the phong material. Anyway this time around although I have an array of materials this time I want to just work with two materails, which is less than six, so I will want to adjust the material index values in the group array.
+So once again I create an array of materials, this time I am going with the phong material for each and just changing up the color. Sense I am using a material that will work with a light source I am also adding a directional light so that I will see something as i am just using the color property of the phong material. Anyway this time around although I have an array of materials this time I want to just work with two materials, which is less than six, so I will want to adjust the material index values in the group array.
 
-With that said when I create the box geometry I just loop over the groups array and set all of the material index values to values thart are in the range of the length of this array of materials.
+With that said when I create the box geometry I just loop over the groups array and set all of the material index values to values that are in the range of the length of this array of materials.
 
 ```js
 (function () {
