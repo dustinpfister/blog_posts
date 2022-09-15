@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-04-23 14:51:34
-version: 1.39
+updated: 2022-09-15 09:16:52
+version: 1.40
 ---
 
-One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task.
+One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources when using the basic or standard materials for exmaple. However there are still a few other options for that sort of task such as the [depth material](/2021/05/04/threejs-depth-material/).
 
-The normal material will render colors to the faces of a geometry by way of the state of the [normal attribute of the buffer geometry geometry instance](https://stackoverflow.com/questions/35204824/three-buffergeometry-vertex-normals-and-face-normals) used with the [mesh object](/2018/05/04/threejs-mesh/). The normal attribute is an array of values that corresponds with the position attribute that is used to set what the direction is of each vertex rather than the position. The normal attribute is a must have attribute when it comes to using any material that has to do with light such as with the [standard material](/2021/04/27/threejs-standard-material/), but it is also needed for a material such as the normal material which will help show what the deal is with the state of this kind of buffer geometry attribute.
+The normal material will render colors to the faces of a geometry by way of the state of the [normal attribute of the buffer geometry geometry instance](https://stackoverflow.com/questions/35204824/three-buffergeometry-vertex-normals-and-face-normals) used with the [mesh object](/2018/05/04/threejs-mesh/). The normal attribute is an array of values that corresponds with the position attribute that is used to set an altertaive direction inpepedant of the position direction from the origin when it comes to the position attribute of geometry. The normal attribute is a must have attribute when it comes to using any material that has to do with light such as with the [standard material](/2021/04/27/threejs-standard-material/), but it is also needed for a material such as the normal material which will help show what the deal is with the state of this kind of buffer geometry attribute.
 
 The normal material can be used as a way to find out if there are problems with the normal attribute of a geometry as there is a certain look that an object should have when using it. However it might not be the best tool for the job as there are other things to work with in the core of the threejs library such as arrow helpers. In addition there are additional external files that can be used on top of threejs that will add a kind of normal helper which might be the best tool for the job.
 
@@ -24,19 +24,28 @@ In this post I am going over a few javaScript source code examples that make use
 ### Read up more on what the normal attribute of a buffer geometry is
 
 It might be a good idea to take some time to gain a [deeper understanding of the normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) of a buffer geometry instance. I have wrote a post on the topic of the normal attribute alone that might be worth reading when it comes to getting that deeper understand of what the normal attribute is all about. Crossing that bridge is something that one will just need to do sooner or later when it comes to making custom geometry, but when it comes to sticking to the built in geometry constructors it is possible to wait on this one as the normal attributes are all ready set up for you when using these constructors.
-### There is much more to geometry beyond that of the normal attribute of course
+
+### There are other attributes to be aware of beyond just normals
 
 So there is the normal attribute of a buffer geometry instance, but then there are other major attributes of a buffer geometry such as the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [uv attributes](/2021/06/09/threejs-buffer-geometry-attributes-uv/) along with a number of other attributes that might come into play also. There is also a wide range of additional prototype methods and properties of a [buffer geometry instance](/2021/04/22/threejs-buffer-geometry/) that are also worth looking into more at some point sooner or later.
 
-### There are other options when it comes to materials
+### Computing the vertec normals attribute
+
+In this post the main focus is just simply the normal material, and not so much creating or updating a normals attribute of a buffer geometry. I have wrote a [post on the compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) of the buffer geometry instance. This compute vertex normals methid will work fine in most cases for the task of createing a normals attribute of one is not there, or updating one in the event that the position attribute chances a little. In some cases however I will need to work out a way to update the state manualy though, in any case I might touch base on this a little here but for the most part that is a whole other can of worms as the expression goes.
+
+### The other options when it comes to materials such also be considered
 
 The mesh normal material is just one of [many material options in threejs](/2018/04/30/threejs-materials/) so it might be a good idea to read some post that serves as a general overview of all the options when it comes to materials. The main feature of interest with the normal material is just rendering textures for the faces of a geometry using the state of the normals of a geometry, but not taking into account anything that might be going on when it comes to light sources. 
 
 The normal material is something that I often used as just a place holder material, and also it is one of several tools when it comes to debugging issues with the normal attribute of a geometry as well. However I can not say that it is the kind of material that I would use for any kind of real final product in terms of most of not all idea that come to mind with projects.
 
+### There are other tools for debuging the normals attribute
+
+Often the normal material might be used as a way to help debug the state of a normal attribute. That is not such a bad idea as there is a certain way it should look if the normals are in a state that is often what is desired. However I will often use the normal material on top of the [vertex normal helper](https://threejs.org/docs/#examples/en/helpers/VertexNormalsHelper) that is my first and formost tool that I would go with when it comes to the task of debugging vertex normals of a geometry.
+
 ### Version Numbers matter
 
-When I first wrote this post I was using r127 of threejs, and the last time I came around to doing a little editing here I was using r135.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to doing a little editing here I was using r140.
 
 ### The source code examples in this post are up on Github
 
