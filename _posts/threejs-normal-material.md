@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-09-15 10:07:48
-version: 1.41
+updated: 2022-09-15 10:14:25
+version: 1.42
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources when using the basic or standard materials for exmaple. However there are still a few other options for that sort of task such as the [depth material](/2021/05/04/threejs-depth-material/).
@@ -189,6 +189,8 @@ If I need to debug something that is going on with a normals attribute the use o
 ```
 
 ## 4 - The side property of materials and normals
+
+One thing to be aware of when it comes to normals and a material such as the normal material is the side property of a material. When it comes to the side property the default value is the value of the THREE.FrontSide constant in the threejs librray. That is that it will only be the front side of each face that will be renderered. There is setting the side property to that of somehting like THREE.BackSide, or THREE.DoubleSide. However in any case the qustion might come up as to how to go about defining what side is the front side to begin with. Well the way to do so will be to change the values of the of the normal attribute which would be the altartive to chnaging what the value of the side property is.
 
 ```js
 (function(){
