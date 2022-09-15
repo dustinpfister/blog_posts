@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-09-15 10:31:59
-version: 1.43
+updated: 2022-09-15 14:23:03
+version: 1.44
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources when using the basic or standard materials for exmaple. However there are still a few other options for that sort of task such as the [depth material](/2021/05/04/threejs-depth-material/).
@@ -16,6 +16,8 @@ The normal material will render colors to the faces of a geometry by way of the 
 The normal material can be used as a way to find out if there are problems with the normal attribute of a geometry as there is a certain look that an object should have when using it. However it might not be the best tool for the job as there are other things to work with in the core of the threejs library such as arrow helpers. In addition there are additional external files that can be used on top of threejs that will add a kind of normal helper which might be a better tool for debugging normals.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/G5bD_dXg2M4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## The normal material and what you should know first
 
