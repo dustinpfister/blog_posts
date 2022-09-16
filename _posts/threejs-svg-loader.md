@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-16 15:31:05
-version: 1.10
+updated: 2022-09-16 15:32:59
+version: 1.11
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -765,6 +765,110 @@ So making a buffer geometry from an array of points and the calling the bound bo
             });
             scene.add(group);
             group.rotation.x = Math.PI;
+            renderer.render(scene, camera);
+        },
+        // called when loading is in progresses
+        function ( xhr ) {
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        },
+        // called when loading has errors
+        function ( error ) {
+            console.log( 'An error happened' );
+            console.log(error)
+        }
+    );
+}());
+```
+
+## 6 - Points
+
+```js
+// Points SVG DEMO
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER, LIGHT
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#000000');
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(100, 100, 100);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // SVG LOADER
+    //-------- ----------
+    // instantiate a loader
+    const loader = new THREE.SVGLoader();
+    // load a SVG resource
+    loader.load(
+        // resource URL
+        '/forpost/threejs-svg-loader/svg/fff2.svg',
+        // called when the resource is loaded
+        function ( data ) {
+            const paths = data.paths.slice( 1, data.paths.length);
+            // create points for each path
+            paths.forEach((path)=>{
+                const geo = new THREE.BufferGeometry().setFromPoints( path.subPaths[0].getPoints() );
+                const material = new THREE.PointsMaterial({size: 3, color: 0x00ff00});
+                const points = new THREE.Points(geo, material);
+                scene.add(points);
+            });
+            renderer.render(scene, camera);
+        },
+        // called when loading is in progresses
+        function ( xhr ) {
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        },
+        // called when loading has errors
+        function ( error ) {
+            console.log( 'An error happened' );
+            console.log(error)
+        }
+    );
+}());
+```
+
+## 7 - Lines
+
+```js
+// Lines SVG DEMO
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER, LIGHT
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#000000');
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(120, 120, 120);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // SVG LOADER
+    //-------- ----------
+    // instantiate a loader
+    const loader = new THREE.SVGLoader();
+    // load a SVG resource
+    loader.load(
+        // resource URL
+        '/forpost/threejs-svg-loader/svg/fff.svg',
+        // called when the resource is loaded
+        function ( data ) {
+            // create a Line for each path
+            data.paths.forEach((path)=>{
+                const geo = new THREE.BufferGeometry().setFromPoints( path.subPaths[0].getPoints() );
+                geo.translate(-90,-80,0);
+                geo.rotateX(Math.PI);
+                // setting custom line width, this will not work on some platforms
+                const material = new THREE.LineBasicMaterial({ linewidth: 6, color: 0xff0000 });
+                const line = new THREE.Line(geo, material);
+                scene.add(line);
+            });
             renderer.render(scene, camera);
         },
         // called when loading is in progresses
