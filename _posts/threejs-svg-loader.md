@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-16 14:50:46
-version: 1.6
+updated: 2022-09-16 15:07:42
+version: 1.7
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -345,3 +345,309 @@ There are other options for createing a geometry from a shape other than that of
     );
 }());
 ```
+
+## 4 - data textures, and custom uv generator
+
+So at this point I have covered the basics of using the SVG loader, and that there is cretaing extrude geomerty which is one option as to what can be done with the loaded data. I have all ready covered a basic example of using extrude geomerty that seems to work okay, but there is just one little problem that comes up when trying to add some texture to the geometry. With that said I will some times need to work out a custom way to generate the [UV attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) of the extrude geomerty.
+
+Also speaking of textures one way or another I will need to create some textures to use with the materials that will be used for the mesh objects. There are many options for this sort of thing such as also using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in textures that are in the from of external image files. However there is also a few ways to create some texture by way of a little javaScript code such as [canavs textures](/2018/04/17/threejs-canvas-texture/), or for the sake of this example [data textures](/2022/04/15/threejs-data-texture/).
+
+### 4.2 - Data textures module
+
+This is what I have togeather for a general data texture module that has been serving me well thus far in various projects. I have a few options here that allow for me to create a data texture on a pixle by pixle basis, one such method I can all directly, and another I can give data that is a color index for each pixle locaiton called fromPXDATA. I have another funciton that uses the THREE.MathUtils.seededRandom method as a way to create a random noise texture.
+
+```js
+// ********** **********
+// data textures
+// module for creating data textures
+// ********** **********
+var datatex = (function () {
+    var api = {};
+    // mk data texture helper
+    api.mkDataTexture = function (data, w) {
+        data = data || [];
+        w = w || 0;
+        var width = w, //20,
+        height = data.length / 4 / w;
+        var texture = new THREE.DataTexture(data, width, height);
+        texture.needsUpdate = true;
+        return texture;
+    };
+    // create a data texture with a method that will be called for each pix
+    api.forEachPix = function (w, h, forEach) {
+        var width = w === undefined ? 5 : w,
+        height = h === undefined ? 5 : h;
+        var size = width * height;
+        var data = new Uint8Array(4 * size);
+        for (let i = 0; i < size; i++) {
+            var stride = i * 4;
+            var x = i % width;
+            var y = Math.floor(i / width);
+            var obj = forEach(x, y, w, h, i, stride, data);
+            obj = obj || {};
+            data[stride] = obj.r || 0;
+            data[stride + 1] = obj.g || 0;
+            data[stride + 2] = obj.b || 0;
+            data[stride + 3] = obj.a === undefined ? 255: obj.a;
+        }
+        return api.mkDataTexture(data, width)
+    };
+    // from px data method
+    api.fromPXDATA = function(pxData, width, palette){
+        palette = palette || [
+            [0,0,0,255],
+            [255,255,255,255]
+        ];
+        var height = Math.floor(pxData.length / width);
+        return api.forEachPix(width, height, function(x, y, w, h, i){
+            var obj = {};
+            var colorIndex = pxData[i];
+            var color = palette[colorIndex];
+            obj.r = color[0];
+            obj.g = color[1];
+            obj.b = color[2];
+            obj.a = color[3];
+            return obj;
+        });
+    };
+    // simple gray scale seeded random texture
+    api.seededRandom = function (w, h, rPer, gPer, bPer, range) {
+        w = w === undefined ? 5 : w,
+        h = h === undefined ? 5 : h;
+        rPer = rPer === undefined ? 1 : rPer;
+        gPer = gPer === undefined ? 1 : gPer;
+        bPer = bPer === undefined ? 1 : bPer;
+        range = range || [0, 255]
+        var size = w * h;
+        var data = new Uint8Array(4 * size);
+        for (let i = 0; i < size; i++) {
+            var stride = i * 4;
+            var v = Math.floor(range[0] + THREE.MathUtils.seededRandom() * (range[1] - range[0]));
+            data[stride] = v * rPer;
+            data[stride + 1] = v * gPer;
+            data[stride + 2] = v * bPer;
+            data[stride + 3] = 255;
+        }
+        return api.mkDataTexture(data, w);
+    };
+    // return the api
+    return api;
+}
+    ());
+```
+
+### 4.1 - Main javaScript file
+
+So the general idea here is to create some textures, and also to come up with a custom UV Generator funcitons for the extrude geometry that will be used with the SVG data.
+
+```js
+// Extrude Geo, Custom UV Generator and data textures
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER, LIGHT
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#000000');
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(0, 0, 3.5);
+    camera.lookAt(0, -0.1, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(2, 1, 3)
+    scene.add(dl);
+    const al = new THREE.AmbientLight(0xffffff, 0.25);
+    scene.add(al);
+    //-------- ----------
+    // UVGenerator
+    //-------- ----------
+    let i = 0;
+    const UVGenerator = {
+        generateTopUV: function ( geometry, vertices, indexA, indexB, indexC ) {
+            const n = 1;
+            const a_x = vertices[ indexA * n ];
+            const a_y = vertices[ indexA * n + 1 ];
+            const b_x = vertices[ indexB * n ];
+            const b_y = vertices[ indexB * n + 1 ];
+            const c_x = vertices[ indexC * n ];
+            const c_y = vertices[ indexC * n + 1 ];
+            return [
+                new THREE.Vector2( a_x % 1, a_y % 1 ),
+                new THREE.Vector2( b_x % 1, b_y % 1 ),
+                new THREE.Vector2( c_x % 1, c_y % 1 )
+            ];
+        },
+        generateSideWallUV: function ( geometry, vertices, indexA, indexB, indexC, indexD ) {
+            const n = 2;
+            const a_x = vertices[ indexA * n ];
+            const a_y = vertices[ indexA * n + 1 ];
+            const a_z = vertices[ indexA * n + 2 ];
+            const b_x = vertices[ indexB * n ];
+            const b_y = vertices[ indexB * n + 1 ];
+            const b_z = vertices[ indexB * n + 2 ];
+            const c_x = vertices[ indexC * n ];
+            const c_y = vertices[ indexC * n + 1 ];
+            const c_z = vertices[ indexC * n + 2 ];
+            const d_x = vertices[ indexD * n ];
+            const d_y = vertices[ indexD * n + 1 ];
+            const d_z = vertices[ indexD * n + 2 ];
+            if ( Math.abs( a_y - b_y ) < Math.abs( a_x - b_x ) ) {
+                return [
+                    new THREE.Vector2( a_x % 1, (1 - a_z) % 1 ),
+                    new THREE.Vector2( b_x % 1, (1 - b_z) % 1 ),
+                    new THREE.Vector2( c_x % 1, (1 - c_z) % 1 ),
+                    new THREE.Vector2( d_x % 1, (1 - d_z) % 1 )
+                ];
+            } else {
+                return [
+                    new THREE.Vector2( a_y % 1, (1 - a_z) % 1 ),
+                    new THREE.Vector2( b_y % 1, (1 - b_z) % 1 ),
+                    new THREE.Vector2( c_y % 1, (1 - c_z) % 1 ),
+                    new THREE.Vector2( d_y % 1, (1 - d_z) % 1 )
+                ];
+            }
+        }
+    };
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // create an array of Extrude geometry from SVG data loaded with the SVGLoader
+    const createExtrudeGeosFromSVG = (data) => {
+        const paths = data.paths;
+        const geoArray = [];
+        for ( let i = 0; i < paths.length; i ++ ) {
+            const path = paths[ i ];
+            // create a shape
+            const shapes = THREE.SVGLoader.createShapes( path );
+            // for each shape create a mesh and add it to the group
+            for ( let j = 0; j < shapes.length; j ++ ) {
+                const shape = shapes[ j ];
+                geoArray.push( new THREE.ExtrudeGeometry( shape, {
+                    curveSegments: 20,
+                    steps: 20,
+                    depth: 10,
+                    bevelEnabled: false,
+                    UVGenerator: UVGenerator
+                }));
+            }
+        }
+        return geoArray;
+    };
+    // create mesh group from SVG
+    const createMeshGroupFromSVG = (data) => {
+        const geoArray = createExtrudeGeosFromSVG(data);
+        const group = new THREE.Group();
+        geoArray.forEach( (geo, i) => {
+            // each mesh gets its own materials
+            const materials = [ 
+                new THREE.MeshPhongMaterial({  // face material
+                    color: data.paths[i].color,
+                    map : datatex.seededRandom(512, 512, 1, 1, 1, [128, 255]),
+                    wireframe: false
+                }),
+                new THREE.MeshPhongMaterial({ // sides material
+                    color: new THREE.Color(1, 0, 0.2),
+                    map: datatex.fromPXDATA([
+                        2,1,0,1,2,1,0,0,
+                        0,1,2,0,0,1,2,0,
+                        2,1,0,1,2,1,0,0,
+                        0,1,2,0,0,1,2,0,
+                        2,1,0,1,2,1,0,0,
+                        0,1,2,0,0,1,2,0,
+                        2,1,0,1,2,1,0,0
+                    ], 8, [ [255,255,255,255], [200,200,200,255], [100,100,100,255] ]),
+                    wireframe: false
+                })
+            ];
+            const mesh = new THREE.Mesh( geo, materials );
+            group.add(mesh);
+        });
+        return group;
+    };
+    //-------- ----------
+    // OBJECTS
+    //-------- ----------
+    let group;
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    let fps = 30,
+    d1 = -20,
+    d2 = 0,
+    lt = new Date();
+    const loop = function () {
+        let now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            group.rotation.x = Math.PI / 180 * d1;
+            group.rotation.y = Math.PI / 180 * d2;
+            d2 += 20 * secs;
+            d2 %= 360;
+            // render
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    //-------- ----------
+    // SVG LOADER
+    //-------- ----------
+    // instantiate a loader
+    const loader = new THREE.SVGLoader();
+    // load a SVG resource
+    loader.load(
+        // resource URL
+        '/forpost/threejs-svg-loader/svg/fff.svg',
+        // called when the resource is loaded
+        function ( data ) {
+            group = createMeshGroupFromSVG(data);
+            // get min and max of children
+            let xMin = Infinity, xMax = -Infinity;
+            let yMin = Infinity, yMax = -Infinity;
+            let zMin = Infinity, zMax = -Infinity;
+            group.children.forEach( (mesh) => {
+                const geo = mesh.geometry;
+                geo.computeBoundingBox();
+                const b = geo.boundingBox;
+                xMin = b.min.x < xMin ? b.min.x: xMin;
+                xMax = b.max.x > xMax ? b.max.x: xMax;
+                yMin = b.min.y < yMin ? b.min.y: yMin;
+                yMax = b.max.y > yMax ? b.max.y: yMax;
+                zMin = b.min.z < zMin ? b.min.z: zMin;
+                zMax = b.max.z > zMax ? b.max.z: zMax;
+            });
+            const xRange = xMax - xMin;
+            const yRange = yMax - yMin;
+            const zRange = zMax - zMin;
+            group.children.forEach( (mesh) => {
+                mesh.geometry.translate(xRange / 2 * -1, yRange / 2 * -1, zRange / 2 * -1);
+                mesh.rotateX(Math.PI)
+            });
+            group.scale.normalize().multiplyScalar(0.025);
+            scene.add(group);
+            // start loop
+            loop();
+        },
+        // called when loading is in progresses
+        function ( xhr ) {
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        },
+        // called when loading has errors
+        function ( error ) {
+            console.log( 'An error happened' );
+            console.log(error)
+        }
+    );
+}());
+```
+
+## Concusion
+
+The SVG loader is then the oficial file for loading in SVG data and doing something with the 2d path data that is given in the data result object when loading works fine with the SVG.
+
+
