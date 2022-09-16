@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-16 14:34:18
-version: 1.5
+updated: 2022-09-16 14:50:46
+version: 1.6
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -104,26 +104,6 @@ For this example with the create mesh objects helper I am using the [basic mater
         return group;
     };
     //-------- ----------
-    // CONTROL
-    //-------- ----------
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    let fps = 30,
-    lt = new Date();
-    const loop = function () {
-        let now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            // render
-            renderer.render(scene, camera);
-            lt = now;
-        }
-    };
-    loop();
-    //-------- ----------
     // SVG LOADER
     //-------- ----------
     // instantiate a loader
@@ -136,6 +116,8 @@ For this example with the create mesh objects helper I am using the [basic mater
         function ( data ) {
             var group = createMeshGroupFromSVG(data, 1);
             scene.add(group);
+            // render
+            renderer.render(scene, camera);
         },
         // called when loading is in progresses
         function ( xhr ) {
@@ -151,6 +133,10 @@ For this example with the create mesh objects helper I am using the [basic mater
 ```
 
 ## 2 - Merge Geometry Example
+
+When it comes to loading in SVG data often I will have more than one shape, that will result in more than one shape geometry. This will also mean that I will need to have a group of mesh objects for each shape. Although in many cases this will work fine, and in some cases it will actaully be what I want to happen, there may be some situaitons in which I will want to merge all these shape geomeryties into one singel geomerty.
+
+One way to do this is to use the merge buffer geomerties method of the [buffer geometry utils](https://threejs.org/docs/#examples/en/utils/BufferGeometryUtils). This buffer geomety utils is yet another feature that is not baked into the core of threejs istelf but must be added by loading an addtional external file on top of threejs that can be found in the [threejs Github repo](https://github.com/mrdoob/three.js/blob/r140/examples/js/utils/BufferGeometryUtils.js).
 
 ```js
 // SVG LOAD demo using THREE.BufferGeometryUtils.mergeBufferGeometries
@@ -191,25 +177,6 @@ For this example with the create mesh objects helper I am using the [basic mater
         }
         return geoArray;
     };
-    // create mesh group from SVG
-    const createMeshGroupFromSVG = (data, si, ei) => {
-        si = si === undefined ? 0 : si;
-        ei = ei === undefined ? data.paths.length: ei;
-        const geoArray = createShapeGeosFromSVG(data, si, ei);
-        const group = new THREE.Group();
-        geoArray.forEach( (geo, i) => {
-            // each mesh gets its own material
-            const material = new THREE.MeshBasicMaterial( {
-                color: data.paths[si + i].color, // using paths data for color
-                side: THREE.DoubleSide,
-                depthWrite: false,
-                wireframe: false
-            });
-            const mesh = new THREE.Mesh( geo, material );
-            group.add(mesh);
-        });
-        return group;
-    };
     // create a single mesh from SVG data
     const createGeoFromSVG = (data, si, ei) => {
         const geoArray = createShapeGeosFromSVG(data, si, ei)
@@ -224,26 +191,6 @@ For this example with the create mesh objects helper I am using the [basic mater
     grid.material.transparent = true;
     grid.material.opacity = 0.25;;
     scene.add(grid);
-    //-------- ----------
-    // CONTROL
-    //-------- ----------
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    let fps = 30,
-    lt = new Date();
-    const loop = function () {
-        let now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            // render
-            renderer.render(scene, camera);
-            lt = now;
-        }
-    };
-    loop();
     //-------- ----------
     // SVG LOADER
     //-------- ----------
@@ -264,6 +211,7 @@ For this example with the create mesh objects helper I am using the [basic mater
                 side: THREE.DoubleSide
             }));
             scene.add(mesh);
+            renderer.render(scene, camera);
         },
         // called when loading is in progresses
         function ( xhr ) {
@@ -279,6 +227,8 @@ For this example with the create mesh objects helper I am using the [basic mater
 ```
 
 ## 3 - Extrude Geometry Example
+
+There are other options for createing a geometry from a shape other than that of the THREE.ShapeGeometry constructor, one of which would be the THREE.ExtrudeGeometry constructor. This allows me to create a geometry that is like that of the 2d plain kind of shape of the shape geometry, but I can add a depth option that will extrdue out the 2d shape. I have found that when doing so I want to disbale bevel and also adjust the options for curveSegments and steps.
 
 ```js
 // Extrude Geo
