@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-16 09:15:46
-version: 1.1
+updated: 2022-09-16 09:25:40
+version: 1.2
 ---
 
-There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the SVG Loader. Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make shapes that can be used with the extrude geometry constructor.
+There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape) that can be used with the [Extrude Geometry constructor](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
 
 <!-- more -->
 
