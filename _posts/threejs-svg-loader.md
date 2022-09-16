@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-16 15:11:25
-version: 1.8
+updated: 2022-09-16 15:19:10
+version: 1.9
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -648,5 +648,6 @@ So the general idea here is to create some textures, and also to come up with a 
 
 ## Conclusion
 
-The SVG loader is then the oficial file for loading in SVG data and doing something with the 2d path data that is given in the data result object when loading works fine with the SVG.
+The SVG loader is then the official file for loading in SVG data and doing something with the 2d path data that is given in the data result object when loading works fine with the SVG. There is then a number of things that can be done with this 2d path data, that are typical of doing so and also maybe not so typical. For one thing I can do something like create a 2d shape geometry, or an extrude geometry. when doing so things can end up getting a little involved when it comes to getting textures to work they way that I want them to though. There is then also doing things that are maybe not so typical such as using SVG path data as a way to define paths in which I would like to move objects over time. There are all kinds of things that I can do with the array of Vector2 class instances beyond just that of simply making shapes.
 
+Still there are limitations to what can be done with SVG, or things prove to be a little to complex compared to other options. There is not just importing SVG into threejs, but rather importing it into a program like that of blender, and then doing what I need to do in order to [create a DAE file](/2021/04/30/threejs-dae-collada-loader/) from there. In blender I can work out what the deal should be not just with extrusion if that is what I am to do with it, but also it is easier to work out what the deal should be with respect to things like UV Mapping.
