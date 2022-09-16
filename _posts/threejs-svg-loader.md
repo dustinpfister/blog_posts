@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-16 15:32:59
-version: 1.11
+updated: 2022-09-16 15:40:53
+version: 1.12
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -782,6 +782,8 @@ So making a buffer geometry from an array of points and the calling the bound bo
 
 ## 6 - Points
 
+Yet even another options would be to create an instance of Points rather than the usual Mesh objects. When it comes to this I am limited in terms of materials as there is only one option which is the [Points Material](/2018/05/12/threejs-points-material/). The only options that I might set for this kind of material are size and color. As I covered in the above examples in the paths option there is not using points and points material by rather  running over the array of vector2 class instances and creating a mesh object for each point. When doing things that way I can use any build in geometry constructor and thus any mesh material that I want. 
+
 ```js
 // Points SVG DEMO
 (function () {
@@ -832,6 +834,8 @@ So making a buffer geometry from an array of points and the calling the bound bo
 ```
 
 ## 7 - Lines
+
+What if I just want to create some [Lines](/2018/04/19/threejs-line/) with the SVG data, for that one option might be to use the THREE.Line constructor in place of mesh. When doing so I have two options in terms of materials, one of which is the Line Basic material which is what I would typically use. When setting options for the line basic material certain options will only work with certain platforms and renderers. For the most part then it is only color and the fog Boolean that will work for most renderers and platforms.
 
 ```js
 // Lines SVG DEMO
