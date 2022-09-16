@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-16 15:07:42
-version: 1.7
+updated: 2022-09-16 15:11:25
+version: 1.8
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -16,7 +16,7 @@ There are a number of options for additional asset loaders in the Github Reposit
 
 ## The SVG Loader and what to know first
 
-There is a lot that one will need to be aware of before hand when it comes to using these source code exmaples that I am wriitng about here. As always I assume that you have at least a little expernce with client side javaScript and the underlaying skills that are needed on top of that with HTML and CSS. However on top of that there are also a great deal of other features in the threejs libray alone that you might want to play around with a little first also. I wil of course not be getting into great detail with all of this in this post, but I will at least mentine a few things in this section before getting into the first SVG Loader example.
+There is a lot that one will need to be aware of before hand when it comes to using these source code examples that I am writing about here. As always I assume that you have at least a little experience with client side javaScript and the underlying skills that are needed on top of that with HTML and CSS. However on top of that there are also a great deal of other features in the threejs library alone that you might want to play around with a little first also. I will of course not be getting into great detail with all of this in this post, but I will at least mention a few things in this section before getting into the first SVG Loader example.
 
 ### There is also knowing how to go about making an SVG file first
 
@@ -24,11 +24,11 @@ Although it might be best to still use some kind of image editor to create SVG G
 
 ### More than one file to use beyond just that of threejs alone
 
-In these examples I am using more than one extral file beyond just that of the core threejs librray. For one thing the SVG loader itself is not baked into the core of the threejs librray, but rather it is an addtional optional loader that can be [found in the examples folder of the threejs github reposatory](https://github.com/mrdoob/three.js/blob/r140/examples/js/loaders/SVGLoader.js). So I am linking to the threejs library and the SVGLoader.js file as well just when it comes to offical code from the repo on Github. On top of that I am also linking to my own javaScript files on an example by example basis, and of course I am also loading one or more SVG files as well.
+In these examples I am using more than one extral file beyond just that of the core threejs library. For one thing the SVG loader itself is not baked into the core of the threejs library, but rather it is an additional optional loader that can be [found in the examples folder of the threejs github repository](https://github.com/mrdoob/three.js/blob/r140/examples/js/loaders/SVGLoader.js). So I am linking to the threejs library and the SVGLoader.js file as well just when it comes to official code from the repo on Github. On top of that I am also linking to my own javaScript files on an example by example basis, and of course I am also loading one or more SVG files as well.
 
 ### Source code and SVG assets are up on my Github
 
-The source code examples that I am writing about here, as well as the SVG asssets, and addtonal notes and files [can be found in my test threejs reposatory up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-svg-loader).
+The source code examples that I am writing about here, as well as the SVG assets, and additional notes and files [can be found in my test threejs repository up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-svg-loader).
 
 ### Version Numbers Matter
 
@@ -39,11 +39,11 @@ When I first wrote this post I was using r140 of threejs which was released in M
 
 Often I will want to use the Shape Geometry constructor as a way to go about adding svg to a threejs project. So then one way or another I will need to crate one or more Shape objects from the SVG data when loading an SVG file. The good news with this is that there is a static method of the SVG loader to help with this process.
 
-So then when I create an instance of the SVG loader and call the load method of it, in the body of the callback function that I give the load method that will fire the file finishes loading I will have a data object. This data object will contain a property called paths that will be an array of [ShapePaths](https://threejs.org/docs/#api/en/extras/core/ShapePath). I can then loop over this paths array then and pass each instance of shapePaths to the THREE.SVGLoader.createShapes method, the returned result of this will then be an array of Shapes. I can then loop over this array of shapes and for eahc shape object I can use that as a way to create any kind of buffer geometry with a buffer geomerty constrcuor that will take a shape as an argument, such as the THREE.ShapeGeometry constructor.
+So then when I create an instance of the SVG loader and call the load method of it, in the body of the callback function that I give the load method that will fire the file finishes loading I will have a data object. This data object will contain a property called paths that will be an array of [ShapePaths](https://threejs.org/docs/#api/en/extras/core/ShapePath). I can then loop over this paths array then and pass each instance of shapePaths to the THREE.SVGLoader.createShapes method, the returned result of this will then be an array of Shapes. I can then loop over this array of shapes and for each shape object I can use that as a way to create any kind of buffer geometry with a buffer geometry constructor that will take a shape as an argument, such as the THREE.ShapeGeometry constructor.
 
-For this example on making shapes from loaded SVG data then I have a helper function that will create and return an array of shape geomerties. I then have another helper function that will create an array of mesh objects by calling this other helper function that creates the array of shape geomeries, then making a mesh object for each of them. 
+For this example on making shapes from loaded SVG data then I have a helper function that will create and return an array of shape geometries. I then have another helper function that will create an array of mesh objects by calling this other helper function that creates the array of shape geometries, then making a mesh object for each of them. 
 
-For this example with the create mesh objects helper I am using the [basic material](/2018/05/05/threejs-basic-material/) for starters. Each time I create the instance of the basic material I can use the color data from the svg for each path for setting the defuse color for each basic material. Sense these are 2d shapes that I am addine into threejs I might want to set the [depthWrite](https://threejs.org/docs/#api/en/materials/Material.depthWrite) property to false. Also it would be a good idea to set the side peoperty of the material to the THREE.DocubleSide constant.
+For this example with the create mesh objects helper I am using the [basic material](/2018/05/05/threejs-basic-material/) for starters. Each time I create the instance of the basic material I can use the color data from the svg for each path for setting the defuse color for each basic material. Sense these are 2d shapes that I am adding into threejs I might want to set the [depthWrite](https://threejs.org/docs/#api/en/materials/Material.depthWrite) property to false. Also it would be a good idea to set the side property of the material to the THREE.DocubleSide constant.
 
 ```js
 // shape SVG DEMO
@@ -134,9 +134,9 @@ For this example with the create mesh objects helper I am using the [basic mater
 
 ## 2 - Merge Geometry Example
 
-When it comes to loading in SVG data often I will have more than one shape, that will result in more than one shape geometry. This will also mean that I will need to have a group of mesh objects for each shape. Although in many cases this will work fine, and in some cases it will actaully be what I want to happen, there may be some situaitons in which I will want to merge all these shape geomeryties into one singel geomerty.
+When it comes to loading in SVG data often I will have more than one shape, that will result in more than one shape geometry. This will also mean that I will need to have a group of mesh objects for each shape. Although in many cases this will work fine, and in some cases it will actually be what I want to happen, there may be some situations in which I will want to merge all these shape geometries into one single geometry.
 
-One way to do this is to use the merge buffer geomerties method of the [buffer geometry utils](https://threejs.org/docs/#examples/en/utils/BufferGeometryUtils). This buffer geomety utils is yet another feature that is not baked into the core of threejs istelf but must be added by loading an addtional external file on top of threejs that can be found in the [threejs Github repo](https://github.com/mrdoob/three.js/blob/r140/examples/js/utils/BufferGeometryUtils.js).
+One way to do this is to use the merge buffer geometries method of the [buffer geometry utils](https://threejs.org/docs/#examples/en/utils/BufferGeometryUtils). This buffer geometry utils is yet another feature that is not baked into the core of threejs itself but must be added by loading an additional external file on top of threejs that can be found in the [threejs Github repo](https://github.com/mrdoob/three.js/blob/r140/examples/js/utils/BufferGeometryUtils.js).
 
 ```js
 // SVG LOAD demo using THREE.BufferGeometryUtils.mergeBufferGeometries
@@ -228,7 +228,7 @@ One way to do this is to use the merge buffer geomerties method of the [buffer g
 
 ## 3 - Extrude Geometry Example
 
-There are other options for createing a geometry from a shape other than that of the THREE.ShapeGeometry constructor, one of which would be the THREE.ExtrudeGeometry constructor. This allows me to create a geometry that is like that of the 2d plain kind of shape of the shape geometry, but I can add a depth option that will extrdue out the 2d shape. I have found that when doing so I want to disbale bevel and also adjust the options for curveSegments and steps.
+There are other options for creating a geometry from a shape other than that of the THREE.ShapeGeometry constructor, one of which would be the THREE.ExtrudeGeometry constructor. This allows me to create a geometry that is like that of the 2d plain kind of shape of the shape geometry, but I can add a depth option that will extrude out the 2d shape. I have found that when doing so I want to disable bevel and also adjust the options for curveSegments and steps.
 
 ```js
 // Extrude Geo
@@ -348,13 +348,13 @@ There are other options for createing a geometry from a shape other than that of
 
 ## 4 - data textures, and custom uv generator
 
-So at this point I have covered the basics of using the SVG loader, and that there is cretaing extrude geomerty which is one option as to what can be done with the loaded data. I have all ready covered a basic example of using extrude geomerty that seems to work okay, but there is just one little problem that comes up when trying to add some texture to the geometry. With that said I will some times need to work out a custom way to generate the [UV attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) of the extrude geomerty.
+So at this point I have covered the basics of using the SVG loader, and that there is creating extrude geometry which is one option as to what can be done with the loaded data. I have all ready covered a basic example of using extrude geometry that seems to work okay, but there is just one little problem that comes up when trying to add some texture to the geometry. With that said I will some times need to work out a custom way to generate the [UV attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) of the extrude geometry.
 
 Also speaking of textures one way or another I will need to create some textures to use with the materials that will be used for the mesh objects. There are many options for this sort of thing such as also using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in textures that are in the from of external image files. However there is also a few ways to create some texture by way of a little javaScript code such as [canavs textures](/2018/04/17/threejs-canvas-texture/), or for the sake of this example [data textures](/2022/04/15/threejs-data-texture/).
 
 ### 4.2 - Data textures module
 
-This is what I have togeather for a general data texture module that has been serving me well thus far in various projects. I have a few options here that allow for me to create a data texture on a pixle by pixle basis, one such method I can all directly, and another I can give data that is a color index for each pixle locaiton called fromPXDATA. I have another funciton that uses the THREE.MathUtils.seededRandom method as a way to create a random noise texture.
+This is what I have together for a general data texture module that has been serving me well thus far in various projects. I have a few options here that allow for me to create a data texture on a pixle by pixle basis, one such method I can all directly, and another I can give data that is a color index for each pixle location called fromPXDATA. I have another function that uses the THREE.MathUtils.seededRandom method as a way to create a random noise texture.
 
 ```js
 // ********** **********
@@ -438,7 +438,7 @@ var datatex = (function () {
 
 ### 4.1 - Main javaScript file
 
-So the general idea here is to create some textures, and also to come up with a custom UV Generator funcitons for the extrude geometry that will be used with the SVG data.
+So the general idea here is to create some textures, and also to come up with a custom UV Generator functions for the extrude geometry that will be used with the SVG data.
 
 ```js
 // Extrude Geo, Custom UV Generator and data textures
@@ -646,8 +646,7 @@ So the general idea here is to create some textures, and also to come up with a 
 }());
 ```
 
-## Concusion
+## Conclusion
 
 The SVG loader is then the oficial file for loading in SVG data and doing something with the 2d path data that is given in the data result object when loading works fine with the SVG.
-
 
