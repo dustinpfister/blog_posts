@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-16 15:19:10
-version: 1.9
+updated: 2022-09-16 15:31:05
+version: 1.10
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -632,6 +632,140 @@ So the general idea here is to create some textures, and also to come up with a 
             scene.add(group);
             // start loop
             loop();
+        },
+        // called when loading is in progresses
+        function ( xhr ) {
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        },
+        // called when loading has errors
+        function ( error ) {
+            console.log( 'An error happened' );
+            console.log(error)
+        }
+    );
+}());
+```
+
+## 5 - Just working with Paths
+
+In this section I have worked out a number of examples that have to do with just working with the paths data for doing all kinds of various not so typical tasks with SVG data. That is that often I will want to just create a single geometry, or a group of geometries from the SVG data to make one or more mesh objects. However in some cases I might want to do something else with the path data that is not so typical.
+
+### 5.1 - Box3 from Path
+
+One thing that can be done is to create an array of points from the path data by which I mean an array of THREE.Vector3 class instances. After doing so I can use this kind of array to create a buffer geometry by making use of the set from points method of the buffer geometry class. Once I have a buffer geometry class I can do something like call the compute bounding box method to get an instance of Box3 that I can then use with the box3 helper.
+
+```js
+// Paths SVG DEMO
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER, LIGHT
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#000000');
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(250, 250, 250);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // SVG LOADER
+    //-------- ----------
+    // instantiate a loader
+    const loader = new THREE.SVGLoader();
+    // load a SVG resource
+    loader.load(
+        // resource URL
+        '/forpost/threejs-svg-loader/svg/fff.svg',
+        // called when the resource is loaded
+        function ( data ) {
+            // create box3 for each path as bounding box for Buffer Geometry created from points
+            data.paths.forEach((path)=>{
+                const points = path.subPaths[0].getPoints();
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                geo.computeBoundingBox();
+                const helper = new THREE.Box3Helper(geo.boundingBox);
+                scene.add(helper);
+            });
+            renderer.render(scene, camera);
+        },
+        // called when loading is in progresses
+        function ( xhr ) {
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        },
+        // called when loading has errors
+        function ( error ) {
+            console.log( 'An error happened' );
+            console.log(error)
+        }
+    );
+}());
+```
+
+### 5.2 - create mesh objects for each point
+
+So making a buffer geometry from an array of points and the calling the bound box method of the geometry is one thing. However another thing that comes to mind is to use this array of Vector2 class instances as a way to create a bunch of mesh objects for each point.
+
+```js
+// Paths SVG DEMO
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER, LIGHT
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#000000');
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(150, 150, 150);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // SVG LOADER
+    //-------- ----------
+    // instantiate a loader
+    const loader = new THREE.SVGLoader();
+    // load a SVG resource
+    loader.load(
+        // resource URL
+        '/forpost/threejs-svg-loader/svg/fff.svg',
+        // called when the resource is loaded
+        function ( data ) {
+            // get minMax value for all paths
+            const minMax =  data.paths.reduce( (acc, path)=>{
+                path.subPaths[0].getPoints().forEach((v2)=>{
+                    if(v2.x < acc.xMin){
+                        acc.xMin = v2.x;
+                    }
+                    if(v2.x > acc.xMax){
+                        acc.xMax = v2.x;
+                    }
+                    if(v2.y < acc.yMin){
+                       acc.yMin = v2.y;
+                    }
+                    if(v2.y > acc.yMax){
+                        acc.yMax = v2.y;
+                    }
+                });
+               return acc;
+            }, {xMin: Infinity, xMax: -Infinity, yMin: Infinity, yMax: -Infinity});
+            // create a group of mesh objects using each Vector2 of eash path
+            const group = new THREE.Group();
+            data.paths.forEach(function(path){
+                //const path = path.subPaths[0];
+                const points = path.subPaths[0].getPoints();
+                // create a mesh for each point
+                points.forEach(function(v2){
+                    const mesh = new THREE.Mesh(new THREE.SphereGeometry(1, 10, 10), new THREE.MeshNormalMaterial());
+                    mesh.position.set(v2.x - minMax.xMax / 2, v2.y - minMax.yMax / 2, 0);
+                    group.add(mesh);
+                });
+            });
+            scene.add(group);
+            group.rotation.x = Math.PI;
+            renderer.render(scene, camera);
         },
         // called when loading is in progresses
         function ( xhr ) {
