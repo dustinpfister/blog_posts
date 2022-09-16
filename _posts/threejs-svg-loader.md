@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-16 13:44:36
-version: 1.4
+updated: 2022-09-16 14:34:18
+version: 1.5
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -35,7 +35,15 @@ The source code examples that I am writing about here, as well as the SVG assset
 When I first wrote this post I was using r140 of threejs which was released in May of 2022.
 
 
-## 1 - Basic Shape example of SVG Loader
+## 1 - Basic Shapes example of SVG Loader
+
+Often I will want to use the Shape Geometry constructor as a way to go about adding svg to a threejs project. So then one way or another I will need to crate one or more Shape objects from the SVG data when loading an SVG file. The good news with this is that there is a static method of the SVG loader to help with this process.
+
+So then when I create an instance of the SVG loader and call the load method of it, in the body of the callback function that I give the load method that will fire the file finishes loading I will have a data object. This data object will contain a property called paths that will be an array of [ShapePaths](https://threejs.org/docs/#api/en/extras/core/ShapePath). I can then loop over this paths array then and pass each instance of shapePaths to the THREE.SVGLoader.createShapes method, the returned result of this will then be an array of Shapes. I can then loop over this array of shapes and for eahc shape object I can use that as a way to create any kind of buffer geometry with a buffer geomerty constrcuor that will take a shape as an argument, such as the THREE.ShapeGeometry constructor.
+
+For this example on making shapes from loaded SVG data then I have a helper function that will create and return an array of shape geomerties. I then have another helper function that will create an array of mesh objects by calling this other helper function that creates the array of shape geomeries, then making a mesh object for each of them. 
+
+For this example with the create mesh objects helper I am using the [basic material](/2018/05/05/threejs-basic-material/) for starters. Each time I create the instance of the basic material I can use the color data from the svg for each path for setting the defuse color for each basic material. Sense these are 2d shapes that I am addine into threejs I might want to set the [depthWrite](https://threejs.org/docs/#api/en/materials/Material.depthWrite) property to false. Also it would be a good idea to set the side peoperty of the material to the THREE.DocubleSide constant.
 
 ```js
 // shape SVG DEMO
