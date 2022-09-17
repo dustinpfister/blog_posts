@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-17 14:52:48
-version: 1.29
+updated: 2022-09-17 15:02:58
+version: 1.30
 ---
 
 In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a cube, resulting in a background that can be described then as a kind of cube texture, or skybox if you prefer. I might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
@@ -128,11 +128,11 @@ This results in a scene where I have the cube texture as the background, and I a
 
 I have cube textures to load before hand I can use the cube texture loader as a way to load in those textures and then just go ahead and use the cube texture class instance that is given in the load funciton to add a background or an enviroement map. However what if I want to make my own cube textures using a little javaScript code? This task has proven to be a little involved, and although there are a lot of blog posts on this topic many of them are just writing about using the cube texture loader to load external images that have been made by someone else, somehow.
 
-In this section I will be creating textures using canvas elements to have a cube texture.
+In this section I will be creating textures using canvas elements to have a cube texture. When making a cube texture this was the easy part os just simply create six textures with canvas elements and the 2d drawing context. The not so easy part of fidnign a way to create a seemless set of textures, and then mutate the state of the images so that they will work well as a set of images for a cube texture. Although I have a solution that might still be a little ruff around the edigeds with this one, I thnk that I have at least took a step or two in the right direction to say the least.
 
 ### 2.0 - A Canvas texture module
 
-I will want a canvas texture module that I often use when it comes to a project where I am using canvas elements to generate textures.
+I will want a canvas texture module to use with this set of examples, so let me take a moment to write a thing or two about that first.
 
 ```js
 (function (canvasTextureMod) {
