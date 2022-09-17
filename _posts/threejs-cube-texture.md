@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-17 15:02:58
-version: 1.30
+updated: 2022-09-17 15:17:21
+version: 1.31
 ---
 
 In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a cube, resulting in a background that can be described then as a kind of cube texture, or skybox if you prefer. I might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
@@ -132,7 +132,9 @@ In this section I will be creating textures using canvas elements to have a cube
 
 ### 2.0 - A Canvas texture module
 
-I will want a canvas texture module to use with this set of examples, so let me take a moment to write a thing or two about that first.
+I will want a canvas texture module to use with this set of examples, so let me take a moment to write a thing or two about that first. This module contains a create canvas texture method that is a general way of going about creating a texture with canvas by passing a draw function that will create the canvas content, and then a size option that will set bolth the width and height of the canvas.
+
+This is a crude canavs module, I know, and I will likley replace this with somehting better in a future edit of this post. However for this it will work well enough for what I need this for.
 
 ```js
 (function (canvasTextureMod) {
@@ -186,7 +188,7 @@ I will want a canvas texture module to use with this set of examples, so let me 
 
 ### 2.1 - Using the canvas texture module
 
-So now I can use this canvas texture module to just quickly create some textures, and then in turn I can use that texture to create a cube texture instance.
+So now I can use this canvas module to just quickly create a texture, and then in turn I can use that texture to create a cube texture instance. For this basic starting exmaple I am using the same texture for all six sides of the cube, and have went with the basic square function of the module to just create a simple square image.
 
 ```js
 (function(){
@@ -226,7 +228,13 @@ So now I can use this canvas texture module to just quickly create some textures
 }());
 ```
 
-### 2.2 - Grid example
+Although this might work there is one problem all ready and that is that by the look of it I am very much aware of the fact that the cube texture is, well, a cube. The reason for this is that I am just making a square texture without running it through any addtional processing of any kind so that the image gets distored in a way in which it will look right.
+
+So maybe if I just simple want to create a cube texture with canavs elements, doing that is easy enoght, but the hard part is muttaing state of the textures that i create to get them to look a certain way that is a desired outcome.
+
+### 2.2 - A first step might be a Grid example
+
+I am thinking that the first step in the direction of making a system for generating cube textures will involve some kind of grid system that contains data for each pixle that forms a texture.
 
 ```js
 (function(){
@@ -321,7 +329,11 @@ So now I can use this canvas texture module to just quickly create some textures
 }());
 ```
 
-### 2.3 - distance distort example
+So far so good, but this is still an outcome that is not all that different from the basic exmaple of this seciton. In order to really get what i want to work I will need to find a way to create a new grid object from a grid object amd adjust things so that they are distored so that it will look right if that makes any scene.
+
+### 2.3 - Distance distort example
+
+This is the first example where I worked out a distance based distore funciton that will create a new grid of image color data from another one but apply a kind of circle distroed for each pxile based on the distance each pixle is from the center of the image.
 
 ```js
 (function(){
