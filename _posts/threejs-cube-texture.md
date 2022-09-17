@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-17 15:22:02
-version: 1.32
+updated: 2022-09-17 16:11:34
+version: 1.33
 ---
 
 In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a cube, resulting in a background that can be described then as a kind of cube texture, or skybox if you prefer. I might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
@@ -335,7 +335,9 @@ So far so good, but this is still an outcome that is not all that different from
 
 This is the first example where I worked out a distance based distore funciton that will create a new grid of image color data from another one but apply a kind of circle distroed for each pxile based on the distance each pixle is from the center of the image. For this exmaple I worked out a number of additonal helper functions that have to do with getting an index value in the gird if I know the xn and y values along with the inverse of that. However the main funciton that is really work writign about in detail here would be the create remaped grid helper function.
 
-As the name sugests the create remaped grid function will create a new grid from a grid with the pixle data values mutate to get a deisred outcome for cube textures.
+As the name sugests the create remaped grid function will create a new grid from a grid with the pixle data values mutated to get a deisred outcome for cube textures. This is done by creating a new grid object and just copying the width value from the source grid object, and creating a refernce to the same palette array. The real part of this that is of interest though is how I am going about creating the new px data array for the new grid. For that I call the array map method off of the px data array of the source grid, and then prefrom a fair amount of logic to create a new state of color index values.
+
+The general idea here is to get a vector2 for the current pixle index value and use the distanceTo method of the Vector2 class to get the distance of the pixle to the center of the image. I can then use this distance compared to a max distance constand to get an alpha value between 0 and one for this pixle. There is then also using the Math.atan2 method to get the distance of the current pixle to the center of the image as well. This alpha value based on distance as well as the angle to the center can then be used to get a pixle index that is closer to the center, or the same pixle index actaully depeding on the value of the alpha value. This can then be used as a way to kind of remap the color index values of the image, and to some extent it seems to give a result that is what I want.
 
 ```js
 (function(){
