@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-17 14:46:14
-version: 1.28
+updated: 2022-09-17 14:52:48
+version: 1.29
 ---
 
 In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a cube, resulting in a background that can be described then as a kind of cube texture, or skybox if you prefer. I might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
@@ -126,7 +126,9 @@ This results in a scene where I have the cube texture as the background, and I a
 
 ## 2 - Creating a Cube Texture with canvas elements
 
-In this section I will be quickly going over an example where I am using canvas elements as a way to create an image to use to create a cube texture. However this is just for the sake of showing that it can be done and that is it.
+I have cube textures to load before hand I can use the cube texture loader as a way to load in those textures and then just go ahead and use the cube texture class instance that is given in the load funciton to add a background or an enviroement map. However what if I want to make my own cube textures using a little javaScript code? This task has proven to be a little involved, and although there are a lot of blog posts on this topic many of them are just writing about using the cube texture loader to load external images that have been made by someone else, somehow.
+
+In this section I will be creating textures using canvas elements to have a cube texture.
 
 ### 2.0 - A Canvas texture module
 
@@ -459,7 +461,7 @@ So now I can use this canvas texture module to just quickly create some textures
 }());
 ```
 
-## 3 - Conclusion
+## Conclusion
 
 The cube texture is mainly used for sky maps, and to use for a material when it comes to having an environment map, at least that is what I have been using for thus far anyway. In this post I was just going over how to make use of a sky map in terms of a set of images that have been made before hand. However I did not get around to how to go about making them from the ground up. Thus far I have found a number of resources on how to make them, but often the process of doing so is a little involved. I am interesting in finding ways to make these kinds of assets though, so if I find a quick sane way to go about making them maybe I will get around to edit this post with some info on that one.
 
