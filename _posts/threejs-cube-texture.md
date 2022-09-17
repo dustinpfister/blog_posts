@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-17 14:40:10
-version: 1.27
+updated: 2022-09-17 14:46:14
+version: 1.28
 ---
 
 In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a cube, resulting in a background that can be described then as a kind of cube texture, or skybox if you prefer. I might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
@@ -65,7 +65,7 @@ You can find the source code example that I am writing about in this post at my 
 When I first wrote this post I was using r91 of three.js, and the last time I edited this post I was using r140 to just make sure that the examples are still working with a late version of threejs. Three.js is still a very fast moving project, and code breaking changes happen with it all the time. Always be aware of what version of three.js you are using when working with various random code examples that make use of threejs on the open web as version numbers very much matter with this project.
 
 
-## 1 - Basic example of Cube Texture use
+## 1 - Basic example of Cube Texture using the built in loader
 
 For a basic example of cube texture use I used the Cube Texture loader to load a set of images that compose a [cube mapping](https://en.wikipedia.org/wiki/Cube_mapping) that I borrowed from the three.js repository as mentioned earlier to procure an instance of CubeTexture.
 
@@ -73,17 +73,19 @@ I then used the CubeTexture as an [environment map](https://en.wikipedia.org/wik
 
 ```js
 (function () {
-    // camera
-    var scene = new THREE.Scene();
-    // camera
-    var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
     camera.position.set(1, 1, 1);
     camera.lookAt(0, 0, 0);
-    // renderer
-    var renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
     // LOAD CUBE TEXTURE
+    //-------- ----------
     new THREE.CubeTextureLoader()
     .setPath('/img/cube/skybox/')
     .load(
@@ -97,21 +99,22 @@ I then used the CubeTexture as an [environment map](https://en.wikipedia.org/wik
             'nz.jpg'
         ],
         // what to do when loading is over
-        function (cubeTexture) {
+        (cubeTexture) => {
             // Geometry
-            var geometry = new THREE.SphereGeometry(1, 20, 20);
+            const geometry = new THREE.SphereGeometry(1, 60, 60);
             // Material
-            var material = new THREE.MeshBasicMaterial({
+            const material = new THREE.MeshBasicMaterial({
                 // CUBE TEXTURE can be used with
                 // the environment map property of
                 // a material.
                 envMap: cubeTexture
             });
             // Mesh
-            var mesh = new THREE.Mesh(geometry, material);
+            const mesh = new THREE.Mesh(geometry, material);
             scene.add(mesh);
             // CUBE TEXTURE is also an option for a background
             scene.background = cubeTexture;
+            // render
             renderer.render(scene, camera);
         }
     );
@@ -125,7 +128,7 @@ This results in a scene where I have the cube texture as the background, and I a
 
 In this section I will be quickly going over an example where I am using canvas elements as a way to create an image to use to create a cube texture. However this is just for the sake of showing that it can be done and that is it.
 
-### 2.1 - A Canvas texture module
+### 2.0 - A Canvas texture module
 
 I will want a canvas texture module that I often use when it comes to a project where I am using canvas elements to generate textures.
 
@@ -179,41 +182,281 @@ I will want a canvas texture module that I often use when it comes to a project 
 }(this['canvasTextureMod'] = {}));
 ```
 
-### 2.2 - Using the canvas texture module
+### 2.1 - Using the canvas texture module
 
 So now I can use this canvas texture module to just quickly create some textures, and then in turn I can use that texture to create a cube texture instance.
 
 ```js
-var scene = new THREE.Scene();
- 
-// CREATING A CUBE TEXTURE WITH CANVAS
-var texture = canvasTextureMod.basicSquare(['r1', 'r1', 'r1'], 128, 6, 'black', 32, 64).image;
-cubeTexture = new THREE.CubeTexture(new Array(6).fill(texture));
-cubeTexture.needsUpdate = true;
-scene.background = cubeTexture;
- 
-// CAMERA
-var camera = new THREE.PerspectiveCamera(50, 640 / 480, 1, 1000);
-camera.position.set(14, 6, 14);
-camera.lookAt(0, 0, 0);
- 
-// RENDERER
-var renderer = new THREE.WebGLRenderer();
-//renderer.width = 640;
-renderer.domElement.width = 640;
-renderer.domElement.height = 480;
-renderer.setViewport(0, 0, 640, 480);
-var container = document.getElementById('demo');
-container.appendChild(renderer.domElement);
- 
-// CONTROLS
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
-var loop = function () {
-    requestAnimationFrame(loop);
-    controls.update();
-    renderer.render(scene, camera);
-};
-loop();
+(function(){
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 640 / 480, 1, 1000);
+    camera.position.set(14, 6, 14);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.domElement.width = 640;
+    renderer.domElement.height = 480;
+    renderer.setViewport(0, 0, 640, 480);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CREATING A CUBE TEXTURE WITH CANVAS
+    //-------- ----------
+    const texture = canvasTextureMod.basicSquare(['r1', 'r1', 'r1'], 256, 1, 'black', 32, 64).image;
+    // same texture for all sides
+    cubeTexture = new THREE.CubeTexture(new Array(6).fill(texture));
+    cubeTexture.needsUpdate = true;
+    scene.background = cubeTexture;
+    //-------- ----------
+    // CONTROLS
+    //-------- ----------
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    const loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();
+        renderer.render(scene, camera);
+    };
+    loop();
+}());
+```
+
+### 2.2 - Grid example
+
+```js
+(function(){
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 640 / 480, 1, 1000);
+    camera.position.set(14, 6, 14);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.domElement.width = 640;
+    renderer.domElement.height = 480;
+    renderer.setViewport(0, 0, 640, 480);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CREATING A CUBE TEXTURE WITH CANVAS
+    //-------- ----------
+    // square
+    const grid1 = {
+        w: 16,
+        pxData: [
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,
+            0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,
+            0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,
+            0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,
+            0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,
+            0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,
+            0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,
+            0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+            0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        ],
+        pal: [ [1,1,1], [0,0,0] ]
+    };
+    const getTextureFromGrid = (grid, canvasSize) => {
+        canvasSize = canvasSize === undefined ? 64 : canvasSize;
+        return canvasTextureMod.createCanvasTexture((ctx, canvas) => {
+            ctx.fillStyle='white';
+            ctx.fillRect(0,0,canvas.width, canvas.height);
+            let i = 0, len = grid.pxData.length;
+            while(i < len){
+                let pX = i % grid.w;
+                let pY = Math.floor(i / grid.w);
+                let c = grid.pal[ grid.pxData[i] ];
+                let color = new THREE.Color(c[0], c[1], c[2]);
+                ctx.fillStyle = color.getStyle();
+                let pxW = canvas.width / grid.w;
+                let pxH = canvas.height / grid.w;
+                ctx.fillRect(pX * pxW, pY * pxH, pxW, pxH);
+                i += 1;
+            }
+        }, canvasSize);
+    };
+    //-------- ----------
+    // BACKGROUND
+    //-------- ----------
+    const texture =  getTextureFromGrid(grid1, 256);
+    // same texture for all sides
+    cubeTexture = new THREE.CubeTexture(new Array(6).fill(texture.image));
+    cubeTexture.needsUpdate = true;
+    scene.background = cubeTexture;
+    //-------- ----------
+    // SPHERE
+    //-------- ----------
+    const sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(5, 30, 30), 
+        new THREE.MeshBasicMaterial({
+           envMap: texture
+        }) 
+    );
+    scene.add(sphere);
+    //-------- ----------
+    // CONTROLS
+    //-------- ----------
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    const loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();
+        renderer.render(scene, camera);
+    };
+    loop();
+}());
+```
+
+### 2.3 - distance distort example
+
+```js
+(function(){
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 640 / 480, 1, 1000);
+    camera.position.set(14, 6, 14);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.domElement.width = 640;
+    renderer.domElement.height = 480;
+    renderer.setViewport(0, 0, 640, 480);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPER FUNCTIONS
+    //-------- ----------
+    // get an px index if x and y are known
+    const getIndex = (grid, vx, y) => {
+        const px = THREE.MathUtils.euclideanModulo(vx, grid.w);
+        const py = THREE.MathUtils.euclideanModulo(y, grid.w);
+        const index = py * grid.w + px;
+        return index;
+    };
+    // get Vector2 if index is known but not x and y
+    const getVector2 = (grid, i) => {
+        let pi = THREE.MathUtils.euclideanModulo(i, grid.pxData.length);
+        let pX = pi % grid.w;
+        let pY = Math.floor(pi / grid.w);
+        let v2 = new THREE.Vector2(pX, pY);
+        return v2;
+    };
+    // create a remaped grid
+    const createRemapedGrid = (grid1, r1) => {
+        r1 = r1 === undefined ? Math.floor(grid1.w / 4) : r1;
+        const hw = grid1.w / 2;
+        const vHalf = new THREE.Vector2(hw - 0.5, hw - 0.5);  //!!! May have to adjust this between even and odd
+        const mDist = vHalf.distanceTo( new THREE.Vector2(0, 0) );
+        const grid2 = {
+            w: grid1.w,
+            pxData: grid1.pxData.map((currentColorIndex, i) => {
+                const v2 = getVector2(grid1, i);
+                const dist = v2.distanceTo( vHalf );
+                // dist alpha value, and angle to center
+                const dAlpha = dist / mDist;
+                const a = Math.atan2(v2.y - vHalf.y, v2.x - vHalf.x) + Math.PI;
+                // get another color index from closer to center
+                const x = v2.x + Math.round(Math.cos(a) * r1 * (1 - dAlpha));
+                const y = v2.y + Math.round(Math.sin(a) * r1 * (1 - dAlpha));
+                const refIndex = getIndex(grid1, x, y);
+                //console.log(i, a.toFixed(2), refIndex);
+                //return currentColorIndex;
+                return grid1.pxData[refIndex];
+            }),
+            pal: grid1.pal
+        };
+        return grid2;
+    };
+    // get a canvas texture from the given grid
+    const getTextureFromGrid = (grid, canvasSize) => {
+        canvasSize = canvasSize === undefined ? 64 : canvasSize;
+        return canvasTextureMod.createCanvasTexture((ctx, canvas) => {
+            ctx.fillStyle='white';
+            ctx.fillRect(0,0,canvas.width, canvas.height);
+            let i = 0, len = grid.pxData.length;
+            while(i < len){
+                let pX = i % grid.w;
+                let pY = Math.floor(i / grid.w);
+                let c = grid.pal[ grid.pxData[i] ];
+                let color = new THREE.Color(c[0], c[1], c[2]);
+                ctx.fillStyle = color.getStyle();
+                let pxW = canvas.width / grid.w;
+                let pxH = canvas.height / grid.w;
+                ctx.fillRect(pX * pxW, pY * pxH, pxW, pxH);
+                i += 1;
+            }
+        }, canvasSize);
+    };
+    //-------- ----------
+    // GRID AND RE MAPED GRID
+    //-------- ----------
+    const grid1 = {
+        w: 16,
+        pxData: [
+            0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
+            1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,
+            0,3,1,1,1,2,2,1,1,2,2,1,1,1,3,0,
+            0,3,1,4,4,4,4,4,4,4,4,4,4,1,3,0,
+            0,3,1,4,1,1,1,1,1,1,1,1,4,1,3,0,
+            0,3,2,4,1,3,3,3,3,3,3,1,4,2,3,0,
+            0,3,2,4,1,3,1,1,1,1,3,1,4,2,3,0,
+            0,3,1,4,1,3,1,2,2,1,3,1,4,1,3,0,
+            0,3,1,4,1,3,1,2,2,1,3,1,4,1,3,0,
+            0,3,2,4,1,3,1,1,1,1,3,1,4,2,3,0,
+            0,3,2,4,1,3,3,3,3,3,3,1,4,2,3,0,
+            0,3,1,4,1,1,1,1,1,1,1,1,4,1,3,0,
+            0,3,1,4,4,4,4,4,4,4,4,4,4,1,3,0,
+            0,3,1,1,1,2,2,1,1,2,2,1,1,1,3,0,
+            1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,
+            0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
+        ],
+        pal: [ [1,1,1], [0,0,0], [0,1,0], [0,0.6,0], [0, 0.3, 0] ]
+    };
+    const grid2 = createRemapedGrid(grid1, 4);
+    //-------- ----------
+    // BACKGROUND
+    //-------- ----------
+    const texture =  getTextureFromGrid(grid2, 256);
+    // same texture for all sides
+    cubeTexture = new THREE.CubeTexture(new Array(6).fill(texture.image));
+    cubeTexture.needsUpdate = true;
+    scene.background = cubeTexture;
+    //-------- ----------
+    // SPHERE
+    //-------- ----------
+    const sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(5, 30, 30), 
+        new THREE.MeshBasicMaterial({
+           envMap: texture
+        }) 
+    );
+    scene.add(sphere);
+    //-------- ----------
+    // CONTROLS
+    //-------- ----------
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    const loop = function () {
+        requestAnimationFrame(loop);
+        controls.update();
+        renderer.render(scene, camera);
+    };
+    loop();
+}());
 ```
 
 ## 3 - Conclusion
