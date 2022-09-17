@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-17 16:11:34
-version: 1.33
+updated: 2022-09-17 16:17:14
+version: 1.34
 ---
 
 In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a cube, resulting in a background that can be described then as a kind of cube texture, or skybox if you prefer. I might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
@@ -126,15 +126,15 @@ This results in a scene where I have the cube texture as the background, and I a
 
 ## 2 - Creating a Cube Texture with canvas elements
 
-I have cube textures to load before hand I can use the cube texture loader as a way to load in those textures and then just go ahead and use the cube texture class instance that is given in the load funciton to add a background or an enviroement map. However what if I want to make my own cube textures using a little javaScript code? This task has proven to be a little involved, and although there are a lot of blog posts on this topic many of them are just writing about using the cube texture loader to load external images that have been made by someone else, somehow.
+I have cube textures to load before hand I can use the cube texture loader as a way to load in those textures and then just go ahead and use the cube texture class instance that is given in the load function to add a background or an environment map. However what if I want to make my own cube textures using a little javaScript code? This task has proven to be a little involved, and although there are a lot of blog posts on this topic many of them are just writing about using the cube texture loader to load external images that have been made by someone else, somehow.
 
-In this section I will be creating textures using canvas elements to have a cube texture. When making a cube texture this was the easy part os just simply create six textures with canvas elements and the 2d drawing context. The not so easy part of fidnign a way to create a seemless set of textures, and then mutate the state of the images so that they will work well as a set of images for a cube texture. Although I have a solution that might still be a little ruff around the edigeds with this one, I thnk that I have at least took a step or two in the right direction to say the least.
+In this section I will be creating textures using canvas elements to have a cube texture. When making a cube texture this was the easy part to just simply create six textures with canvas elements and the 2d drawing context. The not so easy part of figuring a way to create a seamless set of textures, and then mutate the state of the images so that they will work well as a set of images for a cube texture. Although I have a solution that might still be a little ruff around the edges with this one, I think that I have at least took a step or two in the right direction to say the least.
 
 ### 2.0 - A Canvas texture module
 
-I will want a canvas texture module to use with this set of examples, so let me take a moment to write a thing or two about that first. This module contains a create canvas texture method that is a general way of going about creating a texture with canvas by passing a draw function that will create the canvas content, and then a size option that will set bolth the width and height of the canvas.
+I will want a canvas texture module to use with this set of examples, so let me take a moment to write a thing or two about that first. This module contains a create canvas texture method that is a general way of going about creating a texture with canvas by passing a draw function that will create the canvas content, and then a size option that will set both the width and height of the canvas.
 
-This is a crude canavs module, I know, and I will likley replace this with somehting better in a future edit of this post. However for this it will work well enough for what I need this for.
+This is a crude canvas module, I know, and I will likely replace this with something better in a future edit of this post. However for this it will work well enough for what I need this for.
 
 ```js
 (function (canvasTextureMod) {
@@ -188,7 +188,7 @@ This is a crude canavs module, I know, and I will likley replace this with someh
 
 ### 2.1 - Using the canvas texture module
 
-So now I can use this canvas module to just quickly create a texture, and then in turn I can use that texture to create a cube texture instance. For this basic starting exmaple I am using the same texture for all six sides of the cube, and have went with the basic square function of the module to just create a simple square image.
+So now I can use this canvas module to just quickly create a texture, and then in turn I can use that texture to create a cube texture instance. For this basic starting example I am using the same texture for all six sides of the cube, and have went with the basic square function of the module to just create a simple square image.
 
 ```js
 (function(){
@@ -228,13 +228,13 @@ So now I can use this canvas module to just quickly create a texture, and then i
 }());
 ```
 
-Although this might work there is one problem all ready and that is that by the look of it I am very much aware of the fact that the cube texture is, well, a cube. The reason for this is that I am just making a square texture without running it through any addtional processing of any kind so that the image gets distored in a way in which it will look right.
+Although this might work there is one problem all ready and that is that by the look of it I am very much aware of the fact that the cube texture is, well, a cube. The reason for this is that I am just making a square texture without running it through any additional processing of any kind so that the image gets distorted in a way in which it will look right.
 
-So maybe if I just simple want to create a cube texture with canavs elements, doing that is easy enoght, but the hard part is muttaing state of the textures that i create to get them to look a certain way that is a desired outcome.
+So maybe if I just simple want to create a cube texture with canvas elements, doing that is easy enough, but the hard part is mutating state of the textures that i create to get them to look a certain way that is a desired outcome.
 
 ### 2.2 - A first step might be a Grid example
 
-I am thinking that the first step in the direction of making a system for generating cube textures will involve some kind of grid system that contains data for each pixle that forms a texture.
+I am thinking that the first step in the direction of making a system for generating cube textures will involve some kind of grid system that contains data for each pixel that forms a texture.
 
 ```js
 (function(){
@@ -329,15 +329,15 @@ I am thinking that the first step in the direction of making a system for genera
 }());
 ```
 
-So far so good, but this is still an outcome that is not all that different from the basic exmaple of this seciton. In order to really get what i want to work I will need to find a way to create a new grid object from a grid object amd adjust things so that they are distored so that it will look right if that makes any scene.
+So far so good, but this is still an outcome that is not all that different from the basic example of this section. In order to really get what i want to work I will need to find a way to create a new grid object from a grid object and adjust things so that they are distorted so that it will look right if that makes any scene.
 
 ### 2.3 - Distance distort example
 
-This is the first example where I worked out a distance based distore funciton that will create a new grid of image color data from another one but apply a kind of circle distroed for each pxile based on the distance each pixle is from the center of the image. For this exmaple I worked out a number of additonal helper functions that have to do with getting an index value in the gird if I know the xn and y values along with the inverse of that. However the main funciton that is really work writign about in detail here would be the create remaped grid helper function.
+This is the first example where I worked out a distance based distort function that will create a new grid of image color data from another one but apply a kind of circle distorted for each pixel based on the distance each pixel is from the center of the image. For this example I worked out a number of additional helper functions that have to do with getting an index value in the gird if I know the x and y values along with the inverse of that. However the main function that is really work writing about in detail here would be the create remapped grid helper function.
 
-As the name sugests the create remaped grid function will create a new grid from a grid with the pixle data values mutated to get a deisred outcome for cube textures. This is done by creating a new grid object and just copying the width value from the source grid object, and creating a refernce to the same palette array. The real part of this that is of interest though is how I am going about creating the new px data array for the new grid. For that I call the array map method off of the px data array of the source grid, and then prefrom a fair amount of logic to create a new state of color index values.
+As the name suggests the create remapped grid function will create a new grid from a grid with the pixel data values mutated to get a desired outcome for cube textures. This is done by creating a new grid object and just copying the width value from the source grid object, and creating a reference to the same palette array. The real part of this that is of interest though is how I am going about creating the new px data array for the new grid. For that I call the array map method off of the px data array of the source grid, and then preform a fair amount of logic to create a new state of color index values.
 
-The general idea here is to get a vector2 for the current pixle index value and use the distanceTo method of the Vector2 class to get the distance of the pixle to the center of the image. I can then use this distance compared to a max distance constand to get an alpha value between 0 and one for this pixle. There is then also using the Math.atan2 method to get the distance of the current pixle to the center of the image as well. This alpha value based on distance as well as the angle to the center can then be used to get a pixle index that is closer to the center, or the same pixle index actaully depeding on the value of the alpha value. This can then be used as a way to kind of remap the color index values of the image, and to some extent it seems to give a result that is what I want.
+The general idea here is to get a vector2 for the current pixel index value and use the distance to method of the Vector2 class to get the distance of the pixel to the center of the image. I can then use this distance compared to a max distance constant to get an alpha value between 0 and one for this pixel. There is then also using the Math.atan2 method to get the distance of the current pixel to the center of the image as well. This alpha value based on distance as well as the angle to the center can then be used to get a pixel index that is closer to the center, or the same pixel index actually depending on the value of the alpha value. This can then be used as a way to kind of remap the color index values of the image, and to some extent it seems to give a result that is what I want.
 
 ```js
 (function(){
@@ -480,4 +480,3 @@ The general idea here is to get a vector2 for the current pixle index value and 
 ## Conclusion
 
 The cube texture is mainly used for sky maps, and to use for a material when it comes to having an environment map, at least that is what I have been using for thus far anyway. In this post I was just going over how to make use of a sky map in terms of a set of images that have been made before hand. However I did not get around to how to go about making them from the ground up. Thus far I have found a number of resources on how to make them, but often the process of doing so is a little involved. I am interesting in finding ways to make these kinds of assets though, so if I find a quick sane way to go about making them maybe I will get around to edit this post with some info on that one.
-
