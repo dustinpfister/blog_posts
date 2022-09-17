@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-05-30 16:43:11
-version: 1.26
+updated: 2022-09-17 14:40:10
+version: 1.27
 ---
 
 In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a cube, resulting in a background that can be described then as a kind of cube texture, or skybox if you prefer. I might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
@@ -19,14 +19,6 @@ A CubeTexture can be used with any property, of any material that makes use of a
 
 This is not a post for people that are new to three.js. If you are new to three.js you might try starting with my [getting started post](/2018/04/04/threejs-getting-started/) on the subject. This is also not a post on the basics of javaScript, and all other related background that might be require to get to this point. There is a great deal to learn about three.js, I am going to be suing things like materials, and meshes in this post you might try bouncing around [my other posts on three.js](/categories/three-js/), and as always there is the [official site](https://threejs.org/)on three.js as well to check out other topics in further detail.
 
-### Version Numbers matter with three.js
-
-When I first wrote this post I was using r91 of three.js, and the last time I edited this post I was using r135 to just make sure that the examples are still working with a late version of threejs. Three.js is still a very fast moving project, and code breaking changes happen with it all the time. Always be aware of what version of three.js you are using when working with various random code examples that make use of threejs on the open web as version numbers very much matter with this project.
-
-### The source code examples in this post are on Github
-
-You can find the source code example that I am writing about in this post at my text [threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-cube-texture). This is also the repository where I am parking the source code examples for my many other posts on threejs.
-
 ###  Having some images
 
 Before getting started making a cue texture one of the first things to work out is the images. I will need not just one, but six images, one for each side of a cube, thus the name cube texture. These should not just be any images also, they should be generated in a way in which they will work well for the intended purpose.
@@ -38,12 +30,10 @@ Getting into how to go about making these images could prove to be a whole other
 Although it is possible to work directly with the [CubeTexture constructor](https://threejs.org/docs/index.html#api/textures/CubeTexture), typical use will involve the [CubeTextureLoader](https://threejs.org/docs/index.html#api/loaders/CubeTextureLoader) that will give me an instance of CubeTexture.
 
 ```js
- 
     // LOAD CUBE TEXTURE
     new THREE.CubeTextureLoader()
     .setPath('/img/cube/skybox/')
     .load(
- 
         // urls of images used in the cube texture
         [
             'px.jpg',
@@ -53,23 +43,27 @@ Although it is possible to work directly with the [CubeTexture constructor](http
             'pz.jpg',
             'nz.jpg'
         ],
- 
         // what to do when loading is over
         function (cubeTexture) {
- 
             // CUBE TEXTURE is also an option for a background
             scene.background = cubeTexture;
- 
             renderer.render(scene, camera);
- 
         }
- 
     );
 ```
 
 The setPath method of the CubeTextureLoader instance can be used to set the base url of where the images are stored. Then the load method can be used to start loading some images that should be at that location. When calling the load method, at a minimum the first argument should be the filenames of the images. Although some examples make use of what is returned by the CubeTextureLoader I prefer to use the onload callback, which will be the second argument giave to the load method.
 
 If desired a third argument can be used that will be the on progress method, and a final argument given can be an on error method.
+
+### The source code examples in this post are on Github
+
+You can find the source code example that I am writing about in this post at my text [threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-cube-texture). This is also the repository where I am parking the source code examples for my many other posts on threejs.
+
+### Version Numbers matter with three.js
+
+When I first wrote this post I was using r91 of three.js, and the last time I edited this post I was using r140 to just make sure that the examples are still working with a late version of threejs. Three.js is still a very fast moving project, and code breaking changes happen with it all the time. Always be aware of what version of three.js you are using when working with various random code examples that make use of threejs on the open web as version numbers very much matter with this project.
+
 
 ## 1 - Basic example of Cube Texture use
 
