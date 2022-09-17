@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-17 15:17:21
-version: 1.31
+updated: 2022-09-17 15:22:02
+version: 1.32
 ---
 
 In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a cube, resulting in a background that can be described then as a kind of cube texture, or skybox if you prefer. I might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
@@ -333,7 +333,9 @@ So far so good, but this is still an outcome that is not all that different from
 
 ### 2.3 - Distance distort example
 
-This is the first example where I worked out a distance based distore funciton that will create a new grid of image color data from another one but apply a kind of circle distroed for each pxile based on the distance each pixle is from the center of the image.
+This is the first example where I worked out a distance based distore funciton that will create a new grid of image color data from another one but apply a kind of circle distroed for each pxile based on the distance each pixle is from the center of the image. For this exmaple I worked out a number of additonal helper functions that have to do with getting an index value in the gird if I know the xn and y values along with the inverse of that. However the main funciton that is really work writign about in detail here would be the create remaped grid helper function.
+
+As the name sugests the create remaped grid function will create a new grid from a grid with the pixle data values mutate to get a deisred outcome for cube textures.
 
 ```js
 (function(){
