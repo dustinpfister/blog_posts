@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2022-09-18 15:23:59
-version: 1.40
+updated: 2022-09-18 15:39:05
+version: 1.41
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -112,10 +112,11 @@ There are two kinds of fog that can be added to a scene in three.js which are [F
 
 ## 3 - Changing the background of the Scene with Scene.background
 
+It goes without saying that an important part of the scene instance is the background property. By default the value of the background is null but there are a number of kinds of values that can be set to this background property to have differing kinds of backgrounds for a scene object. The easy option is to just have a solid color background, but a texture as well as cube texture are other options if you want to get fancy with things.
 
 ### 3.1 - Basic static color background example
 
-It goes without saying that an important part of the scene instance is the background property. By default it is a solid black color, but it can be set to another solid color using THREE.Color.
+The easy option is to just set a simple solid color for the background of the scene. For this the best option might be to go with the THREE.Color class as a way to create and return a color object to set to the scene.background property. When doing so I can give three numbers in the range of 0 to 1 for the red, green, and blue color channels. There are a number of other options in the color class for setting a desired color, be sure to check out my [post on the THREE.Color constructor](/2021/05/03/threejs-color/) to get a better idea of what all the options are with this class.
 
 ```js
 //-------- ----------
@@ -139,6 +140,8 @@ renderer.render(scene, camera);
 ```
 
 ### 3.2 - Canvas texture exmaple of background
+
+Apart from setting a solid color for the background another option would be to use a simple 2d texture for a background. There are of source a whole lot of options for this sort of thing when it comes to loading a texture in terms of an external file, or generating one with javaScript code. For this example I am using a [canvas element as a way to create a texture](/2018/04/17/threejs-canvas-texture/) with a little javaScript code rather than loading an extrenal image assets. In any case the image width and height should be a power of two, and while I am at it I migth want to also adjust the offset and repeat Vector2 instance values to [adjust the aspect ration of the image that is used with the background](https://stackoverflow.com/questions/52624261/three-js-scaling-background-image-to-fit-window-without-stretching-it).
 
 ```js
 //-------- ----------
@@ -200,6 +203,10 @@ renderer.render(scene, camera);
 ```
 
 ### 3.3 - Cube texture background example
+
+I have written a [post on how to used a cube texture](/2018/04/22/threejs-cube-texture/) in which I get into how to go about doing just that in detail. However I will cover a javaScript solutuon for doing this sort of thing here to save you the trip. The easy part is just simply creating a cube texture, to do so I just need six images, or in this case use the same image for all six sides. In any case after the easy part is done the hard part is getting the textures to look right rather than having a look where it is obvious that we are in a box sort of speak.
+
+This javaScript solutuon for resolving this isshue seems to work okay, but I have not battle tested it as of this writing. Again you might want to chekc out my post on cube texture as I might have more up to date exmaple there that I have not covred here just yet. However the genera idea is to start out with one or more grids that have my raw seemless image data, and then run it threw a function that will remap the color data to make it look the way that it should.
 
 ```js
 (function(){
@@ -372,8 +379,6 @@ renderer.render(scene, camera);
 }());
 
 ```
-
-If you want to use a texture, or a cube texture that can be used as well. I have written a [post on how to used a cube texture](/2018/04/22/threejs-cube-texture/) in which I get into how to go about doing just that in detail. The process of doing so is a little complicated when it comes to using a cube texture that was made before hand, and making a skymap can prove to be a little involved. However it is a pretty cool background effect that can result in this texture that one can see in all directions so it is worth looking into more for sure.
 
 ## 4 - Using Scene.overrideMaterial to add a material that overrides all materials
 
