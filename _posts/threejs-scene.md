@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2022-09-18 15:39:05
-version: 1.41
+updated: 2022-09-18 15:41:13
+version: 1.42
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
 
-There is a great deal of other things to cover when it comes to a scene object though, such as the background and fog properties, and the fact that it inherits from the Object3d base class which allows for things like having a whole scene repositioned, and rotated just like mesh objects, cameras and anything based off of Object3d. So in this post I will be going over at least a few details that revolve around the topic of scene objects in the javaScript library known as threejs.
+There is a great deal of other things to cover when it comes to a scene object though, such as the background and fog properties, and the fact that it inherits from the Object3d base class which allows for things like having a whole scene re positioned, and rotated just like mesh objects, cameras and anything based off of Object3d. So in this post I will be going over at least a few details that revolve around the topic of scene objects in the java Script library known as threejs.
 
 <!-- more -->
 
@@ -19,7 +19,7 @@ There is a great deal of other things to cover when it comes to a scene object t
 
 This is an post on [three.js](https://threejs.org/) and even then this is just a general post that covers just one little constructor function known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to three.js you might want to start with [my getting started post on three.js](/2018/04/04/threejs-getting-started/) as a starting point. 
 
-If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) that might be worth checking out as there is always more to learn when it comes to javaScript alone. 
+If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) that might be worth checking out as there is always more to learn when it comes to java Script alone. 
 
 I then assume that you have at least some basic working knowledge of the basics of threejs and JavaScript, so I will not be getting into that here. However in this section I will quickly cover a few things that you might want to read up more on when it comes to getting a more solid understanding of the scene objects, and some other related topics that you show know in order to do something with a scene object.
 
@@ -139,9 +139,9 @@ renderer.render(scene, camera);
 
 ```
 
-### 3.2 - Canvas texture exmaple of background
+### 3.2 - Canvas texture example of background
 
-Apart from setting a solid color for the background another option would be to use a simple 2d texture for a background. There are of source a whole lot of options for this sort of thing when it comes to loading a texture in terms of an external file, or generating one with javaScript code. For this example I am using a [canvas element as a way to create a texture](/2018/04/17/threejs-canvas-texture/) with a little javaScript code rather than loading an extrenal image assets. In any case the image width and height should be a power of two, and while I am at it I migth want to also adjust the offset and repeat Vector2 instance values to [adjust the aspect ration of the image that is used with the background](https://stackoverflow.com/questions/52624261/three-js-scaling-background-image-to-fit-window-without-stretching-it).
+Apart from setting a solid color for the background another option would be to use a simple 2d texture for a background. There are of source a whole lot of options for this sort of thing when it comes to loading a texture in terms of an external file, or generating one with javaScript code. For this example I am using a [canvas element as a way to create a texture](/2018/04/17/threejs-canvas-texture/) with a little java Script code rather than loading an external image assets. In any case the image width and height should be a power of two, and while I am at it I might want to also adjust the offset and repeat Vector2 instance values to [adjust the aspect ration of the image that is used with the background](https://stackoverflow.com/questions/52624261/three-js-scaling-background-image-to-fit-window-without-stretching-it).
 
 ```js
 //-------- ----------
@@ -204,9 +204,9 @@ renderer.render(scene, camera);
 
 ### 3.3 - Cube texture background example
 
-I have written a [post on how to used a cube texture](/2018/04/22/threejs-cube-texture/) in which I get into how to go about doing just that in detail. However I will cover a javaScript solutuon for doing this sort of thing here to save you the trip. The easy part is just simply creating a cube texture, to do so I just need six images, or in this case use the same image for all six sides. In any case after the easy part is done the hard part is getting the textures to look right rather than having a look where it is obvious that we are in a box sort of speak.
+I have written a [post on how to used a cube texture](/2018/04/22/threejs-cube-texture/) in which I get into how to go about doing just that in detail. However I will cover a JavaScript solution for doing this sort of thing here to save you the trip. The easy part is just simply creating a cube texture, to do so I just need six images, or in this case use the same image for all six sides. In any case after the easy part is done the hard part is getting the textures to look right rather than having a look where it is obvious that we are in a box sort of speak.
 
-This javaScript solutuon for resolving this isshue seems to work okay, but I have not battle tested it as of this writing. Again you might want to chekc out my post on cube texture as I might have more up to date exmaple there that I have not covred here just yet. However the genera idea is to start out with one or more grids that have my raw seemless image data, and then run it threw a function that will remap the color data to make it look the way that it should.
+This JavaScript solution for resolving this issue seems to work okay, but I have not battle tested it as of this writing. Again you might want to check out my post on cube texture as I might have more up to date example there that I have not covered here just yet. However the genera idea is to start out with one or more grids that have my raw seamless image data, and then run it threw a function that will remap the color data to make it look the way that it should.
 
 ```js
 (function(){
