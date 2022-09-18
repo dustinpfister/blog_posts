@@ -5,13 +5,15 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-17 16:17:14
-version: 1.34
+updated: 2022-09-18 12:07:49
+version: 1.35
 ---
 
-In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a cube, resulting in a background that can be described then as a kind of cube texture, or skybox if you prefer. I might also want to have that kind of texture placed over the surface of some kind of mesh as well when it comes to adding some kind of reflection type effect in some cases as well. So then with that said in three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called the [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor, and as such the use of this will be the main topic of interest with todays post on threejs.
+In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would skin each side of the inside of a cube, resulting in a background that can be described as a kind of cube texture. Other terms for this kind of cube texture might also be [skybox](https://en.wikipedia.org/wiki/Skybox_%28video_games%29), or [cube mapping](https://en.wikipedia.org/wiki/Cube_mapping). This kind of texture can be set to the background property of a scene object, but I also can place this kind of texture over the surface of some kind of mesh as well to create a reflection type effect often referred to as an environment map. 
 
-A CubeTexture can be used with any property, of any material that makes use of a cube texture. In addition it is also one of three options when it comes to setting the background of a scene, allowing me to make a background that is way cooler than just a solid color background that can often start to get old after making a few projects. So then in this post I will be writing about setting up a cube texture, loading it with the [CubeTextureLoader](https://threejs.org/docs/index.html#api/loaders/CubeTextureLoader), and using that cube texture as a background as well as a texture for a sphere.
+So then with that said in three.js there is a [constructor function](/2019/02/27/js-javascript-constructor) that will produce this kind of texture that can be used as a background, or environment map, called the [Cube Texture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor. There are two general way of using it, one of which would be to use the [Cube Texture Loader](https://threejs.org/docs/#api/en/loaders/CubeTextureLoader), and the other way would be to work directly with the CubeTexture Conctrsucor and obtain the textures needed by some other means.
+
+If I am to use the cube texture loader I will need six image files to load for each face of the cube. When going this way I can use any six images that I want but it might now look the way that I will want it to. There is some legwork that will have to be done in order to create a set of textures that are not just textures, but textures that will look they way that they should. There are a number of textures that one can look at as examples in the Github repository for threejs to get an idea of what I mean by this. The other option would be to use canvas textures, or data textures with the CubeTexture class directly and figure out what I need to do in terms of mutation of the color index data to get raw seamless images to look okay. In this post I will be covering code examples that have to do with both of these general ways of working with cube textures in threejs.
 
 <!-- more -->
 
