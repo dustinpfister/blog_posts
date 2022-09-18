@@ -5,11 +5,11 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-18 12:07:49
-version: 1.35
+updated: 2022-09-18 12:11:16
+version: 1.36
 ---
 
-In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would skin each side of the inside of a cube, resulting in a background that can be described as a kind of cube texture. Other terms for this kind of cube texture might also be [skybox](https://en.wikipedia.org/wiki/Skybox_%28video_games%29), or [cube mapping](https://en.wikipedia.org/wiki/Cube_mapping). This kind of texture can be set to the background property of a scene object, but I also can place this kind of texture over the surface of some kind of mesh as well to create a reflection type effect often referred to as an environment map. 
+In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would skin each side of the inside of a cube, resulting in a background that can be described as a kind of cube texture. Other terms for this kind of cube texture might also be [skybox](https://en.wikipedia.org/wiki/Skybox_%28video_games%29), or [cube mapping](https://en.wikipedia.org/wiki/Cube_mapping). This kind of texture can be set to the background property of a [scene object](/2018/05/03/threejs-scene/), but I also can place this kind of texture over the surface of some kind of mesh as well to create a reflection type effect often referred to as an [environment map supported by materials like that of the basic material](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.envMap). 
 
 So then with that said in three.js there is a [constructor function](/2019/02/27/js-javascript-constructor) that will produce this kind of texture that can be used as a background, or environment map, called the [Cube Texture](https://threejs.org/docs/index.html#api/textures/CubeTexture) constructor. There are two general way of using it, one of which would be to use the [Cube Texture Loader](https://threejs.org/docs/#api/en/loaders/CubeTextureLoader), and the other way would be to work directly with the CubeTexture Conctrsucor and obtain the textures needed by some other means.
 
