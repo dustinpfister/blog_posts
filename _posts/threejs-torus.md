@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2022-09-19 09:50:56
-version: 1.24
+updated: 2022-09-19 09:55:06
+version: 1.25
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -325,7 +325,7 @@ There are a great number of other ways that I can play around with this kind of 
 
 ### 3.2 - Creating a group of mesh objects using a torus
 
-In this example I am creating a group of mesh objects where each mesh object is created with a create donut helper method to which I pass two arguments one of the current child index, and the other for the total number of children in the group. Then for each child I am increasing the number of segments for the radial and tube segments for each child as the child index value goes up.
+In this example I am creating a group of mesh objects where each mesh object is created with a create donut helper method to which I pass two arguments one of the current child index, and the other for the total number of children in the group. Then for each child I am increasing the number of segments for the radial and tube segments for each child as the child index value goes up. This is then another example in which I want to get an idea of what the diffrences are when adjutsing the various gumnets whe making a tourus geometry.
 
 ```js
 //-------- ----------
@@ -378,5 +378,9 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-The torus geometry constructor is fun geometry constructor to play around with when it comes to making a few quick examples and getting a feel for how to make some interesting animations with three.js. There is many other little details to work with here and there also when it comes to a lot of these examples. For example there is learning how to work with not just the torus geometry, but geometry in general when it comes to rotating them, and working with the various properties of a geometry. There is also not just the geometry, but the objects that contain the geometry, and groups of such objects when it come to the Mesh constructor and the Object3d class that it is based on.
+The torus geometry constructor is a fun geometry constructor to play around with when it comes to making a few quick examples and getting a feel for how to make some interesting animations with three.js. There is many other little details to work with here and there also when it comes to a lot of these examples. For example there is learning how to work with not just the torus geometry, but geometry in general when it comes to rotating them, and working with the various properties of a geometry. There is also not just the geometry, but the objects that contain the geometry, and groups of such objects when it come to the Mesh constructor and the Object3d class that it is based on.
+
+I have wrote down a lot of notes in my todo list for this post, and next time I come around to editing this post I sure I will expand this content once again with even more examples of the various things to be aware of with geometry using the tourus geometry constrcor. There are of course a lot of other built in consstrcuors with threejs also though and much of what I would write about would also apply to them.
+
+
 
