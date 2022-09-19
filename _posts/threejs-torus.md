@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2022-09-19 09:11:40
-version: 1.21
+updated: 2022-09-19 09:27:36
+version: 1.22
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -144,11 +144,40 @@ const loop = function(){
 loop();
 ```
 
-## 2 - Groups of mesh objects using Torus Geometry
+## 2 - Points example using Torus Geometry
+
+An altherative to using a Mesh object would be to use the Points Constrcutor. When doing so I am restrteiced to using just the points material that just has a few options such as setting the size and color.
+
+```js
+//-------- ----------
+// POINTS - Using THREE.TorusGeometry and PointsMaterial
+//-------- ----------
+const radius = 1,
+tubeRadius = 0.25,
+radialSegments = 64,
+tubeSegments = 256;
+const donut = new THREE.Points(
+        new THREE.TorusGeometry(radius, tubeRadius, radialSegments, tubeSegments),
+        new THREE.PointsMaterial({size: 0.0125, color: 0x00ff00}));
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(donut); // add mesh to scene
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0.25, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+## 3 - Groups of mesh objects using Torus Geometry
 
 In this section I will now be going over some examples that have to do with creating and working with a group of mesh objects using the torus geometry constructor. There are all kinds of ideas that come to mind when it comes to having a little fun with this kind of geometry constrcutor. Such as having a collection of donut shape mesh objects aranged in a circle and having the camera move threw the holes of each of them. There is also just creating a collection of mesh objects with all kinds of different values for the various argumnets for radius and the number of sections. There is really gettting into this sort of things and making cool animations and so forth, but for this section I will be keeping this with just a few examples to start out with.
 
-### 2.1 - Camera moving threw holes animation
+### 3.1 - Camera moving threw holes animation
 
 So now there is an idea that I just have to do with this because it is just a cool thing to do when it comes to just playing around with three.js. In this example I am once again creating a group of mesh objects that are using the torus geometry constructor but this time I am positing each of them in a circle, so then all the torus objects then begin to from another torus of sorts out of torus objects. I am then creating an animation loop, and moving the camera so that it passes along the the holes of each torus mesh object which results in a cool effect.
 
@@ -240,7 +269,7 @@ loop();
 
 There are a great number of other ways that I can play around with this kind of example to make all kinds of interesting animations. Another idea that might be nice is to have the torus mesh objects rotated in a way so that all the holes are facing the center rather than each other and have the camera weave in and own in a sine wave like pattern.
 
-### 2.2 - Creating a group of mesh objects using a torus
+### 3.2 - Creating a group of mesh objects using a torus
 
 In this example I am creating a group of mesh objects where each mesh object is created with a create donut helper method to which I pass two arguments one of the current child index, and the other for the total number of children in the group. Then for each child I am increasing the number of segments for the radial and tube segments for each child as the child index value goes up.
 
