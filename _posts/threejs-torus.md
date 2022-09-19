@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2022-09-19 09:27:36
-version: 1.22
+updated: 2022-09-19 09:29:57
+version: 1.23
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -146,7 +146,7 @@ loop();
 
 ## 2 - Points example using Torus Geometry
 
-An altherative to using a Mesh object would be to use the Points Constrcutor. When doing so I am restrteiced to using just the points material that just has a few options such as setting the size and color.
+An altherative to using a Mesh object would be to use the Points Constrcutor. When doing so I am restrteiced to using just the points material that just has a few options such as setting the size and color. Although using the points constrcor might be cool for just geting an idea of what is going on with the points of a geometry it migght not be the best option as far as how things look. There is doing something where I am cretaing a mesh object for every point in a torus geometry and then doingijg whatever I want when it comes to all the various options with mesh materials, but that will be a log of objects and other resources.
 
 ```js
 //-------- ----------
