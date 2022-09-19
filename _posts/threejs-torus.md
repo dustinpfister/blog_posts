@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2022-09-19 09:29:57
-version: 1.23
+updated: 2022-09-19 09:50:56
+version: 1.24
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -144,9 +144,15 @@ const loop = function(){
 loop();
 ```
 
+
+
 ## 2 - Points example using Torus Geometry
 
 An altherative to using a Mesh object would be to use the Points Constrcutor. When doing so I am restrteiced to using just the points material that just has a few options such as setting the size and color. Although using the points constrcor might be cool for just geting an idea of what is going on with the points of a geometry it migght not be the best option as far as how things look. There is doing something where I am cretaing a mesh object for every point in a torus geometry and then doingijg whatever I want when it comes to all the various options with mesh materials, but that will be a log of objects and other resources.
+
+### 2.1 - Basic Points example with Torus Geometry
+
+The basic idea of this with the THREE.Points Constrcuor is not all that different from that of the mesh object in the scene that I just pass the geonetry as the first argument. The main differenvce is that I only have one optiion when it comes to materails which is the points material. When using the points material I will often want to reduve the side of the points to soemthig fairly small, this is really true if I make a geometry that has a great number of points in it.
 
 ```js
 //-------- ----------
@@ -170,6 +176,54 @@ camera.lookAt(0, 0.25, 0);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(640, 480);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+### 2.2 - Mesh for each Point in a Torus Geometry
+
+Although the Points constcror is great it does have its draw backs wheh it comes to hwo thing look. So then there is the question of using the position attribute of the buffer geometry made with the Torus geometry constcror to create a mesh for eahc point in the position attribute. For this example I am using the getX, getY, and getZ methods of the buffer Attribute class of the posiiton attribte of a torus geometry to set the posiition for mesh objcts that will be created for each point in the torus geometry.
+
+This might take some leg work, and also eat up some resources comaperd to using the THREE.Points constcror. But now I am using mesh objects which means that I can make a sphere geometry fro each mesh, and also using any materials that I want such as the phong material. For this I am also adding some light sources using a directional light and some ambient light.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0.25, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(-2, 1, 3);
+scene.add(dl);
+const al = new THREE.AmbientLight(0xffffff, 0.2);
+scene.add(al);
+//-------- ----------
+// CREATING MESH OBEJCTS FOR EACH POINT IN TORUS GEOMERTY
+//-------- ----------
+const radius = 1,
+tubeRadius = 0.25,
+radialSegments = 15,
+tubeSegments = 60;
+const sourceGeo = new THREE.TorusGeometry(radius, tubeRadius, radialSegments, tubeSegments);
+const pos = sourceGeo.getAttribute('position');
+let i = 0, len = pos.count;
+while(i < len){
+    const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+    const mesh = new THREE.Mesh( new THREE.SphereGeometry(0.025, 10, 10), new THREE.MeshPhongMaterial() )
+    mesh.position.copy(v);
+    scene.add(mesh);
+    i += 1;
+}
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
