@@ -1,12 +1,12 @@
 ---
-title: Torus Geometry in threejs for making donut shapes
+title: Torus Geometry in threejs for making doughnut shapes
 date: 2021-05-27 11:33:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2022-09-19 09:58:39
-version: 1.26
+updated: 2022-09-19 10:02:32
+version: 1.27
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -242,36 +242,36 @@ Just like my other group example of doughnut mesh objects I have a create doughn
 // HELPERS
 //-------- ----------
 const MAIN_RADIUS = 8,
-DONUT_COUNT = 30;
-// create a donut child for a group
-const createDonutChild = (index, len) => {
+DOUGHNUT_COUNT = 30;
+// create a DOUGHNUT child for a group
+const createDoughnutChild = (index, len) => {
     const per = index / len,
     bias = 1 - Math.abs(per - 0.5) / 0.5,
     radius = 0.6 + 2.3 * bias,
     tubeRadius = 0.125 + 0.25 * bias,
     radialSegments = 32,
     tubeSegments = 32;
-    const donut = new THREE.Mesh(
+    const doughnut = new THREE.Mesh(
         new THREE.TorusGeometry(radius, tubeRadius, radialSegments, tubeSegments),
         new THREE.MeshStandardMaterial({
            color: 0xffffff,
            emissive: 0x2a0000
         }));
-    donut.geometry.rotateY(Math.PI * 0.5);
-    return donut;
+    doughnut.geometry.rotateY(Math.PI * 0.5);
+    return doughnut;
 };
-// create a group of donuts
-const createDonutGroup = () => {
+// create a group of DOUGHNUTs
+const createDoughnutGroup = () => {
     let i = 0;
-    const len = DONUT_COUNT,
+    const len = DOUGHNUT_COUNT,
     group = new THREE.Group();
     while(i < len){
         const per = i / len,
         radian = Math.PI * 2 * per;
-        const donut = createDonutChild(i, len);
-        donut.position.set(Math.cos(radian) * MAIN_RADIUS, 0, Math.sin(radian) * MAIN_RADIUS);
-        donut.lookAt(0, 0, 0);
-        group.add(donut);
+        const doughnut = createDoughnutChild(i, len);
+        doughnut.position.set(Math.cos(radian) * MAIN_RADIUS, 0, Math.sin(radian) * MAIN_RADIUS);
+        doughnut.lookAt(0, 0, 0);
+        group.add(doughnut);
         i += 1;
     }
     return group;
@@ -294,7 +294,7 @@ renderer.setSize(640, 480);
 //-------- ----------
 // ADDING GROUP TO SCENE
 //-------- ----------
-const group = createDonutGroup();
+const group = createDoughnutGroup();
 scene.add(group);
 //-------- ----------
 // LOOP
