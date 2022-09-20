@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2022-09-20 13:36:55
-version: 1.30
+updated: 2022-09-20 13:39:23
+version: 1.31
 ---
 
 The use of the [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -54,7 +54,7 @@ scene.add(
 
 If you have made at least a few basic three.js demos you might be at the point where you understand that at least part of the process is to create and add a [Mesh](/2018/05/04/threejs-mesh/) object and add that object to a scene object. That scene object is then passed to a renderer along with a camera to create a render instance that can then be used to draw to a canvas element. This Mesh Object is composed of a Geometry, and at least one material to be used when rendering that Geometry. 
 
-The THREE.Points class is then just a different kind of Mesh that is used to just draw points of a geometry in the position attribute. One thing about this Points constrcuor is that it can just me used just like with Mesh objects in that I can just pass any buffer geometry to it. However the main diffrent from that comes with the material to use with the Points Constructor which is a situation in which I just have the points material to work with.
+The THREE.Points class is then just a different kind of Mesh that is used to just draw points of a geometry in the position attribute. One thing about this Points constructor is that it can just me used just like with Mesh objects in that I can just pass any buffer geometry to it. However the main different from that comes with the material to use with the Points Constructor which is a situation in which I just have the points material to work with.
 
 ### 1.1 - A Basic THREE.PointsMaterial example passing a Sphere Geometry with calling THREE.Points
 
@@ -90,7 +90,7 @@ So in other words the points constructor is just a more primitive kind of mesh, 
 
 ### 1.2 - Buffer Geometry from Array of Vector3 class instances
 
-Although I might often want to just pass a buffer geometry that I all ready have to the Points constructor In many cases I might have an array of Vector3 class instances that I would like to create a buffer geometry from. I will then want to use the buffer geoetry that is created from this array of Vector3 class instamnces with the Points Construtor. The general process of doing this would be to create a typed array from the array of vector3 class instances thatI can then use with the setAttribute method of the Buffer geometry class to create the position attribute for the geometry.
+Although I might often want to just pass a buffer geometry that I all ready have to the Points constructor In many cases I might have an array of Vector3 class instances that I would like to create a buffer geometry from. I will then want to use the buffer geometry that is created from this array of Vector3 class instances with the Points Constructor. The general process of doing this would be to create a typed array from the array of vector3 class instances that I can then use with the set attribute method of the Buffer geometry class to create the position attribute for the geometry.
 
 ```js
 (function () {
@@ -154,13 +154,13 @@ Although I might often want to just pass a buffer geometry that I all ready have
 }());
 ```
 
-The nice thing about Points is that it is just the position attribute that I care about with this. When it comes to mesh objects there is also the normals, and uv attributes that I would want to set up. However this is a post on the points material so I will not be getting into any of that here. However I do in any case see the position attribute as the first attribite of intrest in creating a custom geometry so this is always a good starting point.
+The nice thing about Points is that it is just the position attribute that I care about with this. When it comes to mesh objects there is also the normal, and uv attributes that I would want to set up. However this is a post on the points material so I will not be getting into any of that here. However I do in any case see the position attribute as the first attribute of interest in creating a custom geometry so this is always a good starting point.
 
 ### 1.3 - Array of Vector3 class instances from Buffer Geometry 
 
 Okay so I covered an example in which I create a buffer geometry from an array of vector3 class instances. However what if I want to create an array of Vector3 objects, use the power of the various methods to work with in that class to mutate the values of the vector3 objects, and then convert that to a geometry? One way to do this is to loop over the array of the position attribute, when doing so I can use the count value to know what the number of points is. For each point then I can use the getX, getY, and getZ methods if the Buffer Attribute class to get the various values that I can then in turn use to create my array of vector3 objects.
 
-Once I have my array of vector3 class instances I can loop over thoughs ans use methods like normalize, applyEuler, and multiplyScalar just to name a few to mutate the values. I can then do the same as before with the methods I covered before hand to crate a buffer geometry instance from this array of mutataed vector3 objects.
+Once I have my array of vector3 class instances I can loop over them and use methods like normalize, applyEuler, and multiplyScalar just to name a few to mutate the values. I can then do the same as before with the methods I covered before hand to crate a buffer geometry instance from this array of mutated vector3 objects.
 
 ```js
 (function () {
@@ -236,7 +236,7 @@ Once I have my array of vector3 class instances I can loop over thoughs ans use 
 
 ## 2 - The Points Material and creating a custom geometry with the Buffer Geometry Constructor, and Rand Float Spread
 
-Now that I have coved the basics of the TREE.Point constructor, and how it compares to the Mesh Constructor it is now time to start to look at a few more examples of the Points constructor and of course the Points material. One not so hard yet interesting example that comes to mind with this would be to just have a whole bunch of random points in a given range.
+Now that I have covered the basics of the TREE.Point constructor, and how it compares to the Mesh Constructor it is now time to start to look at a few more examples of the Points constructor and of course the Points material. One not so hard yet interesting example that comes to mind with this would be to just have a whole bunch of random points in a given range.
 
 In this example I am using the THREE.Math.randFloatSpread function to create values between zero and a given max range. I then will want to create an instance of the Buffer Geometry constructor, and create a position attribute for the geometry. The array or points will then be passed to the set attribute method of the buffer geometry instance. After that it is just a matter of passing the instance of buffer geometry to the THREE.Point constructor as the value for the first argument, followed by an instance of the Points material.
 
@@ -341,7 +341,7 @@ There is a great deal more to look into when it comes to making a solid custom g
 
 ## 4 - Using Mesh objects and Mesh Materials as a way to display points
 
-The points material will work just fine for situations in which I just want to get a basic visual representation of the points of a geometry alone. However it goes without saying that there are some draw backs with using the points material as well as the corresponding points constructor over the mesh constructor and the lengthly array of choices for materials with mesh objects. One major draw back is that I can not do anything with light, and yet another draw back is that I do not have control over the shape that will be used with each point. For example if I want to have a sphere like shape for each point and also show at least a little depth for each sphere for each point then I am going to want to go with mesh objects.
+The points material will work just fine for situations in which I just want to get a basic visual representation of the points of a geometry alone. However it goes without saying that there are some draw backs with using the points material as well as the corresponding points constructor over the mesh constructor and the lengthy array of choices for materials with mesh objects. One major draw back is that I can not do anything with light, and yet another draw back is that I do not have control over the shape that will be used with each point. For example if I want to have a sphere like shape for each point and also show at least a little depth for each sphere for each point then I am going to want to go with mesh objects.
 
 To go about creating a mesh for each point in a geometry I will want to find a way to create an array of Vector3 instances from the position property of a geometry, or use methods like getX, getY, and getZ of the position attribute along with the use of the count property of the position attribute. For this example I am doing the later of these two to create Vector3 instances as needed. And for each vector3 instance that I create I copy that Vector to the position property of a new mesh object that I am making for each point. When doing so I can use any geometry I want for each point, such as the Sphere geometry constructor, also I can use any material that I want including potions that respond to light sources.
 
@@ -392,4 +392,3 @@ To go about creating a mesh for each point in a geometry I will want to find a w
 ## Conclusion
 
 So the points material is an interesting alternative to the typical basic or standard material that I often use in my basic project examples that I have made thus far with working with the typical Mesh rather than points class. There should be at least one such option when it comes to just having a way to see the location of points in a geometry, and the points material seems to work fine when it comes to this. However there are a number of draw backs from using the Points class, and I think that I often will want to use a  mesh instance even in situations in which I am interested in the points, by using a geometry positions attribute as a way to set position values for a collection of mesh objects.
-
