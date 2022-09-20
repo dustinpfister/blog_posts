@@ -1,12 +1,12 @@
 ---
-title: The Points material in three.js
+title: The Points material as well as creating Points from Vector3 arrays in three.js
 date: 2018-05-12 10:55:00
 tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2022-09-20 13:39:23
-version: 1.31
+updated: 2022-09-20 13:42:08
+version: 1.32
 ---
 
 The use of the [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
