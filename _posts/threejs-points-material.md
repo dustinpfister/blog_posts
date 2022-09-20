@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2022-09-20 09:26:59
-version: 1.26
+updated: 2022-09-20 09:51:46
+version: 1.27
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -25,7 +25,7 @@ So although I will not be getting into detail about the basics of three.js here,
 
 ### Source code examples are up on Github
 
-The soucre code exmaples that I am writing about in this post can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-points-material).
+The source code examples that I am writing about in this post can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-points-material).
 
 ### Version Numbers matter with three.js
 
@@ -188,6 +188,54 @@ The next step with this is starting to experiment with creating custom geometrie
 ```
 
 There is a great deal more to look into when it comes to making a solid custom geometry, however maybe one of the first things that should be worked out is the position of the vertices. Just working out that logic with the use of the Points constructor is then a good starting point, and then from there it is just a question of adding all the additional properties that are needs when it comes to drawing triangles between the points, and setting material index values as well as a uv array.
+
+## 4 - Using Mesh objects and Mesh Materials as a way to display points
+
+The points material will work just fine for situations in which I just want to get a basic visual representation of the points of a geometry alone. However it goes without saying that there are some draw backs with using the points material as well as the corresponding points constructor over the mesh constructor and the lengthly array of choices for materials with mesh objects. One major draw back is that I can not do anything with light, and yet another draw back is that I do not have control over the shape that will be used with each point. For example if I want to have a sphere like shape for each point and also show at least a little depth for each sphere for each point then I am going to want to go with mesh objects.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000); // camera
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer(); // render
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(2,1,-2)
+    scene.add(dl);
+    //-------- ----------
+    // POINTS
+    //-------- ----------
+    const geometry = new THREE.SphereGeometry(1.28, 60, 10);
+    const pos = geometry.getAttribute('position');
+    let i = 0;
+    const len = pos.count;
+    while(i < len){
+        const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+        const mesh = new THREE.Mesh(
+            new THREE.SphereGeometry(0.075, 10, 10),
+            new THREE.MeshPhongMaterial({
+                color: 0xff0000,
+                emissive: 0xffffff,
+                emissiveIntensity: 0.15}))
+        mesh.position.copy(v);
+        scene.add(mesh);
+        i += 1;
+    }
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
 
 ## Conclusion
 
