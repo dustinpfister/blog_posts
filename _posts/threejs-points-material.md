@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2022-04-13 07:42:56
-version: 1.25
+updated: 2022-09-20 09:26:59
+version: 1.26
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -23,9 +23,13 @@ This is a post on three.js, a javaScript library that is used to work with objec
 
 So although I will not be getting into detail about the basics of three.js here, let alone everything else that you should be up to speed with before reading this. In this section I will be briefly be going over a few things that you should know, or many read up a bit more on before continuing with the Points Constructor and the Points material.
 
+### Source code examples are up on Github
+
+The soucre code exmaples that I am writing about in this post can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-points-material).
+
 ### Version Numbers matter with three.js
 
-When I first wrote this post back in May of 2018 I was using version r91 of three.js, and the last time I got around to editing this post I was using r127. Sense then a number of code breaking changes have happened when it comes to using the geometry constructor rather than the Buffer Geometry constructor. The old Geometry constructor has been removed from three.js as of version r125, so the examples here have been updated to work with the buffer geometry constructor as well as versions other chances that have happened sense then.
+When I first wrote this post back in May of 2018 I was using version r91 of three.js, and the last time I got around to editing this post I was using r140. Sense then a number of code breaking changes have happened when it comes to using the geometry constructor rather than the Buffer Geometry constructor. The old Geometry constructor has been removed from three.js as of version r125, so the examples here have been updated to work with the buffer geometry constructor as well as versions other chances that have happened sense then.
 
 ### The Buffer Geometry Constructor
 
@@ -185,7 +189,7 @@ The next step with this is starting to experiment with creating custom geometrie
 
 There is a great deal more to look into when it comes to making a solid custom geometry, however maybe one of the first things that should be worked out is the position of the vertices. Just working out that logic with the use of the Points constructor is then a good starting point, and then from there it is just a question of adding all the additional properties that are needs when it comes to drawing triangles between the points, and setting material index values as well as a uv array.
 
-## 4 - Conclusion
+## Conclusion
 
 So the points material is an interesting alternative to the typical basic or standard material that I often use in my basic project examples that I have made thus far with working with the typical Mesh rather than points class. There should be at least one such option when it comes to just having a way to see the location of points in a geometry, and the points material seems to work fine when it comes to this. However there are a number of draw backs from using the Points class, and I think that I often will want to use a  mesh instance even in situations in which I am interested in the points, by using a geometry positions attribute as a way to set position values for a collection of mesh objects.
 
