@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2022-09-20 12:42:07
-version: 1.29
+updated: 2022-09-20 13:36:55
+version: 1.30
 ---
 
 The use of the [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -35,11 +35,7 @@ When I first wrote this post back in May of 2018 I was using version r91 of thre
 
 Although built in geometries can be used with the Points material, more often than not I think that main reason why developers might be looking into the points material and the Points constructor is to get into making custom geometries. So it would make sense to also look into the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at some point, maybe before or around the same time as starting to work with the Points Martial.
 
-## 1 - Points vs Mesh Constructors, and basic Three.Points Constructor example
-
-If you have made at least a few basic three.js demos you might be at the point where you understand that at least part of the process is to create and add a [Mesh](/2018/05/04/threejs-mesh/) object and add that object to a scene object. That scene object is then passed to a renderer along with a camera to create a render instance that can then be used to draw to a canvas element. This Mesh Object is composed of a Geometry, and at least one material to be used when rendering that Geometry. The THREE.Points class is then just a different kind of mesh that is used to just draw points of a geometry. In this section I will be going over a basic example of the THREE.Mesh Constructor, and then go on to an example of THREE.Points.
-
-## 1.1 - Basic THREE.Mesh Example
+### Basic THREE.Mesh Example
 
 The [Mesh](/2018/05/04/threejs-mesh/) is something that binds everything together into a single package of sorts, and it has properties and methods that are appropriate for it. In the above example I am just using the Box geometry constructor as a way to just go about quickly creating a geometry, and I am using that geometry with the [basic material](/2018/05/05/threejs-basic-material/) as a way to go about skinning that geometry. However when it comes to using the THREE.Points constructor in place of THREE.Mesh, I need to create a custom instance of Buffer Geometry.
 
@@ -54,9 +50,15 @@ scene.add(
 );
 ```
 
-### 1.2 - A Basic THREE.Points example
+## 1 - The basics of Points and the Point material vs Mesh Constructors, and basic Three.Points Constructor example
 
-So then the Points constructor is like that Mesh constructor only it is just the position attribute of a Buffer Geometry instance that will be mainly what is used in rendering. This geometry that I give the THREE.Points constructor could be a custom geometry like the one on the documentation page of the THREE.Points constrictor on the three.js website. However it can also be one of the geometries that is created and returned by one of the Built in geometry constructors such as the THREE.SphereGeomerty constructor.
+If you have made at least a few basic three.js demos you might be at the point where you understand that at least part of the process is to create and add a [Mesh](/2018/05/04/threejs-mesh/) object and add that object to a scene object. That scene object is then passed to a renderer along with a camera to create a render instance that can then be used to draw to a canvas element. This Mesh Object is composed of a Geometry, and at least one material to be used when rendering that Geometry. 
+
+The THREE.Points class is then just a different kind of Mesh that is used to just draw points of a geometry in the position attribute. One thing about this Points constrcuor is that it can just me used just like with Mesh objects in that I can just pass any buffer geometry to it. However the main diffrent from that comes with the material to use with the Points Constructor which is a situation in which I just have the points material to work with.
+
+### 1.1 - A Basic THREE.PointsMaterial example passing a Sphere Geometry with calling THREE.Points
+
+The points constructor is like that Mesh constructor only it is just the position attribute of a Buffer Geometry instance that will be mainly what is used in rendering. This geometry that I give the THREE.Points constructor could be a custom geometry like the one on the documentation page of the THREE.Points constrictor on the three.js website. However it can also be one of the geometries that is created and returned by one of the Built in geometry constructors such as the THREE.SphereGeomerty constructor.
 
 ```js
 (function () {
@@ -85,6 +87,152 @@ So then the Points constructor is like that Mesh constructor only it is just the
 ```
 
 So in other words the points constructor is just a more primitive kind of mesh, that can only be used with a special points material, but aside from that an instance of THREE.Points is very similar to that of THREE.Mesh instances. Just like the that of A mesh and Instance of Points is based on the Object3d class, so when it comes to positioning and rotating the Points instance all of that is more or less the same as Mesh. Also it is still and instance of buffer geometry that is passed as the first argument, that can be created by using the Buffer Geometry constructor directly, or by using one of the built in constructors, it is just that many of the attributes that would be used in the Mesh constructor are ignored.
+
+### 1.2 - Buffer Geometry from Array of Vector3 class instances
+
+Although I might often want to just pass a buffer geometry that I all ready have to the Points constructor In many cases I might have an array of Vector3 class instances that I would like to create a buffer geometry from. I will then want to use the buffer geoetry that is created from this array of Vector3 class instamnces with the Points Construtor. The general process of doing this would be to create a typed array from the array of vector3 class instances thatI can then use with the setAttribute method of the Buffer geometry class to create the position attribute for the geometry.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // Vector3 Array to Typed Array
+    const Vector3ArrayToTyped = (v3Array) => {
+        let i = 0, len = v3Array.length, vertArray = [];
+        while(i < len){
+            let v = v3Array[i];
+            vertArray.push(v.x, v.y, v.z);
+            i += 1;
+        }
+        return new THREE.Float32BufferAttribute(vertArray, 3)
+    };
+    // Buffer Geometry from v3Array
+    const Vector3ArrayToGeometry = (v3Array) => {
+        const typedArray = Vector3ArrayToTyped(v3Array);
+        const geometry = new THREE.BufferGeometry();
+        return geometry.setAttribute('position', typedArray);
+    };
+    //-------- ----------
+    // POINTS
+    //-------- ----------
+    // ARRAY of VECTOR3 CLASS INSTANCES
+    const v3Array = [
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(1, 0, 0),
+        new THREE.Vector3(0, 1, 0),
+        new THREE.Vector3(0, 0, 1),
+        new THREE.Vector3(2, 0, 0),
+        new THREE.Vector3(0, 2, 0),
+        new THREE.Vector3(0, 0, 2),
+        new THREE.Vector3(3, 0, 0),
+        new THREE.Vector3(0, 3, 0),
+        new THREE.Vector3(0, 0, 3)
+    ];
+    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
+    scene.add(
+        new THREE.Points(
+            Vector3ArrayToGeometry(v3Array),
+            new THREE.PointsMaterial({
+                color: 0x00afaf,
+                size: 0.25
+            })));
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+The nice thing about Points is that it is just the position attribute that I care about with this. When it comes to mesh objects there is also the normals, and uv attributes that I would want to set up. However this is a post on the points material so I will not be getting into any of that here. However I do in any case see the position attribute as the first attribite of intrest in creating a custom geometry so this is always a good starting point.
+
+### 1.3 - Array of Vector3 class instances from Buffer Geometry 
+
+Okay so I covered an example in which I create a buffer geometry from an array of vector3 class instances. However what if I want to create an array of Vector3 objects, use the power of the various methods to work with in that class to mutate the values of the vector3 objects, and then convert that to a geometry? One way to do this is to loop over the array of the position attribute, when doing so I can use the count value to know what the number of points is. For each point then I can use the getX, getY, and getZ methods if the Buffer Attribute class to get the various values that I can then in turn use to create my array of vector3 objects.
+
+Once I have my array of vector3 class instances I can loop over thoughs ans use methods like normalize, applyEuler, and multiplyScalar just to name a few to mutate the values. I can then do the same as before with the methods I covered before hand to crate a buffer geometry instance from this array of mutataed vector3 objects.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // Vector3 Array to Typed Array
+    const Vector3ArrayToTyped = (v3Array) => {
+        let i = 0, len = v3Array.length, vertArray = [];
+        while(i < len){
+            let v = v3Array[i];
+            vertArray.push(v.x, v.y, v.z);
+            i += 1;
+        }
+        return new THREE.Float32BufferAttribute(vertArray, 3)
+    };
+    // Buffer Geometry from v3Array
+    const Vector3ArrayToGeometry = (v3Array) => {
+        const typedArray = Vector3ArrayToTyped(v3Array);
+        const geometry = new THREE.BufferGeometry();
+        return geometry.setAttribute('position', typedArray);
+    };
+    // Vector3 array from geometry
+    const Vector3ArrayFromGeometry = (geometry) => {
+        const pos = geometry.getAttribute('position');
+        let i = 0;
+        const len = pos.count, v3Array = [];
+        while(i < len){
+            const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+            v3Array.push(v);
+            i += 1;
+        }
+        return v3Array;
+    };
+    //-------- ----------
+    // POINTS
+    //-------- ----------
+    // Geometry created with the Torus Geometry Constructor
+    const geometry = new THREE.TorusGeometry(2, 0.75, 30, 60);
+    geometry.rotateX(Math.PI / 180 * 90);
+    // array of Vector3 class instances
+    const v3Array = Vector3ArrayFromGeometry(geometry);
+    // do somehting to the v3 array
+    v3Array.forEach((v) => {
+        const vd = new THREE.Vector3();
+        vd.copy(v).normalize().multiplyScalar(0.75 * THREE.MathUtils.seededRandom())
+        v.add(vd);
+    });
+    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
+    scene.add(
+        new THREE.Points(
+            Vector3ArrayToGeometry(v3Array),
+            new THREE.PointsMaterial({
+                color: 0x00afaf,
+                size: 0.125
+            })));
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
 
 ## 2 - The Points Material and creating a custom geometry with the Buffer Geometry Constructor, and Rand Float Spread
 
