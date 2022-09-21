@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2022-09-21 15:00:49
-version: 1.29
+updated: 2022-09-21 15:12:58
+version: 1.30
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. 
@@ -81,17 +81,80 @@ Say that I Just want to look at some lines of the edges of a geometry, for this 
 
 Although this might work it does not give me the kind of result that I was hoping for. The reason way is that although the geometry I am working with will work well for Mesh objects it might not be set up just right for Lines, or Line Segments. So then there is making use of the Edge Geometry Constructor to see if that can be used to get the kind of end result that I want.
 
-### 1.2 - 
+### 1.2 - Using the Edge geometry constructor
+
+In place of just passing the Box geometry as the first argument for the THREE.Line Constructor there is running it threw the THREE.EdgesGeometry Constructor first to get a new geometry created from the original source geometry and then pass that as the geometry to use with THREE.Line.
 
 ```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('blue');
+    const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(1.25, 1.75, 1.25);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // EDGE GEOMETRY CREATED FROM BOX GEOMETRY BUT USING WITH THREE.Line
+    //-------- ----------
+    const boxGeo = new THREE.BoxGeometry(1, 1, 1),
+    edgeGeo = new THREE.EdgesGeometry(boxGeo),
+    line = new THREE.Line(
+            edgeGeo,
+            new THREE.LineBasicMaterial({
+                color: new THREE.Color('white')
+            }));
+    scene.add(line);
+    //-------- ----------
+    // SCENE
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
 ```
 
-### 1.3 -
+This does look a little different, but it is still not just what I have in mind. There is one more then to try though and that would be to use the THREE.LineSegments constructor in place of THREE.Line.
+
+### 1.3 - Using the THREE.LineSegments constructor with THREE.EdgeGeometry
+
+For this last example in this basic section I am now just once again passing the result of calling the Box geometry constrictor the edges geometry constructor. However now I am just using the THREE.LineSegements constructor in place of THREE.Line. By making use of the line segments class I am now getting and end result that looks like what it is that I have had in mind with this.
 
 ```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('blue');
+    const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(1.25, 1.75, 1.25);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // EDGE GEOMETRY CREATED FROM BOX GEOMETRY AND USING WITH THREE.LineSegments
+    //-------- ----------
+    const boxGeo = new THREE.BoxGeometry(1, 1, 1),
+    edgeGeo = new THREE.EdgesGeometry(boxGeo),
+    line = new THREE.LineSegments(
+            edgeGeo,
+            new THREE.LineBasicMaterial({
+                color: new THREE.Color('white')
+            }));
+    scene.add(line);
+    //-------- ----------
+    // SCENE
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
 ```
 
 The result of this is then a box that looks like it is in a kind of wire frame mode, however it looks different from a Mesh object that just has its material set to wire frame mode. There may be a few other ways to get this kind of effect, such as doing something with textures and alpha maps, but that kind of approach will also have a few down sides that I have not found solutions for just yet.
+So although the result that is returned by the edges geometry is indeed a kind of buffer geometry. It is not a kind of geometry that will work well with Mesh, or even Line objects. In general I will want to use Line Segments with the kind of geometry that is returned by the edges geometry constructor. However maybe it will still be a good idea to look at a few more examples to get a better sense of what is going on here.
 
 ## 2 - A sphere example, mesh in wire frame mode, and the threshold angle argument of edges geometry
 
@@ -155,7 +218,95 @@ So in this example I am creating two line segments both of which are using edge 
     ());
 ```
 
-## 3 - Creating and example with an animation loop
+## 3 - Points and Edge geometry
+
+### 3.1 - The attributes of Edge Geometry appear to be position only
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('blue');
+    const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(1.25, 1.75, 1.25);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // EDGE GEOMETRY CREATED FROM SPHERE GEOMETRY
+    //-------- ----------
+    const sphereGeo = new THREE.SphereGeometry(1, 30, 30);
+    const edgeGeo = new THREE.EdgesGeometry(sphereGeo, 10);
+    // The source geometry made with the TRHEE.SpgereGeometry constructor has
+    // a position, normal, and uv attribute, while edges geometry will just have a 
+    // position attribute
+    console.log(sphereGeo.attributes); // {position: Nn, normal: Nn, uv: Nn}
+    console.log(edgeGeo.attributes)    // {position: Nn}
+    // edges geometry might not be good for mesh objects
+    // but it is still fine for lines and points
+    const points = new THREE.Points(
+            edgeGeo,
+            new THREE.PointsMaterial({
+                color: new THREE.Color('white'),
+                size: 0.05
+            }));
+    scene.add(points);
+    //-------- ----------
+    // SCENE
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+### 3.2 - Point Counts of the position attribute
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('blue');
+    const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(3, 3, 3);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // EDGE GEOMETRY CREATED FROM SPHERE GEOMETRY
+    //-------- ----------
+    const sphereGeo = new THREE.SphereGeometry(0.75, 15, 15);
+    const edgeGeo1 = new THREE.EdgesGeometry(sphereGeo, 1);
+    const edgeGeo2 = new THREE.EdgesGeometry(sphereGeo, 10);
+    const edgeGeo3 = new THREE.EdgesGeometry(sphereGeo, 20);
+    // checking point counts for each
+    console.log( sphereGeo.getAttribute('position').count ); // 256
+    console.log( edgeGeo1.getAttribute('position').count ); // 870
+    console.log( edgeGeo2.getAttribute('position').count ); // 750
+    console.log( edgeGeo3.getAttribute('position').count ); // 7150
+    // making points for all
+    [sphereGeo, edgeGeo1, edgeGeo2, edgeGeo3].forEach( (geo, i, arr) => {
+        const points = new THREE.Points(
+            geo,
+            new THREE.PointsMaterial({
+                color: new THREE.Color('white'),
+                size: 0.1
+            }));
+        points.position.x = -3 + 6 * (i / arr.length)
+        scene.add(points);
+    });
+    //-------- ----------
+    // SCENE
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+## 4 - Creating and example with an animation loop
 
 One way to go about getting a better look at the over all situation of what is going on here would be to move the camera around, or the line segments instance. In any case this will require that I set up some kind of animation loop to update the position, or rotation of the line segments instance or the camera. There are a number of ways to go about doing something like this, but I think that it might be a good idea to make use of the THREE.Clock Constructor along with the use of request animation frame. However this is a topic where I keep finding other ways to go about doing this that might be a little better for one reason or another. I do not want to get into all of that in detail here as doing so is a little off topic.
 
