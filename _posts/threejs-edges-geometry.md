@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2022-04-20 06:27:47
-version: 1.25
+updated: 2022-09-21 11:16:23
+version: 1.26
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. 
@@ -35,7 +35,7 @@ The line segments constructor that is used with the geometry that is returned by
 
 ### Need to keep version numbers in mind with three.js
 
-When I wrote this post I was using three.js r127 which was still a fairly late version of threejs at the time of this writing. In the future changes might be made that will case the code examples here to break, so make sure to always be aware of the version number of threejs that you are using if you run into problems.
+When I first wrote this post I was using three.js r127, and the last time I cam around to do some editing I was using r140 of the library. In the future changes might be made that will cause the code examples here to break, so make sure to always be aware of the version number of threejs that you are using if you run into problems.
 
 ## 1 - Basic edges geometry example
 
