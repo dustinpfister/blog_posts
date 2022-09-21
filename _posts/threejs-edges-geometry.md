@@ -1,12 +1,12 @@
 ---
-title: The Edges Geometry in threejs
+title: Edges Geometry in threejs with Line Segments and other options
 date: 2021-05-31 12:01:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2022-09-21 15:27:41
-version: 1.33
+updated: 2022-09-21 15:41:21
+version: 1.34
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. 
@@ -165,55 +165,49 @@ So in this example I am creating two line segments both of which are using edge 
 ```js
 (function () {
     //-------- ----------
-    // SCENE, CAMERA, RENDERER
+    // Scene, camera renderer
     //-------- ----------
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('blue');
     const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(1.25, 1.75, 1.25);
+    camera.position.set(1.75, 2.00, 1.75);
     camera.lookAt(0, 0, 0);
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
     //-------- ----------
-    // EDGE GEOMETRY CREATED FROM BOX GEOMETRY
+    // ADDING LINES AND MESH OBJECTS TO SCENE
     //-------- ----------
-    let boxGeo = new THREE.BoxGeometry(1, 1, 1),
-    edgeGeo = new THREE.EdgesGeometry(boxGeo),
-    line = new THREE.LineSegments(
-            edgeGeo,
+    // sphere geometry and...
+    const sphereGeo = new THREE.SphereGeometry(0.5, 15, 20);
+    // AN EDGE GEOMETRY CREATED FROM IT WITH THRESHOLD ANGLE of 10
+    const line1 = new THREE.LineSegments(
+            new THREE.EdgesGeometry(sphereGeo, 10),
             new THREE.LineBasicMaterial({
                 color: new THREE.Color('white')
             }));
-    scene.add(line);
+    line1.position.set(-0.75, 0, 0);
+    // SAME EDGE GEOMETRY BUT WITH DEFULT THRESHOLD ANGLE
+    const line2 = new THREE.LineSegments(
+            new THREE.EdgesGeometry(sphereGeo, 1),
+            new THREE.LineBasicMaterial({
+                color: new THREE.Color('white')
+            }));
+    line2.position.set(0.75, 0, 0);
+    const mesh1 = new THREE.LineSegments(
+            sphereGeo,
+            new THREE.MeshBasicMaterial({
+                color: new THREE.Color('gray'),
+                wireframe: true
+            }));
+    mesh1.position.set(0, 0, -1.75);
+    scene.add(line1);
+    scene.add(line2);
+    scene.add(mesh1);
     //-------- ----------
-    // LOOP
+    // RENDER
     //-------- ----------
-    const state = {
-        clock: new THREE.Clock(),
-        frame: 0,
-        maxFrame: 90,
-        fps: 12, // capping at 12 fps
-        per: 0
-    };
-    const update = function (state) {
-        line.rotation.y = Math.PI * 2 * state.per;
-    };
-    const loop = function () {
-        const wSecs = performance.now() - state.clock.oldTime;
-        requestAnimationFrame(loop);
-        if (wSecs > 1 / state.fps) {
-            let secs = state.clock.getDelta();
-            state.per = state.frame / state.maxFrame;
-            update(state);
-            state.frame += state.fps * secs;
-            state.frame %= state.maxFrame;
-            renderer.render(scene, camera);
-        }
-    };
-    // START CLOCK
-    state.clock.start();
-    loop();
+    renderer.render(scene, camera);
 }
     ());
 ```
@@ -323,49 +317,55 @@ In this example I took the source code of my basic example of the edges geometry
 ```js
 (function () {
     //-------- ----------
-    // Scene, camera renderer
+    // SCENE, CAMERA, RENDERER
     //-------- ----------
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('blue');
     const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(1.75, 2.00, 1.75);
+    camera.position.set(1.25, 1.75, 1.25);
     camera.lookAt(0, 0, 0);
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
     //-------- ----------
-    // ADDING LINES AND MESH OBJECTS TO SCENE
+    // EDGE GEOMETRY CREATED FROM BOX GEOMETRY
     //-------- ----------
-    // sphere geometry and...
-    const sphereGeo = new THREE.SphereGeometry(0.5, 15, 20);
-    // AN EDGE GEOMETRY CREATED FROM IT WITH THRESHOLD ANGLE of 10
-    const line1 = new THREE.LineSegments(
-            new THREE.EdgesGeometry(sphereGeo, 10),
+    let boxGeo = new THREE.BoxGeometry(1, 1, 1),
+    edgeGeo = new THREE.EdgesGeometry(boxGeo),
+    line = new THREE.LineSegments(
+            edgeGeo,
             new THREE.LineBasicMaterial({
                 color: new THREE.Color('white')
             }));
-    line1.position.set(-0.75, 0, 0);
-    // SAME EDGE GEOMETRY BUT WITH DEFULT THRESHOLD ANGLE
-    const line2 = new THREE.LineSegments(
-            new THREE.EdgesGeometry(sphereGeo, 1),
-            new THREE.LineBasicMaterial({
-                color: new THREE.Color('white')
-            }));
-    line2.position.set(0.75, 0, 0);
-    const mesh1 = new THREE.LineSegments(
-            sphereGeo,
-            new THREE.MeshBasicMaterial({
-                color: new THREE.Color('gray'),
-                wireframe: true
-            }));
-    mesh1.position.set(0, 0, -1.75);
-    scene.add(line1);
-    scene.add(line2);
-    scene.add(mesh1);
+    scene.add(line);
     //-------- ----------
-    // RENDER
+    // LOOP
     //-------- ----------
-    renderer.render(scene, camera);
+    const state = {
+        clock: new THREE.Clock(),
+        frame: 0,
+        maxFrame: 90,
+        fps: 12, // capping at 12 fps
+        per: 0
+    };
+    const update = function (state) {
+        line.rotation.y = Math.PI * 2 * state.per;
+    };
+    const loop = function () {
+        const wSecs = performance.now() - state.clock.oldTime;
+        requestAnimationFrame(loop);
+        if (wSecs > 1 / state.fps) {
+            let secs = state.clock.getDelta();
+            state.per = state.frame / state.maxFrame;
+            update(state);
+            state.frame += state.fps * secs;
+            state.frame %= state.maxFrame;
+            renderer.render(scene, camera);
+        }
+    };
+    // START CLOCK
+    state.clock.start();
+    loop();
 }
     ());
 ```
