@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2022-09-21 11:40:08
-version: 1.28
+updated: 2022-09-21 15:00:49
+version: 1.29
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. 
@@ -41,9 +41,13 @@ The source code examples for this post as well as my [many other posts on threej
 
 When I first wrote this post I was using three.js r127, and the last time I cam around to do some editing I was using r140 of the library. In the future changes might be made that will cause the code examples here to break, so make sure to always be aware of the version number of threejs that you are using if you run into problems.
 
-## 1 - Basic edges geometry example
+## 1 - Some basic Line and Edges geometry examples
 
-To create an edges geometry I will first want a geometry by which to get the edges from that will be passed to the THREE.EdgesGeometry constructor. So for this basic example I started out with just a simple THREE.BoxGeometry and then pass that as the first and only argument to the THREE.EdgesGeometry constructor. I then took the returned geometry from THREE.EdgesGeometry and used that as the geometry for an instance of THREE.LineSegements, and I went with the THREE.LineBasicMaterial for that instance of line segments. I can then add the Line Segments instance to a scene object, and then set up my camera and renderer just like with any other three.js project.
+To create an edges geometry I will first want a geometry by which to get the edges from that will be passed to the THREE.EdgesGeometry constructor as the first argument. So for these basic examples I start out with just a simple THREE.BoxGeometry and then pass that as the first argument to the THREE.EdgesGeometry constructor. After that there is also an additional option second argument that has to do with the angle threshold that is used to fine edges, more on that in later sections but for now the focus will be on just some basic examples where I just pass a geometry.
+
+### 1.1 - Just passing a Box Geometry to the THREE.Line Constructor
+
+Say that I Just want to look at some lines of the edges of a geometry, for this I might use something like the THREE.Line constructor function with the THREE.LineBasicMaterial to do so. So then there is creating an instance of buffer geometry with say the Box geometry constructor and then just pass that as the geometry to use with the Line.
 
 ```js
 (function () {
@@ -59,12 +63,11 @@ To create an edges geometry I will first want a geometry by which to get the edg
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
     //-------- ----------
-    // EDGE GEOMETRY CREATED FROM BOX GEOMETRY
+    // JUST USING BOX GEOMETRY WITH THREE.Line
     //-------- ----------
     const boxGeo = new THREE.BoxGeometry(1, 1, 1),
-    edgeGeo = new THREE.EdgesGeometry(boxGeo),
-    line = new THREE.LineSegments(
-            edgeGeo,
+    line = new THREE.Line(
+            boxGeo,
             new THREE.LineBasicMaterial({
                 color: new THREE.Color('white')
             }));
@@ -74,6 +77,18 @@ To create an edges geometry I will first want a geometry by which to get the edg
     //-------- ----------
     renderer.render(scene, camera);
 }());
+```
+
+Although this might work it does not give me the kind of result that I was hoping for. The reason way is that although the geometry I am working with will work well for Mesh objects it might not be set up just right for Lines, or Line Segments. So then there is making use of the Edge Geometry Constructor to see if that can be used to get the kind of end result that I want.
+
+### 1.2 - 
+
+```js
+```
+
+### 1.3 -
+
+```js
 ```
 
 The result of this is then a box that looks like it is in a kind of wire frame mode, however it looks different from a Mesh object that just has its material set to wire frame mode. There may be a few other ways to get this kind of effect, such as doing something with textures and alpha maps, but that kind of approach will also have a few down sides that I have not found solutions for just yet.
