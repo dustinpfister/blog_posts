@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2022-09-21 15:24:56
-version: 1.32
+updated: 2022-09-21 15:27:41
+version: 1.33
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. 
@@ -269,6 +269,8 @@ If I look at the attributes of a raw result from the THREE.SphereGeometry constr
 
 ### 3.2 - Point Counts of the position attribute
 
+One thing that I find strange though is that it would seem that the cont of points goes up rather than down depending on the angle threshold that I give as a second argument.
+
 ```js
 (function () {
     //-------- ----------
@@ -293,7 +295,7 @@ If I look at the attributes of a raw result from the THREE.SphereGeometry constr
     console.log( sphereGeo.getAttribute('position').count ); // 256
     console.log( edgeGeo1.getAttribute('position').count ); // 870
     console.log( edgeGeo2.getAttribute('position').count ); // 750
-    console.log( edgeGeo3.getAttribute('position').count ); // 7150
+    console.log( edgeGeo3.getAttribute('position').count ); // 150
     // making points for all
     [sphereGeo, edgeGeo1, edgeGeo2, edgeGeo3].forEach( (geo, i, arr) => {
         const points = new THREE.Points(
