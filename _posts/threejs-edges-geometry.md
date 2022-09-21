@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2022-09-21 15:20:11
-version: 1.31
+updated: 2022-09-21 15:24:56
+version: 1.32
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. 
@@ -225,6 +225,8 @@ In general I will want to use the THREE.Edges Geometry with the THREE.LineSegeme
 While I am at it in this section I will also be taking a closer look at the attributes of an Edge Geometry and compare it to the source geometry that I am giving it.
 
 ### 3.1 - The attributes of Edge Geometry appear to be position only
+
+If I look at the attributes of a raw result from the THREE.SphereGeometry constrictor I have position, normal, and uv attributes with that. These three attributes are the core set of attributes that I would want to have if I am using a geometry with THREE.Mesh. When I pass this raw sphere geometry to the Edges Geometry constructor it would seem that the only attribute that an Edge Geometry has is a position attribute. This would make sense if edge geometry is intended to just be used with constructors such as THREE.LineSegements, or in this section THREE.Points. 
 
 ```js
 (function () {
