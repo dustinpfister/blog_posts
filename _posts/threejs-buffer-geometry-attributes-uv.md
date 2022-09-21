@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2022-09-21 15:49:11
-version: 1.21
+updated: 2022-09-21 16:03:04
+version: 1.22
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting and for materials like that of the normal material. 
@@ -33,6 +33,10 @@ The way that I think about it is that learning about the uv attribute of a geome
 ### Do not confuse uvs with the material index values of groups.
 
 The uvs have to do with how a texture is to be applied to a face when it comes to offsets, and generally more often that not I am going to want to use the whole texture. When it comes to having more than one texture and switching between two or more textures for the same face messing around with uvs might not be the best way to do so. There is having groups in a geometry also, and passing an array of materials to a mesh rather than just one material. There is also just having one material, changing what the texture is for a map, and updating the material. These things might prove to be better options when it comes to switching textures at run time.
+
+### Source code examples are up on Github
+
+The source code examples that I am writing about in this post can also be found in my [test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-attributes-uv).
 
 ### Always check your version numbers
 
