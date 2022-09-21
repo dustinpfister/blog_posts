@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2022-09-21 15:12:58
-version: 1.30
+updated: 2022-09-21 15:20:11
+version: 1.31
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. 
@@ -218,7 +218,11 @@ So in this example I am creating two line segments both of which are using edge 
     ());
 ```
 
-## 3 - Points and Edge geometry
+## 3 - Points and a closer look at Edge geometry Compared to Sucre Geometry
+
+In general I will want to use the THREE.Edges Geometry with the THREE.LineSegements constructor However there is one additional constructor that I might also choose to use it with which would be the THREE.Points constructor. As the name suggests this points class is a way to go about display just the points of the position attribute of a geometry. When doing so I am restricted to just one material option which is the PointsMaterial. and when it comes to options for that materials I mainly only have color and size to set for it.
+
+While I am at it in this section I will also be taking a closer look at the attributes of an Edge Geometry and compare it to the source geometry that I am giving it.
 
 ### 3.1 - The attributes of Edge Geometry appear to be position only
 
