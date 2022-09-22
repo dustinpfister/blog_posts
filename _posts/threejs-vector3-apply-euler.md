@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-22 15:56:26
-version: 1.35
+updated: 2022-09-22 16:07:17
+version: 1.36
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -29,9 +29,13 @@ It might be a good idea to take a second look at the [Vector3 class in general](
 
 In order to use the apply [Euler method](/2021/04/28/threejs-euler/) of the Vector3 class it should go without saying that an instance of the Euler class will be needed. This is then another class that is worth checking out in detail if you have not done so all ready, it is similar to that of Vector3, but is has to do with a collation of three angles.
 
+### Source code examples are also up on github
+
+The source code examples that I am writing about in this post can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-apply-euler).
+
 ### Version Numbers matter with threejs
 
-When I wrote this post I was using r127 of threejs. I have made a habit of making sure that I always mentioning what version I was using when writing a post like this because of code breaking changes that are made to the library often.
+When I wrote this post I was using r127 of threejs, and the last time I came around to do a little editing I was using r140 of the library. I have made a habit of making sure that I always mentioning what version I was using when writing a post like this because of code breaking changes that are made to the library often.
 
 ## 1 - Basic Vector3.applyEuler example
 
@@ -86,11 +90,13 @@ Next I want to create a new Instance of the THREE.Vector3 class and here is wher
 
 Now there is doing something with that Vector3 class instance to say set the position of a cube mesh object. When it comes to this the position property of a mesh object is also an instance of Vector3, and as such I can use the copy method of the position property of the mesh to copy the values of this stand alone vector3 to the position property. The result then is that the position of the cube is set to the position of the vector to which I have applied the EUler instance to and I have expected results. The cube is now 45 degrees from the starting position of the vector, and it would seem that the Vector still has the same length that I have set for it.
 
-## 2 - Animation example
+## 2 - Animation examples
 
 So now that I have a basic example of this worked out, I often like to make at least one or more examples that involve an animation loop function using something like request animation frame, or some other means to do so. This will allow for me to use the apply Euler method over and over again with a range of values to get a better sense of what the apply Euler method does, and why it can prove to be a useful tool when working out various things that have to do with the movement of objects in space.
 
-This example then involves the use of a vector from angles helper method in which I can pass values for the various angles along with a length, and a start vector as a way to create and return a Vector3 instance created with these arguments.
+### 2.1 - Animation example
+
+This example then involves the use of a vector from angles helper method in which I can pass values for the various angles along with a length, and a start vector as a way to create and return a Vector3 instance created with these arguments. I can then use the copy method of the Vector3 class to copy the result that is returned to by the helper as a way to update the position property of an object3d mased object such as the mesh objects as I am doing here.
 
 ```js
 
@@ -162,7 +168,9 @@ This example then involves the use of a vector from angles helper method in whic
 
 The result is then having the cube move around in a circle around the origin of the scene as expected. So then it is possible to create all kinds of helper methods like this that might come in handy when it comes to creating Vectors than can be applied to a mesh object, or used fr any other purpose that might come up.
 
-## 3 - Using apply euler to update the position attribute of a geometry
+### 2.2 - Using apply euler to update the position attribute of a geometry
+
+Another Idea of an animation example would involve the mutation of the [position attribute](/2021/06/07/threejs-vector3-apply-euler/) of a buffer geometry that is used with a mesh object. When it comes to buffer geometry the position attribute is the first and for most attribute that comes to mind that is used to store the position of each vertex cor each triangle. So the Vector3 apply Euler method could be used to cause some interesting chanced to geometry if I am to create an array of Vector3 instances for each point and use apply Euler as part of the expressions to change the values of the array of vector3 objects, then use this array to update the position attribute if that makes nay sense.
 
 ```js
 (function () {
