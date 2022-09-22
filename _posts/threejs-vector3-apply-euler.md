@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-22 16:07:17
-version: 1.36
+updated: 2022-09-22 16:08:30
+version: 1.37
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -88,7 +88,7 @@ Next I want to create a new Instance of the THREE.Vector3 class and here is wher
 }());
 ```
 
-Now there is doing something with that Vector3 class instance to say set the position of a cube mesh object. When it comes to this the position property of a mesh object is also an instance of Vector3, and as such I can use the copy method of the position property of the mesh to copy the values of this stand alone vector3 to the position property. The result then is that the position of the cube is set to the position of the vector to which I have applied the EUler instance to and I have expected results. The cube is now 45 degrees from the starting position of the vector, and it would seem that the Vector still has the same length that I have set for it.
+Now there is doing something with that Vector3 class instance to say set the position of a cube mesh object. When it comes to this the position property of a mesh object is also an instance of Vector3, and as such I can use the copy method of the position property of the mesh to copy the values of this stand alone vector3 to the position property. The result then is that the position of the cube is set to the position of the vector to which I have applied the Euler instance to and I have expected results. The cube is now 45 degrees from the starting position of the vector, and it would seem that the Vector still has the same length that I have set for it.
 
 ## 2 - Animation examples
 
@@ -96,7 +96,7 @@ So now that I have a basic example of this worked out, I often like to make at l
 
 ### 2.1 - Animation example
 
-This example then involves the use of a vector from angles helper method in which I can pass values for the various angles along with a length, and a start vector as a way to create and return a Vector3 instance created with these arguments. I can then use the copy method of the Vector3 class to copy the result that is returned to by the helper as a way to update the position property of an object3d mased object such as the mesh objects as I am doing here.
+This example then involves the use of a vector from angles helper method in which I can pass values for the various angles along with a length, and a start vector as a way to create and return a Vector3 instance created with these arguments. I can then use the copy method of the Vector3 class to copy the result that is returned to by the helper as a way to update the position property of an object3d based object such as the mesh objects as I am doing here.
 
 ```js
 
@@ -168,7 +168,7 @@ This example then involves the use of a vector from angles helper method in whic
 
 The result is then having the cube move around in a circle around the origin of the scene as expected. So then it is possible to create all kinds of helper methods like this that might come in handy when it comes to creating Vectors than can be applied to a mesh object, or used fr any other purpose that might come up.
 
-### 2.2 - Using apply euler to update the position attribute of a geometry
+### 2.2 - Using apply Euler to update the position attribute of a geometry
 
 Another Idea of an animation example would involve the mutation of the [position attribute](/2021/06/07/threejs-vector3-apply-euler/) of a buffer geometry that is used with a mesh object. When it comes to buffer geometry the position attribute is the first and for most attribute that comes to mind that is used to store the position of each vertex cor each triangle. So the Vector3 apply Euler method could be used to cause some interesting chanced to geometry if I am to create an array of Vector3 instances for each point and use apply Euler as part of the expressions to change the values of the array of vector3 objects, then use this array to update the position attribute if that makes nay sense.
 
@@ -286,4 +286,3 @@ Another Idea of an animation example would involve the mutation of the [position
 ## Conclusion
 
 It would seem like there is at times a lot of over lap between the Vector3 class and the Euler class, and there is a lot of similarities between the two. I remember that when I was first getting started wit threejs that I would often confuse the two, but it is a good idea to work out the confusion. When it comes to Vector3 instances I am dealing with three properties that have to do with an x, y, and z, values and these values often have to do with a position in space. However they can be used for many other things such as ratios that have to do with these values that can then be applied to another Vector3 instance, or a Euler instance. With a Euler class instance it is a similar situation when it comes to the property values, however now I am dealing with radian values that represent angles.
-
