@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1006
-updated: 2022-09-23 13:58:10
-version: 1.5
+updated: 2022-09-23 14:03:59
+version: 1.6
 ---
 
 For today's new [threejs project](/2021/02/19/threejs-examples/) example post I started a new project this week in which I am looking into using SVG as a way to create paths that can then be used to define the movement and rotation of objects in a scene. The idea cam to be while working on my blog post for the SVG loader last week where I hit me that SVG is a pretty cool standard for creating paths. There is just one little problem which is that SVG is very much 2d, so to create a kind of 3d path with SVG I will need to think in terms of two paths for each 3d path. One path that I will be using to define motion for x and z, and then another in which I just use the y value for y in the 3d path.
@@ -613,4 +613,10 @@ Simply put although I can use the create mesh object to quickly create a mesh wi
 ```
 
 The end result with this now is that both the cone mesh object as well as the camera are moving by way of SVG paths. This is more or less just what it is that I had in mind when it comes to this sort of thing, as I am always thinking in terms of having a better system for controlling the movement and rotation of a camera. I can then create all kinds of paths in SVG that will allow for real fine grain controls of camera movement and I can also use this kind of system for doing so with all kinds of values with cameras if I end up going that far in any and all future revisions of the module.
+
+## Conclusion
+
+That will be it for now then when it comes to this SVG Movement library that is a great way to go about moving objects around in a scene over time. Or at least it is for what I would like to use it for when it comes to my video projects to say the least. I am sure that there are other ways of doing this sort of thing that might work in a way that is maybe a bit more appropriate for the kind of situation that this is. I have been meaning to take another look at the Curve class that would be a starting point for some kind of alternative project that is another way of doing the same thing here. Although I am sure that such a system would work well I would have to store the data that I use with it as JSON rather than SVG. You see the plan here is to work out a real nice system where I can create the Paths that I want to use with a kind of simply 2d SVG editor and then use this data to display a 2d view of what the movements are and then also use that same data to update the position of the objects in the 3d scene as well.
+
+
 
