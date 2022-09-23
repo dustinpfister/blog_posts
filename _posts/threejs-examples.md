@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-09-23 10:58:55
-version: 1.78
+updated: 2022-09-23 11:05:41
+version: 1.79
 ---
 
 
@@ -110,7 +110,7 @@ A more generic kind of line group module compared to another similar example whe
 
 ### [ 2.19 - Lines Sphere Circles](/2022/06/03/threejs-examples-lines-sphere-circles/) 
 
-I wanted a module that will return a group where each child is an instance of a three line that is one of many circles that compose a sphere like shape. I can then work out a number of ways to create animations from there with addtional code.
+I wanted a module that will return a group where each child is an instance of a three line that is one of many circles that compose a sphere like shape. I can then work out a number of ways to create animations from there with additional code.
 
 ### [ 2.20 - Vector3 apply Euler and lookAt](/2022/05/06/threejs-examples-lookat-with-apply-euler/) 
 
@@ -161,6 +161,8 @@ When it comes to making videos I have found that I like to break down things int
 In this example I am just working out a helper method that will just move the position of the top point of a sphere geometry. This is just an example that I worked out after writing a bunch of posts on the buffer geometry class in threejs and when I did so I learned a lot more about what the various attributes are for a geometry class in causing the position attribute. So I thought that I should work out at least on or two more examples that have to do with creat8ng a custom geometry, or just mutating the values of a geometry that is created with one of the built in geometry constructors such a s the sphere geometry constructor.
 
 ### [ 2.31  - SVG Object Movement Module ](/2022/09/23/threejs-examples-svg-movement/)
+
+I would like to work out a system that will work well for updating the position and rotation of objects over time by defining a path in 3d space. There are a number of options for doing this sort of thing such as using the Curve class, but for this example I am looking into using SVG to do this. Yes that is SVG as in Scalable Vector Graphics which is a way to go about creating 2d graphics by way of 2d vectors. The basic idea then is to have 2 2d paths once of which is used to set x and z, and the other to just set y. 
 
 ### [ 2.32 - Source layer 3d](/2022/02/11/threejs-examples-tool-source-layer-3d/) 
 
