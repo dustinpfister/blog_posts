@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1006
-updated: 2022-09-23 11:44:46
-version: 1.3
+updated: 2022-09-23 13:53:11
+version: 1.4
 ---
 
 For todays new [threejs project](/2021/02/19/threejs-examples/) example post I started a new project this week in which I am looking into using SVG as a way to create paths that can then be used to define the movement and rotation of objects in a scene. The idea cam to be while working on my blog post for the SVG loader last week where I hit me that SVG is a prerrty cool standard for cretaing paths. There is just one little propblem which is that SVG is very much 2d, so to create a kind of 3d path with SVG I will need to think in terms of two paths for each 3d path. One path that I will be using to define motion for x and z, and then another in which I just use the y value for y in the 3d path.
@@ -418,7 +418,9 @@ const SVGMove = (function () {
 }());
 ```
 
-### 2.1 - look at example
+### 2.1 - Look at example
+
+The general idea that I had in mind with this project is to not just use SVG paths as a way to define the position of an object over time but to also use SVG as a way to set the rotation of an object as well. For this demo I wanted to test drive the new set to alpha method of the module to see that both position and rotation can be set by SVG Paths. So I am using the create method method to create an create a mesh with the cone geometry and the basic material in wireframe mode. After creating the mesh object I also rotate the geo,etry to make sure that the cone is pointing in the direction that I want it to. For this cone mesh I am using svg paths that start with a cone1 prefrix in the SVG file as this is a collection of paths that I set up that have both position and look at paths.
 
 ```js
 // Basic load SVG DEMO
@@ -509,7 +511,13 @@ const SVGMove = (function () {
 }());
 ```
 
-### 2.2 - objects example
+The end result of this is then working just the way that I exspect it to, with the cone moving by way of the posiiton paths and also having the front of the mesh facting values created with the look at paths. This works pretty good then, and what is also great is that I can use my use object method to get this to work with any kind of object inclduing cameras.
+
+### 2.2 - Objects example
+
+Another major chnage that I made with this modue is worked out some better methods for creating the vector arrays that are then parked i the mesh objects user data object. In the draft prototypes I was doing this in a crude create mesh helper funciton that did not give many options when it comes to changing what the geometry is for the mesh and so forth. Now I have a way better method for cretaing mesh objects, but I am also doing the core actions that need to be prefromed with my new use object method where I just give the SVG data result, an id prefix and then a camera that I want to create the vectors for in its user data object.
+
+Simply put although I can use the create mesh object to quickly create a mesh with one of the built in geometry constcrors, or a geomeyr that I have in the code of a project, I can also just create any object3d based object by any means and pass that to my use object method. So in this example I am once again cretaing a mesh object with the create mesh object method as before, but I am now also using my use object method with the camera of the demo.
 
 ```js
 // Basic load SVG DEMO
@@ -603,3 +611,7 @@ const SVGMove = (function () {
     );
 }());
 ```
+
+The end result with this now is that both the cone mesh object as well as the camera are moving by way of svg paths. This is more or less just what it is that I had in mind when it comes to this sort of thing, as I am always thinking in trems of having a better system for controing the movement and orenation of a camera. I can then create all kinds of paths in svg that will allow for real fine grain controls of camera movement and I can also use this kin dof system for doing so with all kinds of values with cmaeras if I end up going that far in any and all future revisions of the module.
+
+
