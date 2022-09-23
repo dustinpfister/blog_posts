@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2022-09-18 12:41:35
-version: 1.37
+updated: 2022-09-23 17:16:14
+version: 1.38
 ---
 
 In [three.js](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would skin each side of the inside of a cube, resulting in a background that can be described as a kind of cube texture. Other terms for this kind of cube texture might also be [skybox](https://en.wikipedia.org/wiki/Skybox_%28video_games%29), or [cube mapping](https://en.wikipedia.org/wiki/Cube_mapping). This kind of texture can be set to the background property of a [scene object](/2018/05/03/threejs-scene/), but I also can place this kind of texture over the surface of some kind of mesh as well to create a reflection type effect often referred to as an [environment map supported by materials like that of the basic material](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.envMap). 
@@ -17,6 +17,7 @@ If I am to use the cube texture loader I will need six image files to load for e
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/-O8fEADJddg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Cube textures in three.js, and What to know before hand
