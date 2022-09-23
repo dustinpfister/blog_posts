@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1006
-updated: 2022-09-23 14:03:59
-version: 1.6
+updated: 2022-09-23 15:18:43
+version: 1.7
 ---
 
 For today's new [threejs project](/2021/02/19/threejs-examples/) example post I started a new project this week in which I am looking into using SVG as a way to create paths that can then be used to define the movement and rotation of objects in a scene. The idea cam to be while working on my blog post for the SVG loader last week where I hit me that SVG is a pretty cool standard for creating paths. There is just one little problem which is that SVG is very much 2d, so to create a kind of 3d path with SVG I will need to think in terms of two paths for each 3d path. One path that I will be using to define motion for x and z, and then another in which I just use the y value for y in the 3d path.
@@ -311,7 +311,11 @@ Looks like the core idea of what I want to work is working okay with my draft ex
 
 ### 2.0 - r0 of the module
 
-This first revision is for the most part just a module form of what I all ready got working well in my draft examples above but with some much needed changes made, as well as addtional features. In my lerp draft example I laid the groundwork for additional sets of values that can be defined in the svg by adding what I call a use string value as part of the id of an SVG path element. In this module I made changed to the set to alpha method to make use of a look at use string if it is there to use.
+This first version is for the most part just a module form of what I all ready got working well in my draft examples above but with some much needed changes made, as well as additional features. In my lerp draft example I laid the groundwork for additional sets of values that can be defined in the SVG by adding what I call a use string value as part of the id of an SVG path element. In this module I made changed to the set to alpha method to make use of a look at use string if it is there to use.
+
+Another major feature change that is very much needed is a general use object public method on top of the create mesh method that I improved from the demos. This way I can just use and object3d based object with a set of paths that I define for the object in the SVG file. I still have a create mesh method as will but now it is far more flexible in terms of choosing the constructor function that I use to create the geometry and I can also pass a geometry rather than create one. In any case the create mesh object still uses the general use object method when it comes to appending values to the user data object.
+
+Another thing that I wanted to add at the last moment was a system for checking for a revision number in the SVG file that should correspond to the revision number of this module. I have a lot of plans for this project when it comes to future work that I might do that will result in the svg path data being treated in a new way. So I can check revision numbers and process the data as it should moving forward.
 
 ```js
 // svgmove.js - r0 - from threejs-examples-svg-movement
@@ -355,6 +359,20 @@ const SVGMove = (function () {
         const ud = obj.userData;
         return !(ud[useStr + '_' + valueStr] === undefined);
     };
+    // get the revision number of the svg file
+    const getRNum = (data) => {
+        let rNum = -1;
+        let i = 0, len = data.xml.childNodes.length;
+        while(i < len){
+            let item = data.xml.childNodes.item(i);
+            if(item.id === 'svgmove_r'){
+                rNum = parseInt(item.textContent)
+                break;
+            }
+            i += 1;
+        }
+        return rNum;
+    }
     //-------- ----------
     // PUBLIC API
     //-------- ----------
@@ -365,16 +383,25 @@ const SVGMove = (function () {
     api.useObj = (data, id_prefix, obj) => {
         const ud = obj.userData;
         ud.data = data; // ref to raw data
-        data.paths.forEach((path)=>{
-            // get id of the path
-            const id = path.userData.node.id;
-            const idParts = id.split('_');
-            if(idParts[0] === id_prefix){
-                // get points
-                const points = path.subPaths[0].getPoints();
-                ud[ idParts[1] + '_' + idParts[2] ] = points;
-            }
-        });
+        let rNum = getRNum(data);
+        if(rNum === 0){
+            data.paths.forEach((path)=>{
+                // get id of the path
+                const id = path.userData.node.id;
+                const idParts = id.split('_');
+                if(idParts[0] === id_prefix){
+                    // get points
+                    const points = path.subPaths[0].getPoints();
+                    ud[ idParts[1] + '_' + idParts[2] ] = points;
+                }
+            });
+        }
+        if(rNum === -1){
+            console.warn('Could not figure out r num for the SVG file.')
+        }
+        if(rNum >= 1){
+            console.warn('This is r0 of svgmove.js, but svg file is for r' + rNum);
+        }
         return obj;
     };
     // create an Mesh based object with the given
