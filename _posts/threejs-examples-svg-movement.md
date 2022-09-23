@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1006
-updated: 2022-09-23 13:53:11
-version: 1.4
+updated: 2022-09-23 13:58:10
+version: 1.5
 ---
 
-For todays new [threejs project](/2021/02/19/threejs-examples/) example post I started a new project this week in which I am looking into using SVG as a way to create paths that can then be used to define the movement and rotation of objects in a scene. The idea cam to be while working on my blog post for the SVG loader last week where I hit me that SVG is a prerrty cool standard for cretaing paths. There is just one little propblem which is that SVG is very much 2d, so to create a kind of 3d path with SVG I will need to think in terms of two paths for each 3d path. One path that I will be using to define motion for x and z, and then another in which I just use the y value for y in the 3d path.
+For today's new [threejs project](/2021/02/19/threejs-examples/) example post I started a new project this week in which I am looking into using SVG as a way to create paths that can then be used to define the movement and rotation of objects in a scene. The idea cam to be while working on my blog post for the SVG loader last week where I hit me that SVG is a pretty cool standard for creating paths. There is just one little problem which is that SVG is very much 2d, so to create a kind of 3d path with SVG I will need to think in terms of two paths for each 3d path. One path that I will be using to define motion for x and z, and then another in which I just use the y value for y in the 3d path.
 
 If I can work out a decent enough system for creating 3d paths then they can be used as a way to update the [position property](/2022/04/04/threejs-object3d-position/) of any [object3d based object](/2018/04/23/threejs-object3d/) over time. This will mean [mesh objects](//2018/05/04/threejs-mesh/), but also any other kind of object3d based object such as a [camera](/2018/04/06/threejs-camera/). Speaking of cameras there is also using these 3d paths created from SVG to update the rotation of objects as well by using the array of Vector3 objects for values to pass to the [look at method](/2021/05/13/threejs-object3d-lookat/) of an object.
 
@@ -17,15 +17,15 @@ If I can work out a decent enough system for creating 3d paths then they can be 
 
 ## The SVG Movement module and what to know first
 
-The content of this post is about a few draft prototype examples, and then the current state of a javaScript module that has to do with updating the posiiton of objects by way of SVG data. This is then a project exmaple that is not really inteneed for people that are new to threejs, as well as client side javaScript in general. As such I will not be getting into detail about basic aspects of threejs as well as core javaScript that you should be up to speed with before hand here. However I do always take a moment with these opening seciton sof my post to write about a few things that you might want to read up on or refresh a little before contning with reading the rest of this post.
+The content of this post is about a few draft prototype examples, and then the current state of a javaScript module that has to do with updating the position of objects by way of SVG data. This is then a project example that is not really intended for people that are new to threejs, as well as client side javaScript in general. As such I will not be getting into detail about basic aspects of threejs as well as core javaScript that you should be up to speed with before hand here. However I do always take a moment with these opening sections of my posts to write about a few things that you might want to read up on or refresh a little before continuing with reading the rest of this post.
 
-### The SVG Loader is not built in and must be added on top of the core threejs librray
+### The SVG Loader is not built in and must be added on top of the core threejs library
 
-The SVG loader is an example of an asset loader that is not built into the core of the librray itself, but is rather one of many offical optiions for assets loaders that can be added on top of threejs by dowloanding the file for the revision number that you are using in the github folder of threejs. I have wrote a [blog post on the subject of the SVG loader alone](/2022/09/16/threejs-svg-loader/) as I have mentuned abouve last week in which I write about setting this up.
+The SVG loader is an example of an asset loader that is not built into the core of the library itself, but is rather one of many official options for assets loaders that can be added on top of threejs by downloading the file for the revision number that you are using in the github folder of threejs. I have wrote a [blog post on the subject of the SVG loader alone](/2022/09/16/threejs-svg-loader/) as I have mentioned above last week in which I write about setting this up.
 
 ### Speaking about SVG there is learning and or refreshing with that
 
-If you have not yet looked into what the deal is with SVG then now would be a good time to [read my post on SVG in general](/2019/02/11/js-javascript-svg), or better yet check out the modzilla docs. There is a lot to take in which it comes to SVG so when it comes to looking at the modzilla docs it is mainly the [path element tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) that you would want to read about that is most relatevnt to this javaScript module.
+If you have not yet looked into what the deal is with SVG then now would be a good time to [read my post on SVG in general](/2019/02/11/js-javascript-svg), or better yet check out the Mozilla docs. There is a lot to take in which it comes to SVG so when it comes to looking at the Mozilla docs it is mainly the [path element tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) that you would want to read about that is most relevant to this javaScript module.
 
 ### Source code is up on Github
 
@@ -37,7 +37,7 @@ The version of threejs that I was using when I first wrote this blog post was r1
 
 ## 1 - Some basic draft examples of what I want to happen
 
-When I start an idea for a project like this often th first step is to create one or more fairly basic examples where I just want to get the core idea up and running first. Once I get the very general idea working then it is often just a procreess of creating a module form of what I made, add new features, and refine the features that are all ready working. In this seciton I will then be going over tthese draft examples of an svg movement module then.
+When I start an idea for a project like this often th first step is to create one or more fairly basic examples where I just want to get the core idea up and running first. Once I get the very general idea working then it is often just a process of creating a module form of what I made, add new features, and refine the features that are all ready working. In this section I will then be going over these draft examples of an SVG movement module then.
 
 ### 1.1 - Getting the xz array values
 
@@ -162,7 +162,7 @@ The first and for most thing that I need to do is get the path data that I want 
 
 ### 1.2 - Lerping between points, and y values
 
-So far so good with my first x and z only proof of concept with this, but there are a few things that I will want to chnage before getting into making an actual module with this. There is of course using another path in the SVG to also get y values rather than just the x and z values and that is what I got up and working in this example. However the other thing that I would like to fix is to make it so that the movement is not so jummpy. So on top of using another path for the y values I also want to have a system where addtional vectors are created between the points given from svg as well.
+So far so good with my first x and z only proof of concept with this, but there are a few things that I will want to change before getting into making an actual module with this. There is of course using another path in the SVG to also get y values rather than just the x and z values and that is what I got up and working in this example. However the other thing that I would like to fix is to make it so that the movement is not so jumpy. So on top of using another path for the y values I also want to have a system where additional vectors are created between the points given from SVG as well.
 
 ```js
 // Basic load SVG DEMO
@@ -311,7 +311,7 @@ Looks like the core idea of what I want to work is working okay with my draft ex
 
 ### 2.0 - r0 of the module
 
-This first revision is for the most part just a module form of what I all ready got working well in my draft examples above but with some mcuh needed changes made, as well as addtional features. In my lerp draft exmaple I layed the groundwork for addtional sets of values that can be defined in the svg by adding what I call a use string value as part of the id of an SVG path element. In this module I made changed to the set to alpha method to make use of a look at use string if it is there to use.
+This first revision is for the most part just a module form of what I all ready got working well in my draft examples above but with some much needed changes made, as well as addtional features. In my lerp draft example I laid the groundwork for additional sets of values that can be defined in the svg by adding what I call a use string value as part of the id of an SVG path element. In this module I made changed to the set to alpha method to make use of a look at use string if it is there to use.
 
 ```js
 // svgmove.js - r0 - from threejs-examples-svg-movement
@@ -420,7 +420,7 @@ const SVGMove = (function () {
 
 ### 2.1 - Look at example
 
-The general idea that I had in mind with this project is to not just use SVG paths as a way to define the position of an object over time but to also use SVG as a way to set the rotation of an object as well. For this demo I wanted to test drive the new set to alpha method of the module to see that both position and rotation can be set by SVG Paths. So I am using the create method method to create an create a mesh with the cone geometry and the basic material in wireframe mode. After creating the mesh object I also rotate the geo,etry to make sure that the cone is pointing in the direction that I want it to. For this cone mesh I am using svg paths that start with a cone1 prefrix in the SVG file as this is a collection of paths that I set up that have both position and look at paths.
+The general idea that I had in mind with this project is to not just use SVG paths as a way to define the position of an object over time but to also use SVG as a way to set the rotation of an object as well. For this demo I wanted to test drive the new set to alpha method of the module to see that both position and rotation can be set by SVG Paths. So I am using the create method method to create an create a mesh with the cone geometry and the basic material in wire frame mode. After creating the mesh object I also rotate the geometryto make sure that the cone is pointing in the direction that I want it to. For this cone mesh I am using SVG paths that start with a cone1 prefix in the SVG file as this is a collection of paths that I set up that have both position and look at paths.
 
 ```js
 // Basic load SVG DEMO
@@ -511,13 +511,13 @@ The general idea that I had in mind with this project is to not just use SVG pat
 }());
 ```
 
-The end result of this is then working just the way that I exspect it to, with the cone moving by way of the posiiton paths and also having the front of the mesh facting values created with the look at paths. This works pretty good then, and what is also great is that I can use my use object method to get this to work with any kind of object inclduing cameras.
+The end result of this is then working just the way that I expect it to, with the cone moving by way of the position paths and also having the front of the mesh facing values created with the look at paths. This works pretty good then, and what is also great is that I can use my use object method to get this to work with any kind of object including cameras.
 
 ### 2.2 - Objects example
 
-Another major chnage that I made with this modue is worked out some better methods for creating the vector arrays that are then parked i the mesh objects user data object. In the draft prototypes I was doing this in a crude create mesh helper funciton that did not give many options when it comes to changing what the geometry is for the mesh and so forth. Now I have a way better method for cretaing mesh objects, but I am also doing the core actions that need to be prefromed with my new use object method where I just give the SVG data result, an id prefix and then a camera that I want to create the vectors for in its user data object.
+Another major change that I made with this module is worked out some better methods for creating the vector arrays that are then parked i the mesh objects user data object. In the draft prototypes I was doing this in a crude create mesh helper function that did not give many options when it comes to changing what the geometry is for the mesh and so forth. Now I have a way better method for creating mesh objects, but I am also doing the core actions that need to be preformed with my new use object method where I just give the SVG data result, an id prefix and then a camera that I want to create the vectors for in its user data object.
 
-Simply put although I can use the create mesh object to quickly create a mesh with one of the built in geometry constcrors, or a geomeyr that I have in the code of a project, I can also just create any object3d based object by any means and pass that to my use object method. So in this example I am once again cretaing a mesh object with the create mesh object method as before, but I am now also using my use object method with the camera of the demo.
+Simply put although I can use the create mesh object to quickly create a mesh with one of the built in geometry constructors, or a geometry that I have in the code of a project, I can also just create any object3d based object by any means and pass that to my use object method. So in this example I am once again creating a mesh object with the create mesh object method as before, but I am now also using my use object method with the camera of the demo.
 
 ```js
 // Basic load SVG DEMO
@@ -612,6 +612,5 @@ Simply put although I can use the create mesh object to quickly create a mesh wi
 }());
 ```
 
-The end result with this now is that both the cone mesh object as well as the camera are moving by way of svg paths. This is more or less just what it is that I had in mind when it comes to this sort of thing, as I am always thinking in trems of having a better system for controing the movement and orenation of a camera. I can then create all kinds of paths in svg that will allow for real fine grain controls of camera movement and I can also use this kin dof system for doing so with all kinds of values with cmaeras if I end up going that far in any and all future revisions of the module.
-
+The end result with this now is that both the cone mesh object as well as the camera are moving by way of SVG paths. This is more or less just what it is that I had in mind when it comes to this sort of thing, as I am always thinking in terms of having a better system for controlling the movement and rotation of a camera. I can then create all kinds of paths in SVG that will allow for real fine grain controls of camera movement and I can also use this kind of system for doing so with all kinds of values with cameras if I end up going that far in any and all future revisions of the module.
 
