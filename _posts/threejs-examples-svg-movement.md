@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1006
-updated: 2022-09-23 11:28:06
-version: 1.2
+updated: 2022-09-23 11:44:46
+version: 1.3
 ---
 
 For todays new [threejs project](/2021/02/19/threejs-examples/) example post I started a new project this week in which I am looking into using SVG as a way to create paths that can then be used to define the movement and rotation of objects in a scene. The idea cam to be while working on my blog post for the SVG loader last week where I hit me that SVG is a prerrty cool standard for cretaing paths. There is just one little propblem which is that SVG is very much 2d, so to create a kind of 3d path with SVG I will need to think in terms of two paths for each 3d path. One path that I will be using to define motion for x and z, and then another in which I just use the y value for y in the 3d path.
@@ -35,9 +35,13 @@ The source code examples as well as the addtional assets and notes that I am usi
 
 The version of threejs that I was using when I first wrote this blog post was r140.
 
-## 1 - Some basic draft examples of what I want
+## 1 - Some basic draft examples of what I want to happen
 
-### 1.1 - getting the xz array values
+When I start an idea for a project like this often th first step is to create one or more fairly basic examples where I just want to get the core idea up and running first. Once I get the very general idea working then it is often just a procreess of creating a module form of what I made, add new features, and refine the features that are all ready working. In this seciton I will then be going over tthese draft examples of an svg movement module then.
+
+### 1.1 - Getting the xz array values
+
+The first and for most thing that I need to do is get the path data that I want to use to update the position of an object, and even then maybe just the x and z values first. For this first draft example of an svg movement module then I made a main object called SVGMove and added a create mesh, and set to alpha public methods for the module. The create mesh object is then just a way to create a mesh object with arays set to the user data object of the mesh object that are created from the svg data.
 
 ```js
 // Basic load SVG DEMO
@@ -156,7 +160,9 @@ The version of threejs that I was using when I first wrote this blog post was r1
 }());
 ```
 
-### 1.2 - lerping between points, and y values
+### 1.2 - Lerping between points, and y values
+
+So far so good with my first x and z only proof of concept with this, but there are a few things that I will want to chnage before getting into making an actual module with this. There is of course using another path in the SVG to also get y values rather than just the x and z values and that is what I got up and working in this example. However the other thing that I would like to fix is to make it so that the movement is not so jummpy. So on top of using another path for the y values I also want to have a system where addtional vectors are created between the points given from svg as well.
 
 ```js
 // Basic load SVG DEMO
@@ -301,7 +307,11 @@ The version of threejs that I was using when I first wrote this blog post was r1
 
 ## 2 - r0 of the svgmove.js javaScript module and demos
 
+Looks like the core idea of what I want to work is working okay with my draft examples so after I have them looking good the next step is to create the first version of the SVG movement module. While I am at it I will also want to create a number of demos to make sure that the module is working okay thus far.
+
 ### 2.0 - r0 of the module
+
+This first revision is for the most part just a module form of what I all ready got working well in my draft examples above but with some mcuh needed changes made, as well as addtional features. In my lerp draft exmaple I layed the groundwork for addtional sets of values that can be defined in the svg by adding what I call a use string value as part of the id of an SVG path element. In this module I made changed to the set to alpha method to make use of a look at use string if it is there to use.
 
 ```js
 // svgmove.js - r0 - from threejs-examples-svg-movement
