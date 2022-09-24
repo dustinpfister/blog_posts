@@ -17,7 +17,7 @@
             <span>avg wc per post: <span class="<%- getWcClassName(cat.wc / cat.posts.length) %>"><%= Number(cat.wc / cat.posts.length).toFixed(2); %></span>; </span>
         </p>
         <table>
-        <tr><th>#</th><th>file name</th><th>updated</th><th>fresh</th><th>word count</th><th>Links</th></tr>
+        <tr><th>#</th><th>file name</th><th>updated</th><th>fresh</th><th>word count</th><th>Links</th><th>Video Count</th></tr>
         <% cat.posts.forEach(function(post, i){ %>
             <tr>
             <td><%= ( i + 1 ) %></td>
@@ -29,7 +29,10 @@
             <td>
                  <span class="<%- getLcClassName(post.linkCountInternal) %>"> i: <%= post.linkCountInternal %> </span>
                  <span class="<%- getLcClassName(post.linkCount) %>"> t: <%= post.linkCount %> </span>
-            </td></tr>
+            </td>
+            <td> <%= post.videoCount %> </td>
+
+            </tr>
         <% }); %>
         </table>
         <br>

@@ -57,6 +57,7 @@ module.exports = (opt) => {
                         fresh: fresh,
                         linkCount: item.linkObjects.length,
                         linkCountInternal: item.linkInternalCount,
+                        videoCount: item.videoCount,
                         wc: item.wc
                     });
                     cat.wc += item.wc;

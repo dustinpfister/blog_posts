@@ -30,6 +30,15 @@ let getInteralLinkCount = (linkObjects) => {
     });
 };
 
+const getVideoCount = (text) => {
+    var m = text.match(/\<iframe class\=\"youtube\_video\"/g)
+    var count = 0;
+    if(m){
+        count = m.length;
+    }
+    return count;
+};
+
 let klawAll = (opt) => {
 
     opt = Object.assign({}, opt_defaults, opt || {});
@@ -48,6 +57,7 @@ let klawAll = (opt) => {
                     item.wc = wc.getWC(item.md);
                     item.linkObjects = linkCount(item.md);
                     item.linkInternalCount = getInteralLinkCount(item.linkObjects);
+                    item.videoCount = getVideoCount(item.md);
                     item.fn = path.basename(item.path, '.md');
                     opt.forPost(item, () => {
                         // if ct === nextId then we are done for real
