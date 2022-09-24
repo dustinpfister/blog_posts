@@ -5,11 +5,13 @@ tags: [js,discovery]
 layout: post
 categories: discovery
 id: 24
-updated: 2017-09-30 18:46:06
-version: 1.3
+updated: 2022-09-24 08:43:57
+version: 1.4
 ---
 
-This is my twenty fifth blog post for my [personal github pages site](https://dustinpfister.github.io/), and as such I wanted to do something special. So I thought I would write a post that will be the first of what will be a series of posts on discovery. Discovery seems to be a good word to label a certain something that is not really about javaScript, or any language for that matter, but a certain other subject that is important when it comes to being a developer of any kind.
+Learning how to code is hard, or at least that seems to be the idea that a lot of people have set in there head. For me I would say that picking up a programming language is the easy part. The real hard part is to get proficient at certain things that lay outside of that of programming that apply not just to a certain programming language, but the creative process in general. So I thought I would write a post that will be the first of what will be a [series of posts on discovery](/categories/discovery/). Discovery seems to be a good word to label a certain something that is not really about javaScript, or any language for that matter, but a certain other subject that is important when it comes to being a developer, or creative type of person of any kind actually.
+
+Another way to put this would be to ask myself [if being creative is a construction or discovery kind of process](https://clearthinking.co/is-creativity-a-discovery-process-or-a-construction-process/). That is when I make some kind of creative work, such as a javaScript module, am I constructing code from the ground up, or is it something that was all ready there and I just discovered it. This differs from something like using a library or framework, I am not talking about using other peoples code. I am talking about the code that I myself write, in other words my own vanilla javaScript code. Some may say that I am constructing my own personal code from the ground up, but that is not how I see it, I always feel as though I am just discovering a proof of concept that was all ready up and running in my mind.
 
 <!-- more -->
 
@@ -21,13 +23,13 @@ This is where discovery comes into play, and I have come to prefer to use the wo
 
 ## Base two numbers example
 
-To help better explain what I mean by this, take a moment to think about how all data is stored on a non volatile data storage medium of a computer. Thats right, it's all binary data. If you are a half way decent programmer, you should know your base two numbers pretty well by now, at least to the point that you know the possible value range of say a single byte of data.
+To help better explain what I mean by this, take a moment to think about how all data is stored on a non volatile data storage medium of a computer. That's right, it's all binary data. If you are a half way decent programmer, you should know your base two numbers pretty well by now, at least to the point that you know the possible value range of say a single byte of data.
 
 ```js
 console.log(Math.pow(2,8)); // 256
 ```
 
-A single byte of a data has 256 possible values, that is there are only 256 possible states that a byte can have, and thats it, it is not infinite, but finite. If I add another byte the range of possibilities jumps up to 65,536 if I double it again to four bytes it increases into the billions at 4,294,967,296. As I keep adding bytes the range of possibilities starts to get into some ridiculously large finite numbers, but they are still just that, finite. 
+A single byte of a data has 256 possible values, that is there are only 256 possible states that a byte can have, and that's it, it is not infinite, but finite. If I add another byte the range of possibilities jumps up to 65,536 if I double it again to four bytes it increases into the billions at 4,294,967,296. As I keep adding bytes the range of possibilities starts to get into some ridiculously large finite numbers, but they are still just that, finite. 
 
 Every possible combination of ones and zeros in say 13kb of data can be considered a kind of index value that all ready exists. When you "create" something that can be stored within 13kb of data, you are not really creating something, but discovering something that was all ready there, as a theoretical possibility within a certain magnitude.
 
@@ -45,11 +47,15 @@ If I feel as thought the idea in mind is worthy of an investment of time, I get 
 
 ## Conclusion
 
-Part of being a good programmer is knowing when not to program. It's often hard to make that judgment, as I don't want to just use other peoples software without having any understanding, or appreciation of it's underlaying satisfaction. Still I hate spending time re inventing the wheel over, and over again as well. As such I am a bit more slow and calculated when it comes to diving into the deep of it.
+Part of being a good programmer is knowing when not to program. It's often hard to make that judgment, as I don't want to just use other peoples software without having any understanding, or appreciation of it's underlying satisfaction. Still I hate spending time re inventing the wheel over, and over again as well. As such I am a bit more slow and calculated when it comes to diving into the deep of it.
+
+This is my twenty fifth blog post for my [personal Github pages site](https://dustinpfister.github.io/), and as such I wanted to start something new that is not just about programming.
 
 Be sure to check out my many other [posts on discovery](/categories/discovery/).
 
 <!-- Playing with my new toy -->
+<!-- edit 09/24/2022 : commented this out as I am planning a new alternative to this -->
+<!--
 <script>
 
 (function() {
@@ -95,6 +101,7 @@ Be sure to check out my many other [posts on discovery](/categories/discovery/).
 }());
 
 </script>
+-->
 
 <!--
 
