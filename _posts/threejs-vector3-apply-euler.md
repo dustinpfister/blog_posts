@@ -1,12 +1,12 @@
 ---
-title: Apply Euler angles to a Vector3 in threejs
+title: Setting a vector from angles and unit vector with the Vector3 apply Euler method in threejs
 date: 2021-06-18 09:19:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-25 14:41:51
-version: 1.42
+updated: 2022-09-25 14:43:36
+version: 1.43
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
