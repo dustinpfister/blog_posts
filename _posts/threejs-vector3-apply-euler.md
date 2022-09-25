@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-25 14:25:14
-version: 1.40
+updated: 2022-09-25 14:38:32
+version: 1.41
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -93,6 +93,74 @@ Next I want to create a new Instance of the THREE.Vector3 class and here is wher
 ```
 
 Now there is doing something with that Vector3 class instance to say set the position of a cube mesh object. When it comes to this the position property of a mesh object is also an instance of Vector3, and as such I can use the copy method of the position property of the mesh to copy the values of this stand alone vector3 to the position property. The result then is that the position of the cube is set to the position of the vector to which I have applied the Euler instance to and I have expected results. The cube is now 45 degrees from the starting position of the vector, and it would seem that the Vector still has the same length that I have set for it.
+
+### 1.2 - Using applyEuler, normalize, multiplyScalar
+
+Now that I have a real basic example of the apply Euler method out of the way it is time to get into another example in which I am making use of a few vector3 class methods. For this example I am making a vector from angles method in which I give to angles, and a unit length to get a position from an origin. The angle values that I give are in degrees and once again I am using the Math Utils degree to radian method to convert these values to the radian values that are used for Euler class Objects. The first angle that I give will have a range from 0 to 360, and the second will have a range from 0 to 180, and then the third argument given will be a vector unit length.
+
+So then when it comes to creating and returning a vector I once again start out with a standard starting position, and then call the apply Euler method passing the Euler object that I want to use that has values set from the angle arguments that I given when calling the helper function. I then call the normalize method to set the length of the vector to one while preserving the direction of the vector, and then call multiply scalar to set the unit length to the desired value.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(-5, 5, 2);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // Vector from angles method
+    const vectorFromAngles = function (a, b, len) {
+        a = a === undefined ? 0 : a;
+        b = b === undefined ? 0 : b;
+        len = len === undefined ? 1 : len;
+        const startVec = new THREE.Vector3(1, 0, 0);
+        const e = new THREE.Euler(
+                0,
+                THREE.MathUtils.degToRad(a),
+                THREE.MathUtils.degToRad(-90 + b));
+        return startVec.applyEuler(e).normalize().multiplyScalar(len);
+    };
+    // create a cube
+    const createCube = function(a, b, len){
+        const cube = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.5, 0.5),
+            new THREE.MeshNormalMaterial());
+        cube.position.copy( vectorFromAngles(a, b, len) );
+        cube.lookAt(0, 0, 0);
+        return cube;
+    };
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    scene.add( createCube(0,  135, 2) );
+    scene.add( createCube(45, 135, 2) );
+    scene.add( createCube(90, 135, 2) );
+ 
+    scene.add( createCube(0,  90, 2) );
+    scene.add( createCube(45, 90, 2) );
+    scene.add( createCube(90, 90, 2) );
+ 
+    scene.add( createCube(0,  45, 2) );
+    scene.add( createCube(45, 45, 2) );
+    scene.add( createCube(90, 45, 2) );
+ 
+    scene.add( createCube(0, 0, 2) );
+    scene.add( createCube(0, 180, 2) );
+ 
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
 
 ## 2 - Animation examples
 
