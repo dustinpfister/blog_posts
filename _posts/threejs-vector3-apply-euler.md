@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-26 11:54:18
-version: 1.47
+updated: 2022-09-26 12:07:43
+version: 1.48
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -266,7 +266,6 @@ So now that I have a basic example of this worked out, I often like to make at l
 This example then involves the use of a vector from angles helper method in which I can pass values for the various angles along with a length, and a start vector as a way to create and return a Vector3 instance created with these arguments. It is with this vector from angled helper function that I am using the apply Euler method along with other vector3 class methods to get a desired outcome. I can then use the copy method of the Vector3 class to copy the result that is returned to by the helper as a way to update the position property of an object3d based object such as the mesh objects as I am doing here.
 
 ```js
-
 (function () {
     //-------- ----------
     // SCENE, CAMERA, RENDERER
@@ -342,7 +341,6 @@ This animation loop example is just a continuation of the basic section example 
 With that said I have a few variables where I am steeping a count that I can then divide over that of a max count value to get an alpha value. On top of that I can then also use that alpha value to get a kind of bias, or ping pong value by making use of another method of interest in the Math Utils object.
 
 ```js
-
 (function () {
     //-------- ----------
     // SCENE, CAMERA, RENDERER
@@ -438,7 +436,7 @@ With that said I have a few variables where I am steeping a count that I can the
         c += 1;
         c = c > CMAX ? CMAX : c;
         const p = c / CMAX;
-        const b = Math.abs(0.5 - p) / 0.5;
+        const b = THREE.MathUtils.pingpong(p - 0.5, 1) * 2;
         // get acount set group
         const aCount = acRange[0] + (acRange[1] - acRange[0]) * b;
         setGroup(group, aCount, 3, vd, vlt, b);
@@ -448,6 +446,8 @@ With that said I have a few variables where I am steeping a count that I can the
             acRange[0] = -20 + 20 * Math.random();
             acRange[1] = 20 * Math.random();
         }
+        // ALSO MOVEING GROUP POSITION WITH APPLY EULER
+        group.position.copy( vectorFromAngles(360 * p, 90, 2.5) );
     };
     // loop
     const loop = () => {
