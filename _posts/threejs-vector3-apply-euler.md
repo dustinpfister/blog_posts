@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-25 14:43:36
-version: 1.43
+updated: 2022-09-26 08:26:21
+version: 1.44
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -161,6 +161,100 @@ So then when it comes to creating and returning a vector I once again start out 
     renderer.render(scene, camera);
 }());
 ```
+
+### 1.3 - Using applyEuler, vector3 add, lerp, normalize, multiply scalar, and groups
+
+This will the then be a not so basic, basic example to rap up this section. It is still a basic example for me and where I am at sense I am still not doing anything with an animation loop, state machines, a whole bunch of additional javaScript modules and so forth. However This is an example in which I am making use of a fair about of features in the Vector3 class as well as threejs as a whole.
+
+Once again I am making use of the Vector from angles method that I covered in an above example. So then once again I am making use of the apply Euler method as well as normalize, and multiply scalar Vector3 class methods. However I am not making use of additional helper functions that have to do with creating and updating the state of a [group of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/).
+
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // Vector from angles method
+    const vectorFromAngles = function (a, b, len) {
+        a = a === undefined ? 0 : a;
+        b = b === undefined ? 0 : b;
+        len = len === undefined ? 1 : len;
+        const startVec = new THREE.Vector3(1, 0, 0);
+        const e = new THREE.Euler(
+                0,
+                THREE.MathUtils.degToRad(a),
+                THREE.MathUtils.degToRad(-90 + b));
+        return startVec.applyEuler(e).normalize().multiplyScalar(len);
+    };
+    // create a cube
+    const createCube = function(pos, size){
+        const cube = new THREE.Mesh(
+            new THREE.BoxGeometry(size, size, size),
+            new THREE.MeshNormalMaterial());
+        cube.position.copy( pos || new THREE.Vector3() );
+        cube.lookAt(0, 0, 0);
+        return cube;
+    };
+    // create a group
+    const createGroup = (len) => {
+        const group = new THREE.Group();
+        let i = 0;
+        while(i < len){
+            group.add( createCube(null, 1) );
+            i += 1;
+        }
+        return group;
+    };
+    // set a group
+    const setGroup = (group, aCount, unitLength, vd, vlt, alpha) => {
+        aCount = aCount === undefined ? 1 : aCount;
+        unitLength = unitLength === undefined ? 1 : unitLength;
+        vd = vd === undefined ? new THREE.Vector3() : vd;       // vector delta for each object effected by i / len
+        vlt = vlt === undefined ? new THREE.Vector3() : vlt;    // vector to lerp to for each mesh positon
+        alpha = alpha === undefined ? 0 : alpha;
+        let len = group.children.length;
+        let i = 0;
+        while(i < len){
+            const p = i / len;
+            const a = 360 * aCount * p;
+            // using my vector from angles method
+            const v = vectorFromAngles(a, 180 * p, unitLength);
+            // adding another Vector
+            v.add( vd.clone().multiplyScalar(p) );
+            const cube = group.children[i];
+            cube.position.copy(v.lerp(vlt, alpha));
+            cube.lookAt(0, 0, 0);
+            const s = 1 - 0.75 * p;
+            cube.scale.set(s, s, s);
+            i += 1;
+        }
+    }
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const group = createGroup(100);
+    const vd = new THREE.Vector3(6, 0, 0);
+    const vlt = new THREE.Vector3(-10, 2, 0);
+    setGroup(group, 4, 3, vd, vlt, 0.75);
+    scene.add(group);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
 
 ## 2 - Animation examples
 
