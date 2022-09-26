@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-26 08:32:54
-version: 1.44
+updated: 2022-09-26 09:00:49
+version: 1.45
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -248,7 +248,7 @@ One of the actions that is preformed when looping over the mesh objects is to ch
     const group = createGroup(100);
     const vd = new THREE.Vector3(6, 0, 0);
     const vlt = new THREE.Vector3(-10, 2, 0);
-    setGroup(group, 4, 3, vd, vlt, 0.75);
+    setGroup(group, 4, 3, vd, vlt, 0.25);
     scene.add(group);
     //-------- ----------
     // RENDER
