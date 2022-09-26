@@ -5,7 +5,7 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-26 08:26:21
+updated: 2022-09-26 08:32:54
 version: 1.44
 ---
 
@@ -166,7 +166,9 @@ So then when it comes to creating and returning a vector I once again start out 
 
 This will the then be a not so basic, basic example to rap up this section. It is still a basic example for me and where I am at sense I am still not doing anything with an animation loop, state machines, a whole bunch of additional javaScript modules and so forth. However This is an example in which I am making use of a fair about of features in the Vector3 class as well as threejs as a whole.
 
-Once again I am making use of the Vector from angles method that I covered in an above example. So then once again I am making use of the apply Euler method as well as normalize, and multiply scalar Vector3 class methods. However I am not making use of additional helper functions that have to do with creating and updating the state of a [group of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/).
+Once again I am making use of the Vector from angles method that I covered in an above example. So then once again I am making use of the apply Euler method as well as normalize, and multiply scalar Vector3 class methods. However I am not making use of additional helper functions that have to do with creating and updating the state of a [group of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/). I have one helper function that will just create a group of mesh objects, and then another that will loop over each mesh object in the group and preform actions on each.
+
+One of the actions that is preformed when looping over the mesh objects is to change the position of each mesh object. For this I am of course using the vector from angles method, but I am also making n use of the add method of the Vector3 class to apply an additional delta for each mesh object. On top of this I am also using the [Lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) to Lerp all of the mesh objects between a final position based on arguments given as well as another fixed point.
 
 
 ```js
