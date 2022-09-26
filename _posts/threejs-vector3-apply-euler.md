@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-26 09:00:49
-version: 1.45
+updated: 2022-09-26 11:42:25
+version: 1.46
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -50,7 +50,6 @@ When positioning the cube I create an Instance of the Euler class that I will be
 Next I want to create a new Instance of the THREE.Vector3 class and here is where things get a little tricky. I want to make sure that the length of the Vector3 instance is not zero. The default values for a Vector3 are 0,0,0 and if that is the case applying any Euler value to the vector will not change anything when it comes to the direction of the vector because everything is 0. So for now I am just setting the starting position of the vector at some kind of starting direction such as any positive number on the x axis. I can now call the apply Euler method off of the vector, and apply the Euler instance to the vector.
 
 ```js
-
 (function () {
     //-------- ----------
     // HELPERS
@@ -262,7 +261,7 @@ One of the actions that is preformed when looping over the mesh objects is to ch
 
 So now that I have a basic example of this worked out, I often like to make at least one or more examples that involve an animation loop function using something like request animation frame, or some other means to do so. This will allow for me to use the apply Euler method over and over again with a range of values to get a better sense of what the apply Euler method does, and why it can prove to be a useful tool when working out various things that have to do with the movement of objects in space.
 
-### 2.1 - Animation example
+### 2.1 - Moving cube sround animation example
 
 This example then involves the use of a vector from angles helper method in which I can pass values for the various angles along with a length, and a start vector as a way to create and return a Vector3 instance created with these arguments. It is with this vector from angled helper function that I am using the apply Euler method along with other vector3 class methods to get a desired outcome. I can then use the copy method of the Vector3 class to copy the result that is returned to by the helper as a way to update the position property of an object3d based object such as the mesh objects as I am doing here.
 
@@ -336,7 +335,137 @@ This example then involves the use of a vector from angles helper method in whic
 
 The result is then having the cube move around in a circle around the origin of the scene as expected. So then it is possible to create all kinds of helper methods like this that might come in handy when it comes to creating Vectors than can be applied to a mesh object, or used fr any other purpose that might come up.
 
-### 2.2 - Using apply Euler to update the position attribute of a geometry
+### 2.2 - Group of mesh objects animation example
+
+This animation loop example is just a continuation of the basic section example that had to do with creating and updating a group. The only real difference is that I am calling the set group method in an update method that is being called over and over again in the animation loop function.
+```js
+
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // Vector from angles method
+    const vectorFromAngles = function (a, b, len) {
+        a = a === undefined ? 0 : a;
+        b = b === undefined ? 0 : b;
+        len = len === undefined ? 1 : len;
+        const startVec = new THREE.Vector3(1, 0, 0);
+        const e = new THREE.Euler(
+                0,
+                THREE.MathUtils.degToRad(a),
+                THREE.MathUtils.degToRad(-90 + b));
+        return startVec.applyEuler(e).normalize().multiplyScalar(len);
+    };
+    // create a cube
+    const createCube = function(pos, size){
+        const cube = new THREE.Mesh(
+            new THREE.BoxGeometry(size, size, size),
+            new THREE.MeshNormalMaterial());
+        cube.position.copy( pos || new THREE.Vector3() );
+        cube.lookAt(0, 0, 0);
+        return cube;
+    };
+    // create a group
+    const createGroup = (len) => {
+        const group = new THREE.Group();
+        let i = 0;
+        while(i < len){
+            group.add( createCube(null, 1) );
+            i += 1;
+        }
+        return group;
+    };
+    // set a group
+    const setGroup = (group, aCount, unitLength, vd, vlt, alpha) => {
+        aCount = aCount === undefined ? 1 : aCount;
+        unitLength = unitLength === undefined ? 1 : unitLength;
+        vd = vd === undefined ? new THREE.Vector3() : vd;       // vector delta for each object effected by i / len
+        vlt = vlt === undefined ? new THREE.Vector3() : vlt;    // vector to lerp to for each mesh positon
+        alpha = alpha === undefined ? 0 : alpha;
+        let len = group.children.length;
+        let i = 0;
+        while(i < len){
+            const p = i / len;
+            const a = 360 * aCount * p;
+            // using my vector from angles method
+            const v = vectorFromAngles(a, 180 * p, unitLength);
+            // adding another Vector
+            v.add( vd.clone().multiplyScalar(p) );
+            const cube = group.children[i];
+            cube.position.copy(v.lerp(vlt, alpha));
+            cube.lookAt(0, 0, 0);
+            const s = 1 - 0.75 * p;
+            cube.scale.set(s, s, s);
+            i += 1;
+        }
+    };
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const group = createGroup(400);
+    scene.add(group);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 120;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    let c = 0;
+    const CMAX = 200;
+    let acRange = [-5, 5];
+    const vd = new THREE.Vector3(0, 0, 0);
+    const vlt = new THREE.Vector3(0, 0, 0);
+    const update = function(frame, frameMax){
+        // step count, figire p and b alpha values
+        c += 1;
+        c = c > CMAX ? CMAX : c;
+        const p = c / CMAX;
+        const b = Math.abs(0.5 - p) / 0.5;
+        // get acount set group
+        const aCount = acRange[0] + (acRange[1] - acRange[0]) * b;
+        setGroup(group, aCount, 3, vd, vlt, b);
+        // if c === CMAX new values
+        if(c === CMAX){
+            c = 0;
+            acRange[0] = -20 + 20 * Math.random();
+            acRange[1] = 20 * Math.random();
+        }
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+### 2.3 - Using apply Euler to update the position attribute of a geometry
 
 Another Idea of an animation example would involve the mutation of the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of a buffer geometry that is used with a mesh object. When it comes to buffer geometry the position attribute is the first and for most attribute that comes to mind that is used to store the position of each vertex cor each triangle. So the Vector3 apply Euler method could be used to cause some interesting chanced to geometry if I am to create an array of Vector3 instances for each point and use apply Euler as part of the expressions to change the values of the array of vector3 objects, then use this array to update the position attribute if that makes nay sense.
 
