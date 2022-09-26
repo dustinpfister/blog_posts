@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-26 12:07:43
-version: 1.48
+updated: 2022-09-26 12:40:00
+version: 1.49
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -338,7 +338,9 @@ The result is then having the cube move around in a circle around the origin of 
 
 This animation loop example is just a continuation of the basic section example that had to do with creating and updating a group. The only real difference is that I am calling the set group method in an update method that is being called over and over again in the animation loop function. 
 
-With that said I have a few variables where I am steeping a count that I can then divide over that of a max count value to get an alpha value. On top of that I can then also use that alpha value to get a kind of bias, or ping pong value by making use of another method of interest in the Math Utils object.
+With that said I have a few variables where I am steeping a count that I can then divide over that of a max count value to get an alpha value. On top of that I can then also use that alpha value to get a kind of bias, or ping pong value by making use of another method of interest in the Math Utils object. This ping pong method will give a value that goes up to a given value and then back down again, there is more than one way of going about doing this of course including a vanilla javaScript expression that I find myself typing over and over again but in any case that is what it does. Anyway I can use the result of this ping pong, or bias value that I often call it, to get a value for that aCount argument when using calling my set group method.
+
+On top of getting values for calling the set group method I can also again use my apply Euler powered vector from angles method to move the group object around as a whole. Both the mesh objects and the group object are object3d based objects that both contain position properties that are instances of Vector3 that I can copy to with the results of the vector from angles helper function calls.
 
 ```js
 (function () {
