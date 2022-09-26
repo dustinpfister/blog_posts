@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2022-09-26 11:42:25
-version: 1.46
+updated: 2022-09-26 11:54:18
+version: 1.47
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -337,7 +337,10 @@ The result is then having the cube move around in a circle around the origin of 
 
 ### 2.2 - Group of mesh objects animation example
 
-This animation loop example is just a continuation of the basic section example that had to do with creating and updating a group. The only real difference is that I am calling the set group method in an update method that is being called over and over again in the animation loop function.
+This animation loop example is just a continuation of the basic section example that had to do with creating and updating a group. The only real difference is that I am calling the set group method in an update method that is being called over and over again in the animation loop function. 
+
+With that said I have a few variables where I am steeping a count that I can then divide over that of a max count value to get an alpha value. On top of that I can then also use that alpha value to get a kind of bias, or ping pong value by making use of another method of interest in the Math Utils object.
+
 ```js
 
 (function () {
