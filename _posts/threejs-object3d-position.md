@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-09-27 10:59:59
-version: 1.28
+updated: 2022-09-27 11:09:39
+version: 1.29
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance and also be done with a whole lot of various objects that can be added to a scene object. Speaking of scene objects they two are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often refer to as world space.
@@ -47,6 +47,8 @@ As with any threejs example I set up my scene object, camera, and renderer and w
 
 ### 1.1 - Using the x, y, and z properties of Vector3
 
+here are a number of ways to set the state of the Vector3 class instance of the position of an object3d based object in threejs such as a camera or mesh object. However maybe one of the easy, just getting started type ways would be to just directly set, or step the x, y, and z values of the instance. That is that I can just set the value of say the x property of the vector3 class instance of the position property to a desired value and be done with it. This can also be done with the various other properties of interest when it comes to the y and z axis as well.
+
 ```js
 (function () {
     //-------- ----------
@@ -81,6 +83,8 @@ As with any threejs example I set up my scene object, camera, and renderer and w
     renderer.render(scene, camera);
 }());
 ```
+
+This might be a great way to start, and also in many situations I do in fact still update position this way. However there are a whole lot of other ways of setting position in the Vector3 class tool box, so lets look at a few more basic examples before moving on to some more advanced topics.
 
 ### 1.2 - Using the set method of Vector3
 
