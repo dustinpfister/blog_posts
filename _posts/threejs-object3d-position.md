@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-09-26 16:40:53
-version: 1.24
+updated: 2022-09-27 10:44:15
+version: 1.25
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the [Vector3 class](/2018/04/15/threejs-vector3/), and setting the values of this will set the position of the origin of an object of interest. Sense [the Object3d class](/2018/04/23/threejs-object3d/) is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance and also be done with a whole lot of various objects that can be added to a scene object. Speaking of scene objects they two are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often refer to as world space.
@@ -249,6 +249,108 @@ There is not just setting the position of a single object, but also all the chil
 ```
 
 In this example I am creating a group and then I am created and positioning a whole bunch of mesh objects and adding them as children for the group. When adding a child object to a group the position of each child object will be relative to the parent object, and not that of world space. There are methods in the Object3d class to help get a world space relative position rather than a group relative position, namely [the get world position method ](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition), but for now there is just being mindful of the situation with parent and child objects.
+
+## 3 - Basic Deterministic Animation examples
+
+In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs once will want to work out a number of animaitons in which they are not just setting the posiiton once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animaiton where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animaitons where randomness,and other factors such as user input and stream data are at play.
+
+For this section I will be sticking to just a few examples of a kind of Deterministic style, saving the altertaive style for some other post of section ouytside of this one.
+
+
+### 3.1 - Just moving a bunch of mesh objects on the x axis by differing rates
+
+To start out with animation I have an example here where I now have an animation loop rather than just a single call of the render method of the webgl renderer. This is an animation loop example that I seem to keep copying and pasting from one example to another over and over agian that allos for me to set differing values for a frames per second value, one of which will be used to set the target frame rate at which the update function is called, and the other can be used to set the frame rate. This allows for me to set a low update frame rate while still going by a higher frame rate update when it comes to movement. Regardless of how I go about adjusting these settings the aim here is to update everything just by a frame over max frame value, rather than all kinds of other factors that might be at play.
+
+The main idea here with this one is to create a group of mesh objects and have them all move along the x axis between a min and max value. To set the x value for each mesh object I am multiplying a set max amount delta value from the start point, then bultipling that by a number that is the current index of the child mesh. I then pass the result of this to the THREE.MathUtils.euclideanModulo method of the math utils object, passing the max delta value as the second argument for this function.
+
+The end result of all of this is then to end up with a whole bunch of mesh objects that are moving from a start x position to another posiiton that is a max delta from that start positon, but at differing rates, and having them wrap around.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPER FUNCTIONS
+    //-------- ----------
+    // make a single mesh object
+    const MESH_GEO = new THREE.SphereGeometry(0.5, 20, 20);
+    const MESH_MATERIAL = new THREE.MeshNormalMaterial();
+    const makeMesh = () => {
+        const mesh = new THREE.Mesh(
+            MESH_GEO,
+            MESH_MATERIAL);
+        return mesh;
+    };
+    // make a group of mesh objects
+    const makeGroup = () => {
+       const group = new THREE.Group();
+        let i = 0;
+        const len = 9;
+        while(i < len){
+            const mesh = makeMesh();
+            mesh.position.x = -4;
+            mesh.position.z = -4 + i;
+            mesh.position.y =  0.5;
+            group.add(mesh);
+            i += 1;
+        }
+       return group;
+    };
+    // set a group by an alpha value
+    const setGroup = (group, alpha) => {
+        group.children.forEach((mesh, i) => {
+            mesh.position.x = -4 + THREE.MathUtils.euclideanModulo( 8 * ( i + 1 ) * alpha, 8 );
+        });
+    };
+    //-------- ----------
+    // SCENE CHILD OBJECTS
+    //-------- ----------
+    // create group
+    const group = makeGroup();
+    scene.add(group);
+    // camera pos
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 300;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        // UPDATE GROUP
+        setGroup(group, frame / frameMax);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
 
 ## Conclusion
 
