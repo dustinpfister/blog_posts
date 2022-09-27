@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2022-09-21 15:41:21
-version: 1.34
+updated: 2022-09-27 15:07:55
+version: 1.35
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. 
@@ -16,6 +16,9 @@ I became aware of how this constructor can be useful when I took a second look i
 This subject then deserves at least one stand alone post on the topic then, as there are some stations in which I might want to use this in place of what is typically used.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/JPZL4wPPuCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## The Edges geometry constructor and what to know first.
 
