@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-09-27 11:09:39
-version: 1.29
+updated: 2022-09-27 12:30:48
+version: 1.30
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance and also be done with a whole lot of various objects that can be added to a scene object. Speaking of scene objects they two are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often refer to as world space.
@@ -345,6 +345,124 @@ The end result of all of this is then to end up with a whole bunch of mesh objec
     const update = function(frame, frameMax){
         // UPDATE GROUP
         setGroup(group, frame / frameMax);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+### 3.2 - Lerp method animation example
+
+Now that I have a nice basic by frame over max frame animation example, I can now start to move into another example that makes use of many of the Vector3 class features that I wrote about in the basic section. One very useful method that I covered out of many others was the lerp method of the vector3 class which can be used in combination with the clone method as a great way to move an object back and from between a start and end vector.
+
+So then for this animation example I will have a collection of mesh objects that I move between a start and end Vector with the Lerp method and the use of that method will be the center point of this specific example. I will however also make use of a number of other features of the vector3 class such as the add method, as well as some Math utils methods to helper make things more interesting.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    // camera pos
+    camera.position.set(6, 9, 6);
+    camera.lookAt(1.4, 0, 1.4);
+    //-------- ----------
+    // HELPER FUNCTIONS
+    //-------- ----------
+    // get a value between 0 and 1 with the given numerator denominator and count
+    const getAlpha = (n, d, ct) => {
+        return THREE.MathUtils.euclideanModulo(n / d * ct, 1);
+    };
+    // getBias is like getAlpha but the value will 'pingpong', I often also refer to this as a 'bias' value
+    const getBias = (n, d, ct) => {
+        return THREE.MathUtils.pingpong(getAlpha(n, d, ct) - 0.5, 1) * 2;
+    };
+    // just passing a getBias call to THREE.MathUtils.smoothstep
+    const getSmoothBias = (n, d, ct) => {
+        return THREE.MathUtils.smoothstep(getBias(n, d, ct), 0, 1);
+    }
+    // make a single mesh object with custom user data
+    const MESH_GEO = new THREE.SphereGeometry(0.75, 20, 20);
+    const makeMesh = (opt) => {
+        opt = opt || {};
+        const mesh = new THREE.Mesh(
+            MESH_GEO,
+            new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.5 }));
+        const ud = mesh.userData;
+        ud.v_start = opt.v_start || new THREE.Vector3(-4, 0, -4);
+        ud.v_end = opt.v_end || new THREE.Vector3(4, 0, -4);
+        ud.v_add = opt.v_add || new THREE.Vector3(0, 0, 8);
+        return mesh;
+    };
+    const updateMesh = (mesh, opt) => {
+        opt = opt || {};
+        opt.alphaLerp = opt.alphaLerp === undefined ? 0 : opt.alphaLerp;
+        opt.alphaAdd = opt.alphaAdd === undefined ? 1 - getSmoothBias(opt.alphaLerp, 1, 1) : opt.alphaAdd;
+        //const alpha = getSmoothBias(frame, frameMax, 4);
+        const ud = mesh.userData;
+        const delta = ud.v_add.clone().multiplyScalar( opt.alphaAdd );
+        mesh.position.copy(ud.v_start).lerp(ud.v_end, opt.alphaLerp).add( delta );
+    }
+    //-------- ----------
+    // SCENE CHILD OBJECTS
+    //-------- ----------
+    const group = new THREE.Group();
+    const len = 18;
+    let i = 0;
+    while(i < len){
+        const alpha = i / len;
+        const mesh = makeMesh({
+            v_add: new THREE.Vector3(0, 4, 8)
+        });
+        group.add(mesh);
+        i += 1;
+    }
+    scene.add(group);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 800;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        group.children.forEach((mesh, i, arr)=>{
+            let alpha1 =  1 - getSmoothBias(frame, frameMax, 4),
+            alpha2 = getAlpha( alpha1 - 0.75 * ( i / arr.length ), 1, 1);
+            updateMesh(mesh, {
+                alphaLerp: alpha2,
+                alphaAdd: 1 - getSmoothBias(alpha2, 1, 2 * alpha1)
+            });
+            // opacity
+            let alphaEffect = 1 - getSmoothBias(alpha2, 1, 1);
+            mesh.material.opacity = alphaEffect;
+            // scale
+            let s = 0.25 + 0.75 * alphaEffect;
+            mesh.scale.set(s, s, s);
+        });
     };
     // loop
     const loop = () => {
