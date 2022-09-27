@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-09-27 10:44:15
-version: 1.25
+updated: 2022-09-27 10:47:13
+version: 1.26
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the [Vector3 class](/2018/04/15/threejs-vector3/), and setting the values of this will set the position of the origin of an object of interest. Sense [the Object3d class](/2018/04/23/threejs-object3d/) is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance and also be done with a whole lot of various objects that can be added to a scene object. Speaking of scene objects they two are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often refer to as world space.
@@ -252,18 +252,18 @@ In this example I am creating a group and then I am created and positioning a wh
 
 ## 3 - Basic Deterministic Animation examples
 
-In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs once will want to work out a number of animaitons in which they are not just setting the posiiton once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animaiton where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animaitons where randomness,and other factors such as user input and stream data are at play.
+In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs once will want to work out a number of animations in which they are not just setting the position once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animation where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animations where randomness,and other factors such as user input and stream data are at play.
 
-For this section I will be sticking to just a few examples of a kind of Deterministic style, saving the altertaive style for some other post of section ouytside of this one.
+For this section I will be sticking to just a few examples of a kind of Deterministic style, saving the alternative style for some other post of section outside of this one.
 
 
 ### 3.1 - Just moving a bunch of mesh objects on the x axis by differing rates
 
-To start out with animation I have an example here where I now have an animation loop rather than just a single call of the render method of the webgl renderer. This is an animation loop example that I seem to keep copying and pasting from one example to another over and over agian that allos for me to set differing values for a frames per second value, one of which will be used to set the target frame rate at which the update function is called, and the other can be used to set the frame rate. This allows for me to set a low update frame rate while still going by a higher frame rate update when it comes to movement. Regardless of how I go about adjusting these settings the aim here is to update everything just by a frame over max frame value, rather than all kinds of other factors that might be at play.
+To start out with animation I have an example here where I now have an animation loop rather than just a single call of the render method of the webgl renderer. This is an animation loop example that I seem to keep copying and pasting from one example to another over and over again that allows for me to set differing values for a frames per second value, one of which will be used to set the target frame rate at which the update function is called, and the other can be used to set the frame rate. This allows for me to set a low update frame rate while still going by a higher frame rate update when it comes to movement. Regardless of how I go about adjusting these settings the aim here is to update everything just by a frame over max frame value, rather than all kinds of other factors that might be at play.
 
-The main idea here with this one is to create a group of mesh objects and have them all move along the x axis between a min and max value. To set the x value for each mesh object I am multiplying a set max amount delta value from the start point, then bultipling that by a number that is the current index of the child mesh. I then pass the result of this to the THREE.MathUtils.euclideanModulo method of the math utils object, passing the max delta value as the second argument for this function.
+The main idea here with this one is to create a group of mesh objects and have them all move along the x axis between a min and max value. To set the x value for each mesh object I am multiplying a set max amount delta value from the start point, then multiplying that by a number that is the current index of the child mesh. I then pass the result of this to the THREE.MathUtils.euclideanModulo method of the math utils object, passing the max delta value as the second argument for this function.
 
-The end result of all of this is then to end up with a whole bunch of mesh objects that are moving from a start x position to another posiiton that is a max delta from that start positon, but at differing rates, and having them wrap around.
+The end result of all of this is then to end up with a whole bunch of mesh objects that are moving from a start x position to another position that is a max delta from that start position, but at differing rates, and having them wrap around.
 
 ```js
 (function () {
