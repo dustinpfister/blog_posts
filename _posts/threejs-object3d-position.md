@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-09-27 10:58:58
-version: 1.27
+updated: 2022-09-27 10:59:59
+version: 1.28
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance and also be done with a whole lot of various objects that can be added to a scene object. Speaking of scene objects they two are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often refer to as world space.
@@ -25,11 +25,11 @@ I will then not be getting into detail with every little thing that you should k
 
 ### Check out the Object3d class in general
 
-There is a great deal to be aware of when it comes to the Object3d class in terms of propertes as well as methods that often prove to be helpful. In this post I will be focusig mostly on features that have to do with setting position, but there is also checking out my post on the [object3d class in general](/2018/04/23/threejs-object3d/).
+There is a great deal to be aware of when it comes to the Object3d class in terms of properties as well as methods that often prove to be helpful. In this post I will be focusing mostly on features that have to do with setting position, but there is also checking out my post on the [object3d class in general](/2018/04/23/threejs-object3d/).
 
 ### Read over what there is to work with when it comes to Vector3 also
 
-The value of the position property of the Object3d class is an instance of the Vector3 class. This vector3 class as the name sugests stores the current state of a 3d Vector, and is also packed with a whole bunch of useful methods that have to do with the mutation of this kind of state. When it comes to Vector3, or any Vector for that matter there is thinking in terms of the direction of the Vector, and what is often called vector unit length. I will be touching base on a lot of what this all measn in this post of course, but you might still want to check out my [main post on the Vector3 class](/2018/04/15/threejs-vector3/).
+The value of the position property of the Object3d class is an instance of the Vector3 class. This vector3 class as the name suggests stores the current state of a 3d Vector, and is also packed with a whole bunch of useful methods that have to do with the mutation of this kind of state. When it comes to Vector3, or any Vector for that matter there is thinking in terms of the direction of the Vector, and what is often called vector unit length. I will be touching base on a lot of what this all means in this post of course, but you might still want to check out my [main post on the Vector3 class](/2018/04/15/threejs-vector3/).
 
 ### Be mindful of version numbers with threejs
 
