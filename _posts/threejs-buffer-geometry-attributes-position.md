@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-09-28 09:58:27
-version: 1.38
+updated: 2022-09-28 10:02:30
+version: 1.39
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
@@ -27,6 +27,10 @@ This is a post on the position attribute of a buffer geometry instance in the ja
 ### Read up more on buffer geometry in general
 
 There is a great deal more to write about when it comes to [buffer geometry](/2021/04/22/threejs-buffer-geometry/) in threejs. It might be best to start out with getting to know the various prototype methods of the buffer geometry class, and how to do simpler tasks such as translating, or [rotating an all ready made geometry](/2021/05/20/threejs-buffer-geometry-rotation/) before getting into a more advanced topic such as this.
+
+### There are the other core attributes that are needed for Mesh objects
+
+The position attribute is the first attribute that I would want to set up when making a custom geometry. However if I want to use the custom geometry with Mesh objects I will also want to set up at least a [normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/) and [uvs](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes for it as well. These additional attributes are very important when it comes to making lighting and textures look the way that they should, or to even work at all actually.
 
 ### Source is on Github
 
@@ -462,6 +466,6 @@ So then this animation works out the way that I would more or less expect it to 
 
 ## Conclusion
 
-This week I think I will be focusing on the buffer geometry class more when it comes to continuing to learn a thing or two about using threejs in a client side javaScript project. There is a great deal more to learn about when it comes to making a custom geometry in threejs, or mutating one that has all ready been created using one of the built in geometry constructors. The position attribute is just one of many attributes that will come into play when creating custom geometry, in addition to position note worthy attributes are [normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/) and [uvs](/2021/06/09/threejs-buffer-geometry-attributes-uv/) just to name a few.
+This week I think I will be focusing on the buffer geometry class more when it comes to continuing to learn a thing or two about using threejs in a client side javaScript project. There is a great deal more to learn about when it comes to making a custom geometry in threejs, or mutating one that has all ready been created using one of the built in geometry constructors. The position attribute is just one of many attributes that will come into play when creating custom geometry, in addition to position note worthy attributes are normals and uvs just to name a few.
 
 However there might still be a great deal more to cover when it comes to just messing around with the position array, and creating such an array for a custom geometry. So at some point in the future I should come back around to expand this post even more with additional examples of the position attribute.
