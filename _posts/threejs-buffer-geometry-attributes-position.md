@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-09-28 09:42:37
-version: 1.35
+updated: 2022-09-28 09:49:11
+version: 1.36
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
@@ -36,9 +36,15 @@ The examples here, and many others can be [found on my Github](https://github.co
 
 When I made these source code examples, and first wrote this post I was using revision 127 of threejs. I do come around to doing a little editing of these posts now and then, and the last time I check that everything was working okay I was using r140.
 
-## 1 - Creating a custom geometry from the ground up started with position
+## 1 - Creating a custom triangle geometry from the ground up starting with position
+
+For this section I will be creating an instance of buffer geometry by just using the THREE.BufferGeometry constructor alone rather than one of the built in constructors that will set everything up for me. When doing so the first and foremost attribute that must be added is the position attribute which will have to be set up by creating a float32 array and then pass that when calling the THREE.BufferAttribute constructor that will then be used to set the position attribute for the geometry.
+
+To help keep things simple these examples will just involve three points in space.
 
 ### 1.1 - A position attribute only, and the THREE.Points Class
+
+In order to get a geometry to work well with Mesh objects I need more than just a position attribute, however when it comes to using the THREE.Points class all I need is a position attribute.
 
 ```js
 (function () {
@@ -81,6 +87,8 @@ When I made these source code examples, and first wrote this post I was using re
 ```
 
 ### 1.2 - Making it a geometry that will work okay with Mesh Objects
+
+Now that I have a basic example that is position only it is now time to work out an example that will also set up a normal and uv attribute so that I can use it with a mesh object.
 
 ```js
 (function () {
