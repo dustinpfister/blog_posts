@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-09-28 09:49:11
-version: 1.36
+updated: 2022-09-28 09:55:08
+version: 1.37
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
@@ -89,6 +89,8 @@ In order to get a geometry to work well with Mesh objects I need more than just 
 ### 1.2 - Making it a geometry that will work okay with Mesh Objects
 
 Now that I have a basic example that is position only it is now time to work out an example that will also set up a normal and uv attribute so that I can use it with a mesh object.
+
+One quick way to set up the normal attribute would be to just call the compute vertex normals method of the buffer geometry class. In some cases I will need to create this manually, or mutate the values, however getting deep into that might be outside the scope of this post, or at least this section to say the least. If I want to use textures with one or more of the maps that are used for the material I will also need to set up the uv attribute for the geometry also. The process for this is more or less the same as setting up position, but I will want to think in terms of two values for each vertex rather than three. These two values for each vertex are a kind of x and y offset for a source texture when it comes to mapping each face. Again I will not be getting into this subject in depth here, but I think I should just make a quick example of how to set up these other attributes for a very simple custom geometry like this.
 
 ```js
 (function () {
