@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-09-28 08:16:58
-version: 1.33
+updated: 2022-09-28 09:37:22
+version: 1.34
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
@@ -36,9 +36,11 @@ The examples here, and many others can be [found on my Github](https://github.co
 
 When I made these source code examples, and first wrote this post I was using revision 127 of threejs. I do come around to doing a little editing of these posts now and then, and the last time I check that everything was working okay I was using r140.
 
-## 1 - Basic example of the position attribute of a buffer geometry
+## 2 - Mutation of box geometry examples
 
-In this section I will be going over a basic example of mutating the position attribute of a built in box geometry. However things can still get a little confusing as the number of points in the array is not what one might expect when it comes to a cube. For example in a way there is only eight points to a cube, so one might think that the length of a position array for a cube would be 24 when it comes to all the axis positions for each point. However that is not the case, the count value of the position property is indeed 24, but the actual length of the position array is 72. This is because the idea here is to not think in the number of sides that are needed, but the number of triangles that are needed.
+In this section I will be going over some examples of mutating the position attribute of a built in box geometry. However things can still get a little confusing as the number of points in the array is not what one might expect when it comes to a cube. For example in a way there is only eight points to a cube, so one might think that the length of a position array for a cube would be 24 when it comes to all the axis positions for each point. However that is not the case, the count value of the position property is indeed 24, but the actual length of the position array is 72. This is because the idea here is to not think in the number of sides that are needed, but the number of triangles that are needed.
+
+### 2.1 - Getting started by just moving one point in the box geometry
 
 If you are still a little confused about all this maybe it would be best to just start playing around with an instance of box geometry, and do a little basic math with some things. Also while you are at it you might chose to change one of the values in the position array to see what the effect is.
 
@@ -84,7 +86,7 @@ If you are still a little confused about all this maybe it would be best to just
     ());
 ```
 
-## 2 - Set vertex helper example
+### 2.2 -  Set vertex helper example
 
 In this example I worked out a simple set vertex helper where I can just pass a geometry, then a vertex instance, and then a position object or instance of vector 3 that can be used to set the position of the vertex. Once again in this example I am working with a built in geometry that is a basic box geometry, and I want to use this set vertex helper method to move a single point in the cube. However doing so does not involve just moving one point, but three points for each triangle at that point.
 
@@ -142,7 +144,7 @@ In this example I worked out a simple set vertex helper where I can just pass a 
     ());
 ```
 
-## 3 - Set triangle helper
+### 2.3 -  Set triangle helper
 
 So now that I have a set vertx helper that seems to work okay I thought it might be nice to create another helper that will helper with each triangle in the cube. This way I can call the set triangle method and pass a position object once, and then that position object will be applied for each vertex in for the given triangle index. This example results in each face being moved away from the center of the cube, which is a cool effect that can be archived by a method such as this.
 
@@ -216,7 +218,7 @@ So now that I have a set vertx helper that seems to work okay I thought it might
     ());
 ```
 
-## 4 - Animation loop example
+## 3 - Animation loop example
 
 Now I am going to want to make some kind of animation example of what I have worked out thus far when it comes to mutating the values of a buffer geometry position attribute. In this example I am not suing the set vertex and set triangle helpers to create an update box geometry helper. In this helper method I am doing the same thing that I did for my example on the set tri helper, only I worked out a way to do so in a while loop rather than a whole bunch of lines calling the ti method over and over again. The one major different in this update method beyond that is that I can also pass a percent value that can be used to set the state of an animation in terms of a value between 0 and 1.
 
