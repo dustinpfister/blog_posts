@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-09-27 12:30:48
-version: 1.30
+updated: 2022-09-28 11:31:03
+version: 1.31
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance and also be done with a whole lot of various objects that can be added to a scene object. Speaking of scene objects they two are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often refer to as world space.
@@ -19,9 +19,10 @@ The [position property of an instance of Buffer geometry](/2021/06/07/threejs-bu
 
 This is a post on just the position property of the object3d class in the javaScript library known as threejs. So then this is not any kind of [how to get started with threejs kind of a post](/2018/04/04/threejs-getting-started/) as well as with any additional skills that are also required before hand that have to do with client side web development in general. There are a whole lot of other topics that will branch off from the position property such as things that have to do with the Vector3 class to which the position property is an instance of. Also There is not just setting position but also orientation of objects so I might also need to touch base on the rotation property also in this post at least a little.
 
-I will then not be getting into detail with every little thing that you should know at this point before hand. However I do often use these opening sections of posts to go over a few things that you might want to read up more on before continig with the rest of this content.
+I will then not be getting into detail with every little thing that you should know at this point before hand. However I do often use these opening sections of posts to go over a few things that you might want to read up more on before continuing with the rest of this content.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/iqTSfkGX3no" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### Check out the Object3d class in general
 
@@ -215,25 +216,31 @@ Say that I have two vectors that I would like to treat as start and end points i
 }());
 ```
 
-## 2 - Setting the position of a parent and child
+## 2 - Setting the positions of a parent and child objects
+
+### 2.1 - Basic group example
 
 There is not just setting the position of a single object, but also all the children of a parent object as well as the parent object as a whole. In other words the add method of the scene object is not just a method of the scene object, but yet another method of the Object3d class to which the scene object is another example of an object that is based off of the object 3d class. Yes the scene object also has a position property and if desired that can be used as a way to change the position of a whole scene relative to what is often called world space. However for now when it comes to this section I will be going over an example that make use of the [THREE.Group constructor](/2018/05/16/threejs-grouping-mesh-objects/) as a way to have a parent and child kind of situation with the position of objects.
 
 ```js
 (function () {
+    //-------- ----------
     // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    var scene = new THREE.Scene();
+    //-------- ----------
+    const scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(9, 9));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
     scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
     // CREATING A GROUP WITH CHILDREN
-    var group = new THREE.Group();
-    var i = 0, len = 30, radian, radius, x, y, z;
+    //-------- ----------
+    const group = new THREE.Group();
+    let i = 0, len = 30, radian, radius, x, y, z;
     while(i < len){
-        var mesh = new THREE.Mesh(
+        const mesh = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshNormalMaterial());
         radian = Math.PI * 2 * 4 / len * i;
@@ -247,21 +254,93 @@ There is not just setting the position of a single object, but also all the chil
         i += 1;
     }
     scene.add(group);
- 
     // SETTING POSITION OF THE GROUP
     group.position.set(-5,0,-5)
- 
     // POSITON AND ROTATION OF CAMERA
     camera.position.set(8, 8, 8);
     camera.lookAt(0, 1, 0);
- 
-    // render static scene
+    //-------- ----------
+    // RENDER
+    //-------- ----------
     renderer.render(scene, camera);
-}
-    ());
+}());
 ```
 
-In this example I am creating a group and then I am created and positioning a whole bunch of mesh objects and adding them as children for the group. When adding a child object to a group the position of each child object will be relative to the parent object, and not that of world space. There are methods in the Object3d class to help get a world space relative position rather than a group relative position, namely [the get world position method ](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition), but for now there is just being mindful of the situation with parent and child objects.
+In this example I am creating a group and then I am created and positioning a whole bunch of mesh objects and adding them as children for the group. 
+
+### 2.2 - Get World Position method
+
+When adding a child object to a group the position of each child object will be relative to the parent object, and not that of world space. There are methods in the Object3d class to help get a world space relative position rather than a group relative position, namely [the get world position method ](/2021/05/25/threejs-object3d-get-world-position/) that will prove to be useful if I want to position an object relative to another object, without making it a child of that object.
+
+To use this get world position method I need to create a new Vector3 to copy the world position to first. The I just call the get world position method of the Object3d based object such as a group that I would like to get the world position of, passing the new vector3 object that will get the values copied to. After that I then have the world position of the object, I can then add an additional value from there to get the world space position that would be relative to the group object rather than the scene, or rather world space and a scene object can also have its x and y values alerted to something other than 0,0.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10, 0x0000ff, 0xffffff));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CREATING A GROUP WITH CHILDREN
+    //-------- ----------
+    const group = new THREE.Group();
+    group.add( new THREE.GridHelper(10,10, 0xff0000, 0x00ff00));
+    const len = 20;
+    let i = 0, radian, radius = 5, x, y = 0, z;
+    while(i < len){
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+        radian = Math.PI * 2 / len * i;
+        x = Math.cos(radian) * radius;
+        z = Math.sin(radian) * radius;
+        mesh.position.set(x, y, z);
+        mesh.lookAt(group.position);
+        group.add(mesh);
+        i += 1;
+    }
+    scene.add(group);
+    group.position.set(-12, 0, -7);
+    //-------- ----------
+    // WORLD SPACE VECTOR
+    //-------- ----------
+    const v_ws = new THREE.Vector3(1, 1.5, -1);
+    const mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 3, 1),
+        new THREE.MeshStandardMaterial({color: 'red'}));
+    scene.add(mesh1);
+    mesh1.position.copy(v_ws);
+    const mesh2 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 3, 1),
+        new THREE.MeshStandardMaterial({color: 'red'}));
+    scene.add(mesh2);
+    // get world position works
+    const v_ls = new THREE.Vector3()
+    group.getWorldPosition(v_ls);
+    v_ls.add(v_ws)
+    mesh2.position.copy( v_ls );
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(1, 4, 2)
+    scene.add(dl);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    // camera position
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 1, 0);
+    // render
+    renderer.render(scene, camera);
+}());
+```
 
 ## 3 - Basic Deterministic Animation examples
 
