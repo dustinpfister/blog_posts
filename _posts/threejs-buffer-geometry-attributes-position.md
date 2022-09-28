@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-09-28 10:02:30
-version: 1.39
+updated: 2022-09-28 10:07:59
+version: 1.40
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
@@ -48,7 +48,9 @@ To help keep things simple these examples will just involve three points in spac
 
 ### 1.1 - A position attribute only, and the THREE.Points Class
 
-In order to get a geometry to work well with Mesh objects I need more than just a position attribute, however when it comes to using the THREE.Points class all I need is a position attribute.
+In order to get a geometry to work well with Mesh objects I need more than just a position attribute, however when it comes to using the THREE.Points class all I need is a position attribute. So for this example I will be creating a buffer geometry that just has a position attribute and use that with the Points class rather than that of mesh. 
+
+The fist thing that I would do is call the THREE.BufferGeometry constructor function wit the new keyword, and then store the returned result to a variable that can be called something like geometry. I now have an instance of buffer geometry, but there is no data with it, so I will then need to add the position attribute. To do so I create a Float32 array and then set up numbers for each x, y, and z value for each point in space. Once I have that set up the way I like it I can pass that array as an argument when calling the THREE.BufferAttribite constrictor. The result of the BufferAttribjuute constructor can then be set for the position attribute of the buffer geometry by just using the set Attribute method of the class.
 
 ```js
 (function () {
