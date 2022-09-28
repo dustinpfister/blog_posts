@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-09-28 11:31:03
-version: 1.31
+updated: 2022-09-28 11:35:44
+version: 1.32
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance and also be done with a whole lot of various objects that can be added to a scene object. Speaking of scene objects they two are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often refer to as world space.
@@ -217,6 +217,8 @@ Say that I have two vectors that I would like to treat as start and end points i
 ```
 
 ## 2 - Setting the positions of a parent and child objects
+
+things can get a little confusing when it comes to working with one or more nested objects that are children of another object. In such situations there is setting position relative to a parent object, and then there is setting an object relative to what is called world space. Sense this is very much a blog post on the subject of the position property of Object3d based objects, I think I should have a section in this post in which I go over at least a few examples that have to do with setting the position of objects by way of both local and world space.
 
 ### 2.1 - Basic group example
 
