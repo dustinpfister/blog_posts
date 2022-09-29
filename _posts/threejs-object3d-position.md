@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-09-28 11:35:44
-version: 1.32
+updated: 2022-09-29 16:42:35
+version: 1.33
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance and also be done with a whole lot of various objects that can be added to a scene object. Speaking of scene objects they two are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often refer to as world space.
@@ -204,6 +204,58 @@ Say that I have two vectors that I would like to treat as start and end points i
         const s = 5 - 4.75 * alpha;
         mesh.scale.set(s, s, s);
         // add to scene
+        scene.add(mesh);
+        i += 1;
+    }
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+### 1.5 - The normalize and multiply scalar methods
+
+Say that I am in a situation in which I want to adjust just the length of a vector without changing the direction, or I want to set direction of a vector one way but then adjust the length by another means. For these kinds of situations there is the normalize method that will set the length of the vector to 1, but will preserve the direction of the vector. Once the unit length of the vector is one then I can just multiply one or more of the axis values by the desired vector unit length that is higher or lower than 1. If I just want to multiply all axis values by one single value there is the multiply scalar method that can be used to do so.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPER FUNCTIONS
+    //-------- ----------
+    const MESH_GEO = new THREE.SphereGeometry(0.5, 10, 10);
+    const MESH_MATERIAL = new THREE.MeshNormalMaterial({transparent: true, opacity: 0.8});
+    const makeMesh = () => {
+        const mesh = new THREE.Mesh(
+            MESH_GEO,
+            MESH_MATERIAL);
+        return mesh;
+    };
+    //-------- ----------
+    // SCENE CHILD OBJECTS
+    //-------- ----------
+    let i = 0;
+    const len = 15;
+    while(i < len){
+        const mesh = makeMesh();
+        const alpha = i / len;
+        // SETTING MESH POSITION USING set, normalize, and multiplyScalar
+        // methods as a way to set a direction and unit length
+        const y = -2 + 5 * alpha;
+        const unitLength = -5.5 + 15 * alpha;
+        mesh.position.set(-5, y, 0).normalize().multiplyScalar(unitLength);
         scene.add(mesh);
         i += 1;
     }
