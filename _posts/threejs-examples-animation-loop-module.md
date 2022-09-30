@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1007
-updated: 2022-09-30 13:28:21
-version: 1.3
+updated: 2022-09-30 13:37:59
+version: 1.4
 ---
 
 The subject of creating an animaiton loop is somehting that will come up a lot, not just with threejs alone, but indeed with client side javaScript in general. When it comes to client side javaScript alone there are methods like that of setTimeout, as well as request animation frame. There are also a number of addtional features that are realted to this sort of thing in client side javaScript, but also in the threejs librray such as the [THREE.Clock class](https://threejs.org/docs/#api/en/core/Clock), and thus also [ performance.now](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now), and Date.now that the class works on top of. However in todays post I am going to be writing a thing or two about a new javaScript module project that is a kind of framework that builds on top of the core idea of an animation loop.
@@ -310,12 +310,156 @@ const loopMod = (function(){
 
 ### 1.1 - Frame by frame demo
 
+Now that I have the source code of the framnework out of the way I should go over at least one or two demos of the module.
+
 ```js
+// ---------- ----------
+// Frame by Frame animation example for r0 of threejs-examples-animation-loop-module
+// ---------- ----------
+const loopObj = loopMod.create({
+    // fps_update is actual update FPS rate ( lower for less CPU use, but choppy )
+    fps_update: 16,
+    // fps_movement is the rate at which frames will update by system time
+    fps_movement: 30,
+    // if FAME_MAX == 300 and fps_movement === 30 then it is a 10 sec loop
+    FRAME_MAX: 300,
+    // init hook for prefroming actions that will only happen once
+    // this is called once the loopObj is ready but has not been 
+    // started yet for first time
+    init: function(loopObj, scene, camera, renderer){
+        // ---------- ----------
+        // ADD OBJECTS
+        // ---------- ----------
+        // light
+        const dl = new THREE.DirectionalLight(0xffffff, 1);
+        dl.position.set(2, 1, 3);
+        scene.add(dl);
+        // cube
+        const ud = scene.userData;
+        const cube = ud.cube = new THREE.Mesh(
+                new THREE.BoxGeometry(1, 1, 1),
+                new THREE.MeshStandardMaterial({ transparent: true, opacity: 0.5}));
+        scene.add(cube);
+        // progress bar mesh
+        const bar = ud.bar = new THREE.Group();
+        bar.add(new THREE.Mesh(
+                new THREE.BoxGeometry(0.5, 0.5, 5),
+                new THREE.MeshStandardMaterial({ color: 0x00ff00, transparent: true, opacity: 0.5})));
+        bar.add(new THREE.Mesh(
+                new THREE.BoxGeometry(0.25, 0.25, 5),
+                new THREE.MeshStandardMaterial({ color: 0x008888, transparent: true, opacity: 0.25})));
+        scene.add(bar);
+        bar.position.set(0.75, -1, 0);
+        // ---------- ----------
+        // SETUP CAMERA, SIZE, AND APPEND CONTAINER TO HTML
+        // ---------- ----------
+        // setup camera and size
+        camera.aspect = 640 / 200;
+        camera.updateProjectionMatrix();
+        loopObj.setSize(640, 200);
+        camera.position.set(2, 2, 0);
+        camera.lookAt(0, -0.5, 0);
+        ( document.getElementById('demo') || document.body ).appendChild( loopObj.container )
+    },
+    // what needs to happen each time the loop starts
+    onStart: function(loopObj, scene, camera, renderer){
+        loopObj.frame = 0;
+    },
+    // update method
+    update: function(loop, scene, camera){
+        const ud = scene.userData;
+        const cube = ud.cube;
+        const bar = ud.bar;
+        cube.rotation.x = Math.PI * 2 * loop.getBias(2);
+        cube.rotation.y = Math.PI * 2 * loop.getAlpha(1);
+        let alpha = loop.getAlpha(1);
+        bar.children[0].scale.set(1, 1, alpha);
+        bar.children[0].position.z = (5 / 2) * (1 - alpha);
+    }
+});
+// do just once
+loopMod.start(loopObj);
 ```
 
 ### 1.2 - Random demo
 
+I like frame bt frame style animations a lot, so much in fact that I have made a major project that I still work on a little now and then for making videos. However this animaiton loop module is not that kind of project, there goal here is to make the kind of aniamiton loop framework that would be used on a web page, rather than makign a video. Althouh I can still very much make frame by frame animation with it, the focus is very much animaiton in general, inclduing ones that muight make use of user input, seed data, and random values.
+
+For this example I then wanted to make another animaiton on top of the framework that is more on point with the other general style of animaiton. Nothing major for this one, but i would like to test out that wrap vector method that i put in place with this style of animaiton in mind.
+
 ```js
+// ---------- ----------
+// Random animation example for r0 of threejs-examples-animation-loop-module
+// ---------- ----------
+const loopObj = loopMod.create({
+    fps_update: 12,
+    fps_movement: 80,
+    pb: { r: 32, dx: 40, dy: 40},
+    // init hook for prefroming actions that will only happen once
+    // this is called once the loopObj is ready but has not been 
+    // started yet for first time
+    init: function(loopObj, scene, camera, renderer){
+        const sud = scene.userData;
+        sud.vMin = new THREE.Vector3(-5, -5, -5);
+        sud.vMax = new THREE.Vector3(5, 5, 5);
+        sud.vCenter = new THREE.Vector3();
+        sud.dMax = 5;
+        // SETUP MESH GROUP
+        const group = scene.userData.group = new THREE.Group();
+        const len = 60;
+        let i = 0;
+        while(i < len){
+            const mesh = new THREE.Mesh(
+                new THREE.BoxGeometry(0.5, 0.5, 0.5),
+                new THREE.MeshNormalMaterial({transparent: true}));
+            const mud = mesh.userData;
+            // setting a normalize direction
+            mud.dir = new THREE.Vector3(
+               -3 + 6 * Math.random() ,
+               1 + 9 * Math.random() * (Math.random() > 0.5 ? 1 : -1),
+               -3 + 6 * Math.random() );
+            mud.dir.normalize();
+            // setting a unit length to use to create a delta vector3
+            mud.unit_length = 0.25 + 2.75 * Math.random();
+            group.add(mesh);
+            i += 1;
+        };
+        scene.add(group);
+        ( document.getElementById('demo') || document.body ).appendChild( loopObj.container );
+        // update camera and size
+        camera.aspect = 640 / 200;
+        camera.updateProjectionMatrix();
+        loopObj.setSize(640, 200);
+        camera.position.set(2, 2, 2);
+        camera.lookAt(0, 0, 0);
+    },
+    // update method
+    update: function(loop, scene, camera){
+        const group = scene.userData.group;
+        const sud = scene.userData;
+        // update children
+        group.children.forEach( (mesh, i) => {
+             const ud = mesh.userData;
+             // creating a delta vector that will be used to step position
+             // based on current value of ud.dir, and ud.unit_length
+             const delta = ud.dir.clone().multiplyScalar(ud.unit_length * loop.secs);
+             mesh.position.x += delta.x;
+             mesh.position.y += delta.y;
+             mesh.position.z += delta.z;
+             // USING THE WRAP VECTOR METHOD HERE
+             loopMod.wrapVector(mesh.position, sud.vMin, sud.vMax);
+             // setting opacity
+             const d = mesh.position.distanceTo( sud.vCenter );
+             let dAlpha = d / sud.dMax;
+             dAlpha = THREE.MathUtils.clamp(dAlpha, 0, 1);
+             mesh.material.opacity = 0.5 - 0.5 * dAlpha;
+             // mesh objects look at 0, 0, 0;
+             mesh.lookAt(0, 0, 0);
+        });
+    }
+});
+// do just once
+loopMod.start(loopObj);
 ```
 
 ## Concusion
