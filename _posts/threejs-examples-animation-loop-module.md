@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1007
-updated: 2022-09-30 13:42:27
-version: 1.5
+updated: 2022-09-30 13:53:29
+version: 1.6
 ---
 
 The subject of creating an animaiton loop is somehting that will come up a lot, not just with threejs alone, but indeed with client side javaScript in general. When it comes to client side javaScript alone there are methods like that of setTimeout, as well as request animation frame. There are also a number of addtional features that are realted to this sort of thing in client side javaScript, but also in the threejs librray such as the [THREE.Clock class](https://threejs.org/docs/#api/en/core/Clock), and thus also [ performance.now](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now), and Date.now that the class works on top of. However in todays post I am going to be writing a thing or two about a new javaScript module project that is a kind of framework that builds on top of the core idea of an animation loop.
@@ -17,7 +17,7 @@ This is then yet another [threejs example project](/2021/02/19/threejs-examples/
 
 ## The animation loop framework and what to know first
 
-This is a post on a threejs animtion framework that can be used to create litte animation projects in a page. 
+This is a post on a threejs animtion framework that can be used to create litte animation projects in a page. It should go without saying but I will being it up again anyway, this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) or client side javaScript in general. I will not be getting into detail about all the various little deatils of the threejs librray and front end devlopemen that you should know beforre hand. However I do always make an effoprt to use these opening sections of my posts to bring uo a few things that you might want to read up mre on regradless of current standard expernce and skill level.
 
 ### There is a lot to take in when it comes to animation loops, I would not stop with this post for sure
 
@@ -25,11 +25,11 @@ There is more than one way to skin a cat as the expression goes, in the context 
 
 In some cases I might want to make use of [setTimeout actually](/2018/12/06/js-settimeout/), the main reason why is that there might be some sitatuions in which I would want to have two loops. One loop for updating a model which would be poweared by settimeout, and another loop for updating a view which would use request animation frame or simular altertaive. This will be espeshaly true if I get into using web workers as a way to push some heavry listing type tasks to a sepearte event loop, as I am limited to useing methods like setTimeout in that kind of envioement.
 
-### Just keep what is most inporant it sight with this
+### Just keep what is most inporant it mine with this sort of thing
 
-It can get a little overwhelimng wheit omes to really looking into how to do an animion loop. However I think one of the most important things to keep in mind is that many visiters to a web site might only have so much in terms of system resources to work with. Also there might be a lot going on in a page that is all running in the main event loop of the page as well. So right off the bat I will want to build in a user interface that allows visiters to press a stop button that will stop the animaiton loop compleatly. 
+It can get a little overwhelimng when it comes to really looking into how to do an animion loop. However I think one of the most important things to keep in mind is that many visiters to a web site might only have so much in terms of system resources to work with. Also there might be a lot going on in a page that is all running in the main event loop of the page as well. So right off the bat I will want to build in a user interface that allows visiters to press a stop button that will stop the animaiton loop compleatly. 
 
-Right away my stop button feature seems to work great as when I press the stop button I notuice my systems CPU use drop way down to more or less zero. In future revisions I might add addtional features that will allow for uses to adjust the frame rate for updating, and movement, or work out a way to adjust that automatuicly, but for now at a minimum that is working great right off the bat with r0 of the framework.
+Right away my stop button feature seems to work great as when I press the stop button I notuice my systems CPU use drop way down to more or less zero. In future revisions I might add addtional features that will allow for uses to adjust the frame rate for updating, and movement, or work out a way to adjust that automatuicly to futher refine this very impoarantmust have feature. However for now at a minimum that is working great right off the bat with r0 of the framework.
 
 ### Source code is up on Github
 
@@ -310,7 +310,9 @@ const loopMod = (function(){
 
 ### 1.1 - Frame by frame demo
 
-Now that I have the source code of the framnework out of the way I should go over at least one or two demos of the module.
+Now that I have the source code of the framework out of the way I should go over at least one or two demos of the module to test things out. As I have mentines above I think in two general styles of animaiton which are frame by frame, and random. Think in terms of the nature of videos, and how they compare to that of video games. A video is a static, fixed, collection of frames, while a video games state is subject to a wide variaty of factors such as user input, and code that wil control the state of Non player Elements of the Game and so forth. This first example will then be a kind of frame by frame, determanisic, or video style kind of aniamiton then, and I wil get to another demo of the other style in an addtion demo of this framnework.
+
+
 
 ```js
 // ---------- ----------
