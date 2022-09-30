@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1007
-updated: 2022-09-30 13:01:27
-version: 1.1
+updated: 2022-09-30 13:11:59
+version: 1.2
 ---
 
 The subject of creating an animaiton loop is somehting that will come up a lot, not just with threejs alone, but indeed with client side javaScript in general. When it comes to client side javaScript alone there are methods like that of setTimeout, as well as request animation frame. There are also a number of addtional features that are realted to this sort of thing in client side javaScript, but also in the threejs librray such as the [THREE.Clock class](https://threejs.org/docs/#api/en/core/Clock), and thus also [ performance.now](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now), and Date.now that the class works on top of. However in todays post I am going to be writing a thing or two about a new javaScript module project that is a kind of framework that builds on top of the core idea of an animation loop.
@@ -30,6 +30,38 @@ In some cases I might want to make use of [setTimeout actually](/2018/12/06/js-s
 It can get a little overwhelimng wheit omes to really looking into how to do an animion loop. However I think one of the most important things to keep in mind is that many visiters to a web site might only have so much in terms of system resources to work with. Also there might be a lot going on in a page that is all running in the main event loop of the page as well. So right off the bat I will want to build in a user interface that allows visiters to press a stop button that will stop the animaiton loop compleatly. 
 
 Right away my stop button feature seems to work great as when I press the stop button I notuice my systems CPU use drop way down to more or less zero. In future revisions I might add addtional features that will allow for uses to adjust the frame rate for updating, and movement, or work out a way to adjust that automatuicly, but for now at a minimum that is working great right off the bat with r0 of the framework.
+
+### Source code is up on Github
+
+On Github the source code as well as addtonal notes, and also the latest source code can be [found here](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-animation-loop-module).
+
+### Version Numbers matter
+
+When I first made this project and wrote this post I was using r140 of threejs.
+
+## 1 - The first version (r0) of the animation loop framework and demos
+
+In this section I will be wriging about the state of the first revision of the animation loop module, as well as seom demos thus far of the project that test out what I have thus far here. I had a core set of ideas that i wanted to get up and working right away with this one, and the first and formost was to have a stop button for it. If I use this code in production it will likley be used for add a little header app type project at the top of the page, and when it comes to such things I think a stop button is a must. There is a lot that can end up going on in a page that will be fighting for resources, and even in cases where there is not much else going on some people use ecodnly hardware that onoly has so much FLOP Power to work with as well.
+
+There where a lot of other core ideas also that are up and running. When making animaitons with threejs thus far there are two general kinds of animaitons that come to mind. One kind of animaiton I would call a frame by frame style, or determansict style, while the other kind I would call random, or stocastic style. When it comes to the kind of animaitons that I willbe making with this kind of projhect I am sure most of them will be the random style, but I am still baking in feature that help with both.
+
+### 1.0 - The source code of the framework
+
+```js
+```
+
+### 1.1 - Frame by frame demo
+
+```js
+```
+
+### 1.2 - Random demo
+
+```js
+```
+
+## Concusion
+
 
 
 
