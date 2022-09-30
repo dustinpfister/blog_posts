@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1007
-updated: 2022-09-30 13:37:59
-version: 1.4
+updated: 2022-09-30 13:42:27
+version: 1.5
 ---
 
 The subject of creating an animaiton loop is somehting that will come up a lot, not just with threejs alone, but indeed with client side javaScript in general. When it comes to client side javaScript alone there are methods like that of setTimeout, as well as request animation frame. There are also a number of addtional features that are realted to this sort of thing in client side javaScript, but also in the threejs librray such as the [THREE.Clock class](https://threejs.org/docs/#api/en/core/Clock), and thus also [ performance.now](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now), and Date.now that the class works on top of. However in todays post I am going to be writing a thing or two about a new javaScript module project that is a kind of framework that builds on top of the core idea of an animation loop.
@@ -463,6 +463,10 @@ loopMod.start(loopObj);
 ```
 
 ## Concusion
+
+That will be it for now when it comes to this project, at least until I come aroud to do some editing of this post at least which may or may not happen. I do have a lot of pots boilding when it comes to these various projects, and some are more deserving of additonal work than others. I have foudn that if this does prove to be the kind of project that I do in fact end up using in produciton that I will be working on it more.
+
+In any case I do have a lot of ides writen down for future revisons, such as seeing about using iframes as the kind of container element. Having a more advanmed user interface that aloos for adjusting the update frames per second rate, seeing about doing a thing or two with more than one layer that is updated at difering rates and a whole lot more.
 
 
 
