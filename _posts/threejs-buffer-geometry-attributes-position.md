@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-09-28 10:12:07
-version: 1.41
+updated: 2022-10-01 13:28:57
+version: 1.42
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
@@ -376,7 +376,186 @@ So now that I have a set vertx helper that seems to work okay I thought it might
     ());
 ```
 
-## 3 - Animation loop example
+## 3 - vector3 arrays, buffer geometry positions, and Points
+
+
+### 3.1 - Geometry with positiin attribite from a vector3 array
+
+
+```js
+// geo from v3
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // POINTS
+    //-------- ----------
+    // ARRAY of VECTOR3 CLASS INSTANCES
+    const v3Array = [
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(1, 0, 0),
+        new THREE.Vector3(0, 1, 0),
+        new THREE.Vector3(0, 0, 1),
+        new THREE.Vector3(2, 0, 0),
+        new THREE.Vector3(0, 2, 0),
+        new THREE.Vector3(0, 0, 2),
+        new THREE.Vector3(3, 0, 0),
+        new THREE.Vector3(0, 3, 0),
+        new THREE.Vector3(0, 0, 3)
+    ];
+    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
+    scene.add(
+        new THREE.Points(
+            new THREE.BufferGeometry().setFromPoints(v3Array),
+            new THREE.PointsMaterial({
+                color: 0x00afaf,
+                size: 0.25
+            })));
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+### 3.2 - A vector3 array from a geometry
+
+```js
+// v3 from geo
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // Buffer Geometry from v3Array
+    const Vector3ArrayToGeometry = (v3Array) => {
+        return new THREE.BufferGeometry().setFromPoints(v3Array);
+    };
+    // Vector3 array from geometry
+    const Vector3ArrayFromGeometry = (geometry) => {
+        const pos = geometry.getAttribute('position');
+        let i = 0;
+        const len = pos.count, v3Array = [];
+        while(i < len){
+            const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+            v3Array.push(v);
+            i += 1;
+        }
+        return v3Array;
+    };
+    //-------- ----------
+    // POINTS
+    //-------- ----------
+    // Geometry created with the Torus Geometry Constructor
+    const geometry = new THREE.TorusGeometry(2, 0.75, 30, 60);
+    geometry.rotateX(Math.PI / 180 * 90);
+    // array of Vector3 class instances
+    const v3Array = Vector3ArrayFromGeometry(geometry);
+    // do somehting to the v3 array
+    v3Array.forEach((v) => {
+        const vd = new THREE.Vector3();
+        vd.copy(v).normalize().multiplyScalar(0.75 * THREE.MathUtils.seededRandom())
+        v.add(vd);
+    });
+    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
+    scene.add(
+        new THREE.Points(
+            Vector3ArrayToGeometry(v3Array),
+            new THREE.PointsMaterial({
+                color: 0x00afaf,
+                size: 0.125
+            })));
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+### 3.3 -
+
+```js
+// update from v3
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // Buffer Geometry from v3Array
+    const Vector3ArrayToGeometry = (v3Array) => {
+        return new THREE.BufferGeometry().setFromPoints(v3Array);
+    };
+    // Vector3 array from geometry
+    const Vector3ArrayFromGeometry = (geometry) => {
+        const pos = geometry.getAttribute('position');
+        let i = 0;
+        const len = pos.count, v3Array = [];
+        while(i < len){
+            const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+            v3Array.push(v);
+            i += 1;
+        }
+        return v3Array;
+    };
+    // Vector3 Array to Typed Array
+    const Vector3ArrayToTyped = (v3Array) => {
+        let i = 0, len = v3Array.length, vertArray = [];
+        while(i < len){
+            let v = v3Array[i];
+            vertArray.push(v.x, v.y, v.z);
+            i += 1;
+        }
+        return vertArray;
+        //return new THREE.Float32BufferAttribute(vertArray, 3)
+    };
+    //-------- ----------
+    // GEO AND POINTS
+    //-------- ----------
+    let geo_sphere = new THREE.SphereGeometry(1.5, 30, 30);
+    let geo_torus = new THREE.TorusGeometry(1, 0.5, 30, 30);
+    let v3array = Vector3ArrayFromGeometry(geo_torus);
+    let points = new THREE.Points( geo_sphere, new THREE.PointsMaterial({ size: 0.1}) );
+    scene.add(points);
+    let typed = Vector3ArrayToTyped(v3array);
+    let pos = geo_sphere.getAttribute('position');
+    let alpha = 1;
+    pos.array = pos.array.map( (n, i) => {
+        let d  = typed[i] === undefined ? 0: typed[i];
+        return n + d * alpha;
+    });
+    pos.needsUpdate = true;
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+```
+
+## 4 - Animation loop example
 
 Now I am going to want to make some kind of animation example of what I have worked out thus far when it comes to mutating the values of a buffer geometry position attribute. In this example I am not suing the set vertex and set triangle helpers to create an update box geometry helper. In this helper method I am doing the same thing that I did for my example on the set tri helper, only I worked out a way to do so in a while loop rather than a whole bunch of lines calling the ti method over and over again. The one major different in this update method beyond that is that I can also pass a percent value that can be used to set the state of an animation in terms of a value between 0 and 1.
 
