@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2022-09-22 14:55:15
-version: 1.34
+updated: 2022-10-01 12:53:30
+version: 1.35
 ---
 
 The use of the [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -93,7 +93,9 @@ So in other words the points constructor is just a more primitive kind of mesh, 
 
 ### 1.2 - Buffer Geometry from Array of Vector3 class instances
 
-Although I might often want to just pass a buffer geometry that I all ready have to the Points constructor In many cases I might have an array of Vector3 class instances that I would like to create a buffer geometry from. I will then want to use the buffer geometry that is created from this array of Vector3 class instances with the Points Constructor. The general process of doing this would be to create a typed array from the array of vector3 class instances that I can then use with the set attribute method of the Buffer geometry class to create the position attribute for the geometry.
+Although I might often want to just pass a buffer geometry that I all ready have to the Points constructor In many cases I might have an array of Vector3 class instances that I would like to create a buffer geometry from. I will then want to use the buffer geometry that is created from this array of Vector3 class instances with the Points Constructor. 
+
+The general process of doing this would be to create a typed array from the array of vector3 class instances that I can then use with the set attribute method of the Buffer geometry class to create the position attribute for the geometry. However that would be the hard way of doing so with this, a less complex way of getting this done would be to make use of the set from points method of the buffer geometry class.
 
 ```js
 (function () {
@@ -107,25 +109,6 @@ Although I might often want to just pass a buffer geometry that I all ready have
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // Vector3 Array to Typed Array
-    const Vector3ArrayToTyped = (v3Array) => {
-        let i = 0, len = v3Array.length, vertArray = [];
-        while(i < len){
-            let v = v3Array[i];
-            vertArray.push(v.x, v.y, v.z);
-            i += 1;
-        }
-        return new THREE.Float32BufferAttribute(vertArray, 3)
-    };
-    // Buffer Geometry from v3Array
-    const Vector3ArrayToGeometry = (v3Array) => {
-        const typedArray = Vector3ArrayToTyped(v3Array);
-        const geometry = new THREE.BufferGeometry();
-        return geometry.setAttribute('position', typedArray);
-    };
     //-------- ----------
     // POINTS
     //-------- ----------
@@ -145,7 +128,7 @@ Although I might often want to just pass a buffer geometry that I all ready have
     // THREE.Points INSTANCE UISNG THREE.PointsMaterial
     scene.add(
         new THREE.Points(
-            Vector3ArrayToGeometry(v3Array),
+            new THREE.BufferGeometry().setFromPoints(v3Array),
             new THREE.PointsMaterial({
                 color: 0x00afaf,
                 size: 0.25
@@ -180,21 +163,9 @@ Once I have my array of vector3 class instances I can loop over them and use met
     //-------- ----------
     // HELPERS
     //-------- ----------
-    // Vector3 Array to Typed Array
-    const Vector3ArrayToTyped = (v3Array) => {
-        let i = 0, len = v3Array.length, vertArray = [];
-        while(i < len){
-            let v = v3Array[i];
-            vertArray.push(v.x, v.y, v.z);
-            i += 1;
-        }
-        return new THREE.Float32BufferAttribute(vertArray, 3)
-    };
     // Buffer Geometry from v3Array
     const Vector3ArrayToGeometry = (v3Array) => {
-        const typedArray = Vector3ArrayToTyped(v3Array);
-        const geometry = new THREE.BufferGeometry();
-        return geometry.setAttribute('position', typedArray);
+        return new THREE.BufferGeometry().setFromPoints(v3Array);
     };
     // Vector3 array from geometry
     const Vector3ArrayFromGeometry = (geometry) => {
