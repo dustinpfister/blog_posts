@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-01 13:28:57
-version: 1.42
+updated: 2022-10-01 13:45:41
+version: 1.43
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
@@ -376,11 +376,15 @@ So now that I have a set vertx helper that seems to work okay I thought it might
     ());
 ```
 
-## 3 - vector3 arrays, buffer geometry positions, and Points
+## 3 - Vector3 arrays, buffer geometry position attributes, and Points
 
+I really like the vector3 class as there are a whole lot of very useful methods to work with in that class than help with the process of creating, or mutating a geometry. Also when it comes to just creating and mutating a position attribute alone I have the option to use the THREE.Points constructor in place of the usual THREE.Mesh.
 
-### 3.1 - Geometry with positiin attribite from a vector3 array
+In the basic section of this post on the position attribute I covered a basic example of using the THREE.Points constructor all ready. However in this section I will be focusing  more so on how to create  an array of vector3 class instances from a geometry as well as the inverse of this. There is then using the various features of the vector3 class to mutate the state of a portion attribute and much more.
 
+### 3.1 - Geometry with position attribute from a vector3 array
+
+There are a number of ways to go about making a buffer geometry from an array of Vector3 class instances of course. There are many ways of doing it that might prove to be a little complex, and then other ways that just make use of a method in one of the classes and tools to with with in threejs as well as other official files. For this example I am making use of the set from points method of the buffer geometry class to create a buffer geometry with  position attribute from an array of vector3 class instances.
 
 ```js
 // geo from v3
@@ -427,6 +431,10 @@ So now that I have a set vertx helper that seems to work okay I thought it might
 ```
 
 ### 3.2 - A vector3 array from a geometry
+
+There is having an array of vector3 objects and wanting to create a buffer geometry from it, and then there is also doing the inverse of that. That is to create an array of vectro3 objects from the position attribute of a buffer geometry that was created with one of the built in constructor functions or some other means.
+
+Amway thus far I am not sure of there is any single method that can be used to do this, but thankfully it is not to hard to just create this kind of array with a quick helper method if that is the way it needs to get done. When doing this one way would be to use the count property of the position buffer attribute object and then pass each value of I to the getX, getY, and getZ methods of the attribute class.
 
 ```js
 // v3 from geo
@@ -489,7 +497,10 @@ So now that I have a set vertx helper that seems to work okay I thought it might
 }());
 ```
 
-### 3.3 -
+### 3.3 - Updating a buffer gometry from a Vector3 array
+
+I know that I have covered an example that has to do with creating a buffer geometry from an array of vector3 objects. However I have found that it is not such a good idea to use the method over and over again for a buffer geometry. When doing so I have run into problems, so it would be a good idea to also have another way to not create a new geometry, but update a geometry that is all ready there before hand by mutating the array of the positing attribute.
+
 
 ```js
 // update from v3
