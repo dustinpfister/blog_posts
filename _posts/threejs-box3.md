@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-10-02 16:36:35
-version: 1.19
+updated: 2022-10-02 16:53:10
+version: 1.20
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max instance of the Vector3 class. This Box can then be used for things like getting another Vector3 instance that is the size of the box. There is creating a new instance of the box3 class and then using that as a way to preform some kind of an action on an object such as scaling that object to the size of the instance of the box3 class. There is also creating an instance of box3 from an object that all ready exists in a scene, and doing something else with that kind of box such as suing it to position an object in space for example. There are many other use case examples of this class, so it goes without saying that I should write at least one if not a few posts on this class, so to start off with that I am writing this post.
@@ -186,6 +186,52 @@ const box3 = new THREE.Box3(min, max);
 const box3Helper = new THREE.Box3Helper(box3, 0x00ff00);
 box3Helper.material.linewidth = 3;
 scene.add(box3Helper);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.5 - Set from object3d object in general such as a group of mesh objects
+
+In this basic section I did cover an example where I was creating an instance of box3 from a single mesh object thanks to the compute bounding box method of the buffer geometry of the mesh object. However what if I have a whole bunch of mesh objects in a group, or if I want a box3 for everything n in a whole scene object. Well for this wort of thing there is making use of the set from object method of the box3 class.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(5, 5, 5));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(4, 2, 8);
+camera.lookAt(0, -0.8, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// BOX3, BOX3 Helper
+//-------- ----------
+const box3 = new THREE.Box3();
+// THE BOX3 HELPER
+const box3Helper = new THREE.Box3Helper(box3, 0x00ff00);
+box3Helper.material.linewidth = 3;
+scene.add(box3Helper);
+//-------- ----------
+// GROUP AND SET BY OBJECT
+//-------- ----------
+const group = new THREE.Group();
+let i = 0;
+const len = 3;
+while(i < len){
+    const mesh = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial() );
+    mesh.position.x = -2.5 + 5 * Math.random();
+    mesh.position.y = -2.5 + 5 * Math.random();
+    mesh.position.z = -2.5 + 5 * Math.random();
+    group.add(mesh);
+    i += 1;
+}
+scene.add(group);
+box3.setFromObject(group);
 //-------- ----------
 // RENDER
 //-------- ----------
