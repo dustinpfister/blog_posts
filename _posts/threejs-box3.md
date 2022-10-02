@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-10-02 16:27:24
-version: 1.18
+updated: 2022-10-02 16:36:35
+version: 1.19
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max instance of the Vector3 class. This Box can then be used for things like getting another Vector3 instance that is the size of the box. There is creating a new instance of the box3 class and then using that as a way to preform some kind of an action on an object such as scaling that object to the size of the instance of the box3 class. There is also creating an instance of box3 from an object that all ready exists in a scene, and doing something else with that kind of box such as suing it to position an object in space for example. There are many other use case examples of this class, so it goes without saying that I should write at least one if not a few posts on this class, so to start off with that I am writing this post.
@@ -22,7 +22,7 @@ The content of this blog post has to do with a general overview of a single clas
 
 ### Check out the Vector3 class
 
-In order to create an instance of the THREE.Box3 [constructor function](/2019/02/27/js-javascript-constructor/) in threejs from scratch at least I will need to pass two instances of [the Vector3 class](/2018/04/15/threejs-vector3/). This is a class that one should look into further as it will come up a whole lot and not just when it comes to using the Box3 class. The Vector3 class is also used to set the position and scale of objects, and can also be used to create custom geometers, arrays of points, as well as many other various tasks that have to do with 3d space in general.
+In order to create an instance of the THREE.Box3 [constructor function](/2019/02/27/js-javascript-constructor/) in threejs from scratch at least I will need to pass two instances of [the Vector3 class](/2018/04/15/threejs-vector3/). This is a class that one should look into further as it will come up a whole lot and not just when it comes to using the Box3 class. The Vector3 class is also used to set the position and scale of objects, and can also be used to create custom geometries, arrays of points, as well as many other various tasks that have to do with 3d space in general.
 
 ### Mesh objects, groups, and Object3D
 
@@ -30,14 +30,19 @@ The use of the Box3 class also has a lot to do with Mesh objects, Groups, and a 
 
 ### Version numbers matter
 
-When I first wrote this post I was using r135 of threejs.
+When I first wrote this post I was using r135 of threejs, and the last time I came around to do a little editing here I was using r140.
 
 ### Source code is on Github
 
 I have the source code examples in this post parked in [my test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-box3).
 
+## 1 - Basic gettting started examples of the box3 class
+
+In this section I will be starting out with some basic examples of the box3 class. There are a number of ways to get a box3 class object, such as just directly calling the constructor function and passing vector3 object for the min and max values. However there are also ways of setting the values from various objects and attributes as well as methods of other classes the will create an instance of this kind of object. So in this section I will be taking a look at some of the ways to get a box3 to begin with, as well as what can be done with them, and some additional related examples that are not to complex.
 
 ### 1.1 - Set the position of a mesh object with box3
+
+For this example I am using the values of a box3 class as a way to directly set the positions of mesh objects. When it comes to this kind of thing the min and max properties of the box3 object are instances of Vector3. So then I can use vector3 class methods like copy to just direct copy the min and max values to the position properties of a mesh or anything based off of object3d. However for this example I will be using the set method with specific values and setting a number literal for the y axis.
 
 ```js
 //-------- ----------
@@ -264,3 +269,4 @@ renderer.render(scene, camera);
 The Box3 class is then a useful tool for various tasks what will come up when working with a project. It can be used to create a box by way of two vectors and then that box can be used as a way to scale or position an object in all kinds of various ways. I can also use it to create a box from an object that all ready has a set of values that I want with size, but I just want to get a vector that reflects what that size is so that I know to go about positing it.
 
 I am sure that there will be many more use case examples of this box3 class that will come up now and then. I do make an effort to edit my content, so I am sure that I will expand this post a bit more as I get around to fining or making more examples to write about here.
+
