@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-01 13:45:41
-version: 1.43
+updated: 2022-10-02 08:50:15
+version: 1.44
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
@@ -497,10 +497,76 @@ Amway thus far I am not sure of there is any single method that can be used to d
 }());
 ```
 
-### 3.3 - Updating a buffer gometry from a Vector3 array
+### 3.3 - Updating a buffer geometry from a Vector3 array
 
 I know that I have covered an example that has to do with creating a buffer geometry from an array of vector3 objects. However I have found that it is not such a good idea to use the method over and over again for a buffer geometry. When doing so I have run into problems, so it would be a good idea to also have another way to not create a new geometry, but update a geometry that is all ready there before hand by mutating the array of the positing attribute.
 
+
+```js
+// update from v3
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // Buffer Geometry from v3Array
+    const Vector3ArrayToGeometry = (v3Array) => {
+        return new THREE.BufferGeometry().setFromPoints(v3Array);
+    };
+    // Vector3 array from geometry
+    const Vector3ArrayFromGeometry = (geometry) => {
+        const pos = geometry.getAttribute('position');
+        let i = 0;
+        const len = pos.count, v3Array = [];
+        while(i < len){
+            const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+            v3Array.push(v);
+            i += 1;
+        }
+        return v3Array;
+    };
+    // Vector3 Array to Typed Array
+    const Vector3ArrayToTyped = (v3Array) => {
+        let i = 0, len = v3Array.length, vertArray = [];
+        while(i < len){
+            let v = v3Array[i];
+            vertArray.push(v.x, v.y, v.z);
+            i += 1;
+        }
+        return vertArray;
+        //return new THREE.Float32BufferAttribute(vertArray, 3)
+    };
+    //-------- ----------
+    // GEO AND POINTS
+    //-------- ----------
+    let geo_sphere = new THREE.SphereGeometry(1.5, 30, 30);
+    let geo_torus = new THREE.TorusGeometry(1, 0.5, 30, 30);
+    let v3array = Vector3ArrayFromGeometry(geo_torus);
+    let points = new THREE.Points( geo_sphere, new THREE.PointsMaterial({ size: 0.1}) );
+    scene.add(points);
+    let typed = Vector3ArrayToTyped(v3array);
+    let pos = geo_sphere.getAttribute('position');
+    let alpha = 1;
+    pos.array = pos.array.map( (n, i) => {
+        let d  = typed[i] === undefined ? 0: typed[i];
+        return n + d * alpha;
+    });
+    pos.needsUpdate = true;
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+```
+
+### 3.4 - The Apply Euler method for chaining direction
 
 ```js
 // update from v3
