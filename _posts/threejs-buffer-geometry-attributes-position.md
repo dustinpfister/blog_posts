@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-02 08:50:15
-version: 1.44
+updated: 2022-10-02 08:52:33
+version: 1.45
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
@@ -567,6 +567,8 @@ I know that I have covered an example that has to do with creating a buffer geom
 ```
 
 ### 3.4 - The Apply Euler method for chaining direction
+
+The apply Euler method of the Vector3 class is a way to go about changing the direction of a vector while preserving the unit length. So then this apply Euler method goes hand in hand with other Vector class tools such as as normalize and multiplt scalar to change not just the direction but also the unit length.
 
 ```js
 // update from v3
