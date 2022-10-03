@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-02 08:52:33
-version: 1.45
+updated: 2022-10-03 09:49:11
+version: 1.46
 ---
 
-When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with, normals, and the UV attribute that has to do with texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
+When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the points to begin with. On top of the position attribute that when it comes to making a geometry to work with mesh objects there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is that in order to have any kind of geometry at all even one that will work with the THREE.Points or THREE.Line constrictor at a minimum one will need at least a position attribute.
 
 There is taking the time to create a blank instance of a Buffer geometry using the [THREE.BufferGeometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry) constructor and then create the position attribute from the ground up. However maybe a good starting point would be to study the results of one of the built in geometry constructors such as the [THREE.boxGeometry constructor](/2021/04/26/threejs-box-geometry/) to get an idea of what a position attribute is all about. There is also taking a look at some other features of a built in geometry instance such as the index property of a buffer geometry to gain a sense of what that is for when it comes to working with a set of triangles.
 
