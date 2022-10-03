@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-10-03 14:27:19
-version: 1.93
+updated: 2022-10-03 15:03:43
+version: 1.94
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -111,72 +111,111 @@ So now that we have the basics when it comes to making a material with a texture
 
 Using canvas elements might be fun, but I am more of the mind set that I should just use static image files to skin objects these days. When doing so there is the [built in texture loader in threejs](/2021/06/21/threejs-texture-loader/) that is one way to go about loading an external image, and create a texture with that image. However if you have a preferred way to go about loading one or more images in a client side javaScript project another option would be to use the THREE.Texture constructor directly. However there is also yet even another option that I think is the best so far when it comes to starting to create external assets with a program like blender and that is to [have dae files with external textures](/2021/06/25/threejs-examples-dae-tools/) that also need to be loaded with them.
 
-## 1 - Basic Full Demo
+## 1 - Some Basic Examples of canvas elements as textures in threejs
 
-So now that I have all the basics that should be solid before hand I can now move on to starting out with a basic example of using canvas elements to create a texture. In this demo I will set up a scene object, add a camera, and a renderer just like any other basic threejs code example. On top of that I will also want to add at least one mesh object and set it away from a the position of the camera. For now the Mesh object will make use of the box geometry constructor that I often used for these kinds of examples, and I will also be using the basic material as for now I am thinking I will just use a canvas element to create a simple color map.
+So now that I have all the basics that should be solid before hand I can now move on to starting out with a few basic examples of using canvas elements to create a texture. In these demo I will set up a scene object, add a camera, and a renderer just like any other basic threejs code example. On top of that I will also want to add at least one mesh object and set it away from a the position of the camera. For now the Mesh object will make use of the box geometry constructor that I often used for these kinds of examples, and I will also be using the basic material as for now I am thinking I will just use a canvas element to create a simple color map.
 
-In this example I will just be rendering the box once, and be done with it just to show that you can use a canvas to make a static texture. This is a basic example after all, so I will be getting to more advanced examples that have to do with animation later on in this post.
 
-### 1.1 - A create canvas texture helper method
+### 1.1 - Getting started
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS ELEMENT, TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 64;
+canvas.height = 64;
+ctx.fillStyle = '#222222';
+ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
+ctx.lineWidth = 3;
+ctx.strokeStyle = '#00af00';
+ctx.strokeRect(2.5, 2.5, canvas.width - 4, canvas.height - 4);
+const texture = new THREE.CanvasTexture(canvas);
+//-------- ----------
+// MESH, MATERIAL
+//-------- ----------
+const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+            map: texture
+        })
+    );
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.2 - Helper methods
 
 I started out with a helper method that just returns a texture that is created with the THREE.CanvasTexture constructor that I can then go an use with a material. This way I am doing everything in the body of just one function when it comes to the whole process of creating an returning the texture with a canvas element. This involves creating the canvas element, setting the side of the element, and drawing to the canvas. In later sections of this post I will be getting into more advanced forms of this method when it comes to making an actual module of some kind.
 
-```js
-// create and return a canvas texture
-var createCanvasTexture = function () {
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-    canvas.width = 32;
-    canvas.height = 32;
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = '#ff0000';
-    ctx.strokeRect(2.5, 2.5, canvas.width - 4, canvas.height - 4);
-    var texture = new THREE.CanvasTexture(canvas);
-    return texture;
-};
-```
-
 Now that I have a simple method that does everything that I want for this basic canvas texture example I will now just want some additional code that makes use of this method such as some kind of create mesh type object. I will then just need some additional code that has to do with all the other usual suspects when it comes to a basic threejs example.
-
-### 1.1 - Create a cube helper
 
 I then have another helper that makes use of the create canvas texture helper by calling it and using the resulting texture that is returned for the map property of the basic material that is used for a mesh. The map property is how to go about making just a simple color map, and with the basic material it is more or less only this map that is of interest when it comes to adding some texture to a mesh. There might be some exceptions to that actually, but the basic material is not like other more advance materials that respond to light sources. 
 
-```js
-// create a cube the makes use of a canvas texture
-var createCube = function () {
-    return new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            map: createCanvasTexture()
-        }));
-};
-```
-
 I then just use the box geometry constructor for the geometry of the mesh, and return the mesh object. So then with this method object the resulting texture will be on all the faces of the geometry, rather than making a different texture for each of the sides of the cube.
-
-### 1.2 - The rest of the full threejs example that involves a canvas texture
 
 With my simple helper functions all set and done I will now just need to create and set up the usual suspects when it comes to any other threejs project. In order words I will want to have a scene object, camera, and renderer to make use of these helper functions. So I create my scene object with the THREE.Scene constructor, and I also like to add a grind helper to the scene with many of my examples these days also. Next I just want to set up an instance of the usual perspective camera, be sure to position it alway from where I am going to place a mesh object, and have the camera look at the location of the mesh object.
 
 ```js
-// Scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
- 
-// Camera
-var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
 camera.position.set(1, 1, 1);
 camera.lookAt(0, 0, 0);
- 
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// create and return a canvas texture
+const createCanvasTexture = function (draw) {
+    const canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = 32;
+    canvas.height = 32;
+    draw(ctx, canvas);
+    return new THREE.CanvasTexture(canvas);
+};
+// create a cube the makes use of a canvas texture
+const createCanvasCube = function (draw) {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+            map: createCanvasTexture(draw)
+        })
+    );
+};
 // add cube to scene that makes use
 // of the canvas texture
-scene.add(createCube());
- 
+scene.add(createCanvasCube(function(ctx, canvas){
+    ctx.fillStyle = '#222222';
+    ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#af0000';
+    ctx.strokeRect(2.5, 2.5, canvas.width - 4, canvas.height - 4);
+}));
+//-------- ----------
 // RENDER
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -184,17 +223,14 @@ I then call my create cube constructor to create and return a mesh object, that 
 
 When this basic example is up and running the result is a cube with a texture created with the 2d canvas drawing context on each of the faces of the cube. So the basic idea of creating a texture with a canvas element is there, however there is a lot more to cover when it comes to this. There is a whole lot to cover when it comes to having more than one material for the geometry, or messing around with the uv values. However when it comes to staying on topic with canvas textures alone for one thing there is how to go about having an animated canvas texture, and also I am going to want to have a draw to use a custom raw function for a canvas too. So now that I have the basic example out of the way lets move on to some more advanced examples.
 
-## 2 - Create canvas helper with a custom draw method
+### 1.3 - module example
 
 In this section I will be writing about an example that makes use of a slightly more advanced revision of the create canvas helper that I made for the first basic example for this post. This method accepts a custom draw method that can be used to draw something else for the texture that is created. The draw method given is also called within a draw method that is part of a kind of canvas object that is returned by the helper function also. So now the helper does not return a texture, but an object that has a texture as one of the properties. Doing something like this strokes me as a necessary step when it comes to making some kind of canvas module built on top of threejs and native javaScript as when it comes to getting into updating the content of the canvas I am going to want references to the canvas element, and drawing context at the ready.
-
-### 2.1 - A Canvas.js module
 
 Things are starting to get a little cluttered so for this example I will create an external jaavScript file called canavsmod.js, and place all these custom helpers and methods there. The main public method of interest with this module is the method that I will be using to create and return my custom canvas object, the other methods as of this writing have to do with creating and returning a mesh object that uses the texture, and having one or more default draw methods ready work with.
 
 ```js
 (function(api){
- 
     api.draw = function (ctx, canvas) {
         ctx.fillStyle = '#000000';
         ctx.lineWidth = 1;
@@ -202,17 +238,16 @@ Things are starting to get a little cluttered so for this example I will create 
         ctx.strokeStyle = '#00ff00';
         ctx.strokeRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
     };
- 
     // create and return a canvas texture
     api.createCanvasTexture = function (state, drawFunc) {
         drawFunc = drawFunc || canvasMod.draw;
-        var canvas = document.createElement('canvas'),
+        const canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
         canvas.width = 16;
         canvas.height = 16;
-        var texture = new THREE.Texture(canvas);
+        const texture = new THREE.Texture(canvas);
         texture.needsUpdate = true;
-        var canvasObj = {
+        const canvasObj = {
             texture: texture,
             canvas: canvas,
             ctx: ctx,
@@ -224,7 +259,6 @@ Things are starting to get a little cluttered so for this example I will create 
         canvasObj.draw();
         return canvasObj;
     };
- 
     // create a cube the makes use of a canvas texture
     api.createCube = function (texture) {
         return new THREE.Mesh(
@@ -233,63 +267,62 @@ Things are starting to get a little cluttered so for this example I will create 
                 map: texture
             }));
     };
- 
 }( this['canvasMod'] = {} ));
 ```
-
-### 2.2 - The rest of the example
 
 So now to use my canvas.js module in an example. Here I just made two cubes for the scene one that makes used of the default draw method, and anther where I am passing a custom draw method.
 
 ```js
-// Scene
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
 var scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
- 
-// Camera
-var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
 camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 1);
- 
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS
+//-------- ----------
 // create texture with default draw method
-var canvasObj = canvasMod.createCanvasTexture();
- 
-var cube = canvasMod.createCube(canvasObj.texture);
+let canvasObj = canvasMod.createCanvasTexture();
+// create cube with the texture
+let cube = canvasMod.createCube(canvasObj.texture);
 scene.add(cube);
- 
 // create texture with custom draw method that makes use of a state object
-var draw = function (ctx, canvas, state) {
+const draw = function (ctx, canvas, state) {
     ctx.fillStyle = 'red';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'black';
     ctx.beginPath();
-    var hw = canvas.width / 2,
+    const hw = canvas.width / 2,
     sx = hw,
     sy = canvas.height / 2,
     radius = hw - hw * state.rPer;
     ctx.arc(sx, sy, radius, 0, Math.PI * 2);
     ctx.fill();
 };
-var state = {
+const state = {
    rPer: 0.1
 };
-var canvasObj = canvasMod.createCanvasTexture(state, draw);
+canvasObj = canvasMod.createCanvasTexture(state, draw);
 cube = canvasMod.createCube(canvasObj.texture);
 cube.position.set(0, 0, 2)
 scene.add(cube);
- 
+//-------- ----------
 // RENDER
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
-## 3 - Animation
+## 2 - Animation
 
 So because the source is a canvas you might be wondering if it is possible to redraw the canvas and update the texture, making an animated texture. The answer is yes, all you need to do is redraw the contents of the canvas, and set the needsUpdate property of the texture to true before calling the render method of your renderer. In this section I will then be going over a revised version of the source code of the above example where I started working with a module that I can use to create and return an object that contains a reference to the drawing context of the canvas as well as the texture. This time the aim is to get things started when it comes to having a way to draw to the canvas used for the texture over and over again as needed.
 
-### 3.1 - The canvas module.
+### 2.1 - The canvas module.
 
 So now I have a slightly updated versions of the canvas module, this time the only major difference that is really worth writing about is that I am making sure that I set the needs update property if the texture back to true after each call of the draw function that is returned by the create canvas object public function of the module.
 
@@ -331,7 +364,7 @@ So now I have a slightly updated versions of the canvas module, this time the on
 }( this['canvasMod'] = {} ));
 ```
 
-### 3.2 - The main JavaScript file
+### 2.2 - The main JavaScript file
 
 I now just need a little more code to make use of the canvas module, for this I have a state object for the animation, and a custom draw function that I will be used to draw to the canvas over and over again in a loop.
 
@@ -400,11 +433,11 @@ I now just need a little more code to make use of the canvas module, for this I 
 
 It should go without saying that this will use more overhead compared to a static texture, so I would not go wild with it just yet, but it is pretty cool that I can do this.
 
-## 4 - Canvas animations and using more than one texture for a geometry
+## 3 - Canvas animations and using more than one texture for a geometry
 
 I have wrote a number of posts on threejs and as such I have [touched based on how to go about using more than one material](/2018/05/14/threejs-mesh-material-index/) with a mesh in threejs a while back all ready. However I am thinning that this is something that also deserves at least one of not more sections in this post also, as this can lead to some interesting projects even by making use of just the built in geometry constructors.
 
-### 4.1 - The canvas module
+### 3.1 - The canvas module
 
 Once again I have a canvas module that will be used to create a object that will contain a reference to a texture, as well as all the other objects that I will want to grab at such as the canvas element, and drawing context. One major change from the other revisions of this module in the other sections thus far is the create cube method that will allow for me to create a cube with an array of materials rather than just one.
 
@@ -456,7 +489,7 @@ Once again I have a canvas module that will be used to create a object that will
 }( this['canvasMod'] = {} ));
 ```
 
-### 4.2 - The main javaScript file
+### 3.2 - The main javaScript file
 
 I then have the main javaScript file for this example in which I am not creating two canvas objects that use two difference draw methods to update the state of the canvas. One canvas object makes use of a draw method that will draw a animated square, while the other is a circle. I can then use the create cube method of the canvas module to set what texture to what side of the cube.
 
