@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-10-04 16:26:47
-version: 1.22
+updated: 2022-10-04 16:32:51
+version: 1.23
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
@@ -31,7 +31,9 @@ The version of threejs that I was using when I first wrote this post was r135, a
 
 The source code examples that I am writing about in this post can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-data-texture).
 
-## 1 - A basic data texture example
+## 1 - Basic examples of data textures
+
+### 1.1 - A basic data texture example
 
 For a simple example of this data texture thing in threejs I made this quick example that involves starting at a value of 32 for the red channel and adding 128 over the length of the total number of pixels for the image. I am then also doing something similar for the green channel just subtracting rather than adding.
 
@@ -40,262 +42,40 @@ I start out by making my usual [scene object](/2018/05/03/threejs-scene/) along 
 I then have a loop in which I am figuring out what the values should be for each red, green, blue, and alpha channel value for each pixel. I can have an index for each pixel and then just figure out what the actual index value in the array is by just multiplying by four and then adding fro there for each channel value. Once I have my array in the state that I want it for the texture the next step is to then pass that array as an argument when calling the THREE.DataTextyre [constructor function](/2019/02/27/js-javascript-constructor/).
 
 ```js
-// scene, camera, and renderer
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
-var width = 512, height = 512;
-var size = width * height;
-var data = new Uint8Array( 4 * size );
-for ( let i = 0; i < size; i ++ ) {
-    var stride = i * 4,
-    per = i / size;
-    // set r, g, b, and alpha data values
-    data[ stride ] = 32 + Math.floor(128 * per); // red
-    data[ stride + 1 ] = 255 - 200 * per;        // green
-    data[ stride + 2 ] = 255;                    // blue
-    data[ stride + 3 ] = 255;                    // alpha
-}
-var texture = new THREE.DataTexture( data, width, height );
-texture.needsUpdate = true;
-// creating a mesh with this texture as a color map
-var box = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({
-        map: texture
-    })
-);
-scene.add(box);
-// render
-renderer.render(scene, camera);
 ```
 
-## 2 - Distance to method of the Vector2 class
+### 1.2 - Distance to method of the Vector2 class
 
 I have wrote a number of posts at this point on the [Vector3 class in threejs](/2018/04/15/threejs-vector3/) that is without question one of the major classes in threejs that a developer should become familiar with. However there is also the Vector2 class that has to do with just plain old 2d points which also will come into play when doing things like working with the [raycaster class](/2021/05/18/threejs-raycaster/), or in this case making 2d textures with a little javaScript code and the data texture constructor.
 
 For this example I am doing more or less the same thing as in the basic example, but now I am using the distance to method of the Vector2 class as a way to get a distance value from a current pixel location to that of the center of the texture. I can then use this as a main to come up with different color channel values for each pixel in the texture.
 
 ```js
-// scene, camera, and renderer
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
-// Using the distanceTo method of the Vector2 class
-var width = 16, height = 16;
-var size = width * height;
-var data = new Uint8Array( 4 * size );
-for ( let i = 0; i < size; i ++ ) {
-    var stride = i * 4,
-    x = i % width,
-    y = Math.floor(i / width),
-    v2 = new THREE.Vector2(x, y),
-    d = v2.distanceTo( new THREE.Vector2(width / 2, height / 2) ),
-    iPer = i / size,
-    dPer = d / (width / 2);
-    dPer = dPer > 1 ? 1 : dPer;
-    // set r, g, b, and alpha data values
-    data[ stride ] = 255 - Math.floor(255 * dPer);
-    data[ stride + 1 ] = Math.floor(64 * iPer);
-    data[ stride + 2 ] = 64 - Math.floor(64 * iPer);
-    data[ stride + 3 ] = 255;
-}
-var texture = new THREE.DataTexture( data, width, height );
-texture.needsUpdate = true;
-// creating a mesh with this texture as a color map
-var box = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({
-        map: texture
-    })
-);
-scene.add(box);
-// render
-renderer.render(scene, camera);
 ```
 
-## 3 - Using the math random method
+### 1.3 - Using the math random method
 
 Now for a quick example using the [math random](/2020/04/21/js-math-random/) method to create color channel values. There are of course a great number of ways that I could go about doing this sort of thing, but for this example I just went with creating a single value that will be used for each color channel. So in other words I am doing a kind of random gray scale color effect here.
 
 ```js
-// scene, camera, and renderer
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
-// To create a texture using the Math.random method
-var width = 16, height = 16;
-var size = width * height;
-var data = new Uint8Array( 4 * size );
-for ( let i = 0; i < size; i ++ ) {
-    var stride = i * 4;
-    var v = Math.floor( Math.random() * 255 );
-    data[ stride ] = v;
-    data[ stride + 1 ] = v;
-    data[ stride + 2 ] = v;
-    data[ stride + 3 ] = 255;
-}
-var texture = new THREE.DataTexture( data, width, height );
-texture.needsUpdate = true;
-// creating a mesh with this texture as a color map
-var box = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({
-        map: texture
-    })
-);
-scene.add(box);
-// render
-renderer.render(scene, camera);
 ```
 
-## 4 - The seeded random method of the Math Utils object
+### 1.4 - The seeded random method of the Math Utils object
 
 I just also wrote a new post on the [math utils object](/2022/04/11/threejs-math-utils/) in threejs, and one interesting method in there is a seeded random method that will work like math random, with one little difference. Each time I reload the page I see the same texture rather than a new one. So then  this seeded random method is a way to get an effect like that of what happens when using the math random method, but in a deterministic kind of way which is cool.
 
 ```js
-// scene, camera, and renderer
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
-// Uisng the seeded random method of the MathUtils object
-var width = 16, height = 16;
-var size = width * height;
-var data = new Uint8Array( 4 * size );
-for ( let i = 0; i < size; i ++ ) {
-    var stride = i * 4;
-    var v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
-    data[ stride ] = v;
-    data[ stride + 1 ] = v;
-    data[ stride + 2 ] = v;
-    data[ stride + 3 ] = 255;
-}
-var texture = new THREE.DataTexture( data, width, height );
-texture.needsUpdate = true;
-// creating a mesh with this texture as a color map
-var box = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({
-        map: texture
-    })
-);
-scene.add(box);
-// render
-renderer.render(scene, camera);
 ```
 
-## 5 – Having a helper function that has some kind of for pixel function option
+## 2 - Animaiton examples
+
+### 2.1 – Having a helper function that has some kind of for pixel function option
 
 Thus far all of these data texture examples are just blocks of code that create a single texture. When it comes to making a real project with data textures I will likely want to make a number of them, and do so in different ways. To keep myself from repeating the same code over and over again each time I want to make a data texture I can then make some kind of helper function and pass some values that will result in the kind of texture that I want.
 
 When doing so the first feature that comes to mind that I would want to have in this kind of helper function would be an option that I can use to define the logic that is used to create the texture. In other words a kind of for pixel function that would have some kind of hard coded value.
 
 ```js
-//******** **********
-// DATA TEXTURE HELPER
-//******** **********
-// create data texture method
-let createDataTexture = function(opt){
-    opt = opt || {};
-    opt.width = opt.width === undefined ? 16: opt.width; 
-    opt.height = opt.height === undefined ? 16: opt.height;
-    // default for pix method
-    opt.forPix = opt.forPix || function(color, x, y, i, opt){
-        let v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
-        color.r = v;
-        color.g = v;
-        color.b = v;
-        return color;
-    };
-    let size = opt.width * opt.height;
-    let data = new Uint8Array( 4 * size );
-    for ( let i = 0; i < size; i ++ ) {
-        let stride = i * 4,
-        x = i % opt.width,
-        y = Math.floor(i / opt.width),
-        color = opt.forPix( new THREE.Color(), x, y, i, opt);
-        data[ stride ] = color.r;
-        data[ stride + 1 ] = color.g;
-        data[ stride + 2 ] = color.b;
-        data[ stride + 3 ] = 255;
-    }
-    let texture = new THREE.DataTexture( data, opt.width, opt.height );
-    texture.needsUpdate = true;
-    return texture;
-};
-//******** **********
-// SCENE, CAMERA, RENDERER
-//******** **********
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(8,8))
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
-// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL THAT I AM USING
-//******** **********
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
-light.position.set(1, 3, 2);
-scene.add(light);
-//******** **********
-// MESH OBJECTS WITH DATA TEXTURES
-//******** **********
-// default sudo random texture
-var tex1 = createDataTexture();
-var mesh1 = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: tex1
-    })
-);
-scene.add(mesh1);
-//******** **********
-// LOOP
-//******** **********
-var lt = new Date(),
-frame = 0,
-maxFrame = 200,
-fps = 20;
-var loop = function () {
-    var now = new Date(),
-    per = frame / maxFrame,
-    bias = 1 - Math.abs(per - 0.5) / 0.5,
-    secs = (now - lt) / 1000;
-    requestAnimationFrame(loop);
-    if (secs > 1 / fps) {
-        // new data texture for mesh1
-        mesh1.material.map = createDataTexture();
-        renderer.render(scene, camera);
-        frame += fps * secs;
-        frame %= maxFrame;
-        lt = now;
-    }
-
-};
-loop();
 ```
 
 ## Conclusion
