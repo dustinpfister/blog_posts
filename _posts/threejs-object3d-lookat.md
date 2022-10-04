@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-08-23 09:29:05
-version: 1.25
+updated: 2022-10-04 09:28:40
+version: 1.26
 ---
 
-I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object in three.js that is based off of the object3d class and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at, and the result is that the object ends up looking at that point in space. However things might not always work the way that I might expect it to, and one reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is also an instance of object3d that can have its position changed.
+I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
 
-To some extent this is not really a problem as I typically do want to always look at a point relative to world space. However ofter I might end up making some kind of group of mesh objects and I want to have a mesh object look at another mesh object in this group, so in that case I want to look at something relative to the position of the group, not the world. In these kinds of situations I can still use the look at method, it is just that I will need to adjust for the fact that the look at method is relative to world space.
+One reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is also an instance of object3d that can have its position changed. To some extent this is not really a problem as I typically do want to always look at a point relative to world space. However often I might end up making some kind of group of mesh objects and I want to have a mesh object look at another mesh object in this group, so in that case I want to look at something relative to the position of the group, not the world. In these kinds of situations I can still use the look at method, it is just that I will need to adjust for the fact that the look at method is relative to world space.
+
+There are a lot of other little problems that will creep up here and there also when using the look at method, some of which will just require me to rotate the buffer geometry once just to change what the front facing direction is. However other situations might require me to roll up my sleeves, and work out some kind of custom solution for setting rotation as well.
 
 <!-- more -->
 
@@ -175,7 +177,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-## 3 - Conclusion
+## Conclusion
 
 The look at method is every useful method in three.js, and of course as such I use it all the time. However every now and then I get into situations in which the method is just not working as I would like it to. The method is not a magic wand of a method that will always just work all the time, and even when it does work I can not help but thing that I am doing myself a disservice by using it. I do not care to make things more complex than they need to be, however the look at method is not always a substitute for some complex expressions involving a little trigonometry.
 
