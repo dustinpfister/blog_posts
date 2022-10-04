@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-04 09:13:45
-version: 1.50
+updated: 2022-10-04 09:17:06
+version: 1.51
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
@@ -729,7 +729,7 @@ When doing anything that involves mutating the geometry over an over again by ch
 So then this animation works out the way that I would more or less expect it to the faces of each side of the cube move out from each other and then back again. There is the a whole bunch of other things that I could do when it comes to creating various other kinds of animations that are just slightly different use case of these basic helper functions.
 ### 4.1 - Lerp Geometry position helper function
 
-This example makes use of my [lerp geo function](/2022/07/01/threejs-examples-lerp-geo/) that I made for one of my many threejs examples.
+This example makes use of my [lerp geo function](/2022/07/01/threejs-examples-lerp-geo/) that I made for one of my many threejs examples. This is a little project that I made a while back that involves using the lerp method of the vector3 class as a way to transition all the points of a geometry between two sets of geometry to create a cool kind of transition effect. Here in this example I am using it to lerp all the points of a sphere geometry to that of a torus geometry and back again.
 
 ```js
 (function () {
