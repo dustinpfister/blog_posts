@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-04 09:31:07
-version: 1.27
+updated: 2022-10-04 09:32:32
+version: 1.28
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -26,7 +26,7 @@ I assume that you have some background when it comes to the [very basics of gett
 
 ### Read up more on the object3d class and other related topics if you have not done so
 
-The look at method is just one method of the [object3d base class](/2018/04/23/threejs-object3d/), there is a great deal more about the class that is also worth looking into more. The object3d class is the base class for a lot of object classes in tree.js such as Camera, Mesh, Group, and Scene just to name a few. So by learning about a method the the look at method one will end up learning about a method that can be applied to Cameras, but also Mesh objects, groups and anything based on Object3d.
+The look at method is just one method of the [object3d base class](/2018/04/23/threejs-object3d/), there is a great deal more about the class that is also worth looking into more. The object3d class is the base class for a lot of object classes in tree.js such as Camera, Mesh, Group, and whole Scene objects just to name a few. So by learning about a method like the look at method one will end up learning about a method that can be applied to a whole lot of differing objects that are used in threejs projects.
 
 ### Source code is up on Github
 
