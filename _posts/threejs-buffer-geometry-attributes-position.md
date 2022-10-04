@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-03 09:53:42
-version: 1.47
+updated: 2022-10-04 09:06:30
+version: 1.48
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
@@ -636,7 +636,10 @@ The apply Euler method of the Vector3 class is a way to go about changing the di
 
 ## 4 - Animation loop example
 
-Now I am going to want to make some kind of animation example of what I have worked out thus far when it comes to mutating the values of a buffer geometry position attribute. In this example I am not suing the set vertex and set triangle helpers to create an update box geometry helper. In this helper method I am doing the same thing that I did for my example on the set tri helper, only I worked out a way to do so in a while loop rather than a whole bunch of lines calling the ti method over and over again. The one major different in this update method beyond that is that I can also pass a percent value that can be used to set the state of an animation in terms of a value between 0 and 1.
+
+### 4.1 - Box Geometry Animation
+
+In this example I am going with what I worked out in the box geometry section of this post by using the set vertex and set triangle helpers to create an update box geometry helper. In this helper method I am doing the same thing that I did for my example on the set tri helper, only I worked out a way to do so in a while loop to update all the triangles of the geometry. The one major difference in this update method beyond that is that I can also pass a percent, or alpha values as it is some times called that can be used to set the state of an animation in terms of a value between 0 and 1.
 
 When doing anything that involves mutating the geometry over an over again by changing values in the position attribute there is one thing that I must always do and that is to make sure that I always set the needs update boolean of the position attribute to true each time I change the values in the position array. Thus far doing so was not that important because I was just updating the geometry once, and that seems to work okay even if i do not make sure it is set to true. However now if I forget that step the geometry will update only once, and then not again on the next call of the animation function.
 
@@ -723,6 +726,89 @@ When doing anything that involves mutating the geometry over an over again by ch
 ```
 
 So then this animation works out the way that I would more or less expect it to the faces of each side of the cube move out from each other and then back again. There is the a whole bunch of other things that I could do when it comes to creating various other kinds of animations that are just slightly different use case of these basic helper functions.
+### 4.1 - Lerp Geometry position helper function
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(2.5, 2.5, 2.5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // LERP GEO FUNCTION
+    var lerpGeo = function(geo, geoA, geoB, alpha){
+        alpha = alpha || 0;
+        // pos, and new pos
+        let pos = geo.getAttribute('position');
+        // positions for a and b
+        let posA = geoA.getAttribute('position');
+        let posB = geoB.getAttribute('position');
+        // loop over pos and lerp between posA and posB
+        var i = 0, len = pos.array.length;
+        while(i < len){
+            // creating Vector3 instances for current posA and PosB vertices
+            var v = new THREE.Vector3(posA.array[i], posA.array[i + 1], posA.array[i + 2]);
+            var v2 = new THREE.Vector3(posB.array[i], posB.array[i + 1], posB.array[i + 2]);
+            // lerping between v and v2 with given alpha value
+            v.lerp(v2, alpha);
+            // set pos vertex to state of v
+            pos.array[i] = v.x;
+            pos.array[i + 1] = v.y;
+            pos.array[i + 2] = v.z;      
+            i += 3;
+        }
+        // the needs update bool of pos should be set true
+        // and I will also need to update normals
+        pos.needsUpdate = true;
+    };
+    //-------- ----------
+    // GEO AND POINTS
+    //-------- ----------
+    let geo_sphere = new THREE.SphereGeometry(1.5, 30, 30);
+    let geo_torus = new THREE.TorusGeometry(1, 0.5, 30, 30);
+    let points = new THREE.Points( geo_sphere.clone(), new THREE.PointsMaterial({ size: 0.1}) );
+    scene.add(points);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 25, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 300;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        const a = frame / frameMax;
+        const b = 1 - Math.abs(0.5 - a) / 0.5;
+        lerpGeo(points.geometry, geo_sphere, geo_torus, b);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
 
 ## Conclusion
 
