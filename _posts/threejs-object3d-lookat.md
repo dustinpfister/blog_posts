@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-04 09:28:40
-version: 1.26
+updated: 2022-10-04 09:31:07
+version: 1.27
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -19,7 +19,7 @@ There are a lot of other little problems that will creep up here and there also 
 
 ## The look at method in three.js, and what to know first
 
-The look at method in three.js is a prototype method of the Object3d class in a javaScript library known as three.js. I assume that you have some background when it comes to the [very basics of getting started with three.js](/2018/04/04/threejs-getting-started/) and client side [javaScript in general](/2018/11/27/js-getting-started/). If not you might want to take a step back for a moment before getting into some more advanced topics when it comes to [groups](/2018/05/16/threejs-grouping-mesh-objects/), and having the look at method look at [a mesh object](/2018/05/04/threejs-mesh/) relative to the group rather than world space. I will not be covering the very basics of three.js in general here, but I will be going over some additional things that you should know first in this section.
+I assume that you have some background when it comes to the [very basics of getting started with three.js](/2018/04/04/threejs-getting-started/) and client side [javaScript in general](/2018/11/27/js-getting-started/). If not you might want to take a step back for a moment before getting into some more advanced topics when it comes to [groups](/2018/05/16/threejs-grouping-mesh-objects/), and having the look at method look at [a mesh object](/2018/05/04/threejs-mesh/) relative to the group rather than world space as well as many other little issues with the look at method. I will not be covering the very basics of three.js in general here, but I will be going over some additional things that you should know first in this section.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/morZYyJN05o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
