@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-10-03 15:06:27
-version: 1.95
+updated: 2022-10-04 10:15:50
+version: 1.96
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -319,26 +319,27 @@ scene.add(cube);
 renderer.render(scene, camera);
 ```
 
-## 2 - Animation
+## 2 - Animation examples
+
+### 2.1 - Update example with fog
 
 So because the source is a canvas you might be wondering if it is possible to redraw the canvas and update the texture, making an animated texture. The answer is yes, all you need to do is redraw the contents of the canvas, and set the needsUpdate property of the texture to true before calling the render method of your renderer. In this section I will then be going over a revised version of the source code of the above example where I started working with a module that I can use to create and return an object that contains a reference to the drawing context of the canvas as well as the texture. This time the aim is to get things started when it comes to having a way to draw to the canvas used for the texture over and over again as needed.
 
-### 2.1 - The canvas module.
-
-So now I have a slightly updated versions of the canvas module, this time the only major difference that is really worth writing about is that I am making sure that I set the needs update property if the texture back to true after each call of the draw function that is returned by the create canvas object public function of the module.
-
 ```js
+//-------- ----------
+// CANVAS MODULE
+//-------- ----------
 (function(api){
     // create and return a canvasObj with texture
     api.createCanvasObject = function (state, drawFunc) {
         drawFunc = drawFunc || canvasMod.draw;
-        var canvas = document.createElement('canvas'),
+        const canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
         canvas.width = 16;
         canvas.height = 16;
-        var texture = new THREE.Texture(canvas);
+        const texture = new THREE.Texture(canvas);
         texture.needsUpdate = true;
-        var canvasObj = {
+        const canvasObj = {
             texture: texture,
             canvas: canvas,
             ctx: ctx,
@@ -352,71 +353,74 @@ So now I have a slightly updated versions of the canvas module, this time the on
         canvasObj.draw();
         return canvasObj;
     };
- 
-    // create a cube the makes use of a canvas texture
-    api.createCube = function (canvasObj) {
-        return new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial({
-                map: canvasObj.texture
-            }));
-    };
- 
 }( this['canvasMod'] = {} ));
-```
-
-### 2.2 - The main JavaScript file
-
-I now just need a little more code to make use of the canvas module, for this I have a state object for the animation, and a custom draw function that I will be used to draw to the canvas over and over again in a loop.
-
-```js
+//-------- ----------
+// DEMO
+//-------- ----------
 (function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER, FOG
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10))
+    const fogColor = new THREE.Color(0xffffff);
+    scene.background = fogColor;
+    scene.fog = new THREE.FogExp2(fogColor, 0.35);
+    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 100);
+    camera.position.set(1.75, 1.75, 1.75);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CANVAS OBJECT
+    //-------- ----------
     // state object
-    var state = {
+    const state = {
        frame: 0,
        maxFrame: 90,
        fps: 30,
        lt: new Date()
     };
     // draw function
-    var draw = function(ctx, canvas, state){
-        var per = state.frame / state.maxFrame,
+    const draw = function(ctx, canvas, state){
+        const per = state.frame / state.maxFrame,
         bias = Math.abs(0.5 - per) / 0.5,
         x = canvas.width / 2 * bias;
         y = canvas.height / 2 * bias;
         w = canvas.width - canvas.width * bias;
         h = canvas.height - canvas.height * bias;
         ctx.lineWidth = 3;
-        ctx.fillStyle = '#000000';
+        ctx.fillStyle = '#00ff00';
         ctx.strokeStyle = '#ff00ff';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.strokeRect(x, y, w, h);
     };
     // create canvas obj
-    var canvasObj = canvasMod.createCanvasObject(state, draw);
+    const canvasObj = canvasMod.createCanvasObject(state, draw);
     // filter
     canvasObj.texture.magFilter = THREE.NearestFilter;
-    // SCENE
-    var scene = new THREE.Scene();
-    fogColor = new THREE.Color(0xffffff);
-    scene.background = fogColor;
-    scene.fog = new THREE.Fog(fogColor, 0.0025, 20);
-    scene.fog = new THREE.FogExp2(fogColor, 0.1);
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
-    camera.position.set(1, 1, 1);
-    camera.lookAt(0, 0, 0);
-    // using create cube method
-    var mesh = canvasMod.createCube(canvasObj);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const light = new THREE.PointLight();
+    light.position.set(0,0.5,0)
+    camera.add(light);
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({
+                map: canvasObj.texture
+            }));
     scene.add(mesh);
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // Loop
-    var loop = function () {
-        var now = new Date(),
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    const loop = function () {
+        const now = new Date(),
         secs = (now - state.lt) / 1000;
         requestAnimationFrame(loop);
         if(secs > 1 / state.fps){
@@ -432,28 +436,31 @@ I now just need a little more code to make use of the canvas module, for this I 
     ());
 ```
 
+So now I have a slightly updated versions of the canvas module, this time the only major difference that is really worth writing about is that I am making sure that I set the needs update property if the texture back to true after each call of the draw function that is returned by the create canvas object public function of the module.
+
+I now just need a little more code to make use of the canvas module, for this I have a state object for the animation, and a custom draw function that I will be used to draw to the canvas over and over again in a loop.
+
 It should go without saying that this will use more overhead compared to a static texture, so I would not go wild with it just yet, but it is pretty cool that I can do this.
 
-## 3 - Canvas animations and using more than one texture for a geometry
+### 2.2 - Canvas animations and using more than one texture for a geometry
 
 I have wrote a number of posts on threejs and as such I have [touched based on how to go about using more than one material](/2018/05/14/threejs-mesh-material-index/) with a mesh in threejs a while back all ready. However I am thinning that this is something that also deserves at least one of not more sections in this post also, as this can lead to some interesting projects even by making use of just the built in geometry constructors.
 
-### 3.1 - The canvas module
-
-Once again I have a canvas module that will be used to create a object that will contain a reference to a texture, as well as all the other objects that I will want to grab at such as the canvas element, and drawing context. One major change from the other revisions of this module in the other sections thus far is the create cube method that will allow for me to create a cube with an array of materials rather than just one.
-
 ```js
+//-------- ----------
+// CANVAS MODULE
+//-------- ----------
 (function(api){
     // create and return a canvasObj with texture
     api.createCanvasObject = function (state, drawFunc) {
         drawFunc = drawFunc || canvasMod.draw;
-        var canvas = document.createElement('canvas'),
+        const canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
         canvas.width = 64;
         canvas.height = 64;
-        var texture = new THREE.Texture(canvas);
+        const texture = new THREE.Texture(canvas);
         texture.needsUpdate = true;
-        var canvasObj = {
+        const canvasObj = {
             texture: texture,
             canvas: canvas,
             ctx: ctx,
@@ -467,10 +474,9 @@ Once again I have a canvas module that will be used to create a object that will
         canvasObj.draw();
         return canvasObj;
     };
- 
     // create a cube the makes use of one or more textures
     api.createCube = function (texture) {
-        var materials = [];
+        let materials = [];
         if(texture instanceof Array){
             texture.forEach(function(t){
                 t.magFilter = THREE.NearestFilter;
@@ -486,32 +492,30 @@ Once again I have a canvas module that will be used to create a object that will
         }
         return new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), materials);
     };
- 
 }( this['canvasMod'] = {} ));
-```
-
-### 3.2 - The main javaScript file
-
-I then have the main javaScript file for this example in which I am not creating two canvas objects that use two difference draw methods to update the state of the canvas. One canvas object makes use of a draw method that will draw a animated square, while the other is a circle. I can then use the create cube method of the canvas module to set what texture to what side of the cube.
-
-```js
-
+//-------- ----------
+// DEMO
+//-------- ----------
 (function () {
+    //-------- ----------
     // SCENE, CAMERA, LIGHT, RENDERER
-    var scene = new THREE.Scene();
+    //-------- ----------
+    const scene = new THREE.Scene();
     scene.add( new THREE.GridHelper(10, 10));
-    var camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 100);
+    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 100);
     camera.position.set(1, 1, 1);
     camera.lookAt(0, 0, 0);
     scene.add(camera);
-    var light = new THREE.PointLight();
+    const light = new THREE.PointLight();
     light.position.set(0, 0, 0)
     camera.add(light);
-    var renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // state object
-    var state = {
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // STATE, DRAW, CANVAS OBJECT
+    //-------- ----------
+    const state = {
        frame: 0,
        maxFrame: 300,
        per: 0,
@@ -519,7 +523,7 @@ I then have the main javaScript file for this example in which I am not creating
        fps: 30,
        lt: new Date()
     };
-    var drawBackground = function(ctx, canvas, state){
+    const drawBackground = function(ctx, canvas, state){
         ctx.fillStyle = '#1a1a1a';
         ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
         ctx.lineWidth = 1;
@@ -527,15 +531,15 @@ I then have the main javaScript file for this example in which I am not creating
         ctx.strokeRect(0,0, canvas.width, canvas.height);
     };
     // drawBox function
-    var drawBox = function(ctx, canvas, state){
-        var x = canvas.width / 2 * state.bias, y = canvas.height / 2 * state.bias,
+    const drawBox = function(ctx, canvas, state){
+        const x = canvas.width / 2 * state.bias, y = canvas.height / 2 * state.bias,
         w = canvas.width - canvas.width * state.bias, h = canvas.height - canvas.height * state.bias;
         drawBackground(ctx, canvas, state);
         ctx.lineWidth = 3;
         ctx.strokeStyle = '#00ff00';
         ctx.strokeRect(x, y, w, h);
     };
-    var drawCircle = function(ctx, canvas, state){
+    const drawCircle = function(ctx, canvas, state){
         ctx.lineWidth = 3;
         drawBackground(ctx, canvas, state);
         ctx.strokeStyle = '#ff0000';
@@ -548,10 +552,12 @@ I then have the main javaScript file for this example in which I am not creating
         ctx.stroke();
     };
     // create canvas objs
-    var canvasObjBox = canvasMod.createCanvasObject(state, drawBox);
-    var canvasObjCircle = canvasMod.createCanvasObject(state, drawCircle);
-    // using create cube method
-    var mesh = canvasMod.createCube([
+    const canvasObjBox = canvasMod.createCanvasObject(state, drawBox);
+    const canvasObjCircle = canvasMod.createCanvasObject(state, drawCircle);
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const mesh = canvasMod.createCube([
         canvasObjBox.texture,
         canvasObjBox.texture,
         canvasObjCircle.texture,
@@ -559,9 +565,11 @@ I then have the main javaScript file for this example in which I am not creating
         canvasObjBox.texture,
         canvasObjCircle.texture,]);
     scene.add(mesh);
-    // Loop
-    var loop = function () {
-        var now = new Date(),
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    const loop = function () {
+        const now = new Date(),
         secs = (now - state.lt) / 1000;
         requestAnimationFrame(loop);
         if(secs > 1 / state.fps){
@@ -581,6 +589,9 @@ I then have the main javaScript file for this example in which I am not creating
     ());
 ```
 
+Once again I have a canvas module that will be used to create a object that will contain a reference to a texture, as well as all the other objects that I will want to grab at such as the canvas element, and drawing context. One major change from the other revisions of this module in the other sections thus far is the create cube method that will allow for me to create a cube with an array of materials rather than just one.
+
+I then have the main javaScript file for this example in which I am not creating two canvas objects that use two difference draw methods to update the state of the canvas. One canvas object makes use of a draw method that will draw a animated square, while the other is a circle. I can then use the create cube method of the canvas module to set what texture to what side of the cube.
 What is great about using built in geometry constructors like the THREE.BoxGeomety constructor is that the groups that are used to achieve this are all ready set up for me. Things can get a little involved with this sort of thing when it comes to making custom geometry by working with the buffer geometry constructor directly.
 
 ## Conclusion
