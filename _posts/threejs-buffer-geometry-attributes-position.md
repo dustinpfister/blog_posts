@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-04 09:10:54
-version: 1.49
+updated: 2022-10-04 09:13:45
+version: 1.50
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
@@ -634,8 +634,9 @@ The apply Euler method of the Vector3 class is a way to go about changing the di
     renderer.render(scene, camera);
 ```
 
-## 4 - Animation loop example
+## 4 - Animation loop examples of buffer geometry position attribute mutation
 
+For this post I just have to make at least one, if not a few animation examples of the position attribute. In this section then I will be doing just that making animated forms of what I worked out for this post, as well as make use of what I worked out for many other posts including my [threejs examples collection posts](/2021/02/19/threejs-examples/).
 
 ### 4.1 - Box Geometry Animation
 
