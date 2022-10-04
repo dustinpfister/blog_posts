@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-04 09:32:32
-version: 1.28
+updated: 2022-10-04 09:40:04
+version: 1.29
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -38,7 +38,7 @@ When I first wrote this post I was using three.js version r127 which was a late 
 
 ## 1 - Basic Object3d look at method example
 
-For a basic example of the look at method here I am using the look at method to get two mesh objects to look at each other. I am also using the look at method to get a camera to look at the position 0,0,0 in world space after moving the camera to a location other than 0, 0, 0.
+For a basic example of the look at method here I am using the look at method to get two mesh objects to look at each other. I am also using look at for the camera of the example to set the point of interest that the camera looks at to that of 0,0,0 in world space after moving the camera to a new location.
 
 When using the look at method I can pass a single argument that is an instance of Vector3, or I can pass a set of three arguments for each axis value. If what I want to look at is something that is another instance of Object3d such as a Mesh, or a Group I can pass the position value to the look at method which is an instance of the Vector3 class.
 
