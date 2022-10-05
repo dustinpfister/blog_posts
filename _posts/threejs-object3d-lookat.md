@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-05 08:21:27
-version: 1.37
+updated: 2022-10-05 08:23:37
+version: 1.38
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -83,7 +83,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Using the Vector3 class such as the position property of an object3d based object such as a Mesh
 
-Using a set of three numbers is great and all, but there is a whole lot to say about Vector3 and often I will use that as a way to define what the position in space should be for the look at method.
+Using a set of three numbers is great and all, but there is a whole lot to say about the Vector3 class, and often I will use that as a way to define what the position in space should be for the look at method. For this example I am just making use of the instances of the Vector3 class stored at the position properties of mesh objects to get them to face each other. I can also use the position property as a quick way to get a camera to look at a specific object in a scene as well.
 
 ```js
 //-------- ----------
