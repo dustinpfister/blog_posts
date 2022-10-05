@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-04 09:40:04
-version: 1.29
+updated: 2022-10-05 07:37:06
+version: 1.30
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -43,33 +43,42 @@ For a basic example of the look at method here I am using the look at method to 
 When using the look at method I can pass a single argument that is an instance of Vector3, or I can pass a set of three arguments for each axis value. If what I want to look at is something that is another instance of Object3d such as a Mesh, or a Group I can pass the position value to the look at method which is an instance of the Vector3 class.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
- 
-var m1 = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10,10));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUCNTIONS
+//-------- ----------
+const mkCone = (x, y, z) => {
+    const mesh = new THREE.Mesh(
+        new THREE.ConeGeometry(0.5, 1, 20, 20),
         new THREE.MeshNormalMaterial());
+    mesh.geometry.rotateX(Math.PI * 0.5);
+    mesh.position.set(x, y, z)
+    return mesh;
+};
+//-------- ----------
+// MESH OBJECTS
+//-------- ----------
+const m1 = mkCone(0, 0, 0);
 scene.add(m1);
- 
-var m2 = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshNormalMaterial());
-m2.position.set(2, 0, 2)
+const m2 = mkCone(3, 0, 0);
 scene.add(m2);
- 
 // MAKING THESE TWO MESH OBJECTS LOOK AT EACH OTHER
 m1.lookAt(m2.position);
 m2.lookAt(m1.position);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-// MAKING THE CAMREA LOOK AT 0,0,0
-camera.lookAt(0, 0, 0);
- 
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+// MAKING THE CAMREA LOOK AT M1
+camera.position.set(5, 5, 5);
+camera.lookAt(m1.position);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -84,22 +93,32 @@ However the Look at method will always look at the given point relative to world
 If I want to have a mesh object point to some world location outside of the group rather than relative to the group then I can just call the look at method and pass that location. However if I want to have a mesh point to another child within a group that is where things will get a little involved. In this example I have a mesh that is a kind of pointer mesh because I am using the cylinder geometry constructor to create a cone like geometry and then I am rotating that geometry so that it points in the direction in which the mesh is facing. However when I have this pointer mesh face another cube mesh that is a child of the group this results in the pointer mesh facing the position of the cube relative to the would rather than the group.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(5, 5));
- 
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
+camera.position.set(0, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+//  GROUP, MESH
+//-------- ----------
 // creating a group
-var group = new THREE.Group();
+const group = new THREE.Group();
 // creating and adding a pointer mesh to the group
-var geo = new THREE.CylinderGeometry(0, 0.5, 1, 12);
+const geo = new THREE.CylinderGeometry(0, 0.5, 1, 12);
 geo.rotateX(Math.PI * 0.5);
-var pointer = new THREE.Mesh(
+const pointer = new THREE.Mesh(
         geo,
         new THREE.MeshNormalMaterial());
 pointer.position.set(0, 0, 0);
 group.add(pointer);
 // creating and adding a cube
-var cube = new THREE.Mesh(
+const cube = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 cube.position.set(0, 0, 4);
@@ -110,18 +129,11 @@ group.add(new THREE.BoxHelper(group));
 group.position.set(-2.0, 0, -2.0);
 // add group to the scene
 scene.add(group);
- 
 // POINTER LOOKS AT CUBE POSITION RELATIVE TO THE SCENE, BUT NOT RELATIVE TO THE GROUP
 pointer.lookAt(cube.position);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
-camera.position.set(0, 4, 4);
-camera.lookAt(0, 0, 0);
- 
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -132,22 +144,31 @@ If I want to have a mesh face a child within a group then I am going to want to 
 As of around r127 forward it is now required to create a new instance of Vector3 and pass that as an argument when calling the get world space method. Failing to do so with later versions of threejs such as r140 that I tested this out on last will result in an error.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(5, 5));
- 
-// creating a group
-var group = new THREE.Group();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
+camera.position.set(0, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+//  GROUP, MESH
+//-------- ----------
+const group = new THREE.Group();
 // creating and adding a pointer mesh to the group
-var geo = new THREE.CylinderGeometry(0, 0.5, 1, 12);
+const geo = new THREE.CylinderGeometry(0, 0.5, 1, 12);
 geo.rotateX(Math.PI * 0.5);
-var pointer = new THREE.Mesh(
+const pointer = new THREE.Mesh(
         geo,
         new THREE.MeshNormalMaterial());
 pointer.position.set(0, 0, 0);
 group.add(pointer);
 // creating and adding a cube
-var cube = new THREE.Mesh(
+const cube = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 cube.position.set(0, 0, 4);
@@ -158,22 +179,15 @@ group.add(new THREE.BoxHelper(group));
 group.position.set(-2.0, 0, -2.0);
 // add group to the scene
 scene.add(group);
- 
 // IF I WANT TO HAVE THE POINTER LOOK AT THE CUBE
 // THAT IS A CHILD OF THE GROUP, THEN I WILL WANT TO ADJUST 
 // FOR THAT FOR THIS THERE IS THE getWorldPosition Method
-var target = new THREE.Vector3();
+const target = new THREE.Vector3();
 cube.getWorldPosition(target)
 pointer.lookAt( target );
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
-camera.position.set(0, 4, 4);
-camera.lookAt(0, 0, 0);
- 
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
