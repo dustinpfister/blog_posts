@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-05 07:58:04
-version: 1.33
+updated: 2022-10-05 08:03:32
+version: 1.34
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -40,11 +40,11 @@ The source code examples that I am writing about here can also be found in [my t
 ### version numbers matter with three.js
 
 When I first wrote this post I was using three.js version r127 which was a late version of three.js as of April of 2021, and the last time I came around to do some editing I was testing out the source code examples on r140. I do not think much has changed with the look at method from the point that I started write posts on three.js back in 2018 when I was using r91. Still it is possible that code breaking changed will be made to three.js that might effect other parts of the code examples that I am writing about here. So always take care when reading about three.js code examples on the open web, more so than usual with three.js as this is still a very fast moving library in terms of development.
-## 1 - Basic Object3d look at method example
+## 1 - Some Basic examples of the Object3d look at method
 
-For a basic example of the look at method here I am using the look at method to get two mesh objects to look at each other. I am also using look at for the camera of the example to set the point of interest that the camera looks at to that of 0,0,0 in world space after moving the camera to a new location.
+In this section I will be starting out with just a few basic examples of the look at method of then object3d class. There are two general ways of using the look at method one of which is to give three numbers, and the object is to use a single Vector3 class instance. In this section I will be covering examples that make use of both ways calling the method. In addtion I think I should also cover rotation of geometru as well right away as that is somehting that will become a problem right away
 
-When using the look at method I can pass a single argument that is an instance of Vector3, or I can pass a set of three arguments for each axis value. If what I want to look at is something that is another instance of Object3d such as a Mesh, or a Group I can pass the position value to the look at method which is an instance of the Vector3 class.
+### 1.2 - Using the Vector3 class such as the position property of an object3d based object such as a Mesh
 
 ```js
 //-------- ----------
