@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-05 07:52:00
-version: 1.32
+updated: 2022-10-05 07:58:04
+version: 1.33
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
 
 One reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is an based off of object3d that can have its position changed as well. To some extent this is not really a problem as I typically do want to always look at a point relative to world space. However often I might end up making some kind of group of mesh objects and I want to have a mesh object look at another mesh object in this group, so in that case I want to look at something relative to the position of the group, not the world. In these kinds of situations I can still use the look at method, it is just that I will need to adjust for this by using something like the [get world position method of the object3d class](/2021/05/25/threejs-object3d-get-world-position/).
 
-There are a lot of other little problems that will creep up here and there also when using the look at method, some of which will just require me to [rotate the buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/) once just to change what the front facing direction is. I can then use the the lookAt method or directly mutate the instance of Euler at the [rotation property of the object3d based object](/2022/04/08/threejs-object3d-rotation/) to change rotation from there on out.
+There are a lot of other little problems that will creep up here and there also when using the look at method, some of which will just require me to [rotate the buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/) once just to change what the front facing direction is. I can then use the the lookAt method or directly mutate the instance of [Euler](/2021/04/28/threejs-euler/) at the [rotation property of the object3d based object](/2022/04/08/threejs-object3d-rotation/) to change rotation from there on out.
 
 Although the lookAt method will work fine for most situations there are a few additional use cases where it will just not work great. So then there will be some times where I might have to roll up my sleeves, and work out some kind of custom solution for setting rotation of an object3d based object.
 
@@ -25,10 +25,13 @@ I assume that you have some background when it comes to the [very basics of gett
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/morZYyJN05o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
 ### Read up more on the object3d class and other related topics if you have not done so
 
 The look at method is just one method of the [object3d base class](/2018/04/23/threejs-object3d/), there is a great deal more about the class that is also worth looking into more. The object3d class is the base class for a lot of object classes in tree.js such as Cameras, Mesh Objects, Groups, and whole Scene objects just to name a few. So by learning about a method like the look at method one will end up learning about a method that can be applied to a whole lot of differing objects that are used in threejs projects.
+
+### Read up more on the Vector3 class
+
+When using the look at method one option is to give and x, y, and z position as a set of three arguments in the form of javaScript number values. However the other option is to given just one argument that is an instance of the [Vector3 class which it worth checking out in detail if you have not done so yet](/2018/04/15/threejs-vector3/). There are a great deal of very useful methods for working with a 3d form of a vector in space that make quick work of various tasks that have to do with adjusting direction and vector unit length. I will be making use of many of these in this post, but there is a lot of ground to cover to do the class justice that I will not be doing here.
 
 ### Source code is up on Github
 
