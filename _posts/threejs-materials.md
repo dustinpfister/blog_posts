@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2022-10-05 13:55:23
-version: 1.40
+updated: 2022-10-05 13:56:23
+version: 1.41
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -18,6 +18,7 @@ This post will serve as a general overview of the mesh materials in general in t
 <!-- more -->
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/EouYzHldZd8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Materials in threejs and what to know first
 
@@ -55,6 +56,10 @@ var planeMaterial = new THREE.MeshBasicMaterial({
     opacity: .4
 });
 ```
+
+### Source is also on Github
+
+The source for this examples is [also on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-materials).
 
 ### Version number matters with three.js
 
