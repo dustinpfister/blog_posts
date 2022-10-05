@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-05 08:57:35
-version: 1.40
+updated: 2022-10-05 08:59:39
+version: 1.41
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -239,6 +239,8 @@ renderer.render(scene, camera);
 In order to really start to get a feel for how the look at method works, and in the process find some of the short comings of this method, I will need to start working out a lot of animation examples of the method. This is then how I can really go about showing how the look at method goes hand in hand with many of the vector3 class methods, as well as many other means for setting the position and also the point to look at for objects.
 
 ### 3.1 - Circle of cones all looking at a moving sphere
+
+Here I have some source code that is based off of the code that I made for the first video that I made for this blog post. The idea was to make a circle of cone objects and then use the look at methods to have them all look at a single object such as a mesh that makes use of the sphere geometry.
 
 ```js
 (function () {
