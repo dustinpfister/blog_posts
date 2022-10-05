@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-05 07:47:27
-version: 1.31
+updated: 2022-10-05 07:52:00
+version: 1.32
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -28,16 +28,15 @@ I assume that you have some background when it comes to the [very basics of gett
 
 ### Read up more on the object3d class and other related topics if you have not done so
 
-The look at method is just one method of the [object3d base class](/2018/04/23/threejs-object3d/), there is a great deal more about the class that is also worth looking into more. The object3d class is the base class for a lot of object classes in tree.js such as Camera, Mesh, Group, and whole Scene objects just to name a few. So by learning about a method like the look at method one will end up learning about a method that can be applied to a whole lot of differing objects that are used in threejs projects.
+The look at method is just one method of the [object3d base class](/2018/04/23/threejs-object3d/), there is a great deal more about the class that is also worth looking into more. The object3d class is the base class for a lot of object classes in tree.js such as Cameras, Mesh Objects, Groups, and whole Scene objects just to name a few. So by learning about a method like the look at method one will end up learning about a method that can be applied to a whole lot of differing objects that are used in threejs projects.
 
 ### Source code is up on Github
 
-The source code examples that I am writing about here can also be found in [my test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-lookat).
+The source code examples that I am writing about here can also be found in [my test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-lookat). This is where I part not just the source code examples that I am writing about here, draft examples, notes for additional future examples and more. This is also where I am parking the source code examples for my [many other posts on threejs](/categories/three-js/).
 
 ### version numbers matter with three.js
 
 When I first wrote this post I was using three.js version r127 which was a late version of three.js as of April of 2021, and the last time I came around to do some editing I was testing out the source code examples on r140. I do not think much has changed with the look at method from the point that I started write posts on three.js back in 2018 when I was using r91. Still it is possible that code breaking changed will be made to three.js that might effect other parts of the code examples that I am writing about here. So always take care when reading about three.js code examples on the open web, more so than usual with three.js as this is still a very fast moving library in terms of development.
-
 ## 1 - Basic Object3d look at method example
 
 For a basic example of the look at method here I am using the look at method to get two mesh objects to look at each other. I am also using look at for the camera of the example to set the point of interest that the camera looks at to that of 0,0,0 in world space after moving the camera to a new location.
