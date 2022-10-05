@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-05 11:17:34
-version: 1.52
+updated: 2022-10-05 11:31:30
+version: 1.53
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
@@ -208,41 +208,43 @@ If you are still a little confused about all this maybe it would be best to just
 
 ```js
 (function () {
-    //******** **********
-    // scene, camera, render
-    //******** **********
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
-    var renderer = new THREE.WebGLRenderer();
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(2, 2, 3);
+    const renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //******** **********
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
     // GEOMETRY, MESH - starting with a cube and looking at position attribute
-    //******** **********
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    //-------- ----------
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
     // check out the position attribute of a cube
-    var position = geometry.getAttribute('position');
+    const position = geometry.getAttribute('position');
     console.log( position.count ); // 24
     console.log( position.array.length ); // 72
     console.log( position.count * 3 === position.array.length); // true
-    var index = geometry.getIndex();
+    // get the index for all the trangles
+    const index = geometry.getIndex();
     console.log( index.count );      // 36
-    console.log( 2 * 6 );            // 12 ( number of triangles )
     console.log( index.count / 3);   /* 12 (index.count / 3 === number of triangles ) */
     // mutating a position
-    var vertIndex = index.array[0] * 3;
-    position.array[vertIndex] = 1;
+    const vertIndex = index.array[0];
+    position.array[vertIndex] = 0.8;
+    position.array[vertIndex + 1] = 0.5;
+    position.array[vertIndex + 2] = 0.5;
     position.needsUpdate = true;
     // use the geometry with a mesh
-    var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
         side: THREE.DoubleSide
     }));
     scene.add(mesh);
     camera.lookAt(mesh.position);
-    //******** **********
+    //-------- ----------
     // RENDER
-    //******** **********
+    //-------- ----------
     renderer.render(scene, camera);
 }
     ());
@@ -254,23 +256,32 @@ In this example I worked out a simple set vertex helper where I can just pass a 
 
 ```js
 (function () {
- 
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
     // set location of a vert given an index value in geometry.index
-    var setVert = function(geometry, vertIndex, pos){
+    const setVert = function(geometry, vertIndex, pos){
         pos = pos || {};
-        var posIndex = geometry.index.array[vertIndex] * 3,
+        const posIndex = geometry.index.array[vertIndex] * 3,
         position = geometry.getAttribute('position');
         position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
         position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
         position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
     };
-    // scene
-    var scene = new THREE.Scene();
- 
+    //-------- ----------
+    // SCENE
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(2, 2, 2);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
     // GEOMETRY
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
- 
-    var pos = {
+    //-------- ----------
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const pos = {
        x: 1,
        y: 0.25,
        z: 1.25
@@ -278,32 +289,24 @@ In this example I worked out a simple set vertex helper where I can just pass a 
     setVert(geometry, 0, pos);
     setVert(geometry, 16, pos);
     setVert(geometry, 26, pos);
- 
-    var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
         side: THREE.DoubleSide
     }));
     scene.add(mesh);
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
     camera.lookAt(mesh.position);
- 
-    // RENDER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
-    var loop = function(){
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    const loop = function(){
         requestAnimationFrame(loop);
         renderer.render(scene, camera);
     };
     loop();
- 
-}
-    ());
+}());
 ```
 
 ### 2.3 -  Set triangle helper
@@ -312,72 +315,70 @@ So now that I have a set vertx helper that seems to work okay I thought it might
 
 ```js
 (function () {
- 
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
     // set location of a vert given an index value in geometry.index
-    var setVert = function(geometry, vertIndex, pos){
+    const setVert = function(geometry, vertIndex, pos){
         pos = pos || {};
-        var posIndex = geometry.index.array[vertIndex] * 3,
+        const posIndex = geometry.index.array[vertIndex] * 3,
         position = geometry.getAttribute('position');
         position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
         position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
         position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
     };
- 
-    var setTri = function(geometry, triIndex, pos){
+    // set triangle
+    const setTri = function(geometry, triIndex, pos){
         pos = pos || {};
-        var vertIndex = triIndex * 3;
+        const vertIndex = triIndex * 3;
         setVert(geometry, vertIndex, pos);
         setVert(geometry, vertIndex + 1, pos);
         setVert(geometry, vertIndex + 2, pos);
     };
- 
-    // scene
-    var scene = new THREE.Scene();
- 
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(2, 2, 2);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
     // GEOMETRY
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
- 
+    //-------- ----------
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
     // example 2 on set tri helper
     setTri(geometry, 0, {x: 1});
     setTri(geometry, 1, {x: 1});
     setTri(geometry, 2, {x: -1});
     setTri(geometry, 3, {x: -1});
- 
     setTri(geometry, 4, {y: 1});
     setTri(geometry, 5, {y: 1});
     setTri(geometry, 6, {y: -1});
     setTri(geometry, 7, {y: -1});
- 
     setTri(geometry, 8, {z: 1});
     setTri(geometry, 9, {z: 1});
     setTri(geometry, 10, {z: -1});
     setTri(geometry, 11, {z: -1});
- 
-    var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
         side: THREE.DoubleSide
     }));
     scene.add(mesh);
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
     camera.lookAt(mesh.position);
- 
-    // RENDER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
-    var loop = function(){
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    const loop = function(){
         requestAnimationFrame(loop);
         renderer.render(scene, camera);
     };
     loop();
- 
-}
-    ());
+}());
 ```
 
 ## 3 - Vector3 arrays, buffer geometry position attributes, and Points
