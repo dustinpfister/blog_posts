@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-04 09:17:06
-version: 1.51
+updated: 2022-10-05 11:17:34
+version: 1.52
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
@@ -196,7 +196,11 @@ When it comes to setting up a quick texture for one or more of the materials tha
 
 ## 2 - Mutation of box geometry examples
 
-In this section I will be going over some examples of mutating the position attribute of a built in box geometry. However things can still get a little confusing as the number of points in the array is not what one might expect when it comes to a cube. For example in a way there is only eight points to a cube, so one might think that the length of a position array for a cube would be 24 when it comes to all the axis positions for each point. However that is not the case, the count value of the position property is indeed 24, but the actual length of the position array is 72. This is because the idea here is to not think in the number of sides that are needed, but the number of triangles that are needed.
+In this section I will be going over some examples of mutating the position attribute of a geometry created with the built in [box geometry constructor function](/2021/04/26/threejs-box-geometry/). However things can still get a little confusing as the number of points in the array of the attribute is not what one might expect when it comes to a cube. For example in a way there is only eight points to a cube sure, so one might think that the length of an array of a position attribute for a cube would be 24. That is that I take the number of points and multiply each by 3 as there is an z, y, and z value for each point. However that is not the case, the count value of the position attribute is indeed 24, but the actual length of the position array is 72. This is because the idea here is to not think in terms of the number of points that are needed, but rather the number of triangles there are in a geometry.
+
+However when one does the math in terms of the number of trinagles for each side, the number of point for each trinagle, and the number of axis for each point, one will arive at the number 108, \( 2 \* 6 \* 3 \* 3 = 108 \) which is again wrong. The reason why this is going on is becuase in a buffer geometry there can be an [index property](https://threejs.org/docs/#api/en/core/BufferGeometry.index) that is another kind of attribute that allows for reusing points.
+
+This might all prove to be a little confusing, and in all fairness it is a liitle involved, so lets take a look at some examples that might help to gain a better sense of what is going on here.
 
 ### 2.1 - Getting started by just moving one point in the box geometry
 
