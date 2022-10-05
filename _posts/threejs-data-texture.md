@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-10-05 09:06:27
-version: 1.28
+updated: 2022-10-05 09:11:07
+version: 1.29
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for the materials that are used for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is the [data textures](https://threejs.org/docs/#api/en/textures/DataTexture) class.
@@ -21,6 +21,10 @@ When it comes to using data textures as a way to create textures with javaScrrip
 ## Data textures in threejs and what to know first
 
 This is a post on using the THREE.DataTexture constructor in threejs to create a texture using raw data for each color channel of each pixel in the form of a unit8array. This is then not at all any kind of [getting started with threejs](/2018/04/04/threejs-getting-started/) type post, and I also assume that you have learned at least a thing or two about javaScript and client side web development in general before hand. I still make an effort to cover at least a few things that you might want to read up more on in these opening sections of my posts.
+
+### When working with textures there is a lot to be aware of with geometry
+
+The main focus in this post is to just simply create textures using raw color channel data, and then use the resulting texture with say a map property of a material. There is then a lot more to read about when it comes to the various options with material maps, but also just as much if not more when it comes to the [buffer geometry class](/2021/04/22/threejs-buffer-geometry/).
 
 ### version numbers matter
 
