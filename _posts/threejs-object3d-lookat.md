@@ -5,15 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-05 07:37:06
-version: 1.30
+updated: 2022-10-05 07:47:27
+version: 1.31
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
 
-One reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is also an instance of object3d that can have its position changed. To some extent this is not really a problem as I typically do want to always look at a point relative to world space. However often I might end up making some kind of group of mesh objects and I want to have a mesh object look at another mesh object in this group, so in that case I want to look at something relative to the position of the group, not the world. In these kinds of situations I can still use the look at method, it is just that I will need to adjust for the fact that the look at method is relative to world space.
+One reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is an based off of object3d that can have its position changed as well. To some extent this is not really a problem as I typically do want to always look at a point relative to world space. However often I might end up making some kind of group of mesh objects and I want to have a mesh object look at another mesh object in this group, so in that case I want to look at something relative to the position of the group, not the world. In these kinds of situations I can still use the look at method, it is just that I will need to adjust for this by using something like the [get world position method of the object3d class](/2021/05/25/threejs-object3d-get-world-position/).
 
-There are a lot of other little problems that will creep up here and there also when using the look at method, some of which will just require me to rotate the buffer geometry once just to change what the front facing direction is. However other situations might require me to roll up my sleeves, and work out some kind of custom solution for setting rotation as well.
+There are a lot of other little problems that will creep up here and there also when using the look at method, some of which will just require me to [rotate the buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/) once just to change what the front facing direction is. I can then use the the lookAt method or directly mutate the instance of Euler at the [rotation property of the object3d based object](/2022/04/08/threejs-object3d-rotation/) to change rotation from there on out.
+
+Although the lookAt method will work fine for most situations there are a few additional use cases where it will just not work great. So then there will be some times where I might have to roll up my sleeves, and work out some kind of custom solution for setting rotation of an object3d based object.
 
 <!-- more -->
 
