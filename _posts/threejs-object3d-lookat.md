@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-05 08:07:16
-version: 1.35
+updated: 2022-10-05 08:18:09
+version: 1.36
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -40,9 +40,44 @@ The source code examples that I am writing about here can also be found in [my t
 ### version numbers matter with three.js
 
 When I first wrote this post I was using three.js version r127 which was a late version of three.js as of April of 2021, and the last time I came around to do some editing I was testing out the source code examples on r140. I do not think much has changed with the look at method from the point that I started write posts on three.js back in 2018 when I was using r91. Still it is possible that code breaking changed will be made to three.js that might effect other parts of the code examples that I am writing about here. So always take care when reading about three.js code examples on the open web, more so than usual with three.js as this is still a very fast moving library in terms of development.
-## 1 - Some Basic examples of the Object3d look at method
+
+## 1 - Some Basic examples of the Object3d.lookAt method
 
 In this section I will be starting out with just a few basic examples of the look at method of then object3d class. There are two general ways of using the look at method one of which is to give three numbers, and the object is to use a single Vector3 class instance. In this section I will be covering examples that make use of both ways calling the method. In addition I think I should also cover rotation of geometry as well right away as that is something that will become a problem right away
+
+### 1.1 - Using a set of three numbers with Object3d.lookAt
+
+For this very first basic example I will be using a set of three numbers as a way to define what the position should be to look at in space. I am using the look at method in this example with both a mesh object as well as a camera as they are both objects that share the Object3d class as a base class. For the mesh object I went with the cone geometry [constructor function](/2019/02/27/js-javascript-constructor/) as a way to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) for the mesh object.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10,10));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH OBJECT
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.ConeGeometry(0.5, 1, 20, 20),
+    new THREE.MeshNormalMaterial());
+mesh.geometry.rotateX(Math.PI * 0.5);
+scene.add(mesh);
+// setting position of camera and mesh
+camera.position.set(5, 5, 5);
+mesh.position.set(2, 0, -3);
+// USING LOOKAT TO HAVE BOTH MESH AND CAMERA LOOK AT 0,0,0
+camera.lookAt(0, 0, 0);
+mesh.lookAt(0, 0, 0);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
 
 ### 1.2 - Using the Vector3 class such as the position property of an object3d based object such as a Mesh
 
