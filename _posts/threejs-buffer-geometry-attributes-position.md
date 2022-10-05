@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-05 11:31:30
-version: 1.53
+updated: 2022-10-05 12:28:55
+version: 1.54
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
@@ -732,7 +732,8 @@ When doing anything that involves mutating the geometry over an over again by ch
 ```
 
 So then this animation works out the way that I would more or less expect it to the faces of each side of the cube move out from each other and then back again. There is the a whole bunch of other things that I could do when it comes to creating various other kinds of animations that are just slightly different use case of these basic helper functions.
-### 4.1 - Lerp Geometry position helper function
+
+### 4.2 - Lerp Geometry position helper function
 
 This example makes use of my [lerp geo function](/2022/07/01/threejs-examples-lerp-geo/) that I made for one of my many threejs examples. This is a little project that I made a while back that involves using the lerp method of the vector3 class as a way to transition all the points of a geometry between two sets of geometry to create a cool kind of transition effect. Here in this example I am using it to lerp all the points of a sphere geometry to that of a torus geometry and back again.
 
@@ -798,6 +799,87 @@ This example makes use of my [lerp geo function](/2022/07/01/threejs-examples-le
         const a = frame / frameMax;
         const b = 1 - Math.abs(0.5 - a) / 0.5;
         lerpGeo(points.geometry, geo_sphere, geo_torus, b);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+### 4.3 - Box Geometry Move Point example
+
+This is a quick animation form of the box geometry vert helper example in which I am moving a single point in a geometry that was created with the box geometry constructor. When I made this example I still not not have the best system worked out when it comes to working with an index attribute of a buffer geometry that has one.
+
+```js
+(function () {
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // set location of a vert given an index value in geometry.index
+    const setVert = function(geometry, vertIndex, pos){
+        pos = pos || {};
+        const posIndex = geometry.index.array[vertIndex] * 3,
+        position = geometry.getAttribute('position');
+        position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
+        position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
+        position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
+        position.needsUpdate = true;
+    };
+    // get bias
+    const getBias = (n, d, count) => {
+        const a = n / d * count % 1;
+        return 1 - Math.abs(0.5 - a) / 0.5;
+    };
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(3, 3, 1);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // GEOMETRY, MESH
+    //-------- ----------
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+        side: THREE.FrontSide,
+        wireframe: true
+    }));
+    scene.add(mesh);
+    camera.lookAt(mesh.position);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 300;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        const a = frame / frameMax;
+        const s = 1 * getBias(frame, frameMax, 8);
+        const v1 = new THREE.Vector3(s, s, s);
+        setVert(geometry, 0, v1);
+        setVert(geometry, 16, v1);
+        setVert(geometry, 26, v1);
+        mesh.rotation.y = Math.PI * 2 * a;
     };
     // loop
     const loop = () => {
