@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-06 08:19:43
-version: 1.56
+updated: 2022-10-06 08:26:33
+version: 1.57
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
@@ -381,7 +381,9 @@ So now that I have a set vertx helper that seems to work okay I thought it might
 
 ### 2.4 - Indexed and non indexed movement of triangles
 
-For this example I am going to create a source geometry that is created with the box geometry constrictor. Then I will create two additional geometries one of which is just a cloned copy of the source, and the other will be the same but in addition I will call the to non indexed method. In the opening text of this section I mentioned that the length of the array of the position attribute of a box geometry is 72 where I would expect 108. The reason why this is is because the box geometry has an index property that allows for the reuse of points which is what helps to crunch that number down. If I call the to non index method then I get an expect length of the array that is 108.
+For this example I am going to create a source geometry that is created with the box geometry constrictor. Then I will create two additional geometries one of which is just a cloned copy of the source, and the other will be the same but in addition I will call the to non indexed method. In the opening text of this section I mentioned that the length of the array of the position attribute of a box geometry is 72 where I would expect 108. The reason why this is is because the box geometry has an index property that allows for the reuse of points which is what helps to crunch that number down. If I call the to non index method then I get an expected length of the array that is 108.
+
+For this example then I have two mesh objects with the two geometries that are clone from the same source geometry one index and the other non indexed. The one that is not indexed can have each triangle move completely apart from the others, while I can not do the same with the indexed one of course because of the shared points.
 
 ```js
 (function () {
