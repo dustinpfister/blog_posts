@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-10-06 07:12:14
-version: 1.33
+updated: 2022-10-06 07:31:44
+version: 1.34
 ---
 
-I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for the materials that are used for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is the [data textures](https://threejs.org/docs/#api/en/textures/DataTexture) class.
+[Data textures](https://threejs.org/docs/#api/en/textures/DataTexture) are a way to go about creating textures in threejs than can then be used for one of the various map options for materials. When it comes to using data textures as a way to create textures with javaScrript code in threejs I just need to know how to produce the texture that I want in terms of a [Unit8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) with a set of four values, one for each color channel and a single alpha transparency channel. That is that I need to create an array with integer values between and including the range of 0 to 255 for red, green, blue and alpha for each pixel. Once I have that I can just pass that array, along with a width and height value to the THREE.DataTexture constructor function and the returned result will be a texture that I can then use for the various maps of a material such as the standard material that in turn can be used with a geometry to skin a mesh object.
 
-When it comes to using data textures as a way to create textures with javaScrript code in threejs I just need to know how to produce the texture that I want in terms of a [Unit8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) with a set of four values for each color channel. That is that I need to create an array with integer values between and including the range of 0 to 255 for red, green, blue and alpha color channels for each pixel. Once I have that I can just pass that array, along with a width and height value to the THREE.DataTexture constructor function and the returned result will be a texture that I can then use for the various maps of a material such as the standard material that in turn can be used with a geometry to skin a mesh object.
+There is then maybe also a bit more to write about with data textures when it comes to how to go about updating them, after that I think that I will end up started to branch off into other closely related subjects.
 
 <!-- more -->
 
@@ -25,6 +25,10 @@ This is a post on using the THREE.DataTexture constructor in threejs to create a
 ### When working with textures there is a lot to be aware of with geometry
 
 The main focus in this post is to just simply create textures using raw color channel data, and then use the resulting texture with say a map property of a material. There is then a lot more to read about when it comes to the various options with material maps, but also just as much if not more when it comes to the [buffer geometry class](/2021/04/22/threejs-buffer-geometry/). I will then not be getting into great detail with things like the [uv attribute of buffer geometry](/2021/06/09/threejs-buffer-geometry-attributes-uv), as well as how to go about setting up a groups property along with material index values when using an array of materials.
+
+### Canvas elements can also be used to create textures with javaScript code
+
+I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for the materials that are used for mesh objects in threejs.
 
 ### version numbers matter
 
