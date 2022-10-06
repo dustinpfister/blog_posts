@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-10-05 09:13:03
-version: 1.30
+updated: 2022-10-06 07:01:12
+version: 1.31
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for the materials that are used for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is the [data textures](https://threejs.org/docs/#api/en/textures/DataTexture) class.
@@ -224,7 +224,7 @@ renderer.render(scene, camera);
 
 ## 2 - Animation examples
 
-Now that I have some basic examples out of the way it is time to go over at least one if not more examples of animated data texture examples.
+Now that I have some basic examples out of the way it is time to go over at least one if not more examples of animated data textures. This is where things can get a little involved and confusing when first starting out. Also I have found that just with buffer geometry it is a good idea to think more in terms of updating a texture rather than creating a new one on each frame update. By reusing the same texture objects over and over agian, but just updating the data from them, this not only results in better performance but I have also run into problems with a loss of context when going in the direction of creating new textures objects over and over again.
 
 ### 2.1 – Having a helper function that has some kind of for pixel function option
 
