@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-10-06 07:09:40
-version: 1.32
+updated: 2022-10-06 07:12:14
+version: 1.33
 ---
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for the materials that are used for mesh objects in threejs. However there is another built in way to create textures with javaScript code other than making use of canvas elements, and this option is the [data textures](https://threejs.org/docs/#api/en/textures/DataTexture) class.
@@ -232,7 +232,7 @@ Thus far all of these data texture examples are just blocks of code that create 
 
 So when it comes to the helper functions of this example I have a create data helper function that will just create and return an array that I can in turn use to create a new data texture, or update an existing one. With that said I then have both a create data texture helper as well as an update data texture helper as well. When it comes to this create data texture helper I have a built in for pix method, but I also created a number of additional functions that can be used to create and return such a method.
 
-In my animation loop I am then using the update texture method passing option objects with custom for pixel methods which results in the kind of outcome that I would like so far with this sort of thing.
+In my animation loop I am then using the update texture method passing option objects with custom for pixel methods which results in the kind of outcome that I would like so far with this sort of thing. I am sue that I might still need to refine things a bit with what I have here but the core idea is there for sure I mainly just need to expand the collection of methods that are used ti create the texture data.
 
 ```js
 //-------- ----------
