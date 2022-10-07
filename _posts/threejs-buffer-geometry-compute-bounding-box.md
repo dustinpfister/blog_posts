@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1008
-updated: 2022-10-07 09:05:24
-version: 1.3
+updated: 2022-10-07 09:17:13
+version: 1.4
 ---
 
 With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the compute bounding box method of the buffer geometry class is what can be used to create or update this instance of Box3. As the name suggests this bounding box property can be used for collision detection, but it can also be used to find out the size of a geometry which can aid in the process of positioning objects.
@@ -33,23 +33,140 @@ The source code examples that I am writing about here can also be [found on Gith
 
 When I first wrote this post I was using r140 of threejs.
 
-
-
 ## 1 - Basic Compute Bounding Box examples
 
-### 1.1 - Min and Max Values
+For this first section I will be starting out with a few basic examples of the compute bounding box method just for the sake of gaining a sense of how to use this to preform various typical tasks in which it will become useful.
+
+### 1.1 - Min and Max Values of box3
+
+After I call the compute bounding box method there will be an instance of box3 at the bounding box property of the geometry. Two of the core properties of this box3 class are the min and max values that are used to store the lowest and highest corners of the box. In this example I am then using the values of this box3 class to create new mesh objects at the lowest and highest points.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(3, 5, 5);
+camera.lookAt(0, -0.75, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geo_box = new THREE.BoxGeometry(4.5, 3, 4.5);
+const geo_sphere = new THREE.SphereGeometry(1.0, 30, 30);
+// COMPUTE THE BOUNDING BOX
+geo_box.computeBoundingBox();
+//-------- ----------
+// MESH, MATERIAL
+//-------- ----------
+// main mesh object using geo_box
+const mesh = new THREE.Mesh( geo_box, new THREE.MeshNormalMaterial({wireframe: true}) );
+scene.add(mesh);
+// getting a ref to bounding box of geo_box
+// and using that to set the position of other mesh objects
+const bb = geo_box.boundingBox;
+const material = new THREE.MeshNormalMaterial({transparent: true, opacity: 0.5});
+const mesh1 = new THREE.Mesh( geo_sphere, material );
+scene.add(mesh1);
+mesh1.position.copy(bb.min);
+const mesh2 = new THREE.Mesh( geo_sphere, material );
+scene.add(mesh2);
+mesh2.position.copy(bb.max);
+//-------- ----------
+//  RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
+
+Although this might help to gain a visual sense of what is going on here to some extent, there is a better way of doing this by making use of a special helper class that works with box3 objects. The main thing here though is that these min and max values are instances of the vector3 class that are the same objects that are used for the position properties of object3d based objects such as mesh objects. So if I want to I can quickly place mesh objects at these locations by making use of the copy method of the Vector3 class.
 
 ### 1.2 - The Box3 Helper
 
+The best tool for getting a visual idea of what is going on with a Box3 class such as the one that i crated by calling the compute bounding box method would be to use the [box3 helper](https://threejs.org/docs/#api/en/helpers/Box3Helper).
+
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -1, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geo_sphere = new THREE.SphereGeometry(3.25, 30, 30);
+// COMPUTE THE BOUNDING BOX
+geo_sphere.computeBoundingBox();
+// ADDING A BOX HELPER
+const helper = new THREE.Box3Helper(geo_sphere.boundingBox);
+helper.material.linewidth = 6;
+scene.add(helper)
+//-------- ----------
+// MESH, MATERIAL
+//-------- ----------
+const mesh = new THREE.Mesh( geo_sphere, new THREE.MeshNormalMaterial({}) );
+scene.add(mesh);
+//-------- ----------
+//  RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ### 1.3 - Size and Position
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -1, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const positionMesh = (mesh, x, z) => {
+    const geo = mesh.geometry;
+    // COMPUTE THE BOUNDING BOX AND GET bb REF TO IT
+    geo.computeBoundingBox();
+    const bb = geo.boundingBox;
+    // GET SIZE, and use size to position MESH
+    const v_size = new THREE.Vector3();
+    bb.getSize(v_size);
+    mesh.position.set(x, v_size.y / 2, z);
+    return mesh;
+};
+//-------- ----------
+// MESH, MATERIAL
+//-------- ----------
+const m = new THREE.MeshNormalMaterial();
+scene.add( positionMesh(
+    new THREE.Mesh(
+        new THREE.BoxGeometry(1, 3.25, 3), m),
+        -4.5, -3.5));
+scene.add( positionMesh(
+    new THREE.Mesh(
+        new THREE.BoxGeometry(1, 5, 1), m),
+        3.5, 1.5));
+scene.add( positionMesh(
+    new THREE.Mesh(
+        new THREE.BoxGeometry(2, 2, 2), m),
+        -3.0, 3.0));
+//-------- ----------
+//  RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 
@@ -58,6 +175,106 @@ When I first wrote this post I was using r140 of threejs.
 ### 2.1 - Size and position animation
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -1, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const getMeshGroundPosition = (mesh, x, z) => {
+    const geo = mesh.geometry;
+    // COMPUTE THE BOUNDING BOX AND GET bb REF TO IT
+    geo.computeBoundingBox();
+    const bb = geo.boundingBox;
+    // GET SIZE, and return new Vector3
+    const v_size = new THREE.Vector3();
+    bb.getSize(v_size);
+    return new THREE.Vector3(x, v_size.y / 2, z);
+};
+// Make Mesh
+
+const makeMesh = (w, h, d, x, z, sh, p1, p2, m) => {
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(w, h, d), m);
+    mesh.userData.v_start = new THREE.Vector3(x, sh, z);
+    mesh.userData.p1 = p1;
+    mesh.userData.p2 = p2;
+    return mesh
+};
+// set mesh animation state for the given alpha
+const setMesh = (mesh, alpha) => {
+    let mud = mesh.userData;
+    let b = getAlpha(alpha, 1, mud.p1, mud.p2);
+    let v_start = mud.v_start;
+    let v_ground = getMeshGroundPosition(mesh, v_start.x, v_start.z);
+    mesh.position.copy(v_start).lerp(v_ground, b);
+};
+// get alpha helper
+const getAlpha = (n, d, p1, p2) => {
+    let a = n / d;
+    let b = 0;
+    if(a < p1){ b = a * (1 / p1);}
+    if(a >= p1 && a < p2){ b = 1;}
+    if(a >= p2){
+        b = (1 - a) / (1 - p2);
+    }
+    return b;
+};
+//-------- ----------
+// GROUP, MESH, MATERIAL
+//-------- ----------
+const material = new THREE.MeshNormalMaterial();
+let group = new THREE.Group();
+[
+    [1, 1, 1, 0.5, 0.5, 12, 0.65, 0.8, material],
+    [1, 3, 1, -4.5, -4.5, 10, 0.75, 0.9, material],
+    [1, 3.25, 3, -4.5, 0.5, 8, 0.25, 0.5, material],
+    [2, 2, 2, 3, -2, 8, 0.15, 0.4, material]
+].forEach((argu) => {
+    let mesh = makeMesh.apply(null, argu);
+    group.add(mesh);
+});
+scene.add(group);
+
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = FPS_MOVEMENT * 5; // 5 sec animation
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    group.children.forEach((mesh)=>{
+        setMesh(mesh, frame / frameMax);
+    });
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 
