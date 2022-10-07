@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2022-10-07 10:30:11
-version: 1.29
+updated: 2022-10-07 13:02:50
+version: 1.30
 ---
 
 When making a [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/) in a [scene object](/2018/05/03/threejs-scene/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/), and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -144,59 +144,56 @@ renderer.render(scene, camera);
 
 ## 2 - Mouse over example of the Raycaster class
 
-The main method of interest with the Raycaster class is the intersect objects method, but in order to set the state of the Raycaster instance first I will want to use the set from camera method. In order to use the set from camera method of course I am going to need an instance of a camera, but I am also going to need a Vector2 instance that is the mouse position in the canvas.
+For this example I am going to b going over an example where I am using a raycaster to find out if a mesh in the scene has been clicked or touched. In the event that is was I will just do something that will be a confirmation of sorts that it has been clicked such as increase the scale. 
+
+The main method of interest with the Raycaster class is the intersect objects method, but in order to set the state of the Raycaster instance first I will want to use the set from camera method. In order to use the set from camera method of course I am going to need an instance of a camera, but I am also going to need a Vector2 instance that is the mouse or pointer position in the canvas.
+
+So then I create my instance of raycaster, and then also an instance of the Vecot2 class. I can then use mouse, touch, or pointer events to get a canvas relative position that was clicked and use that to update the state of the vecotr2 that I will be using with the set from camera method. In a main update method I can then call the set from camera method, and pass the camera along with the current state of the vecotr2 class that can be mutated by pointer events.
 
 ```js
-var raycaster = new THREE.Raycaster();
-var mouse = new THREE.Vector2(1, 1);
- 
-var onMouseMove = function( event ) {
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MOUSE OVER EVENT
+//-------- ----------
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2(-5, -5);
+// update mouse Vector2 on pointer down event
+const onDown = ( event ) => {
     // calculate mouse position in normalized device coordinates
     // (-1 to +1) for both components
-    var canvas = event.target,
+    const canvas = event.target,
     box = canvas.getBoundingClientRect(),
     x = event.clientX - box.left,
     y = event.clientY - box.top;
     // set mouse Vector2 values
     mouse.x = ( x / canvas.scrollWidth ) * 2 - 1;
     mouse.y = - ( y / canvas.scrollHeight ) * 2 + 1;
-    //console.log(mouse.x.toFixed(2), mouse.y.toFixed(2));
 };
- 
-var update = function(group){
-    // default scale
-    group.children.forEach(function(obj){
-        obj.scale.set(1, 1, 1);
-    });
-    // update the picking ray with the camera and mouse position
-    raycaster.setFromCamera( mouse, camera );
-    var intersects = raycaster.intersectObjects(group.children, true );
-    if(intersects.length > 0){
-        var mesh = intersects[0].object;
-        mesh.scale.set(2, 2, 2);
-    }
+// set vector2 baco to -5 -5 on pointer up
+const onUp = ( event ) => {
+    mouse.x = -5;
+    mouse.y = - -5;
 };
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
 // Attach mouse event
-renderer.domElement.addEventListener( 'mousemove', onMouseMove, false );
- 
-// creating a scene
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(9, 9));
- 
-var boxGroup = new THREE.Group();
+renderer.domElement.addEventListener( 'pointerdown', onDown, false );
+renderer.domElement.addEventListener( 'pointerup', onUp, false );
+//-------- ----------
+// CHILD OBJECTS
+//-------- ----------
+const boxGroup = new THREE.Group();
 scene.add(boxGroup);
- 
 // box 1
-var box = new THREE.Mesh(
+let box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 box.position.set(0, 0, 0);
@@ -213,15 +210,28 @@ box = new THREE.Mesh(
         new THREE.MeshNormalMaterial());
 box.position.set(-3, 0, 0);
 boxGroup.add(box);
- 
+//-------- ----------
+// LOOP
+//-------- ----------
 // orbit controls
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
-// loop
-var lt = new Date(),
-fps = 30;
-var loop = function () {
-    var now = new Date(),
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+let lt = new Date();
+const fps = 30;
+const update = (group) => {
+    // default scale
+    group.children.forEach(function(obj){
+        obj.scale.set(1, 1, 1);
+    });
+    // update the picking ray with the camera and mouse position
+    raycaster.setFromCamera( mouse, camera );
+    const intersects = raycaster.intersectObjects(group.children, true );
+    if(intersects.length > 0){
+        const mesh = intersects[0].object;
+        mesh.scale.set(2, 2, 2);
+    }
+};
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if (secs > 1 / fps) {
