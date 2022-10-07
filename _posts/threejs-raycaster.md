@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2022-10-06 16:25:29
-version: 1.20
+updated: 2022-10-07 10:02:11
+version: 1.21
 ---
 
 When making a [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/) in a [scene object](/2018/05/03/threejs-scene/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/), and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -26,7 +26,112 @@ This is a post on using the THREE.Raycaster class in three.js as a way to help w
 
 When I made these examples and wrote this post I was using r127 of three.js which was still a fairly later version of three.js as of this writing. Code breaking changes are always made with three.js as new revision s come out so if you run into problems with getting this to work on your end that might be the first thing you should check actually.
 
-## 1 - A Basic Raycaster example
+
+## 1 - Basic examples of the Raycaster class
+
+### 1.1 - Sphere
+
+```js
+//-------- ----------
+// SPHERE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH - SPHERE
+//-------- ----------
+const sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(3, 30, 30),
+        new THREE.MeshNormalMaterial());
+scene.add(sphere);
+//-------- ----------
+// RAYCASTER
+//-------- ----------
+const v_ray_origin = new THREE.Vector3(50, 50, 25); // where the ray comes from
+const v_ray_dir = v_ray_origin.clone().negate().normalize(); // getting direction by inverting origin
+const near = 0, far = 100;
+const raycaster = new THREE.Raycaster(v_ray_origin, v_ray_dir, near, far);
+// intersect
+const result = raycaster.intersectObject(sphere, false)
+if(result.length > 0){
+    const hit = result[0];
+    console.log(hit.point);
+    // create mesh at point
+    const box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    box.position.copy(hit.point.clone().normalize().multiplyScalar(3.5));
+    box.lookAt(sphere.position);
+    scene.add(box);
+}
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.2 - Torus
+
+```js
+//-------- ----------
+// SPHERE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH - SPHERE
+//-------- ----------
+const torus = new THREE.Mesh(
+        new THREE.TorusGeometry(4, 0.75, 20, 20),
+        new THREE.MeshNormalMaterial({wireframe: true}));
+torus.geometry.rotateX(Math.PI * 0.5)
+scene.add(torus);
+//-------- ----------
+// RAYCASTER
+//-------- ----------
+const v_ray_origin = new THREE.Vector3(0, 3, 0); // where the ray comes from
+let radian = Math.PI / 180 * 300;
+let v_lookat = new THREE.Vector3(1, 0, 0).applyEuler( new THREE.Euler(0, radian, 0) ).multiplyScalar(4);
+// object to helper set dir
+const obj = new THREE.Object3D();
+obj.position.copy(v_ray_origin);
+obj.lookAt(v_lookat);
+const v_ray_dir = new THREE.Vector3(0, 0, 1);
+v_ray_dir.applyEuler(obj.rotation).normalize();
+// create raycaster
+const near = 0, far = 100;
+const raycaster = new THREE.Raycaster(v_ray_origin, v_ray_dir, near, far);
+// intersect
+const result = raycaster.intersectObject(torus, false)
+if(result.length > 0){
+    const hit = result[0];
+    // create mesh at point
+    const box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    box.position.copy( hit.point );
+    box.lookAt(v_lookat);
+    scene.add(box);
+}
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+## 2 - Mouse over example of the Raycaster class
 
 The main method of interest with the Raycaster class is the intersect objects method, but in order to set the state of the Raycaster instance first I will want to use the set from camera method. In order to use the set from camera method of course I am going to need an instance of a camera, but I am also going to need a Vector2 instance that is the mouse position in the canvas.
 
@@ -119,11 +224,11 @@ var loop = function () {
 loop();
 ```
 
-## 2 - Cube Group Raycaster class example
+## 3 - Cube Group Raycaster class example
 
 For this example of the Raycaster class I decided to make use of a module that I made for my [post on nested groups in three.js](/2021/05/10/threejs-examples-nested-groups/) that is a kind of cube group model. This module is just a way to create a group of eight mesh objects where each mesh object has an instance of the built in box geometry of three.js as its geometry. These eight mesh objects are positioned in such a way so that they from a larger cube of cubes sort of speak. I can then use an update method of the cube group module to update the state of ones of these cube groups so that the cubes expand outward from the center of the group, and back again.
 
-### 2.1 - Cube Group module
+### 3.1 - Cube Group module
 
 Here I have the state of the cube group module as I have used it for this example. I did not change much with this from what I have worked out in the for the other three.js example post. Still I often do make a few minor changes here and there with these when I use them in other projects, so I just got into the habit of always posing what it is that I am using here.
 
@@ -250,7 +355,7 @@ Here I have the state of the cube group module as I have used it for this exampl
     (this['CubeGroupMod'] = {}));
 ```
 
-### 2.2 - the main javaScript file
+### 3.2 - the main javaScript file
 
 Now for a main javaScript file in which I am using the Raycaster class to run an animation for any and all cube groups that intersect when using a Raycater. When it comes to working with an instance of this cube group of mine it is a little different from working with a collection of mesh objects, as what I am dealing with here is a collection of groups of mesh objects. However the situation is not all that more involved as I just need to loop over the collection of cube groups, and pass the children of each group to the intersects objects method. I can then just the the first mesh object if any and just use the parent property of that mesh to get a reference to the group of cube mesh objects. I can then set the active flag of the cube group to true.
 
@@ -352,6 +457,104 @@ loop();
 
 So then the outcome of this is more or less what I had in mind when it comes to what I wanted to do. When I mouse over a cube group the cube group beginnings an animation loop, until the loop is over at which point the active false ends up getting set back to false. Maybe not the most interesting example, but I wanted to do something at least a little more advanced then just the usual basic copy and paste cook book style code examples.
 
-## 3 - Conclusion
+## 4 - Animation loop examples
+
+### 4.1 - Torus
+
+```js
+//-------- ----------
+// SPHERE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set mesh posiiton if we have a hit
+const setMeshIfHit = (raycaster, mesh, target, v_lookat) => {
+    const result = raycaster.intersectObject(target, false);
+    if(result.length > 0){
+        const hit = result[0];
+        mesh.position.copy( hit.point );
+        mesh.lookAt(v_lookat);
+   }
+};
+// get dir
+const getDir = (v_origin, v_lookat) => {
+    const obj = new THREE.Object3D();
+    obj.position.copy(v_origin);
+    obj.lookAt(v_lookat);
+    const dir = new THREE.Vector3(0, 0, 1);
+    dir.applyEuler(obj.rotation).normalize();
+    return dir;
+};
+// get look at vector
+const getLookAt = (deg, radius) => {
+    let radian = Math.PI / 180 * deg;
+    return new THREE.Vector3(1, 0, 0).applyEuler( new THREE.Euler(0, radian, 0) ).multiplyScalar(radius);
+};
+//-------- ----------
+// MESH - SPHERE
+//-------- ----------
+const torus_radius = 4;
+const torus = new THREE.Mesh(
+        new THREE.TorusGeometry(torus_radius, 1.25, 20, 20),
+        new THREE.MeshNormalMaterial({wireframe: true}));
+torus.geometry.rotateX(Math.PI * 0.5)
+scene.add(torus);
+// create mesh at point
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1.5, 1.5, 1.5),
+    new THREE.MeshNormalMaterial());
+scene.add(box);
+//-------- ----------
+// RAYCASTER
+//-------- ----------
+// create raycaster
+const raycaster = new THREE.Raycaster();
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    let a = frame / frameMax;
+    let b = 1 - Math.abs(0.5 - a * 2 % 1 ) / 0.5;
+    let v_lookat = getLookAt(360 * a, torus_radius);
+    let v_ray_origin = new THREE.Vector3(0, -20 + 40 * b, 0)
+    let v_ray_dir = getDir(v_ray_origin,  v_lookat);
+    raycaster.set(v_ray_origin, v_ray_dir);
+    setMeshIfHit(raycaster, box, torus, v_lookat);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## Conclusion
 
 So then the raycaster class is a useful tool to go about clicking on mesh objects in three.js. However I am sure that there are many uses for the class that will come up when it comes to writing scripts that update some kind of simulation also when it comes to getting a collection of mesh objects from a given object outward or anything to that effect. I think that there might be a need for maybe a few more basic examples of this kind of class as I am sure that there are a number of issues that will come up here and there when using this class. Not just with the class itself, but also when it comes to three.js, and javaScript in general. For example many of the examples that I have worked out as of this writing will just work with a mouse, but I did not do anything when it comes to working with touch devices, and this day in age I have to take that into account when making any kind of production project.
