@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2022-10-07 10:05:09
-version: 1.22
+updated: 2022-10-07 10:13:32
+version: 1.23
 ---
 
 When making a [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/) in a [scene object](/2018/05/03/threejs-scene/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/), and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -463,7 +463,7 @@ In this section I will then be going over at least one if not more source code e
 
 ### 4.1 - Torus
 
-The first video that I made for this post is based off of this source code right here.
+The first video that I made for this post is based off of this source code that I will be writing about in this section. For this video I just wanted to move a mesh object around with the center of the mesh located at the position at which the raycatser has round on the surface. The goal here then is to just show one of the core use cases of the raycaster class which is to use it as a tool to find a location on the surface of a geometry, typically to help with setting the position of the a mesh object on the surface of another.
 
 ```js
 //-------- ----------
@@ -558,6 +558,8 @@ const loop = () => {
 };
 loop();
 ```
+
+There is still finding ways to adjust the geometry of the sphere that I am moving on the surface of the torus, by ether translating the geometry of the sphere, or making use of the [compute bounding box method](/2022/10/07/threejs-buffer-geometry-compute-bounding-box/) of buffer geometry and get size method of the box3 class. In any case the core idea is working just fine in this video when it just comes to getting a position on the surface of a geometry.
 
 ## Conclusion
 
