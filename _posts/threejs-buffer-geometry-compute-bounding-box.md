@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1008
-updated: 2022-10-07 09:24:06
-version: 1.5
+updated: 2022-10-07 09:25:46
+version: 1.6
 ---
 
 With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the compute bounding box method of the buffer geometry class is what can be used to create or update this instance of Box3. As the name suggests this bounding box property can be used for collision detection, but it can also be used to find out the size of a geometry which can aid in the process of positioning objects.
@@ -173,8 +173,9 @@ renderer.render(scene, camera);
 
 Although this might work well when it comes to thins kind of situation in which I want to position mesh objects with box geometries to a flat surface, often the situation will not be so simple. However when it comes to just simply getting the size of a geometry alone this works great.
 
-
 ## 2 - Animation Loop Examples
+
+I like to make at least one if not more videos for most if not all of my blog posts on threejs, so I always like to make at least one if not more animation examples of what I am writing about.
 
 ### 2.1 - Size and position animation
 
