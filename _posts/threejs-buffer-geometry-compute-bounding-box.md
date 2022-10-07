@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1008
-updated: 2022-10-07 09:50:17
-version: 1.10
+updated: 2022-10-07 09:54:28
+version: 1.11
 ---
 
 With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the compute bounding box method of the buffer geometry class is what can be used to create or update this instance of Box3. As the name suggests this bounding box property can be used for collision detection, but it can also be used to find out the size of a geometry which can aid in the process of positioning objects.
@@ -175,7 +175,7 @@ Although this might work well when it comes to thins kind of situation in which 
 
 ## 2 - Animation Loop Examples
 
-I like to make at least one if not more videos for most if not all of my blog posts on threejs, so I always like to make at least one if not more animation examples of what I am writing about.
+I like to make at least one if not more videos for most if not all of my blog posts on threejs, so in this section I will be going over the source code that I am using to make the videos for this post. I could go on and on about the basics of animation loops, and so forth here but I assume that you know at least a thing or two about them. The main thig here is that in this section the aim is frame by frame style animation that is good for making a demo video for this subject, but not one or more stochastic type systems that respond to user input and so forth.
 
 ### 2.1 - Size and position animation
 
