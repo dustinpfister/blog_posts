@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1008
-updated: 2022-10-07 09:30:09
-version: 1.7
+updated: 2022-10-07 09:37:27
+version: 1.8
 ---
 
 With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the compute bounding box method of the buffer geometry class is what can be used to create or update this instance of Box3. As the name suggests this bounding box property can be used for collision detection, but it can also be used to find out the size of a geometry which can aid in the process of positioning objects.
@@ -284,9 +284,7 @@ const loop = () => {
 loop();
 ```
 
-
-
-
-
 ## Conclusion
+
+That will be it for now at least when it comes to the compute bounding box method of buffer geometry and a few quick use case examples of it. I have not yet done this post justice at all when it comes to all the additional use case examples that come up, such as positioning objects to the surface of a torus geometry or other custom geometry created in an external 3D modulating program. There are some more advanced examples that I have just started working on when it comes to editing my [post on the raycaster class](/2021/05/18/threejs-raycaster/) that I might in time write about in this post in future edits. Also I would like to wrote more about collision detection and other not so typical use case examples of compute bonding box, but there are only so many hours in a day.
 
