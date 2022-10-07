@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2022-10-07 10:02:11
-version: 1.21
+updated: 2022-10-07 10:05:09
+version: 1.22
 ---
 
 When making a [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/) in a [scene object](/2018/05/03/threejs-scene/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/), and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -459,7 +459,11 @@ So then the outcome of this is more or less what I had in mind when it comes to 
 
 ## 4 - Animation loop examples
 
+In this section I will then be going over at least one if not more source code examples for any videos that I have made for this post. As of this writing I made just once video that has to do with using the raycaster class to get the position of a location on the surface of a torus geometry. In time when I get around to editing this post again, which I might very well do because this is an important subject I am sure that the collection will grow here.
+
 ### 4.1 - Torus
+
+The first video that I made for this post is based off of this source code right here.
 
 ```js
 //-------- ----------
