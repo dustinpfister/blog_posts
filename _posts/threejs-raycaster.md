@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2022-10-07 10:18:25
-version: 1.25
+updated: 2022-10-07 10:23:11
+version: 1.26
 ---
 
 When making a [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/) in a [scene object](/2018/05/03/threejs-scene/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/), and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -32,7 +32,11 @@ When I made these examples and wrote this post I was using r127 of three.js whic
 
 ## 1 - Basic examples of the Raycaster class
 
-### 1.1 - Sphere
+When it comes to starting out with anything in threejs, or when it comes to just about anything in programing there is thinking in terms of first starting out with a simple hello world style example of what that something is. So then in this section I will be starting out with some fairly simple examples of the use of the raycaster class, before moving on to more complex examples of various use cases.
+
+### 1.1 - Sphere Ryacatsre exmaple
+
+The goal here is to use the raycaster class to get a position on the surface of a sphere, and then use that as a way to position a new mesh object on the surface of that sphere. There may be better ways of doing this sort of thing when it comes to a sphere geometry as I could just use the apply Euler, normalize, and multiply scalar methods to do with actually. However this is very much a post on the raycaster class so I am  using just that.
 
 ```js
 //-------- ----------
