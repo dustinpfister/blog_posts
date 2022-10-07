@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2022-10-07 13:02:50
-version: 1.30
+updated: 2022-10-07 14:13:13
+version: 1.31
 ---
 
 When making a [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/) in a [scene object](/2018/05/03/threejs-scene/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/), and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -581,6 +581,138 @@ loop();
 ```
 
 There is still finding ways to adjust the geometry of the sphere that I am moving on the surface of the torus, by ether translating the geometry of the sphere, or making use of the [compute bounding box method](/2022/10/07/threejs-buffer-geometry-compute-bounding-box/) of buffer geometry and get size method of the box3 class. In any case the core idea is working just fine in this video when it just comes to getting a position on the surface of a geometry.
+
+### 4.2 - Torus, bounding box, and lerp to adjust mesh position from hit position
+
+So far it looks like raycaster works more or less okay for getting a desired position on the surface of a geometry. However now there is just the question of how to go about adjusting from that position depending the size of the geometry that I am using with a mesh that I wish to place on the surface. If I just place a mesh at the hit location without doing anything to translate the geometry, or adjust that values that I use to position the child mesh lets call it, then things might not always look so great.
+
+The first thing to keep in mind here is that I am not dealing with a problem with Raycaster, but rather the position of the geometry relative to the origin of the mesh. When it comes to a box geometry I can just get the size of the geometry, and then divide the desired axis by half as the origin is typically in the center of the geometry when it is created by such a built in constructor. That is what I am doing here in this example.
+
+The main tools that are my friend here are Vecotr3 class methods such as the lerp and distance to methods, along with the bounding box property of the child mesh geometry. So there is also the Compute Bounding box method of the buffer geometry, and also the Box3 class, and with that the getSize method of the box3 class. Using all these tools I updated the source code of my set mesh if hit helper function to adjust the position of the mesh object.
+
+```js
+//-------- ----------
+// SPHERE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(7, 7, 7);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set mesh posiiton if we have a hit
+const setMeshIfHit = (raycaster, mesh, target, adjustAxis, adjustMulti) => {
+    adjustAxis = adjustAxis || 'z';
+    adjustMulti = adjustMulti === undefined ? 0.5 : adjustMulti;
+    // raycatsre result
+    const result = raycaster.intersectObject(target, false);
+    //if we have a hit, update mesh pos
+    if(result.length > 0){
+        const hit = result[0];
+        // use distance to, lerp, and bounding box to adjust
+        mesh.geometry.computeBoundingBox();
+        let v_size = new THREE.Vector3();
+        mesh.geometry.boundingBox.getSize(v_size);
+        let hh = v_size[adjustAxis] * adjustMulti;
+        let d = hit.point.distanceTo(raycaster.ray.origin);
+        mesh.position.copy( hit.point ).lerp(raycaster.ray.origin, hh / d);
+        //mesh.position.copy( hit.point );
+        // can use the origin prop of the Ray class
+        mesh.lookAt(raycaster.ray.origin);
+   }
+};
+// get dir
+const getDir = (v_origin, v_lookat) => {
+    const obj = new THREE.Object3D();
+    obj.position.copy(v_origin);
+    obj.lookAt(v_lookat);
+    const dir = new THREE.Vector3(0, 0, 1);
+    dir.applyEuler(obj.rotation).normalize();
+    return dir;
+};
+// get look at vector
+const getLookAt = (deg, radius) => {
+    let radian = Math.PI / 180 * deg;
+    return new THREE.Vector3(1, 0, 0).applyEuler( new THREE.Euler(0, radian, 0) ).multiplyScalar(radius);
+};
+//-------- ----------
+// MESH - SPHERE
+//-------- ----------
+const torus_radius = 4;
+// the torus mesh
+const torus = new THREE.Mesh(
+        new THREE.TorusGeometry(torus_radius, 1.25, 40, 40),
+        new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.8 }));
+torus.geometry.rotateX(Math.PI * 0.5);
+scene.add(torus);
+// raycaster point mesh
+const mesh_ray = new THREE.Mesh(
+    new THREE.ConeGeometry(0.25, 2, 10, 10),
+    new THREE.MeshNormalMaterial());
+mesh_ray.geometry.rotateX(Math.PI * 0.5);
+scene.add(mesh_ray);
+// create a mesh object
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(0.75, 2, 1.25),
+    new THREE.MeshNormalMaterial());
+mesh.geometry.rotateX(Math.PI * 0.5);
+// just translating the geometry works, but I would rather adjust by another means
+//box.geometry.translate(0, 0, -0.75);
+scene.add(mesh);
+//-------- ----------
+// RAYCASTER
+//-------- ----------
+// create raycaster
+const raycaster = new THREE.Raycaster();
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+new THREE.OrbitControls(camera, renderer.domElement);
+const update = function(frame, frameMax){
+    let a = frame / frameMax;
+    let b = 1 - Math.abs(0.5 - a * 2 % 1 ) / 0.5;
+    // update raycaster
+    let v_lookat = getLookAt(360 * a, torus_radius);
+    let v_ray_origin = new THREE.Vector3(0, -5 + 10 * b, 0);
+    let v_ray_dir = getDir(v_ray_origin,  v_lookat);
+    raycaster.set(v_ray_origin, v_ray_dir);
+    // update mesh_ray to have the same position as the raycaster origin
+    mesh_ray.position.copy(v_ray_origin);
+    mesh_ray.lookAt(v_lookat);
+    // if we have a hit, update the mesh object
+    setMeshIfHit(raycaster, mesh, torus);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+Although this might be working okay with the box ge9ometry mesh that I am using in this example you will notice that i added some arguments for changing what the adjust axis is, as well as a multiplier for that axis. The reason why is because when using many other states of geometry I might need to adjust what those values are. However maybe the best way of making sure that this always works well is to adjust the geometry so that the origin is always in a standard location that is like that of what happens with the box geometry. In other words make sure that it is always more or less in the center of the geometry, and that the rotation of the geometry is consistent
 
 ## Conclusion
 
