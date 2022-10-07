@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1008
-updated: 2022-10-07 09:37:27
-version: 1.8
+updated: 2022-10-07 09:45:54
+version: 1.9
 ---
 
 With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the compute bounding box method of the buffer geometry class is what can be used to create or update this instance of Box3. As the name suggests this bounding box property can be used for collision detection, but it can also be used to find out the size of a geometry which can aid in the process of positioning objects.
@@ -15,7 +15,7 @@ With the buffer geometry class in threejs there is a bounding box property that 
 
 ## Compute Bounding Box, and what to know first
 
-This is a post on the compute bounding box method of the buffer geometry class in the javaScript library called threejs. With that said there is a lot of subjects that you should know a thing or two about before hand that I will not be getting into detail here as I have wrote those kinds of posts on [threejs](/2018/04/04/threejs-getting-started/) and [javaScript](/2018/11/27/js-geting-started/) a long time ago. However regardless of how much experience you might have at this point I will take a moment to outline a few things you might want to learn or refresh with when it comes to compute bounding box of buffer geometry.
+This is a post on the compute bounding box method of the buffer geometry class in the javaScript library called threejs. With that said there is a lot of subjects that you should know a thing or two about before hand that I will not be getting into detail here as I have wrote those kinds of posts on [threejs](/2018/04/04/threejs-getting-started/) and [javaScript](/2018/11/27/js-getting-started/) a long time ago. However regardless of how much experience you might have at this point I will take a moment to outline a few things you might want to learn or refresh with when it comes to compute bounding box of buffer geometry.
 
 ### Buffer Geometry
 
@@ -179,7 +179,7 @@ I like to make at least one if not more videos for most if not all of my blog po
 
 ### 2.1 - Size and position animation
 
-This is a quick animation that I made in which I continued to work off of the size and position basic example.
+This is a quick animation that I made in which I continued to work off of the size and position basic example. I started out by making the code better organized in the form of a number of helper functions. The main helper function of interest of which would be the get mesh ground position helper function that will create and return an instance of the Vector3 class that will be the ground position that is desired. Sense this will just create and return a Vector3 class instance I then also have a set mesh helper function that will call this get mesh ground position method and use the resulting vecotr3 along with a starting vector to set the position of a mesh object by making use of the [Vecotr3 class lerp method](/2022/05/17/threejs-vector3-lerp/).
 
 ```js
 //-------- ----------
