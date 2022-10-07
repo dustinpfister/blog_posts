@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1008
-updated: 2022-10-07 09:45:54
-version: 1.9
+updated: 2022-10-07 09:50:17
+version: 1.10
 ---
 
 With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the compute bounding box method of the buffer geometry class is what can be used to create or update this instance of Box3. As the name suggests this bounding box property can be used for collision detection, but it can also be used to find out the size of a geometry which can aid in the process of positioning objects.
@@ -180,6 +180,8 @@ I like to make at least one if not more videos for most if not all of my blog po
 ### 2.1 - Size and position animation
 
 This is a quick animation that I made in which I continued to work off of the size and position basic example. I started out by making the code better organized in the form of a number of helper functions. The main helper function of interest of which would be the get mesh ground position helper function that will create and return an instance of the Vector3 class that will be the ground position that is desired. Sense this will just create and return a Vector3 class instance I then also have a set mesh helper function that will call this get mesh ground position method and use the resulting vecotr3 along with a starting vector to set the position of a mesh object by making use of the [Vecotr3 class lerp method](/2022/05/17/threejs-vector3-lerp/).
+
+Speaking of the set mesh method that takes a mesh object with custom [user data object](/2021/02/16/threejs-userdata/) and an alpha value that is used with the lerp method I should take a moment to write about my make mesh and get alpha helper methods that I made for this animation example.
 
 ```js
 //-------- ----------
