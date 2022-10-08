@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-08 09:41:08
-version: 1.42
+updated: 2022-10-08 09:44:55
+version: 1.43
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -43,7 +43,7 @@ When I first wrote this post I was using three.js version r127 which was a late 
 
 ## 1 - Some Basic examples of the Object3d.lookAt method
 
-In this section I will be starting out with just a few basic examples of the look at method of then object3d class. There are two general ways of using the look at method one of which is to give three numbers, and the object is to use a single Vector3 class instance. In this section I will be covering examples that make use of both ways calling the method. In addition I think I should also cover rotation of geometry as well right away as that is something that will become a problem right away
+In this section I will be starting out with just a few basic examples of the look at method of then object3d class. There are two general ways of using the look at method one of which is to give three numbers, and the object is to use a single Vector3 class instance. In this section I will be covering examples that make use of both ways calling the method. In addition I think I should also cover rotation of geometry as well right away as that is something that will become a problem right away.
 
 ### 1.1 - Using a set of three numbers with Object3d.lookAt
 
