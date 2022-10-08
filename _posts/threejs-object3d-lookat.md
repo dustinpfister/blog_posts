@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-08 09:47:23
-version: 1.44
+updated: 2022-10-08 10:00:30
+version: 1.45
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or camera, and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, and I will have to adjust things or work out a custom solution for setting rotation. 
@@ -132,11 +132,9 @@ Sense the look at method will always make an object look at a point relative to 
 
 If you are still confused, maybe the best way to get a feel of what it going on would be to work out some of your own examples with this. In this section I will be going over such examples that I have worked out, but it would be best to play around with something like what I am writing about here a little.
 
-### 2.1 - Pointing to the cube location relative to word space from with a group
+### 2.1 - Pointing to the cube location relative to word space from within a group
 
-If I have a group of mesh objects, and I want to have a child mesh object point to some world location outside of the group rather than relative to the group then I can just call the look at method and pass that location. 
-
-However if I want to have a mesh point to another child within a group that is where things will get a little involved. In this example I have a mesh that is a kind of pointer mesh because I am using the cylinder geometry constructor to create a cone like geometry and then I am rotating that geometry so that it points in the direction in which the mesh is facing. However when I have this pointer mesh face another cube mesh that is a child of the group this results in the pointer mesh facing the position of the cube relative to the would rather than the group.
+Say that I have a group object and two mesh objects as child objects of the group.One mesh object contains a cone geometry, and the other child mesh object contains a box geometry. On top of all of this the group itself is positioned away from the origin. Now lets say that I want to have the cone mesh look at the cube, but when I do so the cube points at a location that would be where the cube would be if it was not a child of the group, but rather the scene object.
 
 ```js
 //-------- ----------
@@ -175,13 +173,15 @@ group.add(new THREE.BoxHelper(group));
 group.position.set(-2.0, 0, -2.0);
 // add group to the scene
 scene.add(group);
-// POINTER LOOKS AT CUBE POSITION RELATIVE TO THE SCENE, BUT NOT RELATIVE TO THE GROUP
+// POINTER LOOKS AT CUBE POSITION RELATIVE TO WORLD, BUT NOT RELATIVE TO THE GROUP
 pointer.lookAt(cube.position);
 //-------- ----------
 // RENDER
 //-------- ----------
 renderer.render(scene, camera);
 ```
+
+The important thing to keep in mind here is that the look at method is working just fine, the real core problem here is that there is a difference between local space and world space. The look at method is indeed getting the cone to look at the location of the cube, it is just that the location is relative to world space rather than the local space of the group. So I just need to have a way to get the world space location of the cube, rather than the local space location that is relative to the group.
 
 ### 2.2 - Pointing to the cube relative to group space
 
