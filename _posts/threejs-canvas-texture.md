@@ -5,17 +5,17 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-10-09 12:31:30
-version: 1.99
+updated: 2022-10-09 12:44:42
+version: 1.100
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
 
-So canvas elements are a nice way to get started with textures in three.js that involve the use of additional javaScript code rather than loading extremal binary image files. Also because I am creating textures with code, this allows me to create textures that are the result of some kind of pure function, or [stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) rather than a fixed static image. I can update the state of this texture by just drawing to the canvas element again allowing me to have animated textures. Also I have a wide range of methods to work with in the 2d drawing context which is a plus compared to other options for creating textures with javaScript code such as [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
+So canvas elements are a nice way to get started with textures in three.js that involve the use of additional javaScript code rather than loading external binary image files. Also because I am creating textures with code, this allows me to create textures that are the result of some kind of pure function, or [stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) rather than a fixed static image. I can update the state of this texture by just drawing to the canvas element again allowing me to have animated textures. Also I have a wide range of methods to work with in the 2d drawing context which is a plus compared to other options for creating textures with javaScript code such as [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
 
 There is a whole lot of ground to cover when it comes to getting into this sort of thing if you do not have much experience working with canvas elements yet. The process of creating a texture with a canvas element is simple enough when it comes to the fact that I just need to pass the canvas element to a constructor function and the desired texture object is returned. However there are a whole bunch of other topics that branch off from this that have to do with canvas elements in detail, as well as other closely related threejs topics such as the uv attributes of buffer geometry instances that are used in conjuration with one or more materials.
 
-In this post I am mainly just going to be writing about using the built in constructors to create a texture with a canvas element. I might not get into detail about the 2d drawing context, but of course I will have to touch base on it to say the least. There are many other things that I am sure that I will also need to cover at least a little in order to make this post truy comprehensive with respect to this specific topic.
+In this post I am mainly just going to be writing about using the built in constructors to create a texture with a canvas element. I might not get into detail about the 2d drawing context, but of course I will have to touch base on it to say the least. There are many other things that I am sure that I will also need to cover at least a little in order to make this post truly comprehensive with respect to this specific topic.
 
 <!-- more -->
 
@@ -50,7 +50,7 @@ There is of course a great deal more to the 2d drawing context, and the various 
 
 ### The source code examples here can be found on Github
 
-The [source code examples in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-canvas-texture) can be found in my test threejs repo, along with all the other examples of all the [other posts I have wrote on threejs thus far](/categories/three-js/). This is a repository that I keep working on a little fairly often when it comes to writing new content on threejs, as well as editing older content such as this post which I have edited many times thus far. If there is something that does not sit right with you about the source code examples here, there is making a comment in this post, but if you want to make a pull request my test threejs repo is where to go about doing that.
+The [source code examples in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-canvas-texture) can be found in my test threejs repo, along with all the other examples of all the [other posts I have wrote on threejs thus far](/categories/three-js/). This is a repository that I keep working on a little fairly often when it comes to writing new content on threejs, as well as editing older content such as this post which I have edited many times thus far. If there is something that does not sit right with you about the source code examples here, there is making a comment in this post, but if you want to make a pull request my test threejs repository is where to go about doing that.
 
 ### Version numbers matter with threejs
 
@@ -59,7 +59,7 @@ When I first wrote this post I was using threejs version r91, and the last time 
 
 ### Creating a texture with canvas using THREE.CanvasTexture or just THREE.Texture
 
-Although The base Texture class can be used to create a texture that uses a canvas, there is a constructor for this purpose called THREE.CanvasTexture. The only difference is that it would appear that the needs udate boolean of the texture is set to true by default. In any case you just pass the reference to the canvas \(not it's drawing context\) to the constructor that is used as the first argument.
+Although The base Texture class can be used to create a texture that uses a canvas, there is a constructor for this purpose called THREE.CanvasTexture. The only difference is that it would appear that the needs update Boolean of the texture is set to true by default. In any case you just pass the reference to the canvas \(not it's drawing context\) to the constructor that is used as the first argument.
 
 So then simply put something like this:
 
@@ -74,7 +74,7 @@ var texture = new THREE.Texture(canvas);
 texture.needsUpdate = true;
 ```
 
-In any case you now have both a canvas, a drawing context for that canvas, and a texture made from that canvas that can now be used in a material that can make use of that texture. Regardless of what constructor you use the needs update boolean is of interest as even if it is set to true by default, you will want to set it true again each time you want the texture updated. I will be getting into this more in detail in the section that has to do with having an animated canvas texture.
+In any case you now have both a canvas, a drawing context for that canvas, and a texture made from that canvas that can now be used in a material that can make use of that texture. Regardless of what constructor you use the needs update Boolean is of interest as even if it is set to true by default, you will want to set it true again each time you want the texture updated. I will be getting into this more in detail in the section that has to do with having an animated canvas texture.
 
 ### Know your options when it comes to materials and maps
 
@@ -170,7 +170,7 @@ I then have another helper that makes use of the create canvas texture helper by
 
 I then just use the box geometry constructor for the geometry of the mesh, and return the mesh object. So then with this method object the resulting texture will be on all the faces of the geometry, rather than making a different texture for each of the sides of the cube.
 
-With my simple helper functions all set and done I will now just need to create and set up the usual suspects when it comes to any other threejs project. In order words I will want to have a scene object, camera, and renderer to make use of these helper functions. So I create my scene object with the THREE.Scene constructor, and I also like to add a grind helper to the scene with many of my examples these days also. Next I just want to set up an instance of the usual perspective camera, be sure to position it alway from where I am going to place a mesh object, and have the camera look at the location of the mesh object.
+With my simple helper functions all set and done I will now just need to create and set up the usual suspects when it comes to any other threejs project. In order words I will want to have a scene object, camera, and renderer to make use of these helper functions. So I create my scene object with the THREE.Scene constructor, and I also like to add a grind helper to the scene with many of my examples these days also. Next I just want to set up an instance of the usual perspective camera, be sure to position it away from where I am going to place a mesh object, and have the camera look at the location of the mesh object.
 
 ```js
 //-------- ----------
@@ -228,7 +228,7 @@ When this basic example is up and running the result is a cube with a texture cr
 
 In this section I will be writing about an example that makes use of a slightly more advanced revision of the create canvas helper that I made for the first basic example for this post. This method accepts a custom draw method that can be used to draw something else for the texture that is created. The draw method given is also called within a draw method that is part of a kind of canvas object that is returned by the helper function also. So now the helper does not return a texture, but an object that has a texture as one of the properties. Doing something like this strokes me as a necessary step when it comes to making some kind of canvas module built on top of threejs and native javaScript as when it comes to getting into updating the content of the canvas I am going to want references to the canvas element, and drawing context at the ready.
 
-Things are starting to get a little cluttered so for this example I will create an external jaavScript file called canavsmod.js, and place all these custom helpers and methods there. The main public method of interest with this module is the method that I will be using to create and return my custom canvas object, the other methods as of this writing have to do with creating and returning a mesh object that uses the texture, and having one or more default draw methods ready work with.
+Things are starting to get a little cluttered so for this example I will create an external javaScript file called canavsmod.js, and place all these custom helpers and methods there. The main public method of interest with this module is the method that I will be using to create and return my custom canvas object, the other methods as of this writing have to do with creating and returning a mesh object that uses the texture, and having one or more default draw methods ready work with.
 
 ```js
 (function(api){
@@ -325,7 +325,7 @@ The other major option for creating and updating textures with javaScript code i
 
 ### 2.1 - Creating a Canvas Texture from Data texture
 
-To draw the state of a data texture to a canvas texture I can just make use of the [put image data method of the 2d canvas drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData). When doing so I will want to pass the raw image data from the data texture to the ImageData constrcor funciton to get an instance of image data that will work with the put image data method. When calling the put image data method after passing the image data object as the first argument I can then pass additional arguments that have to do with setting the position where drawing will start in the canvas. There are additional options after that which can be used to define an area in the data texture to use as well.
+To draw the state of a data texture to a canvas texture I can just make use of the [put image data method of the 2d canvas drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData). When doing so I will want to pass the raw image data from the data texture to the ImageData constructor function to get an instance of image data that will work with the put image data method. When calling the put image data method after passing the image data object as the first argument I can then pass additional arguments that have to do with setting the position where drawing will start in the canvas. There are additional options after that which can be used to define an area in the data texture to use as well.
 
 ```js
 //-------- ----------
@@ -393,7 +393,7 @@ renderer.render(scene, camera);
 
 ### 2.2 - Creating a Data Texture from a Canvas Texture
 
-Now that I have covered how to go about creating a canvas texture from a data texture I should also cover how to go about creating a data texture from a canvas texture.
+Now that I have covered how to go about creating a canvas texture from a data texture I should also cover how to go about creating a data texture from a canvas texture. The main proper of interest with the canvas texture is the image property that will store a reference to the canvas element. That can then be used to get a referenced to the 2d drawing context and thus the [getImageData method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData) that I will want to call to get raw image data from the canvas element. The data property of the resulting image data object can then be passed to the THREE.DataTexture constructor along with the width and height to get a data texture from the canvas image data. I can then do whatever it is that I would like to do to change the state of the texture such as adding noise.
 
 ```js
 //-------- ----------
@@ -427,7 +427,7 @@ const texture_canvas = new THREE.CanvasTexture(canvas);
 //-------- ----------
 // DATA TEXTURE FROM CANVAS 2D CONTEXT
 //-------- ----------
-const canvasData = ctx.getImageData(0, 0, 32, 32);
+const canvasData = texture_canvas.image.getContext('2d').getImageData(0, 0, 32, 32);
 const texture_data = new THREE.DataTexture(canvasData.data, 32, 32 );
 // Can do somehting to the data like add noise
 const data = texture_data.image.data;
@@ -458,7 +458,7 @@ renderer.render(scene, camera);
 
 ## 3 - Animation examples
 
-In this section I will now be going over a few examples that involve having an animation loop ans therefor update the state of the canvas elements over time.
+In this section I will now be going over a few examples that involve having an animation loop and therefor update the state of the canvas elements over time.
 
 ### 3.1 - Update example with fog
 
@@ -738,4 +738,3 @@ What is great about using built in geometry constructors like the THREE.BoxGeome
 That about does it when it comes to the basics, and a little beyond just the basics at least when it comes to using canvas elements to create textures in three.js. Of course there is much more to write about when it comes to working with textures, maps, materials, and [material index values](/2018/05/14/threejs-mesh-material-index/) but maybe all of those things are matters for other posts on three.js.
 
 This is a post that I do come around to edit now and then, and with that said it is only a matter of time until I get around to expanding this post even more when it comes to this topic.
-
