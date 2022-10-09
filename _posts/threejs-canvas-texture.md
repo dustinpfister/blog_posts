@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-10-04 10:17:28
-version: 1.97
+updated: 2022-10-09 12:21:01
+version: 1.98
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -319,11 +319,146 @@ scene.add(cube);
 renderer.render(scene, camera);
 ```
 
-## 2 - Animation examples
+## 2 - Data textures and canvas textures
+
+The other major option for creating and updating textures with javaScript code in threejs would be [data textures to which I wrote a post on](/2022/04/15/threejs-data-texture/) that you might also want to check out. For the most part I do like to work with canvas elements, but I have to admit that I ofetn do find myself in a situautn in whuch I would like to do somehting with raw data also. Do not wory to much about having to make a choice one way or the other though as converting between the two is not so hard as I will be touching base on that topic in this section.
+
+### 2.1 - Creating a Canvas Texture from Data texture
+
+To draw the state of a data texture to a canvas texture I can just make use of the [put image data method of the 2d canvas drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData).
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1.25, 1, 2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// DATA TEXTURE
+//-------- ----------
+const width = 16, height = 16;
+const size = width * height;
+const data = new Uint8ClampedArray( 4 * size );
+for ( let i = 0; i < size; i ++ ) {
+    const stride = i * 4, a = i / size;
+    // set r, g, b, and alpha data values
+    data[ stride ] = 255 * a;            // red
+    data[ stride + 1 ] = 128 - 128 * a;  // green
+    data[ stride + 2 ] = 0;              // blue
+    data[ stride + 3 ] = 255;            // alpha
+}
+const texture_data = new THREE.DataTexture( data, width, height );
+texture_data.needsUpdate = true;
+//-------- ----------
+// CANVAS TEXTURE FROM DATA TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+canvas.width = 32;
+canvas.height = 32;
+// white background
+ctx.fillStyle = 'white';
+ctx.fillRect(0,0, canvas.width, canvas.height);
+// draw box line around edge
+ctx.strokeStyle = 'black';
+ctx.lineWidth = 3;
+ctx.beginPath();
+ctx.rect(2, 2, 32 - 4, 32 - 4);
+ctx.stroke();
+// PUTTING IMAGE DATA FROM DATA TEXTURE
+const imgData = new ImageData(texture_data.image.data, 16, 16);
+ctx.putImageData(imgData, 8, 8);
+const texture_canvas = new THREE.CanvasTexture(canvas);
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        map: texture_canvas
+    })
+);
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 2.2 - Creating a Data Texture from a Canvas Texture
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(0.75, 0.75, 1.5);
+camera.lookAt(0, -0.2, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+canvas.width = 32;
+canvas.height = 32;
+// white background
+ctx.fillStyle = 'white';
+ctx.fillRect(0,0, canvas.width, canvas.height);
+// draw box line around edge
+ctx.strokeStyle = 'black';
+ctx.lineWidth = 3;
+ctx.beginPath();
+ctx.rect(2, 2, 32 - 4, 32 - 4);
+ctx.stroke();
+const texture_canvas = new THREE.CanvasTexture(canvas);
+//-------- ----------
+// DATA TEXTURE FROM CANVAS 2D CONTEXT
+//-------- ----------
+const canvasData = ctx.getImageData(0, 0, 32, 32);
+const texture_data = new THREE.DataTexture(canvasData.data, 32, 32 );
+// Can do somehting to the data like add noise
+const data = texture_data.image.data;
+let i = 0, len = data.length;
+while(i < len){
+    let delta = -200 + 300 * Math.random();
+    data[i + 0] = data[i + 0] + delta;
+    data[i + 1] = data[i + 1] + delta;
+    data[i + 2] = data[i + 2] + delta;
+    i += 4;
+};
+texture_data.needsUpdate = true;
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        map: texture_data
+    })
+);
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+## 3 - Animation examples
 
 In this section I will now be going over a few examples that involve having an animation loop ans therefor update the state of the canvas elements over time.
 
-### 2.1 - Update example with fog
+### 3.1 - Update example with fog
 
 So because the source is a canvas you might be wondering if it is possible to redraw the canvas and update the texture, making an animated texture. The answer is yes, all you need to do is redraw the contents of the canvas, and set the needsUpdate property of the texture to true before calling the render method of your renderer. In this section I will then be going over a revised version of the source code of the above example where I started working with a module that I can use to create and return an object that contains a reference to the drawing context of the canvas as well as the texture. This time the aim is to get things started when it comes to having a way to draw to the canvas used for the texture over and over again as needed.
 
@@ -444,7 +579,7 @@ I now just need a little more code to make use of the canvas module, for this I 
 
 It should go without saying that this will use more overhead compared to a static texture, so I would not go wild with it just yet, but it is pretty cool that I can do this.
 
-### 2.2 - Canvas animations and using more than one texture for a geometry
+### 3.2 - Canvas animations and using more than one texture for a geometry
 
 I have wrote a number of posts on threejs and as such I have [touched based on how to go about using more than one material](/2018/05/14/threejs-mesh-material-index/) with a mesh in threejs a while back all ready. However I am thinning that this is something that also deserves at least one of not more sections in this post also, as this can lead to some interesting projects even by making use of just the built in geometry constructors.
 
