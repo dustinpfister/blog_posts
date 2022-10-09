@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-10-09 12:21:01
-version: 1.98
+updated: 2022-10-09 12:31:30
+version: 1.99
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -321,11 +321,11 @@ renderer.render(scene, camera);
 
 ## 2 - Data textures and canvas textures
 
-The other major option for creating and updating textures with javaScript code in threejs would be [data textures to which I wrote a post on](/2022/04/15/threejs-data-texture/) that you might also want to check out. For the most part I do like to work with canvas elements, but I have to admit that I ofetn do find myself in a situautn in whuch I would like to do somehting with raw data also. Do not wory to much about having to make a choice one way or the other though as converting between the two is not so hard as I will be touching base on that topic in this section.
+The other major option for creating and updating textures with javaScript code in threejs would be [data textures to which I wrote a post on](/2022/04/15/threejs-data-texture/) that you might also want to check out. For the most part I do like to work with canvas elements, but I have to admit that I often do find myself in a situation in which I would like to do something with raw data also. Do not worry to much about having to make a choice one way or the other though as converting between the two is not so hard as I will be touching base on that topic in this section.
 
 ### 2.1 - Creating a Canvas Texture from Data texture
 
-To draw the state of a data texture to a canvas texture I can just make use of the [put image data method of the 2d canvas drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData).
+To draw the state of a data texture to a canvas texture I can just make use of the [put image data method of the 2d canvas drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData). When doing so I will want to pass the raw image data from the data texture to the ImageData constrcor funciton to get an instance of image data that will work with the put image data method. When calling the put image data method after passing the image data object as the first argument I can then pass additional arguments that have to do with setting the position where drawing will start in the canvas. There are additional options after that which can be used to define an area in the data texture to use as well.
 
 ```js
 //-------- ----------
@@ -392,6 +392,8 @@ renderer.render(scene, camera);
 ```
 
 ### 2.2 - Creating a Data Texture from a Canvas Texture
+
+Now that I have covered how to go about creating a canvas texture from a data texture I should also cover how to go about creating a data texture from a canvas texture.
 
 ```js
 //-------- ----------
