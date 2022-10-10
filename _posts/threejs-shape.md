@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2022-10-10 12:24:19
-version: 1.39
+updated: 2022-10-10 12:26:13
+version: 1.40
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then be used in a [mesh object](/2018/05/04/threejs-mesh/). So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -174,36 +174,53 @@ renderer.render(scene, camera);
 The official example of the Shape class makes use of the bezier curve to method as a way to go about making a heart shape. It would seem that the Sharp class has a number of methods to work with when it comes to creating the lines that will be used to create the shape. There is making use of them, or just working out the math when it comes to just sticking to the move to and line to methods.
 
 ```js
- 
-// creating a scene
-var scene = new THREE.Scene();
-
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(60, 64 / 48, 0.1, 1000);
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // SHAPE
-var heartShape = new THREE.Shape();
-heartShape.moveTo( 25, 25 );
-heartShape.bezierCurveTo( 25, 25, 20, 0, 0, 0 );
-heartShape.bezierCurveTo( - 30, 0, - 30, 35, - 30, 35 );
-heartShape.bezierCurveTo( - 30, 55, - 10, 77, 25, 95 );
-heartShape.bezierCurveTo( 60, 77, 80, 55, 80, 35 );
-heartShape.bezierCurveTo( 80, 35, 80, 0, 50, 0 );
-heartShape.bezierCurveTo( 35, 0, 25, 25, 25, 25 );
-
-// geometry
-var extrudeSettings = { depth: 8, bevelEnabled: true, bevelSegments: 2, steps: 2, bevelSize: 1, bevelThickness: 1 };
-var geometry = new THREE.ExtrudeGeometry( heartShape, extrudeSettings );
-geometry.rotateX(Math.PI * 1)
-// mesh
-var mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial() );
+//-------- ----------
+const heartShape = new THREE.Shape();
+heartShape.moveTo( 2.5, 2.5 );
+heartShape.bezierCurveTo( 2.5, 2.5, 2.0, 0, 0, 0 );
+heartShape.bezierCurveTo( - 3.0, 0, - 3.0, 3.5, - 3.0, 3.5 );
+heartShape.bezierCurveTo( - 3.0, 5.5, - 1.0, 7.7, 2.5, 9.5 );
+heartShape.bezierCurveTo( 6.0, 7.7, 8.0, 5.5, 8.0, 3.5 );
+heartShape.bezierCurveTo( 8.0, 3.5, 8.0, 0, 5.0, 0 );
+heartShape.bezierCurveTo( 3.5, 0, 2.5, 2.5, 2.5, 2.5 );
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const extrudeSettings = {
+    depth: 1.5,
+    bevelEnabled: true,
+    curveSegments: 40,
+    bevelSegments: 20,
+    steps: 8,
+    bevelThickness: 0.75,
+    bevelSize: 0.75 };
+const geometry = new THREE.ExtrudeGeometry( heartShape, extrudeSettings );
+geometry.rotateX(Math.PI * 1);
+geometry.center();
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial() );
+let s = 0.25;
+mesh.scale.set(s, s, s);
 // add the mesh to the scene
 scene.add(mesh);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(100, 100, 100);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ---------- 
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
