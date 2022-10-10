@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2022-10-10 11:25:20
-version: 1.38
+updated: 2022-10-10 12:24:19
+version: 1.39
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then be used in a [mesh object](/2018/05/04/threejs-mesh/). So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -29,7 +29,11 @@ The Source code that I am writing about here [can also be found on Github](https
 
 I have got into the habit of mentioning this is every post I write on threejs these days, so here it goes once again. When I first wrote this post I was using threejs revision 127, which was a late version of threejs in early 2021.
 
-## 1 - Shape Constructor Basic example using the shape geometry
+## 1 - The Basics of getting started with THREE.Shape 
+
+For this first section I will be going over a few very basic hello world style examples of the THREE.Shape class. When it comes to the paths for now I will be sticking to just using the move to, and line to methods. There are a lot more methods in the path class to work with but I will be getting to those in later sections of this post. Once a Shape object is ready it can be passed as the first argument for two geometry constructor options which are the Shape geometry and extrude geometry constructors. After that I can use the resulting geometry with the usual mesh object, and also choose a material with such mesh objects. Again for this section at least i will not be doing anything fancy with materials, textures, and so forth.
+
+### 1.1 - Shape Constructor Basic example using the shape geometry
 
 Maybe a good starting point with the Shape constructor would be to use it to create a simple triangle shape, and then use that with the Shape Geometry constructor. So in this example I start out with just calling the THREE.Shape constructor and then saving the returned instance of Shape to a variable. I can then use the Shape move to method to move to a location in the 2d plain, and then call the line to method to create my shape. I can then pass the shape as the first argument to the THREE.ShapeGeomerty constructor which will then return my instance of geometry that I will then want to use with a mesh Object. When I then use the geometry with the Mesh constrictor I might want to set the side property of the material that I use with the Mesh constructor to THREE.DoubleSide so that both dies of the triangle are rendered.
 
@@ -65,7 +69,7 @@ renderer.render(scene, camera);
 
 So then this kind of use case of the Shape constructor might work out just fine if I just want to create a flat surface that is of a custom shape and place it into the scene. In other words it is a kind of custom cut alternative to using the plain geometry constructor.
 
-## 2 - Using the Extrude geometry constructor with THREE.Shape
+### 1.2 - Using the Extrude geometry constructor with THREE.Shape
 
 The Shape geometry constructor works great if I want to create something that is just a flat surface, however another option would be to use the Extrude geometry constructor. This will result in the creation of a geometry that is the shape geometry, but just adding a little depth to it. When doing so there are a bunch of options when it comes to things like the depth, and if the edges should be beveled.
 
@@ -105,7 +109,67 @@ renderer.render(scene, camera);
 
 There may be a great deal more to cover when it comes to the THREE.ExtrudeGeometry constructor, but maybe that is all something that I should save for another post.
 
-## 3 - Heart shape example and the bezierCurveTo method of the Shape Class
+## The Path Class
+
+As I have mentioned above it would be a good idea to look into the path class in detail as well. This is  subject that might deserve a whole other post and then some maybe, however in this post I think I should still have at least a section on PATH. There are a number of useful methods in the Path class for making a 2d path, in the basic examples I all ready covered the move to and line to methods of the path class, but in this section I will be getting into some more options for making the path that forms the 2d shape.
+
+### 2.1 - Set from points example
+
+The set from points method of the Path class is how to go about setting the state of a path by way of an array of THREE.vector2 class objects. So then I can create an array of these Vector2 objects by any means that I would like, and then I can just create a shape, and then call the set from points method off of the shape and pass the array of Vector2 objects.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(60, 64 / 48, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// SHAPE
+//-------- ----------
+// cretaing an array of THREE.Vector2 objects
+const points = [];
+const len = 100;
+let i = 0;
+while(i < len){
+    const a = i / len;
+    const x = -3  + 6 * a;
+    const y = Math.sin( Math.PI * 1.0 * a ) * 4;
+    points.push(new THREE.Vector2(x, y));
+    i += 1;
+}
+const shape = new THREE.Shape();
+// creating the path by using the set from points method
+// with the array of THREE.Vector2 objects
+shape.setFromPoints(points);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const extrudeSettings = {
+    depth: 1.5,
+    bevelEnabled: false,
+    steps: 2};
+const geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
+//geometry.rotateX(Math.PI * 1);
+geometry.center();
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial() );
+// add the mesh to the scene
+scene.add(mesh);
+//-------- ---------- 
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 2.2 - Heart shape example and the bezierCurveTo method of the Shape Class
 
 The official example of the Shape class makes use of the bezier curve to method as a way to go about making a heart shape. It would seem that the Sharp class has a number of methods to work with when it comes to creating the lines that will be used to create the shape. There is making use of them, or just working out the math when it comes to just sticking to the move to and line to methods.
 
@@ -245,4 +309,3 @@ So then all kinds of interesting shapes are possible by just making use of more 
 ## Conclusion
 
 The Shape Constructor can prove to be yet another helpful tool in the toolbox of sorts that is threejs. It can be used with the extrude geometry constructor to help create the geometry for all kinds of mesh objects that can be used on there own, or as part of a group actually. For example I can have a mesh that makes use of a box geometry, and then have a extruded triangle shape geometry added to another mesh that can then be positioned next to it.
-
