@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-10-09 12:44:42
-version: 1.100
+updated: 2022-10-10 10:41:35
+version: 1.101
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -447,6 +447,88 @@ const box = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial({
         map: texture_data
+    })
+);
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 2.3 - Data Texture Sources and rotaiton of that source image
+
+One problem that I can into with put image data method of the 2d canvas drawing context is that it will not respond to the [rotate method](/2019/11/05/canvas-rotate/). That is that the put image data method will not work like the [draw image method](/2019/03/08/canvas-image), or many of the other drawing context methods when it comes to using the usual save, translate, rotate, and restore methods for rotation that drawing context. it would seem that the put image data method will ignore all of that. So then there is the question of how to go about rotating a data texture source to a canvas element, and with that said one trick that worked for me was to draw the data texture to another canvas element, and then use that canvas element as a source for the draw image method, and by doing that I was able to do an on the fly rotation just fine.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1.25, 1, 2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// DATA TEXTURE
+//-------- ----------
+const width = 16, height = 16;
+const size = width * height;
+const data = new Uint8ClampedArray( 4 * size );
+for ( let i = 0; i < size; i ++ ) {
+    const stride = i * 4, a = i / size;
+    // set r, g, b, and alpha data values
+    data[ stride ] = 255 * a;            // red
+    data[ stride + 1 ] = 128 - 128 * a;  // green
+    data[ stride + 2 ] = 0;              // blue
+    data[ stride + 3 ] = 255;            // alpha
+}
+const texture_data = new THREE.DataTexture( data, width, height );
+texture_data.needsUpdate = true;
+//-------- ----------
+// CANVAS_DS - canvas element from DATA TEXTURE SOURCE
+//-------- ----------
+const img_ds = texture_data.image;
+const w_ds = img_ds.width;
+const h_ds = img_ds.height;
+const canvas_ds = document.createElement('canvas'),
+ctx_ds = canvas_ds.getContext('2d');
+canvas_ds.width = w_ds;
+canvas_ds.height = h_ds;
+// PUTTING IMAGE DATA FROM DATA TEXTURE
+const imgData = new ImageData(img_ds.data, w_ds, h_ds);
+ctx_ds.putImageData(imgData, 0, 0);
+//-------- ----------
+// CANVAS - final canvas texture
+//-------- ----------
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 32;
+canvas.height = 32;
+// background
+ctx.fillStyle = '#004444';
+ctx.fillRect(0,0, 32, 32);
+ctx.strokeStyle = '#aaaaaa';
+ctx.lineWidth = 2;
+ctx.strokeRect(2, 2, 28, 28);
+// can now draw to this canvas with the canvas_ds canvas
+// by using the drawImage method of the 2d context. As such
+// I can now use methods like ctx.rotate
+ctx.save();
+ctx.translate(16, 16);
+ctx.rotate(Math.PI / 180 * 45);
+ctx.drawImage(canvas_ds, -11, -11, 22, 22);
+ctx.restore();
+const texture_canvas = new THREE.CanvasTexture(canvas);
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        map: texture_canvas
     })
 );
 scene.add(box);
