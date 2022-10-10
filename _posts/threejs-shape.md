@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2022-10-10 12:26:13
-version: 1.40
+updated: 2022-10-10 13:22:19
+version: 1.41
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then be used in a [mesh object](/2018/05/04/threejs-mesh/). So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -20,6 +20,10 @@ This is a post on the THREE.Shape class in the javaScript library known as three
 ### Also look into the path class
 
 When it comes to knowing how to create shapes you will want to also look into the [paths class](https://threejs.org/docs/index.html#api/en/extras/core/Path). This paths class is what will contains methods like move to and line to.
+
+### Also Check out the SVG Loader
+
+The [SVG loader is an addtional loader](/2022/09/16/threejs-svg-loader/) that can be added on top of the threejs library alone to load SVG files and thus use the path data of those kinds of files to create Shapes.
 
 ### Source code is on Github
 
@@ -224,7 +228,7 @@ scene.add(mesh);
 renderer.render(scene, camera);
 ```
 
-## 4 - Punching a hole in  shape with another shape
+## 3 - Punching a hole in  shape with another shape
 
 One thing that comes up when it comes to working with shapes is how to go about [punching a hole in a shape with another shape](https://stackoverflow.com/questions/28532878/three-js-punch-hole-in-shape-with-another-shape). To do this all I need to do is just create two shapes actually one of which will be the base shape, and the other will be a shape that will represent a hole in the shape. The shape that will be the hole just needs to be added to the holes array that is a property of an instance of Shape.
 
@@ -272,7 +276,7 @@ renderer.render(scene, camera);
 
 So then If I want to add more than one hole to a shape then the process is just creating the shapes the way that I want them and then just adding more than one shape to the holes array.
 
-## 5 - Shapes and Groups
+## 4 - Shapes and Groups
 
 I wanted to make at least a quick example of using shapes to create mesh objects along with other mesh objects created with built in geometry constructors such as the box geometry constructor to create a group of mesh objects. I often like to create groups of mesh objects that can come together to resemble some kind of over all object of one kind or another. I often make these kinds of groups just composed of mesh objects that use built in geometry constructors however with the shape geometry constructor this allows me to make some interesting custom objects without getting to in depth with making a truly custom geometry constructor.
 
@@ -322,6 +326,120 @@ renderer.render(scene, camera);
 ```
 
 So then all kinds of interesting shapes are possible by just making use of more than one option with the built in geometry to create an over all object composed or a group of mesh objects. For more on this kind of topic it might be a good idea to take a look at [my post on grouping mesh objects](/2018/05/16/threejs-grouping-mesh-objects/).
+
+
+## 5 - Animation loops Examples
+
+I like to make at least one if not more videos for my blog posts on threejs these days, and when I do so I also like to start out with at least one if not more animation loop examples. This will then be the section will I will be starting out with at least one or more of these kinds of examples that will be used in any videos that might be included in this blog post.
+
+The main thing here is that I would like to not just update the position, rotation, and scale over time with these animations, but also the geometry. I have found that the best way to do so it to mutate the state of a geometry rather than creating new ones over and over again when it comes to this.
+
+### 5.1 - Heart Shape example
+
+Here I have a current standing animation loop example based off of that heart shape example that I have for the paths section.  
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(60, 64 / 48, 0.1, 1000);
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+// make a heart shape
+const makeHeartShape = (b, mb, sx, sy) => {
+    b = b === undefined ? 9: b;
+    mb = mb === undefined ? 0.75: mb;
+    sx = sx === undefined ? 2.5: sx;
+    sy = sy === undefined ? 2.5: sy;
+    const shape = new THREE.Shape();
+    shape.moveTo( sx, sy );
+    shape.bezierCurveTo( sx, sy, 2, 0, 0, 0 );
+    shape.bezierCurveTo( -3, 0, -3, 3, -3.0, 3 );
+    shape.bezierCurveTo( -3, 5, -1, b * mb, 2, b );
+    shape.bezierCurveTo( 6, b * mb, 8, 5, 8, 3 );
+    shape.bezierCurveTo( 8, 3, 8, 0, 5, 0 );
+    shape.bezierCurveTo( 3, 0, sx, sy, sx, sy );
+    return shape;
+};
+// make a heart geometry
+const makeHeartGeo = (b, mb, sx, sy, extrudeSettings) => {
+    const shape = makeHeartShape(b, mb, sx, sy);
+    extrudeSettings = extrudeSettings || {
+        depth: 1.5,
+        bevelEnabled: false,
+        steps: 2};
+    const geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
+    geometry.rotateX(Math.PI * 1);
+    geometry.center();
+    return geometry;
+};
+// update geo
+const updateGeo = (geoA, geoB) => {
+    const posA = geoA.getAttribute('position');
+    const posB = geoB.getAttribute('position');
+    posA.array = posA.array.map((n, i)=>{
+        return posB.array[i];
+    });
+    posA.needsUpdate = true;
+    geoA.computeVertexNormals();
+};
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = makeHeartGeo();
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial() );
+let s = 0.25;
+mesh.scale.set(s, s, s);
+// add the mesh to the scene
+scene.add(mesh);
+
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a = frame / frameMax;
+    const ab = 1 - Math.abs(0.5 - a) / 0.5;
+    let b = 6 + 6 * ab;
+    let mb = 0.75;
+    let sy = 2.5 * ab;
+    updateGeo(mesh.geometry, makeHeartGeo(b, mb, 2.5, sy));
+    mesh.rotation.y = Math.PI * 2 * a;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
 
 ## Conclusion
 
