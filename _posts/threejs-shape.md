@@ -5,13 +5,16 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2022-10-10 13:22:19
-version: 1.41
+updated: 2022-10-10 18:28:37
+version: 1.42
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then be used in a [mesh object](/2018/05/04/threejs-mesh/). So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/Iz6bW-QJATc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## The Shape Constructor and what to know first
 
