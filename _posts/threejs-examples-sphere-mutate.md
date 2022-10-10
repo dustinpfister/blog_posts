@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-10 18:51:55
-version: 1.18
+updated: 2022-10-10 19:00:26
+version: 1.19
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -31,7 +31,7 @@ The source code for this example and many more is [on github](https://github.com
 
 ### version numbers matter
 
-When I wrote this post I was using threejs version r127.
+When I wrote this post I was using threejs version r127, and the last time I came around to do a little editing I was using r140.
 
 ## 1 - The first mutation of sphere example \( r0 \)
 
