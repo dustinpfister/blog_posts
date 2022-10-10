@@ -1,12 +1,12 @@
 ---
-title: Shapes in threejs
+title: Shapes in threejs as well as extrude geometry
 date: 2021-06-01 12:24:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2022-04-20 06:35:01
-version: 1.37
+updated: 2022-10-10 11:25:20
+version: 1.38
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then be used in a [mesh object](/2018/05/04/threejs-mesh/). So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -20,6 +20,10 @@ This is a post on the THREE.Shape class in the javaScript library known as three
 ### Also look into the path class
 
 When it comes to knowing how to create shapes you will want to also look into the [paths class](https://threejs.org/docs/index.html#api/en/extras/core/Path). This paths class is what will contains methods like move to and line to.
+
+### Source code is on Github
+
+The Source code that I am writing about here [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-shape).
 
 ### Version Numbers matter with threejs
 
@@ -101,7 +105,7 @@ renderer.render(scene, camera);
 
 There may be a great deal more to cover when it comes to the THREE.ExtrudeGeometry constructor, but maybe that is all something that I should save for another post.
 
-## 3 - Heat shape example and the bezierCurveTo method of the Shape Class
+## 3 - Heart shape example and the bezierCurveTo method of the Shape Class
 
 The official example of the Shape class makes use of the bezier curve to method as a way to go about making a heart shape. It would seem that the Sharp class has a number of methods to work with when it comes to creating the lines that will be used to create the shape. There is making use of them, or just working out the math when it comes to just sticking to the move to and line to methods.
 
@@ -238,7 +242,7 @@ renderer.render(scene, camera);
 
 So then all kinds of interesting shapes are possible by just making use of more than one option with the built in geometry to create an over all object composed or a group of mesh objects. For more on this kind of topic it might be a good idea to take a look at [my post on grouping mesh objects](/2018/05/16/threejs-grouping-mesh-objects/).
 
-## 6 - Conclusion
+## Conclusion
 
 The Shape Constructor can prove to be yet another helpful tool in the toolbox of sorts that is threejs. It can be used with the extrude geometry constructor to help create the geometry for all kinds of mesh objects that can be used on there own, or as part of a group actually. For example I can have a mesh that makes use of a box geometry, and then have a extruded triangle shape geometry added to another mesh that can then be positioned next to it.
 
