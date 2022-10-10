@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-04-20 10:02:10
-version: 1.17
+updated: 2022-10-10 18:51:55
+version: 1.18
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -17,19 +17,23 @@ In this post then I will be going over my first quick example that has to do wit
 
 <!-- more -->
 
-## 1 - Mutating sphere geometry and what to know first
+## Mutating sphere geometry and what to know first
 
 This is a post on a threejs example where I am mutating the geometry of a sphere made with the [THREE.SphereGeometry constructor](/2021/05/26/threejs-sphere/) in the library. It should do without saying that this post is not intended for people that are new to threejs, and javaScript in general as the topic might prove to be a bit to advanced. So it might be best to start out with a [getting started type post with threejs](/2018/04/04/threejs-getting-started/), even if you have some experience with these topics there are still a few things you might want to read up on more first.
 
-### 1.1 - Might want to read up more on the buffer geometry class in general
+### Might want to read up more on the buffer geometry class in general
 
 It might be a good idea to read up more on the [buffer geometry class in general](/2021/04/22/threejs-buffer-geometry/), as there are a great number of properties and methods in an instance of buffer geometry that you should be aware of before getting into an example like this. The main feature of interest when it comes to changing the points in a geometry would be the position attribute of a geometry created with one of the built in geometry constructor methods.
 
-### 1.2 - version numbers matter
+### Source code is on Github
+
+The source code for this example and many more is [on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-sphere-mutate)
+
+### version numbers matter
 
 When I wrote this post I was using threejs version r127.
 
-## 2 - The mutation of sphere example
+## 1 - The first mutation of sphere example \( r0 \)
 
 So now for the source code of this threejs example where I am changing the position of a point at the top of a sphere. In this example I started out with by set vertex helper method that I worked out in a previous example this week that had to do with the position attribute in general. This helper makes use of the geometry.index property as a way to help change the right position data in the position attribute of a given geometry.
 
@@ -125,7 +129,7 @@ I then set up a scene object, renderer and camera just like with any other three
 
 This example might have turned out into a decent starting point at least when it comes to just playing around with sphere geometry, however there are so many other things that come to mind that I would like t work out and have a better understanding of. Some things that might help would be to just loop over all the points in a geometry and return all the points that share the same point in space. That way I can just call that method and move all points that are at that location which might prove to be a very helpful tool when it comes to doing things like this.
 
-## 3 - Conclusion
+## Conclusion
 
 So then that will be it for now when it comes to this threejs example on mutating the values of a position attribute of a geometry of a sphere. WHat I have together thus far has proven to be a good start at least when it comes to just sinking a hour or two of time into this sort of thing, however there is more I would like to figure out when it comes to sphere geometry.
 
