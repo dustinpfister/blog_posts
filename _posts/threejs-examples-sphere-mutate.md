@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-11 09:55:09
-version: 1.21
+updated: 2022-10-11 10:12:30
+version: 1.22
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -174,7 +174,7 @@ I then have a special create mesh helper function that will create a mesh object
 
 ## 2 - The first mutation of sphere example \( r0 \)
 
-So now for the source code of this threejs example where I am changing the position of a point at the top of a sphere. In this example I started out with by set vertex helper method that I worked out in a previous example this week that had to do with the position attribute in general. This helper makes use of the geometry.index property as a way to help change the right position data in the position attribute of a given geometry.
+So now for the older r0 source code of this threejs example where I am changing the position of a point at the top of a sphere. In this example I started out with by set vertex helper method that I worked out in a previous example this week that had to do with the position attribute in general. This helper makes use of the geometry index property as a way to help change the right position data in the position attribute of a given geometry. When using the THREE.SphereGeometry constructor the return geometry will contain this index property as the constructor sets up a position attribute with a lower than usual number of points by reusing points. With certain other geometries there may not be an index, or there are ways of making a sphere geometry not indexed but maybe that is all a matter for another revision of this example or a whole other post.
 
 I then have my update sphere top point helper method where I just pass a sphere geometry as the first argument, and then the y value for the top point of the sphere. So in other words this is a method where I can pull the top point of a sphere up or down along the y axis. Inside this helper method I get a reference to the position attribute of the sphere geometry, and then I also create a new position object that will be used for all points of all triangles that are at that point. I then use the set vertex helper to set the position of all of these points in the body of a while loop. When it comes to setting up a condition for getting out of the while loop I have found that I can use the width segments parameter as a way to create a value that seems to work well with just about any sphere that I pass to it.
 
@@ -266,10 +266,11 @@ I then set up a scene object, renderer and camera just like with any other three
     ());
 ```
 
-This example might have turned out into a decent starting point at least when it comes to just playing around with sphere geometry, however there are so many other things that come to mind that I would like t work out and have a better understanding of. Some things that might help would be to just loop over all the points in a geometry and return all the points that share the same point in space. That way I can just call that method and move all points that are at that location which might prove to be a very helpful tool when it comes to doing things like this.
+This example might have turned out into a decent starting point at least when it comes to just playing around with sphere geometry, however there are so many other things that come to mind that I would like to work out and have a better understanding in place still. Some things that might help would be to just loop over all the points in a geometry and return all the points that share the same point in space. That way I can just call that method and move all points that are at that location which might prove to be a very helpful tool when it comes to doing things like this.
 
 ## Conclusion
 
-So then that will be it for now when it comes to this threejs example on mutating the values of a position attribute of a geometry of a sphere. What I have together thus far has proven to be a good start at least when it comes to just sinking a hour or two of time into this sort of thing, however there is more I would like to figure out when it comes to sphere geometry.
+So then that will be it for now when it comes to this threejs example on mutating the values of a position attribute of a geometry of a sphere. Thus far I have to versions of this example, but I have many more ideas for sure when it comes to this sort of thing. There is also doing what I am doing here but with one of the other built in geometries such as a plane geometry, or maybe even better yet a custom geometry that is just three points in space when it comes to focusing on cretin fore basics better.
 
-At some point in the future I hope to get back ground to working on this source code and see about making some more methods that have to do with just moving the points on a sphere around a little to get weird sphere like shapes that are not really a sphere. I might want to work out a lot more example before coming back ground to this one though, so it might be a while till I get around to doing that.
+There as a whole lot more that comes to mind that I have not even wrote down in terms of additional similar ideas for sphere mutation projects. I will still want to work out at least a few more basic core examples though before I start to go nuts with this and start making a whole bunch more revisions, maybe even going to far as making some kind of module that helper abstract away much of what I have code to learn thus far about sphere geometry and then just make a whole bunch of demos for each future revision.
+
