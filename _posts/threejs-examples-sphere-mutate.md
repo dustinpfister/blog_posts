@@ -1,12 +1,12 @@
 ---
-title: Mutating a point in a sphere with threejs
+title: Sphere Geometry Mutation of position attribute threejs example
 date: 2021-06-10 14:19:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-11 10:26:44
-version: 1.24
+updated: 2022-10-11 11:24:56
+version: 1.25
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -16,6 +16,9 @@ So I think it might be a good idea to wrap this week up with a few simple [three
 In this post then I will be going over my first quick example that has to do with a helper method that changes the position of a point on a sphere. The process of doing so is not always so easy as there is not just one point that needs to move but all points of all triangles at that point in space actually. So this might prove to be the kind of example that I might come back to now and then in order to find new ways to go about doing this.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/w91r95Dzlvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Mutating sphere geometry and what to know first
 
