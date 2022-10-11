@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-11 10:12:30
-version: 1.22
+updated: 2022-10-11 10:23:10
+version: 1.23
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
 
-So I think it might be a good idea to wrap this week up with a few simple [threejs project examples](/2021/02/19/threejs-examples/) that have to do with mutating the position attributes of built in geometry constructors. One such constructor to work with when it comes to this is the sphere geometry constructor which is just one of many kinds of built in geometry constructors where it might prove to be an interesting learning experience to work out some methods that have to do with changing the geometry a little.
+So I think it might be a good idea to wrap this week up with a few simple [threejs project examples](/2021/02/19/threejs-examples/) that have to do with mutating the position attributes of a geometry made with one of the built in geometry constructors. One such constructor to work with when it comes to this is the sphere geometry constructor which is just one of many options of course but that is one of the main ones that come to mind so I will go with that one. It then might prove to be an interesting learning experience to work out some methods that have to do with changing the geometry a little, as there is a lot to work with in the threejs library over all for doing so such as the various methods of the Vector3 class.
 
 In this post then I will be going over my first quick example that has to do with a helper method that changes the position of a point on a sphere. The process of doing so is not always so easy as there is not just one point that needs to move but all points of all triangles at that point in space actually. So this might prove to be the kind of example that I might come back to now and then in order to find new ways to go about doing this.
 
@@ -24,6 +24,12 @@ This is a post on a threejs example where I am mutating the geometry of a sphere
 ### Might want to read up more on the buffer geometry class in general
 
 It might be a good idea to read up more on the [buffer geometry class in general](/2021/04/22/threejs-buffer-geometry/), as there are a great number of properties and methods in an instance of buffer geometry that you should be aware of before getting into an example like this. The main feature of interest when it comes to changing the points in a geometry would be the position attribute of a geometry created with one of the built in geometry constructor methods.
+
+### There is a lot that apply’s to mutation of sphere geometry in the Vector3 class
+
+I have wrote a number of blog posts on the Vector3 class and I have to say that there is a lot of useful tools in that class that can help with the mutation of the position attribute of sphere geometry. There is the normalize and multiply scalar methods that can be used to change the vector unit length of each vertex in the sphere for example. There is also making use of the apply Euler method with the Euler class to change diction of each point in the sphere.
+
+The state of the position attribute might be a linear array of numbers, but there is also getting into how to convert that to an array of Vectors, or create a vector3, use the class methods to do what I want, and then mutating the array of the position attribute. I will be going over some source code examples of this here, sure, but I would not stop at this post when it comes to reading about this sort of thing.
 
 ### Source code is on Github
 
