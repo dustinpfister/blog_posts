@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-11 09:44:04
-version: 1.20
+updated: 2022-10-11 09:55:09
+version: 1.21
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -35,9 +35,11 @@ When I wrote this post I was using threejs version r127, and the last time I cam
 
 ## 1 - Random Vector unit length while preserving direction \( r1 \)
 
-For r1 of my sphere mutation threejs example project I wanted to just make an example that makes better use of buffer attribute class features in place of what I made first in r0. If you still want to check out the older code for whatever reason it is down below in a latter section in this post as I am thining that I will want to always pull the latest revisions up to the top.
+For r1 of my sphere mutation threejs example project I wanted to just make an example that makes better use of buffer attribute class features in place of what I made first in r0. If you still want to check out the older code for whatever reason it is down below in a latter section in this post as I am thinking that I will want to always pull the latest revisions up to the top.
 
-Anyway the main feature of interest here is the create new vectors helper funciton that will create and append arrays to the [User Data object](/2021/02/16/threejs-userdata/) of a mesh object based off of the original state of the position attribute of the buffer geometry of the sphere. The goal here is to create to arrays of vector3 objects, one of which is for each point in the original position attribute state, and the other is a new state of random points to lerp to. In my later update geometry method I will be useing the [lerp method of the Vector3](/2022/05/17/threejs-vector3-lerp/) class to trasnform the starting state of the sphere geometry to this new set of points that are random vector unit lengths but with the same direction as the original points.
+Anyway the main feature of interest here is the create new vectors helper function that will create and append arrays to the [User Data object](/2021/02/16/threejs-userdata/) of a mesh object based off of the original state of the position attribute of the buffer geometry of the sphere. The goal here is to create to arrays of vector3 objects, one of which is for each point in the original position attribute state, and the other is a new state of random points to lerp to. In my later update geometry method I will be using the [lerp method of the Vector3](/2022/05/17/threejs-vector3-lerp/) class to transform the starting state of the sphere geometry to this new set of points that are random vector unit lengths but with the same direction as the original points.
+
+I then have a special create mesh helper function that will create a mesh object with a sphere geometry and also set up the pos\_base property of the user data object with a clone of the starting state of the sphere geometry. On top of that I am also calling the create new vectors helper for the first time which will of course set up those additional user data object properties that i want to have at the ready for updating things. Speaking of updating things the final helper function of interest here then is the update geometry helper function that I will be calling in the main update method of the animation loop for this example. In this method I am looping over each point in the sphere geometry and using the lerp method to update each point of the sphere to a position that is between the state point and the new random vector unit length point based on a given alpha value.
 
 ```js
 // threejs-examples-sphere-mutate - r1 - random vector unit length with same direction
