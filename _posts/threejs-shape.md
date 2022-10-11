@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2022-10-10 18:28:37
-version: 1.42
+updated: 2022-10-11 14:45:27
+version: 1.43
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then be used in a [mesh object](/2018/05/04/threejs-mesh/). So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -45,32 +45,38 @@ For this first section I will be going over a few very basic hello world style e
 Maybe a good starting point with the Shape constructor would be to use it to create a simple triangle shape, and then use that with the Shape Geometry constructor. So in this example I start out with just calling the THREE.Shape constructor and then saving the returned instance of Shape to a variable. I can then use the Shape move to method to move to a location in the 2d plain, and then call the line to method to create my shape. I can then pass the shape as the first argument to the THREE.ShapeGeomerty constructor which will then return my instance of geometry that I will then want to use with a mesh Object. When I then use the geometry with the Mesh constrictor I might want to set the side property of the material that I use with the Mesh constructor to THREE.DoubleSide so that both dies of the triangle are rendered.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(4, 4));
- 
-// make the shape
-var tri = new THREE.Shape();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SHAPE
+//-------- ----------
+const tri = new THREE.Shape();
 tri.moveTo(0, 1);
 tri.lineTo(1, -1);
 tri.lineTo(-1, -1);
 // geometry
-var geometry = new THREE.ShapeGeometry(tri);
+const geometry = new THREE.ShapeGeometry(tri);
 geometry.rotateX(Math.PI * 1); // might want to center
 geometry.center();
-// mesh
-var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({side: THREE.DoubleSide}));
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({side: THREE.DoubleSide}));
 mesh.add(new THREE.BoxHelper(mesh));
 // add the mesh to the scene
 scene.add(mesh);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ---------- 
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -81,36 +87,42 @@ So then this kind of use case of the Shape constructor might work out just fine 
 The Shape geometry constructor works great if I want to create something that is just a flat surface, however another option would be to use the Extrude geometry constructor. This will result in the creation of a geometry that is the shape geometry, but just adding a little depth to it. When doing so there are a bunch of options when it comes to things like the depth, and if the edges should be beveled.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(4, 4));
- 
-// make the shape
-var tri = new THREE.Shape();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SHAPE
+//-------- ----------
+const tri = new THREE.Shape();
 tri.moveTo(0, 1);
 tri.lineTo(1, -1);
 tri.lineTo(-1, -1);
 // geometry
-var extrudeSettings = {
+const extrudeSettings = {
     depth: 1,
     bevelEnabled: false
 };
-var geometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
+const geometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
 geometry.rotateX(Math.PI * 1); // might want to center
 geometry.center();
-// mesh
-var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
 mesh.add(new THREE.BoxHelper(mesh));
 // add the mesh to the scene
 scene.add(mesh);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ---------- 
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -238,11 +250,20 @@ One thing that comes up when it comes to working with shapes is how to go about 
 In this example then I am just creating a triangle type shape again, but then I am creating another shape that will be a hole in the shape. When it comes to this shape I am using the [arc method of the path class](https://threejs.org/docs/index.html#api/en/extras/core/Path.arc) to create a hole shape that will be a circle. This method works just like the [arc method of the 2d canvas drawing context](/2019/03/05/canvas-arc/) method when it comes to the order of the arguments. In other words the first argument is the x axis position of the center of the arc, the second argument is the y position, then the radius, and the start and end angles of the arc. Once I have my hole shape I just need to punch that shape to the holes array of the shape that I want to punch a hole in and that should be it.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(4, 4));
- 
-// make the shape
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SHAPE, GEOMETRY
+//-------- ----------
 var tri = new THREE.Shape();
 tri.moveTo(0, 2);
 tri.lineTo(2, -2);
@@ -252,7 +273,6 @@ var hole = new THREE.Shape();
 hole.arc(0, -0.8, 1.0, 0, Math.PI * 2);
 // push to the shapes holes array
 tri.holes.push(hole);
- 
 // geometry
 var extrudeSettings = {
     depth: 1,
@@ -261,19 +281,16 @@ var extrudeSettings = {
 var geometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
 geometry.rotateX(Math.PI * 1); // might want to center
 geometry.center();
-// mesh
+//-------- ----------
+// MESH
+//-------- ----------
 var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
 mesh.add(new THREE.BoxHelper(mesh));
 // add the mesh to the scene
 scene.add(mesh);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -286,18 +303,25 @@ I wanted to make at least a quick example of using shapes to create mesh objects
 So in this example I made an instance of THREE.Group, and then created and added a mesh to that group that uses the THREE.BoxGeometry constructor for the geometry. I then wanted to add another mesh object to that group this time using the THREE.ExtrudeGeometry constructor and of course a Shape. I then rotate and position the mesh object of the Mesh that makes use of the Shape so that it looks like it is just an extension of the mesh that is just a box.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(4, 4));
- 
-// GROUP
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GROUP, MESH, HELPER
+//-------- ----------
 var group = new THREE.Group();
 scene.add(group);
- 
 // BOX
 var mesh = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 1), new THREE.MeshNormalMaterial());
 group.add(mesh)
- 
 // SHAPE
 var tri = new THREE.Shape();
 tri.moveTo(-1, 1);
@@ -313,18 +337,12 @@ geometry.center();
 var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
 mesh.position.set(0, 2.0, 0);
 mesh.rotation.set(0, 0, Math.PI * 0.5);
- 
 // add the mesh to the group
 group.add(mesh);
 group.add(new THREE.BoxHelper(group));
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
