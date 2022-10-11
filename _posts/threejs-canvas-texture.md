@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-10-10 10:41:35
-version: 1.101
+updated: 2022-10-11 16:04:30
+version: 1.102
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -224,60 +224,98 @@ I then call my create cube constructor to create and return a mesh object, that 
 
 When this basic example is up and running the result is a cube with a texture created with the 2d canvas drawing context on each of the faces of the cube. So the basic idea of creating a texture with a canvas element is there, however there is a lot more to cover when it comes to this. There is a whole lot to cover when it comes to having more than one material for the geometry, or messing around with the uv values. However when it comes to staying on topic with canvas textures alone for one thing there is how to go about having an animated canvas texture, and also I am going to want to have a draw to use a custom raw function for a canvas too. So now that I have the basic example out of the way lets move on to some more advanced examples.
 
-### 1.3 - module example
+### 1.3 - Basic Module example
 
-In this section I will be writing about an example that makes use of a slightly more advanced revision of the create canvas helper that I made for the first basic example for this post. This method accepts a custom draw method that can be used to draw something else for the texture that is created. The draw method given is also called within a draw method that is part of a kind of canvas object that is returned by the helper function also. So now the helper does not return a texture, but an object that has a texture as one of the properties. Doing something like this strokes me as a necessary step when it comes to making some kind of canvas module built on top of threejs and native javaScript as when it comes to getting into updating the content of the canvas I am going to want references to the canvas element, and drawing context at the ready.
-
-Things are starting to get a little cluttered so for this example I will create an external javaScript file called canavsmod.js, and place all these custom helpers and methods there. The main public method of interest with this module is the method that I will be using to create and return my custom canvas object, the other methods as of this writing have to do with creating and returning a mesh object that uses the texture, and having one or more default draw methods ready work with.
+So now for a not so basic, basic example of canvas textures in threejs as this will be an example of a javaScript module in which I will be starting to abstract some stuff away. Although this will be an example of a module I will still be keeping this fairly basic by just focusing on the two main public methods that I would want to have in a module such as this, one would be a create method, and another will be an update method. On top of that I will also be adding a few backed in draw methods so that I can quickly get started with canvas textures by just passing a string for an option that would otherwise be a draw function, and then just tweak a few things to get the kind of texture I would like.
 
 ```js
 (function(api){
-    api.draw = function (ctx, canvas) {
-        ctx.fillStyle = '#000000';
+    //-------- ----------
+    // built in draw methods
+    //-------- ----------
+    const DRAW = {};
+    // square draw method
+    DRAW.square = (canObj, ctx, canvas, state) => {
+        ctx.fillStyle = canObj.palette[0]
         ctx.lineWidth = 1;
         ctx.fillRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
-        ctx.strokeStyle = '#00ff00';
+        ctx.strokeStyle = canObj.palette[1]
         ctx.strokeRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
     };
+    // random using palette colors
+    DRAW.rnd = (canObj, ctx, canvas, state) => {
+        let i = 0;
+        const gSize =  state.gSize === undefined ? 5 : state.gSize;
+        const len = gSize * gSize;
+        const pxSize = canObj.size / gSize;
+        while(i < len){
+            const ci = Math.floor( canObj.palette.length * Math.random() );
+            const x = i % gSize;
+            const y = Math.floor(i / gSize);
+            ctx.fillStyle = canObj.palette[ci];
+            ctx.fillRect(0.5 + x * pxSize, 0.5 + y * pxSize, pxSize, pxSize);
+            i += 1;
+        }
+    };
+    //-------- ----------
+    // HELEPRS
+    //-------- ----------
+    // parse draw option helper
+    const parseDrawOption = (opt) => {
+        // if opt.draw is false for any reason return DRAW.square
+        if(!opt.draw){
+            return DRAW.square;
+        }
+        // if a string is given assume it is a key for a built in draw method
+        if(typeof opt.draw === 'string'){
+            return DRAW[opt.draw];
+        }
+        // assume we where given a custom function
+        return opt.draw;
+    };
+    //-------- ----------
+    // PUBLIC API
+    //-------- ----------
     // create and return a canvas texture
-    api.createCanvasTexture = function (state, drawFunc) {
-        drawFunc = drawFunc || canvasMod.draw;
+    api.create = function (opt) {
+        opt = opt || {};
+        // create canvas, get context, set size
         const canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
-        canvas.width = 16;
-        canvas.height = 16;
-        const texture = new THREE.Texture(canvas);
-        texture.needsUpdate = true;
-        const canvasObj = {
-            texture: texture,
-            canvas: canvas,
-            ctx: ctx,
-            state: state,
-            draw: function(){
-                drawFunc.call(state, ctx, canvas, state);
-            }
+        opt.size = opt.size === undefined ? 16 : opt.size;
+        canvas.width = opt.size;
+        canvas.height = opt.size;
+        // create canvas object
+        const canObj = {
+            texture: null,
+            size: opt.size,
+            canvas: canvas, ctx: ctx,
+            palette: opt.palette || ['black', 'white'],
+            state: opt.state || {},
+            draw: parseDrawOption(opt)
         };
-        canvasObj.draw();
-        return canvasObj;
+        // create texture object
+        canObj.texture = new THREE.CanvasTexture(canvas);
+        api.update(canObj);
+        return canObj;
     };
-    // create a cube the makes use of a canvas texture
-    api.createCube = function (texture) {
-        return new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial({
-                map: texture
-            }));
+    // update
+    api.update = (canObj) => {
+        canObj.draw.call(canObj, canObj, canObj.ctx, canObj.canvas, canObj.state);
+        canObj.texture.needsUpdate = true;
     };
 }( this['canvasMod'] = {} ));
 ```
 
-So now to use my canvas.js module in an example. Here I just made two cubes for the scene one that makes used of the default draw method, and anther where I am passing a custom draw method.
+So now that I have my canvas module all set up I will now want to make at least one quick demo of the module just to test out that the features are working okay thus far. For this I made a usual threejs setup with the scene, camera and so forth, and then I made just a single helper function to quickly create some mesh objects that use the box geometry and will be using the textures from the canvas objects I will be created with my module.
+
+After that I made not one but three mesh objects each of which use a canvas texture made with my module here. The first one is just using all the default settings when it comes to just calling the create method without any options. The second mesh is using a built in draw method other than the default one by giving the key name in the built in object of draw methods. I can then also further customize things by giving a custom color palette as well as state values that are used for the draw function. The third and final mesh is making use of a custom user defined draw function just for showing that I can create custom draw functions as needed.
 
 ```js
 //-------- ----------
 // SCENE, CAMERA, RENDERER
 //-------- ----------
-var scene = new THREE.Scene();
+const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
 const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
 camera.position.set(2, 2, 2);
@@ -286,38 +324,63 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(640, 480);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
-// CANVAS
+// HELPERS
 //-------- ----------
-// create texture with default draw method
-let canvasObj = canvasMod.createCanvasTexture();
+const makeCube = (canObj, size) => {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(size, size, size),
+        new THREE.MeshBasicMaterial({
+            map: canObj.texture
+    }));
+};
+//-------- ----------
+// CANVAS DEFAULT
+//-------- ----------
+// create texture with default draw method, size settings and so forth
+let canObj1 = canvasMod.create();
 // create cube with the texture
-let cube = canvasMod.createCube(canvasObj.texture);
-scene.add(cube);
-// create texture with custom draw method that makes use of a state object
-const draw = function (ctx, canvas, state) {
-    ctx.fillStyle = 'red';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'black';
-    ctx.beginPath();
-    const hw = canvas.width / 2,
-    sx = hw,
-    sy = canvas.height / 2,
-    radius = hw - hw * state.rPer;
-    ctx.arc(sx, sy, radius, 0, Math.PI * 2);
-    ctx.fill();
+let cube1 = makeCube(canObj1, 1);
+scene.add(cube1);
+//-------- ----------
+// CANVAS WITH RND BUILT IN DRAW METHOD
+//-------- ----------
+let canObj2 = canvasMod.create({
+    draw:'rnd',
+    state: { gSize: 12 },
+    palette: ['red', 'lime', 'blue', 'cyan', 'purple', 'orange'] });
+let cube2 = makeCube(canObj2, 2);
+cube2.position.set(-3, 0, 0);
+scene.add(cube2);
+//-------- ----------
+// CANVAS CUSTOM
+//-------- ----------
+const opt = {
+    size: 64,
+    state: {
+        rPer: 0.2
+    },
+    draw: function (canObj, ctx, canvas, state) {
+        ctx.fillStyle = canObj.palette[1];
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = canObj.palette[0];
+        ctx.beginPath();
+        const hw = canvas.width / 2, sx = hw, sy = canvas.height / 2,
+        radius = hw - hw * state.rPer;
+        ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+        ctx.fill();
+    }
 };
-const state = {
-   rPer: 0.1
-};
-canvasObj = canvasMod.createCanvasTexture(state, draw);
-cube = canvasMod.createCube(canvasObj.texture);
-cube.position.set(0, 0, 2)
-scene.add(cube);
+const canObj3 = canvasMod.create(opt);
+const cube3 = makeCube(canObj3, 1);
+cube3.position.set(0, 0, 2);
+scene.add(cube3);
 //-------- ----------
 // RENDER
 //-------- ----------
 renderer.render(scene, camera);
 ```
+
+So for this kind of module design is working okay, but there are still a lot more features that I would like to add to a project such as this. I will want to save a lot of that for a more advanced section in this post, or maybe even a whole other post completely actually. In any case there is more to cover when it comes to advanced topics that revolve around canvas textures so lets get to that.
 
 ## 2 - Data textures and canvas textures
 
