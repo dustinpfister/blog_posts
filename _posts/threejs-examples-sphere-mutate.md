@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-11 10:23:10
-version: 1.23
+updated: 2022-10-11 10:26:44
+version: 1.24
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -27,7 +27,7 @@ It might be a good idea to read up more on the [buffer geometry class in general
 
 ### There is a lot that apply’s to mutation of sphere geometry in the Vector3 class
 
-I have wrote a number of blog posts on the Vector3 class and I have to say that there is a lot of useful tools in that class that can help with the mutation of the position attribute of sphere geometry. There is the normalize and multiply scalar methods that can be used to change the vector unit length of each vertex in the sphere for example. There is also making use of the apply Euler method with the Euler class to change diction of each point in the sphere.
+I have wrote a number of blog posts on the [Vector3 class](/2018/04/15/threejs-vector3/) and I have to say that there is a lot of useful tools in that class that can help with the mutation of the position attribute of sphere geometry. There is the [normalize](/2021/06/14/threejs-vector3-normalize/) and [multiply scalar methods](/2022/03/23/threejs-vector3-multiply-scalar/) that can be used to change the vector unit length of each vertex in the sphere for example. There is also making use of the [apply Euler](/2021/06/18/threejs-vector3-apply-euler) method with the [Euler class](/2021/04/28/threejs-euler/) to change diction of each point in the sphere.
 
 The state of the position attribute might be a linear array of numbers, but there is also getting into how to convert that to an array of Vectors, or create a vector3, use the class methods to do what I want, and then mutating the array of the position attribute. I will be going over some source code examples of this here, sure, but I would not stop at this post when it comes to reading about this sort of thing.
 
