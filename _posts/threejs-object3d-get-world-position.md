@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-10-12 14:35:04
-version: 1.28
+updated: 2022-10-12 14:38:53
+version: 1.29
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](https://threejs.org/docs/#api/en/objects/Group) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). 
@@ -35,7 +35,7 @@ The use of the get world position often ends up going hand in hand with the [use
 
 ### The source code examples in this post are up on Github
 
-The source code examples that I am writing about in this post can be found on Github in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-get-world-position).
+The source code examples that I am writing about in this post can be found on Github in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-get-world-position). This is also where I park the source code examples for my [many other blog posts on the threejs library](/categories/three-js/).
 
 ### Version numbers matter in three.js
 
@@ -111,7 +111,7 @@ With the group in which I am using the get world position method as a way to get
 
 ## 2 - Animation loop examples
 
-I would like to make at least one if not more videos for each of my blog posts on threejs, and this one is no exception. Also in order to really gain a good sense of what is going on with various things that have to go with world space and local space it would be best to make at least a few animation examples with this sort of thing.
+I would like to make at least one if not more videos for each of my blog posts on threejs, and this one is no exception. Also in order to really gain a good sense of what is going on with various things that have to go with world space and local space it would be best to make at least a few animation examples with this sort of thing. So in this section I will be going over at least one if not more animation examples that involve the use of the get world position method of the object3d class.
 
 ### 2.1 - Animation example of the cone and cube groups
 
