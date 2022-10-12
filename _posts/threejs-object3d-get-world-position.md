@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-10-12 14:46:25
-version: 1.30
+updated: 2022-10-12 14:50:10
+version: 1.31
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](https://threejs.org/docs/#api/en/objects/Group) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). 
 
-When Working with nested objects, and the look at method of the objecy3d class, it is important to remember that the look at method will always have the object to look at something relative to world space, not local space, or space relative to the parent object if you prefer. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space, rather than the position property of the object which is a position relative to the group rather than world space. There is one weird thing about it though which is that a target vector3 instance must be given when it comes to late versions of threejs at least r135+ last I checked.
+When working with nested objects, and the look at method of the objecy3d class, it is important to remember that the look at method will always have the object look at something relative to world space, not local space or space relative to the parent object if you prefer. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space. 
+
+There is one weird thing about it though which is that a target vector3 instance must be given when it comes to late versions of threejs at least r135+ last I checked. In other words I can not just call the method and have a new Vector3 returned I must create a new one and pass it to the get world space method as an argument have the world relative position copied to this new Vector3 object.
 
 Knowing the difference between world space, and space that is relative to a group, or any object that is based off of Object3d is one of the many little details that one should get familiar with at one point or another when it comes to making projects with three.js. So in this post I will be addressing this issue with some source code that has to do with nested mesh objects and the use of this get world space method.
 
