@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-10-12 14:38:53
-version: 1.29
+updated: 2022-10-12 14:46:25
+version: 1.30
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](https://threejs.org/docs/#api/en/objects/Group) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). 
@@ -212,6 +212,8 @@ const loop = () => {
 };
 loop();
 ```
+
+This is then the source code that I have together for the first video that I have made for this blog post. In time I might very well come around to edit this post again, and when I do so I may or may not make an additional video or two and then expand this section. The main thing here though is to just have a decent visual demo of why the get world positing method can prove to be useful and all ready I would say that this animation dies a good job of that.
 
 ## Conclusion
 
