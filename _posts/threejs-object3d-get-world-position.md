@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-10-12 14:07:57
-version: 1.25
+updated: 2022-10-12 14:18:39
+version: 1.26
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](/2018/05/16/threejs-grouping-mesh-objects/) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). 
@@ -108,6 +108,108 @@ renderer.render(scene, camera);
 ```
 
 With the group in which I am using the get world position method as a way to get a position to pass to look at the cone points to the cube that is inside the group. However the group where I am just passing the position of the cube to the look at method that cone is not pointing to the cube, it is however pointing to a position where the cube world be if that position value was relative to the world rather that the parent group object. So then this example helps to show the difference, and why in some cases I will want to use the get world position method when working with an object that is a child of a group.
+
+## 2 - Animation loop examples
+
+I would like to make at least one if not more videos for each of my blog posts on threejs, and this one is no exception. Also in order to really gain a good sense of what is going on with various things that have to go with world space and local space it would be best to make at least a few animation examples with this sort of thing.
+
+### 2.1 - Animation example of the cone and cube groups
+
+Here I have an animation example of the groups that contain a cone and a cube as a way to show what the difference is with world space compared to the typical local space that is given to the look at method of the object3d class.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
+camera.position.set(0, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createGroup = function (color, x) {
+    color = color || new THREE.Color(1, 1, 1);
+    const group = new THREE.Group();
+    const geo = new THREE.CylinderGeometry(0, 0.5, 1, 12);
+    geo.rotateX(Math.PI * 0.5);
+    const pointer = group.userData.pointer = new THREE.Mesh(
+            geo,
+            new THREE.MeshNormalMaterial());
+    pointer.position.set(0, 0, 0);
+    pointer.rotation.y = 1.57;
+    group.add(pointer);
+    const cube = group.userData.cube = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.5, 0.5),
+            new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 0.5 }));
+    cube.position.set(0, 0, 1);
+    group.add(cube);
+    group.position.set(x, 0, 0);
+    return group;
+};
+// update
+const updateGroup = (group, alpha) => {
+    const e = new THREE.Euler();
+    e.y = Math.PI * 2 * alpha;
+    group.userData.cube.position.copy( new THREE.Vector3(1,0,0) ).applyEuler(e).normalize().multiplyScalar(1.5);
+};
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(5, 5));
+// just set up group1 and group2
+const group1 = createGroup(0xff0000, -2);
+scene.add(group1);
+const group2 = createGroup(0x00ff00, 2);
+scene.add(group2);
+const helper1 = new THREE.BoxHelper(group1);
+scene.add(helper1);
+const helper2 = new THREE.BoxHelper(group2);
+scene.add(helper2);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 120;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    // animate groups the same way
+    let a = frame / frameMax;
+    updateGroup(group1, a);
+    updateGroup(group2, a);
+    helper1.update();
+    helper2.update();
+    // with group1 I am just passing lookAt the LOCAL position of the cube
+    group1.userData.pointer.lookAt(group1.userData.cube.position);
+    // with group to I am USING GETWORLDPOSITION to get a vector to pass to lookAt
+    const v = new THREE.Vector3(0, 0, 0);
+    group2.userData.cube.getWorldPosition(v);
+    group2.userData.pointer.lookAt(v);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
 
 ## Conclusion
 
