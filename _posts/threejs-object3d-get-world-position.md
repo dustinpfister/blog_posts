@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-04-24 09:28:54
-version: 1.24
+updated: 2022-10-12 14:07:57
+version: 1.25
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](/2018/05/16/threejs-grouping-mesh-objects/) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). 
@@ -17,6 +17,9 @@ Knowing the difference between world space, and space that is relative to a grou
 
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/H9jAlG9fOa8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Getting world position in threejs and what to know first
 
