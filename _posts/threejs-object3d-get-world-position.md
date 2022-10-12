@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2022-10-12 14:18:39
-version: 1.26
+updated: 2022-10-12 14:32:37
+version: 1.27
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](/2018/05/16/threejs-grouping-mesh-objects/) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). 
@@ -115,7 +115,9 @@ I would like to make at least one if not more videos for each of my blog posts o
 
 ### 2.1 - Animation example of the cone and cube groups
 
-Here I have an animation example of the groups that contain a cone and a cube as a way to show what the difference is with world space compared to the typical local space that is given to the look at method of the object3d class.
+Here I have an animation example of the groups that contain a cone and a cube as a way to show what the difference is with world space compared to the typical local space that is given to the look at method of the object3d class. Once again I create two groups with the same create group helper function that returns a new group object with two child mesh objects. One child mesh object contains a cylinder geometry that is shaped like a cone, and the other mesh object is just a box geometry. I then also now have an update group helper function that will move the box geometry mesh around in a circle relative to the position of the group.
+
+So then I am creating both groups with the same helper, and I am also updating the positions of the cubes with the same helper function as well. The difference in the update method of the animation loop though is that for group1 I am just passing the raw position of the child cube of group1 to the look a method that I am calling off the cone. This results in the cone looking in the direction of where the cube would be relative to world space. Often I will not want this to happen so I need to get the position of the cube relative to world space rather than just use the local space relative to the group. So to do this with group2 I am using the get world position method to copy the world relative location to a vector3 that I then use with the look at method, the end result is that the cone looks where the cube really is rather than where it would be if it where relative to the scene object rather than the group.
 
 ```js
 //-------- ----------
