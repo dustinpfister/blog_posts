@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-13 12:44:00
-version: 1.43
+updated: 2022-10-13 13:08:20
+version: 1.44
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -196,6 +196,10 @@ This is still very much a basic section of the post, so I will not be getting in
 
 Often I might want to use more than one material when it comes to skinning a plane geometry. For starers there is just passing an array of two materials rather than just a single material instance object to the mesh constructor that I use with the plane geometry. However that might just be a first step, as with late versions of three.js there will be no groups added by default by just calling the plane geometry constructor. The groups must be added then by calling the [add group](https://threejs.org/docs/#api/en/core/BufferGeometry.addGroup) method of the buffer geometry class. When doing so I need to give a vertex index value as the first argument, followed by a count of vertex index values from that start point, followed by a material index value. If you still find that confusing maybe it would be best to learn by doing and just start playing around with a code example of this.
 
+### 2.1 - Basic Gorups example
+
+To start out with this there is just getting together a basic example where I am just making a few calls of the add group method to create groups that way. When it comes to really getting into this sort of thing I will want to do so in a loop and work out some logic for the arguments that I pass to the add group method, but for now I will just be starting out with a basic example of this.
+
 ```js
 (function () {
     // ---------- ----------
@@ -247,11 +251,9 @@ Often I might want to use more than one material when it comes to skinning a pla
 
 In this example I am calling the add group method a total of four times, one time for each triangle in this plane geometry that is 1 by 2 in terms of the dimensions of the sections. I could call the the add group method just two times with a different set of values for the start vertex and count of vertex points. And there is also changing up what the material index values are for these add group calls also when it comes to the third argument. Once you get a fell for what the situation is with these arguments and the effect that they end up having, it is time to move on to working out some functions that can help with creating groups and setting material index values.
 
-## 3 - Checker board example
+### 2.2 - Creating a checker board plane geometry with groups
 
 In this section I will be going over a checker board example of plane geometry in three.js. The basic idea here is to just work out a function that will create the groups, and set the material index values for each group in a desired way.
-
-### 3.1 - The helper methods for creating a checker board plane geometry
 
 I worked out two helper method for this example by making a function that will create and return a plane geometry, and another function that will use that method that creates the plane geometry in a mesh.
 
