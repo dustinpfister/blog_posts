@@ -5,14 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-13 11:16:02
-version: 1.39
+updated: 2022-10-13 11:23:39
+version: 1.40
 ---
 
-In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
+In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
 
-The [three plane](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) constructor allows for setting the width and height, but also a count for section width, and section height as well when creating a plane geometry. There is then the question of how to go about styling a checkered plane in threejs, as well as some other related topics when it comes to working with planes in threejs. So lets take a look at some plane geometry examples in threejs to get a better grasp on how to get up and running with plain geometry in threejs.
+The [three plane](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) constructor allows for setting the width and height, but also a count for section width, and section height as well when creating a plane geometry. There is then the question of how to go about styling a checkered plane in threejs, as well as some other related topics when it comes to working with planes in threejs. There are two general ways of doing that sort of thing, one would be to just think in terms of a single material and a single texture, and the other would involve getting into creating and adding groups for the geometry. In any case the plane geometry is a great one to start with when it comes to both of these topics actually.
 
+There are many other little details about this that I should also touch base on such as rotating the geometry rather than  the mesh object that contains it, and setting the side property of the material that I use with the geometry when creating the mesh and so forth. So lets take a look at some plane geometry examples in threejs to get a better grasp on how to get up and running with plain geometry in threejs.
 <!-- more -->
 
 ## Plane Geometry in three.js and what to know first
@@ -34,7 +35,7 @@ The source code examples that I am writing about in this post can also be found 
 
 When I first wrote this post I was using three.js revision r104, and the last time I came around to do a little editing of this post I was using r140. Sense then some code breaking changes have been introduced that will cause some of these examples to break when it comes to having a checkerboard pattern on a plane depending on what version you are using. I am generally keeping the newer code examples to the top of the post, and leaving the older examples at the bottom for the sake of historical reasons, or if for some reason you are still using an older versions of three.js.
 
-As of this writing I have all of the new examples working well with r140. The one old section on the face3 class at the bottom of this post was still working on r111 and at this time I am only going ot be interetsed in mantajing the examples that are newer.
+As of this writing I have all of the new examples working well with r140. The one old section on the face3 class at the bottom of this post was still working on r111 and at this time I am only going to be interested in maintaining the examples that are newer.
 
 ## 1 - Three Plane basic example
 
@@ -377,7 +378,7 @@ Now it is time to test out this module to see if what I worked out is working th
     ());
 ```
 
-There is then coming up with additional methods for setting the index values in a whole bunch of different ways, and also making such functions that will take some arguments. However there is not just the material index values of course there is aso working out new ways to add the groups in different ways also. never the less after working out this example I now have a decent grasp on how to go about  feating groups and setting material index values for plane geometries. Also much of what I have worked out here of course applies to buffered geometry in general also.
+There is then coming up with additional methods for setting the index values in a whole bunch of different ways, and also making such functions that will take some arguments. However there is not just the material index values of course there is also working out new ways to add the groups in different ways also. never the less after working out this example I now have a decent grasp on how to go about  adding groups and setting material index values for plane geometries. Also much of what I have worked out here of course applies to buffered geometry in general also.
 
 ## 5 - Styling a plane as a checkered board in three.js r104 - r124 with face3
 
