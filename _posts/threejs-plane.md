@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-05-21 13:35:05
-version: 1.37
+updated: 2022-10-13 11:12:32
+version: 1.38
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -26,9 +26,15 @@ In this post I am writing about the plane geometry constructor in threejs a java
 
 It might be a good idea to read up more on the [Buffer Geometry class](/2021/04/22/threejs-buffer-geometry/) and the add group method to be more specific when it comes to adding groups to a geometry and working with [more than one material when adding the geometry to a mesh](/2018/05/14/threejs-mesh-material-index/). With many built in geometry constructors such as the Box Geometry constructor groups are added to begin with in the constructor, and in that case one just needs to go through and change material index values as the groups are there to begin with and have starting index values. However as of late versions of three.js this is nit the case with the Plane Geometry Constructor, the groups must be added as there will not be any by default. In this post I will be going over this in some of the more advanced examples, but in never hurts to look into more resources on this topic.
 
-### version Numbers matter
+### Source code is up on Github
 
-When I first wrote this post I was using three.js revision r104, and the last time I came around to do a little editing of this post I was using r127. Sense then some code breaking changes have been introduced that will cause some of these examples to break when it comes to having a checkerboard pattern on a plane depending on what version you are using. I am generally keeping the newer code examples to the top of the post, and leaving the older examples at the bottom for the sake of historical reasons, or if for some reason you are still using an older versions of three.js.
+The source code examples that I am writing about in this post can also be found in my [test threejs Github Reposatory](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-plane).
+
+### Version Numbers matter
+
+When I first wrote this post I was using three.js revision r104, and the last time I came around to do a little editing of this post I was using r140. Sense then some code breaking changes have been introduced that will cause some of these examples to break when it comes to having a checkerboard pattern on a plane depending on what version you are using. I am generally keeping the newer code examples to the top of the post, and leaving the older examples at the bottom for the sake of historical reasons, or if for some reason you are still using an older versions of three.js.
+
+As of this writing I have all of the new examples working well with r140. The one old section on the face3 class at the bottom of this post was still working on r111 and at this time I am only going ot be interetsed in mantajing the examples that are newer.
 
 ## 1 - Three Plane basic example
 
@@ -199,7 +205,7 @@ Although this seems to work okay, I think that it might be even better to pull t
 
 The example where I am just setting a checker board like pattern is a good start, but now I think I should make a module where there is just creating the groups like that, but pulling the logic that has to do with setting material index values out into a function of its own. There is then experimenting with creating at least a few functions that have to do with setting material index values in different ways.
 
-### 4.1 - The tile module
+### 4.0 - The tile module
 
 For this example then I started to make a kind of tile index module that i can use to create and return a mesh object that has a plane geometry with groups set up in a grid like pattern. However the material index values will be set to zero by default for all of the sections, so then there uis having a few additional functions that will set material index values for the mesh objects that I create with this module.
 
@@ -303,7 +309,7 @@ For this example then I started to make a kind of tile index module that i can u
     (this['TileMod'] = {}));
 ```
 
-### 4.2 - Demo of the tile index module
+### 4.1 - Demo of the tile index module
 
 Now it is time to test out this module to see if what I worked out is working the way that I would like it to, and it would seem that it is.
 
@@ -357,41 +363,57 @@ renderer.render(scene, camera);
 
 There is then coming up with additional methods for setting the index values in a whole bunch of different ways, and also making such functions that will take some arguments. However there is not just the material index values of course there is aso working out new ways to add the groups in different ways also. never the less after working out this example I now have a decent grasp on how to go about  feating groups and setting material index values for plane geometries. Also much of what I have worked out here of course applies to buffered geometry in general also.
 
-## 5 - Styling a plane as a checkered board in three.js r104 - r124
+## 5 - Styling a plane as a checkered board in three.js r104 - r124 with face3
 
 This is the older example for a checkered board plane geometry that I made when I first wrote this post, back then I was using three.hs r104, so this will likely break on newer versions of three.js.
 
 When it comes to styling a plane that has some sections with it, doing so can be a little confusing, but might not prove to be to hard. I have found solutions on line at [stack overflow](https://stackoverflow.com/questions/22689898/three-js-checkerboard-plane) that will work okay in some situations but not others depending on the number of sections. I was able to work out a solution for this that seems to work okay with any combination of width and height sections though and in the section I will be going over just that.
 
-### 5.1 - The checker helpers 
+### 5.1 - The checker helpers and face3
 
 Here I have two functions that create a plane geometry that has the material index values set for each tile section in the plane. So in other words when the geometry is used with a mesh that has an array of materials the material index values of 0 and 1 will be used for every other tile section in the plane, just like that of a checker board pattern.
 
+So now I can use my mkCheker to create a mesh that uses a plane geometry with the material index values set to the right values for each section in the plane.
+
 ```js
-var mkCheckerGeo = function (w, h, sw, sh) {
-    w = w === undefined ? 16 : w;
-    h = h === undefined ? 16 : h;
-    sw = sw === undefined ? 8 : sw;
-    sh = sh === undefined ? 8 : sh;
-    console.log(sh);
-    var planeGeo = new THREE.PlaneGeometry(w, h, sw, sh);
-    planeGeo.faces.forEach(function (face, i) {
-        var tile = Math.floor(i / 2),
-        w = planeGeo.parameters.widthSegments,
-        h = planeGeo.parameters.heightSegments,
-        y = Math.floor(tile / w);
-        if (w % 2) {
-            face.materialIndex = tile % 2;
-        } else {
-            face.materialIndex = y % 2 ? 1 - tile % 2 : tile % 2
-        }
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 1000);
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer({
+        antialias: true
     });
-    return planeGeo;
-};
- 
-var mkChecker = function (opt) {
-    opt = opt || {};
-    opt.materials = opt.materials || [
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    var mkCheckerGeo = function (w, h, sw, sh) {
+        w = w === undefined ? 16 : w;
+        h = h === undefined ? 16 : h;
+        sw = sw === undefined ? 8 : sw;
+        sh = sh === undefined ? 8 : sh;
+        var planeGeo = new THREE.PlaneGeometry(w, h, sw, sh);
+        planeGeo.faces.forEach(function (face, i) {
+            var tile = Math.floor(i / 2),
+            w = planeGeo.parameters.widthSegments,
+            h = planeGeo.parameters.heightSegments,
+            y = Math.floor(tile / w);
+            if (w % 2) {
+                face.materialIndex = tile % 2;
+            } else {
+                face.materialIndex = y % 2 ? 1 - tile % 2 : tile % 2
+            }
+        });
+        return planeGeo;
+    };
+    var mkChecker = function (opt) {
+        opt = opt || {};
+        opt.materials = opt.materials || [
             new THREE.MeshBasicMaterial({
                 color: 0xe0e0e0
             }),
@@ -399,50 +421,40 @@ var mkChecker = function (opt) {
                 color: 0x505050
             })
         ];
-    // add a plane
-    var plane = new THREE.Mesh(
+        // add a plane
+        var plane = new THREE.Mesh(
             mkCheckerGeo(opt.w, opt.h, opt.sw, opt.sh),
             opt.materials);
-    plane.rotation.set(-Math.PI / 2, 0, 0);
-    return plane;
-};
-```
-
-### 5.2 - The checker helpers in action
-
-So now I can use my mkCheker to create a mesh that uses a plane geometry with the material index values set to the right values for each section in the plane.
-
-```js
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
-camera.position.set(10, 10, 10);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
-renderer.setSize(320, 240);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-// standard checker
-var check = mkChecker({
+        plane.rotation.set(-Math.PI / 2, 0, 0);
+        return plane;
+    };
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    // standard checker
+    var check = mkChecker({
         w: 5,
         h: 5
     });
-scene.add(check);
- 
-// odd checker
-var oddCheck = mkChecker({
+    scene.add(check);
+    check.position.set(-4, 0, 0);
+    // odd checker
+    var oddCheck = mkChecker({
         w: 4,
         h: 5,
         sw: 3,
         sh: 5
     });
-oddCheck.position.set(8, 0, 0);
-scene.add(oddCheck);
- 
-renderer.render(scene, camera);
+    oddCheck.position.set(4, 0, 0);
+    scene.add(oddCheck);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
-## 6 - Conclusion
+## Conclusion
 
 That will be it for now when it comes to plane geometry in three.js, I have a lot of other posts that I am getting around to editing a little, but I do not always have enough time to give every post the attention that it might need. The plane geometry works okay for what typically use if for, however as of late I often just use a box geometry to sever as a crude yet functional floor.
