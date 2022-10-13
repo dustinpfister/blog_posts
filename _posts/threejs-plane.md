@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-13 12:19:58
-version: 1.41
+updated: 2022-10-13 12:38:12
+version: 1.42
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -145,6 +145,52 @@ Speaking of rotation there is not just rotation of the mesh object, but also [ro
     ());
 ```
 
+### 1.3 – Segments
+
+So far in these example I have been using plane geometries that have a segment count of 1 by 1 which is the default. Often the default segments size will work just fine if I want to have just a single flat surface that is a single solid color. It is still possible to add a checkerboard of any kind of look to it but I will have to do so with a single texture with a single material. if I want to do anything that is a little involves such as having more that one material for more than one area, or start with a flat surface that I will the mutate over time or something like that then chances are I will want to go with a segment count greater that 1 by 1.
+
+This is still very much a basic section of the post, so I will not be getting into any of those advanced things that I wrote about just now, but I will create a few mesh objects here, one of which will have a higher count than 1 by 1 with segments. To gain a better sense of what is going on I will be setting the wire frame option for a shared material to true.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(6, 6, 6);
+    camera.lookAt(0.75, -2, 0);
+    scene.add(camera);
+    // render
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH - 
+    // ---------- ----------
+    // shared material in wire frame mode
+    const material = new THREE.MeshBasicMaterial( { wireframe: true, wireframeLinewidth: 3 });
+    // 5 by 5 size, but just 1 by 1 with segments ( DEFAULT ) 
+    const mesh2 = new THREE.Mesh(
+        new THREE.PlaneGeometry(5, 5),
+        material);
+    mesh2.geometry.rotateX( Math.PI * 0.5 );
+    mesh2.position.set(-3, 0, 0);
+    scene.add(mesh2);
+    // 5 by 5 size, and 10 by 10 with segments
+    const mesh3 = new THREE.Mesh(
+        new THREE.PlaneGeometry(5, 5, 10, 10),
+        material);
+    mesh3.geometry.rotateX( Math.PI * 0.5 );
+    mesh3.position.set(3, 0, 0);
+    scene.add(mesh3);
+    // ---------- ----------
+    // RENDER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
 
 ## 2 - Adding one or more groups to a plane geometry and working with an array of materials
 
