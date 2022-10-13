@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-13 14:10:36
-version: 1.45
+updated: 2022-10-13 19:13:21
+version: 1.46
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -16,12 +16,12 @@ The [three plane](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) con
 There are many other little details about this that I should also touch base on such as rotating the geometry rather than  the mesh object that contains it, and setting the side property of the material that I use with the geometry when creating the mesh and so forth. So lets take a look at some plane geometry examples in threejs to get a better grasp on how to get up and running with plain geometry in threejs.
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/D5Wh5--DjJE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Plane Geometry in three.js and what to know first
 
 In this post I am writing about the plane geometry constructor in threejs a javaScript library that has to do with 3d modeling. As such I expect that you have spent at least a little time [learning how to get started with three.js](/2018/04/04/threejs-getting-started/), and how to [program in general with client side javaScript](/2018/11/27/js-getting-started/). In any case in this section I will be going over a few things that you might want to read up on a bit more before really getting into the plane geometry constructor.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/PvBaddSz-xs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ### Might want to read up more on Buffer Geometry Class addGroup method, and Material Index values
 
@@ -742,13 +742,357 @@ Now it is time to test out this module to see if what I worked out is working th
 
 There is then coming up with additional methods for setting the index values in a whole bunch of different ways, and also making such functions that will take some arguments. However there is not just the material index values of course there is also working out new ways to add the groups in different ways also. never the less after working out this example I now have a decent grasp on how to go about  adding groups and setting material index values for plane geometries. Also much of what I have worked out here of course applies to buffered geometry in general also.
 
-## 5 - Styling a plane as a checkered board in three.js r104 - r124 with face3
+## 5 - Animation loop examples
+
+With many of my blog posts on threejs I like to make at least one if not more videos for the post, and this post is no exception of course. In this section I will be writing abut the source code that I ma using as a starting point for all of my video projects for this blog post thus far.
+
+### 5.1 - Video1 project using r0 of object grid wrap
+
+The first video that I made for this blog posr made use of r0 of [my object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that you can read about more at this post if interested.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/PvBaddSz-xs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(8, 6, 8);
+    camera.lookAt(0, -1.5, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // LIGHT
+    // ---------- ----------
+    const dl = new THREE.DirectionalLight();
+    scene.add(dl);
+    // ---------- ----------
+    // HELPERS
+    // ---------- ----------
+    // make a data texture
+    const mkDataTexture = function (data, w) {
+        data = data || [];
+        w = w || 0;
+        const width = w,
+        height = data.length / 4 / w;
+        const texture = new THREE.DataTexture(data, width, height);
+        texture.needsUpdate = true;
+        return texture;
+    };
+    // simple gray scale seeded random texture
+    const seededRandom = function (w, h, rPer, gPer, bPer, range) {
+        w = w === undefined ? 5 : w,
+        h = h === undefined ? 5 : h;
+        rPer = rPer === undefined ? 1 : rPer;
+        gPer = gPer === undefined ? 1 : gPer;
+        bPer = bPer === undefined ? 1 : bPer;
+        range = range || [0, 255]
+        const size = w * h;
+        const data = new Uint8Array(4 * size);
+        for (let i = 0; i < size; i++) {
+            const stride = i * 4;
+            const v = Math.floor(range[0] + THREE.MathUtils.seededRandom() * (range[1] - range[0]));
+            data[stride] = v * rPer;
+            data[stride + 1] = v * gPer;
+            data[stride + 2] = v * bPer;
+            data[stride + 3] = 255;
+        }
+        return mkDataTexture(data, w);
+    };
+    //-------- ----------
+    // TEXTURES
+    //-------- ----------
+    const textureRND1 = seededRandom(80, 80, 1, 1, 1, [130, 250]);
+    const textureRND2 = seededRandom(160, 160, 1, 1, 1, [64, 170]);
+    //-------- ----------
+    // MATERIALS
+    //-------- ----------
+    const MATERIALS = [
+        new THREE.MeshStandardMaterial({
+            color: 0x00ff00,
+            map: textureRND1,
+            side: THREE.DoubleSide
+        }),
+        new THREE.MeshStandardMaterial({
+            color: 0x00aa00,
+            map: textureRND2,
+            side: THREE.DoubleSide
+        })
+    ];
+    //-------- ----------
+    // GRID SOURCE OBJECTS
+    //-------- ----------
+    const tw = 5,
+    th = 5,
+    space = 3.1;
+    const ground = TileMod.create({w: 3, h: 3, sw: 2, sh: 2, materials: MATERIALS});
+    TileMod.setCheckerBoard(ground)
+    const array_source_objects = [
+        ground
+    ];
+    const array_oi = [],
+    len = tw * th;
+    let i = 0;
+    while(i < len){
+        array_oi.push( Math.floor( array_source_objects.length * THREE.MathUtils.seededRandom() ) );
+        i += 1;
+    }
+    //-------- ----------
+    // CREATE GRID
+    //-------- ----------
+    const grid = ObjectGridWrap.create({
+        space: space,
+        tw: tw,
+        th: th,
+        aOpacity: 1.25,
+        sourceObjects: array_source_objects,
+        objectIndices: array_oi
+    });
+    scene.add(grid);
+    // ---------- ----------
+    // LOOP
+    // ---------- ----------
+    const fps_move = 30, fps_update = 8;
+    let f = 0, fm = 300, lt = new Date();
+    const loop = () => {
+        const now = new Date();
+        const secs = (now - lt) / 1000;
+        const a = f / fm;
+       //const b = 1 - Math.abs( 0.5 - a ) / 0.5;
+        requestAnimationFrame(loop);
+        if(secs >= 1 / fps_update){
+            ObjectGridWrap.setPos(grid, 1 - a, 0 );
+            ObjectGridWrap.update(grid);
+            f += fps_move * secs;
+            f %= fm;
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+### 5.2 - Video2 project using r2 of objects grid wrap, oacity2 and custom flip effects, and animated data textures
+
+I have made a second video for this post which at the time of this writing is the top video in this post.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, -1.5, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // LIGHT
+    // ---------- ----------
+    const dl = new THREE.DirectionalLight();
+    dl.position.set(0,3,3)
+    scene.add(dl);
+    // ---------- ----------
+    // HELPERS
+    // ---------- ----------
+    const createData = function(opt){
+        opt = opt || {};
+        opt.width = opt.width === undefined ? 16: opt.width; 
+        opt.height = opt.height === undefined ? 16: opt.height;
+        // DEFAULT FOR PIX METOD IS A CHECKER PATTERN HERE
+        opt.forPix = opt.forPix || function(color, x, y, i, opt){
+            color.setRGB(255, 255, 255);
+            if(y % 2 === 0 && x % 2 === 0){
+               color.setRGB(32, 32, 32);
+            }
+            if(y % 2 != 0 && x % 2 != 0){
+               color.setRGB(64, 64, 64);
+            }
+            return color;
+        };
+        let size = opt.width * opt.height;
+        let data = new Uint8Array( 4 * size );
+        for ( let i = 0; i < size; i ++ ) {
+            let stride = i * 4,
+            x = i % opt.width,
+            y = Math.floor(i / opt.width),
+            color = opt.forPix( new THREE.Color(), x, y, i, opt);
+            data[ stride ] = color.r;
+            data[ stride + 1 ] = color.g;
+            data[ stride + 2 ] = color.b;
+            data[ stride + 3 ] = 255;
+        }
+        return data;
+    };
+    // create data texture
+    const createDataTexture = function(opt){
+        opt = opt || {};
+        opt.width = opt.width === undefined ? 16: opt.width; 
+        opt.height = opt.height === undefined ? 16: opt.height;
+        const data = opt.data || createData(opt);
+        let texture = new THREE.DataTexture( data, opt.width, opt.height );
+        texture.needsUpdate = true;
+        return texture;
+    };
+    // update a texture
+    const updateTexture = (texture, opt) => {
+        // just updating data array only
+        const data = createData(opt);
+        texture.image.data = data;
+        texture.needsUpdate = true;
+    };
+    //-------- ----------
+    // TEXTURES
+    //-------- ----------
+    const opt_data_texture = {
+        alpha: 1,
+        forPix: function(color, x, y, i, opt){
+            const roll = Math.random();
+            if(roll < 0.05){
+                color.setRGB(255,255,255);
+                return color;
+            }
+            let v = 50 + 100 * opt.alpha + 100 * opt.alpha * Math.random();
+            color.setRGB(0, v, 0);
+            if(y % 2 === 0 && x % 2 === 0){
+               v = 25 + 50 * (1 - opt.alpha) + 25 * Math.random();
+               color.setRGB(0, v, 0);
+            }
+            if(y % 2 != 0 && x % 2 != 0){
+               v = 50 + 100 * (1 - opt.alpha) + 50 * Math.random();
+               color.setRGB(0, v, 0);
+            }
+            return color;
+        }
+    };
+    const texture_checker = createDataTexture(opt_data_texture);
+    // random texture options
+    const opt_data_texture_rnd = {
+        forPix: function(color, x, y, i, opt){
+            const v = 32 + 200 * Math.random();
+            const roll = Math.random();
+            if(roll < 0.80){
+                color.g = v;
+                return color;
+            }
+            color.setRGB(v, v, v);
+            return color;
+        }
+    };
+    const texture_rnd = createDataTexture(opt_data_texture_rnd);
+    //-------- ----------
+    // MATERIALS
+    //-------- ----------
+    const MATERIALS = [
+        new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            map: texture_checker,
+            side: THREE.DoubleSide
+        }),
+        new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            map: texture_rnd,
+            side: THREE.DoubleSide
+        })
+    ];
+    //-------- ----------
+    // GRID SOURCE OBJECTS
+    //-------- ----------
+    const tw = 8,
+    th = 8,
+    space = 3.1;
+    const ground1 = TileMod.create({w: 3, h: 3, sw: 4, sh: 4, materials: MATERIALS[0]});
+    TileMod.setCheckerBoard(ground1);
+    const ground2 = TileMod.create({w: 3, h: 3, sw: 4, sh: 4, materials: MATERIALS});
+    TileMod.setCheckerBoard(ground2);
+    const ground3 = TileMod.create({w: 3, h: 3, sw: 4, sh: 4, materials: MATERIALS[1]});
+    TileMod.setCheckerBoard(ground3);
+    const array_source_objects = [
+        ground1,
+        ground2,
+        ground3
+    ];
+    const array_oi = [],
+    len = tw * th;
+    let i = 0;
+    // random index values for source objects?
+    while(i < len){
+        array_oi.push( Math.floor( array_source_objects.length * THREE.MathUtils.seededRandom() ) );
+        i += 1;
+    }
+    //-------- ----------
+    // EFFECT
+    //-------- ----------
+    (function(){
+        ObjectGridWrap.load( {
+            EFFECTS : {
+                flip : function(grid, obj, objData, ud){
+                    const startFlip = grid.userData.startFlip === undefined ? -45: grid.userData.startFlip;
+                    const maxFlipDelta = grid.userData.maxFlipDelta === undefined ? 90: grid.userData.maxFlipDelta;
+                    obj.rotation.x = Math.PI / 180 * startFlip  + Math.PI / 180 * maxFlipDelta * objData.b;
+                }
+            }
+        });
+    }());
+    //-------- ----------
+    // CREATE GRID
+    //-------- ----------
+    const grid = ObjectGridWrap.create({
+        space: space,
+        tw: tw,
+        th: th,
+        effects: ['opacity2', 'flip'],
+        sourceObjects: array_source_objects,
+        objectIndices: array_oi
+    });
+    scene.add(grid);
+    // ---------- ----------
+    // LOOP
+    // ---------- ----------
+    const fps_move = 30, fps_update = 20;
+    let f = 0, fm = 300, lt = new Date();
+    const loop = () => {
+        const now = new Date();
+        const secs = (now - lt) / 1000;
+        const a = f / fm;
+        const b = 1 - Math.abs( 0.5 - a ) / 0.5;
+        requestAnimationFrame(loop);
+        if(secs >= 1 / fps_update){
+            grid.userData.startFlip = -180 * b;
+            grid.userData.maxFlipDelta = 360 * b;
+            opt_data_texture.alpha = b;
+            updateTexture(texture_checker, opt_data_texture);
+            updateTexture(texture_rnd, opt_data_texture_rnd);
+            ObjectGridWrap.setPos(grid, 1 - a, 0 );
+            ObjectGridWrap.update(grid);
+            f += fps_move * secs;
+            f %= fm;
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+
+## 6 - Styling a plane as a checkered board in three.js r104 - r124 with face3
 
 This is the older example for a checkered board plane geometry that I made when I first wrote this post, back then I was using three.hs r104, so this will likely break on newer versions of three.js.
 
 When it comes to styling a plane that has some sections with it, doing so can be a little confusing, but might not prove to be to hard. I have found solutions on line at [stack overflow](https://stackoverflow.com/questions/22689898/three-js-checkerboard-plane) that will work okay in some situations but not others depending on the number of sections. I was able to work out a solution for this that seems to work okay with any combination of width and height sections though and in the section I will be going over just that.
 
-### 5.1 - The checker helpers and face3
+### 6.1 - The checker helpers and face3
 
 Here I have two functions that create a plane geometry that has the material index values set for each tile section in the plane. So in other words when the geometry is used with a mesh that has an array of materials the material index values of 0 and 1 will be used for every other tile section in the plane, just like that of a checker board pattern.
 
