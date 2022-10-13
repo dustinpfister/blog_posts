@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-13 11:12:32
-version: 1.38
+updated: 2022-10-13 11:16:02
+version: 1.39
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -43,26 +43,33 @@ So a plane geometry can be made by just calling the THREE.PlaneGeometry construc
 The Plane geometry can then be used with a mesh and material, like that of the [basic material](/2018/05/05/threejs-basic-material/) for example, like any other built in geometry constructor in three js to produce a display object that can then be added to a scene. So A Basic example of the three plane geometry constructor might look something like this.
 
 ```js
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
-camera.position.set(10, 10, 10);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-// add a plane
-var plane = new THREE.Mesh(
-        new THREE.PlaneGeometry(10, 10, 1, 1),
-        new THREE.MeshBasicMaterial({
-            color: 0x0000ff
-        }));
-plane.rotation.set(-Math.PI/2,0,0);
-scene.add(plane);
- 
-renderer.render(scene, camera);
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    // render
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH - USING PLANE GEOMETRY, SETTING SIZE
+    // ---------- ----------
+    var mesh = new THREE.Mesh(
+        new THREE.PlaneGeometry(8, 4),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 This will result in a plane that is ten by ten and is broken down into a single segment. If I want a checkered board effect it is not just a question of increasing the segment size arguments from a value of 1 by 1. I also need to give an array of materials rather than just one material like in this example, and I also need to set the material index values as desired that will change a little depending on the effect that I want. Also before I even get to that point as of late versions of three.js I need to add the groups first. So lets look at some more examples in which I am getting into doing things with an array of materials, creating groups, and setting material index values for plane geometries.
@@ -72,45 +79,52 @@ This will result in a plane that is ten by ten and is broken down into a single 
 Often I might want to use more than one material when it comes to skinning a plane geometry. For starers there is just passing an array of two materials rather than just a single material instance object to the mesh constructor that I use with the plane geometry. However that might just be a first step, as with late versions of three.js there will be no groups added by default by just calling the plane geometry constructor. The groups must be added then by calling the [add group](https://threejs.org/docs/#api/en/core/BufferGeometry.addGroup) method of the buffer geometry class. When doing so I need to give a vertex index value as the first argument, followed by a count of vertex index values from that start point, followed by a material index value. If you still find that confusing maybe it would be best to learn by doing and just start playing around with a code example of this.
 
 ```js
-// An Array of materials
-var materialArray = [
-    new THREE.MeshBasicMaterial({
-        color: 0xe0e0e0,
-        side: THREE.DoubleSide
-    }),
-    new THREE.MeshBasicMaterial({
-        color: 0x505050,
-        side: THREE.DoubleSide
-    })
-];
- 
-// PLANE
-var plane = new THREE.Mesh(
-        new THREE.PlaneGeometry(5, 5, 1, 2),
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    // render
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH - ADDING GROUPS
+    // ---------- ----------
+    // An Array of materials
+    const materialArray = [
+        new THREE.MeshBasicMaterial({
+            color: 0xe0e0e0,
+            side: THREE.DoubleSide
+        }),
+        new THREE.MeshBasicMaterial({
+            color: 0x505050,
+            side: THREE.DoubleSide
+        })
+    ];
+    // PLANE
+    const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(7, 7, 1, 2),
         materialArray);
-// USING ADD GROUP METHOD TO SET MATERIAL
-// INDEX VLAUES
-plane.geometry.addGroup(0, 3, 0);
-plane.geometry.addGroup(3, 3, 1);
-plane.geometry.addGroup(6, 3, 1);
-plane.geometry.addGroup(9, 3, 0);
- 
-plane.position.set(0, 0, 0);
-plane.rotation.set(-Math.PI * 0.5, 0, 0);
- 
-// add plane to scene
-var scene = new THREE.Scene();
-scene.add(plane);
- 
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
-camera.position.set(3.5, 5.5, 3.5);
-camera.lookAt(0, -1.5, 0);
-var renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-renderer.render(scene, camera);
+    // USING ADD GROUP METHOD TO SET MATERIAL
+    // INDEX VLAUES
+    plane.geometry.addGroup(0, 3, 0);
+    plane.geometry.addGroup(3, 3, 1);
+    plane.geometry.addGroup(6, 3, 1);
+    plane.geometry.addGroup(9, 3, 0);
+    plane.geometry.rotateX(Math.PI * 0.5);
+    scene.add(plane);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 In this example I am calling the add group method a total of four times, one time for each triangle in this plane geometry that is 1 by 2 in terms of the dimensions of the sections. I could call the the add group method just two times with a different set of values for the start vertex and count of vertex points. And there is also changing up what the material index values are for these add group calls also when it comes to the third argument. Once you get a fell for what the situation is with these arguments and the effect that they end up having, it is time to move on to working out some functions that can help with creating groups and setting material index values.
@@ -123,37 +137,56 @@ In this section I will be going over a checker board example of plane geometry i
 
 I worked out two helper method for this example by making a function that will create and return a plane geometry, and another function that will use that method that creates the plane geometry in a mesh.
 
+I can then just call my mkChekcer function that will create and return the plane geometry with the groups and material index values set up for me. I then just need to add the returned mesh object to the scene, and the effect seems to work more or less as I would expect it to for just about any values that I set the the width and height of the sections.
+
 ```js
-var mkCheckerGeo = function (w, h, sw, sh) {
-    w = w === undefined ? 16 : w;
-    h = h === undefined ? 16 : h;
-    sw = sw === undefined ? 8 : sw;
-    sh = sh === undefined ? 8 : sh;
-    var planeGeo = new THREE.PlaneGeometry(w, h, sw, sh),
-    tileIndex = 0,
-    len = sw * sh,
-    mi,
-    y,
-    i;
-    while(tileIndex < len){
-        i = tileIndex * 6;
-        mi = tileIndex % 2;
-        if (sw % 2) {
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, -2, 0);
+    scene.add(camera);
+    // render
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // HELPER FUNCTIONS
+    // ---------- ----------
+    // make just a geo with groups set up
+    const mkCheckerGeo = function (w, h, sw, sh) {
+        w = w === undefined ? 16 : w;
+        h = h === undefined ? 16 : h;
+        sw = sw === undefined ? 8 : sw;
+        sh = sh === undefined ? 8 : sh;
+        const planeGeo = new THREE.PlaneGeometry(w, h, sw, sh),
+        len = sw * sh;
+        let tileIndex = 0,
+        mi,
+        y,
+        i;
+        while(tileIndex < len){
+            i = tileIndex * 6;
             mi = tileIndex % 2;
-        } else {
-            y = Math.floor(tileIndex / sw);
-            mi = y % 2 ? 1 - tileIndex % 2 : tileIndex % 2
+            if (sw % 2) {
+                mi = tileIndex % 2;
+            } else {
+                y = Math.floor(tileIndex / sw);
+                mi = y % 2 ? 1 - tileIndex % 2 : tileIndex % 2
+            }
+            planeGeo.addGroup(i, 3, mi);
+            planeGeo.addGroup(i + 3, 3, mi);
+            tileIndex += 1;
         }
-        planeGeo.addGroup(i, 3, mi);
-        planeGeo.addGroup(i + 3, 3, mi);
-        tileIndex += 1;
-    }
-    return planeGeo;
-};
- 
-var mkChecker = function (opt) {
-    opt = opt || {};
-    opt.materials = opt.materials || [
+        return planeGeo;
+    };
+    // set up a mesh
+    const mkChecker = function (opt) {
+        opt = opt || {};
+        opt.materials = opt.materials || [
             new THREE.MeshBasicMaterial({
                 color: 0xe0e0e0,
                 side: THREE.DoubleSide
@@ -163,40 +196,29 @@ var mkChecker = function (opt) {
                 side: THREE.DoubleSide
             })
         ];
-    // add a plane
-    var plane = new THREE.Mesh(
+        // add a plane
+        const plane = new THREE.Mesh(
             mkCheckerGeo(opt.w, opt.h, opt.sw, opt.sh),
             opt.materials);
-    plane.rotation.set(-Math.PI / 2, 0, 0);
-    return plane;
-};
-```
-
-### 3.2 - Demo of the mk checker function
-
-I can then just call my mkChekcer function that will create and return the plane geometry with the groups and material index values set up for me. I then just need to add the returned mesh object to the scene, and the effect seems to work more or less as I would expect it to for just about any values that I set the the width and height of the sections.
-
-```js
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
-camera.position.set(10, 10, 10);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-// standard checker
-var check = mkChecker({
+        plane.geometry.rotateX( Math.PI * 0.5 );
+        return plane;
+    };
+    // ---------- ----------
+    // MESH - 
+    // ---------- ----------
+    var check = mkChecker({
         w: 10,
         h: 10,
         sw: 12,
         sh: 12
     });
-scene.add(check);
- 
-renderer.render(scene, camera);
+    scene.add(check);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 Although this seems to work okay, I think that it might be even better to pull the logic that has to do with setting material index values out of the function that created the geometry, and have a module where there are a few options for setting material index values.
@@ -210,9 +232,11 @@ The example where I am just setting a checker board like pattern is a good start
 For this example then I started to make a kind of tile index module that i can use to create and return a mesh object that has a plane geometry with groups set up in a grid like pattern. However the material index values will be set to zero by default for all of the sections, so then there uis having a few additional functions that will set material index values for the mesh objects that I create with this module.
 
 ```js
+// tilemod.js - r0 - from threejs-plane
+// https://dustinpfister.github.io/2019/06/05/threejs-plane/
 (function (api) {
- 
-    var MATERIALS = [
+    // default materials
+    const MATERIALS = [
         new THREE.MeshBasicMaterial({
             color: 0xe0e0e0,
             side: THREE.DoubleSide
@@ -222,15 +246,15 @@ For this example then I started to make a kind of tile index module that i can u
             side: THREE.DoubleSide
         })
     ];
- 
-    var planeTileGeo = function (w, h, sw, sh) {
+    // make plane tile geo
+    const planeTileGeo = function (w, h, sw, sh) {
         w = w === undefined ? 16 : w;
         h = h === undefined ? 16 : h;
         sw = sw === undefined ? 8 : sw;
         sh = sh === undefined ? 8 : sh;
-        var planeGeo = new THREE.PlaneGeometry(w, h, sw, sh),
-        tileIndex = 0,
-        len = sw * sh,
+        const planeGeo = new THREE.PlaneGeometry(w, h, sw, sh),
+        len = sw * sh;
+        let tileIndex = 0,
         mi,
         y,
         i;
@@ -243,26 +267,24 @@ For this example then I started to make a kind of tile index module that i can u
         }
         return planeGeo;
     };
- 
     // create and return a plane with tile groups
     api.create = function (opt) {
         opt = opt || {};
         opt.materials = opt.materials || MATERIALS;
         // add a plane
-        var plane = new THREE.Mesh(
+        const plane = new THREE.Mesh(
                 planeTileGeo(opt.w, opt.h, opt.sw, opt.sh),
                 opt.materials);
-        plane.rotation.set(-Math.PI / 2, 0, 0);
+        plane.geometry.rotateX( Math.PI * 0.5 );
         return plane;
     };
- 
     // set checkerBoard material index values
     api.setCheckerBoard = function (plane) {
-        var w = plane.geometry.parameters.widthSegments,
+        const w = plane.geometry.parameters.widthSegments,
         h = plane.geometry.parameters.heightSegments,
-        tileIndex = 0,
+        len = w * h;
+        let tileIndex = 0,
         gi,
-        len = w * h,
         mi,
         y;
         while (tileIndex < len) {
@@ -278,13 +300,12 @@ For this example then I started to make a kind of tile index module that i can u
             tileIndex += 1;
         }
     };
- 
     // set checkerBoard material index values
     api.setBoxBoard = function (plane) {
-        var w = plane.geometry.parameters.widthSegments,
+        const w = plane.geometry.parameters.widthSegments,
         h = plane.geometry.parameters.heightSegments,
-        tileIndex = 0,
-        len = w * h,
+        len = w * h;
+        let tileIndex = 0,
         gi,
         mi,
         x,
@@ -304,9 +325,8 @@ For this example then I started to make a kind of tile index module that i can u
             tileIndex += 1;
         }
     };
- 
 }
-    (this['TileMod'] = {}));
+    ( this['TileMod'] = {} ));
 ```
 
 ### 4.1 - Demo of the tile index module
@@ -314,51 +334,47 @@ For this example then I started to make a kind of tile index module that i can u
 Now it is time to test out this module to see if what I worked out is working the way that I would like it to, and it would seem that it is.
 
 ```js
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
-camera.position.set(10, 10, 10);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var materialArray = [
-    new THREE.MeshBasicMaterial({
-        color: 0xeffff00,
-        side: THREE.DoubleSide
-    }),
-    new THREE.MeshBasicMaterial({
-        color: 0x2f2f2f,
-        side: THREE.DoubleSide
-    })
-];
- 
-var plane = TileMod.create({
-        materials: materialArray,
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, -2, 0);
+    scene.add(camera);
+    // render
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH - Making Mesh Object with TileMod module r0
+    // ---------- ----------
+    const plane = TileMod.create({
         w: 10,
         h: 10,
         sw: 4,
         sh: 4
     });
-// set checkerBoard material index values
-TileMod.setCheckerBoard(plane);
-scene.add(plane);
- 
-var plane2 = TileMod.create({
-        materials: materialArray,
+    // set checkerBoard material index values
+    TileMod.setCheckerBoard(plane);
+    scene.add(plane);
+    const plane2 = TileMod.create({
         w: 10,
         h: 10,
         sw: 8,
         sh: 8
     });
-// set checkerBoard material index values
-TileMod.setBoxBoard(plane2);
-plane.position.set(-11, 0, 0);
-scene.add(plane2);
- 
-renderer.render(scene, camera);
+    // set checkerBoard material index values
+    TileMod.setBoxBoard(plane2);
+    plane.position.set(-11, 0, 0);
+    scene.add(plane2);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 There is then coming up with additional methods for setting the index values in a whole bunch of different ways, and also making such functions that will take some arguments. However there is not just the material index values of course there is aso working out new ways to add the groups in different ways also. never the less after working out this example I now have a decent grasp on how to go about  feating groups and setting material index values for plane geometries. Also much of what I have worked out here of course applies to buffered geometry in general also.
