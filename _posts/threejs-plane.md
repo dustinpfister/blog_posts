@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-13 11:23:39
-version: 1.40
+updated: 2022-10-13 12:19:58
+version: 1.41
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -37,11 +37,13 @@ When I first wrote this post I was using three.js revision r104, and the last ti
 
 As of this writing I have all of the new examples working well with r140. The one old section on the face3 class at the bottom of this post was still working on r111 and at this time I am only going to be interested in maintaining the examples that are newer.
 
-## 1 - Three Plane basic example
+## 1 - Basic examples of plane geometry
 
-So a plane geometry can be made by just calling the THREE.PlaneGeometry constructor and then passing the desired width and height of the plane in terms of the object size as the first two arguments. When it comes to the segment width and height of the plane an additional two arguments can be used to set that width and height of the plane geometry also in terms of the segment width and height.
+In this section I will be starting out with just a few fairly basic examples of plane geometry without going to much into detail with various advanced topics that I will be getting into in later sections in this blog post. For now there is just setting up the usual set of objects as with any threejs project, using the arguments of the Plane geometry constructor, and other various little details that have to do with materials and buffer geometry in general.
 
-The Plane geometry can then be used with a mesh and material, like that of the [basic material](/2018/05/05/threejs-basic-material/) for example, like any other built in geometry constructor in three js to produce a display object that can then be added to a scene. So A Basic example of the three plane geometry constructor might look something like this.
+### 1.1 - Plane geometry hello world, and setting size of the geometry
+
+So a plane geometry can be made by just calling the THREE.PlaneGeometry constructor and then passing the desired width and height of the plane in terms of the object size as the first two arguments. The Plane geometry can then be used with a mesh and material, like that of the [basic material](/2018/05/05/threejs-basic-material/) for example, like any other built in geometry constructor in three js to produce a display object that can then be added to a scene. So A basic example of the three plane geometry constructor might look something like this.
 
 ```js
 (function () {
@@ -73,7 +75,76 @@ The Plane geometry can then be used with a mesh and material, like that of the [
     ());
 ```
 
-This will result in a plane that is ten by ten and is broken down into a single segment. If I want a checkered board effect it is not just a question of increasing the segment size arguments from a value of 1 by 1. I also need to give an array of materials rather than just one material like in this example, and I also need to set the material index values as desired that will change a little depending on the effect that I want. Also before I even get to that point as of late versions of three.js I need to add the groups first. So lets look at some more examples in which I am getting into doing things with an array of materials, creating groups, and setting material index values for plane geometries.
+This will result in a plane that is eight by 4 and is broken down into a single segment as that is the default for the additional arguments that have to do with that. If I want a checkered board effect it is not just a question of increasing the segment size arguments from a value of 1 by 1. I also need to give an array of materials rather than just one material like in this example, and I also need to set the material index values as desired that will change a little depending on the effect that I want. There is however just still going with a plane that is just 1 by 1 but thinking more in terms of the texture that will be used and the state of the uv attribute of the geometry. There are all far more advanced topics though that I will be getting to in later sections in this post. For now lets just stick with covering some of the basics here.
+
+### 1.2 - The side option of mesh materials, and buffer geometry rotation
+
+When I rotate a mesh object that contains a plane geometry around by way of the [object3d rotation property](/2022/04/08/threejs-object3d-rotation/), and just go with the default option for the side property of the material, the back side of the plane will not render. This is to be expected as the default value for the side option of mesh materials is THREE.FrontSide, and with many geometries this is the value that I would want to use. However there are some exceptions, and having just a plane geometry in a sean is one such exception as I will typically want to have both sides render. So then it is common practice to make sure that the side option of the material that i use with the mesh objects is set to the THREE.DoubleSide value.
+
+Speaking of rotation there is not just rotation of the mesh object, but also [rotation of the geometry as well](/2021/05/20/threejs-buffer-geometry-rotation/). Often I will want to adjust the rotation of a plane geometry just once, and then use the object3d rotation values over and over again in an animation loop.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, -2, 0);
+    scene.add(camera);
+    // render
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // MESH - Plane Geometry
+    // ---------- ----------
+    var mesh1 = new THREE.Mesh(
+        new THREE.PlaneGeometry(4, 4),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    mesh1.position.set(-2, 2, 0);
+    // MESH2 IS USING THE THREE.DoubleSide OPTION
+    // FOR THE MATERIAL
+    var mesh2 = new THREE.Mesh(
+        new THREE.PlaneGeometry(4, 4),
+        new THREE.MeshNormalMaterial({ side: THREE.DoubleSide}));
+    mesh2.position.set(2, 2, 0);
+    scene.add(mesh2);
+    // ROTATION OF GEOMETRY
+    var mesh3 = new THREE.Mesh(
+        new THREE.PlaneGeometry(10, 10),
+        new THREE.MeshNormalMaterial({ side: THREE.DoubleSide}));
+    mesh3.geometry.rotateX( Math.PI * 0.5 );
+    mesh3.position.y = -0.025;
+    scene.add(mesh3);
+    // ---------- ----------
+    // LOOP
+    // ---------- ----------
+    const fps_move = 30, fps_update = 12;
+    let f = 0, fm = 300, lt = new Date();
+    const loop = () => {
+        const now = new Date();
+        const secs = (now - lt) / 1000;
+        const a = f / fm;
+        requestAnimationFrame(loop);
+        if(secs >= 1 / fps_update){
+            mesh1.rotation.y = Math.PI * 8 * a;
+            mesh2.rotation.y = Math.PI * 8 * a;
+            mesh3.rotation.y = Math.PI * 2 * a;
+            f += fps_move * secs;
+            f %= fm;
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
 
 ## 2 - Adding one or more groups to a plane geometry and working with an array of materials
 
