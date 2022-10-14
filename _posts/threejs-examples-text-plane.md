@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-14 16:34:49
-version: 1.3
+updated: 2022-10-14 16:36:03
+version: 1.4
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my various video projects that I make for these blog posts. One such idea is to make an improved way to go about adding text content to a scene object. There are a number of ways of doing so of course, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures, and or data textures.
@@ -378,3 +378,7 @@ const loop = () => {
 };
 loop();
 ```
+
+## Conclusion
+
+I will want to make at least one if not more revisions of this module, but even if I do not get around to it I think I have the general idea that i had in mind working all ready.
