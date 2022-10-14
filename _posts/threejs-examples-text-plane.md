@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-14 16:58:48
-version: 1.6
+updated: 2022-10-14 17:03:14
+version: 1.7
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -20,11 +20,15 @@ This will then be yet another one of my [threejs examples](/2021/02/19/threejs-e
 
 ## The text Plane threejs module example and what to know first
 
-This is a post in which I am writing about the state of a javaScript module that I made that creates textures from text content using canvas elements that can then be used to skin a plane geometry. This is then a little bot of an advanced project type post in which I am assuming that you all ready have a fair amount of background with threejs and client side javaScript in general.
+This is a post in which I am writing about the state of a javaScript module that I made that creates textures from text content using canvas elements that can then be used to skin a plane geometry. This is then a little bit of an advanced project type post in which I am assuming that you all ready have a fair amount of background with threejs and client side javaScript in general. Also this is not at all a [getting started type post with canvas elements](/2017/05/17/canvas-getting-started/) as well so I assume that you have at least a little background working with those elements as well.
 
 ### source code is up on Github
 
+The source code for the text plane module, the canvas module I am working on top of, as well as all the demos can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-text-plane).
+
 ### version numbers matter
+
+When I first started this example I was using r140 of threejs.
 
 ## 1 - The first version of the text plane module for r1 of of my canvas module, and demos
 
