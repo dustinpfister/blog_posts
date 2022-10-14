@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-14 17:16:17
-version: 1.9
+updated: 2022-10-14 17:27:00
+version: 1.10
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -169,7 +169,11 @@ I am using r1 of my canvas module that I write about in greater detail in my blo
 
 Now for the text plane module that I can use to create a canvas object with the canvas module and use that as a way to update the textures that I can use for the map option of the material that I use for a mesh that uses the plane geometry. There is a lot to wrote about with this module in terms of both private helper functions as well as the current set of public methods that I will be using when making one or more demos, as well as actual projects that will make use of this module.
 
-At the top of the module I have a few private helper functions that I am using, one of which is a warp text method that is based off what what I have from my [blog post on regular expressions](https://dustinpfister.github.io/2019/03/20/js-regex/), which in turn was based on what i found at [stack overflow here](https://stackoverflow.com/questions/14484787/wrap-text-in-javascript).
+At the top of the module I have a few private helper functions that I am using, one of which is a warp text method that is based off what what I have from my [blog post on regular expressions](/2019/03/20/js-regex/), which in turn was based on what i found at [stack overflow here](https://stackoverflow.com/questions/14484787/wrap-text-in-javascript). This warp text method works somewhat okay, but with one little problem that has to do with really long words that might go beyond the max width that I want. I found a way to deal with that in my create text lines public method that I will be getting to a little later here.
+
+Another helper that I have is a [vanilla javaScript alternative to the lodash chunk method](/2017/09/13/lodash-chunk/), in fact the method is copied from my post on that subject. This is a method that I am also using in my create text lines public methods to help address that problem with long words not wrapping.
+
+yet another concern that I have when dealing with text is that often I will be dealing with text content with a mix of End of Line patterns that are used. That is that often I will have content that will use the windows patter, and then others that will use the Unit pattern. Also often I have text content that is a mix of the two actually and this is in part because I am a bit of a Windows and Linux kind of person what keeps switching between different editors and I do not always do the best job converting end of line patterns. This is not such a big deal if I just have a little helper function that will convert all of these patterns to just one standard before splitting the text into an array of strings and that is what my End of line Convert helper function is all about.
 
 ```js
 // canvas.js - r1 - from threejs-canvas-texture
