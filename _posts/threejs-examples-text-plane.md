@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-14 17:07:56
-version: 1.8
+updated: 2022-10-14 17:16:17
+version: 1.9
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -167,7 +167,9 @@ I am using r1 of my canvas module that I write about in greater detail in my blo
 
 ### 1.B - The text Plane Module \( r0 \)
 
-Now for the text plane module that I can use to create a canvas object with the canvas module and use that as a way to update the textures that I can use for the map option of the material that I use for a mesh that uses the plane geometry.
+Now for the text plane module that I can use to create a canvas object with the canvas module and use that as a way to update the textures that I can use for the map option of the material that I use for a mesh that uses the plane geometry. There is a lot to wrote about with this module in terms of both private helper functions as well as the current set of public methods that I will be using when making one or more demos, as well as actual projects that will make use of this module.
+
+At the top of the module I have a few private helper functions that I am using, one of which is a warp text method that is based off what what I have from my [blog post on regular expressions](https://dustinpfister.github.io/2019/03/20/js-regex/), which in turn was based on what i found at [stack overflow here](https://stackoverflow.com/questions/14484787/wrap-text-in-javascript).
 
 ```js
 // canvas.js - r1 - from threejs-canvas-texture
