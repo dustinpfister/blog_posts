@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-14 17:34:54
-version: 1.11
+updated: 2022-10-14 17:45:14
+version: 1.12
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -392,4 +392,8 @@ loop();
 
 ## Conclusion
 
-I will want to make at least one if not more revisions of this module, but even if I do not get around to it I think I have the general idea that i had in mind working all ready.
+I will want to make at least one if not more revisions of this module, but even if I do not get around to it I think I have the general idea that I had in mind working all ready. i just simply wanted to have a way to take some text, create an array of substrings that are formated to fix into the size of a canvas element, and then also have a way to scroll that content and all ready I am able to do just that.
+
+I have some ideas for future revisions of this module of course, and if you really want to find out what that is there is checking gout the todo lost in the Github folder. I might however in time might even want to work out yet even another system based off of what I have worked out here, but with 3d text rather than plane geometry and canvas elements. However that would be a better for a whole other post and project if I ever get around to that one.
+
+
