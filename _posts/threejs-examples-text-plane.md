@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-14 17:03:14
-version: 1.7
+updated: 2022-10-14 17:07:56
+version: 1.8
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -30,9 +30,9 @@ The source code for the text plane module, the canvas module I am working on top
 
 When I first started this example I was using r140 of threejs.
 
-## 1 - The first version of the text plane module for r1 of of my canvas module, and demos
+## 1 - The first version of the text plane module (\ r0\) as well as r1 of of my canvas module, and demos
 
-In this section I will be writing about r1 of my canvas module that I am working on top of to make this text plane module. Speaking of the text plane module here I will be writing about r0 of the module thus far along with at least one demo of the module as well.
+In this section I am writing about r0 of the text plane module where I manage to all ready get the core idea of what I wanted working which is great. The module allows for me to quickly create a mesh object with the plane geometry constructor and the basic material with the map option set to the current state of a canvas texture that I can update as needed.
 
 ### 1.A - The canvas module \( r1 \)
 
