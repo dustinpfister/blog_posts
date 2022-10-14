@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-14 16:26:31
-version: 1.2
+updated: 2022-10-14 16:34:49
+version: 1.3
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my various video projects that I make for these blog posts. One such idea is to make an improved way to go about adding text content to a scene object. There are a number of ways of doing so of course, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures, and or data textures.
@@ -24,9 +24,13 @@ This is a post in which I am writing about the state of a javaScript module that
 
 ### version numbers matter
 
-## 1 - The first version of the text plane module
+## 1 - The first version of the text plane module for r1 of of my canvas module, and demos
+
+In this section I will be writing about r1 of my canvas module that I am working on top of to make this text plane module. Speaking of the text plane module here I will be writing about r0 of the module thus far along with at least one demo of the module as well.
 
 ### 1.A - The canvas module \( r1 \)
+
+I am using r1 of my canvas module that I write about in greater detail in my blog post on canvas textures.
 
 ```js
 // canvas.js - r1 - from threejs-canvas-texture
@@ -156,6 +160,8 @@ This is a post in which I am writing about the state of a javaScript module that
 ```
 
 ### 1.B - The text Plane Module \( r0 \)
+
+Now for the text plane module that I can use to create a canvas object with the canvas module and use that as a way to update the textures that I can use for the map option of the material that I use for a mesh that uses the plane geometry.
 
 ```js
 // canvas.js - r1 - from threejs-canvas-texture
@@ -297,6 +303,8 @@ This is a post in which I am writing about the state of a javaScript module that
 ```
 
 ### 1.1 - First demo of the text plane module \( r0 \)
+
+Now that I wrote about the canvas and text plane modules I will now want to have at least one if not more demos of this for the sake of making sure that it is working the way that I would like it to.
 
 ```js
 //-------- ----------
