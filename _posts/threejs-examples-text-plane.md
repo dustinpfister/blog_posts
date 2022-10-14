@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-14 16:50:21
-version: 1.5
+updated: 2022-10-14 16:58:48
+version: 1.6
 ---
 
-I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my various video projects that I make for these blog posts. One such idea is to make an improved way to go about adding text content to a scene object. There are a number of ways of doing so of course, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures, and or data textures.
+I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
+
+The process of doing this sort of thing will then prove to be a little involved then. On top of the text plane module itself I will also want to have at least some kind of canvas module such as the one that I made for my post on canvas textures. With that said because I want to just get up and running with the text plane module I will have to just go with what I worked out when it comes to that sort of thunk so far and get to work on the text plane module. However speaking of the text plane module there is a lot that I will need to do with text, such as End of Line conversion, wrapping text, and using the various 2d canvas drawing methods to render that text to a canvas element.
 
 This will then be yet another one of my [threejs examples](/2021/02/19/threejs-examples/) where I am writing about a module or some kind of project that is built on top threejs. This time it will have a lot to do with using canvas elements to create textures, and also a whole lot about working with text content.
 
