@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-15 09:08:42
-version: 1.16
+updated: 2022-10-15 10:00:09
+version: 1.17
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -456,6 +456,124 @@ const update = function(frame, frameMax){
     TextPlane.moveTextLines(canObj.state.lines, textLines, b * 0.4, 0, 30);
     // update canvas
     canvasMod.update(canObj);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 1.3 - Using a custom draw method for one or more new canvas objects
+
+One major thing that I would like to do is to not just have text moving over a solid color background, but over some other kind of texture. This could be the texture that is all ready used for a model or texture that I create with other  canvas objects as I am doing here.
+
+The generate idea is to create a canvas object with the text plane module, but use it to just update the canvas element and use that canvas element with the draw image method of the 2d context of other canvas elements. I then use a final canvas element that uses textures from a canvas that is used to create a background, and then the texture that is used for text to draw over it. This final canvas element is then  what I will use to create and update a texture that in turn is used for the map property of a material of a mesh object.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0.75, 0.75, 0.75);
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS OBJECT
+//-------- ----------
+// canvas object 1 will be used for text
+const canObj1 = TextPlane.createCanObj({
+    rows: 12, size: 256,
+    palette: ['rgba(0,0,0,0)', 'black', 'black']
+});
+// canvas object 2 will use the 'rnd' built in draw method
+// as a way to create a background a little more interesting
+// than just a static background
+let canObj2 = canvasMod.create({
+    draw: 'rnd',
+    size: 256,
+    update_mode: 'canvas',
+    state: {
+        gSize: 16
+    },
+    palette: ['red', 'lime', 'cyan', 'purple', 'orange', 'green', 'blue']
+});
+// canvas object 3 will be the final background use for the material
+let canObj3 = canvasMod.create({
+    draw: function(canObj, ctx, canvas, state){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.globalAlpha = 0.3;
+        ctx.drawImage(canObj2.canvas, 0, 0);
+        ctx.globalAlpha = 1;
+        ctx.save();
+        ctx.translate(128, 128);
+        let d = state.rStart + state.rDelta * state.rAlpha;
+        ctx.rotate(Math.PI / 180 * d);
+        ctx.drawImage(canObj1.canvas, -128, -128);
+        ctx.restore();
+    },
+    size: 256,
+    update_mode: 'canvas',
+    state: {
+        rStart: -90,
+        rDelta: 180,
+        rAlpha: 0
+    },
+    palette: ['black', 'white']
+});
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.PlaneGeometry(3.75, 2),
+    new THREE.MeshBasicMaterial({
+        map: canObj3.texture,
+        transparent: true
+    })
+);
+mesh.position.set(0, 1, 0);
+scene.add(mesh);
+//-------- ----------
+// TEXT and textLines
+//-------- ----------
+const text2 = '\n\n888888888-888888888-88***\n\n\nThis is the custom draw method demo.\n\nThe idea here is that the canvas object that I am using for the text is just being used to update the canvas element. I then use that canvas element with the draw image method when drawing to another canvas element that is actauly used to to skin a geometry of a mesh object. \n\n'
+const textLines = TextPlane.createTextLines(text2, 22);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(0, 1, 2);
+camera.lookAt(0, 1, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 600;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    let a = frame / frameMax;
+    let b = 1 - Math.abs(0.5 - a) / 0.5;
+    // UPDATE
+    TextPlane.moveTextLines(canObj1.state.lines, textLines, b * 0.5, 0, 30);
+    // update canvas
+    canvasMod.update(canObj1);
+    //canvasMod.update(canObj2); // background can be animated or static
+    canObj3.state.rAlpha = b;
+    canvasMod.update(canObj3);
 };
 // loop
 const loop = () => {
