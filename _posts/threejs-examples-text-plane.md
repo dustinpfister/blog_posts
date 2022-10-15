@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-15 08:37:53
-version: 1.15
+updated: 2022-10-15 09:08:42
+version: 1.16
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -397,6 +397,83 @@ loop();
 ```
 
 So far so good, it would seem that I have the general idea of what I would like working. Now I might want to test out at least a few more things before moving on to making my next revision of this module. There is the idea of testing this out with other mesh objects, as well as doing things like mutating the position attribute of a plane and a whole bunch of other things.
+
+### 1.2 - Using a Sphere by calling the create canvas object method rather than create plane
+
+When I make a module like this often I will just have a create method and an update method, however for this module I know that I am going to want to have at least two create methods. There is the create plane method that will create and return a mesh object with everything set up for me and ready to go. However what if I want to try a mesh object with the sphere Geometry rather than plane geometry, or what if I want to use the canvas texture with some other material or map of a material? That is then why I have the create canvas method as an alternative to just always calling the create plane method.
+
+Here in this example I am creating just the canvas object and then using it with a mesh object in which I am using a sphere geometry rather than that of plane geometry.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0.75, 0.75, 0.75);
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS OBJECT
+//-------- ----------
+const canObj = TextPlane.createCanObj({
+    rows: 12, size: 512,
+    palette: ['rgba(0,255,255,0.2)', 'black', 'black']
+});
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(0.85, 80, 80),
+    new THREE.MeshBasicMaterial({
+        map: canObj.texture
+    })
+);
+scene.add(mesh);
+//-------- ----------
+// TEXT and textLines
+//-------- ----------
+const text2 = '\n\n\nThe main idea that I had with this involved just plane geometry.\n\nHowever I am going to want to have two create methods for this module, one of which I can use to create just a canvas object rather than a mesh. There are a lot of reasons why, one of which would be to use the texture of the canvas object with a whole other mesh object with geometry other than that of a plane. \n\n'
+const textLines = TextPlane.createTextLines(text2, 30);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(0, 0.75, 1.25);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 600;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    let a = frame / frameMax;
+    let b = 1 - Math.abs(0.5 - a) / 0.5;
+    // UPDATE
+    TextPlane.moveTextLines(canObj.state.lines, textLines, b * 0.4, 0, 30);
+    // update canvas
+    canvasMod.update(canObj);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
 
 ## Conclusion
 
