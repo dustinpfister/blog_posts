@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-15 08:07:52
-version: 1.13
+updated: 2022-10-15 08:20:20
+version: 1.14
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -322,7 +322,7 @@ I then also have a move lines method that is what I am current using to update t
 
 ### 1.1 - First demo of the text plane module \( r0 \)
 
-Now that I wrote about the canvas and text plane modules I will now want to have at least one if not more demos of this for the sake of making sure that it is working the way that I would like it to.
+Now that I wrote about the canvas and text plane modules I will now want to have at least one if not more demos of this for the sake of making sure that it is working the way that I would like it to. For this demo the aim is not to do anything fancy I will just want to create a mesh object with the canvas object, plane, and material all set up for my by calling that create plane method. I will then just want to create an array of text lines to use with it and the use that array of text lines with the move lines method in an update loop.
 
 ```js
 //-------- ----------
@@ -336,19 +336,10 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(640, 480);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
-// CANVAS OBJECT
-//-------- ----------
-//let canObj2 = TextPlane.createCanObj({
-//    update_mode: 'canvas',
-//    rows: 5, size: 256, palette: ['rgba(0,255,255,0.25)', 'black', 'black']
-//})
-//-------- ----------
 // MESH
 //-------- ----------
-//let plane = TextPlane.makePlane(canObj2.texture, 7, 5);
 const plane = TextPlane.createPlane({
     w: 7, h: 5,
-    //update_mode: 'dual', // Might not need data textures
     rows: 10, size: 256, palette: ['rgba(0,255,255,0.2)', 'black', 'black']
 });
 plane.position.set(0, 2.5, 0);
@@ -396,6 +387,8 @@ const loop = () => {
 };
 loop();
 ```
+
+So far so good, it would seem that I have the general idea of what I would like working. Now I might want to test out at least a few more things before moving on to making my next revision of this module. There is the idea of testing this out with other mesh objects, as well as doing things like mutating the position attribute of a plane and a whole bunch of other things.
 
 ## Conclusion
 
