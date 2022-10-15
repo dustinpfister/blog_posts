@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-14 17:45:14
-version: 1.12
+updated: 2022-10-15 08:07:52
+version: 1.13
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -174,7 +174,7 @@ Yet another concern that I have when dealing with text is that often I will be d
 
 Another helper that I have is a [vanilla javaScript alternative to the lodash chunk method](/2017/09/13/lodash-chunk/), in fact the method is copied from my post on that subject. This is a method that I am also using in my create text lines public methods to help address that problem with long words not wrapping.
 
-The cerate lines helper is what I call once to create a fixed set of objects that I update as needed in order to display text content. The smooth y helper is the method that i use to update these lines to display a long volume of text. I then also have the built in draw function that I use for the draw option when creating the canvas object with my canvas javaScript module that I wrote about above. That about covers all the private helper functions now I just need to wrote a thing or two about the public methods of this thing.
+The create lines helper is what I call once to create a fixed set of objects that I update as needed in order to display text content. The smooth y helper is the method that i use to update these lines to display a long volume of text. I then also have the built in draw function that I use for the draw option when creating the canvas object with my canvas javaScript module that I wrote about above. That about covers all the private helper functions now I just need to wrote a thing or two about the public methods of this thing.
 
 ```js
 // canvas.js - r1 - from threejs-canvas-texture
@@ -271,7 +271,6 @@ The cerate lines helper is what I call once to create a fixed set of objects tha
         return canObj;
     };
     // make plane helper function
-    //api.makePlane = (texture, w, h) => {
     api.createPlane = (opt) => {
         opt = opt || {};
         const canObj = api.createCanObj(opt);
@@ -312,6 +311,14 @@ The cerate lines helper is what I call once to create a fixed set of objects tha
     };
 }( this['TextPlane'] = {} ));
 ```
+
+The create canvas object method is what will call the create method of my canvas module to create the object that is returned that contains references to a canvas element as well as everything else that is included in such an object such as the state object that will hold the line objects used for rendering text to the canvas. This create canvas object public function is what I will want to call directly if I want to create a canvas object by itself to use with something other than a plane. For example say that I want to use the texture property of the canvas object to use as a texture for the background of a whole scene. I can create just the texture object with this method and then set the value of scene.background to the texture.
+
+I then have a create plane method that will create a canvas object and append that to the user data object of the mesh object, and a mesh object will be what is returned by this. This allows be to quickly create and set up a mesh object complete with the canvas object, geometry, and a material with the map value set to the texture or data texture property of the canvas object depending on the update mode.
+
+The create text lines public method is what I will want to call in order to convert plain old text into an array of sub strings that can then work well with the line objects of the state object of the canvas object.
+
+I then also have a move lines method that is what I am current using to update the state of the lines of the state object of the canvas object.
 
 ### 1.1 - First demo of the text plane module \( r0 \)
 
@@ -392,8 +399,7 @@ loop();
 
 ## Conclusion
 
-I will want to make at least one if not more revisions of this module, but even if I do not get around to it I think I have the general idea that I had in mind working all ready. i just simply wanted to have a way to take some text, create an array of substrings that are formated to fix into the size of a canvas element, and then also have a way to scroll that content and all ready I am able to do just that.
+I will want to make at least one if not more revisions of this module, but even if I do not get around to it I think I have the general idea that I had in mind working all ready. i just simply wanted to have a way to take some text, create an array of sub strings that are formatted to fix into the size of a canvas element, and then also have a way to scroll that content and all ready I am able to do just that.
 
 I have some ideas for future revisions of this module of course, and if you really want to find out what that is there is checking gout the todo lost in the Github folder. I might however in time might even want to work out yet even another system based off of what I have worked out here, but with 3d text rather than plane geometry and canvas elements. However that would be a better for a whole other post and project if I ever get around to that one.
-
 
