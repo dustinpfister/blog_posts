@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-15 08:20:20
-version: 1.14
+updated: 2022-10-15 08:37:53
+version: 1.15
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -22,6 +22,10 @@ This will then be yet another one of my [threejs examples](/2021/02/19/threejs-e
 
 This is a post in which I am writing about the state of a javaScript module that I made that creates textures from text content using canvas elements that can then be used to skin a plane geometry. This is then a little bit of an advanced project type post in which I am assuming that you all ready have a fair amount of background with threejs and client side javaScript in general. Also this is not at all a [getting started type post with canvas elements](/2017/05/17/canvas-getting-started/) as well so I assume that you have at least a little background working with those elements as well.
 
+### read up more on canvas and data textures
+
+In this post I am making use of [canvas textures](/2018/04/17/threejs-canvas-texture) as a way to display text with the plane geometry of a mesh object. There is a lot to cover when it comes to just getting started with canvas elements alone, as well as using canvas elements to create textures in threejs. There are also other ways of creating textures with javaScript code in threejs such as [data textures](/2022/04/15/threejs-data-texture/) which allow for creating textures with raw color data.
+
 ### source code is up on Github
 
 The source code for the text plane module, the canvas module I am working on top of, as well as all the demos can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-text-plane).
@@ -30,13 +34,17 @@ The source code for the text plane module, the canvas module I am working on top
 
 When I first started this example I was using r140 of threejs.
 
-## 1 - The first version of the text plane module (\ r0\) as well as r1 of of my canvas module, and demos
+## 1 - The first version of the text plane module \( r0 \) as well as r1 of of my canvas module, and demos
 
-In this section I am writing about r0 of the text plane module where I manage to all ready get the core idea of what I wanted working which is great. The module allows for me to quickly create a mesh object with the plane geometry constructor and the basic material with the map option set to the current state of a canvas texture that I can update as needed.
+In this section I am writing about r0 of the text plane module where I manage to all ready get the core idea of what I wanted working which is great. The module allows for me to quickly create a mesh object with the plane geometry constructor and the basic material with the map option set to the current state of a canvas texture that I can update as needed. I can then create an array of text lines from a raw text source, and then use that with an update lines method to have scrolling text in a canvas element that I can then use to create and update a texture that is used with the plane geometry.
+
+On top of writing about the text plane module itself, I will also want to write about the canvas module that I am working on top of as well as at least one of not more demos.
 
 ### 1.A - The canvas module \( r1 \)
 
-I am using r1 of my canvas module that I write about in greater detail in my blog post on canvas textures.
+I am using r1 of my canvas module that I write about in greater detail in my blog post on canvas textures. The main thing about this module is to just have a way to abstract away methods that I use to draw to the 2d context away into a module. There are two built in examples of this in the module itself with the square and rnd built in methods. However I did not want to go nuts with built in draw methods as much of that will be customized in the various additional modules that I will make that will work on top of this, such a the text plane module that this blog post is all about.
+
+The two main public methods here are the create method, and the update method. The create method will create and return a new canvas object that will contain a reference to a canvas element, a 2d drawing context and also one or two textures depending on the update mode. You see I am a little torn between using canvas textures and data textures when it comes to creating texture with JavaScript code rather than external image assets. So I made this module in such a way that I can just update a canvas texture, or both a canvas texture and a data texture. Doing both is expensive so that is why I have update modes where if I am in a situation in which canvas alone is fine I can just update the canvas texture only and save overhead.
 
 ```js
 // canvas.js - r1 - from threejs-canvas-texture
