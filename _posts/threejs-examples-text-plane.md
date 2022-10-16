@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-16 11:42:47
-version: 1.19
+updated: 2022-10-16 11:45:35
+version: 1.20
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -762,6 +762,8 @@ const loop = () => {
 };
 loop();
 ```
+
+The main function of interest with this example would then be the update plane geo position helper which is what I have together thus far when it comes to this sort of thing. For this example alone I wanted to create some kind of effect that involves sin waves, and I am more or less happy with what I have here thus far. However I would need to refine this more when it comes to the expression and options used. When done I think that this will be just one of many built in options for mutation of geometry over time.
 
 ## Conclusion
 
