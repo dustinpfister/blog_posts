@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-10-11 16:04:30
-version: 1.102
+updated: 2022-10-16 13:03:16
+version: 1.103
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -601,11 +601,486 @@ scene.add(box);
 renderer.render(scene, camera);
 ```
 
-## 3 - Animation examples
+## 3 - Canvas module example
+
+For this section I will be writing about the current state of my canvas module that I have made, and am using many of my various video projects including the one that I made for this blog post here. So then I will be writing about the current state of the module itself as of this writing that was r1 of the module, as well as a few demos of it while I am at it.
+
+### 3.A - The canvas module \( r1 \)
+
+There is then starting out with the source code of the canvas module.
+
+```js
+// canvas.js - r1 - from threejs-canvas-texture
+(function(api){
+    //-------- ----------
+    // built in draw methods
+    //-------- ----------
+    const DRAW = {};
+    // square draw method
+    DRAW.square = (canObj, ctx, canvas, state) => {
+        const squares = state.squares || [ {
+            lw: 1,
+            fi: 0,
+            si: 1,
+            rect: [ 0.5, 0.5, canvas.width - 1, canvas.height - 1 ] } ];
+        let i = 0;
+        const len = squares.length;
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+        while(i < len){
+            const sq = squares[i];
+            ctx.lineWidth = sq.lw === undefined ? 1 : sq.lw;
+            ctx.fillStyle = canObj.palette[ sq.fi === undefined ? 0 : sq.fi];
+            ctx.strokeStyle = canObj.palette[ sq.si === undefined ? 1 : sq.si ];
+            ctx.beginPath();
+            ctx.rect.apply(ctx, sq.rect);
+            ctx.fill();
+            ctx.stroke();
+            i += 1;
+        }
+    };
+    // random using palette colors
+    DRAW.rnd = (canObj, ctx, canvas, state) => {
+        let i = 0;
+        const gSize =  state.gSize === undefined ? 5 : state.gSize;
+        const len = gSize * gSize;
+        const pxSize = canObj.size / gSize;
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+        while(i < len){
+            const ci = Math.floor( canObj.palette.length * Math.random() );
+            const x = i % gSize;
+            const y = Math.floor(i / gSize);
+            ctx.fillStyle = canObj.palette[ci];
+            ctx.fillRect(0.5 + x * pxSize, 0.5 + y * pxSize, pxSize, pxSize);
+            i += 1;
+        }
+    };
+    //-------- ----------
+    // HELEPRS
+    //-------- ----------
+    // parse draw option helper
+    const parseDrawOption = (opt) => {
+        // if opt.draw is false for any reason return DRAW.square
+        if(!opt.draw){
+            return DRAW.square;
+        }
+        // if a string is given assume it is a key for a built in draw method
+        if(typeof opt.draw === 'string'){
+            return DRAW[opt.draw];
+        }
+        // assume we where given a custom function
+        return opt.draw;
+    };
+    //-------- ----------
+    // PUBLIC API
+    //-------- ----------
+    // to data texture method
+    api.toDataTexture = (canObj) => {
+        const canvasData = canObj.texture.image.getContext('2d').getImageData(0, 0, canObj.size, canObj.size);
+        const texture_data = new THREE.DataTexture(canvasData.data, canObj.size, canObj.size );
+        texture_data.needsUpdate = true;
+        return texture_data;
+    };
+    // create and return a canvas texture
+    api.create = function (opt) {
+        opt = opt || {};
+        // create canvas, get context, set size
+        const canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        opt.size = opt.size === undefined ? 16 : opt.size;
+        canvas.width = opt.size;
+        canvas.height = opt.size;
+        // create canvas object
+        const canObj = {
+            texture: null,
+            texture_data: null,
+            update_mode: opt.update_mode || 'dual',
+            size: opt.size,
+            canvas: canvas, ctx: ctx,
+            palette: opt.palette || ['black', 'white'],
+            state: opt.state || {},
+            draw: parseDrawOption(opt)
+        };
+        // create texture object
+        canObj.texture = new THREE.CanvasTexture(canvas);
+        canObj.texture_data = api.toDataTexture(canObj);
+        api.update(canObj);
+        return canObj;
+    };
+    // update
+    const UPDATE = {};
+    // update canvas only update mode
+    UPDATE.canvas = (canObj) => {
+        // update canvas texture
+        canObj.draw.call(canObj, canObj, canObj.ctx, canObj.canvas, canObj.state);
+        canObj.texture.needsUpdate = true;
+    };
+    // update canvas AND data texture AKA 'dual' mode ( default for r1 )
+    UPDATE.dual = (canObj) => {
+        UPDATE.canvas(canObj);
+        // update data texture
+        const canvasData = canObj.texture.image.getContext('2d').getImageData(0, 0, canObj.size, canObj.size);
+        const data = canObj.texture_data.image.data;
+        const len = data.length;
+        let i = 0;
+        while(i < len){
+            data[i] = canvasData.data[i];
+            i += 1;
+        }
+        canObj.texture_data.flipY = true; // need to do this even though it should be the default in r140
+        canObj.texture_data.center = new THREE.Vector2(0.5, 0.5);
+        canObj.texture_data.needsUpdate = true;
+    };
+    api.update = (canObj) => {
+        UPDATE[canObj.update_mode](canObj);
+    };
+}( this['canvasMod'] = {} ));
+```
+
+### 3.1 - The rnd built in draw method
+
+First off there is starting out with just testing out one of the built in options for drawing to the canvas, such as that rnd method.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 1000);
+camera.position.set(0, 1.5, 2.75);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// make cube helper function
+const makeCube = (texture, size) => {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(size, size, size),
+        new THREE.MeshBasicMaterial({
+            map: texture || null
+    }));
+};
+//-------- ----------
+// CANVAS OBJECT
+//-------- ----------
+let canObj2 = canvasMod.create({
+    draw:'rnd',
+    size: 64,
+    update_mode: 'dual',
+    state: {},
+    palette: ['black', 'white', 'cyan', 'lime', 'red', 'blue', 'yellow', 'orange', 'purple']
+});
+//-------- ----------
+// MESH
+//-------- ----------
+let cube1 = makeCube(canObj2.texture_data, 2);
+cube1.position.set(0, 0, 0);
+scene.add(cube1);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    let a = frame / frameMax;
+    let b = 1 - Math.abs(0.5 - a) / 0.5;
+    //if(Math.floor(frame) % 5 === 0){
+        canObj2.state.gSize = 40 - Math.round(38 * b);
+        canvasMod.update(canObj2);
+    //}
+    cube1.rotation.y = Math.PI * 2 * a;
+    cube1.rotation.x = Math.PI / 180 * 45 * b;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 3.2 - The square build in draw method
+
+Now I am testing out the square built in draw method that also seems to be working okay. The square built in method works by having an array of square objects where each square object contains properties that have to do with setting the location, size and style of each rectangle. In the update method that I made for this example I am creating this array of objects over and over gain, but in other demos I could do something that involves moving squares around rater than just moving them to random locations all over the pace.
+
+I would not want to go to nuts with examples of this square built in draw function, and also I am thinking that mainly I will want to be using custom draw functions for each project, or have an additional module that I use on top of this canvas module in which I define what the draw method is.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 1000);
+camera.position.set(0, 2, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// make cube helper function
+const makeCube = (texture, size) => {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(size, size, size),
+        new THREE.MeshBasicMaterial({
+            map: texture || null
+    }));
+};
+//-------- ----------
+// CANVAS OBJECT
+//-------- ----------
+let canObj2 = canvasMod.create({
+    draw:'square',
+    size: 64,
+    update_mode: 'canvas',
+    state: {},
+    palette: ['black', 'white', 'cyan', 'lime', 'red', 'blue', 'yellow', 'orange', 'purple']
+});
+//-------- ----------
+// MESH
+//-------- ----------
+let cube1 = makeCube(canObj2.texture, 2);
+cube1.position.set(0, 0, 0);
+scene.add(cube1);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    let a = frame / frameMax;
+    if(Math.floor(frame) % 5 === 0){
+        let i = 0, len = 20;
+        canObj2.state.squares = [];
+        while(i < len){
+            canObj2.state.squares.push({
+                lw: 1 + Math.floor(4 * Math.random()),
+                si: 0,
+                fi: 1 + Math.floor( Math.random() * ( canObj2.palette.length - 1 ) ),
+                rect: [
+                    Math.random() * (64 - 16),
+                    Math.random() * (64 - 16),
+                    16,
+                    16]
+            });
+            i += 1;
+        }
+        canvasMod.update(canObj2);
+    }
+    cube1.rotation.y = Math.PI * 2 * a;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 3.3 - Custom text plane draw method
+
+Last but not least here I have an example in which I have a custom draw function that I am using with the module that was a [starting point for my text plane javaScript module threejs example](/2022/10/14/threejs-examples-text-plane/). I put a whole lot of time into just making the first version of that example, and I have a whole lot of planes for making additional revisions of the project. However there is first starting out with the very basic idea of what I want and that seems to be working well all ready here with just this quick demo of the canvas module.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// TEXT LINES
+//-------- ----------
+const textLines = [
+    '',
+    '',
+    '',
+    'This is just some demo text',
+    'for a kind of text plane module',
+    'idea that I might get into',
+    'it will work with this canvas.js',
+    'module that I made.',
+    '',
+    'It might prove to be a cool',
+    'Little project that I will then',
+    'start to use in future video projects',
+    'as I seem to like to make videos',
+    'using threejs.',
+    '',
+    'I hope that getting this to work does',
+    'not end up eating up to much time',
+    'as I have way to many ideas for',
+    'projects such as this one.',
+    '',
+    'So far it looks like I need to',
+    'figure out how to go about adjusting',
+    'some things that have to do with',
+    'the rate at which the text is moved',
+    ''
+];
+//-------- ----------
+// HELPERS
+//-------- ----------
+// make plane helper function
+const makePlane = (texture, size) => {
+    return new THREE.Mesh(
+        new THREE.PlaneGeometry(6, 4, 1, 1),
+        new THREE.MeshBasicMaterial({
+            map: texture || null,
+            side: THREE.DoubleSide
+        })
+    );
+};
+// create an array of text objects to use with the drawText method
+// this is a reusable set of objects
+const createLines = (rows) => {
+    let i = 0;
+    const lines = [];
+    while(i < rows){
+        lines.push({
+            text: '#' + i,
+            x: 10, y : 30 + 60 * i,
+            lw: 2, fc: '', sc: '',
+            a: 'left', f: 'arial', fs: '30px', bl: 'top'
+        });
+        i += 1;
+    }
+    return lines;
+};
+// smooth move of lines on the Y
+const smoothY = (lines, alpha, sy, dy) => {
+    let i = 0;
+    const len = lines.length;
+    while(i < len){
+        const li = lines[i];
+        li.y = sy + dy * i - dy * alpha * 1;
+        i += 1;
+    }
+};
+// move full set of text lines
+const moveTextLines = (lines, textLines, alpha) => {
+    linesLen = lines.length;
+    const tli = Math.floor( textLines.length * alpha);
+    textLines.slice(tli, tli + linesLen).forEach( (text, i) => {
+        lines[i].text = text;
+    });
+    smoothY(lines, alpha * textLines.length % 1, 30, 60);
+};
+// The custom draw text method to be used with canvas.js
+const drawText = (canObj, ctx, canvas, state) => {
+    ctx.fillStyle = canObj.palette[0];
+    ctx.fillRect(0,0, canvas.width, canvas.height);
+    state.lines.forEach((li)=>{
+        ctx.lineWidth = li.lw;
+        ctx.textAlign = li.a;
+        ctx.textBaseline = li.bl;
+        ctx.font = li.fs + ' ' + li.f;
+        ctx.fillStyle = li.fc || canObj.palette[1] || 'white';
+        ctx.strokeStyle = li.sc || canObj.palette[2] || 'white';
+        ctx.fillText(li.text, li.x, li.y);
+        ctx.strokeText(li.text, li.x, li.y);
+    });
+};
+//-------- ----------
+// CANVAS OBJECT
+//-------- ----------
+let canObj2 = canvasMod.create({
+    draw: drawText,
+    size: 512,
+    update_mode: 'canvas',
+    state: {
+       lines : createLines(9)
+    },
+    palette: ['#002a2a', '#afafaf', '#ffffff']
+});
+//-------- ----------
+// MESH
+//-------- ----------
+let plane = makePlane(canObj2.texture, 2);
+plane.position.set(0, 2, 0);
+scene.add(plane);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 60, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 60;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 600;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    let a = frame / frameMax;
+    let b = 1 - Math.abs(0.5 - a) / 0.5;
+    // using move text lines helper
+    moveTextLines(canObj2.state.lines, textLines, b);
+    // update canvas
+    canvasMod.update(canObj2);
+    // update camera
+    camera.position.set(-4 * b, 1, 5);
+    camera.lookAt(0, 1, 0);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 4 - Animation examples
 
 In this section I will now be going over a few examples that involve having an animation loop and therefor update the state of the canvas elements over time.
 
-### 3.1 - Update example with fog
+### 4.1 - Update example with fog
 
 So because the source is a canvas you might be wondering if it is possible to redraw the canvas and update the texture, making an animated texture. The answer is yes, all you need to do is redraw the contents of the canvas, and set the needsUpdate property of the texture to true before calling the render method of your renderer. In this section I will then be going over a revised version of the source code of the above example where I started working with a module that I can use to create and return an object that contains a reference to the drawing context of the canvas as well as the texture. This time the aim is to get things started when it comes to having a way to draw to the canvas used for the texture over and over again as needed.
 
@@ -726,7 +1201,7 @@ I now just need a little more code to make use of the canvas module, for this I 
 
 It should go without saying that this will use more overhead compared to a static texture, so I would not go wild with it just yet, but it is pretty cool that I can do this.
 
-### 3.2 - Canvas animations and using more than one texture for a geometry
+### 4.2 - Canvas animations and using more than one texture for a geometry
 
 I have wrote a number of posts on threejs and as such I have [touched based on how to go about using more than one material](/2018/05/14/threejs-mesh-material-index/) with a mesh in threejs a while back all ready. However I am thinning that this is something that also deserves at least one of not more sections in this post also, as this can lead to some interesting projects even by making use of just the built in geometry constructors.
 
