@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-16 11:39:32
-version: 1.18
+updated: 2022-10-16 11:42:47
+version: 1.19
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -596,6 +596,8 @@ loop();
 ### 1.4 - One last r0 demo of the plane text module that has to do with mutation of plane geometry
 
 One last demo of r0 of the plane texture module threejs example until I get around to making an r1 of the module I think. This time I will be making an example that not only uses the text plane module, but also involves some additional code that will mutate the position attribute of the geometry of the mesh that I am using the canvas object with. You see as of r0 I do not have any options for setting the width and height segment counts when it comes to using the create plane method. In future revisions I thing I will be changing that and adding options for that. One major reason why is because I think I will like to make this module not just update the state of a texture to use with the map option of a material use with the mesh object, but also update the state of buffer attribute values such as the position attribute.
+
+In future revisions I have plans to make a more advanced system where I do not just make use of a built in draw function for updating texture, but also make use of built in code that has to do with mutation of geometry also. However for now I have to just do these sorts of things by making one or more helper function in example code that will be the first steps in the direction of making one or more options for update geometry as well as material of a plane.
 
 ```js
 //-------- ----------
