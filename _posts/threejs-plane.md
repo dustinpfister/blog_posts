@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-16 13:19:23
-version: 1.47
+updated: 2022-10-16 13:24:29
+version: 1.48
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -748,7 +748,7 @@ With many of my blog posts on threejs I like to make at least one if not more vi
 
 ### 5.1 - Video1 project using r0 of object grid wrap
 
-The first video that I made for this blog posr made use of r0 of [my object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that you can read about more at this post if interested.
+The first video that I made for this blog post made use of r0 of [my object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that you can read about more at this post if interested. Here I have the additional code that i am using on top of the use of that module to create the desired end effect.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/PvBaddSz-xs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
