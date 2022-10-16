@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-13 19:13:21
-version: 1.46
+updated: 2022-10-16 13:19:23
+version: 1.47
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -880,7 +880,7 @@ The first video that I made for this blog posr made use of r0 of [my object grid
 
 ### 5.2 - Video2 project using r2 of objects grid wrap, oacity2 and custom flip effects, and animated data textures
 
-I have made a second video for this post which at the time of this writing is the top video in this post.
+I have made a second video for this post which at the time of this writing is the top video in this post. Like before I am using an array of materials, but I am also using some new helper functions for creating data textures as well. There is not just using an array fo materials to get a desired look but also just creating a single texture that is the way that I like it also. There is getting into uv mapping as a way to get things working well with a single material, but maybe that is something I will get to in a future animation example here.
 
 ```js
 (function () {
