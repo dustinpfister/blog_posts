@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-17 09:49:45
-version: 1.47
+updated: 2022-10-17 09:57:55
+version: 1.48
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or Camera, and then pass a set of numbers for x, y and z or a single instance of Vector3 that ether way is a position for the object to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, when it comes to a mesh object I often might want to change what the front side of the mesh is,  and also I might run into problems that have to do with world space compared to local space. 
@@ -132,9 +132,11 @@ Sense the look at method will always make an object look at a point relative to 
 
 If you are still confused, maybe the best way to get a feel of what it going on would be to work out some of your own examples with this. In this section I will be going over such examples that I have worked out, but it would be best to play around with something like what I am writing about here a little.
 
-### 2.1 - Pointing to the cube location relative to word space from within a group
+### 2.1 - Pointing to Where a nested object would be relative to world space by giving a local space value
 
-Say that I have a group object and two mesh objects as child objects of the group.One mesh object contains a cone geometry, and the other child mesh object contains a box geometry. On top of all of this the group itself is positioned away from the origin. Now lets say that I want to have the cone mesh look at the cube, but when I do so the cube points at a location that would be where the cube would be if it was not a child of the group, but rather the scene object.
+Say that I have a group object and two mesh objects as child objects of the group. One mesh object contains a cone geometry, and the other child mesh object contains a box geometry. On top of all of this the group itself is positioned away from the origin so that the ogrin of the group does not align with the origin of world space, assuming that nothing has been done to adjust the scene object position.
+
+Now lets say that I want to have the cone mesh look at the cube, but when I do so the cube points at a location that would be where the cube would be if it was not a child of the group, but rather the scene object. This happens because I am just giving the position of the nested cube as a value to look at which is a local space that is relative to the group, not the scene object which is aligned with world space.
 
 ```js
 //-------- ----------
