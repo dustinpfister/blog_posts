@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1009
-updated: 2022-10-16 11:45:35
-version: 1.20
+updated: 2022-10-17 14:38:40
+version: 1.21
 ---
 
 I am always thinking in terms of what more I can do when it comes to making javaScript modules built on top of threejs that I can use in my [various video projects that I make for these blog posts](https://github.com/dustinpfister/videoground-blog-posts). One such idea is to make an improved way to go about adding text content to a scene object as I am not happy with my current solution for doing so. There are a number of ways of doing this sort of thing I am sure, but I was thinking in terms of making a module centered around the idea of having one or more mesh objects that use a plane geometry and canvas textures as a way of displaying text content in a scene.
@@ -17,6 +17,7 @@ This will then be yet another one of my [threejs examples](/2021/02/19/threejs-e
 
 <!-- more -->
 
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/fn1Vwu4Jcew" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## The text Plane threejs module example and what to know first
 
