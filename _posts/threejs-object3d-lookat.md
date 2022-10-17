@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-17 10:02:52
-version: 1.50
+updated: 2022-10-17 10:15:52
+version: 1.51
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or Camera, and then pass a set of numbers for x, y and z or a single instance of Vector3 that ether way is a position for the object to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, when it comes to a mesh object I often might want to change what the front side of the mesh is,  and also I might run into problems that have to do with world space compared to local space. 
@@ -125,7 +125,7 @@ camera.lookAt(m1.position);
 renderer.render(scene, camera);
 ```
 
-## 2 - Group with a Mesh that ends up facing a point that can be world, or group relative
+## 2 - Nested objects and the look at method of the obejct3d class
 
 One of the draw backs of the Object3d look at method is that it will always look at the given point relative to word space. This is just fine when it comes to having a scene that has not moved from the default starting position, and I am just working with mesh objects that are children of that scene object. However if for some reason I am moving the scene objects around, or trying to get the look at method to look at another child within a group this can present problems.
 
