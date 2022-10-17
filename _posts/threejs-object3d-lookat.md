@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-17 10:15:52
-version: 1.51
+updated: 2022-10-17 11:26:21
+version: 1.52
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or Camera, and then pass a set of numbers for x, y and z or a single instance of Vector3 that ether way is a position for the object to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, when it comes to a mesh object I often might want to change what the front side of the mesh is,  and also I might run into problems that have to do with world space compared to local space. 
@@ -241,6 +241,64 @@ renderer.render(scene, camera);
 ```
 
 So now the cone is pointing to the cube within the group, rather than the location to which it would be if it was a child of the scene object.
+
+### 2.3 - Moving a whole scene object
+
+One very important thing to keep in mind here is that even the scene object is relative to world space, and is also based off of the object3d class. Sense a scene object is based off of object3d then it too has a position property and as such can also be positioned away from the origin in world space. 
+
+A camera is always used to render a scene, and also a camera is an object3d based object, but it does not have to be a child of the scene object, it can remain free in world space. So in this example I am setting a camera at a location that is just above the origin in world space, and I am moving a whole scene object to a location that is away from the origin. I then have two mesh objects as children of the scene. One of which is given the position of the scene object to look at, and the other is the origin. Sure enough the rotation of the two mesh objects differ, so world space is not just space that is relative to the scene. Typically the scene object is left in a state in which it is aligned with world space sure, but this is just one little thing to be aware of with word space, it is a final, object, fixed kind of space that is independent of the scene object.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(6, 6));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 100);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+//  MESH
+//-------- ----------
+const geo = new THREE.CylinderGeometry(0, 0.5, 2, 40, 40);
+geo.rotateX(Math.PI * 0.5);
+const material = new THREE.MeshNormalMaterial({transparent: true, opacity: 1});
+const m1 = material.clone();
+m1.opacity = 0.5;
+const pointer1 = new THREE.Mesh(geo, m1);
+scene.add(pointer1);
+const pointer2 = new THREE.Mesh(geo, material);
+//pointer2.geometry.rotateX(Math.PI * 0.5);
+scene.add(pointer2);
+//-------- ----------
+//  MOVING SCENE
+//-------- ----------
+// moving the scene object away from 0,0,0
+scene.position.set(0, 0, 10);
+// having pointer1 look at position of scene object
+pointer1.position.set(2, 0, 2);
+pointer1.lookAt(scene.position);
+// pointer 2 at same position as pointer1
+// however I am having it point at 0,0,0 world space
+// rather than the position of the scene object in world space 
+// that has moved away from 0,0,0
+pointer2.position.set(2, 0, 2);
+pointer2.lookAt(0, 0, 0);
+// positioning the camera ( That is not a child of scene )
+// at 0, 2, 0 in world space and having it look at the 
+// pointer position
+const ct = new THREE.Vector3();
+pointer1.getWorldPosition(ct);
+camera.position.set(0, 2, 0);
+camera.lookAt(ct);
+camera.zoom = 7;
+camera.updateProjectionMatrix();
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
 
 ## 3 - Animation loop examples
 
