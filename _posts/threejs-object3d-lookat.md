@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-17 11:26:21
-version: 1.52
+updated: 2022-10-18 09:23:06
+version: 1.53
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or Camera, and then pass a set of numbers for x, y and z or a single instance of Vector3 that ether way is a position for the object to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, when it comes to a mesh object I often might want to change what the front side of the mesh is,  and also I might run into problems that have to do with world space compared to local space. 
@@ -21,17 +21,18 @@ Although the lookAt method will work fine for most situations there are a few ad
 
 ## The look at method in three.js, and what to know first
 
-I assume that you have some background when it comes to the [very basics of getting started with three.js](/2018/04/04/threejs-getting-started/) and client side [javaScript in general](/2018/11/27/js-getting-started/). If not you might want to take a step back for a moment before getting into some more advanced topics when it comes to [groups](/2018/05/16/threejs-grouping-mesh-objects/), and having the look at method look at [a mesh object](/2018/05/04/threejs-mesh/) relative to the group rather than world space as well as many other little issues with the look at method. I will not be covering the very basics of three.js in general here, but I will be going over some additional things that you should know first in this section.
+I assume that you have some background when it comes to the [very basics of getting started with three.js](/2018/04/04/threejs-getting-started/) and client side [javaScript in general](/2018/11/27/js-getting-started/). If not you might want to take a step back for a moment before getting into some more advanced topics when it comes to [groups](/2018/05/16/threejs-grouping-mesh-objects/), and using the look at method to set rotation of [a mesh object](/2018/05/04/threejs-mesh/) relative to the group rather than world space as well as many other little issues with the look at method. I will not be covering the very basics of three.js in general here, but I will be going over some additional things that you should know first in this section.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/morZYyJN05o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
 ### Read up more on the object3d class and other related topics if you have not done so
 
-The look at method is just one method of the [object3d base class](/2018/04/23/threejs-object3d/), there is a great deal more about the class that is also worth looking into more. The object3d class is the base class for a lot of object classes in tree.js such as Cameras, Mesh Objects, Groups, and whole Scene objects just to name a few. So by learning about a method like the look at method one will end up learning about a method that can be applied to a whole lot of differing objects that are used in threejs projects.
+The look at method is just one method of the [object3d base class](/2018/04/23/threejs-object3d/), there is a great deal more about the class that is also worth looking into more. The object3d class is the base class for a lot of object classes in threejs such as Cameras, Mesh Objects, Groups, and whole Scene objects just to name a few. So by learning about a method like the look at method one will end up learning about a method that can be applied to a whole lot of differing objects that are used in threejs projects.
 
 ### Read up more on the Vector3 class
 
-When using the look at method one option is to give and x, y, and z position as a set of three arguments in the form of javaScript number values. However the other option is to given just one argument that is an instance of the [Vector3 class which it worth checking out in detail if you have not done so yet](/2018/04/15/threejs-vector3/). There are a great deal of very useful methods for working with a 3d form of a vector in space that make quick work of various tasks that have to do with adjusting direction and vector unit length. I will be making use of many of these in this post, but there is a lot of ground to cover to do the class justice that I will not be doing here.
+When using the look at method one option is to give and x, y, and z position as a set of three arguments in the form of javaScript number values. However the other option is to give just one argument that is an instance of the [Vector3 class which it worth checking out in detail if you have not done so yet](/2018/04/15/threejs-vector3/). There are a great deal of very useful methods for working with a 3D form of a vector in space that make quick work of various tasks that have to do with adjusting direction and vector unit length. I will be making use of many of these in this post, but there is a lot of ground to cover to do the class justice that I will not be doing here.
 
 ### Source code is up on Github
 
