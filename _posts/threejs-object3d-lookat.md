@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-18 09:23:06
-version: 1.53
+updated: 2022-10-18 09:30:19
+version: 1.54
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or Camera, and then pass a set of numbers for x, y and z or a single instance of Vector3 that ether way is a position for the object to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, when it comes to a mesh object I often might want to change what the front side of the mesh is,  and also I might run into problems that have to do with world space compared to local space. 
@@ -38,19 +38,19 @@ When using the look at method one option is to give and x, y, and z position as 
 
 The source code examples that I am writing about here can also be found in [my test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-lookat). This is where I part not just the source code examples that I am writing about here, draft examples, notes for additional future examples and more. This is also where I am parking the source code examples for my [many other posts on threejs](/categories/three-js/).
 
-### version numbers matter with three.js
+### Version numbers matter with three.js
 
 When I first wrote this post I was using three.js version r127 which was a late version of three.js as of April of 2021, and the last time I came around to do some editing I was testing out the source code examples on r140. I do not think much has changed with the look at method from the point that I started write posts on three.js back in 2018 when I was using r91. Still it is possible that code breaking changed will be made to three.js that might effect other parts of the code examples that I am writing about here. So always take care when reading about three.js code examples on the open web, more so than usual with three.js as this is still a very fast moving library in terms of development.
 
 ## 1 - Some Basic examples of the Object3d.lookAt method
 
-In this section I will be starting out with just a few basic examples of the look at method of then object3d class. There are two general ways of using the look at method one of which is to give three numbers, and the object is to use a single Vector3 class instance. In this section I will be covering examples that make use of both ways calling the method. In addition I think I should also cover rotation of geometry as well right away as that is something that will become a problem right away.
+In this section I will be starting out with just a few basic examples of the look at method of the object3d class. There are two general ways of using the look at method one of which is to give three numbers, and the object is to use a single Vector3 class instance. In this section I will be covering examples that make use of both ways calling the method. In addition I think I should also cover rotation of geometry as well right away as that is something that will become a problem quickly when using the look at method to set the rotation of mesh objects.
 
 ### 1.1 - Using a set of three numbers with Object3d.lookAt
 
 For this very first basic example I will be using a set of three numbers as a way to define what the position should be to look at in space. I am using the look at method in this example with both a mesh object as well as a camera as they are both objects that share the Object3d class as a base class. For the mesh object I went with the cone geometry [constructor function](/2019/02/27/js-javascript-constructor/) as a way to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) for the mesh object. 
 
-When doing so I will want to change the front facing direction of the geometry so that the point of the cone geometry is pointing to the location that I pass when using the look at method. For this I made use of rotateX method of the buffer geometry class. When using these geometry rotation methods I will typically only want to class the method once just the adjust things with the geometry and then use object3d class methods from there. This becomes more impotent when it comes to doing animation thorough which I will be getting to later in this post.
+When doing so I will want to change the front facing direction of the geometry so that the point of the cone geometry is pointing to the location that I pass when using the look at method. For this I made use of rotateX method of the buffer geometry class which is one of several options for setting the rotation of a geometry rather than an object3d based object as a whole. When using these geometry rotation methods I will typically only want to call the method once just the adjust things with the geometry, and then use object3d class methods from there such as the look at method. This becomes more important when it comes to doing animation which I will be getting to later in this post.
 
 ```js
 //-------- ----------
