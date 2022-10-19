@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-19 10:39:22
-version: 1.55
+updated: 2022-10-19 12:40:35
+version: 1.56
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or Camera, and then pass a set of numbers for x, y and z or a single instance of Vector3 that ether way is a position for the object to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, when it comes to a mesh object I often might want to change what the front side of the mesh is,  and also I might run into problems that have to do with world space compared to local space. 
@@ -303,12 +303,11 @@ renderer.render(scene, camera);
 
 ## 3 - Animation loop examples
 
-Now that I have a lot of the basics of the look at method covered there is getting into at least one if not more animation loop examples. That is examples that involve the use of the request animation frame method, or some other means to create a function that will be called over and over again to make some kind of animation rather than static scene example using threejs. There is a lot to write about when it comes to certain topics with this sort of thing, but I will not be getting into that here preferring to keep on track with
-
+Now that I have a lot of the basics of the look at method covered there is getting into at least one if not more animation loop examples to really get an idea of how this method works and what the deal is with certain issues that will pop up. That is examples that involve the use of the request animation frame method, or some other means to create a function that will be called over and over again to make some kind of animation rather than static scene example using threejs. There is a lot to write about when it comes to certain topics with this sort of thing, but I will not be getting into that here preferring to keep on track with the object3d look at method.
 
 ### 3.1 - Circle of cones all looking at a moving sphere
 
-Here I have some source code that is based off of the code that I made for the first video that I made for this blog post. The idea was to make a circle of cone objects and then use the look at methods to have them all look at a single object such as a mesh that makes use of the sphere geometry.
+Here I have some source code that is based off of the code that I made for the first video that I made for this blog post. The idea was to make a circle of mesh objects that each use geometry created with the cone geometry constructor function. I then use the look at method to get each of these cones to look at another mesh object that contains geometry made with the sphere geometry constructor. The effect is then just moving this sphere around in the scene object and having each of the cones look at the sphere.
 
 ```js
 (function () {
@@ -419,9 +418,5 @@ Here I have some source code that is based off of the code that I made for the f
 
 ## Conclusion
 
-The look at method is every useful method in three.js, and of course as such I use it all the time. However every now and then I get into situations in which the method is just not working as I would like it to. The method is not a magic wand of a method that will always just work all the time, and even when it does work I can not help but thing that I am doing myself a disservice by using it. I do not care to make things more complex than they need to be, however the look at method is not always a substitute for some complex expressions involving a little trigonometry.
-
-
-
-
+The look at method is a very useful feature in the object3d class so of course I use it all the time as a way to set the rotation of a camera and also for mesh objects, groups, and jut about anything based off of the object3d class.  However every now and then I get into situations in which the method is just not working as I would like it to. The look at method is not a magic wand of a solution that will always just work all the time, and even when it does work I can not help but think that I am doing myself a disservice by using it a little. I do not care to make things more complex than they need to be mind you though, however the look at method is not always a substitute for some complex expressions that might be called for when needed.
 
