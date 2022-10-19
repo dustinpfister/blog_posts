@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-18 09:30:19
-version: 1.54
+updated: 2022-10-19 10:39:22
+version: 1.55
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or Camera, and then pass a set of numbers for x, y and z or a single instance of Vector3 that ether way is a position for the object to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, when it comes to a mesh object I often might want to change what the front side of the mesh is,  and also I might run into problems that have to do with world space compared to local space. 
@@ -303,7 +303,8 @@ renderer.render(scene, camera);
 
 ## 3 - Animation loop examples
 
-In order to really start to get a feel for how the look at method works, and in the process find some of the short comings of this method, I will need to start working out a lot of animation examples of the method. This is then how I can really go about showing how the look at method goes hand in hand with many of the vector3 class methods, as well as many other means for setting the position and also the point to look at for objects.
+Now that I have a lot of the basics of the look at method covered there is getting into at least one if not more animation loop examples. That is examples that involve the use of the request animation frame method, or some other means to create a function that will be called over and over again to make some kind of animation rather than static scene example using threejs. There is a lot to write about when it comes to certain topics with this sort of thing, but I will not be getting into that here preferring to keep on track with
+
 
 ### 3.1 - Circle of cones all looking at a moving sphere
 
@@ -419,6 +420,8 @@ Here I have some source code that is based off of the code that I made for the f
 ## Conclusion
 
 The look at method is every useful method in three.js, and of course as such I use it all the time. However every now and then I get into situations in which the method is just not working as I would like it to. The method is not a magic wand of a method that will always just work all the time, and even when it does work I can not help but thing that I am doing myself a disservice by using it. I do not care to make things more complex than they need to be, however the look at method is not always a substitute for some complex expressions involving a little trigonometry.
+
+
 
 
 
