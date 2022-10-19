@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-08-16 14:12:58
-version: 1.16
+updated: 2022-10-19 14:32:21
+version: 1.17
 ---
 
 When it comes to starting to make some kind of actual product with [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
@@ -37,7 +37,7 @@ I was using r135 of threejs when I first wrote this post, and the last time I ca
 
 The source code examples I am writing about here can also be found in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-sequence-hooks) On Github. This is a pretty major module that I use regularly when making my various demo videos for these blog posts including this one. I have two versions of this module thus far, both of which I am writing about here in this post, however I might all ready have later revisions in the works at the repo, and it might be a long time until I come around to doing some more editing here.
 
-## 1 - First version of this video sequences hooks module
+## 0 - First version \( r0 \) of this video sequences hooks module
 
 In this section I will be going over the first revision of this sequence hooks module, which might also be the only revision if I never have a need to improve this or fix any bugs. Anyway in this section I will be going over two files then, one of which is the sequence hooks javaScript file itself, and the other is just a demo of this module that tests out the features of this module.
 
@@ -167,7 +167,7 @@ var seqHooks = (function () {
 }());
 ```
 
-### 1.1 - Basic hello world type example
+### 0.1 - Basic hello world type example
 
 For this basic demo of the sequence hooks module I will be using the before objects hook to define some default values for a camera, as well as setting the rotation of a mesh over the whole duration of the video. I am then using the after objects hook to make sure that I am always calling the update projection matrix method of the camera after setting values for the camera in the before objects hook as well as the current update method in the objects array of the sequence object.
 
@@ -244,7 +244,7 @@ For this basic demo of the sequence hooks module I will be using the before obje
 }());
 ```
 
-### 1.2 - Part Frame example
+### 0.2 - Part Frame example
 
 One thing that I have found to be a problem with r0 of the sequence hooks module has to do with the expressions that I am using to set the values of the part frame and part frame max properties of the sequence object. In some cases this can result in part percent values that are over that of 1 which I would consider not valid and results in weird rendering issues in some videos. This is then the first major bug that I would like to fix in r1, along with adding other feature that I think I should have in this now that I have used it for a long time when making [videos for the javaweaver channel on youtube](https://www.youtube.com/user/javaweaver).
 
@@ -333,7 +333,7 @@ One thing that I have found to be a problem with r0 of the sequence hooks module
 }());
 ```
 
-### 1.3 - using more than one seq object example
+### 0.3 - using more than one seq object example
 
 So now for a demo script just for the sake of making sure that this module is working out okay just the way I like it to. I am thinking that I should test out the default feature when it comes to setting secs values for each object, but also a few more nested sequence objects that make use of the per values like I have been doing thus far with the older sequence module. So then I maybe it would be a good idea to have two mesh objects one of which is mutated by making use of one or more nested sequence objects that will be used in a main sequence objects, and then another mesh object that will just be mutated with over time in the before objects method of the main sequence object.
 
@@ -488,7 +488,7 @@ So now for a demo script just for the sake of making sure that this module is wo
 }());
 ```
 
-## 2 - Revision r1 of the sequence hooks module
+## 1 - Revision r1 of the sequence hooks module
 
 I have been using r0 of this module for a few months now, and have found that there are a few features that I should add to help keep me from having to repeat the same code over and over again from on video to the next. That is that I would like to have a get per method that I can call of the seq object to get a value from 0 to 1 that will change depending on the current fame rather to a max frame value for the video as a whole, or a current sequence object. This is all ready the case with a static value but I would like to be able to pass a count argument that will change the number of times 0 progress to 1 over the duration of a sequence or video as a whole.
 
@@ -731,7 +731,7 @@ var seqHooks = (function () {
 }());
 ```
 
-### 2.1 - Demo of new getPer, getBias and getSinBias methods
+### 1.1 - Demo of new getPer, getBias and getSinBias methods
 
 I then will want to work out at least one demo that tests these new get percent methods out. With that it would seem that the public methods of the seqhooks main global work great. I am not sure if I will need them or not but I do not thing that these should just be internal or usable for the current state of sequence objects alone.
 
@@ -851,7 +851,7 @@ It would seem that the methods that I added for the seq object work great, and t
 }());
 ```
 
-### 2.2 - Fix for partFrame bug in r0, still allows for older functionally depending of seq.pff value
+### 1.2 - Fix for partFrame bug in r0, still allows for older functionally depending of seq.pff value
 
 There is then also the question of my new expressions that are used to set the part frame and part frame max values. I need to make sure that things look good when using them and that the part percent values do not equal, let alone go over the value of 1. It would seem that the hard coded expressions that I am using for this work well, but there might come a time where I will run into some weird rendering issues again. To address this I can use the new seq.pff value to change to another built in function that sets these part frame values, including the old expressions from r0. In addition I can also define a custom function for this if need be by just setting the value of seg.pff to a function in which I define the expressions I want to use rather than a string value.
 
@@ -947,6 +947,26 @@ There is then also the question of my new expressions that are used to set the p
 ```
 
 This might be a killing a mosquito with a cannon kind of situation, but if the r1 expressions work well long enough I might remove this bloat in any future revisions of this and just use the r1 expressions alone for this.
+
+## 2 - Vector3 Paths feature added in r2 of sequence hooks
+
+The main feature that I wanted to add in r2 of the sequence hooks module is a way to define some paths that can be used to define the motion of objects such as mesh objects and the camera. I have started a few projects outside of this module for this sort of thing, but sense this is a module that I use all the time I thought that if i bake something into this they I will have something at the ready to use right away while I explore options for other ways of doing this sort of thing that might involve things like the Curve class for example.
+
+Anyway the way that I use this so to define one or more path objects that contain an array of Vector3 objects, or an array of numbers that can be converted to such an array. One example of an array fo numbers that would work is the array of a position attribute of a buffer geometry instance which is what I am doing in one of the demos for this revision of the module.
+
+### 2.1 - Using an array of Vector3 class instances
+
+In this demo I am creating arrays of Vector3 objects by directly calling the Vector3 constructor function. Chances are that I will not be creating paths this way in actually projects but I just want to confirm that I can create paths this way of I want to. I am thinking that the real way that I would want to create these paths would be to use some function that will create and return an array of vector3 objects.
+
+```js
+```
+
+### 2.2 - Using an array of numbers
+
+Here I am testing out that the feature that I added where an array of numbers can be used that will then be converted to an array of vector3 objects works. Here I am using an array literal as a way to define the position of a camera over time. When it comes to the position of a mesh object though I am actually using the position attribute of a buffer geometry as that is an array that is formatted thins kind of way and sure enough that works just fine.
+
+```js
+```
 
 ## Conclusion
 
