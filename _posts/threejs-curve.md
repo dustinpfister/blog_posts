@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2022-06-30 15:09:54
-version: 1.27
+updated: 2022-10-20 09:43:08
+version: 1.28
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic that can then be used with the [tube geometry constructor](https://threejs.org/docs/#api/en/geometries/TubeGeometry) as the first argument for the function. This geometry can then be use with a mesh object which allows for making line like structures but because it is with mesh object rather than lines objects I can use mesh materials like the basic or phong materials.
@@ -27,7 +27,83 @@ The main focus of this post is on the curve class in threejs, and using the obje
 
 Getting into the use of the curve class and the typically corresponding tube geometry constructor seems like the next step from [creating lines](/2018/04/19/threejs-line/). One nice thing about lines is that I am create them by making an array of [vector3 class](/2018/04/15/threejs-vector3/) instances by making use of the set from points method of the buffer geometry class. However there are limitations with lines compared to what there is work with when it comes to mesh objects, so that leads one to look into the curve class and tube geometry.
 
-## 1 - Basic THREE.Curve and THREE.TubeGeometry example
+## 1 - Basic Curve Examples
+
+### 1.1 - Line Curve Example with Points
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(10, 5, 7);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CURVE
+//-------- ----------
+const v1 = new THREE.Vector3(5, 0, 5);
+const v2 = new THREE.Vector3(-5, 0, -5);
+const vControl = new THREE.Vector3(5, 0, -5);
+const curve = new THREE.LineCurve3( v1, v2);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+// points
+const v3Array = curve.getPoints(20);
+const geometry = new THREE.BufferGeometry();
+geometry.setFromPoints(v3Array);
+const points = new THREE.Points(geometry, new THREE.PointsMaterial({color: 0xff0000, size: 0.25 }));
+scene.add(points);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.2 - Bezier Curve Example with Points
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(10, 5, 7);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CURVE
+//-------- ----------
+const v1 = new THREE.Vector3(5, 0, 5);
+const v2 = new THREE.Vector3(-5, 0, -5);
+const vControl = new THREE.Vector3(5, 0, -5);
+const curve = new THREE.QuadraticBezierCurve3( v1, vControl, v2);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+// points
+const v3Array = curve.getPoints(20);
+const geometry = new THREE.BufferGeometry();
+geometry.setFromPoints(v3Array);
+const points = new THREE.Points(geometry, new THREE.PointsMaterial({color: 0xff0000, size: 0.25 }));
+scene.add(points);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.3 - Basic THREE.Curve and THREE.TubeGeometry example
 
 When it comes to the curve and tube geometry constructors in threejs one has to start somewhere, so for this example I will be doing just that with the THREE.Curve constructor and the tube geometry constructor. For this example I am starting out with the usual features when it comes to things like setting up a scene object, camera, and renderer. In additional the the usual features I am also adding a [light source](/2022/02/25/threejs-light/) as I will be going with the [standard material](/2021/04/27/threejs-standard-material/) for this example when setting  up the mesh object that will use the tube geometry later.
 
