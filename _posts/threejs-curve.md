@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2022-10-20 09:43:08
-version: 1.28
+updated: 2022-10-20 09:47:40
+version: 1.29
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic that can then be used with the [tube geometry constructor](https://threejs.org/docs/#api/en/geometries/TubeGeometry) as the first argument for the function. This geometry can then be use with a mesh object which allows for making line like structures but because it is with mesh object rather than lines objects I can use mesh materials like the basic or phong materials.
@@ -29,7 +29,11 @@ Getting into the use of the curve class and the typically corresponding tube geo
 
 ## 1 - Basic Curve Examples
 
+To start out with Curves in this section I will be going over some fairly simple getting started type examples of Curves. This will include some examples that make use of built in curve function examples, as well as at least one that has to do with creating a custom curve class.
+
 ### 1.1 - Line Curve Example with Points
+
+There is a Line Curve 3 class that is one built in option for cretaign a curve. This is just making an instance of a curve that is just a line between two points, but it is still an instance of a curve. So then this can be used in any situautin that i need a curve object that is just a line actually. 
 
 ```js
 //-------- ----------
