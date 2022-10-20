@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-20 08:04:23
-version: 1.49
+updated: 2022-10-20 08:13:06
+version: 1.50
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -587,9 +587,11 @@ So I have some code that seems to work great so far when it comes to using the d
 
 ## 4 - Plane Geometry and Buffer Attributes
 
-When it comes to plane geometry, and geometry in general for that matter there are a number of attributes that compose the state of the geometry. There are can be a lot of attributes added to a geometry depeding on what the situation is but for the most part there are three core attributes of concern when it comes to somehting like plane geometry which are the position, normal, and uv attributes.
+When it comes to plane geometry, and geometry in general for that matter there are a number of attributes that compose the state of the geometry. There are can be a lot of attributes added to a geometry depending on what the situation is but for the most part there are three core attributes of concern when it comes to something like plane geometry which are the position, normal, and uv attributes. All of the attributes of a geometry will be instances of the [buffer attribute class](https://threejs.org/docs/#api/en/core/BufferAttribute) which is worth looking into in detail as there are many tools for creating and mutating these kinds of attributes in that class.
 
-### 4.1 -
+### 4.1 - Moving the points of a plane geometry with the position attribute
+
+If I want to change the state of the position attribute I can use methods like the setY method of the buffer attribute class as one way to do so. When calling the setY method the first argument that i need to give is a point index, followed by the desired value for y for that point in the plane. When it comes to knowing the count of points there is the count property of the position buffer attribute that I can use as a way to know then end of the loop.
 
 ```js
 (function () {
@@ -620,7 +622,6 @@ When it comes to plane geometry, and geometry in general for that matter there a
     const len = pos.count;
     // for each point adjusting y value
     while(i < len){
-        console.log(pos.getY(i))
         pos.setY(i, -2 + 4 * Math.random());
         i += 1;
     }
