@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-16 13:24:29
-version: 1.48
+updated: 2022-10-20 08:04:23
+version: 1.49
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -585,12 +585,68 @@ So I have some code that seems to work great so far when it comes to using the d
     ());
 ```
 
+## 4 - Plane Geometry and Buffer Attributes
 
-## 4 - Tile index module example
+When it comes to plane geometry, and geometry in general for that matter there are a number of attributes that compose the state of the geometry. There are can be a lot of attributes added to a geometry depeding on what the situation is but for the most part there are three core attributes of concern when it comes to somehting like plane geometry which are the position, normal, and uv attributes.
+
+### 4.1 -
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    // render
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // PLANE GEOMETRY
+    // ---------- ----------
+    const geo = new THREE.PlaneGeometry(10, 10, 5, 5);
+    geo.rotateX(Math.PI * 1.5);
+    geo.translate(0,-1,0);
+    // ---------- ----------
+    // POSITION ATTRIBUTE OF PLANE GEOMETRY
+    // ---------- ----------
+    const pos = geo.getAttribute('position');
+    let i = 0;
+    const len = pos.count;
+    // for each point adjusting y value
+    while(i < len){
+        console.log(pos.getY(i))
+        pos.setY(i, -2 + 4 * Math.random());
+        i += 1;
+    }
+    pos.needsUpdate = true;
+    // recompute the 'normals' attribute
+    geo.computeVertexNormals()
+    // ---------- ----------
+    // MESH
+    // ---------- ----------
+    const mesh = new THREE.Mesh(
+        geo,
+        new THREE.MeshNormalMaterial({ side: THREE.DoubleSide }));
+    scene.add(mesh);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+## 5 - Tile index module example
 
 The example where I am just setting a checker board like pattern is a good start, but now I think I should make a module where there is just creating the groups like that, but pulling the logic that has to do with setting material index values out into a function of its own. There is then experimenting with creating at least a few functions that have to do with setting material index values in different ways.
 
-### 4.0 - The tile module
+### 5.0 - The tile module
 
 For this example then I started to make a kind of tile index module that i can use to create and return a mesh object that has a plane geometry with groups set up in a grid like pattern. However the material index values will be set to zero by default for all of the sections, so then there uis having a few additional functions that will set material index values for the mesh objects that I create with this module.
 
@@ -692,7 +748,7 @@ For this example then I started to make a kind of tile index module that i can u
     ( this['TileMod'] = {} ));
 ```
 
-### 4.1 - Demo of the tile index module
+### 5.1 - Demo of the tile index module
 
 Now it is time to test out this module to see if what I worked out is working the way that I would like it to, and it would seem that it is.
 
@@ -742,11 +798,11 @@ Now it is time to test out this module to see if what I worked out is working th
 
 There is then coming up with additional methods for setting the index values in a whole bunch of different ways, and also making such functions that will take some arguments. However there is not just the material index values of course there is also working out new ways to add the groups in different ways also. never the less after working out this example I now have a decent grasp on how to go about  adding groups and setting material index values for plane geometries. Also much of what I have worked out here of course applies to buffered geometry in general also.
 
-## 5 - Animation loop examples
+## 6 - Animation loop examples
 
 With many of my blog posts on threejs I like to make at least one if not more videos for the post, and this post is no exception of course. In this section I will be writing abut the source code that I ma using as a starting point for all of my video projects for this blog post thus far.
 
-### 5.1 - Video1 project using r0 of object grid wrap
+### 6.1 - Video1 project using r0 of object grid wrap
 
 The first video that I made for this blog post made use of r0 of [my object grid wrap module threejs example](/2022/05/20/threejs-examples-object-grid-wrap/) that you can read about more at this post if interested. Here I have the additional code that i am using on top of the use of that module to create the desired end effect.
 
@@ -878,7 +934,7 @@ The first video that I made for this blog post made use of r0 of [my object grid
     ());
 ```
 
-### 5.2 - Video2 project using r2 of objects grid wrap, oacity2 and custom flip effects, and animated data textures
+### 6.2 - Video2 project using r2 of objects grid wrap, oacity2 and custom flip effects, and animated data textures
 
 I have made a second video for this post which at the time of this writing is the top video in this post. Like before I am using an array of materials, but I am also using some new helper functions for creating data textures as well. There is not just using an array fo materials to get a desired look but also just creating a single texture that is the way that I like it also. There is getting into uv mapping as a way to get things working well with a single material, but maybe that is something I will get to in a future animation example here.
 
@@ -1086,13 +1142,13 @@ I have made a second video for this post which at the time of this writing is th
 ```
 
 
-## 6 - Styling a plane as a checkered board in three.js r104 - r124 with face3
+## 7 - Styling a plane as a checkered board in three.js r104 - r124 with face3
 
 This is the older example for a checkered board plane geometry that I made when I first wrote this post, back then I was using three.hs r104, so this will likely break on newer versions of three.js.
 
 When it comes to styling a plane that has some sections with it, doing so can be a little confusing, but might not prove to be to hard. I have found solutions on line at [stack overflow](https://stackoverflow.com/questions/22689898/three-js-checkerboard-plane) that will work okay in some situations but not others depending on the number of sections. I was able to work out a solution for this that seems to work okay with any combination of width and height sections though and in the section I will be going over just that.
 
-### 6.1 - The checker helpers and face3
+### 7.1 - The checker helpers and face3
 
 Here I have two functions that create a plane geometry that has the material index values set for each tile section in the plane. So in other words when the geometry is used with a mesh that has an array of materials the material index values of 0 and 1 will be used for every other tile section in the plane, just like that of a checker board pattern.
 
