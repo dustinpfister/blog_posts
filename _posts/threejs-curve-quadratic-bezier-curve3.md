@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2022-10-21 08:25:41
-version: 1.2
+updated: 2022-10-21 08:33:31
+version: 1.3
 ---
 
 In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a control point that will effect the curve. This Can then be used for anything the requires a curve such as the tub geometry constrictor function. There are also base curve class methods like the two points method that will return an array of vector3 objects that can then be used to define movement over time, or create a geometry by making use of the set from points method for example.
@@ -16,11 +16,11 @@ In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras
 
 ## 1 - Basic examples of THREE.QuadraticBezierCurve3
 
-To start out with this I will want to have at least one if not more basic examples of the THREE.QuadraticBezierCurve3 constcror that will return a Curve object and thus can be used anywhere such an object is called for. For now I will be sticking with just the Quadratic Bezier Curve alone as a way to create curves saving curve paths for a later section. I will be touching base on things like createing a geometry from this Curve object, but will not be getting into advanced topics like updating a geometry and so forth.
+To start out with this I will want to have at least one if not more basic examples of the THREE.QuadraticBezierCurve3 constructor that will return a Curve object and thus can be used anywhere such an object is called for. For now I will be sticking with just the Quadratic Bezier Curve alone as a way to create curves saving curve paths for a later section. I will be touching base on things like creating a geometry from this Curve object, but will not be getting into advanced topics like updating a geometry and so forth.
 
 ### 1.1 - Single Quadratic Bezier Curve and Points
 
-One has to start somewhere with this sort of thing and with that said here I have a simply hello world style example where I am createing a Quadratic Bezier Curve and then using the Get Points method of the base curve class to create an array of vector3 objects. This array of vector3 objects can then be used to create a geometry by calling the Buffer Geometry constcror function and then using the set from points method. The returned result is then a Buffer Geometry with a position attribute alone, so this might not work well with a Mesh object which requires a few more attributes, but it will work well with say the THREE.Points constrcuor.
+One has to start somewhere with this sort of thing and with that said here I have a simply hello world style example where I am creating a Quadratic Bezier Curve and then using the Get Points method of the base curve class to create an array of vector3 objects. This array of vector3 objects can then be used to create a geometry by calling the Buffer Geometry constructor function and then using the set from points method. The returned result is then a Buffer Geometry with a position attribute alone, so this might not work well with a Mesh object which requires a few more attributes, but it will work well with say the THREE.Points constrcuor.
 
 ```js
 //-------- ----------
@@ -62,7 +62,7 @@ The Curve Paths class is a way to create a Curve object that is not just one Cur
 
 ### 2.1 - Curve Path with Quadratic Bezier Curve and Points
 
-There is createing an instance of a curve path by calling the [THREE.CurvePath](https://threejs.org/docs/#api/en/extras/core/CurvePath) constructor function, then I just need to start adding Curves to it with the add method of this class. For this I created an array with the values that I want to create a start point, and point and control point for each curve. In then just need to looop over this array and create the Vector3 objects that I then pass to the THREE.QuadraticBezierCurve3 constrcor and then add each path to the Curve Path.
+There is creating an instance of a curve path by calling the [THREE.CurvePath](https://threejs.org/docs/#api/en/extras/core/CurvePath) constructor function, then I just need to start adding Curves to it with the add method of this class. For this I created an array with the values that I want to create a start point, and point and control point for each curve. In then just need to loop over this array and create the Vector3 objects that I then pass to the THREE.QuadraticBezierCurve3 constructor and then add each path to the Curve Path.
 
 I can then use the Curve Path like that of any other Curve Object and as such all the Curve class methods are there to work with such as the Get Points method. However I have found that when using a method such as that the number that I give for the number of points will be for each curve object in the curve path rather than the curve path over all.
 
@@ -111,4 +111,5 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
+This Quadratic Bezier Curve class is then a great way to go about creating curves that can then be used to create lines and points for a scene. There is the idea of using this in conjunction with additional code to create a geometry that would be used with a mesh object, however my real interest with this thus far has to do with having a system for defining the position, and rotation of objects over time. While I was writing this I was also working on an updated revision of my sequence hooks module that I use in just about all of my video projects. While working on it I was adding a new feature that had to do with creating paths that I then use to move objects, so curves are of interest when it comes to the use of this module.
 
