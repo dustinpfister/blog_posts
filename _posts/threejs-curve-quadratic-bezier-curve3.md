@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2022-10-21 08:50:17
-version: 1.4
+updated: 2022-10-21 08:55:53
+version: 1.5
 ---
 
 In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a control point that will effect the curve. This Can then be used for anything the requires a curve such as the tub geometry constrictor function. There are also base curve class methods like the two points method that will return an array of vector3 objects that can then be used to define movement over time, or create a geometry by making use of the set from points method for example.
@@ -15,11 +15,15 @@ In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras
 
 ## THREE.QuadraticBezierCurve3 and what to know first
 
-This is a blog post on the use of the THREE.QuadraticBezierCurve3 constructor function in the javaScript library known as threejs. This is then not any kind of [getting started type post on threejs](/2018/04/04/threejs-getting-started/) let alone [javaScript](/2018/11/27/js-getting-started/) and any additional skills that are needed before hand. There is a whole lot of ground to cover first before getting into the use of Curves and I am not going to be getting into every little detail that you should know at this point. However I do always like to take a moment to write about a few key things you might want to learn about first, or brush up on once again when it comes to using the Quadratic Bezier Curve3 class.
+This is a blog post on the use of the THREE.QuadraticBezierCurve3 [constructor function](/2019/02/27/js-javascript-constructor/) in the javaScript library known as threejs. This is then not any kind of [getting started type post on threejs](/2018/04/04/threejs-getting-started/) let alone [javaScript](/2018/11/27/js-getting-started/) and any additional skills that are needed before hand. There is a whole lot of ground to cover first before getting into the use of Curves and I am not going to be getting into every little detail that you should know at this point. However I do always like to take a moment to write about a few key things you might want to learn about first, or brush up on once again when it comes to using the Quadratic Bezier Curve3 class.
 
 ### Read up more on the base Curve class
 
 I wrote a post on the [base Curve class](/2022/06/17/threejs-curve/) all ready so that is something that you might want to read about a little first. The QuadraticBezierCurve3 class is a kind of Curve class so there is taking a moment to read about what there is to work with when it comes to curve objects in general. For the most part I do like to just use this QuadraticBezierCurve3 class for making curve objects, however there are a few other built in options for this, and if need be there is also making my own Curve classes as well based off the the main Curve class.
+
+### The Vector3 class
+
+The arguments that I give when calling the QuadraticBezierCurve3 function are instances of the [Vector3 class](/2018/04/15/threejs-vector3/), also I often want to create an array of Vector3 objects. This Vector3 class is worth checking out in detail then if you have not done so all ready.
 
 ### Source Code is up on Github
 
