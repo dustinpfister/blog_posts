@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-10-19 12:40:35
-version: 1.56
+updated: 2022-10-21 09:55:22
+version: 1.57
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it. Using the look at method is fairly straight forward I just call the method off of some kind of object3d class based object such as a Mesh object or Camera, and then pass a set of numbers for x, y and z or a single instance of Vector3 that ether way is a position for the object to look at. The result of calling the look at method then is that the object ends up looking at that point in space that was passed. However things might not always work the way that I might expect it to, when it comes to a mesh object I often might want to change what the front side of the mesh is,  and also I might run into problems that have to do with world space compared to local space. 
@@ -396,6 +396,87 @@ Here I have some source code that is based off of the code that I made for the f
         e.x = Math.PI * 8 * a;
         sphere.position.copy(v_start).normalize().applyEuler(e).multiplyScalar(4).add(v_delta);
         allLook(coneGroup, sphere);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+### 3.2 - Cretaing a path of points to use with the look at method
+
+For this animation example of the look at method I wanted to create an array of Vector3 objects by creating a curve path and then using the get points method of the [curve base class](/2022/06/17/threejs-curve/). When doing so I have set the total number of points to also be the total number of points for the over all animation. This way I can get a current point to look at by just using a frame number as an index value rather than having to do something fancy with rounding, or lerping between two points.
+
+What is great about this is that I can not only use a system like this to define a curve for where to look at but I can also use this kind of thing to define the movement of an object over time as well.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+    camera.position.set(6, 6, 6);
+    camera.lookAt(0,0,0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CURVE PATH
+    //-------- ----------
+    const POINT_COUNT = 300; // NUMBER OF POINTS TO HAVE THE CAMERA LOOK AT
+    const curvePath = new THREE.CurvePath();
+    [
+        [5,0,5, 0,2,-7,5,3,-5], // three each (x,y,z) for start, end, and control points
+        [0,2,-7,0,1.5,0,-2,4,3],
+        [0,1.5,0,3,1,1,5,-1,-4],
+        [3,1,1,-12,0,0,3,7,10]
+    ].forEach((a)=>{
+        const v1 = new THREE.Vector3(a[0], a[1], a[2]);       // start
+        const v2 = new THREE.Vector3(a[3], a[4], a[5]);       // end
+        const vControl = new THREE.Vector3(a[6], a[7], a[8]); // control
+        curvePath.add( new THREE.QuadraticBezierCurve3( v1, vControl, v2) );
+    });
+    const v3Array = curvePath.getPoints(POINT_COUNT / curvePath.curves.length);
+    //-------- ----------
+    // SCENE CHILD OBJECTS
+    //-------- ----------
+    scene.add( new THREE.GridHelper(10, 10) );
+    // you can just use getPoints as a way to create an array of vector3 objects
+    // which can be used with the set from points method
+    const geometry = new THREE.BufferGeometry();
+    geometry.setFromPoints(v3Array);
+    const points = new THREE.Points(geometry, new THREE.PointsMaterial({color: 0x00ff00, size: 0.125 }));
+    scene.add(points);
+    //-------- ----------
+    // ANIMATION LOOP
+    //-------- ----------
+    const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = POINT_COUNT;  // MADE THE FRAME MAX THE SAME AS THE POINT COUNT
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const v_start = new THREE.Vector3(0, 0, 1);
+    const v_delta = new THREE.Vector3(0, 0, 3);
+    const update = function(frame, frameMax){
+        const a = frame / frameMax;
+        const v3 = v3Array[ frame ];
+        camera.lookAt(v3);
     };
     // loop
     const loop = () => {
