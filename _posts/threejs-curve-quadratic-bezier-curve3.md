@@ -5,14 +5,29 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2022-10-21 08:33:31
-version: 1.3
+updated: 2022-10-21 08:50:17
+version: 1.4
 ---
 
 In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a control point that will effect the curve. This Can then be used for anything the requires a curve such as the tub geometry constrictor function. There are also base curve class methods like the two points method that will return an array of vector3 objects that can then be used to define movement over time, or create a geometry by making use of the set from points method for example.
 
 <!-- more -->
 
+## THREE.QuadraticBezierCurve3 and what to know first
+
+This is a blog post on the use of the THREE.QuadraticBezierCurve3 constructor function in the javaScript library known as threejs. This is then not any kind of [getting started type post on threejs](/2018/04/04/threejs-getting-started/) let alone [javaScript](/2018/11/27/js-getting-started/) and any additional skills that are needed before hand. There is a whole lot of ground to cover first before getting into the use of Curves and I am not going to be getting into every little detail that you should know at this point. However I do always like to take a moment to write about a few key things you might want to learn about first, or brush up on once again when it comes to using the Quadratic Bezier Curve3 class.
+
+### Read up more on the base Curve class
+
+I wrote a post on the [base Curve class](/2022/06/17/threejs-curve/) all ready so that is something that you might want to read about a little first. The QuadraticBezierCurve3 class is a kind of Curve class so there is taking a moment to read about what there is to work with when it comes to curve objects in general. For the most part I do like to just use this QuadraticBezierCurve3 class for making curve objects, however there are a few other built in options for this, and if need be there is also making my own Curve classes as well based off the the main Curve class.
+
+### Source Code is up on Github
+
+The source code examples that I am writing about in this [post can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-curve-quadratic-bezier-curve3).
+
+### Version Numbers matter
+
+When I wrote this post I was using r140 of threejs.
 
 ## 1 - Basic examples of THREE.QuadraticBezierCurve3
 
@@ -111,5 +126,5 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-This Quadratic Bezier Curve class is then a great way to go about creating curves that can then be used to create lines and points for a scene. There is the idea of using this in conjunction with additional code to create a geometry that would be used with a mesh object, however my real interest with this thus far has to do with having a system for defining the position, and rotation of objects over time. While I was writing this I was also working on an updated revision of my sequence hooks module that I use in just about all of my video projects. While working on it I was adding a new feature that had to do with creating paths that I then use to move objects, so curves are of interest when it comes to the use of this module.
+This Quadratic Bezier Curve class is then a great way to go about creating curves that can then be used to create lines and points for a scene. There is the idea of using this in conjunction with additional code to create a geometry that would be used with a mesh object, however my real interest with this thus far has to do with having a system for defining the position, and rotation of objects over time. While I was writing this I was also working on an updated revision of my [sequence hooks module](/2022/05/12/threejs-examples-sequence-hooks/) that I use in just about all of my video projects. While working on it I was adding a new feature that had to do with creating paths that I then use to move objects, so curves are of interest when it comes to the use of this module.
 
