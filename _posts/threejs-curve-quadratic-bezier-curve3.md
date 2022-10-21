@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2022-10-21 08:55:53
-version: 1.5
+updated: 2022-10-21 09:00:16
+version: 1.6
 ---
 
 In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a control point that will effect the curve. This Can then be used for anything the requires a curve such as the tub geometry constrictor function. There are also base curve class methods like the two points method that will return an array of vector3 objects that can then be used to define movement over time, or create a geometry by making use of the set from points method for example.
@@ -77,7 +77,7 @@ renderer.render(scene, camera);
 
 ## 2 - Curve Paths
 
-The Curve Paths class is a way to create a Curve object that is not just one Curve but a collection of curves. I can create a single instance of this Curve Path class and then start adding curve objects to it, such as Curves created with the Quadratic Bezier Curve constructor. 
+The Curve Paths class is a way to create a Curve object that is not just one Curve but a collection of curves. I can create a single instance of this Curve Path class and then start adding curve objects to it, such as Curves created with the Quadratic Bezier Curve constructor. This sepeshail class that is curve that is then a collection of curves is then an impoatane t tool when it comes to using the Quadratic Bezier Curve class for one of the major use case examples that I would like to use if for as ofteh I will want to have not just one but many control points as well as start and end points that make up an over all curve. 
 
 ### 2.1 - Curve Path with Quadratic Bezier Curve and Points
 
