@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-10-19 14:38:22
-version: 1.18
+updated: 2022-10-22 13:03:50
+version: 1.19
 ---
 
 When it comes to starting to make some kind of actual product with [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
@@ -1179,7 +1179,7 @@ Anyway the way that I use this so to define one or more path objects that contai
                  const len = array.length - 1;
                  let vi1 = Math.floor( len * per );
                  let vi2 = vi1 + 1;
-                 v12 = vi2 > len ? len : vi2;
+                 vi2 = vi2 > len ? len : vi2;
                  // if lerp mode is true I will want to have a Vector3 that
                  // is between two as there is not one on a frame by frame basic
                  if(pathObj.lerp && array.length < maxFrame){
@@ -1190,7 +1190,7 @@ Anyway the way that I use this so to define one or more path objects that contai
                      // the array is it is equal to or greater than
                      // the count of frames
                      let vi1 = Math.floor( array.length * per );
-                     v11 = vi1 > len ? len : vi1;
+                     vi1 = vi1 > len ? len : vi1;
                      cv.copy( array[ vi1 ] );
                  }
                  // key in to seq.v3Paths
