@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2022-10-22 12:22:30
-version: 1.8
+updated: 2022-10-22 12:32:34
+version: 1.9
 ---
 
 In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a control point that will effect the curve. This Can then be used for anything the requires a curve such as the tub geometry constrictor function. There are also base curve class methods like the two points method that will return an array of vector3 objects that can then be used to define movement over time, or create a geometry by making use of the set from points method for example.
@@ -234,7 +234,7 @@ Although I have the basic idea of what I want working fine here, I would also li
 
 ### 3.2 - Using curves to set position an rotation of a camera
 
-For this animation loop example I am doing more or less the same thing as the first one, only now I have to curve paths one of which I am using to set the position of a camera, and the other I am using to set the look at location for the camera.
+For this animation loop example I am doing more or less the same thing as the first one, only now I have to curve paths one of which I am using to set the position of a camera, and the other I am using to set the look at location for the camera. So then over time I can use these paths to define where an object will be, but also where it should be looking over time as well which is great. For this example I also expanding  the collection of helper functions to included methods that help with crating an array of vector3 objects as well as creating a collection of that help to show the state of the curve as well.
 
 ```js
 (function () {
@@ -342,6 +342,9 @@ For this animation loop example I am doing more or less the same thing as the fi
 ### 3.3 - Get Points method along with get alpha methods
 
 The get points method is great for just quickly getting an array of vector3 objects from a curve, but there are still some situations in which I will want to create my own custom get points method actually. There is also the get point method of the curve class and this is what I can use to get a single point along a curve at a time. When calling the get point method the number value that i give is not a count of points that I want, but rather an alpha value between 0 and 1 that is a single point along the curve that I want. If I want to just use a index over total count type alpha value to get the same result that is what is given when using the get points method I can do that, however it would make sense to come up with custom alpha values for this.
+
+So for this example I made changes to the helper functions so that I am using the get point method in place of the get points method. Also I am not just using the get points method but pulling it into a helper function that can be given an get alpha method. By default the get alpha method that is used is just like that of what is used by the get points method of the curve class and I am doing just that for one curve. However I am of course defining a number of custom get alpha methods that use various features of the math utils object of threejs , as well as another one where I am using a 2d curve to define  what the alpha value should be when getting a point a long a curve.
+
 
 ```js
 (function () {
