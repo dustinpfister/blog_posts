@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-20 08:13:06
-version: 1.50
+updated: 2022-10-22 06:40:07
+version: 1.51
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -635,6 +635,66 @@ If I want to change the state of the position attribute I can use methods like t
         geo,
         new THREE.MeshNormalMaterial({ side: THREE.DoubleSide }));
     scene.add(mesh);
+    // ---------- ----------
+    // CALLING RENDER OF RENDERER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+### 4.2 - The Normals Attribute
+
+The normals attribute of a buffer geometry such as a plane geometry is used to set a direction for each vertex of a position attribute. This can be used to find out what side of a face is the front facing side of the face, and is also used with lighting. Also there are materials such as the normal material where the state of the normals attribute is used to render the surface of the geometry.
+
+If I want to get a visual idea of what is going on with the state of a normal attribute I will want to use [the vertex Normals helper](https://threejs.org/docs/#examples/en/helpers/VertexNormalsHelper). This is not added to the core of the threejs library but must be added on top of it by linking to the additional file that can be found in the examples folder of the threejs github folder.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, AND RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, -2, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    // ---------- ----------
+    // PLANE GEOMETRY
+    // ---------- ----------
+    const geo = new THREE.PlaneGeometry(10, 10, 20, 20);
+    geo.rotateX(Math.PI * 1.5);
+    // ---------- ----------
+    // NORMAL ATTRIBUTE OF PLANE GEOMETRY
+    // ---------- ----------
+    const normal = geo.getAttribute('normal');
+    let i = 0;
+    const len = normal.count;
+    while(i < len){
+        const dx = -2 + 4 * Math.random(),
+        dy = -2 + 4 * Math.random(),
+        dz = -2 + 4 * Math.random();
+        normal.setXYZ(i,
+            normal.getX(i) +  Math.random() *  dx,
+            normal.getY(i) +  Math.random() *  dy,
+            normal.getZ(i) +  Math.random() *  dz
+        );
+        i += 1;
+    }
+    normal.needsUpdate = true;
+    // ---------- ----------
+    // MESH
+    // ---------- ----------
+    const mesh = new THREE.Mesh( geo,
+        new THREE.MeshNormalMaterial({ side: THREE.DoubleSide }));
+    scene.add(mesh);
+    if(THREE.VertexNormalsHelper){
+        const helper = new THREE.VertexNormalsHelper( mesh, 1, 0x00af00 );
+        scene.add(helper);
+    }
     // ---------- ----------
     // CALLING RENDER OF RENDERER
     // ---------- ----------
