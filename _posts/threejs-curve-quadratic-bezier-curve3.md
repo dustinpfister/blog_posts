@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2022-10-22 13:51:01
-version: 1.10
+updated: 2022-10-23 07:46:33
+version: 1.11
 ---
 
 In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a control point that will effect the curve. This Can then be used for anything the requires a curve such as the tub geometry constrictor function. There are also base curve class methods like the two points method that will return an array of vector3 objects that can then be used to define movement over time, or create a geometry by making use of the set from points method for example.
@@ -43,7 +43,7 @@ To start out with this I will want to have at least one if not more basic exampl
 
 ### 1.1 - Single Quadratic Bezier Curve and Points
 
-One has to start somewhere with this sort of thing and with that said here I have a simply hello world style example where I am creating a Quadratic Bezier Curve and then using the Get Points method of the base curve class to create an array of vector3 objects. This array of vector3 objects can then be used to create a geometry by calling the Buffer Geometry constructor function and then using the set from points method. The returned result is then a Buffer Geometry with a position attribute alone, so this might not work well with a Mesh object which requires a few more attributes, but it will work well with say the THREE.Points constrcuor.
+One has to start somewhere with this sort of thing and with that said here I have a simply hello world style example where I am creating a Quadratic Bezier Curve and then using the Get Points method of the base curve class to create an array of vector3 objects. This array of vector3 objects can then be used to create a geometry by calling the Buffer Geometry constructor function and then using the set from points method. The returned result is then a Buffer Geometry with a position attribute alone, so this might not work well with a Mesh object which requires a few more attributes, but it will work well with say the THREE.Points constructor.
 
 ```js
 //-------- ----------
@@ -73,6 +73,46 @@ const geometry = new THREE.BufferGeometry();
 geometry.setFromPoints(v3Array);
 const points = new THREE.Points(geometry, new THREE.PointsMaterial({color: 0x00ff00, size: 0.25 }));
 scene.add(points);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.2 - Making a tube geometry with a curve
+
+One thing that can be done with a curve is that it can be used as the first argument for the tube geometry constructor.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(7, 5, 10);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CURVE
+//-------- ----------
+const v1 = new THREE.Vector3(5, 0, 5);
+const v2 = new THREE.Vector3(-5, 0, -5);
+const vControl = new THREE.Vector3(5, 0, -5);
+const curve = new THREE.QuadraticBezierCurve3( v1, vControl, v2);
+//-------- ----------
+// MESH WITH TUBE GEOMETRY
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+const tubeSegements = 25;
+const radius = 0.75;
+const radialSegements = 25;
+const closeTube = false;
+const mesh = new THREE.Mesh(
+    new THREE.TubeGeometry(curve, tubeSegements, radius, radialSegements, closeTube),
+    new THREE.MeshNormalMaterial({ side: THREE.DoubleSide}) );
+scene.add(mesh);
 //-------- ----------
 // RENDER
 //-------- ----------
