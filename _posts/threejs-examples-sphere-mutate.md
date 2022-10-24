@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-11 11:24:56
-version: 1.25
+updated: 2022-10-24 09:55:58
+version: 1.26
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -28,7 +28,7 @@ This is a post on a threejs example where I am mutating the geometry of a sphere
 
 It might be a good idea to read up more on the [buffer geometry class in general](/2021/04/22/threejs-buffer-geometry/), as there are a great number of properties and methods in an instance of buffer geometry that you should be aware of before getting into an example like this. The main feature of interest when it comes to changing the points in a geometry would be the position attribute of a geometry created with one of the built in geometry constructor methods.
 
-### There is a lot that apply’s to mutation of sphere geometry in the Vector3 class
+### There is a lot that applies to mutation of sphere geometry in the Vector3 class
 
 I have wrote a number of blog posts on the [Vector3 class](/2018/04/15/threejs-vector3/) and I have to say that there is a lot of useful tools in that class that can help with the mutation of the position attribute of sphere geometry. There is the [normalize](/2021/06/14/threejs-vector3-normalize/) and [multiply scalar methods](/2022/03/23/threejs-vector3-multiply-scalar/) that can be used to change the vector unit length of each vertex in the sphere for example. There is also making use of the [apply Euler](/2021/06/18/threejs-vector3-apply-euler) method with the [Euler class](/2021/04/28/threejs-euler/) to change diction of each point in the sphere.
 
@@ -40,9 +40,15 @@ The source code for this example and many more is [on github](https://github.com
 
 ### version numbers matter
 
-When I wrote this post I was using threejs version r127, and the last time I came around to do a little editing I was using r140. When I first wrote this post I has what I was refering to as r0 of a sphere geometry mutation example.
+When I wrote this post I was using threejs version r127, and the last time I came around to do a little editing I was using r140. When I first wrote this post I has what I was referring to as r0 of a sphere geometry mutation example.
 
-## 1 - Random Vector unit length while preserving direction \( r1 \)
+## 2 - Seamless mutation, module form of example, forPoint and forPole update options \( r2 \)
+
+For revision r2 of the sphere mutate threejs example I wanted to do somehtig about the seam that I was dealing with in r1 and that is the main thing that I resolved in this revision. I wanted to make a number of other improvements as well thorough such as making a module form of what I have worked out thus far when it comes to this sort of thing, and also have more that one demo of this new module form of the project example.
+
+## 2.1 - 
+
+## 1 - Random Vector unit length while preserving direction
 
 For r1 of my sphere mutation threejs example project I wanted to just make an example that makes better use of buffer attribute class features in place of what I made first in r0. If you still want to check out the older code for whatever reason it is down below in a latter section in this post as I am thinking that I will want to always pull the latest revisions up to the top.
 
@@ -181,7 +187,7 @@ I then have a special create mesh helper function that will create a mesh object
     ());
 ```
 
-## 2 - The first mutation of sphere example \( r0 \)
+## 0 - The first mutation of sphere example
 
 So now for the older r0 source code of this threejs example where I am changing the position of a point at the top of a sphere. In this example I started out with by set vertex helper method that I worked out in a previous example this week that had to do with the position attribute in general. This helper makes use of the geometry index property as a way to help change the right position data in the position attribute of a given geometry. When using the THREE.SphereGeometry constructor the return geometry will contain this index property as the constructor sets up a position attribute with a lower than usual number of points by reusing points. With certain other geometries there may not be an index, or there are ways of making a sphere geometry not indexed but maybe that is all a matter for another revision of this example or a whole other post.
 
