@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-24 15:46:57
-version: 1.28
+updated: 2022-10-24 17:37:10
+version: 1.29
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -17,7 +17,7 @@ In this post then I will be going over my first quick example that has to do wit
 
 <!-- more -->
 
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/w91r95Dzlvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/0AcqRbTUcO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Mutating sphere geometry and what to know first
@@ -479,6 +479,9 @@ Another idea that I had is to just have some kind of map system as a way to defi
 ## 1 - Random Vector unit length while preserving direction
 
 For r1 of my sphere mutation threejs example project I wanted to just make an example that makes better use of buffer attribute class features in place of what I made first in r0. If you still want to check out the older code for whatever reason it is down below in a latter section in this post as I am thinking that I will want to always pull the latest revisions up to the top.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/w91r95Dzlvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 Anyway the main feature of interest here is the create new vectors helper function that will create and append arrays to the [User Data object](/2021/02/16/threejs-userdata/) of a mesh object based off of the original state of the position attribute of the buffer geometry of the sphere. The goal here is to create to arrays of vector3 objects, one of which is for each point in the original position attribute state, and the other is a new state of random points to lerp to. In my later update geometry method I will be using the [lerp method of the Vector3](/2022/05/17/threejs-vector3-lerp/) class to transform the starting state of the sphere geometry to this new set of points that are random vector unit lengths but with the same direction as the original points.
 
