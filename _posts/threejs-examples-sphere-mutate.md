@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-24 09:55:58
-version: 1.26
+updated: 2022-10-24 10:07:45
+version: 1.27
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -46,7 +46,19 @@ When I wrote this post I was using threejs version r127, and the last time I cam
 
 For revision r2 of the sphere mutate threejs example I wanted to do somehtig about the seam that I was dealing with in r1 and that is the main thing that I resolved in this revision. I wanted to make a number of other improvements as well thorough such as making a module form of what I have worked out thus far when it comes to this sort of thing, and also have more that one demo of this new module form of the project example.
 
-## 2.1 - 
+## 2.0 - The sphere mutate module
+
+There are two main pubic methods for the module that are of interest, the create method and the update method. The create methods will create and return a mesh object with a geometry made with you guessed it the SphereGeometry constructor, as well as the use of the Phong Material when it comes to skinning the geometry. In addition to this I am also setting up some properties for the user data object that will be used by the update method. If you are not familiar with the user data object it is just a standard place to park user defined properties to any object3d based object such as a mesh object. In this case I am using it to park a starting position attribute state as well as a reference to the current state as well.
+
+The update method is then what is used to update the state of the position attribute of the sphere geometry based on what is given in terms of a for point and for pole function.
+
+```js
+```
+
+## 2.1 - Random unit lengths lerping back and forth
+
+```js
+```
 
 ## 1 - Random Vector unit length while preserving direction
 
