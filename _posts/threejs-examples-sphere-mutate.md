@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2022-10-24 10:07:45
-version: 1.27
+updated: 2022-10-24 15:46:57
+version: 1.28
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. 
@@ -53,12 +53,428 @@ There are two main pubic methods for the module that are of interest, the create
 The update method is then what is used to update the state of the position attribute of the sphere geometry based on what is given in terms of a for point and for pole function.
 
 ```js
+(function (api) {
+    //-------- ----------
+    // DEFAULTS
+    //-------- ----------
+    // default for pole function
+    const DEFAULT_FORPOLE = function(vs, i, x, y, mesh, alpha, opt){
+        return vs;
+    };
+    // defualt for all other points
+    const DEFAULT_FORPOINT = function(vs, i, x, y, mesh, alpha, opt){
+        return vs.normalize().multiplyScalar(0.75 + 0.25 * Math.random());
+    };
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // get index if x and y are known
+    const getIndex = (geo, x, y) => {
+        const h = geo.parameters.heightSegments;
+        return y * ( h + 1 ) + x;
+    };
+    // get a Vector3 object of the given buffer attribute and index
+    const getV3 = (ba, index) => {
+        return new THREE.Vector3(ba.getX(index), ba.getY(index), ba.getZ(index));
+    };
+    // UPDATE NORMALS HELPER
+    const updateNormals = (geo) => {
+        const w = geo.parameters.widthSegments
+        const h = geo.parameters.heightSegments;
+        // just call compute vertex normals for all points first
+        geo.computeVertexNormals();
+        // need to fix the seam normals though
+        const x = w;
+        let y = 1;
+        const normal = geo.getAttribute('normal');
+        while(y < h){
+            const i =  getIndex(geo, x, y),
+            i2 = i - x;
+            const v = getV3(normal, i2);
+            normal.setXYZ(i, v.x, v.y, v.z);
+            y += 1;
+        }
+        normal.needsUpdate = true;
+    };
+    //-------- ----------
+    // PUBLIC API
+    //-------- ----------
+    // create the mesh object
+    //api.create = (size, w, h, texture) => {
+    api.create = (opt) => {
+        opt = opt || {};
+        opt.size = opt.size === undefined ? 1 : opt.size;
+        opt.w = opt.w === undefined ? 10 : opt.w;
+        opt.h = opt.h === undefined ? 10 : opt.h;
+        const mesh = new THREE.Mesh(
+            new THREE.SphereGeometry(opt.size, opt.w, opt.h, 0, Math.PI * 2), 
+            opt.material || new THREE.MeshPhongMaterial({
+                color: 'white',
+                map: opt.texture || null
+            }));
+        const pos = mesh.geometry.getAttribute('position');
+        mesh.userData.pos = pos;
+        mesh.userData.pos_base = pos.clone();
+        return mesh;
+    };
+    // main update method
+    api.update = (mesh, alpha, opt) => {
+        alpha = alpha === undefined ? 0 : alpha;
+        opt = opt || {};
+        opt.forPoint = opt.forPoint || DEFAULT_FORPOINT;
+        opt.forPole = opt.forPole || DEFAULT_FORPOLE;
+        // mutate
+        const geo = mesh.geometry;
+        const pos = mesh.userData.pos;
+        const pos_base = mesh.userData.pos_base; 
+        const w = geo.parameters.widthSegments;
+        const h = geo.parameters.heightSegments;
+        let i = 0;
+        while(i < pos.count){
+            const x = i % ( w + 1);
+            const y = Math.floor(i / ( h + 1) );
+            const vs = getV3(pos_base, i);
+            let v = vs.clone();
+            // do something special for top and bottom points
+            if(y === 0 || y === h){
+                v = opt.forPole(vs.clone(), i, x, y, mesh, alpha, opt);
+            }else{
+                // else to what needs to be done for all others
+                if(x < w){
+                    v = opt.forPoint(vs.clone(), i, x, y, mesh, alpha, opt);
+                }else{
+                    // deal with seam by setting to point that was all ready set
+                    v.copy( getV3(pos, getIndex(geo, x, y) - w ) );
+                }
+            }
+            pos.setXYZ(i, v.x, v.y, v.z);
+            i += 1;
+        }
+        pos.needsUpdate = true;
+        // update normals
+        updateNormals(geo);
+    };
+}
+    (this['sphereMutate'] = {}));
 ```
 
-## 2.1 - Random unit lengths lerping back and forth
+### 2.1 - Random unit lengths lerping back and forth
+
+For my first demo of this new sphere mutate module I made a demo that is like that of what I worked out for the r1 form of this threejs example. That is that I just move all the points in and out to and from random vector unit lengths.
 
 ```js
+// threejs-examples-sphere-mutate - r2 
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDRER, LIGHT
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0.02,0.02,0.02)
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(2,2,2);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    dl.position.set(2, 3, 1);
+    scene.add(dl);
+    const al = new THREE.AmbientLight(0xffffff, 0.2);
+    scene.add(al);
+    //-------- ----------
+    // TEXTURE
+    //-------- ----------
+    // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
+    const width = 256, height = 256;
+    const size = width * height;
+    const data = new Uint8Array( 4 * size );
+    for ( let i = 0; i < size; i ++ ) {
+        const stride = i * 4;
+        const a1 = i / size;
+        const a2 = 1 - Math.abs(0.5 - a1 * 2 % 1) / 0.5;
+        const v = 105 + 150 * Math.random();
+        data[ stride ] = v * a1;
+        data[ stride + 1 ] = v * (1 - a1);
+        data[ stride + 2 ] = v * a2
+        data[ stride + 3 ] = 255;
+    }
+    const texture = new THREE.DataTexture( data, width, height );
+    texture.needsUpdate = true;
+    // ---------- ----------
+    // GEOMETRY, MESH
+    // ---------- ----------
+    //const mesh = sphereMutate.create(1.25, 40, 40, texture);
+    const mesh = sphereMutate.create({
+        size: 1.25, w: 40, h: 40, texture: texture
+    });
+    scene.add(mesh);
+    camera.lookAt(mesh.position);
+    // update options
+    const updateOpt = {
+        forPoint : function(vs, i, x, y, mesh, alpha){
+            const mud = mesh.userData;
+            const state = mud.state = mud.state === undefined ? [] : mud.state;
+            if(!state[i]){
+                state[i] = {
+                    v: vs.clone().normalize().multiplyScalar(1.25 + 0.25 * Math.random()),
+                    count: 1 + Math.floor( Math.random() * 9 ),
+                    offset: Math.random()
+                };
+            }
+            const alpha2 = (state[i].offset + state[i].count * alpha) % 1;
+            const alpha3 = 1 - Math.abs(0.5 - alpha2) / 0.5;
+            return vs.lerp(state[i].v, alpha3);
+        }
+    };
+    sphereMutate.update(mesh, 0, updateOpt);
+    // normals helper
+    let helper = null;
+    //if(THREE.VertexNormalsHelper){
+    //    helper = new THREE.VertexNormalsHelper(mesh, 0.1, 0x00ff00);
+    //    scene.add(helper);
+    //}
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    new THREE.OrbitControls(camera, renderer.domElement);
+    const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 800;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        let alpha = frame / frameMax;
+        mesh.rotation.y = Math.PI * 4 * alpha; 
+        sphereMutate.update(mesh, alpha * 4 % 1, updateOpt);
+        if(helper){
+            helper.update();
+        }
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
 ```
+
+### 2.2 - Sin Wave demo
+
+I wanted to make at least one example that makes use of Math.sin as a way to adjust the geometry of a sphere. This then results in a cool wave like effect that I had in mind when starting to make this.
+
+```js
+// threejs-examples-sphere-mutate - r2 
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDRER, LIGHT
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0.02,0.02,0.02)
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(2,2,2);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    dl.position.set(2, 3, 1);
+    scene.add(dl);
+    const al = new THREE.AmbientLight(0xffffff, 0.2);
+    scene.add(al);
+    // ---------- ----------
+    // GEOMETRY, MESH
+    // ---------- ----------
+    const mesh = sphereMutate.create({
+        size: 1.25, w: 60, h: 60, material: new THREE.MeshNormalMaterial({wireframe: true, wireframeLinewidth : 3})
+    });
+    scene.add(mesh);
+    camera.lookAt(mesh.position);
+    // update options
+    const updateOpt = {
+        forPoint : function(vs, i, x, y, mesh, alpha){
+            const geo = mesh.geometry;
+            const w = geo.parameters.widthSegments;
+            const h = geo.parameters.heightSegments;
+            const a1 = x / w;
+            const a2 = y / h;
+            const radian1 = Math.PI * 16 * a1 + Math.PI * (2 + 16 * a2) * alpha;
+            const radian2 = Math.PI * 16 * a2 + Math.PI * 8 * alpha;
+            const n1 = ( Math.PI + Math.sin( radian1 ) ) / Math.PI;
+            const n2 = ( Math.PI + Math.sin( radian2 ) ) / Math.PI;
+            const n3 = ( n1 + n2 ) / 2;
+            const v2 = vs.clone().normalize().multiplyScalar( vs.length() + 0.2 * n3 );
+            return vs.lerp(v2, 1 - Math.abs(0.5 - alpha) / 0.5);
+        }
+    };
+    sphereMutate.update(mesh, 0, updateOpt);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    new THREE.OrbitControls(camera, renderer.domElement);
+    const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 800;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        let alpha = frame / frameMax;
+        sphereMutate.update(mesh, alpha * 4 % 1, updateOpt);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+### 2.3 - Map Demo
+
+Another idea that I had is to just have some kind of map system as a way to define what the changes in unit length should be.
+
+```js
+// threejs-examples-sphere-mutate - r2 
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDRER, LIGHT
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0.02,0.02,0.02)
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(1.5, 1.5, 1.5);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    dl.position.set(2, 3, 1);
+    scene.add(dl);
+    const al = new THREE.AmbientLight(0xffffff, 0.2);
+    scene.add(al);
+    //-------- ----------
+    // TEXTURE
+    //-------- ----------
+    // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
+    const width = 64, height = 64;
+    const size = width * height;
+    const data = new Uint8Array( 4 * size );
+    for ( let i = 0; i < size; i ++ ) {
+        const stride = i * 4;
+        const v = 30 + 110 * Math.random();
+        data[ stride ] = 0;
+        data[ stride + 1 ] = v;
+        data[ stride + 2 ] = 0
+        data[ stride + 3 ] = 255;
+    }
+    const texture = new THREE.DataTexture( data, width, height );
+    texture.needsUpdate = true;
+    // ---------- ----------
+    // GEOMETRY, MESH
+    // ---------- ----------
+    const mesh = sphereMutate.create({
+        size: 0.25, w: 128, h: 128, texture: texture
+    });
+    scene.add(mesh);
+    camera.lookAt(mesh.position);
+    // MAP DATA
+    const map_w = 16;
+    const map_data = [
+        1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,
+        1,0,0,4,3,0,0,1,1,0,0,3,4,0,0,1,
+        1,0,0,5,2,0,0,1,1,0,0,2,5,0,0,1,
+        2,0,0,5,1,0,0,2,2,0,0,1,5,0,0,2,
+        3,0,0,0,0,0,0,3,3,0,0,0,0,0,0,3,
+        4,0,0,0,0,0,0,4,4,0,0,0,0,0,0,4,
+        5,4,3,2,2,3,4,5,5,4,3,2,2,3,4,5,
+        5,4,3,2,2,3,4,5,5,4,3,2,2,3,4,5,
+        4,0,0,0,0,0,0,4,4,0,0,0,0,0,0,4,
+        3,0,0,0,0,0,0,3,3,0,0,0,0,0,0,3,
+        2,0,0,5,1,0,0,2,2,0,0,1,5,0,0,2,
+        1,0,0,5,2,0,0,1,1,0,0,2,5,0,0,1,
+        1,0,0,4,3,0,0,1,1,0,0,3,4,0,0,1,
+        1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1
+    ];
+    // update options
+    const updateOpt = {
+        forPoint : function(vs, i, x, y, mesh, alpha){
+            const geo = mesh.geometry;
+            const w = geo.parameters.widthSegments;
+            const h = geo.parameters.heightSegments;
+            // get grid location
+            const gx = Math.floor( x / w * map_w );
+            const gy = Math.floor( ( y - 1 ) / ( h - 1) * map_w );
+            const gi = gy * map_w + gx;
+            const dy = map_data[gi];
+            const ulb = 0.25 + 0.75 * alpha;
+            const uld = 0.75 - 0.75 * alpha
+            return vs.normalize().multiplyScalar(ulb + dy / 5 * uld);
+        }
+    };
+    sphereMutate.update(mesh, 0, updateOpt);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    new THREE.OrbitControls(camera, renderer.domElement);
+    const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 200;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        let alpha = frame / frameMax;
+        let b = 1 - Math.abs( 0.5 - alpha ) / 0.5;
+        sphereMutate.update(mesh, b, updateOpt);
+        mesh.rotation.y = Math.PI * 2 * alpha;
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
 
 ## 1 - Random Vector unit length while preserving direction
 
