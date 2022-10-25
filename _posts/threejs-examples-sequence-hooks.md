@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-10-25 12:45:10
-version: 1.20
+updated: 2022-10-25 12:48:27
+version: 1.21
 ---
 
 When it comes to starting to make some kind of actual product with [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
@@ -1493,7 +1493,7 @@ Here I am testing out that the feature that I added where an array of numbers ca
 
 ### 2.3 - Using curve paths to create the points
 
-This demo of the new v3 paths feature will involve the use of curve paths using the [quadratic bezier curve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3/).
+This demo of the new v3 paths feature will involve the use of curve paths using the [quadratic bezier curve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3/). In future revisions of this module I might want to bake in some features that have to do with creating and using paths with curves actually and mainly the use of this quadratic bezier curve class as it creates the kinds of curves that I would often like to use for movement of objects and look at points in a scene.
 
 ```js
 (function () {
