@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2022-10-24 16:05:02
-version: 1.24
+updated: 2022-10-25 09:57:43
+version: 1.25
 ---
 
 If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the [scene object](/2018/05/03/threejs-scene/), or any object based off the object3d class for that matter, and pass a [callback function](/2019/02/27/js-javascript-constructor/) as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
@@ -34,65 +34,65 @@ The source code exmaples here [can also be found on github](https://github.com/d
 
 This is something that I think that I just need to mentioning in ever post I write on threejs now, which is that I was using threejs version r127 when I made these code examples here. Also the last time that I came around to do some editing I was using r140. Threejs is a library that as of this writing is still moving very fast when it comes to development, and code breaking changes are made to the library often.
 
-## 1 - Loop Over all objects in a scene
+### 1.1 - Loop Over all objects in a Scene Object checking type
 
-So first off this will be just a basic example of the object3d traverse method just for the sake of getting started with this method. In this example I am creating a main scene object and then I am adding some grid helpers objects to the scene. These grid helper objects are based off of the object3d class so they will show up in the traverse call that I will be using later in the source code. On top of the helpers I am also adding a group, and this group will have a whole bunch of children, each of which will be an instance of a Mesh. After that I am also adding a camera to the scene when it comes to setting up the camera, and the renderer that I will be suing.
+So first off this will be just a basic example of the object3d traverse method just for the sake of getting started with this method. In this example I am creating a main scene object and then I am adding some grid helpers objects to the scene. These grid helper objects are based off of the object3d class so they will show up in the traverse call that I will be using later in the source code. On top of the helpers I am also adding a group, and this group will have a whole bunch of children, each of which will be an instance of a Mesh object. After that I am also adding a camera to the scene when it comes to setting up the camera, and the renderer that I will be using.
 
-So then before I call the render method of my web gl renderer instance I call the traverse method off of the scene object and then pass a function that I want o call for every object attached to the scene object as a child. This will not just call for all the children, but also all the children of children which is the case for the group of mesh objects that I attached. In the body of the function I cam preforming an action for each mesh object, but then I am also looping over all the children for each group also.
+So then before I call the render method of my webgl renderer instance I call the traverse method off of the scene object and then pass a function that I want to call for every object attached to the scene object as a child. This will not just call for all the children, but also all the children of children which is the case for the group of mesh objects that I attached. In the body of the function I can preforming an action for each mesh object, but also the group object itself if I want. One way to know what I am dealing with would be to take a look at the type property of each object3d based object as I am doing in this example.
 
 ```js
 (function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
- 
+    // SCENE, CAMERA, RENDERER
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.1, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera); // ADDING CAMERA OBJECT TO THE SCENE
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ---------
     // ADDING GRID HELPERS TO THE SCENE
-    var helper = new THREE.GridHelper(10, 10, 'white', '#2a2a2a');
-    scene.add(helper);
-    helper = new THREE.GridHelper(10, 10, 'white', '#2a2a2a');
-    helper.rotation.z = Math.PI * 0.5;
-    scene.add(helper);
- 
+    //-------- ---------
+    const helper1 = new THREE.GridHelper(10, 10, 'white', '#2a2a2a');
+    scene.add(helper1);
+    const helper2 = new THREE.GridHelper(10, 10, 'white', '#2a2a2a');
+    helper2.rotation.z = Math.PI * 0.5;
+    scene.add(helper2);
+    //-------- ---------
+    // HELPER
+    //-------- ---------
+    const getRNDAxisValue = () => {
+        return 0.5 + -5 + Math.floor(10 * Math.random());
+    }
+    //-------- ---------
     // ADDING A GROUP OF MESH OBJECTS
-    var group = new THREE.Group();
-    var i = 20;
+    //-------- ---------
+    const group = new THREE.Group();
+    let i = 20;
     while(i--){
         group.add( new THREE.Mesh( new THREE.BoxGeometry(1,1, 1), new THREE.MeshNormalMaterial() ));
     }
     scene.add( group );
- 
-    // camera, renderer
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 25);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera); // ADDING CAMERA OBJECT TO THE SCENE
- 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
+    //-------- ---------
     // TRAVERSING ALL OBJECTS IN THE SCENE
+    //-------- ---------
     scene.traverse(function(obj){
+        // for all grid helpers in scene
         if(obj.type === 'GridHelper'){
-            obj.material.color = new THREE.Color(0, 1, 0);
+            obj.material.color = new THREE.Color(1, 0, 0);
         }
+        // for all mesh objects in scene
         if(obj.type === 'Mesh'){
-            obj.position.x = -5 + Math.floor(10 * Math.random());
-            obj.position.z = -5 + Math.floor(10 * Math.random());
-            obj.rotation.y = Math.PI * 2 * Math.random();
-        }
-        if(obj.type === 'Group'){
-            var len = obj.children.length;
-            obj.children.forEach(function(child, i){
-                child.position.y = -5 + Math.floor( 10 * (i / len) );
-                var s = 0.25 + 1.75 * (1 - i / len);
-                child.scale.set(s, s, s);
-            });
+            obj.position.x = getRNDAxisValue();
+            obj.position.z = getRNDAxisValue();
+            obj.position.y = getRNDAxisValue();
         }
     });
- 
+    //-------- ---------
+    // RENDER
+    //-------- ---------
     renderer.render(scene, camera);
- 
 }
     ());
 ```
