@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2022-10-25 10:05:42
-version: 1.26
+updated: 2022-10-25 11:57:52
+version: 1.27
 ---
 
 If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the [scene object](/2018/05/03/threejs-scene/), or any object based off the object3d class for that matter, and pass a [callback function](/2019/02/27/js-javascript-constructor/) as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
@@ -34,9 +34,13 @@ The source code exmaples here [can also be found on github](https://github.com/d
 
 This is something that I think that I just need to mentioning in ever post I write on threejs now, which is that I was using threejs version r127 when I made these code examples here. Also the last time that I came around to do some editing I was using r140. Threejs is a library that as of this writing is still moving very fast when it comes to development, and code breaking changes are made to the library often.
 
+## Basic examples of Object3d.traverse
+
+So first off this will be just a few basic examples of the object3d traverse method just for the sake of getting started with this method. The focus here will be on using the method along of course, but also closely related topics to the use of the methods such as the object3d type property, the user data object, and other ways to find a given kind of object as I loop over all objects from a given starting point such as the scene object.
+
 ### 1.1 - Loop Over all objects in a Scene Object checking type
 
-So first off this will be just a basic example of the object3d traverse method just for the sake of getting started with this method. In this example I am creating a main scene object and then I am adding some grid helpers objects to the scene. These grid helper objects are based off of the object3d class so they will show up in the traverse call that I will be using later in the source code. On top of the helpers I am also adding a group, and this group will have a whole bunch of children, each of which will be an instance of a Mesh object. After that I am also adding a camera to the scene when it comes to setting up the camera, and the renderer that I will be using.
+In this example I am creating a main scene object and then I am adding some grid helpers objects to the scene. These grid helper objects are based off of the object3d class so they will show up in the traverse call that I will be using later in the source code. On top of the helpers I am also adding a group, and this group will have a whole bunch of children, each of which will be an instance of a Mesh object. After that I am also adding a camera to the scene when it comes to setting up the camera, and the renderer that I will be using.
 
 So then before I call the render method of my webgl renderer instance I call the traverse method off of the scene object and then pass a function that I want to call for every object attached to the scene object as a child. This will not just call for all the children, but also all the children of children which is the case for the group of mesh objects that I attached. In the body of the function I can preforming an action for each mesh object, but also the group object itself if I want. One way to know what I am dealing with would be to take a look at the type property of each object3d based object as I am doing in this example.
 
@@ -98,6 +102,96 @@ So then before I call the render method of my webgl renderer instance I call the
 ```
 
 So then this should help to show the basic idea of what the traverse method is all about. It is a little more advanced than just looping over the children of an object as the traverse method will loop over the children, the children of children, and it will also include the object itself.
+
+### 1.2 - User Data object example
+
+On top of the type property that can be checked to find out what I am dealing with when looking over all the objects of a scene, there is also making use of the [user data object](/2021/02/16/threejs-userdata/) as well. Simply put the user data object of the object3d class is a standard location to park user defined data for objects. In other words data and values that have to do with my javaScript code, rather than the javaScript code of the internal workings of the threejs library.
+
+```js
+(function () {
+    //-------- ---------
+    // SCENE, CAMERA, RENDERER
+    //-------- ---------
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0.2, 0.2, 0.2);
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.1, 1000);
+    camera.position.set(7, 7, 7);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera); // ADDING CAMERA OBJECT TO THE SCENE
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ---------
+    // LIGHT
+    //-------- ---------
+    const dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(4, 1, 7);
+    scene.add(dl);
+    //-------- ---------
+    // HELPERS
+    //-------- ---------
+    const makeCube = (opt)=> {
+        opt = opt || {};
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(opt.size,opt.size,opt.size),
+            new THREE.MeshStandardMaterial());
+        // USER DATA OF MESH OBJECT
+        const mud = mesh.userData;
+        mud.color = opt.color || new THREE.Color(1,1,1);
+        const a = Math.PI / 180 * 45 + Math.PI / 180 * 90 * Math.random();
+        const b = Math.PI * 2 * Math.random();
+        mud.dir = new THREE.Vector3(0,0,1).applyEuler( new THREE.Euler(a, b, 0) );
+        mud.alpha = 0;
+        setCube(mesh);
+        return mesh;
+    };
+    const setCube = (mesh)=> {
+        const mud = mesh.userData;
+        // set color and pos
+        mesh.material.color = mud.color;
+        // set position
+        const unitLength = 5 * mud.alpha;
+        mesh.position.copy( mud.dir.clone().multiplyScalar(unitLength) );
+    }
+    //-------- ---------
+    // ADDING A OBJECTS
+    //-------- ---------
+    const len = 200;
+    let i = 0;
+    const colors = [
+        new THREE.Color(1, 1, 1),
+        new THREE.Color(1, 0, 0),
+        new THREE.Color(0, 1, 0),
+        new THREE.Color(0, 0, 1),
+        new THREE.Color(1, 1, 0),
+        new THREE.Color(1, 0, 1)
+    ]
+    while(i < len){
+        const mesh = makeCube({
+            size: 0.1 + 0.9 * (i / len),
+            color: colors[ i % colors.length]
+        });
+        scene.add(mesh);
+        i += 1;
+    }
+    //-------- ---------
+    // TRAVERSING ALL OBJECTS IN THE SCENE
+    //-------- ---------
+    scene.traverse(function(obj){
+        const ud = obj.userData;
+        if(ud.dir){
+            ud.alpha = Math.random();
+            setCube(obj);
+            obj.lookAt(0, 0, 0);
+        }
+    });
+    //-------- ---------
+    // RENDER
+    //-------- ---------
+    renderer.render(scene, camera);
+}
+    ());
+```
 
 ## 2 - Setting names for objects example
 
