@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 986
-updated: 2022-10-22 13:03:50
-version: 1.19
+updated: 2022-10-25 12:45:10
+version: 1.20
 ---
 
 When it comes to starting to make some kind of actual product with [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) rather than just simple code examples for the sake of blog posts, I have started going in the direction of making videos. Thus far I have made a whole bunch of You tube videos for my various blog posts on threejs that I have wrote thus far, and still have a lot more to make if I am going to keep up with that. Anyway when it comes to making videos with a little javaScript code I have found that I like to break things down into what I have code to call sequences. So for this [threejs project examples](/2021/02/19/threejs-examples/) post I will be going over the source code of a new sequences module that I have made.
@@ -1468,6 +1468,128 @@ Here I am testing out that the feature that I added where an array of numbers ca
                 update: (seq, partPer, partBias) => {
                 }
             }
+        ]
+    });
+    // APP LOOP
+    const fps_update = 30,
+    fps_movement = 30;
+    let lt = new Date();
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps_update){
+            // update by hooks
+            seqHooks.setFrame(seq, seq.frame, seq.frameMax);
+            renderer.render(scene, camera);
+            seq.frame += fps_movement * secs;
+            seq.frame %= seq.frameMax;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+### 2.3 - Using curve paths to create the points
+
+This demo of the new v3 paths feature will involve the use of curve paths using the [quadratic bezier curve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3/).
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) );
+    camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    renderer.setSize(640, 480, false);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // create curve helper
+    const createCurve = (vStart, vEnd, vDelta) => {
+        vDelta = vDelta || new THREE.Vector3();
+        // control point is half way between vStart and vEnd
+        vControl = vStart.clone().lerp(vEnd, 0.5).add( vDelta );
+        return new THREE.QuadraticBezierCurve3(vStart, vControl, vEnd);
+    };
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh1);
+    //-------- ----------
+    // CURVE, POINTS
+    //-------- ----------
+    const curve = new THREE.CurvePath();
+    curve.add(createCurve(
+        new THREE.Vector3(-5, 0, 5),
+        new THREE.Vector3(5, 0, -3),
+        new THREE.Vector3(5, 0, 5)
+    ));
+    curve.add(createCurve(
+        new THREE.Vector3(5, 0, -3),
+        new THREE.Vector3(-2, 0, -5),
+        new THREE.Vector3(4, 0, -5)
+    ));
+    curve.add(createCurve(
+        new THREE.Vector3(-2, 0, -5),
+        new THREE.Vector3(-5, 0, 2),
+        new THREE.Vector3(-8, 0, 2)
+    ));
+    // points
+    const points = new THREE.Points(
+        (new THREE.BufferGeometry).setFromPoints( curve.getPoints(50) ),
+        new THREE.PointsMaterial({ size: 0.2})
+    );
+    scene.add(points);
+    //-------- ----------
+    // A MAIN SEQ OBJECT
+    //-------- ----------
+    const seq = seqHooks.create({
+        v3Paths: [
+            {
+                key: 'm1pos',
+                array: curve.getPoints(50),
+                lerp: true
+            }
+        ],
+        beforeObjects: (seq) => {
+            seq.copyPos('m1pos', mesh1);
+            mesh1.lookAt(0, 0, 0);
+        },
+        objects: [
+            // seq0 - 
+            {
+                secs: 15,
+                update: (seq, partPer, partBias) => {
+                    camera.position.copy(mesh1.position).add(new THREE.Vector3(0, 2, -4));
+                    camera.lookAt(mesh1.position);
+                }
+            },
+            // seq1 - 
+            {
+                secs: 5,
+                update: (seq, partPer, partBias) => {
+                    const v1 = mesh1.position.clone().add(new THREE.Vector3(0, 2, -4));
+                    const v2 = new THREE.Vector3(8, 8, 8);
+                    camera.position.copy(v1).lerp(v2, partPer);
+                    camera.lookAt(mesh1.position);
+                }
+            },
+            // seq2 - 
+            {
+                secs: 10,
+                update: (seq, partPer, partBias) => {
+                    camera.position.set(8, 8, 8);
+                    camera.lookAt(mesh1.position);
+                }
+            },
         ]
     });
     // APP LOOP
