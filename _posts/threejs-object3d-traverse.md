@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2022-10-26 11:51:38
-version: 1.28
+updated: 2022-10-26 12:28:33
+version: 1.29
 ---
 
 If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the [scene object](/2018/05/03/threejs-scene/), or any object based off the object3d class for that matter, and pass a [callback function](/2019/02/27/js-javascript-constructor/) as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
@@ -307,6 +307,113 @@ I can then get a reference to any of these group objects, or a single mesh of on
     // RENDER
     //-------- ----------
     renderer.render(scene, camera);
+}
+    ());
+```
+
+## 3 - Animation Loop Examples of Object3d traverse
+
+Now that I have the basics of this traverse method out of the way as well as a few more examples about the method out of the way it is not time to make at least one if not more animation loop examples of the method.
+
+### 3.1 - video1 animation loop example
+
+This animation loop example is based off of the source code for the first video that I made for this blog post. The idea was to just use traverse as a way to loop over all the objects of the scene to set certain values for all mesh objects and groups. I am using the traverse method once to set certain things up for each mesh object once with position and scale, and then also using it again when it comes to the update loop.
+
+This is not the best example of the traverse method though as I would prefer to do things differently when it comes to making this kind of project.
+
+```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.1, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera); 
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    // ---------- ----------
+    // LIGHT
+    // ---------- ----------
+    var dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(3, 10, 3);
+    scene.add(dl);
+    // ---------- ----------
+    // ADDING A GROUP OF MESH OBJECTS
+    // ---------- ----------
+    var group = new THREE.Group();
+    var i = 20;
+    while(i--){
+        group.add( new THREE.Mesh( new THREE.BoxGeometry(1,1, 1), new THREE.MeshStandardMaterial({
+            color: 0xffffff
+        }) ));
+    }
+    scene.add( group );
+    // ---------- ----------
+    // TRAVERSING ALL OBJECTS IN THE SCENE
+    // ---------- ----------
+    scene.traverse(function(obj){
+        if(obj.type === 'Mesh'){
+            obj.position.x = -5 + Math.floor(10 * THREE.MathUtils.seededRandom());
+            obj.position.z = -5 + Math.floor(10 * THREE.MathUtils.seededRandom());
+        }
+        if(obj.type === 'Group'){
+            var len = obj.children.length;
+            obj.children.forEach(function(child, i){
+                child.position.y = -5 + Math.floor( 10 * (i / len) );
+                var s = 0.25 + 1.75 * (1 - i / len);
+                child.scale.set(s, s, s);
+            });
+        }
+    });
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 300;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = (frame, frameMax) => {
+        const alpha = frame / frameMax;
+        scene.traverse(function(obj){
+            if(obj.type === 'Mesh'){
+               obj.rotation.y = Math.PI * 2 * alpha;
+            }
+            if(obj.type === 'Group'){
+                var len = obj.children.length;
+                var current = Math.floor(len * alpha);
+                obj.children.forEach(function(child, i){
+                    child.rotation.x = Math.PI / 180 * 90 * i * alpha;
+                    // default red
+                    child.material.color = new THREE.Color(1, 0, 0);
+                    if(i === current){
+                        child.material.color = new THREE.Color(0, 1, 0);
+                    }
+                });
+            }
+        });
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
 }
     ());
 ```
