@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2022-10-25 11:57:52
-version: 1.27
+updated: 2022-10-26 11:51:38
+version: 1.28
 ---
 
 If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the [scene object](/2018/05/03/threejs-scene/), or any object based off the object3d class for that matter, and pass a [callback function](/2019/02/27/js-javascript-constructor/) as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
@@ -17,18 +17,18 @@ So then in this post I will be going over the use of the traverse method of the 
 
 ## Looping over all objects using Object3d traverse and what to know first
 
-This is a post centered on using just one little method in the object3d class in the javaScript library known as threejs, as well as a whole bunch of other little things that might branch off from this method. This is then not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/) so I assume that you have the basic of the library out of the way so far. However in any case in this section I will be going over some things that you might want to get solid before continuing to read the rest of this post.
+This is a post centered on using just one little method in the object3d class in the javaScript library known as threejs, as well as a whole bunch of other little things that might branch off from this method. This is then not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/) so I assume that you have the basics of the library out of the way so far. However in any case in this section I will be going over some things that you might want to get solid with before continuing to read the rest of this post.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/bwvEvFPfwTs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ### Take a look at the object3d class in general
 
-There is a lot to write about when it comes to the object3d class, and the traverse method is just one little item of interest. So it would be a good idea to maybe check out [my post on the object3d class in general](/2018/04/23/threejs-object3d/) if you have some time to get into the thick of this class. Doing so is called for sooner or later when it comes to gaining a solid understanding of the library as the object3d class is a base class that apples to a lot of objects in the library such as Mesh objects, Groups, and even the main scene object.
+There is a lot to write about when it comes to the object3d class, and the traverse method is just one little item of interest. So it would be a good idea to maybe check out [my post on the object3d class in general](/2018/04/23/threejs-object3d/) if you have some time to get into the thick of it with this class. Doing so is called for sooner or later when it comes to gaining a solid understanding of the library as the object3d class is a base class that apples to a lot of objects in the library such as Mesh objects, Groups, and even the main scene object.
 
 ### Source code is up on Github
 
-The source code exmaples here [can also be found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-traverse).
+The source code exmaples here [can also be found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-traverse) in my test threejs repo. This is also where I park the source code for my many other [blog posts on threejs](/categories/three-js/).
 
 ### Check the version numbers, always
 
