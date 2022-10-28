@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1011
-updated: 2022-10-28 09:13:50
-version: 1.11
+updated: 2022-10-28 09:16:30
+version: 1.12
 ---
 
 Lately I have been taking another look into [curves in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) by making a few quick demos of the [Quadratic Bezier curve3 constructor](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3) which is one of several options to create a curve apart from creating a custom curve. There are a number of uses for creating curves, but for the most part my interest in them is to explore what my options are for coming up with a javaScript project that helpers me define the movement of object3d based objects, mainly mesh objects and cameras.
@@ -31,6 +31,10 @@ Although the base curve class is what I will want to use when it comes to making
 
 I would like to have a tool where I can orbit around a scene and then click and drag mesh objects around to adjust the state of a curve. So then this project will make use of the orbit controls file that can be found in the threejs Github repository. That is that this is a feature that is not baked into the core of the threejs library itself but rather must be added on top of the library. If you want to [read up more on orbit controls I have wrote a post](/2018/04/13/threejs-orbit-controls/) on this before hand.
 
+### Raycaster
+
+In this threejs example I want to click and drag mesh objects in a scene and use the position property of the object to set the start, control, and end points of a curve. I am doing this by making use of the [raycaster class](//2021/05/18/threejs-raycastser/) which is very useful for this sort of thing. 
+
 ### Source code is up on github
 
 This threejs example started as one of my [r140 demos in my test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r140/proto-curve-paths-tool). I also have my [for post folder set up](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-create-path-tool) where I will be parking any and add future revisions of this project that I might get to at some point when and if I get the time to do so.
@@ -41,7 +45,7 @@ When I first started this post I was using r140 of threejs.
 
 ## The first prototype of the tool thus far \(r0\).
 
-In this section I will be writing a thing or two about the first prototype of this path creation tool where I just mutate the start control and end points of a single quadratic curve3 object. Event when it comes to doing that alone though there are still a few things to be aware of. For example there is how to go about clicking a mesh object to begin with, when it comes to that there is of course using the [raycaster class](/2021/05/18/threejs-raycastser/). Another thing it how to go about getting a visual idea of what is going on with the current state of the curve, for this I can use the get points method of the curve class to get an array of Vector3 objects that I can then use with the set from points method of the buffer geometry class to create a geometry that I can then use with THREE.Points. Still the goal here is to keep things as simple as possible and just get the core idea of what I want to work.
+In this section I will be writing a thing or two about the first prototype of this path creation tool where I just mutate the start control and end points of a single quadratic curve3 object. Event when it comes to doing that alone though there are still a few things to be aware of. For example there is how to go about clicking a mesh object to begin with, when it comes to that there is of course using the raycaster class. Another thing it how to go about getting a visual idea of what is going on with the current state of the curve, for this I can use the get points method of the curve class to get an array of Vector3 objects that I can then use with the set from points method of the buffer geometry class to create a geometry that I can then use with THREE.Points. Still the goal here is to keep things as simple as possible and just get the core idea of what I want to work.
 
 ```js
 //-------- ----------
