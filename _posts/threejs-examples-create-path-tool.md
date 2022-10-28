@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1011
-updated: 2022-10-28 08:13:19
-version: 1.6
+updated: 2022-10-28 08:14:50
+version: 1.7
 ---
 
 Lately I have been taking another look into [curves in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) by making a few quick demos of the [Quadratic Bezier curve3 constructor](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3) which is one of several options to create a curve apart from creating a custom curve. There are a number of uses for creating curves, but for the most part my interest in them is to explore what my options are for coming up with a javaScript project that helpers me define the movement of object3d based objects, mainly mesh objects and cameras.
@@ -29,7 +29,7 @@ Although the base curve class is what I will want to use when it comes to making
 
 ### Source code is up on github
 
-This threejs example started as one of my [r140 demos in my test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r140/proto-curve-paths-tool).
+This threejs example started as one of my [r140 demos in my test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r140/proto-curve-paths-tool). I also have my for post folder set up where I will be parking any and add future revisions of this project that I might get to at some point when and if I get the time to do so.
 
 ### version numbers matter
 
