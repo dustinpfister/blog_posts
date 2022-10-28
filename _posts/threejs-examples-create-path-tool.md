@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1011
-updated: 2022-10-28 07:48:12
-version: 1.2
+updated: 2022-10-28 07:54:10
+version: 1.3
 ---
 
 Lately I have been taking another look into [curves in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) by making a few quick demos of the [Quadratic Bezier curve3 constructor](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3) which is one of several options to create a curve apart from creating a custom curve. There are a number of uses for creating curves, but for the most part my interest in them is to explore what my options are for coming up with a javaScript project that helpers me define the movement of object3d based objects, mainly mesh objects and cameras.
@@ -20,7 +20,11 @@ This is a post on a threejs example of a tool that can be used to create paths. 
 
 ### Check out the base curve class
 
-The [base curve class](/2022/06/17/threejs-curve/) is what I would want to use when it comes to creating my own custom curve object instances to use with threejs features such as the Tube geometry constrictor, or create arrays of vector3 objects to create a collection of points. 
+The [base curve class](/2022/06/17/threejs-curve/) is what I would want to use when it comes to creating my own custom curve object instances to use with threejs features such as the Tube geometry constrictor, or create arrays of vector3 objects to create a collection of points. The curve class can also be used to get a single Vector3 object that is along a curve by making use of a get point prototype method of the curve class. There are a lot of key details to be aware of which it comes to the base curve class then and how it can prove to be useful.
+
+### The Quadratic Bezier curve3 constructor is a great choice when it comes to just using a built in class and moving on
+
+Although the base curve class is what I will want to use when it comes to making my own custom curves in space there are a number of built in options that also will work well for most common tasks. The main task that I want to do with this curve creation tool will be resolve just fine with the THREE.QuadraticBezierCurve3 class that works by giving a start, control and end option in space by way of Vector3 objects.
 
 ### Source code is up on github
 
