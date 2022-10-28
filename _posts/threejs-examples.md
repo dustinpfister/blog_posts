@@ -1,12 +1,12 @@
 ---
-title: 43 threejs project example ideas from basic to not so basic
+title: 44 threejs project example ideas from basic to not so basic
 date: 2021-02-19 14:42:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-10-28 08:08:37
-version: 1.83
+updated: 2022-10-28 09:26:57
+version: 1.84
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -68,7 +68,7 @@ This is just a Basic clock example which is another kind of example that I like 
 
 ### [ 2.10 - Create Path tool](/2022/10/28/threejs-examples-create-path-tool/)
 
-This is a quick 3d path creation tool example that I started.
+This is a quick 3d path creation tool example that I started and might work on a little more if it does prove to be one of my regular tools that I use every day. Even if that is not the case it is still a tool that I made thinking that I will be suing it to create data that I will then use when making use of my sequence hooks module which is very much a project that I use just about every day when making my video projects.
 
 ### [ 2.11 - Cube Stack Example](/2022/04/29/threejs-examples-cube-stack/)
 
