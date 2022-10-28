@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-10-28 09:26:57
-version: 1.84
+updated: 2022-10-28 09:29:05
+version: 1.85
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -164,7 +164,7 @@ This is an example of a module that can be used to shake the whole scene that wi
 
 ### [ 2.31 - Video sequence hooks ](/2022/05/12/threejs-examples-sequence-hooks/)
 
-When it comes to making videos I have found that I like to break down things into what I have come to call sequences. That is that I create an object where there is an array of objects as one of the properties of the main object. And each sequence objects will have an update function, or for frame function if you prefer that will fire for a certain number of frames.
+When it comes to making videos I have found that I like to break down things into what I have come to call sequences. That is that I create an object where there is an array of objects as one of the properties of the main object. And each sequence objects will have an update function, or for frame function if you prefer that will fire for a certain number of frames. This is a tool that I use just about everyday all most when working on my video projects. I have made a few revisions of it then, and will likely make at least one or two more as time goes by if I keep working on videos.
 
 ### [ 2.32  - Mutate a sphere ](/2021/06/10/threejs-examples-sphere-mutate/)
 
