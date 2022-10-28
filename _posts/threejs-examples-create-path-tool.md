@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1011
-updated: 2022-10-28 09:19:39
-version: 1.13
+updated: 2022-10-28 09:23:26
+version: 1.14
 ---
 
 Lately I have been taking another look into [curves in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) by making a few quick demos of the [Quadratic Bezier curve3 constructor](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3) which is one of several options to create a curve apart from creating a custom curve. There are a number of uses for creating curves, but for the most part my interest in them is to explore what my options are for coming up with a javaScript project that helpers me define the movement of object3d based objects, mainly mesh objects and cameras.
@@ -238,6 +238,8 @@ const loop = () => {
 };
 loop();
 ```
+
+WHe this example is up and running I have my three mesh objects and the current state of the points displayed. When I clcik and drag one of the mesh objects to a new location that updates the state of the curve. So then I more or less all ready have the core idea of what I want up and running just fine. However there is a great deal more work to do if I am going to be using this as a regular tool to help me in the process of defining paths to use for video projects. I will want to add methods to help export the results in a from that I can copy and paste into the source code of a video project, or create an export to json feature and update the other projects that I intent to use with this to read that JSON for example. However there may be a a lot of other little details I will want to fix before I even get to that point.
 
 ## Conclusion
 
