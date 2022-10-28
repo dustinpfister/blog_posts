@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1011
-updated: 2022-10-28 07:39:30
-version: 1.1
+updated: 2022-10-28 07:48:12
+version: 1.2
 ---
 
 Lately I have been taking another look into [curves in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) by making a few quick demos of the [Quadratic Bezier curve3 constructor](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3) which is one of several options to create a curve apart from creating a custom curve. There are a number of uses for creating curves, but for the most part my interest in them is to explore what my options are for coming up with a javaScript project that helpers me define the movement of object3d based objects, mainly mesh objects and cameras.
@@ -14,10 +14,27 @@ Lately I have been taking another look into [curves in threejs](https://threejs.
 
 <!-- more -->
 
+## The create path tool threejs example and what to know first
 
+This is a post on a threejs example of a tool that can be used to create paths. There is a lot to be aware of before getting into making this kind of project that I will not be getting into detail in this post. However I will take a moment to write about a few key things that are closely related to this example, and like to other posts in which I do get into detail.
+
+### Check out the base curve class
+
+The [base curve class](/2022/06/17/threejs-curve/) is what I would want to use when it comes to creating my own custom curve object instances to use with threejs features such as the Tube geometry constrictor, or create arrays of vector3 objects to create a collection of points. 
+
+### Source code is up on github
+
+This threejs example started as one of my [r140 demos in my test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r140/proto-curve-paths-tool).
+
+### version numbers matter
+
+When I first started this post I was using r140 of threejs.
 
 ## The first prototype of the tool thus far \(r0\).
 
+
+```js
+```
 
 ## Conclusion
 
