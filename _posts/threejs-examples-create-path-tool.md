@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1011
-updated: 2022-10-28 09:16:30
-version: 1.12
+updated: 2022-10-28 09:19:39
+version: 1.13
 ---
 
 Lately I have been taking another look into [curves in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) by making a few quick demos of the [Quadratic Bezier curve3 constructor](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3) which is one of several options to create a curve apart from creating a custom curve. There are a number of uses for creating curves, but for the most part my interest in them is to explore what my options are for coming up with a javaScript project that helpers me define the movement of object3d based objects, mainly mesh objects and cameras.
@@ -46,6 +46,8 @@ When I first started this post I was using r140 of threejs.
 ## The first prototype of the tool thus far \(r0\).
 
 In this section I will be writing a thing or two about the first prototype of this path creation tool where I just mutate the start control and end points of a single quadratic curve3 object. Event when it comes to doing that alone though there are still a few things to be aware of. For example there is how to go about clicking a mesh object to begin with, when it comes to that there is of course using the raycaster class. Another thing it how to go about getting a visual idea of what is going on with the current state of the curve, for this I can use the get points method of the curve class to get an array of Vector3 objects that I can then use with the set from points method of the buffer geometry class to create a geometry that I can then use with THREE.Points. Still the goal here is to keep things as simple as possible and just get the core idea of what I want to work.
+
+After the usual set of objects are set up in terms of the scene object, camera, and renderer I have a main state object for the tool. This is where I am parking a reference to the Orbit controls, as well as the raycaster that I am using to find out if a mesh was clicked or not. I am also storing all the other application state setting here for now as well, such as the current axis to which I will be moving an object along and also if I will be in snap mode or not.
 
 ```js
 //-------- ----------
