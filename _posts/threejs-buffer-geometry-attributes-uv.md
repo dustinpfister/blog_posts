@@ -1,12 +1,12 @@
 ---
-title: The uv attribute for buffer geometries in threejs
+title: Texture offsets of buffer geometries in threejs with the uv attribute
 date: 2021-06-09 09:44:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2022-10-31 10:57:41
-version: 1.23
+updated: 2022-10-31 10:58:48
+version: 1.24
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing that is used for figuring out what side the front side of a face is, lighting, and for materials like that of the normal material.
