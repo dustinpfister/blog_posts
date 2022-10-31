@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-10-03 08:35:13
-version: 1.34
+updated: 2022-10-31 10:49:23
+version: 1.35
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance  also applys to a whole lot of various objects that can be added to a scene object. Speaking of scene objects these too are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often referred to as world space.
@@ -408,14 +408,106 @@ To use this get world position method I need to create a new Vector3 to copy the
 }());
 ```
 
-## 3 - Basic Deterministic Animation examples
+## 3 - Setting Position With Curves
+
+As of late I am thinking that maybe the best way to go about setting the position of an object3d based object by way of some code rather than user input would be to look into the [curve class](/2022/06/17/threejs-curve/). This might be a great way to set position when it comes to video projects, but might also work well in games and so forth by creating new curves as needed. Anyway in this section I will not be getting into anything to advanced buy rather just touching base on the basics of creating a curve and then getting a vector3 object along that curve that can then be used with the copy method of the vector3 class to set position.
+
+### 3.1 - Creating a Curve and using the get point method along with the copy method of Vector3 to set position
+
+In this example I am using a few helper methods that I made while working on my Frink beta world video project series. To get to the point here I am using one helper function that is just an abstraction of the [THREE.QuadraticBezierCurve3 method](/2022/10/21/threejs-curve-quadratic-bezier-curve3/), and another helper that calls that abstraction that allows for me to define the control point as a delta from the midpoint between the start and end points that are used to define the curve.
+
+I then use these helpers to create the curve that I want at which point I can use it to get any point along the curve by using the get point method of the base curve class. The returned vector3 object can then be used to set the position of an object by just passing it as an argument to the copy method of the Vector3 class that is called off of the Vector3 object store at the position of the object3d based object that I would like to set to that given position.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+    camera.position.set(6, 6, 6);
+    camera.lookAt(0,0,0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS - from 'frink3' project in videoground-beta-world
+    //           ( https://github.com/dustinpfister/videoground-beta-world )
+    //-------- ----------
+    // just a short hand for THREE.QuadraticBezierCurve3
+    const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
+        let vs = x1;
+        let ve = y1;
+        let vc = z1;
+        if(arguments.length === 9){
+            vs = new THREE.Vector3(x1, y1, z1);
+            ve = new THREE.Vector3(x2, y2, z2);
+            vc = new THREE.Vector3(x3, y3, z3);
+        }
+        return new THREE.QuadraticBezierCurve3( vs, vc, ve );
+    };
+    // QBDelta helper using QBC3
+    // this works by giving deltas from the point that is half way between
+    // the two start and end points rather than a direct control point for x3, y3, and x3
+    const QBDelta = function(x1, y1, z1, x2, y2, z2, x3, y3, z3) {
+        const vs = new THREE.Vector3(x1, y1, z1);
+        const ve = new THREE.Vector3(x2, y2, z2);
+        // deltas
+        const vDelta = new THREE.Vector3(x3, y3, z3);
+        const vc = vs.clone().lerp(ve, 0.5).add(vDelta);
+        const curve = QBC3(vs, ve, vc);
+        return curve;
+    };
+    //-------- ----------
+    // CURVE
+    //-------- ----------
+    const curve = QBC3(0, 0, 5, 0, 0, -5, -20, 6, 4.5);
+    //-------- ----------
+    // OBJECTS
+    //-------- ----------
+    // mesh object that will be positioned along the curve
+    const MESH_COUNT = 10;
+    const POINT_COUNT = 100;
+    let i = 0;
+    while(i < MESH_COUNT){
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(0.75, 0.75, 0.75),
+            new THREE.MeshNormalMaterial({transparent: true, opacity: 0.5}));
+        const a1 = Math.round(i / MESH_COUNT * POINT_COUNT) / (POINT_COUNT - POINT_COUNT / MESH_COUNT );
+        const a2 = a1; //0.1 + a1 * 0.9;
+        // USING THE getPoint METHOD OF THE CURVE TO GET a Vector3
+        // OBJECT THAT I CAN THEN USE WITH THE COPY METHOD TO SET
+        // THE STATE OF THE POSITION OF THIS MESH OBJECT
+        const v3 =  curve.getPoint( a2);
+        mesh.position.copy( v3 );
+        mesh.lookAt(0, 0, 0);
+        scene.add(mesh);
+        i += 1;
+    }
+    // grid helper
+    const grid = new THREE.GridHelper(10, 10);
+    scene.add(grid);
+    // points to get an indea of what the deal is with the curve
+    const points = new THREE.Points(
+        new THREE.BufferGeometry().setFromPoints( curve.getPoints(POINT_COUNT) ),
+        new THREE.PointsMaterial({size: 0.125, color: new THREE.Color(0, 1, 0)})
+    );
+    scene.add(points);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+## 4 - Basic Deterministic Animation examples
 
 In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs one will want to work out a number of animations in which they are not just setting the position once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animation where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animations where randomness,and other factors such as user input are at play.
 
 For this section I will be sticking to just a few examples of a kind of Deterministic style, saving the alternative style for some other post or section outside of this one.
 
 
-### 3.1 - Just moving a bunch of mesh objects on the x axis by differing rates
+### 4.1 - Just moving a bunch of mesh objects on the x axis by differing rates
 
 To start out with animation I have an example here where I now have an animation loop rather than just a single call of the render method of the webgl renderer. This is an animation loop example that I seem to keep copying and pasting from one example to another over and over again that allows for me to set differing values for a frames per second value, one of which will be used to set the target frame rate at which the update function is called, and the other can be used to set the frame rate. This allows for me to set a low update frame rate while still going by a higher frame rate update when it comes to movement. Regardless of how I go about adjusting these settings the aim here is to update everything just by a frame over max frame value, rather than all kinds of other factors that might be at play.
 
@@ -510,7 +602,7 @@ The end result of all of this is then to end up with a whole bunch of mesh objec
 }());
 ```
 
-### 3.2 - Lerp method animation example
+### 4.2 - Lerp method animation example
 
 Now that I have a nice basic by frame over max frame animation example, I can now start to move into another example that makes use of many of the Vector3 class features that I wrote about in the basic section. One very useful method that I covered out of many others was the lerp method of the vector3 class which can be used in combination with the clone method as a great way to move an object back and from between a start and end vector.
 
@@ -608,6 +700,121 @@ So then for this animation example I will have a collection of mesh objects that
             let s = 0.25 + 0.75 * alphaEffect;
             mesh.scale.set(s, s, s);
         });
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}());
+```
+
+### 4.3 - Using a Curve to position a mesh object over time
+
+Here I have an animation loop example based off the basic curve section example. This time I made a custom get alpha method that makes use of a number of methods in the [Math Utils object](/2022/04/11/threejs-math-utils/) to get a smooth animation along the curve back and forth.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+    camera.position.set(6, 6, 6);
+    camera.lookAt(0,0,0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS - from 'frink3' project in videoground-beta-world
+    //           ( https://github.com/dustinpfister/videoground-beta-world )
+    //-------- ----------
+    // just a short hand for THREE.QuadraticBezierCurve3
+    const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
+        let vs = x1;
+        let ve = y1;
+        let vc = z1;
+        if(arguments.length === 9){
+            vs = new THREE.Vector3(x1, y1, z1);
+            ve = new THREE.Vector3(x2, y2, z2);
+            vc = new THREE.Vector3(x3, y3, z3);
+        }
+        return new THREE.QuadraticBezierCurve3( vs, vc, ve );
+    };
+    // QBDelta helper using QBC3
+    // this works by giving deltas from the point that is half way between
+    // the two start and end points rather than a direct control point for x3, y3, and x3
+    const QBDelta = function(x1, y1, z1, x2, y2, z2, x3, y3, z3) {
+        const vs = new THREE.Vector3(x1, y1, z1);
+        const ve = new THREE.Vector3(x2, y2, z2);
+        // deltas
+        const vDelta = new THREE.Vector3(x3, y3, z3);
+        const vc = vs.clone().lerp(ve, 0.5).add(vDelta);
+        const curve = QBC3(vs, ve, vc);
+        return curve;
+    };
+    // custom get alpha method
+    const getAlpha = (a1) => {
+        const a2 = THREE.MathUtils.pingpong(a1, 0.5);
+        return THREE.MathUtils.smoothstep(a2 * 2, 0, 1);
+    };
+    //-------- ----------
+    // CURVE
+    //-------- ----------
+    const curve = QBC3(0, 0, 5, 0, 0, -5, -15, 7, 2.5);
+    //-------- ----------
+    // OBJECTS
+    //-------- ----------
+    // grid helper
+    const grid = new THREE.GridHelper(10, 10);
+    scene.add(grid);
+    // mesh object that will be positioned along the curve
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1,1,1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    // points
+    const POINT_COUNT = 300;
+    let i = 0, v3Array = [];
+    while(i < POINT_COUNT){
+        const a2 = getAlpha( i / POINT_COUNT);
+        v3Array.push( curve.getPoint( a2 ) );
+        i += 1;
+    }
+    const points = new THREE.Points(
+        new THREE.BufferGeometry().setFromPoints( v3Array ),
+        new THREE.PointsMaterial({size: 0.075})
+    );
+    scene.add(points);
+    //-------- ----------
+    // ANIMATION LOOP
+    //-------- ----------
+    const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = POINT_COUNT;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const v_start = new THREE.Vector3(0, 0, 1);
+    const v_delta = new THREE.Vector3(0, 0, 3);
+    const update = function(frame, frameMax){
+        const a1 = frame / frameMax;
+        const a2 = getAlpha(a1);
+        const v3 = curve.getPoint( a2 );
+        mesh.position.copy( v3 );
+        mesh.lookAt(0, 0, 0);
     };
     // loop
     const loop = () => {
