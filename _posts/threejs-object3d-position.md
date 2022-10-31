@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-10-31 10:49:23
-version: 1.35
+updated: 2022-10-31 11:11:19
+version: 1.36
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance  also applys to a whole lot of various objects that can be added to a scene object. Speaking of scene objects these too are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often referred to as world space.
@@ -415,6 +415,9 @@ As of late I am thinking that maybe the best way to go about setting the positio
 ### 3.1 - Creating a Curve and using the get point method along with the copy method of Vector3 to set position
 
 In this example I am using a few helper methods that I made while working on my Frink beta world video project series. To get to the point here I am using one helper function that is just an abstraction of the [THREE.QuadraticBezierCurve3 method](/2022/10/21/threejs-curve-quadratic-bezier-curve3/), and another helper that calls that abstraction that allows for me to define the control point as a delta from the midpoint between the start and end points that are used to define the curve.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/GDXM1o9hMK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 I then use these helpers to create the curve that I want at which point I can use it to get any point along the curve by using the get point method of the base curve class. The returned vector3 object can then be used to set the position of an object by just passing it as an argument to the copy method of the Vector3 class that is called off of the Vector3 object store at the position of the object3d based object that I would like to set to that given position.
 
