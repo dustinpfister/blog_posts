@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2022-11-01 11:43:48
-version: 1.25
+updated: 2022-11-01 12:06:59
+version: 1.26
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing that is used for figuring out what side the front side of a face is, lighting, and for materials like that of the normal material.
@@ -50,9 +50,20 @@ To get a general idea of what the uvs are for when it comes to textures it might
 
 ```js
 (function () {
- 
-    // creating a simple canvas generated texture
-    var canvas = document.createElement('canvas'),
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CANVAS TEXTURE
+    //-------- ----------
+    const canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
     canvas.width = 32;
     canvas.height = 32;
@@ -67,66 +78,51 @@ To get a general idea of what the uvs are for when it comes to textures it might
     ctx.beginPath(); // draw white square
     ctx.rect(0, 0, canvas.width, canvas.height);
     ctx.stroke();
-    var texture = new THREE.Texture(canvas);
+    const texture = new THREE.Texture(canvas);
     texture.needsUpdate = true;
- 
-    // scene
-    var scene = new THREE.Scene();
- 
-    // GEOMETRY - starting with a plane
-    var geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
- 
-    var uv = geometry.getAttribute('uv'),
+    //-------- ----------
+    // GEOMETRY - Mutation of a plane
+    //-------- ----------
+    const geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
+    const uv = geometry.getAttribute('uv'),
     position = geometry.getAttribute('position');
- 
     // the position attribute
     console.log(position.count); // 4 ( the are points or vertices )
     console.log(position.array.length); // 12 ( x, y, and z for each point )
- 
     // THE UV ATTRIBUTE
     console.log(uv.count); // 4 ( the are points or vertices )
     console.log(uv.array.length); // 8 ( there is a u and v value for each point )
- 
     // MUTATING THE UV VALUES
     uv.array[0] = 0.27;
     uv.array[1] = 0.73;
- 
     uv.array[2] = 0.73;
     uv.array[3] = 0.73;
- 
     uv.array[4] = 0.27;
     uv.array[5] = 0.27;
- 
     uv.array[6] = 0.73;
     uv.array[7] = 0.27;
- 
+    //-------- ----------
+    // MESH
+    //-------- ----------
     // use the geometry with a mesh
-    var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
                 side: THREE.DoubleSide,
                 map: texture
             }));
     mesh.position.set(1, 0, 0);
     scene.add(mesh);
- 
     // another mesh where I am not doing anything to the uv values
-    var geometry = new THREE.PlaneGeometry(1, 1);
-    var mesh2 = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+    const geometry2 = new THREE.PlaneGeometry(1, 1, 1, 1);
+    const mesh2 = new THREE.Mesh(geometry2, new THREE.MeshBasicMaterial({
                 side: THREE.DoubleSide,
                 map: texture
             }));
     mesh2.position.set(-1, 0, 0);
     scene.add(mesh2);
- 
-    // camera, render
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
+    //-------- ----------
+    // RENDER
+    //-------- ----------
     renderer.render(scene, camera);
- 
 }
     ());
 ```
@@ -140,9 +136,22 @@ Just because the array of uvs can be updated at run time that does not mean that
 Still if for some reason I do need to change the state of the uvs over time in a loop I just need to make sure that I keep setting the needs update property of the uv attribute back to true each time.
 
 ```js
+
 (function () {
-    // creating a simple canvas generated texture
-    var canvas = document.createElement('canvas'),
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CANVAS TEXTURE
+    //-------- ----------
+    const canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
     canvas.width = 32;
     canvas.height = 32;
@@ -157,47 +166,51 @@ Still if for some reason I do need to change the state of the uvs over time in a
     ctx.beginPath(); // draw white square
     ctx.rect(0, 0, canvas.width, canvas.height);
     ctx.stroke();
-    var texture = new THREE.Texture(canvas);
+    const texture = new THREE.Texture(canvas);
     texture.needsUpdate = true;
- 
-    // scene
-    var scene = new THREE.Scene();
- 
-    // GEOMETRY - using a plane and getting the uv attribute
-    var geometry = new THREE.PlaneGeometry(1, 1);
-    var uv = geometry.getAttribute('uv');
-    var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+    //-------- ----------
+    // GEOMETRY
+    //-------- ----------
+    const geometry = new THREE.PlaneGeometry(2, 2, 1, 1);
+    const uv = geometry.getAttribute('uv');
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
                 side: THREE.DoubleSide,
                 map: texture
             }));
-    mesh.position.set(0, 0, 0);
     scene.add(mesh);
- 
-    // camera, render
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(1, 1, 1);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var frame = 0,
-    maxFrame = 300;
-    var loop = function(){
-        var per = frame / maxFrame,
-        bias = 1 - Math.abs(per - 0.5) / 0.5;
-        requestAnimationFrame(loop);
-        // MUTATING UV VALUES IN THE LOOP MAKING SURE TO SET
-        // uv.needsUpdate to true
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 20;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 120;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        const a = frame / frameMax;
+        const bias = 1 - Math.abs(a - 0.5) / 0.5;
         uv.array[0] = -2 + 2 * bias;
         uv.array[1] = 2 - 1 * bias;
         uv.needsUpdate = true;
-        renderer.render(scene, camera);
-        frame += 1;
-        frame %= maxFrame;
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
     };
     loop();
- 
 }
     ());
 ```
