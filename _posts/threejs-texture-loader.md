@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-11-01 09:47:04
-version: 1.32
+updated: 2022-11-01 09:58:29
+version: 1.33
 ---
 
 When it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) can be used load external image assets in the form of image files such as PNG files. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few as the final object that is furnished is an instance of the [Texture class](https://threejs.org/docs/#api/en/textures/Texture).
@@ -45,7 +45,7 @@ In my [test threejs repository](https://github.com/dustinpfister/test_threejs/tr
 
 ## 1 - Basic texture loader example
 
-I often like to start out my post with a basic, simple hello world type example of a threejs feature. So in the example I will be loading just a single image that will be used to create a single texture. This single texture will then be used to create just a basic color map for an instance of the THREE.BasicMatreial. I will then be just creating and adding a cube to a scene object that will use this material.
+I often like to start out my posts with a basic, simple hello world type example of a threejs feature. So in the example I will be loading just a single image that will result in a single texture object. This single texture will then be used to create just a basic color map for an instance of the [THREE.BasicMatreial](/2018/05/05/threejs-basic-material/). I will then be just creating and adding a cube to a scene object that will use this material, and not do anything fancy with the uv attribute of the geometry, or more than one material at this time. As such the end result will the whole of the texture being displayed on each of the faces of the cube.
 
 ```js
 // creating a scene
@@ -79,15 +79,15 @@ loader.load(
 );
 ```
 
-In this example I just passed a string to a single image as the first argument, and I also passed just a single call back that will fire when the loading of the file is done. So then there is the question of what to do when it comes to loading not just one file, but a few files. Also what if there is a problem loading one or more files? With that said there should be a way to set a callback that will fire when something goes wrong. So with that said I think I should get around to making at least a few more examples of this texture loader, and many get around to even writing about some alternatives to using the texture loader.
+In this example I just passed a string to a single image as the first argument, and I also passed just a single [call back function](/2019/03/25/js-javascript-callback/) that will fire when the loading of the file is done. So then there is the question of what to do when it comes to loading not just one file, but a few files. Also what if there is a problem loading one or more files? With that said there should be a way to set a callback that will fire when something goes wrong. So with that said I think I should get around to making at least a few more examples of this texture loader.
 
 ## 2 - Load more than one image to use as a texture
 
-So then there is the topic of how to go about [loading more that one texture in threejs](https://stackoverflow.com/questions/35015251/how-do-i-load-multiple-textures-with-the-new-three-textureloader) as the texture loader by itself will just load one image at a time. Well I am sure that there are all kinds of ways to go about doing this, here I have an example that I worked out real fat that makes use of the [Promise all method](/2019/06/24/js-promise-all/), along with the [array map prototype method](/2020/06/16/js-array-map/) to all the texture loader more than one time for an array of urls.
+So then there is the topic of how to go about [loading more that one texture in threejs](https://stackoverflow.com/questions/35015251/how-do-i-load-multiple-textures-with-the-new-three-textureloader) as the texture loader by itself will just load one image at a time. Well I am sure that there are all kinds of ways to go about doing this, here I have an example that I worked out that makes use of the [Promise all method](/2019/06/24/js-promise-all/), along with the [array map prototype method](/2020/06/16/js-array-map/) to do so.
 
-The promise all is a prototype method of the native Promise object that should be there ti work with in all modern browsers, the array that is passed can be a collection of promise objects, and the returned promise object of the Promise all method will only resolve when all the promise objects in the array resolve. So when it comes to using this promise all method I often like to have a method that will return a promise object, and then just call that method in another function that will call it for each item in an array. 
+The promise all method is a prototype method of the native Promise object that should be there in late javaScript specs to work with in all modern browsers. The array that is passed to the promise all method can be a collection of promise objects, and the returned promise object of the Promise all method will only resolve when all the promise objects in the array resolve. So when it comes to using this promise all method I often like to have a method that will return a promise object, and then just call that method in another function that will call it for each item in an array. 
 
-For this example I pass an array of urls to my load texture collection helper, inside the body of this helper that is given the array of urls I call the promise all method and pass the array of urls as the first argument, but I call the map method off of the array of urls, and call by load texture helper for each url. I then pass each url to the load texture method which wil return a promise object for each url using the texture loader for each image.
+For this example I pass an array of urls to my load texture collection helper, inside the body of this helper that is given the array of urls I call the promise all method and pass the array of urls as the first argument, but I call the map method off of the array of urls, and call by load texture helper for each url. I then pass each url to the load texture method which will return a promise object for each url using the texture loader for each image.
 
 ```js
 var loadTexture = function (url) {
@@ -155,10 +155,11 @@ loadTextureCollection(urlArray)
 });
 ```
 
-If all goes well the end result will be an array of textures that will be available in the next then function call of the promise returned by the load texture collection helper. However I think it is always a good idea to have something in place that will fire in the event that sometime goes wrong loading the files. For this example I just create a single cube that makes use of the normal material, rater than two cubes that use each of the textures with the basic material.
+If all goes well the end result will be an array of textures that will be available in the next then function call of the promise returned by the load texture collection helper. However I think it is always a good idea to have something in place that will fire in the event that sometime goes wrong loading the files. For this example when there is a problem I just create a single cube that makes use of the normal material, rater than two cubes that use each of the textures with the basic material.
 
 This is something that I put together pretty fast, and there are a lot of other features I might want to add when it comes to turning this into some kind of actual support library or something to that effect. However say you all ready have a great way to go about loading a whole bunch of image files just the way you like to, and you just want to create textures with those images that are loaded all ready. Well you do not have to use the texture loader, in that case the THREE.Texture constrictor can just be called and a reference to each image can be passed as the first argument for the texture constrictor.
 
 ## Conclusion
 
 That will be it for now on the texture loader at least for today, there is a lot more to write about when it comes to what to do with a texture after it is loader rather than just how to go about loading a texture. In this post I wanted to just stick to using an external image for a color map of a cube, but I did not get into the various other kinds of maps there are to work with in the basic material, as well as the many other materials that will work with light sources. However I guess getting into all of that would be a matter for another post.
+
