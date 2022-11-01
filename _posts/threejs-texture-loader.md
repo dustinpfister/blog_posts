@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-11-01 09:58:29
-version: 1.33
+updated: 2022-11-01 11:17:06
+version: 1.34
 ---
 
 When it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) can be used load external image assets in the form of image files such as PNG files. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few as the final object that is furnished is an instance of the [Texture class](https://threejs.org/docs/#api/en/textures/Texture).
@@ -43,9 +43,13 @@ When I wrote this post and the examples for this post I was using r127 of threej
 
 In my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-texture-loader) on Github the source code examples that I am writing about here can be found. I am also parking the source code examples for my [many other posts on threejs](/categories/three-js/) there as well.
 
-## 1 - Basic texture loader example
+## 1 - Basic threejs texture loader examples
 
-I often like to start out my posts with a basic, simple hello world type example of a threejs feature. So in the example I will be loading just a single image that will result in a single texture object. This single texture will then be used to create just a basic color map for an instance of the [THREE.BasicMatreial](/2018/05/05/threejs-basic-material/). I will then be just creating and adding a cube to a scene object that will use this material, and not do anything fancy with the uv attribute of the geometry, or more than one material at this time. As such the end result will the whole of the texture being displayed on each of the faces of the cube.
+I often like to start out my posts with a basic, simple, hello world type example of a threejs feature. So then for this section I will be starting out with just a few basic examples of the texture loader that mainly just involve loading a single image file, to create a single texture object. Nothing fancy involving loading many files, or getting to deep into a closely related topic of some kind here. 
+
+### 1.1 - Basic Single file hello world threejs texture loader example
+
+In the example I will be loading just a single image that will result in a single texture object. This single texture will then be used to create just a basic color map for an instance of the [THREE.BasicMatreial](/2018/05/05/threejs-basic-material/). I will then be just creating and adding a cube to a scene object that will use this material, and not do anything fancy with the uv attribute of the geometry, or more than one material at this time. As such the end result will the whole of the texture being displayed on each of the faces of the cube.
 
 ```js
 // creating a scene
@@ -81,11 +85,72 @@ loader.load(
 
 In this example I just passed a string to a single image as the first argument, and I also passed just a single [call back function](/2019/03/25/js-javascript-callback/) that will fire when the loading of the file is done. So then there is the question of what to do when it comes to loading not just one file, but a few files. Also what if there is a problem loading one or more files? With that said there should be a way to set a callback that will fire when something goes wrong. So with that said I think I should get around to making at least a few more examples of this texture loader.
 
+### 1.2 - Drawing to a canvas with an image loaded with the threejs texture loader
+
+If I do just want to load an image and then use that to say draw to a canvas element that I will then use to create a texture that will be used with a material option I could use the Image loader. However it would seem there is a draw back to doing so when it comes to the progress event with the image. As such I might still want to just stick with the texture loader, and when doing so I can always just use the image property of the texture object. Sense the source of the texture is an external image then the image property will be an instance of the Image class in client side javaScript, as such I can use it with something like the draw image method of the 2d canvas drawing context.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(1, 1.5, 1);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = 64;
+canvas.height = 64;
+const texture_canvas = new THREE.CanvasTexture(canvas);
+//-------- ----------
+// MESH THAT IS USING A CANVAS TEXTURE
+//-------- ----------
+// using the texture for a material and a Mesh
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        map: texture_canvas
+    }));
+// add the box mesh to the scene
+scene.add(box);
+//-------- ----------
+// LOAD TEXTURE, DRAW TO CANVAS TEXTURE WITH IMAGE SOURCE
+//-------- ----------
+const loader = new THREE.TextureLoader();
+loader.load(
+    // the first argument is the relative or absolute path of the file
+    '/img/smile-face/smile_face_256.png',
+    // the second argument is an on done call back
+    function (texture) {
+        // ref to canvas and image of texture
+        const canvas = texture_canvas.image;
+        const ctx = canvas.getContext('2d');
+        const img = texture.image;
+        // I can now draw to the canvas with the static image asset
+        ctx.drawImage(img, 128, 0, 128, 128, 0, 0, 32, 32);
+        ctx.drawImage(img, 0, 0, 128, 128, 32, 0, 32, 32);
+        ctx.drawImage(img, 128, 128, 128, 128, 32, 32, 32, 32);
+        ctx.drawImage(img, 0, 128, 128, 128, 0, 32, 32, 32);
+        // render
+        texture_canvas.needsUpdate = true;
+        renderer.render(scene, camera);
+    }
+);
+```
+
 ## 2 - Load more than one image to use as a texture
 
-So then there is the topic of how to go about [loading more that one texture in threejs](https://stackoverflow.com/questions/35015251/how-do-i-load-multiple-textures-with-the-new-three-textureloader) as the texture loader by itself will just load one image at a time. Well I am sure that there are all kinds of ways to go about doing this, here I have an example that I worked out that makes use of the [Promise all method](/2019/06/24/js-promise-all/), along with the [array map prototype method](/2020/06/16/js-array-map/) to do so.
+So then there is the topic of how to go about [loading more that one texture in threejs](https://stackoverflow.com/questions/35015251/how-do-i-load-multiple-textures-with-the-new-three-textureloader) as the texture loader by itself will just load one image at a time. There are a number of ways of doing this sort of thing, so I will want to have more than one example here.
 
-The promise all method is a prototype method of the native Promise object that should be there in late javaScript specs to work with in all modern browsers. The array that is passed to the promise all method can be a collection of promise objects, and the returned promise object of the Promise all method will only resolve when all the promise objects in the array resolve. So when it comes to using this promise all method I often like to have a method that will return a promise object, and then just call that method in another function that will call it for each item in an array. 
+### 2.1 - An array of Promise objects
+
+Here I have an example that I worked out that makes use of the [Promise all method](/2019/06/24/js-promise-all/), along with the [array map prototype method](/2020/06/16/js-array-map/) to do so. The promise all method is a prototype method of the native Promise object that should be there in late javaScript specs to work with in all modern browsers. The array that is passed to the promise all method can be a collection of promise objects, and the returned promise object of the Promise all method will only resolve when all the promise objects in the array resolve. So when it comes to using this promise all method I often like to have a method that will return a promise object, and then just call that method in another function that will call it for each item in an array. 
 
 For this example I pass an array of urls to my load texture collection helper, inside the body of this helper that is given the array of urls I call the promise all method and pass the array of urls as the first argument, but I call the map method off of the array of urls, and call by load texture helper for each url. I then pass each url to the load texture method which will return a promise object for each url using the texture loader for each image.
 
@@ -158,6 +223,96 @@ loadTextureCollection(urlArray)
 If all goes well the end result will be an array of textures that will be available in the next then function call of the promise returned by the load texture collection helper. However I think it is always a good idea to have something in place that will fire in the event that sometime goes wrong loading the files. For this example when there is a problem I just create a single cube that makes use of the normal material, rater than two cubes that use each of the textures with the basic material.
 
 This is something that I put together pretty fast, and there are a lot of other features I might want to add when it comes to turning this into some kind of actual support library or something to that effect. However say you all ready have a great way to go about loading a whole bunch of image files just the way you like to, and you just want to create textures with those images that are loaded all ready. Well you do not have to use the texture loader, in that case the THREE.Texture constrictor can just be called and a reference to each image can be passed as the first argument for the texture constrictor.
+
+### 2.2 - Using the loading manager
+
+Although the Promise all solution that I made a while back seems to work okay, these days I am more of the minbdset of using the [THREE.Loading manager](https://threejs.org/docs/#api/en/loaders/managers/LoadingManager) for this sort of thing.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(2, 2.5, 2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(1,3,2);
+scene.add(dl);
+//-------- ----------
+// URLS TEXTURE OBJECT
+//-------- ----------
+const URLS = [
+    '/img/smile-face/smile_face_256.png',
+    '/img/smile-face/smile_face_128.png',
+    '/img/smile-face/smile_face_32.png'
+];
+const textureObj = {};
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createCube = function () {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshPhongMaterial({
+            color: new THREE.Color(1,1,1),
+            emissive: new THREE.Color(0.05,0.05,0.05)
+        })
+    );
+};
+//-------- ----------
+// MESH
+//-------- ----------
+const box1 = createCube();
+box1.position.set(1, 0, 0);
+scene.add(box1);
+const box2 = createCube();
+box2.position.set(-1, 0, 0);
+scene.add(box2);
+//-------- ----------
+// MANAGER
+//-------- ----------
+const manager = new THREE.LoadingManager();
+// starting
+manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+    console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+};
+// done
+manager.onLoad = function ( ) {
+    console.log( 'Loading complete!');
+ 
+    box1.material.map = textureObj['smile_face_256'];
+    box2.material.map = textureObj['smile_face_32'];
+    box2.material.emissiveMap = textureObj['smile_face_128'];
+ 
+    renderer.render(scene, camera);
+};
+// progress
+manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+    console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+};
+// ERROR
+manager.onError = function ( url ) {
+    console.log( 'There was an error loading ' + url );
+};
+//-------- ----------
+// TEXTURE LOADER
+//-------- ----------
+const loader = new THREE.TextureLoader(manager);
+URLS.forEach((url) => {
+    loader.load(url, (texture) => {
+        const file_name = url.split('/').pop().split('.')[0];
+        // keying the textureObj by using file name as the key
+        textureObj[file_name] = texture;
+    });
+});
+```
 
 ## Conclusion
 
