@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2022-10-31 10:58:48
-version: 1.24
+updated: 2022-11-01 11:43:48
+version: 1.25
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing that is used for figuring out what side the front side of a face is, lighting, and for materials like that of the normal material.
@@ -28,19 +28,21 @@ The uv attribute has to do with how a texture is to be applied to a face of a ge
 
 ### There is much more to read about when it comes to buffer geometry in general
 
-The way that I think about it is that learning about the uv attribute of a geometry comes after learning about the normal, and position attributes. those attributes of a geometry are also very important as they define the position of the points in space, and the directions that they are facing which is something that is used when it comes to light or the use of the normal material. However there is even more to a geometry beyond the position, normal, and uv attributes, when it comes to prototype methods of buffer geometry class instance as well as other properties such as groups and material index values.
+The way that I think about it is that learning about the uv attribute of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) comes after learning about the normal, and position attributes. Those attributes of a geometry are also very important as they define the position of the points in space, and the directions that they are facing which is something that is used when it comes to light or the use of the normal material. However there is even more to a geometry beyond the position, normal, and uv attributes, when it comes to prototype methods of buffer geometry class instance as well as other properties such as groups and material index values.
 
 ### Do not confuse uvs with the material index values of groups.
 
-The uvs have to do with how a texture is to be applied to a face when it comes to offsets, and generally more often that not I am going to want to use the whole texture. When it comes to having more than one texture and switching between two or more textures for the same face messing around with uvs might not be the best way to do so. There is having groups in a geometry also, and passing an array of materials to a mesh rather than just one material. There is also just having one material, changing what the texture is for a map, and updating the material. These things might prove to be better options when it comes to switching textures at run time.
+The uvs have to do with how a texture is to be applied to a face when it comes to offsets in the image. When it comes to a box geometry for example the uv attribute is set up by default to use all of the image for all sides. Often this might be what I want to happen but often I might want to do something else. I could edit the uv attribute so that I use only certain parts of a single texture for certain faces of the cube, but another option would be to use more than one image for more than one material. Then it is just a matter of what image I want to use for what face.
+
+For the most part I think it is a good idea to learn a thing or two about how to edit the uv attribute and use just one texture. However I think I should still at least mention here that there is another option that might need to be used in some cases that has to do with [setting the material index values of group objects](/2018/05/14/threejs-mesh-material-index/), and creating the groups in the first place. However getting into that here would be to far off topic.
 
 ### Source code examples are up on Github
 
-The source code examples that I am writing about in this post can also be found in my [test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-attributes-uv).
+The source code examples that I am writing about in this post can also be found in my [test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-attributes-uv). This is also where I park the source code for my [many other posts on threejs as well](/categories/three-js/).
 
 ### Always check your version numbers
 
-When I made this post I was using r127 of threejs, and the examples here where working okay with that version of threejs. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post again.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to do some editing I was using r140 of the library. The examples here where working okay with both versions of threejs on my end just fine. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post yet again.
 
 ## 1 - Basic uv mutation example using a Plane, and a canvas texture
 
