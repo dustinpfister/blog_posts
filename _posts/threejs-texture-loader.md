@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-11-01 09:35:01
-version: 1.31
+updated: 2022-11-01 09:47:04
+version: 1.32
 ---
 
-When it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) can be used load external image assets in the form of image files such as PNG files. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few as the final object that is furnieshed is an instance of the [Texture class](https://threejs.org/docs/#api/en/textures/Texture).
+When it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) can be used load external image assets in the form of image files such as PNG files. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few as the final object that is furnished is an instance of the [Texture class](https://threejs.org/docs/#api/en/textures/Texture).
 
-If what I want is the raw Image object to use in some other situation that does not call for Texture objects I could use [the Image loader](https://threejs.org/docs/#api/en/loaders/ImageLoader), but I have found that it might be better to just use the image property of a Texture object. Speaking of the Image loader there are a number of loaders built into threejs itself and the texture loader is just one of them. There are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the [dae file loader](/2021/04/30/threejs-dae-collada-loader/) as well. All of these work off of the base loader class of threejs that one will want to learn a thing or two about as there are certian things that will apply to all loaders based off of this class.
+If what I want is the raw Image object to use in some other situation that does not call for Texture objects I could use [the Image loader](https://threejs.org/docs/#api/en/loaders/ImageLoader), but I have found that it might be better to just use the image property of a Texture object. Speaking of the Image loader there are a number of loaders built into threejs itself and the texture loader is just one of them. There are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the [DAE file loader](/2021/04/30/threejs-dae-collada-loader/) as well. All of these work off of the base loader class of threejs that one will want to learn a thing or two about as there are certain things that will apply to all loaders based off of this class.
 
 When it comes to my various threejs examples that I make for these posts I often like to use [canvas elements](https://threejs.org/docs/#api/en/textures/CanvasTexture), or [data textures](https://threejs.org/docs/#api/en/textures/DataTexture) which are ways to create quick simple textures with javaScript code. However I am sure there will be times when it comes to starting to work on an actually project with threejs that I will want to use external image files rather than some kind of solution that involves a little javaScript code.
 
@@ -19,11 +19,11 @@ When it comes to my various threejs examples that I make for these posts I often
 
 ## The texture loader in threejs and what to know first
 
-This is a post on the texture loader in threejs which is one of several built in loaders in the library. In addition to the texture loader there is an image loader that will just load an image, but not create an instance of THREE.texture for you, and also a generic file loader. However for this post I will be mainly write about a few quick, simple examples using just the Texture loader alone. In this section I will be going over a few things you should know about before continuing to read this beyond the fact that you should know at least a little when it comes to the [basics of using threejs](/2018/04/04/threejs-getting-started/), and know at least a little about javaScript in general.
+This is a post on the texture loader in threejs and as such I assume that you have at least a little background when it comes to the [basics of threejs](/2018/04/04/threejs-getting-started/), and [client side javaScript in general](/2018/11/27/js-getting-started/). Although there is no way that I will be covering every little detail with these subjects here, in this section I will be going over a few things you should know about before continuing to read the rest of this post.
 
 ### There are many other ways to load files, and the THREE.Texture constructor can be used directly.
 
-If you prefer to use some other javaScript library for scripting http requests such as axios, or you want to use some browser built in feature such as the [fetch api](/2018/03/27/js-fetch/), or the tired yet true [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/) then that can be done as an alternative to the texture loader. The only thing that I would have to do is just pass a reference to the image file to the THREE.texture constructor.
+If you prefer to use some other javaScript library for scripting http requests, or you want to use some browser built in feature such as the [fetch api](/2018/03/27/js-fetch/), or the tired yet true [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/) then that can be done as an alternative to the texture loader. The only thing that I would have to do is just pass a reference to the image file to the THREE.texture constructor and that will create an instance of the Texture class. That kind of object can then be used with the map option of a material such as the basic material, or with any other function or property that calls for a texture object.
 
 ### Know the differences between absolute and relative paths
 
@@ -33,15 +33,15 @@ In these examples I am using an absolute path to a file that I am hosting locall
 
 I think I should also mention here that it is possible to use [canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture) that can then be used for the maps of materials. That is creating an image with the 2d drawing context of a canvas element, and then create a texture with the THREE.CanvasTexture constructor or even just the THREE.Texture constructor actually. This is the main way that I like to make textures with javaScript code rather than an external image file.
 
-On top of being able to use canvas elements and everything there is to work with in the 2d drawing context of canvas elements there are also [data textures](/2022/04/15/threejs-data-texture/).
+On top of being able to use canvas elements and everything there is to work with in the 2d drawing context of canvas elements, another javaScript code powered option with textures would be [data textures](/2022/04/15/threejs-data-texture/). There are also ways of switching between the two as needed, but that will be enough about them for now.
 
 ### Version Numbers matter
 
-When I wrote this post and the examples for this post I was using r127 of threejs. I have got into the habit of making sure I always make note of the version of threejs that I am using since there are always code breaking changes being made to the library.
+When I wrote this post and the examples for this post I was using r127 of threejs, and the last time I came around to doing some editing I was using r140 of the library. I have got into the habit of making sure I always make note of the version of threejs that I am using since there are always code breaking changes being made to the library.
 
 ### The source code examples in this post are on Github
 
-In my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-texture-loader) on Github the source code examples that I am writing about here can be found. I am also parking the source code examples for my many other posts on threejs there as well.
+In my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-texture-loader) on Github the source code examples that I am writing about here can be found. I am also parking the source code examples for my [many other posts on threejs](/categories/three-js/) there as well.
 
 ## 1 - Basic texture loader example
 
