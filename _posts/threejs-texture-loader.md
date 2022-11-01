@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-04-22 12:06:22
-version: 1.30
+updated: 2022-11-01 09:35:01
+version: 1.31
 ---
 
-There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). Many of these features are basic things that I should have wrote about a long time ago, one of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few. 
+When it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) can be used load external image assets in the form of image files such as PNG files. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few as the final object that is furnieshed is an instance of the [Texture class](https://threejs.org/docs/#api/en/textures/Texture).
 
-There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the [dae file loader](/2021/04/30/threejs-dae-collada-loader/).
+If what I want is the raw Image object to use in some other situation that does not call for Texture objects I could use [the Image loader](https://threejs.org/docs/#api/en/loaders/ImageLoader), but I have found that it might be better to just use the image property of a Texture object. Speaking of the Image loader there are a number of loaders built into threejs itself and the texture loader is just one of them. There are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the [dae file loader](/2021/04/30/threejs-dae-collada-loader/) as well. All of these work off of the base loader class of threejs that one will want to learn a thing or two about as there are certian things that will apply to all loaders based off of this class.
 
-When it comes to my various threejs examples that I make for these posts I often like to use canvas elements are a way to create quick simple textures with javaScript code. However I am sure there will be times when it comes to starting to work on an actually project with threejs that I will want to use external image files rather than some kind of solution that involves a little javaScript code.
+When it comes to my various threejs examples that I make for these posts I often like to use [canvas elements](https://threejs.org/docs/#api/en/textures/CanvasTexture), or [data textures](https://threejs.org/docs/#api/en/textures/DataTexture) which are ways to create quick simple textures with javaScript code. However I am sure there will be times when it comes to starting to work on an actually project with threejs that I will want to use external image files rather than some kind of solution that involves a little javaScript code.
 
 <!-- more -->
 
