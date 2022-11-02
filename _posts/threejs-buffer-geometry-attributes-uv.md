@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2022-11-01 12:06:59
-version: 1.26
+updated: 2022-11-02 16:39:45
+version: 1.27
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing that is used for figuring out what side the front side of a face is, lighting, and for materials like that of the normal material.
@@ -44,7 +44,11 @@ The source code examples that I am writing about in this post can also be found 
 
 When I first wrote this post I was using r127 of threejs, and the last time I came around to do some editing I was using r140 of the library. The examples here where working okay with both versions of threejs on my end just fine. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post yet again.
 
-## 1 - Basic uv mutation example using a Plane, and a canvas texture
+## 1 - Basic examples of the uv attribute of buffer geometry
+
+In this section I will be starting out with just some basic examples of the uv attribute of the buffer geometry class in threejs. This will involve examples where I am mutating a uv attribute that is all ready there to begin with such as with built in geometries. However i will also be going over at least one example that involves creating a custom geometry from the ground up as well.
+
+### 1.1 - Basic uv mutation example using a Plane, and a canvas texture
 
 To get a general idea of what the uvs are for when it comes to textures it might be best to start working with a plane geometry and look at the values of uv attribute of the plane that is created when using the built in geometry constructor. For example if I create a plane geometry that is a size of 1 by 1 and also has a section size of 1 by 1 then that results in a geometry composed of just 4 points, and because there are 2 uv values for each point it will result in just 8 values in the uv attribute. This is then a nice simple starting point when it comes to playing around with these values to gain a sense of what happens when the values are changed.
 
@@ -128,6 +132,80 @@ To get a general idea of what the uvs are for when it comes to textures it might
 ```
 
 The values that I will typically want to use will be just 0, and 1 which is what will happen when I want to use all of the texture for a face. Numbers between 0 and one imply what I am using just some of the image, while numbers above 1 mean that I am using the whole of the image for just part of the face actually.
+
+### 1.2 - Basic triangle custom geometry example with uv attribute added.
+
+This next example involves adding a uv attribute to a clean new buffer geometry that is made from scratch. Sense this is a basic section of this post this custom geometry will be just three points in space, so in other words a single triangle. The first step is to create a new buffer geometry by calling the main THREE.BufferGeomerty constructor function. After that the returned result will be a clean, new Buffer geometry instance however it will not have any attributes at all, including a position attribute. 
+
+So then I will want to start by adding the position attribute which will be the actually position of three points in space. To do this I will want to create a  [Float32Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array) of numbers where each three numbers are the x y and z positions of each point in space. Sense I want to make just a single triangle here this will be 9 numbers in the array then. I can then use this array to create a new instance of [Buffer Attribute](https://threejs.org/docs/#api/en/core/BufferAttribute) which I can then use to set the position attribute of this new geometry by calling the [set attribute method](https://threejs.org/docs/#api/en/core/BufferGeometry.setAttribute), and giving the string ‘position for the name of the attribute’.
+
+Next I will want to add a normal attribute to this as well, one quick way to do this that will work well more often that not will be to just call the compute vertex normal's method of the buffer geometry instance. 
+
+Now that I have a position and normal attribute I can now add the uv attribute to define what areas of a 2d texture should be drawn to the surface of this triangle. Once again as with my position attribute I will want to create an instance of a Float32Array but this time I will only have two values for each point as these are the 2d image offsets for each point in the triangle. I can then use this array as the first argument for a new instance of buffer attribute and this time I will be making the item size of the attribute 2. This can then be used to set the uv attribute of the buffer geometry by once again calling the set attribute method.
+
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10))
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(1, 0.5, 1);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CANVAS TEXTURE
+    //-------- ----------
+    const canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = 8;
+    canvas.height = 8;
+    ctx.fillStyle = '#004040';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(2, 2, 2, 2);
+    const texture = new THREE.Texture(canvas);
+    texture.needsUpdate = true;
+    //-------- ----------
+    // GEOMETRY - Custom Triangle
+    //-------- ----------
+    // position attribuite
+    const geometry = new THREE.BufferGeometry();
+    const vertices1 = new Float32Array([
+                0, -0.5, -0.75,
+                0, 0.5, 0.25,
+                0, -0.5, 0.25
+            ]);
+    geometry.setAttribute('position', new THREE.BufferAttribute(vertices1, 3));
+    // normals
+    geometry.computeVertexNormals();
+    // uv attribute
+    const vertices2 = new Float32Array([
+                0.2, 0.2,
+                0.9, 0.9,
+                0.2, 0.9
+            ]);
+    geometry.setAttribute('uv', new THREE.BufferAttribute(vertices2, 2));
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    // use the geometry with a mesh
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+                side: THREE.DoubleSide,
+                map: texture
+            }));
+    scene.add(mesh);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
 
 ### 2 - Updating uvs at run time in an Animation loop
 
