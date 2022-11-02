@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-11-01 11:17:06
-version: 1.34
+updated: 2022-11-02 07:41:11
+version: 1.35
 ---
 
 When it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) can be used load external image assets in the form of image files such as PNG files. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few as the final object that is furnished is an instance of the [Texture class](https://threejs.org/docs/#api/en/textures/Texture).
@@ -311,6 +311,119 @@ URLS.forEach((url) => {
         // keying the textureObj by using file name as the key
         textureObj[file_name] = texture;
     });
+});
+```
+
+## 3 - Module example of the texture loader
+
+When it comes to making use of the texture loader often I will want to abstract away code that I find myself using over and over again into a module form that I can then just like to and use for every new project in which I will want to load a few textures. The most primitive form of this kind of module would be something that I just call a load method and then give a base url and a list of files that I will like to load at that base url. This load method will then return a promise and the resolved object will be an object where every key is a file name, and every value is a texture made from that file.
+
+### 3.0 - The current state of the module
+
+```js
+// texture.js - r0 - from threejs-texture-loader
+(function (api) {
+    //-------- ----------
+    // MANAGER
+    //-------- ----------
+    const createLoadingManager = (onDone, onError) => {
+        const manager = new THREE.LoadingManager();
+        // done
+        manager.onLoad = function ( ) { onDone(); };
+        // ERROR
+        manager.onError = function ( url ) { onError(url); };
+        return manager;
+    };
+    //-------- ----------
+    // TEXTURE LOADER
+    //-------- ----------
+    api.load = (opt) => {
+        opt = opt || {};
+        opt.URLS_BASE = opt.URLS_BASE || '';
+        opt.URLS = opt.URLS || [];
+        opt.onDone = opt;
+        const textureObj = {};
+        return new Promise(function(resolve, reject){
+            const manager = createLoadingManager(
+                () => {
+                    resolve(textureObj);
+                },
+                (url) => {
+                    reject(url);
+                }
+            );
+            const loader = new THREE.TextureLoader(manager);
+            opt.URLS.forEach((url) => {
+                // set base url path
+                loader.setPath(opt.URLS_BASE);
+                // load files from base
+                loader.load(url, (texture) => {
+                    // get file name from url
+                    const file_name = url.split('/').pop().split('.')[0];
+                    // keying the textureObj by using file name as the key
+                    textureObj[file_name] = texture;
+                });
+            });
+        });
+    };
+}( this['textureMod'] = {} ));
+```
+
+### 3.1 - load method example
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(2, 2.5, 2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(1,3,2);
+scene.add(dl);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createCube = function () {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshPhongMaterial({
+            color: new THREE.Color(1,1,1),
+            emissive: new THREE.Color(0.05,0.05,0.05)
+        })
+    );
+};
+//-------- ----------
+// MESH
+//-------- ----------
+const box1 = createCube();
+box1.position.set(1, 0, 0);
+scene.add(box1);
+const box2 = createCube();
+box2.position.set(-1, 0, 0);
+scene.add(box2);
+//-------- ----------
+// TEXTURE.js load
+//-------- ----------
+textureMod.load({
+    URLS_BASE: '/img/smile-face/',
+    URLS : [
+        'smile_face_256.png',
+        'smile_face_128.png',
+        'smile_face_32.png'
+    ]
+}).then( (textureObj) => {
+    box1.material.map = textureObj['smile_face_256'];
+    box2.material.map = textureObj['smile_face_32'];
+    box2.material.emissiveMap = textureObj['smile_face_128'];
+    renderer.render(scene, camera);
 });
 ```
 
