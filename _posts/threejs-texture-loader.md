@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-11-02 07:41:11
-version: 1.35
+updated: 2022-11-02 07:43:46
+version: 1.36
 ---
 
 When it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) can be used load external image assets in the form of image files such as PNG files. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few as the final object that is furnished is an instance of the [Texture class](https://threejs.org/docs/#api/en/textures/Texture).
@@ -320,6 +320,8 @@ When it comes to making use of the texture loader often I will want to abstract 
 
 ### 3.0 - The current state of the module
 
+So I made an r0 of a texture.js javaScript module that will abstract away some code that allows for me to load more than one texture.
+
 ```js
 // texture.js - r0 - from threejs-texture-loader
 (function (api) {
@@ -370,6 +372,8 @@ When it comes to making use of the texture loader often I will want to abstract 
 ```
 
 ### 3.1 - load method example
+
+Here I have a basic example of the load method of this module that is based off of the load many manager example above. Now that I abstracted away much of what was in that example, the code is now a lot cleaner.
 
 ```js
 //-------- ----------
