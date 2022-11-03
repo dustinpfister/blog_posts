@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2022-11-03 07:28:47
-version: 1.29
+updated: 2022-11-03 07:32:52
+version: 1.30
 ---
 
 When I am playing around with [three.js](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. 
@@ -145,7 +145,7 @@ animate();
 
 ## 2 - Conclusion
 
-So far this seems like one of the best options for converting a simple three.js looping animation to a stand alone webm file, or at least it was until things broke with it. So then I will still want to look into other options for this sort of thing, but some of them are more complex then that need to be, or I could not find a way to build the file on a frame by frame basis which is what I want to do. Because of the code breaking changes that have happed as of thins writing I have been r3educed to having to use a solution that involves creating a collection of PNG files and then using the [program ffmpeg to create a video](/2022/03/04/linux-ffmpeg/) file that way.
+I will still want to look into other options for this sort of thing sense sadly it is no longer working for me. Some of the solutions for exporting video seem to be more complex then they need to be for this, including the current solution that I am using for that matter. One problem that I seem to keep running into is not finding a way to build the file on a frame by frame basis which is what I want to do with most if not all of my video projects. Because of the code breaking changes that have happed as of this writing I have been r3educed to having to use a solution that involves creating a collection of PNG files and then using the [program ffmpeg to create a video](/2022/03/04/linux-ffmpeg/) file that way.
 
 Still the use of whammy will allow me to create a webm file of an animation using three.js, from there it is just a question of what I do with that. With that said I have found that I like to use a [program called Open Shot](https://www.openshot.org/) to create a finished video with audio. I could also use just about any video editing program with one or more webm files crated with whammy, and then do editing and any additional processing to create a finished product of some kind.
 
