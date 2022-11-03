@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2022-04-30 12:06:03
-version: 1.24
+updated: 2022-11-03 07:53:11
+version: 1.25
 ---
 
 Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind in one or more future projects. This time it will be yet another one of my models that is [just a group](/2018/05/16/threejs-grouping-mesh-objects/) collection of [mesh objects](/2018/05/04/threejs-mesh/) using the built in threejs geometry constructors rather than an external file of one type or another such as the DAE file standard.
@@ -20,6 +20,11 @@ My general idea that I have in mind is that if I make enough of these kinds of m
 This is a post on using the javaScript library known as three.js to create a simple 3d scene with built in geometries and the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry). I trust that you have at least some background with three.js and javaScript otherwise you might end up having a hard time gaining something of value from this post. Of course you should at this post have a solid understating of the basics at least when it comes to creating a scene in three.js, and also how to use [Groups](/2018/05/16/threejs-grouping-mesh-objects/), and [Orbit Controls](/2018/04/13/threejs-orbit-controls/).
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/Hor4TTLhIvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+### Source code is also up on Github
+
+The source code for [this threejs example is up on Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-house). This is also where I park the source code for my [many other posts on threejs as well](/categories/three-js/).
 
 ### Version Numbers matter with three.js
 
