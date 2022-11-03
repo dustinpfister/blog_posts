@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2022-11-03 07:19:05
-version: 1.28
+updated: 2022-11-03 07:28:47
+version: 1.29
 ---
 
 When I am playing around with [three.js](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. 
@@ -24,6 +24,10 @@ This is a post on exporting a three.js animation to webm using an additional jav
 ### USING WHAMMY NO LONGER WORKS FOR ME IN LATE VERSIONS OF CHROME
 
 There is not just being mindful of the version of threejs that is being used, but also the version numbers of the web browsers that I am running code in, and also the version number of whammy. In late versions of chrome using whammy seems to no loner work, and it also looks like the whammy library is not being supported also to make matters worse. It would seem like the root cause of this has to do with code breaking changes that have been bade with respect to the [URL.createObjectURL method](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL). Thus far I have not found a way to fix what has happened using more modern means of doing so.
+
+### I AM USING MY OWN ELECTRONJS APPLACTION I CALL VIDEOGROUND WITH FFMPEG
+
+I have a lot of collections of content on other javaScript libraries and various tech related subjects including [electronjs](/2022/02/07/electronjs-hello-world/). One of the posts that I have wrote on electronjs thus far is on a [prototype for an application that I can use to create a collection of frames](/2022/03/10/electronjs-example-videoground/) in the form of png files in a folder. From there I can use a [Linux command like that of ffmpeg](/2022/03/04/linux-ffmpeg/) to convert this collection of png files to a final video file, on top of that ffmpeg is great for video ending from the command line in general as I also use to to add audio tracks to me videos as well.
 
 ### Version numbers matter
 
