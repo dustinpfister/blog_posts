@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2022-11-03 07:32:52
-version: 1.30
+updated: 2022-11-03 07:37:57
+version: 1.31
 ---
 
 When I am playing around with [three.js](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. 
@@ -28,6 +28,12 @@ There is not just being mindful of the version of threejs that is being used, bu
 ### I AM USING MY OWN ELECTRONJS APPLACTION I CALL VIDEOGROUND WITH FFMPEG
 
 I have a lot of collections of content on other javaScript libraries and various tech related subjects including [electronjs](/2022/02/07/electronjs-hello-world/). One of the posts that I have wrote on electronjs thus far is on a [prototype for an application that I can use to create a collection of frames](/2022/03/10/electronjs-example-videoground/) in the form of png files in a folder. From there I can use a [Linux command like that of ffmpeg](/2022/03/04/linux-ffmpeg/) to convert this collection of png files to a final video file, on top of that ffmpeg is great for video ending from the command line in general as I also use to to add audio tracks to me videos as well.
+
+Sense I started that prototype for my electronjs project example post I started a [stand alone repository for my video ground application](https://github.com/dustinpfister/videoground). As such this is a project that I continue to work on every so often for a little while. It is also a program that I use just about every day to create videos like this one from my [beta world collection](https://github.com/dustinpfister/videoground-beta-world).
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/GDXM1o9hMK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 
 ### Version numbers matter
 
