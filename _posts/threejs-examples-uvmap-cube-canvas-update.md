@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-04 11:43:50
-version: 1.6
+updated: 2022-11-04 11:48:35
+version: 1.7
 ---
 
 I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the uv map of a cube created with the THREE.BoxGeometry constructor in threejs. By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
@@ -195,21 +195,431 @@ When I create an instance of getUvData I will then want to use this to set the s
 ### 1.1 - Basic example
 
 ```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, and RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10 ));
+    scene.background = new THREE.Color(0.5, 0.5, 0.5);
+    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+    camera.position.set(1.25, 1.25, 1.25);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild( renderer.domElement );
+    // ---------- ----------
+    // HELPERS
+    // ---------- ----------
+    const mkCanvasOpt = (palette) => {
+        const canOpt = {
+            draw: 'rnd', 
+            update_mode: 'canvas', 
+            palette: palette || ['white', 'black'], 
+            size: 128, 
+            state:{ gSize: 16 } };
+        return canOpt;
+    };
+    // ---------- ----------
+    // CREATE AND UPDATE MESH
+    // ---------- ----------
+    // create the mesh object
+    const mesh = uvMapCube.create({
+        images: [ 
+            canvasMod.create( mkCanvasOpt() ).canvas,
+            canvasMod.create( mkCanvasOpt(['red', 'blue', 'purple']) ).canvas
+        ]
+    });
+    scene.add(mesh);
+    // I can now use the draw face method
+    uvMapCube.drawFace(mesh, 'front', {i:1, sx: 0, sy: 0, sw: 32, sh: 32});
+    uvMapCube.drawFace(mesh, 'top', {i:1, sx: 0, sy: 0, sw: 128, sh: 128});
+    // ---------- ----------
+    // RENDER
+    // ---------- ----------
+    renderer.render(scene, camera);
+}());
 ```
 
 ### 1.2 - Face example
 
 ```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, and RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10 ));
+    scene.background = new THREE.Color(0.5, 0.5, 0.5);
+    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+    camera.position.set(1.25, 1.25, 1.25);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild( renderer.domElement );
+    // ---------- ---------- ----------
+    // CUSTOM DRAW METHOD
+    // ---------- ---------- ----------
+    // palette grid draw method
+    const palette_grid = (canObj, ctx, canvas, state) => {
+        const w =  state.w === undefined ? 16 : state.w;
+        const h =  state.h === undefined ? 16 : state.h;
+        const data = state.data || [];
+        const len = w * h;
+        const pxW = canObj.size / w;
+        const pxH = canObj.size / h;
+        let i = 0;
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+        while(i < len){
+            const ci =  data[i] || 0;
+            const x = i % w;
+            const y = Math.floor(i / w);
+            ctx.fillStyle = canObj.palette[ci];
+            const px = x * pxW;
+            const py = y * pxH;
+            ctx.fillRect(px, py, pxW, pxH);
+            i += 1;
+        }
+    };
+    // create a canObj with a palette and grid data
+    const createGridCanvas = (data, palette, w, h, size) => {
+        const canObj = canvasMod.create({
+            draw: palette_grid,
+            size: size === undefined ? 128: size,
+            palette: palette || ['white', 'black', 'red', 'lime', 'blue'],
+            state:{
+                data: data || [],
+                w: w === undefined ? 32: w, 
+                h: h === undefined ? 32: h
+            }
+        });
+        //canObj.canvas.style.imageRendering = 'pixelated';
+        return canObj;
+    };
+    const data_smile = [
+         2,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,1,0,0,1,0,0, 2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,1,0,0,1,0,0, 2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,1,0,0,1,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,1,1,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+ 
+         2,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,2,2,2,2,0,0, 0,0,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,2,2,2,0,0,0, 0,0,0,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,0,0,0,0,0,0, 0,0,0,0,0,0,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+ 
+         2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         2,2,2,2,2,2,2,2, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+ 
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+         0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,
+    ];
+    // ---------- ---------- ----------
+    // CREATE AND UPDATE MESH
+    // ---------- ---------- ----------
+    // create the mesh object
+    let mesh = uvMapCube.create({
+        pxa: 0.4,
+        images: [
+            createGridCanvas(data_smile).canvas
+        ]
+    });
+    scene.add(mesh);
+    // I can now use the draw face method
+    uvMapCube.drawFace(mesh, 'front', {i:0, sx: 0, sy: 0, sw: 32, sh: 32});
+    uvMapCube.drawFace(mesh, 'back', {i:0, sx: 32, sy: 0, sw: 32, sh: 32});
+    uvMapCube.drawFace(mesh, 'right', {i:0, sx: 0, sy: 32, sw: 32, sh: 32});
+    uvMapCube.drawFace(mesh, 'left', {i:0, sx: 32, sy: 32, sw: 32, sh: 32});
+    uvMapCube.drawFace(mesh, 'top', {i:0, sx: 0, sy: 64, sw: 32, sh: 32});
+    uvMapCube.drawFace(mesh, 'bottom', {i:0, sx: 32, sy: 64, sw: 32, sh: 32});
+    // ---------- ----------
+    // ORBIT CONTROLS
+    // ---------- ----------
+    if(THREE.OrbitControls){
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    }
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 120;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){};
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}());
 ```
 
 ### 1.3 - texture loader example
 
 ```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, and RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10 ));
+    scene.background = new THREE.Color(0.5, 0.5, 0.5);
+    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+    camera.position.set(1.25, 1.25, 1.25);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild( renderer.domElement );
+    //-------- ----------
+    // URLS, TEXTURE OBJECT
+    //-------- ----------
+    const URLS_BASE = '/img/smile-face/';
+    const URLS = [
+        'smile_sheet_128.png'
+    ];
+    const textureObj = {};
+    // ---------- ----------
+    // ORBIT CONTROLS
+    // ---------- ----------
+    if(THREE.OrbitControls){
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    }
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 120;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    //-------- ----------
+    // MANAGER
+    //-------- ----------
+    const manager = new THREE.LoadingManager();
+    // starting
+    manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+        console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+    };
+    // done
+    manager.onLoad = function ( ) {
+        console.log( 'Loading complete!');
+        // ---------- ---------- ----------
+        // CREATE AND UPDATE MESH
+        // ---------- ---------- ----------
+        // create the mesh object
+        let mesh = uvMapCube.create({
+            pxa: 1.42,
+            images: [
+                textureObj['smile_sheet_128'].image
+            ]
+        });
+        scene.add(mesh);
+        uvMapCube.drawFace(mesh, 'front', {i:0, sx: 0, sy: 0, sw: 32, sh: 32});
+        uvMapCube.drawFace(mesh, 'back', {i:0, sx: 64, sy: 0, sw: 32, sh: 32});
+        uvMapCube.drawFace(mesh, 'top', {i:0, sx: 0, sy: 32, sw: 32, sh: 32});
+        uvMapCube.drawFace(mesh, 'bottom', {i:0, sx: 32, sy: 32, sw: 32, sh: 32});
+        uvMapCube.drawFace(mesh, 'left', {i:0, sx: 32, sy: 0, sw: 32, sh: 32});
+        uvMapCube.drawFace(mesh, 'right', {i:0, sx: 96, sy: 0, sw: 32, sh: 32});
+        // ---------- ---------- ----------
+        // START THE LOOP
+        // ---------- ---------- ----------
+        loop()
+    };
+    // progress
+    manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+        console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+    };
+    // ERROR
+    manager.onError = function ( url ) {
+        console.log( 'There was an error loading ' + url );
+    };
+    //-------- ----------
+    // TEXTURE LOADER
+    //-------- ----------
+    const loader = new THREE.TextureLoader(manager);
+    URLS.forEach((url) => {
+        // set base utl path
+        loader.setPath(URLS_BASE);
+        // load files from base
+        loader.load(url, (texture) => {
+            // get file name from url
+            const file_name = url.split('/').pop().split('.')[0];
+            // keying the textureObj by using file name as the key
+            textureObj[file_name] = texture;
+        });
+    });
+}());
 ```
 
 ### 1.4 - texture module load example
 
 ```js
+(function () {
+    // ---------- ----------
+    // SCENE, CAMERA, and RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10 ));
+    scene.background = new THREE.Color(0.5, 0.5, 0.5);
+    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+    camera.position.set(1.25, 1.25, 1.25);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild( renderer.domElement );
+    // ---------- ----------
+    // LIGHT
+    // ---------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(1, 2, 3);
+    scene.add(dl);
+    // ---------- ----------
+    // ORBIT CONTROLS
+    // ---------- ----------
+    if(THREE.OrbitControls){
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    }
+    // ---------- ----------
+    // APP LOOP
+    // ---------- ----------
+    const state = {
+        mesh: null
+    };
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 120;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        const alpha = frame / frameMax;
+        const bias = 1 - Math.abs(0.5 - alpha) / 0.5;
+        // animate face
+        const cx = Math.floor(3.99 * bias);
+        drawCell(state.mesh, 'front', 1, cx, 0);
+        const d = -45 + 90 * bias;;
+        state.mesh.rotation.y = Math.PI / 180 * d;
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    // draw cell helper
+    const drawCell = (mesh, drawto, i, x, y, size) => {
+        i = i === undefined ? 0: i;
+        x = x === undefined ? 0: x;
+        y = y === undefined ? 0: y;
+        size = size === undefined ? 32: size;
+        uvMapCube.drawFace(mesh, drawto, {i:i, sx: x * size, sy: y * size, sw: size, sh: size});
+    };
+    // ---------- ---------- ----------
+    // USING LIST LOADER r0
+    // ---------- ---------- ----------
+    textureMod.load({
+        URLS_BASE: '/img/smile-face/',
+        URLS: ['smile_sheet_128.png', 'smile_creepy_128.png']
+    })
+    // then if all goes well
+    .then( (textureObj) => {
+        // ---------- ---------- ----------
+        // CREATE AND UPDATE MESH
+        // ---------- ---------- ----------
+        // create the mesh object
+        const mesh = state.mesh = uvMapCube.create({
+            pxa: 1.42,
+            images: [
+                textureObj['smile_sheet_128'].image,
+                textureObj['smile_creepy_128'].image
+            ]
+        });
+        mesh.material.emissiveIntensity = 0.15;
+        scene.add(mesh);
+        drawCell(mesh, 'front', 1, 3, 0);
+        drawCell(mesh, 'back', 0, 2, 0);
+        drawCell(mesh, 'top', 0, 0, 1);
+        drawCell(mesh, 'bottom', 0, 1, 1);
+        drawCell(mesh, 'left', 0, 1, 0);
+        drawCell(mesh, 'right', 0, 3, 0);
+        // ---------- ---------- ----------
+        // CREATE MESH
+        // ---------- ---------- ----------
+        const mesh2 = new THREE.Mesh(mesh.geometry, mesh.material);
+        mesh2.position.set(-2, 0, -2);
+        scene.add(mesh2);
+        // ---------- ---------- ----------
+        // START THE LOOP
+        // ---------- ---------- ----------
+        loop()
+    })
+    // error
+    .catch((url)=>{
+        console.log('Error when trying to load: ' + url);
+    });
+}());
 ```
 
 ## Conclusion
