@@ -1,12 +1,12 @@
 ---
-title: 44 threejs project example ideas from basic to not so basic
+title: 45 threejs project example ideas from basic to not so basic
 date: 2021-02-19 14:42:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-10-28 09:29:05
-version: 1.85
+updated: 2022-11-04 11:18:12
+version: 1.86
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -184,42 +184,46 @@ One major improvement that I made with this text plane module is that I can scro
 
 I wanted to make the first of what might in time be a few tools that are used to create some kind of content such as an image of some kind or so forth. The aim with this example then was to create a kind of art program where I am using threejs to create a scene with one or more dea files that I load into the scene that is drawn as a resource layer. I can then change all kids of values with these objects in the scene including the position, and orientation of the of the camera. I then have one or more additional canvas layers on top of this resource layer that I then draw on free hand, and then desired end product is some kind of 2d image based off of the state of the scene.
 
-### [ 2.36 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
+### [ 2.36 - Tree](/2019/07/30/threejs-examples-tree/)
 
-This is an example where I am using my simple tree sphere models and just creating a whole bunch of those and placing them around the surface of a sphere. It is then just a basic example of creating a main world type model and then having a whole bunch of instances of another model be a part of this kind of model.
+This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
 
 ### [ 2.37 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
 
 This is a very basic static model of a tree that is just a sphere geometry placed on the top of a box geometry that has dimensions that look like a trunk of a tree. It is then one of the most simplistic models of this kind that I have made thus far, and might prove as a good starting point when it comes to making models this way.
 
-### [ 2.38 - Tree](/2019/07/30/threejs-examples-tree/)
+### [ 2.38 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
 
-This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
+This is an example where I am using my simple tree sphere models and just creating a whole bunch of those and placing them around the surface of a sphere. It is then just a basic example of creating a main world type model and then having a whole bunch of instances of another model be a part of this kind of model.
 
-### [ 2.39 - Waves](/2018/11/14/threejs-examples-waves/) 
+### [ 2.39 - uv map cube module using canvas to update ](/2022/11/04/threejs-examples-uvmap-cube-canvas-update/) 
+
+This is a module in which I set the uv attribute of a box geometry the way that I want it to be just once, and then from there I use a canvas element for the texture and then update that they way that I want it to be from there on out. There is also the idea of having just once common texture and then updating the uv attributes of cubes as well that I might get to in future revisions of this module or maybe other related projects. In any case this is a good starting point for this sort of thing and many of the internal helper functions of the module might prove to be useful when making some other kind of project that is like this.
+
+### [ 2.40 - Waves](/2018/11/14/threejs-examples-waves/) 
 
 The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
 
-### [ 2.40 - Weird face one](/2022/07/08/threejs-examples-weird-face-one/) 
+### [ 2.41 - Weird face one](/2022/07/08/threejs-examples-weird-face-one/) 
 
 Updating the state of a geometries is something that can be done in a wide range of ways. There is looking into use bones as a way to do so, but then there is also just working out all kinds of various ways that have to do with updating the state of geometry using a little javaScript code. For this weird face one example I am using the lerp geometry method that I made for a previous example to lerp between to states of a geometry for a mouth of a weird looking face. On top of that I am also making use of other ways of creating a kind of animation my just moving the position of mesh objects which is what I am using with the eyes of this weird face model.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/AzuB6ExUE64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### [ 2.41 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
+### [ 2.42 - Weird walk guy 1](/2022/04/18/threejs-examples-weird-walk-one/) 
 
 This is another one of my example that is a kind of model that is created by just having a bunch of mesh objects grouped together. This one is just the first of what might become a few examples that are like my guy one model only the goal is to have a weird walk cycle for them. I might like to have a few more features when it comes to the over all look and function of the weird walk model here, but the main idea is to just have a weird and interesting walk cycle.
 
-### [ 2.42 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
+### [ 2.43 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
 
 This is a more advanced example of the first weird walk guy example, continuing to work on adding more to the example in an effort to just make a weird and interesting looping animation.
 
-### [ 2.43 - Weird walk guy 3](/2022/05/24/threejs-examples-weird-walk-three/) 
+### [ 2.44 - Weird walk guy 3](/2022/05/24/threejs-examples-weird-walk-three/) 
 
 I wanted to make yet another one of these weird walk examples to which I might make a few more of.
 
-### [ 2.44 - Wrap values module](/2022/09/09/threejs-examples-wrap-module/)
+### [ 2.45 - Wrap values module](/2022/09/09/threejs-examples-wrap-module/)
 
 There are a lot of methods that have to do with clamping values to a set of bounds, but I am not seeing that many that have to do with wrapping values to bounds. In other words when a value reaches a limit there are a lot of choices to make that value just stop and not go beyond the set limit. However there is a lack of methods that helper with the process of having a value wrap back around to the opposite side of a box or sphere like area. So then I made this threejs wrap module that contains a number of methods that can be used to help with the process of wrapping rather than clamping values like numbers, as well as threejs class stuff like Vector, and Euler class instances.
 
