@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-04 11:08:47
-version: 1.3
+updated: 2022-11-04 11:18:11
+version: 1.4
 ---
 
-I would like to start at least one if not more threejs project examples that have to do with setting up the uv map of a cube created with the THREE.BoxGeometry constructor in threejs. By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
+I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the [uv map of a cube]() created with the THREE.BoxGeometry constructor in threejs. By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
 
 There are ways of setting differing textures to each face without doing anything with the uv attribute such as having more than one material and setting the material index values of each face by way of the groups object. However when it comes to cubes and geometry in general sooner of later I am going to want to learn more about how to mutate the uv attribute values with a little javaScript code.
 
