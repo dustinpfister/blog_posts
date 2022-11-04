@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-04 11:38:52
-version: 1.5
+updated: 2022-11-04 11:43:50
+version: 1.6
 ---
 
 I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the uv map of a cube created with the THREE.BoxGeometry constructor in threejs. By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
@@ -211,3 +211,7 @@ When I create an instance of getUvData I will then want to use this to set the s
 
 ```js
 ```
+
+## Conclusion
+
+This module seems to work okay so far as of r0 all ready have the basic idea of what I wanted working. When and if I get around to it I will still like to make a few changes of course when it comes to any possible future revisions of this project. For one this I would like to have at least a few more options when it comes to how I go about dividing up a sprite sheet that I use to skin the cube. Although I am going in the direction of just setting the uvs once I might still want to add some methods that give me greater control over updating the uvs over time and maybe not so much the texture that I am using.
