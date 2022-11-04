@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-04 11:04:14
-version: 1.2
+updated: 2022-11-04 11:08:47
+version: 1.3
 ---
 
 I would like to start at least one if not more threejs project examples that have to do with setting up the uv map of a cube created with the THREE.BoxGeometry constructor in threejs. By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
@@ -25,7 +25,7 @@ Although I will not be getting into detail with every little thing there is to k
 
 ### This cube uv threejs module example makes use of r1 of my canvas module
 
-A long time ago now I wrote a [blog post on canvas textures in threejs](/2018/04/17/threejs-canvas-textures/), however this is also a post that I find myself editing often. Anyway to get to the point the cube uv module that I am writing about in this post works on top of my canvas module that I write about in that post. I could have baked some code into the cube uv module alone, but I am thinking that this project will be one if not many projects in which I work on top of that module.
+A long time ago now I wrote a [blog post on canvas textures in threejs](/2018/04/17/threejs-canvas-texture/), however this is also a post that I find myself editing often. Anyway to get to the point the cube uv module that I am writing about in this post works on top of my canvas module that I write about in that post. I could have baked some code into the cube uv module alone, but I am thinking that this project will be one if not many projects in which I work on top of that module.
 
 ### Some of the example of the cube uv module make use of r0 of my texture loader module
 
@@ -41,7 +41,7 @@ There is a whole lot to be aware of when it comes to [buffer geometry in general
 
 ### Source code is up on Github
 
-The source code for the modules as well as the examples can be found in the [for post folder for this post in my test threejs repo on Github](/https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-uvmap-cube-canvas-update). The source code for the canvas module that I am working on can also be found there in the [for post folder for my post on canvas textures](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-canvas-texture). Also the source of the [texture module that I use for some of the examples](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-texture-loader) here can be found in that repo as well.
+The source code for the modules as well as the examples can be found in the [for post folder for this post in my test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-uvmap-cube-canvas-update). The source code for the canvas module that I am working on can also be found there in the [for post folder for my post on canvas textures](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-canvas-texture). Also the source of the [texture module that I use for some of the examples](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-texture-loader) here can be found in that repo as well.
 
 ### Version Numbers matter
 
