@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-04 11:48:35
-version: 1.7
+updated: 2022-11-04 12:00:19
+version: 1.8
 ---
 
 I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the uv map of a cube created with the THREE.BoxGeometry constructor in threejs. By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
@@ -192,7 +192,12 @@ When I create an instance of getUvData I will then want to use this to set the s
     (this['uvMapCube'] = {}));
 ```
 
-### 1.1 - Basic example
+### 1.1 - Basic example of the uv map cube module
+
+This is what I have together for a hello world of this project. Here I am setting up a typical threejs project scene by creating the scene object, camera, and renderer. I like to work on Raspberry PI OS actually so I am going with the web gl 1 renderer to avoid problem that I have noticed starting  with r141 which is why I was sticking with r140 for a while.
+So when it comes to the sources images that I wil be using I am again using my canvas module and with that the built in rnd draw method that just creates a random texture for a given grid size in this case I am setting the grid size to 16. I have then made a make canvas options helper that has all the settings that I want when making my canvas object and I am then just calling that for each image that I will be using only making changes for the palette option.
+
+I then create my mesh object with the create method of the uv map cube module and then use the draw face method to update what faces to what faces to what. This time I am only updating two faces of the cube to image 1 while leaving everything else to the default image used which is image 0.
 
 ```js
 (function () {
@@ -242,6 +247,8 @@ When I create an instance of getUvData I will then want to use this to set the s
 ```
 
 ### 1.2 - Face example
+
+This is an example where I world out a custom draw method that I might build into future revisions of the canvas module.
 
 ```js
 (function () {
@@ -387,7 +394,9 @@ When I create an instance of getUvData I will then want to use this to set the s
 }());
 ```
 
-### 1.3 - texture loader example
+### 1.3 - Texture loader example
+
+In this example I am using an external image as the texture rather than using canvas elements.
 
 ```js
 (function () {
@@ -504,6 +513,8 @@ When I create an instance of getUvData I will then want to use this to set the s
 ```
 
 ### 1.4 - texture module load example
+
+Here I am once again using external image assets but now I am using my texture module.
 
 ```js
 (function () {
