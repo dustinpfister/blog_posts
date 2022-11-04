@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-04 11:18:11
-version: 1.4
+updated: 2022-11-04 11:38:52
+version: 1.5
 ---
 
-I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the [uv map of a cube]() created with the THREE.BoxGeometry constructor in threejs. By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
+I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the uv map of a cube created with the THREE.BoxGeometry constructor in threejs. By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
 
 There are ways of setting differing textures to each face without doing anything with the uv attribute such as having more than one material and setting the material index values of each face by way of the groups object. However when it comes to cubes and geometry in general sooner of later I am going to want to learn more about how to mutate the uv attribute values with a little javaScript code.
 
@@ -49,11 +49,165 @@ The version of threejs that I was using when working on this was r146.
 
 ## 1 - The first version of my uvmap cube canvas update module
 
+This is the source code of the first version of my uv map cube module. The main features of interest here are the private helper functions that I am using to get the desired uv values that I will want to set for a given face index, cell index and grid size for the texture. When it comes to the first method up top called getUVData I pass a uv attribute reference along with a face index, cell index and grid size to get an array of index values along with u and v values to set for that index to get a desired outcome.
+For this first version of the module I am thinking in terms of breaking down a texture into a number of divisions that are the same for both height and width. This is what the grid size argument is about as that is the number of divisions that I would like to have. You see the resolution of the textures that I use always need to be a power of 2, and they always need to be square. However I can divide up the area of the texture anyway that I would like, and for now I am thinking just in terms of a grid that is 4 by 4 by default. So then if I use a texture that is say 128 by 128, then the resolution of each cell will be 32 by 32.
+
+So then if a 128 by 128 resolution texture is divided up into 32 by 32 cells there will then be cell index locations of each of these cells. In this case there will be 16 cells and if we are talking zero relative numbers that means the index range will be from 0 to 15. The face index value then is the index for a face on a cube and the range for that would be 0 to 5.
+
+When I create an instance of getUvData I will then want to use this to set the state of the uv attribute. For this I have my setUVData helper where I pass the uv that I will like to mutate, along with the uvData area created with my getUVData helper, and then and order array that will default to \[0,1,2,3\] which so far seems to work okay, but I might need to adjust when it comes to setting the rotation of the uv points. However with this project there is also doing a rotation when it comes to drawing to the canvas texture that I am using as well which is what I prefer for this revision of the module at least.
+
 ```js
+// uvmap-cube.js - r0 - from threejs-examples-uvmap-cube-canvas-update
+(function (api) {
+    //-------- ----------
+    //  HELPERS
+    //-------- ----------
+    // get a uvData array for a given uv face index and cell index
+    const getUVData = (uv, faceIndex, cellIndex, gridSize) => {
+        faceIndex = faceIndex === undefined ? 0: faceIndex;
+        cellIndex = cellIndex === undefined ? 0: cellIndex;
+        gridSize = gridSize === undefined ? 4: gridSize;
+        const cellX = cellIndex % gridSize;
+        const cellY = Math.floor(cellIndex / gridSize);
+        // for each set of uvs for the face
+        let di = 0;
+        const uvd = 1 / gridSize;
+        let uvData = [];
+        while(di < 4){
+            const i = faceIndex * 4 + di;
+            const x = di % 2;
+            const y = 1 - 1 * Math.floor(di / 2);
+            // get u and v using cellX and cellY
+            const u = uvd * cellX + x * uvd;
+            const v = 1 - uvd * ( cellY + 1 ) + y * uvd;
+            uvData.push({i:i,u:u,v:v});
+            di += 1;
+        }
+        return uvData;
+    };
+    // set uvs with the uvData, and order arrays
+    const setUVData = (uv, uvData, order ) => {
+        order = order || [0, 1, 2, 3]; // normal
+        uvData.forEach((a, di, uvData) => {
+        const b = uvData[ order[di] ]
+            uv.setXY(a.i, b.u, b.v);
+        });
+        uv.needsUpdate = true;
+    };
+    // main helper
+    const setUVFace = (uv, faceIndex, cellIndex, order, gridSize) => {
+        const uvData = getUVData(uv, faceIndex, cellIndex, gridSize);
+        setUVData(uv, uvData, order );
+    }
+    //-------- ----------
+    // PUBLIC API
+    //-------- ----------
+    api.drawFace = ( mesh, drawto, imgArgs ) => {
+        const mud = mesh.userData;
+        mud.drawto = drawto;
+        mud.imgArgs = imgArgs;
+        canvasMod.update(mud.canObj);
+    };
+    // create and return a cube
+    api.create = (opt) => {
+        opt = opt || {};
+        const cs = opt.cubeSize = opt.cubeSize === undefined ? 1 : opt.cubeSize;
+        // CREATE BOX GEO
+        const geo = new THREE.BoxGeometry(cs, cs, cs);
+        // SET UP THE UV ATTRIBUTE
+        const uv = geo.getAttribute('uv');
+        // set the uvs once!
+        let faceIndex = 0;
+        const cellNames = opt.cellNames || { front: 0, back: 1, top: 2, bottom: 3, right: 4, left: 5};
+        const cellIndices = opt.cellIndices || [5, 7, 1, 9, 4, 6];
+        while( faceIndex < 6){
+            setUVFace(uv, faceIndex, cellIndices[faceIndex], [0,1,2,3], 4);
+            faceIndex += 1;
+        }
+        // CREATE Mesh User Data
+        const mud = {};
+        mud.cellNames = cellNames;
+        mud.cellIndices = cellIndices;
+        mud.drawto = 'front';
+        mud.pxa = opt.pxa === undefined ? 0.4 : opt.pxa;
+        // images array and arguments used to set current index as well as offsets
+        mud.images = opt.images || [ 
+            canvasMod.create({ draw: 'rnd', size: 128, state:{ gSize: 16} } ).canvas
+        ];
+        mud.imgArgs = {
+            i: 0,
+            sx: 0, sy: 0, sw: 32, sh: 32
+        };
+        // set ws and sh to full size of image 1 if there.
+        const img0 = mud.images[0];
+        if(img0){
+            mud.imgArgs.sw = img0.width;
+            mud.imgArgs.sh = img0.height;
+        }
+        mud.canObj = canvasMod.create({
+            size: opt.canvasSize === undefined ? 256 : opt.canvasSize,
+            state: mud,
+            update_mode: opt.update_mode || 'canvas',
+            palette: opt.palette || ['white', 'black'],
+            draw: function(canObj, ctx, canvas, mud){
+                 // get current ci value
+                 const ci = mud.cellIndices[mud.cellNames[mud.drawto]];
+                 const cellSize = canvas.width / 4;
+                 const pxa = mud.pxa;
+                 const x = ci % 4;
+                 const y = Math.floor(ci / 4);
+                 const px = x * cellSize - pxa;
+                 const py = y * cellSize - pxa;
+                 // draw current image with current settings
+                 const img = mud.images[mud.imgArgs.i];
+                 if(img){
+                     ctx.clearRect(px, py, cellSize, cellSize);
+                     ctx.drawImage(img, 
+                         mud.imgArgs.sx, mud.imgArgs.sy, mud.imgArgs.sw, mud.imgArgs.sh, 
+                         px, py, cellSize + pxa * 2, cellSize + pxa * 2);
+                 }
+            }
+        });
+        // MATERIAL
+        const material = new THREE.MeshPhongMaterial({
+            color: new THREE.Color(1, 1, 1),
+            map: mud.canObj.texture,
+            emissive: new THREE.Color(1, 1, 1),
+            emissiveMap: mud.canObj.texture
+        });
+        // MESH OBJECT
+        const mesh = new THREE.Mesh(geo, material);
+        mesh.userData = mud;
+        // first draw face calls
+        api.drawFace(mesh, 'front', mud.imgArgs);
+        api.drawFace(mesh, 'back', mud.imgArgs);
+        api.drawFace(mesh, 'top', mud.imgArgs);
+        api.drawFace(mesh, 'bottom', mud.imgArgs);
+        api.drawFace(mesh, 'left', mud.imgArgs);
+        api.drawFace(mesh, 'right', mud.imgArgs);
+        // return a mesh object
+        return mesh;
+    };
+}
+    (this['uvMapCube'] = {}));
 ```
 
 ### 1.1 - Basic example
 
 ```js
+```
 
+### 1.2 - Face example
+
+```js
+```
+
+### 1.3 - texture loader example
+
+```js
+```
+
+### 1.4 - texture module load example
+
+```js
 ```
