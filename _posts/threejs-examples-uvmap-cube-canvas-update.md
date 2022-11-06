@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-06 08:02:00
-version: 1.13
+updated: 2022-11-06 08:06:54
+version: 1.14
 ---
 
 I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the [uv map](https://en.wikipedia.org/wiki/UV_mapping) of a cube created with the THREE.BoxGeometry constructor in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
@@ -202,7 +202,7 @@ I then have a draw face method that will allow me to draw to a given face of a g
 ### 1.1 - Basic example of the uv map cube module
 
 This is what I have together for a hello world of this project. Here I am setting up a typical threejs project scene by creating the scene object, camera, and renderer. I like to work on Raspberry PI OS actually so I am going with the web gl 1 renderer to avoid problem that I have noticed starting  with r141 which is why I was sticking with r140 for a while.
-So when it comes to the sources images that I wil be using I am again using my canvas module and with that the built in rnd draw method that just creates a random texture for a given grid size in this case I am setting the grid size to 16. I have then made a make canvas options helper that has all the settings that I want when making my canvas object and I am then just calling that for each image that I will be using only making changes for the palette option.
+So when it comes to the sources images that I will be using I am again using my canvas module and with that the built in rnd draw method that just creates a random texture for a given grid size in this case I am setting the grid size to 16. I have then made a make canvas options helper that has all the settings that I want when making my canvas object and I am then just calling that for each image that I will be using only making changes for the palette option.
 
 I then create my mesh object with the create method of the uv map cube module and then use the draw face method to update what faces to what faces to what. This time I am only updating two faces of the cube to image 1 while leaving everything else to the default image used which is image 0.
 
