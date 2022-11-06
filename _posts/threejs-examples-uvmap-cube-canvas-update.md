@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-06 07:57:58
-version: 1.12
+updated: 2022-11-06 08:02:00
+version: 1.13
 ---
 
 I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the [uv map](https://en.wikipedia.org/wiki/UV_mapping) of a cube created with the THREE.BoxGeometry constructor in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
@@ -196,6 +196,8 @@ When I create an instance of getUvData I will then want to use this to set the s
 ```
 
 I then have my public api that contains a create method and a single draw face method. The create method will set up and return a mesh object that uses a geometry created with the THREE.BoxGeometry constructor, and also with the THREE.MeshPhongMaterial. However this is not just any mesh object as I am using the [user data object of the object3d class based mesh object](/2021/02/16/threejs-userdata/) to store an instance of an object created with my canvas module as well as other data that I will be using to update the state of the texture that is used for the map and emissive map options of the phong material.
+
+I then have a draw face method that will allow me to draw to a given face of a given mesh object that was created with the create method of this module. I use it by passing the mesh object as the first argument, and then a face name of the cube that I would like to draw to. I can then pass an object that contains info in terms of the source image to use, along with 2d offset, with and height values to use. So then this method will just draw once face per call.
 
 ### 1.1 - Basic example of the uv map cube module
 
