@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-06 07:56:20
-version: 1.11
+updated: 2022-11-06 07:57:58
+version: 1.12
 ---
 
 I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the [uv map](https://en.wikipedia.org/wiki/UV_mapping) of a cube created with the THREE.BoxGeometry constructor in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
@@ -195,7 +195,7 @@ When I create an instance of getUvData I will then want to use this to set the s
     (this['uvMapCube'] = {}));
 ```
 
-I then have my public api that contains a create method and a single draw face method. The create method will set up and return a mesh object that uses a geometry created with the THREE.BoxGeometry constructor, and also with the THREE.MeshPhongMaterial. However this is not just any mesh object as I am using the user data object of the object3d class based mesh object to store an instance of an object created with my canvas module as well as other data that I will be using to update the state of the texture that is used for the map and emissive map options of the phong material.
+I then have my public api that contains a create method and a single draw face method. The create method will set up and return a mesh object that uses a geometry created with the THREE.BoxGeometry constructor, and also with the THREE.MeshPhongMaterial. However this is not just any mesh object as I am using the [user data object of the object3d class based mesh object](/2021/02/16/threejs-userdata/) to store an instance of an object created with my canvas module as well as other data that I will be using to update the state of the texture that is used for the map and emissive map options of the phong material.
 
 ### 1.1 - Basic example of the uv map cube module
 
