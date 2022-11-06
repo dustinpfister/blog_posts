@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-06 08:06:54
-version: 1.14
+updated: 2022-11-06 08:17:01
+version: 1.15
 ---
 
 I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the [uv map](https://en.wikipedia.org/wiki/UV_mapping) of a cube created with the THREE.BoxGeometry constructor in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
@@ -255,7 +255,7 @@ I then create my mesh object with the create method of the uv map cube module an
 
 ### 1.2 - Face example
 
-This is an example where I world out a custom draw method that I might build into future revisions of the canvas module.
+This is an example where I worked out a custom draw method that I might build into future revisions of the canvas module. The draw method works by giving an array of palette index values to draw on a grid cell by grid cell basis. I have found that this is just one way that I like to draw to a canvas element by way of some data and javaScript code that is my own weird standard. When it comes to sticking to certain standards though there is also working out something where I have color channel data for each pixel and for that there is all ready a good browser built in standard of course, but I will not be getting into that in detail here though.
 
 ```js
 (function () {
@@ -403,7 +403,7 @@ This is an example where I world out a custom draw method that I might build int
 
 ### 1.3 - Texture loader example
 
-In this example I am using an external image as the texture rather than using canvas elements.
+In this example I am using an external image as the texture rather than using canvas elements. To do so I am making use of the threejs built in texture loader as a way to go about loading just a single image for now. However I am still doing so in a way in which things should still work well when it comes to using more than one texture also.
 
 ```js
 (function () {
@@ -521,7 +521,7 @@ In this example I am using an external image as the texture rather than using ca
 
 ### 1.4 - texture module load example
 
-Here I am once again using external image assets but now I am using my texture module.
+Here I am once again using external image assets but now I am using my texture module however now I am using a texture module that [I would out for my post on the threejs texture loader](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-texture-loader). What I would out in that project might be something that I should build into this module in future revisions, or yet again maybe not as it is something that I might want to just develop and maintain  when it comes to working with textures in general actually. In any case by pulling the code that has to do with loading textures they way that i would like to lad them into a separate file that helps to reduce the complexly of the demo here which is nice.
 
 ```js
 (function () {
