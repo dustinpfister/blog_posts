@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1012
-updated: 2022-11-06 07:50:17
-version: 1.10
+updated: 2022-11-06 07:56:20
+version: 1.11
 ---
 
 I would like to start at least one if not more [threejs project examples](/2021/02/19/threejs-examples/) that have to do with setting up the [uv map](https://en.wikipedia.org/wiki/UV_mapping) of a cube created with the THREE.BoxGeometry constructor in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). By default the geometry will have a uv map, it is just that it will use all of the given texture for each face of the cube. 
@@ -57,7 +57,7 @@ For this first version of the module I am thinking in terms of breaking down a t
 
 So then if a 128 by 128 resolution texture is divided up into 32 by 32 cells there will then be cell index locations of each of these cells. In this case there will be 16 cells and if we are talking zero relative numbers that means the index range will be from 0 to 15. The face index value then is the index for a face on a cube and the range for that would be 0 to 5.
 
-When I create an instance of getUvData I will then want to use this to set the state of the uv attribute. For this I have my setUVData helper where I pass the uv that I will like to mutate, along with the uvData area created with my getUVData helper, and then and order array that will default to \[0,1,2,3\] which so far seems to work okay, but I might need to adjust when it comes to setting the rotation of the uv points. However with this project there is also doing a rotation when it comes to drawing to the canvas texture that I am using as well which is what I prefer for this revision of the module at least.
+When I create an instance of getUvData I will then want to use this to set the state of the uv attribute. For this I have my setUVData helper where I pass the uv that I will like to mutate, along with the uvData area created with my getUVData helper, and then and order array that will default to \[0,1,2,3\] which so far seems to work okay, but I might need to adjust when it comes to setting the rotation of the uv points. However with this project there is also doing a rotation when it comes to drawing to the canvas texture that I am using as well which is what I prefer for this revision of the module at least when and if I need to do so even to begin with.
 
 ```js
 // uvmap-cube.js - r0 - from threejs-examples-uvmap-cube-canvas-update
@@ -194,6 +194,8 @@ When I create an instance of getUvData I will then want to use this to set the s
 }
     (this['uvMapCube'] = {}));
 ```
+
+I then have my public api that contains a create method and a single draw face method. The create method will set up and return a mesh object that uses a geometry created with the THREE.BoxGeometry constructor, and also with the THREE.MeshPhongMaterial. However this is not just any mesh object as I am using the user data object of the object3d class based mesh object to store an instance of an object created with my canvas module as well as other data that I will be using to update the state of the texture that is used for the map and emissive map options of the phong material.
 
 ### 1.1 - Basic example of the uv map cube module
 
