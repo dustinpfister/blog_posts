@@ -5,11 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-04-20 14:42:53
-version: 1.32
+updated: 2022-11-07 10:55:47
+version: 1.33
 ---
 
-After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each by moving the position of a group object rather than each individual mesh object. In addition to this A group object also has all kinds of properties that are inherited from object3d on top of that of just the position and rotation properties such as the name and user data objects. So I can set a custom name for a group, and also park all kinds of user data and methods in the user data object of a group.
+After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
+
+So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each by moving the position of a group object rather than each individual mesh object. In addition to this a group object also has all kinds of properties that are inherited from object3d that prove to be useful such as the user data object that I can use to park some of my own data about the group that will be used in some additional code.
 
 Also for one reason or another it is often a good idea to have a way to group two or more objects in general and not just mesh objects. For example I might want to add a light to a camera and then add the camera to a scene object. So this post today will be about the three.js [Group](https://threejs.org/docs/index.html#api/objects/Group) constructor, but a whole lot of what a group is about is also a feature of the [object3d class](https://threejs.org/docs/#api/en/core/Object3D) in general. So here I will be going over some of the basics when it comes to this sort of thing, but also I will likely touch base on many other related topics what will come up when creating groups of objects that have to do with rotating a geometry just once, and the difference between world space, and space that is relative to a group.
 
@@ -469,7 +471,7 @@ So I would use it in a main.js file to make something like this:
 
 This results in three instances of the model, each with different radius, count of boxes, and color. I am also changing the state of one of theme in a loop, by calling one of the methods of the model, as well as by directly working with the group instance as it has all the [Object3D](/2018/04/23/threejs-object3d/) methods to play with that will effect the group as a whole when used.
 
-## 6 - Conclusion
+## Conclusion
 
 Grouping is a useful in three.js projects, don't forget that it is also something that you can do with anything in three.js that inherits from the Object3D class. So not only can you use grouping with Mesh Object instances, it can also be done with things like lights, and cameras, and also even additional groups.
 
