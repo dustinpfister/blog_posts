@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-07 11:07:28
-version: 1.34
+updated: 2022-11-07 11:08:57
+version: 1.35
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -34,7 +34,7 @@ I also often try to mention that three.js is a project where the version number 
 
 ### The source code examples in this post are on Github
 
-The source code examples that I am writing about in this post can be found in [my test threejs Github Repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-grouping-mesh-objects).
+The source code examples that I am writing about in this post can be found in [my test threejs Github Repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-grouping-mesh-objects). This is also where I pack the source code examples for my [many other posts on threejs as well](/categories/three-js/).
 
 ## 1 - Basic Mesh Group example in three.js
 
