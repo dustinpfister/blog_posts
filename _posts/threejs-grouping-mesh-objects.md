@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-07 11:10:27
-version: 1.36
+updated: 2022-11-07 12:37:26
+version: 1.37
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -30,32 +30,89 @@ When it comes to grouping two ore more Mesh Objects together it may be preferabl
 
 ### Version numbers matter
 
-I also often try to mention that three.js is a project where the version number matters a great deal as code breaking changes are made all the time.  With that said when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91). When it comes to the last time I came around to doing a little editing of this post I was able to still get all these examples to work okay with [r135 as well](https://github.com/mrdoob/three.js/releases/tag/r135).
+I also often try to mention that three.js is a project where the version number matters a great deal as code breaking changes are made all the time.  With that said when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91). When it comes to the last time I came around to doing a little editing of this post I was able to still get all these examples to work okay with [r146 as well](https://github.com/mrdoob/three.js/releases/tag/r146).
 
 ### The source code examples in this post are on Github
 
 The source code examples that I am writing about in this post can be found in [my test threejs Github Repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-grouping-mesh-objects). This is also where I pack the source code examples for my [many other posts on threejs as well](/categories/three-js/).
 
-## 1 - Basic Mesh Group example in three.js
+## 1 - Basic examples of Groups of Mesh objects in threejs
 
-For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances, and adding them as children of a group. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh Normal Material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
-
-Once I have my group together I can do something like changing the position, rotation or scale of the group and when I do so it will effect the group as well as all the children of the group. With this example i am just changing the position and rotation of the group, and as I would expect doing so will effect not just the group, but everything that is attached to the group as a child including these method objects.
+### 1.1 - Cretaing a group and adding mesh children to it.
 
 ```js
 (function () {
-    // Scene
-    var scene = new THREE.Scene();
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(10, 10));
- 
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPER
+    //-------- ----------
+    const makeCube = (size, x, y, z) => { 
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(size, size, size),
+            new THREE.MeshNormalMaterial());
+        mesh.position.set(x, y, z);
+        return mesh;
+    };
+    //-------- ----------
     // CREATING A GROUP
-    var group = new THREE.Group();
-    var i = 0,
-    radius = 2,
-    count = 8;
+    //-------- ----------
+    const group = new THREE.Group();
+    scene.add(group);
+    // changing position and rotation of the group
+    group.position.x = -2;
+    group.rotation.y = Math.PI / 180 * 45;
+    //-------- ----------
+    // ADDING MESH OBJECTS TO THE GROUP
+    //-------- ----------
+    group.add(makeCube(1.0, 0, 0, 0));
+    group.add(makeCube(0.5, 0, 2, 0));
+    group.add(makeCube(0.5, 0, -2, 0));
+    group.add(makeCube(0.5, 2, 0, 0));
+    group.add(makeCube(0.5, -2, 0, 0));
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+### 1.2 - Mesh Objects Positioned in a circle using Math.cos and Math.sin
+
+For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances, and adding them as children of a group. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh Normal Material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
+
+Once I have my group together I can do something like changing the position, rotation or scale of the group and when I do so it will effect the group as well as all the children of the group. With this example I am just changing the position and rotation of the group, and as I would expect doing so will effect not just the group, but everything that is attached to the group as a child including these method objects.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CREATING A GROUP
+    //-------- ----------
+    const group = new THREE.Group(), radius = 2, count = 8;
+    let i = 0;
     while (i < count) {
         // creating a mesh
-        var bx = new THREE.Mesh(
+        const bx = new THREE.Mesh(
                 new THREE.BoxGeometry(1, 1, 1),
                 new THREE.MeshNormalMaterial()),
         r = Math.PI * 2 / count * i;
@@ -69,22 +126,14 @@ Once I have my group together I can do something like changing the position, rot
         i += 1;
     }
     scene.add(group);
- 
     // changing position and rotation of the group
     group.position.set(-4, 0, -4);
     group.rotation.z = Math.PI / 180 * 90;
- 
-    // Camera and Render
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 50);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
     renderer.render(scene, camera);
- 
-}
-    ());
+}());
 ```
 
 ## 2 - Rotation of geometry to make it line up with the front of a mesh object
@@ -93,19 +142,30 @@ In some cases I will want to rotate the geometry that I am using with a mesh so 
 
 ```js
 (function () {
- 
-    var createConeGroup = function (coneRotation) {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    const createConeGroup = function (coneRotation) {
         coneRotation = coneRotation === undefined ? Math.PI * 1.5 : coneRotation;
-        var group = new THREE.Group();
-        var i = 0,
-        radius = 2,
-        count = 8;
+        const group = new THREE.Group(), radius = 2,count = 8;
+        let i = 0;
         while (i < count) {
             // creating a mesh
-            var geo = new THREE.ConeGeometry(0.5, 1, 10, 10);
+            const geo = new THREE.ConeGeometry(0.5, 1, 10, 10);
             // ROTATING THE CONE GEOMERTY
             geo.rotateX(coneRotation);
-            var bx = new THREE.Mesh(
+            const bx = new THREE.Mesh(
                     geo,
                     new THREE.MeshNormalMaterial()),
             r = Math.PI * 2 / count * i;
@@ -121,32 +181,22 @@ In some cases I will want to rotate the geometry that I am using with a mesh so 
         }
         return group;
     };
- 
-    // Scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
- 
+    //-------- ----------
+    // GROUPS
+    //-------- ----------
     // add groups
-    var group1 = createConeGroup();
+    const group1 = createConeGroup();
     group1.position.set(-4, 0, -4);
     group1.rotation.z = Math.PI / 180 * 90;
     scene.add(group1);
- 
-    var group2 = createConeGroup(Math.PI * 0.5);
+    const group2 = createConeGroup(Math.PI * 0.5);
     group2.position.set(2, 0, 2);
     scene.add(group2);
- 
-    // Camera and Render
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 50);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
     renderer.render(scene, camera);
- 
-}
-    ());
+}());
 ```
 
 ## 3 - The object3d look at method, getting world position, and groups
@@ -156,50 +206,57 @@ One nice feature of the [object3d class is the look at method](/2021/05/13/three
 So if I am in a situation in which I want to use the look at method to set the orientation of a group to a position of something in a group, I will want to get the world location of that object in the group. One way to go about doing this would be to use the [get world position method](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) of the object3d class.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(5, 5));
- 
-// creating a group
-var group = new THREE.Group();
-// creating and adding a pointer mesh to the group
-var geo = new THREE.CylinderGeometry(0, 0.5, 1, 12);
-geo.rotateX(Math.PI * 0.5);
-var pointer = new THREE.Mesh(
+(function(){
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // GROUP AND MESH OBJECTS
+    //-------- ----------
+    const group = new THREE.Group();
+    // creating and adding a pointer mesh to the group
+    const geo = new THREE.CylinderGeometry(0, 0.5, 1, 12);
+    geo.rotateX(Math.PI * 0.5);
+    const pointer = new THREE.Mesh(
         geo,
         new THREE.MeshNormalMaterial());
-pointer.position.set(0, 0, 0);
-group.add(pointer);
-// creating and adding a cube
-var cube = new THREE.Mesh(
+    pointer.position.set(0, 0, 0);
+    group.add(pointer);
+    // creating and adding a cube
+    const cube = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
-cube.position.set(0, 0, 4);
-group.add(cube);
-// box helper for the group
-group.add(new THREE.BoxHelper(group));
-// changing the position of the group to something other that 0,0,0
-group.position.set(-2.0, 0, -2.0);
-// add group to the scene
-scene.add(group);
- 
-// IF I WANT TO HAVE THE POINTER LOOK AT THE CUBE
-// THAT IS A CHILD OF THE GROUP, THEN I WILL WANT TO ADJUST 
-// FOR THAT FOR THIS THERE IS THE getWorldPosition Method
-var v = new THREE.Vector3(0, 0, 0);
-cube.getWorldPosition(v);
-console.log(Object.values(v)); [-2, 0, 2];
-pointer.lookAt(v);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
-camera.position.set(0, 4, 4);
-camera.lookAt(0, 0, 0);
- 
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-renderer.render(scene, camera);
+    cube.position.set(0, 0, 4);
+    group.add(cube);
+    // box helper for the group
+    group.add(new THREE.BoxHelper(group));
+    // changing the position of the group to something other that 0,0,0
+    group.position.set(-2.0, 0, -2.0);
+    // add group to the scene
+    scene.add(group);
+    //-------- ----------
+    // POINTER LOOK
+    //-------- ----------
+    // IF I WANT TO HAVE THE POINTER LOOK AT THE CUBE
+    // THAT IS A CHILD OF THE GROUP, THEN I WILL WANT TO ADJUST 
+    // FOR THAT FOR THIS THERE IS THE getWorldPosition Method
+    const v = new THREE.Vector3(0, 0, 0);
+    cube.getWorldPosition(v);
+    console.log(Object.values(v)); [-2, 0, 2];
+    pointer.lookAt(v);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
 ```
 
 In this example I am once again using the rotate x method of the cone geometry to make it so the point of the cone geometry is line up with the front of the mesh object that is using the cone geometry. I am then adding this cone geometry to a group, along with another child object that is a cube. I am then changing the position of the group so that it is at a location other than the origin. Because I am using the get world position method of the cube to set the values of a vector3 instance and using that with the look at method, this results in the cone pointing to the cube at its location relative to the group, rather than its location relative to world space.
@@ -212,24 +269,33 @@ So then say for example I want to have a point light on top of camera, and a Mes
 
 ```js
 (function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(7, 7));
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 50);
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
     camera.position.set(8, 8, 8);
     camera.lookAt(0, 0, 0);
-    scene.add(camera); // adding the camera to the scene
- 
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // ADD CAMERA TO SCENE
+    //-------- ----------
+    scene.add(camera)
+    //-------- ----------
+    // ADD LIGHT TO CAMERA
+    //-------- ----------
     // positioning a light above the camera
-    var light = new THREE.PointLight();
+    const light = new THREE.PointLight();
     light.position.set(0, 5, 0);
     camera.add(light);
- 
+    //-------- ----------
+    // OBJECTS
+    //-------- ----------
     // positioning a mesh in front of the camera
-    var withCamera = new THREE.Mesh(
+    const withCamera = new THREE.Mesh(
             new THREE.BoxGeometry(.1, .1, .1),
             new THREE.MeshStandardMaterial({
                 color: 0xffffff,
@@ -237,24 +303,19 @@ So then say for example I want to have a point light on top of camera, and a Mes
             }));
     withCamera.position.set(-0.25, .2, -0.75);
     camera.add(withCamera);
- 
     // adding another mesh object directly to the scene
     scene.add(new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshStandardMaterial({
                 color: 0x00ff00
             })));
- 
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // loop
-    var frame = 0,
-    maxFrame = 500;
-    var loop = function () {
-        var per = frame / maxFrame,
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    let frame = 0;
+    const maxFrame = 500;
+    const loop = function () {
+        const per = frame / maxFrame,
         bias = 1 - Math.abs(0.5 - per) / 0.5;
         requestAnimationFrame(loop);
         withCamera.rotation.set(Math.PI * 4 * per,
@@ -266,7 +327,6 @@ So then say for example I want to have a point light on top of camera, and a Mes
         renderer.render(scene, camera);
     };
     loop();
- 
 }
     ());
 ```
@@ -278,84 +338,57 @@ Grouping comes in handy when I want to make a Constructor function that will inc
 For a quick example of this I would place something like this in an external javaScript file called something like model.js:
 
 ```js
-var Model = (function () {
- 
+const Model = (function () {
     // the constructor
-    var Mod = function (opt) {
- 
+    const Mod = function (opt) {
         // this is what will be added to the Scene
         this.group = new THREE.Group;
- 
         // set default, or use what is given
         opt = opt || {};
         this.radius = opt.radius === undefined ? 4 : opt.radius;
         this.count = opt.count === undefined ? 5 : opt.count;
         this.bxSize = opt.bxSize === undefined ? 1 : opt.bxSize;
         this.color = opt.color === undefined ? 0x00ff00 : opt.color;
- 
-        var i = 0,
+        let i = 0,
         bx,
         radian;
         while (i < this.count) {
- 
             bx = new THREE.Mesh(
                     new THREE.BoxGeometry(this.bxSize, this.bxSize, this.bxSize),
                     new THREE.MeshStandardMaterial({
                         color: this.color,
                         emissive: 0x0f0f0f
- 
                     }));
- 
             this.group.add(bx);
- 
             i += 1;
         }
- 
         this.update();
- 
         console.log(this.group);
- 
     };
- 
     // update the group
     Mod.prototype.update = function () {
- 
-        var i = 0,
+        let i = 0,
         bx,
         radian;
         while (i < this.count) {
- 
             bx = this.group.children[i];
- 
             radian = Math.PI * 2 / this.count * i;
- 
             bx.position.set(
- 
                 Math.cos(radian) * this.radius,
                 0,
                 Math.sin(radian) * this.radius);
- 
             bx.lookAt(0, 0, 0);
- 
             i += 1;
- 
         };
- 
     };
- 
     // set radius and update
     Mod.prototype.setRadius = function (radius) {
- 
         this.radius = radius;
         this.update();
- 
     };
- 
     // return the constructor
     return Mod;
- 
-}
-    ());
+}());
 ```
 
 This will give me a model that I can use to create a circle of boxes that all face the origin of the group. I just have to add the group property of an instance of this to the scene, and I can of course make many instances of this model in my scene.
@@ -366,56 +399,41 @@ So I would use it in a main.js file to make something like this:
 
 ```js
 (function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 150);
-    camera.position.set(20, 20, 20);
- 
-    // Orbit Controls
-    //var controls = new THREE.OrbitControls(camera);
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(8, 8, 8);
     camera.lookAt(0, 0, 0);
- 
-    // three instances of the model
-    var mod1 = new Model({
- 
-            count: 8,
-            bxSize: 1,
-            color: 0xff0000
- 
-        });
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // MODEL OBJECTS
+    //-------- ----------
+    const mod1 = new Model({ count: 8, bxSize: 1, color: 0xff0000 });
     scene.add(mod1.group);
- 
-    var mod2 = new Model({
- 
-            count: 16,
-            radius: 8,
-            bxSize: 1
- 
-        });
+    const mod2 = new Model({ count: 16, radius: 8, bxSize: 1});
     scene.add(mod2.group);
- 
-    var mod3 = new Model({
- 
+    const mod3 = new Model({
             count: 32,
             radius: 9,
             bxSize: 1,
             color: 0x0000ff
- 
         });
     mod3.group.rotation.set(Math.PI * 1.5, 0, 0)
     scene.add(mod3.group);
- 
-    // light
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
     scene.add(new THREE.PointLight().add(new THREE.Mesh(
                 new THREE.SphereGeometry(.5, 10, 10),
                 new THREE.MeshBasicMaterial({
                     color: 0xffffff
                 }))));
- 
-    var light = new THREE.PointLight();
+    const light = new THREE.PointLight();
     light.position.set(15, 0, 0);
     light.add(new THREE.Mesh(
             new THREE.SphereGeometry(.5, 10, 10),
@@ -423,34 +441,25 @@ So I would use it in a main.js file to make something like this:
                 color: 0xffffff
             })))
     scene.add(light);
- 
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // loop
-    var frame = 0,
-    maxFrame = 500;
-    var loop = function () {
- 
-        var per = frame / maxFrame,
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    let frame = 0;
+    const maxFrame = 500;
+    const loop = function () {
+        const per = frame / maxFrame,
         bias = Math.abs(.5 - per) / .5,
         r = Math.PI * 2 * per;
- 
         requestAnimationFrame(loop);
         renderer.render(scene, camera);
- 
         // using the setRadius method of the model to change
         // the radius.
         mod1.setRadius(1 + 6 * bias);
- 
         // changing the rotation of the group
         mod1.group.rotation.set(
             Math.PI * 2 * per,
             Math.PI * 4 * per,
             Math.PI * 8 * per);
- 
         // change position of light, and camera
         light.position.set(Math.cos(r) * 15, 0, Math.sin(r) * 15);
         camera.position.set(
@@ -458,16 +467,11 @@ So I would use it in a main.js file to make something like this:
             -50 + 100 * bias,
             Math.sin(r) * 20);
         camera.lookAt(0, 0, 0);
- 
         frame += 1;
         frame = frame % maxFrame;
- 
     };
- 
     loop();
- 
-}
-    ());
+}());
 ```
 
 This results in three instances of the model, each with different radius, count of boxes, and color. I am also changing the state of one of theme in a loop, by calling one of the methods of the model, as well as by directly working with the group instance as it has all the Object3D methods to play with that will effect the group as a whole when used.
