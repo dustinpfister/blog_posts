@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-07 11:08:57
-version: 1.35
+updated: 2022-11-07 11:10:27
+version: 1.36
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -38,7 +38,7 @@ The source code examples that I am writing about in this post can be found in [m
 
 ## 1 - Basic Mesh Group example in three.js
 
-For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh Normal Material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
+For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances, and adding them as children of a group. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh Normal Material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
 
 Once I have my group together I can do something like changing the position, rotation or scale of the group and when I do so it will effect the group as well as all the children of the group. With this example i am just changing the position and rotation of the group, and as I would expect doing so will effect not just the group, but everything that is attached to the group as a child including these method objects.
 
@@ -470,7 +470,7 @@ So I would use it in a main.js file to make something like this:
     ());
 ```
 
-This results in three instances of the model, each with different radius, count of boxes, and color. I am also changing the state of one of theme in a loop, by calling one of the methods of the model, as well as by directly working with the group instance as it has all the [Object3D](/2018/04/23/threejs-object3d/) methods to play with that will effect the group as a whole when used.
+This results in three instances of the model, each with different radius, count of boxes, and color. I am also changing the state of one of theme in a loop, by calling one of the methods of the model, as well as by directly working with the group instance as it has all the Object3D methods to play with that will effect the group as a whole when used.
 
 ## Conclusion
 
