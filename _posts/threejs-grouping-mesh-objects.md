@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-07 10:55:47
-version: 1.33
+updated: 2022-11-07 11:07:28
+version: 1.34
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -19,17 +19,18 @@ Also for one reason or another it is often a good idea to have a way to group tw
 
 ## Groups in threejs and what else to know
 
-This is not a post on three.js for beginners, I have a post for that, and if you are still fairly to threejs you might want to [start by reading some kind of getting started post on threejs first](/2018/04/04/threejs-getting-started/). The main focus in this post has to do with creating a group of two or more or more [Mesh Object](/2018/05/04/threejs-mesh/) instances to create a single Group that can then be worked with by itself in a scene. These groups of objects can from complex shapes composed of many mesh objects using a collection of built in geometry constructors and materials. So then I assume that you have at least a basic working knowledge of three.js, and of course javaScript in general. 
+If you are still fairly new to threejs you might want to [start by reading some kind of getting started post on threejs first](/2018/04/04/threejs-getting-started/). The main focus in this post has to do with creating a group of two or more [Mesh Object](/2018/05/04/threejs-mesh/) instances to create a single Group that can then be worked with by itself in a scene. These groups of objects can from complex shapes composed of many mesh objects using a collection of built in geometry constructors and materials. I assume that you have at least a basic working knowledge of three.js, and of course javaScript in general, but regardless of where you are at I will be going over a few things in this section that you might want to read up on before hand. 
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/3JW--vfkxPg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
 ### THREE.Object3D vs THREE.Group
 
-When it comes to grouping two ore more Mesh Objects together it may be preferable to use the Group constructor in place of just using Object3D by itself. However as far as I can tell there is not much of any difference other than it makes the readability of your code more clear as to what the object is. The fat of the matter is that when it comes to grouping things together such a task can be done with any object that is based off the Object3d class. This includes Groups, Mesh objects, Cameras, various helpers, and even a whole Scene object.
+When it comes to grouping two ore more Mesh Objects together it may be preferable to use the Group constructor in place of just using [Object3D by itself](/2018/04/23/threejs-object3d/). However as far as I can tell there is not much of any difference other than it makes the readability of your code more clear as to what the object is for. The fact of the matter is that when it comes to grouping things together such a task can be done with any object that is based off the Object3d class really. This includes Groups, Mesh objects, Cameras, various helpers, and even a whole Scene object for that matter.
 
 ### Version numbers matter
 
-I also often try to mention that three.js is a project where the version number matters a great deal, when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91). The last time I came around to doing a little editing of this post I was able to still get all these examples to work okay with [r135 as well](https://github.com/mrdoob/three.js/releases/tag/r135).
+I also often try to mention that three.js is a project where the version number matters a great deal as code breaking changes are made all the time.  With that said when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91). When it comes to the last time I came around to doing a little editing of this post I was able to still get all these examples to work okay with [r135 as well](https://github.com/mrdoob/three.js/releases/tag/r135).
 
 ### The source code examples in this post are on Github
 
