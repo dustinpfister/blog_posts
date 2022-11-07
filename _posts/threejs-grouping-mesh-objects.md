@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-07 12:37:26
-version: 1.37
+updated: 2022-11-07 12:45:37
+version: 1.38
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -38,7 +38,13 @@ The source code examples that I am writing about in this post can be found in [m
 
 ## 1 - Basic examples of Groups of Mesh objects in threejs
 
-### 1.1 - Cretaing a group and adding mesh children to it.
+In this section I will be going over a number of basic examples of the THREE.Group constructor function in threejs and while doing so I will also be touching base on a whole lot of other topics in the process. Much of what I cover here will also come into play with the more advanced examples later in the post where I really start to get into some things that are a bit interesting when it comes to making cool projects that are collections of mesh objects.
+
+However before we get into the good stuff we have to get the hello world type examples out of the way when it comes to groups, so lets get to it.
+
+### 1.1 - Creating a group and adding mesh children to it.
+
+For this very first basic example I am just creating a group, adding it to the scene, and adjusting values for the position and rotation attributes of the group. I am then using a simple make cube helper function to add mesh objects to the group. When doing so the position values for the mesh objects will be relative to the position of the group and not the scene object, or world space. More on world space and scene objects later in this post.
 
 ```js
 (function () {
@@ -88,9 +94,7 @@ The source code examples that I am writing about in this post can be found in [m
 
 ### 1.2 - Mesh Objects Positioned in a circle using Math.cos and Math.sin
 
-For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances, and adding them as children of a group. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh Normal Material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
-
-Once I have my group together I can do something like changing the position, rotation or scale of the group and when I do so it will effect the group as well as all the children of the group. With this example I am just changing the position and rotation of the group, and as I would expect doing so will effect not just the group, but everything that is attached to the group as a child including these method objects.
+For this group example I am creating a group of mesh objects where each mesh objects is positioned in a circle like pattern. There are a number of ways to do this as I will be getting to later examples, but for now I am making use of the core java Script Math.cos and Math.sin methods to do this.
 
 ```js
 (function () {
