@@ -5,13 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 771
-updated: 2021-01-19 16:45:29
-version: 1.15
+updated: 2022-11-08 13:28:43
+version: 1.16
 ---
 
 I would like to start work on a real python project, and one of many things that I think I should get solid with python before doing so is to learn how to write [classes in python](https://docs.python.org/3.7/tutorial/classes.html). So for todays post I am going to go over some simple class examples that make use of the various features of classes.
 
-I was able to get up and running with classes pretty quickly with python, but I think I should mention that I do have years of experience programing in other languages mainly javaScript. If you are pretty solid with how classes work in javaScript then you might also find this a quick painless process also because what we are doing here is just learning how to do what we all ready know a slightly different way.
+I was able to get up and running with classes pretty quickly with python, but I think I should mention that I do have years of experience programing in other languages, well for the most part just javaScript. If you are pretty solid with how classes work in javaScript then you might also find this a quick painless process also because what we are doing here is just learning how to do what we all ready know a slightly different way.
 
 However if you have no experience with classes to begin with then I guess I will need to mention some kind of explanation of what a class is. One way of doing so might be to say that a class is an object that is not just an object but a class of an object. There is the class itself that is used to create an instance of a class, and then there is an object that is a said instance of the class. There are properties of the Class and then there are properties of just an instance of a class.
 
@@ -216,3 +216,4 @@ for prop in x:
 ## 4 - Conclusion
 
 A Class is then a way to have a way to create an object that is not just an object but a kind of object. When it comes to having more than one kind of object there are properties that might be the same across more than one instance of a Class, but there are often at least a few properties that need to be independent from all others.
+
