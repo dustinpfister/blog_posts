@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-09 06:41:41
-version: 1.39
+updated: 2022-11-09 07:10:24
+version: 1.40
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -144,7 +144,11 @@ For this group example I am creating a group of mesh objects where each mesh obj
 
 In some cases I will want to [rotate the geometry](/2021/05/20/threejs-buffer-geometry-rotation/) that I am using with a mesh so that the front of the geometry will line up with the front of the mesh object. This is so that things will look the way I want it to when using something like the object3d [look at method](/2021/05/13/threejs-object3d-lookat/) for example. 
 
-So then say I have a group of cone geometries and I want the point of the cones to face the center of the group, or maybe I want them to face away from the center. To do this I will just want to call the rotateX method of the buffer geometry class instance created with the cone geometry constructor. When calling rotateX I need to pass a radian value that will be the rotation delta on the X axis.
+### 2.1 - Starting out with the cone geometry
+
+So then say I have a group of cone geometries and I want the point of the cones to face the center of the group, or maybe I want them to face away from the center. To do this I will just want to call the rotateX method of the buffer geometry class instance created with the cone geometry constructor. When calling rotateX I need to pass a radian value that will be the rotation delta on the X axis. The end result will then be the geometry adjusted by that amount in radius for the X axis.
+
+For this example I am then creating a group of mesh objects each of which use the cone geometry along with the normal material. I made a helper function that when called will create just a single mesh object with the cone geometry set up just the way that I like it. I then have another helper function that will create and return a group and each child of the group will be a mesh object created with this create cone helper.
 
 ```js
 (function () {
@@ -162,27 +166,30 @@ So then say I have a group of cone geometries and I want the point of the cones 
     //-------- ----------
     // HELPERS
     //-------- ----------
-    const createConeGroup = function (coneRotation) {
-        coneRotation = coneRotation === undefined ? Math.PI * 1.5 : coneRotation;
-        const group = new THREE.Group(), radius = 2,count = 8;
+    // create a single cone and rotate the geo once
+    const createConeMesh = () => {
+        const geo = new THREE.ConeGeometry(0.5, 1, 10, 10);
+        geo.rotateX(Math.PI * 0.5);
+        const cone = new THREE.Mesh(
+            geo,
+            new THREE.MeshNormalMaterial());
+        return cone;
+    };
+    // create a cone circle
+    const createConeCircle = function (radius, count) {
+        const group = new THREE.Group();
         let i = 0;
         while (i < count) {
             // creating a mesh
-            const geo = new THREE.ConeGeometry(0.5, 1, 10, 10);
-            // ROTATING THE CONE GEOMERTY
-            geo.rotateX(coneRotation);
-            const bx = new THREE.Mesh(
-                    geo,
-                    new THREE.MeshNormalMaterial()),
-            r = Math.PI * 2 / count * i;
-            // set position of mesh
-            bx.position.set(
-                Math.cos(r) * radius,
-                0,
-                Math.sin(r) * radius);
-            bx.lookAt(0, 0, 0);
+            const cone = createConeMesh();
+            // position the mesh
+            const vs = new THREE.Vector3(0, 0, 1);
+            const e = new THREE.Euler(0, Math.PI / 180 * 360 * (i / count), 0 );
+            cone.position.copy(vs).applyEuler(e).multiplyScalar( radius );
+            // set look at point
+            cone.lookAt(0, 0, 0);
             // add mesh to the group
-            group.add(bx);
+            group.add(cone);
             i += 1;
         }
         return group;
@@ -191,19 +198,16 @@ So then say I have a group of cone geometries and I want the point of the cones 
     // GROUPS
     //-------- ----------
     // add groups
-    const group1 = createConeGroup();
-    group1.position.set(-4, 0, -4);
-    group1.rotation.z = Math.PI / 180 * 90;
+    const group1 = createConeCircle(2, 8);
     scene.add(group1);
-    const group2 = createConeGroup(Math.PI * 0.5);
-    group2.position.set(2, 0, 2);
-    scene.add(group2);
     //-------- ----------
     // RENDER
     //-------- ----------
     renderer.render(scene, camera);
 }());
 ```
+
+When it comes to setting the position of each cone so that they are positioned in a circle around the origin of the group I could use Math.con and Math.sin. However there are a whole lot or great tools to work with in threejs of course when it comes to the Vector3 and Euler classes. With that said here I am using the copy, applyEuler, and multiplyScalar methods to position the mesh objects when creating the mesh objects.
 
 ## 3 - The object3d look at method, getting world position, and groups
 
