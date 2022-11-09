@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-07 12:45:37
-version: 1.38
+updated: 2022-11-09 06:41:41
+version: 1.39
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -142,7 +142,9 @@ For this group example I am creating a group of mesh objects where each mesh obj
 
 ## 2 - Rotation of geometry to make it line up with the front of a mesh object
 
-In some cases I will want to rotate the geometry that I am using with a mesh so that the front of the geometry will line up with the front of the mesh object, so that things will look the way I want it to when using something like the object3d look at method. For example say I have a group of cone geometries and I want the point of the cones to face the center of the group, or maybe I want them to face away from the center. To do this I will just want to call the rotate x method of the buffer geometry class instance that is the cone geometry and adjust the rotation alone that axis so that it is the way it should be relative to the face of the mesh object. When doing this I will typically just want to rotate the geometry once, and then use th object3d level properties and methods to adjust orientation of the mesh objects.
+In some cases I will want to [rotate the geometry](/2021/05/20/threejs-buffer-geometry-rotation/) that I am using with a mesh so that the front of the geometry will line up with the front of the mesh object. This is so that things will look the way I want it to when using something like the object3d [look at method](/2021/05/13/threejs-object3d-lookat/) for example. 
+
+So then say I have a group of cone geometries and I want the point of the cones to face the center of the group, or maybe I want them to face away from the center. To do this I will just want to call the rotateX method of the buffer geometry class instance created with the cone geometry constructor. When calling rotateX I need to pass a radian value that will be the rotation delta on the X axis.
 
 ```js
 (function () {
