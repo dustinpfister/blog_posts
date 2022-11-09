@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-09 07:10:24
-version: 1.40
+updated: 2022-11-09 08:52:52
+version: 1.41
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -208,6 +208,97 @@ For this example I am then creating a group of mesh objects each of which use th
 ```
 
 When it comes to setting the position of each cone so that they are positioned in a circle around the origin of the group I could use Math.con and Math.sin. However there are a whole lot or great tools to work with in threejs of course when it comes to the Vector3 and Euler classes. With that said here I am using the copy, applyEuler, and multiplyScalar methods to position the mesh objects when creating the mesh objects.
+
+### 2.2 - Using an update method for object3d values, and just rotating the geometry once
+
+This is now just an improved version of the first example in which I am using cone geometry for a mesh, and rotating the geometry just once. This time I have broke things down and took code that I had in my create method and pulled it into a new update method that I call to set things up for the first time in the create method. However I am also using it outside of the create method as well as a way to update the state of things with the group by just calling the update method, passing the group as the first argument, and then passing an alpha value that will adjust things in terms of a value from 0 to 1. I often like to create my update methods for projects such as this this way where I have a whole bunch of options when it comes to creating a group, or objects of some kind, and then pass that object to an update method where there is just one main alpha value that will set the state of the group.
+
+The main thing to keep in mind here as far as the rotation of the cones is concerned though is that I am just rotation the geometry of the cones once. After that any additional updates to the rotation of the cones is done by calling the look at method which will effect the object3d state of rotation rather than the geometry. 
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // create a single cone and rotate the geo once
+    const createConeMesh = ( length, radius ) => {
+        const geo = new THREE.ConeGeometry(radius, length, 10, 10);
+        geo.rotateX(Math.PI * 0.5);
+        const cone = new THREE.Mesh(
+            geo,
+            new THREE.MeshNormalMaterial());
+        return cone;
+    };
+    // update a group
+    const coneCircleUpdate = (group, alpha ) => {
+        alpha = alpha || 0;
+        // position the mesh
+        const count = group.children.length;
+        const gud = group.userData;
+        let i = 0;
+        while (i < count) {
+            const cone = group.children[i];
+            const vs = new THREE.Vector3(0, 0, 1);
+            const e = new THREE.Euler(0, Math.PI / 180 * 360 * (i / count), 0 );
+            cone.position.copy(vs).applyEuler(e).multiplyScalar( gud.radius[0] + gud.radius[1] * alpha );
+            // set look at point
+            cone.lookAt(gud.v3_lookat);
+            i += 1;
+        };
+    };
+    // create a cone circle
+    const createConeCircle = function (opt) {
+        opt = opt || {};
+        opt.count = opt.count === undefined ? 4 : opt.count;
+        opt.cone = opt.cone || [1, 0.5];
+        const group = new THREE.Group();
+        const gud = group.userData;
+        gud.v3_lookat = opt.v3_lookat || new THREE.Vector3();
+        gud.radius = opt.radius === undefined ? [1, 1] : opt.radius;
+        let i = 0;
+        while (i < opt.count) {
+            // creating a mesh
+            const cone = createConeMesh.apply(null, opt.cone);
+            // add mesh to the group
+            group.add(cone);
+            coneCircleUpdate(group, 0);
+            i += 1;
+        }
+        return group;
+    };
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const mesh = new THREE.Mesh( new THREE.SphereGeometry(0.5, 30, 30), new THREE.MeshNormalMaterial());
+    mesh.position.set(2, 4, 0);
+    scene.add(mesh)
+    //-------- ----------
+    // GROUPS
+    //-------- ----------
+    const opt = {count: 8, radius: [2, 3], v3_lookat: mesh.position, cone: [2,0.5] };
+    const group1 = createConeCircle(opt);
+    coneCircleUpdate(group1, 0);
+    scene.add(group1);
+    const group2 = createConeCircle(opt);
+    coneCircleUpdate(group2, 1);
+    scene.add(group2);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
 
 ## 3 - The object3d look at method, getting world position, and groups
 
