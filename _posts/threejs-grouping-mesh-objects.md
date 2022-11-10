@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-09 08:52:52
-version: 1.41
+updated: 2022-11-10 13:23:27
+version: 1.42
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -133,6 +133,68 @@ For this group example I am creating a group of mesh objects where each mesh obj
     // changing position and rotation of the group
     group.position.set(-4, 0, -4);
     group.rotation.z = Math.PI / 180 * 90;
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+### 1.3 - The parent property of an object3d based object
+
+The [parent property of an object3d](/2021/06/02/threejs-object3d-parent/) based object will be a reference to an object that is the parent of the current object3d based object.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 2.5, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 1);
+    dl.position.set(1, 3, 2);
+    scene.add(dl);
+    //-------- ----------
+    // HELPER
+    //-------- ----------
+    const makeCube = (size, x, y, z) => { 
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(size, size, size),
+            new THREE.MeshPhongMaterial({color: new THREE.Color(1,1,1)}));
+        mesh.position.set(x, y, z);
+        return mesh;
+    };
+    //-------- ----------
+    // CREATING A GROUP
+    //-------- ----------
+    const group = new THREE.Group();
+    scene.add(group);
+    //-------- ----------
+    // ADDING MESH OBJECTS TO THE GROUP
+    //-------- ----------
+    const mesh = makeCube(3, 0, 0, 0);
+    const meshChild = makeCube(1.5, 0, 3, 0);
+    mesh.add( meshChild );
+    mesh.add( makeCube(1.5, 0, -3, 0) );
+    mesh.add( makeCube(1.5, 3, 0, 0) );
+    mesh.add( makeCube(1.5, -3, 0, 0) );
+    group.add( mesh );
+    //-------- ----------
+    // GER REFS BY PARENT PROP
+    //-------- ----------
+    meshChild.material.color = new THREE.Color(1, 0, 0);
+    meshChild.parent.material.color = new THREE.Color(0, 1, 0);
+    meshChild.parent.parent.position.set(-5, 0, -5);
+    meshChild.parent.parent.rotation.y = Math.PI / 180 * 45;
     //-------- ----------
     // RENDER
     //-------- ----------
