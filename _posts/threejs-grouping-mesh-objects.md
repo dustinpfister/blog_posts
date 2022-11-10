@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-10 13:23:27
-version: 1.42
+updated: 2022-11-10 13:52:59
+version: 1.43
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -142,7 +142,7 @@ For this group example I am creating a group of mesh objects where each mesh obj
 
 ### 1.3 - The parent property of an object3d based object
 
-The [parent property of an object3d](/2021/06/02/threejs-object3d-parent/) based object will be a reference to an object that is the parent of the current object3d based object.
+The [parent property of an object3d](/2021/06/02/threejs-object3d-parent/) based object will be a reference to an object that is the parent of the current object3d based object. So then if I have a scene object and then I add a group to that scene object the parent property of the group should be a ref to the scene object. Also If I add a mesh object as a child of the group the parent property of that mesh should then be a reference to the group and the same could then be said about any additional mesh object that I may add as a child of that mesh object, and so forth.
 
 ```js
 (function () {
