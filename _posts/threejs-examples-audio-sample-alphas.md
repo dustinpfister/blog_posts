@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1013
-updated: 2022-11-11 09:02:07
-version: 1.9
+updated: 2022-11-11 09:04:50
+version: 1.10
 ---
 
 I have been making a few [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) videos lately in which I am testing out how to go about syncing video with audio. Thus far though I am just working out the timing in terms of time stamps and duration and thus I am not taking into account any kind of actual audio sample data to adjust things that are going on when rendering my frames. However I have found that I can [export audio sample data](https://manual.audacityteam.org/man/sample_data_export.html) in an HTML file format when using [Audacity](https://en.wikipedia.org/wiki/Audacity_%28audio_editor%29) to work out the audio tracks that I want in this video. So I can adjust the sample rate so that I have just one sample per frame, and then I can export the sample data in an HTML file in which I have at least one sample point for each frame of the video. I can then also do this on a track by track basis, so that I have an HTML file of sample data for say drums, then another for bass, and yet another of samples, and so forth.
@@ -18,7 +18,7 @@ I then just need to make another [threejs examples](/2021/02/19/threejs-examples
 
 ## 1 - The first revision of the module
 
-In this section I will be going over the source code of the first revision of the module as well as a few demos of the module as well.
+In this section I will be going over the source code of the first revision of the module as well as a few demos of the module as well. The main goal with this first version is to just simply load one or more html files that contain sample data, and create a result object. This result object will then have processed data for each file at the ready to work with by making use of additional public methods, or just directly working with the arrays of sample data when making a video project.
 
 ### 1.0 - The source code of the module
 
