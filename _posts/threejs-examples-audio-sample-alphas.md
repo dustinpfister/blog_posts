@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1013
-updated: 2022-11-11 07:51:27
-version: 1.6
+updated: 2022-11-11 07:56:32
+version: 1.7
 ---
 
 I have been making a few [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) videos lately in which I am testing out how to go about syncing video with audio. Thus far though I am just working out the timing in terms of time stamps and duration and thus I am not taking into account any kind of actual audio sample data to adjust things that are going on when rendering my frames. However I have found that I can [export audio sample data](https://manual.audacityteam.org/man/sample_data_export.html) in an HTML file format when using [Audacity](https://en.wikipedia.org/wiki/Audacity_%28audio_editor%29) to work out the audio tracks that I want in this video. So I can adjust the sample rate so that I have just one sample per frame, and then I can export the sample data in an HTML file in which I have at least one sample point for each frame of the video. I can then also do this on a track by track basis, so that I have an HTML file of sample data for say drums, then another for bass, and yet another of samples, and so forth.
@@ -338,7 +338,7 @@ The idea came to me that in some cases I might want to have an array where each 
 
 ### 1.3 - Sample Mean method to help smooth things out
 
-I have found that often the reactions are a little jumpy so I thought that maybe one way to go about something things out would be to have a method where I am going by not just a current sample point, but also a mean of the current sample as well as a few samples back. This seems to work well when it comes to a desire to smoothing things out a little.
+I have found that often the reactions are a little jumpy, that is that the scale for example will jump all the way up and then back down often over the course of just one or two frames. I am thinking that a better visual effect is the the scale will jump up, but then slowly fall bak down over at least a little time. So I thought that maybe one way to go about something things out would be to have a method where I am going by not just a current sample point, but also a mean of the current sample as well as a few samples back. This seems to work well when it comes to a desire to smoothing things out a little.
 
 ```js
 (function(){
