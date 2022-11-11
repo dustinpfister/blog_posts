@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1013
-updated: 2022-11-11 07:38:05
-version: 1.4
+updated: 2022-11-11 07:49:17
+version: 1.5
 ---
 
 I have been making a few [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) videos lately in which I am testing out how to go about syncing video with audio. Thus far though I am just working out the timing in terms of time stamps and duration and thus I am not taking into account any kind of actual audio sample data to adjust things that are going on when rendering my frames. However I have found that I can [export audio sample data](https://manual.audacityteam.org/man/sample_data_export.html) in an HTML file format when using [Audacity](https://en.wikipedia.org/wiki/Audacity_%28audio_editor%29) to work out the audio tracks that I want in this video. So I can adjust the sample rate so that I have just one sample per frame, and then I can export the sample data in an HTML file in which I have at least one sample point for each frame of the video. I can then also do this on a track by track basis, so that I have an HTML file of sample data for say drums, then another for bass, and yet another of samples, and so forth.
@@ -131,6 +131,8 @@ The main method of interest for getting started with this is the load public met
 
 ### 1.1 - Using two tracks
 
+For this demo I wanted to test out using more than one audio sample data file so I am calling the load method of the module and passing an array of two files one for a base line and another for drums. I am then using the final audio data to effect the scale position and rotation of a mesh of a cube.
+
 ```js
 (function(){
     // ---------- ----------
@@ -230,7 +232,9 @@ The main method of interest for getting started with this is the load public met
 }());
 ```
 
-### 1.2 - AlphaSum helper example
+### 1.2 - Alpha Sum helper example
+
+The idea came to me that in some cases I might want to have an array where each element is the sum of the last element plus the current element. I can then get the max value of this array of values and use tht as a way to get an alpha value. This can then be used in situations in which I want to use sample data to effect something over a long period of time. For example say I want to move a box form one side of a scene to the other, over the length of the full duration of a video, but do so in sync with an audio track of a drum beat.
 
 ```js
 (function(){
