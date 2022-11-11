@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1013
-updated: 2022-11-11 08:02:47
-version: 1.8
+updated: 2022-11-11 09:02:07
+version: 1.9
 ---
 
 I have been making a few [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) videos lately in which I am testing out how to go about syncing video with audio. Thus far though I am just working out the timing in terms of time stamps and duration and thus I am not taking into account any kind of actual audio sample data to adjust things that are going on when rendering my frames. However I have found that I can [export audio sample data](https://manual.audacityteam.org/man/sample_data_export.html) in an HTML file format when using [Audacity](https://en.wikipedia.org/wiki/Audacity_%28audio_editor%29) to work out the audio tracks that I want in this video. So I can adjust the sample rate so that I have just one sample per frame, and then I can export the sample data in an HTML file in which I have at least one sample point for each frame of the video. I can then also do this on a track by track basis, so that I have an HTML file of sample data for say drums, then another for bass, and yet another of samples, and so forth.
@@ -25,6 +25,8 @@ In this section I will be going over the source code of the first revision of th
 The main method of interest for getting started with this is the load public method of the module. When I call this I give a base URL where I store the sample data files that I exported from Audacity. On top of giving a base URL I then give a list of HTML files that I would like to load from that base url. The file names for these files do very much matter a lot as the string values of the file names are what i will be using for key values of the resulting object that will contain the final sample objects.
 
 I am using the THREE.Fileloader to load the HTML files of sample data, and all seems to go well with that, but then I had to find a way to pare the HTML into a workable DOM Object. When it comes to this there must be some kind of browser built in way to do this sort of thing now, and yes there is, what I want is the [DOMParser](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser). So I pass the HTML string to the DOMParser and the returned result is then a DOM object that I can use the variousDOM methods on such as [query selector all](/2020/06/23/js-document-queryselector/) to help me extract the sample data that I want into an array.
+
+When it comes to parsing the sample data into an array I am all ready sure that I will want more than one array for a sample object actually. I do not need to get all this nailed down for this first revision just yet as I am sure much of this I can leave for future revisions. So for now in terms of the core of the module at least I will have a raw, and abs array. As the name suggests the raw array is just the raw data extracted from what is in the html file, while the abs array is short for absolute value in which I am creating an array in which all the numbers are positive. When it comes to anything and everything else I can work methods that create other arrays from these arrays when making my demos for this module. What i work out and refine with them might then be baked into future revisions.
 
 ```js
 // sample_alphas.js - r0 - from threejs-examples-audio-sample-alphas
