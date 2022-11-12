@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2022-11-12 12:34:47
-version: 1.27
+updated: 2022-11-12 12:40:13
+version: 1.28
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with [materials](/2018/04/30/threejs-materials/) that respond to light such as the [standard material](/2021/04/27/threejs-standard-material/) it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. Ambient Light differs from [other light sources](/2022/02/25/threejs-light/) in that it will evenly illuminate materials evenly from all directions, actually direction is not really even taken into account with this kind of light source. By adding an ambient light it will just simply light up all surfaces of all mesh objects that are skinned with a material that will respond to light when it is added to the scene object. 
@@ -23,13 +23,19 @@ This is a post on adding [ambient light](https://en.wikipedia.org/wiki/Shading#A
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/tZYqkZYOK2I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### What version of three.js are you using?
-
-When I first wrote this post I was using r98 of three.js, and the last time I cam a round to do a little updating of the code examples I was using three.js r125 of three.js. I do not thing that much has changed with ambient light in three.js sense then, but a whole lot has changed with three.js. There is still a lot chaining with three.js real fast, so it is possible that some of these code examples here might break at some point in the future for this reason.
-
 ### Check your materials, and know your options when it comes to materials
 
 One thing to keep in might with light in three.js is that not all materials will work with light sources. The basic material for example will not work with light, and the name can be said of the Normal material and the depth material. However materials like the standard material, Lamber material, and Phong material will work with light sources. There are subtle differences between these materials, and other note worth considerations when it comes to performance. However I generally like to go with the standard material when it comes to getting into using light with a project.
+
+### Source code examples and much more are on Github
+
+The source code examples that I am writing about here can also be found in my [test threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-ambientlight) reposatory up on Github. This is also where I part the source code for my [many other posts on threejs](/categories/three-js/) as well.
+
+### What version of three.js are you using?
+
+When I first wrote this post I was using r98 of three.js, and the last time I cam a round to do a little updating of the code examples I was using three.js r146 of three.js. I do not think that much has changed with ambient light in three.js sense then, but a whole lot has changed with threejs outside of ambient light for sure. 
+
+There is still a lot changing with threejs real fast, so it is possible that some of these code examples here might break at some point in the future for this reason. So always be mindful of what revision number of the librray you are using.
 
 ## 1 - Basic example of ambient light
 
