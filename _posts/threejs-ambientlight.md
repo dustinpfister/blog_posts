@@ -1,12 +1,12 @@
 ---
-title: Setting some ambient light in three.js
+title: Adding Ambient Light, as well as other options in threejs
 date: 2018-11-02 20:04:00
 tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2022-11-12 12:40:13
-version: 1.28
+updated: 2022-11-12 12:41:13
+version: 1.29
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with [materials](/2018/04/30/threejs-materials/) that respond to light such as the [standard material](/2021/04/27/threejs-standard-material/) it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. Ambient Light differs from [other light sources](/2022/02/25/threejs-light/) in that it will evenly illuminate materials evenly from all directions, actually direction is not really even taken into account with this kind of light source. By adding an ambient light it will just simply light up all surfaces of all mesh objects that are skinned with a material that will respond to light when it is added to the scene object. 
