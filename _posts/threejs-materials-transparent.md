@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-11-13 10:30:01
-version: 1.36
+updated: 2022-11-13 10:33:29
+version: 1.37
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. Once I have the transparency property value of a material set to true, it is then just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material.
@@ -20,9 +20,13 @@ However there might be a bit more to write about when it comes to a few more add
 
 ## Making a mesh transparent, and what else to know
 
-In this post I am mainly writing about the transparent and opacity properties of materials as a way to adjust the transparency of a material of a [mesh object](/2018/05/04/threejs-mesh/) in the javaScript library known as three.js. However there are a whole lot of other ways to go about making a mesh object visible or not, and there are also a lot of other things that you should be aware of before continuing to read the content of this post. 
+In this post I am mainly writing about the transparent and opacity properties of materials as a way to adjust the transparency of a material of a [mesh object](/2018/05/04/threejs-mesh/) in the javaScript library known as three.js. However there are a whole lot of other ways to go about making a mesh object visible or not, and there are also a lot of other things that you should be aware of before continuing to read the full content of this post. 
 
 I will not be getting into the basics of how to [get started with three.js](/2018/04/04/threejs-getting-started/), and I also assume that you have a [fair amount of experience with client side javaScript in general](/2018/11/27/js-getting-started/) as well. In this section I will not be going over every little detail that you should know before hand of course, but I can take a moment to write about some things that you might want to look into more first if you have not done so all ready.
+
+### The visible property of the Object3d class
+
+If I want to just make a mesh object, or just about any display object based off of the object3d class not visible for a while I can always just set the [visible boolean of the object](/2021/05/24/threejs-object3d-visible/) to false. There are also a number of other topics to cover when it comes to making an object completely not visible or not beyond just that of the visibility boolean of an object3d based object. For example there is adding one or more mesh objects to one or more [groups](/2018/05/16/threejs-grouping-mesh-objects/) and then adding and removing the groups to the main scene object that is used with the render function of a renderer as needed. Yet another option for this would be the [layers property of the Object3d class](/2021/06/04/threejs-object3d-layers/) also which is yet another option for that sort of thing.
 
 ### The source code examples in this post are on Github
 
@@ -32,9 +36,6 @@ The source code examples that I am writing about in this post can be found in my
 
 When I first wrote this post I was using version r127 of three.js, and the last time I cam around to doing a little editing I made sure the examples still work okay with r135. Code breaking changes might be made to three.js at some point in the future that might cause many of these examples to not work any more. Always be mindful of what the version of three.js is that you are using, and this is also something to always keep in mind when working with javaScript libraries in general actually it is just that threejs moves pretty fast, and the public API keeps changing often.
 
-### The visible property of the Object3d class
-
-If I want to just make a mesh object, or just about any display object based off of object3d not visible for a while I can always just set the [visible boolean of the object](/2021/05/24/threejs-object3d-visible/) to false. There are also a number of other topics to cover when it comes to making an object completely not visible or not beyond just that of the visibility boolean of an object3d based object and the transparency  and opacity properties of materials. For example there is adding one or more mesh objects to one or more [groups](/2018/05/16/threejs-grouping-mesh-objects/) and then adding and removing the groups to the main scene object that is used with the render function of a renderer as needed. Yet another option for this would be the [layers property of the Object3d class](/2021/06/04/threejs-object3d-layers/) also.
 
 ## 1 - Basic Transparency of the whole mesh with the Basic Material
 
