@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-11-14 10:10:03
-version: 1.39
+updated: 2022-11-14 10:20:55
+version: 1.40
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. Once I have the transparency property value of a material set to true, it is then just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material.
@@ -84,7 +84,13 @@ So now to start out with a basic example of transparency in threejs, and as such
 
 ## 2 - Using canvas elements to create a texture to use with the map option
 
+On top of setting the whole material as transparent there is also working out what the alpha channel values of a texture should be when making the texture for the map option of the material. I could load an external texture in the form of a PNG image which supports alpha channel transparency. However another option that involves just JavaScript code would be to use canvas textures.
 
+When it comes to drawing to a canvas element with the 2d drawing context there are a number of options when it comes to setting the color for the fill and stroke style. One option is to use RGBA which allows for me to set what the values should be fore red, green, blue, and the alpha channel. So in this example I am using this when drawing to the canvas element.
+
+Just as before from the beginning I am going to want to set the transparent option of the material to true. However if I want I can leave the opacity of the material to 1. That is if I want to do everything with transparency with the 2d drawing context alone anyway, otherwise I might want to set it to something else.
+
+There are some other options that I might want to set when setting up the material that I use with this canvas texture such as the side property of the material. If I am making a texture that I would like to show up an both sides of a face then I will want to set it to THREE.DoubleSide rather than the default THREE.FrontSide constant. 
 
 ```js
 (function () {
