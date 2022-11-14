@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-11-14 10:20:55
-version: 1.40
+updated: 2022-11-14 13:47:08
+version: 1.41
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. Once I have the transparency property value of a material set to true, it is then just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material.
@@ -15,7 +15,7 @@ However there might be a bit more to write about when it comes to a few more add
 
 <!-- more -->
 
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/nUybyQbaFtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/0DaDB0CTvbY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Making a mesh transparent, and what else to know
@@ -35,6 +35,8 @@ The source code examples that I am writing about in this post can be found in my
 ### Version Numbers matter with three.js
 
 When I first wrote this post I was using version r127 of three.js, and the last time I cam around to doing a little editing I made sure the examples still work okay with r135. Code breaking changes might be made to three.js at some point in the future that might cause many of these examples to not work any more. Always be mindful of what the version of three.js is that you are using, and this is also something to always keep in mind when working with javaScript libraries in general actually it is just that threejs moves pretty fast, and the public API keeps changing often.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/nUybyQbaFtk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## 1 - Basic Transparency of the whole mesh with the Basic Material
