@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2022-08-10 11:12:11
-version: 1.53
+updated: 2022-11-14 15:39:48
+version: 1.54
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -147,21 +147,27 @@ There is then the position attribute, the normals attribute and then one more ma
 
 ```js
 (function () {
+    //-------- ----------
     // SCENE, CAMERA, RENDERER, LIGHT
-    var scene = new THREE.Scene();
+    //-------- ----------
+    const scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(10, 10));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
     camera.position.set(0, 0.5, 3);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    var dl = new THREE.DirectionalLight(0xffffff, 1);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 1);
     dl.position.set(1, 3, 2)
     scene.add(dl);
- 
-    // MESH with GEOMETRY, and Normal MATERIAL
-    var geometry = new THREE.BufferGeometry();
-    var vertices = new Float32Array([
+    //-------- ----------
+    // GEOMETRY
+    //-------- ----------
+    const geometry = new THREE.BufferGeometry();
+    const vertices = new Float32Array([
                 0, 0, 0,
                 1, 0, 0,
                 1, 1, 0
@@ -171,39 +177,47 @@ There is then the position attribute, the normals attribute and then one more ma
     // compute vertex normals
     geometry.computeVertexNormals();
     // creating a uv
-    var uvs = new Float32Array([
-                0, 1, 1, 1
+    const uvs = new Float32Array([
+                0, 0,
+                1, 0,
+                1, 1
             ]);
     geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
-    // data texture
-    var width = 4,
+    //-------- ----------
+    // TEXTURE
+    //-------- ----------
+    const width = 4,
     height = 4;
-    var size = width * height;
-    var data = new Uint8Array(4 * size);
+    const size = width * height;
+    const data = new Uint8Array(4 * size);
     for (let i = 0; i < size; i++) {
-        var stride = i * 4;
-        var v = Math.floor(THREE.MathUtils.seededRandom() * 255);
+        const stride = i * 4;
+        const v = Math.floor(THREE.MathUtils.seededRandom() * 255);
         data[stride] = v;
         data[stride + 1] = v;
         data[stride + 2] = v;
         data[stride + 3] = 255;
     }
-    var texture = new THREE.DataTexture(data, width, height);
+    const texture = new THREE.DataTexture(data, width, height);
     texture.needsUpdate = true;
-    var mesh1 = new THREE.Mesh(
+    const mesh1 = new THREE.Mesh(
             geometry,
             new THREE.MeshStandardMaterial({
                 map: texture,
                 side: THREE.FrontSide
             }));
+    //-------- ----------
+    // MESH
+    //-------- ----------
     mesh1.rotateY(Math.PI * 0.15);
     mesh1.position.x = -0.50;
     scene.add(mesh1);
     // vertex helper
-    var vertHelper = new THREE.VertexNormalsHelper(mesh1, 0.5, 0x00ff00);
+    const vertHelper = new THREE.VertexNormalsHelper(mesh1, 0.5, 0x00ff00);
     scene.add(vertHelper)
- 
+    //-------- ----------
     // RENDER
+    //-------- ----------
     renderer.render(scene, camera);
 }());
 ```
