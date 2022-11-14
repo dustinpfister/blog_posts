@@ -5,8 +5,8 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 465
-updated: 2019-05-29 11:52:44
-version: 1.8
+updated: 2022-11-14 10:03:11
+version: 1.9
 ---
 
 The [git log](https://git-scm.com/docs/git-log) command can be used to log out a list of comment subject messages, commit hash numbers, and A wide range of other things about each commit in a git folder. It is a useful little command with many format options that can be useful when it comes to writing some kind of script that loops over all commits in a repository. There is just using the command by itself in the command line, and then there is piping it to something else, or better yet making a node.js script that uses it via the spawn method in the child process module. In this post I will be going over some quick examples of doing bolth.
@@ -34,6 +34,15 @@ So here I have an example that limits the number of commits to 3 and also makes 
 ```
 $ git log -n 3 --format=(subject)%s(hash)%H 
 ```
+
+### 1.3 - Limiting from a given date and time
+
+The --since option can be used to limit from a given date and time forward. When it comes to setting the date and time a range of options can be used for the format of the date and time. This includes the default kind of format that is used when using the git log command without any options.
+
+```
+$ git log --since="Sun Nov 14 00:00:00 2022 -0500"
+```
+
 
 ## 2 - Basic git log node.js script that logs subject names
 
