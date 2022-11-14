@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2022-11-13 10:57:35
-version: 1.38
+updated: 2022-11-14 10:10:03
+version: 1.39
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the [Basic material](/2018/05/05/threejs-basic-material/) for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. Once I have the transparency property value of a material set to true, it is then just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material.
@@ -43,21 +43,26 @@ So now to start out with a basic example of transparency in threejs, and as such
 
 ```js
 (function () {
+    //-------- ----------
     // SCENE, CAMERA, and RENDERER
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(0.9, 0, 3.5);
-    camera.lookAt(-1, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(1, 0, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
     // CREATE MESH OBJECTS
-    var createCube = function (size, material, x, y, z) {
-        var geometry = new THREE.BoxGeometry(size, size, size),
+    //-------- ----------
+    const createCube = function (size, material, x, y, z) {
+        const geometry = new THREE.BoxGeometry(size, size, size),
         cube = new THREE.Mesh(geometry, material);
         cube.position.set(x, y, z);
         return cube;
     };
-    var materials = {};
+    const materials = {};
     materials.sand = new THREE.MeshBasicMaterial({
         color: 'yellow'
     });
@@ -66,43 +71,130 @@ So now to start out with a basic example of transparency in threejs, and as such
         transparent: true,
         opacity: 0.4
     });
-    var glassCube = createCube(1, materials.glass, 0, 0, 2),
-    cube = createCube(1, materials.sand, 0, 0, 0);
+    const glassCube = createCube(1, materials.glass, 0, 0, 2);
+    const cube = createCube(1, materials.sand, 0, 0, 0);
     scene.add(glassCube);
     scene.add(cube);
+    //-------- ----------
     // RENDER
+    //-------- ----------
     renderer.render(scene, camera);
 }());
 ```
 
-## 2 - Using a light source and the Standard material
+## 2 - Using canvas elements to create a texture to use with the map option
+
+
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(1.25, 1, 1.75);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    const createCube = (size, material, x, y, z) => {
+        const geometry = new THREE.BoxGeometry(size, size, size),
+        cube = new THREE.Mesh(geometry, material);
+        cube.position.set(x, y, z);
+        return cube;
+    };
+    const createCanvasTexture = (draw, size) => {
+        const canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = size || 64;
+        canvas.height = size || 64;
+        draw(ctx, canvas);
+        return new THREE.CanvasTexture(canvas);
+    };
+    //-------- ----------
+    // TEXTURE
+    //-------- ----------
+    const texture_map = createCanvasTexture( (ctx, canvas) => {
+        // USING rgba TO SET STYLE
+        ctx.fillStyle = 'rgba(64,64,64,1)';
+        ctx.fillRect(0,0, canvas.width, canvas.height);
+        // CLEAR RECT CAN BE USED TO SET AN AREA AS TRANSPARENT
+        // THEN FILL WITH AN rgba STYLE
+        ctx.clearRect(6, 6, 24, 24);
+        ctx.fillStyle = 'rgba(0,255,255,0.4)';
+        ctx.fillRect(6, 6, 24, 24);
+        // can also rotate
+        ctx.save();
+        ctx.translate(34 + 7, 34 + 7);
+        ctx.rotate( Math.PI / 180 * 45 );
+        ctx.clearRect(-12, -12, 24, 24);
+        ctx.fillStyle = 'rgba(0,255,255,0.4)';
+        ctx.fillRect(-12, -12, 24, 24);
+        ctx.restore();
+        // FRAME
+        ctx.strokeStyle = 'rgba(0,0,0,1)';
+        ctx.strokeRect(2, 2, canvas.width - 4, canvas.height - 4)
+    });
+    //-------- ----------
+    // MATERIAL
+    //-------- ----------
+    const material =  new THREE.MeshBasicMaterial({
+        color: new THREE.Color(1, 1, 1),
+        map: texture_map,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.8
+    });
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const cube = createCube(1, material, 0, 0, 0);
+    scene.add(cube);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+## 3 - Using a light source and the Standard material
 
 Things get a little more involve when using a light source, when this is the case I will have to use a material that will respond to light so I can not use the basic material as it will not do that. There are a lot of options with materials that will respond to light to choose form, one such material is the standard material that strokes me as a good middle of the road type chose when it comes to this sort of thing when making choices between performance and how things look. Now that I have made a choice when it comes to materials I am going to need to add at least one light source, there are a number of options for that also of course, the one I often go for is a [point light](/2019/06/02/threejs-point-light/). This is is a nice kind of light that will shine light in all directions form the position at which it is located which works well for many of this kind of examples.
 
 ```js
 (function () {
-    // ********** **********
-    // SCENE, CAMERA, RENDERER, and LIGHT
-    // ********** **********
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(0.9, 0, 3.5);
-    camera.lookAt(-1, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    var pointLight = new THREE.PointLight(0xffffff);
-    pointLight.position.set(2, -5, 5);
-    scene.add(pointLight);
-    // ********** **********
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(1, 0, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const pl = new THREE.PointLight(0xffffff);
+    pl.position.set(2, -5, 5);
+    scene.add(pl);
+    //-------- ----------
     // CREATE MESH OBJECTS
-    // ********** **********
-    var createCube = function (size, material, x, y, z) {
-        var geometry = new THREE.BoxGeometry(size, size, size),
+    //-------- ----------
+    const createCube = function (size, material, x, y, z) {
+        const geometry = new THREE.BoxGeometry(size, size, size),
         cube = new THREE.Mesh(geometry, material);
         cube.position.set(x, y, z);
         return cube;
     };
-    var materials = {};
+    const materials = {};
     materials.sand = new THREE.MeshStandardMaterial({
         color: 'yellow'
     });
@@ -111,18 +203,18 @@ Things get a little more involve when using a light source, when this is the cas
         transparent: true,
         opacity: 0.4
     });
-    var glassCube = createCube(1, materials.glass, 0, 0, 2),
-    cube = createCube(1, materials.sand, 0, 0, 0);
+    const glassCube = createCube(1, materials.glass, 0, 0, 2);
+    const cube = createCube(1, materials.sand, 0, 0, 0);
     scene.add(glassCube);
     scene.add(cube);
-    // ********** **********
+    //-------- ----------
     // RENDER
-    // ********** **********
+    //-------- ----------
     renderer.render(scene, camera);
 }());
 ```
 
-## 3 - Canvas elements and alpha maps
+## 4 - Canvas elements and alpha maps
 
 Another kind of transparency is to get into using [alpha maps](/2019/06/06/threejs-alpha-map/) this is a kind of texture map that can be added to a material to set locations in a face that should be transparent, and if so by how much by using gray scale coloring. One way to do so would be to load extremal images as a way to create some textures for an alpha map as well as other kinds of maps. However when it comes to just using a little javaScript code I can use [canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) which in turn can also be used to create textures that can be used for an alpha map along with the other kinds of maps.
 
@@ -134,39 +226,46 @@ For this example I also added an ambient light to make sure that there is always
 
 ```js
 (function () {
-    // ********** **********
-    // SCENE, CAMERA, RENDERER, and LIGHTS
-    // ********** **********
-    var scene = new THREE.Scene();
-    var pointLight = new THREE.PointLight(0xffffff);
-    pointLight.position.set(2, -5, 5);
-    scene.add(pointLight);
-    var light = new THREE.AmbientLight(0xffffff);
-    light.intensity = 0.4;
-    scene.add(light);
-    var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(0.9, 0, 3.5);
-    camera.lookAt(-1, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ********** **********
-    // CREATE MESH OBJECTS WITH CANVAS ALPHA MAP TEXTURE
-    // ********** **********
-    var createCube = function (size, material, x, y, z) {
-        var geometry = new THREE.BoxGeometry(size, size, size),
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+    camera.position.set(1, 0, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const pl = new THREE.PointLight(0xffffff);
+    pl.position.set(2, -5, 5);
+    scene.add(pl);
+    const al = new THREE.AmbientLight(0xffffff);
+    al.intensity = 0.4;
+    scene.add(al);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    const createCube = function (size, material, x, y, z) {
+        const geometry = new THREE.BoxGeometry(size, size, size),
         cube = new THREE.Mesh(geometry, material);
         cube.position.set(x, y, z);
         return cube;
     };
-    var createCanvasTexture = function (draw, size) {
-        var canvas = document.createElement('canvas'),
+    const createCanvasTexture = function (draw, size) {
+        const canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
         canvas.width = size || 64;
         canvas.height = size || 64;
         draw(ctx, canvas);
         return new THREE.CanvasTexture(canvas);
     };
-    var alphaMap = createCanvasTexture(function (ctx, canvas) {
+    //-------- ----------
+    // CREATE MESH OBJECTS WITH CANVAS ALPHA MAP TEXTURE
+    //-------- ----------
+    const alphaMap = createCanvasTexture(function (ctx, canvas) {
             // drawing gray scale areas
             ctx.fillStyle = '#f0f0f0';
             ctx.fillRect(0, 0, 32, 32);
@@ -177,7 +276,7 @@ For this example I also added an ambient light to make sure that there is always
             ctx.fillStyle = '#f0f0f0';
             ctx.fillRect(32, 32, 32, 32);
         });
-    var materials = {};
+    const materials = {};
     materials.sand = new THREE.MeshStandardMaterial({
             color: 'yellow'
         });
@@ -189,19 +288,19 @@ For this example I also added an ambient light to make sure that there is always
             transparent: true,
             opacity: 0.2
         });
-    var glassCube = createCube(1, materials.glass, 0, 0, 2),
-    cube = createCube(1, materials.sand, 0, 0, 0);
+    const glassCube = createCube(1, materials.glass, 0, 0, 2);
+    const cube = createCube(1, materials.sand, 0, 0, 0);
     scene.add(glassCube);
     scene.add(cube);
-    // ********** **********
+    //-------- ----------
     // RENDER
-    // ********** **********
+    //-------- ----------
     renderer.render(scene, camera);
 }
     ());
 ```
 
-## 4 - Setting a transparent background
+## 5 - Setting a transparent background
 
 On top of setting a transparent material there is also the question of how to go about having a [transparent background](https://stackoverflow.com/questions/20495302/transparent-background-with-three-js) in the threejs project as well. For this there is setting the alpha option for the renderer to true when calling the web gl renderer constructor function. After that I can use the set clear color method of the renderer to adjust what the clear color is if needed.
 
