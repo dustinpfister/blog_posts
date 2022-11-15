@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2022-05-04 14:25:12
-version: 1.23
+updated: 2022-11-15 10:46:19
+version: 1.24
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it, and also what to do when it comes to starting some kind of actual project using threejs rath than just quick simple tech demos that I write about in these [posts on threejs](/categories/three-js/). It would seem that I could write a lot more just when it comes to basic, and not so basic features of the library, and maybe with that alone there will always be something more to write about. However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -27,7 +27,9 @@ This is not a [getting started post on three.js then](/2018/04/04/threejs-gettin
 
 ### Version Numbers matter with three.js
 
-This is something that I have found that I just need to repeat over and over again in every three.js post. When I first made this model I was using three.js version r91. I then just made a few quick, simple changes to the model to make it work with version r127, which was the version I was using when I wrote this. Always look at dates of posts when reading content on the open web that have to do with a javaScript library, especially such a fast moving one like three.js as code breaking changes are made often with this one.
+This is something that I have found that I just need to repeat over and over again in every three.js post. When I first made this model I was using three.js version r91. Sense then I made some changes to get this to work find with version r127, which had to do with changes with how to do about using more than one material with a mesh object. Also the last time I cam around to do some editing I had to make some changes to the demos to get this working without error to get them working okay for r146.
+
+It should go without saying that one should always look at dates of posts when reading content on the open web that have to do with a javaScript library. This is especially true with such a fast moving library like three.js, as code breaking changes are made often with this one more so then other projects where things might move a little slower.
 
 ### The source code examples in this post are on Github
 
