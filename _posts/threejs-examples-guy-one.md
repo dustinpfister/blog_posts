@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2022-11-15 10:56:24
-version: 1.25
+updated: 2022-11-15 11:06:10
+version: 1.26
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. Also I what to known what to do when it comes to starting some kind of actual project using threejs rather than the simple tech demos that I write about for the most part when writing these [posts on threejs](/categories/three-js/). However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think In this post I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -21,9 +21,9 @@ So when it comes to the kinds of over all scenes that I would like to make, I wi
 
 ## Basic three.js guy model and what to know before hand
 
-This is a post on using three.js to make a very crude guy module using built in three.js features and geometries along with a little javaScript code. There are other more standard ways of making a model that might prove to be a better option in the long run, but I kind of like just making simple modules like this with javaScript code alone thus far.
+This is a post on using three.js to make a very crude guy module using built in three.js features along with a little javaScript code. There are other more standard ways of making a model that might prove to be a better option in the long run, but I kind of like just making simple modules like this with javaScript code alone thus far.
 
-This is not a [getting started post on three.js then](/2018/04/04/threejs-getting-started/), let alone javaScript in general, and any and all additional skills that are required before hand in other to really get something of value from reading this. So if you want to reproduce what I have worked out here I trust you have at least some grasp on the basics at least when it comes to doing something with three.js and a little client side javaScript.
+This is not a [getting started post on three.js then](/2018/04/04/threejs-getting-started/), let alone javaScript in general, and any additional skills that are required before hand in other to really get something of value from reading this. So if you want to reproduce what I have worked out here I trust you have at least some grasp on the basics at least when it comes to doing something with three.js and a little client side javaScript.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/u5tRAChrMfM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -37,13 +37,21 @@ It should go without saying that one should always look at dates of posts when r
 
 The source code examples that I am writing about here can be found on Github at my [test threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-guy-one) repository. Also I am writing about something that I started in another project that I just called [threejs guy](https://github.com/dustinpfister/threejs_guy) that is also up on Gthub.
 
-###  The guy.js file
+
+## 1 - guy.js r0 and demo
+
+This is a section on the first revision of the guy.js module that I started a long time ago now. I might add one or two more demos makijg use of this, and in time might also make changes to the code actaully. However at this point any chnages will just to be to make it work with newer verions of threejs and that is it.
+
+### 1.0 - The guy.js file
 
 Here I have the source code of my first basic guy model. When I made this I was thinking in terms of having a base class that I might built on top of when it comes to making additional variants of this kind of thing for better or worse. When it comes to actually using this though I have made other modules that are just like this only they take a more functional approach. However what I really care about is to just have a very crude basic guy, or person type module that I can just skin with some textures by hacking over the materials that are being used a little. With that said this is more or less what I hand in mind when it comes to having something to that effect.
 
 ```js
+// guy.js - r0 - from threejs-examples-guy-one
+// By Dustin Pfister
+// https://dustinpfister.github.io/2021/04/29/threejs-examples-guy-one/
+// 
 var Guy = (function () {
- 
     // material used for the legs
     var material_leg = new THREE.MeshLambertMaterial({
             color: 0x0000ff,
@@ -72,7 +80,6 @@ var Guy = (function () {
             emissive: 0x1a1a1a
         })
     ];
- 
     // the guy constructor
     var Guy = function () {
         // a group that will hold all mesh objects
@@ -134,7 +141,6 @@ var Guy = (function () {
         this.leg_left.castShadow = true;
         this.group.add(this.leg_left);
     };
- 
     // move the arm of give id ('arm_right' or 'arm_left');
     // x and z should be a value between 0, and 1
     Guy.prototype.moveArm = function (armId, x, z) {
@@ -145,13 +151,11 @@ var Guy = (function () {
         }
         arm.rotation.set(Math.PI * 2 * x, 0, z);
     };
- 
     // rotate head around
     // y is 0 to 1
     Guy.prototype.moveHead = function (y) {
         this.head.rotation.set(0, Math.PI * 2 * y, 0);
     };
- 
     // move legs in respect to a walk cycle
     // where per is between 0, and 1.
     Guy.prototype.moveLegs = function (per) {
@@ -160,7 +164,7 @@ var Guy = (function () {
         this.leg_left.rotation.set(.75 - bias * 1.5, 0, 0);
         this.leg_right.rotation.set( - .75 + bias * 1.5, 0, 0);
     };
- 
+    // walk
     Guy.prototype.walk = function (per, swings) {
         per = per === undefined ? 0 : per;
         swings = swings === undefined ? 1 : swings;
@@ -170,93 +174,83 @@ var Guy = (function () {
         this.moveArm('arm_left', .1 - .2 * armPer, 0);
         this.moveLegs(per * swings);
     }
- 
     // just return an instance of guy for now
     return Guy;
- 
 }
     ());
 ```
 
 So then the whole idea is to just have a way to create an instance of one of these, and then just use the prototype methods to work with the model in a project. With that said maybe I should take the moment to go over just one little demo that makes use of this for what it is worth.
 
-## 1 - A Basic demo of the guy.js module
+### 1.1 - Using more than one guy.js r0 module demo
 
 Now to test out this guy model to see if things work out okay so far, and it would seem that they do. Here I am creating not one, not two, but three instances of this guy model. For each guy model I am doing something a little different, where one is just shaking there head, another is moving there arms up and down, and another is being really animated in a few ways.
 
 ```js
 (function () {
- 
-    // SCENE
-    var scene = new THREE.Scene();
- 
-    // GUY Instances
-    var guy1 = new Guy();
-    scene.add(guy1.group);
-    var guy2 = new Guy();
-    guy2.group.position.set(5, 0, 0);
-    scene.add(guy2.group);
-    var guy3 = new Guy();
-    guy3.group.position.set(-5, 0, 0);
-    scene.add(guy3.group);
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 8 / 6, .05, 100);
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(28, 7) );
+    const camera = new THREE.PerspectiveCamera(50, 8 / 6, .05, 100);
+    const renderer = new THREE.WebGL1Renderer();
     camera.position.set(10, 10, 10);
     camera.lookAt(0, 0, 0);
     camera.add(new THREE.PointLight());
     scene.add(camera);
- 
-    // RENDER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var frame = 0,
-    maxFrame = 200,
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // ADDING GUY OBJECTS TO SCENE
+    //-------- ----------
+    const guy1 = new Guy();
+    guy1.group.position.set(0, 3, 0)
+    scene.add(guy1.group);
+    const guy2 = new Guy();
+    guy2.group.position.set(5, 3, 0);
+    scene.add(guy2.group);
+    const guy3 = new Guy();
+    guy3.group.position.set(-5, 3, 0);
+    scene.add(guy3.group);
+    //-------- ----------
+    // ANIMATION LOOP
+    //-------- ----------
+    let frame = 0,
     lt = new Date();
-    var loop = function () {
- 
-        var now = new Date(),
+    const maxFrame = 200;
+    const loop = function () {
+        const now = new Date(),
         secs = (now - lt) / 1000;
- 
         requestAnimationFrame(loop);
- 
         if (secs > 0.05) {
-            var per = frame / maxFrame,
+            const per = frame / maxFrame,
             bias = Math.abs(.5 - per) / .5,
             r = Math.PI * 2 * per;
- 
             // guy1 walks around, and moves head
             guy1.walk(per, 8);
             guy1.moveHead(.25 - .25 * bias);
             guy1.group.position.set(
                 Math.cos(r) * 5 - 5,
-                0,
+                3,
                 Math.sin(r) * 5);
             guy1.group.lookAt(
                 Math.cos(r + 0.5) * 5 - 5,
-                0,
+                3,
                 Math.sin(r + 0.5) * 5);
             // guy 2 shakes his head
             guy2.moveHead(.125 - .25 * bias);
             // guy 3 just moves arms
             guy3.moveArm('arm_right', 0, bias * 2);
             guy3.moveArm('arm_left', 0, bias * 2);
- 
             // draw
             renderer.render(scene, camera);
- 
             frame += 30 * secs;
             frame %= maxFrame;
- 
             lt = now;
         }
- 
     };
- 
     loop();
- 
 }
     ());
 ```
@@ -265,7 +259,7 @@ So now I think what I need to do is make some examples that are not just about a
 
 For now I just want to have a very basic, crude, guy model, and with that said I think I have something. Maybe when I start to use this I will want to add at least a few more methods, mesh objects, and so forth, but I think I want to keep this very basic and crude. For wherever the reason I seem to like that kind of style actually.
 
-## 4 - Conclusion
+## Conclusion
 
 I am happy with this basic kind of guy module, and moving forward with it from here might just involve adding a few more features when it comes to how I go about using in an other projects. I might want to make a slightly more advanced version of this kind of guy model, but once I have a few models like this it gets to the point where all I have to do is just skin them in different ways and that is about it.
 
