@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2022-11-15 11:41:16
-version: 1.27
+updated: 2022-11-15 13:05:54
+version: 1.28
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. Also I what to known what to do when it comes to starting some kind of actual project using threejs rather than the simple tech demos that I write about for the most part when writing these [posts on threejs](/categories/three-js/). However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think In this post I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -224,7 +224,9 @@ Now to test out this guy model to see if things work out okay so far, and it wou
 
 ### 1.2 - Using more than one guy.js r0 module demo
 
-Here I am creating not one, not two, but three instances of this guy model. For each guy model I am doing something a little different, where one is just shaking there head, another is moving there arms up and down, and another is being really animated in a few ways.
+Here I am creating not one, not two, but three instances of this guy model. For each guy model I am doing something a little different, where one is just shaking there head, another is moving there arms up and down, and another is being really animated in a few ways. So then this seems to work okay at least for making little video projects that might involve a few of these, or maybe even a lot of them actually.
+
+What I worked out here when it comes to the guy model that is fairly animated might prove to be a good starting point for another helper method for setting position of one of these. However there is a bit more than just that of course so I think at least a few more demos are called for when it comes to setting position and rotation of something like this.
 
 ```js
 (function () {
