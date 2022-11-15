@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2022-11-15 11:06:10
-version: 1.26
+updated: 2022-11-15 11:41:16
+version: 1.27
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. Also I what to known what to do when it comes to starting some kind of actual project using threejs rather than the simple tech demos that I write about for the most part when writing these [posts on threejs](/categories/three-js/). However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think In this post I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -182,9 +182,49 @@ var Guy = (function () {
 
 So then the whole idea is to just have a way to create an instance of one of these, and then just use the prototype methods to work with the model in a project. With that said maybe I should take the moment to go over just one little demo that makes use of this for what it is worth.
 
-### 1.1 - Using more than one guy.js r0 module demo
+### 1.1 - Single guy one r0 model hello world exmple
 
-Now to test out this guy model to see if things work out okay so far, and it would seem that they do. Here I am creating not one, not two, but three instances of this guy model. For each guy model I am doing something a little different, where one is just shaking there head, another is moving there arms up and down, and another is being really animated in a few ways.
+Now to test out this guy model to see if things work out okay so far, and it would seem that they do. For this first getting started type example I am just creating a static scene in which I create a single guy object and then use the built in methods to chnage the state of the arms.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) );
+    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.05, 100);
+    const renderer = new THREE.WebGL1Renderer();
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const pl = new THREE.PointLight(0xffffff, 1);
+    pl.position.set(3, 2, 1);
+    scene.add(pl);
+    //-------- ----------
+    // ADDING GUY OBJECT TO SCENE
+    //-------- ----------
+    const guy1 = new Guy();
+    guy1.group.position.set(0, 3, 0)
+    scene.add(guy1.group);
+    guy1.moveArm('arm_right', 0, 1.25);
+    guy1.moveArm('arm_left', 0.1, 1.25);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+### 1.2 - Using more than one guy.js r0 module demo
+
+Here I am creating not one, not two, but three instances of this guy model. For each guy model I am doing something a little different, where one is just shaking there head, another is moving there arms up and down, and another is being really animated in a few ways.
 
 ```js
 (function () {
