@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2022-11-15 16:27:07
-version: 1.30
+updated: 2022-11-16 09:11:01
+version: 1.31
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. Also I what to known what to do when it comes to starting some kind of actual project using threejs rather than the simple tech demos that I write about for the most part when writing these [posts on threejs](/categories/three-js/). However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think In this post I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -304,7 +304,9 @@ So now I think what I need to do is make some examples that are not just about a
 
 For now I just want to have a very basic, crude, guy model, and with that said I think I have something. Maybe when I start to use this I will want to add at least a few more methods, mesh objects, and so forth, but I think I want to keep this very basic and crude. For wherever the reason I seem to like that kind of style actually.
 
-### 1.3 - Scale and position ro demo
+### 1.3 - Scale and position r0 demo
+
+In future revisions of this guy one module that I may or may not get to at some point I am sure that I will want to have better methods for helping me with the process of positioning one of these little guys to the surface of something. I am thinking that when I use this module it will be for some very simple crude scenes where I will just have everything positioned on top of a plane geometry for now maybe. So for this demo I made a simple helper function that I can call to just set the y value of the Vector3 class instance stored at the position property of the main group object.
 
 ```js
 (function () {
@@ -346,14 +348,12 @@ For now I just want to have a very basic, crude, guy model, and with that said I
     scene.add(guy1.group);
     // using set to plain surface
     setYToPlainSurface(guy1, 0.5);
-
     const guy2 = new Guy();
     guy2.group.scale.set(0.75, 0.75, 0.75);
     scene.add(guy2.group);
     // using set to plain surface
     setYToPlainSurface(guy2, 0.75);
     guy2.group.position.x = 3;
-
     //-------- ----------
     // RENDER
     //-------- ----------
@@ -363,6 +363,10 @@ For now I just want to have a very basic, crude, guy model, and with that said I
 ```
 
 ### 1.4 - Box3 scale position, and rotation r0 demo
+
+Here I now have another helper for setting the position of the guy, but this time I am using the box3 class to do so which might prove to be a better way to go about doing this sort of thing. I also worked out a helper function for setting the rotation of the guy model as well where I have some things worked out that might be just what I want to happen when using this in a project when it comes to rotation.
+
+By default I will want for the y value of the Vector3 that I given to use for the look at value to be ignored and use the y position of the main group object for the y value. This will allow me to have the guy model face a given direction but only with respect to the x and z values of the given Vector3 object. I can disable this of course and then use the y value, but do so in a way in which things are adjusted to it looks right.
 
 ```js
 (function () {
@@ -457,6 +461,8 @@ For now I just want to have a very basic, crude, guy model, and with that said I
 ```
 
 ### 1.5 - Curve path animaiton r0 demo
+
+Here I now have a new animation loop example involving curves in which I am testing out everything that I have made thus far when it comes to the guy module as well as the additional helper functions that I have made. I have a whole bunch of these guys actually and I am having them all move along a curve path.
 
 ```js
 (function () {
