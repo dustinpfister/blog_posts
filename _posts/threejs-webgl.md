@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2022-04-03 13:07:46
-version: 1.24
+updated: 2022-11-17 08:58:02
+version: 1.25
 ---
 
 As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Three.js](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It is still possible to use it of course it just needs to be added as an additional asset for a project on top of just three js by itself. It would seem that the motivation behind doing so was because support for webGL is now pretty good in general when it comes to modern web browsers which mode people who visit my website do in fact use.
@@ -18,6 +18,10 @@ For the most part these days there is no need to bother with the 2d canvas power
 ## WebGL in three.js and what to know before hand
 
 This is a post on feature testing for web gl, and using the software renderer in three js in the event that there is no webGL support at all. This is a not a [getting started post with three.js](/2018/04/04/threejs-getting-started/), webGL, or javaScript in general. So then I assume that you have at least some background with three.js and javaScript.
+
+### More on the webGL renderer
+
+In this post I am mostly writing about feature testing for webGL and then doing something different in the event that webGL is not supported. However I am not really getting into the webGL renderer in detail as I have wrote a [post on the webGL renderer](/2018/11/24/threejs-webglrenderer/) in detail a while back and there is therefore no need to do so here.
 
 ### Version numbers matter
 
@@ -125,11 +129,7 @@ if (isWebGL()) {
 }
 ```
 
-## 2 - More on the webGL renderer
-
-In this post I am mostly writing about feature testing for webGL and then doing something different in the event that webGL is not supported. However I am not really getting into the webGL renderer in detail as I have wrote a [post on the webGL renderer](/2018/11/24/threejs-webglrenderer/) in detail a while back and there is therefore no need to do so here.
-
-## 3 - Conclusion
+## Conclusion
 
 Even if a client does support webgl that does not mean that all the webgl features will work as expected. A simple check if webgl is there or not will result in a true response with a simple feature test for webgl alone, but things will still not render as expected.
 
