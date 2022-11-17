@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2022-11-16 12:59:22
-version: 1.32
+updated: 2022-11-17 10:36:37
+version: 1.33
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. Also I what to known what to do when it comes to starting some kind of actual project using threejs rather than the simple tech demos that I write about for the most part when writing these [posts on threejs](/categories/three-js/). However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think In this post I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -655,7 +655,7 @@ Here I now have a new animation loop example involving curves in which I am test
 
 ### 1.6 - Explosion Effect r0 demo
 
-Another little demo project that I wanted to work out using the old module thus far is a little addtional code that I can use to create a kind of explosion effect.
+Another little demo project that I wanted to work out using the first r0 revision of the guy module thus far is a little additional code that I can use to create a kind of explosion effect. That is to have a cool effect where the guy will just break apart into a whole bunch of triangles and then have those triangles move around all over the place. So for this demo I made an update guy effect helper function that will update the state of a guy object based on a given effect function and alpha values. With that thus far I have made a single effect function thus far that is not really what I had in mid with this, but it is a good start at least for something that I might build into future revisions or maybe make into some additional module project.
 
 ```js
 (function () {
