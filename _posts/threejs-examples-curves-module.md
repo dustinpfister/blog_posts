@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1014
-updated: 2022-11-18 12:49:33
-version: 1.13
+updated: 2022-11-18 13:00:42
+version: 1.14
 ---
 
 The [THREE.Curve base class can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
@@ -57,7 +57,7 @@ I then have a number of methods that will return a something that is based off t
 I then also have some methods that are a starting point for this idea of using curves to create alpha values, and then a number of methods that help me to debug things by getting a visual idea of what is going on using points and lines.
 
 ```js
-// curve.js - r0 - r146 prototype
+// curve.js - r0 - from threejs-examples-curves-module
 (function(api){
     //-------- ----------
     // HELPERS
