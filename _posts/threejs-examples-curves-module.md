@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1014
-updated: 2022-11-18 09:01:50
-version: 1.4
+updated: 2022-11-18 09:22:03
+version: 1.5
 ---
 
 The [THREE.Curve base class](/2022/06/17/threejs-curve/) can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
@@ -26,6 +26,9 @@ I am sure that there will be nay more method and features that I will want to ad
 
 ### The source code of curves.js R0
 
+Here then is the source code for R0 of my curves tools that I have worked out thus far. At the very top of the module I have thus far just two private helper functions. One of these is a for path data helper function that I use for two methods that create and return a collection by a given array of arrays of data for arguments to be passed to the THREE.QuadraticBezierCurve3 function. By collection I mean one of two things, an array of Vector3 objects, or a curve path. The other helper function will create and return a curve that will be used for one of my functions that will return an alpha function.
+
+
 ```js
 // curve.js - r0 - r146 prototype
 (function(api){
@@ -41,7 +44,6 @@ I am sure that there will be nay more method and features that I will want to ad
         data.forEach( ( a ) => {
             const curve = api.QBDelta.apply(null, a.slice(0, a.length - 1));
             forCurve(a, curve, collection, data);
-            //v3Array.push( curve.getPoints( a[9]) );
         });
         return collection;
     };
@@ -190,17 +192,282 @@ I am sure that there will be nay more method and features that I will want to ad
 }(this['curveMod'] = {} ));
 ```
 
-### 1.1 - 
+### 1.1 - Create and return an array of Vector3 objects
+
+Often what it is that I will want is not a Curve, but an array of vector3 objects of points along a curve. So I have a method that will take an object that contains an array of arrays of data and spit out an array of vector3 objects.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(-8, 8, 8);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+try{
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}catch(e){
+    console.warn('OrbitControls JSM module not loaded.');
+}
+//-------- ----------
+// CAMERA PATHS
+//-------- ----------
+const v3Arrays_meshpos = [ 
+    curveMod.QBV3Array([
+        [5, 0, 5, -5, 0, -5,    5,0,-5,      100]
+    ]),
+    curveMod.GlavinPoints2(
+        100, // number of points
+        new THREE.Vector3(-5, 0, -5), // origin
+        new THREE.Vector2(0, 1),      // unit vector length range
+        new THREE.Vector2(0, 360),    // a1
+        new THREE.Vector2(-90, 90)    // a2
+    ),
+];
+//-------- ----------
+// LINES AND POINTS
+//-------- ----------
+scene.add(curveMod.debugLines(v3Arrays_meshpos) )
+scene.add(curveMod.debugPoints(v3Arrays_meshpos) )
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(0.5, 30, 30),
+    new THREE.MeshNormalMaterial()
+);
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 400;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+     const a1 = frame / frameMax;
+     const arrayLen = v3Arrays_meshpos.length;
+     const arrayIndex = Math.floor( arrayLen * a1);
+     const a2 = a1 - (1 / arrayLen * arrayIndex);
+     const a3 = a2 / (1 / arrayLen);
+     const v3Array = v3Arrays_meshpos[ arrayIndex ];
+     mesh.position.copy( v3Array[ Math.floor( v3Array.length * a3 ) ] );
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
-### 1.2 - The
+### 1.2 - The Curve path module
+
+I also have another method that is just like that of the one that will return an array of vector3 objects but will return a curve path.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(-8, 8, 8);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+try{
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}catch(e){
+    console.warn('OrbitControls JSM module not loaded.');
+}
+//-------- ----------
+// CURVE PATH
+//-------- ----------
+const cp_meshpos = curveMod.QBCurvePath([
+   [5, 0, 5, -5, 0, -5,    5,0,-5]
+]);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(0.5, 30, 30),
+    new THREE.MeshNormalMaterial()
+);
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 90;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+     const a1 = frame / frameMax;
+     const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+     mesh.position.copy(cp_meshpos.getPoint(a2));
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
-### 1.3 - 
+### 1.3 - The get alpha fucntions
+
+I then wanted to create, bake in, and explore with this idea of having a get alpha value function using curves. With that said I made a lot of great progress testing out this idea that will then be further refined in future revisions of the module. I am thinking that I might want to make a another threejs project where the main focus is with alpha functions, but in any case I am sure that this will ether be something that I will want to bake into this module, or at least this curve module will be a foundation for such a module for sure.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(-8, 8, 8);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+try{
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}catch(e){
+    console.warn('OrbitControls JSM module not loaded.');
+}
+// ---------- ----------
+// CURVE ALPHA
+// ---------- ----------
+const grc_points = [
+    [0.00,     0],
+    [0.10,     0],
+    [0.45,     0],
+    [1.00,     0],
+    [0.50,     0],
+    [0.75,     0],
+    [0.85,     0],
+    [1.00,     0],
+    [0.50,     0],
+    [0]
+];
+const curveAlpha = curveMod.createAlphaFunciton2( grc_points );
+// ---------- ----------
+// OTHER GET ALPHA
+// ---------- ----------
+// create map linear method
+const createMapLinear = function(startAlpha, endAlpha){
+    startAlpha = startAlpha === undefined ? 0 : startAlpha;
+    endAlpha = endAlpha === undefined ? 0 : endAlpha;
+    return function(alpha){
+        return THREE.MathUtils.mapLinear(alpha, 0, 1, startAlpha, endAlpha);
+    };
+};
+const getAlpha = (alpha) => {
+    return alpha * 8 % 1;
+};
+const getBias = (alpha) => {
+    return 1 - Math.abs(0.5 - (alpha * 1 % 1) ) / 0.5;
+};
+const getSinBias = function(alpha){
+    const b = getBias(alpha * 4 % 1);
+    return Math.sin( Math.PI * 0.5 * b );
+};
+const smoothStep = function(alpha){
+    return THREE.MathUtils.smoothstep(alpha, 0, 1);
+};
+// ---------- ----------
+// ALPHA FUNC TO USE
+// ---------- ----------
+var alphaFunc = curveAlpha;
+//var alphaFunc = getAlpha;
+//var alphaFunc = getBias;
+//var alphaFunc = getSinBias;
+//var alphaFunc = smoothStep;
+//var alphaFunc = createMapLinear(0.25, 0.6);
+// ---------- ----------
+// DEBUG ALPHA FUNC
+// ---------- ----------
+const points = curveMod.debugAlphaFunction(alphaFunc, { count: 400 });
+scene.add(points);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(0.5, 30, 30),
+    new THREE.MeshNormalMaterial()
+);
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 180;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+     const a1 = frame / frameMax;
+     const a2 = alphaFunc(a1);
+     mesh.position.x = -5 + 10 * a1;
+     mesh.position.z = 5 - 10 * a2;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
