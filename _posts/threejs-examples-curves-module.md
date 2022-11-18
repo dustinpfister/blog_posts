@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1014
-updated: 2022-11-18 11:47:22
-version: 1.10
+updated: 2022-11-18 11:53:13
+version: 1.11
 ---
 
 The [THREE.Curve base class can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
@@ -221,7 +221,10 @@ I then also have some methods that are a starting point for this idea of using c
 
 ### 1.1 - Create and return an array of Vector3 objects
 
-Often what it is that I will want is not a Curve, but an array of vector3 objects of points along a curve. So I have a method that will take an object that contains an array of arrays of data and spit out an array of vector3 objects.
+Often what it is that I will want is not a Curve, but an array of vector3 objects of points along a curve. So I have a method that will take an object that contains an array of arrays of data and split out an array of vector3 objects. Also I have a method backed into the module thus far that is something that I made while working on my fink series of beta world videos. That is that I have an array of points that follow a curve, and then all of a sudden the path becomes just a bunch of random points moving around all over the place. This kind of motion can often prove to be a little useful in some projects in which I want that kind of camera movement.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/67j1q73byqc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 //-------- ----------
