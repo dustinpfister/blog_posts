@@ -5,15 +5,31 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1014
-updated: 2022-11-18 09:27:57
-version: 1.7
+updated: 2022-11-18 11:19:50
+version: 1.8
 ---
 
-The [THREE.Curve base class](/2022/06/17/threejs-curve/) can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
+The [THREE.Curve base class can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
 
 In any case I will want to make a [threejs project example](/2021/02/19/threejs-examples/) that is a javaScript module that contains tools to help me do various typical things that I want to do with curves in threejs. This module will have a number of tools that will help me to create Cuves, as well as arrays of vector3 objects using curves. I also have a number of methods that I can use to create what are often called alpha values as well using curves, as well as a number of other methods that can be used to debug what is going on with these sort of things. So in this post I will be writing about the source code of my current standing curves module as well as a number of demos that make us of this module.
 
 <!-- more -->
+
+## The curves module threejs example and what to know first
+
+Before you read the rest of this post it would be a good idea to know a thing or two about what you should know about before hand. There is a whole lot of ground to cover with that, and I will not be getting into every little detail about the Curve class, as well as various other threejs features, and things that have to do with client side javaScript in general as well. However I do like to make it so that this opening section outlines at least a few things that you might want to read up more on before reading the rest of this content.
+
+### Check out the THREE.Curve base class, as well as THREE.QuadraticBezierCurve3
+
+I have wrote a blog post on the [base curve class](/2022/06/17/threejs-curve/), as well as the [Quadratic Bezier Curve class](/2022/10/21/threejs-curve-quadratic-bezier-curve3/) that builds on top of that. There is also of course the official threejs docs on [Curves](https://threejs.org/docs/index.html#api/en/extras/core/Curve), [Bezier Curves](https://threejs.org/docs/index.html#api/en/extras/curves/QuadraticBezierCurve3) and also [Curve Paths](https://threejs.org/docs/index.html#api/en/extras/core/CurvePath) but I find that the docs do not always do the best job outlined every little detail starting with hello world style copy and paste examples.
+
+In any case it would be a good idea to work out at least one if not a lot of little demos involving the use of curves as there is a lot to be aware of when it comes to suing them. There is the [get point method](https://threejs.org/docs/index.html#api/en/extras/core/Curve.getPoint) that is a very useful method for example as it will return a vector3 object at any given point along the curve by passing a given alpha value as the first argument.
+
+### Check out the Vector3 class, Object3d, and the position property of Object3d
+
+There are a lot of ways that curves can be used in a threejs project, however maybe one of the first and foremost use case examples would be to use it as a way to get points at which to move an object such as a mesh object or camera. As I said the get point method of the curve class can be used to return an instance of the Vector3 class along a given curve. There are a number of things that could be done with this, one of which would be to use it as a way to set the position of an object3d based object. So then there is calling the copy method off of the position property of an obejct3d based object such as a mesh object and passing this returned vector3 object to do just that.
+
+In this post I assume that you are beyond the basics of using the vector3 class and know at least a thing or two about object3d and how it applys to any kind of object that would be added to a main scene object. If not you might want to read my main [blog post on the Vector3 class](/2018/04/15/threejs-vector3/), and maybe also my main post on the [Object3d class](/2018/04/23/threejs-object3d/) as well. I also have a post in which I [mainly focus on just the position property of the object3d class](/2022/04/04/threejs-object3d-position/) as well.
 
 
 ## 1 - The curves module R0, and demos
