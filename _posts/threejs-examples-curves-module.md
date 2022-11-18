@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1014
-updated: 2022-11-18 11:26:08
-version: 1.9
+updated: 2022-11-18 11:47:22
+version: 1.10
 ---
 
 The [THREE.Curve base class can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
@@ -52,6 +52,9 @@ I am sure that there will be nay more method and features that I will want to ad
 
 Here then is the source code for R0 of my curves tools that I have worked out thus far. At the very top of the module I have thus far just two private helper functions. One of these is a for path data helper function that I use for two methods that create and return a collection by a given array of arrays of data for arguments to be passed to the THREE.QuadraticBezierCurve3 function. By collection I mean one of two things, an array of Vector3 objects, or a curve path. The other helper function will create and return a curve that will be used for one of my functions that will return an alpha function.
 
+I then have a number of methods that will return a something that is based off the the base curve class such as a Quadratic Bezier Curve, or a curve path. There is the QBC3 method that is just an abstraction for the Quadratic Bezer Curve class. Then I have another method that is a little more than just that that I find useful by defining the control points as deltas from a point in the middle of the curve. I then also have another number of methods that are like these methods buy will return an array of vector3 objects rather than a curve.
+
+I then also have some methods that are a starting point for this idea of using curves to create alpha values, and then a number of methods that help me to debug things by getting a visual idea of what is going on using points and lines.
 
 ```js
 // curve.js - r0 - r146 prototype
