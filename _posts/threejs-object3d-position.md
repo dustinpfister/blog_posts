@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-10-31 11:14:44
-version: 1.37
+updated: 2022-11-18 11:36:05
+version: 1.38
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance  also applys to a whole lot of various objects that can be added to a scene object. Speaking of scene objects these too are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often referred to as world space.
@@ -30,19 +30,24 @@ There is no way I will ever cover every little detail then. Still I often use th
 
 There is a great deal to be aware of when it comes to the Object3d class in terms of properties as well as methods that often prove to be helpful. In this post I will be focusing mostly on features that have to do with setting position, but there is also checking out my post on the [object3d class in general](/2018/04/23/threejs-object3d/).
 
-### Read over what there is to work with when it comes to Vector3 also
+### Read over what there is to work with when it comes to Vector3
 
-The value of the position property of the Object3d class is an instance of the Vector3 class. This vector3 class as the name suggests stores the current state of a 3d Vector, and is also packed with a whole bunch of useful methods that have to do with the mutation of this kind of state. 
+The value of the position property of the Object3d class is an instance of the Vector3 class. This vector3 class as the name suggests stores the current state of a 3d Vector, and is also packed with a whole bunch of useful methods that have to do with the mutation of this kind of state. When it comes to Vector3, or any Vector for that matter there is thinking in terms of the direction of the Vector, and what is often called unit length. I will be touching base on a lot of what this all means in this post of course, but you might still want to check out my [main post on the Vector3 class](/2018/04/15/threejs-vector3/).
 
-When it comes to Vector3, or any Vector for that matter there is thinking in terms of the direction of the Vector, and what is often called unit length. I will be touching base on a lot of what this all means in this post of course, but you might still want to check out my [main post on the Vector3 class](/2018/04/15/threejs-vector3/).
+### Curves are great for moving objects along a path, so I started a threejs project example centered around that
+
+I have a section in this post in which I am writing about using curves as a way to get vector3 objects than can then be used to set the position of an object.  There is scrolling down to read that section to get a basic idea of what the deal is, but you might also want to check out my [threejs project in which I am making a module centered around the use of curves](/2022/11/18/threejs-examples-curves-module/). 
+
+
+### The Source code example in this post are on github
+
+The source code examples that I am writing about in this post [can be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-position). This is also the repository where I am parking all the other source code examples for the [many other posts on threejs](/categories/three-js/) that I have written thus far over the years.
 
 ### Be mindful of version numbers with threejs
 
 When I first wrote this post I was using r135 of threejs, and the last time I came around to do some editing I was using r140 of the library.
 
-### The Source code example in this post are on github
 
-The source code examples that I am writing about in this post [can be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-position). This is also the repository where I am parking all the other source code examples for the [many other posts on threejs](/categories/three-js/) that I have written thus far over the years.
 
 ## 1 - Basic examples of the position property of Object3d
 
