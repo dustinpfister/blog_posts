@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1014
-updated: 2022-11-18 12:01:24
-version: 1.12
+updated: 2022-11-18 12:49:33
+version: 1.13
 ---
 
 The [THREE.Curve base class can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
@@ -153,23 +153,33 @@ I then also have some methods that are a starting point for this idea of using c
     //-------- ----------
     // ALPHA FUNCTION
     //-------- ----------
-    api.createAlphaFunciton1 = ( grc_points ) => {
+    api.createAlphaFunciton1 = ( grc_points, clamp ) => {
+        clamp = clamp === undefined ? true : clamp;
         const curve = createAlphaCurve(grc_points);
         return function(givenAlpha){
-            return curve.getPoint(givenAlpha).y;
+            let a = curve.getPoint(givenAlpha).y;
+            if(clamp){
+                a = THREE.MathUtils.clamp(a, 0, 1);
+            }
+            return a;
         };
     };
-    api.createAlphaFunciton2 = ( grc_points ) => {
+    api.createAlphaFunciton2 = ( grc_points, clamp ) => {
+        clamp = clamp === undefined ? true : clamp;
         // use each path by itself
         const cp = createAlphaCurve(grc_points);
         return function(alpha){
-            alpha = alpha === 1 ? 0.99999999 : alpha;
+            alpha = alpha === 1 ? 0.9999999999 : alpha;
             const cLen = cp.curves.length;
             const curveIndex = Math.floor( cLen * alpha);
             const cc = cp.curves[ curveIndex];
             const a_cc = alpha %  ( 1 / cLen ) * ( cLen );
             const v3 = cc.getPoint( a_cc );
-            return v3.y;
+            let a = v3.y;
+            if(clamp){
+                a = THREE.MathUtils.clamp(a, 0, 0.9999999999);
+            }
+            return a;
         };
     };
     //-------- ----------
@@ -188,6 +198,25 @@ I then also have some methods that are a starting point for this idea of using c
         const points_debug = new THREE.Points(
             new THREE.BufferGeometry().setFromPoints(arrays.flat()),
             new THREE.PointsMaterial({ size: 0.25, color: new THREE.Color(0, 1, 0)})
+        );
+        return points_debug;
+    };
+    // debug points for a curve
+    api.debugPointsCurve = ( curve, opt ) => {
+        opt = opt || {};
+        opt.count = opt.count === undefined ? 100 : opt.count;
+        opt.getAlpha = opt.getAlpha || function(alpha){ return alpha; };
+        opt.size = opt.size === undefined ? 0.2 : opt.size;
+        opt.color = opt.color === undefined ? new THREE.Color(0,1,1) : opt.color;
+        const v3Array = [];
+        let i = 0;
+        while(i < opt.count){
+            v3Array.push( curve.getPoint( opt.getAlpha(i / opt.count ) ) );
+            i += 1;
+        }
+        const points_debug = new THREE.Points(
+            new THREE.BufferGeometry().setFromPoints(v3Array),
+            new THREE.PointsMaterial({ size: opt.size, color: opt.color})
         );
         return points_debug;
     };
@@ -416,64 +445,35 @@ try{
 // CURVE ALPHA
 // ---------- ----------
 const grc_points = [
-    [0.00,     0],
-    [0.10,     0],
-    [0.45,     0],
-    [1.00,     0],
-    [0.50,     0],
-    [0.75,     0],
-    [0.85,     0],
-    [1.00,     0],
-    [0.50,     0],
-    [0]
+    [0.00, 0],[1.00, 0.25], [0.50, -0.2], [0]
 ];
-const curveAlpha = curveMod.createAlphaFunciton2( grc_points );
+const curveAlpha = curveMod.createAlphaFunciton2( grc_points, false );
+//-------- ----------
+// CURVE PATH
+//-------- ----------
+const cp_meshpos = curveMod.QBCurvePath([
+   [5, 1, 5, -5, 1, -5,    5,0,-5]
+]);
 // ---------- ----------
-// OTHER GET ALPHA
+// DEBUG POINTS
 // ---------- ----------
-// create map linear method
-const createMapLinear = function(startAlpha, endAlpha){
-    startAlpha = startAlpha === undefined ? 0 : startAlpha;
-    endAlpha = endAlpha === undefined ? 0 : endAlpha;
-    return function(alpha){
-        return THREE.MathUtils.mapLinear(alpha, 0, 1, startAlpha, endAlpha);
-    };
-};
-const getAlpha = (alpha) => {
-    return alpha * 8 % 1;
-};
-const getBias = (alpha) => {
-    return 1 - Math.abs(0.5 - (alpha * 1 % 1) ) / 0.5;
-};
-const getSinBias = function(alpha){
-    const b = getBias(alpha * 4 % 1);
-    return Math.sin( Math.PI * 0.5 * b );
-};
-const smoothStep = function(alpha){
-    return THREE.MathUtils.smoothstep(alpha, 0, 1);
-};
-// ---------- ----------
-// ALPHA FUNC TO USE
-// ---------- ----------
-var alphaFunc = curveAlpha;
-//var alphaFunc = getAlpha;
-//var alphaFunc = getBias;
-//var alphaFunc = getSinBias;
-//var alphaFunc = smoothStep;
-//var alphaFunc = createMapLinear(0.25, 0.6);
-// ---------- ----------
-// DEBUG ALPHA FUNC
-// ---------- ----------
-const points = curveMod.debugAlphaFunction(alphaFunc, { count: 400 });
-scene.add(points);
+const pointsA = curveMod.debugAlphaFunction(curveAlpha, { count: 400, color: new THREE.Color(1, 1, 1) });
+scene.add(pointsA);
+const pointsM = curveMod.debugPointsCurve(cp_meshpos, { getAlpha: curveAlpha, color: new THREE.Color(0, 1, 0) });
+scene.add(pointsM);
 //-------- ----------
 // MESH
 //-------- ----------
-const mesh = new THREE.Mesh(
+const mesh1 = new THREE.Mesh(
     new THREE.SphereGeometry(0.5, 30, 30),
     new THREE.MeshNormalMaterial()
 );
-scene.add(mesh);
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(
+    new THREE.SphereGeometry(0.25, 30, 30),
+    new THREE.MeshNormalMaterial()
+);
+scene.add(mesh2);
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
@@ -486,9 +486,16 @@ lt = new Date();
 // update
 const update = function(frame, frameMax){
      const a1 = frame / frameMax;
-     const a2 = alphaFunc(a1);
-     mesh.position.x = -5 + 10 * a1;
-     mesh.position.z = 5 - 10 * a2;
+     const a2 = curveAlpha(a1);
+     if(a2 < 0 || a2 > 1){
+        console.log( 'out!' )
+     }
+     // useing mesh to to show point along get alpha
+     mesh2.position.x = -5 + 10 * a1;
+     mesh2.position.z = 5 - 10 * a2;
+     // using mesh1 to show how that can apply to the point
+     // spacing along another curve
+     mesh1.position.copy( cp_meshpos.getPoint(a2) );
 };
 // loop
 const loop = () => {
