@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1014
-updated: 2022-11-18 11:53:13
-version: 1.11
+updated: 2022-11-18 12:01:24
+version: 1.12
 ---
 
 The [THREE.Curve base class can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
@@ -313,7 +313,13 @@ loop();
 
 ### 1.2 - The Curve path module
 
-I also have another method that is just like that of the one that will return an array of vector3 objects but will return a curve path.
+I also have another method that is just like that of the one that will return an array of vector3 objects but will return a curve path. I can then use whatever alpha value I want when it comes to getting a point along that curve which is great. For this example thought I am not going to be doing anything fancy with that, and will save that for an additional example in this post.
+
+So then here I am using QB Curve Path method and passing an array of arrays just like that of what I pass when using the method that will return an array of points. One major difference thus is that I do not pass the number of points that I want as I am getting a curve that can be used to get any number of points that I want depending on how I use the curve. I am then just computing some simple, basic alpha values that I often use in various video projects to get the alpha value that I use with the get point method.
+
+The end result here is then a mesh object moving forward and then backward along the curve over the span of the animation here. The reason why though is because of the alpha value that I am giving the results in this kind of behavior. I will be getting more into this in additional demos of the module here, but for now there is just thinking in terms of what other kinds of expressions and methods there are to create these alpha values for the get point method.
+
+
 
 ```js
 //-------- ----------
