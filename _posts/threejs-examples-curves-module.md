@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1014
-updated: 2022-11-18 11:19:50
-version: 1.8
+updated: 2022-11-18 11:26:08
+version: 1.9
 ---
 
 The [THREE.Curve base class can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
@@ -30,6 +30,14 @@ In any case it would be a good idea to work out at least one if not a lot of lit
 There are a lot of ways that curves can be used in a threejs project, however maybe one of the first and foremost use case examples would be to use it as a way to get points at which to move an object such as a mesh object or camera. As I said the get point method of the curve class can be used to return an instance of the Vector3 class along a given curve. There are a number of things that could be done with this, one of which would be to use it as a way to set the position of an object3d based object. So then there is calling the copy method off of the position property of an obejct3d based object such as a mesh object and passing this returned vector3 object to do just that.
 
 In this post I assume that you are beyond the basics of using the vector3 class and know at least a thing or two about object3d and how it applys to any kind of object that would be added to a main scene object. If not you might want to read my main [blog post on the Vector3 class](/2018/04/15/threejs-vector3/), and maybe also my main post on the [Object3d class](/2018/04/23/threejs-object3d/) as well. I also have a post in which I [mainly focus on just the position property of the object3d class](/2022/04/04/threejs-object3d-position/) as well.
+
+### The Source code examples here are on Github
+
+I also have the source code examples that I am write about here [up on Github as well](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-create-path-tool).
+
+### Version Numbers matter
+
+When I first wrote this post I was using r146 of threejs.
 
 
 ## 1 - The curves module R0, and demos
