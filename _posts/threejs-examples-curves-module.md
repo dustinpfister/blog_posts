@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1014
-updated: 2022-11-18 09:25:22
-version: 1.6
+updated: 2022-11-18 09:27:57
+version: 1.7
 ---
 
 The [THREE.Curve base class](/2022/06/17/threejs-curve/) can be used as a way to create custom curve constructor functions, but one might need to even bother with that as there are a number of great built in curve constructor functions as well. In any case Curve objects, regardless if they are custom , or built in, are a great way to go about defining paths in 3d space. I am sure that they may also be useful for many other things in threejs such as creating the position attributes of geometry, but for now I am mainly focused on using curves to define paths that can be used to define the movement of objects over time.
@@ -20,7 +20,7 @@ In any case I will want to make a [threejs project example](/2021/02/19/threejs-
 
 There is going over the source code of the curve module itself, and then there is going over the source code of at least a few demos of the module as well. In this section I will be doing just that with the very first version of the curve module, and if I do end up using this often I am sure there will be addition revisions. In any case in this revision of the module the focus was to just have some basic tools for quickly creating curve objects using the threejs built in THREE.QuadraticBezierCurve3 class which is a great way to create curves using a start point, end point, and a single controls point all of which are instances of the Vector3 class. There are methods of the curve module that will return a curve, curve path, and also arrays of Vecotr3 objects that I can then quickly use with other projects that I have outside of this one.
 
-On top of just some methods that will create and return cuves and arrays of vector3 objects i also started a method that I can use to create and return an alpha function based on curve data. This is another major use case of curves that came to mind for me beyond just that of defining paths in s3 space. What I mean by an alpha function is something like the THREE.MathUtils.smoothstep function, and if you are not in the know with that, simply put a function that can be used to return a value between 0 and 1. You see there is not just defining a path in space, but also defining the spacing between points along a curve as well if that makes any sense and that is one use case for one of these alpha functions.
+On top of just some methods that will create and return curves and arrays of vector3 objects i also started a method that I can use to create and return an alpha function based on curve data. This is another major use case of curves that came to mind for me beyond just that of defining paths in s3 space. What I mean by an alpha function is something like the THREE.MathUtils.smoothstep function, and if you are not in the know with that, simply put a function that can be used to return a value between 0 and 1. You see there is not just defining a path in space, but also defining the spacing between points along a curve as well if that makes any sense and that is one use case for one of these alpha functions.
 
 I am sure that there will be nay more method and features that I will want to ad to this kind of module actually, but much of that is what I will want to leave for future revisions.
 
