@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2022-11-21 14:16:46
-version: 1.33
+updated: 2022-11-21 14:19:38
+version: 1.34
 ---
 
 When it comes to getting a reference to a [mesh object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model in client side javaScript alone. When it comes to html elements there is setting an id to an element, and then having the option to [get a reference to that element by id](/2018/12/27/js-document-getelementbyid/) later in a body of javaScript code. There are also a number of other options such as selecting by class, tag, and so forth as well.
@@ -31,7 +31,7 @@ When I wrote this post I was using three.js revision r127 of three.js which was 
 
 ## 1 - Basic get by name example
 
-I should start off with a basic getting started type example with the name property and the get by name method of the object3d class. In this example I create a group using the THREE.Group constructor which is also based on the Object3d class, so I set a name property for it. In then add to mesh objects to this group, each of them I also set a name for called just simply box1 and box2. Later on in the example I can then call the get object by name method off of the group to get the first box object in the group. I can then do something simple to that mesh object such as changing the rotation of the object.
+I should start off with a basic getting started type example with the name property and the get object by name method of the object3d class. In this example I create a group using the THREE.Group constructor which is also based on the Object3d class, so I set a name property for it. I then add two mesh objects to this group, each of them I also set a name for called just simply box1 and box2. Later on in the example I can then call the get object by name method off of the group to get the first box object in the group. I can then do something simple to that mesh object such as changing the rotation of the object.
 
 ```js
 // creating a group
@@ -50,20 +50,16 @@ var box = new THREE.Mesh(
 box.position.set(-2, 0, 0);
 box.name = 'box2';
 group.add(box);
-
 // box helper
 group.add(new THREE.BoxHelper(group));
 group.position.set(0, 0, 0);
-
 // scene
 var scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(5, 5));
 scene.add(group);
-
 // GETTING BOX1 BY THE NAME
 var box = group.getObjectByName('box1');
 box.rotation.set(Math.PI / 180 * 45, 0, 0);
-
 // camera and renderer
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(4, 4, 4);
@@ -74,7 +70,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-That is then the basic idea of the name property it is just like that of the id property when it comes to HTML elements. I can set a string value to a mesh object, and then I can get a reference to that mesh object later by using a method that can be used to get a reference to the object by this name string value. However in order to really get what this is all about solid I might want to work out at least a few more examples that prove to be something that is at least starting to look like some kind of actual project.
+That is then the basic idea of the name property it is just like that of the id property when it comes to HTML elements. I can set a string value to a mesh object, and then I can get a reference to that mesh object later by using a method that can be used to get a reference to the object by this name string value. Still it might be a good idea to take a look into some more examples of this, and also some additional ways to get references to objects in threejs projects.
 
 ## 2 - Using get by name to set custom values for each box in a group
 
