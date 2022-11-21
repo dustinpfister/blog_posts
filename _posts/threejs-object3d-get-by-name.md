@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2022-11-21 14:08:32
-version: 1.31
+updated: 2022-11-21 14:14:35
+version: 1.32
 ---
 
 When it comes to getting a reference to a [mesh object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model in client side javaScript alone. When it comes to html elements there is setting an id to an element, and then having the option to [get a reference to that element by id](/2018/12/27/js-document-getelementbyid/) later in a body of javaScript code. There are also a number of other options such as selecting by class, tag, and so forth as well.
@@ -19,17 +19,15 @@ So In this post I will of course be going over a few quick examples of this get 
 
 ## Object3d name property, and learning the basics first
 
-This is a post on the name property of the object3d class in three.js that is an empty string by default, but can be used to set a unique value that will act as a way to get a reference to the object at a later point in a body of javaScript code. This is an advanced post on three.js where I am just writing about one little property and some corresponding prototype method in the object3d class. 
+This is a post on the name property of the object3d class in three.js that is an empty string by default, but can be used to set a unique value for such an object. This name property will act as a way to get a reference to the object at a later point in a body of javaScript code by using the get object by name method. I will not be getting into detail about the object3d class and everything that it is based off of in this post. It should also go without saying that I will not be getting into the [basics of creating a three.js project](/2018/04/04/threejs-getting-started/) in general also, and assume that you have at least some background working with this javaScript library. However I do like to use these opening sections to write about a few things here and there that you might want to read up more on before continuing to read the rest of this post.
 
-I will not be getting into detail about the object3d class and everything that it is based off of in this post. It should also go without saying that I will not be getting into the [basics of creating a three.js project](/2018/04/04/threejs-getting-started/) in general also, and assume that you have at least some background working with this javaScript library.
+### Might want to read up more on the Object3d class in general
+
+There is a great deal more to be aware of when it comes to working with the object3d class so it would be a good idea to read up more on the [object3d class in general](/2018/04/23/threejs-object3d/) if you have some time to do so. The object3d class is a major base class in three.js, and here are a lot of other objects that are based off of the Object3d class such as Mesh objects, Cameras, Groups, and even the Scene object just to name a few things. So when it comes to learning something about the Object3d class such as the name property this is then something that can be applies to everything that is built on top of Object3d. The name property is then just one of these things to be aware of and there are many other tools in this very useful base class that one should look beyond just that of the get object by name method.
 
 ### Version Numbers are a big deal with three.js
 
 When I wrote this post I was using three.js revision r127 of three.js which was a late version of three.js at the time that I first wrote this post in May of 2021. In the future code breaking changes might be made that will case these code examples to no longer work, and such changes might happen sooner rather than later as three.js is a project that is moving fairly fast when it comes to development.
-
-### Might want to read up more on the Object3d class in general
-
-There is a great deal more to be aware of when it comes to working with the object3d class so it would be a good idea to read up more on the [object3d class in general](/2018/04/23/threejs-object3d/) if you have some time to do so. The object3d class is a major base class in three.js, and here are a lot of other objects that are based off of the Object3d class such as Mesh objects, cameras, Groups, and even the Scene object just to name a few things. So when it comes to learning something about the Object3d class such as the name property this is then something that can be applies to everything that is built on top of Object3d. SO the name property can be set for a mesh object, but it can also be set for things like groups, and cameras.
 
 ## 1 - Basic get by name example
 
