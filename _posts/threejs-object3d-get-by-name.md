@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2022-04-07 09:32:55
-version: 1.30
+updated: 2022-11-21 14:08:32
+version: 1.31
 ---
 
-When it comes to getting a reference to a [mesh object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model in client side javaScript alone. When it comes to html elements there is setting an id to an element, and then having the option to [get a reference to that element by id](/2018/12/27/js-document-getelementbyid/) later in a body of javaScript code. 
+When it comes to getting a reference to a [mesh object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model in client side javaScript alone. When it comes to html elements there is setting an id to an element, and then having the option to [get a reference to that element by id](/2018/12/27/js-document-getelementbyid/) later in a body of javaScript code. There are also a number of other options such as selecting by class, tag, and so forth as well.
 
-When it comes to the Object3d class in three.js there is an id property of each object3d instance, however I have found that this is something that I should not mess around with when it comes to setting my own id strings for mesh objects, [groups](/2018/05/16/threejs-grouping-mesh-objects/), [cameras](/2018/04/06/threejs-camera/) and anything based off of object3d. There is another property of Object3d that I can set to what I want, and that is [the name property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.name) that is more like that of the id property that I have come to know well in native client side javaScript. There is then the get object by name method of the object3d class that I can then use as a way to get an object in three.js that has a set name for it.
+When it comes to the Object3d class in three.js there is an id property of each object3d instance, however I have found that this is something that I should not mess around with. Still when it comes to setting my own unique strings for Mesh objects, [groups](/2018/05/16/threejs-grouping-mesh-objects/), [cameras](/2018/04/06/threejs-camera/) and anything based off of object3d that is an official threejs built in way to do so. There is another property of Object3d that I can set to what I want, and that is [the name property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.name) that is more like that of the id property that I have come to know well in native client side HTML. There is then the get object by name method of the object3d class that I can then use as a way to get an object in threejs that has a set name for it then.
+
+So In this post I will of course be going over a few quick examples of this get by name method for sure. However I might also want to expand by just making a few other demos that have to do with getting references to objects in general as well.
 
 <!-- more -->
 
