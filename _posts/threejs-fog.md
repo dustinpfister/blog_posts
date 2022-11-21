@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-11-21 15:31:51
-version: 1.54
+updated: 2022-11-21 15:42:21
+version: 1.55
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -19,21 +19,13 @@ In this post then, I will be going over a basic example of fog in a three.js pro
 
 ## Threejs fog and What to know before hand
 
-This is a post on how to go about adding fog to a scene object when making a project with the javaScript library known as three.js. You should have some knowledge of three.js to begin with there, and also additional skills that are required before even getting into threejs, such as basics javaScript development in general. Otherwise you might have a hard time befitting from what I am writing about in this post. 
+This is a post on how to go about adding fog to a scene object when making a project with the javaScript library known as threejs. With that said you should have some knowledge of threejs to begin with, and also additional skills that are required before even getting into threejs. I thus assume that you have at least a little experience with javaScript development in general then. Otherwise you might have a hard time getting something of value from what I am writing about on in this post
 
-I have written a post on how to [get started with three.js](/2018/04/04/threejs-getting-started/) if you are completely new on how to work with three.js that might be a decent starting point. When it comes to [getting started with javaScript in general](/2018/11/27/js-getting-started/) I have wrote a number of posts on that before hand as well, so I will not be getting into detail about the basics of threejs and javaScript here. However In this section I will be going over some things that you might want to read up on more that are closely related to the topic of fog in threejs though.
+I have written a post on how to [get started with three.js](/2018/04/04/threejs-getting-started/) if you are completely new on how to work with threejs that might be a decent starting point. When it comes to [getting started with javaScript in general](/2018/11/27/js-getting-started/) I have wrote a number of posts on that before hand as well, so I will not be getting into detail about the basics of threejs and javaScript here. However In this section I will be going over some things that you might want to read up on more that are closely related to the topic of fog in threejs though.
 
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/qDhzsXUyuY8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
-### The source code examples here can be found on github
-
-The source code examples that I am writing about here can be found on my [test threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-fog) repository, along with many other examples for all my other posts. So if you see something wrong with one of the source code examples here that is where a pull request can be made. There is also the comments section of this blog post that can be used to bring something up that might need to be changed, or added.
-
-### Version numbers matter with three.js
-
-The version of three.js is something that is important when writing post on it, often many code breaking changes are introduced that will result in older examples no longer working. When I first started writing this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited this [post I as using r127](https://github.com/mrdoob/three.js/tree/r127). It would seem that not much of anything has changed with fog alone at least thus far, but still this is always something that a developer should be aware of when it comes to the fact that three.js is a fairly fast moving target in terms of development.
 
 ### Be mindful of what material you are using when adding fog
 
@@ -43,7 +35,19 @@ Not all materials will work with fog, for example the Normal Material will not w
 
 The scene.fog property is of course a feature of the THREE.Scene class, and there is a [great deal more to know about this scene class](/2018/05/03/threejs-scene/) and the objects that it creates beyond just that of the fog property. For example there is the background property of the scene object which can be used to set a solid color background, or a [cube texture](/2018/04/22/threejs-cube-texture/) for the scene. 
 
-There is also a great deal that branches off from the scene object such as the fact that a scene object is one of many objects in threejs that is based on the [Object3d class](/2018/04/23/threejs-object3d/). It is Also a good idea to become familiar with the [THREE.Color](/2021/05/03/threejs-color/) class that can be used to create a color object for the background, as well as for the fog color of a scene. This color constructor can also be used to set solid color properties for the materials used with a mesh also such as the color property that will respond to light.
+There is also a great deal that branches off from the scene object such as the fact that a scene object is one of many objects in threejs that is based on the [Object3d class](/2018/04/23/threejs-object3d/). There is a great deal to write about when it comes to object3d and I would say it is a major part of the library that any developer that is new with the library should get solid with right away.
+
+### Check out the Color Class in threejs
+
+When I make a fog object I will want to set a color for the fog. Also I will want to typically make the solid color background of the scene the same a s the fog color as well for most projects that I have made thus far at least. The reason why I say that is that the fog will effect just the materials of mesh objects that support fog, and if the fog color does not mach up the the background I might not get a desired look. However in any case, speaking about color there is a nice built in class called [THREE.Color](/2021/05/03/threejs-color/) that can be used to create a color object and use that to set the fog and background color to the same color object. I can then change the state of this color object and that will update the state of the background and fog color at once. The Color class is also great for just working with color in general both inside and outside of threejs away so it is worth reading about a bit more.
+
+### The source code examples here can be found on github
+
+The source code examples that I am writing about here can be found on my [test threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-fog) repository, along with many other examples for all my other posts. So if you see something wrong with one of the source code examples here that is where a pull request can be made. There is also the comments section of this blog post that can be used to bring something up that might need to be changed, or added.
+
+### Version numbers matter with three.js
+
+The version of three.js is something that is important when writing post on it, often many code breaking changes are introduced that will result in older examples no longer working. When I first started writing this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited this [post I as using r127](https://github.com/mrdoob/three.js/tree/r127). It would seem that not much of anything has changed with fog alone at least thus far, but still this is always something that a developer should be aware of when it comes to the fact that three.js is a fairly fast moving target in terms of development.
 
 ## 1 - Simple static scene example of Fog in threejs
 
