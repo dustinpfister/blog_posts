@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2022-11-21 14:25:15
-version: 1.35
+updated: 2022-11-21 15:21:44
+version: 1.36
 ---
 
 When it comes to getting a reference to a [mesh object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model in client side javaScript alone. When it comes to html elements there is setting an id to an element, and then having the option to [get a reference to that element by id](/2018/12/27/js-document-getelementbyid/) later in a body of javaScript code. There are also a number of other options such as selecting by class, tag, and so forth as well.
@@ -25,9 +25,15 @@ This is a post on the name property of the object3d class in three.js that is an
 
 There is a great deal more to be aware of when it comes to working with the object3d class so it would be a good idea to read up more on the [object3d class in general](/2018/04/23/threejs-object3d/) if you have some time to do so. The object3d class is a major base class in three.js, and here are a lot of other objects that are based off of the Object3d class such as Mesh objects, Cameras, Groups, and even the Scene object just to name a few things. So when it comes to learning something about the Object3d class such as the name property this is then something that can be applies to everything that is built on top of Object3d. The name property is then just one of these things to be aware of and there are many other tools in this very useful base class that one should look beyond just that of the get object by name method.
 
+### Source code is up on Github
+
+The source code examples that I am writing about here in this post can also be [found on Github in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-get-by-name). This is also where I park the source code for my many [other posts on threejs](/categories/three-js/) as well.
+
 ### Version Numbers are a big deal with three.js
 
-When I wrote this post I was using three.js revision r127 of three.js which was a late version of three.js in May of 2021. In the future code breaking changes might be made that will cause these code examples to no longer work, and such changes might happen sooner rather than later. Three.js is a project that is moving fairly fast when it comes to development so always be mindful of what the revision number was that a person might have been using when reading something on the open web that has to do with threejs.
+When I wrote this post I was using three.js revision r127 of three.js which was a late version of three.js in May of 2021. Also I do get around to editing my content on threejs every now and then and with that said the lat time I came around to edit this I got all the source code examples working just fine with r146 of threejs. As of r141+ I am now using the WebGL1 renderer so the code examples may now break on older versions of threejs, but one might just only need to make changes with that to get them working.
+
+In the future code breaking changes might be made that will cause these code examples to no longer work, and such changes might happen sooner rather than later. Three.js is a project that is moving fairly fast when it comes to development so always be mindful of what the revision number was that a person might have been using when reading something on the open web that has to do with threejs.
 
 ## 1 - Basic get by name example
 
