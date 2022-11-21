@@ -5,14 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-11-18 08:28:48
-version: 1.88
+updated: 2022-11-21 15:46:23
+version: 1.89
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
 
 There is the official set of [threejs examples](https://threejs.org/examples/) that I think people should check out first and foremost before looking at other peoples examples on random blogs such as this one. The examples there are not just application examples also mind you, as there are a great deal of official modules for doing all kinds of things that are not baked into the core of the library itself. However often I might find myself wanting to do something to which there is not an official example of, which it turn would lead me to various posts on stack overflow, and the occasional blog post such that is a collection of threejs project example ideas. This is then my take on that kind of post so lets get to the examples I have thus far.
-
 
 <!-- more -->
 
@@ -63,7 +62,9 @@ I wanted to make a quick simple three.js project that will helper me to just get
 
 ### [ 2.9 - Camera Kit ](/2022/08/05/threejs-examples-camera-kit/)
 
-This is a project that has to do with updaing the values of a camera over time.
+This is a project that has to do with updating the values of a camera over time. However at the time of this writing it would seem that for the most part I made this project in such a way that I am just working out ways to move a camera around in an over all scene object. Sense I first made this project I now have a number of other examples here that I have made that work well not just for the same of moving cameras around but very much objects in general actually.
+
+Sooner or later I might get around to adding more features that have to do with updating values of a camera that are not just object3d based values, but rather values that have to do more with a camera object alone.
 
 
 ### [ 2.10 - A Basic Clock Example](/2019/12/16/threejs-examples-clock-basic/)
