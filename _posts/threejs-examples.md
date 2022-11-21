@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-11-21 15:46:23
-version: 1.89
+updated: 2022-11-21 15:52:28
+version: 1.90
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -77,11 +77,11 @@ This is a quick 3d path creation tool example that I started and might work on a
 
 ### [ 2.12 - Cube Stack Example](/2022/04/29/threejs-examples-cube-stack/)
 
-I while back I made a cool little example for my blog post on the orthographic camera, for this example I took that source code and added a lot more to it.
+I while back I made a cool little example for my blog post on the orthographic camera, for this example I took that source code and added a lot more to it. The added features mainly have to do with adding additional effects that have to do with how to go about updating the stacks of cubes on top of each other. This might prove to be an example that I might reuse a little now and then from one project to another in order to just have something interesting to look at when making a demo for some other threejs feature.
 
 ### [ 2.13 - Cube Stack Grid Example](/2022/05/02/threejs-examples-cube-stack-grid/)
 
-I wanted to continue with my cube stack module and make an example that is a grid where each tile in the grid is an instance of my cube stack module.
+I wanted to continue with my cube stack module and make an example that is a grid where each tile in the grid is an instance of my cube stack module. I had a lot of fun making this one and the end result looks kind of cool. However I can not say that this is the kind of examples that i will be putting a great deal more time into any time soon. I starred another project that is like this one, but it is more in tune with having a grid of objects in general which is something that will be taking priority over this for sure.
 
 ### [ 2.14 - ](/2022/11/18/threejs-examples-curves-module/)
 
