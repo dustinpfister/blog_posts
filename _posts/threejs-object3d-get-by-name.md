@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2022-11-21 14:14:35
-version: 1.32
+updated: 2022-11-21 14:16:46
+version: 1.33
 ---
 
 When it comes to getting a reference to a [mesh object](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model in client side javaScript alone. When it comes to html elements there is setting an id to an element, and then having the option to [get a reference to that element by id](/2018/12/27/js-document-getelementbyid/) later in a body of javaScript code. There are also a number of other options such as selecting by class, tag, and so forth as well.
@@ -27,11 +27,11 @@ There is a great deal more to be aware of when it comes to working with the obje
 
 ### Version Numbers are a big deal with three.js
 
-When I wrote this post I was using three.js revision r127 of three.js which was a late version of three.js at the time that I first wrote this post in May of 2021. In the future code breaking changes might be made that will case these code examples to no longer work, and such changes might happen sooner rather than later as three.js is a project that is moving fairly fast when it comes to development.
+When I wrote this post I was using three.js revision r127 of three.js which was a late version of three.js in May of 2021. In the future code breaking changes might be made that will cause these code examples to no longer work, and such changes might happen sooner rather than later. Three.js is a project that is moving fairly fast when it comes to development so always be mindful of what the revision number was that a person might have been using when reading something on the open web that has to do with threejs.
 
 ## 1 - Basic get by name example
 
-So then I should start off with a basic getting started type example with the name property and the get by name method of the object3d class. In this example I create a group using the THREE.Group constructor which is also based on the Object3d class, so I set a name property for it. In then add to mesh objects to this group, each of them I also set a name for called just simply box1 and box2. Later on in the example I can then call the get object by name method off of the group to get the first box object in the group. I can then do something simple to that mesh object such as changing the rotation of the object.
+I should start off with a basic getting started type example with the name property and the get by name method of the object3d class. In this example I create a group using the THREE.Group constructor which is also based on the Object3d class, so I set a name property for it. In then add to mesh objects to this group, each of them I also set a name for called just simply box1 and box2. Later on in the example I can then call the get object by name method off of the group to get the first box object in the group. I can then do something simple to that mesh object such as changing the rotation of the object.
 
 ```js
 // creating a group
