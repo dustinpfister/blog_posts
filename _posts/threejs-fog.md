@@ -1,19 +1,19 @@
 ---
-title: Adding a Fog effect in three.js
+title: Adding a Fog effect to a threejs project
 date: 2018-04-16 11:59:00
 tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-04-20 16:37:40
-version: 1.53
+updated: 2022-11-21 15:31:51
+version: 1.54
 ---
 
-Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2) constructor functions, and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
+Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
 
-A Fog is a nice effect to have for most projects as it allows for a more graceful transition from rendering something that is within range of a render distance, to no longer rendering when an object is to far from the camera, as apposed to the object just all of a sudden disappearing. Even if you have the far value of the camera set to a high value so that the object is just a single pixel before it is no longer rendered, it can still be a nice additional effect on top of the object just simply getting smaller. However with that said that alone is just one of many little additional details that have to do with the over all process of working fog into a scene. That is taking into account what the current values are for the near and far values of the camera and do then need to be tweaked, or given some kind of UI control also.
+A Fog is a nice effect to have for most projects as it allows for a more graceful transition from rendering something that is within range of a render distance, to no longer rendering when an object is to far from the camera. Even if I have the far value of the camera set to a high value so that the object is just a single pixel before it is no longer rendered, it can still be a nice additional effect on top of the object just simply getting smaller. 
  
-In this post then, I will be going over a basic example of fog in a three.js project, and after that I will be getting into at least a few more examples also while I am at it. So then in the process of covering fog in threejs, I will also be touching base on a few other three.js rated topics such as the nature of the [ mesh standard material](/2021/04/27/threejs-standard-material/) which is one option when it comes to [using a material](/2018/04/30/threejs-materials/) that will work with fog, among many other things that will come up while adding fog to a scene.
+In this post then, I will be going over a basic example of fog in a three.js project, and after that I will be getting into at least a few more examples also while I am at it. What I am at it I will also be touching base on a few other three.js rated topics such as the nature of the [ mesh standard material ](/2021/04/27/threejs-standard-material/) which is one option when it comes to [using a material](/2018/04/30/threejs-materials/) that will work with fog. There is also writing at least a thing or two about the subject of color, and not just setting the fog color but the background color as well.
 
 <!-- more -->
 
@@ -25,6 +25,7 @@ I have written a post on how to [get started with three.js](/2018/04/04/threejs-
 
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/qDhzsXUyuY8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### The source code examples here can be found on github
 
