@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2022-11-22 12:20:27
-version: 1.20
+updated: 2022-11-22 12:25:08
+version: 1.21
 ---
 
 I was thinking about slapping together a quick project that makes use of the Raycaster class to create a simple yet effective menu system in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](https://threejs.org/docs/#api/en/core/Raycaster) at some point sooner or layer as it is a very usful tool when it comes to figuring out how to click a mesh object sort of speak. The Raycaster constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. This raycaster class can be used to find one or more objects from any point in space to another also actually, but for todays [threejs project](/2021/02/19/threejs-examples/) example a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
@@ -126,6 +126,8 @@ Here I have the source code for r0 of my menu.js module that seems to work okay 
 This is my first basic demo of r0 of menu.js where I just want to create a few buttons and have the scale of each button change when a button is clicked. So after creating my typical set of objects that I want when making any threejs project I then call the main create method of the menu module. I then use the scene, renderer, and camera objects that I just created for the menu by passing them with the options object when calling the create method. In addition to that I also set the number of buttons that I want for the menu, and define a custom on click method.
 
 The custom on click method that I made for this demo will just set a scale delta value for the button that was clicked to a given amount. This amount will then be used in the process of setting the actual scale value that will be used in an update method. Also in this update method the scale value will reduce over time.
+
+I am then using the object3d traverse method to loop over all the objects of the main group of the menu that is returned. I could use this to do things like set up new materials, and anything else that i would want to change on a mesh by mesh basic. However for the sake of this demo I just want to set up some values for the user data objects of each mesh object.
 
 ```js
 // ---------- ---------- ----------
