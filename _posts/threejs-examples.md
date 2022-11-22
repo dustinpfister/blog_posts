@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-11-22 09:30:59
-version: 1.92
+updated: 2022-11-22 09:31:43
+version: 1.93
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -140,6 +140,9 @@ This is an example that shows something that might prove to be a problem when us
 ### [ 2.25 - Many Object Tweening](/2022/08/26/threejs-examples-many-object-tweening/)
 
 A javaScript module that works with several other assets to have a way to tween between many different objects at the same time. When I first started this project this is mainly just the position attribute of the buffer geometry objects of mesh objects, but the general idea that I had in mind was objects in general actually. Anyway this is kind of a cool project so far as I can create a number of mesh objects with differing states and create a new geometry that is a kind of mean between all the points of them by giving the objects and alpha values for each of them as well.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/xfzR932YClU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### [ 2.26 - Menus with threejs](/2021/12/03/threejs-examples-menus/)
 
