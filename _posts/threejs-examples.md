@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-11-21 15:52:28
-version: 1.90
+updated: 2022-11-22 09:27:34
+version: 1.91
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -143,7 +143,7 @@ A javaScript module that works with several other assets to have a way to tween 
 
 ### [ 2.26 - Menus with threejs](/2021/12/03/threejs-examples-menus/)
 
-If you have not looked into working with a ray caster yet you might want to do so at some point, that truly is the case if you want to make some kind of user interface with threejs among other tasks in which a ray cater comes in handy. Simply put a ray caster is a way to go about finding out if one or more mesh objects have been clicked on by casting a ray from a position such as the position of the camera outward from the camera to get whatever mesh objects come in contact with that ray.
+If you have not looked into working with the ray caster class yet you might want to do so at some point. A Raycaster is object will be a very useful tool if yo want to make some kind of user interface using threejs and you need to have a way to allow for the user to click a mesh object. This is then a project in which I am starting to work out some kind of standard system for quickly creating a user interface with threejs and a little additional javaScript code. However at the time of this writing this project still requires a fair amount of work. The basic crude idea is working okay for me sure, but I would not say this is an example of my best foot forward here.
 
 ### [ 2.27 - Nested groups](/2021/05/10/threejs-examples-nested-groups/)
 
