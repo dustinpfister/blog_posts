@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2022-11-22 12:08:32
-version: 1.19
+updated: 2022-11-22 12:20:27
+version: 1.20
 ---
 
 I was thinking about slapping together a quick project that makes use of the Raycaster class to create a simple yet effective menu system in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](https://threejs.org/docs/#api/en/core/Raycaster) at some point sooner or layer as it is a very usful tool when it comes to figuring out how to click a mesh object sort of speak. The Raycaster constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. This raycaster class can be used to find one or more objects from any point in space to another also actually, but for todays [threejs project](/2021/02/19/threejs-examples/) example a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
@@ -37,7 +37,7 @@ Speaking of the create options I have also added a long of additional basic opti
 
 ### 1.a - The menus module \( r0 \)
 
-Here I have the source code for r0 of my menu.js module that seems to work okay thus far.
+Here I have the source code for r0 of my menu.js module that seems to work okay thus far. There is just one public method that I call in a project in which I use this that will create and return an object that will contain a group of mesh objects. Each mesh object of the group will be a button that when clicked will fire an on click method and pass a ref to that button mesh object as an argument for the on click method. So then I can set a number of buttons that I want for the menu, and then a custom on click method where I will define the logic that I want to call when a button object is clicked.
 
 ```js
 // menu.js - r0 - from threejs-examples-menus
@@ -123,7 +123,9 @@ Here I have the source code for r0 of my menu.js module that seems to work okay 
 
 ### 1.1 - Basic demo of the module where the button scale just changes when clicked
 
-This is my first basic demo of r0 of menu.js where I just want to create a few buttons and have the scale of each button change when a button is clicked.
+This is my first basic demo of r0 of menu.js where I just want to create a few buttons and have the scale of each button change when a button is clicked. So after creating my typical set of objects that I want when making any threejs project I then call the main create method of the menu module. I then use the scene, renderer, and camera objects that I just created for the menu by passing them with the options object when calling the create method. In addition to that I also set the number of buttons that I want for the menu, and define a custom on click method.
+
+The custom on click method that I made for this demo will just set a scale delta value for the button that was clicked to a given amount. This amount will then be used in the process of setting the actual scale value that will be used in an update method. Also in this update method the scale value will reduce over time.
 
 ```js
 // ---------- ---------- ----------
@@ -327,4 +329,5 @@ This example alone as well as many of the other simple project examples I have m
 
 I have poked my head in and edited this content piece a little at this time, but I can not say that this example has a high priority for me when it comes to putting a little more time into it. I have a lot of pots boiling all at once and this project is on a far back burner it at the moment. I seem to me more interested in using threejs as a way to make programs that have to do with making videos, rather than some kind of menu system.
 
-Still when this is up and running the very crude, basic idea, is in fact working. So what needs to happen is just a little refinement of the source code in terms of a standard module type project that I can drop into a folder and link to.
+Still when this is up and running the very crude, basic idea, is in fact working. So what needs to happen is just a little refinement of the source code in terms of a standard module type project that I can drop into a folder and link to. There is just a lot more that I would like to add in any and all future revisions of this module that may or may not come to pass if I do ever put more time into this one at some point in the future. Some additional public methods that will help with the process of styling the buttons for one thing maybe.
+
