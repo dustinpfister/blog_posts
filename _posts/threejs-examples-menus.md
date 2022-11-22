@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2022-11-22 09:10:34
-version: 1.15
+updated: 2022-11-22 09:13:23
+version: 1.16
 ---
 
 I was thinking about slapping together a quick project that makes use of the Raycaster class to create a simple yet effective menu system in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](https://threejs.org/docs/#api/en/core/Raycaster) at some point sooner or layer as it is a very usful tool when it comes to figuring out how to click a mesh object sort of speak. The Raycaster constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. This raycaster class can be used to find one or more objects from any point in space to another also actually, but for todays [threejs project](/2021/02/19/threejs-examples/) example a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
@@ -15,7 +15,12 @@ I was thinking about slapping together a quick project that makes use of the Ray
 
 ## Making a menu system in threejs and What to know first
 
-There are a lot of things that you should know before getting into how to go about making a menu system with three.js. There is of course starting out with a [basic getting started type example with threejs](/2018/04/04/threejs-getting-started/) if you still have very little experience with threejs first. However beyond that it might be better to just start out with some very basic hello world type examples with [the raycaster class in threejs first](/2021/05/18/threejs-raycaster/). Once one gains a decent grasp on the raycaster class it becomes clear what the various use case examples are for it, and one typical thing to do would be to work out some kind of menu system using it.
+There are a lot of things that you should know before getting into how to go about making a menu system with three.js. There is of course starting out with a [basic getting started type example with threejs](/2018/04/04/threejs-getting-started/) if you still have very little experience with threejs first. 
+
+### read up more on the Raycaster class
+
+It might be better to just start out with some very basic hello world type examples with [the raycaster class in threejs first](/2021/05/18/threejs-raycaster/). Once one gains a decent grasp on the raycaster class it becomes clear what the various use case examples are for it, and one typical thing to do would be to work out some kind of menu system using it. However I also find it very usful for other tasks as well such as having a way to position a mesh object to the surface of another mesh object and doing so in a way that will work well with just about any kind of geometry.
+
 ### Check your version numbers
 
 When I was working on this threejs example last I was using [threejs r135](https://github.com/mrdoob/three.js/releases/tag/r135), and the code seems to be working well for me at that time. If the code examples here are not working for you the version of threejs is what you are going to want to check first. AFter that you might be running into some other kind of problem.
