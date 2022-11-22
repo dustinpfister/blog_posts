@@ -1,28 +1,28 @@
 ---
-title: Menus and crude state machine threejs example
+title: Menus System threejs project example
 date: 2021-12-03 15:00:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2022-04-07 11:20:51
-version: 1.13
+updated: 2022-11-22 09:07:24
+version: 1.14
 ---
 
-It has been a few months sense the last time I started a new post on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) so then with that said I think it might be called for to write a new [three example](/2021/02/19/threejs-examples/) type post. This time I was thinking about slapping together a quick project that makes use of Raycaster to create a simple yet effective menu system. If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](https://threejs.org/docs/#api/en/core/Raycaster) at some point sooner or layer of you like playing around with threejs. The Raycasetr constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. So then the use of a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
+I was thinking about slapping together a quick project that makes use of the Raycaster class to create a simple yet effective menu system in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](https://threejs.org/docs/#api/en/core/Raycaster) at some point sooner or layer as it is a very usful tool when it comes to figuring out how to click a mesh object sort of speak. The Raycaster constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. This raycaster class can be used to find one or more objects from any point in space to another also actually, but for todays [threejs project](/2021/02/19/threejs-examples/) example a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
 
 <!-- more -->
 
 ## Making a menu system in threejs and What to know first
 
 There are a lot of things that you should know before getting into how to go about making a menu system with three.js. There is of course starting out with a [basic getting started type example with threejs](/2018/04/04/threejs-getting-started/) if you still have very little experience with threejs first. However beyond that it might be better to just start out with some very basic hello world type examples with [the raycaster class in threejs first](/2021/05/18/threejs-raycaster/). Once one gains a decent grasp on the raycaster class it becomes clear what the various use case examples are for it, and one typical thing to do would be to work out some kind of menu system using it.
-
-
-### Check your version numbers, and source is on Github
+### Check your version numbers
 
 When I was working on this threejs example last I was using [threejs r135](https://github.com/mrdoob/three.js/releases/tag/r135), and the code seems to be working well for me at that time. If the code examples here are not working for you the version of threejs is what you are going to want to check first. AFter that you might be running into some other kind of problem.
 
-Also the source code for this threejs example can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs). I also have the source code for [my many other posts on threejs](/categories/three-js/) located in that repository as well.
+### Source is on Github
+
+The source code for this threejs example can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs). I also have the source code for [my many other posts on threejs](/categories/three-js/) located in that repository as well.
 
 ## 1 A Basic example of this threejs powered menu system
 
