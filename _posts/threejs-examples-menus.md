@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2022-11-22 09:07:24
-version: 1.14
+updated: 2022-11-22 09:10:34
+version: 1.15
 ---
 
 I was thinking about slapping together a quick project that makes use of the Raycaster class to create a simple yet effective menu system in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](https://threejs.org/docs/#api/en/core/Raycaster) at some point sooner or layer as it is a very usful tool when it comes to figuring out how to click a mesh object sort of speak. The Raycaster constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. This raycaster class can be used to find one or more objects from any point in space to another also actually, but for todays [threejs project](/2021/02/19/threejs-examples/) example a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
@@ -24,7 +24,7 @@ When I was working on this threejs example last I was using [threejs r135](https
 
 The source code for this threejs example can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs). I also have the source code for [my many other posts on threejs](/categories/three-js/) located in that repository as well.
 
-## 1 A Basic example of this threejs powered menu system
+## 1 - A Basic example of this threejs powered menu system
 
 In this section I will be starting out with just the basics of what needs to happen first in order to get this menu system up and running. The main thing is that I have at least one javaScript sm.js file that provides a means to create what I am calling a state machine object. This library just has one public method thus far that is used to create and return a main state machine object. This state machine object can then be used in a main app loop of a main javaScript file thus far. 
 
@@ -150,7 +150,7 @@ loop();
 
 For now the basic idea of what I want to happen seems to work just fine as expected. When I client one of the mesh objects in the scene the default message is shown in the javaScript console. So then the module even in its current from seems to work okay thus far. So then now that the basic idea of what I have in mind seems to work the next step is maybe just making one or more examples that are a little more interesting than this. Something that works like that of some kind if DVD menu or something to that effect would be cool.
 
-## 2 - Conclusion
+## Conclusion
 
 It has been a while sense I worked on anything with threejs so I am a little rusty when it comes to working with it. However it would seem that my content on threejs is taking off a little so it seems like I might be writing some new content on three.js as well as editing my older content while I am at it soon.
 
