@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-11-21 15:42:21
-version: 1.55
+updated: 2022-11-23 07:57:49
+version: 1.56
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -31,6 +31,19 @@ I have written a post on how to [get started with three.js](/2018/04/04/threejs-
 
 Not all materials will work with fog, for example the Normal Material will not work with fog, but the Lambert and standard materials will. If you have not done so before hand it might be a good idea to go over all the materials that there are to work with out of the box with threejs, and work out some basic examples of each. Also play around with lights and so forth in order to get a better sense of what the options are for materials that will not just work well with fog, but also light sources. I have [my post on materials in general](/2018/04/30/threejs-materials/), but for this post I will be sticking to the standard material as that seems to be one of the best general middle of the road type material options for light, fog, performance, and appearance.
 
+So then you will want to make sure that you are using a material that can be effected by fog to begin with. Some materials will not work with a fog at all then actually, one such material would be the [MeshNormalMaterial](https://threejs.org/docs/index.html#api/materials/MeshNormalMaterial). To help with this you can check the fog boolean which is a property of the base [Material class](https://threejs.org/docs/index.html#api/materials/Material). For example if I create an instance of the normal material the fog boolean for that material is false, while the fog boolean for a material that does support for such as the [Lambert material](/2018/04/08/threejs-lambert-material/) will return true for this value.
+
+```js
+    var material = new THREE.MeshNormalMaterial();
+    console.log(material.fog); // false
+    var material = new THREE.MeshLambertMaterial({
+            color: 0xff0000,
+            emissive: 0x080808
+        });
+    console.log(material.fog); // true
+```
+
+
 ### Read up more on the scene object in general
 
 The scene.fog property is of course a feature of the THREE.Scene class, and there is a [great deal more to know about this scene class](/2018/05/03/threejs-scene/) and the objects that it creates beyond just that of the fog property. For example there is the background property of the scene object which can be used to set a solid color background, or a [cube texture](/2018/04/22/threejs-cube-texture/) for the scene. 
@@ -40,6 +53,23 @@ There is also a great deal that branches off from the scene object such as the f
 ### Check out the Color Class in threejs
 
 When I make a fog object I will want to set a color for the fog. Also I will want to typically make the solid color background of the scene the same a s the fog color as well for most projects that I have made thus far at least. The reason why I say that is that the fog will effect just the materials of mesh objects that support fog, and if the fog color does not mach up the the background I might not get a desired look. However in any case, speaking about color there is a nice built in class called [THREE.Color](/2021/05/03/threejs-color/) that can be used to create a color object and use that to set the fog and background color to the same color object. I can then change the state of this color object and that will update the state of the background and fog color at once. The Color class is also great for just working with color in general both inside and outside of threejs away so it is worth reading about a bit more.
+
+### Linear vs exponential fog
+
+There are two build in fog constructors in three.js, one of with is linear in terms of the fog effect, while the other is exponential with it. The simple linear fog constructor is the THREE.Fog constructor that takes three arguments, the first is the fog color, and then the other two are the near and far distance values for the fog effect.
+
+So then the THREE.Fog constrictor can be used like this:
+
+```js
+scene.fog = new THREE.Fog(0xffffff, 0.25, 3);
+```
+
+The THREE.FogExp2 constructor then just takes two arguments, the color, and a value that represents the exponential rate at which the fog will grow denser.
+
+
+```js
+scene.fog = new THREE.FogExp2(0xffffff, 0.001);
+```
 
 ### The source code examples here can be found on github
 
@@ -165,38 +195,7 @@ Inside the body of the animation loop I am then going to want to move the mesh o
 
 In this demo I put in a simple loop to have a mesh move back and forth from the camera as a way to show off the fog effect and how the intensity of the fog will change depending on the distance of the object from the camera. The effect seems to work just as I would expect, and adjusting the density value with the THREE.ForExp2 fog will make the fog more or less dense when it comes to playing around with this a little. Speaking of that I think I should write more about the density value, as well as the near and far values when it comes to the linear fog that is created with the THREE.Fog constructor in a later section in this post. For now I just wanted to have an example that I just one little step forward from a simple static scene.
 
-## 3 - Check your materials
-
-You will want to make sure that you are using a material that can be effected by fog. Some materials will not work with a fog, such as the [MeshNormalMaterial](https://threejs.org/docs/index.html#api/materials/MeshNormalMaterial). To help with this you can check the fog boolean which is a property of the base [Material class](https://threejs.org/docs/index.html#api/materials/Material). For example if I create an instance of the normal material the fog boolean for that material is false, while the fog boolean for a material that does support for such as Lambert will return true for this value.
-
-```js
-    var material = new THREE.MeshNormalMaterial();
-    console.log(material.fog); // false
-    var material = new THREE.MeshLambertMaterial({
-            color: 0xff0000,
-            emissive: 0x080808
-        });
-    console.log(material.fog); // true
-```
-
-## 4 - linear vs exponential fog
-
-There are two build in fog constructors in three.js, one of with is linear in terms of the fog effect, while the other is exponential with it. The simple linear fog constructor is the THREE.Fog constructor that takes three arguments, the first is the fog color, and then the other two are the near and far distance values for the fog effect.
-
-So then the THREE.Fog constrictor can be used like this:
-
-```js
-scene.fog = new THREE.Fog(0xffffff, 0.25, 3);
-```
-
-The THREE.FogExp2 constructor then just takes two arguments, the color, and a value that represents the exponential rate at which the fog will grow denser.
-
-
-```js
-scene.fog = new THREE.FogExp2(0xffffff, 0.001);
-```
-
-## 5 - Conclusion
+## Conclusion
 
 That is it for now when it comes to just fog alone in three.js, which is a nice feature to have at the ready when toying around with things. Also I am sure that it is a feature that I will want to use in certain actual full projects in the future for sure, but I am thinking that I will want to maybe look more into some kind of custom shader for this sort of thing when it comes to some kind of real project. The three.js fog features built into the core of the library are a great start with fog at least, but it would be nice to at least have a hight argument for a fog effect also.
 
