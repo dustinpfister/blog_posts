@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-11-02 08:07:47
-version: 1.40
+updated: 2022-11-23 15:17:58
+version: 1.41
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -214,9 +214,9 @@ In order to see anything I will need to render it using something like Canvas, o
 
 I am of course going to want to have at least one simple animation loop example for this getting started post, I just have to do that. Thinking back to when I was first starting out with this library, yeah that was a must. With that said there are a few things to be aware of when it comes to creating a basic animation loop, not just with threejs, but in general when it comes to any kind of canvas project. For one thing the method that is general used is the [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) method, rather than one of the alternatives methods such as setTimeout.
 
-### 2.1 - The updated javaScript for an animation loop example
+### 2.1 - Using request Animation loop with a update and movement FPS rate
 
-For a basic animation loop example I then took the source code for the general overview example that I start this post with, and just added an animation loop function at the end. There are a number of things that I could do inside the body of the animation loop function, but because this is a getting started post for now I am just updating the instance of THREE.Euler to create a simple rotation effect.
+For a basic animation loop example I then took the source code for the general overview example that I start this post with, and just added an animation loop function at the end. There are a number of things that I could do inside the body of the animation loop function, but because this is a getting started post for now I am just updating the instance of [THREE.Euler](/2021/04/28/threejs-euler/) stored at the [rotation property of the mesh object](/2022/04/08/threejs-object3d-rotation/) to create a simple rotation effect.
 
 ```js
 (function () {
@@ -227,7 +227,7 @@ For a basic animation loop example I then took the source code for the general o
     const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
     camera.position.set(250, 250, 250);
     camera.lookAt(0,0,0);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480, false);
     ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     // ---------- ---------- ----------
