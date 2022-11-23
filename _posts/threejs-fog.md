@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-11-23 15:26:07
-version: 1.59
+updated: 2022-11-23 15:29:38
+version: 1.60
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -135,6 +135,8 @@ One thing that I think I should mention right away before going on to any and al
 ## 2 - An animation loop example of Fog
 
 A static scene is a good way to start out but in order to really gain a sense of what is going on with fog I am ether going to want to add some kind of controls to change the position and orientation of the camera, or start some kind of main application loop that will update the position of the camera or objects in the scene over time. For this example I will be going with a basic animation loop, so then this is going to be just like that of the static scene example, but with an animation loop function that uses the requestAnimatioFrame method to create an animation loop.
+
+### 2.1 - Just moving a mesh object back and forth
 
 Inside the body of the animation loop I am then going to want to move the mesh object, and or the camera. For this example I went with moving and rotating the mesh object, while keeping the camera fixed in terms of position by using the look at method to keep the camera fixed on the mesh object.
 
