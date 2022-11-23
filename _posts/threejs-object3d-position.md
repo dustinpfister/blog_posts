@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-23 07:46:39
-version: 1.43
+updated: 2022-11-23 08:15:23
+version: 1.44
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -232,7 +232,7 @@ Alpha values are something that seem to come up a lot when it comes to this sort
 
 ### 1.5 - The normalize and multiply scalar methods
 
-Now say that I am in a situation in which I want to adjust just the length of a vector without changing the direction, or I want to set direction of a vector one way but then adjust the length by another means. For these kinds of situations there is the [normalize method](/2021/06/14/threejs-normalize/) that will set the length of the vector to 1, but will preserve the direction of the vector. Once the unit length of the vector is one then I can just multiply one or more of the axis values by the desired vector unit length that is higher or lower than 1. If I just want to multiply all axis values by one single value there is the [multiply scalar method](/2022/03/23/threejs-vector3-multiply-scalar/) that can be used to do so.
+Now say that I am in a situation in which I want to adjust just the length of a vector without changing the direction, or I want to set direction of a vector one way but then adjust the length by another means. For these kinds of situations there is the [normalize method](/2021/06/14/threejs-vector3-normalize/) that will set the length of the vector to 1, but will preserve the direction of the vector. Once the unit length of the vector is one then I can just multiply one or more of the axis values by the desired vector unit length that is higher or lower than 1. If I just want to multiply all axis values by one single value there is the [multiply scalar method](/2022/03/23/threejs-vector3-multiply-scalar/) that can be used to do so.
 
 ```js
 (function () {
