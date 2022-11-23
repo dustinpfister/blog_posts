@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-18 11:36:05
-version: 1.38
+updated: 2022-11-23 07:17:08
+version: 1.39
 ---
 
-The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold an instance of the Vector3 class, and setting the values of this will set the position of the origin of an object of interest. Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few, what applys to the position property of an object3d instance  also applys to a whole lot of various objects that can be added to a scene object. Speaking of scene objects these too are based off of object3d, so the position property can be used to change the position of a whole scene relative to what is often referred to as world space.
+The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
+
+Sense the Object3d class is a base class of many objects in threejs such as [Mesh objects](/2018/05/04/threejs-mesh/) and [Cameras](/2018/04/06/threejs-camera/) just to name a few. So learning a thing or two about the position property of an object3d instance will also apply to a whole lot of various objects.
 
 The [position property of an instance of Buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) is a whole other topic of concern. When it comes to mutating the position attribute of buffer geometry that is a little more involved, however there are ways of using what there is to work with in the Vector3 class to change the various values for vertices in position attributes. However in this post I will for the most part be sticking to examples that just have to do with object3d based objects rather than the arrays of various attributes of geometry.
 
@@ -17,27 +19,26 @@ The [position property of an instance of Buffer geometry](/2021/06/07/threejs-bu
 
 ## The position property of the object3d class and what to know first
 
-This is a post on just the position property of the object3d class in the javaScript library known as threejs. So then this is not any kind of [how to get started with threejs kind of a post](/2018/04/04/threejs-getting-started/) as well as with any additional skills that are also required beforehand that have to do with client side web development in general. 
+This is a post on just the position property of the object3d class in the javaScript library known as threejs. This is then not any kind of [how to get started with threejs kind of a post](/2018/04/04/threejs-getting-started/) as well as with any additional skills that are also required beforehand that have to do with client side web development in general. 
 
-There are a whole lot of other topics that will branch off from the position property such as things that have to do with the Vector3 class to which the position property is an instance of. Also there is not just setting position but also orientation of objects so I might also need to touch base on the rotation property also in this post at least a little.
+There are a whole lot of other topics that will branch off from the position property such as things that have to do with the Vector3 class to which the position property is an instance of in terms of its value. Also there is not just setting position but also orientation of objects so I might also need to touch base on the rotation property also in this post at least a little.
 
-There is no way I will ever cover every little detail then. Still I often use these opening sections of posts to go over a few things that you might want to read up more on before continuing with the rest of this content.
+There is no way I will ever cover every little detail that should be known before hand then. Still I often use these opening sections of posts to go over a few things that you might want to read up more on before continuing with the rest of this content.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/iqTSfkGX3no" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ### Check out the Object3d class in general
 
-There is a great deal to be aware of when it comes to the Object3d class in terms of properties as well as methods that often prove to be helpful. In this post I will be focusing mostly on features that have to do with setting position, but there is also checking out my post on the [object3d class in general](/2018/04/23/threejs-object3d/).
+There is a great deal to be aware of when it comes to the Object3d class in terms of properties as well as methods that often prove to be helpful. There are all kinds of useful features in this class that apply to just about everything that will be added to a scene object, including the scene object itself. In this post I will be focusing mostly on features that have to do with setting position, but there is also checking out my post on the [object3d class in general](/2018/04/23/threejs-object3d/).
 
-### Read over what there is to work with when it comes to Vector3
+### Read up more on the Vector3 class
 
 The value of the position property of the Object3d class is an instance of the Vector3 class. This vector3 class as the name suggests stores the current state of a 3d Vector, and is also packed with a whole bunch of useful methods that have to do with the mutation of this kind of state. When it comes to Vector3, or any Vector for that matter there is thinking in terms of the direction of the Vector, and what is often called unit length. I will be touching base on a lot of what this all means in this post of course, but you might still want to check out my [main post on the Vector3 class](/2018/04/15/threejs-vector3/).
 
 ### Curves are great for moving objects along a path, so I started a threejs project example centered around that
 
-I have a section in this post in which I am writing about using curves as a way to get vector3 objects than can then be used to set the position of an object.  There is scrolling down to read that section to get a basic idea of what the deal is, but you might also want to check out my [threejs project in which I am making a module centered around the use of curves](/2022/11/18/threejs-examples-curves-module/). 
-
+I have a section in this post in which I am writing about using curves as a way to get vector3 objects than can then be used to set the position of an object.  There is scrolling down to read that section to get a basic idea of what the deal is, but you might also want to check out my [threejs project in which I am making a module centered around the use of curves](/2022/11/18/threejs-examples-curves-module/). When it comes to curves this might be one of the best ways to go about defining paths in space in which objects will move. I can use a built in option to create a curve, then add that to a curve path that is just simply a kind of collection of curves that acts as a single curve. There is then calling the get point method and passing an alpha value \(0 - 1\) as the first argument and the returned object in a Vector3 object which I can then copy to the position of an object that I want to position along the curve.
 
 ### The Source code example in this post are on github
 
