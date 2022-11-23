@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-23 07:17:08
-version: 1.39
+updated: 2022-11-23 07:27:34
+version: 1.40
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -40,7 +40,7 @@ The value of the position property of the Object3d class is an instance of the V
 
 I have a section in this post in which I am writing about using curves as a way to get vector3 objects than can then be used to set the position of an object.  There is scrolling down to read that section to get a basic idea of what the deal is, but you might also want to check out my [threejs project in which I am making a module centered around the use of curves](/2022/11/18/threejs-examples-curves-module/). When it comes to curves this might be one of the best ways to go about defining paths in space in which objects will move. I can use a built in option to create a curve, then add that to a curve path that is just simply a kind of collection of curves that acts as a single curve. There is then calling the get point method and passing an alpha value \(0 - 1\) as the first argument and the returned object in a Vector3 object which I can then copy to the position of an object that I want to position along the curve.
 
-### The Source code example in this post are on github
+### The Source code example in this post are on Github
 
 The source code examples that I am writing about in this post [can be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-position). This is also the repository where I am parking all the other source code examples for the [many other posts on threejs](/categories/three-js/) that I have written thus far over the years.
 
@@ -52,9 +52,9 @@ When I first wrote this post I was using r135 of threejs, and the last time I ca
 
 ## 1 - Basic examples of the position property of Object3d
 
-To start things off, here are a few basic examples of the position property that involves just setting the position of a single mesh object as well as the camera that is used to render at least for starters. There are a whole lot of ways of doing this, and I will be outlining many of them here.
+To start things off, here are a few basic examples of the position property that involves just setting the position of a single mesh object as well as the camera. There are a whole lot of ways of doing this, and I will be outlining many of them here.
 
-As with any threejs example I set up my scene object, camera, and renderer and when doing so I also often add a Grid helper to the scene as well if it is going to just be some simple example such as the ones in this section. I then create one or more mesh objects and when doing so I will need a geometry and a material for that. I will not be getting into all the options with that here of course as I have other posts on geometry and material options. So for these basic examples I will be just going with the normal material as well as built in geometry constructors such as the Box and Sphere geometry constructor functions.
+As with any threejs example I set up my [scene object](/2018/05/03/threejs-scene/), [camera](/2018/04/06/threejs-camera/), and [renderer](/2018/11/24/threejs-webglrenderer/) and when doing so I also often add a [Grid helper](/2022/02/18/threejs-grid-helper/) to the scene as well to have a better idea of what is going on when I position things around. I then create one or more [mesh objects](/2018/05/04/threejs-mesh/) and when doing so I will need a [geometry](/2021/04/22/threejs-buffer-geometry/) and a [mesh material](/2018/04/30/threejs-materials/) for that. I will not be getting into all the options with that here of course as I have other posts on geometry and material options. So for these basic examples I will be just going with the normal material as well as built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) such as the [Box](/2021/04/26/threejs-box-geometry/) and [Sphere geometry](/2021/05/26/threejs-sphere/) constructor functions.
 
 ### 1.1 - Using the x, y, and z properties of Vector3
 
