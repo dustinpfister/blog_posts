@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-11-23 15:17:58
-version: 1.41
+updated: 2022-11-23 15:24:38
+version: 1.42
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -217,6 +217,8 @@ I am of course going to want to have at least one simple animation loop example 
 ### 2.1 - Using request Animation loop with a update and movement FPS rate
 
 For a basic animation loop example I then took the source code for the general overview example that I start this post with, and just added an animation loop function at the end. There are a number of things that I could do inside the body of the animation loop function, but because this is a getting started post for now I am just updating the instance of [THREE.Euler](/2021/04/28/threejs-euler/) stored at the [rotation property of the mesh object](/2022/04/08/threejs-object3d-rotation/) to create a simple rotation effect.
+
+For this animation loop example I have two values for FPS, one of which will be used to set the target rate at which the update method will be called. The other FPS rate is used to update the rate at which a frame value will be stepped that will be used to update the state of things in the update method. This allows for me to set the rate at which the update method is called at a low rate as only about 12 frames per second, while updating the frame rate that is used to update state at a rate that is say 30 frames per second. For certian projects in which I am doing something in real time in a web page I might want to make a user interface that will allow the user to adjust the rate at which updating happens to allow them to set how much CPU overhead they would like to use or not.
 
 ```js
 (function () {
