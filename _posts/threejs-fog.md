@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-11-23 07:57:49
-version: 1.56
+updated: 2022-11-23 08:10:39
+version: 1.57
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -81,44 +81,52 @@ The version of three.js is something that is important when writing post on it, 
 
 ## 1 - Simple static scene example of Fog in threejs
 
-I always like to make the first example of a post a simple, hello world type example. With that said this example will just involve creating a fog for a very basic static scene that just involves a single mesh, along with just a few more objects such as a camera and a grid helper, and that is it.
+I always like to make the first example of a post a simple, hello world type example. With that said this example will just involve creating a fog for a very basic static scene that just involves a single mesh, along with just a few more objects such as a camera, point light, and a grid helper, and that is it.
 
 One thing that I think I should mention right away before going on to any and all additional sections is that for this example I will be setting the same color for both the fog, and the solid background color. This can end up giving a false impression as to what the fog effects though by getting people to think that the fog will effect both the materials of mesh objects as well as the background. However this is not the case it is just that I am using a simple solid color background, and that solid background colo is the same as the fog color.
 
 ```js
 (function () {
-    // SCNEN
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(8, 8, 0xffffff, 0x000000))
- 
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(8, 8, 0xffffff, 0x000000));
+    const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+    camera.position.set(1.5, 0.75, 1.5);
+    camera.lookAt(0, 0, 0);
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    // adding a point light to the camera
+    const light = new THREE.PointLight(0xffffff);
+    light.position.y = 0.5;
+    camera.add(light);
+    scene.add(camera);
+    //-------- ----------
+    // FOG AND BACKGROUND
+    //-------- ----------
     // ADDING BACKGROUND AND FOG
-    var fogColor = new THREE.Color(0xffffff);
+    const fogColor = new THREE.Color(0xffffff);
     scene.background = fogColor; // Setting fogColor as the background color also
     scene.fog = new THREE.Fog(fogColor, 0.25, 4);
- 
+    //-------- ----------
+    // MESH
+    //-------- ----------
     // Use a Material that SUPPORTS FOG
     // when making a Mesh such as the standard material
-    var mesh = new THREE.Mesh(
+    const mesh = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshStandardMaterial({
                 color: 0xff0000
             }));
     scene.add(mesh);
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
-    camera.position.set(2, 0.75, 2);
-    camera.lookAt(0, 0, 0);
-    // adding a point light to the camera
-    var light = new THREE.PointLight(0xffffff);
-    light.position.y = 0.5;
-    camera.add(light);
-    scene.add(camera);
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
+    //-------- ----------
+    // RENDER
+    //-------- ----------
     renderer.render(scene, camera);
 }
     ());
