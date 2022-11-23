@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-23 07:43:26
-version: 1.42
+updated: 2022-11-23 07:46:39
+version: 1.43
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -507,7 +507,7 @@ I then use these helpers to create the curve that I want at which point I can us
 }());
 ```
 
-## 4 - Basic Deterministic Animation examples
+## 4 - Deterministic Animation examples
 
 In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs one will want to work out a number of animations in which they are not just setting the position once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animation where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animations where randomness,and other factors such as user input are at play.
 
