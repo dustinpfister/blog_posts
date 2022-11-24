@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-24 10:03:47
-version: 1.47
+updated: 2022-11-24 10:07:47
+version: 1.48
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -338,9 +338,9 @@ So then the situation here is that I am creating a group, and then adding a bunc
 
 ### 2.2 - Get World Position method
 
-When adding a child object to a group the position of each child object will be relative to the parent object, and not that of world space. There are methods in the Object3d class to help get a world space relative position rather than a parent object relative position, namely [the get world position method ](/2021/05/25/threejs-object3d-get-world-position/) that will prove to be useful if I want to position an object relative to another object, without making it a child of that object.
+When adding a child object to a group the position of each child object will be relative to the parent object, and not that of world space. There is then a method in the Object3d class to help get a world space relative position rather than a parent object relative position, namely [the get world position method ](/2021/05/25/threejs-object3d-get-world-position/). This is then a method in the object3d prototype that I find myself using all the time whenever I find myself in a situation in which I want a world space relative location rather than the typical local space location of the values of position attributes of nested objects.
 
-To use this get world position method I need to create a new Vector3 to copy the world position to first. Then I just call the get world position method of the Object3d based object such as a group that I would like to get the world position of, passing the new vector3 object that will get the values copied to. After that I then have the world position of the object, I can then add an additional value from there to get the world space position that would be relative to the group object rather than the scene, or rather world space and a scene object can also have its x and y values alerted to something other than 0,0.
+To use this get world position method I need to create a new Vector3 object to copy the world position to first. Then I just call the get world position method of the Object3d based object such as a group that I would like to get the world position of, passing the new vector3 object that will get the values copied to. After that I then have the world position of the object, I can then add an additional value from there to get the world space position that would be relative to the group object rather than the scene, or rather world space and a scene object can also have its x and y values alerted to something other than 0,0.
 
 ```js
 (function () {
