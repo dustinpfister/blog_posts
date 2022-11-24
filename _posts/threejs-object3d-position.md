@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-24 09:53:38
-version: 1.45
+updated: 2022-11-24 09:58:53
+version: 1.46
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -288,9 +288,7 @@ Things can get a little confusing when it comes to working with one or more nest
 
 ### 2.1 - Group object example and local space
 
-There is not just setting the position of a single object, but also all the children of a parent object as well as the parent object as a whole. In other words the add method of the scene object is not just a method of the scene object, but yet another method of the Object3d class to which the scene object is another example of an object that is based off of the object 3d class. 
-
-Yes the scene object also has a position property and if desired that can be used as a way to change the position of a whole scene relative to what is often called world space. However for now when it comes to this section I will be going over an example that make use of the [THREE.Group constructor](/2018/05/16/threejs-grouping-mesh-objects/) as a way to have a parent and child kind of situation with the position of objects.
+There is not just setting the position of a single object, but also all the children of a single object as well which can be called a  parent object. When I use the add method of a group object, or any object3d based object for that matter to add and object as a child of the parent object, the position of that child object will be relative to the parent object. The example here makes use of the [THREE.Group constructor](/2018/05/16/threejs-grouping-mesh-objects/) as a way to just create a kind of blank object that will just work as a wrapper of sorts for additional objects that I will be adding to the group that are mesh objects.
 
 ```js
 (function () {
