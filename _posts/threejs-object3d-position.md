@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-23 08:15:23
-version: 1.44
+updated: 2022-11-24 09:53:38
+version: 1.45
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -284,7 +284,7 @@ Now say that I am in a situation in which I want to adjust just the length of a 
 
 ## 2 - Setting the positions of a parent and child objects
 
-Things can get a little confusing when it comes to working with one or more nested objects that are children of another object. In such situations there is setting position relative to a parent object, and then there is setting an object relative to what is called world space. Sense this is very much a blog post on the subject of the position property of Object3d based objects, I think I should have a section in this post in which I go over at least a few examples that have to do with setting the position of objects by way of both local and world space.
+Things can get a little confusing when it comes to working with one or more nested objects that are children of another object. In such situations there is setting position relative to a parent object, and then there is setting an object relative to what is called world space. So then I think I should have a section in this post in which I go over at least a few examples that have to do with setting the position of objects by way of both local and world space which is one major thing that comes up when it comes to groups of objects, and setting position of children and parent objects in such situations.
 
 ### 2.1 - Group object example and local space
 
