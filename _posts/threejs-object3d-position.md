@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-24 09:58:53
-version: 1.46
+updated: 2022-11-24 10:03:47
+version: 1.47
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -334,7 +334,7 @@ There is not just setting the position of a single object, but also all the chil
 }());
 ```
 
-In this example I am creating a group and then I am creating and positioning a whole bunch of mesh objects and adding them as children for the group. When doing so the values that I set for the mesh objects are relative to the group, and the values that I set for the group are relative to the scene object. The scene object is then relative to a final static world space.
+So then the situation here is that I am creating a group, and then adding a bunch of mesh objects to the group, and then I am adding the group to the scene object. The position values of the mesh objects are then relative to the position of the group, and then the group is relative to the position of the scene object. The scene object is also an object3d based object just like that of the group and mesh objects, so then this two has a position property. By default the position of the scene is at 0,0,0 but it too can be moved. When a scene objects is moved it is then relative to a final kind of world space then, which I will be getting into more later in this section.
 
 ### 2.2 - Get World Position method
 
