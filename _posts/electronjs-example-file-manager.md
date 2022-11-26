@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1015
-updated: 2022-11-26 14:00:55
-version: 1.7
+updated: 2022-11-26 14:03:28
+version: 1.8
 ---
 
 There are a lot of ideas that come to mind when it comes to making an [electronjs](https://www.electronjs.org/) project example, one of which would be to make a [file manager](https://en.wikipedia.org/wiki/File_manager). This is one of many project ideas where getting the core set of features working might not take to long, but in the long run can turn into a major project that can take months, or even years to refine if doing so is justified. The starting point I had in mind was to just have a way to navigate around a file system, and be able to start a terminal window at the current working folder. Just that alone is simple enough for sure, but then there is working on the additional basic features that one would expect of any file manager, and how to go about doing just that. There is working out javaScript solutions for everything, but then there is also the idea of using the child process module to make use of binaries that there are to work with in the underlaying OS and being done with it.
@@ -118,7 +118,7 @@ app.on('window-all-closed',  () => {
 
 In the preload file I will want to define a number of methods that I can use in my client system to get the contents of a current working folder. The idea here is that I will bee storing what the current working path is in the client system, but will need a number of methods here to make use of nodejs features that will allow me to get the contents of a current working folder. So then for this preload file I am once again using the [context bride module](/2022/02/21/electronjs-content-bridge/) to go about defining what the public API should be in terms of a fm global that I can use from the client system.
 
-So then I am making use of a whole lot of nodejs built in module for this preload file then such as the [os module](/2019/11/19/nodejs-os/) to have a way to find out what platform this is running on, as well as having a way to quickly fine out where the home folder is for the system. I am also going to want to use many of the methods in the [path module](/2017/12/27/nodejs-paths/) for this one as well of course as this is very much a project in which I will be dealing with that a whole lot. To help me read the contents of the current working folder I will of course need to use the read dir method of the [file system module](/2018/02/08/nodejs-filesystem/), and I will also want to use the file system module to get [stat objects](/2018/02/15/nodejs-filesystem-stat/) as well for sure.
+So then I am making use of a whole lot of nodejs built in module for this preload file then such as the [os module](/2019/11/19/nodejs-os/) to have a way to find out what platform this is running on, as well as having a way to quickly fine out where the home folder is for the system. I am also going to want to use many of the methods in the [path module](/2017/12/27/nodejs-paths/) for this one as well of course as this is very much a project in which I will be dealing with that a whole lot. To help me read the contents of the current working folder I will of course need to use the read dir method of the [file system module](/2018/02/08/nodejs-filesystem/), and I will also want to use the file system module to get [stat objects](/2018/02/15/nodejs-filesystem-stat/) as well for sure. Also on top of all of this I will also want to have a way to run commands from my client system that will differ from one platform to another, so I will want to have the exec and spawn methods of the [child process module](/2018/02/04/nodejs-child-process/) at the ready as well for thous kinds of methods.
 
 ```js
 // preload with contextIsolation enabled
