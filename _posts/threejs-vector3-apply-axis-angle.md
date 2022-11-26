@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2022-11-26 18:14:01
-version: 1.27
+updated: 2022-11-26 18:20:21
+version: 1.28
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -143,6 +143,8 @@ In this example I am doing more or less the same thing as in the basic example o
 ```
 
 ## 2.2 - Group Animation loop example of apply to axis angle method
+
+For this animation loop example I will be working out something for the first demo video for this blog post.
 
 ```js
 (function () {
