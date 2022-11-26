@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1015
-updated: 2022-11-26 14:31:11
-version: 1.9
+updated: 2022-11-26 14:36:29
+version: 1.10
 ---
 
 There are a lot of ideas that come to mind when it comes to making an [electronjs](https://www.electronjs.org/) project example, one of which would be to make a [file manager](https://en.wikipedia.org/wiki/File_manager). This is one of many project ideas where getting the core set of features working might not take to long, but in the long run can turn into a major project that can take months, or even years to refine if doing so is justified. The starting point I had in mind was to just have a way to navigate around a file system, and be able to start a terminal window at the current working folder. Just that alone is simple enough for sure, but then there is working on the additional basic features that one would expect of any file manager, and how to go about doing just that. There is working out javaScript solutions for everything, but then there is also the idea of using the child process module to make use of binaries that there are to work with in the underlaying OS and being done with it.
@@ -240,7 +240,40 @@ When it comes to the client system for this project I have an html folder in whi
 
 ### 3.1 - The main window HTML file
 
+In the main html file I am making use of a [CSP policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), and am also linking to an external CSS file in the head of the file. In the body of the html I have a basic layout for the various parts of the user interface for this file manager program. At the bottom of the file I am linking to my actions javaScrit file first, then an additional javaScript file that will contain any main javaScript code for just this html file. In any future revisions of this example I might have additional html files, but for now I am just staring that kind of situation thus far.
+
 ```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>File Manager</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="wrap_main">
+        <br><br>
+        <div id="toolbar">
+           <input id="input_pwd" type="text" size="60"><br><br>
+           <input id="input_runup" type="button" value="Up One">
+           <input id="input_runterm" type="button" value="Terminal">
+           <input id="input_runalt" type="button" value="Alt FM">
+           <input id="input_newfolder" type="button" value="New Folder">
+           <input id="input_newfile" type="button" value="New File">
+           <div id="wrap_progressbar">
+             <div id="progressbar"></div>
+           </div>
+        </div>
+        <br></br>
+        <div id="contents_pwd">
+        </div>
+    </div>
+    <script src="./actions.js"> </script>
+    <script src="./window_main.js"> </script>
+  </body>
+</html>
 ```
 
 ### 3.1 - Actions javaScript file
