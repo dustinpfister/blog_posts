@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2022-11-26 18:28:14
-version: 1.29
+updated: 2022-11-26 18:30:48
+version: 1.30
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -244,6 +244,6 @@ For this animation loop example I will be working out something for the first de
 
 ## Conclusion
 
-I am not sure if I will be using this method that often in future projects, not because I do not thing that it brings something of value, but because there are just many other ways to get a similar effect, and some of them apply to aspects of an object other than the position property. Often I might want to change the orientation of an object in a way in which it is rotating on an axis, and to do that typically I will want to do something like this but with one of the angles of a Euler class instance. Also even if I want to do something like this with a Vector3 class instance I might still want to do so with another method that might prove to be a little more robust, with additional options.
+I am not sure if I will be using this method that often in future projects, not because I do not thing that it brings something of value, but because there are just many other ways to get a similar effect. Often I might want to change the orientation of an object in a way in which it is rotating on an axis, and to do that typically I will want to do something like this but with one of the angles of a Euler class instance rather than this method. Also even if I want to do something like this with a Vector3 class instance I might still want to do so with another method that might prove to be a little more robust, with additional options. With that said I have found that I do prefer to use the apply Euler method of the Vector3 class rather than this method.
 
 Still taking a moment to look into the various methods to work with in the Vector3 class ins worth while, I am sure that I might not use all of them all the time, but there are many basic ones that will come in handy once in a while.
