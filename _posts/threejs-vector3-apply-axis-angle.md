@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2022-11-26 15:26:19
-version: 1.24
+updated: 2022-11-26 15:29:20
+version: 1.25
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -27,9 +27,13 @@ In this post the focal point is just one little method in the Vector3 class prot
 
 The Vector3 class is used for, well, vectors in what might often be classed Vector space. There is some overlap between position, and rotation, but when it comes to the rotation property of an Object3d class instance that is an instance of the [Euler class](/2021/04/28/threejs-euler/).
 
+### Source code examples are on Github
+
+The source code examples that I am writing about in this post can also be [found up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-apply-axis-angle).
+
 ### Version Numbers matter
 
-When I wrote this post I was testing one the source code examples in r127 of threejs. Always be mindful of the version of threejs you are using, and the version that the author of a source code examples was suing when it comes to threejs examples on the open web. This library is still moving very fast compare to many other projects, and code braking changes happen often.
+When I wrote this post I was testing one the source code examples in r127 of threejs, and the last time I came around to do a little editing I was able to make updated examples that work well with r146. Always be mindful of the version of threejs you are using, and the version that the author of a source code examples was suing when it comes to threejs examples on the open web. This library is still moving very fast compare to many other projects, and code braking changes happen often.
 
 ## 1 - Basic example of the Vector3.applyAxisAngle method
 
