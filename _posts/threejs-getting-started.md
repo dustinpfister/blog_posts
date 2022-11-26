@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2022-11-23 15:24:38
-version: 1.42
+updated: 2022-11-26 15:16:34
+version: 1.43
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -119,12 +119,13 @@ A very typical example for getting started with three.js indeed, but still it wo
     // SCENE, CAMERA, and RENDERER
     // ---------- ---------- ----------
     // a scene is needed to place objects in
-    let scene = new THREE.Scene();
+    const scene = new THREE.Scene();
     // I will need an camera to look at objects in the scene
-    let camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
     // In order to see anything I will also need a renderer
     // to use with my scene, and camera
-    let renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+    renderer.setSize(640, 480, false);
     // I must append the dom element used by the renderer to the html
     // that I am using. 
     // !!!HERE I AM USING document.body IN THEN EVENT THAT YOU ARE
@@ -137,7 +138,7 @@ A very typical example for getting started with three.js indeed, but still it wo
     // I will want to add at least one Mesh to the scene so that I have 
     // something to look at. In order to add a Mesh I will need a Geometry, and
     // a material to skin that geometry with to create the mesh.
-    let mesh = new THREE.Mesh(new THREE.BoxGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
     // ---------- ---------- ----------
     // CHANGE THINGS, AND CALL RENDER METHOD
     // ---------- ---------- ----------
@@ -148,7 +149,10 @@ A very typical example for getting started with three.js indeed, but still it wo
     scene.add(mesh);
     camera.position.set(250, 250, 250);
     camera.lookAt(0,0,0);
-    renderer.setSize(640, 480);
+
+    // ---------- ---------- ----------
+    // RENDER
+    // ---------- ---------- ----------
     // finally I call renderer.render to draw the current
     // state of the scene, from the perspective of the camera
     renderer.render(scene, camera);
