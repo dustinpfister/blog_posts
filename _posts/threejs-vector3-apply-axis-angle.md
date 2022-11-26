@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2022-11-26 18:20:21
-version: 1.28
+updated: 2022-11-26 18:28:14
+version: 1.29
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -144,7 +144,7 @@ In this example I am doing more or less the same thing as in the basic example o
 
 ## 2.2 - Group Animation loop example of apply to axis angle method
 
-For this animation loop example I will be working out something for the first demo video for this blog post.
+For this animation loop example I will be working out something for the first demo video for this blog post. This will then just be a quick demo of the method that involves a group of mesh objects rather than just one mesh object. Also this time around I did a better job of starting to break things down more by having a few helper functions. With that said I have one function that creates a single mesh object, another that creates a group of mesh objects, and a final update method that will update the position of the mesh objects of the group. The update helper function is then the main function of interest here as this is where I am using the apply axis angle method to set the position of the mesh objects.
 
 ```js
 (function () {
