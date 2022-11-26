@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1015
-updated: 2022-11-26 14:52:11
-version: 1.13
+updated: 2022-11-26 14:58:32
+version: 1.14
 ---
 
 There are a lot of ideas that come to mind when it comes to making an [electronjs](https://www.electronjs.org/) project example, one of which would be to make a [file manager](https://en.wikipedia.org/wiki/File_manager). This is one of many project ideas where getting the core set of features working might not take to long, but in the long run can turn into a major project that can take months, or even years to refine if doing so is justified. The starting point I had in mind was to just have a way to navigate around a file system, and be able to start a terminal window at the current working folder. Just that alone is simple enough for sure, but then there is working on the additional basic features that one would expect of any file manager, and how to go about doing just that. There is working out javaScript solutions for everything, but then there is also the idea of using the child process module to make use of binaries that there are to work with in the underlaying OS and being done with it.
@@ -15,6 +15,13 @@ This will then be a post on the current state of an electionjs project where the
 
 <!-- more -->
 
+## The election.js File manager project example and what to knwo first
+
+This is a post on an electionjs project example where the aim is to make a file manager using electionjs. This is not then any kind of getting started type post with the [basics of electionjs](/2022/02/07/electronjs-hello-world/), as well as any additional skills that are required that have to do with nodejs, as well as client side javaScript. However in these sections I do often like to wrote about at least a few things that you might want to read up more on before continuing to read the rest if this content.
+
+### Source Code is up on Gihub also
+
+I have the source code for this project [also up on Github](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-file-manager).
 
 ## 1 - The main javaScript file
 
@@ -833,6 +840,6 @@ body{
 
 ## Conclusion
 
-When it comes to the very basic idea of what I wanted to start with making this I all ready have that working well. All I wanted was a way to navigate around a file system and then start a terminal window, or start another file manager and that is it. I also wanted to work out some platform specific things while I was at it such as starting a Linux bash prompt window in a Linux system, and a command prompt window in a windows system. So with that aid because I set the bar so low I was able to get what I wanted working fast which is great. However whe it comes to turning this into a major project that other people might like to use I of course would have a lot more work ahead of me with this. That seams to be the case with every electronjs example project that I have started thus far though. The most basic form of the project is easy enough to get up and running, but work will never truly be done with it if I choose to continue to support it.
+When it comes to the very basic idea of what I wanted to start with making this I all ready have that working well. All I wanted was a way to navigate around a file system and then start a terminal window, or start another file manager and that is it. I also wanted to work out some platform specific things while I was at it such as starting a Linux bash prompt window in a Linux system, and a command prompt window in a windows system. So with that aid because I set the bar so low I was able to get what I wanted working fast which is great. However when it comes to turning this into a major project that other people might like to use I of course would have a lot more work ahead of me with this. That seams to be the case with every electronjs example project that I have started thus far though. The most basic form of the project is easy enough to get up and running, but work will never truly be done with it if I choose to continue to support it.
 
 
