@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2022-04-20 10:22:37
-version: 1.23
+updated: 2022-11-26 15:26:19
+version: 1.24
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -41,82 +41,87 @@ The end result of this is then a situation with a vector that is positioned at 1
 
 ```js
 (function () {
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(6, 6));
- 
-    // mesh
-    var mesh = new THREE.Mesh(
+    // ---------- ---------- ----------
+    // SCENE, CAMERA, and RENDERER
+    // ---------- ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) );
+    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0,0,0);
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    // ---------- ---------- ----------
+    // MESH
+    // ---------- ---------- ----------
+    const mesh = new THREE.Mesh(
             new THREE.ConeGeometry(0.5, 1, 30, 30),
             new THREE.MeshNormalMaterial());
- 
     mesh.geometry.rotateX(Math.PI * 0.5);
     mesh.position.set(1, 0, 1);
-    mesh.lookAt(0, 0, 0);
     scene.add(mesh);
- 
-    var v = new THREE.Vector3(0, 1, 0);
+    // ---------- ---------- ----------
+    // USING APPLY AXIS ANGLE
+    // ---------- ---------- ----------
+    const v = new THREE.Vector3(0, 1, 0);
     mesh.position.applyAxisAngle(v, Math.PI / 180 * 180);
- 
-    console.log(mesh.position.clone().round()); // {x: -1, y: 0, z: -1}
- 
-    // camera, render
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
+    console.log( mesh.position.clone().round() ); // {x: -1, y: 0, z: -1}
+    // ---------- ---------- ----------
+    // RENDER
+    // ---------- ---------- ----------
     renderer.render(scene, camera);
- 
 }
     ());
 ```
 
-## 2 - Animation loop example of apply to axis
+## 2 - Animaiton loop examples
 
-So now that I have the basic example out of the way I think I should make at least one more demo of this methods that will involve an animation loop method, and an update method. In this example I am doing more or less the same thing as in the basic example only now I am just adding in a loop method that makes use of request animation frame to create a loop method. In this loop method I am calling an update function, that will use a values in seconds as the argument to update the state of something in this case the position property of a mesh using, you guessed it the apply axis angle Vector3 method.
+So now that I have the basic example out of the way I think I should make at least one more demo of this method that will involve an animation loop. 
+
+## 2.1 - Animation loop example of apply to axis
+
+In this example I am doing more or less the same thing as in the basic example only now I am just adding in a loop method that makes use of request animation frame to create a loop method. In this loop method I am calling an update function, that will use a values in seconds as the argument to update the state of something in this case the position property of a mesh using, you guessed it the apply axis angle Vector3 method.
 
 ```js
 (function () {
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(6, 6));
- 
-    // mesh
-    var mesh = new THREE.Mesh(
+    // ---------- ---------- ----------
+    // SCENE, CAMERA, and RENDERER
+    // ---------- ---------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) );
+    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+    camera.position.set(4, 4, 4);
+    camera.lookAt(0,0,0);
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    // ---------- ---------- ----------
+    // MESH
+    // ---------- ---------- ----------
+    const mesh = new THREE.Mesh(
             new THREE.ConeGeometry(0.5, 1, 30, 30),
             new THREE.MeshNormalMaterial());
     mesh.geometry.rotateX(Math.PI * 0.5);
     mesh.position.set(1, 0, 1);
     scene.add(mesh);
- 
-    // camera, render
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
+    // ---------- ---------- ----------
     // LOOP
-    var degree = 0,
-    v = new THREE.Vector3(0, 1, 0),
-    lt = new Date(),
-    fps = 30;
+    // ---------- ---------- ----------
+    const v = new THREE.Vector3(0, 1, 0);
+    const fps = 30;
+    let lt = new Date();
     // update method
-    var update = function (secs) {
+    const update = function (secs) {
         v.x += 0.25 * secs;
         v.x %= 1;
-        degree = 45 * secs;
+        const degree = 45 * secs;
         mesh.position.applyAxisAngle(v, Math.PI / 180 * degree);
         mesh.lookAt(0, 0, 0);
     };
     // loop method
-    var loop = function () {
-        var now = new Date(),
+    const loop = function () {
+        const now = new Date(),
         secs = (now - lt) / 1000;
         requestAnimationFrame(loop);
         if (secs > 1 / fps) {
@@ -126,12 +131,11 @@ So now that I have the basic example out of the way I think I should make at lea
         }
     };
     loop();
- 
 }
     ());
 ```
 
-## 3 - Conclusion
+## Conclusion
 
 I am not sure if I will be using this method that often in future projects, not because I do not thing that it brings something of value, but because there are just many other ways to get a similar effect, and some of them apply to aspects of an object other than the position property. Often I might want to change the orientation of an object in a way in which it is rotating on an axis, and to do that typically I will want to do something like this but with one of the angles of a Euler class instance. Also even if I want to do something like this with a Vector3 class instance I might still want to do so with another method that might prove to be a little more robust, with additional options.
 
