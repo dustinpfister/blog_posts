@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-27 13:14:34
-version: 1.51
+updated: 2022-11-27 14:15:34
+version: 1.52
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -67,7 +67,7 @@ Maybe one of the easiest ways of just getting started with setting position woul
     scene.add(new THREE.GridHelper(9, 9));
     const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
     scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
@@ -103,16 +103,20 @@ On top of using the set method to set object3d position, an instance of Vector3 
 
 ```js
 (function () {
+    //-------- ----------
     // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    var scene = new THREE.Scene();
+    //-------- ----------
+    const scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(9, 9));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
     scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // adding a mesh object
-    var mesh = new THREE.Mesh(
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const mesh = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshNormalMaterial());
     scene.add(mesh);
@@ -122,10 +126,11 @@ On top of using the set method to set object3d position, an instance of Vector3 
     camera.position.set(8, 4, 0);
     // setting Rotation of the camera using clone, and add Vector3 methods off 
     camera.lookAt( mesh.position.clone().add( new THREE.Vector3(0,-2,0) ) );
-    // render static scene
+    //-------- ----------
+    // RENDER
+    //-------- ----------
     renderer.render(scene, camera);
-}
-    ());
+}());
 ```
 
 ### 1.3 - The Copy, and add methods of vector3
@@ -143,7 +148,7 @@ For example, say that I want to copy the value of one Vector3 to a mesh object, 
     scene.add(new THREE.GridHelper(9, 9));
     const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
     scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
@@ -183,7 +188,7 @@ Say that I have two vectors that I would like to treat as start and end points i
     scene.add(new THREE.GridHelper(9, 9));
     const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
     scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
@@ -241,7 +246,7 @@ Now say that I am in a situation in which I want to adjust just the length of a 
     scene.add(new THREE.GridHelper(9, 9));
     const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
     scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
