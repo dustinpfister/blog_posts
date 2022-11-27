@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-11-27 12:03:51
-version: 1.35
+updated: 2022-11-27 12:14:01
+version: 1.36
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale) that stores an instance of the [vector3 class](https://threejs.org/docs/#api/en/math/Vector3) in terms of its value. By default the values for this Vector3 value are 1,1,1 which means that the scale of the object is 1 for each axis of the object. I can then change what the values are for this vector3 object making them higher or lower, and by doing so I will end up changing the scale of the object.
@@ -35,11 +35,11 @@ The examples in this post and my many other posts on threejs can be [found on Gi
 
 ### Version Numbers matter with three.js
 
-When I wrote this post for the first time I was using revision 127 of three.js which was release in April of 20201, and the last time I came around to doing a little editing I was using r140. It would seem that much has not changes with the Object3d scale property and the Vercor3 class to which the scale property is an instance of. However it is still possible that the code examples here might break with future versions of three.js.
+When I wrote this post for the first time I was using revision 127 of three.js which was release in April of 20201, and the last time I came around to doing a little editing I was using r146. It would seem that much has not changes with the Object3d scale property and the Vercor3 class to which the scale property is an instance of. However it is still possible that the code examples here might break with future versions of three.js.
 
 ## 1 - Basic Object3d Scale example with a Mesh and the Mesh copy method
 
-First off a very basic example of the scale property of the Object3d class that involves a Mesh object. In this example I am creating just a single Mesh object with the Mesh Constructor that uses the BoxGeometry and the Normal Material. I am then using the copy method of that mesh object instance to create to copies on this mesh object. I can then change the scale of these copies with the scale property of them and that will change the scale of these copies without effecting the original. The copy method will not fully deep clone the mesh object though when it comes to things like the geometry and material of the mesh object though, however for this example, and the scale property alone things work as expected.
+Now for a basic example of the scale property of the Object3d class that involves a few Mesh objects. In this example I am creating just a single Mesh object with the Mesh Constructor that uses the BoxGeometry and the Normal Material. I am then using the copy method of that mesh object instance to create to copies on this mesh object. I can then change the scale of these copies with the scale property of them and that will change the scale of these copies without effecting the original. The copy method will not fully deep clone the mesh object though when it comes to things like the geometry and material of the mesh object though, however for this example, and the scale property alone things work as expected.
 
 ```js
 // ---------- ---------- ----------
@@ -77,7 +77,7 @@ renderer.render(scene, camera);
 
 ## 2 - Group example of the Object3d Scale property
 
-The Object3d class is not just the base class of Mesh objects but other classes of objects also such as THREE.Group for example. What is great about this is that I can use the scale property to not just adjust the scale of a single mesh object, but also a collection of mesh objects also when it comes to setting the scale property of a Group. 
+The Object3d class is not just the base class of Mesh objects but other classes of objects also such as [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) for example. What is great about this is that I can use the scale property to not just adjust the scale of a single mesh object, but also a collection of mesh objects as well when it comes to setting the scale property of a Group. 
 
 When creating a group I can use the add method of a group, which is also a method of Object3d actually, and pass an instance of a Mesh, Camera, or anything based on object3d even another Group. When I do so what I pass to the add method becomes a child of that object, and by doing so setting a value for the scale property of that parent object will also effect all children of that object. In this example I am once again creating a few copies of a Mesh object, and using the scale property to adjust the scale of the copies of this mesh object, but I am then also adding all of the mesh objects to a group. This is all done in a helper function to which I return the group as the return value of the helper function. The scale property can then be adjusted with the resulting group also to adjust the scale of the group that is returned, and I can also make more than one instance of this group of mesh objects.
 
@@ -143,7 +143,7 @@ scene.add(group3);
 renderer.render(scene, camera);
 ```
 
-I often do something to this effect when it comes to creating crude models using just the built in three.js constructors for geometry and materials. There is just using all the properties and methods of the Object3d class and Mesh objects that are based off of it to create objects that compose a grater whole. The scale property can then be used to change the size of parts of the model as well as an instance of a model itself.
+I often do something to this effect when it comes to creating a crude model using just the built in three.js constructors for geometry and materials. There is just using all the properties and methods of the Object3d class and Mesh objects that are based off of it to create objects that compose a grater whole. The scale property can then be used to change the size of parts of the model as well as an instance of a model itself. I have a few threejs project examples in that also function as these kinds of projects such as [my guy one model](/2021/04/29/threejs-examples-guy-one) and my first [tree model](/2019/07/30/threejs-examples-tree/). However there is also looking into how to go about exporting from blender as well which might be the best way of going about doing this sort of thing.
 
 ## 3 - An Animation example of scale along with many other object3d features
 
