@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-27 13:08:03
-version: 1.50
+updated: 2022-11-27 13:14:34
+version: 1.51
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -47,8 +47,6 @@ The source code examples that I am writing about in this post [can be found on G
 ### Be mindful of version numbers with threejs
 
 When I first wrote this post I was using r135 of threejs, and the last time I came around to do some editing I was using r140 of the library.
-
-
 
 ## 1 - Basic examples of the position property of Object3d
 
@@ -414,7 +412,7 @@ To use this get world position method I need to create a new Vector3 object to c
 
 As of late I am thinking that maybe the best way to go about setting the position of an object3d based object would be to look into the [curve class](/2022/06/17/threejs-curve/) to do so. This might be a great way to set position when it comes to video projects, but might also work well in games and so forth by creating new curves as needed as well. There are ways of making custom curve classes but I have found that I do not need to bother with that by rather make use of one of the many built in curve classes to do so. In any case once I have a curve object I can use the get point method of the base curve class to get a vector3 object at any point along the curve, and then copy this to the Vector3 object at the position property of the object3d based object that I would like to positon to that point along the curve.
 
-Anyway in this section I will not be getting into anything to advanced but rather just touching base on the basics of creating a curve and then getting a vector3 object along that curve that can then be used with the copy method of the vector3 class to set position.
+Anyway in this section I will not be getting into anything to advanced but rather just touching base on the basics of creating a curve and then getting a vector3 object along that curve that can then be used with the copy method of the vector3 class to set position. When it comes to really getting into curves and having a whole bunch of logic at the ready from project to project one might want to go as far as starting to have some kind of module in which to take from project to project when it comes to curves. With that said I have one of my [threejs example projects that is a kind of curve module](/2022/11/18/threejs-examples-curves-module/).
 
 ### 3.1 - Basic Curve example to set position
 
