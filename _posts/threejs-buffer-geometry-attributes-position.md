@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-10-06 08:26:33
-version: 1.57
+updated: 2022-11-27 13:23:00
+version: 1.58
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
@@ -31,6 +31,10 @@ There is a great deal more to write about when it comes to [buffer geometry](/20
 ### There are the other core attributes that are needed for Mesh objects
 
 The position attribute is the first attribute that I would want to set up when making a custom geometry. However if I want to use the custom geometry with Mesh objects I will also want to set up at least a [normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/) and [uvs](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes for it as well. These additional attributes are very important when it comes to making lighting and textures look the way that they should, or to even work at all actually.
+
+### Curves might be a cool tool to help make custom geometry
+
+I started a [threejs examples project that is a kind of curve module](/2022/11/18/threejs-examples-curves-module/). As of this writing this is something that I am using to set the position of objects in space, but I can see how curves can also be useful for creating custom geometry as well.
 
 ### Source is on Github
 
