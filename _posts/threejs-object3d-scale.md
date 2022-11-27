@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-11-27 11:46:08
-version: 1.34
+updated: 2022-11-27 12:03:51
+version: 1.35
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale) that stores an instance of the [vector3 class](https://threejs.org/docs/#api/en/math/Vector3) in terms of its value. By default the values for this Vector3 value are 1,1,1 which means that the scale of the object is 1 for each axis of the object. I can then change what the values are for this vector3 object making them higher or lower, and by doing so I will end up changing the scale of the object.
@@ -42,30 +42,36 @@ When I wrote this post for the first time I was using revision 127 of three.js w
 First off a very basic example of the scale property of the Object3d class that involves a Mesh object. In this example I am creating just a single Mesh object with the Mesh Constructor that uses the BoxGeometry and the Normal Material. I am then using the copy method of that mesh object instance to create to copies on this mesh object. I can then change the scale of these copies with the scale property of them and that will change the scale of these copies without effecting the original. The copy method will not fully deep clone the mesh object though when it comes to things like the geometry and material of the mesh object though, however for this example, and the scale property alone things work as expected.
 
 ```js
-var box = new THREE.Mesh(
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10,10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 box.position.set(0, 0, -2);
- 
-var copy1 = box.clone();
+const copy1 = box.clone();
 copy1.scale.set(0.5, 0.5, 0.5);
 copy1.position.set(0, 0, 0);
-var copy2 = box.clone();
+const copy2 = box.clone();
 copy2.scale.set(0.25, 0.25, 0.25);
 copy2.position.set(0, 0, 1.25);
- 
-// scene
-var scene = new THREE.Scene();
 scene.add(box);
 scene.add(copy1);
 scene.add(copy2);
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(3, 3, 3);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -76,20 +82,34 @@ The Object3d class is not just the base class of Mesh objects but other classes 
 When creating a group I can use the add method of a group, which is also a method of Object3d actually, and pass an instance of a Mesh, Camera, or anything based on object3d even another Group. When I do so what I pass to the add method becomes a child of that object, and by doing so setting a value for the scale property of that parent object will also effect all children of that object. In this example I am once again creating a few copies of a Mesh object, and using the scale property to adjust the scale of the copies of this mesh object, but I am then also adding all of the mesh objects to a group. This is all done in a helper function to which I return the group as the return value of the helper function. The scale property can then be adjusted with the resulting group also to adjust the scale of the group that is returned, and I can also make more than one instance of this group of mesh objects.
 
 ```js
-var createCubeGroup = function () {
-    var size = 1,
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10,10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+camera.position.set(7,7,7);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// HELPERS
+// ---------- ---------- ----------
+const createCubeGroup = function () {
+    const size = 1,
     scale = 1 / 2,
     halfScale = scale / 2;
-    var group = new THREE.Group();
-    var box = new THREE.Mesh(
+    const group = new THREE.Group();
+    const box = new THREE.Mesh(
             new THREE.BoxGeometry(size, size, size),
             new THREE.MeshNormalMaterial());
     box.position.set(0, 0, 0);
     group.add(box);
-    var i = 0,
-    len = 4;
+    let i = 0;
+    const len = 4;
     while (i < len) {
-        var copy1 = box.clone(),
+        const copy1 = box.clone(),
         r = Math.PI * 2 / 4 * i,
         x = Math.cos(r) * 1,
         z = Math.sin(r) * 1;
@@ -100,36 +120,26 @@ var createCubeGroup = function () {
     }
     return group;
 };
- 
-// scene
-var scene = new THREE.Scene();
-var grid = new THREE.GridHelper(7, 7);
-scene.add(grid);
- 
+// ---------- ---------- ----------
+// OBJECTS
+// ---------- ---------- ----------
 // group1 with DEFAULT SCALE
-var group1 = createCubeGroup();
+const group1 = createCubeGroup();
 group1.position.set(0, 0, 0);
 scene.add(group1);
- 
 // group2 with 0.5 SCALE
-var group2 = createCubeGroup();
+const group2 = createCubeGroup();
 group2.scale.set(0.5, 0.5, 0.5);
 group2.position.set(3, 0, 3);
 scene.add(group2);
- 
 // group3 with 2 SCALE
-var group3 = createCubeGroup();
+const group3 = createCubeGroup();
 group3.scale.set(2, 2, 2);
 group3.position.set(-3, 0, -3);
 scene.add(group3);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 100);
-camera.position.set(7, 7, 7);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+// ---------- ---------- ----------
+//  RENDER
+// ---------- ---------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -145,12 +155,12 @@ It is time to start breaking things down a little now, so for this example I mad
 
 ```js
 (function (api) {
- 
-    var getPerValues = function (frame, maxFrame, base) {
+    // get per values for the current frame and max frame
+    const getPerValues = function (frame, maxFrame, base) {
         frame = frame === undefined ? 0 : frame;
         maxFrame = maxFrame === undefined ? 100 : maxFrame;
         base = base || 2;
-        var per = frame / maxFrame,
+        const per = frame / maxFrame,
         bias = 1 - Math.abs(per - 0.5) / 0.5;
         return {
             frame: frame,
@@ -162,21 +172,21 @@ It is time to start breaking things down a little now, so for this example I mad
             biasLog: Math.log(1 + bias * (base - 1)) / Math.log(base)
         };
     };
- 
-    var createGroup = function () {
-        var size = 1,
+    // create group helper
+    const createGroup = function () {
+        const size = 1,
         scale = 1 / 2,
         halfScale = scale / 2;
-        var group = new THREE.Group();
-        var box = new THREE.Mesh(
+        const group = new THREE.Group();
+        const box = new THREE.Mesh(
                 new THREE.BoxGeometry(size, size, size),
                 new THREE.MeshNormalMaterial());
         box.position.set(0, 0, 0);
         group.add(box);
-        var i = 0,
-        len = 4;
+        let i = 0;
+        const len = 4;
         while (i < len) {
-            var copy1 = box.clone(),
+            const copy1 = box.clone(),
             r = Math.PI * 2 / 4 * i,
             x = Math.cos(r) * 1,
             z = Math.sin(r) * 1;
@@ -190,7 +200,7 @@ It is time to start breaking things down a little now, so for this example I mad
     // create the full group object with user data
     api.create = function (opt) {
         opt = opt || {};
-        var group = createGroup(),
+        const group = createGroup(),
         ud = group.userData;
         ud.perObj = getPerValues(
                 opt.frame === undefined ? 0 : opt.frame,
@@ -199,7 +209,7 @@ It is time to start breaking things down a little now, so for this example I mad
     };
     // update
     api.update = function (cubeGroup, secs) {
-        var ud = cubeGroup.userData,
+        const ud = cubeGroup.userData,
         perObj = ud.perObj,
         s = 0.25 + 0.75 * perObj.biasLog;
         // SET CURRENT SCALE
@@ -210,7 +220,6 @@ It is time to start breaking things down a little now, so for this example I mad
         perObj.frame %= perObj.maxFrame;
         ud.perObj = getPerValues(perObj.frame, perObj.maxFrame);
     };
- 
 }
     (this['CubeGroup'] = {}));
 ```
@@ -222,26 +231,37 @@ Now that I have all the logic that has to do with a group of mesh objects pulled
 In the main javaScript file I still create my scene, camera, and renderer as always. However now I am creating a state object that will contain a group that will be a collection of these cube groups that I will be making with the cube group module. I also have a main animation loop in which I am making use of the request animation frame method to create an animation type product rather than just a static scene.
 
 ```js
-// scene
-var scene = new THREE.Scene();
- 
-var state = {
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10,10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+camera.position.set(7,7,7);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// STATE
+// ---------- ---------- ----------
+const state = {
     lt: new Date,
     fps: 30,
     groups: new THREE.Group()
 };
 scene.add(state.groups);
- 
-// a group created with the cube group module
-var i = 0,
-len = 6,
-radius = 3,
-radian, x, z;
+// ---------- ---------- ----------
+// OBJECTS
+// ---------- ---------- ----------
+// Groups created with the module
+let i = 0;
+const len = 6, radius = 3
 while (i < len) {
-    radian = Math.PI * 2 / len * i;
-    x = Math.cos(radian) * radius;
-    z = Math.sin(radian) * radius;
-    var group = CubeGroup.create({
+    const radian = Math.PI * 2 / len * i;
+    const x = Math.cos(radian) * radius;
+    const z = Math.sin(radian) * radius;
+    const group = CubeGroup.create({
             frame: Math.floor(120 * (i / len)),
             maxFrame: 120
         });
@@ -249,20 +269,11 @@ while (i < len) {
     group.position.set(x, 0, z);
     i += 1;
 }
- 
-var grid = new THREE.GridHelper(7, 7);
-scene.add(grid);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 100);
-camera.position.set(7, 7, 7);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var loop = function () {
-    var now = new Date(),
+// ---------- ---------- ----------
+// LOOP
+// ---------- ---------- ----------
+const loop = function () {
+    const now = new Date(),
     secs = (now - state.lt) / 1000;
     requestAnimationFrame(loop);
     if (secs > 1 / state.fps) {
