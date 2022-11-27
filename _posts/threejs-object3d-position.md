@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-24 10:07:47
-version: 1.48
+updated: 2022-11-27 12:39:22
+version: 1.49
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -412,7 +412,9 @@ To use this get world position method I need to create a new Vector3 object to c
 
 ## 3 - Setting Position With Curves
 
-As of late I am thinking that maybe the best way to go about setting the position of an object3d based object by way of some code rather than user input would be to look into the [curve class](/2022/06/17/threejs-curve/). This might be a great way to set position when it comes to video projects, but might also work well in games and so forth by creating new curves as needed. Anyway in this section I will not be getting into anything to advanced buy rather just touching base on the basics of creating a curve and then getting a vector3 object along that curve that can then be used with the copy method of the vector3 class to set position.
+As of late I am thinking that maybe the best way to go about setting the position of an object3d based object would be to look into the [curve class](/2022/06/17/threejs-curve/) to do so. This might be a great way to set position when it comes to video projects, but might also work well in games and so forth by creating new curves as needed as well. There are ways of making custom curve classes but I have found that I do not need to bother with that by rather make use of one of the many built in curve classes to do so. In any case once I have a curve object I can use the get point method of the base curve class to get a vector3 object at any point along the curve, and then copy this to the Vector3 object at the position property of the object3d based object that I would like to positon to that point along the curve.
+
+Anyway in this section I will not be getting into anything to advanced but rather just touching base on the basics of creating a curve and then getting a vector3 object along that curve that can then be used with the copy method of the vector3 class to set position.
 
 ### 3.1 - Creating a Curve and using the get point method along with the copy method of Vector3 to set position
 
