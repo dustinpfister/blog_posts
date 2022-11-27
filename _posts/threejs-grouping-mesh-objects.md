@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2022-11-10 13:52:59
-version: 1.43
+updated: 2022-11-27 13:23:00
+version: 1.44
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -27,6 +27,10 @@ If you are still fairly new to threejs you might want to [start by reading some 
 ### THREE.Object3D vs THREE.Group
 
 When it comes to grouping two ore more Mesh Objects together it may be preferable to use the Group constructor in place of just using [Object3D by itself](/2018/04/23/threejs-object3d/). However as far as I can tell there is not much of any difference other than it makes the readability of your code more clear as to what the object is for. The fact of the matter is that when it comes to grouping things together such a task can be done with any object that is based off the Object3d class really. This includes Groups, Mesh objects, Cameras, various helpers, and even a whole Scene object for that matter.
+
+### Check out my curves module example
+
+When it comes to setting the position of many child objects of a group I have found that I like to use curves to do so. As such I have started a [threejs project example that is centered around the use of curves](/2022/11/18/threejs-examples-curves-module/) to do this sort of thing.
 
 ### Version numbers matter
 
