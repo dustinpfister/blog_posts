@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-27 14:47:23
-version: 1.53
+updated: 2022-11-27 14:59:54
+version: 1.54
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -46,7 +46,7 @@ The source code examples that I am writing about in this post [can be found on G
 
 ### Be mindful of version numbers with threejs
 
-When I first wrote this post I was using r135 of threejs, and the last time I came around to do some editing I was using r140 of the library.
+When I first wrote this post I was using r135 of threejs, and the last time I came around to do some editing I was using r146 of the library.
 
 ## 1 - Basic examples of the position property of Object3d
 
@@ -360,7 +360,7 @@ There is not just setting the position of a single object, but also all the chil
     scene.add(new THREE.GridHelper(9, 9));
     const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
     scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
@@ -412,7 +412,7 @@ To use this get world position method I need to create a new Vector3 object to c
     scene.add(new THREE.GridHelper(10, 10, 0x0000ff, 0xffffff));
     const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
     scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
@@ -635,7 +635,7 @@ The end result of all of this is then to end up with a whole bunch of mesh objec
     scene.add(new THREE.GridHelper(9, 9));
     const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
     scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
@@ -728,7 +728,7 @@ So then for this animation example I will have a collection of mesh objects that
     scene.add(new THREE.GridHelper(9, 9));
     const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
     scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480);
     (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     // camera pos
@@ -844,7 +844,7 @@ Here I have an animation loop example based off the basic curve section example.
     const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
     camera.position.set(6, 6, 6);
     camera.lookAt(0,0,0);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480, false);
     ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
