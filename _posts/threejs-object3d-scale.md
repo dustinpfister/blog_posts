@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-11-27 12:14:01
-version: 1.36
+updated: 2022-11-27 12:27:53
+version: 1.37
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale) that stores an instance of the [vector3 class](https://threejs.org/docs/#api/en/math/Vector3) in terms of its value. By default the values for this Vector3 value are 1,1,1 which means that the scale of the object is 1 for each axis of the object. I can then change what the values are for this vector3 object making them higher or lower, and by doing so I will end up changing the scale of the object.
@@ -37,7 +37,63 @@ The examples in this post and my many other posts on threejs can be [found on Gi
 
 When I wrote this post for the first time I was using revision 127 of three.js which was release in April of 20201, and the last time I came around to doing a little editing I was using r146. It would seem that much has not changes with the Object3d scale property and the Vercor3 class to which the scale property is an instance of. However it is still possible that the code examples here might break with future versions of three.js.
 
-## 1 - Basic Object3d Scale example with a Mesh and the Mesh copy method
+### 1.1 - The Vector3 set method
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+camera.position.set(5,5,5);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+box.scale.set(6, 4, 2); // using the Vector3 set method
+scene.add(box);
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.2 - The Vector3 Multiply Scalar Method
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+camera.position.set(5,5,5);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+box.scale.multiplyScalar(5); // Multiply Scalar
+scene.add(box);
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.3 - Mesh copy method example
 
 Now for a basic example of the scale property of the Object3d class that involves a few Mesh objects. In this example I am creating just a single Mesh object with the Mesh Constructor that uses the BoxGeometry and the Normal Material. I am then using the copy method of that mesh object instance to create to copies on this mesh object. I can then change the scale of these copies with the scale property of them and that will change the scale of these copies without effecting the original. The copy method will not fully deep clone the mesh object though when it comes to things like the geometry and material of the mesh object though, however for this example, and the scale property alone things work as expected.
 
