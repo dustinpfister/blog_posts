@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-11-27 11:43:03
-version: 1.33
+updated: 2022-11-27 11:46:08
+version: 1.34
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale) that stores an instance of the [vector3 class](https://threejs.org/docs/#api/en/math/Vector3) in terms of its value. By default the values for this Vector3 value are 1,1,1 which means that the scale of the object is 1 for each axis of the object. I can then change what the values are for this vector3 object making them higher or lower, and by doing so I will end up changing the scale of the object.
@@ -31,7 +31,7 @@ If you are still relatively new to threejs, and have not done so before hand, it
 
 ### Source code is on Github
 
-The examples in this post and my many other posts on threejs can be [found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-scale).
+The examples in this post and my many other posts on threejs can be [found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-scale). This is also where I park all the source code for my many [other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version Numbers matter with three.js
 
