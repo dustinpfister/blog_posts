@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-27 12:39:22
-version: 1.49
+updated: 2022-11-27 13:08:03
+version: 1.50
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -416,9 +416,52 @@ As of late I am thinking that maybe the best way to go about setting the positio
 
 Anyway in this section I will not be getting into anything to advanced but rather just touching base on the basics of creating a curve and then getting a vector3 object along that curve that can then be used with the copy method of the vector3 class to set position.
 
-### 3.1 - Creating a Curve and using the get point method along with the copy method of Vector3 to set position
+### 3.1 - Basic Curve example to set position
 
-In this example I am using a few helper methods that I made while working on my Frink beta world video project series. In the video project I am creating curves and using those curves to set the position of a camera along with cretaing random points in space along with these curves. However to get to the point here I am using one helper function that is just an abstraction of the [THREE.QuadraticBezierCurve3 method](/2022/10/21/threejs-curve-quadratic-bezier-curve3/), and another helper that calls that abstraction that allows for me to define the control point as a delta from the midpoint between the start and end points that are used to define the curve.
+To start this section off here I have an example in which I am using the built in [THREE.QuadraticBezierCurve3](/2022/10/21/threejs-curve-quadratic-bezier-curve3/) to create a curve. This curve constructor will take three arguments all of which are Vector3 objects, one for a start point, another for a control point, and a final one for and end point. Once I have my curve object that I want I can use the get point method to get any point along the curve by just calling the get point method and giving a value between 0 and one as the argument for the get point method.
+
+In this example then I am creating a loop in which I am creating a whole bunch of mesh objects that will be placed along the curve. When I call the get point method I just give the current index value over the total number of mesh objects I want to get the point that I want along the curve.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(6, 6, 6);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CURVE
+//-------- ----------
+const v_start = new THREE.Vector3(-5,0,5);
+const v_end = new THREE.Vector3(-5,5,-5);
+const v_control = new THREE.Vector3(15,0,7);
+const curve = new THREE.QuadraticBezierCurve3(v_start, v_control, v_end);
+//-------- ----------
+// MESH OBJECTS
+//-------- ----------
+const len = 40;
+let i = 0;
+while(i < len){
+    const mesh = new THREE.Mesh( new THREE.SphereGeometry(0.125, 30, 30), new THREE.MeshNormalMaterial() );
+    const alpha = i / ( len - 1 );
+    mesh.position.copy( curve.getPoint( alpha ) );
+    scene.add(mesh);
+    i += 1;
+}
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 3.2 - Creating a Curve and using a number of helper methods to do so
+
+In this example I am using a few helper methods that I made while working on my Frink beta world video project series. In the video project I am creating curves and using those curves to set the position of a camera along with cretaing random points in space along with these curves. However to get to the point here I am using one helper function that is just an abstraction of the THREE.QuadraticBezierCurve3 method, and another helper that calls that abstraction that allows for me to define the control point as a delta from the midpoint between the start and end points that are used to define the curve.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/GDXM1o9hMK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -434,7 +477,7 @@ I then use these helpers to create the curve that I want at which point I can us
     const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
     camera.position.set(6, 6, 6);
     camera.lookAt(0,0,0);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
     renderer.setSize(640, 480, false);
     ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
