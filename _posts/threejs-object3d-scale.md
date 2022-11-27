@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-11-27 12:27:53
-version: 1.37
+updated: 2022-11-27 12:32:11
+version: 1.38
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale) that stores an instance of the [vector3 class](https://threejs.org/docs/#api/en/math/Vector3) in terms of its value. By default the values for this Vector3 value are 1,1,1 which means that the scale of the object is 1 for each axis of the object. I can then change what the values are for this vector3 object making them higher or lower, and by doing so I will end up changing the scale of the object.
@@ -39,6 +39,8 @@ When I wrote this post for the first time I was using revision 127 of three.js w
 
 ### 1.1 - The Vector3 set method
 
+For a very basic example of using scale there is just simply using the set method of the Vector3 class. This way I can call the set method off of the scale property and then give the values that I want for each axis value.
+
 ```js
 // ---------- ---------- ----------
 // SCENE, CAMERA, and RENDERER
@@ -66,6 +68,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.2 - The Vector3 Multiply Scalar Method
+
+Another way to quickly scale up and object by way of all axis values at once would be to use the [multiply scalar method](/2022/03/23/threejs-vector3-multiply-scalar/) to do so. This can be called just once off of the scale property and then I can give just a single value that will then be applied to all the axis values of the Vector3 object.
 
 ```js
 // ---------- ---------- ----------
