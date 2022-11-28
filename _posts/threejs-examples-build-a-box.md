@@ -5,29 +5,31 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 868
-updated: 2022-04-14 11:18:02
-version: 1.19
+updated: 2022-11-28 18:51:02
+version: 1.20
 ---
 
-I would like to start using three.js to work out a basic model, like I all ready did with my [guy model](/2021/04/29/threejs-examples-guy-one/) for example, only now I would like to do something practical such as creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood. These equal lengths of wood that are created from the dimensions of a single board will then end up being represented by a collection of five mesh objects in a group. I can then rotate an position these lengths to form what would become a finished product that is just a simple open box.
+I would like to start using three.js to work out a basic model, like I all ready did with my [guy model](/2021/04/29/threejs-examples-guy-one/) for example, only now I would like to do something practical such as creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood. 
+
+These equal lengths of wood that are created from the dimensions of a single board will then end up being represented by a collection of five mesh objects in a group. I can then rotate an position these lengths to form what would become a finished product that is just a simple open box.
 
 <!-- more -->
 
-## 1 - Building a box with three.js and what to know before hand
+## Building a box with three.js and what to know before hand
 
 This is a post on a three.js example that helps be get a crude visual idea of what the situation will be if I cut a length of wood into 5 equal pieces to create an open box without a lid. I am doing this just for the sake of starting out with using three.js as a way to design some basic things that I can then build in real life using wood and simple hand tools maybe. 
 
 So then this is not a [getting started type post for three.js](/2018/04/04/threejs-getting-started/) or any additional skills that are required in order to get something of values from reading this. Also using threejs alone for thins sort of thing seems like making something very simple more complex than it needs to be. If you are more interested in just designing and building things it might be better to just lean a thing or two about using a modeling program that all ready exists to design what you want to build.
 
-### 1.1 - Version Numbers matter with three.js
-
-When I wrote this post I was using three.js r127 of three.js, and this example was working fine for me with the version. However it is true that changes are being made to three.js all the time that might cause this comes example to break when it comes to using it with a future version of three.js.
-
-### 1.2 - Look into Groups and Object3d if you have not done so yet
+### Look into Groups and Object3d if you have not done so yet
 
 In this example I am creating a crude model of a box with a collection of Mesh objects that are pulled together into a group. This is how I often go about making simple, basic models with three.js rather that doing something with an extremal file format, at least for now. So it might be a good idea to read up more on the [THREE.Group constructor](/2018/05/16/threejs-grouping-mesh-objects/) as well as the [Object3d base class](/2018/04/23/threejs-object3d/) in general if you are still fairly new to three.js
 
-## 2 - The Build a Box module
+### Version Numbers matter with three.js
+
+When I wrote this post I was using three.js r127 of three.js, and this example was working fine for me with the version. However it is true that changes are being made to three.js all the time that might cause this comes example to break when it comes to using it with a future version of three.js.
+
+## 1 - The Build a Box module
 
 The first thing that I will want is a build a box module that will create a collection of mesh objects based on the dimensions of a single board. The idea here is that I have an object that is the length height and width of a single board and then that data is used to create a collection of mesh objects where the length, which should be the longest side, is divided by 5 and then that length is used to create a collection of five mesh objects with one side being this new computed length while all the other sides are the same. I will then just want to rotate and position these mesh objects in a proper way so that they from a box, and that will be just about it for this module.
 
@@ -119,7 +121,7 @@ I also have an update method that can be used to create this basic animation loo
 }(this['buildBox'] = {}));
 ```
 
-## 3 - Using the build a box module
+## 2 - Using the build a box module
 
 Now that I have my build a box module I will just want a little additional javaScript code to make use of this module. In this main javaScript file I can just create my scene object, and then create and add an instance of this box group to the scene by calling the create method of the build a box module. I then have the usual camera and renderer just like that of every other three.js project, and I also have an animation loop function for this demo of the module.
 
@@ -165,7 +167,7 @@ loop();
 
 Then end result of this when it is up and running is a simple animation of the mesh objects moving in and out of position. On e thing that I have learned off the bat is that I am going to end up with some scrap pieces if I cut things the way that I intend to do so. There are a few additional touches that I might want to make to this source code when and if I get to it, but I do not thing that there is much more to get done with this one. I had a crude, basic idea of what it is that I wanted to do and this is more or less it for what it is worth.
 
-## 4 - Conclusion
+## Conclusion
 
 This example made me become aware of some things when it comes to making a box out of a single board of wood, however I really learned that I still need to figure out some additional things when it comes to working with three.js also. I would like to make custom geometry that is like that of the box geometry constructor, but with one or more sides cut at 45 degree angles for example. So in the not to distance future I will need to revisit how to create custom geometries with the buffer geometry class as I have a bot more to learn with that one to make geometries just the way I want them for this type of thing.
 
