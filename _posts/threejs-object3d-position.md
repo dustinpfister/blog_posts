@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 18:39:43
-version: 1.67
+updated: 2022-11-28 18:42:32
+version: 1.68
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -1117,7 +1117,9 @@ This is an example based on the first video that I made for this post. It is an 
 }());
 ```
 
-### 4.5 - Video2 example
+### 4.5 - Video2 example making use of Buffer geometry as a way to set position.
+
+This is the source code that I used to make my video2 for this blog post that at the time of this writing is the latest video that I have up at the top of the blog post.
 
 ```js
 (function () {
