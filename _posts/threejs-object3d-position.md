@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 15:03:23
-version: 1.63
+updated: 2022-11-28 16:12:23
+version: 1.64
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -17,6 +17,10 @@ The [position property of an instance of Buffer geometry](/2021/06/07/threejs-bu
 
 <!-- more -->
 
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/ckQTPYZvpzI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
 ## The position property of the object3d class and what to know first
 
 This is a post on just the position property of the object3d class in the javaScript library known as threejs. This is then not any kind of [how to get started with threejs kind of a post](/2018/04/04/threejs-getting-started/) as well as with any additional skills that are also required beforehand that have to do with client side web development in general. 
@@ -24,9 +28,6 @@ This is a post on just the position property of the object3d class in the javaSc
 There are a whole lot of other topics that will branch off from the position property such as things that have to do with the Vector3 class to which the position property is an instance of in terms of its value. Also there is not just setting position but also orientation of objects so I might also need to touch base on the rotation property also in this post at least a little.
 
 There is no way I will ever cover every little detail that should be known before hand then. Still I often use these opening sections of posts to go over a few things that you might want to read up more on before continuing with the rest of this content.
-
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/iqTSfkGX3no" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ### Check out the Object3d class in general
 
@@ -1044,6 +1045,11 @@ Here I have an animation loop example based off the basic curve section example.
 ```
 
 ### 4.4 - Video1 example
+
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/iqTSfkGX3no" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 
 ```js
 (function () {
