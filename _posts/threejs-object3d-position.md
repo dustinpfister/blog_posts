@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 10:22:20
-version: 1.61
+updated: 2022-11-28 12:05:33
+version: 1.62
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -1045,6 +1045,9 @@ Here I have an animation loop example based off the basic curve section example.
 
 ## Conclusion
 
-The position property of the Object3d class is one feature of threejs that I find myself using all the time in projects, as the name suggests it is how to go about setting the current position of something in an over all project. The rotation property and the look at method of the object3d class is also of interest of course when it comes to setting the orientation of objects as well. There are also a whole lot of other features in threejs that are closely related to the position property also that I should maybe mention in this conclusion section when it comes to fuhrer reading topics related to this. One such feature that comes to mind right away is the [Raycaster class](/2021/05/18/threejs-raycaster/). If you are wondering how to go about getting a position on the surface of the geometry of a mesh object this raycaster class is a very helpful toll for that kind of thing.
+The position property of the Object3d class is one feature of threejs that I find myself using all the time in projects. The [rotation property](/2022/04/08/threejs-object3d-rotation/) and the [look at method](/2021/05/13/threejs-object3d-lookat/) of the object3d class is also of interest of course when it comes to setting the orientation of objects as well that typically goes hand in hand with this feature of the object3d class. 
+
+There are also a whole lot of other features in threejs that are closely related to the position property also that I should maybe mention in this conclusion section when it comes to fuhrer reading topics related to this. One such feature that comes to mind right away is the [Raycaster class](/2021/05/18/threejs-raycaster/). If you are wondering how to go about getting a position on the surface of the geometry of a mesh object this raycaster class is a very helpful toll for that kind of thing. This position value can then also be used as a way to set the position of an object, but there are many other use cases as well. For example when it comes to finding out if a mesh object was clicked or not the raycaster class is how to go about doing so.
+
 
 
