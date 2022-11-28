@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 10:10:51
-version: 1.58
+updated: 2022-11-28 10:14:47
+version: 1.59
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -708,9 +708,9 @@ The end result here is then two curves one of which uses the default get alpha m
 
 ## 4 - Deterministic Animation examples
 
-In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs one will want to work out a number of animations in which they are not just setting the position once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animation where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animations where randomness,and other factors such as user input are at play.
+In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs one will want to work out a number of animations in which they are not just setting the position once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animation where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animations where randomness, and other factors such as user input are at play.
 
-For this section I will be sticking to just a few examples of a kind of Deterministic style, saving the alternative style for some other post or section outside of this one.
+For this section I will be sticking to just a few examples of a kind of Deterministic style, saving the alternative style for some other post or section outside of this one. Many of these examples here will then often be in the demo videos that I embed for this post then as I often start out such projects in this kind of section.
 
 
 ### 4.1 - Just moving a bunch of mesh objects on the x axis by differing rates
