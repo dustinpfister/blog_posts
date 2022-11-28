@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 16:12:23
-version: 1.64
+updated: 2022-11-28 18:26:29
+version: 1.65
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -931,7 +931,7 @@ So then for this animation example I will have a collection of mesh objects that
 
 ### 4.3 - Using a Curve to position a mesh object over time
 
-Here I have an animation loop example based off the basic curve section example. This time I made a custom get alpha method that makes use of a number of methods in the [Math Utils object](/2022/04/11/threejs-math-utils/) to get a smooth animation along the curve back and forth.
+Here I have an animation loop example based off the basic curve section example in which I am moving a mesh along a curve. This time I made a custom get alpha method that makes use of a method in the [Math Utils object](/2022/04/11/threejs-math-utils/) to get a smooth animation along the curve back and forth. A get alpha method is just a way to go about getting a value between 0 and 1 that will help with creating an argument value to use with the get point method of the base curve class.
 
 ```js
 (function () {
