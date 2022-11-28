@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 18:26:29
-version: 1.65
+updated: 2022-11-28 18:35:10
+version: 1.66
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -946,8 +946,7 @@ Here I have an animation loop example based off the basic curve section example 
     renderer.setSize(640, 480, false);
     ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
     //-------- ----------
-    // HELPERS - from 'frink3' project in videoground-beta-world
-    //           ( https://github.com/dustinpfister/videoground-beta-world )
+    // HELPERS 
     //-------- ----------
     // just a short hand for THREE.QuadraticBezierCurve3
     const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
@@ -960,18 +959,6 @@ Here I have an animation loop example based off the basic curve section example 
             vc = new THREE.Vector3(x3, y3, z3);
         }
         return new THREE.QuadraticBezierCurve3( vs, vc, ve );
-    };
-    // QBDelta helper using QBC3
-    // this works by giving deltas from the point that is half way between
-    // the two start and end points rather than a direct control point for x3, y3, and x3
-    const QBDelta = function(x1, y1, z1, x2, y2, z2, x3, y3, z3) {
-        const vs = new THREE.Vector3(x1, y1, z1);
-        const ve = new THREE.Vector3(x2, y2, z2);
-        // deltas
-        const vDelta = new THREE.Vector3(x3, y3, z3);
-        const vc = vs.clone().lerp(ve, 0.5).add(vDelta);
-        const curve = QBC3(vs, ve, vc);
-        return curve;
     };
     // custom get alpha method
     const getAlpha = (a1) => {
@@ -994,7 +981,7 @@ Here I have an animation loop example based off the basic curve section example 
         new THREE.MeshNormalMaterial());
     scene.add(mesh);
     // points
-    const POINT_COUNT = 300;
+    const POINT_COUNT = 100;
     let i = 0, v3Array = [];
     while(i < POINT_COUNT){
         const a2 = getAlpha( i / POINT_COUNT);
@@ -1003,7 +990,7 @@ Here I have an animation loop example based off the basic curve section example 
     }
     const points = new THREE.Points(
         new THREE.BufferGeometry().setFromPoints( v3Array ),
-        new THREE.PointsMaterial({size: 0.075})
+        new THREE.PointsMaterial({size: 0.15})
     );
     scene.add(points);
     //-------- ----------
