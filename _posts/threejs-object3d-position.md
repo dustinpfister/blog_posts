@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 18:35:10
-version: 1.66
+updated: 2022-11-28 18:39:43
+version: 1.67
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -1033,9 +1033,9 @@ Here I have an animation loop example based off the basic curve section example 
 
 ### 4.4 - Video1 example
 
+This is an example based on the first video that I made for this post. It is an example where I just made a group of mesh objects and then moved them around using a home position that I stored in a user data object along with the use of some additional Vector3 class methods to move the mesh objects over time. I did not put a whole lot of thought into this one as I just wanted to make a quick place holder video for this post. I have sense then worked out some additional examples that make for a more interesting video than this.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/iqTSfkGX3no" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 
 ```js
