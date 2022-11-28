@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 09:45:56
-version: 1.56
+updated: 2022-11-28 10:06:38
+version: 1.57
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -615,7 +615,9 @@ I then use these helpers to create the curve that I want at which point I can us
 
 ### 3.3 - Curves, get point method, and get alpha methods
 
-There is not just using a curve and the get points method, but also using a curve and a custom method for getting the alpha method to use with the get point method.
+There is not just using a curve and the get points method, but also using a curve and a custom method for getting the alpha method to use with the get point method. The get points method might be nice in that it will quickly return an array of vector3 objects, however one draw back is that it will do so in a way in which the space between the points will always be consistent. Although often that might be what one might one, in some cases I might want the space between the points to follow some other kind of logic.
+
+There is then looking into creating what I have come to call get alpha methods, there are methods that will return a value between 0 and 1 that can be used with the get point method of the curve base class to create an array of vector3 objects. In this example I have a get smoother helper function that is just a wrapper for the [MathUtils.getsmoother](https://threejs.org/docs/#api/en/math/MathUtils.smootherstep) method. Speaking of the [Math Utils object](/2022/04/11/threejs-math-utils/) that is a good place to start when it comes to getting an idea of what there is to work with with some of these kinds of methods.
 
 ```js
 (function () {
