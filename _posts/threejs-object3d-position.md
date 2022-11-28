@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 10:14:47
-version: 1.59
+updated: 2022-11-28 10:20:17
+version: 1.60
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -715,7 +715,9 @@ For this section I will be sticking to just a few examples of a kind of Determin
 
 ### 4.1 - Just moving a bunch of mesh objects on the x axis by differing rates
 
-To start out with animation I have an example here where I now have an animation loop rather than just a single call of the render method of the webgl renderer. This is an animation loop example that I seem to keep copying and pasting from one example to another over and over again that allows for me to set differing values for a frames per second value, one of which will be used to set the target frame rate at which the update function is called, and the other can be used to set the frame rate. This allows for me to set a low update frame rate while still going by a higher frame rate update when it comes to movement. Regardless of how I go about adjusting these settings the aim here is to update everything just by a frame over max frame value, rather than all kinds of other factors that might be at play.
+To start out with animation of the position object3d property I have an example here where I now have an animation loop rather than just a single call of the render method of the webgl renderer. This is an animation loop example that I seem to keep copying and pasting from one example to another over and over again that allows for me to set differing values for a frames per second value.  I then have one FPS rate that will be used to set the target frame rate at which the update function is called, and the other can be used to set the current frame value that is used in the update method to update the state of things. This allows for me to set a low update frame rate while still going by a higher frame rate update when it comes to the movement of objects. This helps to conserve system resources while maintain a rate of movement that is consistent. In other words I can set thee update rate low which will result in choppy video, but use less CPU overhead, or a higher update rate which will result in smoother video but at the cost of eating up more CPU Overhead.
+
+Regardless of how I go about adjusting these settings the aim here is to update everything just by a frame over max frame value, rather than all kinds of other factors that might be at play when it comes to random style animation.
 
 The main idea here with this one is to create a group of mesh objects and have them all move along the x axis between a min and max value. To set the x value for each mesh object I am multiplying a set max amount delta value from the start point, then multiplying that by a number that is the current index of the child mesh. I then pass the result of this to the THREE.MathUtils.euclideanModulo method of the math utils object, passing the max delta value as the second argument for this function.
 
