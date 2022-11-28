@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-27 15:36:31
-version: 1.55
+updated: 2022-11-28 09:45:56
+version: 1.56
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -287,7 +287,9 @@ Now say that I am in a situation in which I want to adjust just the length of a 
 
 ### 1.6 - Apply Euler basic example
 
-Now it is time for a not so basic, basic example of the position property of the obejcts3d class. This time I will be using the apply Euler method of the vector3 class as a way to go about setting the position of a whole bunch of mesh objects.
+This time I will be using the [apply Euler method of the vector3 class](/2021/06/18/threejs-vector3-apply-euler/) as a way to go about setting the position of a whole bunch of mesh objects. This method allows me to use an instance of the [Euler class](/2021/04/28/threejs-euler/) to set the state of the Vector3 object. The Euler class is the kind of object that is used for the value of the rotation property of an object3d based object. It is very similar to that of Vector3 in some respects, but the values for each axis are radian values rather than a position relative to an origin.
+
+So then I can use something like the set method to set a standard starting location from the origin, and then use the apply Euler method with an instance of the Euler class to preform a translation. I can then make sure that the unit length is one to begin with, or use the normalize method to do so, at which point I can use multiply scalar to adjust the vector unit length. This is then one way to set up a system of sorts where I can position things in a spherical kind of way.
 
 ```js
 (function () {
