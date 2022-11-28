@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 10:06:38
-version: 1.57
+updated: 2022-11-28 10:10:51
+version: 1.58
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -704,6 +704,7 @@ There is then looking into creating what I have come to call get alpha methods, 
 }());
 ```
 
+The end result here is then two curves one of which uses the default get alpha method that will give a similar result to the get points method. The other curve uses the get alpha method that makes use of the smoother step method that results in the points starting out space out closer together at first, then farther apart as the center of the curve is reached, at which pint the spacing goes back down again.
 
 ## 4 - Deterministic Animation examples
 
