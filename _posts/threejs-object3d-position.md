@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 10:20:17
-version: 1.60
+updated: 2022-11-28 10:22:20
+version: 1.61
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -812,7 +812,7 @@ The end result of all of this is then to end up with a whole bunch of mesh objec
 
 ### 4.2 - Lerp method animation example
 
-Now that I have a nice basic by frame over max frame animation example, I can now start to move into another example that makes use of many of the Vector3 class features that I wrote about in the basic section. One very useful method that I covered out of many others was the lerp method of the vector3 class which can be used in combination with the clone method as a great way to move an object back and from between a start and end vector.
+Now that I have a nice basic frame over max frame animation example, I can now start to move into another example that makes use of many of the Vector3 class features that I wrote about in the basic section. One very useful method that I covered out of many others was the lerp method of the vector3 class which can be used in combination with the clone method as a great way to move an object back and from between a start and end vector.
 
 So then for this animation example I will have a collection of mesh objects that I move between a start and end Vector with the Lerp method and the use of that method will be the center point of this specific example. I will however also make use of a number of other features of the vector3 class such as the add method, as well as some Math utils methods to helper make things more interesting.
 
@@ -1046,3 +1046,5 @@ Here I have an animation loop example based off the basic curve section example.
 ## Conclusion
 
 The position property of the Object3d class is one feature of threejs that I find myself using all the time in projects, as the name suggests it is how to go about setting the current position of something in an over all project. The rotation property and the look at method of the object3d class is also of interest of course when it comes to setting the orientation of objects as well. There are also a whole lot of other features in threejs that are closely related to the position property also that I should maybe mention in this conclusion section when it comes to fuhrer reading topics related to this. One such feature that comes to mind right away is the [Raycaster class](/2021/05/18/threejs-raycaster/). If you are wondering how to go about getting a position on the surface of the geometry of a mesh object this raycaster class is a very helpful toll for that kind of thing.
+
+
