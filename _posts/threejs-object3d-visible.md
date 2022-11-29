@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2022-11-29 10:40:18
-version: 1.27
+updated: 2022-11-29 11:00:32
+version: 1.28
 ---
 
 There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible) in threejs, this property is a boolean value that is set to true by default, and is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
@@ -42,26 +42,31 @@ When I wrote this post and made the examples for it I was using threejs version 
 The first and foremost feature in three.js that comes to mind when it comes to making an object visible or not would be to just set the visible boolean of the object to false. This might prove to be one of the most easy ways to go about doing this, so it would make sense to start out with a basic example of just using the visible boolean. Here then I have an example where I am just creating a single mesh object, setting the visible boolean value to false, and then adding the mesh to the scene. I then have a simple loop where I am toggling the boolean value of the visible property between true and false a set number of times per second.
 
 ```js
-var scene = new THREE.Scene();
- 
-var box = new THREE.Mesh(
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 box.visible = false;
 scene.add(box);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1, 1);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var lt = new Date(),
-fps = 2;
-var loop = function () {
-    var now = new Date(),
+//-------- ----------
+// LOOP
+//-------- ----------
+let lt = new Date();
+const fps = 2;
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if (secs > 1 / fps) {
@@ -80,40 +85,49 @@ That is it more or less when it comes to just using the visible boolean, sure th
 The visibility property of an object is one way to make it so an object is not visible, however there are of course many ways to go about getting a similar result. One of which would be to just move the object out of range of the render distance of the camera that is being used with the render method of the renderer that I am using. The typically camera that I often use for an example is the perspective camera and with the kind of camera there is the near and var values of the camera that I can set via arguments when calling the constructor of the perspective camera. If I then just simply move a mesh object to a location where the object is just to near, or to far away from the camera, then the object will not render.
 
 ```js
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10));
- 
-// some values
-var near = 8.25,
-far = 20,
-maxDist = 10;
- 
-// CREATING CAMERA WITH NEAR AND FAR VALUES
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 8.25, far);
-camera.position.set(8, 8, 8);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(20, 20))
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(8,8,8);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var box = new THREE.Mesh(
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 scene.add(box);
- 
-var lt = new Date(),
+//-------- ----------
+// CAMERA STATE
+//-------- ----------
+let near = 8.25,
+far = 20,
+maxDist = 10;
+camera.near = near;
+camera.far = far;
+camera.updateProjectionMatrix();
+//-------- ----------
+// LOOP
+//-------- ----------
+let lt = new Date(),
 frame = 0,
 maxFrame = 240,
 fps = 15;
-var loop = function () {
-    var now = new Date(),
+const loop = function () {
+    const now = new Date(),
     per = frame / maxFrame,
     bias = 1 - Math.abs(per - 0.5) / 0.5,
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if (secs > 1 / fps) {
         // CHANGING POSITION OF BOX SO THAT IT GOES IN ANY OUT OF THE RENDER RANGE OF THE CAMERA
-        var dist = maxDist - (maxDist * 2) * bias;
+        const dist = maxDist - (maxDist * 2) * bias;
         box.position.x = dist * -1;
         box.position.z = dist * -1;
         renderer.render(scene, camera);
@@ -132,29 +146,35 @@ In this example I am just simply using the position property of a mesh object to
 Maybe another important thing to keep in mind is that a mesh object will not render in a scene, if it is not part of that scene. There is creating a mesh object and not adding it to a scene object that is passed to the render method, and when doing so the mesh will of course not render because it is not in that scene. So there is creating a reference to a mesh object, and then adding and removing that mesh object to and from the scene as needed.
 
 ```js
-var scene = new THREE.Scene();
-// Creating and adding the box to the scene
-var box = new THREE.Mesh(
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 scene.add(box);
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1, 1);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var lt = new Date(),
+//-------- ----------
+// LOOP
+//-------- ----------
+let lt = new Date(),
 fps = 2;
-var loop = function () {
-    var now = new Date(),
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if (secs > 1 / fps) {
         // ADDING AND REMOVING CHILD
-        var child = scene.getObjectById(box.id);
+        const child = scene.getObjectById(box.id);
         if (child) {
             scene.remove(box);
         } else {
