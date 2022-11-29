@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2022-11-29 11:00:32
-version: 1.28
+updated: 2022-11-29 11:04:07
+version: 1.29
 ---
 
 There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible) in threejs, this property is a boolean value that is set to true by default, and is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
@@ -32,6 +32,10 @@ One way to go about making a mesh object visible or not is to just set the visib
 It is not like using the visible property is the only way to go about doing this sort of thing and just using the visible property may fall short. For example by just setting the visible property of a mesh in a group to false that will make it so it will not be visible, but it will still be in the group, and as such will still be subject to any kind of update procedure. So maybe a better way would be to have two groups one added to the scene and one not added to it and just move mesh objects between the two as a way to achieve a similar effect to that of using the visible property. In order to do so I would want to use a number of other features in the object3d class when it comes to adding and removing mesh objects from a parent object such as a group. 
 
 In this post I will be going over some examples that have a lot to do with object3d and how to use features of the class to make objects visible or not. However this object3d class is worth spending a fair about of time to work with just to get a fell for what there is to work with when using this class. So you might want to check out [my main post on object3d](/2018/04/23/threejs-object3d/) that might prove to be a good resource for learning more about this class in general.
+
+### Source code is up on Github
+
+The Source code examples in this post can also be found in my [test threejs github repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-visible).
 
 ### Version Numbers matter in three.js
 
