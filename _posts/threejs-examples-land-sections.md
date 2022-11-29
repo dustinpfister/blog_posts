@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 803
-updated: 2022-04-17 09:10:25
-version: 1.16
+updated: 2022-11-29 08:50:45
+version: 1.17
 ---
 
 I have been neglecting my content on [threejs](https://threejs.org/), so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts also while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs, and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some [actual examples](/2021/02/19/threejs-examples/) using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my [Mr Sun game](/2020/11/03/canvas-example-game-mr-sun/) that I have been working on and off for a while.
@@ -19,9 +19,13 @@ The basic idea of my Mr Sun game is to have a display object that represents a s
 
 This is a post on a threejs project example prototype that has to do with a basic game mechanic that I was exploring with an idea for a game. This is then not a [getting started on three.js](/2018/04/04/threejs-getting-started/) kind of post and I assume that you have at least some background with the basics of three.js and also of course know a thing or two about javaScript in general. So I will not be going over every little basic feature of three.js here, however I often like to start off my threejs posts with a section like this in which I write about a few things that you might want to read up more before continuing to read the rest f the post.
 
+### Source is up on Github
+
+The source code for this example is also [up on my github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-land-sections).
+
 ### Version numbers matter with three.js
 
-When I first write this post and the underlaying source code of the example that I was writing about I was using three.js version r125. In future versions of three.js it is possible that code breaking changes might be introduced that will cause this example to no longer work.
+When I first write this post and the underlaying source code of the example that I was writing about I was using three.js version r125. The last time I came around to do a little editing of this post I made a few changes to get things working okay with r146. In future versions of three.js it is possible that code breaking changes might be introduced that will cause this example to no longer work.
 
 ## 1 - The game object
 
@@ -155,42 +159,37 @@ I am making use of the orbit controls provided in the three.js repo. I will not 
 
 ```js
 (function () {
- 
+    //-------- ----------
     // Scene
-    var scene = new THREE.Scene();
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
     camera.position.set(8, 8, 8);
     camera.lookAt(0, 0, 0);
- 
-    var mainGroup = Sections.create(game);
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // Create Sections object
+    //-------- ----------
+    const mainGroup = Sections.create(game);
     scene.add(mainGroup);
- 
     Sections.update(game, mainGroup);
- 
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // Orbit Controls The DOM element must now be given as a second argument
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
-    // loop
-    function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    if(THREE.OrbitControls){
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    }
+    function loop() {
+        requestAnimationFrame(loop);
         renderer.render(scene, camera);
     };
- 
-    animate();
- 
-}
-    ());
+    loop();
+}());
 ```
 
-## 4 - Conclusion
+## Conclusion
 
 I might get around to working on this example a little more at some point, but yet again I might not ever go much beyond what I have together here. I am trying to work out the core logic of what the game should be that is independent of having a 2d or 3d view of the game. When it comes to that I have a [land sections vuejs example](/2021/02/02/vuejs-example-land-sections/) actually where I am trying to focus on working out what might be fun when it comes to the basic logic of the game. 
 
