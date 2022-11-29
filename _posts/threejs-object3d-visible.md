@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2022-11-29 11:42:15
-version: 1.32
+updated: 2022-11-29 11:49:05
+version: 1.33
 ---
 
 There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) and [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), this property is a Boolean value that is set to true by default. The state of the visible Boolean is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
@@ -89,7 +89,7 @@ That is it more or less when it comes to just using the visible boolean, sure th
 
 ## 2 - There is just moving an object out of range of the camera
 
-The visibility property of an object is one way to make it so an object is not visible, however there are of course many ways to go about getting a similar result. One of which would be to just move the object out of range of the render distance of the camera that is being used with the render method of the renderer that I am using. The typically camera that I often use for an example is the perspective camera and with the kind of camera there is the near and var values of the camera that I can set via arguments when calling the constructor of the perspective camera. If I then just simply move a mesh object to a location where the object is just to near, or to far away from the camera, then the object will not render.
+The visibility property of an object is one way to make it so an object is not visible, however there are of course many ways to go about getting a similar result. One of which would be to just move the object out of range of the render distance of the [camera](/2018/04/06/threejs-camera/) that is being used with the render method of the renderer that I am using. The typical camera that I often use for an example is the [perspective camera](/2018/04/07/threejs-camera-perspective/) and with the kind of camera there is the near and var values of the camera. The near and far values can be set via arguments when calling the constructor of the perspective camera, or I can set the values of them later on and call the update projection matrix method. If I then just simply move a mesh object to a location where the object is just to near, or to far away from the camera, then the object will not render.
 
 ```js
 //-------- ----------
@@ -146,7 +146,7 @@ const loop = function () {
 loop();
 ```
 
-In this example I am just simply using the position property of a mesh object to move that mesh object into and out of range of a camera as a way to make the mesh visible and not visible by just making use of the near and far value of the camera as a means to do so. There is also the ides of not moving the mesh object, but moving the camera back and forth as a way to change the visibility of the mesh object. There is also yet even another way to go about doing so which would involve adjusting the near and far values of the camera and keep the camera and mesh in fixed locations. When doing so I need to call the update projection matrix method of the camera to do so.
+In this example I am just simply using the [position property of a mesh object](/2022/04/04/threejs-object3d-position/) to move that mesh object into and out of range of a camera as a way to make the mesh visible and not visible by just making use of the near and far value of the camera as a means to do so. There is also the idea of not moving the mesh object, but moving the camera back and forth as a way to change the visibility of the mesh object. There is also yet even another way to go about doing so which would involve adjusting the near and far values of the camera and keep the camera and mesh in fixed locations. When doing so I need to call the update projection matrix method of the camera to update the state of the camera each time I adjust those kinds of values.
 
 ## 3 - Removing a child from the scene, or a group that was added to the scene
 
