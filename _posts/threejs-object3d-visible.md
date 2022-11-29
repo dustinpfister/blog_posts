@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2022-11-29 11:49:05
-version: 1.33
+updated: 2022-11-29 11:55:12
+version: 1.34
 ---
 
 There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) and [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), this property is a Boolean value that is set to true by default. The state of the visible Boolean is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
@@ -150,7 +150,7 @@ In this example I am just simply using the [position property of a mesh object](
 
 ## 3 - Removing a child from the scene, or a group that was added to the scene
 
-Maybe another important thing to keep in mind is that a mesh object will not render in a scene, if it is not part of that scene. There is creating a mesh object and not adding it to a scene object that is passed to the render method, and when doing so the mesh will of course not render because it is not in that scene. So there is creating a reference to a mesh object, and then adding and removing that mesh object to and from the scene as needed.
+Maybe another important thing to keep in mind is that a mesh object will not render in a scene, if it is not a child of the scene. There is creating a mesh object and not adding it to a scene object that is passed to the render method, and when doing so the mesh will of course not render because it is not in that scene. So there is creating a reference to a mesh object, and then adding and removing that mesh object to and from the scene as needed.
 
 ```js
 //-------- ----------
@@ -194,12 +194,14 @@ const loop = function () {
 loop();
 ```
 
-This kind of solution might prove to be the way that I will want to do things when it comes to visibility. The reason why is that it is often not just the visibility of a mesh that will be of interest when working on a project. For example say I have a group of mesh objects, and I am looping over the whole group on each update of the scene. 
+This kind of solution might prove to be the way that I will want to do things when it comes to visibility. The reason why is that it is often not just the visibility of a mesh that will be of interest when working on a project. For example say I have a group of mesh objects, and I am looping over the whole group on each update of the scene. If I just set the visibility of a mesh to false that will just make it no longer visible, it will still very much be a part of the group, and as such will still be part of the update cycle and that can often lead to undesired results. So a better way might be to create a group that will serve as an object pool of sorts, and this object pool does not need to be added to the scene object that will be passed to the render method. 
 
-If I just set the visibility of a mesh to false that will just make it no longer visible, it will still very much be a part of the group, and as such will still be part of the update cycle and that can often lead to undesired results. So a better way might be to create a group that will serve as an object pool of sorts, and this object pool does not need to be added to the scene object that will be passed to the render method. Mesh Objects can just be moved from this object pool to the scene or a group that will be subject to an update procedure and back again as needed. This way mesh objects that are not being used will not be visible, and they will also not be taken into account when updating the scene.
+Mesh Objects can just be moved from this object pool to the scene or a group that will be subject to an update procedure and back again as needed. This way mesh objects that are not being used will not be visible, and they will also not be taken into account when updating the scene.
 
 ## Conclusion
 
-So I hope that this post help to clear up some things when it comes to setting the visibly of on object in three.js. If not then I guess you will just need to work out some additional examples of your own, and keep looking until you find or make something that will work for you. However just about every solution that comes to mind for me will be ways that just change the visibility of an object and that is all, or something that changes other properties of the object, makes the object a child of some other parent object that is not added to the scene, or removing the object completely.
+So I hope that this post helps to clear up some things when it comes to setting the visibly of on object in threejs. If not then I guess you will just need to work out some additional examples of your own, and keep looking until you find or make something that will work for you. However just about every solution that comes to me will often just have to do with setting the visible Boolean on or off as needed, or some other kind of solution where I create and update a group as needed by adding and removing objects to and from it.
 
-At some point in the future I may get around to editing this post a little, and when doing so I will often expand the post with at least one or two additional examples that have to do with the subject matter of the post. I am sure that there are a great number of other things to write about when it comes to the topic of visibility of mesh objects in three.js, but still there is really only so much more to write about until I just start getting into some actual projects examples of one kind or another.
+At some point in the future I may get around to editing this post a little, and when doing so I will often expand the post with at least one or two additional examples that have to do with the subject matter of the post. I am sure that there are a great number of other things to write about when it comes to the topic of visibility of mesh objects in threejs, but still there is really only so much more to write about with this I think. Well at least I can say that when it comes to the very basics of this sort of thing at least.
+
+
