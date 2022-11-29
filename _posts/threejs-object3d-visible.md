@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2022-11-29 11:04:07
-version: 1.29
+updated: 2022-11-29 11:23:57
+version: 1.30
 ---
 
-There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible) in threejs, this property is a boolean value that is set to true by default, and is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
+There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) and [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), this property is a Boolean value that is set to true by default. The state of the visible Boolean is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
 
-However it is true there are also a number of other subjects of interest such as setting the [transparency property of materials](/2021/04/21/threejs-materials-transparent/) for example that will will still make an object render it is thus that an opacity value can be set to zero that will have a similar visual effect. Other option that come to mind would involve moving mesh objects from one group that is added to a [scene object](/2018/05/03/threejs-scene/) to another group that is not as a scene object is what is passed to the renderer if the object is not a child of the scene object that in turn would also be a way to control visibility. Yet another way to active this kind of effect would be to make use of the [layers feature of threejs](/2021/06/04/threejs-object3d-layers/).
+However it is true there are also a number of other subjects of interest such as setting the [transparency property of materials](/2021/04/21/threejs-materials-transparent/) for example that will will still make an object render, it is just that an opacity value can be set to zero that will have a similar visual effect. There is also just simply moving an object out of view of the camera of course which might often prove to be a quick, brainless way to get this done and move on. Other option that comes to mind would involve moving mesh objects from one group that is added to a [scene object](/2018/05/03/threejs-scene/) to another group that is not. Yet another way to active this kind of effect would be to make use of the [layers feature of threejs](/2021/06/04/threejs-object3d-layers/) as well which is yet even another option.
 
 So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics and code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
 
@@ -19,11 +19,7 @@ So in this post I will of course be going over the object3d visible property, bu
 
 ## Visibility of objects in threejs and what to get solid first
 
-This is a post on three.js and how to go about making objects in a scene visible or not. I will not be getting into the very basic of three.js here I assume that you have gone beyond a basic getting started type example when it co es to working with the library at this point, and are not just interested in learning a few things about how to go about setting visibly of objects in a scene. I will be trying to keep many of these examples simple and to the point so that they might still not be that far beyond people that are new to three.js. However there are maybe still a few things that you should be aware of, or refresh on before continuing reading this post. So in this section I will be going over these things.
-
-### There are also properties of materials that might be of interest
-
-There is a lot to be said about the object3d class and how that can be used to make it so objects will or will not show up in a scene. However there is also maybe a thing or two to be said about the materials that are used to skin mesh objects that are based off of object3d also. Many materials will support a transparency boolean that when set will apply a transparency effect for the material, and opacity property can then be set form 0 to 1 to set the level of transparency for the material.
+This is a post on threejs and how to go about making object3d based objects in a scene visible or not. I will not be [getting into the very basics details on threejs](/2018/04/04/threejs-getting-started/) here as I assume that you have gone beyond the basics. I will be trying to keep many of these examples fairly simple though so that they might still not be that far beyond people that are new to threejs. However there are maybe still a few things that you should be aware of, or refresh a little with, before continuing reading the rest of this post. So in this section I will be going over some things and link to addtional posts.
 
 ### Might want to read up more on Object3d in general
 
@@ -33,13 +29,17 @@ It is not like using the visible property is the only way to go about doing this
 
 In this post I will be going over some examples that have a lot to do with object3d and how to use features of the class to make objects visible or not. However this object3d class is worth spending a fair about of time to work with just to get a fell for what there is to work with when using this class. So you might want to check out [my main post on object3d](/2018/04/23/threejs-object3d/) that might prove to be a good resource for learning more about this class in general.
 
+### There are also properties of materials that might be of interest
+
+There is a lot to be said about the object3d class and how that can be used to make it so objects will or will not show up in a scene. However there is also maybe a thing or two to be said about the [materials that are used to skin mesh objects](/2018/04/30/threejs-materials/). Many materials will support a transparency boolean that when set will apply a transparency effect for the material, and opacity property can then be set form 0 to 1 to set the level of transparency for the material.
+
 ### Source code is up on Github
 
 The Source code examples in this post can also be found in my [test threejs github repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-visible).
 
 ### Version Numbers matter in three.js
 
-When I wrote this post and made the examples for it I was using threejs version r127, which was still a fairly late version of threejs at the time of this writing. I have found that I just need to mentioning what versions I was suing when writing a post on three.js, and that doing so is impotent more so than many other libraries that move a little slower when it comes to development.
+When I wrote this post and made the examples for it I was using threejs version r127, which was still a fairly late version of threejs at the time of this writing. The last time I came around to do a little editing I was able to get all the examples working fine with r146. I have found that I just need to mention what versions I was using when writing a post on threejs, and that doing so is impotent more so than many other libraries that move a little slower when it comes to development.
 
 ## 1 - Making a mesh visible or not with the Object3d.visible property
 
