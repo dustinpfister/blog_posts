@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2022-11-29 11:37:08
-version: 1.31
+updated: 2022-11-29 11:42:15
+version: 1.32
 ---
 
 There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) and [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), this property is a Boolean value that is set to true by default. The state of the visible Boolean is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
@@ -43,11 +43,11 @@ When I wrote this post and made the examples for it I was using threejs version 
 
 ## 1 - Basic Examples of Object3d visible prop
 
-In this section I will be starting out with a few basic examples of the Object3d visble property. Nothing to fancy in this section as I will want to keep that sort of stuff for later sections in this post.
+In this section I will be starting out with a few basic examples of the Object3d visible property. Nothing to fancy in this section as I will want to keep that sort of stuff for later sections in this post. These will then be very simple examples that should be able to be just copied over and work assuming that you have threejs links to at least, and it is a revision that will work with these examples.  
 
 ### 1.1 - Toggling the visible Boolean off and on in a loop
 
-Here then I have an example where I am just creating a single mesh object, and then adding the mesh to the scene. I then have a simple loop where I am toggling the boolean value of the visible property from true to fase or back again a set number of times per second.
+Here then I have an example where I am just creating a single mesh object, and then adding the mesh to the scene. I then have a simple loop where I am toggling the Boolean value of the visible property from true to false or back again a set number of times per second. When it comes to the loop method I have an FPS const that will be used to set the number of times to toggle the visibility. The way that I go about toggling this back and forth is by just making use of the [JavaScript not operator](/2019/10/14/js-not/) in core JavaScript which is an exclamation point.
 
 ```js
 //-------- ----------
