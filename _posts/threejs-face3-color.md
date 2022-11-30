@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2022-04-18 11:20:10
-version: 1.20
+updated: 2022-11-30 12:02:14
+version: 1.21
 ---
 
 It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a [material](/2018/04/30/threejs-materials/) and a [mesh object](/2018/05/04/threejs-mesh/). In this post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
@@ -33,20 +33,19 @@ When I first started writing content on threejs here I was using r91 of threejs,
 In order to use face3 vertex colors the vertexColors property of the material that is being used must be set to the THREE.FaceColors constant. A quick example of the use of face3 vertex colors might look something like this.
 
 ```js
-// SCENE
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
 var scene = new THREE.Scene();
- 
-// CAMERA
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
 camera.position.set(0, 0, -2);
 camera.lookAt(0, 0, 0);
- 
-// RENDER
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // FACE 3
+//-------- ----------
 var geometry = new THREE.Geometry();
 geometry.vertices = [
     new THREE.Vector3(0, 0, 0),
@@ -65,15 +64,17 @@ geometry.faces.push(new THREE.Face3(0, 1, 2, normal, colors[0], 0));
 geometry.faces.push(new THREE.Face3(3, 2, 0, normal, colors, 0));
 geometry.computeVertexNormals();
 geometry.computeFaceNormals();
- 
-console.log(geometry);
- 
+//-------- ----------
+// MESH
+//-------- ----------
 var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
             side: THREE.DoubleSide,
             vertexColors: THREE.FaceColors
         }));
 scene.add(mesh);
- 
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -84,14 +85,19 @@ The fifth parameter of the THREE.face3 constructor can be a single color that wi
 When creating a custom geometry the face3 constructor can be used directly and a single color or array of colors can be given when calling the face3 constructor. However when working with a geometry that all ready exists another way of setting the vertex colors or a single face color is by going over each instance of face3 and just set the color or vertexColors properties of each face3 instance.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(1, 1.2, 1);
 camera.lookAt(0, 0, 0);
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
+renderer.setSize(640, 480);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// FACE3
+//-------- ----------
 // a box geometry
 var box = new THREE.BoxGeometry(1, 1, 1);
 // for each face3
@@ -107,12 +113,17 @@ box.faces.forEach(function (face3, i) {
         face3.color = new THREE.Color(0xffffff);
     }
 });
- 
+//-------- ----------
+// MESH
+//-------- ----------
 var mesh = new THREE.Mesh(box,
         new THREE.MeshBasicMaterial({
             vertexColors: THREE.FaceColors
         }));
 scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -121,8 +132,29 @@ renderer.render(scene, camera);
 To do the same thing more or less with Buffered Geometry rather that the older and now removed Geometry constructor the process of doing so is just a little different. The basic process is that one additional attribute will need to be added to the Buffered Geometry that is custom, or made from one of the built in geometry constructors such as the PlaneGeometry constructor.
 
 ```js
-// create a buffed geometry
-var geometry = new THREE.PlaneGeometry(1, 2, 1, 1);
+//-------- ----------
+// SCENE
+//-------- ----------
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+var renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// BUFFER GEOMERTY
+//-------- ----------
+var geometry = new THREE.BufferGeometry();
+var vertices = new Float32Array([
+    -1, 0, 0,
+     1, 0, 0,
+     1, 1.25, 0
+]);
+geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+//-------- ----------
+// COLORS
+//-------- ----------
 // add a colors prop to the geometry
 var colors = new Uint8Array([
             255, 0, 0,
@@ -133,30 +165,28 @@ var colors = new Uint8Array([
             255, 0, 0,
         ]);
 // Don't forget to normalize the array! (third param = true)
-geometry.addAttribute('color', new THREE.BufferAttribute(colors, 3, true));
- 
-// SCENE
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-document.getElementById('demo').appendChild(renderer.domElement);
- 
+geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3, true));
+//-------- ----------
+// MESH
+//-------- ----------
 // MESH that uses the vertex colors
 var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
             side: THREE.DoubleSide,
-            vertexColors: true
+            vertexColors: true,
+            side: THREE.DoubleSide
         }));
 scene.add(mesh);
- 
+//-------- ----------
+// RENDERER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
-## 4 - Conclusion
+## Conclusion
 
 When it comes to Face3 color I can still use the Face3 constructor and set vertex colors to each instance of Face3 as a way to have a vertex color effect. However that will only work with older versions of threejs before that if the late version in which face3 was removed. It might be possible to bring back the Geometry constructor and Face3 by way of some extremal files as that is often the case when features are removed. However I think that it is best to just learn how to do everything that I want to do with threejs by using the Buffered Geometry Constructor and setting vertex colors by some other means such as when working with groups.
 
 So then maybe a better post to read would be something on using the buffer geometry constructor, and the groups array that is not the modern replacement for what face3 was all about. In my post on the buffer geometry constructor I have some examples that have to do with working with the groups array, but I also have some examples on my posts on the various geometry constructors such as the [plane geometry](/2019/06/05/threejs-plane/) constructor that might be a good starting point when it comes to learning about the groups array.
 
 If you are just looking for more three.js content to read I have a [post in which I outline a collection of simple threejs project examples](/2021/02/19/threejs-examples/) that I keep coming back to now that might be worth checking out. Playing around with simple little code examples is one thing but sooner or later it comes time to figure out what the long term plan should be with threejs aside from just making simple code examples and writing blog posts about them.
+
