@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2022-11-30 16:51:24
-version: 1.22
+updated: 2022-11-30 17:10:19
+version: 1.23
 ---
 
 When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in [JavaScript Date class](/2019/02/14/js-javascript-date/) along with the [request animation frame method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). However thus far I can not say that I have been making use of the built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor that much. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to things like this Clock constructor and why it might be a good idea to go with this in place of what I have been making animation loops with thus far. 
@@ -23,9 +23,13 @@ This is a post on using the THREE.Clock class in the javaScript library known as
 
 The use of the THREE.Clock class can be used with, or as a replacement for the built in javaScript Date object when it comes to setting up an animation loop with function. This kind of function is something that deserves a post on its own when it comes to how to go about making such a loop outside of threejs when it comes to native javaScript features. In fact I have wrote a few posts on this sort of thing when it comes to the use of the [setTimeout method](/2018/12/06/js-settimeout/), and [requestAnaimationFrame](/2018/03/13/js-request-animation-frame/) methods that are typically used to cerate main application update loops.
 
+### Source code is on Github
+
+The source code examples in this post [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-clock).
+
 ### Version Numbers matter with threejs
 
-When I first wrote this post I was using r127 of threejs, always be mindful of what version of threejs you are suing and what version the developer of a content piece like this was suing when looking at threejs examples on the open web. Threejs is a fast moving project in terms of development and code breaking changes are made to it often.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to do some editing of this post I was using r146. Always be mindful of what version of threejs you are suing and what version the developer of a content piece like this was suing when looking at threejs examples on the open web. Threejs is a fast moving project in terms of development and code breaking changes are made to it often.
 
 ## 1 - Basic loop example using THREE.Clock
 
