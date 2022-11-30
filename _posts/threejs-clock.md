@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2022-11-30 17:10:19
-version: 1.23
+updated: 2022-11-30 17:13:22
+version: 1.24
 ---
 
 When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in [JavaScript Date class](/2019/02/14/js-javascript-date/) along with the [request animation frame method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). However thus far I can not say that I have been making use of the built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor that much. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to things like this Clock constructor and why it might be a good idea to go with this in place of what I have been making animation loops with thus far. 
@@ -38,34 +38,40 @@ To start out with the THREE.Clock class I made a basic example where I am using 
 With this example in place of having an instance of Date, I am creating an instance of THREE.Clock. I then start the clock by calling the start method of the clock instance, and start the loop by calling the loop function. I then call the get delta method of the clock inside the body of the loop function which will return an amount of time in seconds. I can then use this seconds value to update the state of objects when it comes to working out some expressions for doing so. On top of that each time I call the get delta method that will result in the old time property of the clock being reset, so just calling the method is all I need to do, for this example at least.
 
 ```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(1.2, 1.2, 1.2);
+camera.lookAt(0, -0.15, 0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
 // A STATE OBJECT WITH A THREE.CLOCK INSTANCE
-var state = {
+// ---------- ---------- ----------
+const state = {
     clock: new THREE.Clock(),
     frame: 0,
     maxFrame: 90,
     fps: 30,
     per: 0
 };
-// a scene
-var scene = new THREE.Scene();
-// a mesh
-var box = new THREE.Mesh(
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 scene.add(box);
-// camera render
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1, 1);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// START CLOCK
+// ---------- ---------- ----------
+// CLOCK / LOOP
+// ---------- ---------- ----------
 state.clock.start();
-// loop
-var loop = function () {
+const loop = function () {
     // USING THE GET DELTA METHOD
-    var secs = state.clock.getDelta();
+    const secs = state.clock.getDelta();
     state.per = state.frame / state.maxFrame;
     requestAnimationFrame(loop);
     box.rotation.y = Math.PI * 2 * state.per;
@@ -83,35 +89,42 @@ So then this might prove to be an okay basic example, however there are some tim
 The get delta method is great for getting an amount of time that has elapse sense the last frame update, but if I want to get the total about of time that has elapsed sense the clock has started then there is the get elapsed time method. In this example I am still updating the rotation of a cube by way of the get delta method, but I am also rotating on anther axis over all time using get elapsed time.
 
 ```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(1.2, 1.2, 1.2);
+camera.lookAt(0, -0.15, 0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
 // A STATE OBJECT WITH A THREE.CLOCK INSTANCE
-var state = {
+// ---------- ---------- ----------
+const state = {
     clock: new THREE.Clock(),
     frame: 0,
     maxFrame: 90,
     fps: 30,
     per: 0
 };
-// a scene
-var scene = new THREE.Scene();
-// a mesh
-var box = new THREE.Mesh(
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 scene.add(box);
-// camera render
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1, 1);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// START CLOCK
+// ---------- ---------- ----------
+// CLOCK / LOOP getElapsedTime
+// ---------- ---------- ----------
 state.clock.start();
 // loop
-var loop = function () {
+const loop = function () {
     // USING THE GET DELTA METHOD FOR SECS
     // AND GET ELAPSED TIME DELTA FOR TOTAL SECS
-    var secs = state.clock.getDelta(),
+    const secs = state.clock.getDelta(),
     totalSecs = state.clock.getElapsedTime();
     requestAnimationFrame(loop);
     // rotating box on y by SECS
@@ -119,10 +132,8 @@ var loop = function () {
     state.frame += state.fps * secs;
     state.frame %= state.maxFrame;
     box.rotation.y = Math.PI * 2 * state.per;
- 
     // rotating x by TOTAL SECS
     box.rotation.x = Math.PI / 180 * 45 * (1 / totalSecs);
- 
     renderer.render(scene, camera);
 };
 loop();
@@ -135,36 +146,41 @@ One thing that is important to be aware of when it comes to these loop functions
 It then might be best to have some way to let users set what the target frame rate should be when it comes to some kind of options menu in a user interface. However maybe a good starting point would be to come up with some kind of hard coded frame rate that still works well, while still being a low frame rate. Basically the lower the frame rate the lower the load on the processor and graphics adapter of the client, that means it will then use less power, and also have more resources to do other things that might be going on in the page. The cost of this though is choppy animation as the target frame rate approaches zero, still I have found that setting a frame rate as low as 24 fps still looks pretty good.
 
 ```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(1.2, 1.2, 1.2);
+camera.lookAt(0, -0.15, 0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
 // A STATE OBJECT WITH A THREE.CLOCK INSTANCE
-var state = {
+// ---------- ---------- ----------
+const state = {
     clock: new THREE.Clock(),
     frame: 0,
     maxFrame: 90,
     fps: 12, // capping at 12 fps
     per: 0
 };
-// a scene
-var scene = new THREE.Scene();
-// a mesh
-var box = new THREE.Mesh(
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 scene.add(box);
-// camera render
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1, 1);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-// loop
-var loop = function () {
-    var wSecs = performance.now() - state.clock.oldTime,
-    secs;
+// ---------- ---------- ----------
+// CLOCK / LOOP
+// ---------- ---------- ----------
+const loop = function () {
+    const wSecs = performance.now() - state.clock.oldTime;
     requestAnimationFrame(loop);
     if (wSecs > 1 / state.fps) {
-        secs = state.clock.getDelta();
+        const secs = state.clock.getDelta();
         state.per = state.frame / state.maxFrame;
         box.rotation.y = Math.PI * 2 * state.per;
         state.frame += state.fps * secs;
@@ -174,7 +190,6 @@ var loop = function () {
 };
 // START CLOCK
 state.clock.start();
-console.log();
 // start loop
 loop();
 ```
