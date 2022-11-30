@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2022-11-30 12:02:14
-version: 1.21
+updated: 2022-11-30 12:27:34
+version: 1.22
 ---
 
 It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a [material](/2018/04/30/threejs-materials/) and a [mesh object](/2018/05/04/threejs-mesh/). In this post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
@@ -17,16 +17,23 @@ Also now that the face3 and geometry constructors have been removed from three.j
 
 ## What to know before hand
 
-This is a post on using the Face3 Constructor to set custom vertex colors, and to use those colors with a material when using the geometry with a mesh. So then this is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), javaScript, and any additional skills that are required before hand to get something of value from this post. Also there are some additional talking points that I should mention here before continuing with the code examples.
+This is a post on using the Face3 Constructor to set custom vertex colors, and to use those colors with a material when using the geometry with a mesh object. So then this is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), javaScript, and any additional skills that are required before hand to get something of value from this post. Also there are some additional talking points that I should mention here before continuing with the code examples.
 
-## THE CODE HERE WILL BREAK IF YOU ARE USING A NEW VERSION OF THREEJS (r125+)
+## MANY OF THE CODE EXAMPLES HERE WILL BREAK IF YOU ARE USING A NEW VERSION OF THREEJS ( r125+ )
 
-The old code examples here will break if you are using a late version of threejs. The reason why is that the Face3 Constructor was removed from threejs in version r126, and in r125 the Geometry constructor which was closely related to face3 was also removed. I will be keeping this post up because it does still apply to older versions of threejs, and also it might still be possible to get some of these older code examples working on later versions of threejs if one can find a way to bring back what was removed by way of external files beyond that of the threejs library by itself.
-However it is possible to pull off a similar effect to what is worked out here with the Buffered Geometry constructor which is still part of the core of threejs. I worked out some new examples for that and will place those examples at the bottom of this post
+The old code examples here will break if you are using a late version of threejs. The reason why is that the Face3 Constructor was removed from threejs in version r126, and in r125 the Geometry constructor which was closely related to face3 was also removed. I will be keeping this post up because it does still apply to older versions of threejs. Also it might still be possible to get some of these older code examples working on later versions of threejs if one can find a way to bring back what was removed by way of external files beyond that of the threejs library by itself.
 
-## So yes version numbers matter when using threejs
+However it is possible to pull off a similar effect to what is worked out here with the Buffered Geometry constructor which is still part of the core of threejs. I worked out a new example for that and will place that example at the bottom of this post.
 
-When I first started writing content on threejs here I was using r91 of threejs, back when I first wrote this post I was using r104, and the last time I edited this post I was using r127. With that said at the time of this writing when I was using r127 some of these code examples do not work with later versions of three.js, however I have some modern solutions here that should work with late versions also. Features are constantly being added, and other features are being removed which often result in code breaking changes to examples like the ones here. If you are having problems with the examples here, or anywhere for that matter the first thing you should check is the version number of three.js that you are using.
+## SO YES VERSION NUMBERS MATTER WITH THREEJS AND THE DEAL OF FACE3 COLOR IS A GOOD EXAMPLE OF THAT
+
+When I first started writing content on threejs here I was using r91 of threejs, back when I first wrote this post I was using r104. The last time I came around to do some editing of this post I cleaned up the face3 examples a little, and they seem to still be working finr with r111. The new source code example that I made that makes use of buffer geometry and the set attribute method was updated to work fine with r146 as well.
+
+With that said at the time of this writing when I was using r146 some of these code examples do not work with later versions of three.js. Features are constantly being added, and other features are being removed which often result in code breaking changes to examples like the ones here. If you are having problems with the examples here, or anywhere for that matter the first thing you should check is the version number of three.js that you are using.
+
+## Source code is up on Github
+
+The source code examples here can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-face3-color).
 
 ## 1 - Face3 color in vertices 
 
@@ -129,7 +136,10 @@ renderer.render(scene, camera);
 
 ## 3 - Using the Buffered Geometry Constructor and then NOT Face3 (doing the same thing in r125+)
 
-To do the same thing more or less with Buffered Geometry rather that the older and now removed Geometry constructor the process of doing so is just a little different. The basic process is that one additional attribute will need to be added to the Buffered Geometry that is custom, or made from one of the built in geometry constructors such as the PlaneGeometry constructor.
+To do the same thing more or less with Buffered Geometry rather that the older and now removed Geometry constructor the process of doing so is just a little different. The basic process is that one additional attribute will need to be added to the Buffered Geometry that is custom. This additional attribute is the color attribute which can be created with the help of the Uint8Array, and BufferAttribute constructors. Once I have the buffer attribute object that I want to set for my geometry I can use the set attribute method of the buffer geometry class to add this to the geometry.
+
+
+In late versions of threejs all built in geometry constructors will return a Buffer Geometry rather than the nor deprecated Geometry class. Still for the sake of making things clear here I made a custom geometry by calling the THREE.BufferGeometry constructor function, and then adding at least a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) to it. If the aim here is to stick with the basic material, and vertex colors only, then it would seem that I do not need to bother with any other additional attribute for this sort of thing. I just want to make sure that I set the vertexColors property of the material that I am using to true.
 
 ```js
 //-------- ----------
@@ -184,9 +194,10 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-When it comes to Face3 color I can still use the Face3 constructor and set vertex colors to each instance of Face3 as a way to have a vertex color effect. However that will only work with older versions of threejs before that if the late version in which face3 was removed. It might be possible to bring back the Geometry constructor and Face3 by way of some extremal files as that is often the case when features are removed. However I think that it is best to just learn how to do everything that I want to do with threejs by using the Buffered Geometry Constructor and setting vertex colors by some other means such as when working with groups.
+When it comes to Face3 color I can still use the Face3 constructor and set vertex colors to each instance of Face3 as a way to have a vertex color effect, but only if I am willing to stick to old verions of threejs which I might not be at this time. It might be possible to bring back the Geometry constructor and Face3 by way of some extremal files as that is often the case when features are removed. However I think that it is best to just learn how to do everything that I want to do with threejs by using the Buffered Geometry Constructor.
 
 So then maybe a better post to read would be something on using the buffer geometry constructor, and the groups array that is not the modern replacement for what face3 was all about. In my post on the buffer geometry constructor I have some examples that have to do with working with the groups array, but I also have some examples on my posts on the various geometry constructors such as the [plane geometry](/2019/06/05/threejs-plane/) constructor that might be a good starting point when it comes to learning about the groups array.
 
 If you are just looking for more three.js content to read I have a [post in which I outline a collection of simple threejs project examples](/2021/02/19/threejs-examples/) that I keep coming back to now that might be worth checking out. Playing around with simple little code examples is one thing but sooner or later it comes time to figure out what the long term plan should be with threejs aside from just making simple code examples and writing blog posts about them.
+
 
