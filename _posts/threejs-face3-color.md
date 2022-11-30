@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2022-11-30 12:27:34
-version: 1.22
+updated: 2022-11-30 12:35:24
+version: 1.23
 ---
 
-It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a [material](/2018/04/30/threejs-materials/) and a [mesh object](/2018/05/04/threejs-mesh/). In this post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
+It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) as it would seem there is is now some confusion revolving around the topic because of the fact that it is now a removed feature. That is that the Face3 class and also the Geometry class are no longer baked into the core of the threejs library, so all these code examples on the open web that make use of these features will now of course break.
 
-Also now that the face3 and geometry constructors have been removed from three.js as of r125, I will want to come back and edit things post once in a while when I start to learn more about what the current situation is with all of this. I have some working examples now that make use of the [buffer geometry constructor](/2021/04/22/threejs-buffer-geometry/) that I will be getting to later in this post.
+Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a [material](/2018/04/30/threejs-materials/) and a [mesh object](/2018/05/04/threejs-mesh/). In this post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color. Also because these examples only apply to older versions of threejs now, I will also need to write about at least one example that has to do with how to do something similar with [buffer geometry](/2021/04/22/threejs-buffer-geometry/) rather than the now removed as of r125 face3 and geometry classes.
 
 <!-- more -->
 
@@ -194,10 +194,9 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-When it comes to Face3 color I can still use the Face3 constructor and set vertex colors to each instance of Face3 as a way to have a vertex color effect, but only if I am willing to stick to old verions of threejs which I might not be at this time. It might be possible to bring back the Geometry constructor and Face3 by way of some extremal files as that is often the case when features are removed. However I think that it is best to just learn how to do everything that I want to do with threejs by using the Buffered Geometry Constructor.
+When it comes to Face3 color I can still use the Face3 constructor and set vertex colors to each instance of Face3 as a way to have a vertex color effect, but only if I am willing to stick to old versions of threejs which I might not be at this time. It might be possible to bring back the Geometry constructor and Face3 by way of some external files as that is often the case when features are removed. However I think that it is best to just learn how to do everything that I want to do with threejs by using the Buffered Geometry Constructor.
 
 So then maybe a better post to read would be something on using the buffer geometry constructor, and the groups array that is not the modern replacement for what face3 was all about. In my post on the buffer geometry constructor I have some examples that have to do with working with the groups array, but I also have some examples on my posts on the various geometry constructors such as the [plane geometry](/2019/06/05/threejs-plane/) constructor that might be a good starting point when it comes to learning about the groups array.
 
 If you are just looking for more three.js content to read I have a [post in which I outline a collection of simple threejs project examples](/2021/02/19/threejs-examples/) that I keep coming back to now that might be worth checking out. Playing around with simple little code examples is one thing but sooner or later it comes time to figure out what the long term plan should be with threejs aside from just making simple code examples and writing blog posts about them.
-
 
