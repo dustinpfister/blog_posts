@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2022-04-19 10:18:32
-version: 1.21
+updated: 2022-11-30 16:51:24
+version: 1.22
 ---
 
-When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in [JavaScript Date class](/2019/02/14/js-javascript-date/) along with the [request animation frame method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). However thus far I can not say that I have been making use of the built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to things like this Clock constructor and why it might be a good idea to go with this in place of what I have been making animation loops with thus far. 
+When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in [JavaScript Date class](/2019/02/14/js-javascript-date/) along with the [request animation frame method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). However thus far I can not say that I have been making use of the built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor that much. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to things like this Clock constructor and why it might be a good idea to go with this in place of what I have been making animation loops with thus far. 
 
 So in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance), and mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that object.
 
