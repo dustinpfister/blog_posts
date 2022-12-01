@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-12-01 11:53:13
-version: 1.37
+updated: 2022-12-01 12:07:10
+version: 1.38
 ---
 
-There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/), a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at something in the scene object, and one final other component that is needed on top of all of this and that is a renderer. There is also having something to look at added to the scene object as well such as a [mesh object](/2018/05/04/threejs-mesh/) that is composed of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). However there are other options when it comes to adding content to a scene object, so the core set of objects are really just those three things. That is a scene object, camera, and renderer.
+There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](https://threejs.org/docs/#api/en/scenes/Scene), a [camera](https://threejs.org/docs/#api/en/cameras/Camera) to set the point in space by which to look at something in the scene object, and one final other component that is needed on top of all of this and that is a renderer. There is also having something to look at added to the scene object as well such as a [mesh object](/2018/05/04/threejs-mesh/) that is composed of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). However there are other options when it comes to adding content to a scene object, so the core set of objects are really just those three things. That is a scene object, camera, and renderer.
 
 In older versions of threejs there was both a 2D canvas renderer, and webgl renderer, but in later versions it has been removed from the core of threejs itself. So now when making a threejs project I am pretty much always working with the WebGL renderer as that would seem to be the best option for most typical use cases of threejs. There are some additional options built into the core of the threejs library, and additional renderer options that can be added by way of additional javaScript files. However in this post I will be writing a thing or two about the [WebGL renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer). I will not get into every little detail but I will be writing about every core feature that I think is important to be aware of with this.
 
@@ -19,9 +19,17 @@ In older versions of threejs there was both a 2D canvas renderer, and webgl rend
 
 This is a post on the WebGlRenderer in threejs as well as some other closely related subjects that might come up with other options built into the core of threejs itself. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), although I will be trying to keep these examples fairly simple. I still assume that you have at least some background when it comes to the very basics of getting started with threejs and [client side javaScript in general](/2018/11/27/js-getting-started/), if not this still might prove to be a little to involved. In any case I take a moment to write about a few things that you might want to read up more on before continuing to read the rest of this post.
 
+### Check out Scene objects and Camera Objects
+
+The main method of interest with the WebGl renderer as well as with renderers in general is the render method that will take a scene object as well as a camera as arguments. After calling the method the given scene object will be drawn from the perspective of the given camera object. So then there is looking more into what there is to be ware of when it comes to creating a [scene object](/2018/05/03/threejs-scene/), as well as many of the features of scene objects much of which is based off of the [object3d class](/2018/04/23/threejs-object3d/). There is also looking into what the options are with [cameras as well](/2018/04/06/threejs-camera/), but for the most part I just go with the [perspective camera](/2018/04/07/threejs-camera-perspective/).
+
+### Source Code examples are on Github
+
+The Source code examples that i am writing about here can also be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-webglrenderer).
+
 ### Version numbers matter
 
-In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) when I first wrote the post which was released in November of 2018. The last time I edited this post I was using r146, and thus made additional changes to all the source code examples to make them work better in late versions of threejs. In the r98 of threejs the canvas renderer was removed, there where also a number of other significant changes in that version. So now I am limited in terms of other renderer options that are baked into threejs itself at least. As of r118 the WebGL Renderer will default to using WebGL2, which for the most part will not be a problem on most clients, excpet for when it is a problem and results in some errors. As such if I am in a situation in which I am sure that WebGL1 features alone will work fine with what I want to do, I can use the WebGL1 Renderer now.
+In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) when I first wrote the post which was released in November of 2018. The last time I edited this post I was using r146, and thus made additional changes to all the source code examples to make them work better in late versions of threejs. In the r98 of threejs the canvas renderer was removed, there where also a number of other significant changes in that version. So now I am limited in terms of other renderer options that are baked into threejs itself at least. As of r118 the WebGL Renderer will default to using WebGL2, which for the most part will not be a problem on most clients, except for when it is a problem and results in some errors. As such if I am in a situation in which I am sure that WebGL1 features alone will work fine with what I want to do, I can use the WebGL1 Renderer now.
 
 I also fixed some code breaking changes with these examples and they seem to be working fine with r127 as of this writing. Still lots of code breaking changes are made to threejs all the time so if the code in this example, or any of my three.js examples breaks be sure to check the revision number of the three.js file you are using first.
 
@@ -63,7 +71,7 @@ Now that I have the renderer I will want a scene object with something to look a
 
 ### 1.2 - Using WebGL 1 Always, if that works
 
-As of r118+ The WebGL Renderer will always use WebGL2 which for the most part will not present a problem with most clients. However this still might cause some errors on certain platforms. So if I am sure that WebGL1 alone will work fine with what I want to do, and more often that not it will, I can just make sure that I will always use the WebGL1 Renderer if it is there to work with in the revision of threejs that I am using.
+As of r118+ The WebGL Renderer will always use WebGL2 which for the most part will not present a problem with most clients. However this still might cause some errors on certain platforms. So if I am sure that WebGL1 alone will work fine with what I want to do, and more often that not it will, I can just make sure that I will always use the [WebGL1 Renderer](https://threejs.org/docs/#api/en/renderers/WebGL1Renderer) if it is there to work with in the revision of threejs that I am using.
 
 ```js
 (function () {
