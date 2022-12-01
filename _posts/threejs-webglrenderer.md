@@ -1,27 +1,29 @@
 ---
-title: The webGL renderer in three.js
+title: WebGL Renderer core features and more in threejs
 date: 2018-11-24 13:18:00
 tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-04-19 10:34:41
-version: 1.32
+updated: 2022-12-01 10:45:03
+version: 1.33
 ---
 
-There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/),  and at least one [mesh object](/2018/05/04/threejs-mesh/) to look at that is composed of a [geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). There also needs to be a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed on top of all of this and that is a renderer. 
+There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/), a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at something in the scene object, and one final other component that is needed on top of all of this and that is a renderer. There is also having something to look at added to the scene object as well such as a [mesh object](/2018/05/04/threejs-mesh/) that is composed of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). However there are other options when it comes to adding content to a scene object, so the core set of objects are really just those three things. That is a scene object, camera, and renderer.
 
-In older versions of three.js there was both a 2d canvas renderer, and webgl renderer, but in later versions it has been removed from the core of threejs itself. So now when making a three.js project I am pretty much always working with the webgl renderer as that would seem to be the best option for most typical use cases of threejs. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
+In older versions of threejs there was both a 2D canvas renderer, and webgl renderer, but in later versions it has been removed from the core of threejs itself. So now when making a threejs project I am pretty much always working with the WebGL renderer as that would seem to be the best option for most typical use cases of threejs. There are some additional options built into the core of the threejs library, and additional renderer options that can be added by way of additional javaScript files. However in this post I will be writing a thing or two about the [WebGL renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer). I will not get into every little detail but I will be writing about every core feature that I think is important to be aware of with this.
 
 <!-- more -->
 
-## The webGl renderer i n threejs and What to know first
+## The webGl renderer in threejs and What to know first
 
-There is more than one option when it comes to rendering a three.js scene and camera with a renderer in threejs, there are a few other options in the core threejs library, but there are some additional render options in the github repo examples folder also. The 2d canvas renderer is another option, but many three.js features will not work with it, it renders a lot slower. So for the most part it just makes sense to just use the web gl renderer as support for web gl is now pretty good with modern web browsers, and there is then not much of a need to bother with the 2d canvas renderer.
+This is a post on the WebGlRenderer in threejs as well as some other closely related subjects that might come up with other options built into the core of threejs itself. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), although I will be trying to keep these examples fairly simple. I still assume that you have at least some background when it comes to the very basics of getting started with threejs and [client side javaScript in general](/2018/11/27/js-getting-started/), if not this still might prove to be a little to involved. In any case I take a moment to write about a few things that you might want to read up more on before continuing to read the rest of this post.
 
 ### Version numbers matter
 
-In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) when I first wrote the post which was released in November of 2018, and the last time I edited this post I was using r127 which was still a late version of three.js in early 2021. In the r98 of three.s the canvas renderer was removed, there where also a number of other significant changes in that version. I also fixed some code breaking changes with these examples and they seem to be working fine with r127 as of this writing. Still lots of code breaking changes are made to threejs all the time so if the code in this example, or any of my three.js examples breaks be sure to check the revision number of the three.js file you are using first.
+In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) when I first wrote the post which was released in November of 2018, and the last time I edited this post I was using r127 which was still a late version of three.js in early 2021. In the r98 of threejs the canvas renderer was removed, there where also a number of other significant changes in that version. 
+
+I also fixed some code breaking changes with these examples and they seem to be working fine with r127 as of this writing. Still lots of code breaking changes are made to threejs all the time so if the code in this example, or any of my three.js examples breaks be sure to check the revision number of the three.js file you are using first.
 
 ## 1 - Basic three.js example using the WebGLRenderer
 
@@ -194,7 +196,7 @@ Another option for setting up and animation loop in which the render function wi
     ());
 ```
 
-## 3 - Conclusion
+## Conclusion
 
 In the event that there is no support for webGL in a client browser there are ways of feature testing for webGL and then using another kind of renderer to render a scene that makes use of the 2d canvas drawing api, or some other way or rendering other than that of webGL. For more on this topic check out my other post that has to do with [feature testing on webGL](/2019/06/11/threejs-webgl/).
 
