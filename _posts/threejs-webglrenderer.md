@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-12-01 10:45:03
-version: 1.33
+updated: 2022-12-01 11:19:47
+version: 1.34
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/), a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at something in the scene object, and one final other component that is needed on top of all of this and that is a renderer. There is also having something to look at added to the scene object as well such as a [mesh object](/2018/05/04/threejs-mesh/) that is composed of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). However there are other options when it comes to adding content to a scene object, so the core set of objects are really just those three things. That is a scene object, camera, and renderer.
@@ -27,7 +27,7 @@ I also fixed some code breaking changes with these examples and they seem to be 
 
 ## 1 - Basic three.js example using the WebGLRenderer
 
-To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the web gl renderer. Once I have my web gl renderer instance I can then call methods like the set size method to set the native size of the canvas that is to be used to render my project. I can also use the render function of the renderer to draw the current state of a scene with a scene object and a camera. In this example I will be creating a basic scene, and a camera just for the sake of having a basic full working getting started type example of the web gl renderer in threejs.
+To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the WebGL renderer. Once I have my WebGL renderer instance I can then call methods like the set size method to set the native size of the canvas that is to be used to render my project. I can also use the render function of the renderer to draw the current state of a scene with a scene object and a camera. In this example I will be creating a basic scene, and a camera just for the sake of having a basic full working getting started type example of the web gl renderer in threejs.
 
 For this basic example I just create a web gl renderer by calling the THREE.WebGlRenderere constructor with the new keyword just like with nay other [constructor function](/2019/02/27/js-javascript-constructor/) in javaScript. Then I use the set size method to set the view port side of the canvas it will be using. The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my hard coded html. For this example I am using the [get element by id method](/2018/12/27/js-document-getelementbyid/) to gain a reference to a container element in my html with an id of demo.
 
@@ -35,28 +35,26 @@ Now that I have the renderer I will want a scene object with something to look a
 
 ```js
 (function () {
- 
-    // CREATING A WEBL RENDER
-    var renderer = new THREE.WebGLRenderer();
+    //-------- ----------
+    // CREATING A WEBL RENDER, SCENE, AND CAMERA
+    //-------- ----------
+    const renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // scene
-    var scene = new THREE.Scene();
-    // camera
-    var camera = new THREE.PerspectiveCamera(40, 320 / 240, .5, 1000);
-    camera.position.set(3, 3, 3);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 320 / 240, .5, 1000);
+    camera.position.set(2, 3, 1);
     camera.lookAt(0, 0, 0);
+    //-------- ----------
     // add something to the scene
+    //-------- ----------
     scene.add(new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial({
-                color: 0xff0000
-            })));
- 
-    // RENDERING
+            new THREE.MeshNormalMaterial()));
+    //-------- ----------
+    // RENDER
+    //-------- ----------
     renderer.render(scene, camera);
- 
 }
     ());
 ```
@@ -71,46 +69,48 @@ One way to set up an animation loop would be to use the native client side javaS
 
 ```js
 (function () {
- 
-    // RENDER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // SCENE
-    var scene = new THREE.Scene();
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.5, 100);
+    //-------- ----------
+    // RENDERER, SCENE, CAMERA
+    //-------- ----------
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer : new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.5, 100);
     camera.position.set(2, 2, 2);
     camera.lookAt(0, 0, 0);
-    var light = new THREE.PointLight(0xffffff, 0.5);
-    light.position.set(2, 0, 2);
-    camera.add(light);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const pl = new THREE.PointLight(0xffffff, 0.5);
+    pl.position.set(2, 0, 2);
+    camera.add(pl);
     scene.add(camera);
- 
-    // add something to the scene
-    var cube = new THREE.Mesh(
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const cube = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshStandardMaterial({
                 color: 0xff0000,
                 emissive: 0x2a0000
             }));
     scene.add(cube);
- 
-    var state = {
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    const state = {
         clock: new THREE.Clock(),
         frame: 0,
         maxFrame: 90,
         fps: 20, // capping at 12 fps
         per: 0
     };
-    var loop = function () {
-        var wSecs = performance.now() - state.clock.oldTime,
-        secs;
+    const loop = function () {
+        const wSecs = performance.now() - state.clock.oldTime;
         requestAnimationFrame(loop);
         if (wSecs > 1 / state.fps) {
-            secs = state.clock.getDelta();
+            const secs = state.clock.getDelta();
             state.per = state.frame / state.maxFrame;
             // update
             cube.rotation.y = Math.PI * 2 * state.per;
@@ -120,10 +120,8 @@ One way to set up an animation loop would be to use the native client side javaS
             state.frame %= state.maxFrame;
         }
     };
- 
     state.clock.start();
     loop();
- 
 }
     ());
 ```
@@ -136,33 +134,37 @@ Another option for setting up and animation loop in which the render function wi
 
 ```js
 (function () {
- 
-    // scene
-    var scene = new THREE.Scene();
-    // camera
-    var camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.5, 100);
+    //-------- ----------
+    // RENDERER, SCENE, CAMERA
+    //-------- ----------
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer : new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.5, 100);
     camera.position.set(2, 2, 2);
     camera.lookAt(0, 0, 0);
-    var light = new THREE.PointLight(0xffffff, 0.5);
-    light.position.set(2, 0, 2);
-    camera.add(light);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const pl = new THREE.PointLight(0xffffff, 0.5);
+    pl.position.set(2, 0, 2);
+    camera.add(pl);
     scene.add(camera);
-    // add something to the scene
-    var cube = new THREE.Mesh(
+    //-------- ----------
+    // MESH
+    //-------- ----------
+    const cube = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshStandardMaterial({
                 color: 0xff0000,
                 emissive: 0x2a0000
             }));
     scene.add(cube);
- 
-    // RENDERER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
+    //-------- ----------
     // USING SET ANIMATION LOOP
-    var state = {
+    //-------- ----------
+    const state = {
         clock: new THREE.Clock(),
         frame: 0,
         maxFrame: 90,
@@ -170,11 +172,10 @@ Another option for setting up and animation loop in which the render function wi
         per: 0
     };
     state.clock.start();
-    var loop = function () {
-        var wSecs = performance.now() - state.clock.oldTime,
-        secs;
+    const loop = function () {
+        const wSecs = performance.now() - state.clock.oldTime;
         if (wSecs > 1 / state.fps) {
-            secs = state.clock.getDelta();
+            const secs = state.clock.getDelta();
             state.per = state.frame / state.maxFrame;
             // update
             cube.rotation.y = Math.PI * 2 * state.per;
@@ -186,12 +187,10 @@ Another option for setting up and animation loop in which the render function wi
     };
     // start
     renderer.setAnimationLoop(loop);
- 
     // stop after 3 secs
     setTimeout(function () {
         renderer.setAnimationLoop(null);
     }, 3000);
- 
 }
     ());
 ```
