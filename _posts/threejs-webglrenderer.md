@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-12-01 11:38:19
-version: 1.36
+updated: 2022-12-01 11:53:13
+version: 1.37
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/), a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at something in the scene object, and one final other component that is needed on top of all of this and that is a renderer. There is also having something to look at added to the scene object as well such as a [mesh object](/2018/05/04/threejs-mesh/) that is composed of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). However there are other options when it comes to adding content to a scene object, so the core set of objects are really just those three things. That is a scene object, camera, and renderer.
@@ -25,9 +25,11 @@ In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/
 
 I also fixed some code breaking changes with these examples and they seem to be working fine with r127 as of this writing. Still lots of code breaking changes are made to threejs all the time so if the code in this example, or any of my three.js examples breaks be sure to check the revision number of the three.js file you are using first.
 
-## 1 - Basic three.js example using the WebGLRenderer
+## 1 - Basic WebGL Renderer Demos
 
 To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the WebGL renderer. Once I have my WebGL renderer instance I can then call methods like the set size method to set the native size of the canvas that is to be used to render my project. I can also use the render function to draw the current state of a scene with a scene object and a camera. In this example I will be creating a basic scene, and a camera just for the sake of having a basic full working getting started type example of the WebGL renderer in threejs.
+
+### 1.1 - Basic three.js example using the WebGLRenderer
 
 For this basic example I just create a WebGL renderer by calling the THREE.WebGlRenderer constructor with the new keyword just like with nay other [constructor function](/2019/02/27/js-javascript-constructor/) in javaScript. Then I use the set size method to set the view port side of the canvas it will be using. The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my hard coded html. For this example I am using the [get element by id method](/2018/12/27/js-document-getelementbyid/) to gain a reference to a container element in my HTML with an id of demo, and defaulting to body in the event that it is not there.
 
@@ -58,6 +60,38 @@ Now that I have the renderer I will want a scene object with something to look a
 }
     ());
 ```
+
+### 1.2 - Using WebGL 1 Always, if that works
+
+As of r118+ The WebGL Renderer will always use WebGL2 which for the most part will not present a problem with most clients. However this still might cause some errors on certain platforms. So if I am sure that WebGL1 alone will work fine with what I want to do, and more often that not it will, I can just make sure that I will always use the WebGL1 Renderer if it is there to work with in the revision of threejs that I am using.
+
+```js
+(function () {
+    //-------- ----------
+    // CREATING A WEBL1 RENDER IF THERE, ELSE WEBGL RENDERER THAT WILL USE WEBGL 2 AS OF R118+
+    //-------- ----------
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer : new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 320 / 240, .5, 1000);
+    camera.position.set(2, 3, 1);
+    camera.lookAt(0, 0, 0);
+    //-------- ----------
+    // add something to the scene
+    //-------- ----------
+    scene.add(new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial()));
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+So then in this example I always use the THREE.WebGL1Renderer if it is there. In older versions of threejs it might not be there, so in that case the regular webGL renderer will be used. There may be better ways of handing this sort of thing when it comes to feature testing what there is to work with and make a choice that way. Also there are a number of threejs features that will not work with WebGL1 so in that case if I want to use these kinds of features I will of course need to just always use THREE.WebGLRenderer with a late revision of threejs then. In any case this is something to be aware of as there is more that one built in webgl renderer, one that will always use webgl1 and another that will always use webgl2 as of r118+.
 
 ## 2 - Making a render loop
 
