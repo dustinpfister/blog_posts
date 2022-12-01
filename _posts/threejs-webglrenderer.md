@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-12-01 11:19:47
-version: 1.34
+updated: 2022-12-01 11:33:12
+version: 1.35
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](/2018/05/03/threejs-scene/), a [camera](/2018/04/06/threejs-camera/) to set the point in space by which to look at something in the scene object, and one final other component that is needed on top of all of this and that is a renderer. There is also having something to look at added to the scene object as well such as a [mesh object](/2018/05/04/threejs-mesh/) that is composed of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). However there are other options when it comes to adding content to a scene object, so the core set of objects are really just those three things. That is a scene object, camera, and renderer.
@@ -27,11 +27,11 @@ I also fixed some code breaking changes with these examples and they seem to be 
 
 ## 1 - Basic three.js example using the WebGLRenderer
 
-To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the WebGL renderer. Once I have my WebGL renderer instance I can then call methods like the set size method to set the native size of the canvas that is to be used to render my project. I can also use the render function of the renderer to draw the current state of a scene with a scene object and a camera. In this example I will be creating a basic scene, and a camera just for the sake of having a basic full working getting started type example of the web gl renderer in threejs.
+To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the WebGL renderer. Once I have my WebGL renderer instance I can then call methods like the set size method to set the native size of the canvas that is to be used to render my project. I can also use the render function to draw the current state of a scene with a scene object and a camera. In this example I will be creating a basic scene, and a camera just for the sake of having a basic full working getting started type example of the WebGL renderer in threejs.
 
-For this basic example I just create a web gl renderer by calling the THREE.WebGlRenderere constructor with the new keyword just like with nay other [constructor function](/2019/02/27/js-javascript-constructor/) in javaScript. Then I use the set size method to set the view port side of the canvas it will be using. The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my hard coded html. For this example I am using the [get element by id method](/2018/12/27/js-document-getelementbyid/) to gain a reference to a container element in my html with an id of demo.
+For this basic example I just create a WebGL renderer by calling the THREE.WebGlRenderer constructor with the new keyword just like with nay other [constructor function](/2019/02/27/js-javascript-constructor/) in javaScript. Then I use the set size method to set the view port side of the canvas it will be using. The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my hard coded html. For this example I am using the [get element by id method](/2018/12/27/js-document-getelementbyid/) to gain a reference to a container element in my HTML with an id of demo, and defaulting to body in the event that it is not there.
 
-Now that I have the renderer I will want a scene object with something to look at attached to it, and a camera. So the nest step is to just create a new scene object, and then a camera too such as the perspective camera. I then created a Mesh with a simple geometry and material for it, and made sure to add the mesh to the scene object. Now I can use the render function of the web gl renderer, with that said all I have to do is call the render function. When calling the render function I pass the scene object as the first argument, and the camera as the second argument.
+Now that I have the renderer I will want a scene object with something to look at attached to it, and a camera. So the nest step is to just create a new scene object, and then a camera too such as the perspective camera. I then created a Mesh with a simple geometry and material for it, and made sure to add the mesh to the scene object. Now I can use the render function of the WebGL renderer, with that said all I have to do is call the render function. When calling the render function I pass the scene object as the first argument, and the camera as the second argument.
 
 ```js
 (function () {
@@ -61,11 +61,11 @@ Now that I have the renderer I will want a scene object with something to look a
 
 ## 2 - Making a render loop
 
-Many of the projects I make with three.js are just simple looping animations where I update a scene and then need to redraw over and over again. To have a loop I just need to call the render method in a method that is going to be called over and over again using something like the request animation frame method, or I can also use [THREE.Clock](/2021/05/28/threejs-clock/) when it comes to tools built into the core of threejs. There is a wide range of ways to go about doing something like this so I will not be getting into the full depth of this topic here. However I should cover at last one or two examples of this kind of loop using threejs and native javaScript features so that will be the deal in this section.
+Many of the projects I make with three.js are just simple looping animations where I update a scene and then need to redraw over and over again. To have a loop I just need to call the render method in a method that is going to be called over and over again using something like the request animation frame method. There are a lot of other options with this sort of thing such as using the [THREE.Clock](/2021/05/28/threejs-clock/) class when it comes to tools built into the core of threejs. I should cover at last one or two examples of this kind of loop using threejs and native javaScript features so that will be the deal in this section.
 
 ### 2.1 - Using request animation frame
 
-One way to set up an animation loop would be to use the native client side javaScript [request animation frame](/2018/03/13/js-request-animation-frame/) method. This is a method that one should all ready be familiar with when it comes to setting up a render loop when it comes to just directly working with canvas elements by themselves as this method is the typical standard way to o about doing so.
+One way to set up an animation loop not just with threejs but in client side javaScript in general would be to use the native client side javaScript [request animation frame](/2018/03/13/js-request-animation-frame/) method. This is a method that one should all ready be familiar with when it comes to setting up a loop when working with canvas elements by themselves as this method is the typical standard way to go about doing so in vanilla javaScript.
 
 ```js
 (function () {
@@ -126,11 +126,11 @@ One way to set up an animation loop would be to use the native client side javaS
     ());
 ```
 
-In this example I am doing something to limit the number of frames that are rendered per second. There are many more simple animation loop examples where they do not go this far with things, but I think that having a way to adjust that is impotent when it comes to making a final product. When it comes to setting a low frame rate target the lower the better until it starts to get to the point where the animation is just too choppy, doing so helps to reduce stress on the clients resources.
+In this example I am doing something to limit the number of frames that are rendered per second. There are many more simple animation loop examples where they do not go this far with things, but I think that having a way to adjust that is important when it comes to making a final product. When it comes to setting a low frame rate target the lower the better until it starts to get to the point where the animation is just too choppy, doing so helps to reduce stress on the clients resources.
 
 ### 2.2 - Using the set animation loop method
 
-Another option for setting up and animation loop in which the render function will be called would be to use the [set animation loop method](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer.setAnimationLoop) of the web gl renderer instance. The process of using it is pretty straight forward I just need to call the method off of the renderer instance and pass the function that I want called over and over again as the first argument for the function. If I want to stop the animation for any reason I can then just pass a null value as a way to stop it.
+Another option for setting up and animation loop in which the render function will be called would be to use the [set animation loop method](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer.setAnimationLoop) of the WebGL renderer instance. The process of using it is pretty straight forward I just need to call the method off of the renderer instance and pass the function that I want called over and over again as the first argument for the function. If I want to stop the animation for any reason I can then just pass a null value as a way to stop it.
 
 ```js
 (function () {
@@ -197,7 +197,7 @@ Another option for setting up and animation loop in which the render function wi
 
 ## Conclusion
 
-In the event that there is no support for webGL in a client browser there are ways of feature testing for webGL and then using another kind of renderer to render a scene that makes use of the 2d canvas drawing api, or some other way or rendering other than that of webGL. For more on this topic check out my other post that has to do with [feature testing on webGL](/2019/06/11/threejs-webgl/).
+In the event that there is no support for webGL in a client browser there are ways of feature testing for WebGL and then using another kind of renderer to render a scene, or at least inform the user of what the problem is. For more on this topic check out my other post that has to do with [feature testing on webGL](/2019/06/11/threejs-webgl/).
 
-The WebGL renderer is the default renderer that I often go with mainly because it is a renderer that is built into the core of three.js itself. Many of the other renderer options have to be added by way of an additional external file, or do not have the same set of features such is the case with the SVG renderer for example. Some of these other renderer's might still prove to be a good choice in some situations though, it is just that so far I can not say that I have found myself in situations in which I need to work with these other options.
+The WebGL renderer is the default renderer that I often go with mainly because it is a renderer that is built into the core of threejs itself. Many of the other renderer options have to be added by way of an additional external file, or do not have the same set of features such is the case with the SVG renderer for example. Some of these other renderer's might still prove to be a good choice in some situations though, it is just that so far I can not say that I have found myself in situations in which I need to work with these other options.
 
