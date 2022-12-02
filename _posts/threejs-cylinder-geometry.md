@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-08-12 14:33:50
-version: 1.11
+updated: 2022-12-02 11:48:34
+version: 1.12
 ---
 
 I took the time to write a post or two on some of the various built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor. However I have not yet got around to writing one on [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry), so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. 
@@ -25,6 +25,10 @@ This is a post on the Cylinder geometry constructor in the javaScript library kn
 ### Read up more on Buffer Geometry in general
 
 The cylinder geometry constructor is just one of many options to go about creating a geometry in treejs by calling a function and passing a few arguments. There are other options when it comes to built in geometry constructor functions of course, but there is also learning how to work with the constructor directly to create custom geometry with javaScript code as well as various common features with [buffer geometry in general](/2021/04/22/threejs-buffer-geometry/). There are also other options when it comes to getting a geometry by means of some kind of data source in the from of an external fine such as the buffer geometry loader and the DAE file loader.
+
+### There is also the Cone and Tetrahedron geometry
+
+The [cone geometry](/2019/07/31/threejs-cone/) can also be used to make geometries that are similar to this kind of geometry when used with a certain set of arguments. There is also the [tetrahedron geometry](/2022/12/02/threejs-tetrahedron/) that can be used as a way to make a Pyramid like object.
 
 ### Source code is on Github
 
