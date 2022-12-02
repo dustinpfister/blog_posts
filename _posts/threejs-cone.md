@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2022-05-17 15:13:20
-version: 1.29
+updated: 2022-12-02 11:48:33
+version: 1.30
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in [constructor functions](/2019/02/27/js-javascript-constructor/) that can be used to make most basic shapes such as the [Box geometry Constructor](/2021/04/26/threejs-box-geometry/), and the [Sphere Geometry Constructor](/2021/05/26/threejs-sphere/) just to name a new. These constructors can be used to quickly create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then in turn be used with a materials to produce an over all [mesh object](/2018/05/04/threejs-mesh/) that can then be added to a [scene object](/2018/05/03/threejs-scene/) of an over all threejs project. 
@@ -24,12 +24,17 @@ This is a post on a built in geometry constructor in three js that can be used t
 <iframe class="youtube_video" src="https://www.youtube.com/embed/C2Kd93tMYj8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### Check your version numbers
+### There is also the Cylinder and Tetrahedron geometry
 
-When I first wrote this post I was using version r106 of three.js and the last time I got around to do a little editing with this post I as using r135. When it comes to the cone geometry constructor alone it would seem that not much has changes from an user perspective. However code breaking changes are made to three.js all the time, so if things are not working on your end with code examples in this post, or any three.js post on the open web for that matter take into account what version you are using and the version that the author of the example was using first
+The [Cylinder geometry](/2022/08/12/threejs-cylinder-geometry/) can also be used to make geometries that are similar to this kind of geometry when used with a certain set of arguments. There is also the [tetrahedron geometry](/2022/12/02/threejs-tetrahedron/) that can be used as a way to make a Pyramid like object.
+
 ### Source code examples are also on Github
 
 The source code examples that I made for this post are also up on Github in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-cone).
+
+### Check your version numbers
+
+When I first wrote this post I was using version r106 of three.js and the last time I got around to do a little editing with this post I as using r135. When it comes to the cone geometry constructor alone it would seem that not much has changes from an user perspective. However code breaking changes are made to three.js all the time, so if things are not working on your end with code examples in this post, or any three.js post on the open web for that matter take into account what version you are using and the version that the author of the example was using first
 
 ## 1 - Three js geometry cone basic example
 
