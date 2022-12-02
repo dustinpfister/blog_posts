@@ -5,21 +5,21 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1016
-updated: 2022-12-02 10:10:43
-version: 1.8
+updated: 2022-12-02 10:16:49
+version: 1.9
 ---
 
-When looking into the built in Geometry Classes in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) for the first time there are a few that can be used to make a Pyramid Type Geometry. Both the Cone Geometry, and the Cylinder Geometry classes can be used to do so if one gives a certin set of arguments when calling them. There is however also a built in Tetrahedron Geometry Class that can also be used to do this bu just simply calling it and giving a radius that will also result in a Pyramid shape as well. However one might run into some problems with this sort of thing when it comes to rotation of the result, and there are also a few addtional reasons why one might want to make some kind of custom geometry for this sort of thing as well. So in this post I will be writing about this built in Tetrahedron Geometry Class, but also an array of altertaive ways to create this kind of geometry inclduing some custom ways to do so while I am at it.
+When looking into the built in Geometry Classes in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) for the first time there are a few that can be used to make a Pyramid Type Geometry. Both the Cone Geometry, and the Cylinder Geometry classes can be used to do so if one gives a certin set of arguments when calling them. There is however also a built in Tetrahedron Geometry Class that can also be used to do this bu just simply calling it and giving a radius that will also result in a Pyramid shape as well. However one might run into some problems with this sort of thing when it comes to rotation of the result, and there are also a few additional reasons why one might want to make some kind of custom geometry for this sort of thing as well. So in this post I will be writing about this built in Tetrahedron Geometry Class, but also an array of alternative ways to create this kind of geometry including some custom ways to do so while I am at it.
 
 <!-- more -->
 
 ## The Tetrahedron Geometry class and what to know first
 
-This is a post on using the Tetrahedron Geometry class, other built in Geomerty classes, as well as some custom ways to create a Pyramid Geometry in threejs. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or client side javaScript in general. Also it would be best to look elsewhere when it comes to [formal math that has to do with things like what a Regual Tetrahedron is compared to other possiblitys](https://en.wikipedia.org/wiki/Tetrahedron) with this sort of shape, or maybe I should say [Polyhedron](https://en.wikipedia.org/wiki/Polyhedron) for that matter.
+This is a post on using the Tetrahedron Geometry class, other built in Geometry classes, as well as some custom ways to create a Pyramid Geometry in threejs. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or client side javaScript in general. Also it would be best to look elsewhere when it comes to [formal math that has to do with things like what a Regular Tetrahedron is compared to other possibility's](https://en.wikipedia.org/wiki/Tetrahedron) with this sort of shape, or maybe I should say [Polyhedron](https://en.wikipedia.org/wiki/Polyhedron) for that matter.
 
 ### Read More on Buffer Geometry
 
-You might want to read more on [buffer geometry in general](/2021/04/22/threejs-buffer-geometry/) while you are at it. There are a whole lot of other options when it comes to built in funcitons for quikclyt cretaign geometry by just calling a funciton and passing some arguments. However there is also looking into how to go about making a custom geometry from the ground up with a little javaScript code as well.
+You might want to read more on [buffer geometry in general](/2021/04/22/threejs-buffer-geometry/) while you are at it. There are a whole lot of other options when it comes to built in functions for quickly creating geometry by just calling a function and passing some arguments. However there is also looking into how to go about making a custom geometry from the ground up with a little javaScript code as well.
 
 ### Source Code is on Github
 
@@ -28,12 +28,12 @@ The source code exmaples that I am writing about in this post can also be [found
 
 ### Version Numbers matter
 
-When I forst wrote this post I was using r146 of threejs.
+When I first wrote this post I was using r146 of threejs.
 
 
 ## 1 - Some basic Pyramid Geometry examples
 
-For this first section I will be starting out with some simple project examples where I create Pyramid Geometry in several kinds of ways. There is using the Tetrahedron Geometry class to do so, however in some cases it might be better to use the cone of cylinder geomerty to make this kind of geomerty quickly and move on actually. The Tetrahedron Geometry class works okay, but one thing that I have found is that it is hard to quickly change what the front side of the geometry is using the rotate methods of the buffer geometry class which is not a problem that I have using the Cone geomerty class. Still I will be writing about each of the options here when it comes to the built in classes are and write a thing or two about the pros and cons.
+For this first section I will be starting out with some simple project examples where I create Pyramid Geometry in several kinds of ways. There is using the Tetrahedron Geometry class to do so, however in some cases it might be better to use the cone of cylinder geometry to make this kind of geometry quickly and move on actually. The Tetrahedron Geometry class works okay, but one thing that I have found is that it is hard to quickly change what the front side of the geometry is using the rotate methods of the buffer geometry class which is not a problem that I have using the Cone geometry class. Still I will be writing about each of the options here when it comes to the built in classes are and write a thing or two about the pros and cons.
 
 ### 1.1 - Using the Tetrahedron Geometry Class to create a Pyramid
 
@@ -66,13 +66,13 @@ The [Tetrahedron Geometry Class](https://threejs.org/docs/index.html#api/en/geom
 }());
 ```
 
-There is also having an interest with this kind of Geometry Class for reasons that might have to do with the nature of the geometry in terms of things like what a Regular Tetrahedron is compared to other terms. That is to have some kind of geometry class where I have just 4 indexed points in the geometry and have a way to quickly chnage the nature of these four points to create other kinds of Tetrahedrons beyon that of just a Regular Tetrahedron. Again this class falls short when it comes to that sort of thing as the geometry is not indexed and has 12 points in the position attribute and there is no way to create a Tetrahedron other than a Regular one. However I think I undertand some reasons why, but getting into all of that will of cousre be a matter for a more advanced section in this post.
+There is also having an interest with this kind of Geometry Class for reasons that might have to do with the nature of the geometry in terms of things like what a Regular Tetrahedron is compared to other terms. That is to have some kind of geometry class where I have just 4 indexed points in the geometry and have a way to quickly change the nature of these four points to create other kinds of Tetrahedrons beyond that of just a Regular Tetrahedron. Again this class falls short when it comes to that sort of thing as the geometry is not indexed and has 12 points in the position attribute and there is no way to create a Tetrahedron other than a Regular one. However I think I understand some reasons why, but getting into all of that will of course be a matter for a more advanced section in this post.
 
 ### 1.2 - Using the Cone Geometry Class to create a Pyramid
 
-If I just care about how things look, and do not care at all about things like the state of the index property of the buffer geometry, number of points in the possition attribute, or anything that might prove to be a little technical, then my first go to solution for this sort of thing might actaully be the [Cone Geometry](/2019/07/31/threejs-cone/) class. If I give the propper arguments I can end up with a Tetrahedron shape that also might be more or less Regular. Also becuase this works by giving a radius for thr base, and then a length, this naturraly allows for Tetrahedrons other than that of a Regual kind.
+If I just care about how things look, and do not care at all about things like the state of the index property of the buffer geometry, number of points in the position attribute, or anything that might prove to be a little technical, then my first go to solution for this sort of thing might actually be the [Cone Geometry](/2019/07/31/threejs-cone/) class. If I give the proper arguments I can end up with a Tetrahedron shape that also might be more or less Regular. Also because this works by giving a radius for the base, and then a length, this naturally allows for Tetrahedrons other than that of a Regular kind.
 
-Another thing that I really kind about this one is that I can quakly rotate the cone in such a way that the front side of the geometry will point in the direction that I want when using the [object3d look at method](/2021/05/13/threejs-object3d-lookat/). That is that by default if I call the look at method the point of the cone will not face that direciton, but this is easly fixed with a single call of the rotateX method.
+Another thing that I really kind about this one is that I can quickly rotate the cone in such a way that the front side of the geometry will point in the direction that I want when using the [object3d look at method](/2021/05/13/threejs-object3d-lookat/). That is that by default if I call the look at method the point of the cone will not face that direction, but this is easily fixed with a single call of the rotateX method.
 
 ```js
 (function(){
@@ -121,7 +121,7 @@ Another thing that I really kind about this one is that I can quakly rotate the 
 
 ### 1.3 - Using the Cylinder Geometry Class to create a Pyramid
 
-The [Cylinder Geometry](/2022/08/12/threejs-cylinder-geometry/) is yet another option for quickly making a Pyramid like shape. The first two arguments control the radius of the top and bottom caps of the geomerty. So then by setting one of them to 0, and the other to a desired radius for the bottom of the Pyramid I can end up with a shape that is just like what I would get with the Cone Geometry. Also just like with the cone geometry I can set the values for additonal arguments that havce to do with the number of radial and length sections which will again  result in a kind of Pyramid like shape.
+The [Cylinder Geometry](/2022/08/12/threejs-cylinder-geometry/) is yet another option for quickly making a Pyramid like shape. The first two arguments control the radius of the top and bottom caps of the geometry. So then by setting one of them to 0, and the other to a desired radius for the bottom of the Pyramid I can end up with a shape that is just like what I would get with the Cone Geometry. Also just like with the cone geometry I can set the values for additional arguments that have to do with the number of radial and length sections which will again  result in a kind of Pyramid like shape.
 
 ```js
 (function(){
@@ -169,13 +169,13 @@ The [Cylinder Geometry](/2022/08/12/threejs-cylinder-geometry/) is yet another o
 
 ## 2 - Tetrahedron Geometry and the position attribute
 
-Now that I have the basic section out of the way it is time to get into some not so basic examples then. In this section I am workijg out some code that has to do with somne subjects that have to do with the nature of the position attribute of the Tetrahedron Geometry class. If you do not know what the position attribute is then it would be a very good idea to [read by post on the position attribute in general](/2021/06/07/threejs-buffer-geometry-attributes-position/). However if you want me to save you a click real quick it is the attribite of a buffer geometry that has to do with the actual points in space, rather than the directions of the vector normals, the offset values that have to do with uv mapping, of any other kinds of geomerty attribute that one might run into when leaning a thung or two about buffer geometry in threejs.
+Now that I have the basic section out of the way it is time to get into some not so basic examples then. In this section I am working out some code that has to do with some subjects that have to do with the nature of the position attribute of the Tetrahedron Geometry class. If you do not know what the position attribute is then it would be a very good idea to [read by post on the position attribute in general](/2021/06/07/threejs-buffer-geometry-attributes-position/). However if you want me to save you a click real quick it is the attribite of a buffer geometry that has to do with the actual points in space, rather than the directions of the vector normals, the offset values that have to do with uv mapping, of any other kinds of geometry attribute that one might run into when leaning a thing or two about buffer geometry in threejs.
 
-### 2.1 - The count of points is 12 rather than 4 becuase it is NOT indexed
+### 2.1 - The count of points is 12 rather than 4 because it is NOT indexed
 
-A tetrahedron is formaly defined as a polyhedron composed of four triangular faces, six straight edges, and *four vertex corners*. So then one might exspect that the count of the position attribute would be 4. but it is 12. Also I have found that many of the built in geo,erty classes have an index, with some exceptions, and the Tetrahedron Geometry is one of them as the value of the index property of the geometry is null. I think that I can understand why this is though, and it might have to do not so much with the position attribute, but rather the normal attribute. I could create an index as well as a custom position attribte that has 4 points, which is exsactly what I am doing for this example actually. However by doing so I also restrict the usalble size of the normal attribuite to just four points which will result in a not so desired outcome for the look of the gemetry when using the normal mesh matreial, or just about any mesh material for that matter actually with maybe just a few exceptions where the state of the normal attribute is not of dire concern apart form just knowing what side the front side is.
+A tetrahedron is formally defined as a polyhedron composed of four triangular faces, six straight edges, and *four vertex corners*. So then one might expect that the count of the position attribute would be 4. but it is 12. Also I have found that many of the built in geometry classes have an index, with some exceptions, and the Tetrahedron Geometry is one of them as the value of the index property of the geometry is null. I think that I can understand why this is though, and it might have to do not so much with the position attribute, but rather the normal attribute. I could create an index as well as a custom position attribute that has 4 points, which is exactly what I am doing for this example actually. However by doing so I also restrict the usable size of the normal attribute to just four points which will result in a not so desired outcome for the look of the geometry when using the normal mesh material, or just about any mesh material for that matter actually with maybe just a few exceptions where the state of the normal attribute is not of dire concern apart form just knowing what side the front side is.
 
-Anyway the goal with this example was to not so much care about the look, but rather to have a geoetry with 4 points, and only 4 points in the position attribute and to create an index for them.
+Anyway the goal with this example was to not so much care about the look, but rather to have a geometry with 4 points, and only 4 points in the position attribute and to create an index for them.
 
 ```js
 (function(){
@@ -240,7 +240,7 @@ Anyway the goal with this example was to not so much care about the look, but ra
 
 ### 2.2 - Regular Tetrahedron test using Vector3 distance to method
 
-If I start to do a deep dive into this sort of thing I am going to want to have a helper method that will return true of the given geometry fits the strict formal defantion of a Regular Tetrahedron otherwise return false. So in this example I made that kind of funciton by making use of the vector3 distance to method to find out of the length of all the edges eual each other. before it even gets to that point though it will check of the count of the position attribuite of 4 and return false for that as well. I might need to refine this sort of thing a little moving forward, but the crude idea thus far seems to work.
+If I start to do a deep dive into this sort of thing I am going to want to have a helper method that will return true of the given geometry fits the strict formal definition of a Regular Tetrahedron otherwise return false. So in this example I made that kind of function by making use of the vector3 distance to method to find out of the length of all the edges equal each other. before it even gets to that point though it will check of the count of the position attribute of 4 and return false for that as well. I might need to refine this sort of thing a little moving forward, but the crude idea thus far seems to work.
 
 ```js
 (function(){
@@ -428,9 +428,8 @@ I would like to make at least one of not more animation loop examples for this b
 }());
 ```
 
-## Conclsuion
+## Conclusion
 
-So there are a number of ways to make a Pyramid like geometry using the built in geomerty classes. Just about all of them will work fine if I am in a situation in which I just care about how things look. However if I care about things like the state of the position attribute or a wide range of other factors I might need to write some custom javaScript code for this sort of thing actually.
-
+So there are a number of ways to make a Pyramid like geometry using the built in geometry classes. Just about all of them will work fine if I am in a situation in which I just care about how things look. However if I care about things like the state of the position attribute or a wide range of other factors I might need to write some custom JavaScript code for this sort of thing actually.
 
 
