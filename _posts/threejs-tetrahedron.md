@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1016
-updated: 2022-12-02 09:39:31
-version: 1.3
+updated: 2022-12-02 09:44:43
+version: 1.4
 ---
 
 When looking into the built in Geometry Classes in threejs for the first time there are a few that can be used to make a Pyramid Type Geometry. Both the Cone Geometry, and the Cylinder Geometry classes can be used to do so if one gives a certin set of arguments when calling them. There is however also a built in Tetrahedron Geometry Class that can also be used to do this bu just simply calling it and giving a radius that will also result in a Pyramid shape as well. However one might run into some problems with this sort of thing when it comes to rotation of the result, and there are also a few addtional reasons why one might want to make some kind of custom geometry for this sort of thing as well. So in this post I will be writing about this built in Tetrahedron Geometry Class, but also an array of altertaive ways to create this kind of geometry inclduing some custom ways to do so while I am at it.
@@ -152,7 +152,7 @@ The Cylinder Geometry is yet another option for quickly making a Pyramid like sh
 
 ## 2 - Tetrahedron Geometry and the position attribute
 
-Now that I have the basic section out of the way it is time to get into some not so basic examples then. In this section I am workijg out some code that has to do with somne subjects that have to do with the nature of the position attribute of the Tetrahedron Geometry class. If you do not know what the position attribute is then it would be a very good idea to read by post on this subject in general. However if you want me to save you a click real quick it is the attribite of a buffer geometry that has to do with the actual points in space, rather than the directions of the vector normals, the offset values that have to do with uv mapping, of any other kinds of geomerty attribute that one might run into when leaning a thung or two about buffer geometry in threejs.
+Now that I have the basic section out of the way it is time to get into some not so basic examples then. In this section I am workijg out some code that has to do with somne subjects that have to do with the nature of the position attribute of the Tetrahedron Geometry class. If you do not know what the position attribute is then it would be a very good idea to [read by post on the position attribute in general](/2021/06/07/threejs-buffer-geometry-attributes-position/). However if you want me to save you a click real quick it is the attribite of a buffer geometry that has to do with the actual points in space, rather than the directions of the vector normals, the offset values that have to do with uv mapping, of any other kinds of geomerty attribute that one might run into when leaning a thung or two about buffer geometry in threejs.
 
 ### 2.1 - The count of points is 12 rather than 4 becuase it is NOT indexed
 
