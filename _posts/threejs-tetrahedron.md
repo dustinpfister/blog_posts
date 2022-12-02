@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1016
-updated: 2022-12-02 09:44:43
-version: 1.4
+updated: 2022-12-02 09:53:24
+version: 1.5
 ---
 
 When looking into the built in Geometry Classes in threejs for the first time there are a few that can be used to make a Pyramid Type Geometry. Both the Cone Geometry, and the Cylinder Geometry classes can be used to do so if one gives a certin set of arguments when calling them. There is however also a built in Tetrahedron Geometry Class that can also be used to do this bu just simply calling it and giving a radius that will also result in a Pyramid shape as well. However one might run into some problems with this sort of thing when it comes to rotation of the result, and there are also a few addtional reasons why one might want to make some kind of custom geometry for this sort of thing as well. So in this post I will be writing about this built in Tetrahedron Geometry Class, but also an array of altertaive ways to create this kind of geometry inclduing some custom ways to do so while I am at it.
@@ -315,6 +315,8 @@ If I start to do a deep dive into this sort of thing I am going to want to have 
 
 ## 3 - Animation loop example
 
+I would like to make at least one of not more animation loop examples for this blog post. For this loop example I just made a Tetrahedron Geometry rotate around inside a sphere and that is about it just for the sake of having a place holder for this sort of thing. One thing that I did for this example though is come up with a style that is like that of the geometry browser used in the threejs docs website. In the source code of the geometry browser I have found that it is not just a mesh object, but rather a group that contains a mesh object and a line segments object as children of the group. This allows for using a mesh material as well as a line material which can then be used to highlight the faces of the geometry nicely.
+
 ```js
 (function(){
     // ---------- ----------
@@ -408,3 +410,10 @@ If I start to do a deep dive into this sort of thing I am going to want to have 
     loop();
 }());
 ```
+
+## Conclsuion
+
+So there are a number of ways to make a Pyramid like geometry using the built in geomerty classes. Just about all of them will work fine if I am in a situation in which I just care about how things look. However if I care about things like the state of the position attribute or a wide range of other factors I might need to write some custom javaScript code for this sort of thing actually.
+
+
+
