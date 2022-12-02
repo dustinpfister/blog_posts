@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1016
-updated: 2022-12-02 10:05:30
-version: 1.7
+updated: 2022-12-02 10:10:43
+version: 1.8
 ---
 
 When looking into the built in Geometry Classes in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) for the first time there are a few that can be used to make a Pyramid Type Geometry. Both the Cone Geometry, and the Cylinder Geometry classes can be used to do so if one gives a certin set of arguments when calling them. There is however also a built in Tetrahedron Geometry Class that can also be used to do this bu just simply calling it and giving a radius that will also result in a Pyramid shape as well. However one might run into some problems with this sort of thing when it comes to rotation of the result, and there are also a few addtional reasons why one might want to make some kind of custom geometry for this sort of thing as well. So in this post I will be writing about this built in Tetrahedron Geometry Class, but also an array of altertaive ways to create this kind of geometry inclduing some custom ways to do so while I am at it.
@@ -16,6 +16,10 @@ When looking into the built in Geometry Classes in [threejs](https://threejs.org
 ## The Tetrahedron Geometry class and what to know first
 
 This is a post on using the Tetrahedron Geometry class, other built in Geomerty classes, as well as some custom ways to create a Pyramid Geometry in threejs. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or client side javaScript in general. Also it would be best to look elsewhere when it comes to [formal math that has to do with things like what a Regual Tetrahedron is compared to other possiblitys](https://en.wikipedia.org/wiki/Tetrahedron) with this sort of shape, or maybe I should say [Polyhedron](https://en.wikipedia.org/wiki/Polyhedron) for that matter.
+
+### Read More on Buffer Geometry
+
+You might want to read more on [buffer geometry in general](/2021/04/22/threejs-buffer-geometry/) while you are at it. There are a whole lot of other options when it comes to built in funcitons for quikclyt cretaign geometry by just calling a funciton and passing some arguments. However there is also looking into how to go about making a custom geometry from the ground up with a little javaScript code as well.
 
 ### Source Code is on Github
 
@@ -68,7 +72,7 @@ There is also having an interest with this kind of Geometry Class for reasons th
 
 If I just care about how things look, and do not care at all about things like the state of the index property of the buffer geometry, number of points in the possition attribute, or anything that might prove to be a little technical, then my first go to solution for this sort of thing might actaully be the [Cone Geometry](/2019/07/31/threejs-cone/) class. If I give the propper arguments I can end up with a Tetrahedron shape that also might be more or less Regular. Also becuase this works by giving a radius for thr base, and then a length, this naturraly allows for Tetrahedrons other than that of a Regual kind.
 
-Another thing that I really kind about this one is that I can quakly rotate the cone in such a way that the front side of the geometry will point in the direction that I want when using the object3d lookat method. That is that by default if I call the look at method the point of the cone will not face that direciton, but this is easly fixed with a single call of the rotateX method.
+Another thing that I really kind about this one is that I can quakly rotate the cone in such a way that the front side of the geometry will point in the direction that I want when using the [object3d look at method](/2021/05/13/threejs-object3d-lookat/). That is that by default if I call the look at method the point of the cone will not face that direciton, but this is easly fixed with a single call of the rotateX method.
 
 ```js
 (function(){
