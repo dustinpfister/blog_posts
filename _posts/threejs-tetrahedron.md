@@ -5,13 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1016
-updated: 2022-12-02 09:53:24
-version: 1.5
+updated: 2022-12-02 09:58:37
+version: 1.6
 ---
 
 When looking into the built in Geometry Classes in threejs for the first time there are a few that can be used to make a Pyramid Type Geometry. Both the Cone Geometry, and the Cylinder Geometry classes can be used to do so if one gives a certin set of arguments when calling them. There is however also a built in Tetrahedron Geometry Class that can also be used to do this bu just simply calling it and giving a radius that will also result in a Pyramid shape as well. However one might run into some problems with this sort of thing when it comes to rotation of the result, and there are also a few addtional reasons why one might want to make some kind of custom geometry for this sort of thing as well. So in this post I will be writing about this built in Tetrahedron Geometry Class, but also an array of altertaive ways to create this kind of geometry inclduing some custom ways to do so while I am at it.
 
 <!-- more -->
+
+## The Tetrahedron Geometry class and what to know first
+
+This is a post on using the Tetrahedron Geometry class, other built in Geomerty classes, as well as some custom ways to create a Pyramid Geometry in threejs. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or client side javaScript in general. Also it would be best to look elsewhere when it comes to [formal math that has to do with things like what a Regual Tetrahedron is compared to other possiblitys](https://en.wikipedia.org/wiki/Tetrahedron) with this sort of shape, or maybe I should say [Polyhedron](https://en.wikipedia.org/wiki/Polyhedron) for that matter.
 
 
 ## 1 - Some basic Pyramid Geometry examples
