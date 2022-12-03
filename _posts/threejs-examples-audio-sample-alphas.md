@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1013
-updated: 2022-11-11 12:56:52
-version: 1.14
+updated: 2022-12-03 09:36:48
+version: 1.15
 ---
 
 I have been making a few [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) videos lately in which I am testing out how to go about syncing video with audio. Thus far though I am just working out the timing in terms of time stamps and duration and thus I am not taking into account any kind of actual audio sample data to adjust things that are going on when rendering my frames. However I have found that I can [export audio sample data](https://manual.audacityteam.org/man/sample_data_export.html) in an HTML file format when using [Audacity](https://en.wikipedia.org/wiki/Audacity_%28audio_editor%29) to work out the audio tracks that I want in this video. So I can adjust the sample rate so that I have just one sample per frame, and then I can export the sample data in an HTML file in which I have at least one sample point for each frame of the video. I can then also do this on a track by track basis, so that I have an HTML file of sample data for say drums, then another for bass, and yet another of samples, and so forth.
@@ -18,7 +18,7 @@ I then just need to make another [threejs examples](/2021/02/19/threejs-examples
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/67j1q73byqc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### The sample data module threejs example and what to know first
+## The sample data module threejs example and what to know first
 
 This is a post on a javaScript module that I have made that I am using to load and parse audio sample data that was exported from audio editor program known as Audacity. The module makes use of the THREE.FileLoader feature of the javaScript library know as threejs which is baked into the core of the library. This is then not a [post for people that are fairly new to threejs](/2018/04/04/threejs-getting-started/) and [client side javaScript in general](/2018/11/27/js-getting-started/) then. Also I will not be getting into detail about every little feature of Audacity as well and trust that you know enough about how to create an audio project that contains at least one or more tracks and how to export the sample data. Still I like to use these opening sections to write about at least some things that you might want to read up more on before counting to read the rest of the post.
 
