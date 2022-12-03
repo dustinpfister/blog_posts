@@ -5,19 +5,19 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2022-04-20 06:52:07
-version: 1.21
+updated: 2022-12-03 09:01:42
+version: 1.22
 ---
 
-There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with this [visible property of the obejct3d class](https://threejs.org/docs/#api/en/core/Object3D.visible) or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the [layers property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D.layers) which contains an instance of the [Layers class](https://threejs.org/docs/index.html#api/en/core/Layers) that can be used as a way to go about setting objects to different layers. 
+There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with the [visible property of the obejct3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), or making the material used with an object transparent and lowering the opacity. There is also just simply not adding an object to a scene object, or having an object added to the scene, and another that is not and swapping objects to and from them as children. 
 
-It is then possible to [set what layers a camera should draw](https://stackoverflow.com/questions/34099808/how-to-make-objects-visible-to-only-one-camera-in-a-three-js-scene) which is then a way to go about having control over the visibility of objects.
+There are a whole lot of tricks for changing the visibility of objects, however in this post I will be making use of the [layers property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D.layers). This layers property contains an instance of the [Layers class](https://threejs.org/docs/index.html#api/en/core/Layers) that can be used as a way to go about setting objects to different layers. It is then possible to [set what layers a camera should draw](https://stackoverflow.com/questions/34099808/how-to-make-objects-visible-to-only-one-camera-in-a-three-js-scene) which is then a way to go about having control over the visibility of objects.
 
-Any object in threejs that is based on the [object3d class](/2018/04/23/threejs-object3d/) such as a [Mesh](/2018/05/04/threejs-mesh/), [Group](/2018/05/16/threejs-grouping-mesh-objects/), or [Camera](/2018/04/06/threejs-camera/) has a layers property that by default is set to just layer 0. When using the render function of a renderer such as the [web gl renderer](/2018/11/24/threejs-webglrenderer/) as [scene object](/2018/05/03/threejs-scene/) is passed as the first argument followed by a reference to a camera to use to render a view of the scene. When doing so the camera used will only render objects that are enabled for one or more of the layer index values enabled for the camera.
+Any object in threejs that is based on the [object3d class](/2018/04/23/threejs-object3d/) such as a [Mesh](/2018/05/04/threejs-mesh/), [Group](/2018/05/16/threejs-grouping-mesh-objects/), or [Camera](/2018/04/06/threejs-camera/) has a layers property that by default is set to just layer 0. When using the render function of a renderer such as the [web gl renderer](/2018/11/24/threejs-webglrenderer/) as [scene object](/2018/05/03/threejs-scene/) is passed as the first argument followed by a reference to a camera to use to render a view of the scene. When doing so the camera used will only render objects that are enabled for one or more of the layer index values enabled for the camera. So then it would make sense to work out at least a few examples of this object3d class feature to gain a sense as to why this would be useful when working on a threejs project.
 
 <!-- more -->
 
-## layers in threejs and what else you show know about first
+## Layers in threejs and what else you show know about first
 
 This is a post on the layers property of the object3d class that holds an instance of the Layers class in the javaScript library known as threejs. This is then a not so basic post on threejs and javaScript in general and I assume that you have at least some basic working knowledge when it comes to getting up and running with a threejs project. In any case in this section I will be going over a few things that you should be aware of before continuing to read the rest of this post.
 
