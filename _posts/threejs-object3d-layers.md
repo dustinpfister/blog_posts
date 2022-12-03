@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2022-12-03 09:01:42
-version: 1.22
+updated: 2022-12-03 09:30:55
+version: 1.23
 ---
 
 There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with the [visible property of the obejct3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), or making the material used with an object transparent and lowering the opacity. There is also just simply not adding an object to a scene object, or having an object added to the scene, and another that is not and swapping objects to and from them as children. 
@@ -23,13 +23,19 @@ This is a post on the layers property of the object3d class that holds an instan
 
 ### Layers are just one way to control visibility of objects
 
-The layers property of an object is just one tool in the tool box of threejs when it comes to controlling the visibility of objects in threejs. There are a number of other features such as the [visible property](/2021/05/24/threejs-object3d-visible/) of an objects based on object3d that can be used to completely disable the visibility of an object all together for example. Another feature of interested has to do with materials when it comes to the [transparency boolean, and the opacity property](/2021/04/21/threejs-materials-transparent/) of materials, as well as alpha maps. These material level features can be used to make objects look a little transparency, or completely invisible if the opacity value is set to a value that will result in that kind of effect. There is also just simply having more than one scene object and just having control over what scene object gets passed to a renderer at any given moment, or having a pool of objects that is not attached to any scene, but objects get swapped between a group that is attached to a scene object, and back to the pool as needed.
+The layers property of an object is just one tool in the tool box of threejs when it comes to controlling the visibility of objects in threejs. There are a number of other features such as the [visible property](/2021/05/24/threejs-object3d-visible/) of an objects based on object3d that can be used to completely disable the visibility of an object all together for example. Another feature of interested has to do with materials when it comes to the [transparency Boolean, and the opacity property](/2021/04/21/threejs-materials-transparent/) of materials, as well as [alpha maps](/2019/06/06/threejs-alpha-map/). 
+
+These material level features can be used to make objects look a little transparency, or completely invisible if the opacity value is set to a value that will result in that kind of effect. There is also just simply having more than one scene object and just having control over what scene object gets passed to a renderer at any given moment, or having a pool of objects that is not attached to any scene, but objects get swapped between a group that is attached to a scene object, and back to the pool as needed.
 
 Still the layers property is a good option for setting certain objects to certain layers and then just having some way to control what layers get rendered.
 
+### Source code examples are on Github
+
+The source code examples that I am writing about in this post [can also be found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-layers).
+
 ### version numbers matter with threejs
 
-When I made these source code examples I was using [threejs r127](https://github.com/mrdoob/three.js/releases/tag/r127), which was a late versions of threejs in late March of 2021.
+When I first made these source code examples, and wrote this post I was using [threejs r127](https://github.com/mrdoob/three.js/releases/tag/r127), which was a late versions of threejs in late March of 2021. The last time I came around to do a little editing i was using r146 and was able to update the examples and get them working well with r146.
 
 ## 1 - Basic Object3d layers property example using Layers.enableAll and Layers.set
 
@@ -39,28 +45,35 @@ I then also created and added a mesh object to the scene, and before adding the 
 
 ```js
 (function () {
-    // scene
-    var scene = new THREE.Scene();
- 
-    var grid = new THREE.GridHelper(10, 10);  // ADDING A GRID THAT I AM ENABLING FOR ALL LAYERS
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer(): new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // ADDING A GRID THAT I AM ENABLING FOR ALL LAYERS
+    //-------- ----------
+    const grid = new THREE.GridHelper(10, 10);
     grid.layers.enableAll();
     scene.add(grid);
-    var mesh = new THREE.Mesh(  // SINGLE MESH FOR LAYER 1
+    //-------- ----------
+    // SINGLE MESH FOR LAYER 1
+    //-------- ----------
+    const mesh = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshNormalMaterial());
     mesh.layers.set(1);
     scene.add(mesh);
- 
-    // camera, and renderer
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // update
-    var cameraLayer = 0;
-    var update = function () {
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    let cameraLayer = 0;
+    const update = function () {
         camera.layers.set(cameraLayer);
         renderer.render(scene, camera);
         cameraLayer += 1;
@@ -84,36 +97,47 @@ So at the top of the example I have this array of layer modes, and then a variab
 
 ```js
 (function () {
- 
-    var layerModes = [[0], [1], [2], [0, 1]],
-    layerModeIndex = 0;
- 
-    var setToLayerMode = function (obj, index) {
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer(): new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LAYER MODES
+    //-------- ----------
+    const layerModes = [[0], [1], [2], [0, 1]];
+    let layerModeIndex = 0;
+    //-------- ----------
+    // HELPER FUNCTIONS
+    //-------- ----------
+    const setToLayerMode = function (obj, index) {
         obj.layers.disableAll();
         layerModes[index].forEach(function (layerNum) {
             obj.layers.enable(layerNum);
         });
     };
- 
-    var createBoxForLayer = function (layerMode, color, x) {
-        var mesh = new THREE.Mesh(
+    const createBoxForLayer = function (layerMode, color, x) {
+        const mesh = new THREE.Mesh(
                 new THREE.BoxGeometry(1, 1, 1),
                 new THREE.MeshBasicMaterial({
                     color: color
                 }));
-        var boxHelper = new THREE.BoxHelper(mesh);
+        const boxHelper = new THREE.BoxHelper(mesh);
         setToLayerMode(boxHelper, 3);
         mesh.add(boxHelper);
         mesh.position.set(x, 0, 0);
         setToLayerMode(mesh, layerMode);
         return mesh;
     };
- 
-    // scene
-    var scene = new THREE.Scene();
- 
-    // ADDING A GRID THAT I AM ENABLING FOR ALL LAYERS
-    var grid = new THREE.GridHelper(10, 10);
+    //-------- ----------
+    // GRID AND MESH OBJECTS
+    //-------- ----------
+    const grid = new THREE.GridHelper(10, 10);
     grid.layers.enableAll(); // enable all will set all layers true
     scene.add(grid);
     // ADDING A MESH FOR LAYER MODE 0 ONLY
@@ -122,19 +146,12 @@ So at the top of the example I have this array of layer modes, and then a variab
     scene.add(createBoxForLayer(1, 'lime', -2));
     // ADDING A MESH FOR LAYER MODE 2 ONLY
     scene.add(createBoxForLayer(2, 'white', 0));
- 
-    // camera, and renderer
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // loop
-    var lt = new Date();
-    var loop = function () {
-        var now = new Date(),
+    //-------- ----------
+    // LOOP
+    //-------- ----------
+    let lt = new Date();
+    const loop = function () {
+        const now = new Date(),
         secs = (now - lt) / 1000;
         requestAnimationFrame(loop);
         if (secs > 1) {
@@ -148,12 +165,11 @@ So at the top of the example I have this array of layer modes, and then a variab
     setToLayerMode(camera, layerModeIndex);
     renderer.render(scene, camera);
     loop();
- 
 }
     ());
 ```
 
-## 3 - Conclusion
+## Conclusion
 
 That is all I have to write about when it comes to layers alone at least, if I get some time to edit this post I might expand this at some point with more examples, however the basic idea is there at least for now. If you are looking for some additional reading it might be a good idea to take a look at [my post on the object3d class](/2018/04/23/threejs-object3d/) in general. That is a post that I keep coming back to now and then each time I work out some more examples for all the little features that there are to work with when it comes to this base class in threejs. It is a good idea to gain a solid understanding of everything there is to work with when it comes to object3d because this is a class that is at the core of so many objects in the library such as Mesh objects Groups, and even a whole Scene object.
 
