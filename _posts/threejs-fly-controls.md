@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 860
-updated: 2022-12-04 14:41:22
-version: 1.22
+updated: 2022-12-04 14:45:08
+version: 1.23
 ---
 
 There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I [wrote a post on one of these camera control options which was the orbit controls](/2018/04/13/threejs-orbit-controls/) a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
@@ -27,17 +27,17 @@ The Source code examples that I am writing about here [can also be found on Gith
 
 ### Version Numbers matter with three.js
 
-When I wrote this post I was using [r127 of three.js](https://github.com/mrdoob/three.js/tree/r127). Code breaking changes are made to three.js every now and then so if the examples here are not working the first thing to check is what version of three.js is being used. After that there are some additional things to be aware of such as the fact that these code examples will break if you are not adding the official fly controls on top of three.js by itself.
+When I wrote this post I was using [r127 of three.js](https://github.com/mrdoob/three.js/tree/r127), and the last time I came around to do some editing I was using r146. Code breaking changes are made to three.js every now and then so if the examples here are not working the first thing to check is what version of three.js is being used. After that there are some additional things to be aware of such as the fact that these code examples will break if you are not adding the official fly controls on top of three.js by itself.
 
 ## 1 - Some Basic getting started type examples of fly controls
 
-There are two general ways of using fly controls, one of which I think is intended, and the other way maybe not. You see everything will work just fine if and only if the whole page is being used for the project. In the event that I am using a dom element that just takes up and area of the page the mouse controls will not work as expected. There are ways of addressing this though by making use of an iframe for example. So in this section I will have a basic example where the whole page is used, and another where an iframe is being used.
+There are two general ways of using fly controls, one of which I think is intended, and the other way maybe not. You see everything will work just fine if and only if the whole page is being used for the project. In the event that I am using a dom element that just takes up and area of the page the mouse controls will not work as expected. There are ways of addressing this though by making use of an [iframe](/2019/02/10/js-javascript-iframe/) for example. So in this section I will have a basic example where the whole page is used, and another where an iframe is being used.
 
 ### 1.1 - Fly controls example that uses the whole page
 
 So now that I have all the basic stuff in place when it comes to having a scene object as well as something to look at in terms of one or more mesh objects, a camera object, and a renderer all in place now I can get to the actual fly controls. To use the Fly Controls I just need to call the THREE.FlyControls constructor that is added by way of the additional files in the examples folder of the three.js github repo that I mentioned in the basic section of this post. 
 
-When calling the constructor the first argument that I am going to want to pass is a reference to the [camera object](/2018/04/06/threejs-camera/) that I want to control with the fly controls, followed by a dom element reference that should typically be the dom element used by the renderer that I am using. However in this example I am using the debug canvas as that is on top of the canvas that is used to remder the threejs scene. After that I am more often than not going to want to save the returned instance of fly controls to a variable or object property to set some additional values, and also to call the update method in a main app loop method.
+When calling the constructor the first argument that I am going to want to pass is a reference to the [camera object](/2018/04/06/threejs-camera/) that I want to control with the fly controls, followed by a dom element reference that should typically be the dom element used by the [renderer](/2018/11/24/threejs-webglrenderer/) that I am using. However in this example I am using the debug canvas as that is on top of the canvas that is used to remder the threejs scene. After that I am more often than not going to want to save the returned instance of fly controls to a variable or object property to set some additional values, and also to call the update method in a main app loop method.
 
 ```js
 //-------- ----------
