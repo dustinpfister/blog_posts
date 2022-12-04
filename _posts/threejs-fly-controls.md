@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 860
-updated: 2022-04-20 07:45:57
-version: 1.20
+updated: 2022-12-04 10:08:32
+version: 1.21
 ---
 
 There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I [wrote a post on one of these camera control options which was the orbit controls](/2018/04/13/threejs-orbit-controls/) a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
@@ -20,6 +20,10 @@ In this post I am writing about the official three.js fly controls in three.js w
 ### Make sure that you have added the fly controls after adding three.js in the html
 
 The official fly controls can be found in the [examples folder of the official three.js github repository](https://github.com/mrdoob/three.js/blob/r127/examples/js/controls/FlyControls.js). When grabbing a copy from there make sure that it is for the version of three.js that you are using. Changes are rare with many of these controls, but I have found that they do happen once in a while.
+
+### Source code is on Github
+
+The Source code examples that I am writing about here [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-fly-controls/s1-1-basic).
 
 ### Version Numbers matter with three.js
 
@@ -91,7 +95,7 @@ After that I have my main app loop in which I am getting a seconds value each ti
 
 There is then how to go about using the fly controls when and if you do get them up and running, with that said there are the w,a,s,d keys along with the q, and e keys on the keyboard that should be of interest for you. The wasd keys can be used to change the camera position along a forward backward and up and down kind of movement. The q and e keys are then ways to adjust rotation with the keyboard rather than the mouse. The mouse then can be used as a way to look around from the current camera position.
 
-## 2 - Conclusion
+## Conclusion
 
 So that is all that I have to say about the official fly controls in three.js so far, when I get some time to edit this post I will be sure to expand things when and if I get the time to do so. For now there is maybe taking a moment to look into some of the other official controls to worth with such as the orbit controls also, before considering to look into how to get started with making ones own custom camera controls. I think that I will be getting around to working one or two demos about making custom controls sooner or later, but for now I just like to make use of what there is to work with that is official to just save some time.
 
