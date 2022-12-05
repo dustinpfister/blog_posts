@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2022-12-05 12:41:02
-version: 1.22
+updated: 2022-12-05 12:45:05
+version: 1.23
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, in fact all platforms I think, any width other than the default value of 1 will not work anyway. 
@@ -202,7 +202,7 @@ When using the createFatLine helper I then also call my createFatLineGeometry he
     ());
 ```
 
-## 2 - Conclusion
+## Conclusion
 
 So the process of making fat lines in three.js is a little complicated, but with a little will power it is not to hard to find a work around. There are a number of other great features that can be worth with in my own projects that exist in the examples folder of the official threejs github repository, such as orbit and [fly controls](/2021/05/05/threejs-fly-controls/) just to name a few of the features to worth with there.
 
