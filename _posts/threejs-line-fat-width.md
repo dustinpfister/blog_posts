@@ -1,31 +1,35 @@
 ---
-title: Fat width lines in three.js
+title: Fat Lines in threejs by making use of additional files
 date: 2018-11-07 17:52:00
 tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2022-12-05 12:45:05
-version: 1.23
+updated: 2022-12-05 15:41:47
+version: 1.24
 ---
 
-When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, in fact all platforms I think, any width other than the default value of 1 will not work anyway. 
+When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, any width other than the default value of 1 will not work. I have found that it will work on some of the Linux systems that I would with, but on Windows, and I assume many others it will now work.
 
-So it would seem that I am just stuck with having to just have a thickness of 1 when it comes to drawing lines in threejs. However there is not just thinking in terms of drawing a line in space, but drawing a tube like structure in space. When doing so I should be able to use [THREE.Mesh](/2018/05/04/threejs-mesh/), rather than [THREE.Line](/2018/04/19/threejs-line/), and then make the radius of this tubing any thickness that I want right?
+So it would seem that I am just stuck with having to just have a thickness of 1 when it comes to drawing lines in threejs. However there is not just thinking in terms of drawing a line in space, but drawing a tube like structure in space. When doing so I should be able to use [THREE.Mesh](/2018/05/04/threejs-mesh/), rather than [THREE.Line](/2018/04/19/threejs-line/), and then make the radius of this tubing any thickness that I want. There is the option of looking into using curves, and the Tube geometry class as a way to create something like that. However it would be nice to also have a way to draw lines in a way in which the thickness will work on most platforms.
 
-However looking over the examples at the three.js site there are some official additional resources that can be used to make thick lines that seems to work just fine. The only thing about it is that these features are not built into the core of the three.js library itself. They must be added to a project as an additional external file alone with threejs, however once added to the stack the feature seems to work pretty good.
+Looking over the examples at the threejs site there are some official additional resources that can be used to make thick lines that seems to work just fine. The only thing about it is that these features are not built into the core of the threejs library itself. They must be added to a project as an additional external files along with threejs. However once added to the stack the feature seems to work pretty good from what I am seeing on my end.
 
 <!-- more -->
 
-## What to know
+## Fat lines in threejs and What to know first
 
-This is a post on using some additional assets with three.js to make fat lines, or lines that have a thickness larger than that of one which seems to be a limitation when working with Lines and the line basic material as a way to draw lines in 3d space using threejs and a little javaScript. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/), or javaScript in general so I trust that yo have at least some experience with these things before hand. In any case in this section I will be going over a few quick key details that you should be aware of before containing to read the rest of this post.
+This is a post on using some additional assets with threejs to make fat lines, or lines that have a thickness larger than that of one.  Not being ablble to set a width hoght than one with the built in lines of threejs seems to be a limitation when working with Lines, and the line basic material. This is not a [getting started post with threejs](/2018/04/04/threejs-getting-started/), or javaScript in general so I trust that yo have at least some experience with these things before hand. In any case in this section I will be going over a few quick key details that you should be aware of before containing to read the rest of this post.
+
+### Take a look at curves and tube geomerty
+
+These fat lines do seem to work okay, but I still run into limits with what can be done with the material that is used. For the most part it would seem that this just results in fat lines that will work on most if not all platforms by making use of a custom shader. In the long run it might be best to see about [using curves](/2022/06/17/threejs-curve/), and tube geometry as a way to draw 3d lines in space. What is nice about this is that it allows for me to use Mesh objects, and then therefrom mesh materials, and all that there is to work with when it comes to mesh materials.
 
 ### The demos here require more than just three.js
 
-In this post on top of the usual three.js file, I am also using some additional files that can be found in the [examples\/js\/lines](https://github.com/mrdoob/three.js/tree/r98/examples/js/lines) folder of the three.js git hub folder. These files bring additional constructors that are not present in three.js bu itself.
+In this post on top of the usual three.js file, I am also using some additional files that can be found in the [examples\/js\/lines](https://github.com/mrdoob/three.js/tree/r140/examples/js/lines) folder of the three.js git hub folder. These files bring additional constructors that are not present in three.js by itself. Make sure that you are using the version of the files that corresponds to the revision number of threejs that you are using.
 
-So afetr loading three.js, load the additional files that are fond in the lines folder of the three.js github repository as well.
+So after loading three.js, load the additional files that are fond in the lines folder of the three.js Github repository as well.
 
 ```html
 <script src="/js/three.min.js"></script>
@@ -42,7 +46,7 @@ The Source code exmaples in this [post can also be found on Github](https://gith
 
 ### Version numbers matter
 
-In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) that was released on October 31 2018, and the last time I did a little editing of this post I was using r127 of three.js and it would seem that this example is still working on that later version of three.js.
+When I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91) that was released on March 18 2018. The last time I came around to do a little editing I started a new set of examples working with r140 of the library. It would seem that the files needed to have fat lines are still being supported which is great.
 
 ## 1 - Creating some fat lines with three.js
 
