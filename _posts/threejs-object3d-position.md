@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-11-28 18:46:25
-version: 1.69
+updated: 2022-12-05 09:37:20
+version: 1.70
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -1119,7 +1119,7 @@ This is an example based on the first video that I made for this post. It is an 
 
 ### 4.5 - Video2 example making use of Buffer geometry as a way to set position.
 
-This is the source code that I used to make my video2 for this blog post that at the time of this writing is the latest video that I have up at the top of the blog post. This time around I made a video that is about using the position attribute of a buffer geometry to create a vector3 that is then mutated with the lerp method to set position of a group of mesh objects.
+This is the source code that I used to make my video2 for this blog post that at the time of this writing is the latest video that I have up at the top of the blog post. This time around I made a video that is about using the position attribute of a buffer geometry to create a vector3 that is then mutated with the [vector3 lerp method](/2022/05/17/threejs-vector3-lerp/) to set position of a group of mesh objects.
 
 ```js
 (function () {
