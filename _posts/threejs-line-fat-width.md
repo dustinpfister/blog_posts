@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2022-04-20 08:00:46
-version: 1.21
+updated: 2022-12-05 12:41:02
+version: 1.22
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, in fact all platforms I think, any width other than the default value of 1 will not work anyway. 
@@ -20,10 +20,6 @@ However looking over the examples at the three.js site there are some official a
 ## What to know
 
 This is a post on using some additional assets with three.js to make fat lines, or lines that have a thickness larger than that of one which seems to be a limitation when working with Lines and the line basic material as a way to draw lines in 3d space using threejs and a little javaScript. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/), or javaScript in general so I trust that yo have at least some experience with these things before hand. In any case in this section I will be going over a few quick key details that you should be aware of before containing to read the rest of this post.
-
-### Version numbers matter
-
-In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) that was released on October 31 2018, and the last time I did a little editing of this post I was using r127 of three.js and it would seem that this example is still working on that later version of three.js.
 
 ### The demos here require more than just three.js
 
@@ -39,6 +35,14 @@ So afetr loading three.js, load the additional files that are fond in the lines 
 <script src="/js/linesegments2.js"></script>
 <script src="/js/line2.js"></script>
 ```
+
+### Source code is on Github
+
+The Source code exmaples in this [post can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-line-fat-width).
+
+### Version numbers matter
+
+In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) that was released on October 31 2018, and the last time I did a little editing of this post I was using r127 of three.js and it would seem that this example is still working on that later version of three.js.
 
 ## 1 - Creating some fat lines with three.js
 
