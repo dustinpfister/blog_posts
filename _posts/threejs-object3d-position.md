@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-12-05 09:37:20
-version: 1.70
+updated: 2022-12-05 09:48:00
+version: 1.71
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -1119,7 +1119,11 @@ This is an example based on the first video that I made for this post. It is an 
 
 ### 4.5 - Video2 example making use of Buffer geometry as a way to set position.
 
-This is the source code that I used to make my video2 for this blog post that at the time of this writing is the latest video that I have up at the top of the blog post. This time around I made a video that is about using the position attribute of a buffer geometry to create a vector3 that is then mutated with the [vector3 lerp method](/2022/05/17/threejs-vector3-lerp/) to set position of a group of mesh objects.
+This is the source code that I used to make my second demo video for this blog post that at the time of this writing is the latest video that I have up at the top of the blog post. This time around I made a video that is about using the [position attribute of a buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) to create a vector3 object using the getX, getY, and getZ methods of the buffer attribute class. Once I have my current vector3 object for a point in a geometry I can then mutate from that point using the [vector3 lerp method](/2022/05/17/threejs-vector3-lerp/) between the current point and the next point in the geometry. In the end I can then once again use the copy method to copy the state of this mutated Vector3 object to the position of a Mesh object.
+
+In other words I am moving mesh objects on a path that is defined my the order of the points in a geometry such as one created with the Sphere or Torus Geometry built in classes.
+
+On top of this I also have a mesh that is moving over time based on the state of a curve class instance as well. This is something that I think I should have going on for any and all demo videos moving forward because I think curves are a very important thing to be aware of when it comes to the subject of setting the position of objects in a scene.
 
 ```js
 (function () {
