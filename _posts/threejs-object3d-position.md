@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2022-12-05 09:48:00
-version: 1.71
+updated: 2022-12-05 12:35:37
+version: 1.72
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class. Setting the values of this will set the position of the origin of an object of interest relative to the parent object or world space in the event that there is no parent object which will often be the case for the scene object. 
@@ -707,14 +707,102 @@ There is then looking into creating what I have come to call get alpha methods, 
 
 The end result here is then two curves one of which uses the default get alpha method that will give a similar result to the get points method. The other curve uses the get alpha method that makes use of the smoother step method that results in the points starting out space out closer together at first, then farther apart as the center of the curve is reached, at which pint the spacing goes back down again.
 
-## 4 - Deterministic Animation examples
+## 4 – Positioning objects to the position attribute of geometry
+
+When it comes to buffer geometry of any kind one of the most important attributes is the position attribute. This is the attribute that will contain the actual points in space that from the triangles of the geometry itself. As such this is a must have attribute even for geometries that are just going to be used with the THREE.Points, or THREE.Line objects.
+
+Anyway in this section I will be exploring the idea of using the position attribute of a buffer geometry instance to set the position of objects.
+
+### 4.1 - Using the getX, getY, and getZ Buffer Attribute methods
+
+In this example I want to make a helper function where I just pass a geometry, and an alpha value to get a Vector3 object that is the point in the geometry based on the given alpha value. In other words I give a geometry, and then a 0 to 1 value, and then the helper will convert the alpha value to an index of a point in the position attribute, and return a Vector3 object that is that point in space.
+
+When I have a buffer geometry instance, and there is a position attribute to work with, I can use the get attribute method to gain a reference to the buffer attribute object of the position attribute. I can then use the getX, getY, and getZ methods as a way to create a Vector3 object that I can then use with the copy method of the position attribute of a object3d based object. When it comes to the index values that I use with these buffer attribute class methods I can use the count property to find out how far to go when it comes to looping, or in this case concert an alpha value to an index value.
+
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+    camera.position.set(0, 8, 8);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body ).appendChild( renderer.domElement );
+    //-------- ----------
+    // HELPER FUNCTIONS
+    //-------- ----------
+    // get a geo position vector3 by a given alpha value
+    const getGeoPosByAlpha = (geo, alpha) => {
+        const pos = geo.getAttribute('position');
+        const count = pos.count;
+        const index = Math.round( ( count - 1 ) * alpha );
+        const v = new THREE.Vector3();
+        v.x = pos.getX(index);
+        v.y = pos.getY(index);
+        v.z = pos.getZ(index);
+        return v;
+    };
+    // create a 'pointer' mesh object
+    const createPointerMesh = () => {
+        return new THREE.Mesh(
+            new THREE.SphereGeometry(0.2, 20, 20),
+            new THREE.MeshNormalMaterial()
+        );
+    };
+    //-------- ----------
+    // POSITION TO MESH OBJECTS
+    //-------- ----------
+    const material_posto = new THREE.MeshBasicMaterial({ wireframe: true, transparent: true, opacity: 0.15});
+    const group = new THREE.Group();
+    scene.add(group);
+    // sphere that will be the position property used
+    const mesh1 = new THREE.Mesh( new THREE.SphereGeometry(2, 14, 14), material_posto );
+    group.add(mesh1);
+    // torus that will be the position property used
+    const mesh2 = new THREE.Mesh( new THREE.TorusGeometry(1.5, 0.75, 14, 14), material_posto);
+    mesh2.position.set(-5, 0, 0);
+    mesh2.geometry.rotateX(Math.PI * 0.5)
+    group.add(mesh2);
+    // cone that will be the position property used
+    const mesh3 = new THREE.Mesh( new THREE.ConeGeometry(2, 4, 14, 14), material_posto);
+    mesh3.position.set(5, 0, -5);
+    group.add(mesh3);
+    //-------- ----------
+    // POINTER MESH OBJECTS
+    //-------- ----------
+    let i = 0;
+    const count = 16;
+    while(i < count){
+        const a1 = i / count;
+        group.children.forEach(( mesh ) => {
+            const mesh_pointer = createPointerMesh();
+            const v = getGeoPosByAlpha(mesh.geometry, a1);
+            mesh_pointer.position.copy(v).add(mesh.position);
+            scene.add(mesh_pointer);
+        });
+        i += 1;
+    }
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+## 5 - Deterministic Animation examples
 
 In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs one will want to work out a number of animations in which they are not just setting the position once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animation where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animations where randomness, and other factors such as user input are at play.
 
 For this section I will be sticking to just a few examples of a kind of Deterministic style, saving the alternative style for some other post or section outside of this one. Many of these examples here will then often be in the demo videos that I embed for this post then as I often start out such projects in this kind of section.
 
 
-### 4.1 - Just moving a bunch of mesh objects on the x axis by differing rates
+### 5.1 - Just moving a bunch of mesh objects on the x axis by differing rates
 
 To start out with animation of the position object3d property I have an example here where I now have an animation loop rather than just a single call of the render method of the webgl renderer. This is an animation loop example that I seem to keep copying and pasting from one example to another over and over again that allows for me to set differing values for a frames per second value.  I then have one FPS rate that will be used to set the target frame rate at which the update function is called, and the other can be used to set the current frame value that is used in the update method to update the state of things. This allows for me to set a low update frame rate while still going by a higher frame rate update when it comes to the movement of objects. This helps to conserve system resources while maintain a rate of movement that is consistent. In other words I can set thee update rate low which will result in choppy video, but use less CPU overhead, or a higher update rate which will result in smoother video but at the cost of eating up more CPU Overhead.
 
@@ -811,7 +899,7 @@ The end result of all of this is then to end up with a whole bunch of mesh objec
 }());
 ```
 
-### 4.2 - Lerp method animation example
+### 5.2 - Lerp method animation example
 
 Now that I have a nice basic frame over max frame animation example, I can now start to move into another example that makes use of many of the Vector3 class features that I wrote about in the basic section. One very useful method that I covered out of many others was the lerp method of the vector3 class which can be used in combination with the clone method as a great way to move an object back and from between a start and end vector.
 
@@ -929,7 +1017,7 @@ So then for this animation example I will have a collection of mesh objects that
 }());
 ```
 
-### 4.3 - Using a Curve to position a mesh object over time
+### 5.3 - Using a Curve to position a mesh object over time
 
 Here I have an animation loop example based off the basic curve section example in which I am moving a mesh along a curve. This time I made a custom get alpha method that makes use of a method in the [Math Utils object](/2022/04/11/threejs-math-utils/) to get a smooth animation along the curve back and forth. A get alpha method is just a way to go about getting a value between 0 and 1 that will help with creating an argument value to use with the get point method of the base curve class.
 
@@ -1031,7 +1119,7 @@ Here I have an animation loop example based off the basic curve section example 
 }());
 ```
 
-### 4.4 - Video1 example
+### 5.4 - Video1 example
 
 This is an example based on the first video that I made for this post. It is an example where I just made a group of mesh objects and then moved them around using a home position that I stored in a user data object along with the use of some additional Vector3 class methods to move the mesh objects over time. I did not put a whole lot of thought into this one as I just wanted to make a quick place holder video for this post. I have sense then worked out some additional examples that make for a more interesting video than this.
 
@@ -1117,7 +1205,7 @@ This is an example based on the first video that I made for this post. It is an 
 }());
 ```
 
-### 4.5 - Video2 example making use of Buffer geometry as a way to set position.
+### 5.5 - Video2 example making use of Buffer geometry as a way to set position.
 
 This is the source code that I used to make my second demo video for this blog post that at the time of this writing is the latest video that I have up at the top of the blog post. This time around I made a video that is about using the [position attribute of a buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) to create a vector3 object using the getX, getY, and getZ methods of the buffer attribute class. Once I have my current vector3 object for a point in a geometry I can then mutate from that point using the [vector3 lerp method](/2022/05/17/threejs-vector3-lerp/) between the current point and the next point in the geometry. In the end I can then once again use the copy method to copy the state of this mutated Vector3 object to the position of a Mesh object.
 
