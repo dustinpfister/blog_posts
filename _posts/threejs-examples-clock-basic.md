@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2022-12-06 12:07:44
-version: 1.31
+updated: 2022-12-06 12:10:43
+version: 1.32
 ---
 
 [Threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun and exciting javaScript. Sure there might prove to be many examples of practical application of threejs to write about as well, however I often see it more as something to play with when it comes to making simple animations, games, and toy like projects. 
@@ -23,7 +23,7 @@ This is a post on a three.js example of a basic analog clock using threejs and a
 
 ## Source code is also up on Github
 
-The source code that I am writing about here [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-clock-basic).
+The source code that I am writing about here [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-clock-basic). This is also where I park the source code for my [many other posts on threejs as well](/categories/three-js/).
 
 ### version numbers matter
 
