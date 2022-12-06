@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2022-12-06 11:27:39
-version: 1.30
+updated: 2022-12-06 12:07:44
+version: 1.31
 ---
 
 [Threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun and exciting javaScript. Sure there might prove to be many examples of practical application of threejs to write about as well, however I often see it more as something to play with when it comes to making simple animations, games, and toy like projects. 
@@ -21,9 +21,13 @@ This is an example type post in which I am making a threejs project where things
 
 This is a post on a three.js example of a basic analog clock using threejs and a little additional javaScript code on top of the use of this library. This is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), [canvas](/2017/05/17/canvas-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/) so I assume that you have at least some background with these topics. I will however be going over at least a few basic points when it comes to things that you should know, or refresh on a little before getting into reading the rest of this post.
 
+## Source code is also up on Github
+
+The source code that I am writing about here [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-clock-basic).
+
 ### version numbers matter
 
-When I first wrote this post I was using three.js version r111, and the last time I came around to test out that this example is still working, and do a little editing I was using r127 of three.js. Between those two version numbers there have been a few major changes, however none of them seem to have effected anything with this basic clock example at least.
+When I first wrote this post I was using three.js version r111. The last time I came around to test out that this example is still working, and do a little editing, I was using r146 of threejs. Between those two version numbers there have been a lot major changes, however none of them seem to have effected anything with this basic clock example at least.
 
 ## 1 - The clock.js module
 
@@ -192,7 +196,7 @@ var loop = function () {
 loop();
 ```
 
-## 3 - Conclusion
+## Conclusion
 
 This basic clock example was a good start at least when it comes to making this kind of project with three.js, but I think that there is still a great deal more work to do even when it comes to making a simple clock example such as this. Still I think there the basic idea of what I hand in mind is there, I like to have a simple module that i can use to create and update some values that I can then use to set or change the position of some mesh objects.
 
