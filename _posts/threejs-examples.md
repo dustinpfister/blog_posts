@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-11-22 09:31:43
-version: 1.93
+updated: 2022-12-06 12:18:14
+version: 1.94
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -69,7 +69,9 @@ Sooner or later I might get around to adding more features that have to do with 
 
 ### [ 2.10 - A Basic Clock Example](/2019/12/16/threejs-examples-clock-basic/)
 
-This is just a Basic clock example which is another kind of example that I like to make when working with a new framework like threejs or any kind of canvas framework. Clocks are nice because they are generally easy to make, but yet there is also still all kinds of room for improvement when it comes to going in a new and interesting direction with it.
+This is just a Basic Clock example that I started a long time ago, and have not revised much sense then. Clock Projects are nice because they are generally easy to make, but yet there is also still all kinds of room for improvement when it comes to going in a new and interesting directions with this sort of thing. When it comes to this one I did not do much of anything all that fancy, just a crude basic starting point is what I hand in mind.
+
+I can not say that I have much interest in revising this project as of this writing at least. There might come a time though that I will want or need to clean up the code here though.
 
 ### [ 2.11 - Create Path tool](/2022/10/28/threejs-examples-create-path-tool/)
 
