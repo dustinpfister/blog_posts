@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2022-12-05 15:55:44
-version: 1.25
+updated: 2022-12-06 11:11:24
+version: 1.26
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, any width other than the default value of 1 will not work. I have found that it will work on some of the Linux systems that I would with, but on Windows, and I assume many others it will now work.
@@ -97,6 +97,46 @@ This time Around I would lik to start out with a very simple example with this. 
     const line_material = new THREE.LineMaterial({
         linewidth: 0.025,
         color: 0xff0000
+    });
+    const line = new THREE.Line2(geo, line_material);
+    scene.add(line)
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+### 1.2 - Vertex colors
+
+There is a set colors method of the line geometry that can be used as a way to set what the vertex colors should be for the geometry. This corresponds with the positions only it is r,g,b, rather than x,y,z. The values should be in 0 to 1 form for each color channel values as well.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, RENDER, CAMERA
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10))
+    const camera = new THREE.PerspectiveCamera(40, 320 / 240, 1, 1000);
+    camera.position.set(15, 15, 15);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // LINE2
+    //-------- ----------
+    const geo = new THREE.LineGeometry();
+    geo.setPositions([0,0,0, 0,3,0, -3,3,-5, -3,3,5, 0,0,5, 0,0,0]);
+    // use the set colors method an pass an array of color channel values
+    // in the from of 0 to 1 values for each color channel (rgb)
+    geo.setColors([0,1,0, 0,1,1, 0,0.5,0, 0,0.5,0.5, 0,0.25,0, 0,0.25,0.25]);
+    // use vertex colors when setting up the material
+    const line_material = new THREE.LineMaterial({
+        linewidth: 0.025, vertexColors: true
     });
     const line = new THREE.Line2(geo, line_material);
     scene.add(line)
