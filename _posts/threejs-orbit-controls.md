@@ -5,25 +5,23 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 173
-updated: 2022-04-20 09:31:12
-version: 1.26
+updated: 2022-12-06 11:22:35
+version: 1.27
 ---
 
-It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch, it would just involve some [event handlers](/2019/01/16/js-event-listeners/) that would be used to set the [position](/2022/04/04/threejs-object3d-position/) and [rotation](/2022/04/08/threejs-object3d-rotation/) of the camera using some [Object3D](https://threejs.org/docs/#api/core/Object3D) class methods maybe. 
+It would not be that hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch, it would just involve some [event handlers](/2019/01/16/js-event-listeners/) that would be used to set the [position](/2022/04/04/threejs-object3d-position/) and [rotation](/2022/04/08/threejs-object3d-rotation/) of the camera using some [Object3D](https://threejs.org/docs/#api/core/Object3D) class methods. However there is some additional resources in the three.js project repository itself that can be used to quickly set some orbit controls in a flash which can be found in the examples folder of the repository. In this post I will be covering how to quickly set up these orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene this way.
 
-However there is some additional resources in the three.js project repository itself that can be used to quickly set some orbit controls in a flash which can be found in the examples folder of the repository. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
-
-The Orbit Controls solution that can be found in the three.js examples folder in the github repo of the project can be used to quickly set up a solution for panning, zooming, and changing the orientation of a camera with the mouse, keyboard, and touch events. So then these source code examples will need threejs, as well as OrbitControls.js on top of the additional code that I am going over in this post.
+The Orbit Controls solution that can be found in the threejs examples folder in the github repo of the project can be used to quickly set up a solution for panning, zooming, and changing the orientation of a camera with the mouse, keyboard, and touch events. So then these source code examples will need threejs, as well as OrbitControls.js on top of the additional code that I am going over in this post.
 
 <!-- more -->
 
 ## Orbit controls in threejs and what to know before hand
 
-This is an advanced post on one of the many useful time saving features that are found in the three.js examples folder in the [three.js github repository](https://github.com/mrdoob/three.js/tree/r125). If you are looking for my take on [getting started with three.js](/2018/04/04/threejs-getting-started/) I have wrote a post on that topic before, and what I am writing about here is just a few steps beyond that. So in this post I assume you have a basic working knowledge of javaScript, and three.js and are wondering if there is some kind of official solution for quickly adding some orbit controls to a three.js project, in which case you are at the right place. Still in this section I will be going over a few pointers to know before continuing with the rest of the post.
+This is an advanced post on one of the many useful time saving features that are found in the form of additional javaScript files in the threejs examples folder in the [three.js github repository](https://github.com/mrdoob/three.js/tree/r146). If you are looking for my take on [getting started with three.js](/2018/04/04/threejs-getting-started/) I have wrote a post on that topic before, and what I am writing about here is just a few steps beyond that. So in this post I assume you have a basic working knowledge of javaScript, and threejs, and are wondering if there is some kind of official solution for quickly adding some orbit controls to a threejs project. With that said yes there is, and I will be writing about at least a few examples that make use of these orbit controls.
 
 ### The source code examples here are on github
 
-The source code examples here that make use of threejs, and OrbitControls.js can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-orbit-controls). If you see anything wrong with the code that would be where to make a pull request, there is also the comments section of this blog post that can be used to bring something up.
+The source code examples here that make use of threejs, and OrbitControls.js can also be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-orbit-controls). This is also where I park the source code examples for my many [other blog posts on threejs](/categories/three-js/) as well.
 
 ### Where to get the file for orbit controls
 
