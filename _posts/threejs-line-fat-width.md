@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2022-12-06 11:11:24
-version: 1.26
+updated: 2022-12-07 14:20:21
+version: 1.27
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, any width other than the default value of 1 will not work. I have found that it will work on some of the Linux systems that I would with, but on Windows, and I assume many others it will now work.
@@ -148,14 +148,279 @@ There is a set colors method of the line geometry that can be used as a way to s
     ());
 ```
 
-## 2 - Creating some fat lines with threejs and addtional files ( r91 )
+## 2 - Animation loop examples
+
+For this Section I have a few examples where I aim to just make one or more animation loop examples for the sake of having a demo video for this post. It would seem that updating the state of the geometry as well as the vertex colors use for these kinds of lines is fairly easy. I can just call the set position method over and over again in a loop, and thus far it would seem that works fine for this sort of thing.
+
+### 2.1 - Transition color
+
+Here I just wanted to make a simple example where I Transition  the values of the colors use for vertex colors over time. 
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, RENDER, CAMERA
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10))
+    const camera = new THREE.PerspectiveCamera(40, 320 / 240, 1, 1000);
+    camera.position.set(15, 15, 15);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // create sin wave position array to use with the setPositions method
+    const sinWave = (zStart, zEnd, x, waves, yMax, pointCount, radianOffset) => {
+        const pos = [];
+        let i = 0;
+        while(i < pointCount){
+           const a1 = i / (pointCount - 1);
+           const z = zStart - (zStart - zEnd) * a1;
+           let r = Math.PI * 2 * waves * a1 + radianOffset;
+           r = THREE.MathUtils.euclideanModulo(r, Math.PI * 2);
+           const y = Math.sin(r) * yMax;
+           pos.push(x, y, z);
+           i += 1;
+        }
+        return pos;
+    };
+    // color trans
+    const colorTrans = (color1, color2, pointCount) => {
+        const colors = [];
+        let i = 0;
+        while(i < pointCount){
+           const a1 = i / (pointCount - 1);
+           let r = color1.r * (1 - a1) + color2.r * a1;
+           let g = color1.g * (1 - a1) + color2.g * a1;
+           let b = color1.b * (1 - a1) + color2.b * a1;
+           colors.push(r,g,b);
+           i += 1;
+        }
+        return colors;
+    }
+    //-------- ----------
+    // LINE2
+    //-------- ----------
+    // use vertex colors when setting up the material
+    const line_material = new THREE.LineMaterial({
+        linewidth: 0.025,
+        vertexColors: true
+    });
+    const group = new THREE.Group();
+    scene.add(group);
+    let i = 0;
+    const count = 7;
+    while(i < count){
+        const a_line = i / (count - 1);
+        const geo = new THREE.LineGeometry();
+        const colorArray = colorTrans( new THREE.Color(1,0,1 -a_line), new THREE.Color(a_line,1, 0), 80 );
+        geo.setColors( colorArray);
+        const line = new THREE.Line2(geo, line_material);
+        group.add(line);
+        i += 1;
+    }
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 120;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        const a1 = frame / frameMax;
+        const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+        let i = 0;
+        const count = group.children.length;
+        while(i < count){
+            const a_line = i / (count - 1);
+            const a_line2 = 1 - Math.abs(0.5 - a_line) / 0.5;
+            const line = group.children[i];
+            const x = -5 + 10 * a_line;
+            const yMax = 1 + 3 * a_line2;
+            const radianOffset = Math.PI * 2 / count * i + Math.PI * 2 * a1; 
+            line.geometry.setPositions( sinWave(5, -5, x, 4, yMax, 80, radianOffset) );
+            i += 1;
+        }
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+
+### 2.2 - Color Depth
+
+This example is more or less the same outcome as the above example that I started this section with, however now I would like to have some depth for the colors by making use of a camera object to effect the state of the colors array.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, RENDER, CAMERA
+    //-------- ----------
+    const scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10))
+    const camera = new THREE.PerspectiveCamera(40, 320 / 240, 2.5, 25);
+    //camera.position.set(12, 12, 12);
+    //camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // create sin wave position array to use with the setPositions method
+    const sinWave = (zStart, zEnd, x, waves, yMax, pointCount, radianOffset) => {
+        const pos = [];
+        let i = 0;
+        while(i < pointCount){
+           const a1 = i / (pointCount - 1);
+           const z = zStart - (zStart - zEnd) * a1;
+           let r = Math.PI * 2 * waves * a1 + radianOffset;
+           r = THREE.MathUtils.euclideanModulo(r, Math.PI * 2);
+           const y = Math.sin(r) * yMax;
+           pos.push(x, y, z);
+           i += 1;
+        }
+        return pos;
+    };
+    // color trans
+    const colorTrans = (color1, color2, posArray, camera) => {
+        const colors = [];
+        let i = 0;
+        const pointCount = posArray.length / 3;
+        while(i < pointCount){
+           const a1 = i / (pointCount - 1);
+           // raw color values
+           let r = color1.r * (1 - a1) + color2.r * a1;
+           let g = color1.g * (1 - a1) + color2.g * a1;
+           let b = color1.b * (1 - a1) + color2.b * a1;
+           // vector3 in pos Array
+           let v3 = new THREE.Vector3( posArray[i], posArray[i + 1], posArray[i + 2] );
+           const d = v3.distanceTo(camera.position);
+           let a_d = 0;
+           if(d >= camera.near && d <= camera.far){
+                a_d = 1 - 1 * (d - camera.near) / ( camera.far - camera.near );
+           }
+           colors.push(r * a_d, g * a_d, b * a_d);
+           i += 1;
+        }
+        return colors;
+    };
+    // update line group
+    const updateLine2Group = (l2Group, camera, a1 ) => {
+        const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+        let i = 0;
+        const count = l2Group.children.length;
+        const pointCount = 120;
+        while(i < count){
+            const a_line = i / (count);
+            const a_line2 = 1 - Math.abs(0.5 - a_line) / 0.5;
+            const line = l2Group.children[i];
+            const x = -5 + 10 * a_line;
+            const yMax = 1 + 3 * a_line2;
+            const radianOffset = Math.PI * 2 / count * i + Math.PI * 2 * a1;
+            const posArray = sinWave(5, -5, x, 4, yMax, pointCount, radianOffset);
+            line.geometry.setPositions( posArray );
+            // color
+            const c1 = new THREE.Color(1,0,1 - a_line);
+            const c2 = new THREE.Color(a_line, 1, 0);
+            const colorArray = colorTrans( c1, c2, posArray, camera );
+            line.geometry.setColors( colorArray );
+            i += 1;
+        }
+    };
+    const createLine2Group = (count) => {
+        const group = new THREE.Group();
+        scene.add(group);
+        let i = 0;
+        while(i < count){
+            const a_line = i / (count - 1);
+            const geo = new THREE.LineGeometry();
+            // use vertex colors when setting up the material
+            const line_material = new THREE.LineMaterial({
+                linewidth: 0.05, //0.05 - 0.025 * a_line,
+                vertexColors: true
+            });
+            const line = new THREE.Line2(geo, line_material);
+            group.add(line);
+            i += 1;
+        }
+        return group;
+    };
+    //-------- ----------
+    // LINE2
+    //-------- ----------
+    const group = createLine2Group(10);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 800;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const campos1 = new THREE.Vector3(15, 15, 15);
+    const campos2 = new THREE.Vector3(-5, 5, 5);
+    const update = function(frame, frameMax){
+        const a1 = frame / frameMax;
+        const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+        camera.position.copy(campos1).lerp(campos2, a2);
+        camera.lookAt(0, 0, 0);
+        updateLine2Group(group, camera, a1 * 4 % 1);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 3 - Creating some fat lines with threejs and addtional files ( r91 )
 
 So once I have all the files I need downloaded and linked to with scrips tags in my html it is time to make use of them. In this example I made a few helper methods that make use of the classes that are added to Three.js with the additional files. 
 
 If it is any additional help I also based this example off of one of the three.js examples on [making fat lines](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lines_fat.html). That example makes use of some more additional assets from the lines folder of the three.js repository. What I did here though is break things down into helpers to make things a little more fine grain, and cover each method in detail in order to help explain things better. When making your own example you might choose to do the same, improving on this, or just simply making it different in some way.
 
 
-## 2.1 - The createFatLineGemomety helper
+## 3.1 - The createFatLineGemomety helper
 
 So for my first helper I made something that will create geometry using the LineGeometry file that I added to the project along with three.js. This method accepts a method that will be called for each point in the line. When the method is called for a point it is passed the current point index, and a percentage that I can then use when defining the x, y ,a and z values for the given point.
 
@@ -199,7 +464,7 @@ var createFatLineGeometry = function (opt) {
 };
 ```
 
-## 2.2 - The cretaeFatLine helper
+## 3.2 - The cretaeFatLine helper
 
 This helper makes use of a geometry made with the create Fat Line Geometry helper, using it with a material made with the Line Material class to return an instance of the Line2 class. This is just so I can have a way to just quickly create and return a complete ready to go instance of the Line2 class with a material and given geometry.
 
@@ -218,7 +483,7 @@ var createFatLine = function (opt) {
 };
 ```
 
-### 2.3 - Pull it all together
+### 3.3 - Pull it all together
 
 So now that I have my two helper methods I can now use them in a project. Here I created a three.js project using the WebGLRenderer, and append the dom element of the renderer to an element in my html. I then create a scene, and a camera as well like normal. In addition I also am using the official [three.js orbit controls](/2018/04/13/threejs-orbit-controls/) in this post as well, which is another external file that can be added to a project.
 
