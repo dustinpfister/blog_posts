@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2022-12-07 14:20:21
-version: 1.27
+updated: 2022-12-07 14:27:58
+version: 1.28
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, any width other than the default value of 1 will not work. I have found that it will work on some of the Linux systems that I would with, but on Windows, and I assume many others it will now work.
@@ -154,8 +154,9 @@ For this Section I have a few examples where I aim to just make one or more anim
 
 ### 2.1 - Transition color
 
-Here I just wanted to make a simple example where I Transition  the values of the colors use for vertex colors over time. 
+Here I just wanted to make a simple example where I Transition the values of the colors use for vertex colors. For this example the color array is set just once, and then the position array is what is updated over time. When it comes to setting the state of the position array I made a quick helper function that creates a kind of sin wave for the sake of just having something for the lines. Speaking of lines I made a group of line3 objects rather than just one for this animation loop example.
 
+The end result of this is then a property cool looking effect and I am convinced that using vertex colors might be the best way to have at least some kind of sense of depth when using this sort of thing compared to suing something like tube geometry. With tube geometry I can use a mesh material such as the phong or standard material that will work with light sources in the scene. For this line material making use of vertex colors is how to keep what I have from just being a solid mas of color.
 ```js
 (function () {
     //-------- ----------
@@ -272,7 +273,7 @@ Here I just wanted to make a simple example where I Transition  the values of th
 
 ### 2.2 - Color Depth
 
-This example is more or less the same outcome as the above example that I started this section with, however now I would like to have some depth for the colors by making use of a camera object to effect the state of the colors array.
+This example is more or less the same outcome as the above example that I started this section with, however now I would like to have some depth for the colors by making use of a camera object to effect the state of the colors array. So on top of updating the position array over time I am now also updating the color array over time as well here. On top of that I am also using the state of the position array and how it compares to the position of a given camera as a way to effect the state of the vertex colors of the lines.
 
 ```js
 (function () {
