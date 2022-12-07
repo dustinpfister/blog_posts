@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2022-12-07 14:09:27
-version: 1.24
+updated: 2022-12-07 14:10:31
+version: 1.25
 ---
 
 When [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) version r104 was introduced a new light probe feature was added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that is being used with this new three.js feature. 
@@ -52,73 +52,83 @@ I tried to make the official example in the repository a little more simple to f
 The copy method can then be used with the THREE.LightProbeGenerator constructor that at this time seems to only work with cube textures, at least that is the only method at time that I wrote this anyway. So then in this example I am using the cube texture loader to load skybox image assets.
 
 ```js
-// BASIC SETUP of scene, camera, and renderer
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
+//-------- ----------
+// SCENE, CAMERA RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
 camera.position.set(25, 25, 25);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer({
+const renderer = new THREE.WebGLRenderer({
         antialias: true
     });
+renderer.setSize(640, 480, false);
 renderer.gammaOutput = true;
 renderer.gammaFactor = 2.2; // approximate sRGB
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-// ADD A POINT LIGHT
-var pointLight = new THREE.PointLight(0xffffff);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(0, 50, 0);
 scene.add(pointLight);
- 
+//-------- ----------
 // LIGHT PROBE
-var lightProbe = new THREE.LightProbe();
+//-------- ----------
+const lightProbe = new THREE.LightProbe();
 scene.add(lightProbe);
- 
-// ADD SPHERE HELPER
-var addSphere = function (cubeTexture) {
-    var mesh = new THREE.Mesh(
-            new THREE.SphereBufferGeometry(20, 32, 32),
-            new THREE.MeshStandardMaterial({
-                color: 0x0000af,
-                metalness: 0,
-                roughness: 0,
-                envMap: cubeTexture,
-                envMapIntensity: 1
-            }));
-    scene.add(mesh);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.SphereBufferGeometry(20, 32, 32),
+    new THREE.MeshStandardMaterial({
+        color: 0x0000af,
+        metalness: 0,
+        roughness: 0,
+        envMapIntensity: 1
+    }));
+scene.add(mesh);
+//-------- ----------
+// LOOP
+//-------- ----------
+let frame = 0;
+const maxFrame = 250;
+const loop = function () {
+    setTimeout(loop, 33);
+    const per = frame / maxFrame;
+    const bias = 1 - Math.abs(0.5 - per) / 0.5;
+    frame += 1;
+    frame %= maxFrame;
+    // Change Light Probe intensity
+    lightProbe.intensity = bias;
+    // Change the light probe position
+    const radian = Math.PI * 2 * per;
+    pointLight.position.set(
+        Math.cos(radian) * 50,
+        Math.sin(radian) * 50,
+        0);
+    renderer.render(scene, camera);
 };
- 
-// create loop method
-var createLoop = function () {
-    var frame = 0,
-    maxFrame = 250;
-    var loop = function () {
-        setTimeout(loop, 33);
-        var per = frame / maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        frame += 1;
-        frame %= maxFrame;
-        // Change Light Probe intensity
-        lightProbe.intensity = bias;
-        renderer.render(scene, camera);
-    };
-    return loop;
-};
- 
-// WHAT TO DO WHEN CUBE TEXTURE IS LOADED
-var cubeTextureLoaded = function (cubeTexture) {
-    cubeTexture.encoding = THREE.sRGBEncoding;
-    scene.background = cubeTexture;
-    // Using the lightProbe copy method with LightPropeGen
-    lightProbe.copy(new THREE.LightProbeGenerator.fromCubeTexture(cubeTexture));
-    addSphere(cubeTexture);
-    var loop = createLoop();
-    loop();
-};
- 
-// LOAD CUBE TEXTURE
+//-------- ----------
+// LOAD CUBE TEXTURE, START LOOP
+//-------- ----------
 new THREE.CubeTextureLoader()
 .setPath('/img/cube/skybox/')
-.load( ['px.jpg','nx.jpg','py.jpg','ny.jpg','pz.jpg','nz.jpg'], cubeTextureLoaded);
+.load(
+    [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ],
+    function (cubeTexture) {
+        cubeTexture.encoding = THREE.sRGBEncoding;
+        // use the cube texture for the background
+        scene.background = cubeTexture;
+        // set the env map for the mesh to the cube texture
+        mesh.material.envMap = cubeTexture;
+        // Using the lightProbe copy method with LightPropeGen
+        lightProbe.copy(new THREE.LightProbeGenerator.fromCubeTexture(cubeTexture));
+        // start the loop
+        loop();
+    }
+);
 ```
 
 Playing around with the intensity property of the light probe can then be used as a way to get an idea of what kind of effect a light probe has on an object that makes use of the cube texture as an environment map. The light prob itself does not emit any light of its own, which is why I still needed to add the point light for this example. What is really going on here is that the light probe is having an impact on how light that is moving throw the 3d space effects the cube texture.
