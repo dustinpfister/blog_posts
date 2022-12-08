@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-11-30 16:44:49
-version: 1.39
+updated: 2022-12-08 11:49:54
+version: 1.40
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale) that stores an instance of the [vector3 class](https://threejs.org/docs/#api/en/math/Vector3) in terms of its value. By default the values for this Vector3 value are 1,1,1 which means that the scale of the object is 1 for each axis of the object. I can then change what the values are for this vector3 object making them higher or lower, and by doing so I will end up changing the scale of the object.
@@ -205,11 +205,86 @@ renderer.render(scene, camera);
 
 I often do something to this effect when it comes to creating a crude model using just the built in three.js constructors for geometry and materials. There is just using all the properties and methods of the Object3d class and Mesh objects that are based off of it to create objects that compose a grater whole. The scale property can then be used to change the size of parts of the model as well as an instance of a model itself. I have a few threejs project examples in that also function as these kinds of projects such as [my guy one model](/2021/04/29/threejs-examples-guy-one) and my first [tree model](/2019/07/30/threejs-examples-tree/). However there is also looking into how to go about exporting from blender as well which might be the best way of going about doing this sort of thing.
 
-## 3 - An Animation example of scale along with many other object3d features
+## 3 - Scaling Buffer Geometry once and then using object3d scale method
+
+There is also the scale method of the buffer geometry class that can also come into play when doing this sort of thing. The scale method of the buffer geometry class is what I would want to use just once to adjust what the base size of the geometry of a mesh should be to begin with. For example say I load a source geometry of a guy model and the height of the guy is to small for what I would want the default 1 1 1 scale should be. Once way to fix this would be to edit the source geometry, but another way to fix it on the fly would be to just use the buffer geometry scale method once to adjust what the size of the geometry is to begin with.
+
+I will want to call the scale method of the geometry just once as it will take some overhead to do this. After that any additional scaling can be done with the object3d scale method.
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10,10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+camera.position.set(7,7,7);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+// a 'source geometry'
+const geo_source = new THREE.BoxGeometry(0.5, 2, 0.5);
+// making a new geometry by cloning the source, and then
+// scaling the geometry once
+const geo = geo_source.clone();
+geo.scale(4, 3, 2);
+// ---------- ----------
+// MESH
+// ---------- ----------
+const mesh1 = new THREE.Mesh(geo, new THREE.MeshNormalMaterial());
+mesh1.position.y = 3;
+scene.add(mesh1);
+// ---------- ----------
+// GET SIZE
+// ---------- ----------
+mesh1.geometry.computeBoundingBox();
+const size = new THREE.Vector3();
+mesh1.geometry.boundingBox.getSize(size);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 120;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs( 0.5 - a1) / 0.5;
+    const yScale = 1 - 0.8 * a2;
+    mesh1.scale.set(1, yScale, 1);
+    mesh1.position.y = size.y / 2 * yScale;
+    camera.lookAt(mesh1.position);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 4 - An Animation example of scale along with many other object3d features
 
 So then the scale property can be used to set the scale of a single mesh object, and because it is a property of a base class the same property can also be used to set the scale of a group of mesh objects also. So now there is getting into having some fun with this and starting to create some kind of interesting animation or something to that effect just for the sake of exercise. In this example I will be going over a more advanced example of the scale property for single mesh objects, as well as group objects. On top of the use of the scale property I will also be making use of other note worthy aspects of the Object3d class that come into play when making a complex three.js project such as the [user data object](/2021/02/16/threejs-userdata/), position, and rotation properties of the bject3d class.
 
-### 3.1 - The Cube Group module
+### 4.1 - The Cube Group module example
 
 It is time to start breaking things down a little now, so for this example I made a stand alone module that I will be using to create a group of mesh objects. In the module I have two public methods one of which is used to create a single group of mesh objects, and the other is used to apply an update effect to the values of one of these groups of mesh objects.
 
@@ -284,11 +359,7 @@ It is time to start breaking things down a little now, so for this example I mad
     (this['CubeGroup'] = {}));
 ```
 
-Now that I have all the logic that has to do with a group of mesh objects pulled out into this external module I am going to want to create just a little more additional code that will make use of this module.
-
-### 3.2 - The main javaScript file that contains my animation loop function.
-
-In the main javaScript file I still create my scene, camera, and renderer as always. However now I am creating a state object that will contain a group that will be a collection of these cube groups that I will be making with the cube group module. I also have a main animation loop in which I am making use of the request animation frame method to create an animation type product rather than just a static scene.
+Now that I have all the logic that has to do with a group of mesh objects pulled out into this external module I am going to want to create just a little more additional code that will make use of this module. In the main javaScript file I still create my scene, camera, and renderer as always. However now I am creating a state object that will contain a group that will be a collection of these cube groups that I will be making with the cube group module. I also have a main animation loop in which I am making use of the request animation frame method to create an animation type product rather than just a static scene.
 
 ```js
 // ---------- ---------- ----------
@@ -353,80 +424,6 @@ loop();
 
 The end result of this is then a ring of these cube groups rotating and scaling up and down. Looks kind of cool, but there is much more that could be done when it comes to really going off the rails with this. I could maybe create additional modules like this cube group that create additional effects with groups of mesh objects, there is also a great deal more that could be done with materials and lighting.
 
-## 4 - Scaling Buffer Geometry once and then using object3d scale method
-
-There is also the scale method of the buffer geometry class that can also come into play when doing this sort of thing. The scale method of the buffer geometry class is what I would want to use just once to adjust what the base size of the geometry of a mesh should be to begin with. For example say I load a source geometry of a guy model and the height of the guy is to small for what I would want the default 1 1 1 scale should be. Once way to fix this would be to edit the source geometry, but another way to fix it on the fly would be to just use the buffer geometry scale method once to adjust what the size of the geometry is to begin with.
-
-I will want to call the scale method of the geometry just once as it will take some overhead to do this. After that any additional scaling can be done with the object3d scale method.
-
-```js
-// ---------- ---------- ----------
-// SCENE, CAMERA, and RENDERER
-// ---------- ---------- ----------
-const scene = new THREE.Scene();
-scene.add( new THREE.GridHelper(10,10) );
-const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
-camera.position.set(7,7,7);
-camera.lookAt(0,0,0);
-const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-renderer.setSize(640, 480, false);
-( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-// ---------- ----------
-// GEOMETRY
-// ---------- ----------
-// a 'source geometry'
-const geo_source = new THREE.BoxGeometry(0.5, 2, 0.5);
-// making a new geometry by cloning the source, and then
-// scaling the geometry once
-const geo = geo_source.clone();
-geo.scale(4, 3, 2);
-// ---------- ----------
-// MESH
-// ---------- ----------
-const mesh1 = new THREE.Mesh(geo, new THREE.MeshNormalMaterial());
-mesh1.position.y = 3;
-scene.add(mesh1);
-// ---------- ----------
-// GET SIZE
-// ---------- ----------
-mesh1.geometry.computeBoundingBox();
-const size = new THREE.Vector3();
-mesh1.geometry.boundingBox.getSize(size);
-// ---------- ----------
-// ANIMATION LOOP
-// ---------- ----------
-const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-FRAME_MAX = 120;
-let secs = 0,
-frame = 0,
-lt = new Date();
-// update
-const update = function(frame, frameMax){
-    const a1 = frame / frameMax;
-    const a2 = 1 - Math.abs( 0.5 - a1) / 0.5;
-    const yScale = 1 - 0.8 * a2;
-    mesh1.scale.set(1, yScale, 1);
-    mesh1.position.y = size.y / 2 * yScale;
-    camera.lookAt(mesh1.position);
-};
-// loop
-const loop = () => {
-    const now = new Date(),
-    secs = (now - lt) / 1000;
-    requestAnimationFrame(loop);
-    if(secs > 1 / FPS_UPDATE){
-        // update, render
-        update( Math.floor(frame), FRAME_MAX);
-        renderer.render(scene, camera);
-        // step frame
-        frame += FPS_MOVEMENT * secs;
-        frame %= FRAME_MAX;
-        lt = now;
-    }
-};
-loop();
-```
 
 ## Conclusion
 
