@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2022-12-08 10:18:46
-version: 1.43
+updated: 2022-12-08 10:27:44
+version: 1.44
 ---
 
 The [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is one of [several options with mesh materials](https://blog.cjgammon.com/threejs-materials/) that make use of [light sources](https://r105.threejsfundamentals.org/threejs/lessons/threejs-lights.html). When it comes to mesh materials like the normal material, and the basic material might prove to be a nice starting point, and when it comes to projects in which I do not make use of light sources at all they might work just fine period actually. However when it comes to working with everything that threejs has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is one of a few options that might prove to be a better all around go to material.
@@ -49,11 +49,11 @@ When I wrote this post I was using r127 of three.js which was a later version of
 
 ## 1 - Basic example of the standard material
 
-First off lets start with a very basic example of the standard material, by creating a cube using the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/) for the geometry to use for the mesh object. Next I will create an instance of the standard material for the mesh that will use a solid color of red. However this will not work out as you might expect when it comes to using the basic material, as when I just use the standard material itself without a light source I will not see anything. The reason why is because a light source is needed in order to see the color, and if I want to have a color that will always show up no mater what I will want to use the emissive property.
+First off lets start with a very basic example of the standard material, by creating a cube using the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/) for a geometry to use for the mesh object. Next I will create an instance of the standard material for the mesh that will use a solid color of red. However this will not work out as you might expect when it comes to using the basic material, as when I just use the standard material itself without a light source I will not see anything. The reason why is because a light source is needed in order to see the color.
 
-For this example though I am not going to do anything to advanced when it comes to the emissive property and other related properties just a solid color. So I create the Mesh object with the THREE.Mesh constructor, and then pass the geometry that I want as the first argument, followed by the instance of the standard material created with the THREE.MeshStandardMaterial constructor. I then add the mesh object to the scene with the add method of the scene object.
+For this example though I am not going to do anything to advanced when it comes to the emissive property and other related properties just a solid color and that is it. So I create the Mesh object with the THREE.Mesh constructor, and then pass the geometry that I want as the first argument, followed by the instance of the standard material created with the THREE.MeshStandardMaterial constructor. When I call the standard material constructor funciton I pass an object with just one option for now in which I am setting the color and that is it for now.
 
-I will then want to add at least one if not more light sources to the scene object. For this example I am going with the Point light which I create with the THREE.PointLight constructor. I could position this point light by itself and add it directly to the scene, but I often like to make it a child of another object in the scene such as another mesh object, or even a child of the camera. For this example I made it a child of a mesh object where I am using the sphere geometry for it along with the basic material. This way I can see where the point light is located in the scene.
+I will then want to add at least one if not more light sources to the scene object so that the color will show up. For this example I am going with the Point light which I create with the THREE.PointLight constructor. I could position this point light by itself and add it directly to the scene, but I often like to make it a child of another object in the scene such as another mesh object, or even a child of the camera. For this example I made it a child of a mesh object where I am using the sphere geometry for it along with the basic material. This way I can see where the point light is located in the scene.
 
 ```js
 // SCENE, CAMERA, RENDERER
@@ -76,13 +76,13 @@ scene.add( new THREE.Mesh(
 renderer.render(scene, camera);
 ```
 
-Just like any other threejs example I will also want a camera and a renderer, for this example I went with the perspective camera and the Web GL renderer which are my usual suspects for just about everything that I do with threejs. With this example up and running I get a red cube, but the color will be a little different depending on the position of the point light and the location of the face of the cube.
+Just like any other threejs example I will also want a camera and a renderer, for this example I went with the [perspective camera](/2018/04/07/threejs-camera-perspective/) and the [WebGL renderer](/2018/11/24/threejs-webglrenderer/) which are my usual suspects for just about everything that I do with threejs. With this example up and running I get a red cube, but the color will be a little different depending on the position of the point light and the location of the face of the cube.
 
 ## 2 - Using a color map and a light source
 
-What is great about the standard material is that there are a lot of texture maps that can be used with the standard material. There is having a regular color map like that of the basic material, it is just that one needs to use a light source with it just like with the plain solid color setting. There are a number of ways to create a texture, typically I might want to load an external file to do so. However for these kinds of examples I like to go with some kind of solution that avoids bothering with external images by making use of a solution that involves using canvas elements and a little javaScript code.
+What is great about the standard material is that there are a lot of texture maps that can be used with the standard material. There is having a regular color map like that of the basic material, it is just that one needs to use a light source with it just like with the plain solid color setting. There are a number of ways to create a texture, typically I might want to load an external file to do so. However for these kinds of examples I like to go with some kind of solution that avoids bothering with external images by making use of a solution that involves using [canvas elements and a little javaScript code to create textures](/2018/04/17/threejs-canvas-texture/).
 
-To create canvas textures I will want to use the canvas texture constructor in thee.js, but first I will need a canvas element with the desired texture drawn on it to pass to the constructor. The topic of working with canvas elements is beyond the scope of this post of course, however I have a [getting started post on canvas](/2017/05/17/canvas-getting-started/), as well as a lot of [canvas example](/2020/03/23/canvas-example/) type posts when it comes to learning how to work with canvas elements. For more on this sort of thing when it comes to using canvas elements to create textures there is my post on the [canvas texture constructor](/2018/04/17/threejs-canvas-texture/).
+To create canvas textures I will want to use the canvas texture constructor in theejs, but first I will need a canvas element with the desired texture drawn on it to pass to the constructor. The topic of working with canvas elements is beyond the scope of this post of course, however I have a [getting started post on canvas](/2017/05/17/canvas-getting-started/), as well as a lot of [canvas example](/2020/03/23/canvas-example/) type posts when it comes to learning how to work with canvas elements.
 
 ```js
 (function (utils) {
@@ -265,3 +265,4 @@ var box = new THREE.Mesh(
 ```
 
 There is also a kind of map that allows for me to set want areas of a face that will be effected more so than others when it comes to this feature. There are a number of other kinds of maps that I should work out examples for when it comes to this materials, the most pressing of which might be the environment map.
+
