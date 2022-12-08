@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-12-08 11:49:54
-version: 1.40
+updated: 2022-12-08 13:20:44
+version: 1.41
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale) that stores an instance of the [vector3 class](https://threejs.org/docs/#api/en/math/Vector3) in terms of its value. By default the values for this Vector3 value are 1,1,1 which means that the scale of the object is 1 for each axis of the object. I can then change what the values are for this vector3 object making them higher or lower, and by doing so I will end up changing the scale of the object.
@@ -424,6 +424,115 @@ loop();
 
 The end result of this is then a ring of these cube groups rotating and scaling up and down. Looks kind of cool, but there is much more that could be done when it comes to really going off the rails with this. I could maybe create additional modules like this cube group that create additional effects with groups of mesh objects, there is also a great deal more that could be done with materials and lighting.
 
+### 4.2 - Video1 source code
+
+For this example I have the source code that I used to make my first video for this blog post. It involves creating a group of mesh objects, and then using the object3d scale to scale each mesh over time with an update method. They way that I did it for this example is that I made a helper function that will set a kind of default state for each mesh, and I call a for mesh method for each while doing so. I then have one update method that masks use of this that sets the scale for each mesh object as well as a whole bunch of others while I am at it.
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10,10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+camera.position.set(7,7,7);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+// create a demo group
+const demoGroupCreate = (count) => {
+    const demoGroup = new THREE.Group();
+    let i = 0;
+    while(i < count){
+        const material = new THREE.MeshNormalMaterial({
+            transparent: true,
+            opacity: 1
+        });
+        const mesh = new THREE.Mesh( new THREE.BoxGeometry(1,1,1), material );
+        demoGroup.add(mesh);
+        i += 1;
+    }
+    return demoGroup;
+};
+// set up demo group with hard coded state and call a for mesh method when done
+const demoGroupInit = function(demoGroup, forMesh){
+    forMesh = forMesh || function(){};
+    const len = demoGroup.children.length; 
+    demoGroup.children.forEach(function(mesh, i){
+        mesh.material.opacity = 1;
+        mesh.position.x = 0;
+        mesh.position.z = -5 + 10 * (i / (len -1 ));
+        mesh.scale.set(1, 1, 1);
+        mesh.rotation.set(0, 0, 0);
+        forMesh(mesh, i);
+    });
+    demoGroup.position.set(0, 0, 0);
+    demoGroup.rotation.set(0, 0, 0);
+};
+// update method 1 that effects scale
+const demoGroupUpdate1 = (demogroup, a1) => {
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    // update scale and other values
+    const len = demoGroup.children.length;
+    demoGroupInit(demoGroup, function(mesh, i){
+        mesh.material.opacity = 1;
+        // POSITION FOR EACH MESH
+        const orderPer = (i + 1) / len,
+        orderBias = 1 - Math.abs(0.5 - orderPer) / 0.5,
+        radian = Math.PI * 0.5 + (-Math.PI + Math.PI * orderBias) * a2,
+        radius = 5 - 10 * orderPer;
+        mesh.position.x = Math.cos(radian) * radius;
+        mesh.position.z = Math.sin(radian) * radius;
+        // SCALE FOR EACH MESH
+        const scalar = 1 + ( -0.25 + 1.50 * orderPer * a2) * orderPer;
+        mesh.scale.multiplyScalar(scalar);
+        // ROTATION FOR EACH MESH
+        mesh.rotation.y = Math.PI * 0.5 * a2 * orderPer;
+        mesh.rotation.x = Math.PI * 8 * orderPer * a2;
+    });
+};
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const demoGroup = demoGroupCreate(15);
+demoGroupInit(demoGroup);
+scene.add(demoGroup);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    // alpha values
+    const a1 = frame / frameMax;
+    demoGroupUpdate1(demoGroup, a1)
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
 
 ## Conclusion
 
