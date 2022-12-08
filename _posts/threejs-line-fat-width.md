@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2022-12-07 14:27:58
-version: 1.28
+updated: 2022-12-08 12:47:50
+version: 1.29
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, any width other than the default value of 1 will not work. I have found that it will work on some of the Linux systems that I would with, but on Windows, and I assume many others it will now work.
@@ -16,6 +16,9 @@ So it would seem that I am just stuck with having to just have a thickness of 1 
 Looking over the examples at the threejs site there are some official additional resources that can be used to make thick lines that seems to work just fine. The only thing about it is that these features are not built into the core of the threejs library itself. They must be added to a project as an additional external files along with threejs. However once added to the stack the feature seems to work pretty good from what I am seeing on my end.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/kIDK-4vpWtM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Fat lines in threejs and What to know first
 
