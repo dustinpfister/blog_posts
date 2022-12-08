@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2022-04-21 16:04:44
-version: 1.41
+updated: 2022-12-08 10:03:31
+version: 1.42
 ---
 
-A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is one of [several options with materials](https://blog.cjgammon.com/threejs-materials/) that make use of [light sources](/2022/02/25/threejs-light/). When it comes to mesh materials in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all around options to work with.
+The [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is one of [several options with mesh materials](https://blog.cjgammon.com/threejs-materials/) that make use of [light sources](/2022/02/25/threejs-light/). When it comes to mesh materials like the normal material, and the basic material might prove to be a nice starting point, and when it comes to projects in which I do not make use of light sources at all they might work just fine period actually. However when it comes to working with everything that threejs has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is one of a few options that might prove to be a better all around go to material.
 
-There are some additional materials that might be worth mentioning as contenders when it comes to a great general use case material in three.js such as the [Lambert material](/2018/04/08/threejs-lambert-material/), and the [phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial). The nice thing about the Lambert material is that it might eat up a little less processing overhead compared to the standard material, which might come in handy with certain kinds of projects. However over all the standard material seems to work fine on the systems that I test on, and also it might prove to reproduce more realistic lighting compared to the Lambert material.
+There are some additional materials that might be worth mentioning as contenders when it comes to a great general use case material in threejs such as the [Lambert material](/2018/04/08/threejs-lambert-material/), and the [phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial). The nice thing about the Lambert material is that it might eat up a little less processing overhead compared to the standard material, which might come in handy when trying to make code run faster. When it comes to how things look without much care of how expensive it might be in terms of system resources the phong material might prove to be a better option because of the specular feature. However over all the standard material seems to work fine for the most part, it seems to reproduce more realistic lighting compared to the Lambert material.
 
 <!-- more -->
 
