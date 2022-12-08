@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2022-12-08 10:03:31
-version: 1.42
+updated: 2022-12-08 10:18:46
+version: 1.43
 ---
 
-The [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is one of [several options with mesh materials](https://blog.cjgammon.com/threejs-materials/) that make use of [light sources](/2022/02/25/threejs-light/). When it comes to mesh materials like the normal material, and the basic material might prove to be a nice starting point, and when it comes to projects in which I do not make use of light sources at all they might work just fine period actually. However when it comes to working with everything that threejs has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is one of a few options that might prove to be a better all around go to material.
+The [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is one of [several options with mesh materials](https://blog.cjgammon.com/threejs-materials/) that make use of [light sources](https://r105.threejsfundamentals.org/threejs/lessons/threejs-lights.html). When it comes to mesh materials like the normal material, and the basic material might prove to be a nice starting point, and when it comes to projects in which I do not make use of light sources at all they might work just fine period actually. However when it comes to working with everything that threejs has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is one of a few options that might prove to be a better all around go to material.
 
 There are some additional materials that might be worth mentioning as contenders when it comes to a great general use case material in threejs such as the [Lambert material](/2018/04/08/threejs-lambert-material/), and the [phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial). The nice thing about the Lambert material is that it might eat up a little less processing overhead compared to the standard material, which might come in handy when trying to make code run faster. When it comes to how things look without much care of how expensive it might be in terms of system resources the phong material might prove to be a better option because of the specular feature. However over all the standard material seems to work fine for the most part, it seems to reproduce more realistic lighting compared to the Lambert material.
 
@@ -17,34 +17,35 @@ There are some additional materials that might be worth mentioning as contenders
 
 ## The standard material and what to know first
 
-This is a post on the standard material in three.js that is used along with a geometry to skin a [Mesh object](/2018/05/04/threejs-mesh/) that can then be added to a [scene object](/2018/05/03/threejs-scene/). There is a great deal that you should be aware of before getting into the depth of what there is to know about when it comes to materials specifically, so in other words this is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/) let alone [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have worked out at least a few basic examples of three.js, and are not just looking into what the options are when it comes to skinning a mesh object. 
-
-I will not be going over all the little basics that you should know at this point, but I will be going over a few things that you might want to read up more on in this section.
+This is a post on the standard material in threejs that is used along with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) to skin a [Mesh object](/2018/05/04/threejs-mesh/) that can then be added to a [scene object](/2018/05/03/threejs-scene/). There is a great deal that one should be aware of before getting into the depth of what there is to know about when it comes to mesh materials. So in other words this is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/) let alone [javaScript in general](/2018/11/27/js-getting-started/). As such I assume that you have worked out at least a few basic examples of threejs, and now a thing or two about client side javaScript. I will not be going over all the little basics that you should know at this point, but I will be going over a few things that you might want to read up more on in this section.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/hVai9au72Ns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### There are many other basic options with materials
+### There are many other options with materials
 
 The standard material is still just one of many options with the various [mesh materials](/2018/04/30/threejs-materials/) to work with in threejs. The standard material is a good option when it comes to creating a final state of a project, however there are a number of other options that work well as place holders when it comes to focusing on other aspects of a project that have to do with the state of a geometry. 
 
-There is the [Mesh Normal Material](/2021/06/23/threejs-normal-material/) that is great for seeing what the the current state of the [normal attribute of a geometry](/2021/06/08/threejs-buffer-geometry-attributes-normals/) is. Another good starting option is the [depth material](/2021/05/04/threejs-depth-material/) that will render the faces of a geometry based on the position of the geometry to a camera and the near and far settings of the camera.
+There is the [Mesh Normal Material](/2021/06/23/threejs-normal-material/) that is great for seeing what is going on with the current state of the [normal attribute of a geometry](/2021/06/08/threejs-buffer-geometry-attributes-normals/). Another good starting option is the [depth material](/2021/05/04/threejs-depth-material/) that will render the faces of a geometry based on the position of the geometry to a camera and the near and far settings of the camera.
 
 ### Be mindful of the differences with the color property compared to the baisc material
 
-One of the major reasons why I would use the standard material is because I want to do something involving one or more light sources. When it comes to the Basic Material I just need to worry about the color property when it comes to setting a solid color for the mesh. I then will maybe just use a color map with the basic material as a way to go about adding some texture. 
-I can do the same with the standard material as I would with the basic material, it is just that now I would want to set a solid color for the mesh using the emissve property rather than the color property in order to get the same effect. The reason why is that any color that I set with the color property with the standard material will only show up when a light source of some kind is present. The emissive map property is then what I would want to use in place of the map property with the basic material.
+One of the major reasons why I would use the standard material is because I want to do something involving one or more [light sources](/2022/02/25/threejs-light/). When it comes to the [Basic Material](/2018/05/05/threejs-basic-material/) I just need to worry about the color property when it comes to setting a solid color for the mesh. I then will maybe just use a color map with the basic material as a way to go about adding some texture. 
+
+I can do the same with the standard material as I would with the basic material, it is just that now I would want to set a solid color for the mesh using the emissve property rather than the color property in order to get the same effect. Also when it comes to adding a texture that will not need a light source to show up I need to do so with an [emissive map](/2021/06/22/threejs-emissive-map/). The reason why is that any color that I set with the color property with the standard material will only show up when a light source of some kind is present.
+
+So then with a material like the standard material the color propery is the base color that will react to light, and the map property is how to set a tetxure that will react to light. I then use the emissive property to set a color that will show up no matter what, and the emissive map propery is how to set this kind of tetxure.
 
 ### Know the options when it comes to light sources
 
-There are a number of options to chose from when it comes to light sources, the two I generally find myself going with are the [point light](/2019/06/02/threejs-point-light/), and an [ambient light](/2018/11/02/threejs-ambientlight/), but there are a lot of other options of course.
-
-### Version Numbers matter with three.js
-
-When I wrote this post I was using r127 of three.js which was a later version of threejs in early 2021, and the last time I came around to do a little editing I was using r135. I do not think much has changed with the standard material in some time now, but code breaking changes are made every now and then with many other aspects of the library.
+There are a number of options to chose from when it comes to light sources, the two I generally find myself going with are the [point light](/2019/06/02/threejs-point-light/), and an [ambient light](/2018/11/02/threejs-ambientlight/), but there are a lot of other options of course. The [directional light](/2019/06/04/threejs-directional-light/) for example is a great way to set a kind of base directional light for a whole scene that is like that of sun light for a project.
 
 ## The source code examples in this post can be found on Github
 
 The source code examples that I am writing about in this post can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-standard-material).
+
+### Version Numbers matter with three.js
+
+When I wrote this post I was using r127 of three.js which was a later version of threejs in early 2021, and the last time I came around to do a little editing I was using r135. I do not think much has changed with the standard material in some time now, but code breaking changes are made every now and then with many other aspects of the library.
 
 ## 1 - Basic example of the standard material
 
