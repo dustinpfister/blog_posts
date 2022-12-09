@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1017
-updated: 2022-12-09 11:23:21
-version: 1.3
+updated: 2022-12-09 11:31:34
+version: 1.4
 ---
 
-The index property of a buffer geometry instance is a way to define an array of index values in a position attribute that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
+The [index property of a buffer geometry instance in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.index) is a way to define an array of index values in a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
 
-However there are also some draw backs with this as well that have to do with the state of the normal attribute the corresponds with the position attribute for example. Also because I am reusing points any kind of effect that has to do with exploding a geometry into a hole bunch of single triangles is not possible as the points are being reused. It is not so hard to convert an index geometry to a non indexed one though, doing so involves just calling the to non indexed method of the buffer geometry class. Things might be a little involved when it comes to the other way around though as it will involve creating a buffer attribute instance and using the set index method.
+However there are also some draw backs with this as well that have to do with the state of the [normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) the corresponds with the position attribute for example. Also because I am reusing points any kind of effect that has to do with exploding a geometry into a hole bunch of single triangles is not possible as the points are being reused. It is not so hard to convert an index geometry to a non indexed one though, doing so involves just calling the to non indexed method of the buffer geometry class. Things might be a little involved when it comes to the other way around though as it will involve creating a buffer attribute instance and using the set index method.
 
 <!-- more -->
 
@@ -63,7 +63,7 @@ For this example I am creating what might very well be the most basic form of an
 
 ### 1.2 - Indexed and non indexed geometry compared
 
-When it comes to getting started with the index property of buffer geometry there is making a custom geometry that is just two triangles. When it comes to a non indexed geometry these two triangles will consist of 6 points in space stored in the position attribute, even if two of the points of each triangles are the same. When it comes to an indexed geometry however only 4 points can be defined in the position attribute, and then an index can be used to define 6 index values of points in the position attribute as a way to draw the triangles.
+When it comes to getting started with the index property of buffer geometry there is making a custom geometry that is just two triangles. With a non indexed geometry these two triangles will consist of 6 points in space stored in the position attribute, even if two of the points of each triangles are the same. When it comes to an indexed geometry however only 4 points can be defined in the position attribute, and then an index can be used to define 6 index values of points in the position attribute as a way to draw the triangles.
 
 ```js
 (function(){
@@ -114,7 +114,7 @@ When it comes to getting started with the index property of buffer geometry ther
 }());
 ```
 
-With both mesh objects In this example I am using the mesh normal material and f you looks closely at the outcome of this you will notice that they both look a littler different. This is because for both geometries I am calling the compute vertex normals method to create the normal attribute of the geometries and with the indexed geometry the state of the normal attribute is not a typically desired outcome.  This is because we have four points rather than sit which results in 4 normal vector rather than six, which in turn also effects the face normals sense vector normals are used to find that.
+With both mesh objects In this example I am using the [mesh normal material](/2021/06/23/threejs-normal-material/) and if you look closely at the outcome of this you will notice that they both look a littler different. This is because for both geometries I am calling the [compute vertex normals](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) method to create the normal attribute of the geometries and with the indexed geometry the state of the normal attribute is not a typically desired outcome.  This is because we have four points rather than sit which results in 4 normal vector rather than six, which in turn also effects the face normals sense vector normals are used to find that.
 
 ## 2 - Animaiton loop exmaples
 
@@ -122,7 +122,7 @@ As always I like to work out at least one if not more animation loop example for
 
 ### 2.1 - Two Box Geometry based Mesh Objects
 
-When using the THREE.BoxGeometry class to create a geometry it will have an index for it set up for me. If I want the box to not be indexed I can just call the to non index method to do so. For this example I create a geometry with the box geometry constructor function, and then another geometry that is just a clone of this. I then class the to non indexed method off of the clone of the box geometry to end up with an indexed and non indexed box geometry that I then use with two mesh objects. I then add both of these mesh objects to a group and loop over the children of the group in a main update method.
+When using the [THREE.BoxGeometry class to create a geometry](/2021/04/26/threejs-box-geometry/) it will have an index for it set up for me. If I want the box to not be indexed I can just call the to non index method to do so. For this example I create a geometry with the box geometry constructor function, and then another geometry that is just a clone of this. I then class the to non indexed method off of the clone of the box geometry to end up with an indexed and non indexed box geometry that I then use with two mesh objects. I then add both of these mesh objects to a group and loop over the children of the group in a main update method.
 
 When updating the same points in each position attribute the result as one should expect is very different. When it comes to the non index geometry I can move a whole triangle by itself from the rest of the geometry, however of course when it comes to the indexed geometry there are shared points which effect the whole of the geometry.
 
