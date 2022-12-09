@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1017
-updated: 2022-12-09 10:01:06
-version: 1.1
+updated: 2022-12-09 11:19:19
+version: 1.2
 ---
 
 The index property of a buffer geometry instance is a way to define an array of index values in a position attribute that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
@@ -16,9 +16,9 @@ However there are also some draw backs with this as well that have to do with th
 <!-- more -->
 
 
-## 1 – Some Basic examples of Indexed Buffer Geometry in threejs
+## 1 - Some Basic examples of Indexed Buffer Geometry in threejs
 
-This first section will be just a few quick basic examples that have to do with the index property of a buffer geometry. 
+This first section will be just a few quick basic examples that have to do with the index property of a buffer geometry centered around examples that involve a very simple custom geometry. The index property has to do with reusing points in the position attribute so then these examples will involve a very simple custom geometry that is just two triangles. There is then just understanding the difference between using 6 points with no index, and 4 points with an index if two points are at the same location.
 
 ### 1.1 - The basic Index of an Indexed Geometry
 
@@ -118,7 +118,13 @@ With both mesh objects In this example I am using the mesh normal material and f
 
 ## 2 - Animaiton loop exmaples
 
+As always I like to work out at least one if not more animation loop example for my posts that help to give a better idea of what the subject of the post is all about. For the subject of indexed and none indexed geometry there is a whole lot of potential when it comes to this subject that involves changing the state of a position attribute over time for both and indexed and non indexed geometry to showcase a major difference between they two.
+
 ### 2.1 - Two Box Geometry based Mesh Objects
+
+When using the THREE.BoxGeometry class to create a geometry it will have an index for it set up for me. If I want the box to not be indexed I can just call the to non index method to do so. For this example I create a geometry with the box geometry constructor function, and then another geometry that is just a clone of this. I then class the to non indexed method off of the clone of the box geometry to end up with an indexed and non indexed box geometry that I then use with two mesh objects. I then add both of these mesh objects to a group and loop over the children of the group in a main update method.
+
+When updating the same points in each position attribute the result as one should expect is very different. When it comes to the non index geometry I can move a whole triangle by itself from the rest of the geometry, however of course when it comes to the indexed geometry there are shared points which effect the whole of the geometry.
 
 ```js
 (function(){
