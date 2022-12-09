@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1017
-updated: 2022-12-09 11:31:34
-version: 1.4
+updated: 2022-12-09 11:45:25
+version: 1.5
 ---
 
 The [index property of a buffer geometry instance in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.index) is a way to define an array of index values in a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
@@ -22,7 +22,13 @@ This first section will be just a few quick basic examples that have to do with 
 
 ### 1.1 - The basic Index of an Indexed Geometry
 
-For this example I am creating what might very well be the most basic form of an index geometry that is composed of just two triangles made from 4 points in the position attribute.
+For this example I am creating what might very well be the most basic form of an index geometry that is composed of just two triangles made from 4 points in the position attribute. I start out by making a new blank buffer geometry by calling the THREE.BufferGeometry with the new keyword and no arguments of any kind. The result is then a blank clean buffer geometry returned that I store to a variable. Now I can use the set attribute method of the buffer geometry class to set a position attribute. However first I will need an instance of THREE.BufferAttribute set up with the position data that I want to use to create my two triangles.
+
+To create the position attribute I call the THREE.BufferAttribute constructor and pass a Float32Array that will contain the points in space that I want to use. Each three numbers in the array will be for x,y, and then z values for a single point in space. I want 4 points and 3 axis values for each point so that means the length of the array will be 12. After I pass the array as the first argument I will then pass the number 3 as the second argument as there are 3 values for each item in this buffer attribute. Now that I have the buffer attribute for the position attribute I can now call the set attribute method of that blank geometry, pass the string position as the first argument, and then the buffer attribute for position as the next.
+
+So now I have a geometry with a position attribute, now I will want to add the index. For this it is more or less the same process as with making the custom position attribute. However I will be using a Uint8Array, and this time it is just 1 number per item as this is an array of index values for points in the position attribute that I just set. When I have my index buffer attribute instance I can then pass it as an argument when calling the set index method of the geometry.
+
+One last thing with the geometry is that I will want to call the [compute vertex normals](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) method to quickly create a normals attribite for this geometry. The reason why is because I am going to use this geometry with a mesh object that will use the [mesh normal material](/2021/06/23/threejs-normal-material/) so I will need this.
 
 ```js
 (function(){
@@ -114,7 +120,7 @@ When it comes to getting started with the index property of buffer geometry ther
 }());
 ```
 
-With both mesh objects In this example I am using the [mesh normal material](/2021/06/23/threejs-normal-material/) and if you look closely at the outcome of this you will notice that they both look a littler different. This is because for both geometries I am calling the [compute vertex normals](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) method to create the normal attribute of the geometries and with the indexed geometry the state of the normal attribute is not a typically desired outcome.  This is because we have four points rather than sit which results in 4 normal vector rather than six, which in turn also effects the face normals sense vector normals are used to find that.
+With both mesh objects In this example I am using the mesh normal material and if you look closely at the outcome of this you will notice that they both look a littler different. This is because for both geometries I am calling the compute vertex normals method to create the normal attribute of the geometries and with the indexed geometry the state of the normal attribute is not a typically desired outcome.  This is because we have four points rather than sit which results in 4 normal vector rather than six, which in turn also effects the face normals sense vector normals are used to find that.
 
 ## 2 - Animaiton loop exmaples
 
