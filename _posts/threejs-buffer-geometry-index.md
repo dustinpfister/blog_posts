@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1017
-updated: 2022-12-09 11:45:25
-version: 1.5
+updated: 2022-12-09 11:55:03
+version: 1.6
 ---
 
 The [index property of a buffer geometry instance in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.index) is a way to define an array of index values in a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
@@ -14,6 +14,18 @@ The [index property of a buffer geometry instance in threejs](https://threejs.or
 However there are also some draw backs with this as well that have to do with the state of the [normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) the corresponds with the position attribute for example. Also because I am reusing points any kind of effect that has to do with exploding a geometry into a hole bunch of single triangles is not possible as the points are being reused. It is not so hard to convert an index geometry to a non indexed one though, doing so involves just calling the to non indexed method of the buffer geometry class. Things might be a little involved when it comes to the other way around though as it will involve creating a buffer attribute instance and using the set index method.
 
 <!-- more -->
+
+## The Index property of buffer geometry and what to know first
+
+The index property if an advanced topic in threejs that hs to do with how to go about reusing points that are defined I the position attribute of a buffer geometry. It should go without saying then that this is not a [good starting point for people that are new to threejs](/2018/04/04/threejs-getting-started/), let alone JavaScript in general. I am the assuming that you know a thing or two about the basics of setting up a threejs project, as well a various other things that have to do with client side web development. I will not be getting into every little detail that you should know before hand at this point, but I do like to use these opening sections to write about a few things you might want to read up more on before continuing to read the rest of this post.
+
+### Source Code is up on Github
+
+The examples that I write about in this post can also [be found on my Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-index).
+
+### Version Numbers Matter
+
+When I first wrote this post I was using r146 pf threejs.
 
 
 ## 1 - Some Basic examples of Indexed Buffer Geometry in threejs
