@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-12-09 14:07:35
-version: 1.23
+updated: 2022-12-09 14:28:31
+version: 1.24
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max values in the form of [vector3 class objects](https://threejs.org/docs/#api/en/math/Vector3). This Box can then be used for things like getting another Vector3 instance that is the size of the box. This size vector3 can then be used for things like setting the position of an object based on the state of the size vector3. There is also doing things like creating a whole other Box3 object and then using that as a way to set the scale of another object.
@@ -167,7 +167,7 @@ renderer.render(scene, camera);
 
 ### 1.4 - Box3 helper
 
-Like that of the box helper that can be used with mesh objects and any object that is based off of the object3d class, there is also a box3 helper that will do the same thing more or less but work with Box3 class objects.
+Like that of the box helper that can be used with mesh objects and any object that is based off of the object3d class, there is also a box3 helper that will do the same thing more or less but work with Box3 class objects. To use this I just need to call the THREE.Box3Helper constructor and then just pass the box3 object that I want a helper for. I can then pass an additional argument if I want to set what the color of the lines should be for the helper. After that I can add the helper to a scene object just like that of any other objct3d based object.
 
 ```js
 //-------- ----------
