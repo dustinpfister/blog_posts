@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2022-12-08 10:27:44
-version: 1.44
+updated: 2022-12-09 13:01:20
+version: 1.45
 ---
 
 The [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is one of [several options with mesh materials](https://blog.cjgammon.com/threejs-materials/) that make use of [light sources](https://r105.threejsfundamentals.org/threejs/lessons/threejs-lights.html). When it comes to mesh materials like the normal material, and the basic material might prove to be a nice starting point, and when it comes to projects in which I do not make use of light sources at all they might work just fine period actually. However when it comes to working with everything that threejs has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is one of a few options that might prove to be a better all around go to material.
@@ -47,7 +47,7 @@ The source code examples that I am writing about in this post can be found in my
 
 When I wrote this post I was using r127 of three.js which was a later version of threejs in early 2021, and the last time I came around to do a little editing I was using r135. I do not think much has changed with the standard material in some time now, but code breaking changes are made every now and then with many other aspects of the library.
 
-## 1 - Basic example of the standard material
+### 1.1 - Basic example of the standard material
 
 First off lets start with a very basic example of the standard material, by creating a cube using the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/) for a geometry to use for the mesh object. Next I will create an instance of the standard material for the mesh that will use a solid color of red. However this will not work out as you might expect when it comes to using the basic material, as when I just use the standard material itself without a light source I will not see anything. The reason why is because a light source is needed in order to see the color.
 
@@ -56,27 +56,75 @@ For this example though I am not going to do anything to advanced when it comes 
 I will then want to add at least one if not more light sources to the scene object so that the color will show up. For this example I am going with the Point light which I create with the THREE.PointLight constructor. I could position this point light by itself and add it directly to the scene, but I often like to make it a child of another object in the scene such as another mesh object, or even a child of the camera. For this example I made it a child of a mesh object where I am using the sphere geometry for it along with the basic material. This way I can see where the point light is located in the scene.
 
 ```js
+//-------- ----------
 // SCENE, CAMERA, RENDERER
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(1.0, 1.7, 2.0);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // LIGHT
-var dl = new THREE.DirectionalLight(0xffffff, 1);
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
 dl.position.set(8, 4, 2);
 scene.add(dl);
+//-------- ----------
 // CREATING A MESH WITH THE STANDARD MATERIAL
+//-------- ----------
+const material = new THREE.MeshStandardMaterial({
+    color: 'red'
+});
 scene.add( new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshStandardMaterial( { color: 'red'} ) ) );
-// camera and renderer
+        material ) );
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
+
 ```
 
 Just like any other threejs example I will also want a camera and a renderer, for this example I went with the [perspective camera](/2018/04/07/threejs-camera-perspective/) and the [WebGL renderer](/2018/11/24/threejs-webglrenderer/) which are my usual suspects for just about everything that I do with threejs. With this example up and running I get a red cube, but the color will be a little different depending on the position of the point light and the location of the face of the cube.
+
+### 1.2 - The Emissive color and the standard material
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1,1,1);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(8, 3, -5);
+scene.add(dl);
+//-------- ----------
+// CREATING A MESH WITH THE STANDARD MATERIAL
+//-------- ----------
+const material = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(1, 0, 0),
+    emissive: new THREE.Color(1, 1, 1), // WHITE emissive COLOR
+    emissiveIntensity: 0.25             // Intensity of emissive COLOR
+});
+scene.add( new THREE.Mesh(
+    new THREE.SphereGeometry(0.75, 80, 80),
+    material) );
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
 
 ## 2 - Using a color map and a light source
 
