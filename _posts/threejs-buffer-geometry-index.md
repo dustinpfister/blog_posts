@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1017
-updated: 2022-12-09 11:55:03
-version: 1.6
+updated: 2022-12-09 12:07:21
+version: 1.7
 ---
 
 The [index property of a buffer geometry instance in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.index) is a way to define an array of index values in a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
@@ -18,6 +18,10 @@ However there are also some draw backs with this as well that have to do with th
 ## The Index property of buffer geometry and what to know first
 
 The index property if an advanced topic in threejs that hs to do with how to go about reusing points that are defined I the position attribute of a buffer geometry. It should go without saying then that this is not a [good starting point for people that are new to threejs](/2018/04/04/threejs-getting-started/), let alone JavaScript in general. I am the assuming that you know a thing or two about the basics of setting up a threejs project, as well a various other things that have to do with client side web development. I will not be getting into every little detail that you should know before hand at this point, but I do like to use these opening sections to write about a few things you might want to read up more on before continuing to read the rest of this post.
+
+### Read More on Buffer geometry in general
+
+The index property if just one little feature of a buffer geometry object in threejs. There is a great deal more to be aware of when it comes to buffer geometry, so you might want to check out my [main post on buffer geometry in general](/2021/04/22/threejs-buffer-geometry/).
 
 ### Source Code is up on Github
 
