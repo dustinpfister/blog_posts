@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1017
-updated: 2022-12-09 11:19:19
-version: 1.2
+updated: 2022-12-09 11:23:21
+version: 1.3
 ---
 
 The index property of a buffer geometry instance is a way to define an array of index values in a position attribute that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
@@ -201,3 +201,8 @@ When updating the same points in each position attribute the result as one shoul
     loop();
 }());
 ```
+
+## Conclusion
+
+In any case the index of a geometry is something to be aware of to say the least. There are situations in which I might want to create one in order to crunch down the size of the position array. Also there are situations in which I might want to create a non indexed geometry and recompute the normal and uv attributes for a geometry while I am at it.
+
