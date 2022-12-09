@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-12-09 13:23:42
-version: 1.21
+updated: 2022-12-09 13:33:04
+version: 1.22
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max values in the form of [vector3 class objects](https://threejs.org/docs/#api/en/math/Vector3). This Box can then be used for things like getting another Vector3 instance that is the size of the box. This size vector3 can then be used for things like setting the position of an object based on the state of the size vector3. There is also doing things like creating a whole other Box3 object and then using that as a way to set the scale of another object.
@@ -40,11 +40,13 @@ When I first wrote this post I was using r135 of threejs, and the last time I ca
 
 ## 1 - Basic gettting started examples of the box3 class
 
-In this section I will be starting out with some basic examples of the box3 class. There are a number of ways to get a box3 class object, such as just directly calling the constructor function and passing vector3 object for the min and max values. However there are also ways of setting the values from various objects and attributes as well as methods of other classes the will create an instance of this kind of object. So in this section I will be taking a look at some of the ways to get a box3 to begin with, as well as what can be done with them, and some additional related examples that are not to complex.
+In this section I will be starting out with some basic examples of the box3 class. There are a number of ways to get a box3 class object, such as just directly calling the constructor function and passing vector3 objects for the min and max values. However there are also ways of setting the values from various objects and attributes as well as methods of other classes the will create an instance of this kind of object. So in this section I will be taking a look at some of the ways to get a box3 to begin with, as well as what can be done with them, and some additional related examples that are not to complex.
 
 ### 1.1 - Set the position of a mesh object with box3
 
-For this example I am using the values of a box3 class as a way to directly set the positions of mesh objects. When it comes to this kind of thing the min and max properties of the box3 object are instances of Vector3. So then I can use vector3 class methods like copy to just direct copy the min and max values to the position properties of a mesh or anything based off of object3d. However for this example I will be using the set method with specific values and setting a number literal for the y axis.
+For this example I am using the values of a box3 class as a way to directly set the positions of mesh objects in a scene. To so this I create vector3 objects for a min and max values that define the lowest and highest corners of the box area. I can then just call the THREE.Box3 constructor function and pass the min vector3 and then the max one. The returned result will then be an instance of the Box3 class that I can use to help with all kinds of things.
+
+When I have a box3 class object I can still access the vector3 objects that are used to define the min and max points in space. There is just simply the min and max properties of the box3 class that can be used to access these values. So then one way to set the position of mesh objects with a box3 object would be to just use the Vector3 set or copy method with these vector3 objects.
 
 ```js
 //-------- ----------
@@ -61,9 +63,9 @@ renderer.setSize(640, 480);
 //-------- ----------
 // CREATE A NEW BOX3
 //-------- ----------
-const min = new THREE.Vector3(-2.5, -2.5, -2.5);
-const max = new THREE.Vector3(2.5, 2.5, 2.5);
-const box3 = new THREE.Box3(min, max);
+const box3 = new THREE.Box3(
+    new THREE.Vector3(-2.5, -2.5, -2.5),
+    new THREE.Vector3(2.5, 2.5, 2.5));
 //-------- ----------
 // MESH - position with box3 values
 //-------- ----------
