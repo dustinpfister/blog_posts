@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-12-09 14:28:31
-version: 1.24
+updated: 2022-12-09 14:30:23
+version: 1.25
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max values in the form of [vector3 class objects](https://threejs.org/docs/#api/en/math/Vector3). This Box can then be used for things like getting another Vector3 instance that is the size of the box. This size vector3 can then be used for things like setting the position of an object based on the state of the size vector3. There is also doing things like creating a whole other Box3 object and then using that as a way to set the scale of another object.
@@ -32,7 +32,7 @@ The use of the Box3 class also has a lot to do with [Mesh objects](/2018/05/04/t
 
 ### Source code is on Github
 
-I have the source code examples in this post parked in [my test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-box3).
+I have the source code examples in this post parked in [my test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-box3). This is also where I have the source code exmaples for my [many other posts on threejs](/categories/three-js/).
 
 ### Version numbers matter
 
