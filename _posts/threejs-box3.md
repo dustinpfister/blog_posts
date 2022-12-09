@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-12-09 13:33:04
-version: 1.22
+updated: 2022-12-09 14:07:35
+version: 1.23
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max values in the form of [vector3 class objects](https://threejs.org/docs/#api/en/math/Vector3). This Box can then be used for things like getting another Vector3 instance that is the size of the box. This size vector3 can then be used for things like setting the position of an object based on the state of the size vector3. There is also doing things like creating a whole other Box3 object and then using that as a way to set the scale of another object.
@@ -236,6 +236,68 @@ while(i < len){
 }
 scene.add(group);
 box3.setFromObject(group);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.6 - The intersects box method
+
+One of the major functions of the box3 class is to check if two objects overlap each other or not. For this kind of task there is the intersects box method. For this example I am making a main box3 object and the I am creating a whole bunch of mesh objects. For each mesh object I am then also creating a box3 object for the mesh by using the set from object method. I then call the intersects box method off of the box3 for each mesh and then pass the main box3 object as the first and only argument. The result value of the intersects box method is then true or false depending the two box3 objects intersect or not. I can then use this value with an if statement and then set the color of the material to lime if the mesh is inside the main box, else leave it to the default red color if it is not.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(4, 4, 0xffffff, 0x008800 ));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(5, 8, 10);
+camera.lookAt(0, -0.8, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// BOX3, BOX3 Helper
+//-------- ----------
+const box3 = new THREE.Box3(
+   new THREE.Vector3(-2, -2, -2),
+   new THREE.Vector3(2, 2, 2)
+);
+// THE BOX3 HELPER
+const box3Helper = new THREE.Box3Helper(box3, 0x00ff00);
+box3Helper.material.linewidth = 3;
+scene.add(box3Helper);
+//-------- ----------
+// GROUP AND SET BY OBJECT
+//-------- ----------
+const group = new THREE.Group();
+let i = 0;
+const len = 40;
+while(i < len){
+    const material = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(1, 0, 0),
+        transparent: true,
+        opacity: 0.5
+    });
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5, 0.5, 0.5),
+        material);
+    mesh.position.x = -4 + 8 * Math.random();
+    mesh.position.y = -4 + 8 * Math.random();
+    mesh.position.z = -4 + 8 * Math.random();
+    // box3 for the mesh object
+    const mesh_b3 = new THREE.Box3();
+    mesh_b3.setFromObject(mesh)
+    if( mesh_b3.intersectsBox( box3 ) ) {
+        mesh.material.color = new THREE.Color(0, 1, 0);
+    }
+    group.add(mesh);
+    i += 1;
+}
+scene.add(group);
 //-------- ----------
 // RENDER
 //-------- ----------
