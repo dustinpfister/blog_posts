@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2022-12-11 10:31:50
-version: 1.25
+updated: 2022-12-11 10:52:36
+version: 1.26
 ---
 
 In [threejs](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified. Also it is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. 
@@ -40,15 +40,40 @@ The source code examples that I am writing about in this post can also be [found
 
 When I first wrote this post I was using version r91 of threejs and the last time I came around to do some editing I was using r146. Sense then not much has changed when it comes to using the basic material. Still code breaking changes are introduced all the time into threejs as new revision numbers come out, so always be mindful of the versions of threejs that was used when looking at threejs examples on the open web.
 
-## 1 - Basic example of the basic material
+## 1 - Some basic exmaples that make use of the basic material
 
-The Basic material is the default material used for a mesh so if I just directly add a Mesh to a scene without giving a material, the  mesh will used the basic material with a random color for the color property of the basic material instance.
+For this section I will be looking at a few basic examples that make use of the mesh basic material as a way to skin the geometry of a mesh object. One of the major problems with the Mesh basic material is that one will end up with a solid mass of color for any geometry unless one makes use of some option to address that. Making use of a light source is out of the question as the basic material does not support that. There is making use of a texture but that is something that I will like to leave to a more advanced section in this post. So here I will be starting out with just a few basic getting started examples, and then maybe some options that address this issue of having a solid mass of color that does not involve a texture.
+
+### 1.1 - Basic examples of the Mesh Basic Material
+
+The Basic material is the default material used for a mesh object. So if I create a mesh object by calling the THREE.Mesh [constructor function](/2019/02/27/js-javascript-constructor/) and just give a geometry by way of the first argument, but give no material as the second argument the result will be that the mesh will use the basic material. This can be confirmed by doing just that creating a mesh with a geometry and no material, and then checking the type property of the materials property of the mesh object.
 
 ```js
-scene.add(new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1)));
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 20);
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// THE MESH BASIC MATERIAL IS THE DEFAULT MATERIAL IF NO MATERIAL IS GIVEN
+//-------- ----------
+const box = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1) );
+console.log(box.material.type); // MeshBasicMaterial
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
-Typically I will want to use the MeshBasicMaterial constructor to create an instance of basic material thought, rather that just allowing three.js to create an instance of it for me. This will be necessary if I want to set at least one property of the material that is not a default value for the property in question. When it comes to property options for the basic material if I just want to set a solid color for the whole material then the color option would be one way to go about doing that. The color should follow the syntax that I have in the example below, or the [THREE.Color constructor](/2021/05/03/threejs-color/) can be used to create the color for the color property of the basic material.
+### 1.2 - Basic examples of the Mesh Basic Material
+
+Typically I will want to use the Mesh Basic Material constructor to create an instance of basic material and pass that as the second argument when making a mesh even if it is the default material anyways. When doing so I can pass an options object to the mesh basic material constructor which can have one or more options that I would like to set. One such option would be to set a solid color for the material, for thus there is the color option. The color should follow the syntax that I have in the example below, or the [THREE.Color constructor](/2021/05/03/threejs-color/) can be used to create the color as well.
 
 ```js
 //-------- ----------
@@ -74,7 +99,7 @@ scene.add(box);
 renderer.render(scene, camera);
 ```
 
-This results in a cube that is sold red all over, but it looks like just one blob of red rather than a cube. This is often not a desired result as there is no sense of depth on the cube, and if I add a light nothing will change because the basic material of course does not work with light sources. this alone is one of the major reasons why I often like to go with the standard material so I can just used a point light to get some sense of depth that way. However when it comes to sticking with the basic material there are of course some options here. If I do not want to use a solid color,  and just have a blob of color, then a texture can be used with the map property to do so. With that said lets look at another example of the basic material that does just that.
+This results in a cube that is sold red all over, but it looks like just one blob of red rather than a cube. This is often not a desired result as there is no sense of depth on the cube. If I add a light source of some kind nothing will change because the basic material of course does not work with light sources. This alone is one of the major reasons why I often like to go with the standard material so I can use a point light, directional light, or one of many other options for light sources to get some sense of depth that way. However when it comes to sticking with the basic material there are of course some options here. If I do not want to use a solid color, and just have a blob of color, then a texture can be used with the map property. A texture can then be used as a way to get some sense of depth then. 
 
 ## 2 - Adding a color map texture to a basic material in three.js using canvas
 
