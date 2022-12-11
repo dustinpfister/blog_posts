@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2022-12-11 11:36:56
-version: 1.27
+updated: 2022-12-11 11:49:01
+version: 1.28
 ---
 
 In [threejs](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified. Also it is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. 
@@ -103,6 +103,13 @@ This results in a cube that is sold red all over, but it looks like just one blo
 
 ### 1.3 - Using vertex colors
 
+One option to go about having some depth without using a texture would be to make use of vertex colors. If you are lucky there will be a color attribute set up all ready for the geometry, but more often then not one will need to define what that is. The process of doing so is a little involved but I will be quickly touching base on a fairly simple example here. 
+
+For this example of vertex colors and the mesh basic material I am getting a reference to the position attribute of the box geometry. Once I have that I can use the count property of the position attribute to know how many color values to create. So for the value of the count property of the position attribute I will want to push a red, green and blue color channel value. Once that is done I ca create the color attribute by calling the THREE.BufferAttribute function and pass the array of color channel data making sure that it is a Float32Array. I will also want to pass the number 3 as the second argument for the attribute as this is a situation I which I have three values for each item. I can then add my color attribute to the box geometry by calling the set attribute method followed by the string color, and then the color buffer attribute I just made.
+
+Now that I have a geometry with a color attribute I can set the vertex colors option of the basic material to true, and the n end result will be random vertex colors.
+
+
 ```js
 //-------- ----------
 // SCENE
@@ -142,7 +149,9 @@ scene.add(box);
 renderer.render(scene, camera);
 ```
 
-### 1.4 - Using Geometry Groups
+### 1.4 - Using Geometry Groups and an array of Mesh Basic material objects
+
+Another option would be to use not one but an array of materials. When doing this I will want to make sure that I have a groups property set up for the geometry. When it comes to the box geometry this is all ready set up for me, I just need to adjust the material index values as needed. If the groups property of the geometry is set up the way I want it then I just need to pass an array for materials where each material can be a basic material, with a differing color.
 
 ```js
 //-------- ----------
@@ -178,6 +187,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.5 - Using Lines as a child object of the mesh
+
+Yet another option do have something other than a big blob of color in the scene would be to create a Line and then add that as a child for the mesh object.
 
 ```js
 //-------- ----------
