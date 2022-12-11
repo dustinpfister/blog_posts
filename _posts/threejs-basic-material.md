@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2022-05-03 16:05:11
-version: 1.23
+updated: 2022-12-11 10:02:06
+version: 1.24
 ---
 
 In [three.js](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified. Also it is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. 
@@ -19,25 +19,25 @@ So today I thought I would continue expanding my [collection of posts on three.j
 
 <!-- more -->
 
-## 1 - What to know before reading up more on the Basic Material
+## What to know before reading up more on the Basic Material
 
 This is a post on the basic material used in three.js, one of several options when it comes to skinning a mesh object. If you are new to three.js, you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on three.js. I will not be getting into detail with the very basic of three.js here, however of course I will be keeping many of these examples fairly simple. There are still a few things that you should maybe know before continuing to read this post on the basic material along so in this section I will be just outlining some of these things.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/2SaiqtO_yQA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### 1.1 - Version Numbers are impotent with three.js
-
-When I first wrote this post I was using version r91 of three.js and the last time I came around to do some serious editing I was using r127 of three.js. Sense then not much has changed when it comes to using the basic material, at least as far as I can tell. Still code breaking changes are introduced all the time into three.js so always be mindful of the versions of three.js that where used when looking at three.js examples on the open web.
-
-### 1.2 - Be aware of what the full options are with materials
+### Be aware of what the full options are with materials
 
 You might also want to check out my post on [three.js materials](/2018/04/30/threejs-materials/) in general for more posts on the various material options in threejs. The basic material is fine when I just want to skin a geometry with a texture, but not do anything to far beyond that. There are a whole lot of other materials that might be a better choice for other situations though, for example the depth material might be a good choice when it comes to figuring out what the values should be for the near and far values of a camera.
 
-### 1.3 - Learn a thing or two about canvas elements, or figure out the texture loader
+### Learn a thing or two about canvas elements, or figure out the texture loader
 
 If you like javaScript as much as I do, but have not got into canvas elements and the 2d drawing context just yet it might be time to look into how to do at least a little drawing with canvas elements and some javaScript code. The reason why I say that is because when working with the basic material the only way to make sure that the result is not just one solid blob of color is to add some texture to the basic material. This can be done by adding at least a basic color map to the material, and in order to do that a texture is needed. There is the texture loader of three.js that can be used to load some textures in the form of external image files, but what is cool about canvas is that it is a way to create textures with just javaScript code.
 
-## 2 - Basic example of the basic material
+### Version Numbers are impotent with three.js
+
+When I first wrote this post I was using version r91 of three.js and the last time I came around to do some serious editing I was using r127 of three.js. Sense then not much has changed when it comes to using the basic material, at least as far as I can tell. Still code breaking changes are introduced all the time into three.js so always be mindful of the versions of three.js that where used when looking at three.js examples on the open web.
+
+## 1 - Basic example of the basic material
 
 The Basic material is the default material used for a mesh so if I just directly add a Mesh to a scene without giving a material, the  mesh will used the basic material with a random color for the color property of the basic material instance.
 
@@ -78,7 +78,7 @@ Typically I will want to use the MeshBasicMaterial constructor to create an inst
 
 This results in a cube that is sold red all over, but it looks like just one blob of red rather than a cube. This is often not a desired result as there is no sense of depth on the cube, and if I add a light nothing will change because the basic material of course does not work with light sources. this alone is one of the major reasons why I often like to go with the standard material so I can just used a point light to get some sense of depth that way. However when it comes to sticking with the basic material there are of course some options here. If I do not want to use a solid color,  and just have a blob of color, then a texture can be used with the map property to do so. With that said lets look at another example of the basic material that does just that.
 
-## 3 - Adding a color map texture to a basic material in three.js using canvas
+## 2 - Adding a color map texture to a basic material in three.js using canvas
 
 The Basic material is a good choice if you do not what to do much of anything involving light, but do still want to have some kind of color map texture at least as a way to show that the mesh is indeed some kind of solid geometry object. A texture can be added in from an external image using a loader, or it can be created with javaScript using the 2d canvas drawing context of a canvas element.
 
@@ -140,7 +140,7 @@ To create a texture with canvas I am going to want to create the canvas element 
 
 I have written a [post on using canvas as a texture]( /2018/04/17/threejs-canvas-texture/) in which I covered this in further detail, but the basic idea is there.
 
-## 4 - An Alpha map with the Basic material
+## 3 - An Alpha map with the Basic material
 
 One more quick example of the basic material in action for now until I come around to edit this post once again at some point in the future. So the basic material is a bit limited in terms of the options when it comes to texture maps, but there are still a few to chose from, and getting into all of them might be beyond the scope of this post. Yet again maybe not, in any case I will need time to work out some more basic examples of each of the features of the basic materials when it comes to texture maps. However for now I think I will write about one more texture map option with the basic material when is an alpha map.
 
@@ -195,6 +195,6 @@ An alpha map is a way to apply a texture that does not change color like the col
 
 For this example of an alpha map I once again used a canvas element as a way to create a texture. However when it comes to alpha maps I want to make sure that the resulting image is in gray scale. The levels of black and white are what are used to set the range of opacity and transparency.
 
-## 5 - Conclusion
+## Conclusion
 
 The basic material is just as the name suggests, there are other materials to use in three.js if you want to do something more advanced but the basic material gets the job done when it comes to simple projects. There is of course the Lambert material that is a good choice if you want to do something involving light in a real time environment. There are of course many other [materials](/2018/04/30/threejs-materials/) to chose from when working with a [mesh](/2018/05/04/threejs-mesh/) as well that might have better values to offer when it comes to how things look compared to how much resources they eat up. 
