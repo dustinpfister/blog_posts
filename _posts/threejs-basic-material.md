@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2022-12-11 10:52:36
-version: 1.26
+updated: 2022-12-11 11:36:56
+version: 1.27
 ---
 
 In [threejs](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified. Also it is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. 
@@ -100,6 +100,110 @@ renderer.render(scene, camera);
 ```
 
 This results in a cube that is sold red all over, but it looks like just one blob of red rather than a cube. This is often not a desired result as there is no sense of depth on the cube. If I add a light source of some kind nothing will change because the basic material of course does not work with light sources. This alone is one of the major reasons why I often like to go with the standard material so I can use a point light, directional light, or one of many other options for light sources to get some sense of depth that way. However when it comes to sticking with the basic material there are of course some options here. If I do not want to use a solid color, and just have a blob of color, then a texture can be used with the map property. A texture can then be used as a way to get some sense of depth then. 
+
+### 1.3 - Using vertex colors
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 20);
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY WITH 'color' attribute added
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+// get position attribute to find count of points
+const att_pos = geometry.getAttribute('position');
+// the count of points can then be used to know how much color data I need
+const data_color = [];
+let i = 0;
+while(i < att_pos.count){
+   data_color.push(Math.random(), Math.random() ,Math.random());
+   i += 1;
+}
+// create and add color attribute
+const att_color = new THREE.BufferAttribute( new Float32Array(data_color), 3 );
+geometry.setAttribute('color', att_color);
+//-------- ----------
+// USING GEOMETRY WITH A COLOR ATTRIBUTE WITH THE BASIC MATERIAL
+//-------- ----------
+const material = new THREE.MeshBasicMaterial( { vertexColors: true } );
+const box = new THREE.Mesh( geometry, material);
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.4 - Using Geometry Groups
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 20);
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// USING AN ARRAY OF BASIC MATERIALS WITH A GEOMETRY THAT HAS GROUPS
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+// set material index values as needed
+[0,0,1,0,2,0].forEach( (mi, i) => {
+    geometry.groups[i].materialIndex = mi;
+});
+// uisng an array of materials
+const material = [
+    new THREE.MeshBasicMaterial({color: new THREE.Color(1,0,0)}),
+    new THREE.MeshBasicMaterial({color: new THREE.Color(0,1,0)}),
+    new THREE.MeshBasicMaterial({color: new THREE.Color(0,0,1)})
+];
+const box = new THREE.Mesh( geometry, material);
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.5 - Using Lines as a child object of the mesh
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 20);
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// USING THE BASIC MATERIAL, BUT ADDING A LINE AS A CHILD OF THE MESH OBJECT
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const material_mesh = new THREE.MeshBasicMaterial( { color: new THREE.Color(1,0,0) } );
+const material_line = new THREE.LineBasicMaterial( { color: new THREE.Color(1,1,1), linewidth: 4 } );
+const box = new THREE.Mesh( geometry, material_mesh);
+box.add(new THREE.LineSegments( new THREE.EdgesGeometry(geometry), material_line))
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
 
 ## 2 - Adding a color map texture to a basic material in three.js using canvas
 
