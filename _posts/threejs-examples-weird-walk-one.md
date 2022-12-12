@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-12-12 14:12:43
-version: 1.26
+updated: 2022-12-12 14:15:33
+version: 1.27
 ---
 
 This post on threejs will be on a [threejs project example ](/2021/02/19/threejs-examples/) that is a simple idea for a weird walk animation module. This is just one of several ideas that have come to me that might prove to be a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/). This is not the first project idea like this, one of the oldest examples of this kind of model is my [guy one](/2021/04/29/threejs-examples-guy-one/) threejs example that I made a few years back, and I have many others actually at this point.
@@ -21,7 +21,7 @@ The walk cycle that I had in mind is just having two mesh objects for legs, and 
 
 ## Weird walk guy threejs example and what to know first
 
-This is a post in which I am writing about a simple threejs project example of a weird walk guy module. This is a javaScript module that will cerate and return an instance of THREE.Group that I can then add to an over all threejs [scene object](/2018/05/03/threejs-scene/). I also add a few methods that helper with the process of updating the state of this group of objects. This is not the first example of this kind of module that I have made using threejs, and I also do not think it will be the last for at least a little while longer at least. I have come to like making models like this, but it there is the more professional way of doing this kind of thing with it comes to making something in blender and then exporting from there.
+This is a post in which I am writing about a simple threejs project example of a weird walk guy module. This is a java Script module that will create and return an instance of THREE.Group that I can then add to an over all threejs [scene object](/2018/05/03/threejs-scene/). I also add a few methods that helper with the process of updating the state of this group of objects. This is not the first example of this kind of module that I have made using threejs, and I also do not think it will be the last for at least a little while longer at least. I have come to like making models like this, but it there is the more professional way of doing this kind of thing with it comes to making something in blender and then exporting from there.
 
 ### The source code examples in this post are on Github
 
@@ -34,7 +34,7 @@ When I first made this example I was using r135 of threejs, if the code examples
 
 ## 1 - The weird guy module and basic demo
 
-In this first section of the post I will be going over the javaScript module that I am using to create and return a THREE.Group instance that I can then use in a scene object of one or more demos that make use of the module. Speaking of that I will also be going over the source code of one such demo to start out with while I am at it.
+In this first section of the post I will be going over the JavaScript module that I am using to create and return a THREE.Group instance that I can then use in a scene object of one or more demos that make use of the module. Speaking of that I will also be going over the source code of one such demo to start out with while I am at it.
 
 ### 1.1 - The weird guy module
 
@@ -202,7 +202,7 @@ The end result here is then just a very simple walk cycle of my weird little guy
 
 ## 2 - Moving the arms, ground mesh, and data textures
 
-I was off to a good start with the first form of this weird guy module, as well as the additional code that I was using to make a short dmeo of what I made. However I think that I should put at least a little more time into this one before moving on to the next thing. There is just a little more that I would like to see done with this example, and that is to also have moment for the arms, and also a better demo where the weird guy is walking along on a repeating background.
+I was off to a good start with the first form of this weird guy module, as well as the additional code that I was using to make a short demo of what I made. However I think that I should put at least a little more time into this one before moving on to the next thing. There is just a little more that I would like to see done with this example, and that is to also have moment for the arms, and also a better demo where the weird guy is walking along on a repeating background.
 
 ### 2.1 - The weird guy module with set arms method and data textures
 
