@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-12-12 14:33:12
-version: 1.29
+updated: 2022-12-12 14:41:17
+version: 1.30
 ---
 
 This post on threejs will be on a [threejs project example ](/2021/02/19/threejs-examples/) that is a simple idea for a weird walk animation module. This is just one of several ideas that have come to me that might prove to be a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/). This is not the first project idea like this, one of the oldest examples of this kind of model is my [guy one](/2021/04/29/threejs-examples-guy-one/) threejs example that I made a few years back, and I have many others actually at this point.
@@ -22,6 +22,10 @@ The walk cycle that I had in mind is just having two mesh objects for legs, and 
 ## Weird walk guy threejs example and what to know first
 
 This is a post in which I am writing about a simple threejs project example of a weird walk guy module. This is a javaScript module that will create and return an instance of THREE.Group that I can then add to an over all threejs [scene object](/2018/05/03/threejs-scene/). I also add a few methods that help with the process of updating the state of this group of objects. This is not the first example of this kind of module that I have made using threejs, and I also do not think it will be the last for at least a little while longer at least. In any case this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/), let alone client side JavaScript in general. I will not be getting into detail with things that you should know before hand here, however I will bring up at least some things to read more about in this section. 
+
+### Read more about the Object3d class
+
+There is [reading more about the object3d class](/2018/04/23/threejs-object3d/) in general as having a solid understanding of what there is to work with is needed in order to make this kind of project. The object3d class is a base class for Groups, Mesh Objects, Cameras and any kind of object that would be added to a scene object as a child. Speaking of scene objects the object3d class is also a base class of whole scene objects as well. Anyway major features of the object3d class include the position and rotation properties of the objects 3d class that are use to set the local position and rotation of objects. It is mainly this kind of feature that I am using to make crude models of objects.
 
 ### There is also using blender and loading DAE files as a way to make models
 
