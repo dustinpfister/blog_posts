@@ -1,15 +1,17 @@
 ---
-title: Weird walk three threejs example
+title: Weird Walk Three threejs example
 date: 2022-05-24 12:43:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 989
-updated: 2022-05-25 12:01:02
-version: 1.18
+updated: 2022-12-12 10:37:38
+version: 1.19
 ---
 
-I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. So today I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object that looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
+I would like to make another one of my weird walk modules where the goal is to just have fun with the library to make some kind of collection of mesh objects that is just some kind of character or object. The over all end look of the model, if it can be called that, looks like it has legs and is just going threw something that can be thought of as a kind of walk cycle.
+
+I am looking to continue expanding my collection of [threejs examples](/2021/02/19/threejs-examples/) as I think I have hit a bit of a wall when it comes to leaning more about the library itself, for the moment at least. So it would very much seem to be just the thing two do to start thinking in terms of what I would like to do with threejs when it comes to making actually projects rather than just demos of various threejs features. 
 
 <!-- more -->
 
