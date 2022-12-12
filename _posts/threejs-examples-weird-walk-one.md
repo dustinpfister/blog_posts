@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-12-12 14:15:33
-version: 1.27
+updated: 2022-12-12 14:21:20
+version: 1.28
 ---
 
 This post on threejs will be on a [threejs project example ](/2021/02/19/threejs-examples/) that is a simple idea for a weird walk animation module. This is just one of several ideas that have come to me that might prove to be a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/). This is not the first project idea like this, one of the oldest examples of this kind of model is my [guy one](/2021/04/29/threejs-examples-guy-one/) threejs example that I made a few years back, and I have many others actually at this point.
@@ -29,36 +29,35 @@ The source code examples that I am writing about in this post as well as with ma
 
 ### Version numbers matter
 
-When I first made this example I was using r135 of threejs, if the code examples here are breaking for you on your end that would be the first thing I would check. The threejs library is still a project that moves very fast in terms of its development and maintenance so code breaking changes happen often.
+When I first made this example I was using r135 of threejs, and the last time I came around to do some editing I was using r146. if the code examples here are breaking for you on your end that would be the first thing I would check. The threejs library is still a project that moves very fast in terms of its development and maintenance so code breaking changes happen often.
 
 
-## 1 - The weird guy module and basic demo
+## 1 - The weird guy module \( r0 \) and basic demo
 
 In this first section of the post I will be going over the JavaScript module that I am using to create and return a THREE.Group instance that I can then use in a scene object of one or more demos that make use of the module. Speaking of that I will also be going over the source code of one such demo to start out with while I am at it.
 
-### 1.1 - The weird guy module
+### The weird guy module \( r0 \)
 
 The weird guy module that I made will return a few public methods, the main method of interest when it comes to using this would be the create method. In a threejs project where I make use of this I will call this method as a way to make an instance of this weird guy model. I will then want at least one of not more methods that help with changing the state of this weird guy model one of which can be used to set the walk cycle state of the guy.
 
 ```js
 // ********** **********
-// WEIRD GUY MODULE
+// WEIRD GUY MODULE - r0 - from threeks-examples-weird-walk-one
 // ********** **********
-var weirdGuy = (function(){
-    var materials = [
+(function(api){
+    const materials = [
         new THREE.MeshStandardMaterial( { emissive: 0x9a8800, emissiveIntensity: 0.5, wireframe:false } ),
         new THREE.MeshStandardMaterial( { emissive: 0x00aaff, emissiveIntensity: 0.5 } ),
         new THREE.MeshStandardMaterial( { emissive: 0xffffff, emissiveIntensity: 0.5 } ),
         new THREE.MeshStandardMaterial( { emissive: 0x1a1a1a, emissiveIntensity: 0.5 } )
     ];
-    var api = {};
     // create a new weird guy
     api.create = function(opt){
         opt = opt || {};
-        var guy = new THREE.Group();
+        const guy = new THREE.Group();
         guy.name = opt.guyID || 'guy';
         // BODY
-        var body = new THREE.Mesh(
+        const body = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1.5, 1),
             materials[0]
         );
@@ -66,13 +65,13 @@ var weirdGuy = (function(){
         guy.add(body);
         // EYES
         ['eye1', 'eye2'].forEach(function(nameStr, i){
-            var eye = new THREE.Mesh(
+            const eye = new THREE.Mesh(
                 new THREE.SphereGeometry(0.2, 30, 30),
                 materials[2]
             );
             eye.name = guy.name + '_' + nameStr;
             eye.position.set(-0.2 + 0.4 * i, 0.2, 0.5);
-            var innerEye = new THREE.Mesh(
+            const innerEye = new THREE.Mesh(
                 new THREE.SphereGeometry(0.1, 30, 30),
                 materials[3]
             );
@@ -81,7 +80,7 @@ var weirdGuy = (function(){
             body.add(eye);
         });
         // ADD MOUTH
-        var mouth = new THREE.Mesh(
+        const mouth = new THREE.Mesh(
             new THREE.BoxGeometry(0.5, 0.125, 0.25),
             materials[3]
         );
@@ -90,7 +89,7 @@ var weirdGuy = (function(){
         body.add(mouth);
         // ADD ARMS
         ['arm1', 'arm2'].forEach(function(nameStr, i){
-            var arm = new THREE.Mesh(
+            const arm = new THREE.Mesh(
                 new THREE.BoxGeometry(0.25, 1.5, 0.25),
                 materials[0]
             );
@@ -100,7 +99,7 @@ var weirdGuy = (function(){
             body.add(arm);
         });
         // ADD PELVIS
-        var pelvis = new THREE.Mesh(
+        const pelvis = new THREE.Mesh(
             new THREE.BoxGeometry(1, 0.5, 1),
             materials[1]
         );
@@ -109,7 +108,7 @@ var weirdGuy = (function(){
         guy.add(pelvis);
         // ADD LEGS
         ['leg1', 'leg2'].forEach(function(nameStr, i){
-            var leg = new THREE.Mesh(
+            const leg = new THREE.Mesh(
                 new THREE.BoxGeometry(0.25, 1.5, 1),
                 materials[1]
             );
@@ -121,7 +120,7 @@ var weirdGuy = (function(){
     };
     // setWalk
     api.setWalk = function(guy, walkPer){
-        var leg1 = guy.getObjectByName(guy.name + '_leg1'),
+        const leg1 = guy.getObjectByName(guy.name + '_leg1'),
         leg2 = guy.getObjectByName(guy.name + '_leg2')
         // set scale of legs
         leg1.scale.y = walkPer;
@@ -130,9 +129,7 @@ var weirdGuy = (function(){
         leg1.position.y = -1.0 + 0.75 * (1 - walkPer);
         leg2.position.y = -1.0 + 0.75 * walkPer;   
     };
-    // return the api
-    return api;
-}());
+}( this['weirdGuy'] = {}));
 ```
 
 ### 1.1 - basic demo of the weird guy module
@@ -141,51 +138,56 @@ Now for a simple demo of this weird guy module to start out with at least. For t
 
 ```js
 (function () {
-    // ********** **********
-    // SCENE, CAMERA, LIGHT, and RENDERER
-    // ********** **********
-    var scene = new THREE.Scene();
-    //scene.add( new THREE.GridHelper(10, 10) );
-    var camera = new THREE.PerspectiveCamera(50, 8 / 9, 0.05, 100);
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 8 / 9, 0.05, 100);
     camera.position.set(3, 3, 3);
     camera.lookAt(0, 1.75, 0);
     scene.add(camera);
-    var dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
     dl.position.set(0.1, 1.0, 0);
     scene.add(dl);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ********** **********
+    //-------- ----------
     // WEIRD GUY INSTANCE
-    // ********** **********
-    var guy = weirdGuy.create({
+    //-------- ----------
+    const guy = weirdGuy.create({
         guyID: 'mrguy1'
     });
     guy.position.y = 2.75;
     scene.add(guy);
     weirdGuy.setWalk(guy, 0);
-    // ********** **********
+    //-------- ----------
     // ANIMATION LOOP
-    // ********** **********
-    var frame = 0,
-    maxFrame = 60,
+    //-------- ----------
+    let frame = 0,
     lt = new Date();
-    var loop = function () {
-        var now = new Date(),
+    const maxFrame = 60;
+    const loop = function () {
+        const now = new Date(),
         secs = (now - lt) / 1000;
         requestAnimationFrame(loop);
         if (secs > 1 / 24) {
-            var per = frame / maxFrame * 5 % 1,
+            const per = frame / maxFrame * 5 % 1,
             bias = Math.abs(0.5 - per) / 0.5;
+            // walk
             weirdGuy.setWalk(guy, bias);
-            var arm1 = guy.getObjectByName(guy.name + '_arm1'),
+            // arms
+            const arm1 = guy.getObjectByName(guy.name + '_arm1'),
             arm2 = guy.getObjectByName(guy.name + '_arm2');
             arm1.rotation.x = Math.PI / 180 * (180 - 20 + 40 * bias);
             arm2.rotation.x = Math.PI / 180 * (180 + 20 - 40 * bias);
-            var per = frame / maxFrame * 1 % 1,
-            bias = Math.abs(0.5 - per) / 0.5;
-            guy.rotation.y = -0.5 + 2.5 * bias;
+            // rotate
+            const per2 = frame / maxFrame * 1 % 1,
+            bias2 = Math.abs(0.5 - per2) / 0.5;
+            guy.rotation.y = -0.5 + 2.5 * bias2;
             // draw
             renderer.render(scene, camera);
             frame += 20 * secs;
@@ -200,53 +202,50 @@ Now for a simple demo of this weird guy module to start out with at least. For t
 
 The end result here is then just a very simple walk cycle of my weird little guy model, and thus far this is more or less what I had in mind. When it comes to working on this at least a little more there is only s much more to do then such as what more needs to happen with the arms and face to make it look more interesting. There will then need to be at least a few more demos of this, and while I am at it maybe at least a few revisions of the weird guy model with that as well as I will want to least a few more features beyond just the simple walk cycle.
 
-## 2 - Moving the arms, ground mesh, and data textures
+## 2 - The weird guy module \( r1 \) Moving the arms, ground mesh, and data textures
 
 I was off to a good start with the first form of this weird guy module, as well as the additional code that I was using to make a short demo of what I made. However I think that I should put at least a little more time into this one before moving on to the next thing. There is just a little more that I would like to see done with this example, and that is to also have moment for the arms, and also a better demo where the weird guy is walking along on a repeating background.
 
-### 2.1 - The weird guy module with set arms method and data textures
+### The weird guy module \( r1 \) with set arms method and data textures
 
 So with this new version of the weird guy module I added an additional public method that has to do with setting the rotation values of the arms. Also while I was at it I made it so that the arms are composed of two mesh objects rater than just one. 
 The one additional thing that I changed that is a good step forward is that I made use of [data textures](/2022/04/15/threejs-data-texture/) as a way to have some texture for the built in materials that I am using for the weird guy. When it comes to creating the data texture I made use of one of the [math utils methods called seeded random](/2022/04/11/threejs-math-utils/) that allows for me to make random like textures that will be the same each time I reload the page.
 
 ```js
 // ********** **********
-// WEIRD GUY MODULE
-// r1 - adding a setArms method, and data textures
+// WEIRD GUY MODULE - r1 - from threeks-examples-weird-walk-one
+// * adding a setArms method
+// * data textures
 // ********** **********
-var weirdGuy = (function(){
+(function(api){
     // DATA TEXTURE FOR MATERIALS
-    var width = 20, height = 100;
-    var size = width * height;
-    var data = new Uint8Array( 4 * size );
+    const width = 20, height = 100;
+    const size = width * height;
+    const data = new Uint8Array( 4 * size );
     for ( let i = 0; i < size; i ++ ) {
-        var stride = i * 4;
-        //var x = i % width;
-        //var y = Math.floor(i / width);
-        var v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
-        //var v = y % 2 === 0 ? 255 - 200 * (x / width) : 55 + 200 * (x / width);
+        const stride = i * 4;
+        const v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
         data[ stride ] = v;
         data[ stride + 1 ] = v;
         data[ stride + 2 ] = v;
         data[ stride + 3 ] = 255;
     }
-    var texture = new THREE.DataTexture( data, width, height );
+    const texture = new THREE.DataTexture( data, width, height );
     texture.needsUpdate = true;
     // MATERIALS
-    var materials = [
+    const materials = [
         new THREE.MeshStandardMaterial( { map: texture, emissive: 0x9a8800, emissiveIntensity: 0.9, wireframe:false } ),
         new THREE.MeshStandardMaterial( { map: texture, emissive: 0x00aaff, emissiveIntensity: 0.4 } ),
         new THREE.MeshStandardMaterial( { map: texture, emissive: 0xffffff, emissiveIntensity: 0.8 } ),
         new THREE.MeshStandardMaterial( { map: texture, emissive: 0x1a1a1a, emissiveIntensity: 0.1 } )
     ];
-    var api = {};
     // create a new weird guy
     api.create = function(opt){
         opt = opt || {};
-        var guy = new THREE.Group();
+        const guy = new THREE.Group();
         guy.name = opt.guyID || 'guy';
         // BODY
-        var body = new THREE.Mesh(
+        const body = new THREE.Mesh(
             new THREE.BoxGeometry(1, 2.0, 1),
             materials[0]
         );
@@ -255,13 +254,13 @@ var weirdGuy = (function(){
         guy.add(body);
         // EYES
         ['eye1', 'eye2'].forEach(function(nameStr, i){
-            var eye = new THREE.Mesh(
+            const eye = new THREE.Mesh(
                 new THREE.SphereGeometry(0.2, 30, 30),
                 materials[2]
             );
             eye.name = guy.name + '_' + nameStr;
             eye.position.set(-0.2 + 0.4 * i, 0.2, 0.5);
-            var innerEye = new THREE.Mesh(
+            const innerEye = new THREE.Mesh(
                 new THREE.SphereGeometry(0.1, 30, 30),
                 materials[3]
             );
@@ -270,7 +269,7 @@ var weirdGuy = (function(){
             body.add(eye);
         });
         // ADD MOUTH
-        var mouth = new THREE.Mesh(
+        const mouth = new THREE.Mesh(
             new THREE.BoxGeometry(0.5, 0.125, 0.25),
             materials[3]
         );
@@ -279,14 +278,14 @@ var weirdGuy = (function(){
         body.add(mouth);
         // ADD ARMS
         ['arm1', 'arm2'].forEach(function(nameStr, i){
-            var arm = new THREE.Mesh(
+            const arm = new THREE.Mesh(
                 new THREE.BoxGeometry(0.25, 1.0, 0.25),
                 materials[0]
             );
             arm.geometry.translate( 0, 0.5, 0 );
             arm.name = guy.name + '_' + nameStr;
             arm.position.set(-0.625 + 1.25 * i, 0.5, 0);
-            var tri = new THREE.Mesh(
+            const tri = new THREE.Mesh(
                 new THREE.BoxGeometry(0.25, 1.0, 0.25),
                 materials[0]
             );
@@ -298,7 +297,7 @@ var weirdGuy = (function(){
             body.add(arm);
         });
         // ADD PELVIS
-        var pelvis = new THREE.Mesh(
+        const pelvis = new THREE.Mesh(
             new THREE.BoxGeometry(1, 0.5, 1),
             materials[1]
         );
@@ -307,7 +306,7 @@ var weirdGuy = (function(){
         guy.add(pelvis);
         // ADD LEGS
         ['leg1', 'leg2'].forEach(function(nameStr, i){
-            var leg = new THREE.Mesh(
+            const leg = new THREE.Mesh(
                 new THREE.BoxGeometry(0.25, 1.5, 1),
                 materials[1]
             );
@@ -319,7 +318,7 @@ var weirdGuy = (function(){
     };
     // setWalk
     api.setWalk = function(guy, walkPer){
-        var leg1 = guy.getObjectByName(guy.name + '_leg1'),
+        const leg1 = guy.getObjectByName(guy.name + '_leg1'),
         leg2 = guy.getObjectByName(guy.name + '_leg2')
         // set scale of legs
         leg1.scale.y = walkPer;
@@ -334,44 +333,45 @@ var weirdGuy = (function(){
         armNum = armNum <= 0 ? 1: armNum;
         a1 = a1 === undefined ? 0 : a1;
         a2 = a2 === undefined ? 0 : a2;
-        var arm = guy.getObjectByName(guy.name + '_arm' + armNum);
+        const arm = guy.getObjectByName(guy.name + '_arm' + armNum);
         arm.rotation.x = Math.PI / 180 * a1;
         // set tri rotation
         arm.children[0].rotation.x = Math.PI / 180 * a2;
     };
-    // return the api
-    return api;
-}());
+}( this['weirdGuy'] = {} ));
 ```
 
-### 2.2 - The demo with ground mesh and additional code for changing the state of the weird guy
+### 2.1 - The demo with ground mesh and additional code for changing the state of the weird guy
 
 So now it is time to test out this new weird guy module to see how things look. With that said when it comes to the demo for this new weird guy module I made a ground mesh, and I also made it so I am suing data textures as a way to add some texture to the ground mesh. In place of using the math utils seeded random method I chose to make a texture that repeats better.
 
 ```js
 (function () {
-    // ********** **********
-    // SCENE, CAMERA, LIGHT, and RENDERER
-    // ********** **********
-    var scene = new THREE.Scene();
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
     scene.background = new THREE.Color('cyan');
-    var camera = new THREE.PerspectiveCamera(50, 8 / 9, 0.05, 100);
+    const camera = new THREE.PerspectiveCamera(50, 8 / 9, 0.05, 100);
     camera.position.set(5, 5, 5);
     camera.lookAt(0, 1.5, 0);
     scene.add(camera);
-    var dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
     dl.position.set(5, 10, 1);
     scene.add(dl);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ********** **********
+    //-------- ----------
     // HELPER METHODS
-    // ********** **********
+    //-------- ----------
     // give frame, maxframe, and count to get values like per, bias, ect
-    var getFrameValues = function(frame, maxFrame, count){
+    const getFrameValues = function(frame, maxFrame, count){
         count = count === undefined ? 1 : count;
-        var values = {
+        const values = {
             frame: frame, 
             maxFrame: maxFrame
         };
@@ -379,73 +379,68 @@ So now it is time to test out this new weird guy module to see how things look. 
         values.bias = 1 - Math.abs(0.5 - values.per) / 0.5;
         return values;
     };
-    // ********** **********
+    //-------- ----------
     // GROUND MESH
-    // ********** **********
-    var width = 20, height = 100;
-    var size = width * height;
-    var data = new Uint8Array( 4 * size );
+    //-------- ----------
+    const width = 20, height = 100;
+    const size = width * height;
+    const data = new Uint8Array( 4 * size );
     for ( let i = 0; i < size; i ++ ) {
-        var stride = i * 4;
-        var x = i % width;
-        var y = Math.floor(i / width);
-        //var v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
-        var v = y % 2 === 0 ? 255 - 200 * (x / width) : 55 + 200 * (x / width);
+        const stride = i * 4;
+        const x = i % width;
+        const y = Math.floor(i / width);
+        const v = y % 2 === 0 ? 255 - 200 * (x / width) : 55 + 200 * (x / width);
         data[ stride ] = 0;
         data[ stride + 1 ] = v;
         data[ stride + 2 ] = 0;
         data[ stride + 3 ] = 255;
     }
-    var texture = new THREE.DataTexture( data, width, height );
+    const texture = new THREE.DataTexture( data, width, height );
     texture.needsUpdate = true;
-    var ground = new THREE.Mesh( new THREE.BoxGeometry(20, 1, 100), new THREE.MeshStandardMaterial({
+    const ground = new THREE.Mesh( new THREE.BoxGeometry(20, 1, 100), new THREE.MeshStandardMaterial({
         map: texture
     }) );
     ground.position.y = -0.5;
     scene.add(ground);
-    // ********** **********
+    //-------- ----------
     // WEIRD GUY INSTANCE
-    // ********** **********
-    var guy = weirdGuy.create({
+    //-------- ----------
+    const guy = weirdGuy.create({
         guyID: 'mrguy1'
     });
     guy.position.y = 2.75;
     scene.add(guy);
     weirdGuy.setWalk(guy, 0);
-    // ********** **********
+    //-------- ----------
     // ANIMATION LOOP
-    // ********** **********
-    var frame = 0,
-    maxFrame = 300,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
+    //-------- ----------
+    let frame = 0, lt = new Date();
+    const maxFrame = 300;
+    const loop = function () {
+        const now = new Date(),
         secs = (now - lt) / 1000;
         requestAnimationFrame(loop);
         if (secs > 1 / 24) {
             // update guy position over mesh
-            var v = getFrameValues(frame, maxFrame, 1);
+            let v = getFrameValues(frame, maxFrame, 1);
             guy.position.z = -10 + 20 * v.per;
             // set walk
-            var v = getFrameValues(frame, maxFrame, 40);
+            v = getFrameValues(frame, maxFrame, 40);
             weirdGuy.setWalk(guy, v.bias);
             // setting arms
-            var v1 = getFrameValues(frame, maxFrame, 10);
-            var v2 = getFrameValues(frame, maxFrame, 80);
-            var a2 = 360 - (80 + 20 * v2.bias);
+            const v1 = getFrameValues(frame, maxFrame, 10);
+            const v2 = getFrameValues(frame, maxFrame, 80);
+            const a2 = 360 - (80 + 20 * v2.bias);
             weirdGuy.setArm(guy, 1, 185 - 10 * v1.bias, a2 );
             weirdGuy.setArm(guy, 2, 175 + 10 * v1.bias, a2 );
             // body rotation
-            var v = getFrameValues(frame, maxFrame, 1);
-            var body = guy.getObjectByName(guy.name + '_body');
+            v = getFrameValues(frame, maxFrame, 1);
+            const body = guy.getObjectByName(guy.name + '_body');
             body.rotation.y = -0.5 + 1 * v.bias;
-            //var v = getFrameValues(frame, maxFrame, 40);
-            //weirdGuy.setArm(guy, 1, 180 - 90 * v.bias, 300 );
-            //weirdGuy.setArm(guy, 2, 90 + 90 * v.bias, 300 );
             // update camera
-            var v = getFrameValues(frame, maxFrame, 1);
+            v = getFrameValues(frame, maxFrame, 1);
             camera.position.copy(guy.position).add(new THREE.Vector3(4, 2, 4));
-            var a = new THREE.Vector3(0, 0, 0);
+            const a = new THREE.Vector3(0, 0, 0);
             guy.getWorldPosition(a);
             camera.lookAt(a.add(new THREE.Vector3( 1 - 2 * v.bias, -1, 0)));
             // draw
