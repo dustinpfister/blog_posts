@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-12-12 14:41:17
-version: 1.30
+updated: 2022-12-12 14:49:28
+version: 1.31
 ---
 
 This post on threejs will be on a [threejs project example ](/2021/02/19/threejs-examples/) that is a simple idea for a weird walk animation module. This is just one of several ideas that have come to me that might prove to be a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/). This is not the first project idea like this, one of the oldest examples of this kind of model is my [guy one](/2021/04/29/threejs-examples-guy-one/) threejs example that I made a few years back, and I have many others actually at this point.
@@ -140,9 +140,11 @@ The weird guy module that I made will return a few public methods, the main meth
 }( this['weirdGuy'] = {}));
 ```
 
-### 1.1 - basic demo of the weird guy module
+### 1.1 - Basic demo of the weird guy module
 
-Now for a simple demo of this weird guy module to start out with at least. For this I create my usual scene object, camera and renderer like with any other threejs project. On top of that I am also using a light source code this demo as I want to add light on top of the emissive values of the materials I am using to help show depth better. I then just call that create method to create and return a new group object that I can then add as a child of the scene object. After that is all set and down I have then call the set walk method in the body of my update loop that I am using to update and render the scene here.
+Now to have at least one basic demo of this werid walk module that I have made just for the sake of making sure that I have the basic idea of what I want up and running. For this I create my usual scene object, camera, and renderer like with any other threejs project. On top of that I am also using a light source for this demo as I want to add light on top of the emissive values of the materials I am using to help show depth better. 
+
+I just call the create method to create and return a new group object that is the model that I can then add as a child of the scene object. After that is all set and done I can then call the set walk method in the body of my update loop that I am using to update and render the state of the model.
 
 ```js
 (function () {
@@ -208,7 +210,7 @@ Now for a simple demo of this weird guy module to start out with at least. For t
     ());
 ```
 
-The end result here is then just a very simple walk cycle of my weird little guy model, and thus far this is more or less what I had in mind. When it comes to working on this at least a little more there is only s much more to do then such as what more needs to happen with the arms and face to make it look more interesting. There will then need to be at least a few more demos of this, and while I am at it maybe at least a few revisions of the weird guy model with that as well as I will want to least a few more features beyond just the simple walk cycle.
+The end result here is then just a very simple walk cycle of my weird little guy model, and thus far this is more or less what I had in mind. When it comes to working on this at least a little more there is only so much more to do then such as what more needs to happen with the arms and face to make it look more interesting. There will then need to be at least a few more demos of this, and while I am at it maybe at least a few revisions of the weird guy model with that as well as I will want to least a few more features beyond just the simple walk cycle.
 
 ## 2 - The weird guy module \( r1 \) Moving the arms, ground mesh, and data textures
 
@@ -351,7 +353,7 @@ The one additional thing that I changed that is a good step forward is that I ma
 
 ### 2.1 - The demo with ground mesh and additional code for changing the state of the weird guy
 
-So now it is time to test out this new weird guy module to see how things look. With that said when it comes to the demo for this new weird guy module I made a ground mesh, and I also made it so I am suing data textures as a way to add some texture to the ground mesh. In place of using the math utils seeded random method I chose to make a texture that repeats better.
+So now it is time to test out this new weird guy module to see how things look. With that said when it comes to the demo for this new weird guy module I made a ground mesh, and I also made it so I am using [data textures](/2022/04/15/threejs-data-texture/) as a way to add some texture to the ground mesh. In place of using the [math utils seeded random method](/2022/04/11/threejs-math-utils/) I chose to make a texture that repeats better.
 
 ```js
 (function () {
@@ -463,6 +465,7 @@ So now it is time to test out this new weird guy module to see how things look. 
     ());
 ```
 
+So now I have something that looks pretty cool I have the little guy moving along a plane, or rather I have a plane moving in such a way that it looks like that. In any case what it is that I wanted to have working in terms of the moment of the arms is looking okay, but I still think that I do not have this done just the way that I would like it to be. I might want to have more going on when it comes to update the look on the little guys face, and also have a better set of textures for the over all look of the model.
 
 ## Conclusion
 
