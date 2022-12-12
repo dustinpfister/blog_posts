@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-12-12 10:37:38
-version: 1.25
+updated: 2022-12-12 14:12:43
+version: 1.26
 ---
 
 This post on threejs will be on a [threejs project example ](/2021/02/19/threejs-examples/) that is a simple idea for a weird walk animation module. This is just one of several ideas that have come to me that might prove to be a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/). This is not the first project idea like this, one of the oldest examples of this kind of model is my [guy one](/2021/04/29/threejs-examples-guy-one/) threejs example that I made a few years back, and I have many others actually at this point.
@@ -16,19 +16,21 @@ The walk cycle that I had in mind is just having two mesh objects for legs, and 
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/pQ8dM1a6yhQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Weird walk guy threejs example and what to know first
 
 This is a post in which I am writing about a simple threejs project example of a weird walk guy module. This is a javaScript module that will cerate and return an instance of THREE.Group that I can then add to an over all threejs [scene object](/2018/05/03/threejs-scene/). I also add a few methods that helper with the process of updating the state of this group of objects. This is not the first example of this kind of module that I have made using threejs, and I also do not think it will be the last for at least a little while longer at least. I have come to like making models like this, but it there is the more professional way of doing this kind of thing with it comes to making something in blender and then exporting from there.
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/pQ8dM1a6yhQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+### The source code examples in this post are on Github
+
+The source code examples that I am writing about in this post as well as with many others can be found in my [test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-walk-one).
 
 ### Version numbers matter
 
 When I first made this example I was using r135 of threejs, if the code examples here are breaking for you on your end that would be the first thing I would check. The threejs library is still a project that moves very fast in terms of its development and maintenance so code breaking changes happen often.
 
-### The source code examples in this post are on Github
-
-The source code examples that I am writing about in this post as well as with many others can be found in my [test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-walk-one).
 
 ## 1 - The weird guy module and basic demo
 
