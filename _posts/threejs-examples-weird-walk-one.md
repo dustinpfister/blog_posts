@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-12-12 14:21:20
-version: 1.28
+updated: 2022-12-12 14:33:12
+version: 1.29
 ---
 
 This post on threejs will be on a [threejs project example ](/2021/02/19/threejs-examples/) that is a simple idea for a weird walk animation module. This is just one of several ideas that have come to me that might prove to be a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/). This is not the first project idea like this, one of the oldest examples of this kind of model is my [guy one](/2021/04/29/threejs-examples-guy-one/) threejs example that I made a few years back, and I have many others actually at this point.
@@ -21,24 +21,28 @@ The walk cycle that I had in mind is just having two mesh objects for legs, and 
 
 ## Weird walk guy threejs example and what to know first
 
-This is a post in which I am writing about a simple threejs project example of a weird walk guy module. This is a java Script module that will create and return an instance of THREE.Group that I can then add to an over all threejs [scene object](/2018/05/03/threejs-scene/). I also add a few methods that helper with the process of updating the state of this group of objects. This is not the first example of this kind of module that I have made using threejs, and I also do not think it will be the last for at least a little while longer at least. I have come to like making models like this, but it there is the more professional way of doing this kind of thing with it comes to making something in blender and then exporting from there.
+This is a post in which I am writing about a simple threejs project example of a weird walk guy module. This is a javaScript module that will create and return an instance of THREE.Group that I can then add to an over all threejs [scene object](/2018/05/03/threejs-scene/). I also add a few methods that help with the process of updating the state of this group of objects. This is not the first example of this kind of module that I have made using threejs, and I also do not think it will be the last for at least a little while longer at least. In any case this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/), let alone client side JavaScript in general. I will not be getting into detail with things that you should know before hand here, however I will bring up at least some things to read more about in this section. 
+
+### There is also using blender and loading DAE files as a way to make models
+
+I have come to like making models like this, but there is the more professional way of doing this kind of thing. That world be to make something in blender and then export it to a format like DAE. This DAE file can then be loaded into a threejs project by making use of [the DAE loader](/2021/04/30/threejs-dae-collada-loader/).
 
 ### The source code examples in this post are on Github
 
-The source code examples that I am writing about in this post as well as with many others can be found in my [test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-walk-one).
+The source code examples that I am writing about in this post as well as with many others can be found in my [test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-walk-one). This is also where I park the source code for my [many other posts on threejs as well](/categories/three-js/).
 
 ### Version numbers matter
 
-When I first made this example I was using r135 of threejs, and the last time I came around to do some editing I was using r146. if the code examples here are breaking for you on your end that would be the first thing I would check. The threejs library is still a project that moves very fast in terms of its development and maintenance so code breaking changes happen often.
+When I first made this example I was using r135 of threejs, and the last time I came around to do some editing I was using r146. If the code examples here are breaking for you on your end that would be the first thing I would check. The threejs library is still a project that moves very fast in terms of its development and maintenance so code breaking changes happen often.
 
 
 ## 1 - The weird guy module \( r0 \) and basic demo
 
-In this first section of the post I will be going over the JavaScript module that I am using to create and return a THREE.Group instance that I can then use in a scene object of one or more demos that make use of the module. Speaking of that I will also be going over the source code of one such demo to start out with while I am at it.
+In this first section of the post I will be going over the JavaScript module that I am using to create and return a THREE.Group instance that I can then use in a scene object of one or more demos that make use of the module. Speaking of that I will also be going over the source code of one such demo to start out with while I am at it. When it comes to this first revision of the module the goal is to jst have the leg movement effect that I want, and to not do anything major with the arms.
 
 ### The weird guy module \( r0 \)
 
-The weird guy module that I made will return a few public methods, the main method of interest when it comes to using this would be the create method. In a threejs project where I make use of this I will call this method as a way to make an instance of this weird guy model. I will then want at least one of not more methods that help with changing the state of this weird guy model one of which can be used to set the walk cycle state of the guy.
+The weird guy module that I made will return a few public methods, the main method of interest when it comes to using this would be the create method. In a threejs project where I make use of this I will call this method as a way to make an instance of this weird guy model. I will then want at least one if not more methods that help with changing the state of this weird guy model one of which can be used to set the walk cycle state of the guy. So for now this will have just these two public methods one to create and another to update the state of the model that is just a walk cycle.
 
 ```js
 // ********** **********
@@ -461,3 +465,4 @@ So now it is time to test out this new weird guy module to see how things look. 
 This is not the first kind of example that I have made that is like this, maybe the oldest example of this sort of thing would be my guy one model that I first made a few years ago now. i have made a lot of other projects that are also like this one, but have not really got into using these to make some kind of final product. That might change moving forward, especially if I do start working on threejs related stuff alone when it comes to what kind of direction I take with this website. I have found myself stuck in a pattern of coming up with ideas just for the sake of having something to write about and that is something that I would like to stop in favor of doing the inversion of that. Making projects that are cool by themselves and then maybe writing about them a little.
 
 When it comes to this specific example though I think the nest step is maybe working out at least a few more demos that make use of the module, and also maybe expand the model a little more. When it comes to the walk cycle I think I have things set and down, but I might want at least one more walk cycle method that I can use to transition from a walk state to a standing state, and maybe a few more methods that have to do with the movement of arms, and also the expression of the face. Aside from that I think I just about have a final done deal with much about what this idea was at least for what that is worth.
+
