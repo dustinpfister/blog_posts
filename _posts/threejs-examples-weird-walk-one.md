@@ -1,15 +1,18 @@
 ---
-title: Weird walk threejs example
+title: Weird Walk One threejs example
 date: 2022-04-18 12:06:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-04-22 15:12:11
-version: 1.24
+updated: 2022-12-12 10:37:38
+version: 1.25
 ---
 
-Todays post on threejs will be just a new [project example post](/2021/02/19/threejs-examples/) on a simple example of an idea for a weird walk animation. This is just one of several ideas that have come to me that might project to me a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/) that looks like a little guy model of sorts. The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the hight of the mesh objects from its full scale to zero and back again.
+This post on threejs will be on a [threejs project example ](/2021/02/19/threejs-examples/) that is a simple idea for a weird walk animation module. This is just one of several ideas that have come to me that might prove to be a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/). This is not the first project idea like this, one of the oldest examples of this kind of model is my [guy one](/2021/04/29/threejs-examples-guy-one/) threejs example that I made a few years back, and I have many others actually at this point.
+
+
+The walk cycle that I had in mind is just having two mesh objects for legs, and using the [scale property](/2021/05/11/threejs-object3d-scale/) of the object3d class to set the scale of just the height of the mesh objects from its full scale to zero and back again. So it would be a weird walk cycle where the legs just move directly up and down which would not at all look natural of course, but that is the intention to begin with actually.
 
 <!-- more -->
 
@@ -458,6 +461,6 @@ So now it is time to test out this new weird guy module to see how things look. 
 
 ## Conclusion
 
-This is not the first kind of example that I have made that is like this, maybe the oldest example of this sort of thing would be my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I first made a few years ago now. i have made a lot of other projects that are also like this one, but have not really got into using these to make some kind of final product. That might change moving forward, especially if I do start working on threejs related stuff alone when it comes to what kind of direction I take with this website. I have found myself stuck in a pattern of coming up with ideas just for the sake of having something to write about and that is something that I would like to stop in favor of doing the inversion of that. Making projects that are cool by themselves and then maybe writing about them a little.
+This is not the first kind of example that I have made that is like this, maybe the oldest example of this sort of thing would be my guy one model that I first made a few years ago now. i have made a lot of other projects that are also like this one, but have not really got into using these to make some kind of final product. That might change moving forward, especially if I do start working on threejs related stuff alone when it comes to what kind of direction I take with this website. I have found myself stuck in a pattern of coming up with ideas just for the sake of having something to write about and that is something that I would like to stop in favor of doing the inversion of that. Making projects that are cool by themselves and then maybe writing about them a little.
 
 When it comes to this specific example though I think the nest step is maybe working out at least a few more demos that make use of the module, and also maybe expand the model a little more. When it comes to the walk cycle I think I have things set and down, but I might want at least one more walk cycle method that I can use to transition from a walk state to a standing state, and maybe a few more methods that have to do with the movement of arms, and also the expression of the face. Aside from that I think I just about have a final done deal with much about what this idea was at least for what that is worth.
