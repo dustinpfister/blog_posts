@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-12-12 10:37:39
-version: 1.20
+updated: 2022-12-12 15:36:08
+version: 1.21
 ---
 
 Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examples-weird-walk-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) where I just a continue with that example, but take it into a new direction. Of course The main changes that I have to do with how the walk happens. With the first weird walk I was thinking that it would be cool to just have to mesh objects for legs, and have just one axis of each leg scale up and down as a kind of crude yet amusing walk cycle. For this example I am thinking that it would be cool to have a walk cycle where the legs are two or more mesh objects that rotate at certain pivot locations. However as with the first weird walk cycle example I do so in a very weird way in which the thighs of the weird walk guy move forward from the rest of the body very far so the look is in no way natural. So in other words when it comes to this weird walk guy example, just like with the first example, I am going in a kind of weird for the sake of weird kind of direction.
@@ -14,6 +14,9 @@ Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examp
 This time I made some changes that have to do with how I go about adding textures to a module that I make this way my making another file that helps me with the process of making [data textures](/2022/04/15/threejs-data-texture/). This is however the kind of change that I might do with the weird walk one module as well though which it comes to maybe doing more to revise the source code with that example. So for the most part what stands alone here is what is added in terms of additional mesh objects and code that is used to update those mesh objects.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/2zV9b-XOo8g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## This weird walk two example and what to know first
 
