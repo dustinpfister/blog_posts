@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2022-12-13 13:18:27
-version: 1.28
+updated: 2022-12-13 13:28:14
+version: 1.29
 ---
 
 So I wanted to start making some posts on [threejs examples](/2021/02/19/threejs-examples/), rather that the usual posts on certain basic things here and there with just the core of what threejs alone is. One of the first ideas that came to mind was to make a waves example where I create an update a buffer geometry based on something like Math.cos. 
@@ -40,17 +40,92 @@ The source code examples that I write about here can also be found in my [test t
 
 When working out this example for the first time I was using revision 98 of threejs, and the last time I can around to do some editing on this post I have updated all the examples to work well with r146. Threejs is a library that is a very fast moving target when it comes to development, it seems like to new revision is coming out every few months. If the code here breaks the first thing that you should check is the version number, because this was working for me when it comes to the version of threejs that I was using at the time.
 
-## 1 - The wave Example
+## 1 - The wave module example and demo \( r0 \)
 
-The wave example I made involves a helper method that can be used to create, or update geometry, buffered geometry, or just about anything by making the helper a [higher-order function](https://en.wikipedia.org/wiki/Higher-order_function). This method accepts another method as one of the arguments that is passed the x,y,and z values for each point that will compose the vertices of the wave. I then use this method in conjunction with others to help make an update the geometry of the wave.
+In this section I will be writing about the first revision of this threejs project example, as well as a single demo of it in action.
 
-Here is the wave grid helper method that accepts a method that I can use to define what to do for each point in the grid of points. I use this to create an instance of buffer geometry and again later to update it in a loop.
+### The Wave module
 
-Here I have a method that makes use of my waveGrid method to go about making the initial state of the buffered geometry that I will then be updating later on with the update points method that I will be getting to soon. The basic idea here is that I am just creating the initial size and state of the geometry, which will end up being a fixed static thing in terms of the count of points. The update method later on just needs to be used to update this position of these points it does not need to add or delete them, which can not really be done with a geometry because it is buffer geometry after all. A buffer is often a fixed thing once it is created in other words.
+The wave module example I made involves a helper method that can be used to create, or update geometry, buffered geometry, or just about anything by making the helper a [higher-order function](https://en.wikipedia.org/wiki/Higher-order_function). This method accepts another method as one of the arguments that is passed the x,y,and z values for each point that will compose the vertices of the wave. I then use this method in conjunction with others to help make an update the geometry of the wave. The wave grid helper method that accepts a method that can then be used to define what to do for each point in the grid of points. I use this to create an instance of buffer geometry and again later to update it in a loop.
+
+I have a method that makes use of my waveGrid helper method to go about making the initial state of the buffered geometry that I will then be updating later on with the update method that I will be getting to soon. The basic idea here is that I am just creating the initial size and state of the geometry, which will end up being a fixed static thing in terms of the count of points. The update method later on just needs to be used to update this position of these points it does not need to add or delete them, which can not really be done with a geometry because it is buffer geometry after all. A buffer is often a fixed thing once it is created in other words.
 
 I again use my waveGrid method to update points by just using the for point option of the wave grid method. I just need to set the desired values for x, y, and z for all points in the geometry. When calling this method I will want to pass a percent value as a second argument after passing the instance of points as the first method. More on this later when I use it in the main update loop of this example when it comes to how to go about getting that percent value.
 
 ```js
+// waves - r0 - from threejs-examples-waves
+(function (api) {
+    // Wave grid helper
+    const waveGrid = function (opt) {
+        opt = opt || {};
+        opt.width = opt.width || 30;
+        opt.depth = opt.depth || 30;
+        opt.height = opt.height || 2;
+        opt.forPoint = opt.forPoint || function () {};
+        opt.context = opt.context || opt;
+        opt.xStep = opt.xStep || 0.075;
+        opt.yStep = opt.yStep || 0.1;
+        opt.zStep = opt.zStep || 0.075;
+        opt.waveOffset = opt.waveOffset === undefined ? 0 : opt.waveOffset;
+        const points = [];
+        let radPer,
+        x = 0,
+        i = 0,
+        y,
+        z;
+        // points
+        while (x < opt.width) {
+            z = 0;
+            while (z < opt.depth) {
+                // radian percent
+                radPer = (z / opt.depth + (1 / opt.width * x) + opt.waveOffset) % 1;
+                // y value of point
+                y = Math.cos(Math.PI * 4 * radPer) * opt.height;
+                // call forPoint
+                opt.forPoint.call(opt.context, x * opt.xStep, y * opt.yStep, z * opt.zStep, i);
+                // step z, and point index
+                z += 1;
+                i += 3;
+            }
+            x += 1;
+        };
+    };
+    // make a points mesh
+    api.create = function (opt) {
+        opt = opt || {};
+        const geometry = new THREE.BufferGeometry();
+        const points = [];
+        opt.forPoint = function (x, y, z, i) {
+            points.push(x, y, z);
+        };
+        waveGrid(opt);
+        const vertices = new Float32Array(points);
+        // itemSize = 3 because there are 3 values (components) per vertex
+        geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+        return new THREE.Points(
+            // geometry as first argument
+            geometry,
+            // then Material
+            new THREE.PointsMaterial({
+                size: .125,
+                color: new THREE.Color(0.0, 0.25, 0.25)
+            }));
+    };
+    // update points
+    api.update = function (points, per, opt) {
+        opt = opt || {};
+        const position = points.geometry.getAttribute('position');
+        opt.waveOffset = per;
+        opt.forPoint = function (x, y, z, i) {
+            position.array[i] = x - 0;
+            position.array[i + 1] = y;
+            position.array[i + 2] = z - 0;
+        };
+        // update points
+        waveGrid(opt);
+        position.needsUpdate = true;
+    };
+}( this['waveMod'] = {} ));
 ```
 
 
@@ -59,6 +134,52 @@ I again use my waveGrid method to update points by just using the for point opti
 So now it is time to get this all working with the usual scene, camera, renderer, and animation loop function that I often do in examples like this. After setting up the renderer and scene object I just use my makePoints helper to make the instance of a Points mesh that makes use of my geometry, and the Points material. I then set up a camera, and then I have some values for my main app loop function that will be using request animation frame.
 
 ```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.001, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0,0,0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// POINTS
+//-------- ----------
+const w = 30, h = 30;
+const tw = 4, th = 4;
+const opt_waves = {
+   width: w,
+   depth: h,
+   xStep: tw / w,
+   zStep: th / h
+};
+const points = waveMod.create(opt_waves);
+points.position.set(tw / 2 * -1, 0, th / 2 * -1);
+scene.add(points);
+//-------- ----------
+// LOOP
+//-------- ----------
+let frame = 0, lt = new Date();
+const maxFrame = 300, fps = 30;
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000,
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(per - 0.5) / 0.5;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // calling update method
+        waveMod.update(points, per * 8 % 1, opt_waves);
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
 ```
 
 The result of this up and running is then a bunch of dots in the canvas moving up and down in a wave like pattern, I am also doing a number of other things in this example that have to do with many other note worthy features of three.js. For example I wanted to do something that involves moving the camera around by making use of the position and rotation properties as well as the look at method of the camera all of which are methods and properties of the base class known as Object3d.
