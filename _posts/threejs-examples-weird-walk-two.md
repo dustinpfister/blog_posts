@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-12-13 08:45:02
-version: 1.22
+updated: 2022-12-13 09:04:09
+version: 1.23
 ---
 
 Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examples-weird-walk-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) where I just a continue with that example. However of course I will be taking this idea into a new direction with how I create and move legs. With the first weird walk I was thinking that it would be cool to just have to mesh objects for legs, and have just one axis of each leg scale up and down as a kind of crude yet amusing walk cycle. For this example I am thinking more in terms with something that is a walk cycle where the legs are two or more mesh objects that rotate at certain pivot locations. However as with the first weird walk cycle example I do so in a very weird way in which the thighs of the weird walk guy move forward from the rest of the body very far so the look is in no way natural. So in other words when it comes to this weird walk guy example, just like with the first example, I am going in a kind of weird for the sake of weird kind of direction.
@@ -37,11 +37,13 @@ When I first started writing this post I was using r135 of threejs with the sour
 
 ## 1 - The first revision of weird walk two \( r0 \)
 
-In this section I will be going over the source code of the basic idea of this example, in the Github repository this is in the basic section folder the corresponds to what I am writing about here. The goal with this was to just start with what I all ready worked out with the first weird walk example, but now I just want to have a slightly different walk cycle, and also while I am at it make a javaScript file that has more to do with creating textures with the data texture constructor rather than that if the canvas texture constructor.
+In this section I will be going over the source code of the first and at time time of this writing, the only revision of this weird walk module. I can not say that I have any interest in making any future revisions of this module as I have many other examples that are of greater interest. So future edits of this post might just have to do with making additional demos of this first revision. 
+
+The goal with this was to just start with what I all ready worked out with the first weird walk one example, but now I just want to have a slightly different walk cycle. Also while I am at it make a javaScript file that has more to do with creating textures with the data texture constructor rather than that if the canvas texture constructor.
 
 ### The data textures module
 
-Here I have the source code for the data textures module that I will be using to create textures for the weird walk guy, as well as additional mesh objects that I create in the main javaScript example for this. This module consists of a few public methods one of which will return a texture created from the given color channel data array in the form of a [unit8array](/2020/04/02/js-uint8array/), and the others are various way of going about creating that kind of an array. I have a for each pixel method that where I can given a function in which I can define logic that is to be used to create the red, green, blue, and alpha values for each color channel of each pixel. I then have additional options for creating textures with this, but the general idea is the same, one way or another crate a texture by way of the THREE.DataTexture constructor.
+Here I have the source code for the data textures module that I will be using to create textures for the weird walk guy, as well as additional mesh objects that I create in the main javaScript example for this. This module consists of a few public methods one of which will return a texture created from the given color channel data array in the form of a [unit8array](/2020/04/02/js-uint8array/). The other methods are various ways of going about creating that kind of an array that is used to create the textures. I have a for each pixel method that where I can given a function in which I can define logic that is to be used to create the red, green, blue, and alpha values for each color channel of each pixel. I then have additional options for creating textures with this, but the general idea is the same, one way or another crate a texture by way of the THREE.DataTexture constructor.
 
 ```js
 // ********** **********
@@ -117,7 +119,7 @@ Here I have the source code for the data textures module that I will be using to
 
 ### The weird guy two module \( r0 \)
 
-Now that I have the texture module is out of the way I can not write about the weird guy two module that makes use of this data texture module to create the textures for the various materials that are used to skin the various parts of the guy. At the top of the module I am using the seeded random method as a way to create just a texture with random variations of black and write for each pixel. This is what I use to just add some kind of texture other than that of just a solid color which strokes me as just a kind of place holder type thing for some kind of better option for a texture, but for some things this might still work well.
+Now that I have the texture module out of the way I can now write about the weird guy two module that makes use of this data texture module to create the textures for the various materials that are used to skin the various parts of the guy. At the top of the module I am using the [seeded random method of the math utils object](/2022/04/11/threejs-math-utils/) as a way to create just a texture with random variations of black and write for each pixel. This is what I use to just add some kind of texture other than that of just a solid color which strokes me as just a kind of place holder type thing for some kind of better option for a texture, but for some things this might still work well.
 
 ```js
 // ********** **********
@@ -366,5 +368,7 @@ I have my data textures file, and I now also have my weird guy module that I can
 
 ## Conclusion
 
-This weird guy module might be something to which I might make one or two more additional examples in which I am continuing to branch off and add even more to the over all state of what the example is. There is in time making another example like that of the [backyard scene example](/2021/05/07/threejs-examples-backyard/) that I made a while back in which I am creating an example that is actually a combination of many examples being used together to create an over all scene. This might be another future example post but for now I am thinking mainly in terms of making videos for each of these example posts including this one of course.
+I am not sure what the future of this example might be if any actually. I have a whole lot of other threejs examples that i would like to work on more when it comes to making updated revision of the module that is used along with additional demos of the modules and videos for them. With that said I can not say that weird walk two is at the top of the list and that the first weird walk example, as well as the third one have higher priority when it comes to revision. Still I did have a basic general idea with this one that is kind of cool, so who knows what the future may hold when it comes to the nest time I come around to edit this post a little.
+
+
 
