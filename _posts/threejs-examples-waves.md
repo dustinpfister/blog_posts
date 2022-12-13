@@ -5,30 +5,40 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2022-12-13 13:03:43
-version: 1.27
+updated: 2022-12-13 13:18:27
+version: 1.28
 ---
 
-So I wanted to start making some posts on [three.js examples](/2021/02/19/threejs-examples/), rather that the usual posts on certain basic things here and there with just the core of what threejs alone is, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of [buffered geometry](/2021/04/22/threejs-buffer-geometry/) that is a set of points that move in a wave like pattern. This buffer geometry instance can then be used with an instance of the THREE.Points constructor rather than the usual THREE.Mesh constructor, and when doing so it is just the position attribute of the buffer geometry instance that I need to worry about.
+So I wanted to start making some posts on [threejs examples](/2021/02/19/threejs-examples/), rather that the usual posts on certain basic things here and there with just the core of what threejs alone is. One of the first ideas that came to mind was to make a waves example where I create an update a buffer geometry based on something like Math.cos. 
 
-So this threejs example might be a good starting point when it comes to figuring out how to go about creating a custom geometry with a little javaScript code, and also how to work with the Buffer Geometry constructor. In this example I am just creating the points of a geometry though, so I will be using the THREE.Points constructor and the points material rather than the usual mesh constructor.
+In this post I will be writing about a module that makes use of a helper method that I made that can be used to create, or update an instance of [buffered geometry](/2021/04/22/threejs-buffer-geometry/) that is a set of points that move in a wave like pattern. This buffer geometry instance can then be used with an instance of the THREE.Points constructor rather than the usual THREE.Mesh constructor, and when doing so it is just the position attribute of the buffer geometry instance that I need to worry about. At least that is what the plan was for the first version of this example, as I now have plans to create a revised revision of this module that will also work with mesh objects.
+
+So this threejs example might be a good starting point when it comes to figuring out how to go about creating a custom geometry with a little javaScript code, and also how to work with the Buffer Geometry constructor. There is a whole lot to cover when it comes to this sort of thing, but I would say that the first step is to know how to create and update the position attribute of a buffer geometry and this will be the main focus of this example here.
 
 <!-- more -->
-
-## This is a three.js example
-
-This is a post on a three.js example where I made some waves. In this example I am just using the Points material, as in this example I only have points set out for the buffered geometry that I am using. As such it would be a good idea to get up to speed with the [Points material](/2018/05/12/threejs-points-material/), and buffered geometry if you have not done so before hand. This is also a more advanced post on three.js, if you are new to three.js you might want to look at my [getting started post on three.js](/2018/04/04/threejs-getting-started/) first.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/7vrx8646Y7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### version numbers matter
+## The waves threejs example and what to know before you begin
 
-When working out this example for the first time I was using revision 98 of three.js, and the last time I can around to do some editing on this post I have found that this example still works okay on revision 127. Threejs is a library that is a very fast moving target when it comes to development, it seems like to new revision is coming out every few months. If the code here breaks the first thing that you should check is the version number, because this was working for me when it comes to the version of threejs that I was using at the time.
+This is a post on a threejs example where I made some waves in the form of a basic custom geometry. This is a more advanced post on threejs, if you are new to threejs you might want to look at my [getting started post on three.js](/2018/04/04/threejs-getting-started/) first. I will not get into the basics here of course, but I do like to write about at least a few things to maybe read more about in this first section.
+
+### Check out Points and the Points material
+
+When it comes to the first revision of the wave module I am just using the Points material, as in this example I only have points set out for the buffered geometry that I am using. As such it would be a good idea to get up to speed with the [Points material](/2018/05/12/threejs-points-material/), and buffered geometry if you have not done so before hand. 
 
 ### Might want to read up more on buffer geometry in general
 
-In this post I am using the Buffer Geometry constructor to create a collection of points that will be moving up and down in a wave like pattern. I have a [post in which I have gone over the buffer geometry constructor](/2021/04/22/threejs-buffer-geometry/) in general, but as of this writing it might be a good idea to look that the [how to update things](https://threejs.org/docs/#manual/en/introduction/How-to-update-things) section of the three.js website, as well as the [official docs on buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry).
+In this post I am using the Buffer Geometry constructor to create a collection of points that will be moving up and down in a wave like pattern. I have a [post in which I have gone over the buffer geometry constructor](/2021/04/22/threejs-buffer-geometry/) in general, but as of this writing it might be a good idea to look that the [how to update things](https://threejs.org/docs/#manual/en/introduction/How-to-update-things) section of the threejs website. There is also looking at the [official docs on buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) on top of that.
+
+### Source code is also up on Github
+
+The source code examples that I write about here can also be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-waves).
+
+### Version numbers matter
+
+When working out this example for the first time I was using revision 98 of threejs, and the last time I can around to do some editing on this post I have updated all the examples to work well with r146. Threejs is a library that is a very fast moving target when it comes to development, it seems like to new revision is coming out every few months. If the code here breaks the first thing that you should check is the version number, because this was working for me when it comes to the version of threejs that I was using at the time.
 
 ## 1 - The wave Example
 
