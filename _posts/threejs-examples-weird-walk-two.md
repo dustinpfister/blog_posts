@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 981
-updated: 2022-12-13 09:04:09
-version: 1.23
+updated: 2022-12-13 09:10:26
+version: 1.24
 ---
 
 Last week I started a [weird walk guy threejs example](/2022/04/18/threejs-examples-weird-walk-one/), and as such this week I think I will make another [threejs example](/2021/02/19/threejs-examples/) where I just a continue with that example. However of course I will be taking this idea into a new direction with how I create and move legs. With the first weird walk I was thinking that it would be cool to just have to mesh objects for legs, and have just one axis of each leg scale up and down as a kind of crude yet amusing walk cycle. For this example I am thinking more in terms with something that is a walk cycle where the legs are two or more mesh objects that rotate at certain pivot locations. However as with the first weird walk cycle example I do so in a very weird way in which the thighs of the weird walk guy move forward from the rest of the body very far so the look is in no way natural. So in other words when it comes to this weird walk guy example, just like with the first example, I am going in a kind of weird for the sake of weird kind of direction.
@@ -120,6 +120,8 @@ Here I have the source code for the data textures module that I will be using to
 ### The weird guy two module \( r0 \)
 
 Now that I have the texture module out of the way I can now write about the weird guy two module that makes use of this data texture module to create the textures for the various materials that are used to skin the various parts of the guy. At the top of the module I am using the [seeded random method of the math utils object](/2022/04/11/threejs-math-utils/) as a way to create just a texture with random variations of black and write for each pixel. This is what I use to just add some kind of texture other than that of just a solid color which strokes me as just a kind of place holder type thing for some kind of better option for a texture, but for some things this might still work well.
+
+After that I once again just have a method to create and return the group that I will add to the scene object when making some code that makes use of this. After that I just have two additional public methods that are used to set the walk cycle, and to also set the state of the arms as well. The only major different here is that I am using the [object3d rotation property](/2022/04/08/threejs-object3d-rotation/) of the mesh objects to rotate mesh objects, rather than the [object3d scale property](/2021/05/11/threejs-object3d-scale/) to just set the scale of the legs as I did in weird walk one.
 
 ```js
 // ********** **********
