@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-12-12 14:36:04
-version: 1.95
+updated: 2022-12-13 08:28:48
+version: 1.96
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -233,11 +233,11 @@ This is another one of my example that is a kind of model that is created by jus
 
 ### [ 2.45 - Weird walk guy 2](/2022/04/25/threejs-examples-weird-walk-two/) 
 
-This is a more advanced example of the first weird walk guy example, continuing to work on adding more to the example in an effort to just make a weird and interesting looping animation. The only major different with this one is that I made the legs work in a very different kind of way.
+This is a more advanced example of the first weird walk guy example, continuing to work on adding more to the example in an effort to just make a weird and interesting looping animation. The only major different with this one is that I made the legs work in a very different kind of way. The legs are not just box geometry that scales up and down, but a collection of two box geometry mesh objects that form a leg.
 
 ### [ 2.46 - Weird walk guy 3](/2022/05/24/threejs-examples-weird-walk-three/) 
 
-I wanted to make yet another one of these weird walk examples to which I might make a few more of.
+I wanted to make yet another one of these weird walk examples this time though I made a whole new system from the ground up rather than just counting with the same core idea and making just small changes. This time the weird walk cycle involves a creature that has a whole bunch of legs arranged in a circle, and this circle rotates around.
 
 ### [ 2.47 - Wrap values module](/2022/09/09/threejs-examples-wrap-module/)
 
