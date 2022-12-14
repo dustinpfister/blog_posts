@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1017
-updated: 2022-12-14 12:28:25
-version: 1.10
+updated: 2022-12-14 13:10:59
+version: 1.11
 ---
 
 The [index property of a buffer geometry instance in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.index) is a way to define an array of index values in a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
@@ -147,7 +147,9 @@ One thing that I learned is that it is a good idea to be aware of the limits of 
 
 If you do want to pass a buffer attribute when calling the set index method just keep in mind that there are limits to these various data types. The numbers should be integers however it might still be best to go with a float option actually sense some of them have higher max safe integer values than the integer options for typed arrays. This is very true with the Uint8Array typed array that is just a single byte of course, and as such it will limit the usable point count of the geometry to 256.
 
-### 2.1 - Custom Plane Geometry based on THREE.PlaneGeometry
+### 2.1 - Custom Plane Geometry based on THREE.PlaneGeometry that just passes an array when calling setIndex
+
+If you are not sure what typed array you should use one option is to just pass a plane old javaScript array and let the set index method figure that out for you. I have found that this is something that is being done in the actual threejs source code when it comes to the [plane geometry constructor function](https://github.com/mrdoob/three.js/blob/r146/src/geometries/PlaneGeometry.js) for example. Speaking of plane geometry the source code of the plane geometry is what this example is based off of with just a few very minor changes to create a helper funciton that creates and mutates a Buffer Geometry, rather than a Class that extends BufferGeometry.
 
 ```js
 (function(){
@@ -155,9 +157,9 @@ If you do want to pass a buffer attribute when calling the set index method just
     // SCENE, CAMERA, RENDERER
     //-------- ----------
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, -2, 0);
+    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 2000);
+    camera.position.set(500, 500, 500);
+    camera.lookAt(0, 0, 0);
     const renderer = new THREE.WebGL1Renderer();
     renderer.setSize(640, 480, false);
     (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
@@ -211,13 +213,13 @@ If you do want to pass a buffer attribute when calling the set index method just
         // PASSING AN ARRAY, AND NOT A BUFFER ATTRIBUTE. IF A BUFFER ATTRIBUTE IS PASSED
         // MAKE SURE IT IS NOT A Uint8 TYPED ARRAY AS INDEX VALUES CAN GO BEYOND 255
         //--------
-        // YES - Number.MAX_SAFE_INTEGER is 9007199254740991
+        // YES - Just give an array and let setIndex figure out what Attribute Type to use
         geo.setIndex(indices);
         //--------
-        // MAYBE - There are some typed options that might still work okay
-        // geo.setIndex( new THREE.Float64BufferAttribute( indices, 1) );
-        // geo.setIndex( new THREE.Float32BufferAttribute( indices, 1) );
+        // MAYBE - There is passing a BufferAttribute to make things explicit. 
+        //         Just be mindful of the number range limits.
         // geo.setIndex( new THREE.Uint32BufferAttribute( indices, 1) );
+        // geo.setIndex( new THREE.Float64BufferAttribute( indices, 1) );
         //--------
         // NO!! - limit of Unit8Array is 255
         // geo.setIndex( new THREE.BufferAttribute( new Uint8Array(indices), 1) );
@@ -225,15 +227,32 @@ If you do want to pass a buffer attribute when calling the set index method just
         return geo;
     };
     //-------- ----------
-    // GEO, MATERIAL, MESH
+    // GEO
     //-------- ----------
-    const geo = PlaneGeo(10, 10, 20, 20);
+    // geo1 is a 1000 x 1000 size with a 1 * 1 with segment size
+    // that results in 4 points which results in a Uint16Array
+    const geo1 = PlaneGeo(1000, 1000, 1, 1);
+    console.log(geo1.getAttribute('position').count); // 4
+    console.log(geo1.index.array.constructor.name);   // Uint16Array
+    // geo2 is a 1000 x 1000 size with a 100 * 100 with segment size
+    // that results in 10201 points which results in a Uint16Array
+    const geo2 = PlaneGeo(1000, 1000, 100, 100);
+    console.log(geo2.getAttribute('position').count); // 10201
+    console.log(geo2.index.array.constructor.name);   // Uint16Array
+    // geo3 is a 1000 x 1000 size with a 280 * 280 with segment size
+    // that results in a total of 78961 points which results in a Uint32Array
+    const geo3 = PlaneGeo(1000, 1000, 280, 280);
+    console.log(geo3.getAttribute('position').count); // 78961
+    console.log(geo3.index.array.constructor.name);   // Uint32Array
+    //-------- ----------
+    // MATERIAL, MESH
+    //-------- ----------
     const material = new THREE.MeshBasicMaterial({
         color: new THREE.Color(0, 1, 0),
         wireframe: true,
-        wireframeLinewidth: 3
+        wireframeLinewidth: 1
     });
-    const mesh = new THREE.Mesh(geo, material);
+    const mesh = new THREE.Mesh(geo2, material);
     scene.add(mesh);
     //-------- ----------
     // RENDER
@@ -241,6 +260,11 @@ If you do want to pass a buffer attribute when calling the set index method just
     renderer.render(scene, camera);
 }());
 ```
+
+Notice that when passing a plane javaScript array to the set index method it will choose a Uint16Array, or a Uint32Array depending on the count of points in the position attribute. So if the count of points is below the limit of Uint16Array it will use that else it will go higher to the Uint32Array. The limit of a Uint32Array is 4,294,967,295 which is a whole lot of points, and for the most part I do not think that is something that I will end up going over for any geometry at least in terms of typical, practical use anyway. 
+
+Still if for some weird reason I do need the next step up there is no Uint64Array but there is Float64Array that has a max safe integer value of 9,007,199,254,740,991. I would not just use that though, it might be best to use Uint32Array arrays if I want to make things static and explicit, or just pass a plane old javaScript array and be done with this.
+
 
 ## 3 - Animaiton loop exmaples
 
