@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2022-12-13 20:42:13
-version: 1.31
+updated: 2022-12-13 20:48:45
+version: 1.32
 ---
 
 So I wanted to start making some posts on [threejs examples](/2021/02/19/threejs-examples/), rather that the usual posts on certain basic things here and there with just the core of what threejs alone is. One of the first ideas that came to mind was to make a waves example where I create an update a buffer geometry based on something like Math.cos. 
@@ -161,6 +161,10 @@ This is then the source code for my new wave module example that thus far is wor
 ### 1.1 - Demo of wave module
 
 For this demo I want to test out using the geometry that I make an update from the wave module with a mesh object. I would then also like to test out that all the features of the geometry are working as expect as well. So I am adding a light source, and I am also making use of data textures as a way to create a quick texture with a little javaScript code.
+
+When it comes to making the geometry for the first time I call the parse option method of the wave module and pass what values I would like to set. Whatever I do not set will default to hard coded defaults in the wave module. I can then use the resulting options object to create the geometry for the first time. When calling the create method the geometry will also be updated for the first time based on the values if the options object. After that I can use the geometry to make a mesh object, and what it comes to the material I went with the Phong material and use the date texture for the map option.
+
+In the body of the loop method I can update some of the options over time if I like and then use the update method of the wave module with the options object to change the state of the geometry over time. For this example I am changing the main alpha value, as well as the degree options. This results in the waves moving, and also the direction in which they are moving changes over time as well.
 
 ```js
 //-------- ----------
