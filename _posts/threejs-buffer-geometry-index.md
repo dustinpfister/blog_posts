@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1017
-updated: 2022-12-10 12:27:57
-version: 1.9
+updated: 2022-12-14 12:28:25
+version: 1.10
 ---
 
 The [index property of a buffer geometry instance in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.index) is a way to define an array of index values in a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
@@ -141,11 +141,112 @@ When it comes to getting started with the index property of buffer geometry ther
 
 With both mesh objects In this example I am using the mesh normal material and if you look closely at the outcome of this you will notice that they both look a littler different. This is because for both geometries I am calling the compute vertex normals method to create the normal attribute of the geometries and with the indexed geometry the state of the normal attribute is not a typically desired outcome.  This is because we have four points rather than sit which results in 4 normal vector rather than six, which in turn also effects the face normals sense vector normals are used to find that.
 
-## 2 - Animaiton loop exmaples
+## 2 - The set index method
+
+One thing that I learned is that it is a good idea to be aware of the limits of typed arrays when making a buffer attribute that is to be used with the set index method of the buffer geometry class. In the threejs docs it is shown that a buffer attribute needs to be passed as the first and only argument when calling the set index method. However the good news is that a plane old JavaScript array can be passed in place of a buffer attribute as well and it may be best to just simply do that actually.
+
+If you do want to pass a buffer attribute when calling the set index method just keep in mind that there are limits to these various data types. The numbers should be integers however it might still be best to go with a float option actually sense some of them have higher max safe integer values than the integer options for typed arrays. This is very true with the Uint8Array typed array that is just a single byte of course, and as such it will limit the usable point count of the geometry to 256.
+
+### 2.1 - Custom Plane Geometry based on THREE.PlaneGeometry
+
+```js
+(function(){
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, -2, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // HELPER FUNCTION
+    //-------- ----------
+    // custom plane geo function based off of THREE.PlaneGeometry source code found at:
+    // https://github.com/mrdoob/three.js/blob/r146/src/geometries/PlaneGeometry.js
+    const PlaneGeo = ( width = 1, depth = 1, widthSegments = 1, depthSegments = 1) => {
+        const geo = new THREE.BufferGeometry();
+        const width_half = width / 2;
+        const depth_half = depth / 2;
+        const gridX = Math.floor( widthSegments );
+        const gridZ = Math.floor( depthSegments );
+        const gridX1 = gridX + 1;
+        const gridZ1 = gridZ + 1;
+        const segment_width = width / gridX;
+        const segment_depth = depth / gridZ;
+        const indices = [];
+        const vertices = [];
+        const normals = [];
+        const uvs = [];
+        // position, normal, and uv data arrays
+        for ( let iz = 0; iz < gridZ1; iz ++ ) {
+            const z = iz * segment_depth - depth_half;
+            for ( let ix = 0; ix < gridX1; ix ++ ) {
+                const x = ix * segment_width - width_half;
+                vertices.push( x, 0, z );
+                normals.push( 0, 0, 1 );
+                uvs.push( ix / gridX );
+                uvs.push( 1 - ( iz / gridZ ) );
+             }
+        }
+        geo.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+        geo.setAttribute( 'normal', new THREE.Float32BufferAttribute( normals, 3 ) );
+        geo.setAttribute( 'uv', new THREE.Float32BufferAttribute( uvs, 2 ) );
+        //-------- ----------
+        // THE BUFFER GEOMETRY INDEX DATA, and the BufferGeometry setIndex method
+        //-------- ----------
+        for ( let iz = 0; iz < gridZ; iz ++ ) {
+            for ( let ix = 0; ix < gridX; ix ++ ) {
+                const a = ix + gridX1 * iz;
+                const b = ix + gridX1 * ( iz + 1 );
+                const c = ( ix + 1 ) + gridX1 * ( iz + 1 );
+                const d = ( ix + 1 ) + gridX1 * iz;
+                indices.push( a, b, d );
+                indices.push( b, c, d );
+            }
+        }
+        // UISNG THE SET INDEX METHOD TO CREATE THE INDEX FOR THE BUFFER GEOMETRY
+        // PASSING AN ARRAY, AND NOT A BUFFER ATTRIBUTE. IF A BUFFER ATTRIBUTE IS PASSED
+        // MAKE SURE IT IS NOT A Uint8 TYPED ARRAY AS INDEX VALUES CAN GO BEYOND 255
+        //--------
+        // YES - Number.MAX_SAFE_INTEGER is 9007199254740991
+        geo.setIndex(indices);
+        //--------
+        // MAYBE - There are some typed options that might still work okay
+        // geo.setIndex( new THREE.Float64BufferAttribute( indices, 1) );
+        // geo.setIndex( new THREE.Float32BufferAttribute( indices, 1) );
+        // geo.setIndex( new THREE.Uint32BufferAttribute( indices, 1) );
+        //--------
+        // NO!! - limit of Unit8Array is 255
+        // geo.setIndex( new THREE.BufferAttribute( new Uint8Array(indices), 1) );
+        // geo.setIndex( new THREE.Uint8BufferAttribute( indices, 1) );
+        return geo;
+    };
+    //-------- ----------
+    // GEO, MATERIAL, MESH
+    //-------- ----------
+    const geo = PlaneGeo(10, 10, 20, 20);
+    const material = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(0, 1, 0),
+        wireframe: true,
+        wireframeLinewidth: 3
+    });
+    const mesh = new THREE.Mesh(geo, material);
+    scene.add(mesh);
+    //-------- ----------
+    // RENDER
+    //-------- ----------
+    renderer.render(scene, camera);
+}());
+```
+
+## 3 - Animaiton loop exmaples
 
 As always I like to work out at least one if not more animation loop example for my posts that help to give a better idea of what the subject of the post is all about. For the subject of indexed and none indexed geometry there is a whole lot of potential when it comes to this subject that involves changing the state of a position attribute over time for both and indexed and non indexed geometry to showcase a major difference between they two.
 
-### 2.1 - Two Box Geometry based Mesh Objects
+### 3.1 - Two Box Geometry based Mesh Objects
 
 When using the [THREE.BoxGeometry class to create a geometry](/2021/04/26/threejs-box-geometry/) it will have an index for it set up for me. If I want the box to not be indexed I can just call the to non index method to do so. For this example I create a geometry with the box geometry constructor function, and then another geometry that is just a clone of this. I then class the to non indexed method off of the clone of the box geometry to end up with an indexed and non indexed box geometry that I then use with two mesh objects. I then add both of these mesh objects to a group and loop over the children of the group in a main update method.
 
@@ -227,7 +328,7 @@ When updating the same points in each position attribute the result as one shoul
 }());
 ```
 
-### 2.2 - Two Plane Geometry Objects video1 example
+### 3.2 - Two Plane Geometry Objects video1 example
 
 Although the box geometry example shows what the deference is between index and non indexed geometry I have found that this example that involves the use of plane geometry does a better job of showing the difference. When it comes to the mesh that uses the geometry that does not have an index that breaks apart into a whole bunch of triangles, where the indexed geometry just turns into a bunch of peaks and values and starts to look like land.
 
