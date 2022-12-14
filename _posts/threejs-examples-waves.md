@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2022-12-13 13:28:14
-version: 1.29
+updated: 2022-12-13 20:38:48
+version: 1.30
 ---
 
 So I wanted to start making some posts on [threejs examples](/2021/02/19/threejs-examples/), rather that the usual posts on certain basic things here and there with just the core of what threejs alone is. One of the first ideas that came to mind was to make a waves example where I create an update a buffer geometry based on something like Math.cos. 
@@ -40,11 +40,221 @@ The source code examples that I write about here can also be found in my [test t
 
 When working out this example for the first time I was using revision 98 of threejs, and the last time I can around to do some editing on this post I have updated all the examples to work well with r146. Threejs is a library that is a very fast moving target when it comes to development, it seems like to new revision is coming out every few months. If the code here breaks the first thing that you should check is the version number, because this was working for me when it comes to the version of threejs that I was using at the time.
 
-## 1 - The wave module example and demo \( r0 \)
+## 1 - The new Wave Module \( r1 \) that works with mesh objects
+
+With r1 of the wave module I now have a revision of this threejs example that makes and updates a geometry that will work well with mesh objects. The custom geometry that is created will have a position, normal, and uv attribute. This means that there will be the actual points in space as well as normal that help define what side of a face is the front size, and a uv attribute so that textures will work with the geometry. On top of all this I also now have an index for the geometry as well which is a way to reuse points in the position attribute so that the geometry will be smaller than it would otherwise need to be.
+
+### The Wave module \( r1 \)
+
+This is then the source code for my new wave module example that thus far is working way better than what I had before hand with this. The old wave module would just create a positions attribute and nothing more. However this will create and update all of the core attribute values for a geometry. There an update and create method same as before, but I now also have a parse option method as well that I can use to help with the process of making a options object that will work with create and update methods of the module.
+
+```js
+// waves - r1 - from threejs-examples-waves
+(function (api) {
+    // parse options
+    api.parseOpt = function (opt) {
+        opt = opt || {};
+        opt.width = opt.width === undefined ? 1 : opt.width;
+        opt.height = opt.height === undefined ? 1 : opt.height;
+        opt.waveHeight = opt.waveHeight === undefined ? 0.5 : opt.waveHeight;
+        opt.xWaveCount = opt.xWaveCount === undefined ? 4 : opt.xWaveCount;
+        opt.zWaveCount = opt.zWaveCount === undefined ? 2 : opt.zWaveCount;
+        opt.widthSegs = opt.widthSegs === undefined ? 20 : opt.widthSegs;
+        opt.heightSegs = opt.heightSegs === undefined ? 20 : opt.heightSegs;
+        opt.degree = opt.degree === undefined ? 45 : opt.degree;
+        opt.alpha = opt.alpha === undefined ? 0 : opt.alpha;
+        return opt;
+    };
+    // update the geometry
+    api.update = function (geo, opt) {
+        opt = api.parseOpt(opt);
+        const att_pos = geo.getAttribute('position');
+        const att_uv = geo.getAttribute('uv');
+        const width_half = opt.width / 2;
+        const height_half = opt.height / 2;
+        const gridY = opt.heightSegs;
+        const gridX = opt.widthSegs;
+        const gridX1 = gridX + 1;
+        const gridY1 = gridY + 1;
+        const segment_width = opt.width / gridX;
+        const segment_height = opt.height / gridY;
+        // update
+        for ( let iz = 0; iz < gridY1; iz ++ ) {
+            const z = iz * segment_height - height_half;
+            const a1 = iz / gridY1;
+            for ( let ix = 0; ix < gridX1; ix ++ ) {
+                const x = ix * segment_width - width_half;
+                const i = iz * gridX1 + ix;
+                // alphas
+                const a2 = ix / gridX1;
+                // radian
+                const radian_dir = Math.PI / 180 * opt.degree;
+                const r1 = Math.PI * 2 * Math.sin( radian_dir ) * opt.zWaveCount * a1;
+                const r2 = Math.PI * 2 * Math.cos( radian_dir ) * opt.xWaveCount * a2;
+                const r3 = Math.PI * 2 * opt.alpha;
+                // y
+                const y = Math.sin( (r1 + r2 + r3) % (Math.PI * 2) ) * opt.waveHeight;
+                // set x,y,z
+                att_pos.setXYZ(i, x, y, z);
+                // set uv
+                att_uv.setXY(i, ix / gridX, 1 - ( iz / gridY ));
+            }
+        }
+        att_pos.needsUpdate = true;
+        // update the normal attribute
+        geo.computeVertexNormals();
+    };
+    //-------- ----------
+    // CREATE METHOD AND HELPERS
+    //-------- ----------
+    // create a position attribute
+    const create_position_uv = (geo, opt) => {
+        const data_pos = [];
+        const data_uv = [];
+        const len = (opt.widthSegs + 1) * (opt.heightSegs + 1);
+        let i = 0;
+        while(i < len){
+            data_pos.push(0, 0, 0);
+            data_uv.push(0, 0);
+            i += 1;
+        }
+        geo.setAttribute('position', new THREE.BufferAttribute( new Float32Array(data_pos), 3));
+        geo.setAttribute('uv', new THREE.BufferAttribute( new Float32Array(data_uv), 2));
+    };
+    // create an index for the position attribute
+    const create_index = (geo, opt) => {
+        const data_index = [];
+        const gridY = opt.heightSegs;
+        const gridX = opt.widthSegs;
+        const gridX1 = gridX + 1;
+        for ( let iy = 0; iy < gridY; iy ++ ) {
+             for ( let ix = 0; ix < gridX; ix ++ ) {
+                 const a = ix + gridX1 * iy;
+                 const b = ix + gridX1 * ( iy + 1 );
+                 const c = ( ix + 1 ) + gridX1 * ( iy + 1 );
+                 const d = ( ix + 1 ) + gridX1 * iy;
+                 data_index.push( a, b, d );
+                 data_index.push( b, c, d );
+             }
+        }
+        // THIS WAS WHAT THE DEAL WAS!
+        // THE DOCS SAY TO PASS A BUFFER ATTRIBUTE, BUT PASSING AN ARRAY WORKS
+        // FOUND THIS OUT BY READING THE PLANE GEO SOURCE CODE AT
+        // https://github.com/mrdoob/three.js/blob/dev/src/geometries/PlaneGeometry.js
+        // const att_index = new THREE.BufferAttribute( new Uint8Array(data_index), 1);
+        geo.setIndex(data_index);
+    };
+    // create a geometry and update it for the first time
+    api.create = function (opt) {
+        opt = api.parseOpt(opt);
+        const geo = new THREE.BufferGeometry();
+        // position, and index
+        create_position_uv(geo, opt);
+        create_index(geo, opt);
+        // update
+        api.update(geo, opt);
+        return geo;
+    };
+}( this['waveMod'] = {} ));
+```
+
+### 1.1 - Demo of wave module
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+//scene.add( new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.001, 1000);
+camera.position.set(10, 8, 10);
+camera.lookAt(0, -2, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const getAlpha = (n, d, c) => {
+    return (n / d * c) % 1;
+};
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(3, 2, 1);
+scene.add(dl);
+//-------- ----------
+// TEXTURE
+//-------- ----------
+// USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
+// Uisng the seeded random method of the MathUtils object
+const width = 32, height = 32;
+const size = width * height;
+const data = new Uint8Array( 4 * size );
+for ( let i = 0; i < size; i ++ ) {
+    const stride = i * 4;
+    const v = 50 + Math.floor( THREE.MathUtils.seededRandom() * 205 );
+    data[ stride ] = 0;
+    data[ stride + 1 ] = v;
+    data[ stride + 2 ] = 0;
+    data[ stride + 3 ] = 255;
+}
+const texture = new THREE.DataTexture( data, width, height );
+texture.needsUpdate = true;
+//-------- ----------
+// GEO
+//-------- ----------
+const wave_opt = waveMod.parseOpt({
+    width: 10,
+    height: 10,
+    waveHeight: 0.5,
+    xWaveCount: 2,
+    zWaveCount: 2,
+    widthSegs: 50,
+    heightSegs: 50
+});
+const geo = waveMod.create( wave_opt );
+//-------- ----------
+// MESH, MATERIAL
+//-------- ----------
+const material = new THREE.MeshPhongMaterial({ side: THREE.DoubleSide, map: texture });
+const mesh = new THREE.Mesh(geo, material);
+scene.add(mesh);
+mesh.position.set( 0, 0, 0 )
+//-------- ----------
+// LOOP
+//-------- ----------
+//new THREE.OrbitControls(camera, renderer.domElement);
+let frame = 0, lt = new Date();
+const maxFrame = 800, fps = 30;
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    //per = frame / maxFrame,
+    //bias = 1 - Math.abs(per - 0.5) / 0.5;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // wave options and update of wave geo
+        wave_opt.alpha = getAlpha(frame, maxFrame, 32);
+        wave_opt.degree = 360 * getAlpha(frame, maxFrame, 1);
+        waveMod.update(geo, wave_opt);
+        // render
+        renderer.render(scene, camera);
+        // step frame
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 2 - The old wave module example and demo \( r0 \)
 
 In this section I will be writing about the first revision of this threejs project example, as well as a single demo of it in action.
 
-### The Wave module
+### The Wave module \( r0 \)
 
 The wave module example I made involves a helper method that can be used to create, or update geometry, buffered geometry, or just about anything by making the helper a [higher-order function](https://en.wikipedia.org/wiki/Higher-order_function). This method accepts another method as one of the arguments that is passed the x,y,and z values for each point that will compose the vertices of the wave. I then use this method in conjunction with others to help make an update the geometry of the wave. The wave grid helper method that accepts a method that can then be used to define what to do for each point in the grid of points. I use this to create an instance of buffer geometry and again later to update it in a loop.
 
@@ -129,7 +339,7 @@ I again use my waveGrid method to update points by just using the for point opti
 ```
 
 
-### 1.1 - Get it going with a basic demo of the module
+### 2.1 - Get it going with a basic demo of the module
 
 So now it is time to get this all working with the usual scene, camera, renderer, and animation loop function that I often do in examples like this. After setting up the renderer and scene object I just use my makePoints helper to make the instance of a Points mesh that makes use of my geometry, and the Points material. I then set up a camera, and then I have some values for my main app loop function that will be using request animation frame.
 
@@ -183,6 +393,7 @@ loop();
 ```
 
 The result of this up and running is then a bunch of dots in the canvas moving up and down in a wave like pattern, I am also doing a number of other things in this example that have to do with many other note worthy features of three.js. For example I wanted to do something that involves moving the camera around by making use of the position and rotation properties as well as the look at method of the camera all of which are methods and properties of the base class known as Object3d.
+
 
 ## Conclusion
 
