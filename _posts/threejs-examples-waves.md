@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2022-12-13 20:48:45
-version: 1.32
+updated: 2022-12-13 20:53:58
+version: 1.33
 ---
 
 So I wanted to start making some posts on [threejs examples](/2021/02/19/threejs-examples/), rather that the usual posts on certain basic things here and there with just the core of what threejs alone is. One of the first ideas that came to mind was to make a waves example where I create an update a buffer geometry based on something like Math.cos. 
@@ -42,11 +42,13 @@ When working out this example for the first time I was using revision 98 of thre
 
 ## 1 - The new Wave Module \( r1 \) that works with mesh objects
 
-With r1 of the wave module I now have a revision of this threejs example that makes and updates a geometry that will work well with mesh objects. The custom geometry that is created will have a position, normal, and uv attribute. This means that there will be the actual points in space as well as normal that help define what side of a face is the front size, and a uv attribute so that textures will work with the geometry. On top of all this I also now have an index for the geometry as well which is a way to reuse points in the position attribute so that the geometry will be smaller than it would otherwise need to be.
+With r1 of the wave module I now have a revision of this threejs example that makes and updates a geometry that will work well with mesh objects. The custom geometry that is created will have a position, normal, and uv attribute. This means that there will be the actual points in space as well as normal that help define what side of a face is the front size, and a uv attribute so that textures will work with the geometry. On top of all this I also now have an [index for the geometry](/2022/12/09/threejs-buffer-geometry-index/) as well which is a way to reuse points in the position attribute so that the geometry will be smaller than it would otherwise need to be.
 
 ### The Wave module \( r1 \)
 
 This is then the source code for my new wave module example that thus far is working way better than what I had before hand with this. The old wave module would just create a positions attribute and nothing more. However this will create and update all of the core attribute values for a geometry. There an update and create method same as before, but I now also have a parse option method as well that I can use to help with the process of making a options object that will work with create and update methods of the module.
+
+One major problem that I ran into was with setting the index for the geometry, in the threejs Docs it says that a buffer attribute should be passed to the set index method. However I have found that this will result in weird rendering when I set the segment sizes of the geometry to high. I finally took a look at the source code for the plane geometry class of the core of threejs and saw that they are just passing an array to the set index method actually I then made that change and sure enough it was working just fine then.
 
 ```js
 // waves - r1 - from threejs-examples-waves
