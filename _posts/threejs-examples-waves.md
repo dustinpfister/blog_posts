@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2022-12-13 20:38:48
-version: 1.30
+updated: 2022-12-13 20:42:13
+version: 1.31
 ---
 
 So I wanted to start making some posts on [threejs examples](/2021/02/19/threejs-examples/), rather that the usual posts on certain basic things here and there with just the core of what threejs alone is. One of the first ideas that came to mind was to make a waves example where I create an update a buffer geometry based on something like Math.cos. 
@@ -159,6 +159,8 @@ This is then the source code for my new wave module example that thus far is wor
 ```
 
 ### 1.1 - Demo of wave module
+
+For this demo I want to test out using the geometry that I make an update from the wave module with a mesh object. I would then also like to test out that all the features of the geometry are working as expect as well. So I am adding a light source, and I am also making use of data textures as a way to create a quick texture with a little javaScript code.
 
 ```js
 //-------- ----------
