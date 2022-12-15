@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-12-15 10:54:11
-version: 1.99
+updated: 2022-12-15 11:08:00
+version: 1.100
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -180,7 +180,9 @@ This is an example where I have worked out a crude yet effective module that can
 
 ### [ 2.32 - Scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
-This is an example of a module that can be used to shake the whole scene that will work if I do not add the camera to the scene of course. However any object in three.js that is based off of object3d can also be used with this shake module.
+The Scene object is also based on the Object3d class just like that of mesh objects, groups, and cameras. So just like any other object3d based object it was a position property that stores an instance of Vector3, and a rotation property that stores and instance of the Euler class. In other words, simply put, a whole scene object can be moved and rotated just like any other. 
+
+The main difference between many other objects is that typically a scene object does not have any parent object. So when it is positioned and rotated it is done so in relation to what is often referred to as world space. This project is then a module where I export this a little by making a kind of screen shake module that will move the whole scene object around in world space.
 
 ### [ 2.33 - Video sequence hooks ](/2022/05/12/threejs-examples-sequence-hooks/)
 
@@ -222,7 +224,10 @@ This is a module in which I set the uv attribute of a box geometry the way that 
 
 ### [ 2.42 - Waves](/2018/11/14/threejs-examples-waves/) 
 
-The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
+The is a basic example of some waves in the form of just a simple sin wave. The first revision of this module involve just creating a custom buffer geometry that has a position attribute only. This kind of geometry will work okay when using the THREE.Points, or THREE.Lines class to display the state of the geometry. However I have also made a more recent revision of this module that will now also work well with the THREE.Mesh class as well.
+
+As of R1+ of this project this is now starting to look like an okay example of how to go about creating, and updating a custom geometry. There is code that created and or updates the position attribute as well as an index for the position attribute. There is now also a normal and UV attribute as well that allows for it to work with mesh objects okay.
+
 
 ### [ 2.43 - Weird face one](/2022/07/08/threejs-examples-weird-face-one/) 
 
@@ -250,4 +255,5 @@ There are a lot of methods that have to do with clamping values to a set of boun
 ## Conclusion
 
 That is it for now when it comes to threejs examples. For now I think I will like to keep this list short and if I put more time into this the focus will be to make the examples that I have together all ready a little more refined rather than making more examples.
-What i really need to start thinking about is what I want to do with three.js when it comes to long terms projects if any. I am starting to get a half way decent grasp on the core basics of what to work with, but to what end? I am not thinking that I will be wanted to make games with three.js, but animations might prove to be more realistic for me, and even then very crude yet possible amusing ones.
+What I really need to start thinking about is what I want to do with three.js when it comes to long terms projects if any. I am starting to get a half way decent grasp on the core basics of what to work with, but to what end? I am not thinking that I will be wanted to make games with three.js, but animations might prove to be more realistic for me, and even then very crude yet possible amusing ones.
+
