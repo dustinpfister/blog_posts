@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-12-15 17:37:46
-version: 1.32
+updated: 2022-12-15 18:00:47
+version: 1.33
 ---
 
 This post on threejs will be on a [threejs project example ](/2021/02/19/threejs-examples/) that is a simple idea for a weird walk animation module. This is just one of several ideas that have come to me that might prove to be a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/). This is not the first project idea like this, one of the oldest examples of this kind of model is my [guy one](/2021/04/29/threejs-examples-guy-one/) threejs example that I made a few years back, and I have many others actually at this point.
@@ -627,6 +627,253 @@ In revision 2 of the weird walk one module I removed the built in data textures 
         arm.children[0].rotation.x = wrapRadian( Math.PI / 180 * a2 * -1 );
     };
 }( this['weirdGuy'] = {} ));
+```
+
+### 3.1 - Another basic example of the module \( r2 \)
+
+Yet another basic example just for the sake of making sure things work okay with this new module. I made some slight changes with the set arm method, so for the most part it was just tesing out that this works nice.
+
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 8 / 9, 0.05, 100);
+    camera.position.set(4, 3, 4);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    dl.position.set(0.1, 1.0, 0);
+    scene.add(dl);
+    //-------- ----------
+    // WEIRD GUY INSTANCE
+    //-------- ----------
+    const guy = weirdGuy.create({});
+    scene.add(guy);
+    //-------- ----------
+    // ANIMATION LOOP
+    //-------- ----------
+    let frame = 0,
+    lt = new Date();
+    const maxFrame = 60;
+    const loop = function () {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / 24) {
+            const per = frame / maxFrame * 5 % 1,
+            bias = 1 - Math.abs(0.5 - per) / 0.5;
+            // Set walk will just move the legs
+            weirdGuy.setWalk(guy, bias);
+            // using set arm method to swing the arms
+            weirdGuy.setArm(guy, 1, -20 + 40 * bias, 0);
+            weirdGuy.setArm(guy, 2, 20 - 40 * bias, 0);
+            // draw
+            renderer.render(scene, camera);
+            frame += 20 * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+### 3.2 - Can now transition into and out of a walk cycle \( r2 \)
+
+The major additional for this revision of the module was an additional update method that I can use in video projects to transition from a standing state into a walking state, and back again. So I made this example where I have a number of states one of which is a walk state, along with transition in and out stats and a rest state. It would seem that this new update method is working just fine then.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 8 / 9, 0.05, 100);
+    camera.position.set(4, 3, 4);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    dl.position.set(3, 1.0, 0.5);
+    scene.add(dl);
+    const al = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(al);
+    //-------- ----------
+    // WEIRD GUY INSTANCE
+    //-------- ----------
+    const guy = weirdGuy.create({});
+    scene.add(guy);
+    //-------- ----------
+    // STATE
+    //-------- ----------
+    const state = {
+       mode: 'walk',
+       n: 0, d: 80, // used to get walk alpha
+       c: 0
+    };
+    // walk update method
+    state.walk = function(state){
+        const a1 = state.n / state.d;
+        const a2 = 1 - Math.abs(0.5 - a1 * 4 % 1) / 0.5;
+        weirdGuy.setWalk(guy, a2);
+        state.n += 1;
+        state.n %= state.d;
+        state.c += 1;
+        if(state.c >= 90){
+            state.mode = 'walk_trans_out';
+            state.c = 0;
+        }
+    };
+    state.walk_trans_out = function(state){
+        const a1 = state.n / state.d;
+        const a2 = 1 - Math.abs(0.5 - a1 * 4 % 1) / 0.5;
+        weirdGuy.transLegs(guy, a2, state.c / 30);
+        state.c += 1;
+        if(state.c >= 30){
+            state.mode = 'rest';
+            state.c = 0;
+        }
+    };
+    state.rest = function(state){
+        weirdGuy.transLegs(guy, 0, 1);
+        state.c += 1;
+        if(state.c >= 90){
+            state.mode = 'walk_trans_in';
+            state.c = 0;
+        }
+    };
+    state.walk_trans_in = function(state){
+        const a1 = state.n / state.d;
+        const a2 = 1 - Math.abs(0.5 - a1 * 4 % 1) / 0.5;
+        weirdGuy.transLegs(guy, a2, 1 - state.c / 30);
+        state.c += 1;
+        if(state.c >= 30){
+            state.mode = 'walk';
+            state.c = 0;
+        }
+    };
+    //-------- ----------
+    // ANIMATION LOOP
+    //-------- ----------
+    let lt = new Date();
+    const loop = function () {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / 24) {
+            state[state.mode](state);
+            // draw
+            renderer.render(scene, camera);
+            //frame += 20 * secs;
+            //frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+
+### 3.3 - Can still use textures, just need to create them outside of the module \( r2 \)
+
+I remove the built in data textures that I had in older revisions as I have a number of other modules for creating textures that I would rather use in projects to create the textures that I would use with a project like this. So in this example I am still using textures it is just that I have to certain them in my demo code here. In a real final video project that I might make using this project I have a number of projects for creating texture with data textures, canvas textures, or just simply loading external static images that I would use to create the textures.
+
+```js
+(function () {
+    //-------- ----------
+    // SCENE, CAMERA, and RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 8 / 9, 0.05, 100);
+    camera.position.set(4, 3, 4);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // LIGHT
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    dl.position.set(3, 1.0, 0.5);
+    scene.add(dl);
+    //-------- ----------
+    // DATA TEXTURE FOR MATERIALS
+    //-------- ----------
+    const width = 80, height = 80;
+    const size = width * height;
+    const data = new Uint8Array( 4 * size );
+    for ( let i = 0; i < size; i ++ ) {
+        const stride = i * 4;
+        const v = 150 + Math.floor( THREE.MathUtils.seededRandom() * 105 );
+        data[ stride ] = v;
+        data[ stride + 1 ] = v;
+        data[ stride + 2 ] = v;
+        data[ stride + 3 ] = 255;
+    }
+    const texture = new THREE.DataTexture( data, width, height );
+    texture.needsUpdate = true;
+    //-------- ----------
+    // CISTOM MATERIALS
+    //-------- ----------
+    const MATERIALS = [
+        new THREE.MeshPhongMaterial( { map: texture, color: 0xffff00} ),
+        new THREE.MeshPhongMaterial( { map: texture, color: 0x00afff} ),
+        new THREE.MeshPhongMaterial( { color: 0xffffff} ),
+        new THREE.MeshPhongMaterial( { color: 0x000000} ),
+        new THREE.MeshPhongMaterial( { color: 0xff0000} )
+    ];
+    //-------- ----------
+    // WEIRD GUY INSTANCE
+    //-------- ----------
+    const guy = weirdGuy.create({
+        materials: MATERIALS
+    });
+    scene.add(guy);
+    //-------- ----------
+    // ANIMATION LOOP
+    //-------- ----------
+    let frame = 0,
+    lt = new Date();
+    const maxFrame = 60;
+    const loop = function () {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / 24) {
+            const per = frame / maxFrame * 5 % 1,
+            bias = 1 - Math.abs(0.5 - per) / 0.5;
+            // Set walk will just move the legs
+            weirdGuy.setWalk(guy, bias);
+            // using set arm method to swing the arms
+            weirdGuy.setArm(guy, 1, -20 + 40 * bias, 0);
+            weirdGuy.setArm(guy, 2, 20 - 40 * bias, 0);
+            // draw
+            renderer.render(scene, camera);
+            frame += 20 * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
 ```
 
 ## Conclusion
