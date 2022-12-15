@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-12-15 10:30:46
-version: 1.98
+updated: 2022-12-15 10:54:11
+version: 1.99
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -133,15 +133,15 @@ This is a project centered around the idea of lerping the points  of a position 
 
 ### [ 2.22 - Lines Group Module ](/2022/06/10/threejs-examples-lines-deterministic/) 
 
-A more generic kind of line group module compared to another similar examples where the goal was to just create a group of lines that form a sphere.
+A more generic kind of line group module compared to another similar examples where the goal was to just create a group of lines that form a sphere only. Here in this example I am still creating a collection of lines that from a sphere, but by way of optional additional code rather than code that is built into the module itself.
 
 ### [ 2.23 - Lines Sphere Circles](/2022/06/03/threejs-examples-lines-sphere-circles/) 
 
-I wanted a module that will return a group where each child is an instance of a three line that is one of many circles that compose a sphere like shape. I can then work out a number of ways to create animations from there with additional code.
+I wanted a module that will return a group where each child is an instance of a three line. Also on top of that each line is one of many circles that compose a sphere like shape over all. I can then work out a number of ways to create animations from there with additional code that plays around with this. This was just an exploration of a general idea that I would now do differently though as I have other examples here that have to do with this kind of thing in a more general way, as well as doing so with curves and so forth.
 
 ### [ 2.24 - Vector3 apply Euler and lookAt](/2022/05/06/threejs-examples-lookat-with-apply-euler/) 
 
-This is an example that shows something that might prove to be a problem when using the look at method of the object3d class. it is not that the look at method is broken, it is just that it works a certain way that is fine in most cases, but not in others.
+This is an example that shows something that might prove to be a problem when using the look at method of the object3d class. It is not that the look at method is broken, it is just that it works a certain way that is fine in most cases, but not in others. For the most part the look at method is a magic wand kind of method where I just call it off of an object, pass numbers or a Vector3 object that is a point in space that I want the object to face, and that is all. However some times a custom solution for setting the rotation of an object is needed when dealing with something that is say an object that represents a plane that is going to do things like loops and rolls.
 
 ### [ 2.25 - Many Object Tweening](/2022/08/26/threejs-examples-many-object-tweening/)
 
@@ -168,7 +168,7 @@ I wanted to make a quick simple object grid module type project where I can crea
 
 ### [ 2.29 - Object grid Wrap land ](/2022/07/15/threejs-examples-object-grid-wrap-land/)
 
-Continuing with my object grid wrap module I made this additional example in which I am building on top of the module with additional code that sets up a grid in a way in which I have something that looks like land.
+Continuing with my object grid wrap module I made this additional example in which I am building on top of the module with additional code that sets up a grid in a way in which I have something that looks like land. The object grid wrap module is another threejs example here that I made where I create a collection of source objects, and then have a grid of objects that is created by cloning these source objects in a tile by tile basic in an over all 2d grid.
 
 ### [ 2.30 - Mutate a plane ](/2021/06/11/threejs-examples-plane-mutate/)
 
