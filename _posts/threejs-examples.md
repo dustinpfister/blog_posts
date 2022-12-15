@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-12-13 08:28:48
-version: 1.96
+updated: 2022-12-15 10:08:25
+version: 1.97
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -85,7 +85,7 @@ I while back I made a cool little example for my blog post on the orthographic c
 
 I wanted to continue with my cube stack module and make an example that is a grid where each tile in the grid is an instance of my cube stack module. I had a lot of fun making this one and the end result looks kind of cool. However I can not say that this is the kind of examples that i will be putting a great deal more time into any time soon. I starred another project that is like this one, but it is more in tune with having a grid of objects in general which is something that will be taking priority over this for sure.
 
-### [ 2.14 - ](/2022/11/18/threejs-examples-curves-module/)
+### [ 2.14 - Curves Module ](/2022/11/18/threejs-examples-curves-module/)
 
 If you have not yet looked into the THREE.Curve base class as well as the various additional classes built on top of that base class it would be a good idea to look into it sooner rather than later. Curves are great when it comes to really getting into how to go about figuring out truly professional object movement over time as it allows for me to quickly create a path in 3d space and then get a Vector3 object at any point along that path. I can then copy that Vector object to say the position property of any object3d based objects such as a mesh, group, or camera. There are a lot of other great uses for curves beyond just that though such as using them to compute smooth alpha values such as that of what is returned by methods such as MathUtils.smoothstep, and it also goes without saying the curves can prove to be a useful tool for writing custom geometry constrictor functions.
 
@@ -93,7 +93,7 @@ This is then a threejs project example that is my current set of tools to help m
 
 ### [ 2.15 - A dea file tools module ](/2021/06/25/threejs-examples-dae-tools/)
 
-A module that serves as a basic set of tools when it comes to loading and processing a collection of dea files for a scene.
+This is a project that I started that is a module that serves as a basic set of tools for loading, and processing a collection of [DAE files](/2021/04/30/threejs-dae-collada-loader/).
 
 ### [ 2.16 - DAE TOOLS and a Sphere with inverted normals ](/2022/05/31/threejs-examples-dae-tools-sphere-normals-invert/)
 
