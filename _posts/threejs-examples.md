@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-12-15 10:08:25
-version: 1.97
+updated: 2022-12-15 10:30:46
+version: 1.98
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -91,13 +91,17 @@ If you have not yet looked into the THREE.Curve base class as well as the variou
 
 This is then a threejs project example that is my current set of tools to help me with the process of creating and working with curves, as well as all kinds of closely related tasks revolving around curves.
 
-### [ 2.15 - A dea file tools module ](/2021/06/25/threejs-examples-dae-tools/)
+### [ 2.15 - A DAE file tools module ](/2021/06/25/threejs-examples-dae-tools/)
 
-This is a project that I started that is a module that serves as a basic set of tools for loading, and processing a collection of [DAE files](/2021/04/30/threejs-dae-collada-loader/).
+This is a project that I started that is a module that serves as a basic set of tools for loading, and processing a collection of [DAE files](/2021/04/30/threejs-dae-collada-loader/). The [DAE or Collada file format](https://en.wikipedia.org/wiki/COLLADA) is a standard for interchange of data for interactive 3D applications including threejs when adding the DAE file loader as an additional script beyond just the core threejs library alone. The DAE format is a good choice because it is a text file format in the form of XML data, so it is very web friendly, and also easy to debug and fix as the data can be opened up and edited in a plane old text editor if need be.
+
+This project is just a collection of tools that I have started when working on top of threejs, and the DAE file loader where I park any methods that I might want to add for this sort of thing.
 
 ### [ 2.16 - DAE TOOLS and a Sphere with inverted normals ](/2022/05/31/threejs-examples-dae-tools-sphere-normals-invert/)
 
-In this example I wanted to work out an alternative to that of using a cube texture for the sake of having a background in a scene. For this example I made a sphere with flipped normals and a custom texture in blender and I am using my DAE tools module, along with the DAE file loader, as a way to import this.
+In this example I wanted to work out an alternative to that of using a cube texture for the sake of having a background in a scene. For this example I made a sphere with flipped normal values and a custom texture in blender. I am then using my DAE tools module, along with the DAE file loader, as a way to import this into a project. 
+
+There may be easier ways to go about doing this sort of thing by just writing a little javaScript code to invert the normal attribute of a sphere created with the THREE.SphereGeometry constructor function though.
 
 ### [ 2.17 - My First basic guy model](/2021/04/29/threejs-examples-guy-one/)
 
@@ -129,7 +133,7 @@ This is a project centered around the idea of lerping the points  of a position 
 
 ### [ 2.22 - Lines Group Module ](/2022/06/10/threejs-examples-lines-deterministic/) 
 
-A more generic kind of line group module compared to another similar example where the goal was to just create a group of lines that from a sphere.
+A more generic kind of line group module compared to another similar examples where the goal was to just create a group of lines that form a sphere.
 
 ### [ 2.23 - Lines Sphere Circles](/2022/06/03/threejs-examples-lines-sphere-circles/) 
 
