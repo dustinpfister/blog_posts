@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 979
-updated: 2022-12-12 14:49:28
-version: 1.31
+updated: 2022-12-15 17:37:46
+version: 1.32
 ---
 
 This post on threejs will be on a [threejs project example ](/2021/02/19/threejs-examples/) that is a simple idea for a weird walk animation module. This is just one of several ideas that have come to me that might prove to be a quick fun project for a weird little walking guy model that is composed of a few [mesh objects](/2018/05/04/threejs-mesh/) that come together to from a [group of objects](/2018/05/16/threejs-grouping-mesh-objects/). This is not the first project idea like this, one of the oldest examples of this kind of model is my [guy one](/2021/04/29/threejs-examples-guy-one/) threejs example that I made a few years back, and I have many others actually at this point.
@@ -466,6 +466,168 @@ So now it is time to test out this new weird guy module to see how things look. 
 ```
 
 So now I have something that looks pretty cool I have the little guy moving along a plane, or rather I have a plane moving in such a way that it looks like that. In any case what it is that I wanted to have working in terms of the moment of the arms is looking okay, but I still think that I do not have this done just the way that I would like it to be. I might want to have more going on when it comes to update the look on the little guys face, and also have a better set of textures for the over all look of the model.
+
+## 3 - Revision 2 of the weird guy walk module
+
+In revision 2 of the weird walk one module I removed the built in data textures in favor of leaving the creation of textures to an outside option that might be data textures or some other resource such as canvas textures, or external image assets. I also added an option to pass a custom collection of materials when calling the create option, leaving the built in materials as just a hard coded default option without any texture. Other improvements have to do with an additional update method that will help with the process of transitioning into and out of a walk cycle to a standing state.
+
+```js
+//-------- ----------
+// WEIRD GUY MODULE - r2 - from threeks-examples-weird-walk-one
+// * removed data textures
+// * materials create option
+// * walk trans update method
+// * get guy name, and wrap radian helpers
+//-------- ----------
+(function(api){
+    //-------- ----------
+    // MATERIALS
+    //-------- ----------
+    const MATERIALS = [
+        new THREE.MeshPhongMaterial( { color: 0x9a8800} ), // body
+        new THREE.MeshPhongMaterial( { color: 0x00aaff} ), // legs
+        new THREE.MeshPhongMaterial( { color: 0xffffff} ), // eyes1
+        new THREE.MeshPhongMaterial( { color: 0x1a1a1a} ), // eyes2
+        new THREE.MeshPhongMaterial( { color: 0xaa0000} )  // mouh
+    ];
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // return the next default guy name string (guy1, guy2, ...)
+    const genGuyName = (function(){
+        let n = 1;
+        return function(){
+            const id = 'guy' + n;
+            n += 1;
+            return id;
+        };
+    }());
+    // wrap radaian
+    const wrapRadian = (r) => {
+        return THREE.MathUtils.euclideanModulo(r, Math.PI * 2);
+    };
+    //-------- ----------
+    // CREATE A NEW WEIRD GUY OBJECT
+    //-------- ----------
+    // create a new weird guy
+    api.create = function(opt){
+        opt = opt || {};
+        opt.materials = opt.materials || MATERIALS;
+        const guy = new THREE.Group();
+        guy.name = opt.guyID || genGuyName();
+        // BODY
+        const body = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 2.0, 1),
+            opt.materials[0]
+        );
+        body.position.y = 0.25;
+        body.name = guy.name + '_body';
+        guy.add(body);
+        // EYES
+        ['eye1', 'eye2'].forEach(function(nameStr, i){
+            const eye = new THREE.Mesh(
+                new THREE.SphereGeometry(0.2, 30, 30),
+                opt.materials[2]
+            );
+            eye.name = guy.name + '_' + nameStr;
+            eye.position.set(-0.2 + 0.4 * i, 0.2, 0.5);
+            const innerEye = new THREE.Mesh(
+                new THREE.SphereGeometry(0.1, 30, 30),
+                opt.materials[3]
+            );
+            innerEye.position.set(0, 0, 0.125);
+            eye.add(innerEye);
+            body.add(eye);
+        });
+        // ADD MOUTH
+        const mouth = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.125, 0.25),
+            opt.materials[4]
+        );
+        mouth.name = guy.name + '_mouth';
+        mouth.position.set(0, -0.3, 0.5);
+        body.add(mouth);
+        // ADD ARMS
+        ['arm1', 'arm2'].forEach(function(nameStr, i){
+            const arm = new THREE.Mesh(
+                new THREE.BoxGeometry(0.25, 1.0, 0.25),
+                opt.materials[0]
+            );
+            arm.geometry.translate( 0, 0.5, 0 );
+            arm.name = guy.name + '_' + nameStr;
+            arm.position.set(-0.625 + 1.25 * i, 0.5, 0);
+            const tri = new THREE.Mesh(
+                new THREE.BoxGeometry(0.25, 1.0, 0.25),
+                opt.materials[0]
+            );
+            tri.geometry.translate( 0, 0.5, 0 );
+            tri.name = guy.name + '_' + nameStr + '_tri';
+            tri.position.set(0, 1, 0);
+            arm.add(tri); 
+            body.add(arm);
+        });
+        // ADD PELVIS
+        const pelvis = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 0.5, 1),
+            opt.materials[1]
+        );
+        pelvis.name = guy.name + '_pelvis';
+        pelvis.position.set(0, -1.0, 0);
+        guy.add(pelvis);
+        // ADD LEGS
+        ['leg1', 'leg2'].forEach(function(nameStr, i){
+            const leg = new THREE.Mesh(
+                new THREE.BoxGeometry(0.25, 1.5, 1),
+                opt.materials[1]
+            );
+            leg.name = guy.name + '_' + nameStr;
+            leg.position.set(-0.25 + 0.5 * i, -1, 0);
+            pelvis.add(leg);
+        });
+        // call set arm for first time
+        api.setArm(guy, 1, 0, 0);
+        api.setArm(guy, 2, 0, 0);
+        return guy;
+    };
+    //-------- ----------
+    // UPDATE A WEIRD GUY OBJECT
+    //-------- ----------
+    // setWalk
+    api.setWalk = function(guy, walkPer){
+        const leg1 = guy.getObjectByName(guy.name + '_leg1'),
+        leg2 = guy.getObjectByName(guy.name + '_leg2')
+        // set scale of legs
+        leg1.scale.y = walkPer;
+        leg2.scale.y = 1 - walkPer;
+        // adjust position of legs
+        leg1.position.y = -1.0 + 0.75 * (1 - walkPer);
+        leg2.position.y = -1.0 + 0.75 * walkPer;
+    };
+    api.transLegs = (guy, a_walkstart, a2) => {
+        const leg1 = guy.getObjectByName(guy.name + '_leg1');
+        const leg2 = guy.getObjectByName(guy.name + '_leg2');
+        // set from last walk state using a1 alpha
+        api.setWalk(guy, a_walkstart);
+        const d1 = 1 - leg1.scale.y;
+        const d2 = 1 - leg2.scale.y;
+        leg1.scale.y = leg1.scale.y + d1 * a2;
+        leg2.scale.y = leg2.scale.y + d2 * a2;
+        leg1.position.y = -1 * leg1.scale.y;
+        leg2.position.y = -1 * leg2.scale.y;; 
+    };
+    // set arms method
+    api.setArm = function(guy, armNum, a1, a2){
+        armNum = armNum === undefined ? 1 : armNum;
+        armNum = armNum <= 0 ? 1: armNum;
+        a1 = a1 === undefined ? 0 : a1;
+        a2 = a2 === undefined ? 0 : a2;
+        const arm = guy.getObjectByName(guy.name + '_arm' + armNum);
+        arm.rotation.x = wrapRadian( Math.PI - Math.PI / 180 * a1 );
+        // set tri rotation
+        arm.children[0].rotation.x = wrapRadian( Math.PI / 180 * a2 * -1 );
+    };
+}( this['weirdGuy'] = {} ));
+```
 
 ## Conclusion
 
