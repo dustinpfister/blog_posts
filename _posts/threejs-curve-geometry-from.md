@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1018
-updated: 2022-12-16 12:44:05
-version: 1.10
+updated: 2022-12-16 12:49:42
+version: 1.11
 ---
 
 The Curve class is the base class for several core threejs Clases to create a Curve in space. There is then a Cuve class prototype method called the get point method that can then be used to get any point along a curve in the form of a Vector3 object by passing a zero to one value as an argument. For the most part thus far I have been using curves as a way to define paths than can then be used to set the position of object3d objects over time such as mesh objects, and cameras. I have also been using curves to get vector3 objects that can then be passed to the look at method to set the rotation for objects also. However I have not yet got into using curves as a way to define the position attributes of custom buffer geometry which is what this post will focus on.
@@ -20,6 +20,10 @@ In this post I am writing about source code examples that have to do with creati
 ### Check out my other posts on Curves
 
 There is a lot to be aware of when it comes to curves in threejs, so it might be a good idea to check out [my main post on curves in general](/2022/06/17/threejs-curve/). There is taking the time to write a custom curve class of need be, and maybe there are some situations in which that will just need to be  done. However I have found that for the most part I can do jjst about everything that I want to do with curves by just using the built in [Quadratic Bezier Curves class](/2022/10/21/threejs-curve-quadratic-bezier-curve3/), which is what I will be using in this post.
+
+### I have a lot of other posts on buffer geometry
+
+There is not just stopping here when it comes to learning the basics and beyond when it comes to creating and updating geometry over time in threejs. I have my [main post on buffer geometry in general](/2021/04/22/threejs-buffer-geometry/), and the main starting point when it comes to learn a thing or two about making custom geometry would be to start with the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/). There is starting out by just making a blank geometry, creating a non indexed position attribute, and then using that with THREE.Points, or THREE.Line.
 
 ### Source code is up on Github
 
