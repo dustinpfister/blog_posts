@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1018
-updated: 2022-12-16 12:03:16
-version: 1.3
+updated: 2022-12-16 12:11:10
+version: 1.4
 ---
 
 The Curve class is the base class for several core threejs Clases to create a Curve in space. There is then a Cuve class prototype method called the get point method that can then be used to get any point along a curve in the form of a Vector3 object by passing a zero to one value as an argument. For the most part thus far I have been using curves as a way to define paths than can then be used to set the position of object3d objects over time such as mesh objects, and cameras. I have also been using curves to get vector3 objects that can then be passed to the look at method to set the rotation for objects also. However I have not yet got into using curves as a way to define the position attributes of custom buffer geometry which is what this post will focus on.
@@ -206,6 +206,9 @@ renderer.render(scene, camera);
 ```
 
 ### 3.1 - Video1 animation loop example based on custom Geometry example
+
+So like with just about almost every post that I write on threejs I like to make at least one if not more videos to embed into the blog post along with all the writing and source code examples. So with that said I made this example that is based on the custom geometry example that I made for my mesh friendly geometry section. I made a lot of changes to the source code with this one though by taking a lot of what I worked out and made a few helper functions in an effort to make things more fine grain. Also I wanted to have a function that will just create and return an array of numbers that is the position data values, not just for the sake of creating the geometry to begin with, but also to be used to update the state of the geometry as well.
+
 
 ```js
 //-------- ----------
