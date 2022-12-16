@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2022-10-23 07:46:33
-version: 1.11
+updated: 2022-12-16 12:57:19
+version: 1.12
 ---
 
 In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a control point that will effect the curve. This Can then be used for anything the requires a curve such as the tub geometry constrictor function. There are also base curve class methods like the two points method that will return an array of vector3 objects that can then be used to define movement over time, or create a geometry by making use of the set from points method for example.
@@ -24,6 +24,8 @@ This is a blog post on the use of the THREE.QuadraticBezierCurve3 [constructor f
 ### Read up more on the base Curve class
 
 I wrote a post on the [base Curve class](/2022/06/17/threejs-curve/) all ready so that is something that you might want to read about a little first. The QuadraticBezierCurve3 class is a kind of Curve class so there is taking a moment to read about what there is to work with when it comes to curve objects in general. For the most part I do like to just use this QuadraticBezierCurve3 class for making curve objects, however there are a few other built in options for this, and if need be there is also making my own Curve classes as well based off the the main Curve class.
+
+I also have a number of other posts on the subject of curves in threejs such as [my post where I am making an updating custom geometry using curves](/2022/12/16/threejs-curve-geometry-from/)
 
 ### The Vector3 class
 
