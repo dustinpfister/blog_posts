@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2022-12-15 20:43:31
-version: 1.34
+updated: 2022-12-15 20:44:09
+version: 1.35
 ---
 
 So I wanted to start making some posts on [threejs examples](/2021/02/19/threejs-examples/), rather that the usual posts on certain basic things here and there with just the core of what threejs alone is. One of the first ideas that came to mind was to make a waves example where I create an update a buffer geometry based on something like Math.cos. 
@@ -263,6 +263,7 @@ loop();
 In this section I will be writing about the first revision of this threejs project example, as well as a single demo of it in action.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/7vrx8646Y7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 The wave module example I made involves a helper method that can be used to create, or update geometry, buffered geometry, or just about anything by making the helper a [higher-order function](https://en.wikipedia.org/wiki/Higher-order_function). This method accepts another method as one of the arguments that is passed the x,y,and z values for each point that will compose the vertices of the wave. I then use this method in conjunction with others to help make an update the geometry of the wave. The wave grid helper method that accepts a method that can then be used to define what to do for each point in the grid of points. I use this to create an instance of buffer geometry and again later to update it in a loop.
 
