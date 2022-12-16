@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1018
-updated: 2022-12-16 11:41:50
-version: 1.1
+updated: 2022-12-16 11:55:34
+version: 1.2
 ---
 
 The Curve class is the base class for several core threejs Clases to create a Curve in space. There is then a Cuve class prototype method called the get point method that can then be used to get any point along a curve in the form of a Vector3 object by passing a zero to one value as an argument. For the most part thus far I have been using curves as a way to define paths than can then be used to set the position of object3d objects over time such as mesh objects, and cameras. I have also been using curves to get vector3 objects that can then be passed to the look at method to set the rotation for objects also. However I have not yet got into using curves as a way to define the position attributes of custom buffer geometry which is what this post will focus on.
@@ -76,14 +76,353 @@ scene.add(line2);
 renderer.render(scene, camera);
 ```
 
-### 2.1 - Full Custom Geometry
+### 2.1 - Full Custom Geometry made with two QuadraticBezierCurve3 curve objects
+
+For this example I am using the Quadratic Bezier Curve class in core threejs to create two curve objects both of which have start, end, and control points to create an update a buffer geometry. The goal here then is to first create the state of the position attribute by pushing in x,y, and z values for points along the curves, and to do so in a way in which the points stagger from one curve to the other. There is the order in which the points that are added that is important, however maybe what is really important is the state of the index that I will be making for this geometry as well as this will be an index geometry that I am making here.
+
+While I am creating the array of numbers of the position attribute I am also pushing in values for another array that I will be using for the uv attribute while I am at it. Once I have my position and uv arrays of numbers set up just the way I want it to be I can then use them to set the attributes for the position an uv attributes of the buffer geometry.
+
+I then create an index for my position attribute and just pass the array of index values to the set index method to get that working. After that the last major mush have attribute for the geometry to get it to work well with mesh is to create a normal attribute. In some cases I will have to do this by way of some JavaScript code. However for this kind of geometry just simply calling the compute vertex normal method works just fine to get this attribute created and in a good workable state.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(1, 1, 1);
+//scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(8, 8, 0);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(2, 1, 0);
+scene.add(dl);
+const dl2 = new THREE.DirectionalLight(0xffffff, 1);
+dl2.position.set(2, -1, 0);
+scene.add(dl2);
+// ---------- ----------
+// CURVES
+// ---------- ----------
+const c1_start = new THREE.Vector3(-5,0,5), 
+c1_control = new THREE.Vector3(0, 5, 0), 
+c1_end = new THREE.Vector3(5,0,5),
+c2_start = new THREE.Vector3(-5,0,-5), 
+c2_control = new THREE.Vector3(0, -5, 0), 
+c2_end = new THREE.Vector3(5,0,-5);
+const curve1 = new THREE.QuadraticBezierCurve3(c1_start, c1_control, c1_end);
+const curve2 = new THREE.QuadraticBezierCurve3(c2_start, c2_control, c2_end);
+// ---------- ----------
+// GEO POSITION / UV
+// ---------- ----------
+const geo = new THREE.BufferGeometry();
+// position attribute data
+const pos_data = [];
+const uv_data = [];
+let pi = 0;
+const points_per_line = 20;
+while(pi < points_per_line){
+    // position
+    const a1 = pi / (points_per_line - 1);
+    const v1 = curve1.getPoint(a1);
+    const v2 = curve2.getPoint(a1);
+    pos_data.push(v1.x, v1.y, v1.z, v2.x, v2.y, v2.z);
+    // uv
+    uv_data.push(a1, 0, a1, 1);
+    pi += 1;
+}
+geo.setAttribute('position', new THREE.Float32BufferAttribute( pos_data, 3 ) );
+geo.setAttribute('uv', new THREE.Float32BufferAttribute( uv_data, 2 ) );
+// ---------- ----------
+// GEO INDEX
+// ---------- ----------
+const data_index = [];
+let pi2 = 0;
+while(pi2 < points_per_line - 1){
+    const a = pi2 * 2;
+    const b = a + 1;
+    const c = a + 2;
+    const d = a + 3;
+    data_index.push(b,c,d,c,b,a);
+    pi2 += 1;
+}
+geo.setIndex(data_index);
+// ---------- ----------
+// GEO NORMAL
+// ---------- ----------
+geo.computeVertexNormals();
+// ---------- ----------
+// TEXTURE
+// ---------- ----------
+// USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
+const width = 128, height = 128;
+const size = width * height;
+const data = new Uint8Array( 4 * size );
+for ( let i = 0; i < size; i ++ ) {
+    const stride = i * 4;
+    // x and y pos
+    const xi = i % width;
+    const yi = Math.floor(i / width);
+    const v2 = new THREE.Vector2(xi, yi);
+    // alphas
+    const a_rnd1 = THREE.MathUtils.seededRandom();
+    const a_rnd2 = THREE.MathUtils.seededRandom();
+    const a_rnd3 = THREE.MathUtils.seededRandom();
+    let a_dist = v2.distanceTo( new THREE.Vector2( width * 0.25, height * 0.75) ) / (width / 16);
+    a_dist = a_dist % 1;
+    const a_x = xi / width;
+    const a_y = yi / height;
+    const cv = 255 * (a_dist);
+    // red, green, blue, alpha
+    data[ stride ] = cv;
+    data[ stride + 1 ] = 0;
+    data[ stride + 2 ] = 255 - cv;
+    data[ stride + 3 ] = 255;
+}
+const texture = new THREE.DataTexture( data, width, height );
+texture.needsUpdate = true;
+// ---------- ----------
+// MATERIAL AND MESH
+// ---------- ----------
+const material = new THREE.MeshPhongMaterial({ map: texture, wireframe: false, side: THREE.DoubleSide});
+const mesh = new THREE.Mesh(geo, material);
+const line = new THREE.LineSegments(geo, new THREE.LineBasicMaterial({linewidth: 4, color: 0x000000}));
+mesh.add(line);
+line.position.y = 0.025;
+scene.add(mesh);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+try{
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}catch(e){
+    console.warn('OrbitControls JSM module not loaded.');
+}
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 400;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+     const a1 = frame / frameMax;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ### 3.1 - Video1 animation loop example based on custom Geometry example
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(1, 1, 1);
+//scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(8, 8, -8);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+// get position data array helper
+const getCurvePosData = (curve1, curve2, points_per_line) => {
+    const pos_data = [];
+    let pi = 0;
+    while(pi < points_per_line){
+        const a1 = pi / (points_per_line - 1);
+        const v1 = curve1.getPoint(a1);
+        const v2 = curve2.getPoint(a1);
+        pos_data.push(v1.x, v1.y, v1.z, v2.x, v2.y, v2.z);
+        pi += 1;
+   }
+   return pos_data;
+};
+// get uv data array helper
+const getCurveUVData = (curve1, curve2, points_per_line) => {
+    const uv_data = [];
+    let pi = 0;
+    while(pi < points_per_line){
+        const a1 = pi / (points_per_line - 1);
+        uv_data.push(a1, 0, a1, 1);
+        pi += 1;
+   }
+   return uv_data;
+};
+// set index
+const setCurveGeoIndex = (geo, points_per_line) => {
+    const data_index = [];
+    let pi2 = 0;
+    while(pi2 < points_per_line - 1){
+        const a = pi2 * 2;
+        const b = a + 1;
+        const c = a + 2;
+        const d = a + 3;
+        data_index.push(b, c, d, c, b, a);
+        pi2 += 1;
+    }
+    geo.setIndex(data_index);
+};
+// create curve geo
+const createCurveGeo = (curve1, curve2, points_per_line) => {
+    const geo = new THREE.BufferGeometry();
+    const uv_data = getCurveUVData(curve1, curve2, points_per_line);
+    // position/index
+    const pos_data = getCurvePosData(curve1, curve2, points_per_line);
+    geo.setAttribute('position', new THREE.Float32BufferAttribute( pos_data, 3 ) );
+    setCurveGeoIndex(geo, points_per_line);
+    // uv
+    geo.setAttribute('uv', new THREE.Float32BufferAttribute( uv_data, 2 ) );
+    // normal
+    geo.computeVertexNormals();
+    return geo;
+};
+const updateCurveGeo = (geo, curve1, curve2, points_per_line) => {
+    const pos_data = getCurvePosData(curve1, curve2, points_per_line);
+    const pos = geo.getAttribute('position');
+    pos.array = pos.array.map((n, i) => { return pos_data[i] });
+    pos.needsUpdate = true;
+    // normal
+    geo.computeVertexNormals();
+    return geo;
+};
+const QBC3 = (c1_start, c1_control, c1_end) => {
+    return new THREE.QuadraticBezierCurve3(c1_start, c1_control, c1_end);
+};
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(0.25, 0.5, 0.5);
+scene.add(dl);
+// ---------- ----------
+// CURVES
+// ---------- ----------
+const c1_start = new THREE.Vector3(-5,0,5), 
+c1_control = new THREE.Vector3(0, 10, 0), 
+c1_end = new THREE.Vector3(5,0,5),
+c2_start = new THREE.Vector3(-5,0,-5), 
+c2_control = new THREE.Vector3(0, -5, 0), 
+c2_end = new THREE.Vector3(5,0,-5);
+const curve1 = new THREE.QuadraticBezierCurve3(c1_start, c1_control, c1_end);
+const curve2 = new THREE.QuadraticBezierCurve3(c2_start, c2_control, c2_end);
+// ---------- ----------
+// GEO POSITION / UV
+// ---------- ----------
+const geo = createCurveGeo(
+     QBC3(c1_start, c1_control, c1_end),
+     QBC3(c2_start, c2_control, c2_end),
+     50
+);
+// ---------- ----------
+// TEXTURE
+// ---------- ----------
+// USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
+const width = 128, height = 128;
+const size = width * height;
+const data = new Uint8Array( 4 * size );
+for ( let i = 0; i < size; i ++ ) {
+    const stride = i * 4;
+    // x and y pos
+    const xi = i % width;
+    const yi = Math.floor(i / width);
+    const v2 = new THREE.Vector2(xi, yi);
+    // alphas
+    const a_rnd1 = THREE.MathUtils.seededRandom();
+    const a_rnd2 = THREE.MathUtils.seededRandom();
+    const a_rnd3 = THREE.MathUtils.seededRandom();
+    let a_dist = v2.distanceTo( new THREE.Vector2( width * 0.25, height * 0.75) ) / (width / 16);
+    a_dist = a_dist % 1;
+    const a_x = xi / width;
+    const a_y = yi / height;
+    const cv = 255 * (a_dist);
+    // red, green, blue, alpha
+    data[ stride ] = cv;
+    data[ stride + 1 ] = 0;
+    data[ stride + 2 ] = 255 - cv;
+    data[ stride + 3 ] = 255;
+}
+const texture = new THREE.DataTexture( data, width, height );
+texture.needsUpdate = true;
+// ---------- ----------
+// MATERIAL AND MESH
+// ---------- ----------
+const material = new THREE.MeshPhongMaterial({ map: texture, wireframe: false, side: THREE.DoubleSide});
+const mesh = new THREE.Mesh(geo, material);
+scene.add(mesh);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+try{
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}catch(e){
+    console.warn('OrbitControls JSM module not loaded.');
+}
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 400;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    c1_control.set(-10 + 20 * a2,-10 + 20 * a2,0);
+    c2_control.set(0, 0, -10);
+    updateCurveGeo(
+        geo,
+        QBC3(c1_start, c1_control, c1_end),
+        QBC3(c2_start, c2_control, c2_end),
+        50
+    );
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 
