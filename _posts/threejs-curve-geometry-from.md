@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1018
-updated: 2022-12-16 12:26:51
-version: 1.6
+updated: 2022-12-16 12:30:52
+version: 1.7
 ---
 
 The Curve class is the base class for several core threejs Clases to create a Curve in space. There is then a Cuve class prototype method called the get point method that can then be used to get any point along a curve in the form of a Vector3 object by passing a zero to one value as an argument. For the most part thus far I have been using curves as a way to define paths than can then be used to set the position of object3d objects over time such as mesh objects, and cameras. I have also been using curves to get vector3 objects that can then be passed to the look at method to set the rotation for objects also. However I have not yet got into using curves as a way to define the position attributes of custom buffer geometry which is what this post will focus on.
@@ -16,6 +16,10 @@ The Curve class is the base class for several core threejs Clases to create a Cu
 ## Making Custom geometry from Curves and what to know first
 
 In this post I am writing about source code examples that have to do with creating custom buffer geometry by making use of curve objects to define paths in 3d space that are then used as a way to create the position attribute of a buffer geometry class instance in the JavaScript library known as threejs. After saying that it should go without saying that this is a post for people that have at least a fair amount of experience working with threejs, and client side JavaScript in general. If you are still fairly new to threejs and JavaScript I have wrote, and regularly edit getting started type posts on both [threejs](/2018/04/04/threejs-getting-started/) and [JavaScript](/2018/11/27/js-getting-started/). So I will not be getting into detail about the basics that you should know about before hand here. However I do still like to use these opening sections of posts to write about a thing or two that you might want to read up more on regardless of experience level.
+
+### Source code is up on Github
+
+The source code examples that I am writing about in this post can be found up on my Github at my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-curve-geometry-from). This is also where I part all my other source code examples for my [many other blog posts](/categories/three-js/) that I have wrote on threejs over the years.
 
 ## 1 - Basic examples of making Buffer Geometry with Curves
 
