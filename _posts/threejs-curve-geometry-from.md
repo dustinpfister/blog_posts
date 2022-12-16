@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1018
-updated: 2022-12-16 12:11:10
-version: 1.4
+updated: 2022-12-16 12:15:57
+version: 1.5
 ---
 
 The Curve class is the base class for several core threejs Clases to create a Curve in space. There is then a Cuve class prototype method called the get point method that can then be used to get any point along a curve in the form of a Vector3 object by passing a zero to one value as an argument. For the most part thus far I have been using curves as a way to define paths than can then be used to set the position of object3d objects over time such as mesh objects, and cameras. I have also been using curves to get vector3 objects that can then be passed to the look at method to set the rotation for objects also. However I have not yet got into using curves as a way to define the position attributes of custom buffer geometry which is what this post will focus on.
@@ -401,4 +401,8 @@ loop();
 
 
 ## Conclusion
+
+That will be it for now when it comes to making geometry from curves in threejs, at least until I come around to edit and expand this post a little. I might also want to make one or more [threejs project examples posts](/2021/02/19/threejs-examples/) in which I explore this topic a little deeper as I am sure there is a whole lot of directions I could take this when it comes to making custom geometry this way. That is not to say that I do not all ready have some threejs protect example ideas that are based off of the use of Curve objects all ready. I do have my [curve module that threejs example](/2022/11/18/threejs-examples-curves-module/) that I started all ready which might be a good thing to check out if you want to read even more about curves.
+
+
 
