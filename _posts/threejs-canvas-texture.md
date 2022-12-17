@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-12-17 11:01:36
-version: 1.105
+updated: 2022-12-17 11:53:48
+version: 1.106
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -647,7 +647,19 @@ Other features of the main canvas object include a palette array as I like to th
                canObj.state.data = str.split(',');
                return;
            }catch(e){
-               console.log('looks like we do not have lz-string.js ');
+               console.log('some error with lz-string.js');
+               console.log(e);
+           }
+        }
+        // try to use LZString if it is there base64 style
+        if(opt.dataParse === 'lzstring64'){
+           try{
+               const str = LZString.decompressFromBase64(data);
+               canObj.state.data = str.split(',');
+               return;
+           }catch(e){
+               console.log('some error with lz-string.js');
+               console.log(e);
            }
         }
     };
@@ -1152,14 +1164,17 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 // CANVAS OBJECT
 //-------- ----------
+// Base64 strings made with LZString can help to cruch down the string size a lot
 let canObj2 = canvasMod.create({
     draw: 'grid_palette',
     size: 512,
     update_mode: 'canvas',
-    dataParse: 'lzstring',
+    dataParse: 'lzstring64',
     state: {
-       w: 8, h: 8,
-       data: '⌁ꔉ蔴泲ᔦ술㌻㵹⌁拙崰₍뒃紷⥄갱唒氠'
+       w: 32, h: 32,
+       data: 'IwGl7SAYRvYfJiXIjCnJYEwj8oasUaSlhHgSTWXbedvg/ayzbu29106NT0G80TAcP'+
+          'FCMkMZInj+zWUvmK5yoQvVqVM7VrJU9Rnrv3Hip82etXbN+3ccPnT1y/dvPIjzdA/'+
+          'bfl4BQb4hwf5a6GHKURHasdFyFExxIhRAA'
     },
     palette: ['white', '#004400', '#008800', '#00cc00', '#00ff00']
 });
