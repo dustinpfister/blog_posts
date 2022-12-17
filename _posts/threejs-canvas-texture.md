@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-10-16 13:11:34
-version: 1.104
+updated: 2022-12-17 11:01:36
+version: 1.105
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -605,19 +605,99 @@ renderer.render(scene, camera);
 
 For this section I will be writing about the current state of my canvas module that I have made, and am using many of my various video projects including the one that I made for this blog post here. So then I will be writing about the current state of the module itself as of this writing that was r1 of the module, as well as a few demos of it while I am at it.
 
-### 3.A - The canvas module \( r1 \)
-
 There is then starting out with the source code of the canvas module that I have thus far. This canvas module features a main create public method that will create and return a canvas object by which I mean a plan old javaScript object with references to a canvas element and 2d context as two of the properties of the object. In addition to this I have a state object that is what I will be using to park values that are used in the draw method that is used to render to the canvas element. Speaking of draw methods I have two built i draw methods to have a way to quickly get started with something at least, and also to serve as examples by which to make custom draw methods. 
 
 Other features of the main canvas object include a palette array as I like to think in terms of a small set of index value colors when making draw methods. Also I have one one but two texture properties one of which is used to store a canvas texture, and the other is used to store a data texture. The reason for this is that I am split in terms of what way I like to update textures using javaScript code so I have both. So then I also have more than one update mode that can be set with an update mode property of the canvas object.
 
 ```js
-// canvas.js - r1 - from threejs-canvas-texture
+// canvas.js - r2 - from threejs-canvas-texture
 (function(api){
+    //-------- ----------
+    // HELEPRS
+    //-------- ----------
+    // parse draw option helper
+    const parseDrawOption = (opt) => {
+        // if opt.draw is false for any reason return DRAW.square
+        if(!opt.draw){
+            return DRAW.square;
+        }
+        // if a string is given assume it is a key for a built in draw method
+        if(typeof opt.draw === 'string'){
+            return DRAW[opt.draw];
+        }
+        // assume we where given a custom function
+        return opt.draw;
+    };
+    // parse state data objects
+    const parseStateData = (canObj, opt) => {
+        const data = canObj.state.data
+        // all of this only applys to data strings
+        if(typeof data != 'string'){
+            return;
+        }
+        // plain data string ex '0,0,0,0,0,0,0,0'
+        if(opt.dataParse === 'string'){
+            canObj.state.data = data.split(',');
+            return;
+        }
+        // try to use LZString if it is there
+        if(opt.dataParse === 'lzstring'){
+           try{
+               const str = LZString.decompress(data);
+               canObj.state.data = str.split(',');
+               return;
+           }catch(e){
+               console.log('looks like we do not have lz-string.js ');
+           }
+        }
+    };
+    // draw grid helper for built in draw methods 'grid_palette' and 'rnd'
+    const draw_grid_fill = (ctx, canvas, iw, ih, getColor) => {
+        getColor = getColor || function(color){ return color };
+        const len = iw * ih;
+        const pxW = canvas.width / iw;
+        const pxH = canvas.height / ih;
+        let i = 0;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        while(i < len){
+            const x = i % iw;
+            const y = Math.floor(i / iw);
+            const color = getColor( new THREE.Color(), x, y, i);
+            ctx.fillStyle = color.getStyle();
+            const px = x * pxW;
+            const py = y * pxH;
+            ctx.fillRect(px, py, pxW, pxH);
+            i += 1;
+        }
+    };
     //-------- ----------
     // built in draw methods
     //-------- ----------
     const DRAW = {};
+    // draw a grid with palette data
+    DRAW.grid_palette = (canObj, ctx, canvas, state) => {
+        const w =  state.w === undefined ? 16 : state.w;
+        const h =  state.h === undefined ? 16 : state.h;
+        const data = state.data || [];
+        const len = w * h;
+        const pxW = canObj.size / w;
+        const pxH = canObj.size / h;
+        draw_grid_fill(ctx, canvas, w, h, function(color, x, y, i){
+            const ci = data[i];
+            return color.setStyle( canObj.palette[ci] );
+        });
+    };
+    // random using palette colors
+    DRAW.rnd = (canObj, ctx, canvas, state) => {
+        let i = 0;
+        const gSize =  state.gSize === undefined ? 5 : state.gSize;
+        const len = gSize * gSize;
+        const pxSize = canObj.size / gSize;
+        draw_grid_fill(ctx, canvas, gSize, gSize, function(color, x, y, i){
+            const ci = Math.floor( canObj.palette.length * Math.random() );
+            return color.setStyle(canObj.palette[ci]);
+        });
+    };
     // square draw method
     DRAW.square = (canObj, ctx, canvas, state) => {
         const squares = state.squares || [ {
@@ -640,44 +720,12 @@ Other features of the main canvas object include a palette array as I like to th
             i += 1;
         }
     };
-    // random using palette colors
-    DRAW.rnd = (canObj, ctx, canvas, state) => {
-        let i = 0;
-        const gSize =  state.gSize === undefined ? 5 : state.gSize;
-        const len = gSize * gSize;
-        const pxSize = canObj.size / gSize;
-        ctx.clearRect(0,0, canvas.width, canvas.height);
-        while(i < len){
-            const ci = Math.floor( canObj.palette.length * Math.random() );
-            const x = i % gSize;
-            const y = Math.floor(i / gSize);
-            ctx.fillStyle = canObj.palette[ci];
-            ctx.fillRect(0.5 + x * pxSize, 0.5 + y * pxSize, pxSize, pxSize);
-            i += 1;
-        }
-    };
-    //-------- ----------
-    // HELEPRS
-    //-------- ----------
-    // parse draw option helper
-    const parseDrawOption = (opt) => {
-        // if opt.draw is false for any reason return DRAW.square
-        if(!opt.draw){
-            return DRAW.square;
-        }
-        // if a string is given assume it is a key for a built in draw method
-        if(typeof opt.draw === 'string'){
-            return DRAW[opt.draw];
-        }
-        // assume we where given a custom function
-        return opt.draw;
-    };
     //-------- ----------
     // PUBLIC API
     //-------- ----------
     // to data texture method
     api.toDataTexture = (canObj) => {
-        const canvasData = canObj.texture.image.getContext('2d').getImageData(0, 0, canObj.size, canObj.size);
+        const canvasData = canObj.ctx.getImageData(0, 0, canObj.size, canObj.size);
         const texture_data = new THREE.DataTexture(canvasData.data, canObj.size, canObj.size );
         texture_data.needsUpdate = true;
         return texture_data;
@@ -687,8 +735,9 @@ Other features of the main canvas object include a palette array as I like to th
         opt = opt || {};
         // create canvas, get context, set size
         const canvas = document.createElement('canvas'),
-        ctx = canvas.getContext('2d');
+        ctx = canvas.getContext('2d', { willReadFrequently: true } );
         opt.size = opt.size === undefined ? 16 : opt.size;
+        opt.dataParse = opt.dataParse || 'string'; // parse data strings into arrays 
         canvas.width = opt.size;
         canvas.height = opt.size;
         // create canvas object
@@ -697,14 +746,18 @@ Other features of the main canvas object include a palette array as I like to th
             texture_data: null,
             update_mode: opt.update_mode || 'dual',
             size: opt.size,
-            canvas: canvas, ctx: ctx,
+            canvas: canvas, 
+            ctx: ctx,
             palette: opt.palette || ['black', 'white'],
             state: opt.state || {},
             draw: parseDrawOption(opt)
         };
+        // parse data strings into arrays
+        parseStateData(canObj, opt);
         // create texture object
         canObj.texture = new THREE.CanvasTexture(canvas);
         canObj.texture_data = api.toDataTexture(canObj);
+        // update for first time
         api.update(canObj);
         return canObj;
     };
@@ -720,7 +773,7 @@ Other features of the main canvas object include a palette array as I like to th
     UPDATE.dual = (canObj) => {
         UPDATE.canvas(canObj);
         // update data texture
-        const canvasData = canObj.texture.image.getContext('2d').getImageData(0, 0, canObj.size, canObj.size);
+        const canvasData = canObj.ctx.getImageData(0, 0, canObj.size, canObj.size);
         const data = canObj.texture_data.image.data;
         const len = data.length;
         let i = 0;
@@ -751,8 +804,8 @@ scene.add( new THREE.GridHelper(10, 10) );
 const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 1000);
 camera.position.set(0, 1.5, 2.75);
 camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
@@ -770,15 +823,17 @@ const makeCube = (texture, size) => {
 //-------- ----------
 let canObj2 = canvasMod.create({
     draw:'rnd',
-    size: 64,
-    update_mode: 'dual',
-    state: {},
+    size: 256,
+    update_mode: 'canvas',
+    state: {
+        gSize: 20
+    },
     palette: ['black', 'white', 'cyan', 'lime', 'red', 'blue', 'yellow', 'orange', 'purple']
 });
 //-------- ----------
 // MESH
 //-------- ----------
-let cube1 = makeCube(canObj2.texture_data, 2);
+let cube1 = makeCube(canObj2.texture, 2);
 cube1.position.set(0, 0, 0);
 scene.add(cube1);
 // ---------- ----------
@@ -834,8 +889,8 @@ scene.add( new THREE.GridHelper(10, 10) );
 const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 1000);
 camera.position.set(0, 2, 4);
 camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
@@ -925,8 +980,8 @@ Last but not least here I have an example in which I have a custom draw function
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
 const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // TEXT LINES
@@ -1076,6 +1131,50 @@ const loop = () => {
     }
 };
 loop();
+```
+
+### 3.4 - Palette Grid built in draw method ( r2 + )
+
+In r2 of the canvas module I added a grid palette draw method that will draw a grid based on palette index data. The index data can be just an array, or a string that can be split into an array. However if I add [lz-string.js](https://github.com/pieroxy/lz-string) to the stack of the project I can also use that which will help to crunch down the size of the data strings.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+//scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 1000);
+camera.position.set(6, 6, 6);
+camera.lookAt(0, -3, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS OBJECT
+//-------- ----------
+let canObj2 = canvasMod.create({
+    draw: 'grid_palette',
+    size: 512,
+    update_mode: 'canvas',
+    dataParse: 'lzstring',
+    state: {
+       w: 8, h: 8,
+       data: '⌁ꔉ蔴泲ᔦ술㌻㵹⌁拙崰₍뒃紷⥄갱唒氠'
+    },
+    palette: ['white', '#004400', '#008800', '#00cc00', '#00ff00']
+});
+//-------- ----------
+// GEO, MATERIAL, MESH
+//-------- ----------
+const geo = new THREE.PlaneGeometry(10, 10, 1, 1);
+geo.rotateX(Math.PI * 1.5);
+const material = new THREE.MeshBasicMaterial({ map: canObj2.texture });
+const mesh2 = new THREE.Mesh(geo, material);
+scene.add(mesh2)
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+renderer.render(scene, camera);
 ```
 
 ## 4 - Animation examples
