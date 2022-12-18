@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-12-18 11:26:32
-version: 1.21
+updated: 2022-12-18 11:30:51
+version: 1.22
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a [sphere like shape](/2021/05/26/threejs-sphere/). So the general idea is to make a JavaScript module that has a create method that will return a [group](/2018/05/16/threejs-grouping-mesh-objects/) of lines, where each line is one circle that forms something that will look like a sphere when it comes to the over all shape of the collection of lines. 
@@ -386,7 +386,7 @@ loop();
 
 ### 2.3 - Can still do a plain sphere like shape
 
-I can still to just a plain sphere like shape by just doing with the default for point method of the module.
+I can still to just a plain sphere like shape by just going with the default for point method of the module. So for this example I went with just making a very simple static scene that does not even involve an app loop, or the updating of the geometry over time. When making the options object that will be passed to the create method I can just not give any option at all for the for point method which will result in the default sphere like shape for all the lines. I can then adjust things when it comes to radius, the number of circles in the group, points per circle, and the thickness of the lines.
 
 ```js
 //-------- ----------
