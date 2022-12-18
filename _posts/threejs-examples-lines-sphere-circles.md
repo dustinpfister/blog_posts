@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-12-18 11:30:51
-version: 1.22
+updated: 2022-12-18 11:44:40
+version: 1.23
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a [sphere like shape](/2021/05/26/threejs-sphere/). So the general idea is to make a JavaScript module that has a create method that will return a [group](/2018/05/16/threejs-grouping-mesh-objects/) of lines, where each line is one circle that forms something that will look like a sphere when it comes to the over all shape of the collection of lines. 
@@ -44,56 +44,57 @@ I was using r135 when I first wrote this post, and the last time I cam around to
 When I started a new prototype folder in which to just get the basic idea of what I wanted working I had everything in just one javaScript file which is often the case when first starting out with one of these ideas. In this single javaScript file I create my usual scene object, camera, renderer and so forth, but the main thing of interest are the methods that I made to create an array or points, and a group of lines where each line if a collection of these points.
 
 ```js
-//******** **********
+// line-sphere-circles - r0 - from threejs-examples-lines-sphere-circles
+//-------- ----------
 // SCENE, CAMERA, RENDERER
-//******** **********
-var scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
-//scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(10, 10, 10);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // LINES
-//******** **********
+//-------- ----------
 // just create one circle for a set of circles that form a sphere like shape
-// createSphereCirclePoints(maxRadius, circleCount, circleIndex, pointsPerCircle)
-var createSphereCirclePoints = function(maxRadius, circleCount, circleIndex, pointsPerCircle){
-    var points = [];
-    var sPer = circleIndex / circleCount;
-    var radius = Math.sin( Math.PI * 1.0 * sPer ) * maxRadius;
-    var y = Math.cos( Math.PI * 1.0 * sPer ) * maxRadius;
-    var i = 0;
+const createSphereCirclePoints = function(maxRadius, circleCount, circleIndex, pointsPerCircle, randomDelta){
+    const points = [];
+    const sPer = circleIndex / circleCount;
+    const radius = Math.sin( Math.PI * 1.0 * sPer ) * maxRadius;
+    const y = Math.cos( Math.PI * 1.0 * sPer ) * maxRadius;
+    let i = 0;
     // buch points for the current circle
     while(i < pointsPerCircle){
         // might want to subtract 1 or 0 for this cPer expression
-        var cPer =  i / ( pointsPerCircle - 1 );
-        var radian = Math.PI * 2 * cPer;
-        var v = new THREE.Vector3();
-        v.x = Math.cos(radian) * radius;
+        const cPer =  i / ( pointsPerCircle - 1 );
+        const radian = Math.PI * 2 * cPer;
+        const p_radius = radius + Math.random() * randomDelta;
+        const v = new THREE.Vector3();
+        v.x = Math.cos(radian) * p_radius;
         v.y = y;
-        v.z = Math.sin(radian) * radius;
+        v.z = Math.sin(radian) * p_radius;
         points.push( v.clone().normalize().multiplyScalar(maxRadius) );
         i += 1;
     }
     return points;
 };
 // create sphere Lines helper
-var createSphereLines = function(maxRadius, circleCount, pointsPerCircle, randomDelta, colors){
+const createSphereLines = function(maxRadius, circleCount, pointsPerCircle, randomDelta, colors, lineWidth){
     colors = colors || [0xff0000,0x00ff00,0x0000ff]
-    var lines = new THREE.Group();
-    var i = 1;
+    const lines = new THREE.Group();
+    let i = 1;
     while(i < circleCount + 1){
-        var p = createSphereCirclePoints(maxRadius, circleCount + 1, i, pointsPerCircle, randomDelta);
-        var geometry = new THREE.BufferGeometry().setFromPoints( p);
-        var line = scene.userData.line = new THREE.Line(
+        const p = createSphereCirclePoints(maxRadius, circleCount + 1, i, pointsPerCircle, randomDelta);
+        const geometry = new THREE.BufferGeometry().setFromPoints( p);
+        const line = scene.userData.line = new THREE.Line(
             geometry,
             new THREE.LineBasicMaterial({
                 color: colors[i % colors.length],
-                linewidth: 4
+                linewidth: lineWidth
             })
         );
         lines.add(line);
@@ -101,30 +102,12 @@ var createSphereLines = function(maxRadius, circleCount, pointsPerCircle, random
     };
     return lines;
 };
-var g = createSphereLines(5, 20, 50, 1.0, [0x00ffff, 0x008800, 0x008888, 0x00ff00]);
+const g = createSphereLines(8, 20, 100, 1.5, [0x00ffff, 0x008800, 0x008888, 0x00ff00], 6);
 scene.add(g);
-//******** **********
-// LOOP
-//******** **********
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
-var fps = 30,
-lt = new Date(),
-frame = 0,
-maxFrame = 300;
-var loop = function () {
-    var now = new Date(),
-    per = frame / maxFrame,
-    bias = 1 - Math.abs(0.5 - per) / 0.5,
-    secs = (now - lt) / 1000;
-    requestAnimationFrame(loop);
-    if(secs > 1 / fps){
-        renderer.render(scene, camera);
-        frame += fps * secs;
-        frame %= maxFrame;
-        lt = now;
-    }
-};
-loop();
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ## 2 - Stand alone module, and for point methods for mutation of points \( r1 \)
