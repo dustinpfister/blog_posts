@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-06-12 15:02:28
-version: 1.18
+updated: 2022-12-18 11:16:28
+version: 1.19
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a sphere like shape. So the general idea is to make a javaScript module that has a create method that will return a group of lines, where each line is one circle that forms something that will look like a sphere. I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations.
@@ -33,10 +33,10 @@ The source code examples that I am writing about in this post can also be found 
 
 ### Version Numbers matter
 
-I was using r135 when I first wrote this post.
+I was using r135 when I first wrote this post, and the last time I cam around to do some editing I was using r146.
 
 
-## 1 - Getting the general idea working first
+## 1 - Getting the general idea working first \( r0 \)
 
 When I started a new prototype folder in which to just get the basic idea of what I wanted working I had everything in just one javaScript file which is often the case when first starting out with one of these ideas. In this single javaScript file I create my usual scene object, camera, renderer and so forth, but the main thing of interest are the methods that I made to create an array or points, and a group of lines where each line if a collection of these points.
 
@@ -124,7 +124,7 @@ var loop = function () {
 loop();
 ```
 
-## 2 - Stand alone module, and for point methods for mutation of points
+## 2 - Stand alone module, and for point methods for mutation of points \( r1 \)
 
 In the first revision of this example I got the basic idea of what I wanted working okay, but I wanted to make at least one more additional revision of this example to further refine the core idea here. In the first version of the example I have all my code in a single javaScript file which is fine when first starting out with an idea but when it comes to making some kind of example that is a little more potable the next step is to make a kind of module with what I worked out and that is what I did in this first revision of the example.
 
@@ -275,41 +275,30 @@ var LinesSphereCircles = (function(){
 }());
 ```
 
-### 2.2 - Main JavaScript file demo
+### 2.1 - A seaShell like shape demo
 
-When it comes to my main javaScript file now I can now just call a few lines of code to create a group of lines using the module rather than having it all in one file. So then after setting up the usual scene object and various other usual suspects I can then just call the create method of my Line Sphere Circles module. When doing so I can now provide a whole bunch of options that can be used to adjust things like the array of colors to use for the lines, the width of the lines for browsers that support thicker lines, and so forth.
+So now when it comes to making a main javaScript file I can just call a few lines of code to create a group of lines using the module rather than having it all in one file. After setting up the usual scene object and various other usual suspects I can then just call the create method of my Line Sphere Circles module. When doing so I can now provide a whole bunch of options that can be used to adjust things like the array of colors to use for the lines, the width of the lines for browsers that support thicker lines, and so forth.
 
-One of the coolest feature thus far though is the for point option that I can use to mutate the state of the array of points to use to create the lines. I have a few built in options for this that I ca use by providing a string for the name of the built in for point method, but I can also work out custom methods as needed as well by using a function for the value of the option. In this demo of the module I cam also using my set by frame method as a way to mutate the state of a group of lines that uses the built in sea shell for point method that I made while playing around with things.
+One of the coolest feature thus far though is the for point option that I can use to mutate the state of the array of points to use to create the lines. I have a few built in options for this that I can use by providing a string for the name of the built in for point method, but I can also work out custom methods as needed as well by using a function for the value of the option. In this demo of the module I cam also using my set by frame method as a way to mutate the state of a group of lines that uses the built in sea shell for point method that I made while playing around with things.
 
 ```js
-//******** **********
+//-------- ----------
 // SCENE, CAMERA, RENDERER
-//******** **********
-var scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
 scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(10, 10, 10);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // LINES
-//******** **********
- 
-// plain
-var g1 = LinesSphereCircles.create({ maxRadius: 4, pointsPerCircle: 20 });
-g1.position.set(-10,0,0)
-scene.add(g1);
- 
-// seeded random
-var g2 = LinesSphereCircles.create({ maxRadius: 8, forPoint: 'seededRandom' });
-g2.position.set(-5,-2,-25)
-scene.add(g2);
- 
+//-------- ----------
 // seashell
-var opt = {
+const opt = {
     circleCount: 20,
     maxRadius: 4,
     pointsPerCircle: 30,
@@ -320,23 +309,21 @@ var opt = {
         opt.minRadius = 1 + 3 * bias;
     }
 };
-var g3 = LinesSphereCircles.create(opt);
-scene.add(g3);
- 
-//******** **********
+const g1 = LinesSphereCircles.create(opt);
+scene.add(g1);
+//-------- ----------
 // LOOP
-//******** **********
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
-var fps = 15,
+//-------- ----------
+let fps = 15,
 lt = new Date(),
 frame = 0,
 frameMax = 300;
-var loop = function () {
-    var now = new Date(),
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if(secs > 1 / fps){
-        LinesSphereCircles.setByFrame(g3, frame, frameMax, opt)
+        LinesSphereCircles.setByFrame(g1, frame, frameMax, opt);
         renderer.render(scene, camera);
         frame += fps * secs;
         frame %= frameMax;
@@ -346,6 +333,81 @@ var loop = function () {
 loop();
 ```
 
+### 2.2 - Random points example
+
+Another option then is to use the seeded random built in for point method of the module. The seeded random method is one of many methods to work with in the [math utils object](/2022/04/11/threejs-math-utils/) of the core of the threejs library. This seeded random method is like that of the math random method only it will give the same result when called for the first time. 
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+var scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LINES
+//-------- ----------
+// seeded random
+const opt = { maxRadius: 8, forPoint: 'seededRandom', circleCount: 30, pointsPerCircle: 50 };
+var g1 = LinesSphereCircles.create(opt);
+scene.add(g1);
+//-------- ----------
+// LOOP
+//-------- ----------
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+var fps = 30,
+lt = new Date(),
+frame = 0,
+frameMax = 300;
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps){
+        LinesSphereCircles.setByFrame(g1, frame, frameMax, opt);
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
+```
+
+
+### 2.3 - Can still do a plain sphere like shape
+
+I can still to just a plain sphere like shape by just doing with the default for point method of the module.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LINES
+//-------- ----------
+const opt = { maxRadius: 5, pointsPerCircle: 70, circleCount: 50, linewidth: 4 }
+const g1 = LinesSphereCircles.create(opt);
+scene.add(g1);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
 
 ## Conclusion
 
