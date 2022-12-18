@@ -5,19 +5,22 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-12-18 11:16:28
-version: 1.19
+updated: 2022-12-18 11:21:16
+version: 1.20
 ---
 
-When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a sphere like shape. So the general idea is to make a javaScript module that has a create method that will return a group of lines, where each line is one circle that forms something that will look like a sphere. I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations.
+When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a [sphere like shape](/2021/05/26/threejs-sphere/). So the general idea is to make a JavaScript module that has a create method that will return a [group](/2018/05/16/threejs-grouping-mesh-objects/) of lines, where each line is one circle that forms something that will look like a sphere when it comes to the over all shape of the collection of lines. 
+
+I can then also add a method that can be used to update the state of this group of lines with a new set of options as a way to make various kinds of animations. So there is starting out with the basic idea of what i want to do, and then also maybe make a kind of module form of this example. Once I have a module form of this genera idea I can then make all kinds of additional demos that make use of the module to create, and update the state of the lines.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/272Z2QvvA7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Sphere Circle Lines threejs example and what to know first
 
 This is a post on some javaScript code built on top of the library known as threejs that has to do with making a collection of lines that look like a sphere. This is one of my many threejs project examples that I have made thus far that is for developers that have a fair amount of experience with javaScript and threejs and are now looking into ideas for projects. This is then not a post for people that are still fairly new with threejs, and as such I will not be getting into basic things that you should know about at this point. However in this section I will be going over a few things you might want to read up more on that are related to what I am doing here.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/272Z2QvvA7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Read up more on the THREE.Line constructor
 
