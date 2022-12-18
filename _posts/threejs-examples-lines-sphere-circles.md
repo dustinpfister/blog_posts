@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-12-18 11:44:40
-version: 1.23
+updated: 2022-12-18 12:14:55
+version: 1.24
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a [sphere like shape](/2021/05/26/threejs-sphere/). So the general idea is to make a JavaScript module that has a create method that will return a [group](/2018/05/16/threejs-grouping-mesh-objects/) of lines, where each line is one circle that forms something that will look like a sphere when it comes to the over all shape of the collection of lines. 
@@ -393,6 +393,84 @@ scene.add(g1);
 // RENDER
 //-------- ----------
 renderer.render(scene, camera);
+```
+
+### 2.3 - Rotaiton of lines, whole group, and custom for point method
+
+For this example I just wanted to make a cool looking effect where I rotate and scale each line in the group. On top of that i also made a custom for point method when it comes to setting up the options object to use for this one. The end result is more or less what I wanted which is a pretty cool looking over all effect.
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LINES
+//-------- ----------
+const opt = {
+    maxRadius: 8,
+    pointsPerCircle: 100,
+    circleCount: 40,
+    linewidth: 4,
+    colors: ['red', 'lime', 'blue', 'yellow', 'green', 'cyan', 'orange', 'pink', 'purple'],
+    forPoint: function(v, s, opt){
+        v.x = v.x + -0.5 + 1 * Math.random();
+        v.z = v.z + -0.5 + 1 * Math.random();
+        return v;
+    }
+}
+const g1 = LinesSphereCircles.create(opt);
+scene.add(g1);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 800;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax * 2 % 1;
+    const a2 = 1 - Math.abs( 0.5 - a1 * 4 % 1 ) / 0.5;
+    g1.children.forEach( (line, i, arr) => {
+        // rotate
+        const count = Math.floor(i + 1);
+        line.rotation.z = Math.PI * 2 * count * a1;
+        // scale
+        const s = 1 - (i / arr.length * 0.5 * a2);
+        line.scale.set(s, s, s);
+        // material
+        const m = line.material;
+        m.transparent = true;
+        m.opacity = 0.85 - 0.80 * ( i / arr.length);
+    });
+    LinesSphereCircles.setByFrame(g1, frame, frameMax, opt);
+    g1.rotation.y = Math.PI * 2 * a1;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
