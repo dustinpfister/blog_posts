@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-12-15 11:08:00
-version: 1.100
+updated: 2022-12-19 10:18:39
+version: 1.101
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -129,7 +129,9 @@ If I get a solid idea for the core of what the game should be I might like to ex
 
 ### [ 2.21 - Lerp position attributes of buffer geometries](/2022/07/01/threejs-examples-lerp-geo/) 
 
-This is a project centered around the idea of lerping the points  of a position attribute of one buffer geometry to another one. I have made a few projects actually that are this kind of deal in one form or another. Maybe my best example of this would be my many object tweening example where the aim is to do what I am doing with this project, but with many sets of geometries at the same time.
+This is a project centered around the idea of lerping the points  of a position attribute of one buffer geometry to another one. When doing so it is generally a good idea to make sure that the count of points in each geometry is the same. However it is not just the count of points that is of concern, but also the order in which they are. Also I have found that it is a good idea to do this with non indexed geometry as well.
+
+I have made a few projects actually that are this kind of deal in one form or another. Maybe my best example of this would be my many object tweening example where the aim is to do what I am doing with this project, but with many sets of geometries at the same time.
 
 ### [ 2.22 - Lines Group Module ](/2022/06/10/threejs-examples-lines-deterministic/) 
 
