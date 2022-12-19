@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2022-12-19 10:57:36
-version: 1.23
+updated: 2022-12-19 11:38:47
+version: 1.24
 ---
 
 I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method can be used to transition the state of one vector to another target vector by way of giving a target point to move to, and an alpha value between 0 and 1 that is the magnitude to the move the current point to the target point.
@@ -46,12 +46,11 @@ So then the core of this idea is to just have a function that I can use to pass 
 
 So inside the body of the lerp geometry function I use the get attribute function of the buffer geometry class to get the position attributes of geoA and GeoB I can then just loop over the position attribute of the geometry I want to update and use the Vector3 class to create two points in space for both geoA and geoB. I then just use the lerp method of the vector3 that I created for geoA to lerp it from that state to the state of geoB using the lerp method of the Vector3 class. I can now set the state of the vertex for the geometry that I am updating.
 
-When updating the state of a position attribute of a geometry I need to set the needs update boolean of the position attribute to true. After that there is also thinking in terms of other attributes that may also need to be updated as a result of the change of the state of the position attribute. I have found that I do want to at least make sure the the normals attribute is also updated to make sure that lighting looks the way it should with the new position state. In some cases I might need to work out a custom solution for this, however often just using the [compute vertex normals](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) method of the buffer geometry will work fine.
-
 ```js
-(function () {
+// lerpgeo.js - r0 - from threejs-examples-lerp-geo
+(function (global) {
     // LERP GEO FUNCTION
-    var lerpGeo = function(geo, geoA, geoB, alpha){
+    global.lerpGeo = function(geo, geoA, geoB, alpha){
         alpha = alpha || 0;
         // pos, and new pos
         let pos = geo.getAttribute('position');
@@ -77,50 +76,139 @@ When updating the state of a position attribute of a geometry I need to set the 
         pos.needsUpdate = true;
         geo.computeVertexNormals();
     };
-    // SCENE
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(20, 20));
-    scene.background = new THREE.Color('black');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
-    camera.position.set(2, 1, 2);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // LIGHT
-    var dl = new THREE.DirectionalLight(0xffffff, 1);
-    dl.position.set(2, 1, 3);
-    scene.add(dl);
-    scene.add( new THREE.AmbientLight(0xafafaf, 0.25) );
-    // GEO AND MESH
-    var g0 = new THREE.ConeGeometry(1, 1, 20, 18);
-    var g1 = new THREE.SphereGeometry(1, 20, 20);
-    console.log( g0.getAttribute('position').count ); // trying to get simular counts
-    console.log( g1.getAttribute('position').count );
-    var mesh = new THREE.Mesh(g0.clone(), new THREE.MeshStandardMaterial({ side: THREE.DoubleSide}));
-    scene.add(mesh);
-    // CONTROL
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
-    // APP LOOP
-    var frame = 0, frameMax = 300;
-    var loop = function () {
-        requestAnimationFrame(loop);
-        renderer.render(scene, camera);
-        var per = frame / frameMax,
-        bias = 1 - Math.abs( per - 0.5) / 0.5;
-        lerpGeo(mesh.geometry, g0, g1, bias);
-        frame += 1;
-        frame %= frameMax;
-    };
-    loop();
-}
-    ());
+}(this));
 ```
 
-Now that I have my lerp geo helper functionI just need to test it out with a little more javaScript code that has to do with setting up a basic scene and having two two geometries to update the state of the geometry of a mesh object. For this first little demo of the hel0er functionI am using a cone geometry and a sphere geometry as the two geometries that I would like to lerp back and forth between.
+When updating the state of a position attribute of a geometry I need to set the needs update boolean of the position attribute to true. After that there is also thinking in terms of other attributes that may also need to be updated as a result of the change of the state of the position attribute. I have found that I do want to at least make sure the the normals attribute is also updated to make sure that lighting looks the way it should with the new position state. In some cases I might need to work out a custom solution for this, however often just using the [compute vertex normals](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) method of the buffer geometry will work fine.
+
+## 1.1 - Two Geometry example using cone and sphere geometry
+
+Now that I have my lerp geo helper function I just need to test it out with a little more javaScript code that has to do with setting up a basic scene and having two two geometries to update the state of the geometry of a mesh object. For this first little demo of the hel0er functionI am using a cone geometry and a sphere geometry as the two geometries that I would like to lerp back and forth between.
 
 I then have a main app loop function in which I will render the current state of the scene object, and also call my lerp geo helper function to change the state of the geometry. The result is an interesting looking effect where all the points of a cone geometry are lerping from the state of the cone geometry to a sphere and back again.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(20, 20));
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+camera.position.set(2, 1, 2);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(2, 1, 3);
+scene.add(dl);
+scene.add( new THREE.AmbientLight(0xafafaf, 0.25) );
+//-------- ----------
+// GEO AND MESH
+//-------- ----------
+const g0 = new THREE.ConeGeometry(1, 1, 20, 18);
+const g1 = new THREE.SphereGeometry(1, 20, 20);
+console.log( g0.getAttribute('position').count ); // trying to get simular counts
+console.log( g1.getAttribute('position').count );
+const mesh = new THREE.Mesh(g0.clone(), new THREE.MeshStandardMaterial({ side: THREE.DoubleSide}));
+scene.add(mesh);
+//-------- ----------
+// APP LOOP
+//-------- ----------
+let frame = 0;
+const frameMax = 300;
+const loop = function () {
+    requestAnimationFrame(loop);
+    renderer.render(scene, camera);
+    const per = frame / frameMax;
+    const bias = 1 - Math.abs( per - 0.5) / 0.5;
+    lerpGeo(mesh.geometry, g0, g1, bias);
+    frame += 1;
+    frame %= frameMax;
+};
+loop();
+```
+
+### 1.2 - Four Source Geometries to make two geometries that are then also lerped for one
+
+For this example I have four source  Geometries that I am then lerping between to make two geometries. I then lerp the two geometries again to make the final geometry state that is used for a lines object.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(20, 20));
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+camera.position.set(2, 1, 2);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(2, 1, 3);
+scene.add(dl);
+scene.add( new THREE.AmbientLight(0xafafaf, 0.25) );
+//-------- ----------
+// SOURCE GEOS
+//-------- ----------
+const s0 = new THREE.TorusGeometry(1, 1, 20, 20);  // 441
+const s1 = new THREE.SphereGeometry(1, 20, 20);    // 441
+const s2 = new THREE.ConeGeometry(1, 1, 20, 18);   // 440
+const s3 = new THREE.PlaneGeometry(1, 1, 20, 20);  // 441
+//console.log(s3.getAttribute('position').count);
+//-------- ----------
+// GEOS
+//-------- ----------
+const g0 = s0.clone();
+const g1 = s0.clone();
+const g3 = s0.clone();
+//-------- ----------
+// LINE
+//-------- ----------
+const material = new THREE.LineBasicMaterial({ color: 0x00ff00, linewidth: 4})
+const line = new THREE.Line(g3, material);
+scene.add(line);
+//-------- ----------
+// GET ALPHA HELPERS
+//-------- ----------
+const getAlpha = (n, d, count) => {
+    return n / d * count % 1;
+};
+const getAlphaBias = (n, d, count) => {
+    const a1 = getAlpha(n, d, count);
+    return  1 - Math.abs( 0.5 - a1) / 0.5;
+};
+//-------- ----------
+// APP LOOP
+//-------- ----------
+let frame = 0;
+const frameMax = 300;
+const loop = function () {
+    requestAnimationFrame(loop);
+    renderer.render(scene, camera);
+    const a1 = getAlphaBias(frame, frameMax, 2);
+    const a2 = getAlphaBias(frame, frameMax, 4);
+    const a3 = getAlphaBias(frame, frameMax, 8);
+    lerpGeo(g0, s0, s1, a1);
+    lerpGeo(g1, s1, s2, a2);
+    lerpGeo(g3, g0, g1, a3);
+    frame += 1;
+    frame %= frameMax;
+};
+loop();
+```
 
 ## Conclusion
 
