@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 991
-updated: 2022-12-18 12:14:55
-version: 1.24
+updated: 2022-12-19 12:56:20
+version: 1.25
 ---
 
 When it comes to making lines in threejs I wanted to make a [threejs example](/2021/02/19/threejs-examples/) in which I have a collection of lines that form a [sphere like shape](/2021/05/26/threejs-sphere/). So the general idea is to make a JavaScript module that has a create method that will return a [group](/2018/05/16/threejs-grouping-mesh-objects/) of lines, where each line is one circle that forms something that will look like a sphere when it comes to the over all shape of the collection of lines. 
@@ -15,7 +15,7 @@ I can then also add a method that can be used to update the state of this group 
 
 <!-- more -->
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/272Z2QvvA7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video" src="https://www.youtube.com/embed/nQ0rDFbFwK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Sphere Circle Lines threejs example and what to know first
@@ -37,6 +37,8 @@ The source code examples that I am writing about in this post can also be found 
 ### Version Numbers matter
 
 I was using r135 when I first wrote this post, and the last time I cam around to do some editing I was using r146.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/272Z2QvvA7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## 1 - Getting the general idea working first \( r0 \)
