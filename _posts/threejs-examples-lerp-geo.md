@@ -5,19 +5,21 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2022-10-04 09:09:04
-version: 1.21
+updated: 2022-12-19 10:18:39
+version: 1.22
 ---
 
-Not to long ago I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method of the Vector3 class can be used to transition the state of one vector to another by way of giving a point to transition to and an alpha value between 0 and 1 that is the magnitude to move the point. Lately I thought about using this as a way to lerp the points of a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of one geometry back and forth from one geometry to another. So then todays post will be on a [threejs example](/2021/02/19/threejs-examples/) in which I am working out a crude yet effective proof of concept of this idea of lerping the state of a geometry between two states.
+I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method can be used to transition the state of one vector to another target vector by way of giving a target point to move to, and an alpha value between 0 and 1 that is the magnitude to the move the current point to the target point.
 
-So in other words I am thinking in terms of having two geometries with similar, and ideally identical count of vertcies in the position attribute. On top of having more or less the same count of vertices the order of the vertices is also of importance I have found as if that is not the case this can result in a less than desired outcome.
+Lately I thought about using this lerp method as a way to lerp the points of a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of one geometry back and forth from one geometry to another. This post will be on a [threejs example](/2021/02/19/threejs-examples/) in which I am working out a crude yet effective proof of concept of this idea of lerping the state of a position attribute of one buffer geometry between two differing states.
+
+So in other words I am thinking in terms of having two geometries with similar, and ideally an identical count of vertices in the position attribute. On top of having more or less the same count of vertices the order of the vertices is also of importance I have found as if that is not the case this can result in a less than desired outcome with the effect.
 
 <!-- more -->
 
 ## Lerping two geometries, and what to know first
 
-This is a post on an advanced topic of threejs that has to do with the position attributes of buffer geometry instances, and one way to go about transitioning between the two. In other words threre is creating two geometries both with a similar count of points and lerping all the points from one state to another for another geometry that is the geometry used for a mesh object.
+This is a post on an advanced topic of threejs that has to do with the position attributes of buffer geometry instances, and one way to go about transitioning between the two. In other words there is creating two geometries both with a similar count of points and lerping all the points from one state to another for another geometry that is the geometry used for a mesh object. This is then not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/), so I trust that you have at least a little background when it comes to the basics. In any case in this section I will write about a few things you might want to read a little more on that is related to this sort of thing.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/atEMaHaAVjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
