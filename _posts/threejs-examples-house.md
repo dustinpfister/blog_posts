@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2022-12-21 12:16:44
-version: 1.27
+updated: 2022-12-21 12:25:33
+version: 1.28
 ---
 
 This will be another [threejs example](/2021/02/19/threejs-examples/) type post, this time it will be about making yet another simple model of something, just using threejs itself rather than making and loading an external file of some kind. This time I am thinking I will like to make a crude yet effective house model. I do not care to make anything that complex with this one, just a very simple, basic house like model that might end up being part of a larger scene of some kind in one or more future projects. 
@@ -27,6 +27,12 @@ This is a post on using the javaScript library known as three.js to create a sim
 ### I have many other examples like this one
 
 This is not my first threejs project example in which I make this kind of module this kind of way. The first project like this that I made would be my [guy one module](/2021/04/29/threejs-examples-guy-one/) that I made back in 2018. I also made a an example that is the [guy one module and a hamster wheel](/2021/04/19/threejs-examples-hamster-wheel/) type model as well taking this kind of approach. I have a number of other examples on top of that of course but you get the idea with this. What I am doing is just creating geometry with the built in geometry constructors, using that with mesh objects, and the positioning and rotating them in ways to make something that forms an over all object of some kind.
+
+### There is also looking into external file formats
+
+Although creating groups of mesh objects might work okay, in the long run it might still be best to look into what the options are with external file formats. With that there is also looking into software tools to create and edit these kinds of external file formats. It might prove to be a bit of a pain to do so, but then again so is making these kinds of mesh group models also.
+
+Thus far I have found that I like the [DAE file format](/2021/04/30/threejs-dae-collada-loader/) as it is a text format, and is also very open and HTML friendly. There are a whole lot of other options that should be consider such as the [buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/) which is nice because that is baked into the core of the threejs library alone.
 
 ### Source code is also up on Github
 
