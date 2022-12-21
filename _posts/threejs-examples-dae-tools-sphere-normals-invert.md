@@ -5,25 +5,30 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 990
-updated: 2022-06-02 12:28:20
-version: 1.19
+updated: 2022-12-21 11:35:10
+version: 1.20
 ---
 
-As of late I have been editing some of my older [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related subjects and alternatives. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use with a cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved, and I have a lot of pots boiling on top of this that makes me want to look for a kind of simple place holder solution for now. There are a lot of issues that come up when trying to make one of these cube textures, for one thing I need to start with a texture that is seamless in all directions, and on top of that I need to have a way to mutate the state of the texture so that it does not look like I am in inside a cube.
+When editing some of my older [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related subjects and also alternatives. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use as cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved, and I have a lot of pots boiling on top of this that makes me want to look for a kind of simple place holder solution for now. 
 
-While I look into the subject of making these kinds of textures the thought occurred that there should be more than one way to go about doing this sort of thing, such as just having a sphere and inverting the normals attribute so that the front side of the sphere is the inside of the sphere. Then there is making a texture to use with the inner surface of this sphere, and making all of this part of a DAE file that I can then just load, scale up as needed, and have fixed at the center of the scene object. I can then have a situation in which the camera and all additional objects of interest are inside this kind of sky sphere, and I can then just draw on the surface of this sphere as a way to create a kind of background for one or more over all projects. This is then a post on a [threejs example](/2021/02/19/threejs-examples/) in which I am doing this as an alternative way of making a kind of cube texture.
+There are a lot of issues that come up when trying to make one of these cube textures, for one thing I need to start with a texture that is seamless in all directions, and on top of that I need to have a way to mutate the state of the texture so that it does not look like I am in inside a cube but rather a sphere of sorts even though it is a cube.
+
+While I look into the subject of making these kinds of textures the thought occurred that there should be more than one way to go about doing this sort of thing that will have the same visual outcome at least. One such idea would be to just have a sphere, and inverting the normal attribute values so that the front side of the sphere is the inside of the sphere. Then there is making a texture to use with the inner surface of this sphere, and making all of this part of a [DAE file](https://en.wikipedia.org/wiki/COLLADA) that I can then just load, scale up as needed, and have fixed at the center of the scene object. I can then have a situation in which the camera and all additional objects of interest are inside this kind of sky sphere, and I can then just draw on the surface of this sphere as a way to create a kind of background for one or more over all projects. 
+
+Although this kind of alternative might have its advantages it is will not at all a replacement for making a cube texture, which does stroke me as the best way to go about doing this sort of thing with threejs projects. One reason why is that cubes textures are not jst use for backgrounds, but environment maps also. Still this kind of alternative might still work okay of I do not care about environment maps for now. So then this a post on a [threejs example](/2021/02/19/threejs-examples/) in which I am using a DAE file of a sphere with inverted normal, and custom uv mapping and textures as an alternative way of making a kind of cube texture.
 
 <!-- more -->
 
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/nznbbT525Mk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Inverting Sphere normals, and what to know before hand
 
-This is an advanced post on the subject of using the javaScript library known as threejs as well as a number of additional assets to create a kind of sky sphere to serve as a kind of background for a threejs project other than that of a solid color or fixed single texture. I am then taking a lot of liberties here and assuming that you have at least a fair amount of experience with threejs, javaScript, and also using blender as a way to create and export DAE files as a preferred way of creating external assets to load into a scene object.
-
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/nznbbT525Mk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+This is an advanced post on the subject of using the javaScript library known as threejs as well as a number of additional assets to create a kind of sky sphere. This sky sphere will then serve as a kind of background for a threejs project other than that of a solid color or fixed single texture. I am then taking a lot of liberties here and assuming that you have at least a fair amount of experience with threejs, javaScript, and also using blender as a way to create and export DAE files as a preferred way of creating external assets to load into a scene object. I will not be getting into detail with basics here, but I will still take a moment to write about a few things that one might want to read up more on before continue to read the rest of this post.
 
 ### This example makes use of the DAE loader that must be added on top of threejs
 
-This example makes use of the DAE file, or Collada File loader that can be found in the threejs repository. I have all ready [wrote a blog post on this DAE loader a while back](/2021/04/30/threejs-dae-collada-loader/) and thus assume that you know a thing or two about these various additional assets to work with in the threejs repository. Also I am making use of an [additional module that I made a while back](/2021/06/25/threejs-examples-dae-tools/) where I am building on top of this DAE loader, but this is mainly just some abstractions and additional methods that I have found that I like to have when working with DAE assets thus far.
+This example makes use of the DAE file, or Collada File, the loader of which can be found in the threejs repository example folder. I have all ready [wrote a blog post on this DAE loader a while back](/2021/04/30/threejs-dae-collada-loader/) and thus assume that you know a thing or two about these various additional assets to work with in the threejs repository. Also I am making use of an [additional module that I made a while back](/2021/06/25/threejs-examples-dae-tools/) where I am building on top of this DAE loader, but this is mainly just some abstractions and additional methods that I have found that I like to have when working with DAE assets thus far.
 
 ### Source code and DAE assets are up on Guthub
 
@@ -31,7 +36,7 @@ On top of using threejs and additional javaScript files such as the DAE loader, 
 
 ### Version numbers matter
 
-When I first wrote this blog post I was using r135 of threejs.
+When I first wrote this blog post I was using r135 of threejs, and the last time I came around to do some editing I was using r146.
 
 ## 1 - First version of this inverted normals sphere DAE file example
 
