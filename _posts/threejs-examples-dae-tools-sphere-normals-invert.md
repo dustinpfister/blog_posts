@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 990
-updated: 2022-12-21 11:35:10
-version: 1.20
+updated: 2022-12-21 12:02:32
+version: 1.21
 ---
 
 When editing some of my older [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) content and have got around to my post on [cube textures](/2018/04/22/threejs-cube-texture/) which in turn put me in the direction of exploring this topic and related subjects and also alternatives. The process of just adding a cube texture to a scene is one thing, but the process of creating textures to use as cube texture is a whole other matter. Thus far I have not found a sound way to go about creating these kinds of textures from a resource image because doing so is a little involved, and I have a lot of pots boiling on top of this that makes me want to look for a kind of simple place holder solution for now. 
@@ -40,100 +40,67 @@ When I first wrote this blog post I was using r135 of threejs, and the last time
 
 ## 1 - First version of this inverted normals sphere DAE file example
 
-In this section I will be going over what I have together thus far when it comes to the source code of this example. In this section I am just going over the source code as the state of the sphere as well as the state with textures is all something that I have worked out in an external dae file that I am loading with my DAE tools module that I worked out in another example.
+In this section I will be going over what I have together thus far when it comes to the source code of this example. In this section I am just going over the source code as the state of the sphere as well as the state with textures is all something that I have worked out in an external dae file that I am loading with my DAE tools module that I worked out in another example. There is just then the question of how to load the DAE file, and also what to do with the result object that the DAE Loader will give.
+
+For this first revision of this sphere normal invert example I am making use of threejs, the Collada file loader, r2 of my DAE tools file, and a main.js file the works on top of all of this. 
 
 ### 1.1 - The main javaScript file
 
-In the main javaScript file of this example I am creating my scene object, camera, renderer, and light source just like that of any other typical threejs example. I am then also working out an animation loop in which I will want to have a camera just look around as a way to just make sure that the end result of what I am making looks okay at least.
+In the main javaScript file of this example I am creating my scene object, camera, renderer, just like that of any other typical threejs example. I am then also working out an animation loop in which I will want to have a camera just look around as a way to just make sure that the end result of what I am making looks okay at least.
 
 The main thing that stands out as far as this example goes is that I am calling the load one method of my DAE tools module that I made in a previous example. I will be going over a copy of the source code of this module in the next sub section, but for now the main thing here is that this is just the way that I thus far like to load not just a dae file, but also any additional textures that the dae file needs to load also. This load one method will return a promise that should resolve when the dae file as well as all textures used in the dae file are finished loading.
 
 ```js
+// Sphere Normals invert demo - r0 - from threejs-examples-dae-tools-sphere-normals-invert
 (function () {
- 
+    //------ ----------
     // SCENE
-    var scene = new THREE.Scene();
+    //------ ----------
+    const scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(20, 20));
     scene.background = new THREE.Color('cyan');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
     camera.position.set(0, 10, 0);
     camera.lookAt(0, 5, 10);
- 
     scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // LIGHT
-    var dl = new THREE.DirectionalLight(0xffffff, 1);
-    dl.position.set(2, 1, 3)
-    scene.add(dl);
- 
-    // CONTROL
-    //var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
-    var frame = 0, frameMax = 300;
- 
-    // app loop
-    var loop = function () {
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //------ ----------
+    // LOOP
+    //------ ----------
+    let frame = 0;
+    const frameMax = 300;
+    const loop = function () {
         requestAnimationFrame(loop);
         renderer.render(scene, camera);
- 
-        var per = frame / frameMax,
-        bias = 1 - Math.abs( per - 0.5) / 0.5;
-        var r = Math.PI * 2 * per;
-        var x = Math.cos(r) * 10;
-        var z = Math.sin(r) * 10;
- 
-        camera.lookAt(x, 15 - 15 * bias, z);
- 
+        const per = frame / frameMax, bias = 1 - Math.abs( per - 0.5) / 0.5;
+        const r = Math.PI * 2 * per;
+        camera.lookAt(Math.cos(r) * 10, 15 - 15 * bias, Math.sin(r) * 10);
         frame += 1;
         frame %= frameMax;
- 
-        //controls.update();
     };
     // USING DAE TOOLS TO LOAD THE *.dae file
-    var daeObjects = DAE.create();
+    const daeObjects = DAE.create();
     DAE.loadOne(daeObjects, "/dae/sphere-normal-invert/sphere-normal-invert.dae")
     .then(function(daeObjects){
-        var group = DAE.createGroup(daeObjects, 0);
+        const group = DAE.createGroup(daeObjects, 0);
         scene.add(group);
- 
-        var mesh = group.children[0];
- 
-        // OPTION1 - REPLACE MATERIAL WITH BASIC MATERIAL?
-        // A crude fix for this can be just be replacing the material
-        // with the basic material, using the THREE.DoubleSide valu for the
-        // side value
-        //mesh.material = new THREE.MeshBasicMaterial({
-        //    side: THREE.DoubleSide,
-        //    map: null
-        //});
- 
-        // OPTION2 - MUTATE PHONG MATERIAL 
-        //var material = mesh.material;
-        //material.side = THREE.DoubleSide;
- 
-        // OPTION3 - REPLACE WITH BASIC MATERIAL, USING MAP VALUE 
+        const mesh = group.children[0];
+        // REPLACE WITH BASIC MATERIAL, USING MAP VALUE 
         // FROM DAE FILE IMPORT
-        var sourceMaterial = mesh.material;
-        var newMaterial = new THREE.MeshBasicMaterial({
+        const sourceMaterial = mesh.material;
+        const newMaterial = new THREE.MeshBasicMaterial({
             map: sourceMaterial.map
         });
         mesh.material = newMaterial;
- 
         // BASE GROUND MESH
-        var baseGround = new THREE.Mesh( new THREE.BoxGeometry(1, 0.1, 1), new THREE.MeshPhongMaterial({
-             color: 0x00ff00
+        const baseGround = new THREE.Mesh( new THREE.BoxGeometry(1, 0.1, 1), new THREE.MeshBasicMaterial({
+             color: 0x008800
         }));
         baseGround.position.y = -0.125;
         baseGround.scale.set(60, 1, 60);
         scene.add(baseGround);
- 
-        // VERTEX NORMALS HELPER
-        //var helper = new THREE.VertexNormalsHelper(mesh, 5, 0x00ff00, 3);
-        //scene.add(helper);
- 
         loop();
     })
     .catch(function(e){
@@ -143,6 +110,8 @@ The main thing that stands out as far as this example goes is that I am calling 
 }
     ());
 ```
+
+When I have the DAE result object to work with, by default the phong material is what is used. For this example I am not making use of any light source and am therefor replacing the phong material with the basic material. I am then just using the map texture from the old phong material for this new basic material. When it comes to the ground mesh object I am also using the mesh basic material as well.
 
 ### 1.2 - The dae tools file that I am using for this
 
