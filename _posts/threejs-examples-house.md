@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2022-12-21 12:28:14
-version: 1.29
+updated: 2022-12-21 13:08:24
+version: 1.30
 ---
 
 This will be another [threejs example](/2021/02/19/threejs-examples/) type post, this time it will be about making yet another simple model of something, just using threejs itself rather than making and loading an external file of some kind. This time I am thinking I will like to make a crude yet effective house model. I do not care to make anything that complex with this one, just a very simple, basic house like model that might end up being part of a larger scene of some kind in one or more future projects. 
@@ -393,8 +393,8 @@ When this demo is up an running things seem to be working as I would expect for 
 
 ## Conclusion
 
-So this is not much to look at for now, but as I make more models like this I think I will eventually start something where I am working with a bunch of models like this to produce an over all larger project. In fact sense I first wrote this post I have got around to writing another post on another examples that is a more advanced version of this example that is just that. I have come to just simply calling it [the backyard scene example](/2021/05/07/threejs-examples-backyard/) for now and it includes this house model along with many others that I have made thus far.
+So this is not much to look at for now, but as I make more models like this I think I will eventually start something where I am working with a bunch of models like this to produce an over all larger project. In fact sense I first wrote this post I have got around to writing another post on another examples that is a more advanced version of this example that is just that. I have come to just simply calling it [the backyard scene example](/2021/05/07/threejs-examples-backyard/) and it includes this house model along with many others that I have made thus far.
 
-I am not interested in making games with threejs at this time, I think a project like that would end up eating up to much time. However simple crude animations might work if I am willing to put in enough time and energy to do so. What I like about videos also is that I do not have to care as much about bugs, and predominance. As long as my frames render the way that I want them to I have a finished product and I can then move on with my life which is great.
+I am not interested in making games with threejs at this time, I think a project like that would end up eating up to much time. However simple crude animations might work if I am willing to put in enough time and energy to do so. What I like about videos also is that I do not have to care as much about bugs, and predominance. As long as my frames render the way that I want them to I have a finished product and I can then move on with my life which is great. These are the kinds of projects that I would use something like this with where what is most important is just how it looks and if it fits in with an over all style.
 
 
