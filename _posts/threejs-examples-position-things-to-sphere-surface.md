@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2022-07-26 12:16:21
-version: 1.27
+updated: 2022-12-22 09:54:43
+version: 1.28
 ---
 
-For todays [theejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) post I think I will write about another basic [threejs example](/2021/02/19/threejs-examples/) that has to do with positioning a mesh object on the the surface of another method object that makes use of a sphere geometry.
+This [threejs example](/2021/02/19/threejs-examples/) post will have to do with positioning a mesh object on the the surface of another mesh object that makes use of a sphere geometry.
 
 There are a number of ways to do this, and the first version of this example made use of a module that creates [a group](/2018/05/16/threejs-grouping-mesh-objects/) that contains one [Mesh object](/2018/05/04/threejs-mesh/) that contains a [sphere for the geometry](/2021/05/26/threejs-sphere/), and then another group that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere. Although this gave me a desired end result, I would say that it proved to be far more complex than it needed to be.
 
@@ -43,11 +43,11 @@ The latest source code for this example can also be found in my [test threejs re
 
 ## 1 - Using Vector3 Copy, add, and Apply Euler methods with the radius of the Sphere class instance of the Sphere Geometry ( r1 )
 
-When I first wrote this blog post I was writing about the first version of the example that was a solution involving the use of groups as a way to get a desired end result. With r1 of the example I am now making use of a collection of vector3 class methods along with the radius property of the sphere class as a way to get a desired end result.
+When I first wrote this blog post I was writing about the first version of the example that I now call r0 that was a solution involving the use of groups as a way to get a desired end result. With r1 of the example I am now making use of a collection of vector3 class methods along with the radius property of the sphere class as a way to get a desired end result. The main Vector3 class method of interest here is the apply Euler method that will preform a change of the direction of the vector by way of a given Euler class object.
 
-### 1. new sphere wrap module
+### 1. New sphere wrap module \( r1 \)
 
-Sense I am taking a whole new approach to this sort of thing with this revision I made some major changes from the ground up, and for now the sphere wrap module now just has a single public method. This single method now is the position to sphere method where I pass a mesh that has sphere trigonometry as the first argument, then the object I want to position to the sphere as the second argument. After that I can give lat and long values in 0 to 1 number form, along with an altitude arguyemt as the final argument when calling the method.
+Sense I am taking a whole new approach to this sort of thing with this revision I made some major changes from the ground up, and for now the sphere wrap module now just has a single public method. This single method now is the position to sphere method where I pass a mesh that has sphere geometry as the first argument, then the object I want to position to the sphere as the second argument. After that I can give lat and long values in 0 to 1 number form, along with an altitude arguyemt as the final argument when calling the method.
 
 ```js
 /*  sphere_wrap.js - r1 - from threejs-examples-position-things-to-sphere-surface
