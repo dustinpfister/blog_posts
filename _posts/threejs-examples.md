@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-12-19 10:18:39
-version: 1.101
+updated: 2022-12-22 13:04:59
+version: 1.102
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -178,7 +178,9 @@ Here I have a quick example that I worked out where I am mutating the position a
 
 ### [ 2.31 - Position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
 
-This is an example where I have worked out a crude yet effective module that can be used to create a special kind of sphere wrap group. The main create method of this sphere wrap group returns a group that of course has a sphere as one of the children, however it then also has a surface group. I then have another public method of this module that will create and add a object wrap group to the surface group and then this object wrap group contains a mesh that will end up being positioned on top of the surface of the sphere.
+The first version of this example worked by way of a main create method that returns a group that of course has a sphere as one of the children, however it then also has a surface group. I then have another public method of this module that will create and add a object wrap group to the surface group and then this object wrap group contains a mesh that will end up being positioned on top of the surface of the sphere.
+
+Sense then I have made a number of revisions of this example that make use of other ways to set an object to a position along the surface of a sphere. In one revisions I added methods that make use of vector3 class methods, and in the latest revision I am now making use of raycaster.
 
 ### [ 2.32 - Scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
