@@ -5,27 +5,28 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-05-02 09:58:06
-version: 1.19
+updated: 2022-12-23 12:44:18
+version: 1.20
 ---
 
-A long time ago now I made a cube stack module that I used in my [post on the orographic camera](/2018/05/17/threejs-camera-orthographic/). As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my [threejs example posts](/2021/02/19/threejs-examples/). So I copied over the current state if the cube stack module into a new folder, and started making some chances to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
+A long time ago now I made a cube stack module that I used in my [post on the orographic camera](/2018/05/17/threejs-camera-orthographic/). As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my [threejs example posts](/2021/02/19/threejs-examples/). So I copied over the current state if the cube stack module into a new folder, and started making some changes to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
 
 <!-- more -->
 
-## The cube stack module threejs example, and what to know first
-
-This is a post on a javaScrip module that created and returns an object that is a group with additional groups and mesh objects attached working on top of the javaScript library known as threejs. I assume that you have at least a fair amount of experience working with threejs, as well as core javaScript and additional client side web development related stuff, if not you might find this post hard to follow. I have [getting started type posts on threejs](/2018/04/04/threejs-getting-started/), as well as [javaScript in general](/2018/11/27/js-getting-started/) that you might want to check out if you are still new to this sort of thing, as I will not be covering basics here.
-
 <iframe class="youtube_video" src="https://www.youtube.com/embed/uxYi8UyITU8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### version Numbers matter
 
-I was using r135 when I first started writing this post and the source code example.
+## The cube stack module threejs example, and what to know first
+
+This is a post on a JavaScript module that created and returns an object that is a group with additional groups and mesh objects attached working on top of the JavaScript library known as threejs. I assume that you have at least a fair amount of experience working with threejs, as well as core javaScript and additional client side web development related stuff, if not you might find this post hard to follow. I have [getting started type posts on threejs](/2018/04/04/threejs-getting-started/), as well as [javaScript in general](/2018/11/27/js-getting-started/) that you might want to check out if you are still new to this sort of thing, as I will not be covering basics here.
 
 ### The source code in this post and many others is no Github
 
 The soucre code examples in this post and many others is [up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-cube-stack).
+
+### version Numbers matter
+
+I was using r135 when I first started writing this post and the source code example.
 
 ## 1 - First state of this cube Stack threejs example
 
