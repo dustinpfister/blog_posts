@@ -1,12 +1,12 @@
 ---
 title: A Timer video javaScript module threejs example
-date: 2022-12-22 11:00:00
+date: 2022-12-23 11:00:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 1019
-updated: 2022-12-23 12:29:56
-version: 1.5
+updated: 2022-12-23 12:36:32
+version: 1.6
 ---
 
 This [threejs project examples post](https://threejs.org/examples/) is on a javaScript file that I am using to help me with the process of making what I would call a count down, or [timer videos](https://www.youtube.com/watch?v=_W0bSen8Qjg). This is just simply a kind of video where there is a count down that starts from when the video starts from a given start time such as 30 seconds, and then counts down to 0. When 0 is reached the video is over, or there is a little additional time that is an alarm sound or something to that effect.
