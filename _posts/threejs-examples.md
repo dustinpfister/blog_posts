@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-12-23 12:36:32
-version: 1.103
+updated: 2022-12-23 12:41:25
+version: 1.104
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -75,7 +75,7 @@ I can not say that I have much interest in revising this project as of this writ
 
 ### [ 2.11 - A count-down.js file for timer video projects ](/2022/12/23/threejs-examples-count-down/)
 
-I wanted to make a basic tool for creating one or more timer videos.
+I wanted to make a basic tool for creating one or more timer videos. A timer video is a kind of video in which a count down starts with the start of a video from a given number, down to zero. When zero is reached that will be either the end of the video, or a little additional content that is an alarm of some kind. This javaScript module helps me with the process of quickly creating and updating a nested collection of objects that are created from source objects that are use to display a current time string or count value. This count value can be a number of seconds from a given start point down to zero, however I am also using it for other tasks such as having a frame counter in a scene for example.
 
 ### [ 2.12 - Create Path tool](/2022/10/28/threejs-examples-create-path-tool/)
 
