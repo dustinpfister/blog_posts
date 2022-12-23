@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1019
-updated: 2022-12-23 11:59:54
-version: 1.2
+updated: 2022-12-23 12:07:51
+version: 1.3
 ---
 
 This threejs project examples post is on a javaScript file that I am using to help me with the process of making what I would call a count down, or timer video. This is just simply a kind of video where there is a count down that starts from when the video starts from a given start time such as 30 seconds, and then counts down to 0. When 0 is reached the video is over, or there is a little additional time that is an alarm sound or something to that effect.
@@ -295,7 +295,7 @@ This will be the first demo of the count-down.js file in which I am using a cust
 
 ### 1.2 - Using the DAE load method
 
-When it comes to any and all real projects that I will be making with this module I am sure that I will want to use one or more DAE files to load custom geometry for the numbers and additional geometry for other objects that will compose the over all scene.
+When it comes to any and all real projects that I will be making with this module I am sure that I will want to use one or more DAE files to load custom geometry for the numbers and additional geometry for other objects that will compose the over all scene. For this example I am loading just one DAE file which is my cd1.dae file in which I just have objects for each number that have a position and normal attribute and that is it. For now I am not doing anything fancy when it comes to changing values for the materials of the objects that default to phong material. Because of this I will want to add a light source as usual then and for this I am going with my typical choice these days with that which is a directional light.
 
 ```js
 // ---------- ----------
@@ -402,7 +402,7 @@ countDown.DAE_loader(['/dae/count_down_basic/cd1.dae'], DAE_on_loaded_item)
 
 ### 1.3 - Using the DAE load method, and canvas to add texture
 
-With this example I am once again using the DAe loader, but now I am also once again using my canvas module to create textures for these objects.
+With this example I am once again using the DAE loader method, but now I am also once again using my canvas module to create textures for these objects. With that said at this time I am using the cd2.dae file in which I have worked out okay uv maps for each number.
 
 ```js
 // ---------- ----------
@@ -546,7 +546,7 @@ countDown.DAE_loader([ '/dae/count_down_basic/cd2.dae' ])
 
 ### 1.4 - Using the DAE load method with more than one file, and with DAE file textures
 
-For this example I am not ditching the use of canvas textures in favor of textures that I have made for the DAE files. As at this point I am not only using External files for geometry that has position, as well as custom uv and normals attributes, but now also textures as well. Also I am not getting into the habit of making more than one DAE file one for numbers, and the other for everything else that I want in the scene. Moving forward I am sure that I will end up with just one great file for the numbers that I will want to reuse from one project to the next, but have many other files for additional objects to place in the scene.
+For this example I am not ditching the use of canvas textures in favor of textures that I have made for the DAE files. As at this point I am not only using External files for geometry that has position, as well as custom uv and normals attributes, but now also textures as well. Also I am not getting into the habit of making more than one DAE file one for numbers, and the other for everything else that I want in the scene. Moving forward I am sure that I will end up with just one great file for the numbers that I will want to reuse from one project to the next, but have many other files for additional objects to place in the scene. So for this example I am now using my cd3\-nums file along with my cd3-ground files. These files have uvmaps and on top of that textures that are use for each material of each object. I am thinking that this might be the final form of the kinds of files I want to make for this, at least when it comes to r0 of the count-down.js file.
 
 ```js
 // ---------- ----------
