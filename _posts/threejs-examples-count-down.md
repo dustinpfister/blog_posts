@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1019
-updated: 2022-12-23 12:07:51
-version: 1.3
+updated: 2022-12-23 12:26:39
+version: 1.4
 ---
 
 This threejs project examples post is on a javaScript file that I am using to help me with the process of making what I would call a count down, or timer video. This is just simply a kind of video where there is a count down that starts from when the video starts from a given start time such as 30 seconds, and then counts down to 0. When 0 is reached the video is over, or there is a little additional time that is an alarm sound or something to that effect.
@@ -15,11 +15,29 @@ When it comes to making videos for these blog posts using threejs as well as som
 
 <!-- more -->
 
+## The count-down.js threejs project example and what to know first
+
+This is a blog post on some JavaScript code that I have made that works on top of threejs as well as additional code both of mine as well as additional official threejs assets to create timer videos. It should got without saying but I will say it anyway, this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) or JavaScript in general. This post and the many others that i have made like it thus far, are for people that have at least a fair about of experience with JavaScript and the threejs library and are now looking for ideas for various projects to make. I will not then be getting into basic things that should be solid at this point. Still in this section I might write about a few things that you might want to read about more before reading the rest of the content.
+
+### The count-down.js file as well as the demos make use of addtional files and assets beyond just threejs
+
+On top of using threejs alone I also am using the [threejs DAE file Loader](/2021/04/30/threejs-dae-collada-loader/) as an additional threejs file. The reason why is because I have a DAE loader method as one of the public methods of the count-down.js file that works on top of this feature that is not baked into the core of threejs itself. Also a number of my demos make use of this methods and thus also external [dae files](https://github.com/dustinpfister/test_threejs/tree/master/views/dae/count_down_basic) that are loaded with said dae loader methods and underlying file that makes use of it. Also a number of my demos for count-down.js make use of canvas texture that I am creating with my canvas.js file that I made for my [blog post on canvas textures](/2018/04/17/threejs-canvas-texture/).
+
+### Source code examples up on Github
+
+I also have the source that I am writing about here [up on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-count-down).
+
+### Version Numbers matter.
+
+When I first wrote this post I was using [r146 of threejs](https://github.com/mrdoob/three.js/releases/tag/r146).
+
 ## 1 - The first version of count-down.js \( r0 \) and demos
 
 The very first version of this count down module all ready has a number of public methods. There is the create method that when called will create and return a main group object. This main group object will contain a number of children each of which is another group that is for a given digit. Each digit group object will then also contain ten mesh objects one for each number that is used in a base 10 counting system. Setting the current time is then a matter of looping over each child of each digit group setting the [visible object3d property](/2021/05/24/threejs-object3d-visible/) of each mesh to false by default and then true if the current mesh object is the number for the current digit.
 
 There is the idea of making the kind of system where I just simply create a single mesh object for each digit, and maybe that is something that I will get to in future revisions when and if I even make it to that bridge to begin with. It may prove to be a better all around solution, but it also presents a number of problems that can be fixed by way this alternative nested group like system. One of the major concerns that comes to mind has to do with updating the geometry for the mesh objects, I would need to keep things consistent in terms of the number of points used in each geometry for each number. Maybe that is not such a bad thing and maybe it is something that I should be doing anyway when it comes to making my DAE files for this project. However getting into this can of worms is something that I would like to not get into at this point. This is the first version after all so for now I would like to have something that just works okay to create the final product, which in this case is a collection of frames for a video.
+
+I then have my set method in which I pass one of these group objects that I make with the create method along with a string value that will be used to set the current state of the objects to a given count. After that I have a DAE loader method that works on top of the threejs DAE loader.
 
 ```js
 // count-down.js - r0 - from threejs-examples-count-down
