@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1019
-updated: 2022-12-23 11:41:25
-version: 1.1
+updated: 2022-12-23 11:59:54
+version: 1.2
 ---
 
 This threejs project examples post is on a javaScript file that I am using to help me with the process of making what I would call a count down, or timer video. This is just simply a kind of video where there is a count down that starts from when the video starts from a given start time such as 30 seconds, and then counts down to 0. When 0 is reached the video is over, or there is a little additional time that is an alarm sound or something to that effect.
@@ -17,34 +17,656 @@ When it comes to making videos for these blog posts using threejs as well as som
 
 ## 1 - The first version of count-down.js \( r0 \) and demos
 
-The very first version of this count down module all ready has a number of public methods. There is the create method that when called will create and return a main group object. This main group object will contain a number of children each of which is another group that is for a given digit. Each digit group object will then also contain ten mesh objects one for each number that is used in a base 10 counting system. Setting the current time is then a matter of looping over each child of each digit group setting the viable object3d property of each mesh to false by default and then true if the current mesh object is the number for the current digit.
+The very first version of this count down module all ready has a number of public methods. There is the create method that when called will create and return a main group object. This main group object will contain a number of children each of which is another group that is for a given digit. Each digit group object will then also contain ten mesh objects one for each number that is used in a base 10 counting system. Setting the current time is then a matter of looping over each child of each digit group setting the [visible object3d property](/2021/05/24/threejs-object3d-visible/) of each mesh to false by default and then true if the current mesh object is the number for the current digit.
 
 There is the idea of making the kind of system where I just simply create a single mesh object for each digit, and maybe that is something that I will get to in future revisions when and if I even make it to that bridge to begin with. It may prove to be a better all around solution, but it also presents a number of problems that can be fixed by way this alternative nested group like system. One of the major concerns that comes to mind has to do with updating the geometry for the mesh objects, I would need to keep things consistent in terms of the number of points used in each geometry for each number. Maybe that is not such a bad thing and maybe it is something that I should be doing anyway when it comes to making my DAE files for this project. However getting into this can of worms is something that I would like to not get into at this point. This is the first version after all so for now I would like to have something that just works okay to create the final product, which in this case is a collection of frames for a video.
 
 ```js
+// count-down.js - r0 - from threejs-examples-count-down
+(function(api){
+    //-------- ----------
+    // DEFAULT SOURCE OBJECTS
+    //-------- ----------
+    const DEFAULT_OBJECTS = {};
+    let i = 0;
+    while(i < 10){
+        const n = 5 + 10 * i;
+        const geo = new THREE.SphereGeometry(0.5, n, n);
+        DEFAULT_OBJECTS[i] = new THREE.Mesh(geo, new THREE.MeshNormalMaterial({ wireframe: true}));
+        i += 1;
+    }
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // to pad string ( 9 to 009 if 3 digits )
+    const toPadString = (a, digits) => {
+        return String(a).padStart(digits, '0');
+    };
+    // position a digit group
+    const positionDigit = (digit, di, digits, width) => {
+        const hd = digits / 2;
+        const sx = hd * width * -1;
+        digit.position.x = width / 2 + sx + width * di;
+    };
+    // what to do for a DAE result object
+    const DAE_on_loaded_item = (result, SOURCE_OBJECTS) => {
+        // loop children of scene object
+        result.scene.children.forEach( (obj) => {
+            // if an object is a mesh object
+            if(obj.type === 'Mesh'){
+                let key = obj.name;
+                // if name begins with num_ replace with ''
+                if(key.match(/num_/)){
+                    key = key.replace('num_', '');
+                }
+                SOURCE_OBJECTS[key] = obj;
+                obj.position.set(0, 0, 0);
+            }
+        });
+    };
+    //-------- ----------
+    // CREATE METHOD
+    //-------- ----------
+    api.create = (opt) => {
+        opt = opt || {};
+        opt.timeStr = opt.timeStr || '00';
+        opt.digits = opt.digits === undefined ? 2 : opt.digits;  // 2 digits
+        opt.source_objects = opt.source_objects || DEFAULT_OBJECTS;
+        opt.width = opt.width === undefined ? 1 : opt.width;
+        opt.countID = opt.countID || '';
+        // main count object
+        const countObj = new THREE.Group();
+        countObj.name = opt.countID;
+        // for each digit, clone all source objects
+        let di = 0;
+        while(di < opt.digits){
+            const digit = new THREE.Group();
+            digit.name = opt.countID + '_' + di;
+            // position digit group
+            positionDigit(digit, di, opt.digits, opt.width);
+            countObj.add(digit);
+            let ni = 0;
+            while(ni < 10){
+                // clone the mesh object
+                const mesh = opt.source_objects[ni].clone();
+                mesh.name = opt.countID + '_' + di + '_' + ni;
+                mesh.visible = false; // mesh objects viable gets set true based on time value
+                // I will want a clone for the geometry and material also
+                mesh.geometry = mesh.geometry.clone();
+                mesh.material = mesh.material.clone();
+                digit.add(mesh);
+                ni += 1;
+            }
+            di += 1;
+        }
+        api.set(countObj, opt.timeStr);
+        return countObj;
+    };
+    //-------- ----------
+    // SET METHOD
+    //-------- ----------
+    // set to the given time string
+    api.set = (countObj, timeStr) => {
+        let di = 0;
+        const digits = countObj.children.length;
+        timeStr = toPadString(timeStr, digits);
+        while(di < digits){
+            let ni = 0;
+            while(ni < 10){
+                const mesh = countObj.getObjectByName(countObj.name + '_' + di + '_' + ni);
+                const n = parseInt(timeStr[di]);
+                mesh.visible = false;
+                if(n === ni){
+                    mesh.visible = true;
+                }
+                ni += 1;
+            }
+            di += 1;
+        }
+    };
+    //-------- ----------
+    // DAE FILE LOADER 
+    //-------- ----------
+    api.DAE_loader = function( dae_urls, on_loaded_item ){
+        on_loaded_item = on_loaded_item || function(){};
+        const manager = new THREE.LoadingManager();
+        const SOURCE_OBJECTS = {};
+        return new Promise( (resolve, reject) => {
+            // ERROR WHEN LOADING
+            manager.onError = function(url){
+                reject(new Error( 'error when loading: ' + url ));
+            };
+            // WHEN ALL LOADING IS DONE
+            manager.onLoad = function(){
+                resolve(SOURCE_OBJECTS);
+            };
+            dae_urls.forEach((url) => {
+                const loader = new THREE.ColladaLoader(manager);
+                loader.load(url, function(result){
+                    // what to do for each DAE by calling the built in helper for this
+                    DAE_on_loaded_item(result, SOURCE_OBJECTS);
+                    on_loaded_item(result, SOURCE_OBJECTS );
+                });
+            });
+        });
+    };
+    // add lines for a mesh object
+    api.addLine = (obj, s, pos, lw, color) => {
+        s = s === undefined ? 1 : s;
+        pos = pos || new THREE.Vector3();
+        const material_line = new THREE.LineBasicMaterial({
+            color: color || 0xffffff, 
+            linewidth: lw === undefined ? 8: lw,
+            transparent: true, opacity: 1
+        });
+        const line = new THREE.LineSegments( new THREE.EdgesGeometry(obj.geometry), material_line );
+        line.scale.set(s, s, s);
+        line.position.copy(pos);
+        obj.add(line);
+    };
+}( this['countDown'] = {} ));
 ```
 
 ### 1.1 - Using canvas elements to create textures
 
-This will be the first demo of the count-down.js file in which I am using a custom set of source objects that I create in the demo file. I do have the default objects of course, but I am sure that in any given project I am not going to be using those. The source objects for this demo are then just a bunch of mesh objects that use the THREE.BoxGeometry class for the Geometry of each object. However I will be making use of my canvas.js file from my canvas textures module in order to create the textures that I will use for each mesh object of each number.
+This will be the first demo of the count-down.js file in which I am using a custom set of source objects that I create in the demo file. I do have the default objects of course, but I am sure that in any given project I am not going to be using those. The source objects for this demo are then just a bunch of mesh objects that use the [THREE.BoxGeometry](/2021/04/26/threejs-box-geometry/) class for the Geometry of each object. However I will be making use of my [canvas.js file from my canvas textures module](/2018/04/17/threejs-canvas-texture/) in order to create the textures that I will use for each mesh object of each number.
 
 ```js
+(function(){
+    // ---------- ----------
+    // SCENE, CAMERA, RENDERER
+    // ---------- ----------
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+    camera.position.set(1, 3, 5);
+    camera.lookAt(0, 0, 0);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+    //-------- ----------
+    // CUSTOM OBJECTS
+    //-------- ----------
+    // draw method
+    const drawNumber = (canObj, ctx, canvas, state) => {
+        // black background
+        ctx.fillStyle = canObj.palette[0];
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // white outline
+        ctx.strokeStyle = canObj.palette[1];
+        ctx.strokeRect(0, 0, canvas.width, canvas.height);
+        // white text
+        ctx.fillStyle = canObj.palette[1];
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.font = '16px arial';
+        ctx.fillText(state.char, 16, 16);
+    };
+    // createing custom objects using canvas.js r2
+    const SOURCE_OBJECTS = {};
+    let i = 0;
+    while(i < 10){
+        const canObj = canvasMod.create({
+            size: 32,
+            update_mode: 'canvas',
+            palette: ['black', 'white'],
+            state: {
+               char: i,
+            },
+            draw: drawNumber
+        });
+        canvasMod.update(canObj);
+        SOURCE_OBJECTS[i] = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshBasicMaterial({
+                map: canObj.texture
+            })
+        );
+        i += 1;
+    }
+    //-------- ----------
+    // SCENE CHILD OBJECTS
+    //-------- ----------
+    scene.add( new THREE.GridHelper(10, 10) );
+    // seconds
+    const count_sec = countDown.create({
+        countID: 'sec',
+        digits: 2,
+        width: 1.25,
+        source_objects: SOURCE_OBJECTS
+    });
+    count_sec.position.set(-1, 0, 0);
+    scene.add(count_sec);
+    const count_ms = countDown.create({
+        countID: 'ms',
+        digits: 3,
+        width: 1.15,
+        source_objects: SOURCE_OBJECTS
+    });
+    count_ms.scale.set(0.5, 0.5, 0.5);
+    count_ms.position.set(1.25, 0, 0.5);
+    scene.add(count_ms);
+    // frame counter
+    const count_frames = countDown.create({
+        countID: 'frames',
+        digits: 3,
+        width: 1.25,
+        source_objects: SOURCE_OBJECTS
+    });
+    count_frames.position.set(-3.5,0,-5);
+    scene.add(count_frames);
+    // ---------- ----------
+    // ANIMATION LOOP
+    // ---------- ----------
+    const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 900;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    const update = function(frame, frameMax){
+        const a1 = (frame + 1) / frameMax;
+        let secs = Math.floor(30 - 30 * a1);
+        let a2 = (30 - 30 * a1) % 1;
+        let ms = Math.floor(1000 * a2);
+        //const timeStr = String(secs).padStart(3, '0');
+        countDown.set(count_sec, secs);
+        countDown.set(count_ms, ms);
+        countDown.set(count_frames, frame);
+    };
+    // loop
+    const loop = () => {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    loop();
+}());
 ```
 
 ### 1.2 - Using the DAE load method
 
+When it comes to any and all real projects that I will be making with this module I am sure that I will want to use one or more DAE files to load custom geometry for the numbers and additional geometry for other objects that will compose the over all scene.
+
 ```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(3, 3, 5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(3, 1, 2);
+scene.add(dl);
+// ---------- ----------
+// SOURCE_OBJECTS OBJECT that will hold the number objects
+// ---------- ----------
+const SOURCE_OBJECTS = {};
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+// what to do for a DAE result object
+const DAE_on_loaded_item = (result) => {
+    let i = 0;
+    while(i < 10){
+        const obj = result.scene.getObjectByName('num_' + i);
+        obj.position.set(0, 0, 0);
+        SOURCE_OBJECTS[i] = obj;
+        i += 1;
+    }
+};
+// create a count_sec count down object
+const create_count_sec = ( objects ) => {
+    const count_sec = countDown.create({
+        countID: 'sec',
+        digits: 2,
+        width: 1.05,
+        source_objects: objects
+    });
+    count_sec.position.set(0, 1, 0);
+    return count_sec;
+};
+// create loop method with given update method
+const create_loop = (update) => {
+    const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = 800;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    update = update || function(frame, frameMax){};
+    // loop
+    const loop = function() {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    return loop;
+};
+// ---------- ----------
+// LOADING MANAGER
+// ---------- ----------
+countDown.DAE_loader(['/dae/count_down_basic/cd1.dae'], DAE_on_loaded_item)
+.then( () => {
+    console.log('Done Loading.');
+    //-------- ----------
+    // SCENE CHILD OBJECTS
+    //-------- ----------
+    scene.add( new THREE.GridHelper(10, 10) );
+    // count secs count down object
+    const count_sec = create_count_sec(SOURCE_OBJECTS);
+    scene.add(count_sec);
+    // ---------- ----------
+    // UPDATE / ANIMATION LOOP
+    // ---------- ----------
+    const update = function(frame, frameMax){
+        const a1 = (frame + 1) / frameMax;
+        let secs = Math.floor(30 - 30 * a1);
+        countDown.set(count_sec, secs);
+    };
+    const loop = create_loop(update);
+    loop();
+})
+.catch( (e) => {
+    console.log(e.message);
+    scene.add( new THREE.GridHelper(10, 10) );
+    renderer.render(scene, camera);
+});
 ```
 
 ### 1.3 - Using the DAE load method, and canvas to add texture
 
+With this example I am once again using the DAe loader, but now I am also once again using my canvas module to create textures for these objects.
+
 ```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0, 0.8, 0.8);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(1.5, 2.5, 4.0);
+camera.lookAt(0, 0.85, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+dl.position.set(-2, 1, 2);
+scene.add(dl);
+const al = new THREE.AmbientLight(0xffffff, 0.1);
+scene.add(al);
+// ---------- ----------
+// CONST
+// ---------- ----------
+const SECS = 30;
+// ---------- ----------
+// TEXTURE
+// ---------- ----------
+const canObj_rnd1 = canvasMod.create({
+    size: 1024,
+    draw: 'rnd',
+    palette: [
+        '#ffffff', '#fefefe','#fdfdfd','#fcfcfc', '#fbfbfb', '#fafafa', '#f9f9f9','#f8f8f8', '#f7f7f7', '#f6f6f6',
+        '#f5f5f5','#f4f4f4', '#eeeeee', '#dddddd', '#cccccc','#bbbbbb', '#aaaaaa', '#999999', '#888888', '#666666'
+    ],
+    state: { gSize: 64 }
+});
+const canObj_rnd2 = canvasMod.create({
+    size: 1024,
+    draw: 'rnd',
+    palette: [
+        '#007700','#009900','#00bb00','#00dd00','#00ff00', // light greens
+        '#007733','#009944','#00bb55','#00dd66','#00ff77', // light cyans
+        '#004400','#005500','#006600', // dark greens
+        '#003311' // drak cyan
+    ],
+    state: { gSize: 128 }
+});
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+// create loop method with given update method
+const create_loop = (update) => {
+    const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = SECS * FPS_UPDATE;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    update = update || function(frame, frameMax){};
+    // loop
+    const loop = function() {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    return loop;
+};
+// ---------- ----------
+// LOADING MANAGER
+// ---------- ----------
+countDown.DAE_loader([ '/dae/count_down_basic/cd2.dae' ])
+.then( (SOURCE_OBJECTS) => {
+    console.log('Done Loading.');
+    // use canvas textures
+    Object.keys(SOURCE_OBJECTS).forEach( (key) => {
+        const obj = SOURCE_OBJECTS[key];
+        if(parseInt(key) + '' != 'NaN'){
+            obj.material.map = canObj_rnd1.texture_data;
+            countDown.addLine(obj, 1, new THREE.Vector3(), 2, 0xffffff);
+        }else{
+            obj.material.map = canObj_rnd2.texture_data;
+            countDown.addLine(obj, 1, new THREE.Vector3(0.01,0,0.01), 2, 0xffffff);
+        }
+    });
+    //-------- ----------
+    // SCENE CHILD OBJECTS
+    //-------- ----------
+    // count secs count down object
+    const count_sec = countDown.create({
+        countID: 'sec',
+        digits: 2,
+        width: 1.1,
+        source_objects: SOURCE_OBJECTS
+    });
+    count_sec.scale.set(0.75, 0.75, 0.75);
+    count_sec.position.set(0, 2.05, -0.5);
+    scene.add(count_sec);
+    // adding a frame count
+    const count_frames = countDown.create({
+        countID: 'frames',
+        digits: 3,
+        width: 1.4,
+        source_objects: SOURCE_OBJECTS
+    });
+    count_frames.scale.set(0.25, 0.25, 0.25);
+    count_frames.position.set(0, 0.80, 0.30);
+    scene.add(count_frames);
+    // add ground object
+    scene.add( SOURCE_OBJECTS['ground_0'] );
+    // ---------- ----------
+    // UPDATE / ANIMATION LOOP
+    // ---------- ----------
+    const loop = create_loop(function(frame, frameMax){
+        const a1 = (frame + 1) / frameMax;
+        let secs = Math.floor(SECS - SECS * a1);
+        countDown.set(count_sec, secs);
+        countDown.set(count_frames, frame);
+        // camera
+        camera.position.x = 2 - 4 * a1;
+        camera.lookAt( 0, 1.20, 0 );
+    });
+    loop();
+})
+.catch( (e) => {
+    console.log(e.message);
+    scene.add( new THREE.GridHelper(10, 10) );
+    renderer.render(scene, camera);
+});
 ```
 
 ### 1.4 - Using the DAE load method with more than one file, and with DAE file textures
 
+For this example I am not ditching the use of canvas textures in favor of textures that I have made for the DAE files. As at this point I am not only using External files for geometry that has position, as well as custom uv and normals attributes, but now also textures as well. Also I am not getting into the habit of making more than one DAE file one for numbers, and the other for everything else that I want in the scene. Moving forward I am sure that I will end up with just one great file for the numbers that I will want to reuse from one project to the next, but have many other files for additional objects to place in the scene.
+
 ```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0, 0.8, 0.8);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(1.5, 1.5, 5.0);
+camera.lookAt(0, 0.85, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+dl.position.set(-2, 1, 2);
+scene.add(dl);
+const al = new THREE.AmbientLight(0xffffff, 0.1);
+scene.add(al);
+// ---------- ----------
+// CONST
+// ---------- ----------
+const SECS = 30;
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+// create loop method with given update method
+const create_loop = (update) => {
+    const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+    FRAME_MAX = SECS * FPS_UPDATE;
+    let secs = 0,
+    frame = 0,
+    lt = new Date();
+    // update
+    update = update || function(frame, frameMax){};
+    // loop
+    const loop = function() {
+        const now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if(secs > 1 / FPS_UPDATE){
+            // update, render
+            update( Math.floor(frame), FRAME_MAX);
+            renderer.render(scene, camera);
+            // step frame
+            frame += FPS_MOVEMENT * secs;
+            frame %= FRAME_MAX;
+            lt = now;
+        }
+    };
+    return loop;
+};
+// ---------- ----------
+// LOADING MANAGER
+// ---------- ----------
+countDown.DAE_loader(
+    [
+        '/dae/count_down_basic/cd3-nums.dae',
+        '/dae/count_down_basic/cd3-ground.dae'
+    ]
+)
+.then( (SOURCE_OBJECTS) => {
+    console.log('Done Loading.');
+    console.log(SOURCE_OBJECTS);
+    //-------- ----------
+    // SCENE CHILD OBJECTS
+    //-------- ----------
+    // count secs count down object
+    const count_sec = countDown.create({
+        countID: 'sec',
+        digits: 2,
+        width: 1.1,
+        source_objects: SOURCE_OBJECTS
+    });
+    //count_sec.scale.set(0.75, 0.75, 0.75);
+    count_sec.position.set(0, 1.25, 0.4);
+    scene.add(count_sec);
+    // adding a frame count
+    const count_frames = countDown.create({
+        countID: 'frames',
+        digits: 3,
+        width: 1.4,
+        source_objects: SOURCE_OBJECTS
+    });
+    count_frames.scale.set(0.25, 0.25, 0.25);
+    count_frames.position.set(0, 0, 1.50);
+    scene.add(count_frames);
+    // add ground object
+    scene.add( SOURCE_OBJECTS['ground_0'] );
+    // ---------- ----------
+    // UPDATE / ANIMATION LOOP
+    // ---------- ----------
+    const loop = create_loop(function(frame, frameMax){
+        const a1 = (frame + 1) / frameMax;
+        let secs = Math.floor(SECS - SECS * a1);
+        countDown.set(count_sec, secs);
+        countDown.set(count_frames, frame);
+        // camera
+        camera.position.x = 2 - 4 * a1;
+        camera.lookAt( 0, 0.5, 0 );
+    });
+    loop();
+})
+.catch( (e) => {
+    console.log(e.message);
+    scene.add( new THREE.GridHelper(10, 10) );
+    renderer.render(scene, camera);
+});
 ```
 
 ## Conclusion
+
+This far I would have to say that this count down module is working just the way that I would like it, at least when it comes to a first set of basic timer videos to say the least. It is not to say that there is not more work to do with any and all future revisions of this examples when and it I get to it. Sure there are a whole lot of ideas that comes to mind with that, in fact way to many actually. The bottom line here though when it comes to making videos though is how the frames come out though, that is what is most important here. So many ideas that have to do with improving pref romance are of lower priority as I do not have to worry so much about real time rendering.
+
+
+
+
+
+
 
