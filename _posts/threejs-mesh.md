@@ -5,43 +5,44 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-05-02 15:46:01
-version: 1.42
+updated: 2022-12-24 09:40:47
+version: 1.43
 ---
 
-A Mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/) of which there are a number of options to choose form. This mesh object can then be placed in a [scene object](/2018/05/03/threejs-scene/) which can then be pass to a renderer, along with a camera, to render an over all scene with one or more of these mesh objects in it.
+A mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/). This resulting mesh object can then be added as a child of a main [scene object](/2018/05/03/threejs-scene/), and then the scene object can be used along with a camera to render a view of the scene which will include one or more of these mesh objects.
 
-The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructor functions that I find myself using often as I get into making three.js projects. What is great about mesh objects is that they are one of many objects in threejs that have the [Object3d class](https://threejs.org/docs/#api/en/core/Object3D) as a base class. So then when it comes to something like learning how to use the position property of a mesh object, that knowledge can then also be applied to cameras, groups, and anything else in threejs that is based off of the object3d class.
+The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructor functions that I find myself using often as I get into making threejs projects. What is great about mesh objects is that they are one of many objects in threejs that have the [Object3d class](https://threejs.org/docs/#api/en/core/Object3D) as a base class. So then when it comes to something like learning how to use the [position property](/2022/04/04/threejs-object3d-position/) of a mesh object, what one is really learning about is an object3d class feature. Knowledge of this object3d class feature can then also be applied to cameras, groups, and anything else in threejs that is based off of the object3d class. Still there are some things that are just a part of mesh objects alone, mainly the buffer geometry and material properties of such objects.
 
 <!-- more -->
 
-## Threejs Mesh objects and what to know before continuing
-
-This is a post on making and working with a Mesh object in the javaScript library called three.js. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone with javaScipt in general, and any additional skills that are needed before hand. 
-
-I then assume that you have at least some background with client side javaScript, and know how to set up a basic threejs project. There are some additional things that a developer should be aware of when it comes to working with a mesh object though that I think that I should at least briefly mention before getting to the full source code examples in this post.
-
 <iframe class="youtube_video" src="https://www.youtube.com/embed/vZImQE_ikng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### Geometry and materials are needed to create a mesh object
 
-When creating a mesh instance the first argument that is passed to the mesh constructor is a geometry, followed by a second argument that is a single material, or an array of materials that will be used to skin that geometry. The mesh is then an object that contains references to the geometry and materials that are used to compose the over all content of the mesh object. So then it pays to know a thing or two about how to go about creating a geometry, and to know what the [options are with materials](/2018/04/30/threejs-materials/).
+## Threejs Mesh objects and what to know before continuing
 
-There is learning how to go about making custom geometries with javaScript code, or also from an extremal resource such as json or a DAE file. However when it comes to just starting out, and also creating certain kinds of projects where built in geometry constructors will work fine there are constructors like that of the [THREE.BoxGeometry constructor](/2021/04/26/threejs-box-geometry/).
+This is a post on making and working with one or more mesh objects in the javaScript library called threejs. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone with [javaScipt in general](/2018/11/27/js-getting-started/), and any additional skills that are needed before hand. I then assume that you have at least some background with client side javaScript, and know how to set up a basic threejs project. Still there are some additional things that a developer should be aware of when it comes to working with a mesh object that I think that I should at least briefly mention before getting to the full source code examples in this post.
+
+### Geometry and mesh objects
+
+When creating a mesh object the first argument that is passed to the mesh constructor is a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), followed by a second argument that is a single material, or an array of materials that will be used to skin that geometry. There is learning how to go about [making custom geometries with javaScript code](/2021/06/07/threejs-buffer-geometry-attributes-position/), or also from an external resources such as a JSON format that can be loaded with the [built in buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/). There are also a lot of official assets loaders that can be added on top of threejs that can be used to load a wide range of [file formats such as DAE](/2021/04/30/threejs-dae-collada-loader/). However when it comes to just starting out, and also creating certain kinds of projects where built in geometry constructors will work fine, there are constructors like that of the [THREE.BoxGeometry constructor](/2021/04/26/threejs-box-geometry/).
+
+### Materials and mesh objects
+
+The mesh is then an object that contains references to the geometry and materials that are used to compose the over all content of the mesh object. So on top of knowing a thing or two about geometry it also pays to learn more about [what the options are when it comes to materials](/2018/04/30/threejs-materials/). I think that a good starting option for materials might be the [normal material](/2021/06/23/threejs-normal-material/) as it will help to show some sense of depth and also does not require a [light source](/2022/02/25/threejs-light/) to work. However in the long run there is learning how to use the basic material with textures or lines, or better yet maybe the Phong material that is a good choice for using one or more light sources.
 
 ### At some point you might want to read more on the Object3d, Vector3 and Euler classes also
 
-A mesh object is based off of the [Object3d class](/2018/04/23/threejs-object3d/), and there are many additional objects in three.js that are based off of it also beyond just Mesh Objects. [The Vector3 class](/2018/04/15/threejs-vector3/) also comes up a lot in code examples of three.js which is used for creating and working with a vector, or point in 3d space. With a mesh object the [position property](/2022/04/04/threejs-object3d-position/) of a mesh is an instance of vector3 and that is what can be used to set and change the position of a mesh Object. Another property of instance for mesh objects is the [scale property](/2021/05/11/threejs-object3d-scale/) which is also an instance of this Vector3 class.
+A mesh object is based off of the [Object3d class](/2018/04/23/threejs-object3d/), and there are many additional objects in threejs that are based off of it beyond just that of mesh objects. [The Vector3 class](/2018/04/15/threejs-vector3/) also comes up a lot in code examples of threejs which is used for creating and working with a vector, or point in 3d space. With a mesh object the [position property](/2022/04/04/threejs-object3d-position/) of a mesh is an instance of vector3 and that is what can be used to set and change the position of a mesh Object. Another property of instance for mesh objects is the [scale property](/2021/05/11/threejs-object3d-scale/) which is also an instance of this Vector3 class.
 
 There is also the [Euler class](/2021/04/28/threejs-euler/) that is like vector3 only we are dealing with angles rather than a position. So with that said the [rotation property](/2022/04/08/threejs-object3d-rotation/) of a mesh object, as well as anything else based off of object 3d class.
-
-### Version Numbers matter with three.js
-
-The last time I edited this post I was using version r135 of three.js, and when I first wrote this post I was using version r91 of three.js. Between r91 and r135 a whole lot of code breaking changes have happened, so always check what version of three.js you are using when looking at old code examples of three.js on the open web.
 
 ### The source code examples in this post can be found on Github
 
 The source code examples that I am writing about here can be found in [my test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-mesh).
+
+### Version Numbers matter with three.js
+
+The last time I edited this post I was using version r135 of three.js, and when I first wrote this post I was using version r91 of threejs. Between r91 and r135 a whole lot of code breaking changes have happened, so always check what version of three.js you are using when looking at old code examples of three.js on the open web.
 
 ## 1 - Basic example of using a mesh
 
