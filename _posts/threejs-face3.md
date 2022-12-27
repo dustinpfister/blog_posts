@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2022-04-27 09:37:17
-version: 1.31
+updated: 2022-12-27 14:56:40
+version: 1.32
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -29,13 +29,13 @@ I will be looking into making some new examples where I am doing the same things
 
 Still I might leave this post up for the sake of historical reasons, if you are still using older versions of threejs, or have found a way to add the Geometry and Face3 constructors back to three.js by way of some additional plug ins then the examples here should still work.
 
-### Version numbers Matter
-
-As of this writing three.js is a project that is still being developed fairly fast, so version numbers are of great concern. In this post I was using [three.js 0.91.0 aka r91](https://github.com/mrdoob/three.js/tree/r91/build) when I first make the source code examples, and the last version that I tested the threejs examples of face4 constructor with was r111. The last time I came around to doing some editing of this post I included one example that has to do with the groups property of a buffer geometry instance that would be the modern replacement for this, and with that example I was using r135.
-
 ### The source code examples here are on github
 
 The source code examples here are [in my test threejs github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-face3) repository. When it comes to making a pull request that would be where to do so, there is also the comments of this post that can also be used as a way to bring something up.
+
+### Version numbers Matter
+
+As of this writing three.js is a project that is still being developed fairly fast, so version numbers are of great concern. In this post I was using [three.js 0.91.0 aka r91](https://github.com/mrdoob/three.js/tree/r91/build) when I first make the source code examples, and the last version that I tested the threejs examples of face4 constructor with was r111. The last time I came around to doing some editing of this post I included one example that has to do with the groups property of a buffer geometry instance that would be the modern replacement for this, and with that example I was using r135.
 
 ### Other posts on related topics ( material index )
 
