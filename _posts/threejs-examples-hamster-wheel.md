@@ -5,35 +5,46 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2022-04-26 12:39:39
-version: 1.30
+updated: 2022-12-27 14:54:44
+version: 1.31
 ---
 
 Some times I end up experiencing a kind of burn out because I spend a great deal of time doing what I think I need to do, rather than what I want to do. Sadly often I end up spending all day writing these posts, and simple source code examples for such posts. As such there often is no time and energy left over for working on any kind of real project that I truly would like to work on when it comes to making things that are useful, or at least mildly amusing in some way. So I thought that some kind of [threejs example](/2021/02/19/threejs-examples/) would be a nice break from the usual kind of post where I am just writing about some kind of method in a framework, or some kind of native javaScript feature.
-With that said this post will be on an example where I have a simple little guy model that is walking inside a human sized hamster wheel. So this is a a fun little project that has to do with [something that is often used as an analogy for being stuck in a loop in real life](https://lifecoachonthego.com/stuck-on-a-hamster-wheel-what-do-you-need-to-thrive/) where I keep doing the same things over and over again, and never really get anywhere which of course results in a kind of burn out. In other words getting stuck on a hamster wheel of life sort of speak, which then raises the question how does one get off this hamster wheel. The solution is simple, it just means trying something new to see if things work out better, and if not just keep changing until something is found that works out well.
 
-Anyway when it comes to starting to make something that is starting to look like an actual project of one kind or another I have found that I like to just make very simple basic models that are just groups of mesh objects that are using the built in geometries in threejs. There is taking the time to look into how to go about making models in a more professional way, but when it comes to making animations with three.js I think the most important thing to get solid is to just to work out a certain style, and make sure that the frames come out the way that I want them to when it comes to that style. With that said todays post will be yet another one of those kinds of examples where I am just having a little fun with three.js.
+With that said this post will be on an example where I have a [simple little guy model](/2021/04/29/threejs-examples-guy-one/) that is walking inside a human sized hamster wheel. So this is a a fun little project that has to do with [something that is often used as an analogy for being stuck in a loop in real life](https://lifecoachonthego.com/stuck-on-a-hamster-wheel-what-do-you-need-to-thrive/) where I keep doing the same things over and over again, and never really get anywhere which of course results in a kind of burn out. In other words getting stuck on a hamster wheel of life sort of speak, which then raises the question how does one get off this hamster wheel. The solution is simple, it just means trying something new to see if things work out better, and if not just keep changing until something is found that works out well.
+
+Anyway when it comes to starting to make something that is starting to look like an actual project of one kind or another I have found that I like to just make very simple basic models that are just groups of mesh objects that are using the built in geometries in threejs. There is taking the time to look into how to go about making models in a more professional way, but when it comes to making animations with threejs I think the most important thing to get solid is to just to work out a certain style, and make sure that the frames come out the way that I want them to when it comes to that style. With that said todays post will be yet another one of those kinds of examples where I am just having a little fun with threejs.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/evvbFFwIEXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## My Hamster wheel models, and what to know before hand
 
 This is a threejs example that is intended for people that all ready have a solid grasp on the basics of threejs and are now looking to start making some actual projects of some kind using the library. So this is not a [getting stared post on threejs](/2018/04/04/threejs-getting-started/), let alone [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have at least some basic working knowledge of threejs and javaScript and thus might gain something of value from reading this when it comes to reading up more on these topics. In this section I will not be getting into every little detail that you show know before hand, but I will be touching base on some topics that you should have solid at this point because they are relevant to the source code of this threejs animation example.
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/evvbFFwIEXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+### Read up more on Groups, Mesh objects, and the Object3d class
 
+This kind of model is made by creating a bunch of mesh objects, and grouping them together. So there is reading up more on the [Mesh](/2018/05/04/threejs-mesh/) and [Group classes](/2018/05/16/threejs-grouping-mesh-objects/) in the core of threejs. Speaking of those two classes both of them are classes that share the [object3d class](/2018/04/23/threejs-object3d) as a base class. It will take some time to learning about everything there is to work with in the object3d class, as well as what branches off from it. However once something is learned with the object3d class that something can be applied to anything the is based off of the class.
 
-### Version numbers matter with threejs
+### I have other models that are like this
 
-For this example I was using threejs version r127 when I first started the over all project. There are some javaScript libraries where much has not changed in the last few years, and as such older code will still work just fine. However this is not the case with threejs, it is a very fast moving library in terms of development so if this code is breaking the first thing you should check is the version number of threejs that is being used.
+I have made a number of threejs project examples that are just collections of mesh objects that use the various built in geomerty classes. Some other projects like this include my [tree model](/2019/07/30/threejs-examples-tree) where I use a whole bunch of cones, and another world be my [biplane model](/2021/02/17/threejs-examples-biplane).
 
 ### The source code examples in this post can be found on Github
 
 The source code examples that I am writing about here can also be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-hamster-wheel).
 
+### Version numbers matter with threejs
+
+For this example I was using threejs version r127 when I first started the over all project. There are some javaScript libraries where much has not changed in the last few years, and as such older code will still work just fine. However this is not the case with threejs, it is a very fast moving library in terms of development so if this code is breaking the first thing you should check is the version number of threejs that is being used.
+
+
+
 ### 1.1 - The Wheel Model
 
-First off is my wheel module that will create and return a hamster wheel model that I can then add to a scene object in a main javaScript file that will make use of this model. This module has just one public method that will create and return an object that contains a few instances of the [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor. There is not update method for this model because the only animation effect would be to just rotate the wheel part of the hamster wheel model and that can easily be done when it comes to writing a little additional code outside of this model.
+First off is my wheel module that will create and return a hamster wheel model that I can then add to a scene object in a main javaScript file that will make use of this model. This module has just one public method that will create and return an object that contains a few instances of the THREE.Group constructor. There is not update method for this model because the only animation effect would be to just rotate the wheel part of the hamster wheel model and that can easily be done when it comes to writing a little additional code outside of this model.
 
 ```js
 (function (WheelMod) {
