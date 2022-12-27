@@ -5,13 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2022-04-27 14:38:04
-version: 1.28
+updated: 2022-12-27 15:03:26
+version: 1.29
 ---
 
-For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write a post on just because I put a little time into making it. I stopped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had no clear idea what the end game was when it comes to working on it so that is to be expected. 
-
-Still what I wanted to do is have at least one or more collections of mesh objects where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
+For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write a post on. What I wanted to do is have at least one or more examples that make use of a number of my other projects where I crate a bunch of objects with just the built in threejs geometry classes. That is to create a group of mesh objects that from an over all object of some kind. After I made a few projects like this I just wanted to create a project where I am making use of a whole bunch of projects like that to make an over all larger project. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
 
 This might in time prove to be just one of several more additional future projects that is a composition of several other examples. There is just only so much to write about when it comes to the features of the library itself, so sooner or later I just have to start making some kind of full project that is some kind of animation, game, or some kind of application.
 
@@ -23,13 +21,13 @@ This is a full threejs project example in which I am making use of all kinds of 
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/o21ABjF0UVs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### version numbers used
-
-When I started this example I was using r127 of three.js back in may of 2021. The last time I came around to doing a little editing I was using r135, and last I check the example works okay on top of that version of three.js.
-
 ### The source code examples that I am writing about here are on Github
 
 the source code examples that I am writing about in this post can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-backyard). This is also where I am parking the source code for all my other posts on threejs, including the various other examples that I am in turn also using in this example.
+
+### version numbers used
+
+When I started this example I was using r127 of three.js back in may of 2021. The last time I came around to doing a little editing I was using r135, and last I check the example works okay on top of that version of three.js.
 
 ## 1 - The canvas texture module
 
