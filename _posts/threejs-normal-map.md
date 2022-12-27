@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2022-12-27 14:14:55
-version: 1.27
+updated: 2022-12-27 14:15:59
+version: 1.28
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) which will come into play when it comes to figuring out how light should effect a surface. The normal attribute is also used for things like finding out what side of triangle should be the front side. So then this normals attribute is an important part of creating a custom geometry which in my view is what I typical think of next after working out the [position attribute of a geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/). The position attribute as the name suggests is the actually points in space of the geometry. 
@@ -18,10 +18,6 @@ So then in todays post I will be writing about a special kind of texture map tha
 ## What to know first before getting into normal maps
 
 This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), so I assume that you have at least some background working with threejs, javaScript, and client side web development in general. So I will not be getting into every little detail about the very basics of what you should know at this point. However in this section I will be quickly going over some things that you might want to read up more on as needed. There is the fact that in order to make a normal map you still need to create a texture, so there is learing about what the options are with that for example.
-
-### The source code here can be found on github
-
-The source code for these [examples can be found in the for post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-map) folder of my test threejs repository. If for some reason you want to make a pull request with one or the source code examples here that would be the place to do it. There is also the comments section of this blog post that can also be used as a way to bring something to my attention with this content.
 
 ### Look into the texture loader, canvas texture, and data texture constructors to create textures
 
@@ -36,6 +32,10 @@ In this post I am looking into normal maps, but there are many other kinds of ma
 ### Know your options with materials
 
 The normal map is a kind of map that effects lighting, so it does not make sense to use a normal map when it comes to using a material such as the basic material, or any kind of material that does not support normal maps. In the source code examples here I am sticking to using just the [standard material](/2021/04/27/threejs-standard-material/) which is one options that supports the normal map feature, there are some other options to be aware of so be sure to [read up more on materials in general](/2018/04/30/threejs-materials/) if you have not done so.
+
+### The source code here can be found on github
+
+The source code for these [examples can be found in the for post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-map) folder of my test threejs repository. If for some reason you want to make a pull request with one or the source code examples here that would be the place to do it. There is also the comments section of this blog post that can also be used as a way to bring something to my attention with this content.
 
 ### Be mindful of the version numbers used with three.js
 
