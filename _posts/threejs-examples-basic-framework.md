@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2022-12-28 09:23:13
-version: 1.25
+updated: 2022-12-28 10:38:04
+version: 1.26
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be a [project example of threejs](/2021/02/19/threejs-examples/), rater than a post in with i write about just a single feature of the core of the library. This time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -45,8 +45,8 @@ When I first wrote this post and the source code of the framework I as using thr
 For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-iife/) and attaching all the public methods to a single global object property called threeFrame. When it comes to public methods of this framework, so far I just have two, one to create an instance of this main frame work API, and another that will just create a simple cube mesh.
 
 ```js
+// threeframe.js - r0 - from threejs-examples-basic-framework
 (function (threeFrame) {
- 
     // Just an add cube method for now
     threeFrame.addCube = function (api, obj3d, x, y, z, size, materialIndex) {
         x = x === undefined ? 0 : x;
@@ -59,7 +59,6 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
         obj3d.add(cube);
         return cube;
     };
- 
     // create a basic scene
     var createAPIObject = function (opt) {
         // scene
@@ -69,8 +68,8 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
         camera.position.set(2.5, 2.5, 2.5);
         camera.lookAt(0, 0, 0);
         // RENDERER
-        var renderer = new THREE.WebGLRenderer();
-        document.getElementById('demo').appendChild(renderer.domElement);
+        var renderer = new THREE.WebGL1Renderer();
+        ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
         renderer.render(scene, camera);
         // return an object with refs to scene and other items of interest
         return {
@@ -87,7 +86,6 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
                 })]
         };
     };
- 
     // create a main app loop function, for the given api object
     var createLoopFunction = function (api) {
         var lt = new Date();
@@ -103,7 +101,6 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
         };
         return loop;
     };
- 
     // create a main project object
     threeFrame.create = function (opt) {
         opt = opt || {};
@@ -116,13 +113,12 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
         loop();
         return api;
     };
- 
 }(typeof threeFrame === 'undefined' ? this['threeFrame'] = {} : threeFrame));
 ```
 
-## 2 - Now just a single use case example of the framework
+## 1.1 - Now just a single use case example of the framework
 
-Now that I have my basic framework together it is time to create a simple demo of this to make sure that it is working out okay thus far. To start out with this I do not need to do anything fancy, just a simple rotating cube like demo will work just fine for now.
+Now that I have my basic framework together it is time to create a simple demo of this to make sure that it is working out okay thus far. To start out with this I do not need to do anything fancy, just a simple rotating cube like demo will work just fine for now. So to do that I just need to call the create method and then pass an options object that will be the addition code that I use to soft code the framework. The two options of interest that I want to have here are the init options that will be used to set up my objects for the demo, and then the update method that will be used to change the state of the project over time.
 
 ```js
 // basic rotating cube
@@ -138,10 +134,12 @@ threeFrame.create({
         api.rotation = 0;
     },
     update: function (api, secs) {
+        api.renderer.setSize(640, 480, false);
         api.rotation += 1 * secs;
         api.rotation %= Math.PI * 2;
         api.cube1.rotation.set(0, api.rotation, 0);
         api.cube2.rotation.set(0, api.rotation, api.rotation);
+        api.camera.lookAt(api.cube1.position);
     }
 });
 ```
