@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2022-12-23 12:41:25
-version: 1.104
+updated: 2022-12-28 12:24:09
+version: 1.105
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -43,7 +43,7 @@ This is an example of a backyard type scene that makes use of several modules th
 
 ### [ 2.5 - A Basic Framework](/2021/04/20/threejs-examples-basic-framework/)
 
-This example aims to be the start of a basic framework that I might use on top of three.js. Every time I start a new three.js project, or even just a simple example there is a lot of code that I find myself repeating over and over again. So it would make sense to pull some of this code into a collection of reusable functions, and maybe make this collection of functions part of an over all larger project.
+This example aims to be the start of a basic framework that I might use on top of threejs for certain projects. Every time I start a new threejs project, even just a simple example of a threejs feature, there is a lot of code that I find myself repeating over and over again. For the most part this is the scene object, camera, and renderer. However there is also making a static scene, or an update loop so often I repeat code over and over from one project to the next to set up some kind of main app loop function also. So it would make sense to pull some of this code into a collection of reusable framework that I can use from one project to the next to quickly set up the basic core of any given demo, and then go from there.
 
 ### [ 2.6 - A Biplane Group Example](/2021/02/18/threejs-examples-biplane-group/)
 
