@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2022-12-28 09:09:57
-version: 1.23
+updated: 2022-12-28 09:13:50
+version: 1.24
 ---
 
-This will be yet another [threejs](https://threejs.org/) post that will be another basic [project example of threejs](/2021/02/19/threejs-examples/), this time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
+This will be yet another [threejs](https://threejs.org/) post that will be a [project example of threejs](/2021/02/19/threejs-examples/), rater than a post in with i write about just a single feature of the core of the library. This time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
 
 When making one threejs demo after another I have found that there are patterns that I keep repeating over and over again when it comes to setting up a basic scene. There is typically always setting up a [scene object](/2018/05/03/threejs-scene/), creating an instance of a [perspective camera](/2018/04/07/threejs-camera-perspective/), and of course a [renderer](/2018/11/24/threejs-webglrenderer/) to draw the scene from the perspective of the camera to a canvas element. On top of that I often have some kind of main application loop in which I am updating the state of a scene, and rendering that scene over and over again. Sense there is so much going on and I keep repeating it over and over again it would make sense to create something in which I am creating abstractions for all of this. Once I have that set up the way I like it I can just link to one more additional external files beyond that of just three.js, and write less code when it comes to making a new project.
 
@@ -24,7 +24,7 @@ There is a wide range of different ways that I could go when it comes to this so
 
 ## A Basic threejs framework example and what to know first
 
-I will not be getting into the very basics of threejs and javaScript in general here of course. This post is on a topic of interest when it comes to having at least some working knowledge of javaScript in general, as well as using threejs. However in this section I think I should go over at least some things that should be understood before reading the rest of the content of this post.
+I will not be getting into the [very basics of threejs](/2018/04/04/threejs-getting-started/) and javaScript in general here of course. This post is on a topic of interest when it comes to having at least some working knowledge of javaScript in general, as well as using threejs. However in this section I think I should go over at least some things that should be understood before reading the rest of the content of this post.
 
 ### What is a framework to begin with anyway?
 
@@ -32,13 +32,13 @@ This is a post on a basic threejs framework starting point, and because it is a 
 
 I would say that what I have in mind here would constitute something that could be called a framework, however it might also loosely fit the definition of a module actually as it is also a single stand alone file ready to be used by itself. However that would only be true assuming that threejs is always there to work with as that is the only dependency with this framework starting point. So all ready it is something that requires a few files in order to produce something that starts to look like a finished product. If I where to counting working on this to make something far more advanced I might end up having a whole bunch of modules all working together to create this single stand alone framework that I can work within.
 
-### Version Numbers matter with three.js
-
-When I first wrote this post and the source code of the framework I as using threejs revision 127.
-
 ### The source code examples in this post are up on github
 
 The source code examples in this post can be [found on Guthub in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-basic-framework).
+
+### Version Numbers matter with three.js
+
+When I first wrote this post and the source code of the framework I as using threejs revision 127.
 
 ## 1 - The source code of the basic framework
 
