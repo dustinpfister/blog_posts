@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2022-12-28 10:38:04
-version: 1.26
+updated: 2022-12-28 10:54:51
+version: 1.27
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be a [project example of threejs](/2021/02/19/threejs-examples/), rater than a post in with i write about just a single feature of the core of the library. This time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -47,18 +47,9 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
 ```js
 // threeframe.js - r0 - from threejs-examples-basic-framework
 (function (threeFrame) {
-    // Just an add cube method for now
-    threeFrame.addCube = function (api, obj3d, x, y, z, size, materialIndex) {
-        x = x === undefined ? 0 : x;
-        y = y === undefined ? 0 : y;
-        z = z === undefined ? 0 : z;
-        size = size === undefined ? 2 : size;
-        var geometry = new THREE.BoxGeometry(size, size, size);
-        var cube = new THREE.Mesh(geometry, api.materials[materialIndex || 0]);
-        cube.position.set(x, y, z);
-        obj3d.add(cube);
-        return cube;
-    };
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
     // create a basic scene
     var createAPIObject = function (opt) {
         // scene
@@ -101,6 +92,21 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
         };
         return loop;
     };
+    //-------- ----------
+    // PUBLIC METHODS
+    //-------- ----------
+    // Just an add cube method for now
+    threeFrame.addCube = function (api, obj3d, x, y, z, size, materialIndex) {
+        x = x === undefined ? 0 : x;
+        y = y === undefined ? 0 : y;
+        z = z === undefined ? 0 : z;
+        size = size === undefined ? 2 : size;
+        var geometry = new THREE.BoxGeometry(size, size, size);
+        var cube = new THREE.Mesh(geometry, api.materials[materialIndex || 0]);
+        cube.position.set(x, y, z);
+        obj3d.add(cube);
+        return cube;
+    };
     // create a main project object
     threeFrame.create = function (opt) {
         opt = opt || {};
@@ -129,12 +135,12 @@ threeFrame.create({
         }),
         new THREE.MeshNormalMaterial({})],
     init: function (api) {
+        api.renderer.setSize(640, 480, false);
         api.cube1 = threeFrame.addCube(api, api.scene, 0, 0, 0, 1, 1);
         api.cube2 = threeFrame.addCube(api, api.scene, -2.5, 1, 0, 1, 0);
         api.rotation = 0;
     },
     update: function (api, secs) {
-        api.renderer.setSize(640, 480, false);
         api.rotation += 1 * secs;
         api.rotation %= Math.PI * 2;
         api.cube1.rotation.set(0, api.rotation, 0);
