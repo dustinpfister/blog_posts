@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2022-12-28 09:13:50
-version: 1.24
+updated: 2022-12-28 09:23:13
+version: 1.25
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be a [project example of threejs](/2021/02/19/threejs-examples/), rater than a post in with i write about just a single feature of the core of the library. This time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -24,7 +24,7 @@ There is a wide range of different ways that I could go when it comes to this so
 
 ## A Basic threejs framework example and what to know first
 
-I will not be getting into the [very basics of threejs](/2018/04/04/threejs-getting-started/) and javaScript in general here of course. This post is on a topic of interest when it comes to having at least some working knowledge of javaScript in general, as well as using threejs. However in this section I think I should go over at least some things that should be understood before reading the rest of the content of this post.
+I will not be getting into the [very basics of threejs](/2018/04/04/threejs-getting-started/) and javaScript in general here. The content of this post is about something that might come up for someone that has at least a fair amount of experience with client side web development and making use with threejs as part of an over all project of some kind. However in this section I think I should go over at least some things that should be understood before reading the rest of the content of this post.
 
 ### What is a framework to begin with anyway?
 
@@ -34,7 +34,7 @@ I would say that what I have in mind here would constitute something that could 
 
 ### The source code examples in this post are up on github
 
-The source code examples in this post can be [found on Guthub in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-basic-framework).
+The source code examples in this post can be [found on Guthub in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-basic-framework). This is also where I have the [source code for my many other blog posts on threejs](/categories/three-js/) beyond just that of this example.
 
 ### Version Numbers matter with three.js
 
