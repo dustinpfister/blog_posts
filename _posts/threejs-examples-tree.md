@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2022-12-28 08:45:54
-version: 1.40
+updated: 2022-12-28 08:56:03
+version: 1.41
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [threejs project example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -22,7 +22,7 @@ This kind of example is a very basic getting started type example when it comes 
 
 ## Three threejs tree model, and what to know before continuing with this post
 
-This is a post on using the javaScript library known as three.js that can be used to create and work with 3d objects in a client side JavaScript environment. This is not a [getting started post on three js](/2018/04/04/threejs-getting-started/) by itself as well as how to use the many various constructors functions in threejs, as well as [what a constructor function is to begin with](/2019/02/27/js-javascript-constructor/). So then I assume that you have at least some background with the basics when it comes to using three js, as well as javaScript programing in general. If not you might have a hard time following the content of this post as I am using a lot of features in the source code that you should have at least some understanding of before hand. I will not be getting into every little detail that you show know at this point here, but I will be outline some things tht you might want to read up on more before continuing with this post.
+This is a post on using the javaScript library known as three.js that can be used to create and work with 3d objects in a client side JavaScript environment. This is not a [getting started post on three js](/2018/04/04/threejs-getting-started/) by itself as well as how to use the many various constructors functions in threejs, as well as [what a constructor function is to begin with](/2019/02/27/js-javascript-constructor/). So then I assume that you have at least some background with the basics when it comes to using three js, as well as javaScript programing in general. If not you might have a hard time following the content of this post as I am using a lot of features in the source code that you should have at least some understanding of before hand. I will not be getting into every little detail that you show know at this point here, but I will be outline some things that you might want to read up on more before continuing with this post.
 
 ### Read up on THREE.Group, THREE.Mesh, and the Object3d base class in general
 
@@ -33,6 +33,12 @@ This model of a tree is a collection of Mesh Objects that are part of a Group th
 I have made a number of other models like this that can be described as a crude yet effective kinds of model that can be used in an over all larger project, when it comes to creating a typical outdoor like scene. One of the first projects that I have made in this kind of style was my [guy one model](/2021/04/29/threejs-examples-guy-one/). There is not just stopping with this kind of model for a tree, but going on to make a few more with a similar style. These kinds of models in my opinion work when it comes to a kind of simple low polly art style, where the focus is more on the over all subject of the project and not so much the graphics. Also there are many other things in a project that I would like to move on with, and not end up spending vast abouts of time making models, so it seems like a good idea to just slap some quick solutions together and focus on other aspects of an over all project.
 
 I [have another tree model worked out](/2021/05/19/threejs-examples-tree-sphere/) that is just that simple, and if you ask me it still works when it comes to a crude low Polly art style.
+
+### There is also making assets the professional way by making Geometry in blender.
+
+Although these kinds of models that are just groups of mesh objects might work okay to some extent when it comes to a very crude yet effective style. In the long run it might still be best to just lean how to use blender to make assets, which is more or less what I am starting to do now as of the last time I came around to edit this post. The same style can be done, but of course I can start to make geometry that is a little better for this sort of thing over all. I can still have some javaScript code that will do things with one or more objects that I load in from an external assets was well, so it is not like I have to stop doing everything that I am doing when it comes to making this kind of project.
+
+There are a number of options when it comes to exporting from blender and importing into a threejs project. When it comes to what is built into the core of threejs itself there is the [buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/). However there are also a whole lot of additional official loaders that can be added by way of an additional file on top of threejs itself. I have found that thus far I like to use the [DAE loader](/2021/04/30/threejs-dae-collada-loader/) when it comes to this kind of approach.
 
 ### The source code for these demos and the three module are on github
 
