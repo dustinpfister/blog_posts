@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2022-04-27 14:38:04
-version: 1.22
+updated: 2022-12-28 09:09:57
+version: 1.23
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be another basic [project example of threejs](/2021/02/19/threejs-examples/), this time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -19,11 +19,12 @@ There is a wide range of different ways that I could go when it comes to this so
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/UaxHBdbvsco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## A Basic threejs framework example and what to know first
 
 I will not be getting into the very basics of threejs and javaScript in general here of course. This post is on a topic of interest when it comes to having at least some working knowledge of javaScript in general, as well as using threejs. However in this section I think I should go over at least some things that should be understood before reading the rest of the content of this post.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/UaxHBdbvsco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### What is a framework to begin with anyway?
 
