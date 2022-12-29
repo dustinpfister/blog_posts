@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2022-12-08 12:47:50
-version: 1.29
+updated: 2022-12-29 11:25:37
+version: 1.30
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, any width other than the default value of 1 will not work. I have found that it will work on some of the Linux systems that I would with, but on Windows, and I assume many others it will now work.
@@ -159,7 +159,7 @@ For this Section I have a few examples where I aim to just make one or more anim
 
 Here I just wanted to make a simple example where I Transition the values of the colors use for vertex colors. For this example the color array is set just once, and then the position array is what is updated over time. When it comes to setting the state of the position array I made a quick helper function that creates a kind of sin wave for the sake of just having something for the lines. Speaking of lines I made a group of line3 objects rather than just one for this animation loop example.
 
-The end result of this is then a property cool looking effect and I am convinced that using vertex colors might be the best way to have at least some kind of sense of depth when using this sort of thing compared to suing something like tube geometry. With tube geometry I can use a mesh material such as the phong or standard material that will work with light sources in the scene. For this line material making use of vertex colors is how to keep what I have from just being a solid mas of color.
+The end result of this is then a property cool looking effect and I am convinced that using vertex colors might be the best way to have at least some kind of sense of depth when using this sort of thing compared to suing something like tube geometry. With tube geometry I can use a mesh material such as the [phong](/2022/12/29/threejs-phong-material/) or standard material that will work with light sources in the scene. For this line material making use of vertex colors is how to keep what I have from just being a solid mas of color.
 ```js
 (function () {
     //-------- ----------
