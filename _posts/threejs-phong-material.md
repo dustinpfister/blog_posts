@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1020
-updated: 2022-12-29 11:19:56
-version: 1.9
+updated: 2022-12-29 12:08:38
+version: 1.10
 ---
 
 The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial) is one of many built in material options in the core of the threejs JavaScript library. What stands out with this material is the support for specular highlights which can be adjusted by way of the shininess option. Although the material is called Phong it actually uses the [Blinn-Phong reflection model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model) rather than a pure [Phong Reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model). If real time performance is of concern then Phong might prove to be a better choice than that of the [standard material](/2021/04/27/threejs-standard-material/), and also I have found that I still like to use Phong over the standard material when it comes to just how things simply look regardless of performance also.
@@ -203,6 +203,48 @@ const material_phong = new THREE.MeshPhongMaterial({
 // ---------- ---------- ----------
 const mesh = new THREE.Mesh(
     new THREE.SphereGeometry(2, 30, 30),
+    material_phong);
+scene.add(mesh);
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.4 - The Shininess and Specular Options
+
+One of the major features of the Phong material is that it can be used to add a specular effect that will result in a shine kind of effect for the material that will be effected by light sources. There is a shininess option that will default to a value of 30 that can be used to increase or decrease the magnitude of this shine effect. There is also a specular option that is like the color and emissive options I  that it can be used to set a color value, however this time it will effect the color that is used for this shine effect. There is also a specular map option, but that is a more advanced option that will come into play when working out [environment maps](/2018/04/22/threejs-cube-texture/).
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// LIGHT
+// ---------- ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 0.8);
+dl.position.set(0.25, 0.88, -0.38);
+scene.add(dl);
+// ---------- ---------- ----------
+// MATERIAL
+// ---------- ---------- ----------
+const material_phong = new THREE.MeshPhongMaterial({
+   color: new THREE.Color(1,0,0),          // color to use for light, default is white
+   shininess : 60,                         // shininess default is 30
+   specular: new THREE.Color(0.2,0.2,0.5), // Color to use for the specular default is 0x111111
+});
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(2, 60, 60),
     material_phong);
 scene.add(mesh);
 // ---------- ---------- ----------
