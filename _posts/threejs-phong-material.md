@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1020
-updated: 2022-12-29 09:32:54
-version: 1.2
+updated: 2022-12-29 09:38:47
+version: 1.3
 ---
 
 The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial) is one of many built in material options in the core of the threejs JavaScript library. What stands out with this material is the support for specular highlights which can be adjusted by way of the shininess option. Although the material is called Phong it actually uses the [Blinn–Phong reflection model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model) rather than a pure [Phong Reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model). If real time performance is of concern then Phong might prove to be a better choice than that of the standard material, and also I have found that I still like to use Phong over the standard material when it comes to just how things simply look regardless of performance also.
@@ -103,6 +103,10 @@ renderer.render(scene, camera);
 ```
 
 ### 1.3 - Using textures
+
+For this example I will now be adding some textures into the mix, as such this is where things will start to get a little involved. There are a number of ways to create a texture object that can then be used with one or more of the various map options there are to work with in the Phong material. I could for example make use of the [texture loader](/2021/06/21/threejs-texture-loader/) as a way to load one or more external image files that I can then use for the material. However in this basic section i would like to keep these examples very copy and paste friendly as such I will be going with [canvas textures](/2018/04/17/threejs-canvas-texture/).
+
+Canvas textures are a great way to go about creating one or more textures by way of a little JavaScript code rather than having to load an external image asset.
 
 ```js
 // ---------- ---------- ----------
