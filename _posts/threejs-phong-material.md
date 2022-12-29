@@ -5,11 +5,186 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1020
-updated: 2022-12-29 08:40:48
-version: 1.0
+updated: 2022-12-29 08:48:48
+version: 1.1
 ---
 
 The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial) is one of many built in material options in the core of the threejs JavaScript library. What stands out with this material is the support for specular highlights which can be adjusted by way of the shininess option. Although the material is called Phong it actually uses the [Blinn–Phong reflection model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model) rather than a pure [Phong Reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model). If real time performance is of concern then Phong might prove to be a better choice than that of the standard material, and also I have found that I still like to use Phong over the standard material when it comes to just how things simply look regardless of performance also.
 
 
 <!-- more -->
+
+## The Phong Material and what to know first
+
+### Source code is up on Gihub
+
+### Version numbers matter
+
+When I first wrote this blog post I was using r146 of threejs.
+
+## 1 - Some basic examples of the Phong Material
+
+### 1.1 - Using an emissive map without a light source
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// MATERIAL
+// ---------- ---------- ----------
+const material_phong = new THREE.MeshPhongMaterial({
+    emissive: new THREE.Color(1,1,1)
+});
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 30, 30),
+    material_phong);
+scene.add(mesh);
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.2 - Light Source example
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// LIGHT
+// ---------- ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(0.1, 0.7, 0.2);
+scene.add(dl);
+// ---------- ---------- ----------
+// MATERIAL
+// ---------- ---------- ----------
+const material_phong = new THREE.MeshPhongMaterial();
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const mesh = new THREE.Mesh(
+   new THREE.SphereGeometry(1, 30, 30),
+    material_phong);
+scene.add(mesh);
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.3 - Using textures
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// LIGHT
+// ---------- ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(0, 0.4, -0.6);
+scene.add(dl);
+// ---------- ---------- ----------
+// TEXTURES
+// ---------- ---------- ----------
+const createCanvasTexture = function (draw, size) {
+    const canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = size;
+    canvas.height = size;
+    draw(ctx, canvas);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.NearestFilter;
+    texture.minFilter = THREE.NearestFilter;
+    return texture;
+};
+// texture for the map property
+const texture_map = createCanvasTexture( (ctx, canvas) => {
+   const w = 30, h = 30;
+   const len = w * h;
+   let i = 0;
+   while(i < len){
+      const x = i % w;
+      const y = Math.floor(i / w);
+      const pw = canvas.width / w;
+      const ph = canvas.height / h;
+      const px = pw * x;
+      const py = ph * y;
+      const color = new THREE.Color(0,0,0);
+      color.r = 0.2 + 0.6 * Math.random();
+      ctx.fillStyle = color.getStyle();
+      ctx.fillRect(px, py, pw, ph);
+      i += 1;
+   }
+}, 64);
+// texture for the map property
+const texture_emissive = createCanvasTexture( (ctx, canvas) => {
+   const w = 32, h = 32;
+   const len = w * h;
+   let i = 0;
+   while(i < len){
+      const x = i % w;
+      const y = Math.floor(i / w);
+      const pw = canvas.width / w;
+      const ph = canvas.height / h;
+      const px = pw * x;
+      const py = ph * y;
+      let v  = x % 2 === 0 ? 1 : 0;
+      const color = new THREE.Color(v, v, v);
+      ctx.fillStyle = color.getStyle();
+      ctx.fillRect(px, py, pw, ph);
+      i += 1;
+   }
+}, 64);
+// ---------- ---------- ----------
+// MATERIAL
+// ---------- ---------- ----------
+const material_phong = new THREE.MeshPhongMaterial({
+   map: texture_map,
+   emissive: new THREE.Color(1,1,1),
+   emissiveMap: texture_emissive,
+   emissiveIntensity: 0.05
+});
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(2, 30, 30),
+    material_phong);
+scene.add(mesh);
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
+renderer.render(scene, camera);
+```
+
+## Conclusion
+
+
