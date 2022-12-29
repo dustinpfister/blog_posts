@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2022-12-09 13:10:57
-version: 1.48
+updated: 2022-12-29 11:28:30
+version: 1.49
 ---
 
 The [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) is one of [several options with mesh materials](https://blog.cjgammon.com/threejs-materials/) that make use of [light sources](https://r105.threejsfundamentals.org/threejs/lessons/threejs-lights.html). When it comes to mesh materials like the normal material, and the basic material might prove to be a nice starting point as they do not require light to work which helps to simplify code examples. Also when it comes to projects in which I do not make use of light sources at all they might work just fine period actually. However when it comes to working with everything that threejs has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is one of a few options that might prove to be a better all around go to material.
 
-There are some additional materials that might be worth mentioning as contenders when it comes to a great general use case material in threejs such as the [Lambert material](/2018/04/08/threejs-lambert-material/), and the [phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial). The nice thing about the Lambert material is that it might eat up a little less processing overhead compared to the standard material, which might come in handy when trying to make code run faster. When it comes to how things look without much care of how expensive it might be in terms of system resources the phong material might prove to be a better option because of the specular feature. However over all the standard material seems to work fine for the most part, it seems to reproduce more realistic lighting compared to the Lambert material.
+There are some additional materials that might be worth mentioning as contenders when it comes to a great general use case material in threejs such as the [Lambert material](/2018/04/08/threejs-lambert-material/), and the [phong material](/2022/12/29/threejs-phong-material/). The nice thing about the Lambert material is that it might eat up a little less processing overhead compared to the standard material, which might come in handy when trying to make code run faster. When it comes to how things look without much care of how expensive it might be in terms of system resources the phong material might prove to be a better option because of the specular feature. However over all the standard material seems to work fine for the most part, it seems to reproduce more realistic lighting compared to the Lambert material.
 
 <!-- more -->
 
