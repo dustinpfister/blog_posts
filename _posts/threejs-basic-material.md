@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2022-12-11 11:49:01
-version: 1.28
+updated: 2022-12-29 11:31:31
+version: 1.29
 ---
 
 In [threejs](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified. Also it is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. 
@@ -17,16 +17,16 @@ So today I thought I would continue expanding my [collection of posts on threejs
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/2SaiqtO_yQA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## What to know before reading up more on the Basic Material
 
 This is a post on the basic material used in threejs, one of several options when it comes to skinning a mesh object. If you are new to threejs, you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on threejs. I will not be getting into detail with the very basics of threejs here then, however I still think I should outline a few things at least in this what to know first type section.
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/2SaiqtO_yQA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
 ### Be aware of what the full options are with materials
 
-You might also want to check out my post on [three.js materials](/2018/04/30/threejs-materials/) in general for more info on the various material options in threejs. The basic material is fine when I just want to skin a geometry with a texture, but not do anything to far beyond that. There are a whole lot of other materials that might be a better choice for other situations though, for example the depth material might be a good choice when it comes to figuring out what the values should be for the near and far values of a camera.
+You might also want to check out my post on [three.js materials](/2018/04/30/threejs-materials/) in general for more info on the various material options in threejs. The basic material is fine when I just want to skin a geometry with a texture, but not do anything to far beyond that. There are a whole lot of other materials that might be a better choice for other situations though, for example the depth material might be a good choice when it comes to figuring out what the values should be for the near and far values of a camera. If one will want to add one or more light sources to a project these days I like to go with the [Phong material](/2022/12/29/threejs-phong-material/) for that.
 
 ### Learn a thing or two about canvas elements, or figure out the texture loader
 
