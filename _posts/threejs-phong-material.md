@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1020
-updated: 2022-12-29 11:13:20
-version: 1.8
+updated: 2022-12-29 11:19:56
+version: 1.9
 ---
 
 The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial) is one of many built in material options in the core of the threejs JavaScript library. What stands out with this material is the support for specular highlights which can be adjusted by way of the shininess option. Although the material is called Phong it actually uses the [Blinn-Phong reflection model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model) rather than a pure [Phong Reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model). If real time performance is of concern then Phong might prove to be a better choice than that of the [standard material](/2021/04/27/threejs-standard-material/), and also I have found that I still like to use Phong over the standard material when it comes to just how things simply look regardless of performance also.
@@ -20,15 +20,15 @@ First off before getting into detail with the Phong Mesh Material there are a nu
 
 ### Many other options for Mesh materials
 
-There are a whole lot of other options when it comes to [mesh materials](/2018/04/30/threejs-materials/) so it would be a good idea to review them all.
+There are a whole lot of other options when it comes to [mesh materials](/2018/04/30/threejs-materials/) so it would be a good idea to review them all. The Phong material is a good choice when it comes to how an object looks when one or more materials are used, mainly because of the shinny over all look. Still even when it comes to just caring about how things look the Phong might not be the only solution. If a surface of an object should be a kind of unpolished wood, then it might be a good idea to tone down the shininess option of the Phong Material, or maybe even use a whole other material such as the [Lambert Material](/2018/04/08/threejs-lambert-material).
 
 ### Light Sources
 
-The Phong material is one of several options that will respond to one or more [light sources](/2022/02/25/threejs-light/) in a scene.
+The Phong material is one of several options that will respond to one or more [light sources](https://threejs.org/docs/#api/en/lights/Light) in a scene. The options for light objects in threejs is a whole other matter that I would not like to get into in detail in this post. In these source code examples I will just be sticking mainly with the directional light, if you want to [read more about lights then you will need to do so outside of this post](/2022/02/25/threejs-light/).
 
 ### Source code is up on Gihub
 
-The source code examples that I write about in this post can also be found up on [Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-phong-material).
+The source code examples that I write about in this post can also be found up on [Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-phong-material). This is also where I park the source code for my [many other blog posts on threejs](/categories/three-js/).
 
 ### Version numbers matter
 
