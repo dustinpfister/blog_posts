@@ -5,18 +5,22 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1020
-updated: 2022-12-29 09:43:03
-version: 1.4
+updated: 2022-12-29 10:53:38
+version: 1.5
 ---
 
-The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial) is one of many built in material options in the core of the threejs JavaScript library. What stands out with this material is the support for specular highlights which can be adjusted by way of the shininess option. Although the material is called Phong it actually uses the [Blinn–Phong reflection model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model) rather than a pure [Phong Reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model). If real time performance is of concern then Phong might prove to be a better choice than that of the standard material, and also I have found that I still like to use Phong over the standard material when it comes to just how things simply look regardless of performance also.
+The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial) is one of many built in material options in the core of the threejs JavaScript library. What stands out with this material is the support for specular highlights which can be adjusted by way of the shininess option. Although the material is called Phong it actually uses the [Blinn-Phong reflection model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model) rather than a pure [Phong Reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model). If real time performance is of concern then Phong might prove to be a better choice than that of the standard material, and also I have found that I still like to use Phong over the standard material when it comes to just how things simply look regardless of performance also.
 
 
 <!-- more -->
 
 ## The Phong Material and what to know first
 
+First off before getting into detail with the Phong Mesh Material there are a number of things that I should write about that one should know about before hand. I assume that you are at the point where you have completed a hello world style program using threejs, and you also have a fair amount of experience with client side JavaScript. If not you are going to want to take a step back and maybe read a [getting started with threejs](/2018/04/04/threejs-getting-started/) type post first. In any case in this opening section I will mention a thing or two about certain other threejs features you might want to read up more on before continue to read the rest of this post.
+
 ### Source code is up on Gihub
+
+The source code examples that I write about in this post can also be found up on [Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-phong-material).
 
 ### Version numbers matter
 
@@ -24,7 +28,7 @@ When I first wrote this blog post I was using r146 of threejs.
 
 ## 1 - Some basic examples of the Phong Material
 
-As always I like to start my blog posts on threejs with one or more basic examples, which will once again be what this section is about. So then even if you are still fairly new to threejs these examples should prove to be fairly easy to follow. The general deal with creating an instance of the Phong material is the same as any of the other mesh object materials where there is a main constructor function that is called to create an instance of the material. When calling the material there is an options object that can be passed to set a number of initial values for the various options. On top of creating instance of the Phong material in this section I will also be touching base on a whole lot of other topics that have to do with things like creating textures with JavaScript code, and making use of light sources.
+As always I like to start my blog posts on threejs with one or more basic examples, which will once again be what this section is about. So then even if you are still fairly new to threejs these examples should prove to be fairly easy to follow. The general deal with creating an instance of the Phong material is the same as any of the other mesh object materials where there is a main [constructor function](/2019/02/27/js-javascript-constructor/) that is called to create an instance of the material. When calling the material there is an options object that can be passed to set a number of initial values for the various options. On top of creating instance of the Phong material in this section I will also be touching base on a whole lot of other topics that have to do with things like creating textures with JavaScript code, and making use of light sources.
 
 ### 1.1 - Using an emissive color without a light source
 
