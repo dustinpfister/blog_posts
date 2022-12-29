@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1020
-updated: 2022-12-29 10:53:38
-version: 1.5
+updated: 2022-12-29 11:00:28
+version: 1.6
 ---
 
-The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial) is one of many built in material options in the core of the threejs JavaScript library. What stands out with this material is the support for specular highlights which can be adjusted by way of the shininess option. Although the material is called Phong it actually uses the [Blinn-Phong reflection model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model) rather than a pure [Phong Reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model). If real time performance is of concern then Phong might prove to be a better choice than that of the standard material, and also I have found that I still like to use Phong over the standard material when it comes to just how things simply look regardless of performance also.
+The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial) is one of many built in material options in the core of the threejs JavaScript library. What stands out with this material is the support for specular highlights which can be adjusted by way of the shininess option. Although the material is called Phong it actually uses the [Blinn-Phong reflection model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model) rather than a pure [Phong Reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model). If real time performance is of concern then Phong might prove to be a better choice than that of the [standard material](/2021/04/27/threejs-standard-material/), and also I have found that I still like to use Phong over the standard material when it comes to just how things simply look regardless of performance also.
 
 
 <!-- more -->
@@ -17,6 +17,14 @@ The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMateria
 ## The Phong Material and what to know first
 
 First off before getting into detail with the Phong Mesh Material there are a number of things that I should write about that one should know about before hand. I assume that you are at the point where you have completed a hello world style program using threejs, and you also have a fair amount of experience with client side JavaScript. If not you are going to want to take a step back and maybe read a [getting started with threejs](/2018/04/04/threejs-getting-started/) type post first. In any case in this opening section I will mention a thing or two about certain other threejs features you might want to read up more on before continue to read the rest of this post.
+
+### Many other options for Mesh materials
+
+There are a whole lot of other options when it comes to [mesh materials](/2018/04/30/threejs-materials/) so it would be a good idea to review them all.
+
+### Light Sources
+
+The Phong material is one of several options that will respond to one or more [light sources](/2022/02/25/threejs-light/) in a scene.
 
 ### Source code is up on Gihub
 
