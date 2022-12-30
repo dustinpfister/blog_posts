@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2022-12-17 11:53:48
-version: 1.106
+updated: 2022-12-30 09:29:07
+version: 1.107
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [three.js](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
@@ -19,11 +19,12 @@ In this post I am mainly just going to be writing about using the built in const
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/wy5cQ_cwqEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Canvas textures in threejs, and what to know first
 
 In this post I will be going over a lot of source code examples that have to do with using the javaScript library known as threejs, along with various client side javaScript features, mainly canvas elements. This is then not any [kind of getting started type post with threejs](/2018/04/04/threejs-getting-started/), or with [javaScript in general](/2018/11/27/js-getting-started/) for that matter. So I assume that you have at least some background with the basics of threejs, and client side javaScript development in general. Regardless of what your level of experience is with threejs and javaScript, in this section I will be going over a few things that you should be up to speed with at this point before continuing to read the rest of this post.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/wy5cQ_cwqEo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Canvas elements and the 2d drawing context
 
@@ -125,34 +126,36 @@ For this getting started canvas example I will be doing everything in a single j
 //-------- ----------
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
-const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
-camera.position.set(1, 1, 1);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, .025, 100);
+camera.position.set(1.25, 1.25, 1.25);
 camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
-// CANVAS ELEMENT, TEXTURE
+// CANVAS ELEMENT, 2D DRAWING CONTEXT
 //-------- ----------
-const canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d');
-canvas.width = 64;
-canvas.height = 64;
-ctx.fillStyle = '#222222';
-ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
-ctx.lineWidth = 3;
-ctx.strokeStyle = '#00af00';
-ctx.strokeRect(2.5, 2.5, canvas.width - 4, canvas.height - 4);
+const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
+canvas.width = 32; canvas.height = 32;
+ctx.lineWidth = 5;
+ctx.strokeStyle = '#ff0000';
+ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+//-------- ----------
+// CANVAS TEXTURE
+//-------- ----------
 const texture = new THREE.CanvasTexture(canvas);
+// Setting magFilter and minFilter to THREE.NearestFilter
+console.log(texture.magFilter); // 1006 ( THREE.LinearFilter - r146 )
+console.log(texture.minFilter); // 1008 ( THREE.LinearMipmapLinearFilter - r146 )
+console.log(THREE.NearestFilter); // 1003 ( r146 )
+texture.magFilter = THREE.NearestFilter;
+texture.minFilter = THREE.NearestFilter;
 //-------- ----------
-// MESH, MATERIAL
+// GEOMETRY, MATERIAL, MESH
 //-------- ----------
-const mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            map: texture
-        })
-    );
+const geo = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshBasicMaterial({ map: texture });
+const mesh = new THREE.Mesh( geo, material);
 scene.add(mesh);
 //-------- ----------
 // RENDER
@@ -178,42 +181,48 @@ With my simple helper functions all set and done I will now just need to create 
 //-------- ----------
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
-const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, .025, 100);
 camera.position.set(1, 1, 1);
 camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
 //-------- ----------
 // create and return a canvas texture
-const createCanvasTexture = function (draw) {
+const createCanvasTexture = function (draw, size_canvas) {
+    size_canvas = size_canvas === undefined ? 32 : size_canvas;
     const canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
-    canvas.width = 32;
-    canvas.height = 32;
+    canvas.width = size_canvas;
+    canvas.height = size_canvas;
     draw(ctx, canvas);
-    return new THREE.CanvasTexture(canvas);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.NearestFilter;
+    texture.minFilter = THREE.NearestFilter;
+    return texture;
 };
 // create a cube the makes use of a canvas texture
-const createCanvasCube = function (draw) {
+const createCanvasCube = function (draw, size_canvas, size_cube) {
+    draw = draw || function(){};
+    size_cube = size_cube === undefined ? 1 : size_cube;
     return new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.BoxGeometry(size_cube, size_cube, size_cube),
         new THREE.MeshBasicMaterial({
-            map: createCanvasTexture(draw)
+            map: createCanvasTexture(draw, size_canvas)
         })
     );
 };
-// add cube to scene that makes use
-// of the canvas texture
-scene.add(createCanvasCube(function(ctx, canvas){
-    ctx.fillStyle = '#222222';
-    ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
+// draw square method to use with create canvas texture
+const draw_square = function(ctx, canvas){
     ctx.lineWidth = 3;
     ctx.strokeStyle = '#af0000';
-    ctx.strokeRect(2.5, 2.5, canvas.width - 4, canvas.height - 4);
-}));
+    ctx.strokeRect(3, 3, canvas.width - 6, canvas.height - 6);
+};
+// add cube to scene that makes use
+// of the canvas texture
+scene.add( createCanvasCube(draw_square, 16, 1.1) );
 //-------- ----------
 // RENDER
 //-------- ----------
@@ -296,6 +305,8 @@ So now for a not so basic, basic example of canvas textures in threejs as this w
         };
         // create texture object
         canObj.texture = new THREE.CanvasTexture(canvas);
+        canObj.texture.magFilter = THREE.NearestFilter;
+        canObj.texture.minFilter = THREE.NearestFilter;
         api.update(canObj);
         return canObj;
     };
@@ -317,11 +328,11 @@ After that I made not one but three mesh objects each of which use a canvas text
 //-------- ----------
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
-const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, .025, 100);
 camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 1);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
