@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2022-05-01 10:53:04
-version: 1.28
+updated: 2023-01-01 07:38:26
+version: 1.29
 ---
 
 When working with [materials in three js](/2018/04/30/threejs-materials/) many of the materials support one or more types of maps for skinning a geometry, one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent. So then an aplha map will come into play when it comes to working things out with [transparency in a three.js project](/2021/04/21/threejs-materials-transparent/) along with the the transparency and opacity properties of a material.
@@ -15,11 +15,12 @@ So then in this post I will be going over an example of an alpha map, and in ord
 
 <!-- more -->
 
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/NDnQksd2LR4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Alpha maps and what to know before hand
 
 This is a post on three js the javaScript powered 3d modeling library, in addition it is on a very specific topic with three js which is of course alpha maps. It is not a [getting started post on three js](/2018/04/04/threejs-getting-started/) of javaScript in general, I assume that you have at least some background with these topics otherwise you are going to have a hard time getting anything of value from this post. Although I will not be getting into the very basic of threejs, in this section I will touch base on a few topics that I think you should know a thing or two about first before getting into alpha maps.
-
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/NDnQksd2LR4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### You might want to brush up on textures
 
