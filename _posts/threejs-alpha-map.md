@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2023-01-01 08:04:09
-version: 1.31
+updated: 2023-01-01 08:09:39
+version: 1.32
 ---
 
 When working with [materials in threejs](/2018/04/30/threejs-materials/) many of the materials support one or more types of maps for skinning a geometry. One such texture map option is a [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap) that is a gray scale texture that will be used to define the alpha transparency values for the material. So then the white areas of the texture will result in a face being fully opaque, black areas will result in the face being fully transparent, and values between the two will be used to set any alpha value between the two. 
@@ -99,7 +99,7 @@ The transparent property of the material also needs to be set to true, and a ren
 
 ## 2 - Animation loop example of an alpha map
 
-So now that I have a basic, static example out of the way maybe the next step is to do something involving an animation loop using request animation frame. When I made the first video for this post I took the basic example and reworked what I was doing to update the canvas texture. So then I made another example based off of that that I now have for this new section on alpha maps and using canvas textures for such maps.
+So now that I have a basic static example out of the way maybe the next step is to do something involving an animation loop using [request animation frame](/2018/03/13/js-request-animation-frame/). When I made the first video for this post I took the basic example and reworked what I was doing to update the canvas texture. So then I made another example based off of that that I now have for this new section on alpha maps and using canvas textures for such maps.
 
 When it comes to updating a canvas texture all I need to do is just update the state of the canvas element that was used for the texture object, and then just make sure that the needs update property of the texture is set to true.
 
