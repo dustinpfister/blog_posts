@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2023-01-01 08:09:39
-version: 1.32
+updated: 2023-01-01 08:42:53
+version: 1.33
 ---
 
 When working with [materials in threejs](/2018/04/30/threejs-materials/) many of the materials support one or more types of maps for skinning a geometry. One such texture map option is a [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap) that is a gray scale texture that will be used to define the alpha transparency values for the material. So then the white areas of the texture will result in a face being fully opaque, black areas will result in the face being fully transparent, and values between the two will be used to set any alpha value between the two. 
@@ -38,11 +38,11 @@ It is a good idea to really look into what the [options are when it comes to mat
 
 ### Source code is up on Github
 
-The source code examples in this post are up on [Github in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-alpha-map).
+The source code examples in this post are up on [Github in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-alpha-map). This is also where I park the source code for my [many other blog posts on threejs](/categories/three-js/).
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using threejs version r104, and the last time I edited this post I was using r135. Threejs is still being developed and is moving pretty fast, in the future there might come another time where this code might break. So if things are not working out for you with this example, and many other examples on the open Internet the first thing you should check is the version of threejs that you are using.
+When I first wrote this post I was using threejs version r104, and the last time I edited this post I was using r146. Threejs is still being developed and is moving pretty fast, in the future there might come another time where this code might break. So if things are not working out for you with this example, and many other examples on the open Internet the first thing you should check is the version of threejs that you are using.
 
 ## 1 - Alpha map example in three js
 
@@ -51,16 +51,21 @@ So for a basic example of an alpha map in threejs I have this example that makes
 I then used the THREE.CanvasTexture constructor to create a texture that I can then use with the alpha map property of a material that supports alpha maps such as the Mesh basic Material.
 
 ```js
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1.3, 1);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-// creating a texture with canvas
-var canvas = document.createElement('canvas'),
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body) .appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS, TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 64;
 canvas.height = 64;
@@ -73,25 +78,32 @@ ctx.fillStyle = '#c0c0c0';
 ctx.fillRect(0, 32, 32, 32);
 ctx.fillStyle = '#f0f0f0';
 ctx.fillRect(32, 32, 32, 32);
-var texture = new THREE.CanvasTexture(canvas);
- 
-// creating a mesh that is using the Basic material
-var mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            color: 0x00ffff,
-            // using the alpha map property to set the texture
-            // as the alpha map for the material
-            alphaMap: texture,
-            // I also need to make sure the transparent
-            // property is true
-            transparent: true,
-            // even when opacity is one the alpha map will 
-            // still effect transparency this can just be used to set it even lower
-            opacity: 1,
-            side: THREE.DoubleSide
-        }));
+const texture = new THREE.CanvasTexture(canvas);
+//-------- ----------
+// GEOMETRY, MESH, MATERIAL
+//-------- ----------
+// geometry
+const geo = new THREE.BoxGeometry(1, 1, 1);
+// material
+const material = new THREE.MeshBasicMaterial({
+    color: 0x00ffff,
+    // using the alpha map property to set the texture
+    // as the alpha map for the material
+    alphaMap: texture,
+    // I also need to make sure the transparent
+    // property is true
+    transparent: true,
+    // even when opacity is one the alpha map will 
+    // still effect transparency this can just be used to set it even lower
+    opacity: 1,
+    side: THREE.DoubleSide
+});
+// creating a mesh
+const mesh = new THREE.Mesh( geo, material);
 scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -104,70 +116,74 @@ So now that I have a basic static example out of the way maybe the next step is 
 When it comes to updating a canvas texture all I need to do is just update the state of the canvas element that was used for the texture object, and then just make sure that the needs update property of the texture is set to true.
 
 ```js
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
 camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// creating a texture with canvas
-var canvas = document.createElement('canvas'),
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body) .appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 64;
 canvas.height = 64;
-var drawMethod = {};
+const drawMethod = {};
 drawMethod.grid = function (ctx, canvas, opt) {
     opt = opt || {};
     opt.w = opt.w || 4;
     opt.h = opt.h || 4;
     opt.colors = opt.colors || ['#404040', '#808080', '#c0c0c0', '#f0f0f0'];
     opt.colorI = opt.colorI || [];
-    var i = 0,
-    len = opt.w * opt.h,
+    let i = 0;
+    const len = opt.w * opt.h,
     sizeW = canvas.width / opt.w,
     sizeH = canvas.height / opt.h;
     while (i < len) {
-        var x = i % opt.w,
+        const x = i % opt.w,
         y = Math.floor(i / opt.w);
         ctx.fillStyle = typeof opt.colorI[i] === 'number' ? opt.colors[opt.colorI[i]] : opt.colors[i % opt.colors.length];
         ctx.fillRect(x * sizeW, y * sizeH, sizeW, sizeH);
         i += 1;
     }
 };
-var texture = new THREE.CanvasTexture(canvas);
-// creating a mesh that is using the Basic material
-var mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            color: 0x00ffff,
-            // using the alpha map property to set the texture
-            // as the alpha map for the material
-            alphaMap: texture,
-            // I also need to make sure the transparent
-            // property is true
-            transparent: true,
-            // even when opacity is one the alpha map will
-            // still effect transparency this can just be used to set it even lower
-            opacity: 0.8,
-            side: THREE.DoubleSide
-        }));
+const texture = new THREE.CanvasTexture(canvas);
+//-------- ----------
+// GEOMETRY, MESH, MATERIAL
+//-------- ----------
+const geo = new THREE.BoxGeometry(1, 1, 1);
+// material
+const material = new THREE.MeshBasicMaterial({
+    color: 0x00ffff,
+    alphaMap: texture,
+    transparent: true, opacity: 1,
+    side: THREE.DoubleSide
+});
+// creating a mesh
+const mesh = new THREE.Mesh( geo, material);
 scene.add(mesh);
+//-------- ----------
 // LOOP
-var frame = 0,
-maxFrame = 90,
-fps = 20,
+//-------- ----------
+let frame = 0,
 lt = new Date();
-var loop = function () {
-    var now = new Date(),
+const maxFrame = 90,
+fps = 20;
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000,
     per = frame / maxFrame,
     bias = 1 - Math.abs(0.5 - per) / 0.5;
     requestAnimationFrame(loop);
     if (secs > 1 / fps) {
-        var colorI = [],
-        i = 6 * 6;
+        const colorI = [];
+        let i = 6 * 6;
         while (i--) {
             colorI.push(Math.floor(4 * Math.random()))
         }
