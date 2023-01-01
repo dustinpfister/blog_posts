@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2023-01-01 09:05:26
-version: 1.43
+updated: 2023-01-01 09:57:03
+version: 1.44
 ---
 
 When it comes to [threejs](https://threejs.org/) I thought I would write a quick post on the subject of [arrow helpers](https://threejs.org/docs/#api/en/helpers/ArrowHelper). In threejs there are a number of built in helper methods than can be used to quickly create objects that help to visualize what is going on with state of various components of a threejs project. The arrow helper is one of these such helper objects that can be used to find out what is going on with the direction of a [Vector3 class object](/2018/04/15/threejs-vector3/).
@@ -42,48 +42,65 @@ When I first started this post I was using revision 98 of three.js, which was re
 
 Still three.js is a project that is being developed, and at a fairly fast rate with new revisions continuing out what seems like every month almost. Although not much has changed with the arrow helper, a great deal has changed elsewhere in the library when I first started this post, and many of my other posts, and these changes can often result in code breaking. So if the code examples here break the first thing you should check is the version number of threejs that you are using.
 
-### 1 - Basic Example of a ArrowHelper in threejs
+
+## 1 - Some Basic examples of Arrow helpers in threejs
+
+To start things off I will be writing about some basic examples of arrow helpers in threejs.
+
+### 1.1 - Basic Example of a ArrowHelper in threejs
 
 So a basic example of an Arrow helper would involve setting a direction, origin, length, and color by passing those values to the THREE.ArrowHelper constructor in that order. The direction and origin should be insistences of THREE.Vector3 which is one of several constructors that you should be aware of when making a three.js project. 
 
 The length should be a number value consistent with the desired length relative to the other values of the camera and objects in the scene, and the color should be a hex value, but can also be a number of other kinds of values depending on the version of tree.js that is being used. In late versions of three.js just about all of the usual options for setting color seem to work okay.
 
 ```js
+//-------- ----------
 // SCENE, CAMERA, and RENDERER
-var scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
-var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-camera.position.set(2.0, 2.0, 2.0);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-document.getElementById('demo').appendChild(renderer.domElement);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 1, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
 // ARROW HELPER
+//-------- ----------
 scene.add( new THREE.ArrowHelper(
         new THREE.Vector3(0, 2, 0).normalize(),  // first argument is the direction
         new THREE.Vector3(0, 0, 0),              // second argument is the origin
         2.0,                                     // length
         0x00ff00));                              // color 
+//-------- ----------
 // RENDER SCENE WITH CAMERA 
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
 This is then just a simple getting started type example of the arrow helper where I just have a lime green arrow pointing upward from the origin of the scene. This is then more or less all that one will need to know then for the most part, however maybe it is called for to have at least a few more examples that have to to with changing these values over time.
 
-## 2 - Change direction example of the arrow helper method
+### 1.2 - Change direction example of the arrow helper method
 
 It might also be of interest in how to go about changing direction of the arrow helper when working out an animation of some kind or anything to that effect. For this there is the setDirection method of the arrow helper instance that is one way to go about doing just that. To use it I just need to call the set direction method off of the instance of the arrow helper, and pass an instance of vector three to use as a way to set the new direction for the arrow helper.
 
 ```js
+//-------- ----------
 // SCENE, CAMERA, and RENDERER
-var scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
-var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-camera.position.set(0, 2.5, 2.5);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(4, 4, 4);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-document.getElementById('demo').appendChild(renderer.domElement);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
 // ARROW HELPER
-var arrow = new THREE.ArrowHelper(
+//-------- ----------
+const arrow = new THREE.ArrowHelper(
         // first argument is the direction
         new THREE.Vector3(2, 2, 0).normalize(),
         // second argument is the origin
@@ -93,17 +110,19 @@ var arrow = new THREE.ArrowHelper(
         // color
         0x00ff00);
 scene.add(arrow);
+//-------- ----------
 // LOOP
-var frame = 0,
-maxFrame = 500,
-loop = function () {
+//-------- ----------
+let frame = 0;
+const maxFrame = 500;
+const loop = function () {
     requestAnimationFrame(loop);
-    var per = frame / maxFrame,
+    const per = frame / maxFrame,
     rad = Math.PI * 2 * per,
     x = Math.cos(rad),
     y = Math.sin(rad);
     // can change the direction
-    var dir = new THREE.Vector3(x, y, 0).normalize();
+    const dir = new THREE.Vector3(x, y, 0).normalize();
     arrow.setDirection(dir);
     renderer.render(scene, camera);
     frame += 1;
@@ -114,11 +133,100 @@ loop();
 
 For this example I also set up a basic app loop where I am chaining the direction each time the app loop is called. the result is then the arrow pointing in all directions alone the circumference of a circle.
 
-## 3 - Making a utility module to help abstract some things
+### 1.3 - Moving an object along a direction
+
+What about moving an object along a direction that is shared with the direction that is being pointed out with an arrow helper. That is having a Vector3 instance and having that vector normalized to a unit vector that has a length of one, and then using that normalized vector to position a mesh object along that direction. This might prove to be a decent exercise when it comes to getting a better grasp on the vector3 class and how various methods such as the Vector3 normalize can come into play and also how they work. The normalize method will mutate a vector3 instance in place actually, so in some cases I might want to create a clone from the vector3 and then normalized that clone actually.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(0, 2, 5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// NORAMIZED DIRECTION AS UNIT VECTOR
+//-------- ----------
+var V = new THREE.Vector3(1, 1, 0),
+DIR = V.normalize(),
+LENGTH = 3;
+//-------- ----------
+// ARROW HELPER
+//-------- ----------
+const arrow = new THREE.ArrowHelper(
+        // first argument is the direction
+        DIR,
+        // second argument is the origin
+        new THREE.Vector3(0, 0, 0),
+        // length
+        LENGTH,
+        // color
+        0x00ff00);
+arrow.children[0].material.linewidth = 3;
+scene.add(arrow);
+//-------- ----------
+// MESH OBJECT OF CUBE
+//-------- ----------
+const cube = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5, 0.5, 0.5),
+        new THREE.MeshBasicMaterial({
+            wireframe: true,
+            wireframeLinewidth: 3,
+            color: 'yellow'
+        }));
+scene.add(cube);
+//-------- ----------
+// LOOP
+//-------- ----------
+let frame = 0, lt = new Date();
+const maxFrame = 300, fps = 30;
+// update
+const update = function (secs) {
+    const a1 = frame / maxFrame,
+    a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    // updaing Vector
+    V.z = -5 + 10 * a2;
+    // UPDATING DIR Vector
+    DIR = V.clone().normalize();
+    // setting direction With DIR vector3 object
+    arrow.setDirection(DIR);
+    // setting position of the cube along the direction of the arrow
+    // USING DIR Vector and LENGTH CONST with bias alpha
+    const x = DIR.x * LENGTH * a2,
+    y = DIR.y * LENGTH * a2,
+    z = DIR.z * LENGTH * a2;
+    cube.position.set(x, y, z);
+    cube.lookAt(0, 0, 0);
+    camera.position.z = z + 3;
+};
+// loop function
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        update(secs)
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+// start loop
+loop();
+```
+
+So then when this example is up and running I have a cube that is moving along the distance of the arrow helper, and as I change the direction of the arrow helper that two in turn effects the position of the cube. It might be called for to work out a whole lot more examples based off of the basic idea that is going on here, but I think this might prove to be a decent starting point at least.
+
+
+## 2 - Making a utility module to help abstract some things
 
 While I was working out some new code for this post I thought I would take a moment to make a quick simple utility module as a way to abstract some things away, so that I can create, and add arrow helpers, and other parts of a scene with very little code. This might be a little off topic, but there really is only so much to write about when it comes to only the arrow helper alone. Also the use of the arrow helper might be part of something more that can be summed up as having ways to go about making things a little better organized. With that said maybe this is not so far off base then.
-
-### 3.1 - The utility module
 
 Here I have the utility method that I works out that has a bunch of methods that I can use to quickly create a basic scene along with the other usual suspects such as a camera and a renderer. So there is a create basic scene method that will just create a scene, and set it up with a camera and web gl renderer so I can just call this one method in a main javaScript file. Then I just need to add some mesh object to the scene, so for that I again have some methods that help make quick work of that.
 
@@ -181,7 +289,7 @@ Here I have the utility method that I works out that has a bunch of methods that
 }(typeof utils === 'undefined' ? this['utils'] = {}: utils));
 ```
 
-### 3.2 - A main.js file that makes use of this utility module
+### 2.1 - A main.js file that makes use of this utility module
 
 Not that I have this utility method I can link to after threejs has been loaded, at which point my main.js file can be just a little additional code. One thing that is worth mentioning is that the arrow helper can be attached to anything that inherits from the object3d class in threejs, so I can bass the scene object as the first argument when calling my add arrow method, but I can also pass a mesh, or anything else that is based off of object3d.
 
@@ -203,78 +311,6 @@ utils.addArrow(cube, 0, 2, 0, 2.5, 'blue');
 // render
 sceneObj.draw();
 ```
-
-## 4 - Moving an object along a direction
-
-What about moving an object along a direction that is shared with the direction that is being pointed out with an arrow helper. That is having a Vector3 instance and having that vector normalized to a unit vector that has a length of one, and then using that normalized vector to position a mesh object along that direction. This might prove to be a decent exercise when it comes to getting a better grasp on the vector3 class and how various methods such as the Vector3 normalize can come into play and also how they work. The normalize method will mutate a vector3 instance in place actually, so in some cases I might want to create a clone from the vector3 and then normalized that clone actually.
-
-```js
-// SCENE, CAMERA, and RENDERER
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(9, 9));
-var camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.1, 1000);
-camera.position.set(0.0, 4.0, 4.0);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-document.getElementById('demo').appendChild(renderer.domElement);
-// NORAMIZED DIRECTION AS UNIT VECTOR
-var V = new THREE.Vector3(1, 1, 0),
-DIR = V.normalize(),
-LENGTH = 3;
-// ARROW HELPER
-var arrow = new THREE.ArrowHelper(
-        // first argument is the direction
-        DIR,
-        // second argument is the origin
-        new THREE.Vector3(0, 0, 0),
-        // length
-        LENGTH,
-        // color
-        0x00ff00);
-scene.add(arrow);
-// cube
-var cube = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            wireframe: true,
-            color: 'yellow'
-        }));
-scene.add(cube);
-// LOOP
-var frame = 0,
-maxFrame = 90,
-fps = 30,
-lt = new Date();
-// update
-var update = function (secs, per, bias) {
-    var x = DIR.x * LENGTH * bias,
-    y = DIR.y * LENGTH * bias,
-    z = DIR.z * LENGTH * bias;
-    cube.position.set(x, y, z);
-    V.z = 5 * bias;
-    DIR = V.clone().normalize();
-    arrow.setDirection(DIR);
-};
-// loop function
-var loop = function () {
-    var now = new Date(),
-    secs = (now - lt) / 1000,
-    per = frame / maxFrame,
-    bias = 1 - Math.abs(0.5 - per) / 0.5;
-    requestAnimationFrame(loop);
-    if (secs > 1 / fps) {
-        update(secs, per, bias)
-        renderer.render(scene, camera);
-        frame += fps * secs;
-        frame %= maxFrame;
-        lt = now;
-    }
-};
-// start loop
-loop();
-```
-
-So then when this example is up and running I have a cube that is moving along the distance of the arrow helper, and as I change the direction of the arrow helper that two in turn effects the position of the cube. It might be called for to work out a whole lot more examples based off of the basic idea that is going on here, but I think this might prove to be a decent starting point at least.
 
 ## Conclusion
 
