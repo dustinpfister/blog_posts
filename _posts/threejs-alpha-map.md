@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2023-01-01 07:57:57
-version: 1.30
+updated: 2023-01-01 08:04:09
+version: 1.31
 ---
 
 When working with [materials in threejs](/2018/04/30/threejs-materials/) many of the materials support one or more types of maps for skinning a geometry. One such texture map option is a [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap) that is a gray scale texture that will be used to define the alpha transparency values for the material. So then the white areas of the texture will result in a face being fully opaque, black areas will result in the face being fully transparent, and values between the two will be used to set any alpha value between the two. 
@@ -34,7 +34,7 @@ Alpha maps are a way to go about adjusting opacity of a material with a texture 
 
 ### You might want to read up more on what the options are with materials
 
-It is a good idea to really look into what the [options are when it comes to materials](/2018/04/30/threejs-materials/). I often go with the [basic material](/2018/05/05/threejs-basic-material/) if I am not going to do anything involving [light](/2022/02/25/threejs-light/), but when I do get into using light I have found that I like the [standard material](/2021/04/27/threejs-standard-material/), and now also the [Phong material](/2022/12/29/threejs-phong-material/) as well.. However you should not just use that as a way to make a decision when it comes to materials there are many other options with materials that also support the alpha mo feature along with many other features.
+It is a good idea to really look into what the [options are when it comes to materials](/2018/04/30/threejs-materials/). I often go with the [basic material](/2018/05/05/threejs-basic-material/) if I am not going to do anything involving [light](/2022/02/25/threejs-light/), but when I do get into using light I have found that I like the [standard material](/2021/04/27/threejs-standard-material/), and now also the [Phong material](/2022/12/29/threejs-phong-material/) as well. However you should not just use that as a way to make a decision when it comes to materials there are many other options with materials that also support the alpha mo feature along with many other features.
 
 ### Source code is up on Github
 
@@ -42,11 +42,11 @@ The source code examples in this post are up on [Github in my test threejs repo]
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using three.js version r104, and the last time I edited this post I was using r135. Threejs is still being developed and is moving pretty fast, in the future there might come another time where this code might break. So if things are not working out for you with this example, and many other examples on the open Internet the first thing you should check is the version of threejs that you are using.
+When I first wrote this post I was using threejs version r104, and the last time I edited this post I was using r135. Threejs is still being developed and is moving pretty fast, in the future there might come another time where this code might break. So if things are not working out for you with this example, and many other examples on the open Internet the first thing you should check is the version of threejs that you are using.
 
 ## 1 - Alpha map example in three js
 
-So for a basic example of an alpha map in threejs I have this example that makes used of a texture that is created from a canvas element. I just create a canvas and then make gray scale areas of the canvas by using the 2d drawing context. When drawing to the canvas any area that I draw as black will end up being totally transparent, and any area that is white will be fully opaque, shads of gray then set values between the two extremes. 
+So for a basic example of an alpha map in threejs I have this example that makes used of a texture that is created from a canvas element. To do so I just create a canvas element, get a refernce to the 2d drawing context, and then draw gray scale areas in the canvas. When drawing to the canvas any area that I draw as black will end up being totally transparent, and any area that is white will be fully opaque, shads of gray then set values between the two extremes. 
 
 I then used the THREE.CanvasTexture constructor to create a texture that I can then use with the alpha map property of a material that supports alpha maps such as the Mesh basic Material.
 
@@ -95,7 +95,7 @@ scene.add(mesh);
 renderer.render(scene, camera);
 ```
 
-The transparent property of the material also needs to be set to true, and a renderer that supports transparency also needs to be used. The usual WebGl renderer worked just fine for me in this example, but other renderer options may not support this feature. Still that is the basic idea to create a texture that is in gray scale and then just add that texture to the alpha map property of the material to which I want to add an alpha map for.
+The transparent property of the material also needs to be set to true, and a renderer that supports transparency also needs to be used. The usual [WebGl renderer](/2018/11/24/threejs-webglrenderer/) worked just fine for me in this example, but other renderer options may not support this feature. Still that is the basic idea to create a texture that is in gray scale and then just add that texture to the alpha map property of the material to which I want to add an alpha map for.
 
 ## 2 - Animation loop example of an alpha map
 
