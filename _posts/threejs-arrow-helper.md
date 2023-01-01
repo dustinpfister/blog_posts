@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2023-01-01 08:53:57
-version: 1.42
+updated: 2023-01-01 09:05:26
+version: 1.43
 ---
 
 When it comes to [threejs](https://threejs.org/) I thought I would write a quick post on the subject of [arrow helpers](https://threejs.org/docs/#api/en/helpers/ArrowHelper). In threejs there are a number of built in helper methods than can be used to quickly create objects that help to visualize what is going on with state of various components of a threejs project. The arrow helper is one of these such helper objects that can be used to find out what is going on with the direction of a [Vector3 class object](/2018/04/15/threejs-vector3/).
@@ -17,31 +17,30 @@ So then in this post I will be going over some basic examples of arrow helpers, 
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/XW762oGXAZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Arrow Helpers and What to know first
 
-This is a post on using the built in arrow helpers in three.js to get a visual on directions in a three.js project. This is a fairly simple post, well at least when it comes to the very basics of using the constructor at least, but it is still not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have at least a little background when it comes to those topics and are just interested in reading more about how to use the library in new and interesting ways when it comes to helper methods, and all kinds of things that might branch off from there. 
-
-So I will not be going over every little detail when it comes to the very basics, however in this section I will be going over a few things that you might want to know before continuing to read the rest of this post
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/XW762oGXAZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+This is a post on using the built in arrow helpers in threejs to get a visual on directions in a threejs project. This is a fairly simple post, well at least when it comes to the very basics of using the constructor at least, but it is still not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have at least a little background when it comes to those topics and are just interested in reading more about how to use the library in new and interesting ways when it comes to helper methods. So I will not be going over every little detail when it comes to the very basics. However I think it is still called for to go over a few things that you might want to know before continuing to read the rest of this post.
 
 ### Read up  ore on the object3d class
 
-If you are not familiar with the object3d class of threejs it might be a good idea to read up on that first, along with other classes that inherit from the object3d class which include mesh objects, groups, and many other objects in threejs. The reason why I say that is because an arrow helper can be attached to the main scene object, but it can also be attached to anything and everything that is based on object3d. So it would be a good idea to maybe [read up a little on object3d first](/2018/04/23/threejs-object3d/) of you have not done so before hand.
+If you are not familiar with the [object3d class](/2018/04/23/threejs-object3d/) of threejs it might be a good idea to read up on that first. The Object3d class is a base class of Arrow Helpers, but it is also a Base class for any other kind of object that will be added as a child of a scene object, or any other Object3d based object. There is much ground to cover when it comes to object3d based objects, such as the [position](/2022/04/04/threejs-object3d-position/), and [rotation](/2022/04/08/threejs-object3d-rotation/) properties along with a whole lot more. So I do not want to repeat myself from one blog post to the next when it comes to Object3d based objects.
 
 ### Read up more on the Vector3 class and also what a Unit Vector is
 
-If you have not done so before hand it might be a good idea to log some time getting a more solid grasp on everything there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/). Also while you are at it it might also be a good idea to learn about, or refresh your understanding of what a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) is in general. I say that because the use of the Vector3 class is closely related to the use of the Vector3 class and when it comes to setting the direction of an arrow helper I generally want to pass the arrow helper a normalized vector3 instance with a unit vector length of 1. Also it is important to know that the Vector3 normalize method will mutate the vector in place so you might want to call the clone method of a vector first and then normalize that clone.
+If you have not done so before hand it might be a good idea to log some time getting a more solid grasp on everything there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/). Also while you are at there is also learning or refresh your understanding of what a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) is in general outside that of threejs, and javaScript. I say that because the use of the Vector3 class is closely related to the use of the Vector3 class and when it comes to setting the direction of an arrow helper I generally want to pass the arrow helper a normalized vector3 instance with a unit vector length of 1. Also it is important to know that the [Vector3 normalize method](/2021/06/14/threejs-vector3-normalize/) will mutate the vector in place so you might want to call the clone method of a vector first and then normalize that clone.
+
+### The source code examples in this post are on Github
+
+The source code examples that I am writing about in this post can also be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-arrow-helper).
 
 ### Version numbers matter
 
 When I first started this post I was using revision 98 of three.js, which was released in late October 2018. The last time I edited this post I was using revision revision 135 of threejs, and when it comes to the arrow helper at least it would seem that not much has changed. 
 
 Still three.js is a project that is being developed, and at a fairly fast rate with new revisions continuing out what seems like every month almost. Although not much has changed with the arrow helper, a great deal has changed elsewhere in the library when I first started this post, and many of my other posts, and these changes can often result in code breaking. So if the code examples here break the first thing you should check is the version number of threejs that you are using.
-
-### The source code examples in this post are on Github
-
-The source code examples that I am writing about in this post can also be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-arrow-helper).
 
 ### 1 - Basic Example of a ArrowHelper in threejs
 
