@@ -5,15 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2022-05-03 10:55:36
-version: 1.41
+updated: 2023-01-01 08:53:57
+version: 1.42
 ---
 
-For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create objects that helper to visualize what is going on with state of various components of a threejs project, the arrow helper is one of these such methods. 
+When it comes to [threejs](https://threejs.org/) I thought I would write a quick post on the subject of [arrow helpers](https://threejs.org/docs/#api/en/helpers/ArrowHelper). In threejs there are a number of built in helper methods than can be used to quickly create objects that help to visualize what is going on with state of various components of a threejs project. The arrow helper is one of these such helper objects that can be used to find out what is going on with the direction of a [Vector3 class object](/2018/04/15/threejs-vector3/).
 
-The [THREE.ArrowHelper](https://threejs.org/docs/#api/en/helpers/ArrowHelper) constructor is a helper that can be used for visualizing directions in three.js when it comes to Vector space. So then it is a nice addition to work with when it comes to knowing what direction is what. These arrow helpers can be attached to the [scene object](/2018/05/03/threejs-scene/), but also just about anything that inherits from the object32 class, so they can also be attached to a [mesh object](/2018/05/04/threejs-mesh/), or an instance of a [group](/2018/05/16/threejs-grouping-mesh-objects/).
+These arrow helper obuects are [Object3d class](/2018/04/23/threejs-object3d/) based objects, so that means that they can be attached to the [scene object](/2018/05/03/threejs-scene/), but also just about anything that inherits from the object32 class. So they can also be attached to a [mesh object](/2018/05/04/threejs-mesh/), and instance of a [group](/2018/05/16/threejs-grouping-mesh-objects/), or any object3d based class for that matter.
 
-So then in this post I will be going over some basic examples of arrow helpers, and the features to work with when it comes to such helpers. In the process I will also be touching base on some other threejs related topics that have to do with making the code of a threejs project a little more organized so it is not such a thin post as there is only so much to write about when it comes to the arrow helper.
+So then in this post I will be going over some basic examples of arrow helpers, and the features to work with when it comes to such objects. In the process I will also be touching base on some other threejs related topics that have to do with making the code of a threejs project a little more organized so it is not such a thin post as there is only so much to write about when it comes to the arrow helper.
 
 <!-- more -->
 
