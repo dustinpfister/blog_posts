@@ -5,11 +5,11 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 124
-updated: 2018-01-06 11:53:26
-version: 1.1
+updated: 2023-01-02 10:29:27
+version: 1.2
 ---
 
-It's a new dawn, it's a new day, and it's a new year. So maybe it is called for to start this new year with a post on which I will outline what it is that I aim to achieve this year. There is much I want to get done with this blog, pet projects, and a few other things outside of the main subject matter of this blog. Lots of people set new years resolutions, pursue them for a little while, and then give up. Maybe that is because many resolutions require a substantial change in lifestyle that is not always easy to achieve, or maybe they just don't write it down. In any case I thought I would draft out what it is that I want to get done this year, and see how things go.
+It's a new dawn, it's a new day, and it's a new year. So maybe it is called for to start this new year with a post in which I will outline what it is that I aim to achieve this year. There is much I want to get done with this blog, pet projects, and a few other things outside of the main subject matter of this blog. Lots of people set new years resolutions, pursue them for a little while, and then give up. Maybe that is because many resolutions require a substantial change in lifestyle that is not always easy to achieve, or maybe they just don't write it down. In any case I thought I would draft out what it is that I want to get done this year, and see how things go.
 
 <!-- more -->
 
@@ -17,11 +17,11 @@ It's a new dawn, it's a new day, and it's a new year. So maybe it is called for 
 
 I started this blog back in February of last year with a [post on hexo tags](/2017/02/04/hexo-tags/), and a certain attitude. A somewhat negative attitude that I will give the whole blog thing one year to see if anything comes of it, and expect failure. As such at the time I treated this blog as an experiment of sorts, expecting for it to lead to something that might be of value, but to not get to my expectations that high.
 
-So that being sed the main goal in 2017 was to prove a very cynical mindset wrong, and so far it would seem that I am starting to do just that. Still I am not out of the woods just yet, I need to keep doing what I am doing, this is still just the first year, the experiment is not over.
+So that being said the main goal in 2017 was to prove a very cynical mindset wrong, and so far it would seem that I am starting to do just that. Still I am not out of the woods just yet, I need to keep doing what I am doing, this is still just the first year, the experiment is not over.
 
 ## Keep writing posts on npm packages
 
-I have wrote a lot of posts on [node.js and npm packages](/categories/node-js/). Some of them seem to be doing well, and my best preforming post in google search console is my post on the [npm package jimp](/2017/04/10/nodejs-jimp/), many other projects I have written on are doing okay as well, such as my [post on marked](/2017/11/19/nodejs-marked/). 
+I have wrote a lot of posts on [nodejs and npm packages](/categories/node-js/). Some of them seem to be doing well, and my best preforming post in google search console is my post on the [npm package jimp](/2017/04/10/nodejs-jimp/), many other projects I have written on are doing okay as well, such as my [post on marked](/2017/11/19/nodejs-marked/). 
 
 ## Review and refine my process for writing posts
 
@@ -48,12 +48,18 @@ I was thinking of having some kind of process that involves updating posts that 
 
 ## Start or continue work on a single pet project.
 
-By The time this year is out I will want to have at least a single software project that is pretty dam awesome. In the past i was thinking it might be some kind of game, but times have changed, and now I am more into the idea of developing some kind of productivity application. Maybe a static site generator, maybe something else, I will not get into it in detail but it will be something cool.
+By The time this year is out I will want to have at least a single software project that is pretty dam awesome. In the past I was thinking it might be some kind of game, but times have changed, and now I am more into the idea of developing some kind of productivity application. Maybe a static site generator, maybe something else, I will not get into it in detail but it will be something cool.
 
 ## hexo plugins
 
 I will want to give this site a major overhaul, and add some more sections that have to do with coding. A friend of mind keeps telling me I should get back into animation, so maybe I will make some kind of hexo plugin that will generate animations that can be viewed on this site. Maybe this will be the pet project of mine this year. It makes sense to just make plug ins for a static site generator that all ready exists rather than making one from the ground up, and why not make it the static site generator that I all ready use?
 
-## Thats it for now
+## That's it for now
 
-I do not want to set two many goals, if I do so I may end up biting off more than I can chew. So I will be just focusing on continuing with what I am doing, and try to expand into what may be the next step as well. I may come to update this as time goes no, but it will always only just reflect what I aim to accomplish this year, so maybe one once or twice if at all.
+I do not want to set two many goals, if I do so I may end up biting off more than I can chew. So I will be just focusing on continuing with what I am doing, and try to expand into what may be the next step as well. I may come to update this as time goes on, but it will always only just reflect what I aim to accomplish this year, so maybe one once or twice if at all.
+
+### Update 2023
+
+It is now 2023 and I have wrote another [post like this one for the start of January 2023](/2023/01/01/blog-post-plan-for-2023/). I also wrote a post like this every year scene I first wrote this post. So then in other words writing this like of post one a year every year has become a habit that is a little bit of a break from the usual tech topics that I write about. A whole lot has changed from when I first started writing this blog in terms of the topics that I write about, as well as much more outside of them of course. However there is also what has not changed from the beginning as well. With that said what has not changed is my desire to keep going with this, and to continue learning about new things in the process.
+
+
