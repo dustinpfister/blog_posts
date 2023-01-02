@@ -5,11 +5,11 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 121
-updated: 2019-09-08 16:29:29
-version: 1.4
+updated: 2023-01-02 11:25:04
+version: 1.5
 ---
 
-When focusing on a javaScript related project, there can be a great many [distractions](https://en.wikipedia.org/wiki/Distraction) that can interfere with my ability to focus on a project. Some of them are just complete wasts of time, others are somewhat pleasant or necessary. However all of them can derail my chain of thought, or get in the way of me making progress.  However with a little effort it might be possible to get some of these under control, ether by stopping them completely, or finding was to keep them from monopolizing to much of my time. Some of them I have made progress with, others still seem to get in the way, but regardless writing about them might help. I do not write these kinds of posts often but I thought I would break from the norm with this one.
+When focusing on a javaScript related project, there can be a great many [distractions](https://en.wikipedia.org/wiki/Distraction) that can interfere with my ability to focus on a project. Some of them are just complete wasts of time, others are somewhat pleasant or necessary. However all of them can derail my chain of thought, or get in the way of me making progress. However with a little effort it might be possible to get some of these under control, ether by stopping them completely, or finding was to keep them from monopolizing to much of my time. Some of them I have made progress with, others still seem to get in the way, but regardless writing about them might help. I do not write these kinds of [blog post](/categories/blog/) related posts often but I thought I would break from the norm with this one.
 
 <!-- more -->
 
@@ -18,9 +18,9 @@ When focusing on a javaScript related project, there can be a great many [distra
 
 I have a lot of things that I worry about, at a personal, local, national, and global level. All kinds of distracting thoughts about things most of which I do not have control over. It is a major distraction to be lost in thoughts about how bad things are out there in the world, and concerns about how people close to me are also suffering a little for various reasons.
 
-[Meditation](https://en.wikipedia.org/wiki/Meditation) has helped me get all of this under better control. The basic idea behind what I do is to just get into a comfortable position, and focus on my breathing. Thoughts come, and when they do I let them go by returning to focusing on my breathing.
+[Meditation](https://en.wikipedia.org/wiki/Meditation) has helped me get all of this under better control. The basic idea behind what I do is to just get into a comfortable position, and just try to relax and clear my mind. Lots of people say that one should focus on there breath, and that things should be done a very specific way or else you are doing it wrong. I however have found that I like to find out how to do this sort of thing in my own way, the goal should be to just simply decompress by way of any means that works on an individual level.
 
-Eventually there is the idea of replacing focusing on my breathing with what it is that I am working on. Focusing on work in some ways is just like focusing on the breathing, thoughts come, and then they go once I get myself focused back on work.
+Once the distracting thoughs go away I have found that I can focus on reading, writing, and coding way better. I have also found that the act of writing abot coding can almost turn into a kind of medatation actually. That is that in place of focusing on breating, and not doing much of anything, what it is that I am working on can be meditative.
 
 ## Drinking alcohol
 
@@ -44,7 +44,7 @@ What helped me stop is guilt, guilt of wasting time that can be better spent doi
 
 This one is still a bit of a problem for me, I find myself taking breaks from work to browse reddit. It's not like its all bad, but even work relevant subreddits like /r/javascript is often just a bunch of links to posts on subjects that I am ether all ready familiar with, or are not relevant to what I am working on.
 
-There is also /r/dailyprogramer, thats a great subreddit. I poke my head in now and then, and on the rare occasion try my luck with one of the hard challenges. This is great as I think it does help me understand better where i am as a programmer. 
+There is also /r/dailyprogramer, that's a great subreddit. I poke my head in now and then, and on the rare occasion try my luck with one of the hard challenges. This is great as I think it does help me understand better where i am as a programmer. 
 
 Although there are some great work related subreddits, I do find reddit more of a distraction rather than a tool.
 
@@ -60,4 +60,4 @@ I hate phones with a passion, often I just turn the dam thing off completely so 
 
 ## Conclusion
 
-Well I do not want to spend all day working on this. Just wanted to make another one of my posts on bloging as it is a nice distraction from the usual posts on javaScript related topics, but now I want to get back to work.
+Well I do not want to spend all day working on this. Just wanted to make another one of my posts on bloging as it is a nice distraction from the usual posts on javaScript related topics, but now I want to get back to work on my usual topics that I write about.
