@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2023-01-01 09:57:03
-version: 1.44
+updated: 2023-01-02 11:38:23
+version: 1.45
 ---
 
 When it comes to [threejs](https://threejs.org/) I thought I would write a quick post on the subject of [arrow helpers](https://threejs.org/docs/#api/en/helpers/ArrowHelper). In threejs there are a number of built in helper methods than can be used to quickly create objects that help to visualize what is going on with state of various components of a threejs project. The arrow helper is one of these such helper objects that can be used to find out what is going on with the direction of a [Vector3 class object](/2018/04/15/threejs-vector3/).
@@ -45,13 +45,13 @@ Still three.js is a project that is being developed, and at a fairly fast rate w
 
 ## 1 - Some Basic examples of Arrow helpers in threejs
 
-To start things off I will be writing about some basic examples of arrow helpers in threejs.
+To start things off I will be writing about some basic examples of arrow helpers in threejs in this first section. The general idea is simple enough I just call the THREE.ArrowHelper constructor function and pass some arguments that are use to define the direction and origin of the arrow. There are a number of other arguments though, and also a few other things might not be so strait forward. So there will be a few examples in this section where the goal is to address many of these basic things that will come up when working with arrow helpers in threejs.
 
 ### 1.1 - Basic Example of a ArrowHelper in threejs
 
-So a basic example of an Arrow helper would involve setting a direction, origin, length, and color by passing those values to the THREE.ArrowHelper constructor in that order. The direction and origin should be insistences of THREE.Vector3 which is one of several constructors that you should be aware of when making a three.js project. 
+So a basic example of an Arrow helper would involve setting a direction, origin, length, and color by passing those values to the THREE.ArrowHelper constructor in that order. The direction and origin should be an instance of THREE.Vector3 which is one of several constructors that you should be aware of when making a threejs project. 
 
-The length should be a number value consistent with the desired length relative to the other values of the camera and objects in the scene, and the color should be a hex value, but can also be a number of other kinds of values depending on the version of tree.js that is being used. In late versions of three.js just about all of the usual options for setting color seem to work okay.
+The length should be a number value consistent with the desired length of the arrow. Additional values have to do with setting the starting color of the arrow as well as the shape and size of the head of the arrow. However these options might not set everything that one might want to set when it comes to the over all style of the objects that compose the arrow. More on that later, but for now this will be just a very simple hello world type example of arrow helpers.
 
 ```js
 //-------- ----------
@@ -83,7 +83,7 @@ This is then just a simple getting started type example of the arrow helper wher
 
 ### 1.2 - Change direction example of the arrow helper method
 
-It might also be of interest in how to go about changing direction of the arrow helper when working out an animation of some kind or anything to that effect. For this there is the setDirection method of the arrow helper instance that is one way to go about doing just that. To use it I just need to call the set direction method off of the instance of the arrow helper, and pass an instance of vector three to use as a way to set the new direction for the arrow helper.
+It might also be of interest in how to go about changing direction of the arrow helper when working out an animation of some kind or anything to that effect. For this there is the set direction method of the instance that is one way to go about doing a change of direction over time. To use it I just need to call the set direction method off of the instance of the arrow helper, and pass an instance of vector three to use as a way to set the new direction for the arrow helper.
 
 ```js
 //-------- ----------
@@ -131,7 +131,7 @@ const loop = function () {
 loop();
 ```
 
-For this example I also set up a basic app loop where I am chaining the direction each time the app loop is called. the result is then the arrow pointing in all directions alone the circumference of a circle.
+For this example I the set up a basic app loop where I am chainging the direction each time the app loop method is called. The result is then the arrow pointing in all directions along the circumference of a circle.
 
 ### 1.3 - Moving an object along a direction
 
