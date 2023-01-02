@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 957
-updated: 2023-01-02 12:12:22
-version: 1.23
+updated: 2023-01-02 12:34:35
+version: 1.24
 ---
 
 When it comes to working out all kinds of simple hello world type project examples using threejs for the sake of learning the basics of threejs, or just gaining a more solid understanding of the library regardless of experience, the Vector three Class might come up often when doing so. There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). 
@@ -109,6 +109,91 @@ mesh.position.setFromSphericalCoords(radius, phi, theta);
 // RENDER
 //-------- ----------
 renderer.render(scene, camera);
+```
+
+## 2 - Animaiton loop examples
+
+In this section I will now be getting into at least one if not more video project examples for this post. As of this writing I have just the one video that is shown at the top of this post. However sooner or later I will come around to edit and expand this post more, so there will likley be more examples in this section at some point in the future.
+
+### 2.1 - Simple Video1 loop example
+
+What I have here is a quick example that is based off of the source code for the first video that I made for this blog post. For that video I made a simple set mesh position helper function and when it comes to this function I am of course using the set from spherical coords method of the vecotr3 class. The example involves a sphere that I have placed at the center of the scene, and I am then using this set mesh position helper to set the position of the cube on the surface of the sphere.
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// HELPER FUNCTIONS
+// ---------- ---------- ----------
+// USING setFromSphericalCoords to set position of the Mesh
+const setMeshPos = function(mesh, p, t, r){
+    const radius = r === undefined ? 3 : r,
+    phi = THREE.MathUtils.degToRad(p === undefined ? 0 : p),
+    theta = THREE.MathUtils.degToRad(t === undefined ? 0 : t);
+    mesh.position.setFromSphericalCoords(radius, phi, theta);
+    mesh.lookAt(0, 0, 0);
+};
+// ---------- ---------- ----------
+// ADD A MESH
+// ---------- ---------- ----------
+const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(2.5, 20, 20),
+    new THREE.MeshBasicMaterial({
+        color: new THREE.Color('lime'),
+        wireframe: true,
+        transparent: true,
+        opacity: 0.4
+    })
+);
+scene.add(sphere);
+const cube = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial({
+    })
+);
+scene.add(cube);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 120;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    //const degree = 360 * (frame / frameMax);
+    //mesh.rotation.x = THREE.MathUtils.degToRad(degree);
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    setMeshPos(cube, 90, 90 + 90 * a2, 3);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
