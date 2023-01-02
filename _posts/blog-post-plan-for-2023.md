@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 1021
-updated: 2023-01-02 11:08:25
-version: 1.3
+updated: 2023-01-02 11:11:07
+version: 1.4
 ---
 
 Yet another year has past and as such it is time for me to write another one of these [blog posts on blogging](/categories/blog) that I write only once a year as of late. I like to keep the focus more so on tech related topics on this site as it is a github pages website after all, however I do want to keep up with this at least every once in a great while. There is what I am doing that seems to be working a little, but I still have more to learn when it comes to how to go about writing a blog that people will want to read. So I should take a moment to blog about blogging in a effort to make sure that I keep going with what is working, and rethink what I am doing with what is not working.
@@ -35,3 +35,7 @@ There is a great deal to write about when it comes to Linux, and I am sure that 
 It is not to say that one will not still run into problems though when it comes to Linux. Also there is a bit of a steep learning curve with Linux as well. So then for that reason there will be a need to write some blog posts on the topic for the sake of my own edification alone. I have been using Linux based system sense about 2007, but that is not saying much because for the most part it has just been typical end user type use. 
 
 ## 2 - Keeping up with a day by day todo list
+
+Another thing that I started last year was a day by day todo list. This is something that has been working very well for me in terms of planni9ng things out, and also making sure that I keep up with what I want to do. I have found that it is true that if I write things down in the form of a simple todo list, then I will in fact actually do it.
+
+
