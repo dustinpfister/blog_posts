@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2023-01-03 08:15:57
-version: 1.28
+updated: 2023-01-03 09:17:22
+version: 1.29
 ---
 
 When it comes to making a [threejs](https://threejs.org/) project it is typically the mesh object class that is used to create and add objects to a scene. However there are a few other options that can be used as a way to add content to a scene such as Points which can be used to just simply show the location of the points of a position attribute of buffer geometry, and then Lines. For this post I will be focusing more so on using Lines then as an alternative to using mesh objects as I have another post in which the main focus is on [points](/2018/05/12/threejs-points-material/).
@@ -106,37 +106,36 @@ If I am using a late version of threejs that is r125 or higher I have to use the
 Once I have my instance of THREE.line I can then add it to a scene, then create a camera, and a renderer and use the scene and camera with the render just like any other example.
 
 ```js
-(function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
- 
-    var points = [];
-    points.push(
-        new THREE.Vector3(-10, -10, 0),
-        new THREE.Vector3(10, 0, 0),
-        new THREE.Vector3(-10, 10, 0));
-    var geometry = new THREE.BufferGeometry().setFromPoints( points );
-    // CREATE THE LINE
-    var line = new THREE.Line(
-            geometry,
-            new THREE.LineBasicMaterial({
-                color: 0x0000ff
-            }));
-    scene.add(line);
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(0, 0, -30);
-    camera.lookAt(0, 0, 0);
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(649, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
-}
-    ());
+//-------- ---------
+// SCENE, CAMERA, RENDERER
+//-------- ---------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+camera.position.set(0, 0, -30);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(649, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ---------
+// CREATE THE LINE
+//-------- ---------
+const points = [];
+points.push(
+    new THREE.Vector3(-10, -10, 0),
+    new THREE.Vector3(10, 0, 0),
+    new THREE.Vector3(-10, 10, 0));
+const geometry = new THREE.BufferGeometry().setFromPoints( points );
+const line = new THREE.Line(
+    geometry,
+    new THREE.LineBasicMaterial({
+        color: 0x0000ff
+    })
+);
+scene.add(line);
+//-------- ---------
+// RENDERER
+//-------- ---------
+renderer.render(scene, camera);
 ```
 
 ### 1.2 - My old r91 example Using the now removed Geometry constructor as of r125+
@@ -145,114 +144,141 @@ If I am using an older version of threejs or can somehow get the old geometry co
 
 ```js
 (function () {
- 
-    // Scene
+    // SCENE, CAMERA, RENDERER
     var scene = new THREE.Scene();
- 
-    // Camera
     var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
     camera.position.set(0, 0, -30);
     camera.lookAt(0, 0, 0);
- 
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480, false);
+    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
     // GEOMETRY
     var geometry = new THREE.Geometry();
     geometry.vertices.push(
         new THREE.Vector3(0, -10, 0),
         new THREE.Vector3(10, 0, 0),
         new THREE.Vector3(0, 10, 0));
- 
-    // The Line
+    // LINE
     var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({
                 color: 0x0000ff
             }));
     scene.add(line);
- 
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
-    document.getElementById('demo').appendChild(renderer.domElement);
+    // RENDER
     renderer.render(scene, camera);
- 
 }
     ());
 ```
 
 I often place these examples just to have a complete copy and paste, functioning example, and also to cover some additional things that must be done with respect to the other components that make up a threejs project. Although in this case nothing special needs to be done compared to any other example this time around. Just the usual pitfalls to look out for such as making sure the camera is positioned away from, and looking at, what you are working with.
 
-## 2 - Create Points helper function
+### 2.1 - Create Points helper function
 
 I made a demo video for this post that can be seen above, when doing so I made a create points helper for the sake of making a demo that is a little more interesting than what I have thus far with examples of the THREE.Line constructor. So I thought I should have a quick section in which I have the source code that I was suing for the demo in that video.
 
 ```js
-(function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
-     var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(10, 10, 10);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // create points helper
-    var createPoints = function(len, rotationCount, height, maxRadius){
-        rotationCount = rotationCount === undefined ? 8 : rotationCount;  // number of rotations
-        height = height === undefined ? 5 : height;
-        maxRadius = maxRadius === undefined ? 5 : maxRadius;
-        var yDelta = height / len;
-        var points = [];
-        var i = 0, v, radian, radius, per;
-        while(i < len){
-            per = i / ( len - 1 );
-            radian = Math.PI * 2 * rotationCount * per;
-            radius = maxRadius  * per;
-            v = new THREE.Vector3();
-            v.x = Math.cos(radian) * radius;
-            v.z = Math.sin(radian) * radius;
-            v.y = i * yDelta;
-            points.push(v);
-            i += 1;
-        };
-        return points;
-    };
- 
-    // update lines group
-    var updateLinesGroup = function(lines, rs, rDelta, height, radius){
-        lines.children.forEach(function(line, i, arr){
-            var per = (i + 1) / arr.length;
-            line.geometry.setFromPoints( createPoints(150, rs + rDelta * per, height, radius) );
-        });
-    };
- 
-    // create lines group
-    var lines = new THREE.Group();
-    var lineCount = 12;
-    var colors = [0x00ff00, 0xff0000, 0x0000ff, 0xff00ff, 0x00ffff, 0xffff00];
-    var i = 0;
-    while(i < lineCount){
-        var per = i / lineCount;
-        var points = createPoints(100, 1 + 0.2 * per, 0, 5);
-        var geometry = new THREE.BufferGeometry().setFromPoints( points );
-        var line = scene.userData.line = new THREE.Line(
-            geometry,
-            new THREE.LineBasicMaterial({
-                color: colors[i % colors.length],
-                linewidth: 6
-            }));
-        lines.add(line);
+//-------- ----------
+// SCENE, CAMERA
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ---------- 
+// create points helper
+const createPoints = function(len, rotationCount, height, maxRadius){
+    rotationCount = rotationCount === undefined ? 8 : rotationCount;  // number of rotations
+    height = height === undefined ? 5 : height;
+    maxRadius = maxRadius === undefined ? 5 : maxRadius;
+    const yDelta = height / len;
+    const points = [];
+    let i = 0, v, radian, radius, per;
+    while(i < len){
+        per = i / ( len - 1 );
+        radian = Math.PI * 2 * rotationCount * per;
+        radius = maxRadius  * per;
+        v = new THREE.Vector3();
+        v.x = Math.cos(radian) * radius;
+        v.z = Math.sin(radian) * radius;
+        v.y = i * yDelta;
+        points.push(v);
         i += 1;
-    }
-    scene.add(lines);
- 
-    updateLinesGroup(lines, 0.5, 1.4, 10, 4);
-    lines.position.y = -8;
- 
-    // Render
-    renderer.render(scene, camera);
- 
+    };
+    return points;
+};
+// update lines group
+const updateLinesGroup = function(lines, rs, rDelta, height, radius){
+    lines.children.forEach(function(line, i, arr){
+        const per = (i + 1) / arr.length;
+        line.geometry.setFromPoints( createPoints(150, rs + rDelta * per, height, radius) );
+    });
+};
+//-------- ----------
+// LINE
+//-------- ----------
+// create lines group
+const lines = new THREE.Group();
+const lineCount = 12;
+const colors = [0x00ff00, 0xff0000, 0x0000ff, 0xff00ff, 0x00ffff, 0xffff00];
+let i = 0;
+while(i < lineCount){
+    const per = i / lineCount;
+    const points = createPoints(100, 1 + 0.2 * per, 0, 5);
+    const geometry = new THREE.BufferGeometry().setFromPoints( points );
+    const line = scene.userData.line = new THREE.Line(
+        geometry,
+        new THREE.LineBasicMaterial({
+            color: colors[i % colors.length],
+            linewidth: 6
+        }));
+    lines.add(line);
+    i += 1;
 }
-    ());
+scene.add(lines);
+updateLinesGroup(lines, 0.5, 1.4, 10, 4);
+lines.position.y = -8;
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+### 2.2 - Using a Curve to create points for a line
+
+```js
+//-------- ----------
+// SCENE, CAMERA
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CURVE
+//-------- ---------- 
+const v_start = new THREE.Vector3(0,0,5);
+const v_end = new THREE.Vector3(-5,0,-5);
+const v_control = v_start.clone().lerp(v_end, 0.5).add( new THREE.Vector3( 14.7, 0, -5) );
+const curve = new THREE.QuadraticBezierCurve3(v_start, v_control, v_end);
+//-------- ----------
+// POINTS, GEOMETRY, LINE
+//-------- ----------
+const geometry = new THREE.BufferGeometry().setFromPoints( curve.getPoints( 100 ) )
+const line = new THREE.Line(geometry, new THREE.LineBasicMaterial({ color: 0xff0000, linewidth: 3}));
+line.position.y = 0.1;
+scene.add(line);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ## 3 - Using 2d lines made in a canvas project with threejs
@@ -266,36 +292,45 @@ How it is done in a nut shell is to use the 2d canvas drawing context line metho
 The Basic idea here is to just create a canvas, draw lines to the canvas using the 2d drawing context, and then create a texture with the canvas element. When it comes to using a canvas to create a texture in threejs there is the canvas texture constructor, but the regular texture constructor can also be used by just setting the needs update Boolean to true. The resulting texture can the be used with a materials such as the basic material by making the texture the value of something like the map property of the material.
 
 ```js
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(1.4, 1.4, 1.4);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
-    // CANVAS
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-    canvas.width = 8;
-    canvas.height = 8;
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = '#ff00ff';
-    ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    var texture = new THREE.Texture(canvas);
-    texture.needsUpdate = true;
-    // GEOMETRY
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
-    // MATERIAL
-    var material = new THREE.MeshBasicMaterial({
-            map: texture
-        });
-    // MESH
-    var mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-    // render
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+camera.position.set(1.4, 1.4, 1.4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS
+//-------- ----------
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 128;
+canvas.height = 128;
+ctx.fillStyle = '#000000';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.strokeStyle = '#ff00ff';
+ctx.lineWidth = 1;
+ctx.strokeRect(2, 2, canvas.width - 4, canvas.height - 4);
+const texture = new THREE.Texture(canvas);
+texture.magFilter = THREE.NearestFilter;
+texture.minFilter = THREE.NearestFilter;
+texture.needsUpdate = true;
+//-------- ----------
+// GEOMETRY, MATERIAL, MESH
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshBasicMaterial({
+        map: texture
+    });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 I will not be getting into the canvas 2d drawing API in detail here, but because it is another way of drawing lines in threejs it is sure worth mentioning to say the least.
