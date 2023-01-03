@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 587
-updated: 2021-01-01 09:59:36
-version: 1.8
+updated: 2023-01-03 10:39:29
+version: 1.9
 ---
 
 I have made a habit of writing a post on the subject of blogging in general rather than javaScript, and javaScript related topics at the start of a new year. So this will be a yet another [blog plan](http://www.getspokal.com/the-practical-guide-to-creating-a-blogging-strategy-that-actually-works/) post for the year of 2020. No buddy really seams to read these, but thats okay its more for my sake anyway because it is important for me to know where this site is going, and what the next move should be as I continue going forward with this.
@@ -33,6 +33,15 @@ There is writing about what I am all ready passionate about, and then there is w
 
 I have been neglecting my content on lodash which is something that I aim to stop this year. Lodash and functional programing topics should actually take the highest priority actually. Many of the posts ob lodash on this site are pulling in large volumes of traffic, and the content should be of higher quality.
 
-## 2 - Conclusion
+## Conclusion
 
 Having a good blog plan is still something the I lake for this site, and for bloging, writing, and working on personal projects in general. It is something that I keep putting off, but I just know that I am suffering because of it. As the year goes on maybe I will get around to updating this post a few times, as the plan for this year evolves.
+
+* [Blog Post Plan for 2018](/2018/01/02/blog-plan-for-2018/)
+* [Blog Post Plan for 2019](/2019/01/02/blog-post-plan-for-2019/)
+* [Blog Post Plan for 2020](/2020/01/03/blog-post-plan-for-2020/)
+* [Blog Post Plan for 2021](/2021/01/01/blog-post-plan-for-2021/)
+* [Blog Post Plan for 2022](/2022/01/03/blog-post-plan-for-2022/)
+* [Blog Post Plan for 2023](/2023/01/01/blog-post-plan-for-2023/)
+
+
