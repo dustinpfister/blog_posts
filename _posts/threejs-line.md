@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2023-01-03 09:26:14
-version: 1.30
+updated: 2023-01-03 09:31:38
+version: 1.31
 ---
 
 When it comes to making a [threejs](https://threejs.org/) project it is typically the mesh object class that is used to create and add objects to a scene. However there are a few other options that can be used as a way to add content to a scene such as Points which can be used to just simply show the location of the points of a position attribute of buffer geometry, and then Lines. For this post I will be focusing more so on using Lines then as an alternative to using mesh objects as I have another post in which the main focus is on [points](/2018/05/12/threejs-points-material/).
@@ -254,7 +254,7 @@ renderer.render(scene, camera);
 
 ### 2.2 - Using a Curve to create points for a line
 
-The curve class of threejs is a very helpful tool for creating lines in space I threejs. There is working out how to go about making a custom [curve class](/2022/06/17/threejs-curve/) by extending the base class, however I have found that more often then not one of the built in curve classes such as [THREE.QuadraticBezierCurve3](/2022/10/21/threejs-curve-quadratic-bezier-curve3) Works just fine for what it is that I typically want to do with curves
+The curve class of threejs is a very helpful tool for creating lines in space I threejs. There is working out how to go about making a custom [curve class](/2022/06/17/threejs-curve/) by extending the base class, however I have found that more often then not one of the built in curve classes such as [THREE.QuadraticBezierCurve3](/2022/10/21/threejs-curve-quadratic-bezier-curve3) Works just fine for what it is that I typically want to do with curves. In any case one way to create points to then use to create a line with a curve would be to create a curve by way of the Quadratic Bezier Curve three built in curve class, then I can just call the get points method of the base curve class to create an array of say one hundred points that are along that curve. The result of the get points method call can then be passed as the argument value for the buffer geometry set from points method.
 
 ```js
 //-------- ----------
@@ -287,6 +287,8 @@ scene.add(line);
 //-------- ----------
 renderer.render(scene, camera);
 ```
+
+Simple enough sure but there are a few draw backs, for one thing the spacing between points will always be constant. This can be addresses by making use of the get point method of the curve class rather than the plural get points method which allows me to define what the alpha values should be along the curve on a point by point basis.
 
 ## 3 - Using 2d lines made in a canvas project with threejs
 
