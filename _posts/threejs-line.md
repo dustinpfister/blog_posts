@@ -5,27 +5,30 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2023-01-03 08:00:10
-version: 1.27
+updated: 2023-01-03 08:15:57
+version: 1.28
 ---
 
 When it comes to making a [threejs](https://threejs.org/) project it is typically the mesh object class that is used to create and add objects to a scene. However there are a few other options that can be used as a way to add content to a scene such as Points which can be used to just simply show the location of the points of a position attribute of buffer geometry, and then Lines. For this post I will be focusing more so on using Lines then as an alternative to using mesh objects as I have another post in which the main focus is on [points](/2018/05/12/threejs-points-material/).
 
 <!-- more -->
 
-There is only so much to write about with the [Line](https://threejs.org/docs/#api/en/objects/Line), and [LineSegments](https://threejs.org/docs/#api/en/objects/LineSegments) constructors in threejs, so to help keep this post from being to thin I will also be writing about LineLoop, Line3, and the Materials that can be used with Lines including the [LineBasicMatreial](https://threejs.org/docs/index.html#api/materials/LineBasicMaterial) and [LineDashedMaterial](https://threejs.org/docs/index.html#api/en/materials/LineDashedMaterial). There is also the Path constructor that can be used to make 2d shapes, making it similar to the 2d canvas drawing context. 
-
-So there is a great deal to know about when it comes to making lines in three.js for both 3d, and 2d actually. I say that because there is also drawing lines in a 2d canvas using the 2d drawing context, and then using that as a way to skin the faces of a geometry. However in this post I will be briefly covering the Line Constructor and topics closely related to that.
-
-## What you should know before hand
-
-This is a post on just one little aspect of three.js which is a javaScript project that allows for doing things involving solid geometry. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional aspects of [javaScript in general](/2018/11/27/js-getting-started/) that are required in order to work with the library. You will want to know about the [Vector3 constructor](/2018/04/15/threejs-vector3/) as that is what is used to define points in 3d space in three.js. You should also be aware of [Materials](/2018/04/30/threejs-materials/), [Cameras](/2018/04/06/threejs-camera/), [Renderer's](/2018/11/24/threejs-webglrenderer/), and the [Scene Object](/2018/05/03/threejs-scene/) that are all needed to make a three.js project which are also basic things that you should know about before hand in a getting started type post.
+There is only so much to write about with the [Line](https://threejs.org/docs/#api/en/objects/Line), and [LineSegments](https://threejs.org/docs/#api/en/objects/LineSegments) constructors in threejs, so to help keep this post from being to thin I will also be writing about other closly realted topucs such as how to come up with the points in the first place, and the Materials that can be used with Lines. With lines I can not use any of the mesh object materials as such I must stick with the [LineBasicMatreial](https://threejs.org/docs/index.html#api/materials/LineBasicMaterial) and [LineDashedMaterial](https://threejs.org/docs/index.html#api/en/materials/LineDashedMaterial). 
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/Cs5QXW0xldQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
+## What you should know before hand
+
+This is a post on just one little aspect of threejs which is a javaScript project that allows for doing things involving solid geometry. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional aspects of [javaScript in general](/2018/11/27/js-getting-started/) that are required in order to work with the library. So then I will not be covering any basic things that one should know before reading the rest of this post, however I do often use the opening sections of these posts to write about some things that are closely related to the main over all topic of the post.
+
+### Vector3 and buffer geometry position attributes
+
+You will want to know about the [Vector3 constructor](/2018/04/15/threejs-vector3/) as that is what is used to define points in 3d space in threejs to begin with often. However when it really comes down to it what one will really want to learn about is the [position attribute of buffer geometry objects](/2021/06/07/threejs-buffer-geometry-attributes-position/) as this is what is used to define the paths of lines. 
+
 ### A word On Materials when working with lines.
 
-If you are just making lines, and nothing that will compose a solid object or face, then it does not make sense to use a material that is designed to be used with something that is just a string of points in space. So if you aim to just draw some lines, and not something that will compose a solid object there are two special materials in three.js that are intended to be used with just lines. There materials are the LineBasicMaterial, and the LineDashedMaterial materials.
+If you are just making lines, and nothing that will compose a solid object or face, then it does not make sense to use a material that is designed to be used with something that is just a string of points in space. So if you aim to just draw some lines, and not something that will compose a solid object there are two special materials in threejs that are intended to be used with just lines. There materials are the LineBasicMaterial, and the LineDashedMaterial materials.
 
 ### Using the Dashed Line material
 
@@ -47,11 +50,11 @@ Certain properties such as the line width might not work as expected on all plat
 
 ### The Line, and LineSegments Constructors
 
-One of the best ways to go about getting started with lines in three.js is to just use the Line constructor. There is also the LineSegments constructor that works pretty much the same way only it uses a different rendering method. A basic example of one of these would be to just create a geometry, push points to an array, and then use that geometry with a line material to create an instance of Line that can then be added to a scene. However the process of doing so has changed a little when it comes to more recent versions of three.js
+One of the best ways to go about getting started with lines in threejs is to just use the Line constructor. There is also the LineSegments constructor that works pretty much the same way only it uses a different rendering method. A basic example of one of these would be to just create a geometry, push points to an array, and then use that geometry with a line material to create an instance of Line that can then be added to a scene. However the process of doing so has changed a little when it comes to more recent versions of threejs
 
 #### Using the BufferGeometry Constructor
 
-In general I will want to use the Buffer Geometry constructor to create the geometry of a line. In fact in late versions of three.js this is the only way to do so now.
+In general I will want to use the Buffer Geometry constructor to create the geometry of a line. In fact in late versions of threejs this is the only way to do so now.
 
 ```js
     var points = [];
@@ -68,17 +71,9 @@ In general I will want to use the Buffer Geometry constructor to create the geom
             }));
 ```
 
-### Version Numbers matter
-
-As I say in every three.js post of mine on three.js the project is a project in which the version number matters big time. When I first wrote this post I was using [three.js 0.91.0](https://github.com/mrdoob/three.js/tree/r91) \( or just r91 for short \), and the last time I edited the post I was using three.s r135. Sense then many code breaking changes have happened in three.js with all sorts of things, and when it comes to lines the geometry now has to be an Instance of Buffer Geometry.
-
-### Source code examples are up on Github
-
-The source code examples that I am written about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-line).
-
 #### Using the Geometry Constructor \( removed as of r125+ \)
 
-When I first wrote this post I was using r91 of three.js, back then I could make likes by using the geometry constructor. I guess I can still level these examples up but I will of course have to just make it clear that code like this will break on recent versions of three.js unless you can bring back the geometry constructor by some kind of means involving additional extremal files.
+When I first wrote this post I was using r91 of threejs, back then I could make likes by using the geometry constructor. I guess I can still level these examples up but I will of course have to just make it clear that code like this will break on recent versions of threejs unless you can bring back the geometry constructor by some kind of means involving additional external files.
 
 ```js
 var geometry = new THREE.Geometry();
@@ -92,13 +87,21 @@ scene.add(new THREE.Line(geometry, new THREE.LineBasicMaterial({
 })));
 ```
 
+### Source code examples are up on Github
+
+The source code examples that I am written about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-line).
+
+### Version Numbers matter
+
+As I say in every post of mine on threejs, the library is a project in which the version number matters big time. When I first wrote this post I was using [threejs r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited the post I was using r135. Sense then many code breaking changes have happened in threejs with all sorts of things. One major change is that when it comes to lines, and anything that works with geometry from that matter, the geometry now has to be an instance of Buffer Geometry.
+
 ## 1 - Full basic line demo examples
 
-As with any three.js example that is fully complete there must be a scene, camera, and renderer on top of the use of the Line constructor, geometry, and line materials. In this section I will be going over a few basic hello world style example that are full working examples that take everything into account.
+As with any threejs example that is fully complete there must be a scene, camera, and renderer on top of the use of the Line constructor, geometry, and line materials. In this section I will be going over a few basic hello world style example that are full working examples that take everything into account. 
 
 ### 1.1 - First off a new threejs r127 example using BufferGemoetry
 
-If I am using a late version of three.js that is r125 or higher I have to use the Buffer Geometry Constructor for the geometry of the line as the old Geometry constructor has been removed from that point forward. So then the first thing I need to do is create an array and then use the vecor3 class to create the points that I want for the line. After that I can use the setFromPoints method of a Buffer Geometry instance to create an instance of buffer geometry with this array of points. The resulting geometry can then be used with the THREE.Line constructor by passing the geometry as the first argument followed by the kine of line material that I want to use.
+If I am using a late version of threejs that is r125 or higher I have to use the Buffer Geometry Constructor for the geometry of the line as the old Geometry constructor has been removed from that point forward. So then the first thing I need to do is create an array and then use the vecor3 class to create the points that I want for the line. After that I can use the setFromPoints method of a Buffer Geometry instance to create an instance of buffer geometry with this array of points. The resulting geometry can then be used with the THREE.Line constructor by passing the geometry as the first argument followed by the kine of line material that I want to use.
 
 Once I have my instance of THREE.line I can then add it to a scene, then create a camera, and a renderer and use the scene and camera with the render just like any other example.
 
@@ -138,7 +141,7 @@ Once I have my instance of THREE.line I can then add it to a scene, then create 
 
 ### 1.2 - My old r91 example Using the now removed Geometry constructor as of r125+
 
-If I am using an older version of three.js or can somehow get the old geometry constructor on a new version of three.js I can create the geometry that way. Aside from that there is not much of any difference when it comes to everything else. I can not say that I will be creating actual projects like this any more, but I thought I should leave this up for historical reasons.
+If I am using an older version of threejs or can somehow get the old geometry constructor on a new version of threejs I can create the geometry that way. Aside from that there is not much of any difference when it comes to everything else. I can not say that I will be creating actual projects like this any more, but I thought I should leave this up for historical reasons.
 
 ```js
 (function () {
@@ -174,7 +177,7 @@ If I am using an older version of three.js or can somehow get the old geometry c
     ());
 ```
 
-I often place these examples just to have a complete copy and paste, functioning example, and also to cover some additional things that must be done with respect to the other components that make up a three.js project. Although in this case nothing special needs to be done compared to any other example this time around. Just the usual pitfalls to look out for such as making sure the camera is positioned away from, and looking at, what you are working with.
+I often place these examples just to have a complete copy and paste, functioning example, and also to cover some additional things that must be done with respect to the other components that make up a threejs project. Although in this case nothing special needs to be done compared to any other example this time around. Just the usual pitfalls to look out for such as making sure the camera is positioned away from, and looking at, what you are working with.
 
 ## 2 - Create Points helper function
 
@@ -252,15 +255,15 @@ I made a demo video for this post that can be seen above, when doing so I made a
     ());
 ```
 
-## 3 - Using 2d lines made in a canvas project with three.js
+## 3 - Using 2d lines made in a canvas project with threejs
 
-I have wrote a [full post on using canvas to make a texture](/2018/04/17/threejs-canvas-texture/) in three.js, and when doing so there is drawing 2d lines on a canvas element and then using that to skin the face of a geometry. So then because I wrote a post on that in great detail I will not be getting into that here, but I think it is worth mentioning in this post.
+I have wrote a [full post on using canvas to make a texture](/2018/04/17/threejs-canvas-texture/) in threejs, and when doing so there is drawing 2d lines on a canvas element and then using that to skin the face of a geometry. So then because I wrote a post on that in great detail I will not be getting into that here, but I think it is worth mentioning in this post.
 
 How it is done in a nut shell is to use the 2d canvas drawing context line methods to draw a line like normal, then pass the canvas to the Texture constructor, or better yet the CanvasTexture constructor that is put in place for this specific purpose. The texture can then be used with a material that is used in a Mesh for the various types of maps such as the plain color map, alpha map, and so forth. The Mesh can then use any geometry that will have one or more faces that will make use of the texture.
 
 ### 3.1 - Example using canvas to draw a line for a texture
 
-The Basic idea here is to just create a canvas, draw lines to the canvas using the 2d drawing context, and then create a texture with the canvas element. When it comes to using a canvas to create a texture in three.js there is the canvas texture constructor, but the regular texture constructor can also be used by just setting the needs update boolean to true. The resulting texture can the be used with a materials such as the basic material by making the texture the value of something like the map property of the material.
+The Basic idea here is to just create a canvas, draw lines to the canvas using the 2d drawing context, and then create a texture with the canvas element. When it comes to using a canvas to create a texture in threejs there is the canvas texture constructor, but the regular texture constructor can also be used by just setting the needs update Boolean to true. The resulting texture can the be used with a materials such as the basic material by making the texture the value of something like the map property of the material.
 
 ```js
     var scene = new THREE.Scene();
@@ -295,9 +298,8 @@ The Basic idea here is to just create a canvas, draw lines to the canvas using t
     renderer.render(scene, camera);
 ```
 
-I will not be getting into the canvas 2d drawing api in detail here, but because it is another way of drawing lines in three.js it is sure worth mentioning to say the least.
+I will not be getting into the canvas 2d drawing API in detail here, but because it is another way of drawing lines in threejs it is sure worth mentioning to say the least.
 
-## 3 - Conclusion
+## Conclusion
 
-So that is it for now when it comes to drawing lines in three.js, I am sure that there might be more to write about on this topic in the future but I have to get some time to work on some more examples first. There is not just using the Line constructor, but also creating some kind of custom tube line geometry that can then be skeined with any of the materials that are used for solid geometries. That is something that I would like to look into more sooner or later when I can get around to it.
-
+So that is it for now when it comes to drawing lines in threejs, I am sure that there might be more to write about on this topic in the future but I have to get some time to work on some more examples first. There is not just using the Line constructor, but also creating some kind of custom tube line geometry that can then be skinned with any of the materials that are used for solid geometries. That is something that I would like to look into more sooner or later when I can get around to it.
