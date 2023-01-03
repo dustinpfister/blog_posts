@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2023-01-03 09:17:22
-version: 1.29
+updated: 2023-01-03 09:26:14
+version: 1.30
 ---
 
 When it comes to making a [threejs](https://threejs.org/) project it is typically the mesh object class that is used to create and add objects to a scene. However there are a few other options that can be used as a way to add content to a scene such as Points which can be used to just simply show the location of the points of a position attribute of buffer geometry, and then Lines. For this post I will be focusing more so on using Lines then as an alternative to using mesh objects as I have another post in which the main focus is on [points](/2018/05/12/threejs-points-material/).
@@ -171,6 +171,11 @@ If I am using an older version of threejs or can somehow get the old geometry co
 
 I often place these examples just to have a complete copy and paste, functioning example, and also to cover some additional things that must be done with respect to the other components that make up a threejs project. Although in this case nothing special needs to be done compared to any other example this time around. Just the usual pitfalls to look out for such as making sure the camera is positioned away from, and looking at, what you are working with.
 
+
+## 2 - Create the Points for the Lines
+
+So far in the basic section I created points for the lines by creating arrays of Vector3 objects and then using the array of Vector3 objects to create a geometry with a position attribute by passing this array of vector3 objects to the set from points method of the buffer geometry class. However thus far I have created this array of vector3 objects by just calling the class over and over again for each point that I want in a line. That might be okay when it comes to very basic hello world style examples, sure, however in this section I will be focusing more so on what the next step is after that. So then the main focus here will be on other ways to create the array of points that make use of things like helper functions, and features of other classses in threejs such as the Curve class.
+
 ### 2.1 - Create Points helper function
 
 I made a demo video for this post that can be seen above, when doing so I made a create points helper for the sake of making a demo that is a little more interesting than what I have thus far with examples of the THREE.Line constructor. So I thought I should have a quick section in which I have the source code that I was suing for the demo in that video.
@@ -248,6 +253,8 @@ renderer.render(scene, camera);
 ```
 
 ### 2.2 - Using a Curve to create points for a line
+
+The curve class of threejs is a very helpful tool for creating lines in space I threejs. There is working out how to go about making a custom [curve class](/2022/06/17/threejs-curve/) by extending the base class, however I have found that more often then not one of the built in curve classes such as [THREE.QuadraticBezierCurve3](/2022/10/21/threejs-curve-quadratic-bezier-curve3) Works just fine for what it is that I typically want to do with curves
 
 ```js
 //-------- ----------
