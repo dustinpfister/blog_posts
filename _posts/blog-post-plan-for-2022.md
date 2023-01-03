@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-05 11:31:07
-version: 1.47
+updated: 2023-01-03 10:39:29
+version: 1.48
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or the various tech related topics that I typically write about on this website. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog, but where I should be placing my time and energy in general.
@@ -82,10 +82,15 @@ So then the idea here is to just have a kind of time centered list that will act
 
 Another great thing about this is that it will help me to figure out what is too much, or too little when it comes to the amount of work that I should be doing on a day to day basis. If I am biting off more than what I can chew I can just move certain times forward to the next day, or the day after that and so forth. If it seems like I am fining what I have planed out for a day to soon, then there is planing out more to do later, and getting a jump start on it.
 
-## 4 - Conclusion
+## Conclusion
 
 Although I am just writing one post on the topic of bloging about bloging per year, I am also thinking that this is maybe something that I should be doing a little more frequently than just that of once a year. The main reason why I say that is because I do not think that change, or evaluation of what one is doing with one self is something that should only happen once per year. Every day that I get up in the morning I am thinking about what it is that I could do differently, and what it is that I should do differently that might bring forth a beneficial outcome and not just with respect to choices that I am making with this blog, and over all website.
 
 There is however not just thinking in terms of what I need to change, but also in terms of what I can be happy with in terms of what I have all ready accomplished. I started teaching myself javaScript back when I was twenty four years old, and I am now thirty eight. During that time I have learned an awful lot about client side web application developed, as well as the basics of full stack development as well when it comes to toying around in nodejs. I started dual booting with Windows XP and Ubuntu Linux well over ten years ago, and now I enjoy using my raspberry pi running the typical Debian based Raspberry PI OS over my Windows ten system which I have to say is a total nightmare using compare to the Linux based system of the PI. SO yes I have learned a whole lot about Linux also over the years, and also why using Linux is a way better experience compared to using Windows, even on more exotic hardware then the humble little Raspberry PI systems. So then there is not just thinking in terms of what I aim to do that is new, but also what I should say on course with as well.
 
-
+* [Blog Post Plan for 2018](/2018/01/02/blog-plan-for-2018/)
+* [Blog Post Plan for 2019](/2019/01/02/blog-post-plan-for-2019/)
+* [Blog Post Plan for 2020](/2020/01/03/blog-post-plan-for-2020/)
+* [Blog Post Plan for 2021](/2021/01/01/blog-post-plan-for-2021/)
+* [Blog Post Plan for 2022](/2022/01/03/blog-post-plan-for-2022/)
+* [Blog Post Plan for 2023](/2023/01/01/blog-post-plan-for-2023/)
