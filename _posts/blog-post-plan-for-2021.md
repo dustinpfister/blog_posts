@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 773
-updated: 2021-01-04 15:16:48
-version: 1.18
+updated: 2023-01-03 10:39:29
+version: 1.19
 ---
 
 Well yet another year has gone by, and another one is to begin, so it is time to make yet another [blog plan](https://doyouevenblog.com/blog-plan/) type post. I started doing this each year starting in 2018, and maybe it is not such a bad idea to continue doing this at least once a year. In fact maybe I should even consider doing it on a monthly bases also, at the beginning or end of each month maybe. The reason why I think that is that is because one thing that one thing that needs to improve is to have a better plan to begin with, rather than putting in more time, or working hard. Also if I am all ready doing that then planning is the only thing that remains to improve anyway.
@@ -89,8 +89,13 @@ One thing that has been driving me nuts is this situation in which each day I ne
 
 This is what I have been doing with my python content thus far, and I have to say that it has been helping me to reduce a great about of stress. Whenever I get some free time, I like to work on a canvas example, but not all the time. If I am not feeling like working on a canvas example, a nice break from that is to work on a draft folder with my python examples. At any moment I have around five to ten draft folders, and each of those folders contains some current standing code examples for a blog post on a certain python related topic. This way each day I can just pick a draft folder that is often all ready in good shape to begin with, maybe just add to it a little, and then write about that.
 
-## 5 - Conclusion
+## Conclusion
 
 There is a lot that I aim to do in the next year, things have all ready been shifting a little in terms of where i should be placing my time and energy with this blog. I do now want to let this writing eat up to much of my time as I want to work on some actually code too, and not just quick simple code examples that I make purely for the sake of having something to write about for a blog post. The canvas example collection is a good start when it comes to having an actual project, but even with that my attention is divided. So there is much more work to do, nut just when it comes to doing actual work, but when it comes to planing things out better.
 
-
+* [Blog Post Plan for 2018](/2018/01/02/blog-plan-for-2018/)
+* [Blog Post Plan for 2019](/2019/01/02/blog-post-plan-for-2019/)
+* [Blog Post Plan for 2020](/2020/01/03/blog-post-plan-for-2020/)
+* [Blog Post Plan for 2021](/2021/01/01/blog-post-plan-for-2021/)
+* [Blog Post Plan for 2022](/2022/01/03/blog-post-plan-for-2022/)
+* [Blog Post Plan for 2023](/2023/01/01/blog-post-plan-for-2023/)
