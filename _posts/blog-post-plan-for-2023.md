@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 1021
-updated: 2023-01-03 10:39:29
-version: 1.5
+updated: 2023-01-03 10:45:38
+version: 1.6
 ---
 
 Yet another year has past and as such it is time for me to write another one of these [blog posts on blogging](/categories/blog) that I write only once a year as of late. I like to keep the focus more so on tech related topics on this site as it is a github pages website after all, however I do want to keep up with this at least every once in a great while. There is what I am doing that seems to be working a little, but I still have more to learn when it comes to how to go about writing a blog that people will want to read. So I should take a moment to blog about blogging in a effort to make sure that I keep going with what is working, and rethink what I am doing with what is not working.
@@ -41,6 +41,8 @@ Another topic that I started in 2022 was on [electionjs](/2022/02/07/electronjs-
 Another thing that I started last year was a day by day todo list. This is something that has been working very well for me in terms of planni9ng things out, and also making sure that I keep up with what I want to do. I have found that it is true that if I write things down in the form of a simple todo list, then I will in fact actually do it.
 
 ## Conclusion
+
+So the plan this year is to focus on just staying on course with threejs as a lot of my older content still needs to be fixed up a lot more. Also there is still a great deal more I would like to write about when it comes to new content on threejs that I have not got around to just yet. If I do write about something else it might have to do with electionjs, or Linux, and the main reason why that might be is only because I think I will be making more software tools in which I built on top of threejs, and when doing so I am going to want to use electionjs. Also these days I have to say that I like to devlpe on top of Non Apple inc POSIX like systems, so for the most part that means Linux, so you may see a post or two now and then on that topic.
 
 
 * [Blog Post Plan for 2018](/2018/01/02/blog-plan-for-2018/)
