@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 353
-updated: 2019-06-28 22:02:27
-version: 1.9
+updated: 2023-01-03 10:39:29
+version: 1.10
 ---
 
 I have been writing [blog posts](https://en.wikipedia.org/wiki/Blog) for a while now on this site, and every now and then I think about what I should be doing when it comes to my writing process. I have a few posts that are doing well, and a whole bunch that are not so there is a need to improve my strategy. In addition it is the begging of a new year, so all the more reason to take a moment to consider what I am doing, and more importantly what I can do to improve. So I thought I would start a new year with a new post on a topic that I do not touch on often here when it comes to the subject of bogging in general, rather than [javaScript](https://en.wikipedia.org/wiki/JavaScript) related content.
@@ -47,6 +47,14 @@ When looking over a lot of my older content I have discovered something, a great
 
 One thing I would like to figure out moving forward with this site, is a good over all plan with where I should be placing my focus. I do not want to wast my time any more.
 
-## 7 - Conclusion
+## Conclusion
 
 So when it comes to writing blog posts for 2019 I will be trying out some new strategies and ideas when it comes to my process of how to go about writing and updating content. It might be a while yet until I get the hang of things when it comes to being a webmaster, but I think this is something that is worth while.
+
+* [Blog Post Plan for 2018](/2018/01/02/blog-plan-for-2018/)
+* [Blog Post Plan for 2019](/2019/01/02/blog-post-plan-for-2019/)
+* [Blog Post Plan for 2020](/2020/01/03/blog-post-plan-for-2020/)
+* [Blog Post Plan for 2021](/2021/01/01/blog-post-plan-for-2021/)
+* [Blog Post Plan for 2022](/2022/01/03/blog-post-plan-for-2022/)
+* [Blog Post Plan for 2023](/2023/01/01/blog-post-plan-for-2023/)
+
