@@ -5,8 +5,8 @@ tags: [js,blog]
 layout: post
 categories: blog
 id: 124
-updated: 2023-01-02 10:29:27
-version: 1.2
+updated: 2023-01-03 10:39:29
+version: 1.3
 ---
 
 It's a new dawn, it's a new day, and it's a new year. So maybe it is called for to start this new year with a post in which I will outline what it is that I aim to achieve this year. There is much I want to get done with this blog, pet projects, and a few other things outside of the main subject matter of this blog. Lots of people set new years resolutions, pursue them for a little while, and then give up. Maybe that is because many resolutions require a substantial change in lifestyle that is not always easy to achieve, or maybe they just don't write it down. In any case I thought I would draft out what it is that I want to get done this year, and see how things go.
@@ -62,4 +62,9 @@ I do not want to set two many goals, if I do so I may end up biting off more tha
 
 It is now 2023 and I have wrote another [post like this one for the start of January 2023](/2023/01/01/blog-post-plan-for-2023/). I also wrote a post like this every year scene I first wrote this post. So then in other words writing this like of post one a year every year has become a habit that is a little bit of a break from the usual tech topics that I write about. A whole lot has changed from when I first started writing this blog in terms of the topics that I write about, as well as much more outside of them of course. However there is also what has not changed from the beginning as well. With that said what has not changed is my desire to keep going with this, and to continue learning about new things in the process.
 
-
+* [Blog Post Plan for 2018](/2018/01/02/blog-plan-for-2018/)
+* [Blog Post Plan for 2019](/2019/01/02/blog-post-plan-for-2019/)
+* [Blog Post Plan for 2020](/2020/01/03/blog-post-plan-for-2020/)
+* [Blog Post Plan for 2021](/2021/01/01/blog-post-plan-for-2021/)
+* [Blog Post Plan for 2022](/2022/01/03/blog-post-plan-for-2022/)
+* [Blog Post Plan for 2023](/2023/01/01/blog-post-plan-for-2023/)
