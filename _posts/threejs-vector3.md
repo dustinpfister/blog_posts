@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2022-05-04 14:25:13
-version: 1.62
+updated: 2023-01-03 08:22:45
+version: 1.63
 ---
 
-In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) The [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs then. One major property of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
+In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [threejs](https://threejs.org/) the [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is then a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs. One major feature of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property stores an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
 
 Although an instance of Vector3 can very much be used to set a position of something it can also very much be used to set the direction of something also. This is where things might be a little confusing because when it comes to setting the orientation of something based off of Object3d there is the rotation property. This rotation property is not an instance of Vector3, but an Instance of the [Euler class](/2021/04/28/threejs-euler/). This Euler class is similar to that of Vector3, but the values given are in radians, and is then a more appropriate way of setting orientation of an object by rotating on the x, y, and z axis by given angles in the from of radian values. However there is also the concept of a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) that would be in the form of a normalized instance of Vector3 oddly enough. So then Vector3 can be used to set position, but it can also be used as a way to set orientation in the from of a direction using values between 0 and 1 for each axis.
 
@@ -19,15 +19,16 @@ This will be a fairly lengthy post then as there is a lot of going to cover with
 
 <!-- more -->
 
-## The THREE.Vector3 class and What to know first
-
-This is a post on three.js in which I am writing about the Vector3 constructor, and the various properties, methods of the class that there are to work with. There is then also going to be an awful lot of overlap between the Vetor3 class and various other features of threejs, so then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on three.js, or [javaScipt in general](/2018/11/27/js-getting-started/). I expect for you to have at least a little background when it comes to the very basics of setting up a threejs project when it comes to client side javaScript. 
-
 <iframe class="youtube_video" src="https://www.youtube.com/embed/eqdDI6_EXNM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### Three.js version numbers matter a lot.
 
-Three.js is a project where the version number matters a lot, more so then what you might have grown accustom to when it comes to other libraries. When I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r135 with the later examples that I am keep at the top of this content. I still have older examples here that i am now pushing down to the bottom of this text, and the latest version that I am using with them is r111, those code examples will break in late versions of threejs.
+## The THREE.Vector3 class and What to know first
+
+This is a post on threejs in which I am writing about the Vector3 constructor, and the various properties, methods of the class that there are to work with. There is then also going to be an awful lot of overlap between the Vetor3 class and various other features of threejs, so then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on threejs, or [javaScipt in general](/2018/11/27/js-getting-started/). I expect for you to have at least a little background when it comes to the very basics of setting up a threejs project when it comes to client side JavaScript. 
+
+### Threejs version numbers matter a lot.
+
+Threejs is a project where the version number matters a lot, more so then what you might have grown accustom to when it comes to other libraries. When I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r135 with the later examples that I am keep at the top of this content. I still have older examples here that i am now pushing down to the bottom of this text, and the latest version that I am using with them is r111, those code examples will break in late versions of threejs.
 
 When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
 
@@ -45,7 +46,7 @@ There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/
 
 ## 1 - Basic example of a THREE.Vector3 class instance
 
-To create a single instance of Vector3 I just need to call the constructor and pass three arguments that are the x, y, and z values of the vector. Doing so will set the starting values for the x, y, and z properties of the Vector3 instance that is returned by the constructor. I can then use this instance of Vector3 to set the position of a mesh object by calling the Vector3 copy method of a Vector3 instance stored as a position property of anything that is based off of the Object3d class such as a Mesh Object. Another option for doing so would be to use the set method which would allow for me to set the value of a Vector3 instance with values from another instance of Vector3, or by nay means of producing a desired numerical value such as the result of a javaScript expression.
+To create a single instance of Vector3 I just need to call the constructor and pass three arguments that are the x, y, and z values of the vector. Doing so will set the starting values for the x, y, and z properties of the Vector3 instance that is returned by the constructor. I can then use this instance of Vector3 to set the position of a mesh object by calling the Vector3 copy method of a Vector3 instance stored as a position property of anything that is based off of the Object3d class such as a Mesh Object. Another option for doing so would be to use the set method which would allow for me to set the value of a Vector3 instance with values from another instance of Vector3, or by nay means of producing a desired numerical value such as the result of a JavaScript expression.
 
 ```js
 (function () {
@@ -142,7 +143,7 @@ One of the many use case examples of the set method is to just use it as a way t
 
 ## 3 - Set objects in a circle around the center of a group example of Vector3.set
 
-In this example I will once again be using the set method to set the position of objects, this time it is a collection of mesh objects that are [children of a group](/2018/05/16/threejs-grouping-mesh-objects/), and they will be positioned in a circle like formation. SPeaking of groups that is yet another feature of threejs that will come into play a lot when I want to make two or more instances of Mesh objects, or any kind of Object really that is based off of Object3d children  of another Object that can then be moved and rotated and when doing so effects all children of that Object.
+In this example I will once again be using the set method to set the position of objects, this time it is a collection of mesh objects that are [children of a group](/2018/05/16/threejs-grouping-mesh-objects/), and they will be positioned in a circle like formation. Speaking of groups that is yet another feature of threejs that will come into play a lot when I want to make two or more instances of Mesh objects, or any kind of Object really that is based off of Object3d children  of another Object that can then be moved and rotated and when doing so effects all children of that Object.
 
 ```js
 (function () {
@@ -369,11 +370,11 @@ Vectors can be added together with the add method, which is pretty straight forw
     ());
 ```
 
-I will want to write more about normalization of vectors later in this post in at least one if not more examples as this is a very impotent concept to understand when it comes to workin gout all kinds of problems that one will run into with vectors. For now the basic idea is that it will turn a vector like 0,0,3 into 0,0,1 which I can then use with multiply scaler with a value of 6 to get 0,0,6.
+I will want to write more about normalization of vectors later in this post in at least one if not more examples as this is a very impotent concept to understand when it comes to working out all kinds of problems that one will run into with vectors. For now the basic idea is that it will turn a vector like 0,0,3 into 0,0,1 which I can then use with multiply scalar with a value of 6 to get 0,0,6.
 
 ## 7 - Finding the distance between two vectors.
 
-The length method of Vector3 returns the distance from the origin, but what if I want the distance from one instance of vector3 to another that might not be the origin then I will want to use the distanceTo method of the vector3 class.
+The length method of Vector3 returns the distance from the origin, but what if I want the distance from one instance of vector3 to another that might not be the origin then I will want to use the distance to method of the vector3 class.
 
 ```js
 (function () {
@@ -467,7 +468,7 @@ If I want to make an independent copy of a vector I can use the clone method whi
     ());
 ```
 
-Remember that objects are copied by reference in in javaScript so you will want to use one of these methods or some other similar method to make copies of a vector.
+Remember that objects are copied by reference in in JavaScript so you will want to use one of these methods or some other similar method to make copies of a vector.
 
 ## 9 - Normalize a Vector
 
@@ -512,7 +513,7 @@ Normalizing a vector will keep the direction from the origin the same, but chang
 
 ## Old EXAMPLES ( r111 and before ) that make use of the Geometry constructor
 
-When I first wrote this post I was using r91 of three.js, and the last version of threejs that I was using in my test threejs repository before the Geometry constructor was removed was r111. Last time I cam around to do a little editing with this post version r111 is still the latest version of threeejs that I was using to get these examples to work, they will break in late version of threejs that not longer have the Geometry constructor built in.
+When I first wrote this post I was using r91 of threejs, and the last version of threejs that I was using in my test threejs repository before the Geometry constructor was removed was r111. Last time I cam around to do a little editing with this post version r111 is still the latest version of threeejs that I was using to get these examples to work, they will break in late version of threejs that not longer have the Geometry constructor built in.
 
 
 ### Create Geometry Vertices with Vector3
@@ -585,7 +586,7 @@ Although I will not be getting into making custom geometry in detail, doing so w
 
 Read my [full post on lines](/2018/04/19/threejs-line/).
 
-So now that you have at least the basic idea of Vector3 down, another typical use example of the use of Vector3 is to make lines. There are a number of ways to make 3d, and 2d lines in three.js. However maybe the most important way to do so is with the Line constructor.
+So now that you have at least the basic idea of Vector3 down, another typical use example of the use of Vector3 is to make lines. There are a number of ways to make 3d, and 2d lines in threejs. However maybe the most important way to do so is with the Line constructor.
 
 Doing so is not so different from making a custom geometry that will be used in a material that renders faces. The main difference is that you only really have to work about the array of verticies, and not at all about the faces if there is not going to be any. There are two special materials that can be used with the Line constructor that are in place for this purpose that do not make use of faces, and are there purely for lines only.
 
