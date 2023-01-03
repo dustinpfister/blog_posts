@@ -5,15 +5,15 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2022-05-04 11:37:43
-version: 1.26
+updated: 2023-01-03 08:00:10
+version: 1.27
 ---
 
-This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
+When it comes to making a [threejs](https://threejs.org/) project it is typically the mesh object class that is used to create and add objects to a scene. However there are a few other options that can be used as a way to add content to a scene such as Points which can be used to just simply show the location of the points of a position attribute of buffer geometry, and then Lines. For this post I will be focusing more so on using Lines then as an alternative to using mesh objects as I have another post in which the main focus is on [points](/2018/05/12/threejs-points-material/).
 
 <!-- more -->
 
-There is only so much to write about with the [Line](https://threejs.org/docs/#api/en/objects/Line), and [LineSegments](https://threejs.org/docs/#api/en/objects/LineSegments) constructors in three.js, so to help keep this post from being to thin I will also be writing about LineLoop, Line3, and the Materials that can be used with Lines including the [LineBasicMatreial](https://threejs.org/docs/index.html#api/materials/LineBasicMaterial) and [LineDashedMaterial](https://threejs.org/docs/index.html#api/en/materials/LineDashedMaterial). There is also the Path constructor that can be used to make 2d shapes, making it similar to the 2d canvas drawing context. 
+There is only so much to write about with the [Line](https://threejs.org/docs/#api/en/objects/Line), and [LineSegments](https://threejs.org/docs/#api/en/objects/LineSegments) constructors in threejs, so to help keep this post from being to thin I will also be writing about LineLoop, Line3, and the Materials that can be used with Lines including the [LineBasicMatreial](https://threejs.org/docs/index.html#api/materials/LineBasicMaterial) and [LineDashedMaterial](https://threejs.org/docs/index.html#api/en/materials/LineDashedMaterial). There is also the Path constructor that can be used to make 2d shapes, making it similar to the 2d canvas drawing context. 
 
 So there is a great deal to know about when it comes to making lines in three.js for both 3d, and 2d actually. I say that because there is also drawing lines in a 2d canvas using the 2d drawing context, and then using that as a way to skin the faces of a geometry. However in this post I will be briefly covering the Line Constructor and topics closely related to that.
 
