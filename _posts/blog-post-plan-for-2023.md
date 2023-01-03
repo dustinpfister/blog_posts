@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 1021
-updated: 2023-01-02 11:11:07
-version: 1.4
+updated: 2023-01-03 10:39:29
+version: 1.5
 ---
 
 Yet another year has past and as such it is time for me to write another one of these [blog posts on blogging](/categories/blog) that I write only once a year as of late. I like to keep the focus more so on tech related topics on this site as it is a github pages website after all, however I do want to keep up with this at least every once in a great while. There is what I am doing that seems to be working a little, but I still have more to learn when it comes to how to go about writing a blog that people will want to read. So I should take a moment to blog about blogging in a effort to make sure that I keep going with what is working, and rethink what I am doing with what is not working.
@@ -28,14 +28,27 @@ As of this writing at least I am going to want to continue to write new threejs 
 
 ### 1.2 - Linux and electionjs as a possible other top topics
 
-There is a whole world of other topics I would like to write about when it comes to tech of course. However it is just me writing and editing this blog, I have a life outside of it, and in any case there is just simply only so many hours in a day. So I have to make sacrifices when it comes to any and all additional categorizes outside of threejs. For now I would say that if I where to switch lanes it would likely be to my category on Linux, or possibly on electionjs.
+There is a whole world of other topics I would like to write about when it comes to tech of course. However it is just me writing and editing this blog, I have a life outside of it, and in any case there is just simply only so many hours in a day. So I have to make sacrifices when it comes to any and all additional categorizes outside of threejs. For now I would say that if I where to switch lanes it would likely be to my category on [Linux](/categories/linux), or possibly on [electionjs](/categories/electronjs).
 
 There is a great deal to write about when it comes to Linux, and I am sure that it is a topic that I could become a little passionate about. I am not at all happy with the direction that Microsoft is going when it comes to Windows. It seems that every year the situation goes from bad to yet even worse. Also do not get me started with Apple, the situation with them was a non starter for me ever sense they made the switch to Intel, and it is also the same situation with Microsoft where an all ready bad situation just keeps getting worse. So if you are the kind of person that has had it with Microsoft and Apple then there are only so many alternatives when it comes to desktop operating system technology and Linux just seems to be the best choice when it comes to this. There is then taking much of the writing in that direction then when it comes to just having a desktop operative system work they way that it should.
 
 It is not to say that one will not still run into problems though when it comes to Linux. Also there is a bit of a steep learning curve with Linux as well. So then for that reason there will be a need to write some blog posts on the topic for the sake of my own edification alone. I have been using Linux based system sense about 2007, but that is not saying much because for the most part it has just been typical end user type use. 
 
+Another topic that I started in 2022 was on [electionjs](/2022/02/07/electronjs-hello-world/), which is a great way to go about starting to create desktop applications with client side JavaScript. One application that I have made that I use almost every day is my [videoground application](https://github.com/dustinpfister/videoground) that I use to make videos using threejs as part of the client side stack.
+
 ## 2 - Keeping up with a day by day todo list
 
 Another thing that I started last year was a day by day todo list. This is something that has been working very well for me in terms of planni9ng things out, and also making sure that I keep up with what I want to do. I have found that it is true that if I write things down in the form of a simple todo list, then I will in fact actually do it.
+
+## Conclusion
+
+
+* [Blog Post Plan for 2018](/2018/01/02/blog-plan-for-2018/)
+* [Blog Post Plan for 2019](/2019/01/02/blog-post-plan-for-2019/)
+* [Blog Post Plan for 2020](/2020/01/03/blog-post-plan-for-2020/)
+* [Blog Post Plan for 2021](/2021/01/01/blog-post-plan-for-2021/)
+* [Blog Post Plan for 2022](/2022/01/03/blog-post-plan-for-2022/)
+* [Blog Post Plan for 2023](/2023/01/01/blog-post-plan-for-2023/)
+
 
 
