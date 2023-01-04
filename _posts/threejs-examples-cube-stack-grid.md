@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2023-01-04 11:06:02
-version: 1.25
+updated: 2023-01-04 11:22:37
+version: 1.26
 ---
 
 Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cube-stack/ ) that was based off of an older example that I made for an [old post for the orthographic camera](/2018/05/17/threejs-camera-orthographic/). I made a whole lot of improvements to that dusty old example for that post, and now for today's [threejs example ](/2021/02/19/threejs-examples/) I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs project examples where I am continuing to work off of one more more previous threejs examples to make an event larger over all project.
@@ -24,14 +24,13 @@ This is a post on some source code that I am using to create a grid where each g
 
 Shortly after I first wrote this post I starting another threejs project that is the same general idea of what I started here, only the goal was to have a grid that can be used with objects in general. I called this project [object grid wrap](/2022/05/20/threejs-examples-object-grid-wrap/) because I am bad at names and as such name things in a way in which I describe what they are. The project is a way to create a grid of objects, from a collection of source objects. Then the offset values can be changed and when doing so the location of the objects wrap around in two directions.
 
-
 ### The source code in this post is up on github
 
-The source codefor this post can be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-cube-stack-grid).
+The source code for this post can be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-cube-stack-grid).
 
 ### Version Numbers matter
 
-When I first started this post I was using r135 of threejs.
+When I first started this post I was using r135 of threejs, and the last time I came around to do some editing I was using r146.
 
 ## 1 - The first state of the cube stack grid module
 
