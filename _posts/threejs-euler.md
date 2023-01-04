@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2023-01-04 11:27:28
-version: 1.32
+updated: 2023-01-04 11:29:52
+version: 1.33
 ---
 
 In [threejs](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is the standard class in threejs that has to do with setting angles for the rotation of an object. The use of the clas of object will also come into play for a wide range of other tasks that pop up now and then such as when using the [apply euler method of the vector3 class](/2021/06/18/threejs-vector3-apply-euler/). 
@@ -19,23 +19,26 @@ The Euler class goes hand in hand with the [Vector3 Class](/2018/04/15/threejs-v
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/6jCoOIWOV4g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## 1 - The Euler Class in Three.js and what to know first
 
-This is a post On the Euler Class in three.js, as such I trust that you have at least some background when it comes to the basics of three.js and javaScript in general. So if you are new to three.js you might want to start with some kind of getting started post on three.js in general as a basic starting point for the basics of setting up a scene and so forth.
+## The Euler Class in Three.js and what to know first
+
+This is a post On the Euler Class in three.js, as such I trust that you have at least some background when it comes to the basics of threejs and javaScript in general. So if you are new to three.js you might want to start with some kind of getting started post on threejs in general as a basic starting point for the basics of setting up a scene and so forth.
 
 The Euler Class is one of many basic classes that you should know about sooner or later, it might be best to learn a thing or two about the Euler class when you are first learning the basics of making mesh objects move, and rotate around as this is the class to do so when it comes to rotating at least.
 
 The angles that are passed to the Euler class will be in the form or [radians](https://en.wikipedia.org/wiki/Radian) which is something that you should be familiar with not just for the sake of the Euler class, but for the sake of just about anything that has to do with angles in a javaScript environment.
 
-### 1.1 - Version Numbers Matter with three.js
-
-In this post I was using [three.js r127](https://github.com/mrdoob/three.js/releases/tag/r127), make sure that you are using that version if the code examples here are breaking for you. I can not say that much has changed with the Euler class specifically sense I started using threejs many years ago now, but that is certainly not the case with everything else in the library.
-
-### 1.2 - The source code examples here are on Github
+### The source code examples here are on Github
 
 The source code examples for this post can be found in my [test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-euler).
 
-## 2 - Basic example of The Euler Class, and the copy method
+### Version Numbers Matter with three.js
+
+In this post I was using [three.js r127](https://github.com/mrdoob/three.js/releases/tag/r127), make sure that you are using that version if the code examples here are breaking for you. I can not say that much has changed with the Euler class specifically sense I started using threejs many years ago now, but that is certainly not the case with everything else in the library.
+
+
+
+## 1 - Basic example of The Euler Class, and the copy method
 
 This will aim to be a basic getting started example of the Euler Class where I am creating an instance of THREE.Euler directly. Once I have an instance of Euler there is the question of what to do with it in a three.js example. With that said there is the copy method of a Euler instance that can be used to copy the state of one Euler Class to another. So in this example I am creating a Mesh with the [Box Geometry](/2021/04/26/threejs-box-geometry/) Constructor and the Normal Material, and then making a few clones of the mesh with the [mesh clone method](/2019/12/18/threejs-mesh-copy/). After that I am then using the copy method of the Euler instance that is located at the rotation property of the mesh objects to set some of them to the value that I have set with the single Euler Class instance.
 
@@ -81,7 +84,7 @@ renderer.render(scene, camera);
 
 For this example I am not doing anything fancy with an app loop, events, or anything to that effect. However the basic idea of what the Euler class is all about is there for what it is worth for starters. The copy method is one way to set the value of a Euler class instance such as the ones used for the rotation properties of these mesh clones as each one that I set with the Euler class instance that I made at the top is also rotated at a 45 degree angle. However maybe it would be a good idea to work out at least a few more examples that make use of the set method of the Euler class, and maybe a main app loop to start to make something interesting.
 
-## 3 - The Euler x, y, and z props
+## 2 - The Euler x, y, and z props
 
 One way to rotate objects would be to use the x, y, and z properties of the Euler instance that is located in the rotation projects of a Mesh, or anything that inherits from Object3d for that matter. This allows for a decent way to mutate values in place rather than setting them to a given set of values. For example I can just add a radian delta value to a given property to rotate the object on that axis.
 
@@ -139,7 +142,7 @@ loop();
 
 So then this is one way to go about rotating objects, but then there is also the set method that can also be used as a way to set the values of a Euler instance.
 
-## 4 - Using the set method
+## 3 - Using the set method
 
 On top of the properties of the Euler class instance there is also the set method that is another way to go about setting what the angles are for a Euler Class instance. For this I just call the set method of the Euler Instance and then pass and x, y, and z value as arguments in that order by default. A fourth argument can be used to set the order of these values, but the default setting is what I always seem to use for this.
 
@@ -189,7 +192,7 @@ loop();
 
 So now I have the basics of the Euler class out of the way, there are a few more methods but so far I can not say that I am using them that much in actual projects. For the most part I just want to use these methods to rotate some kind of object typically a mesh, but also groups and cameras.
 
-## 5 - The Vector3 apply Euler method and setting position from Euler
+## 4 - The Vector3 apply Euler method and setting position from Euler
 
 There is not just working with this instance of the Euler class that is stored in the rotation property of an object based off of Object3d, there is also creating a stand alone instance of Euler. There are then a number of things that can be done with this instance of Euler such as passing it to another method of another class that expects an instance of Euler as one of the arguments. A good example of that kind of method might be the apply Euler method of the Vector3 class.
 
@@ -249,7 +252,7 @@ There is not just working with this instance of the Euler class that is stored i
 
 Although something like this might work okay for setting the position of a mesh object by way of the Euler class and the Vector3 class apply Euler methods there are additional ways of doing this sort of thing. In the [Vector3 class there is a set from spherical coords method](/2022/02/04/threejs-vector3-set-from-spherical-coords/) for example that takes a radius and two angles to set a position.
 
-## 6 - Conclusion
+## Conclusion
 
 The Euler Class is something that I work with all the time when it comes to rotating an object in three.js. There is mainly just knowing the set and clone methods of the Class and that is it. At least those two methods are the ones that I find myself using in various projects thus far. There is also not just using the Euler class alone, but also working with the various other methods in the Vector3 class, as well as the Object3d class to preform all kinds of typical tasks that come up when working on a project that involves the use of threejs.
 
