@@ -5,20 +5,25 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2022-05-04 15:32:53
-version: 1.23
+updated: 2023-01-04 10:12:23
+version: 1.24
 ---
 
-Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cube-stack/ ) that was based off of an older example that I made for an [old post for the orographic camera](/2018/05/17/threejs-camera-orthographic/). I made a whole lot of improvements to that dusty old example for that post, and now for todays [threejs example ](/2021/02/19/threejs-examples/) I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs example where I am continuing to work off of one more more previous threejs examples to make an event larger over all example.
+Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cube-stack/ ) that was based off of an older example that I made for an [old post for the orthographic camera](/2018/05/17/threejs-camera-orthographic/). I made a whole lot of improvements to that dusty old example for that post, and now for today's [threejs example ](/2021/02/19/threejs-examples/) I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs project examples where I am continuing to work off of one more more previous threejs examples to make an event larger over all project.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/5rQZM4X5fYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## This cube stack module and what to know first
 
 This is a post on some source code that I am using to create a grid where each grid is another nested grid where each tile location is a stack of one or more cubes. The nest result with this is then just a kind of cool looking visual effect that can be used in all kinds of different ways depending on additional code that I add that makes use of it. This is not in any way a kind of [getting started with threejs](/2018/04/04/threejs-getting-started/) and [javaScript](/2018/11/27/js-getting-started/) type post, I assume that you have a fair amounf of experience working with this library and language.
 
+### I have other threejs project examples that Might prove to be better examples for this sort of thing
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/5rQZM4X5fYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Shortly after I first wrote this post I starting another threejs project that is the same general idea of what I started here, only the goal was to have a grid that can be used with objects in general. I called this project [object grid wrap](/2022/05/20/threejs-examples-object-grid-wrap/) because I am bad at names and as such name things in a way in which I describe what they are. The project is a way to create a grid of objects, from a collection of source objects. Then the offset values can be changed and when doing so the location of the objects wrap around in two directions.
+
 
 ### The source code in this post is up on github
 
