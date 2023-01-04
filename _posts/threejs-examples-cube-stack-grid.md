@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 983
-updated: 2023-01-04 10:12:23
-version: 1.24
+updated: 2023-01-04 11:06:02
+version: 1.25
 ---
 
 Last week I made a [cube stack threejs example](/2022/04/29/threejs-examples-cube-stack/ ) that was based off of an older example that I made for an [old post for the orthographic camera](/2018/05/17/threejs-camera-orthographic/). I made a whole lot of improvements to that dusty old example for that post, and now for today's [threejs example ](/2021/02/19/threejs-examples/) I thought it would be cool to start another project example that is a grid of these cube stack objects actually. So then this is another one of my threejs project examples where I am continuing to work off of one more more previous threejs examples to make an event larger over all project.
@@ -33,18 +33,18 @@ The source codefor this post can be found in my [test threejs repo on Github](ht
 
 When I first started this post I was using r135 of threejs.
 
-## 1 - The first state of the cube stack grind module
+## 1 - The first state of the cube stack grid module
 
 This is an example that is a continuation of what I worked out in a previsions threejs example, and when it comes to the source code of that example I did not change much of anything. I will include that here in this section but it will just be more of the same when it comes to what I all ready wrote about in that post.
 
-### 1.1 - The cube stack grid module
+### 1.a - The cube stack grid module
 
 So then here is the current state of the cube stack module that I can use to create a grid of cube stack objects. For now this module just has a single public methods that I use in my main javaScript file to create and instance of this cube stack grid object. The rest of what I have in the module is just hard coded defaults or options that I can or should set in the code that uses the module.
 
 The general idea here is that I call the create method of this module and when doing so I pass some options for the create method. There are of course options for setting the width and height of the cube stack grid, but there are also options for setting what the width and height should be for each cube stack object also. There is then the question of how I go about setting what the options should be for each cube stack in the gird, for this I have something that is like a color palette, only it is for cube stack options rather than colors. I can then pass or generate and array of index values for this pallet of cube stack options then.
 
 ```js
-// Cube Stack Grid example from threejs-examples-cube-stack-grid
+// cube-stack-grid.js - r0 - from threejs-examples-cube-stack-grid
 var CubeStackGrid = (function () {
     // default for each cell function
     var DEFAULT_FOR_EACH_TILE = function(sopIndex, i, csg, opt){};
@@ -121,14 +121,14 @@ var CubeStackGrid = (function () {
     ());
 ```
 
-### 1.2 - The cube stack module
+### 1.b - The cube stack module \( Using r1 from threejs-examples-cube-stack \)
 
 This is the source code for the other threejs example that I did before this to which I am using for each cell in the grid of cube stack objects here. I did not change much of anything with this when making this example I am just parking it here again just for the hell of it then.
 
 There are still just two public methods one of which is a create method that will create a cube stack object, and the other is a way to apply one of several built in effects that mutate the state of one of these objects. When it comes to creating textures for the mesh objects that are added to each group of each tile I am making use of another javaScript file that I have made that will crate textures with javaScript code.
 
 ```js
-// Cube Stack example for s3-compare-to-perspective example in threejs-camera-orthographic
+// cube-stack.js - r1 - from threejs-examples-cube-stack
 var CubeStack = (function () {
     // the public api
     var api = {};
@@ -298,13 +298,13 @@ var CubeStack = (function () {
     ());
 ```
 
-### 1.3 - The data textures module
+### 1.c - The data textures module
 
 I am using this data textures module to create textures for the cube stack module, which in turn is then use by the cube stack grid module. I have [wrote a post on data texture](/2022/04/15/threejs-data-texture/) alone if you would like to read up more on this specific thing alone when it comes to textures and materials. Another option for adding texture with just javaScript code alone would be to make use of [canvas elements](/2018/04/17/threejs-canvas-texture/), and there is also of course loading external image assets as well by making use of the build in [threejs texture loader](/2021/06/21/threejs-texture-loader/).
 
 ```js
 // ********** **********
-// data textures
+// data textures - r0 - from threejs-examples-cube-stack-grid
 // module for creating data textures
 // ********** **********
 var datatex = (function () {
@@ -382,7 +382,7 @@ var datatex = (function () {
     ());
 ```
 
-### 1.4 - The main javaScript file
+### 1.1 - The main javaScript file
 
 So now finally for just a little more javaScript code that make use of the cube stack grid module and thus the additional javaScript modules to which the module is built on top of. For this file I set up my usual objects with any threeis project when it comes to things like the scene object, camera, and renderer. After that of course I am going to want to create an instance of my cube stack grid.
 
@@ -390,53 +390,72 @@ So then I am going to want to call that create method of the cube stack grid mod
 
 ```js
 (function () {
-    // ********** **********
-    // SCENE, CAMERA, LIGHT, and RENDERER
-    // ********** **********
-    var scene = new THREE.Scene();
+    //-------- ----------
+    // SCENE, CAMERA, RENDERER
+    //-------- ----------
+    const scene = new THREE.Scene();
     scene.background = new THREE.Color(0.1, 0.1, 0.1);
-    var camera = new THREE.PerspectiveCamera(40, 640 / 480, 0.05, 100);
+    const camera = new THREE.PerspectiveCamera(40, 640 / 480, 0.05, 1000);
     camera.position.set(25, 25, 25);
     camera.lookAt(0, -5, 0);
     scene.add(camera);
-    var dl = new THREE.DirectionalLight(0xffffff, 0.8);
+    const renderer = new THREE.WebGL1Renderer();
+    renderer.setSize(640, 480, false);
+    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+    //-------- ----------
+    // CUBE STACK GRID
+    //-------- ----------
+    const dl = new THREE.DirectionalLight(0xffffff, 0.8);
     dl.position.set(5, 10, 1);
     scene.add(dl);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ********** **********
+    //-------- ----------
     // CUBE STACK GRID
-    // ********** **********
-    var soPalette = [
+    //-------- ----------
+    const soPalette = [
         { boxCount: 3, colors: [ [0,1,0, [64, 255]], [0,1,1, [64, 255]] ], planeColor: 1 },
-        { boxCount: 10 },
-        { boxCount: 15 },
-        { boxCount: 20, colors: [ [1,0,0, [64, 255]], [1,1,0, [64, 255]] ] }
+        { boxCount: 20 },
+        { boxCount: 60 },
+        { boxCount: 120, colors: [ [1,0,0, [64, 255]], [1,1,0, [64, 255]] ] },
+        { boxCount: 80, colors: [ [1,0,0, [64, 255]], [1,1,0, [64, 255]] ] }
     ];
-    var sopArray = [
-        0,0,0,0,0,
-        0,1,2,1,0,
-        0,2,3,2,0,
-        0,1,2,1,0,
-        0,0,0,0,0
+    const sopArray = [
+        4,4,4,4,4,4,4,4,4,4,
+        2,2,2,2,2,3,2,2,2,2,
+        1,1,1,1,1,2,1,1,1,1,
+        0,0,0,0,1,1,1,1,0,0,
+        0,0,0,0,1,1,1,1,1,0,
+        0,0,0,0,1,2,2,2,1,0,
+        0,1,0,0,1,2,3,2,1,0,
+        0,1,1,1,0,2,2,2,1,0,
+        0,0,0,0,1,1,1,0,1,0,
+        0,0,0,0,0,1,0,0,0,0,
+        0,0,0,0,1,1,0,0,0,0,
+        0,1,1,1,2,1,0,0,0,0,
+        1,1,1,2,1,1,1,0,0,0,
+        1,1,2,2,2,1,1,0,0,0,
+        1,1,2,3,2,1,1,0,0,0
     ];
-    var csg = CubeStackGrid.create({ gw: 5, gh: 5, stackGW: 7, stackGH: 5, stackOptionPalette: soPalette, sopArray: sopArray});
+    const csg = CubeStackGrid.create({
+        gw: 4, gh: 4,
+        stackGW: 5, stackGH: 5, 
+        stackOptionPalette: soPalette,
+        sopArray: sopArray
+    });
     scene.add(csg);
-    // ********** **********
+    //-------- ----------
     // ANIMATION LOOP
-    // ********** **********
-    var frame = 0,
-    maxFrame = 300,
+    //-------- ----------
+    if(THREE.OrbitControls){
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    }
+    let frame = 0,
     lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        per = frame / maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5,
+    const maxFrame = 300;
+    const loop = function () {
+        const now = new Date(),
         secs = (now - lt) / 1000;
         requestAnimationFrame(loop);
         if (secs > 1 / 24) {
-             csg.rotation.y = Math.PI * 2 * per
             // draw
             renderer.render(scene, camera);
             frame += 20 * secs;
