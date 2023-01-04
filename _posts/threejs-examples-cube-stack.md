@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 982
-updated: 2022-12-23 12:44:18
-version: 1.20
+updated: 2023-01-04 11:14:10
+version: 1.21
 ---
 
 A long time ago now I made a cube stack module that I used in my [post on the orographic camera](/2018/05/17/threejs-camera-orthographic/). As of late I was doing some editing and while doing so fixed up the source code a little for that post, but now I am thinking that this cube stack model should be the main event for one of my [threejs example posts](/2021/02/19/threejs-examples/). So I copied over the current state if the cube stack module into a new folder, and started making some changes to it just for the sake of having a little fun, and to lay down a ground work for even more features with this.
@@ -26,7 +26,7 @@ The soucre code examples in this post and many others is [up on Github](https://
 
 ### version Numbers matter
 
-I was using r135 when I first started writing this post and the source code example.
+I was using r135 when I first started writing this post and the source code examples. I do come around to edit my threejs content now and then, and the last time I did so I was using r146. Things where working fine on my end with these revisions of threejs, but the code may very well break with new revisions if i do not come around to making needed changes in the future.
 
 ## 1 - First state of this cube Stack threejs example
 
@@ -40,7 +40,7 @@ For this example I wanted to have a module that I would use to add textures to t
 
 ```js
 // ********** **********
-// data textures
+// datatex.js - r0 - from threejs-examples-cube-stack
 // module for creating data textures
 // ********** **********
 var datatex = (function () {
@@ -125,7 +125,7 @@ Now for the source code for the cube stack module which at this time has two pub
 I then have a number of private helper functions for creating the plane on which the cubes will be stacked, as well as for appending cubes to the cube group of the main group object.
 
 ```js
-// Cube Stack example for s3-compare-to-perspective example in threejs-camera-orthographic
+// cube-stack.js - r0 - from threejs-examples-cube-stack
 var CubeStack = (function () {
     // the public api
     var api = {};
