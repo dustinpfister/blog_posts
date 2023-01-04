@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 1021
-updated: 2023-01-03 10:45:38
-version: 1.6
+updated: 2023-01-04 12:01:54
+version: 1.7
 ---
 
 Yet another year has past and as such it is time for me to write another one of these [blog posts on blogging](/categories/blog) that I write only once a year as of late. I like to keep the focus more so on tech related topics on this site as it is a github pages website after all, however I do want to keep up with this at least every once in a great while. There is what I am doing that seems to be working a little, but I still have more to learn when it comes to how to go about writing a blog that people will want to read. So I should take a moment to blog about blogging in a effort to make sure that I keep going with what is working, and rethink what I am doing with what is not working.
@@ -38,7 +38,9 @@ Another topic that I started in 2022 was on [electionjs](/2022/02/07/electronjs-
 
 ## 2 - Keeping up with a day by day todo list
 
-Another thing that I started last year was a day by day todo list. This is something that has been working very well for me in terms of planni9ng things out, and also making sure that I keep up with what I want to do. I have found that it is true that if I write things down in the form of a simple todo list, then I will in fact actually do it.
+Another thing that I started last year was a day by day todo list. This is something that has been working very well for me in terms of planing things out, and also making sure that I keep up with what I want to do. I have found that it is true that if I write things down in the form of a simple todo list, then I will in fact actually do it. So then this is something that I am going to want to continuing doing into this next year.
+
+What I might want to change though is how to I go about planing things out. That is to not stop having a day by day todo list, but rather to refine something that is working. There is making smarter choices as to what deserves more of my attention compared to other things. For example when it comes to updating my content on [threejs examples](/2021/02/19/threejs-examples/), some of them are good ideas that I should continue to work on more, others maybe not. So there is just getting together another kind of list that is a top collection of examples, and focus more on those while ignoring the others.
 
 ## Conclusion
 
