@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1022
-updated: 2023-01-05 10:44:31
-version: 1.2
+updated: 2023-01-05 10:56:58
+version: 1.3
 ---
 
 The [set from points method of the buffer geometry class in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.setFromPoints) is a way to create a new buffer geometry from an array of [vector3 class objects](/2018/04/15/threejs-vector3/). This new buffer geometry instance will just have a position attribute alone, which is okay when it comes to creating Points, or Lines, but not so much for Mesh objects. That is unless additional steps are taken to add the additional attributes that are needed to get the geometry to work well with mesh objects.
@@ -20,11 +20,15 @@ As far as I can tell, it would seem that this set from points method was added f
 
 ## 1 - Some basic examples of the Set From Points Buffer Geometry class method in threejs
 
-A basic example of the set from points method is easy enough. That is one of the nice things about this method as I have to say that it does make the process of doing this easy. However creating an array of Vector3 objects that are the points in space that I want, and just simply passing that to the set from points method is just a crude begining of course. If I want to use the geometry with the THREE.Points class then maybe this crude begining will be enough actually. However typicaly I will at least want to use this with THREE.Line, and even THREE.Mesh, in which case a crude begining is not enough. Still for this section at least I will be keeping the examples fairly basic as a way to just have some examples of this set from points method. 
+A basic example of the set from points method is easy enough. That is one of the nice things about this method as I have to say that it does make the process of doing this easy. However creating an array of Vector3 objects that are the points in space that I want, and just simply passing that to the set from points method is just a crude beginning of course. If I want to use the geometry with the THREE.Points class then maybe this crude beginning will be enough actually. However typically I will at least want to use this with THREE.Line, and even THREE.Mesh, in which case a crude beginning is not enough. Still for this section at least I will be keeping the examples fairly basic as a way to just have some examples of this set from points method. 
 
-While I am at it I will also be writign about the addtional attribites of the buffer geometry class, and how to add these addtional attribites to create a geometry that will work well with THREE.Mesh.
+While I am at it I will also be writing about the additional attributes of the buffer geometry class, and how to add these additional attributes to create a geometry that will work well with THREE.Mesh.
 
-### 1.1 - Basic position attribute, and index Set From Points example for use with THREE.Line
+### 1.1 - Set From Points example of a closed trangle with index for use with THREE.Line
+
+This is a set from points example in which I am adding an index for the buffer geometry so that I will have a closed line that will result in a triangle that will be used with THREE.Line. I create the points in space that I want by directly calling the THREE.Vector3 class and adding the Vector3 objects to an array. Once I have the state of this array of Vector3 objects just the way that I like it I can create a blank Buffer geometry object, call the set from points method, and then pass the points array. I now have a buffer geometry with a position attribute, but there is no index for it.
+
+If I just pass the buffer geometry without an index to THREE.Line, it will work just fine but the line will not be closed. One way to fix this would be to add a duplicate point in the points array, however sooner of later it would be a good idea to at least be aware of what the [index property of a buffer geometry](/2022/12/09/threejs-buffer-geometry-index/) is for. This index allows for me to result the same points in the position attribute by passing an array of index values for points in the position attribute. So then I can pass an array of index values that is like 0,1,2,0 in this case which would give me the closed triangle that I wanted.
 
 ```js
 // ---------- ----------
