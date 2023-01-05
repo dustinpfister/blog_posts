@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1022
-updated: 2023-01-05 11:46:19
-version: 1.7
+updated: 2023-01-05 11:53:51
+version: 1.8
 ---
 
 The [set from points method of the buffer geometry class in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.setFromPoints) is a way to create a new buffer geometry from an array of [vector3 class objects](/2018/04/15/threejs-vector3/). This new buffer geometry instance will just have a position attribute alone, which is okay when it comes to creating Points, or Lines, but not so much for Mesh objects. That is unless additional steps are taken to add the additional attributes that are needed to get the geometry to work well with mesh objects.
@@ -17,6 +17,17 @@ As far as I can tell, it would seem that this set from points method was added f
 
 <!-- more -->
 
+## The Set from points method of Buffer Geometry and what to know first
+
+This is a post on just one method in the buffer geometry class of a JavaScript library known as threejs. I am assuming that you know at least a little about client side JavaScript and the various underlying skills that are also needed with HTML, and CSS. I also assume that you have worked out at least a few basic getting started type examples of threejs as well, and are now interested in how to go about making custom geometry using an array of vector3 objects. If not changes are you are going to have a hard time following what I am writing about here. In any case regardless of experience with threejs and JavaScript I like to use these opening sections to write about some things  that you may want to learn more about, or refresh on before conti9ne to read the rest of the content.
+
+### Source code in also up on Github
+
+I have the source code examples that i am writing about here also up on Github in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-set-from-points).
+
+### Version Numbers matter
+
+When I first wrote this blog post I was using r146 of threejs.
 
 ## 1 - Some basic examples of the Set From Points Buffer Geometry class method in threejs
 
