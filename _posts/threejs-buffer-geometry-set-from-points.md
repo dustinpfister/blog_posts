@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1022
-updated: 2023-01-05 12:28:33
-version: 1.10
+updated: 2023-01-05 12:48:28
+version: 1.11
 ---
 
 The [set from points method of the buffer geometry class in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.setFromPoints) is a way to create a new buffer geometry from an array of [vector3 class objects](/2018/04/15/threejs-vector3/). This new buffer geometry instance will just have a position attribute alone, which is okay when it comes to creating Points, or Lines, but not so much for Mesh objects. That is unless additional steps are taken to add the additional attributes that are needed to get the geometry to work well with mesh objects.
@@ -37,13 +37,51 @@ I have the source code examples that I am writing about here also up on Github i
 
 When I first wrote this blog post I was using r146 of threejs.
 
-## 1 - Some basic examples of the Set From Points Buffer Geometry class method in threejs
+## 1 - Getting started with the Set From Points method
 
-A basic example of the set from points method is easy enough. That is one of the nice things about this method as I have to say that it does make the process of doing this easy. However creating an array of Vector3 objects that are the points in space that I want, and just simply passing that to the set from points method is just a crude beginning of course. If I want to use the geometry with the THREE.Points class then maybe this crude beginning will be enough actually. However typically I will at least want to use this with THREE.Line, and even THREE.Mesh, in which case a crude beginning is not enough. Still for this section at least I will be keeping the examples fairly basic as a way to just have some examples of this set from points method. 
+To get started with the set from points method one way or another I will need to create an array of Vector3 objects. Once I have that array of Vector3 objects I can then create a blank buffer geometry, call the set from points method, and pass the array of vector3 objects to the method. The end result will then be a buffer geometry with a position attribute that is set up using the array of Vector3 objects. This kind of geometry will not work so great with mesh objects, but will be good enough for say the THREE.Points class.
 
-While I am at it I will also be writing about the additional attributes of the buffer geometry class, and how to add these additional attributes to create a geometry that will work well with THREE.Mesh.
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0.5, 0, 0.5);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// POINTS - array of Vector3 Objects
+// ---------- ----------
+const points_array = [
+    new THREE.Vector3( 0, 0, 0),
+    new THREE.Vector3( 0, 0, 1),
+    new THREE.Vector3( 1, 0, 1)
+];
+// ---------- ----------
+// GEOMETRY - using the setFromPoints method to create one from points_array
+// ---------- ----------
+const geometry = new THREE.BufferGeometry();
+geometry.setFromPoints(points_array);
+// ---------- ----------
+// Points - using geometry with THREE.Points rather than THREE.Mesh
+// ---------- ----------
+const material = new THREE.PointsMaterial({ color: 0xffff00, size: 0.25 });
+scene.add( new THREE.Points(geometry, material) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+renderer.render(scene, camera);
+```
 
-### 1.1 - Set From Points example of a closed trangle with index for use with THREE.Line
+## 2 - Making a geometry with set from points that will work with a Mesh Object
+
+A basic example of the set from points method is easy enough. That is one of the nice things about this method as I have to say that it does make the process of doing this easy. However creating an array of Vector3 objects that are the points in space that I want, and just simply passing that to the set from points method is just a crude beginning of course. If I want to use the geometry with the THREE.Points class then maybe this crude beginning will be enough actually. However typically I will at least want to use this with THREE.Line, and even THREE.Mesh, in which case a crude beginning is not enough. So in this section I will also be writing about the additional attributes of the buffer geometry class, and how to add these additional attributes to create a geometry that will work well with THREE.Mesh.
+
+### 2.1 - Set From Points example of a closed trangle with index for use with THREE.Line
 
 This is a set from points example in which I am adding an index for the buffer geometry so that I will have a closed line that will result in a triangle that will be used with THREE.Line. I create the points in space that I want by directly calling the THREE.Vector3 class and adding the Vector3 objects to an array. Once I have the state of this array of Vector3 objects just the way that I like it I can create a blank Buffer geometry object, call the set from points method, and then pass the points array. I now have a buffer geometry with a position attribute, but there is no index for it.
 
@@ -87,7 +125,7 @@ scene.add(line);
 renderer.render(scene, camera);
 ```
 
-### 1.2 - Adding a normal attribute and using it with THREE.Mesh, and the THREE.MeshNormalMaterial
+### 2.2 - Adding a normal attribute and using it with THREE.Mesh, and the THREE.MeshNormalMaterial
 
 The bar is not that high when it comes to creating a geometry that will work okay with THREE.Points, or THREE.Line. However when it comes to making any kind of real project I am going to want to create geometry that will work with Mesh objects. The next step with making a custom geometry this way would be to add a [normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) for the geometry. Just like with the position attribute this can end up being a little involved, but also like with the set from points method there is a method that helps to make this easily. The method that can work okay most of the time to quickly create a normal attribute is the [compute vertex normal method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
 
@@ -144,7 +182,7 @@ scene.add(mesh2);
 renderer.render(scene, camera);
 ```
 
-### 1.3 - Adding a UV Attribute and using that with Light, THREE.Mesh, and THREE.MeshPhongMaterial
+### 2.3 - Adding a UV Attribute and using that with Light, THREE.Mesh, and THREE.MeshPhongMaterial
 
 I would say that there is just one final attribute that is needed to have a geometry that will work well with THREE.Mesh. There are a lot more of course that will come up when getting into animation, Vertex coloring, and so forth but the last core attribute that comes to mind would be a [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv). The mesh normal material will work fine with geometries that just have a position and normal attribute, but if I want to do anything with texture chances are I am going to want to add a uv attribute. Simply put the UV attribute is a way to define what the offsets are for each point of each triangle in a 2d image to store how to go about applying a 2d texture to a 3d object.
 
