@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1022
-updated: 2023-01-05 11:21:03
-version: 1.5
+updated: 2023-01-05 11:37:52
+version: 1.6
 ---
 
 The [set from points method of the buffer geometry class in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.setFromPoints) is a way to create a new buffer geometry from an array of [vector3 class objects](/2018/04/15/threejs-vector3/). This new buffer geometry instance will just have a position attribute alone, which is okay when it comes to creating Points, or Lines, but not so much for Mesh objects. That is unless additional steps are taken to add the additional attributes that are needed to get the geometry to work well with mesh objects.
@@ -74,7 +74,7 @@ The bar is not that high when it comes to creating a geometry that will work oka
 
 An index is a great tool to help reuse points, however there are still only so many points in the position attribute and thus there are also only so many normal vectors as well then. This can present a problem then when it comes to the state of the normal attribute. If you take the time to study the nature of some of the built in geometries such as the box geometry you will find that typically what is desired is not a fully indexed or non indexed geometry, but rather a kind of happy medium between the two. I could get into detail about this but for now there is just being aware of the to non indexed method of the buffer geometry class that can be used to quickly create a fully non indexed geometry from an indexed one.
 
-Here in this example I will create one geometry with an index, and create a non indexed geometry from that one. I will then call the compute vertex normals method for both of these geometries, and then use them both with mesh objects that use the [mesh normal material](/2021/06/23/threejs-normal-matreial). When looking at these two geometries the one that is not indexed will look more like one will expect with a built in geometry, while the indexed one will not. The reason why is by making the geometry non indexed the count of the position attribute goes from 4, to 12. That is from 4 points in space, to 12 points in space. Which means there is a single, stand alone point for every triangle. Which also means that there is a single stand alone Vector for each item in the normal attribute when allows for setting a custom set of vertex normal values for each point of each triangle.
+Here in this example I will create one geometry with an index, and create a non indexed geometry from that one. I will then call the compute vertex normals method for both of these geometries, and then use them both with mesh objects that use the [mesh normal material](/2021/06/23/threejs-normal-material). When looking at these two geometries the one that is not indexed will look more like one will expect with a built in geometry, while the indexed one will not. The reason why is by making the geometry non indexed the count of the position attribute goes from 4, to 12. That is from 4 points in space, to 12 points in space. Which means there is a single, stand alone point for every triangle. Which also means that there is a single stand alone Vector for each item in the normal attribute when allows for setting a custom set of vertex normal values for each point of each triangle.
 
 
 ```js
@@ -126,6 +126,10 @@ renderer.render(scene, camera);
 ```
 
 ### 1.3 - Adding a UV Attribute and using that with Light, THREE.Mesh, and THREE.MeshPhongMaterial
+
+I would say that there is just one final attribute that is needed to have a geometry that will work well with THREE.Mesh. There are a lot more of course that will come up when getting into animation, Vertex coloring, and so forth but the last core attribute that comes to mind would be a [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv). The mesh normal material will work fine with geometries that just have a position and normal attribute, but if I want to do anything with texture chances are I am going to want to add a uv attribute. Simply put the UV attribute is a way to define what the offsets are for each point of each triangle in a 2d image to store how to go about applying a 2d texture to a 3d object.
+
+To create a texture by way of some JavaScript code I am going with [canvas textures](/2018/04/17/threejs-canvas-texture/) as a way to do so here. I am then going to go with the [Mesh Phong material](/2022/12/29/threejs-phong-material/) and sense this is a material that will respond to light sources I am going to what at least one light source in the scene. There are a lot of options when it comes to light sources, but the typical go to solution for me these days with this would be the directional light.
 
 ```js
 // ---------- ----------
