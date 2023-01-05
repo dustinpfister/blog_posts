@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1022
-updated: 2023-01-05 11:04:13
-version: 1.4
+updated: 2023-01-05 11:21:03
+version: 1.5
 ---
 
 The [set from points method of the buffer geometry class in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.setFromPoints) is a way to create a new buffer geometry from an array of [vector3 class objects](/2018/04/15/threejs-vector3/). This new buffer geometry instance will just have a position attribute alone, which is okay when it comes to creating Points, or Lines, but not so much for Mesh objects. That is unless additional steps are taken to add the additional attributes that are needed to get the geometry to work well with mesh objects.
@@ -71,6 +71,11 @@ renderer.render(scene, camera);
 ### 1.2 - Adding a normal attribute and using it with THREE.Mesh, and the THREE.MeshNormalMaterial
 
 The bar is not that high when it comes to creating a geometry that will work okay with THREE.Points, or THREE.Line. However when it comes to making any kind of real project I am going to want to create geometry that will work with Mesh objects. The next step with making a custom geometry this way would be to add a [normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) for the geometry. Just like with the position attribute this can end up being a little involved, but also like with the set from points method there is a method that helps to make this easily. The method that can work okay most of the time to quickly create a normal attribute is the [compute vertex normal method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
+
+An index is a great tool to help reuse points, however there are still only so many points in the position attribute and thus there are also only so many normal vectors as well then. This can present a problem then when it comes to the state of the normal attribute. If you take the time to study the nature of some of the built in geometries such as the box geometry you will find that typically what is desired is not a fully indexed or non indexed geometry, but rather a kind of happy medium between the two. I could get into detail about this but for now there is just being aware of the to non indexed method of the buffer geometry class that can be used to quickly create a fully non indexed geometry from an indexed one.
+
+Here in this example I will create one geometry with an index, and create a non indexed geometry from that one. I will then call the compute vertex normals method for both of these geometries, and then use them both with mesh objects that use the [mesh normal material](/2021/06/23/threejs-normal-matreial). When looking at these two geometries the one that is not indexed will look more like one will expect with a built in geometry, while the indexed one will not. The reason why is by making the geometry non indexed the count of the position attribute goes from 4, to 12. That is from 4 points in space, to 12 points in space. Which means there is a single, stand alone point for every triangle. Which also means that there is a single stand alone Vector for each item in the normal attribute when allows for setting a custom set of vertex normal values for each point of each triangle.
+
 
 ```js
 // ---------- ----------
