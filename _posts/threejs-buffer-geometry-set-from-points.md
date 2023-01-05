@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1022
-updated: 2023-01-05 10:56:58
-version: 1.3
+updated: 2023-01-05 11:04:13
+version: 1.4
 ---
 
 The [set from points method of the buffer geometry class in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.setFromPoints) is a way to create a new buffer geometry from an array of [vector3 class objects](/2018/04/15/threejs-vector3/). This new buffer geometry instance will just have a position attribute alone, which is okay when it comes to creating Points, or Lines, but not so much for Mesh objects. That is unless additional steps are taken to add the additional attributes that are needed to get the geometry to work well with mesh objects.
@@ -69,6 +69,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.2 - Adding a normal attribute and using it with THREE.Mesh, and the THREE.MeshNormalMaterial
+
+The bar is not that high when it comes to creating a geometry that will work okay with THREE.Points, or THREE.Line. However when it comes to making any kind of real project I am going to want to create geometry that will work with Mesh objects. The next step with making a custom geometry this way would be to add a [normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) for the geometry. Just like with the position attribute this can end up being a little involved, but also like with the set from points method there is a method that helps to make this easily. The method that can work okay most of the time to quickly create a normal attribute is the [compute vertex normal method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
 
 ```js
 // ---------- ----------
