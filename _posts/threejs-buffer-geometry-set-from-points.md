@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1022
-updated: 2023-01-05 11:37:52
-version: 1.6
+updated: 2023-01-05 11:46:19
+version: 1.7
 ---
 
 The [set from points method of the buffer geometry class in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.setFromPoints) is a way to create a new buffer geometry from an array of [vector3 class objects](/2018/04/15/threejs-vector3/). This new buffer geometry instance will just have a position attribute alone, which is okay when it comes to creating Points, or Lines, but not so much for Mesh objects. That is unless additional steps are taken to add the additional attributes that are needed to get the geometry to work well with mesh objects.
@@ -224,4 +224,9 @@ scene.add(mesh);
 // ---------- ----------
 renderer.render(scene, camera);
 ```
+
+## Concusion
+
+The set from points method is then a nice easy way to go about creating a geometry from an array of points in the form of an array of Vector3 objects. However the there is a lot more to this in order to create a geometry that will work well with mesh objects. Also when it comes to updating geometry over time I will still want to directly mutate the position attribute anyway rather than calling set from points over and over again. Which in turn raises the question as to why not just create it in the first place by doing it the hard way also. Still in some cases it might be a nice fact way to create a position attribute to begin with from a points array, and for that alone it might work just fine.
+
 
