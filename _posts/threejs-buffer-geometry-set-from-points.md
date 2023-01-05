@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1022
-updated: 2023-01-05 11:53:51
-version: 1.8
+updated: 2023-01-05 12:11:28
+version: 1.9
 ---
 
 The [set from points method of the buffer geometry class in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.setFromPoints) is a way to create a new buffer geometry from an array of [vector3 class objects](/2018/04/15/threejs-vector3/). This new buffer geometry instance will just have a position attribute alone, which is okay when it comes to creating Points, or Lines, but not so much for Mesh objects. That is unless additional steps are taken to add the additional attributes that are needed to get the geometry to work well with mesh objects.
@@ -19,7 +19,15 @@ As far as I can tell, it would seem that this set from points method was added f
 
 ## The Set from points method of Buffer Geometry and what to know first
 
-This is a post on just one method in the buffer geometry class of a JavaScript library known as threejs. I am assuming that you know at least a little about client side JavaScript and the various underlying skills that are also needed with HTML, and CSS. I also assume that you have worked out at least a few basic getting started type examples of threejs as well, and are now interested in how to go about making custom geometry using an array of vector3 objects. If not changes are you are going to have a hard time following what I am writing about here. In any case regardless of experience with threejs and JavaScript I like to use these opening sections to write about some things  that you may want to learn more about, or refresh on before conti9ne to read the rest of the content.
+This is a post on just one method in the buffer geometry class of a JavaScript library known as threejs. I am assuming that you know at least a little about client side JavaScript and the various underlying skills that are also needed with HTML, and CSS. I also assume that you have worked out at least a few basic [getting started type examples of threejs](/2018/04/04/threejs-getting-started/) as well, and are now interested in how to go about making custom geometry using an array of vector3 objects. If not changes are you are going to have a hard time following what I am writing about here. In any case regardless of experience with threejs and JavaScript I like to use these opening sections to write about some things  that you may want to learn more about, or refresh on before conti9ne to read the rest of the content.
+
+### There is a lot more to buffer geometry
+
+As I said the set from points method is just one little method in the [buffer geometry class](/2021/04/22/threejs-buffer-geometry/), there are a whole lot of other methods and properties. There is also a whole lot more to write about when it comes to addtional classes of objects that are the values properties of a buffer geoetry object as well.
+
+### The Vector3 class
+
+The array that is passed to the set from points method should be an array of [Vector3 objects](/2018/04/15/threejs-vector3/). There is another major class in threejs that comes up all the time, and not just for this specific task. For example when it comes to setting the position of an [object3d class based object](/2018/04/23/threejs-object3d/) they way to do so is by way of the [position property of the object3d class](/2022/04/04/threejs-object3d-position/) which is, use guessed it, and instance of Vector3.
 
 ### Source code in also up on Github
 
