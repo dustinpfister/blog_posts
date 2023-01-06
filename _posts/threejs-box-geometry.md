@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2023-01-06 13:22:56
-version: 1.54
+updated: 2023-01-06 14:10:53
+version: 1.55
 ---
 
 In [threejs](https://threejs.org/) the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry) is one of many options for quickly creating a geometry of a box area. To create a geometry this way I just need to call the THREE.BoxGeometry constructor function with the new keyword, and pass some arguments for the dimensions of the box geometry. The returned result can then be stored to a variable, or directly passed as the geometry for a mesh object, or anything else that calls for a geometry.
@@ -67,39 +67,40 @@ With that said reading up more on the Mesh Class and really [Object3d class](/20
 
 ### 2.1 - Rotation and position of the box geometry
 
-First off in this example I will be looking at how to go about rotating and positioning a cube by mutating the state of the geometry rather than the mesh object, or any kind of parent object to that of the mesh object. When it comes to doing positing and rotating this way I will typically want to only do this one just for the sake of changing the position and orientation relative to the containing mesh object. When it comes to changing these values over and over again in a loop it would be better to mutate the object3d values of the containing mesh object.
+First off in this example I will be looking at how to go about rotating and positioning a cube by mutating the state of the geometry rather than the mesh object, or any kind of parent object to that of the mesh object. When it comes to doing positing and rotating this way I will typically want to only do this one just for the sake of changing the position and orientation relative to the containing mesh object. When it comes to changing these values over and over again in a loop it would be better to mutate the object3d values of the containing mesh object which I will be geting to in later in this section.
 
-The thing to keep in mind here is that when working with the box geometry I am working with an instance of buffer geometry and when it comes to that class there are methods like rotateX, rotateY, and rotateZ than can be used as a way to adjust the geometry rotation. When it comes to adjusting the position of the geometry there is the translate method of the buffer geometry class.
+The thing to keep in mind here is that when working with the box geometry I am working with an instance of buffer geometry and when it comes to that class there are methods like [rotateX, rotateY, and rotateZ than can be used as a way to adjust the geometry rotation](/2021/05/20/threejs-buffer-geometry-rotation/). When it comes to adjusting the position of the geometry there is the translate method of the buffer geometry class.
 
 ```js
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10)); // grid helper
- 
-var box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            color: new THREE.Color('gray')
-        }));
-box.add(new THREE.BoxHelper(box, new THREE.Color('red'))); // box helper
-scene.add(box);
- 
-var box2 = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            color: new THREE.Color('gray')
-        }));
-box2.geometry.rotateY(Math.PI * 0.25); // ROTATING THE GEOMERTY
-box2.geometry.translate(0, 1, 0); // TRANSLATING THE GEOMMETRY
-box2.add(new THREE.BoxHelper(box2, new THREE.Color('red'))); // box helper
-box2.position.set(2, 0, 0); // SETTING THE POSITION OF THE MESH
-scene.add(box2);
- 
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(3, 3, 3);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(5, 5));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(4, 1, 4);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH box1
+//-------- ----------
+const box1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial()
+);
+// ROTATING THE GEOMERTY
+box1.geometry.rotateX(Math.PI / 180 * 45);
+box1.geometry.rotateY(Math.PI / 180 * 22);
+ // TRANSLATING THE GEOMMETRY
+box1.geometry.translate(0, 1, 0);
+// BOX HELPER
+box1.add( new THREE.BoxHelper(box1, new THREE.Color('red')) );
+scene.add(box1);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
