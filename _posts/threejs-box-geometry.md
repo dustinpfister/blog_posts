@@ -5,23 +5,24 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2022-05-06 14:42:14
-version: 1.49
+updated: 2023-01-06 12:48:05
+version: 1.50
 ---
 
-After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post on the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
+In [threejs](https://threejs.org/) the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry) is one of many options for quickly creating a geometry of a box area. To create a geometry this way I just need to call the THREE.BoxGeometry constructor function with the new keyword, and pass some arguments for the dimensions of the box geometry. The returned result can then be stored to a variable, or directly passed as the geometry for a mesh object, or anything else that calls for a geometry.
 
-This will then be a basic post, or at least it will start out that way, for those of you that have some more experienced with three.js I might get into some more advanced topics towards then end of the post, just for the sake of not letting this post end up being to thin. Starting out with this constructor is simple enough with a simple moving cube example which is not so hard, but then there is getting into how to go about skinning a cube with textures, and not just simple solid color maps with the basic material in that regard. Looking into the box geometry in depth is a good way to lean more about more advanced topics with geometry in general with it comes to the various attributes of a buffer geometry instance.
+Starting out with this built in geometry constructor function is simple enough, but then there is getting into how to go about skinning a cube with textures, and how to go about having one texture on just one side, and other on an other side. So then there is looking into how to go about using the group property of buffer geometry, and or the UV attribute when it comes to this. With that said looking into the box geometry in depth is a good way to lean more about more advanced topics with geometry in general when it comes to the various features of a buffer geometry instance.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/B52qkEjf8K8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Box Geometry in thee.js and what to know first
 
 This is a post on the Box Geometry Constructor in three.js, and many little related topics that branch off from that specific constructor function in the javaScript library known as threejs. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), but many of the examples here will be not so far beyond that point. Still I assume that you know how to set up a basic client side javaScript project as I will not be getting into the very basics of setting things up. If however you have got your hello world example up and running but would like to learn more about just playing around with a cube, or box of some kind with threejs and a little javaScript code you might gain something of value from reading this post. In any case in this section I will be going over a few things that you might want to read up more before really getting into using the box geometry constructor, as well as the Mesh objects that are often used with such a geometry.
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/B52qkEjf8K8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-### Version Numbers matter with three.js
+### Version Numbers matter with threejs
 
 When I wrote this post I was using three.js r127, and many code breaking changes where made recently. Always take note of what version of three.js you are using.
 
