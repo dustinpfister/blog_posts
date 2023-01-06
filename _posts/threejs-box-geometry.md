@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2023-01-06 13:20:52
-version: 1.53
+updated: 2023-01-06 13:22:56
+version: 1.54
 ---
 
 In [threejs](https://threejs.org/) the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry) is one of many options for quickly creating a geometry of a box area. To create a geometry this way I just need to call the THREE.BoxGeometry constructor function with the new keyword, and pass some arguments for the dimensions of the box geometry. The returned result can then be stored to a variable, or directly passed as the geometry for a mesh object, or anything else that calls for a geometry.
 
-Starting out with this built in geometry constructor function is simple enough, but then there is getting into how to go about skinning a cube with textures, and how to go about having one texture on just one side, and other on an other side. So then there is looking into how to go about using the group property of buffer geometry, and or the UV attribute when it comes to this. With that said looking into the box geometry in depth is a good way to lean more about more advanced topics with geometry in general when it comes to the various features of a buffer geometry instance.
+Starting out with this built in geometry constructor function is simple enough, but then there is getting into how to go about skinning a cube with textures, and how to go about having one texture on just one side, and other on an other side. So then there is looking into how to go about using the [group property of buffer geometry](/2018/05/14/threejs-mesh-material-index/), and or the [UV attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) when it comes to this. With that said looking into the box geometry in depth is a good way to lean more about more advanced topics with geometry in general when it comes to the various features of a buffer geometry instance.
 
 <!-- more -->
 
