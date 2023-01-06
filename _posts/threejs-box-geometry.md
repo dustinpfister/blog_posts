@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2023-01-06 14:10:53
-version: 1.55
+updated: 2023-01-06 15:04:12
+version: 1.56
 ---
 
 In [threejs](https://threejs.org/) the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry) is one of many options for quickly creating a geometry of a box area. To create a geometry this way I just need to call the THREE.BoxGeometry constructor function with the new keyword, and pass some arguments for the dimensions of the box geometry. The returned result can then be stored to a variable, or directly passed as the geometry for a mesh object, or anything else that calls for a geometry.
@@ -28,7 +28,7 @@ The source code examples that I am writing about here can also be found on Githu
 
 ### Version Numbers matter with threejs
 
-When I wrote this post I was using three.js r127, and many code breaking changes where made recently. Always take note of what version of three.js you are using.
+When I first wrote this post I was using threejs r127, and many code breaking changes where made in recent revisions such as the removal of the THREE.Geometry class. However the last time I came around to do some editing I have made new examples and have check that everything here is working just fine with r146. Still always take note of what version of threejs you are using.
 
 ## 1 - Basic Box Geometry example using Normal Material
 
@@ -104,44 +104,48 @@ scene.add(box1);
 renderer.render(scene, camera);
 ```
 
-### 2.2 - Rotation and position of the mesh object that contains the box geometry
+### 2.2 - Rotation and position of the mesh object that contains the box geometry by way of object3d class features
 
 The two properties of interest here are the rotation property and position properties of the mesh when creating a box with the Box Geometry constructor and a material. The rotation property is an instance of [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler), and the position property is an instance of [THREE.Vector3](/2018/04/15/threejs-vector3/). With that said it would be best to look into each of these classes in detail to know everything there is to work with them. However the main methods of interest with both of these classes are the set and copy methods.
 
 In this example I am using the copy method to copy the instances of Euler and Vector 3 in my state object as the values for the corresponding properties for position and rotation. However there is also the set method that can be used to set the values of these class instances of a mesh. Both set methods will take three values, only with a Vector3 instance I will want to given position values for x, y, and z, and with a Euler instance I will want to give radian values for the angles of the rotation.
 
 ```js
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10)); // grid helper
- 
-var box = new THREE.Mesh(
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(5, 5));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH 
+//-------- ----------
+const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshBasicMaterial({
             color: new THREE.Color('gray')
         }));
 box.add(new THREE.BoxHelper(box, new THREE.Color('red'))); // box helper
 scene.add(box);
- 
-var box2 = new THREE.Mesh(
+const box2 = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshBasicMaterial({
             color: new THREE.Color('lime')
         }));
 box2.geometry.rotateY(Math.PI * 0.25); // Rotating geometry
 box2.add(new THREE.BoxHelper(box2, new THREE.Color('red'))); // box helper
- 
 box2.position.set(-2, 0, 0);
 scene.add(box2);
- 
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(3, 3, 3);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var lt = new Date(),
-state = {
+//-------- ----------
+// LOOP
+//-------- ----------
+let lt = new Date();
+const state = {
     frame: 0,
     maxFrame: 100,
     per: 0,
@@ -150,8 +154,8 @@ state = {
     r: new THREE.Euler(0, 0, 0),
     p: new THREE.Vector3(0, 0, 0)
 };
-var loop = function () {
-    var now = new Date(),
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     state.per = state.frame / state.maxFrame;
@@ -191,49 +195,55 @@ A property of interest when working with a buffer geometry as of late versions o
 Out of the box there should be six objects in the groups array, and the material index values for each should go from  and including 0 to 5. So if I am doing going to change any of those values I will want to give an array of six materials, one for each side.
 
 ```js
-var materials = [
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(5, 5));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH 
+//-------- ----------
+const materials = [
     new THREE.MeshBasicMaterial({
         color: 'red'
     }),
     new THREE.MeshBasicMaterial({
-        color: 'red'
+        color: 'orange'
     }),
     new THREE.MeshBasicMaterial({
         color: 'lime'
     }),
     new THREE.MeshBasicMaterial({
-        color: 'lime'
+        color: 'purple'
     }),
     new THREE.MeshBasicMaterial({
         color: 'blue'
     }),
     new THREE.MeshBasicMaterial({
-        color: 'blue'
+        color: 'cyan'
     })
 ];
- 
-var box = new THREE.Mesh(
+const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         materials);
-
-var scene = new THREE.Scene();
-scene.add(box);
- 
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(0.8, 1.3, 0.8);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var lt = new Date(),
-state = {
+scene.add(box)
+//-------- ----------
+// LOOP
+//-------- ----------
+let lt = new Date();
+const state = {
     x: 0,
     y: 0,
     z: 0
 };
-var loop = function () {
-    var now = new Date(),
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     state.x += 1 * secs;
@@ -251,13 +261,27 @@ loop();
 When using an array of materials that is more or less than six chances are that I am going to want to change what the material index values are for the Box Geometry. To do this I just need to loop over the groups array of the box geometry and set the material index values for each group t the desired index value in the array of the materials.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(5, 5));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 10);
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH 
+//-------- ----------
 // the array of materials that is only two materials
-var materials = [
+const materials = [
     new THREE.MeshNormalMaterial(),
     new THREE.MeshDepthMaterial()
 ];
 // create the box geometry
-var geo = new THREE.BoxGeometry(1, 1, 1);
+const geo = new THREE.BoxGeometry(1, 1, 1);
 // The objects in the groups array is what there is to
 // use to set material index values for each face
 geo.groups.forEach(function (face, i) {
@@ -265,29 +289,17 @@ geo.groups.forEach(function (face, i) {
 });
 // now create the box like always passing the geometry first,
 // and the array of materials second
-var box = new THREE.Mesh(
+const box = new THREE.Mesh(
         geo,
         materials);
- 
-var scene = new THREE.Scene();
-scene.background = new THREE.Color(0xafafaf);
-scene.add(box);
- 
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(0.8, 1.3, 0.8);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-
-var lt = new Date(),
-state = {
-    x: 0,
-    y: 0,
-    z: 0
-};
-var loop = function () {
-    var now = new Date(),
+scene.add(box)
+//-------- ----------
+// LOOP
+//-------- ----------
+let lt = new Date();
+const state = { x: 0, y: 0, z: 0};
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     state.x += 1 * secs;
@@ -306,58 +318,63 @@ Now it is time to get into something fun with a simple cube in three.js using th
 
 To create a canvas texture I am first going to have a canvas element, and something drawn to it to use as a texture. This is of course a topic that is beyond the scope of this post. I have my [getting started post on canvas elements](/2017/05/17/canvas-getting-started/) that might be a good starting point if you are new to canvas, and I have also made a number of canvas example type posts that might also be worth checking out on this topic.
 
-### 4.1 - First off the Create Canvas texture helper
+### 4.1 - Basic color map example using the Basic Material
 
 All of the examples here make use of this create canvas texture helps method. In each example I can just call this method and then pass a single draw method. In this draw method I can then create a texture using the 2d drawing context of a canvas element. After that the question is what to do with the texture when making one or more materials for a cube.
-
-```js
-(function (utils) {
- 
-    utils.createCanvasTexture = function (draw, size) {
-        var canvas = document.createElement('canvas'),
-        ctx = canvas.getContext('2d');
-        canvas.width = size || 32;
-        canvas.height = size || 32;
-        canvas.style.imageRendering = 'pixelated';
-        ctx.imageSmoothingEnabled = false;
-        draw(ctx, canvas);
-        return new THREE.CanvasTexture(canvas);
-    };
- 
-}
-    (this['utils'] = {}));
-```
-
-### 4.2 - Basic color map example using the Basic Material
 
 If I do not want or need to do anything fancy with lighting, transparency and so forth I can just use the Basic material. The problem with using the basic material without a texture is that iw will end up being a solid mass of color, and because the basic material does not respond to a light source there is no way of showing some depth for the cube, unless a color map is used.
 
 ```js
-var colorMap = utils.createCanvasTexture(function (ctx, canvas) {
-        ctx.fillStyle = 'red';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = 'white';
-        ctx.beginPath();
-        ctx.lineWidth = 3;
-        ctx.rect(1, 1, canvas.width - 2, canvas.height - 2);
-        ctx.stroke();
-    });
- 
-var box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            map: colorMap
-        }));
-var scene = new THREE.Scene();
-scene.add(box);
- 
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1, 1);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(5, 5));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 10);
+camera.position.set(1.5, 1.5, 1.5);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const createCanvasTexture = function (draw, size) {
+    const canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = size || 32;
+    canvas.height = size || 32;
+    draw(ctx, canvas);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.NearestFilter;
+    texture.minFilter = THREE.NearestFilter;
+    return texture;
+};
+//-------- ----------
+// TEXTURE
+//-------- ----------
+const texture_map = createCanvasTexture(function (ctx, canvas) {
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'white';
+    ctx.beginPath();
+    ctx.lineWidth = 3;
+    ctx.rect(1, 1, canvas.width - 2, canvas.height - 2);
+    ctx.stroke();
+});
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        map: texture_map
+    })
+);
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -368,39 +385,82 @@ The basic material works okay if I just want to have a color map, and I do not w
 When it comes to using the standard material over the basic material the process is more or less the same as the basic material, when it comes to what it is that I do with the texture. Once again I am going to want to set the texture as the value for the map property of the material. However now nothing will show up, unless of course I use a light source. When it comes to light sources there are once again many options, however I often light to use the point light.
 
 ```js
-var colorMap = utils.createCanvasTexture(function (ctx, canvas) {
-        ctx.fillStyle = 'red';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = 'white';
-        ctx.beginPath();
-        ctx.lineWidth = 3;
-        ctx.rect(1, 1, canvas.width - 2, canvas.height - 2);
-        ctx.stroke();
-    });
- 
-var box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        // using the standard material
-        new THREE.MeshStandardMaterial({
-            map: colorMap
-        }));
-var scene = new THREE.Scene();
-scene.add(box);
- 
-var sun = new THREE.Mesh(
-        new THREE.SphereGeometry(1),
-        new THREE.MeshBasicMaterial());
-sun.add(new THREE.PointLight(0xffffff, 1));
-sun.position.set(2, 8, 4);
-scene.add(sun);
- 
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1, 1);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(5, 5));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 10);
+camera.position.set(1.5, 1.5, 1.5);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const createCanvasTexture = function (draw, size) {
+    const canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = size || 32;
+    canvas.height = size || 32;
+    draw(ctx, canvas);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.NearestFilter;
+    texture.minFilter = THREE.NearestFilter;
+    return texture;
+};
+//-------- ----------
+// TEXTURE
+//-------- ----------
+const texture_map = createCanvasTexture(function (ctx, canvas) {
+    ctx.fillStyle = 'lime';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'white';
+    ctx.beginPath();
+    ctx.lineWidth = 3;
+    ctx.rect(1, 1, canvas.width - 2, canvas.height - 2);
+    ctx.stroke();
+});
+const texture_emissive = createCanvasTexture(function (ctx, canvas) {
+    let i = 0;
+    const w = 8, h = 5, len = w * h;
+    const pw = canvas.width / w;
+    const ph = canvas.height / h;
+    while(i < len){
+        const x = i % w;
+        const y = Math.floor(i / w);
+        const px = x * pw;
+        const py = y * ph;
+        const v = Math.random();
+        const color = new THREE.Color(v, v, v);
+        ctx.fillStyle =  color.getStyle();
+        ctx.fillRect(px, py, pw, ph);
+        i += 1;
+    }
+});
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshPhongMaterial({
+        map: texture_map,
+        emissive: new THREE.Color(1,1,1),
+        emissiveMap: texture_emissive,
+        emissiveIntensity: 0.25
+    })
+);
+scene.add(box);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 0.5);
+dl.position.set(6, 1, 2);
+scene.add(dl);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -409,34 +469,36 @@ renderer.render(scene, camera);
 There is the subject of setting one or more materials that are being used with a box geometry in a mesh into wire frame mode. However there is a number of ways of getting a similar look that might prove to be a more desirable result. I mean wire frame mode of a material like the mesh basic material will work okay, but it will draw all the triangles of a mesh and not just the edges of the mesh. So another way of getting a similar result would be to use the [edges geometry](/2021/05/31/threejs-edges-geometry/) constructor to create a new geometry from the box geometry, and then pass that to the line segments constructor. This will result in a look that is like that of wire frame mode, but it will just be the edges of the box, not all the tingles which I  for one like better.
 
 ```js
-(function () {
- 
-    // bog geometry and an edge geometry created from it
-    var boxGeo = new THREE.BoxGeometry(1, 1, 1),
-    edgeGeo = new THREE.EdgesGeometry(boxGeo);
- 
-    // Line Segments
-    var line = new THREE.LineSegments(
-            edgeGeo,
-            new THREE.LineBasicMaterial({
-                color: new THREE.Color('white')
-            }));
- 
-    // Scene
-    var scene = new THREE.Scene();
-    scene.background = new THREE.Color('blue');
-    scene.add(line);
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 10);
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// BOX GEO, LINE
+//-------- ----------
+// bog geometry and an edge geometry created from it
+const boxGeo = new THREE.BoxGeometry(1, 1, 1),
+edgeGeo = new THREE.EdgesGeometry(boxGeo);
+// Line Segments
+const line = new THREE.LineSegments(
+    edgeGeo,
+    new THREE.LineBasicMaterial({
+        linewidth: 3,
+        color: new THREE.Color('red')
+    })
+);
+line.rotation.y = Math.PI / 180 * 12;
+scene.add(line)
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 There might be a number of other ways to go about creating a wire frame look rather than just making use of the wire fame mode of mesh materials. I would say that this is not the end all solution for this sort of thing because there is one draw back when it comes to setting the line width. It would seem that I can not set the thickness of the lines to anything other that 1, so maybe there is yet another way to do something like this that might have to involve some kind of custom geometry or other advanced use case.
