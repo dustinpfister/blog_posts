@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2023-01-06 12:48:05
-version: 1.50
+updated: 2023-01-06 13:08:37
+version: 1.51
 ---
 
 In [threejs](https://threejs.org/) the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry) is one of many options for quickly creating a geometry of a box area. To create a geometry this way I just need to call the THREE.BoxGeometry constructor function with the new keyword, and pass some arguments for the dimensions of the box geometry. The returned result can then be stored to a variable, or directly passed as the geometry for a mesh object, or anything else that calls for a geometry.
@@ -28,7 +28,7 @@ When I wrote this post I was using three.js r127, and many code breaking changes
 
 ## 1 - Basic Box Geometry example using Normal Material
 
-To create a basic Box three.js example using the Box Geometry Constructor the First thing I am going to want to do is create a Mesh. This Mesh will accept a geometry as the first argument such as one that is created using the Box Geometry Constructor. However I am also going to want to pass a material as the second argument for the Mesh also. For this example I have choses to go with the Normal Material as this is a nice quick choice for skinning a Mesh because the default Basic material will just show the whole area as one solid color.
+To create a basic Box threejs example using the Box Geometry Constructor the First thing I am going to want to do is create a Mesh. This Mesh will accept a geometry as the first argument such as one that is created using the Box Geometry Constructor. However I am also going to want to pass a material as the second argument for the Mesh also. For this example I have choses to go with the Normal Material as this is a nice quick choice for skinning a Mesh because the default Basic material will just show the whole area as one solid color.
 
 ```js
 // creating a box mesh with the Box Geometry constructor,
@@ -59,7 +59,7 @@ Once that basic hello world cube example is up and running, the first thing I re
 
 With that said reading up more on the Mesh Class and really [Object3d class](/2018/04/23/threejs-object3d/) would be best when it comes to the core of positing and rotating things by way of the Mesh object. When it comes to rotating an positioning a box by changing the state of the geometry there is looking into the buffer geometry constructor in general to learn more about how to do such things that way.
 
-### 2.2 - Rotation and position of the box geometry
+### 2.1 - Rotation and position of the box geometry
 
 First off in this example I will be looking at how to go about rotating and positioning a cube by mutating the state of the geometry rather than the mesh object, or any kind of parent object to that of the mesh object. When it comes to doing positing and rotating this way I will typically want to only do this one just for the sake of changing the position and orientation relative to the containing mesh object. When it comes to changing these values over and over again in a loop it would be better to mutate the object3d values of the containing mesh object.
 
@@ -434,7 +434,7 @@ There is the subject of setting one or more materials that are being used with a
 
 There might be a number of other ways to go about creating a wire frame look rather than just making use of the wire fame mode of mesh materials. I would say that this is not the end all solution for this sort of thing because there is one draw back when it comes to setting the line width. It would seem that I can not set the thickness of the lines to anything other that 1, so maybe there is yet another way to do something like this that might have to involve some kind of custom geometry or other advanced use case.
 
-## 6 - Conclusion
+## Conclusion
 
 So then the Box geometry is a great starting point when it comes to begging to explore everything that there is to work with when it comes to three.js. Much of what applies for a Box geometry will also apply for other built in geometries, custom geometries, and the buffer geometry class in general so to some extent by learning a thing or two about box geometry one learns a thing or two about geometry in general with threejs.
 
