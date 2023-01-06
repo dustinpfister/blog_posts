@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2023-01-06 14:11:44
-version: 1.28
+updated: 2023-01-06 15:12:08
+version: 1.29
 ---
 
-When it comes to rotating things in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](https://threejs.org/docs/#api/en/core/Object3D) that stores an instance of the [Euler class](https://threejs.org/docs/#api/en/math/Euler). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
+When it comes to rotating things in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the [object3d class](https://threejs.org/docs/#api/en/core/Object3D) that stores an instance of the [Euler class](https://threejs.org/docs/#api/en/math/Euler). When it comes to a [Mesh object](/2018/05/04/threejs-mesh/) which is one of many objects that are based off of object3d, this rotation property can be used as a way to rotate the mesh as a whole, along with any children that might be added to the mesh objects as well. 
 
-However it is also worth pointing out that the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) of a mesh object can also be rotated independently of a mesh objects orientation as well. In some cases I might want to rotate a geometry that rather than rotating the mesh object, or any parent object of the mesh. More often than not it is the orientation of a mesh object or a [group of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/) that I want to rotate, however in some cases I will want to adjust the orientation of a geometry relative to the orientation of a mesh object that contains a geometry.
+However it is also worth pointing out that the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) used in a mesh object can also be rotated independently of a mesh objects orientation as well. In some cases I might want to rotate a geometry rather than rotating the mesh object, or any parent object of the mesh. More often than not it is the orientation of a mesh object or a [group of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/) that I want to rotate, however in some cases I will want to adjust the orientation of a geometry relative to the orientation of a mesh object that contains a geometry.
 
 When it comes to rotating a buffer geometry there are a number of methods that are of interest for this kind of task. Often I end up using a method like that of the [rotateX method](https://threejs.org/docs/#api/en/core/BufferGeometry.rotateX) however just like that of the Object3d class there is also a [look at method](https://threejs.org/docs/#api/en/core/BufferGeometry.lookAt) that might also work in some cases. However I think it might be best to use these methods only once to make the geometry line up with what would be expected when using an object3d level method or property value to set an orientation of a mesh object that contains a geometry. In this post I will be going over a few examples that will showcase this sort of thing.
 
@@ -22,7 +22,7 @@ When it comes to rotating a buffer geometry there are a number of methods that a
 
 ## Buffer geometry rotation and what to know first
 
-This is a post on using methods of a buffer geometry instance to rotate just a geometry independent of any orientation of a mesh object that might use this geometry. The content of this post is then on a topic that might be a little advanced for people that are still relatively new to three.js and javaScript in general. However I will take a moment to cover some basics in this section that you should take a moment to get solid with before continuing reading this post of you have not done so all ready.
+This is a post on using methods of a buffer geometry instance to rotate just a geometry independent of any orientation of a mesh object that might use this geometry. The content of this post is then on a topic that might be a little advanced for people that are still relatively new to threejs and javaScript in general. However I will take a moment to cover some basics in this section that you should take a moment to get solid with before continuing reading this post of you have not done so all ready.
 
 ### Read up more on Vector3 and the Euler classes
 
@@ -34,13 +34,13 @@ It should go without saying why the Euler class is important when it comes to ro
 
 There is rotating a geometry and then there is rotating something that contains that geometry. A geometry is often used with a Mesh, and a mesh is based off of the [Object3d class](/2018/04/23/threejs-object3d/). The Mesh if what should often be what is used to set orientation first and foremost, it is just that there are some situations in which the orientation of a geometry will need to be adjusted too at least once.
 
-### Version Numbers matter in three.js
-
-When I wrote this post I was using revision number 127 of three.js. Code braking changes are made to three.js often so it is possible that the code examples here might not work on later versions of three.js. Always be mindful of the version of three.js that you are using, and how old any content is on three.js.
-
 ### Source code is also up on Github
 
 I also have the source code examples that I am writing about up on [Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-rotation).
+
+### Version Numbers matter in three.js
+
+When I wrote this post I was using revision number 127 of three.js. Code braking changes are made to three.js often so it is possible that the code examples here might not work on later versions of three.js. Always be mindful of the version of three.js that you are using, and how old any content is on three.js.
 
 ## 1 - Basic example of the rotation methods of the buffer geometry class
 
