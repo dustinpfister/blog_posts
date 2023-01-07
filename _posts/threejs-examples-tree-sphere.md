@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2022-05-07 11:38:18
-version: 1.27
+updated: 2023-01-07 09:16:28
+version: 1.28
 ---
 
 I wrote a post on a [simple crude three model example](/2019/07/30/threejs-examples-tree/) using [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree that is more of the [Deciduous](https://en.wikipedia.org/wiki/Deciduous) rather than evergreen type.
@@ -17,13 +17,14 @@ This is then a fairly [basic threejs example](/2021/02/19/threejs-examples/) of 
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/-6o9aPI7i8Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## A tree Sphere model example in three.js and what to know first
 
 This is a post on using some built in geometry constructors and many other aspects of the three.js javaScript library to create a basic tree model for a scene. I am not going to go over the [very basics of three.js](/2018/04/04/threejs-getting-started/) and javaScript in this post, so I hope that you have at least some basic working knowledge of these topics before hand. However I will be going over a few things in this section, and like to some other resources that are work checking out. 
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/-6o9aPI7i8Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-### Version Numbers matter with three.js
+### Version Numbers matter with threejs
 
 When I wrote this post, and tested out the code examples here I was using r127 of three.js. Changes are made to three.js all the time that often end up making code examples on the open web break, more so than usual compares to many other javaScript libraries where development moves a little slower.
 
