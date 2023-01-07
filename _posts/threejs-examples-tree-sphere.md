@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2023-01-07 09:16:28
-version: 1.28
+updated: 2023-01-07 09:28:35
+version: 1.29
 ---
 
 I wrote a post on a [simple crude three model example](/2019/07/30/threejs-examples-tree/) using [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree that is more of the [Deciduous](https://en.wikipedia.org/wiki/Deciduous) rather than evergreen type.
@@ -23,6 +23,10 @@ This is then a fairly [basic threejs example](/2021/02/19/threejs-examples/) of 
 ## A tree Sphere model example in three.js and what to know first
 
 This is a post on using some built in geometry constructors and many other aspects of the three.js javaScript library to create a basic tree model for a scene. I am not going to go over the [very basics of three.js](/2018/04/04/threejs-getting-started/) and javaScript in this post, so I hope that you have at least some basic working knowledge of these topics before hand. However I will be going over a few things in this section, and like to some other resources that are work checking out. 
+
+### Source code examples up on Github
+
+The source code examples that I write about here [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tree-sphere).
 
 ### Version Numbers matter with threejs
 
@@ -165,7 +169,7 @@ To make sure that this tree module works the way that I expect it to I am going 
 
 the main thing here is the line where I am using the look at method of the tree group that is created with the create method of the tree model. When I call the look at method and have the tree look at a position that is below it the bottom of the trunk f the tree is what is facing that given point in worked space. That is of course how I would like to have the tree model work when using it, if for some reason I want that to be different I am just going to have the adjust accordingly. However that aside I would say that is more or less it, this is just a basic tree model and it works more or less as I would expect. Now the question is what to do when it comes to making an over all larger scene that might make use of this tree model.
 
-## 3 - Conclusion 
+## Conclusion 
 
 This tree model might end up being used in a few additional three.js examples here and there when I want to have something that I can use to just quickly create some groups of objects that will look like trees. More often than not something like this will work just fine, however that is because I am going for a very simplistic art style when it comes to this sort of thing.
 
