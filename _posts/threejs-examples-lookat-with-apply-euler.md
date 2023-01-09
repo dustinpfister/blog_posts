@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2023-01-09 15:16:40
-version: 1.20
+updated: 2023-01-09 15:42:43
+version: 1.21
 ---
 
 For todays post on a [threejs project example](/2021/02/19/threejs-examples/) I wanted to make some quick code that has to do with how the [look at method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object. For the most part the look at method works well, and is very easy to use. I just call the method off of the object that is based off of the object3d class, typically a camera or mesh object, and pass the position that I want the object to look at. The position can be given in the form of a Vector3 object, or a set of number literal values, and more often than not the method will in fact have the object look at the point in space. However in some cases the end result may not work the way that I want it to, so I can not just turn my brain off and not think about this kind of stuff at all. In certain situations I will need to work out some other kind of situation when it comes to setting the rotation of an object3d based object.
@@ -51,13 +51,15 @@ Nothing fancy with this module, just a create method that when called will creat
 ```js
 // airplane.js - r0 - from threejs-examples-lookat-with-apply-euler
 (function(api){
-     //-------- ----------
-     // MATERIALS
-     //-------- ----------
-     // materuials to use for mesh objects
-     const materials = [
-         new THREE.MeshStandardMaterial({color: new THREE.Color('white')}),
-         new THREE.MeshStandardMaterial({color: new THREE.Color('red')})
+    //-------- ----------
+    // MATERIALS
+    //-------- ----------
+    // materuials to use for mesh objects
+    const materials = [
+        new THREE.MeshStandardMaterial({color: new THREE.Color('white')}),
+        new THREE.MeshStandardMaterial({color: new THREE.Color('red')}),
+        new THREE.MeshStandardMaterial({color: new THREE.Color('lime')}),
+        new THREE.MeshStandardMaterial({color: new THREE.Color('cyan')})
     ];
     // make a part of the object
     const mkPart = function(g, partName, w, h, d, x, y, z, mi){
@@ -76,10 +78,10 @@ Nothing fancy with this module, just a create method that when called will creat
         const g = new THREE.Group();
         g.name = gName || 'g-' + g.uuid;
         // add parts
-        g.add( mkPart(g, 'body', 1, 1, 4, 0, 0, 0) );
-        g.add( mkPart(g, 'tail', 0.5, 1, 1, 0, 1, -1.5, 1) );
-        g.add( mkPart(g, 'rwing', 2, 0.5, 1, -1.5, 0, 0) );
-        g.add( mkPart(g, 'lwing', 2, 0.5, 1, 1.5, 0, 0) );
+        g.add( mkPart(g, 'body',  1.0, 1.0, 4.0,  0.0, 0.0,  0.0, 0) );
+        g.add( mkPart(g, 'tail',  0.5, 1.0, 1.0,  0.0, 1.0, -1.5, 3) );
+        g.add( mkPart(g, 'rwing', 2.0, 0.5, 1.0, -1.5, 0.0,  0.0, 1) );
+        g.add( mkPart(g, 'lwing', 2.0, 0.5, 1.0,  1.5, 0.0,  0.0, 2) );
         return g;
     };
 }( this['airplane'] = {} ));
@@ -197,7 +199,7 @@ loop();
 
 So now that I have a nice visual idea of what the problem is to begin with it is now a matter to work out at least one or more solutions to help with the process of addressing this kind of problem that has to do with setting position and rotation of objects.
 
-### 1.2 - Demo using a new position helper
+### 1.2 - Demo using a new position and rotation helpers
 
 With what it is that I have worked out this far it is clear to me that there is not much of anything wrong with what I am doing to set the position of these airplane objects. For the most part the process of using the vector3 apply Euler method works well for setting a local position of an object in space. The main problem here is how to go about setting the rotation of the objects rather than the position. I really do like the object3d look at method, it does very much make the process of setting rotation very easy most of the time. However there are going to be situations in which I am just going to have to work something else out and this is a good example of that kind of situation.
 
@@ -218,17 +220,20 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 // HELPER FUNCTION
 //-------- ----------
-const setPlanePosition = (ap, a_p1, a_p2, a_r1, a_r2, radius) => {
+// set position
+const setObjectPosition = (ap, a_p1, a_p2, radius) => {
     // NEW SET POS METHOD
     const x = Math.PI * 2 * a_p1, 
-    y = Math.PI * 2 * a_p2, 
-    z = 0;
+    y = Math.PI * 2 * a_p2;
     // USING APPLY EULER TO SET POSITION
-    const e = new THREE.Euler(x, y, z);
+    const e = new THREE.Euler(x, y, 0);
     ap.position.set(0, 0, radius).applyEuler( e );
+};
+// rotation set
+const setObjectRotation = (obj, a_r1, a_r2 ) => {
     // object3d rotation being used in place of Look At
-    ap.rotation.y = Math.PI * 2 * a_r1;
-    ap.rotation.x = Math.PI * 2 * a_r2;
+    obj.rotation.y = Math.PI * 2 * a_r1;
+    obj.rotation.x = Math.PI * 2 * a_r2;
 };
 //-------- ----------
 // LIGHT
@@ -241,8 +246,6 @@ scene.add(dl);
 //-------- ----------
 const ap1 = airplane.create('g-1');
 scene.add(ap1);
-const ap2 = airplane.create('g-2');
-scene.add(ap2);
 //-------- ----------
 // LOOP
 //-------- ----------
@@ -254,8 +257,10 @@ const fps = 30, maxFrame = 300;
 const update = (frame, maxFrame, secs) => {
     const a1 = frame / maxFrame,
     a2 = 1 - Math.abs(0.5 - a1) / 0.5;
-    setPlanePosition(ap1, a1, 0, 0.5, a1, 5);
-    setPlanePosition(ap2, a1, 0.65, 0.18, a1, 10);
+    setObjectPosition(ap1, a1, a1, 5);
+    let s = a1 < 0.5 ? 1 : -1;
+    //setObjectRotation(ap1, 0.5 + 0.5 * a2 * s, a1);
+    ap1.lookAt(0,0,0);
 };
 const loop = function () {
     var now = new Date(),
