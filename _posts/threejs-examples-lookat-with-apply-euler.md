@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2023-01-09 14:59:01
-version: 1.18
+updated: 2023-01-09 15:04:55
+version: 1.19
 ---
 
 For todays post on a [threejs project example](/2021/02/19/threejs-examples/) I wanted to make some quick code that has to do with how the [look at method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object. For the most part the look at method works well, and is very easy to use. I just call the method off of the object that is based off of the object3d class, typically a camera or mesh object, and pass the position that I want the object to look at. The position can be given in the form of a Vector3 object, or a set of number literal values, and more often than not the method will in fact have the object look at the point in space. However in some cases the end result may not work the way that I want it to, so I can not just turn my brain off and not think about this kind of stuff at all. In certain situations I will need to work out some other kind of situation when it comes to setting the rotation of an object3d based object.
@@ -30,13 +30,15 @@ I have wrote posts on the [Object3d lookAt method](/2021/05/13/threejs-object3d-
 
 In this example I am not just using the look at method, but also the apply Euler method of the Vector3 class along with the Euler class to set the position of mesh objects. With that said I have wrote a [post on the apply Euler method itself](/2021/06/18/threejs-vector3-apply-euler/), as well as another on the [Vector3 class in general](/2018/04/15/threejs-vector3/). When it comes to using the apply Euler method I need to have a Vector3 instance with a value other than 0,0,0 and when calling the method I need to pass an instance of the [Euler class](/2021/04/28/threejs-euler/) which is yet even another class that is worth looking into further.
 
-### Version Numbers matter
-
-When I first made this example I was using r135 of threejs.
-
 ### Source code is on github
 
-The source code for this example can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-lookat-with-apply-euler), along with many others.
+The source code for this example can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-lookat-with-apply-euler). This is also where I park the source code examples that I write about in my [many other posts on threejs](/categories/three-js/).
+
+### Version Numbers matter
+
+When I first made this example I was using r135 of threejs, and the last time I came around to do some editing of this post I was using r146.
+
+
 
 ## 1 - airplane.js r0, airplane-wrap.js r0, and demos
 
