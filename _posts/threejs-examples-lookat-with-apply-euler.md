@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2023-01-09 15:04:55
-version: 1.19
+updated: 2023-01-09 15:16:40
+version: 1.20
 ---
 
 For todays post on a [threejs project example](/2021/02/19/threejs-examples/) I wanted to make some quick code that has to do with how the [look at method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object. For the most part the look at method works well, and is very easy to use. I just call the method off of the object that is based off of the object3d class, typically a camera or mesh object, and pass the position that I want the object to look at. The position can be given in the form of a Vector3 object, or a set of number literal values, and more often than not the method will in fact have the object look at the point in space. However in some cases the end result may not work the way that I want it to, so I can not just turn my brain off and not think about this kind of stuff at all. In certain situations I will need to work out some other kind of situation when it comes to setting the rotation of an object3d based object.
@@ -38,8 +38,6 @@ The source code for this example can be found in my [test threejs repository](ht
 
 When I first made this example I was using r135 of threejs, and the last time I came around to do some editing of this post I was using r146.
 
-
-
 ## 1 - airplane.js r0, airplane-wrap.js r0, and demos
 
 In this section I am making use of an airplane module that I use to create a model of a kind of airplane type object. I then have another module that I can use to create a collection of these kinds of objects that I have pulled out into its one file apart from the airplane module. I am then making a few demos that make use of one or more of these files in an effort to come up with some kind of system for showing what the problem is to begin with, and also working out a solution for the problem.
@@ -47,6 +45,8 @@ In this section I am making use of an airplane module that I use to create a mod
 ### The airplane module r0
 
 There is showing what the problem is, and figuring out how to deal with the problem. However before I can start to do any of that I will want to have a way to create some kind of object that does not symmetrical. That is that I will want to have some kind of object where it is clear what side is the top, bottom, and front at least. So I came up with some quick code that will be used to create this kind of object.
+
+Nothing fancy with this module, just a create method that when called will create a group with a bunch of nested mesh objects as children.
 
 ```js
 // airplane.js - r0 - from threejs-examples-lookat-with-apply-euler
