@@ -5,22 +5,22 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 984
-updated: 2022-05-07 12:21:27
-version: 1.15
+updated: 2023-01-09 10:21:53
+version: 1.16
 ---
 
-For todays post on a [threejs example](/2021/02/19/threejs-examples/) I wanted to make a quick project that has to do with how the [lookAt method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object, or in this case a group of objects. For the most part that method works well, and is very easy to use, I just call the method off of the object that is based off of object3d, typically a camera, but it can be any other object3d based object, and pass the position that I want the object to look at. However in some cases the end result may not work the way that I want it to, so I can not just turn my brain off and not think about this kind of stuff at all some of the time.
+For todays post on a [threejs project example](/2021/02/19/threejs-examples/) I wanted to make some quick code that has to do with how the [look at method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.lookAt) is not always a kind of golden hammer kind of solution when it comes to setting the orientation of an object. For the most part the look at method works well, and is very easy to use. I just call the method off of the object that is based off of the object3d class, typically a camera or mesh object, and pass the position that I want the object to look at. The position can be given in the form of a Vector3 object, or a set of number literal values, and more often than not the method will in fact have the object look at the point in space. However in some cases the end result may not work the way that I want it to, so I can not just turn my brain off and not think about this kind of stuff at all. In certain situations I will need to work out some other kind of situation when it comes to setting the rotation of an object3d based object.
 
-This example then should help to show what I mean by this as it is a whole bunch of objects positioned around the origin and the are all made to look at the origin with the lookAt method. However two objects of interest might be at the top of the over all area where one plain is positioned one way and the other is flipped around completely. this is not always such a bad thing, but it is if what I want to do is make an animation in which this kind of object is of that of a plane that might make a motion like that of a loop.
+This example then should help to show what I mean by this as it is a whole bunch of objects positioned around the origin and the are all made to look at the origin with the look at method. However two objects of interest might be at the top of the over all area where one plain is positioned one way and the other is flipped around completely. This is not always such a bad thing, but it is if what I want to do is make an animation in which this kind of object is of that of a plane that might make a motion like that of a loop in space. The end result is that the plane will flip have way threw which is of course not at all how it would happen in reality.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/jLvd_e_uBLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## This threejs example of the lookAt, and applyEuler methods in threejs and what to know first
 
 This is one of my many posts on a threejs project example, this one has to do with using the object3d lookAt method and the Vector3 apply Eueler method. This is then not any kind of [getting started with threejs](/2018/04/04/threejs-getting-started/) kind of post, and I assume that you have at least a little experience working with threejs and client side javaScript in general. I will then not be getting into every little detail that you should know before hand in this section, but I will mention a few things you might want to read up more on before and if you have not done so thus far at this point.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/jLvd_e_uBLc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### There is reading more on the Object3d lookAt method and object3d class in general
 
