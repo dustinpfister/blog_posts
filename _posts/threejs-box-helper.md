@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2023-01-10 10:22:09
-version: 1.42
+updated: 2023-01-10 10:25:37
+version: 1.43
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help gain some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or potentially anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. I say potentially because it must be an object that has a buffer geometry, or in the case of groups child objects that do. Simply put, the box helper just draws a box outline around the area of an object that it is used with.
@@ -31,6 +31,10 @@ The box helper is great, but I often use it in conjunction with many other helpe
 ### Read up more on the object3d class, and buffer geometry
 
 The Box helper can be used with any [object3d class based object](/2018/04/23/threejs-object3d/) that has [buffer geometry](/2021/04/22/threejs-buffer-geometry/), or has child objects that contain such. Typically this means mesh objects, and groups of mesh objects. However other options would be Lines, and Points as well.
+
+### There is also the box3 class
+
+There is also looking into the [Box3 class alone](/2022/05/09/threejs-box3/) which is a major part of the box helper. There are many use case examples of the Box3 class that have to do with things like getting the size of a mesh object. The size of an object can then in turn be used in the process of helping to position an object in space as well.
 
 ### The source code for the examples in this post and many others is on Github
 
