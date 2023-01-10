@@ -5,35 +5,40 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2022-05-08 14:02:23
-version: 1.40
+updated: 2023-01-10 09:51:27
+version: 1.41
 ---
 
-In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to gaining some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. Simply put, the box helper just draws a box outline around the area of an object that it is used with, and doing so will help to get a better visual idea of what is going on with position, scale, and orientation of the object.
+In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help gain some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or potentially anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. I say potentially because it must be an object that has a buffer geometry, or in the case of groups child objects that do. Simply put, the box helper just draws a box outline around the area of an object that it is used with.
 
 There are maybe a few little problems here and there that might come up when using the box helper though. For example one might expect that when a mesh is moved or rotated that box will move and rotate with the mesh object, however this is not always the case. Typically I will want to add a box helper to the object that I have created it for as a child, so that when I move or rotate that object the box helper will move or rotate with it. Another way would be to use a method that can update the state of this box helper object by using a set from object method that is a prototype method of this box helper class. 
 
-In this post I will be going over a few quick examples of the box helper in three.js that might help to address some of these issues that might pop up when unseeing it. As such I will not just be writing about the box helper, but also a wide range of other things that can be applied elsewhere when it comes to working with a three.js project in general.
+In this post I will be going over a few quick examples of the box helper in threejs that might help to address some of these issues that might pop up when unseeing it. As such I will not just be writing about the box helper, but also a wide range of other things that can be applied elsewhere when it comes to working with a three.js project in general.
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/LvRUbSqwJ4Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The Box helper in threejs and what to know first
 
-The Box helper is one of several helper classes in threejs that help to gain a better visual understanding of the situation that is going on with a scene. Speaking of threejs, this is not in any way a getting started type post on threejs, or any additional skills that are requires to work with threejs and client side web development in general. I trust that you have at least a little basic understanding of how to get started with three.js, and the javaScript programing language, if not this post might still prove to be a little to advanced for now. I will not be going over the very basics of threejs here, but in this section I will be going over some things that you should understand at this point before continuing to read the other sections of this post.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/LvRUbSqwJ4Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+The Box helper is one of several helper classes in threejs that help to gain a better visual understanding of the situation that is going on with a scene. Speaking of threejs, this is not in any way a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or any additional skills that are requires to work with threejs and client side web development in general. I trust that you have at least a little background with the basics, if not this post might still prove to be a little to advanced for now. I will not be going over every little detail that you show know before hand here, but in this section I will be going over some things that you should understand at this point before continuing to read the other sections of this post.
 
 ### There are many other useful helpers in threejs use them
 
-The box helper is great, but I often use it in conjunction with many other helpers such as the grid helper and [arrow helper](/2018/11/10/threejs-arrow-helper/). There are also a whole bunch of additional helpers that can be used to gain a better awareness of what the situation is with an object, or a whole scene that I might be working on. So then the box helper is just one of many tools in the threejs toolbox of sorts when it comes to this sort of thing.
+The box helper is great, but I often use it in conjunction with many other helpers such as the [grid helper](/2022/02/18/threejs-grid-helper/) and [arrow helper](/2018/11/10/threejs-arrow-helper/). There are also a whole bunch of additional helpers that can be used to gain a better awareness of what the situation is with an object, or a whole scene that I might be working on. So then the box helper is just one of many tools in the threejs toolbox of sorts when it comes to this sort of thing.
 
-### version numbers matter with threejs
+### Read up more on the object3d class, and buffer geometry
 
-When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing I was using r135 of threejs. I do not think much has changed with the box helper between those two revision numbers, and many of the other helpers for a long time. However many code breaking changes have been made with many other things in threejs, and that trend will likely continue moving forward with later versions of the library. If you run into problems with these examples on your end the first and for most thing you should check is the revision number you are using.
+The Box helper can be used with any [object3d class based object](/2018/04/23/threejs-object3d/) that has [buffer geometry](/2021/04/22/threejs-buffer-geometry/), or has child objects that contain such. Typically this means mesh objects, and groups of mesh objects. However other options would be Lines, and Points as well.
 
 ### The source code for the examples in this post and many others is on Github
 
 The source code for the examples I am writing about in this post can be found in my [test threejs git hub repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-box-helper). This is also the repository where I am parking the source code examples for all my [other posts on threejs beyond just this one](/categories/three-js/).
+
+### version numbers matter with threejs
+
+When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing I was using r135 of threejs. I do not think much has changed with the box helper between those two revision numbers, and many of the other helpers for a long time. However many code breaking changes have been made with many other things in threejs, and that trend will likely continue moving forward with later versions of the library. If you run into problems with these examples on your end the first and for most thing you should check is the revision number you are using.
 
 ## 1 - Box helper basic example in threejs
 
@@ -121,7 +126,7 @@ loop();
 
 ## 3 - A Box helper can be used with a group
 
-I often like to use groups when working out a three.js project, they are a great way of making a few meshes all part of a given area. I can then move, rotate, scale and so forth this collection of mesh objects just like that of a single mesh object and the effects will update the group and all children of the group. So it is important for me to find out if this box helper will work okay with a group of mesh objects, and not just a single mesh. After taking a moment to play around with a simple example of this it would seem that it does in fact work as I would expect. The Box helper will enclose the area in which all of the mesh objects are.
+I often like to use groups when working out a threejs project, they are a great way of making a few meshes all part of a given area. I can then move, rotate, scale and so forth this collection of mesh objects just like that of a single mesh object and the effects will update the group and all children of the group. So it is important for me to find out if this box helper will work okay with a group of mesh objects, and not just a single mesh. After taking a moment to play around with a simple example of this it would seem that it does in fact work as I would expect. The Box helper will enclose the area in which all of the mesh objects are.
 
 ```js
 // create a GROUP
@@ -164,7 +169,7 @@ However there are some things to be aware of such as what happens when I set the
 
 ## 4 - Using the scale property of an object
 
-Thus far I have covered examples that involve changing the position and rotation of mesh objects, and groups of mesh objects and if these changes update the box helper that is a child of such objects. There is yet another property of an object3d based object that would be used with a box helper that is of interest and the is the scale property. Asi with with position property the scale property is also an instance of the Vecvor3 class. By default the scale property vectror3 instance values are 1,1,1 which means the original size of the geometry, but these can be set to any value lower, lower or higher to change the scale of the mesh or group.
+Thus far I have covered examples that involve changing the position and rotation of mesh objects, and groups of mesh objects and if these changes update the box helper that is a child of such objects. There is yet another property of an object3d based object that would be used with a box helper that is of interest and the is the scale property. As with the position property the scale property is also an instance of the Vecvor3 class. By default the scale property vectror3 instance values are 1,1,1 which means the original size of the geometry, but these can be set to any value lower, lower or higher to change the scale of the mesh or group.
 
 ```js
 // scene and grid helper
@@ -220,7 +225,7 @@ loop();
 
 ## 5 - using the set from object method as a way to update the box helper
 
-In one above example I fixed issues that have to do with updating an object by maing the box helper a child of the object to which I want to use the box helper with. Although this might work okay in most situations maybe the best way to go about handling this sort of thing would be to use the set from object method of the box helper class. This way I can just call this method each time I update an object, and I do not have to make the helper a child of the object when doing this. Also if I want to I can change what object I am using the helper with all together.
+In one above example I fixed issues that have to do with updating an object by making the box helper a child of the object to which I want to use the box helper with. Although this might work okay in most situations maybe the best way to go about handling this sort of thing would be to use the set from object method of the box helper class. This way I can just call this method each time I update an object, and I do not have to make the helper a child of the object when doing this. Also if I want to I can change what object I am using the helper with all together.
 
 ```js
 // scene, camera, grid helper
@@ -268,5 +273,4 @@ loop();
 
 ## Conclusion
 
-The box helper is then one of several kinds of helpers that can be used to gain a sense of what is going on with a three.js project by just simply adding a box like area around a mesh, group, or just about anything based off of the object3d class. Although the box helper will help to gain insight as to what is going on with an area, it will not help to shed light on what is going on in terms of directions, or other various factors that are at play. So then another useful helper is the [arrow helper](https://threejs.org/docs/#api/en/helpers/ArrowHelper) that can be used to know which way is what in a scene.
-
+The box helper is then one of several kinds of helpers that can be used to gain a sense of what is going on with a threejs project by just simply adding a box like area around a mesh, group, or just about anything based off of the object3d class. Although the box helper will help to gain insight as to what is going on with an area, it will not help to shed light on what is going on in terms of directions, or other various factors that are at play. So then another useful helper is the [arrow helper](https://threejs.org/docs/#api/en/helpers/ArrowHelper) that can be used to know which way is what in a scene.
