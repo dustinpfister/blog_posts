@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2023-01-10 10:59:09
-version: 1.45
+updated: 2023-01-10 11:02:34
+version: 1.46
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help gain some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or potentially anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. I say potentially because it must be an object that has a buffer geometry, or in the case of groups child objects that do. Simply put, the box helper just draws a box outline around the area of an object that it is used with.
@@ -288,7 +288,7 @@ loop();
 
 ## 6 - Using the THREE.Points Class, and custom geometry
 
-So the box helper with work fine with mesh objects, and also groups of mesh objects, but there are also objects like that of Points. The object used, or at least one child object used, needs a buffer geometry. Also when it comes to making a custom geometry there needs to at least be a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/).
+So the box helper with work fine with mesh objects, and also groups of mesh objects, but there are also objects like that of Points. The object used, or at least one child object used, needs a buffer geometry. Also when it comes to making a custom geometry there needs to at least be a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/). So then in this example I am creating a quick custom geometry by just crating an array of numbers for each x, y, and z value of each point that I want in space. Then I just need to create a buffer attribute and then set the attribute as the position attribute of a new buffer geometry object instance.
 
 ```js
 //-------- ----------
