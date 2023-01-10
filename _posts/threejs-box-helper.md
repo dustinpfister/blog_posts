@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2023-01-10 10:25:37
-version: 1.43
+updated: 2023-01-10 10:26:46
+version: 1.44
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help gain some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or potentially anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. I say potentially because it must be an object that has a buffer geometry, or in the case of groups child objects that do. Simply put, the box helper just draws a box outline around the area of an object that it is used with.
@@ -42,7 +42,7 @@ The source code for the examples I am writing about in this post can be found in
 
 ### version numbers matter with threejs
 
-When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing I was using r135 of threejs. I do not think much has changed with the box helper between those two revision numbers, and many of the other helpers for a long time. However many code breaking changes have been made with many other things in threejs, and that trend will likely continue moving forward with later versions of the library. If you run into problems with these examples on your end the first and for most thing you should check is the revision number you are using.
+When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing I was using r146 of threejs. I do not think much has changed with the box helper between those two revision numbers, and many of the other helpers for a long time. However many code breaking changes have been made with many other things in threejs, and that trend will likely continue moving forward with later versions of the library. If you run into problems with these examples on your end the first and for most thing you should check is the revision number you are using.
 
 ## 1 - Box helper basic example in threejs
 
