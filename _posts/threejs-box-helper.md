@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2023-01-10 09:51:27
-version: 1.41
+updated: 2023-01-10 10:22:09
+version: 1.42
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help gain some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or potentially anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. I say potentially because it must be an object that has a buffer geometry, or in the case of groups child objects that do. Simply put, the box helper just draws a box outline around the area of an object that it is used with.
@@ -47,23 +47,28 @@ A basic example of a box helper in three js might involve just calling the THREE
 Once I have my mesh object I can then pass that object as the first argument for the THREE.BoxHelper constructor, a second argument can then also be used to set the color of the box helper lines. Once the instance of the box helper is created it just needs to be added to the scene, group or whatever object3d based object I want the box helper to be a child of. In this example I am adding the box helper to the mesh object of the sphere, and then adding the sphere as a child of the main scene object.
 
 ```js
-// a mesh
-var mesh = new THREE.Mesh(
-    new THREE.SphereGeometry(1, 30, 30), 
-    new THREE.MeshNormalMaterial());
-// add a box helper
-mesh.add(new THREE.BoxHelper(mesh, 0xffffff));
-// start a scene
-var scene = new THREE.Scene();
-// add the mesh to the scene
-scene.add(mesh);
-// everything else
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
 camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh( new THREE.SphereGeometry(1, 30, 30),  new THREE.MeshNormalMaterial());
+scene.add( mesh );
+//-------- ----------
+// BOX HELPER OF MESH
+//-------- ----------
+mesh.add( new THREE.BoxHelper(mesh, 0xffffff) );
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -74,36 +79,36 @@ This is a nice simple example getting started type example of the box helper, bu
 When moving a box helper it is good to know if the box helper was added to a mesh, the scene, or some other object. If a mesh that a box helper was created for is moved, but the box helper is added to the scene or any object or group outside of that mesh, then the box helper will not move with the mesh but will stay relative to the group or object that it was added to. This is the same deal with just about any other kind of object3d based object in threejs actually, the positions that are set are relative to whatever the child object is.
 
 ```js
-// scene and grid helper
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(9, 9));
- 
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(4,4, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH AND BOX HELPER
+//-------- ----------
 // A MESH OBJECT WITH A BOX HELPER OF THE MESH
 // ADDED AS A CHILD OF THE MESH
-var mesh1 = new THREE.Mesh(
+const mesh1 = new THREE.Mesh(
         new THREE.SphereGeometry(0.5, 30, 30),
         new THREE.MeshNormalMaterial());
 mesh1.add(new THREE.BoxHelper(mesh1, 0xffff00));
 scene.add(mesh1);
- 
 // ADDING A BOX HELPER DIRECTLY TO THE SCENE
 scene.add(new THREE.BoxHelper(mesh1, 0xffffff));
- 
-// camera
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(1, 0, 1);
-// render
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// app loop
-var frame = 0,
-maxFrame = 90,
-fps = 30,
-lt = new Date();
-var loop = function () {
-    var now = new Date(),
+//-------- ----------
+// LOOP
+//-------- ----------
+let frame = 0, lt = new Date();
+const maxFrame = 90, fps = 30;
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000,
     per = frame / maxFrame,
     bias = 1 - Math.abs(0.5 - per) / 0.5;
@@ -113,7 +118,7 @@ var loop = function () {
         // this also changes the position of the box helper
         // that is relative to the mesh as it is a child of mesh1 
         // rather than the scene
-        mesh1.position.z = 5 * bias;
+        mesh1.position.z = 2 * bias;
         mesh1.rotation.y = Math.PI * per;
         renderer.render(scene, camera);
         frame += fps * secs;
@@ -129,9 +134,22 @@ loop();
 I often like to use groups when working out a threejs project, they are a great way of making a few meshes all part of a given area. I can then move, rotate, scale and so forth this collection of mesh objects just like that of a single mesh object and the effects will update the group and all children of the group. So it is important for me to find out if this box helper will work okay with a group of mesh objects, and not just a single mesh. After taking a moment to play around with a simple example of this it would seem that it does in fact work as I would expect. The Box helper will enclose the area in which all of the mesh objects are.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GROUP
+//-------- ----------
 // create a GROUP
-var group = new THREE.Group();
- 
+const group = new THREE.Group();
 // adding a Sphere, and box to the group, and
 // adjusting the position of one of the children of the group
 group.add(new THREE.Mesh(
@@ -141,27 +159,16 @@ group.add(new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1), 
     new THREE.MeshNormalMaterial()));
 group.children[1].position.set(2, 0, 0);
- 
 // BOX HELPER
-group.add(new THREE.BoxHelper(group, 0xffffff));
- 
+group.add( new THREE.BoxHelper(group, 0xffffff) );
 // Once the helper is added I can then change the position
 group.position.set(0,0,0);
 group.rotation.set(0,1,1);
- 
-// start a scene
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(8, 8, 0xffffff, 0xff0000));
 // add the GROUP to the scene
 scene.add(group);
- 
-// everything else
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -172,46 +179,45 @@ However there are some things to be aware of such as what happens when I set the
 Thus far I have covered examples that involve changing the position and rotation of mesh objects, and groups of mesh objects and if these changes update the box helper that is a child of such objects. There is yet another property of an object3d based object that would be used with a box helper that is of interest and the is the scale property. As with the position property the scale property is also an instance of the Vecvor3 class. By default the scale property vectror3 instance values are 1,1,1 which means the original size of the geometry, but these can be set to any value lower, lower or higher to change the scale of the mesh or group.
 
 ```js
-// scene and grid helper
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(9, 9));
-
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH, BOX HELPER
+//-------- ----------
 // a mesh with a box helper as a child of the mesh
-var mesh1 = new THREE.Mesh(
+const mesh1 = new THREE.Mesh(
         new THREE.SphereGeometry(0.5, 30, 30),
         new THREE.MeshNormalMaterial());
 mesh1.add(new THREE.BoxHelper(mesh1, 0xffff00));
 scene.add(mesh1);
-
 // helper that is not a child of the object that I
 // create the box helper for
-var helper = new THREE.BoxHelper(mesh1);
-scene.add(helper);
- 
+const helper = new THREE.BoxHelper(mesh1);
+scene.add(helper); 
 // changing position of mesh1
 mesh1.position.set(-2, 0, 0);
- 
-// camera
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(mesh1.position);
-// render
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// app loop
-var frame = 0,
-maxFrame = 90,
-fps = 30,
-lt = new Date();
-var loop = function () {
-    var now = new Date(),
+//-------- ----------
+// LOOP
+//-------- ----------
+let frame = 0, lt = new Date();
+const maxFrame = 90, fps = 30;
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000,
     per = frame / maxFrame,
     bias = 1 - Math.abs(0.5 - per) / 0.5;
     requestAnimationFrame(loop);
     if (secs > 1 / fps) {
-        var v = new THREE.Vector3(0.5, 1, 0.5 + 2 * bias);
+        const v = new THREE.Vector3(0.5, 1, 0.5 + 2 * bias);
         mesh1.scale.copy(v);
         mesh1.rotation.y = Math.PI * per;
         renderer.render(scene, camera);
@@ -228,31 +234,36 @@ loop();
 In one above example I fixed issues that have to do with updating an object by making the box helper a child of the object to which I want to use the box helper with. Although this might work okay in most situations maybe the best way to go about handling this sort of thing would be to use the set from object method of the box helper class. This way I can just call this method each time I update an object, and I do not have to make the helper a child of the object when doing this. Also if I want to I can change what object I am using the helper with all together.
 
 ```js
-// scene, camera, grid helper
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(9, 9));
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
 camera.position.set(5, 5, 5);
-camera.lookAt(1, 0, 1);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH, BOX HELPER
+//-------- ----------
 // A MESH OBJECT WITH A BOX HELPER OF THE MESH
 // ADDED AS A CHILD OF THE MESH
-var mesh1 = new THREE.Mesh(
+const mesh1 = new THREE.Mesh(
         new THREE.ConeGeometry(0.5, 3, 30, 30),
         new THREE.MeshNormalMaterial());
 scene.add(mesh1);
 // ADDING A BOX HELPER TO THE SCENE OBJECT
-var boxHelper = new THREE.BoxHelper(mesh1, 0xffff00);
+const boxHelper = new THREE.BoxHelper(mesh1, 0xffff00);
 scene.add(boxHelper);
+//-------- ----------
 // LOOP
-var frame = 0,
-maxFrame = 90,
-fps = 30,
-lt = new Date();
-var loop = function () {
-    var now = new Date(),
+//-------- ----------
+let frame = 0, lt = new Date();
+const maxFrame = 90, fps = 30;
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000,
     per = frame / maxFrame,
     bias = 1 - Math.abs(0.5 - per) / 0.5;
