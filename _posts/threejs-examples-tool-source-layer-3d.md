@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 959
-updated: 2022-05-09 06:21:37
-version: 1.31
+updated: 2023-01-11 10:54:02
+version: 1.32
 ---
 
-For this weeks post on threejs I made another simple [threejs project example](/2021/02/19/threejs-examples/), this time around I wanted to make a 3d version of a [2d canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas layers positioned on top of that source layer that I draw on. 
+For this [threejs project example](/2021/02/19/threejs-examples/) I wanted to make a 3D version of a [2d canvas javaScript project](/2022/01/31/js-javascript-example-tool-source-layer-2d/) that I made a little while back that has to do with something I am calling a source layer. The general idea of what I have in mind here is to make my own art program that involves setting up what the content of a resource layer is, then I have one or more additional canvas layers positioned on top of that source layer that I draw on. 
 
-There may be alternative ways of doing this sort of thing such as just creating a scene the way that I want to, adjust the position of the camera and so forth and then just take a still picture and open that still picture up in an image editing program like GIMP. Any decent image manipulation program such as GIMP will have layers as a feature, so I can add the still of the scene as a source layer, then create another layer on top of that and draw to that. 
+There may be alternative ways of doing this sort of thing such as just creating a scene the way that I want to, adjust the position of the camera and so forth and then just take a still picture and open that still picture up in an image editing program like GIMP. Any decent image manipulation program such as GIMP will have layers as a feature, so I can add the still of the scene as a source layer, then create another layer on top of that and draw to that. with that said there is the question of how to go about justifying making something like this rather than just using tools that are all ready out there to work with. I can not think of that much, but for starters there is just making a minimal custom tailored program that is made for a specific kind of work flow, or over all style. Aside from that it is possible that this example might just prove to be another one of my unfinished prototypes for some kind of application using threejs.
 
-So then there is the question of how to go about justifying making something like this rather than just using tools that are all ready out there to work with. I can not think of that much, but for starters there is just making a minimal custom tailer program that is trailered to a specific kind of work flow, or over all style. Aside from that it is possible that this example might just prove to be another one of my unfinished prototypes for some kind of application using threejs.
+I would like to make at least one, if not more projects that function as a kind of tool to help in in the process of making projects though. This project might not prove to be the best example of this kind of thing, but sooner or later I might expand on this specific kind of threejs example. That is to create some kind of tool that helps in in the process of making some kind of asset or file product.
 
 <!-- more -->
 
@@ -22,7 +22,7 @@ So then there is the question of how to go about justifying making something lik
 
 This is a project in which I am using [threejs](/2018/04/04/threejs-getting-started/), as well as [vuejs](/2019/05/05/vuejs-getting-started/) when it comes to front end libraries. I am also using one additional file on top of just threejs alone that is the [Collada File loader](/2021/04/30/threejs-dae-collada-loader/) that can be found in the threejs github repository. On top of that I am also making use of several javaScript files of my own that make use of these various files that have to do with threejs and vuejs, as well as a little back end code, and I am also using dae files are a resource for this art application example on top of that actually.
 
-So if you are still fairly new to javaScript this post might prove to be a little to advanced for you, also even if you have some experience with javaScript it still might be a bit of a pain to reproduce what I am writing about here on you end. So maybe the best way would be to clone down my test vje github repository and do an npm install in order to set things up quick. In any case in this section I will be going over a few quick points about this project example that one should e aware of before continuing to read the result of the content in this post.
+So if you are still fairly new to javaScript this post might prove to be a little to advanced for you, also even if you have some experience with javaScript it still might be a bit of a pain to reproduce what I am writing about here on you end. So maybe the best way would be to clone down my test vjs github repository and do an npm install in order to set things up quick. In any case in this section I will be going over a few quick points about this project example that one should e aware of before continuing to read the result of the content in this post.
 
 ### The source code for this example is on Github
 
