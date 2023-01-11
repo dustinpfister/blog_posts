@@ -5,39 +5,40 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2022-05-09 16:07:43
-version: 1.45
+updated: 2023-01-11 11:08:02
+version: 1.46
 ---
 
-In this post will will be covering the subject of adding light to a scene in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as point lights, [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
+In this post will will be covering the subject of adding light to a scene in [threejs](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as [point lights](/2019/06/02/threejs-point-light/), [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
 
 Spotlights as the name suggests is a light that will concentrate light in a cone like shape at a given target location. This kind of light then differs a great deal from other options that will just brighten things up in general such as with ambient light, or give a cylinder like beam of light where all rays move in a single parallel direction such as the case with directional light. So then in addition to adding directional or ambient light to a project, spotlights can be used as an additional kind of light source that can be moved around, and focus light in on a specific area.
 
-For the most part the use of a spotlight is pretty strait forward, just create an instance of it with the constructor function and add it to the scene object. However there is a fair amount to write about when it comes to the options that are passed when calling the constructor function, and also a great deal when it comes to how to go about updating the state of a spot light.
+For the most part the use of a spotlight is pretty straightforward, just create an instance of it with the [constructor function](/2019/02/27/js-javascript-constructor/) and add it to the scene object. However there is a fair amount to write about when it comes to the options that are passed when calling the constructor function, and also a great deal when it comes to how to go about updating the state of a spot light.
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/L3-Dbqc3S8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Spotlights in threejs, and what to know before hand
 
-This is not a [getting started](/2018/04/04/threejs-getting-started/) post on three.js, or [javaScript in general](/2018/11/27/js-getting-started/) for that matter. I assume that you have at least a basic working knowledge on javaScript, and that you have your feet wet with three.js. If not the content of this post might still prove to be a little to advanced for you until you get up to speed with the core skills that are required before hand that are outside the scope of this post.
+This is not a [getting started](/2018/04/04/threejs-getting-started/) post on threejs, or [javaScript in general](/2018/11/27/js-getting-started/) for that matter. I then assume that you have at least a basic working knowledge on javaScript, and that you have got your feet wet with threejs on tp of that. If not the content of this post might still prove to be a little to advanced for you until you get up to speed with the core skills that are required before hand that are outside the scope of this post.
 
-Regardless of what your level of experience is with three.js there is a whole lot the branches off from the use of spot lights, and at times it might be required to refresh on cretin things here and there. As such in this section I will be going over what some of those things might be.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/L3-Dbqc3S8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Regardless of what your level of experience is with threejs there is a whole lot that branches off from the use of spot lights. At times it might be required to refresh on cretin things here and there. As such in this section I will be going over what some of those things might be.
 
 ### Materials matter with spotlights and light in general
 
-I will not be getting into every little detail about [materials as that is a matter for one or more other posts completely](/2018/04/30/threejs-materials/). However I will say that one major thing to check if you are running into problems is to double check what kind of material you are using to skin your mesh objects. Many materials like that of the basic material, normal material, and the depth material WILL NOT respond to a light source at all. Also when it comes to materials that WILL respond to light they will not do so in the same way, for example I have come to find that [I like to use the standard material](/2021/04/27/threejs-standard-material/), over the [lamber material](/2018/04/08/threejs-lambert-material/) when it comes to using spotlights in a project.
+I will not be getting into every little detail about [materials as that is a matter for one or more other posts completely](/2018/04/30/threejs-materials/). However I will say that one major thing to check if you are running into problems is to double check what kind of material you are using to skin your mesh objects. Many materials like that of the [basic material](/2018/05/05/threejs-basic-material/), [normal material](/2021/06/23/threejs-normal-material/), and the [depth material](/2021/05/04/threejs-depth-material/) WILL NOT respond to a light source at all. Also when it comes to materials that WILL respond to light they will not do so in the same way, for example I have come to find that [I like to use the phong material](/2022/12/29/threejs-phong-material/), or the [standard material](/2021/04/27/threejs-standard-material/), over the [lamber material](/2018/04/08/threejs-lambert-material/) when it comes to using spotlights in a project.
+
+### The source code example for this post and many others are on github
+
+The source code examples that I am writing about in this post can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-spotlights). This is also where I park the source code for my many other blog [posts on threejs](/categories/three-js/).
 
 ### The Three.js version matters
 
 The last time I edited this post I was [using three.js r135](https://github.com/mrdoob/three.js/releases/tag/r135) that came out in November of 2021, and when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91) released in March of 2018. If you run into problems with the code examples here there are a lot of things to check, and the version number is without question one of them
 
 This is something that I should mention in every three.js post, three.js is a javaScript project where the version number is very important, more so than usual I would say. New versions of three.js come out all the time, and when they do it's not exactly just some spelling fixes in the readme file. Often there are many major, project breaking changes that are made with the public API of the library that will result in code breaking changes with a whole worked of code examples on the open web.
-
-### The source code example for this post and many others are on github
-
-The source code examples that I am writing about in this post can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-spotlights).
 
 ## 1 - Basic example of spotlight use
 
