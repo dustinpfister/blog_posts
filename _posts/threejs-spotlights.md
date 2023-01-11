@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2023-01-11 11:08:02
-version: 1.46
+updated: 2023-01-11 11:14:10
+version: 1.47
 ---
 
 In this post will will be covering the subject of adding light to a scene in [threejs](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as [point lights](/2019/06/02/threejs-point-light/), [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
@@ -34,9 +34,9 @@ I will not be getting into every little detail about [materials as that is a mat
 
 The source code examples that I am writing about in this post can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-spotlights). This is also where I park the source code for my many other blog [posts on threejs](/categories/three-js/).
 
-### The Three.js version matters
+### The Threejs version matters
 
-The last time I edited this post I was [using three.js r135](https://github.com/mrdoob/three.js/releases/tag/r135) that came out in November of 2021, and when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91) released in March of 2018. If you run into problems with the code examples here there are a lot of things to check, and the version number is without question one of them
+The last time I edited this post I was [using three.js r135](https://github.com/mrdoob/three.js/releases/tag/r135) that came out in November of 2021, and when I first wrote this post I was using [threejs r91](https://github.com/mrdoob/three.js/releases/tag/r91) released in March of 2018. If you run into problems with the code examples here there are a lot of things to check, and the version number is without question one of them
 
 This is something that I should mention in every three.js post, three.js is a javaScript project where the version number is very important, more so than usual I would say. New versions of three.js come out all the time, and when they do it's not exactly just some spelling fixes in the readme file. Often there are many major, project breaking changes that are made with the public API of the library that will result in code breaking changes with a whole worked of code examples on the open web.
 
