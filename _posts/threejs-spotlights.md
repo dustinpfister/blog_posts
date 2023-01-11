@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2023-01-11 11:14:10
-version: 1.47
+updated: 2023-01-11 11:33:19
+version: 1.48
 ---
 
 In this post will will be covering the subject of adding light to a scene in [threejs](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as [point lights](/2019/06/02/threejs-point-light/), [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
@@ -56,45 +56,50 @@ Assuming that I have a mesh of some kind at the origin of my scene that is equip
 Also when creating the instance of a spotlight there are a total of 6 arguments that can be given to the constructor that set various relevant values for the spotlight. The first is the color of the light, and then the intensity which is the standard for just about all lights in threejs actually. After that there are values that have to do just with a spotlight, such as the distance over which the light will decay, the angle from the center of the cone at which the spotlight will cover, as well as penumbra and decay rate values.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER
-    var scene = new THREE.Scene();
-    scene.background = new THREE.Color('#0f0f0f');
-    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-    camera.position.set(5, 8, 12);
-    camera.lookAt(0,0,0);
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(640, 480);
-    // SPOTLIGHT
-    var color = new THREE.Color('white'),
-    intensity = 1,
-    distance = 30,
-    angle = Math.PI * 0.05,
-    penumbra = 0.25,
-    decay = 0.5;
-    var spotLight = new THREE.SpotLight(color, intensity, distance, angle, penumbra, decay);
-    spotLight.position.set(8, 8, 0);
-    scene.add(spotLight);
-    scene.add( new THREE.AmbientLight(0xffffff, 0.07));
-   // MESH OBJECTS
-    var cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshStandardMaterial({
-                color: 0xff0000
-            }));
-    cube.position.set(0, 1, 0);
-    scene.add(cube);
-    var floor = new THREE.Mesh(
-            new THREE.BoxGeometry(10, 1, 10),
-            new THREE.MeshStandardMaterial({
-                color: 0x008800
-            }));
-    scene.add(floor);
-    // RENDER
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#0f0f0f');
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(6.5, 6.5, 8.5);
+camera.lookAt(-0.5, -3.0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// SPOTLIGHT, AMBIENT LIGHT
+//-------- ----------
+const color = new THREE.Color('white'),
+intensity = 1,
+distance = 30,
+angle = Math.PI * 0.05,
+penumbra = 0.25,
+decay = 0.5;
+const spotLight = new THREE.SpotLight(color, intensity, distance, angle, penumbra, decay);
+spotLight.position.set(8, 8, 0);
+scene.add(spotLight);
+scene.add( new THREE.AmbientLight(0xffffff, 0.07));
+//-------- ----------
+// MESH OBJECTS
+//-------- ----------
+const mesh_cube = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshStandardMaterial({
+            color: 0xff0000
+        }));
+mesh_cube.position.set(0, 1, 0);
+scene.add(mesh_cube);
+const mesh_floor = new THREE.Mesh(
+        new THREE.BoxGeometry(10, 1, 10),
+        new THREE.MeshStandardMaterial({
+            color: 0x008800
+        }));
+scene.add(mesh_floor);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 By default a spotlight will point at the origin \(0,0,0\), because the mesh I am using in this demo is located at the origin, and I am not moving anything around, this works just okay with the default settings when it comes to the target value of the spotlight. However if I want to change the target point that the spotlight is pointing at, and tweak some additional values, there is a great deal more to know about spotlights. 
