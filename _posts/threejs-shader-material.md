@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1023
-updated: 2023-01-13 12:14:08
-version: 1.5
+updated: 2023-01-13 12:19:11
+version: 1.6
 ---
 
 The [Shader material](https://threejs.org/docs/#api/en/materials/ShaderMaterial) in threejs is one way to go about getting started with custom shaders in threejs, the other general option would be to look into the [raw shader material](https://threejs.org/docs/#api/en/materials/RawShaderMaterial). The main difference between the two has to do with built-in uniforms and attributes when it comes to the starting state of the GLSL \( [openGL Shader Language](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) \) code. For this reason it might be best to start out with the Shader material rather than the raw shdaer material as there are some built in values that I will not have to worry about setting up myself when it comes to the raw shader material. Yet again it is a bit of a toss up with that as if one wants to learn a thing or two about GLSL alone then the raw material might prove to be a better starting point actually.
@@ -17,7 +17,7 @@ In any case the Shader material is what I am starting with, and that will be the
 
 ## The Shader Material in threejs and what to know first
 
-This is a post on getting started with making custom GLSL shaders in threejs by way of the THREE.ShaderMaterial class as well as many other core threejs features. This is then not in any way a kind of getting started post with threejs, client side javaScript, and many other skills that are needed before hand. Also on top of the usual set of skills that are needed for doing just about anything with threejs there is one new additional skill that one is going to need to start to scratch the surface with at least which as I mentioned in the opening of this post GLSL or openGL Shader Language.
+This is a post on getting started with making custom GLSL shaders in threejs by way of the THREE.ShaderMaterial class as well as many other core threejs features. This is then not in any way a kind of [getting started post with threejs](/2018/04/04/threejs-getting-started/), [client side javaScript](/2018/11/27/js-getting-started/), and many other skills that are needed before hand. Also on top of the usual set of skills that are needed for doing just about anything with threejs there is one new additional skill that one is going to need to start to scratch the surface with at least which as I mentioned in the opening of this post GLSL or openGL Shader Language.
 
 ### Source code examples are also on Github
 
@@ -31,7 +31,7 @@ When I was first writing this post I was using r146 of threejs.
 
 There is a lot to take in when it comes to even just simply getting started with the THREE.ShaderMaterial. However this is to be expected as this is without question one of the most, if not the most advanced topics there is when it comes to threejs. I have been working with threejs on and off for years and even I still find this to be a little intense for me, however I started taking a swing or two at it now and then because there is not much that remains when it comes to more ground to cover with threejs for me.
 
-Anyway not just for your sake, but very much for my own sake as well, this will be a collection of very basic, getting started type examples of custom shaders in threejs by way of THREE.ShaderMaterial. This might prove to be an easier alternative to that of the THREE.RawShaderMaterial but that will only help so much of course. Still I have found that if I just want to reproduce the functionally of the THREE.MeshBasicMatreial with just the color option, that is not so hard of a starting point. With that said these examples will just be focusing one various ways to go about doing that which will just result in a solid blob of color for the object rendered in the scene. Everything else should be something that I get to in more advanced sections.
+Anyway not just for your sake, but very much for my own sake as well, this will be a collection of very basic, getting started type examples of custom shaders in threejs by way of THREE.ShaderMaterial. This might prove to be an easier alternative to that of the THREE.RawShaderMaterial but that will only help so much of course. Still I have found that if I just want to reproduce the functionally of the [THREE.MeshBasicMatreial](/2018/05/05/threejs-basic-material/) with just the color option, that is not so hard of a starting point. With that said these examples will just be focusing one various ways to go about doing that which will just result in a solid blob of color for the object rendered in the scene. Everything else should be something that I get to in more advanced sections.
 
 ### 1.1 - Custom Shader hello world with gl_Position and gl_FragColor
 
@@ -140,7 +140,7 @@ scene.add(mesh);
 renderer.render(scene, camera);
 ```
 
-That makes things for more concise, but it also totally defeats the purpose of bothering with the shader material because I could just use the basic material. Again the goal here is to just be aware fo what there is to work with to just get started with this sort of thing, and the THREE.ShaderChunk is just one thing to be aware of. Also in some cases I might want to start with functionality that is not all to different from that of the basic material, phong material, normal material and so forth. It is just that typically I will not want to do something like this, but rather start with the actual code rather than a reference to it as a start point.
+That makes things for more concise, but it also totally defeats the purpose of bothering with the shader material because I could just use the basic material. Again the goal here is to just be aware fo what there is to work with to just get started with this sort of thing, and the THREE.ShaderChunk is just one thing to be aware of. Also in some cases I might want to start with functionality that is not all to different from that of the basic material, [phong material](/2022/12/29/threejs-phong-material/), [normal material](/2021/06/23/threejs-normal-material/) and so forth. It is just that typically I will not want to do something like this, but rather start with the actual code rather than a reference to it as a start point.
 
 ### 1.3 - Full code from THREE.ShaderChunk example
 
