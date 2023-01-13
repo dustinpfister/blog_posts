@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1023
-updated: 2023-01-13 12:19:11
-version: 1.6
+updated: 2023-01-13 12:24:53
+version: 1.7
 ---
 
 The [Shader material](https://threejs.org/docs/#api/en/materials/ShaderMaterial) in threejs is one way to go about getting started with custom shaders in threejs, the other general option would be to look into the [raw shader material](https://threejs.org/docs/#api/en/materials/RawShaderMaterial). The main difference between the two has to do with built-in uniforms and attributes when it comes to the starting state of the GLSL \( [openGL Shader Language](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) \) code. For this reason it might be best to start out with the Shader material rather than the raw shdaer material as there are some built in values that I will not have to worry about setting up myself when it comes to the raw shader material. Yet again it is a bit of a toss up with that as if one wants to learn a thing or two about GLSL alone then the raw material might prove to be a better starting point actually.
@@ -276,7 +276,7 @@ This is still just a very complex way of just reproducing the functionally of th
 
 ## 2 - A crosshatching example
 
-One of the first real examples of a custom shader material that I have made thus far is actually a hacked over version of one that I found on line. That is that I just did some quick google work to find a shader that does more or less what I wanted and found something that was close at least. I then hacked over it a lot, removing code that I did not want or need for the simple black and white look that I wanted and ended up with this.
+One of the first real examples of a custom shader material that I have made thus far is actually a hacked over version of one [that I found on line](https://codepen.io/EvanBacon/pen/xgEBPX). That is that I just did some quick google work to find a shader that does more or less what I wanted and found something that was close at least. I then hacked over it a lot, removing code that I did not want or need for the simple black and white look that I wanted and ended up with this.
 
 ```js
 // ---------- ----------
@@ -423,6 +423,8 @@ const loop = () => {
 };
 loop();
 ```
+
+The code that is was based on was made for a very old revision of threejs \( r57 \), so many of the changes had to do with having to just do things the way that they are done now. I also did not make use of additional shaders that where used in the example, and made a few more changes that allowed for things like thicker lines. Thus far this material works more or less the way that I would like it to, but I still would like to add at least a few more features to this such as transparency.
 
 
 ## Conclusion
