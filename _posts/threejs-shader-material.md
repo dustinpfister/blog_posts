@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1023
-updated: 2023-01-14 13:10:20
-version: 1.10
+updated: 2023-01-14 13:48:47
+version: 1.11
 ---
 
 The [Shader material](https://threejs.org/docs/#api/en/materials/ShaderMaterial) in threejs is one way to go about getting started with custom shaders in threejs, the other general option would be to look into the [raw shader material](https://threejs.org/docs/#api/en/materials/RawShaderMaterial). The main difference between the two has to do with built-in uniforms and attributes when it comes to the starting state of the GLSL \( [openGL Shader Language](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) \) code. For this reason it might be best to start out with the Shader material rather than the raw shader material as there are some built in values that I will not have to worry about setting up myself when it comes to the raw shader material. Yet again it is a bit of a toss up with that as if one wants to learn a thing or two about GLSL alone then the raw material might prove to be a better starting point actually.
@@ -283,7 +283,130 @@ Notice all the include statements that begin with a hashtag, followed by a name 
 
 This is still just a very complex way of just reproducing the functionally of the basic material, but the goal here was not to make a custom material to begin with, but rather to just get started with this. With these three examples I am not somewhat ready to start to move on to some real examples in which I am just hacking over and expanding from one of these kinds of start points.
 
-## 2 - 
+## 2 - Using Vertex Colors and a Base color to set frac color
+
+In the basic section of this post I wrote a whole bunch of examples that do more or less the same thing, but in some very different ways. They all had to do with just simply drawing a single color for each pixel that is the same end result of just using the Mesh basic material with the color option. That's okay considering that the goal in that section was to just get started, but not create some kind of final product. 
+
+However in this section though the goal is to create an actual final result by making use of core threejs GLSL code to work with to create the same starting set of features there are to work with in the mesh basic material. Then hack over things a bit from there to create a material the will render a geometry by way of a ratio between a single solid base color, and whatever is going in in terms of any color attribute in the geometry that is used for what is called vertex coloring. For those of you not in the know with this one, vertex coloring is a way to define a color for each vertex in the position attribute of a buffer geometry. It is a nice quick way to have something other than a solid blob of color, that does not require light sources, or textures, but does require a color attribute in the geometry.
+
+### 2.1 - Vertex and Base Color shader material example
+
+The first thing that I did when making this example is create a geometry using one of the built in geometry constructor functions. Then I would just get a reference to the position attribute of the geometry, and use the count value to know how many items I need for the color attribute that I will create for the geometry. For that I just worked out some quick code to create the color attribute by making an array and pushing values for the red, green, and blue color channels for each vertex. I then confirmed that everything is working okay by making use of the basic material with the vertexColors Boolean set to true. So now the next step is to just get the same result with the shader material by just using the same GLSL code as the basic material, but just commenting out everything that does not have to do with the features that I want.
+
+I really like the process of creating an array of strings for each line of GLSL code as this allows me to comment out lines of code one by one to get a quick idea of what I want to keep, and what might be unneeded bloat for what I want to do. Starting with the example in the basic section that has all the include statements I start to do just that until I have just the core features along that I want working. After that I started to go threw each of those include statements and just took a look at what the GLSL code is for each of them in the THREE.ShaderChunk object. Then I just replaced the includes with the actually GLSL lines, but with one exception which is the common lib.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(0, 5, 10);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// SHADER OBJECT - a custom shader that uses vertex colors along with a base color
+// ---------- ----------
+const shader_basevert =  {
+    uniforms: { 
+        uBaseColor: { value: new THREE.Color(0,0,0) },
+        uBaseVertRatio: { value: new THREE.Vector2(0.50,0.50) },
+        opacity: { value: 1.0 }
+    },
+    vertexShader: [
+        '#include <common>',
+        'varying vec3 vColor;',
+        'void main() {',
+        '    vColor = vec3( 1.0 );',
+        '    vColor *= color;',
+        '    vec3 transformed = vec3( position );',
+        '    vec4 mvPosition = vec4( transformed, 1.0 );',
+        '    mvPosition = modelViewMatrix * mvPosition;',
+        '    gl_Position = projectionMatrix * mvPosition;',
+        '}'
+    ].join('\n'),
+    fragmentShader: [
+        'uniform vec3 uBaseColor;',
+        'uniform float opacity;',
+        'uniform vec2 uBaseVertRatio;',
+        '#include <common>',
+        'varying vec3 vColor;',
+        'void main() {',
+        '    vec4 color = vec4(uBaseColor, 1.0);',
+        '    color *= uBaseVertRatio.x;',
+        '    color += vec4(vColor, 1.0) * uBaseVertRatio.y;',
+        '    gl_FragColor = vec4( color.rgb, opacity );',
+        '}'
+    ].join('\n')
+};
+//console.log(THREE.ShaderChunk[ 'common' ])
+// ---------- ----------
+// HELPER
+// ---------- ----------
+const MeshBaseAndVertexMaterial = (opt) => {
+    opt = opt || {};
+    const mat = new THREE.ShaderMaterial({
+        uniforms: THREE.UniformsUtils.clone(shader_basevert.uniforms),
+        vertexShader: shader_basevert.vertexShader,
+        fragmentShader: shader_basevert.fragmentShader
+    });
+    mat.vertexColors = true;
+    mat.transparent = true;
+    if(opt.uBaseColor){
+        mat.uniforms.uBaseColor.value = new THREE.Color(opt.uBaseColor);
+    }
+    if(opt.uBaseVertRatio){
+         mat.uniforms.uBaseVertRatio.value = opt.uBaseVertRatio;
+    }
+    mat.uniforms.opacity.value = opt.opacity === undefined ? 1 : opt.opacity;
+    return mat;
+};
+// ---------- ----------
+// SHADER MATERIAL
+// ---------- ----------
+const material1 = MeshBaseAndVertexMaterial({
+    uBaseColor: 0x888888,
+    uBaseVertRatio: new THREE.Vector2(0.1, 0.9),
+    opacity: 0.75 });
+const material2 = MeshBaseAndVertexMaterial({
+    uBaseColor: 0xff00ff,
+    opacity: 0.5 });
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geo = new THREE.SphereGeometry( 3, 60, 60 );
+// adding a color attribute
+const len = geo.getAttribute('position').count;
+const color_array = [];
+let i = 0;
+while(i < len){
+   const a1 = i / len;
+   const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+   color_array.push(0, a2, 1 - a2);
+   i += 1;
+}
+const color_attribute = new THREE.BufferAttribute(new Float32Array(color_array), 3);
+geo.setAttribute('color', color_attribute)
+// ---------- ----------
+// MESH
+// ---------- ----------
+const mesh1 = new THREE.Mesh(geo, material1);
+mesh1.position.x = 3.2;
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(geo, material2);
+mesh2.position.x = -3.2;
+scene.add(mesh2);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+renderer.render(scene, camera);
+```
+
+After a while I found what lines are used to add the vertex coloring feature, along with other core features that have to do with just the plain old diffuse color feature, and opacity. So then I ended up with just a few lines as I commented out, and removed lines that have to do with all kinds of features like alpha maps and so forth. Turns out that the mesh basic material is not so basic as there is a whole to to work with still. Anyway once I had just the features that I wanted from the basic feature I found ways to further reduce the complexity even more with this as all I want to do with this example at least is to color each fragment by way of a ratio between vertex coloring and a single uniform base color.
+
+The end result is then just what I wanted for this example at least. I can set a base color, and a ratio in the form of a THREE.Vector2 object, to set the ratio between the base color and what is going on with vertex coloring as a way to render the geometry.
 
 ## 3 - A crosshatching example
 
