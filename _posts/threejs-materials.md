@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2022-12-29 11:25:37
-version: 1.42
+updated: 2023-01-14 14:12:27
+version: 1.43
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -26,7 +26,7 @@ This is not my [getting started post on three.js](/2018/04/04/threejs-getting-st
 
 ### The Material base Class
 
-All materials inherit from the [Material base class](https://threejs.org/docs/index.html#api/materials/Material). This base class contains a lot of properties some of which are superseded by prosperities in a certain material. I will not be getting into the Base class in detail here, as I still need to write more demos with many of the properties. Also This post is going to be pretty lengthly to begin with anyway. However I think I should at least cover some of the most important properties to be aware of in the base material class that I have dealt with thus far.
+All materials inherit from the [Material base class](https://threejs.org/docs/index.html#api/materials/Material). This base class contains a lot of properties some of which are superseded by properties in a certain material. I will not be getting into the Base class in detail here, as I still need to write more demos with many of the properties. Also This post is going to be pretty lengthy to begin with anyway. However I think I should at least cover some of the most important properties to be aware of in the base material class that I have dealt with thus far.
 
 ### The color, and emissive properties of materials
 
@@ -56,6 +56,11 @@ var planeMaterial = new THREE.MeshBasicMaterial({
     opacity: .4
 });
 ```
+
+### Writing custom shaders
+
+In this post I am writing about what there is to work with mainly in terms of built in materials. However in some cases the only way to do what one wants to do with a material will have to involve finding, or writing one or more custom shaders. Maybe the best way to get started with this sort of thing would be to start reading a thing or two about [THREE.ShaderMaterial](/2023/01/13/threejs-shader-material/) rather than THREE.RawShaderMaterial as a lot of things are set up to begin with that allow one to not have to write all the GLSL code from the ground up. 
+
 
 ### Source is also on Github
 
