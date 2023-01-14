@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1023
-updated: 2023-01-14 13:48:47
-version: 1.11
+updated: 2023-01-14 13:58:57
+version: 1.12
 ---
 
 The [Shader material](https://threejs.org/docs/#api/en/materials/ShaderMaterial) in threejs is one way to go about getting started with custom shaders in threejs, the other general option would be to look into the [raw shader material](https://threejs.org/docs/#api/en/materials/RawShaderMaterial). The main difference between the two has to do with built-in uniforms and attributes when it comes to the starting state of the GLSL \( [openGL Shader Language](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) \) code. For this reason it might be best to start out with the Shader material rather than the raw shader material as there are some built in values that I will not have to worry about setting up myself when it comes to the raw shader material. Yet again it is a bit of a toss up with that as if one wants to learn a thing or two about GLSL alone then the raw material might prove to be a better starting point actually.
@@ -27,6 +27,10 @@ This is a post on getting started with making custom GLSL shaders in threejs by 
 If you want to write custom shaders you will want to learn at least a little GLSL, and getting into every little thing about that may be outside the scope of this post. Also I am still very new to this specific language anyway, so I would need to study more myself in order to start writing a collection of posts on this language anyway. There is however learning just enough GLSL to start effectively hacking over shaders that have all ready been written though and that is more or less what I am doing in this post.
 
 Still there is the question of what is the Modzilla Developer Network equivalent site for GLSL? That is indeed a good question and thus far I can not say that I have found that. Thus far I have found the [khronos group pages](https://www.khronos.org/opengles/sdk/docs/manglsl/docbook4/) to be somewhat helpful, however thus far I have been mainly just looking at the code that is used in the core of threejs itself as an example of core features of this language by looking at the [source code files that compose the THREE.ShaderChunk library](https://github.com/mrdoob/three.js/tree/r146/src/renderers/shaders/ShaderChunk) as well as just working with this Object in the process of creating a custom shader. Working closely with this object just strikes me as what the THREE.ShaderMaterial is all about as there is also the THREE.RawShaderMaterial class which seems to be what one will want to use when it comes to doing everything from the ground up with GLSL.
+
+### There is learning a thing or two about the built in materials first of course
+
+If you are still new to threejs, and also even if you do have a fair amount of experience there is still just sticking with the [built in materials](/2018/04/30/threejs-materials/) and moving on with life. Many of the material options will work just fine for just about all typical use case examples. However there are some situations that call for writing a custom shader as doing so with with built in materials will have to involve some kind of very complex trickery using canvas textures, so complex that it might be better to ditch that idea and just write a little GLSL code.
 
 ### Source code examples are also on Github
 
