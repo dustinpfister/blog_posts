@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1023
-updated: 2023-01-14 13:58:57
-version: 1.12
+updated: 2023-01-14 14:20:05
+version: 1.13
 ---
 
 The [Shader material](https://threejs.org/docs/#api/en/materials/ShaderMaterial) in threejs is one way to go about getting started with custom shaders in threejs, the other general option would be to look into the [raw shader material](https://threejs.org/docs/#api/en/materials/RawShaderMaterial). The main difference between the two has to do with built-in uniforms and attributes when it comes to the starting state of the GLSL \( [openGL Shader Language](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) \) code. For this reason it might be best to start out with the Shader material rather than the raw shader material as there are some built in values that I will not have to worry about setting up myself when it comes to the raw shader material. Yet again it is a bit of a toss up with that as if one wants to learn a thing or two about GLSL alone then the raw material might prove to be a better starting point actually.
@@ -31,6 +31,10 @@ Still there is the question of what is the Modzilla Developer Network equivalent
 ### There is learning a thing or two about the built in materials first of course
 
 If you are still new to threejs, and also even if you do have a fair amount of experience there is still just sticking with the [built in materials](/2018/04/30/threejs-materials/) and moving on with life. Many of the material options will work just fine for just about all typical use case examples. However there are some situations that call for writing a custom shader as doing so with with built in materials will have to involve some kind of very complex trickery using canvas textures, so complex that it might be better to ditch that idea and just write a little GLSL code.
+
+### Be aware of features that have to do with buffer geometry
+
+There is a lot to be aware of when it comes to the state of [buffer geometry](/2021/04/22/threejs-buffer-geometry/) as well of course. Once again this is very much an advanced post on threejs so I assume you know what a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) is, as well as many other such attributes both standard, and not so standard. There is not just getting into making custom shaders, but also custom attributes of geometry as well after all. In some cases I might want to create shaders that will make use of a color attribute, or one or more custom attributes that should be parked in the geometry.
 
 ### Source code examples are also on Github
 
