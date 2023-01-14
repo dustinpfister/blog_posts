@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1023
-updated: 2023-01-14 12:52:43
-version: 1.9
+updated: 2023-01-14 13:10:20
+version: 1.10
 ---
 
 The [Shader material](https://threejs.org/docs/#api/en/materials/ShaderMaterial) in threejs is one way to go about getting started with custom shaders in threejs, the other general option would be to look into the [raw shader material](https://threejs.org/docs/#api/en/materials/RawShaderMaterial). The main difference between the two has to do with built-in uniforms and attributes when it comes to the starting state of the GLSL \( [openGL Shader Language](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) \) code. For this reason it might be best to start out with the Shader material rather than the raw shader material as there are some built in values that I will not have to worry about setting up myself when it comes to the raw shader material. Yet again it is a bit of a toss up with that as if one wants to learn a thing or two about GLSL alone then the raw material might prove to be a better starting point actually.
@@ -283,7 +283,9 @@ Notice all the include statements that begin with a hashtag, followed by a name 
 
 This is still just a very complex way of just reproducing the functionally of the basic material, but the goal here was not to make a custom material to begin with, but rather to just get started with this. With these three examples I am not somewhat ready to start to move on to some real examples in which I am just hacking over and expanding from one of these kinds of start points.
 
-## 2 - A crosshatching example
+## 2 - 
+
+## 3 - A crosshatching example
 
 One of the first real examples of a custom shader material that I have made thus far is actually a hacked over version of one [that I found on line](https://codepen.io/EvanBacon/pen/xgEBPX). That is that I just did some quick google work to find a shader that does more or less what I wanted and found something that was close at least. I then hacked over it a lot, removing code that I did not want or need for the simple black and white look that I wanted and ended up with this.
 
