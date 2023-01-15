@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2023-01-15 14:20:19
-version: 1.63
+updated: 2023-01-15 14:29:26
+version: 1.64
 ---
 
-Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
+Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handling the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center over time in an animation loop.
 
-Then there is also having the position and rotation of a camera be subject to event handlers that are attached to a kind of input element, or they are fired by a user input device of one kind or another. So then I can control the camera with my mouse, and or keyboard which is nice when I am working on a project and I would like to see how things look from all kinds of different perspectives by changing what that is. There are some official controls that are in the threejs git hub repository for this sort of thing in the form of [orbit controls](https://threejs.org/docs/#examples/en/controls/OrbitControls), and [fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls) for example.
+Then there is also having the position and rotation of a camera be subject to event handlers that are attached for pointer events. In other words to control the camera with a mouse, and or keyboard which is nice when I am working on a project and I would like to see how things look from all kinds of different perspectives. There are some official controls that are in the threejs Github repository for this sort of thing in the form of [orbit controls](https://threejs.org/docs/#examples/en/controls/OrbitControls), and [fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls) for example. However there is also of course making ones own custom controls for a project which is often a required part of working out an over all user interface for some kind of real time project.
 
-So in this post I will be writing about some threejs examples that have to do with using the position and rotation properties of an instance of a camera along with some javaScript expressions as a way to move a camera around in a scene. What applies for a camera will also apply to just about anything in three.js that inherits from the [Object3d](https://threejs.org/docs/#api/en/core/Object3D) class, so what I am writing about here can also be applied to all kinds of objects in threejs beyond just that of cameras.
+So in this post I will be writing about some threejs examples that have to do with using the position and rotation properties of an instance of a camera along with some javaScript expressions as a way to move a camera around in a scene. What I work out here for a camera will also apply to just about anything in threejs that inherits from the [Object3d](https://threejs.org/docs/#api/en/core/Object3D) class as well. So much of this is just ways of moving and rotating objects in general actually, but still I will be keeping the emphasis on cameras alone for the most part here.
 
 <!-- more -->
 
@@ -32,7 +32,7 @@ The main property of interest with the Object3d class in the [position property]
 
 All of these classes are worth looking into in depth in order to really know how to move things around, not just cameras but many objects in general.
 
-### You might want to check out the Three.js orbit controls, and other official controls first
+### You might want to check out the Orbit Controls, and other official controls as a way to move a camera by way of user input
 
 When it comes to moving a camera the first thing you might want to figure out is if you just want to move about in the scene using the mouse. I often use the Orbit Controls that are in the examples folder of the Three.js repository for many of my examples as a way to be able to have the basic typical movement right away. There are also a number of other options when it comes to official controls use in the official three.js examples, as well as many other useful libraries to work with in the examples folder.
 
