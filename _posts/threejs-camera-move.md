@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2023-01-15 13:37:27
-version: 1.58
+updated: 2023-01-15 13:44:05
+version: 1.59
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -48,7 +48,9 @@ When I first wrote this post I was using r111 of threejs, and the last time I ed
 
 ## 1 - A Basic camera movement example with an animation loop function
 
-In this section I will be starting out with a basic threejs example that has to do with moving a camera by way of an animation loop. So nothing major or fancy here, just a kind of hello world when it comes to moving a camera. If this sort of thing is new to you in general with front end javaScript you might want to start out looking into the [request animation frame](/2018/03/13/js-request-animation-frame/) method in client side javaScrit alone.
+In this section I will be starting out with some basic threejs examples that has to do with moving a camera by way of an animation loop. So nothing major or fancy here, just a kind of hello world when it comes to moving a camera around in a threejs project along with some other tipical things that come up when doing so. If this sort of thing is new to you in general with front end javaScript you might want to start out looking into the [request animation frame](/2018/03/13/js-request-animation-frame/) method in client side javaScrit alone.
+
+### 1.1 - World relative position of camera
 
 I started out this example like that of any other threejs example when it comes to the usual set of objects. What I mean by that is having a scene object, camera, and renderer set up. After that I just created a single mesh object that I will be leaving at the default origin location.
 
@@ -58,160 +60,237 @@ The first and foremost thing that comes to mind is to not update the scene each 
 On top of having a main FPS update value I can also have a septate FPS value for how to go about updating the frame rate of the animation. This way I can update the scene at a very low frame rate, but still update the position of the camera at a higher frame rate.
 
 ```js
-(function () {
-    // SCENE, CAMERA, and RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(20, 20))
-    var width = 640, height = 480,
-    fieldOfView = 40, aspectRatio = width / height,
-    near = 0.1, far = 1000,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(width, height);
-    // MESH
-    var mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // APP LOOP
-    var secs = 0,
-    fps_update = 20,   // fps rate to update ( low fps for low CPU use, but choppy video )
-    fps_movement = 30, // fps rate to move camera
-    frame = 0,
-    frameMax = 300,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000,
-        per = frame / frameMax,
-        bias = (1 - Math.abs(per - 0.5) / 0.5);
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps_update){
-            // MOVING THE CAMERA IN THE LOOP
-            camera.position.set(3 * bias, 1 + 2 * bias, 10);
-            renderer.render(scene, camera);
-            frame += fps_movement * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(20, 20));
+camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ----------
+// APP LOOP
+//-------- ----------
+let secs = 0,
+lt = new Date(),
+frame = 0;
+const fps_update = 20,   // fps rate to update ( low fps for low CPU use, but choppy video )
+fps_movement = 30,       // fps rate to move camera
+frameMax = 300;
+// update function
+const update = () => {
+    const per = frame / frameMax;
+    const bias = (1 - Math.abs(per - 0.5) / 0.5);
+    camera.position.set(3 * bias, 1 + 2 * bias, 10);
+};
+// loop function
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps_update){
+        // MOVING THE CAMERA IN THE LOOP
+        update(secs);
+        renderer.render(scene, camera);
+        frame += fps_movement * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
 When this example is up and running the end result is having the camera at a location away from a mesh, and the camera is still looking in the direction of the mesh. In most cases I will not just want to set the position of the camera but also adjust the rotation of the camera as well one way or another, however that will be something I will be getting into more so inn the nest example here. Over time the camera moves, and I am not doing anything to change the rotation of the camera over time so the camera does not stay fixed on the mesh.
 
-## 2 - The look at method
+### 1.2 - The look at method
 
 There is more to moving the camera that just moving the position of the camera in world space, there is also setting the rotation of the camera that can also be tough of as a kind of movement as well. There is learning how to work out all kinds of ways to manual setting the state of the Euler instance of the rotation property of a camera, but maybe the easiest way to go about setting the rotation of a camera would be to make use of the look at method of the object3d class.
 
 ```js
-(function () {
-    // SCENE, CAMERA, and RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10))
-    var width = 640, height = 480,
-    fieldOfView = 40, aspectRatio = width / height,
-    near = 0.1, far = 1000,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(width, height);
-    // MESH
-    var mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // SETTING CAMERA POSITION ONCE HERE
-    camera.position.set(0, 5, 5);
-    // APP LOOP
-    var secs = 0,
-    fps_update = 20,
-    fps_movement = 30,
-    frame = 0,
-    frameMax = 300,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000,
-        per = frame / frameMax,
-        bias = (1 - Math.abs(per - 0.5) / 0.5);
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps_update){
-            // CALLING THE LOOKAT METHOD OF THE CAMERA
-            camera.lookAt(mesh.position);
-            // MOVEING THE MESH OBJECT BUT NOT THE CAMERA
-            mesh.position.x = -5 + 10 * bias
-            renderer.render(scene, camera);
-            frame += fps_movement * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(20, 20));
+camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ----------
+// APP LOOP
+//-------- ----------
+// SETTING CAMERA POSITION ONCE HERE
+camera.position.set(0, 5, 5);
+let secs = 0,
+lt = new Date(),
+frame = 0;
+const fps_update = 20,   // fps rate to update ( low fps for low CPU use, but choppy video )
+fps_movement = 30,       // fps rate to move camera
+frameMax = 300;
+// update function
+const update = () => {
+    const per = frame / frameMax;
+    const bias = (1 - Math.abs(per - 0.5) / 0.5);
+    // CALLING THE LOOKAT METHOD OF THE CAMERA
+    camera.lookAt(mesh.position);
+    // MOVEING THE MESH OBJECT BUT NOT THE CAMERA
+    mesh.position.x = -5 + 10 * bias
+};
+// loop function
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps_update){
+        // MOVING THE CAMERA IN THE LOOP
+        update(secs);
+        renderer.render(scene, camera);
+        frame += fps_movement * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
-## 3 - Object relative position
+### 1.3 - Using the Vector3 lerp method along with other Vector3 class methods
+
+```js
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(20, 20));
+camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(
+    new THREE.SphereGeometry(3, 20, 20),
+    new THREE.MeshNormalMaterial());
+mesh2.position.set(-5, 1, 5);
+scene.add(mesh2);
+//-------- ----------
+// APP LOOP
+//-------- ----------
+let secs = 0,
+lt = new Date(),
+frame = 0;
+const fps_update = 20,   // fps rate to update ( low fps for low CPU use, but choppy video )
+fps_movement = 30,       // fps rate to move camera
+frameMax = 300;
+// START AND END VECTOR3 OBJECTS
+const vpos_start = new THREE.Vector3(5, 5, 5);
+const vpos_end = new THREE.Vector3(1, 0, -4);
+// update function
+const update = () => {
+    // alpha values
+    const a1 = frame / frameMax;
+    const a2 = (1 - Math.abs(0.5 - a1) / 0.5);
+    // MOVE CAMERA BY WAY OF THE VECTOR3 LERP METHOD
+    camera.position.copy(vpos_start).lerp(vpos_end, a2);
+    // USING VECTOR3 LERP TO HELP CREATE A LOOK AT POINT OVER TIME ALSO
+    camera.lookAt( mesh1.position.clone().lerp(mesh2.position, a2) )
+};
+// loop function
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps_update){
+        // MOVING THE CAMERA IN THE LOOP
+        update(secs);
+        renderer.render(scene, camera);
+        frame += fps_movement * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 2 - Object relative position
 
 So far I have covered some simple examples that have to do with just changing th rotation and the position of the camera. However when  it comes to setting the position of the camera I am doing so in terms of world space, or maybe a kind of relative space but relative to that is the scene object rather than a child of the scene object such as the one mesh object that I have in these examples thus far.
 
 ```js
-(function () {
-    // SCENE, CAMERA, and RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10))
-    var width = 640, height = 480,
-    fieldOfView = 40, aspectRatio = width / height,
-    near = 0.1, far = 1000,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(width, height);
-    // MESH
-    var mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // APP LOOP
-    var secs = 0,
-    fps_update = 20,
-    fps_movement = 30,
-    frame = 0,
-    frameMax = 300,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000,
-        per = frame / frameMax,
-        bias = (1 - Math.abs(per - 0.5) / 0.5);
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps_update){
-            // MOVEING THE MESH OBJECT
-            mesh.position.x = -5 + 10 * bias
-            // SETTING POSITION OF THE CAMERA RELATIVE TO THE POSITION OF THE MESH
-            camera.position.copy(mesh.position).add( new THREE.Vector3(3, 3 - 6 * bias, 3) );
-            // CALLING THE LOOKAT METHOD OF THE CAMERA
-            camera.lookAt(mesh.position);
-            renderer.render(scene, camera);
-            frame += fps_movement * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(20, 20));
+camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ----------
+// APP LOOP
+//-------- ----------
+let secs = 0,
+fps_update = 20,
+fps_movement = 30,
+frame = 0,
+frameMax = 300,
+lt = new Date();
+const update = (secs) => {
+    const per = frame / frameMax,
+    bias = (1 - Math.abs(per - 0.5) / 0.5);
+    // MOVEING THE MESH OBJECT
+    mesh.position.x = -5 + 10 * bias
+    // SETTING POSITION OF THE CAMERA RELATIVE TO THE POSITION OF THE MESH
+    camera.position.copy(mesh.position).add( new THREE.Vector3(3, 3 - 6 * bias, 3) );
+    // CALLING THE LOOKAT METHOD OF THE CAMERA
+    camera.lookAt(mesh.position);
+};
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps_update){
+        update(secs);
+        renderer.render(scene, camera);
+        frame += fps_movement * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## 4 - Updating things by way of sequences
 
 One thing that I have found that I like to do when making video type projects using threejs is to have some kind of system that can be used to break things down into many parts, or sequences if you prefer. This way I have have some kind of setup where I define an array of objects and each object can be given an update method. Each update method of each object would have access to a main sequence object with values that have to do with the progress of the over all video, but also values that have to do with the progress of the current part, or sequence.
 
-### 4.1 - The sequences file
+### The sequences file
 
 Here I have a javaScript file that I am using to define a system for this sort of thing when it comes to sequences. I might make a whole other project based on what I worked out here, but for now with this I just have a set frame public method and I am just going to create an object formated the way I need it to be in the main javaScript file later on.
 
@@ -271,98 +350,99 @@ var seqHooks = (function () {
 I then just want to have some additional code that I can then use to demo this sequence module.
 
 ```js
-(function () {
-    // SCENE, CAMERA, and RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10))
-    var width = 640, height = 480,
-    fieldOfView = 40, aspectRatio = width / height,
-    near = 0.1, far = 1000,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(width, height);
-    // MESH
-    var mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    var mesh2 = new THREE.Mesh(
-        new THREE.SphereGeometry(0.5, 30, 30),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh2);
-    // a sequences object
-    var seq = {
-        objectIndex: 0,
-        per: 0,
-        bias: 0,
-        frame: 0,
-        frameMax: 300,
-        beforeObjects: function(seq){
-            var r = Math.PI * 2 * seq.per;
-            var x = Math.cos(r) * 4;
-            var z = Math.sin(r) * 4;
-            mesh2.position.set(x, 0, z);
-        },
-        afterObjects: function(seq){
-            camera.lookAt(mesh.position);
-        },
-        objects: [
-            {
-                per: 0,
-                update: function(seq, partPer, partBias){
-                    camera.position.set(10, 10, 10);
-                }
-            },
-            {
-                per: 0.25,
-                update: function(seq, partPer, partBias){
-                    camera.position.set(10 - 20 * partPer, 10, 10);
-                }
-            },
-            {
-                per: 0.30,
-                update: function(seq, partPer, partBias){
-                    camera.position.set(-10, 10 - 7 * partPer, 10);
-                }
-            },
-            {
-                per: 0.35,
-                update: function(seq, partPer, partBias){
-                    camera.position.set(-10, 3, 10);
-                    var x = 10 * partBias;
-                    camera.lookAt(mesh.position.clone().add(new THREE.Vector3(x, 0, 0)));
-                }
-            },
-            {
-                per: 0.75,
-                update: function(seq, partPer, partBias){
-                    camera.position.set(-10, 3 - 10 * partPer, 10 - 30 * partPer);
-                }
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(20, 20));
+camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+const mesh2 = new THREE.Mesh(
+    new THREE.SphereGeometry(0.5, 30, 30),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh2);
+//-------- ----------
+// SEQUENCE HOOKS OBJECT
+//-------- ----------
+const seq = {
+    objectIndex: 0,
+    per: 0,
+    bias: 0,
+    frame: 0,
+    frameMax: 300,
+    beforeObjects: function(seq){
+        const r = Math.PI * 2 * seq.per;
+        const x = Math.cos(r) * 4;
+        const z = Math.sin(r) * 4;
+        mesh2.position.set(x, 0, z);
+    },
+    afterObjects: function(seq){
+        camera.lookAt(mesh.position);
+    },
+    objects: [
+        {
+            per: 0,
+            update: function(seq, partPer, partBias){
+                camera.position.set(10, 10, 10);
             }
-        ]
-    };
-    // APP LOOP
-    var secs = 0,
-    fps_update = 10,
-    fps_movement = 30,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps_update){
-            
-            seqHooks.setFrame(seq, seq.frame)
-            renderer.render(scene, camera);
-            seq.frame += fps_movement * secs;
-            seq.frame %= seq.frameMax;
-            lt = now;
+        },
+        {
+            per: 0.25,
+            update: function(seq, partPer, partBias){
+               camera.position.set(10 - 20 * partPer, 10, 10);
+            }
+        },
+        {
+            per: 0.30,
+            update: function(seq, partPer, partBias){
+                camera.position.set(-10, 10 - 7 * partPer, 10);
+            }
+        },
+        {
+            per: 0.35,
+            update: function(seq, partPer, partBias){
+                camera.position.set(-10, 3, 10);
+                const x = 10 * partBias;
+                camera.lookAt(mesh.position.clone().add(new THREE.Vector3(x, 0, 0)));
+            }
+        },
+        {
+            per: 0.75,
+            update: function(seq, partPer, partBias){
+                camera.position.set(-10, 3 - 10 * partPer, 10 - 30 * partPer);
+            }
         }
-    };
-    loop();
-}
-    ());
+    ]
+};
+//-------- ----------
+// APP LOOP
+//-------- ----------
+let secs = 0,
+fps_update = 10,
+fps_movement = 30,
+lt = new Date();
+const loop = function () {
+    let now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps_update){
+        seqHooks.setFrame(seq, seq.frame)
+        renderer.render(scene, camera);
+        seq.frame += fps_movement * secs;
+        seq.frame %= seq.frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## 5 - Camera movement helper example that moves the camera via javaScript code
@@ -371,11 +451,9 @@ For this example I am making a more advanced version of my basic animation loop 
 
 ```js
 (function () {
- 
     var getBias = function(per){
         return 1 - Math.abs(per - 0.5) / 0.5;
     };
- 
     // create camera helper
     var createCamera = function(opt){
         opt = opt || {};
@@ -386,9 +464,7 @@ For this example I am making a more advanced version of my basic animation loop 
         camera.userData.subject = new THREE.Vector3();
         return camera;
     };
- 
     var camMoveMethod = {};
- 
     // follow subject1 method
     camMoveMethod.followSubject1 = function(camera, per){
         var bias = getBias(per);
@@ -397,7 +473,6 @@ For this example I am making a more advanced version of my basic animation loop 
             lookAt: camera.userData.subject
         };
     };
- 
     // follow subject2 method
     camMoveMethod.followSubject2 = function(camera, per){
         var rad = Math.PI * 2 * per,
@@ -409,7 +484,6 @@ For this example I am making a more advanced version of my basic animation loop 
             lookAt: camera.userData.subject
         };
     };
- 
     // move camera update helper
     var moveCamera = function (camera, per, moveFunc) {
         var camState = moveFunc(camera, per);
@@ -418,7 +492,6 @@ For this example I am making a more advanced version of my basic animation loop 
         camera.position.copy(camState.position)
         camera.lookAt(camState.lookAt);
     };
- 
     // CAMERA
     var camera = createCamera();
     // SCENE
