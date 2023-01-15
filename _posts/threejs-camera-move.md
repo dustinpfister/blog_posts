@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2023-01-15 13:53:26
-version: 1.60
+updated: 2023-01-15 13:59:31
+version: 1.61
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
@@ -169,6 +169,10 @@ loop();
 ```
 
 ### 1.3 - Using the Vector3 lerp method along with other Vector3 class methods
+
+A very useful method in the Vector3 object not just for moving a camera around, but objects in general, as well as points in space in general is the lerp method of the vector3 class. This is a method of vector3 in which I can call the method, then pass another vector3 object that I want to move to along with another argument that is an alpha value between 0 and 1. This alpha value will then set the value of the vector3 obect that I call the lerp method off of between the two vector3 objects based on the given alpha value.
+
+This lerp method will mutate the vector3 object in place, so if I am in a situation in which I have two source vector3 objects that I do not want to mutate I can do something like call the copy method off of the vector3 object that is the position of the camera, and then pass the vector3 object that is the start point to the copy method. This will then copy the state of the start vector3 to the start point without mutating the start point, after that I can then call the lerp method, pass the end point that I want, and then the alpha value that I want to use to lerp between the start and end point.
 
 ```js
 //-------- ----------
