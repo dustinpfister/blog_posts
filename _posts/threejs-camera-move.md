@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2023-01-15 14:05:40
-version: 1.62
+updated: 2023-01-15 14:20:19
+version: 1.63
 ---
 
-Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
+Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
 
 Then there is also having the position and rotation of a camera be subject to event handlers that are attached to a kind of input element, or they are fired by a user input device of one kind or another. So then I can control the camera with my mouse, and or keyboard which is nice when I am working on a project and I would like to see how things look from all kinds of different perspectives by changing what that is. There are some official controls that are in the threejs git hub repository for this sort of thing in the form of [orbit controls](https://threejs.org/docs/#examples/en/controls/OrbitControls), and [fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls) for example.
 
