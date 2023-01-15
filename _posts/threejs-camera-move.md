@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2023-01-15 13:59:31
-version: 1.61
+updated: 2023-01-15 14:05:40
+version: 1.62
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/).There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center, and having this happen in the body of an animation loop method that will do this sort of thing over time. 
 
 Then there is also having the position and rotation of a camera be subject to event handlers that are attached to a kind of input element, or they are fired by a user input device of one kind or another. So then I can control the camera with my mouse, and or keyboard which is nice when I am working on a project and I would like to see how things look from all kinds of different perspectives by changing what that is. There are some official controls that are in the threejs git hub repository for this sort of thing in the form of [orbit controls](https://threejs.org/docs/#examples/en/controls/OrbitControls), and [fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls) for example.
 
-So in this post I will be writing about some threejs examples that have to do with using the position and rotation properties of an instance of a camera along with some javaScript expressions as a way to move a camera around in a scene. What applies for a camera will also apply to just about anything in three.js that inherits from the [Object3d](/2018/04/23/threejs-object3d/) class, so what I am writing about here can also be applied to all kinds of objects in threejs beyond just that of cameras.
+So in this post I will be writing about some threejs examples that have to do with using the position and rotation properties of an instance of a camera along with some javaScript expressions as a way to move a camera around in a scene. What applies for a camera will also apply to just about anything in three.js that inherits from the [Object3d](https://threejs.org/docs/#api/en/core/Object3D) class, so what I am writing about here can also be applied to all kinds of objects in threejs beyond just that of cameras.
 
 <!-- more -->
 
@@ -26,9 +26,9 @@ This is a post on how to move a camera in three.js a front end javaScript librar
 
 ### You should really look into the Object3d class when it comes to movement of objects in general in three.js
 
-A camera in three.js inherits from a base class in three.js called Object3d, which is also the case with many other objects that will be part of a scene such as Mesh, Group objects, and many helper objects. So my learning how to work with the Object32 class you in turn learn how to work with everything to which is built on top of Object3d which includes cameras.
+A camera in threejs inherits from a base class in threejs called [Object3d](/2018/04/23/threejs-object3d/), which is also the case with many other objects that will be part of a scene such as Mesh, Group objects, and many helper objects. So my learning how to work with the Object3d class you in turn learn how to work with everything to which is built on top of Object3d which includes cameras.
 
-The main property of interest with the Object3d class in the position property which is an instance of a class known as [Vector3](/2018/04/15/threejs-vector3/), which in turn is another class of interest that applies to many things in three.js when it comes to positions of things. The set method of an instance of this Vector3 class is one way to set the position of a camera when it comes to the position property. However there is also changing the orientation of the camera when doing so, for this there is the rotation property that is also part of the Object3d class. This rotation property is an instance of the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) which is like Vector3, only we are taking angles rather than a matrix position. There is working with this instance of THREE.Euler directly, or there is making use of a method like the [Object3d.lookAt](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method.
+The main property of interest with the Object3d class in the [position property](/2022/04/04/threejs-object3d-position/) which is an instance of a class known as [Vector3](/2018/04/15/threejs-vector3/), which in turn is another class of interest that applies to many things in three.js when it comes to positions of things. The set method of an instance of this Vector3 class is one way to set the position of a camera when it comes to the position property. However there is also changing the orientation of the camera when doing so, for this there is the rotation property that is also part of the Object3d class. This rotation property is an instance of the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) which is like Vector3, only we are taking angles rather than a matrix position. There is working with this instance of THREE.Euler directly, or there is making use of a method like the [Object3d.lookAt](/2021/05/13/threejs-object3d-lookat/) method.
 
 All of these classes are worth looking into in depth in order to really know how to move things around, not just cameras but many objects in general.
 
@@ -170,7 +170,7 @@ loop();
 
 ### 1.3 - Using the Vector3 lerp method along with other Vector3 class methods
 
-A very useful method in the Vector3 object not just for moving a camera around, but objects in general, as well as points in space in general is the lerp method of the vector3 class. This is a method of vector3 in which I can call the method, then pass another vector3 object that I want to move to along with another argument that is an alpha value between 0 and 1. This alpha value will then set the value of the vector3 obect that I call the lerp method off of between the two vector3 objects based on the given alpha value.
+A very useful method in the Vector3 object not just for moving a camera around, but objects in general, as well as points in space in general is the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/). This is a method of vector3 in which I can call the method, then pass another vector3 object that I want to move to along with another argument that is an alpha value between 0 and 1. This alpha value will then set the value of the vector3 obect that I call the lerp method off of between the two vector3 objects based on the given alpha value.
 
 This lerp method will mutate the vector3 object in place, so if I am in a situation in which I have two source vector3 objects that I do not want to mutate I can do something like call the copy method off of the vector3 object that is the position of the camera, and then pass the vector3 object that is the start point to the copy method. This will then copy the state of the start vector3 to the start point without mutating the start point, after that I can then call the lerp method, pass the end point that I want, and then the alpha value that I want to use to lerp between the start and end point.
 
