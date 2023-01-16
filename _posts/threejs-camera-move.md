@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2023-01-16 15:20:33
-version: 1.67
+updated: 2023-01-16 15:33:42
+version: 1.68
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handling the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center over time in an animation loop.
@@ -1039,7 +1039,7 @@ On top of having update methods for each sequence object, I will also want to be
 
 ### 4.2 - main example of the the sequences file
 
-I then just want to have some additional code that I can then use to demo this sequence module.
+I then just want to have some additional code that I can then use to demo this sequence module as a way to just test out the core features first for camera movement. With that said I can use the before objects hook of this project to define what I want to happen over the while span of a video project. For this demo I am just moving a mesh object of a sphere around in a circle. I can then use the after objects method to make sure that the camera will always look at the first mesh object. I should take care when doing this in the after hooks method as this will override any look at method, or rotation calls over that I might make in the before objects hook, or the current sequence object update method.
 
 ```js
 //-------- ----------
