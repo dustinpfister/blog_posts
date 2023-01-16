@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2023-01-16 15:07:30
-version: 1.66
+updated: 2023-01-16 15:20:33
+version: 1.67
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handling the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center over time in an animation loop.
@@ -356,11 +356,359 @@ const loop = function () {
 loop();
 ```
 
+## 3 - Using the curve module
+
+I have made a [threejs project example cented around the idea of using curves](/2022/11/18/threejs-examples-curves-module/) to create paths that will be used to move objects. These objects can be mesh objects, but with the theme of this post in mind it can also be used to move a camera around a scene as well. What is great about this module is that I can not only use it to create a path in which to move a camera along, I can also use it to get the kind of value that I would use to get a point along the curve as well on top of that.
+
+### The curve.js modue \( R1 \)
+
+This is R1 of the curve module that I have made for my set of threejs project examples, many of which have to do with modules like this one rather than a full complete project of some kind. There is a whole lot to write about when it comes to the state of this module. However for the most part all I care around for the set of demos that I will be using here is the QB Curve Path method and also the get alpha function method. These are what I will be using to create a curve path for a camera to follow, and also how to create an alpha value to pass when calling the get point method of the curve. The return value of the get point method will be a vector3 object to which I can then copy to the Vector3 of the position property of the camera.
+
+```js
+// curve.js - r1 - from threejs-examples-curves-module
+(function(api){
+    //-------- ----------
+    // DEFAULTS
+    //-------- ----------
+    // Deafult Alpha Control Points ( ac_points )
+    const DEFAULT_AC_POINTS = [0.00,0.5,  1.00,0.5, 0.0];
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // for path data helper used by QBCurvePath and QBV3Array
+    const forPathData = (data, collection, forCurve) => {
+        collection = collection || new THREE.CurvePath();
+        forCurve = forCurve || function(a, curve, curvePath, data){
+            curvePath.add(curve);
+        };
+        data.forEach( ( a ) => {
+            const curve = api.QBDelta.apply(null, a.slice(0, a.length - 1));
+            forCurve(a, curve, collection, data);
+        });
+        return collection;
+    };
+    // create an alpha curve helper function
+    const createAlphaCurve2 = (ac_points) => {
+        let i = 0, len = ac_points.length;
+        const data = [];
+        while(i < len - 2){
+            const s = ac_points[i];
+            const s2 = ac_points[i + 1]
+            const e = ac_points[i + 2];
+            data.push([ 0, s, 0,   0, e, 0,   0, s2, 0 ]);
+            i += 2;
+        }
+        return api.QBCurvePath(data);
+    };
+    // create debug points
+    const createDebugPoints = (v3Array, opt) => {
+        opt = opt || {};
+        opt.size = opt.size === undefined ? 0.25 : opt.size;
+        opt.color = opt.color || new THREE.Color(0, 1, 0);
+        return new THREE.Points(
+            new THREE.BufferGeometry().setFromPoints(v3Array),
+            new THREE.PointsMaterial({ size: opt.size, color: opt.color})
+        );
+    };
+    // alpha function collection
+    const ALPHA_FUNCTIONS = {};
+    // first curve alpha function that just uses the Curve.getPoint method
+    // and then uses the y axis as the alpha values
+    ALPHA_FUNCTIONS.curve1 = ( opt ) => {
+        const cp = createAlphaCurve2(opt.ac_points);
+        return function(givenAlpha){
+            let a = cp.getPoint(givenAlpha).y;
+            return a;
+        };
+    };
+    // second curve alpha function ( defualt for R1 ) will get a curve object from the array of curves
+    // then figure an alpha value to given when calling the Curve.getPoint method of a child curve object
+    // of the curve path created with the createAlphaCurve helper
+    ALPHA_FUNCTIONS.curve2 = ( opt ) => {
+        const cp = createAlphaCurve2(opt.ac_points);
+        return function(alpha){
+            alpha = alpha === 1 ? 0.9999999999 : alpha;
+            const cLen = cp.curves.length;
+            const curveIndex = Math.floor( cLen * alpha);
+            const cc = cp.curves[ curveIndex];
+            const a_cc = alpha %  ( 1 / cLen ) * ( cLen );
+            const v3 = cc.getPoint( a_cc );
+            let a = v3.y;
+            return a;
+        };
+    };
+    // plain old linear get alpha function
+    ALPHA_FUNCTIONS.linear = (opt) => {
+        // the given alpha value should all ready be linear
+        // as long as that is true this option should work by just echoing that back
+        return function(alpha){
+            return alpha;
+        };
+    };
+    // plain old bias get alpha function
+    ALPHA_FUNCTIONS.bias = (opt) => {
+        return function(alpha){
+            return 1 - Math.abs(0.5 - alpha ) / 0.5;
+        };
+    };
+    // sin bias get alpha function
+    ALPHA_FUNCTIONS.sinBias = (opt) => {
+        return function(alpha){
+            const b = 1 - Math.abs(0.5 - alpha ) / 0.5;
+            return Math.sin( Math.PI * 0.5 * b );
+        };
+    };
+    // smooth step
+    ALPHA_FUNCTIONS.smooth = (opt) => {
+        return function(alpha){
+            return THREE.MathUtils.smoothstep(alpha, 0, 1);
+        };
+    };
+    // using the mapLinear method of the THREE.MathUtils object
+    ALPHA_FUNCTIONS.mapLinear = (opt) => {
+        const startAlpha = opt.ac_points[0] === undefined ? 0 : opt.ac_points[0];
+        const endAlpha = opt.ac_points[1] === undefined ? 1 : opt.ac_points[1];
+        return function(alpha){
+            return THREE.MathUtils.mapLinear(alpha, 0, 1, startAlpha, endAlpha);
+        };
+    };
+    //-------- ----------
+    // RETURN CURVE
+    //-------- ----------
+    // just a short hand for THREE.QuadraticBezierCurve3
+    api.QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
+        let vs = x1;
+        let ve = y1;
+        let vc = z1;
+        if(arguments.length === 9){
+            vs = new THREE.Vector3(x1, y1, z1);
+            ve = new THREE.Vector3(x2, y2, z2);
+            vc = new THREE.Vector3(x3, y3, z3);
+        }
+        return new THREE.QuadraticBezierCurve3( vs, vc, ve );
+    };
+    // QBDelta helper using QBC3
+    // this works by giving deltas from the point that is half way between
+    // the two start and end points rather than a direct control point for x3, y3, and x3
+    api.QBDelta = function(x1, y1, z1, x2, y2, z2, x3, y3, z3) {
+        const vs = new THREE.Vector3(x1, y1, z1);
+        const ve = new THREE.Vector3(x2, y2, z2);
+        // deltas
+        const vDelta = new THREE.Vector3(x3, y3, z3);
+        const vc = vs.clone().lerp(ve, 0.5).add(vDelta);
+        const curve = api.QBC3(vs, ve, vc);
+        return curve;
+    };
+    // return a path curve by just calling the for path data helper with default options
+    api.QBCurvePath = function(data){
+        return forPathData(data);
+    };
+    //-------- ----------
+    // RETURN V3ARRAY
+    //-------- ----------
+    // QBV3Array
+    api.QBV3Array = function(data) {
+        const v3Array = [];
+        forPathData(data, v3Array, function(a, curve, v3Array){
+            v3Array.push( curve.getPoints( a[9]) );
+        });
+        return v3Array.flat();
+    };
+    // Glavin Points are random points used for camera pos
+    api.GlavinPoints2 = (count, origin, VULR, A1, A2 ) => {
+        count = count === undefined ? 50 : count;
+        origin = origin === undefined ? new THREE.Vector3() : origin;
+        VULR = VULR === undefined ? new THREE.Vector2(0, 1) : VULR; // Max and min unit vector length
+        A1 = A1 === undefined ? new THREE.Vector2(0, 360) : A1;
+        A2 = A2 === undefined ? new THREE.Vector2(-90, 90) : A2;
+        const v3Array = [];
+        let i  = 0;
+        while(i < count){
+            // random euler
+            const e = new THREE.Euler();
+            e.x = Math.PI / 180 * ( A1.x + ( A1.y - A1.x ) * THREE.MathUtils.seededRandom() );
+            e.y = Math.PI / 180 * ( A2.x + ( A2.y - A2.x ) * THREE.MathUtils.seededRandom() );
+            // random unit length
+            const ul = VULR.x + ( VULR.y - VULR.x ) * THREE.MathUtils.seededRandom();
+            // v3 is a random dir and unit length from origin
+            const v = origin.clone().add( new THREE.Vector3( 0, 0, 1).applyEuler(e).multiplyScalar(ul) )
+            v3Array.push(v);
+            i += 1;
+        }
+        return v3Array;
+    };
+    //-------- ----------
+    // ALPHA FUNCTIONS
+    //-------- ----------
+    api.getAlphaFunction = (opt) => {
+        opt = opt || {};
+        opt.type = opt.type || 'curve2';
+        opt.clamp = opt.clamp === undefined ? true : opt.clamp;
+        opt.ac_points = opt.ac_points || DEFAULT_AC_POINTS;
+        // the main get alpha method
+        const main_alpha_func = function(a, b, c){
+            // create the alpha function to use, defaults to NOOP
+            let alphaFunc = function(){};
+            // if type of opt.type is a string, assume this is a key for a built in type
+            if(typeof opt.type === 'string'){
+                alphaFunc = ALPHA_FUNCTIONS[ opt.type ](main_alpha_func.opt);
+            }
+            // if type is a function, assume that this is a custom get alpha method to use
+            if(typeof opt.type === 'function'){
+                alphaFunc = opt.type(main_alpha_func.opt);
+            }
+            // the alpha value defualts to 0
+            let a1 = 0;
+            // 1 arg : a is an alpha value
+            if(arguments.length === 1){
+                a1 = alphaFunc(a);
+            }
+            // 2 arg : a is an alpha value, and b is a count
+            if(arguments.length === 2){
+                a1 = alphaFunc(a * b % 1);
+            }
+            if(arguments.length > 2){
+            // 3+ arg : a is a numerator, b is a denomanator, and c is a count
+               a1 = alphaFunc(a / b * c % 1);
+            }
+            // clamp?
+            if(opt.clamp){
+                a1 = THREE.MathUtils.clamp(a1, 0, 0.9999999999);
+            }
+            return a1;
+        };
+        // making the opt object a pubic property of the main alpha function
+        main_alpha_func.opt = opt;
+        // return the main alpha function that will be called in the project that uses this
+        return main_alpha_func;
+    };
+    api.getAlpha = (type, a, b, c, opt) => {
+        opt = opt || {};
+        opt.type = type;
+        const alphaFunc = api.getAlphaFunction(opt);
+        if(c === undefined){
+            b = b === undefined ? 1 : b;
+            return alphaFunc(a, b);
+        }
+        return alphaFunc(a, b, c);
+    };
+    //-------- ----------
+    // DEBUG HELPERS
+    //-------- ----------
+    // debug points
+    api.debugPointsArray = ( arrays, opt ) => {
+        const v3Array = arrays.flat();
+        return createDebugPoints(v3Array, opt);
+    };
+    // debug points for a curve
+    api.debugPointsCurve = ( curve, opt ) => {
+        opt = opt || {};
+        opt.count = opt.count === undefined ? 100 : opt.count;
+        opt.getAlpha = opt.getAlpha || function(alpha){ return alpha; };
+        const v3Array = [];
+        let i = 0;
+        while(i < opt.count){
+            v3Array.push( curve.getPoint( opt.getAlpha(i / opt.count ) ) );
+            i += 1;
+        }
+        return createDebugPoints(v3Array, opt);
+    };
+    // debug and alpha function
+    api.debugAlphaFunction = (alphaFunc, opt) => {
+        opt = opt || {};
+        opt.count = opt.count === undefined ? 100 : opt.count;
+        opt.sx = opt.sx === undefined ? -5 : opt.sx;
+        opt.sz = opt.sz === undefined ? 5 : opt.sz;
+        opt.w = opt.w === undefined ? 10 : opt.w;
+        opt.h = opt.h === undefined ? -10 : opt.h;
+        const v3Array = [];
+        let i = 0;
+        while(i < opt.count){
+            const a1 = i / opt.count;
+            const x = opt.sx + a1 * opt.w;
+            const z = opt.sz + alphaFunc(a1) * opt.h;
+            v3Array.push( new THREE.Vector3( x, 0 , z) );
+            i += 1;
+        }
+        return createDebugPoints(v3Array, opt);
+    };
+}(this['curveMod'] = {} ));
+```
+
+### 3.1 - Using the curve module to move a camera along a curve
+
+Here I am then using the curve module to create a path in space for which the camera will move along. I am also using the get alpha method to create a get alpha function. It is then the alpha value that will be returned by this get alpha function that will be passed to the get point method of the curve I created.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh1);
+//-------- ----------
+// CURVE TO MOVE CAMERA ALONG
+//-------- ----------
+const curve_campos = curveMod.QBCurvePath([ [5, 2, 5, -5, -2, -4,    0, -5, 10,      100] ]);
+//-------- ----------
+// GET ALPHA FUNCTION USING curve2
+//-------- ----------
+const get_alpha_curve2 = curveMod.getAlphaFunction({
+    type: 'curve2',
+    ac_points: [0, -0.2, 0.35, 0.2, 0.55, -0.5, 1]
+})
+scene.add( curveMod.debugAlphaFunction(get_alpha_curve2) )
+//-------- ----------
+// APP LOOP
+//-------- ----------
+let secs = 0,
+lt = new Date(),
+frame = 0;
+const fps_update = 20,   // fps rate to update ( low fps for low CPU use, but choppy video )
+fps_movement = 30,       // fps rate to move camera
+frameMax = 300;
+// update function
+const update = () => {
+     const a1 = frame / frameMax;
+     const a2 = get_alpha_curve2(a1);
+     // using a curve created with curves.js, and also a 
+     // get alpha function created with curves.js
+     camera.position.copy( curve_campos.getPoint(a2) );
+     camera.lookAt(0,0,0)
+};
+// loop function
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps_update){
+        // MOVING THE CAMERA IN THE LOOP
+        update(secs);
+        renderer.render(scene, camera);
+        frame += fps_movement * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
+```
+
+
 ## 4 - Updating things by way of sequences
 
 One thing that I have found that I like to do when making video type projects using threejs is to have some kind of system that can be used to break things down into many parts, or sequences if you prefer. This way I have have some kind of setup where I define an array of objects and each object can be given an update method. Each update method of each object would have access to a main sequence object with values that have to do with the progress of the over all video, but also values that have to do with the progress of the current part, or sequence.
 
-### The sequences file
+### The sequences-hooks.js file \( R2 \)
 
 Here I have a javaScript file that I am using to define a system for this sort of thing when it comes to sequences. I have [made a whole other threejs project](/2022/05/12/threejs-examples-sequence-hooks/) centered around this kind of thing. In fact this is R2 of that very project that I am writing about here.
 
