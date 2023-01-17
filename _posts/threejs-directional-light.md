@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2023-01-17 11:26:20
-version: 1.42
+updated: 2023-01-17 11:33:27
+version: 1.43
 ---
 
 In [threejs](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) as one of several types of light to choose from when [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options.
@@ -34,14 +34,13 @@ It is required to know that not all materials will respond to light sources. For
 
 At this time you should know at least a little about the [object3d class](/2018/04/23/threejs-object3d/), and mainly the [position property of the object3d class](/2022/04/04/threejs-object3d-position/). This position property of the object3d base class stores an instance of the [Vector3 class](/2018/04/15/threejs-vector3/) as the value of the property. When it comes to a directional light the position property is what is used to set the direction of the light. Although it may be the position property it is really just the direction of the vector that matters and not so much the unit length.
 
-
 ### The source code examples in this post are on Github
 
 The source code exmaples in this post can also be found in [my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-directional-light) on Github. This is also where I park the source code examples, and various other assets that I write about in my [many other blog posts on threejs](/categories/three-js).
 
 ### The version number of threejs is important
 
-When I made the code examples for this post I was using threejs revision 127, and the last time I came around to do some editing here I was using r135. I do not think that much has changed with directional light for a real long time, however I can not say the same for a whole lot of other features of threejs. At some point in the future it is possible that the code examples here might break, so it is a good idea to always take into account what the version number is that you are using as well as the version number that was used by the author of a code example on the open web.
+When I made the code examples for this post I was using threejs revision 127, and the last time I came around to do some editing here I was using r146. I do not think that much has changed with directional light for a real long time, however I can not say the same for a whole lot of other features of threejs. At some point in the future it is possible that the code examples here might break, so it is a good idea to always take into account what the version number is that you are using as well as the version number that was used by the author of a code example on the open web.
 
 ## 1 - Directional Light threejs example
 
@@ -213,7 +212,7 @@ There are a number of ways to start to add textures into a project, and when doi
 
 In any case once a texture is there to work with, there are a lot of options when it comes to using that texture with a material. What options there are to work with will change from one material to the next. With the standard material the map option can be used to set a texture that will work with a light source. Also there is making use of the emissive map option of the standard material to define a texture that will show up regardless of what the situation is with light. 
 
-There is also playing around with intensity both with the light sources as well as the emissive intensity options of the materials.
+There is also playing around with intensity both with the light sources as well as the emissive intensity options of the materials. This can be done in such a way that as the intensity of the lights goes down to zero, the intensity of the emmisve values of the materials goes up to the max. This allows for defining effects where I have two sets of textures ones that will show up in the light, and the others that will show up when there is no light.
 
 ```js
 //-------- ----------
@@ -350,6 +349,8 @@ const loop = function () {
 };
 loop();
 ```
+
+There is a great deal more to write about when it comes to getting into textures in depth. There is not just learning about all the various kinds of maps to work with when it comes to the various material options. There is also all the various ways to go about creating them with javaScript code, or loading them from external image sources. There is also a great deal to be aware of when it comes to the state of the geometry as well when ti comes to textures also. When it comes to sticking to built in geometry like with this example the [uv mapping](/2021/06/09/threejs-buffer-geometry-attributes-uv) is set up to begin with. However in some cases I will want to mutate that, or set that up to begin with actually
 
 ## Conclusion
 
