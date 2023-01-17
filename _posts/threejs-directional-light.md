@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2023-01-17 10:45:27
-version: 1.39
+updated: 2023-01-17 10:48:57
+version: 1.40
 ---
 
 In [threejs](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) as one of several types of light to choose from when [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options.
@@ -129,9 +129,9 @@ const loop = function () {
 loop();
 ```
 
-## 3 - Very basic house example with vase AmbientLight and shadows
+## 3 - Shadows, AmbientLight 
 
-So I am thinking that directional light might be one of the best choices when it comes to simulating sunlight. Still I think that I might only want to use directional light in conjunction with at least one additional light source such as ambient light. So in this example I am working out the beginnings of a very simple outdoor scene that will juts make use of a mesh made with the Box geometry as a way to represent a house, and a plain geometry based mesh to represent ground.
+So I am thinking that directional light might be one of the best choices when it comes to simulating sunlight. Still I think that I might only want to use directional light in conjunction with at least one additional light source such as ambient light. So in this example I am working out the beginnings of a very simple outdoor scene that will juts make use of a mesh made with the Box geometry as a way to represent a house, and a plain geometry based mesh to represent ground. On top of using directional light as before, and moving that directional light around I am also using the ambient light to set a kind of base amount of light that will always be in effect regardless of the current direction of the directional light source.
 
 ```js
 //-------- ----------
