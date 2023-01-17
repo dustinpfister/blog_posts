@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2023-01-17 10:48:57
-version: 1.40
+updated: 2023-01-17 10:54:35
+version: 1.41
 ---
 
 In [threejs](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) as one of several types of light to choose from when [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options.
@@ -129,9 +129,15 @@ const loop = function () {
 loop();
 ```
 
-## 3 - Shadows, AmbientLight 
+## 3 - AmbientLight, Shadows, textures, and intensity
 
-So I am thinking that directional light might be one of the best choices when it comes to simulating sunlight. Still I think that I might only want to use directional light in conjunction with at least one additional light source such as ambient light. So in this example I am working out the beginnings of a very simple outdoor scene that will juts make use of a mesh made with the Box geometry as a way to represent a house, and a plain geometry based mesh to represent ground. On top of using directional light as before, and moving that directional light around I am also using the ambient light to set a kind of base amount of light that will always be in effect regardless of the current direction of the directional light source.
+So I am thinking that directional light might be one of the best choices when it comes to simulating sunlight. Still I think that I might only want to use directional light in conjunction with at least one additional light source such as ambient light. So in these examples I am working out the beginnings of a very simple outdoor scene that will just make use of a mesh object made with the Box geometry as a way to represent a house, and a plain geometry based mesh to represent ground. On top of using directional light as before, and moving that directional light around I am also using the ambient light to set a kind of base amount of light that will always be in effect regardless of the current direction of the directional light source. Also while I am at it I will be making use of other threejs features with these examples to create something that starts to look like a final project of some kind such as shadows, textures, the intensity values of lights, and so forth.
+
+### 3.1 - Ambient Light and shadows
+
+This is then an example that is more or less the same as my movement example above. However now I am making use of ambient light as a way to set a base amount of light that will always be in effect no matter what. On top of this I am also now adding shadows to the scene, and I am also now using more than one material as well while I am at it.
+
+When this is up and running I have directional light working as expected, but when the direction light is not longer hitting the surface of a mesh the ambient light is still doing its thing to make sure that there is still a base amount of light.
 
 ```js
 //-------- ----------
@@ -200,8 +206,6 @@ const loop = function () {
 };
 loop();
 ```
-
-When this is up and running I have directional light working as expected, but when the direction light is not longer hitting the surface of a mesh the ambient light is still doing its thing to make sure that there is still a base amount of light.
 
 ## Conclusion
 
