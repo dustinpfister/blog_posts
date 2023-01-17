@@ -5,21 +5,24 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2022-05-13 11:26:21
-version: 1.61
+updated: 2023-01-17 09:22:23
+version: 1.62
 ---
 
-In [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry constructor functions built into the core of the threejs library itself to create a geometry by way of javaScript code rather than loading an external file. However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space. There is thinking in terms of a 3d grid of sorts, and then there is thinking in terms of concentric spheres radiating outward from an origin. In other words there is thinking in terms of x,y, and z as a way to find a point in space, and then there is thinking in terms of a radius or Vector length if you prefer, and then two angles often called something like [phi and theta](https://en.wikipedia.org/wiki/Spherical_coordinate_system).
+In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry [constructor functions](/2019/02/27/js-javascript-constructor/) built into the core of the threejs library itself. These various built in geometry functions are a way to create a geometry by way of a little javaScript code rather than loading an external file. Also it is a way to create geometry by just calling a function rather than making a custom geometry the hard way by working out logic to create the various attributes of a buffer geometry.
 
-When it comes to making a sphere geometry just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword, and what is returned is a [buffer geometry instance](/2021/04/22/threejs-buffer-geometry/) of a sphere. I can then add the geometry as the first argument to a [Mesh Object](/2018/05/04/threejs-mesh/) along with a [Material](/2018/04/30/threejs-materials/) as the second argument when calling the THREE.Mesh constructor. However there is a great deal more to it than just that, with the constructor itself, the varios properties of a buffer geometry instance in general, and of course a great many things that branch off from it.
+However there is not just thinking in terms of the built in geometry constructors, but also the differences between two general ways of thinking about 3d space. Often one might think about 3d space in terms of one big grid where everything has a given x, y, and z position relative to a origin. There is however another way of thinking about this that can be described as a distance, and then two angles, often called [phi and theta](https://en.wikipedia.org/wiki/Spherical_coordinate_system), from an origin.
+
+When it comes to making a sphere geometry just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword, pass a few arguments, and what is returned is a [buffer geometry instance](/2021/04/22/threejs-buffer-geometry/) of a sphere. I can then add the geometry as the first argument to a [Mesh Object](/2018/05/04/threejs-mesh/) along with a [Material](/2018/04/30/threejs-materials/) as the second argument when calling the THREE.Mesh constructor. However there is a great deal more to it than just that, with the constructor itself, the various properties of a buffer geometry instance in general, and of course a great many things that branch off when it comes to a sphere in general.
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/L6buxtRbjBg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Sphere Geometry in threejs and what to know first
 
-In this post I will be writing about a few examples of the Sphere Geometry constructor, and also various things that have to do with spheres in general in a javaScript library known as three.js. I will be trying to keep these examples fairly simple, at least the first few at the top of the post anyway. However you should know at least a few things when it comes to the [very basics of getting started with three.js](/2018/04/04/threejs-getting-started/) and [javaScript in general](/2018/11/27/js-getting-started/). I will not be going over little detail that should be known before hand, however in this section I will be briefly mentioning some things that come to mind that you should have solid first.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/L6buxtRbjBg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+In this post I will be writing about a few examples of the Sphere Geometry constructor, and also various things that have to do with spheres in general in the javaScript library known as threejs. I will be trying to keep these examples fairly simple, at least the first few at the top of the post anyway. However you should know at least a few things when it comes to the [very basics of getting started with threejs](/2018/04/04/threejs-getting-started/) and [ client side javaScript ](/2018/11/27/js-getting-started/). I will not be going over little detail that should be known before hand, however in this section I will be briefly mentioning some things that come to mind that you should have solid first.
 
 ### Understand the basics of setting up a scene, camera, and renderer.
 
@@ -33,13 +36,13 @@ There is just creating an instance of sphere geometry, but in order to do anythi
 
 There is not just creating a sphere, but also learning how to position objects in a spherical kind of way. There are a lot of ways of going about doing this sort of thing of course. However one major thing to look into more when it comes to this sort of thing has to do with the [Vector3 class](/2018/04/15/threejs-vector3/), specifically the length property of an instance of such a class. With any instance of Vector3 the length property can be thought of as a kind of radius from the origin. There are all kinds of methods in the Vector3 class that allow for doing things like normalizing a Vector and the scaling the Vector up and down along this length while preserving the direction of the Vector. Speaking of direction there are also ways of changing that while preserving the length of the vector as well.
 
-###  Version Numbers matter with three.js
-
-When I first wrote this post I was using version [r127 of three.js](https://github.com/mrdoob/three.js/releases/tag/r127), that was released in March of 2021. I have been playing around with three.js off and of for a long time now, and I can not say that much has changed with the Sphere Geometry constructor alone when it comes to code breaking changes. Still in many of these examples I am using many other features in three.js that might break when it comes to trying to use them with future versions of three.js, the same can be said if you are using an older version of threejs.
-
 ### The source code examples in this post are on Github
 
 All the source code examples in this post can be found in [my test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-sphere). As the name suggests this is where I am parking all the demos and examples not just for this post but all my [other posts on threejs as well](/categories/three-js/).
+
+###  Version Numbers matter with three.js
+
+When I first wrote this post I was using version [r127 of three.js](https://github.com/mrdoob/three.js/releases/tag/r127), that was released in March of 2021. I have been playing around with three.js off and of for a long time now, and I can not say that much has changed with the Sphere Geometry constructor alone when it comes to code breaking changes. Still in many of these examples I am using many other features in three.js that might break when it comes to trying to use them with future versions of three.js, the same can be said if you are using an older version of threejs.
 
 ## 1 - Basic Sphere Geometry Example
 
