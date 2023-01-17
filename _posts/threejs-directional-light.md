@@ -5,17 +5,20 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2022-05-14 15:26:04
-version: 1.36
+updated: 2023-01-17 09:42:50
+version: 1.37
 ---
 
-In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer at this time.
+In [threejs](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) as one of several types of light to choose from when [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options.
 
-A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing, because with directional light, the light is coming from a certain direction. With ambient light a base light intensity is just applied for all materials in a scene and the location of the ambient light in world space does not really matter. It is still not the same thing as a point light through as the light is coming in one direction all throughout the scene rather than radiating outward from a point.
+A directional light is like ambient light in the sense that it is a good way to go about simulating day light. With ambient light a base light intensity is just applied for all materials in a scene and the location of the ambient light in world space does not really matter. Directional light however as the name implies is a situation in which light is coming in from a given direction, but not in the same way as with a point light, or spot light. The rays are all coming in at a parallel, uniform direction, rather from a fixed point outward. Directional light alone might not still be the best way to simulate daylight though, I often find myself using a combination of directional light and ambient light to do so.
 
 So then directional light is kind of like that of point lights and [spotlights](/2018/04/11/threejs-spotlights/) in that I want to set a desired value for the position property of the object that is returned when calling the THREE.DirectionalLight constructor. However when doing so I can also make use of a normalized Vector3 instance value, as the direction and not so much the magnitude of that directional that matters with directional light. When it comes to spot lights and point lights it is both direction and position that matter.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/E8KhyOsQr_U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Directional light in threejs and what to know first
 
@@ -23,12 +26,9 @@ The subject of light in threejs can get a little involved, but should not be to 
 
 If you still need to take a step back when it comes to the very basics of threejs I will be keeping these examples fairly simple, but it would likely be best to start out with some kind of [getting started post on threejs](/2018/04/04/threejs-getting-started/). So I will not be getting into the very basics of threejs and javaScript here. However I will mention a few things in this section that you should have an understanding of before continuing.
 
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/E8KhyOsQr_U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
 ### Know a thing or two about materials
 
-It is require to know that not all materials will respond to light sources, such as the mesh basic material, and the mesh normal material just to name a few that are not going to work with light. When I work with light I often go with the [standard material](/2021/04/27/threejs-standard-material/), but there are some additional options such as the Lambert material and the Phong material.
+It is required to know that not all materials will respond to light sources. For example mesh material options such as the [mesh basic material](/2018/05/05/threejs-basic-material/), and the [mesh normal material](/2021/06/23/threejs-normal-material/) just to name a few that are not going to work with light. When I work with light I often go with the [standard material](/2021/04/27/threejs-standard-material/), but there are some additional options such as the [Lambert material](/2018/04/08/threejs-lambert-material/) and the [Phong material](/2022/12/29/threejs-phong-material/) that one should also take into account. Light is also a major thing to be aware of when it comes to getting into writing custom GLSL shaders with the [shader material](/2023/01/13/threejs-shader-material/) as well. Getting into every little detail with this would of course be way off topic though so there is checking out one or more of these materials or starting out with some kind of [main post on the subject of materials](/2018/04/30/threejs-materials/) if you feel as though you may need to research more on them first.
 
 ### The Vector3 class, and the object3d position property
 
