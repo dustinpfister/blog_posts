@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 884
-updated: 2023-01-07 10:30:57
-version: 1.23
+updated: 2023-01-17 16:18:19
+version: 1.24
 ---
 
 Yesterday I wrote a [post on the position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. The values in this attribute are used to find out what the direction is of each point of each triangle in an instance of buffer geometry. These values are then used when it comes to rendering textures for various materials such as with the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), and they are also involve in effects with other materials such as with light and how it effects materials like the [standard material](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial).
@@ -45,44 +45,44 @@ First off I think I should start out with a very basic example of thee normal at
 So in this basic example I just create a scene object, and then I intend to create and add a Mesh object to the scene that uses a geometry created with the THREE.BoxGeometry constructor, and uses the THREE.MeshNormalMaterial as a way to go about skinning the geometry. The only thing that I am going to do out of the usual here is to create an instance of THREE.ArrowHelper and then use the values in the normal and position attributes to set the position and direction of the arrow helper for the first vertex of the first triangle of the geometry.
 
 ```js
-(function () {
- 
-    // scene
-    var scene = new THREE.Scene();
- 
-    // GEOMETRY - starting with a cube
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
- 
-    // use the geometry with a mesh
-    var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
-                side: THREE.FrontSide //THREE.DoubleSide
-            }));
- 
-    // check out the normal attribute of a cube
-    var normal = geometry.getAttribute('normal');
-    var position = geometry.getAttribute('position');
- 
-    // create and set up an arrow helper to find the direction of the first normal value
-    var dir = new THREE.Vector3(normal.array[0], normal.array[1], normal.array[2]),
-    origin = new THREE.Vector3(position.array[0], position.array[1], position.array[2]);
-    var helper = new THREE.ArrowHelper(dir, origin, 1, 0x00ff00);
-    helper.position.copy(origin);
- 
-    scene.add(mesh);
-    scene.add(helper);
- 
-    // camera, render
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(mesh.position);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    renderer.render(scene, camera);
- 
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ---------- 
+// GEOMETRY - starting with a cube
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+//-------- ----------
+// MESH
+//-------- ---------- 
+// use the geometry with a mesh
+const mesh = new THREE.Mesh(geometry, 
+    new THREE.MeshNormalMaterial()
+);
+//-------- ----------
+// REF TO NORMAL AND POSITION ATTRIBUTES
+//-------- ---------- 
+// check out the normal attribute of a cube
+const normal = geometry.getAttribute('normal');
+const position = geometry.getAttribute('position');
+// create and set up an arrow helper to find the direction of the first normal value
+const dir = new THREE.Vector3(normal.array[0], normal.array[1], normal.array[2]),
+origin = new THREE.Vector3(position.array[0], position.array[1], position.array[2]);
+const helper = new THREE.ArrowHelper(dir, origin, 1, 0x00ff00);
+helper.position.copy(origin);
+scene.add(mesh);
+scene.add(helper);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 So then this shows be the direction of the first normal of the box geometry, but what about the rest of the normals of the first triangle, and what happens when I change the direction of them? With that said sets move on to some additional examples of the normal attribute that involve mutation and animation.
@@ -185,7 +185,7 @@ In this example I now have some helper methods that I worked out. One of which i
 
 When this code example is up and running the result is that the colors for the triangle to which I am changing the direction of the normals used will as one might expect change. The typical situation when using the Mesh Normal material with a cube is that the color range will include purple, blue, and cyan, but never green or any other colors beyond these three. This is because the normals with the Box Geometry constrictor are set up to begin with and they are all pointing outward from the inside of the cube. When the direction is changed away from this default setting that results in other colors showing up, and this is generally an indication that something is wrong with the normal values of the geometry, unless for some reason I want them facing other ways.
 
-## 3 - Conclusion
+## Conclusion
 
 That will be it for now when it comes to the normal attribute when it comes to earning more about the buffer geometry used in late versions of threejs. The general thing here is that the normals array is a way to set the direction of each point of each triangle that is used in the geometry. So there is the position attribute that is the collection of positions for each point of each triangle and this normal attribute is a way to declare which direction each point is facing. These values are then used along with other attributes such as the uvs attribute to render textures for various materials. So then understating the nature of the normal attribute along with the position and uvs attributes is all part of the process when it comes to learning how to create a custom geometry from the ground up.
 
