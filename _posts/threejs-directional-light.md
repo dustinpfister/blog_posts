@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2023-01-17 09:42:50
-version: 1.37
+updated: 2023-01-17 10:23:37
+version: 1.38
 ---
 
 In [threejs](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) as one of several types of light to choose from when [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options.
@@ -32,15 +32,16 @@ It is required to know that not all materials will respond to light sources. For
 
 ### The Vector3 class, and the object3d position property
 
-At this time you should know at least a little about the [object3d class](/2018/04/23/threejs-object3d/), and mainly the [position property of the object3d class](/2022/04/04/threejs-object3d-position/) that is an instance of the [Vector3 class](/2018/04/15/threejs-vector3/). When it comes to a directional light the position property is what is used to set, well, the direction.
+At this time you should know at least a little about the [object3d class](/2018/04/23/threejs-object3d/), and mainly the [position property of the object3d class](/2022/04/04/threejs-object3d-position/). This position property of the object3d base class stores an instance of the [Vector3 class](/2018/04/15/threejs-vector3/) as the value of the property. When it comes to a directional light the position property is what is used to set the direction of the light. Although it may be the position property it is really just the direction of the vector that matters and not so much the unit length.
+
 
 ### The source code examples in this post are on Github
 
-The source code exmaples in this post can also be found in [my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-directional-light).
+The source code exmaples in this post can also be found in [my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-directional-light) on Github. This is also where I park the source code examples, and various other assets that I write about in my [many other blog posts on threejs](/categories/three-js).
 
 ### The version number of threejs is important
 
-When I made the code examples for this post I was using threejs revision 127, and the last time I ca around to doing some editing here I was using r135. I do not think that much has changed with direction light for a real long time, however I can not say the same for a whole lot of other features of threejs. At some point in the future it is possible that the code examples here might break, so it is a good idea to always take into account what the version number is that you are using as well as the version number that was used by the author of a code example on the open web.
+When I made the code examples for this post I was using threejs revision 127, and the last time I came around to do some editing here I was using r135. I do not think that much has changed with directional light for a real long time, however I can not say the same for a whole lot of other features of threejs. At some point in the future it is possible that the code examples here might break, so it is a good idea to always take into account what the version number is that you are using as well as the version number that was used by the author of a code example on the open web.
 
 ## 1 - Directional Light threejs example
 
@@ -75,7 +76,7 @@ By default the position of the directional light is 0,1,0 and the target of the 
 
 ## 2 - Moving a directional light
 
-A directional light like most lights and objects that are placed in a scene in three js inherits from the object 3d class, so it has a position property than can be used to set the position of the directional light to a point other than that of the default position.
+A directional light like most lights and objects that are placed in a scene in threejs inherits from the object 3d class. So it has a position property than can be used to set the position of the directional light to a point other than that of the default position. However when it comes to directional light it is really just the direction and not the unit length, or distance from the origin that matters.
 
 ```js
 var scene = new THREE.Scene();
@@ -114,8 +115,6 @@ var loop = function () {
 };
 loop();
 ```
-
-Changing the position of the directional light is just on f two points of interest when it comes to changing the direction of the light. The other point of interest is the target property of the directional light that can also be changed to something other than the default as well.
 
 ## 3 - Very basic house example with vase AmbientLight and shadows
 
