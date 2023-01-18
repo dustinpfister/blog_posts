@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2022-05-15 12:22:56
-version: 1.29
+updated: 2023-01-18 09:51:37
+version: 1.30
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/) object. When adding mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way when compared to another. This is the case when comparing the standard material to that of the basic material, the standard material will react to light sources while the basic material will not. 
@@ -42,165 +42,187 @@ The source code example that I am writing about in this post can be found in my 
 
 <!-- more -->
 
-### 1 - Basic Static Ambient light example
+## 1 - Basic Static Ambient light example
 
 Maybe one of the best options to choose from to get started with when it come to light would be an [Ambient Light](/2018/11/02/threejs-ambientlight/). This kind of light will just add a base amount of light to all surfaces of all mesh object in a scene evenly. There is nothing going on with this light source when it comes to position and rotation so it can just be added to the scene and thats it.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    // creating a scene
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(6, 6));
-    // camera
-    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
-    camera.position.set(1, 1, 1);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ---------- ----------
-    // ADDING AMBIENT LIGHT TO THE SCENE
-    // ---------- ----------
-    var light = new THREE.AmbientLight(0x2a2a2a, 0.5);
-    scene.add(light);
-    // ---------- ----------
-    // ADDING A MESH WITH, SPHERE GEOMETRY, AND THE STANDARD MATERIAL TO THE SCENE
-    // ---------- ----------
-    var mesh1 = new THREE.Mesh(
-            new THREE.SphereGeometry(0.5),
-            new THREE.MeshStandardMaterial( { color: new THREE.Color('red') } )
-    );
-    scene.add(mesh1);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(6, 6));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// ADDING AMBIENT LIGHT TO THE SCENE
+// ---------- ----------
+const al = new THREE.AmbientLight(0x2a2a2a, 0.5);
+scene.add( al );
+// ---------- ----------
+// ADDING A MESH WITH, SPHERE GEOMETRY, AND THE STANDARD MATERIAL TO THE SCENE
+// ---------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.SphereGeometry(0.5),
+    new THREE.MeshStandardMaterial( { color: new THREE.Color('red') } )
+);
+scene.add(mesh1);
+// ---------- ----------
+// CALLING RENDER OF RENDERER
+// ---------- ----------
+renderer.render(scene, camera);
 ```
 
-### 2 - Static directional light example
+## 2 - Static directional light example
 
 [Directional light](/2019/06/04/threejs-directional-light/) in a way is just a slightly more advanced kind of ambient light in which the position of the direction light matters. As the name suggests light travels in one direction, but it does so in a parallel kind of way rather than being focused in a specific area light with spotlights, or outward in all directions like with point lights. For this reason a directional light might be one of the best options for having a sun light effect, but when doing so I might still want to have ambient light as well to still have a base amount of light for all surfaces.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    // creating a scene
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(6, 6));
-    // camera
-    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
-    camera.position.set(1, 1, 1);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ---------- ----------
-    // ADDING DIRECTIONAL AND AMBIENT LIGHT TO THE SCENE
-    // ---------- ----------
-    var light = new THREE.DirectionalLight(0x2a2a2a, 2.5);
-    light.position.set(25, 50, -25);
-    scene.add(light);
-    scene.add(new THREE.AmbientLight(0x2a2a2a, 0.25));
-    // ---------- ----------
-    // ADDING A MESH WITH, SPHERE GEOMETRY, AND THE STANDARD MATERIAL TO THE SCENE
-    // ---------- ----------
-    var mesh1 = new THREE.Mesh(
-            new THREE.SphereGeometry(0.5),
-            new THREE.MeshPhongMaterial( { color: new THREE.Color('red') } )
-    );
-    scene.add(mesh1);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+// creating a scene
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(6, 6));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// ADDING DIRECTIONAL AND AMBIENT LIGHT TO THE SCENE
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0x2a2a2a, 2.5);
+dl.position.set(25, 50, -25);
+scene.add(dl);
+scene.add(new THREE.AmbientLight(0x2a2a2a, 0.25));
+// ---------- ----------
+// ADDING A MESH WITH, SPHERE GEOMETRY, AND THE STANDARD MATERIAL TO THE SCENE
+// ---------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.SphereGeometry(0.5),
+    new THREE.MeshPhongMaterial( { color: new THREE.Color('red') } )
+);
+scene.add(mesh1);
+// ---------- ----------
+// CALLING RENDER OF RENDERER
+// ---------- ----------
+renderer.render(scene, camera);
 ```
 
-## 3 - Directional light animation example
+## 3 - Hemisphere Light
+
+For the most part I like to stick with a certain core set of light options such as directional light, and ambient light. However there are a few other options that could prove to be a good choice for certain projects, such as the [Hemisphere light](https://threejs.org/docs/#api/en/lights/HemisphereLight). This is a kind of light source that comes from above the scene and it will rage from a sky color to a ground color given in the form of the first two arguments when calling the constructor function.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+// creating a scene
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(6, 6));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
+camera.position.set(2,2,2);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// Hemisphere Light
+// ---------- ----------
+const hl = new THREE.HemisphereLight( 0x00afff, 0xffaf00, 1 );
+scene.add( hl );
+// ---------- ----------
+// ADDING MESH OBJECT TO THE SCENE
+// ---------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1,1,1),
+    new THREE.MeshPhongMaterial( { color: new THREE.Color('white') } )
+);
+mesh1.rotation.set(0, Math.PI * 1.95, Math.PI * 0.35)
+scene.add(mesh1);
+// ---------- ----------
+// RENDER static scene
+// ---------- ----------
+renderer.render(scene, camera);
+```
+
+
+### 4.1 - Directional light animation example
 
 To gain a better sen of what is going on with directional light it might be a good idea to work in some controls that can be used to change the position of the directional light, or have some kind of animation loop. For this example I will be doing the latter and will also be writing about additional examples such when it comes to other light source examples in the post from here on out.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    // creating a scene
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(6, 6));
-    // camera
-    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
-    camera.position.set(1, 1, 1);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ---------- ----------
-    // ADDING DIRECTIONAL AND AMBIENT LIGHT TO THE SCENE
-    // ---------- ----------
-    var light = new THREE.DirectionalLight(0x2a2a2a, 2.5);
-    scene.add(light);
-    scene.add(new THREE.AmbientLight(0x2a2a2a, 0.25));
-    // ---------- ----------
-    // ADDING A MESH WITH, SPHERE GEOMETRY, AND THE STANDARD MATERIAL TO THE SCENE
-    // ---------- ----------
-    var mesh1 = new THREE.Mesh(
-            new THREE.SphereGeometry(0.75),
-            new THREE.MeshPhongMaterial( { color: new THREE.Color('red') } )
-    );
-    scene.add(mesh1);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER IN AN ANIMATION LOOP
-    // ---------- ----------
-    // APP LOOP
-    var secs = 0,
-    fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
-    fps_movement = 60, // fps rate to move camera
-    frame = 0,
-    frameMax = 600,
-    lt = new Date();
-    // update
-    var update = function(){
-        var per = Math.round(frame) / frameMax,
-        radian = Math.PI * 2 * per,
-        x = Math.cos(radian) * 25, 
-        y = 0,
-        z = Math.sin(radian) * 25;
-        light.position.set(x, y, z);
-    };
-    // loop
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps_update){
-            update();
-            renderer.render(scene, camera);
-            frame += fps_movement * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+// creating a scene
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(6, 6));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// ADDING DIRECTIONAL AND AMBIENT LIGHT TO THE SCENE
+// ---------- ----------
+const light = new THREE.DirectionalLight(0x2a2a2a, 2.5);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x2a2a2a, 0.25));
+// ---------- ----------
+// ADDING A MESH WITH, SPHERE GEOMETRY, AND THE STANDARD MATERIAL TO THE SCENE
+// ---------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.SphereGeometry(0.75),
+    new THREE.MeshPhongMaterial( { color: new THREE.Color('red') } )
+);
+scene.add(mesh1);
+// ---------- ----------
+// CALLING RENDER OF RENDERER IN AN ANIMATION LOOP
+// ---------- ----------
+let secs = 0,
+fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
+fps_movement = 60, // fps rate to move camera
+frame = 0,
+frameMax = 600,
+lt = new Date();
+// update
+const update = function(){
+    const per = Math.round(frame) / frameMax,
+    radian = Math.PI * 2 * per,
+    x = Math.cos(radian) * 25, 
+    y = 0,
+    z = Math.sin(radian) * 25;
+    light.position.set(x, y, z);
+};
+// loop
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps_update){
+        update();
+        renderer.render(scene, camera);
+        frame += fps_movement * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
-## 4 - SpotLights
+### 4.2 - SpotLights
 
 Spotlights are a pretty cool feature to play around with, and in certain projects I might want to use one or more of them. I have [wrote a post in which I get into spotlights in detail](/2018/04/11/threejs-spotlights/), with very simple getting started type examples upwards to examples that make use of most of the features to be aware f when using spotlights. For this post I will be going over a custom example that I made just for this post that I think covers all of the various feature that I would want to be aware of when making use of them when it comes to the argument values, and also updating what the target and helper values in an animation loop.
 
@@ -209,197 +231,143 @@ When it comes to the THREE.Spotlight constructor the first two arguments are for
 Another major aspect of a spotlight is the target property f the light which is the object that the spot light should be focus on. This object can be a mesh object, or any object based off of the object3d class including just a plain object3d instance which is what I was using in this example. So I can then move the spot light itself, and also move the target object as a way to control the origin at which the light is coming from as well as what the spotlight is focused on.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    // creating a scene
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(6, 6));
-    // camera
-    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
-    camera.position.set(3, 3, 3);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ---------- ----------
-    // SPORTLIGHT
-    // ---------- ----------
-    var distance = 10,
-    angle = Math.PI / 180 * 20,
-    penumbra = 1,
-    decay = 0.5;
-    var light = new THREE.SpotLight(0xffffff, 1, distance, angle, penumbra, decay);
-    var target = new THREE.Object3D();
-    var lightHelper = new THREE.SpotLightHelper(light);
-    light.target = target;
-    light.add( lightHelper );
-    scene.add(target);
-    scene.add(light);
-    scene.add(new THREE.AmbientLight(0x2a2a2a, 0.3));
-    // ---------- ----------
-    // ADDING A FEW MESH OBJECTS TO THE SCENE
-    // ---------- ----------
-    var mesh1 = new THREE.Mesh(
-            new THREE.PlaneGeometry(5,5),
-            new THREE.MeshPhongMaterial( { color: new THREE.Color('cyan') } )
-    );
-    mesh1.rotation.x = -1.57;
-    scene.add(mesh1);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER IN AN ANIMATION LOOP
-    // ---------- ----------
-    // APP LOOP
-    var secs = 0,
-    fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
-    fps_movement = 30, // fps rate to move camera
-    frame = 0,
-    frameMax = 120,
-    lt = new Date();
-    // update
-    var update = function(){
-        var per = Math.round(frame) / frameMax,
-        bias = 1 - Math.abs(0.5 - per) / 0.5,
-        radian = Math.PI * 2 * per;
-        // setting target position
-        target.position.set(Math.cos(radian) * 1.5, 0, Math.sin(radian) * 1.5);
-        // setting spot light position
-        light.position.set(-2 + 4 * bias, 0.25 + 1.25 * bias, 0);
-        lightHelper.update();
-    };
-    // loop
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps_update){
-            update();
-            renderer.render(scene, camera);
-            frame += fps_movement * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+// creating a scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// SPOTLIGHT
+// ---------- ----------
+let distance = 10,
+angle = Math.PI / 180 * 20,
+penumbra = 1,
+decay = 0.5;
+const light = new THREE.SpotLight(0xffffff, 1, distance, angle, penumbra, decay);
+const target = new THREE.Object3D();
+const lightHelper = new THREE.SpotLightHelper(light);
+light.target = target;
+light.add( lightHelper );
+scene.add(target);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x2a2a2a, 0.3));
+// ---------- ----------
+// ADDING A FEW MESH OBJECTS TO THE SCENE
+// ---------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.PlaneGeometry(5,5),
+    new THREE.MeshPhongMaterial( { color: new THREE.Color('cyan') } )
+);
+mesh1.rotation.x = -1.57;
+scene.add(mesh1);
+// ---------- ----------
+// CALLING RENDER OF RENDERER IN AN ANIMATION LOOP
+// ---------- ----------
+let secs = 0,
+fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
+fps_movement = 30, // fps rate to move camera
+frame = 0,
+frameMax = 120,
+lt = new Date();
+// update
+const update = function(){
+    const per = Math.round(frame) / frameMax,
+    bias = 1 - Math.abs(0.5 - per) / 0.5,
+    radian = Math.PI * 2 * per;
+    // setting target position
+    target.position.set(Math.cos(radian) * 1.5, 0, Math.sin(radian) * 1.5);
+    // setting spot light position
+    light.position.set(-2 + 4 * bias, 0.25 + 1.25 * bias, 0);
+    lightHelper.update();
+};
+// loop
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps_update){
+        update();
+        renderer.render(scene, camera);
+        frame += fps_movement * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
 One more additional feature that I like to use when adjusting things with a spot light is the spot light helper which will help to get a visual idea of what is going on with a spot light. There is also the update method of this kind of object that I will want to call when changing values of the spotlight instance over time.
 
-## 5 - Point lights
+### 4.3 - Point lights
 
 Another great option for lighting is [point lights](/2019/06/02/threejs-point-light/) which as the name suggests will shine light outward in all directions.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    // creating a scene
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(6, 6));
-    // camera
-    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
-    camera.position.set(3, 3, 3);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ---------- ----------
-    // POINT LIGHT
-    // ---------- ----------
-    var light = new THREE.PointLight(0xffffff, 1);
-    light.add(new THREE.Mesh(new THREE.SphereGeometry(0.05, 20, 20)));
-    scene.add(light);
-    scene.add(new THREE.AmbientLight(0x2a2a2a, 0.3));
-    // ---------- ----------
-    // ADDING A FEW MESH OBJECTS TO THE SCENE
-    // ---------- ----------
-    var mesh1 = new THREE.Mesh(
-            new THREE.PlaneGeometry(5,5),
-            new THREE.MeshPhongMaterial( { color: new THREE.Color('cyan') } )
-    );
-    mesh1.rotation.x = -1.57;
-    scene.add(mesh1);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER IN AN ANIMATION LOOP
-    // ---------- ----------
-    // APP LOOP
-    var secs = 0,
-    fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
-    fps_movement = 30, // fps rate to move camera
-    frame = 0,
-    frameMax = 120,
-    lt = new Date();
-    // update
-    var update = function(){
-        var per = Math.round(frame) / frameMax,
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        light.position.set(-2 + 4 * bias, 2, 0);
-    };
-    // loop
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps_update){
-            update();
-            renderer.render(scene, camera);
-            frame += fps_movement * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
-```
-
-## 6 - Hemisphere Light
-
-For the most part I like to stick with a certain core set of light options such as directional light, and ambient light. However there are a few other options that could prove to be a good choice for certain projects, such as the [Hemisphere light](https://threejs.org/docs/#api/en/lights/HemisphereLight). This is a kind of light source that comes from above the scene and it will rage from a sky color to a ground color given in the form of the first two arguments when calling the constructor function.
-
-```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    // creating a scene
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(6, 6));
-    var camera = new THREE.PerspectiveCamera(40, 640 / 480, 0.6, 100);
-    camera.position.set(5, 4, 5);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ---------- ----------
-    // Hemisphere Light
-    // ---------- ----------
-    const light = new THREE.HemisphereLight( 0x00afff, 0xffaf00, 1 );
-    scene.add( light );
-    // ---------- ----------
-    // ADDING MESH OBJECT TO THE SCENE
-    // ---------- ----------
-    var mesh1 = new THREE.Mesh(
-            new THREE.BoxGeometry(2, 2, 2),
-            new THREE.MeshPhongMaterial( { color: new THREE.Color('white') } )
-    );
-    mesh1.rotation.set(0, Math.PI * 1.95, Math.PI * 0.35)
-    scene.add(mesh1);
-    // ---------- ----------
-    // RENDER static scene
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+// creating a scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.6, 100);
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// POINT LIGHT
+// ---------- ----------
+const light = new THREE.PointLight(0xffffff, 1);
+light.add(new THREE.Mesh(new THREE.SphereGeometry(0.05, 20, 20)));
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x2a2a2a, 0.3));
+// ---------- ----------
+// ADDING A FEW MESH OBJECTS TO THE SCENE
+// ---------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.PlaneGeometry(5,5),
+    new THREE.MeshPhongMaterial( { color: new THREE.Color('cyan') } )
+);
+mesh1.rotation.x = -1.57;
+scene.add(mesh1);
+// ---------- ----------
+// CALLING RENDER OF RENDERER IN AN ANIMATION LOOP
+// ---------- ----------
+// APP LOOP
+let secs = 0,
+fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
+fps_movement = 30, // fps rate to move camera
+frame = 0,
+frameMax = 120,
+lt = new Date();
+// update
+const update = function(){
+    const per = Math.round(frame) / frameMax,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+    light.position.set(-2 + 4 * bias, 2, 0);
+};
+// loop
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps_update){
+        update();
+        renderer.render(scene, camera);
+        frame += fps_movement * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
