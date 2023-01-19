@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2022-05-16 12:28:57
-version: 1.39
+updated: 2023-01-19 10:14:38
+version: 1.40
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render a texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering such a mesh object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object without having to bother with external image assets or a code means to generate texture, often I find myself going with the normal material when it comes ot this kind of place holder material but the depth material would be another option.
@@ -17,11 +17,12 @@ So in this post I thought I would write about a few examples about this depth ma
 
 <!-- more -->
 
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/Xxhg8eB6ojU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The Depth Material and what to know first
 
 This is a post on the depth material in three.js, as such I expect for you to at least understand the basics of creating a three.js project. If not there is looking into one or more [getting started type posts on three.js](/2018/04/04/threejs-getting-started/), and also maybe [javaScript in general](/2018/11/27/js-getting-started/). On top of knowing the very basis of getting started on three.js there is maybe a few more things that a developer should look into more with cameras, and certain base classes such as the [Vector3](/2018/04/15/threejs-vector3/) and Object3d classes, that are used to do things like setting the position of the camera. In this section I will be outlining a few things that you should know about before continuing reading the rest if this post.
-
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/Xxhg8eB6ojU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### You might want to read up more on the perspective camera
 
@@ -46,26 +47,30 @@ First off there is starting with a basic example of what the deal is with the de
 I will then want to create the rest of my threejs example just like that of any other example where I will want to have a scene, and add this box mesh to that scene. However I am also going to want a renderer, and a camera, and it is the camera that I should write about a little more with this example as there are two values of interest when it comes to the depth material. When calling the THREE.PerspectiveCamera constructor function the first value is the field of view, the second argument is an aspect ration, but then there are the third and fourth arguments. The third argument is an initial value for the near value of the camera, and the fourth argument is a far value for it.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 3.0);
+camera.position.set(1.2, 1.2, 1.2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH, MATERIAL
+//-------- ----------
 // creating a box mesh with the Box Geometry constructor,
 // and the normal material
-var box = new THREE.Mesh(
-        new THREE.BoxGeometry(1.5, 1, 1.5),
+const box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshDepthMaterial());
-box.position.set(-0.25, 0, -0.25);
- 
-// creating a scene
-var scene = new THREE.Scene();
- 
+box.position.set(0, 0.20, 0);
 // add the box mesh to the scene
 scene.add(box);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.8, 2.5);
-camera.position.set(1, 1, 1);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -78,45 +83,43 @@ The near and far values of a camerae are what are mainly used to adjust the outc
 The thing about adjusting the near and far values of a camera after it has been created though is that after making any kind of change there is a special method of a camera instance that I am going to want to call after changing a value like near or far. This method is called the [update projecting matrix method](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera.updateProjectionMatrix) of the perspective camera. This method will need to be called in an update loop, or event handler that will mutate a static values of a camera such as the near and far values that are used with the depth material.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 3.0);
+camera.position.set(1.2, 1.2, 1.2);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH, MATERIAL
+//-------- ----------
 // creating a box mesh with the Box Geometry constructor,
 // and the normal material
-var box = new THREE.Mesh(
-        new THREE.BoxGeometry(1.5, 1, 1.5),
+const box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshDepthMaterial());
-box.position.set(-0.25, 0, -0.25);
- 
-// creating a scene
-var scene = new THREE.Scene();
- 
+box.position.set(0, 0.2, 0);
 // add the box mesh to the scene
 scene.add(box);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.8, 2.5);
-camera.position.set(1, 1, 1);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var lt = new Date(),
-frame = 0,
-maxFrame = 100,
-fps = 30;
-var loop = function () {
-    var now = new Date(),
+//-------- ----------
+// LOOP
+//-------- ----------
+let lt = new Date(), frame = 0;
+const maxFrame = 100, fps = 30;
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000,
     per = frame / maxFrame,
     bias = 1 - Math.abs(per - 0.5) / 0.5;
- 
     requestAnimationFrame(loop);
- 
     if (secs > 1 / fps) {
         // adjusting near and far values of the camera
         camera.near = 0.4 + 0.4 * bias;
         camera.far = 1 + 2 * bias;
         camera.updateProjectionMatrix();
- 
         renderer.render(scene, camera);
         lt = now;
         frame += 1;
@@ -135,42 +138,38 @@ On thing that I wanted to find out is how to go about making some kind of custom
 Data textures are one of several options when it comes to making a texture with javaScript cod rather than that of a static external image asset. So then there is just getting the distance between a mesh object and a camera, and then using that with various other metrics to create the color channel values for each pixel of a data texture which can be thought of as a kind of custom depth material then.
 
 ```js
-// scene, camera, and renderer
-var scene = new THREE.Scene();
-scene.background = new THREE.Color(0.1,0.1,0.1)
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(2.25, 2.25, 2.25);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
 // HELPER FUNCTIONS
- 
-var getMeshDPer = function(mesh, camera, maxDist){
-    var d1 = mesh.position.distanceTo( camera.position );
+//-------- ----------
+const getMeshDPer = function(mesh, camera, maxDist){
+    let d1 = mesh.position.distanceTo( camera.position );
     d1 = d1 > maxDist ? maxDist : d1;
     return d1 / maxDist;
 };
- 
-var createDepthData = function(mesh, camera, maxDist, width, height){
-    var size = width * height;
-    var data = new Uint8Array( 4 * size );
- 
-    // d1 - distance from mesh to camera
-    //var d1 = mesh.position.distanceTo( camera.position );
-    //d1 = d1 > maxDist ? maxDist : d1;
-    var d1Per = getMeshDPer(mesh, camera, maxDist);
+const createDepthData = function(mesh, camera, maxDist, width, height){
+    const size = width * height;
+    const data = new Uint8Array( 4 * size );
+    const d1Per = getMeshDPer(mesh, camera, maxDist);
     for ( let i = 0; i < size; i ++ ) {
-        var stride = i * 4,
+        const stride = i * 4,
         x = i % width,
         y = Math.floor(i / width),
         v2 = new THREE.Vector2(x, y),
-        // d1 - px distance from center of canvas
-        d2 = v2.distanceTo( new THREE.Vector2(width / 2, height / 2) ),
-        d2Per = d2 / (width / 2);
+        d2 = v2.distanceTo( new THREE.Vector2(width / 2, height / 2) );
+        let d2Per = d2 / (width / 2);
         d2Per = d2Per > 1 ? 1 : d2Per;
         // set r, g, b, and alpha data values
-        var v = 255 - Math.floor(245 * d2Per) * ( 1 - d1Per );
+        const v = 255 - Math.floor(245 * d2Per) * ( 1 - d1Per );
         data[ stride ] = v;
         data[ stride + 1 ] = v;
         data[ stride + 2 ] = v;
@@ -178,10 +177,8 @@ var createDepthData = function(mesh, camera, maxDist, width, height){
     }
     return data;
 };
- 
-var createDistBox = function(camera, x, y, z, maxDist){
-    var maxDist = 10;
-    var box = new THREE.Mesh(
+const createDistBox = function(camera, x, y, z, maxDist){
+    const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshBasicMaterial({
            color: 0xffffff,
@@ -191,25 +188,29 @@ var createDistBox = function(camera, x, y, z, maxDist){
     );
     box.position.set(x, y, z);
     // texture
-    var width = 16, height = 16;
-    var data = createDepthData(box, camera, maxDist, width, height);
-    var texture = new THREE.DataTexture( data, width, height );
+    const width = 16, height = 16;
+    const data = createDepthData(box, camera, maxDist, width, height);
+    const texture = new THREE.DataTexture( data, width, height );
     texture.needsUpdate = true;
     box.material.map = texture;
     // transparency
     box.material.opacity = 1 - parseFloat( getMeshDPer(box, camera, maxDist).toFixed(2) );
     return box;
 };
-var box1 = createDistBox(camera, 0, 0, 0, 10);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const box1 = createDistBox(camera, 0, 0, 0, 10);
 scene.add(box1);
-var box2 = createDistBox(camera, -2, 0, -3.25, 10);
+const box2 = createDistBox(camera, -2, 0, -3.25, 10);
 scene.add(box2);
-var box2 = createDistBox(camera, -5.5, 0, -3.25, 10);
-scene.add(box2);
-var box3 = createDistBox(camera, 2.15, 1.15, 1.1, 10);
+const box3 = createDistBox(camera, -5.5, 0, -3.25, 10);
 scene.add(box3);
- 
-// render
+const box4 = createDistBox(camera, 2.15, 1.15, 1.1, 10);
+scene.add(box4);
+//-------- ----------
+// RENDER
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
