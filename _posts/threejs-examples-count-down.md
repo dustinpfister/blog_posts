@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1019
-updated: 2022-12-27 12:27:33
-version: 1.7
+updated: 2023-01-19 12:47:21
+version: 1.8
 ---
 
 This [threejs project examples post](https://threejs.org/examples/) is on a javaScript file that I am using to help me with the process of making what I would call a count down, or [timer videos](https://www.youtube.com/watch?v=_W0bSen8Qjg). This is just simply a kind of video where there is a count down that starts from when the video starts from a given start time such as 30 seconds, and then counts down to 0. When 0 is reached the video is over, or there is a little additional time that is an alarm sound or something to that effect.
@@ -567,7 +567,7 @@ countDown.DAE_loader([ '/dae/count_down_basic/cd2.dae' ])
 
 ### 1.4 - Using the DAE load method with more than one file, and with DAE file textures
 
-For this example I am not ditching the use of canvas textures in favor of textures that I have made for the DAE files. As at this point I am not only using External files for geometry that has position, as well as custom uv and normals attributes, but now also textures as well. Also I am not getting into the habit of making more than one DAE file one for numbers, and the other for everything else that I want in the scene. Moving forward I am sure that I will end up with just one great file for the numbers that I will want to reuse from one project to the next, but have many other files for additional objects to place in the scene. So for this example I am now using my cd3\-nums file along with my cd3-ground files. These files have uvmaps and on top of that textures that are use for each material of each object. I am thinking that this might be the final form of the kinds of files I want to make for this, at least when it comes to r0 of the count-down.js file.
+For this example I am now ditching the use of canvas textures in favor of textures that I have made for the DAE files. As at this point I am not only using external files for geometry that has position, as well as custom uv and normals attributes, but now also textures as well. Also I am now getting into the habit of making more than one DAE file one for numbers, and the other for everything else that I want in the scene. Moving forward I am sure that I will end up with just one great file for the numbers that I will want to reuse from one project to the next, but have many other files for additional objects to place in the scene. So for this example I am now using my cd3\-nums file along with my cd3-ground files. These files have uvmaps and on top of that textures that are use for each material of each object. I am thinking that this might be the final form of the kinds of files I want to make for this, at least when it comes to r0 of the count-down.js file.
 
 ```js
 // ---------- ----------
@@ -628,16 +628,28 @@ const create_loop = (update) => {
 // ---------- ----------
 countDown.DAE_loader(
     [
-        '/dae/count_down_basic/cd3-nums.dae',
+        '/dae/count_down_basic/cd4-nums.dae',
         '/dae/count_down_basic/cd3-ground.dae'
     ]
 )
 .then( (SOURCE_OBJECTS) => {
     console.log('Done Loading.');
-    console.log(SOURCE_OBJECTS);
+    Object.keys( SOURCE_OBJECTS ).forEach( ( key ) => {
+        const obj = SOURCE_OBJECTS[key];
+        const mat = obj.material;
+        if(mat.map){
+            const tex = mat.map;
+            tex.magFilter = THREE.NearestFilter;
+            tex.minFilter = THREE.NearestFilter;
+        }
+    });
     //-------- ----------
     // SCENE CHILD OBJECTS
     //-------- ----------
+    // colon object
+    const colon = SOURCE_OBJECTS.colon;
+    colon.position.set(-1.5, 1.30, 0.4);
+    scene.add(colon);
     // count secs count down object
     const count_sec = countDown.create({
         countID: 'sec',
@@ -645,8 +657,7 @@ countDown.DAE_loader(
         width: 1.1,
         source_objects: SOURCE_OBJECTS
     });
-    //count_sec.scale.set(0.75, 0.75, 0.75);
-    count_sec.position.set(0, 1.25, 0.4);
+    count_sec.position.set(0, 1.30, 0.4);
     scene.add(count_sec);
     // adding a frame count
     const count_frames = countDown.create({
