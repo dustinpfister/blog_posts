@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1024
-updated: 2023-01-20 09:57:47
-version: 1.1
+updated: 2023-01-20 10:17:16
+version: 1.2
 ---
 
 One of the core features of the base material class in threejs is a vertex colors Boolean that when set to true will case the material to be rendered using color channel data stored in am attribute of the buffer geometry used. This feature will not work with all materials mind you, and with some a light source might still be needed or something to that effect. However it is still very much a feature of the base material class, unless there is something else going on that will override this it should work on most materials.
@@ -20,7 +20,11 @@ The main thing that got me into vertex colors is that recently I get around to w
 
 ## 1 - Some basic examples of the vertex color buffer geometry attribute
 
+To start out in this section I will be going over a few quick basic example of color attributes in buffer geometry. There are two general things to keep in mind here one is that the color attribute will need to be added to the geometry if it is not there to begin with, and then there is also choosing a proper built in material to use with the color attribute by setting the vertex color attribute to true. So for the most part the examples here will focus on just adding the color attribute to begin with, and also test out things with the various built in material options while I am at it.
+
 ### 1.1 - Vertex colors hello world example
+
+One has to start somewhere when it comes to this sort of thing, and with that said that is what this example is about right here. So when it comes to a vertex color hello world threejs example this is what I put together real quick. Like with any other threejs example I start out by setting up my scene object, camera, and renderer objects just the way that I like to. After that I will want to create a geometry and add a color attribute to it. Once I have the set up I will then want to create the material that i will want to use with the geometry when creating the mesh object, when doing so I will want to go with a material that will work well with vertex colors such as the mesh basic material. After that I can then use the geometry and material to create a mesh object, add it to the scene object, and render the scene.
 
 ```js
 // ---------- ----------
@@ -67,6 +71,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.2 - Mesh Material options
+
+One might assume that because the vertex color Boolean is a property of the base material class this feature will work with all materials. For the most part that is true, but there are a few exceptions. Also when it comes to materials that work with light sources one will still need to add one or more lights to the scene, and make sure that they are using a renderer that will work with such light sources.
 
 ```js
 // ---------- ----------
@@ -124,7 +130,9 @@ scene.add(dl);
 renderer.render(scene, camera);
 ```
 
-### 1.3 - Lines
+### 1.3 - Lines and vertex colors
+
+Vertex colors are very much a property of the base material class, and the base material class is not just used as a base class for mesh materials. The base material class is also very much the base of the two line materials, and also the points material. So one thing that is nice about vertex colors is that it is a great way to style lines and points when one is making use of those features of the core threejs library.
 
 ```js
 // ---------- ----------
@@ -165,6 +173,8 @@ renderer.render(scene, camera);
 ```
 
 ## 2 - Updating a color attribute over time
+
+Just like all the other buffer attributes the process of updating the attribute of more or less the same. I just need to mutate the values in the array of the color buffer attribute and then make sure that the needs update Boolean is set to true.
 
 ```js
 // ---------- ----------
