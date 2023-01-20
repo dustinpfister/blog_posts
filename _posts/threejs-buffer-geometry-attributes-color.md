@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1024
-updated: 2023-01-20 10:34:23
-version: 1.5
+updated: 2023-01-20 12:28:52
+version: 1.6
 ---
 
-One of the core features of the[ base material class](https://threejs.org/docs/#api/en/materials/Material.vertexColors) in threejs is a vertex colors Boolean that when set to true will case the material to be rendered using color channel data stored in am attribute of the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) used. This feature will not work with all materials mind you, and with some a [light source](/2022/02/25/threejs-light/) might still be needed or something to that effect. However it is still very much a feature of the base material class, unless there is something else going on that will override this it should work on most materials.
+One of the core features of the[ base material class](https://threejs.org/docs/#api/en/materials/Material.vertexColors) in threejs is a vertex colors Boolean that when set to true will case the material to be rendered using color channel data stored in am attribute of the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) used. This feature will not work with all materials mind you, and with some a [light source](/2022/02/25/threejs-light/) might still be needed or something to that effect. However it is still very much a feature of the base material class, unless there is something else going on that will override this it should work on most materials.
 
 The color attribute is not one of the major must have attributes of a buffer geometry mind you. However it is an example of an additional attribute that can be added to a geometry to allow for coloring and over all mesh object. It is not at all a replacement for [uv mapping](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and the various material options that can be used with textures. However it is an alternative way of coloring a mesh object that works by adding data to geometry rather than bothering with images. In some cases I might want to use vertex colors as a quick way to have something other than just a single solid color, but I am not sure I would take this kind of approach in the long run, at least not with the built in materials anyway.
 
@@ -17,6 +17,21 @@ The main thing that got me into vertex colors is that recently I get around to w
 
 <!-- more -->
 
+## Vertex colors and what to know first
+
+This is a post in which I am writing about one little feature of a javaScript library known as threejs that has to do with 3d modeling. it should go without saying but this is not a post for people that are new to threejs let alone with programming in javaScript in general. So if you are still fairly new to threejs there is starting out with some [post that is about getting started with threejs](/2018/04/04/threejs-getting-started/) before getting into things like the vertex color attribute of buffer geometry objects. Even if you do have some experience with threejs there are still a few things that you might want to brush up on before continuing to read the rest of this post.
+
+### Check out more on buffer geometry and buffer attributes
+
+There is a whole lot more to [buffer geometry](/2021/04/22/threejs-buffer-geometry/) beyond just that of color attributes. There is also being aware of the other buffer attributes of buffer geometry such as the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which would be a good starting point when it comes to the attributes of geometry. I say that because in order to have a geometry that will present much of anything even when using the points class to show it, at a minimum one will at least need a position attribute first.
+
+### Source code examples are also up on Github
+
+The source code examples in this post are also up on Github, along with all the other source code examples for my many other posts on threejs.
+
+### Check your version numbers
+
+When I first wrote this post I was using r146 of threejs.
 
 ## 1 - Some basic examples of the vertex color buffer geometry attribute
 
