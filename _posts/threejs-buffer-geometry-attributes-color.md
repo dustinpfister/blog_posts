@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1024
-updated: 2023-01-20 10:23:17
-version: 1.3
+updated: 2023-01-20 10:32:55
+version: 1.4
 ---
 
-One of the core features of the base material class in threejs is a vertex colors Boolean that when set to true will case the material to be rendered using color channel data stored in am attribute of the buffer geometry used. This feature will not work with all materials mind you, and with some a light source might still be needed or something to that effect. However it is still very much a feature of the base material class, unless there is something else going on that will override this it should work on most materials.
+One of the core features of the[ base material class](https://threejs.org/docs/#api/en/materials/Material.vertexColors) in threejs is a vertex colors Boolean that when set to true will case the material to be rendered using color channel data stored in am attribute of the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) used. This feature will not work with all materials mind you, and with some a [light source](/2022/02/25/threejs-light/) might still be needed or something to that effect. However it is still very much a feature of the base material class, unless there is something else going on that will override this it should work on most materials.
 
-The color attribute is not one of the major must have attributes of a buffer geometry mind you. However it is an example of an additional attribute that can be added to a geometry to allow for coloring of a mesh. It is not at all a replacement for uv mapping, and the various material options that can be used with textures. However it is an alternative way of coloring a mesh object that works by adding data to geometry rather than bothering with images. In some cases I might want to use vertex colors as a quick way to have something other than just a single solid color, but I am not sure I would take this kind of approach in the long run, at least not with the built in materials anyway.
+The color attribute is not one of the major must have attributes of a buffer geometry mind you. However it is an example of an additional attribute that can be added to a geometry to allow for coloring and over all mesh object. It is not at all a replacement for [uv mapping](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and the various material options that can be used with textures. However it is an alternative way of coloring a mesh object that works by adding data to geometry rather than bothering with images. In some cases I might want to use vertex colors as a quick way to have something other than just a single solid color, but I am not sure I would take this kind of approach in the long run, at least not with the built in materials anyway.
 
-The main thing that got me into vertex colors is that recently I get around to writing a new blog post on the shader material. Simply put it is a way to go about creating a custom material using GLSL \( openGL Shader Language \). When doing so I have found that vertex coloring might be a nice way to go about styling a geometry, and when it comes to creating my own materials that opens the door for custom attributes that will allow for not just creating one color attribute but several such attributes.
+The main thing that got me into vertex colors is that recently I get around to writing a new blog post on the shader material. Simply put it is a way to go about creating a custom material using GLSL. When doing so I have found that vertex coloring might be a nice way to go about styling a geometry, and when it comes to creating my own materials that opens the door for custom attributes that will allow for not just creating one color attribute but several such attributes.
 
 <!-- more -->
 
@@ -24,7 +24,7 @@ To start out in this section I will be going over a few quick basic example of c
 
 ### 1.1 - Vertex colors hello world example
 
-One has to start somewhere when it comes to this sort of thing, and with that said that is what this example is about right here. So when it comes to a vertex color hello world threejs example this is what I put together real quick. Like with any other threejs example I start out by setting up my scene object, camera, and renderer objects just the way that I like to. After that I will want to create a geometry and add a color attribute to it. Once I have the set up I will then want to create the material that i will want to use with the geometry when creating the mesh object, when doing so I will want to go with a material that will work well with vertex colors such as the mesh basic material. After that I can then use the geometry and material to create a mesh object, add it to the scene object, and render the scene.
+One has to start somewhere when it comes to this sort of thing, and with that said that is what this example is about right here. So when it comes to a vertex color hello world threejs example this is what I put together real quick. Like with any other threejs example I start out by setting up my scene object, camera, and renderer objects just the way that I like to. After that I will want to create a geometry and add a color attribute to it. Once I have the set up I will then want to create the material that i will want to use with the geometry when creating the mesh object, when doing so I will want to go with a material that will work well with vertex colors such as the [mesh basic material](/2018/05/05/threejs-basic-material/). After that I can then use the geometry and material to create a mesh object, add it to the scene object, and render the scene.
 
 ```js
 // ---------- ----------
@@ -284,7 +284,4 @@ loop();
 
 
 There are a lot of things that I like about vertex colors, part of me seems to like doing everything with javaScript code and data in the form of text files. I guess maybe the main reason why is because it allows for nice quickly copy and paste style code examples that i can just place into a blog post such as this one. When it comes to making use of external images that make the process a little more complex, but I guess the same is true when it comes to pulling code and data into other files that I then like to so I guess I should get over that kind of thing, and I do now and then of course. With that said although vertex colors are cool, when it comes to working on a real project I am not sure of I would use vertex coloring. Maybe I would, but I am sure that I would want to also get into writing some custom shaders also if I where going to do so. When it comes to working with the built in materials alone though, it is best to get into uv mapping and creating textures for one or more of the map options.
-
-
-
 
