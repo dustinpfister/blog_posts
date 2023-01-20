@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1024
-updated: 2023-01-20 10:17:16
-version: 1.2
+updated: 2023-01-20 10:23:17
+version: 1.3
 ---
 
 One of the core features of the base material class in threejs is a vertex colors Boolean that when set to true will case the material to be rendered using color channel data stored in am attribute of the buffer geometry used. This feature will not work with all materials mind you, and with some a light source might still be needed or something to that effect. However it is still very much a feature of the base material class, unless there is something else going on that will override this it should work on most materials.
@@ -281,5 +281,10 @@ loop();
 ```
 
 ## Conclusion
+
+
+There are a lot of things that I like about vertex colors, part of me seems to like doing everything with javaScript code and data in the form of text files. I guess maybe the main reason why is because it allows for nice quickly copy and paste style code examples that i can just place into a blog post such as this one. When it comes to making use of external images that make the process a little more complex, but I guess the same is true when it comes to pulling code and data into other files that I then like to so I guess I should get over that kind of thing, and I do now and then of course. With that said although vertex colors are cool, when it comes to working on a real project I am not sure of I would use vertex coloring. Maybe I would, but I am sure that I would want to also get into writing some custom shaders also if I where going to do so. When it comes to working with the built in materials alone though, it is best to get into uv mapping and creating textures for one or more of the map options.
+
+
 
 
