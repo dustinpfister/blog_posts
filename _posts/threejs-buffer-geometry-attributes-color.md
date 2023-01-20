@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1024
-updated: 2023-01-20 12:28:52
-version: 1.6
+updated: 2023-01-20 14:52:08
+version: 1.7
 ---
 
 One of the core features of the[ base material class](https://threejs.org/docs/#api/en/materials/Material.vertexColors) in threejs is a vertex colors Boolean that when set to true will case the material to be rendered using color channel data stored in am attribute of the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) used. This feature will not work with all materials mind you, and with some a [light source](/2022/02/25/threejs-light/) might still be needed or something to that effect. However it is still very much a feature of the base material class, unless there is something else going on that will override this it should work on most materials.
@@ -16,6 +16,9 @@ The color attribute is not one of the major must have attributes of a buffer geo
 The main thing that got me into vertex colors is that recently I get around to writing a new blog post on the [shader material](/2023/01/13/threejs-shader-material/). Simply put it is a way to go about creating a custom material using GLSL. When doing so I have found that vertex coloring might be a nice way to go about styling a geometry, and when it comes to creating my own materials that opens the door for custom attributes that will allow for not just creating one color attribute but several such attributes.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/nsjFS2VRjpM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Vertex colors and what to know first
 
