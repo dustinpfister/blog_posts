@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1024
-updated: 2023-01-20 10:32:55
-version: 1.4
+updated: 2023-01-20 10:34:23
+version: 1.5
 ---
 
 One of the core features of the[ base material class](https://threejs.org/docs/#api/en/materials/Material.vertexColors) in threejs is a vertex colors Boolean that when set to true will case the material to be rendered using color channel data stored in am attribute of the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) used. This feature will not work with all materials mind you, and with some a [light source](/2022/02/25/threejs-light/) might still be needed or something to that effect. However it is still very much a feature of the base material class, unless there is something else going on that will override this it should work on most materials.
 
 The color attribute is not one of the major must have attributes of a buffer geometry mind you. However it is an example of an additional attribute that can be added to a geometry to allow for coloring and over all mesh object. It is not at all a replacement for [uv mapping](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and the various material options that can be used with textures. However it is an alternative way of coloring a mesh object that works by adding data to geometry rather than bothering with images. In some cases I might want to use vertex colors as a quick way to have something other than just a single solid color, but I am not sure I would take this kind of approach in the long run, at least not with the built in materials anyway.
 
-The main thing that got me into vertex colors is that recently I get around to writing a new blog post on the shader material. Simply put it is a way to go about creating a custom material using GLSL. When doing so I have found that vertex coloring might be a nice way to go about styling a geometry, and when it comes to creating my own materials that opens the door for custom attributes that will allow for not just creating one color attribute but several such attributes.
+The main thing that got me into vertex colors is that recently I get around to writing a new blog post on the [shader material](/2023/01/13/threejs-shader-material/). Simply put it is a way to go about creating a custom material using GLSL. When doing so I have found that vertex coloring might be a nice way to go about styling a geometry, and when it comes to creating my own materials that opens the door for custom attributes that will allow for not just creating one color attribute but several such attributes.
 
 <!-- more -->
 
