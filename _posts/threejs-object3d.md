@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2023-01-23 14:35:00
-version: 1.65
+updated: 2023-01-23 14:51:35
+version: 1.66
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
@@ -288,6 +288,41 @@ const loop = function () {
     }
 };
 loop();
+```
+
+### 2.3 - Points type object3 based objects
+
+There are also points objects that can be used as one alternative option to the typical mesh object. This kind of object will just use the [position attribute of a buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) to render just points in space. All other attributes of the buffer geometry will then not be used with this kind of object, with some exceptions such as [color attributes](/2023/01/20/threejs-buffer-geometry-attributes-color) if one will like to use vertex coloring as a way to style the points.
+
+When using this kind of object I am limited to just using the [points material](/2018/05/12/threejs-points-material/) as a way to skin the points. This is then one major reason why more often than now I would not want to use points to create particles, although the good thing about them is that they will eat up less overhead when it comes to a real time project of some kind.
+
+```js
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// POINTS OBJECT - is also based on object3d
+//-------- ----------
+// cretaing points with a built in geometry
+const geo1 = new THREE.SphereGeometry(5, 60, 60);
+const mat1 = new THREE.PointsMaterial({ size: 0.25, color: new THREE.Color(0, 1, 0) });
+const points1 = new THREE.Points(geo1, mat1);
+scene.add(points1);
+// object3d rotation prop of points object
+points1.rotation.z = Math.PI / 180 * 45;
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(points1.position);
+renderer.render(scene, camera);
 ```
 
 ## 3 - Animaiton loop examples
