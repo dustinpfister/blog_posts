@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2023-01-23 13:49:05
-version: 1.62
+updated: 2023-01-23 13:52:24
+version: 1.63
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
@@ -28,7 +28,7 @@ The source code examples that I am writing about in this post can be found in my
 
 ### Version Numbers matter with three.js big time
 
-As with any post on threejs the version number matters a lot, when I first started this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I updated the post I was using [r135 of threejs](https://github.com/mrdoob/three.js/tree/r135). Threejs is a project in motion so if any code in this post or any other threejs post breaks it might very well be because of the version number that you are using, at least that is the first thing that you should check anyway.
+As with any post on threejs the version number matters a lot, when I first started this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I updated the post I was using [r146 of threejs](https://github.com/mrdoob/three.js/tree/r146). Threejs is a project in motion so if any code in this post or any other threejs post breaks it might very well be because of the version number that you are using, at least that is the first thing that you should check anyway.
 
 ## 1 - Basic object3d class examples
 
