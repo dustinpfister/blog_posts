@@ -5,32 +5,30 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2022-05-18 15:55:33
-version: 1.60
+updated: 2023-01-23 12:48:29
+version: 1.61
 ---
 
-The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is in use in many objects throughout the core of the library including things like cameras, lights, groups, mesh objects that are placed in a scene object on top of the scene object itself even. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned and more.
+The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
 
-The Object3d class adds a whole bunch of common properties, and methods for any kind of object in a project that needs to have a position, orientation, scale and so forth. So then there are properties of the Object3d class that can be used to set the position, and rotation of an object along with many other common things that are shared across all such objects.
-
-In this post I will be going over many of the basics of what the Object3d class is all about in three.js, when it comes to working with the class directly, however more often than not it is a class that I am working with indirectly each time I want to move or rotate a camera, mesh object, or anything to that effect. In the process of going over the Object3d class I will also be touching base on many other classes that are important also, such as the [Vector3](/2018/04/15/threejs-vector3/) class and the [Euler Class](/2021/04/28/threejs-euler/) that are used as the values for many note worthy properties of this major base class.
+In this post I will be going over many of the basics of what the Object3d class is all about in threejs, when it comes to working with the class directly. However more often than not it is a class that I am working with indirectly each time I want to move or rotate a camera, mesh object, or anything to that effect that is based off the the object3d base class. In the process of going over the Object3d class I will also be touching base on many other classes that are important also, such as the [Vector3](/2018/04/15/threejs-vector3/) class and the [Euler Class](/2021/04/28/threejs-euler/) that are used as the values for many note worthy properties of this major base class.
 
 <!-- more -->
-
-## The Object3d class and what to know before hand
-
-This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or javaScript in general, but an advanced topic on [three.js](/categories/three-js/). With that said I expect that you have some basic working knowledge of what there is to know before hand when it comes to the very basics of three.js, and client side javaScript in general.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/Hu-O_rzrAd8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### Version Numbers matter with three.js big time
+## The Object3d class and what to know before hand
 
-As with any post on three.js the version number matters a lot, when I first started this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I updated the post I was using [r135 of threejs](https://github.com/mrdoob/three.js/tree/r135). Three.js is a project in motion so if any code in this post or any other threejs post breaks it might very well be because of the version number that you are using. At least that is the first thing that you should check.
+This is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), or javaScript in general. So I assume that you are at least up to speed with getting a basic hello world style example of threejs up and working at least. However now that you have a very basic example working at least you might now be looking into what the next steps might be when it comes to learning more about the library. With that said the object3d class, and everything that branches off from this class might be a good thing to get solid with. Also even if you do have some experience with threejs learning a thing or two more about the object3d base class is still something that might need to happen now and then also as there is a lot to be aware of with this one.
 
 ### Source code examples are up on Github
 
-The source code examples that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d) on Github.
+The source code examples that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d) on Github. This is also a repo where I park the source code examples for my [many other threejs blog posts](/categories/three-js/) that I have wrote over the years. So there is a folder in the repo of this post, but also ever other post as well.
+
+### Version Numbers matter with three.js big time
+
+As with any post on threejs the version number matters a lot, when I first started this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I updated the post I was using [r135 of threejs](https://github.com/mrdoob/three.js/tree/r135). Threejs is a project in motion so if any code in this post or any other threejs post breaks it might very well be because of the version number that you are using, at least that is the first thing that you should check anyway.
 
 ## 1 - A Very Basic example of Object3d using the position property
 
