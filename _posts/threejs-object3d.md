@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2023-01-23 13:52:24
-version: 1.63
+updated: 2023-01-23 14:29:48
+version: 1.64
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
@@ -32,9 +32,7 @@ As with any post on threejs the version number matters a lot, when I first start
 
 ## 1 - Basic object3d class examples
 
-Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the Euler Class, Which is the Class used in three.js that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles). So when creating or changing the values of a Euler class instance there are three angles that need to be given in the form of a radian value between 0 and Math.PI \* 2. 
-
-The set method of a Euler class instance can be used to set the values of these angles by passing three angle values for the Euler instance. Another way to set the value of a Euler class instance is to use the copy method that will set the values of the Euler class instance from which the copy method is called to the given Euler Class instance. So then in this section I will be going over at least a few examples of rotation, but also position while I am at it also.
+For this first opening section I will be going over just a few quick basic examples of the object3d class. The main focus here will then be just creating an object3d class object, but also working with other objects that are based on the object3d class. Sense this is a basic section the examples will remain fairly simple, and copy and paste style friendly. They will also just involve very simple basic static scenes of just one or two objects just for the sake of demoing some very basic features of object3d. 
 
 ### 1.1 - A Very Basic example of Object3d using the position property
 
@@ -125,6 +123,10 @@ I will not get into the Euler Class in detail here, but it is similar to [Vector
 
 ### 1.3 - Setting the Rotation by making use of the Object3d lookAt method
 
+Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the Euler Class, Which is the Class used in threejs that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles). So when creating or changing the values of a Euler class instance there are three angles that need to be given in the form of a radian value between 0 and Math.PI \* 2. 
+
+The set method of a Euler class instance can be used to set the values of these angles by passing three angle values for the Euler instance. Another way to set the value of a Euler class instance is to use the copy method that will set the values of the Euler class instance from which the copy method is called to the given Euler Class instance. So then in this section I will be going over at least a few examples of rotation, but also position while I am at it also.
+
 One very useful method of the [Object3d class is the lookAt method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) which is another way to go about setting the rotation value of an instance of Objected or anything that is based on top of Object3d such as a Mesh object. The look at method can be passed three primitive values for a position in vector space, or an instance of Vector3 such as the position property of another object based off of object3d such as a Camera.
 
 ```js
@@ -160,13 +162,15 @@ So then there is using the look at method, and then there is working directly wi
 
 ## 2 - Examples of use in other constructors
 
-There are many objects in three.js that inherit from object3D, which is why this is a good class to have a solid understanding of as it applies to a lot of different objects. When it comes to setting the position and orientation of a perspective camera for example the Object3d position and rotation properties is the way to go about doing so. The Object3d look at method can also be used to set the rotation of the camera to look at a given point or object. However all of this does not just apply to cameras, but all objects based off of object3d. So the look at method can be used to have a camera look at an mesh object, and the same method can also be used to make that mesh obect face the camera as well sense the look at method is a method of the object3d class.
+There are many objects in threejs that inherit from the object3D class, which is why this is a good class to have a solid understanding of object3d as it applies to a lot of different objects that will be worked with all the time in various projects. When it comes to setting the position and orientation of a perspective camera for example the Object3d position and rotation properties is the way to go about doing so. The Object3d look at method can also be used to set the rotation of the camera to look at a given point or object. However all of this does not just apply to cameras, but all objects based off of object3d. So the look at method can be used to have a camera look at an mesh object, and the same method can also be used to make that mesh object face the camera as well sense the look at method is a method of the object3d class.
 
-In this section I will then be going over some source code examples that have to do with using object3d features in the various different kinds of objects that are based off of object3d.
+I have wrote a [blog posts on the type property of the object3d class](/2022/04/01/threejs-object3d-type/) in which I get into this sort of thing in detail. However I think that I should also have a section on this topic in the main object3d blog post as well. So then in this section I will then be going over some source code examples that have to do with using object3d features in the various different kinds of objects that are based off of object3d.
 
 ### 2.1 - Camera objects are based off of object3d
 
-The camera based class is based off of the object3d class, so when it comes to working with a camera such as the perspective camera I can use object3d features as a way to set the position and rotation of a camera.
+The [camera base class](/2018/04/06/threejs-camera/) is based off of the object3d class, so when it comes to working with a camera such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) I can use object3d features as a way to set the position and rotation of a camera. So then in this example I am doing just that, using the object3d features to move a camera around and then also have the camera look at a fixed location again by making use of the look at method.
+
+I have wrote a blog post on the [subject of camera movement in threejs](/2019/12/17/threejs-camera-move/), but what applies for cameras also applies for objects in general of course. There is looking into all the various ways to go about moving cameras, and objects in general over time then such as [using curves](/2022/11/18/threejs-examples-curves-module/) to do so which I think is a great way to do so.
 
 ```js
 //-------- ----------
