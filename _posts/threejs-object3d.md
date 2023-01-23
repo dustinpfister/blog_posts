@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2023-01-23 14:29:48
-version: 1.64
+updated: 2023-01-23 14:35:00
+version: 1.65
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
@@ -230,7 +230,9 @@ loop();
 
 ### 2.2 - Mesh objects are based off of object3d
 
-Mesh objects are also based off of the obejct3d class, in this example I am once again using the position property of a mesh object to set the position. Also I am making use of the look at method to make it so that the mesh object always faces the origin of the scene object.
+[Mesh objects](/2018/05/04/threejs-mesh/) are one or the major objects that I end up using all the time in a project that are based off of object3d as well. This is a kind of object where I must create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) of one kind or another and pass the as the first argument. After getting a geometry together there is also of course looking into the various options when it comes to [mesh materials](/2018/04/30/threejs-materials/) that are used to skin the geometry of the mesh object.
+
+In this example I am once again using the position property of a mesh object to set the position. Also I am making use of the look at method to make it so that the mesh object always faces the origin of the scene object.
 
 ```js
 //-------- ----------
