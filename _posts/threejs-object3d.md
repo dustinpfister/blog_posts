@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2023-01-23 16:05:40
-version: 1.67
+updated: 2023-01-23 16:43:14
+version: 1.68
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
@@ -380,11 +380,62 @@ renderer.render(scene, camera);
 
 This might not be the best example of this feature of the object3d class ans there are other ways of getting references to child objects of a single parent object such as just using the children array to do so for example. However for this first example of the section it is just the general idea of this that I want to get out of the way. The use of names becomes very helpful with situations in which I have many nested objects and I would like to set a specific name for each part of an over all larger collection of objects.
 
-## 4 - Animaiton loop examples
+## 4 - The get world positon method
+
+The [get world position method](/2021/05/25/threejs-object3d-get-world-position/) of the object3d method is a must known about method when it comes to taking care of certain problems that will come up that have to do with the difference between local space, and world space. What I mean by that is that when dealing with an object that is a child of another parent object the position of the object is relative to the parent object and not the over all world space. In some cases I might want to get the position of a child object relative to world space rather than the local space of the parent object, and for these kinds of tasks there is of course the get world position method.
+
+### 4.1 - Basic example of the get world position method
+
+Here I have a fairly basic example of the get world position method that should help to showcase what this get world position method is all about. Here I have a parent object, and then one child object of the parent object. I move the position of the parent object so that it is not lined up with the origin of world space, and then I also move the child object to a location relative to the parent object. I then have a loop in which I am using the [vector3 lerp method](/2022/05/17/threejs-vector3-lerp/) to lerp between two vector3 objects. One vector3 object is the world space relative position of the object and the other is the value that is local to the parent object. The camera then looks back and froth between where the mesh object actually is and then where it would be if the mesh object was not a child of the parent object, but rather lined up with world space.
+
+```js
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH OBJECT WITH CHILD OBJECTS
+//-------- ----------
+const geo = new THREE.SphereGeometry(1, 30, 30);
+const mat = new THREE.MeshNormalMaterial();
+const mesh_parent = new THREE.Mesh(geo, mat);
+const mesh_child = new THREE.Mesh(geo, mat);
+mesh_parent.add(mesh_child);
+scene.add(mesh_parent);
+// setting position values for parent and child objects
+mesh_parent.position.set(-8,0,2);
+mesh_child.position.set(8,0,-4);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(10, 10, 10);
+const v1 = mesh_child.position.clone();
+const v2 = mesh_child.getWorldPosition( new THREE.Vector3() );
+let f = 0;
+const fm = 90;
+const loop = () => {
+    requestAnimationFrame(loop);
+    const a1 = f / fm;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    camera.lookAt( v2.clone().lerp(v1, a2) );
+    renderer.render(scene, camera);
+    f += 1;
+    f %= fm;
+};
+loop();
+```
+
+## 5 - Animaiton loop examples
 
 In this section I will not be going over a few animation loop exmaples of the object3d class.
 
-### 4.1 - Basic spin animation example of a rotation
+### 5.1 - Basic spin animation example of a rotation
 
 Now I think I should get into at least one or more simple animations that involve just playing around with the Euler instance of a Mesh object, or some other things that make use of the Object3d class and thus the rotation property of the class. To start off with maybe it would be good to just have a simple rotating or spinning cube animation example.
 
@@ -445,7 +496,7 @@ const loop = function () {
 loop();
 ```
 
-### 4.2 - An rotation animation making a mesh following a point moving up and down on the z axis
+### 5.2 - An rotation animation making a mesh following a point moving up and down on the z axis
 
 In this object3d rotation animation example I have an instance of vector3 in a state object along with many other little values that have to do with updating the state of an animation. This vector3 instance in the state object is juts having its z axis value move up and down along the z axis and that is it. I can then use that instance of verctor3 to set the position of a mesh object that has a sphere as a geometry. In addition sense this is a demo about rotation I can set the orientation of another mesh object of a box to look at this instance of vector3 with the lookAt method.
 
@@ -519,7 +570,7 @@ loop();
 
 So then this is where things can start to get a little run with it comes to playing around with rotation and position. There is not much to look at here, but it is a start at least when it comes to really getting up and running with three.js. When this demo is up and running a sphere is moving up and down along the z axis, and the box ends up facing that sphere. However there is doing much more with rotations than just having a box face another mesh.
 
-### 4.3 - Object3D loop exmaple that uses the class as a way to group
+### 5.3 - Object3D loop exmaple that uses the class as a way to group
 
 The [Three.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor also inherits from Object3d and is a way of grouping objects together into a collection. However the add method of Object3d is in all objects that inherit from Object3d, and as such grouping can be done with any such object, including just a stand alone instance of Object3d.
 
@@ -609,11 +660,11 @@ When this example is up and running I get a stack of cubes rotating around and m
 It may be true that Object3D by itself is not intended to be used from grouping as there is a separate constructor for that, called simply enough [Group](https://threejs.org/docs/index.html#api/objects/Group). Still Object3D by itself seems to work okay by itself good enough for this simple demo on Object3D.
 
 
-## 5- Setting the Scale of an object
+## 6- Setting the Scale of an object
 
 The [scale property](/2021/05/11/threejs-object3d-scale/) of an instance of Object3d contains and instance of Vector3 that can be used to change the scale of an object. By default the values for this vector3 instance are 1,1,1 but they can be changed to something like 2,2,2 which would cause the object to be scaled up to a size that is twice the side of the objects original size. So it would go without saying that this also proves to be a very useful property in the object3d class along with position and rotation.
 
-## 6 - The user data object.
+## 7 - The user data object.
 
 The [user data object](/2021/02/16/threejs-userdata/) is the standard go to object in an instance of Object3d that can be used to park user defined data. In other words when it comes to me making my own modules and applications based off of three.js and I want to append some data to an object in three.js this user data object is how I can go about doing so without messing up anything that three.js depends on.
 
