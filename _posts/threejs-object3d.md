@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2023-01-24 08:13:42
-version: 1.70
+updated: 2023-01-24 08:15:35
+version: 1.71
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
@@ -486,7 +486,7 @@ The [user data object](/2021/02/16/threejs-userdata/) is the standard go to obje
 
 ## 7 - Animation loop examples
 
-In this section I will not be going over a few animation loop examples of the object3d class.
+In this section I will not be going over a few animation loop examples of the object3d class. There is a whole lot of what I have covered in the above examples of course, so now it is time to apply what was covered to make at least one if not many cool little animation projects. While I am at it here I can also write about all kinds of other topics that might pop up when making animations as well of course.
 
 ### 7.1 - Basic spin animation example of a rotation
 
