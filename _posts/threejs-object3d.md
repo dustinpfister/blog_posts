@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2023-01-23 16:43:14
-version: 1.68
+updated: 2023-01-24 07:59:30
+version: 1.69
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
@@ -431,11 +431,59 @@ const loop = () => {
 loop();
 ```
 
-## 5 - Animaiton loop examples
+## 5 - Setting the Scale of an object
 
-In this section I will not be going over a few animation loop exmaples of the object3d class.
+The [scale property](/2021/05/11/threejs-object3d-scale/) of an instance of Object3d contains and instance of Vector3 that can be used to change the scale of an object. By default the values for this vector3 instance are 1,1,1 but they can be changed to something like 2,2,2 which would cause the object to be scaled up to a size that is twice the side of the objects original size. So it would go without saying that this also proves to be a very useful property in the object3d class along with position and rotation.
 
-### 5.1 - Basic spin animation example of a rotation
+### 5.1 - Basic scale property example
+
+```js
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH 
+//-------- ----------
+const geo = new THREE.BoxGeometry(1,1,1);
+const mat = new THREE.MeshNormalMaterial();
+// source mesh object
+const mesh_source = new THREE.Mesh(geo, mat);
+// mesh objects cloned from source mesh objects and scaled
+const count = 8;
+let i = 0;
+while(i < count){
+    const a1 = i / (count - 1);
+    const mesh = mesh_source.clone();
+    mesh.scale.set(1, i + 1 ,1);
+    mesh.position.x = -5 + 10 * a1;
+    mesh.position.y = 0.5 + 0.5 * i;
+    scene.add(mesh)
+    i += 1;
+}
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 2, 0);
+renderer.render(scene, camera);
+```
+
+## 6 - The user data object.
+
+The [user data object](/2021/02/16/threejs-userdata/) is the standard go to object in an instance of Object3d that can be used to park user defined data. In other words when it comes to me making my own modules and applications based off of three.js and I want to append some data to an object in three.js this user data object is how I can go about doing so without messing up anything that three.js depends on.
+
+## 7 - Animation loop examples
+
+In this section I will not be going over a few animation loop examples of the object3d class.
+
+### 7.1 - Basic spin animation example of a rotation
 
 Now I think I should get into at least one or more simple animations that involve just playing around with the Euler instance of a Mesh object, or some other things that make use of the Object3d class and thus the rotation property of the class. To start off with maybe it would be good to just have a simple rotating or spinning cube animation example.
 
@@ -496,7 +544,7 @@ const loop = function () {
 loop();
 ```
 
-### 5.2 - An rotation animation making a mesh following a point moving up and down on the z axis
+### 7.2 - An rotation animation making a mesh following a point moving up and down on the z axis
 
 In this object3d rotation animation example I have an instance of vector3 in a state object along with many other little values that have to do with updating the state of an animation. This vector3 instance in the state object is juts having its z axis value move up and down along the z axis and that is it. I can then use that instance of verctor3 to set the position of a mesh object that has a sphere as a geometry. In addition sense this is a demo about rotation I can set the orientation of another mesh object of a box to look at this instance of vector3 with the lookAt method.
 
@@ -570,7 +618,7 @@ loop();
 
 So then this is where things can start to get a little run with it comes to playing around with rotation and position. There is not much to look at here, but it is a start at least when it comes to really getting up and running with three.js. When this demo is up and running a sphere is moving up and down along the z axis, and the box ends up facing that sphere. However there is doing much more with rotations than just having a box face another mesh.
 
-### 5.3 - Object3D loop exmaple that uses the class as a way to group
+### 7.3 - Object3D loop example that uses the class as a way to group
 
 The [Three.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor also inherits from Object3d and is a way of grouping objects together into a collection. However the add method of Object3d is in all objects that inherit from Object3d, and as such grouping can be done with any such object, including just a stand alone instance of Object3d.
 
@@ -658,15 +706,6 @@ loop();
 When this example is up and running I get a stack of cubes rotating around and moving up and down. Thanks to the position, and rotation properties of the Object3d class.
 
 It may be true that Object3D by itself is not intended to be used from grouping as there is a separate constructor for that, called simply enough [Group](https://threejs.org/docs/index.html#api/objects/Group). Still Object3D by itself seems to work okay by itself good enough for this simple demo on Object3D.
-
-
-## 6- Setting the Scale of an object
-
-The [scale property](/2021/05/11/threejs-object3d-scale/) of an instance of Object3d contains and instance of Vector3 that can be used to change the scale of an object. By default the values for this vector3 instance are 1,1,1 but they can be changed to something like 2,2,2 which would cause the object to be scaled up to a size that is twice the side of the objects original size. So it would go without saying that this also proves to be a very useful property in the object3d class along with position and rotation.
-
-## 7 - The user data object.
-
-The [user data object](/2021/02/16/threejs-userdata/) is the standard go to object in an instance of Object3d that can be used to park user defined data. In other words when it comes to me making my own modules and applications based off of three.js and I want to append some data to an object in three.js this user data object is how I can go about doing so without messing up anything that three.js depends on.
 
 ## Conclusion
 
