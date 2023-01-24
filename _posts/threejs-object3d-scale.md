@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2022-12-08 13:20:44
-version: 1.41
+updated: 2023-01-24 08:50:51
+version: 1.42
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale) that stores an instance of the [vector3 class](https://threejs.org/docs/#api/en/math/Vector3) in terms of its value. By default the values for this Vector3 value are 1,1,1 which means that the scale of the object is 1 for each axis of the object. I can then change what the values are for this vector3 object making them higher or lower, and by doing so I will end up changing the scale of the object.
@@ -15,11 +15,12 @@ This then will be a post on using the scale property of the Object3d class that 
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/jpcjC3jedrQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The Object3d scale property and what to know first
 
-I trust that you have covered the basics at least when it comes to [getting up and running with three.js](/2018/04/04/threejs-getting-started/) and javaScript in general. This post is intended for people that have at least some background with javaScript, and have worked out at least a few simple examples of three.js for starters. I will be keeping the examples here fairly simple, at least at the top of the post, but there are still some basic things you should know about before continuing to read this. As such I like to use these opening sections of my blog posts to write about at least a few things that you might want to read up more on before continuing to read the rest of the content.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/jpcjC3jedrQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+I trust that you have covered the basics at least when it comes to [getting up and running with three.js](/2018/04/04/threejs-getting-started/) and javaScript in general. This post is intended for people that have at least some background with javaScript, and have worked out at least a few simple examples of threejs for starters. I will be keeping the examples here fairly simple, at least at the top of the post, but there are still some basic things you should know about before continuing to read this. As such I like to use these opening sections of my blog posts to write about at least a few things that you might want to read up more on before continuing to read the rest of the content.
 
 ### Check out my main post on the Vector3 class
 
@@ -36,6 +37,10 @@ The examples in this post and my many other posts on threejs can be [found on Gi
 ### Version Numbers matter with three.js
 
 When I wrote this post for the first time I was using revision 127 of three.js which was release in April of 20201, and the last time I came around to doing a little editing I was using r146. It would seem that much has not changes with the Object3d scale property and the Vercor3 class to which the scale property is an instance of. However it is still possible that the code examples here might break with future versions of three.js.
+
+## 1 - Basic Object3d scale examples
+
+As with just about every other one of my posts on threejs I like to start out with a few basic examples of the general topic or feature that I am writing bout. With that said in this section I will be doing just that by juts going over a few quick, basic, static scene examples that do not involve an animation loop. For the most part these examples will just involve using some Vector3 class features which is the kind of object that is the value of the scale property of the object3d class. Also although this is an object3d class feature I will be sticking to just the use of mesh objects here as I think I would like to leave groups for a latter more advanced section in this post.
 
 ### 1.1 - The Vector3 set method
 
