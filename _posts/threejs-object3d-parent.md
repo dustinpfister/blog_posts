@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2023-01-24 12:24:07
-version: 1.30
+updated: 2023-01-24 12:30:58
+version: 1.31
 ---
 
 I have been taking another look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and have found that I should write a lot more about this class. For example one such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property of an object. That is where the children property is a collection of other objects that are descendants of an object, the parent property is, well the parent of the current object of course if there is one.
 
-Say I am looping over all the objects of a scene object using something like that of the [object3d transverse method](/2021/06/03/threejs-object3d-traverse/), and for each mesh object I want to take a look at what the parent object of the mesh object is. Say that in the scene there may be some mesh objects that are part of a group and the [user data object](/2021/02/16/threejs-userdata) of the group may have some data that I will want to use when applying some changes to the mesh object. In these kinds of sitations I can use the parent property of the object3d class as a way to just simply check what the parent object of a current child object is to do this sort of thing.
+Say I am looping over all the objects of a scene object using something like that of the [object3d transverse method](/2021/06/03/threejs-object3d-traverse/), and for each mesh object I want to take a look at what the parent object of the mesh object is. Say that in the scene there may be some mesh objects that are part of a group and the [user data object](/2021/02/16/threejs-userdata) of the group may have some data that I will want to use when applying some changes to the mesh object. In these kinds of situations I can use the parent property of the object3d class as a way to just simply check what the parent object of a current child object is to do this sort of thing.
 
-However I can not say that I use the parent property that much, and maybe the reason why is because often there are other ways of having references to objects at the ready, [such as having names](/2021/05/12/threejs-object3d-get-by-name/) for every object in the scene. So then in this post I will be going over a few examples that make use of the parent property of objects that are based on the object3d class. While I am at it I might also touch base on a wide range of other threejs related topics that might also be work checking into in detail, so lets get to it.
+However I can not say that I use the parent property that much, and maybe the reason why is because often there are other ways of having references to objects at the ready, such as having names for every object in the scene. So then in this post I will be going over a few examples that make use of the parent property of objects that are based on the object3d class. While I am at it I might also touch base on a wide range of other threejs related topics that might also be work checking into in detail, so lets get to it.
 
 <!-- more -->
 
@@ -150,7 +150,7 @@ renderer.domElement.addEventListener('click', function(){
 
 ## 3 - Groups of mesh objects and clicking groups of objects
 
-ANother note worthy use case example of the object3d parent property might have to do with clicking a group of mesh objects rather than just a single stand alone mesh object.
+Another note worthy use case example of the object3d parent property might have to do with clicking a group of mesh objects rather than just a single stand alone mesh object. When I say clicking I mean just that as in this section I will be going over an example that makes use of the raycaster class. As the name suggests  the raycaster class is a way to go about shooting a ray outward from a given point in space outward by a given direction. When doing so we can check if there are any objects that are along this ray. So for example I can use this raycaster to find if a mesh is along a ray from the current position of a camera, outward from the current facing direction of the camera.
 
 ### 3.1 - The main javaScript file
 
@@ -382,4 +382,3 @@ In this example I am also using one additional file that is just the module that
 The parent property of the object3d class is then yet another useful property that can be used as a way to gain a reference to another object based on object3d. This property is of course just one tool in the tool box when it comes to gaining a reference to any given object is a scene object. What is nice about the parent property is that it is a way to gain a reference that will always be the parent object of another if there is one. 
 
 When it comes to related reading to this in major projects I also often work out some kind of system when it comes to setting name strings for all objects, as long as it follows some kind of system that system can also be used as a way to gain a reference to anything that I might want. This might prove to be the best way to always have a way to go about getting at a specific object in an over all scene, but still the parent object might prove to be another useful means for getting references to objects.
-
