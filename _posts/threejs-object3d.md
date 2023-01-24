@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2023-01-24 07:59:30
-version: 1.69
+updated: 2023-01-24 08:13:42
+version: 1.70
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
@@ -433,9 +433,14 @@ loop();
 
 ## 5 - Setting the Scale of an object
 
-The [scale property](/2021/05/11/threejs-object3d-scale/) of an instance of Object3d contains and instance of Vector3 that can be used to change the scale of an object. By default the values for this vector3 instance are 1,1,1 but they can be changed to something like 2,2,2 which would cause the object to be scaled up to a size that is twice the side of the objects original size. So it would go without saying that this also proves to be a very useful property in the object3d class along with position and rotation.
+The [scale property](/2021/05/11/threejs-object3d-scale/) of an instance of Object3d contains and instance of Vector3 that can be used to change the scale of an object. By default the values for this vector3 instance are 1,1,1 but they can be changed to something like 2,2,2 which would cause the object to be scaled up to a size that is twice the side of the objects original size. So it would go without saying that this also proves to be a very useful property in the object3d class along with position and rotation. In this section then I will be looking at a few examples that have to do with making use of the scale property of the object3d class then.
 
 ### 5.1 - Basic scale property example
+
+For this example then I create a single mesh object that will serve as a source object or sorts that I will make copies of by making use of the clone method of the mesh object class. There are some things that I think I should say about the clone method that is used with mesh objects. One thing to be aware of is that there is a clone method of the mesh class that will supersede the object3d clone method. However maybe the mosu impotent thing to be aware of here is that the clone method will not deep copy geometry and materials. Also when it makes clones of any and all children it will not copy geometry and materials for all children also. However for this example at least this will not present a problem as I just want to scale the objects themselves and using the same geometry and materials for all objects will work fine.
+
+
+Inside the body of a loop I call the clone method of the source mesh object, and the result that is returned is a clone of the source object. I can then set a new scale for this copy of the source mesh object, and while doing so I can also adjust the position of it as well. The end result is then a whole bunch of mesh objects that are all cloned from a single source mesh object, but with the scale adjusted for each of them.
 
 ```js
 //-------- ----------
