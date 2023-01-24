@@ -1,25 +1,25 @@
 ---
-title: Getting parent of an object in threejs
+title: Parent and child objects in threejs
 date: 2021-06-02 12:24:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2022-05-19 10:11:48
-version: 1.29
+updated: 2023-01-24 12:24:07
+version: 1.30
 ---
 
-I have been taking a second long look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. Not all of it is hard to work with also, much of it is just a matter of being aware of it for the most part. For example one such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property of an object. That is where the children property might be a collection of other objects that are descendants of an object, the parent property is, well the parent of the current object of course.
+I have been taking another look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and have found that I should write a lot more about this class. For example one such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property of an object. That is where the children property is a collection of other objects that are descendants of an object, the parent property is, well the parent of the current object of course if there is one.
 
-Say I am looping over all the objects of a scene object using something like that of the object3d transverse method, and for each mesh object I want to take a look at what the parent object of the mesh object. Say that in the scene there may be some mesh objects that are part of a group and the user data object of the group may have some data that I will want to use when applying some changes to the mesh object.
+Say I am looping over all the objects of a scene object using something like that of the [object3d transverse method](/2021/06/03/threejs-object3d-traverse/), and for each mesh object I want to take a look at what the parent object of the mesh object is. Say that in the scene there may be some mesh objects that are part of a group and the [user data object](/2021/02/16/threejs-userdata) of the group may have some data that I will want to use when applying some changes to the mesh object. In these kinds of sitations I can use the parent property of the object3d class as a way to just simply check what the parent object of a current child object is to do this sort of thing.
 
-However I can not say that I use the parent property that much, and maybe the reason why is because often there are other ways of having references to objects at the ready, such as having names for every object in the scene. So then in this post I will be going over a few examples that make use of the parent property of objects that are based on the object3d class. While I am at it I might also touch base on a wide range of other threejs related topics that might also be work checking into in detail, so lets get to it.
+However I can not say that I use the parent property that much, and maybe the reason why is because often there are other ways of having references to objects at the ready, [such as having names](/2021/05/12/threejs-object3d-get-by-name/) for every object in the scene. So then in this post I will be going over a few examples that make use of the parent property of objects that are based on the object3d class. While I am at it I might also touch base on a wide range of other threejs related topics that might also be work checking into in detail, so lets get to it.
 
 <!-- more -->
 
 ## The parent property of the Object3d class and what to know first.
 
-This is a post on the parent property of the object3d class which is a major class in threejs as it is a base class of all kinds of other classes in the library such as [Mesh](/2018/05/04/threejs-mesh/), and [Camera](/2018/04/06/threejs-camera/) just to name a few. I will be keeping these examples fairly simple, however this is still not a getting started type post on threejs in general. However in this section I will be quickly going over a few things that you might want to read up on more if you have not done so before hand at this time.
+This is a post on the parent property of the object3d class which is a major class in threejs as it is a base class of all kinds of other classes in the library such as [Mesh](/2018/05/04/threejs-mesh/), and [Camera](/2018/04/06/threejs-camera/) just to name a few. I will be keeping these examples fairly simple, however this is still not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/) in general. However in this section I will be quickly going over a few things that you might want to read up on more if you have not done so before hand at this time.
 
 ### Check out the Object3d class in general
 
@@ -35,7 +35,7 @@ The source code examples in this post are also up on [Github in my test threejs 
 
 ### version numbers matter
 
-When i created these source code examples for the first time and wrote this post I was using threejs r127. this was a late version of threejs in the first half of 2021, so it is possible that at some point in the future these source code examples will break.
+When I created these source code examples for the first time and wrote this post I was using threejs r127. this was a late version of threejs in the first half of 2021, so it is possible that at some point in the future these source code examples will break.
 
 ## 1 - Basic object3d parent example
 
