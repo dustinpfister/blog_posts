@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2023-01-25 15:51:43
-version: 1.35
+updated: 2023-01-25 16:23:13
+version: 1.36
 ---
 
 I would like to look into the various external file formats more that I can use with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file format. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is a format option that I can use out of the box in [blender](https://www.blender.org/) to export files, so it would seem to be a good choice just for that reason alone for starters. Aside from easy exporting, and importing with blender, this DAE format uses an XML schema as a way to store data for the state of an over all scene export as well. For me that is another good reason why I should go with this one as it is a plain text file format that means that in a pinch I can edit a few things here and there with a plain old text editor if I need to for some reason. Also it allows for me to structure things in a way in which I can reused textures and so forth rather than having everything packed together in a single binary format.
@@ -197,6 +197,91 @@ DAE_loader(
     ['/dae/count_down_basic/',
      '/dae/rpi4/']
 )
+.then( (scene_source) => {
+    console.log('Done loading.');
+    scene.add( scene_source)
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0,0,0);
+    renderer.render(scene, camera);
+})
+.catch( (e) => {
+    console.warn(e);
+});
+```
+
+### 2.2 - Custom Cloner option
+
+One major problem that I have run into has to do with what objects to add in to a collection of source objects to begin with. After that I also often have problems that have to do with how to go about cloning in the new objects from the raw DAE files. I have found thus far that I can adress this problem by allowing for an option where I can define what the logic should be for this.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const DAE_loader = function( opt ){
+    opt = opt || {};
+    opt.urls_dae = opt.urls_dae || [];
+    opt.urls_resource = opt.resource_urls || [];
+    // use given cloner or defult to add everything
+    opt.cloner = opt.cloner || function(obj, scene_source, scene_result, result){
+        scene_source.add(obj.clone());
+    };
+    const manager = new THREE.LoadingManager();
+    const scene_source = new THREE.Scene();
+    return new Promise( (resolve, reject) => {
+        manager.onError = function(url){
+            reject(new Error( 'error when loading: ' + url ));
+        };
+        manager.onLoad = function(){
+            resolve(scene_source);
+        };
+        opt.urls_dae.forEach((url, i) => {
+            const loader = new THREE.ColladaLoader(manager);
+            if(opt.urls_resource[i]){
+                loader.setResourcePath(opt.urls_resource[i]);
+            }
+            loader.load(url, function(result){
+                result.scene.traverse((obj) => {
+                      opt.cloner(obj, scene_source, result.scene, result);
+                });
+            });
+        });
+    });
+};
+//-------- ----------
+// LOADING
+//-------- ----------
+DAE_loader({
+    // custom cloner
+    cloner: (obj, scene_source ) => {
+        if(obj.type === 'Mesh'){
+            const mat = new THREE.MeshPhongMaterial({
+                emissive: new THREE.Color(1,1,1),
+                emissiveIntensity: 0.5,
+                emissiveMap: obj.material.map 
+            });
+            const mesh = new THREE.Mesh(obj.geometry, mat);
+            mesh.position.copy(obj.position);
+            mesh.rotation.copy(obj.rotation);
+            scene_source.add(mesh);
+        }
+    },
+    urls_dae: [
+        '/dae/count_down_basic/cd4-nums.dae',
+         '/dae/rpi4/rpi4_start_box.dae'
+    ],
+    urls_resource: [
+        '/dae/count_down_basic/',
+        '/dae/rpi4/'
+    ]
+})
 .then( (scene_source) => {
     console.log('Done loading.');
     scene.add( scene_source)
