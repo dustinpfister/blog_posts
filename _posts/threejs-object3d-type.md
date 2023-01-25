@@ -5,21 +5,25 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2022-05-26 14:19:59
-version: 1.18
+updated: 2023-01-25 10:03:19
+version: 1.19
 ---
 
-One major part of [learning how to use threejs](https://threejs.org/docs/#api/en/core/Object3D) is to get a solid grasp on what there is to work with in the [object3d class](/2018/04/23/threejs-object3d/). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class such as mesh objects, groups, cameras and so forth. So once one gets an idea as to what the position property of the Object3d class is all about for example, they can also apply that same understanding to a lot of typical objects that are used when composing any kind of of over all scene.
+One major part of [learning how to use threejs](https://threejs.org/docs/#api/en/core/Object3D) is to get a solid grasp on what there is to work with in the [object3d class](/2018/04/23/threejs-object3d/). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class such as [mesh objects](/2018/05/04/threejs-mesh/), [groups](/2018/05/16/threejs-grouping-mesh-objects/), [cameras](/2018/04/06/threejs-camera/) and so forth. So once one gets an idea as to what the [position property of the Object3d class is all about](/2022/04/04/threejs-object3d-position/) for example, they can also apply that same understanding to a lot of typical objects that are used when composing any kind of of over all scene.
 
-So then because there are all these different kinds, or types of objects in threejs that are all based off of three.js there should be some kind of standard way of finding out what type of object that I am working with. As with any other kind of class in threejs there is of course using something like the instanceof operator to find out if I am dealing with a given class of object or not. However there is also a type property of all these various types of objects that can also be used as a way to find out what type of object I am dealing with when looping over a collection of objects by one means or another.
-
-Speaking of looping over objects in a scene there is also the children property of objects, as well as things like the add method of these objects. Array prototype methods like that of the [array forach method](/2019/02/16/js-javascript-foreach/) can be used with the children arrays of these objects, but there are other threejs built in options to work with such as the [traverse method](/2021/06/03/threejs-object3d-traverse/) that can also be used to loop over the full contents of an object and the children of the object.
+So there are all these different kinds, or types of objects in threejs that are all based off of object3d. With that said there should be some kind of standard way of finding out what type of object that I am working with when looping over all the objects attached to an object3d based object. As with any other kind of class in threejs there is of course using something like the instanceof operator to find out if I am dealing with a given class of object or not, and that might work okay. However there is also a type property of all these various types of objects that can also be used as a way to find out what type of object as well. With that said this post will be about just that how to go about figuring out what the type of a given object3d based object is in threejs.
 
 <!-- more -->
 
 ## The type property of objects in threejs and what to know first
 
-This is a post on the type property of various objects in threejs that include the Object3d base class as well as a wide range of other objects many of which are based on the object3d class. I am assuming that you have at [least a little experience working with threejs](/2018/04/04/threejs-getting-started/), as well as with [client side javaScript in general](/2018/11/27/js-getting-started/). If not you might find what it is that I am writing about here a little hard to follow. As such I often write this kind of section in my posts as a way to outline some things that you should know first before continuing to read the rest of the content.
+This is a post on the type property of various objects in threejs that are based off of the object3d class. I am assuming that you have at [least a little experience working with threejs](/2018/04/04/threejs-getting-started/), as well as with [client side javaScript in general](/2018/11/27/js-getting-started/). If not you might find what it is that I am writing about here a little hard to follow. As such I often write this kind of section in my posts as a way to outline some things that you should know first before continuing to read the rest of the content.
+
+### Know a thing out two about looping over object3d based objects
+
+I will be going over code examples that involve looping over objects in a scene. When doing so one way is to make use of the children property of objects. Sense the child property is just a plain old javaScript Array prototype methods like that of the [array forach](/2019/02/16/js-javascript-foreach/), or the [array map method](/2020/06/16/js-array-map/) can be used with the children arrays of these objects. 
+
+Another option for looping over the contents of objects in threejs would be the built in [traverse method](/2021/06/03/threejs-object3d-traverse/) that is another object3d class method of interest when it comes to this sort of thing. This will not just loop over children, but also children of children, and the object that I call the traverse method off of as well.
 
 ### The source code examples here are on Github
 
