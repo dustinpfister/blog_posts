@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2023-01-25 11:37:16
-version: 1.21
+updated: 2023-01-25 11:44:49
+version: 1.22
 ---
 
 One major part of learning how to use threejs is to get a solid grasp on what there is to work with in the [object3d class](https://threejs.org/docs/#api/en/core/Object3D). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class such as [mesh objects](/2018/05/04/threejs-mesh/), [groups](/2018/05/16/threejs-grouping-mesh-objects/), [cameras](/2018/04/06/threejs-camera/) and so forth. So once one gets an idea as to what the [position property of the Object3d class is all about](/2022/04/04/threejs-object3d-position/) for example, they can also apply that same understanding to a lot of typical objects that are used when composing any kind of of over all scene.
@@ -39,7 +39,11 @@ The version of threejs that I was using when I first wrote this post was r135, a
 
 ## 1 - Some Basic examples of the type property
 
+To start things off here as always I am going to want to get a few basic hello world style examples out of the way. So in this section I will have a few quick examples in which I am making use of the type property to just quickly get the type string of the current object. However while I am at it I will also be covering some vanilla javaScript features as well that come to mind when it comes to what the type property if often used for.
+
 ### 1.1 - Using the type property of an object
+
+For this example I am just logging out what the result of the type property is for a few objects that I added to a very basic start point for a threejs project. When I do so the result is what I would expect I get a string value that corresponds to the name of the constructor function that was used to create the object.
 
 ```js
 //-------- ----------
@@ -70,6 +74,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.2 - Using core javaScript instanceof keyword
+
+There is also the instance of keyword in core javaScript that can be used to find out if I am dealing with a given type of object or not.
 
 ```js
 //-------- ----------
@@ -103,6 +109,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.2 - Using core javaScript constructor object prototype property
+
+Yer another option would be to use the constructor property of the object. Ever object in javaScript has this property and it should be a reference to the function that was used to create the object.
 
 ```js
 //-------- ----------
@@ -258,5 +266,4 @@ renderer.render(scene, camera);
 ## Conclusion
 
 The type property of objects in threejs is then one of the ways that I will go about fining out what kind of object I am working with in threejs. This might work well when it comes to most objects in threejs, but I have not look into seeing if this type property is also set for all other kinds of objects in threejs. Also I have to say that checking the type of object this way is not a substitute for other means of finding the type of object that are more true to that of javaScript in general. When it comes to core javaScript there is checking the constructor property of the object which will contain a name property of the function that made it. Also there is the instance of operator as well that can often work well when it comes to working with code outside of threejs.
-
 
