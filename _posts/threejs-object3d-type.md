@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2023-01-25 11:54:58
-version: 1.23
+updated: 2023-01-25 12:00:03
+version: 1.24
 ---
 
 One major part of learning how to use threejs is to get a solid grasp on what there is to work with in the [object3d class](https://threejs.org/docs/#api/en/core/Object3D). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class such as [mesh objects](/2018/05/04/threejs-mesh/), [groups](/2018/05/16/threejs-grouping-mesh-objects/), [cameras](/2018/04/06/threejs-camera/) and so forth. So once one gets an idea as to what the [position property of the Object3d class is all about](/2022/04/04/threejs-object3d-position/) for example, they can also apply that same understanding to a lot of typical objects that are used when composing any kind of of over all scene.
@@ -31,11 +31,11 @@ This post is not a general overview of the object3d class as a whole as I have [
 
 ### The source code examples here are on Github
 
-The source code examples that I am writing about here can be found in my [test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-type). This is also where I am keeping the source code examples that I am writing about for all my other various posts on threejs, so there is a whole lot of code examples to look at for what it is worth.
+The source code examples that I am writing about here can be found in my [test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-type). This is also where I am keeping the source code examples that I am writing about for all [my other various posts on threejs](/categories/three-js/), so there is a whole lot of code examples to look at for what it is worth.
 
 ### Version Numbers matter with threejs
 
-The version of threejs that I was using when I first wrote this post was r135, and the version that I used last time I came around to edit this post was r146.
+The version of threejs that I was using when I first wrote this post was r135, and the version that I used last time I came around to edit this post was r146. Threejs is a javaScript library that moves very fast in terms of the rate at which major code breaking changes are made. Each revision that is put out might contain major code breaking changes actually so be sore to always check what version number you are using when working with random code examples using threejs on the open internet.
 
 ## 1 - Some Basic examples of the type property
 
