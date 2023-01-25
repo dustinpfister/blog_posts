@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2023-01-25 15:43:06
-version: 1.34
+updated: 2023-01-25 15:51:43
+version: 1.35
 ---
 
 I would like to look into the various external file formats more that I can use with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file format. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is a format option that I can use out of the box in [blender](https://www.blender.org/) to export files, so it would seem to be a good choice just for that reason alone for starters. Aside from easy exporting, and importing with blender, this DAE format uses an XML schema as a way to store data for the state of an over all scene export as well. For me that is another good reason why I should go with this one as it is a plain text file format that means that in a pinch I can edit a few things here and there with a plain old text editor if I need to for some reason. Also it allows for me to structure things in a way in which I can reused textures and so forth rather than having everything packed together in a single binary format.
@@ -44,6 +44,10 @@ The source code examples that I am write about in this post can be [found up on 
 When I wrote this post I was using r127 of three.js, and the last time I got around to doing a little editing I was using r146. In the future this code might break on later versions as code breaking changes are made to the library often. So if the code breaks the first thing you should check is what version of three.js you are using, it really matters a lot, more so than other libraries where the code is just more or less being maintained at a fixed state in terms of the state of the public API.
 
  I try to do a half way decent job of editing files, but I have a lot of pots boiling when it comes to all the other various posts on threejs as well as whole other topics completely. 
+
+## 1 - Some basic examples of the DAE loader
+
+Working with the DAE loader, and loaders in general has proved to be a little bit of a pain. Not so much when it comes to getting started with just loading a single DAE file mind you but a bunch of little things that will pop up as one moves forward to working out some code to use the DAE loader and address a whole bunch of other little things that will pop up. However I will not be getting into any of that here, rather I will be starting out with just a few vary simple basic examples. When it comes to just simply getting started with the DAE loader this is simple enough as least.
 
 ### 1.1 - Load a single dae file
 
