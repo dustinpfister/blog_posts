@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2023-01-26 12:04:05
-version: 1.34
+updated: 2023-01-26 12:39:03
+version: 1.35
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](https://threejs.org/docs/#api/en/objects/Group) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). One thing that I have found that pops up when dealing with nested objects, and the look at method of the objecy3d class, it is that the look at method will always have the object look at something relative to world space. With that said there is knowing what world space is, and how it compares to local space, or space relative to a parent object if you prefer. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space rather than the position that is relative to the parent object. 
@@ -45,7 +45,46 @@ The source code examples that I am writing about in this post can be found on Gi
 
 When I first wrote this post I was using revision 127 of threejs which was a late version of threejs as of April of 2021, and the last time I came around to do some editing I was using r140. At One point I have found that a basic example that I have made for this post did in fact break with r135. In older versions of threejs I did not have to give a target vector as the first and only argument, but now the method will not work if I do note give one. Code breaking changes are introduced to threejs all the time, this is just one of may examples of this sort of thing. So if the code examples are not working as expected always check the version number that you are using.
 
-## 1 - Basic group example of look at using and not using get world position
+## 1 - Some Basic examples of the Object3d.getWorldPosition method
+
+### 1.1 - Parent and Child objects
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(5, 5) );
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS - a parent mesh, with a single child mesh
+//-------- ----------
+const mat = new THREE.MeshNormalMaterial();
+const parent = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), mat );
+const child = new THREE.Mesh( new THREE.SphereGeometry(0.5, 30, 30), mat );
+parent.add(child);
+scene.add(parent);
+//-------- ----------
+// Setting position of parent and child
+//-------- ----------
+parent.position.set(-1.5,0.5,0.5); // realtive to scene object ( aligned with world space )
+child.position.set(1.2, 1.2, 1.2); // relative to parent object
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1, 2, 4);
+// JUST PASSING child.position WILL RESULT IN THE CAMERA LOOKING AT WHERE THE LOCATION OF THE CHILD
+// MESH WOULD BE IF IT WAS RELATIVE TO WORLD SPACE RATHER THAN THE PARENT MESH. TO FIX THIS USE
+// THE Object3d.getWorldPosition METHOD
+//camera.lookAt( child.position );
+camera.lookAt( child.getWorldPosition(new THREE.Vector3()) );
+renderer.render(scene, camera);
+```
+
+### 1.2 - Basic group example of look at using and not using get world position
 
 In this example I am making a helper function that will create and return a group that I can then add to a scene object. This group object contains two mesh objects, one of which is a cone, and the other is a cube. In this helper function that creates the group I am doing a rotation of the geometry of the cone once to make it so that the orientation of the cone geometry lines up with the face of the mesh object. So it is now just a question of using the look at method of the cone mesh to have it point at something where the tip of the cone is facing the given direction.
 
