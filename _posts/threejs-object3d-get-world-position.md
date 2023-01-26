@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2023-01-26 12:39:03
-version: 1.35
+updated: 2023-01-26 13:22:20
+version: 1.36
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](https://threejs.org/docs/#api/en/objects/Group) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). One thing that I have found that pops up when dealing with nested objects, and the look at method of the objecy3d class, it is that the look at method will always have the object look at something relative to world space. With that said there is knowing what world space is, and how it compares to local space, or space relative to a parent object if you prefer. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space rather than the position that is relative to the parent object. 
@@ -47,7 +47,13 @@ When I first wrote this post I was using revision 127 of threejs which was a lat
 
 ## 1 - Some Basic examples of the Object3d.getWorldPosition method
 
+In this section I will be starting out with a few basic examples of the get world position method.
+
 ### 1.1 - Parent and Child objects
+
+For this very first example in the basic section here I will of course try to keep things as simple as possible. The general idea here is that I have a single mesh object that is a child of another parent mesh object which in turn is also a child of the scene object. The scene object is also an example of an object3d based object and as such it also has a position property but for now I am leaving the scene object aligned with world space. So there is just thinking in terms of the parent mesh and the child mesh. When I set the position of the child mesh that position is relative to the parent mesh, and the parent mesh is relative to the position of the scene object which in this case is the same as world space as I am not going to move the mesh object around here.
+
+Anyway if you are still a little confused by this just start playing around with a code examples like this one here:
 
 ```js
 //-------- ----------
@@ -83,6 +89,8 @@ camera.position.set(1, 2, 4);
 camera.lookAt( child.getWorldPosition(new THREE.Vector3()) );
 renderer.render(scene, camera);
 ```
+
+Notice the difference between just passing the child objects position property value to look at compared to using the get world position method. When I just pass the child position property the camera looks away from the child mesh, and when I use the get world position method the camera looks at the child mesh object. This is because the look at method will always make an object look at a position that is relative to world space. So when I give the child position value it is not the position relative to the parent mesh, but rather the position relative to world space, which in this case is aligned with the scene object.
 
 ### 1.2 - Basic group example of look at using and not using get world position
 
