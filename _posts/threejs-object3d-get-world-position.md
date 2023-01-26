@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2023-01-26 11:22:16
-version: 1.32
+updated: 2023-01-26 11:44:53
+version: 1.33
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](https://threejs.org/docs/#api/en/objects/Group) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). One thing that I have found that pops up when dealing with nested objects, and the look at method of the objecy3d class, it is that the look at method will always have the object look at something relative to world space. With that said there is knowing what world space is, and how it compares to local space, or space relative to a parent object if you prefer. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space rather than the position that is relative to the parent object. 
@@ -23,15 +23,19 @@ So in this post I will be addressing this issue with some source code that has t
 
 ## Getting world position in threejs and what to know first
 
-In this post I will be writing about the [get world position method in the object3d base class](https://stackoverflow.com/questions/15098479/how-to-get-the-global-world-position-of-a-child-object) in the javaScript library known as three.js. So the content here has to do with just one little issue in an over all larger library that is written in a specific programing language called [javaScript](/2018/11/27/js-getting-started/). I assume that you have at least some basic working knowledge of how to get up and running with the basics at least, because I am not going to do that here in this post. However I always like to start off my three.js posts with a section like this in which I outline some things that you should be aware of before continuing to read the rest of the content.
+In this post I will be writing about the [get world position method in the object3d base class](https://stackoverflow.com/questions/15098479/how-to-get-the-global-world-position-of-a-child-object) in the javaScript library known as threejs. So the content here has to do with just one little issue in an over all larger library that is written in a specific programing language called [javaScript](/2018/11/27/js-getting-started/). I assume that you have at least some basic working knowledge of how to get up and running with the basics at least, because I am not going to do that here in this post. However I always like to start off my threejs posts with a section like this in which I outline some things that you should be aware of before continuing to read the rest of the content.
 
 ### Read up more on the look at method of object3d and what it has to do with world space
 
-There is working out not just one but many examples of the [look at method](/2021/05/13/threejs-object3d-lookat/) of the object3d class to get a feel for where and when the method is useful, but also to become aware of the drawbacks in some situations. The methods works great but it will always look at a position that is relative to world space. Using the get world position method of the object 3d class can help with this, but even then there are some situations in which I am just going to need to work out another solution to set the orientation of an object.
+There is working out not just one but many examples of the [look at method](/2021/05/13/threejs-object3d-lookat/) of the object3d class to get a feel for where and when the method is useful, but also to become aware of the [drawbacks in some situations](/2022/05/06/threejs-examples-lookat-apply-euler/). The method works great but it will always look at a position that is relative to world space rather than local space. Using the get world position method can help with this, but even then there are some situations in which I am just going to need to work out another solution to set the orientation of an object.
 
-### learn a thing or two about groups and object3d in general beyond just this post
+### Check out my main post on the object3d class in general
 
-The use of the get world position often ends up going hand in hand with the [use of groups](/2018/05/16/threejs-grouping-mesh-objects/), or in any way shape or form the use of objects that are a child of a parent object. That parent object can be a group, but it can also be anything that is based off of object3d, including even the scene object.
+The get world position method is just one of many methods of the Object3d class in threejs. There is a whole lot more to be aware of when it comes to other methods, as well as various properties that will also come into play. Also although often I might not work with the object3d class directly I do work with other objects that are based on top of object3d all the time such as mesh objects, cameras, lights, and much more. There is also a whole lot that comes up when it comes to things that branch off of the object3d class as well such as the [vector3 class](/2018/04/15/threejs-vector3/) that is the value of the [position property](/2022/04/04/threejs-object3d-position/), and the [Euler class](/2021/04/28/threejs-euler/) that is the value of the [rotation property](/2022/04/08/threejs-ibject3d-rotation/) of object3d. With all this said you might want to read [my main post on object3d](/2018/04/23/threejs-object3d/).
+
+### Learn a thing or two about groups and and nested objects in general
+
+The use of the get world position often ends up going hand in hand with the [use of groups](/2018/05/16/threejs-grouping-mesh-objects/), or in any way shape or form the use of objects that are a child of a [parent object](/2021/06/02/threejs-object3d-parent/). That parent object can be a group, but it can also be anything that is based off of object3d, including even the scene object.
 
 ### The source code examples in this post are up on Github
 
@@ -39,7 +43,7 @@ The source code examples that I am writing about in this post can be found on Gi
 
 ### Version numbers matter in three.js
 
-When I first wrote this post I was using revision 127 of threejs which was a late version of threejs as of April of 2021, and the last time I came around to do some editing I was using r140. When I cam around to editing this post I have found that the basic example that I have made for this post did in fact break with r135. In older versions of threejs I did not have to give a target vector as the first and only argument, but now the method will not work if I do note give one. Code breaking changes are introduced to three.js all the time, this is just one of may examples of this sort of thing when it comes to code breaking changes with the pubic API. So if the code examples are not working as expected always check your version numbers first.
+When I first wrote this post I was using revision 127 of threejs which was a late version of threejs as of April of 2021, and the last time I came around to do some editing I was using r140. At One point I have found that a basic example that I have made for this post did in fact break with r135. In older versions of threejs I did not have to give a target vector as the first and only argument, but now the method will not work if I do note give one. Code breaking changes are introduced to threejs all the time, this is just one of may examples of this sort of thing. So if the code examples are not working as expected always check the version number that you are using.
 
 ## 1 - Basic group example of look at using and not using get world position
 
