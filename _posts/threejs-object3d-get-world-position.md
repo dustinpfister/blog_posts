@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2023-01-26 13:22:20
-version: 1.36
+updated: 2023-01-26 13:32:06
+version: 1.37
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is [getting into using groups](https://threejs.org/docs/#api/en/objects/Group) as a way to compartmentalize a collection of [mesh objects](/2018/05/04/threejs-mesh/). When doing so there is using the [look at method](https://threejs.org/docs/#api/en/core/Object3D.lookAt) to get a mesh to look at another child object of the group, or some other group in an over all [scene object](/2018/05/03/threejs-scene/). One thing that I have found that pops up when dealing with nested objects, and the look at method of the objecy3d class, it is that the look at method will always have the object look at something relative to world space. With that said there is knowing what world space is, and how it compares to local space, or space relative to a parent object if you prefer. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space rather than the position that is relative to the parent object. 
@@ -47,7 +47,7 @@ When I first wrote this post I was using revision 127 of threejs which was a lat
 
 ## 1 - Some Basic examples of the Object3d.getWorldPosition method
 
-In this section I will be starting out with a few basic examples of the get world position method.
+In this section I will be starting out with a few basic examples of the get world position method. These will just be a few quick examples that have to do with just two objects of interest with the aim of just focusing on the core idea of what the get world position method is all about. 
 
 ### 1.1 - Parent and Child objects
 
