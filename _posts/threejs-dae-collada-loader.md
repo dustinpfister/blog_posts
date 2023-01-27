@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2023-01-25 16:23:13
-version: 1.36
+updated: 2023-01-27 12:02:11
+version: 1.37
 ---
 
 I would like to look into the various external file formats more that I can use with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file format. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is a format option that I can use out of the box in [blender](https://www.blender.org/) to export files, so it would seem to be a good choice just for that reason alone for starters. Aside from easy exporting, and importing with blender, this DAE format uses an XML schema as a way to store data for the state of an over all scene export as well. For me that is another good reason why I should go with this one as it is a plain text file format that means that in a pinch I can edit a few things here and there with a plain old text editor if I need to for some reason. Also it allows for me to structure things in a way in which I can reused textures and so forth rather than having everything packed together in a single binary format.
@@ -288,6 +288,147 @@ DAE_loader({
     camera.position.set(10, 10, 10);
     camera.lookAt(0,0,0);
     renderer.render(scene, camera);
+})
+.catch( (e) => {
+    console.warn(e);
+});
+```
+
+## 3 - Having a module form of this DAE Helper \( r0 \)
+
+I have made a threejs project example called DAE tools that I have use a little now and then, and have also made a few revisions of thus far. However at the time of this writing at least I have found that I am making that project a little to complex, and also when it comes to the most important aspects of what it should be it is not working so great. So then I am making a new module type project where I am starting over and just thinking more in terms of what is most important when it comes to loading DAE files.
+
+There is not just loading a DAE file, there is also loading a few DAE files. There is also not just loading a few DAE files but also loading zero or more textures for each of these files. There is also not just loading the DAE files and all additional assets, but there is also the question of what to load from the DAE files. For example when I work out a blender file, and export that file as DAE I might have a camera, lamp, and additional mesh objects that I might not want to be added to a main scene object that I will then add resources from. Speaking of a main source object there is also that as well. That is to not just have a collection of result objects but a single scene object that is created from one or more DAE files that I will ether directly use as a project, or use as a means to get references to source objects that will in turn be used with another scene object.
+
+Okay that was all a mount full, however maybe all of that can still all be done with one little helper function that I can package up as just a very simple little javaScript project that I can then link to and use from one project to the next, and that will be what this section is all about.
+
+### The module helper source code \( r0 \)
+
+This is then what I have together for my DAE helper module then. There is just having a single public method with this one that will return a promise that will result once all the assets are loaded. Also when the promise resolves it will give a single source scene object that I can then directly use with a renderer, or use as a way to get source objects that I can then clone and add to some other scene object as needed. This all comes down to how I go about writing the cloner method which is something that I can give as an option when calling the helper function. I of course have a built in cloner method that will just clone and add everything from each DAE file that is loaded by default. However I can of course change that as needed on a project by project basis if I want.
+
+```js
+// dae-helper.js - r0 - from threejs-dae-collada-loader
+(function(global){
+    // a hard coded default cloner function
+    const DEFAULT_CLONER = function(obj, scene_source, scene_result, result){
+        scene_source.add(obj.clone());
+    };
+    // The public DAE_loader function
+    global.DAE_loader = function( opt ){
+        opt = opt || {};
+        opt.urls_dae = opt.urls_dae || [];
+        opt.urls_resource = opt.resource_urls || [];
+        // use given cloner or defult to add everything
+        opt.cloner = opt.cloner || DEFAULT_CLONER;
+        const manager = new THREE.LoadingManager();
+        const scene_source = new THREE.Scene();
+        return new Promise( (resolve, reject) => {
+            manager.onError = function(url){
+                reject( new Error( 'error when loading: ' + url ) );
+            };
+            manager.onLoad = function(){
+                resolve(scene_source);
+            };
+            opt.urls_dae.forEach((url, i) => {
+                const loader = new THREE.ColladaLoader( manager );
+                if(opt.urls_resource[i]){
+                    loader.setResourcePath( opt.urls_resource[i] );
+                }
+                loader.load(url, function(result){
+                    result.scene.traverse( (obj) => {
+                          opt.cloner(obj, scene_source, result.scene, result);
+                    });
+                });
+            });
+        });
+    };
+}( window ));
+```
+
+### 3.1 - Basic example of the loader helper module \( r0 \)
+
+This is an example that is making use of my [house two dae file that I have wrote a threejs project example](/2023/01/27/threejs-examples-house-two/) post about.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(0.5, 2, -1)
+scene.add(dl);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 120;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+//-------- ----------
+// LOADING
+//-------- ----------
+DAE_loader({
+    // custom cloner
+    cloner: (obj, scene_source ) => {
+        if(obj.type === 'Mesh'){
+            const mat = new THREE.MeshPhongMaterial({
+                
+            });
+            const mesh = new THREE.Mesh(obj.geometry, mat);
+            mesh.name = obj.name;
+            mesh.rotation.copy(obj.rotation);
+            scene_source.add(mesh);
+        }
+    },
+    urls_dae: [
+        '/dae/house_two/house_2.dae'
+    ],
+    urls_resource: [
+        '/dae/house_two/'
+    ]
+})
+.then( (scene_source) => {
+    console.log('done loading');
+    camera.position.set(2, 1, -2);
+
+    scene.add( new THREE.GridHelper(10, 40) )
+
+    const mesh_house = scene_source.getObjectByName('house_0').clone();
+    scene.add( mesh_house )
+
+    camera.lookAt(mesh_house.position);
+    loop();
 })
 .catch( (e) => {
     console.warn(e);
