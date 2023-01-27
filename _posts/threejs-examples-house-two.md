@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1025
-updated: 2023-01-27 11:35:28
-version: 1.4
+updated: 2023-01-27 12:06:49
+version: 1.5
 ---
 
 I have made a threejs example post way back in the day in which I [make a simple, crude house model](/2021/04/23/threejs-examples-house/) using only javaScript code on top of threejs itself. I do like to make those kinds of models as I can pack everything into a blog post, not just in terms of the javaScript code, but also the data that composes the various buffer geometry attributes as well. However when it comes to starting to work on some kind of real project with threejs, this is just not generally how things are done for the most part. Do not get my wrong though, some times it seems like the best way to do what I want to do will involve a whole lot of javaScript code to create geometry. However some times it seems like the best way forward is to create some kind of asset in a program like blender and then export from that program into a file format like that of the DAE file format. So in this [threejs project example](/2021/02/19/threejs-examples/) post, I am going to be writing about a new kind of house model where I am using an external file as a way to have the geometry for the house model.
@@ -23,7 +23,7 @@ For this project example I am [loading an external DAE file](/2021/04/30/threejs
 
 ### I do have the additional assets up on my Github
 
-In this project I am loading an external DAE file, and this DAE file along with any additional assets in terms of textures can be found in my test threejs repo on Github. There are a few folders of interest that are relevant to this post then one of which would as always be the [main for post folder for this blog post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-house-2). The other location of interst is the folder where I am storing the [DAE file of the house](https://github.com/dustinpfister/test_threejs/tree/master/views/dae/house_two) that I am using. On top of that I am also making use of a copy of my [dae helper from my post on the dae loader as well](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-dae-collada-loader). In this test threejs repo I also have copies of the official threejs files that I am using as well. When it comes to getting this up and running on your end the best way to do so might be to clone down the repo and run the server, but in any case I have all the assets that I am using for this project there.
+In this project I am loading an external DAE file, and this DAE file along with any additional assets in terms of textures can be found in my test threejs repo on Github. There are a few folders of interest that are relevant to this post then one of which would as always be the [main for post folder for this blog post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-house-two). The other location of interst is the folder where I am storing the [DAE file of the house](https://github.com/dustinpfister/test_threejs/tree/master/views/dae/house_two) that I am using. On top of that I am also making use of a copy of my [dae helper from my post on the dae loader as well](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-dae-collada-loader). In this test threejs repo I also have copies of the official threejs files that I am using as well. When it comes to getting this up and running on your end the best way to do so might be to clone down the repo and run the server, but in any case I have all the assets that I am using for this project there.
 
 ### Version Numbers Matter
 
