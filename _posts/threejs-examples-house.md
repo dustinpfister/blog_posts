@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2023-01-28 12:01:23
-version: 1.31
+updated: 2023-01-28 12:04:13
+version: 1.32
 ---
 
 This will be another [threejs example](/2021/02/19/threejs-examples/) type post, this time it will be about making yet another simple model of something, just using threejs itself rather than making and loading an external file of some kind. This time I am thinking I will like to make a crude yet effective house model. I do not care to make anything that complex with this one, just a very simple, basic house like model that might end up being part of a larger scene of some kind in one or more future projects. 
@@ -28,13 +28,14 @@ This is a post on using the javaScript library known as three.js to create a sim
 
 This is not my first threejs project example in which I make this kind of module this kind of way. The first project like this that I made would be my [guy one module](/2021/04/29/threejs-examples-guy-one/) that I made back in 2018. I also made a an example that is the [guy one module and a hamster wheel](/2021/04/19/threejs-examples-hamster-wheel/) type model as well taking this kind of approach. I have a number of other examples on top of that of course but you get the idea with this. What I am doing is just creating geometry with the built in geometry constructors, using that with mesh objects, and the positioning and rotating them in ways to make something that forms an over all object of some kind.
 
-
 ### I have a newer house threejs project example that involves loading an external DAE file
 
-Although I might still find myself making this kind of model now and then, I am starting to go more in the direction of creating geometry using a software tool like blender and then exporting to a file format like Collada. With that said I have made a whole other threejs example project where the goal is to just make a simple house model in the from of a Collada file and then it is just a matter of loading that file, as well as additional texture files into threejs.
+Although I might still find myself making this kind of model now and then, I am starting to go more in the direction of creating geometry using a software tool like blender and then exporting to a file format like Collada. With that said I have [made a whole other threejs example project where the goal is to just make a simple house model in the from of a Collada file](/2023/01/27/threejs-examples-house-two) and then it is just a matter of loading that file, as well as additional texture files into threejs.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/8aEF1H5nlYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
+This is still very much just a crude start, and it is just a shell of a house as well. However it is a step in an over all better direction when it comes to starting to create assets that I might in fact actually use in some kind of over all greater project.
 
 ### There is also looking into external file formats
 
