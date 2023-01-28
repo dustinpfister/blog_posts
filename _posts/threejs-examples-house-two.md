@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1025
-updated: 2023-01-27 12:06:49
-version: 1.5
+updated: 2023-01-28 05:53:11
+version: 1.6
 ---
 
 I have made a threejs example post way back in the day in which I [make a simple, crude house model](/2021/04/23/threejs-examples-house/) using only javaScript code on top of threejs itself. I do like to make those kinds of models as I can pack everything into a blog post, not just in terms of the javaScript code, but also the data that composes the various buffer geometry attributes as well. However when it comes to starting to work on some kind of real project with threejs, this is just not generally how things are done for the most part. Do not get my wrong though, some times it seems like the best way to do what I want to do will involve a whole lot of javaScript code to create geometry. However some times it seems like the best way forward is to create some kind of asset in a program like blender and then export from that program into a file format like that of the DAE file format. So in this [threejs project example](/2021/02/19/threejs-examples/) post, I am going to be writing about a new kind of house model where I am using an external file as a way to have the geometry for the house model.
@@ -89,25 +89,82 @@ const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LOADING
+//-------- ----------
+DAE_loader({
+    // custom cloner
+    cloner: (obj, scene_source ) => {
+        if(obj.type === 'Mesh'){
+            const mat = new THREE.MeshBasicMaterial({
+                map: obj.material.map
+            });
+            const mesh = new THREE.Mesh(obj.geometry, mat);
+            mesh.name = obj.name;
+            mesh.rotation.copy(obj.rotation);
+            scene_source.add(mesh);
+        }
+    },
+    urls_dae: [
+        '/dae/house_two/house_2.dae'
+    ],
+    urls_resource: [
+        '/dae/house_two/skins/'
+    ]
+})
+.then( (scene_source) => {
+    console.log('done loading');
+    // add in source object
+    scene.add( new THREE.GridHelper(10, 40) )
+    const mesh_house = scene_source.getObjectByName('house_0').clone();
+    scene.add( mesh_house )
+    // camera
+    camera.position.set(2, 1, -2);
+    camera.lookAt(mesh_house.position);
+    // render
+    renderer.render(scene, camera);
+})
+.catch( (e) => {
+    console.warn(e);
+});
+```
+
+### 1.2 - Video example
+
+For a video example I just want to move the camera around, and maybe also add an additional mesh that will just work as some grass to place this down onto.
+
+```js
 // ---------- ----------
-// LIGHT
+// SCENE, CAMERA, RENDERER
 // ---------- ----------
-const dl = new THREE.DirectionalLight(0xffffff, 1);
-dl.position.set(0.5, 2, -1)
-scene.add(dl);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0, 1, 1);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
-camera.position.set(1.25, 1.25, 1.25);
-camera.lookAt(0, 0, 0);
-const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
 FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-FRAME_MAX = 120;
+FRAME_MAX = 300;
 let secs = 0,
 frame = 0,
 lt = new Date();
+// will load this in
+let mesh_house = null;
 // update
 const update = function(frame, frameMax){
+    const a1 = frame / FRAME_MAX;
+    const a2 = 1 - Math.abs(0.5 - a1 * 2 % 1) / 0.5;
+    const e = new THREE.Euler(0,0,0);
+    e.y = Math.PI * 2 * a1;
+    e.z = Math.PI / 180 * ( 20 + 20 * a2 );
+    camera.position.set(1, 0, 0).applyEuler(e).normalize().multiplyScalar(4);
+    if(mesh_house){
+        camera.lookAt(mesh_house.position);
+    }
 };
 // loop
 const loop = () => {
@@ -126,14 +183,60 @@ const loop = () => {
 };
 loop();
 //-------- ----------
+// HELPERS
+//-------- ----------
+// create and return a canvas texture
+const createCanvasTexture = function (draw, size_canvas) {
+    size_canvas = size_canvas === undefined ? 32 : size_canvas;
+    const canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = size_canvas;
+    canvas.height = size_canvas;
+    draw(ctx, canvas);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.NearestFilter;
+    texture.minFilter = THREE.NearestFilter;
+    return texture;
+};
+const draw_grid_fill = (ctx, canvas, iw, ih, getColor) => {
+    getColor = getColor || function(color){ return color };
+    const len = iw * ih;
+    const pxW = canvas.width / iw;
+    const pxH = canvas.height / ih;
+    let i = 0;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    while(i < len){
+        const x = i % iw;
+        const y = Math.floor(i / iw);
+        const color = getColor( new THREE.Color(), x, y, i);
+        ctx.fillStyle = color.getStyle();
+        const px = x * pxW;
+        const py = y * pxH;
+        ctx.fillRect(px, py, pxW, pxH);
+        i += 1;
+    }
+};
+const draw_grass = (ctx, canvas) => {
+    draw_grid_fill(ctx, canvas, 100, 100, function(color){
+       color.r = 0;
+       color.g = 0.15 + 0.85 * Math.random();
+       color.b = 0;
+       return color;
+    });
+};
+//-------- ----------
+// TEXTURES
+//-------- ----------
+const texture_grass = createCanvasTexture(draw_grass, 128);
+//-------- ----------
 // LOADING
 //-------- ----------
 DAE_loader({
     // custom cloner
     cloner: (obj, scene_source ) => {
         if(obj.type === 'Mesh'){
-            const mat = new THREE.MeshPhongMaterial({
-                
+            const mat = new THREE.MeshBasicMaterial({
+                map: obj.material.map
             });
             const mesh = new THREE.Mesh(obj.geometry, mat);
             mesh.name = obj.name;
@@ -145,16 +248,24 @@ DAE_loader({
         '/dae/house_two/house_2.dae'
     ],
     urls_resource: [
-        '/dae/house_two/'
+        '/dae/house_two/skins/windows/'
     ]
 })
 .then( (scene_source) => {
     console.log('done loading');
-    camera.position.set(2, 1, -2);
-    scene.add( new THREE.GridHelper(10, 40) )
-    const mesh_house = scene_source.getObjectByName('house_0').clone();
+    // adding the house_0 object to the scene
+    mesh_house = scene_source.getObjectByName('house_0').clone();
     scene.add( mesh_house )
-    camera.lookAt(mesh_house.position);
+    // plane geometry for the ground
+    const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(10, 10, 1, 1), 
+        new THREE.MeshBasicMaterial({
+            map: texture_grass,
+            //side: THREE.DoubleSide
+        })
+    );
+    plane.geometry.rotateX(Math.PI * 1.5);
+    scene.add(plane)
     loop();
 })
 .catch( (e) => {
