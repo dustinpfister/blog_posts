@@ -5,13 +5,16 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1025
-updated: 2023-01-28 05:53:11
-version: 1.6
+updated: 2023-01-28 11:47:49
+version: 1.7
 ---
 
 I have made a threejs example post way back in the day in which I [make a simple, crude house model](/2021/04/23/threejs-examples-house/) using only javaScript code on top of threejs itself. I do like to make those kinds of models as I can pack everything into a blog post, not just in terms of the javaScript code, but also the data that composes the various buffer geometry attributes as well. However when it comes to starting to work on some kind of real project with threejs, this is just not generally how things are done for the most part. Do not get my wrong though, some times it seems like the best way to do what I want to do will involve a whole lot of javaScript code to create geometry. However some times it seems like the best way forward is to create some kind of asset in a program like blender and then export from that program into a file format like that of the DAE file format. So in this [threejs project example](/2021/02/19/threejs-examples/) post, I am going to be writing about a new kind of house model where I am using an external file as a way to have the geometry for the house model.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/8aEF1H5nlYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## This house model example and what to know first
 
