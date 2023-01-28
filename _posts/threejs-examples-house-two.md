@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1025
-updated: 2023-01-28 11:47:49
-version: 1.7
+updated: 2023-01-28 12:17:47
+version: 1.8
 ---
 
 I have made a threejs example post way back in the day in which I [make a simple, crude house model](/2021/04/23/threejs-examples-house/) using only javaScript code on top of threejs itself. I do like to make those kinds of models as I can pack everything into a blog post, not just in terms of the javaScript code, but also the data that composes the various buffer geometry attributes as well. However when it comes to starting to work on some kind of real project with threejs, this is just not generally how things are done for the most part. Do not get my wrong though, some times it seems like the best way to do what I want to do will involve a whole lot of javaScript code to create geometry. However some times it seems like the best way forward is to create some kind of asset in a program like blender and then export from that program into a file format like that of the DAE file format. So in this [threejs project example](/2021/02/19/threejs-examples/) post, I am going to be writing about a new kind of house model where I am using an external file as a way to have the geometry for the house model.
@@ -38,7 +38,9 @@ This threejs example has a whole lot to do with just a DAE file actually. So for
 
 ### The DAE loader helper
 
-When using a loader like the DAE loader there is not just simply loading one or more DAE files, but also setting what the resource path is for each file as well.
+When using a loader like the DAE loader there is not just simply loading one or more DAE files, but also setting what the resource path is for each file as well. So I will want to have a way to load one or more DAE files, but also set a resource path for additional textures that I will be using for each file as well. Another problem that I ran into with this is how to go about defining what I want to import from a dae file. Some times I will just want to load in everything and be done with it. However often I will just want one or two objects from a dae asset and leave everything else. Also I have found that some times I would like to use the textures, but use them with a whole other kind of material, or a different kind of map of the same material. One way that I have found to address this is to have what I am calling a cloner function.
+
+The most simple form of this cloner function would be to just call the object3d clone method for every object in the dae file, and then add all of these clones to a single source scene object. So that is what I am doing when it comes to making a kind of hard coded default cloner method. However in many projects I will want to pass a custom method for this where I can do things like using the basic material in place of the phong material, or define some logic so that only mesh objects, or mesh objects of a given name pattern will be added to the source scene object.
 
 ```js
 // dae-helper.js - r0 - from threejs-dae-collada-loader
@@ -51,7 +53,7 @@ When using a loader like the DAE loader there is not just simply loading one or 
     global.DAE_loader = function( opt ){
         opt = opt || {};
         opt.urls_dae = opt.urls_dae || [];
-        opt.urls_resource = opt.resource_urls || [];
+        opt.urls_resource = opt.urls_resource || [];
         // use given cloner or defult to add everything
         opt.cloner = opt.cloner || DEFAULT_CLONER;
         const manager = new THREE.LoadingManager();
@@ -134,7 +136,7 @@ DAE_loader({
 
 ### 1.2 - Video example
 
-For a video example I just want to move the camera around, and maybe also add an additional mesh that will just work as some grass to place this down onto.
+For a video example I just want to move the camera around, and maybe also add an additional mesh that will just work as some grass to place this down onto. This is then a start point for the final video1 project for this post that should be up at the top of the post. When I make my videos for blog posts like this I start out with something like this but then add additional code that makes use of my many other threejs project examples that I have made thus far.
 
 ```js
 // ---------- ----------
