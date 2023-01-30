@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2023-01-30 13:00:45
-version: 1.30
+updated: 2023-01-30 13:13:21
+version: 1.31
 ---
 
 If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the [scene object](/2018/05/03/threejs-scene/), or any object based off the object3d class for that matter, and pass a [callback function](/2019/02/27/js-javascript-constructor/) as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
@@ -16,7 +16,6 @@ So then in this post I will be going over the use of the traverse method of the 
 <!-- more -->
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/bwvEvFPfwTs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 
 ## Looping over all objects using Object3d traverse and what to know first
@@ -305,7 +304,11 @@ renderer.render(scene, camera);
 
 ## 3 - DAE loader helper example
 
+One project that I have been using where I make use of the traverse method is with my dae helper that I use on top of the Collada Loader for threejs. The Collada loader is one of many options when it comes to loading external files and parsing them as workable objects in threejs. If you have not got into using external assets yet, the Collada loader might prove to be a good starting point when it comes to options beyond that of the built in buffer geometry loader. The examples in this section are from my [main blog post on the DAE loader](/2021/04/30/threejs-dae-collada-loader/) in general that you might want to check out if you want to learn more about this sort of thing.
+
 ### The DAE Loader helper module
+
+Here I have the source code of R0 of my dae helper that I write about in detail in my post on the DAE loader in general. I made just a few quick changes here that have to do with just adding a few comments and passing a url when calling the cloner function. Speaking of the cloner function it is the process of calling this function where the object3d traverse method comes into play actually.
 
 ```js
 // dae-helper.js - r0 - from threejs-dae-collada-loader
@@ -350,6 +353,8 @@ renderer.render(scene, camera);
 ```
 
 ### 3.1 - Basic Demo of the helper
+
+So now I have here just a quick demo where I make use of the dae loader helper method that calls a custom cloner method for each object of each dae file. For this basic example I am just loading one dae file and that is all. When loading the file the dae loader helper will call the traverse method off of the scene object of the resut and call the cloner function for each object in the DAE file. I can then check the type and anything else that I want to check to find out if I want to even make it a source object for an over all project or not. On top of this I can also make new source objects by any means that I want to beyond just calling the clone method as I am doing by default with this dae helper tool. For this example I am making a whole new mesh object and using the geometry from the DAE objects that are mesh objects only. However I am making a whole new material just using the map texture from the source mesh objects in the DAE file.
 
 ```js
 // ---------- ----------
