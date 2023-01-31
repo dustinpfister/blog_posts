@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2023-01-31 10:51:12
-version: 1.17
+updated: 2023-01-31 11:13:20
+version: 1.18
 ---
 
 The process of creating a [custom buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started at least. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after the position array is in a good idea to also work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). 
@@ -39,42 +39,47 @@ The version of threejs that I was using when I first wrote this post was r135. I
 When working with one of the built in geometry constructors the normals are worked out for me as that is part of making a comprehensive geometry constructor function. However when making a custom geometry from the ground up I will of course have to make attribute one way or another. For this basic example of the compute vertex normals method I am then just making a very simple geometry of a single triangle, and then calling the compute vertex normals method of the buffer geometry as a way to go about creating the normals attribute.
 
 ```js
-(function () {
-     // SCENE, CAMERA, RENDERER, and LIGHT
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0,0,0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    var dl = new THREE.DirectionalLight(0xffffff, 1);
-    dl.position.set(3, 0, 3);
-    scene.add(dl);
-    scene.add(new THREE.AmbientLight(0xffffff, 0.1));
-    // GEOMETRY
-    var geometry = new THREE.BufferGeometry();
-    var vertices = new Float32Array([
-                -1.0, 0.0, 0.0,
-                1.5, 0.0, 0.0,
-                1.0, 1.0, 0.0
-            ]);
-    // create position property
-    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-    // COMPUTE VERTEX NORMALS FOR THE GEMOERTY
-    geometry.computeVertexNormals();
-    // MESH with GEOMETRY, and STANDARD MATERIAL
-    var custom = new THREE.Mesh(
-            geometry,
-            new THREE.MeshStandardMaterial({
-                color: 0xff0000,
-                side: THREE.DoubleSide
-            }));
-    scene.add(custom);
-    // RENDER
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(3, 0, 3);
+scene.add(dl);
+scene.add(new THREE.AmbientLight(0xffffff, 0.1));
+//-------- ----------
+// GEOMETRY - cretaing from raw hard coded data
+//-------- ----------
+const geometry = new THREE.BufferGeometry();
+const data_points = [
+    -1.0,  0.0,  0.0,
+     1.5,  0.0,  0.0,
+     1.0,  1.0,  0.0
+];
+// create attributes
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(data_points, 3) );
+geometry.computeVertexNormals(); // COMPUTE VERTEX NORMALS FOR THE GEMOERTY
+//-------- ----------
+// MESH with GEOMETRY, and STANDARD MATERIAL
+//-------- ----------
+const mesh = new THREE.Mesh(
+    geometry,
+    new THREE.MeshStandardMaterial({
+        color: 0xff0000,
+        side: THREE.DoubleSide
+    }));
+scene.add(mesh);
+// RENDER
+renderer.render(scene, camera);
 ```
 
 So now that I have a normals attribute with this geometry I can now use a [light source](/2022/02/25/threejs-light/) and see the material when using a material like that of the [standard material](/2021/04/27/threejs-standard-material/) with a light source. Although that might be the case there is still one additional attribute that I will need to add to the geometry in order for this to be a done deal in terms of the core set of attributes that are needed which would be the uv attribute. However for the sake of this post I think I should first cover a few more examples that focus more so on the state of this normals attribute and how to know what the state of it is.
@@ -86,33 +91,43 @@ In order to really get an idea of what is going on with the state of the normals
 Here I have two plane geometries both of what I am mutating over time in the same way, but with one I am calling the compute vertex normals method and with the other I am not. On top of that I am also using the vertex normals helper to show what the deal is with the state of the normals for each geometry. It is also possible to see that there is indeed a clear differences with the textures.
 
 ```js
-// SCENE, LIGHT, CAMERA, RENDERER, and CONTROLS
-var scene = new THREE.Scene();
-var light = new THREE.PointLight(0xffffff, 1);
-light.position.set(7, 3, 0);
-scene.add(light);
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 100);
-camera.position.set(1, 1, 1);
-camera.lookAt(0, 0, 0);
-camera.add(light);
-scene.add(camera);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
-document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(3, 1, 0);
+scene.add(dl);
+//-------- ----------
+// CONTROLS - if there to work with
+//-------- ----------
+if(THREE.OrbitControls){
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
 // ADJUST PLANE POINT HELPER
-var adjustPlanePoint = function (geo, vertIndex, yAdjust) {
+const adjustPlanePoint = function (geo, vertIndex, yAdjust) {
     // get position and normal
-    var position = geo.getAttribute('position');
-    var normal = geo.getAttribute('normal');
-    var i = vertIndex * 3;
+    const position = geo.getAttribute('position');
+    const normal = geo.getAttribute('normal');
+    const i = vertIndex * 3;
     // ADJUSTING POSITION ( Y Only for now )
     position.array[i + 1] = yAdjust;
     position.needsUpdate = true;
 };
 // update a geo
-var updatePlaneGeo = function(geo, bias, computeNormals){
+const updatePlaneGeo = function(geo, bias, computeNormals){
     computeNormals = computeNormals || false;
     adjustPlanePoint(geo, 0, 0 + 0.75 * bias);
     adjustPlanePoint(geo, 1, 0.75 - 1.00 * bias);
@@ -124,29 +139,31 @@ var updatePlaneGeo = function(geo, bias, computeNormals){
     }
 };
 // create a data texture
-var createDataTexture = function (pr, pg, pb) {
+const createDataTexture = function (pr, pg, pb) {
     // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
     // Using the seeded random method of the MathUtils object
-    var width = 16,
-    height = 16;
-    var size = width * height;
-    var data = new Uint8Array(4 * size);
+    const width = 16,
+    height = 16,
+    size = width * height;
+    data = new Uint8Array(4 * size);
     for (let i = 0; i < size; i++) {
-        var stride = i * 4;
-        var v = Math.floor(THREE.MathUtils.seededRandom() * 255);
+        const stride = i * 4;
+        const v = Math.floor(THREE.MathUtils.seededRandom() * 255);
         data[stride] = v * pr;
         data[stride + 1] = v * pg;
         data[stride + 2] = v * pb;
         data[stride + 3] = 255;
     }
-    var texture = new THREE.DataTexture(data, width, height);
+    const texture = new THREE.DataTexture(data, width, height);
     texture.needsUpdate = true;
     return texture;
 };
+//-------- ----------
 // MESH
-var geo1 = new THREE.PlaneGeometry(1, 1, 2, 2);
+//-------- ----------
+const geo1 = new THREE.PlaneGeometry(1, 1, 2, 2);
 geo1.rotateX(Math.PI * 1.5);
-var plane1 = new THREE.Mesh(
+const plane1 = new THREE.Mesh(
         geo1,
         new THREE.MeshStandardMaterial({
             color: 0xffffff,
@@ -154,9 +171,9 @@ var plane1 = new THREE.Mesh(
             side: THREE.DoubleSide
         }));
 scene.add(plane1);
-var geo2 = new THREE.PlaneGeometry(1, 1, 2, 2);
+const geo2 = new THREE.PlaneGeometry(1, 1, 2, 2);
 geo2.rotateX(Math.PI * 1.5);
-var plane2 = new THREE.Mesh(
+const plane2 = new THREE.Mesh(
         geo2,
         new THREE.MeshStandardMaterial({
             color: 0xffffff,
@@ -165,27 +182,36 @@ var plane2 = new THREE.Mesh(
         }));
 plane2.position.x = -1.1;
 scene.add(plane2);
-// USING THE THREE.VertexNormalsHelper method
-const helper1 = new THREE.VertexNormalsHelper(plane1, 2, 0x00ff00, 1);
-scene.add(helper1);
-const helper2 = new THREE.VertexNormalsHelper(plane2, 2, 0x00ffff, 1);
-scene.add(helper2);
+//-------- ----------
+// HELPER OBJECTS - using THREE.VertexNormalsHelper method if there to work with
+//-------- ----------
+let helper1, helper2;
+if(THREE.VertexNormalsHelper){
+    helper1 = new THREE.VertexNormalsHelper(plane1, 2, 0x00ff00, 1);
+    scene.add(helper1);
+    helper2 = new THREE.VertexNormalsHelper(plane2, 2, 0x00ffff, 1);
+    scene.add(helper2);
+}
+//-------- ----------
 // LOOP
-var lt = new Date(),
-state = {
+//-------- ----------
+const state = {
     frame: 0,
     maxFrame: 90,
     per: 0,
-    bias: 0
+    bias: 0,
+    lt: new Date()
 };
-var update = function (secs, per, bias, state) {
+const update = function (secs, per, bias, state) {
     updatePlaneGeo(geo1, bias, true);
     updatePlaneGeo(geo2, bias, false);
-    helper1.update();
+    if(THREE.VertexNormalsHelper){
+        helper1.update();
+    }
 };
-var loop = function () {
-    var now = new Date(),
-    secs = (now - lt) / 1000;
+const loop = function () {
+    const now = new Date(),
+    secs = (now - state.lt) / 1000;
     requestAnimationFrame(loop);
     state.per = state.frame / state.maxFrame;
     state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
@@ -193,7 +219,7 @@ var loop = function () {
     renderer.render(scene, camera);
     state.frame += 4 * secs;
     state.frame %= state.maxFrame;
-    lt = now;
+    state.lt = now;
 };
 loop();
 ```
