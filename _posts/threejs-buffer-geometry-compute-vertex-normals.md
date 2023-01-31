@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2023-01-31 11:13:20
-version: 1.18
+updated: 2023-01-31 11:36:53
+version: 1.19
 ---
 
 The process of creating a [custom buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started at least. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after the position array is in a good idea to also work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). 
@@ -32,11 +32,52 @@ The source code examples that I write about here in this post can be found in th
 
 ### Version numbers matter with threejs
 
-The version of threejs that I was using when I first wrote this post was r135. I have got myself into the habit of also making sure I write down what version of threejs that I am using when writing a post on a threejs example or two. Code breaking changes are made to the library often so it makes sense to always check what version of threejs you are using and how to compares with the blog post, or any online resource that you are reading.
+The version of threejs that I was using when I first wrote this post was r135, and the last time I came around to edit this post a little I was using r146. I have got myself into the habit of also making sure I write down what version of threejs that I am using when writing a post on a threejs example or two. Code breaking changes are made to the library often so it makes sense to always check what version of threejs you are using and how to compares with the blog post, or any online resource that you are reading.
 
-## 1 - Basic compute vertex normals method example
+## 1 - Some Basic examples of custom geometry and adding normals by way of compute vertex normals method
 
-When working with one of the built in geometry constructors the normals are worked out for me as that is part of making a comprehensive geometry constructor function. However when making a custom geometry from the ground up I will of course have to make attribute one way or another. For this basic example of the compute vertex normals method I am then just making a very simple geometry of a single triangle, and then calling the compute vertex normals method of the buffer geometry as a way to go about creating the normals attribute.
+For this very first section I will be starting out with some very simple custom geometry examples. Some of these will not have a normal attribute at all that will serve as just a way to outline what can be done when working with a geometry that just has a position attribute alone. After that I will be getting into some examples where I do in fact quickly add a nomal attribute by way of the compute vertex normals method.
+
+### 1.1 - Just starting out with a position attribute
+
+For this very first basic example I am making a custom geometry that just has a position attribute and no normal attribute at all. So the this kind of geometry will not work so great with most mesh materials, at least not with default options and not without additional attributes anyway. So for this first example I will not be using a mesh object but rather a point object.
+
+To start to create a geometry from the ground up then I call the THREE.BufferGeometry constructor function and then store the result from that to a variable. Next I will want to have at least a position attribute for this new blank buffer geometry so I will want an array for the x, y, and z values for each point in space that I want. For this first example I am just making a single triangle, so I will want three numbers for each point which will be a total of nine numbers in the array. Once I have my points data array I can use this to create a buffer attribute and set that as the position attribute of the buffer geometry.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY - creating from raw hard coded data
+//-------- ----------
+const geometry = new THREE.BufferGeometry();
+const data_points = [
+    -1.0,  0.0,  0.0,
+     1.5,  0.0,  0.0,
+     1.0,  1.0,  0.0
+];
+// create attributes
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(data_points, 3) );
+//-------- ----------
+// MESH with GEOMETRY, and STANDARD MATERIAL
+//-------- ----------
+const points = new THREE.Points( geometry, new THREE.PointsMaterial({ size: 0.5 }));
+scene.add(points);
+// RENDER
+renderer.render(scene, camera);
+```
+
+### 1.2 - Basic compute vertex normals method example
+
+When working with one of the built in geometry constructors the normals are worked out for me as that is part of making a comprehensive geometry constructor function. However when making a custom geometry from the ground up I will of course have to make attributes one way or another on my own. For example of the compute vertex normals method I am then just making a very simple geometry of a single triangle, and then calling the compute vertex normals method of the buffer geometry as a way to go about creating the normals attribute. Once I have a geometry with a position and normal attribute then the faces of the geometry will have a front face, and will also work with light sources.
 
 ```js
 //-------- ----------
