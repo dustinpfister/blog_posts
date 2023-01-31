@@ -5,30 +5,34 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2022-05-22 12:33:11
-version: 1.16
+updated: 2023-01-31 10:51:12
+version: 1.17
 ---
 
-The process of creating a [custom buffer geometry](/2021/04/22/threejs-buffer-geometry/), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started at least when it comes to this. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after the position array is in a good state it is also a good idea to work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). 
+The process of creating a [custom buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started at least. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after the position array is in a good idea to also work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). 
 
-In some cases I might have to work this out manually it would seem, however in most cases just calling the compute vertex normals method of the buffer geometry class will work just fine, which is what this post is about today.
-
+The normals attribute is one of many core attributes of a buffer geometry class that are needed in order to get geometry to look the way that one will typicaly want it to with mesh objects, rather than point or line objects. With points and lines all the one really needs are position attributes, and then maybe additional attributes that are used to mutate the position attribute. However with mesh objects there is a need to know what side of a face is the _front side_ of the face, and with that said the normals attribute is how to go about doing just this. In some cases I might have to work out the values of the normal attribute manually, however in most cases just calling the compute vertex normals method of the buffer geometry class will work just fine. With that said this post will be on the use of the compute vertex normals attribute method of the buffer geometry class in threejs.
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/yApc9lnw53o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The compute vertex normals method and what to know first
 
-This is a post centered around a single method of the [buffer geometry class](https://threejs.org/docs/#api/en/core/BufferGeometry) in the popular javaScript library known as three.js. This is not a post that is a general overview of the buffer geometry class in general, or a [getting started type post with threejs](/2018/04/04/threejs-getting-started/), javaScript and any other additional skills that are needed before hand. So I assume that you have at least a little background when it comes to the core set of skills that are needed in order to gain something of value from reading this.
+This is a post centered around a single method of the buffer geometry class in the popular javaScript library known as threejs. This is not a post that is a general overview of the buffer geometry class in general, or a [getting started type post with threejs](/2018/04/04/threejs-getting-started/), javaScript,  and any other additional skills that are needed before hand. So I assume that you have at least a little background when it comes to the core set of skills that are needed in order to gain something of value from reading this. I will not be covering everything in detail here, but I will take a moment to write about a few things that you might want to read up more on when it comes to what branches off from the computer vertex normals method.
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/yApc9lnw53o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+### Read up more on buffer geometry in general
+
+This is a post on just one method of the over all greater class that is the buffer geometry class. There is a whole lot of ground to cover with just this one class alone, so it might be a good idea to also check out my [main blog post on the buffer geometry class as well]( /2021/04/22/threejs-buffer-geometry/).
 
 ### The source code examples in this post are on Github
 
-The source code examples that I write about here in this post can be found in the for post folder of my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-compute-vertex-normals). This is also where I am parking the source code for my many other post on threejs, as well as many more draft demos that I also have parked there.
+The source code examples that I write about here in this post can be found in the for post folder of my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-compute-vertex-normals). This is also where I am parking the source code for my [many other post on threejs](/categories/three-js/), as well as many more demos that I also have parked there on all kinds of other topics that have to do with the over all librray that is threejs.
 
 ### Version numbers matter with threejs
 
-The version of threejs that I was using when I first wrote this post was r135. I have got myself into the habit of also making sire I write down what version of threejs that I am uisng when writing a post on a threejs example or two. Code breaking changes are made to the library often.
+The version of threejs that I was using when I first wrote this post was r135. I have got myself into the habit of also making sure I write down what version of threejs that I am using when writing a post on a threejs example or two. Code breaking changes are made to the library often so it makes sense to always check what version of threejs you are using and how to compares with the blog post, or any online resource that you are reading.
 
 ## 1 - Basic compute vertex normals method example
 
@@ -77,7 +81,7 @@ So now that I have a normals attribute with this geometry I can now use a [light
 
 ## 2 - The THREE.VertexNormalsHelper
 
-In order to really get an idea of what is going on with the state of the normals array of a geometry it might be best to make use of the THREE.VertexNormalsHelper that can be added to an example by way of one additional javaScript file that can be found in the threejs repository. There is a whole lot to work with when it comes to the core of the threejs library alone, but there are also a number of additional files in to form of helpers, loaders and controls. For this example I am not just making use of the vertex normals helper, but also the [orbit controls](/2018/04/13/threejs-orbit-controls/) that can also be added by way of an additional javaScript file as well.
+In order to really get an idea of what is going on with the state of the normals attribute of a geometry it might be best to make use of the [THREE.VertexNormalsHelper](https://threejs.org/docs/#examples/en/helpers/VertexNormalsHelper) that can be added to an example by way of one additional javaScript file that can be found in the threejs repository. There is a whole lot to work with when it comes to the core of the threejs library alone, but there are also a number of additional files in to form of helpers, loaders and controls. For this example I am not just making use of the vertex normals helper, but also the [orbit controls](/2018/04/13/threejs-orbit-controls/) that can also be added by way of an additional javaScript file as well.
 
 Here I have two plane geometries both of what I am mutating over time in the same way, but with one I am calling the compute vertex normals method and with the other I am not. On top of that I am also using the vertex normals helper to show what the deal is with the state of the normals for each geometry. It is also possible to see that there is indeed a clear differences with the textures.
 
@@ -201,3 +205,4 @@ This is a hacked over source code example of what I worked out for my [threejs e
 The compute vertex normals method will work just fine for most cases as a way to create, or update the normals attribute of a buffer geometry instance. However there are some cases in which I might need to manually edit these values also, so I can not just call this method and be done with it all the time.
 
 The general though process that I have when making a geometry is that first I need to just work out the positions attribute, then I need to get the normals attribute working as it should. However there is then the question of what the next step is after the positions and normals attribute are looking good. With that said I would say that the next thing I would want to figure out would be the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) which is important when it comes to working out what the offsets of textures should be. There are some additional things after that as well though such as what the deal should be when it comes to [groups, and material index values](/2018/05/14/threejs-mesh-material-index/) when using an array of materials to skin a mesh object rather than juts one.
+
