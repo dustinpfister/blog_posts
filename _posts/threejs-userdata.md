@@ -5,39 +5,42 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2023-02-01 13:00:27
-version: 1.49
+updated: 2023-02-01 14:53:04
+version: 1.50
 ---
 
-In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the object3d class, which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in an object such as a mesh, group, camera, or whole scene object.
+In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the object3d class, which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is a safe place to park custom, user defined key value pairs in an object3d based object.
 
 If I need to park some custom application data that has to do with a specific object, it is a good idea to do so by adding it to this user data object, as that will help to make sure that it is done in a safe way that will not conflict with anything internal with threejs. Many other libraries and frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object also, and it makes sense to use it as that is what it is there for. 
 
-So then just adding custom stuff to the root of an object3d based object itself can cause problems in the event that there is a conflict. Also making use of the user object helps to make things more clear as to what has to do with the logic of the application and what is part of threejs itself so I would say that this also helps with code readability. With that said, in this post I will be going over a few simple examples of the user data object of the object3d class. Nothing major for starers at least, but I think I would like to get into some more advanced examples if I can get to it in order to really help showcase what this object is for when it comes to being creative and having a little fun with three.js.
+Just adding custom stuff to the root of an object3d based object itself can cause problems in the event that there is a conflict. Also making use of the user object helps to make things more clear as to what has to do with the logic of the application and what is part of threejs itself so I would say that this also helps with code readability. If I am looking at some code and I see stuff assigned to the user data object I right away know that it has to do with data that works with a little additional code on top of threejs. 
+
+With that said, in this post I will be going over a few simple examples of the user data object of the object3d class. Nothing major for starers at least, but I think I would like to get into some more advanced examples if I can get to it in order to really help showcase what this object is for when it comes to being creative and having a little fun with threejs.
 
 <!-- more -->
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/0Qcq8peiUVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+
 ## Object user data and what to know first
 
-This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with an over all application, or module that runs on top of three.js in a client side javaScript environment. So then this is not really a [post for people that are new to three.js](/2018/04/04/threejs-getting-started/), as I think that you should have at least some background with the library and [javaScript in general](/2018/11/27/js-getting-started/) before getting into these kinds of examples. There might still be at least a few things that I should cover before getting into the user data examples, so in this section I will be getting those things out of the way.
+This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with an over all application, or module that runs on top of threejs in a client side javaScript environment. So then this is not really a [post for people that are new to three.js](/2018/04/04/threejs-getting-started/), as I think that you should have at least some background with the library and [javaScript in general](/2018/11/27/js-getting-started/) before getting into these kinds of examples. There might still be at least a few things that I should cover before getting into the user data examples, so in this section I will be getting those things out of the way.
 
 ## Read up more on the object3d class in general
 
 There is a whole lot more to write about when it comes to the [oject3d class in threejs](/2018/04/23/threejs-object3d/), as well as a whole lot of other classes an with that methods and properties that branch off of object3d. What is great about this class is that it is a pretty big deal in threejs as it is a base class for a wide range of objects. So by learning about one little feature such as the user data object, this can be applied to any object in threejs that is based off of the object3d class.
 
-### Version numbers matter with three.js
-
-I get emails and blog comments that had to do with code breaking changes that happened in older source code examples. As such that tells me that I just need to mention in every post on three.js what version I was using. When I first wrote this post I was using r125 of three.js. The last time I came around to do a little editing I was using r135 of three.js and at that point at the source code examples still seem to work fine on my end for what it is worth. Code breaking changes are made to three.js often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to editing the post.
-
 ### The source code examples in this post are on Github
 
 The source code examples that I am writing about here in this post are up [on Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-userdata). So if there is something that you want to bring up there is the comments section at the bottom of this post, as well as making a pull request at the test threejs repo on Github.
 
+### Version numbers matter with three.js
+
+I get emails and blog comments that had to do with code breaking changes that happened in older source code examples. As such that tells me that I just need to mention in every post on threejs what version I was using. When I first wrote this post I was using r125 of threejs. The last time I came around to do a little editing I was using r146 and at that point at the source code examples seem to work fine on my end for what it is worth. Code breaking changes are made to threejs often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to editing the post.
+
 ## 1 - Basic User Data Object3d Example with rotating cubes
 
-In this example I have a create cube helper that will create and return a mesh that uses the [Box geometry](/2021/04/26/threejs-box-geometry/), and the [normal material](/2021/06/23/threejs-normal-material/), and while I am at it add a value to the user data object of the mesh object. In this create cube function I am using the userData object as a way to set some rotation rates for each angle in an instance of THREE.Euler in radians per second. There rotation rates as well as the starting position of the cube can be set by way of the create cube helper functions arguments.
+In this example I have a create cube helper function that will create and return a mesh that uses the [Box geometry](/2021/04/26/threejs-box-geometry/), and the [normal material](/2021/06/23/threejs-normal-material/). While I am at it I add a value to the user data object of the mesh object that will be used to set what I want the rotation rates to be for the mesh object. In this create cube function I am using the user data object as a way to set some rotation rates for each angle in an instance of [THREE.Euler](/2021/04/28/threejs-euler/) in radians per second. These rotation rates as well as the starting position of the cube can be set by way of the create cube helper functions arguments also.
 
 I then also have a function that will update a given cube by these rates in the user data object by way of a given time delta value in seconds. This function will then need to be called in the body of some kind of main animation loop function that uses a client side javaScritp feature such as [request animation frame](/2018/03/13/js-request-animation-frame/) that I have at the bottom of the source code example.
 
@@ -106,7 +109,7 @@ const loop = () => {
 loop();
 ```
 
-So after I create the main scene object for the example I then create an instance of THREE.Group, and then create and add a bunch of these cube objects that use the user data object with my create cube helper. In the body of my animation loop I then call the update cube method by looping over all the children of this group, and calling the update cube function for each of them. The end result is then having each of these cubes rotate in different ways and rates, because of there unique values in the userData object.
+So after I create the main scene object for the example I then create an instance of [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/), and then create and add a bunch of these cube objects that use the user data object with my create cube helper. In the body of my animation loop I then call the update cube method by looping over all the children of this group, and calling the update cube function for each of them. The end result is then having each of these cubes rotate in different ways and rates, because of there unique values in the userData object.
 
 ## 2 - The userData object can also be used in groups because that is also based on object3d
 
