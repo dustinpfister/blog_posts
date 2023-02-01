@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2023-02-01 12:14:21
-version: 1.48
+updated: 2023-02-01 13:00:27
+version: 1.49
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the object3d class, which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is safe to park custom, user defined key value pairs in an object such as a mesh, group, camera, or whole scene object.
@@ -17,8 +17,7 @@ So then just adding custom stuff to the root of an object3d based object itself 
 
 <!-- more -->
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/YIAuxl0sc0M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<iframe class="youtube_video" src="https://www.youtube.com/embed/0Qcq8peiUVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Object user data and what to know first
 
@@ -407,11 +406,14 @@ The result of this then is a bunch of spheres start out positioned at the center
 
 ## 4 - Video projects for this post on the user data object
 
-For thuis section I am working out a few source code exmaples that are a start for one or more video projects for this blog post. The lateset video project should be up at the top of this content.
+For this section I am working out a few source code examples that are a start for one or more video projects for this blog post. The latest video project should be up at the top of this content.
 
 ### 4.1 - Video1 for this post
 
-For the first video project for this post I made an updated r1 state of the groups module that I made for the post. When I made the final state of the video I added in a few more porjects that have to do with the [object grid wrap module](/2022/05/20/threejs-examples-object-grid-wrap/), and also some addtional code that has to do with data textures. However this is the basic start of what I worked out for the video here.
+For the first video project for this post I made an updated r1 state of the groups module that I made for the post. When I made the final state of the video I added in a few more projects that have to do with the [object grid wrap module](/2022/05/20/threejs-examples-object-grid-wrap/), and also some additional code that has to do with data textures. However this is the basic start of what I worked out for the video here.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/YIAuxl0sc0M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 // groups.js - r1 - from threejs-userdata
