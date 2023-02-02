@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2023-02-02 09:41:04
-version: 1.16
+updated: 2023-02-02 09:49:23
+version: 1.17
 ---
 
 I wanted to make a new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a [group](/2018/05/16/threejs-grouping-mesh-objects/) of [lines](https://threejs.org/docs/#api/en/objects/Line). As of late I have also been playing around with tube geometry, which requires passing a [curve](/2022/06/17/threejs-curve/) as the first argument when making the geometry. 
@@ -21,7 +21,7 @@ This is one of many threejs example that I have made after acquiring a fair amou
 
 ### Read up more on lines and line materials
 
-The module that I have made that I am writing about can be used to create an instance of a threejs group where each child of the group is an [instance of a line](/2018/04/19/threejs-line). A line in threejs is one alternative to that of the typical [mesh object](/2018/05/04/threejs-mesh/) that is used to add content to an over all scene object. What is nice about lines is that when making a custom geometry I just have to worky about the position attribute of the geometry and that is it. There is also things like the index of the position attribite and also with lines the order of the points is of concern, but I do not have to care so much about the addtional values that are needed when making geometry to be used with a mesh object and the various mesh materials.
+The module that I have made that I am writing about can be used to create an instance of a threejs group where each child of the group is an [instance of a line](/2018/04/19/threejs-line). A line in threejs is one alternative to that of the typical [mesh object](/2018/05/04/threejs-mesh/) that is used to add content to an over all scene object. What is nice about lines is that when making a custom geometry I just have to worry about the position attribute of the geometry and that is it. There is also things like the index of the position attribute and also with lines the order of the points is of concern, but I do not have to care so much about the additional values that are needed when making geometry to be used with a mesh object and the various mesh materials.
 
 ### Check out more on the buffer geometry class
 
@@ -235,7 +235,7 @@ var LineGroup = (function(){
 
 ### 1.2 - Circle stack plug-in
 
-I made a number of external plug-ins while making the first version of this module in order to just test out that the loading method works as a way to pull logic that has to do with a specific line group out of the module and into an external optional file. This module turned out similar to what I worked out for my sphere circles example, but I wans thi8nging more in terms of just a stack of circles that I am chaining in a way that does not have to form a sphere like shape when it came to making this one.
+I made a number of external plug-ins while making the first version of this module in order to just test out that the loading method works as a way to pull logic that has to do with a specific line group out of the module and into an external optional file. This module turned out similar to what I worked out for my sphere circles example, but I was thinkging more in terms of just a stack of circles that I am chaining in a way that does not have to form a sphere like shape when it came to making this one.
 
 ```js
 //******** **********
@@ -431,5 +431,6 @@ loop();
 
 ## Conclusion
 
-This lines group module is shaping up to be what it is that I had in kind when I started working on it, but I am not sure if I would want to put much more time into further refining this project or not. I am sure that I would if I end up using this on a day to day basis that goes without saying, but I am not sure of that will end up being the case with this project or not. In the event that I do start using something like this on a day to day basic I am currently of the mindset that I might want to do so with yet another example that is similar to this one, only it will involve the use of TubeGeometry rather than that of lines as there is a lot more that can be done with that compared to lines.
+This lines group module is shaping up to be what it is that I had in mind when I started working on it, but I am not sure if I would want to put much more time into further refining this project or not. I am sure that I would if I end up using this on a day to day basis that goes without saying, but I am not sure if that will end up being the case with this project thus far. In the event that I do start using something like this all the time I am currently of the mindset that I might want to do so with yet another example that is similar to this one, only it will involve the use of TubeGeometry rather than that of lines. Also I might want to go so far as to even make custom geometry, but in other case use curves as a way to create the geometry that would then be used with mesh objects. 
 
+There are a lot of things that I like about lines, but they do have there limitations. For one thing when it comes to setting the width of lines doing so will not work with all platforms. The main thing that I like to do with threejs is to make videos, so to address that I can just render my frames on platforms in which line thickness does work. However there is still just way more that can be done with mesh materials. However maybe I could still address some of these problems by making use of the [shader material](/2023/01/13/threejs-shader-material/).
