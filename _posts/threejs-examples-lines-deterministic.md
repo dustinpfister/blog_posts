@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2023-02-02 09:49:23
-version: 1.17
+updated: 2023-02-02 11:17:56
+version: 1.18
 ---
 
 I wanted to make a new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a [group](/2018/05/16/threejs-grouping-mesh-objects/) of [lines](https://threejs.org/docs/#api/en/objects/Line). As of late I have also been playing around with tube geometry, which requires passing a [curve](/2022/06/17/threejs-curve/) as the first argument when making the geometry. 
@@ -33,30 +33,30 @@ The source code that I am writing about here can also be [found on github](https
 
 ### Version numbers matter
 
-When I wrote this post I was using r140 of threejs and the code in this post as working fine for me on my end with that revision of threejs.
+When I first wrote this post I was using r140 of threejs, and the last time I came around to do some editing here I was using r146. The code in this post as working fine for me on my end with these revisions threejs on the various platforms that I use.
 
-## 1 - First version of the line group module and some plug-ins for types
+## 1 - First version of the line group module, type plugins, and demos
 
-In this section I will be going over the source code of the line group module that helps me with the process of creating and updating a collection of lines that are children of a group. In additional to the module itself I have also worked out a few types as I am calling them thus far when it comes to objects that define the logic for creating an updating the state of a group of lines. In the module itself I have a single built in line group type to mainly serve as a guide when knowing how to go about making a custom line group for the module.
+In this section I will be going over the source code of R0 of the line group module that helps me with the process of creating and updating a collection of lines that are children of a group. In the module itself I have a single built in line group type that I call 'tri' to mainly serve as a guide to knowing how to go about making a custom line group for the module. With that said in this section I will also be going over a number of types that I have worked out thus far to help get a better sense of what can be done with a module such as this as I am not going to want to bother with just the built in type alone of course. After writing about the module itself and the types that I have wrote thus far I will then also want to get into at least one if not more demos that make use of these features.
 
-### 1.1 - The line group module itself
+### The line group module itself
 
 The Line group module itself has a create, load, and set public methods thus far. The create method is what I call to create a new line group, the load methods is what I use to load a type of line group, and the set method is what to use to update the state of a line group with a given set of frame, maxFrame, and base data values to set the state of the line group.
 
 ```js
-//******** **********
+//-------- ----------
 // Lines Grpoup module - ( r0 )
 // By Dustin Pfister : https://dustinpfister.github.io/
-//******** **********
-var LineGroup = (function(){
-    var DEFAULT_FORLINESTYLE = function(m, i){
+//-------- ----------
+const LineGroup = (function(){
+    const DEFAULT_FORLINESTYLE = function(m, i){
         m.linewidth = 4;
         m.color = new THREE.Color( ['red', 'lime', 'white', 'blue', 'purple'][ i % 5] );
     };
-    //******** **********
+    //-------- ----------
     // BUILT IN TYPE(S)
-    //******** **********
-    var TYPES = {};
+    //-------- ----------
+    const TYPES = {};
     // just a 'tri' built in type will be built in for now to mainly serve as an example
     // on how to make custom types built into the module itself
     TYPES.tri = {
@@ -87,37 +87,36 @@ var LineGroup = (function(){
         },
         // called just once in LineGroup.create before lines are created, this can be used to
         // generate options once rather than on a frame by frame basis
-        create: function(opt, lineGroup){
-        },
+        create: function(opt, lineGroup){},
         // for frame method used to set the current 'state' with 'baseData', and 'frameData' objects
         forFrame : function(state, baseData, frameData, lineGroup){
-            var ud = lineGroup.userData;
-            var i = 0, len = ud.opt.lineCount;
+            const ud = lineGroup.userData, len = ud.opt.lineCount;
+            let i = 0;
             // for this tri type I want to create an array of three Vectors
             // based on the home vectors of the base data
             state.vectors = [];
             state.t = 1 - frameData.bias;
             state.rCount = baseData.rBase + baseData.rDelta * frameData.bias;
             while(i < len){
-                var v = state.vectors[i] = new THREE.Vector3();
-                var hv = baseData.homeVectors[i] || new THREE.VEctor3();
-                var lv = baseData.lerpVectors[i] || new THREE.Vector3();
+                const v = state.vectors[i] = new THREE.Vector3();
+                const hv = baseData.homeVectors[i] || new THREE.VEctor3();
+                const lv = baseData.lerpVectors[i] || new THREE.Vector3();
                 v.copy(hv).lerp(lv, frameData.bias)
                 i += 1;
             }
         },
         // create/update points of a line in the line group with 'current state' object
         forLine : function(points, state, lineIndex, lineCount, lineGroup){
-            var ud = lineGroup.userData;
-            var i = 0, len = ud.opt.pointsPerLine;
+            const ud = lineGroup.userData, len = ud.opt.pointsPerLine;
+            let i = 0;
             // start and end points
-            var vs = state.vectors[lineIndex],
+            const vs = state.vectors[lineIndex],
             ve = state.vectors[ (lineIndex + 1) % 3 ];
             while(i < len){
-                var pPer = i / (len - 1),
+                let pPer = i / (len - 1),
                 pBias = 1 - Math.abs(0.5 - pPer) / 0.5;
-                var v1 = new THREE.Vector3();
-                var dx = 0,
+                const v1 = new THREE.Vector3();
+                const  dx = 0,
                 dy = 3 * Math.cos( Math.PI * state.rCount *  pBias) * state.t,
                 dz = 0;
                 v1.copy(vs).lerp( ve, i / ( len - 1 ) ).add(new THREE.Vector3(dx, dy, dz));
@@ -126,16 +125,16 @@ var LineGroup = (function(){
             }
         }
     };
-    //******** **********
+    //-------- ----------
     // PUBLIC API
-    //******** **********
-    var api = {};
+    //-------- ----------
+    const api = {};
     // create a type
     api.create = function(typeKey, opt){
         typeKey = typeKey || 'tri';
         typeObj = TYPES[typeKey];
         // make the line group
-        var lineGroup = new THREE.Group();
+        const lineGroup = new THREE.Group();
         // the opt object
         // use given option, or default options to create an opt object
         opt = opt || {};
@@ -143,11 +142,11 @@ var LineGroup = (function(){
             opt[key] = opt[key] || typeObj.opt[key]; 
         });
         // create blank points
-        var groupPoints = [];
-        var lineIndex = 0;
+        const groupPoints = [];
+        let lineIndex = 0;
         while(lineIndex < opt.lineCount){
-            var pointIndex = 0;
-            var points = [];
+            let pointIndex = 0;
+            const points = [];
             while(pointIndex < opt.pointsPerLine){
                 points.push( new THREE.Vector3() )
                 pointIndex += 1;
@@ -156,7 +155,7 @@ var LineGroup = (function(){
             lineIndex += 1;
         }
         // user data object
-        var ud = lineGroup.userData; 
+        const ud = lineGroup.userData; 
         ud.typeKey = typeKey;
         ud.opt = opt;
         ud.groupPoints = groupPoints;
@@ -174,7 +173,7 @@ var LineGroup = (function(){
     };
     // set a line group with the given frame, maxFrame, and initState
     api.set = function(lineGroup, frame, frameMax, baseData){
-        var ud = lineGroup.userData,
+        const ud = lineGroup.userData,
         typeKey = ud.typeKey,
         typeObj = TYPES[typeKey];
         // parse baseData
@@ -183,9 +182,9 @@ var LineGroup = (function(){
             baseData[key] = baseData[key] === undefined ? typeObj.baseData[key]: baseData[key]; 
         });
         // state object
-        var state = {};
+        const state = {};
         // frame data object
-        var frameData = {
+        const frameData = {
             frame: frame,
             frameMax: frameMax
         };
@@ -198,11 +197,11 @@ var LineGroup = (function(){
             // call for line to update points
             typeObj.forLine(points, state, lineIndex, ud.opt.lineCount, lineGroup);
             // get current line            
-            var line = lineGroup.children[lineIndex];
+            let line = lineGroup.children[lineIndex];
             // no line? create and add it
             if( !line ){
                 // create and add the line
-                var geo = new THREE.BufferGeometry();
+                const geo = new THREE.BufferGeometry();
                 // calling set from points once, when making the line
                 // for the first time should work okay
                 geo.setFromPoints(points);
@@ -216,7 +215,7 @@ var LineGroup = (function(){
             // so then I have a line and I just need to update the position attribute
             // but I can not just call the set from points method as that will result in
             // a loss of context error
-            var geo = line.geometry,
+            const geo = line.geometry,
             pos = geo.getAttribute('position');
             points.forEach(function(v, i){
                 pos.array[i * 3] = v.x;
@@ -233,13 +232,13 @@ var LineGroup = (function(){
 }());
 ```
 
-### 1.2 - Circle stack plug-in
+### Circle stack plug-in
 
 I made a number of external plug-ins while making the first version of this module in order to just test out that the loading method works as a way to pull logic that has to do with a specific line group out of the module and into an external optional file. This module turned out similar to what I worked out for my sphere circles example, but I was thinkging more in terms of just a stack of circles that I am chaining in a way that does not have to form a sphere like shape when it came to making this one.
 
 ```js
 //******** **********
-// Lines Group circleStack plug-in for line-group.js in the threejs-examples-lines-deterministic project
+// Lines Group circleStack plug-in for line-group.js r0 in the threejs-examples-lines-deterministic project
 // By Dustin Pfister : https://dustinpfister.github.io/
 LineGroup.load({
     key: 'circleStack',
@@ -254,30 +253,29 @@ LineGroup.load({
         waveCount: 2
     },
     // called just once in LineGroup.create before lines are created
-    create: function(opt, lineGroup){
-    },
+    create: function(opt, lineGroup){},
     // for frame method used to set the current 'state' with 'baseData', and 'frameData'
     forFrame : function(state, baseData, frameData, lineGroup){
         state.radius = [];
         state.yDelta = baseData.yDelta;
         // figure radius and other state values for each circle
-        var ud = lineGroup.userData;
-        var i = 0, len = ud.opt.lineCount;
-        var rDiff = baseData.radiusMax - baseData.radiusMin;
+        const ud = lineGroup.userData,len = ud.opt.lineCount;
+        let i = 0;
+        const rDiff = baseData.radiusMax - baseData.radiusMin;
         while(i < len){
-            var radian = Math.PI * baseData.waveCount * ( ( 1 / len * i + frameData.per) % 1);
+            const radian = Math.PI * baseData.waveCount * ( ( 1 / len * i + frameData.per) % 1);
             state.radius[i] = Math.cos(radian) * baseData.radiusMax;
             i += 1;
         }
     },
     // create/update points of a line in the line group with 'current state' object
     forLine : function(points, state, lineIndex, lineCount, lineGroup){
-         var ud = lineGroup.userData;
-         var i = 0, len = ud.opt.pointsPerLine;
+         const ud = lineGroup.userData, len = ud.opt.pointsPerLine;
+         let i = 0;
          while(i < len){
-             var v1 = new THREE.Vector3();
-             var cPer = i / (len - 1);
-             var r = Math.PI * 2 * cPer; 
+             const v1 = new THREE.Vector3();
+             const cPer = i / (len - 1);
+             const r = Math.PI * 2 * cPer; 
              v1.x = Math.cos(r) * state.radius[lineIndex];
              v1.z = Math.sin(r) * state.radius[lineIndex];
              v1.y = state.yDelta * lineIndex;
@@ -294,13 +292,13 @@ The whole idea of this project was to make a module that provides a way to creat
 
 ```js
 //******** **********
-// Lines Group sphereCircles plug-in for line-group.js in the threejs-examples-lines-deterministic project
+// Lines Group sphereCircles plug-in for line-group.js r0 in the threejs-examples-lines-deterministic project
 // By Dustin Pfister : https://dustinpfister.github.io/
 LineGroup.load({
     key: 'sphereCircles',
     // default options such as the number of lines, and how many points per line
     opt: {
-        lineCount: 15,
+        lineCount: 5,
         pointsPerLine: 30,
         forLineStyle: function(m, i){
             m.linewidth = 4;
@@ -315,8 +313,7 @@ LineGroup.load({
         r2: 1
     },
     // called just once in LineGroup.create before lines are created
-    create: function(opt, lineGroup){
-    },
+    create: function(opt, lineGroup){},
     // for frame method used to set the current 'state' with 'baseData', and 'frameData'
     forFrame : function(state, baseData, frameData, lineGroup){
         state.circleCount = lineGroup.userData.opt.lineCount;
@@ -324,59 +321,49 @@ LineGroup.load({
         state.r1 = baseData.r1;
         state.r2 = baseData.r2;
         state.yAdjust = baseData.yAdjust * frameData.bias;
-        // figure radius and other state values for each circle
-        var ud = lineGroup.userData;
-        var i = 0, len = ud.opt.lineCount;
-        while(i < len){
-            i += 1;
-        }
     },
     // create/update points of a line in the line group with 'current state' object
     forLine : function(points, state, lineIndex, lineCount, lineGroup){
-         var ud = lineGroup.userData;
-         var i = 0, len = ud.opt.pointsPerLine;
-        var s = {};
+        const ud = lineGroup.userData, len = ud.opt.pointsPerLine, s = {};
+        let i = 0;
         s.sPer = (lineIndex + 0) / state.circleCount;
         s.radius = Math.sin( Math.PI * state.r1 * s.sPer ) * state.maxRadius;
         s.y = Math.cos( Math.PI * state.r2 * s.sPer ) * state.maxRadius * state.yAdjust;
         s.i = 0;
-         while(i < len ){
+        while(i < len ){
             s.cPer =  i / ( len - 1 );
             s.radian = Math.PI * 2 * s.cPer;
             s.v = new THREE.Vector3();
             s.v.x = Math.cos(s.radian) * s.radius;
             s.v.y = s.y;
             s.v.z = Math.sin(s.radian) * s.radius;
-             points[i].copy(s.v);
-             i += 1;
-         }
+            points[i].copy(s.v);
+            i += 1;
+        }
     }
 });
 ```
 
-### 1.3 - Main javaScript file
+### 1.1 - Demo of 'tri' built in type
 
-For the sake of this section then I now just want a little additional code that is a simple use case example of the built in line group type 'tri', as well as the two additional types that I have made thus far in the form of external fines to use with this module then.
-
+To start out with when it comes to final demos of all of this there is just working out a very basic demo that just makes use of that built in type alone. So in this demo I am making use of just that alone, so this demo will work with just the line group module alone. So after creating my usual set of objects when it comes to things like the scene object, camera, and renderer I just need to call the create method to make a new line group. When doing so I could just not give any arguments to the create method, but I wanted to work out a few options for this so I pass tri as the type string, and then give the options object I want to use.
 
 ```js
-//******** **********
+//-------- ----------
 // SCENE, CAMERA, RENDERER
-//******** **********
-var scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
 scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(10, 10, 0);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // LINES GROUP(s)
-//******** **********
+//-------- ----------
 // built in 'tri' type
-var lg1Base = {
+const opt_lg1 = {
     homeVectors: [
         new THREE.Vector3(0, 0, 0),
         new THREE.Vector3(0, 0, 0),
@@ -390,28 +377,94 @@ var lg1Base = {
     rBase: 0,
     rDelta: 2
 };
-var lg1 = LineGroup.create();
+const lg1 = LineGroup.create('tri', opt_lg1);
+scene.add(lg1);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(12, 12, 0);
+camera.lookAt(lg1.position);
+const fps = 30,
+frameMax = 90;
+let lt = new Date(),
+frame = 0;
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps){
+        // update line group
+        LineGroup.set(lg1, frame, frameMax, opt_lg1);
+        // render
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 1.2 - Demo of sphere circles, circle stack, and tri
+
+For the sake of this section then I now just want a little additional code that is a simple use case example of the built in line group type 'tri', as well as the two additional types that I have made thus far in the form of external fines to use with this module then.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(12, 12, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LINES GROUP(s)
+//-------- ----------
+// built in 'tri' type
+const lg1Base = {
+    homeVectors: [
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, 0, 0)
+    ], 
+    lerpVectors: [
+        new THREE.Vector3(-5, 0, -5),
+        new THREE.Vector3(-5, 0, 5),
+        new THREE.Vector3(5, 0, 0)
+    ],
+    rBase: 0,
+    rDelta: 2
+};
+const lg1 = LineGroup.create();
 lg1.position.set(3, 0, 0);
 lg1.scale.set(0.5, 0.5, 0.5)
 scene.add(lg1);
 // the 'circleStack' type
-var lg2 = LineGroup.create('circleStack', { lineCount: 20 } );
+const lg2 = LineGroup.create('circleStack', { lineCount: 20 } );
 lg2.position.set(-5, 0, -5);
 scene.add(lg2);
 // the 'sphereCircles' type base off my other lines example
-var lg3 = LineGroup.create('sphereCircles', { } );
+const lg3 = LineGroup.create('sphereCircles', { lineCount: 20 } );
 lg3.position.set(-5, 0, 5);
 scene.add(lg3);
-//******** **********
+//-------- ----------
 // LOOP
-//******** **********
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
-var fps = 30,
-lt = new Date(),
-frame = 0,
+//-------- ----------
+let controls = null;
+if(THREE.OrbitControls){
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+}
+const fps = 30,
 frameMax = 90;
-var loop = function () {
-    var now = new Date(),
+let lt = new Date(),
+frame = 0;
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if(secs > 1 / fps){
