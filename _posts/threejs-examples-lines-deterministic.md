@@ -5,21 +5,23 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2022-06-12 13:25:04
-version: 1.15
+updated: 2023-02-02 09:41:04
+version: 1.16
 ---
 
-This week the focus was just on working out one new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a group of lines. I did a lot of other things this week of coarse that has to do with playing around with tube geometry, but that might be a matter for another future threejs example that will be similar to this one. This example is just a project in which I continued with my lat threejs example that also had to do with creating a group of lines but the goal was just to create a group of lines that form a sphere of sorts and then mutate things from there. With this example what I wanted to do is make a similar system of sorts, but to make it so that a group of lines that form a sphere is just one of many options.
+I wanted to make a new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a [group](/2018/05/16/threejs-grouping-mesh-objects/) of [lines](https://threejs.org/docs/#api/en/objects/Line). As of late I have also been playing around with tube geometry, which requires passing a [curve](/2022/06/17/threejs-curve/) as the first argument when making the geometry. 
+
+This example however will just be a project in which I continued with my last [threejs example](/2022/06/03/threejs-examples-lines-sphere-circles/) that also had to do with creating a group of lines. However the goal with the older example was just to create a group of lines that form a sphere of sorts, and then mutate things from there. With this example what I wanted to do is make a similar system of sorts, but to make it so that a group of lines that form a sphere is just one of many options. So in other words this is just a general kind of system for a group of lines that can be set into all kinds of various states beyond just that of a sphere like shape.
 
 <!-- more -->
 
 ## This Deterministic line group module threejs example and what to know first
 
-This is one of many threejs example that I have made after acquiring a fair amount of experience before hand with threejs as well as with javaScript in general. So in other words this is not a post for developers that might be [new to threejs](/2018/04/04/threejs-getting-started/) and client side javaScript, and as such I will not be getting into basic things about the library and language that you should know before hand. However I do still use these opening sections to cover a few things that you might want to read up more on before continuing with the rest of this post.
+This is one of many threejs example that I have made after acquiring a fair amount of experience before hand with threejs as well as with javaScript in general. So in other words this is not a post for developers that might be [new to threejs](/2018/04/04/threejs-getting-started/) and client side javaScript in general. As such I will not be getting into every basic little thing about the library and language that you should know before hand. However I do still use these opening sections to cover a few things that you might want to read up more on before continuing with the rest of this post.
 
 ### Read up more on lines and line materials
 
-The module that I have made that I am writing about can be used to create an instance of a threejs group where each child of the group is an [instance of a line](/2018/04/19/threejs-line). A line in threejs is one alternative to that of the typical [mesh object](/2018/05/04/threejs-mesh/) that is used to add content to an over all scene object.
+The module that I have made that I am writing about can be used to create an instance of a threejs group where each child of the group is an [instance of a line](/2018/04/19/threejs-line). A line in threejs is one alternative to that of the typical [mesh object](/2018/05/04/threejs-mesh/) that is used to add content to an over all scene object. What is nice about lines is that when making a custom geometry I just have to worky about the position attribute of the geometry and that is it. There is also things like the index of the position attribite and also with lines the order of the points is of concern, but I do not have to care so much about the addtional values that are needed when making geometry to be used with a mesh object and the various mesh materials.
 
 ### Check out more on the buffer geometry class
 
