@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 992
-updated: 2023-02-02 11:17:56
-version: 1.18
+updated: 2023-02-02 12:20:13
+version: 1.19
 ---
 
 I wanted to make a new [threejs example](/2021/02/19/threejs-examples/) that has to do with creating and mutating a [group](/2018/05/16/threejs-grouping-mesh-objects/) of [lines](https://threejs.org/docs/#api/en/objects/Line). As of late I have also been playing around with tube geometry, which requires passing a [curve](/2022/06/17/threejs-curve/) as the first argument when making the geometry. 
@@ -14,6 +14,9 @@ I wanted to make a new [threejs example](/2021/02/19/threejs-examples/) that has
 This example however will just be a project in which I continued with my last [threejs example](/2022/06/03/threejs-examples-lines-sphere-circles/) that also had to do with creating a group of lines. However the goal with the older example was just to create a group of lines that form a sphere of sorts, and then mutate things from there. With this example what I wanted to do is make a similar system of sorts, but to make it so that a group of lines that form a sphere is just one of many options. So in other words this is just a general kind of system for a group of lines that can be set into all kinds of various states beyond just that of a sphere like shape.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/2aasYalXgWs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## This Deterministic line group module threejs example and what to know first
 
