@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1026
-updated: 2023-02-03 12:40:20
-version: 1.9
+updated: 2023-02-03 12:51:13
+version: 1.10
 ---
 
 The [morph attributes property of a buffer geometry instance](https://threejs.org/docs/#api/en/core/BufferGeometry.morphAttributes) will store an object which contains buffer attributes that are used to mutate the state of other buffer attributes of the geometry over time. Simply put it is a way to go about creating animation by having say additional position attributes for several other kinds of states for the points of a buffer geometry. These additional attributes that are used to morph a buffer geometry can contain absolute values foe each item, or they can be delta values that store a rate of change for each item as well.
@@ -42,7 +42,7 @@ Still confused? Well thats okay this is a little involved, but it is still only 
 
 For this basic example I am creating a sphere geometry, and then creating a single buffer attribute of random points the count of which is the same as the position attribute of the sphere geometry. Some times one just has to start somewhere so this just seems like a real simple way to go about getting started with morph attributes.
 
-Anyway after setting up my usual set of objects for any threejs project such as the scene object, camera, and renderer I start out with the geometry by calling the THREE.SphereGeometry constructor function. So then I have a sphere geometry with a position attribute of course, so now what I want to do is just create a new buffer attribute of random points for each point in the position attribute of this geometry. I can then set this new buffer attribute as the first element of an array for the position property of this morph attributes object of the geometry.
+Anyway after setting up my usual set of objects for any threejs project such as the scene object, camera, and renderer I start out with the geometry by calling the [THREE.SphereGeometry](/2021/05/26/threejs-sphere/) constructor function. So then I have a sphere geometry with a position attribute of course, so now what I want to do is just create a new buffer attribute of random points for each point in the position attribute of this geometry. I can then set this new buffer attribute as the first element of an array for the position property of this morph attributes object of the geometry.
 
 ```js
 // ---------- ----------
@@ -79,6 +79,8 @@ mesh.geometry.computeVertexNormals();
 // ---------- ----------
 renderer.render(scene, camera);
 ```
+
+Once I have a more attribute set up for this geometry I can then use the morph targets influences array to set what the alpha value should be between the original position attribute state of the sphere, and these random points I made for each point in the sphere. For this example I am going with the [mesh normal material](/2021/06/23/threejs-normal-material/) and because I made the geometry with the sphere geometry constructor there is a normal attribute, but as I mutate the position attribute I will want to also update the normals. One way to quickly update the normals is to use the [compute vertex normals](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) method as I am doing in this example
 
 ### 1.2 - Box to sphere example
 
