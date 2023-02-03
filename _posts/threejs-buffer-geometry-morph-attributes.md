@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1026
-updated: 2023-02-03 12:19:57
-version: 1.5
+updated: 2023-02-03 12:27:41
+version: 1.6
 ---
 
 The [morph attributes property of a buffer geometry instance](https://threejs.org/docs/#api/en/core/BufferGeometry.morphAttributes) will store an object which contains buffer attributes that are used to mutate the state of other buffer attributes of the geometry over time. Simply put it is a way to go about creating animation by having say additional position attributes for several other kinds of states for the points of a buffer geometry. These additional attributes that are used to morph a buffer geometry can contain absolute values foe each item, or they can be delta values that store a rate of change for each item as well.
@@ -14,7 +14,9 @@ The [morph attributes property of a buffer geometry instance](https://threejs.or
 
 <!-- more -->
 
-## More Attributes of buffer geometry and what to know first
+## Morph Attributes of buffer geometry and what to know first
+
+This is a blog post on more attributes of buffer geometry objects in the javaScript library known as threejs. If you are fairly new to threejs this post my prove to be a little too advanced as there is a whole lot to be aware of before getting into this sort of thing. For one thing there is knowing a thing or two about what buffer attributes of buffer geometry objects are to begin with. So in this section I will be writing about a few quick key things that you might want to read up a bit more on before counting to read the rest of thing post.
 
 ### Source code is also up on Github
 
@@ -28,7 +30,7 @@ When I first wrote this post I was using r146 of threejs.
 
 ## 1 - Some Basic Examples of using morph attributes
 
-Before I start getting into some examples that are are some real over all examples of morph attributes in this section i will be starting out with a few very simple hello world style examples first. The general idea here is to create an additional buffer attribute with the same item size and count of items as the buffer attribute that I want to mutate. Then I create a property of the morph attributes object that is the same key as the name of the attribute I want to mutate and the value should be an array. I can then push this additional buffer attribute as an item of this array. Once that is all set and down it is just a matter of setting the morph targets influences alpha value to set how much an additional buffer attribute in the morph attributes array will impact the state of the buffer attribute I want to mutate.
+Before I start getting into some examples that are are some real over all examples of morph attributes in this section I will be starting out with a few very simple hello world style examples first. The general idea here is to create an additional buffer attribute with the same item size and count of items as the buffer attribute that I want to mutate. Then I create a property of the morph attributes object that is the same key as the name of the attribute I want to mutate and the value should be an array. I can then push this additional buffer attribute as an item of this array. Once that is all set and down it is just a matter of setting the morph targets influences alpha value to set how much an additional buffer attribute in the morph attributes array will impact the state of the buffer attribute I want to mutate.
 
 Still confused? Well thats okay this is a little involved, but it is still only so hard, and maybe it would be best to just read some source code examples here. These examples will just involve one more attribute and I will be sticking to just the position attribute of the buffer geometry. Also for now I will be sticking to using built in geometry constructor functions, and also just keep these as simple static scenes as will in order to focus on just what is more important with this.
 
