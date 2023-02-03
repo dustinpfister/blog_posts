@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1026
-updated: 2023-02-03 10:52:27
-version: 1.2
+updated: 2023-02-03 11:53:48
+version: 1.3
 ---
 
 The morph attributes property of a buffer geometry instance will store an object which contains buffer attributes that are used to mutate the state of other buffer attributes of the geometry over time. Simply put it is a way to go about creating animation by having say additional position attributes for several other kinds of states for the points of a buffer geometry. These additional attributes that are used to morph a buffer geometry can contain absolute values foe each item, or they can be delta values that store a rate of change for each item as well.
@@ -107,4 +107,144 @@ mesh.geometry.computeVertexNormals();
 // RENDER
 // ---------- ----------
 renderer.render(scene, camera);
+```
+
+
+## 2 - Custom geometry and morph attributes
+
+Now that I have a few basic examples out of the way in this section I will be getting into a few more advanced examples not just of more attributes but many buffer geometry features for that matter. These examples will then involve creating a custom geometry from the ground up using hard coded javaScript array literals for the data. However some of the examples will also involve exporting this kind of data into a JSON format that can then be used with the buffer geometry attribute. With that said one of the goals here is to export how to go about making an over all model that will involve morph attributes.
+
+### 2.1 - A custom geometry with more than one morph attribute 
+
+For this fist example and all the other examples in this section I am going to be making a very crude bird like model that contains just 12 points in the position attribute. I will then draw triangles using these 12 points by figuring out what the values should be for the index of the position attribute of the buffer geometry. So this geometry will contain just a few points, but it will still be enough to have some parts of the geometry that resemble wings, and the rest of what can be considered a kind of body. However what is really important here is just having a way to define not just one, but a few buffer attributes for this geometry. You see I would like to move the wings, move the head back and froth, and move the tail up and down. On top of all of this I would like to control the state of each of these Independently from each other.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0.7, 0.7, 0.7);
+scene.add( new THREE.GridHelper(10, 10) )
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geo = new THREE.BufferGeometry();
+geo.morphAttributes.position = [];
+// USING MORPH TARGETS RELATIVE
+geo.morphTargetsRelative = true;
+// home data position
+const data_pos = [
+  // body
+  -0.5,-1.0, 1.0,  -1.0,-1.0, 0.0,
+   0.0,-1.5,-4.0,   1.0,-1.0, 0.0,
+   0.0,-2.0, 0.0,   0.0, 0.0, 0.0,
+   // wings
+   1.0, 1.0,-0.7,   1.0, 1.0, 0.7,   2.0, 1.0, 0.0,
+  -1.0, 1.0,-0.7,  -1.0, 1.0, 0.7,  -2.0, 1.0, 0.0
+];
+geo.setAttribute('position', new THREE.Float32BufferAttribute(data_pos, 3) );
+geo.setIndex([ 0,5,1, 0,3,5, 0,4,3, 0,1,4, 5,3,2, 4,2,3, 4,1,2, 1,5,2, 6,7,8, 5,7,6, 10,9,11, 5,9,10 ]);
+geo.computeVertexNormals();
+// position deltas 0 - move tail up and down
+const data_pos_deltas0 = [
+   // body
+   0, 0, 0,   0, 0, 0,   0, 1, 0,
+   0, 0, 0,   0, 0, 0,   0, 0, 0,
+   // wings
+   0, 0, 0,   0, 0, 0,   0, 0, 0,
+   0, 0, 0,   0, 0, 0,   0, 0, 0,
+];
+geo.morphAttributes.position[ 0 ] = new THREE.Float32BufferAttribute( data_pos_deltas0, 3 );
+// position deltas 1 - move head side to side
+const data_pos_deltas1 = [
+   1, 0, 0.0,   0, 0, 0.5,   0, 0, 0,
+   0, 0,-0.5,   0, 0, 0.0,   0, 0, 0,
+   // wings
+   0, 0, 0.0,   0, 0, 0.0,   0, 0, 0,
+   0, 0, 0.0,   0, 0, 0.0,   0, 0, 0
+];
+geo.morphAttributes.position[ 1 ] = new THREE.Float32BufferAttribute( data_pos_deltas1, 3 );
+// position deltas 2 - move wings
+const data_pos_deltas2 = [
+   0, 0, 0,   0, 0, 0,   0, 0, 0,
+   0, 0, 0,   0, 0, 0,   0, 0, 0,
+   // wings
+   0,-2,-1,   0,-2,-1,   0,-2,-1,
+   0,-2,-1,   0,-2,-1,   0,-2,-1
+];
+geo.morphAttributes.position[ 2 ] = new THREE.Float32BufferAttribute( data_pos_deltas2, 3 );
+// ---------- ----------
+// COLOR ATTRIBUTE
+// ---------- ----------
+const data_color = [
+    1, 1, 0,   0, 1, 0,   1, 0, 0,
+    0, 1, 0,   0, 1, 1,   0, 0, 1,
+    // wings
+    1, 1, 1,   1, 1, 1,   1, 1, 0,
+    1, 1, 1,   1, 1, 1,   1, 1, 0
+];
+geo.setAttribute('color', new THREE.Float32BufferAttribute(data_color, 3) );
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight();
+dl.position.set(2,1,0)
+scene.add(dl);
+const al = new THREE.AmbientLight(0xffffff, 0.2);
+scene.add(al);
+// ---------- ----------
+// MATERIAL
+// ---------- ----------
+const material = new THREE.MeshPhongMaterial({
+     vertexColors: true,
+     side: THREE.DoubleSide
+});
+// ---------- ----------
+// MESH
+// ---------- ----------
+const mesh = new THREE.Mesh(geo, material);
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(3, 1, 3);
+camera.lookAt(0, -1, -1);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1 * 8 % 1) / 0.5;
+    const a3 = 1 - Math.abs(0.5 - a1 * 4 % 1) / 0.5;
+    const a4 = 1 - Math.abs(0.5 - a1 * 20 % 1) / 0.5;
+    // using morph target influences to set current state of each position attribite
+    mesh.morphTargetInfluences[ 0 ] = a2;
+    mesh.morphTargetInfluences[ 1 ] = a3;
+    mesh.morphTargetInfluences[ 2 ] = a4;
+    mesh.geometry.computeVertexNormals();
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
