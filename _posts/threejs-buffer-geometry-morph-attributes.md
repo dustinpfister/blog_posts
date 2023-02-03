@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1026
-updated: 2023-02-03 10:48:53
-version: 1.1
+updated: 2023-02-03 10:52:27
+version: 1.2
 ---
 
 The morph attributes property of a buffer geometry instance will store an object which contains buffer attributes that are used to mutate the state of other buffer attributes of the geometry over time. Simply put it is a way to go about creating animation by having say additional position attributes for several other kinds of states for the points of a buffer geometry. These additional attributes that are used to morph a buffer geometry can contain absolute values foe each item, or they can be delta values that store a rate of change for each item as well.
@@ -62,6 +62,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.2 - Box to sphere example
+
+One of the first examples that I looked at to get an idea of how to do this was to look at the source code of one of the [official threejs examples on more attributes that can be found here](https://github.com/mrdoob/three.js/blob/master/examples/webgl_morphtargets.html). This example was a good resource for getting started with buffer attributes, but I have found that it is just a little to complex for a basic getting started type example. So I remove some of the code that has to go with adding a twist and keep the code that has to do with just mutating the buffer geometry state from a box to that of a sphere.
 
 ```js
 // ---------- ----------
