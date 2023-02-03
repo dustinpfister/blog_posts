@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1026
-updated: 2023-02-03 12:33:01
-version: 1.8
+updated: 2023-02-03 12:40:20
+version: 1.9
 ---
 
 The [morph attributes property of a buffer geometry instance](https://threejs.org/docs/#api/en/core/BufferGeometry.morphAttributes) will store an object which contains buffer attributes that are used to mutate the state of other buffer attributes of the geometry over time. Simply put it is a way to go about creating animation by having say additional position attributes for several other kinds of states for the points of a buffer geometry. These additional attributes that are used to morph a buffer geometry can contain absolute values foe each item, or they can be delta values that store a rate of change for each item as well.
@@ -20,7 +20,7 @@ This is a blog post on more attributes of buffer geometry objects in the javaScr
 
 ### Read up more on Buffer Geometry in general
 
-There is a whole lot of ground to cover when it comes to buffer geometry in general before getting into this topic of morph attributes. So you might want to start out with my [main blog post on buffer geometry](/2021/04/22/threejs-buffer-geometry/) for starters. I also have wrote blog posts on the [position attribute of buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) as well as on the index that is used to make it so one can reuse points in the position attribute as well.
+There is a whole lot of ground to cover when it comes to buffer geometry in general before getting into this topic of morph attributes. So you might want to start out with my [main blog post on buffer geometry](/2021/04/22/threejs-buffer-geometry/) for starters. I also have wrote blog posts on the [position attribute of buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) as well as on the [index that is used to make it so one can reuse points](/2022/12/09/threejs-buffer-geometry-index/) in the position attribute as well.
 
 ### Source code is also up on Github
 
@@ -41,6 +41,8 @@ Still confused? Well thats okay this is a little involved, but it is still only 
 ### 1.1 - Random points to move the points of a sphere to.
 
 For this basic example I am creating a sphere geometry, and then creating a single buffer attribute of random points the count of which is the same as the position attribute of the sphere geometry. Some times one just has to start somewhere so this just seems like a real simple way to go about getting started with morph attributes.
+
+Anyway after setting up my usual set of objects for any threejs project such as the scene object, camera, and renderer I start out with the geometry by calling the THREE.SphereGeometry constructor function. So then I have a sphere geometry with a position attribute of course, so now what I want to do is just create a new buffer attribute of random points for each point in the position attribute of this geometry. I can then set this new buffer attribute as the first element of an array for the position property of this morph attributes object of the geometry.
 
 ```js
 // ---------- ----------
