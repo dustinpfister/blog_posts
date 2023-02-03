@@ -5,14 +5,25 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1026
-updated: 2023-02-03 12:15:13
-version: 1.4
+updated: 2023-02-03 12:19:57
+version: 1.5
 ---
 
-The morph attributes property of a buffer geometry instance will store an object which contains buffer attributes that are used to mutate the state of other buffer attributes of the geometry over time. Simply put it is a way to go about creating animation by having say additional position attributes for several other kinds of states for the points of a buffer geometry. These additional attributes that are used to morph a buffer geometry can contain absolute values foe each item, or they can be delta values that store a rate of change for each item as well.
+The [morph attributes property of a buffer geometry instance](https://threejs.org/docs/#api/en/core/BufferGeometry.morphAttributes) will store an object which contains buffer attributes that are used to mutate the state of other buffer attributes of the geometry over time. Simply put it is a way to go about creating animation by having say additional position attributes for several other kinds of states for the points of a buffer geometry. These additional attributes that are used to morph a buffer geometry can contain absolute values foe each item, or they can be delta values that store a rate of change for each item as well.
 
 
 <!-- more -->
+
+## More Attributes of buffer geometry and what to know first
+
+### Source code is also up on Github
+
+The source code examples as well as additional assets that i am using in this post can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-morph-attributes).
+
+
+### Version Numbers matter
+
+When I first wrote this post I was using r146 of threejs.
 
 
 ## 1 - Some Basic Examples of using morph attributes
