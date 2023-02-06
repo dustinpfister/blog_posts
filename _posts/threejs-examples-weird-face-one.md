@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2022-07-19 11:06:52
-version: 1.18
+updated: 2023-02-06 10:01:38
+version: 1.19
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -15,11 +15,12 @@ Although these kinds of informal models that are just groups of mesh objects wit
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/AzuB6ExUE64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The Weird face one example and what to know first
 
 There are a number of things that you might want to look into first before reading more about this specific threejs example as this example goes beyond the [very basics of threejs](/2018/04/04/threejs-getting-started/) a fare amount. For one thing this example does not just use threejs alone but also the dae file loader as well as orbit controls. So there is more than one javaScript file being used just when it comes to what there is to work with in the threejs repository on github alone. Although I will not be going over every little detail that you should know before hand I do use this first section to mention at least a few things you might want to read up more on first.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/AzuB6ExUE64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Check out the dae file loader as a way to load assets that are exported from blender
 
@@ -79,7 +80,7 @@ weridFace.setEye = function(nose, eyeIndex, a, b, scale){
 
 ## 2 - The lerp geo function
 
-Here is the source code of the lerp geometry function that I worked on in an older threejs project example. It works by passing the geometry that I want to update as the first argument, then I pass a starting and ending geometry state alone with an alpha value between the two that will be 0 to 1 value between the two geometries to set the first geometry that I am updating. I am then using the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/) to set the position of each vertex by way of a simple linear lerp between the points, and while I am also at it I update the normal attribute as well by just calling the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
+Here is the source code of the [lerp geometry function that I worked on in an older threejs project example](/2022/07/01/threejs-examples-lerp-geo/). It works by passing the geometry that I want to update as the first argument, then I pass a starting and ending geometry state alone with an alpha value between the two that will be 0 to 1 value between the two geometries to set the first geometry that I am updating. I am then using the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/) to set the position of each vertex by way of a simple linear lerp between the points, and while I am also at it I update the normal attribute as well by just calling the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
 
 ```js
 let lerpGeo = function(geo, geoA, geoB, alpha){
@@ -211,7 +212,8 @@ Another file that I am using for this example is my DAE tools file, this is yet 
 
 ## 4 - Main javaScript file
 
-Now I can load the dae files that I want to use, set up some local variables, along with an animation loops and the usual threejs objects to create a scene. At the bottom of the main file I am using the create and load all method of my dae tools module to load two dae files one of which is the main file, and the additional one contains mouth geometry options. This is just the way that I made the model thus far and in any future revisions of this I might go with some kind of standard where I have all the objects that I want in a single DAE file.
+Now I can load the dae files that I want to use, set up some local variables, along with an animation loops and the usual threejs objects to create a scene.
+ At the bottom of the main file I am using the create and load all method of my dae tools module to load two dae files one of which is the main file, and the additional one contains mouth geometry options. This is just the way that I made the model thus far and in any future revisions of this I might go with some kind of standard where I have all the objects that I want in a single DAE file.
 
 ```js
 (function () {
