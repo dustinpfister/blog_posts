@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2023-02-06 17:17:19
-version: 1.28
+updated: 2023-02-06 17:22:10
+version: 1.29
 ---
 
 I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method can be used to transition the state of one vector to another target vector by way of giving a target point to move to, and an alpha value between 0 and 1 that is the magnitude to the move the current point to the target point.
@@ -45,6 +45,8 @@ The source code examples that I am writing about here can be [found on github](h
 When I first wrote this post I was using r140 of threejs and the examples where working fine on my end with that revision. The last time I came around to edit this post r146 was the revision number I was using when I updated and expanded the code. Again things where working fine with me on my end with the revision numbers I was using. However threejs is a fast moving project and it is safe to assume that at some point these code examples may break. Always be mindful of the revision number you are using, and the version the developer was using when it comes to source code examples here, and on the open web in general.
 
 ## 1 - Making use of morph attributes now with R1 of lerp geo
+
+This is a section where I will now be writing about R1 of the lerp geo threejs example that is what I have together thus far when it comes to making use of morph attributes in place of the vector3 lerp method. When I was writing a post on the vector3 lerp method the idea came to me to make this threejs project. However now that I have wrote more on the buffer geometry class I have found that although  using the vectro3 lerp method as a tool to lerp between two buffer attributes works, there is a built in feature in the buffer geometry class for doing this sort of thing as well and that is what should be used first and foremost when it comes to making animations.
 
 ### 1.a - The lerp geo javaScript file R1
 
