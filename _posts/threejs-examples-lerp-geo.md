@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2023-02-06 10:14:50
-version: 1.26
+updated: 2023-02-06 17:14:35
+version: 1.27
 ---
 
 I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method can be used to transition the state of one vector to another target vector by way of giving a target point to move to, and an alpha value between 0 and 1 that is the magnitude to the move the current point to the target point.
@@ -44,9 +44,13 @@ The source code examples that I am writing about here can be [found on github](h
 
 When I first wrote this post I was using r140 of threejs and the examples where working fine on my end with that revision. The last time I came around to edit this post r146 was the revision number I was using when I updated and expanded the code. Again things where working fine with me on my end with the revision numbers I was using. However threejs is a fast moving project and it is safe to assume that at some point these code examples may break. Always be mindful of the revision number you are using, and the version the developer was using when it comes to source code examples here, and on the open web in general.
 
-## 1 - The general idea of this lerping of position arrays
+## 2 - The first version of the lerp geo module threejs example
 
-So then the core of this idea is to just have a function that I can use to pass a geometry that I want to change, and then two geometries that are the state that I want to start at that can be called something like geoA, and the state that I want to change to that would then be geoB. The last argument would then be the alpha value to use between these two states that is a value between and including 0 and 1.
+In this section I am writing about the first revision of the lep geo module that I started before I got into morph attributes. The later versions of lerp geometry now makes use of morph attributes so it can be used to morph not just a position attribute but the other various attributes of buffer geometry as well. Still I will be keeping this up here as well just for the hell of it.
+
+### 2.a - The lerp geo javaScitp file
+
+The core of this idea is to just have a function that I can use to pass a geometry that I want to change, and then two geometries that are the state that I want to start at that can be called something like geoA, and the state that I want to change to that would then be geoB. The last argument would then be the alpha value to use between these two states that is a value between and including 0 and 1.
 
 So inside the body of the lerp geometry function I use the get attribute function of the buffer geometry class to get the position attributes of geoA and GeoB I can then just loop over the position attribute of the geometry I want to update and use the Vector3 class to create two points in space for both geoA and geoB. I then just use the lerp method of the vector3 that I created for geoA to lerp it from that state to the state of geoB using the lerp method of the Vector3 class. I can now set the state of the vertex for the geometry that I am updating.
 
@@ -85,7 +89,7 @@ So inside the body of the lerp geometry function I use the get attribute functio
 
 When updating the state of a position attribute of a geometry I need to set the needs update boolean of the position attribute to true. After that there is also thinking in terms of other attributes that may also need to be updated as a result of the change of the state of the position attribute. I have found that I do want to at least make sure the the normals attribute is also updated to make sure that lighting looks the way it should with the new position state. In some cases I might need to work out a custom solution for this, however often just using the [compute vertex normals](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) method of the buffer geometry will work fine.
 
-## 1.1 - Two Geometry example using cone and sphere geometry
+### 2.1 - Two Geometry example using cone and sphere geometry
 
 Now that I have my lerp geo helper function I just need to test it out with a little more javaScript code that has to do with setting up a basic scene and having two two geometries to update the state of the geometry of a mesh object. For this first little demo of the hel0er functionI am using a cone geometry and a sphere geometry as the two geometries that I would like to lerp back and forth between.
 
@@ -138,7 +142,7 @@ const loop = function () {
 loop();
 ```
 
-### 1.2 - Four Source Geometries to make two geometries that are then also lerped for one
+### 2.2 - Four Source Geometries to make two geometries that are then also lerped for one
 
 For this example I have four source  Geometries that I am then lerping between to make two geometries. I then lerp the two geometries again to make the final geometry state that is used for a lines object.
 
