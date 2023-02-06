@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2023-02-06 17:14:35
-version: 1.27
+updated: 2023-02-06 17:17:19
+version: 1.28
 ---
 
 I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method can be used to transition the state of one vector to another target vector by way of giving a target point to move to, and an alpha value between 0 and 1 that is the magnitude to the move the current point to the target point.
@@ -44,11 +44,194 @@ The source code examples that I am writing about here can be [found on github](h
 
 When I first wrote this post I was using r140 of threejs and the examples where working fine on my end with that revision. The last time I came around to edit this post r146 was the revision number I was using when I updated and expanded the code. Again things where working fine with me on my end with the revision numbers I was using. However threejs is a fast moving project and it is safe to assume that at some point these code examples may break. Always be mindful of the revision number you are using, and the version the developer was using when it comes to source code examples here, and on the open web in general.
 
+## 1 - Making use of morph attributes now with R1 of lerp geo
+
+### 1.a - The lerp geo javaScript file R1
+
+```js
+// lerpgeo.js - r1 - from threejs-examples-lerp-geo
+(function (global) {
+    //-------- ----------
+    // THE OLD R0 LERP GEO FUNCTION as the global API object ( for now )
+    //-------- ----------
+    const api = global['lerpGeo'] = function(geo, geoA, geoB, alpha){
+        alpha = alpha || 0;
+        // get refs to position attributes
+        const pos = geo.getAttribute('position');
+        const posA = geoA.getAttribute('position');
+        const posB = geoB.getAttribute('position');
+        // loop over pos and lerp between posA and posB
+        let i = 0; 
+        const len = pos.array.length;
+        while(i < len){
+            const v = new THREE.Vector3(posA.array[i], posA.array[i + 1], posA.array[i + 2]);
+            const v2 = new THREE.Vector3(posB.array[i], posB.array[i + 1], posB.array[i + 2]);
+            v.lerp(v2, alpha);
+            pos.array[i] = v.x;
+            pos.array[i + 1] = v.y;
+            pos.array[i + 2] = v.z;
+            i += 3;
+        }
+        pos.needsUpdate = true;
+        geo.computeVertexNormals();
+    };
+    //-------- ----------
+    // THE NEW R1+ CREATE FUNCTION + HELPERS AND CONSTS
+    //-------- ----------
+    // const values
+    const ATT_TYPES = 'position,normal,uv'.split(','); // what attributes to use?
+    const ATT_FOR_UNDEFINED_ITEMS = 0;  // what value to use for value of undefined items in attribites?
+    const GEO_SOURCE_SHIFTOUT = true;   // shift out geo source index 0 that is used to create the main geometry?
+    // sort by count helper
+    const sortByCount = (sourceGeos) => {
+        return sourceGeos.map((geo) => { return geo; }).sort( (a, b) => {
+            const aPos = a.getAttribute('position'),
+            bPos = b.getAttribute('position');
+            if(!aPos || !bPos){
+                return 1;
+            }
+            if(aPos.count > bPos.count){
+                return -1;
+            }
+            if(aPos.count < bPos.count){
+                return 1;
+            }
+            return 0;
+        });
+    };
+    // new buffer attribute for the given geo, based on a given source geo
+    // placing 0 for numbers of each item that is not there
+    const newAttributeFromGeo = (type, geo, geo_source) => {
+        const att_source = geo_source.getAttribute(type);
+        const att_geo = geo.getAttribute(type);
+        const data_array = [];
+        let i = 0;
+        while(i < att_geo.array.length){
+             let d = 0;
+             while(d < att_geo.itemSize){
+                 const n = att_source.array[i + d];
+                 data_array.push( n === undefined ? ATT_FOR_UNDEFINED_ITEMS : n );
+                 d += 1;
+             }
+             i += att_geo.itemSize;
+        }
+        const att = new THREE.BufferAttribute( new Float32Array(data_array), att_geo.itemSize);
+        return att;
+    };
+    // public create method
+    api.createGeo = (sourceGeos, opt) => {
+        opt = opt || {};
+        const geo_source_array = sortByCount(sourceGeos);
+        const geo = geo_source_array[0].clone();
+        if(opt.GEO_SOURCE_SHIFTOUT === undefined ? GEO_SOURCE_SHIFTOUT : opt.GEO_SOURCE_SHIFTOUT){
+            geo_source_array.shift();
+        }
+        geo_source_array.forEach( (geo_source, i) => {
+            (opt.ATT_TYPES || ATT_TYPES).forEach( (attType) => {
+               if(geo.morphAttributes[attType] === undefined){
+                   geo.morphAttributes[attType] = [];
+               }
+               geo.morphAttributes[attType][ i ] = newAttributeFromGeo(attType, geo, geo_source);
+            });
+        });
+        return geo;
+    };
+    // public create method
+    api.create = (sourceGeos, opt) => {
+        opt = opt || {};
+        const geo = api.createGeo(sourceGeos);
+        const mesh = new THREE.Mesh(geo, opt.material || new THREE.MeshBasicMaterial());
+        return mesh;
+    };
+    api.update = (mesh, alphas, opt) => {
+        alphas.forEach( (a, i) => {
+            mesh.morphTargetInfluences[ i ] = a;
+        });
+    };
+}( this ));
+```
+
+### 1.1 - Basic demo just to test things out so far
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(20, 20));
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// SOURCE GEOS
+//-------- ----------
+//const source_geo = [
+//    new THREE.SphereGeometry(1, 26, 25),
+//    new THREE.TorusGeometry(1, 0.25, 26, 25)
+//];
+
+const source_geo = [
+    new THREE.ConeGeometry(0.25, 2, 20, 20),
+    new THREE.SphereGeometry(1, 21, 21)
+];
+
+
+console.log(source_geo[0].getAttribute('position').count);
+console.log(source_geo[1].getAttribute('position').count);
+//-------- ----------
+// MATERIAL
+//-------- ----------
+const material = new THREE.MeshNormalMaterial({ wireframe: false });
+//-------- ----------
+// MESH
+//-------- ----------
+// mesh1 will be used with old lerpGeo method
+const geo1 = source_geo[1].clone();
+const mesh1 = new THREE.Mesh(geo1, material);
+mesh1.position.set(-1,0,0)
+scene.add(mesh1);
+// mesh2 is created using lerpGeo.create
+const mesh2 = lerpGeo.create(source_geo, { material: material});
+mesh2.position.set(1,0,0)
+scene.add(mesh2);
+//-------- ----------
+// GET ALPHA HELPERS
+//-------- ----------
+const getAlpha = (n, d, count) => {
+    return n / d * count % 1;
+};
+const getAlphaBias = (n, d, count) => {
+    const a1 = getAlpha(n, d, count);
+    return  1 - Math.abs( 0.5 - a1) / 0.5;
+};
+//-------- ----------
+// APP LOOP
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+let frame = 0;
+const frameMax = 300;
+const loop = function () {
+    requestAnimationFrame(loop);
+    renderer.render(scene, camera);
+    const a1 = getAlphaBias(frame, frameMax, 2);
+    // can still use old lerp go method
+    lerpGeo(geo1, source_geo[1], source_geo[0], a1);
+    // using morph target Influences of mesh object
+    lerpGeo.update(mesh2, [ a1 ] );
+    frame += 1;
+    frame %= frameMax;
+};
+loop();
+```
+
 ## 2 - The first version of the lerp geo module threejs example
 
 In this section I am writing about the first revision of the lep geo module that I started before I got into morph attributes. The later versions of lerp geometry now makes use of morph attributes so it can be used to morph not just a position attribute but the other various attributes of buffer geometry as well. Still I will be keeping this up here as well just for the hell of it.
 
-### 2.a - The lerp geo javaScitp file
+### 2.a - The lerp geo javaSccript file R0
 
 The core of this idea is to just have a function that I can use to pass a geometry that I want to change, and then two geometries that are the state that I want to start at that can be called something like geoA, and the state that I want to change to that would then be geoB. The last argument would then be the alpha value to use between these two states that is a value between and including 0 and 1.
 
