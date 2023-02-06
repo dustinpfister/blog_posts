@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2023-02-06 17:22:10
-version: 1.29
+updated: 2023-02-06 17:25:23
+version: 1.30
 ---
 
 I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method can be used to transition the state of one vector to another target vector by way of giving a target point to move to, and an alpha value between 0 and 1 that is the magnitude to the move the current point to the target point.
@@ -49,6 +49,8 @@ When I first wrote this post I was using r140 of threejs and the examples where 
 This is a section where I will now be writing about R1 of the lerp geo threejs example that is what I have together thus far when it comes to making use of morph attributes in place of the vector3 lerp method. When I was writing a post on the vector3 lerp method the idea came to me to make this threejs project. However now that I have wrote more on the buffer geometry class I have found that although  using the vectro3 lerp method as a tool to lerp between two buffer attributes works, there is a built in feature in the buffer geometry class for doing this sort of thing as well and that is what should be used first and foremost when it comes to making animations.
 
 ### 1.a - The lerp geo javaScript file R1
+
+For this new revision I have made it so that I can still use the same old lerp geometry method if I want to. However now there are some additional methods that have to do with creating a geometry, or whole mesh object with an array of geometries. This way I can just go ahead and use this as a drop in replacement for the older revision, but now also have some options for playing around with morph attributes as a way to do this sort of thing.
 
 ```js
 // lerpgeo.js - r1 - from threejs-examples-lerp-geo
