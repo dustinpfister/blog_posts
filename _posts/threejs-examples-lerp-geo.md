@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2022-12-19 11:42:01
-version: 1.25
+updated: 2023-02-06 10:14:50
+version: 1.26
 ---
 
 I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method can be used to transition the state of one vector to another target vector by way of giving a target point to move to, and an alpha value between 0 and 1 that is the magnitude to the move the current point to the target point.
@@ -28,9 +28,13 @@ This is a post on an advanced topic of threejs that has to do with the position 
 
 If you feel that this topic might be a little to advance for you now, there is taking a step back and thinking more in terms of creating animations by just moving mesh objects around. This is how I first started out with this sort of thing a long time ago now with my [guy one model](/2021/04/29/threejs-examples-guy-one/) that I made a few years back now at this point. There is also looking into how to really update geometry in a way that goes up certain standards as well when it comes to making a [skinned mesh](https://threejs.org/docs/#api/en/objects/SkinnedMesh) with bones and weight attribites.
 
+### There is also the morph attributes property of buffer geometry objects
+
+When I first started this project I have not yet got around to making a demo or two about the [morph attributes property](/2023/02/03/threejs-buffer-geometry-morph-attributes/) of buffer geometry objects. Use of the morph attributes property is a better way of doing this sort of thing so that should be check out first and foremost. I will of course keep this post up though, and I will also start working on an R1 of this example in which I make use of morph attributes. However at this time I am not fully sure what I can add on top that to keep this from just being a weird, unnecessary abstraction. In any case this may or may not end up being a dead example moving forward at this time.
+
 ### There is a whole lot to be aware of when it comes to Buffer Geometry
 
-There is a lot to take in when it comes to buffer geometry in general, so it would be a good idea to not stop with this post when it comes to learning more about the class. I have my main blog post on the buffer geometry class that might be a good place to start to gain a great over all picture of all the various core attributes and features to be aware of. I also have a number of other threejs project examples that might prove to be an okay starting point when it comes to creating custom geometry in threejs such as [my waves example](/2018/11/14/threejs-examples-waves/).
+There is a lot to take in when it comes to [buffer geometry in general](/2021/04/22/threejs-buffer-geometry/), so it would be a good idea to not stop with this post when it comes to learning more about the class. I have my main blog post on the buffer geometry class that might be a good place to start to gain a great over all picture of all the various core attributes and features to be aware of. I also have a number of other threejs project examples that might prove to be an okay starting point when it comes to creating custom geometry in threejs such as [my waves example](/2018/11/14/threejs-examples-waves/).
 
 ### The source code in this post can also be found on Github
 
