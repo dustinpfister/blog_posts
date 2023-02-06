@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2023-02-06 17:25:23
-version: 1.30
+updated: 2023-02-06 17:29:31
+version: 1.31
 ---
 
 I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method can be used to transition the state of one vector to another target vector by way of giving a target point to move to, and an alpha value between 0 and 1 that is the magnitude to the move the current point to the target point.
@@ -38,7 +38,7 @@ There is a lot to take in when it comes to [buffer geometry in general](/2021/04
 
 ### The source code in this post can also be found on Github
 
-The source code examples that I am writing about here can be [found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-lerp-geo/) in my test threejs reposapotry. This is also where I park the source code examples for my [many other blog posts on threejs](/categories/three-js/).
+The source code examples that I am writing about here can be [found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-lerp-geo/) in my test threejs repository. This is also where I park the source code examples for my [many other blog posts on threejs](/categories/three-js/).
 
 ### Version Numbers matter
 
@@ -156,6 +156,8 @@ For this new revision I have made it so that I can still use the same old lerp g
 ```
 
 ### 1.1 - Basic demo just to test things out so far
+
+Here I have the first and only demo that I have made thus far with R1 of the lerp geo method. So far things seem to work okay, but I am sure that I will want to do at least a little more work on an additional revision before using this in any kind of project at all actually. Yet again maybe not, maybe I just need to make some more demos and do so with geometry that is not made using the built in geometry constructors. In any case in this demo I just wanted to make sure that the old lerp method still works, and then the new methods that I have made do not case any errors at least. WIth that said this demo was a success at least for what it is worth.
 
 ```js
 //-------- ----------
