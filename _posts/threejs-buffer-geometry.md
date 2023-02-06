@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-02-06 16:46:35
-version: 1.57
+updated: 2023-02-06 17:07:41
+version: 1.58
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -591,6 +591,56 @@ If I have a josn file to load that is formated the way as I have outline in the 
 ## 9 - Morph Attributes
 
 In the opening sections of this post I wrote a thing or two about the various attributes that are used to compose a buffer geometry object. There is the position attribute that is the actual points in space which can be index, or not indexed. Then there is the normal attribute that can be used to define what side of a face is the front side of a face and is also used in the process of rendering with many materials. There is also the uv attribute which is what it is used to define what the offsets are in a texture when it comes to mapping a 2d texture to a 3d object. However in this section I will now be writing about [morph attributes](/2023/02/03/threejs-buffer-geometry-morph-attributes) where are a way to go about defining an array of attributes for each of these attributes each of which is a state for all of them. These morph attributes can then be used to change from one state to another, not just with the position attribute but all of the various attributes.
+
+### 9.1 - Basic example on morph attributes
+
+This is a basic example on morph attributes that I copied over from my post on the subject that is based on one of the official examples on morph attributes that can be [found here](https://github.com/mrdoob/three.js/blob/r146/examples/webgl_morphtargets.html). It involves just creating a buffer geometry with the built in box geometry constructor function. Then one just needs to start out by creating an empty array for the position attribute in the morph attributes property of the returned geometry. After that it is a matter of adding at least one or more elements to this array that are other states to morph to from the starting box geometry state. For this there is some code that will create a new position attribute that is a sphere like state to transition to for each point in this box geometry. 
+
+There is then making a mesh object with the geometry like always. However now I can use the morph Target Influences property of the mesh object to set what the alpha value should be between the starting state, and the the sphere state.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(2, 2, 4);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// SHADER MATERIAL
+// base on this: https://github.com/mrdoob/three.js/blob/master/examples/webgl_morphtargets.html
+// ---------- ----------
+const geo = new THREE.BoxGeometry(2, 2, 2, 32, 32, 32);
+geo.morphAttributes.position = [];
+const pos = geo.attributes.position;
+const data_pos = [];
+for ( let i = 0; i < pos.count; i ++ ) {
+     const x = pos.getX( i );
+     const y = pos.getY( i );
+     const z = pos.getZ( i );
+     data_pos.push(
+         x * Math.sqrt( 1 - ( y * y / 2 ) - ( z * z / 2 ) + ( y * y * z * z / 3 ) ),
+         y * Math.sqrt( 1 - ( z * z / 2 ) - ( x * x / 2 ) + ( z * z * x * x / 3 ) ),
+         z * Math.sqrt( 1 - ( x * x / 2 ) - ( y * y / 2 ) + ( x * x * y * y / 3 ) )
+     );
+}
+geo.morphAttributes.position[ 0 ] = new THREE.Float32BufferAttribute( data_pos, 3 );
+// ---------- ----------
+// MATERIAL, MESH
+// ---------- ----------
+const material = new THREE.MeshNormalMaterial({ side: THREE.DoubleSide});
+const mesh = new THREE.Mesh(geo, material);
+scene.add(mesh);
+mesh.morphTargetInfluences[ 0 ] = 0.75;
+mesh.geometry.computeVertexNormals();
+// ---------- ----------
+// RENDER
+// ---------- ----------
+renderer.render(scene, camera);
+```
 
 ## Conclusion
 
