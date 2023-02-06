@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 994
-updated: 2023-02-06 17:29:31
-version: 1.31
+updated: 2023-02-06 17:34:11
+version: 1.32
 ---
 
 I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threejs-vector3-lerp/) in [threejs](https://threejs.org/docs/index.html#api/en/math/Vector3). This lerp method can be used to transition the state of one vector to another target vector by way of giving a target point to move to, and an alpha value between 0 and 1 that is the magnitude to the move the current point to the target point.
@@ -14,6 +14,8 @@ I wrote a blog post on the [lerp method of the Vector3 class](/2022/05/17/threej
 Lately I thought about using this lerp method as a way to lerp the points of a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of one geometry back and forth from one geometry to another. This post will be on a [threejs example](/2021/02/19/threejs-examples/) in which I am working out a crude yet effective proof of concept of this idea of lerping the state of a position attribute of one buffer geometry between two differing states.
 
 So in other words I am thinking in terms of having two geometries with similar, and ideally an identical count of vertices in the position attribute. On top of having more or less the same count of vertices the order of the vertices is also of importance I have found as if that is not the case this can result in a less than desired outcome with the effect.
+
+Sense I first wrote this post I have got around to working out some demos on morph attributes of buffer geometry objects though as well. It turns out that morph attributes are a great way to go about doing this sort of thing that involve sticking to some standards. So with that said future revisions of this threejs example will involve the use of morph attributes as a way to lerp between two or more position attributes of buffer geometry. In addition morph attributes are a great way to do this sort of thing with all attributes beyond just that of the position attribute.
 
 <!-- more -->
 
