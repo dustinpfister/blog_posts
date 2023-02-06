@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2023-01-27 12:16:16
-version: 1.106
+updated: 2023-02-06 17:38:40
+version: 1.107
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -136,11 +136,11 @@ This is an example that I worked out that is an attempt at a 3d view for my Mr S
 
 If I get a solid idea for the core of what the game should be I might like to experiment with a 3d view for the game, so this example is just that.
 
-### [ 2.23 - Lerp position attributes of buffer geometries](/2022/07/01/threejs-examples-lerp-geo/) 
+### [ 2.23 - Lerp attributes of buffer geometries](/2022/07/01/threejs-examples-lerp-geo/) 
 
-This is a project centered around the idea of lerping the points  of a position attribute of one buffer geometry to another one. When doing so it is generally a good idea to make sure that the count of points in each geometry is the same. However it is not just the count of points that is of concern, but also the order in which they are. Also I have found that it is a good idea to do this with non indexed geometry as well.
+This is a project centered around the idea of lerping the points of a position attribute, and now attributes in general of one buffer geometry to another one. When doing so it is generally a good idea to make sure that the count of points in each geometry is the same. However it is not just the count of points that is of concern, but also the order in which they are that is also of importance as well. Also I have found that it is a good idea to do this with non indexed geometry or at least be aware that the index attributes can case problems with thus sort of thing.
 
-I have made a few projects actually that are this kind of deal in one form or another. Maybe my best example of this would be my many object tweening example where the aim is to do what I am doing with this project, but with many sets of geometries at the same time.
+I have made a few projects actually that are this kind of deal in one form or another. Maybe my best example of this would be my many object tweening example where the aim is to do what I am doing with this project, but with many sets of geometries at the same time. However as of R1 of this example, I can also use this as a way to lerp between many sets of geometry each of which can be consider a single state.
 
 ### [ 2.24 - Lines Group Module ](/2022/06/10/threejs-examples-lines-deterministic/) 
 
