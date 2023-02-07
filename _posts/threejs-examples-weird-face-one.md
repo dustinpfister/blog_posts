@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2023-02-07 10:27:34
-version: 1.26
+updated: 2023-02-07 10:32:15
+version: 1.27
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with loading Geometry stored in an external file that I made with blender. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -24,7 +24,7 @@ There are a number of things that you might want to look into first before readi
 
 ### There are morph attributes of buffer geometry also
 
-This is a threejs project example that I started before I got around to looking into [morph attributes of buffer geometry objects](/2023/02/03/threejs-buffer-geometry-morph-attributes). Although I will be observing this feature of buffer geometry with any future revisions of this that may or may not come to pass, this might not be such a good post to read when it comes to really learning a thing or two about animation at this time.
+This is a threejs project example that I started before I got around to looking into [morph attributes of buffer geometry objects](/2023/02/03/threejs-buffer-geometry-morph-attributes). Although I will be observing this feature of buffer geometry with any future revisions of this that may or may not come to pass, this might not be such a good post to read when it comes to really learning a thing or two about animation at this time. The R0 version of lerp geo that I used in R0 of this example which as this writing is still the latest will use the vector3 lerp method to tradition all of the points of a geometry from one position to another. Although this works okay the same can be done with morph attributes, and it is also a great way to make these kinds of transitions not just with a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) but all buffer geometry attributes as well.
 
 ### Check out the dae file loader as a way to load assets that are exported from blender
 
