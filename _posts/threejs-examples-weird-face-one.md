@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2023-02-07 08:54:24
-version: 1.20
+updated: 2023-02-07 09:01:14
+version: 1.21
 ---
 
-This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
+This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with loading Geometry stored in an external file that I made with blender. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
 
-Although these kinds of informal models that are just groups of mesh objects with built in geometries work okay when it comes to a very crude kind of style, I am thinking that I should make an effort to go in the direction of making a more professional kind of model to at least some extent. This kind of hybrid model that I have in mind involves geometries that are created in a program like blender, and then I use my lerp geometry method to allow for animation of certain features, for this weird face one model I am doing this with the mouth.
+Although these kinds of informal models that are just [groups of mesh objects](/2018/05/16/threejs-grouping-mesh-objects/) with built in geometries work okay when it comes to a very crude kind of style, I am thinking that I should make an effort to go in the direction of making a more professional kind of model to at least some extent. This kind of hybrid model that I have in mind involves geometries that are created in a program like blender, and then I use my lerp geometry method to allow for animation of certain features. I am sure that this will not be the last kind of module like this as I learn more about threejs, as well as other topics that have to do with 3d modeling in general. However I have to start somewhere when it comes to getting away from what I have been doing thus far that is just not what I want to do all the time for every project idea this far.
 
 <!-- more -->
 
@@ -111,7 +111,7 @@ Here is the source code of the [lerp geometry function that I worked on in an ol
 
 ## 3 - Dae tools module
 
-Another file that I am using for this example is my DAE tools file, this is yet another file on top of the DAE loader itself that is an additional threejs file that can be found in the threejs github repository. This is yet another one of my threejs examples that is a kind of work in progress, I have found that there are often some additional things that I want to do with DAE files beyond that of just loading them but I am not fully sure what that all is at this point so the module is a little thin and is for the most part just some abstractions for using the loader that help be to make sure that I am using it in a way that works well when loading one or more dae files along with any additional texture assets.
+Another file that I am using for this example is my [DAE tools file](/2021/06/25/threejs-examples-dae-tools/), this is yet another file on top of the DAE loader itself that is an additional threejs file that can be found in the threejs github repository. This is yet another one of my threejs examples that is a kind of work in progress, I have found that there are often some additional things that I want to do with DAE files beyond that of just loading them but I am not fully sure what that all is at this point so the module is a little thin and is for the most part just some abstractions for using the loader that help be to make sure that I am using it in a way that works well when loading one or more dae files along with any additional texture assets.
 
 ```js
 // dae-tools.js - R2 = from threejs-examples-dae-tools
