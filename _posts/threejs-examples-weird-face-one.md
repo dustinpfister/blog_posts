@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2023-02-07 09:13:41
-version: 1.24
+updated: 2023-02-07 10:18:51
+version: 1.25
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with loading Geometry stored in an external file that I made with blender. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -44,7 +44,7 @@ When I was first writing this post I was using r140 of threejs along with recent
 
 ## 1 - The Weird face module, addtional files, and demos R0
 
-In this section I am writing about R0 of the weird face module.
+In this section I am writing about R0 of the weird face module that I started before I learned a thing or two about morph attributes. The weird face module works on top of R0 of my lerp geo module to which as of this writing there is an R1 of the module that does make use of morph attributes. However also as of the time of this writing I have not made an updated revision of weird face as I still want to refine some things in that supporting module first.
 
 ### 1.a - The weird face module
 
@@ -214,8 +214,7 @@ Another file that I am using for this example is my [DAE tools file](/2021/06/25
 
 ### 1.1 - Basic Demo of werid face module and additional tools
 
-Now I can load the dae files that I want to use, set up some local variables, along with an animation loops and the usual threejs objects to create a scene.
- At the bottom of the main file I am using the create and load all method of my dae tools module to load two dae files one of which is the main file, and the additional one contains mouth geometry options. This is just the way that I made the model thus far and in any future revisions of this I might go with some kind of standard where I have all the objects that I want in a single DAE file.
+Now I can load the DAE files that I want to use, set up some local variables, along with an animation loops and the usual threejs objects to create a scene. At the bottom of this first demo of the weird face module I am using the create and load all method of my DAE tools module to load two DAE files one of which is the main file, and the additional one contains mouth geometry options. This is just the way that I made the model thus far and in any future revisions of this I might go with some kind of standard where I have all the objects that I want in a single DAE file. There is still a great deal of things that I would like to refine more when it comes to not just this project but any and all kinds of projects like this one.
 
 ```js
 //******** **********
