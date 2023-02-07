@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2023-02-07 09:01:14
-version: 1.21
+updated: 2023-02-07 09:08:23
+version: 1.22
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with loading Geometry stored in an external file that I made with blender. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -20,7 +20,7 @@ Although these kinds of informal models that are just [groups of mesh objects](/
 
 ## The Weird face one example and what to know first
 
-There are a number of things that you might want to look into first before reading more about this specific threejs example as this example goes beyond the [very basics of threejs](/2018/04/04/threejs-getting-started/) a fare amount. For one thing this example does not just use threejs alone but also the dae file loader as well as orbit controls. So there is more than one javaScript file being used just when it comes to what there is to work with in the threejs repository on github alone. Although I will not be going over every little detail that you should know before hand I do use this first section to mention at least a few things you might want to read up more on first.
+There are a number of things that you might want to look into first before reading more about this specific threejs example as this example goes beyond the [very basics of threejs](/2018/04/04/threejs-getting-started/) a fare amount. For one thing this example does not just use threejs alone but also the dae file loader as well as other suech files. So there is more than one javaScript file being used just when it comes to what there is to work with in the threejs repository on Github alone, and on top of that I am also using a few of my own files as well. Although I will not be going over every little detail that you should know before hand I do use this first section to mention at least a few things you might want to read up more on first.
 
 ## Check out the dae file loader as a way to load assets that are exported from blender
 
@@ -32,11 +32,11 @@ Recently I completed another threejs example project that has to do with creatin
 
 ### Full source code and additional DAE assets are at github
 
-The full source code as well as the DAE files that I am using for this example can be found in my [test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-face-1).
+The full source code as well as the DAE files that I am using for this example can be found in my [test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-weird-face-1). This is also the repo where I park the source code for my [many other blog posts on threejs](/categories/three-js/) as well. Also when it comes to complex projects such as this, cloning down the repo and getting the sever running might just be the best way to get this up and running on your end as it allows for controls over the versions of all the files that are being used and so forth.
 
 ### Version numbers matter
 
-When I was first writing this post I was using r140 of threejs along with recent versions of the DAE file loader and orbit controls and everything was working just fine on my end.
+When I was first writing this post I was using r140 of threejs along with recent versions of the DAE file loader and orbit controls and everything was working just fine on my end. In addition to this the last time I cam around to do a little editing I was using r146 of threejs and was some to get everything working just file with that version as well. At this time there are a whole lot of major code breaking changes being made up ahead, at some point I might get around to editing this post yet again but if you are having a hard time getting this working on your end the first thing to check is the version number.
 
 ## 1 - The weird face module
 
