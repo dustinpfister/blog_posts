@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2023-02-06 10:01:38
-version: 1.19
+updated: 2023-02-07 08:54:24
+version: 1.20
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with bones and skeletons. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -45,34 +45,33 @@ For the weird face module I have just a few methods that are used to update the 
 When it comes to the mouth I am suing my new lerp geometry method and when calling the method I need to give a m0 argument that is the current state of the geometry, and also a m1 argument that is the geometry that I want to lerp to. When it comes to moving the eyes of the model this is where I am still just changing object3d values of the eyes as a way to change the state of them.
 
 ```js
-// WERID FACE CONTROLS
-var weridFace = {};
- 
+// weird-face.js - R0 - from threejs-examples-weird-face-one
+const weridFace = {};
+// get bias helper
 weridFace.getBias = function(per, count){
     count = count === undefined ? 1 : count;
     return 1 - Math.abs( ( per * count % 1 ) - 0.5) / 0.5;
 };
- 
 // set mouth state
 weridFace.setMouth = function(nose, alpha, m0, m1){
-    var mouth = nose.getObjectByName('mouth');
+    const mouth = nose.getObjectByName('mouth');
     lerpGeo(mouth.geometry, m0.geometry, m1.geometry, alpha);
 };
- 
+// set eye
 weridFace.setEye = function(nose, eyeIndex, a, b, scale){
     a = a === undefined ? 0 : a;
     b = b === undefined ? 0 : b;
     scale = scale === undefined ? 1 : scale;
-    var eye = nose.getObjectByName('eye' + eyeIndex);
-    var pupil = nose.getObjectByName('pupil' + eyeIndex);
-    var radius = 0.2;
-    var e = new THREE.Euler();
+    const eye = nose.getObjectByName('eye' + eyeIndex);
+    const pupil = nose.getObjectByName('pupil' + eyeIndex);
+    const radius = 0.2;
+    const e = new THREE.Euler();
     e.x = Math.PI * 2 * b;
     e.z = Math.PI * 2 * a;
     // using set and apply euler to set position of pupil
     pupil.position.set(0, radius * -1, 0).applyEuler( e );
     pupil.scale.set(scale, scale, scale);
-    var v = new THREE.Vector3();
+    const v = new THREE.Vector3();
     eye.getWorldPosition( v );
     pupil.lookAt( v );
 };
@@ -83,31 +82,31 @@ weridFace.setEye = function(nose, eyeIndex, a, b, scale){
 Here is the source code of the [lerp geometry function that I worked on in an older threejs project example](/2022/07/01/threejs-examples-lerp-geo/). It works by passing the geometry that I want to update as the first argument, then I pass a starting and ending geometry state alone with an alpha value between the two that will be 0 to 1 value between the two geometries to set the first geometry that I am updating. I am then using the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/) to set the position of each vertex by way of a simple linear lerp between the points, and while I am also at it I update the normal attribute as well by just calling the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
 
 ```js
-let lerpGeo = function(geo, geoA, geoB, alpha){
-    alpha = alpha || 0;
-    // pos, and new pos
-    let pos = geo.getAttribute('position');
-    let norm = geo.getAttribute('normal');
-    // positions for a and b
-    let posA = geoA.getAttribute('position');
-    let posB = geoB.getAttribute('position');
-    // normals for a and b
-    let normA = geoA.getAttribute('normal');
-    let normB = geoB.getAttribute('normal');
-    // update position
-    let i = 0, len = pos.array.length;
-    while(i < len){
-        let v = new THREE.Vector3(posA.array[i], posA.array[i + 1], posA.array[i + 2]);
-        let v2 = new THREE.Vector3(posB.array[i], posB.array[i + 1], posB.array[i + 2]);
-        v.lerp(v2, alpha);
-        pos.array[i] = v.x;
-        pos.array[i + 1] = v.y;
-        pos.array[i + 2] = v.z;      
-        i += 3;
-    }
-    pos.needsUpdate = true;
-    geo.computeVertexNormals();
-};
+// lerpgeo.js - r0 - from threejs-examples-lerp-geo
+(function (global) {
+    // THE OLD R0 LERP GEO FUNCTION
+    global.lerpGeo = function(geo, geoA, geoB, alpha){
+        alpha = alpha || 0;
+        // get refs to position attributes
+        const pos = geo.getAttribute('position');
+        const posA = geoA.getAttribute('position');
+        const posB = geoB.getAttribute('position');
+        // loop over pos and lerp between posA and posB
+        let i = 0; 
+        const len = pos.array.length;
+        while(i < len){
+            const v = new THREE.Vector3(posA.array[i], posA.array[i + 1], posA.array[i + 2]);
+            const v2 = new THREE.Vector3(posB.array[i], posB.array[i + 1], posB.array[i + 2]);
+            v.lerp(v2, alpha);
+            pos.array[i] = v.x;
+            pos.array[i + 1] = v.y;
+            pos.array[i + 2] = v.z;
+            i += 3;
+        }
+        pos.needsUpdate = true;
+        geo.computeVertexNormals();
+    };
+}(this));
 ```
 
 ## 3 - Dae tools module
@@ -115,9 +114,8 @@ let lerpGeo = function(geo, geoA, geoB, alpha){
 Another file that I am using for this example is my DAE tools file, this is yet another file on top of the DAE loader itself that is an additional threejs file that can be found in the threejs github repository. This is yet another one of my threejs examples that is a kind of work in progress, I have found that there are often some additional things that I want to do with DAE files beyond that of just loading them but I am not fully sure what that all is at this point so the module is a little thin and is for the most part just some abstractions for using the loader that help be to make sure that I am using it in a way that works well when loading one or more dae files along with any additional texture assets.
 
 ```js
-// dae tools r2
+// dae-tools.js - R2 = from threejs-examples-dae-tools
 (function (api) {
- 
     // create aa daeObjects state object
     api.create = function (opt) {
         opt = opt || {};
@@ -129,7 +127,6 @@ Another file that I am using for this example is my DAE tools file, this is yet 
         };
         return state;
     };
- 
     // load one dae file
     api.loadOne = function(daeObjects, url, onFileLoad){
         // I will want a manager for this
@@ -165,7 +162,6 @@ Another file that I am using for this example is my DAE tools file, this is yet 
              );
         });
     };
- 
     // load a collection of dea files
     api.loadAll = function(daeObjects, opt){
         opt = opt || {};
@@ -190,7 +186,6 @@ Another file that I am using for this example is my DAE tools file, this is yet 
             daeObjects.onLoad(daeObjects, daeObjects.results);
         });
     };
- 
     // create a group from a dae result object
     api.createGroup = function(daeObjects, what){
         var result = typeof what === 'object' ? what : daeObjects.results[what];
@@ -205,96 +200,98 @@ Another file that I am using for this example is my DAE tools file, this is yet 
         group.rotation.copy(result.scene.rotation);
         return group;
     };
- 
 }
     (this['DAE'] = {}));
 ```
 
-## 4 - Main javaScript file
+### 1.1 - Basic Demo of werid face module and additional tools
 
 Now I can load the dae files that I want to use, set up some local variables, along with an animation loops and the usual threejs objects to create a scene.
  At the bottom of the main file I am using the create and load all method of my dae tools module to load two dae files one of which is the main file, and the additional one contains mouth geometry options. This is just the way that I made the model thus far and in any future revisions of this I might go with some kind of standard where I have all the objects that I want in a single DAE file.
 
 ```js
-(function () {
-    //******** **********
-    // SCENE, CAMERA, RENDERER, LIGHT
-    //******** **********
-    var scene = new THREE.Scene();
-    scene.background = new THREE.Color('#444444');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
-    camera.position.set(1.5, 0.25, 1.5);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    var dl = new THREE.DirectionalLight(0xffffff, 1);
-    dl.position.set(2, 1, 3)
-    scene.add(dl);
-    //******** **********
-    // CONTROL
-    //******** **********
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
-    //******** **********
-    // APP LOOP
-    //******** **********
-    var frame = 0, frameMax = 300,
-    nose, m0, m1;
-    var loop = function () {
-        requestAnimationFrame(loop);
-        renderer.render(scene, camera);
-        var per = frame / frameMax;
-        // UPDATE EYES
-        var eBias = weridFace.getBias(per, 2);
-        var pBias = weridFace.getBias(per, 8);
-        var a = -0.10 + 0.20 * eBias;
-        weridFace.setEye(nose, 1, a, 0, 0.75 + 0.25 * pBias);
-        weridFace.setEye(nose, 2, a, 0, 0.75 + 0.25 * pBias);
-        // UPDATE MOUTH
-        var mBias = weridFace.getBias(per, 16);
-        weridFace.setMouth(nose, mBias, m0, m1);
-        // UPDATE NOSE
-        var nBias = weridFace.getBias(per, 1);
-        nose.position.y = 0.2 + -0.1 + 0.2 * nBias;
-        nose.rotation.y = 1 - 1.2 * nBias;
-        // step frame
-        frame += 1;
-        frame %= frameMax;
-    };
-    //******** **********
-    // USING DAE TOOLS TO LOAD THE *.dae FILE CONTENTS
-    //******** **********
-    var daeObjects = DAE.create({
-        onItemProgress: function(per, n, d){
-            console.log('progress: ' + per.toFixed(2) + ' ( ' + n + '/' + d + ' )');
-        },
-        onFileLoad: function(result, allResults, daeObjects){
-            console.log('fileLoad');
-        },
-        onLoad: function(daeObjects, results){
-            results.forEach(function(result){
-                var rScene = result.scene;
-                // nose object?
-                if(rScene.getObjectByName('nose')){
-                    nose = rScene.getObjectByName('nose');
-                    scene.add(nose);
-                }
-                // mouth object?s
-                if(rScene.getObjectByName('mouth-0')){
-                    m0 = rScene.getObjectByName('mouth-0');
-                    m1 = rScene.getObjectByName('mouth-1');
-                }
-            });
-            loop();
-        }
-    });
-    // load dae files
-    DAE.loadAll(daeObjects, {
-        baseUrl: '/dae/weird-face-1',
-        relUrls: ['weird-face-1c.dae', 'mouths-1c.dae']
-    });
-}());
+//******** **********
+// SCENE, CAMERA, RENDERER, LIGHT
+//******** **********
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#444444');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(2, 1, 3)
+scene.add(dl);
+//******** **********
+// CONTROL
+//******** **********
+let controls = null;
+if(THREE.OrbitControls){
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+}
+//******** **********
+// APP LOOP
+//******** **********
+camera.position.set(1.5, 0.25, 1.5);
+camera.lookAt(0, 0, 0);
+let frame = 0, nose, m0, m1; 
+const frameMax = 300;
+const loop = function () {
+    requestAnimationFrame(loop);
+    renderer.render(scene, camera);
+    const per = frame / frameMax;
+    // UPDATE EYES
+    const eBias = weridFace.getBias(per, 2);
+    const pBias = weridFace.getBias(per, 8);
+    const a = -0.10 + 0.20 * eBias;
+    weridFace.setEye(nose, 1, a, 0, 0.75 + 0.25 * pBias);
+    weridFace.setEye(nose, 2, a, 0, 0.75 + 0.25 * pBias);
+    // UPDATE MOUTH
+    const mBias = weridFace.getBias(per, 16);
+    weridFace.setMouth(nose, mBias, m0, m1);
+    // UPDATE NOSE
+    const nBias = weridFace.getBias(per, 1);
+    nose.position.y = 0.2 + -0.1 + 0.2 * nBias;
+    nose.rotation.y = 1 - 1.2 * nBias;
+    // step frame
+    frame += 1;
+    frame %= frameMax;
+};
+//******** **********
+// USING DAE TOOLS TO LOAD THE *.dae FILE CONTENTS
+//******** **********
+const daeObjects = DAE.create({
+    onItemProgress: function(per, n, d){
+        console.log('progress: ' + per.toFixed(2) + ' ( ' + n + '/' + d + ' )');
+    },
+    onFileLoad: function(result, allResults, daeObjects){
+        console.log('fileLoad');
+    },
+    onLoad: function(daeObjects, results){
+        results.forEach(function(result){
+            var rScene = result.scene;
+            // nose object?
+            if(rScene.getObjectByName('nose')){
+                nose = rScene.getObjectByName('nose');
+                scene.add(nose);
+            }
+            // mouth object?s
+            if(rScene.getObjectByName('mouth-0')){
+                m0 = rScene.getObjectByName('mouth-0');
+                m1 = rScene.getObjectByName('mouth-1');
+            }
+        });
+        loop();
+    }
+});
+// load dae files
+DAE.loadAll(daeObjects, {
+    baseUrl: '/dae/weird-face-1',
+    relUrls: ['weird-face-1c.dae', 'mouths-1c.dae']
+});
 ```
 
 ## Conclusion
