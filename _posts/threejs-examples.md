@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2023-02-06 17:38:40
-version: 1.107
+updated: 2023-02-07 10:24:26
+version: 1.108
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -244,7 +244,9 @@ As of R1+ of this project this is now starting to look like an okay example of h
 
 ### [ 2.45 - Weird face one](/2022/07/08/threejs-examples-weird-face-one/) 
 
-Updating the state of a geometries is something that can be done in a wide range of ways. There is looking into use bones as a way to do so, but then there is also just working out all kinds of various ways that have to do with updating the state of geometry using a little javaScript code. For this weird face one example I am using the lerp geometry method that I made for a previous example to lerp between to states of a geometry for a mouth of a weird looking face. On top of that I am also making use of other ways of creating a kind of animation my just moving the position of mesh objects which is what I am using with the eyes of this weird face model.
+Updating the state of a geometries is something that can be done in a wide range of ways. There is looking into the use of bones as a way to do so, and there are also morph attributes as well that I think is one of the best ways to get started with this sort of thing thus far. However this is an older threejs project example in which I knew enough about threejs as to how to update geometry with a little custom javaScript code but have not yet got around to learning a thing or two about morph attributes. 
+
+For this weird face one example I am using the lerp geometry method that I made for a previous example to lerp between to states of a geometry for a mouth of a weird looking face. On top of that I am also making use of other ways of creating a kind of animation my just moving the position of mesh objects which is what I am using with the eyes of this weird face model. So then this is one of my many hybrid modules that I have made that is a kind of stepping stone between a kind of informal model and a more processional kind of model that is made in a  program like blender and then imported into threejs.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/AzuB6ExUE64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
