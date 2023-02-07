@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 995
-updated: 2023-02-07 09:08:23
-version: 1.22
+updated: 2023-02-07 09:10:20
+version: 1.23
 ---
 
 This week the main [threejs project](/2021/02/19/threejs-examples/) that I worked on a little was my weird face one example in which I am making a kind of hybrid model between the kind of models that I have made thus far, and a more professional kind of model that I still have not got around to learning how to make just yet that has to do with loading Geometry stored in an external file that I made with blender. That is that so far I have been making informal models in the form of having mesh objects with geometries that are created using the built in geometry constructors, the oldest example of this would be my [guy one model](/2021/04/29/threejs-examples-guy-one/).
@@ -38,7 +38,11 @@ The full source code as well as the DAE files that I am using for this example c
 
 When I was first writing this post I was using r140 of threejs along with recent versions of the DAE file loader and orbit controls and everything was working just fine on my end. In addition to this the last time I cam around to do a little editing I was using r146 of threejs and was some to get everything working just file with that version as well. At this time there are a whole lot of major code breaking changes being made up ahead, at some point I might get around to editing this post yet again but if you are having a hard time getting this working on your end the first thing to check is the version number.
 
-## 1 - The weird face module
+## 1 - The Weird face module, addtional files, and demos R0
+
+In this section I am writing about R0 of the weird face module.
+
+### 1.a - The weird face module
 
 For the weird face module I have just a few methods that are used to update the state of one of these weird face objects that I load into a project by way of a DAE file loader. When doing so the main root object of the weird face object is the nose object to which the eyes and mouth are children off. So then I have a set mouth method and set eye method that both take the nose object as the first argument along with the additional values that are use to update the state of the weird face object.
 
@@ -77,7 +81,7 @@ weridFace.setEye = function(nose, eyeIndex, a, b, scale){
 };
 ```
 
-## 2 - The lerp geo function
+### 1.b - The lerp geo function
 
 Here is the source code of the [lerp geometry function that I worked on in an older threejs project example](/2022/07/01/threejs-examples-lerp-geo/). It works by passing the geometry that I want to update as the first argument, then I pass a starting and ending geometry state alone with an alpha value between the two that will be 0 to 1 value between the two geometries to set the first geometry that I am updating. I am then using the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/) to set the position of each vertex by way of a simple linear lerp between the points, and while I am also at it I update the normal attribute as well by just calling the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/).
 
@@ -109,7 +113,7 @@ Here is the source code of the [lerp geometry function that I worked on in an ol
 }(this));
 ```
 
-## 3 - Dae tools module
+### 1.c - Dae tools module
 
 Another file that I am using for this example is my [DAE tools file](/2021/06/25/threejs-examples-dae-tools/), this is yet another file on top of the DAE loader itself that is an additional threejs file that can be found in the threejs github repository. This is yet another one of my threejs examples that is a kind of work in progress, I have found that there are often some additional things that I want to do with DAE files beyond that of just loading them but I am not fully sure what that all is at this point so the module is a little thin and is for the most part just some abstractions for using the loader that help be to make sure that I am using it in a way that works well when loading one or more dae files along with any additional texture assets.
 
