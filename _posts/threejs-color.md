@@ -1,15 +1,15 @@
 ---
-title: Color in threejs
+title: The Color class in threejs a overview of features
 date: 2021-05-03 12:32:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2023-02-08 11:55:11
-version: 1.50
+updated: 2023-02-08 12:09:57
+version: 1.51
 ---
 
-When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emissive values, and much more.
+When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color and the fog color when it comes to scene objects, the color of various properties of a material such as the color and emissive values, and just about almost everything else that has to do with color.
 
 What is nice about the THREE.Color class is that the class is packed with a number of features that allow for me to create a color in a number of different ways, including just passing three numbers for red, green and blue color channel values in the form of a number between 0 and 1 as arguments when calling the constructor function. Regardless of how I create the color what is returned is an instance of THREE.Color, rather than a string value for a color, and as such there is a red, green, and blue property of the object. There are also a great number of prototype methods that have to do with mutating these values, or returning values based off the state of these properties, or changing the state of the color. For example there is a get hex method that will return a hex string value of the color, and a set RGB method that will change the value of the color by r, g, and b values.
 
@@ -22,27 +22,27 @@ So in this post I will be going over a number of typical use case examples of th
 
 ## THREE.Color and what to know first
 
-This is a post on the THREE.Color constructor in the javaScript library three.js, this is not a post on the [basics of getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general, so I assume that you have at least some background with these subjects before hand. I will then not be getting into great detail about threejs as well as the subject of color in general when it comes to client side javaScript. Still in this section I will be going over a few key details that you might want to read up more on that are relevant to the rest of the content of this post.
+This is a post on the THREE.Color constructor in the javaScript library called threejs, this is not a post on the [basics of getting started with threejs](/2018/04/04/threejs-getting-started/), or client side [javaScript in general](/2018/11/27/js-getting-started/), so I assume that you have at least some background with these subjects before hand. I will then not be getting into great detail about threejs as well as the subject of color in general when it comes to client side javaScript. Still in this section I will be going over a few key details that you might want to read up more on that are relevant to the rest of the content of this post.
 
 ### A Transparent effect is a whole other can of worms
 
-When it comes to working with color in a general client side javaScript environment there are ways of having an alpha channel for a color. In the THREE.Color class there are just properties for red, green, and blue, but not for an alpha channel. It is of course possible to make [materials transparent](/2021/04/21/threejs-materials-transparent/), but doing so involves setting the transparency Boolean for the material to true, and then it is the opacity property of a material that will act as the alpha channel value. 
+When it comes to working with color in a client side javaScript environment there are ways of having an alpha channel for a color. In the THREE.Color class there are just properties for red, green, and blue, but not for an alpha channel. It is of course possible to make [materials transparent](/2021/04/21/threejs-materials-transparent/), but doing so involves setting the transparency Boolean for the material to true, and then it is the opacity property of a material that will act as the alpha channel value. 
 
 ### Check out more on what there is to know about materials
 
-There are a number of reasons as to why I would want to create an instance of threejs, one of which is to create a value to be used with one of the various properties of one or more kinds of materials. However what properties are what when it comes to creating or change a color value will change a little from one material to another. For example when it comes to the basic material it is more or less just the color property that I care about, but when it comes to the standard material there is the color and emissive property that I need to be aware of.
+There are a number of reasons as to why I would want to create an instance of color, one of which is to create a value to be used with one of the various properties of one or more kinds of [mesh materials](/2018/04/30/threejs-materials/). However what properties are what when it comes to creating or change a color value will change a little from one material to another. For example when it comes to the [basic material](/2018/05/05/threejs-basic-material/) it is more or less just the color property that I care about, but when it comes to the [standard material](/2021/04/27/threejs-standard-material), or the [phong material](/2022/12/29/threejs-phong-material/), there is the color and emissive property that I need to be aware of.
 
 ### Creating textures from javaScript code
 
-Another use case for the threejs color class is to use it to create one or more colors that I will then use to create textures by way of javaScript code rather and a static external image asset. There are a number of ways to do this such as with the data texture constructor, or the canvas texture constructor.
-
-### Version Numbers matter with three.js
-
-When I first wrote this post I was using r127 of three.js which was a late version of three.js in April of 2021. The last time I came around to doing a little editing I was then also using r135 of threejs when checking out the source code examples. Code breaking changes are made to three.js all the time, so be sure to always check the version of three.js that you are using relative to the dates of the code examples that you are looking at on the open web.
+Another use case for the threejs color class is to use it to create one or more colors that I will then use to create textures by way of javaScript code rather and a static external image asset. There are a number of ways to do this such as with the [data texture constructor](/2022/04/15/threejs-data-texture/), or the [canvas texture constructor](/2018/04/17/threejs-canvas-texture/).
 
 ## The source code examples in this post, and in many others is on Github
 
-The source code examples that I am writing about in this post, as well as for many of my [other posts on threejs](/categories/three-js/), can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-color).
+The source code examples that I am writing about in this post, as well as for many of my [other posts on threejs](/categories/three-js/), can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-color). Cloding down the repo, installing the node modules, and running the server would be the best way to quickly get things up and ruining on your end if you would like to see all of these examples in action.
+
+### Version Numbers matter with three.js
+
+When I first wrote this post I was using r127 of threejs which was a late version of three.js in April of 2021. The last time I came around to doing editing with this post I was then using r146 of threejs when checking out the source code examples. Code breaking changes are made to threejs all the time, so be sure to always check the version that you are using relative to the dates of the code examples that you are looking at on the open web.
 
 ## 1 - Basic color example involving setting the color property of a material
 
@@ -595,5 +595,4 @@ loop();
 
 ## Conclusion
 
-Well I think that might be it for now at least when it comes to the THREE.Color constructor in three.js until I get around to editing this post. There is not just setting solid color values though when it comes to everything that has to do with color in three.js though. There is a great deal more to write about when it comes to color and the various types of texture maps there are to work with when ti comes to creating a material for example. With an alpha map for example I want to set the colors of the various pixels to colors that are gray scale rather than solid colors as gray scale colors are what are used to set levels of transparency for the alpha map. When creating a texture for a mesh I might often use a canvas element, so setting the color values for the texture might not make use of the THREE.Color constrictor but that is never the less one of many additional little details that have to do with color in three.js.
-
+Well I think that might be it for now at least when it comes to the THREE.Color constructor in three.js until I get around to editing this post. There is not just setting solid color values though when it comes to everything that has to do with color in three.js though. There is a great deal more to write about when it comes to color and the various types of texture maps there are to work with when ti comes to creating a material for example. With an alpha map for example I want to set the colors of the various pixels to colors that are gray scale rather than solid colors as gray scale colors are what are used to set levels of transparency for the alpha map. When creating a texture for a mesh I might often use a canvas element, so setting the color values for the texture might not make use of the THREE.Color constrictor but that is never the less one of many additional little details that have to do with color in threejs.
