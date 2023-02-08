@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2023-02-08 12:44:13
-version: 1.53
+updated: 2023-02-08 12:47:26
+version: 1.54
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color and the fog color when it comes to scene objects, the color of various properties of a material such as the color and emissive values, and just about almost everything else that has to do with color.
@@ -83,7 +83,9 @@ renderer.render(scene, camera);
 
 In this example it is just the color property of the basic material that I am setting a solid color for with the color class. Although this example works okay for a starting point one thing that is a pain about this is that I just end up with one big solid mass of color. If I want to have some sense of depth there is doing a number of things that can help with that. There is of course getting into using a material that will respond to a light source for sure which would be one way to address this. However for the sake of this basic section I think I should stick to the basic material and what there is to work with when it comes to other options that can be sued to add some depth.
 
-### 1.2 - 
+### 1.2 - Using lines and adding them as a child for a mesh object, and setting color for that as well
+
+One way to add some depth to the object is to create some lines based on the same geometry as a mesh object, and then add that as a child of the mesh object. When making a Line object I have to stick to using special materials that are made for line objects rather than mesh objects. When doing so I can also set the color option of line materials with a color object as well.
 
 ```js
 //-------- ----------
