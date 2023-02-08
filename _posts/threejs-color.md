@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2023-02-08 12:21:00
-version: 1.52
+updated: 2023-02-08 12:44:13
+version: 1.53
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color and the fog color when it comes to scene objects, the color of various properties of a material such as the color and emissive values, and just about almost everything else that has to do with color.
@@ -44,7 +44,11 @@ The source code examples that I am writing about in this post, as well as for ma
 
 When I first wrote this post I was using r127 of threejs which was a late version of three.js in April of 2021. The last time I came around to doing editing with this post I was then using r146 of threejs when checking out the source code examples. Code breaking changes are made to threejs all the time, so be sure to always check the version that you are using relative to the dates of the code examples that you are looking at on the open web.
 
-## 1 - Basic color example involving setting the color property of a material
+## 1 - Basic examples section of the THREE.Color class
+
+For this very first section I will be trying my best to avoid doing anything fancy as this will be the basic getting started section of the color class. So for these examples I will be avoiding the use of animation loops, lights, textures, and so forth. The focus then will be on the color class and just some basic features of threejs and the usual set of objects that are needed for any threejs project examples.
+
+### 1.1 - Color property of a Mesh material
 
 To start out here how about a basic use case example of the THREE.Color constructor where I am just setting the regular color property of a material, and then using that material with a mesh object and some geometry that was created with one of the built in geometry constructor functions. 
 
@@ -78,6 +82,38 @@ renderer.render(scene, camera);
 ```
 
 In this example it is just the color property of the basic material that I am setting a solid color for with the color class. Although this example works okay for a starting point one thing that is a pain about this is that I just end up with one big solid mass of color. If I want to have some sense of depth there is doing a number of things that can help with that. There is of course getting into using a material that will respond to a light source for sure which would be one way to address this. However for the sake of this basic section I think I should stick to the basic material and what there is to work with when it comes to other options that can be sued to add some depth.
+
+### 1.2 - 
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const color1 = new THREE.Color(0.0,0.5,0.5);
+const color2 = new THREE.Color(0.8,0.8,0.8);
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const material_mesh = new THREE.MeshBasicMaterial({ color: color1 });
+const mesh1 = new THREE.Mesh( geometry,material_mesh);
+// adding a line as a child of the mesh object
+const material_line = new THREE.LineBasicMaterial({ color: color2, linewidth: 6 })
+const line1 = new THREE.LineSegments(new THREE.EdgesGeometry(geometry), material_line)
+mesh1.add(line1)
+scene.add(mesh1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 1.5, 1);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 ## 2 - Setting Color and Emissive Color with THREE.Color
 
