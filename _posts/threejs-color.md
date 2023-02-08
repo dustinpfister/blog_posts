@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2023-02-08 12:09:57
-version: 1.51
+updated: 2023-02-08 12:21:00
+version: 1.52
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color and the fog color when it comes to scene objects, the color of various properties of a material such as the color and emissive values, and just about almost everything else that has to do with color.
@@ -46,9 +46,9 @@ When I first wrote this post I was using r127 of threejs which was a late versio
 
 ## 1 - Basic color example involving setting the color property of a material
 
-So first things first how about a basic use case example of the THREE.Color constructor where I am just setting the regular color property of a material of a cube created with the Box geometry constructor. When setting the color value of a material it is important to take into consideration what kind of material it is to begin with. In this example I am using the Standard material which is a kind of material that will respond to a light source. So when using this kind of material, and setting a color for it, I need to also add a light to the scene. However if I was using the basic material I would not have to bother with a light, and the color property of that material is used to just set what the basic solid color of the material is.
+To start out here how about a basic use case example of the THREE.Color constructor where I am just setting the regular color property of a material, and then using that material with a mesh object and some geometry that was created with one of the built in geometry constructor functions. 
 
-In this example I am also using the THREE.Color constructor to set the color of the Point Light that I am using for a light source for the box that is skinned with the standard material. When I create a color for a point light I typically will want to keep it white like in this example, but if I make the color of the mesh while I can set the color of the point light to something else. Another cool thing to get into is having an array of point lights, and set different colors to each of them and place them in different areas of a scene, but that might all be a little to much for now. I wanted to keep this example relative basic.
+When setting the color value of a material it is important to take into consideration what kind of material it is to begin with. In this example I am using the basic material which is a kind of material that does not work with light sources. This will help to keep the example a little more basic as I do not need to add additional objects to the scene that add light to the over all scene. However one draw back of just using a solid color with the basic material is that I get a solid mass of color in the screen. Still when it comes to just getting started with this sort of thing this will work okay for a basic example.
 
 ```js
 //-------- ----------
@@ -77,7 +77,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-So in this example it is just the color property of the standard material that I am setting a solid color for. However when it comes to the standard material it is not just the color property that is of interest as there is also the emissve property also that I can set with the THREE.Color class. So lets look at a few more examples that have to do with the standard material and using the THREE.Color constructor.
+In this example it is just the color property of the basic material that I am setting a solid color for with the color class. Although this example works okay for a starting point one thing that is a pain about this is that I just end up with one big solid mass of color. If I want to have some sense of depth there is doing a number of things that can help with that. There is of course getting into using a material that will respond to a light source for sure which would be one way to address this. However for the sake of this basic section I think I should stick to the basic material and what there is to work with when it comes to other options that can be sued to add some depth.
 
 ## 2 - Setting Color and Emissive Color with THREE.Color
 
