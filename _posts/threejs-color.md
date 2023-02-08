@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2022-07-20 11:54:23
-version: 1.49
+updated: 2023-02-08 11:55:11
+version: 1.50
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene object, the fog color of a scene object, the color of various properties of a material such as the color and emissive values, and much more.
@@ -17,12 +17,12 @@ So in this post I will be going over a number of typical use case examples of th
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/QFYxHbt83os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## THREE.Color and what to know first
 
 This is a post on the THREE.Color constructor in the javaScript library three.js, this is not a post on the [basics of getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general, so I assume that you have at least some background with these subjects before hand. I will then not be getting into great detail about threejs as well as the subject of color in general when it comes to client side javaScript. Still in this section I will be going over a few key details that you might want to read up more on that are relevant to the rest of the content of this post.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/QFYxHbt83os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ### A Transparent effect is a whole other can of worms
 
@@ -51,33 +51,29 @@ So first things first how about a basic use case example of the THREE.Color cons
 In this example I am also using the THREE.Color constructor to set the color of the Point Light that I am using for a light source for the box that is skinned with the standard material. When I create a color for a point light I typically will want to keep it white like in this example, but if I make the color of the mesh while I can set the color of the point light to something else. Another cool thing to get into is having an array of point lights, and set different colors to each of them and place them in different areas of a scene, but that might all be a little to much for now. I wanted to keep this example relative basic.
 
 ```js
-// creating a box mesh with the Box Geometry constructor,
-// and the normal material
-var box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshStandardMaterial({
-            color: new THREE.Color(1, 0, 0)
-        }));
- 
-// creating a scene
-var scene = new THREE.Scene();
- 
-// add the box mesh to the scene
-scene.add(box);
- 
-// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
-light.position.set(1, 3, 2);
-scene.add(light);
- 
-// camera
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1.2, 1);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        color: new THREE.Color(1, 0, 0)
+    })
+);
+scene.add(mesh1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1, 1.5, 1);
 camera.lookAt(0, 0, 0);
-// renderer
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
@@ -88,35 +84,37 @@ So in this example it is just the color property of the standard material that I
 Another property of interest when it comes to setting the color values of a material that responds to light is the emissive property of a material. This property is a color that will be used always regardless of what the situation might be when  it comes to what is going on with light in the scene. Just like with the color property the emissive property can also be set with a color object created with THREE.Color. When doing so I will often want to adjust the emissive intensity of the material as I might now always want the emmisve color to be full bast of course.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
- 
-// Box With a material that uses a color, and emissive color
-var box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshStandardMaterial({
-            color: new THREE.Color(1, 1, 1),
-            emissiveIntensity: 0.8,
-            emissive: new THREE.Color(1, 0, 0)
-        }));
- 
-// add the box mesh to the scene
-scene.add(box);
- 
-// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
-light.position.set(1, 3, 2);
-scene.add(light);
- 
-// camera
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1, 1);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        color: new THREE.Color(1, 1, 1),
+        emissiveIntensity: 0.8,
+        emissive: new THREE.Color(1, 0, 0)
+    })
+);
+scene.add(mesh1);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const pl = new THREE.PointLight(new THREE.Color(1, 1, 1));
+pl.position.set(1, 3, 2);
+scene.add(pl);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1, 1.5, 1);
 camera.lookAt(0, 0, 0);
-// renderer
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
 renderer.render(scene, camera);
 ```
 
@@ -131,46 +129,56 @@ You see in order to use the emissive map property of a material I will want to h
 Anyway when it comes to setting a fill style or stroke style I can not just use the THREE.Color object directly, however I can call the get style method of a THREE.Color instance and then use the resulting string to set such a value.
 
 ```js
-var createCanvasTexture = function (draw) {
-    var canvas = document.createElement('canvas'),
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const createCanvasTexture = function (draw) {
+    const canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
+    canvas.width = 32;
+    canvas.height = 32;
     draw(ctx, canvas);
     return new THREE.CanvasTexture(canvas);
 };
- 
-var COLOR_EMISSIVE_MAP_FRONT = new THREE.Color(1, 1, 1);
- 
-var texture = createCanvasTexture(function (ctx, canvas) {
-        ctx.strokeStyle = COLOR_EMISSIVE_MAP_FRONT.getStyle();
-        ctx.strokeRect(1, 1, canvas.width - 1, canvas.height - 1);
-    });
- 
-// scene
-var scene = new THREE.Scene();
- 
-// mesh
-var box = new THREE.Mesh(
+//-------- ----------
+// TETURES
+//-------- ----------
+const COLOR_EMISSIVE_MAP_FRONT = new THREE.Color(1, 1, 1);
+const texture = createCanvasTexture(function (ctx, canvas) {
+    ctx.strokeStyle = COLOR_EMISSIVE_MAP_FRONT.getStyle();
+    ctx.strokeRect(1, 1, canvas.width - 1, canvas.height - 1);
+});
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const mesh1 = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshStandardMaterial({
             color: new THREE.Color(0, 1, 0),
-            emissiveIntensity: 4,
+            emissiveIntensity: 0.75,
             emissive: new THREE.Color(1, 0.5, 0),
             emissiveMap: texture
         }));
-scene.add(box);
- 
-// light
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
-light.position.set(1, 3, 2);
-scene.add(light);
- 
-// camera, render
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+scene.add(mesh1);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
+dl.position.set(1, 3, 2);
+scene.add(dl);
+//-------- ----------
+// RENDER
+//-------- ----------
 camera.position.set(1, 1, 1);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
@@ -179,57 +187,63 @@ renderer.render(scene, camera);
 Another use case example of the THREE.Color constructor would be to set the background color and or a [fog color](/2018/04/16/threejs-fog/). When doing so I typically will want to make the background color the same as the fog color, and I will also want to use the fog color for the color property of materials also. So it would make sense to have some kind of global, or constant local variable that is a fog color variable and set the color for that once with the THREE.Color Constructor. Then use that values for the scene.background property, as well as the value to pass to THREE.fogExp2 to create the value for scene.fog, and to use the color for mesh materials.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
-var fogColor = new THREE.Color(0, 1, 0);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+const fogColor = new THREE.Color(0, 1, 0);
 scene.background = fogColor;
 scene.fog = new THREE.FogExp2(fogColor, 0.4);
- 
-// Box With a material that uses a color, and emissive color
-var box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshStandardMaterial({
-            color: fogColor,
-            emissiveIntensity: 0.8,
-            emissive: new THREE.Color(1, 0, 0)
-        }));
- 
-// add the box mesh to the scene
-scene.add(box);
- 
-// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
-light.position.set(1, 3, 2);
-scene.add(light);
- 
-// camera
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------r
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        color: fogColor,
+        emissive: new THREE.Color(1, 0, 0),
+        emissiveIntensity: 0.6,
+    })
+);
+scene.add(mesh1);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const pl = new THREE.PointLight(new THREE.Color(1, 1, 1));
+pl.position.set(1, 3, 2);
+scene.add(pl);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
 camera.position.set(0, 0, 1);
 camera.lookAt(0, 0, 0);
-// renderer
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var lt = new Date(),
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
 frame = 0,
-maxFrame = 100,
-fps = 30;
-var loop = function () {
-    var now = new Date(),
-    per = frame / maxFrame,
-    bias = 1 - Math.abs(per - 0.5) / 0.5,
+lt = new Date();
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(a1 - 0.5) / 0.5;
+    mesh1.position.set(0, 0, -1 - 2.5 * a2);
+    mesh1.rotation.set(0, Math.PI * 2 * a1, Math.PI * 4 * a1);
+};
+const loop = () => {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-    if (secs > 1 / fps) {
-        box.position.set(0, 0, -1 - 4 * bias);
-        box.rotation.set(0, Math.PI * 2 * per, Math.PI * 4 * per);
+    if(secs > 1 / FPS_UPDATE){
+        update( Math.floor(frame), FRAME_MAX);
         renderer.render(scene, camera);
-        frame += fps * secs;
-        frame %= maxFrame;
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
         lt = now;
     }
- 
 };
 loop();
 ```
@@ -243,75 +257,84 @@ Now for a random color example, for this I made a few helper method one of which
 I also have a similar method when it comes to creating a random position to pace a box object, with this one I am creating an instance of Vector3 and then using the instance of vector three as an argument to be passed to the Vector3 copy method later in the source code when creating a group of box objects.
 
 ```js
-var randomColor = function () {
-    var r = Math.random(),
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const randomColor = function () {
+    const r = Math.random(),
     g = Math.random(),
     b = Math.random();
     return new THREE.Color(r, g, b);
 };
-var randomPosition = function () {
-    var x = -3 + 4 * Math.random(),
+const randomPosition = function () {
+    const x = -3 + 4 * Math.random(),
     y = -1 + 2 * Math.random(),
     z = 2 + Math.random() * 5 * -1;
     return new THREE.Vector3(x, y, z);
 };
- 
-// creating a scene
-var scene = new THREE.Scene();
- 
-// creating a group of mesh object with random colors
-var group = new THREE.Group();
-var i = 0,
-len = 15;
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const group = new THREE.Group(), len = 15;
+let i = 0;
 while (i < len) {
-    var box = new THREE.Mesh(
-            new THREE.BoxGeometry(0.5, 0.5, 0.5),
-            new THREE.MeshStandardMaterial({
-                color: randomColor(),
-                emissiveIntensity: 0.8,
-                emissive: randomColor()
-            }));
-    box.position.copy(randomPosition());
-    group.add(box);
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5, 0.5, 0.5),
+        new THREE.MeshStandardMaterial({
+            color: randomColor(),
+            emissiveIntensity: 0.8,
+            emissive: randomColor()
+        })
+    );
+    mesh.position.copy(randomPosition());
+    group.add(mesh);
     i += 1;
 }
 scene.add(group);
- 
-// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
-light.position.set(1, 3, 2);
-scene.add(light);
- 
-// camera
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const pl = new THREE.PointLight(new THREE.Color(1, 1, 1));
+pl.position.set(1, 3, 2);
+scene.add(pl);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
 camera.position.set(3, 3, 3);
 camera.lookAt(0, 0, 0);
-// renderer
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var lt = new Date(),
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
 frame = 0,
-maxFrame = 200,
-fps = 30;
-var loop = function () {
-    var now = new Date(),
-    per = frame / maxFrame,
-    bias = 1 - Math.abs(per - 0.5) / 0.5,
+lt = new Date();
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(a1 - 0.5) / 0.5;
+        group.children.forEach(function (box) {
+            box.rotation.set(0, Math.PI * 2 * a1, Math.PI * 4 * a1);
+        });
+        group.rotation.y = Math.PI * 2 * a1;
+};
+const loop = () => {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-    if (secs > 1 / fps) {
-        group.children.forEach(function (box) {
-            box.rotation.set(0, Math.PI * 2 * per, Math.PI * 4 * per);
-        });
-        group.rotation.y = Math.PI * 2 * per;
+    if(secs > 1 / FPS_UPDATE){
+        update( Math.floor(frame), FRAME_MAX);
         renderer.render(scene, camera);
-        frame += fps * secs;
-        frame %= maxFrame;
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
         lt = now;
     }
- 
 };
 loop();
 ```
@@ -323,48 +346,60 @@ When it comes to some kind of simple random color example such as this there are
 So I have covered some example that have to do with creating an instance of color, and using that color when it comes to things like setting the background color of a scene object, or colors that can be used when drawing to a canvas element to be used for a texture in an emissive map. Now I am thinking that I will wan to make at least one of not more examples that have to do with mutation of a color object instance over time.
 
 ```js
+//-------- ----------
 // SCENE, CAMERA, RENDERER
-var scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const pl = new THREE.PointLight(new THREE.Color(1, 1, 1));
+pl.position.set(1, 3, 2);
+scene.add(pl);
+//-------- ----------
+// OBJECTS
+//-------- ----------
 scene.add(new THREE.GridHelper(8,8))
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
-light.position.set(1, 3, 2);
-scene.add(light);
-// Mesh
-var color = new THREE.Color(1, 0, 0);
-var material = new THREE.MeshStandardMaterial({
+const color = new THREE.Color(1, 0, 0);
+const material = new THREE.MeshStandardMaterial({
     color: color
 })
-var mesh = new THREE.Mesh(
+const mesh = new THREE.Mesh(
     new THREE.SphereGeometry(1, 30, 30),
     material
 );
 scene.add(mesh);
-// LOOP
-var lt = new Date(),
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
 frame = 0,
-maxFrame = 200,
-fps = 30;
-var loop = function () {
-    var now = new Date(),
-    per = frame / maxFrame,
-    bias = 1 - Math.abs(per - 0.5) / 0.5,
+lt = new Date();
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(a1 - 0.5) / 0.5;
+    material.color.setRGB(a2, 1 - a2, 0);
+};
+const loop = () => {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-    if (secs > 1 / fps) {
-        material.color.setRGB(bias, 1 - bias, 0);
+    if(secs > 1 / FPS_UPDATE){
+        update( Math.floor(frame), FRAME_MAX);
         renderer.render(scene, camera);
-        frame += fps * secs;
-        frame %= maxFrame;
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
         lt = now;
     }
-
 };
 loop();
 ```
@@ -374,83 +409,95 @@ loop();
 In this example I am using the add method of a color class instance of each material or each mesh in a group of mesh objects. I just get a reference to the material that I am using for a mesh, and then I can call the add method of that color to add the values of another instance of THREE.Color to that color. I can also use the equals method to find out of a color is fully white or not, and of so I can set a new random color using a random color helper.
 
 ```js
-var randomColor = function () {
-    var r = Math.random(),
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPER FUNCTIONS
+// ---------- ----------
+const randomColor = function () {
+    const r = Math.random(),
     g = Math.random(),
     b = Math.random();
     return new THREE.Color(r, g, b);
 };
-var randomPosition = function () {
-    var x = -3 + 4 * Math.random(),
+const randomPosition = function () {
+    const x = -3 + 4 * Math.random(),
     y = -1 + 2 * Math.random(),
     z = 2 + Math.random() * 5 * -1;
     return new THREE.Vector3(x, y, z);
 };
- 
-var createBoxGroup = function(){
+const createBoxGroup = function(){
     // creating a group of mesh object with random colors
-    var group = new THREE.Group();
-    var i = 0,
-    len = 15;
+    const group = new THREE.Group(), len = 15;
+    let i = 0;
     while (i < len) {
-        var box = new THREE.Mesh(
+        const mesh = new THREE.Mesh(
             new THREE.BoxGeometry(0.5, 0.5, 0.5),
             new THREE.MeshStandardMaterial({
                 color: randomColor()
-            }));
-        box.position.copy(randomPosition());
-        group.add(box);
+            })
+        );
+        mesh.position.copy(randomPosition());
+        group.add(mesh);
         i += 1;
     }
     return group;
 };
- 
-// creating a scene
-var scene = new THREE.Scene();
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
 scene.add(new THREE.GridHelper(8,8))
-var group = createBoxGroup();
+const group = createBoxGroup();
 scene.add(group);
-// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
-light.position.set(1, 3, 2);
-scene.add(light);
- 
-// camera
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const pl = new THREE.PointLight(new THREE.Color(1, 1, 1));
+pl.position.set(1, 3, 2);
+scene.add(pl);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
 camera.position.set(4, 4, 4);
 camera.lookAt(0, 0, 0);
-// renderer
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var lt = new Date(),
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
 frame = 0,
-maxFrame = 200,
-fps = 30;
-var loop = function () {
-    var now = new Date(),
-    per = frame / maxFrame,
-    bias = 1 - Math.abs(per - 0.5) / 0.5,
+lt = new Date();
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(a1 - 0.5) / 0.5;
+    group.children.forEach(function (box) {
+        const r = 0.05 * a1,
+        g = r, b = r,
+        color = box.material.color;
+        color.add( new THREE.Color(r, g, b) );
+        color.r = color.r > 1 ? 1 : color.r;
+        color.g = color.g > 1 ? 1 : color.g;
+        color.b = color.b > 1 ? 1 : color.b;
+        if(color.equals(new THREE.Color(1,1,1))){
+            box.material.color = randomColor();
+        }
+    });
+    group.rotation.y = Math.PI * 2 * a2;
+};
+const loop = () => {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-    if (secs > 1 / fps) {
-        group.children.forEach(function (box) {
-            var r = 0.05 * per,
-            g = r, b = r,
-            color = box.material.color;
-            color.add( new THREE.Color(r, g, b) );
-            color.r = color.r > 1 ? 1 : color.r;
-            color.g = color.g > 1 ? 1 : color.g;
-            color.b = color.b > 1 ? 1 : color.b;
-            if(color.equals(new THREE.Color(1,1,1))){
-                box.material.color = randomColor();
-            }
-        });
-        group.rotation.y = Math.PI * 2 * per;
+    if(secs > 1 / FPS_UPDATE){
+        update( Math.floor(frame), FRAME_MAX);
         renderer.render(scene, camera);
-        frame += fps * secs;
-        frame %= maxFrame;
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
         lt = now;
     }
 };
@@ -464,15 +511,21 @@ Sense I first wrote this [blog post I wrote a blog post on data textures](/2022/
 By default the forPix function will use the Seeded Random method of the Math utils object in threejs as a way to get a value between 0 and 255 that I then set for each color channel using the set rgb method of the color class.
 
 ```js
-//******** **********
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // DATA TEXTURE HELPER
-//******** **********
-// create data texture method
-let createDataTexture = function(opt){
+//-------- ----------
+const createDataTexture = function(opt){
     opt = opt || {};
     opt.width = opt.width === undefined ? 16: opt.width; 
     opt.height = opt.height === undefined ? 16: opt.height;
-    // default for pix method
     opt.forPix = opt.forPix || function(color, x, y, i, opt){
         let v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
         color.setRGB(v, v, v);
@@ -494,57 +547,48 @@ let createDataTexture = function(opt){
     texture.needsUpdate = true;
     return texture;
 };
-//******** **********
-// SCENE, CAMERA, RENDERER
-//******** **********
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(8,8))
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
-// ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL THAT I AM USING
-//******** **********
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1));
-light.position.set(1, 3, 2);
-scene.add(light);
-//******** **********
-// MESH OBJECTS WITH DATA TEXTURES
-//******** **********
-// default sudo random texture
-var tex1 = createDataTexture();
-var mesh1 = new THREE.Mesh(
+//-------- ----------
+// LIGHT
+//-------- ----------
+const pl = new THREE.PointLight(new THREE.Color(1, 1, 1));
+pl.position.set(1, 3, 2);
+scene.add(pl);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const tex1 = createDataTexture();
+const mesh1 = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: tex1
     })
 );
 scene.add(mesh1);
-//******** **********
-// LOOP
-//******** **********
-var lt = new Date(),
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1, 1.5, 1);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
 frame = 0,
-maxFrame = 200,
-fps = 20;
-var loop = function () {
-    var now = new Date(),
-    per = frame / maxFrame,
-    bias = 1 - Math.abs(per - 0.5) / 0.5,
+lt = new Date();
+const update = function(frame, frameMax){
+    mesh1.material.map = createDataTexture();
+};
+const loop = () => {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-    if (secs > 1 / fps) {
-        // new data texture for mesh1
-        mesh1.material.map = createDataTexture();
+    if(secs > 1 / FPS_UPDATE){
+        update( Math.floor(frame), FRAME_MAX);
         renderer.render(scene, camera);
-        frame += fps * secs;
-        frame %= maxFrame;
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
         lt = now;
     }
-
 };
 loop();
 ```
