@@ -5,34 +5,42 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2023-02-09 10:34:55
-version: 1.22
+updated: 2023-02-09 10:53:42
+version: 1.23
 ---
 
-Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole [scene object](/2018/05/03/threejs-scene/). When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera that I am suing to render the scene to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in three.js that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or a camera.
+For another [threejs example](/2021/02/19/threejs-examples/) I made a scene shake module that can be used to shake the whole [scene object](/2018/05/03/threejs-scene/). When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object. One thing I will want to keep in mind with this is that I do not want to add the camera that I am using to render the scene to the scene object, because if I do I can not see the shake as the camera will be relative to the scene. In the event that I do need to add the camera to the scene then the shake object can be applied to some other object in threejs that is based off of the [object3d class](/2018/04/23/threejs-object3d) other that the scene object such as a group, or the camera.
 
-This shake module might then work out okay when it comes to adding some kind of screen shake effect to a three.js project. For the sake of trying to keep things short, simple and too the point, I did not go over board with feature for thus module. The core of the idea is that I just need a way to randomly move an object around within a range, or apply some other kind of logic to produce the shake effect.
+This shake module might then work out okay when it comes to adding some kind of screen shake effect to a threejs project. For the sake of trying to keep things short, simple and too the point, I did not go over board with features for thus module. The core of the idea is that I just need a way to randomly move an object around within a range, or apply some other kind of logic to produce the shake effect. That is it and as long as it does that more of less it is just a matter of things like code style, and fixing the code when breaking changes are made to threejs itself. So maybe this also will work as a good example of how to go about making a javaScript module for a threejs project as well while I am at it.
 
 <!-- more -->
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/IYVYW74BdhE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## The shake module three.js example and what to know first
+## The shake module threejs example and what to know first
 
-In this post I am writing about a module that works on top of three.js to provide a way to create and update a screen or object shake effect. This is not a [getting started type post on three.js](/2018/04/04/threejs-getting-started/), or any additional skills that are required in order to extract something of value from reading this. However in this section I will be briefly writing about a few things that you should know about before reading more.
+In this post I am writing about a module that works on top of threejs to provide a way to create and update a screen or object shake effect. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or any additional skills that are required in order to extract something of value from reading this. However in this section I will be briefly writing about a few things that you might want to read up more on before reading the rest of the post.
+
+### Read more about Vector3 and Euler class objects
+
+If you are still a little new to threejs it might be a good idea to read more about the [Vector3 class](/2018/04/15/threejs-vector3/) which is great for just about almost all things that have to do with the position of objects in space. Snese this is a project example where I aim to make a kind of screen shake effect the Vector3 class will end up being used a little for this project of course. However there is also the [Euler class](/2021/04/28/threejs-euler) of threejs as well that is like Vector3 but it has more to do with angles rather that position.
+
+### Check out more on the Object3d class
+
+The scene object is just one example of an object that is based on the [object3d class](/2018/04/23/threejs-object3d/) that you might want to read more about if you get the chance. The position property of an object3d based stores a vector3 object which can be used to set the position of the scene object. Also the rotation property of object3d stores a Euler class object and can be used to set the rotation of the object which also comes handy for making a scene shake effect. When setting the position of the scene object there is no parent object of the scene object so the position is relative not to a parent object but something that seems to be often referred to as world space.
 
 ### Source code is up on Github
 
-The source code examples that I am writing about here can also be found in my text [threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-scene-shake)
+The source code examples that I am writing about here can also be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-scene-shake). This is also a repository where I store the source code examples for my [many other blog posts](/categories/three-js/) on threejs as well.
 
 ### Version Numbers matter with three.js
 
-When I made this shake module and the demos that make use of it I was using three.js version r127. In the future it is possible that the code examples here will break on newer versions of three.js as code breaking changes are made all the time to three.js. Always take care to note how old a post is, or any mentions of versions of external assets used when making use of code examples on the open web.
+When I made this shake module and the demos that make use of it I was using threejs version r127, and the last time I came around to do some editing I was using r146. The demos where working fine on my end last I checked. However in the future it is possible that the code examples here will break on newer versions of threejs as code breaking changes are made all the time to threejs. Always take care to note how old a post is, or any mentions of versions of external assets used when making use of code examples on the open web.
 
 ## 1 - shake.js now has a update method, and range values \( r1 \)
 
-Sense I first wrote this post I have thus far made one revision of this shake.js module. So far I just made a few changes that have to do with making it so that there are just two public methods of interest to work with which ar the create and update methods. All the other methods are now internal helper functions rather than additional methods that I must call. On top of this I thought I should also make a demo of the module that is an animation loop example, rather than that of an event driven example as I did for my first version of this shake module example.
+Sense I first wrote this post I have thus far made one revision of this shake.js module. So far I just made a few changes that have to do with making it so that there are just two public methods of interest to work with which are the create and update methods. All the other methods are now internal helper functions rather than additional methods that I must call. On top of this I thought I should also make a demo of the module that is an animation loop example, rather than that of an event driven example as I did for my first version of this shake module example.
 
 ### 1.a - The shake.js file \( r1 \)
 
@@ -211,7 +219,7 @@ In this section I will be going over the state of the first version of this shak
 
 ### 2.a - The shake module \( r0 \)
 
-This module has a public create method that I can use in a project to create an instance of what I am calling a shake object. This shake object will contain data about the current state of the shake such as the max values to use for position and rotation ranges. The shake object as of this first version also contains the current actual euler and vector3 instance to use to offset a given object for a current frame tick.
+This module has a public create method that I can use in a project to create an instance of what I am calling a shake object. This shake object will contain data about the current state of the shake such as the max values to use for position and rotation ranges. The shake object as of this first version also contains the current actual Euler and vector3 instance to use to offset a given object for a current frame tick.
 
 After the create method I have a roll public method which will change the current state of the [Euler](/2021/04/28/threejs-euler/) and [Vector3](/2018/04/15/threejs-vector3/) class instances that are used to [set the position of the object](/2022/04/04/threejs-object3d-position/) to which the shake object is applied to. Speaking of applying a shake object to an object3d based object such as a scene object, to do that I also have one more additional public method that is used to apply the current state of shake object. This object can be the scene object which is what I originally intended to use this with, but it can also be used with any other object based on object3d such as a group, mesh, or camera.
 
@@ -288,7 +296,7 @@ There might be many more features I might want to add to something like this, an
 
 ### 2.1 - Base demo of the shake module where I am shaking the whole scene \( r0 demo \)
 
-Now that I have my shake module together I am going to want a little more javaScript code that will serve as a way to test this module out. Much of this example is just more of the same when it comes to any other simple three.js code example, of full blown project in which I create a scene, one or more mesh objects, a camera, and a renderer. However one important thing to note is that if I want to use the shake with the scene object like I am doing in this example then I am going to want to not add the camera to the scene.
+Now that I have my shake module together I am going to want a little more javaScript code that will serve as a way to test this module out. Much of this example is just more of the same when it comes to any other simple threejs code example, of full blown project in which I create a scene, one or more mesh objects, a camera, and a renderer. However one important thing to note is that if I want to use the shake with the scene object like I am doing in this example then I am going to want to not add the camera to the scene.
 
 ```js
 //-------- ----------
@@ -380,5 +388,4 @@ For this demo of the shake module I am using events as a way to adjust the shake
 
 ## Conclusion
 
-This turned out to be a quick fun little example of using three.js as a way to create a scene shake module, that can also be used to shake other objects in a three.js environment. When it comes to suing this in projects in which I end up adding the camera to the scene then of course I am not going to want to make the scene object the object to which the shake applies then as the camera will then be relative to the scene object and things will not end up shaking. That kind of problem is easily fixed though by just wrapping everything that I want to shake into a group and then make that group the object that I use with my public method that apples the shake object to a three.js object based off of object 3d.
-
+This turned out to be a quick fun little example of using threejs as a way to create a scene shake module, that can also be used to shake other objects in a threejs environment. When it comes to suing this in projects in which I end up adding the camera to the scene then of course I am not going to want to make the scene object the object to which the shake applies then as the camera will then be relative to the scene object and things will not end up shaking. That kind of problem is easily fixed though by just wrapping everything that I want to shake into a group and then make that group the object that I use with my public method that apples the shake object to a threejs object based off of object 3d.
