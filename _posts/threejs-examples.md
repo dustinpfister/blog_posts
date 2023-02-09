@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2023-02-07 10:24:26
-version: 1.108
+updated: 2023-02-09 10:58:20
+version: 1.109
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -193,9 +193,9 @@ Sense then I have made a number of revisions of this example that make use of ot
 
 ### [ 2.34 - Scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
-The Scene object is also based on the Object3d class just like that of mesh objects, groups, and cameras. So just like any other object3d based object it was a position property that stores an instance of Vector3, and a rotation property that stores and instance of the Euler class. In other words, simply put, a whole scene object can be moved and rotated just like any other. 
+The Scene object is also based on the Object3d class just like that of mesh objects, groups, and cameras. So just like any other object3d based object it was a position property that stores an instance of Vector3, and a rotation property that stores and instance of the Euler class. In other words, simply put, a whole scene object can be moved and rotated just like any other. This project is then a module where I explore this a little by making a kind of screen shake module that will move the whole scene object around in world space.
 
-The main difference between many other objects is that typically a scene object does not have any parent object. So when it is positioned and rotated it is done so in relation to what is often referred to as world space. This project is then a module where I export this a little by making a kind of screen shake module that will move the whole scene object around in world space.
+The main difference between many other objects is that typically a scene object does not have any parent object. So when it is positioned and rotated it is done so in relation to what is often referred to as world space. One thing that I want to do then is to make sure that I do not add the camera to the scene as this will result in the camera being relative to the scene object rather than world space and I will not have a shake effect. There are ways of addressing that though by making use of things like the get world position method of the object3d class.
 
 ### [ 2.35 - Video sequence hooks ](/2022/05/12/threejs-examples-sequence-hooks/)
 
