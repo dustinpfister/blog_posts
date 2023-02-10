@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1027
-updated: 2023-02-10 11:44:16
-version: 1.4
+updated: 2023-02-10 11:49:33
+version: 1.5
 ---
 
 I would like to expand more on the use of curves in threejs and maybe part of doing that will involve taking another look at what there is to work with when it comes to built in options with curves. I have all [ready wrote a blog post on the THREE.QuadraticBezierCurve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3) so for this post I will be writing about a few quick examples using the [THREE.CubicBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve3) class. Both of these options are built on top of [the base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) of course, so in any case there are Curve class prototype methods that are very useful such as the get point method. However one thing that is nice about this Cubic Bezier Curve Class is that it will allow for two control points rather than just one. This might be one of the major reasons why I see a lot of developers choosing the Cubic option over Quadratic as this will allow for a greater degree of flexibility when creating curves for a project.
@@ -183,11 +183,11 @@ renderer.render(scene, camera);
 
 ## 2 - Using curves to create tracks
 
-As of late I have been working on a project that is a kind of virtual train set. I like how the project has come out thus far, but I have all ready run into some things that I would do differently if I where to start over. For one thing when it comes to making the land object in which I place a train I have that as one solid geometry. Maybe that kind of approach is not always such a bad thing, but as of late I am in more of the mindset of breaking things down into a collection of various component source objects. I can then create a track by making clones of these source objects and then just position and rotate the clones as needed to create a track along with core geometry around the track. These source objects can be groups that have a curve attached to the user data object of the group. I can then add whatever it is that I want in terms of mesh objects, points, and so forth when it comes to adding children to these source objects.
+As of late I have been working on a project that is a kind of virtual train set. I like how the project has come out thus far, but I have all ready run into some things that I would do differently if I where to start over. For one thing when it comes to making the land object in which I place a train I have that as one solid geometry. Maybe that kind of approach is not always such a bad thing, but as of late I am in more of the mindset of breaking things down into a collection of various component source objects. I can then create a track by making clones of these source objects and then just position and rotate the clones as needed to create a track along with core geometry around the track. These source objects can be [groups](/2018/05/16/threejs-grouping-mesh-objects/) that have a curve attached to the [user data object](/2021/02/16/threejs-userdata/) of the group. I can then add whatever it is that I want in terms of mesh objects, points, and so forth when it comes to adding children to these source objects.
 
 ### 2.1 - Starting out with the tracks example, using CubicBezierCurve3 for curves
 
-For this first example of what I have worked out thus far for this I have just about all the core ideas that I had in mind working. Including the deal with having a curve for each source object. I can then create a curve path object bu just looping over all the track objects that are cloned from source options, and this main curve path is then what is used to set the position of a mesh object that is the current train object that moves along the curve path.
+For this first example of what I have worked out thus far for this I have just about all the core ideas that I had in mind working. Including the deal with having a curve for each source object. I can then create a curve path object by just looping over all the track objects that are cloned from source options, and this main curve path is then what is used to set the position of a mesh object that is the current train object that moves along the curve path.
 
 ```js
 // ---------- ----------
@@ -312,6 +312,8 @@ loop();
 ### 2.2 - Rotation of curve objects when cloning source objects
 
 With that last example I got more or less everything that I want working with just one exception. That exception is that I can not just rotate a clone of a source object and have that effect the state of the curve object. This should be expected as a curve is not an example of an object3d based object, and it is stored in the user data object so of course it is not effected by such actions. I will then need to have a way to update the state of the various Vector3 objects that compose the start point, end point, and control points. So I worked out a simple example where I do just this with a curve.
+
+When it comes to this sort of thing the [Euler class](/2021/04/28/threejs-euler/) and the [apply Euler methods of the Vector3 class](/2021/06/18/threejs-vector3-apply-euler/) work great to preform a rotation of the various Vector3 objects of the curve.
 
 ```js
 // ---------- ----------
