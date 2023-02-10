@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1027
-updated: 2023-02-10 15:51:04
-version: 1.6
+updated: 2023-02-10 15:56:33
+version: 1.7
 ---
 
 I would like to expand more on the use of curves in threejs and maybe part of doing that will involve taking another look at what there is to work with when it comes to built in options with curves. I have all [ready wrote a blog post on the THREE.QuadraticBezierCurve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3) so for this post I will be writing about a few quick examples using the [THREE.CubicBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve3) class. Both of these options are built on top of [the base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) of course, so in any case there are Curve class prototype methods that are very useful such as the get point method. However one thing that is nice about this Cubic Bezier Curve Class is that it will allow for two control points rather than just one. This might be one of the major reasons why I see a lot of developers choosing the Cubic option over Quadratic as this will allow for a greater degree of flexibility when creating curves for a project.
@@ -362,6 +362,105 @@ mesh.lookAt( curve.getPoint( 0.6 ) );
 renderer.render(scene, camera);
 ```
 
+## 3 - Animation loop examples using Cubic Bezier Curve3
+
+For this section I will now be working out at least one animaiton loop example that will be a start point for a demo video for this blog post.
+
+### 3.1 - Using mesh object position properties
+
+For this first video project I thought it would be a good idea to see about making a quick demo where I am using the position properties of some mesh objects as the Vector3 objects for the start, end and control points of one of these cubic bezier curves. This way I can then move the mesh objects around all over the place and when I do so that will of course change the state of the curve. I can then use the curve to say set the position properties of a group of other mesh objects as a way to see the outcome of changes to the state of the curve.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(2,1,10);
+scene.add(dl);
+const al = new THREE.AmbientLight(0xffffff, 0.1);
+scene.add(al);
+// ---------- ----------
+// MESH POINTERS
+// ---------- ----------
+const geo_pointer = new THREE.SphereGeometry(0.4, 20, 20);
+const material_pointer = new THREE.MeshNormalMaterial();
+const mesh_start = new THREE.Mesh(geo_pointer, material_pointer);
+const mesh_end = new THREE.Mesh(geo_pointer, material_pointer);
+const mesh_c1 = new THREE.Mesh(geo_pointer, material_pointer);
+const mesh_c2 = new THREE.Mesh(geo_pointer, material_pointer);
+scene.add(mesh_start);
+scene.add(mesh_end);
+scene.add(mesh_c1);
+scene.add(mesh_c2);
+// ---------- ----------
+// MESH GROUP
+// ---------- ----------
+const material_child = new THREE.MeshPhongMaterial({
+    color: new THREE.Color(1,0,0),
+    specular: new THREE.Color(0.2,0.2,0.2)
+});
+const geometry_child = new THREE.SphereGeometry(0.25, 20, 20);
+const group = new THREE.Group();
+let i = 0; const len = 14;
+while(i < len){
+    const mesh = new THREE.Mesh(geometry_child, material_child);
+    group.add(mesh);
+    i += 1;
+}
+scene.add(group);
+// ---------- ----------
+// CURVE
+// ---------- ----------
+const curve = new THREE.CubicBezierCurve3(mesh_start.position, mesh_c1.position, mesh_c2.position, mesh_end.position);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(-8,8,8);
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    mesh_start.position.set(0,0,5);
+    mesh_end.position.set(0,0,-5);
+    mesh_c1.position.set(-5 + 10 * a2,0,2.5);
+    mesh_c2.position.set(5 - 10 * a2,0,-2.5);
+    group.children.forEach( (mesh, i, arr) => {
+        const a4 = (i + 1) / (arr.length + 1);
+        mesh.position.copy( curve.getPoint(a4) );
+    });
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
 
 ## Conclusion
 
