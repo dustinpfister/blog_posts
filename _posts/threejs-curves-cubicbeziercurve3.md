@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1027
-updated: 2023-02-10 11:08:56
-version: 1.1
+updated: 2023-02-10 11:12:23
+version: 1.2
 ---
 
 I would like to expand more on the use of curves in threejs and maybe part of doing that will involve taking another look at what there is to work with when it comes to built in options with curves. I have all [ready wrote a blog post on the THREE.QuadraticBezierCurve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3) so for this post I will be writing about a few quick examples using the [THREE.CubicBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve3) class. Both of these options are built on top of [the base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) of course, so in any case there are Curve class prototype methods that are very useful such as the get point method. However one thing that is nice about this Cubic Bezier Curve Class is that it will allow for two control points rather than just one. This might be one of the major reasons why I see a lot of developers choosing the Cubic option over Quadratic as this will allow for a greater degree of flexibility when creating curves for a project.
@@ -22,6 +22,8 @@ In this blog post I am writing about one of the built in options for creating an
 The [base curve class](/2022/06/17/threejs-curve/) is packed with a bunch of useful methods and features that one should be aware of before getting into what the built in options are that extend the class. There are methods like that get points method that will return an array of Vector3 objects. There is also an option for just getting a single point along the line of a curve as well.
 
 ### Source code is also up on Github
+
+I have the source code examples for this post, as well as for my [many other blog posts on threejs](/categories/three-js/) up on Github at my [test threejs reposatory](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-curves-cubicbeziercurve3).
 
 ### Version Numbers matter
 
