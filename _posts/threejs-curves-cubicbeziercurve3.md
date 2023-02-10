@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1027
-updated: 2023-02-10 11:18:08
-version: 1.3
+updated: 2023-02-10 11:44:16
+version: 1.4
 ---
 
 I would like to expand more on the use of curves in threejs and maybe part of doing that will involve taking another look at what there is to work with when it comes to built in options with curves. I have all [ready wrote a blog post on the THREE.QuadraticBezierCurve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3) so for this post I will be writing about a few quick examples using the [THREE.CubicBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve3) class. Both of these options are built on top of [the base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) of course, so in any case there are Curve class prototype methods that are very useful such as the get point method. However one thing that is nice about this Cubic Bezier Curve Class is that it will allow for two control points rather than just one. This might be one of the major reasons why I see a lot of developers choosing the Cubic option over Quadratic as this will allow for a greater degree of flexibility when creating curves for a project.
@@ -15,7 +15,7 @@ I would like to expand more on the use of curves in threejs and maybe part of do
 
 ## The Cubic Bezier Curve class in threejs and what to know before continuing
 
-In this blog post I am writing about one of the built in options for creating an object that extends the base curve class of threejs. There is a whole lot of other ground to cover when it comes to things like the other options for built in curves, cretaing custom curves, features of the base curve class and so forth. Of course there is also a whole lot to be aware of when it comes to threejs in general as well as all the various other skills that are required on top of that when it comes to javaScript and client side web devlopement in general. I assume that you have at least a little expernce with these subjects, I have a whole lot of other [getting started type posts with threejs](/2018/04/04/threejs-getting-started/) and [javaScript](/2018/11/27/js-getting-started/) and do not which to pad this post with content that should be parked in such a post. Still I do lik to always have an opening section at the top here where I write about a few things that you might want to also read up on that are closley related to the over all content of this post on Cubic Bezier Curves in threejs.
+In this blog post I am writing about one of the built in options for creating an object that extends the base curve class of threejs. There is a whole lot of other ground to cover when it comes to things like the other options for built in curves, creating custom curves, features of the base curve class and so forth. Of course there is also a whole lot to be aware of when it comes to threejs in general as well as all the various other skills that are required on top of that when it comes to javaScript and client side web development in general. I assume that you have at least a little experience with these subjects, I have a whole lot of other [getting started type posts with threejs](/2018/04/04/threejs-getting-started/) and [javaScript](/2018/11/27/js-getting-started/) and do not which to pad this post with content that should be parked in such a post. Still I do lik to always have an opening section at the top here where I write about a few things that you might want to also read up on that are closely related to the over all content of this post on Cubic Bezier Curves in threejs.
 
 ### Check out the base Curve class in detail if you have not done so.
 
@@ -27,13 +27,15 @@ I have the source code examples for this post, as well as for my [many other blo
 
 ### Version Numbers matter
 
-When I first wrote this blog post I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r146), and there are a lot of good reasons why I was still using that revision of threejs over later verions that out at the time of this writing. There are a lot of code breaking changes that have happend and will continue to happen moving forward. If you are uisng a bleading edge revision of threejs and also need to use JSM over plain old javaScript tags I can tell you now that these code exampels will break. It will not take much to fix that mind you but at the time of this writing I have not yet started updating my content to JSM code style syntax. Although I [do have plans to do so for r150+](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r150) at this time.
+When I first wrote this blog post I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r146), and there are a lot of good reasons why I was still using that revision of threejs over later versions that out at the time of this writing. There are a lot of code breaking changes that have happened and will continue to happen moving forward. If you are using a bleeding edge revision of threejs and also need to use JSM over plain old javaScript tags I can tell you now that these code examples will break. It will not take much to fix that mind you but at the time of this writing I have not yet started updating my content to JSM code style syntax. Although I [do have plans to do so for r150+](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r150) at this time.
 
 ## 1 - Basic examples of the CubicBezierCurve3 class
 
-To kick things off as always I will be startng out this post with a few real quick hello world type examples before getting into subjects that might prove to be a little more advanced. These examples are not just for pelple that are new to threejs mind you, I have years of experce at thius point and often I do still like to be able to quickly grab at a simple, clean starting point with things.
+To kick things off as always I will be starting out this post with a few real quick hello world type examples before getting into subjects that might prove to be a little more advanced. These examples are not just for people that are new to threejs mind you, I have years of experience at this point and often I do still like to be able to quickly grab at a simple, clean starting point with things.
 
 ### 1.1 - Basic getting started example of CubicBezierCurve3
+
+For this first basic example of CubicBezierCurve3 I am just making a single curve object with the constructor function and then using that curve to create geometry for a THREE.Points object. This can be done by just calling the get points base curve class method to get an array of vector3 objects. I can use the set from points method of the Buffer geometry class to create a geometry with just a position attribute. A position attribute alone will now work well with mesh objects, but it is good enough for THREE.Points. When it comes to just simply getting a visual idea of what the current state of a curve is THREE.Points and THREE.Lines works okay.
 
 ```js
 // ---------- ----------
@@ -69,6 +71,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.2 - CubicBezierCurve3 and CurvePath
+
+There is also making a curve path from a few of these curve objects made with CubicBezierCurve3. This is just simply a way to make a path with a whole bunch of these curve objects by creating a THREE.CurvePath object and then just adding curve objects to that which are made with CubicBezierCurve3 or any other option for making a curve object.
 
 ```js
 // ---------- ----------
@@ -118,6 +122,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.3 - Setting the Position of Objects using CubicBezierCurve3, Curve.getPoint, and Vector3.copy
+
+For this example I will now like to use a curve object to set the position of one or more mesh objects. For this sort of thing there is using the get point method of the base curve class to get a single Vector3 objects at any given point along the curve. I can then use the copy method of the Vector3 class of the vector3 object stored at the position property of the mesh object to set the position of that mesh object to the values of this vector3 object along the curve.
 
 ```js
 // ---------- ----------
@@ -177,7 +183,11 @@ renderer.render(scene, camera);
 
 ## 2 - Using curves to create tracks
 
-### 2.1 -
+As of late I have been working on a project that is a kind of virtual train set. I like how the project has come out thus far, but I have all ready run into some things that I would do differently if I where to start over. For one thing when it comes to making the land object in which I place a train I have that as one solid geometry. Maybe that kind of approach is not always such a bad thing, but as of late I am in more of the mindset of breaking things down into a collection of various component source objects. I can then create a track by making clones of these source objects and then just position and rotate the clones as needed to create a track along with core geometry around the track. These source objects can be groups that have a curve attached to the user data object of the group. I can then add whatever it is that I want in terms of mesh objects, points, and so forth when it comes to adding children to these source objects.
+
+### 2.1 - Starting out with the tracks example, using CubicBezierCurve3 for curves
+
+For this first example of what I have worked out thus far for this I have just about all the core ideas that I had in mind working. Including the deal with having a curve for each source object. I can then create a curve path object bu just looping over all the track objects that are cloned from source options, and this main curve path is then what is used to set the position of a mesh object that is the current train object that moves along the curve path.
 
 ```js
 // ---------- ----------
@@ -299,7 +309,9 @@ const loop = () => {
 loop();
 ```
 
-### 2.2 -
+### 2.2 - Rotation of curve objects when cloning source objects
+
+With that last example I got more or less everything that I want working with just one exception. That exception is that I can not just rotate a clone of a source object and have that effect the state of the curve object. This should be expected as a curve is not an example of an object3d based object, and it is stored in the user data object so of course it is not effected by such actions. I will then need to have a way to update the state of the various Vector3 objects that compose the start point, end point, and control points. So I worked out a simple example where I do just this with a curve.
 
 ```js
 // ---------- ----------
@@ -348,4 +360,4 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-So it looks like over all this Cubic Bezier Curve class is a great built in option for quickly making curve objects in threejs for the sake of defning a path by which objects will follow. However there are a whole lot of other [use case examples for curves such as using them as a tool in the process of creating custom geometry](/2022/12/16/threejs-curve-geometry-from).
+So it looks like over all this Cubic Bezier Curve class is a great built in option for quickly making curve objects in threejs for the sake of defining a path by which objects will follow. However there are a whole lot of other [use case examples for curves such as using them as a tool in the process of creating custom geometry](/2022/12/16/threejs-curve-geometry-from).
