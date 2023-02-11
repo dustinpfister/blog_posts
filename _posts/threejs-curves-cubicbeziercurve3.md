@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1027
-updated: 2023-02-10 15:56:58
-version: 1.8
+updated: 2023-02-11 10:37:26
+version: 1.9
 ---
 
 I would like to expand more on the use of curves in threejs and maybe part of doing that will involve taking another look at what there is to work with when it comes to built in options with curves. I have all [ready wrote a blog post on the THREE.QuadraticBezierCurve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3) so for this post I will be writing about a few quick examples using the [THREE.CubicBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve3) class. Both of these options are built on top of [the base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) of course, so in any case there are Curve class prototype methods that are very useful such as the get point method. However one thing that is nice about this Cubic Bezier Curve Class is that it will allow for two control points rather than just one. This might be one of the major reasons why I see a lot of developers choosing the Cubic option over Quadratic as this will allow for a greater degree of flexibility when creating curves for a project.
@@ -126,7 +126,7 @@ renderer.render(scene, camera);
 
 ### 1.3 - Setting the Position of Objects using CubicBezierCurve3, Curve.getPoint, and Vector3.copy
 
-For this example I will now like to use a curve object to set the position of one or more mesh objects. For this sort of thing there is using the get point method of the base curve class to get a single Vector3 objects at any given point along the curve. I can then use the copy method of the Vector3 class of the vector3 object stored at the position property of the mesh object to set the position of that mesh object to the values of this vector3 object along the curve.
+For this example I will now like to use a curve object to set the position of one or more mesh objects alone the path of the curve. For this sort of thing there is using the get point method of the base curve class to get a single Vector3 objects at any given point along the curve. I can then use the copy method of the Vector3 class of the vector3 object stored at the position property of the mesh object to set the position of that mesh object to the values of this vector3 object along the curve.
 
 ```js
 // ---------- ----------
@@ -144,8 +144,8 @@ renderer.setSize(640, 480, false);
 const createCurve = (v_start, v_end, v_d1, v_d2) => {
     v_d1 = v_d1 || new THREE.Vector3();
     v_d2 = v_d2 || new THREE.Vector3();
-    const v_c1 = v_start.clone().lerp(v_end, 0.5).add(v_d1);
-    const v_c2 = v_start.clone().lerp(v_end, 0.5).add(v_d2);
+    const v_c1 = v_start.clone().lerp(v_end, 0.25).add(v_d1);
+    const v_c2 = v_start.clone().lerp(v_end, 0.75).add(v_d2);
     return new THREE.CubicBezierCurve3(v_start, v_c1, v_c2, v_end);
 };
 // ---------- ----------
@@ -180,6 +180,71 @@ const material_mesh = new THREE.MeshNormalMaterial();
 // RENDER
 // ---------- ----------
 camera.position.set(-8,5,8);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
+```
+
+### 1.4 - Making a stright line with CubicBezierCurve3 and other built in curve options
+
+When I want to make a curve object that will just be a straight line there is the built in THREE.LineCurve3 class to do so. However if I want to just go with a single option to make this kind of curve object, as well as just about all others that i would typical want in a project there is just knowing where to park the control points for an option like CubicBezierCurve3.
+
+With THREE.LineCurve3 I just give the start and end Vector3 objects for the line and that is it. When it comes to a class like CubicBezierCurve3 or QuadraticBezierCurve3 I just need to park the control points between the start point and end point. When it comes to QuadraticBezierCurve3 there is just one control point so I can use the vector3 lerp method and an alpha value of 0.5 to place the single control point at the center of the line. However as we have covered at this point the CubicBezierCurve3 class makes use of two control points, I can do the same thing with the lerp method but I will want to use 0.25 and 0.75 for the alpha values to get a straight line effect.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// CURVES
+// ---------- ----------
+const v_start = new THREE.Vector3(-5,0,0);
+const v_end = new THREE.Vector3(5,0,0);
+// line with THREE.CubicBezierCurve3
+v_start.z = 2;
+v_end.z = 2;
+const curve1 = new THREE.CubicBezierCurve3(
+    v_start.clone(),
+    v_start.clone().lerp(v_end, 0.25),
+    v_start.clone().lerp(v_end, 0.75),
+    v_end.clone());
+// line with THREE.QuadraticBezierCurve3
+v_start.z = 1;
+v_end.z = 1;
+const curve2 = new THREE.QuadraticBezierCurve3(
+    v_start.clone(),
+    v_start.clone().lerp(v_end, 0.5),
+    v_end.clone());
+// line with THREE.LineCurve3
+v_start.z = 0;
+v_end.z = 0;
+const curve3 = new THREE.LineCurve3(
+    v_start.clone(),
+    v_end.clone());
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+// grid helper
+scene.add( new THREE.GridHelper(10, 10) );
+// points
+const material = new THREE.PointsMaterial({ size: 0.25, color: new THREE.Color(0,1,0) });
+const geo1 = new THREE.BufferGeometry().setFromPoints( curve1.getPoints(50) );
+const points1 = new THREE.Points(geo1, material);
+scene.add(points1);
+const geo2 = new THREE.BufferGeometry().setFromPoints( curve2.getPoints(50) );
+const points2 = new THREE.Points(geo2, material);
+scene.add(points2);
+const geo3 = new THREE.BufferGeometry().setFromPoints( curve3.getPoints(50) );
+const points3 = new THREE.Points(geo3, material);
+scene.add(points3);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(5,2,5);
 camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
