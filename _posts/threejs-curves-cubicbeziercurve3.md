@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1027
-updated: 2023-02-11 10:37:26
-version: 1.9
+updated: 2023-02-11 10:56:42
+version: 1.10
 ---
 
 I would like to expand more on the use of curves in threejs and maybe part of doing that will involve taking another look at what there is to work with when it comes to built in options with curves. I have all [ready wrote a blog post on the THREE.QuadraticBezierCurve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3) so for this post I will be writing about a few quick examples using the [THREE.CubicBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve3) class. Both of these options are built on top of [the base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) of course, so in any case there are Curve class prototype methods that are very useful such as the get point method. However one thing that is nice about this Cubic Bezier Curve Class is that it will allow for two control points rather than just one. This might be one of the major reasons why I see a lot of developers choosing the Cubic option over Quadratic as this will allow for a greater degree of flexibility when creating curves for a project.
@@ -273,18 +273,19 @@ renderer.setSize(640, 480, false);
 const createCurve = (v_start, v_end, v_d1, v_d2) => {
     v_d1 = v_d1 || new THREE.Vector3();
     v_d2 = v_d2 || new THREE.Vector3();
-    const v_c1 = v_start.clone().lerp(v_end, 0.5).add(v_d1);
-    const v_c2 = v_start.clone().lerp(v_end, 0.5).add(v_d2);
+    const v_c1 = v_start.clone().lerp(v_end, 0.25).add(v_d1);
+    const v_c2 = v_start.clone().lerp(v_end, 0.75).add(v_d2);
     return new THREE.CubicBezierCurve3(v_start, v_c1, v_c2, v_end);
 };
 // create a source object
-const createSourceObject = (w, d, sx, sz, ex, ez, dx, dz) => {
+const createSourceObject = (w, d, sx, sz, ex, ez, dx1, dz1, dx2, dz2 ) => {
     const obj1 = new THREE.Group();
     const gud = obj1.userData;
     const v_start = new THREE.Vector3(sx, 1.0, sz);
     const v_end =  new THREE.Vector3(ex, 1.0, ez);
-    const v_d =  new THREE.Vector3(dx, 0.0, dz);
-    gud.curve = createCurve(v_start, v_end, v_d, v_d);
+    const v_d1 =  new THREE.Vector3(dx1, 0.0, dz1);
+    const v_d2 =  new THREE.Vector3(dx2, 0.0, dz2);
+    gud.curve = createCurve(v_start, v_end, v_d1, v_d2);
     obj1.add( new THREE.Mesh( new THREE.BoxGeometry(w, 1, d), new THREE.MeshNormalMaterial()) )
     const geo_points = new THREE.BufferGeometry().setFromPoints( gud.curve.getPoints(19) );
     obj1.add( new THREE.Points( geo_points, new THREE.PointsMaterial({size: 0.25}) ) );
@@ -314,9 +315,9 @@ const createTrackObject = (group_source, index, x, z, dy) => {
 // SOURCE OBJECTS
 // ---------- ----------
 const group_source = new THREE.Group();
-group_source.add( createSourceObject(1.0, 4.0,   0.0,-2.0,    0.0, 2.0,   0.0, 0.0) );
-group_source.add( createSourceObject(4.0, 4.0,   1.5,-2.0,   -2.0, 1.5,   1.5, 1.5) );
-group_source.add( createSourceObject(4.0, 1.0,   2.0, 0.0,   -2.0, 0.0,   0.0, 0.0) );
+group_source.add( createSourceObject(1.0, 4.0,   0.0,-2.0,    0.0, 2.0,   0.0, 0.0,  0.0, 0.0) );
+group_source.add( createSourceObject(4.0, 4.0,   1.5,-2.0,   -2.0, 1.5,   0.8, 0.8,  1.8, 1.0) );
+group_source.add( createSourceObject(4.0, 1.0,   2.0, 0.0,   -2.0, 0.0,   0.0, 0.0,  0.0, 0.0) );
 // ---------- ----------
 // TRACK OBJECTS
 // ---------- ----------
@@ -343,11 +344,11 @@ scene.add(mesh);
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
-camera.position.set(-8,5,8);
+camera.position.set(8,8,8);
 camera.lookAt(0,0,0);
 const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
 FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-FRAME_MAX = 800;
+FRAME_MAX = 400;
 let secs = 0,
 frame = 0,
 lt = new Date();
@@ -355,7 +356,7 @@ lt = new Date();
 const update = function(frame, frameMax){
     const a1 = frame / frameMax;
     const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
-    const a3 = ( a2 * 0.98 + 0.01 ) % 1;
+    const a3 = ( a2 * 0.94 + 0.05 ) % 1;
     mesh.position.copy( curve.getPoint(a2) );
     mesh.lookAt( curve.getPoint( a3 ) );
 };
