@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1019
-updated: 2023-02-13 12:02:50
-version: 1.9
+updated: 2023-02-13 12:18:04
+version: 1.10
 ---
 
 This [threejs project examples post](https://threejs.org/examples/) is on a javaScript file that I am using to help me with the process of making what I would call a count down, or [timer videos](https://www.youtube.com/watch?v=_W0bSen8Qjg). This is just simply a kind of video where there is a count down that starts from when the video starts from a given start time such as 30 seconds, and then counts down to 0. When 0 is reached the video is over, or there is a little additional time that is an alarm sound or something to that effect.
@@ -39,7 +39,14 @@ When I first wrote this post I was using [r146 of threejs](https://github.com/mr
 
 ## 1 - R1 of count-down.js and demos, Removed dae loader and using Scene objects for source mesh objects
 
+One major change with this revision of count-down.js is the removal of the DAE loader abstraction in favor of the use of another abstraction that works better, or just directly working with the DAE loader alone. In this demo I am using the former when is an abstraction from my [dae helper module that I made for my blog post on the DAE loader alone](/2021/04/30/threejs-dae-collada-loader/).
+Another major change was to start using Scene objects in place of plain old javaScript objects when it comes to giving a set of objects to use for the numbers. This allows for me to make use of object3d class methods like that of the get object by name method as a way to get only the objects that are needed in the given source object.
+
+There is a lot more that I also wanted to change of course but for now I will be just chalking all of that up for the next revision of this module that may very well happen if I do continue to use this module in actual projects. So in this section I will be just quikly going over the state of R1 of count-down.js, and just two demos.
+
 ### 1.a - Source code of count-down.js \( r1 \) 
+
+First off the source code of the module itself. With that said code that has to do with loading and processing objects created from a DAE file asset have been removed. There is now just the create and set methods along with that one add lines method when it comes to public methods. Changes have also been made when it comes to the 
 
 ```js
 ```
@@ -51,10 +58,7 @@ When I first wrote this post I was using [r146 of threejs](https://github.com/mr
 
 ### 1.2 - Using dae helper method from my post on the dae loader
 
-One major change with this revision of count-down.js is the removal of the DAE loader abstraction in favor of the use of another abstraction that works better, or just directly working with the DAE loader alone. In this demo I am using the former when is an abstraction from my [dae helper module that I made for my blog post on the DAE loader alone](/2021/04/30/threejs-dae-collada-loader/).
-Another major change was to start using Scene objects in place of plain old javaScript objects when it comes to giving a set of objects to use for the numbers. This allows for me to make use of object3d class methods like that of the get object by name method as a way to get only the objects that are needed in the given source object.
 
-There is a lot more that I also wanted to change of course but for now I will be just chalking all of that up for the next revision of this module that may very well happen if I do continue to use this module in actual projects.
 
 ```js
 ```
