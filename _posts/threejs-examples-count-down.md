@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1019
-updated: 2023-02-13 12:18:04
-version: 1.10
+updated: 2023-02-13 12:52:16
+version: 1.11
 ---
 
 This [threejs project examples post](https://threejs.org/examples/) is on a javaScript file that I am using to help me with the process of making what I would call a count down, or [timer videos](https://www.youtube.com/watch?v=_W0bSen8Qjg). This is just simply a kind of video where there is a count down that starts from when the video starts from a given start time such as 30 seconds, and then counts down to 0. When 0 is reached the video is over, or there is a little additional time that is an alarm sound or something to that effect.
@@ -39,8 +39,7 @@ When I first wrote this post I was using [r146 of threejs](https://github.com/mr
 
 ## 1 - R1 of count-down.js and demos, Removed dae loader and using Scene objects for source mesh objects
 
-One major change with this revision of count-down.js is the removal of the DAE loader abstraction in favor of the use of another abstraction that works better, or just directly working with the DAE loader alone. In this demo I am using the former when is an abstraction from my [dae helper module that I made for my blog post on the DAE loader alone](/2021/04/30/threejs-dae-collada-loader/).
-Another major change was to start using Scene objects in place of plain old javaScript objects when it comes to giving a set of objects to use for the numbers. This allows for me to make use of object3d class methods like that of the get object by name method as a way to get only the objects that are needed in the given source object.
+One major change with this revision of count-down.js is the removal of the DAE loader abstraction in favor of the use of another abstraction that works better, or just directly working with the DAE loader alone. Another major change was to start using Scene objects in place of plain old javaScript objects when it comes to giving a set of objects to use for the numbers. This allows for me to make use of object3d class methods like that of the [get object by name method](/2021/05/12/threejs-object3d-get-by-name/) as a way to get only the objects that are needed in the given source object.
 
 There is a lot more that I also wanted to change of course but for now I will be just chalking all of that up for the next revision of this module that may very well happen if I do continue to use this module in actual projects. So in this section I will be just quikly going over the state of R1 of count-down.js, and just two demos.
 
@@ -49,18 +48,247 @@ There is a lot more that I also wanted to change of course but for now I will be
 First off the source code of the module itself. With that said code that has to do with loading and processing objects created from a DAE file asset have been removed. There is now just the create and set methods along with that one add lines method when it comes to public methods. Changes have also been made when it comes to the 
 
 ```js
+// count-down.js - r1 - from threejs-examples-count-down
+//    * create method now takes a scene_source object that is a THREE.Scene Object
+//    * DAE loader removed in favor of using things like demo-helper-r0 from threejs-dae-loader
+(function(api){
+    //-------- ----------
+    // DEFAULT OPTIONS
+    //-------- ----------
+    const DEFAULT_WIDTH = 2;
+    const DEFAULT_DIGIT_COUNT = 2;
+    //-------- ----------
+    // DEFAULT SCENE SOURCE OBJECTS
+    //-------- ----------
+    const DEFAULT_SCENE_SOURCE = new THREE.Scene();
+    let i = 0;
+    while(i < 10){
+        const n = 5 + 10 * i;
+        const geo = new THREE.SphereGeometry(DEFAULT_WIDTH / 2, n, n);
+        const mesh = new THREE.Mesh(geo, new THREE.MeshNormalMaterial({ wireframe: true}));
+        mesh.name = 'num_' + i;
+        DEFAULT_SCENE_SOURCE.add(mesh);
+        i += 1;
+    }
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // to pad string ( 9 to 009 if 3 digits )
+    const toPadString = (a, digits) => {
+        return String(a).padStart(digits, '0');
+    };
+    // position a digit group
+    const positionDigit = (digit, di, digitCount, width) => {
+        const hd = digitCount / 2;
+        const sx = hd * width * -1;
+        digit.position.x = width / 2 + sx + width * di;
+    };
+    //-------- ----------
+    // CREATE METHOD
+    //-------- ----------
+    api.create = (opt) => {
+        opt = opt || {};
+        opt.digitCount = opt.digitCount === undefined ? DEFAULT_DIGIT_COUNT : opt.digitCount;  // 2 digits
+        opt.timeStr = opt.timeStr || '';
+        // USE A SCENE OBJECT
+        opt.scene_source = opt.scene_source || DEFAULT_SCENE_SOURCE;
+        opt.width = opt.width === undefined ? DEFAULT_WIDTH : opt.width;
+        opt.countID = opt.countID || '';
+        // main count object
+        const countObj = new THREE.Group();
+        countObj.name = opt.countID;
+        // for each digit, clone all source objects
+        let di = 0;
+        while(di < opt.digitCount){
+            const digit = new THREE.Group();
+            digit.name = opt.countID + '_' + di;
+            // position digit group
+            positionDigit(digit, di, opt.digitCount, opt.width);
+            countObj.add(digit);
+            let ni = 0;
+            while(ni < 10){
+                // clone the mesh object by getting the propper object from scene
+                const mesh = opt.scene_source.getObjectByName('num_' + ni).clone();
+                mesh.name = opt.countID + '_' + di + '_' + ni;
+                mesh.visible = false; // mesh objects viable gets set true based on time value
+                // I will want a clone for the geometry and material also
+                mesh.geometry = mesh.geometry.clone();
+                mesh.material = mesh.material.clone();
+                digit.add(mesh);
+                ni += 1;
+            }
+            di += 1;
+        }
+        api.set(countObj, opt.timeStr);
+        return countObj;
+    };
+    //-------- ----------
+    // SET METHOD
+    //-------- ----------
+    // set to the given time string
+    api.set = (countObj, timeStr) => {
+        let di = 0;
+        const digitCount = countObj.children.length;
+        timeStr = toPadString(timeStr, digitCount);
+        while(di < digitCount){
+            let ni = 0;
+            while(ni < 10){
+                const mesh = countObj.getObjectByName(countObj.name + '_' + di + '_' + ni);
+                const n = parseInt(timeStr[di]);
+                mesh.visible = false;
+                if(n === ni){
+                    mesh.visible = true;
+                }
+                ni += 1;
+            }
+            di += 1;
+        }
+    };
+    //-------- ----------
+    // OTHER PUBLIC METHODS
+    //-------- ----------
+    // add lines for a mesh object
+    api.addLine = (obj, s, pos, lw, color) => {
+        s = s === undefined ? 1 : s;
+        pos = pos || new THREE.Vector3();
+        const material_line = new THREE.LineBasicMaterial({
+            color: color || 0xffffff, 
+            linewidth: lw === undefined ? 8: lw,
+            transparent: true, opacity: 1
+        });
+        const line = new THREE.LineSegments( new THREE.EdgesGeometry(obj.geometry), material_line );
+        line.scale.set(s, s, s);
+        line.position.copy(pos);
+        obj.add(line);
+    };
+}( this['countDown'] = {} ));
 ```
 
 ### 1.1 - Built in objects work okay \( r1 demo \) 
 
+For this demo I just wanted to make sure that the new default scene object works okay when it comes to just calling the main create method without any arguments at all. I never do this when it comes to final projects of course but still I thing this module should have some built in place holder objects. This is a feature that I might refine better in future revisions, but for now the built in objects are still just mesh objects with sphere geometry that will increases in terms of the number of vertices for each number.
+
 ```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const group_cd_default = countDown.create();
+group_cd_default.position.set(0,0,-3)
+scene.add(group_cd_default);
+const group_cd = countDown.create({ digitCount: 3 });
+scene.add(group_cd);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1, 3, 5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 30,  // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    countDown.set( group_cd_default, frame );
+    countDown.set( group_cd, frame );
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
-### 1.2 - Using dae helper method from my post on the dae loader
+### 1.2 - Using DAE helper method from my post on the DAE loader
 
-
+I pulled out the code from count-down.js that was an abstraction for the DAE loader. There where a number of problems with it that I could have fixed, but I figured that this is something that should be done in the demo or project code actually. This is what I have found myself starting to do with projects anyway, that is just directly working with the DAE loader, or when it comes to this demo use a better abstraction that resolves the problems that I have ran into. With that said in this example I am using the dae helper module that I write about in detail [my blog post on the DAE loader](/2021/04/30/threejs-dae-collada-loader/).
 
 ```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0.5, 0.5, 0.5);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// THE COINT DOWN GROUP - using let here so that I can re-assign in loader code below
+// ---------- ----------
+let group_cd = countDown.create();
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1, 3, 5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 30,  // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    countDown.set( group_cd, frame );
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+//-------- ----------
+// LOAD CUSTOM SCENE OBJECT FOR NUMBERS
+//-------- ----------
+DAE_loader({
+    urls_dae: ['/dae/count_down_basic/cd4-nums.dae'],
+    urls_resource: ['/dae/count_down_basic/skins/depth_256/'],
+    cloner: function(obj, scene_source, scene_result, result){
+        if(obj.type === 'Mesh' ){
+            obj.position.set(0,0,0);
+            obj.material = new THREE.MeshBasicMaterial({ map: obj.material.map });
+            scene_source.add(obj.clone());
+        }
+    }
+})
+.then((scene_source) => {
+    group_cd = countDown.create({
+        scene_source: scene_source,
+        digitCount: 3
+    });
+    scene.add(group_cd);
+    loop();
+});
 ```
 
 ## 2 - The first version of count-down.js \( r0 \) and demos
