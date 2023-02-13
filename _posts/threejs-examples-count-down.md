@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1019
-updated: 2023-01-19 12:47:21
-version: 1.8
+updated: 2023-02-13 12:02:50
+version: 1.9
 ---
 
 This [threejs project examples post](https://threejs.org/examples/) is on a javaScript file that I am using to help me with the process of making what I would call a count down, or [timer videos](https://www.youtube.com/watch?v=_W0bSen8Qjg). This is just simply a kind of video where there is a count down that starts from when the video starts from a given start time such as 30 seconds, and then counts down to 0. When 0 is reached the video is over, or there is a little additional time that is an alarm sound or something to that effect.
@@ -15,16 +15,19 @@ When it comes to making videos for these blog posts using threejs as well as som
 
 <!-- more -->
 
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/E1RSRGI6RkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/5g1hAQ0LuX0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## The count-down.js threejs project example and what to know first
 
 This is a blog post on some JavaScript code that I have made that works on top of threejs as well as additional code both of mine as well as additional official threejs assets to create timer videos. It should got without saying but I will say it anyway, this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) or JavaScript in general. This post and the many others that i have made like it thus far, are for people that have at least a fair about of experience with JavaScript and the threejs library and are now looking for ideas for various projects to make. I will not then be getting into basic things that should be solid at this point. Still in this section I might write about a few things that you might want to read about more before reading the rest of the content.
 
-### The count-down.js file as well as the demos make use of addtional files and assets beyond just threejs
+### The count-down.js file as well as the demos make use of additional files and assets beyond just threejs
 
 On top of using threejs alone I also am using the [threejs DAE file Loader](/2021/04/30/threejs-dae-collada-loader/) as an additional threejs file. The reason why is because I have a DAE loader method as one of the public methods of the count-down.js file that works on top of this feature that is not baked into the core of threejs itself. Also a number of my demos make use of this methods and thus also external [dae files](https://github.com/dustinpfister/test_threejs/tree/master/views/dae/count_down_basic) that are loaded with said dae loader methods and underlying file that makes use of it. Also a number of my demos for count-down.js make use of canvas texture that I am creating with my canvas.js file that I made for my [blog post on canvas textures](/2018/04/17/threejs-canvas-texture/).
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/E1RSRGI6RkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### Source code examples up on Github
 
@@ -34,7 +37,33 @@ I also have the source that I am writing about here [up on github](https://githu
 
 When I first wrote this post I was using [r146 of threejs](https://github.com/mrdoob/three.js/releases/tag/r146).
 
-## 1 - The first version of count-down.js \( r0 \) and demos
+## 1 - R1 of count-down.js and demos, Removed dae loader and using Scene objects for source mesh objects
+
+### 1.a - Source code of count-down.js \( r1 \) 
+
+```js
+```
+
+### 1.1 - Built in objects work okay \( r1 demo \) 
+
+```js
+```
+
+### 1.2 - Using dae helper method from my post on the dae loader
+
+One major change with this revision of count-down.js is the removal of the DAE loader abstraction in favor of the use of another abstraction that works better, or just directly working with the DAE loader alone. In this demo I am using the former when is an abstraction from my [dae helper module that I made for my blog post on the DAE loader alone](/2021/04/30/threejs-dae-collada-loader/).
+Another major change was to start using Scene objects in place of plain old javaScript objects when it comes to giving a set of objects to use for the numbers. This allows for me to make use of object3d class methods like that of the get object by name method as a way to get only the objects that are needed in the given source object.
+
+There is a lot more that I also wanted to change of course but for now I will be just chalking all of that up for the next revision of this module that may very well happen if I do continue to use this module in actual projects.
+
+```js
+```
+
+## 2 - The first version of count-down.js \( r0 \) and demos
+
+In this section I am writing about the very first version of this count down module, and a few demos that make use of it.
+
+### 2.a - The count down module
 
 The very first version of this count down module all ready has a number of public methods. There is the create method that when called will create and return a main group object. This main group object will contain a number of children each of which is another group that is for a given digit. Each digit group object will then also contain ten mesh objects one for each number that is used in a base 10 counting system. Setting the current time is then a matter of looping over each child of each digit group setting the [visible object3d property](/2021/05/24/threejs-object3d-visible/) of each mesh to false by default and then true if the current mesh object is the number for the current digit.
 
@@ -188,7 +217,7 @@ I then have my set method in which I pass one of these group objects that I make
 }( this['countDown'] = {} ));
 ```
 
-### 1.1 - Using canvas elements to create textures
+### 2.1 - Using canvas elements to create textures
 
 This will be the first demo of the count-down.js file in which I am using a custom set of source objects that I create in the demo file. I do have the default objects of course, but I am sure that in any given project I am not going to be using those. The source objects for this demo are then just a bunch of mesh objects that use the [THREE.BoxGeometry](/2021/04/26/threejs-box-geometry/) class for the Geometry of each object. However I will be making use of my [canvas.js file from my canvas textures module](/2018/04/17/threejs-canvas-texture/) in order to create the textures that I will use for each mesh object of each number.
 
@@ -314,7 +343,7 @@ This will be the first demo of the count-down.js file in which I am using a cust
 }());
 ```
 
-### 1.2 - Using the DAE load method
+### 2.2 - Using the DAE load method
 
 When it comes to any and all real projects that I will be making with this module I am sure that I will want to use one or more DAE files to load custom geometry for the numbers and additional geometry for other objects that will compose the over all scene. For this example I am loading just one DAE file which is my cd1.dae file in which I just have objects for each number that have a position and normal attribute and that is it. For now I am not doing anything fancy when it comes to changing values for the materials of the objects that default to phong material. Because of this I will want to add a light source as usual then and for this I am going with my typical choice these days with that which is a directional light.
 
@@ -421,7 +450,7 @@ countDown.DAE_loader(['/dae/count_down_basic/cd1.dae'], DAE_on_loaded_item)
 });
 ```
 
-### 1.3 - Using the DAE load method, and canvas to add texture
+### 2.3 - Using the DAE load method, and canvas to add texture
 
 With this example I am once again using the DAE loader method, but now I am also once again using my canvas module to create textures for these objects. With that said at this time I am using the cd2.dae file in which I have worked out okay uv maps for each number.
 
@@ -565,7 +594,7 @@ countDown.DAE_loader([ '/dae/count_down_basic/cd2.dae' ])
 });
 ```
 
-### 1.4 - Using the DAE load method with more than one file, and with DAE file textures
+### 2.4 - Using the DAE load method with more than one file, and with DAE file textures
 
 For this example I am now ditching the use of canvas textures in favor of textures that I have made for the DAE files. As at this point I am not only using external files for geometry that has position, as well as custom uv and normals attributes, but now also textures as well. Also I am now getting into the habit of making more than one DAE file one for numbers, and the other for everything else that I want in the scene. Moving forward I am sure that I will end up with just one great file for the numbers that I will want to reuse from one project to the next, but have many other files for additional objects to place in the scene. So for this example I am now using my cd3\-nums file along with my cd3-ground files. These files have uvmaps and on top of that textures that are use for each material of each object. I am thinking that this might be the final form of the kinds of files I want to make for this, at least when it comes to r0 of the count-down.js file.
 
@@ -695,10 +724,4 @@ countDown.DAE_loader(
 ## Conclusion
 
 This far I would have to say that this count down module is working just the way that I would like it, at least when it comes to a first set of basic timer videos to say the least. It is not to say that there is not more work to do with any and all future revisions of this examples when and it I get to it. Sure there are a whole lot of ideas that comes to mind with that, in fact way to many actually. The bottom line here though when it comes to making videos though is how the frames come out though, that is what is most important here. So many ideas that have to do with improving pref romance are of lower priority as I do not have to worry so much about real time rendering.
-
-
-
-
-
-
 
