@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2023-02-16 14:06:28
-version: 1.25
+updated: 2023-02-16 14:10:03
+version: 1.26
 ---
 
 There are many built in geometry [constructors](/2019/02/27/js-javascript-constructor/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) by way of calling a function and passing a few arguments to define certain aspects of the geometry. One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder resulting in as the name suggests a kind of capsule like shape.
@@ -49,7 +49,7 @@ I always like to start out a post like this with at least one if not more very b
 
 ### 1.1 - Basic hello world style example of the capsule geometry
 
-Here as with any other quick simple threejs example I am creating a scene object, camera, and setting up a renderer. After that I will want to cerate a single mesh object and add it as a child of the scene object and when doing so I will of course be using the capsule geometry constructor for this mesh object. When doing so the first argument is the radius of the capsule, followed by length, and values for the number of cap and radius sub divisions. 
+Here as with any other quick simple threejs example I am creating a scene object, camera, and setting up a renderer. After that I will want to create a single mesh object and add it as a child of the scene object and when doing so I will of course be using the capsule geometry constructor for this mesh object. When doing so the first argument is the radius of the capsule, followed by length, and values for the number of cap and radius sub divisions. 
 
 When it comes to materials I am just going with the [mesh normal material](/2021/06/23/threejs-normal-material/) for this example as I do not care to do anything fancy with light and textures for this example.
 
@@ -80,7 +80,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Making a Sphere with capsule geometry
 
-If I set the length to zero then the capsule geometry can be used as a nother way to create a kind of sphere shape.
+If I set the length to zero then the capsule geometry can be used as a another way to create a kind of sphere shape.
 
 ```js
 //-------- ----------
@@ -114,7 +114,7 @@ renderer.render(scene, camera);
 
 ## 2 - Group of mesh objects using the capsule geometry setting length of geometry as distance between vectors instances
 
-Now that I have got the basic example out of the way it is time to start to get into some more involved examples. For this section I am starting to look into he idea of creating a kind of path in space with mesh objects and capsule geometries. The general idea of this is that I will have an array of vector3 class instances that each represent a point in space, and I will then need to create a capsule geometry with a length that is a distance between two of these vectors, and I will also need to set the rotation of the mesh object so that the geometry is facing the next vector in the array of vectors. One additional thing that needs to happen is that I need to find a way to get a vector that is between a current vector3 and the next vercor3 in the array, and I also often need to rotate the geometry in order to get things to work well with the look at method if that is the way that I am going to set the rotation value of each mesh object.
+Now that I have got the basic examples out of the way it is time to start to get into some more involved examples. For this section I am starting to look into he idea of creating a kind of path in space with mesh objects and capsule geometries. The general idea of this is that I will have an array of vector3 class instances that each represent a point in space, and I will then need to create a capsule geometry with a length that is a distance between two of these vectors, and I will also need to set the rotation of the mesh object so that the geometry is facing the next vector in the array of vectors. One additional thing that needs to happen is that I need to find a way to get a vector that is between a current vector3 and the next vercor3 in the array, and I also often need to rotate the geometry in order to get things to work well with the look at method if that is the way that I am going to set the rotation value of each mesh object.
 
 ```js
 //-------- ----------
