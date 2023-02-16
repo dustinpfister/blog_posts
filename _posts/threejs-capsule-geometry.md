@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2023-02-16 14:10:03
-version: 1.26
+updated: 2023-02-16 15:38:18
+version: 1.27
 ---
 
 There are many built in geometry [constructors](/2019/02/27/js-javascript-constructor/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) by way of calling a function and passing a few arguments to define certain aspects of the geometry. One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder resulting in as the name suggests a kind of capsule like shape.
@@ -322,6 +322,59 @@ loop();
 ```
 
 Although this seems to work okay the capsules start to look more like weird oval like shapes. So I might want to look into making a similar example to this that involves creating a new geometry for each mesh object on each update.
+
+## 4 - Material index values and groups
+
+One thing I often try to find out is it I can make groups for a geometry made wuith one of these constructors if one is not there to begin with. I was able to get somewhere with this at least, but I hit a wall.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const radius = 1, length = 1;
+const capSegments = 5;
+const radialSegments = 10;
+const geometry = new THREE.CapsuleGeometry(radius, length, capSegments, radialSegments);
+const geometry2 = geometry.toNonIndexed();
+const count = geometry2.getAttribute('position').count;
+let i = 0;
+const len = count / 6;
+const w = radialSegments + capSegments * 2 + 1;
+while(i < count){
+    const y = i % w;
+    const x = Math.floor( i / w);
+    //const mi = y <= radialSegments - 1 || y >= radialSegments + 1 ? 0 : 1;
+    const mi = y % 2 === 0 ? 0 : 1;
+    geometry2.addGroup(i * 6, 6, mi);
+    i += 1;
+}
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh2 = new THREE.Mesh(
+        geometry2,
+        [
+           new THREE.MeshBasicMaterial({ color: new THREE.Color(0,1,1)}),
+           new THREE.MeshBasicMaterial({ color: new THREE.Color(0,0,1)})
+        ]
+);
+scene.add(mesh2);
+//-------- ----------
+// RENDER THE SCENE
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 ## Conclusion
 
