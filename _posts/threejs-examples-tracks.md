@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1028
-updated: 2023-02-17 14:12:58
-version: 1.1
+updated: 2023-02-17 14:21:21
+version: 1.2
 ---
 
 When it comes to my beta world collection of videos I have started a timer video project that involves a train that goes along a track. There is a lot that I like about this project, but also a whole lot that I would change if I where to start over. Anyway one thing about the project is that I have the land all as one big solid geometry, then I worked out a curve path for a train to go along on top of the single geometry in the single mesh. This seems to work okay, but if I where to start to make another video project like this, and then another, and so forth I would like to make some other kind of system for this. Mainly I do not think that I would want to have one solid geometry, but rather a collection of source objects to which I clone, and adjust one by one as a way to create an over all scene. So with that said this [threejs project example](/2021/02/19/threejs-examples/) is about a module that has some methods that can be used to create such a project.
@@ -14,6 +14,12 @@ When it comes to my beta world collection of videos I have started a timer video
 <!-- more -->
 
 ## The tracks threejs module example and what to know first
+
+This is a post on a javaScript module that I use on top of threejs to create a kind of train track like project that can be used to create a single curve path. I can then use this curve path to move one or more mesh objects along to create a kind of train set like project then. This is not a post for people that are new to threejs and javaScript then, but rather for people that have at least some background with these things are a looking for project ideas. I will not be getting into the very basics of what should be known before hand here then, but I think I should at least write about a few things that you might want to read up more on here in this opening section.
+
+### Check out more on curves if you have not do so yet
+
+There are a few built in options for classes that extend the [base curve class](/2022/06/17/threejs-curve/) in threejs that work great and as such help to save a lot of time compared to making a custom curve class. In fact what I am wriitng about here is me continig with what I started with my [post on the cubic bezier curve3 class](/2023/02/10/threejs-curves-cubicbeziercurve3/) that I wrote last week.
 
 ### Source code is also up on Github
 
