@@ -5,19 +5,19 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 497
-updated: 2019-07-07 14:21:48
-version: 1.11
+updated: 2023-02-19 06:28:27
+version: 1.12
 ---
 
-The [git reset](https://git-scm.com/docs/git-reset) command can be used to undo the last comment in a git folder, and much more than just that. When called with no additional arguments it can be used as a way to unstage what has been staged for committing using the git add command. However with additional arguments it can be used as a way to make is called a soft reset, as well as also a hard reset. This is a command that I do find myself using now and then, so it is worth taking a moment to write a quick post on it.
+The [git reset](https://git-scm.com/docs/git-reset) command can be used to undo the last comment in a git folder, and much more than just that. When called with no additional arguments it can be used as a way to unstage what has been staged for committing using the git add command. However with additional arguments it can be used as a way to make what is called a soft reset, as well as also a hard reset. This is a command that I do find myself using now and then, so it is worth taking a moment to write a quick post on it.
 
 <!-- more -->
 
 ## 1 - Get reset command basic examples
 
-The git reset command can be used as a kind of opposite of git add when staging files to be commited. However it can also be used as a way to reset the head of the got folder as well. When doing this there is what is called a soft reset as well as a hard reset.
+The git reset command can be used as a kind of opposite of git add when staging files to be committed. However it can also be used as a way to reset the head of the git folder as well. When doing this there is what is called a soft reset as well as a hard reset.
 
-### 1.1 - Unstage staged files (opposite of git add)
+### 1.1 - Unstage staged files ( opposite of git add )
 
 So say you added some files to be committed, but then realize that you made a mistake, but did not commit yet. No problem just use the git reset command and give the path that you want to reset, or no path at all if you want to reset everything that was added and start over.
 
@@ -34,6 +34,15 @@ If I want to undo the last commit, but keep the changes that have been made I ca
 
 ```
 $ git reset --soft HEAD~1
+```
+
+### 1.3 - Hard reset
+
+Every now and then I just forget to make a commit and I have some minor changes that are keeping me from updating a local git folder when making a git pull request. If the changes are not important and it is okay to loose them I can do a hard reset to move the head to the last commit. Doing so will result in the loss of any changes sense the last commit, but I will then be in a place in which I can then do a git pull, update the git folder to the latest branch and move on.
+
+```
+$ git reset --hard
+$ git pull
 ```
 
 ## 2 - Creating an undo last comment command with nodejs
@@ -69,7 +78,7 @@ I just need to add the following to the package.json file of the project to make
 ### 2.2 - The index.js file
 
 
-So here I have the indes.js file of this project. I am starting off the project with the shebang for nodejs as this will be a global script. In addition I am using the spawn method of the child_process module to launch the git command from within nodejs. The child process module is great as I can use it not just to run git commands, but anything that can be done in the command line of the operating system I am using.
+So here I have the index.js file of this project. I am starting off the project with the shebang for nodejs as this will be a global script. In addition I am using the spawn method of the child_process module to launch the git command from within nodejs. The child process module is great as I can use it not just to run git commands, but anything that can be done in the command line of the operating system I am using.
 
 ```js
 #!/usr/bin/env node
