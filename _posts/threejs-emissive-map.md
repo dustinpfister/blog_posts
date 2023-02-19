@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2023-02-19 07:50:50
-version: 1.45
+updated: 2023-02-19 10:34:37
+version: 1.46
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic diffuse color map with the [basic material](/2018/05/05/threejs-basic-material/), or an [alpha map](/2019/06/06/threejs-alpha-map/) to set transparent areas. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -17,7 +17,7 @@ However there is not just thinking in terms of simple solid colors for mesh obje
 
 <!-- more -->
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/6q1jP6Y6srU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video" src="https://www.youtube.com/embed/jmh4d7BiPIo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Emissive maps and what to know first
@@ -202,6 +202,10 @@ The end result of this then is a cube where the sides are lit up a little becaus
 For this section I will be going over a few examples that make use of an animation loop. This allows for me to update things over time to really help get an idea of what the deal is with emissive maps.
 
 ### 2.1 - First video example
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/6q1jP6Y6srU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 
 ### 2.2 - Animation loop with directional light and updating textures
 
