@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2023-02-19 06:56:50
-version: 1.43
+updated: 2023-02-19 07:06:15
+version: 1.44
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic diffuse color map with the [basic material](/2018/05/05/threejs-basic-material/), or an [alpha map](/2019/06/06/threejs-alpha-map/) to set transparent areas. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -26,29 +26,27 @@ There is a great deal that one should be aware of before getting into emissive m
 
 ### The texture loader, canvas textures, and data textures.
 
-The emissive map is a kind of texture map for a material, and in order to use any of these texture maps you will need, well yeah a texture. When it comes to loading an external file such as a PNG file something like the three.js built in [texture loader](/2021/06/21/threejs-texture-loader/) can be used to do so. 
-
-If you have some other means to load image files as an image object in client side javaScript terms then another options would be to use the THREE.Texture constructor function to create an instance of the kind of object that is used for these kinds of various maps of materials. 
+The emissive map is a kind of texture map for a material, and in order to use any of these texture maps you will need, well yeah a texture. When it comes to loading an external file such as a PNG file something like the three.js built in [texture loader](/2021/06/21/threejs-texture-loader/) can be used to do so. If you have some other means to load image files as an image object in client side javaScript terms then another options would be to use the THREE.Texture constructor function to create an instance of the kind of object that is used for these kinds of various maps of materials. 
 
 When it comes to creating a texture with a little javaScript code rather than some kind of external image asset, one way to go about doing so would be to make use of [canvas elements](/2018/04/17/threejs-canvas-texture/), and the 2d drawing context as a way to create textures that way by making use of the THREE.CanvasTexture constrictor. Yet another option for creating textures with javaScript code would be to make use of the [THREE.dataTexture constructor](/2022/04/15/threejs-data-texture/), this way one can create textures with a type array of color channel data.
 
 ### Read up more on materials to know your options
 
-There are a number of options when it comes to [materials](/2018/04/30/threejs-materials/) that support the emissive map feature, for these examples I will be sticking mainly to the [standard material](/2021/04/27/threejs-standard-material/). The standard material is a great general purpose material, and for that reason it is more or less my first go to material and not just because it supports emissive maps.
+There are a number of options when it comes to [materials](/2018/04/30/threejs-materials/) that support the emissive map feature, for these examples I will be sticking mainly to the [standard material](/2021/04/27/threejs-standard-material/). The standard material is a great general purpose material, and for that reason it is more or less my first go to material and not just because it supports emissive maps. However another great option would be the [Phong material](/2022/12/29/threejs-phong-material/) which also supports specular highlights which is cool, but getting into that would be a bit off topic here.
 
-### Color maps, and lighting.
+### Diffuse Color maps, and lighting.
 
-In order to really know what emissive maps are about you are going to want to play around with lighting, and also the color property and color maps that are effected by lighting. When it comes to [what the options are with lighting](/2022/02/25/threejs-light/) there are again a range of options just like that of many other kinds of objects in threejs. 
+Although emissive maps and the emissive color can be used without a light source, the main reason why we are bothering with them is becuase we are working with a material that responds to light. So in order to really know what emissive maps are about you are going to want to play around with lighting, and also the color property and color maps that are effected by lighting. When it comes to [what the options are with lighting](/2022/02/25/threejs-light/) there are again a range of options just like that of many other kinds of objects in threejs. 
 
 For the most part thought I like to go with [ambient light](/2018/11/02/threejs-ambientlight/) and [point lights](/2019/06/02/threejs-point-light/) as a way to set an over all base about of light for all surfaces, and to also make use of something  where distance an direction have some effect on surfaces.
 
-### Version numbers matter
-
-When I wrote this post for the first time I was using r127 of threejs which was a late version of threejs that was released in early 2021. The last time that I came around to do a little editing of this post I was using r135 of threejs and the old example as well as the new one I made at that point on data texture worked fine with that version of threejs. Still code breaking changes are made to threejs often so always be mindful of the version number that you are using.
-
 ### The source code examples in this post are up on Github
 
-The source code examples that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-emissive-map).
+The source code examples that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-emissive-map). This is also the repo where I park the source code examples for all [my other posts on threejs as well](/categories/three-js/). Also if you want to get things working on you end with these examples I do try to keep them copy and paste friendly but often the best way would be to clone down the repo, start the server, and view the examples that way.
+
+### Version numbers matter
+
+When I wrote this post for the first time I was using r127 of threejs which was a late version of threejs that was released in early 2021. The last time that I came around to do a little editing of this post I was using r135 of threejs and the old examples as well as the new one I made at that point on data texture worked fine with that version of threejs. Still code breaking changes are made to threejs often so always be mindful of the version number that you are using.
 
 ## 1 - Data texture example of an emissive map
 
