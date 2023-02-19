@@ -5,23 +5,24 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2022-07-25 15:06:30
-version: 1.42
+updated: 2023-02-19 06:56:50
+version: 1.43
 ---
 
-There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the [basic material](/2018/05/05/threejs-basic-material/), or an [alpha map](/2019/06/06/threejs-alpha-map/) to adjust transparency of a material based on the state of a texture. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
+There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic diffuse color map with the [basic material](/2018/05/05/threejs-basic-material/), or an [alpha map](/2019/06/06/threejs-alpha-map/) to set transparent areas. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
 
 When I am working with a material that will respond to a light source such as the standard material, there is the color property of the material that can be used to set a base color for the material. This color property will work a little different with the standard material compared to other materials like the basic material in that the color will only show up when there is some light in effect. So then there should be some kind of color property that will work with the standard material in the same way as the color property in the basic material in that it can be used to set a color that will always show up regardless of what the situation is with lighting. This is where the emissive property comes into play to set a color that will always show up.
 
-However there is not just thinking in terms of simple solid colors for mesh objects, there is also getting into textures. With the basic material there is using the map property as a way to set a simple color map. When it comes to the standard material, there is also a map property but as with the color property it will only work with light. So then there is also the emissive map property that can be used in place of the map property when compared to the basic material.
+However there is not just thinking in terms of simple solid colors for mesh objects, there is also getting into textures. With the basic material there is using the map property as a way to set a simple color map. When it comes to the standard material, there is also a map property but as with the color property it will only work with light. So then there is also the emissive map property that can be used in place of the map property when compared to the basic material. With that said the color, map, emissive, and emissiveMap options can be used to set the base color and textures in terms of what will respond to light, and what will always show up. Of course there is a whole lot more to this when it comes to yet even more material options, as well as other related topics that have to do with geometry. However in this post the main focus will be on emissive maps.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/6q1jP6Y6srU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Emissive maps and what to know first
 
 There is a great deal that one should be aware of before getting into emissive maps in threejs. Of course it should go without saying that you should know at least a thing or two about [the very basics of staring a threejs project](/2018/04/04/threejs-getting-started/), and how to work with [client side javaScript in general](/2018/11/27/js-getting-started/). So I will not be getting into every little detail about what should be known before hand, but I can take a moment to mention at least a few things that you might want to read up on first in this section.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/6q1jP6Y6srU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### The texture loader, canvas textures, and data textures.
 
