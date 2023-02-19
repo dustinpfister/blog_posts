@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2023-02-19 07:06:15
-version: 1.44
+updated: 2023-02-19 07:50:50
+version: 1.45
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic diffuse color map with the [basic material](/2018/05/05/threejs-basic-material/), or an [alpha map](/2019/06/06/threejs-alpha-map/) to set transparent areas. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -46,36 +46,57 @@ The source code examples that I am writing about in this post can be found in my
 
 ### Version numbers matter
 
-When I wrote this post for the first time I was using r127 of threejs which was a late version of threejs that was released in early 2021. The last time that I came around to do a little editing of this post I was using r135 of threejs and the old examples as well as the new one I made at that point on data texture worked fine with that version of threejs. Still code breaking changes are made to threejs often so always be mindful of the version number that you are using.
+When I wrote this post for the first time I was using r127 of threejs which was a late version of threejs that was released in early 2021. The last time that I came around to do a little editing of this post I was using r146 of threejs and the old examples as well as the new one I made at that point on data texture worked fine with that version of threejs. Still code breaking changes are made to threejs often so always be mindful of the version number that you are using.
 
-## 1 - Data texture example of an emissive map
+## 1 - Some basic examples of emsiive maps
+
+As with all my other posts on threejs I start things off with a few basic examples of the topic. However there are a few problems that are going to result in these examples being, well, not so basic. This is a topic on a feature in which a texture is needed in order to go forward. So in any case I have to use the texture loader, and thus the example will not be so copy and paste friendly. Or I have to generate textures with a little javaScript code which can be copy and paste friendly, but will result in the example being a little intense for people that are still new to threejs and javaScript. This however is a post on a topic that is not so much for people that are new to this though, so as long as you are aware of this then maybe these examples will still prove to be not so intense.
+
+### 1.1 - Data texture example of an emissive map
 
 This example of emissive maps that I made makes use of data textures as a way to create the texture that will be used for an emissive map. This is a way of creating a texture by making an instance of a unit8Array and then having values between 0 and 255 for each color channel, including alpha, for each pixle. To quickly just create a texture with random color values purely or the sake of having an emissive map texture I am using the seeded random method of the math utils object and then using function arguments to change what the values are for each color channel.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const light = new THREE.PointLight(new THREE.Color(1, 1, 1), 0.25);
+light.position.set(8, 10, 2);
+scene.add(light);
+//-------- ----------
+// HELPERS
+//-------- ----------
 // create data texture helper
-var createDataTexture = function (rPer, gPer, bPer) {
+const createDataTexture = (rPer, gPer, bPer) => {
     rPer = rPer || 0;
     gPer = gPer || 0;
     bPer = bPer || 0;
-    var width = 16,
-    height = 16;
-    var size = width * height;
-    var data = new Uint8Array(4 * size);
+    const width = 16, height = 16;
+    const size = width * height;
+    const data = new Uint8Array(4 * size);
     for (let i = 0; i < size; i++) {
-        var stride = i * 4;
-        var v = Math.floor(THREE.MathUtils.seededRandom() * 255);
+        const stride = i * 4;
+        const v = Math.floor(THREE.MathUtils.seededRandom() * 255);
         data[stride] = v * rPer;
         data[stride + 1] = v * gPer;
         data[stride + 2] = v * bPer;
         data[stride + 3] = 255;
     }
-    var texture = new THREE.DataTexture(data, width, height);
+    const texture = new THREE.DataTexture(data, width, height);
     texture.needsUpdate = true;
     return texture;
 };
 // create emissive cube helper
-var createCube = function (emissiveMap, map, emissiveIntensity) {
+const createCube = (emissiveMap, map, emissiveIntensity) => {
     return new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshStandardMaterial({
@@ -86,32 +107,29 @@ var createCube = function (emissiveMap, map, emissiveIntensity) {
             emissiveMap: emissiveMap || null
         }));
 };
-// scene
-var scene = new THREE.Scene();
-scene.add( new THREE.GridHelper(10, 10));
-// mesh objects
-[ [[1,1,1], 1], [[0,0,1], 0.25], [[0,1,0], 0.1] ].forEach(function(cubeArgs, i, arr){
-    var emissiveMap = createDataTexture.apply(null, cubeArgs[0]);
-    var map = null;
-    var box = createCube(emissiveMap, map, cubeArgs[1]);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+[ 
+ [[1,1,1], 1], 
+ [[0,0,1], 0.25], 
+ [[0,1,0], 0.1] 
+].forEach( (cubeArgs, i, arr) => {
+    const emissiveMap = createDataTexture.apply(null, cubeArgs[0]);
+    const map = null;
+    const box = createCube(emissiveMap, map, cubeArgs[1]);
     box.position.x = -5 + 10 * (i / arr.length);
     scene.add(box);
 });
-// light
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1), 0.25);
-light.position.set(8, 10, 2);
-scene.add(light);
-// camera, render
-var camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 1000);
+//-------- ----------
+// RENDER
+//-------- ----------
 camera.position.set(4, 4, 4);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-## 2 - Canvas texture example of an emissive map
+### 1.2 - Canvas texture example of an emissive map
 
 In this section I will be writing about a quick basic example of an emissive map where I am creating the emissive map with a canvas element rather than loading an external texture. So for this example I have a create canvas texture helper that I can call and then pass a function that will be by draw function that will be called to create the texture with the 2d drawing context.
 
@@ -120,23 +138,35 @@ I then have my create emiisve map helper that will create and return the texture
 I also have one more helper function for this example and that is one that will create and return a mesh object that will make use of a material that has an emissive map created with the other above helper functions. I am calling the create emissive map as a way to create and return the texture that I want to use for the emissive map. In addition to this there are a few more properties that are worth taking about for the material. One of which is the emissive intensity property that can be used to adjust the intensity of the emissive glow effect. There is then also adjusting what the solid emissive, and regular color values are. In any case the emisisve color is the color that will be the glow effect, and as such it should be just about any desired color other than the default black.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
 // create canvas texture helper
-var createCanvasTexture = function (draw) {
-    var canvas = document.createElement('canvas'),
+const createCanvasTexture = function (draw) {
+    const canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
     draw(ctx, canvas);
     return new THREE.CanvasTexture(canvas);
 };
 // create emissive map helper
-var createEmissiveMap = function(){
-    var COLOR_EMISSIVE_MAP_FRONT = new THREE.Color(1, 1, 1);
+const createEmissiveMap = function(){
+    const COLOR_EMISSIVE_MAP_FRONT = new THREE.Color(1, 1, 1);
     return createCanvasTexture(function (ctx, canvas) {
         ctx.strokeStyle = COLOR_EMISSIVE_MAP_FRONT.getStyle();
         ctx.strokeRect(1, 1, canvas.width - 1, canvas.height - 1);
     });
 };
 // create emissive cube helper
-var createEmissiveCube = function(){
+const createEmissiveCube = function(){
     return new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshStandardMaterial({
@@ -146,62 +176,77 @@ var createEmissiveCube = function(){
             emissiveMap: createEmissiveMap()
         }));
 };
-// scene
-var scene = new THREE.Scene();
-// mesh
-var box = createEmissiveCube();
+//-------- ----------
+// SCENE OBJECTS
+//-------- ----------
+const box = createEmissiveCube();
 scene.add(box);
-// light
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const light = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
 light.position.set(8, 6, 2);
 scene.add(light);
-// camera, render
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1, 1, 1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
 The end result of this then is a cube where the sides are lit up a little because of the presence of the light source in the form of a point light. However regardless of what the lighting situation is with a side all the areas effected by the emissive map are glowing a little with the color that I set with the emissive property.
 
-## 3 - Animation loop with directional light and updating textures
+## 2 - Animation loop examples of emissive maps
+
+For this section I will be going over a few examples that make use of an animation loop. This allows for me to update things over time to really help get an idea of what the deal is with emissive maps.
+
+### 2.1 - First video example
+
+### 2.2 - Animation loop with directional light and updating textures
 
 When I write posts on subjects like this I have come to find that I should make at least one of not more animation loop examples. The main thing here might be how to go about creating a new texture on each frame tick with data textures or canvas elements. So this section will be about a quick example that involves a animation lop function powered by the request animation frame method, and in the body of this loop method I will be creating anew textures each frame tick.
 
 To create new textures with data textures I went with some code that I made for my video ground project that I just hacked over a little. The main thing about this data texture module is that I have a for each mix public method that is a function that I can use to quickly create a data texture with some javaScript logic that will be applied for each pixel. This is what I will be using to then make two additional helper functions that will create and return a new texture each time that it is called. One helper function will return just random noise and this is what I will be using for the color map of this example, the other will return a circle area, and will take one argument that can be used to adjust the radius which is what I will be using for the emissive map.
 
 ```js
-//******** **********
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
 // DATA TEXTURE METHODS
-//******** **********
+//-------- ----------
 // make a data texture by passing w, h, and a function
 // that will be called for each pixel
-var datatex = (function () {
-    var api = {};
+const datatex = (function () {
+    const api = {};
     // mk data texture helper
-    api.mkDataTexture = function (data, w) {
+    api.mkDataTexture = (data, w) => {
         data = data || [];
         w = w || 0;
-        var width = w,
+        const width = w,
         height = data.length / 4 / w;
-        var texture = new THREE.DataTexture(data, width, height);
+        const texture = new THREE.DataTexture(data, width, height);
         texture.needsUpdate = true;
         return texture;
     };
     // create a data texture with a method that will be called for each pix
-    api.forEachPix = function (w, h, forEach) {
-        var width = w === undefined ? 5 : w,
+    api.forEachPix = (w, h, forEach) => {
+        const width = w === undefined ? 5 : w,
         height = h === undefined ? 5 : h;
-        var size = width * height;
-        var data = new Uint8Array(4 * size);
+        const size = width * height;
+        const data = new Uint8Array(4 * size);
         for (let i = 0; i < size; i++) {
-            var stride = i * 4;
-            var x = i % width;
-            var y = Math.floor(i / width);
-            var obj = forEach(x, y, w, h, i, stride, data);
+            const stride = i * 4;
+            const x = i % width;
+            const y = Math.floor(i / width);
+            let obj = forEach(x, y, w, h, i, stride, data);
             obj = obj || {};
             data[stride] = obj.r || 0;
             data[stride + 1] = obj.g || 0;
@@ -215,12 +260,12 @@ var datatex = (function () {
 }
     ());
 // square texture
-var circleTexture = function(t){
+const circleTexture = function(t){
     t = t === undefined ? 1 : t;
-    return datatex.forEachPix(16, 16, function(x, y, w, h, i, stride, data){
-        var v = new THREE.Vector2(x, y);
-        var d = v.distanceTo( new THREE.Vector2(w / 2, h / 2) );
-        var cv = d / ( 16 * t ) * 255;
+    return datatex.forEachPix(16, 16, (x, y, w, h, i, stride, data) => {
+        const v = new THREE.Vector2(x, y);
+        const d = v.distanceTo( new THREE.Vector2(w / 2, h / 2) );
+        let cv = d / ( 16 * t ) * 255;
         cv = cv > 255 ? 255 : cv;
         cv = cv < 0 ? 0 : cv;
         return {
@@ -229,9 +274,9 @@ var circleTexture = function(t){
     });
 };
 //  rnd
-var rndTexture = function(){
-    return datatex.forEachPix(16, 16, function(x, y, w, h, i, stride, data){
-        var cv = Math.round( Math.random() * 255 );
+const rndTexture = function(){
+    return datatex.forEachPix(16, 16, (x, y, w, h, i, stride, data) => {
+        const cv = Math.round( Math.random() * 255 );
         return {
             r: cv,
             g: cv,
@@ -239,29 +284,18 @@ var rndTexture = function(){
         };
     });
 };
-//******** **********
-// SCENE, CAMERA, RENDERER
-//******** **********
-var scene = new THREE.Scene();
-scene.add( new THREE.GridHelper(10, 10));
-var camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 1000);
-camera.position.set(10, 5, 10);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
+//-------- ----------
 // LIGHT
-//******** **********
-var dl = new THREE.DirectionalLight(0xafafaf, 0.5);
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xafafaf, 0.5);
 dl.position.set(8, 10, 2);
 scene.add(dl);
-var helper = new THREE.DirectionalLightHelper( dl, 5 );
+const helper = new THREE.DirectionalLightHelper( dl, 5 );
 scene.add( helper );
-//******** **********
+//-------- ----------
 // MESH
-//******** **********
-var mesh = new THREE.Mesh(
+//-------- ----------
+const mesh = new THREE.Mesh(
     new THREE.BoxGeometry(5, 5, 5),
     new THREE.MeshStandardMaterial({
         emissive: new THREE.Color('white'),
@@ -269,37 +303,43 @@ var mesh = new THREE.Mesh(
     })
 );
 scene.add(mesh);
-//******** **********
-// LOOP
-//******** **********
-var fps = 30,
-lt = new Date(),
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(10, 5, 10);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 800;
+let secs = 0,
 frame = 0,
-maxFrame = 300;
-var loop = function () {
-    var now = new Date(),
-    per = frame / maxFrame,
-    bias = 1 - Math.abs(0.5 - per) / 0.5,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax,
+    a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    mesh.material.emissiveMap = circleTexture(a2 * 4);
+    // new color map
+    mesh.material.map = rndTexture();
+    // moving directional light
+    var r = Math.PI * 4 * a1,
+    x = Math.cos(r) * 4,
+    z = Math.sin(r) * 4;
+    dl.position.set(x, 4, z);
+    helper.update();
+};
+// loop
+const loop = () => {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-    if(secs > 1 / fps){
- 
-        // new emmisiveMap
-        mesh.material.emissiveMap = circleTexture(bias * 4);
-        // new color map
-        mesh.material.map = rndTexture();
- 
-        // moving directional light
-        var r = Math.PI * 4 * per,
-        x = Math.cos(r) * 4,
-        z = Math.sin(r) * 4;
-        dl.position.set(x, 4, z);
- 
-        helper.update();
- 
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
         renderer.render(scene, camera);
-        frame += fps * secs;
-        frame %= maxFrame;
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
         lt = now;
     }
 };
