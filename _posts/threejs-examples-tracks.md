@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1028
-updated: 2023-02-20 13:33:32
-version: 1.5
+updated: 2023-02-20 13:56:06
+version: 1.6
 ---
 
 When it comes to my beta world collection of videos I have started a timer video project that involves a train that goes along a track. There is a lot that I like about this project, but also a whole lot that I would change if I where to start over. Anyway one thing about the project is that I have the land all as one big solid geometry, then I worked out a curve path for a train to go along on top of the single geometry in the single mesh. This seems to work okay, but if I where to start to make another video project like this, and then another, and so forth I would like to make some other kind of system for this. Mainly I do not think that I would want to have one solid geometry, but rather a collection of source objects to which I clone, and adjust one by one as a way to create an over all scene. So with that said this [threejs project example](/2021/02/19/threejs-examples/) is about a module that has some methods that can be used to create such a project.
@@ -22,7 +22,7 @@ This is a post on a javaScript module that I use on top of threejs to create a k
 
 ### Check out more on curves if you have not done so yet
 
-There are a few built in options for classes that extend the [base curve class](/2022/06/17/threejs-curve/) in threejs that work great and as such help to save a lot of time compared to making a custom curve class. In fact what I am wriitng about here is me continig with what I started with my [post on the cubic bezier curve3 class](/2023/02/10/threejs-curves-cubicbeziercurve3/) that I wrote last week.
+There are a few built in options for classes that extend the [base curve class](/2022/06/17/threejs-curve/) in threejs that work great and as such help to save a lot of time compared to making a custom curve class. In fact what I am writing about here is me continuing with what I started with my [post on the cubic bezier curve3 class](/2023/02/10/threejs-curves-cubicbeziercurve3/) that I wrote last week.
 
 ### Know a thing or two about the user data object, and other object3d class features
 
@@ -38,7 +38,7 @@ When I was working on this project last I was using r146 of threejs.
 
 ## 1 - The first version of the tracks module, and some demos
 
-For this first section I will be writing about what I have when it comes to the very first version of this tracks module. Also I will want to have at least a few demos to test out that the core features that I have in place all ready work okay before even toying with the idea of maing my first revision of this or not.
+For this first section I will be writing about what I have when it comes to the very first version of this tracks module. Also I will want to have at least a few demos to test out that the core features that I have in place all ready work okay before even toying with the idea of making my first revision of this or not. There is a lot more that I would want to add and change at this point, but for this first version at least I wanted to just make sure that the very crude basic idea that I had in mind will work out okay. Thus far it would seem that it does.
 
 ### 1.a - The tracks module \( R0 \)
 
@@ -298,6 +298,5 @@ loop();
 ## Conclusion
 
 Although what I have thus far with this is looking good I am sure that there is a lot that I will want to refine, and add with at least one revision before I even think about making any kind of real project with this. I hope that i do get around to making at least an R1 of this as I find this to be a fun project thus far. However I do have a lot of other things that I need to focus on, so I might not get the time.
-
 
 
