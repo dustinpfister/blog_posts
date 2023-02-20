@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1028
-updated: 2023-02-17 14:54:15
-version: 1.3
+updated: 2023-02-20 13:26:13
+version: 1.4
 ---
 
 When it comes to my beta world collection of videos I have started a timer video project that involves a train that goes along a track. There is a lot that I like about this project, but also a whole lot that I would change if I where to start over. Anyway one thing about the project is that I have the land all as one big solid geometry, then I worked out a curve path for a train to go along on top of the single geometry in the single mesh. This seems to work okay, but if I where to start to make another video project like this, and then another, and so forth I would like to make some other kind of system for this. Mainly I do not think that I would want to have one solid geometry, but rather a collection of source objects to which I clone, and adjust one by one as a way to create an over all scene. So with that said this [threejs project example](/2021/02/19/threejs-examples/) is about a module that has some methods that can be used to create such a project.
@@ -20,9 +20,13 @@ When it comes to my beta world collection of videos I have started a timer video
 
 This is a post on a javaScript module that I use on top of threejs to create a kind of train track like project that can be used to create a single curve path. I can then use this curve path to move one or more mesh objects along to create a kind of train set like project then. This is not a post for people that are new to threejs and javaScript then, but rather for people that have at least some background with these things are a looking for project ideas. I will not be getting into the very basics of what should be known before hand here then, but I think I should at least write about a few things that you might want to read up more on here in this opening section.
 
-### Check out more on curves if you have not do so yet
+### Check out more on curves if you have not done so yet
 
 There are a few built in options for classes that extend the [base curve class](/2022/06/17/threejs-curve/) in threejs that work great and as such help to save a lot of time compared to making a custom curve class. In fact what I am wriitng about here is me continig with what I started with my [post on the cubic bezier curve3 class](/2023/02/10/threejs-curves-cubicbeziercurve3/) that I wrote last week.
+
+### Know a thing or two about the user data object, and other object3d class features
+
+My tracks module makes use of the [user data object](/2021/02/16/threejs-userdata/) of the [object3d class](/2018/04/23/threejs-object3d/) as a way to park some data that is used by the various methods of the tracks module.
 
 ### Source code is also up on Github
 
@@ -34,11 +38,11 @@ When I was working on this project last I was using r146 of threejs.
 
 ## 1 - The first version of the tracks module, and some demos
 
-For this first section I will be writing about what I have when it comes to the very first version of this tracks module.
+For this first section I will be writing about what I have when it comes to the very first version of this tracks module. Also I will want to have at least a few demos to test out that the core features that I have in place all ready work okay before even toying with the idea of maing my first revision of this or not.
 
 ### 1.a - The tracks module \( R0 \)
 
-This first version of the tracks module is then yet another one of my modules that follows the tired old IIFE pattern. There are three public methods of the module, one to create source objects, another to create a track object from a collection of source objects, and one last method to create the final track curve from the curve stored in the user data object of each of these track objects.
+This first version of the tracks module is then yet another one of my modules that follows the tired old IIFE pattern. There are three public methods of the module, one to create source objects, another to create a track object from a collection of source objects, and one last method to create the final track curve. Each source object has a curve that is attached to the user data object of the source object. The process of creating a final track curve then is to run over all the objects created from the source objects, and then create a copy of the curve stored in the track object. There is then creating a new curve from the values of the source curve but adding the position of the track object as well.
 
 
 ```js
