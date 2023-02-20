@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1028
-updated: 2023-02-20 13:26:13
-version: 1.4
+updated: 2023-02-20 13:33:32
+version: 1.5
 ---
 
 When it comes to my beta world collection of videos I have started a timer video project that involves a train that goes along a track. There is a lot that I like about this project, but also a whole lot that I would change if I where to start over. Anyway one thing about the project is that I have the land all as one big solid geometry, then I worked out a curve path for a train to go along on top of the single geometry in the single mesh. This seems to work okay, but if I where to start to make another video project like this, and then another, and so forth I would like to make some other kind of system for this. Mainly I do not think that I would want to have one solid geometry, but rather a collection of source objects to which I clone, and adjust one by one as a way to create an over all scene. So with that said this [threejs project example](/2021/02/19/threejs-examples/) is about a module that has some methods that can be used to create such a project.
@@ -26,11 +26,11 @@ There are a few built in options for classes that extend the [base curve class](
 
 ### Know a thing or two about the user data object, and other object3d class features
 
-My tracks module makes use of the [user data object](/2021/02/16/threejs-userdata/) of the [object3d class](/2018/04/23/threejs-object3d/) as a way to park some data that is used by the various methods of the tracks module.
+My tracks module makes use of the [user data object](/2021/02/16/threejs-userdata/) of the [object3d class](/2018/04/23/threejs-object3d/) as a way to park some data that is used by the various methods of the tracks module. The object3d class is the base class of mesh objects, cameras, and anything else that would be added to a scene object as a child. Also scene objects themselves are examples of objhect3d class based objects. However not everything in threejs is an object3d based object such as curves, which is where I make use of the user data object as a way to store a curve for each source object. However when it comes to using the curve object from a cloned copy the position of the curve will be relative to worked space, so to fix this I create new curves from this curve objects but add the [position of the parent object](/2022/04/04/threejs-object3d-position/) to the values of the curve stored in the user data object to do so.
 
 ### Source code is also up on Github
 
-The source code exmaples here can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tracks).
+The source code exmaples here can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-tracks). This is also where I store the source code for all the various [other blog posts that I have wrote on threejs](/categories/three-js/) thus far as well.
 
 ### Version numbers matter
 
