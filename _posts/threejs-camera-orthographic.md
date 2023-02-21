@@ -5,40 +5,38 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2022-07-27 11:03:08
-version: 1.44
+updated: 2023-02-21 11:16:54
+version: 1.45
 ---
 
-In [three.js](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
+In [threejs](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
 
-I often do use the perspective camera as with most of the projects I work on I want to use a camera that works like that of the human eye, but the main other camera of interest outside of that would be the orthographic camera first and foremost. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why I might want to use it with certain projects.
+I often do use the perspective camera as with most of the projects I work on I want to use a camera that works like that of the human eye, but the main other camera of interest outside of that would be the orthographic camera first and foremost. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera. There might be a few siuations in which I might want to use this kind of camera here and there. In any case thought it is also a good idea to work out at least a few examples with a camera option other than the perspective camera just for the sake of getting a little more solid with what there is to work with in threejs.
 
 <!-- more -->
-
-## The Orthographic Camera and what to know first
-
-This is a post on the Orthographic Camera in the javaScript library known as three.js, it is [not a getting started post on ether three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/). I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now at a point where you are looking into what your options are when it comes to cameras.
-
-So I will not be getting into all kinds of various little details about threejs and JavaScript in general here of course. However in this section I will be going over some points you should be aware of before continuing to read the rest of the content.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/zX6tx9w2lF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+## The Orthographic Camera and what to know first
+
+This is a post on the Orthographic Camera in the javaScript library known as threejs, it is [not a getting started post on ether threejs](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/). I trust that you have took the time to work out at lest a few basic examples with threejs, and you are now at a point where you are looking into what your options are when it comes to cameras. So I will not be getting into all kinds of various little details about threejs and JavaScript in general here of course. However in this section I will be going over some points you should be aware of before continuing to read the rest of the content.
+
 ### Might be a good idea to look into other camera options
 
-In most situations the Orthographic Camera may not be the best choice for a project so there are looming into what the other options are with cameras. For most typical projects I would go with the [Perspective camera](/2018/04/07/threejs-camera-perspective/) that reproduces the way that the human eye sees. 
+In most situations the Orthographic Camera may not be the best choice for a project so there is looking into what the [other options are with cameras](/2018/04/06/threejs-camera/). For most typical projects I would go with the [Perspective camera](/2018/04/07/threejs-camera-perspective/) that reproduces the way that the human eye sees. 
 
 ### Be mindful of the base camera and object3d classes
 
-There is also reading up more on the [base camera class in threejs](/2018/04/06/threejs-camera/) that contains what there is to worth with across all types of cameras. There are properties in the base class like isCamera as well as methods like the get world direction. On top of the base camera class there is also the [object3d class](/2018/04/23/threejs-object3d/) that is not only a base class of the camera class, but also a base class of many objects in threejs including mesh objects, groups, and even whole scene objects.
+There is also reading up more on the [base camera class in threejs](https://threejs.org/docs/#api/en/cameras/Camera) that contains what there is to worth with across all types of cameras. There are properties in the base class like isCamera as well as methods like the get world direction. On top of the base camera class there is also the [object3d class](/2018/04/23/threejs-object3d/) that is not only a base class of the camera class, but also a base class of many objects in threejs including mesh objects, groups, and even whole scene objects. So when it comes to doing soemthing like setting the posiiton of a camera, the same can also be done with mesh objects, and anything else that is based off of the object3d class.
 
 ### The source code in this post is on github
 
-The [source code examples](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera-orthographic) in this post can be found on my test threejs repository. So if you would like to make a pull request, or just pull down this source code along with the source code for all my other blog posts on threejs that would be worth checking gout.
+The [source code examples](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera-orthographic) in this post can be found on my test threejs repository. So if you would like to make a pull request, or just pull down this source code along with the source code for all my other blog posts on threejs that would be worth checking out. This is also the repo where I store the source code examples and addtional assets for all my [other blog posts on threejs as well](/categories/three-js/).
 
 ### Version numbers matter in three.js
 
-When I first wrote this post back in May of 2018 I as using revision r91 of three.js, and as of this writing I was using r135 of three.js last time I came around to doing a little editing with this post. With that said I have got into the habit of briefly mentioning what versions I was using when first writing this, and also when I took a moment to review how the code example work with late versions of three.js.
+When I first wrote this post back in May of 2018 I as using revision r91 of three.js. As of this writing I was using r135 of threejs last time I came around to doing a little editing with this post as well. It would seem that not to much has change with cameras over that time, at least not with the camera options that I have been sticking with. However that does not meen that code breaking chnages are not made to the librray offten, as that is indeed the case. If any example here is not working be sure to check what version you are using first.
 
 ## 1 - A basic example of the Orthographic Camera
 
