@@ -5,21 +5,22 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2022-08-03 13:19:43
-version: 1.42
+updated: 2023-02-22 09:18:34
+version: 1.43
 ---
 
-It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
+It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but still there might end up being problems with rendering. One major problem has to do with line width not working on certain platforms. So then another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
 
-This post will be on wire frame mode of various materials in threejs, the basic use of the property of most materials that just involves setting a boolean value to true. Sense setting a material into wire frame mode just involves setting a boolean to true, for the sake of having something more to write about I could also take a moment to get into some more complex solutions that will take a bit more to get working. These alternatives to the wire frame mode of materials will result in a similar effect, but with some kind of added benefit when it comes to creating some kind of style when making a final product with a wire frame kind of look.
+This post will be on the wire frame mode of various materials in threejs, the basic use of the property typically just involves setting a boolean value to true. Sense setting a material into wire frame mode just involves setting a boolean to true, many of the examples here will have to do with various related topics that might come up. I could also take a moment to get into some more complex solutions that will take a bit more to get working. These alternatives to the wire frame mode of materials will result in a similar effect, but with some kind of added benefit when it comes to creating some kind of style when making a final product with a wire frame kind of look.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/56wF6ENK9bk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Wire frame mode of a material in three.js and what to know first
 
 This is a post on wire frames in three.js which is a javaScript library for working with 3d modeling. This is not a [getting started type post on three.js](/2018/04/04/threejs-getting-started/) as well as many addition skills that might be needed in order to gain something of value from reading this. Still I will take a moment at least in this section to outline some things to brush up on first before making use of wire frame mode, as well as other ways of having a wire frame like look when it comes to making textures.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/56wF6ENK9bk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Know your materials
 
