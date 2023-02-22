@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2023-02-22 10:32:14
-version: 1.46
+updated: 2023-02-22 11:46:32
+version: 1.47
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but still there might end up being problems with rendering. One major problem has to do with line width not working on certain platforms. So then another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
@@ -74,6 +74,9 @@ Some people might not like the outcome of this though when it comes to having a 
 ## 2 - Using Line Segments
 
 Another option is to convert a geometry to an instance of [THREE.EdgesGeomerty](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) and then use that to create an instance of [THREE.LineSegments](https://threejs.org/docs/#api/en/objects/LineSegments) with a Line Material such as [THREE.LineBasicMaterial](https://threejs.org/docs/#api/en/materials/LineBasicMaterial). This will result in a look that differs from what the usual is when just setting a material into wire frame mode that I tend to like better. The result of this is lines draw in a way in which it is just the sides of a cube and not all the triangles that make up the cube.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/RonXN630qjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 //-------- ----------
