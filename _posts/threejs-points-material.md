@@ -5,15 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2022-10-01 12:53:30
-version: 1.35
+updated: 2023-02-23 11:30:15
+version: 1.36
 ---
 
-The use of the [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
+The use of the [Vector3](/2018/04/15/threejs-vector3/) class instances in [threejs](https://threejs.org/) is a major part of the process of doing much of anything in threejs. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the [position property in the Object3d class](/2022/04/04/threejs-object3d-position/) is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
 
-However what if I just want to work with a collection of vectors, and have some kind of way of just displaying some points in space rather than lines, or a solid object. Maybe there is a few ways of going about doing that actually such as just observing the position property of a mesh as a point in space, and just using built in geometry constructors for the mesh such as the Sphere geometry constructor to just serve as some geometry to surround this point of interest. When I think about it for a moment maybe that kind of approach would be a good idea actually. However there is also the [Points Constructor](https://threejs.org/docs/#api/en/objects/Points) that can be used with the Special [Points Material](https://threejs.org/docs/#api/en/materials/PointsMaterial) that is put in place just for this purpose of just drawing some points in space.
+However what if I just want to work with a collection of vectors, and have some kind of way of just displaying some points in space rather than lines, or a solid object. Maybe there is a few ways of going about doing that actually such as just observing the position property of a mesh as a point in space, and just using built in geometry constructors for the mesh such as the Sphere geometry constructor to just serve as some geometry to surround this point of interest. When I think about it for a moment maybe that kind of approach would be a good idea actually, however it would eat up a lot of overhead when it comes to real time performance. However another option would be to the [Points Constructor](https://threejs.org/docs/#api/en/objects/Points) that can be used with the Special [Points Material](https://threejs.org/docs/#api/en/materials/PointsMaterial) that is put in place just for this purpose of just drawing some points in space.
 
-There is always at least a few different ways of going about doing something, I can not say that I bother with the points material that much when it comes to working on actual projects. So in this post I will of course be going over a few examples of the Points Constructor, but I will also be going over some other examples of this sort of thing involving collections of points in space.
+In this post I will of course be going over a few examples of the Points Constructor, but I will also be going over some other examples of this sort of thing involving collections of points in space as well. The main focus will be the points material of course, but there are a whole lot of other things that I will need to write about also in the process of doing so while I am at it.
 
 <!-- more -->
 
@@ -22,21 +22,17 @@ There is always at least a few different ways of going about doing something, I 
 
 ## The points material and What to know before getting started
 
-This is a post on three.js, a javaScript library that is used to work with objects in a 3d space. It is not a getting stared post on three.js, or javaScript in general, so if you are new to three.js you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on the subject. I then assume that you have at least some experience making three.js demos, and are now at thins point only interested in making a certain kind of demo where you are just dealing with a collection of points. The process of doing so is not all that different from what you might all ready be familial with when it comes to working with the Mesh constructor.
+This is a post on the THREE.points class in threejs, a javaScript library that is used to work with objects in a 3d space. It is not a getting stared post on threejs, or javaScript in general, so if you are new to three.js you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on the subject. I then assume that you have at least some experience making three.js demos, and are now at thins point only interested in making a certain kind of demo where you are just dealing with a collection of points. The process of doing so is not all that different from what you might all ready be familial with when it comes to working with the Mesh constructor.
 
 So although I will not be getting into detail about the basics of three.js here, let alone everything else that you should be up to speed with before reading this. In this section I will be briefly be going over a few things that you should know, or many read up a bit more on before continuing with the Points Constructor and the Points material.
 
-### Source code examples are up on Github
-
-The source code examples that I am writing about in this post can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-points-material).
-
-### Version Numbers matter with three.js
-
-When I first wrote this post back in May of 2018 I was using version r91 of three.js, and the last time I got around to editing this post I was using r140. Sense then a number of code breaking changes have happened when it comes to using the geometry constructor rather than the Buffer Geometry constructor. The old Geometry constructor has been removed from three.js as of version r125, so the examples here have been updated to work with the buffer geometry constructor as well as versions other chances that have happened sense then.
-
 ### The Buffer Geometry Constructor
 
-Although built in geometries can be used with the Points material, more often than not I think that main reason why developers might be looking into the points material and the Points constructor is to get into making custom geometries. So it would make sense to also look into the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at some point, maybe before or around the same time as starting to work with the Points Martial.
+Although built in geometries can be used with the Points material, more often than not I think that main reason why developers might be looking into the points material and the Points constructor is to get into making custom geometries. So it would make sense to also look into the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at some point, maybe before or around the same time as starting to work with the Points Martial. The nice thing about THREE.Points is that it is just the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of buffer geometry class objects that needs to be in a good state in order to get things working well with THREE.Points which does help to make things easier when first getting started working things out.
+
+### My Main Blog Post on THREE.Points
+
+Sense I first wrote this blog post I now have a main [blog post on THREE.Points](/2023/02/23/threejs-points/) that you might want to read also. In future edits of this post the focus will be more so on the features of the THREE.PointsMaterial class rather than THREE.Points as that is the direction I should be going with this post. I will still keep the examples that have to do with all kinds of other point related stuff up here, it is just that now that I am expanding on this topic there are other posts where doing so is a better idea.
 
 ### Basic THREE.Mesh Example
 
@@ -52,6 +48,15 @@ scene.add(
     )
 );
 ```
+
+### Source code examples are up on Github
+
+The source code examples that I am writing about in this post can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-points-material).
+
+### Version Numbers matter with three.js
+
+When I first wrote this post back in May of 2018 I was using version r91 of three.js, and the last time I got around to editing this post I was using r140. Sense then a number of code breaking changes have happened when it comes to using the geometry constructor rather than the Buffer Geometry constructor. The old Geometry constructor has been removed from three.js as of version r125, so the examples here have been updated to work with the buffer geometry constructor as well as versions other chances that have happened sense then.
+
 
 ## 1 - The basics of Points and the Point material vs Mesh Constructors, and basic Three.Points Constructor example
 
