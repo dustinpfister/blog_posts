@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1026
-updated: 2023-02-06 14:49:45
-version: 1.11
+updated: 2023-02-23 12:36:08
+version: 1.12
 ---
 
 The [morph attributes property of a buffer geometry instance](https://threejs.org/docs/#api/en/core/BufferGeometry.morphAttributes) will store an object which contains buffer attributes that are used to mutate the state of other buffer attributes of the geometry over time. Simply put it is a way to go about creating animation by having say additional position attributes for several other kinds of states for the points of a buffer geometry. These additional attributes that are used to morph a buffer geometry can contain absolute values foe each item, or they can be delta values that store a rate of change for each item as well.
@@ -59,7 +59,7 @@ const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 // ---------- ----------
-// SHADER MATERIAL
+// GEOMETRY
 // ---------- ----------
 const geo = new THREE.SphereGeometry(0.5,20,20);
 geo.morphAttributes.position = [];
@@ -101,7 +101,7 @@ const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 // ---------- ----------
-// SHADER MATERIAL
+// GEOMETRY
 // base on this: https://github.com/mrdoob/three.js/blob/master/examples/webgl_morphtargets.html
 // ---------- ----------
 const geo = new THREE.BoxGeometry(2, 2, 2, 32, 32, 32);
@@ -131,6 +131,8 @@ mesh.geometry.computeVertexNormals();
 // RENDER
 // ---------- ----------
 renderer.render(scene, camera);
+
+
 ```
 
 
