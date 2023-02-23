@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1029
-updated: 2023-02-23 11:52:13
-version: 1.6
+updated: 2023-02-23 12:53:48
+version: 1.7
 ---
 
 When it comes to adding content to a scene for the most part one will want to make use of Mesh objects, and with that geometry and materials that work with such objects. However when it comes to first starting out learning how to make custom geometry, and for other various reasons one might want to make use of an alternative such as THREE.Points. The THREE.Points class is a way to create a content object with a geometry that can just have a position attribute and nothing else. The position attribute is the first and foremost attribute that one will want to work out when making a custom geometry as it is the actual points in space. So often I might start out using THREE.Points when making a custom geometry when starting out. Once I have the position attribute worked out well I can then move on to working out the various other attributes that will get the geometry to work well with Mesh Objects.
@@ -336,6 +336,92 @@ const update = function(frame, frameMax){
    const radius = 1 + 4 * a2;
    const v3_array = createV3Array(20, forPoint.circle(radius) );
    updateGeometryWithV3Array(geometry, v3_array);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 5 - Animaiton loop examples
+
+For each of my blog posts on threejs I like to make at least one if not more short little demo videos to embed into the content of the post to help get a better visual idea of what the over all blog post is about. So for this section I will be writing about what I have together thus far for these kinds of source code examples.
+
+### 5.1 - Morph attriburtes anc vertex color
+
+I would like for my first video for this post to make use of morph attribites and vertex colors.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// base on this: https://github.com/mrdoob/three.js/blob/master/examples/webgl_morphtargets.html
+// ---------- ----------
+const geo = new THREE.BoxGeometry(2, 2, 2, 8, 8, 8);
+geo.morphAttributes.position = [];
+const pos = geo.attributes.position;
+const data_pos = [];
+const data_color = [];
+for ( let i = 0; i < pos.count; i ++ ) {
+    const x = pos.getX( i );
+    const y = pos.getY( i );
+    const z = pos.getZ( i );
+    data_pos.push(
+        x * Math.sqrt( 1 - ( y * y / 2 ) - ( z * z / 2 ) + ( y * y * z * z / 3 ) ),
+        y * Math.sqrt( 1 - ( z * z / 2 ) - ( x * x / 2 ) + ( z * z * x * x / 3 ) ),
+        z * Math.sqrt( 1 - ( x * x / 2 ) - ( y * y / 2 ) + ( x * x * y * y / 3 ) )
+    );
+    const a1 = i / pos.count;
+    const r = a1;
+    const g = a1 % 0.25 / 0.25;
+    const b = a1 % 0.5 / 0.5;;
+    data_color.push(r, g, b);
+}
+geo.morphAttributes.position[ 0 ] = new THREE.Float32BufferAttribute( data_pos, 3 );
+geo.setAttribute('color', new THREE.Float32BufferAttribute( data_color, 3 ));
+// ---------- ----------
+// MATERIAL, POINTS
+// ---------- ----------
+const material = new THREE.PointsMaterial({ size: 0.2, vertexColors: true });
+const points = new THREE.Points(geo, material);
+scene.add(points);
+points.morphTargetInfluences[ 0 ] = 1;
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    points.morphTargetInfluences[ 0 ] = a2;
+    points.geometry.computeVertexNormals();
 };
 // loop
 const loop = () => {
