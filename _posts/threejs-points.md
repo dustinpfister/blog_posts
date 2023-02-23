@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1029
-updated: 2023-02-23 10:47:35
-version: 1.4
+updated: 2023-02-23 11:09:58
+version: 1.5
 ---
 
 When it comes to adding content to a scene for the most part one will want to make use of Mesh objects, and with that geometry and materials that work with such objects. However when it comes to first starting out learning how to make custom geometry, and for other various reasons one might want to make use of an alternative such as THREE.Points. The THREE.Points class is a way to create a content object with a geometry that can just have a position attribute and nothing else. The position attribute is the first and foremost attribute that one will want to work out when making a custom geometry as it is the actual points in space. So often I might start out using THREE.Points when making a custom geometry when starting out. Once I have the position attribute worked out well I can then move on to working out the various other attributes that will get the geometry to work well with Mesh Objects.
@@ -15,6 +15,21 @@ There are a number of other reasons why one might want to use the THREE.Points c
 
 <!-- more -->
 
+## The THREE.Points class and what to know first
+
+This is a blog post on the THREE.Points class and a whole bunch of related topics in the javaScript library known as threejs. There is a whole lot more that you should know before hand before reading a post such as this that have the do with the basics of threejs, and also client side javaScript in general. I will of course not be getting into detail about what all of this is here in this post, as with any or my other posts on threejs. I have all ready wrote blog posts on [getting started with threejs](/2018/04/04/threejs-getting-started/) and [javaScript in general](/2018/11/27/js-getting-started/) a long time ago that i do get around to edit now and then so you can check those out if you are still very new. I will however take a moment to wrote about a few things that you might want to get solid before reading this post though.
+
+### Read more on Buffer Geometry
+
+The THREE.Points class is a great way to get started with making custom [buffer geometry objects](/2021/04/22/threejs-buffer-geometry/), the class of which one might want to read a whole lot more about. I say that because when it comes to making a custom geometry work well with THREE.Mesh there is not just working out a position attribute, but also normals, and uv attributes as well in order to get everything looking okay. However when it comes to THREE.Points it is just the position attribute alone that is of interest which does help to simply things. However there is still a lot to be aware of even when it comes to just position attributes alone such as adding an index or not, and maybe getting into adding morph attributes, and so forth.
+
+### Source Code examples are up on Github
+
+The source code exmaples that I write about in this post can be found in the [corresponding for post folder](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-points) in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs). This is also where I park the source code for my [many other blog posts](/categories/three-js/) that I have wrote thus far as well. On top of the latest revisions of the examples that might in some cases be newer then what I have here I also have notes and todo lists for any future edits on this post. With that said if you think something needs to change or be added in a post such as that and you are on Github that would be a good place to make a pull request.
+
+### Version Numbers matter
+
+When I first wrote this blog post I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r146) and I am using three.min.js rather than three.module.js. There is a lot that will be changing up ahead when it comes to future revisions of threejs, also if you are all ready using JSM over old script tags these examples will not work all ready. Because threejs is a fast moving project where things are always being removed or changed it is a very good idea to always be mindful of what revision of threejs is being used and how when studying source code examples on the open web.
 
 ## 1 - Some basic examples of THREE.Points
 
@@ -232,3 +247,7 @@ camera.position.set(12, 6, 12);
 camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
+
+## Conclusion
+
+That will be it for now then when it comes to a general overview of THREE.Points in threejs. That is until the nest time I come around to do a little editing on this post when and if I get around to it. I would like to refine and expand a whole lot more on a wide range of other things that I did not get the time to do so with. However maybe much of that would be better done in additional posts on the subjects of points in threejs.
