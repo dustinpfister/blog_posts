@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1029
-updated: 2023-02-23 10:21:29
-version: 1.3
+updated: 2023-02-23 10:47:35
+version: 1.4
 ---
 
 When it comes to adding content to a scene for the most part one will want to make use of Mesh objects, and with that geometry and materials that work with such objects. However when it comes to first starting out learning how to make custom geometry, and for other various reasons one might want to make use of an alternative such as THREE.Points. The THREE.Points class is a way to create a content object with a geometry that can just have a position attribute and nothing else. The position attribute is the first and foremost attribute that one will want to work out when making a custom geometry as it is the actual points in space. So often I might start out using THREE.Points when making a custom geometry when starting out. Once I have the position attribute worked out well I can then move on to working out the various other attributes that will get the geometry to work well with Mesh Objects.
@@ -48,7 +48,7 @@ camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
 
-After I create my Points object and add that to the scene I then position my camera and call the render method of the webgl renderer passing the scene object, and the camera to render the current state of this scene. The end result is then four points in the canvas, or at least that is what it looks like anyway. More on this in this section as I at least touch base on the position attribute of buffer geometry objects.
+After I create my Points object and add that to the scene I then position my camera and call the render method of the webgl renderer passing the scene object, and the camera to render the current state of this scene. The end result is then eight points in the canvas, or at least that is what it looks like anyway, in reality it is much more when it comes to the state of the position attribute. More on this in this section as I at least touch base on the position attribute of buffer geometry objects, and I think I should also have a more advnaced section in this post on this subject as well.
 
 ### 1.2 - Using a Plane Geometry and Edges Geometry
 
@@ -130,6 +130,10 @@ renderer.render(scene, camera);
 
 ### 1.4 - Starting out with the position attribute
 
+Now that I have covered a lot of basic hello world type examples of THREE.Points I think I should have at least one basic example involving the position attribute of a buffer geometry. Nothing to advanced yet as this is still very much a basic section, but I think I should at least mention a thing or two about the position attribute here. As I covered in the very first example in this section, it looks like there are eight points in a geometry created with the THREE.BoxGeometry class. However if you take the time to inspect the Box geometries position attribute you will find that there are actually 24 points. Getting into depth as to why that is might prove to be a bot to much for a basic example, however I think that I should at least have a little code example that shows that this is indeed the case.
+
+So then for this example I once again create a Box Geometry, with th same set of arguments as in the first basic example. However now I am going to use the get attribute method of the buffer geometry class to get a reference to the position attribute of the geometry. If one takes a look at the count of the position attribute they will find that the count of points is indeed 24 if the segments argument are left to the default as I am doing in this example. I can then use this count value as a way to know how many points there are to loop over when making say a while loop to do so. In such situations I can use buffer attribute methods such as getX or setX to get and set values for each axis of each point in the position attribute. For this example I just want to change the x values to make it clear that there are in fact way more points then eight in the geometry.
+
 ```js
 // ---------- ----------
 // SCENE, CAMERA, RENDERER
@@ -167,7 +171,11 @@ renderer.render(scene, camera);
 
 ## 2 - The set from points method
 
-### 2.1 - Basic Set from Points example
+For this section I am going to be writing at least a thing or two about the [set from points method of the buffer geometry](/2023/01/05/threejs-buffer-geometry-set-from-points/) class. I think that it is a good idea to have at least a few demos that make use of this feature when it comes to writing a post o TREE.Points as I would say it is a closely related topic. The general idea of the set from points method is that it is a quick way to create a buffer geometry from an array of [Vector3 objects](/2018/04/15/threejs-vector3/). So one can create an array of points in space my making a whole bunch of Vector3 objects, pushing each of them to an array, and then just simply pass this array to the set from points method. The end result will then be a geometry with a position attribute crated from this array of vector3 objects. A geometry such as this will not work so well when used with mesh objects, but when it comes to lines and points it will work just fine.
+
+### 2.1 - Getting Started with Set from Points and THREE.Points
+
+In order to get started with the set from points method I first need an array of Vector3 objects. To help with with this example and every additional example I will be making in this section I have a helper function that will just return an array such as this by passing a count of points that I want and a function where I can pass some logic to apply to each point that will be pushed into the array of points. I then also have a helper function where I pass an array of vector3 objects and get a geometry that is created from that array of vecotr3 objects by making use of this set from points method. Once I have the geometry I can then create the THREE.Points object by just passing the returned geometry as always.
 
 ```js
 // ---------- ----------
