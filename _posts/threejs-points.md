@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1029
-updated: 2023-02-23 09:25:58
-version: 1.2
+updated: 2023-02-23 10:21:29
+version: 1.3
 ---
 
 When it comes to adding content to a scene for the most part one will want to make use of Mesh objects, and with that geometry and materials that work with such objects. However when it comes to first starting out learning how to make custom geometry, and for other various reasons one might want to make use of an alternative such as THREE.Points. The THREE.Points class is a way to create a content object with a geometry that can just have a position attribute and nothing else. The position attribute is the first and foremost attribute that one will want to work out when making a custom geometry as it is the actual points in space. So often I might start out using THREE.Points when making a custom geometry when starting out. Once I have the position attribute worked out well I can then move on to working out the various other attributes that will get the geometry to work well with Mesh Objects.
@@ -52,7 +52,7 @@ After I create my Points object and add that to the scene I then position my cam
 
 ### 1.2 - Using a Plane Geometry and Edges Geometry
 
-For this next basic demo I will be making use of a PlaneGeometry, and also demo what happens when using Edge Geometry as well.
+For this next basic demo I will be making use of a PlaneGeometry, and also demo what happens when using Edge Geometry to create a another geometry from the plane geometry. This time I am adjusting the size of the plane geometry to 10 by 10, but I am also passing 10 by 10 when it comes to the segments as well which results in a kind of grid like layout compared to the default values for the number of segments that are 1 by 1. However I am making two points objects in this demo one of which makes use of the plane geometry alone, and another that makes use of an edge geometry created from that plane geometry.
 
 ```js
 // ---------- ----------
@@ -87,6 +87,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.3 - The Points Material
+
+One of the draw backs with using THREE.Points is that I can not use the various mesh materials as this is a Points object rather than a Mesh object. When it comes to material options with points there is just one option which is the [THREE.PointsMaterial](/2018/05/12/threejs-points-material/). As with any material there is knowing what there is to work with when it comes to the [base material class](https://threejs.org/docs/#api/en/materials/Material) such as the transparent and opacity options. There are a few options on top of the base material class when it comes to what the Points Material adds on top of it. For the most part the two main options of interest are size and color.
 
 ```js
 // ---------- ----------
