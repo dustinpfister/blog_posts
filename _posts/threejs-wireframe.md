@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2023-02-24 16:55:47
-version: 1.49
+updated: 2023-02-24 17:00:48
+version: 1.50
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but still there might end up being problems with rendering. One major problem has to do with line width not working on certain platforms. So then another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
@@ -38,7 +38,7 @@ When I first wrote this post I was using r111 of threejs, and the last time I ca
 
 ## 1 - Basic examples of wire frame mode
 
-In this section I will be starting out with just a few basic examples of wire frame mode, with mesh object materials.
+In this section I will be starting out with just a few basic examples of wire frame mode, with mesh object materials. For the most part one will just need to set a boolean value to true and that will be the end of it. However there are a number of things that might come up when it comes to getting into this sort of thing. So I will want to have a few simple examples here before getting into any more advanced examples and alternatives with wire frames.
 
 ### 1.1 - Basic wire frame demo
 
