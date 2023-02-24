@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2023-02-22 11:46:32
-version: 1.47
+updated: 2023-02-24 16:51:03
+version: 1.48
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but still there might end up being problems with rendering. One major problem has to do with line width not working on certain platforms. So then another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
@@ -36,7 +36,7 @@ The source code examples that I am writing about here can also be found in my [t
 
 When I first wrote this post I was using r111 of threejs, and the last time I cam around to do a little editing of this content I was testing things out on r140. Code breaking changes are introduced to threejs all the time, so I need to repeat this in every threejs post regardless of what the post might be on. When it comes to just using the wire frame mode boolean of a material I can not say that has changed much, but other aspects of these examples might break in future versions of three.js.
 
-## 1 - Basic wire frame demo
+### 1.1 - Basic wire frame demo
 
 Like many of my other three.js posts I like to start off with a very basic example of something, and get that out of the way before moving on to more complex examples, of just simply other ways of doing more or less the same thing. The easiest way to get started with wire frames is to just set the wire frame property of a material like that of the [basic material](/2018/05/05/threejs-basic-material/) to true, and that will just about wrap it up.
 
@@ -70,6 +70,44 @@ renderer.render(scene, camera);
 ```
 
 Some people might not like the outcome of this though when it comes to having a wire frame type mode though. Also in this example I am using the basic material, there are maybe a few things to cover when it comes to materials that respond to a light source such as with the standard material. However before I get into anything with light maybe it would be best to look at a few more basic examples, and maybe some not so basic examples of also getting a kind of wire frame like effect for a mesh object.
+
+### 1.2 - Using Edge geometry and line segments
+
+Another option to get a wire frame look would be to not use mesh objects at all but rather lines. When doing so I might also want to use edge geometry to get just the edges of objects when doing so.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('blue');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const boxGeo = new THREE.BoxGeometry(1.50, 1.50, 1.50),
+edgeGeo = new THREE.EdgesGeometry(boxGeo);
+//-------- ----------
+// LINE
+//-------- ----------
+const line = new THREE.LineSegments(
+    edgeGeo,
+    new THREE.LineBasicMaterial({
+        color: new THREE.Color('white'),
+        linewidth: 3
+    })
+);
+scene.add(line);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.5, 1.25, 2);
+camera.lookAt(0, -0.2, 0);
+renderer.render(scene, camera);
+```
 
 ## 2 - Using Line Segments
 
