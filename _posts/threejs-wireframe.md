@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2023-02-24 17:00:48
-version: 1.50
+updated: 2023-02-24 17:15:37
+version: 1.51
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but still there might end up being problems with rendering. One major problem has to do with line width not working on certain platforms. So then another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
@@ -74,6 +74,40 @@ renderer.render(scene, camera);
 ```
 
 Some people might not like the outcome of this though when it comes to having a wire frame type mode though. Also in this example I am using the basic material, there are maybe a few things to cover when it comes to materials that respond to a light source such as with the standard material. However before I get into anything with light maybe it would be best to look at a few more basic examples, and maybe some not so basic examples of also getting a kind of wire frame like effect for a mesh object.
+
+### 1.2 - Setting the line width ( will not work on all platforms )
+
+There is a wire frame line width option, but this feature will not work on all platforms. There is also a simular problem when it comes to using lines in general also. This is then one of the major reasons why it might be better to create a custom shader material, or somehting to that effect with rendering this kind of look.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('blue');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH, GEOMETRY, MATREIAL - in wireframe mode
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1.50, 1.50, 1.50),
+    new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        wireframe: true,
+        wireframeLinewidth: 4 // setting line width to 4 here, but it might not work on all platforms
+    })
+);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.5, 1.25, 2);
+camera.lookAt(0, -0.2, 0);
+renderer.render(scene, camera);
+```
 
 ## 2 - Using Line Segments
 
