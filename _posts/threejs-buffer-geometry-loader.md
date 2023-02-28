@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2023-02-28 12:13:45
-version: 1.30
+updated: 2023-02-28 12:59:58
+version: 1.31
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [threejs](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen. What is nice about the buffer geometry loader is that it is baked into the core of threejs itself, so there is no need to boter loading an additional file beyond that which is often the case with many other options.
@@ -115,178 +115,169 @@ I know there are a lot of projects where newer versions just patch programming m
 
 ## 1 - Basic demo using the buffered geometry loader.
 
-A basic example of the loader will involve creating an instance of the loader, and then calling the load method of that instance. When calling the load method you will want to pass at least two arguments to the method which are the url of the json file that you want to load, and a callback method that will fire when the file is loaded, and ready to use.
+A basic example of the loader will involve creating an instance of the loader, and then calling the load method of that instance. When calling the load method you will want to pass at least two arguments to the method. The first argument is the url of the json file that you want to load, and the second argument is a callback method that will fire when the file is loaded, and ready to use. There are additional options when it comes to more advanced examples, but for now I am just going to stick with the buffer geometry loader alone.
 
 ```js
-(function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(65, 4 / 3, .5, 10);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
- 
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var light = new THREE.PointLight(0xffffff, 1, 100);
-    light.position.set(2, 2, 2);
-    scene.add(light);
- 
-    var light2 = new THREE.PointLight(0xffffff, 1, 100);
-    light2.position.set(-2, -2, -2);
-    scene.add(light2);
- 
-    var frame = 0,
-    maxFrame = 200,
-    mesh;
-    var loop = function () {
-        var per = frame / maxFrame;
-        requestAnimationFrame(loop);
-        mesh.rotation.set(Math.PI / 2, Math.PI * 2 * per, 0);
-        // render the scene
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const pl = new THREE.PointLight(0xffffff, 1, 100);
+pl.position.set(5, 5, 5);
+scene.add(pl);
+//-------- ----------
+// MESH
+//-------- ----------
+let mesh = null;
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const degree = 360 * (frame / frameMax);
+    mesh.rotation.y = THREE.MathUtils.degToRad(degree);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
         renderer.render(scene, camera);
-        frame += 1;
-        frame %= maxFrame;
-    };
- 
-    // Loader
-    var loader = new THREE.BufferGeometryLoader();
- 
-    // load a resource
-    loader.load(
-        // resource URL
-        'buffer-geometry-loader/js/three_1.json',
-        // onLoad callback
-        function (geometry) {
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+//-------- ----------
+// LOADER
+//-------- ----------
+const loader = new THREE.BufferGeometryLoader();
+// load a resource
+loader.load(
+    // resource URL
+     '/json/static/box_house1_solid.json',
+    // onLoad callback
+    (geometry) => {
+        geometry.rotateX(Math.PI * 1.5);
         // create a mesh with the geometry
         // and a material, and add it to the scene
         mesh = new THREE.Mesh(
-                geometry,
-                new THREE.MeshStandardMaterial({
-                    color: 0x00ff0000,
-                    emissive: 0x2a2a2a,
-                    side: THREE.DoubleSide
-                }));
+           geometry,
+            new THREE.MeshPhongMaterial({
+                color: 0x00ff0000,
+                emissive: 0x2a2a2a,
+                side: THREE.DoubleSide
+            }));
         scene.add(mesh);
         loop();
-    });
- 
-}
-    ());
+    }
+);
 ```
 
-The callback gives just one argument that is the geometry that can be used to make a mesh that can then be added to the scene, at which point the external geometry can be rendered. Aside from that I do not have to do anything out of the usual with respect to the scene, camera, and renderer as it is just another way to acquire a geometry to create a mesh.
+The callback gives just one argument that is the final parsed geometry object from the given JSON text that was loaded. For this example I am just rotating the geometry to correct an issue with the orientation of the json file source, and then I am using it to create a mesh object. I can then add the mesh object to scene object, and start the app loop.
 
 ## 2 - Additional callbacks when calling the load method of the buffer geometry loader
 
 If desired additional callbacks can be given to the load method for reporting load progress, and handing errors if they happen. One way to go about dong this is to just give additional callbacks when calling the load function of the buffer geometry loader. So when calling the load method the first argument should be a string value to the json file that I want to load, and then a callback when the file is loaded as usual. However after that I can give an additional callback that will fire when it comes to the progress of the file that is being loaded, and after that yet another that will fire for any errors that might happen.
 
 ```js
-
-(function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(65, 4 / 3, .5, 10);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
- 
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var light = new THREE.PointLight(0xffffff, 1, 100);
-    light.position.set(2, 2, 2);
-    scene.add(light);
- 
-    var light2 = new THREE.PointLight(0xffffff, 1, 100);
-    light2.position.set(-2, -2, -2);
-    scene.add(light2);
- 
-    var frame = 0,
-    maxFrame = 200,
-    mesh;
-    var loop = function () {
-        var per = frame / maxFrame;
-        requestAnimationFrame(loop);
-        mesh.rotation.set(Math.PI / 2, Math.PI * 2 * per, 0);
-        // render the scene
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const light = new THREE.PointLight(0xffffff, 1, 100);
+light.position.set(2, 2, 2);
+scene.add(light);
+const light2 = new THREE.PointLight(0xffffff, 1, 100);
+light2.position.set(-2, -2, -2);
+scene.add(light2);
+//-------- ----------
+// LOAD/RENDER
+//-------- ----------
+camera.position.set(3, 3, 2);
+camera.lookAt(0, 0, 0); 
+// Loader
+const loader = new THREE.BufferGeometryLoader();
+// load a resource
+loader.load(
+    // URL
+    '/forpost/threejs-buffer-geometry-loader/buffer-geo/three_2.json',
+    // Load Done
+    function ( geometry ) {
+        const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({}));
+        scene.add(mesh);
         renderer.render(scene, camera);
-        frame += 1;
-        frame %= maxFrame;
-    };
- 
-    // Loader
-    var loader = new THREE.BufferGeometryLoader();
- 
-    // load a resource
-    loader.load(
-        // URL
-        '/forpost/threejs-buffer-geometry-loader/buffer-geo/three_2.json',
-        // Load Done
-        function ( geometry ) {
-            var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({}));
-            scene.add(mesh);
-            renderer.render(scene, camera);
-        },
-        // Progress
-        function ( xhr ) {
-            console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-        },
-        // Error
-        function ( err ) {
-            console.log( 'An error happened' );
-        }
-    );
-}
-    ());
+    },
+    // Progress
+    function ( xhr ) {
+        console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+    },
+    // Error
+    function ( err ) {
+        console.log( 'An error happened' );
+    }
+);
 ```
 
 ### 3 - To JSON text and back
 
 To create JSON text from a buffer geometry instance I will first want to call the to non indexed method of the buffer geometry class, and then call the to json method to get an object that is formatted the way that I want it. If I do not call the non index method I can end up with a format that will not work well with the parser of the buffer geometry loader as of r140. Anyway once I have the object that looks good I can then just pass that to the JSON.stringify method to get the text that can then in turn be saved as a json file that will then work with the parser.
 
-If I have some text that I just simply want to parse I can create an instance of the Buffer Geometry Loader and call the parse method directly. When doing so I will want to pass the text to the JSON.pasre method and then pass an object to the parser as it expected and object rather than text.
+If I have some text that I just simply want to parse I can create an instance of the Buffer Geometry Loader and call the parse method directly. When doing so I will want to pass the text to the JSON.parse method and then pass an object to the parser as it expected and object rather than text.
 
 ```js
-
-(function () {
-    //******** *********
-    // Scene, Camera, renderer
-    //******** *********
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(65, 4 / 3, .5, 10);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //******** *********
-    // BUFFER GEOMETRY TO TEXT
-    //******** *********
-    var geo = new THREE.SphereGeometry(1, 10, 10);
-    // make sure to use to non indexed before calling to json
-    var buffObj = geo.toNonIndexed().toJSON();
-    var text = JSON.stringify(buffObj);
-    //******** *********
-    // TEXT TO BUFFER GEOMETRY
-    //******** *********
-    const loader = new THREE.BufferGeometryLoader();
-    var obj = JSON.parse(text);
-    var geo2 = loader.parse( obj );
-    var mesh = new THREE.Mesh(geo2)
-    scene.add(mesh)
-    renderer.render(scene, camera)
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// BUFFER GEOMETRY TO TEXT
+//-------- ----------
+const geo = new THREE.SphereGeometry(1, 10, 10);
+// make sure to use to non indexed before calling to json
+const buffObj = geo.toNonIndexed().toJSON();
+const text = JSON.stringify(buffObj);
+//-------- ----------
+// TEXT TO BUFFER GEOMETRY
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const loader = new THREE.BufferGeometryLoader();
+const obj = JSON.parse(text);
+const geo2 = loader.parse( obj );
+const mesh = new THREE.Mesh(geo2)
+scene.add(mesh)
+renderer.render(scene, camera);
 ```
 
 ## Conclusion
