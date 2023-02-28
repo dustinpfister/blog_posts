@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2023-02-28 12:59:58
-version: 1.31
+updated: 2023-02-28 13:22:39
+version: 1.32
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [threejs](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen. What is nice about the buffer geometry loader is that it is baked into the core of threejs itself, so there is no need to boter loading an additional file beyond that which is often the case with many other options.
@@ -111,7 +111,7 @@ The source code examples that I write about here in this post can also be found 
 
 ### Version Numbers matter.
 
-I know there are a lot of projects where newer versions just patch programming mistakes, and the actual use of the project renames the same when it comes to the use of the public API. This is not so true with threejs, major changes happen often that result in code breaking changes in what some times seems like every revision number that comes out at times. When I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91) that was release in March of 2018, and the last time I edited the post I was using r140 of threejs that was released in August of 2022. A great deal was removed and changed between those two version numbers, so always be mindful of what version you are using when looking at source code examples here elsewhere on the open web.
+I know there are a lot of projects where newer versions just patch programming mistakes, and the actual use of the project renames the same when it comes to the use of the public API. This is not so true with threejs, major changes happen often that result in code breaking changes in what some times seems like every revision number that comes out at times. When I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91) that was release in March of 2018, and the last time I edited the post I was using r146 of threejs that was released in October of 2022. A great deal was removed and changed between those two version numbers, so always be mindful of what version you are using when looking at source code examples here elsewhere on the open web.
 
 ## 1 - Basic demo using the buffered geometry loader.
 
@@ -278,6 +278,60 @@ const geo2 = loader.parse( obj );
 const mesh = new THREE.Mesh(geo2)
 scene.add(mesh)
 renderer.render(scene, camera);
+```
+
+## 4 - Using the Loading Manager
+
+If I want to load more than one file, or i find myself in a situation in which I need to load not just better geometry, but other assets as well. Then I will want to start making use of the THREE.LoadingManager class to do so. This is a class that allows for me to create a single object to which I can attach callback functions that will fire when a whole bunch of loading has been completed. In this section then I will be going over a few examples that make use of this loading manager class starting out with some very basic ones.
+
+### 4.1 - A loading manager hello world example
+
+To start out with this I just create an instance of the THREE.loadingManager class, after that I will want to attach at least an onLoad handler for the manager. There are a number of other handlers of course, but this is a very basic getting started example so for now I am just going to care about that. Anyway once I have my loading manager class i can pass that as the first argument for a call of the load method of a buffer geometry class instance. 
+
+When the loading is done with the buffer geometry loader the on load method will fire and in that call back I then render my over all scene. This might not be much of an improvement from the basic example in this post, but things will become more clear as we get into more complex examples in this section.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const pl = new THREE.PointLight(0xffffff, 1, 100);
+pl.position.set(5, 5, 5);
+scene.add(pl);
+//-------- ----------
+// LOADING MANAGER
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0,-1,0);
+const manager = new THREE.LoadingManager();
+manager.onLoad = () => {
+    console.log('Done Loading');
+    renderer.render(scene, camera);
+};
+//-------- ----------
+// BUFFER GEOMETRY LOADER
+//-------- ----------
+const onBufferGeometryLoad =  (geometry) => {
+    geometry.rotateX(Math.PI * 1.50);
+    geometry.rotateY(Math.PI * 1.10);
+    const mesh = new THREE.Mesh(
+       geometry,
+        new THREE.MeshPhongMaterial({
+            color: 0x00ff0000,
+            emissive: 0x2a2a2a,
+            side: THREE.DoubleSide
+        }));
+    scene.add(mesh);
+};
+const loader = new THREE.BufferGeometryLoader(manager);
+loader.load('/json/static/box_house1_solid.json', onBufferGeometryLoad);
 ```
 
 ## Conclusion
