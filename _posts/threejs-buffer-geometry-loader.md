@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2023-02-28 13:22:39
-version: 1.32
+updated: 2023-02-28 13:36:38
+version: 1.33
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [threejs](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen. What is nice about the buffer geometry loader is that it is baked into the core of threejs itself, so there is no need to boter loading an additional file beyond that which is often the case with many other options.
@@ -332,6 +332,59 @@ const onBufferGeometryLoad =  (geometry) => {
 };
 const loader = new THREE.BufferGeometryLoader(manager);
 loader.load('/json/static/box_house1_solid.json', onBufferGeometryLoad);
+```
+
+### 4.2 - Loading more than one geometry
+
+For this next demo I am doing more or less the same thing as the first one, but now I am just making many calls of the load method of the buffer geometry loader. The only goal with this demo is to just simply load more than one geometry and then render the over all scene only after all of the external geometries have been  loaded. There is a whole lot more ground to cover when it comes to this sort of thing of course when it comes to additional handers for the manager, and also situations in which I might want to have more then one instance of the loader I am using and so forth. There is also the issue of the order in which the objects are loaded and that this will not always be the same each time. However for this example the basic idea of what a loading manager is good for should be clear all ready. I am loading a whole bunch of external geometry objects and the on load hander function files when all of it is done loading.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const pl = new THREE.PointLight(0xffffff, 1, 100);
+pl.position.set(5, 5, 5);
+scene.add(pl);
+//-------- ----------
+// LOADING MANAGER
+//-------- ----------
+camera.position.set(-10, 15, 15);
+camera.lookAt(0,-1,0);
+const manager = new THREE.LoadingManager();
+manager.onLoad = () => {
+    console.log('Done Loading');
+    renderer.render(scene, camera);
+};
+//-------- ----------
+// BUFFER GEOMETRY LOADER
+//-------- ----------
+let object_index = 0;
+const onBufferGeometryLoad =  (geometry) => {
+    geometry.rotateX(Math.PI * 1.50);
+    geometry.rotateY(Math.PI * 1.10);
+    const mesh = new THREE.Mesh(
+       geometry,
+        new THREE.MeshPhongMaterial({
+            color: 0x00ff0000,
+            emissive: 0x2a2a2a,
+            side: THREE.DoubleSide
+        }));
+    scene.add(mesh);
+    mesh.position.set(6 * object_index,0, 1.8 * object_index);
+    object_index += 1;
+};
+const loader = new THREE.BufferGeometryLoader(manager);
+loader.load('/json/static/box_house1_solid.json', onBufferGeometryLoad);
+loader.load('/json/static/cube_thing.json', onBufferGeometryLoad);
+loader.load('/json/static/wheel.json', onBufferGeometryLoad);
 ```
 
 ## Conclusion
