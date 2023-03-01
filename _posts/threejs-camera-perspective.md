@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2023-03-01 09:39:07
-version: 1.49
+updated: 2023-03-01 09:40:56
+version: 1.50
 ---
 
 One of the most important things to understand when making a [threejs](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in threejs that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world. So then the perspective camera it is the typical choice for most projects, and for the most part it is a good one to start with also.
@@ -38,7 +38,8 @@ The source code examples for this post, as well as my many other posts can be fo
 
 ### Version Numbers Matter
 
-When I first wrote this post I was using threejs version r91, and the last time I cam around to do some editing and make sure the source code examples are working I was using r127. There have been an awful lot of changes that have happened to threejs between the two version numbers, which have resulted in a lot of code breaking changes. it is also safe to assume that this trend will continue moving forward, so I got into the habit of always making sure that I mention what the version numbers are when I wrote a post as well as when I edited the post last as well.
+When I first wrote this post I was using threejs version r91, and the last time I cam around to do some editing I started updating some of the examples to my r146 style rules. There have been an awful lot of changes that have happened to threejs between the two version numbers, which have resulted in a lot of code breaking changes. it is also safe to assume that this trend will continue moving forward, so I got into the habit of always making sure that I mention what the version numbers are when I wrote a post as well as when I edited the post last as well.
+
 ## 1 - Basic example of the perspective camera constructor
 
 In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on many other topics on threejs while I am at it. Although this is not a getting started with threejs type post, this will very much be a basic section. As such I will be keeping these examples as simple as possible with just a the most basic striped down core set of objects. I will also be keeping these as simple static render scenes avoiding the use of an update loop, and also keep these examples very copy and paste friendly assuming that you do still have a revision of threejs alone as that will still be needed of course.
