@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2023-03-01 10:39:45
-version: 1.54
+updated: 2023-03-01 11:09:52
+version: 1.55
 ---
 
 One of the most important things to understand when making a [threejs](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in threejs that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world. So then the perspective camera it is the typical choice for most projects, and for the most part it is a good one to start with also.
@@ -241,48 +241,53 @@ loop();
 Although mutation of the field of view property of a camera can result in a kind of zoom effect, it might be better to use the zoom property as a way to adjust thins over time. The default value for this zoom property is 1 and it can be set to values below and above one as a way to set a kind of zoom effect for the camera.
 
 ```js
-(function () {
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
-    camera.position.set(10, 10, 10);
-    camera.lookAt(0, 0, 0);
-    // SCENE, RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(640, 480);
-    // MESH
-    scene.add(new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshNormalMaterial()));
-    // LOOP
-    var state = {
-        frame: 0,
-        maxFrame: 90,
-        fps: 30,
-        lt: new Date()
-    };
-    var loop = function(){
-        var now = new Date(),
-        secs = (now - state.lt) / 1000;
-        var per = state.frame / state.maxFrame;
-        var bias = 1 - Math.abs(per - 0.5) / 0.5;
-        requestAnimationFrame(loop);
-        if(secs > 1 / state.fps){
-            // ZOOM
-            camera.zoom = 0.05 + 20.95 * bias;
-            camera.updateProjectionMatrix();
-            state.frame += state.fps * secs;
-            state.frame %= state.maxFrame;
-            renderer.render(scene, camera);
-            state.lt = new Date();
-        }
-    };
-    loop();
-
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGLRenderer();
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.setSize(640, 480);
+// MESH
+scene.add(new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial()));
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 20;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 90;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update method
+const update = function (frame, frameMax) {
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    camera.zoom = 0.50 + 14.50 * a2;
+    camera.updateProjectionMatrix();
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## 3 - The camera helper, and more than one camera
