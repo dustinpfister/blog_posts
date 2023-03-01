@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2023-03-01 08:53:04
-version: 1.48
+updated: 2023-03-01 09:39:07
+version: 1.49
 ---
 
 One of the most important things to understand when making a [threejs](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in threejs that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world. So then the perspective camera it is the typical choice for most projects, and for the most part it is a good one to start with also.
@@ -41,39 +41,43 @@ The source code examples for this post, as well as my many other posts can be fo
 When I first wrote this post I was using threejs version r91, and the last time I cam around to do some editing and make sure the source code examples are working I was using r127. There have been an awful lot of changes that have happened to threejs between the two version numbers, which have resulted in a lot of code breaking changes. it is also safe to assume that this trend will continue moving forward, so I got into the habit of always making sure that I mention what the version numbers are when I wrote a post as well as when I edited the post last as well.
 ## 1 - Basic example of the perspective camera constructor
 
-In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on many other topics on threejs while I am at it. It is still a good idea to have a strong foundational understanding of all of the typical constructors that are used to even create a simple starting example such as the one in this section, so I will see about linking to other posts as needed with this. 
+In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on many other topics on threejs while I am at it. Although this is not a getting started with threejs type post, this will very much be a basic section. As such I will be keeping these examples as simple as possible with just a the most basic striped down core set of objects. I will also be keeping these as simple static render scenes avoiding the use of an update loop, and also keep these examples very copy and paste friendly assuming that you do still have a revision of threejs alone as that will still be needed of course.
 
 ### 1.1 - A Basic source code example
 
-So then here is a very basic copy and past threejs example of the threejs perspective camera where I am just creating a Camera, as well as a [Scene Object](/2018/05/03/threejs-scene/), a [Mesh object](/2018/05/04/threejs-mesh/) with a [Geometry](/2021/04/22/threejs-buffer-geometry/) and a [Material](/2018/04/30/threejs-materials/), and a [renderer](/2018/11/24/threejs-webglrenderer/). 
+So then here is a very basic threejs example of the threejs perspective camera where I am just creating a Camera, as well as a [Scene Object](/2018/05/03/threejs-scene/), a [Mesh object](/2018/05/04/threejs-mesh/) with a [Geometry](/2021/04/22/threejs-buffer-geometry/) and a [Material](/2018/04/30/threejs-materials/), and a [renderer](/2018/11/24/threejs-webglrenderer/). Every threejs project will typically need a scene object, a camera, and a renderer that can be used to render a current view of a scene with a camera. There will also typically need to be at least one object to look at as well, and there is not just sticking with mesh objects, but also using basic mesh materials that will work without a light source.
 
-I am just creating an instance of the perspective camera with the constructor, and when doing so I need to pass arguments for field of view, aspect ratio, as well as near and far render distances. These are all values that have to do with a camera in general, or the perspective camera and as such they differ from other values that might be from a base class other than then base camera class, such as Object3d. As such when it comes to changing this arguments at run time doing so is not so straight forward compared to other values and often a special update method must be used to update the values at run time, more on that later as this is just a basic example where I will not be getting into any kind of animation or mutation of values in a loop here. 
+I am just creating an instance of the perspective camera with, and when doing so I need to pass arguments for field of view, aspect ratio, as well as near and far render distances. These are all values that have to do with the perspective camera, and as such they differ from other values that might be from a base class other than then base camera class and other camera options. When it comes to changing this arguments at run time doing so is not so straight forward compared to other values and often a special update method must be used to update the values at run time, more on that later as this is just a basic example where I will not be getting into any kind of animation or mutation of values in a loop here. 
 
 ```js
-(function () {
-    // CAMERA
-    var fieldOfView = 40,
-    aspectRatio = 4 / 3,
-    near = 0.1,
-    far = 1000,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    camera.position.set(2, 2, 2); // position camera
-    camera.lookAt(0, 0, 0);       // have camera look at 0,0,0
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    // mesh
-    scene.add(new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshNormalMaterial()));
-    // renderer
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(640, 480);
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ---------
+// SCENE, RENDERER
+//-------- ---------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const renderer = new THREE.WebGL1Renderer();
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+renderer.setSize(640, 480, false);
+//-------- ---------
+// CAMERA
+//-------- ---------
+const fieldOfView = 50,
+aspectRatio = 4 / 3,
+near = 0.1,
+far = 1000,
+camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+//-------- ---------
+// MESH
+//-------- ---------
+scene.add(new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial()));
+//-------- ---------
+// RENDER
+//-------- ---------
+camera.position.set(2, 2, 2); // position camera
+camera.lookAt(0, 0, 0);       // have camera look at 0,0,0
+renderer.render(scene, camera);
 ```
 
 Once I have a camera instance I can pass that to the render method that I am using along with a scene to view the scene with that camera. I should make sure that the camera is positioned, and rotated in a way in which I am looking at something in the scene. One way is to use the position property, and [look at methods](/2021/05/13/threejs-object3d-lookat/) of the camera instance both of which are Object3d class features.
