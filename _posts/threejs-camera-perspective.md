@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2023-03-01 10:12:15
-version: 1.51
+updated: 2023-03-01 10:14:21
+version: 1.52
 ---
 
 One of the most important things to understand when making a [threejs](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in threejs that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world. So then the perspective camera it is the typical choice for most projects, and for the most part it is a good one to start with also.
@@ -43,6 +43,26 @@ When I first wrote this post I was using threejs version r91, and the last time 
 ## 1 - Basic example of the perspective camera constructor
 
 In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on many other topics on threejs while I am at it. Although this is not a getting started with threejs type post, this will very much be a basic section. As such I will be keeping these examples as simple as possible with just a the most basic striped down core set of objects. I will also be keeping these as simple static render scenes avoiding the use of an update loop, and also keep these examples very copy and paste friendly assuming that you do still have a revision of threejs alone as that will still be needed of course.
+
+### 1.a - Understanding Viewing frustum.
+
+A [Viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum) cam be thought of as a pyramid of vision that exists in front of a camera. Any object that lays inside of the pyramid will be rendered, while anything outside of it will not which will help to reduce overhead in very complex scenes that may contain a great number of mesh objects. This pyramid can be defined by a [field of view](https://en.wikipedia.org/wiki/Field_of_view) in terms of an angle in y direction. As well as additional values that define the aspect ratio of this view, as well as values that define where the top of the pyramid begins, and ends, in other words view distance, or range of you prefer.
+
+### 1.b - Field of view
+
+The first argument that is given to the three.js perspective camera constructor is the field of view. The value expected should be a Number representing an angle in degrees not radians. I am not always so sure what the best value might be for this, the general way of dealing with it has been to just play around with different static values until I get something that looks okay. However looking at all [kinds of various examples on this on the open web](https://stackoverflow.com/questions/57959190/three-js-update-the-fov-value-of-a-perspective-camera-and-keep-the-same-camera-d) I am sure there are ways of coming up with or finding some kind of system that will work well for setting this value as well as the aspect ratio value.
+
+### 1.c - Aspect ratio
+
+The aspect ratio is the second argument that is given to the three.js perspective camera constructor. This value is the width divided by the height of the desired ratio and as such can often be created by just dividing the width and height of the dome element canvas, or the values that will be set for such as canvas when setting up a renderer. Typically you might want to set this to something like 16 over 9, or 4 over 3. Whatever value you set will be used to determine the width and height of the near, and far rectangles of the pyramid of vision, but not the distance between these rectangles as that is what the nest arguments are for.
+
+### 1.d - Near distance
+
+This is the near bound of the frustum, any object that is from this distance, outward to the far distance will be rendered if it is inside the pyramid of vision.
+
+### 1.e - Far distance
+
+This is for course the far distance of the view pyramid. It is also the distance at which the aspect ratio of the field of view will be at it's largest, the bottom of the pyramid. If you are ever asking yourself, how far is to far, this value is of interest, as anything the exists beyond this distance will not be rendered.
 
 ### 1.1 - A Basic source code example
 
@@ -82,26 +102,6 @@ renderer.render(scene, camera);
 ```
 
 Once I have a camera instance I can pass that to the render method that I am using along with a scene to view the scene with that camera. I should make sure that the camera is positioned, and rotated in a way in which I am looking at something in the scene. One way is to use the position property, and [look at methods](/2021/05/13/threejs-object3d-lookat/) of the camera instance both of which are Object3d class features.
-
-### 1.2 - Understanding Viewing frustum.
-
-A [Viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum) cam be thought of as a pyramid of vision that exists in front of a camera. Any object that lays inside of the pyramid will be rendered, while anything outside of it will not which will help to reduce overhead in very complex scenes that may contain a great number of mesh objects. This pyramid can be defined by a [field of view](https://en.wikipedia.org/wiki/Field_of_view) in terms of an angle in y direction. As well as additional values that define the aspect ratio of this view, as well as values that define where the top of the pyramid begins, and ends, in other words view distance, or range of you prefer.
-
-### 1.3 - Field of view
-
-The first argument that is given to the three.js perspective camera constructor is the field of view. The value expected should be a Number representing an angle in degrees not radians. I am not always so sure what the best value might be for this, the general way of dealing with it has been to just play around with different static values until I get something that looks okay. However looking at all [kinds of various examples on this on the open web](https://stackoverflow.com/questions/57959190/three-js-update-the-fov-value-of-a-perspective-camera-and-keep-the-same-camera-d) I am sure there are ways of coming up with or finding some kind of system that will work well for setting this value as well as the aspect ratio value.
-
-### 1.4 - Aspect ratio
-
-The aspect ratio is the second argument that is given to the three.js perspective camera constructor. This value is the width divided by the height of the desired ratio and as such can often be created by just dividing the width and height of the dome element canvas, or the values that will be set for such as canvas when setting up a renderer. Typically you might want to set this to something like 16 over 9, or 4 over 3. Whatever value you set will be used to determine the width and height of the near, and far rectangles of the pyramid of vision, but not the distance between these rectangles as that is what the nest arguments are for.
-
-### 1.5 - Near distance
-
-This is the near bound of the frustum, any object that is from this distance, outward to the far distance will be rendered if it is inside the pyramid of vision.
-
-### 1.6 - Far distance
-
-This is for course the far distance of the view pyramid. It is also the distance at which the aspect ratio of the field of view will be at it's largest, the bottom of the pyramid. If you are ever asking yourself, how far is to far, this value is of interest, as anything the exists beyond this distance will not be rendered.
 
 ## 2 - Changing the pyramid of vision during runtime with the updateProjectionMatrix method
 
@@ -289,8 +289,7 @@ Although mutation of the field of view property of a camera can result in a kind
     ());
 ```
 
-
-## 4 - The camera helper, and more than one camera
+## 3 - The camera helper, and more than one camera
 
 There is also making use of a camera helper as a way to gain a good idea as to what is going on with the current state of the view pyramid of a perspective camera. However in order to gain a good view of what is going on it might also be a good idea to have more than one camera, one that will have the helper, and the other to get an outside perspective of what is going on with that camera. So in this example I have two cameras one of which is making use of the camera helper, and the other I am using to gain this outside perspective of what is going on with this camera and its current values for near, far, fov, and so forth.
 
@@ -361,7 +360,7 @@ init();
 loop();
 ```
 
-## 5 - Perspective Camera and mutation of View, Position, and rotation values.
+## 4 - Perspective Camera and mutation of View, Position, and rotation values.
 
 So for a threejs example of the perspective camera I threw together this full copy and past style example. When up and running there is a cube, and a plain added to a scene, and the perspective camera is used to look at it. In addition there is a loop in which I am changing the aspect ratio and field of view of the camera, via the cameras properties for these values. When doing so I of course need to call the update projection matrix method of the camera, or else the changes to values that have to do with the view will not take effect. In this example I am also making use of the position property and the look at at methods of the camera to change the position of the camera over time, and also make sure that the camera is always looking at the center of the scene.
 
