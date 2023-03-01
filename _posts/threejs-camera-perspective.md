@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2023-03-01 10:32:06
-version: 1.53
+updated: 2023-03-01 10:39:45
+version: 1.54
 ---
 
 One of the most important things to understand when making a [threejs](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in threejs that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world. So then the perspective camera it is the typical choice for most projects, and for the most part it is a good one to start with also.
@@ -177,67 +177,63 @@ loop();
 The near and far values are used to set the the range in terms of how close is to close, and how far is to far when it comes to rendering something in a scene. There is also the depth material that can be used with a mesh as a way to gain a better sense of what is going on with these values. So in this example I am using the depth material to skin a mesh, and also mutating the near and far values of the camera over time.
 
 ```js
-(function () {
-    // a scene is needed to place objects in
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    // so here I am setting the values of the perspective camera
-    var fieldOfView = 45,
-    aspectRatio = 4 / 3,
-    near = 1,
-    far = 15,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
- 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // initialize method
-    var init = function () {
-        // add a cube to the scene
-        var cube = new THREE.Mesh(
-                new THREE.BoxGeometry(1, 1, 1),
-                new THREE.MeshDepthMaterial({}));
-        cube.position.set(0, 0.5, 0);
-        scene.add(cube);
-        // camera pos
-        camera.position.set(2, 2, 2);
-        camera.lookAt(0, 0.5, 0);
-    };
-    // update method
-    var update = function (per, bias, secs) {
-        // update aspect and fov
-        camera.near = 0.1 + 3 * bias;
-        camera.far = 15 - 13 * bias;
-        camera.updateProjectionMatrix();
-    };
-    // loop
-    var per = 0,
-    bias = 0,
-    now = new Date(),
-    secs = 0,
-    lt = now,
-    frame = 0,
-    frameMax = 90,
-    fps = 30;
-    var loop = function () {
-        now = new Date();
-        secs = (now - lt) / 1000;
-        per = frame / frameMax;
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps){
-            update(per, bias, secs);
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    // call init, and start loop
-    init();
-    loop();
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 15);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// INIT
+// ---------- ----------
+const init = function () {
+    // add a cube to the scene
+    const cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshDepthMaterial({}));
+    cube.position.set(0, 0.5, 0);
+    scene.add(cube);
+    // camera pos
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0,0.5,0);
+};
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 20;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 60;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update method
+const update = function (frame, frameMax) {
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    camera.near = 0.1 + 3 * a2;
+    camera.far = 15 - 13 * a2;
+    camera.updateProjectionMatrix();
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+init();
+loop();
 ```
 
 ### 2.3 - The zoom property
