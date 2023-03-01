@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2023-03-01 09:40:56
-version: 1.50
+updated: 2023-03-01 10:12:15
+version: 1.51
 ---
 
 One of the most important things to understand when making a [threejs](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in threejs that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world. So then the perspective camera it is the typical choice for most projects, and for the most part it is a good one to start with also.
@@ -105,7 +105,7 @@ This is for course the far distance of the view pyramid. It is also the distance
 
 ## 2 - Changing the pyramid of vision during runtime with the updateProjectionMatrix method
 
-With most projects typically I will be setting some values for the camera just once, and then change values that are part of the Object3D class for instance if I want to move the position, and orientation of the camera. Still if I want to change any of the properties that are used to create the geometry of the view pyramid, I might need to make use of a method that needs to be called after I change those values in order to update the projection matrix. The method to do this is then called the update projection matrix method which will need to be called when changing values like field of view, aspect, near, and far. If this method is not called then any changes made to these values will not take effect.
+With most projects typically I will be setting some values for the camera just once, and then change values that are part of the Object3D class for instance if I want to move the position, and orientation of the camera. Still if I want to change any of the properties that are used to create the geometry of the view pyramid, I might need to make use of a method that needs to be called after I change those values in order to update the projection matrix. The method to do this is then called the [update projection matrix method](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera.updateProjectionMatrix) which will need to be called when changing values like field of view, aspect, near, and far. If this method is not called then any changes made to these values will not take effect.
 
 A full list of the properties that correspond with the arguments that you give to the constructor are:
 
@@ -115,6 +115,10 @@ A full list of the properties that correspond with the arguments that you give t
 * camera.far
 
 However if I make a change to a value that has to do with the position, rotation, or any kind of Object3d level class property such as the name of the camera for example, then there is no need to call the update projection matrix method. Changes to those kinds of values will always have the same result as with any other object in threejs such as a Mesh, or Group.
+
+### 2.1 - Change FOV example
+
+For this first example I am just changing the Field of view of a camera.
 
 ```js
 (function () {
@@ -168,7 +172,7 @@ However if I make a change to a value that has to do with the position, rotation
     ());
 ```
 
-## 3 - Mutation of near and far values and the depth material
+### 2.2 - Mutation of near and far values and the depth material
 
 The near and far values are used to set the the range in terms of how close is to close, and how far is to far when it comes to rendering something in a scene. There is also the depth material that can be used with a mesh as a way to gain a better sense of what is going on with these values. So in this example I am using the depth material to skin a mesh, and also mutating the near and far values of the camera over time.
 
@@ -236,171 +240,7 @@ The near and far values are used to set the the range in terms of how close is t
     ());
 ```
 
-## 4 - The camera helper, and more than one camera
-
-There is also making use of a camera helper as a way to gain a good idea as to what is going on with the current state of the view pyramid of a perspective camera. However in order to gain a good view of what is going on it might also be a good idea to have more than one camera, one that will have the helper, and the other to get an outside perspective of what is going on with that camera. So in this example I have two cameras one of which is making use of the camera helper, and the other I am using to gain this outside perspective of what is going on with this camera and its current values for near, far, fov, and so forth.
-
-```js
-(function () {
-    // a scene is needed to place objects in
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    // so here I am setting the values of the perspective camera
-    var fieldOfView = 45,
-    aspectRatio = 4 / 3,
-    near = 1,
-    far = 15,
-    camera1 = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    camera1.position.set(2, 2, 2);
-    camera1.lookAt(0, 0.5, 0);
-    scene.add(camera1);
-    // CAMERA HELPER FOR CAM1
-    var helper = new THREE.CameraHelper(camera1);
-    scene.add(helper);
- 
-    var camera2 = new THREE.PerspectiveCamera(45, 4 / 3, 0.1, 50);
-    scene.add(camera2);
- 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // initialize method
-    var init = function () {
-        // add a cube to the scene
-        var cube = new THREE.Mesh(
-                new THREE.BoxGeometry(1, 1, 1),
-                new THREE.MeshDepthMaterial({}));
-        cube.position.set(0, 0.5, 0);
-        scene.add(cube);
-        // camera pos
-        camera2.position.set(2, 2, 2);
-        camera2.lookAt(0, 0.5, 0);
-    };
-    // update method
-    var update = function (per, bias, secs) {
-        camera2.position.x = 2 + 10 * bias;
-        camera2.position.z = 2 - 5 * bias;
-        camera2.lookAt(0, 0.5, 0);
-    };
-    // loop
-    var per = 0,
-    bias = 0,
-    now = new Date(),
-    secs = 0,
-    lt = now,
-    frame = 0,
-    frameMax = 300,
-    fps = 30;
-    var loop = function () {
-        now = new Date();
-        secs = (now - lt) / 1000;
-        per = frame / frameMax;
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps){
-            update(per, bias, secs);
-            renderer.render(scene, camera2);
-            frame += fps * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    // call init, and start loop
-    init();
-    loop();
-}
-    ());
-```
-
-## 5 - Perspective Camera and mutation of View, Position, and rotation values.
-
-So for a threejs example of the perspective camera I threw together this full copy and past style example. When up and running there is a cube, and a plain added to a scene, and the perspective camera is used to look at it. In addition there is a loop in which I am changing the aspect ratio and field of view of the camera, via the cameras properties for these values. When doing so I of course need to call the update projection matrix method of the camera, or else the changes to values that have to do with the view will not take effect. In this example I am also making use of the position property and the look at at methods of the camera to change the position of the camera over time, and also make sure that the camera is always looking at the center of the scene.
-
-```js
-(function () {
-    // a scene is needed to place objects in
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    // so here I am setting the values of the perspective camera
-    var fieldOfView = 45,
-    aspectRatio = 4 / 3,
-    near = 1,
-    far = 15,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    // In order to see anything I will also need a renderer
-    // to use with my scene, and camera
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    // I must append the dom element used by the renderer to the html
-    // that I am using.
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // initialize method
-    var init = function () {
-        // add plane to the scene
-        var plane = new THREE.Mesh(
-                new THREE.PlaneBufferGeometry(5, 5, 8, 8),
-                new THREE.MeshDepthMaterial({
-                    side: THREE.DoubleSide
-                }));
-        plane.rotation.x = Math.PI / 2;
-        scene.add(plane);
-        // add a cube to the scene
-        var cube = new THREE.Mesh(
-                new THREE.BoxGeometry(2, 2, 2),
-                new THREE.MeshDepthMaterial({}));
-        cube.position.set(0, 1.1, 0);
-        scene.add(cube);
-        // setting position of the camera
-        // position is a property of Object3D
-        // and the value is an instance of Vector3
-        camera.position.set(4, 4, 4);
-        camera.lookAt(0, 0, 0);
-    };
-    // update method
-    var update = function (per, bias, secs) {
-        // update aspect and fov
-        camera.aspect = .5 + 1.5 * bias;
-        camera.fov = 50 + 25 * bias;
-        camera.updateProjectionMatrix();
-        // change position
-        var radian = Math.PI * 2 * per;
-        camera.position.set(
-            Math.cos(radian) * 5, 
-            5 * Math.sin(Math.PI * 4 * per), 
-            Math.sin(radian) * 5);
-        camera.lookAt(0, 0, 0);
-    };
-    // loop
-    var per = 0,
-    bias = 0,
-    now = new Date(),
-    secs = 0,
-    lt = now,
-    frame = 0,
-    frameMax = 300,
-    fps = 30;
-    var loop = function () {
-        now = new Date();
-        secs = (now - lt) / 1000;
-        per = frame / frameMax;
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        requestAnimationFrame(loop);
-        if(secs > 1 / fps){
-            update(per, bias, secs);
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    // call init, and start loop
-    init();
-    loop();
-}
-    ());
-```
-
-## 6 - The zoom property
+### 2.3 - The zoom property
 
 Although mutation of the field of view property of a camera can result in a kind of zoom effect, it might be better to use the zoom property as a way to adjust thins over time. The default value for this zoom property is 1 and it can be set to values below and above one as a way to set a kind of zoom effect for the camera.
 
@@ -448,6 +288,161 @@ Although mutation of the field of view property of a camera can result in a kind
 }
     ());
 ```
+
+
+## 4 - The camera helper, and more than one camera
+
+There is also making use of a camera helper as a way to gain a good idea as to what is going on with the current state of the view pyramid of a perspective camera. However in order to gain a good view of what is going on it might also be a good idea to have more than one camera, one that will have the helper, and the other to get an outside perspective of what is going on with that camera. So in this example I have two cameras one of which is making use of the camera helper, and the other I am using to gain this outside perspective of what is going on with this camera and its current values for near, far, fov, and so forth.
+
+```js
+// ---------- ----------
+// SCENE, CAMERAS, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera1 = new THREE.PerspectiveCamera(50, 4 / 3, 1, 15);
+camera1.position.set(2, 2, 2);
+camera1.lookAt(0, 0.5, 0);
+scene.add(camera1);
+const helper = new THREE.CameraHelper(camera1);
+scene.add(helper);
+const camera2 = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 15);
+scene.add(camera2);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// INIT
+// ---------- ----------
+const init = function () {
+    scene.add( new THREE.GridHelper(10, 10) );
+    // add a cube to the scene
+    const cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshDepthMaterial({}));
+    cube.position.set(0, 0.5, 0);
+    scene.add(cube);
+    // camera pos
+    camera2.position.set(2, 2, 2);
+    camera2.lookAt(0, 0.5, 0);
+};
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update method
+const update = function (frame, frameMax) {
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    camera2.position.x = 2 + 10 * a2;
+    camera2.position.z = 2 - 5 * a2;
+    camera2.lookAt(0, 0.5, 0);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera2);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+init();
+loop();
+```
+
+## 5 - Perspective Camera and mutation of View, Position, and rotation values.
+
+So for a threejs example of the perspective camera I threw together this full copy and past style example. When up and running there is a cube, and a plain added to a scene, and the perspective camera is used to look at it. In addition there is a loop in which I am changing the aspect ratio and field of view of the camera, via the cameras properties for these values. When doing so I of course need to call the update projection matrix method of the camera, or else the changes to values that have to do with the view will not take effect. In this example I am also making use of the position property and the look at at methods of the camera to change the position of the camera over time, and also make sure that the camera is always looking at the center of the scene.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 1, 15);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// INIT METHOD
+// ---------- ----------
+const init = function () {
+    // add plane to the scene
+    const plane = new THREE.Mesh(
+            new THREE.PlaneGeometry(5, 5, 8, 8),
+            new THREE.MeshDepthMaterial({
+                side: THREE.DoubleSide
+            }));
+    plane.rotation.x = Math.PI / 2;
+    scene.add(plane);
+    // add a cube to the scene
+    const cube = new THREE.Mesh(
+            new THREE.BoxGeometry(2, 2, 2),
+            new THREE.MeshDepthMaterial({}));
+    cube.position.set(0, 1.1, 0);
+    scene.add(cube);
+    // setting position of the camera
+    // position is a property of Object3D
+    // and the value is an instance of Vector3
+    camera.position.set(4, 4, 4);
+    camera.lookAt(0, 0, 0);
+};
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update method
+const update = function (frame, frameMax) {
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    // update aspect and fov
+    camera.aspect = .5 + 1.5 * a2;
+    camera.fov = 50 + 25 * a2;
+    camera.updateProjectionMatrix();
+    // change position
+    const radian = Math.PI * 2 * a1;
+    camera.position.set(
+        Math.cos(radian) * 5, 
+        5 * Math.sin(Math.PI * 4 * a1), 
+        Math.sin(radian) * 5);
+    camera.lookAt(0, 0, 0);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+init();
+loop();
+```
+
 
 ## Conclusion
 
