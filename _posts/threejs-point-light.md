@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2023-03-02 11:39:09
-version: 1.28
+updated: 2023-03-02 12:18:57
+version: 1.29
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a [number of options when it comes to light sources](/2022/02/25/threejs-light/) for materials that respond to light. One of my favorite options for the most part would be the [point light](https://threejs.org/docs/#api/en/lights/PointLight). This point lighting option can be sued to shine light in all directions from a single given point in space so it is a light source where direction matters, but it is not restricted to a cone like area as with a [spot light](/2018/04/11/threejs-spotlights/). Also unlike with the directional light the unit length of the vector that is set for the point light also matters. However i would not say that it is a replacement for directional light, or spot lights by any means.
@@ -32,61 +32,117 @@ I have the source code examples that I am [writing about in this post up on Gith
 
 When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing in terms of both text and code I was using r140 of threejs. I can not say that much has changed with the point light alone between those two version numbers, but of course a great deal has changes with many other things in three.js. In any case always be mindful of what version of three.js you are using when playing around with threejs code examples on the open web not everything odes a good job of keeping their content up to date with this.
 
-## 1 - Basic Point Light example
+## 1 - Basic Point light examples
 
-First off a basic hello world style example of the point light. Here I am starting out with the usual scene object followed by a camera, and a renderer as with any threejs example I will need these objects.
+First off a basic hello world style example of the point light. These are examples that should work with just threejs alone added as part of the over all front end stack of javaScript files. 
 
-After I have my typical set of objects to work with I can now create a point light and add it to my scene objects. To do this I call the THREE.PointLight [constructor function](/2019/02/27/js-javascript-constructor/) with the new keyword. When doing so I can pass a color as the first argument, and an intensity as a second argument when calling the constructor. The return product of calling the constructor will then be a new instance of the point light and I can then do things like setting the position of the light, and when I am ready I can go ahead and make it a child of the scene object.
+### 1.1 - Basic Point Light example
+
+Here I am starting out with the usual scene object followed by a camera, and a renderer as with any threejs example I will need these objects. After I have my typical set of objects to work with I can now create a point light and add it to my scene objects. To do this I call the THREE.PointLight [constructor function](/2019/02/27/js-javascript-constructor/) with the new keyword. When doing so I can pass a color as the first argument, and an intensity as a second argument when calling the constructor. The return product of calling the constructor will then be a new instance of the point light and I can then do things like setting the position of the light, and when I am ready I can go ahead and make it a child of the scene object.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    var scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x1f1f1f);
-    var camera = new THREE.PerspectiveCamera(50, 640 / 480, 1, 1000);
-    camera.position.set(2, 3, 2);
-    var renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ---------- ----------
-    // POINT LIGHT
-    // ---------- ----------
-    var pl = new THREE.PointLight(0xffffff, 1);
-    pl.position.set(0, 0.5, 0);
-    scene.add( pl );
-    // ---------- ----------
-    // MESH
-    // ---------- ----------
-    var mesh = new THREE.Mesh(
-         new THREE.TorusGeometry(1, 0.5, 150, 150),
-         new THREE.MeshPhongMaterial({wireframe:false})
-    );
-    mesh.geometry.rotateX(Math.PI * 0.5);
-    scene.add(mesh);
-    camera.lookAt(mesh.position);
-    // ---------- ----------
-    // RENDER
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1f1f1f);
+const camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// POINT LIGHT
+// ---------- ----------
+const pl = new THREE.PointLight(0xffffff, 1);
+pl.position.set(0, 0.5, 0);
+scene.add( pl );
+// ---------- ----------
+// MESH
+// ---------- ----------
+const mesh = new THREE.Mesh(
+     new THREE.TorusGeometry(1, 0.5, 150, 150),
+     new THREE.MeshPhongMaterial({wireframe:false})
+);
+mesh.geometry.rotateX(Math.PI * 0.5);
+scene.add(mesh);
+camera.lookAt(mesh.position);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 3, 2);
+camera.lookAt(0,-0.25,0);
+renderer.render(scene, camera);
 ```
 
-## 2 - An example using helper methods for createing point lights and mesh objects
+### 1.2 - Using the point light helper
 
-This example I put together makes use of a few point lights that shine light in all directions in a three.js scene. In addition to having some point lights in a scene there is also a need to have some objects in the scene as well, so for this example I also made a method that creates cubes as well. 
-
-### 2.1 - The add point light method
-
-Here I have a method that I am using in this example to create a point light, add it to a given scene, and return a reference to that point light also in the process of doing so. I often like to take a more functional approach with helper functions, but three.js is a more object oriented type library so there are a lot of functions that mutate objects in place and so forth. 
-
-A point light by itself will not display anything in the scene, it will just shine light in all directions from the current location in which it is located. So for this example I added a Sphere for each point light as a way to see the current location of each point light in the example. When it comes to this mesh I can use something like the basic material if I want because it is a mesh that is closely related to a light source. However when it comes to mesh objects that I will be adding to the scene I will want to use some other material that will react to light, the basic material is not one such options with that.
+Light with just about every object in threejs there is a helper class for point lights. This will help to give a visual idea of what is going on with a point light as it is moved around in an over all scene. There are a whole lot of other options with helpers, another one that i am using in this example is the grid helper.
 
 ```js
-var addPointLight = function (scene, color, x, y, z) {
-    var pointLight = new THREE.PointLight(color);
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1f1f1f);
+const camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+// point light object
+const pl = new THREE.PointLight(0xffffff, 1);
+pl.position.set(0, 1.5, 2);
+scene.add( pl );
+// helper for the point light
+const pl_helper = new THREE.PointLightHelper(pl);
+pl.add(pl_helper);
+// grid helper
+const grid_helper = new THREE.GridHelper( 10, 10 );
+scene.add(grid_helper);
+// mesh
+const mesh = new THREE.Mesh(
+     new THREE.TorusGeometry(1, 0.5, 150, 150),
+     new THREE.MeshPhongMaterial({wireframe:false})
+);
+mesh.geometry.rotateX(Math.PI * 0.5);
+scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(10, 5, 10);
+camera.lookAt(mesh.position);
+renderer.render(scene, camera);
+```
+
+## 2 - An example using helper methods for creating point lights and mesh objects
+
+Here I have a method that I am using in this example to create a point light, add it to a given scene, and return a reference to that point light also in the process of doing so. I often like to take a more functional approach with helper functions, but threejs is a more object oriented type library so there are a lot of functions that mutate objects in place and so forth. 
+
+A point light by itself will not display anything in the scene, it will just shine light in all directions from the current location in which it is located. So for this example I added a Sphere for each point light as a way to see the current location of each point light in the example. When it comes to this mesh I can use something like the basic material if I want because it is a mesh that is closely related to a light source. However when it comes to mesh objects that I will be adding to the scene I will want to use some other material that will react to light, the basic material is not one such options with that. Now that I have this helpful add point light helper I think I will want another helper to add a mesh, then a setup where I create my scene object and so forth along with an animation loop in order to have a full example of some kind up and running.
+
+Now that I have some methods that I can used to create one or more point lights and some cubes for starters, lets used those methods to add point lights and mesh objects to a scene object. So then first I will want a main scene object for that I just create a one with the THREE.Scene constructor. Once I have a scene object I can now use that add point light and add cube methods to add lights and cubes to the scene.
+
+Once I have my scene and lights set up I can also setup a camera and a renderer as well that will be used to look at the scene from a given position and then render that view with the scene object using the renderer in the main animation loop that I will be getting to next
+
+I have the loop of the project in which I will be rendering the current state of the scene as well as updating the scene also over time. When it comes to making animation loops I will just about always use the request animation frame method which is the typical go to method for these kinds of functions in client side javaScript. I will want to have a few variables with a scope outside of that of the function for storing things like the last time an update was preformed and so forth.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1f1f1f);
+const camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPER FUNCTIONS
+// ---------- ----------
+const addPointLight = function (scene, color, x, y, z) {
+    const pointLight = new THREE.PointLight(color);
     pointLight.position.set(x, y, z);
     pointLight.add(new THREE.Mesh(
             new THREE.SphereGeometry(1, 10, 10),
@@ -96,101 +152,75 @@ var addPointLight = function (scene, color, x, y, z) {
     scene.add(pointLight);
     return pointLight;
 };
-```
-
-Now that I have this helpful add point light helper I think I will want another helper to add a mesh, then a setup where I create my scene object and so forth along with an animation loop in order to have a full example of some kind up and running.
-
-### 2.2 - The add cube method
-
-When creating any kind of mesh for a scene it is important to use a material that will respond to light of course, so I am using the standard material rather than the basic material for the cubes. For this example I am using a helper method that will create and add a cube for a given scene object like this.
-
-```js
 // create some cubes
-var addCube = function (scene, size, x, y, z) {
-    var geometry = new THREE.BoxGeometry(size, size, size),
+const addCube = function (scene, size, x, y, z) {
+    const geometry = new THREE.BoxGeometry(size, size, size),
     material = new THREE.MeshStandardMaterial({
             color: 0xffffff,
             emissive: 0x0f0f0f
         });
-    mesh = new THREE.Mesh(geometry, material);
+    const mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     scene.add(mesh);
 };
-```
-
-### 2.3 - The scene setup
-
-Now that I have some methods that I can used to create one or more point lights and some cubes for starters, lets used those methods to add point lights and mesh objects to a scene object. So then first I will want a main scene object for that I just create a one with the THREE.Scene constructor. Once I have a scene object I can now use that add point light and add cube methods to add lights and cubes to the scene.
-
-```js
-var scene = new THREE.Scene();
-scene.background = new THREE.Color(0x1f1f1f);
-var gridHelper = new THREE.GridHelper(40, 10);
+// ---------- ----------
+// GRID
+// ---------- ----------
+const gridHelper = new THREE.GridHelper(40, 10);
 scene.add(gridHelper);
+// ---------- ----------
+// LIGHTS
+// ---------- ----------
 // create some point lights and add it to the scene
-var whitePointLight = addPointLight(scene, 0xffffff, 0, 0, 0),
+const whitePointLight = addPointLight(scene, 0xffffff, 0, 0, 0),
 redPointLight = addPointLight(scene, 0xff0000, 30, 0, 0),
 greenPointLight = addPointLight(scene, 0x00ff00, 0, 30, 0),
 bluePointLight = addPointLight(scene, 0x0000ff, 0, 0, 30);
-// create some cubes
+// ---------- ----------
+// MESH
+// ---------- ----------
 addCube(scene, 10, 15, 0, 0);
 addCube(scene, 10, -15, 0, 0);
 addCube(scene, 10, 0, 0, 15);
 addCube(scene, 10, 0, 0, -15);
-// need a camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
 camera.position.set(37, 37, 37);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-```
-
-One I have my scene and lights set up I can also setup a camera and a renderer as well that will be used to look at the scene from a given position and then render that view with the scene object using the renderer in the main animation loop that I will be getting to next
-
-### 2.4 - The app loop
-
-Here I have the loop of the project in which I will be rendering the current state of the scene as well as updating the scene also over time. When it comes to making animation loops I will just about always use the request animation frame method which is the typical go to method for these kinds of functions in client side javaScript. I will want to have a few variables with a scope outside of that of the function for storing things like the last time an update was preformed and so forth.
-
-```js
+const FPS_UPDATE = 16, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = Math.sin( Math.PI * 0.5 * a1 );
+    const r = Math.PI * 2 * a1;
+    const sin = Math.sin(r) * 30;
+    const cos = Math.cos(r) * 30;
+            // update point lights
+            whitePointLight.position.y = 20 * a2;
+            redPointLight.position.set(cos, sin, 0);
+            greenPointLight.position.set(cos, 0, sin);
+            bluePointLight.position.set(0, cos, sin);
+};
 // loop
-var frame = 0,
-maxFrame = 180,
-lt = new Date(),
-fps = 30,
-per,
-bias,
-loop = function () {
-    requestAnimationFrame(loop);
-    var r = Math.PI * 2 * per,
-    sin = Math.sin(r) * 30,
-    cos = Math.cos(r) * 30,
-    now = new Date(),
+const loop = () => {
+    const now = new Date(),
     secs = (now - lt) / 1000;
- 
-    per = frame / maxFrame;
-    bias = 1 - Math.abs(0.5 - per) / 0.5;
- 
-    if (secs > 1 / fps) {
- 
-        // update point lights
-        whitePointLight.position.y = 20 * bias;
-        redPointLight.position.set(cos, sin, 0);
-        greenPointLight.position.set(cos, 0, sin);
-        bluePointLight.position.set(0, cos, sin);
- 
-        // render
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
         renderer.render(scene, camera);
-        lt = new Date();
- 
         // step frame
-        frame += fps * secs;
-        frame %= maxFrame;
- 
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
     }
- 
 };
 loop();
 ```
