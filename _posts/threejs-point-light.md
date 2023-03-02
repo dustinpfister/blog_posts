@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2023-03-02 12:18:57
-version: 1.29
+updated: 2023-03-02 12:22:19
+version: 1.30
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a [number of options when it comes to light sources](/2022/02/25/threejs-light/) for materials that respond to light. One of my favorite options for the most part would be the [point light](https://threejs.org/docs/#api/en/lights/PointLight). This point lighting option can be sued to shine light in all directions from a single given point in space so it is a light source where direction matters, but it is not restricted to a cone like area as with a [spot light](/2018/04/11/threejs-spotlights/). Also unlike with the directional light the unit length of the vector that is set for the point light also matters. However i would not say that it is a replacement for directional light, or spot lights by any means.
@@ -34,7 +34,7 @@ When I first wrote this post I was using r104 of threejs, and the last time I ca
 
 ## 1 - Basic Point light examples
 
-First off a basic hello world style example of the point light. These are examples that should work with just threejs alone added as part of the over all front end stack of javaScript files. 
+First off as always I would light to start out with some basic hello world style examples of the point light. These are examples that should work with just threejs alone added as part of the over all front end stack of javaScript files. I also did what I could so that they will work by just copied and pasting them into a js fiddle or something like that as long as you also add threejs of course by way of cdn. Anyway with these examples sense I will be doing what I can to keep things basic I will be just sticking with static render scenes, or simplified loops. The focus for the most part will just be on point lights, point light helpers, and not so much other threejs features.
 
 ### 1.1 - Basic Point Light example
 
