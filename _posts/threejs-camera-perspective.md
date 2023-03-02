@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2023-03-01 11:09:52
-version: 1.55
+updated: 2023-03-02 14:02:04
+version: 1.56
 ---
 
 One of the most important things to understand when making a [threejs](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in threejs that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world. So then the perspective camera it is the typical choice for most projects, and for the most part it is a good one to start with also.
@@ -361,7 +361,7 @@ init();
 loop();
 ```
 
-## 4 - Perspective Camera and mutation of View, Position, and rotation values.
+### 4.1 - Perspective Camera and mutation of View, Position, and rotation values.
 
 So for a threejs example of the perspective camera I threw together this full copy and past style example. When up and running there is a cube, and a plain added to a scene, and the perspective camera is used to look at it. In addition there is a loop in which I am changing the aspect ratio and field of view of the camera, via the cameras properties for these values. When doing so I of course need to call the update projection matrix method of the camera, or else the changes to values that have to do with the view will not take effect. In this example I am also making use of the position property and the look at at methods of the camera to change the position of the camera over time, and also make sure that the camera is always looking at the center of the scene.
 
@@ -443,6 +443,112 @@ init();
 loop();
 ```
 
+### 4.2 - Plane geometry as '2d layer' and aspect ratio
+
+One thing that I have found is that I would like to have a way to do some layering with canvas elements actually. That is to have one or more canvas elements where I am using threejs and the webgl context, and then one or more layers where I am just using the plain old 2d drawing context. I could then position all of these canvas elements on top of each other, or use each of them as resources in the process of drawing down to a single canvas. However I might not need to do that as there might be an option that involves just using a [plane geometry](/2019/06/05/threejs-plane/) for a mesh object and have it always face the camera. I can then use [canvas textures](/2018/04/17/threejs-canvas-texture/) for the diffuse map, and I can also use them for alpha maps to create transparent areas.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene()
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.05, 20);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// create and return a canvas texture
+const createCanvasTexture = function (draw, size_canvas) {
+    size_canvas = size_canvas === undefined ? 32 : size_canvas;
+    const canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = size_canvas;
+    canvas.height = size_canvas;
+    draw(ctx, canvas);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.NearestFilter;
+    texture.minFilter = THREE.NearestFilter;
+    return texture;
+};
+//-------- ----------
+// GRID
+//-------- ----------
+const grid = new THREE.GridHelper(30, 30);
+scene.add(grid);
+//-------- ----------
+// TEXTURE
+//-------- ----------
+const texture_map = createCanvasTexture( (ctx, canvas ) => {
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    ctx.fillStyle = 'cyan';
+    ctx.fillRect(64 - 32, 64, 64, 64);
+}, 128);
+const texture_alpha = createCanvasTexture( (ctx, canvas ) => {
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    ctx.fillStyle = '#888888';
+    ctx.fillRect(64 - 32, 64, 64, 64);
+}, 128);
+//-------- ----------
+// MESH
+//-------- ----------
+const material_plane = new THREE.MeshBasicMaterial({
+    map: texture_map, 
+    alphaMap: texture_alpha,
+    transparent: true
+});
+const geometry_plane = new THREE.PlaneGeometry(1, 1, 1, 1);
+const mesh_plane_1 = new THREE.Mesh(geometry_plane, material_plane);
+mesh_plane_1.scale.set(
+   camera.aspect,
+   1,
+   1
+);
+const group = new THREE.Group();
+group.add(mesh_plane_1);
+group.add(camera);
+scene.add(group);
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
+camera.position.set( 0, 0, 10 );
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update method
+const update = function (frame, frameMax) {
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+
+    mesh_plane_1.position.z = 8.9 - a2 * 8.9;
+    group.position.y = 1;
+    group.position.z = 10 - 20 * a2;
+    group.rotation.y = Math.PI / 180 * 45 * a2;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
 
 ## Conclusion
 
