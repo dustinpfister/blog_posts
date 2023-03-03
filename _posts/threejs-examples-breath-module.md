@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1030
-updated: 2023-03-03 09:47:19
-version: 1.1
+updated: 2023-03-03 10:04:19
+version: 1.2
 ---
 
 I made a javaScript module that can be used as a core tool in the process of making a number of video projects that can be used as tools for controlled breathing exercises. The core idea of these kinds of videos is to have a number of objects update in such a way that they are in sycn with a rate at which people watching the video breath. So there is a lot of little details that come up when making a javaScript module to update things such as how many breaths per minute, how many minutes, and also other details about each breath cycle. Details for each breath cycle are things like what is the ratio of time for each opening reset, breath in, high rest, and breath out part. There are also a lot of things that come to mind when it comes to having an expression for the alpha values that will be used to position objects along curves, and also update just about everything else.
@@ -34,7 +34,13 @@ In any case always be mindful of what revision of threejs that you are using whe
 
 ## 1 - The First version of the breath module, and some demos
 
+There is then covering the state of the breath module itself, and then also getting into a few demos as a way to test drive what I have thus far. With that said there are two general public methods of interest one of which is used to create an instance of THREE.Group, with a whole bunch of useful data attached to the user data object of this group which is very much there for these kinds of projects. The other public method if interest is used to update the state of these values.
+
+This far the module seems to work okay with what I have in mid thus far, and as of now the current panes for future revisions have to do with reducing complexity actually rather than adding features.
+
 ### 1.a - Breath.js R0
+
+The current state of the source code of the module is broken down into three general parts thus far. One part is for defaults and constant values for versions things over the body of the source code. ANother part has to do with private helper functions that are used as tools for the final part which is the pubic API of the module.
 
 ```js
 // breath.js - r0 - from threejs-examples-breath-module
