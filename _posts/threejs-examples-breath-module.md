@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1030
-updated: 2023-03-03 10:25:56
-version: 1.5
+updated: 2023-03-03 10:29:23
+version: 1.6
 ---
 
 I made a javaScript module that can be used as a core tool in the process of making a number of video projects that can be used as tools for controlled breathing exercises. The core idea of these kinds of videos is to have a number of objects update in such a way that they are in sycn with a rate at which people watching the video breath. So there is a lot of little details that come up when making a javaScript module to update things such as how many breaths per minute, how many minutes, and also other details about each breath cycle. Details for each breath cycle are things like what is the ratio of time for each opening reset, breath in, high rest, and breath out part. There are also a lot of things that come to mind when it comes to having an expression for the alpha values that will be used to position objects along curves, and also update just about everything else.
@@ -15,7 +15,7 @@ I made a javaScript module that can be used as a core tool in the process of mak
 
 ## The breath module example and what to know first
 
-This is a blog post on a javaScript IIFE form module, and several demos of the module, that work on top of threejs in a front end javaScript environment. It should go without saying but I have to say it in each of these posts, this is not a post for people that are new to threejs let alone javaScript in general. I assume that you have at least a fair amount of experience with the skills that are required before hand to get something of values from reading this. Still in any case I do use these opening sections to wrote about a few things that you might want to read up more on regardless of experience.
+This is a blog post on a javaScript IIFE form module [threejs project example](/2021/02/19/threejs-examples/), and several demos of the module, that work on top of threejs in a front end javaScript environment. It should go without saying but I have to say it in each of these posts, this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) let alone javaScript in general. I assume that you have at least a fair amount of experience with the skills that are required before hand to get something of values from reading this. Still in any case I do use these opening sections to wrote about a few things that you might want to read up more on regardless of experience.
 
 ### IIFE and JSM
 
@@ -34,7 +34,7 @@ In any case always be mindful of what revision of threejs that you are using whe
 
 ## 1 - The First version of the breath module, and some demos
 
-There is then covering the state of the breath module itself, and then also getting into a few demos as a way to test drive what I have thus far. With that said there are two general public methods of interest one of which is used to create an instance of THREE.Group, with a whole bunch of useful data attached to the user data object of this group which is very much there for these kinds of projects. The other public method if interest is used to update the state of these values.
+There is then covering the state of the breath module itself, and then also getting into a few demos as a way to test drive what I have thus far. With that said there are two general public methods of interest one of which is used to create an [instance of THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/), with a whole bunch of useful data attached to the [user data object](/2021/02/16/threejs-userdata/) of this group which is very much there for these kinds of projects. The other public method if interest is used to update the state of these values.
 
 This far the module seems to work okay with what I have in mid thus far, and as of now the current panes for future revisions have to do with reducing complexity actually rather than adding features.
 
