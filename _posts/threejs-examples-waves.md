@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2022-12-15 20:44:09
-version: 1.35
+updated: 2023-03-03 12:34:34
+version: 1.36
 ---
 
 So I wanted to start making some posts on [threejs examples](/2021/02/19/threejs-examples/), rather that the usual posts on certain basic things here and there with just the core of what threejs alone is. One of the first ideas that came to mind was to make a waves example where I create an update a buffer geometry based on something like Math.cos. 
@@ -17,7 +17,7 @@ So this threejs example might be a good starting point when it comes to figuring
 
 <!-- more -->
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/7NH3ueHkdjSk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video" src="https://www.youtube.com/embed/NH3ueHkdjSk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## The waves threejs example and what to know before you begin
