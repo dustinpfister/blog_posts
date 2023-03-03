@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1030
-updated: 2023-03-03 10:13:31
-version: 1.3
+updated: 2023-03-03 10:22:52
+version: 1.4
 ---
 
 I made a javaScript module that can be used as a core tool in the process of making a number of video projects that can be used as tools for controlled breathing exercises. The core idea of these kinds of videos is to have a number of objects update in such a way that they are in sycn with a rate at which people watching the video breath. So there is a lot of little details that come up when making a javaScript module to update things such as how many breaths per minute, how many minutes, and also other details about each breath cycle. Details for each breath cycle are things like what is the ratio of time for each opening reset, breath in, high rest, and breath out part. There are also a lot of things that come to mind when it comes to having an expression for the alpha values that will be used to position objects along curves, and also update just about everything else.
@@ -195,6 +195,8 @@ The current state of the source code of the module is broken down into three gen
 
 ### 1.1 - Using the default options
 
+I will want to start out with a demo of the module that is a kind of hello world type getting started type demo. Nothing fancy just creating an instance of the group that is returned when calling the breath modules create public method. Also with that said I can make sure that i get an expected result when calling the create method with no options at all that will of course result in a breath module with everything set to the hard coded default settings for thing.
+
 ```js
 // ---------- ----------
 // SCENE, CAMERA, RENDERER
@@ -252,6 +254,8 @@ loop();
 ```
 
 ### 1.2 - Custom options for curve and mesh updates
+
+So it looks like this are working just fine with the default settings so now it is time to have a demo with some custom options for update the group of mesh objects.
 
 ```js
 // ---------- ----------
@@ -340,6 +344,8 @@ loop();
 ```
 
 ### 1.3 - The hooks option
+
+I also have a hooks feature that is a way to define custom logic for each part of a breath cycle.
 
 ```js
 // ---------- ----------
@@ -468,5 +474,7 @@ loop();
 ```
 
 ## Conclusion
+
+So far so good with this project, and I am sure that i will be making at least a few video projects using this module. In time I am sure I will have a better idea of what needs to change with respect to future revisions of this module. Thus far I am thing that much of that might have to do with removing features rather than adding them actually. The general idea that i have now is that the core of the module itself should just be used to create and update alpha values that I then use to update everything else with the children of the group, but also objects the exist outside of the group as well. I still think that the create method should return an object3d class based object though, so I am thinking that I might want to have some kind of plugin system with maybe a very basic built in functionality that can be replaced by way of one or more options plugins.
 
 
