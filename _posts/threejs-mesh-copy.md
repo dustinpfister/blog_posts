@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2023-03-06 11:40:18
-version: 1.41
+updated: 2023-03-06 11:46:55
+version: 1.42
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
@@ -268,9 +268,11 @@ renderer.render(scene, camera);
 
 ## 3 - Children of a cloned mesh object
 
-One thing about the mesh clone method is that it will clone the mesh objects of the children, but it will just clone the mesh objects themselfs and not any other addtional nested objects such as the material and geometry. So in this section I will be writing about a few source code examples that have to do with this specfic topic.
+One thing about the mesh clone method is that it will clone the mesh objects of the children, but it will just clone the mesh objects themselves and not any other additional nested objects such as the material and geometry. So in this section I will be writing about a few source code examples that have to do with this specific topic.
 
 ### 3.1 - Cloning a mesh object with children
+
+For this example I am creating a mesh object, and then I am also creating a whole bunch of children for that mesh object as well while I am at it. I then make a number of clones of the main parent mesh object. When doing so it will clone the parent mesh object, and it will also create clones of each child as well. This means that if I mutate an object3d class property such as say the y position of a child that will just effect that one child, and not any source object. However if I do not also make clones of the materials if I change something with the material that will effect the source child as well.
 
 ```js
 //-------- ----------
@@ -341,6 +343,8 @@ renderer.render(scene, camera);
 ```
 
 ### 3.2 - Cloning the material and geometry
+
+So then if I want to change not just object3d and mesh properties, but also material and geometry data of a child that was cloned from a source object, then I will also want to clone thous additional objects. So after making a clone of a source parent object, I might want to use the object3d traverse method to loop over all mesh objects and create clones for that materials, geometry, and any additional nested objects that might come up as well.
 
 ```js
 //-------- ----------
@@ -425,4 +429,3 @@ renderer.render(scene, camera);
 ## Conclusion
 
 So then the Mesh clone method will indeed clone a mesh object, and also any children it might have. However that is it, the method will not deep clone everything when it comes to what might be going on with the geometry and material. When I get some more time to work on this one I think I could stand to work out a few more examples on this topic. There is what the Mesh clone method does, and there is what the Mesh clone method does not do.
-
