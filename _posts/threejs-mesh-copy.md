@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2023-03-06 07:21:35
-version: 1.33
+updated: 2023-03-06 07:29:17
+version: 1.34
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
@@ -21,7 +21,11 @@ If I am making a threejs project and I want to shallow copy of a mesh object the
 
 ## What to know first before getting into copying a mesh
 
-This is a post on the clone method of a THREE.Mesh class instance in threejs that can be used to copy the mesh, and the children of it as well. As such you should have at least some background when it comes to the basics of [getting started with threejs](/2018/04/04/threejs-getting-started/), and client side javaScript in general. If not chances are you might not gain much of anything from reading this.
+This is a post on the clone method of a THREE.Mesh class instance in threejs that can be used to copy the mesh, and the children of it as well. As such you should have at least some background when it comes to the basics of [getting started with threejs](/2018/04/04/threejs-getting-started/), and client side javaScript in general. If not chances are you might not gain much of anything from reading this. I will not be getting into depth with the basics of threejs and javaScript here, but I will write about a few things that you might want to read about more if you have not do so all ready.
+
+### The Object3d class
+
+Mesh objects are just one example of a kind of object that is based off of the [object3d class](/2018/04/23/threejs-object3d/). With that said there is not just making a copy of a mesh object, but also getting into how to go about making copies of object3d based objects in general. There is also a lot to be aware of when it comes to object3d based objects such as the fact that they can have one or more children. Also there are a lot of methods in the class that can prove to be useful when addressing things that happen when cloning objects. For example there is the [traverse method](/2021/06/03/threejs-object3d-traverse/) that is a good way to loop over not just the children of an object, but the children of children, and the object itself and apply custom logic that is used to clone or reference materials and geometry as needed.
 
 ### Source code is up on Github
 
@@ -29,7 +33,7 @@ The source code examples that I am writing about in this post can be [found on G
 
 ### Version Numbers matter big time with three.js
 
-When I first write this post I was using version r111 of three.js, and the last time I edited this post I was using r127 when I came around to doing a little editing. I can not say much has changed with the mesh clone method at least between these two versions, however a lot has changed to many other threejs features, and these changes can often result in code breaking. always be mindful of the version of threejs that you are using, and the version that was used when a code example was authored and published to the web.
+When I first write this post I was using version r111 of threejs, and the last time I edited this post I was using r127 when I came around to doing a little editing. I can not say much has changed with the mesh clone method at least between these two versions, however a lot has changed to many other threejs features, and these changes can often result in code breaking. always be mindful of the version of threejs that you are using, and the version that was used when a code example was authored and published to the web.
 
 ## 1 - Mesh copy basic example
 
@@ -256,7 +260,7 @@ renderer.setSize(640, 480);
 renderer.render(scene, camera);
 ```
 
-## 5 - Conclusion
+## Conclusion
 
 So then the Mesh clone method will indeed clone a mesh object, and also any children it might have. However that is it, the method will not deep clone everything when it comes to what might be going on with the geometry and material. When I get some more time to work on this one I think I could stand to work out a few more examples on this topic. There is what the Mesh clone method does, and there is what the Mesh clone method does not do.
 
