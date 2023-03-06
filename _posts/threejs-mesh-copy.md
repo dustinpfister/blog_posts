@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2023-03-06 07:53:02
-version: 1.37
+updated: 2023-03-06 08:05:56
+version: 1.38
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
@@ -89,62 +89,48 @@ This results in a bunch of mesh objects placed around the original mesh object, 
 
 ### 1.2 - Mesh copy will not copy the material used, so changes to the original material will effect the clones.
 
-When copying a Mesh it is the Mesh that will be copied, but not the material that the mesh is using. This is what I would expect to happen, but never the less I should write a quick section about this away.
-
-If I take the above simple example of the mesh clone method and make use of the standard material rather than the normal material I can set a color value for the material when it comes to making the original. When I go to make clones of the original mesh properties that have to do with the mesh itself will of course be copied, so I can give new positions and rotations for example that will not effect the original and bis versa. However if I make a change to the material that will effect all mesh object as that is not being cloned.
+When copying a Mesh it is the Mesh that will be copied, but not the material that the mesh is using. This is what I would expect to happen, but never the less I should write a quick section about this. If I take the above simple example of the mesh clone method and make use of the standard material rather than the normal material I can set a color value for the material when it comes to making the original. When I go to make clones of the original mesh properties that have to do with the mesh itself will of course be copied, so I can give new positions and rotations for example that will not effect the original and bis versa. However if I make a change to the material that will effect all mesh object as that is not being cloned.
 
 ```js
+//-------- ----------
 // SCENE
-var scene = new THREE.Scene();
- 
-// CAMERA
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(10, 6, 10);
-camera.lookAt(0, 0, 0);
- 
-// RENDER
-var renderer = new THREE.WebGLRenderer();
-document.getElementById('demo').appendChild(renderer.domElement);
-renderer.setSize(640, 480);
- 
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // MESH original
-var original = new THREE.Mesh(
+//-------- ----------
+const original = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
-       // Now using the Standard material
-        new THREE.MeshStandardMaterial({
-            color: 'red'
-        }));
+        new THREE.MeshNormalMaterial());
 scene.add(original);
- 
-// add a light source
-var sun = new THREE.Mesh(
-        new THREE.SphereGeometry(0.5, 40, 40),
-        new THREE.MeshBasicMaterial());
-sun.add(new THREE.PointLight(0xffffff, 1));
-sun.position.set(8, 3, 0);
-scene.add(sun);
- 
+//-------- ----------
 // Mesh cloned a bunch of times from original
-var i = 0, mesh, rad, x, z;
+//-------- ----------
+let i = 0;
 while (i < 10) {
-    mesh = original.clone();
+    const mesh = original.clone();
     // changes made to position and rotation to not effect original
-    rad = Math.PI * 2 * (i / 10);
-    x = Math.cos(rad) * 3;
-    z = Math.sin(rad) * 3;
+    const rad = Math.PI * 2 * (i / 10);
+    const x = Math.cos(rad) * 3;
+    const z = Math.sin(rad) * 3;
     mesh.position.set(x, 0, z);
     mesh.lookAt(original.position);
     scene.add(mesh);
     i += 1;
 }
- 
-// a change to the color of the original will effect all the clones also
-original.material.color.setRGB(0, 1, 0);
- 
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 3, 5);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-So when I change the color of the material used in the original mesh to green from red, that will result in all the mesh objects that are cloned from that mesh to change to that color. The same will happen to the original when I change the color that way. If this is a desired effect then there is no problem, if it is not a desired effect then there are a number of ways to address this. One way would be to just drop the use of the mesh clone method and just make new Mesh objects along with geometries all together. However I am sure that there are other ways of making it so each mesh has its own independent material while still using the same geometry.
+So when I change the color of the material used in the original mesh to green from red, that will result in all the mesh objects that are cloned from that mesh to change to green. If this is a desired effect then there is no problem, if it is not a desired effect then there are a number of ways to address this. One way would be to just drop the use of the mesh clone method and just make new Mesh objects along with geometries all together. However for this example I made use of the clone method of the material base class to create and return a new material to one of the copies of the original mesh which also has a desired outcome when it comes to this sort of thing.
 
 ### 1.3 - Changes to the geometry will effect all the copies of the mesh also
 
