@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2023-03-06 07:37:27
-version: 1.35
+updated: 2023-03-06 07:52:28
+version: 1.36
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
@@ -36,47 +36,58 @@ The source code examples that I am writing about in this post can be [found on G
 
 When I first write this post I was using version r111 of threejs, and the last time I edited this post I was using r127 when I came around to doing a little editing. I can not say much has changed with the mesh clone method at least between these two versions, however a lot has changed to many other threejs features, and these changes can often result in code breaking. always be mindful of the version of threejs that you are using, and the version that was used when a code example was authored and published to the web.
 
-## 1 - Mesh copy basic example
+## 1 - Some Basic examples of the Mesh Clone method
+
+To start out this post I will be going over a number of basic getting started type examples of the clone method of the mesh class.
+
+### 1.1 - Mesh copy basic example
 
 To copy a mesh in threejs all I need to do is just call the clone method of a mesh object instance, and what will be returned is a copy of that mesh. It is just important to know what a copy of a mesh object is and what it is not. The resulting copy is a copy of things like the position and rotation of the mesh, but not the state of the geometry that it is using, or whatever might be going on with the materials that are being used. 
 
 Here I have a simple example where I am creating an original mesh with the THREE.Mesh constructor, and then creating a bunch of copies with the clone method of that Mesh instance.
 
 ```js
+//-------- ----------
 // SCENE
-var scene = new THREE.Scene();
-// CAMERA
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 3, 5);
-camera.lookAt(0, 0, 0);
-// RENDER
-var renderer = new THREE.WebGLRenderer();
-document.getElementById('demo').appendChild(renderer.domElement);
-renderer.setSize(640, 480);
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // MESH original
-var original = new THREE.Mesh(
+//-------- ----------
+const original = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 scene.add(original);
+//-------- ----------
 // Mesh cloned a bunch of times from original
-var i = 0, mesh, rad, x, z;
+//-------- ----------
+let i = 0;
 while (i < 10) {
-    mesh = original.clone();
+    const mesh = original.clone();
     // changes made to position and rotation to not effect original
-    rad = Math.PI * 2 * (i / 10);
-    x = Math.cos(rad) * 3;
-    z = Math.sin(rad) * 3;
+    const rad = Math.PI * 2 * (i / 10);
+    const x = Math.cos(rad) * 3;
+    const z = Math.sin(rad) * 3;
     mesh.position.set(x, 0, z);
     mesh.lookAt(original.position);
     scene.add(mesh);
     i += 1;
 }
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 3, 5);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
 This results in a bunch of mesh objects placed around the original mesh object, I am also having each of the new mesh objects face the position of the original mesh object. So each copy can have its own position, and rotation, but they still share the same reference to the same objects when it comes to geometry and materials.
 
-## 2 - Mesh copy will not copy the material used, so changes to the original material will effect the clones.
+### 1.2 - Mesh copy will not copy the material used, so changes to the original material will effect the clones.
 
 When copying a Mesh it is the Mesh that will be copied, but not the material that the mesh is using. This is what I would expect to happen, but never the less I should write a quick section about this away.
 
@@ -135,7 +146,7 @@ renderer.render(scene, camera);
 
 So when I change the color of the material used in the original mesh to green from red, that will result in all the mesh objects that are cloned from that mesh to change to that color. The same will happen to the original when I change the color that way. If this is a desired effect then there is no problem, if it is not a desired effect then there are a number of ways to address this. One way would be to just drop the use of the mesh clone method and just make new Mesh objects along with geometries all together. However I am sure that there are other ways of making it so each mesh has its own independent material while still using the same geometry.
 
-## 3 - Changes to the geometry will effect all the copies of the mesh also
+### 1.3 - Changes to the geometry will effect all the copies of the mesh also
 
 The clone method of a mesh will just clone the mesh object and not the material, or the geometry. So just like with the material used by all clones, any change to the geometry of the original or any clone will also effect all copies. For example if I again have a situation in which I make a whole bunch of copies from an original mesh object, and then do something like change the material index values of the geometry used by the original that in turn will effect all the copies also.
 
