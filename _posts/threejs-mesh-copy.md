@@ -5,29 +5,27 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2022-08-23 16:20:29
-version: 1.32
+updated: 2023-03-06 07:21:35
+version: 1.33
 ---
 
-When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but then there is also the question of nested properties of the mesh object such as [child objects that have been attached](/2018/05/16/threejs-grouping-mesh-objects/), the [geometry](/2021/04/22/threejs-buffer-geometry/) of the mesh, and [materials](/2018/04/30/threejs-materials/).
+When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
 
-The process of copying an object in javaScript can be tricky business then, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as with my post on [copying an array](/2020/09/03/js-array-copy/) with just vanilla javaScript array prototype methods. When doing so there are two general ways of thinking about the process of copying an object, shallow cloning, and deep cloning. Shallow cloning is creating an new object where it is more or less just the properties of the object itself that are copied, and not anything when it comes to nested objects that are values of the source object. Deep cloning then is then the general term for getting into the subject of what should and should not be copied when it comes to looping over all the nested properties of an object.
+The process of copying an object in general can be tricky business, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as with my post on [copying an array](/2020/09/03/js-array-copy/) with just vanilla javaScript array prototype methods. When doing so there are two general ways of thinking about the process of copying an object, shallow cloning, and deep cloning. Shallow cloning is creating an new object where it is more or less just the properties of the object itself that are copied, and not anything when it comes to nested objects that are values of the source object. Deep cloning then is then the general term for getting into the subject of what should and should not be copied when it comes to looping over all the nested properties of an object. Things can prove to get a little complex with that in some situations though, for example some objects I might want to copy, while others I might just want to reference.
 
-However if I am making a threejs project and I want to copy a mesh object then I just need to use the [clone method of a mesh](https://threejs.org/docs/#api/en/objects/Mesh.clone) instance. This is a way to go about making a copy of a mesh object however it will not fully deep clone the object. What I mean by this is that the method will create a new copy of the mesh object itself, and it will also do the same for any and all children attached to the mesh object. However it will not deep clone any other attracted objects when it comes to materials and geometry for example. This is more or less how I would want such a method to work anyway, aside from maybe some use examples in which I would want copies for materials and geometry also. However still important to know what the method will, and will not do for me, so I took a moment to work out some examples to know for sure, and write this post of course.
-
-So then this will be a quick post on the mesh clone method in threejs that can be used as a way to create copies of a mesh object in threejs. While I am at it it might touch base on a few other topics here and there, but that will be the focal point today.
+If I am making a threejs project and I want to shallow copy of a mesh object then I just need to use the [clone method of a mesh](https://threejs.org/docs/#api/en/objects/Mesh.clone) instance. Once I have a shallow copy it is then a question of what additional steps I might want to take when it comes to cloning additional nested objects of the mesh object. This will then be a post on the mesh clone method, and while I am at it also address some of the issues that might come up when making copies of mesh objects, and cloning objects in general. While I am at it it might touch base on a few other topics here and there, but that will be the focal point today.
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/ErhvuGKkDAM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## What to know first before getting into copying a mesh
 
-This is a post on the clone method of a THREE.Mesh class instance in three.js that can be used to copy the mesh and the children of it also. As such you should have at least some background when it comes to the basics of [getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general. If not chances are you might not gain much of anything from reading this.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/ErhvuGKkDAM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+This is a post on the clone method of a THREE.Mesh class instance in threejs that can be used to copy the mesh, and the children of it as well. As such you should have at least some background when it comes to the basics of [getting started with threejs](/2018/04/04/threejs-getting-started/), and client side javaScript in general. If not chances are you might not gain much of anything from reading this.
 
 ### Source code is up on Github
 
-The source code examples that I am writing about in this post can be [found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-mesh-copy).
+The source code examples that I am writing about in this post can be [found on Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-mesh-copy). This repo is also where I park the source code examples that I write about in my [many other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version Numbers matter big time with three.js
 
