@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2023-03-06 07:29:17
-version: 1.34
+updated: 2023-03-06 07:37:27
+version: 1.35
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
@@ -18,6 +18,7 @@ If I am making a threejs project and I want to shallow copy of a mesh object the
 <!-- more -->
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/ErhvuGKkDAM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## What to know first before getting into copying a mesh
 
@@ -199,9 +200,9 @@ original.geometry.groups.forEach(function (face, i) {
 renderer.render(scene, camera);
 ```
 
-## 4 - Using a create helper to create stand alone mesh objects with there own geometry and material
+## 2 - Using a create helper to create stand alone mesh objects with there own geometry and material
 
-Using the clone method might be the way that I would want to go about creating a whole much of copies of some kind of main mesh object because doing so results in just copied the mesh and the children of the mesh. This results in a more efficient way of creating a whole bunch of mesh objects that all share the same geometry and materials. Often it might just be mesh objects level property values that I will want to change up a little here and there, so this kind of approach will not result in a problem. However in some cases I will want each mesh to have its own geometry and material values. So when it comes to this kind of situation I often just drop the use of the mesh clone method all together and just create stand alone mesh, as well as stand alone geometry, and material objects for each mesh
+Using the clone method might be the way that I would want to go about creating a whole much of copies of some kind of main mesh object because doing so results in just copying the mesh and the children of the mesh. This results in a more efficient way of creating a whole bunch of mesh objects that all share the same geometry and materials. Often it might just be mesh objects level property values that I will want to change up a little here and there, so this kind of approach will not result in a problem. However in some cases I will want each mesh to have its own geometry and material values. So when it comes to this kind of situation I often just drop the use of the mesh clone method all together and just create stand alone mesh objects one at a time, as well as stand alone geometry, and material objects for each mesh.
 
 ```js
 // SCENE
