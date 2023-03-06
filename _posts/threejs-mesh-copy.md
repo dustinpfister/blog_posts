@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2023-03-06 08:10:15
-version: 1.39
+updated: 2023-03-06 08:15:21
+version: 1.40
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
@@ -207,59 +207,62 @@ renderer.render(scene, camera);
 Using the clone method might be the way that I would want to go about creating a whole much of copies of some kind of main mesh object because doing so results in just copying the mesh and the children of the mesh. This results in a more efficient way of creating a whole bunch of mesh objects that all share the same geometry and materials. Often it might just be mesh objects level property values that I will want to change up a little here and there, so this kind of approach will not result in a problem. However in some cases I will want each mesh to have its own geometry and material values. So when it comes to this kind of situation I often just drop the use of the mesh clone method all together and just create stand alone mesh objects one at a time, as well as stand alone geometry, and material objects for each mesh.
 
 ```js
+//-------- ----------
 // SCENE
-var scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 scene.add(new THREE.GridHelper(10, 10));
- 
-var group = new THREE.Group();
-scene.add(group);
- 
-var createBox = function(w, h, d){
-    var box = new THREE.Mesh(
-        new THREE.BoxGeometry(w, h, d),
-        new THREE.MeshStandardMaterial({
-            color: 'red'
-        }));
-    return box;
-};
-var mainBox = createBox(1, 1, 1);
-group.add(mainBox);
- 
-// Mesh cloned a bunch of times from original
-var i = 0, mesh, rad, s, x, z;
-while (i < 10) {
-    s = 0.25 + 0.25 * ( Math.random() * 5 );
-    mesh = createBox(s, s, s);
-    // changes made to position and rotation to not effect original
-    rad = Math.PI * 2 * (i / 10);
-    x = Math.cos(rad) * 3;
-    z = Math.sin(rad) * 3;
-    mesh.position.set(x, 0, z);
-    mesh.lookAt(mainBox.position);
-    group.add(mesh);
-    i += 1;
-}
- 
-// changing the color of the main box ONLY EFFECTS THE MAIN BOX
-mainBox.material.color.setRGB(0, 1, 0);
- 
-// CAMERA
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(8, 5, 8);
-camera.lookAt(0, 0, 0);
-// add a light source
-var sun = new THREE.Mesh(
+//-------- ----------
+// LIGHT
+//-------- ----------
+const sun = new THREE.Mesh(
         new THREE.SphereGeometry(0.5, 40, 40),
         new THREE.MeshBasicMaterial());
 sun.add(new THREE.PointLight(0xffffff, 1));
 sun.position.set(8, 3, 0);
 scene.add(sun);
- 
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createBox = function(w, h, d){
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(w, h, d),
+        new THREE.MeshStandardMaterial({
+            color: 'red'
+        }));
+};
+//-------- ----------
+// GROUP
+//-------- ----------
+const group = new THREE.Group();
+scene.add(group);
+const mainBox = createBox(1, 1, 1);
+group.add(mainBox);
+// Mesh cloned a bunch of times from original
+let i = 0;
+while (i < 10) {
+    const s = 0.25 + 0.25 * ( Math.random() * 5 );
+    const mesh = createBox(s, s, s);
+    // changes made to position and rotation to not effect original
+    const rad = Math.PI * 2 * (i / 10);
+    const x = Math.cos(rad) * 3;
+    const z = Math.sin(rad) * 3;
+    mesh.position.set(x, 0, z);
+    mesh.lookAt(mainBox.position);
+    group.add(mesh);
+    i += 1;
+}
+// changing the color of the main box ONLY EFFECTS THE MAIN BOX
+mainBox.material.color.setRGB(0, 1, 0);
+//-------- ----------
 // RENDER
-var renderer = new THREE.WebGLRenderer();
-document.getElementById('demo').appendChild(renderer.domElement);
-renderer.setSize(640, 480);
- 
+//-------- ----------
+camera.position.set(8, 5, 8);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
