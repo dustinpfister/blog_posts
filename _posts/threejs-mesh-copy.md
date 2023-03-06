@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2023-03-06 08:15:21
-version: 1.40
+updated: 2023-03-06 11:40:18
+version: 1.41
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
@@ -258,6 +258,162 @@ while (i < 10) {
 }
 // changing the color of the main box ONLY EFFECTS THE MAIN BOX
 mainBox.material.color.setRGB(0, 1, 0);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 5, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 3 - Children of a cloned mesh object
+
+One thing about the mesh clone method is that it will clone the mesh objects of the children, but it will just clone the mesh objects themselfs and not any other addtional nested objects such as the material and geometry. So in this section I will be writing about a few source code examples that have to do with this specfic topic.
+
+### 3.1 - Cloning a mesh object with children
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+scene.add(new THREE.GridHelper(10, 10));
+//-------- ----------
+// LIGHT
+//-------- ----------
+const sun = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 40, 40),
+        new THREE.MeshBasicMaterial());
+sun.add(new THREE.PointLight(0xffffff, 1));
+sun.position.set(8, 3, 0);
+scene.add(sun);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createBox = function(w, h, d){
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(w, h, d),
+        new THREE.MeshStandardMaterial({
+            color: 'red'
+        })
+    );
+};
+//-------- ----------
+// MESH and CHILDREN OF MESH
+//-------- ----------
+// mesh
+const mesh_main = createBox(1, 1, 1);
+scene.add(mesh_main);
+// adding children
+let i = 0, len = 10;
+while (i < len) {
+    const mesh = createBox(1, 1, 1);
+    const rad = Math.PI * 2 * (i / len);
+    mesh.position.set(Math.cos(rad) * 2.5, 0, Math.sin(rad) * 2.5);
+    mesh.lookAt(mesh_main.position);
+    mesh_main.add(mesh);
+    i += 1;
+}
+// clone of mesh_main
+const mesh_main_2 = mesh_main.clone();
+mesh_main_2.position.set(-5, 0, -5);
+scene.add(mesh_main_2);
+// clone of mesh_main
+const mesh_main_3 = mesh_main.clone();
+mesh_main_3.position.set(5, 0, -5);
+scene.add(mesh_main_3);
+// updating object3d props of the children of one clone will not effect another
+const mesh = mesh_main_2.children[5];
+mesh.position.y = 2;
+// however doing somehting to the material or geometry will effect
+// all coresponding children
+mesh.material.color.setRGB(0,1,0);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 5, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 3.2 - Cloning the material and geometry
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+scene.add(new THREE.GridHelper(10, 10));
+//-------- ----------
+// LIGHT
+//-------- ----------
+const sun = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 40, 40),
+        new THREE.MeshBasicMaterial());
+sun.add(new THREE.PointLight(0xffffff, 1));
+sun.position.set(8, 3, 0);
+scene.add(sun);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// create a single box
+const createBox = function(w, h, d){
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(w, h, d),
+        new THREE.MeshStandardMaterial({
+            color: 'red'
+        })
+    );
+};
+// create a box parent
+const createBoxParent = () => {
+    // mesh
+    const mesh_main = createBox(1, 1, 1);
+    scene.add(mesh_main);
+    // adding children
+    let i = 0, len = 10;
+    while (i < len) {
+        const mesh = createBox(1, 1, 1);
+        const rad = Math.PI * 2 * (i / len);
+        mesh.position.set(Math.cos(rad) * 2.5, 0, Math.sin(rad) * 2.5);
+        mesh.lookAt(mesh_main.position);
+        mesh_main.add(mesh);
+        i += 1;
+    }
+    return mesh_main;
+};
+// copy a box parent
+const copyBoxParent = (mesh_main) => {
+    // clone of mesh_main
+    const mesh_main_2 = mesh_main.clone();
+    mesh_main_2.traverse( (obj) => {
+        if(obj.type === 'Mesh'){
+            obj.material = obj.material.clone();
+            obj.geometry = obj.geometry.clone();
+        }
+    });
+    return mesh_main_2;
+};
+//-------- ----------
+// MESH and CHILDREN OF MESH
+//-------- ----------
+const mesh_main = createBoxParent();
+const mesh_main_2 = copyBoxParent(mesh_main);
+mesh_main_2.position.set(-5, 0, -5);
+scene.add(mesh_main_2);
+// now I can update not just object3d probs but so thing with
+// the material and geometry without effecting source object
+const mesh = mesh_main_2.children[5];
+mesh.position.y = 2;
+mesh.material.color.setRGB(0,1,0);
 //-------- ----------
 // RENDER
 //-------- ----------
