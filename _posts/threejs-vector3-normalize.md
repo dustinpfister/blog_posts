@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2023-03-07 12:40:25
-version: 1.38
+updated: 2023-03-07 12:43:51
+version: 1.39
 ---
 
 The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. 
@@ -45,7 +45,7 @@ Like with all my other posts on threejs I like to start out with some very basic
 
 ### 1.1 - getting started with the normalize method
 
-For this first example I just want to normalize a vector and that is it.
+For this first example I just want to normalize a vector and that is it. However in order to have something to look at I will need to still set up the usual collection of objects when it comes to the scene object, camera, and renderer. After that I create an instance of Vector3 and when doing so I can set any values that I want when it comes to the position. Tokeep things simple I am going to start with a position like 0,0,18 and after calling the normalize method of this new vector I end up with a position of 0,0,1. 
 
 ```js
 //-------- ----------
