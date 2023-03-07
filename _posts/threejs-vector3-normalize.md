@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2023-03-07 10:28:29
-version: 1.36
+updated: 2023-03-07 12:27:00
+version: 1.37
 ---
 
 The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. 
@@ -17,7 +17,7 @@ Vectors are often described as being a unit of direction, and magnitude, the dir
 
 <!-- more -->
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/-bJmhnyPlus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video" src="https://www.youtube.com/embed/J-a47GrWEDA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Normalizing Vectors and what to know before hand
@@ -307,6 +307,9 @@ One way to make this kind of method would be to make use of the [apply Euler met
 ## 4 - Animation example 
 
 Now for an example that might help to really visualize what the deal is with normalization and unit length of vector3 instances. This example involves creating a group of groups where each end child node is a mesh object that uses the capsule geometry. I am then using buffer geometry and object3d class methods and properties to make it so that each capsule geometry of each mesh is alight in such a way that each end is between 0 and a fixed end vector unit length.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/-bJmhnyPlus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 The general idea here is to pick a few directions and use the capsule geometry as a way to mark those directions. I can then make one or more mesh objects and have them move along one or more of the directions.
 
