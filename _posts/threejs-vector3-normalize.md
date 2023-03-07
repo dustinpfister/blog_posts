@@ -5,30 +5,30 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2022-08-24 13:29:33
-version: 1.35
+updated: 2023-03-07 10:28:29
+version: 1.36
 ---
 
 The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. 
 
 A Vector with a [euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) of one is often referred to as a [unit vector](https://en.wikipedia.org/wiki/Unit_vector), and what is nice about this kind of vector is that it can quickly be scaled up by just simply multiplying the values of the normalized vector by a desired magnitude that is any value other than one to result in any vector that is along a given line that is the direction of the vector.
 
-Vectors are often described as being a unit of direction, and magnitude, the direction can be thought of as what the normalized vector is in terms of numbers between 0 and 1 for x, y, and z. This direction can then be raised, or lowered actually towards zero, by a magnitude to get any point in space. So then in this post I think I will be going over some basic examples of the normalize method, and while I am at it also end up writing about a few other topics that are closely related to the normalize method.
+Vectors are often described as being a unit of direction, and magnitude, the direction can be thought of as what the normalized vector is in terms of numbers between 0 and 1 for x, y, and z. This direction can then be raised outward, or lowered, by a magnitude to get any point along a ray. So then in this post I think I will be going over some basic examples of the normalize method, and while I am at it also end up writing about a few other topics that are closely related to the normalize method.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/-bJmhnyPlus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Normalizing Vectors and what to know before hand
 
 This is a post on using the Vector3 normalize method, and other related features in the javaScript library know as threejs. There are a great number of things that you should be aware of before continuing to read this. For one thing this is not any kind of [getting started type post on threejs](/2018/04/04/threejs-getting-started/) let alone [javaScript in general](/2018/11/27/js-getting-started/). However in this section I will be going over a few key details that you might want to read up on more in detail in order to gain a better understanding of what the Vector3 normalize method is all about.
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/-bJmhnyPlus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
 ### You might want to read up more on Vector3 in general
 
 There is checking out my main post on the [Vector3 class](/2018/04/15/threejs-vector3/) where I am going over the Vector3 class in general. Normalizing a Vector is a major part of becoming proficient with the Vector3 class, but there is a great deal more to it when it comes to the basics of Vector3, as well as other various methods of the class. 
 
-The thing to keep in mind here is that the normalize method will just set the length of a vector to one, while preserving the direction of the Vector, but that is it. What if I want to set direction of a Vector by a set of given angles in terms of radians or degrees for example? I will be going over some additional methods other than just the normalize method here, but there is a great deal more to be aware of that can be used with the normalize method, and I will not be getting to all of it here.
+The thing to keep in mind here is that the normalize method will just set the length of a vector to one, while preserving the direction of the Vector, but that is it. What if I want to set direction of a Vector by a set of given angles in terms of radians or degrees for example? I will be going over some additional methods other than just the normalize method here, but you might still want to read more on theclass in general, and maybe some posts on other vector3 class features.
 
 ### Source code is also up on GitHub
 
@@ -36,91 +36,95 @@ On my GitHub account I have a repository in which I am parking all the source co
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r127 of threejs which was a late version of threejs as or min 2021, and the last time I cam around to do some edited I was testing these examples out on r140. Things where working fine on my end with those versions.
+When I first wrote this post I was using r127 of threejs which was a late version of threejs as or min 2021, and the last time I cam around to do some edited I was testing these examples out on r146. I have made a habit of mentioning what version of threejs I am using when writing new threejs posts, and also add a section like this to older posts when I get around to doing a little editing. Maybe this is something that I should do with just about any javaScript library actually, but threejs seems to be moving along real fast compared to other javaScript projects where development is very slow.
 
-I have made a habit of mentioning what version of threejs I am using when writing new threejs posts, and also add a section like this to older posts when I get around to doing a little editing. Maybe this is something that I should do with just about any javaScript library actually, but threejs seems to be moving along real fast compared to other javaScript projects where development is very slow.
 
-## 1 - Basic Vector3 normalize example
+## 1 - Some Basic examples of Vector3 normalize
 
-In this basic example I am creating an instance of THREE.Vector3 that is not normalized, and then just calling the normalized method of the Vector3 instance to get a normalized vector. The value of the Vector before normalizing it was -20, 0, 0, and the value after normalizing it is -1, 0, 0. So in other words the direction of the Vector is preserved but the length of the vector is reduced to a magnitude of 1. Once the vector is normalized I cal call a [method like multiply scalar](/2022/03/23/threejs-vector3-multiply-scalar/) off of the normalized vector to set any desired magnitude, or distance if you prefer while preserving the direction of the Vector.
+Like with all my other posts on threejs I like to start out with some very basic getting started type examples of the threejs feature. In this case the normalize method of the Vector3 class. So these examples will just involve static scenes, and I will be doing my best to not go to overboard with the over all volume of code. The focus here thine will mainly be just on the vector3 method itself, and to a lesser extent other closely related features.
 
-```js
-(function () {
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(7, 7));
- 
-    var dir = new THREE.Vector3(-20, 0, 0);
-    // NORMALIZING DIR FROM -20,0,0 to -1,0,0
-    dir.normalize();
-    console.log(Object.values(dir)); // [-1, 0, 0]
- 
-    // cube
-    var cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    // MULTIPLYING DIR BY 2
-    cube.position.copy( dir.multiplyScalar(2) );
-    scene.add(cube);
- 
-    // camera, render
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(8, 10, 8);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
-}
-    ());
-```
+### 1.2 - Using multiply scalar
 
-## 2 - Some more on the concept of vector length
-
-So then the normalize method will set the length of any vector to a length of 1, and then from there the length can easily be adjusted to any desired length. Also when it comes to the subject of the length of a vector the Vector3.length method can be used to find out what the current length of any vector is. So then the normalize method combined with a method like multiply scalar can be used to set the length of a vector while the length method can be used as a way to get what that length is.
+There is also how to raise the unit length of an instance of THREE.Vector3. With that said I once again start out with a vector3 that is not normalized, and then just call the normalized method of the Vector3 instance to get a normalized vector. The value of the Vector before normalizing it was -20, 0, 0, and the value after normalizing it is -1, 0, 0. So in other words the direction of the Vector is preserved but the length of the vector is reduced to a magnitude of 1. Once the vector is normalized I cal call a [method like multiply scalar](/2022/03/23/threejs-vector3-multiply-scalar/) off of the normalized vector to set any desired magnitude, or distance if you prefer while preserving the direction of the Vector.
 
 ```js
-(function () {
- 
-    // simple create cube helper
-    var createCube = function(){
-        var cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-        return cube;
-    };
- 
-    var setPosByDirAndLength = function(obj, dir, len){
-        var v = dir.normalize().multiplyScalar(len);
-        return obj.position.copy(v);
-    };
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
- 
-    var cube = createCube();
-    scene.add(cube);
-    var dir = new THREE.Vector3(-5, 5, -5);
-    setPosByDirAndLength(cube, dir, 4);
-    console.log( cube.position.length() ); // 4
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// VECTOR3
+//-------- ----------
+const dir = new THREE.Vector3(-20, 0, 0);
+// NORMALIZING DIR FROM -20,0,0 to -1,0,0
+dir.normalize();
+console.log(Object.values(dir)); // [-1, 0, 0]
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+const mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+// MULTIPLYING DIR BY 2
+mesh1.position.copy( dir.multiplyScalar(2) );
+scene.add(mesh1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 10, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
-## 3 - Placing an object on the surface of a sphere example
+### 1.3 - Some more on the concept of vector length
+
+The normalize method will set the length of any vector to a length of 1, and then from there the length can easily be adjusted to any desired length. Also when it comes to the subject of the length of a vector the Vector3.length method can be used to find out what the current length of any vector is. The normalize method combined with a method like multiply scalar can be used to set the length of a vector while the length method can be used as a way to get what that length is.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createCube = function(){
+    const cube = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    return cube;
+};
+const setPosByDirAndLength = function(obj, dir, len){
+    const v = dir.normalize().multiplyScalar(len);
+    return obj.position.copy(v);
+};
+//-------- ----------
+// OBEJCTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+const mesh1 = createCube();
+scene.add(mesh1);
+const dir = new THREE.Vector3(-5, 5, -5);
+setPosByDirAndLength(mesh1, dir, 4);
+console.log( mesh1.position.length() ); // 4
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 2 - Placing an object on the surface of a sphere example
 
 So then one use case example for all of this would be to work out one or more methods that have to do with positioning an object on the surface of a sphere. That is that I can create a method in which I can pass values that will be used to create any point in space, and then normalized that point to a vector with the same direction but with a length of one. I can then set the length of the normalized vector to the radius of the sphere, plus one half the height of the object that I want on the surface of a sphere. That basic method seems to work pretty well, and it is then just a question of making other methods that serve as an abstraction for that kind of method, such as a method where I can just give a lat and long value in terms of values between 0 and 1 for each argument a a way to position something on to a sphere. This will then also serve as a way to take some kind of system that involves positioning things on a grid and make it so that it can also be used to position the same things on a corresponding sphere surface.
 
@@ -220,7 +224,7 @@ So then one use case example for all of this would be to work out one or more me
 
 This is the sort of thing that I find myself coming back to now and then when it comes to working out new systems for placing objects onto the surface of a sphere. I have a [simple project example that I made a little while back](/2021/05/14/threejs-examples-position-things-to-sphere-surface/) in which I was able to work out a solution for doing this sort of thing but it was very different from this kind of example that I like better.
 
-## 4 - Apply Euler example to change direction
+## 3 - Apply Euler example to change direction
 
 There is normalizing a vector to a length of one, and keeping the direction, but what if I want to change the direction while I am at it as well on top of that? In other words what if I want some kind of helper function that will return a normalized vector, but I can also set the direction of that normalized vector with some angle arguments. In addition I can also set a length as a way to not return a normalized vector but a vector with an interested length, and also adjust what the starting vector is.
 
@@ -300,7 +304,7 @@ One way to make this kind of method would be to make use of the [apply Euler met
 
 ```
 
-## 5 - Animation example 
+## 4 - Animation example 
 
 Now for an example that might help to really visualize what the deal is with normalization and unit length of vector3 instances. This example involves creating a group of groups where each end child node is a mesh object that uses the capsule geometry. I am then using buffer geometry and object3d class methods and properties to make it so that each capsule geometry of each mesh is alight in such a way that each end is between 0 and a fixed end vector unit length.
 
