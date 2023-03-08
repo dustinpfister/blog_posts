@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2023-03-08 08:59:50
-version: 1.35
+updated: 2023-03-08 09:21:18
+version: 1.36
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values or wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values. However I think that I should also have at least a few examples that have to do with wrapping vector3 objects as well.
@@ -24,88 +24,94 @@ This is a post on using the Vector3 clamp methods to clamp a vector between a mi
 
 ### Look into the Vector3 class in general
 
-In this post I am just going over a few methods in the [Vector 3 class](/2018/04/15/threejs-vector3/) that has to do with creating and working with one or more Vectors in threejs when it comes to setting bounds for them. However there is a great deal more to learn about the class and Vectors in general.
+In this post I am just going over a few methods in the [Vector 3 class](/2018/04/15/threejs-vector3/) that have to do with creating and working with one or more Vectors in threejs. FOr the most part I am just focusing on methods like clamp and clamp length. However there is a great deal more to learn about the class and Vectors in general.
 
 ### Source code is up on Github
 
-The source code examples that I am writing about in this post can be found in my [test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-clamp).
+The source code examples that I am writing about in this post can be found in my [test threejs repo on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-clamp). This is also where I park the source code examples for all [my other blog posts on threejs as well](/categories/three-js/).
 
 ### Version numbers matter with threejs
 
-When I wrote this post I was using threejs r127 when it comes to testing out source code examples. I have got into the habit of making sure that I always mentioning the version of threejs that I am using when it comes to write a post on the subject. The main reason why is because threejs is still a very fast moving project in terms of development and code breaking changes are happening all the time with it as a result.
+When I first wrote this post I was using threejs r127, and the last time I came around to do some editing I was using r146 when it comes to testing out the source code examples. I have got into the habit of making sure that I always mention the version of threejs that I am using when it comes to writing a post on threejs. The main reason why is because threejs is still a very fast moving project in terms of development and code breaking changes are happening all the time with it as a result.
 
-## 1 - Basic example of the THREE.Vector3 clamp method.
+## 1 - Some basic examples of Vector3 clamp
+
+With this section I will be starting out with just a few very basic examples of the Vector3 clmap method, as well as other Vector3 methods such as clamp length. this will very much be a basic section so these examples should be fairly easy to get working on your end. However There are still a few basic things that you will need to be aware of before getting them to work. There is still things like knowing to use three.min.js over that of three.module.js for revisions where that is still an option, as well as a lot of other things like that which come to mind. Still in this section I will be keeping things as simple as possible for what it is worth.
+
+### 1.1 - Basic example of the THREE.Vector3 clamp method.
 
 So in this example I am using the Vector3 clamp method to just make it so that any value that I set for the [position](/2022/04/04/threejs-object3d-position/) of a [mesh object](/2018/05/04/threejs-mesh/) that ends up getting clamped within a min and max Vector range. So the way this works is I just call the Vector3.clamp method and pass the vector that I want to clamp as the first argument followed by two additional arguments that are the min and max ranges for the Vector if the form of additional Vector3 instances.
 
 ```js
-(function () {
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(5, 5));
- 
-    // creating a mesh
-    var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    scene.add(mesh);
- 
-    mesh.position.set(0, 0, -5);
-    mesh.position.clamp(
-        new THREE.Vector3(-2, 0, -2),
-        new THREE.Vector3(2, 0, 2));
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+//OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(5, 5));
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ----------
+// Using Vector3 clamp
+//-------- ----------
+mesh.position.set(0, 0, -5);
+mesh.position.clamp(
+    new THREE.Vector3(-2, 0, -2),
+    new THREE.Vector3(2, 0, 2));
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
-## 2 - Clamping Vectors by length rather than a box area with Vector3.clampLength
+### 1.2 - Clamping Vectors by length rather than a box area with Vector3.clampLength
 
 There is clamping vectors into a box like area with the clamp method, but another option is the clamp length method that is more of a sphere like area. This method is somewhat similar to the clamp method only in place of Vector3 instances for setting the min and max values for the range, there is just setting the min and max values with a length values in the from of just javaScript numbers. Another way of thinking about this is an inner and outer radius in terms of two spheres that are both centered over the same origin.
 
 ```js
-(function () {
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(5, 5));
- 
-    // creating a mesh
-    var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    scene.add(mesh);
- 
-    mesh.position.set(0, 5, -5);
-    mesh.position.clampLength(0.5, 1);
-    console.log(mesh.position);
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(5, 5));
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ----------
+// Using clamp length
+//-------- ----------
+mesh.position.set(0, 5, -5);
+mesh.position.clampLength(0.5, 1);
+console.log(mesh.position);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 The subject of clamping a vector by length goes hand in hand with many other related topics such as what a length of a vector is, and also what a normalized vector with a length of 1 is. Getting into this subject might be a little off topic, but the basic idea is that a length of 1 is a radius of 1 from the origin. So by clamping the length of a vector from 0.5 to 1 will make it so that the distance from the origin to the vector will always be between those values.
 
-## 3 - A wrap method
+## 2 - A wrap method
 
 Some times I might not want to have a vector clamped to a set of vectors that from a box, or using length values, but rather I would like to have things wrap around. Sadly it would seem that there is no wrap method in the Vector3 class, at least not of this writing with r140 of the library anyway. However there are some core tools to start out with in the math utils object such as the [Euclidean Modulo method](https://threejs.org/docs/#api/en/math/MathUtils.euclideanModulo) that will be a good start when it comes to wrapping values. The solution that I would out for this is a little involved, but I managed to make ground with it by just thinking in terms of what i need to do on a axis by axis bases.
 
@@ -214,7 +220,11 @@ Some times I might not want to have a vector clamped to a set of vectors that fr
     ());
 ```
 
-## 4 - Animation loop example
+## 3 - Animation Loop examples
+
+For this section I will now be going over a few animation loop examples.These are often the startong points for one or more videos that I make for blog posts such as this.
+
+### 3.1 - Animation loop example using Vector3.clamp
 
 To get a real idea as to how the clamp method might come in handy I will want to have some kind of animation loop example. For this first animation loop example I have a whole bunch of mesh objects that start out at the center of a group and then move out my making use of a value that I use with the multiply scalar method. When moving the mesh objects I use the clamp method as a way to make sure that the mesh objects are not moving out of bounds and I am also resetting an alpha value while doing so to create a kind of crude animation loop type thing.
 
@@ -308,7 +318,7 @@ To get a real idea as to how the clamp method might come in handy I will want to
     ());
 ```
 
-## 5 - Animation loop example two making use of clamp, clamp length, and my wrap method
+### 3.2 - Animation loop example two making use of clamp, clamp length, and my wrap method
 
 For my next animation loop example I am making use of all of the core ideas that i have covered in this post. This is just a more advanced version of the first animation loop example where I can set a clamp type when creating a group of mesh objects. Inside the update method this clamp type is then used as a way to find out what kind of method should be used to make the mesh objects say in a given area.
 
