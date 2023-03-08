@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2023-03-08 09:51:31
-version: 1.38
+updated: 2023-03-08 10:15:59
+version: 1.39
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values or wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values. However I think that I should also have at least a few examples that have to do with wrapping vector3 objects as well.
@@ -304,93 +304,102 @@ For this section I will now be going over a few animation loop examples.These ar
 To get a real idea as to how the clamp method might come in handy I will want to have some kind of animation loop example. For this first animation loop example I have a whole bunch of mesh objects that start out at the center of a group and then move out my making use of a value that I use with the multiply scalar method. When moving the mesh objects I use the clamp method as a way to make sure that the mesh objects are not moving out of bounds and I am also resetting an alpha value while doing so to create a kind of crude animation loop type thing.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(4, 4));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // get a random axis
-    var randAxis = function () {
-        return (0.25 + 1.25 * Math.random()) * (Math.random() < 0.5 ? -1 : 1);
-    };
-    // create group
-    var createGroup = function () {
-        var group = new THREE.Group();
-        var i = 0,
-        len = 50;
-        while (i < len) {
-            var mesh = new THREE.Mesh(
-                new THREE.BoxGeometry(1.0, 1.0, 1.0), 
-                new THREE.MeshNormalMaterial({
-                    transparent: true,
-                    opacity: 0.50
-                })
-            );
-            var ud = mesh.userData;
-            var start_dir = ud.start_dir = new THREE.Vector3();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// get a random axis
+const randAxis = function () {
+    return (0.25 + 1.25 * Math.random()) * (Math.random() < 0.5 ? -1 : 1);
+};
+// create group
+const createGroup = function () {
+    const group = new THREE.Group();
+    let i = 0,
+    len = 50;
+    while (i < len) {
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1.0, 1.0, 1.0), 
+            new THREE.MeshNormalMaterial({
+                transparent: true,
+                opacity: 0.50
+            })
+        );
+        const ud = mesh.userData;
+        const start_dir = ud.start_dir = new THREE.Vector3();
+        ud.alpha = 0;
+        ud.dr = 0.05 + 0.95 * Math.random();
+        start_dir.x = randAxis();
+        start_dir.y = randAxis();
+        start_dir.z = randAxis();
+        mesh.position.copy(start_dir.normalize().multiplyScalar(2));
+        group.add(mesh);
+        i += 1;
+    }
+    return group;
+};
+// update group
+const updateGroup = function (group, delta) {
+    group.children.forEach(function (mesh, i) {
+        const ud = mesh.userData;
+        const start_dir = ud.start_dir;
+        const pos = mesh.position;
+        ud.alpha += delta * ud.dr;
+        pos.copy(start_dir.clone().normalize().multiplyScalar(ud.alpha));
+        pos.clamp(
+            new THREE.Vector3(-2, -2, -2),
+            new THREE.Vector3(2, 2, 2));
+        if (Math.abs(pos.x) === 2 || Math.abs(pos.z) === 2) {
             ud.alpha = 0;
-            ud.dr = 0.05 + 0.95 * Math.random();
-            start_dir.x = randAxis();
-            start_dir.y = randAxis();
-            start_dir.z = randAxis();
-            mesh.position.copy(start_dir.normalize().multiplyScalar(2));
-            group.add(mesh);
-            i += 1;
         }
-        return group;
-    };
-    // update group
-    var update = function (group, delta) {
-        group.children.forEach(function (mesh, i) {
-            var ud = mesh.userData;
-            var start_dir = ud.start_dir;
-            var pos = mesh.position;
-            ud.alpha += delta * ud.dr;
-            pos.copy(start_dir.clone().normalize().multiplyScalar(ud.alpha));
-            pos.clamp(
-                new THREE.Vector3(-2, -2, -2),
-                new THREE.Vector3(2, 2, 2));
-            if (Math.abs(pos.x) === 2 || Math.abs(pos.z) === 2) {
-                ud.alpha = 0;
-            }
-        });
-    };
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    var group = createGroup();
-    scene.add(group);
-    var frame = 0,
-    maxFrame = 300,
-    fps = 20,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000,
-        per = frame / maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            update(group, 0.1);
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= maxFrame;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+    });
+};
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const group = createGroup();
+scene.add(group);
+scene.add(new THREE.GridHelper(4, 4));
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    updateGroup(group, 0.1);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ### 3.2 - Animation loop example two making use of clamp, clamp length, and my wrap method
@@ -398,156 +407,163 @@ To get a real idea as to how the clamp method might come in handy I will want to
 For my next animation loop example I am making use of all of the core ideas that i have covered in this post. This is just a more advanced version of the first animation loop example where I can set a clamp type when creating a group of mesh objects. Inside the update method this clamp type is then used as a way to find out what kind of method should be used to make the mesh objects say in a given area.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(4, 4));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //-------- ----------
-    // LIGHT
-    //-------- ----------
-    var dl = new THREE.DirectionalLight(0xffffff, 1);
-    dl.position.set(8, 1, 2)
-    scene.add(dl);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // mod method
-    var mod = function (a, b) {
-        return THREE.MathUtils.euclideanModulo(a, b);
-    };
-    // wrap and axis
-    var wrapAxis = function(vec, vecMin, vecMax, axis){
-        axis = axis || 'x';
-        var maxD = new THREE.Vector2(vecMin[axis], 0).distanceTo( new THREE.Vector2(vecMax[axis], 0) );
-        var d = new THREE.Vector2(vec[axis], 0).distanceTo( new THREE.Vector2(vecMin[axis], 0) );
-        if(maxD === 0){
-           vec[axis] = 0;
-        }else{
-            if(vec[axis] >= vecMax[axis]){
-                vec[axis] = vecMin[axis] + mod(d, maxD);
-            }
-            if(vec[axis] < vecMin[axis]){
-                vec[axis] = vecMax[axis] - mod(d, maxD);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(8, 1, 2)
+scene.add(dl);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// mod method
+const mod = function (a, b) {
+    return THREE.MathUtils.euclideanModulo(a, b);
+};
+// wrap and axis
+const wrapAxis = function(vec, vecMin, vecMax, axis){
+    axis = axis || 'x';
+    const maxD = new THREE.Vector2(vecMin[axis], 0).distanceTo( new THREE.Vector2(vecMax[axis], 0) );
+    const d = new THREE.Vector2(vec[axis], 0).distanceTo( new THREE.Vector2(vecMin[axis], 0) );
+    if(maxD === 0){
+       vec[axis] = 0;
+    }else{
+        if(vec[axis] >= vecMax[axis]){
+            vec[axis] = vecMin[axis] + mod(d, maxD);
+        }
+        if(vec[axis] < vecMin[axis]){
+            vec[axis] = vecMax[axis] - mod(d, maxD);
+        }
+    }
+};
+// wrap a vector
+const wrapVector = function (vec, vecMin, vecMax) {
+    vecMin = vecMin || new THREE.Vector3(0, 0, 0);
+    vecMax = vecMax || new THREE.Vector3(1, 1, 1);
+    wrapAxis(vec, vecMin, vecMax, 'x');
+    wrapAxis(vec, vecMin, vecMax, 'y');
+    wrapAxis(vec, vecMin, vecMax, 'z');
+};
+// get a random axis
+const randAxis = function () {
+    return (0.25 + 1.25 * Math.random()) * (Math.random() < 0.5 ? -1 : 1);
+};
+// create group
+const createGroup = function (clampType, color) {
+    clampType = clampType || 'clamp';
+    color = color || 0xffffff;
+    const group = new THREE.Group();
+    let i = 0,
+    len = 10;
+    while (i < len) {
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1.0, 1.0, 1.0), 
+            new THREE.MeshPhongMaterial({
+                color: color,
+                transparent: true,
+                opacity: 0.60
+            })
+        );
+        const ud = mesh.userData;
+        const start_dir = ud.start_dir = new THREE.Vector3();
+        ud.alpha = 0;
+        ud.dr = 0.05 + 0.95 * Math.random();
+        ud.clampType = clampType;
+        start_dir.x = randAxis();
+        start_dir.y = randAxis();
+        start_dir.z = randAxis();
+        mesh.position.copy(start_dir.normalize().multiplyScalar(2));
+        group.add(mesh);
+        i += 1;
+    }
+    return group;
+};
+// update group
+const updateGroup = function (group, delta) {
+    group.children.forEach(function (mesh, i) {
+        const ud = mesh.userData;
+        const start_dir = ud.start_dir;
+        const pos = mesh.position;
+        ud.alpha += delta * ud.dr;
+        pos.copy(start_dir.clone().normalize().multiplyScalar(ud.alpha));
+        // clamp type
+        if(ud.clampType === 'clamp'){
+            pos.clamp(
+                new THREE.Vector3(-2, -2, -2),
+                new THREE.Vector3(2, 2, 2));
+            if (Math.abs(pos.x) === 2 || Math.abs(pos.z) === 2) {
+                ud.alpha = 0;
             }
         }
-    };
-    // wrap a vector
-    var wrapVector = function (vec, vecMin, vecMax) {
-        vecMin = vecMin || new THREE.Vector3(0, 0, 0);
-        vecMax = vecMax || new THREE.Vector3(1, 1, 1);
-        wrapAxis(vec, vecMin, vecMax, 'x');
-        wrapAxis(vec, vecMin, vecMax, 'y');
-        wrapAxis(vec, vecMin, vecMax, 'z');
-    };
-    // get a random axis
-    var randAxis = function () {
-        return (0.25 + 1.25 * Math.random()) * (Math.random() < 0.5 ? -1 : 1);
-    };
-    // create group
-    var createGroup = function (clampType, color) {
-        clampType = clampType || 'clamp';
-        color = color || 0xffffff;
-        var group = new THREE.Group();
-        var i = 0,
-        len = 10;
-        while (i < len) {
-            var mesh = new THREE.Mesh(
-                new THREE.BoxGeometry(1.0, 1.0, 1.0), 
-                new THREE.MeshPhongMaterial({
-                    color: color,
-                    transparent: true,
-                    opacity: 0.60
-                })
-            );
-            var ud = mesh.userData;
-            var start_dir = ud.start_dir = new THREE.Vector3();
-            ud.alpha = 0;
-            ud.dr = 0.05 + 0.95 * Math.random();
-            ud.clampType = clampType;
-            start_dir.x = randAxis();
-            start_dir.y = randAxis();
-            start_dir.z = randAxis();
-            mesh.position.copy(start_dir.normalize().multiplyScalar(2));
-            group.add(mesh);
-            i += 1;
+        // if clamp type is length
+        if(ud.clampType === 'length'){
+            pos.clampLength(0.1, 2);
+            mesh.lookAt(group.position);
+            if(pos.length() === 2){
+                ud.alpha = 0;
+            }
         }
-        return group;
-    };
-    // update group
-    var update = function (group, delta) {
-        group.children.forEach(function (mesh, i) {
-            var ud = mesh.userData;
-            var start_dir = ud.start_dir;
-            var pos = mesh.position;
-            ud.alpha += delta * ud.dr;
-            pos.copy(start_dir.clone().normalize().multiplyScalar(ud.alpha));
-            // clamp type
-            if(ud.clampType === 'clamp'){
-                pos.clamp(
-                    new THREE.Vector3(-2, -2, -2),
-                    new THREE.Vector3(2, 2, 2));
-                if (Math.abs(pos.x) === 2 || Math.abs(pos.z) === 2) {
-                    ud.alpha = 0;
-                }
-            }
-            // if clamp type is length
-            if(ud.clampType === 'length'){
-                pos.clampLength(0.1, 2);
-                mesh.lookAt(group.position);
-                if(pos.length() === 2){
-                    ud.alpha = 0;
-                }
-            }
-            // if clamp type is wrap
-            if(ud.clampType === 'wrap'){
-                wrapVector(
-                    pos,
-                    new THREE.Vector3(-2, -2, -2),
-                    new THREE.Vector3(2, 2, 2));
-                //ud.alpha = ud.alpha % 2;
-            }
-        });
-    };
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    var group1 = createGroup('clamp', 0xff0000);
-    scene.add(group1);
-    var group2 = createGroup('length', 0x00ff00);
-    scene.add(group2);
-    var group3 = createGroup('wrap', 0x00ffff);
-    scene.add(group3);
-    var frame = 0,
-    maxFrame = 300,
-    fps = 20,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000,
-        per = frame / maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            update(group1, 0.1);
-            update(group2, 0.1);
-            update(group3, 0.1);
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= maxFrame;
-            lt = now;
+        // if clamp type is wrap
+        if(ud.clampType === 'wrap'){
+            wrapVector(
+                pos,
+                new THREE.Vector3(-2, -2, -2),
+                new THREE.Vector3(2, 2, 2));
+            //ud.alpha = ud.alpha % 2;
         }
-    };
-    loop();
-}
-    ());
+    });
+};
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(4, 4));
+const group1 = createGroup('clamp', 0xff0000);
+scene.add(group1);
+const group2 = createGroup('length', 0x00ff00);
+scene.add(group2);
+const group3 = createGroup('wrap', 0x00ffff);
+scene.add(group3);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 500;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    updateGroup(group1, 0.05);
+    updateGroup(group2, 0.05);
+    updateGroup(group3, 0.05);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
