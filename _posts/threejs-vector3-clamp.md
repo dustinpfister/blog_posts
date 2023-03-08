@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2023-03-08 11:51:55
-version: 1.41
+updated: 2023-03-08 11:59:56
+version: 1.42
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values or wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values. However I think that I should also have at least a few examples that have to do with wrapping vector3 objects as well.
@@ -571,7 +571,7 @@ loop();
 
 ### 3.3 - Clamp to grid animation demo
 
-This far I can not say that any of the animation loops thus far do a good job of showcasing what the clamp method is really about. I started making just one animation after another that showcases clamp, but also other alternatives such as wrapping. SO for this animation loop example I thought that I would make one where I just clamp all the children of a group to an area within a grid.
+This far I can not say that any of the animation loops thus far do a good job of showcasing what the clamp method is really about. I started making just one animation after another that showcases clamp, but also other alternatives such as wrapping. So for this animation loop example I thought that I would make one where I just clamp all the children of a group to an area within a grid. This involves just creating a whole bunch of mesh objects and adding them as children of a group. While doing so I can add a heading value as well as some other values to the user data object of each mesh object. In an update method I can then use this user data to move the mesh objects by a given heading and speed. I can then also make use of the Vector3 clamp method to make sure that the mesh objects do not go out of bounds. I can then check to see if one of the mesh objects are along an edge and if so give them a new heading and also set the color depending on what side they hit.
 
 ```js
 //-------- ----------
