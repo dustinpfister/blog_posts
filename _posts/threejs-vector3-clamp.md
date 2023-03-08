@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2023-03-08 09:23:12
-version: 1.37
+updated: 2023-03-08 09:51:31
+version: 1.38
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values or wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values. However I think that I should also have at least a few examples that have to do with wrapping vector3 objects as well.
@@ -111,113 +111,188 @@ renderer.render(scene, camera);
 
 The subject of clamping a vector by length goes hand in hand with many other related topics such as what a length of a vector is, and also what a [normalized vector](/2021/06/14/threejs-vector3-normalize/) with a length of 1 is. Getting into this subject might be a little off topic, but the basic idea is that a length of 1 is a radius of 1 from the origin. So by clamping the length of a vector from 0.5 to 1 will make it so that the distance from the origin to the vector will always be between those values.
 
-## 2 - A wrap method
+## 2 - Wrapping rather than clamping a vector3 object
 
-Some times I might not want to have a vector clamped to a set of vectors that from a box, or using length values, but rather I would like to have things wrap around. Sadly it would seem that there is no wrap method in the Vector3 class, at least not of this writing with r140 of the library anyway. However there are some core tools to start out with in the math utils object such as the [Euclidean Modulo method](https://threejs.org/docs/#api/en/math/MathUtils.euclideanModulo) that will be a good start when it comes to wrapping values. The solution that I would out for this is a little involved, but I managed to make ground with it by just thinking in terms of what i need to do on a axis by axis bases.
+There is clamping a vector3 object to a box like space, but then there is also the other general way of dealing with boundaries which is to wrap them back ground. I have wrote a [whole other blog post on the subject of wrapping](/2022/09/02/threejs-vector3-wrap/) rather than clamping vector3 objects. However for this post I still think I should write about a few examples of this also.
+
+### 2.1 - Basic wrap single number demo
+
+Some times I might not want to have a vector clamped to a set of vectors that from a box, or using length values, but rather I would like to have things wrap around. Sadly it would seem that there is no wrap method in the Vector3 class, at least not of this writing with r140 of the library anyway. However there are some core tools to start out with in the math utils object such as the [Euclidean Modulo method](https://threejs.org/docs/#api/en/math/MathUtils.euclideanModulo) that will be a good start when it comes to wrapping values. 
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA RENDERER
-    //-------- ----------
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(4, 4));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // mod method
-    var mod = function (a, b) {
-        return THREE.MathUtils.euclideanModulo(a, b);
-    };
-    // wrap and axis
-    var wrapAxis = function(vec, vecMin, vecMax, axis){
-        axis = axis || 'x';
-        var maxD = new THREE.Vector2(vecMin[axis], 0).distanceTo( new THREE.Vector2(vecMax[axis], 0) );
-        var d = new THREE.Vector2(vec[axis], 0).distanceTo( new THREE.Vector2(vecMin[axis], 0) );
-        if(maxD === 0){
-           vec[axis] = 0;
-        }else{
-            if(vec[axis] >= vecMax[axis]){
-                vec[axis] = vecMin[axis] + mod(d, maxD);
-            }
-            if(vec[axis] < vecMin[axis]){
-                vec[axis] = vecMax[axis] - mod(d, maxD);
-            }
+//-------- ----------
+// SCENE, CAMERA RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(4, 4));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// mod method
+const mod = function (a, b) {
+    return THREE.MathUtils.euclideanModulo(a, b);
+};
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const mesh = new THREE.Mesh( new THREE.BoxGeometry(1,1,1), new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 400;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    mesh.position.x = -5 + 10 * a1;
+    mesh.position.x = -1.5 + mod(mesh.position.x, 3);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 2.2 - A wrap method helpers 
+
+Now that I have a basic example of wrapping out of the way it is now just a question of doing this for all axis values. The solution that I would out for this is a little involved, but I managed to make ground with it by just thinking in terms of what I need to do on a axis by axis bases.
+
+```js
+//-------- ----------
+// SCENE, CAMERA RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(4, 4));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// mod method
+const mod = function (a, b) {
+    return THREE.MathUtils.euclideanModulo(a, b);
+};
+// wrap and axis
+const wrapAxis = function(vec, vecMin, vecMax, axis){
+    axis = axis || 'x';
+    const maxD = new THREE.Vector2(vecMin[axis], 0).distanceTo( new THREE.Vector2(vecMax[axis], 0) );
+    const d = new THREE.Vector2(vec[axis], 0).distanceTo( new THREE.Vector2(vecMin[axis], 0) );
+    if(maxD === 0){
+       vec[axis] = 0;
+    }else{
+        if(vec[axis] >= vecMax[axis]){
+            vec[axis] = vecMin[axis] + mod(d, maxD);
         }
-    };
-    // wrap a vector
-    var wrapVector = function (vec, vecMin, vecMax) {
-        vecMin = vecMin || new THREE.Vector3(0, 0, 0);
-        vecMax = vecMax || new THREE.Vector3(1, 1, 1);
-        wrapAxis(vec, vecMin, vecMax, 'x');
-        wrapAxis(vec, vecMin, vecMax, 'y');
-        wrapAxis(vec, vecMin, vecMax, 'z');
-    };
-    // create group
-    var createGroup = function () {
-        var group = new THREE.Group();
-        var i = 0,
-        len = 50;
-        while (i < len) {
-            var mesh = new THREE.Mesh(
-                new THREE.BoxGeometry(1.0, 1.0, 1.0), 
-                new THREE.MeshNormalMaterial({
-                    transparent: true,
-                    opacity: 0.60
-                })
-            );
-            mesh.position.x = -2 + 4 * Math.random();
-            mesh.position.y = -2 + 4 * Math.random();
-            mesh.position.z = -2 + 4 * Math.random();
-            group.add(mesh);
-            i += 1;
+        if(vec[axis] < vecMin[axis]){
+            vec[axis] = vecMax[axis] - mod(d, maxD);
         }
-        return group;
-    };
-    // update a group
-    var updateGroup = function (group, secs, bias) {
-       group.children.forEach(function(mesh){
-            mesh.position.x += (2 - 4 * bias) * secs;
-            mesh.position.y += (-2 + 4 * bias ) * secs;
-            mesh.position.z += 2 * secs;
-            wrapVector(
-                mesh.position,
-                new THREE.Vector3(-2, -2, -2),
-                new THREE.Vector3(2, 2, 2));
-        });
-    };
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    var group = createGroup();
-    scene.add(group);
-    var frame = 0,
-    maxFrame = 300,
-    fps = 20,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000,
-        per = frame / maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            updateGroup(group, secs, bias)
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= maxFrame;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+    }
+};
+// wrap a vector
+const wrapVector = function (vec, vecMin, vecMax) {
+    vecMin = vecMin || new THREE.Vector3(0, 0, 0);
+    vecMax = vecMax || new THREE.Vector3(1, 1, 1);
+    wrapAxis(vec, vecMin, vecMax, 'x');
+    wrapAxis(vec, vecMin, vecMax, 'y');
+    wrapAxis(vec, vecMin, vecMax, 'z');
+};
+// create group
+const createGroup = function () {
+    const group = new THREE.Group();
+    let i = 0,
+    len = 50;
+    while (i < len) {
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1.0, 1.0, 1.0), 
+            new THREE.MeshNormalMaterial({
+                transparent: true,
+                opacity: 0.60
+            })
+        );
+        mesh.position.x = -2 + 4 * Math.random();
+        mesh.position.y = -2 + 4 * Math.random();
+        mesh.position.z = -2 + 4 * Math.random();
+        group.add(mesh);
+        i += 1;
+    }
+    return group;
+};
+// update a group
+const updateGroup = function (group, secs, bias) {
+   group.children.forEach(function(mesh){
+        mesh.position.x += (2 - 4 * bias) * secs;
+        mesh.position.y += (-2 + 4 * bias ) * secs;
+        mesh.position.z += 2 * secs;
+        wrapVector(
+            mesh.position,
+            new THREE.Vector3(-2, -2, -2),
+            new THREE.Vector3(2, 2, 2));
+    });
+};
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const group = createGroup();
+scene.add(group);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    updateGroup(group, 0.025, a2);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## 3 - Animation Loop examples
