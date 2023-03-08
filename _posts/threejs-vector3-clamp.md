@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2023-03-08 10:15:59
-version: 1.39
+updated: 2023-03-08 11:47:37
+version: 1.40
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values or wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values. However I think that I should also have at least a few examples that have to do with wrapping vector3 objects as well.
@@ -15,7 +15,7 @@ When it comes to clamping Vectors there is the idea of having two Vectors that w
 
 <!-- more -->
 
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/-5vH7bGHHvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/AWB-aC8stjg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Vector3 clamping What to know before hand
@@ -33,6 +33,9 @@ The source code examples that I am writing about in this post can be found in my
 ### Version numbers matter with threejs
 
 When I first wrote this post I was using threejs r127, and the last time I came around to do some editing I was using r146 when it comes to testing out the source code examples. I have got into the habit of making sure that I always mention the version of threejs that I am using when it comes to writing a post on threejs. The main reason why is because threejs is still a very fast moving project in terms of development and code breaking changes are happening all the time with it as a result.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/-5vH7bGHHvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## 1 - Some basic examples of Vector3 clamp
 
