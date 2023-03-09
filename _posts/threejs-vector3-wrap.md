@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2023-03-09 14:29:16
-version: 1.21
+updated: 2023-03-09 14:32:38
+version: 1.22
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries in terms of the possible range of values. There are two general ideas that come to mind with this clamping and wrapping.
@@ -635,7 +635,7 @@ loop();
 
 ## 5 - Wrapping Vector unit length animation loop example
 
-Here I have an animation loop example that is the basic for one of my videos for this blog post.
+Here I have an animation loop example that is the basic for one of my videos for this blog post. The first video that I made was based on one of the module examples that I made with the wrap axis methods. For this example I wanted to just make something that has to do with wrapping vector unit length. I also wanted to make something that is a little more interesting than just a single mesh object having the length wrapped so I went a little overboard with expressions and so forth.
 
 ```js
 // ---------- ---------- ----------
