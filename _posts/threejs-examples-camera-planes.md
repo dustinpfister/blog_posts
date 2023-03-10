@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1031
-updated: 2023-03-10 10:26:31
-version: 1.4
+updated: 2023-03-10 10:29:24
+version: 1.5
 ---
 
 When working on various threejs projects I have thought that it would be nice to have a way to just simply have a simple 2d layer to display debug info, or when making a final product to just use for any and all overlays that have to do with simple messages and so forth. Anyway of course, as always there is more than one way to go about doing something like this. One way would be to just have an HTML Collection of canvas elements, some of which are the DOM element properties of a threejs renderer, and others are just plane old 2d drawing content canvas elements. That is all fine and good, and maybe that is how I will need to go about doing things with certain projects. However for this [threejs project example](/2021/02/19/threejs-examples/) I am thinking more in terms of just going with a single canvas element that is the DOM element of a WebGL renderer, and making use of mesh objects, plane geometry, and various camera properties to just position, rotate, and scale such mesh objects so they are just in front of a camera at all times.
@@ -34,24 +34,155 @@ The source code examples that I am writing about in this post can also be found 
 
 When I first wrote this post I was using r146 of threejs.
 
-## 1 - The first version oif the camera planes module, and some demos
+## 1 - The first version of the camera planes module, and some demos
 
 
 ### 1.a - The camera planes module ( R0 - r146 style - IIFE format )
 
 ```js
+// camera-planes - r0 - from threejs-examples-planes
+(function(api){
+    //-------- ----------
+    // CONST VALUES
+    //-------- ----------
+    const MATERIAL_PLANE = new THREE.MeshBasicMaterial({
+        side: THREE.FrontSide,
+        transparent: true,
+        opacity: 0.25
+    });
+    const DEFAULT_EFFECT = (group, mesh_plane, gud, mud, a_plane, alpha) => {
+        const z = gud.zMax - gud.zMax * a_plane * alpha;
+        mesh_plane.position.set(0, 0, z);
+        mesh_plane.material.opacity = alpha;
+    };
+    const DEFAULT_CREATE_OPTIONS = {
+        camera: new THREE.PerspectiveCamera(50, 16 / 9, 0.1, 1000),
+        planeScale: 0.75,
+        zMax: 15,
+        count: 1,
+        effect: DEFAULT_EFFECT
+    };
+    //-------- ----------
+    // HELPER FUNCITONS
+    //-------- ----------
+    // create a single plane
+    const createPlane = (id) => {
+        const geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
+        geometry.rotateY(Math.PI);
+        const mesh_plane = new THREE.Mesh(geometry, MATERIAL_PLANE.clone());
+        mesh_plane.name = 'plane_' + id;
+        const mud = mesh_plane.userData;
+        mud.id = id;
+        return mesh_plane
+    };
+    //-------- ----------
+    // PUBLIC API
+    //-------- ----------
+    api.update = (group, alpha) => {
+        const gud = group.userData;
+        group.traverse( (obj, i) => {
+            // if an object is a mesh, and the name starts with 'plane'
+            if(obj.type === 'Mesh' && obj.name.split('_')[0] === 'plane'){
+                const mesh_plane = obj;
+                const mud = mesh_plane.userData;
+                const s = gud.planeScale;
+                mesh_plane.scale.set( gud.camera.aspect * s, s, s );
+                const a_plane = ( mud.id + 1 ) / gud.count;
+                gud.effect(group, mesh_plane, gud, mud, a_plane, alpha);
+            }
+        });
+    };
+    api.create = (opt) => {
+        opt = opt || {};
+        // create group, set up userData Object
+        const group = new THREE.Group();
+        const gud = group.userData;
+        Object.assign(gud, DEFAULT_CREATE_OPTIONS, opt);
+        group.add(gud.camera);
+        gud.camera.position.set(0, 0, -1);
+        gud.camera.lookAt(group.position);
+        // create first plane, call update for first time
+        let i = 0;
+        while(i < gud.count){
+            group.add( createPlane(i) );
+            i += 1;
+        }
+        api.update(group, 1);
+        return group;
+    };
+}( this['cameraPlanes'] = {} ));
 ```
 
-### 1.1 - Basic demo createing a cmaera planes with default options
+### 1.1 - Basic demo creating a camera planes with default options
 
 ```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GRID
+// ---------- ----------
+scene.add( new THREE.GridHelper(10,10) );
+//-------- ----------
+// camera group
+//-------- ----------
+const group_camera = cameraPlanes.create();
+scene.add(group_camera);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+// it is then the group that I would want to move and rotate rather than the camera
+group_camera.position.set(0,1,-3);
+group_camera.lookAt( 0, 0, 0 );
+renderer.render(scene, group_camera.userData.camera);
 ```
 
 ### 1.2 - Layers demo with custom effect
 
 ```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GRID
+// ---------- ----------
+scene.add( new THREE.GridHelper(10,10) );
+//-------- ----------
+// camera group
+//-------- ----------
+const group_camera = cameraPlanes.create({
+    planeScale: 0.9,
+    camera: new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000),
+    zMax: 3,
+    count: 5,
+    effect: (group, mesh_plane, gud, mud, a_plane, alpha) => {
+        const z = gud.zMax - gud.zMax * a_plane * alpha;
+        mesh_plane.position.set(0, 0, z);
+        mesh_plane.material.opacity = alpha * 0.25;
+    }
+});
+scene.add(group_camera);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+// it is then the group that I would want to move and rotate rather than the camera
+group_camera.position.set(0,1,-3);
+group_camera.lookAt( 0, 0, 0 );
+renderer.render(scene, group_camera.userData.camera);
 ```
 
 
 ## Conclusion
+
+That will be it for now when it comes to this camera planes module, however I think that thins might prove to be one of the projects that I will be coming back to now and then with future revisions and demos. This will without question be the case if this ends up being one of the modules that I use every day when making video projects.
 
