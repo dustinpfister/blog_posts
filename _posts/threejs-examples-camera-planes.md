@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1031
-updated: 2023-03-10 13:34:36
-version: 1.10
+updated: 2023-03-10 13:49:22
+version: 1.11
 ---
 
 When working on various threejs projects I have thought that it would be nice to have a way to just simply have a simple 2d layer to display debug info, or when making a final product to just use for any and all overlays that have to do with simple messages and so forth. Anyway of course, as always there is more than one way to go about doing something like this. One way would be to just have an HTML Collection of canvas elements, some of which are the DOM element properties of a threejs renderer, and others are just plane old 2d drawing content canvas elements. That is all fine and good, and maybe that is how I will need to go about doing things with certain projects. However for this [threejs project example](/2021/02/19/threejs-examples/) I am thinking more in terms of just going with a single canvas element that is the DOM element of a WebGL renderer, and making use of mesh objects, plane geometry, and various camera properties to just position, rotate, and scale such mesh objects so they are just in front of a camera at all times.
@@ -153,7 +153,7 @@ renderer.render(scene, group_camera.userData.camera);
 
 ### 1.2 - Layers demo with custom effect
 
-Now that I have the basic example out of the way I can now get started with a demo where I make use of some custom options.
+Now that I have the basic example out of the way I can now get started with a demo where I make use of some custom options. There is the plane scale option that I put in place to adjust the scale of the planes. I can then also pass a reference to a camera that i all ready have rather than making a new one, as well as some additional options that have to do with the count of planes, and a max z value for them. I have a built in effect for changing the position, opacity and so forth over time, but I can also pass a function to customize this as well.
 
 ```js
 // ---------- ----------
@@ -193,6 +193,8 @@ renderer.render(scene, group_camera.userData.camera);
 ```
 
 ### 1.3 - Canvas elements for texture
+
+I am going to want to use canvas elements as a way to create textures to display on these planes. For now I do not have any built in functionally for this sort of thing as I have other projects that serve this purpose. For now I am adding custom names for each mesh object, so I can use the [get object by name object3d class method](/2021/05/12/threejs-object3d-get-by-name/) as a way to get a reference to a plane of interest. Then I can just set the texture that I want to use for say the map option of the material.
 
 ```js
 // ---------- ----------
@@ -277,6 +279,8 @@ renderer.render(scene, group_camera.userData.camera);
 ```
 
 ### 1.4 - Move the group object
+
+I will want to have at least one if not more animation loops demos to make sure that very important core features are working okay. With thsat said in this demo I am changing what the camera is looking at by changing the position and rotation prototype values of the parent object of the camera rather than the camera directly.
 
 ```js
 // ---------- ----------
@@ -400,6 +404,8 @@ loop();
 ```
 
 ### 1.5 - Move the planes
+
+One final R0 demo I think, this time I am not just moving the parent object, but also updating the position of the planes as well. So with this demo the core functionality that I had in mid with this project seems to be working just fine. However I am sure that there are still a few key details that I might want to address in an R1 of this module. One thing that I have noticed is that the image will of course be a little distorted sense the textures used for the texture are base2 and in somes cases that actually image content will be a ratio other than 1 to 1. That is then one item that I might want to address in future revisions, other than that the most important features seem to be working just fine.
 
 ```js
 // ---------- ----------
