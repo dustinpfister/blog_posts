@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2023-03-10 11:03:57
-version: 1.112
+updated: 2023-03-10 11:07:00
+version: 1.113
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard library for doing anything with 3d modeling in a client side javaScript environment it would seem. [Many of the posts that I have wrote so far](/categories/three-js/) have to do with the various features of threejs itself, but thus far I can not say that I have made any kind of real project with threejs. That is until I started a collection of posts that have to do with making some kind of real application rather than just demos of various features of threejs. So this post is a kind of index of all of these kinds of posts thus far that I intend to expand on, and come back to edit often.
@@ -70,7 +70,7 @@ This is a project that has to do with updating the values of a camera over time.
 
 Sooner or later I might get around to adding more features that have to do with updating values of a camera that are not just object3d based values, but rather values that have to do more with a camera object alone.
 
-### [ 2.11 - camera planes ](/2023/03/10/threejs-examples-threejs-camera-planes/)
+### [ 2.11 - camera planes ](/2023/03/10/threejs-examples-camera-planes/)
 
 This is a another camera centered project that time involving creating not just a camera, but a group in which a camera is a child of the group. I then also have one or more mesh objects with plane geometry that I position in front of the camera. When it comes to changing what the camera is looking at I move the group, and not the camera.
 
