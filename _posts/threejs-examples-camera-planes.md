@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1031
-updated: 2023-03-10 10:29:24
-version: 1.5
+updated: 2023-03-10 10:35:07
+version: 1.6
 ---
 
 When working on various threejs projects I have thought that it would be nice to have a way to just simply have a simple 2d layer to display debug info, or when making a final product to just use for any and all overlays that have to do with simple messages and so forth. Anyway of course, as always there is more than one way to go about doing something like this. One way would be to just have an HTML Collection of canvas elements, some of which are the DOM element properties of a threejs renderer, and others are just plane old 2d drawing content canvas elements. That is all fine and good, and maybe that is how I will need to go about doing things with certain projects. However for this [threejs project example](/2021/02/19/threejs-examples/) I am thinking more in terms of just going with a single canvas element that is the DOM element of a WebGL renderer, and making use of mesh objects, plane geometry, and various camera properties to just position, rotate, and scale such mesh objects so they are just in front of a camera at all times.
@@ -34,8 +34,9 @@ The source code examples that I am writing about in this post can also be found 
 
 When I first wrote this post I was using r146 of threejs.
 
-## 1 - The first version of the camera planes module, and some demos
+## 1 - The first version of the camera planes module ( R0 ), and some demos
 
+There is always that very first version of a module where I end up being the core idea of what I want working, but there are likely at least a few bugs, and a lack of features. With that said in this section I am starting out with the source code of the very first revision of the module, and with that a few demos that make use of that module. This first version has just two public methods, one to create a THREE.Group object that will contain a camera and a number of mesh objects, and an update method that will be used to update the state of these objects over time. The demos that I have thus far are to just test out that the features are working okay, and also to find things that i might want to change or add in future revisions of this project.
 
 ### 1.a - The camera planes module ( R0 - r146 style - IIFE format )
 
