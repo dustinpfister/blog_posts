@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1031
-updated: 2023-03-10 10:35:07
-version: 1.6
+updated: 2023-03-10 10:46:18
+version: 1.7
 ---
 
 When working on various threejs projects I have thought that it would be nice to have a way to just simply have a simple 2d layer to display debug info, or when making a final product to just use for any and all overlays that have to do with simple messages and so forth. Anyway of course, as always there is more than one way to go about doing something like this. One way would be to just have an HTML Collection of canvas elements, some of which are the DOM element properties of a threejs renderer, and others are just plane old 2d drawing content canvas elements. That is all fine and good, and maybe that is how I will need to go about doing things with certain projects. However for this [threejs project example](/2021/02/19/threejs-examples/) I am thinking more in terms of just going with a single canvas element that is the DOM element of a WebGL renderer, and making use of mesh objects, plane geometry, and various camera properties to just position, rotate, and scale such mesh objects so they are just in front of a camera at all times.
@@ -39,6 +39,10 @@ When I first wrote this post I was using r146 of threejs.
 There is always that very first version of a module where I end up being the core idea of what I want working, but there are likely at least a few bugs, and a lack of features. With that said in this section I am starting out with the source code of the very first revision of the module, and with that a few demos that make use of that module. This first version has just two public methods, one to create a THREE.Group object that will contain a camera and a number of mesh objects, and an update method that will be used to update the state of these objects over time. The demos that I have thus far are to just test out that the features are working okay, and also to find things that i might want to change or add in future revisions of this project.
 
 ### 1.a - The camera planes module ( R0 - r146 style - IIFE format )
+
+The main thing that I wanted to do with this first version is to just have a method that creates a THREE.Group object, and appends a camera as well as a number of mesh objects with plane geometry. I then thought that it would be a good idea to have the camera at a fixed local position of the group, say a -1 on the z axis and have it face the origin of the group. I can then position a mesh object with plane geometry at the origin, rotate the mesh so that the front side is facing the camera, and then have options to adjust things so that it can be lined up in a way so that it will work as a 2d overlay of sorts.
+There is a lot more that I would like to do of course, as it would be nice to have more than one mesh objects, and also update those mesh objects over time. With that said I put in a few options that give me a fair amount of flexibility with respect to those things. However the core idea that I have in mind for most projects is to have just one mesh object, and to maybe always have it fixed at a standard location. 
+
 
 ```js
 // camera-planes - r0 - from threejs-examples-planes
@@ -116,6 +120,8 @@ There is always that very first version of a module where I end up being the cor
 
 ### 1.1 - Basic demo creating a camera planes with default options
 
+The first demo of the very first version of the module should always be a kind of hello world typo example. With that said that is what this demo will be. Here I just create my usual set of objects, and then I create the group by calling the create method of the camera planes module. WIth these hello world examples I often just call the cerate method without any options to just know what the outcome is when using it with the hard coded options for everything.
+
 ```js
 // ---------- ----------
 // SCENE, CAMERA, RENDERER
@@ -144,6 +150,8 @@ renderer.render(scene, group_camera.userData.camera);
 ```
 
 ### 1.2 - Layers demo with custom effect
+
+Now that I have the basic example out of the way I can now get started with a demo where I make use of some custom options.
 
 ```js
 // ---------- ----------
