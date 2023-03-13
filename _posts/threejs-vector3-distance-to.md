@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2023-03-13 12:14:17
-version: 1.33
+updated: 2023-03-13 12:22:24
+version: 1.34
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two of them in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting distance which should work fine.
@@ -94,6 +94,47 @@ renderer.render(scene, camera);
 ```
 
 This might not be the most interesting example in the worked when it comes to the distance to method, however this is of course a basic example and that is often the case with these kinds of examples. I just wanted to start with something very simple for this post, and with that said the basic idea of the distance to method is there. 
+
+### 1.2 - The vector3 length method
+
+The length method of the vector3 class is another method that is similar to that of the distance to method in that in a way it is a distance of sorts, however it is less versatile. The length method will return the vector unit length of the vector3 object. That is that a vector is of course a direction, and a magnitude along this direction as such the value returned by length is the magnitude part of the vector. In other words, simply put, the length is the distance of the x,y and z position from 0,0,0.
+
+```js
+//-------- ---------
+// SCENE, CAMERA, RNEDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ---------
+// HELPER
+//-------- ----------
+const createMesh = function () {
+    const mesh = new THREE.Mesh(
+        new THREE.SphereGeometry(1, 30, 30),
+        new THREE.MeshNormalMaterial());
+    return mesh;
+};
+//-------- ---------
+// OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const mesh1 = createMesh();
+scene.add(mesh1);
+mesh1.position.set(-5, 0, -2);
+mesh1.lookAt(0,0,0);
+const unit_length = mesh1.position.length();
+const s = unit_length * 0.25;
+mesh1.scale.set(s, s, s);
+//-------- ---------
+// RENDER
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 ## 2 - Animaiton loop examples
 
