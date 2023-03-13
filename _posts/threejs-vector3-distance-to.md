@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2023-03-13 08:33:26
-version: 1.29
+updated: 2023-03-13 10:36:08
+version: 1.30
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two of them in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting distance which should work fine.
@@ -18,9 +18,9 @@ So this post will be on the use of the distance to method of the vector3 class. 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/K24IiA2bBNY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## The Vector3 distance to method and what to knwo first
+## The Vector3 distance to method and what to know first
 
-This is a post on the distance to method of the Vector3 class in the client side javaScript library known as threejs. The subject here then is on one specific method of one specific class in a single javaScript library, so then this is not a [getting started post with threejs](/2018/04/04/threejs-getting-started/) let along client side javaScript in general. I will not be getting into every little detail about the library here, but I usualy write a section like this for every post where I outline a few things you might want to read up more on before continuing to read the rest of this post.
+This is a post on the distance to method of the Vector3 class in the client side javaScript library known as threejs. The subject here then is on one specific method of one specific class in a single javaScript library, so then this is not a [getting started post with threejs](/2018/04/04/threejs-getting-started/) let along client side javaScript in general. I will not be getting into every little detail about the library here, but I usually write a section like this for every post where I outline a few things you might want to read up more on before continuing to read the rest of this post.
 
 ### Read up more on the Vector3 class in general
 
