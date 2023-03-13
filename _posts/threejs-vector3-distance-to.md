@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2023-03-13 11:44:18
-version: 1.32
+updated: 2023-03-13 12:14:17
+version: 1.33
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two of them in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting distance which should work fine.
@@ -40,8 +40,7 @@ When I first wrote this post I was using r127 of threejs and the last time I cam
 
 ## 1 - Basic Vector3 distance to method examples
 
-As always for each of my posts on threejs features I like to start out with at least a few basic examples of the topic at hand.
-
+As always for each of my posts on threejs features I like to start out with at least a few basic examples of the topic at hand. When it comes to these examples I do my best to try to keep them fairly simple, copy and paste friendly, and avoid anything that might made the code to long. So nothing fancy with animation loops, custom shader materials and so forth. Just some simple hello world program style examples of the distance to method of the vector3 class.
 
 ### 1.1 - Setting scale of one mesh by way of distance to another
 
