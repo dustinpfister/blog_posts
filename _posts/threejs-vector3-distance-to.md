@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2023-03-13 10:36:08
-version: 1.30
+updated: 2023-03-13 11:27:52
+version: 1.31
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two of them in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting distance which should work fine.
@@ -36,7 +36,7 @@ The source code examples that I am writing about in this post can also be found 
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r127 of threejs and the last time I came around to doing some editing I was using r140 of the library.
+When I first wrote this post I was using r127 of threejs and the last time I came around to doing some editing I was using r146 of the library. Code breaking changes are made to threejs often, also there are some major changes coming up ahead with later revisions of threejs that I do not care to get into detail with here. Simply put version numbers matter big time with threejs and not just with respect to the revision number but many more other things deeper down in the software layers as well. If you are running into problems with these source code examples check the revision you are using, also be aware of what your graphics card is capable of, what drivers you are using with them and so forth.
 
 ## 1 - Basic Vector3 distance to example
 
@@ -45,42 +45,48 @@ So for now it might be a good idea to just start out with a basic example of the
 I then just have a little extra javaScript code that will check the distance between the position of cube1, and that of cube2. In the event that the distance between the two cubes is less than 2, and in this case it is as the distance is 0, then the position of cube2 will be set to a specific location.
 
 ```js
-(function () {
- 
-    // simple create cube helper
-    var createCube = function () {
-        var cube = new THREE.Mesh(
-                new THREE.BoxGeometry(1, 1, 1),
-                new THREE.MeshNormalMaterial());
-        return cube;
-    };
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(7, 7));
- 
-    // cubes
-    var cube1 = createCube();
-    scene.add(cube1);
-    var cube2 = createCube();
-    scene.add(cube2);
- 
-    // USING Vector3.distanceTo TO ADJUST THE POSITION OF CUBE2
-    if (cube2.position.distanceTo(cube1.position) < 2) {
-        cube2.position.set(2, 0, 0)
-    }
- 
-    // camera, render
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(8, 10, 8);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
+//-------- ---------
+// SCENE, CAMERA, RNEDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ---------
+// HELPER
+//-------- ----------
+const createCube = function () {
+    var cube = new THREE.Mesh(
+           new THREE.BoxGeometry(1, 1, 1),
+           new THREE.MeshNormalMaterial());
+    return cube;
+};
+//-------- ---------
+// OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const cube1 = createCube();
+cube1.position.set(3, 0.5, 2);
+scene.add(cube1);
+const cube2 = createCube();
+cube2.position.set(4, 0.5, -2);
+scene.add(cube2);
+// doing somehting with distance
+const d = cube2.position.distanceTo(cube1.position);
+console.log(d);
+cube2.scale.set(0, 0, 0)
+if (d < 5) {
+    const s = 1 - (d / 5); 
+    cube2.scale.set(s, s, s);
+    cube2.position.y = s / 2;
 }
-    ());
+//-------- ---------
+// RENDER
+//-------- ----------
+camera.position.set(8, 2, 8);
+camera.lookAt(cube1.position);
+renderer.render(scene, camera);
 ```
 
 This might not be the most interesting example in the worked when it comes to the distance to method, however this is of course a basic example and that is often the case with these kinds of examples. I just wanted to start with something very simple for this post, and with that said the basic idea of the distance to method is there. If I play around with the hard coded values for the position of cube2 the results will always be the same for any position that is within a distance of two from cube1, as one might expect. So now that I have the basic example out of the way we can move on to one or more real examples of this method.
