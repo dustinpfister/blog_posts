@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2023-03-13 12:22:24
-version: 1.34
+updated: 2023-03-13 13:52:27
+version: 1.35
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two of them in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting distance which should work fine.
@@ -237,6 +237,8 @@ For example take a look at the method that has to do with getting a new random p
 ### 2.2 - Using length, and distance to methods to set opacity and rotation with group of mesh objects
 
 The length method is a way to go about getting the current vector unit length which is also a kind of distance to the origin of the Vector at least. In some cases then this length can be used as a way to get the value that I want it is just the it will always be the distance to the origin rather than another point of interest. In this example I am using the length method to get the distance to the origin and I am using that as a way to set an opacity effect. On top of this I am also using the distance to method but to create another kind of effect that has to do with the rotation of the mesh objects.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/6r3SvBpA9bU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ```js
