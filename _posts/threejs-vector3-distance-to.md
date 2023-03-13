@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2023-03-13 08:29:13
-version: 1.28
+updated: 2023-03-13 08:33:26
+version: 1.29
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two of them in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting distance which should work fine.
@@ -20,7 +20,7 @@ So this post will be on the use of the distance to method of the vector3 class. 
 
 ## The Vector3 distance to method and what to knwo first
 
-This is a post on the distance to method of the Vector3 class in the client side javaScript library known as three.js. The subject here then is on one specific method of one specific class in a single javaScript library, so then this is not a [getting started post with threejs](/2018/04/04/threejs-getting-started/) let along client side javaScript in general. I will not be getting into every little detail about the library and language here, but I usual write a section like this for every post on threejs where I outline a few things you might want to read up more on before continuing to read the rest of this post.
+This is a post on the distance to method of the Vector3 class in the client side javaScript library known as threejs. The subject here then is on one specific method of one specific class in a single javaScript library, so then this is not a [getting started post with threejs](/2018/04/04/threejs-getting-started/) let along client side javaScript in general. I will not be getting into every little detail about the library here, but I usualy write a section like this for every post where I outline a few things you might want to read up more on before continuing to read the rest of this post.
 
 ### Read up more on the Vector3 class in general
 
@@ -28,7 +28,7 @@ The distance to method is just one method of interest in the vector3 class to wo
 
 ### Know the basics of Object3d, and the position property specifically
 
-Another Major class to work with in threejs is the [obejct3d class](/2018/04/23/threejs-object3d/), and when it comes to working with the Vector3 class it is mainly the position property of anything based off of object3d that is of interest. One major use case example of the distance to method is to use it as a way to get the distance between two mesh objects. So then to do so I would want to call the distance to method off of the Vector3 instance of the position property of the Mesh, and then pass the position property of the other mesh as the argument for the method. There is a lot to be aware of when it comes to working with Mesh objects, but what there is to know about Object3d applies to Mesh objects, as well as all kinds of other objects that are based off of object3d.
+Another Major class to work with in threejs is the [obejct3d class](/2018/04/23/threejs-object3d/), and when it comes to working with the Vector3 class it is mainly the [position property](/2022/04/04/threejs-object3d-position/) of anything based off of object3d that is of interest. One major use case example of the distance to method is to use it as a way to get the distance between two mesh objects. So then to do so I would want to call the distance to method off of the Vector3 instance of the position property of the Mesh, and then pass the position property of the other mesh as the argument for the method. There is a lot to be aware of when it comes to working with Mesh objects, but what there is to know about Object3d applies to Mesh objects, as well as all kinds of other objects that are based off of object3d.
 
 ### Source code examples are on Github
 
