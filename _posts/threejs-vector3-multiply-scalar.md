@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2023-03-14 10:24:13
-version: 1.24
+updated: 2023-03-14 10:53:54
+version: 1.25
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -44,123 +44,127 @@ The version of threejs that I was using when I first wrote this post was r135, a
 For a basic example of this multiply scalar method there is starting out with just using the typical set method to set an initial length for the vector that is greater than 0. Once I have a non zero length for the vector I can then use the multiply scalar method to multiply that length by any desired value that I give as the first argument when calling the multiply scalar method.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(3, 3, 3);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // MESH OBJECTS
-    var cube1 = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    var cube2 = cube1.clone();
-    scene.add(cube1);
-    scene.add(cube2);
- 
-    // SETTING POSITION WITH Vector3.set and Vector3.multiplyScalar
-    cube1.position.set(-1, 0, -1).multiplyScalar(4);
- 
-    // render static scene
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH OBJECTS
+//-------- ----------
+const cube1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+const cube2 = cube1.clone();
+scene.add(cube1);
+scene.add(cube2); 
+// SETTING POSITION WITH Vector3.set
+cube1.position.set(1, 0, 0);
+cube1.position.multiplyScalar(1.5);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
-## 2 - Copy and normalize, then use scalar
+### 2.1 - Copy and normalize, then use scalar
 
 The copy method of the Vector 3 class allows for me to copy the values of one instance of Vector3 over to another instance. The normalize method of the Vector3 class is also a very useful one that will set the length of a vector to 1 while preserving the direction of the vector. So then I can create a new Instance of Vector3, then copy that to another such as the position object of a mesh, and the normalize the position to a length of one with the same direction of the vector that I copied from. Sense the length is now one, I can then use the multiply scalar method to set a desired length from there easily.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(7, 7, 7);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // MESH OBJECTS
-    var cube1 = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    var cube2 = cube1.clone();
-    var cube3 = cube1.clone();
-    scene.add(cube1);
-    scene.add(cube2);
-    scene.add(cube3);
- 
-    // SETTING POSITION WITH Vector3.copy, normalize, and Vector3.multiplyScalar
-    var radian = THREE.MathUtils.degToRad(90 + 45),
-    radius = 4;
-    var vec = new THREE.Vector3(
-        Math.cos(radian) * radius,
-        0,
-        Math.sin(radian) * radius
-    );
-    cube1.position.copy(vec);
-    var scalar = 1 + Math.round(2 * Math.random())
-    cube2.position.copy(vec).normalize().multiplyScalar(scalar);
-    // adjust rotation of cubes
-    cube1.lookAt(0, 0, 0);
-    cube2.lookAt(0, 0, 0);
-    cube3.lookAt(cube1.position);
- 
-    // render static scene
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH OBJECTS
+//-------- ----------
+const cube1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+const cube2 = cube1.clone();
+const cube3 = cube1.clone();
+scene.add(cube1);
+scene.add(cube2);
+scene.add(cube3);
+//-------- ----------
+// SETTING POSITION WITH Vector3.copy, normalize, and Vector3.multiplyScalar
+//-------- ----------
+const radian = THREE.MathUtils.degToRad(90 + 45);
+const radius = 4;
+const vec = new THREE.Vector3(
+    Math.cos(radian) * radius,
+    0,
+    Math.sin(radian) * radius
+);
+cube1.position.copy(vec);
+const scalar = 1 + Math.round( 2 * Math.random() )
+cube2.position.copy(vec).normalize().multiplyScalar(scalar);
+// adjust rotation of cubes
+cube1.lookAt(0, 0, 0);
+cube2.lookAt(0, 0, 0);
+cube3.lookAt(cube1.position);
+//-------- ----------
+// render static scene
+//-------- ----------
+camera.position.set(7, 7, 7);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
-## 3 - Translate, normalize and scalar
+### 2.2 - Translate, normalize and scalar
 
 One additional method that I might also pull into the mix is the add method that can be used to translate from a set point. This add method can be used to add another Vector to the vector value after the use of a method like that of copy or set if I want to make adjustments to direction before normalizing and scaling. Or it can be used after doing so as a way to adjust things after normalizing and scaling.
 
 For this example I am not also creating and positioning mesh objects in the body of a function that I am passing to the [array for each method](/2019/02/16/js-javascript-foreach/). The array that I am calling for each off of then contains data for each method object that I want in the form of nested arrays with number values that can be used to set position and a scalar value to use after normalizing that position..
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(7, 7, 7);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // CREATING ANSD POSITIONING MESH OBJECTS WITH Vector3 METHODS
-    // including copy, add, normalize, and multiplyScalar
-    var cube1 = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
- 
-    var radian = THREE.MathUtils.degToRad(90 + 25),
-    radius = 4;
-    var vec = new THREE.Vector3(Math.cos(radian) * radius, 0, Math.sin(radian) * radius);
-    [[0,0,0,0], [-2,1,0,1.5], [-4,2,0,3], [-8,3,0,4.5]].forEach(function(data){
-        var mesh = cube1.clone(),
-        x = data[0], y = data[1], z = data[2], scalar = data[3];
-        mesh.position.copy(vec).add(new THREE.Vector3(x, y, z) ).normalize().multiplyScalar(scalar);
-        mesh.lookAt(cube1.position);
-        scene.add(mesh);
-    });
-    scene.children[1].lookAt(scene.children[2].position)
- 
-    // render static scene
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CREATING ANSD POSITIONING MESH OBJECTS WITH Vector3 METHODS
+// including copy, add, normalize, and multiplyScalar
+//-------- ----------
+const cube1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+const radian = THREE.MathUtils.degToRad(90 + 25), radius = 4;
+const vec = new THREE.Vector3(Math.cos(radian) * radius, 0, Math.sin(radian) * radius);
+[[0,0,0,0], [-2,1,0,1.5], [-4,2,0,3], [-8,3,0,4.5]].forEach(function(data){
+    const mesh = cube1.clone(),
+    x = data[0], y = data[1], z = data[2], scalar = data[3];
+    mesh.position.copy(vec).add(new THREE.Vector3(x, y, z) ).normalize().multiplyScalar(scalar);
+    mesh.lookAt(cube1.position);
+    scene.add(mesh);
+});
+scene.children[1].lookAt(scene.children[2].position)
+//-------- ----------
+// render static scene
+//-------- ----------
+camera.position.set(7, 7, 7);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
-## 4 - Apply Euler and setting direction along with length
+## 3 - Apply Euler and setting direction along with length
 
 Another Vector3 class method that has proven to be useful is the apply Euler method. Where a vector3 class is used to define a direction and a unit length from the direction, or just simply a position in space, the Euler class is all about angles. So then say that I want to have a way to set the position of a mesh in space by giving a vector unit length, and then a few more arguments that are used to define what the direction is. Such a method can be made by making use of the apply Euler method along with the multiply scalar method.
 
@@ -168,204 +172,198 @@ In this example I have a helper function called set by length where I give a mes
 
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(7, 7, 7);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // set position of mesh based on vector unit length along with a and b values
-    // relative to a standard start position
-    const setByLength = function(mesh, len, a, b, startDir){
-        startDir = startDir || new THREE.Vector3(1, 0, 0);
-        const pi2 = Math.PI * 2,
-        eul = new THREE.Euler(
-            0, 
-            a % 1 * pi2,
-            b % 1 * pi2);
-        // using copy to start at startDir, then applying the Euler. After that normalize and multiplyScalar
-        return mesh.position.copy( startDir ).applyEuler( eul ).normalize().multiplyScalar(len);
-    };
-    // get a bias value
-    const getBias = function(n, d, count){
-        let per = n / d * count % 1;
-        return 1 - Math.abs(0.5 - per) / 0.5;
-    };
-    //-------- ----------
-    // OBJECTS
-    //-------- ----------
-    const mesh1 = new THREE.Mesh( new THREE.BoxGeometry(1,1,1), new THREE.MeshNormalMaterial());
-    scene.add(mesh1);
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    let frame = 0,
-    maxFrame = 300,
-    fps = 20,
-    lt = new Date();
-    const loop = function () {
-        let now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            // USING SET BY LENGTH HELPER
-            let len = 1 + 4 * getBias(frame, maxFrame, 6);
-            let a = frame / maxFrame;
-            let b = -0.125 + 0.25 * getBias(frame, maxFrame, 10);
-            setByLength(mesh1, len, a, b);
-            // look at, render, step, ...
-            mesh1.lookAt(0, 0, 0);
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= maxFrame;
-            lt = now;
-        }
-    };
-    loop();
-    //-------- ----------
-    // CONTROLS
-    //-------- ----------
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set position of mesh based on vector unit length along with a and b values
+// relative to a standard start position
+const setByLength = function(mesh, len, a, b, startDir){
+    startDir = startDir || new THREE.Vector3(1, 0, 0);
+    const pi2 = Math.PI * 2,
+    eul = new THREE.Euler(
+        0, 
+        a % 1 * pi2,
+        b % 1 * pi2);
+    // using copy to start at startDir, then applying the Euler. After that normalize and multiplyScalar
+    return mesh.position.copy( startDir ).applyEuler( eul ).normalize().multiplyScalar(len);
+};
+// get a bias value
+const getBias = function(n, d, count){
+    let per = n / d * count % 1;
+    return 1 - Math.abs(0.5 - per) / 0.5;
+};
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const mesh1 = new THREE.Mesh( new THREE.BoxGeometry(1,1,1), new THREE.MeshNormalMaterial());
+scene.add(mesh1);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(7, 7, 7);
+camera.lookAt(0, 0, 0);
+let frame = 0,
+maxFrame = 300,
+fps = 20,
+lt = new Date();
+const loop = function () {
+    let now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // USING SET BY LENGTH HELPER
+        let len = 1 + 4 * getBias(frame, maxFrame, 6);
+        let a = frame / maxFrame;
+        let b = -0.125 + 0.25 * getBias(frame, maxFrame, 10);
+        setByLength(mesh1, len, a, b);
+        // look at, render, step, ...
+        mesh1.lookAt(0, 0, 0);
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+//-------- ----------
+// CONTROLS
+//-------- ----------
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
 ```
 
-## 5 - Art Example One
+### 4.1 - Art Animaiton loop example for video one
 
 I think I have the basic idea of the multiply scalar method covered now and then some when it comes to some additional methods that will often come into play along with it. In this example I want to make a kind of art project type thing where the goal is to just make a collection of mesh objects that look interesting when they move around in the scene. As with by apply Euler example in this post I am once gain using that helper function that I worked out in that example, but now with some additional helper functions that can be used to create and update a standard kind of group object.
 
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(10, 10, 10);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //-------- ----------
-    // LIGHT
-    //-------- ----------
-    let dl = new THREE.DirectionalLight(0xffffff, 1);
-    dl.position.set(-10, 3, -5);
-    scene.add(dl);
-    let al = new THREE.AmbientLight(0xffffff, 0.15);
-    scene.add(al);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // set position of mesh based on vector unit length along with a and b values
-    // relative to a standard start position
-    const setByLength = function(mesh, len, a, b, startDir){
-        startDir = startDir || new THREE.Vector3(1, 0, 0);
-        const pi2 = Math.PI * 2,
-        eul = new THREE.Euler(
-            0, 
-            a % 1 * pi2,
-            b % 1 * pi2);
-        // using copy to start at startDir, then applying the Euler. After that normalize and multiplyScalar
-        return mesh.position.copy( startDir ).applyEuler( eul ).normalize().multiplyScalar(len);
-    };
-    // get a bias value
-    const getBias = function(alpha, count){
-        let per = alpha * count % 1;
-        return 1 - Math.abs(0.5 - per) / 0.5;
-    };
-    // update a group
-    //const updateGroup = function(group, gAlpha, alphaAdjust, lenBiasCount, bBiasCount){
-    const updateGroup = function(group, gAlpha, opt){
-        gAlpha = gAlpha === undefined ? 0 : gAlpha; 
-        opt = opt || {};
-        opt.alphaAdjust = opt.alphaAdjust === undefined ? 1 : opt.alphaAdjust;
-        opt.lenBiasCount = opt.lenBiasCount === undefined ? 5 : opt.lenBiasCount;
-        opt.bBiasCount = opt.bBiasCount === undefined ? 5 : opt.bBiasCount;
-        opt.lenRange = opt.lenRange || [3, 8];
-        opt.bRange = opt.bRange || [-0.125, 0.125];
-        let i = 0, count = group.children.length;
-        while(i < count){
-            let mesh = group.children[i];
-            let iAlpha = i / count;
-            let alpha = ( iAlpha + gAlpha ) / opt.alphaAdjust;
-            let len = opt.lenRange[0] + (opt.lenRange[1] - opt.lenRange[0]) * getBias(alpha, opt.lenBiasCount);
-            let a = alpha;
-            let b = opt.bRange[0] + (opt.bRange[1] - opt.bRange[0]) * getBias(alpha, opt.bBiasCount);
-            setByLength(mesh, len, a, b);
-            // next child
-            nextChild = group.children[i + 1];
-            if(i === count - 1){
-               nextChild = group.children[i - 1];
-            }
-            mesh.lookAt(nextChild.position);
-            i += 1;
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+let dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(-10, 3, -5);
+scene.add(dl);
+let al = new THREE.AmbientLight(0xffffff, 0.15);
+scene.add(al);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set position of mesh based on vector unit length along with a and b values
+// relative to a standard start position
+const setByLength = function(mesh, len, a, b, startDir){
+    startDir = startDir || new THREE.Vector3(1, 0, 0);
+    const pi2 = Math.PI * 2,
+    eul = new THREE.Euler(
+        0, 
+        a % 1 * pi2,
+        b % 1 * pi2);
+    // using copy to start at startDir, then applying the Euler. After that normalize and multiplyScalar
+    return mesh.position.copy( startDir ).applyEuler( eul ).normalize().multiplyScalar(len);
+};
+// get a bias value
+const getBias = function(alpha, count){
+    let per = alpha * count % 1;
+    return 1 - Math.abs(0.5 - per) / 0.5;
+};
+// update a group
+//const updateGroup = function(group, gAlpha, alphaAdjust, lenBiasCount, bBiasCount){
+const updateGroup = function(group, gAlpha, opt){
+    gAlpha = gAlpha === undefined ? 0 : gAlpha; 
+    opt = opt || {};
+    opt.alphaAdjust = opt.alphaAdjust === undefined ? 1 : opt.alphaAdjust;
+    opt.lenBiasCount = opt.lenBiasCount === undefined ? 5 : opt.lenBiasCount;
+    opt.bBiasCount = opt.bBiasCount === undefined ? 5 : opt.bBiasCount;
+    opt.lenRange = opt.lenRange || [3, 8];
+    opt.bRange = opt.bRange || [-0.125, 0.125];
+    let i = 0, count = group.children.length;
+    while(i < count){
+        let mesh = group.children[i];
+        let iAlpha = i / count;
+        let alpha = ( iAlpha + gAlpha ) / opt.alphaAdjust;
+        let len = opt.lenRange[0] + (opt.lenRange[1] - opt.lenRange[0]) * getBias(alpha, opt.lenBiasCount);
+        let a = alpha;
+        let b = opt.bRange[0] + (opt.bRange[1] - opt.bRange[0]) * getBias(alpha, opt.bBiasCount);
+        setByLength(mesh, len, a, b);
+        // next child
+        nextChild = group.children[i + 1];
+        if(i === count - 1){
+           nextChild = group.children[i - 1];
         }
-        return group;
-    };
-    // create a group
-    const createGroup = function(count, s){
-        count = count === undefined ? 10 : count;
-        s = s === undefined ? 1 : s;
-        let i = 0;
-        let group = new THREE.Group();
-        while(i < count){
-            let mesh = new THREE.Mesh(
-                new THREE.BoxGeometry(s, s, s),
-                new THREE.MeshPhongMaterial({
-                }));
-            group.add(mesh);
-            i += 1;
-        }
-        updateGroup(group, 0);
-        return group;
-    };
-    //-------- ----------
-    // OBJECTS
-    //-------- ----------
-    let group1 = createGroup(120, 0.6);
-    scene.add(group1);
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    let frame = 0,
-    maxFrame = 900,
-    fps = 20,
-    lt = new Date();
-    const loop = function () {
-        let now = new Date(),
-        secs = (now - lt) / 1000,
-        fAlpha = frame / maxFrame;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            updateGroup(group1, fAlpha, {
-                lenRange: [1, 6],
-                bRange: [-0.125, 0.2 * getBias(fAlpha, 8)]
-            });
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= maxFrame;
-            lt = now;
-        }
-    };
-    loop();
-    //-------- ----------
-    // CONTROLS
-    //-------- ----------
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-}
-    ());
+        mesh.lookAt(nextChild.position);
+        i += 1;
+    }
+    return group;
+};
+// create a group
+const createGroup = function(count, s){
+    count = count === undefined ? 10 : count;
+    s = s === undefined ? 1 : s;
+    let i = 0;
+    let group = new THREE.Group();
+    while(i < count){
+        let mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(s, s, s),
+            new THREE.MeshPhongMaterial({
+            }));
+        group.add(mesh);
+        i += 1;
+    }
+    updateGroup(group, 0);
+    return group;
+};
+//-------- ----------
+// OBJECTS
+//-------- ----------
+let group1 = createGroup(120, 0.6);
+scene.add(group1);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+let frame = 0,
+maxFrame = 900,
+fps = 20,
+lt = new Date();
+const loop = function () {
+    let now = new Date(),
+    secs = (now - lt) / 1000,
+    fAlpha = frame / maxFrame;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        updateGroup(group1, fAlpha, {
+            lenRange: [1, 6],
+            bRange: [-0.125, 0.2 * getBias(fAlpha, 8)]
+        });
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+//-------- ----------
+// CONTROLS
+//-------- ----------
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
 ```
 
 ## Conclusion
