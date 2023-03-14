@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2023-03-14 17:52:40
-version: 1.26
+updated: 2023-03-14 18:16:46
+version: 1.27
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -76,9 +76,55 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 2.1 - Copy and normalize, then use scalar
+### 1.2 - Uisng the normalize method and multiply scalar
+
+Now that I have a basic example of just the multiply scalar method out of the way I think I should now have at least one if not more examples that make use of the normalize method as well as the length method. These are two other vector3 class methods that I would say are very close to the use of the multiply scalar method.
+
+If I want to find out what the current unit length of a vector is I can call the length method to get that value. However if I want to set a vector to a given unit length I can use the normalize method to set the length of the Vector to 1. After the length of the vector is one I can then use multiply scalar to set the vector to the desired unit length.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+const cube1 = new THREE.Mesh( new THREE.SphereGeometry(0.5, 20, 20), new THREE.MeshNormalMaterial());
+const cube2 = cube1.clone();
+const cube3 = cube1.clone();
+scene.add(cube1);
+scene.add(cube2);
+scene.add(cube3); 
+// This should help to show the deal with what normalize is about
+cube2.position.set(2, 0, 3).multiplyScalar( 1.5 );
+console.log(cube2.position.length().toFixed(2)); // '5.41'
+cube3.position.set(2, 0, 3).normalize().multiplyScalar(1.5);
+console.log(cube3.position.length().toFixed(2)); // '1.50'
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 2 - The copy method
 
 The copy method of the Vector 3 class allows for me to copy the values of one instance of Vector3 over to another instance. The normalize method of the Vector3 class is also a very useful one that will set the length of a vector to 1 while preserving the direction of the vector. So then I can create a new Instance of Vector3, then copy that to another such as the position object of a mesh, and the normalize the position to a length of one with the same direction of the vector that I copied from. Sense the length is now one, I can then use the multiply scalar method to set a desired length from there easily.
+
+This is where things might start to get a little complex, but for the most part this is just a section where I am now pulling in the use of the copy method as a way to set the starting state of a vector.
+
+### 2.1 - Copy and normalize, then use scalar
+
+For this demo I am creating a vector in space by using the Math.sin and Math.cos core javaScript features to set the starting values for x and z. After that I can then call the copy method off of vector3 of the position property of a mesh object and pass this vector. After that I can then normalize and multiply.
+
 
 ```js
 //-------- ----------
@@ -125,6 +171,8 @@ camera.position.set(7, 7, 7);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+Nothing major it is just that often I do find myself using the copy method over set as I always have another vector3 object that I have obtained by one means or another, and this is just a fast way to copy the values of one vector to another without mutating the source vector.
 
 ### 2.2 - Translate, normalize and scalar
 
