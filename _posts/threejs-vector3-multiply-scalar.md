@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2022-09-08 15:46:29
-version: 1.22
+updated: 2023-03-14 10:19:22
+version: 1.23
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
 
-The multiply scalar method is a way to adjust the unit length of the vector without chaining anything with the direction of the vector. In other words it is a way to change the position of the vector, but only along a ray that comes out from an origin that is found by way of the current values of the Vector. I often use this multiply scalar method in combination with other Vector3 methods such as the normalized method that will set the unit length of the vector to that of one, which would be a good starting point before using a method like the multiply scalar method. So then in this post I will be going over example of the multiply scalar method, but also many other Vector3 class features and various features of threejs in general as always.
+The multiply scalar method is a way to adjust the unit length of the vector without changing anything with the direction of the vector. In other words it is a way to change the position of the vector, but only along a ray that comes out from an origin that is found by way of the current values of the Vector. I often use this multiply scalar method in combination with other Vector3 methods such as the normalize method that will set the unit length of the vector to that of one, which would be a good starting point before using a method like the multiply scalar.
 
 <!-- more -->
 
@@ -20,7 +20,8 @@ The multiply scalar method is a way to adjust the unit length of the vector with
 
 ## The multiply scalar methods of the Vector3 class and what to know first
 
-This is a post on using the multiply scalar method of the [Vector3 class](/2018/04/15/threejs-vector3/) in the javaScript library known as threejs. This is not a getting [started type post with threejs](/2018/04/04/threejs-getting-started/), and I also assume that you have at least a little experience with [client side javaScript in general](/2018/11/27/js-getting-started/) also. There are many a few other topics beyond the basic of threejs that you should also be aware of at this point, so in this section I will be quickly going over some of them.
+This is not a getting [started type post with threejs](/2018/04/04/threejs-getting-started/), and I also assume that you have at least a little experience with [client side javaScript in general](/2018/11/27/js-getting-started/) also. There are a few other topics beyond the basics of threejs that you should also be aware of at this point as well. I am not going to be going over all of this from one blog post to the next of course, however I do still like to use these opening sections to write about a few things that you might want to brush up on regardless of skill level or experience that is relevant to the use of the multiply scalar method of the vector3 class in threejs.
+
 ### Look into what else there is to work worth in the Vector3 class
 
 I have wrote a post on the [normalize method](/2021/06/14/threejs-vector3-normalize/) of the Vector3 class a while back also which is something that is worth looking into more if you have not done so. What this method does is it sets the unit length of a vector to that of one while preserving the direction of the vector. From there a method like that of multiply scalar can be used to easily set any desired vector unit length. In other words think in terms of a ray starting at an origin and then moving outward into space from there. Every point that lays on this ray going outward has the same direction, but the length is what will be different.
@@ -367,4 +368,3 @@ I think I have the basic idea of the multiply scalar method covered now and then
 ## Conclusion
 
 So then the multiply scalar method is one of many tools in the toolbox that is the Vector3 class. This Vecotr3 class comes up when it comes to just about anything that has to do with a single point in space, so it is used for the value of the position attribute of the [Object3d class](/2018/04/23/threejs-object3d/) as well as with many other features in the over all library. With that said the multiply scalar method is a great tool for increasing the unit length of a vector without messing around with the direction of it.
-
