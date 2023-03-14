@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2023-03-14 18:52:29
-version: 1.28
+updated: 2023-03-14 19:01:01
+version: 1.29
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -291,6 +291,10 @@ loop();
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 ```
 
+## 4 - Animtion loops examples of Vector3.multiplyScalar
+
+Like always I will want to make at least a few animation loop examples for this post.
+
 ### 4.1 - Art Animaiton loop example for video one
 
 I think I have the basic idea of the multiply scalar method covered now and then some when it comes to some additional methods that will often come into play along with it. In this example I want to make a kind of art project type thing where the goal is to just make a collection of mesh objects that look interesting when they move around in the scene. As with by apply Euler example in this post I am once gain using that helper function that I worked out in that example, but now with some additional helper functions that can be used to create and update a standard kind of group object.
@@ -419,7 +423,7 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 ### 4.2 - Move many mesh objects along
 
-This is just a quick animation demo in which I move a bunch of mesh objects between a min and max unit length values. To do so I make use of the user data objects of the mesh objects which are a great way to store user defined data for various projects that work on top of threejs.
+This is just a quick animation demo in which I move a bunch of mesh objects between a min and max unit length values. To do so I make use of the user data objects of the mesh objects which are a great way to store user defined data for various projects that work on top of threejs. when creating the mesh objects I just append data for a min unit length, max unit length, and any additional data I might want to add such as values that can be used to set directions for vectors. In the update helper function I can then loop over all the mesh objects and then set the direction and unit length for each by making use of the set, apply Euler, and multiply scalar vector3 class methods.
 
 ```js
 //-------- ----------
