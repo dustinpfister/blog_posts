@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2023-03-15 10:46:30
-version: 1.28
+updated: 2023-03-15 11:08:09
+version: 1.29
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. There are a lot of other great methods that help with the process of creating what is often referred to as an alpha value as well \( a number between 0 and 1 \).
@@ -45,31 +45,34 @@ Maybe one of the methods that I find myself using the most often would be the de
 The use of radians comes up a whole lot and not just with javaScript related features but with various core javaScript features as well such as the Math cos and sin methods. With that said that is what I am using the methods for in this example actually by converting a given degree value to a radian value and then using that to get the desired x and y values that will be use to set the position of a mesh object.
 
 ```js
-(function () {
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // adding a mesh object
-    var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // SETTING POSITION OF THE MESH OBJECT
-    var radian = THREE.MathUtils.degToRad(20);
-    var x = Math.cos(radian) * 5,
-    z = Math.sin(radian) * 5;
-    mesh.position.set(x, 0, z);
-    camera.position.set(8, 8, 8);
-    camera.lookAt( 0, 0, 0 );
-    // render static scene
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// SETTING POSITION OF THE MESH OBJECT
+const radian = THREE.MathUtils.degToRad(20);
+const x = Math.cos(radian) * 5;
+const z = Math.sin(radian) * 5;
+mesh.position.set(x, 0, z);
+//-------- ----------
+// render static scene
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
 ```
 
 ## 2 - The clamp and rand float methods
@@ -77,37 +80,40 @@ The use of radians comes up a whole lot and not just with javaScript related fea
 One thing that seems to come up a lot with threejs, and many javaScript projects in general actually is the subject of [clamping and wrapping values](/2018/07/22/phaser-math-wrap-and-clamp/). With that said here in threejs there is a clamp method that will clamp a given value to a given range that is all given by way of function arguments. On top of that there is also the subject of [random numbers in javaScript](/2020/04/21/js-math-random/) also, and with that said there is also a number of methods in this math utils object that have to dow with that also. So in this example I am also using the rand float method of the math utils to get random numbers in a range, and then using the clamp method to make sure that when using these values to set the position of mesh objects they say in a given area.
 
 ```js
-(function () {
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // USING THE RANDFLOAT and CLAMP METHODs
-    var i = 0,
-    len = 30;
-    while(i < len){
-        var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-        scene.add(mesh);
-        var x = THREE.MathUtils.randFloat(-7, 7);
-        x = THREE.MathUtils.clamp(x, -4.5, 4.5);
-        var z = THREE.MathUtils.randFloat(-100, 100);
-        z = THREE.MathUtils.clamp(z, -4.5, 4.5);
-        mesh.position.set(x, 0, z)
-        i += 1;
-    }
-    camera.position.set(8, 8, 8);
-    camera.lookAt( 0, 0, 0 );
-    // render static scene
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+// USING THE RANDFLOAT and CLAMP METHODs
+let i = 0;
+const len = 30;
+while(i < len){
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    let x = THREE.MathUtils.randFloat(-7, 7);
+    x = THREE.MathUtils.clamp(x, -4.5, 4.5);
+    let z = THREE.MathUtils.randFloat(-100, 100);
+    z = THREE.MathUtils.clamp(z, -4.5, 4.5);
+    mesh.position.set(x, 0, z)
+    i += 1;
 }
-    ());
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
 ```
 
 ## 3 - Euclidean Modulo
@@ -117,37 +123,40 @@ As I have mentioned in the clamp example there is not just clamping, but also wr
 A long time ago I wrote a post on the subject of [what is wrong with the modulo operator](/2017/09/02/js-whats-wrong-with-modulo/) in core javaScript syntax. The main thing about modulo in javaScript is that it is not that there is something wrong with the modulo operator, it is just that it goes by a process that is a little difference from hat some might have grown accustom to in other programming languages. So then there is becoming aware of what Euclidean Modulo is compared to what is used in javaScript and how this is what most might expect modulo to work with negative numbers.
 
 ```js
-(function () {
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // USING THE RANDFLOAT and euclideanModulo METHODs
-    var i = 0,
-    len = 30;
-    while(i < len){
-        var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-        scene.add(mesh);
-        var x = THREE.MathUtils.randFloat(-7, 7);
-        x = -4.5 + THREE.MathUtils.euclideanModulo(x, 9);
-        var z = THREE.MathUtils.randFloat(-100, 100);
-        z = -4.5 + THREE.MathUtils.euclideanModulo(z, 9);
-        mesh.position.set(x, 0, z)
-        i += 1;
-    }
-    camera.position.set(8, 8, 8);
-    camera.lookAt( 0, 0, 0 );
-    // render static scene
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+// USING THE RANDFLOAT and euclideanModulo METHODs
+let i = 0;
+const len = 30;
+while(i < len){
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    let x = THREE.MathUtils.randFloat(-7, 7);
+    x = -4.5 + THREE.MathUtils.euclideanModulo(x, 9);
+    let z = THREE.MathUtils.randFloat(-100, 100);
+    z = -4.5 + THREE.MathUtils.euclideanModulo(z, 9);
+    mesh.position.set(x, 0, z)
+    i += 1;
 }
-    ());
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
 ```
 
 ## 4 - The seeded random method
@@ -155,34 +164,38 @@ A long time ago I wrote a post on the subject of [what is wrong with the modulo 
 There is using the plain old Math random method and also many other methods that are based off of it. However all of these options are not deterministic in nature, that is that when called they will not give the same numbers each time. In other words some times I might want to have some kind of solution where I have random numbers in a range, but each time I reload the page I get the same set of random numbers. So then they are not really random, but predictable, yet they look kind of random if that makes any sense.
 
 ```js
-(function () {
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // USING THE SEEDED RANDOM
-    var i = 0,
-    len = 5;
-    while(i < len){
-        var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-        scene.add(mesh);
-        var x = -5 + THREE.MathUtils.seededRandom() * 10;
-        var z = -5 + THREE.MathUtils.seededRandom() * 10;
-        mesh.position.set(x, 0, z);
-        i += 1;
-    }
-    camera.position.set(8, 8, 8);
-    camera.lookAt( 0, 0, 0 );
-    // render static scene
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+// USING THE SEEDED RANDOM
+let i = 0,
+len = 5;
+while(i < len){
+    let mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    let x = -5 + THREE.MathUtils.seededRandom() * 10;
+    let z = -5 + THREE.MathUtils.seededRandom() * 10;
+    mesh.position.set(x, 0, z);
+    i += 1;
 }
-    ());
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
 ```
 
 ## 5 - The smoothstep function
@@ -195,122 +208,119 @@ When this example is up and running group2 will just move at the fixed rate that
 
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    camera.position.set(8, 8, 8);
-    camera.lookAt( 0, 0, 0 );
-    scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //-------- ----------
-    // LIGHT
-    //-------- ----------
-    const dl = new THREE.DirectionalLight();
-    dl.position.set(1, 2.5, 5);
-    scene.add(dl);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // Wrap method based off of the method from Phaser3 
-    // ( https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js )
-    // * Added some code for case: Wrap(0, 0, 0)
-    // * Using Math.min and Math.max so that Wrap(value, 2, 10) is same as Wrap(value, 10, 2)
-    //
-    var wrap = function (value, a, b){
-        // get min and max this way
-        var max = Math.max(a, b);
-        var min = Math.min(a, b);
-        // return 0 for Wrap(value, 0, 0);
-        if(max === 0 && min === 0){
-             return 0;
-        }
-        var range = max - min;
-        return (min + ((((value - min) % range) + range) % range));
-    };
-    // UPDATE A GROUP USING THREE.mathUtils.smoothstep
-    const updateGroupSmooth = (group, secs) => {
-        group.children.forEach( (mesh) => {
-            const mud = mesh.userData;
-            // variable pixles per second using THREE.MathUtils.smoothstep and Vector3.distanceTo
-            const d = mesh.position.distanceTo( new THREE.Vector3(0, 0, mesh.position.z) );
-            const pps = THREE.MathUtils.smoothstep(d, -2.5, 2.5) * mud.maxPPS;
-            // stepping posiiton
-            mesh.position.x -= pps * secs;
-            // wrap
-            mesh.position.x = wrap(mesh.position.x, -5, 5);
-        });
-    };
-    // simple update group with fixed pixles per second for sake of something to compare to
-    const updateGroup = (group, secs) => {
-        group.children.forEach( (mesh) => {
-            const mud = mesh.userData;
-            // stepping posiiton
-            mesh.position.x -= mud.maxPPS * secs;
-            // wrap
-            mesh.position.x = wrap(mesh.position.x, -5, 5);
-        });
-    };
-    // create a group
-    const createGroup = (size, color) => {
-        size = size === undefined ? 1 : size;
-        color = color || new THREE.Color(1, 1, 1);
-        let i = 0;
-        const len = 5, group = new THREE.Group();
-        while(i < len){
-            const mesh = new THREE.Mesh(
-                new THREE.BoxGeometry(size, size, size),
-                new THREE.MeshPhongMaterial({
-                    color: color,
-                    transparent: true,
-                    opacity: 0.5
-                }));
-            mesh.userData.maxPPS = 1.25 + 1.5 * (i / len);
-            const x = 5;
-            const z = -4 + 10 * (i / len);
-            mesh.position.set(x, 0, z);
-            group.add(mesh);
-            i += 1;
-        }
-        return group;
-    };
-    //-------- ----------
-    // OBJECTS
-    //-------- ----------
-    scene.add( new THREE.GridHelper(10, 10) );
-    const group1 = createGroup( 1, new THREE.Color(0,1,0) );
-    scene.add(group1);
-    const group2 = createGroup( 0.75 );
-    scene.add(group2);
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    let frame = 0,
-    maxFrame = 90,
-    fps = 30,
-    lt = new Date();
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000,
-        per = frame / maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            updateGroupSmooth(group1, secs);
-            updateGroup(group2, secs);
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= maxFrame;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight();
+dl.position.set(1, 2.5, 5);
+scene.add(dl);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// Wrap method based off of the method from Phaser3 
+// ( https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js )
+// * Added some code for case: Wrap(0, 0, 0)
+// * Using Math.min and Math.max so that Wrap(value, 2, 10) is same as Wrap(value, 10, 2)
+//
+let wrap = function (value, a, b){
+    // get min and max this way
+    let max = Math.max(a, b);
+    let min = Math.min(a, b);
+    // return 0 for Wrap(value, 0, 0);
+    if(max === 0 && min === 0){
+         return 0;
+    }
+    let range = max - min;
+    return (min + ((((value - min) % range) + range) % range));
+};
+// UPDATE A GROUP USING THREE.mathUtils.smoothstep
+const updateGroupSmooth = (group, secs) => {
+    group.children.forEach( (mesh) => {
+        const mud = mesh.userData;
+        // variable pixles per second using THREE.MathUtils.smoothstep and Vector3.distanceTo
+        const d = mesh.position.distanceTo( new THREE.Vector3(0, 0, mesh.position.z) );
+        const pps = THREE.MathUtils.smoothstep(d, -2.5, 2.5) * mud.maxPPS;
+        // stepping posiiton
+        mesh.position.x -= pps * secs;
+        // wrap
+        mesh.position.x = wrap(mesh.position.x, -5, 5);
+    });
+};
+// simple update group with fixed pixles per second for sake of something to compare to
+const updateGroup = (group, secs) => {
+    group.children.forEach( (mesh) => {
+        const mud = mesh.userData;
+        // stepping posiiton
+        mesh.position.x -= mud.maxPPS * secs;
+        // wrap
+        mesh.position.x = wrap(mesh.position.x, -5, 5);
+    });
+};
+// create a group
+const createGroup = (size, color) => {
+    size = size === undefined ? 1 : size;
+    color = color || new THREE.Color(1, 1, 1);
+    let i = 0;
+    const len = 5, group = new THREE.Group();
+    while(i < len){
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(size, size, size),
+            new THREE.MeshPhongMaterial({
+                color: color,
+                transparent: true,
+                opacity: 0.5
+            }));
+        mesh.userData.maxPPS = 1.25 + 1.5 * (i / len);
+        const x = 5;
+        const z = -4 + 10 * (i / len);
+        mesh.position.set(x, 0, z);
+        group.add(mesh);
+        i += 1;
+    }
+    return group;
+};
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const group1 = createGroup( 1, new THREE.Color(0,1,0) );
+scene.add(group1);
+const group2 = createGroup( 0.75 );
+scene.add(group2);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0,0,0);
+let frame = 0,
+maxFrame = 90,
+fps = 30,
+lt = new Date();
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000,
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        updateGroupSmooth(group1, secs);
+        updateGroup(group2, secs);
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
