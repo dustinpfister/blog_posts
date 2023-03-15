@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2023-03-15 12:28:23
-version: 1.31
+updated: 2023-03-15 13:25:44
+version: 1.32
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. There are a lot of other great methods that help with the process of creating what is often referred to as an alpha value as well \( a number between 0 and 1 \).
@@ -39,7 +39,7 @@ The source code examples that I am writing about in this post [are up on Github]
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r135, and the last time I came around to do some editing of this post I made sure all the examples where still working okay with r140. Always check what version you are using when reproducing things on you end, as code breaking changes are made to threejs often.
+When I first wrote this post I was using r135, and the last time I came around to do some editing of this post I made sure all the examples where still working okay with r146. Always check what version you are using when reproducing things on you end, as code breaking changes are made to threejs often.
 
 ## 1 - Basic example of threejs math utilities using degree to radian method when setting the position of a mesh
 
