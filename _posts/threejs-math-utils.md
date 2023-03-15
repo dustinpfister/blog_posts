@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2023-03-15 11:52:29
-version: 1.30
+updated: 2023-03-15 12:28:23
+version: 1.31
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. There are a lot of other great methods that help with the process of creating what is often referred to as an alpha value as well \( a number between 0 and 1 \).
@@ -17,7 +17,7 @@ Speaking of filling in the gap when it comes to making my own math utility modul
 
 <!-- more -->
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/TQMbcHB89RY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video" src="https://www.youtube.com/embed/NPQCgyjuMVI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## The math utils method and what to know first
@@ -29,6 +29,9 @@ This is a post on some of the features of the Math utils object in the javaScrip
 Many libraries will have a clamp method that will clamp a value to the range of a given max and min value, and threejs is no exception with this as there is very much a clamp method in the math utils object. However there is not just clamping values but also wrapping values as well. That is that on top of having a method that will clamp a value between a min and max value in that it will just not let the value go lower or higher there would also be a wrap method that will wrap a value that goes beyond max back to the min value and vice versa. It would seem that there is no wrap method in the math utils object, thus I have to get this method by using or making something outside of the library. There is however an Euclidean Modulo method that is kind of similar to what I would expect, it is just that I also would like to have something that works a little differently when it comes to negative numbers.
 
 I have wrote a [blog post on this subject of wrapping Vectors and primitives in threejs](/2022/09/02/threejs-vector3-wrap/) in which I was able to find a decent wrap method, and I also made [one of my threejs project examples that is a wrap module](/2022/09/09/threejs-examples-wrap-module/) in which I am building on top of this kind of thing. In the past I also wrote a [post on the wrap method of the grame framework called phaser](/2018/07/22/phaser-math-wrap-and-clamp/) which has a wrap method that works great.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/TQMbcHB89RY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### Source code example in this post are on Github
 
