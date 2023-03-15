@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2023-03-14 19:01:01
-version: 1.29
+updated: 2023-03-15 09:11:48
+version: 1.30
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -424,6 +424,9 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 ### 4.2 - Move many mesh objects along
 
 This is just a quick animation demo in which I move a bunch of mesh objects between a min and max unit length values. To do so I make use of the user data objects of the mesh objects which are a great way to store user defined data for various projects that work on top of threejs. when creating the mesh objects I just append data for a min unit length, max unit length, and any additional data I might want to add such as values that can be used to set directions for vectors. In the update helper function I can then loop over all the mesh objects and then set the direction and unit length for each by making use of the set, apply Euler, and multiply scalar vector3 class methods.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/JBli1qv_mOI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 //-------- ----------
