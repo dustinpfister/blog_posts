@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2022-09-13 12:15:27
-version: 1.27
+updated: 2023-03-16 10:11:24
+version: 1.28
 ---
 
-I have wrote a number of posts on the various helpers in three.js that can be used to get a better idea of what the visual state of things is with something in a three.js project such as with the arrow helper for example. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
+I have wrote a number of posts on the various helpers in threejs that can be used to get a better idea of what the visual state of things is with something in a threejs project such as with the [arrow helper](/2018/11/10/threejs-arrow-helper/) for example. However thus far I have not wrote one on the [gird helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
 
 There are a number of other things that can be done in place of using the grid helper, such as having one or more objects in the scene that can replace what the gird helper is used for, as well as be a part of the scene itself. One of the typical things to do with that would be to use the [plane geometry constructor](/2019/06/05/threejs-plane/) to create a crude yet effective kind of ground mesh. When it comes to that kind of geometry there are ways to have an array of materials, and then also work out some kind of pattern when it comes to using what material with what gird location. There is also just making a single texture for the surface of the plane geometry as well, using another option such as the box geometry, or going so far as making some kind of custom geometry.
 
@@ -17,12 +17,12 @@ However when it comes to just having a grid in the scene to just make sure that 
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/ac8r80MsvO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The Grid helper in threejs and what to know first
 
 This is then a post on the Grid helper one of many helper objects in the javaScript library called threejs. The gird helper is typically added directly to a scene object as a way to just know what the current state of affairs are when it comes to the center location of the scene, and where certain objects are relative to each other. However the Grid helper can be added to any object based off of the object3d class beyond just that of the scene object. Speaking of the object3d class I assume that you have at least a little knowledge of that and of course the basics of threejs as well as javaScript in general. I will be writing about a few things you show know before hand here in this section but will not be getting into to much detail as I do nt want to go to far of topic.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/ac8r80MsvO8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ### Read up more on Object3d class in general
 
