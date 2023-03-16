@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2023-03-16 10:41:42
-version: 1.30
+updated: 2023-03-16 10:44:56
+version: 1.31
 ---
 
 I have wrote a number of posts on the various helpers in threejs that can be used to get a better idea of what the visual state of things is with something in a threejs project such as with the [arrow helper](/2018/11/10/threejs-arrow-helper/) for example. However thus far I have not wrote one on the [grid helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -136,11 +136,13 @@ renderer.render(scene, camera);
 
 A lot of other things can be changed by way of just changing options for the material of the helper. For example there is setting the transparent option to true, and the adjusting the opacity. However because it is an instance of the line segments material one is limited to the options of that material, and the underlying base material class.
 
-## 2 - Moving a camera around a scene animation example
+## 2 - Animation loop examples
 
-I am thinking that I might want to have at least one advanced example of this grid helper that has to do with a basic animation loop of some kind. With this example I just made a slight revision of an example that I made for [my post on camera movement](/2019/12/17/threejs-camera-move/) as a way to have this kind of example here.
+I should make at least one if not more animation loop demos that make use of the grid helper.
 
-This example once again has a scene, and a grid helper attached to the scene. On top of that though I also added a mesh object and a whole lot more logic that has to do with moving a camerae around in the scene.
+### 2.1 - Moving a camera around a scene animation example
+
+I am thinking that I might want to have at least one advanced example of this grid helper that has to do with a basic animation loop of some kind. With this example I just made a slight revision of an example that I made for [my post on camera movement](/2019/12/17/threejs-camera-move/) as a way to have this kind of example here. This example once again has a scene, and a grid helper attached to the scene. On top of that though I also added a mesh object and a whole lot more logic that has to do with moving a camerae around in the scene.
 
 ```js
 // SCENE, RENDERER
