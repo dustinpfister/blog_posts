@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2023-03-16 10:44:56
-version: 1.31
+updated: 2023-03-16 11:06:37
+version: 1.32
 ---
 
 I have wrote a number of posts on the various helpers in threejs that can be used to get a better idea of what the visual state of things is with something in a threejs project such as with the [arrow helper](/2018/11/10/threejs-arrow-helper/) for example. However thus far I have not wrote one on the [grid helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -232,6 +232,61 @@ const loop = function () {
         renderer.render(scene, camera);
         frame += fps_movement * secs;
         frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 2.1 - Opacity of the material changed over time
+
+The material that is used for the gird helper is an instance of the line segments material. There are a lot of limitations for this kind of material compared to many of the mesh materials. However one feature that does work is opacity.
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// ADD A MESH
+// ---------- ---------- ----------
+const helper = new THREE.GridHelper(10, 10, 0xff0000, 0x00aa00);
+helper.material.transparent = true;
+scene.add(helper);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0,0,0);
+const WAVE_COUNT = 12;
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = Math.sin( Math.PI * (a1 * WAVE_COUNT % 1) );
+    helper.material.opacity = a2;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
         lt = now;
     }
 };
