@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2023-03-16 10:34:58
-version: 1.29
+updated: 2023-03-16 10:41:42
+version: 1.30
 ---
 
 I have wrote a number of posts on the various helpers in threejs that can be used to get a better idea of what the visual state of things is with something in a threejs project such as with the [arrow helper](/2018/11/10/threejs-arrow-helper/) for example. However thus far I have not wrote one on the [grid helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -103,7 +103,7 @@ renderer.render(scene, camera);
 
 ### 1.3 - Setting the line width of a grid helper
 
-Like many of the helpers in threejs the grid helper makes use of the line segments material which has a line width property. However setting any width higher than that of 1 might not work for all platforms. From my experience setting a line width higher than one works for me in Raspberry PI OS for example, but not in windows 10. This is then one reason why it might be a good idea to look into alternative options for this kind of thing, such as making use of a plane geometry, and a mesh object for example.
+Like many of the helpers in threejs the grid helper makes use of the line segments material which has a line width property. However setting any width higher than that of 1 might not work for all platforms. From my experience setting a line width higher than one works for me in Raspberry PI OS for example, but not in windows 10. This is then one reason why it might be a good idea to look into alternative options for this kind of thing, such as making use of a plane geometry and a mesh object for example.
 
 ```js
 //-------- ----------
@@ -133,6 +133,8 @@ camera.position.set(8, 5, 8);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+A lot of other things can be changed by way of just changing options for the material of the helper. For example there is setting the transparent option to true, and the adjusting the opacity. However because it is an instance of the line segments material one is limited to the options of that material, and the underlying base material class.
 
 ## 2 - Moving a camera around a scene animation example
 
