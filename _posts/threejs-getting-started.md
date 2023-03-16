@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2023-03-10 09:13:41
-version: 1.44
+updated: 2023-03-16 10:58:23
+version: 1.45
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
@@ -224,53 +224,52 @@ For a basic animation loop example I then took the source code for the general o
 For this animation loop example I have two values for FPS, one of which will be used to set the target rate at which the update method will be called. The other FPS rate is used to update the rate at which a frame value will be stepped that will be used to update the state of things in the update method. This allows for me to set the rate at which the update method is called at a low rate as only about 12 frames per second, while updating the frame rate that is used to update state at a rate that is say 30 frames per second. For certian projects in which I am doing something in real time in a web page I might want to make a user interface that will allow the user to adjust the rate at which updating happens to allow them to set how much CPU overhead they would like to use or not.
 
 ```js
-(function () {
-    // ---------- ---------- ----------
-    // SCENE, CAMERA, and RENDERER
-    // ---------- ---------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
-    camera.position.set(250, 250, 250);
-    camera.lookAt(0,0,0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    // ---------- ---------- ----------
-    // ADD A MESH
-    // ---------- ---------- ----------
-    let mesh = new THREE.Mesh(new THREE.BoxGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // ---------- ----------
-    // ANIMATION LOOP
-    // ---------- ----------
-    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 120;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const update = function(frame, frameMax){
-        const degree = 360 * (frame / frameMax);
-        mesh.rotation.x = THREE.MathUtils.degToRad(degree);
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+camera.position.set(250, 250, 250);
+camera.lookAt(0,0,0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// ADD A MESH
+// ---------- ---------- ----------
+const mesh = new THREE.Mesh(new THREE.BoxGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 120;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const degree = 360 * a1;
+    mesh.rotation.x = THREE.MathUtils.degToRad(degree);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion, and what to check out next
