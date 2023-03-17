@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2023-03-17 11:48:11
-version: 1.38
+updated: 2023-03-17 12:34:52
+version: 1.39
 ---
 
 When working with a [Mesh Object](/2018/05/04/threejs-mesh/) in [threejs](https://threejs.org/) a single instance of a material can be passed to the mesh constructor as the second argument, after the geometry. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. Often just the use of one material is fine as the state of the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) of the [buffered geometry instance](/2021/04/22/threejs-buffer-geometry/) is in a state in which it will work well with the textures that I am using with one or more of the material map options. However another option might be to not have just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -557,6 +557,99 @@ const update = function(frame, frameMax){
         Math.PI * 2 * 1 * alpha, 
         Math.PI * 2 * 8 * alpha, 0);
     sphere.rotation.y = Math.PI * 2 * alpha;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 3.2 - Material options loop example ( r125+ )
+
+I wanted to make a new video for this post as the first one that i made I think is to complex and it does not do the best job of showing what the deal is with matreial index values.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 0.9);
+dl.position.set(1, 2, 3);
+scene.add(dl);
+const al = new THREE.AmbientLight(0xffffff, 0.1);
+scene.add(al);
+// ---------- ----------
+// MATERIALS
+// ---------- ----------
+const opt_mat_all = {
+    transparent: true,
+    opacity: 0.5,
+    side: THREE.DoubleSide,
+    depthFunc: THREE.AlwaysDepth
+};
+const createMatOpt = (opt) => {
+    return Object.assign({}, opt_mat_all, opt);
+};
+const materials = [
+    new THREE.MeshNormalMaterial(createMatOpt({
+    })),
+    new THREE.MeshBasicMaterial(createMatOpt({
+    })),
+    new THREE.MeshStandardMaterial(createMatOpt({
+        color: 0xff0000
+    })),
+    new THREE.MeshPhongMaterial( createMatOpt({
+        color: 0x00ff00, shininess: 120, specular: 0xffffff
+    })),
+    new THREE.MeshLambertMaterial( createMatOpt({
+        color: 0x00ffff
+    })),
+    new THREE.MeshBasicMaterial( createMatOpt({
+        wireframe: true
+    }))
+];
+// ---------- ----------
+// GEOMETRY/OBJECTS
+// ---------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1, 8, 8);
+const mesh = new THREE.Mesh(geometry, materials);
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = a1 * 4 % 1;
+    mesh.rotation.x = THREE.MathUtils.degToRad(360 * a2);
+    mesh.rotation.y = THREE.MathUtils.degToRad(720 * a2);
 };
 // loop
 const loop = () => {
