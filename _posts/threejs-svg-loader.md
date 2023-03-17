@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2022-09-19 11:43:09
-version: 1.13
+updated: 2023-03-17 09:27:48
+version: 1.14
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -27,6 +27,10 @@ Although it might be best to still use some kind of image editor to create SVG G
 ### More than one file to use beyond just that of threejs alone
 
 In these examples I am using more than one extral file beyond just that of the core threejs library. For one thing the SVG loader itself is not baked into the core of the threejs library, but rather it is an additional optional loader that can be [found in the examples folder of the threejs github repository](https://github.com/mrdoob/three.js/blob/r140/examples/js/loaders/SVGLoader.js). So I am linking to the threejs library and the SVGLoader.js file as well just when it comes to official code from the repo on Github. On top of that I am also linking to my own javaScript files on an example by example basis, and of course I am also loading one or more SVG files as well.
+
+## There are also my posts on my SVG tools, and SVG movement threejs project examples
+
+I have made a number of threejs project example posts and two projects that are relatavent to using the SVG loader are my [SVG movement](/2022/09/23/threejs-examples-svg-movement/), and my [SVG tools](/2023/03/17/threejs-examples-svg-tools/) projects. The SVG movement has to do with using svg files as a way to define paths in space that are used to move objects around. The SVG tools project is a more generic module that has to do with using SVG in general to create Logos and such.
 
 ### Source code and SVG assets are up on my Github
 
