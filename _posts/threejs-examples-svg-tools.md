@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1032
-updated: 2023-03-17 09:05:20
-version: 1.1
+updated: 2023-03-17 09:13:09
+version: 1.2
 ---
 
 I made a [threejs project example a while back that had to do with using svg as a way to define curves](/2022/09/23/threejs-examples-svg-movement/) in 3d space, however it would seem that I jumped the gun and did not just simply make a standard set of tools that builds on top of threejs and the SVGLoader. So with that said this week one thing I worked on was a new threejs project example that is just that a standard set of tools to use when working with SVG files. There is just dirrectly working with the SVG loader and threejs itself of course, but there are a lot of little things that come up as well as things that need to happen with many other threejs fetures that I would say valadates a need for an addtional abstraction of some things if I want to keep my main javascript code clean and also not repeat code from one project to the next.
@@ -157,6 +157,8 @@ As of R0 I just have an IIFE form of this module and that is it as I am putting 
 
 ### 1.1 - Getting started demo with default options
 
+For this first demo I just wanted to make sure that things work okat with just one SVG file, and also that things looks okay with the dwefault hard coded options.
+
 ```js
 // ---------- ----------
 // SCENE, CAMERA, RENDERER
@@ -183,6 +185,8 @@ SVGTools.load({
 ```
 
 ### 1.2 - Custom Processor function
+
+When it comes to using this in pne project from the next there is no question that I am going to want to write custom processors. For the mosyt part the built in default processor just serves as an example of how to get strated with one of these. In future revisions of this module there will likley be maybe more that one starting point for built in processors but again they will just be slighlty differed starting points for making a custom processor when and where needed which will likley be often.
 
 ```js
 // ---------- ----------
@@ -269,5 +273,11 @@ SVGTools.load({
 ```
 
 ## Conclusion
+
+So far the SVG tools module seems to be working okay just fine however I would say that there is a whole lot of work to be done when it comes to what is on the todo lost for future revisions. For one thing there is having a custom UV generator for the SVG tools module which just like that of the processror is yet another thing where there would be a built in one, but also will likley just serve as a getting started example of that sprt of thing as well.
+
+I would also like to expand on the collection of methods when it comes to the api to work with when writing processor funcitons. I might need to go as far as having a class for this, but in any case I can see that there are a few more things that I am going to want to bake into that.
+
+
 
 
