@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2023-03-17 12:42:45
-version: 1.40
+updated: 2023-03-17 12:53:09
+version: 1.41
 ---
 
 When working with a [Mesh Object](/2018/05/04/threejs-mesh/) in [threejs](https://threejs.org/) a single instance of a material can be passed to the mesh constructor as the second argument, after the geometry. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. Often just the use of one material is fine as the state of the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) of the [buffered geometry instance](/2021/04/22/threejs-buffer-geometry/) is in a state in which it will work well with the textures that I am using with one or more of the material map options. However another option might be to not have just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -578,7 +578,9 @@ loop();
 
 ### 3.2 - Material options loop example ( r125+ )
 
-I wanted to make a new video for this post as the first one that I made I think is to complex, and it does not do the best job of showing what the deal is with material index values in the process. So for this animation loop example I just made a single cube that rotates around and I have a collection of six materials for the cube. In the first loop example I also did the same, however I used the Phong material for each of the side where with this example I am using all kinds of differing material options. Also I am doing things a little differently when it comes to the options objects that I am making for each of the materials as well. There is having a single common object where I set common options for all materials, and then there is having another option object on top of that which can contain options that might only work for a single material.
+I wanted to make a new video for this post as the first one that I made I think is to complex, and it does not do the best job of showing what the deal is with material index values in the process. So for this animation loop example I just made a single cube that rotates around and I have a collection of six materials for the cube. In the first loop example I also did the same, however I used the Phong material for each of the side where with this example I am using all kinds of differing material options. Also I am doing things a little differently when it comes to the options objects that I am making for each of the materials as well. There is having a single common object where I set common options for all materials, and then there is having another option object on top of that which can contain options that might only work for a single type of material such as shininess in the phong material.
+
+One cool note worthy thing about this that has to do with the base matreial class is the [depth funciton](https://threejs.org/docs/#api/en/materials/Material.depthFunc) that I am using here for the common options object. When it comes to the common object I am making all matreials transparent, and setting the opacity to 0.5. However when doing so I run into problems when it comes to faces behind another face not rendering. One way to adress this is to take a look at the depth function option of the base matreial class. There are a few options when it comes to the value to set for this base material class option and have found that the [AlwaysDepth constant](https://threejs.org/docs/#api/en/constants/Materials) gives the end result I was looking for with this.
 
 ```js
 // ---------- ----------
