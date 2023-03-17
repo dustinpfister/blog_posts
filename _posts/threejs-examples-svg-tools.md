@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1032
-updated: 2023-03-17 09:13:09
-version: 1.2
+updated: 2023-03-17 09:15:43
+version: 1.3
 ---
 
 I made a [threejs project example a while back that had to do with using svg as a way to define curves](/2022/09/23/threejs-examples-svg-movement/) in 3d space, however it would seem that I jumped the gun and did not just simply make a standard set of tools that builds on top of threejs and the SVGLoader. So with that said this week one thing I worked on was a new threejs project example that is just that a standard set of tools to use when working with SVG files. There is just dirrectly working with the SVG loader and threejs itself of course, but there are a lot of little things that come up as well as things that need to happen with many other threejs fetures that I would say valadates a need for an addtional abstraction of some things if I want to keep my main javascript code clean and also not repeat code from one project to the next.
@@ -15,11 +15,11 @@ I made a [threejs project example a while back that had to do with using svg as 
 
 ## The SVG tools module, and what to know first
 
-There is a whole lot that one should be aware of before hand with this as this is a [threejs project example](/2021/02/19/threejs-examples) post, and not a getting started type post on threejs. So I assume that you know at least a thing or two about the basics of getting started with a threejs project, and also have at least some background with client side web devlopemen in general. if not sorry getting into all of that is outside the scope of this post. I will however as always write about a few things in this opening section and link to other resources as needed.
+There is a whole lot that one should be aware of before hand with this as this is a [threejs project example](/2021/02/19/threejs-examples) post, and not a [getting started type post](/2018/04/04/threejs-getting-started/) on threejs. So I assume that you know at least a thing or two about the basics of getting started with a threejs project, and also have at least some background with client side web devlopemen in general. if not sorry getting into all of that is outside the scope of this post. I will however as always write about a few things in this opening section and link to other resources as needed.
 
 ### Read up more on the SVG loader in general
 
-The source code examples that I am writing about in this post do not just run on top of threejs, but also the SVG loader as well. The SVG loader is not baked into the core of the threejs librray itself but must be added along with the librray. This SVG loader can be found in the examples folder of the threejs reposatory and as such it is important to make sure that you are using the state of the SVG loader that coresponds to the revision number of threejs that you are using.
+The source code examples that I am writing about in this post do not just run on top of threejs, but also the [SVG loader as well](/2022/09/16/threejs-svg-loader/). The SVG loader is not baked into the core of the threejs librray itself but must be added along with the librray. This SVG loader can be found in the examples folder of the threejs reposatory and as such it is important to make sure that you are using the state of the SVG loader that coresponds to the revision number of threejs that you are using.
 
 ### There is also knowing how to create SVG files to begin with
 
