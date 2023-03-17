@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2023-03-17 12:53:09
-version: 1.41
+updated: 2023-03-17 13:44:54
+version: 1.42
 ---
 
 When working with a [Mesh Object](/2018/05/04/threejs-mesh/) in [threejs](https://threejs.org/) a single instance of a material can be passed to the mesh constructor as the second argument, after the geometry. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. Often just the use of one material is fine as the state of the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) of the [buffered geometry instance](/2021/04/22/threejs-buffer-geometry/) is in a state in which it will work well with the textures that I am using with one or more of the material map options. However another option might be to not have just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
@@ -15,7 +15,7 @@ When working with an array of materials there is a property of a [face3](/2018/0
 
 <!-- more -->
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/EH9SqTWA51E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video" src="https://www.youtube.com/embed/RLu9zFnO5FY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## What to know before getting into Mesh Material index values
@@ -241,6 +241,8 @@ When calling the app group method the first argument is a start vertex index, fo
 ### 3.1 - Art example one
 
 This is the example that I have together for the first video that I have made for this blog post. For this example I am have a collection of materials for a cube in which I am making a data texture for each face of the cube. On top of that I also worked out a crude yet effective system for making images with materials in a plane geometry also.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/EH9SqTWA51E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ```js
 //-------- ----------
