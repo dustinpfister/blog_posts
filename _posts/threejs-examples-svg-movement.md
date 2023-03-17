@@ -2,11 +2,11 @@
 title: Using SVG for movement of objects threejs example module
 date: 2022-09-23 10:40:00
 tags: [three.js]
-layout: post
+layout: post/2023/03/17/threejs-examples-svg-tools/
 categories: three.js
 id: 1006
-updated: 2022-09-23 15:18:43
-version: 1.7
+updated: 2023-03-17 09:27:48
+version: 1.8
 ---
 
 For today's new [threejs project](/2021/02/19/threejs-examples/) example post I started a new project this week in which I am looking into using SVG as a way to create paths that can then be used to define the movement and rotation of objects in a scene. The idea cam to be while working on my blog post for the SVG loader last week where I hit me that SVG is a pretty cool standard for creating paths. There is just one little problem which is that SVG is very much 2d, so to create a kind of 3d path with SVG I will need to think in terms of two paths for each 3d path. One path that I will be using to define motion for x and z, and then another in which I just use the y value for y in the 3d path.
@@ -26,6 +26,10 @@ The SVG loader is an example of an asset loader that is not built into the core 
 ### Speaking about SVG there is learning and or refreshing with that
 
 If you have not yet looked into what the deal is with SVG then now would be a good time to [read my post on SVG in general](/2019/02/11/js-javascript-svg), or better yet check out the Mozilla docs. There is a lot to take in which it comes to SVG so when it comes to looking at the Mozilla docs it is mainly the [path element tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) that you would want to read about that is most relevant to this javaScript module.
+
+### I now have a general SVG tools threejs example as well
+
+This threejs module has to do with using SVG in a very weird way to which there may be better alternatives. It is just one of my many experimental ideas in which I thought that it would be cool to use SVG in a way to define curves in space because I could just view the SVG in a web browser or any kind of image editor that supports SVG, but also use paths define in the SVG to create 3D curves in space that can then be used to move objects. However when it comes to using SVG in a way that is a little more typical I know [have an SVG tools threejs project example](/2023/03/17/threejs-examples-svg-tools/) for that sort of thing.
 
 ### Source code is up on Github
 
