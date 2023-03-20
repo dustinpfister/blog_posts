@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2023-03-20 07:23:23
-version: 1.47
+updated: 2023-03-20 07:32:07
+version: 1.48
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources. This is not the case when using the [basic material](/2018/05/05/threejs-basic-material/) that is just going to show up as a solid blob of color, or [standard material](/2021/04/27/threejs-standard-material/) which will require a [light source](/2022/02/25/threejs-light/). However there are still a few other options the task of having a simple place holder material such as the [depth material](/2021/05/04/threejs-depth-material/).
@@ -26,11 +26,13 @@ In this post I am going over a few javaScript source code examples that make use
 
 ### Read up more on what the normal attribute of a buffer geometry is
 
-It might be a good idea to take some time to gain a [deeper understanding of the normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) of a buffer geometry instance in general. I have wrote a post on the topic of the normal attribute alone that might be worth reading as one way to go about doing so. Crossing that bridge is something that one will just need to do sooner or later when it comes to making custom geometry, also when it comes to sticking to the built in geometry constructors there are some visitations in which I might want to flip the normals, or make use of the side property of a material to get a desired outcome.
+It might be a good idea to take some time to gain a [deeper understanding of the normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) of a buffer geometry instance in general. I have wrote a post on the topic of the normal attribute alone that might be worth reading as one way to go about doing so. Crossing that bridge is something that one will just need to do sooner or later when it comes to making custom geometry, also when it comes to sticking to the built in geometry constructors there are some situations in which I might want to flip the normals, or make use of the side property of a material to get a desired outcome.
 
 ### There are other attributes to be aware of beyond just normals
 
-So there is the normal attribute of a buffer geometry instance, but then there are other major attributes of a buffer geometry such as the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [uv attributes](/2021/06/09/threejs-buffer-geometry-attributes-uv/) along with a number of other attributes that might come into play also. There is also a wide range of additional prototype methods and properties of a [buffer geometry instance](/2021/04/22/threejs-buffer-geometry/) that are also worth looking into more at some point sooner or later.
+So there is the normal attribute of a buffer geometry instance, but then there are other major attributes of a buffer geometry such as the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [uv attributes](/2021/06/09/threejs-buffer-geometry-attributes-uv/) along with a number of other attributes that might come into play also. The position, normal, and uv attributes are the core attributes that just about nay geometry should have, at least of the intention is to use it with mesh objects at least. There are also additional attributes that have to do with using [vertex colors](/2023/01/20/threejs-buffer-geometry-attributes-color/), ones that have to do with animation such as [morph attributes](/2023/02/03/threejs-buffer-geometry-morph-attributes/), weights, ect. Also there is getting into making your own custom attributes when doing so is called for.
+
+There is also a wide range of additional prototype methods and properties of a [buffer geometry instance](/2021/04/22/threejs-buffer-geometry/) that are also worth looking into more at some point sooner or later. So on top of the core set of attributes there are also a lot of prototype methods to be aware of.
 
 ### Computing the vertex normals attribute
 
