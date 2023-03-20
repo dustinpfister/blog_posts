@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2023-03-20 07:36:38
-version: 1.49
+updated: 2023-03-20 12:17:37
+version: 1.50
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources. This is not the case when using the [basic material](/2018/05/05/threejs-basic-material/) that is just going to show up as a solid blob of color, or [standard material](/2021/04/27/threejs-standard-material/) which will require a [light source](/2022/02/25/threejs-light/). However there are still a few other options the task of having a simple place holder material such as the [depth material](/2021/05/04/threejs-depth-material/).
@@ -189,6 +189,9 @@ loop();
 ## 4 - The side property of materials and normals
 
 One thing to be aware of when it comes to normals and a material such as the normal material is the side property of a material. When it comes to the side property the default value is the value of the THREE.FrontSide constant in the threejs library. That is that it will only be the front side of each face that will be renderered. There is setting the side property to that of something like THREE.BackSide, or THREE.DoubleSide. However in any case the question might come up as to how to go about defining what side is the front side to begin with. Well the way to do so will be to change the values of the of the normal attribute which would be the alternative to changing what the value of the side property is.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/u67-NFiWfcg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 //-------- ----------
