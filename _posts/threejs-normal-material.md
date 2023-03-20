@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2023-03-20 07:12:25
-version: 1.45
+updated: 2023-03-20 07:15:26
+version: 1.46
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources when using the basic or standard materials for exmaple. However there are still a few other options for that sort of task such as the [depth material](/2021/05/04/threejs-depth-material/).
@@ -67,30 +67,28 @@ After I have my core set of objects set up  I will want to create a mesh object 
 After I have my geometry and pass it as the first argument to the mesh constructor, I then just need a material to use with the geometry of the mesh object, and for this I am of course using the Normal Material. For this example I am just calling the THREE.MeshNormalMaterial constructor by itself without passing any options to it. I then pass this normal material instance as the second argument for the mesh object.
 
 ```js
-(function(){
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-    camera.position.set(2, 3, 2);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // BOX MESH USING THE NORMAL MATERIAL
-    //-------- ----------
-    const box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshNormalMaterial());
-    scene.add(box);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// BOX MESH USING THE NORMAL MATERIAL
+//-------- ----------
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 3, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 So now that I have my scene object, camera, renderer, and mesh object all set up just the way I like it now I just need to call the render method off of the renderer object. When doing so I pass the scene object as the first argument and the camera as the second argument.
@@ -100,35 +98,33 @@ So now that I have my scene object, camera, renderer, and mesh object all set up
 The normals are set up the way that they should be typically when using a built in geometry constructor such as the Box Geometry constructor that I am using in these examples. However when it comes to debugging problems with the normal attribute of a geometry there is knowing how it should look. To gain a sense of what this looks like there is taking a moment to just mutate a few values in the normal attribute of the geometry, just for the sake of seeing what happens when the normals are not in a state in which they should be in.
 
 ```js
-(function(){
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-    camera.position.set(1.25, 0.85, 0.75);
-    camera.lookAt(0, -0.125, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // MESH - using mutated normals attribute and normal material
-    //-------- ----------
-    const geo = new THREE.BoxGeometry(1, 1, 1),
-    normal = geo.getAttribute('normal');
-    normal.array[0] = -1;
-    normal.array[1] = -1;
-    normal.array[2] = -1;
-    const box = new THREE.Mesh(
-        geo,
-        new THREE.MeshNormalMaterial());
-    scene.add(box);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32/ 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH - using mutated normals attribute and normal material
+//-------- ----------
+const geo = new THREE.BoxGeometry(1, 1, 1),
+normal = geo.getAttribute('normal');
+normal.array[0] = -1;
+normal.array[1] = -1;
+normal.array[2] = -1;
+const box = new THREE.Mesh(
+    geo,
+    new THREE.MeshNormalMaterial());
+scene.add(box);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.25, 0.85, 0.75);
+camera.lookAt(0, -0.125, 0);
+renderer.render(scene, camera);
 ```
 
 Although this example might help to show what happens when the normals are not set in a way in which they should be maybe, using the normal material alone might not be the best way to debug problems with the state of the normal material. There are a few additional tools in the core of the threejs library as well as some additional files in the repository that can be used as a way to really get to the bottom of what is going on with the state of this attribute of a buffer geometry instance.
@@ -138,61 +134,59 @@ Although this example might help to show what happens when the normals are not s
 If I need to debug something that is going on with a normals attribute the use of the normal material is a good start, but in order to really get a good visual idea of what is going on I will want to use the THREE.VertexNormalsHelper. This helper is not baked into the core of the threejs library and as such must be added to a project example by way of an additional file that can be found in the examples folder of the threejs Github repository. In this example I am also making use of the [orbit controls](/2018/04/13/threejs-orbit-controls/) which is another such external file that must be added to a project on top of that of threejs by itself.
 
 ```js
-(function(){
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-    camera.position.set(2, 1, -3);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshNormalMaterial());
-    scene.add(box);
-    //-------- ----------
-    // USING THE THREE.VertexNormalsHelper METHOD
-    //-------- ----------
-    const helper = new THREE.VertexNormalsHelper( box, 2, 0x00ff00, 1 );
-    scene.add(helper);
-    //-------- ----------
-    // UISNG ORBIT CONTROLS
-    //-------- ----------
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    let lt = new Date(),
-    state = {
-        frame: 0,
-        maxFrame: 90,
-        per: 0,
-        bias: 0
-    };
-    const update = function (secs, per, bias, state) {
-        helper.update();
-    };
-    const loop = function () {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        state.per = state.frame / state.maxFrame;
-        state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
-        update(secs, state.per, state.bias, state);
-        renderer.render(scene, camera);
-        state.frame += 4 * secs;
-        state.frame %= state.maxFrame;
-        lt = now;
-    };
-    loop();
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(box);
+//-------- ----------
+// USING THE THREE.VertexNormalsHelper METHOD
+//-------- ----------
+const helper = new THREE.VertexNormalsHelper( box, 2, 0x00ff00, 1 );
+scene.add(helper);
+//-------- ----------
+// UISNG ORBIT CONTROLS
+//-------- ----------
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(2, 1, -3);
+camera.lookAt(0, 0, 0);
+let lt = new Date(),
+state = {
+    frame: 0,
+    maxFrame: 90,
+    per: 0,
+    bias: 0
+};
+const update = function (secs, per, bias, state) {
+    helper.update();
+};
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    state.per = state.frame / state.maxFrame;
+    state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
+    update(secs, state.per, state.bias, state);
+    renderer.render(scene, camera);
+    state.frame += 4 * secs;
+    state.frame %= state.maxFrame;
+    lt = now;
+};
+loop();
 ```
 
 ## 4 - The side property of materials and normals
@@ -200,69 +194,67 @@ If I need to debug something that is going on with a normals attribute the use o
 One thing to be aware of when it comes to normals and a material such as the normal material is the side property of a material. When it comes to the side property the default value is the value of the THREE.FrontSide constant in the threejs library. That is that it will only be the front side of each face that will be renderered. There is setting the side property to that of something like THREE.BackSide, or THREE.DoubleSide. However in any case the question might come up as to how to go about defining what side is the front side to begin with. Well the way to do so will be to change the values of the of the normal attribute which would be the alternative to changing what the value of the side property is.
 
 ```js
-(function(){
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-    camera.position.set(1, 1, 1);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const box = new THREE.Mesh(
-        new THREE.BoxGeometry(2, 2, 2),
-        new THREE.MeshNormalMaterial({
-            side: THREE.BackSide
-        }));
-    scene.add(box);
-    //-------- ----------
-    // USING THE THREE.VertexNormalsHelper METHOD
-    //-------- ----------
-    const helper = new THREE.VertexNormalsHelper( box, 0.75, 0x00ff00, 1 );
-    helper.material.linewidth = 3;
-    scene.add(helper);
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    let lt = new Date();
-    const state = {
-        frame: 0,
-        maxFrame: 90,
-        per: 0,
-        bias: 0,
-        camUnitLength: 5,
-        camDir: new THREE.Vector3(0.60, 0.75, 1.5).normalize(),
-        camVec: new THREE.Vector3(),
-        camLook: new THREE.Vector3(0, 0, -0.1)
-    };
-    const update = function (secs, per, bias, state) {
-        helper.update();
-        state.camUnitLength = 5 - 4.9 * bias;
-        state.camVec.copy(state.camDir).multiplyScalar(state.camUnitLength);
-        camera.position.copy(state.camVec);
-        const vd = new THREE.Vector3(0,0,0);
-        camera.lookAt(state.camLook);
-    };
-    const loop = function () {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        state.per = state.frame / state.maxFrame;
-        state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
-        update(secs, state.per, state.bias, state)
-        renderer.render(scene, camera);
-        state.frame += 30 * secs;
-        state.frame %= state.maxFrame;
-        lt = now;
-    };
-    loop();
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 2, 2),
+    new THREE.MeshNormalMaterial({
+        side: THREE.BackSide
+    }));
+scene.add(box);
+//-------- ----------
+// USING THE THREE.VertexNormalsHelper METHOD
+//-------- ----------
+const helper = new THREE.VertexNormalsHelper( box, 0.75, 0x00ff00, 1 );
+helper.material.linewidth = 3;
+scene.add(helper);
+//-------- ----------
+// LOOP
+//-------- ----------
+let lt = new Date();
+const state = {
+    frame: 0,
+    maxFrame: 90,
+    per: 0,
+    bias: 0,
+    camUnitLength: 5,
+    camDir: new THREE.Vector3(0.60, 0.75, 1.5).normalize(),
+    camVec: new THREE.Vector3(),
+    camLook: new THREE.Vector3(0, 0, -0.1)
+};
+const update = function (secs, per, bias, state) {
+    helper.update();
+    state.camUnitLength = 5 - 4.9 * bias;
+    state.camVec.copy(state.camDir).multiplyScalar(state.camUnitLength);
+    camera.position.copy(state.camVec);
+    const vd = new THREE.Vector3(0,0,0);
+    camera.lookAt(state.camLook);
+};
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    state.per = state.frame / state.maxFrame;
+    state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
+    update(secs, state.per, state.bias, state)
+    renderer.render(scene, camera);
+    state.frame += 30 * secs;
+    state.frame %= state.maxFrame;
+    lt = now;
+};
+loop();
 ```
 
 ## Conclusion
