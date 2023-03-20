@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2022-09-15 14:23:03
-version: 1.44
+updated: 2023-03-20 07:12:25
+version: 1.45
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources when using the basic or standard materials for exmaple. However there are still a few other options for that sort of task such as the [depth material](/2021/05/04/threejs-depth-material/).
@@ -18,6 +18,7 @@ The normal material can be used as a way to find out if there are problems with 
 <!-- more -->
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/G5bD_dXg2M4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## The normal material and what you should know first
 
@@ -45,13 +46,15 @@ The normal material is something that I often used as just a place holder materi
 
 Often the normal material might be used as a way to help debug the state of a normal attribute. That is not such a bad idea as there is a certain way it should look if the normals are in a state that is often what is desired. However I will often use the normal material on top of the [vertex normal helper](https://threejs.org/docs/#examples/en/helpers/VertexNormalsHelper) that is my first and foremost tool that I would go with when it comes to the task of debugging vertex normals of a geometry.
 
-### Version Numbers matter
-
-When I first wrote this post I was using r127 of threejs, and the last time I came around to doing a little editing here I was using r140.
 
 ### The source code examples in this post are up on Github
 
-The source code examples that I am writing about in this post can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-material).
+The source code examples that I am writing about in this post can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-material). This is also where I park the source code examples for my many other [blog posts on threejs](/2021/06/23/threejs-normal-material/) as well.
+
+### Version Numbers matter
+
+When I first wrote this post I was using r127 of threejs, and the last time I came around to doing a little editing here I was using r146. There are a lot of code breaking changes that are often made from one revision to the next. Also it looks like things are going in the direction of using JSM over that of traditional script tags as well. Concerns over version numbers do not end with threejs also, it is also important to be mindful of the browser vender and version that you are using as well as your computers support for openGL.
+
 
 ## 1 - Basic example using the normal material
 
