@@ -5,31 +5,32 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2022-09-18 15:41:13
-version: 1.42
+updated: 2023-03-21 08:58:31
+version: 1.43
 ---
 
-A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
+A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [threejs](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a threejs project. It can contain cameras, lights, mesh objects composed of a geometry and material, along with any other [object3d base class](/2018/04/23/threejs-object3d/) object. The scene object can then be passed to the render function of a renderer such as the [Webgl renderer](/2018/11/24/threejs-webglrenderer/) along with a [camera](/2018/04/06/threejs-camera/) to render a view of the scene from the perspective of the given camera object.
 
-There is a great deal of other things to cover when it comes to a scene object though, such as the background and fog properties, and the fact that it inherits from the Object3d base class which allows for things like having a whole scene re positioned, and rotated just like mesh objects, cameras and anything based off of Object3d. So in this post I will be going over at least a few details that revolve around the topic of scene objects in the java Script library known as threejs.
+There is a great deal of other things to cover when it comes to a scene object though, such as the background and fog properties, and the fact that it inherits from the Object3d base class. Becuase the scene object is yet another object3d based object this allows for things like having a whole scene positioned, rotated, and scaled just like mesh objects, cameras and anything based off of Object3d. So in this post I will be going over at least a few details that revolve around the topic of scene objects.
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/T0tM14OummQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The scene object What to know first
 
-This is an post on [three.js](https://threejs.org/) and even then this is just a general post that covers just one little constructor function known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to three.js you might want to start with [my getting started post on three.js](/2018/04/04/threejs-getting-started/) as a starting point. 
+This is an post on [threejs](https://threejs.org/) and even then this is just a general post that covers just one little constructor function known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to threejs you might want to start with [my getting started post on three.js](/2018/04/04/threejs-getting-started/) to learn a thing or two about the very basics that should be known before hand. If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) that might be worth checking out as there is always more to learn when it comes to javaScript alone. 
 
-If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) that might be worth checking out as there is always more to learn when it comes to java Script alone. 
-
-I then assume that you have at least some basic working knowledge of the basics of threejs and JavaScript, so I will not be getting into that here. However in this section I will quickly cover a few things that you might want to read up more on when it comes to getting a more solid understanding of the scene objects, and some other related topics that you show know in order to do something with a scene object.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/T0tM14OummQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+I then assume that you have at least some basic working knowledge of the basics of threejs and JavaScript, so I will not be getting into that here. However in this section I will quickly cover a few things that you might want to read up more on when it comes to getting a more solid understanding of threejs over all, and some other related topics that you show know in order to do something with a scene object.
 
 ### In order to view a scene you will want to known how to set up a renderer
 
 The scene object is a main object that will contain all of the objects that compose the over all scene that we are going to be looking at. However in order to view the state of one of these scene objects it is called for to use some kind of renderer as a way to view the current state of the scene object with a camera. 
 
-The typical render that I often go with these days as of r127 is the [Web Gl renderer](/2018/11/24/threejs-webglrenderer/), as browser support for web gl is now pretty good compared to the way things where a few years ago. In older versions of threejs including the ones I was using when I first wrote this post there was also the 2d canvas renderer. It is still possible to use [some alternative renderer's](https://github.com/mrdoob/three.js/tree/r127/examples/js/renderers) which can be found in the examples folder of the threejs Github repository.
+The typical render that I often go with these days as of r146 is the [Web Gl renderer](/2018/11/24/threejs-webglrenderer/), as browser support for web gl is now pretty good compared to the way things where a few years ago. In older versions of threejs including the ones I was using when I first wrote this post there was also the 2d canvas renderer. However it looks like that is no longer supported even as an option add on.
+
+It is still possible to use [some alternative renderer's](https://github.com/mrdoob/three.js/tree/r146/examples/js/renderers) which can be found in the examples folder of the threejs Github repository.
 
 ### In order to use a renderer with a scene you will also need a camera
 
@@ -43,13 +44,13 @@ In order to have something to look at in a scene I am going to want to create an
 
 There is also a lot to cover when it comes to the base class of a Mesh object which is also a base class of a scene object called Object3d. For example when I call the add method of a scene object and add an object as a child of the scene object that is a method of the object3d class and not the scene class. The same add method can be used with mesh objects, cameras, groups, and anything else that is based off of object3d.
 
-### Version Numbers matter with three.js
-
-When I first wrote this post I was using three.js r91, and the last time I edited this post and did some testing and editing of the source code examples I was using r135. I have made an effort of making sure I mention what version of threejs I am using when making these posts as threejs is a pretty fast moving project, and code breaking changes happen often.
-
 ### The source code examples in this post are on Github
 
-The source code examples that I am writing about in this post can be found on Github in [my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-scene).
+The source code examples that I am writing about in this post can be found on Github in [my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-scene). This is also where I park the source code examples for my [many other blog posts](/categories/three-js/) on threejs as well.
+
+### Version Numbers matter with threejs
+
+When I first wrote this post I was using three.js r91, and the last time I edited this post and did some testing and editing of the source code examples I was using r146. I have made an effort of making sure I mention what version of threejs I am using when making these posts as threejs is a pretty fast moving project, and code breaking changes happen often.
 
 ## 1 - Basic example of THREE.Scene
 
