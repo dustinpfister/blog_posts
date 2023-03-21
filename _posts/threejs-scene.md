@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2023-03-21 11:46:16
-version: 1.47
+updated: 2023-03-21 15:36:46
+version: 1.48
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [threejs](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a threejs project. It can contain cameras, lights, mesh objects composed of a geometry and material, along with any other [object3d base class](/2018/04/23/threejs-object3d/) object. The scene object can then be passed to the render function of a renderer such as the [Webgl renderer](/2018/11/24/threejs-webglrenderer/) along with a [camera](/2018/04/06/threejs-camera/) to render a view of the scene from the perspective of the given camera object.
 
-There is a great deal of other things to cover when it comes to a scene object though, such as the background and fog properties, and the fact that it inherits from the Object3d base class. Becuase the scene object is yet another object3d based object this allows for things like having a whole scene positioned, rotated, and scaled just like mesh objects, cameras and anything based off of Object3d. So in this post I will be going over at least a few details that revolve around the topic of scene objects.
+There is a great deal of other things to cover when it comes to a scene object though, such as the background and fog properties, and the fact that it inherits from the Object3d base class. Because the scene object is yet another object3d based object this allows for things like having a whole scene positioned, rotated, and scaled just like mesh objects, cameras and anything based off of Object3d. So in this post I will be going over at least a few details that revolve around the topic of scene objects.
 
 <!-- more -->
 
@@ -54,9 +54,9 @@ When I first wrote this post I was using three.js r91, and the last time I edite
 
 ## 1 - Basic example of THREE.Scene
 
-First off I will want to create the scene by just calling the THREE.Scene constructor with the new keyword, and saving the result of that to a variable. This result will be my scene object but there at least a little more to do if I want to actual see something. At a minimum beyond just having a scene object I will want to have at least some kind of mesh object to look at added to a Scene.  For now this mesh object could just be a mesh that used a geometry from one of the built in geometry constructors in three.js such as [THREE.BoxGeometry](https://threejs.org/docs/index.html#api/geometries/BoxGeometry), and then I can use something like the Normal material which does not require a light source.
+First off I will want to create the scene by just calling the THREE.Scene constructor with the new keyword, and assigning the result of that to a variable. This result will be my scene object but there at least a little more to do if I want to actual see something. At a minimum beyond just having a scene object I will want to have at least some kind of mesh object to look at added to a Scene.  For now this mesh object could just be a mesh that used a geometry from one of the built in geometry constructors in three.js such as [THREE.BoxGeometry](https://threejs.org/docs/index.html#api/geometries/BoxGeometry), and then I can use something like the Normal material which does not require a light source.
 
-Unless I aim to do something headless with a scene and one or more mesh objects, I will also want a camera and a renderer to look at what it is that I am doing with this scene object. There are a number of options when it comes to a camera, but I typically like to go with the [perspective camera](/2018/04/07/threejs-camera-perspective/). In some cases I might want to add the camera to the scene, but in any case I will want to have this ready to be used with a renderer where I will pass a scene object, and a camerae which will then be used to render to a canvas element.
+Unless I aim to do something headless with a scene and one or more mesh objects, I will also want a camera and a renderer to look at what it is that I am doing with this scene object. There are a number of options when it comes to a camera, but I typically like to go with the [perspective camera](/2018/04/07/threejs-camera-perspective/). In some cases I might want to add the camera to the scene, but in any case I will want to have this ready to be used with a renderer where I will pass a scene object, and a camera which will then be used to render to a canvas element.
 
 So a basic example of THREE.Scene might look something like this:
 
@@ -89,7 +89,7 @@ If I did not give a normal material when creating the mesh then by default a Mes
 
 ## 2 - Adding Fog to a scene
 
-A property of interest in a scene instance is the [scene.fog Property](/2018/04/16/threejs-fog/) which can be used to add a fog effect to that will effect mesh objects that use materials that are effected by a fog. When adding a fog I typically keep the background color, and the color of the fog the same, and stick to using materials that will work with a fog like that of the standard material.
+A property of interest in a scene instance is the [scene fog Property](/2018/04/16/threejs-fog/) which can be used to add a fog effect to that will effect mesh objects that use materials that are effected by a fog. When adding a fog I typically keep the background color, and the color of the fog the same, and stick to using materials that will work with a fog like that of the standard material.
 
 ```js
 //-------- ----------
@@ -392,7 +392,7 @@ loop();
 
 ### 3.4 - Transparent background example
 
-You might be here becuase you are looking for a way to have a [transparent background for a scene object](https://stackoverflow.com/questions/20495302/transparent-background-with-three-js). There are a few options of the webgl rendereer to be aware of when it comes to this, however I have found that in late versions of threejs such as r146 that I am using here I will want to call the set clear color method. When doing so I will want to make sure that the background is null, this is the default value, but for this example at least I will make it explicit. When calling the set clear method for first argument can be a color that I want the clear color to be, however I can pass null which will result in black being set for this value. In any case the color does not really matter if I want to set a fully transparent background, for that I just want to make sure that I pass 0 for the alpha value as the second argument for the set clear color method.
+You might be here because you are looking for a way to have a [transparent background for a scene object](https://stackoverflow.com/questions/20495302/transparent-background-with-three-js). There are a few options of the webgl renderer to be aware of when it comes to this, however I have found that in late versions of threejs such as r146 that I am using here I will want to call the set clear color method. When doing so I will want to make sure that the background is null, this is the default value, but for this example at least I will make it explicit. When calling the set clear method for first argument can be a color that I want the clear color to be, however I can pass null which will result in black being set for this value. In any case the color does not really matter if I want to set a fully transparent background, for that I just want to make sure that I pass 0 for the alpha value as the second argument for the set clear color method.
 
 ```js
 // ---------- ---------- ----------
@@ -483,11 +483,11 @@ This can be useful if you want to have a feature that allows for doing something
 
 ## 5 - Using Object3D methods with a Scene Object
 
-Be sure to read my full [post on the Object3D](/2018/04/23/threejs-object3d/) class in order to help gain more insight into what the Object3d class is all about, and why it is a big deal. However simply put, like a lot of things in three.js the Scene Class inherits from the Object3D class. This Object3d class gives THREE.Scene properties and methods like Object3D.position, Object3D.rotation and Object3D.add which can be used to add additional objects to the scene.
+Be sure to read my full [post on the Object3D](/2018/04/23/threejs-object3d/) class in order to help gain more insight into what the Object3d class is all about, and why it is a big deal. However simply put, like a lot of things in threejs the Scene Class inherits from the Object3D class. This Object3d class gives THREE.Scene properties and methods like Object3D.position, Object3D.rotation and Object3D.add which can be used to add additional objects to the scene.
 
 ### 5.1 - Rotation of a scene object
 
-Just like with any other object3d based object there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the scene object. This rotation property has an instance of the [Euler class](/2021/04/28/threejs-euler/) as its values which is simular to that of the Vector3 class only the values for each axis are radian value rather than that of any number value along the various axis.
+Just like with any other object3d based object there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the scene object. This rotation property has an instance of the [Euler class](/2021/04/28/threejs-euler/) as its values which is similar to that of the Vector3 class only the values for each axis are radian value rather than that of any number value along the various axis.
 
 ```js
 //-------- ----------
@@ -606,6 +606,6 @@ There is a lot that could be written about this, and how it applies the a scene 
 
 ## Conclusion
 
-That is all that I have to say about these scene of a three.js project example for now. There is a great deal more to write about when it comes to a scene in three.js, but much of that might branch off into just about everything with the library actually. A scene is a major part of any three.js project, along with other vital components such as a camera, and a renderer all of which just about every three.js example I have made includes each of those.
+That is all that I have to say about these scene of a threejs project example for now. There is a great deal more to write about when it comes to a scene in threejs, but much of that might branch off into just about everything with the library actually. A scene is a major part of any threejs project, along with other vital components such as a camera, and a renderer all of which just about every threejs example I have made includes each of those.
 
-The best way to learn more about the THREE.Scene constructor and everything else that is used with it would be to just start making some actual projects of some kind with three.js and just start learning as one goes. With that said I have some simple project examples to start off with in my [post on three.js examples](/2021/02/19/threejs-examples/) that might be worth checking out when it comes to getting some ideas for actual projects of some kind.
+The best way to learn more about the THREE.Scene constructor and everything else that is used with it would be to just start making some actual projects of some kind with threejs and just start learning as one goes. With that said I have some simple project examples to start off with in my [post on threejs examples](/2021/02/19/threejs-examples/) that might be worth checking out when it comes to getting some ideas for actual projects of some kind.
