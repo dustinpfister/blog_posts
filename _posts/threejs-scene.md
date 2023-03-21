@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2023-03-21 09:58:56
-version: 1.44
+updated: 2023-03-21 10:43:39
+version: 1.45
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [threejs](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a threejs project. It can contain cameras, lights, mesh objects composed of a geometry and material, along with any other [object3d base class](/2018/04/23/threejs-object3d/) object. The scene object can then be passed to the render function of a renderer such as the [Webgl renderer](/2018/11/24/threejs-webglrenderer/) along with a [camera](/2018/04/06/threejs-camera/) to render a view of the scene from the perspective of the given camera object.
@@ -388,6 +388,39 @@ const loop = () => {
     }
 };
 loop();
+```
+
+### 3.4 - Transparent background example
+
+You might be here becuase you are looking for a way to have a [transparent background for a scene object](https://stackoverflow.com/questions/20495302/transparent-background-with-three-js). There are a few options of the webgl rendereer to be aware of when it comes to this, however I have found that in late versions of threejs such as r146 that I am using here I will want to call the set clear color method. When doing so I will want to make sure that the background is null, this is the default value, but for this example at least I will make it explicit. When calling the set clear method for first argument can be a color that I want the clear color to be, however I can pass null which will result in black being set for this value. In any case the color does not really matter if I want to set a fully transparent background, for that I just want to make sure that I pass 0 for the alpha value as the second argument for the set clear color method.
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// TRANSPARENT BACKGROUND - 
+//    * The default for scene.background is null, but just make sure that is in fact the case.
+//    * use the setClearColor method passing a null for color, and 0 for the alpha value
+// ---------- ---------- ----------
+scene.background = null;
+renderer.setClearColor(null, 0);
+// ---------- ---------- ----------
+// ADD A MESH
+// ---------- ---------- ----------
+const mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
 ```
 
 ## 4 - Using Scene.overrideMaterial to add a material that overrides all materials
