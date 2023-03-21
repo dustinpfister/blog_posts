@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2023-03-21 11:05:27
-version: 1.46
+updated: 2023-03-21 11:46:16
+version: 1.47
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [threejs](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a threejs project. It can contain cameras, lights, mesh objects composed of a geometry and material, along with any other [object3d base class](/2018/04/23/threejs-object3d/) object. The scene object can then be passed to the render function of a renderer such as the [Webgl renderer](/2018/11/24/threejs-webglrenderer/) along with a [camera](/2018/04/06/threejs-camera/) to render a view of the scene from the perspective of the given camera object.
@@ -525,6 +525,9 @@ loop();
 ### 5.2 - Scaling a whole scene object
 
 Another feature of the base [object3d class is the scale property](/2021/05/11/threejs-object3d-scale/). This is a property that contains a vector3 class object as its value with a default values of 1,1,1. Setting any of the values higher or lower will scale the whole scene object up and down on a given axis.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/Yr3rHJlJVbY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 //-------- ----------
