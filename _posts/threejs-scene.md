@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2023-03-21 08:58:31
-version: 1.43
+updated: 2023-03-21 09:58:56
+version: 1.44
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [threejs](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a threejs project. It can contain cameras, lights, mesh objects composed of a geometry and material, along with any other [object3d base class](/2018/04/23/threejs-object3d/) object. The scene object can then be passed to the render function of a renderer such as the [Webgl renderer](/2018/11/24/threejs-webglrenderer/) along with a [camera](/2018/04/06/threejs-camera/) to render a view of the scene from the perspective of the given camera object.
@@ -61,21 +61,27 @@ Unless I aim to do something headless with a scene and one or more mesh objects,
 So a basic example of THREE.Scene might look something like this:
 
 ```js
-// CREATE A SCENE
-var scene = new THREE.Scene();
-// add a CAMERA to it so we can see something
-var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+//-------- ----------
+// SCENE OBJECT
+//-------- ----------
+const scene = new THREE.Scene();
+//-------- ----------
+// CAMERA, and RENDERER TO USE WITH THE SCENE OBJECT
+//-------- ----------
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 100);
 camera.position.set(2, 1, 2); // position the camera away from the mesh
 camera.lookAt(0, 0, 0); // look at 0,0,0
-// we need a RENDERER to render the scene
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-var container = document.getElementById('demo') || document.body;
-container.appendChild(renderer.domElement);
-// add a Mesh to look at
-var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// ADD A MESH OBJECT TO THE SCENE OBJECT
+//-------- ----------
+const mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
 scene.add(mesh);
-// render the scene with the camera
+//-------- ----------
+// RENDER THE SCENE OBJECT 
+//-------- ----------
 renderer.render(scene, camera);
 ```
 
@@ -86,26 +92,28 @@ If I did not give a normal material when creating the mesh then by default a Mes
 A property of interest in a scene instance is the [scene.fog Property](/2018/04/16/threejs-fog/) which can be used to add a fog effect to that will effect mesh objects that use materials that are effected by a fog. When adding a fog I typically keep the background color, and the color of the fog the same, and stick to using materials that will work with a fog like that of the standard material.
 
 ```js
-// CREATE A SCENE
-var scene = new THREE.Scene();
-var fogColor = new THREE.Color(0xffffff);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const fogColor = new THREE.Color(0xffffff);
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// ADD FOG A SCENE
+//-------- ----------
 scene.background = fogColor;
 scene.fog = new THREE.FogExp2(fogColor, 0.4);
-// add a CAMERA to it so we can see something
-var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-camera.position.set(2, 1, 2); // position the camera away from the mesh
-camera.lookAt(0, 0, 0); // look at 0,0,0
-// we need a RENDERER to render the scene
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-var container = document.getElementById('demo') || document.body;
-container.appendChild(renderer.domElement);
 // add a Mesh to look at with the Standard Material
-var mesh = new THREE.Mesh(
+const mesh = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1), 
     new THREE.MeshStandardMaterial( { emissive: 0xff0000 } ));
 scene.add(mesh);
 // render the scene with the camera
+camera.position.set(2, 1, 2); // position the camera away from the mesh
+camera.lookAt(0, 0, 0); // look at 0,0,0
 renderer.render(scene, camera);
 ```
 
@@ -125,19 +133,21 @@ The easy option is to just set a simple solid color for the background of the sc
 //-------- ----------
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0, 0.4, 0.6);
-//-------- ----------
-// CAMERA, RENDERER, MESH
-//-------- ----------
 const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-camera.position.set(2, 2, 2); 
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
 const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.5, 30, 30), new THREE.MeshNormalMaterial());
 scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2); 
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
-
 ```
 
 ### 3.2 - Canvas texture example of background
@@ -149,10 +159,14 @@ Apart from setting a solid color for the background another option would be to u
 // SCENE OBJECT - CREATING A TEXTURE WITH CANVAS
 //-------- ----------
 const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // CREATE CANVAS, GET CONTEXT, SET SIZE
 //-------- ----------
-var canvas = document.createElement('canvas'),
+const canvas = document.createElement('canvas'),
 ctx = canvas.getContext('2d');
 canvas.width = 512;  // width and height need to be powers of two
 canvas.height = 256;
@@ -189,17 +203,16 @@ scene.background.repeat.x = factor > 1 ? 1 / factor : 1;
 scene.background.offset.y = factor > 1 ? 0 : (1 - factor) / 2;
 scene.background.repeat.y = factor > 1 ? 1 : factor;
 //-------- ----------
-// CAMERA, RENDERER, MESH
+// MESH
 //-------- ----------
-const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 100);
-camera.position.set(2, 2, 2); 
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.5, 30, 30), new THREE.MeshNormalMaterial());
 scene.add(mesh);
-scene.add( new THREE.GridHelper(10, 10))
+scene.add( new THREE.GridHelper(10, 10));
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2); 
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -210,175 +223,171 @@ I have written a [post on how to used a cube texture](/2018/04/22/threejs-cube-t
 This JavaScript solution for resolving this issue seems to work okay, but I have not battle tested it as of this writing. Again you might want to check out my post on cube texture as I might have more up to date example there that I have not covered here just yet. However the genera idea is to start out with one or more grids that have my raw seamless image data, and then run it threw a function that will remap the color data to make it look the way that it should.
 
 ```js
-(function(){
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 640 / 480, 1, 1000);
-    camera.position.set(14, 6, 14);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.domElement.width = 640;
-    renderer.domElement.height = 480;
-    renderer.setViewport(0, 0, 640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPER FUNCTIONS
-    //-------- ----------
-    // create a canavs texture
-    const createCanvasTexture = function (draw, size) {
-        const canvas = document.createElement('canvas'),
-        ctx = canvas.getContext('2d');
-        canvas.width = size || 64;
-        canvas.height = size || 64;
-        draw(ctx, canvas);
-        return new THREE.CanvasTexture(canvas);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.domElement.width = 640;
+renderer.domElement.height = 480;
+renderer.setViewport(0, 0, 640, 480);
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+// create a canavs texture
+const createCanvasTexture = function (draw, size) {
+    const canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = size || 64;
+    canvas.height = size || 64;
+    draw(ctx, canvas);
+    return new THREE.CanvasTexture(canvas);
+};
+// get an px index if x and y are known
+const getIndex = (grid, vx, y) => {
+    const px = THREE.MathUtils.euclideanModulo(vx, grid.w);
+    const py = THREE.MathUtils.euclideanModulo(y, grid.w);
+    const index = py * grid.w + px;
+    return index;
+};
+// get Vector2 if index is known but not x and y
+const getVector2 = (grid, i) => {
+    let pi = THREE.MathUtils.euclideanModulo(i, grid.pxData.length);
+    let pX = pi % grid.w;
+    let pY = Math.floor(pi / grid.w);
+    let v2 = new THREE.Vector2(pX, pY);
+    return v2;
+};
+// create a remaped grid
+const createRemapedGrid = (grid1, r1) => {
+    r1 = r1 === undefined ? Math.floor(grid1.w / 4) : r1;
+    const hw = grid1.w / 2;
+    const vHalf = new THREE.Vector2(hw - 0.5, hw - 0.5);  //!!! May have to adjust this between even and odd
+    const mDist = vHalf.distanceTo( new THREE.Vector2(0, 0) );
+    const grid2 = {
+        w: grid1.w,
+        pxData: grid1.pxData.map((currentColorIndex, i) => {
+            const v2 = getVector2(grid1, i);
+            const dist = v2.distanceTo( vHalf );
+            // dist alpha value, and angle to center
+            const dAlpha = dist / mDist;
+            const a = Math.atan2(v2.y - vHalf.y, v2.x - vHalf.x) + Math.PI;
+            // get another color index from closer to center
+            const x = v2.x + Math.round(Math.cos(a) * r1 * (1 - dAlpha));
+            const y = v2.y + Math.round(Math.sin(a) * r1 * (1 - dAlpha));
+            const refIndex = getIndex(grid1, x, y);
+            return grid1.pxData[refIndex];
+        }),
+        pal: grid1.pal
     };
-    // get an px index if x and y are known
-    const getIndex = (grid, vx, y) => {
-        const px = THREE.MathUtils.euclideanModulo(vx, grid.w);
-        const py = THREE.MathUtils.euclideanModulo(y, grid.w);
-        const index = py * grid.w + px;
-        return index;
-    };
-    // get Vector2 if index is known but not x and y
-    const getVector2 = (grid, i) => {
-        let pi = THREE.MathUtils.euclideanModulo(i, grid.pxData.length);
-        let pX = pi % grid.w;
-        let pY = Math.floor(pi / grid.w);
-        let v2 = new THREE.Vector2(pX, pY);
-        return v2;
-    };
-    // create a remaped grid
-    const createRemapedGrid = (grid1, r1) => {
-        r1 = r1 === undefined ? Math.floor(grid1.w / 4) : r1;
-        const hw = grid1.w / 2;
-        const vHalf = new THREE.Vector2(hw - 0.5, hw - 0.5);  //!!! May have to adjust this between even and odd
-        const mDist = vHalf.distanceTo( new THREE.Vector2(0, 0) );
-        const grid2 = {
-            w: grid1.w,
-            pxData: grid1.pxData.map((currentColorIndex, i) => {
-                const v2 = getVector2(grid1, i);
-                const dist = v2.distanceTo( vHalf );
-                // dist alpha value, and angle to center
-                const dAlpha = dist / mDist;
-                const a = Math.atan2(v2.y - vHalf.y, v2.x - vHalf.x) + Math.PI;
-                // get another color index from closer to center
-                const x = v2.x + Math.round(Math.cos(a) * r1 * (1 - dAlpha));
-                const y = v2.y + Math.round(Math.sin(a) * r1 * (1 - dAlpha));
-                const refIndex = getIndex(grid1, x, y);
-                //console.log(i, a.toFixed(2), refIndex);
-                //return currentColorIndex;
-                return grid1.pxData[refIndex];
-            }),
-            pal: grid1.pal
-        };
-        return grid2;
-    };
-    // get a canvas texture from the given grid
-    const getTextureFromGrid = (grid, canvasSize) => {
-        canvasSize = canvasSize === undefined ? 64 : canvasSize;
-        return createCanvasTexture((ctx, canvas) => {
-            ctx.fillStyle='white';
-            ctx.fillRect(0,0,canvas.width, canvas.height);
-            let i = 0, len = grid.pxData.length;
-            while(i < len){
-                let pX = i % grid.w;
-                let pY = Math.floor(i / grid.w);
-                let c = grid.pal[ grid.pxData[i] ];
-                let color = new THREE.Color(c[0], c[1], c[2]);
-                ctx.fillStyle = color.getStyle();
-                let pxW = canvas.width / grid.w;
-                let pxH = canvas.height / grid.w;
-                ctx.fillRect(pX * pxW, pY * pxH, pxW, pxH);
-                i += 1;
-            }
-        }, canvasSize);
-    };
-    //-------- ----------
-    // GRID AND RE MAPED GRID
-    //-------- ----------
-    const grid1 = {
-        w: 16,
-        pxData: [
-            0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
-            1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,
-            0,3,1,1,1,2,2,1,1,2,2,1,1,1,3,0,
-            0,3,1,4,4,4,4,4,4,4,4,4,4,1,3,0,
-            0,3,1,4,1,1,1,1,1,1,1,1,4,1,3,0,
-            0,3,2,4,1,3,3,3,3,3,3,1,4,2,3,0,
-            0,3,2,4,1,3,1,1,1,1,3,1,4,2,3,0,
-            0,3,1,4,1,3,1,2,2,1,3,1,4,1,3,0,
-            0,3,1,4,1,3,1,2,2,1,3,1,4,1,3,0,
-            0,3,2,4,1,3,1,1,1,1,3,1,4,2,3,0,
-            0,3,2,4,1,3,3,3,3,3,3,1,4,2,3,0,
-            0,3,1,4,1,1,1,1,1,1,1,1,4,1,3,0,
-            0,3,1,4,4,4,4,4,4,4,4,4,4,1,3,0,
-            0,3,1,1,1,2,2,1,1,2,2,1,1,1,3,0,
-            1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,
-            0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
-        ],
-        pal: [ [1,1,1], [0,0,0], [0,1,0], [0,0.6,0], [0, 0.3, 0] ]
-    };
-    const grid2 = createRemapedGrid(grid1, 4);
-    //-------- ----------
-    // BACKGROUND
-    //-------- ----------
-    const texture =  getTextureFromGrid(grid2, 256);
-    // same texture for all sides
-    cubeTexture = new THREE.CubeTexture(new Array(6).fill(texture.image));
-    cubeTexture.needsUpdate = true;
-    scene.background = cubeTexture;
-    //-------- ----------
-    // SPHERE
-    //-------- ----------
-    const sphere = new THREE.Mesh(
-        new THREE.SphereGeometry(5, 30, 30), 
-        new THREE.MeshBasicMaterial({
-           envMap: texture
-        }) 
-    );
-    scene.add(sphere);
-    // ---------- ----------
-    // ANIMATION LOOP
-    // ---------- ----------
-    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 300;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const vs = new THREE.Vector3(0, 0, 1);
-    let vector_unit_length = 20;
-    const update = function(frame, frameMax){
-        const a = frame / frameMax;
-        const b = THREE.MathUtils.pingpong(a * 2, 0.5) * 2;
-        const e = new THREE.Euler();
-        e.y = Math.PI * 2 * a;
-        e.x = Math.PI / 180 * (45 * b);
-        camera.position.copy( vs.clone().normalize().applyEuler(e).multiplyScalar(vector_unit_length) );
-        camera.lookAt(0, 0, 0);
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
+    return grid2;
+};
+// get a canvas texture from the given grid
+const getTextureFromGrid = (grid, canvasSize) => {
+    canvasSize = canvasSize === undefined ? 64 : canvasSize;
+    return createCanvasTexture((ctx, canvas) => {
+        ctx.fillStyle='white';
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+        let i = 0, len = grid.pxData.length;
+        while(i < len){
+            let pX = i % grid.w;
+            let pY = Math.floor(i / grid.w);
+            let c = grid.pal[ grid.pxData[i] ];
+            let color = new THREE.Color(c[0], c[1], c[2]);
+            ctx.fillStyle = color.getStyle();
+            let pxW = canvas.width / grid.w;
+            let pxH = canvas.height / grid.w;
+            ctx.fillRect(pX * pxW, pY * pxH, pxW, pxH);
+            i += 1;
         }
-    };
-    loop();
-}());
-
+    }, canvasSize);
+};
+//-------- ----------
+// GRID AND RE MAPED GRID
+//-------- ----------
+const grid1 = {
+    w: 16,
+    pxData: [
+        0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
+        1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,
+        0,3,1,1,1,2,2,1,1,2,2,1,1,1,3,0,
+        0,3,1,4,4,4,4,4,4,4,4,4,4,1,3,0,
+        0,3,1,4,1,1,1,1,1,1,1,1,4,1,3,0,
+        0,3,2,4,1,3,3,3,3,3,3,1,4,2,3,0,
+        0,3,2,4,1,3,1,1,1,1,3,1,4,2,3,0,
+        0,3,1,4,1,3,1,2,2,1,3,1,4,1,3,0,
+        0,3,1,4,1,3,1,2,2,1,3,1,4,1,3,0,
+        0,3,2,4,1,3,1,1,1,1,3,1,4,2,3,0,
+        0,3,2,4,1,3,3,3,3,3,3,1,4,2,3,0,
+        0,3,1,4,1,1,1,1,1,1,1,1,4,1,3,0,
+        0,3,1,4,4,4,4,4,4,4,4,4,4,1,3,0,
+        0,3,1,1,1,2,2,1,1,2,2,1,1,1,3,0,
+        1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,
+        0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
+    ],
+    pal: [ [1,1,1], [0,0,0], [0,1,0], [0,0.6,0], [0, 0.3, 0] ]
+};
+const grid2 = createRemapedGrid(grid1, 4);
+//-------- ----------
+// BACKGROUND
+//-------- ----------
+const texture =  getTextureFromGrid(grid2, 256);
+// same texture for all sides
+cubeTexture = new THREE.CubeTexture(new Array(6).fill(texture.image));
+cubeTexture.needsUpdate = true;
+scene.background = cubeTexture;
+//-------- ----------
+// SPHERE
+//-------- ----------
+const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(5, 30, 30), 
+    new THREE.MeshBasicMaterial({
+       envMap: texture
+    }) 
+);
+scene.add(sphere);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(14, 6, 14);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const vs = new THREE.Vector3(0, 0, 1);
+let vector_unit_length = 20;
+const update = function(frame, frameMax){
+    const a = frame / frameMax;
+    const b = THREE.MathUtils.pingpong(a * 2, 0.5) * 2;
+    const e = new THREE.Euler();
+    e.y = Math.PI * 2 * a;
+    e.x = Math.PI / 180 * (45 * b);
+    camera.position.copy( vs.clone().normalize().applyEuler(e).multiplyScalar(vector_unit_length) );
+    camera.lookAt(0, 0, 0);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## 4 - Using Scene.overrideMaterial to add a material that overrides all materials
@@ -386,87 +395,92 @@ This JavaScript solution for resolving this issue seems to work okay, but I have
 There is the scene override property of a scene that will do exactly as you would expect, override all materials used in the scene with the material given to the material override property of the scene instance.
 
 ```js
-(function () {
-    // create a Scene
-    var scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xafafaf);
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 100);
-    camera.position.set(2.5, 2.5, 2.5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // can set an override material for everything
-    scene.overrideMaterial = new THREE.MeshDepthMaterial();
-    // just adding a 1x1x1 cube with the default
-    // MeshBasicMaterial and random color for faces
-    // when added to the scene like this
-    scene.add(new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1)));
-    // adding another 1x1x1 cube but this time I am giving
-    // and instance of MeshBasicMaterial in which I am setting
-    // the face color of the faces to red
-    var cube2 = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial({
-                color: 0x00ff00
-            }));
-    cube2.position.set(-2, 0, 0);
-    scene.add(cube2);
-    // a sphere using the lamber material in wire frame mode
-    var sphere = new THREE.Mesh(
-            new THREE.SphereGeometry(1, 20, 20),
-            new THREE.MeshLambertMaterial({
-                emissive: 0x00004a
-            }));
-    sphere.position.set(0, 0, -2);
-    scene.add(sphere);
-    // render the scene with the camera
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// create a Scene
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xafafaf);
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// OVERRIDE MATERIAL
+//-------- ---------- 
+// can set an override material for everything
+scene.overrideMaterial = new THREE.MeshDepthMaterial();
+//-------- ----------
+// OBJECTS
+//-------- ---------- 
+// just adding a 1x1x1 cube with the default
+// MeshBasicMaterial and random color for faces
+// when added to the scene like this
+scene.add(new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1)));
+// adding another 1x1x1 cube but this time I am giving
+// and instance of MeshBasicMaterial in which I am setting
+// the face color of the faces to red
+const cube2 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        color: 0x00ff00
+    }));
+cube2.position.set(-2, 0, 0);
+scene.add(cube2);
+// a sphere using the lamber material in wire frame mode
+const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 20, 20),
+    new THREE.MeshLambertMaterial({
+        emissive: 0x00004a
+}));
+sphere.position.set(0, 0, -2);
+scene.add(sphere);
+//-------- ----------
+// RENDER
+//-------- ---------- 
+// render the scene with the camera
+camera.position.set(2.5, 2.5, 2.5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 In the above demo I created a simple scene with a few instances of Mesh that each use a different material and or settings for the material. By setting an instance of THREE.MeshDepthMaterial as the value of Scene.overrideMaterial, all the other materials are ignored and the depth material is just used for everything.
 
 This can be useful if you want to have a feature that allows for doing something like setting everything in the scene to wire frame mode.
 
-```js
-scene.overrideMaterial = new THREE.MeshBasicMaterial({
-    color: 0xff0000,
-    wireframe:true
-});
-```
 
 ## 5 - Using Object3D methods with a Scene Object
 
 Be sure to read my full [post on the Object3D](/2018/04/23/threejs-object3d/) class in order to help gain more insight into what the Object3d class is all about, and why it is a big deal. However simply put, like a lot of things in three.js the Scene Class inherits from the Object3D class. This Object3d class gives THREE.Scene properties and methods like Object3D.position, Object3D.rotation and Object3D.add which can be used to add additional objects to the scene.
 
-There is a lot that could be written about this, and how it applies the a scene object, but one interesting thing is that if I play with the instance of [Vector3](/2018/04/15/threejs-vector3/) that is stored in the position property of my scene instance this will change the position of the whole Scene, and everything in it that is added relative to the scene.
+### 5.1 - Rotation of a scene object
+
+Just like with any other object3d based object there is the [rotation property](/2022/04/08/threejs-object3d-rotation/) of the scene object. This rotation property has an instance of the [Euler class](/2021/04/28/threejs-euler/) as its values which is simular to that of the Vector3 class only the values for each axis are radian value rather than that of any number value along the various axis.
 
 ```js
+//-------- ----------
 // CREATE A SCENE
-var scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
-var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+const mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ----------
+// LOOP
+//-------- ----------
 camera.position.set(2, 1, 2);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-var container = document.getElementById('demo') || document.body;
-container.appendChild(renderer.domElement);
-var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
-scene.add(mesh);
-// LOOP
-var frame = 0,
-maxFrame = 50,
-loop = function () {
-    var per = frame / maxFrame,
-    bias = Math.abs(.5 - per) / .5;
+let frame = 0,
+maxFrame = 50;
+const loop = function () {
+    const per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
     requestAnimationFrame(loop);
     // using Object3D properties to change
-    // the position and rotation of a scene
-    scene.position.set(0, 1 * bias, 0);
+    // the rotation of a scene
     scene.rotation.set(Math.PI * 2 * per, 0, 0);
     renderer.render(scene, camera);
     frame += 1;
@@ -474,6 +488,10 @@ loop = function () {
 };
 loop();
 ```
+
+### 5.2 - Position of a scene object relative to world space
+
+There is a lot that could be written about this, and how it applies the a scene object, but one interesting thing is that if I play with the instance of [Vector3](/2018/04/15/threejs-vector3/) that is stored in the position property of my scene instance this will change the position of the whole Scene, and everything in it that is added relative to the scene.
 
 ## Conclusion
 
