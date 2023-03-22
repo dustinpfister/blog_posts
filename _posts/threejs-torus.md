@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2023-03-22 07:11:30
-version: 1.30
+updated: 2023-03-22 07:13:46
+version: 1.31
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -30,7 +30,7 @@ Although the built in constrictor are a great starting pint to just quickly crea
 
 ### Source code examples are up on Github
 
-The source code examples that I am writing about in this post are [also on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-torus).
+The source code examples that I am writing about in this post are [also on Github in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-torus). This is also where I park the source code examples for my [many other blog posts](/categories/three-js/) on threejs.
 
 ### Version Numbers matter with three.js
 
