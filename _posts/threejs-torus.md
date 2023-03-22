@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2023-03-22 07:06:34
-version: 1.29
+updated: 2023-03-22 07:11:30
+version: 1.30
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -26,7 +26,7 @@ The torus geometry constructor is of course just one option when it comes to the
 
 ### There is also a lot to be aware of woth buffer geometry in general
 
-In the long run sooner or later in make sense to look into the [buffer geometry constructor](/2021/04/22/threejs-buffer-geometry/) and how to create a custom geometry. A starting point for doing so would be to add a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) to the clean, new geometry object.
+Although the built in constrictor are a great starting pint to just quickly create geometry by calling a constrictor function. In the long run sooner or later in make sense to look into the [buffer geometry constructor](/2021/04/22/threejs-buffer-geometry/) and how to create a custom geometry. A starting point for doing so would be to add a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) to the clean, new geometry object. However that would be how to create geometry with javaScript code, there is also starting to look inti all the various options for loading external data files that contain geometry. When it comes to geometry loaders that are built into threejs itself there is the [buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/), but there are also a lot of other official options that can be added on top of threejs as well such as the [Collada loader](/2021/04/30/threejs-dae-collada-loader/).
 
 ### Source code examples are up on Github
 
