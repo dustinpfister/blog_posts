@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2023-03-22 07:13:46
-version: 1.31
+updated: 2023-03-22 07:40:31
+version: 1.32
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -34,7 +34,7 @@ The source code examples that I am writing about in this post are [also on Githu
 
 ### Version Numbers matter with three.js
 
-When I first made the source code for these examples and wrote this post I was using r127 of three.js, and the last time I came around to do some editing I was using r140. I do not think a lot of changes have been made to the torus geometry constructor that will case code breaking changes, but still in the future many such changes might happen to other features of the library that I am using.
+When I first made the source code for these examples and wrote this post I was using r127 of three.js, and the last time I came around to do some editing I was using r146. I do not think a lot of changes have been made to the torus geometry constructor that will case code breaking changes, but still in the future many such changes might happen to other features of the library that I am using.
 
 ## Some Basic examples
 
@@ -42,11 +42,17 @@ To start out with there is just making a simple hello world type demo of the Tor
 
 ### 1.1 - Starting out with a basic Torus example
 
-When calling the THREE.TorusGeometry constructor function the first argument is the main radius of the torus as a whole, while the second argument is the radius of each circle in the torus or the tube radius if you prefer. The next two arguments of the constructor are to set the number of circles in the torus, and how many sides per circle.
-
-Once I have my torus geometry I can then pass it as the first argument to the mesh constructor, and pass a material as the second argument for the mesh constructor and then add the resulting mesh to a scene object. After that I just need to set up a camera and a renderer for this example.
+When calling the THREE.TorusGeometry constructor function the first argument is the main radius of the torus as a whole, while the second argument is the radius of each circle in the torus or the tube radius if you prefer. The next two arguments of the constructor are to set the number of circles in the torus, and how many sides per circle. Once I have my torus geometry I can then pass it as the first argument to the mesh constructor, and pass a material as the second argument for the mesh constructor and then add the resulting mesh to a scene object. After that I just need to set up a camera and a renderer for this example.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // MESH - Using THREE.TorusGeometry for geometry
 //-------- ----------
@@ -57,19 +63,14 @@ tubeSegments = 32;
 const donut = new THREE.Mesh(
         new THREE.TorusGeometry(radius, tubeRadius, radialSegments, tubeSegments),
         new THREE.MeshNormalMaterial());
-//-------- ----------
-// SCENE, CAMERA, RENDERER
-//-------- ----------
-const scene = new THREE.Scene();
+
 scene.add(donut); // add mesh to scene
-const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+//-------- ----------
+// RENDER
+//-------- ----------
 camera.position.set(1, 1.5, 2);
 camera.lookAt(0, 0.25, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 renderer.render(scene, camera);
-
 ```
 
 ### 1.2 - The copy method of Buffer Geometry
@@ -77,6 +78,15 @@ renderer.render(scene, camera);
 Now that I have the very basic, easy example out of the way I think I should get into at least one or more additional examples that are maybe not so basic. For this example I am using the copy method of the buffer geometry class to copy the state of a new torus geometry to the older torus geometry of a mesh object. I can not say that this is the best way to go about updating a geometry, however it will still work okay when it comes to having a way to run threw a range of values when it comes to the various torus geometry arguments.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
 //-------- ----------
@@ -101,17 +111,7 @@ const createDonutMesh = (opt) => {
         opt.material || new THREE.MeshNormalMaterial());
     return donut;
 };
-//-------- ----------
-// SCENE, CAMERA, RENDERER
-//-------- ----------
-const scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10));
-const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1.5, 1.5, 1.5);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+
 //-------- ----------
 // ADD MESH TO SCENE
 //-------- ----------
@@ -123,6 +123,8 @@ scene.add(mesh2);
 //-------- ----------
 // LOOP
 //-------- ----------
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0, 0);
 let lt = new Date(),
 frame = 0;
 const maxFrame = 300,
@@ -151,8 +153,6 @@ const loop = function(){
 loop();
 ```
 
-
-
 ## 2 - Points example using Torus Geometry
 
 An alternative to using a Mesh object would be to use the Points Constructor. When doing so I am restricted to using just the points material that just has a few options such as setting the size and color. Although using the points constructor might be cool for just getting an idea of what is going on with the points of a geometry it might not be the best option as far as how things look. There is doing something where I am creating a mesh object for every point in a torus geometry and then doing whatever I want when it comes to all the various options with mesh materials, but that will be a log of objects and other resources.
@@ -163,6 +163,14 @@ The basic idea of this with the THREE.Points Constructor is not all that differe
 
 ```js
 //-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
 // POINTS - Using THREE.TorusGeometry and PointsMaterial
 //-------- ----------
 const radius = 1,
@@ -172,17 +180,12 @@ tubeSegments = 256;
 const donut = new THREE.Points(
         new THREE.TorusGeometry(radius, tubeRadius, radialSegments, tubeSegments),
         new THREE.PointsMaterial({size: 0.0125, color: 0x00ff00}));
-//-------- ----------
-// SCENE, CAMERA, RENDERER
-//-------- ----------
-const scene = new THREE.Scene();
 scene.add(donut); // add mesh to scene
-const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+//-------- ----------
+// RENDER
+//-------- ----------
 camera.position.set(1.5, 1.5, 1.5);
 camera.lookAt(0, 0.25, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
@@ -198,10 +201,8 @@ This might take some leg work, and also eat up some resources compared o using t
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(1.5, 1.5, 1.5);
-camera.lookAt(0, 0.25, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // LIGHT
@@ -231,6 +232,8 @@ while(i < len){
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0.25, 0);
 renderer.render(scene, camera);
 ```
 
@@ -245,6 +248,22 @@ So now there is an idea that I just have to do with this because it is just a co
 Just like my other group example of doughnut mesh objects I have a create doughnut  child helper that also gets the same arguments. This time I am playing around with the expressions a little in a different way, and I am also making use of the standard material this time because I want to do something with light for this one. Another thing that I am doing differently with this create doughnut  child method is that I am rotating the geometry of the torus so that when I create the group they are all aliened in a way that I want so that I can have a camera move threw them by just having the camera move along the circumference of a circle.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xafafaf);
+const camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const light = new THREE.PointLight(0xffffff, 0.5);
+light.position.set(2, 0, 0);
+camera.add(light);
 //-------- ----------
 // HELPERS
 //-------- ----------
@@ -284,21 +303,6 @@ const createDoughnutGroup = () => {
     return group;
 };
 //-------- ----------
-// SCENE, CAMERA, LIGHT, RENDERER
-//-------- ----------
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xafafaf);
-const camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 100);
-camera.position.set(6, 4, 4.5);
-camera.lookAt(0, 0, 0.5);
-const light = new THREE.PointLight(0xffffff, 0.5);
-light.position.set(2, 0, 0);
-camera.add(light);
-scene.add(camera);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-//-------- ----------
 // ADDING GROUP TO SCENE
 //-------- ----------
 const group = createDoughnutGroup();
@@ -306,6 +310,8 @@ scene.add(group);
 //-------- ----------
 // LOOP
 //-------- ----------
+camera.position.set(6, 4, 4.5);
+camera.lookAt(0, 0, 0.5);
 let lt = new Date(),
 frame = 0;
 const maxFrame = 1200,
@@ -336,6 +342,15 @@ In this example I am creating a group of mesh objects where each mesh object is 
 
 ```js
 //-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
 // HELPERS
 //-------- ----------
 const createDonutChild = function(index, len){
@@ -362,17 +377,6 @@ const createDonutGroup = function(){
     return group;
 };
 //-------- ----------
-// SCENE, CAMERA, RENDERER
-//-------- ----------
-const scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10));
-const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(6, 4, 4.5);
-camera.lookAt(0, 0, 0.5);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-//-------- ----------
 // ADD GROUP TO SCENE
 //-------- ----------
 const group = createDonutGroup();
@@ -380,6 +384,8 @@ scene.add(group);
 //-------- ----------
 // RENDER SCENE
 //-------- ----------
+camera.position.set(6, 4, 4.5);
+camera.lookAt(0, 0, 0.5);
 renderer.render(scene, camera);
 ```
 
