@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2023-03-23 06:57:17
-version: 1.39
+updated: 2023-03-23 07:13:59
+version: 1.40
 ---
 
 In [threejs](https://threejs.org/) I might want to have a way to set up a background that will actually be a bunch of images that would skin each side of the inside of a cube, resulting in a background that can be described as a kind of cube texture. Other terms for this kind of cube texture might also be [skybox](https://en.wikipedia.org/wiki/Skybox_%28video_games%29), or [cube mapping](https://en.wikipedia.org/wiki/Cube_mapping). This kind of texture can be set to the background property of a [scene object](/2018/05/03/threejs-scene/), but I also can place this kind of texture over the surface of some kind of mesh as well to create a reflection type effect often referred to as an [environment map supported by materials like that of the basic material](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.envMap). 
@@ -40,63 +40,60 @@ You can find the source code examples that I am writing about in this post at my
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using r91 of threejs, and the last time I edited this post I was using r140 of the library. Three.js is still a very fast moving project, and code breaking changes happen with it all the time. Always be aware of what version of three.js you are using when working with various random code examples that make use of threejs on the open web as version numbers very much matter with this project.
+When I first wrote this post I was using r91 of threejs, and the last time I edited this post I was using r146 of the library. Threejs is still a very fast moving project, and code breaking changes happen with it all the time. Always be aware of what version of three.js you are using when working with various random code examples that make use of threejs on the open web as version numbers very much matter with this project.
 
 ## 1 - Basic example of Cube Texture using the built in loader
 
-For a basic example of a cube texture I used the Cube Texture loader to load a set of images that I borrowed from the three.js repository as mentioned earlier to procure an instance of CubeTexture. This instance of the CubeTexture class will be passed by measn of an argument form the on load callback when using the load method of an instance of the CubeTextureLoader.
+For a basic example of a cube texture I used the Cube Texture loader to load a set of images that I borrowed from the threejs repository as mentioned earlier to procure an instance of CubeTexture. This instance of the CubeTexture class will be passed by means of an argument form the on load callback when using the load method of an instance of the CubeTextureLoader.
 
 I then used the CubeTexture as an [environment map](https://en.wikipedia.org/wiki/Reflection_mapping) for a material that I then used to skin a sphere. This can be achieved be setting the instance of CubeTexture as the value for the envMap property of the Material. When it comes to [choosing a material](/2018/04/30/threejs-materials/) I will want to make sure that the material supports the use of an environment map, for this example I ma using the [Mesh basic material](/2018/05/05/threejs-basic-material/) which supports this feature. In addition I also used the same cube texture to set the background of the scene as an instance of the cube texture can be set for the background in place of what would otherwise just be a static color or texture.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
-    camera.position.set(1, 1, 1);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // LOAD CUBE TEXTURE
-    //-------- ----------
-    new THREE.CubeTextureLoader()
-    .setPath('/img/cube/skybox/')
-    .load(
-        // urls of images used in the cube texture
-        [
-            'px.jpg',
-            'nx.jpg',
-            'py.jpg',
-            'ny.jpg',
-            'pz.jpg',
-            'nz.jpg'
-        ],
-        // what to do when loading is over
-        (cubeTexture) => {
-            // Geometry
-            const geometry = new THREE.SphereGeometry(1, 60, 60);
-            // Material
-            const material = new THREE.MeshBasicMaterial({
-                // CUBE TEXTURE can be used with
-                // the environment map property of
-                // a material.
-                envMap: cubeTexture
-            });
-            // Mesh
-            const mesh = new THREE.Mesh(geometry, material);
-            scene.add(mesh);
-            // CUBE TEXTURE is also an option for a background
-            scene.background = cubeTexture;
-            // render
-            renderer.render(scene, camera);
-        }
-    );
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+ //-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LOAD CUBE TEXTURE
+//-------- ----------
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+new THREE.CubeTextureLoader()
+.setPath('/img/cube/skybox/')
+.load(
+    // urls of images used in the cube texture
+    [
+        'px.jpg',
+        'nx.jpg',
+        'py.jpg',
+        'ny.jpg',
+        'pz.jpg',
+        'nz.jpg'
+    ],
+    // what to do when loading is over
+    (cubeTexture) => {
+        // Geometry
+        const geometry = new THREE.SphereGeometry(1, 60, 60);
+        // Material
+        const material = new THREE.MeshBasicMaterial({
+            // CUBE TEXTURE can be used with
+            // the environment map property of
+            // a material.
+            envMap: cubeTexture
+        });
+        // Mesh
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+        // CUBE TEXTURE is also an option for a background
+        scene.background = cubeTexture;
+        // render
+        renderer.render(scene, camera);
+    }
+);
 ```
 
 This results in a scene where I have the cube texture as the background, and I am also using it as a means of reflection with respect to the sphere. In order to get the full effect of what is going on I should add some [orbit controls](/2018/04/13/threejs-orbit-controls/), or failing that do something to move the camera around. However I just wanted to have a basic getting started type example with this sort of thing, so I do not want to do anything that further complicate this.
