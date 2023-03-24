@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-24 09:14:15
-version: 1.4
+updated: 2023-03-24 09:17:29
+version: 1.5
 ---
 
 There is a lot of ground to cover when it comes to quaternions in threejs, but one has to start somewhere with them so here we are.
@@ -107,6 +107,8 @@ renderer.render(scene, camera);
 The main point here is to look at what is going on when it comes to setting the x,y,z, and w values of Quaternion object. It is very different from what you might be used to when it comes to working with Euler objects. Just directly setting the values for the properties is not as straight forward. However there is a certain methodology here, it is a little hard to follow maybe, but still only so hard.
 
 ## 2 - Methods of the Quaternion class
+
+Just like with any other class in threejs there are a number of prototype methods to work with. I am not going to be getting around to all of them here but I think I should have a section in this post where I wrote a thing or two about maybe some of the most impotent ones to be aware of for starters. In the basic section I wrote a thing or two about the set from axis angle method and it would seem that of you are only going to bother with one method that seems like a very impotent one. However I am sure that many others will prove to be useful as well.
 
 ### 2.1 - The set from axis angle method
 
