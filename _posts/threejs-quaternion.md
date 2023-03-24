@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-24 11:30:48
-version: 1.10
+updated: 2023-03-24 11:52:06
+version: 1.11
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -21,7 +21,7 @@ In this post I am writing about [Quaternion](https://en.wikipedia.org/wiki/Quate
 
 ### Start with Euler angles, buffer geometry rotation methods, and Object3d.lookAt first if you are new to rotations
 
-If you are still fairly new to threejs and you have not looked into things like the [Euler class](/2021/04/28/threejs-euler/), and the Object3d.lookAt method I would suggest that would be a good starting point first. Working with those features are a whole world easier, it is only when you start to run into problems with them that you might want to start looking into alternatives to those features. Also when it comes to geometry there are a number of rotation methods in the buffer geometry class. Using those methods might be expensive in terms of system resources, but they are often used just once to adjust the state of a geometry, and in any case they are another way to go about rotating things.
+If you are still fairly new to threejs and you have not looked into things like the [Euler class](/2021/04/28/threejs-euler/), and the [Object3d.lookAt](/2021/05/13/threejs-object3d-lookat/) method I would suggest that would be a good starting point first. Working with those features are a whole world easier, it is only when you start to run into problems with them that you might want to start looking into alternatives to those features. Also when it comes to geometry there are a number of [rotation methods in the buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/) class. Using those methods might be expensive in terms of system resources, but they are often used just once to adjust the state of a geometry, and in any case they are another way to go about rotating things.
 
 ### The source code examples here are also on github
 
@@ -38,9 +38,11 @@ In this section I will be writing about some basic examples of quaternions. Howe
 
 ### 1.1 - Directly setting the quaternion of a mesh object using the set from axis method
 
-When it comes to mesh objects, and any object3d class based object for that matter, there is directly working with the [quaternion property of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.quaternion). This is an alternative to the object3d rotation property which is an instance of Euler. As such any change to the quaternion should also update the state of the rotation property and vice versa.
+When it comes to mesh objects, and any object3d class based object for that matter, there is directly working with the [quaternion property of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.quaternion). This is an alternative to the [object3d rotation property](/2022/04/08/threejs-object3d-rotation/) which is an instance of Euler rather than that of quaternion. As such any change to the quaternion object3d property should also update the state of the rotation property and vice versa as they are both ways to getting and setting the local rotation of an object.
 
-Maybe the best way to get started with quaternion objects would be to start working with the set from axis angle method of the quaternion class. There is also directly working with the various properties but doing so is not as easy as what you might be used to with the Euler class.
+Maybe the best way to get started with quaternion objects would be to start working with the set from axis angle method of the quaternion class. There is also directly working with the various properties, but doing so is not as easy as what you might be used to with the Euler class, more on that later in this section. For now there is just calling the set from axis angle method off of the quaternion property and passing a vector3 object that will be used to define the direction of the axis, and then an angle in radians. 
+
+Two points about these argument values to keep in mind, the vector3 normalize method and unit conversion of angles. The Vector3 object that is passed to the set from axis angle method should be normalized to a vector unit length of 1. That was the case to begin with but I am doing it anyway as a way to help be clear about this. If you are fuzzy on what what this is about then it might be a good idea to read up more on the [Vector3 normalize method](/2021/06/14/threejs-vector3-normalize/), and about vectors in general. When it comes the the angle value the method expects a radian value, if you would like to work with degrees then there is working out the simple expressions of making use of functions that there are to work with in the [math utils object](/2022/04/11/threejs-math-utils/) to help with this kind of conversion.
 
 ```js
 // ---------- ----------
