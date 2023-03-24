@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-24 08:31:02
-version: 1.2
+updated: 2023-03-24 08:33:02
+version: 1.3
 ---
 
 There is a lot of ground to cover when it comes to quaternions in threejs, but one has to start somewhere with them so here we are.
@@ -105,3 +105,4 @@ renderer.render(scene, camera);
 ```
 
 The main point here is to look at what is going on when it comes to setting the x,y,z, and w values of Quaternion object. It is very different from what you might be used to when it comes to working with Euler objects. Just directly setting the values for the properties is not as straight forward. However there is a certain methodology here, it is a little hard to follow maybe, but still only so hard.
+
