@@ -5,11 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-24 09:20:55
-version: 1.6
+updated: 2023-03-24 09:31:14
+version: 1.7
 ---
 
-There is a lot of ground to cover when it comes to quaternions in threejs, but one has to start somewhere with them so here we are.
+There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
+
+When it comes to setting the rotation of an object such as a mesh object, camera, or any kind of object3d based object one might just use the [look at method of the object3d](/2021/05/13/threejs-object3d-lookat/) class and move on with ones life. No judgment with that, it is a very useful method, I use it all the time myself. However I do so with an understanding that the look at method does have some limitations when it comes to setting the rotation of an object. The same can be said of directly working with the rotation property that stores the current object rotation in the form of a Euler object. Euler objects might be easy to understand in terms of what the deal is with the public properties of such objects, but I pay a price for that simplicity and can end up dealing with problems like [Gimbel lock](https://en.wikipedia.org/wiki/Gimbal_lock).
 
 <!-- more -->
 
