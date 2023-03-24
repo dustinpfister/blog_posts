@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-24 09:17:29
-version: 1.5
+updated: 2023-03-24 09:20:55
+version: 1.6
 ---
 
 There is a lot of ground to cover when it comes to quaternions in threejs, but one has to start somewhere with them so here we are.
@@ -14,6 +14,8 @@ There is a lot of ground to cover when it comes to quaternions in threejs, but o
 <!-- more -->
 
 ## 1 - Some basic getting started examples of Quaternion objects
+
+In this section I will be writing about some basic examples of quaternions. However I think that I have to say that even when it comes to basic examples of quaternions things might prove to be not so basic. They are a little complex and that is just simply the nature of them compared to Euler objects. However they are still only so hard and with a little effort you can at least understand what the deal is with the public properties of these kinds of objects. SO I think that will be the main thing that I will focus on in this basic section.
 
 ### 1.1 - Directly setting the quaternion of a mesh object using the set from axis method
 
