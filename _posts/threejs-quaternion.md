@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-24 08:33:02
-version: 1.3
+updated: 2023-03-24 09:14:15
+version: 1.4
 ---
 
 There is a lot of ground to cover when it comes to quaternions in threejs, but one has to start somewhere with them so here we are.
@@ -105,4 +105,145 @@ renderer.render(scene, camera);
 ```
 
 The main point here is to look at what is going on when it comes to setting the x,y,z, and w values of Quaternion object. It is very different from what you might be used to when it comes to working with Euler objects. Just directly setting the values for the properties is not as straight forward. However there is a certain methodology here, it is a little hard to follow maybe, but still only so hard.
+
+## 2 - Methods of the Quaternion class
+
+### 2.1 - The set from axis angle method
+
+From what I have gathered this far it seems like often quaternions are described as having a vector part and a scalar part. This is what the set from axis angle method comes up a lot as this just seems like a fast easy way to set the vector and scalar part of these kinds of objects. When using the set from axis method the first argument shroud be a normalized vector3 object, and then the next argument should be an angle in radians.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const geo = new THREE.SphereGeometry(1, 16, 16);
+const material = new THREE.MeshNormalMaterial({wireframe: true, wireframeLinewidth: 6});
+const mesh1 = new THREE.Mesh( geo, material);
+scene.add(mesh1);
+const arrowHelper = new THREE.ArrowHelper();
+arrowHelper.setLength(1.5);
+arrowHelper.line.material.linewidth = 6;
+scene.add(arrowHelper);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(-2, 2, 2);
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const v_axis = new THREE.Vector3();
+const e_axis = new THREE.Euler();
+//mesh1.geometry.rotateZ(e.z); // can rotate the geometry once two if i want
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = a1 * 8 % 1;
+    const a3 = Math.sin(Math.PI * (a1 * 2 % 1) );
+    e_axis.z = Math.PI / 180 * (45 * a3);
+    v_axis.set(0,1,0).applyEuler(e_axis);
+    mesh1.quaternion.setFromAxisAngle( v_axis, Math.PI * 2 * a2 );
+    mesh1.rotation.z += e_axis.z;
+    arrowHelper.setDirection(v_axis);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 2.2 - The slerp method
+
+There should be at least one or more methods that can be used to transition from one quaternion object to another quaternions object as this is often the case with many other objects in threejs. for example when it comes to the Vector3 class there is of course the lerp method that allows for me to quickly transition from one vector3 object to another vector3 object by passing the new target vector and then an alpha value that is the magnitude between the current vector and target vector to move. It would look like this is no lerp method, but there is a slerp method which is more or less the quaternion equivalent of that.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPER FUNCTIONS
+// ---------- ----------
+const setQ = (q, x, y, z, degree) => {
+    q.setFromAxisAngle( new THREE.Vector3( x, y, z ).normalize(), THREE.MathUtils.degToRad(degree) );
+};
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh1 = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+scene.add(mesh1);
+// ---------- ----------
+// QUATERNION OBJECTS
+// ---------- ----------
+const q1 = new THREE.Quaternion();
+setQ(q1,0,1,0,0);
+const q2 = new THREE.Quaternion();
+setQ(q2,0,1,0, -45);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 800;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    mesh1.quaternion.copy(q1).slerp(q2, a2);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## Conclusion
+
+There is a whole lot more to wrote about when it comes to these kinds of objects of course. I am sure that I will come around to edit and expand this post a bit now and then sure. However there are many things where I think it would be best to write a whole other post maybe rather than going off the deep end when it comes to future edits of this.
 
