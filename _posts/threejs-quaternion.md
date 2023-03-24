@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-24 09:31:14
-version: 1.7
+updated: 2023-03-24 11:12:57
+version: 1.8
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -14,6 +14,19 @@ There is a lot of ground to cover when it comes to [quaternions in threejs](http
 When it comes to setting the rotation of an object such as a mesh object, camera, or any kind of object3d based object one might just use the [look at method of the object3d](/2021/05/13/threejs-object3d-lookat/) class and move on with ones life. No judgment with that, it is a very useful method, I use it all the time myself. However I do so with an understanding that the look at method does have some limitations when it comes to setting the rotation of an object. The same can be said of directly working with the rotation property that stores the current object rotation in the form of a Euler object. Euler objects might be easy to understand in terms of what the deal is with the public properties of such objects, but I pay a price for that simplicity and can end up dealing with problems like [Gimbel lock](https://en.wikipedia.org/wiki/Gimbal_lock).
 
 <!-- more -->
+
+## Quaternion objects and what to know first
+
+In this post I am writing about [Quaternion](https://en.wikipedia.org/wiki/Quaternion) in the form of Quaternion class objects in the javaScript library known as threejs. This is not in any way a getting started post on threejs, the javaScript programming language, and other basic skills that are required before hand. In the basic section of this post I do try to keep the source code examples as simple as possible, but it should go without saying that I am making a lot of assumptions here. It is okay if you find this subject a little overwhelming at first because this is very much a more advanced subject compared to a lot of other features of threejs. In any case, regardless of skill level or experience, you might want to learn more, or refresh on a few things first.
+
+### The source code examples here are also on github
+
+I have the source code examples that I am writing about here up on my test threejs repository on Github. This is also where I park all the source code examples for my many other blog posts on threejs as well. In addition cloning down the repo, installing the packages, and starting the server might be the fastest way to get these examples as well as the many others working on your end.
+
+### Version Numbers matter
+
+When I first wrote this post I was using r146 of threejs, and as such the examples follow the style rules that I have set for that revision.
+With that said I am still using old script tags over that of JSM with these examples. There are a lot of other little details with this revision and the direction that threejs is going. However in any case I have found that I just need to always have a little section such as this to make it clear what the deal is with this sort of thing. If you used threejs as long as I have then you know what the deal is, if not threejs is a fast moving project and code breaking changes are made to if often. 
 
 ## 1 - Some basic getting started examples of Quaternion objects
 
@@ -252,4 +265,3 @@ loop();
 ## Conclusion
 
 There is a whole lot more to wrote about when it comes to these kinds of objects of course. I am sure that I will come around to edit and expand this post a bit now and then sure. However there are many things where I think it would be best to write a whole other post maybe rather than going off the deep end when it comes to future edits of this.
-
