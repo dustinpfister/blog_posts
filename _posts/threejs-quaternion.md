@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-24 11:22:26
-version: 1.9
+updated: 2023-03-24 11:30:48
+version: 1.10
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -21,7 +21,7 @@ In this post I am writing about [Quaternion](https://en.wikipedia.org/wiki/Quate
 
 ### Start with Euler angles, buffer geometry rotation methods, and Object3d.lookAt first if you are new to rotations
 
-If you are still fairly new to threejs and you have not looked into things like the Euler class, and the Object3d.lookAt method I would suggest that would be a good starting point first. Working with those features are a whole world easier, it is only when you start to run into problems with them that you might want to start looking into alternatives to those features. Also when it comes to geometry there are a number of rotation methods in the buffer geometry class. Using those methods might be expensive in terms of system resources, but they are often used just once to adjust the state of a geometry, and in any case they are another way to go about rotating things.
+If you are still fairly new to threejs and you have not looked into things like the [Euler class](/2021/04/28/threejs-euler/), and the Object3d.lookAt method I would suggest that would be a good starting point first. Working with those features are a whole world easier, it is only when you start to run into problems with them that you might want to start looking into alternatives to those features. Also when it comes to geometry there are a number of rotation methods in the buffer geometry class. Using those methods might be expensive in terms of system resources, but they are often used just once to adjust the state of a geometry, and in any case they are another way to go about rotating things.
 
 ### The source code examples here are also on github
 
