@@ -5,59 +5,54 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2023-03-16 10:58:23
-version: 1.45
+updated: 2023-03-25 11:01:48
+version: 1.46
 ---
 
-I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various feature of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also get into using blender as a way to go about making external files that I can then load into a scene.
+I have been wanting to write a series of posts on [threejs](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with threejs in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various features of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also learn a thing or two about using [blender](https://www.blender.org/) as a way to go about [making external files](/2021/04/30/threejs-dae-collada-loader/) that I can then load into a scene.
 
-Also three.js is one of those javaScript projects that is just plain awesome. Working with solid geometric space is one of the main reasons why I got into programming in the first place, so of course I need to write about this one, how can I not? So this will be a getting started post, that will kick off at least a first few [additional posts](/categories/three-js/) on this subject, and I can see it going beyond that easy.
+Also threejs is one of those javaScript projects that is just plain awesome. Working with solid geometric space is one of the main reasons why I got into programming in the first place, so of course I need to write about this one, how can I not? So this will be a getting started post, that will kick off at least a first few [additional posts](/categories/three-js/) on this subject, and I can see myself going beyond that easy.
 
 <!-- more -->
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/ClD09l-Fu-I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## What to know before getting started with three.js
 
-Of course it goes without saying that you need a decent understanding of front end javaScript, and  the related languages including HTML and CSS. However there are some additional things to be aware of as well, as this is a fairly complex library that can quickly lead in many additional directions.
+## What to know before getting started with threejs
 
-There is a lot that should be covered first before moving on to three.js, and I do not think I can cover all of it in a single blog post such as this. However I will try my best to cover at least some of the most impotent topics that one should know about before getting started with three.js.
+Of course it goes without saying that you need a decent understanding of [front end javaScript](/2018/11/27/js-getting-started/), and  the related languages including HTML and CSS. However there are some additional things to be aware of as well, as this is a fairly complex library that can quickly lead in many additional directions. There is a lot that should be covered first before moving on to threejs, and I do not think I can cover all of it in a single blog post such as this. However I will try my best to cover at least some of the most impotent topics that one should know about before getting started with three.js.
 
 ### Make sure you are hosting what you are working on via HTTP rather than the file protocol
 
-One thing that I think should be worth mentioning is that three.js and any additional assets should be hosted via http rather than the [file protocol](/2020/09/21/js-getting-started-file-protocol/). In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl + o. It is then a good idea to host what is being worked on via http, even when working on it locally. 
+One thing that I think should be worth mentioning is that threejs and any additional assets should be hosted via http rather than the [file protocol](/2020/09/21/js-getting-started-file-protocol/). In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl + o. It is then a good idea to host what is being worked on via http, even when working on it locally. 
 
 To do this one will need some way to set up and run some back end code, or at least some kind of static web sever to host a public folder via http. There are a number of ways to go about doing this, but if you like javaScript as much as I do then you will want to have some sever side code that is a nodejs script of some kind. I have wrote a post on how to go about getting started with this sort of thing by just working with [nodejs by itself by making some kind of vanilla javaScript solution for a basic web sever](/2017/12/04/nodejs-simple-static-sever-file/). However it might be best to make use of some kind of [sever side framework like express](/2018/05/24/express-static/).
-
-### A word about three.js versions
-
-Three.js is a project where the version number matters a lot, very significant changes are still being made all the time. When I first wrote this post I was using [version r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I cam around to do a little editing I was using [version r127](https://github.com/mrdoob/three.js/tree/r127).
-
-It seems like new revisions come out as often as once a month, and when they do there are a whole lot of changes. So I decided to structure things in a way in which I can make demos for each revision when I am working out my source code demos in my git hub repo where I store the source ode examples for this post.
 
 ### Some knowledge of topics outside of geometry and other topics outside of javaScript is helpful
 
 It is worth mentioning that it is a good idea to at least know a thing or two about other topics that do not pertain to javaScript, or even computer programming in general, but classical mathematics. Subjects come to mind like [geometry](https://en.wikipedia.org/wiki/Geometry), [trigonometry](https://en.wikipedia.org/wiki/Trigonometry), and many others. Getting into those subjects goes beyond the scope of this simple getting started post, and are not the kind of things that one can become solid with overnight. However don't let that overwhelm you, as three.js is very easy to work with, and getting into three.js can lead to a desire to become more knowledgeable about those topics, and many more.
 
-### You might also want to install blender
+### You might also want to install blender at some point
 
-Although it is not required for getting started at least, at some point you might want to install a 3d modeling program of some kind such as [blender](https://www.blender.org/). As you get into the depth of three.js there will come a time where you will want to create assets externally, and then import theme into three.js. There are official plug-ins for doing so, and the best supported and easiest to use one I have found is the one for blender.
+Although it is not required for getting started at least, at some point you might want to install a 3d modeling program of some kind such as [blender](https://www.blender.org/). As you get into the depth of threejs there will come a time where you will want to create assets externally, and then import theme into threejs. There are official plug-ins for doing so, and the best supported and easiest to use one I have found is the one for blender.
 
 ### Setup
 
-So three.js is very much a front end resource, so installing will not likely involve npm, unless you want to do something involving [webpack](https://webpack.js.org/) in which I guess it would involve npm. For me I did not use any package manager, and I wanted to set up a situation in which I have multiple versions of three.js in a name space, so I just grab versions of three.js manually from the [github repo](https://github.com/mrdoob/three.js), and pasted them in all low tech like.
+So threejs is very much a front end resource, so installing will not likely involve npm, unless you want to do something involving [webpack](https://webpack.js.org/) in which I guess it would involve npm. For me I did not use any package manager, and I wanted to set up a situation in which I have multiple versions of three.js in a name space, so I just grab versions of three.js manually from the [github repo](https://github.com/mrdoob/three.js), and pasted them in all low tech like.
 
 ### The source code examples for this post are on Github
 
-In my [test threejs Github repository I have the source code examples that I am using for this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-getting-started). In time I aim to hav a corresponding for post folder for each of my threejs posts as I get around to editing each of my older threejs posts.
+In my [test threejs Github repository I have the source code examples that I am using for this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-getting-started). In now also have a corresponding for post folder for each of [my threejs posts](/categories/three-js/) as I get around to editing each of my older threejs posts. Also Cloining down the repo, installing the npm packages, and running the server are great ways to get these examples up and running fast.
 
-### Version Numbers matter
+### A word about threejs versions
 
-This is one of the first blog posts that I have wrote on threejs way back in 2018, at that time I was using r91 of the library. The last time I came around to do a little editing I made some major changes to the examples here and they are working fine with r140 of the library. Although I do what I can to keep my content on threejs up to date, many of the posts might still be a bit dated. Always be mindful of what version of threejs you are using as this is still a fast moving project.
+This is one of the first blog posts that I have wrote on threejs way back in 2018, at that time I was using [r91 of the library](https://github.com/mrdoob/three.js/tree/r91). The last time I came around to do a little editing I made some major changes to the examples here and they are working fine with r140 of the library. Although I do what I can to keep my content on threejs up to date, many of the posts might still be a bit dated. Always be mindful of what version of threejs you are using as this is still a fast moving project.
+
+It seems like new revisions come out as often as once a month, and when they do there are a whole lot of changes. So I decided to structure things in a way in which I can make demos for each revision when I am working out my source code demos in my git hub repo where I store the source ode examples for this post.
 
 ## 1 - A basic overview of how to make a three.js project
 
-Three.js will contain a whole lot of constructors that each have a certain importance. There is no way that I can even touch base on all of them, let alone do them justice without having this starting to resemble a dissertation rather than a blog post.
+Threejs will contain a whole lot of constructors that each have a certain importance. There is no way that I can even touch base on all of them, let alone do them justice without having this starting to resemble a dissertation rather than a blog post.
 
 However it is possible to touch base on all of the constructors that will be in use in just about any three.js project, including the most basic examples.
 
