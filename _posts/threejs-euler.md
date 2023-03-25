@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2023-03-25 09:31:55
-version: 1.37
+updated: 2023-03-25 10:19:24
+version: 1.38
 ---
 
 In [threejs](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is an option for setting the local rotation of an object. The use of this class of object will also come into play for a wide range of other tasks that pop up now and then such as when using the [apply euler method of the vector3 class](/2021/06/18/threejs-vector3-apply-euler/).
@@ -206,7 +206,9 @@ loop();
 
 So now I have the basics of the Euler class out of the way, there are a few more methods but so far I can not say that I am using them that much in actual projects. For the most part I just want to use these methods to rotate some kind of object typically a mesh, but also groups and cameras.
 
-## 2 - The Vector3 apply Euler method and setting position from Euler
+## 2 - Vector3 objects and the Euler class
+
+### 2.1 - The Vector3 apply Euler method and setting position from Euler
 
 There is not just working with this instance of the Euler class that is stored in the rotation property of an object based off of Object3d, there is also creating a stand alone instance of Euler. There are then a number of things that can be done with this instance of Euler such as passing it to another method of another class that expects an instance of Euler as one of the arguments. A good example of that kind of method might be the apply Euler method of the Vector3 class.
 
@@ -260,6 +262,70 @@ loop();
 ```
 
 Although something like this might work okay for setting the position of a mesh object by way of the Euler class and the Vector3 class apply Euler methods there are additional ways of doing this sort of thing. In the [Vector3 class there is a set from spherical coords method](/2022/02/04/threejs-vector3-set-from-spherical-coords/) for example that takes a radius and two angles to set a position.
+
+### 2.2 - Using multiply scalar method to adjust vector unit length as well as diection using Euler
+
+After using the apply euler class to set the direction part of a vector there is then also how to go about setting the magnature, length, distance of whatever you call it. That is that although vector3 objects have an x, y, and z property they are often said to be of direction and magnature. In  other words two parts, and with that said we have all ready covered an example that has to do with setting the direction part with euler, now it is just a question of how to have control over magnature.
+
+So for this demo I am once again using the apply euler method as a way to set direction with a Euler object. However now I am also making use of the [multiply scalar method](/2022/03/23/threejs-vector3-multiply-scalar/) as a way to change the vecotr unit length as well. Before doing anything though I am calling the set method and starting with a vector with a unit length of 1. If I am dealing with a Vector that does not have a length of one to begin with I can use the [Vector3 normalize method](/2021/06/14/threejs-vector3-normalize/) to set the Vector to a length of 1 while preserving the direction. In any case it is impoatant to not start with a Vector with a length of zero or else none of this is going to work.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(5,5) );
+const group = new THREE.Group();
+let i = 0;
+while(i < 40){
+    const mesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.4, 20, 20),
+        new THREE.MeshNormalMaterial());
+    group.add(mesh);
+    i += 1;
+}
+scene.add(group);
+// ---------- ----------
+// LOOP - Using Vector3.applyEuler with an instance of THREE.Euler
+// ---------- ----------
+camera.position.set(5,5,5);
+camera.lookAt(0, 0, 0);
+const state = {
+    lt: new Date(),
+    fps: 24,
+    frame: 0,
+    frameMax: 900,
+    euler : new THREE.Euler()
+};
+const update = (secs) => {
+    const a1 = state.frame / state.frameMax;
+    group.children.forEach( (mesh, i, arr) => {
+        const a2 = (a1 + (1 / arr.length) * i) % 1;
+        state.euler.y = Math.PI * 2 * a2;
+        const radius = 3 + Math.sin( Math.PI * 10 * a2 );
+        mesh.position.set(1, 0, 0).applyEuler(state.euler).multiplyScalar(radius);
+    });
+};
+const loop = function () {
+    const now = new Date(),
+    secs = (now - state.lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs >= 1 / state.fps) {
+        update(secs);
+        renderer.render(scene, camera);
+        state.lt = now;
+        state.frame = ( state.frame += 1) % state.frameMax;
+    }
+};
+loop();
+```
 
 ## Conclusion
 
