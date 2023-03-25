@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2023-03-25 09:22:27
-version: 1.36
+updated: 2023-03-25 09:31:55
+version: 1.37
 ---
 
 In [threejs](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is an option for setting the local rotation of an object. The use of this class of object will also come into play for a wide range of other tasks that pop up now and then such as when using the [apply euler method of the vector3 class](/2021/06/18/threejs-vector3-apply-euler/).
@@ -24,13 +24,17 @@ The Euler class goes hand in hand with the [Vector3 Class](/2018/04/15/threejs-v
 
 This is a post on the Euler Class in threejs, as such I trust that you have at least some background when it comes to the basics of threejsthreejs-getting-started and javaScript in general. So if you are new to threejs you might want to start with some kind of [getting started post on threejs](/2018/04/04/threejs-getting-started/) in general as a basic starting point for the basics of setting up a scene and so forth.
 
-## There is also the Object3d look at method
+### There is also the Object3d look at method
 
-The Euler Class is one of many basic classes that you should know about sooner or later, it might be best to learn a thing or two about Euler when you are first learning the basics of making mesh rotate around. However when it comes to getting started with rotation it might me best to start out with the [look at method of the object3d class](/2021/05/13/threejs-object3d-lookat/).
+The Euler Class is one of many basic classes that you should know about sooner or later, it might be best to learn a thing or two about Euler when you are first learning the basics of making mesh rotate around. However when it comes to getting started with rotation it might me best to start out with the [look at method of the object3d class](/2021/05/13/threejs-object3d-lookat/). This is a way to just pass a set of numbers that are a point in space to have an object look at. When it comes to Vector3 objects that can also be passed to the method as well in the form of a single Vector3 objects. More often than not the look at method works just fine, I still use it all the time in my code examples. However it does have drawbacks that can result in having to look into Euler objects as a way to set orentation.
 
-## Know a thing or two about radians
+### Know a thing or two about radians
 
 The angles that are used with the Euler class will be in the form or [radians](https://en.wikipedia.org/wiki/Radian) which is something that you should be familiar with not just for the sake of the Euler class, but for the sake of just about anything that has to do with angles in a javaScript environment. If you have a hard time thinking in radians the expressions used to convert from degree to radian and back again are fairly simple, and there are also some methods in that [Math Utils object of threejs to help with angle unit conversion](/2022/04/11/threejs-math-utils/) as well.
+
+### There are also quaternions for setting local rotation
+
+Euler objects work great for the sake of rotation of objects most of the time. Another nice thing about Euler objects is that they are easy to understand compared to some more advanced options for doing object rotations. However if you spend enought time playing around with some code examples you will begin to run into probelms with them which may lean one to look into some of these more advanced options such as [quaternions](/2023/03/24/threejs-quaternion/).
 
 ### The source code examples here are on Github
 
