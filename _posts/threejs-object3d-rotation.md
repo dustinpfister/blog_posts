@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2023-03-25 10:33:40
-version: 1.27
+updated: 2023-03-25 10:35:20
+version: 1.28
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the THREE.Euler class for the current rotation of an object. This rotation property is just one value of the base class known as Object3d that is the base of many objects in the library such as [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and many others including even whole [Scene Objects](/2018/05/03/threejs-scene/).
@@ -30,7 +30,7 @@ The value of the rotation property in the object3d class is an instance of the [
 
 ### There is also the quaternion propery and with that the Quaternion class
 
-There is the rotation property of the object3d class, but there is also the quatrenion property as well. Both of these properties of the Object3d class can be used to rotate an object3d class based object. The nice thing about Euler objects is that they are easy to work with when it comes to directly working with the public properties. However Euler objects, and with that the rotation property of the object3d class has its limitations that can often be resolved by making use of the quaternion class.
+There is the rotation property of the object3d class, but there is also the quatrenion property as well. Both of these properties of the Object3d class can be used to rotate an object3d class based object. The nice thing about Euler objects is that they are easy to work with when it comes to directly working with the public properties. However Euler objects, and with that the rotation property of the object3d class has its limitations that can often be resolved by making use of the [quaternion class](/2023/03/24/threejs-quaternion).
 
 ### There is also the position property of object3d, and the Vector3 class
 
