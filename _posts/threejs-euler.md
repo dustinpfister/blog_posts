@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2023-03-25 10:19:24
-version: 1.38
+updated: 2023-03-25 10:22:56
+version: 1.39
 ---
 
 In [threejs](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is an option for setting the local rotation of an object. The use of this class of object will also come into play for a wide range of other tasks that pop up now and then such as when using the [apply euler method of the vector3 class](/2021/06/18/threejs-vector3-apply-euler/).
@@ -207,6 +207,8 @@ loop();
 So now I have the basics of the Euler class out of the way, there are a few more methods but so far I can not say that I am using them that much in actual projects. For the most part I just want to use these methods to rotate some kind of object typically a mesh, but also groups and cameras.
 
 ## 2 - Vector3 objects and the Euler class
+
+For this section I will now be looking into a few examples that have to do with setting the state of a Vector3 object using the Euler class. The general idea here is to just use the apply euler method to set the direction part of a vector3 object to the value of a Euler object. After that it is just a question of how to go about adjusting the vector unit length of the Vector3 object.
 
 ### 2.1 - The Vector3 apply Euler method and setting position from Euler
 
