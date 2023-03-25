@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2022-12-07 13:37:15
-version: 1.58
+updated: 2023-03-25 10:42:03
+version: 1.59
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), after all for the most part I just call the method, pass a Vector3 object or three numbers that is the position in space I want and object to face, and that's it. However it turns out that there is a little more to it that just that with many little cases that will pop up from time ot time. 
@@ -35,6 +35,10 @@ The look at method is just one method of the [object3d base class](/2018/04/23/t
 ### Read up more on the Vector3 class
 
 When using the look at method one option is to give and x, y, and z position as a set of three arguments in the form of javaScript number values. However the other option is to give just one argument that is an instance of the [Vector3 class which it worth checking out in detail if you have not done so yet](/2018/04/15/threejs-vector3/). There are a great deal of very useful methods for working with a 3D form of a vector in space that make quick work of various tasks that have to do with adjusting direction and vector unit length. I will be making use of many of these in this post, but there is a lot of ground to cover to do the class justice that I will not be doing here.
+
+### There is also the Euler and Quaternion classes for setting rotation
+
+For the most part the look at method is very easy to use, and also it will work without problems. However for some situations it will not work the way that you will want it to. So then to resolve the problem you might need to work out some custom solution working with a [Euler objects](/2021/04/28/threejs-euler/), or [Quaternion objects](/2023/03/24/threejs-quaternion/). The nice thing about Euler objects is that they are easy to work with, but one can also run into problems with them as well. Often it would seem that a problem with rotations might be best solved with Quaternion  objects then. They are a little hard to get started with for sure, but they are still only so hard to understand and once you have it changes are it will solve your problem.
 
 ### Source code is up on Github
 
