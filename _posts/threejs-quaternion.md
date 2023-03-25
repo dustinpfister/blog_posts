@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-25 12:01:53
-version: 1.13
+updated: 2023-03-25 14:45:09
+version: 1.14
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -271,9 +271,12 @@ const loop = () => {
 loop();
 ```
 
-## 3 - Sphere rotation animaiton loop project using the Quaternion Class
+## 3 - Sphere rotation animation loop project using the Quaternion Class
 
 Thus far I have one decent animation loop example that I have made for this post that makes use of several features of the Quaternion Class. The goal here is to rotate a sphere, but do so in a way in which I am always rotating the sphere on the axis. This means that I am always going to want to have the very top and bottom of this sphere lined up with the axis. I am then going to want to move the axis around while always rotating the sphere on this axis. So then in a way I am going to need to always preform two rotations, one to make the sphere lined up with the axis, and then another to rotate it on the axis.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/C_BMlJqrJIc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 // ---------- ----------
