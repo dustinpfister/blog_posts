@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-25 14:45:09
-version: 1.14
+updated: 2023-03-26 13:03:46
+version: 1.15
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -271,6 +271,107 @@ const loop = () => {
 loop();
 ```
 
+### 2.3 - The premultiply method
+
+Often it would seem that I am in a situation in which I need to preform not one, but two or more rotations. With that said it would seem that the premultiplication method is a decent tool for preforming this kind of task with quaternions. In this demo I am creating not one, but two quaternion objects. I am then have three mesh objects, one of which I set to the state of the first quaternion, the next I set to the other quaternion, and then I use the copy method along with the premultiply to update the third mesh object to a Premultiplication of the first and second quatrenion object.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+const makeMesh = () => {
+    const material = new THREE.MeshNormalMaterial({wireframe: true, wireframeLinewidth: 2 });
+    const mesh_parent = new THREE.Mesh(
+        new THREE.SphereGeometry(1, 12, 12),
+        material);
+    const mesh_child = new THREE.Mesh(
+        new THREE.CylinderGeometry(0, 0.25, 0.5, 8, 8),
+        material);
+    mesh_child.position.y = 1.25;
+    mesh_parent.add(mesh_child);
+    return mesh_parent;
+};
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh1 = makeMesh();
+mesh1.position.set(0, 0, -2.5);
+scene.add(mesh1);
+const mesh2 = makeMesh();
+mesh2.position.set(0, 0, 2.5);
+scene.add(mesh2);
+const mesh3 = makeMesh();
+mesh3.position.set(0, 0, 0);
+scene.add(mesh3);
+// ---------- ----------
+// SETTING ROTATION WITH QUATERNION
+// ---------- ----------
+const q = new THREE.Quaternion();
+const q1 = q.clone();
+const q2 = q.clone();
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set( 4, 4, 4 );
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const axis1 = new THREE.Vector3( 0, 0, 1 );
+const e1 = new THREE.Euler();
+const axis2 = new THREE.Vector3( 1, 0, 0 );
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = a1 * 1 % 1;
+    const a3 = a1 * (16 * Math.sin(Math.PI * a1) ) % 1;
+    const radian1 = Math.PI * 2 * a2;
+    e1.x = Math.cos(radian1);
+    e1.y = 0;
+    e1.z = Math.sin(radian1);
+    axis1.set( 0, 1, 0 ).applyEuler(e1);
+    const deg1 = 90;
+    const deg2 = 360 * a3;
+    // set q1 and q2 using setFromAxisAngle method
+    q1.setFromAxisAngle( axis1.normalize(), THREE.MathUtils.degToRad(deg1) );
+    q2.setFromAxisAngle( axis2.normalize(), THREE.MathUtils.degToRad(deg2) );
+    // update mesh object local rotations with quaternion objects
+    // where mesh1 and mesh 2 are just the current state of q1 and q2
+    // and the rotation of mesh3 is q1 premultiplyed by q2
+    mesh1.quaternion.copy(q1);
+    mesh2.quaternion.copy(q2);
+    mesh3.quaternion.copy(q1).premultiply(q2);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
 ## 3 - Sphere rotation animation loop project using the Quaternion Class
 
 Thus far I have one decent animation loop example that I have made for this post that makes use of several features of the Quaternion Class. The goal here is to rotate a sphere, but do so in a way in which I am always rotating the sphere on the axis. This means that I am always going to want to have the very top and bottom of this sphere lined up with the axis. I am then going to want to move the axis around while always rotating the sphere on this axis. So then in a way I am going to need to always preform two rotations, one to make the sphere lined up with the axis, and then another to rotate it on the axis.
@@ -330,8 +431,8 @@ const update = function(frame, frameMax){
     mesh1.quaternion.copy(q1);
     const q2 = new THREE.Quaternion();
     q2.setFromAxisAngle(v_axis, Math.PI * 2 * a4);
-    // premultiply with q2 and q1
-    mesh1.quaternion.premultiply(q2, q1);
+    // premultiply with q2
+    mesh1.quaternion.premultiply(q2);
     arrowHelper.setDirection(v_axis);
 };
 // loop
