@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2023-03-27 07:37:28
-version: 1.29
+updated: 2023-03-27 07:39:00
+version: 1.30
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the THREE.Euler class for the current rotation of an object. This rotation property is just one value of the base class known as Object3d that is the base of many objects in the library such as [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and many others including even whole [Scene Objects](/2018/05/03/threejs-scene/).
@@ -28,7 +28,7 @@ In this post I am going over some examples of the rotation property of the objec
 
 The value of the rotation property in the object3d class is an instance of the [Euler class wich is worth checking out in detail](/2021/04/28/threejs-euler/). This is the usual go to class for just about everything that has to do with angles in threejs, as such it will come up a lot in source code examples.
 
-### There is also the quaternion propery and with that the Quaternion class
+### There is also the quaternion property and with that the Quaternion class
 
 There is the rotation property of the object3d class, but there is also the quatrenion property as well. Both of these properties of the Object3d class can be used to rotate an object3d class based object. The nice thing about Euler objects is that they are easy to work with when it comes to directly working with the public properties. However Euler objects, and with that the rotation property of the object3d class has its limitations that can often be resolved by making use of the [quaternion class](/2023/03/24/threejs-quaternion).
 
@@ -44,11 +44,11 @@ There is then also what to be aware of when it comes to additional properties on
 
 ### The Source code examples in this post are on github
 
-The source code examples that I am writing about in this post [are up on Gitub](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-rotation).
+The source code examples that I am writing about in this post [are up on Gitub](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-rotation). This is also where I place the soure code examples for my [many other blog posts on threejs](/categories/three-js/) as well.
 
 ### Be mindful of version numbers with threejs
 
-When I first wrote this post I was using r135 of threejs, which was still a fairly new version of threejs at the time I started this post. The last time I came around to do some editing I made sure all the examples are still working fine with r140. I take a moment to always mention what version I was using when wrote a post on threejs because I have been using it long enough to know that code breaking changes are made to the library often.
+When I first wrote this post I was using r135 of threejs, which was still a fairly new version of threejs at the time I started this post. The last time I came around to do some editing I made sure all the examples are still working fine with r146. I take a moment to always mention what version I was using when wrote a post on threejs because I have been using it long enough to know that code breaking changes are made to the library often.
 
 ## 1 - Basic example of the rotation property of Object3d
 
