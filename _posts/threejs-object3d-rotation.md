@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2023-03-27 10:05:19
-version: 1.32
+updated: 2023-03-27 12:06:42
+version: 1.33
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores a instance of the THREE.Euler class for the current local rotation of an object. What is nice about Euler objects is that they are easy to work with compraed to some alterative options such a [Quaternion objects](https://threejs.org/docs/#api/en/math/Quaternion), however it is possible to run into problems like [Gimbal Lock](https://en.wikipedia.org/wiki/Gimbal_lock) that can be adressed with such alteratives.
@@ -32,7 +32,7 @@ The value of the rotation property in the object3d class is an instance of the [
 
 ### There is also the quaternion property and with that the Quaternion class
 
-There is the rotation property of the object3d class, but there is also the quatrenion property as well. Both of these properties of the Object3d class can be used to rotate a object. However Euler objects, and with that the rotation property of the object3d class, have some limitations that can often be resolved by making use of the [quaternion class](/2023/03/24/threejs-quaternion). Quaternion objects are far more complex compared to Euler objects, so if you are just looking for the next step beyond using the look at method Euler objects might still be a better next step before getting into Quaternions.
+There is the rotation property of the object3d class, but there is also the quatrenion property as well. Both of these properties of the Object3d class can be used to rotate a object. However Euler objects, and with that the rotation property of the object3d class, have some limitations that can often be resolved by making use of the quaternion class. Quaternion objects are far more complex compared to Euler objects, so if you are just looking for the next step beyond using the look at method Euler objects might still be a better next step before getting into Quaternions. Although I have a section in this post on quaternion objects as an althertive to Euler Objects, it might be best to check out my main post on the subject of [quaternion objects](/2023/03/24/threejs-quaternion).
 
 ### There is also the position property of object3d, and the Vector3 class
 
@@ -388,7 +388,207 @@ const loop = () => {
 loop();
 ```
 
-## 6 - Animation example of rotation and groups
+## 6 - Using Quaternion objects as an altertaive to Euler Objects
+
+There are limitations to using Euler objects, and the look at method. I will not be getting into to much detail about them here but if you spend enough time playing around with threejs you will find out what they are first hand I am sure. In this section I am going over just a few quick examples of using Quaternion objects as an alternative to using Euler objects. In other words using the object3d.quaternion property to set local rotation over that of object3d.rotation.
+
+### 6.1 - Basic Quaternion demo using the set from axis angle method
+
+The best way to get started with with Quaternion would be to make use of the set from axis angle method. This method works by passing a normalized Vector3 object that will be used to define an axis. The second argument is then a radian value that will be used to rotate the object on this axis. These quaternion objects are often described as having a vector part, and a scalar part, and this method is more or less one way how to go about setting those two parts.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#0f0f0f');
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+const mkCube = function(){
+    return new THREE.Mesh(
+       new THREE.BoxGeometry(1, 1, 1),
+       new THREE.MeshNormalMaterial());
+};
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const mesh1 = mkCube();
+scene.add(mesh1);
+// ---------- ----------
+// SETTING LOCAL ROTATION BY WAY OF QUATERNION RATHER THAN EULER
+// ---------- ----------
+const v_axis1 = new THREE.Vector3(1,1,-1).normalize();
+const radian1 = THREE.MathUtils.degToRad(45);
+mesh1.quaternion.setFromAxisAngle(v_axis1, radian1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
+```
+
+### 6.2 - Demo Showing the deal with the Euler Gimbal Lock and how Quaternion can be used to address it
+
+This is a demo in which I am showing what the deal is with Gimbal Lock, which is something that happens with Euler objects, and how Quaternion can be used to break free from it. I have two objects that are both created from the same helper function that form what looks like a crude kind of airplane type object. I then have not one but two update methods one of which updates the rotation of one of these objects by way of Euler angles, and the other buy way of Quaternion. Both update methods work find when I yaw the objects back and forth, however when I pitch up 90, the object that is using the Euler update method ends up rolling rather than yawing. On the other hand the update method that uses Quaternion works as exspected.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#0f0f0f');
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+const mkObject = function(){
+    const material = new THREE.MeshNormalMaterial({});
+    const mesh_body = new THREE.Mesh(
+       new THREE.SphereGeometry(0.5, 20, 20),
+       material);
+    const mesh_nose = new THREE.Mesh(
+        new THREE.CylinderGeometry(0, 0.25, 1, 20, 20),
+        material
+    );
+    mesh_nose.geometry.translate(0,1,0);
+    mesh_body.add(mesh_nose);
+    const mesh_wing = new THREE.Mesh(
+        new THREE.BoxGeometry(0.125,0.3,3),
+        material
+    );
+    mesh_body.add(mesh_wing);
+    const mesh_tail = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5,0.4,0.125),
+        material
+    );
+    mesh_tail.geometry.translate(0.75,0,0);
+    mesh_tail.geometry.rotateZ(Math.PI / 180 * -60);
+    mesh_body.add(mesh_tail);
+    return mesh_body;
+};
+// update By Euler ( object3d.rotation )
+const updateByEuler = (obj, a1) => {
+    let yaw = 90;
+    let pitch = 90;
+    if(a1 < 0.25){
+        // yaw back and forth
+        const a2 = ( ( a1 - 0.25 ) / 0.25 );
+        const a3 = Math.sin( Math.PI * 4 * a2 );
+        yaw = 90 - 45 * a3;
+    }
+    if(a1 >= 0.25 && a1 < 0.5){
+       obj.rotation.y = 0;
+       // pitch up 90
+       let a2 = ( a1 - 0.25 ) / 0.25;
+       pitch = 90 - 90 * a2;
+    }
+    if(a1 >= 0.5 && a1 < 0.75){
+        const a2 = ( a1 - 0.5 ) / 0.25;
+        const a3 = Math.sin( Math.PI * 4 * a2 );
+        pitch = 0;
+        yaw = 90 - 45 * a3;
+    }
+    if(a1 >= 0.75){
+       // pitch back down 90
+       let a2 = ( a1 - 0.75 ) / 0.25; 
+       pitch = 90 * a2;
+    }
+    obj.rotation.z = Math.PI / 180 * pitch;
+    obj.rotation.y = Math.PI / 180 * yaw;
+};
+// update By Quaternion ( object3d.quaternion )
+const updateByQuaternion = (obj, a1) => {
+    let yaw = 0;
+    let pitch = 90;
+    if(a1 < 0.25){
+        // yaw back and forth
+        const a2 = ( ( a1 - 0.25 ) / 0.25 );
+        const a3 = Math.sin( Math.PI * 4 * a2 );
+        yaw = 45 * a3;
+    }
+    if(a1 >= 0.25 && a1 < 0.5){
+       // pitch up 90
+       let a2 = ( a1 - 0.25 ) / 0.25; 
+       pitch = 90 - 90 * a2;
+    }
+    if(a1 >= 0.5 && a1 < 0.75){
+        // yaw back and forth
+        const a2 = ( a1 - 0.5 ) / 0.25;
+        const a3 = Math.sin( Math.PI * 4 * a2 );
+        pitch = 0;
+        yaw = 45 * a3;
+    }
+    if(a1 >= 0.75){
+       obj.rotation.y = 0;
+       // pitch back down 90
+       let a2 = ( a1 - 0.75 ) / 0.25; 
+       pitch = 90 * a2;
+    }
+    const v_axis_pitch = new THREE.Vector3(1, 0, 0);
+    const q_pitch = new THREE.Quaternion().setFromAxisAngle(v_axis_pitch, THREE.MathUtils.degToRad(pitch) );
+    const v_axis_yaw = new THREE.Vector3(0, 0, 1);
+    const q_yaw = new THREE.Quaternion().setFromAxisAngle(v_axis_yaw, THREE.MathUtils.degToRad(yaw) );
+    obj.quaternion.setFromUnitVectors(v_axis_yaw, v_axis_pitch).premultiply(q_yaw).premultiply(q_pitch);
+};
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const obj1 = mkObject();
+obj1.position.set(0,0, 0);
+scene.add(obj1);
+const obj2 = mkObject();
+obj1.position.set(0,0, -3);
+scene.add(obj2);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(-4, 4, 4);
+camera.lookAt(0,0,-1.5);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 400;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    updateByEuler(obj1, a1);
+    updateByQuaternion(obj2, a1);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 7 - Animation example of rotation and groups
 
 Now for a simple animation example using the request animation frame method in the body of a loop function. Also while I am at it I also made the cubes all children of a group rather than the scene object. So then in this animation example I am using the rotation property of the object3d class to rotate each child of the group over time, as well as the group as a whole.
 
