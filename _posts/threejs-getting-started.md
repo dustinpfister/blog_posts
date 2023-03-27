@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2023-03-25 11:01:48
-version: 1.46
+updated: 2023-03-27 15:04:10
+version: 1.47
 ---
 
 I have been wanting to write a series of posts on [threejs](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with threejs in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various features of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also learn a thing or two about using [blender](https://www.blender.org/) as a way to go about [making external files](/2021/04/30/threejs-dae-collada-loader/) that I can then load into a scene.
@@ -63,7 +63,7 @@ As such a three.js project will typically always contain at least one of the fol
 * There will need to be a renderer such as with THREE.WebGLRenderer
 * A [Mesh](/2018/05/04/threejs-mesh/) that will contain a [Geometry](/2018/04/14/threejs-geometry/), and a [Material](/2018/04/30/threejs-materials/). Such as with THREE.Mesh, THREE.BoxGeometry, and THREE.MeshBasicMaterial.
 
-### 1.1 - HTML
+### 1.a - HTML
 
 In any case you want to get three.js available in the browser one way or another, including the plain old simple way of having a script tag linking to the location of three.js. In addition you might want some kind of container element in your layout where you will inject the dom element created by the renderer that is used, unless you are okay with just appending to body.
 
@@ -108,51 +108,46 @@ As such the html of one of my demos looks like this for the moment.
 A very typical example for getting started with three.js indeed, but still it works to cover the basics of everything if you are new to three.js. Every project will involve a scene, a camera, at least one Object to look at which will be a mesh composed of a geometry, and a material. Also in order to actually see anything you will also need a render as well. That may seem like a lot at first, but once you get into this it all starts to make sense. Trust be this is one of the easiest ways to get into working with 3d objects, and can become a whole lot of fun if you give it a chance.
 
 ```js
-(function () {
-    // ---------- ---------- ----------
-    // SCENE, CAMERA, and RENDERER
-    // ---------- ---------- ----------
-    // a scene is needed to place objects in
-    const scene = new THREE.Scene();
-    // I will need an camera to look at objects in the scene
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    // In order to see anything I will also need a renderer
-    // to use with my scene, and camera
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    // I must append the dom element used by the renderer to the html
-    // that I am using. 
-    // !!!HERE I AM USING document.body IN THEN EVENT THAT YOU ARE
-    // JUST COPYING THIS OVER BUT YOU SHOUD CHANGE THIS FOR WHAT IS GOING ON
-    // WITH YOUR HTML 
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    // ---------- ---------- ----------
-    // ADD A MESH
-    // ---------- ---------- ----------
-    // I will want to add at least one Mesh to the scene so that I have 
-    // something to look at. In order to add a Mesh I will need a Geometry, and
-    // a material to skin that geometry with to create the mesh.
-    const mesh = new THREE.Mesh(new THREE.BoxGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
-    // ---------- ---------- ----------
-    // CHANGE THINGS, AND CALL RENDER METHOD
-    // ---------- ---------- ----------
-    // now that I have everything I need I can call some methods
-    // of what I have to set up my scene, camera, and renderer.
-    // I must at least add the mesh to the scene, and position the camera
-    // in a way so that it is looking at the mesh
-    scene.add(mesh);
-    camera.position.set(250, 250, 250);
-    camera.lookAt(0,0,0);
-
-    // ---------- ---------- ----------
-    // RENDER
-    // ---------- ---------- ----------
-    // finally I call renderer.render to draw the current
-    // state of the scene, from the perspective of the camera
-    renderer.render(scene, camera);
- 
-}
-    ());
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+// a scene is needed to place objects in
+const scene = new THREE.Scene();
+// I will need an camera to look at objects in the scene
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+// In order to see anything I will also need a renderer
+// to use with my scene, and camera
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+// I must append the dom element used by the renderer to the html
+// that I am using. 
+// !!!HERE I AM USING document.body IN THEN EVENT THAT YOU ARE
+// JUST COPYING THIS OVER BUT YOU SHOUD CHANGE THIS FOR WHAT IS GOING ON
+// WITH YOUR HTML 
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// ADD A MESH
+// ---------- ---------- ----------
+// I will want to add at least one Mesh to the scene so that I have 
+// something to look at. In order to add a Mesh I will need a Geometry, and
+// a material to skin that geometry with to create the mesh.
+const mesh = new THREE.Mesh(new THREE.BoxGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
+// ---------- ---------- ----------
+// CHANGE THINGS, AND CALL RENDER METHOD
+// ---------- ---------- ----------
+// now that I have everything I need I can call some methods
+// of what I have to set up my scene, camera, and renderer.
+// I must at least add the mesh to the scene, and position the camera
+// in a way so that it is looking at the mesh
+scene.add(mesh);
+camera.position.set(250, 250, 250);
+camera.lookAt(0,0,0);
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
+// finally I call renderer.render to draw the current
+// state of the scene, from the perspective of the camera
+renderer.render(scene, camera);
 ```
 
 This example will just draw a cube on the screen. So lets have a break down on everything that is going on here.
@@ -212,11 +207,11 @@ In order to see anything I will need to render it using something like Canvas, o
 
 I am of course going to want to have at least one simple animation loop example for this getting started post, I just have to do that. Thinking back to when I was first starting out with this library, yeah that was a must. With that said there are a few things to be aware of when it comes to creating a basic animation loop, not just with threejs, but in general when it comes to any kind of canvas project. For one thing the method that is general used is the [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) method, rather than one of the alternatives methods such as setTimeout.
 
-### 2.1 - Using request Animation loop with a update and movement FPS rate
+### 2.1 - Using request Animation loop with an update and movement FPS rate
 
-For a basic animation loop example I then took the source code for the general overview example that I start this post with, and just added an animation loop function at the end. There are a number of things that I could do inside the body of the animation loop function, but because this is a getting started post for now I am just updating the instance of [THREE.Euler](/2021/04/28/threejs-euler/) stored at the [rotation property of the mesh object](/2022/04/08/threejs-object3d-rotation/) to create a simple rotation effect.
+For a basic animation loop example I then took the source code for the general overview example that I start this post with, and just added an animation loop function at the end. There are a number of things that I could do inside the body of the animation loop function, but because this is a getting started post for now I am just updating the instance of [THREE.Euler](/2021/04/28/threejs-euler/) stored at the [rotation property of the mesh object](/2022/04/08/threejs-object3d-rotation/) to create a simple rotation effect of the mesh object.
 
-For this animation loop example I have two values for FPS, one of which will be used to set the target rate at which the update method will be called. The other FPS rate is used to update the rate at which a frame value will be stepped that will be used to update the state of things in the update method. This allows for me to set the rate at which the update method is called at a low rate as only about 12 frames per second, while updating the frame rate that is used to update state at a rate that is say 30 frames per second. For certian projects in which I am doing something in real time in a web page I might want to make a user interface that will allow the user to adjust the rate at which updating happens to allow them to set how much CPU overhead they would like to use or not.
+For this animation loop example I have two values for FPS, one of which will be used to set the target rate at which the update method will be called. The other FPS rate is used to update the rate at which a frame value will be stepped that will be used to update the state of things in the update method. This allows for me to set the rate at which the update method is called at a low rate as only about 12 frames per second, while updating the frame rate that is used to update state at a rate that is say 30 frames per second. For certian projects in which I am doing something in real time in a web page I might want to make a user interface that will allow the user to adjust the rate at which updating happens to allow them to set how much CPU overhead they would like to use or not, that is what this is all about.
 
 ```js
 // ---------- ---------- ----------
@@ -224,19 +219,20 @@ For this animation loop example I have two values for FPS, one of which will be 
 // ---------- ---------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
-camera.position.set(250, 250, 250);
-camera.lookAt(0,0,0);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 // ---------- ---------- ----------
 // ADD A MESH
 // ---------- ---------- ----------
-const mesh = new THREE.Mesh(new THREE.BoxGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
+scene.add( new THREE.GridHelper(10, 10) );
+const mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
 scene.add(mesh);
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
 const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
 FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
 FRAME_MAX = 120;
