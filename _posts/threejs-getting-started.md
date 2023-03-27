@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2023-03-27 15:04:10
-version: 1.47
+updated: 2023-03-27 16:19:29
+version: 1.48
 ---
 
 I have been wanting to write a series of posts on [threejs](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with threejs in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various features of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also learn a thing or two about using [blender](https://www.blender.org/) as a way to go about [making external files](/2021/04/30/threejs-dae-collada-loader/) that I can then load into a scene.
@@ -203,61 +203,228 @@ To make some kind of object to look at I need it's geometry, I will also want to
 
 In order to see anything I will need to render it using something like Canvas, or webGL. In this post I just used the webGL renderer, but there are additional renderer's available in three.js, such as the canvas renderer that uses the 2d drawing context. That will be a lot slower, but it will give greater support on platforms that do not support webGL that well.
 
-## 2 - Basic Animation loop example
+## 2 - Animation loop examples
 
 I am of course going to want to have at least one simple animation loop example for this getting started post, I just have to do that. Thinking back to when I was first starting out with this library, yeah that was a must. With that said there are a few things to be aware of when it comes to creating a basic animation loop, not just with threejs, but in general when it comes to any kind of canvas project. For one thing the method that is general used is the [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) method, rather than one of the alternatives methods such as setTimeout.
 
-### 2.1 - Using request Animation loop with an update and movement FPS rate
+### 2.1 - Fixed frame by frame loop example
 
-For a basic animation loop example I then took the source code for the general overview example that I start this post with, and just added an animation loop function at the end. There are a number of things that I could do inside the body of the animation loop function, but because this is a getting started post for now I am just updating the instance of [THREE.Euler](/2021/04/28/threejs-euler/) stored at the [rotation property of the mesh object](/2022/04/08/threejs-object3d-rotation/) to create a simple rotation effect of the mesh object.
+To start things off with this sort of thing the most basic kind of animation loop I think is one where I just step a frame on each call of the loo method. Maybe I do something to cap the frame rate or something to that effect, but for this first example I am not going to want to do anything to complex.
 
-For this animation loop example I have two values for FPS, one of which will be used to set the target rate at which the update method will be called. The other FPS rate is used to update the rate at which a frame value will be stepped that will be used to update the state of things in the update method. This allows for me to set the rate at which the update method is called at a low rate as only about 12 frames per second, while updating the frame rate that is used to update state at a rate that is say 30 frames per second. For certian projects in which I am doing something in real time in a web page I might want to make a user interface that will allow the user to adjust the rate at which updating happens to allow them to set how much CPU overhead they would like to use or not, that is what this is all about.
+There are a number of things that I could do inside the body of the animation update function, but because this is a getting started post for now I am just updating the instance of [THREE.Euler](/2021/04/28/threejs-euler/) stored at the [rotation property of the mesh object](/2022/04/08/threejs-object3d-rotation/) to create a simple rotation effect of the mesh object.
 
 ```js
-// ---------- ---------- ----------
-// SCENE, CAMERA, and RENDERER
-// ---------- ---------- ----------
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
-( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-// ---------- ---------- ----------
-// ADD A MESH
-// ---------- ---------- ----------
-scene.add( new THREE.GridHelper(10, 10) );
-const mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
-scene.add(mesh);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(box);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+if(THREE.OrbitControls){
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
 camera.position.set(2, 2, 2);
 camera.lookAt(0,0,0);
-const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-FRAME_MAX = 120;
-let secs = 0,
-frame = 0,
-lt = new Date();
-// update
-const update = function(frame, frameMax){
-    const a1 = frame / frameMax;
-    const degree = 360 * a1;
-    mesh.rotation.x = THREE.MathUtils.degToRad(degree);
+const sm = {
+   FPS_UPDATE: 30,    // FPS RATE
+   FRAME_MAX: 450,
+   secs: 0,
+   frame: 0,         // 30 / 450
+   tick: 0,          //  1 / 450 ( about 1 FPS then )
+   now: new Date(),
+   lt: new Date()
 };
-// loop
+const update = function(sm){
+    const a1 = sm.frame / sm.FRAME_MAX;
+    const degree = 360 * a1;
+    box.rotation.x = THREE.MathUtils.degToRad(degree);
+};
 const loop = () => {
-    const now = new Date(),
-    secs = (now - lt) / 1000;
+    sm.now = new Date();
+    sm.secs = (sm.now - sm.lt) / 1000;
     requestAnimationFrame(loop);
-    if(secs > 1 / FPS_UPDATE){
+    if(sm.secs > 1 / sm.FPS_UPDATE){
         // update, render
-        update( Math.floor(frame), FRAME_MAX);
+        update(sm);
         renderer.render(scene, camera);
         // step frame
-        frame += FPS_MOVEMENT * secs;
-        frame %= FRAME_MAX;
-        lt = now;
+        sm.frame = ( sm.frame += 1 ) % sm.FRAME_MAX;
+        sm.lt = sm.now;
+    }
+};
+loop();
+```
+
+This might work okay if I just want to work out some kind of animation loop idea, but there are a number of reasons why I would go with one of the other starting points in this section. The main reason why I have this here is because this is very much a getting started with threejs post. So I have a more basic kind of loop example here, but it lacks a lot of basic features that I think something like this should have.
+
+
+### 2.2 - Using request Animation loop with an update and movement FPS rate
+
+For this animation loop example I have two values for FPS, one of which will be used to set the target rate at which the update method will be called. The other FPS rate is used to update the rate at which a frame value will be stepped that will be used to update the state of things in the update method. This allows for me to set the rate at which the update method is called at a low rate as only about 12 frames per second, while updating the frame rate that is used to update state at a rate that is say 30 frames per second. For certian projects in which I am doing something in real time in a web page I might want to make a user interface that will allow the user to adjust the rate at which updating happens to allow them to set how much CPU overhead they would like to use or not, that is what this is all about.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(box);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+if(THREE.OrbitControls){
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const sm = {
+   FPS_UPDATE: 20,     // fps rate to update ( low fps for low CPU use, but choppy video )
+   FPS_MOVEMENT: 30,  // fps rate to move object by that is independent of frame update rate
+   FRAME_MAX: 450,
+   secs: 0,
+   frame_frac: 0,    // 30.888 / 450
+   frame: 0,         // 30 / 450
+   tick: 0,           //  1 / 450 ( about 1 FPS then )
+   now: new Date(),
+   lt: new Date()
+};
+const update = function(sm){
+    const a1 = sm.frame / sm.FRAME_MAX;
+    const degree = 360 * a1;
+    box.rotation.x = THREE.MathUtils.degToRad(degree);
+};
+const loop = () => {
+    sm.now = new Date();
+    sm.secs = (sm.now - sm.lt) / 1000;
+    requestAnimationFrame(loop);
+    if(sm.secs > 1 / sm.FPS_UPDATE){
+        // update, render
+        update(sm);
+        renderer.render(scene, camera);
+        // step frame
+        sm.frame_frac += sm.FPS_MOVEMENT * sm.secs;
+        sm.frame_frac %= sm.FRAME_MAX;
+        sm.frame = Math.floor(sm.frame_frac);
+        sm.tick = (sm.tick += 1) % sm.FRAME_MAX;
+        sm.lt = sm.now;
+    }
+};
+loop();
+```
+
+### 2.3 - 2d canvas draw down later animation loop example
+
+Often I find myself in a situation in which I would just like to have a simple 2d overlay to display some debug info. Also when it comes to making a full project of some kind I might just want to have a single threejs canvas layer between two or more plain old 2d canvas layers. When it comes to drawing a plain old 2d canvas to one of the canvas elements used by the WebGlrenderer, doing so is not so easy. There are ways of doing if of course such as having a canvas texture, and using that with a material for a mesh that uses plane geometry. I have made a threejs project example in which I am doing just that when it comes to doing something that way where I have one or more 2d layers as mesh objects in a scene. However for this demo I am doing things the other way around, that is to just have a simple 2d canvas, and then draw to that 2d canvas with the canvas of the webgl renderer.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+scene.background = null;
+renderer.setClearColor(0x000000, 0)
+renderer.setSize(640, 480, false);
+const canvas_2d = document.createElement('canvas');
+const ctx = canvas_2d.getContext('2d');
+canvas_2d.width = 640;
+canvas_2d.height = 480;
+const canvas_3d = renderer.domElement;
+const container = document.getElementById('demo') || document.body;
+container.appendChild(canvas_2d);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(box);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+if(THREE.OrbitControls){
+    const controls = new THREE.OrbitControls(camera, canvas_2d);
+}
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const sm = {
+   FPS_UPDATE: 12,     // fps rate to update ( low fps for low CPU use, but choppy video )
+   FPS_MOVEMENT: 30,  // fps rate to move object by that is independent of frame update rate
+   FRAME_MAX: 450,
+   secs: 0,
+   frame_frac: 0,    // 30.888 / 450
+   frame: 0,         // 30 / 450
+   tick: 0,           //  1 / 450 ( about 1 FPS then )
+   now: new Date(),
+   lt: new Date()
+};
+const update = function(sm){
+    const a1 = sm.frame / sm.FRAME_MAX;
+    const degree = 360 * a1;
+    box.rotation.x = THREE.MathUtils.degToRad(degree);
+};
+const render2d = (sm) => {
+    ctx.clearRect(0,0, canvas_2d.width, canvas_2d.height);
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+    ctx.drawImage(canvas_3d, 0, 0, canvas_2d.width, canvas_2d.height);
+    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px monospace';
+    ctx.fillText('tick              : ' + sm.tick, 5, 5)
+    ctx.fillText('frame_frac        : ' + sm.frame_frac.toFixed(3), 5, 20);
+    ctx.fillText('frame / FRAME_MAX : ' + sm.frame + '/' + sm.FRAME_MAX, 5, 35);
+};
+const loop = () => {
+    sm.now = new Date();
+    sm.secs = (sm.now - sm.lt) / 1000;
+    requestAnimationFrame(loop);
+    if(sm.secs > 1 / sm.FPS_UPDATE){
+        // update, render to 3d canvas, and then render to 2d canvas
+        update(sm);
+        renderer.render(scene, camera);
+        render2d(sm);
+        // step frame
+        sm.frame_frac += sm.FPS_MOVEMENT * sm.secs;
+        sm.frame_frac %= sm.FRAME_MAX;
+        sm.frame = Math.floor(sm.frame_frac);
+        sm.tick = (sm.tick += 1) % sm.FRAME_MAX;
+        sm.lt = sm.now;
     }
 };
 loop();
@@ -290,4 +457,3 @@ Another class of interest that you should at least be aware of is [vector3](http
 In the long run thought of course what really needs to happen sooner or later is to start making one or two real examples using three.js. That is some kind of game or animation type thing typically, so with that said maybe another step forward would be to [look at some of my basic project examples](/2021/02/19/threejs-examples/).
 
 For now I will cover some additional corners of three.js that I think stand out...
-
