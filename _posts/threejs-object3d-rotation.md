@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2023-03-27 07:39:00
-version: 1.30
+updated: 2023-03-27 07:43:20
+version: 1.31
 ---
 
-The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the THREE.Euler class for the current rotation of an object. This rotation property is just one value of the base class known as Object3d that is the base of many objects in the library such as [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and many others including even whole [Scene Objects](/2018/05/03/threejs-scene/).
+The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores and instance of the THREE.Euler class for the current local rotation of an object. This rotation property is just one value of the base class known as Object3d that is the base of many objects in the library such as [Mesh Objects](/2018/05/04/threejs-mesh/), [Groups](/2018/05/16/threejs-grouping-mesh-objects/), [Cameras](/2018/04/06/threejs-camera/), and many others including even whole [Scene Objects](/2018/05/03/threejs-scene/).
 
 When it comes to just setting the local rotation of an object by way of this property, one way is by using something like the set method of Euler to set the rotation of the object to a given set of Euler angles in terms of radian values in the form of javaScript numbers, in other worlds values between 0, and Math.PI \* 2. If you have a hard time thinking in radians there are tools that can be used to preform a quick conversion in the MathUtils object, also the expressions are not so hard to just work out when it comes to vanilla javaScript code. 
 
