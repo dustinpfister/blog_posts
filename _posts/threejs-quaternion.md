@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-26 13:03:46
-version: 1.15
+updated: 2023-03-28 07:08:28
+version: 1.16
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -372,7 +372,221 @@ const loop = () => {
 loop();
 ```
 
-## 3 - Sphere rotation animation loop project using the Quaternion Class
+## 3 - The Euler class and Quaternion class
+
+The Euler class is still often used to set an orientation of an object. Also there are a lot of reasons why I might want to use a Euler object over a Quaternion, for one thing they are easier to work with, and if I can use one without running into any major problems with it for the most part i would say they work fine. There are still limitations of Euler objects, so in this section I will be writing about what those limataitons are and how Quaternions help to address them. 
+
+### 3.1 - Converting Euler to and from Quaternion
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#0f0f0f');
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+const addMesh = (obj_parent, x, y, z) => {
+    const mesh = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+    mesh.position.set(x, y, z);
+    obj_parent.add(mesh);
+    return mesh
+};
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh1 = addMesh(scene, -1,  0,  1);
+const mesh2 = addMesh(scene,  1,  0,  1);
+const mesh3 = addMesh(scene, -1,  0, -1);
+const mesh4 = addMesh(scene,  1,  0, -1);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set( 3, 2, 3 );
+camera.lookAt( 0,0,0 );
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 800;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    // A CHANGE to the Euler of mesh1.rotation will also update mesh1.quaternion
+    // the same happens the other way around. So with an Object3d class based object
+    // conversion to and from Euler and quaternion is done automatically
+    mesh1.rotation.y = Math.PI * 2 * a1;
+    mesh2.quaternion.copy(mesh1.quaternion);
+    // when working with Objects by themselves there are methods like the setFromEuler method
+    // of the quaternion class...
+    const e1 = new THREE.Euler();
+    e1.x = Math.PI * 2 * a1;
+    const q1 = new THREE.Quaternion();
+    q1.setFromEuler(e1);
+    mesh3.quaternion.copy(q1);
+    // ...and the setFromQuaternion method of the Euler class
+    const q2 = new THREE.Quaternion();
+    const v_axis = new THREE.Vector3(1 - 2 * a1,1,-1 + 2 * a1).normalize();
+    q2.setFromAxisAngle( v_axis, Math.PI * 2 * a1 );
+    const e2 = new THREE.Euler();
+    e2.setFromQuaternion(q2)
+    mesh4.rotation.copy(e2);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 3.2 - Gimbal Lock demo Of Euler compared to doing the same with Quatenion
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#0f0f0f');
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+const mkObject = function(){
+    const material = new THREE.MeshNormalMaterial({});
+    const mesh_body = new THREE.Mesh(
+       new THREE.SphereGeometry(0.5, 20, 20),
+       material);
+    const mesh_nose = new THREE.Mesh(
+        new THREE.CylinderGeometry(0, 0.25, 1, 20, 20),
+        material
+    );
+    mesh_nose.geometry.translate(0,1,0);
+    mesh_body.add(mesh_nose);
+    const mesh_wing = new THREE.Mesh(
+        new THREE.BoxGeometry(0.125,0.3,3),
+        material
+    );
+    mesh_body.add(mesh_wing);
+    const mesh_tail = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5,0.4,0.125),
+        material
+    );
+    mesh_tail.geometry.translate(0.75,0,0);
+    mesh_tail.geometry.rotateZ(Math.PI / 180 * -60);
+    mesh_body.add(mesh_tail);
+    return mesh_body;
+};
+// get an alpha that is a part of an alpha
+const getPartAlpha = (a1, a_start, a_length) => {
+    return (a1 - a_start) / a_length;
+};
+// get pitch and yaw in deg values
+const getPitchYaw = (a1) => {
+    const result = { yaw:0, pitch:90 };
+    if(a1 < 0.25){
+        const a2 = getPartAlpha(a1, 0, 0.25);
+        result.yaw = 45 * Math.sin( Math.PI * 4 * a2 );
+    }
+    if(a1 >= 0.25 && a1 < 0.5){
+       let a2 = getPartAlpha(a1, 0.25, 0.25);
+       result.pitch = 90 - 90 * a2;
+       result.yaw = 22 * Math.sin( Math.PI * 8 * a2 );
+    }
+    if(a1 >= 0.5 && a1 < 0.75){
+        const a2 = getPartAlpha(a1, 0.5, 0.25);
+        result.pitch = 0;
+        result.yaw = 45 * Math.sin( Math.PI * 4 * a2 );
+    }
+    if(a1 >= 0.75){
+       let a2 = getPartAlpha(a1, 0.75, 0.25);
+       result.pitch = 90 * a2;
+       result.yaw = 22 * Math.sin( Math.PI * 8 * a2 );
+    }
+    return result;
+};
+// update By Euler ( object3d.rotation )
+const updateByEuler = (obj, a1) => {
+    const result = getPitchYaw(a1);
+    obj.rotation.z = Math.PI / 180 * result.pitch;
+    obj.rotation.y = Math.PI / 180 * (90 - result.yaw);
+};
+// update By Quaternion ( object3d.quaternion )
+const updateByQuaternion = (obj, a1) => {
+    const result = getPitchYaw(a1);
+    const v_axis_pitch = new THREE.Vector3(1, 0, 0);
+    const q_pitch = new THREE.Quaternion().setFromAxisAngle(v_axis_pitch, THREE.MathUtils.degToRad(result.pitch) );
+    const v_axis_yaw = new THREE.Vector3(0, 0, 1);
+    const q_yaw = new THREE.Quaternion().setFromAxisAngle(v_axis_yaw, THREE.MathUtils.degToRad(result.yaw) );
+    obj.quaternion.setFromUnitVectors(v_axis_yaw, v_axis_pitch).premultiply(q_yaw).premultiply(q_pitch);
+};
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const obj1 = mkObject();
+obj1.position.set(0,0, 0);
+scene.add(obj1);
+const obj2 = mkObject();
+obj1.position.set(0,0, -3);
+scene.add(obj2);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(-4, 4, 4);
+camera.lookAt(0,0,-1.5);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 400;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    updateByEuler(obj1, a1);
+    updateByQuaternion(obj2, a1);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 4 - Sphere rotation animation loop project using the Quaternion Class
 
 Thus far I have one decent animation loop example that I have made for this post that makes use of several features of the Quaternion Class. The goal here is to rotate a sphere, but do so in a way in which I am always rotating the sphere on the axis. This means that I am always going to want to have the very top and bottom of this sphere lined up with the axis. I am then going to want to move the axis around while always rotating the sphere on this axis. So then in a way I am going to need to always preform two rotations, one to make the sphere lined up with the axis, and then another to rotate it on the axis.
 
