@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2023-03-28 08:38:38
-version: 1.37
+updated: 2023-03-28 08:45:59
+version: 1.38
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. It works by passing a geometry to which I want the edges from and returns a new geometry that will be just the edges from the given source geometry. There is just one more additional argument when calling the constructor that is a threshold angle.
@@ -38,7 +38,7 @@ The line segments constructor that is used with the geometry that is returned by
 
 ### Source code examples for this post and many others are up on Github
 
-The source code examples for this post as well as my [many other posts on threejs](/categories/three-js/) can be found on Github in [my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-edges-geometry).
+The source code examples for this post as well as my [many other posts on threejs](/categories/three-js/) can be found on Github in [my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-edges-geometry). This is also where I have the source code examples for my [many other blog posts on threejs](/categories/three-js/). Also cloning down the repo, installing the packages, and running the server might be the fastest way to get things up and running on your end. I do try to do my best to keep these examples copy and paste friendly, but depending on things like what revision you are using, if you are using the JSM module in place of the plain out javaScript file and so forth, that might not always be the case.
 
 ### Need to keep version numbers in mind with three.js
 
