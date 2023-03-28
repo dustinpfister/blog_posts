@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-28 07:08:28
-version: 1.16
+updated: 2023-03-28 07:23:26
+version: 1.17
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -374,9 +374,11 @@ loop();
 
 ## 3 - The Euler class and Quaternion class
 
-The Euler class is still often used to set an orientation of an object. Also there are a lot of reasons why I might want to use a Euler object over a Quaternion, for one thing they are easier to work with, and if I can use one without running into any major problems with it for the most part i would say they work fine. There are still limitations of Euler objects, so in this section I will be writing about what those limataitons are and how Quaternions help to address them. 
+The Euler class is still often used to set an orientation of an object. Also there are a lot of reasons why I might want to use a Euler object over a Quaternion, for one thing they are easier to work with, and if I can use one without running into any major problems with it for the most part i would say they work fine. There are still limitations of Euler objects, so in this section I will be writing about what those limitations are and how Quaternions help to address them. Also I will want to touch base on how to convert from Euler to quaternion and back again as well, as well as anything else that might come up when it comes to Euler objects and how they related to quaternion.
 
 ### 3.1 - Converting Euler to and from Quaternion
+
+If I am dealing with the rotation and quaternion properties of any object3d class based object then conversion to and from Euler is done automatically. If I change the state of the Euler object stored at the rotation property of a mesh, camera, or any other object3d based object that in turn will also update the state of the quaternion property of such objects as well. It is only when dealing with stand alone objects where I might need to use the set from Euler method of the Quaternion class or the set from Quaternion method of the Euler class.
 
 ```js
 // ---------- ----------
@@ -458,7 +460,9 @@ const loop = () => {
 loop();
 ```
 
-### 3.2 - Gimbal Lock demo Of Euler compared to doing the same with Quatenion
+### 3.2 - Gimbal Lock demo Of Euler compared to doing the same with Quaternion
+
+One major draw back with the Euler class is that I can end up running into problems that have to do with Gimbal lock. This is an issue where two axis of rotation will become aligned with each other and as such I and up losing an axis of control, or one kind of rotation will turn into another. For example in this demo I have two objects that are comped of a collection of mesh objects that look like airplanes kind of. I also have two rotation update methods for them, one of which makes use of Euler objects and the other makes use of Quaternion objects to do so. Both objects update just fine when pitch is at 90, but when I pitch both objects up 90 to 0 so they are both pointing up, yaw turns into roll for the object that is updated by way of Euler angles. However with the quaternion object yaw is still yaw and things are working as expected.
 
 ```js
 // ---------- ----------
