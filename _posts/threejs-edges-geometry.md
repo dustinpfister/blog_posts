@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2023-03-28 07:50:24
-version: 1.36
+updated: 2023-03-28 08:38:38
+version: 1.37
 ---
 
-The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. 
+The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. It works by passing a geometry to which I want the edges from and returns a new geometry that will be just the edges from the given source geometry. There is just one more additional argument when calling the constructor that is a threshold angle.
 
-I became aware of how this constructor can be useful when I took a second look into how to go about working with [wire frames when updating my post on that subject](/2019/12/19/threejs-wireframe/) in three.js. When it comes to wire frame mode that works more or less as expected, however it will work by showing all the triangles of a geometry, not just the edges of a geometry as a line, or collection of line segments. So when it comes to creating another kind of wire frame mode that is just the edges of a geometry this edges geometry constructor can help with that when used with the [line constructor](/2018/04/19/threejs-line/) in place of the use of the [mesh constructor](/2018/05/04/threejs-mesh/).
+I became aware of how this constructor can be useful when I took a second look into how to go about working with [wire frames when updating my post on that subject](/2019/12/19/threejs-wireframe/) in threejs. When it comes to wire frame mode that works more or less as expected, however it will work by showing all the triangles of a geometry, not just the edges of a geometry as a line, or collection of line segments. So when it comes to creating another kind of wire frame mode that is just the edges of a geometry this edges geometry constructor can help with that when used with the [line constructor](/2018/04/19/threejs-line/) in place of the use of the [mesh constructor](/2018/05/04/threejs-mesh/).
 
 This subject then deserves at least one stand alone post on the topic then, as there are some stations in which I might want to use this in place of what is typically used.
 
@@ -22,7 +22,7 @@ This subject then deserves at least one stand alone post on the topic then, as t
 
 ## The Edges geometry constructor and what to know first.
 
-This is a post on the THREE.EdgesGeometry constructor function in the javaScript library known as three.js. In order to gain something of value from reading this it is called for to have at least some background on these subjects as I will not be getting into the very basics of three.js and javaScript here. I will however take a moment to go over a few things that you might want to read up on more if you find this post a little to advanced still.
+This is a post on the THREE.EdgesGeometry constructor function in the javaScript library known as threejs. In order to gain something of value from reading this it is called for to have at least some background on these subjects as I will not be getting into the [very basics of threejs](/2018/04/04/threejs-getting-started/) and javaScript here. I will however take a moment to go over a few things that you might want to read up on more if you find this post a little to advanced still.
 
 ### Read up a bit more on buffer geometry in general first
 
