@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2023-03-29 08:39:35
-version: 1.28
+updated: 2023-03-29 08:59:39
+version: 1.29
 ---
 
 When working on a project that involves threejs and a little javaScript, I am often in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new end position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -184,7 +184,7 @@ renderer.render(scene, camera);
 
 ## 3 - Animation examples
 
-In order to really gain a good sense of what the lerp method is all about I should work out at least a few if not more animation examples.
+In order to really gain a good sense of what the lerp method is all about I should work out at least a few if not more animation examples. these are then examples in which I am using the vector3 lerp method, but also many other tools to create animation loop projects. There is atrting out with simple ones, but then also exploring all kinds of other use case examples with this feature of the library.
 
 ### 3.1 - Basic animation loop example
 
