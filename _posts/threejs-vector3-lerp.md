@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2023-03-29 08:10:28
-version: 1.27
+updated: 2023-03-29 08:39:35
+version: 1.28
 ---
 
 When working on a project that involves threejs and a little javaScript, I am often in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new end position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -36,38 +36,35 @@ When I first wrote this post I was using r135 of threejs, and the last time I ca
 
 ## 1 - Basic vector3 lerp example
 
-For this basic section example I will be setting the position of just onbe mesh object with two vector3 class objects, as well as the copy and lerp methods of the Vector3 class.
+For this basic section example I will be setting the position of just one mesh object with two vector3 class objects along with copy and of course the lerp vector3 class prototype methods. The v1 Vector3 is then the start point that I want and with that I can use the copy method to copy the values of this vector3 to the vector3 of the position property of the mesh object. After that I can use the lerp method to set the position to a point that is say in quarter of the way between v1 and v2 by passing v2 as the first argument and the 0.25 as the alpha value.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER, LIGHT
-    //-------- ----------
-    let scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
-    let camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(-8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    let renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    scene.add(camera);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const mesh1 = new THREE.Mesh( new THREE.BoxGeometry(1,1,1) );
-    scene.add(mesh1);
-    // v1 and v2 vectors
-    const v1 = new THREE.Vector3(-5, 0, 0);
-    const v2 = new THREE.Vector3(5, 0, 0);
-    // position mesh1 at 0.25 alpha between v1 and v2
-    mesh1.position.copy(v1).lerp( v2, 0.25);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER, LIGHT
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(camera);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
+const mesh1 = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1));
+scene.add(mesh1);
+// v1 and v2 vectors
+const v1 = new THREE.Vector3(-5, 0, 0);
+const v2 = new THREE.Vector3(5, 0, 0);
+// position mesh1 at 0.25 alpha between v1 and v2
+mesh1.position.copy(v1).lerp(v2, 0.25);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(-8, 8, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 2 - The Vector3 lerp method, arrays of vectors, and lines
@@ -80,44 +77,51 @@ A few years back I wrote a [post on the subject of lines in threejs](/2018/04/19
 So sense the process of creating a line involves making an array of Vector3 class instances I can then use the clone method alone with lerp as a way to draw a line in space. This however will result in a straight line though which kind of defeats the purpose of having a lengthly array of points if they are all on the same slop though. However I can of course just use the lerp method as part of the process of creating the points along with a method like the add method of the vector3 class which I can use to ad deltas to points that are along the straight line if that makes any sense.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER, LIGHT
-    let scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
-    let camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(-8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    let renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    scene.add(camera);
-    // creating an array of Vector3 instances
-    // using clone, LERP, and add methods
-    var points = [];
-    var v1 = new THREE.Vector3(5, 0, 5),
-    v2 = new THREE.Vector3(-5, 0, -5);
-    var i = 0, len = 100;
-    while(i < len){
-        var per = i / ( len - 1 ),
-        x = Math.cos( Math.PI * 6 * per ),
-        y = -2 + 4 * per;
-        points.push( v1.clone().lerp(v2, per).add( new THREE.Vector3(x, y ,0) ) );
-        i += 1;
-    }
-    // geometry from points array
-    var geometry = new THREE.BufferGeometry().setFromPoints( points );
-    // line object
-    var line = new THREE.Line(
-            geometry,
-            new THREE.LineBasicMaterial({
-                color: 0x0000ff,
-                linewidth: 6
-            }));
-    scene.add(line)
-    // render
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, RENDERER, LIGHT
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(camera);
+//-------- ----------
+// V3 ARRAY
+//-------- ----------
+// creating an array of Vector3 instances
+// using clone, LERP, and add methods
+const points = [];
+const v1 = new THREE.Vector3(5, 0, 5),
+v2 = new THREE.Vector3(-5, 0, -5);
+let i = 0, len = 100;
+while (i < len) {
+    const per = i / (len - 1),
+    x = Math.cos(Math.PI * 6 * per),
+    y = -2 + 4 * per;
+    points.push(v1.clone().lerp(v2, per).add(new THREE.Vector3(x, y, 0)));
+    i += 1;
 }
-    ());
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
+// geometry from points array
+const geometry = new THREE.BufferGeometry().setFromPoints(points);
+// line object
+const line = new THREE.Line(
+        geometry,
+        new THREE.LineBasicMaterial({
+            color: 0x0000ff,
+            linewidth: 6
+        }));
+scene.add(line);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(-8, 8, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ### 2.2 - Using the apply Euler method with lerp and add as well with lines
@@ -127,48 +131,55 @@ Another cool method of the [Vector3 class is the apply Euler method](/2021/06/18
 Anyway for this example of the vector3 lerp method I wanted to just do something with the lerp method combines with the apply Euler method and add methods of the Vector3 class. The result this time is a weird and interesting kind of line that I made with these methods.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER, LIGHT
-    let scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
-    let camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(-8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    let renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    scene.add(camera);
-    // createing an array of Vector3 instances
-    // using clone, LERP, and add methods
-    var points = [];
-    let v1 = new THREE.Vector3(5, 0, 5),
-    v2 = new THREE.Vector3(-5, 0, -5);
-    let i = 0, len = 100;
-    while(i < len){
-        let per = i / ( len - 1 ),
-        e1 = new THREE.Euler();
-        e1.x = Math.PI * 8 * per;
-        e1.z = Math.PI * 8 * per;
-        // vector3
-        let v3 = new THREE.Vector3();
-        v3.y = Math.pow(2, 2 * per)
-        points.push( v1.clone().lerp(v2, per).applyEuler(e1).add( v3 ) );
-        i += 1;
-    }
-    // geometry from points array
-    let geometry = new THREE.BufferGeometry().setFromPoints( points );
-    // line object
-    let line = new THREE.Line(
-            geometry,
-            new THREE.LineBasicMaterial({
-                color: 0x0000ff,
-                linewidth: 6
-            }));
-    scene.add(line)
-    // render
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, RENDERER, LIGHT
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(camera);
+//-------- ----------
+// V3ARRAY
+//-------- ----------
+// creating an array of Vector3 instances
+// using clone, LERP, and add methods
+const points = [];
+const v1 = new THREE.Vector3(5, 0, 5),
+v2 = new THREE.Vector3(-5, 0, -5);
+let i = 0, len = 100;
+while (i < len) {
+    const per = i / (len - 1),
+    e1 = new THREE.Euler();
+    e1.x = Math.PI * 8 * per;
+    e1.z = Math.PI * 8 * per;
+    // vector3
+    const v3 = new THREE.Vector3();
+    v3.y = Math.pow(2, 2 * per)
+        points.push(v1.clone().lerp(v2, per).applyEuler(e1).add(v3));
+    i += 1;
 }
-    ());
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
+// geometry from points array
+const geometry = new THREE.BufferGeometry().setFromPoints(points);
+// line object
+const line = new THREE.Line(
+        geometry,
+        new THREE.LineBasicMaterial({
+            color: 0x0000ff,
+            linewidth: 6
+        }));
+scene.add(line);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(-8, 8, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 3 - Animation examples
@@ -180,48 +191,51 @@ In order to really gain a good sense of what the lerp method is all about I shou
 For this basic animation loop example of the Vector3 lerp method I will be using the vector3 set method as a way to set the position property of a mesh object to a given home location of 5,0,0 and then use the lerp method to lerp from 5,0,0 to -5,0,0 over the course of a certain number of frames and back again. The end result is then a basic hello world style example of what the lerp method is all about I have two points in which I want to move an object between based on a value between 0 and 1.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER, LIGHT
-    let scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
-    let camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    let renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    scene.add(camera);
-    let light = new THREE.PointLight(0xffffff);
-    light.position.set(1, 2, 4);
-    scene.add(light);
-    // MESH
-    let geo = new THREE.BoxGeometry(1, 1, 1);
-    let material = new THREE.MeshStandardMaterial({
-            color: 0x00ff00
-        });
-    let mesh = new THREE.Mesh(geo, material);
-    scene.add(mesh);
-    // LOOP
-    let lt = new Date(),
-    f = 0, 
-    fm = 300; 
-    let loop = function(){
-        let now = new Date();
-        let secs = ( now - lt ) / 1000;
-        let p = f / fm,
-        b = 1 - Math.abs(0.5 - p) / 0.5;
-        requestAnimationFrame(loop);
-        // BASIC LERP EXPRESSION between 5,0,0 and -5,0,0
-        mesh.position.set(5,0,0).lerp( new THREE.Vector3(-5, 0, 0), b );
-        // render
-        renderer.render(scene, camera);
-        f += 30 * secs;
-        f %= fm;
-        lt = now;
-    };
-    loop();
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER, LIGHT
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(camera);
+const light = new THREE.PointLight(0xffffff);
+light.position.set(1, 2, 4);
+scene.add(light);
+//-------- ----------
+// SCENE CHILDREN
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
+const geo = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshStandardMaterial({
+        color: 0x00ff00
+    });
+const mesh = new THREE.Mesh(geo, material);
+scene.add(mesh);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+let lt = new Date(),
+f = 0,
+fm = 300;
+const loop = function () {
+    const now = new Date();
+    const secs = (now - lt) / 1000;
+    const p = f / fm,
+    b = 1 - Math.abs(0.5 - p) / 0.5;
+    requestAnimationFrame(loop);
+    // BASIC LERP EXPRESSION between 5,0,0 and -5,0,0
+    mesh.position.set(5, 0, 0).lerp(new THREE.Vector3(-5, 0, 0), b);
+    // render
+    renderer.render(scene, camera);
+    f += 30 * secs;
+    f %= fm;
+    lt = now;
+};
+loop();
 ```
 
 So that is the basic idea of what the lerp method is for, now the rest of this post will just be yet even more examples that branch off of this lerp method.
@@ -231,73 +245,76 @@ So that is the basic idea of what the lerp method is for, now the rest of this p
 Now that I have the basic example out of the way it is clear what the lerp method does, but now there is the question of how to go about lerping in a way that is not so linear. One way would be to just go about working out some kind of expression for the alpha value that makes used of the [Math.pow method](/2019/12/10/js-math-pow/) for example.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER, LIGHT
-    let scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
-    let camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    let renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    scene.add(camera);
-    let light = new THREE.PointLight(0xffffff);
-    light.position.set(1, 2, 4);
-    scene.add(light);
-    // MESH
-    let mkMesh = function(){
-        return new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1), 
-            new THREE.MeshStandardMaterial({
-                color: 0x00ff00
-            })
-        );
-    };
-    // HELPER METHOD USING LERP AND MATH POW
-    let lerpPow = function(a, b, n, alpha){
-        let alphaPow = Math.pow( n, 1 + ( ( n - 1 ) * alpha) ) / Math.pow( n, n );
-        return a.clone().lerp(b, alphaPow);
-    };
- 
-    let mesh1 = mkMesh();
-    scene.add(mesh1);
-    let mesh2 = mkMesh();
-    scene.add(mesh2);
-    let mesh3 = mkMesh();
-    scene.add(mesh3);
-    // LOOP
-    let lt = new Date(),
-    f = 0, 
-    fm = 300; 
-    let v1 = new THREE.Vector3( 5, 0, 0);
-    let v2 = new THREE.Vector3(-5, 0, 0);
-    let loop = function(){
-        let now = new Date();
-        let secs = ( now - lt ) / 1000;
-        let p = f / fm,
-        b = 1 - Math.abs(0.5 - p) / 0.5;
-        requestAnimationFrame(loop);
-        // BASIC LERP EXPRESSION between 5,0,0 and -5,0,0
-        //mesh.position.set(5,0,0).lerp( new THREE.Vector3(-5, 0, 0), b );
-        mesh1.position.copy( lerpPow(v1, v2, 4, b) );
-        mesh2.position.copy( lerpPow(
-            v1.clone().add( new THREE.Vector3(0, 0, 2) ), 
-            v2.clone().add( new THREE.Vector3(0, 0, 2) ), 
-            6, b) );
-        mesh3.position.copy( lerpPow(
-             v1.clone().add( new THREE.Vector3(0, 0, 4) ), 
-             v2.clone().add( new THREE.Vector3(0, 0, 4) ),
-             8, b) );
-        // render
-        renderer.render(scene, camera);
-        f += 30 * secs;
-        f %= fm;
-        lt = now;
-    };
-    loop();
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER, LIGHT
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(camera);
+const light = new THREE.PointLight(0xffffff);
+light.position.set(1, 2, 4);
+scene.add(light);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// MESH
+const mkMesh = function () {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshStandardMaterial({
+            color: 0x00ff00
+        }));
+};
+// HELPER METHOD USING LERP AND MATH POW
+const lerpPow = function (a, b, n, alpha) {
+    const alphaPow = Math.pow(n, 1 + ((n - 1) * alpha)) / Math.pow(n, n);
+    return a.clone().lerp(b, alphaPow);
+};
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
+const mesh1 = mkMesh();
+scene.add(mesh1);
+const mesh2 = mkMesh();
+scene.add(mesh2);
+const mesh3 = mkMesh();
+scene.add(mesh3);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+let lt = new Date(),
+f = 0,
+fm = 300;
+const v1 = new THREE.Vector3(5, 0, 0);
+const v2 = new THREE.Vector3(-5, 0, 0);
+const loop = function () {
+    const now = new Date();
+    const secs = (now - lt) / 1000;
+    const p = f / fm,
+    b = 1 - Math.abs(0.5 - p) / 0.5;
+    requestAnimationFrame(loop);
+    mesh1.position.copy(lerpPow(v1, v2, 4, b));
+    mesh2.position.copy(lerpPow(
+            v1.clone().add(new THREE.Vector3(0, 0, 2)),
+            v2.clone().add(new THREE.Vector3(0, 0, 2)),
+            6, b));
+    mesh3.position.copy(lerpPow(
+            v1.clone().add(new THREE.Vector3(0, 0, 4)),
+            v2.clone().add(new THREE.Vector3(0, 0, 4)),
+            8, b));
+    // render
+    renderer.render(scene, camera);
+    f += 30 * secs;
+    f %= fm;
+    lt = now;
+};
+loop();
 ```
 
 ## Conclusion
