@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-28 07:23:26
-version: 1.17
+updated: 2023-03-29 11:51:43
+version: 1.18
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -590,7 +590,124 @@ const loop = () => {
 loop();
 ```
 
-## 4 - Sphere rotation animation loop project using the Quaternion Class
+## 4 - User space methods for quaternions
+
+There are a whole lot of great prototype methods to work with in the Quaternion class, however there is not going to be everything of course. Some times I might just need to have some kind of user space methods because some kind of function is just not baked into the prototype at all. Other times there might be something to work with, but there might be some reason to have something that does the same thing in a slightly different way.
+
+### 4.1 - A get axis angle method
+
+As I have covered in the methods section there is the set from axis angle method that can be used to set the state of a quaternion with a normalized vector3 object and an angle in radians for the scalar. However what if I need to [get those values from a quaternion in the event that they are not known](https://stackoverflow.com/questions/62457529/how-do-you-get-the-axis-and-angle-representation-of-a-quaternion-in-three-js)? For this demo I have a get axis radian from quaternion method that will get the axis angle from a quaternion. The w value of the quaternion is very much what I want when it comes to this. However I will need to make use of an expression that involves the use of [Math.acos](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/acos) in other to get a workable radian value.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const getAxisRadianFromQuaternion = (q) => {
+    return 2 * Math.acos( q.w );
+};
+//-------  ----------
+// OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh1 = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+scene.add(mesh1);
+// ---------- ----------
+// Getting axis angle from quaternion
+// ---------- ----------
+// creating a quaternion from Euler
+const e1 = new THREE.Euler();
+e1.y = THREE.MathUtils.degToRad(35);
+e1.x = THREE.MathUtils.degToRad(0);
+const q1 = new THREE.Quaternion().setFromEuler(e1);
+mesh1.quaternion.copy(q1);
+// getting axis angle in radians
+const radian_axis = getAxisRadianFromQuaternion(q1);
+console.log(THREE.MathUtils.radToDeg(radian_axis)); // 35
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
+```
+
+### 4.2 - Get axis vector method
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// helper functions
+// ---------- ----------
+const getAxisFromQuaternion = (q) => {
+  let s = 1;
+  if ( !(1 - q.w * q.w < Number.MIN_VALUE) ) {
+    s = Math.sqrt(1 - q.w * q.w);
+  }
+  return new THREE.Vector3(q.x / s, q.y / s, q.z / s);
+};
+const getAxisRadianFromQuaternion = (q) => {
+    return 2 * Math.acos( q.w );
+};
+// get a vector to use to make an arrow for an angle
+const getAngleVector = (deg) => {
+    const v = new THREE.Vector3();
+    const e = new THREE.Euler();
+    e.y = THREE.MathUtils.degToRad(deg);
+    return v.set(1,0,0).applyEuler(e);
+};
+// create an arrow and set the direction to the given vector3
+const createArrow = (v3, x) => {
+    const arrow = new THREE.ArrowHelper();
+    arrow.position.set(x, 0.01, 0);
+    arrow.setDirection(v3);
+    return arrow;
+};
+// ---------- ----------
+// QUATERNION
+// ---------- ----------
+const q = new THREE.Quaternion();
+const v_axis = new THREE.Vector3( -1, 1, 0 ).normalize();
+const deg = 360 - 0.001;
+q.setFromAxisAngle( v_axis, Math.PI / 180 * deg );
+// ---------- ----------
+// GET AXIS AND ANGLE FROM QUATERNION
+// ---------- ----------
+const v_axis2 = getAxisFromQuaternion(q);
+const deg2 = THREE.MathUtils.radToDeg( getAxisRadianFromQuaternion(q)  );
+console.log( v_axis, deg);
+console.log( v_axis2, deg2 );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+scene.add( createArrow(v_axis, 0) );
+scene.add( createArrow(v_axis2, 1) );
+scene.add( createArrow(getAngleVector(deg), 0) );
+scene.add( createArrow(getAngleVector(deg2), 1) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(1, 1, 3);
+camera.lookAt(0.5,0,0);
+renderer.render(scene, camera);
+```
+
+## 5 - Sphere rotation animation loop project using the Quaternion Class
 
 Thus far I have one decent animation loop example that I have made for this post that makes use of several features of the Quaternion Class. The goal here is to rotate a sphere, but do so in a way in which I am always rotating the sphere on the axis. This means that I am always going to want to have the very top and bottom of this sphere lined up with the axis. I am then going to want to move the axis around while always rotating the sphere on this axis. So then in a way I am going to need to always preform two rotations, one to make the sphere lined up with the axis, and then another to rotate it on the axis.
 
