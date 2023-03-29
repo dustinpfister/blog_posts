@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2023-03-29 09:32:21
-version: 1.30
+updated: 2023-03-29 09:39:49
+version: 1.31
 ---
 
 When working on a project that involves threejs and a little javaScript, I am often in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new end position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -188,6 +188,8 @@ The lerp method is a great little tool, but there are some alternative [options 
 
 ## 3.1 - Basic LineCurve3 example
 
+To start out with this there is making a curve that is actually just a line. This might not really be a curve in a sense, but it is a object that has all the base curve class prototype methods such as the get point method that will return a vector3 object along this line. Also I would like to start this section off with a basic example and what is nice about THREE.LineCurve3 is that is just needs to vector3 objects when calling it which are a start point and an end point.
+
 ```js
 //-------- ----------
 // SCENE, CAMERA, RENDERER, LIGHT
@@ -220,7 +222,11 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
+So then the same thing can be done more or less with curves, but the nice thing about curves is that there are of course other built in options for them other than THREE.LineCurve3.
+
 ### 3.2 - Cubic Bezier curve3 demo
+
+So I have covered the basic example using LineCurve3 that can be used to do more or less the same thing as with the lerp method, but now it is time to see about making use of one of the other built in curve options that allow for one or more control point arguments. When making the control point vectors I can make use of vector3 class methods like clone and lerp to create a new vector3 from the start vector3, and then lerp to a point along a straight line that is half way or another other point that is a good place to start depending on the number of control points.
 
 ```js
 //-------- ----------
