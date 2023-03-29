@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-29 11:51:43
-version: 1.18
+updated: 2023-03-29 11:56:02
+version: 1.19
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -640,6 +640,8 @@ renderer.render(scene, camera);
 ```
 
 ### 4.2 - Get axis vector method
+
+On top of getting a workable axis angle from a quantization in the event that it is not known I might also end up in situations in which I would want to get a vector3 object of the axis from a quaternion as well.
 
 ```js
 // ---------- ----------
