@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2023-03-29 07:53:04
-version: 1.26
+updated: 2023-03-29 08:10:28
+version: 1.27
 ---
 
 When working on a project that involves threejs and a little javaScript, I am often in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new end position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -28,11 +28,11 @@ There are a lot of other methods in the [Vector3 class that are also work checki
 
 ### The source code examples in this post are on Github
 
-The source code examples in this post can also be found in my [test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-lerp). This is also where I park the source code examples for my [many other blog posts on threejs](/categories/three-js/) as well.
+The source code examples in this post can also be found in my [test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-lerp). This is also where I park the source code examples for my [many other blog posts on threejs](/categories/three-js/) as well. Also cloning down the repo, installing packages and starting the server might be the best way to quickly get these examples and many more working on your end.
 
 ### Version numbers matter
 
-When I first wrote this post I was using r135 of threejs, and the last time I came around to do some editing I was using r140.
+When I first wrote this post I was using r135 of threejs, and the last time I came around to do some editing I was using r146. A lot has been changing with threejs as of late, and there is now even more to write about when it comes to the deal with revision numbers. As of this writing I am still sticking to using old script tags over that of JSM. That will have to change at some point as three.min.js will no longer be supported in a future revision. There is also the fact that code breaking changes are made in fairly often so if things so not working so great on your end that would be the first thing I would check.
 
 ## 1 - Basic vector3 lerp example
 
@@ -91,7 +91,7 @@ So sense the process of creating a line involves making an array of Vector3 clas
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
     scene.add(camera);
-    // createing an array of Vector3 instances
+    // creating an array of Vector3 instances
     // using clone, LERP, and add methods
     var points = [];
     var v1 = new THREE.Vector3(5, 0, 5),
