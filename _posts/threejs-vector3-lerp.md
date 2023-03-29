@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2023-03-29 07:46:14
-version: 1.24
+updated: 2023-03-29 07:49:04
+version: 1.25
 ---
 
 When working on a project that involves threejs and a little javaScript, I am often in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new end position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -26,14 +26,13 @@ This is a post that centers around just a single method of the Vector3 class in 
 
 There are a lot of other methods in the [Vector3 class that are also work checking out in greater detail](/2018/04/15/threejs-vector3/). Many of these methods will be used in the various source code examples in this post, so there is a lot to look into with the various other methods in order to start doing things that are interesting with lerping. For example often I will not want to just call lerp off of a Vector3 instance, I might want to clone it first which is another Vector3 class method that will return a copy of the Vector3 so I then lerp off of that copy rather than mutating the state of a source vector3.
 
+### The source code examples in this post are on Github
+
+The source code examples in this post can also be found in my [test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-lerp). This is also where I park the source code examples for my [many other blog posts on threejs](/categories/three-js/) as well.
+
 ### Version numbers matter
 
 When I first wrote this post I was using r135 of threejs, and the last time I came around to do some editing I was using r140.
-
-### The source code examples in this post are on Github
-
-The source code examples in this post can also be found in my [test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-lerp).
-
 
 ## 1 - Basic vector3 lerp example
 
