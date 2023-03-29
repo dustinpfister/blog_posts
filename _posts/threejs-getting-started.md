@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2023-03-27 16:19:29
-version: 1.48
+updated: 2023-03-29 13:55:00
+version: 1.49
 ---
 
 I have been wanting to write a series of posts on [threejs](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with threejs in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various features of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also learn a thing or two about using [blender](https://www.blender.org/) as a way to go about [making external files](/2021/04/30/threejs-dae-collada-loader/) that I can then load into a scene.
@@ -24,9 +24,9 @@ Of course it goes without saying that you need a decent understanding of [front 
 
 ### Make sure you are hosting what you are working on via HTTP rather than the file protocol
 
-One thing that I think should be worth mentioning is that threejs and any additional assets should be hosted via http rather than the [file protocol](/2020/09/21/js-getting-started-file-protocol/). In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl + o. It is then a good idea to host what is being worked on via http, even when working on it locally. 
+One thing that I think should be worth mentioning is that threejs and any additional assets should be hosted via http rather than the [file protocol](/2020/09/21/js-getting-started-file-protocol/). In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl + o. It might work okay in some situations, but I have found that often I will run into problems with the file protocol that need to be resoved by lossening by browser security settings, or hosting what I am working on over http.
 
-To do this one will need some way to set up and run some back end code, or at least some kind of static web sever to host a public folder via http. There are a number of ways to go about doing this, but if you like javaScript as much as I do then you will want to have some sever side code that is a nodejs script of some kind. I have wrote a post on how to go about getting started with this sort of thing by just working with [nodejs by itself by making some kind of vanilla javaScript solution for a basic web sever](/2017/12/04/nodejs-simple-static-sever-file/). However it might be best to make use of some kind of [sever side framework like express](/2018/05/24/express-static/).
+To do this one will need some way to set up and run some back end code, or at least some kind of static web sever to host a public folder via http or https. There are a number of ways to go about doing this, but if you like javaScript as much as I do then you will want to have some sever side code that is a nodejs script of some kind. This is great because there is a how world of back end javaScript code for doing things in the back end without having to learn a whole other programing language. I have wrote a post on how to go about getting started with this sort of thing by just working with [nodejs by itself by making some kind of vanilla javaScript solution for a basic web sever](/2017/12/04/nodejs-simple-static-sever-file/). However it might be best to make use of some kind of [sever side framework like express](/2018/05/24/express-static/).
 
 ### Some knowledge of topics outside of geometry and other topics outside of javaScript is helpful
 
@@ -60,7 +60,7 @@ As such a three.js project will typically always contain at least one of the fol
 
 * An instance of [THREE.Scene](/2018/05/03/threejs-scene/)
 * At least one camera typically [THREE.PerspectiveCamera](/2018/04/07/threejs-camera-perspective/)
-* There will need to be a renderer such as with THREE.WebGLRenderer
+* There will need to be a renderer such as with [THREE.WebGLRenderer](/2018/11/24/threejs-webglrenderer/)
 * A [Mesh](/2018/05/04/threejs-mesh/) that will contain a [Geometry](/2018/04/14/threejs-geometry/), and a [Material](/2018/04/30/threejs-materials/). Such as with THREE.Mesh, THREE.BoxGeometry, and THREE.MeshBasicMaterial.
 
 ### 1.a - HTML
@@ -103,7 +103,34 @@ As such the html of one of my demos looks like this for the moment.
 </html>
 ```
 
-### 1.2 - The basic three.js cube example
+### 1.b - The Scene
+
+Full post on [Scene](/2018/05/03/threejs-scene/)
+
+The [Scene](https://threejs.org/docs/index.html#api/en/scenes/Scene) is the space in which everything will go, your objects, cameras, and anything else that would be placed in a scene like a light source. Once you have a scene we will want to add things into it, like an object of some kind to look at with a camera. 
+
+To do this I will want to call the Object3D add method, and give it a [Mesh](https://threejs.org/docs/index.html#api/en/objects/Mesh), that is composed of a [Geometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry), and a [Material](https://threejs.org/docs/index.html#api/en/materials/Material). I will touch base on all of that, because you should have at least a basic knowledge of all of those things, but not get into depth here, as each of these things could use there own posts.
+
+### 1.c - The Camera
+
+Full post on [Camera](/2018/04/06/threejs-camera/)
+
+There is a core class Called [Camera](https://threejs.org/docs/index.html#api/en/cameras/Camera) that has some methods and properties that are shared across all camera types that are used in three.js. 
+
+Like most objects in three.js, a Camera inherits from Object3D which gives it methods to help make changing the position, and orientation of the Camera pretty easy.
+
+There are then four camera types to choose from, in this post I am only briefly covering the [perspective camera](https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera).
+
+### 1.d - Geometry, Material, and Mesh.
+
+To make some kind of object to look at I need it's geometry, I will also want to skin that geometry with some kind Of Material, and I will want to tie those two things together into a Mesh. In the example in this Post I used BoxGeometry to quickly create a Cube, and Just a [basic Material](/2018/05/05/threejs-basic-material/) with a [Mesh](/2018/05/04/threejs-mesh/).
+
+### 1.e - Renderer
+
+In order to see anything I will need to render it using something like Canvas, or webGL. In this post I just used the webGL renderer, but there are additional renderer's available in three.js, such as the canvas renderer that uses the 2d drawing context. That will be a lot slower, but it will give greater support on platforms that do not support webGL that well.
+
+
+### 1.1 - The basic three.js cube example
 
 A very typical example for getting started with three.js indeed, but still it works to cover the basics of everything if you are new to three.js. Every project will involve a scene, a camera, at least one Object to look at which will be a mesh composed of a geometry, and a material. Also in order to actually see anything you will also need a render as well. That may seem like a lot at first, but once you get into this it all starts to make sense. Trust be this is one of the easiest ways to get into working with 3d objects, and can become a whole lot of fun if you give it a chance.
 
@@ -152,56 +179,6 @@ renderer.render(scene, camera);
 
 This example will just draw a cube on the screen. So lets have a break down on everything that is going on here.
 
-### 1.3 - The Scene
-
-Full post on [Scene](/2018/05/03/threejs-scene/)
-
-The [Scene](https://threejs.org/docs/index.html#api/en/scenes/Scene) is the space in which everything will go, your objects, cameras, and anything else that would be placed in a scene like a light source. Once you have a scene we will want to add things into it, like an object of some kind to look at with a camera. 
-
-To do this I will want to call the Object3D add method, and give it a [Mesh](https://threejs.org/docs/index.html#api/en/objects/Mesh), that is composed of a [Geometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry), and a [Material](https://threejs.org/docs/index.html#api/en/materials/Material). I will touch base on all of that, because you should have at least a basic knowledge of all of those things, but not get into depth here, as each of these things could use there own posts.
-
-```js
-var scene = new THREE.Scene(); // Scene
-scene.add(new THREE.Mesh( // Mesh
-    new THREE.BoxGeometry(200, 200, 200), // Geometry
-    new THREE.MeshBasicMaterial({ // Material
-        color: 0xff0000,
-        wireframe: true
-    })
-));
-```
-
-### 1.4 - The Camera
-
-Full post on [Camera](/2018/04/06/threejs-camera/)
-
-There is a core class Called [Camera](https://threejs.org/docs/index.html#api/en/cameras/Camera) that has some methods and properties that are shared across all camera types that are used in three.js. 
-
-Like most objects in three.js, a Camera inherits from Object3D which gives it methods to help make changing the position, and orientation of the Camera pretty easy.
-
-```js
-var fieldOfView = 45,
-aspectRatio = 16 / 9,
-near = 1,
-far = 1000,
- 
-// I can now make an instance of Perspective Camera
-camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
- 
-// move the camera to 250,250,250, and look at the origin.
-camera.position.set(250,250,250);
-camera.lookAT(0,0,0);
-```
-
-There are then four camera types to choose from, in this post I am only briefly covering the [perspective camera](https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera).
-
-### 1.5 - Geometry, Material, and Mesh.
-
-To make some kind of object to look at I need it's geometry, I will also want to skin that geometry with some kind Of Material, and I will want to tie those two things together into a Mesh. In the example in this Post I used BoxGeometry to quickly create a Cube, and Just a [basic Material](/2018/05/05/threejs-basic-material/) with a [Mesh](/2018/05/04/threejs-mesh/).
-
-### 1.6 - Renderer
-
-In order to see anything I will need to render it using something like Canvas, or webGL. In this post I just used the webGL renderer, but there are additional renderer's available in three.js, such as the canvas renderer that uses the 2d drawing context. That will be a lot slower, but it will give greater support on platforms that do not support webGL that well.
 
 ## 2 - Animation loop examples
 
