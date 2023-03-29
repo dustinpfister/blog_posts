@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2023-03-29 08:59:39
-version: 1.29
+updated: 2023-03-29 09:32:21
+version: 1.30
 ---
 
 When working on a project that involves threejs and a little javaScript, I am often in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new end position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -182,11 +182,92 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 3 - Animation examples
+## 3 - Curves as an alternative to vector3 lerp
 
-In order to really gain a good sense of what the lerp method is all about I should work out at least a few if not more animation examples. these are then examples in which I am using the vector3 lerp method, but also many other tools to create animation loop projects. There is atrting out with simple ones, but then also exploring all kinds of other use case examples with this feature of the library.
+The lerp method is a great little tool, but there are some alternative [options when it comes to curves](/2022/06/17/threejs-curve/), at least when it comes to moving objects around in a scene. The same effect that can be done with the Vector3 lerp method can also be done with THREE.LineCurve3 and the get point method of the base curve class along with the copy method of the Vector3 class. However there are also a number of other options when it comes to creating curve objects that allow for one or more control points in space as well.
 
-### 3.1 - Basic animation loop example
+## 3.1 - Basic LineCurve3 example
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER, LIGHT
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(camera);
+//-------- ----------
+// CURVE
+//-------- ----------
+const v_start = new THREE.Vector3(-5, 0, 0);
+const v_end = new THREE.Vector3(5, 0, 0);
+const curve = new THREE.LineCurve3(v_start, v_end);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
+const mesh1 = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1));
+scene.add(mesh1);
+console.log(curve.getPoint(0));
+mesh1.position.copy( curve.getPoint(0.25) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(-8, 8, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 3.2 - Cubic Bezier curve3 demo
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER, LIGHT
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(camera);
+//-------- ----------
+// CURVE
+//-------- ----------
+const v_start = new THREE.Vector3(-5, 0, 0);
+const v_end = new THREE.Vector3(5, 0, 0);
+const v_control1 = v_start.clone().lerp(v_end, 0.25).add( new THREE.Vector3(0,5,-10) );
+const v_control2 = v_start.clone().lerp(v_end, 0.75).add( new THREE.Vector3(0,-5,10) );
+const curve = new THREE.CubicBezierCurve3(v_start, v_control1, v_control2, v_end);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10, 0xffffff, 0xffffff));
+let i = 0;
+const count = 24;
+while(i < count){
+    const mesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.25, 20, 20),
+        new THREE.MeshNormalMaterial());
+    const a_pos = ( i + 0.5) / count;
+    mesh.position.copy( curve.getPoint(a_pos) );
+    scene.add(mesh);
+    i += 1;
+}
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(-4, 5, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 4 - Animation examples
+
+In order to really gain a good sense of what the lerp method is all about I should work out at least a few if not more animation examples. these are then examples in which I am using the vector3 lerp method, but also many other tools to create animation loop projects. There is starting out with simple ones, but then also exploring all kinds of other use case examples with this feature of the library.
+
+### 4.1 - Basic animation loop example
 
 For this basic animation loop example of the Vector3 lerp method I will be using the vector3 set method as a way to set the position property of a mesh object to a given home location of 5,0,0 and then use the lerp method to lerp from 5,0,0 to -5,0,0 over the course of a certain number of frames and back again. The end result is then a basic hello world style example of what the lerp method is all about I have two points in which I want to move an object between based on a value between 0 and 1.
 
@@ -240,7 +321,7 @@ loop();
 
 So that is the basic idea of what the lerp method is for, now the rest of this post will just be yet even more examples that branch off of this lerp method.
 
-### 3.2 - Using Math pow in an expression to create an alpha value
+### 4.2 - Using Math pow in an expression to create an alpha value
 
 Now that I have the basic example out of the way it is clear what the lerp method does, but now there is the question of how to go about lerping in a way that is not so linear. One way would be to just go about working out some kind of expression for the alpha value that makes used of the [Math.pow method](/2019/12/10/js-math-pow/) for example.
 
