@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 987
-updated: 2023-03-29 07:49:04
-version: 1.25
+updated: 2023-03-29 07:53:04
+version: 1.26
 ---
 
 When working on a project that involves threejs and a little javaScript, I am often in a situation in which I have an object at one position and I want to translation the object from that one starting position to a new end position. There are a number of ways of doing that, but in the [Vector3 class there is a method that can be used to quickly preform a kind of linear lerp](https://threejs.org/docs/#api/en/math/Vector3.lerp) from one point to another that I think I should write a blog post on.
@@ -171,13 +171,13 @@ Anyway for this example of the vector3 lerp method I wanted to just do something
     ());
 ```
 
-## 3 - Animaiton examples
+## 3 - Animation examples
 
 In order to really gain a good sense of what the lerp method is all about I should work out at least a few if not more animation examples.
 
-### 3.1 - Basic animaiton loop exmaple
+### 3.1 - Basic animation loop example
 
-For this basic animaiton loop example of the Vector3 lerp method I will be using the vector3 set method as a way to set the position property of a mesh object to a given home location of 5,0,0 and then use the lerp method to lerp from 5,0,0 to -5,0,0 over the course of a certain number of frames and back again. The end result is then a basic hello world style example of what the lerp method is all about I have two points in which I want to move an object between based on a value between 0 and 1.
+For this basic animation loop example of the Vector3 lerp method I will be using the vector3 set method as a way to set the position property of a mesh object to a given home location of 5,0,0 and then use the lerp method to lerp from 5,0,0 to -5,0,0 over the course of a certain number of frames and back again. The end result is then a basic hello world style example of what the lerp method is all about I have two points in which I want to move an object between based on a value between 0 and 1.
 
 ```js
 (function () {
