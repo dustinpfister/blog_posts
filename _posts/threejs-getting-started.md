@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2023-03-29 13:55:00
-version: 1.49
+updated: 2023-03-29 13:59:28
+version: 1.50
 ---
 
 I have been wanting to write a series of posts on [threejs](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with threejs in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various features of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also learn a thing or two about using [blender](https://www.blender.org/) as a way to go about [making external files](/2021/04/30/threejs-dae-collada-loader/) that I can then load into a scene.
@@ -24,7 +24,7 @@ Of course it goes without saying that you need a decent understanding of [front 
 
 ### Make sure you are hosting what you are working on via HTTP rather than the file protocol
 
-One thing that I think should be worth mentioning is that threejs and any additional assets should be hosted via http rather than the [file protocol](/2020/09/21/js-getting-started-file-protocol/). In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl + o. It might work okay in some situations, but I have found that often I will run into problems with the file protocol that need to be resoved by lossening by browser security settings, or hosting what I am working on over http.
+One thing that I think should be worth mentioning is that threejs and any additional assets should be hosted via http rather than the [file protocol](/2020/09/21/js-getting-started-file-protocol/). In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl + o. It might work okay in some situations, but I have found that often I will run into problems with the file protocol that need to be resolved by lossening by browser security settings, or hosting what I am working on over http.
 
 To do this one will need some way to set up and run some back end code, or at least some kind of static web sever to host a public folder via http or https. There are a number of ways to go about doing this, but if you like javaScript as much as I do then you will want to have some sever side code that is a nodejs script of some kind. This is great because there is a how world of back end javaScript code for doing things in the back end without having to learn a whole other programing language. I have wrote a post on how to go about getting started with this sort of thing by just working with [nodejs by itself by making some kind of vanilla javaScript solution for a basic web sever](/2017/12/04/nodejs-simple-static-sever-file/). However it might be best to make use of some kind of [sever side framework like express](/2018/05/24/express-static/).
 
@@ -249,9 +249,7 @@ loop();
 ```
 
 This might work okay if I just want to work out some kind of animation loop idea, but there are a number of reasons why I would go with one of the other starting points in this section. The main reason why I have this here is because this is very much a getting started with threejs post. So I have a more basic kind of loop example here, but it lacks a lot of basic features that I think something like this should have.
-
-
-### 2.2 - Using request Animation loop with an update and movement FPS rate
+### 2.2 - Using request Animation frame with an Update FPS and movement FPS rate
 
 For this animation loop example I have two values for FPS, one of which will be used to set the target rate at which the update method will be called. The other FPS rate is used to update the rate at which a frame value will be stepped that will be used to update the state of things in the update method. This allows for me to set the rate at which the update method is called at a low rate as only about 12 frames per second, while updating the frame rate that is used to update state at a rate that is say 30 frames per second. For certian projects in which I am doing something in real time in a web page I might want to make a user interface that will allow the user to adjust the rate at which updating happens to allow them to set how much CPU overhead they would like to use or not, that is what this is all about.
 
@@ -318,9 +316,9 @@ const loop = () => {
 loop();
 ```
 
-### 2.3 - 2d canvas draw down later animation loop example
+### 2.3 - 2d canvas draw down layer animation loop example
 
-Often I find myself in a situation in which I would just like to have a simple 2d overlay to display some debug info. Also when it comes to making a full project of some kind I might just want to have a single threejs canvas layer between two or more plain old 2d canvas layers. When it comes to drawing a plain old 2d canvas to one of the canvas elements used by the WebGlrenderer, doing so is not so easy. There are ways of doing if of course such as having a canvas texture, and using that with a material for a mesh that uses plane geometry. I have made a threejs project example in which I am doing just that when it comes to doing something that way where I have one or more 2d layers as mesh objects in a scene. However for this demo I am doing things the other way around, that is to just have a simple 2d canvas, and then draw to that 2d canvas with the canvas of the webgl renderer.
+Often I find myself in a situation in which I would just like to have a simple 2d overlay to display some debug info. Also when it comes to making a full project of some kind I might just want to have a single threejs canvas layer between two or more plain old 2d canvas layers. When it comes to drawing a plain old 2d canvas to one of the canvas elements used by the WebGlrenderer, doing so is not so easy. There are ways of doing it of course such as having a canvas texture, and using that with a material for a mesh that uses plane geometry. I have made a [threejs project example](/2023/03/10/threejs-examples-camera-planes/) in which I am doing just that when it comes to doing something that way where I have one or more 2d layers as mesh objects in a scene. However for this demo I am doing things the other way around, that is to just have a simple 2d canvas, and then draw to that 2d canvas with the canvas of the webgl renderer.
 
 ```js
 // ---------- ----------
