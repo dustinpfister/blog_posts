@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2023-03-29 13:59:28
-version: 1.50
+updated: 2023-03-30 10:55:33
+version: 1.51
 ---
 
 I have been wanting to write a series of posts on [threejs](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with threejs in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various features of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also learn a thing or two about using [blender](https://www.blender.org/) as a way to go about [making external files](/2021/04/30/threejs-dae-collada-loader/) that I can then load into a scene.
@@ -405,6 +405,187 @@ const loop = () => {
 loop();
 ```
 
+## 3 - Stochastic animation loop example
+
+Often I like to make projects that I will end up using in the process of making some kind of video project. However I think that I should have at least one or more demos that are good starting points for some kind of system that makes use of user input
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+scene.background = null;
+renderer.setClearColor(0x000000, 0)
+renderer.setSize(640, 480, false);
+const canvas_2d = document.createElement('canvas');
+const ctx = canvas_2d.getContext('2d');
+canvas_2d.width = 640;
+canvas_2d.height = 480;
+const container = document.getElementById('demo') || document.body;
+container.appendChild(canvas_2d);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(box);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+let controls = null;
+if(THREE.OrbitControls){
+    controls = new THREE.OrbitControls(camera, canvas_2d);
+}
+// ---------- ----------
+// ALPHA CONTROLS
+// ---------- ----------
+const ac = {
+    x: 420, y:20,
+    h: 100, w: 200,
+    items: {}
+};
+ac.items.speed = { desc: 'speed', a: 0.75 };
+ac.items.axisx = { desc: 'axisX', a: 0.25 };
+ac.items.axisz = { desc: 'axisZ', a: 0.25 };
+ac.itemCount = Object.keys(ac.items).length;
+// for each item method
+ac.forEachItem = (forItem) => {
+    const keys = Object.keys(ac.items);
+    keys.forEach( (key, i, arr) => {
+        const item = ac.items[key];
+        forItem(item, i, arr);
+    });
+};
+// get an item by index
+ac.getItem = (i) => {
+    const keys = Object.keys(ac.items);
+    return ac.items[keys[i]];
+};
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const sm = {
+   pointer_current: new THREE.Vector2(),
+   uidown: false,
+   pointerdown: false,
+   FPS_UPDATE: 20,     // fps rate to update ( low fps for low CPU use, but choppy video )
+   FPS_MOVEMENT: 30,  // fps rate to move object by that is independent of frame update rate
+   FRAME_MAX: 900,
+   secs: 0,
+   frame_frac: 0,    // 30.888 / 450
+   frame: 0,         // 30 / 450
+   tick: 0,           //  1 / 450 ( about 1 FPS then )
+   now: new Date(),
+   lt: new Date()
+};
+const update = function(sm){
+    const a1 = sm.frame / sm.FRAME_MAX;
+    const degree = 360 * (20 * ac.items.speed.a) * a1;
+    box.rotation.x = THREE.MathUtils.degToRad( 90 * ac.items.axisx.a);
+    box.rotation.y = THREE.MathUtils.degToRad(degree);
+    box.rotation.z = THREE.MathUtils.degToRad( 90 * ac.items.axisz.a);
+};
+const render2d = (sm) => {
+    // background
+    ctx.fillStyle = 'rgba(0,0,0,1)';
+    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+    // draw webGl renderer dom element
+    ctx.drawImage(renderer.domElement, 0, 0, canvas_2d.width, canvas_2d.height);
+    // debug info
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left'
+    ctx.font = '10px monospace';
+    ctx.fillText('tick              : ' + sm.tick, 5, 5)
+    ctx.fillText('frame_frac        : ' + sm.frame_frac.toFixed(3), 5, 20);
+    ctx.fillText('frame / FRAME_MAX : ' + sm.frame + '/' + sm.FRAME_MAX, 5, 35);
+    ctx.fillText('pos current : ' + sm.pointer_current.x.toFixed(2) + ',' + sm.pointer_current.y.toFixed(2), 5, 45);
+    // alpha controls
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(ac.x, ac.y, ac.w, ac.h);
+    ac.forEachItem( (item, i, arr) => {
+        ctx.fillStyle = 'red';
+        const h = ac.h / arr.length;
+        ctx.fillRect(ac.x, ac.y + h * i + 2, ac.w * item.a, h - 2);
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(item.desc, ac.x + ac.w / 2, ac.y + h / 2 + h * i);
+    } );
+};
+const loop = () => {
+    sm.now = new Date();
+    sm.secs = (sm.now - sm.lt) / 1000;
+    requestAnimationFrame(loop);
+    if(sm.secs > 1 / sm.FPS_UPDATE){
+        // update, render to 3d canvas, and then render to 2d canvas
+        update(sm);
+        renderer.render(scene, camera);
+        render2d(sm);
+        // step frame
+        sm.frame_frac += sm.FPS_MOVEMENT * sm.secs;
+        sm.frame_frac %= sm.FRAME_MAX;
+        sm.frame = Math.floor(sm.frame_frac);
+        sm.tick = (sm.tick += 1) % sm.FRAME_MAX;
+        sm.lt = sm.now;
+    }
+};
+loop();
+// ---------- ----------
+// EVENTS
+// ---------- ----------
+const boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+    return !(
+        (y1 + h1) < y2 ||
+        y1 > (y2 + h2) ||
+        (x1 + w1) < x2 ||
+        x1 > (x2 + w2));
+};
+const pointerEventCommon = (e) => {
+    const el = e.target;
+    const bx = el.getBoundingClientRect();
+    // update pointer
+    const x = sm.pointer_current.x = e.clientX - bx.left;
+    const y = sm.pointer_current.y = e.clientY - bx.top;
+    // was the alpha control ui clicked? and if so which item
+    sm.uidown = false;
+    if( boundingBox(x, y, 1, 1, ac.x, ac.y, ac.w, ac.h) && sm.pointerdown){
+        sm.uidown = true;
+        let a_y = (y - ac.y) / ac.h;
+        a_y = THREE.MathUtils.clamp(a_y, 0, 0.99);
+        a_x = (x - ac.x) / ac.w;
+        a_x = THREE.MathUtils.clamp(a_x, 0, 0.99);
+        i_item = Math.floor(ac.itemCount * a_y);
+        ac.getItem(i_item).a = a_x;
+    }
+};
+canvas_2d.addEventListener('pointerdown', (e) => {
+    sm.pointerdown = true;
+    pointerEventCommon(e);
+    if(THREE.OrbitControls){
+        controls.enabled = !sm.uidown;
+    }
+});
+canvas_2d.addEventListener('pointermove', (e) => {
+    pointerEventCommon(e);
+});
+canvas_2d.addEventListener('pointerup', (e) => {
+    sm.pointerdown = false;
+    pointerEventCommon(e);
+    if(THREE.OrbitControls){
+        controls.enabled = true;
+    }
+});
+```
+
 ## Conclusion, and what to check out next
 
 Three.js is the kind of library where you really need to devote at least a solid month or more in order to start to get a little solid with it. I am still learning myself, but I think there are some additional aspects of this library that are very important, while others are kind of optional depending on the kind of projects I aim to make. For example if I want to make games I might want to know about the [lambert material](/2018/04/08/threejs-lambert-material/), as it is more efficient then the standard material. However if I aim to make something that does not need to run in real time I might choose to go with the standard material, as it gives a more realistic look.
@@ -417,17 +598,17 @@ I first wrote this post back in April of 2018, and as of this writing it is now 
 
 If you are still fairly new to three.js but have some of the basics worked out maybe it would be a good idea to work out a whole bunch of examples where you are just using the Box Geometry Constructor. There is not just having a Cube on the screen, but doing a whole word of things with that cube. For example there is moving it, rotating it, using an array of materials rather than just one, changing what the index values are for those materials, doing things with light and shadow and so forth. With that said maybe [my post on the Box Geometry Constructor](/2021/04/26/threejs-box-geometry/) will be a good next step from here.
 
-### 5.3 - Object3D
+### Object3D
 
 A real good class to start really learning a thing ot two about would be the Object3D class, I wrote a [post on Object3D](/2018/04/23/threejs-object3d/), and there is also of course the [official docs on Object3D](https://threejs.org/docs/index.html#api/en/core/Object3D). This is not something that you typically work with directly, but is a class that is used in many of the objects in three.js that helps to make working with three.js easy. It gives Objects like Camera, and Mesh methods like lookAT, and position.set.
 
-### 5.4 - Vector3
+### Vector3
 
 Read my full [post on Vector3](/2018/04/15/threejs-vector3/)
 
 Another class of interest that you should at least be aware of is [vector3](https://threejs.org/docs/index.html#api/en/math/Vector3), This is what you want to use when defining a point in 3d Space.
 
-### 5.5 - Check out my project examples
+### Check out my project examples
 
 In the long run thought of course what really needs to happen sooner or later is to start making one or two real examples using three.js. That is some kind of game or animation type thing typically, so with that said maybe another step forward would be to [look at some of my basic project examples](/2021/02/19/threejs-examples/).
 
