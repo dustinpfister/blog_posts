@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2022-10-06 07:31:44
-version: 1.34
+updated: 2023-03-30 07:15:59
+version: 1.35
 ---
 
 [Data textures](https://threejs.org/docs/#api/en/textures/DataTexture) are a way to go about creating textures in threejs than can then be used for one of the various map options for materials. When it comes to using data textures as a way to create textures with javaScrript code in threejs I just need to know how to produce the texture that I want in terms of a [Unit8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) with a set of four values, one for each color channel and a single alpha transparency channel. That is that I need to create an array with integer values between and including the range of 0 to 255 for red, green, blue and alpha for each pixel. Once I have that I can just pass that array, along with a width and height value to the THREE.DataTexture constructor function and the returned result will be a texture that I can then use for the various maps of a material such as the standard material that in turn can be used with a geometry to skin a mesh object.
@@ -56,10 +56,8 @@ I then have a loop in which I am figuring out what the values should be for each
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // TEXTURE
@@ -94,6 +92,8 @@ scene.add(plane);
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -104,14 +104,17 @@ I have wrote a number of posts at this point on the [Vector3 class in threejs](/
 For this example I am doing more or less the same thing as in the basic example, but now I am using the distance to method of the Vector2 class as a way to get a distance value from a current pixel location to that of the center of the texture. I can then use this as a main to come up with different color channel values for each pixel in the texture.
 
 ```js
-// scene, camera, and renderer
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// TEXTURE
+//-------- ----------
 // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
 // Using the distanceTo method of the Vector2 class
 const width = 16, height = 16;
@@ -134,6 +137,9 @@ for ( let i = 0; i < size; i ++ ) {
 }
 const texture = new THREE.DataTexture( data, width, height );
 texture.needsUpdate = true;
+//-------- ----------
+// OBJECTS
+//-------- ----------
 // creating a mesh with this texture as a color map
 const box = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
@@ -142,7 +148,11 @@ const box = new THREE.Mesh(
     })
 );
 scene.add(box);
-// render
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -151,14 +161,17 @@ renderer.render(scene, camera);
 Now for a quick example using the [math random](/2020/04/21/js-math-random/) method to create color channel values. There are of course a great number of ways that I could go about doing this sort of thing, but for this example I just went with creating a single value that will be used for each color channel. So in other words I am doing a kind of random gray scale color effect here.
 
 ```js
-// scene, camera, and renderer
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// TEXTURE
+//-------- ----------
 // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
 // To create a texture using the Math.random method
 const width = 16, height = 16;
@@ -174,6 +187,9 @@ for ( let i = 0; i < size; i ++ ) {
 }
 const texture = new THREE.DataTexture( data, width, height );
 texture.needsUpdate = true;
+//-------- ----------
+// OBJECTS
+//-------- ----------
 // creating a mesh with this texture as a color map
 const box = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
@@ -182,7 +198,11 @@ const box = new THREE.Mesh(
     })
 );
 scene.add(box);
-// render
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -191,16 +211,19 @@ renderer.render(scene, camera);
 I just also wrote a new post on the [math utils object](/2022/04/11/threejs-math-utils/) in threejs, and one interesting method in there is a seeded random method that will work like math random, with one little difference. Each time I reload the page I see the same texture rather than a new one. So then  this seeded random method is a way to get an effect like that of what happens when using the math random method, but in a deterministic kind of way which is cool.
 
 ```js
-// scene, camera, and renderer
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// TEXTURE
+//-------- ----------
 // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
-// Uisng the seeded random method of the MathUtils object
+// Using the seeded random method of the MathUtils object
 const width = 16, height = 16;
 const size = width * height;
 const data = new Uint8Array( 4 * size );
@@ -214,6 +237,9 @@ for ( let i = 0; i < size; i ++ ) {
 }
 const texture = new THREE.DataTexture( data, width, height );
 texture.needsUpdate = true;
+//-------- ----------
+// OBJECTS
+//-------- ----------
 // creating a mesh with this texture as a color map
 const box = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
@@ -222,7 +248,11 @@ const box = new THREE.Mesh(
     })
 );
 scene.add(box);
-// render
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -243,12 +273,9 @@ In my animation loop I am then using the update texture method passing option ob
 // SCENE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-//scene.add(new THREE.GridHelper(8,8))
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // ADD A LIGHT BECUASE THIS IS THE STANDARD MATERIAL THAT I AM USING
@@ -386,6 +413,8 @@ scene.add(group);
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
 const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
 FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
 FRAME_MAX = 300;
@@ -432,7 +461,6 @@ const loop = () => {
     }
 };
 loop();
-
 ```
 
 ## Conclusion
