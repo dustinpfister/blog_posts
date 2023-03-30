@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1008
-updated: 2023-03-30 07:42:57
-version: 1.14
+updated: 2023-03-30 08:49:54
+version: 1.15
 ---
 
 With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the [compute bounding box method of the buffer geometry class](https://threejs.org/docs/#api/en/core/BufferGeometry.computeBoundingBox) is what can be used to create or update this instance of Box3. This bounding box can then be used to help with things like getting the size of the area in which the object takes up, and as such it can often be helpful when positioning objects to the surface of another object.
@@ -287,7 +287,129 @@ const loop = () => {
 loop();
 ```
 
+### 2.2 - Overlap animation loop demo
+
+One major use case of bounding bx is to use it as a way to find out of two mesh objects are overlapping or not. This is a little tricky, but not too far out of reach as one will just need to translate clones of the box3 objects. You see the box3 objects are of the geometry, but do not take into account the current state of the object3d class based mesh object that contains the geometry. So I just need to clone the box3 object of the geometry of one object, do the same for another that I want to compare to, and while doing so I can also translate them by the position properties of each object to the the box3 objects that I want to check for overlap. Now that I have my two box3 objects I can use them with the box3 class intersects box method which will return true if these two mesh objects overlap each other.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CONST
+//-------- ----------
+const MESH_COUNT = 100;
+const MAX_UNIT_LENGTH = 5;
+//-------- ----------
+// HELPERS
+//-------- ----------
+const resetMesh = (mesh) => {
+    const mud = mesh.userData;
+    mud.dir = new THREE.Vector3();
+    mud.dir.x = 0.01 + 0.99 * Math.random() * (Math.random() < 0.5 ? -1 : 1);
+    mud.dir.y = 0.01 + 0.99 * Math.random() * (Math.random() < 0.5 ? -1 : 1);
+    mud.dir.z = 0.01 + 0.99 * Math.random() * (Math.random() < 0.5 ? -1 : 1);
+    mud.dir.normalize();
+    mud.unit_length = 0;
+    mud.unit_length_delta = 0.15 + 0.35 * Math.random();
+    mud.hits = 0;
+    mud.overlap = false;
+};
+const makeMesh = () => {
+    const material = new THREE.MeshBasicMaterial();
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5, 0.5, 0.5), material);
+    mesh.geometry.computeBoundingBox();
+    resetMesh(mesh);
+    return mesh
+};
+const hitCheck = (mesh_target) => {
+    const mud_target = mesh_target.userData;
+    mud_target.overlap = false
+    scene.traverse((obj) => {
+        if(obj.type === 'Mesh'){
+            const mesh = obj;
+            if(mesh != mesh_target){
+                const box = mesh.geometry.boundingBox.clone().translate(mesh.position);
+                const box_target = mesh_target.geometry.boundingBox.clone().translate(mesh_target.position);
+                
+                if(box.intersectsBox( box_target) ){
+                    const mud = mesh.userData;
+                    mud.hits += 1;
+                    mud_target.hits += 1;
+                    mud.overlap = mud_target.overlap = true;
+                }
+            }
+        }
+    });
+}
+//-------- ----------
+// OBJECTS
+//-------- ----------
+let i = 0;
+while(i < MESH_COUNT){
+    const mesh = makeMesh();
+    scene.add(mesh);
+    i += 1;
+}
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -1, 0);
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = FPS_MOVEMENT * 5; // 5 sec animation
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    scene.traverse((obj) => {
+        if(obj.type === 'Mesh'){
+            const mesh = obj;
+            const mud = mesh.userData;
+            mud.unit_length += mud.unit_length_delta;
+            if(mud.unit_length >= MAX_UNIT_LENGTH){
+                resetMesh(mesh);
+            }
+            mesh.position.copy(mud.dir).multiplyScalar(mud.unit_length);
+            hitCheck(mesh);
+            let a_hits = (mud.hits / 100);
+            a_hits = a_hits > 1 ? 1 : a_hits;
+            const v = 1 - 0.75 * a_hits;
+            mesh.material.color = new THREE.Color(v, v, v);
+            if(mud.overlap){
+                mesh.material.color = new THREE.Color(v,0,0);
+            }
+        }
+    });
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
 ## Conclusion
 
-That will be it for now at least when it comes to the compute bounding box method of buffer geometry and a few quick use case examples of it. I have not yet done this post justice at all when it comes to all the additional use case examples that come up, such as positioning objects to the surface of a torus geometry or other custom geometry created in an external 3D modulating program. There are some more advanced examples that I have just started working on when it comes to editing my [post on the raycaster class](/2021/05/18/threejs-raycaster/) that I might in time write about in this post in future edits. Also I would like to wrote more about collision detection and other not so typical use case examples of compute bonding box, but there are only so many hours in a day.
+That will be it for now at least when it comes to the compute bounding box method of buffer geometry and a few quick use case examples of it. I have not yet done this post justice at all when it comes to all the additional use case examples that come up, such as positioning objects to the surface of a torus geometry or other custom geometry created in an external 3D modulating program. There are some more advanced examples that I have just started working on when it comes to editing my [post on the raycaster class](/2021/05/18/threejs-raycaster/) that I might in time write about in this post in future edits. 
 
