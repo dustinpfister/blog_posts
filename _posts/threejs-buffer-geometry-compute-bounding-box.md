@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1008
-updated: 2022-10-07 12:31:47
-version: 1.12
+updated: 2023-03-30 07:40:45
+version: 1.13
 ---
 
-With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the [compute bounding box method of the buffer geometry class](https://threejs.org/docs/#api/en/core/BufferGeometry.computeBoundingBox) is what can be used to create or update this instance of Box3. As the name suggests this bounding box property can be used for collision detection, but it can also be used to find out the size of a geometry which can aid in the process of positioning objects.
+With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the [compute bounding box method of the buffer geometry class](https://threejs.org/docs/#api/en/core/BufferGeometry.computeBoundingBox) is what can be used to create or update this instance of Box3. This bounding box can then be used to help with things like getting the size of the area in which the object takes up, and as such it can often be helpful when positioning objects to the surface of another object.
 
 <!-- more -->
 
@@ -50,10 +50,8 @@ After I call the compute bounding box method there will be an instance of box3 a
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
-camera.position.set(3, 5, 5);
-camera.lookAt(0, -0.75, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // GEOMETRY
@@ -81,6 +79,8 @@ mesh2.position.copy(bb.max);
 //-------- ----------
 //  RENDER
 //-------- ----------
+camera.position.set(3, 5, 5);
+camera.lookAt(0, -0.75, 0);
 renderer.render(scene, camera);
 ```
 
@@ -96,10 +96,8 @@ The best tool for getting a visual idea of what is going on with a Box3 class su
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
-camera.position.set(8, 8, 8);
-camera.lookAt(0, -1, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // GEOMETRY
@@ -119,6 +117,8 @@ scene.add(mesh);
 //-------- ----------
 //  RENDER
 //-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -1, 0);
 renderer.render(scene, camera);
 ```
 
@@ -133,10 +133,8 @@ The get size method of the box3 class can be used to copy values to an instance 
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
 const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
-camera.position.set(8, 8, 8);
-camera.lookAt(0, -1, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
@@ -171,6 +169,8 @@ scene.add( positionMesh(
 //-------- ----------
 //  RENDER
 //-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -1, 0);
 renderer.render(scene, camera);
 ```
 
@@ -193,10 +193,8 @@ Speaking of the set mesh method that takes a mesh object with custom [user data 
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
 const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
-camera.position.set(8, 8, 8);
-camera.lookAt(0, -1, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
@@ -212,7 +210,6 @@ const getMeshGroundPosition = (mesh, x, z) => {
     return new THREE.Vector3(x, v_size.y / 2, z);
 };
 // Make Mesh
-
 const makeMesh = (w, h, d, x, z, sh, p1, p2, m) => {
     const mesh = new THREE.Mesh(
         new THREE.BoxGeometry(w, h, d), m);
@@ -255,10 +252,11 @@ let group = new THREE.Group();
     group.add(mesh);
 });
 scene.add(group);
-
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -1, 0);
 const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
 FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
 FRAME_MAX = FPS_MOVEMENT * 5; // 5 sec animation
