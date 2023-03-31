@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1034
-updated: 2023-03-31 07:56:13
-version: 1.3
+updated: 2023-03-31 08:03:55
+version: 1.4
 ---
 
 The [premultiply method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.premultiply) comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want. In this post then I will be going over a number of code examples that make use of this method as this is a major part of working with quaternion objects for setting the orientation of objects.
@@ -27,15 +27,15 @@ If the look at method is not cutting it there is then looking into the [rotation
 
 ### There is my main blog post on quaternion objects
 
-There is checking out my [main blog post on quaternion objects](/2023/03/24/threejs-quaternion/) to get a general overview of the quaternion class as a whole.
+There is checking out my [main blog post on quaternion objects](/2023/03/24/threejs-quaternion/) to get a general overview of the quaternion class as a whole. There are a whole lot of other methods in the class as well of course, so this post would be better for starting out with quaternion in threejs. The post is also just simply the post that has received the most time and attention with this subject as well, and it might be a while until I get around to editing this post.
 
 ### Source code examples are up on Github.
 
-The [source code examples that I am writing about in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-quaternion-premultiply), as well as the examples for [my many other posts on threejs](/categories/three-js/), can be found in my test threejs repository on Github.
+The [source code examples that I am writing about in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-quaternion-premultiply), as well as the examples for [my many other posts on threejs](/categories/three-js/), can be found in my test threejs repository on Github. It might be best to clone down that repo and start the server as a way to get things up and ruining on your end as well. I do try my best to keep these examples copy and paste friendly, but there are a lot or reasons why that will not always work out, it part because threejs moves so fast in terms of development.
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r146 of threejs.
+When I first wrote this post I was using r146 of threejs and the examples here where working just fine on my end with that revision number. However code breaking changes are made to the library all the time.
 
 ## 1 - Basic example
 
