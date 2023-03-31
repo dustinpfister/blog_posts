@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1034
-updated: 2023-03-31 08:03:55
-version: 1.4
+updated: 2023-03-31 08:08:26
+version: 1.5
 ---
 
 The [premultiply method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.premultiply) comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want. In this post then I will be going over a number of code examples that make use of this method as this is a major part of working with quaternion objects for setting the orientation of objects.
@@ -39,7 +39,7 @@ When I first wrote this post I was using r146 of threejs and the examples here w
 
 ## 1 - Basic example
 
-The general idea here is that I have not one, but two quaternion objects. I can then use the copy method of the quaternion class to copy one quaternion object to the quaternion object of an object3d class based object such as a mesh object to set the first rotation. Then I can call the multiply method and pass the next quaternion object as well.
+The general idea here is that I have not one, but two quaternion objects. I can then use the copy method of the quaternion class to copy one quaternion object to the quaternion object of an object3d class based object such as a mesh object to set the first rotation. Then I can call the premultiply method and pass the next quaternion object as well to get the final rotation that I want.
 
 ```js
 // ---------- ----------
@@ -74,6 +74,8 @@ camera.position.set(3,3,3);
 camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
+
+I could also just directly call the set from axis angle method off of the quaternion of the mesh object, and then just have one stand along quaternion object. In any case the deal here is to think in terms of what needs to happen in the form of two or more rotations to get to the desired end result.
 
 ## 2 - Animation loop of three spheres
 
