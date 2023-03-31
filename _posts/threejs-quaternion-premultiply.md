@@ -5,13 +5,37 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1034
-updated: 2023-03-31 07:32:48
-version: 1.2
+updated: 2023-03-31 07:56:13
+version: 1.3
 ---
 
-The premultiply method of the quaternion class comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want.
+The [premultiply method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.premultiply) comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want. In this post then I will be going over a number of code examples that make use of this method as this is a major part of working with quaternion objects for setting the orientation of objects.
 
 <!-- more -->
+
+## The premultiply quaternion method and what to know first
+
+This is a blog post on the premultiply method os the quaternion class in the javaScript library known as threejs. This is then not a post for people that are new to the quaternion class in general, threejs as a whole, or any underlaying skills that are needed before even getting into that. I will do my best to try to keep these examples fairly simple, but it might still be best to start out with a [getting started with threejs type post](/2018/04/04/threejs-getting-started/) if you are new to the library. Regardless of kill level or experience there might still be a few things you might want to refresh on first as well, so I will take a moment to write about a few of those things in this section.
+
+### Start out with Object3d.lookAt if you are new to rotations
+
+If you have zero experience when it comes to rotations of objects in threejs, it might be best to start out with using the [object3d look at method](/2021/05/13/threejs-object3d-lookat/). This is a very easy to use tool for setting rotation, and also in many cases it will work just fine when it comes to setting the orientation of an object. I think it is best to always start out with the most basic tool, and only bother getting into complex solutions such as quaternion objects when I find myself in a situation in which I have to.
+
+### There is also Object3d.rotation and the Euler class
+
+If the look at method is not cutting it there is then looking into the [rotation property of the object3d class](/2022/04/08/threejs-object3d-rotation/), and with that the [Euler class](/2021/04/28/threejs-euler/) that is the value of the rotation property. Euler angles are must easier to work with that quaternions, but in some situations they might prove to be an oversimplification of the situation which would lead one to get into quaternion objects.
+
+### There is my main blog post on quaternion objects
+
+There is checking out my [main blog post on quaternion objects](/2023/03/24/threejs-quaternion/) to get a general overview of the quaternion class as a whole.
+
+### Source code examples are up on Github.
+
+The [source code examples that I am writing about in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-quaternion-premultiply), as well as the examples for [my many other posts on threejs](/categories/three-js/), can be found in my test threejs repository on Github.
+
+### Version Numbers matter
+
+When I first wrote this post I was using r146 of threejs.
 
 ## 1 - Basic example
 
