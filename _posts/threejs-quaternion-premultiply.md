@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1034
-updated: 2023-03-31 06:46:11
-version: 1.0
+updated: 2023-03-31 06:59:44
+version: 1.1
 ---
 
 The premultiply method of the quaternion class comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want.
@@ -14,6 +14,8 @@ The premultiply method of the quaternion class comes in handy when I find myself
 <!-- more -->
 
 ## 1 - Basic example
+
+The general idea here is that I have not one, but two quaternion objects. I can then use the copy method of the quaternion class to copy one quaternion object to the quaternion object of an object3d class based object such as a mesh object to set the first rotation. Then I can call the multiply method and pass the next quaternion object as well.
 
 ```js
 // ---------- ----------
