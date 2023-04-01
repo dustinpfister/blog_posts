@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1034
-updated: 2023-04-01 08:53:53
-version: 1.7
+updated: 2023-04-01 10:27:39
+version: 1.8
 ---
 
 The [premultiply method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.premultiply) comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want. In this post then I will be going over a number of code examples that make use of this method as this is a major part of working with quaternion objects for setting the orientation of objects.
@@ -37,9 +37,13 @@ The [source code examples that I am writing about in this post](https://github.c
 
 When I first wrote this post I was using r146 of threejs and the examples here where working just fine on my end with that revision number. However code breaking changes are made to the library all the time.
 
-## 1 - Basic example
+## 1 - Basic examples of the premultiply method in the quaternion class
 
-The general idea here is that I have not one, but two quaternion objects. I can then use the copy method of the quaternion class to copy one quaternion object to the quaternion object of an object3d class based object such as a mesh object to set the first rotation. Then I can call the premultiply method and pass the next quaternion object as well to get the final rotation that I want.
+For this section I will be starting off with a few basic examples of the premultiply method of the quaternion class in threejs. I will be doing what I can to stay clear of doing anything to complex then, and for the most part these will be examples that focus mainly on just the premultiply alone. However I will still of course need to make use of many other threejs features of the quaternion class such as the set from axis angle method, as well as various other threejs features outside of the class.
+
+### 1.1 - Basic example of premultipy
+
+The general idea here is that I have not one, but two quaternion objects when it comes to a very basic getting started example at least. I can then use the copy method of the quaternion class to copy one quaternion object to the quaternion object of an object3d class based object such as a mesh object to set the first rotation. Then I can call the premultiply method and pass the next quaternion object as well to get the final rotation that I want.
 
 ```js
 // ---------- ----------
@@ -76,6 +80,96 @@ renderer.render(scene, camera);
 ```
 
 I could also just directly call the set from axis angle method off of the quaternion of the mesh object, and then just have one stand along quaternion object. In any case the deal here is to think in terms of what needs to happen in the form of two or more rotations to get to the desired end result.
+
+### 1.2 - The order of the rotaitons does very much matter
+
+The order of the rotations does very much matter when using the premultiply method. If I have two quaternion objects, one of which I use for the copy method, and another for a premultiply method call after, the order in which the objects are passed will result in two differing orientations depending on which one I use first. 
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+const material = new THREE.MeshNormalMaterial({wireframe: true, wireframeLinewidth: 3 });
+const geometry = new THREE.CylinderGeometry(0, 1, 3, 10, 10);
+geometry.rotateX(Math.PI * 1.5)
+const mesh1 = new THREE.Mesh( geometry, material);
+const mesh2 = mesh1.clone();
+scene.add(mesh1);
+scene.add(mesh2);
+mesh1.position.set(-2,0,0);
+mesh2.position.set(2,0,0);
+// ---------- ----------
+// ROTATE WITH QUATERNIONS
+// ---------- ----------
+const axis1 = new THREE.Vector3(1,0,0);
+const axis2 = new THREE.Vector3(0,1,0);
+const q1 = new THREE.Quaternion().setFromAxisAngle(axis1, Math.PI / 180 * 45);
+const q2 = new THREE.Quaternion().setFromAxisAngle(axis2, Math.PI / 180 * 180);
+// THE ORDER DOES VERY MUCH MATTER AS THIS WILL
+// RESULT IN TWO DIFFERING ORIENTATIONS
+mesh1.quaternion.copy(q2).premultiply(q1);
+mesh2.quaternion.copy(q1).premultiply(q2);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
+```
+
+In some cases I might want to do things in one order, but then in other cases I might want to do the other. There is making use of other quaternion methods such as the clone and slerp method to create another set of qunaterions that can be impacted by an alpha value to switch between the two. However getting into that is a more advanced topic that I will be getting into later in this post with one of my animation loop examples.
+
+### 1.3 - It is possible to prefrom many rotations by calling premultiply over and over again
+
+For this example I am preforming a whole bunch of rotations one after another. Well maybe not that many just three for started but the general idea is there. I can preform as many rotations as I need over and over again to get an object to face any direction that I want or need which is great.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+const material = new THREE.MeshNormalMaterial({wireframe: true, wireframeLinewidth: 1 });
+const geometry = new THREE.CylinderGeometry(0, 1, 3, 10, 10);
+const mesh1 = new THREE.Mesh( geometry, material);
+scene.add(mesh1);
+// ---------- ----------
+// ROTATE WITH QUATERNIONS
+// ---------- ----------
+const axis = new THREE.Vector3();
+const q = new THREE.Quaternion();
+[
+    [1,0,0,90],  // x,y,z,degree to be used to set axis and angle
+    [0,1,0,112], // can add as many of these as I want
+    [1,1,1, 63]
+].forEach( (data) => {
+    axis.set(data[0], data[1], data[2]).normalize();
+    q.setFromAxisAngle(axis, Math.PI / 180 * data[3]);
+    mesh1.quaternion.premultiply(q);
+});
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
+```
 
 ## 2 - Animation examples
 
