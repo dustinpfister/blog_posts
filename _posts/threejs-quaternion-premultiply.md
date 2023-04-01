@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1034
-updated: 2023-04-01 10:27:39
-version: 1.8
+updated: 2023-04-01 10:32:17
+version: 1.9
 ---
 
 The [premultiply method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.premultiply) comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want. In this post then I will be going over a number of code examples that make use of this method as this is a major part of working with quaternion objects for setting the orientation of objects.
@@ -15,7 +15,7 @@ The [premultiply method of the quaternion class in threejs](https://threejs.org/
 
 ## The premultiply quaternion method and what to know first
 
-This is a blog post on the premultiply method os the quaternion class in the javaScript library known as threejs. This is then not a post for people that are new to the quaternion class in general, threejs as a whole, or any underlaying skills that are needed before even getting into that. I will do my best to try to keep these examples fairly simple, but it might still be best to start out with a [getting started with threejs type post](/2018/04/04/threejs-getting-started/) if you are new to the library. Regardless of kill level or experience there might still be a few things you might want to refresh on first as well, so I will take a moment to write about a few of those things in this section.
+This is a blog post on the premultiply method os the quaternion class in the javaScript library known as threejs. This is then not a post for people that are new to the quaternion class in general, threejs as a whole, or any underlying skills that are needed before even getting into that. I will do my best to try to keep these examples fairly simple, but it might still be best to start out with a [getting started with threejs type post](/2018/04/04/threejs-getting-started/) if you are new to the library. Regardless of kill level or experience there might still be a few things you might want to refresh on first as well, so I will take a moment to write about a few of those things in this section.
 
 ### Start out with Object3d.lookAt if you are new to rotations
 
@@ -81,7 +81,7 @@ renderer.render(scene, camera);
 
 I could also just directly call the set from axis angle method off of the quaternion of the mesh object, and then just have one stand along quaternion object. In any case the deal here is to think in terms of what needs to happen in the form of two or more rotations to get to the desired end result.
 
-### 1.2 - The order of the rotaitons does very much matter
+### 1.2 - The order of the rotations does very much matter
 
 The order of the rotations does very much matter when using the premultiply method. If I have two quaternion objects, one of which I use for the copy method, and another for a premultiply method call after, the order in which the objects are passed will result in two differing orientations depending on which one I use first. 
 
@@ -128,7 +128,7 @@ renderer.render(scene, camera);
 
 In some cases I might want to do things in one order, but then in other cases I might want to do the other. There is making use of other quaternion methods such as the clone and slerp method to create another set of qunaterions that can be impacted by an alpha value to switch between the two. However getting into that is a more advanced topic that I will be getting into later in this post with one of my animation loop examples.
 
-### 1.3 - It is possible to prefrom many rotations by calling premultiply over and over again
+### 1.3 - It is possible to preform many rotations by calling premultiply over and over again
 
 For this example I am preforming a whole bunch of rotations one after another. Well maybe not that many just three for started but the general idea is there. I can preform as many rotations as I need over and over again to get an object to face any direction that I want or need which is great.
 
