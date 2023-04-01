@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1034
-updated: 2023-03-31 09:09:40
-version: 1.6
+updated: 2023-04-01 08:53:53
+version: 1.7
 ---
 
 The [premultiply method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.premultiply) comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want. In this post then I will be going over a number of code examples that make use of this method as this is a major part of working with quaternion objects for setting the orientation of objects.
@@ -77,13 +77,13 @@ renderer.render(scene, camera);
 
 I could also just directly call the set from axis angle method off of the quaternion of the mesh object, and then just have one stand along quaternion object. In any case the deal here is to think in terms of what needs to happen in the form of two or more rotations to get to the desired end result.
 
-## 2 - Animaiton examples
+## 2 - Animation examples
 
-For this section I will be going over at least a few if not more animation examples.
+For this section I will be going over at least a few if not more animation examples that will help to really gain a sense of what the deal is with the premultiply method. The main focus with these examples should be on how the premultiply method can be used to preform not one but many rotations on an object. However I am also doing a whole lot more here when it comes to other things that come up when making these kinds of examples. There is making examples where I am thinking in terms of making a video in which case they do not have to respond to user input, however there is also making examples that do respond to user input as well. At this time I am combining both of these kinds of examples together into one section.
 
 ### 2.1 - Rotate sphere on axis, with premutiply and slerp
 
-Fir this animation loop example I wanted to have a nice little project that really helps me get a good feel for what the premultilly method is all about. While I am at it also gain a better  sense of what the slerp method can do also. You see there is of course the order in which I use the quaternion objects, so it would be nice to slerp between these two so I can switch back and forth between these two different orders. As such I can switch between having the sphere rotate on an axis, and rotating around the axis.
+For this animation loop example I wanted to have a nice little project that really helps me get a good feel for what the premultilly method is all about. While I am at it also gain a better  sense of what the slerp method can do also. You see there is of course the order in which I use the quaternion objects, so it would be nice to slerp between these two so I can switch back and forth between these two different orders. As such I can switch between having the sphere rotate on an axis, and rotating around the axis.
 
 ```js
 // ---------- ----------
