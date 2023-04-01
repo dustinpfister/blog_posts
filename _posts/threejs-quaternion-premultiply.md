@@ -5,13 +5,16 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1034
-updated: 2023-04-01 10:32:17
-version: 1.9
+updated: 2023-04-01 11:37:25
+version: 1.10
 ---
 
 The [premultiply method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.premultiply) comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want. In this post then I will be going over a number of code examples that make use of this method as this is a major part of working with quaternion objects for setting the orientation of objects.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/nDjy-Mx-uUc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## The premultiply quaternion method and what to know first
 
