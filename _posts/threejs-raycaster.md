@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2023-04-03 10:00:33
-version: 1.33
+updated: 2023-04-03 12:51:47
+version: 1.34
 ---
 
 When making a [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of run time script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/). Then I need to get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into threejs itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -584,6 +584,9 @@ There is still finding ways to adjust the geometry of the sphere that I am movin
 So far it looks like raycaster works more or less okay for getting a desired position on the surface of a geometry. However now there is just the question of how to go about adjusting from that position depending the size of the geometry that I am using with a mesh that I wish to place on the surface. If I just place a mesh at the hit location without doing anything to translate the geometry, or adjust that values that I use to position the child mesh lets call it, then things might not always look so great.
 
 The first thing to keep in mind here is that I am not dealing with a problem with Raycaster, but rather the position of the geometry relative to the origin of the mesh. When it comes to a box geometry I can just get the size of the geometry, and then divide the desired axis by half as the origin is typically in the center of the geometry when it is created by such a built in constructor. That is what I am doing here in this example.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/me1YeImrU2Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 The main tools that are my friend here are Vecotr3 class methods such as the lerp and distance to methods, along with the bounding box property of the child mesh geometry. So there is also the Compute Bounding box method of the buffer geometry, and also the Box3 class, and with that the getSize method of the box3 class. Using all these tools I updated the source code of my set mesh if hit helper function to adjust the position of the mesh object.
 
