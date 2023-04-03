@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2022-10-07 14:13:13
-version: 1.31
+updated: 2023-04-03 09:51:29
+version: 1.32
 ---
 
 When making a [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/) in a [scene object](/2018/05/03/threejs-scene/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/), and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -45,16 +45,14 @@ The goal here is to use the raycaster class to get a position on the surface of 
 // SPHERE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10));
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
-// MESH - SPHERE
+// OBJECTS
 //-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
 const sphere = new THREE.Mesh(
         new THREE.SphereGeometry(3, 30, 30),
         new THREE.MeshNormalMaterial());
@@ -82,6 +80,8 @@ if(result.length > 0){
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -94,16 +94,14 @@ This will be another quick example of using a raycaster to position one mesh obj
 // SPHERE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10));
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
-// MESH - SPHERE
+// OBJECTS
 //-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
 const torus = new THREE.Mesh(
         new THREE.TorusGeometry(4, 0.75, 20, 20),
         new THREE.MeshNormalMaterial({wireframe: true}));
@@ -139,6 +137,8 @@ if(result.length > 0){
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -157,10 +157,8 @@ So then I create my instance of raycaster, and then also an instance of the Veco
 const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(9, 9));
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // MOUSE OVER EVENT
@@ -213,6 +211,8 @@ boxGroup.add(box);
 //-------- ----------
 // LOOP
 //-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
 // orbit controls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 let lt = new Date();
@@ -255,42 +255,37 @@ Here I have the state of the cube group module as I have used it for this exampl
 
 ```js
 (function (api) {
- 
-    var ANGLES_A = [225, 315, 135, 45];
- 
-    var toRadians = function (array) {
+    const ANGLES_A = [225, 315, 135, 45];
+    const toRadians = function (array) {
         return array.map(function(deg){
             return Math.PI / 180 * deg;
         });
     };
- 
     // create a single cube mesh
-    var createCube = function (rotationCounts, position, materials) {
-        var cube = new THREE.Mesh(
+    const createCube = function (rotationCounts, position, materials) {
+        const cube = new THREE.Mesh(
                 new THREE.BoxGeometry(1, 1, 1),
                 materials || new THREE.MeshNormalMaterial());
         // USER DATA OBJECT FOR A SINGLE CUBE
-        var ud = cube.userData;
+        const ud = cube.userData;
         ud.rotationCounts = rotationCounts || [0, 0, 0];
         cube.position.copy(position || new THREE.Vector3(0, 0, 0));
         return cube;
     };
- 
     // update a single cube
-    var updateCube = function (cube, per) {
-        var ud = cube.userData,
+    const updateCube = function (cube, per) {
+        const ud = cube.userData,
         rc = ud.rotationCounts,
         pi2 = Math.PI * 2;
         cube.rotation.x = pi2 * rc[0] * per;
         cube.rotation.y = pi2 * rc[1] * per;
         cube.rotation.z = pi2 * rc[2] * per;
     };
- 
     // public method to create a cube group
     api.create = function(opt) {
         opt = opt || {};
         opt.cubeRotations = opt.cubeRotations || [];
-        var cubes = new THREE.Group(),
+        const cubes = new THREE.Group(),
         // USER DATA OBJECT FOR A GROUP OF CUBES
         gud = cubes.userData;
         gud.frame = 0;
@@ -303,10 +298,10 @@ Here I have the state of the cube group module as I have used it for this exampl
         gud.secs = 0;
         gud.type = 'cubegroup';
         gud.active = false;
-        var i = 0;
+        let i = 0;
         while(i < 8){
-            var cubeRotations = opt.cubeRotations[i] || [0.00, 0.00, 0.00];
-            var cube = createCube(
+            const cubeRotations = opt.cubeRotations[i] || [0.00, 0.00, 0.00];
+            const cube = createCube(
                 cubeRotations, 
                 new THREE.Vector3(0, 0, 0),
                 opt.materials);
@@ -315,27 +310,25 @@ Here I have the state of the cube group module as I have used it for this exampl
         };        
         return cubes;
     };
- 
-    var setCubesRotation = function(cubes, per){
-        var gud = cubes.userData,
+    const setCubesRotation = function(cubes, per){
+        const gud = cubes.userData,
         r = gud.rotations,
-        PI2 = Math.PI * 2;
-        var x = PI2 * r[0] * per,
+        PI2 = Math.PI * 2,
+        x = PI2 * r[0] * per,
         y = PI2 * r[1] * per,
         z = PI2 * r[2] * per;
         cubes.rotation.set(x, y, z);
     };
- 
-    var updateCubes = function(cubes, per, bias){
-        var gud = cubes.userData;
+    const updateCubes = function(cubes, per, bias){
+        const gud = cubes.userData;
         // update cubes
         cubes.children.forEach(function (cube, i) {
             // start values
-            var sx = i % 2 - 0.5,
+            const sx = i % 2 - 0.5,
             sz = Math.floor(i / 2) - Math.floor(i / 4) * 2 - 0.5,
             sy = Math.floor(i / (2 * 2)) - 0.5;
             // adjusted
-            var aIndex = i % 4,
+            const aIndex = i % 4,
             bIndex = Math.floor(i / 4),
             r1 = gud.anglesA[aIndex],
             x = sx + Math.cos(r1) * gud.xzDelta * bias,
@@ -347,14 +340,12 @@ Here I have the state of the cube group module as I have used it for this exampl
             updateCube(cube, per);
         });
     };
- 
     // update the group
     api.update = function(cubes, secs) {
         // GROUP USER DATA OBJECT
-        var gud = cubes.userData;
-        var per = gud.frame / gud.maxFrame,
+        const gud = cubes.userData;
+        const per = gud.frame / gud.maxFrame,
         bias = 1 - Math.abs(per - 0.5) / 0.5;
- 
         if(gud.active){
             updateCubes(cubes, per, bias);
             // whole group rotation
@@ -371,9 +362,7 @@ Here I have the state of the cube group module as I have used it for this exampl
             }
         }
     };
- 
-}
-    (this['CubeGroupMod'] = {}));
+}(this['CubeGroupMod'] = {}));
 ```
 
 ### 3.2 - the main javaScript file
@@ -381,91 +370,94 @@ Here I have the state of the cube group module as I have used it for this exampl
 Now for a main javaScript file in which I am using the Raycaster class to run an animation for any and all cube groups that intersect when using a Raycater. When it comes to working with an instance of this cube group of mine it is a little different from working with a collection of mesh objects, as what I am dealing with here is a collection of groups of mesh objects. However the situation is not all that more involved as I just need to loop over the collection of cube groups, and pass the children of each group to the intersects objects method. I can then just the the first mesh object if any and just use the parent property of that mesh to get a reference to the group of cube mesh objects. I can then set the active flag of the cube group to true.
 
 ```js
-var raycaster = new THREE.Raycaster();
-var mouse = new THREE.Vector2(1, 1);
- 
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// RAYCASTER
+//-------- ----------
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2(1, 1);
 // on mouse move
-var onMouseMove = function( event ) {
-    var canvas = event.target,
+const onMouseMove = function( event ) {
+    const canvas = event.target,
     box = canvas.getBoundingClientRect(),
     x = event.clientX - box.left,
     y = event.clientY - box.top;
     mouse.x = ( x / canvas.scrollWidth ) * 2 - 1;
     mouse.y = - ( y / canvas.scrollHeight ) * 2 + 1;
 };
- 
+
+renderer.domElement.addEventListener( 'mousemove', onMouseMove, false );
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(9, 9));
+const cubeGroups = new THREE.Group();
+scene.add(cubeGroups);
+const cg1 = CubeGroupMod.create({
+   maxFrame: 30,
+   yDelta: 0.5,
+   xzDelta: 0.5
+});
+cg1.position.x = 0;
+cubeGroups.add(cg1);
+const cg2 = CubeGroupMod.create({
+   maxFrame: 30,
+   yDelta: 0.5,
+   xzDelta: 0.5
+});
+cg2.position.x = 3;
+cubeGroups.add(cg2);
+const cg3 = CubeGroupMod.create({
+   maxFrame: 30,
+   yDelta: 0.5,
+   xzDelta: 0.5
+});
+cg3.position.x = -3;
+cubeGroups.add(cg3);
+//-------- ----------
+// ORBIT CONTROLS
+//-------- ----------
+let controls = null
+if(THREE.OrbitControls){
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+}
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+let lt = new Date(),
+frame = 0;
+const maxFrame = 300,
+fps = 30;
 // update the picking ray with the camera and mouse position
-var update = function(cubeGroups, secs){
+const update = function(cubeGroups, secs){
     raycaster.setFromCamera( mouse, camera );
     cubeGroups.children.forEach(function(cubeGroup){
-        var intersects = raycaster.intersectObjects( cubeGroup.children, true );
+        const intersects = raycaster.intersectObjects( cubeGroup.children, true );
         if(intersects.length > 0){
-            var mesh = intersects[0].object,
+            let mesh = intersects[0].object,
             group = mesh.parent;
             group.userData.active = true;
         }
         CubeGroupMod.update(cubeGroup, secs);
     });
 };
- 
-// creating a scene
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(9, 9));
- 
-var cubeGroups = new THREE.Group();
-scene.add(cubeGroups);
- 
-var cg = CubeGroupMod.create({
-   maxFrame: 30,
-   yDelta: 0.5,
-   xzDelta: 0.5
-});
-cg.position.x = 0;
-cubeGroups.add(cg);
- 
-var cg = CubeGroupMod.create({
-   maxFrame: 30,
-   yDelta: 0.5,
-   xzDelta: 0.5
-});
-cg.position.x = 3;
-cubeGroups.add(cg);
- 
-var cg = CubeGroupMod.create({
-   maxFrame: 30,
-   yDelta: 0.5,
-   xzDelta: 0.5
-});
-cg.position.x = -3;
-cubeGroups.add(cg);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-renderer.domElement.addEventListener( 'mousemove', onMouseMove, false );
- 
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
-// loop
-var lt = new Date(),
-frame = 0,
-maxFrame = 300,
-fps = 30;
-var loop = function () {
-    var now = new Date(),
+const loop = function () {
+    const now = new Date(),
     per = frame / maxFrame,
     bias = 1 - Math.abs(per - 0.5) / 0.5,
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if (secs > 1 / fps) {
- 
         update(cubeGroups, secs);
- 
         renderer.render(scene, camera);
         frame += fps * secs;
         frame %= maxFrame;
@@ -473,6 +465,7 @@ var loop = function () {
     }
 }
 loop();
+
 ```
 
 
@@ -491,12 +484,9 @@ The first video that I made for this post is based off of this source code that 
 // SPHERE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10));
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
@@ -525,8 +515,9 @@ const getLookAt = (deg, radius) => {
     return new THREE.Vector3(1, 0, 0).applyEuler( new THREE.Euler(0, radian, 0) ).multiplyScalar(radius);
 };
 //-------- ----------
-// MESH - SPHERE
+// OBJECTS
 //-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
 const torus_radius = 4;
 const torus = new THREE.Mesh(
         new THREE.TorusGeometry(torus_radius, 1.25, 20, 20),
@@ -546,6 +537,8 @@ const raycaster = new THREE.Raycaster();
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
 const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
 FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
 FRAME_MAX = 300;
@@ -595,12 +588,9 @@ The main tools that are my friend here are Vecotr3 class methods such as the ler
 // SPHERE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10));
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(7, 7, 7);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
@@ -641,8 +631,9 @@ const getLookAt = (deg, radius) => {
     return new THREE.Vector3(1, 0, 0).applyEuler( new THREE.Euler(0, radian, 0) ).multiplyScalar(radius);
 };
 //-------- ----------
-// MESH - SPHERE
+// OBJECTS
 //-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
 const torus_radius = 4;
 // the torus mesh
 const torus = new THREE.Mesh(
@@ -672,6 +663,8 @@ const raycaster = new THREE.Raycaster();
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
+camera.position.set(7, 7, 7);
+camera.lookAt(0, 0, 0);
 const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
 FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
 FRAME_MAX = 300;
