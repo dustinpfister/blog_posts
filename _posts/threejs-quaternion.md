@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-03-29 11:56:02
-version: 1.19
+updated: 2023-04-03 10:19:00
+version: 1.20
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -273,7 +273,7 @@ loop();
 
 ### 2.3 - The premultiply method
 
-Often it would seem that I am in a situation in which I need to preform not one, but two or more rotations. With that said it would seem that the premultiplication method is a decent tool for preforming this kind of task with quaternions. In this demo I am creating not one, but two quaternion objects. I am then have three mesh objects, one of which I set to the state of the first quaternion, the next I set to the other quaternion, and then I use the copy method along with the premultiply to update the third mesh object to a Premultiplication of the first and second quatrenion object.
+Often it would seem that I am in a situation in which I need to preform not one, but two or more rotations. With that said it would seem that the [premultiplication method](/2023/03/31/threejs-quaternion-premultiply/) is a decent tool for preforming this kind of task with quaternions. In this demo I am creating not one, but two quaternion objects. I am then have three mesh objects, one of which I set to the state of the first quaternion, the next I set to the other quaternion, and then I use the copy method along with the premultiply to update the third mesh object to a Premultiplication of the first and second quatrenion object.
 
 ```js
 // ---------- ----------
@@ -367,6 +367,120 @@ const loop = () => {
         frame += FPS_MOVEMENT * secs;
         frame %= FRAME_MAX;
         lt = now;
+    }
+};
+loop();
+```
+
+### 2.4 - The set from unit vectors method
+
+For the most part I like to use the set from axis angle method as a way to define the state of a quaternion object. However another great method for this is the set from unit vectors method which allows me to define the state in the form of a from and to vector3 object. This way I can think in terms of having a vector3 object that is a direction that I want to set, and other vector3 that is the direction that I am coming from to this new direction. Because I am using the vector3 class here I can make [use of methods like the lerp method](/2022/05/17/threejs-vector3-lerp/) of the vector3 class to update the state of the to vector3 object starting at the from vector3 to the desired end vector3 object.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+scene.background = null;
+renderer.setClearColor(0x000000, 0)
+renderer.setSize(640, 480, false);
+const canvas_2d = document.createElement('canvas');
+const ctx = canvas_2d.getContext('2d');
+canvas_2d.width = 640;
+canvas_2d.height = 480;
+const canvas_3d = renderer.domElement;
+const container = document.getElementById('demo') || document.body;
+container.appendChild(canvas_2d);
+// ---------- ----------
+// V3 ARRAY
+// ---------- ----------
+const v3array = [
+    [0, 1, 0],
+    [1, 0, 0],
+    [0, 1, 0],
+    [0, 0, 1],
+    [0, 1, 0],
+    [1, 0, 0],
+    [0, 0, 1]
+].map( (arr) => {
+    return new THREE.Vector3().fromArray(arr).normalize();
+});
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh1 = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 20, 20),
+    new THREE.MeshNormalMaterial({ wireframe: true}));
+scene.add(mesh1);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+let controls = null;
+if(THREE.OrbitControls){
+    controls = new THREE.OrbitControls(camera, canvas_2d);
+}
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+const sm = {
+   FPS_UPDATE: 12,     // fps rate to update ( low fps for low CPU use, but choppy video )
+   FPS_MOVEMENT: 30,  // fps rate to move object by that is independent of frame update rate
+   FRAME_MAX: 900,
+   secs: 0,
+   frame_frac: 0,     // 30.888 / 450
+   frame: 0,          // 30 / 450
+   tick: 0,           //  1 / 450 ( about 1 FPS then )
+   now: new Date(),
+   lt: new Date()
+};
+const q_home = new THREE.Quaternion();
+q_home.setFromAxisAngle( v3array[1], Math.PI * 0.5 );
+const update = function(sm){
+    const a1 = sm.frame / sm.FRAME_MAX;
+    const a2 = a1 * v3array.length % 1;
+    const a3 = 1 - Math.abs(0.5 - a2) / 0.5;
+    const vi1 = Math.floor( v3array.length * a1 );
+    const vi2 = ( vi1 + 1 ) % v3array.length;
+    const v1 = v3array[vi1];
+    const v2 = v3array[vi2];
+    const v_from = v1.clone();
+    const v_to = v_from.clone().lerp(v2, a3).normalize();
+    const q2 = new THREE.Quaternion().setFromUnitVectors(v_from, v_to);
+    mesh1.quaternion.copy(q2);
+};
+const render2d = (sm) => {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+    ctx.drawImage(canvas_3d, 0, 0, canvas_2d.width, canvas_2d.height);
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px monospace';
+    ctx.fillText('tick              : ' + sm.tick, 5, 5)
+    ctx.fillText('frame_frac        : ' + sm.frame_frac.toFixed(3), 5, 20);
+    ctx.fillText('frame / FRAME_MAX : ' + sm.frame + '/' + sm.FRAME_MAX, 5, 35);
+};
+const loop = () => {
+    sm.now = new Date();
+    sm.secs = (sm.now - sm.lt) / 1000;
+    requestAnimationFrame(loop);
+    if(sm.secs > 1 / sm.FPS_UPDATE){
+        // update, render to 3d canvas, and then render to 2d canvas
+        update(sm);
+        renderer.render(scene, camera);
+        render2d(sm);
+        // step frame
+        sm.frame_frac += sm.FPS_MOVEMENT * sm.secs;
+        sm.frame_frac %= sm.FRAME_MAX;
+        sm.frame = Math.floor(sm.frame_frac);
+        sm.tick = (sm.tick += 1) % sm.FRAME_MAX;
+        sm.lt = sm.now;
     }
 };
 loop();
