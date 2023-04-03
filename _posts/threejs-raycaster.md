@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2023-04-03 09:51:29
-version: 1.32
+updated: 2023-04-03 10:00:33
+version: 1.33
 ---
 
-When making a [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/) in a [scene object](/2018/05/03/threejs-scene/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/), and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
+When making a [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of run time script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/). Then I need to get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into threejs itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
 
-There is also the idea of using a raycatser by positioning one at some location in world space, set a direction, and then just get a point on a surface of nay kind of geometry. There are all kinds of use case examples for that kind of situation that have to do with knowing how to position one mesh object onto the surface of another mesh object.
+There is also the idea of using a raycatser by positioning one at some location in world space, set a direction, and then just get a point on a surface of any kind of geometry. There are all kinds of use case examples for that kind of situation that has to do with knowing how to position one mesh object onto the surface of another mesh object. So that is another general use case that comes to mind that may or may not also involve human input.
 
-There is just getting started with the very basics when it comes to ray casting in three.js, and of course I will be starting out with that in this post. However there might be a whole bunch more advanced topics that will also come up when it comes to this sort of thing. So I think that it might be called for to go over at least a few examples of the ray cater class in three.js.
+There is just getting started with the very basics of raycasting in threejs, and of course I will be starting out with that in this post. However there might be a whole bunch more advanced topics that will also come up when it comes to this sort of thing. So I think that it might be called for to go over at least a few examples of the ray cater class in threejs.
 
 <!-- more -->
 
@@ -22,19 +22,23 @@ There is just getting started with the very basics when it comes to ray casting 
 
 ## Clicking a Mesh in three.js and what to know before hand
 
-This is a post on using the THREE.Raycaster class in three.js as a way to help with the process of clicking on a mesh object. This is then a post on a topic that might prove to be a little to advanced for some developers that are still a little to new with [three.js](/2018/04/04/threejs-getting-started/) and [javaScript](/2018/11/27/js-getting-started/). In this section I will then be going over a few topics that are worth checking out for the first time, or refreshing on before continuing with the rest of the continent here.
+This is a post on using the THREE.Raycaster class in threejs as a way to help with the process of clicking on a mesh object. This is then a post on a topic that might prove to be a little to advanced for some developers that are still a little to new with [threejs](/2018/04/04/threejs-getting-started/) and [javaScript](/2018/11/27/js-getting-started/). In this section I will then be going over a few topics that are worth checking out for the first time, or refreshing on before continuing with the rest of the continent here.
+
+### Read up more on mesh objects, and the object3d base class
+
+There is starting out with reading a bit more on mesh objects, and the underlying base class [known as object3d](/2018/04/23/threejs-object3d/).
 
 ### Source code is on Github
 
 The source code examples that I am wiring about here as well as additional draft examples, notes and  much more can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-raycaster). This is also where I park the source code for my many other [posts on threejs](/categories/three-js/).
 
-### version Numbers matter with three.js
+### version Numbers matter with threejs
 
-When I made these examples and wrote this post I was using r127 of three.js which was still a fairly later version of three.js as of this writing. The last time I cam around to do a little editing, and expand with new examples I was using r140 of the library. Code breaking changes are always made with three.js as new revisions come out so if you run into problems with getting this to work on your end that might be the first thing you should check actually.
+When I made these examples and wrote this post I was using r127 of threejs which was still a fairly later version of threejs as of this writing. The last time I cam around to do a little editing, and expand with new examples I was using r146 of the library. Code breaking changes are always made with threejs as new revisions come out so if you run into problems with getting this to work on your end that might be the first thing you should check actually.
 
 ## 1 - Basic examples of the Raycaster class
 
-When it comes to starting out with anything in threejs, or when it comes to just about anything in programing there is thinking in terms of first starting out with a simple hello world style example of what that something is. So then in this section I will be starting out with some fairly simple examples of the use of the raycaster class, before moving on to more complex examples of various use cases.
+When it comes to starting out with anything in threejs, or when it comes to just about anything in programming there is thinking in terms of first starting out with a simple hello world style example of what that something is. So then in this section I will be starting out with some fairly simple examples of the use of the raycaster class, before moving on to more complex examples of various use cases.
 
 ### 1.1 - Sphere Raycaster example
 
@@ -247,11 +251,11 @@ loop();
 
 ## 3 - Cube Group Raycaster class example
 
-For this example of the Raycaster class I decided to make use of a module that I made for my [post on nested groups in three.js](/2021/05/10/threejs-examples-nested-groups/) that is a kind of cube group model. This module is just a way to create a group of eight mesh objects where each mesh object has an instance of the built in box geometry of three.js as its geometry. These eight mesh objects are positioned in such a way so that they from a larger cube of cubes sort of speak. I can then use an update method of the cube group module to update the state of ones of these cube groups so that the cubes expand outward from the center of the group, and back again.
+For this example of the Raycaster class I decided to make use of a module that I made for my [post on nested groups in threejs](/2021/05/10/threejs-examples-nested-groups/) that is a kind of cube group model. This module is just a way to create a group of eight mesh objects where each mesh object has an instance of the built in box geometry of threejs as its geometry. These eight mesh objects are positioned in such a way so that they from a larger cube of cubes sort of speak. I can then use an update method of the cube group module to update the state of ones of these cube groups so that the cubes expand outward from the center of the group, and back again.
 
 ### 3.1 - Cube Group module
 
-Here I have the state of the cube group module as I have used it for this example. I did not change much with this from what I have worked out in the for the other three.js example post. Still I often do make a few minor changes here and there with these when I use them in other projects, so I just got into the habit of always posing what it is that I am using here.
+Here I have the state of the cube group module as I have used it for this example. I did not change much with this from what I have worked out in the for the other threejs example post. Still I often do make a few minor changes here and there with these when I use them in other projects, so I just got into the habit of always posing what it is that I am using here.
 
 ```js
 (function (api) {
@@ -709,4 +713,4 @@ Although this might be working okay with the box ge9ometry mesh that I am using 
 
 ## Conclusion
 
-So then the raycaster class is a useful tool to go about clicking on mesh objects in three.js. However I am sure that there are many uses for the class that will come up when it comes to writing scripts that update some kind of simulation also when it comes to getting a collection of mesh objects from a given object outward or anything to that effect. I think that there might be a need for maybe a few more basic examples of this kind of class as I am sure that there are a number of issues that will come up here and there when using this class. Not just with the class itself, but also when it comes to three.js, and javaScript in general. For example many of the examples that I have worked out as of this writing will just work with a mouse, but I did not do anything when it comes to working with touch devices, and this day in age I have to take that into account when making any kind of production project.
+So then the raycaster class is a useful tool to go about clicking on mesh objects in threejs. However I am sure that there are many uses for the class that will come up when it comes to writing scripts that update some kind of simulation also when it comes to getting a collection of mesh objects from a given object outward or anything to that effect. I think that there might be a need for maybe a few more basic examples of this kind of class as I am sure that there are a number of issues that will come up here and there when using this class. Not just with the class itself, but also when it comes to threejs, and javaScript in general. For example many of the examples that I have worked out as of this writing will just work with a mouse, but I did not do anything when it comes to working with touch devices, and this day in age I have to take that into account when making any kind of production project.
