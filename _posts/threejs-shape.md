@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2022-10-11 14:45:27
-version: 1.43
+updated: 2023-04-04 08:32:50
+version: 1.44
 ---
 
-Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then be used in a [mesh object](/2018/05/04/threejs-mesh/). So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
+Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/). This geometry can then be used in a [mesh object](/2018/05/04/threejs-mesh/), or with anything else that needs a geometry such as with THREE.Points or THREE.LineSegmenets. The shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended with a little depth.
 
 <!-- more -->
 
@@ -18,15 +18,15 @@ Today I thought I would look into making a few quick examples of the [Shape](htt
 
 ## The Shape Constructor and what to know first
 
-This is a post on the THREE.Shape class in the javaScript library known as threejs, so it should go without saying that you should have at least some basic knowledge of threejs in order to gain something of value from reading this post. I will not be getting into the very basics of threejs and client side javaScript in general here, so if you are still fairly new to threejs you might want to start out with a [getting started type post on threejs](/2018/04/04/threejs-getting-started/). Still in this section I will go over at least a few key details about some things that you might want to read up on more when getting into the shape constructor.
+This is a post on the THREE.Shape class in the javaScript library known as threejs, so it should go without saying that you should have at least some basic working knowledge of threejs in order to gain something of value from reading this post. I will not be getting into the very basics of threejs, and client side javaScript in general here. So if you are still fairly new to threejs you might want to start out with a [getting started type post on threejs](/2018/04/04/threejs-getting-started/). Still in this section I will go over at least a few key details about some things that you might want to read up on more when getting into the shape constructor.
 
 ### Also look into the path class
 
-When it comes to knowing how to create shapes you will want to also look into the [paths class](https://threejs.org/docs/index.html#api/en/extras/core/Path). This paths class is what will contains methods like move to and line to.
+When it comes to knowing how to create shapes you will want to also look into the [paths class](https://threejs.org/docs/index.html#api/en/extras/core/Path). This paths class is what will contains methods like move to and line to that can be used to create the paths that are needed to make a shape object.
 
 ### Also Check out the SVG Loader
 
-The [SVG loader is an addtional loader](/2022/09/16/threejs-svg-loader/) that can be added on top of the threejs library alone to load SVG files and thus use the path data of those kinds of files to create Shapes.
+The [SVG loader is an additional loader](/2022/09/16/threejs-svg-loader/) that can be added on top of the threejs library alone to load SVG files and thus use the path data of those kinds of files to create Shapes. This is actually the main way that I often like to end up with both paths as well as shape objects that I can then use to create shape and extrude geometry. Often I am in a situation in which I all ready have an SVG file that I would like to use to create a 3d form of a logo. Also SVG is a great standard for making a common plane old 2d form of something while also being able to use it with shape and extrude geometry constructors by importing it into threejs by using this loader.
 
 ### Source code is on Github
 
