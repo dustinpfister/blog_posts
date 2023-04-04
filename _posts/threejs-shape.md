@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2023-04-04 08:53:35
-version: 1.46
+updated: 2023-04-04 13:05:15
+version: 1.47
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/). This geometry can then be used in a [mesh object](/2018/05/04/threejs-mesh/), or with anything else that needs a geometry such as with THREE.Points or THREE.LineSegmenets. The shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended with a little depth.
@@ -51,10 +51,8 @@ Maybe a good starting point with the Shape constructor would be to use it to cre
 const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(4, 4));
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // SHAPE
@@ -77,6 +75,8 @@ scene.add(mesh);
 //-------- ---------- 
 // RENDER
 //-------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -93,10 +93,8 @@ The Shape geometry constructor works great if I want to create something that is
 const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(4, 4));
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // SHAPE
@@ -123,6 +121,8 @@ scene.add(mesh);
 //-------- ---------- 
 // RENDER
 //-------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -143,9 +143,7 @@ The set from points method of the Path class is how to go about setting the stat
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
 const camera = new THREE.PerspectiveCamera(60, 64 / 48, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -185,6 +183,8 @@ scene.add(mesh);
 //-------- ---------- 
 // RENDER
 //-------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -199,9 +199,7 @@ The official example of the Shape class makes use of the bezier curve to method 
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
 const camera = new THREE.PerspectiveCamera(60, 64 / 48, 0.1, 1000);
-camera.position.set(3, 3, 3);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -240,6 +238,8 @@ scene.add(mesh);
 //-------- ---------- 
 // RENDER
 //-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -256,41 +256,41 @@ In this example then I am just creating a triangle type shape again, but then I 
 const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(4, 4));
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // SHAPE, GEOMETRY
 //-------- ----------
-var tri = new THREE.Shape();
+const tri = new THREE.Shape();
 tri.moveTo(0, 2);
 tri.lineTo(2, -2);
 tri.lineTo(-2, -2);
 // add the hole
-var hole = new THREE.Shape();
+const hole = new THREE.Shape();
 hole.arc(0, -0.8, 1.0, 0, Math.PI * 2);
 // push to the shapes holes array
 tri.holes.push(hole);
 // geometry
-var extrudeSettings = {
+const extrudeSettings = {
     depth: 1,
     bevelEnabled: false
 };
-var geometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
+const geometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
 geometry.rotateX(Math.PI * 1); // might want to center
 geometry.center();
 //-------- ----------
 // MESH
 //-------- ----------
-var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
 mesh.add(new THREE.BoxHelper(mesh));
 // add the mesh to the scene
 scene.add(mesh);
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -309,40 +309,40 @@ So in this example I made an instance of THREE.Group, and then created and added
 const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(4, 4));
 const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // GROUP, MESH, HELPER
 //-------- ----------
-var group = new THREE.Group();
+const group = new THREE.Group();
 scene.add(group);
 // BOX
-var mesh = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 1), new THREE.MeshNormalMaterial());
-group.add(mesh)
+const mesh1 = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 1), new THREE.MeshNormalMaterial());
+group.add(mesh1)
 // SHAPE
-var tri = new THREE.Shape();
+const tri = new THREE.Shape();
 tri.moveTo(-1, 1);
 tri.lineTo(1, -1);
 tri.lineTo(-1, -1);
-var extrudeSettings = {
+const extrudeSettings = {
     depth: 1,
     bevelEnabled: false
 };
-var geometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
+const geometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
 geometry.rotateX(Math.PI * 1); // might want to center
 geometry.center();
-var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
-mesh.position.set(0, 2.0, 0);
-mesh.rotation.set(0, 0, Math.PI * 0.5);
+const mesh2 = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
+mesh2.position.set(0, 2.0, 0);
+mesh2.rotation.set(0, 0, Math.PI * 0.5);
 // add the mesh to the group
-group.add(mesh);
+group.add(mesh2);
 group.add(new THREE.BoxHelper(group));
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -366,9 +366,7 @@ Here I have a current standing animation loop example based off of that heart sh
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10) );
 const camera = new THREE.PerspectiveCamera(60, 64 / 48, 0.1, 1000);
-camera.position.set(3, 3, 3);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -424,10 +422,11 @@ let s = 0.25;
 mesh.scale.set(s, s, s);
 // add the mesh to the scene
 scene.add(mesh);
-
 // ---------- ----------
 // ANIMATION LOOP
 // ---------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
 const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
 FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
 FRAME_MAX = 300;
