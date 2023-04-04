@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2023-04-04 08:32:50
-version: 1.44
+updated: 2023-04-04 08:36:28
+version: 1.45
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/). This geometry can then be used in a [mesh object](/2018/05/04/threejs-mesh/), or with anything else that needs a geometry such as with THREE.Points or THREE.LineSegmenets. The shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended with a little depth.
@@ -22,7 +22,7 @@ This is a post on the THREE.Shape class in the javaScript library known as three
 
 ### Also look into the path class
 
-When it comes to knowing how to create shapes you will want to also look into the [paths class](https://threejs.org/docs/index.html#api/en/extras/core/Path). This paths class is what will contains methods like move to and line to that can be used to create the paths that are needed to make a shape object.
+When it comes to knowing how to create shapes you will want to also look into the [paths class](https://threejs.org/docs/index.html#api/en/extras/core/Path). This paths class is what will contains methods like move to and line to that can be used to create the paths that are needed to make a shape object. This is what I will want to use if I am in a situation in which I need to create a 2d path withjajavScript code rather than an external file. When it comes to using an external file I will want to go with SVG and with that the SVG loader in which case I do not have to bother working with the path class directly.
 
 ### Also Check out the SVG Loader
 
