@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1035
-updated: 2023-04-07 14:58:18
-version: 1.2
+updated: 2023-04-07 15:05:27
+version: 1.3
 ---
 
 As of late I have been working on demos that have to do with [Quaternion objects](https://threejs.org/docs/#api/en/math/Quaternion) in order to gain a better understanding of them. Thus far I have found that there is a core set of prototype methods that I am going to want to use to start working with these. Maybe the very first method that one will want to get solid with is the set from axis angle method, but I have found that the set from unit vectors method is also often fairly useful as well. With that said todays post will be on this set from unit vectors method of the quaternion class.
@@ -15,23 +15,23 @@ As of late I have been working on demos that have to do with [Quaternion objects
 
 ## The set from unit vectors method of the Quaternion class and what to know first
 
-This is a post centered around the set from unit vectors method of the quaternion class of the javaScript library called threejs. With that said it should go without saying that this is not a post for people that are new to threejs, as this is a fairly advanced topic when it comes to the use of this library. However in any case, even if you have some experience, it might be a good idea to refresh a bit on some things before continuing with reading the rest of this content. So I will take a moment to outline what some of those things might be here.
+This is a post centered around the set from unit vectors method of the quaternion class of the javaScript library called threejs. With that said it should go without saying that this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/), as this is a fairly advanced topic when it comes to the use of this library. However in any case, even if you have some experience, it might be a good idea to refresh a bit on some things before continuing with reading the rest of this content. So I will take a moment to outline what some of those things might be here.
 
 ### There is starting out with Euler angles, and the Object3d.lookAt method.
 
-If you are new to rotations using threejs there are a lot of features that you should be aware of first. Euler angles for example are generally easier to work with, and if what you need to do can be done with them it might be best to do so and move on. It is only when you run into problems with using Euler angles, and other options such as the look at method of the Obejct3d class, that you should get into using more complex options such as Quaternion objects, and with that the set from unit vectors method of the Quaternion class.
+If you are new to rotations using threejs there are a lot of features that you should be aware of first. [Euler angles](/2021/04/28/threejs-euler/) for example are generally easier to work with, and if what you need to do can be done with them it might be best to do so and move on. It is only when you run into problems with using Euler angles, and other options such as the [look at method of the Obejct3d class](/2021/05/13/threejs-object3d-lookat/), that you should get into using more complex options such as Quaternion objects, and with that the set from unit vectors method of the Quaternion class.
 
 ### Do not forget about Buffer Geometry rotation methods
 
-There is setting the orientation of an object3d class based object itself such as a mesh object, and then there is rotating the geometry of a mesh object without doing anything with the state of the mesh objects rotation. If you are not aware of what there is to work with in the buffer geometry class now might be a good time to look into that more as well.
+There is setting the orientation of an object3d class based object itself such as a mesh object, and then there is [rotating the geometry](/2021/05/20/threejs-buffer-geometry-rotation/) of a mesh object without doing anything with the state of the mesh objects rotation. If you are not aware of what there is to work with in the buffer geometry class now might be a good time to look into that more as well.
 
 ### Check out my main blog post on Quaternion objects
 
-There is also taking a look at my main blog post on the subject of using these quaternion objects as well. As I write more content on these kinds of objects I am sure that I will be doing a fair amount of editing with that post, but I am not so sure that I will be doing the same for this one.
+There is also taking a look at my [main blog post on the subject of using these quaternion objects](/2023/03/24/threejs-quaternion/) as well. As I write more content on these kinds of objects I am sure that I will be doing a fair amount of editing with that post, but I am not so sure that I will be doing the same for this one.
 
 ### Source code examples are up on Github
 
-The source code examples that I am writing about here, as well as additional notes for future edits and so forth can be found in my test threejs repository on Github. This is also where I park the source code examples for all the other blog posts that I have wrote on threejs as well.
+The source code examples that I am writing about here, as well as additional notes for future edits and so forth can be [found in my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-quaternion-setfromunitvectors). This is also where I park the source code examples for all the [other blog posts that I have wrote on threejs](/categories/three-js/) as well.
 
 ### Version Numbers matter
 
