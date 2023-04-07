@@ -5,13 +5,37 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1035
-updated: 2023-04-07 14:39:27
-version: 1.1
+updated: 2023-04-07 14:58:18
+version: 1.2
 ---
 
-As of late I have been working on demos that have to do with Quaternion objects in order to gain a better understanding of them. Thus far I have found that there is a core set of prototype methods that I am going to want to use to start working with these. Maybe the very first method that one will want to get solid with is the set from axis angle method, but I have found that the set from unit vectors method is also often fairly useful as well. With that said todays post will be on this set from unit vectors method of the quaternion class.
+As of late I have been working on demos that have to do with [Quaternion objects](https://threejs.org/docs/#api/en/math/Quaternion) in order to gain a better understanding of them. Thus far I have found that there is a core set of prototype methods that I am going to want to use to start working with these. Maybe the very first method that one will want to get solid with is the set from axis angle method, but I have found that the set from unit vectors method is also often fairly useful as well. With that said todays post will be on this set from unit vectors method of the quaternion class.
 
 <!-- more -->
+
+## The set from unit vectors method of the Quaternion class and what to know first
+
+This is a post centered around the set from unit vectors method of the quaternion class of the javaScript library called threejs. With that said it should go without saying that this is not a post for people that are new to threejs, as this is a fairly advanced topic when it comes to the use of this library. However in any case, even if you have some experience, it might be a good idea to refresh a bit on some things before continuing with reading the rest of this content. So I will take a moment to outline what some of those things might be here.
+
+### There is starting out with Euler angles, and the Object3d.lookAt method.
+
+If you are new to rotations using threejs there are a lot of features that you should be aware of first. Euler angles for example are generally easier to work with, and if what you need to do can be done with them it might be best to do so and move on. It is only when you run into problems with using Euler angles, and other options such as the look at method of the Obejct3d class, that you should get into using more complex options such as Quaternion objects, and with that the set from unit vectors method of the Quaternion class.
+
+### Do not forget about Buffer Geometry rotation methods
+
+There is setting the orientation of an object3d class based object itself such as a mesh object, and then there is rotating the geometry of a mesh object without doing anything with the state of the mesh objects rotation. If you are not aware of what there is to work with in the buffer geometry class now might be a good time to look into that more as well.
+
+### Check out my main blog post on Quaternion objects
+
+There is also taking a look at my main blog post on the subject of using these quaternion objects as well. As I write more content on these kinds of objects I am sure that I will be doing a fair amount of editing with that post, but I am not so sure that I will be doing the same for this one.
+
+### Source code examples are up on Github
+
+The source code examples that I am writing about here, as well as additional notes for future edits and so forth can be found in my test threejs repository on Github. This is also where I park the source code examples for all the other blog posts that I have wrote on threejs as well.
+
+### Version Numbers matter
+
+When I first wrote this blog post I was using r146 of threejs.
 
 ## 1 - Basic getting started examples of the Set From Unit Vectors method
 
@@ -54,7 +78,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Using the lerp, clone, and normalize methods of the Vector3 class
 
-Now that I got the very basic example out of the way, in this demo I am now making use of a few prototype methods in the Vector3 class toolbox. The clone method is great for making a new Vector3 object from another vector3 object, the lerp method is useful for getting a vector between two vectors, and also the normalize method can be used to set a vector to a unit length of 1 while preserving the direction of the vector.
+Now that I got the very basic example out of the way, in this demo I am now making use of a few prototype methods in the Vector3 class toolbox. The clone method is great for making a new Vector3 object from another vector3 object, the [lerp method](/2022/05/17/threejs-vector3-lerp/) is useful for getting a vector between two vectors, and also the [normalize method](/2021/06/14/threejs-vector3-normalize/) can be used to set a vector to a unit length of 1 while preserving the direction of the vector.
 
 With all of that said I am once again starting out with two vector3 objects that are 0,1,0, and 1,0,0. However I am making my from vector cloning the first vector. Then when it comes to the to vector I can clone the from vector, and then lerp to v2 by way of a given alpha value. I can then also use the normalize method when doing all of this to make sure that the unit length of these vector3 objects is always 1 as well.
 
@@ -94,7 +118,7 @@ renderer.render(scene, camera);
 
 ### 1.3 - The apply Euler method of Vector3 to change direction
 
-Euler objects might have there limitations, but in some cases they can still prove to be useful. The thing to keep in mind here is that quaternions are to be used on top of Euler angles, not as a total replacement for them. With that said I have found that Euler angles are still work great when used in conjunction with the apply Euler method of the vector3 class to create a vector3 object with a desired direction. The vector3 object can then be used to set the position of an object, and on top of that I can just call the clone and normalize methods off of the position to get a vector of 1 unit length to use with the set from unit vectors quaternion method without mutation the vectro3 object of the object position.
+Euler objects might have there limitations, but in some cases they can still prove to be useful. The thing to keep in mind here is that quaternions are to be used on top of Euler angles, not as a total replacement for them. With that said I have found that Euler angles are still work great when used in conjunction with the [apply Euler method of the vector3 class](/2021/06/18/threejs-vector3-apply-euler/) to create a vector3 object with a desired direction. The vector3 object can then be used to set the position of an object, and on top of that I can just call the clone and normalize methods off of the position to get a vector of 1 unit length to use with the set from unit vectors quaternion method without mutation the vectro3 object of the object position.
 
 ```js
 // ---------- ----------
@@ -358,7 +382,6 @@ loop();
 ## Conclusion
 
 Thus far I have to say that this set from unit vectors might be a core set of must know functions of the quaternion class. It is a great way to set the state of the orientation with a set of vectors that contain from and to directions. It is still not a replacement for the set from axis angle method though, and in any case I think that the premultiply methods might be one of the most importance methods to get solid when it comes to this class. You see there is setting the first state of a quaternion object, and then there is adding from that first state with another rotation. This set from unit vectors method is good for setting the first state that I want, then after that there is using premulitply one or more times from there.
-
 
 
 
