@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-04-03 10:19:00
-version: 1.20
+updated: 2023-04-07 15:07:24
+version: 1.21
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -374,7 +374,7 @@ loop();
 
 ### 2.4 - The set from unit vectors method
 
-For the most part I like to use the set from axis angle method as a way to define the state of a quaternion object. However another great method for this is the set from unit vectors method which allows me to define the state in the form of a from and to vector3 object. This way I can think in terms of having a vector3 object that is a direction that I want to set, and other vector3 that is the direction that I am coming from to this new direction. Because I am using the vector3 class here I can make [use of methods like the lerp method](/2022/05/17/threejs-vector3-lerp/) of the vector3 class to update the state of the to vector3 object starting at the from vector3 to the desired end vector3 object.
+For the most part I like to use the set from axis angle method as a way to define the state of a quaternion object. However another great method for this is the [set from unit vectors method](/2023/04/07/threejs-quaternion-setfromunitvectors/) which allows me to define the state in the form of a from and to vector3 object. This way I can think in terms of having a vector3 object that is a direction that I want to set, and other vector3 that is the direction that I am coming from to this new direction. Because I am using the vector3 class here I can make [use of methods like the lerp method](/2022/05/17/threejs-vector3-lerp/) of the vector3 class to update the state of the to vector3 object starting at the from vector3 to the desired end vector3 object.
 
 ```js
 // ---------- ----------
