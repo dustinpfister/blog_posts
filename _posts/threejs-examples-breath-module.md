@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1030
-updated: 2023-04-10 14:31:47
-version: 1.9
+updated: 2023-04-10 14:39:19
+version: 1.10
 ---
 
 I made a javaScript module that can be used as a core tool in the process of making a number of video projects that can be used as tools for controlled breathing exercises. The core idea of these kinds of videos is to have a number of objects update in such a way that they are in sycn with a rate at which people watching the video breath. So there is a lot of little details that come up when making a javaScript module to update things such as how many breaths per minute, how many minutes, and also other details about each breath cycle. Details for each breath cycle are things like what is the ratio of time for each opening reset, breath in, high rest, and breath out part. There are also a lot of things that come to mind when it comes to having an expression for the alpha values that will be used to position objects along curves, and also update just about everything else.
@@ -448,6 +448,243 @@ camera.lookAt(0, 0, 0);
 const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
 FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
 FRAME_MAX = 30 * 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a_breathPart = a1;
+    const a_breath = Math.sin(Math.PI * 0.5 * a_breathPart);
+    BreathMod.update(group, a_breath);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 2 - Reduction of Complexity, but added better hooks and alphas in R1
+
+After using this module for a few video projects thus far I have found that I should remove the groups of objects that are updated using curves. It is not that I do not like what I worked out with that, it is just that I think that the main focus of this module should just be to update alpha values over time that are then used to update something else outside of this module that will change up from one project to the next. So for R1 of breath.js everything that has to do with this curve group that was in R0 has been removed, as that is something that I think should be a whole other project outside of this breath module.
+
+### 2.a - The breath.js module \( R1 \)
+
+Here is then R1 of the breath module now.
+
+```js
+// breath.js - r1 - from threejs-examples-breath-module
+(function(api){
+    const BREATH_KEYS = 'restLow,breathIn,restHigh,breathOut'.split(',');
+    const BREATH_DISP_NAMES = 'rest low, breath in, rest high, breath out'.split(',');
+    //-------- ----------
+    // DEFAULTS
+    //-------- ----------
+    const DEFAULT_BREATH_PARTS = {restLow: 1, breathIn: 5, restHigh: 1, breathOut: 5};
+    const DEFAULT_HOOKS = {
+        restLow : (group, a_breathPart, a_fullvid, gud) => {},
+        restHigh : (group, a_breathPart, a_fullvid, gud) => {},
+        breathIn : (group, a_breathPart, a_fullvid, gud) => {},
+        breathOut : (group, a_breathPart, a_fullvid, gud) => {}
+    };
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // get the sum of a breath parts object
+    const getBreathPartsSum = (breathParts) => {
+        return Object.keys( breathParts ).reduce( ( acc, key ) => { return acc + breathParts[key]; }, 0);
+    };
+    // get the alpha value targets for each breath part
+    const getBreathAlphaTargets = (breathParts) => {
+        return BREATH_KEYS.reduce((acc, key, i, arr) => {
+            let a = breathParts[ key ];
+            if(i > 0){
+                a += acc[i - 1]
+            }
+            acc.push( a );
+            return acc;
+        }, []).map((n)=>{
+            return n / getBreathPartsSum(breathParts);
+        });
+    };
+    // get a breath parts string for display
+    const getBreathPartsString = (group) => {
+        const gud = group.userData;
+        return Object.keys(gud.breathParts).reduce( (acc, key, i) => {
+            const n = gud.breathParts[key];
+            const a = n / gud.breathPartsSum;
+            const s = gud.secsPerBreathCycle * a;
+            acc += s.toFixed(2) + 's ' + BREATH_DISP_NAMES[i] + (i === 3 ? '' : ', ');
+            return acc;
+        }, '');
+    };
+    const secsToTimeStr = (totalSecs) => {
+        const minutes = Math.floor( totalSecs / 60 );
+        const secs = Math.floor(totalSecs % 60);
+        return String(minutes).padStart(2, '0') + ':' + String(secs).padStart(2, '0')
+    };
+    //-------- ----------
+    // PUBLIC API
+    //-------- ----------
+    // main update method
+    api.update = (group, a_fullvid) => {
+        const gud = group.userData;
+        gud.a_fullvid = a_fullvid;
+        gud.sec = gud.totalBreathSecs * gud.a_fullvid;
+        gud.timeString = secsToTimeStr(gud.sec);
+        gud.a_breath = (gud.sec % 60 / 60) * gud.breathsPerMinute % 1;
+        gud.rest = true;
+        gud.breath = false;
+        gud.low = false;
+        let ki = 0;
+        while(ki < BREATH_KEYS.length){
+            if(gud.a_breath < gud.breathAlphaTargts[ki]){
+                gud.a_base = ki > 0 ? gud.breathAlphaTargts[ki - 1] : 0;
+                gud.a_breathPart = (gud.a_breath - gud.a_base) / (gud.breathAlphaTargts[ki] - gud.a_base);
+                gud.currentBreathKey = BREATH_KEYS[ki]
+                if( gud.currentBreathKey === 'restLow'){
+                    gud.a_breath_state = 0;
+                    gud.low = true;
+                }
+                if( gud.currentBreathKey === 'restHigh'){
+                    gud.a_breath_state = 1;
+                    gud.low = false;
+                }
+                if( gud.currentBreathKey === 'breathIn'){
+                    gud.a_breath_state = Math.sin(Math.PI * 0.5 * gud.a_breathPart);
+                    gud.rest = false;
+                    gud.breath = true;
+                    gud.low = true;
+                }
+                if( gud.currentBreathKey === 'breathOut'){
+                    gud.a_breath_state = 1 - Math.sin(Math.PI * 0.5 * gud.a_breathPart);
+                    gud.rest = false;
+                    gud.breath = true;
+                    gud.low = false;
+                }
+                // call before hook
+                gud.before(group, gud.a_breath, gud.a_breath_state, gud.a_fullvid, gud.a_breathPart, gud.currentBreathKey, gud);
+                // call the current breath hook
+                const hook = gud.hooks[ gud.currentBreathKey ];
+                hook(group, gud.a_breathPart, gud.a_fullvid, gud);
+                break;
+            }
+            ki += 1;;
+        }
+    };
+    // main create method
+    api.create = (opt) => {
+        opt = opt || {};
+        const group = new THREE.Group();
+        const gud = group.userData;
+        gud.totalBreathSecs = opt.totalBreathSecs === undefined ? 300 : opt.totalBreathSecs;
+        gud.breathsPerMinute = opt.breathsPerMinute === undefined ? 5 : opt.breathsPerMinute;
+        gud.breathParts = opt.breathParts || DEFAULT_BREATH_PARTS;
+        gud.breathAlphaTargts = getBreathAlphaTargets(gud.breathParts);
+        gud.before = opt.before || function(){};
+        gud.hooks = Object.assign({}, DEFAULT_HOOKS , opt.hooks );
+        gud.id = opt.id || '1';
+        gud.sec = 0;
+        // set in api.update
+        gud.currentBreathKey = '';
+        gud.a_fullvid = 0;
+        gud.a_base = 0;
+        gud.a_breathPart = 0;  // alpha value of the current breath part
+        gud.a_breath = 0;
+        gud.a_breath_state = 0;
+        // booleans that can be used in hooks
+        gud.rest = false;
+        gud.breath = false;
+        gud.low = false;
+        // display values
+        gud.breathPartsSum = getBreathPartsSum(gud.breathParts);
+        gud.secsPerBreathCycle = 60 / gud.breathsPerMinute;
+        gud.breathPartsString = getBreathPartsString(group);
+        gud.totalTimeString = secsToTimeStr(gud.totalBreathSecs);
+        gud.timeString = secsToTimeStr(gud.sec);
+        // update and return
+        api.update(group, 0);
+        return group;
+    };
+}(this['BreathMod'] = {} ));
+```
+
+### 2.1 - update hooks demo
+
+I thus far have just one demo of R1 of the breath module.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const geo = new THREE.SphereGeometry(1, 20, 20);
+const material = new THREE.MeshNormalMaterial();
+const mesh1 = new THREE.Mesh( geo, material);
+mesh1.position.z = -4;
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh( geo, material);
+mesh2.position.z = -2;
+scene.add(mesh2);
+const mesh3 = new THREE.Mesh( geo, material);
+mesh3.position.z = 0;
+scene.add(mesh3);
+const mesh4 = new THREE.Mesh( geo, material);
+mesh4.position.z = 2;
+scene.add(mesh4);
+//-------- ----------
+// BREATH GROUP - creating with default settings
+//-------- ----------
+const BREATH_SECS = 60;
+const group = BreathMod.create({
+    totalBreathSecs: BREATH_SECS,
+    breathsPerMinute: 6,
+    breathParts: {restLow: 1, breathIn: 7, restHigh: 1, breathOut: 3},
+    before: (group, a_breath, a_state, a_fullvid, a_breath_part, breathPart, gud) => {
+        mesh1.position.x = -5 + 10 * a_breath;
+        mesh2.position.x = -5 + 10 * a_state;
+        mesh3.position.x = -5 + 10 * a_fullvid;
+        mesh4.position.x = -5 + 10 * a_breath_part;
+        scene.background = new THREE.Color(0,0,0);
+        if(gud.breath){
+            scene.background = new THREE.Color(0,1,1);
+        }
+    }
+});
+scene.add(group);
+const gud = group.userData;
+console.log(gud.secsPerBreathCycle)
+console.log(gud.breathPartsString);
+console.log(gud.totalTimeString);
+console.log(gud.timeString);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(4, 4, 8);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 30 * BREATH_SECS;
 let secs = 0,
 frame = 0,
 lt = new Date();
