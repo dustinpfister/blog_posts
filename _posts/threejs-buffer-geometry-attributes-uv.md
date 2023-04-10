@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2023-04-10 13:50:57
-version: 1.28
+updated: 2023-04-10 14:02:30
+version: 1.29
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing. 
@@ -42,7 +42,7 @@ The source code examples that I am writing about in this post can also be found 
 
 ### Always check your version numbers
 
-When I first wrote this post I was using r127 of threejs, and the last time I came around to do some editing I was using r140 of the library. The examples here where working okay with both versions of threejs on my end just fine. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post yet again.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to do some editing I was using r146 of the library. The examples here where working okay with both versions of threejs on my end just fine. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post yet again.
 
 ## 1 - Basic examples of the uv attribute of buffer geometry
 
@@ -53,82 +53,79 @@ In this section I will be starting out with just some basic examples of the uv a
 To get a general idea of what the uvs are for when it comes to textures it might be best to start working with a plane geometry and look at the values of uv attribute of the plane that is created when using the built in geometry constructor. For example if I create a plane geometry that is a size of 1 by 1 and also has a section size of 1 by 1 then that results in a geometry composed of just 4 points, and because there are 2 uv values for each point it will result in just 8 values in the uv attribute. This is then a nice simple starting point when it comes to playing around with these values to gain a sense of what happens when the values are changed.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // CANVAS TEXTURE
-    //-------- ----------
-    const canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-    canvas.width = 32;
-    canvas.height = 32;
-    ctx.fillStyle = '#004040'; // fill
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = 'white';
-    ctx.fillStyle = 'red';
-    ctx.beginPath(); // draw red and white circle
-    ctx.arc(10, 10, 8, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-    ctx.beginPath(); // draw white square
-    ctx.rect(0, 0, canvas.width, canvas.height);
-    ctx.stroke();
-    const texture = new THREE.Texture(canvas);
-    texture.needsUpdate = true;
-    //-------- ----------
-    // GEOMETRY - Mutation of a plane
-    //-------- ----------
-    const geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
-    const uv = geometry.getAttribute('uv'),
-    position = geometry.getAttribute('position');
-    // the position attribute
-    console.log(position.count); // 4 ( the are points or vertices )
-    console.log(position.array.length); // 12 ( x, y, and z for each point )
-    // THE UV ATTRIBUTE
-    console.log(uv.count); // 4 ( the are points or vertices )
-    console.log(uv.array.length); // 8 ( there is a u and v value for each point )
-    // MUTATING THE UV VALUES
-    uv.array[0] = 0.27;
-    uv.array[1] = 0.73;
-    uv.array[2] = 0.73;
-    uv.array[3] = 0.73;
-    uv.array[4] = 0.27;
-    uv.array[5] = 0.27;
-    uv.array[6] = 0.73;
-    uv.array[7] = 0.27;
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    // use the geometry with a mesh
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-                side: THREE.DoubleSide,
-                map: texture
-            }));
-    mesh.position.set(1, 0, 0);
-    scene.add(mesh);
-    // another mesh where I am not doing anything to the uv values
-    const geometry2 = new THREE.PlaneGeometry(1, 1, 1, 1);
-    const mesh2 = new THREE.Mesh(geometry2, new THREE.MeshBasicMaterial({
-                side: THREE.DoubleSide,
-                map: texture
-            }));
-    mesh2.position.set(-1, 0, 0);
-    scene.add(mesh2);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 32;
+canvas.height = 32;
+ctx.fillStyle = '#004040'; // fill
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.strokeStyle = 'white';
+ctx.fillStyle = 'red';
+ctx.beginPath(); // draw red and white circle
+ctx.arc(10, 10, 8, 0, Math.PI * 2);
+ctx.fill();
+ctx.stroke();
+ctx.beginPath(); // draw white square
+ctx.rect(0, 0, canvas.width, canvas.height);
+ctx.stroke();
+const texture = new THREE.Texture(canvas);
+texture.needsUpdate = true;
+//-------- ----------
+// GEOMETRY - Mutation of a plane
+//-------- ----------
+const geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
+const uv = geometry.getAttribute('uv'),
+position = geometry.getAttribute('position');
+// the position attribute
+console.log(position.count); // 4 ( the are points or vertices )
+console.log(position.array.length); // 12 ( x, y, and z for each point )
+// THE UV ATTRIBUTE
+console.log(uv.count); // 4 ( the are points or vertices )
+console.log(uv.array.length); // 8 ( there is a u and v value for each point )
+// MUTATING THE UV VALUES
+uv.array[0] = 0.27;
+uv.array[1] = 0.73;
+uv.array[2] = 0.73;
+uv.array[3] = 0.73;
+uv.array[4] = 0.27;
+uv.array[5] = 0.27;
+uv.array[6] = 0.73;
+uv.array[7] = 0.27;
+//-------- ----------
+// MESH
+//-------- ----------
+// use the geometry with a mesh
+const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+            side: THREE.DoubleSide,
+            map: texture
+        }));
+mesh.position.set(1, 0, 0);
+scene.add(mesh);
+// another mesh where I am not doing anything to the uv values
+const geometry2 = new THREE.PlaneGeometry(1, 1, 1, 1);
+const mesh2 = new THREE.Mesh(geometry2, new THREE.MeshBasicMaterial({
+            side: THREE.DoubleSide,
+            map: texture
+        }));
+mesh2.position.set(-1, 0, 0);
+scene.add(mesh2);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 The values that I will typically want to use will be just 0, and 1 which is what will happen when I want to use all of the texture for a face. Numbers between 0 and one imply what I am using just some of the image, while numbers above 1 mean that I am using the whole of the image for just part of the face actually.
@@ -145,66 +142,64 @@ Now that I have a position and normal attribute I can now add the uv attribute t
 
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10))
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(1, 0.5, 1);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // CANVAS TEXTURE
-    //-------- ----------
-    const canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-    canvas.width = 8;
-    canvas.height = 8;
-    ctx.fillStyle = '#004040';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'red';
-    ctx.fillRect(2, 2, 2, 2);
-    const texture = new THREE.Texture(canvas);
-    texture.needsUpdate = true;
-    //-------- ----------
-    // GEOMETRY - Custom Triangle
-    //-------- ----------
-    // position attribuite
-    const geometry = new THREE.BufferGeometry();
-    const vertices1 = new Float32Array([
-                0, -0.5, -0.75,
-                0, 0.5, 0.25,
-                0, -0.5, 0.25
-            ]);
-    geometry.setAttribute('position', new THREE.BufferAttribute(vertices1, 3));
-    // normals
-    geometry.computeVertexNormals();
-    // uv attribute
-    const vertices2 = new Float32Array([
-                0.2, 0.2,
-                0.9, 0.9,
-                0.2, 0.9
-            ]);
-    geometry.setAttribute('uv', new THREE.BufferAttribute(vertices2, 2));
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    // use the geometry with a mesh
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-                side: THREE.DoubleSide,
-                map: texture
-            }));
-    scene.add(mesh);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10))
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 8;
+canvas.height = 8;
+ctx.fillStyle = '#004040';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = 'red';
+ctx.fillRect(2, 2, 2, 2);
+const texture = new THREE.Texture(canvas);
+texture.needsUpdate = true;
+//-------- ----------
+// GEOMETRY - Custom Triangle
+//-------- ----------
+// position attribuite
+const geometry = new THREE.BufferGeometry();
+const vertices1 = new Float32Array([
+            0, -0.5, -0.75,
+            0, 0.5, 0.25,
+            0, -0.5, 0.25
+        ]);
+geometry.setAttribute('position', new THREE.BufferAttribute(vertices1, 3));
+// normals
+geometry.computeVertexNormals();
+// uv attribute
+const vertices2 = new Float32Array([
+            0.2, 0.2,
+            0.9, 0.9,
+            0.2, 0.9
+        ]);
+geometry.setAttribute('uv', new THREE.BufferAttribute(vertices2, 2));
+//-------- ----------
+// MESH
+//-------- ----------
+// use the geometry with a mesh
+const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+            side: THREE.DoubleSide,
+            map: texture
+        }));
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1, 0.5, 1);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ### 2 - Updating uvs at run time in an Animation loop
@@ -214,83 +209,79 @@ Just because the array of uvs can be updated at run time that does not mean that
 Still if for some reason I do need to change the state of the uvs over time in a loop I just need to make sure that I keep setting the needs update property of the uv attribute back to true each time.
 
 ```js
-
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // CANVAS TEXTURE
-    //-------- ----------
-    const canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-    canvas.width = 32;
-    canvas.height = 32;
-    ctx.fillStyle = '#004040'; // fill
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = 'white';
-    ctx.fillStyle = 'red';
-    ctx.beginPath(); // draw red and white circle
-    ctx.arc(16, 16, 8, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-    ctx.beginPath(); // draw white square
-    ctx.rect(0, 0, canvas.width, canvas.height);
-    ctx.stroke();
-    const texture = new THREE.Texture(canvas);
-    texture.needsUpdate = true;
-    //-------- ----------
-    // GEOMETRY
-    //-------- ----------
-    const geometry = new THREE.PlaneGeometry(2, 2, 1, 1);
-    const uv = geometry.getAttribute('uv');
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-                side: THREE.DoubleSide,
-                map: texture
-            }));
-    scene.add(mesh);
-    // ---------- ----------
-    // ANIMATION LOOP
-    // ---------- ----------
-    const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 20;     // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 120;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const update = function(frame, frameMax){
-        const a = frame / frameMax;
-        const bias = 1 - Math.abs(a - 0.5) / 0.5;
-        uv.array[0] = -2 + 2 * bias;
-        uv.array[1] = 2 - 1 * bias;
-        uv.needsUpdate = true;
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 32;
+canvas.height = 32;
+ctx.fillStyle = '#004040'; // fill
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.strokeStyle = 'white';
+ctx.fillStyle = 'red';
+ctx.beginPath(); // draw red and white circle
+ctx.arc(16, 16, 8, 0, Math.PI * 2);
+ctx.fill();
+ctx.stroke();
+ctx.beginPath(); // draw white square
+ctx.rect(0, 0, canvas.width, canvas.height);
+ctx.stroke();
+const texture = new THREE.Texture(canvas);
+texture.needsUpdate = true;
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.PlaneGeometry(2, 2, 1, 1);
+const uv = geometry.getAttribute('uv');
+const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+            side: THREE.DoubleSide,
+            map: texture
+        }));
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 12, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 20; // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 120;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function (frame, frameMax) {
+    const a = frame / frameMax;
+    const bias = 1 - Math.abs(a - 0.5) / 0.5;
+    uv.array[0] = -2 + 2 * bias;
+    uv.array[1] = 2 - 1 * bias;
+    uv.needsUpdate = true;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / FPS_UPDATE) {
+        // update, render
+        update(Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
