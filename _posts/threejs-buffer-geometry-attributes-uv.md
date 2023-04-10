@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2022-11-02 16:39:45
-version: 1.27
+updated: 2023-04-10 13:50:57
+version: 1.28
 ---
 
-When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing that is used for figuring out what side the front side of a face is, lighting, and for materials like that of the normal material.
+When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing. 
 
 Today though I will be getting into the uv attribute that is used to position the textures that are used when skinning a geometry with a [material](/2018/04/30/threejs-materials/) that will make use of such an attribute. It is a way to change the locations of where the texture is to be applied for a given face that will be using the texture, by creating an array of values for each vertex. Each vertex has a horizontal and vertical value for it in the array so this might differ a little in terms of the number of values for each vertex compared to the other attributes. So for example if a geometry is a plane that has a vertex count of 4 then there will be two numbers for each vertex that will result in a length of 8 values when it comes to the uvs for that plane.
 
@@ -24,7 +24,7 @@ This is a post on an advanced topic in threejs that has to do with creating, or 
 
 ### One way or another you are going to need a texture to use with a material
 
-The uv attribute has to do with how a texture is to be applied to a face of a geometry in a mesh. So in order to make use of uvs and to play around with them you are going to need a texture to use as a color map of a material. In this post I am creating textures using canvas elements which is one way to go about making some textures with javaScript code rather than an external image.
+The uv attribute has to do with how a texture is to be applied to a face of a geometry in a mesh. So in order to make use of uvs and to play around with them you are going to need a texture to use as a color map of a material. In this post I am [creating textures using canvas elements](/2018/04/17/threejs-canvas-texture/) which is one way to go about making some textures with javaScript code rather than an external image. There are a number of other options though when it comes to having a texture to use though such as [data textures](/2022/04/15/threejs-data-texture/), using the [texture loader](/2021/06/21/threejs-texture-loader/) to load external images, or just directly call the texture constructor and pass an image if you have some other way to load images.
 
 ### There is much more to read about when it comes to buffer geometry in general
 
