@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2022-11-02 07:43:46
-version: 1.36
+updated: 2023-04-11 11:31:20
+version: 1.37
 ---
 
 When it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) can be used load external image assets in the form of image files such as PNG files. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few as the final object that is furnished is an instance of the [Texture class](https://threejs.org/docs/#api/en/textures/Texture).
@@ -52,26 +52,27 @@ I often like to start out my posts with a basic, simple, hello world type exampl
 In the example I will be loading just a single image that will result in a single texture object. This single texture will then be used to create just a basic color map for an instance of the [THREE.BasicMatreial](/2018/05/05/threejs-basic-material/). I will then be just creating and adding a cube to a scene object that will use this material, and not do anything fancy with the uv attribute of the geometry, or more than one material at this time. As such the end result will the whole of the texture being displayed on each of the faces of the cube.
 
 ```js
-// creating a scene
-var scene = new THREE.Scene();
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(0.8, 1.3, 0.8);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(1, 1.5, 1);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var loader = new THREE.TextureLoader();
- 
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LOAD TEXTURE, ADD MESH, RENDER
+//-------- ----------
+const loader = new THREE.TextureLoader();
 loader.load(
     // the first argument is the relative or absolute path of the file
-    '/img/smile-face/smile_face.png',
+    '/img/smile-face/smile_face_256.png',
     // the second argument is an on done call back
     function (texture) {
         // using the texture for a material and a Mesh
-        var box = new THREE.Mesh(
+        const box = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshBasicMaterial({
                 map: texture
@@ -95,9 +96,7 @@ If I do just want to load an image and then use that to say draw to a canvas ele
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-camera.position.set(1, 1.5, 1);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -122,6 +121,8 @@ scene.add(box);
 //-------- ----------
 // LOAD TEXTURE, DRAW TO CANVAS TEXTURE WITH IMAGE SOURCE
 //-------- ----------
+camera.position.set(1, 1.5, 1);
+camera.lookAt(0, 0, 0);
 const loader = new THREE.TextureLoader();
 loader.load(
     // the first argument is the relative or absolute path of the file
@@ -155,64 +156,65 @@ Here I have an example that I worked out that makes use of the [Promise all meth
 For this example I pass an array of urls to my load texture collection helper, inside the body of this helper that is given the array of urls I call the promise all method and pass the array of urls as the first argument, but I call the map method off of the array of urls, and call by load texture helper for each url. I then pass each url to the load texture method which will return a promise object for each url using the texture loader for each image.
 
 ```js
-var loadTexture = function (url) {
-    var loader = new THREE.TextureLoader();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const loadTexture = function (url) {
+    const loader = new THREE.TextureLoader();
     return new Promise(function (resolve, reject) {
-        var onDone = function (texture) {
+        const onDone = function (texture) {
             resolve(texture);
         };
-        var onError = function (err) {
+        const onError = function (err) {
             reject(err)
         };
         loader.load(url, onDone, function () {}, onError);
     });
 };
- 
-var loadTextureCollection = function (urlArray) {
+const loadTextureCollection = function (urlArray) {
     return Promise.all(urlArray.map(function (url) {
             return loadTexture(url);
         }));
 };
- 
-var createTextureCube = function (texture) {
+const createTextureCube = function (texture) {
     return new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshBasicMaterial({
             map: texture
         }));
 };
- 
-// creating a scene
-var scene = new THREE.Scene();
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(2, 2, 2);
+//-------- ----------
+// LOADING
+//-------- ----------
+camera.position.set(2, 2.5, 2);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var urlArray = [
-    '/img/smile-face/smile_face_128_128.png',
-    '/img/smile-face/smile_face_32_32.png'
+const urlArray = [
+    '/img/smile-face/smile_face_128.png',
+    '/img/smile-face/smile_face_32.png'
 ];
- 
 loadTextureCollection(urlArray)
 // then if all images load
 .then(function (textures) {
-    var box = createTextureCube(textures[1]);
-    box.position.set(1, 0, 0);
-    scene.add(box);
-    var box = createTextureCube(textures[0]);
-    box.position.set(-1, 0, 0);
-    scene.add(box);
+    const box1 = createTextureCube(textures[1]);
+    box1.position.set(1, 0, 0);
+    scene.add(box1);
+    const box2 = createTextureCube(textures[0]);
+    box2.position.set(-1, 0, 0);
+    scene.add(box2);
     renderer.render(scene, camera);
  
 })
 // if there is a problem
 .catch(function () {
-    var box = new THREE.Mesh(
+    const box = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshNormalMaterial());
     scene.add(box);
@@ -234,9 +236,7 @@ Although the Promise all solution that I made a while back seems to work okay, t
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-camera.position.set(2, 2.5, 2);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -290,7 +290,8 @@ manager.onLoad = function ( ) {
     box1.material.map = textureObj['smile_face_256'];
     box2.material.map = textureObj['smile_face_32'];
     box2.material.emissiveMap = textureObj['smile_face_128'];
- 
+    camera.position.set(2, 2.5, 2);
+    camera.lookAt(0, 0, 0);
     renderer.render(scene, camera);
 };
 // progress
@@ -318,7 +319,7 @@ URLS.forEach((url) => {
 
 When it comes to making use of the texture loader often I will want to abstract away code that I find myself using over and over again into a module form that I can then just like to and use for every new project in which I will want to load a few textures. The most primitive form of this kind of module would be something that I just call a load method and then give a base url and a list of files that I will like to load at that base url. This load method will then return a promise and the resolved object will be an object where every key is a file name, and every value is a texture made from that file.
 
-### 3.0 - The current state of the module
+### 3.a - The current state of the module
 
 So I made an r0 of a texture.js javaScript module that will abstract away some code that allows for me to load more than one texture.
 
@@ -381,9 +382,7 @@ Here I have a basic example of the load method of this module that is based off 
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-camera.position.set(2, 2.5, 2);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -427,6 +426,8 @@ textureMod.load({
     box1.material.map = textureObj['smile_face_256'];
     box2.material.map = textureObj['smile_face_32'];
     box2.material.emissiveMap = textureObj['smile_face_128'];
+    camera.position.set(2, 2.5, 2);
+    camera.lookAt(0, 0, 0);
     renderer.render(scene, camera);
 });
 ```
