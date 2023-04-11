@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1030
-updated: 2023-04-11 10:00:52
-version: 1.12
+updated: 2023-04-11 10:29:59
+version: 1.13
 ---
 
 I made a javaScript module that can be used as a core tool in the process of making a number of video projects that are controlled breathing exercises. The core idea of these kinds of videos is to have a number of objects update in such a way that they are in sycn with a rate at which people watching the video breath. The goal of watching these kinds of videos is that they might help to change what is often called [Heart Rate Variability](https://en.wikipedia.org/wiki/Heart_rate_variability) in a way that will help reduce blood pressure, anxiety, and depression. A good example of the kind of videos that I would like to make using this can be [found on the youtube channel mind drip](https://www.youtube.com/watch?v=_o-ERqoTAhA). This channel also has a [nice video that explains what HRV is about](https://www.youtube.com/watch?v=zUyuUoU7lAQ) for people that are new to what this.
@@ -24,10 +24,11 @@ This is a blog post on a javaScript IIFE form module [threejs project example](/
 
 ### Study More on HRV Breathing
 
-In this blog post I am for the most part just writing about a javaScript module, and additional things that come up when making demos that work on top of this module. If you want to learn more about HRV there this is a video that I watched that really helped me to get started with this kind of exercise.
+In this blog post I am for the most part just writing about a javaScript module, and additional things that come up when making demos that work on top of this module. If you want to learn more about HRV there this is a Ted Talk video with a [Dr Alan Watkins](https://uk.linkedin.com/in/dralanwatkins?trk=public_post_feed-actor-name) that I watched that really helped me to get started with this kind of exercise.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/q06YIWCR2Js" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+If you do not want to watch this whole video as well as [part 2](https://www.youtube.com/watch?v=Q_fFattg8N0&t) after that the general idea is this: The current state of Physiology can lead to poor Emotions, which in turn can lead to toxic thoughts that are detramentail to prefromace. Through HRV breathing Physiology can change which can then cause everything else up the ladder to also change into a more desirable state that can help improve preframance.
 
 ### IIFE and JSM
 
