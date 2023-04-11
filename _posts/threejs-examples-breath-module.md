@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1030
-updated: 2023-04-11 10:39:07
-version: 1.14
+updated: 2023-04-11 10:50:11
+version: 1.15
 ---
 
 I made a javaScript module that can be used as a core tool in the process of making a number of video projects that are controlled breathing exercises. The core idea of these kinds of videos is to have a number of objects update in such a way that they are in sycn with a rate at which people watching the video are to breathe. The goal of watching these kinds of videos is to change what is often called [Heart Rate Variability](https://en.wikipedia.org/wiki/Heart_rate_variability) in a way that will help reduce blood pressure, anxiety, depression and thus allow for greater preformance with work, play, or anyting that one would like to focus on for that matter. A good example of the kind of videos that I would like to make using this can be [found on the youtube channel mind drip](https://www.youtube.com/watch?v=_o-ERqoTAhA). This channel also has a [nice video that explains what HRV is about](https://www.youtube.com/watch?v=zUyuUoU7lAQ) for people that are new to what this is.
@@ -20,27 +20,26 @@ So there is a lot of little details that come up when making a javaScript module
 
 ## The breath module example and what to know first
 
-This is a blog post on a javaScript IIFE form module [threejs project example](/2021/02/19/threejs-examples/), and several demos of the module, that work on top of threejs in a front end javaScript environment. It should go without saying but I have to say it in each of these posts, this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) let alone javaScript in general. I assume that you have at least a fair amount of experience with the skills that are required before hand to get something of values from reading this. Still in any case I do use these opening sections to wrote about a few things that you might want to read up more on regardless of experience.
+This is a blog post on a javaScript IIFE form module [threejs project example](/2021/02/19/threejs-examples/), and several demos of the module, that work on top of threejs in a front end javaScript environment. It should go without saying but I have to say it in each of these posts, this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) let alone javaScript in general. I assume that you have at least a fair amount of experience with the skills that are required before hand to get something of values from reading this. Still in any case I do use these opening sections to write about a few things that you might want to read up more on regardless of experience.
 
 ### Study More on HRV Breathing
 
-In this blog post I am for the most part just writing about a javaScript module, and additional things that come up when making demos that work on top of this module. If you want to learn more about HRV there this is a Ted Talk video with a [Dr Alan Watkins](https://uk.linkedin.com/in/dralanwatkins?trk=public_post_feed-actor-name) that I watched that really helped me to get started with this kind of exercise.
+In this blog post I am writing about a javaScript module, and additional code that is demos that work on top of this module. If you want to learn more about HRV there this is a Ted Talk video with a [Dr Alan Watkins](https://uk.linkedin.com/in/dralanwatkins?trk=public_post_feed-actor-name) that I watched that really helped me to get started with this kind of exercise.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/q06YIWCR2Js" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-If you do not want to watch this whole video as well as [part 2](https://www.youtube.com/watch?v=Q_fFattg8N0&t) after that the general idea is this: The current state of Physiology can lead to poor Emotions, which in turn can lead to toxic thoughts that are detramentail to prefromace. Through HRV breathing Physiology can change which can then cause everything else up the ladder to also change into a more desirable state that can help improve preframance.
 
-### IIFE and JSM
-
-As of this writing I still follow and old [IIFE pattern](/2020/02/04/js-iife/) for making javaScript modules which is in line with the use of three.min.js over that of three.module.js. However at some point in the not to distance future I will have to start wiring new modules and updating old ones in the JSM format.
+If you do not want to watch this whole video as well as [part 2](https://www.youtube.com/watch?v=Q_fFattg8N0&t) after that the general idea is this: The current state of Physiology can lead to poor Emotions, which can lead to toxic thoughts, that are then detramentail to performance. By way of HRV breathing exercise Physiology can change which can then cause everything else up the ladder to also change into a more desirable state that can help improve performance.
 
 ### Source code is up on Github
 
-I have the current sould code for this module and the demos up on my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-breath-module) on Github. This is also where I place the source code examples that show up in all my [other blog posts on threejs](/categories/three-js/) as well.
+I have the current source code for this module and the demos up on my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-breath-module) on Github. This is also where I place the source code examples that show up in all my [other blog posts on threejs](/categories/three-js/) as well.
 
-### Version Numbers matter
+### Version numbers matter, IIFE and JSM
 
-When I first wrote this blog post and made the first version of this module I was using [r146 of threejs and thus follow that style rules I set for that revision](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r146/README.md). I am also at the time of this writing at least sticking to my tired yet true IIFE pattern for javaScript modules. The plan with new posts and editing older posts is to stick with this well into this coming year, but still the days with this kind of style are very much coming to an end. The three.min.js files that I have been using are very much on the chopping block it would seem, so at some point I am going to need to start including JSM versions of my module for people that want to use bleeding edge revisions of threejs.
+As of this writing I still follow the old [IIFE pattern](/2020/02/04/js-iife/) for making javaScript modules which is in line with the use of three.min.js over that of three.module.js. However at some point in the not to distance future I will have to start wiring new modules and updating old ones in the JSM format.
+
+When I first wrote this blog post and made the first version of this module I was using [r146 of threejs and thus follow that style rules I set for that revision](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r146/README.md). The plan with new posts and editing older posts is to stick with this well into this coming year, but still the days with this kind of style are very much coming to an end. The three.min.js files that I have been using are very much on the chopping block it would seem, so at some point I am going to need to start including JSM versions of my module for people that want to use bleeding edge revisions of threejs.
 
 In any case always be mindful of what revision of threejs that you are using when trying to get code examples such as the ones I am writing about here to work on your end. Code breaking changes are made to threejs all the time so it often is best to stick with the revisions that I am using with these examples. Also I have found that it is a good idea to be aware of what kind of GPU you are using on your system and what the support is for OpenGL and therefor WebGl features. I like working on Raspberry PI OS and thus also have to deal with the limitations of the VideoCore VI GPU of the Raspberry PI 4. In [r150 of the library](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r150/README.md) the WebGLRenderer has totally crashed and burned which cased me to start plaing future [code style rules with r149](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r149/README.md). Simply put in general version numbers very much matter with this stuff, and not just with threejs alone.
 
