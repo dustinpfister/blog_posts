@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1030
-updated: 2023-04-10 14:39:19
-version: 1.10
+updated: 2023-04-11 09:49:35
+version: 1.11
 ---
 
-I made a javaScript module that can be used as a core tool in the process of making a number of video projects that can be used as tools for controlled breathing exercises. The core idea of these kinds of videos is to have a number of objects update in such a way that they are in sycn with a rate at which people watching the video breath. So there is a lot of little details that come up when making a javaScript module to update things such as how many breaths per minute, how many minutes, and also other details about each breath cycle. Details for each breath cycle are things like what is the ratio of time for each opening reset, breath in, high rest, and breath out part. There are also a lot of things that come to mind when it comes to having an expression for the alpha values that will be used to position objects along curves, and also update just about everything else.
+I made a javaScript module that can be used as a core tool in the process of making a number of video projects that are controlled breathing exercises. The core idea of these kinds of videos is to have a number of objects update in such a way that they are in sycn with a rate at which people watching the video breath. The goal of watching these kinds of videos is that they might help to change what is often called [Heart Rate Variability](https://en.wikipedia.org/wiki/Heart_rate_variability) in a way that will help reduce blood pressure, anxiety, and depression. A good example of the kind of videos that I would like to make using this can be [found on the youtube channel mind drip](https://www.youtube.com/watch?v=_o-ERqoTAhA). This channel also has a [nice video that explains what HRV is about](https://www.youtube.com/watch?v=zUyuUoU7lAQ) for people that are new to what this.
+
+So there is a lot of little details that come up when making a javaScript module to update things such as how many breaths per minute, how many minutes, and also other details about each breath cycle. Details for each breath cycle are things like what is the ratio of time for each opening reset, breath in, high rest, and breath out part. There are also a lot of things that come to mind when it comes to having an expression for the alpha values that will be used to position objects along curves, and also update just about everything else.
 
 <!-- more -->
 
