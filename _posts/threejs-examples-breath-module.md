@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1030
-updated: 2023-04-11 09:49:35
-version: 1.11
+updated: 2023-04-11 10:00:52
+version: 1.12
 ---
 
 I made a javaScript module that can be used as a core tool in the process of making a number of video projects that are controlled breathing exercises. The core idea of these kinds of videos is to have a number of objects update in such a way that they are in sycn with a rate at which people watching the video breath. The goal of watching these kinds of videos is that they might help to change what is often called [Heart Rate Variability](https://en.wikipedia.org/wiki/Heart_rate_variability) in a way that will help reduce blood pressure, anxiety, and depression. A good example of the kind of videos that I would like to make using this can be [found on the youtube channel mind drip](https://www.youtube.com/watch?v=_o-ERqoTAhA). This channel also has a [nice video that explains what HRV is about](https://www.youtube.com/watch?v=zUyuUoU7lAQ) for people that are new to what this.
@@ -21,6 +21,13 @@ So there is a lot of little details that come up when making a javaScript module
 ## The breath module example and what to know first
 
 This is a blog post on a javaScript IIFE form module [threejs project example](/2021/02/19/threejs-examples/), and several demos of the module, that work on top of threejs in a front end javaScript environment. It should go without saying but I have to say it in each of these posts, this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) let alone javaScript in general. I assume that you have at least a fair amount of experience with the skills that are required before hand to get something of values from reading this. Still in any case I do use these opening sections to wrote about a few things that you might want to read up more on regardless of experience.
+
+### Study More on HRV Breathing
+
+In this blog post I am for the most part just writing about a javaScript module, and additional things that come up when making demos that work on top of this module. If you want to learn more about HRV there this is a video that I watched that really helped me to get started with this kind of exercise.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/q06YIWCR2Js" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### IIFE and JSM
 
