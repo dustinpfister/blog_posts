@@ -5,15 +5,16 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2022-10-22 06:40:07
-version: 1.51
+updated: 2023-04-13 09:16:19
+version: 1.52
 ---
 
-In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene object. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
+In [threejs](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh. One of these is built in geometry constructors can be used to make geometry of a plane. That is just a flat simple 2d plane, which is a desired geometry for most simple projects.
 
-The [three plane](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) constructor allows for setting the width and height, but also a count for section width, and section height as well when creating a plane geometry. There is then the question of how to go about styling a checkered plane in threejs, as well as some other related topics when it comes to working with planes in threejs. There are two general ways of doing that sort of thing, one would be to just think in terms of a single material and a single texture, and the other would involve getting into creating and adding groups for the geometry. In any case the plane geometry is a great one to start with when it comes to both of these topics actually.
+The [three plane geometry](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) constructor allows for setting the width and height, but also a count for section width, and section height as well when creating a plane geometry. There is then the question of how to go about styling a checkered plane in threejs, as well as some other related topics when it comes to working with planes in threejs. There are two general ways of doing that sort of thing, one would be to just think in terms of a single material and a single texture, and the other would involve getting into creating and adding groups and thus also set material index values for the geometry. In any case the plane geometry is a great one to start with when it comes to both of these topics actually.
 
-There are many other little details about this that I should also touch base on such as rotating the geometry rather than  the mesh object that contains it, and setting the side property of the material that I use with the geometry when creating the mesh and so forth. So lets take a look at some plane geometry examples in threejs to get a better grasp on how to get up and running with plain geometry in threejs.
+There are many other little details about this that I should also touch base on such as rotating the geometry rather than the mesh object that contains it. Another typical thing that will come up is how to go about setting the side property of the material that I use with the geometry when creating the mesh and so forth. So lets take a look at some plane geometry examples in threejs to get a better grasp on how to get up and running with plain geometry in threejs.
+
 <!-- more -->
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/D5Wh5--DjJE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -25,11 +26,11 @@ In this post I am writing about the plane geometry constructor in threejs a java
 
 ### Might want to read up more on Buffer Geometry Class addGroup method, and Material Index values
 
-It might be a good idea to read up more on the [Buffer Geometry class](/2021/04/22/threejs-buffer-geometry/) and the add group method to be more specific when it comes to adding groups to a geometry and working with [more than one material when adding the geometry to a mesh](/2018/05/14/threejs-mesh-material-index/). With many built in geometry constructors such as the Box Geometry constructor groups are added to begin with in the constructor, and in that case one just needs to go through and change material index values as the groups are there to begin with and have starting index values. However as of late versions of three.js this is nit the case with the Plane Geometry Constructor, the groups must be added as there will not be any by default. In this post I will be going over this in some of the more advanced examples, but in never hurts to look into more resources on this topic.
+It might be a good idea to read up more on the [Buffer Geometry class](/2021/04/22/threejs-buffer-geometry/) and the add group method to be more specific when it comes to adding groups to a geometry and working with [more than one material when adding the geometry to a mesh](/2018/05/14/threejs-mesh-material-index/). With many built in geometry constructors such as the Box Geometry constructor groups are added to begin with in the constructor, and in that case one just needs to go through and change material index values. However as of late versions of threejs this is not the case with the Plane Geometry Constructor, the groups must be added as there will not be any by default. This makes sense because there are a lot of differing ways one might want to add groups that will switch up from one project to another. In this post I will be going over this in some of the more advanced examples, but in never hurts to look into more resources on this topic.
 
 ### Source code is up on Github
 
-The source code examples that I am writing about in this post can also be found in my [test threejs Github Reposatory](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-plane).
+The source code examples that I am writing about in this post can also be found in my [test threejs Github Reposatory](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-plane). This is also where I place the source code examples for my [many other blog posts on threejs](/categories/three-js/) that I have wrote over the years.
 
 ### Version Numbers matter
 
