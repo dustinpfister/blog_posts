@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2023-04-13 09:16:19
-version: 1.52
+updated: 2023-04-13 09:29:21
+version: 1.53
 ---
 
 In [threejs](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh. One of these is built in geometry constructors can be used to make geometry of a plane. That is just a flat simple 2d plane, which is a desired geometry for most simple projects.
@@ -34,7 +34,7 @@ The source code examples that I am writing about in this post can also be found 
 
 ### Version Numbers matter
 
-When I first wrote this post I was using three.js revision r104, and the last time I came around to do a little editing of this post I was using r140. Sense then some code breaking changes have been introduced that will cause some of these examples to break when it comes to having a checkerboard pattern on a plane depending on what version you are using. I am generally keeping the newer code examples to the top of the post, and leaving the older examples at the bottom for the sake of historical reasons, or if for some reason you are still using an older versions of three.js.
+When I first wrote this post I was using three.js revision r104, and the last time I came around to do a little editing of this post I was using r146. Sense then some code breaking changes have been introduced that will cause some of these examples to break when it comes to having a checkerboard pattern on a plane depending on what version you are using. I am generally keeping the newer code examples to the top of the post, and leaving the older examples at the bottom for the sake of historical reasons, or if for some reason you are still using an older versions of three.js.
 
 As of this writing I have all of the new examples working well with r140. The one old section on the face3 class at the bottom of this post was still working on r111 and at this time I am only going to be interested in maintaining the examples that are newer.
 
@@ -47,33 +47,28 @@ In this section I will be starting out with just a few fairly basic examples of 
 So a plane geometry can be made by just calling the THREE.PlaneGeometry constructor and then passing the desired width and height of the plane in terms of the object size as the first two arguments. The Plane geometry can then be used with a mesh and material, like that of the [basic material](/2018/05/05/threejs-basic-material/) for example, like any other built in geometry constructor in three js to produce a display object that can then be added to a scene. So A basic example of the three plane geometry constructor might look something like this.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10));
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // MESH - USING PLANE GEOMETRY, SETTING SIZE
-    // ---------- ----------
-    var mesh = new THREE.Mesh(
-        new THREE.PlaneGeometry(8, 4),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MESH - USING PLANE GEOMETRY, SETTING SIZE
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10));
+const mesh = new THREE.Mesh(
+    new THREE.PlaneGeometry(8, 4),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// ---------- ----------
+// CALLING RENDER OF RENDERER
+// ---------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 This will result in a plane that is eight by 4 and is broken down into a single segment as that is the default for the additional arguments that have to do with that. If I want a checkered board effect it is not just a question of increasing the segment size arguments from a value of 1 by 1. I also need to give an array of materials rather than just one material like in this example, and I also need to set the material index values as desired that will change a little depending on the effect that I want. There is however just still going with a plane that is just 1 by 1 but thinking more in terms of the texture that will be used and the state of the uv attribute of the geometry. There are all far more advanced topics though that I will be getting to in later sections in this post. For now lets just stick with covering some of the basics here.
@@ -85,65 +80,61 @@ When I rotate a mesh object that contains a plane geometry around by way of the 
 Speaking of rotation there is not just rotation of the mesh object, but also [rotation of the geometry as well](/2021/05/20/threejs-buffer-geometry-rotation/). Often I will want to adjust the rotation of a plane geometry just once, and then use the object3d rotation values over and over again in an animation loop.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10));
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, -2, 0);
-    scene.add(camera);
-    // render
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // MESH - Plane Geometry
-    // ---------- ----------
-    var mesh1 = new THREE.Mesh(
-        new THREE.PlaneGeometry(4, 4),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh1);
-    mesh1.position.set(-2, 2, 0);
-    // MESH2 IS USING THE THREE.DoubleSide OPTION
-    // FOR THE MATERIAL
-    var mesh2 = new THREE.Mesh(
-        new THREE.PlaneGeometry(4, 4),
-        new THREE.MeshNormalMaterial({ side: THREE.DoubleSide}));
-    mesh2.position.set(2, 2, 0);
-    scene.add(mesh2);
-    // ROTATION OF GEOMETRY
-    var mesh3 = new THREE.Mesh(
-        new THREE.PlaneGeometry(10, 10),
-        new THREE.MeshNormalMaterial({ side: THREE.DoubleSide}));
-    mesh3.geometry.rotateX( Math.PI * 0.5 );
-    mesh3.position.y = -0.025;
-    scene.add(mesh3);
-    // ---------- ----------
-    // LOOP
-    // ---------- ----------
-    const fps_move = 30, fps_update = 12;
-    let f = 0, fm = 300, lt = new Date();
-    const loop = () => {
-        const now = new Date();
-        const secs = (now - lt) / 1000;
-        const a = f / fm;
-        requestAnimationFrame(loop);
-        if(secs >= 1 / fps_update){
-            mesh1.rotation.y = Math.PI * 8 * a;
-            mesh2.rotation.y = Math.PI * 8 * a;
-            mesh3.rotation.y = Math.PI * 2 * a;
-            f += fps_move * secs;
-            f %= fm;
-            renderer.render(scene, camera);
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MESH - Plane Geometry
+// ---------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.PlaneGeometry(4, 4),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh1);
+mesh1.position.set(-2, 2, 0);
+// MESH2 IS USING THE THREE.DoubleSide OPTION
+// FOR THE MATERIAL
+const mesh2 = new THREE.Mesh(
+    new THREE.PlaneGeometry(4, 4),
+    new THREE.MeshNormalMaterial({ side: THREE.DoubleSide}));
+mesh2.position.set(2, 2, 0);
+scene.add(mesh2);
+// ROTATION OF GEOMETRY
+const mesh3 = new THREE.Mesh(
+    new THREE.PlaneGeometry(10, 10),
+    new THREE.MeshNormalMaterial({ side: THREE.DoubleSide}));
+mesh3.geometry.rotateX( Math.PI * 0.5 );
+mesh3.position.y = -0.025;
+scene.add(mesh3);
+// ---------- ----------
+// LOOP
+// ---------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -2, 0);
+const fps_move = 30, fps_update = 12;
+let f = 0, fm = 300, lt = new Date();
+const loop = () => {
+    const now = new Date();
+    const secs = (now - lt) / 1000;
+    const a = f / fm;
+    requestAnimationFrame(loop);
+    if(secs >= 1 / fps_update){
+        mesh1.rotation.y = Math.PI * 8 * a;
+        mesh2.rotation.y = Math.PI * 8 * a;
+        mesh3.rotation.y = Math.PI * 2 * a;
+        f += fps_move * secs;
+        f %= fm;
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
 ```
 
 ### 1.3 – Segments
@@ -153,44 +144,40 @@ So far in these example I have been using plane geometries that have a segment c
 This is still very much a basic section of the post, so I will not be getting into any of those advanced things that I wrote about just now, but I will create a few mesh objects here, one of which will have a higher count than 1 by 1 with segments. To gain a better sense of what is going on I will be setting the wire frame option for a shared material to true.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(6, 6, 6);
-    camera.lookAt(0.75, -2, 0);
-    scene.add(camera);
-    // render
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // MESH - 
-    // ---------- ----------
-    // shared material in wire frame mode
-    const material = new THREE.MeshBasicMaterial( { wireframe: true, wireframeLinewidth: 3 });
-    // 5 by 5 size, but just 1 by 1 with segments ( DEFAULT ) 
-    const mesh2 = new THREE.Mesh(
-        new THREE.PlaneGeometry(5, 5),
-        material);
-    mesh2.geometry.rotateX( Math.PI * 0.5 );
-    mesh2.position.set(-3, 0, 0);
-    scene.add(mesh2);
-    // 5 by 5 size, and 10 by 10 with segments
-    const mesh3 = new THREE.Mesh(
-        new THREE.PlaneGeometry(5, 5, 10, 10),
-        material);
-    mesh3.geometry.rotateX( Math.PI * 0.5 );
-    mesh3.position.set(3, 0, 0);
-    scene.add(mesh3);
-    // ---------- ----------
-    // RENDER
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MESH - 
+// ---------- ----------
+// shared material in wire frame mode
+const material = new THREE.MeshBasicMaterial( { wireframe: true, wireframeLinewidth: 3 });
+// 5 by 5 size, but just 1 by 1 with segments ( DEFAULT ) 
+const mesh2 = new THREE.Mesh(
+    new THREE.PlaneGeometry(5, 5),
+    material);
+mesh2.geometry.rotateX( Math.PI * 0.5 );
+mesh2.position.set(-3, 0, 0);
+scene.add(mesh2);
+// 5 by 5 size, and 10 by 10 with segments
+const mesh3 = new THREE.Mesh(
+    new THREE.PlaneGeometry(5, 5, 10, 10),
+    material);
+mesh3.geometry.rotateX( Math.PI * 0.5 );
+mesh3.position.set(3, 0, 0);
+scene.add(mesh3);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(6, 6, 6);
+camera.lookAt(0.75, -2, 0);
+renderer.render(scene, camera);
 ```
 
 ## 2 - Adding one or more groups to a plane geometry and working with an array of materials
