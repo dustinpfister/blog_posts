@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1036
-updated: 2023-04-14 09:33:58
-version: 1.3
+updated: 2023-04-14 09:38:20
+version: 1.4
 ---
 
 The [slerp method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.slerp) is a way to go about transitioning from one quaternion state to another. The method can be called off of an instance of a quaternion object, then another quaternion object to transition to can be given as the first argument, followed by an alpha value. The alpha value is then a number between 0 and 1 that is used to transition the quaternion object. This slerp method will mutate in place, however it can be used in conjunction with other methods like copy and clone to address that.
@@ -70,3 +70,7 @@ camera.position.set(3,3,3);
 camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
+
+## Conclusion
+
+The slerp method then might come in handy often when working with these quaternion objects, and then as such it might prove to be a kind of core set of must know methods with the class. There are a few other methods that are very impotent thought such as the set from axis angle method which is a good option for setting the state of a quarenion in order to have one to slerp to begin with. There are some other options for that though such as the [set from unit vectors method](/2023/04/07/threejs-quaternion-setfromunitvectors/) which also works well for setting the state of quaternion objects as well.
