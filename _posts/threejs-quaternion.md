@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-04-07 15:07:24
-version: 1.21
+updated: 2023-04-14 09:22:43
+version: 1.22
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -206,7 +206,7 @@ loop();
 
 ### 2.2 - The slerp method
 
-There should be at least one or more methods that can be used to transition from one quaternion object to another quaternions object as this is often the case with many other objects in threejs. for example when it comes to the Vector3 class there is of course the lerp method that allows for me to quickly transition from one vector3 object to another vector3 object by passing the new target vector and then an alpha value that is the magnitude between the current vector and target vector to move. It would look like this is no lerp method, but there is a slerp method which is more or less the quaternion equivalent of that.
+There should be at least one or more methods that can be used to transition from one quaternion object to another quaternions object as this is often the case with many other objects in threejs. For example when it comes to the Vector3 class there is of course the lerp method that allows for me to quickly transition from one vector3 object to another vector3 object by passing the new target vector and then an alpha value that is the magnitude between the current vector and target vector to move. It would look like this is no lerp method, but there is a [slerp method](/2023/04/14/threejs-quaternion-slerp/) which is more or less the quaternion equivalent of that.
 
 ```js
 // ---------- ----------
