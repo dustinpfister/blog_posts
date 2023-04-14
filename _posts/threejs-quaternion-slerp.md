@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1036
-updated: 2023-04-14 09:22:43
-version: 1.2
+updated: 2023-04-14 09:33:58
+version: 1.3
 ---
 
 The [slerp method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.slerp) is a way to go about transitioning from one quaternion state to another. The method can be called off of an instance of a quaternion object, then another quaternion object to transition to can be given as the first argument, followed by an alpha value. The alpha value is then a number between 0 and 1 that is used to transition the quaternion object. This slerp method will mutate in place, however it can be used in conjunction with other methods like copy and clone to address that.
@@ -20,6 +20,10 @@ In this post I am writing about just one little method of a Quaternion class in 
 ### Read My main blog post on the quaternion class
 
 I have wrote a [main blog post on the Quaternion class in general](/2023/03/24/threejs-quaternion/) that you might want to read if you are new to this kind of class. Getting started with these was a little intense, but there is only so much to be aware of when it comes to getting started with a core set of methods and using these to help with tasks that have to do when setting the orientation of obejcts.
+
+### Start out with Object3d.lookAt, Euler, and Buffer Geometry Rotation Methods
+
+Quaternion objects are a more advanced option for setting the orientation of things in threejs. There are situations that come up where one of these kinds of objects will help, but still there are easier to work with options that one should know about first before getting into these kinds of objects. When it comes to [Object3d class based objects](/2018/04/23/threejs-object3d/) there is the [Object3d.lookAt](/2021/05/13/threejs-object3d-lookat/) method and the [Object3d.rotation](/2022/04/08/threejs-object3d-rotation/) property that stores and instance of the [Euler class](/2021/04/28/threejs-euler/) for setting the local rotation of an object. Also when it comes to mesh objects there is also the geometry of the mesh and with that there are a [number of rotation methods in the buffer geometry class](/2021/05/20/threejs-buffer-geometry-rotation/) for preforming a rotation on geometry rather than an object3d class based object such as mesh, camera, and so forth.
 
 ### Source code is up on Github
 
