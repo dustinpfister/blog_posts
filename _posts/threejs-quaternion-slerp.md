@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1036
-updated: 2023-04-14 09:19:07
-version: 1.1
+updated: 2023-04-14 09:22:43
+version: 1.2
 ---
 
 The [slerp method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.slerp) is a way to go about transitioning from one quaternion state to another. The method can be called off of an instance of a quaternion object, then another quaternion object to transition to can be given as the first argument, followed by an alpha value. The alpha value is then a number between 0 and 1 that is used to transition the quaternion object. This slerp method will mutate in place, however it can be used in conjunction with other methods like copy and clone to address that.
@@ -15,11 +15,11 @@ The [slerp method of the quaternion class in threejs](https://threejs.org/docs/#
 
 ## The slerp method of the quaternion class and what to know first
 
-In this post I am writing about just one little method of a Quaternion class in the javaScript library known as threejs. There is then a whole lot of things that I assume that you know a thing or two about before hand if not you might want to do some additional reading before reading the rest of this post. I have getting started posts on threejs and javaScript in general, but there is also a lot of other things that I should write about in this first what to know first type section.
+In this post I am writing about just one little method of a Quaternion class in the javaScript library known as threejs. There is then a whole lot of things that I assume that you know a thing or two about before hand if not you might want to do some additional reading before reading the rest of this post. I have [getting started posts on threejs](/2018/04/04/threejs-getting-started/) and [javaScript in general](/2018/11/27/js-getting-started/), but there is also a lot of other things that I should write about in this first what to know first type section.
 
 ### Read My main blog post on the quaternion class
 
-I have wrote a main blog post on the Quaternion class in general that you might want to read if you are new to this kind of class. Getting started with these was a little intense, but there is only so much to be aware of when it comes to getting started with a core set of methods and using these to help with tasks that have to do when setting the orientation of obejcts.
+I have wrote a [main blog post on the Quaternion class in general](/2023/03/24/threejs-quaternion/) that you might want to read if you are new to this kind of class. Getting started with these was a little intense, but there is only so much to be aware of when it comes to getting started with a core set of methods and using these to help with tasks that have to do when setting the orientation of obejcts.
 
 ### Source code is up on Github
 
