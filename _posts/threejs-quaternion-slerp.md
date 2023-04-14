@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1036
-updated: 2023-04-14 10:13:07
-version: 1.5
+updated: 2023-04-14 10:22:41
+version: 1.6
 ---
 
 The [slerp method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.slerp) is a way to go about transitioning from one quaternion state to another. The method can be called off of an instance of a quaternion object, then another quaternion object to transition to can be given as the first argument, followed by an alpha value. The alpha value is then a number between 0 and 1 that is used to transition the quaternion object. This slerp method will mutate in place, however it can be used in conjunction with other methods like copy and clone to address that.
@@ -73,7 +73,7 @@ renderer.render(scene, camera);
 
 ## 2 - loop demo
 
-I started a loop demo of this kind of method to gain a better sense of how this can be used to slerp from one to another. I have a very general idea of what I wanted working but I will need to get around to refining this more at some point.
+I started a loop demo of this kind of method to gain a better sense of how this can be used to slerp from one to another. I have a very general idea of what I wanted working but I will need to get around to refining this more at some point. The basic idea here is to create an array of quaternion objects and then slerp between a current index, and the next index. In the event that an index goes out of range it wraps back around to the starting index. So then I am using the from array method of the vector3 class along with the map array prototype method as well as the set from unit vectors method of the quatrenion class to create the array of quaternion objects that I want.
 
 ```js
 // ---------- ----------
@@ -185,6 +185,8 @@ const loop = () => {
 };
 loop();
 ```
+
+The basic idea of this loop demo is working okay in the sense that the slerp method is indeed slerping between two quaternion objects. There is just maybe a bit more that I would like to do when it comes to setting the starting state of each rotation using the slerp method. One way might just have to involve having two sets of unit vectors, one for a start state and then another to lerp to. However I might also be able to work something out using the premultiply method as that often comes in handy when I am in a situation in which I need to preform a few rotations rather than just one.
 
 ## Conclusion
 
