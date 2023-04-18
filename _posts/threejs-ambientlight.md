@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2023-04-18 15:26:57
-version: 1.31
+updated: 2023-04-18 15:34:48
+version: 1.32
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with [materials](/2018/04/30/threejs-materials/) that respond to light such as the [standard material](/2021/04/27/threejs-standard-material/) it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. Ambient Light differs from [other light sources](/2022/02/25/threejs-light/) in that it will evenly illuminate materials evenly from all directions, actually direction is not really even taken into account with this kind of light source. By adding an ambient light it will just simply light up all surfaces of all mesh objects that are skinned with a material that will respond to light when it is added to the scene object. 
@@ -27,6 +27,10 @@ This is a post on adding [ambient light](https://en.wikipedia.org/wiki/Shading#A
 ### Check your materials, and know your options when it comes to materials
 
 One thing to keep in might with light in threejs is that not all materials will work with light sources. The [basic material](/2018/05/05/threejs-basic-material/) for example will not work with light, and the same can be said of the [Normal material](/2021/06/23/threejs-normal-material/) and the depth material. However materials like the [standard material](/2021/04/27/threejs-standard-material/), Lamber material, and [Phong material](/2022/12/29/threejs-phong-material/) will work with light sources. There are subtle differences between these materials, and other note worth considerations when it comes to performance. However I generally like to go with the standard material when it comes to getting into using light with a project.
+
+### Many other options for Lights
+
+Ambient light is just on way of adding some light to a scene in general. It will result in light evenly hitting all surfaces of all objects in the scene, this differs from other options when it comes to lighting such as [spotlights](/2018/04/11/threejs-spotlights/) which is a kind of directional light at a target. However I would not confuse spot lights with [directional lights](/2019/06/04/threejs-directional-light/) as that is yet another option when it comes to choosing a light option. I do jot often use spotlights though, the light directional light source that I often go with is a [point light](/2019/06/02/threejs-point-light/) that will throw light in all directions from the position at which the point light is placed.
 
 ### Source code examples and much more are on Github
 
@@ -182,4 +186,8 @@ So this might prove to be a better situation when it comes to adding a basic lig
 
 ## Conclusion
 
-Ambient light is just on way of adding some light to a scene in general. It will result in light evenly hitting all surfaces of all objects in the scene, this differs from other options when it comes to lighting in three.js such as [spotlights](/2018/04/11/threejs-spotlights/) which is a kind of directional light. I do jot often use spotlights though, the light directional light source that I often go with is a [point light](/2019/06/02/threejs-point-light/) that will throw light in all directions from the position at which the point light is placed.
+Ambient light is then one of many options when it comes to adding light sources to a scene. When it comes to ambient light it does not matter what the position of the light source is which is not the case for many other light source objects. The effect of that ambient light is to set a kind of base amount of light for all surfaces of all objects in a scene. There are material options thought for getting a similar effect such is the case when it comes to the emissive color, and also creating [emissive maps](/2021/06/22/threejs-emissive-map/) for materials as well.
+
+
+
+
