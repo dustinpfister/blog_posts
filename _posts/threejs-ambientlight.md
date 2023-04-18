@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2022-11-12 12:41:57
-version: 1.30
+updated: 2023-04-18 15:26:57
+version: 1.31
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with [materials](/2018/04/30/threejs-materials/) that respond to light such as the [standard material](/2021/04/27/threejs-standard-material/) it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. Ambient Light differs from [other light sources](/2022/02/25/threejs-light/) in that it will evenly illuminate materials evenly from all directions, actually direction is not really even taken into account with this kind of light source. By adding an ambient light it will just simply light up all surfaces of all mesh objects that are skinned with a material that will respond to light when it is added to the scene object. 
@@ -26,15 +26,15 @@ This is a post on adding [ambient light](https://en.wikipedia.org/wiki/Shading#A
 
 ### Check your materials, and know your options when it comes to materials
 
-One thing to keep in might with light in three.js is that not all materials will work with light sources. The basic material for example will not work with light, and the name can be said of the Normal material and the depth material. However materials like the standard material, Lamber material, and Phong material will work with light sources. There are subtle differences between these materials, and other note worth considerations when it comes to performance. However I generally like to go with the standard material when it comes to getting into using light with a project.
+One thing to keep in might with light in threejs is that not all materials will work with light sources. The [basic material](/2018/05/05/threejs-basic-material/) for example will not work with light, and the same can be said of the [Normal material](/2021/06/23/threejs-normal-material/) and the depth material. However materials like the [standard material](/2021/04/27/threejs-standard-material/), Lamber material, and [Phong material](/2022/12/29/threejs-phong-material/) will work with light sources. There are subtle differences between these materials, and other note worth considerations when it comes to performance. However I generally like to go with the standard material when it comes to getting into using light with a project.
 
 ### Source code examples and much more are on Github
 
 The source code examples that I am writing about here can also be found in my [test threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-ambientlight) reposatory up on Github. This is also where I part the source code for my [many other posts on threejs](/categories/three-js/) as well.
 
-### What version of three.js are you using?
+### What version of threejs are you using?
 
-When I first wrote this post I was using r98 of three.js, and the last time I cam a round to do a little updating of the code examples I was using three.js r146 of three.js. I do not think that much has changed with ambient light in three.js sense then, but a whole lot has changed with threejs outside of ambient light for sure. 
+When I first wrote this post I was using r98 of three.js, and the last time I cam a round to do a little updating of the code examples I was using three.js r146 of threejs. I do not think that much has changed with ambient light in sense then, but a whole lot has changed with threejs outside of ambient light for sure. 
 
 There is still a lot changing with threejs real fast, so it is possible that some of these code examples here might break at some point in the future for this reason. So always be mindful of what revision number of the librray you are using.
 
@@ -48,8 +48,6 @@ Setting up some ambient light for a project is not to hard at all. I just need t
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.1, 1000);
-camera.position.set(25, 25, 25);
-camera.lookAt(0, 0, 0);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo')|| document.body).appendChild(renderer.domElement);
@@ -62,14 +60,16 @@ scene.add(al);
 // MESH
 //-------- ----------
 const mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(20, 20, 20),
-        new THREE.MeshStandardMaterial({
-            color: 0xff0000
-        }));
+    new THREE.BoxGeometry(20, 20, 20),
+    new THREE.MeshStandardMaterial({
+        color: 0xff0000
+    }));
 scene.add(mesh);
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(25, 25, 25);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -87,8 +87,6 @@ There is often at least one additional little thing that I like to do when addin
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.1, 1000);
-camera.position.set(25, 25, 25);
-camera.lookAt(0, 0, 0);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo')|| document.body).appendChild(renderer.domElement);
@@ -109,6 +107,8 @@ scene.add(mesh);
 //-------- ----------
 // RENDER LOOP
 //-------- ----------
+camera.position.set(25, 25, 25);
+camera.lookAt(0, 0, 0);
 let f = 0;
 const fm = 300;
 const loop = () => {
