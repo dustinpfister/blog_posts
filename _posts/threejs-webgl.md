@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2023-04-25 15:28:10
-version: 1.29
+updated: 2023-04-25 15:36:09
+version: 1.30
 ---
 
 As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Threejs](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It was still possible to use it as an add on file but as of late versions of threejs it would seem that is no longer the case. There once was a time where webGL support was not so great, however that was then, and now when comes to modern web browsers webgl support is pretty good.
@@ -19,15 +19,19 @@ I can not say that I bother with this myself, but never the less there is the qu
 
 ## WebGL in three.js and what to know before hand
 
-This is a post on feature testing for web gl, and using the software renderer in three js in the event that there is no webGL support at all. This is a not a [getting started post with three.js](/2018/04/04/threejs-getting-started/), webGL, or javaScript in general. So then I assume that you have at least some background with three.js and javaScript.
+This is a post on feature testing for web gl, and using the software renderer in three js in the event that there is no webGL support at all. I am also slowly turning this post into a general overview of webgl in general rather than the webgl renderer alone. In any case this is a not a [getting started post with three.js](/2018/04/04/threejs-getting-started/), or javaScript in general. So I assume that you have at least some background with skills that are needed to begin with in order to get something of value from reading this.
 
 ### More on the webGL renderer
 
 In this post I am mostly writing about feature testing for webGL and then doing something different in the event that webGL is not supported. However I am not really getting into the webGL renderer in detail as I have wrote a [post on the webGL renderer](/2018/11/24/threejs-webglrenderer/) in detail a while back and there is therefore no need to do so here.
 
+### Also check out the shader material
+
+Sense I first wrote this blog post I got around to writing at least one post on the [shader material](/2023/01/13/threejs-shader-material/) in threejs. The shader material is a great way to get started with GLSL code that is a lot easier compared to starting from the ground up as I have access to the shader library of threejs.
+
 ### Source Code is also up on Github
 
-The source code examples that I am writing about here can also be [found up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-webgl).
+The source code examples that I am writing about here can also be [found up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-webgl). This is also the repo where I store the source code examples for my [many other blog posts on threejs as well](/categories/three-js/).
 
 ### Version numbers matter
 
