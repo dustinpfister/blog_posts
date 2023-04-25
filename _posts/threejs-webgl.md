@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2023-04-25 12:50:37
-version: 1.28
+updated: 2023-04-25 15:28:10
+version: 1.29
 ---
 
 As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Threejs](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It was still possible to use it as an add on file but as of late versions of threejs it would seem that is no longer the case. There once was a time where webGL support was not so great, however that was then, and now when comes to modern web browsers webgl support is pretty good.
@@ -35,7 +35,11 @@ When writing this post for the first time I was using [revision 104 of three.js]
 
 On top of all of this I am also using some additional assets in the renderer's folder of the js folder in the examples folder of the three.js repo. When it comes to rendering a three js scene with a renderer other than the built in webGL renderer additional assets must be used to provide that additional way of rendering. To further complicate matters there the options of what there are to work with in terms of software rendering will differ from one revision to the next. When it came to r104 the 2d canvas renderer was still an option when added as an additional external file which was called the software-renderer.js file. However in later revisions of threejs it would seem the best option would be to use the SVGRenderer as of r146+.
 
-## 1 - The webgl-r0.js file
+## 1 - Testing if webgl is there to work with
+
+It is becoming less of a problem every day, but there is still a concern if webGl is even there to work with to begin with. Even if I stop caring about old browsers all together there is still a possibility that a lot of people might be using not so great graphics adapters that do not support all webgl features. So there is still testing if webgl is there to work with, and if so what version. There is also going into depth as to what features are working and what are not but that might prove to be a bit to advanced for now.
+
+### 1.a - The webgl-r0.js file
 
 Here is my webgl.js file that just contains one method that is just a slightly modified version of what is also in the three.js repo. This method just simply returns true of the client supports webGL 1, and false if that is not the case with the main is web gl method. In addition to this I also have a method that will just return true or false in the event that a client supports webgl2 or not.
 
@@ -182,6 +186,27 @@ if (WebGL.isWebGL()) {
     container.appendChild(renderer.domElement);
     renderer.render(scene, camera);
 }
+```
+
+## 2 - Raw WebGl Hello world program
+
+There are a whole lot of ways to go about getting started with a WebGl hello world type program. There is making use of script tags that are used to define shaders, there is using the shader librray of threejs, and then there is [starting from the ground up with some vanilla html and javaScript](https://jameshfisher.com/2017/09/27/webgl-hello-world/). To start with a vanilla style example I would want to start out by creating a canvas element by one way or another, get a reference to a [webgl context](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext) rather than the 2d one, and then use some methods to draw to it.
+
+```html
+<div id="demo"></div>
+<script src="/forpost/threejs-webgl/s2-1-helloworld-scripttag/main.js"></script>
+```
+
+```js
+const container = ( document.getElementById('demo') || document.body );
+const canvas = document.createElement('canvas');
+canvas.width = 320;
+canvas.height = 240;
+container.appendChild(canvas);
+const ctx = canvas.getContext('webgl');
+const r = 1, g = 0, b = 0, alpha = 0.5;
+ctx.clearColor( r, g, b, alpha );
+ctx.clear( ctx.COLOR_BUFFER_BIT );
 ```
 
 ## Conclusion
