@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2022-11-17 10:31:10
-version: 1.27
+updated: 2023-04-25 12:50:37
+version: 1.28
 ---
 
-As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Three.js](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It is still possible to use it of course it just needs to be added as an additional asset for a project on top of just three js by itself. It would seem that the motivation behind doing so was because support for webGL is now pretty good in general when it comes to modern web browsers which mode people who visit my website do in fact use.
+As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Threejs](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It was still possible to use it as an add on file but as of late versions of threejs it would seem that is no longer the case. There once was a time where webGL support was not so great, however that was then, and now when comes to modern web browsers webgl support is pretty good.
 
-For the most part these days there is no need to bother with the 2d canvas powered software renderer as the built in [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer) will work just fine on most clients, but if for some reason you do want to add more robust support for older clients that do not have great web gl support than the software renderer will have to be added in, and feature testing for web gl will need to be preformed. I can not say that I bother with this myself, but never the less there is the question of that small minority of people using outdated browsers and having code not break. So then in this post I thought I would touch base on this sort of topic for those that might be interested.
+For the most part these days there is no need to bother with the 2d canvas powered software renderer as the built in [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer) will work just fine on most clients, but if for some reason you do want to add more robust support for older clients that do not have great web gl support than the some other renderer option will need to be used in the event that it will not work.
+
+I can not say that I bother with this myself, but never the less there is the question of that small minority of people using outdated browsers and having code not break. Also there is not just concerns over using older browsers but using a client where certain webgl features will just not work. For example webGl2 features will not work on my raspberry pi 4 because of limitations with the video adapter that is used on it even if I am using a modern browser. So then in this post I thought I would touch base on this sort of topic for those that might be interested.
 
 <!-- more -->
 
