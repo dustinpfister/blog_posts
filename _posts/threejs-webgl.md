@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2023-04-25 15:36:09
-version: 1.30
+updated: 2023-04-25 16:21:51
+version: 1.31
 ---
 
 As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Threejs](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It was still possible to use it as an add on file but as of late versions of threejs it would seem that is no longer the case. There once was a time where webGL support was not so great, however that was then, and now when comes to modern web browsers webgl support is pretty good.
@@ -192,7 +192,11 @@ if (WebGL.isWebGL()) {
 }
 ```
 
-## 2 - Raw WebGl Hello world program
+## 2 - Starting out with WebGl From the ground up
+
+In this section I will be going over a few examples that have to do with starting to work with WebGl alone from the ground up. At the time of this writing I have to say that I do not think that this is a good idea, unless of course you want to get into writing custom shaders, or not use threejs but work directly with webGL. There is all kinds of ways of getting started with webgl alone which is something that I am going to touch base on at least here. However there is also making use of the shader library of threejs as well which is great for quickly adding certain common features.
+
+### 2.1 - Raw WebGl Hello world program with a script tag
 
 There are a whole lot of ways to go about getting started with a WebGl hello world type program. There is making use of script tags that are used to define shaders, there is using the shader librray of threejs, and then there is [starting from the ground up with some vanilla html and javaScript](https://jameshfisher.com/2017/09/27/webgl-hello-world/). To start with a vanilla style example I would want to start out by creating a canvas element by one way or another, get a reference to a [webgl context](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext) rather than the 2d one, and then use some methods to draw to it.
 
@@ -211,6 +215,61 @@ const ctx = canvas.getContext('webgl');
 const r = 1, g = 0, b = 0, alpha = 0.5;
 ctx.clearColor( r, g, b, alpha );
 ctx.clear( ctx.COLOR_BUFFER_BIT );
+```
+
+### 2.2 - Raw Webgl demo with shader tags
+
+```html
+<script id="vertex-shader" type="shader">
+    attribute vec4 a_Position;
+    void main() {
+        gl_Position = a_Position;
+        gl_PointSize = 40.0;
+    }
+</script>
+<script id="fragment-shader" type="shader">
+    void main(void) {
+        gl_FragColor = vec4(1.0, 0.0, 0.0, 1);
+    }
+</script>
+<div id="demo"></div>
+```
+
+```js
+// started with this codepen https://codepen.io/urishaked/pen/PEpoYo
+// fixed a few problems with it
+const container = ( document.getElementById('demo') || document.body );
+const canvas = document.createElement('canvas');
+canvas.width = 160;
+canvas.height = 120;
+container.appendChild(canvas);
+const gl = canvas.getContext('webgl');
+// use the vertex shader
+const vertShader = gl.createShader( gl.VERTEX_SHADER );
+gl.shaderSource(vertShader, document.querySelector('#vertex-shader').textContent);
+gl.compileShader(vertShader);
+// use the fragment shader
+const fragShader = gl.createShader(gl.FRAGMENT_SHADER);
+gl.shaderSource(fragShader, document.querySelector('#fragment-shader').textContent);
+gl.compileShader(fragShader);
+// the shader program
+const shaderProgram = gl.createProgram();
+gl.attachShader(shaderProgram, vertShader); 
+gl.attachShader(shaderProgram, fragShader);
+gl.linkProgram(shaderProgram);
+gl.useProgram(shaderProgram);
+gl.viewport(0, 0, 160, 120);
+gl.clearColor(0, 0, 0, 1);
+gl.clear(gl.COLOR_BUFFER_BIT);
+// https://stackoverflow.com/a/20315187
+const vertices = new Float32Array([0.0, 0.0, 0.0]), vertexBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+gl.bindAttribLocation(shaderProgram, 0, 'a_Position');
+gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
+gl.enableVertexAttribArray(0);
+// the draw arrays method can be used to draw a single point
+gl.drawArrays(gl.POINTS, 0, 1);
 ```
 
 ## Conclusion
