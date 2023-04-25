@@ -5,21 +5,23 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2022-11-03 07:37:57
-version: 1.31
+updated: 2023-04-25 12:42:25
+version: 1.32
 ---
 
-When I am playing around with [three.js](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. 
+When I am playing around with [threejs](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. 
 
-Now there may be a great number of ways to go about doing this sort of thing actually on [stack overflow I saw an example the makes use of some built in browser features](https://stackoverflow.com/questions/50681683/how-to-save-canvas-animation-as-gif-or-webm) as a way to go about capturing video from a canvas element on the fly. However what I have in mind is something where I can create a video on a frame by frame basis rather than recoding for an amount of time which is not what I am after here.
+Now there may be a great number of ways to go about doing this sort of thing actually on [stack overflow I saw an example the makes use of some built in browser features](https://stackoverflow.com/questions/50681683/how-to-save-canvas-animation-as-gif-or-webm) as a way to go about capturing video from a canvas element on the fly. However what I have in mind is something where I can create a video on a frame by frame basis rather than recording for an amount of time which is not what I am after here.
 
-To help with this I have come across a project called [whammy](https://github.com/antimatter15/whammy) that seems to work okay for the sake of making a webm file on a frame by frame basis, or at least it did until code breaking changes where made in chrome. I am not sure what to do with this post when it comes to additional future edits at this point with that said. However every now and then I do come around to this topic and will likely expand on this when I find other ways to export other than what I have worked out here that no longer works on late versions of chrome.
+To help with this I have come across a project called [whammy](https://github.com/antimatter15/whammy) that seems to work okay for the sake of making a webm file on a frame by frame basis, or at least it did until code breaking changes where made in chrome. 
+
+I am not sure what to do with this post when it comes to additional future edits at this point. However every now and then I do come around to this topic and will likely expand on this when I find other ways to export other than what I have worked out here that no longer works on late versions of chrome.
 
 <!-- more -->
 
 ## Exporting as WebM from threejs and what to know first
 
-This is a post on exporting a three.js animation to webm using an additional javaScript project called whammy. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/) or [javaScript in general](/2018/11/27/js-getting-started/), so I will not be getting into detail about each of the various details about making a three.js project in this post. However I will like to other relevant posts where appropriate.
+This is a post on exporting a threejs animation to webm using an additional javaScript project called whammy. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/) or [javaScript in general](/2018/11/27/js-getting-started/), so I will not be getting into detail about each of the various details about making a three.js project in this post. However I will like to other relevant posts where appropriate.
 
 ### USING WHAMMY NO LONGER WORKS FOR ME IN LATE VERSIONS OF CHROME
 
@@ -37,17 +39,17 @@ Sense I started that prototype for my electronjs project example post I started 
 
 ### Version numbers matter
 
-When I last edited this post I was using thee.js r127, and when I first wrote this post I was using three.js r91. Also it would seem that whammy is not being maintained, however I think that is not always such a bad thing with what it is that I intend to use if for, and as long as it still works I do not see any major problem. However it would seem that with this that is the case sadly.
+When I last edited this post I was using three.js r127, and when I first wrote this post I was using three.js r91. Also it would seem that whammy is not being maintained, however I think that is not always such a bad thing with what it is that I intend to use if for, and as long as it still works I do not see any major problem. However it would seem that with this that is the case sadly.
 
-I am sure that there might be other options for this sort of thing, but I will always want to use something that works more or less the same way by passing frames one at a time, rather than recoding on the fly video. Future edits of this post might just involve vanilla javaScript code examples on how to do that.
+I am sure that there might be other options for this sort of thing, but I will always want to use something that works more or less the same way by passing frames one at a time, rather than recording on the fly video. Future edits of this post might just involve vanilla javaScript code examples on how to do that.
 
 ## 1 - Exporting a simple rotating cube example
 
-For the sake of keeping this post simple and to the point I will just be using a simple rotating cube example for this post. This will help to take the focus away from the animation and place it more so with the process of exporting an three.js animation to webm with whammy. Using whammy is fairly simple, but there are a few pitfalls that I have ran into. Nothing major, but I will be going over them here.
+For the sake of keeping this post simple and to the point I will just be using a simple rotating cube example for this post. This will help to take the focus away from the animation and place it more so with the process of exporting an threejs animation to webm with whammy. Using whammy is fairly simple, but there are a few pitfalls that I have ran into. Nothing major, but I will be going over them here.
 
 ### 1.1 - Create Whammy instance, and setup some variables
 
-Once I have both whammy, and three.js included in my html with script tags, I start off by setting some variables that I will be using to help with the movement of the animation. Using whammy starts off by just calling the Whammy.Video constructor passing the desired frame rate for the exported video. This will return an encoder that I can use to add frames one by one in a render loop, and then them I am done I just need to call a compile method from this encoder.
+Once I have both whammy, and three.js included in my html with script tags, I start off by setting some variables that I will be using to help with the movement of the animation. Using whammy starts off by just calling the Whammy. Video constructor passing the desired frame rate for the exported video. This will return an encoder that I can use to add frames one by one in a render loop, and then them I am done I just need to call a compile method from this encoder.
 
 ```js
 // create encoder
