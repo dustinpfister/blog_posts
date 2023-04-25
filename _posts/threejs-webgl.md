@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2023-04-25 16:21:51
-version: 1.31
+updated: 2023-04-25 16:27:52
+version: 1.32
 ---
 
 As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Threejs](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It was still possible to use it as an add on file but as of late versions of threejs it would seem that is no longer the case. There once was a time where webGL support was not so great, however that was then, and now when comes to modern web browsers webgl support is pretty good.
@@ -218,6 +218,8 @@ ctx.clear( ctx.COLOR_BUFFER_BIT );
 ```
 
 ### 2.2 - Raw Webgl demo with shader tags
+
+Although the first example in this section is a great supper simple getting started type example in order to create a hello world that is a little more interesting than just a solid color background I am going to need some shdaers. There are a number of ways to go about adding some shaders and starting to write custom shaders. One way of doing this is to create some script tag elements that are of the type 'shader' rather than module or the regular plain old javaScript type. There are two kinds of shaders that I am going to need one of which is the vertex shader that is used to define position data, and the other is a fragment shader that is used to define what the color is going to be.
 
 ```html
 <script id="vertex-shader" type="shader">
