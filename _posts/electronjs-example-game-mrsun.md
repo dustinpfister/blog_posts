@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1037
-updated: 2023-05-01 15:56:58
-version: 1.3
+updated: 2023-05-01 16:23:08
+version: 1.4
 ---
 
 When it comes to my collection of electronjs examples thus far I do not have an example that is some kind of game project, so I have started one project that is a kind of [Idle Game](https://en.wikipedia.org/wiki/Incremental_game). The game prototype idea is called MrSun, and the general idea is to have a single object that is a sun, and a bunch of objects around the sun that are land sections. Each land section is then composed of a grid of slots, each of which can contain a block that will generate the main game currently which in this case is mana.
@@ -43,5 +43,29 @@ While working on this project I ran into a problem that had to do with a race co
 ### 1.3 - The save file script savefile.js
 
 As I have covered in the section on the preload.js file for this game prototype. Nothing major with this script as it just needs to be a very basic script that will just write a file using the write file method of the [nodejs file system module](/2019/06/14/nodejs-filesystem-write-file/).
+
+
+## The Client system
+
+In this section I will now be writing a thing or two about the client system for this game.
+
+### Using a copy of Decimal.js for high percision math
+
+I have went with [decimal.js](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/decimal) as a module for working with very big numbers. If you have coded with javaScript as long as I have then chances are I do not need to lecture you as to why it is a good idea to use a librray like this when making any kind of project that involves working with very big numbers which is often the case with idel games. If not then there is reading up more on what [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) is to get an idea with what the limits are with regular javaScript numbers. A possible native altertaive to bothering with a user space module would be to use [big integers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), however I find them lacking when it comes to math methods.
+
+### Using lz-string to compess save state data
+
+I have went with [lz-string](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/lz-string) to compess save state data. For this project I have made a cusotm hack job of the file in order to turn it into a javaScript module, and while I was at it I removed all the code that I was not using.
+
+### Using event-dispatcher from threejs
+
+I am using the [event-dispatcher source code](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/event-dispatcher) files from the threejs project. I have decided to make this a 2d game, but I have found that I would still like to use some features from threejs by just making use of some of the source code files. The [event dispatcher](https://threejs.org/docs/index.html#api/en/core/EventDispatcher) in threejs is a way to go about createing custom user space events for plain old javaScript objects rather that elements. I am using this to create events for my main game object.
+
+
+## Conclusion
+
+So that is the general overview for this electronjs project exmaple of an idel game. I really put a whole lot of time into this one so it is safe to say that I will be treating this exmaple the same way as I have with my [video creation tool project example](/2022/03/10/electronjs-example-videoground). Simply put this means that it is going to get its own repo and I am going to continig working on it a little more now and then which is not always the case with some of these electionjs exmaple projects that I have made thus far. Many of them are just prototypes, but some of them I continue working on if they are software tools that I use everyday, or enought people start to show interest. This game might prove to be one of those projects as I find myself getting addicted to my own game Tony Montana style.
+
+
 
 
