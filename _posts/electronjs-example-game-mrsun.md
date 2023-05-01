@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1037
-updated: 2023-05-01 15:48:09
-version: 1.2
+updated: 2023-05-01 15:56:58
+version: 1.3
 ---
 
 When it comes to my collection of electronjs examples thus far I do not have an example that is some kind of game project, so I have started one project that is a kind of [Idle Game](https://en.wikipedia.org/wiki/Incremental_game). The game prototype idea is called MrSun, and the general idea is to have a single object that is a sun, and a bunch of objects around the sun that are land sections. Each land section is then composed of a grid of slots, each of which can contain a block that will generate the main game currently which in this case is mana.
@@ -21,7 +21,7 @@ What I have in mind here then is not just another idle game, but a game that als
 
 ## The MrSun Idle Game Prototype and what to know first
 
-In this post I am writing about a electionjs project example that is my first electionjs game project that is an example of an idle game project. I really went off the deep end with this one when it comes to the client system which is composed of many modules of my own design. I did not write all of them from the ground up though, many are based on source code exmaples that I have started for many other projects, others are hacked over threejs source code files. I have also borrowed code from a few other projects as well and it would look like I will need to relpease any final product based on this under the MIT Liceses becuase of it.
+In this post I am writing about a electionjs project example that is my first electionjs game project that is an example of an idle game project. I really went off the deep end with this one when it comes to the client system which is composed of many modules of my own design. I did not write all of them from the ground up though, many are based on source code exmaples that I have started for many other projects, others are hacked over threejs source code files. I have also borrowed code from a few other projects as well, and it would look like I will need to relpease any final product based on this under the MIT Liceses becuase of it. In any case this is not a post for people that are [new to using electronjs](/2022/02/07/electronjs-hello-world/)
 
 ### The full up to date source code for the prootype can be found on Github
 
@@ -29,7 +29,7 @@ The best way to get things up and running with the prototype that I am writing a
 
 ## 1 - Electionjs Files
 
-As with just about any electionjs project there are two general things to write about, electionjs code and the client system code. In this section I amm going to be writing about what it is that I have in place when it comes to the typical electionjs files such as the main.js and preload.js files. On top of those two files I also have one addtional nodejs script that I should write about also while I am at it.
+As with just about any electionjs project there are two general things to write about, electionjs code and the client system code. In this section I am going to be writing about what it is that I have in place when it comes to the typical electionjs files such as the main.js and [preload.js](/2022/02/21/electronjs-context-bridge/) files. On top of those two files I also have one addtional nodejs script that I should write about also while I am at it.
 
 ### 1.1 - The main.js file
 
@@ -38,10 +38,10 @@ There is not much to write about when it comes to the main.js file with this one
 
 ### 1.2 - The preload.js file
 
-While working on this project I ran into a problem that had to do with a race condition when saving a game state file to the file system. If a save was in progress and I quit or reloaded the game before the save was finished I would loose my save state. There might eb a number of ways to go about adressing this problem but the way that I solved it was by just making use of an additonal nodejs file and using the fork method of the nodejs child process module to lanunch a save as a whole other detached process on the client system. This way the detached process will continue even if the main game porcess was killed, or the game was reloaded.
+While working on this project I ran into a problem that had to do with a race condition when saving a game state file to the file system. If a save was in progress and I quit or reloaded the game before the save was finished I would loose my save state. There might be a number of ways to go about adressing this problem but the way that I solved it was by just making use of an additonal nodejs file and using the [fork method](/2019/08/07/nodejs-child-process-fork/) of the [nodejs child process module](/2018/02/04/nodejs-child-process/) to lanunch a save as a whole other detached process on the client system. This way the detached process will continue even if the main game porcess was killed, or the game was reloaded.
 
 ### 1.3 - The save file script savefile.js
 
-As I have covered in the section on the preload.js file for this game prototype.
+As I have covered in the section on the preload.js file for this game prototype. Nothing major with this script as it just needs to be a very basic script that will just write a file using the write file method of the [nodejs file system module](/2019/06/14/nodejs-filesystem-write-file/).
 
 
