@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1037
-updated: 2023-05-02 14:48:18
-version: 1.5
+updated: 2023-05-02 15:11:46
+version: 1.6
 ---
 
 When it comes to my collection of electronjs examples thus far I do not have an example that is some kind of game project, so I have started one project that is a kind of [Idle Game](https://en.wikipedia.org/wiki/Incremental_game). The game prototype idea is called MrSun, and the general idea is to have a single object that is a sun, and a bunch of objects around the sun that are land sections. Each land section is then composed of a grid of slots, each of which can contain a block that will generate the main game currently which in this case is mana.
@@ -47,7 +47,7 @@ As I have covered in the section on the preload.js file for this game prototype.
 
 ## 2 - The Client system
 
-In this section I will now be writing a thing or two about the client system for this game.
+Now that I have covered all the code that has to do with the electionjs files there is now going over all the code that has to do with the client system for this game. This is where things get a little involved with this as I worked on this game prototype a little each day for the good part of a month. There are a lot of javaScript modules that compose the game code thus far then. The onces that I have not done much with I will just write about and link to where you can see the copies of the modules that I am using in the github project folder. Others I have hacked over a lot, or have wrote from the ground up and as such I might post the code here then.
 
 ## 3 - Using a copy of Decimal.js for high percision math
 
@@ -68,40 +68,116 @@ I made a [copy of the Vector2 class](https://github.com/dustinpfister/examples-e
 
 
 ```js
-const MathUtils = {};
-MathUtils.clamp = function clamp( value, min, max ) {
-    return Math.max( min, Math.min( max, value ) );
-};
-```
-
-```js
-    angle() {
-        // computes the angle in radians with respect to the positive x-axis
-        const angle = Math.atan2( - this.y,  - this.x) + Math.PI;
-        return angle;
+// Vector2 class for electionjs-example-mrsun
+// Based on the source code from the Vector2 class from r151 of threejs
+// https://raw.githubusercontent.com/mrdoob/three.js/r151/src/math/Vector2.js
+//-------- ----------
+// EXPORT
+//-------- ----------
+class Vector2 {
+    constructor(x = 0, y = 0) {
+        Vector2.prototype.isVector2 = true;
+        this.x = x;
+        this.y = y;
     }
-    angleTo(v) {
-        const denominator = Math.sqrt(this.lengthSq() * v.lengthSq());
-        if (denominator === 0)
-            return Math.PI / 2;
-        const theta = this.dot(v) / denominator;
-        // clamp, to handle numerical problems
-        return Math.acos(MathUtils.clamp(theta,  - 1, 1));
+    get width() {
+        return this.x;
+    }
+    set width(value) {
+        this.x = value;
+    }
+    get height() {
+        return this.y;
+    }
+    set height(value) {
+        this.y = value;
+    }
+    set(x, y) {
+        this.x = x;
+        this.y = y;
+        return this;
+    }
+    clone() {
+        return new this.constructor(this.x, this.y);
+    }
+    copy(v) {
+        this.x = v.x;
+        this.y = v.y;
+        return this;
+    }
+    normalize() {
+        return this.divideScalar(this.length() || 1);
     }
     // added a radianTo method becuse the angleTo method is not working a certain way that I need it to.
     radianTo(v){
         const r = Math.atan2(this.y - v.y, this.x - v.x);
         return r < 0 ? Math.PI * 2 + r  : r;
     }
+    distanceTo(v) {
+        return Math.sqrt(this.distanceToSquared(v));
+    }
+    distanceToSquared(v) {
+        const dx = this.x - v.x,
+        dy = this.y - v.y;
+        return dx * dx + dy * dy;
+    }
+    setLength(length) {
+        return this.normalize().multiplyScalar(length);
+    }
+    lerp(v, alpha) {
+        this.x += (v.x - this.x) * alpha;
+        this.y += (v.y - this.y) * alpha;
+        return this;
+    }
+     * [Symbol.iterator]() {
+        yield this.x;
+        yield this.y;
+    }
+}
+//-------- ----------
+// EXPORT
+//-------- ----------
+export { Vector2 };
 ```
 
-## 7 - object2d
+## 7 - Object2d
+
+I [started an Object2d class](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/object2d) which I would like to make like that of the Object3d class in threejs. Maybe not so much in this prototype, but as I start to work on a final game based off of this I am sure I will expand on this class a whole lot.
 
 ```js
+// Object2d class based on the Object3d class of threejs
+// https://raw.githubusercontent.com/mrdoob/three.js/r151/src/core/Object3D.js
+import { Vector2 } from '../vector2/vector2.mjs';
+import { EventDispatcher } from '../event-dispatcher/EventDispatcher.mjs';
+ 
+class Object2D extends EventDispatcher {
+    constructor() {
+        super();
+        this.name = '';
+        this.type = 'Object3D';
+        this.parent = null;
+        this.children = [];
+        // position
+        const position = new Vector2();
+        const size = new Vector2();
+        Object.defineProperties( this, {
+            position: {
+            configurable: true,
+                enumerable: true,
+                value: position
+            }
+        } );
+        this.userData = {};
+    }
+};
+ 
+export { Object2D };
 ```
 
 
 ## 8 - object2d-sprite
+
+For this prototype thus far I have one addtional module in which I [extend from my base object2d class that is a sprite class](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/object2d-sprite).
 
 ```js
 ```
