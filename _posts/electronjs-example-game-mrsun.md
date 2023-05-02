@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1037
-updated: 2023-05-01 16:23:08
-version: 1.4
+updated: 2023-05-02 14:48:18
+version: 1.5
 ---
 
 When it comes to my collection of electronjs examples thus far I do not have an example that is some kind of game project, so I have started one project that is a kind of [Idle Game](https://en.wikipedia.org/wiki/Incremental_game). The game prototype idea is called MrSun, and the general idea is to have a single object that is a sun, and a bunch of objects around the sun that are land sections. Each land section is then composed of a grid of slots, each of which can contain a block that will generate the main game currently which in this case is mana.
@@ -45,21 +45,120 @@ While working on this project I ran into a problem that had to do with a race co
 As I have covered in the section on the preload.js file for this game prototype. Nothing major with this script as it just needs to be a very basic script that will just write a file using the write file method of the [nodejs file system module](/2019/06/14/nodejs-filesystem-write-file/).
 
 
-## The Client system
+## 2 - The Client system
 
 In this section I will now be writing a thing or two about the client system for this game.
 
-### Using a copy of Decimal.js for high percision math
+## 3 - Using a copy of Decimal.js for high percision math
 
 I have went with [decimal.js](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/decimal) as a module for working with very big numbers. If you have coded with javaScript as long as I have then chances are I do not need to lecture you as to why it is a good idea to use a librray like this when making any kind of project that involves working with very big numbers which is often the case with idel games. If not then there is reading up more on what [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) is to get an idea with what the limits are with regular javaScript numbers. A possible native altertaive to bothering with a user space module would be to use [big integers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), however I find them lacking when it comes to math methods.
 
-### Using lz-string to compess save state data
+## 4 - Using event-dispatcher from threejs
+
+I am using the [event-dispatcher source code](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/event-dispatcher) files from the threejs project. I have decided to make this a 2d game, but I have found that I would still like to use some features from threejs by just making use of some of the source code files. The [event dispatcher](https://threejs.org/docs/index.html#api/en/core/EventDispatcher) in threejs is a way to go about createing custom user space events for plain old javaScript objects rather that elements. I am using this to create events for my main game object.
+
+## 5 - Using lz-string to compess save state data
 
 I have went with [lz-string](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/lz-string) to compess save state data. For this project I have made a cusotm hack job of the file in order to turn it into a javaScript module, and while I was at it I removed all the code that I was not using.
 
-### Using event-dispatcher from threejs
 
-I am using the [event-dispatcher source code](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/event-dispatcher) files from the threejs project. I have decided to make this a 2d game, but I have found that I would still like to use some features from threejs by just making use of some of the source code files. The [event dispatcher](https://threejs.org/docs/index.html#api/en/core/EventDispatcher) in threejs is a way to go about createing custom user space events for plain old javaScript objects rather that elements. I am using this to create events for my main game object.
+## 6 - A hacked over THREEJS Vector2 Class
+
+I made a [copy of the Vector2 class](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/vector2) and hacked over it a little. One major change that I made has to do with the methods for getting angles between two points as I have found that the angle to method that comes with the class is not working the way that I would like it to. I thus went with an angle to method that is just an abstraction for the ushual deal with the Math.atan2 method that is often what will be used for this kind of task in some way. The angle to method in the threejs vector2 class also makes use of a single method in that math utils object, so the options are then to add the whole math utils module also, copy over the source code for this single method, or just start removing code that I am not using from this custom cut Vector2 class module.
+
+
+```js
+const MathUtils = {};
+MathUtils.clamp = function clamp( value, min, max ) {
+    return Math.max( min, Math.min( max, value ) );
+};
+```
+
+```js
+    angle() {
+        // computes the angle in radians with respect to the positive x-axis
+        const angle = Math.atan2( - this.y,  - this.x) + Math.PI;
+        return angle;
+    }
+    angleTo(v) {
+        const denominator = Math.sqrt(this.lengthSq() * v.lengthSq());
+        if (denominator === 0)
+            return Math.PI / 2;
+        const theta = this.dot(v) / denominator;
+        // clamp, to handle numerical problems
+        return Math.acos(MathUtils.clamp(theta,  - 1, 1));
+    }
+    // added a radianTo method becuse the angleTo method is not working a certain way that I need it to.
+    radianTo(v){
+        const r = Math.atan2(this.y - v.y, this.x - v.x);
+        return r < 0 ? Math.PI * 2 + r  : r;
+    }
+```
+
+## 7 - object2d
+
+```js
+```
+
+
+## 8 - object2d-sprite
+
+```js
+```
+
+## 9 - Canvas
+
+```js
+```
+
+
+## 10 - mrsun-constant
+
+```js
+```
+
+
+## 11 - mrsun-game
+
+### 11.1 - The sun module
+
+```js
+```
+
+### 11.2 - The Land Module
+
+```js
+```
+
+### 11.3 - The game module
+
+```js
+```
+
+## 12 - mrsun-statemachine
+
+### 12.1 - The Main state machine module
+
+### 12.2 - The init state
+
+### 12.3 - The world state
+
+### 12.4 - The land state
+
+## 13 - mrsun-utils
+
+## 14 - main electionjs
+
+```js
+import { StateMachine }  from "./js/mrsun-statemachine/sm.mjs"
+// create sm object that will use PLATFORM_ELECTRON
+const sm = window.sm = StateMachine.create({
+    el: document.getElementById('wrap_main'),
+    PLATFORM: PLATFORM_ELECTRON
+});
+// start it up
+StateMachine.start(sm);
+```
 
 
 ## Conclusion
