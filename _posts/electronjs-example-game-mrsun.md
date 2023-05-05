@@ -1,12 +1,12 @@
 ---
-title: Idle Game Electronjs project example 
+title: Idle Game Electronjs project example - MrSun Idle prototype
 date: 2023-04-28 08:19:00
 tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1037
-updated: 2023-05-05 11:55:54
-version: 1.10
+updated: 2023-05-05 12:00:20
+version: 1.11
 ---
 
 When it comes to my collection of electronjs examples thus far I do not have an example that is some kind of game project, so I have started one project that is a kind of [Idle Game](https://en.wikipedia.org/wiki/Incremental_game). The game prototype idea is called MrSun, and the general idea is to have a single object that is a sun, and a bunch of objects around the sun that are land sections. Each land section is then composed of a grid of slots, each of which can contain a block that will generate the main game currently which in this case is mana.
@@ -23,9 +23,13 @@ What I have in mind here then is not just another idle game, but a game that als
 
 In this post I am writing about a electronjs project example that is my first electronjs game project that is an example of an idle game project. I really went off the deep end with this one when it comes to the client system which is composed of many modules of my own design. I did not write all of them from the ground up though, many are based on source code examples that I have started for many other projects, others are hacked over threejs source code files. I have also borrowed code from a few other projects as well, and it would look like I will need to release any final product based on this under the MIT License because of it. In any case this is not a post for people that are [new to using electronjs](/2022/02/07/electronjs-hello-world/)
 
-### The full up to date source code for the prootype can be found on Github
+### The full up to date source code for the prototype can be found on Github
 
 The best way to get things up and running with the prototype that I am writing about in this post might be to [clone down my elecitonjs examples repo](https://github.com/dustinpfister/examples-electronjs) and then do an npm install for the [electronjs-example-mrsun project](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun) in the for post folder. This will install the version of electronjs I was using and as of this writing that is the only npm package that is being used for this one.
+
+### Version Numbers
+
+When I wrote this blog post I was writing about R86 of my MrSun Idle Electionjs Example. Sense the writing of this post it is likley that I have made at least a few more revisions of the example, and have not got around to editing this post just yet. Also I might have started a whole other project based off of this source code as well.
 
 ## 1 - electronjs Files
 
