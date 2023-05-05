@@ -1,19 +1,19 @@
 ---
-title: Idle Game Electionjs project example 
+title: Idle Game Electronjs project example 
 date: 2023-04-28 08:19:00
 tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1037
-updated: 2023-05-05 11:44:32
-version: 1.9
+updated: 2023-05-05 11:55:54
+version: 1.10
 ---
 
 When it comes to my collection of electronjs examples thus far I do not have an example that is some kind of game project, so I have started one project that is a kind of [Idle Game](https://en.wikipedia.org/wiki/Incremental_game). The game prototype idea is called MrSun, and the general idea is to have a single object that is a sun, and a bunch of objects around the sun that are land sections. Each land section is then composed of a grid of slots, each of which can contain a block that will generate the main game currently which in this case is mana.
 
 The sun can then be moved into other locations in the area between all the land section objects. When doing so the distance from the sun to each land section object will change which will result in temperature changes for each land section. The changes in temperature will then effect the rate at which mana for each block in a given land section is. That is that I have a base mana amount, and a temperature mana amount that together compose the total mana delta amount for each block in each slot in each land section.
 
-I have made a whole lot of game prototypes in the past when it comes to my collection of html canvas examples, but this time around with my electionjs examples I would like to focus more so on quality rather than quantity. For this game prototype I have stayed in my lane for the good part of a month, and on top of that I have plans to continue working on this project in a stand alone repository as well. So then this will not just be yet another prototype but a game that I will keep working on, and playing myself, for a little while every day.
+I have made a whole lot of game prototypes in the past when it comes to my collection of html canvas examples, but this time around with my electronjs examples I would like to focus more so on quality rather than quantity. For this game prototype I have stayed in my lane for the good part of a month, and on top of that I have plans to continue working on this project in a stand alone repository as well. So then this will not just be yet another prototype but a game that I will keep working on, and playing myself, for a little while every day.
 
 What I have in mind here then is not just another idle game, but a game that also pulls in elements of strategy, simulation, and sandbox type games. The core features of an idle game are there is the prototype all ready, and as I keep working on this as a stand alone project I will be seeking to further refine the features in place as well as take additional steps with various other ideas that I think will add more value to this project.
 
@@ -21,24 +21,24 @@ What I have in mind here then is not just another idle game, but a game that als
 
 ## The MrSun Idle Game Prototype and what to know first
 
-In this post I am writing about a electionjs project example that is my first electionjs game project that is an example of an idle game project. I really went off the deep end with this one when it comes to the client system which is composed of many modules of my own design. I did not write all of them from the ground up though, many are based on source code exmaples that I have started for many other projects, others are hacked over threejs source code files. I have also borrowed code from a few other projects as well, and it would look like I will need to relpease any final product based on this under the MIT Liceses becuase of it. In any case this is not a post for people that are [new to using electronjs](/2022/02/07/electronjs-hello-world/)
+In this post I am writing about a electronjs project example that is my first electronjs game project that is an example of an idle game project. I really went off the deep end with this one when it comes to the client system which is composed of many modules of my own design. I did not write all of them from the ground up though, many are based on source code examples that I have started for many other projects, others are hacked over threejs source code files. I have also borrowed code from a few other projects as well, and it would look like I will need to release any final product based on this under the MIT License because of it. In any case this is not a post for people that are [new to using electronjs](/2022/02/07/electronjs-hello-world/)
 
 ### The full up to date source code for the prootype can be found on Github
 
-The best way to get things up and running with the prototype that I am writing about in this post might be to [clone down my elecitonjs examples repo](https://github.com/dustinpfister/examples-electronjs) and then do an npm install for the [electronjs-example-mrsun project](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun) in the for post folder. This will install the version of elecitonjs I was using and as of this writing that is the only npm package that is being used for this one.
+The best way to get things up and running with the prototype that I am writing about in this post might be to [clone down my elecitonjs examples repo](https://github.com/dustinpfister/examples-electronjs) and then do an npm install for the [electronjs-example-mrsun project](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun) in the for post folder. This will install the version of electronjs I was using and as of this writing that is the only npm package that is being used for this one.
 
-## 1 - Electionjs Files
+## 1 - electronjs Files
 
-As with just about any electionjs project there are two general things to write about, electionjs code and the client system code. In this section I am going to be writing about what it is that I have in place when it comes to the typical electionjs files such as the main.js and [preload.js](/2022/02/21/electronjs-context-bridge/) files. On top of those two files I also have one addtional nodejs script that I should write about also while I am at it.
+As with just about any electronjs project there are two general things to write about, electronjs code and the client system code. In this section I am going to be writing about what it is that I have in place when it comes to the typical electronjs files such as the main.js and [preload.js](/2022/02/21/electronjs-context-bridge/) files. On top of those two files I also have one additional nodejs script that I should write about also while I am at it.
 
 ### 1.1 - The main.js file
 
-There is not much to write about when it comes to the main.js file with this one actualy. For this project I really went off the deep end when it comes to the client side code, but not so much when it comes to the front end code. So I just have a create main window helper functon, a custom menu, and then a few events here.
+There is not much to write about when it comes to the main.js file with this one actually. For this project I really went off the deep end when it comes to the client side code, but not so much when it comes to the front end code. So I just have a create main window helper function, a custom menu, and then a few events here.
 
 
 ### 1.2 - The preload.js file
 
-While working on this project I ran into a problem that had to do with a race condition when saving a game state file to the file system. If a save was in progress and I quit or reloaded the game before the save was finished I would loose my save state. There might be a number of ways to go about adressing this problem but the way that I solved it was by just making use of an additonal nodejs file and using the [fork method](/2019/08/07/nodejs-child-process-fork/) of the [nodejs child process module](/2018/02/04/nodejs-child-process/) to lanunch a save as a whole other detached process on the client system. This way the detached process will continue even if the main game porcess was killed, or the game was reloaded.
+While working on this project I ran into a problem that had to do with a race condition when saving a game state file to the file system. If a save was in progress and I quit or reloaded the game before the save was finished I would loose my save state. There might be a number of ways to go about addressing this problem but the way that I solved it was by just making use of an additional nodejs file and using the [fork method](/2019/08/07/nodejs-child-process-fork/) of the [nodejs child process module](/2018/02/04/nodejs-child-process/) to launch a save as a whole other detached process on the client system. This way the detached process will continue even if the main game process was killed, or the game was reloaded.
 
 ### 1.3 - The save file script savefile.js
 
@@ -47,28 +47,28 @@ As I have covered in the section on the preload.js file for this game prototype.
 
 ## 2 - The Client system
 
-Now that I have covered all the code that has to do with the electionjs files there is now going over all the code that has to do with the client system for this game. This is where things get a little involved with this as I worked on this game prototype a little each day for the good part of a month. There are a lot of javaScript modules that compose the game code thus far then. The onces that I have not done much with I will just write about and link to where you can see the copies of the modules that I am using in the github project folder. Others I have hacked over a lot, or have wrote from the ground up and as such I might post the code here then.
+Now that I have covered all the code that has to do with the electronjs files there is now going over all the code that has to do with the client system for this game. This is where things get a little involved with this as I worked on this game prototype a little each day for the good part of a month. There are a lot of javaScript modules that compose the game code thus far then. The onces that I have not done much with I will just write about and link to where you can see the copies of the modules that I am using in the github project folder. Others I have hacked over a lot, or have wrote from the ground up and as such I might post the code here then.
 
 ## 3 - Using a copy of Decimal.js for high percision math
 
-I have went with [decimal.js](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/decimal) as a module for working with very big numbers. If you have coded with javaScript as long as I have then chances are I do not need to lecture you as to why it is a good idea to use a librray like this when making any kind of project that involves working with very big numbers which is often the case with idel games. If not then there is reading up more on what [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) is to get an idea with what the limits are with regular javaScript numbers. A possible native altertaive to bothering with a user space module would be to use [big integers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), however I find them lacking when it comes to math methods.
+I have went with [decimal.js](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/decimal) as a module for working with very big numbers. If you have coded with javaScript as long as I have then chances are I do not need to lecture you as to why it is a good idea to use a library like this when making any kind of project that involves working with very big numbers which is often the case with idle games. If not then there is reading up more on what [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) is to get an idea with what the limits are with regular javaScript numbers. A possible native alternative to bothering with a user space module would be to use [big integers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), however I find them lacking when it comes to math methods.
 
 ## 4 - Using event-dispatcher from threejs
 
-I am using the [event-dispatcher source code](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/event-dispatcher) files from the threejs project. I have decided to make this a 2d game, but I have found that I would still like to use some features from threejs by just making use of some of the source code files. The [event dispatcher](https://threejs.org/docs/index.html#api/en/core/EventDispatcher) in threejs is a way to go about createing custom user space events for plain old javaScript objects rather that elements. I am using this to create events for my main game object.
+I am using the [event-dispatcher source code](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/event-dispatcher) files from the threejs project. I have decided to make this a 2d game, but I have found that I would still like to use some features from threejs by just making use of some of the source code files. The [event dispatcher](https://threejs.org/docs/index.html#api/en/core/EventDispatcher) in threejs is a way to go about creating custom user space events for plain old javaScript objects rather that elements. I am using this to create events for my main game object.
 
-## 5 - Using lz-string to compess save state data
+## 5 - Using lz-string to compress save state data
 
-I have went with [lz-string](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/lz-string) to compess save state data. For this project I have made a cusotm hack job of the file in order to turn it into a javaScript module, and while I was at it I removed all the code that I was not using.
+I have went with [lz-string](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/lz-string) to compress save state data. For this project I have made a custom hack job of the file in order to turn it into a javaScript module, and while I was at it I removed all the code that I was not using.
 
 
 ## 6 - A hacked over THREEJS Vector2 Class
 
-I made a [copy of the Vector2 class](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/vector2) and hacked over it a little. One major change that I made has to do with the methods for getting angles between two points as I have found that the angle to method that comes with the class is not working the way that I would like it to. I thus went with an angle to method that is just an abstraction for the ushual deal with the Math.atan2 method that is often what will be used for this kind of task in some way. The angle to method in the threejs vector2 class also makes use of a single method in that math utils object, so the options are then to add the whole math utils module also, copy over the source code for this single method, or just start removing code that I am not using from this custom cut Vector2 class module.
+I made a [copy of the Vector2 class](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/vector2) and hacked over it a little. One major change that I made has to do with the methods for getting angles between two points as I have found that the angle to method that comes with the class is not working the way that I would like it to. I thus went with an angle to method that is just an abstraction for the usual deal with the Math.atan2 method that is often what will be used for this kind of task in some way. The angle to method in the threejs vector2 class also makes use of a single method in that math utils object, so the options are then to add the whole math utils module also, copy over the source code for this single method, or just start removing code that I am not using from this custom cut Vector2 class module.
 
 
 ```js
-// Vector2 class for electionjs-example-mrsun
+// Vector2 class for electronjs-example-mrsun
 // Based on the source code from the Vector2 class from r151 of threejs
 // https://raw.githubusercontent.com/mrdoob/three.js/r151/src/math/Vector2.js
 //-------- ----------
@@ -177,7 +177,7 @@ export { Object2D };
 
 ## 8 - Object2d-sprite
 
-For this prototype thus far I have one addtional module in which I [extend from my base object2d class that is a sprite class](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/object2d-sprite).
+For this prototype thus far I have one additional module in which I [extend from my base object2d class that is a sprite class](https://github.com/dustinpfister/examples-electronjs/tree/master/for_post/electronjs-example-mrsun/html/js/object2d-sprite).
 
 ```js
 import { Vector2 } from '../vector2/vector2.mjs';
@@ -391,10 +391,10 @@ export { canvasMod };
 
 ## 10 - Mrsun-constant
 
-When I first started working on this I ended up with a lot of constant values up at the top of my main game state module. I then ran into a situation in which I need to get at these constant values from one of my other modules that has to do with the state machine or some render function. So I have found that it might just be best to have some kind of main module that is just one big collection of constant values that are used in the game state, as well as all over the programe in general. I then import this module in my game module, and then everywhere else where I would need to do so as well.
+When I first started working on this I ended up with a lot of constant values up at the top of my main game state module. I then ran into a situation in which I need to get at these constant values from one of my other modules that has to do with the state machine or some render function. So I have found that it might just be best to have some kind of main module that is just one big collection of constant values that are used in the game state, as well as all over the program in general. I then import this module in my game module, and then everywhere else where I would need to do so as well.
 
 ```js
-// constant.mjs - for electionjs-example-mrsun
+// constant.mjs - for electronjs-example-mrsun
 import { Decimal }  from "../decimal/10.4.3/decimal.mjs"
 import { Vector2 }  from "../vector2/vector2.mjs"
 //-------- ----------
@@ -489,7 +489,7 @@ IMG.rock = {
    ]
 };
 //-------- ----------
-// HARD CODED SAVE? - add lz-string compessed save, or set as empty string
+// HARD CODED SAVE? - add lz-string compressed save, or set as empty string
 //-------- ----------
 constant.SAVE_STRING = '';
 //-------- ----------
@@ -508,7 +508,7 @@ I have a folder that contains that main game state module, as well as a number o
 This module contains that main sun class which I use to create the object the stores the current position of the sun. I also have a number of methods in this class that have to do with updating the animation state of the sun, as well as the position of the sun relative to a fixed center position.
 
 ```js
-// sun.mjs - for electionjs-example-mrsun
+// sun.mjs - for electronjs-example-mrsun
 import { Vector2 } from '../vector2/vector2.mjs'
 import { canvasMod } from '../canvas/canvas.mjs'
 import { Sprite, SpriteSheet } from '../object2d-sprite/sprite.mjs'
@@ -694,10 +694,10 @@ export { Sun };
 
 ### 11.2 - The Land Module
 
-The land module then contains mosy of the code that I use to create an update the various objects that compose a land section object as well as the whole collection of these land section objects, and also the various slots of each land section as well. So there is then a main Land class, then a LandSection class, Slot class, and then a Block class.
+The land module then contains mostly of the code that I use to create an update the various objects that compose a land section object as well as the whole collection of these land section objects, and also the various slots of each land section as well. So there is then a main Land class, then a LandSection class, Slot class, and then a Block class.
 
 ```js
-// lands.mjs - for electionjs-example-mrsun
+// lands.mjs - for electronjs-example-mrsun
 import { Decimal }  from "../decimal/10.4.3/decimal.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
 import { canvasMod } from '../canvas/canvas.mjs'
@@ -1157,10 +1157,10 @@ export { Lands, LandSection, Slot, Block };
 
 ### 11.3 - The game module
 
-The main game module then makes use of the sun and land modules as well as the constant module and is thus what I use to create a game state object as well as update it over time. There is the main create method that I call in the init state, and then also with a supernova event in my supernova state. More on all of this in my seciton on the state machine.
+The main game module then makes use of the sun and land modules as well as the constant module and is thus what I use to create a game state object as well as update it over time. There is the main create method that I call in the init state, and then also with a supernova event in my supernova state. More on all of this in my section on the state machine.
 
 ```js
-// game.mjs - for electionjs-example-mrsun
+// game.mjs - for electronjs-example-mrsun
 // create and update a game state object
 import { Decimal }  from '../decimal/10.4.3/decimal.mjs'
 import { LZString }  from '../lz-string/1.4.4/lz-string.mjs'
@@ -1572,14 +1572,14 @@ export { gameMod };
 
 ## 12 - Mrsun-statemachine
 
-One major component of a game, or most applactions in general is to have somehting to serve as a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine). Simply put there is not just having a single update method called in a loop, but rather a collection of update methods to which only a single one is called at any given moment. While we are at it there is also not just having a collection of update methods but also input event handers, render funcitons, and additional hook functions also. In MrSun I have a main state machine module, and then also a collction of state objects for several states of the over all game.
+One major component of a game, or most applications in general is to have something to serve as a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine). Simply put there is not just having a single update method called in a loop, but rather a collection of update methods to which only a single one is called at any given moment. While we are at it there is also not just having a collection of update methods but also input event handers, render functions, and additional hook functions also. In MrSun I have a main state machine module, and then also a collection of state objects for several states of the over all game.
 
 ### 12.1 - The Main state machine module
 
-This is what I have togetaher for my main state machine moduoe for the game. This then contains that main update loop for the over all game, as well as the varuous functions that compose what the unaform logic is that will apply to all state objects. Speaking of the state objects I thus far have an init state, world state, and a supernova state that is the start of the Prestige mechanic of this idle game.
+This is what I have together for my main state machine module for the game. This then contains that main update loop for the over all game, as well as the various functions that compose what the uniform logic is that will apply to all state objects. Speaking of the state objects I thus far have an init state, world state, and a supernova state that is the start of the Prestige mechanic of this idle game.
 
 ```js
-// sm.mjs - for electionjs-example-mrsun - The main state machine module
+// sm.mjs - for electronjs-example-mrsun - The main state machine module
 import { gameMod }  from "../mrsun-game/game.mjs"
 import { utils }  from "../mrsun-utils/utils.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
@@ -1779,10 +1779,10 @@ export { StateMachine };
 
 ### 12.2 - The init state
 
-The init state is what will be used just once when the game starts up for the very first time. In this state I do things likie check of there is a save state, and if not start a new game. Once the init state is done with what it needs to do I then just start the main world state.
+The init state is what will be used just once when the game starts up for the very first time. In this state I do things like check if there is a save state, and if not start a new game. Once the init state is done with what it needs to do I then just start the main world state.
 
 ```js
-// state_init.mjs - for electionjs-example-mrsun
+// state_init.mjs - for electronjs-example-mrsun
 import { gameMod }  from "../mrsun-game/game.mjs"
 import { constant } from "../mrsun-constant/constant.mjs"
 //-------- ----------
@@ -1841,10 +1841,10 @@ export { state_init };
 
 ### 12.3 - The world state
 
-The world state is where I can chnage the position of the sun relative to the other land sections objects that are around it. It is also where I can get an over all view of each land state object, but in order to do anything with a given land state object I must switch to the land state.
+The world state is where I can change the position of the sun relative to the other land sections objects that are around it. It is also where I can get an over all view of each land state object, but in order to do anything with a given land state object I must switch to the land state.
 
 ```js
-// state_world.mjs - for electionjs-example-mrsun
+// state_world.mjs - for electronjs-example-mrsun
 import { gameMod }  from "../mrsun-game/game.mjs"
 import { utils }  from "../mrsun-utils/utils.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
@@ -1998,10 +1998,10 @@ export { state_world };
 
 ### 12.4 - The land state
 
-The land state is where I can get into the world building aspect of this game that I have in mind. Here I can unlock slot objects, and when doing so I can create or absorbe a rock type block. These blocks are then what will generate mana which is the main currency of interest in this. The rate at which mana is gained is then impacted by the position of the sun with resptect to a tempature mana gain value.
+The land state is where I can get into the world building aspect of this game that I have in mind. Here I can unlock slot objects, and when doing so I can create or absorb a rock type block. These blocks are then what will generate mana which is the main currency of interest in this. The rate at which mana is gained is then impacted by the position of the sun with respect to a temperature mana gain value.
 
 ```js
-// state_land.mjs - for electionjs-example-mrsun
+// state_land.mjs - for electronjs-example-mrsun
 import { gameMod }  from "../mrsun-game/game.mjs"
 import { utils }  from "../mrsun-utils/utils.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
@@ -2198,10 +2198,10 @@ export { state_land };
 
 ### 12.5 - The super nova state \( Prestige mechanic \)
 
-A common machanic to have in idle games is something that is often refered to as a [Prestige mechanic](https://www.youtube.com/watch?v=aYFHUq-8gPY). For my Mr Sun electionjs example prototype I am calling this kind of machanic a [supernova event](https://en.wikipedia.org/wiki/Supernova) which just strikes me as a good name for it with resptect to the over all theme of this project.
+A common mechanic to have in idle games is something that is often referred to as a [Prestige mechanic](https://www.youtube.com/watch?v=aYFHUq-8gPY). For my Mr Sun electronjs example prototype I am calling this kind of mechanic a [supernova event](https://en.wikipedia.org/wiki/Supernova) which just strikes me as a good name for it with respect to the over all theme of this project.
 
 ```js
-// state_supernova.mjs - for electionjs-example-mrsun
+// state_supernova.mjs - for electronjs-example-mrsun
 import { gameMod }  from "../mrsun-game/game.mjs"
 import { utils }  from "../mrsun-utils/utils.mjs"
 import { Vector2 } from '../vector2/vector2.mjs'
@@ -2289,10 +2289,10 @@ export { state_supernova };
 
 ## 13 - mrsun-utils
 
-I have a general utilties module which is where I just pack all kinds of metghods that I might use more than once accross a bunch of files, but can not think of any other place to park it. Seems that lots of popular libaries have a module such as this that is just a function junk drawer.
+I have a general utilities module which is where I just pack all kinds of methods that I might use more than once across a bunch of files, but can not think of any other place to park it. Seems that lots of popular libraries have a module such as this that is just a function junk drawer.
 
 ```js
-// utils.js - for electionjs-example-mrsun
+// utils.js - for electronjs-example-mrsun
 import { Decimal }  from "../decimal/10.4.3/decimal.mjs"
 import { constant } from "../mrsun-constant/constant.mjs"
 //-------- ----------
@@ -2514,11 +2514,11 @@ while(unlock_count < total){
 export { utils };
 ```
 
-## 14 - main electionjs
+## 14 - main electronjs
 
-I then just have one main module where I create a main state machine object, and then just start that object once I have that. For now with this prototype I just have this working as an Electronjs applaction. However when I do start to work on the final project of this I am going to want to at least have a Browser version of the game as well. This is why I pass a PLATFROM option when calling the main state machine create method. For Electionjs this is the API that I define in my preload.js file, but with a Browser version I am going to what to have another platform that will be a pure web only version of that API. 
+I then just have one main module where I create a main state machine object, and then just start that object once I have that. For now with this prototype I just have this working as an Electronjs application. However when I do start to work on the final project of this I am going to want to at least have a Browser version of the game as well. This is why I pass a PLATFROM option when calling the main state machine create method. For electronjs this is the API that I define in my preload.js file, but with a Browser version I am going to what to have another platform that will be a pure web only version of that API. 
 
-I can also if need be make more that one preload.js file if need be for certian Operating systems that might prove to be problamatic allowing me to make one that will work well with that platform without breaking somehting that works fine for others.
+I can also if need be make more that one preload.js file if need be for certain Operating systems that might prove to be problematic allowing me to make one that will work well with that platform without breaking something that works fine for others.
 
 ```js
 import { StateMachine }  from "./js/mrsun-statemachine/sm.mjs"
@@ -2534,7 +2534,7 @@ StateMachine.start(sm);
 
 ## Conclusion
 
-So that is the general overview for this electronjs project exmaple of an idel game. I really put a whole lot of time into this one so it is safe to say that I will be treating this exmaple the same way as I have with my [video creation tool project example](/2022/03/10/electronjs-example-videoground). Simply put this means that it is going to get its own repo and I am going to continig working on it a little more now and then which is not always the case with some of these electionjs exmaple projects that I have made thus far. Many of them are just prototypes, but some of them I continue working on if they are software tools that I use everyday, or enought people start to show interest. This game might prove to be one of those projects as I find myself getting addicted to my own game Tony Montana style.
+So that is the general overview for this electronjs project example of an idle game. I really put a whole lot of time into this one so it is safe to say that I will be treating this example the same way as I have with my [video creation tool project example](/2022/03/10/electronjs-example-videoground). Simply put this means that it is going to get its own repo and I am going to containing working on it a little more now and then which is not always the case with some of these electronjs example projects that I have made thus far. Many of them are just prototypes, but some of them I continue working on if they are software tools that I use everyday, or enough people start to show interest. This game might prove to be one of those projects as I find myself getting addicted to my own game Tony Montana style.
 
 
 
