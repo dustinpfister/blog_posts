@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1038
-updated: 2023-05-05 13:35:57
-version: 1.1
+updated: 2023-05-05 13:44:27
+version: 1.2
 ---
 
-For this weeks post I worked out another [threejs example](/2021/02/19/threejs-examples/), this time it is a module that helps me break down a project into a kind of timeline.
+For this weeks post I worked out another [threejs example](/2021/02/19/threejs-examples/), this time it is a module that helps me break down a project into a kind of timeline. This kind of project might be used in conjunction with, or maybe even as a replacement for a simular module that I use all the time in my video projects called [sequnce hooks](/2022/05/12/threejs-examples-sequence-hooks/). Both of these projects are ways of breaking up a video into many parts in which differing logic will be used to update the over all scene of a threejs project. WIth sequence hooks I was thinking in terms of having an array of, well sequence objects that will be fired one after another. With this timeline project I am thinking more in terms of having a collection of objects that will only fire when a main alpha value that is the over all progress of the video is between a start and end value of a single object in a collection. So then this timeline project will allow for gaps between event objects.
+
+There are a lot of other little details that I would like to work out with this kind of project rather than just making a replacment for sequnce hooks. For one thing I would like to define a kind of start and end time that will be used as a way to define not the start and end time of an over all video, but rather the start and end time between a colleciton of events that are between these start and end times. The actual final time of the video can then be any abount of time actually becuase all of these time stamps are just used to figure out what the alpha values should be for all of these timeline events.
 
 <!-- more -->
 
