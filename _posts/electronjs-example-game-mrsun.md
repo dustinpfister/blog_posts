@@ -5,8 +5,8 @@ tags: [electronjs]
 layout: post
 categories: electronjs
 id: 1037
-updated: 2023-05-02 15:11:46
-version: 1.6
+updated: 2023-05-05 09:59:47
+version: 1.7
 ---
 
 When it comes to my collection of electronjs examples thus far I do not have an example that is some kind of game project, so I have started one project that is a kind of [Idle Game](https://en.wikipedia.org/wiki/Incremental_game). The game prototype idea is called MrSun, and the general idea is to have a single object that is a sun, and a bunch of objects around the sun that are land sections. Each land section is then composed of a grid of slots, each of which can contain a block that will generate the main game currently which in this case is mana.
@@ -211,15 +211,27 @@ For this prototype thus far I have one addtional module in which I [extend from 
 ```js
 ```
 
-## 12 - mrsun-statemachine
+## 12 - Mrsun-statemachine
+
+One major component of a game, or most applactions in general is to have somehting to serve as a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine). Simply put there is not just having a single update method called in a loop, but rather a collection of update methods to which only a single one is called at any given moment. While we are at it there is also not just having a collection of update methods but also input event handers, render funcitons, and additional hook functions also. In MrSun I have a main state machine module, and then also a collction of state objects for several states of the over all game.
 
 ### 12.1 - The Main state machine module
+
+```js
+```
 
 ### 12.2 - The init state
 
 ### 12.3 - The world state
 
 ### 12.4 - The land state
+
+### 12.5 - The super nova state \( Prestige mechanic \)
+
+A common machanic to have in idle games is something that is often refered to as a [Prestige mechanic](https://www.youtube.com/watch?v=aYFHUq-8gPY). For my Mr Sun electionjs example prototype I am calling this kind of machanic a [supernova event](https://en.wikipedia.org/wiki/Supernova) which just strikes me as a good name for it with resptect to the over all theme of this project.
+
+```js
+```
 
 ## 13 - mrsun-utils
 
