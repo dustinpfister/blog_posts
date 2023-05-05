@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1038
-updated: 2023-05-05 13:44:27
-version: 1.2
+updated: 2023-05-05 13:53:50
+version: 1.3
 ---
 
 For this weeks post I worked out another [threejs example](/2021/02/19/threejs-examples/), this time it is a module that helps me break down a project into a kind of timeline. This kind of project might be used in conjunction with, or maybe even as a replacement for a simular module that I use all the time in my video projects called [sequnce hooks](/2022/05/12/threejs-examples-sequence-hooks/). Both of these projects are ways of breaking up a video into many parts in which differing logic will be used to update the over all scene of a threejs project. WIth sequence hooks I was thinking in terms of having an array of, well sequence objects that will be fired one after another. With this timeline project I am thinking more in terms of having a collection of objects that will only fire when a main alpha value that is the over all progress of the video is between a start and end value of a single object in a collection. So then this timeline project will allow for gaps between event objects.
@@ -23,3 +23,219 @@ This is a post in which I am writing about a javaScript mpodule that I might use
 ### Source code is also up on Github
 
 The soucre code that I am writing about in this post can also be found in my [test threejs reposatory up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-timeline). This is also where I park the source code examples for my many [other posts on threejs as well](/categories/three-js/).
+
+### Version Numbers Matter
+
+When I first wrote this blog post I was using r146 of threejs. I always make sure to write about what revision I am using in these opening secitons becuase threejs is a very fast moving project and code breaking changes are made to it all the time.
+
+There are later revisions of threejs out at the time of this writing, but I find myself frozen at r146 of the moment and for some good reasons that I will not be getting into detail here. On top of sticking with r146 I am also sticking with the use of plain old regular javaScript type script tags over that of module script tags. At some point later this year I will need to start working with modules more in order to stay current.
+
+
+## 1 - The First Revision of the timeline module and demos
+
+### 1.a - R0 of timeline.js
+
+```js
+// timeline.js - r0 - from threejs-examples-timeline
+(function(api){
+    //-------- ----------
+    // DEFAULT ON IDLE
+    //-------- ----------
+    const DEFAULT_ON_IDLE = (tl, index_next, index_last) => {
+        let index = null;
+        let alpha = 1;
+        // have a last index?
+        if( typeof index_last === 'number' ){
+            index = index_last;
+        }
+        // have a next index?
+        if( typeof index_next === 'number'){
+           index = index_next;
+           alpha = 0;
+        }
+        const event = tl.events[index];
+        event.update(tl, alpha );
+    };
+    //-------- ----------
+    // CONST VALUES
+    //-------- ----------
+    const MS_PER_HOUR = 1000 * 60 * 60;
+    const MS_PER_MINUTE = 1000 * 60;
+    const MS_PER_SECOND = 1000;
+    //-------- ----------
+    // HELPERS
+    //-------- ----------
+    // get a time of day in millieseconds
+    const getDayMS = (str) => {
+        const arr = str.split(':');
+        const h = parseInt(arr[0]) * 60 * 60 * 1000;
+        const m = parseInt(arr[1]) * 60 * 1000;
+        const s = parseInt(arr[2].split('.')[0]) * 1000;
+        const r = parseInt(arr[2].split('.')[1]);
+        return  h + m + s + r;
+    };
+    // get a total time value in MS
+    const getTotalTime = (tl) => {
+        const ms_start = getDayMS(tl.st);
+        const ms_end = getDayMS(tl.et);
+        return ms_end - ms_start;
+    };
+    // get a current time string based on current tl.time
+    const getTimeStr = (tl) => {
+        const h = Math.floor( tl.time / MS_PER_HOUR);
+        const m = Math.floor( tl.time % MS_PER_HOUR / MS_PER_MINUTE);
+        const s = Math.floor( tl.time % MS_PER_MINUTE / MS_PER_SECOND);
+        const ms = tl.time % MS_PER_SECOND;
+        return String(h).padStart(2, '0') + ':' + 
+               String(m).padStart(2, '0') +':' + 
+               String(s).padStart(2, '0') + '.' + 
+               String(ms).padStart(3, '0');
+    };
+    //-------- ----------
+    // PUBLIC API
+    //-------- ----------
+    api.set = (tl, alpha) => {
+        tl.time = Math.floor( tl.totalTime * alpha );
+        tl.ct = getTimeStr(tl);
+        tl.a_main = tl.time / tl.totalTime;
+        let index_event = 0;
+        let event_called = false;
+        let index_last = null;
+        let index_next = null;
+        const event_count = tl.events.length;
+        while(index_event < event_count){
+            const event = tl.events[index_event];
+            if(tl.a_main <= event.a_start && index_next === null ){
+                index_next = index_event;
+            }
+            if(tl.a_main >= event.a_end ){
+                index_last = index_event;
+            }
+            if(tl.a_main >= event.a_start && tl.a_main < event.a_end){
+                const a_event = (event.a_start - tl.a_main) / ( event.a_start - event.a_end );
+                event.update(tl, a_event );
+                event_called = true;
+                break;
+            }
+            index_event += 1;
+        }
+        // idle?
+        if(!event_called){
+            tl.on_idle(tl, index_next, index_last);
+        }
+    };
+    api.create = (opt) => {
+        opt = opt || {};
+        const tl = {
+           st: opt.st || '00:00:00.000',
+           et: opt.et || '22:59:59.999',
+           ct: '00:00:00.000',
+           on_idle : opt.on_idle || DEFAULT_ON_IDLE
+        };
+        tl.events = [];
+        tl.totalTime = getTotalTime(tl);
+        //api.set(tl, 0);
+        return tl;
+    };
+    api.add = (tl, opt) => {
+        opt = opt || {};
+        const event = {};
+        event.st = opt.st || tl.st;
+        event.et = opt.et || tl.et;
+        const ms_start = getDayMS(event.st) - getDayMS(tl.st);
+        const ms_end = ms_start + ( getDayMS(event.et) - getDayMS(event.st));
+        event.a_start = ms_start / tl.totalTime;
+        event.a_end = ms_end / tl.totalTime;
+        event.update = opt.update || function(){};
+        tl.events.push(event);
+    };
+}( this['timeLine'] = {} ));
+```
+
+### 1.1 - A basic getting started demo
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const mesh1 = new THREE.Mesh(new THREE.BoxGeometry(1,1,1));
+scene.add(mesh1);
+// ---------- ----------
+// TIMELINE
+// ---------- ----------
+const tl = timeLine.create({
+    st: '07:00:00.000',
+    et: '17:00:00.000'
+});
+timeLine.add(tl, {
+   st: '08:00:00.000',
+   et: '09:00:00.000',
+   update: (tl, a_event) => {
+       mesh1.position.set( 4.5, 0.5, 4.5 - 4.5 * a_event)
+   }
+});
+timeLine.add(tl, {
+   st: '11:30:00.000',
+   et: '11:40:00.000',
+   update: (tl, a_event) => {
+       mesh1.position.set( 4.5 - 4.5 * a_event, 0.5, 0);
+   }
+});
+timeLine.add(tl, {
+   st: '13:00:00.000',
+   et: '16:30:00.000',
+   update: (tl, a_event) => {
+       mesh1.position.set( 4.5 * a_event, 0.5, 4.5 * a_event);
+   }
+});
+// ---------- ----------
+// GRID
+// ---------- ----------
+scene.add( new THREE.GridHelper(10,10) );
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    timeLine.set(tl, a1);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### Conclusion
+
+That is it for now when it comes to this project example. If I get around to making more revisions of this, as well as some more demos as aways I will see about doing a little ediing. I have the very basic core idea of what I wanted working just fine it would seem. However I am sure mcuh more will pop up if I begin to start using this in one or more actauly projects of course.
+
+
