@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1038
-updated: 2023-05-06 12:54:36
-version: 1.4
+updated: 2023-05-06 12:58:25
+version: 1.5
 ---
 
 For this weeks post I worked out another [threejs example](/2021/02/19/threejs-examples/), this time it is a module that helps me break down a project into a kind of timeline. This kind of project might be used in conjunction with, or maybe even as a replacement for a simular module that I use all the time in my video projects called [sequnce hooks](/2022/05/12/threejs-examples-sequence-hooks/). Both of these projects are ways of breaking up a video into many parts in which differing logic will be used to update the over all scene of a threejs project. With sequence hooks I was thinking in terms of having an array of, well sequence objects that will be fired one after another. With this timeline project I am thinking more in terms of having a collection of objects that will only fire when a main alpha value that is the over all progress of the video is between a start and end value of a single object in a collection. So then this timeline project will allow for gaps between event objects.
@@ -18,7 +18,7 @@ There are a lot of other little details that I would like to work out with this 
 
 ## The Timeline module and what to know first
 
-This is a post in which I am writing about a javaScript module that I might use in one or more future video projects if I refine it a bit more. This is not in any way a post on getting started with threejs or any additional skills that are needed before hand with things like javaScript in general for example. I have all ready wrote getting started type posts on threejs, and javaScript a long time ago. I have also wrote posts on many threejs various threejs features alone. This is just one of my many threejs example posts where the goal is to make some kind of final project. This can be some kind of full application, however often it is a module that I would use in an over all application such is the case here.
+This is a post in which I am writing about a javaScript module that I might use in one or more future video projects if I refine it a bit more. This is not in any way a post on [getting started with threejs](/2018/04/04/threejs-getting-started/) or any additional skills that are needed before hand with things like [javaScript in general](/2018/11/27/js-getting-started/) for example. I have all ready wrote getting started type posts on threejs, and javaScript a long time ago. I have also wrote posts on many threejs various threejs features alone. This is just one of my many threejs example posts where the goal is to make some kind of final project. This can be some kind of full application, however often it is a module that I would use in an over all application such is the case here.
 
 ### Source code is also up on Github
 
