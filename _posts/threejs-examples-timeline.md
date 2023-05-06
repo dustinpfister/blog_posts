@@ -5,35 +5,39 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1038
-updated: 2023-05-05 13:53:50
-version: 1.3
+updated: 2023-05-06 12:54:36
+version: 1.4
 ---
 
-For this weeks post I worked out another [threejs example](/2021/02/19/threejs-examples/), this time it is a module that helps me break down a project into a kind of timeline. This kind of project might be used in conjunction with, or maybe even as a replacement for a simular module that I use all the time in my video projects called [sequnce hooks](/2022/05/12/threejs-examples-sequence-hooks/). Both of these projects are ways of breaking up a video into many parts in which differing logic will be used to update the over all scene of a threejs project. WIth sequence hooks I was thinking in terms of having an array of, well sequence objects that will be fired one after another. With this timeline project I am thinking more in terms of having a collection of objects that will only fire when a main alpha value that is the over all progress of the video is between a start and end value of a single object in a collection. So then this timeline project will allow for gaps between event objects.
+For this weeks post I worked out another [threejs example](/2021/02/19/threejs-examples/), this time it is a module that helps me break down a project into a kind of timeline. This kind of project might be used in conjunction with, or maybe even as a replacement for a simular module that I use all the time in my video projects called [sequnce hooks](/2022/05/12/threejs-examples-sequence-hooks/). Both of these projects are ways of breaking up a video into many parts in which differing logic will be used to update the over all scene of a threejs project. With sequence hooks I was thinking in terms of having an array of, well sequence objects that will be fired one after another. With this timeline project I am thinking more in terms of having a collection of objects that will only fire when a main alpha value that is the over all progress of the video is between a start and end value of a single object in a collection. So then this timeline project will allow for gaps between event objects.
 
-There are a lot of other little details that I would like to work out with this kind of project rather than just making a replacment for sequnce hooks. For one thing I would like to define a kind of start and end time that will be used as a way to define not the start and end time of an over all video, but rather the start and end time between a colleciton of events that are between these start and end times. The actual final time of the video can then be any abount of time actually becuase all of these time stamps are just used to figure out what the alpha values should be for all of these timeline events.
+There are a lot of other little details that I would like to work out with this kind of project rather than just making a replacement for sequence hooks. For one thing I would like to define a kind of start and end time that will be used as a way to define not the start and end time of an over all video, but rather the start and end time between a collection of events that are between these start and end times. The actual final time of the video can then be any about of time actually because all of these time stamps are just used to figure out what the alpha values should be for all of these timeline events.
 
 <!-- more -->
 
 
 ## The Timeline module and what to know first
 
-This is a post in which I am writing about a javaScript mpodule that I might use in one or more future video projects if I refine it a bit more. This is not in any way a post on getting started with threejs or any addtional skills that are needed before hand with things like javaScript in general for example. I have all ready wrote getting started type posts on threejs, and javaScript a long time ago. I have also wrote posts on many threejs various threejs features alone. This is just one of my many threejs example posts where the goal is to make some kind of final project. This can be some kind of full applaction, however often it is a module that I would use in an over all applaction such is the case here.
+This is a post in which I am writing about a javaScript module that I might use in one or more future video projects if I refine it a bit more. This is not in any way a post on getting started with threejs or any additional skills that are needed before hand with things like javaScript in general for example. I have all ready wrote getting started type posts on threejs, and javaScript a long time ago. I have also wrote posts on many threejs various threejs features alone. This is just one of my many threejs example posts where the goal is to make some kind of final project. This can be some kind of full application, however often it is a module that I would use in an over all application such is the case here.
 
 ### Source code is also up on Github
 
-The soucre code that I am writing about in this post can also be found in my [test threejs reposatory up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-timeline). This is also where I park the source code examples for my many [other posts on threejs as well](/categories/three-js/).
+The soucre code that I am writing about in this post can also be found in my [test threejs repository up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-timeline). This is also where I park the source code examples for my many [other posts on threejs as well](/categories/three-js/).
 
 ### Version Numbers Matter
 
-When I first wrote this blog post I was using r146 of threejs. I always make sure to write about what revision I am using in these opening secitons becuase threejs is a very fast moving project and code breaking changes are made to it all the time.
+When I first wrote this blog post I was using r146 of threejs. I always make sure to write about what revision I am using in these opening sections because threejs is a very fast moving project and code breaking changes are made to it all the time.
 
 There are later revisions of threejs out at the time of this writing, but I find myself frozen at r146 of the moment and for some good reasons that I will not be getting into detail here. On top of sticking with r146 I am also sticking with the use of plain old regular javaScript type script tags over that of module script tags. At some point later this year I will need to start working with modules more in order to stay current.
 
 
 ## 1 - The First Revision of the timeline module and demos
 
+For the very first revision of this timeline module I just wanted to get the core idea of what I have in mind working with this. This is just about the case with all of my threejs project examples as I have found that I never get everything addressed in a single revision. The general process is to just get the core idea up and running with a module, then make at least one if not a few demos using the module. Often when doing so I run into libations making the demos, and while doing so take note of what I want to add or change in future revisions.
+
 ### 1.a - R0 of timeline.js
+
+When it comes to this first revision of the timeline module I have three public methods. The first public method of interest would then be the create method that will just create and return a standard timeline object that will then be used with the other public methods. I then have an add method that will add in timeline event objects to the main timeline object. When doing so the add method will create the alpha values for the event object that are relative to the main over all start and end times. The final method public method then is the set method which is what I will be calling in a main update loop of an over all project that will make use of this.
 
 ```js
 // timeline.js - r0 - from threejs-examples-timeline
@@ -154,6 +158,8 @@ There are later revisions of threejs out at the time of this writing, but I find
 
 ### 1.1 - A basic getting started demo
 
+I have to start somewhere when it comes to demos that make use of this timeline module, with that said this is my very first getting started type demo that I worked out for this. I create a timeline object that starts at 7 in the morning and ends at 5 in the afternoon. I then started adding a few event objects to this that have time stamps that are between this main start and end time strings. When doing so I give update methods that are to be called on each frame when the event is currently active.
+
 ```js
 // ---------- ----------
 // SCENE, CAMERA, RENDERER
@@ -234,8 +240,11 @@ const loop = () => {
 loop();
 ```
 
+The end result of this is then what it is that I would want to happen. The mesh object changes position in a way that is constant with what I would expect. So the very core idea of what it is that I have in mind with this is thus far working just fine. However it goes without saying that I would still want to add at least a few more features with the module. For one thing I can not say that I am very happy with the time stamp string format. In fact I think I might loose it all together in favor of using an array of options, including values that are used with the core javaScript Date class. It would also be nice to not just go by time of day, but also Dates as well when it comes to certain kinds of video projects that come to mind.
+
+Still I just wanted to get the core idea of what I wanted up and ruining with this revision and that is it. From this point forward when I get around to working on this more I just need to refine what I all ready have here, make some more demos, and also maybe at least one if not more real projects with what I have going here.
+
 ### Conclusion
 
-That is it for now when it comes to this project example. If I get around to making more revisions of this, as well as some more demos as aways I will see about doing a little ediing. I have the very basic core idea of what I wanted working just fine it would seem. However I am sure mcuh more will pop up if I begin to start using this in one or more actauly projects of course.
-
+That is it for now when it comes to this project example. If I get around to making more revisions of this, as well as some more demos as always I will see about doing a little editing. I have the very basic core idea of what I wanted working just fine it would seem. However I am sure much more will pop up if I begin to start using this in one or more tactfully projects of course.
 
