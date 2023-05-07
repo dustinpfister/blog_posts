@@ -5,11 +5,11 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2023-05-07 12:30:47
-version: 1.61
+updated: 2023-05-07 12:42:41
+version: 1.62
 ---
 
-Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
+Adding fog to a Scene object in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and setting that to the fog property of a [scene object](/2018/05/03/threejs-scene/). However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material for example. There are also other basic getting started type things that come up such as making sure that the background color of a scene should be same color used for the color of the fog.
 
 A Fog is a nice effect to have for most projects as it allows for a more graceful transition from rendering something that is within range of a render distance, to no longer rendering when an object is to far from the camera. Even if I have the far value of the camera set to a high value so that the object is just a single pixel before it is no longer rendered, it can still be a nice additional effect on top of the object just simply getting smaller. 
  
@@ -54,23 +54,6 @@ There is also a great deal that branches off from the scene object such as the f
 
 When I make a fog object I will want to set a color for the fog. Also I will want to typically make the solid color background of the scene the same a s the fog color as well for most projects that I have made thus far at least. The reason why I say that is that the fog will effect just the materials of mesh objects that support fog, and if the fog color does not mach up the the background I might not get a desired look. However in any case, speaking about color there is a nice built in class called [THREE.Color](/2021/05/03/threejs-color/) that can be used to create a color object and use that to set the fog and background color to the same color object. I can then change the state of this color object and that will update the state of the background and fog color at once. The Color class is also great for just working with color in general both inside and outside of threejs away so it is worth reading about a bit more.
 
-### Linear vs exponential fog
-
-There are two build in fog constructors in three.js, one of with is linear in terms of the fog effect, while the other is exponential with it. The simple linear fog constructor is the THREE.Fog constructor that takes three arguments, the first is the fog color, and then the other two are the near and far distance values for the fog effect.
-
-So then the THREE.Fog constrictor can be used like this:
-
-```js
-scene.fog = new THREE.Fog(0xffffff, 0.25, 3);
-```
-
-The THREE.FogExp2 constructor then just takes two arguments, the color, and a value that represents the exponential rate at which the fog will grow denser.
-
-
-```js
-scene.fog = new THREE.FogExp2(0xffffff, 0.001);
-```
-
 ### The source code examples here can be found on github
 
 The source code examples that I am writing about here can be found on my [test threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-fog) repository, along with many other examples for all my other posts. So if you see something wrong with one of the source code examples here that is where a pull request can be made. There is also the comments section of this blog post that can be used to bring something up that might need to be changed, or added.
@@ -78,6 +61,11 @@ The source code examples that I am writing about here can be found on my [test t
 ### Version numbers matter with three.js
 
 The version of threejs is something that is important when writing post on it, often many code breaking changes are introduced that will result in older examples no longer working. When I first started writing this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited this [post I as using r146](https://github.com/mrdoob/three.js/tree/r146). It would seem that not much of anything has changed with fog alone at least thus far, but still this is always something that a developer should be aware of when it comes to the fact that three.js is a fairly fast moving target in terms of development.
+
+
+## 1 - Basic fog examples
+
+There are two built in fog constructors in threejs, one of which is linear in terms of the fog effect, while the other is exponential with it. The simple linear fog is the THREE.Fog constructor that takes three arguments, the first is the fog color, and then the other two are the near and far distance values for the fog effect. The other option is THREE.FogExp2 which will just take two arguments the first again is the color, and then next is a density value that will be the rate at which the fog will grow dense.
 
 ### 1.1 - Simple static scene example of Fog in threejs
 
@@ -120,7 +108,9 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 1.2 - Using the EXP Fog class
+### 1.2 - Using the FogExp2 class
+
+For this basic demo I am now going with the FogExp2 class for the fog that will be used with the scene.fog property. While I am at it I am now going with the phong material, and with that also using light and emissive color.
 
 ```js
 //-------- ----------
@@ -137,7 +127,7 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 const fogColor = new THREE.Color(0xffffff);
 scene.background = fogColor; 
-scene.fog = new THREE.Fog(fogColor, 0.25, 4);
+scene.fog = new THREE.FogExp2(fogColor, 0.6);
 //-------- ----------
 // MESH
 //-------- ----------
