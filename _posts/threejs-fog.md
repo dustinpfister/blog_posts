@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2022-11-23 15:29:38
-version: 1.60
+updated: 2023-05-07 12:30:47
+version: 1.61
 ---
 
 Adding fog to a Scene object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and setting that to the fog property of a scene object. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog.
@@ -77,59 +77,90 @@ The source code examples that I am writing about here can be found on my [test t
 
 ### Version numbers matter with three.js
 
-The version of three.js is something that is important when writing post on it, often many code breaking changes are introduced that will result in older examples no longer working. When I first started writing this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited this [post I as using r127](https://github.com/mrdoob/three.js/tree/r127). It would seem that not much of anything has changed with fog alone at least thus far, but still this is always something that a developer should be aware of when it comes to the fact that three.js is a fairly fast moving target in terms of development.
+The version of threejs is something that is important when writing post on it, often many code breaking changes are introduced that will result in older examples no longer working. When I first started writing this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited this [post I as using r146](https://github.com/mrdoob/three.js/tree/r146). It would seem that not much of anything has changed with fog alone at least thus far, but still this is always something that a developer should be aware of when it comes to the fact that three.js is a fairly fast moving target in terms of development.
 
-## 1 - Simple static scene example of Fog in threejs
+### 1.1 - Simple static scene example of Fog in threejs
 
 I always like to make the first example of a post a simple, hello world type example. With that said this example will just involve creating a fog for a very basic static scene that just involves a single mesh, along with just a few more objects such as a camera, point light, and a grid helper, and that is it.
 
 One thing that I think I should mention right away before going on to any and all additional sections is that for this example I will be setting the same color for both the fog, and the solid background color. This can end up giving a false impression as to what the fog effects though by getting people to think that the fog will effect both the materials of mesh objects as well as the background. However this is not the case it is just that I am using a simple solid color background, and that solid background color is the same as the fog color. Simply put the fog will just effect materials in the scene that will be effected by fog and that is it.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(8, 8, 0xffffff, 0x000000));
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
-    camera.position.set(1.5, 0.75, 1.5);
-    camera.lookAt(0, 0, 0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // LIGHT
-    //-------- ----------
-    // adding a point light to the camera
-    const light = new THREE.PointLight(0xffffff);
-    light.position.y = 0.5;
-    camera.add(light);
-    scene.add(camera);
-    //-------- ----------
-    // FOG AND BACKGROUND
-    //-------- ----------
-    // ADDING BACKGROUND AND FOG
-    const fogColor = new THREE.Color(0xffffff);
-    scene.background = fogColor; // Setting fogColor as the background color also
-    scene.fog = new THREE.Fog(fogColor, 0.25, 4);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    // Use a Material that SUPPORTS FOG
-    // when making a Mesh such as the standard material
-    const mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshStandardMaterial({
-                color: 0xff0000
-            }));
-    scene.add(mesh);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(8, 8, 0xffffff, 0x000000));
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 20);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// FOG AND BACKGROUND
+//-------- ----------
+// ADDING BACKGROUND AND FOG
+const fogColor = new THREE.Color(0xffffff);
+scene.background = fogColor; // Setting fogColor as the background color also
+scene.fog = new THREE.Fog(fogColor, 0.25, 4);
+//-------- ----------
+// MESH
+//-------- ----------
+// Use a Material that SUPPORTS FOG such as the basic material
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        color: 0xff0000
+    }));
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.5, 0.75, 1.5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.2 - Using the EXP Fog class
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(9, 9, 0xffffff, 0x000000));
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 20);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// FOG AND BACKGROUND
+//-------- ----------
+const fogColor = new THREE.Color(0xffffff);
+scene.background = fogColor; 
+scene.fog = new THREE.Fog(fogColor, 0.25, 4);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshPhongMaterial({
+        color: 0x00ff00,
+        emissive: 0xffffff,
+        emissiveIntensity: 0.25
+    }));
+scene.add(mesh);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(2, 5, 3).normalize();
+scene.add(dl);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.5, 0.75, 1.5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 2 - An animation loop example of Fog
@@ -141,76 +172,74 @@ A static scene is a good way to start out but in order to really gain a sense of
 Inside the body of the animation loop I am then going to want to move the mesh object, and or the camera. For this example I went with moving and rotating the mesh object, while keeping the camera fixed in terms of position by using the look at method to keep the camera fixed on the mesh object.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(8, 8, 0xffffff, 0x000000));
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
-    camera.position.set(1.5, 0.75, 1.5);
-    camera.lookAt(0, 0, 0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // LIGHT
-    //-------- ----------
-    // adding a point light to the camera
-    const light = new THREE.PointLight(0xffffff);
-    light.position.y = 0.5;
-    camera.add(light);
-    scene.add(camera);
-    //-------- ----------
-    // ADDING BACKGROUND AND FOG
-    //-------- ----------
-    fogColor = new THREE.Color(0x00af00);
-    scene.background = fogColor;
-    scene.fog = new THREE.FogExp2(fogColor, 0.5);
-    // Use a Material that SUPPORTS FOG
-    // when making a Mesh such as the standard material
-    const mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshStandardMaterial({
-                color: 0xff0000
-            }));
-    scene.add(mesh);
-    // ---------- ----------
-    // ANIMATION LOOP
-    // ---------- ----------
-    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 400;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const update = function(frame, frameMax){
-        const per = frame / frameMax,
-        bias = 1 - Math.abs(0.5 - per) / 0.5;
-        mesh.position.z = 1 + 4 * bias;
-        mesh.rotation.x = Math.PI * 2 * 4 * per;
-        mesh.rotation.y = Math.PI * 2 * 2 * per;
-        camera.lookAt(mesh.position);
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(8, 8, 0xffffff, 0x000000));
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 20);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+// adding a point light to the camera
+const light = new THREE.PointLight(0xffffff);
+light.position.y = 0.5;
+camera.add(light);
+scene.add(camera);
+//-------- ----------
+// ADDING BACKGROUND AND FOG
+//-------- ----------
+fogColor = new THREE.Color(0x00af00);
+scene.background = fogColor;
+scene.fog = new THREE.FogExp2(fogColor, 0.5);
+// Use a Material that SUPPORTS FOG
+// when making a Mesh such as the standard material
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        color: 0xff0000
+    })
+);
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1.5, 0.75, 1.5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 400;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const per = frame / frameMax,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+    mesh.position.z = 1 + 4 * bias;
+    mesh.rotation.x = Math.PI * 2 * 4 * per;
+    mesh.rotation.y = Math.PI * 2 * 2 * per;
+    camera.lookAt(mesh.position);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 In this demo I put in a simple loop to have a mesh move back and forth from the camera as a way to show off the fog effect and how the intensity of the fog will change depending on the distance of the object from the camera. The effect seems to work just as I would expect, and adjusting the density value with the THREE.ForExp2 fog will make the fog more or less dense when it comes to playing around with this a little. Speaking of that I think I should write more about the density value, as well as the near and far values when it comes to the linear fog that is created with the THREE.Fog constructor in a later section in this post. For now I just wanted to have an example that I just one little step forward from a simple static scene.
