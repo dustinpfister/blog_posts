@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2023-05-06 13:02:24
-version: 1.37
+updated: 2023-05-07 13:40:56
+version: 1.38
 ---
 
 When it comes to getting a reference to a [mesh object](/2018/05/04/threejs-mesh/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model in client side javaScript alone. When it comes to html elements there is setting an id to an element, and then having the option to [get a reference to that element by id](/2018/12/27/js-document-getelementbyid/) later in a body of javaScript code. There are also a number of other options such as selecting by class, tag, and so forth as well.
@@ -16,6 +16,9 @@ When it comes to the Object3d class in threejs there is an id property of each o
 So In this post I will of course be going over a few quick examples of this get by name method for sure. However I might also want to expand by just making a few other demos that have to do with getting references to objects in general as well while I am at it.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/3KImrBBlchQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Object3d name property, and learning the basics first
 
