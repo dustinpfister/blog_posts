@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2023-05-08 12:26:39
-version: 1.31
+updated: 2023-05-08 12:28:45
+version: 1.32
 ---
 
 This week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defined with another vector that is the direction of the axis, and the second argument is then angle to apply with this given direction.
@@ -47,39 +47,36 @@ After I have my mesh object added to the scene, and positioned, I am using the a
 The end result of this is then a situation with a vector that is positioned at 1,0,1 being rotated on an axis that is going up and down by a angle of 180 degrees, which results in the vector being placed at -1, 0, -1.
 
 ```js
-(function () {
-    // ---------- ---------- ----------
-    // SCENE, CAMERA, and RENDERER
-    // ---------- ---------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0,0,0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    // ---------- ---------- ----------
-    // MESH
-    // ---------- ---------- ----------
-    const mesh = new THREE.Mesh(
-            new THREE.ConeGeometry(0.5, 1, 30, 30),
-            new THREE.MeshNormalMaterial());
-    mesh.geometry.rotateX(Math.PI * 0.5);
-    mesh.position.set(1, 0, 1);
-    scene.add(mesh);
-    // ---------- ---------- ----------
-    // USING APPLY AXIS ANGLE
-    // ---------- ---------- ----------
-    const v = new THREE.Vector3(0, 1, 0);
-    mesh.position.applyAxisAngle(v, Math.PI / 180 * 180);
-    console.log( mesh.position.clone().round() ); // {x: -1, y: 0, z: -1}
-    // ---------- ---------- ----------
-    // RENDER
-    // ---------- ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const mesh = new THREE.Mesh(
+        new THREE.ConeGeometry(0.5, 1, 30, 30),
+        new THREE.MeshNormalMaterial());
+mesh.geometry.rotateX(Math.PI * 0.5);
+mesh.position.set(1, 0, 1);
+scene.add(mesh);
+// ---------- ---------- ----------
+// USING APPLY AXIS ANGLE
+// ---------- ---------- ----------
+const v = new THREE.Vector3(0, 1, 0);
+mesh.position.applyAxisAngle(v, Math.PI / 180 * 180);
+console.log( mesh.position.clone().round() ); // {x: -1, y: 0, z: -1}
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
 ```
 
 ## 2 - Animaiton loop examples
@@ -91,55 +88,52 @@ So now that I have the basic example out of the way I think I should make at lea
 In this example I am doing more or less the same thing as in the basic example only now I am just adding in a loop method that makes use of request animation frame to create a loop method. In this loop method I am calling an update function, that will use a values in seconds as the argument to update the state of something in this case the position property of a mesh using, you guessed it the apply axis angle Vector3 method.
 
 ```js
-(function () {
-    // ---------- ---------- ----------
-    // SCENE, CAMERA, and RENDERER
-    // ---------- ---------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-    camera.position.set(4, 4, 4);
-    camera.lookAt(0,0,0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    // ---------- ---------- ----------
-    // MESH
-    // ---------- ---------- ----------
-    const mesh = new THREE.Mesh(
-            new THREE.ConeGeometry(0.5, 1, 30, 30),
-            new THREE.MeshNormalMaterial());
-    mesh.geometry.rotateX(Math.PI * 0.5);
-    mesh.position.set(1, 0, 1);
-    scene.add(mesh);
-    // ---------- ---------- ----------
-    // LOOP
-    // ---------- ---------- ----------
-    const v = new THREE.Vector3(0, 1, 0);
-    const fps = 30;
-    let lt = new Date();
-    // update method
-    const update = function (secs) {
-        v.x += 0.25 * secs;
-        v.x %= 1;
-        const degree = 45 * secs;
-        mesh.position.applyAxisAngle(v, Math.PI / 180 * degree);
-        mesh.lookAt(0, 0, 0);
-    };
-    // loop method
-    const loop = function () {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            update(secs);
-            renderer.render(scene, camera);
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// MESH
+// ---------- ---------- ----------
+const mesh = new THREE.Mesh(
+        new THREE.ConeGeometry(0.5, 1, 30, 30),
+        new THREE.MeshNormalMaterial());
+mesh.geometry.rotateX(Math.PI * 0.5);
+mesh.position.set(1, 0, 1);
+scene.add(mesh);
+// ---------- ---------- ----------
+// LOOP
+// ---------- ---------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0,0,0);
+const v = new THREE.Vector3(0, 1, 0);
+const fps = 30;
+let lt = new Date();
+// update method
+const update = function (secs) {
+    v.x += 0.25 * secs;
+    v.x %= 1;
+    const degree = 45 * secs;
+    mesh.position.applyAxisAngle(v, Math.PI / 180 * degree);
+    mesh.lookAt(0, 0, 0);
+};
+// loop method
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        update(secs);
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## 2.2 - Group Animation loop example of apply to axis angle method
@@ -147,99 +141,96 @@ In this example I am doing more or less the same thing as in the basic example o
 For this animation loop example I will be working out something for the first demo video for this blog post. This will then just be a quick demo of the method that involves a group of mesh objects rather than just one mesh object. Also this time around I did a better job of starting to break things down more by having a few helper functions. With that said I have one function that creates a single mesh object, another that creates a group of mesh objects, and a final update method that will update the position of the mesh objects of the group. The update helper function is then the main function of interest here as this is where I am using the apply axis angle method to set the position of the mesh objects.
 
 ```js
-(function () {
-    // ---------- ---------- ----------
-    // SCENE, CAMERA, and RENDERER
-    // ---------- ---------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
-    const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-    camera.position.set(10, 10, 10);
-    camera.lookAt(0,0,0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    // ---------- ---------- ----------
-    // HELPERS
-    // ---------- ---------- ----------
-    // make a single mesh object
-    const makeMesh = () => {
-        const mesh = new THREE.Mesh(
-            new THREE.ConeGeometry(0.5, 1, 30, 30),
-            new THREE.MeshNormalMaterial());
-        mesh.geometry.rotateX(Math.PI * 0.5);
-        mesh.position.set(1, 0, 1);
-        return mesh;
-    };
-    // update a group by an alpha value
-    const updateGroup = (group, alpha) => {
-        const len = group.children.length;
-        const gud = group.userData;
-        group.children.forEach( (mesh, i) => {
-            const v = gud.v;
-            const degree = gud.angle / len * i * alpha;
-            mesh.position.set(1, 0, 0).applyAxisAngle(v.normalize(), Math.PI / 180 * degree).multiplyScalar(gud.unitLen);
-            mesh.lookAt(0, 0, 0);
-        });
-    };
-    // make a group of mesh objects
-    const makeGroup = (opt) => {
-        opt = opt || {};
-        opt.count = opt.count === undefined ? 10 : opt.count;
-        const group = new THREE.Group();
-        const gud = group.userData;
-        gud.v = opt.v || new THREE.Vector3(0, 1, 0);
-        gud.angle = opt.angle === undefined ? 360 : opt.angle;
-        gud.unitLen = opt.unitLen === undefined ? 1 : opt.unitLen;
-        let i = 0;
-        while(i < opt.count){
-            group.add( makeMesh() );
-            i += 1;
-        }
-        updateGroup(group, 1);
-        return group;
-    };
-    // ---------- ---------- ----------
-    // GROUP
-    // ---------- ---------- ----------
-    const group1 = makeGroup( { count: 10, angle: 360, v: new THREE.Vector3(0, 1, 0), unitLen: 5 } );
-    scene.add(group1);
-    const group2 = makeGroup( { count: 10, angle: 270, v: new THREE.Vector3(0, 1, 1), unitLen: 5  } );
-    scene.add(group2);
-    const group3 = makeGroup( { count: 10, angle: 360, v: new THREE.Vector3(1, 1, 0), unitLen: 5  } );
-    scene.add(group3);
-    // ---------- ---------- ----------
-    // LOOP
-    // ---------- ---------- ----------
-    const v = new THREE.Vector3(0, 1, 0);
-    const fps = 30;
-    const frameMax = 100;
-    let frame = 0;
-    let lt = new Date();
-    // update method
-    const update = function (frame, frameMax) {
-        const a1 = frame / frameMax;
-        const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
-        updateGroup(group1, a2);
-        updateGroup(group2, a2);
-        updateGroup(group3, a2);
-    };
-    // loop method
-    const loop = function () {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            update(frame, frameMax);
-            renderer.render(scene, camera);
-            frame += 1;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// HELPERS
+// ---------- ---------- ----------
+// make a single mesh object
+const makeMesh = () => {
+    const mesh = new THREE.Mesh(
+        new THREE.ConeGeometry(0.5, 1, 30, 30),
+        new THREE.MeshNormalMaterial());
+    mesh.geometry.rotateX(Math.PI * 0.5);
+    mesh.position.set(1, 0, 1);
+    return mesh;
+};
+// update a group by an alpha value
+const updateGroup = (group, alpha) => {
+    const len = group.children.length;
+    const gud = group.userData;
+    group.children.forEach( (mesh, i) => {
+        const v = gud.v;
+        const degree = gud.angle / len * i * alpha;
+        mesh.position.set(1, 0, 0).applyAxisAngle(v.normalize(), Math.PI / 180 * degree).multiplyScalar(gud.unitLen);
+        mesh.lookAt(0, 0, 0);
+    });
+};
+// make a group of mesh objects
+const makeGroup = (opt) => {
+    opt = opt || {};
+    opt.count = opt.count === undefined ? 10 : opt.count;
+    const group = new THREE.Group();
+    const gud = group.userData;
+    gud.v = opt.v || new THREE.Vector3(0, 1, 0);
+    gud.angle = opt.angle === undefined ? 360 : opt.angle;
+    gud.unitLen = opt.unitLen === undefined ? 1 : opt.unitLen;
+    let i = 0;
+    while(i < opt.count){
+        group.add( makeMesh() );
+        i += 1;
+    }
+    updateGroup(group, 1);
+    return group;
+};
+// ---------- ---------- ----------
+// GROUP
+// ---------- ---------- ----------
+const group1 = makeGroup( { count: 10, angle: 360, v: new THREE.Vector3(0, 1, 0), unitLen: 5 } );
+scene.add(group1);
+const group2 = makeGroup( { count: 10, angle: 270, v: new THREE.Vector3(0, 1, 1), unitLen: 5  } );
+scene.add(group2);
+const group3 = makeGroup( { count: 10, angle: 360, v: new THREE.Vector3(1, 1, 0), unitLen: 5  } );
+scene.add(group3);
+// ---------- ---------- ----------
+// LOOP
+// ---------- ---------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0,0,0);
+const v = new THREE.Vector3(0, 1, 0);
+const fps = 30;
+const frameMax = 100;
+let frame = 0;
+let lt = new Date();
+// update method
+const update = function (frame, frameMax) {
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    updateGroup(group1, a2);
+    updateGroup(group2, a2);
+    updateGroup(group3, a2);
+};
+// loop method
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        update(frame, frameMax);
+        renderer.render(scene, camera);
+        frame += 1;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
