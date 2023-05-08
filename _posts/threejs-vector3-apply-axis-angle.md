@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2023-05-08 12:28:45
-version: 1.32
+updated: 2023-05-08 13:05:49
+version: 1.33
 ---
 
 This week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defined with another vector that is the direction of the axis, and the second argument is then angle to apply with this given direction.
@@ -20,13 +20,13 @@ The thing to keep in mind here is that this is a Vector3 prototype method, so it
 
 ## The Vector3 class Apply to axis method and what to knwo first
 
-This is a post on a prototype method of the Vector3 class in the javaScript library called threejs. So then I am writing about something that is very specific when it comes to client side web programing, and also requires at [least a little background with javaScript](/2018/11/27/js-getting-started/) and the basics of working with the three.js library in a project. If you feel that the content here might be a little to advanced for now there is taking a step back and starting out with a [getting started type post on the subject of threejs](/2018/04/04/threejs-getting-started/). If you have some experience with threejs but still feel stuck with this there are maybe a few more things you should read up on more before looking at these examples, I will take a moment to go over these things here in this section.
+This is a post on a method of the Vector3 class in the javaScript library called threejs called the app axis method. I am then writing about something that is very specific when it comes to client side web programming, and also requires at [least a little background with javaScript](/2018/11/27/js-getting-started/), and the basics of working with the threejs library in a project. If you feel that the content here might be a little to advanced for now there is taking a step back and starting out with a [getting started type post on the subject of threejs](/2018/04/04/threejs-getting-started/). If you have some experience with threejs, but still feel stuck with this there are maybe a few more things you should read up on more before looking at these examples. I will take a moment to go over these things here in this section.
 
 ### Read up more on the Vector3 class in general
 
-In this post the focal point is just one little method in the Vector3 class prototype, there are many others that you should become familiar with at one point or another. There are also some basic things you should be aware of at this point such as the fact that the position property of the [Object3d class](/2018/04/23/threejs-object3d/) is an instance of the Vector3 class, and that the object3d class is a base class for a whole lot of object in threejs such as Mesh objects, and Cameras. So it would make sense to read up more on the [Vector3 class](/2018/04/15/threejs-vector3/) in general, and not just stop with this post when doing so of course.
+In this post the focal point is just one little method in the Vector3 class prototype, there are many others that you should become familiar with at one point or another. There are also some basic things you should be aware of at this point such as the fact that the position property of the [Object3d class](/2018/04/23/threejs-object3d/) is an instance of the Vector3 class. Also there are things like the fact that the object3d class is a base class for a whole lot of object in threejs such as Mesh objects, Cameras, and so forth. So it would make sense to read up more on the [Vector3 class](/2018/04/15/threejs-vector3/) in general, and not just stop with this post when doing so.
 
-### There is also the Euler and Quaternion objects for steting rotation
+### There is also the Euler and Quaternion objects for setting rotation
 
 The Vector3 class is used for, well, vectors in what might often be called Vector space. There is some overlap between position, and rotation, but when it comes to the rotation property of an Object3d class instance that is an instance of the [Euler class](/2021/04/28/threejs-euler/). The Euler class id often a good start when it comes to working out things with local rotation of objects, but when it comes to really getting into rotations there is the [Quaternion](/2023/03/24/threejs-quaternion/) Class.
 
@@ -38,13 +38,16 @@ The source code examples that I am writing about in this post can also be [found
 
 When I wrote this post I was testing one the source code examples in r127 of threejs, and the last time I came around to do a little editing I was able to make updated examples that work well with r146. Always be mindful of the version of threejs you are using, and the version that the author of a source code examples was suing when it comes to threejs examples on the open web. This library is still moving very fast compare to many other projects, and code braking changes happen often.
 
-## 1 - Basic example of the Vector3.applyAxisAngle method
+## 1 – Some Basic examples of the apply axis angle vector3 class method
 
-So like many of my posts on threejs I like to start off with a basic example of the method just for the sake of gaining the basic idea of what this method can be used for. Here I have a mesh object that makes use of the cone geometry constructor, and the Mesh normal material. I am using the set method of the Vector3 class instance of the position property of the mesh to set the position to something other than that of 0,0,0. 
+For this section I will be starting out with a few basic examples of the apply axis angle method. Although I will be keeping these examples as simple as possible I still assume that you know enough as to how to get started with code examples like this. I will also be touching base on a lot of other features of the Vector3 class in this section as well as the usual features of threejs that are needed to see anything at all.
 
-After I have my mesh object added to the scene, and positioned, I am using the apply axis angle method using a vector with a direction that is going straight up on the y axis, and with a vector unit length of 1, but I am sure any length count be used. In addition to the vector that will serve as the axis, I can also pass an angle, and for now I am just pulling a full 180 for this example.
+### 1.1 - Basic example of the Vector3.applyAxisAngle method
 
-The end result of this is then a situation with a vector that is positioned at 1,0,1 being rotated on an axis that is going up and down by a angle of 180 degrees, which results in the vector being placed at -1, 0, -1.
+Here I have a mesh object that makes use of the [cone geometry constructor](/2019/07/31/threejs-cone/), and the [Mesh normal material](/2021/06/23/threejs-normal-material/). I am using the set method of the Vector3 class instance of the position property of the mesh to set the position to something other than that of 0,0,0. 
+
+After I have my mesh object added to the scene, and positioned, I am using the apply axis angle method using a vector with a direction that is going straight up on the y axis, and with a vector unit length of 1, but I am sure any length can be used. In addition to the vector that will serve as the axis, I can also pass an angle, and for now I am just pulling a full 180 for this example.
+
 
 ```js
 // ---------- ---------- ----------
@@ -78,6 +81,60 @@ camera.position.set(2, 2, 2);
 camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
+
+### 1.2 - Using copy, normalize, and multiply scalar
+
+The first example in this section might have been an okay starting point for this sort of thing. However I have to say that I do not thing that I would often use the apply axis angle method alone but rather I might choose to use it along with a bunch of other vector3 class features. There is for example the copy method which is what I can use to copy one vector3 object to another, the normalize method that will set the vector unit length to 1, and then multiply scalar that will then scale a Vector to a desired unit length. You see this apply axis angle method is useful in the process of setting the direction of a vector, but there is also the length, magnitude, or distance if you prefer as well.
+
+In this example then I have a helper function that I can use to create a mesh object of a cone, and then I am creating a whole bunch of cones by calling the array for each method off of a data array. This data array then contains data that I am feeding to another method that I am using to set the position of each of these cone objects that I am creating and adding to the scene object. This update cone helper the makes use of the apply axis angle, but then also method like copy that I use to set the start direction and unit length of the vector first. I am then also using normalize to set the length to 1 while preserving the direction, then setting the desired direction from there using the multiply scalar method.
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ---------- ----------
+// HELPERS
+// ---------- ---------- ----------
+const createCone = () => {
+    const mesh = new THREE.Mesh(
+        new THREE.ConeGeometry(0.125, 0.5, 30, 30),
+        new THREE.MeshNormalMaterial());
+    mesh.geometry.rotateX(Math.PI * 0.5);
+    return mesh;
+};
+// update a cone position
+const updateCone = (mesh, v_home, v_axis, deg, unit_length ) => {
+    const radian = Math.PI / 180 * deg;
+    mesh.position.copy(v_home).applyAxisAngle(v_axis, radian).normalize().multiplyScalar(unit_length);
+    mesh.lookAt(0, 0, 0);
+};
+// ---------- ---------- ----------
+// OBJECTS
+// ---------- ---------- ----------
+const V_HOME = new THREE.Vector3(1, 0, 0);
+const V_AXIS = new THREE.Vector3(0, 1, 0);
+[
+    [0, 1], [45, 1], [90, 1], [200, 1], [220, 1],
+    [0, 2], [90, 2], [180, 2], [270, 2]
+].forEach((data)=>{
+    const cone = createCone();
+    scene.add(cone);
+    updateCone(cone, V_HOME, V_AXIS, data[0], data[1] );
+});
+// ---------- ---------- ----------
+// RENDER
+// ---------- ---------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
+```
+
 
 ## 2 - Animaiton loop examples
 
