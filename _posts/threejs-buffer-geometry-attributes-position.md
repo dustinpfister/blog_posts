@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2022-11-27 13:23:00
-version: 1.58
+updated: 2023-05-09 09:57:49
+version: 1.59
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
@@ -38,11 +38,11 @@ I started a [threejs examples project that is a kind of curve module](/2022/11/1
 
 ### Source is on Github
 
-The examples here, and many others can be [found on my Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-attributes-position).
+The examples here, and many others can be [found on my Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-attributes-position). This is also where I park the source code examples that I use in my [many other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version Numbers matter
 
-When I made these source code examples, and first wrote this post I was using revision 127 of threejs. I do come around to doing a little editing of these posts now and then, and the last time I check that everything was working okay I was using r140.
+When I made these source code examples, and first wrote this post I was using revision 127 of threejs. I do come around to doing a little editing of these posts now and then, and the last time I check that everything was working okay I was using r146.
 
 ## 1 - Creating a custom triangle geometry from the ground up starting with position
 
@@ -57,43 +57,40 @@ In order to get a geometry to work well with Mesh objects I need more than just 
 The fist thing that I would do is call the THREE.BufferGeometry constructor function wit the new keyword, and then store the returned result to a variable that can be called something like geometry. I now have an instance of buffer geometry, but there is no data with it, so I will then need to add the position attribute. To do so I create a Float32 array and then set up numbers for each x, y, and z value for each point in space. Once I have that set up the way I like it I can pass that array as an argument when calling the THREE.BufferAttribite constrictor. The result of the BufferAttribjuute constructor can then be set for the position attribute of the buffer geometry by just using the set Attribute method of the class.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER, GRID
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(3, 3, 3);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    scene.add( new THREE.GridHelper(10, 10));
-    //-------- ----------
-    // GEOMETRY
-    //-------- ----------
-    const geometry = new THREE.BufferGeometry();
-   // create data as Float32Array
-    const data = new Float32Array( [
-        -1.0, 0.0,  0.0,
-        1.0, 0.0,  0.0,
-        0.0, 2.0,  0.0,
-    ]);
-    // create new instance of BufferAttribute with Float3sArray and set as 'position'
-    geometry.setAttribute('position', new THREE.BufferAttribute( data, 3 ));
-    // can now call methods like translate, center, rotateX, ect
-    geometry.center();
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    const points = new THREE.Points(geometry, new THREE.PointsMaterial({size: 0.5}));
-    camera.lookAt(points.position);
-    scene.add(points);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER, GRID
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add( new THREE.GridHelper(10, 10));
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BufferGeometry();
+// create data as Float32Array
+const data = new Float32Array( [
+    -1.0, 0.0,  0.0,
+    1.0, 0.0,  0.0,
+    0.0, 2.0,  0.0,
+]);
+// create new instance of BufferAttribute with Float3sArray and set as 'position'
+geometry.setAttribute('position', new THREE.BufferAttribute( data, 3 ));
+// can now call methods like translate, center, rotateX, ect
+geometry.center();
+//-------- ----------
+// POINTS
+//-------- ----------
+const points = new THREE.Points(geometry, new THREE.PointsMaterial({size: 0.5}));
+scene.add(points);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(points.position);
+renderer.render(scene, camera);
 ```
 
 ### 1.2 - Making it a geometry that will work okay with Mesh Objects
@@ -105,97 +102,94 @@ One quick way to set up the normal attribute would be to just call the [compute 
 When it comes to setting up a quick texture for one or more of the materials that I will be using for the mesh objects there are a number of ways to do that with a little javaScript code rather than that of an external image file. For this example I am going with [data textures](/2022/04/15/threejs-data-texture/), but another great option would be to use [canvas textures](/2018/04/17/threejs-canvas-texture/).
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER, GRID
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    scene.add( new THREE.GridHelper(10, 10));
-    //-------- ----------
-    // GEOMETRY
-    //-------- ----------
-    const geometry = new THREE.BufferGeometry();
-    // ATTRIBUTE 'position' 
-    const dataPOS = new Float32Array( [
-        -1.0, 0.0,  0.0,
-        1.0, 0.0,  0.0,
-        0.0, 2.0,  0.0,
-    ]);
-    geometry.setAttribute('position', new THREE.BufferAttribute( dataPOS, 3 ));
-    // ATTRIBUTE 'normal'
-    // compute vertex normals method can some times make quick work of setting up the normals attribute
-    geometry.computeVertexNormals();
-    // ATTRIBUTE 'uv'
-    const dataUV = new Float32Array( [
-        1.0, 0.0,
-        0.0, 1.0,
-        1.0, 1.0,
-    ]);
-    geometry.setAttribute('uv', new THREE.BufferAttribute( dataUV, 2 ));
-    geometry.center();
-    //-------- ----------
-    // LIGHT
-    //-------- ----------
-    const dl = new THREE.DirectionalLight();
-    dl.position.set(0,1,2)
-    scene.add(dl);
-    //-------- ----------
-    // TEXTURE
-    //-------- ----------
-    // create data texture method
-    const createDataTexture = function(opt){
-        opt = opt || {};
-        opt.width = opt.width === undefined ? 16: opt.width; 
-        opt.height = opt.height === undefined ? 16: opt.height;
-        // default for pix method
-        opt.forPix = opt.forPix || function(color, x, y, i, opt){
-            let v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
-            color.r = v;
-            color.g = v;
-            color.b = v;
-            return color;
-        };
-        let size = opt.width * opt.height;
-        let data = new Uint8Array( 4 * size );
-        for ( let i = 0; i < size; i ++ ) {
-            let stride = i * 4,
-            x = i % opt.width,
-            y = Math.floor(i / opt.width),
-            color = opt.forPix( new THREE.Color(), x, y, i, opt);
-            data[ stride ] = color.r;
-            data[ stride + 1 ] = color.g;
-            data[ stride + 2 ] = color.b;
-            data[ stride + 3 ] = 255;
-        }
-        let texture = new THREE.DataTexture( data, opt.width, opt.height );
-        texture.needsUpdate = true;
-        return texture;
+//-------- ----------
+// SCENE, CAMERA, RENDERER, GRID
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add( new THREE.GridHelper(10, 10));
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BufferGeometry();
+// ATTRIBUTE 'position' 
+const dataPOS = new Float32Array( [
+    -1.0, 0.0,  0.0,
+    1.0, 0.0,  0.0,
+    0.0, 2.0,  0.0,
+]);
+geometry.setAttribute('position', new THREE.BufferAttribute( dataPOS, 3 ));
+// ATTRIBUTE 'normal'
+// compute vertex normals method can some times make quick work of setting up the normals attribute
+geometry.computeVertexNormals();
+// ATTRIBUTE 'uv'
+const dataUV = new Float32Array( [
+    1.0, 0.0,
+    0.0, 1.0,
+    1.0, 1.0,
+]);
+geometry.setAttribute('uv', new THREE.BufferAttribute( dataUV, 2 ));
+geometry.center();
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight();
+dl.position.set(0,1,2)
+scene.add(dl);
+//-------- ----------
+// TEXTURE
+//-------- ----------
+// create data texture method
+const createDataTexture = function(opt){
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16: opt.width; 
+    opt.height = opt.height === undefined ? 16: opt.height;
+    // default for pix method
+    opt.forPix = opt.forPix || function(color, x, y, i, opt){
+        let v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
+        color.r = v;
+        color.g = v;
+        color.b = v;
+        return color;
     };
-    const tex1 = createDataTexture();
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const mesh1 = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({side: THREE.DoubleSide}));
-    camera.lookAt(mesh1.position);
-    mesh1.position.x = -2;
-    scene.add(mesh1);
-    const mesh2 = new THREE.Mesh(geometry, 
-        new THREE.MeshStandardMaterial({
-            side: THREE.DoubleSide,
-            map: tex1
-    }));
-    scene.add(mesh2);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+    let size = opt.width * opt.height;
+    let data = new Uint8Array( 4 * size );
+    for ( let i = 0; i < size; i ++ ) {
+        let stride = i * 4,
+        x = i % opt.width,
+        y = Math.floor(i / opt.width),
+        color = opt.forPix( new THREE.Color(), x, y, i, opt);
+        data[ stride ] = color.r;
+        data[ stride + 1 ] = color.g;
+        data[ stride + 2 ] = color.b;
+        data[ stride + 3 ] = 255;
+    }
+    let texture = new THREE.DataTexture( data, opt.width, opt.height );
+    texture.needsUpdate = true;
+    return texture;
+};
+const tex1 = createDataTexture();
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh1 = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({side: THREE.DoubleSide}));
+mesh1.position.x = -2;
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(geometry, 
+    new THREE.MeshStandardMaterial({
+        side: THREE.DoubleSide,
+        map: tex1
+}));
+scene.add(mesh2);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(mesh2.position);
+renderer.render(scene, camera);
 ```
 
 ## 2 - Mutation of box geometry examples
@@ -209,47 +203,44 @@ However when one does the math in terms of the number of triangles for each side
 If you are still a little confused about all this maybe it would be best to just start playing around with an instance of box geometry, and do a little basic math with some things. Also while you are at it you might chose to change one of the values in the position array to see what the effect is for starters.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 3);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // GEOMETRY, MESH - starting with a cube and looking at position attribute
-    //-------- ----------
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    // check out the position attribute of a cube
-    const position = geometry.getAttribute('position');
-    console.log( position.count ); // 24
-    console.log( position.array.length ); // 72
-    console.log( position.count * 3 === position.array.length); // true
-    // get the index for all the trangles
-    const index = geometry.getIndex();
-    console.log( index.count );      // 36
-    console.log( index.count / 3);   /* 12 (index.count / 3 === number of triangles ) */
-    // mutating a position
-    const vertIndex = index.array[0];
-    position.array[vertIndex] = 0.8;
-    position.array[vertIndex + 1] = 0.5;
-    position.array[vertIndex + 2] = 0.5;
-    position.needsUpdate = true;
-    // use the geometry with a mesh
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
-        side: THREE.DoubleSide
-    }));
-    scene.add(mesh);
-    camera.lookAt(mesh.position);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY, MESH - starting with a cube and looking at position attribute
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+// check out the position attribute of a cube
+const position = geometry.getAttribute('position');
+console.log( position.count ); // 24
+console.log( position.array.length ); // 72
+console.log( position.count * 3 === position.array.length); // true
+// get the index for all the trangles
+const index = geometry.getIndex();
+console.log( index.count );  // 36
+console.log( index.count / 3);   /* 12 (index.count / 3 === number of triangles ) */
+// mutating a position
+const vertIndex = index.array[0];
+position.array[vertIndex] = 0.8;
+position.array[vertIndex + 1] = 0.5;
+position.array[vertIndex + 2] = 0.5;
+position.needsUpdate = true;
+// use the geometry with a mesh
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+    side: THREE.DoubleSide
+}));
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 3);
+camera.lookAt(mesh.position);
+renderer.render(scene, camera);
 ```
 
 ### 2.2 -  Set vertex helper example
@@ -257,58 +248,57 @@ If you are still a little confused about all this maybe it would be best to just
 In this example I worked out a simple set vertex helper where I can just pass a geometry, then a vertex instance, and then a position object or instance of vector 3 that can be used to set the position of the vertex. Once again in this example I am working with a built in geometry that is a basic box geometry, and I want to use this set vertex helper method to move a single point in the cube. However doing so does not involve just moving one point, but three points for each triangle at that point.
 
 ```js
-(function () {
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // set location of a vert given an index value in geometry.index
-    const setVert = function(geometry, vertIndex, pos){
-        pos = pos || {};
-        const posIndex = geometry.index.array[vertIndex] * 3,
-        position = geometry.getAttribute('position');
-        position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
-        position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
-        position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
-    };
-    //-------- ----------
-    // SCENE
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // GEOMETRY
-    //-------- ----------
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const pos = {
-       x: 1,
-       y: 0.25,
-       z: 1.25
-    };
-    setVert(geometry, 0, pos);
-    setVert(geometry, 16, pos);
-    setVert(geometry, 26, pos);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
-        side: THREE.DoubleSide
-    }));
-    scene.add(mesh);
-    camera.lookAt(mesh.position);
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    const loop = function(){
-        requestAnimationFrame(loop);
-        renderer.render(scene, camera);
-    };
-    loop();
-}());
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set location of a vert given an index value in geometry.index
+const setVert = function(geometry, vertIndex, pos){
+    pos = pos || {};
+    const posIndex = geometry.index.array[vertIndex] * 3,
+    position = geometry.getAttribute('position');
+    position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
+    position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
+    position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
+};
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const pos = {
+    x: 1,
+    y: 0.25,
+    z: 1.25
+};
+setVert(geometry, 0, pos);
+setVert(geometry, 16, pos);
+setVert(geometry, 26, pos);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+    side: THREE.DoubleSide
+}));
+scene.add(mesh);
+
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(mesh.position);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+const loop = function(){
+    requestAnimationFrame(loop);
+    renderer.render(scene, camera);
+};
+loop();
 ```
 
 ### 2.3 -  Set triangle helper
@@ -316,71 +306,69 @@ In this example I worked out a simple set vertex helper where I can just pass a 
 So now that I have a set vertx helper that seems to work okay I thought it might be nice to create another helper that will helper with each triangle in the cube. This way I can call the set triangle method and pass a position object once, and then that position object will be applied for each vertex in for the given triangle index. This example results in each face being moved away from the center of the cube, which is a cool effect that can be archived by a method such as this.
 
 ```js
-(function () {
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // set location of a vert given an index value in geometry.index
-    const setVert = function(geometry, vertIndex, pos){
-        pos = pos || {};
-        const posIndex = geometry.index.array[vertIndex] * 3,
-        position = geometry.getAttribute('position');
-        position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
-        position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
-        position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
-    };
-    // set triangle
-    const setTri = function(geometry, triIndex, pos){
-        pos = pos || {};
-        const vertIndex = triIndex * 3;
-        setVert(geometry, vertIndex, pos);
-        setVert(geometry, vertIndex + 1, pos);
-        setVert(geometry, vertIndex + 2, pos);
-    };
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2, 2, 2);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // GEOMETRY
-    //-------- ----------
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    // example 2 on set tri helper
-    setTri(geometry, 0, {x: 1});
-    setTri(geometry, 1, {x: 1});
-    setTri(geometry, 2, {x: -1});
-    setTri(geometry, 3, {x: -1});
-    setTri(geometry, 4, {y: 1});
-    setTri(geometry, 5, {y: 1});
-    setTri(geometry, 6, {y: -1});
-    setTri(geometry, 7, {y: -1});
-    setTri(geometry, 8, {z: 1});
-    setTri(geometry, 9, {z: 1});
-    setTri(geometry, 10, {z: -1});
-    setTri(geometry, 11, {z: -1});
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
-        side: THREE.DoubleSide
-    }));
-    scene.add(mesh);
-    camera.lookAt(mesh.position);
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    const loop = function(){
-        requestAnimationFrame(loop);
-        renderer.render(scene, camera);
-    };
-    loop();
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set location of a vert given an index value in geometry.index
+const setVert = function(geometry, vertIndex, pos){
+    pos = pos || {};
+    const posIndex = geometry.index.array[vertIndex] * 3,
+    position = geometry.getAttribute('position');
+    position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
+    position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
+    position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
+};
+// set triangle
+const setTri = function(geometry, triIndex, pos){
+    pos = pos || {};
+    const vertIndex = triIndex * 3;
+    setVert(geometry, vertIndex, pos);
+    setVert(geometry, vertIndex + 1, pos);
+    setVert(geometry, vertIndex + 2, pos);
+};
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+// example 2 on set tri helper
+setTri(geometry, 0, {x: 1});
+setTri(geometry, 1, {x: 1});
+setTri(geometry, 2, {x: -1});
+setTri(geometry, 3, {x: -1});
+setTri(geometry, 4, {y: 1});
+setTri(geometry, 5, {y: 1});
+setTri(geometry, 6, {y: -1});
+setTri(geometry, 7, {y: -1});
+setTri(geometry, 8, {z: 1});
+setTri(geometry, 9, {z: 1});
+setTri(geometry, 10, {z: -1});
+setTri(geometry, 11, {z: -1});
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+    side: THREE.DoubleSide
+}));
+scene.add(mesh);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(mesh.position);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+const loop = function(){
+    requestAnimationFrame(loop);
+    renderer.render(scene, camera);
+};
+loop();
 ```
 
 ### 2.4 - Indexed and non indexed movement of triangles
@@ -390,84 +378,82 @@ For this example I am going to create a source geometry that is created with the
 For this example then I have two mesh objects with the two geometries that are clone from the same source geometry one index and the other non indexed. The one that is not indexed can have each triangle move completely apart from the others, while I can not do the same with the indexed one of course because of the shared points.
 
 ```js
-(function () {
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // set location of a vert given an index value in geometry.index
-    const setVert = function(geometry, vertIndex, pos){
-        pos = pos || {};
-        const position = geometry.getAttribute('position');
-        let i = vertIndex * 3;
-        // do we have an index?
-        if(geometry.index){
-            //then use that
-            i = geometry.index.array[vertIndex] * 3;
-       }
-       position.array[i] = pos.x === undefined ? position.array[i]: pos.x;
-       position.array[i + 1] = pos.y === undefined ? position.array[i + 1]: pos.y;
-       position.array[i + 2] = pos.z === undefined ? position.array[i + 2]: pos.z;
-    };
-    // set triangle
-    const setTri = function(geometry, triIndex, pos){
-        pos = pos || {};
-        const vertIndex = triIndex * 3;
-        setVert(geometry, vertIndex, pos);
-        setVert(geometry, vertIndex + 1, pos);
-        setVert(geometry, vertIndex + 2, pos);
-    };
-    // triangle movement helper
-    const triMoveOne = (geometry) => {
-        setTri(geometry, 0, {x: 0.8});
-        setTri(geometry, 1, {x: 1.1});
-        setTri(geometry, 2, {x: -0.8});
-        setTri(geometry, 3, {x: -1.1});
-        setTri(geometry, 4, {y: 0.8});
-        setTri(geometry, 5, {y: 1.1});
-        setTri(geometry, 6, {y: -0.8});
-        setTri(geometry, 7, {y: -1.1});
-        setTri(geometry, 8, {z: 0.8});
-        setTri(geometry, 9, {z: 1.1});
-        setTri(geometry, 10, {z: -0.8});
-        setTri(geometry, 11, {z: -1.1});
-    };
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(3, 3, 3);
-    camera.lookAt(0.5, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // GEOMETRY
-    //-------- ----------
-    const geo_source = new THREE.BoxGeometry(1, 1, 1);
-    const geo_indexed = geo_source.clone();
-    const geo_nonindexed = geo_source.clone().toNonIndexed();
-    // example 2 on set tri helper
-    triMoveOne(geo_indexed);
-    triMoveOne(geo_nonindexed);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const material = new THREE.MeshNormalMaterial({
-        wireframe: true,
-        wireframeLinewidth: 3
-    });
-    const mesh1 = new THREE.Mesh(geo_indexed, material);
-    mesh1.position.x = 1.5;
-    scene.add(mesh1);
-    const mesh2 = new THREE.Mesh(geo_nonindexed, material);
-    mesh2.position.x = -1.5;
-    scene.add(mesh2);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set location of a vert given an index value in geometry.index
+const setVert = function(geometry, vertIndex, pos){
+    pos = pos || {};
+    const position = geometry.getAttribute('position');
+    let i = vertIndex * 3;
+    // do we have an index?
+    if(geometry.index){
+        //then use that
+        i = geometry.index.array[vertIndex] * 3;
+    }
+    position.array[i] = pos.x === undefined ? position.array[i]: pos.x;
+    position.array[i + 1] = pos.y === undefined ? position.array[i + 1]: pos.y;
+    position.array[i + 2] = pos.z === undefined ? position.array[i + 2]: pos.z;
+};
+// set triangle
+const setTri = function(geometry, triIndex, pos){
+    pos = pos || {};
+    const vertIndex = triIndex * 3;
+    setVert(geometry, vertIndex, pos);
+    setVert(geometry, vertIndex + 1, pos);
+    setVert(geometry, vertIndex + 2, pos);
+};
+// triangle movement helper
+const triMoveOne = (geometry) => {
+    setTri(geometry, 0, {x: 0.8});
+    setTri(geometry, 1, {x: 1.1});
+    setTri(geometry, 2, {x: -0.8});
+    setTri(geometry, 3, {x: -1.1});
+    setTri(geometry, 4, {y: 0.8});
+    setTri(geometry, 5, {y: 1.1});
+    setTri(geometry, 6, {y: -0.8});
+    setTri(geometry, 7, {y: -1.1});
+    setTri(geometry, 8, {z: 0.8});
+    setTri(geometry, 9, {z: 1.1});
+    setTri(geometry, 10, {z: -0.8});
+setTri(geometry, 11, {z: -1.1});
+};
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geo_source = new THREE.BoxGeometry(1, 1, 1);
+const geo_indexed = geo_source.clone();
+const geo_nonindexed = geo_source.clone().toNonIndexed();
+// example 2 on set tri helper
+triMoveOne(geo_indexed);
+triMoveOne(geo_nonindexed);
+//-------- ----------
+// MESH
+//-------- ----------
+const material = new THREE.MeshNormalMaterial({
+    wireframe: true,
+    wireframeLinewidth: 3
+});
+const mesh1 = new THREE.Mesh(geo_indexed, material);
+mesh1.position.x = 1.5;
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(geo_nonindexed, material);
+mesh2.position.x = -1.5;
+scene.add(mesh2);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0.5, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 3 - Vector3 arrays, buffer geometry position attributes, and Points
@@ -481,47 +467,46 @@ In the basic section of this post on the position attribute I covered a basic ex
 There are a number of ways to go about making a buffer geometry from an array of Vector3 class instances of course. There are many ways of doing it that might prove to be a little complex, and then other ways that just make use of a method in one of the classes and tools to with with in threejs as well as other official files. For this example I am making use of the set from points method of the buffer geometry class to create a buffer geometry with  position attribute from an array of vector3 class instances.
 
 ```js
-// geo from v3
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    // ARRAY of VECTOR3 CLASS INSTANCES
-    const v3Array = [
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(1, 0, 0),
-        new THREE.Vector3(0, 1, 0),
-        new THREE.Vector3(0, 0, 1),
-        new THREE.Vector3(2, 0, 0),
-        new THREE.Vector3(0, 2, 0),
-        new THREE.Vector3(0, 0, 2),
-        new THREE.Vector3(3, 0, 0),
-        new THREE.Vector3(0, 3, 0),
-        new THREE.Vector3(0, 0, 3)
-    ];
-    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
-    scene.add(
-        new THREE.Points(
-            new THREE.BufferGeometry().setFromPoints(v3Array),
-            new THREE.PointsMaterial({
-                color: 0x00afaf,
-                size: 0.25
-            })));
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// POINTS
+//-------- ----------
+// ARRAY of VECTOR3 CLASS INSTANCES
+const v3Array = [
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(1, 0, 0),
+    new THREE.Vector3(0, 1, 0),
+    new THREE.Vector3(0, 0, 1),
+    new THREE.Vector3(2, 0, 0),
+    new THREE.Vector3(0, 2, 0),
+    new THREE.Vector3(0, 0, 2),
+    new THREE.Vector3(3, 0, 0),
+    new THREE.Vector3(0, 3, 0),
+    new THREE.Vector3(0, 0, 3)
+];
+// THREE.Points INSTANCE UISNG THREE.PointsMaterial
+scene.add(
+    new THREE.Points(
+        new THREE.BufferGeometry().setFromPoints(v3Array),
+        new THREE.PointsMaterial({
+            color: 0x00afaf,
+            size: 0.25
+        })
+    )
+);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ### 3.2 - A vector3 array from a geometry
@@ -531,64 +516,63 @@ There is having an array of vector3 objects and wanting to create a buffer geome
 Amway thus far I am not sure of there is any single method that can be used to do this, but thankfully it is not to hard to just create this kind of array with a quick helper method if that is the way it needs to get done. When doing this one way would be to use the count property of the position buffer attribute object and then pass each value of I to the getX, getY, and getZ methods of the attribute class.
 
 ```js
-// v3 from geo
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // Buffer Geometry from v3Array
-    const Vector3ArrayToGeometry = (v3Array) => {
-        return new THREE.BufferGeometry().setFromPoints(v3Array);
-    };
-    // Vector3 array from geometry
-    const Vector3ArrayFromGeometry = (geometry) => {
-        const pos = geometry.getAttribute('position');
-        let i = 0;
-        const len = pos.count, v3Array = [];
-        while(i < len){
-            const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
-            v3Array.push(v);
-            i += 1;
-        }
-        return v3Array;
-    };
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    // Geometry created with the Torus Geometry Constructor
-    const geometry = new THREE.TorusGeometry(2, 0.75, 30, 60);
-    geometry.rotateX(Math.PI / 180 * 90);
-    // array of Vector3 class instances
-    const v3Array = Vector3ArrayFromGeometry(geometry);
-    // do somehting to the v3 array
-    v3Array.forEach((v) => {
-        const vd = new THREE.Vector3();
-        vd.copy(v).normalize().multiplyScalar(0.75 * THREE.MathUtils.seededRandom())
-        v.add(vd);
-    });
-    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
-    scene.add(
-        new THREE.Points(
-            Vector3ArrayToGeometry(v3Array),
-            new THREE.PointsMaterial({
-                color: 0x00afaf,
-                size: 0.125
-            })));
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// Buffer Geometry from v3Array
+const Vector3ArrayToGeometry = (v3Array) => {
+    return new THREE.BufferGeometry().setFromPoints(v3Array);
+};
+// Vector3 array from geometry
+const Vector3ArrayFromGeometry = (geometry) => {
+    const pos = geometry.getAttribute('position');
+    let i = 0;
+    const len = pos.count, v3Array = [];
+    while(i < len){
+        const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+        v3Array.push(v);
+        i += 1;
+    }
+    return v3Array;
+};
+//-------- ----------
+// POINTS
+//-------- ----------
+// Geometry created with the Torus Geometry Constructor
+const geometry = new THREE.TorusGeometry(2, 0.75, 30, 60);
+geometry.rotateX(Math.PI / 180 * 90);
+// array of Vector3 class instances
+const v3Array = Vector3ArrayFromGeometry(geometry);
+// do something to the v3 array
+v3Array.forEach((v) => {
+    const vd = new THREE.Vector3();
+    vd.copy(v).normalize().multiplyScalar(0.75 * THREE.MathUtils.seededRandom())
+    v.add(vd);
+});
+// THREE.Points INSTANCE UISNG THREE.PointsMaterial
+scene.add(
+    new THREE.Points(
+        Vector3ArrayToGeometry(v3Array),
+        new THREE.PointsMaterial({
+            color: 0x00afaf,
+            size: 0.125
+        })
+    )
+);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ### 3.3 - Updating a buffer geometry from a Vector3 array
@@ -597,67 +581,65 @@ I know that I have covered an example that has to do with creating a buffer geom
 
 
 ```js
-// update from v3
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // Buffer Geometry from v3Array
-    const Vector3ArrayToGeometry = (v3Array) => {
-        return new THREE.BufferGeometry().setFromPoints(v3Array);
-    };
-    // Vector3 array from geometry
-    const Vector3ArrayFromGeometry = (geometry) => {
-        const pos = geometry.getAttribute('position');
-        let i = 0;
-        const len = pos.count, v3Array = [];
-        while(i < len){
-            const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
-            v3Array.push(v);
-            i += 1;
-        }
-        return v3Array;
-    };
-    // Vector3 Array to Typed Array
-    const Vector3ArrayToTyped = (v3Array) => {
-        let i = 0, len = v3Array.length, vertArray = [];
-        while(i < len){
-            let v = v3Array[i];
-            vertArray.push(v.x, v.y, v.z);
-            i += 1;
-        }
-        return vertArray;
-        //return new THREE.Float32BufferAttribute(vertArray, 3)
-    };
-    //-------- ----------
-    // GEO AND POINTS
-    //-------- ----------
-    let geo_sphere = new THREE.SphereGeometry(1.5, 30, 30);
-    let geo_torus = new THREE.TorusGeometry(1, 0.5, 30, 30);
-    let v3array = Vector3ArrayFromGeometry(geo_torus);
-    let points = new THREE.Points( geo_sphere, new THREE.PointsMaterial({ size: 0.1}) );
-    scene.add(points);
-    let typed = Vector3ArrayToTyped(v3array);
-    let pos = geo_sphere.getAttribute('position');
-    let alpha = 1;
-    pos.array = pos.array.map( (n, i) => {
-        let d  = typed[i] === undefined ? 0: typed[i];
-        return n + d * alpha;
-    });
-    pos.needsUpdate = true;
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// Buffer Geometry from v3Array
+const Vector3ArrayToGeometry = (v3Array) => {
+    return new THREE.BufferGeometry().setFromPoints(v3Array);
+};
+// Vector3 array from geometry
+const Vector3ArrayFromGeometry = (geometry) => {
+    const pos = geometry.getAttribute('position');
+    let i = 0;
+    const len = pos.count, v3Array = [];
+    while(i < len){
+        const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+        v3Array.push(v);
+        i += 1;
+    }
+    return v3Array;
+};
+// Vector3 Array to Typed Array
+const Vector3ArrayToTyped = (v3Array) => {
+    let i = 0, len = v3Array.length, vertArray = [];
+    while(i < len){
+        let v = v3Array[i];
+        vertArray.push(v.x, v.y, v.z);
+        i += 1;
+    }
+    return vertArray;
+};
+//-------- ----------
+// GEO AND POINTS
+//-------- ----------
+let geo_sphere = new THREE.SphereGeometry(1.5, 30, 30);
+let geo_torus = new THREE.TorusGeometry(1, 0.5, 30, 30);
+let v3array = Vector3ArrayFromGeometry(geo_torus);
+let points = new THREE.Points( geo_sphere, new THREE.PointsMaterial({ size: 0.1}) );
+scene.add(points);
+let typed = Vector3ArrayToTyped(v3array);
+let pos = geo_sphere.getAttribute('position');
+let alpha = 1;
+pos.array = pos.array.map( (n, i) => {
+    let d  = typed[i] === undefined ? 0: typed[i];
+    return n + d * alpha;
+});
+pos.needsUpdate = true;
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ### 3.4 - The Apply Euler method for chaining direction
@@ -665,67 +647,62 @@ I know that I have covered an example that has to do with creating a buffer geom
 The apply Euler method of the Vector3 class is a way to go about changing the direction of a vector while preserving the unit length. So then this apply Euler method goes hand in hand with other Vector class tools such as as normalize and multiplt scalar to change not just the direction but also the unit length.
 
 ```js
-// update from v3
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // Buffer Geometry from v3Array
-    const Vector3ArrayToGeometry = (v3Array) => {
-        return new THREE.BufferGeometry().setFromPoints(v3Array);
-    };
-    // Vector3 array from geometry
-    const Vector3ArrayFromGeometry = (geometry) => {
-        const pos = geometry.getAttribute('position');
-        let i = 0;
-        const len = pos.count, v3Array = [];
-        while(i < len){
-            const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
-            v3Array.push(v);
-            i += 1;
-        }
-        return v3Array;
-    };
-    // Vector3 Array to Typed Array
-    const Vector3ArrayToTyped = (v3Array) => {
-        let i = 0, len = v3Array.length, vertArray = [];
-        while(i < len){
-            let v = v3Array[i];
-            vertArray.push(v.x, v.y, v.z);
-            i += 1;
-        }
-        return vertArray;
-        //return new THREE.Float32BufferAttribute(vertArray, 3)
-    };
-    //-------- ----------
-    // GEO AND POINTS
-    //-------- ----------
-    let geo_sphere = new THREE.SphereGeometry(1.5, 30, 30);
-    let geo_torus = new THREE.TorusGeometry(1, 0.5, 30, 30);
-    let v3array = Vector3ArrayFromGeometry(geo_torus);
-    let points = new THREE.Points( geo_sphere, new THREE.PointsMaterial({ size: 0.1}) );
-    scene.add(points);
-    let typed = Vector3ArrayToTyped(v3array);
-    let pos = geo_sphere.getAttribute('position');
-    let alpha = 1;
-    pos.array = pos.array.map( (n, i) => {
-        let d  = typed[i] === undefined ? 0: typed[i];
-        return n + d * alpha;
-    });
-    pos.needsUpdate = true;
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// Buffer Geometry from v3Array
+const Vector3ArrayToGeometry = (v3Array) => {
+    return new THREE.BufferGeometry().setFromPoints(v3Array);
+};
+// Vector3 array from geometry
+const Vector3ArrayFromGeometry = (geometry) => {
+    const pos = geometry.getAttribute('position');
+    let i = 0;
+    const len = pos.count, v3Array = [];
+    while(i < len){
+        const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+        v3Array.push(v);
+        i += 1;
+    }
+    return v3Array;
+};
+//-------- ----------
+// POINTS
+//-------- ----------
+const geometry = new THREE.TorusGeometry(2, 0.75, 30, 60);
+geometry.rotateX(Math.PI / 180 * 90);
+const v3Array = Vector3ArrayFromGeometry(geometry);
+v3Array.forEach((v) => {
+    const v_delta = new THREE.Vector3(0, 0, 1);
+    const eu = new THREE.Euler();
+    if(v.y > 0){
+        eu.x =  1 * Math.random();
+    }
+    v_delta.normalize().applyEuler(eu).multiplyScalar(1);
+    v.add(v_delta);
+});
+// THREE.Points INSTANCE UISNG THREE.PointsMaterial
+scene.add(
+    new THREE.Points(
+        Vector3ArrayToGeometry(v3Array),
+        new THREE.PointsMaterial({
+            color: 0x00afaf,
+            size: 0.125
+        })));
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 4 - Animation loop examples of buffer geometry position attribute mutation
@@ -739,85 +716,80 @@ In this example I am going with what I worked out in the box geometry section of
 When doing anything that involves mutating the geometry over an over again by changing values in the position attribute there is one thing that I must always do and that is to make sure that I always set the needs update boolean of the position attribute to true each time I change the values in the position array. Thus far doing so was not that important because I was just updating the geometry once, and that seems to work okay even if i do not make sure it is set to true. However now if I forget that step the geometry will update only once, and then not again on the next call of the animation function.
 
 ```js
-(function () {
- 
-    // set location of a vert given an index value in geometry.index
-    var setVert = function(geometry, vertIndex, pos){
-        pos = pos || {};
-        var posIndex = geometry.index.array[vertIndex] * 3,
-        position = geometry.getAttribute('position');
-        position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
-        position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
-        position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
-    };
- 
-    // set pos for tri index
-    var setTri = function(geometry, triIndex, pos){
-        pos = pos || {};
-        var vertIndex = triIndex * 3;
-        setVert(geometry, vertIndex, pos);
-        setVert(geometry, vertIndex + 1, pos);
-        setVert(geometry, vertIndex + 2, pos);
-    };
- 
-    // update method for a box geo
-    var updateBoxGeo = function(geometry, per){
-        var bias = 1 - Math.abs(per - 0.5) / 0.5;
-        var size = 0.5 + 1 * bias,
-        position = geometry.getAttribute('position'),
-        triCount = geometry.getIndex().count / 3,
-        i = 0, pos, axis;
-        while(i < triCount){
-            axis = ['x', 'y', 'z'][Math.floor(i / 4)];
-            pos = {};
-            pos[axis] = size * ( i % 4 < 2 ? 1: -1);
-            setTri(geometry, i, pos);
-            i += 1;
-        }
-        // MUST SET THE needsUpdate prop of position to true
-        position.needsUpdate = true;
-    };
- 
-    // scene
-    var scene = new THREE.Scene();
- 
-    // GEOMETRY
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
-    var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
-        side: THREE.DoubleSide
-    }));
-    scene.add(mesh);
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(3, 3, 3);
-    camera.lookAt(mesh.position);
- 
-    // RENDER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var per = 0,
-    lt = new Date(),
-    maxFrames = 300,
-    FPS = 30;
-    var loop = function(){
-        var now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS){
-            per += 1 / (maxFrames / FPS) * secs;
-            per %= 1;
-            updateBoxGeo(geometry, per);
-            renderer.render(scene, camera);
-            lt = now;
-        }
-    };
-    loop();
- 
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set location of a vert given an index value in geometry.index
+const setVert = function(geometry, vertIndex, pos){
+    pos = pos || {};
+    const posIndex = geometry.index.array[vertIndex] * 3,
+    position = geometry.getAttribute('position');
+    position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
+    position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
+    position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
+};
+// set pos for tri index
+const setTri = function(geometry, triIndex, pos){
+    pos = pos || {};
+    const vertIndex = triIndex * 3;
+    setVert(geometry, vertIndex, pos);
+    setVert(geometry, vertIndex + 1, pos);
+    setVert(geometry, vertIndex + 2, pos);
+};
+// update method for a box geo
+const updateBoxGeo = function(geometry, per){
+    const bias = 1 - Math.abs(per - 0.5) / 0.5,
+    size = 0.5 + 1 * bias,
+    position = geometry.getAttribute('position'),
+    triCount = geometry.getIndex().count / 3;
+    let i = 0, pos, axis;
+    while(i < triCount){
+        axis = ['x', 'y', 'z'][Math.floor(i / 4)];
+        pos = {};
+        pos[axis] = size * ( i % 4 < 2 ? 1: -1);
+        setTri(geometry, i, pos);
+        i += 1;
+    }
+    // MUST SET THE needsUpdate prop of position to true
+    position.needsUpdate = true;
+};
+//-------- ----------
+// GEOMETRY, MESH
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+    side: THREE.DoubleSide
+}));
+scene.add(mesh);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(mesh.position);
+const maxFrames = 300,
+FPS = 30;
+let lt = new Date(), per = 0;
+const loop = function(){
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS){
+        per += 1 / (maxFrames / FPS) * secs;
+        per %= 1;
+        updateBoxGeo(geometry, per);
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
 ```
 
 So then this animation works out the way that I would more or less expect it to the faces of each side of the cube move out from each other and then back again. There is the a whole bunch of other things that I could do when it comes to creating various other kinds of animations that are just slightly different use case of these basic helper functions.
@@ -827,85 +799,84 @@ So then this animation works out the way that I would more or less expect it to 
 This example makes use of my [lerp geo function](/2022/07/01/threejs-examples-lerp-geo/) that I made for one of my many threejs examples. This is a little project that I made a while back that involves using the lerp method of the vector3 class as a way to transition all the points of a geometry between two sets of geometry to create a cool kind of transition effect. Here in this example I am using it to lerp all the points of a sphere geometry to that of a torus geometry and back again.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(2.5, 2.5, 2.5);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // LERP GEO FUNCTION
-    var lerpGeo = function(geo, geoA, geoB, alpha){
-        alpha = alpha || 0;
-        // pos, and new pos
-        let pos = geo.getAttribute('position');
-        // positions for a and b
-        let posA = geoA.getAttribute('position');
-        let posB = geoB.getAttribute('position');
-        // loop over pos and lerp between posA and posB
-        var i = 0, len = pos.array.length;
-        while(i < len){
-            // creating Vector3 instances for current posA and PosB vertices
-            var v = new THREE.Vector3(posA.array[i], posA.array[i + 1], posA.array[i + 2]);
-            var v2 = new THREE.Vector3(posB.array[i], posB.array[i + 1], posB.array[i + 2]);
-            // lerping between v and v2 with given alpha value
-            v.lerp(v2, alpha);
-            // set pos vertex to state of v
-            pos.array[i] = v.x;
-            pos.array[i + 1] = v.y;
-            pos.array[i + 2] = v.z;      
-            i += 3;
-        }
-        // the needs update bool of pos should be set true
-        // and I will also need to update normals
-        pos.needsUpdate = true;
-    };
-    //-------- ----------
-    // GEO AND POINTS
-    //-------- ----------
-    let geo_sphere = new THREE.SphereGeometry(1.5, 30, 30);
-    let geo_torus = new THREE.TorusGeometry(1, 0.5, 30, 30);
-    let points = new THREE.Points( geo_sphere.clone(), new THREE.PointsMaterial({ size: 0.1}) );
-    scene.add(points);
-    // ---------- ----------
-    // ANIMATION LOOP
-    // ---------- ----------
-    const FPS_UPDATE = 25, // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 300;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const update = function(frame, frameMax){
-        const a = frame / frameMax;
-        const b = 1 - Math.abs(0.5 - a) / 0.5;
-        lerpGeo(points.geometry, geo_sphere, geo_torus, b);
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// LERP GEO FUNCTION
+const lerpGeo = function(geo, geoA, geoB, alpha){
+    alpha = alpha || 0;
+    // pos, and new pos
+    let pos = geo.getAttribute('position');
+    // positions for a and b
+    let posA = geoA.getAttribute('position');
+    let posB = geoB.getAttribute('position');
+    // loop over pos and lerp between posA and posB
+    let i = 0;
+    const len = pos.array.length;
+    while(i < len){
+        // creating Vector3 instances for current posA and PosB vertices
+        const v = new THREE.Vector3(posA.array[i], posA.array[i + 1], posA.array[i + 2]);
+        const v2 = new THREE.Vector3(posB.array[i], posB.array[i + 1], posB.array[i + 2]);
+        // lerping between v and v2 with given alpha value
+        v.lerp(v2, alpha);
+        // set pos vertex to state of v
+        pos.array[i] = v.x;
+        pos.array[i + 1] = v.y;
+        pos.array[i + 2] = v.z;      
+        i += 3;
+    }
+    // the needs update bool of pos should be set true
+    // and I will also need to update normals
+    pos.needsUpdate = true;
+};
+//-------- ----------
+// GEO AND POINTS
+//-------- ----------
+let geo_sphere = new THREE.SphereGeometry(1.5, 30, 30);
+let geo_torus = new THREE.TorusGeometry(1, 0.5, 30, 30);
+let points = new THREE.Points( geo_sphere.clone(), new THREE.PointsMaterial({ size: 0.1}) );
+scene.add(points);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(2.5, 2.5, 2.5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 25, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a = frame / frameMax;
+    const b = 1 - Math.abs(0.5 - a) / 0.5;
+    lerpGeo(points.geometry, geo_sphere, geo_torus, b);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ### 4.3 - Box Geometry Move Point example
@@ -913,80 +884,78 @@ This example makes use of my [lerp geo function](/2022/07/01/threejs-examples-le
 This is a quick animation form of the box geometry vert helper example in which I am moving a single point in a geometry that was created with the box geometry constructor. When I made this example I still not not have the best system worked out when it comes to working with an index attribute of a buffer geometry that has one.
 
 ```js
-(function () {
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // set location of a vert given an index value in geometry.index
-    const setVert = function(geometry, vertIndex, pos){
-        pos = pos || {};
-        const posIndex = geometry.index.array[vertIndex] * 3,
-        position = geometry.getAttribute('position');
-        position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
-        position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
-        position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
-        position.needsUpdate = true;
-    };
-    // get bias
-    const getBias = (n, d, count) => {
-        const a = n / d * count % 1;
-        return 1 - Math.abs(0.5 - a) / 0.5;
-    };
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(3, 3, 1);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // GEOMETRY, MESH
-    //-------- ----------
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
-        side: THREE.FrontSide,
-        wireframe: true
-    }));
-    scene.add(mesh);
-    camera.lookAt(mesh.position);
-    // ---------- ----------
-    // ANIMATION LOOP
-    // ---------- ----------
-    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 300;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const update = function(frame, frameMax){
-        const a = frame / frameMax;
-        const s = 1 * getBias(frame, frameMax, 8);
-        const v1 = new THREE.Vector3(s, s, s);
-        setVert(geometry, 0, v1);
-        setVert(geometry, 16, v1);
-        setVert(geometry, 26, v1);
-        mesh.rotation.y = Math.PI * 2 * a;
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set location of a vert given an index value in geometry.index
+const setVert = function(geometry, vertIndex, pos){
+    pos = pos || {};
+    const posIndex = geometry.index.array[vertIndex] * 3,
+    position = geometry.getAttribute('position');
+    position.array[posIndex] = pos.x === undefined ? position.array[posIndex]: pos.x;
+    position.array[posIndex + 1] = pos.y === undefined ? position.array[posIndex + 1]: pos.y;
+    position.array[posIndex + 2] = pos.z === undefined ? position.array[posIndex + 2]: pos.z;
+    position.needsUpdate = true;
+};
+// get bias
+const getBias = (n, d, count) => {
+    const a = n / d * count % 1;
+    return 1 - Math.abs(0.5 - a) / 0.5;
+};
+//-------- ----------
+// GEOMETRY, MESH
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
+    side: THREE.FrontSide,
+    wireframe: true
+}));
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(3, 3, 1);
+camera.lookAt(mesh.position);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a = frame / frameMax;
+    const s = 1 * getBias(frame, frameMax, 8);
+    const v1 = new THREE.Vector3(s, s, s);
+    setVert(geometry, 0, v1);
+    setVert(geometry, 16, v1);
+    setVert(geometry, 26, v1);
+    mesh.rotation.y = Math.PI * 2 * a;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
