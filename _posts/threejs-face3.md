@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2022-12-27 14:56:40
-version: 1.32
+updated: 2023-05-10 12:22:09
+version: 1.33
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -20,6 +20,10 @@ In new versions of threejs it is now the groups array of a geometry that would s
 ## The face3 constructor, and what to know before you continue reading
 
 This is an advanced post on three.js which is a javaScript library that is used to work with things in 3d space. If you are new to three.js you might want to start with my [getting started post on three.js](/2018/04/04/threejs-getting-started/) first. Face3 is just one of several constructors of interest when making a custom geometry. Other constructors of interest are [Vector3](/2018/04/15/threejs-vector3/), and of course [Geometry](/2018/04/14/threejs-geometry/).
+
+### Other posts on related topics ( material index )
+
+One of the main reasons I would bother with the Face3 constructor has to do with creating faces to begin with if they are not there. However even when using a built in geometry constrictor with the face3 objects in place to begin with, I might still want to change the material index value. So the Face3 class is closely related to working with an array of materials for a mesh rather than just one. In my post on [Mesh objects and working with an array of materials](/2018/05/14/threejs-mesh-material-index/) I have got around to touching base on how to use an array of materials with late versions of threejs using the groups array of a buffer geometry.
 
 ## MANY OF THE CODE EXAMPELS IN THIS POST BREAK IF YOU ARE USING A NEW VERSION OF THREEJS (r125+)
 
@@ -37,39 +41,41 @@ The source code examples here are [in my test threejs github](https://github.com
 
 As of this writing three.js is a project that is still being developed fairly fast, so version numbers are of great concern. In this post I was using [three.js 0.91.0 aka r91](https://github.com/mrdoob/three.js/tree/r91/build) when I first make the source code examples, and the last version that I tested the threejs examples of face4 constructor with was r111. The last time I came around to doing some editing of this post I included one example that has to do with the groups property of a buffer geometry instance that would be the modern replacement for this, and with that example I was using r135.
 
-### Other posts on related topics ( material index )
-
-One of the main reasons I would bother with the Face3 constructor has to do with creating faces to begin with if they are not there. However even when using a built in geometry constrictor with the face3 objects in place to begin with, I might still want to change the material index value. So the Face3 class is closely related to working with an array of materials for a mesh rather than just one. In my post on [Mesh objects and working with an array of materials](/2018/05/14/threejs-mesh-material-index/) I have got around to touching base on how to use an array of materials with late versions of threejs using the groups array of a buffer geometry.
-
 ## 1 - Example of using Groups in r125+ (face3 replacement )
 
 Now that the face3 constructor is a really old feature of threejs that only applies to revisions of threejs that are fairly out of date now I am thinking that I should have at least one example of the groups array that is what I am using as a replacement for the face3 class now. To get an index of what this is about one quick way to do so would be to use an array of materials for a mesh object and play around with the material index values of a box geometry that is used with the mesh.
 
 ```js
-(function () { 
-    // SCENE, CAMERA, RENDER
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(1.5, 1.5, 1.5);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // USING GROUPS
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
-    [ 0, 1, 2, 0, 1, 2 ].forEach( function(mi, i){
-        geometry.groups[i].materialIndex = mi;
-    });
-    // MESH
-    var mesh = new THREE.Mesh(geometry, [
-        new THREE.MeshBasicMaterial( { color: 0x0000ff } ),
-        new THREE.MeshBasicMaterial( { color: 0x00ffff } ),
-        new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
-    ]);
-    scene.add(mesh);
-    // render
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE, CAMERA, RENDER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// USING GROUPS
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+[ 0, 1, 2, 0, 1, 2 ].forEach( function(mi, i){
+    geometry.groups[i].materialIndex = mi;
+});
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(geometry, [
+    new THREE.MeshBasicMaterial( { color: 0x0000ff } ),
+    new THREE.MeshBasicMaterial( { color: 0x00ffff } ),
+    new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
+]);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 2 - Basic Example of Face3
