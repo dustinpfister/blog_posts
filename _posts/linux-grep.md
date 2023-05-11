@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2021-03-10 15:40:57
-version: 1.16
+updated: 2023-05-11 13:21:50
+version: 1.17
 ---
 
 In a Linux environment there is the [Linux grep](https://man7.org/linux/man-pages/man1/grep.1.html) command that is useful for finding text in a file, or a bunch of files in a directory when it comes to using it recursively. The grep command should not be confused with the [find command](/2020/09/23/linux-find/), which is somewhat similar actually only the find command is used to look for patterns in file names, while the grep command is used to look for patterns in the content of files, or some piped in standard input.
@@ -44,7 +44,7 @@ Written by Mike Haertel and others; see
 <https://git.sv.gnu.org/cgit/grep.git/tree/AUTHORS>.
 ```
 
-## 2 - more that one file
+## 2 - more than one file
 
 There are several ways to go about greping over more than one file. There is just greping over files at one level in a folder, and then there is also using grep in a recursive way looking at all the files in all the folders starting as a given root path. So in this section I will be going over some examples of looking at collections of files using Linux grep.
 
