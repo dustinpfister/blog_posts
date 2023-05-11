@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2022-11-30 14:51:18
-version: 1.37
+updated: 2023-05-11 13:24:12
+version: 1.38
 ---
 
-There should be a standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) and [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), this property is a Boolean value that is set to true by default. The state of the visible Boolean is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
+There should be a standard way to go about making an object in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) and [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), this property is a Boolean value that is set to true by default. The state of the visible Boolean is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
 
 However it is true there are also a number of other subjects of interest such as setting the [transparency property of materials](/2021/04/21/threejs-materials-transparent/) for example that will will still make an object render, it is just that an opacity value can be set to zero that will have a similar visual effect. There is also just simply moving an object out of view of the camera of course which might often prove to be a quick, brainless way to get this done and move on. Other option that comes to mind would involve moving mesh objects from one group that is added to a [scene object](/2018/05/03/threejs-scene/) to another group that is not. Yet another way to active this kind of effect would be to make use of the [layers feature of threejs](/2021/06/04/threejs-object3d-layers/) as well which is yet even another option.
 
