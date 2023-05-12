@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1040
-updated: 2023-05-12 14:25:11
-version: 1.1
+updated: 2023-05-12 14:43:51
+version: 1.2
 ---
 
 In the buffer geometry class of threejs there is a [set draw range method](https://threejs.org/docs/#api/en/core/BufferGeometry.setDrawRange) that will change the state of the draw range object of a buffer geometry index. This can be done by calling the method and then passing a start argument along with a count after that. The numbers given should be terms of vertices, or indices depending if the geometry is indexed or non indexed. With that said there is not just calling this method and passing some values but also being aware of some other aspects of a buffer geometry object. Mainly the position attribute, and also the index if it has one.
@@ -37,7 +37,7 @@ As always I like to start out with at least one if not a few basic examples of a
 
 ### 1.1 - Working with an indexed geometry
 
-For this demo I am starting out with an indexed geometry.
+For this demo I am starting out with an indexed geometry. When doing so I will want to use the count propery of the index of the geometry as a way to get an index of what the range should be for the values that are used when calling the set draw range method.
 
 ```js
 // ---------- ----------
@@ -76,7 +76,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Working with a non indexed geometry
 
-There is then making use of the set draw range method with a geometry that does not have an index.
+There is then making use of the set draw range method with a geometry that does not have an index. For this example then I am doing more or less the same thing as before only now I will want to count value of the position attribite to know what the range is.
 
 ```js
 // ---------- ----------
@@ -115,7 +115,7 @@ renderer.render(scene, camera);
 
 ## 2 - An Animation loop example
 
-I always like to make at least one animaiton loop exmaple that will then be used to make at least one of my blog post videos.
+I always like to make at least one animaiton loop exmaple that will then be used to make at least one of my blog post videos. For this animaiton loop example I am then making a few helper functions that will create and return a non index geometry using the sphere geometry constructor and the to non indexed method, and then also update such a geometry. In the update geometry helper I am then setting the draw range with a given alpha value and then also a count that is the number of triangles that I want to draw from the start point. 
 
 ```js
 // ---------- ----------
