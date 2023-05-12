@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2022-11-30 17:13:22
-version: 1.24
+updated: 2023-05-12 14:57:05
+version: 1.25
 ---
 
-When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in [JavaScript Date class](/2019/02/14/js-javascript-date/) along with the [request animation frame method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). However thus far I can not say that I have been making use of the built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor that much. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to things like this Clock constructor and why it might be a good idea to go with this in place of what I have been making animation loops with thus far. 
+When it comes to making an animation loop in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in [JavaScript Date class](/2019/02/14/js-javascript-date/) along with the [request animation frame method](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). However thus far I can not say that I have been making use of the built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor that much. Turns out that there are still a whole lot of basic features that I have not got around to looking into with threejs when it comes to things like this Clock constructor and why it might be a good idea to go with this in place of what I have been making animation loops with thus far. 
 
 So in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance), and mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that object.
 
@@ -25,7 +25,7 @@ The use of the THREE.Clock class can be used with, or as a replacement for the b
 
 ### Source code is on Github
 
-The source code examples in this post [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-clock).
+The source code examples in this post [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-clock). This is also where I place the source code examples for the [many other posts on threejs](/categories/three-js/) that I have wrote as well.
 
 ### Version Numbers matter with threejs
 
