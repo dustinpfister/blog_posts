@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1040
-updated: 2023-05-15 14:09:53
-version: 1.3
+updated: 2023-05-15 15:40:04
+version: 1.4
 ---
 
 In the buffer geometry class of threejs there is a [set draw range method](https://threejs.org/docs/#api/en/core/BufferGeometry.setDrawRange) that will change the state of the draw range object of a buffer geometry index. This can be done by calling the method and then passing a start argument along with a count after that. The numbers given should be terms of vertices, or indices depending if the geometry is indexed or non indexed. With that said there is not just calling this method and passing some values but also being aware of some other aspects of a buffer geometry object. Mainly the position attribute, and also the index if it has one.
@@ -14,6 +14,9 @@ In the buffer geometry class of threejs there is a [set draw range method](https
 This will then just be a quick blog post on this set draw range method as well as a few other buffer geometry related topics while I am at it.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/2RlMPufuBBI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## The Set Draw range method of the buffer geometry class and what to know first
 
