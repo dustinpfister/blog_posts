@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2023-05-15 14:40:50
-version: 1.40
+updated: 2023-05-15 14:50:14
+version: 1.41
 ---
 
-There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](https://threejs.org/docs/#api/en/scenes/Scene), a [camera](https://threejs.org/docs/#api/en/cameras/Camera) to set the point in space by which to look at something in the scene object, and one final other component that is needed on top of all of this and that is a renderer. There is also having something to look at added to the scene object as well such as a [mesh object](/2018/05/04/threejs-mesh/) that is composed of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). However there are other options when it comes to adding content to a scene object, so the core set of objects are really just those three things. That is a scene object, camera, and renderer.
+There are a few core components to making a [threejs](https://threejs.org/) project, there needs to be a [scene object](https://threejs.org/docs/#api/en/scenes/Scene), a [camera](https://threejs.org/docs/#api/en/cameras/Camera) to set the point in space by which to look at something in the scene object, and one final other component that is needed on top of all of this and that is a renderer. There is also having something to look at added to the scene object as well such as a [mesh object](/2018/05/04/threejs-mesh/) that is composed of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). However there are other options when it comes to adding content to a scene object, so the core set of objects are really just those three things. That is a scene object, camera, and renderer.
 
 In older versions of threejs there was both a 2D canvas renderer, and webgl renderer, but in later versions it has been removed from the core of threejs itself. So now when making a threejs project I am pretty much always working with the WebGL renderer as that would seem to be the best option for most typical use cases of threejs. There are some additional options built into the core of the threejs library, and additional renderer options that can be added by way of additional javaScript files. However in this post I will be writing a thing or two about the [WebGL renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer). I will not get into every little detail but I will be writing about every core feature that I think is important to be aware of with this.
 
@@ -98,6 +98,8 @@ So then in this example I always use the THREE.WebGL1Renderer if it is there. In
 
 ### 1.3 - Using a canvas element that is all ready in place
 
+In some cases I might have a canvas all ready in place that might be hard coded into html, or created with javaScript code elsewhere that I want to use for the webGl Renderer. For these kinds of situations there is the canvas option that can be used when creating the renderer to begin with. For this example I am then creating a canvas element with javaScript code by calling the create element method of the document object in client side javaScript. I am then appending this element that I created to my hard coded HTML, and then when calling the WebGLRenderer constructor function I just need to use the canvas option to make use of this canvas, rather than using the canvas that will be created when not using this option which is what I have been doing with many of these other demos thus far.
+
 ```js
 //-------- ----------
 // CANVAS - creating a canvas element with javaScript code and appending to HTML
@@ -128,6 +130,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.4 - Having a transparent background for the renderer
+
+Often I might be in a situation in which I will want the background to not be a solid color, texture, or anything to that effect, but rather just be a clear, transparent background. The main method of the webgl renderer class to be aware of with this would be the set clear color method. When calling this I can pass a clear color to use or leave it as a null value, and then pass an alpha value to whole I am at it. By default the background color is null, and I will want to leave it as such for this sort of thing.
 
 ```js
 //-------- ----------
@@ -288,4 +292,3 @@ setTimeout(function () {
 In the event that there is no support for webGL in a client browser there are ways of feature testing for WebGL and then using another kind of renderer to render a scene, or at least inform the user of what the problem is. For more on this topic check out my other post that has to do with [feature testing on webGL](/2019/06/11/threejs-webgl/).
 
 The WebGL renderer is the default renderer that I often go with mainly because it is a renderer that is built into the core of threejs itself. Many of the other renderer options have to be added by way of an additional external file, or do not have the same set of features such is the case with the SVG renderer for example. Some of these other renderer's might still prove to be a good choice in some situations though, it is just that so far I can not say that I have found myself in situations in which I need to work with these other options.
-
