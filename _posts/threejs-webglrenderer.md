@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2022-12-01 12:07:10
-version: 1.38
+updated: 2023-05-15 14:17:42
+version: 1.39
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/) project, there needs to be a [scene object](https://threejs.org/docs/#api/en/scenes/Scene), a [camera](https://threejs.org/docs/#api/en/cameras/Camera) to set the point in space by which to look at something in the scene object, and one final other component that is needed on top of all of this and that is a renderer. There is also having something to look at added to the scene object as well such as a [mesh object](/2018/05/04/threejs-mesh/) that is composed of a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a [material](/2018/04/30/threejs-materials/). However there are other options when it comes to adding content to a scene object, so the core set of objects are really just those three things. That is a scene object, camera, and renderer.
@@ -25,7 +25,7 @@ The main method of interest with the WebGl renderer as well as with renderers in
 
 ### Source Code examples are on Github
 
-The Source code examples that i am writing about here can also be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-webglrenderer).
+The Source code examples that i am writing about here can also be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-webglrenderer). This is also where I park the source code examples for my many [other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version numbers matter
 
