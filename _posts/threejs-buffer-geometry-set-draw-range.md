@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1040
-updated: 2023-05-12 14:43:51
-version: 1.2
+updated: 2023-05-15 14:09:53
+version: 1.3
 ---
 
 In the buffer geometry class of threejs there is a [set draw range method](https://threejs.org/docs/#api/en/core/BufferGeometry.setDrawRange) that will change the state of the draw range object of a buffer geometry index. This can be done by calling the method and then passing a start argument along with a count after that. The numbers given should be terms of vertices, or indices depending if the geometry is indexed or non indexed. With that said there is not just calling this method and passing some values but also being aware of some other aspects of a buffer geometry object. Mainly the position attribute, and also the index if it has one.
@@ -21,7 +21,15 @@ In this post I am writing about some javaScript code examples that work on top o
 
 ### There is reading more on the buffer geometry class in general
 
-There is my [main blog post on the buffer geometry](/2021/04/22/threejs-buffer-geometry/) class that might be a good read for learning a thing or two about the buffer geometry class in general. There are also a number of other posts of interest that are relevant to the content of this post such as the one on the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/), and also the [index of a buffer geometry](/2022/12/09/threejs-buffer-geometry-index/) as well. If a geometry has an index then the values that I want to pass to the set draw range method should be in terms of the state of the index, otherwise I want to think more in terms of the count of the position attribute.
+There is my [main blog post on the buffer geometry](/2021/04/22/threejs-buffer-geometry/) class that might be a good read for learning a thing or two about the buffer geometry class in general. 
+
+### Know about the position attribute of a buffer geometry object
+
+There are a number of attributes that compose data for a geometry, maybe the most relevant one of interest with this post would be the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/). This attribute contains the actual points in space that will form one or more triangles that are use to define the state of the geometry. There are a number of other core attributes that you should also know a thing or two about at this point such as the normal, and uv attribute. However when it just comes to the set draw range method this is the main attribute of interest here.
+
+### Know what an indexed and non indexed geometry is
+
+The [index of a buffer geometry](/2022/12/09/threejs-buffer-geometry-index/) is something that you show be aware of at this point when it comes to the use of this method. If a geometry has an index then the values that I want to pass to the set draw range method should be in terms of the state of the index, otherwise I want to think more in terms of the count of the position attribute.
 
 ### Source code is also up on Github
 
@@ -29,7 +37,7 @@ The Source code examples that I write about here can also be found on my [test t
 
 ## Version Numbers matter
 
-When I first wrote these code examples I was using r146 of threejs.
+When I first wrote these code examples I was using r146 of threejs. Code breaking changes are made to the library all the time so it is a good idea to know what revision you are using, and what revision an author of code, and corresponding text was using as well.
 
 ## 1 - Some basic examples of the set draw range method
 
@@ -37,7 +45,9 @@ As always I like to start out with at least one if not a few basic examples of a
 
 ### 1.1 - Working with an indexed geometry
 
-For this demo I am starting out with an indexed geometry. When doing so I will want to use the count propery of the index of the geometry as a way to get an index of what the range should be for the values that are used when calling the set draw range method.
+For this demo I am starting out with an indexed geometry. When doing so I will want to use the count property of the index of the geometry as a way to get an index of what the range should be for the values that are used when calling the set draw range method. 
+
+So the first thing as always is to set up the first core set of objects that I would want to use in any threejs project. That is the usual scene object, camera, and then a renderer as well. After I have all of that set up just the way that I like it I will then want to create a geometry. For that I went with the sphere geometry constructor function which be default will return a geometry that has an index. Although this geometry has an index, and it is the values in there I will be using to set the draw range, I am still getting a reference to the position attribute for the sake of comparison.
 
 ```js
 // ---------- ----------
@@ -74,9 +84,11 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
+Once I have a reference to the index I can then use the count property of the index to help get start and count values that will be passed when calling the set draw range method. I then do just that and after that I log out the values for each of these to get a better idea of what is going on.
+
 ### 1.2 - Working with a non indexed geometry
 
-There is then making use of the set draw range method with a geometry that does not have an index. For this example then I am doing more or less the same thing as before only now I will want to count value of the position attribite to know what the range is.
+There is then making use of the set draw range method with a geometry that does not have an index. For this example then I am doing more or less the same thing as before only now I will want to count value of the position attribute to know what the range is. However before I even do that I will want to have a geometry that does not have an index. One way to do so would be to take a geometry that does have an index, and then call the to non index method of the buffer geometry. This will not mutate the geometry that I call it off of, but rather return a new one from the source geometry that does not have an index.
 
 ```js
 // ---------- ----------
@@ -216,4 +228,3 @@ loop();
 ## Conclusion
 
 The set draw range is then one way to just draw a given range of points in a geometry. However there might only be so much practical use for a method such as this when I come to think of it. There might be some cool effects that can be done with if for sure by adjusted what the start and count value are for sure. However beyond that there might only be so much more to say when it comes to maybe using this method in a project. There is the idea that the use of this method might help in the process of making a project sun faster by reducing the amount of geometry that is drawn. That might be the case but there are a whole lot of other things to look into that might be a better choice in that matter such as having more than one level of detail and so forth.
-
