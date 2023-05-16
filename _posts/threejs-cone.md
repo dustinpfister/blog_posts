@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2023-05-16 16:38:41
-version: 1.31
+updated: 2023-05-16 17:08:07
+version: 1.32
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in [constructor functions](/2019/02/27/js-javascript-constructor/) that can be used to make most basic shapes such as the [Box geometry Constructor](/2021/04/26/threejs-box-geometry/), and the [Sphere Geometry Constructor](/2021/05/26/threejs-sphere/) just to name a new. These constructors can be used to quickly create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/) that can then in turn be used with a materials to produce an over all [mesh object](/2018/05/04/threejs-mesh/) that can then be added to a [scene object](/2018/05/03/threejs-scene/) of an over all threejs project. 
@@ -41,30 +41,27 @@ When I first wrote this post I was using version r106 of three.js and the last t
 The cone Geometry constructor can accept a few arguments, just like the box and sphere constructors. However just the first two are the most important when it comes to a basic example of the cone geometry constructor at least. The first one is the radius of the base of the cone and then second is the height or length of the cone from the base to the tip. The additional arguments might need to be used in a few cases here and there, but for the most part those are the two parameters that are most important so for a basic example I will be starting out with something where those tow are used, and everything else will be left to hard coded defaults.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER, LIGHT
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    scene.add(camera);
-    var light = new THREE.PointLight(0xffffff);
-    camera.add(light);
-    // CONE
-    var coneGeo = new THREE.ConeGeometry(1, 7),
-    coneMaterial = new THREE.MeshStandardMaterial({
-            color: 0x00ff00
-        }),
-    cone = new THREE.Mesh(coneGeo, coneMaterial);
-    // add cone to the scene
-    scene.add(cone);
-    // render
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SCENE CHILD OBJECTS - mesh using cone geometry
+//-------- ----------
+const geometry = new THREE.ConeGeometry(1, 7);
+const material = new THREE.MeshNormalMaterial({});
+const mesh1 = new THREE.Mesh(geometry, material);
+scene.add(mesh1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 2 - Cone Segments
@@ -72,33 +69,38 @@ The cone Geometry constructor can accept a few arguments, just like the box and 
 The first two arguments that the most important when it comes to creating a cone shape, so they of course come first. However there are a few additional arguments that are also of importance when making a cone shape, such as setting the number of segments relative to the base of the circle, and the length of the code. With that said, the next two arguments can be used to do just that.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER, LIGHT
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    scene.add(camera);
-    var light = new THREE.PointLight(0xffffff);
-    camera.add(light);
-    // CONE
-    var coneGeo = new THREE.ConeGeometry(2, 4,
-        60, // radian segments,
-        20 // height segments
-    ),
-    coneMaterial = new THREE.MeshStandardMaterial({
-        color: 0x00ff00
-    }),
-    cone = new THREE.Mesh(coneGeo, coneMaterial);
-    // add cone to the scene
-    scene.add(cone);
-    // render
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff);
+dl.position.set( 1, 2, 3 );
+scene.add(dl);
+//-------- ----------
+// SCENE CHILD OBJECTS - Mesh Using cone geometry with custom segment counts
+//-------- ----------
+const coneGeo = new THREE.ConeGeometry(2, 4,
+    60, // radian segments,
+    20 // height segments
+),
+coneMaterial = new THREE.MeshStandardMaterial({
+    color: 0x00ff00
+}),
+mesh1 = new THREE.Mesh(coneGeo, coneMaterial);
+scene.add(mesh1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(6, 6, 6);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 So then there is setting the radius of the base, the length of the cone, and the number of sections to use. There is then just the question of what that additional arguments do when using the cone geometry constructor.
@@ -108,42 +110,48 @@ So then there is setting the radius of the base, the length of the cone, and the
 To make a half cone I just need to use the last to arguments that are given to the cone geometry constructor that can be used to set a starting and ending angle for the base arc of the cone. So then this example will make use of all of the arguments that can be used when creating a cone geometry.
 
 ```js
-(function () {
-    // SCENE, CAMERA, RENDERER, LIGHT
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    scene.add(camera);
-    var light = new THREE.PointLight(0xffffff);
-    camera.add(light);
-    // CONE
-    var radius = 1,
-    height = 5,
-    radSegs = 4,
-    hightSegs = 1;
-    var cone = new THREE.ConeGeometry(
-            1, // radius
-            5, // height
-            4, //radial segments,
-            1, // height segments
-            false, // open ended or capped, false means capped
-            0, // start angle
-            Math.PI // angle length from start
-        );
-    material = new THREE.MeshStandardMaterial({
-            color: 0x00ff00,
-            side: THREE.DoubleSide
-        }),
-    mesh = new THREE.Mesh(cone, material);
-    scene.add(mesh);
-    // render
-    renderer.render(scene, camera);
-}
-    ());
+
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff);
+dl.position.set(0, 1, 3)
+scene.add(dl);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.ConeGeometry(
+        5, // radius
+        10, // height
+        32, //radial segments,
+        1, // height segments
+        false, // open ended or capped, false means capped
+        0, // start angle
+        Math.PI // angle length from start
+);
+//-------- ----------
+// MATERIAL/MESH
+//-------- ----------
+const material = new THREE.MeshStandardMaterial({
+    color: 0x00ff00,
+    side: THREE.DoubleSide
+});
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(-8, 8, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 4 - Rotating the geometry of a cone so that it works as you might want it to when using the look at method of the mesh
@@ -151,37 +159,39 @@ To make a half cone I just need to use the last to arguments that are given to t
 Often a cone geometry might be used as a way to go about pointing to something in a scene, however be default the geometry of a cone will not line up as expected when using the look at method of a mesh that contains a cone geometry. This issue can easily be fixed by just rotating the cone geometry in a way so that the geometry of the cone will line up with the front of a containing mesh object. The rotateX method of the geometry instance of the cone is what can be used to make this kind of adjustment.
 
 ```js
-(function () {
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(7, 7)); // grid helper for the scene
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
-    camera.position.set(6, 8, 6);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // MESH OBJECTS
-    // geometry
-    var geometry = new THREE.ConeGeometry(0.5, 03, 30, 30);
-    var cone = new THREE.Mesh(
-            geometry,
-            new THREE.MeshNormalMaterial());
-    // USING BUFFER GEOMERTY ROTATEX METHOD
-    cone.geometry.rotateX(Math.PI * 0.5);
-    cone.add(new THREE.BoxHelper(cone)); // adding a box helper
-    scene.add(cone); // add custom to the scene
-    // adding a cube to have the cone point to
-    var cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    cube.position.set(3, 0, 3);
-    scene.add(cube)
-    cone.lookAt(cube.position); // using Object3d (base class of Mesh) lookAt
-    camera.lookAt(cone.position);
-    // camera render
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(7, 7)); // grid helper for the scene
+const geometry = new THREE.ConeGeometry(0.5, 03, 30, 30);
+const cone = new THREE.Mesh(
+        geometry,
+        new THREE.MeshNormalMaterial());
+// USING BUFFER GEOMERTY ROTATEX METHOD
+cone.geometry.rotateX(Math.PI * 0.5);
+cone.add(new THREE.BoxHelper(cone)); // adding a box helper
+scene.add(cone); // add custom to the scene
+// adding a cube to have the cone point to
+const cube = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+cube.position.set(3, 0, 3);
+scene.add(cube)
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8,8,8);
+cone.lookAt(cube.position);
+camera.lookAt(cone.position);
+renderer.render(scene, camera);
 ```
 
 Getting into this subject in detail might be a little off topic, but if interested you might want to check out my post on [rotating buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/) in three.js. However I will just bring up one thing when it comes to rotating geometry in threejs and that is that it is something that such typically be done only once. When it comes to this issue the geometry just needs to be rotated so that things line up when using the object3d look at method of the mesh object. It is the object3d level methods and properties that should always be used to change the position and rotation of an over all mesh object.
