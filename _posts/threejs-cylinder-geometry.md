@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2022-12-02 11:48:34
-version: 1.12
+updated: 2023-05-16 16:40:05
+version: 1.13
 ---
 
 I took the time to write a post or two on some of the various built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor. However I have not yet got around to writing one on [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry), so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. 
@@ -15,12 +15,12 @@ One interesting thing about the cylinder geometry constructor is that I can give
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/YDILik1pAFM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## Cylinder Geometry and what to know first
 
 This is a post on the Cylinder geometry constructor in the javaScript library known as threejs. Although I will be keeping many of the source code examples in this post fairly simple, this is not a getting started with threejs kind of post and I assume that you have at least a little experience with the library before hand. Although I will not be getting into every little detail that you should know at this point, I will take a moment to write about a few things that you migth want to read up more on before continuing to read the rest of this post.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/YDILik1pAFM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ### Read up more on Buffer Geometry in general
 
@@ -32,7 +32,7 @@ The [cone geometry](/2019/07/31/threejs-cone/) can also be used to make geometri
 
 ### Source code is on Github
 
-The source code examples that I am writing about here can also be found in [my test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-cylinder-geometry).
+The source code examples that I am writing about here can also be found in [my test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-cylinder-geometry). This is also where I place the source code examples for my [many other blog posts on threejs](/categories/three-js/).
 
 ### Version numbers matter
 
