@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2022-12-03 09:30:55
-version: 1.23
+updated: 2023-05-17 13:44:01
+version: 1.24
 ---
 
 There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with the [visible property of the obejct3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), or making the material used with an object transparent and lowering the opacity. There is also just simply not adding an object to a scene object, or having an object added to the scene, and another that is not and swapping objects to and from them as children. 
@@ -31,7 +31,7 @@ Still the layers property is a good option for setting certain objects to certai
 
 ### Source code examples are on Github
 
-The source code examples that I am writing about in this post [can also be found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-layers).
+The source code examples that I am writing about in this post [can also be found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-layers). This is also a repo where I park the source code examples for my [many other blog posts on threejs](/categories/three-js/) as well.
 
 ### version numbers matter with threejs
 
