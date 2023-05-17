@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2023-05-17 13:44:01
-version: 1.24
+updated: 2023-05-17 13:51:29
+version: 1.25
 ---
 
 There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with the [visible property of the obejct3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), or making the material used with an object transparent and lowering the opacity. There is also just simply not adding an object to a scene object, or having an object added to the scene, and another that is not and swapping objects to and from them as children. 
@@ -44,45 +44,42 @@ I like to try my best to keep the first example of something in a post like this
 I then also created and added a mesh object to the scene, and before adding the mesh to the scene I used the set method of the Layers instance to make it so the mesh will only be rendered with a camera that is enabled for layer 1. So in other words the set method will disable an object for all layers, except the layer index that is given as the first argument.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer(): new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // ADDING A GRID THAT I AM ENABLING FOR ALL LAYERS
-    //-------- ----------
-    const grid = new THREE.GridHelper(10, 10);
-    grid.layers.enableAll();
-    scene.add(grid);
-    //-------- ----------
-    // SINGLE MESH FOR LAYER 1
-    //-------- ----------
-    const mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    mesh.layers.set(1);
-    scene.add(mesh);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    let cameraLayer = 0;
-    const update = function () {
-        camera.layers.set(cameraLayer);
-        renderer.render(scene, camera);
-        cameraLayer += 1;
-        cameraLayer %= 2;
-    };
-    update();
-    setInterval(update, 1000);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer(): new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// ADDING A GRID THAT I AM ENABLING FOR ALL LAYERS
+//-------- ----------
+const grid = new THREE.GridHelper(10, 10);
+grid.layers.enableAll();
+scene.add(grid);
+//-------- ----------
+// SINGLE MESH FOR LAYER 1
+//-------- ----------
+const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+mesh.layers.set(1);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+let cameraLayer = 0;
+const update = function () {
+    camera.layers.set(cameraLayer);
+    renderer.render(scene, camera);
+    cameraLayer += 1;
+    cameraLayer %= 2;
+};
+update();
+setInterval(update, 1000);
 ```
 
 So now it is just a question of what layers the camera is enabled for, for this example I am once again using the set method of the layers property of the cameras to switch between layer 0 and layer 1. The result is then a situation where the grid is always drawn when the camera is set to layer 0 or 1, and the mesh is only drawn when the layer of the camera is set to 1. So you get the basic idea when it comes to layers, there is what layers an object in a scene is set to, and there is what layer index values a camera is set to. A camera that is used to render a scene will only render objects that are enabled for the layers to which the cameras is enabled for.
@@ -96,77 +93,74 @@ So then in this example I am creating an array of layer numbers that I would lik
 So at the top of the example I have this array of layer modes, and then a variable to hold the current mode index when it comes to looping over these for the camera. I then have a set to layer mode helper method that is the main method of interest with this example. Here I am calling the disable all method of the given object to make it so that the object is not enabled for any layer at all for starters. I then use the given index number to get the array of layer numbers to enable for the object and use the enable method of the Layers class rather than the set method.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer(): new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // LAYER MODES
-    //-------- ----------
-    const layerModes = [[0], [1], [2], [0, 1]];
-    let layerModeIndex = 0;
-    //-------- ----------
-    // HELPER FUNCTIONS
-    //-------- ----------
-    const setToLayerMode = function (obj, index) {
-        obj.layers.disableAll();
-        layerModes[index].forEach(function (layerNum) {
-            obj.layers.enable(layerNum);
-        });
-    };
-    const createBoxForLayer = function (layerMode, color, x) {
-        const mesh = new THREE.Mesh(
-                new THREE.BoxGeometry(1, 1, 1),
-                new THREE.MeshBasicMaterial({
-                    color: color
-                }));
-        const boxHelper = new THREE.BoxHelper(mesh);
-        setToLayerMode(boxHelper, 3);
-        mesh.add(boxHelper);
-        mesh.position.set(x, 0, 0);
-        setToLayerMode(mesh, layerMode);
-        return mesh;
-    };
-    //-------- ----------
-    // GRID AND MESH OBJECTS
-    //-------- ----------
-    const grid = new THREE.GridHelper(10, 10);
-    grid.layers.enableAll(); // enable all will set all layers true
-    scene.add(grid);
-    // ADDING A MESH FOR LAYER MODE 0 ONLY
-    scene.add(createBoxForLayer(0, 'red', 2));
-    // ADDING A MESH FOR LAYER MODE 1 ONLY
-    scene.add(createBoxForLayer(1, 'lime', -2));
-    // ADDING A MESH FOR LAYER MODE 2 ONLY
-    scene.add(createBoxForLayer(2, 'white', 0));
-    //-------- ----------
-    // LOOP
-    //-------- ----------
-    let lt = new Date();
-    const loop = function () {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1) {
-            setToLayerMode(camera, layerModeIndex);
-            layerModeIndex += 1;
-            layerModeIndex %= layerModes.length;
-            renderer.render(scene, camera);
-            lt = now;
-        }
-    };
-    setToLayerMode(camera, layerModeIndex);
-    renderer.render(scene, camera);
-    loop();
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer(): new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LAYER MODES
+//-------- ----------
+const layerModes = [[0], [1], [2], [0, 1]];
+let layerModeIndex = 0;
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const setToLayerMode = function (obj, index) {
+    obj.layers.disableAll();
+    layerModes[index].forEach(function (layerNum) {
+        obj.layers.enable(layerNum);
+    });
+};
+const createBoxForLayer = function (layerMode, color, x) {
+    const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshBasicMaterial({
+                color: color
+            }));
+    const boxHelper = new THREE.BoxHelper(mesh);
+    setToLayerMode(boxHelper, 3);
+    mesh.add(boxHelper);
+    mesh.position.set(x, 0, 0);
+    setToLayerMode(mesh, layerMode);
+    return mesh;
+};
+//-------- ----------
+// GRID AND MESH OBJECTS
+//-------- ----------
+const grid = new THREE.GridHelper(10, 10);
+grid.layers.enableAll(); // enable all will set all layers true
+scene.add(grid);
+// ADDING A MESH FOR LAYER MODE 0 ONLY
+scene.add(createBoxForLayer(0, 'red', 2));
+// ADDING A MESH FOR LAYER MODE 1 ONLY
+scene.add(createBoxForLayer(1, 'lime', -2));
+// ADDING A MESH FOR LAYER MODE 2 ONLY
+scene.add(createBoxForLayer(2, 'white', 0));
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+let lt = new Date();
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1) {
+        setToLayerMode(camera, layerModeIndex);
+        layerModeIndex += 1;
+        layerModeIndex %= layerModes.length;
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+setToLayerMode(camera, layerModeIndex);
+renderer.render(scene, camera);
+loop();
 ```
 
 ## Conclusion
