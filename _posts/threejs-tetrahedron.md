@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1016
-updated: 2023-05-17 08:30:15
-version: 1.11
+updated: 2023-05-17 08:33:00
+version: 1.12
 ---
 
-When looking into the built in Geometry Classes in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) for the first time there are a few that can be used to make a Pyramid Type Geometry. Both the Cone Geometry, and the Cylinder Geometry classes can be used to do so if one gives a certain set of arguments when calling them. There is however also a built in Tetrahedron Geometry Class that can also be used to do this bu just simply calling it and giving a radius that will also result in a Pyramid shape as well. However one might run into some problems with this sort of thing when it comes to rotation of the result, and there are also a few additional reasons why one might want to make some kind of custom geometry for this sort of thing as well. So in this post I will be writing about this built in Tetrahedron Geometry Class, but also an array of alternative ways to create this kind of geometry including some custom ways to do so while I am at it.
+When looking into the built in Geometry Classes in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) for the first time there are a few that can be used to make a Pyramid Type Geometry. Both the Cone Geometry, and the Cylinder Geometry classes can be used to do so if one gives a certain set of arguments when calling them. There is however also a built in [Tetrahedron Geometry Class](https://threejs.org/docs/#api/en/geometries/TetrahedronGeometry) that can also be used to do this by just simply calling it and giving a radius that will also result in a Pyramid shape as well. 
+
+However one might run into some problems with this sort of thing when it comes to rotation of the result, and there are also a few additional reasons why one might want to make some kind of custom geometry for this sort of thing as well. So in this post I will be writing about this built in Tetrahedron Geometry Class, but also an array of alternative ways to create this kind of geometry including some custom ways to do so while I am at it.
 
 <!-- more -->
 
