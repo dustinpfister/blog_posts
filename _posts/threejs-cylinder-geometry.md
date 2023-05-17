@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2023-05-17 07:53:29
-version: 1.14
+updated: 2023-05-17 08:15:21
+version: 1.15
 ---
 
 There are a number of built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor.  In this post however I will be writing mainly about the [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry) which apart from being using for making a cylinder, can also be used to form some other shapes actually depending on the arguments given.
@@ -36,7 +36,7 @@ The source code examples that I am writing about here can also be found in [my t
 
 ### Version numbers matter
 
-When I first wrote this post I was using r140 of threejs.
+When I first wrote this post I was using r140 of threejs, and the last time I came around to do a little editing I was using r146.
 
 ## 1 - A Basic Cylinder geometry example
 
@@ -45,28 +45,28 @@ To start out with I am going to have an example that is just the usual setup wit
 When making a mesh object to add to the scene I first need a geometry and one way to do so would be to call the Cylinder geometry constructor. When doing so the first two arguments are for setting the top and bottom radius values for the cylinder. The third argument is for setting the length of the cylinder, and after that the fourth and firth arguments are for setting what the count should be for radial and height segments. There are additional arguments after that but for now I think I should just stick with these argument for the sake of this basic example.
 
 ```js
-//******** **********
-// SCENE, GRID HELPER, CAMERA, RENDERER
-//******** **********
-let scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
-scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(0, 5, 10);
-camera.lookAt(0, 3, 0);
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
-// MESH
-//******** **********
-var geo = new THREE.CylinderGeometry(1, 1, 3, 10, 10);
-var mesh = new THREE.Mesh(geo, new THREE.MeshNormalMaterial());
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const geometry = new THREE.CylinderGeometry(1, 1, 3, 10, 10);
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
 scene.add(mesh);
-//******** **********
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+//-------- ----------
 // RENDER
-//******** **********
-renderer.render(scene, camera);      
+//-------- ----------
+camera.position.set(0, 5, 10);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 2 – Making a Cone with Cylinder Geometry
@@ -76,42 +76,38 @@ A while back I did write a [blog post on the cone geometry constructor](/2019/07
 When calling the cylinder geometry constructor as covered in the basic example the first two arguments that I give are used to set the top, and bottom radius values. So then to make a cone shape I just need to set a value of zero for one of these first two arguments.
 
 ```js
-//******** **********
-// SCENE, GRID HELPER, CAMERA, RENDERER
-//******** **********
-let scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
-scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
-// MESH
-//******** **********
- 
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//---------- ----------
+// OBJECTS
+//---------- ----------
 // some values for a cone
-var rTop = 0,
+const rTop = 0,
 rBottom = 1,
 length = 3;
- 
 // making a cone with CylinderGeometry
-var geo1 = new THREE.CylinderGeometry(rTop, rBottom, length, 20, 20);
-var mesh1 = new THREE.Mesh(geo1, new THREE.MeshNormalMaterial());
+const geo1 = new THREE.CylinderGeometry(rTop, rBottom, length, 20, 20);
+const mesh1 = new THREE.Mesh(geo1, new THREE.MeshNormalMaterial());
 scene.add(mesh1);
- 
 // making a cone with ConeGeometry
-var geo2 = new THREE.ConeGeometry(rBottom, length, 20, 20);
-var mesh2 = new THREE.Mesh(geo2, new THREE.MeshNormalMaterial());
+const geo2 = new THREE.ConeGeometry(rBottom, length, 20, 20);
+const mesh2 = new THREE.Mesh(geo2, new THREE.MeshNormalMaterial());
 mesh2.position.set(0, 0, 3);
 scene.add(mesh2);
- 
-//******** **********
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+//---------- ----------
 // RENDER
-//******** **********
-renderer.render(scene, camera);      
+//---------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 3 - Groups and cylinder geometry
@@ -123,47 +119,42 @@ I have [wrote a post on the material index property of the objects that are used
 With that said I can give an array of three materials rather than just one for the materials argument when making the mesh object. When doing so the material at index value 0 will be used for the side of the cylinder, while the other two index values will be used for the top and bottom caps of the cylinder.
 
 ```js
-//******** **********
-// SCENE, GRID HELPER, CAMERA, RENDERER
-//******** **********
-let scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
-scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // LIGHT
-//******** **********
-var dl = new THREE.DirectionalLight(0xffffff, 1.0);
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1.0);
 dl.position.set(3, 4, 1);
 scene.add(dl);
- 
-//******** **********
-// MESH
-//******** **********
- 
-var materials = [
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const materials = [
     new THREE.MeshStandardMaterial({ color: 0xff0000}),
     new THREE.MeshStandardMaterial({ color: 0x00ff00}),
     new THREE.MeshStandardMaterial({ color: 0x00ffff})
 ];
- 
-var mesh1 = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 4, 20, 20), materials);
+const mesh1 = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 4, 20, 20), materials);
 scene.add(mesh1);
- 
-var mesh2 = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 4, 20, 20), materials);
+const mesh2 = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 4, 20, 20), materials);
 mesh2.position.set(0, 0, 1);
 mesh2.rotation.z = Math.PI * 0.6;
 scene.add(mesh2);
- 
-//******** **********
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+//-------- ----------
 // RENDER
-//******** **********
-renderer.render(scene, camera);      
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
 ```
 
 ## 4 - Open caps and additional arguments
@@ -173,22 +164,19 @@ There are a few more arguments to work with when making a cylinder geometry when
 There is the [Math utils object](/2022/04/11/threejs-math-utils/) that contains useful methods for quickly converting from degree to radians. Also if I am going to have open caps I might want to set the side property value of the material that I am using to a value that will be double side, so that both sides of a face are render rather than just the front side.
 
 ```js
-//******** **********
-// SCENE, GRID HELPER, CAMERA, RENDERER
-//******** **********
-let scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
-scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // MESH
-//******** **********
-var mesh1 = new THREE.Mesh(
+//-------- ----------
+const mesh1 = new THREE.Mesh(
      // Cylinder Geometry Constructor call using all arguments
      new THREE.CylinderGeometry(3, 3, 3, 20, 20,
         true, // true is for open caps
@@ -201,9 +189,12 @@ var mesh1 = new THREE.Mesh(
      })
 );
 scene.add(mesh1);
-//******** **********
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
+//-------- ----------
 // RENDER
-//******** **********
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);      
 ```
 
@@ -214,39 +205,35 @@ There is also using points and lines in place of the usual mesh object. If I wan
 Another alternative option to the mesh object would be the lines, or lines segment constructor. When doing this I can just pass the geometry as the first option also, but some times I might want to pass in threw the edges geometry constructor first. In any case just like with the points constructor I can not use any of the mesh materials and then have to use one of the special line materials in place of doing so.
 
 ```js
-//******** **********
-// SCENE, GRID HELPER, CAMERA, RENDERER
-//******** **********
-let scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
-scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(5, 5, 5);
-camera.lookAt(0, 0, 0);
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
-// POINTS
-//******** **********
-var points = new THREE.Points(
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const points = new THREE.Points(
      new THREE.CylinderGeometry(0.75, 0.75, 4, 20, 20),
 new THREE.PointsMaterial( { color: 0x00afaf, size: 0.1 } )
 );
 scene.add(points);
-//******** **********
-// LINES
-//******** **********
-var lines = new THREE.LineSegments(
+const lines = new THREE.LineSegments(
      new THREE.EdgesGeometry( new THREE.CylinderGeometry(0.75, 0.75, 4, 20, 20) )
 );
 lines.position.set(0, 0, 3);
 scene.add(lines);
- 
-//******** **********
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+//-------- ----------
 // RENDER
-//******** **********
-renderer.render(scene, camera);
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);      
 ```
 
 ## Conclusion
