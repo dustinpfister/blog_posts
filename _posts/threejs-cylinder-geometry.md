@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1000
-updated: 2023-05-16 16:40:05
-version: 1.13
+updated: 2023-05-17 07:53:29
+version: 1.14
 ---
 
-I took the time to write a post or two on some of the various built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor. However I have not yet got around to writing one on [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry), so I though that this weeks post should be just a quick post on this constructor as well on top of the older ones that I have wrote. 
+There are a number of built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) that there are to work with in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) such as the [box geometry](/2021/04/26/threejs-box-geometry/) constructor.  In this post however I will be writing mainly about the [cylinder geometry](https://threejs.org/docs/#api/en/geometries/CylinderGeometry) which apart from being using for making a cylinder, can also be used to form some other shapes actually depending on the arguments given.
 
-One interesting thing about the cylinder geometry constructor is that I can give both a top, and bottom radius and when doing so I can set a radius of zero for one of these which allows me to use this is a replacement for the [cone geometry](https://threejs.org/docs/#api/en/geometries/ConeGeometry) constructor. So like many of the other built in geometry constructors I can make a few shapes other than that of a cylinder actually depending on the argument values that I give when calling it.
+With that said one interesting thing about the cylinder geometry constructor is that I can give both a top, and bottom radius when calling the constructor. So I can set a radius of zero for one of these which allows me to use this is a replacement for the [cone geometry](https://threejs.org/docs/#api/en/geometries/ConeGeometry) constructor. There are then a number of other arguments that can be given to define how many sections there will be as ushual for many of these built in geometry options.
 
 <!-- more -->
 
