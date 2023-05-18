@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 860
-updated: 2022-12-04 14:45:08
-version: 1.23
+updated: 2023-05-18 15:45:46
+version: 1.24
 ---
 
 There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I [wrote a post on one of these camera control options which was the orbit controls](/2018/04/13/threejs-orbit-controls/) a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
@@ -17,13 +17,13 @@ There are a number of official camera controls that can be used with [threejs](h
 
 In this post I am writing about the official three.js fly controls in three.js which is a javaScript library that can be used to work with 3d models. So then this is not a [getting started type post with three.js](/2018/04/04/threejs-getting-started/) as I have wrote a post on that topic before. However in this section I will be going over a few quick things to know about before continuing with the code examples that I am writing about here with the three.js fly controls.
 
-### Make sure that you have added the fly controls after adding three.js in the html
+### Make sure that you have added the fly controls after adding threejs in the html
 
-The official fly controls can be found in the [examples folder of the official three.js github repository](https://github.com/mrdoob/three.js/blob/r127/examples/js/controls/FlyControls.js). When grabbing a copy from there make sure that it is for the version of three.js that you are using. Changes are rare with many of these controls, but I have found that they do happen once in a while.
+The official fly controls can be found in the examples folder of the official threejs github repository. When grabbing a copy from there make sure that it is for the version of threejs that you are using. Also for some new revisions of threejs there might only be a javaScript module form of fly controls to work with. As of this writing the last revision of threejs in which I abserve that the js folder exists is [r146, and as such the fly controls that I use for that revision can be found here in the js folder of exmaples](https://github.com/mrdoob/three.js/blob/r146/examples/js/controls/FlyControls.js). However if you are using a later revison of threejs such as [r152 then you will have to use the JSM file](https://github.com/mrdoob/three.js/blob/r152/examples/jsm/controls/FlyControls.js), and then with it JSM in general for your project.
 
 ### Source code is on Github
 
-The Source code examples that I am writing about here [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-fly-controls/s1-1-basic).
+The Source code examples that I am writing about here [can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-fly-controls/s1-1-basic). This is also where I park the source code examples for my [many other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version Numbers matter with three.js
 
