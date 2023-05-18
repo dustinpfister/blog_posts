@@ -5,17 +5,19 @@ tags: [git,node.js]
 layout: post
 categories: git
 id: 499
-updated: 2019-07-05 18:52:25
-version: 1.6
+updated: 2023-05-18 16:00:06
+version: 1.7
 ---
 
-The [git init](https://git-scm.com/docs/git-init) command can be used to create a new git folder, So this is one of the first things to look into when it comes to [getting started with git](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) after having installed git. There is also the git clone command that can be used to make a copy of an existing git folder as well, in either case you end up with a git folder. In this post I will be going over some of the basics when it comes to creating new git folders, there is not much to it when it comes to the basics. However I thought I would make a quick post on this subject just for the heck of it sense I am expanding my content on git as of late. So lets get this one oit of the way so I can get on to more advanced posts on git and source control.
+The [git init](https://git-scm.com/docs/git-init) command can be used to create a new git folder, so this is one of the first things to look into when it comes to [getting started with git](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository). There is also the [git clone](/2023/05/11/git-clone/) command that can be used to make a copy of an existing git folder as well, in either case you end up with a git folder. 
+
+In this post I will be going over some of the basics when it comes to creating new git folders, there is not much to it when it comes to the basics. However I thought I would make a quick post on this subject just for the heck of it sense I am expanding my content on git as of late. So lets get this one oit of the way so I can get on to more advanced posts on git and source control.
 
 <!-- more -->
 
 ## 1 - A basic git init create git folder example
 
-To get started with git init the first thing that I need to do is just create a folder. Once I have a folder I just need to cd into and make that new folder the current working directory. When inside the new folder that i want to make a git folder I just need to call the git init command with no additional arguments and that will result in the creating of a new git folder.
+To get started with git init the first thing that I need to do is just create a folder such as with the [linux mkdir command](/2021/06/30/linux-mkdir/), or by whatever means that I have to just make a folder. Once I have a folder I just need to [cd into it](/2021/02/10/linux-cd/) to make that new folder the [current working directory](/2021/07/06/linux-pwd/). When inside the new folder that I want to make a git folder I just need to call the git init command with no additional arguments and that will result in the creating of a new git folder.
 
 ```
 $ mkdir project_folder
@@ -79,3 +81,7 @@ $ git status
 On branch master
 nothing to commit, working directory clean
 ```
+
+## Conclusion
+
+That is about it when it comes to setting up a git folder. However of course there is a great deal more when it comes to using git beyond just status, init, add, and commit. There are things like setting up a remote and pushing the current state of the git folder to that remote. There is also using the [git pull command](/2023/05/18/git-pull/) to make sure that a local copy of a git folder, is up to date, and much more. However that all might be matters for other posts, and one needs to start somewhere and just creating a new git folder is one way to do so.
