@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 728
-updated: 2020-10-23 08:07:35
-version: 1.8
+updated: 2023-05-19 08:19:56
+version: 1.9
 ---
 
 The [git checkout](https://git-scm.com/docs/git-checkout) command in [git](https://git-scm.com/) can be used to switch to another branch, but also to an older commit on the same branch and back again.
@@ -49,7 +49,7 @@ $ git commit -m "file2"
 
 ### 1.3 - use the git log command to log to the console
 
-So now that I have at least two commits in my foo test folder I can not move back one commit using the git checkout command. The git log command can be used to get a list of hash ids for each commit. It would be best to read up more on each little detail about the git log command, but that would be off topic.
+So now that I have at least two commits in my foo test folder I can now move back one commit using the git checkout command. In order to do so however I will need a tag, or a hash id of some kind. One way to get a list of recent hash ids would be to use the [git log](/2019/05/29/git-log) command.
 
 ```
 $ git log --format="%H,%s"
@@ -75,6 +75,6 @@ $ ls
 file1.txt file2.txt
 ```
 
-## 2 - Conclusion
+## Conclusion
 
 So the git checkout command is like the cd command of git folders, it can be used to change what the current commit is for the git folder. The git log command is then similar to the ls command in posix systems in that the git log command can show me commit ids to go to from where I am currently.
