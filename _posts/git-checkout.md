@@ -5,25 +5,23 @@ tags: [git]
 layout: post
 categories: git
 id: 728
-updated: 2023-05-19 08:19:56
-version: 1.9
+updated: 2023-05-19 08:30:02
+version: 1.10
 ---
 
-The [git checkout](https://git-scm.com/docs/git-checkout) command in [git](https://git-scm.com/) can be used to switch to another branch, but also to an older commit on the same branch and back again.
+The [git checkout](https://git-scm.com/docs/git-checkout) command in [git](https://git-scm.com/) can be used to switch to another branch, but also to an older commit on the same branch and back again. One of the major reasons to use source control to begin with is so that I can go back to any point in development to which a commit has been made. Another major feature of using git is branching, being able to create a whole other branch to make some changes that may or may not be merged down into the main master branch at some point.
 
-One of the nice things about using git, or source control in general is that I can go back to any point in development to which a commit has been made. The git log command can at any point be called to get a list of commit hash ids that can then be used with the git checkout command to switch to any one of those commits.
-
-The checkout command can then be used to switch the current head of the git folder to a given commit, it can also be used to switch back to the latest commit for a branch by just giving the branch name rather than a commit hash id. The git checkout command is then one of sever commands that I or any developer that uses source control should be aware of, so it is worth it to write about a few simple examples of the git checkout command.
+The checkout command can then be used to switch the current head of the git folder to a given commit, it can also be used to switch back to the latest commit for a branch by just giving the branch name rather than a commit hash id. The git checkout command is then one of several commands that I or any developer that uses source control should be aware of. So it is worth it to write about a few simple examples of the git checkout command that have to do with typical use cases.
 
 <!-- more -->
 
-## 1 - switch back to an older commit with git checkout
+## 1 - Switch back to an older commit, and back again with git checkout
 
 In this section I will be going over a simple example that involves creating a basic test git folder. In the folder I will be just creating two commits, and use the git checkout command to switch back to the first commit, and then back to the latest commit.
 
 ### 1.1 - create a git folder, a file, and a first commit
 
-The first step here is to have a git folder to work with. I could just clone done something and start using git log and git checkout to navigate around the tree. However for this section I will be creating a new git folder. So I start out by creating a new folder called foo and make foo the current working path. Inside the foo folder I do a git init to make foo a git folder.
+The first step here is to have a git folder to work with to being with. I could use the [git clone command](/2023/05/11/git-clone/) to copy down something however for this section I will be creating a new git folder with [git init](/2019/07/05/git-init/). So I start out by creating a new folder called foo and make foo the current working path. Inside the foo folder I do a git init to make foo a git folder.
 
 Once I have my foo git folder it is time to create some content for it. So I used the echo command and redirection to just create a simple test file called file1.txt. Now that I have a file I can stage the file to be committed by using git add, and then use the git commit command to create the first commit for the git folder.
 
@@ -78,3 +76,5 @@ file1.txt file2.txt
 ## Conclusion
 
 So the git checkout command is like the cd command of git folders, it can be used to change what the current commit is for the git folder. The git log command is then similar to the ls command in posix systems in that the git log command can show me commit ids to go to from where I am currently.
+
+There are a whole lot of other reasons such as typically using a remote as a way to back up source, and make it easier for other people to work on a project and share the code. However even if git is use purly offline without any remote it is still way better to use git rather than
