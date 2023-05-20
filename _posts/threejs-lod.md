@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1042
-updated: 2023-05-20 07:25:38
-version: 1.4
+updated: 2023-05-20 07:31:17
+version: 1.5
 ---
 
 The [Level Of Detail LOD Object](https://threejs.org/docs/#api/en/objects/LOD) in threejs is an [Object3d class based object](/2018/04/23/threejs-object3d/) that can be composed of a collection of mesh objects where each mesh object is a differing degree of detail for the same LOD Object. It is then possible to set a camera distance for each of these mesh objects that are added to the LOD object so that as an object moves away from the camera the level of detail will go down. Therefore the use of LOD objects is one way to help go about reduce the volume of work that needs to be done when rendering a frame, therefore helping to improve Frame Rate.
@@ -16,6 +16,13 @@ The [Level Of Detail LOD Object](https://threejs.org/docs/#api/en/objects/LOD) i
 ## The LOD Object in threejs and what to know first
 
 This is a Blog post on Level of Detail Objects in the javaScript library known as threejs. With that said I am assuming that anyone that is reading this has at least a [little experience when it comes to using threejs](/2018/04/04/threejs-getting-started/), as well as with client side javaScript in general. If not then it might be hard for you to gain something of value from reading this. In any case in these opening sections I write about a few things that you might want to read up more on before continuing.
+
+### There is also the Object3d.visible property
+
+
+### Do not forget about the distance Property of Cameras
+
+The Lod Object should be used in conjunction with some kind of constant value, or set of constant values and user details to define a max render distance. LOD Objects are great for objects that in in that render distance, but there is also still what should happen when an object goes out of that render distance as well. Speaking of that there is of course the near and far values of [camera objects](/2018/04/06/threejs-camera/).
 
 ### The Source code Examples here are on Github
 
