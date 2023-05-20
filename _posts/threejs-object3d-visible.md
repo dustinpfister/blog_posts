@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2023-05-11 13:24:12
-version: 1.38
+updated: 2023-05-20 07:37:50
+version: 1.39
 ---
 
 There should be a standard way to go about making an object in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) and [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible), this property is a Boolean value that is set to true by default. The state of the visible Boolean is used as a way to inform a renderer if a given object such as a [mesh object](/2018/05/04/threejs-mesh/) should even be rendered or not to begin with. 
@@ -14,6 +14,7 @@ There should be a standard way to go about making an object in [threejs](https:/
 However it is true there are also a number of other subjects of interest such as setting the [transparency property of materials](/2021/04/21/threejs-materials-transparent/) for example that will will still make an object render, it is just that an opacity value can be set to zero that will have a similar visual effect. There is also just simply moving an object out of view of the camera of course which might often prove to be a quick, brainless way to get this done and move on. Other option that comes to mind would involve moving mesh objects from one group that is added to a [scene object](/2018/05/03/threejs-scene/) to another group that is not. Yet another way to active this kind of effect would be to make use of the [layers feature of threejs](/2021/06/04/threejs-object3d-layers/) as well which is yet even another option.
 
 So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics and code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
+
 <!-- more -->
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/ZbQaP60OaVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
