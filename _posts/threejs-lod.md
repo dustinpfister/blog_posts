@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1042
-updated: 2023-05-19 09:32:45
-version: 1.2
+updated: 2023-05-20 07:17:34
+version: 1.3
 ---
 
 The [Level Of Detail LOD Object](https://threejs.org/docs/#api/en/objects/LOD) in threejs is an [Object3d class based object](/2018/04/23/threejs-object3d/) that can be composed of a collection of mesh objects where each mesh object is a differing degree of detail for the same LOD Object. It is then possible to set a camera distance for each of these mesh objects that are added to the LOD object so that as an object moves away from the camera the level of detail will go down. Therefore the use of LOD objects is one way to help go about reduce the volume of work that needs to be done when rendering a frame, therefore helping to improve Frame Rate.
@@ -15,7 +15,7 @@ The [Level Of Detail LOD Object](https://threejs.org/docs/#api/en/objects/LOD) i
 
 ## The LOD Object in threejs and what to know first
 
-This is a Blog post on Level of Detail Objects in the javaScript library known as threejs. With that said I am assuming that anyone that is reading this has at least a little experience when it comes to using threejs, as well as with client side javaScript in general. If not then it might be hard for you to gain something of value from reading this. In any case in these opening sections I write about a few things that you might want to read up more on before continuing.
+This is a Blog post on Level of Detail Objects in the javaScript library known as threejs. With that said I am assuming that anyone that is reading this has at least a [little experience when it comes to using threejs](/2018/04/04/threejs-getting-started/), as well as with client side javaScript in general. If not then it might be hard for you to gain something of value from reading this. In any case in these opening sections I write about a few things that you might want to read up more on before continuing.
 
 ### The Source code Examples here are on Github
 
@@ -26,6 +26,12 @@ As with all my [other blog posts on threejs](/categories/three-js/), the source 
 When I wrote this blog post I was using [r152 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md), and I am also using [javaScript module script tags](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) over that of standard plain text/javaScript mime type script tags. This will have to end up being the standard at some point in the future, so I am starting to work out how to go about doing that while also trying to write content that is friendly for people that want to stick with older revisions of threejs. So if things are not working on your end with these examples, one of the first things to check is the revision number. Also on top of that now there is also making sure if you are using module type script tags or regular script tags.
 
 ## 1 - Basic LOD example
+
+A LOD Object is just like that of a Mesh, Camera, or Group object in the sense that it is an Object3d class based object. Which means that once one has a LOD object it can be added as a child of the main scene object of a project. Also just as with any object3d Object setting the position, rotation, and so forth is the same as any other sense the position, rotation, and quaternion properties are all Object3d class properties. 
+
+However what sets LOD apart from many other Objects is how to go about adding Mesh objects to the LOD. There is not just the add method, but now also the addLevel method as well and there are two very important differences to these methods. The add method is a common Object3d class method that is used to add an object as a child of a parent object, where the addLevel method of the LOD class is used to set a Level of detail object for the parent object.
+
+For this basic example I am adding three mesh objects to an LOD Object by way of the add level method. When calling the add level method I pass the mesh object as the first argument, and then a distance value that is the distance from that camera at which the given mesh object will be used to define the level of detail. So with that said when creating the geometry for these mesh objects I am using the Sphere geometry constructor and passing differing values for the number of width and height segments.
 
 ```js
 // ---------- ----------
