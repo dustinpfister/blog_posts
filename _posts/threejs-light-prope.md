@@ -5,22 +5,19 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2022-12-07 14:10:31
-version: 1.25
+updated: 2023-05-22 11:40:57
+version: 1.26
 ---
 
-When [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) version r104 was introduced a new light probe feature was added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that is being used with this new three.js feature. 
-
-So I played around with the light probe in three.js, and as such I should take a moment to write a quick post on the subject of light probes.
+When [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) version r104 was introduced a new light probe feature was added to the core of the library. At the time that I started this post there was not much in terms of documentation at the threejs website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another assets of interest that are helpful for gaining a sense as to how to go about using these features. So I played around with the light probe in threejs, and as such I should take a moment to write a quick post on the subject of light probes.
 
 <!-- more -->
 
 ## Light Probes and what to know before hand
 
-This is an advanced post on three.js and a new feature that was introduced in revision 104 of this javaScript library. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/) for that matter. So it would be a good idea to start with some basics before getting into light probes and other advanced three.js topics if you are new to three.js.
+This is an advanced post on three.js and a new feature that was introduced in revision 104 of this javaScript library. This is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/) for that matter. So it would be a good idea to start with some basics before getting into light probes and other advanced three.js topics if you are new to three.js.
 
 From what I have gathered so far it seems that light probes are a way to pull in light from a given point and then use that in conjunction with environment maps that can be used with a mesh. They can allow for some interesting effects when it comes to backgrounds and reflections of that background in a mesh.
-
 
 ### Know the basics of light and materials in threejs first
 
@@ -38,11 +35,11 @@ This file will need to be linked to along with three.js in the html of a project
 
 ## Source code examples are also on Github
 
-I also have the source code exmaple that I am writing about here [up on my Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-light-probe).
+I also have the source code exmaple that I am writing about here [up on my Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-light-probe). This is also where I park the source code exmaples for my [many other blog posts on threejs](/categories/three-js/) as well.
 
-### Revision 104+ of three.js as well as one additional asset needed
+### Version Numbers matter
 
-To use this feature you will need revision 104 or later of three.js, as this is a new feature that was introduced in that revision. If you are using and older version of three.js the code example here will of course break, and the only practical way to get it to work would be to just use a later  version of threejs, which is something that you should consider doing anyway and not just for this reason. 
+To use this feature you will need revision 104 or later of threejs, as this is a new feature that was introduced in that revision. If you are using and older version of threejs the code example here will of course break, and the only practical way to get it to work would be to just use a later version. As of the last time I came around to do some editing of this post I started a more up to date r146 demo of this feature, but sense I can not say that this is something that I use often I did not get around to compleating it. However the situaiton is simular in that there are features built into threejs, but also some addtional ad on files that you will likley also want to use that can be found in the threejs Github repo.
 
 
 ## 1 - Light probe example in threejs r104
