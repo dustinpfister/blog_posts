@@ -5,13 +5,16 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1042
-updated: 2023-05-22 11:57:01
-version: 1.7
+updated: 2023-05-22 14:25:37
+version: 1.8
 ---
 
 The [Level Of Detail LOD Object](https://threejs.org/docs/#api/en/objects/LOD) in threejs is an [Object3d class based object](/2018/04/23/threejs-object3d/) that can be composed of a collection of mesh objects where each mesh object is a differing degree of detail for the same LOD Object. It is then possible to set a camera distance for each of these mesh objects that are added to the LOD object so that as an object moves away from the camera the level of detail will go down. Therefore the use of LOD objects is one way to help go about reduce the volume of work that needs to be done when rendering a frame, therefore helping to improve Frame Rate.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/6x_BL70_1gk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## The LOD Object in threejs and what to know first
 
