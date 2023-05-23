@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1017
-updated: 2023-05-23 10:48:47
-version: 1.12
+updated: 2023-05-23 10:51:00
+version: 1.13
 ---
 
 The [index property of a buffer geometry instance in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.index) is a way to define an array of index values in a [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) that will be used to draw triangles. Simply put it is a way to reuse points stored in the position attribute so that the over all length of the array in the position attribute is lower than it would otherwise have to be. The main reason why I might want to have a geometry indexed is to save memory when it comes to geometries with a lot of points in them. Also it would help to reduce the amount of overhead it would take to update geometry also a little as it is less points that have to be looped over in order to do so. 
@@ -28,7 +28,7 @@ The index property if just one little feature of a buffer geometry object in thr
 
 ### Source Code is up on Github
 
-The examples that I write about in this post can also [be found on my Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-index).
+The examples that I write about in this post can also [be found on my Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-index). This is also where I park the source code exmaples that I have made for my [other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version Numbers Matter
 
