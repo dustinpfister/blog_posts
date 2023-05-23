@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 985
-updated: 2022-12-09 14:30:23
-version: 1.25
+updated: 2023-05-23 10:19:24
+version: 1.26
 ---
 
 The [box3 class in the javaScript library known as threejs](https://threejs.org/docs/#api/en/math/Box3) is a way to create a box in the from of a min and max values in the form of [vector3 class objects](https://threejs.org/docs/#api/en/math/Vector3). This Box can then be used for things like getting another Vector3 instance that is the size of the box. This size vector3 can then be used for things like setting the position of an object based on the state of the size vector3. There is also doing things like creating a whole other Box3 object and then using that as a way to set the scale of another object.
@@ -15,12 +15,12 @@ The box3 class will have lots of other use case examples that will come up now a
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/9H3OmGlsdzc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The Box3 class in threejs and what to know first
 
 The content of this blog post has to do with a general overview of a single class called Box3 in a javaScript library known as threejs. This is then not a [post intended for people that have no experience at all with threejs](/2018/04/04/threejs-getting-started/), let alone with [javaScript in general](/2018/11/27/js-getting-started/). You should have some background with javaScript and client side web development in general. I will not be getting into detail with everything that you should be aware of at this point, but I often use this first section to quickly mention some things you might want to read up more on before hand if you have not done so. For example in order to even create a Box3 class at all to begin with directly at least one will need to Vector3 objects to begin with.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/9H3OmGlsdzc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ### Check out the Vector3 class
 
@@ -36,7 +36,8 @@ I have the source code examples in this post parked in [my test threejs repo on 
 
 ### Version numbers matter
 
-When I first wrote this post I was using r135 of threejs, and the last time I came around to do a little editing here I was using r146.
+When I first wrote this post I was using r135 of threejs, and the last time I came around to do a little editing here I was using r146 when updating the source code of these demos.
+
 
 ## 1 - Basic gettting started examples of the box3 class
 
@@ -55,10 +56,8 @@ When I have a box3 class object I can still access the vector3 objects that are 
 const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(5, 5))
 const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // CREATE A NEW BOX3
@@ -77,6 +76,8 @@ mesh.position.set(box3.min.x, 0, box3.min.z );
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -92,34 +93,41 @@ Anyway one basic use case example of the THREE.Box3 class would be to use it to 
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-camera.position.set(1.25, 1.25, 1.25);
-camera.lookAt(0, -0.125, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // CREATE A NEW BOX3
 //-------- ----------
-const min = new THREE.Vector3(-0.5, -0.75, -1.125);
-const max = new THREE.Vector3(0.125, 0.25, 0.5);
-const box3 = new THREE.Box3(min, max);
+const v_min = new THREE.Vector3(0, 0, 0);
+const x = 1 / 12 * 4;
+const y = 1 / 12 * 2;
+const z = 8;
+const v_max = new THREE.Vector3(x, y, z);
+
+const box3 = new THREE.Box3(v_min, v_max);
 // THE GET SIZE METHOD OF BOX 3
 // can be used to copy a size to a Vector3 instance
-const s = new THREE.Vector3();
-box3.getSize(s);
+const v_size = new THREE.Vector3();
+box3.getSize(v_size);
 //-------- ----------
-// MESH
+// SCENE CHILD OBJECTS
 //-------- ----------
 // I CAN THEN USE THAT SIZE VECTOR TO DO
-// SOMETHING LIKE SCALING A MESH OBJECT
+// SOMETHING LIKE SCALING A MESH OBJECT TO THE SIZE
+// OF THE BOX
 const mesh = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 scene.add(mesh);
-mesh.scale.copy(s);
+mesh.scale.copy(v_size);
+// grid helper
+scene.add(new THREE.GridHelper(10, 10));
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(mesh.position);
 renderer.render(scene, camera);
 ```
 
@@ -132,15 +140,12 @@ Some times I might not want to set the size of an object from a BOX3 but rather 
 // SCENE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add( new THREE.GridHelper(10, 10))
 const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-camera.position.set(1.25, 1.25, 1.25);
-camera.lookAt(0, 0.4, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
-// MESH
+// SCENE CHILD OBJECTS
 //-------- ----------
 const mesh = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
@@ -159,9 +164,13 @@ box3.getSize(s);
 // USING SIZE VECTOR3 to set Y position of mesh
 mesh.position.y = s.y / 2;
 scene.add(mesh);
+// grid helper
+scene.add( new THREE.GridHelper(10, 10))
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0.4, 0);
 renderer.render(scene, camera);
 ```
 
@@ -175,10 +184,8 @@ Like that of the box helper that can be used with mesh objects and any object th
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-camera.position.set(1.25, 1.25, 1.25);
-camera.lookAt(0, -0.125, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // BOX3, BOX3 Helper
@@ -193,6 +200,8 @@ scene.add(box3Helper);
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, -0.125, 0);
 renderer.render(scene, camera);
 ```
 
@@ -205,12 +214,9 @@ In this basic section I did cover an example where I was creating an instance of
 // SCENE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add( new THREE.GridHelper(5, 5, 5));
 const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-camera.position.set(4, 2, 8);
-camera.lookAt(0, -0.8, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // BOX3, BOX3 Helper
@@ -236,9 +242,13 @@ while(i < len){
 }
 scene.add(group);
 box3.setFromObject(group);
+// grid helper
+scene.add( new THREE.GridHelper(5, 5, 5));
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(4, 2, 8);
+camera.lookAt(0, -0.8, 0);
 renderer.render(scene, camera);
 ```
 
@@ -252,10 +262,7 @@ One of the major functions of the box3 class is to check if two objects overlap 
 // SCENE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add( new THREE.GridHelper(4, 4, 0xffffff, 0x008800 ));
 const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-camera.position.set(5, 8, 10);
-camera.lookAt(0, -0.8, 0);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
@@ -298,9 +305,13 @@ while(i < len){
     i += 1;
 }
 scene.add(group);
+// grid helper
+scene.add( new THREE.GridHelper(4, 4, 0xffffff, 0x008800 ));
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(5, 8, 10);
+camera.lookAt(0, -0.8, 0);
 renderer.render(scene, camera);
 ```
 
@@ -314,10 +325,8 @@ This example involves positioning a bunch of mesh objects inside the bounds of a
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-camera.position.set(-2, 0.5, 4);
-camera.lookAt(0, -0.25, 0);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
 //-------- ----------
 // HELPER FUNCTIONS
@@ -373,6 +382,8 @@ while(i < len){
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(-2, 0.5, 4);
+camera.lookAt(0, -0.25, 0);
 renderer.render(scene, camera);
 ```
 
