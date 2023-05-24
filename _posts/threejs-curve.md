@@ -5,24 +5,20 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2022-12-16 12:57:19
-version: 1.33
+updated: 2023-05-24 08:31:12
+version: 1.34
 ---
 
-The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic that can then be used with the [tube geometry constructor](https://threejs.org/docs/#api/en/geometries/TubeGeometry) as the first argument for the function. This geometry can then be use with a mesh object which allows for making line like structures but because it is with mesh object rather than lines objects I can use mesh materials like the basic or phong materials.
-
-The curve class is a base class for making an object composed of methods that are used to define the points in 3d space that define the curve. This curve class and any additional class3s based off if it is then a little different from the idea of having a collection of Vector3 class instances that re crated by way of some logic, or just exists as some form of data that is hard coded into javaScript or in some kind of additional asset like a JSON file. This might then be one of the limitations of the curve class and also the closely corresponding tube geometry constructor when it comes to the idea of having data rather than a means of generating data. 
-
-However there might be ways of getting around that limitation, or just making use of some kind of alternative to the curve class and tube geometry. A long time ago I [wrote a post on the subject of so called fat lines](/2018/11/07/threejs-line-fat-width/) that where a kind of additional line constructor that can be added to threejs by way of an additional javaScript file. However I am sure there are many other ways of getting a desired outcome when it comes to do things sort of thing such as using capsule geometry with a collection of vector3 class instances.
+The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
 
 <!-- more -->
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/mXbSwt-06lk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## The curve class and what to know first.
 
 The main focus of this post is on the curve class in threejs, and using the objects cerated with this class and other classes based off of it with the tube geometry constructor. There is a whole lot of ground to cover when it comes to this class, and also an awful lot more to cover when it comes to all kinds of various things that you should be aware of before hand. I will not be getting into detail about every little thing that comes up with the [basics of threejs](/2018/04/04/threejs-getting-started/) as well as the core javaScript itself. However I do still use this first section to quickly go over some things that you might want to read up more on.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/mXbSwt-06lk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ### There is looking into lines first, maybe
 
@@ -181,7 +177,7 @@ scene.add( mesh );
 renderer.render(scene, camera);      
 ```
 
-## 2 - spiral example
+## 2 - Spiral example
 
 So now that I have a basic example out of the way that involves creating a custom curve class by extending the base curve class out of the way I think I will want to have at least one more example that involves something like a spiral of sorts. This example is then very similar to the basic example I have starting out with, but now I am using sin and cos math methods for the expressions in the get point method.
 
@@ -323,3 +319,4 @@ loop();
 
 The curve geometry and tube geometry in threejs is then yet another option on tip of using lines and points when it comes to adding content to a scene object. For the most part using curves and tubes will work okay for various demo projects, but one major drawback is that I need to always generate curves with javaScript code rather than a data source of one kind or another. There may be ways of addressing this, and I do have some draft demos in the works that seem to work somewhat okay when it comes to this sort of thing, but I think they might need a little more work before writing about them here. Also there might be better ways of doing the source of things I world like to do with mesh objects rather than lines, such as some kind of system involving capsule geometry.
 
+A long time ago I [wrote a post on the subject of so called fat lines](/2018/11/07/threejs-line-fat-width/) that where a kind of additional line constructor that can be added to threejs by way of an additional javaScript file. However I am sure there are many other ways of getting a desired outcome when it comes to do things sort of thing such as using capsule geometry with a collection of vector3 class instances.
