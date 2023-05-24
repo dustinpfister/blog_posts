@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2023-05-24 11:43:48
-version: 1.13
+updated: 2023-05-24 11:49:43
+version: 1.14
 ---
 
 In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a single control point that will effect the curve. This Can then be used for anything the requires a curve such as the tube geometry function. 
@@ -34,6 +34,11 @@ I also have a number of other posts on the subject of curves in threejs such as 
 ### The Vector3 class
 
 The arguments that I give when calling the QuadraticBezierCurve3 function are instances of the [Vector3 class](/2018/04/15/threejs-vector3/), also I often want to create an array of Vector3 objects. This Vector3 class is worth checking out in detail then if you have not done so all ready.
+
+### There is also the Cubic Bezier Curve class that takes two control points
+
+The [THREE.CubicBezierCurve3](/2023/02/10/threejs-curves-cubicbeziercurve3/) class is another great option when it comes to 3d curves, and often I might go with this one over that of quadratic curves. The main feature of interset with this kind of curve is that I can use two controls points rather than just one. I can still get a simular end result as that with quadratic cuves by setting the control points a certain way, but I can also do more with two control points rather than one as well.
+
 
 ### Source Code is up on Github
 
