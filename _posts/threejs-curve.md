@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-24 09:27:13
-version: 1.36
+updated: 2023-05-24 10:54:44
+version: 1.37
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -207,6 +207,60 @@ const curve = new THREE.QuadraticBezierCurve3( v_start, v_control, v_end);
 // v3_array
 //-------- ----------
 const v3array = curve.getPoints(50);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BufferGeometry().setFromPoints(v3array);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+const material = new THREE.PointsMaterial({ size: 0.25, color: 0xffff00})
+const points1 = new THREE.Points(geometry, material);
+scene.add(points1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(10, 5, 7);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 2.2 - Get a single Vector3 object at a time, and use custom alpha values with the getPoint method
+
+Although the get points method of the curve class will work just fine for getting an array of Vector3 objects, there is still the matter of having custom spacing between the points when it comes to this kind of array of objects. So with that said often I will use the getPoint method over that of the getPoints method as it gives me greater flexibility with this. I can get the same result as with the getPoints method if I want by just giving a linear style alpha value for each point alone the curve. However I can also get any other kind of spacing that I might want by making use of various functions in threejs that help with the process of getting an alpha values, or using another other various expressions or means to do so.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CURVE
+//-------- ----------
+const v_start = new THREE.Vector3(5, 0, 5);
+const v_end = new THREE.Vector3(-5, 0, -5);
+const v_control = v_start.clone().lerp(v_end, 0.5).add( new THREE.Vector3(-5,0,5) );
+const curve = new THREE.QuadraticBezierCurve3( v_start, v_control, v_end);
+//-------- ----------
+// v3_array
+//-------- ----------
+const v3array = [];
+let i = 0;
+const len = 50;
+while(i < len){
+   // use some kind of expression, method, or whatever means
+   // to get an alpha value ( 0 - 1 ) that will be the point along
+   // the curve
+   const a_point = i / ( len - 1 );
+   const a_smooth = THREE.MathUtils.smootherstep(a_point, 0, 1);
+   v3array.push( curve.getPoint( a_smooth ) );
+   i += 1;
+};
 //-------- ----------
 // GEOMETRY
 //-------- ----------
