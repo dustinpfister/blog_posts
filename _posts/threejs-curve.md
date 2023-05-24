@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-24 09:19:26
-version: 1.35
+updated: 2023-05-24 09:27:13
+version: 1.36
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -182,7 +182,9 @@ There are a lot of reasons why I would want to create an array of Vector3 object
 
 ### 2.1 - The curve.getPoints method and THREE.Points
 
-For this first example of Points and the base Curve class I will be using the GetPoints method to just get a fixed number of points along a curve.
+For this first example of Points and the base Curve class I will be using the GetPoints method to just get a fixed number of points along a curve. Once again this example is fairly simular to what I covered in the basic section all ready, but I would like to start off with an example such as this before moving on to more complex examples.
+
+Once I have a curve class based object by any means I can call the getPoints method of the base curve class to get an array of Vector3 objects. Although this migth work okay for many situations in which I migth need to do somehting like this there is one draw back about using this and that is that the spacing between each point will be the same for each vector3 object along the curve.
 
 
 ```js
