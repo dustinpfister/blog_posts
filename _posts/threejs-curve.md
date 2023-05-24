@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-24 08:31:12
-version: 1.34
+updated: 2023-05-24 09:19:26
+version: 1.35
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -49,11 +49,8 @@ There is a Line Curve 3 class that is one built in option for cretaign a curve. 
 // SCENE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
 const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-camera.position.set(10, 5, 7);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -61,7 +58,6 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 const v1 = new THREE.Vector3(5, 0, 5);
 const v2 = new THREE.Vector3(-5, 0, -5);
-const vControl = new THREE.Vector3(5, 0, -5);
 const curve = new THREE.LineCurve3( v1, v2);
 //-------- ----------
 // SCENE CHILD OBJECTS
@@ -76,6 +72,8 @@ scene.add(points);
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(10, 5, 7);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -90,9 +88,7 @@ Although I can quickly create a curve that is a line actually I will typically w
 const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
 const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
-camera.position.set(10, 5, 7);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -115,6 +111,8 @@ scene.add(points);
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(10, 5, 7);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -127,29 +125,26 @@ When it comes to using the curve base class I will want to extend the base class
 Once I have a new class created by extending the base curve class I can then use this class to create a new curve object. This curve object can then be passed to the tube geometry constructor as the first argument for that constructor. The resulting geometry from calling the tube geometry class constructor can then in turn be used with a mesh object just like that with the various other built in geometry constructor functions.
 
 ```js
-//******** **********
+//-------- ----------
 // SCENE, CAMERA, RENDERER
-//******** **********
-let scene = new THREE.Scene();
-scene.background = new THREE.Color('#000000');
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(0, 5, 10);
-camera.lookAt(0, 3, 0);
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
 // LIGHT
-//******** **********
+//-------- ----------
 let dl = new THREE.DirectionalLight(0xffffff, 1);
 dl.position.set(3, 10, 1).normalize();
 scene.add(dl);
 scene.add( new THREE.AmbientLight(0xffffff, 0.05) )
-//******** **********
+//-------- ----------
 // CURVE, TubeGeometry, Mesh
-//******** **********
-// basic curve class extending three curve
+//-------- ----------
+// basic cuve class extending three curve
 class BasicCurve extends THREE.Curve {
     constructor() {
         super();
@@ -171,41 +166,89 @@ let mesh = new THREE.Mesh(
     new THREE.MeshStandardMaterial( { color: 0xff0000, side: THREE.DoubleSide })
 );
 scene.add( mesh );
-//******** **********
+//-------- ----------
 // RENDER
-//******** **********
-renderer.render(scene, camera);      
+//-------- ----------
+camera.position.set(0, 5, 10);
+camera.lookAt(0, 3, 0);
+renderer.render(scene, camera);
 ```
 
-## 2 - Spiral example
+## 2 - More on vector3 object arrays, and points with curves
+
+When it comes to the Base Curve class there are some key methods of intereset that are very usfule for createing an array of Vector3 objects, or getting a single Vector3 object at any point along a curve. I touched based on this topic in the Basic section of this blog post, but I have to say that this is without question a topic that I should expand on with the curve class to say the leat abount it.
+
+There are a lot of reasons why I would want to create an array of Vector3 objects that are points along a curve, or get a single point along a curve. There is creating an instance of THREE.Points with a geometry that has a position attribute of vertices along the curve for exmaple. When doing so there is not just the question of getting a number of points along the curve, but also the spacing between each point when doing so. The getPoints method of the base curve class can get a number of points along a curve just fine, but it will always be a fixed delta value between each point. With that said there is also the getPoint method that will just give me a single Vector3 object along the curve by way of a given alpha value. This getPoint method can then be used to address problems with this fixed delta problem with the getPoints method.
+
+### 2.1 - The curve.getPoints method and THREE.Points
+
+For this first example of Points and the base Curve class I will be using the GetPoints method to just get a fixed number of points along a curve.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CURVE
+//-------- ----------
+const v_start = new THREE.Vector3(5, 0, 5);
+const v_end = new THREE.Vector3(-5, 0, -5);
+const v_control = v_start.clone().lerp(v_end, 0.5).add( new THREE.Vector3(-5,0,5) );
+const curve = new THREE.QuadraticBezierCurve3( v_start, v_control, v_end);
+//-------- ----------
+// v3_array
+//-------- ----------
+const v3array = curve.getPoints(50);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BufferGeometry().setFromPoints(v3array);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+const material = new THREE.PointsMaterial({ size: 0.25, color: 0xffff00})
+const points1 = new THREE.Points(geometry, material);
+scene.add(points1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(10, 5, 7);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 3 - Spiral example
 
 So now that I have a basic example out of the way that involves creating a custom curve class by extending the base curve class out of the way I think I will want to have at least one more example that involves something like a spiral of sorts. This example is then very similar to the basic example I have starting out with, but now I am using sin and cos math methods for the expressions in the get point method.
 
 ```js
-//******** **********
+//-------- ----------
 // SCENE, CAMERA, RENDERER
-//******** **********
-let scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
-scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(10, 10, 10);
-camera.lookAt(0, 0, 0);
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) );
+//-------- ----------
 // LIGHT
-//******** **********
+//-------- ----------
 let dl = new THREE.DirectionalLight(0xffffff, 1);
 dl.position.set(3, 10, 1).normalize();
 scene.add(dl);
- 
 scene.add( new THREE.AmbientLight(0xffffff, 0.05) )
- 
-//******** **********
+//-------- ----------
 // CURVE, TubeGeometry, Mesh
-//******** **********
+//-------- ----------
 class CustomSinCurve extends THREE.Curve {
     constructor( scale = 1 ) {
         super();
@@ -228,39 +271,39 @@ let mesh = new THREE.Mesh(
     new THREE.MeshStandardMaterial( { color: 0xff0000, side: THREE.DoubleSide })
 );
 scene.add( mesh );
-//******** **********
+//-------- ----------
 // RENDER
-//******** **********
-renderer.render(scene, camera);      
+//-------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
-## 3 - The buffer geometry copy method an a basic animation example using a curve
+## 4 - The buffer geometry copy method an a basic animation example using a curve
 
 Thus far I just have some static scene examples of this curve class out of the way, so then I should have at least one example that involves an animation loop then. One way to go about doing this might involve creating a new curve object with update arguments in the body of the loop that I can then use to make an updated geometry. In can then make use of the copy method of the buffer geometry instance in the mesh object to copy this update geometry to the geometry object instance of the mesh objects as a way to update the geometry.
 
 ```js
-//******** **********
+//-------- ----------
 // SCENE, CAMERA, RENDERER
-//******** **********
-let scene = new THREE.Scene();
+//-------- ----------
+const scene = new THREE.Scene();
 scene.background = new THREE.Color('#000000');
 scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0x4a4a4a) )
-let camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(10, 10, 10);
-camera.lookAt(0, 0, 0);
-let renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
 document.getElementById('demo').appendChild(renderer.domElement);
-//******** **********
+//-------- ----------
 // LIGHT
-//******** **********
+//-------- ----------
 let dl = new THREE.DirectionalLight(0xffffff, 1);
 dl.position.set(3, 10, 1).normalize();
 scene.add(dl);
 scene.add( new THREE.AmbientLight(0xffffff, 0.05) )
-//******** **********
+//-------- ----------
 // CURVE CLASS
-//******** **********
+//-------- ----------
 class CustomSinCurve extends THREE.Curve {
     constructor( a = 0.5, b = 0.25, scale = 1 ) {
         super();
@@ -275,9 +318,9 @@ class CustomSinCurve extends THREE.Curve {
         return optionalTarget.set( tx, ty, tz ).multiplyScalar( this.scale );
     }
 };
-//******** **********
+//-------- ----------
 // MESH
-//******** **********
+//-------- ----------
 let path = new CustomSinCurve( 5 ),
 tubularSegments = 800,
 radius = 0.25,
@@ -288,9 +331,11 @@ let mesh = new THREE.Mesh(
     new THREE.MeshStandardMaterial( { color: 0xff0000, side: THREE.DoubleSide })
 );
 scene.add( mesh );
-//******** **********
+//-------- ----------
 // LOOP
-//******** **********
+//-------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
 let controls = new THREE.OrbitControls(camera, renderer.domElement);
 let fps = 30,
 frame = 0,
@@ -312,7 +357,7 @@ let loop = function () {
         frame %= frameMax;
     }
 };
-loop();    
+loop();
 ```
 
 ## Conclusion
