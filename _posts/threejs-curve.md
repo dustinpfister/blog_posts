@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-24 11:25:02
-version: 1.38
+updated: 2023-05-24 11:37:00
+version: 1.39
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -30,11 +30,11 @@ I have a number of other posts that I have wrote on curves now such as my post w
 
 ### Source Code is up on Github
 
-I have the source code that I am writing about in this post also up on my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-curve).
+I have the source code that I am writing about in this post also up on my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-curve). This is also where I park the source code examples for my [many other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version Numbers matter
 
-When I first started this post I was using r140 of threejs.
+When I first started this post I was using r140 of threejs, and the last time I came around to do some editing of the post I was able to get all the exmaples working just fine with r146.
 
 ## 1 - Basic Curve Examples
 
@@ -282,7 +282,9 @@ renderer.render(scene, camera);
 
 ### 2.3 - Updating an alpha value, and also a geometry over time
 
-For this example I am not just createing a static geometry with a curve object, but also updating the position attribute of that geometry over time as well.
+For this example I am not just creating a static geometry with a curve object, but also updating the [position attribute of that geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) over time as well. The set from points method of buffer geometry objects will work fine for making a geometry with a position attribute in the first place, but I have found that I will run into problems when using it to update a geometry over time.
+
+The main thing about this example here is that I am using the get point method to get a Vector3 object for each point along the curve with a custom alpha value. I am not creating an array of Vector3 objects now, but rather directly mutating the state of the position attribute by making use of the setXYZ method of the buffer attribute class.
 
 
 ```js
@@ -378,6 +380,8 @@ const loop = () => {
 };
 loop();
 ```
+
+Then end result of all of this is then a situation in which the spacing between the points will change from something that is similar to the use of the getPoints method to a custom spacing that is created with the smoother step method of the [math utils object](/2022/04/11/threejs-math-utils/).
 
 ## 3 - Spiral example
 
