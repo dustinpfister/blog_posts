@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1044
-updated: 2023-05-25 12:57:38
-version: 1.3
+updated: 2023-05-25 13:04:54
+version: 1.4
 ---
 
 When it comes to curves in threejs there is the [base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve), and then there are a number of both 3D as well as 2D curve classes that extend this base curve class. In this post I will be writing about one of the 2D built in options for curves which is the [Quadratic Bezier Curve class](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve). This is a kind of curve in which I can give a start point, end point, and a single control point each of which are instances of the Vector2 class. It can be used by itself, or in combination with other options to create a curve path that will then be used in a number of situations in which I need a 2d path.
@@ -176,5 +176,5 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-That will be it for now when it comes to the 2D Quadratic Bezier Curve class in threejs at least. However there is a whole lot more to write about when it comes to curves in both the 2D and 3D form in threejs.
+That will be it for now when it comes to the 2D Quadratic Bezier Curve class in threejs at least. There is a whole lot more to write about when it comes to curves in both the 2D and 3D form in threejs, it is just that I think that there might only be so much to write about with this built in option for curves. There are other options of course such as [THREE.CubicBezierCurve](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve) which allows for the use of two control points othe than that of just one. There are also a few more other options in terms of 2d curves, and also making a curve that is a colleciton of these curves when it comes ot the use of curve paths.
 
