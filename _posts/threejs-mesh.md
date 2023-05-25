@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2022-12-24 09:40:47
-version: 1.43
+updated: 2023-05-25 15:00:52
+version: 1.44
 ---
 
-A mesh object in [three.js](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/). This resulting mesh object can then be added as a child of a main [scene object](/2018/05/03/threejs-scene/), and then the scene object can be used along with a camera to render a view of the scene which will include one or more of these mesh objects.
+A mesh object in [threejs](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/). This resulting mesh object can then be added as a child of a main [scene object](/2018/05/03/threejs-scene/), or any other Object3d class based object.Then the scene object can be used along with a camera to render a view of the scene which will include one or more of these mesh objects. There are a number of other options for having somehting to look at in a scene, such as Points, Lines, and LineSegments. However for the most part it is mesh objects that one will want to create and add to a scene to create some kind of project with threejs.
 
 The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructor functions that I find myself using often as I get into making threejs projects. What is great about mesh objects is that they are one of many objects in threejs that have the [Object3d class](https://threejs.org/docs/#api/en/core/Object3D) as a base class. So then when it comes to something like learning how to use the [position property](/2022/04/04/threejs-object3d-position/) of a mesh object, what one is really learning about is an object3d class feature. Knowledge of this object3d class feature can then also be applied to cameras, groups, and anything else in threejs that is based off of the object3d class. Still there are some things that are just a part of mesh objects alone, mainly the buffer geometry and material properties of such objects.
 
@@ -38,7 +38,7 @@ There is also the [Euler class](/2021/04/28/threejs-euler/) that is like vector3
 
 ### The source code examples in this post can be found on Github
 
-The source code examples that I am writing about here can be found in [my test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-mesh).
+The source code examples that I am writing about here can be found in [my test threejs Github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-mesh). This is also where I park the source code exmaples for my [other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version Numbers matter with three.js
 
