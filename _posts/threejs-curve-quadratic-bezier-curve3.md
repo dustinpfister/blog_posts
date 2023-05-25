@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2023-05-24 11:49:43
-version: 1.14
+updated: 2023-05-25 13:57:35
+version: 1.15
 ---
 
 In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a single control point that will effect the curve. This Can then be used for anything the requires a curve such as the tube geometry function. 
@@ -39,10 +39,13 @@ The arguments that I give when calling the QuadraticBezierCurve3 function are in
 
 The [THREE.CubicBezierCurve3](/2023/02/10/threejs-curves-cubicbeziercurve3/) class is another great option when it comes to 3d curves, and often I might go with this one over that of quadratic curves. The main feature of interset with this kind of curve is that I can use two controls points rather than just one. I can still get a simular end result as that with quadratic cuves by setting the control points a certain way, but I can also do more with two control points rather than one as well.
 
+### There is also the 2D form of the Quadratic Bezier Curve class
+
+There is also a [2D form of quadraic bezier curves](/2023/05/25/threejs-curve-quadratic-bezier-curve/) as well to work with in threejs. This works more or less the same way as this method only there is working wityh Vector2 class objects rather than Vector3, and it comes into play with things where I will want a 2d path rather than a 3D one.
 
 ### Source Code is up on Github
 
-The source code examples that I am writing about in this [post can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-curve-quadratic-bezier-curve3).
+The source code examples that I am writing about in this [post can also be found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-curve-quadratic-bezier-curve3). This is also where I park the source code examples for my [many other blog posts](/categories/three-js/) on threejs.
 
 ### Version Numbers matter
 
