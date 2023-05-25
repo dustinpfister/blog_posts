@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2023-05-25 15:00:52
-version: 1.44
+updated: 2023-05-25 15:18:39
+version: 1.45
 ---
 
 A mesh object in [threejs](https://threejs.org/) is used to create an object with a [buffer geometry](/2021/04/22/threejs-buffer-geometry/), and a material such as the [mesh basic material](/2018/05/05/threejs-basic-material/). This resulting mesh object can then be added as a child of a main [scene object](/2018/05/03/threejs-scene/), or any other Object3d class based object.Then the scene object can be used along with a camera to render a view of the scene which will include one or more of these mesh objects. There are a number of other options for having somehting to look at in a scene, such as Points, Lines, and LineSegments. However for the most part it is mesh objects that one will want to create and add to a scene to create some kind of project with threejs.
@@ -51,27 +51,20 @@ A Basic example of using a mesh would involve creating an instance of a Mesh wit
 So then the Basic idea here is to create a scene object, then create and add a Mesh object to the scene object. However in order to see the mesh I am going to need a camera, for this there are a few options but I typically like to go with the perspective camera. When I add the camera to the scene I am going to want to make sure that I position the camera away from the mesh so that it is not inside the mesh. After that I am going to need some kind of Renderer such as the built in WebGLRenderer. I then just need to call the render method of the renderer and pass the scene and camera to use.
 
 ```js
-(function () {
-    // Scene
-    var scene = new THREE.Scene();
- 
-    // CREATEING AND ADDING A MESH TO A SCENE
-    scene.add(new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshDepthMaterial()));
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(1.5, 1.5, 1.5);
-    camera.lookAt(0, 0, 0);
-    // renderer
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // render the scene with the camera
-    renderer.render(scene, camera);
-}
-    ());
+// SCENE, CAMERA, RENDERER
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// CREATEING AND ADDING A MESH TO A SCENE
+scene.add(new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshDepthMaterial()));
+// render the scene with the camera
+renderer.render(scene, camera);
 ```
 
 So then this is a basic hello world type example of three.js where I am just looking at a cube. Now that I have that out of the way I can start to get to some more complex examples.
@@ -82,56 +75,43 @@ So then this is a basic hello world type example of three.js where I am just loo
 It is important to note that THREE.Mesh is just one of many constructors in three.js that inherit from Object3D which would be worth checking out in detail because much of what applies for a mesh will also apply for a camera, groups, a light source, and even a whole scene because all those things are built on top of Object3d. However for now it is a good idea to just know that Object3D brings a whole bunch of methods, and properties to THREE.Mesh that can be used to do things like moving the mesh around, and changing its rotation.
 
 ```js
-(function () {
-    // scene
-    var scene = new THREE.Scene();
- 
-    // THE MESH
-    var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    scene.add(mesh);
- 
-    // camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(4, 2, 4);
-    camera.lookAt(0, 0, 0);
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // loop
-    var frame = 0,
-    maxFrame = 200,
-    fps = 30,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000,
-        per = frame / maxFrame,
-        r = Math.PI * 2 * per;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
- 
-            // MOVE the mesh with Object3D.position property that is an instance of Vector3
-            mesh.position.set(Math.cos(r) * 2, 0, Math.sin(r) * 2);
- 
-            // ROTATE the mesh with the Object3d.rotation property that is an instance of Euler
-            mesh.rotation.set(0, r, r * 2);
- 
-            // render the scene with the camera
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= maxFrame;
-            lt = now;
-        }
+// SCENE, CAMERA, RENDERER
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// THE MESH
+const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// loop
+camera.position.set(4, 2, 4);
+camera.lookAt(0, 0, 0);
+let frame = 0,
+lt = new Date();
+const maxFrame = 200,
+fps = 30;
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000,
+    per = frame / maxFrame,
+    r = Math.PI * 2 * per;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // MOVE the mesh with Object3D.position property that is an instance of Vector3
+        mesh.position.set(Math.cos(r) * 2, 0, Math.sin(r) * 2);
+        // ROTATE the mesh with the Object3d.rotation property that is an instance of Euler
+        mesh.rotation.set(0, r, r * 2);
+         // render the scene with the camera
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
     }
- 
-    loop();
- 
 }
-    ());
+loop();
 ```
 
 Here I am using the Object3D position property that stores an instance of Vector3 that can be used to change what should be the center point of the Mesh geometry assuming it has been normalized. That might come off as a mouth full so maybe another way of explaining it is that there is a point in space in which the geometry of the mesh is relative to. The position property can be used to change the value of that point in space.
@@ -145,51 +125,44 @@ One thing about a mesh is that a [material index](/2018/05/14/threejs-mesh-mater
 I have a post on this in which I get into this in detail but I can also provide a basic example of this here.
 
 ```js
-(function () {
-    // SCENE
-    var scene = new THREE.Scene();
- 
-    // the materials array
-    var materials = [
-        // material 0 (red basic)
-        new THREE.MeshBasicMaterial({
-            color: 0xff0000,
-            side: THREE.DoubleSide
-        }),
-        // material 1 (green basic)
-        new THREE.MeshBasicMaterial({
-            color: 0x00ff00,
-            side: THREE.DoubleSide
-        }),
-        // material 2 (blue basic)
-        new THREE.MeshBasicMaterial({
-            color: 0x0000ff,
-            side: THREE.DoubleSide
-        })
-    ];
-    // a box geometry
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
-    // for all faces
-    geometry.groups.forEach(function (face, i) {
-        face.materialIndex = i % materials.length;
-    });
-    // add to scene with the Mesh
-    scene.add(new THREE.Mesh(
-            geometry,
-            materials));
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
-    // RENDER
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
-}
-    ());
+// SCENE, CAMERA, RENDERER
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// the materials array
+const materials = [
+    // material 0 (red basic)
+    new THREE.MeshBasicMaterial({
+        color: 0xff0000,
+        side: THREE.DoubleSide
+    }),
+    // material 1 (green basic)
+    new THREE.MeshBasicMaterial({
+        color: 0x00ff00,
+        side: THREE.DoubleSide
+    }),
+    // material 2 (blue basic)
+    new THREE.MeshBasicMaterial({
+        color: 0x0000ff,
+        side: THREE.DoubleSide
+    })
+];
+// a box geometry
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+// for all faces
+geometry.groups.forEach(function (face, i) {
+    face.materialIndex = i % materials.length;
+});
+// add to scene with the Mesh
+scene.add(new THREE.Mesh(
+    geometry,
+    materials));
+// RENDER
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 So then the process of skinning a mesh is just a matter of passing an array of materials to the mesh constructor rather than just a single material. After that it is just a question of making sure that the material index values are what they should be when it comes to the instance of the geometry that is being used with the mesh.
@@ -199,44 +172,38 @@ So then the process of skinning a mesh is just a matter of passing an array of m
 There will comes times now and then in which I will want to make a single mesh object and then make [many copies of that single mesh object](/2019/12/18/threejs-mesh-copy/). For this task there is the clone method of the mesh object that can be used to create a kind of shallow copy of a mesh object. What I mean by a sallow copy is that this will be a copy of the mesh object itself but not always all nested objects of that mesh object, at least not when it comes to the material as this example will demonstrate.
 
 ```js
-(function () {
-    // Scene
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
- 
-    // CREATEING AND ADDING A MESH TO A SCENE
-    var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial());
-    scene.add(mesh);
-    // MAKING CLONES OF THAT MESH
-    var i = 0, len = 5, x, y, z, copy;
-    while(i < len){
-        copy = mesh.clone();
-        x = -5 + 10 * (i / len);
-        y = 0;
-        z = -2;
-        // change of position does not effect original
-        copy.position.set(x, y, z);
-        scene.add(copy);
-        i += 1;
-    }
-    // HOWEVER A CHNAGE TO THE MATERIAL WITH THE ORIGINAL WILL EFFECT
-    // ALL COPIES BECUASE THE CLONE METHOD WILL NOT DEEP CLONE MATERAILS
-    mesh.material.color = new THREE.Color('red')
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(4, 4, 4);
-    camera.lookAt(0, 0, 0);
-    // renderer
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // render the scene with the camera
-    renderer.render(scene, camera);
+// Scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// CREATEING AND ADDING A MESH TO A SCENE
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial());
+scene.add(mesh);
+// MAKING CLONES OF THAT MESH
+let i = 0, len = 5, x, y, z, copy;
+while(i < len){
+    copy = mesh.clone();
+    x = -5 + 10 * (i / len);
+    y = 0;
+    z = -2;
+    // change of position does not effect original
+    copy.position.set(x, y, z);
+    scene.add(copy);
+    i += 1;
 }
-    ());
+// HOWEVER A CHNAGE TO THE MATERIAL WITH THE ORIGINAL WILL EFFECT
+// ALL COPIES BECUASE THE CLONE METHOD WILL NOT DEEP CLONE MATERAILS
+mesh.material.color = new THREE.Color('red');
+// GRID
+scene.add( new THREE.GridHelper(10, 10) );
+// render the scene with the camera
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 5 - The look at method of the object3d class and rotation of geometry
@@ -246,43 +213,37 @@ Another method of interest that I think I should touch base with in this post is
 However when it comes to a mesh object I might often need to adjust what the 'front' of the geometry is, for this tasks I will want to use the [rotate methods of an instance of buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/).
 
 ```js
-(function () {
-    // Scene
-    var scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10) );
- 
-    // CREATEING AND ADDING A MESH OBJECTS
-    var mesh = new THREE.Mesh(
-            new THREE.ConeGeometry(0.5, 2, 30),
-            new THREE.MeshNormalMaterial());
-   // ROTTAING GEOMERTY OF THE CONE
-    mesh.geometry.rotateX(1.57)
-    scene.add(mesh);
-    var i = 0, len = 5, x, y, z, copy;
-    while(i < len){
-        copy = mesh.clone();
-        x = -5 + 10 * (i / len);
-        y = 0;
-        z = -3;
-        copy.position.set(x, y, z);
-        // USING LOOK AT METHOD
-        copy.lookAt(mesh.position);
-        scene.add(copy);
-        i += 1;
-    }
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(2, 5, 5);
-    camera.lookAt(0, 0, 0);
-    // renderer
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // render the scene with the camera
-    renderer.render(scene, camera);
+// Scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// CREATEING AND ADDING A MESH OBJECTS
+const mesh = new THREE.Mesh(
+    new THREE.ConeGeometry(0.5, 2, 30),
+    new THREE.MeshNormalMaterial());
+// ROTTAING GEOMERTY OF THE CONE
+mesh.geometry.rotateX(1.57)
+scene.add(mesh);
+let i = 0, len = 5, x, y, z, copy;
+while(i < len){
+    copy = mesh.clone();
+    x = -5 + 10 * (i / len);
+    y = 0;
+    z = -3;
+    copy.position.set(x, y, z);
+    // USING LOOK AT METHOD
+    copy.lookAt(mesh.position);
+    scene.add(copy);
+    i += 1;
 }
-    ());
+// GRID
+scene.add( new THREE.GridHelper(10, 10) );
+// render the scene with the camera
+camera.position.set(2, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## Conclusion
