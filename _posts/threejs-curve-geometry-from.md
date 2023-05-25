@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1018
-updated: 2022-12-16 15:35:53
-version: 1.14
+updated: 2023-05-25 14:56:22
+version: 1.15
 ---
 
-The [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) is the base class for several core threejs Class to create a Curve in space. There is then a Cuve class prototype method called the get point method that can then be used to get any point along a curve in the form of a Vector3 object by passing a zero to one value as an argument. For the most part thus far I have been using curves as a way to define paths than can then be used to set the position of object3d objects over time such as mesh objects, and cameras. I have also been using curves to get vector3 objects that can then be passed to the look at method to set the rotation for objects also. However I have not yet got into using curves as a way to define the position attributes of custom buffer geometry which is what this post will focus on.
+The [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) is the base class for several core threejs Classes to create a Curve in space. There is then a Cuve class prototype method called the get point method that can then be used to get any point along a curve in the form of a Vector3 object, or Vector2 object for 2d curves, by passing a zero to one value as an argument. For the most part thus far I have been using curves as a way to define paths than can then be used to set the position of object3d objects over time such as mesh objects, and cameras. I have also been using curves to get vector3 objects that can then be passed to the look at method to set the rotation for objects also. However I have not yet got into using curves as a way to define the position attributes of custom buffer geometry objects which is what this post will focus on.
+
+There are both easy, and not so easy ways of making a gometry from a curve. When it comes to 2D curves there is creating a shape object, and a Shape or Extrude geometry can be made from that. There are also ways of making a 3d shape from a 2d curve by using the Lathe Geometry class. However there is also of course 3D curves as well and using them to help in the process of creating a cusotm geomerty from the ground up.
 
 <!-- more -->
 
@@ -65,15 +67,6 @@ const geoFromCurve = (curve, detail) => {
     return new THREE.BufferGeometry().setFromPoints( curve.getPoints(detail) );
 };
 // ---------- ----------
-// LIGHT
-// ---------- ----------
-const dl = new THREE.DirectionalLight(0xffffff, 1);
-dl.position.set(2, 1, 0);
-scene.add(dl);
-const dl2 = new THREE.DirectionalLight(0xffffff, 1);
-dl2.position.set(2, -1, 0);
-scene.add(dl2);
-// ---------- ----------
 // CURVES
 // ---------- ----------
 const c1_start = new THREE.Vector3(-5,0,5), 
@@ -87,7 +80,7 @@ const curve2 = new THREE.QuadraticBezierCurve3(c2_start, c2_control, c2_end);
 // ---------- ----------
 // LINES
 // ---------- ----------
-const material_line = new THREE.LineBasicMaterial({ linewidth: 8, color: 0xff0000});
+const material_line = new THREE.LineBasicMaterial({ linewidth: 8, color: 0x00ff00});
 const line1 = new THREE.Line( geoFromCurve(curve1, 50), material_line );
 scene.add(line1);
 const line2 = new THREE.Line( geoFromCurve(curve2, 50), material_line );
@@ -147,12 +140,56 @@ scene.add(line1);
 renderer.render(scene, camera);
 ```
 
+## 2 - Creating geometry from 2D Curves
 
-## 2 - Making a full Mesh Object Friendly custom geometry with curves
+There are a wide range of options for making a geometry from a 2D path actually. For one thing when it comes to THREE.Points, and THREE.Lines there is just using the setFromPoints method of the Buffer geometry to do so. However there is also creating a THREE.Shape object and then using that with THREE.ShapeGeometry or THREE.ExtrudeGeometry. Yet another option would be to make use of THREE.LatheGeometry which is one way to go about making a 3D geometry from a 2D Curve. So in this section I would like to touch base on some of these options when it comes making a geometry with 2D curves.
+
+### 2.1 - Geometry from 2D Curves Using THREE.Shape, and THREE.ShapeGeometry
+
+There is using a 2D curve to create a Shape, after which that Shape can be used to create a geometry with THREE.ShapeGeometry.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// CURVE
+// ---------- ----------
+const v_start = new THREE.Vector2(0, -3);
+const v_end = new THREE.Vector2(0, 3);
+const v_control = v_start.clone().lerp(v_end, 0.5).add( new THREE.Vector2(5, 3) );
+const curve = new THREE.QuadraticBezierCurve(v_start, v_control, v_end);
+// ---------- ----------
+// SHAPE/GEOMETRY
+// ---------- ----------
+const v2array = curve.getPoints(50);
+const shape = new THREE.Shape( v2array  );
+const geometry = new THREE.ShapeGeometry(shape);
+// ---------- ----------
+// SCENE CHILD OBJECTS
+// ---------- ----------
+const mesh1 = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({  side: THREE.DoubleSide }));
+scene.add(mesh1);
+scene.add( new THREE.GridHelper(10, 10) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(0, 5, 10);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+
+## 3 - Making a full Mesh Object Friendly custom geometry with curves
 
 Now that I have some of the basics out of the way with this sort of thing I think that it is now time to have at least one if not more examples In which I make a full Mesh object friendly custom geometry using Curves to create the position attributes. There is a lot to be aware of when it comes to this sort of thing, so I will not be getting into detail with the various types of attributes of buffer geometry so forth. 
 
-### 2.1 - Full Custom Geometry made with two QuadraticBezierCurve3 curve objects
+### 3.1 - Full Custom Geometry made with two QuadraticBezierCurve3 curve objects
 
 For this example I am using the Quadratic Bezier Curve class in core threejs to create two curve objects both of which have start, end, and control points to create an update a buffer geometry. The goal here then is to first create the state of the position attribute by pushing in x,y, and z values for points along the curves, and to do so in a way in which the points stagger from one curve to the other. There is the order in which the points that are added that is important, however maybe what is really important is the state of the index that I will be making for this geometry as well as this will be an index geometry that I am making here.
 
@@ -277,11 +314,11 @@ scene.add(mesh);
 renderer.render(scene, camera);
 ```
 
-## 3 - Animation loop Example of Custom Buffer Geometry made with curves
+## 4 - Animation loop Example of Custom Buffer Geometry made with curves
 
 I got the basics out of the way, and I also got some of the not so basic stuff out of the way when it comes to making full custom geometry with curves. But there is still always more to write about when it comes to these sorts of things. I think it should go without saying that what is really cool about curves is not just using them to create a fixed static geometry, but also using them to update the state of geometry overt time as well. So in this section I will be writing about examples that have to do with both creating, and updating geometry over time using one or more curve objects to help with the creation of the position attribute.
 
-### 3.1 - Video1 animation loop example based on custom Geometry example
+### 4.1 - Video1 animation loop example based on custom Geometry example
 
 So like with just about almost every post that I write on threejs I like to make at least one if not more videos to embed into the blog post along with all the writing and source code examples. So with that said I made this example that is based on the custom geometry example that I made for my mesh friendly geometry section. I made a lot of changes to the source code with this one though by taking a lot of what I worked out and made a few helper functions in an effort to make things more fine grain. Also I wanted to have a function that will just create and return an array of numbers that is the position data values, not just for the sake of creating the geometry to begin with, but also to be used to update the state of the geometry as well.
 
