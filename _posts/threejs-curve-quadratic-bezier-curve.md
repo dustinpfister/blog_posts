@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1044
-updated: 2023-05-25 08:18:47
-version: 1.1
+updated: 2023-05-25 12:42:32
+version: 1.2
 ---
 
-When it comes to curves in threejs there is the base Curve class, and then there are a number of both 3D as well as 2D curve classes that extend this base curve class. In this post I will be writing about one of the 2D built in options for curves which is the Quadratic Bezier Curve class.
+When it comes to curves in threejs there is the [base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve), and then there are a number of both 3D as well as 2D curve classes that extend this base curve class. In this post I will be writing about one of the 2D built in options for curves which is the [Quadratic Bezier Curve class](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve). This is a kind of curve in which I can give a start point, end point, and a single control point each of which are instances of the Vector2 class. It can be used by itself, or in combination with other options to create a curve path that will then be used in a number of situaitons in which I need a 2d path.
 
 <!-- more -->
 
@@ -82,7 +82,9 @@ renderer.render(scene, camera);
 
 ### 1.2 - Shape Geometry example
 
-Points are often a great way to start, but there is also having a way to go about making a geometry that will work okay with mesh objects. One option would be to make a Shape with some points created from a curve, and then use that to make an isnatnce of shape geometry.
+Points are often a great way to start, but there is also having a way to go about making a geometry that will work okay with mesh objects. One option would be to make a Shape with some points created from a curve, and then use that to make an instance of shape geometry. When using shape geometry I will want to make sure that I set the side value of the mesh material that I use to THREE.DoubleSide as the mesh will not show up when viewed at certain angles otherwise.
+
+When calling the THREE.Shape constructor I can pass an array of Vector2 objects as the first argument as a way to define the points of the 2d shape. So I can create a curve object with THREE.QuadraticBezierCurve, then use the getPoints method to get an array of Vector2 objects from that curve, which I can then use for this argument of THREE.Shape. Once I have the Shape Object I can then use that with HREE.ShapeGeometry to get a final buffer geometry which I can then in turn use with a mesh object.
 
 ```js
 // ---------- ----------
@@ -126,6 +128,9 @@ renderer.render(scene, camera);
 ```
 
 ## 2 - Some Lathe Geometry examples
+
+Now that I have some basic examples out of the way.
+
 
 ### 2.1 - Basic lathe geometry example
 
