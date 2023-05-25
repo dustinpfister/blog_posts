@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1044
-updated: 2023-05-25 13:04:54
-version: 1.4
+updated: 2023-05-25 13:57:35
+version: 1.5
 ---
 
 When it comes to curves in threejs there is the [base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve), and then there are a number of both 3D as well as 2D curve classes that extend this base curve class. In this post I will be writing about one of the 2D built in options for curves which is the [Quadratic Bezier Curve class](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve). This is a kind of curve in which I can give a start point, end point, and a single control point each of which are instances of the Vector2 class. It can be used by itself, or in combination with other options to create a curve path that will then be used in a number of situations in which I need a 2d path.
@@ -21,6 +21,10 @@ There are a lot of things that I assume that you know a thing or two about befor
 ### Be sure to get solid with the base Curve class if you have not done so
 
 The 2D Quadratic Bezier Curves is just one built in curve class that extends the base Curve class in threejs. So with that said it makes sense to learn at least a little about what there is to work with when it comes to the [base Curve class](/2022/06/17/threejs-curve/) in threejs.
+
+### There is also the 3D form of the Quadratic Bezier Curve class
+
+There is also a [3D form of quadraic bezier curves](/2022/10/21/threejs-curve-quadratic-bezier-curve3/) which is often the case with many of these built in curve classes. This works more or less the same way as the 2d version only I will want to pass Vector3 objects rather than Vector2 objects, and the end result will be a 3D Curve that I would use for the various reasons why I would want that kind of curve.
 
 ### Source code is up on Github
 
