@@ -5,22 +5,22 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1044
-updated: 2023-05-25 12:42:32
-version: 1.2
+updated: 2023-05-25 12:57:38
+version: 1.3
 ---
 
-When it comes to curves in threejs there is the [base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve), and then there are a number of both 3D as well as 2D curve classes that extend this base curve class. In this post I will be writing about one of the 2D built in options for curves which is the [Quadratic Bezier Curve class](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve). This is a kind of curve in which I can give a start point, end point, and a single control point each of which are instances of the Vector2 class. It can be used by itself, or in combination with other options to create a curve path that will then be used in a number of situaitons in which I need a 2d path.
+When it comes to curves in threejs there is the [base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve), and then there are a number of both 3D as well as 2D curve classes that extend this base curve class. In this post I will be writing about one of the 2D built in options for curves which is the [Quadratic Bezier Curve class](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve). This is a kind of curve in which I can give a start point, end point, and a single control point each of which are instances of the Vector2 class. It can be used by itself, or in combination with other options to create a curve path that will then be used in a number of situations in which I need a 2d path.
 
 <!-- more -->
 
 
 ## The THREE.CurveQuadraticBezierCurve class in threejs and what to know first
 
-There are a lot of things that I assume that you know a thing or two about before hand with threejs, as well as client side javaScript in general. Simply put this is not a post for people that are new to threejs as well as various other skills that are required bfore using any kind of javaScript librray for that matter. I will not be getting into every little detail that should be known before hand in this post of course. However I do always like to write about a few subjects that you might want to read about more.
+There are a lot of things that I assume that you know a thing or two about before hand with threejs, as well as client side javaScript in general. Simply put this is not a post for people that are new to threejs as well as various other skills that are required before using any kind of javaScript library for that matter. I will not be getting into every little detail that should be known before hand in this post of course. However I do always like to write about a few subjects that you might want to read about more.
 
 ### Be sure to get solid with the base Curve class if you have not done so
 
-The 2D Quadratic Bezier Curves is just one built in curve class that extends the base Curve class in threejs. So with that said it makes snese to learn at least a little abput what there is to work with when it comes to the [base Curve class](/2022/06/17/threejs-curve/) in threejs.
+The 2D Quadratic Bezier Curves is just one built in curve class that extends the base Curve class in threejs. So with that said it makes sense to learn at least a little about what there is to work with when it comes to the [base Curve class](/2022/06/17/threejs-curve/) in threejs.
 
 ### Source code is up on Github
 
@@ -32,13 +32,13 @@ When I first wrote this blog post I was using r152 of threejs.
 
 ## 1 - Some Basic examples of 2D Quadratic Bezier Curves
 
-These will then be a few getting started types examples of the 2D Quadratic Bezier Curve class. The main focus in this seciton then will be just creating an instance of the Curve to begin with, and not so much with other aspects of the library. With that said there are three arguemnts that must be given when making one of these kinds of curves each of which are instances of the Vector2 class. So I will have to cover at least a thing or two about Vector2 class features while I am at it here.
+These will then be a few getting started types examples of the 2D Quadratic Bezier Curve class. The main focus in this section then will be just creating an instance of the Curve to begin with, and not so much with other aspects of the library. With that said there are three arguments that must be given when making one of these kinds of curves each of which are instances of the Vector2 class. So I will have to cover at least a thing or two about Vector2 class features while I am at it here.
 
 ### 1.1 - Creating some Points
 
-For this first example I will be cretaing an instance of the THREE.Points Object3d class based object rather that the ushual Mesh object. When doing so I can use the set from points method of the buffer geometry class to create a geometry from a 2d curve. However in order to do so I will beed to call the getPoints method of the curve to do so first. And with that said in order to call that method I fill first need an isnatce of a curve to call the getPoints method.
+For this first example I will be creating an instance of the THREE.Points Object3d class based object rather that the usual Mesh object. When doing so I can use the set from points method of the buffer geometry class to create a geometry from a 2d curve. However in order to do so I will beed to call the getPoints method of the curve to do so first. And with that said in order to call that method I fill first need an instance of a curve to call the getPoints method.
 
-So then with all of that said and put aside there is just cretaing the curve object to begin with. So then I will need three instances of the Vector2 class. The first one is the point in which the 2d curve will start, the second is a single control point, and the final one will be the end point. There are a great number of methods to work woth to help in the process of creating a Vector2 object, such as the clone, lerp, and add methods that I am using to get the control point that I want here.
+So then with all of that said and put aside there is just creating the curve object to begin with. So then I will need three instances of the Vector2 class. The first one is the point in which the 2d curve will start, the second is a single control point, and the final one will be the end point. There are a great number of methods to work with to help in the process of creating a Vector2 object, such as the clone, lerp, and add methods that I am using to get the control point that I want here.
 
 ```js
 // ---------- ----------
@@ -129,10 +129,11 @@ renderer.render(scene, camera);
 
 ## 2 - Some Lathe Geometry examples
 
-Now that I have some basic examples out of the way.
+Now that I have some basic examples out of the way, I should now start to go over a few examples in which many other aspects of the over all threejs library are used with this curve class feature. One thing that will come up in which I will want to use one or more 2d curves would be when working out something that makes use of the Lathe Geometry Constructor. This is a way to create a 3D geometry by way of a 2D shape that is then rotated around by a number of segments. For example I can create a sphere with this by creating a 2D curve of a half circle, and then create a number of sections with that. However when it comes to using Quadratic Bezier Curves this allows for a single control point  that can be used in turn to make some interesting shapes.
 
+### 2.1 - Weird cone like shape with lathe geometry and a 2d curve
 
-### 2.1 - Basic lathe geometry example
+For this demo the aim is to just get started with the lathe geometry constructor and A Quadratic Bezier Curve. As always I will want to work out the curve that I want with the various Vector2 objects. Once I have a Curve I can then in turn use that to get an array of Vector2 objects which in turn can be passed as the first argument when calling the Lath Geometry constructor.
 
 ```js
 // ---------- ----------
@@ -175,4 +176,5 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
+That will be it for now when it comes to the 2D Quadratic Bezier Curve class in threejs at least. However there is a whole lot more to write about when it comes to curves in both the 2D and 3D form in threejs.
 
