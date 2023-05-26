@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2023-05-26 11:56:48
-version: 1.32
+updated: 2023-05-26 12:03:43
+version: 1.33
 ---
 
 In [threejs](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified as the second argument after giving the geometry to use. It is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. There are also some other use cases that will work okay with the basic material such as using vertex colors with a geometry.
@@ -221,6 +221,13 @@ scene.add(box);
 //-------- ----------
 renderer.render(scene, camera);
 ```
+
+## 2 - Color Maps and the Basic Matreial
+
+The Basic Material will not work with any light sources that may of may not be in the scene, and although there may be a number of ways to add some depth to the faces of a geometry used with the basic material, the typical way is to use the map option. Although in some cases one might be able to just add a texture to the map option and be done with it, for the most part there are a few more things that will need to happen also. The main thing that comes to mind with this would be the UV attribute of the buffer geometry that is used. Simply put the UV attribute is what is used to define what parts of a 2d texture will get mapped to a 3d object.
+
+So then in this section I am going to want to go over at least a few examples that have to do with using the map option of the basic material, as well as some closely related topics  such as UV Mapping.
+
 
 ### 2.1 - Adding a color map texture to a basic material in threejs using canvas
 
