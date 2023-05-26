@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2023-05-26 08:24:27
-version: 1.30
+updated: 2023-05-26 08:27:51
+version: 1.31
 ---
 
 In [threejs](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified as the second argument after giving the geometry to use. It is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. There are also some other use cases that will work okay with the basic material such as using vertex colors with a geometry.
@@ -193,6 +193,8 @@ renderer.render(scene, camera);
 ### 1.5 - Using Lines as a child object of the mesh
 
 Yet another option do have something other than a big blob of color in the scene would be to [create a Line](/2018/04/19/threejs-line/) and then add that as a child for the mesh object. The same geometry that is used for the mesh can also be used for the Line or LineSegemnets Objects, but often I might want to create a new geometry from the geometry by using THREE.EdgesGeometry.
+
+The use of lines might work okay on most platforms, but I have found that the line width will not work on all platforms. For this reason I might want to go with other options that I have outlined in this section, mainly just using a texture, and working out what needs to happen in terms of uv mapping.
 
 ```js
 //-------- ----------
