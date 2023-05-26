@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 1043
-updated: 2023-05-26 13:25:54
-version: 1.3
+updated: 2023-05-26 13:50:09
+version: 1.4
 ---
 
 The [git push](https://git-scm.com/docs/git-push) sub command is how to go about updating a remote with local changes. Of course in order to do this to begin with one will need to set up a remote repository to begin with. So with that said there is also knowing at least a thing or two about the [git remote command](https://git-scm.com/docs/git-remote) as a way to find out if any remotes are set up to begin with, and if need be to add one.
@@ -16,7 +16,7 @@ I also wrote a [blog post on the git pull command](/2023/05/18/git-pull/) which 
 <!-- more -->
 
 
-## Basic get push
+## Basic Default get push
 
 Speaking from my experience thus far once a remote is set up, often I can just call the git push command with default options and that will be the end of it. 
 
@@ -31,6 +31,10 @@ $ git push origin master
 ```
 
 In some cases the name of the main branch might be something other than master. Often the name of the main branch might be something like, well main. However the general idea here is that by default there is a configuration that will be check, and if that is missing origin will be used. 
+
+## The force option of git pull
+
+Thus far I have not found myself in a situation in which I need to use the force option of the git push command. As long as that is still the case I can not say that I will want to list any examples here in this post just yet. However I think that I should at least write down a few quick notes about this force option. With that said the name of the option alone should give one a clear idea as to what this option does. However to be more clear about it this will disable a check that makes sure that the the current commit point of the local repo is an ancestor of the latest remote commit. So simply put this can result in the loss of commits if it is not used with care.
 
 ## Conclusion
 
