@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1044
-updated: 2023-05-25 13:57:35
-version: 1.5
+updated: 2023-05-26 07:29:37
+version: 1.6
 ---
 
 When it comes to curves in threejs there is the [base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve), and then there are a number of both 3D as well as 2D curve classes that extend this base curve class. In this post I will be writing about one of the 2D built in options for curves which is the [Quadratic Bezier Curve class](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve). This is a kind of curve in which I can give a start point, end point, and a single control point each of which are instances of the Vector2 class. It can be used by itself, or in combination with other options to create a curve path that will then be used in a number of situations in which I need a 2d path.
@@ -16,11 +16,11 @@ When it comes to curves in threejs there is the [base Curve class](https://three
 
 ## The THREE.CurveQuadraticBezierCurve class in threejs and what to know first
 
-There are a lot of things that I assume that you know a thing or two about before hand with threejs, as well as client side javaScript in general. Simply put this is not a post for people that are new to threejs as well as various other skills that are required before using any kind of javaScript library for that matter. I will not be getting into every little detail that should be known before hand in this post of course. However I do always like to write about a few subjects that you might want to read about more.
+There are a lot of things that I assume that you know a thing or two about before hand with threejs, as well as client side javaScript in general. Simply put this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/) as well as various other skills that are required before using any kind of javaScript library for that matter. I will not be getting into every little detail that should be known before hand in this post of course. However I do always like to write about a few subjects that you might want to read about more.
 
 ### Be sure to get solid with the base Curve class if you have not done so
 
-The 2D Quadratic Bezier Curves is just one built in curve class that extends the base Curve class in threejs. So with that said it makes sense to learn at least a little about what there is to work with when it comes to the [base Curve class](/2022/06/17/threejs-curve/) in threejs.
+The 2D Quadratic Bezier Curves is just one built in curve class that extends the base Curve class in threejs. So with that said it makes sense to learn at least a little about what there is to work with when it comes to the [base Curve class](/2022/06/17/threejs-curve/) in threejs. There is starting out by using one of the classes that extend the base class, but there are a lot of Curve class prototype methods that one should be aware of. I am also not going to be covering every use case example of curves in this post, just a few examples that have to do with just one 2D built in option.
 
 ### There is also the 3D form of the Quadratic Bezier Curve class
 
@@ -28,11 +28,11 @@ There is also a [3D form of quadraic bezier curves](/2022/10/21/threejs-curve-qu
 
 ### Source code is up on Github
 
-The source code exmaples that I write about in this blog post can also [be found in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-curve-quadratic-bezier-curve) on Github. This is also where I have the source code exmaples for my [many other blog posts on threejs](/categories/three-js/) that I have wrote over the years.
+The source code examples that I write about in this blog post can also [be found in my test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-curve-quadratic-bezier-curve) on Github. This is also where I have the source code examples for my [many other blog posts on threejs](/categories/three-js/) that I have wrote over the years.
 
 ### Version Numbers matter
 
-When I first wrote this blog post I was using r152 of threejs.
+When I first wrote this blog post I was using r152 of threejs, as such I am following the [r152 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) that I set for myself with this revision. This means that I am using module type script tags with an import map.
 
 ## 1 - Some Basic examples of 2D Quadratic Bezier Curves
 
