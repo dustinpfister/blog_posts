@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2022-12-29 11:31:31
-version: 1.29
+updated: 2023-05-26 08:24:27
+version: 1.30
 ---
 
-In [threejs](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified. Also it is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. 
+In [threejs](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified as the second argument after giving the geometry to use. It is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. There are also some other use cases that will work okay with the basic material such as using vertex colors with a geometry.
 
-Still the basic material supports a few options when it comes to texture maps, there is the basic color map, but there is are a few more options such as an alpha map for example. Still there are even more options when it comes to texture maps with other materials that will respond to light sources such as the [standard material](/2021/04/27/threejs-standard-material/) which I have found to be my usual go to material.
+Still the basic material supports a few options when it comes to texture maps, there is the basic color map, but there is are a few more options such as an [alpha map](/2019/06/06/threejs-alpha-map/) for example. Still there are even more options when it comes to texture maps with other materials that will respond to light sources such as the [standard material](/2021/04/27/threejs-standard-material/) which I have found to be my usual go to material.
 
 So today I thought I would continue expanding my [collection of posts on threejs](/categories/three-js/) by writing a post on the basic material, and what it has to offer when making a threejs project. This will involve a few simple hello world type examples, but I will also need to get into at least a few examples that involve the use of textures.
 
@@ -22,19 +22,23 @@ So today I thought I would continue expanding my [collection of posts on threejs
 
 ## What to know before reading up more on the Basic Material
 
-This is a post on the basic material used in threejs, one of several options when it comes to skinning a mesh object. If you are new to threejs, you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on threejs. I will not be getting into detail with the very basics of threejs here then, however I still think I should outline a few things at least in this what to know first type section.
-
-### Be aware of what the full options are with materials
-
-You might also want to check out my post on [three.js materials](/2018/04/30/threejs-materials/) in general for more info on the various material options in threejs. The basic material is fine when I just want to skin a geometry with a texture, but not do anything to far beyond that. There are a whole lot of other materials that might be a better choice for other situations though, for example the depth material might be a good choice when it comes to figuring out what the values should be for the near and far values of a camera. If one will want to add one or more light sources to a project these days I like to go with the [Phong material](/2022/12/29/threejs-phong-material/) for that.
+If you are new to threejs, you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on threejs as I will not be covering every little key detail about what you should know before hand here. There is a great deal to be aware of when it comes to setting things up for the first time, and I am not going to want to go over that in every one of these blog posts. However regardless of how much experience you might have with threejs and javaScript in general there are a few things that you might want to read or refresh on.
 
 ### Learn a thing or two about canvas elements, or figure out the texture loader
 
 If you like javaScript as much as I do, but have not got into canvas elements and the 2d drawing context just yet it might be time to look into how to do at least a little drawing with [canvas elements and some javaScript code](/2017/05/17/canvas-getting-started/). The reason why I say that is because when working with the basic material one typical way to make sure that the result is not just one solid blob of color is to add some texture to the basic material. This can be done by adding at least a basic color map to the material, and in order to do that a texture is needed. There is the [texture loader](/2021/06/21/threejs-texture-loader/) of threejs that can be used to load some textures in the form of external image files, but what is cool about canvas is that it is a way to create textures with just javaScript code.
 
+### Vertex colors, uv mapping, and other Buffer Geometry topics
+
+Another option for having something other than a mass of color to look at would be to add a [color attribute to the buffer geometry](/2023/01/20/threejs-buffer-geometry-attributes-color/) that is being used if there is not one in place to begin with. Also if using a texture there is adjusting, or creating the [UV attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) that is used to map the 2d texture to the 3D Object.
+
+### Be aware of what the full options are with materials
+
+You might also want to check out my post on [threejs materials](/2018/04/30/threejs-materials/) in general for more info on the various material options in threejs. The basic material is fine when I just want to skin a geometry with a texture, but not do anything to far beyond that. There are a whole lot of other materials that might be a better choice for other situations though, for example the [depth material](/2021/05/04/threejs-depth-material/) might be a good choice when it comes to figuring out what the values should be for the near and far values of a camera. If one will want to add one or more light sources to a project these days I like to go with the [Phong material](/2022/12/29/threejs-phong-material/) for that.
+
 ### Source code is up on Github
 
-The source code examples that I am writing about in this post can also be [found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-basic-material).
+The source code examples that I am writing about in this post can also be [found on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-basic-material). This is also where I place all the source code examples that I have made for my [other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version Numbers are impotent with three.js
 
@@ -44,7 +48,7 @@ When I first wrote this post I was using version r91 of threejs and the last tim
 
 For this section I will be looking at a few basic examples that make use of the mesh basic material as a way to skin the geometry of a mesh object. One of the major problems with the Mesh basic material is that one will end up with a solid mass of color for any geometry unless one makes use of some option to address that. Making use of a light source is out of the question as the basic material does not support that. There is making use of a texture but that is something that I will like to leave to a more advanced section in this post. So here I will be starting out with just a few basic getting started examples, and then maybe some options that address this issue of having a solid mass of color that does not involve a texture.
 
-### 1.1 - Basic examples of the Mesh Basic Material
+### 1.1 - The Basic Material is the default material
 
 The Basic material is the default material used for a mesh object. So if I create a mesh object by calling the THREE.Mesh [constructor function](/2019/02/27/js-javascript-constructor/) and just give a geometry by way of the first argument, but give no material as the second argument the result will be that the mesh will use the basic material. This can be confirmed by doing just that creating a mesh with a geometry and no material, and then checking the type property of the materials property of the mesh object.
 
@@ -71,7 +75,7 @@ scene.add(box);
 renderer.render(scene, camera);
 ```
 
-### 1.2 - Basic examples of the Mesh Basic Material
+### 1.2 - Setting the Color of the basic material
 
 Typically I will want to use the Mesh Basic Material constructor to create an instance of basic material and pass that as the second argument when making a mesh even if it is the default material anyways. When doing so I can pass an options object to the mesh basic material constructor which can have one or more options that I would like to set. One such option would be to set a solid color for the material, for thus there is the color option. The color should follow the syntax that I have in the example below, or the [THREE.Color constructor](/2021/05/03/threejs-color/) can be used to create the color as well.
 
@@ -151,7 +155,7 @@ renderer.render(scene, camera);
 
 ### 1.4 - Using Geometry Groups and an array of Mesh Basic material objects
 
-Another option would be to use not one but an array of materials. When doing this I will want to make sure that I have a groups property set up for the geometry. When it comes to the box geometry this is all ready set up for me, I just need to adjust the material index values as needed. If the groups property of the geometry is set up the way I want it then I just need to pass an array for materials where each material can be a basic material, with a differing color.
+Another option would be to use not one but an [array of materials](/2018/05/14/threejs-mesh-material-index/). When doing this I will want to make sure that I have a groups property set up for the geometry. When it comes to the box geometry this is all ready set up for me, I just need to adjust the material index values as needed. If the groups property of the geometry is set up the way I want it then I just need to pass an array for materials where each material can be a basic material, with a differing color.
 
 ```js
 //-------- ----------
@@ -188,7 +192,7 @@ renderer.render(scene, camera);
 
 ### 1.5 - Using Lines as a child object of the mesh
 
-Yet another option do have something other than a big blob of color in the scene would be to create a Line and then add that as a child for the mesh object.
+Yet another option do have something other than a big blob of color in the scene would be to [create a Line](/2018/04/19/threejs-line/) and then add that as a child for the mesh object. The same geometry that is used for the mesh can also be used for the Line or LineSegemnets Objects, but often I might want to create a new geometry from the geometry by using THREE.EdgesGeometry.
 
 ```js
 //-------- ----------
