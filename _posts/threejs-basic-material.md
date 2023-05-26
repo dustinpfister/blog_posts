@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2023-05-26 08:27:51
-version: 1.31
+updated: 2023-05-26 11:56:48
+version: 1.32
 ---
 
 In [threejs](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the default material that is used when [creating a mesh object](/2018/05/04/threejs-mesh/) if a material is not specified as the second argument after giving the geometry to use. It is still a decent material if I want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. There are also some other use cases that will work okay with the basic material such as using vertex colors with a geometry.
@@ -222,7 +222,7 @@ scene.add(box);
 renderer.render(scene, camera);
 ```
 
-## 2 - Adding a color map texture to a basic material in three.js using canvas
+### 2.1 - Adding a color map texture to a basic material in threejs using canvas
 
 The Basic material is a good choice if you do not what to do much of anything involving light, but do still want to have some kind of color map texture at least as a way to show that the mesh is indeed some kind of solid geometry object. A texture can be added in from an external image using a loader, or it can be created with javaScript using the 2d canvas drawing context of a canvas element.
 
@@ -281,6 +281,156 @@ renderer.render(scene, camera);
 ```
 
 I have written a [post on using canvas as a texture]( /2018/04/17/threejs-canvas-texture/) in which I covered this in further detail, but the basic idea is there.
+
+### 2.2 - UV Mapping and setting images for each side of a cube using a color map and the basic material
+
+I have made a number of threejs project examples that I write about in blog posts such as this one, and one of them has to do with the [mutation of the uv attribute of a Box geometry](/2022/11/04/threejs-examples-uvmap-cube-canvas-update/). The reason why I bring this up is because often one can not just simply create a texture by some means and then add it to the basic material by way of the map option and be done with it. There is the matter of the UV attribute and adjusting that to work with a texture. In many of these examples thus far I am working with a Box Geometry, and by default the UV attribute is set up to use all of the texture for each face of the box. More often than not this will work fine, but if I want to use differing parts of a texture for various faces of the cube then I will need to mutate the UV attribute.
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xafafaf);
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCITONS
+//-------- ----------
+// get a uvData array for a given uv face index and cell index
+const getUVData = (faceIndex, cellIndex, gridSize) => {
+    faceIndex = faceIndex === undefined ? 0: faceIndex;
+    cellIndex = cellIndex === undefined ? 0: cellIndex;
+    gridSize = gridSize === undefined ? 4: gridSize;
+    const cellX = cellIndex % gridSize;
+    const cellY = Math.floor(cellIndex / gridSize);
+    // for each set of uvs for the face
+    let di = 0;
+    const uvd = 1 / gridSize;
+    let uvData = [];
+    while(di < 4){
+        const i = faceIndex * 4 + di;
+        const x = di % 2;
+        const y = 1 - 1 * Math.floor(di / 2);
+        // get u and v using cellX and cellY
+        const u = uvd * cellX + x * uvd;
+        const v = 1 - uvd * ( cellY + 1 ) + y * uvd;
+        uvData.push({i:i,u:u,v:v});
+        di += 1;
+    }
+    return uvData;
+};
+// set uvs with the uvData, and order arrays
+const setUVData = (uv, uvData, order ) => {
+    order = order || [0, 1, 2, 3]; // normal
+    uvData.forEach((a, di, uvData) => {
+        const b = uvData[ order[di] ]
+        uv.setXY(a.i, b.u, b.v);
+    });
+    uv.needsUpdate = true;
+};
+// main helper
+const setUVFace = (uv, faceIndex, cellIndex, order, gridSize) => {
+    const uvData = getUVData(faceIndex, cellIndex, gridSize);
+    setUVData(uv, uvData, order );
+};
+//-------- ---------- 
+// CANVAS
+//-------- ----------
+const CELL_SIZE = 4;
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+// set canvas native size
+canvas.width = 128;
+canvas.height = 128;
+// draw to canvas
+const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+gradient.addColorStop(0, "black");
+gradient.addColorStop(1, "lime");
+// Set the fill style and draw a rectangle
+ctx.fillStyle = gradient;
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+let i = 0;
+const len = CELL_SIZE * 2;
+const cellsize = canvas.width / CELL_SIZE;
+ctx.fillStyle = 'white';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.font = '32px arial';
+while(i < len){
+    const gx = i % CELL_SIZE;
+    const gy = Math.floor( i / CELL_SIZE );
+    const x = cellsize * gx + cellsize / 2;
+    const y = cellsize * gy + cellsize / 2;
+    ctx.fillText(i + 1, x, y);
+    i += 1;
+}
+// draw to cells
+//-------- ---------- 
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const att_uv = geometry.getAttribute('uv');
+'0,1,2,3,4,5'.split(',').forEach( ( i ) => {
+    setUVFace(att_uv, i, i, [0,1,2,3], CELL_SIZE);
+});
+//-------- ---------- 
+// texture
+//-------- ----------
+const texture = new THREE.CanvasTexture(canvas);
+texture.magFilter = THREE.NearestFilter;
+//-------- ---------- 
+// MATERIAL
+//-------- ----------
+const material = new THREE.MeshBasicMaterial({
+    map: texture
+});
+//-------- ---------- 
+// MESH
+//-------- ----------
+const mesh1 = new THREE.Mesh(
+    geometry,
+    material
+);
+scene.add(mesh1);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+// constant values and state for main app loop
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30,     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900,
+CLOCK = new THREE.Clock(true); // USING THREE.Clock in place of new Date() or Date.now()
+let secs = 0,
+frame = 0,
+lt = CLOCK.getElapsedTime();
+// update
+const update = (frame, frameMax) => {
+    const a1 = frame / frameMax;
+    mesh1.rotation.y = Math.PI * 2 * a1;
+    mesh1.rotation.x = Math.PI * 8 * a1;
+};
+// loop
+const loop = () => {
+    const now = CLOCK.getElapsedTime(),
+    secs = (now - lt);
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
 
 ## 3 - An Alpha map with the Basic material
 
