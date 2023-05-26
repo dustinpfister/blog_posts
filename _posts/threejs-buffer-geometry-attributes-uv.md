@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2023-04-10 14:02:30
-version: 1.29
+updated: 2023-05-26 12:39:40
+version: 1.30
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing. 
@@ -15,12 +15,12 @@ Today though I will be getting into the uv attribute that is used to position th
 
 <!-- more -->
 
+<iframe class="youtube_video" src="https://www.youtube.com/embed/Ntz_B7Ye130" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## The uv attribute of a buffer geometry and what to know first
 
 This is a post on an advanced topic in threejs that has to do with creating, or mutating an array of uv values for an instance of buffer geometry. This is then not a [getting started type post with threejs](/2018/04/04/threejs-getting-started/) or [javaScript in general](/2018/11/27/js-getting-started/) and I assume that you have logged a fair amount of time working with threejs before hand. In any case in this section I will be going over some things that you should maybe be aware of before hand, or maybe read up on a bit more before reading the rest of this post.
-
-<iframe class="youtube_video" src="https://www.youtube.com/embed/Ntz_B7Ye130" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ### One way or another you are going to need a texture to use with a material
 
@@ -202,7 +202,172 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 2 - Updating uvs at run time in an Animation loop
+## 2 - Set Face method for Box Geometry
+
+This is a demo based on code that I wrote for my [ mutation of the uv attribute of a Box geometry threejs project example](/2022/11/04/threejs-examples-uvmap-cube-canvas-update/). The goal with that project was to make some code that I can use to quickly set the faces of a box geometry to given cells in a 2d image. So simply put I have this set face method that will take a uv attribute, face index, cell index, and order array, and a cell size as arguments and set the uv attribute with those values. So then I call the set face method, pass the uv and then the face index of the cube in the 0 - 5 range. I then pass a cell index that I want to use in the texture that I am using with the material, the value of which will differ based on the cell size argument that is given. The order array is then the order of the vertex to use when mapping the part of the image to the face.
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xafafaf);
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCITONS
+//-------- ----------
+// get a uvData array for a given uv face index and cell index
+const getUVData = (faceIndex, cellIndex, gridSize) => {
+    faceIndex = faceIndex === undefined ? 0: faceIndex;
+    cellIndex = cellIndex === undefined ? 0: cellIndex;
+    gridSize = gridSize === undefined ? 4: gridSize;
+    const cellX = cellIndex % gridSize;
+    const cellY = Math.floor(cellIndex / gridSize);
+    // for each set of uvs for the face
+    let di = 0;
+    const uvd = 1 / gridSize;
+    let uvData = [];
+    while(di < 4){
+        const i = faceIndex * 4 + di;
+        const x = di % 2;
+        const y = 1 - 1 * Math.floor(di / 2);
+        // get u and v using cellX and cellY
+        const u = uvd * cellX + x * uvd;
+        const v = 1 - uvd * ( cellY + 1 ) + y * uvd;
+        uvData.push({i:i,u:u,v:v});
+        di += 1;
+    }
+    return uvData;
+};
+// set uvs with the uvData, and order arrays
+const setUVData = (uv, uvData, order ) => {
+    order = order || [0, 1, 2, 3]; // normal
+    uvData.forEach((a, di, uvData) => {
+        const b = uvData[ order[di] ]
+        uv.setXY(a.i, b.u, b.v);
+    });
+    uv.needsUpdate = true;
+};
+// main helper
+const setUVFace = (uv, faceIndex, cellIndex, order, gridSize) => {
+    const uvData = getUVData(faceIndex, cellIndex, gridSize);
+    setUVData(uv, uvData, order );
+};
+//-------- ---------- 
+// CANVAS
+//-------- ----------
+const CELL_SIZE = 4;
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+// set canvas native size
+canvas.width = 128;
+canvas.height = 128;
+// draw to canvas
+let i = 0;
+const len = CELL_SIZE * 2;
+const cellsize = canvas.width / CELL_SIZE;
+const COLORS = 'red,lime,blue,yellow,purple,cyan'.split(',');
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.font = '32px arial';
+while(i < len){
+    const gx = i % CELL_SIZE;
+    const gy = Math.floor( i / CELL_SIZE );
+    const x = cellsize * gx;
+    const y = cellsize * gy 
+    // gradient for background
+    const gradient = ctx.createLinearGradient(x, y, x + cellsize, y + cellsize);
+    gradient.addColorStop(0.00, 'black');
+    gradient.addColorStop(0.50, COLORS[i] || '#888888');
+    gradient.addColorStop(1.00, 'black');
+    // Set the fill style and draw a rectangle
+    ctx.fillStyle = gradient;
+    ctx.fillRect(x, y, cellsize, cellsize);
+    ctx.fillStyle = 'white';
+    ctx.fillText(i + 1, x  + cellsize / 2, y + cellsize / 2);
+    i += 1;
+}
+// draw to cells
+//-------- ---------- 
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const att_uv = geometry.getAttribute('uv');
+//-------- ---------- 
+// texture
+//-------- ----------
+const texture = new THREE.CanvasTexture(canvas);
+texture.magFilter = THREE.NearestFilter;
+//-------- ---------- 
+// MATERIAL
+//-------- ----------
+const material = new THREE.MeshBasicMaterial({
+    map: texture
+});
+//-------- ---------- 
+// MESH
+//-------- ----------
+const mesh1 = new THREE.Mesh(
+    geometry,
+    material
+);
+scene.add(mesh1);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+// constant values and state for main app loop
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 20,     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900,
+CLOCK = new THREE.Clock(true); // USING THREE.Clock in place of new Date() or Date.now()
+let secs = 0,
+frame = 0,
+lt = CLOCK.getElapsedTime();
+// update
+const ORDERS = [
+   [0,1,2,3],
+   [0,2,1,3],
+   [2,3,0,1],
+   [3,1,2,0]
+];
+const update = (frame, frameMax) => {
+    const a1 = frame / frameMax;
+    mesh1.rotation.y = Math.PI * 2 * a1;
+    mesh1.rotation.x = Math.PI * 8 * a1;
+    if(frame % 30 === 0){
+        let index_face = 0;
+        while(index_face < 6){
+            const index_cell = Math.floor( Math.random() * 6 );
+            const order = ORDERS[ Math.floor( ORDERS.length * Math.random() ) ];
+            setUVFace(att_uv, index_face, index_cell, order, CELL_SIZE);
+            index_face += 1;
+        }
+    }
+};
+// loop
+const loop = () => {
+    const now = CLOCK.getElapsedTime(),
+    secs = (now - lt);
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 3 - Updating uvs at run time in an Animation loop
 
 Just because the array of uvs can be updated at run time that does not mean that doing so is a good idea. I think that generally uvs are something that should be set up once and only once and if I want to do something that involves more than one texture for a face it might be better to think in terms of more than one texture file and material and updating the textures used with materials rather than messing around with uvs.
 
