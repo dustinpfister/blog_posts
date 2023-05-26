@@ -1,12 +1,12 @@
 ---
-title: The Curve class and tube geometry in threejs
+title: The Curve class in threejs a general overview
 date: 2022-06-17 14:06:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-24 11:37:00
-version: 1.39
+updated: 2023-05-26 07:29:38
+version: 1.40
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
