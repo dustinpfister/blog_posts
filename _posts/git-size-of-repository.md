@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 706
-updated: 2023-05-26 14:05:32
-version: 1.9
+updated: 2023-05-26 14:07:22
+version: 1.10
 ---
 
 I have some repositories that keep growing in size, so far this has not presented a problem for me, but I can not help but thing that at some point in the future it will sooner or later. So for now I thought I would take a moment tot just fool around with a test git folder, and do a little [research on how to know how big a git repository is](https://stackoverflow.com/questions/8185276/find-size-of-git-repository) to begin with at least. 
@@ -32,7 +32,7 @@ $ git init
 
 ### 1.2 - Add something to it and create a first commit
 
-I will then want to add something to it such as a dummy README file.
+I will then want to add something to it such as a dummy README file. Anything will do for this example at least just so that I add some content of some kind or another.
 
 ```
 $ nano README.md
