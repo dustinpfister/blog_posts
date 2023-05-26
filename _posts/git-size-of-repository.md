@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 706
-updated: 2023-05-26 14:07:22
-version: 1.10
+updated: 2023-05-26 14:09:02
+version: 1.11
 ---
 
 I have some repositories that keep growing in size, so far this has not presented a problem for me, but I can not help but thing that at some point in the future it will sooner or later. So for now I thought I would take a moment tot just fool around with a test git folder, and do a little [research on how to know how big a git repository is](https://stackoverflow.com/questions/8185276/find-size-of-git-repository) to begin with at least. 
@@ -87,5 +87,5 @@ $ curl https://api.github.com/repos/mrdoob/three.js 2> /dev/null | grep size
 
 ## Conclusion
 
-That will be it for now when it comes to the size of a git folder. There might be a great deal more to write about with this one when I get around to expanding on this subject a bit more when more things come up. There is just keeping in mind that I can not just cd into the root folder and do a [linux du](https://man7.org/linux/man-pages/man1/du.1.html) command to get an idea of the size.
+That will be it for now when it comes to the size of a git folder. There might be a great deal more to write about with this one when I get around to expanding on this subject a bit more when more things come up. There is just keeping in mind that I can not just cd into the root folder and do a [linux du](https://man7.org/linux/man-pages/man1/du.1.html) command to get an idea of the size. There is the question if the local repo is a deep clone or not, and there are just a lot of factors at play here when it comes to knowing what the actaul size is.
 
