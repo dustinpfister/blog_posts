@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 1039
-updated: 2023-05-12 14:49:08
-version: 1.1
+updated: 2023-05-26 14:05:32
+version: 1.2
 ---
 
 There are a number of basic git sub commands that one will need to be aware of in order to make use of public and private Github repositories, and to just use git in general outside of github as well. There are two commands that come to mind when it comes to getting started with git. One would be the [init sub command](/2019/07/05/git-init/) that is a way to create a whole new git folder from an empty folder, and the other option would be the [clone sub command](https://git-scm.com/docs/git-clone) which is a way to clone down a git folder that all ready exists. 
@@ -42,9 +42,3 @@ $ curl https://api.github.com/repos/mrdoob/three.js 2> /dev/null | grep size
 ## Conclusion
 
 That will have to be it for now when it comes to the clone sub command of the git source control command. I am sure that there is a great deal more to write about when it comes to the use of clone, but that will have to be a matter for future edits of this post, and maybe a few other posts completely. I have just got around to starting to write one or two new posts on this subject if I am in fact going to write about it as one of my main topics on this site. The main thing about it is that this is a program that I find myself using every day, so it does make sense to write a post or two now and then for that reason.
-
-
-
-
-
-
