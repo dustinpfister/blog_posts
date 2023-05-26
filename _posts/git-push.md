@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 1043
-updated: 2023-05-24 12:17:43
-version: 1.2
+updated: 2023-05-26 13:25:54
+version: 1.3
 ---
 
 The [git push](https://git-scm.com/docs/git-push) sub command is how to go about updating a remote with local changes. Of course in order to do this to begin with one will need to set up a remote repository to begin with. So with that said there is also knowing at least a thing or two about the [git remote command](https://git-scm.com/docs/git-remote) as a way to find out if any remotes are set up to begin with, and if need be to add one.
@@ -31,4 +31,9 @@ $ git push origin master
 ```
 
 In some cases the name of the main branch might be something other than master. Often the name of the main branch might be something like, well main. However the general idea here is that by default there is a configuration that will be check, and if that is missing origin will be used. 
+
+## Conclusion
+
+That will be it for now on the git push command, unless until I come around to edit and expand this post a bit. For the most part this is just a post that I wanted to get out of the way snese I can not say that I have that much to write about with the git push subcommand, at least when it comes to the push command alone anyway.
+
 
