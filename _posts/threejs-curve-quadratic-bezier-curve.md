@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1044
-updated: 2023-05-26 07:31:31
-version: 1.7
+updated: 2023-05-26 07:33:23
+version: 1.8
 ---
 
 When it comes to curves in threejs there is the [base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve), and then there are a number of both 3D as well as 2D curve classes that extend this base curve class. In this post I will be writing about one of the 2D built in options for curves which is the [Quadratic Bezier Curve class](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve). This is a kind of curve in which I can give a start point, end point, and a single control point each of which are instances of the Vector2 class. It can be used by itself, or in combination with other options to create a curve path that will then be used in a number of situations in which I need a 2d path.
@@ -40,7 +40,7 @@ These will then be a few getting started types examples of the 2D Quadratic Bezi
 
 ### 1.1 - Creating some Points
 
-For this first example I will be creating an instance of the [THREE.Points](/2023/02/23/threejs-points/) Object3d class based object rather that the usual Mesh object. When doing so I can use the set from points method of the buffer geometry class to create a geometry from a 2d curve. However in order to do so I will beed to call the getPoints method of the curve to do so first. And with that said in order to call that method I fill first need an instance of a curve to call the getPoints method.
+For this first example I will be creating an instance of the [THREE.Points](/2023/02/23/threejs-points/) rather that the usual Mesh object. When doing so I can use the set from points method of the buffer geometry class to create a geometry from a 2d curve. However in order to do so I will need to call the getPoints method of the curve to do so first. And with that said in order to call that method I fill first need an instance of a curve to call the getPoints method.
 
 So then with all of that said and put aside there is just creating the curve object to begin with. So then I will need three instances of the Vector2 class. The first one is the point in which the 2d curve will start, the second is a single control point, and the final one will be the end point. There are a great number of methods to work with to help in the process of creating a Vector2 object, such as the clone, lerp, and add methods that I am using to get the control point that I want here.
 
@@ -86,7 +86,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Shape Geometry example
 
-Points are often a great way to start, but there is also having a way to go about making a geometry that will work okay with mesh objects. One option would be to make a Shape with some points created from a curve, and then use that to make an instance of shape geometry. When using shape geometry I will want to make sure that I set the side value of the mesh material that I use to THREE.DoubleSide as the mesh will not show up when viewed at certain angles otherwise.
+Points are often a great way to start, but there is also having a way to go about making a geometry that will work okay with [Mesh objects](/2018/05/04/threejs-mesh/). One option would be to make a Shape with some points created from a curve, and then use that to make an instance of shape geometry. When using shape geometry I will want to make sure that I set the side value of the mesh material that I use to THREE.DoubleSide as the mesh will not show up when viewed at certain angles otherwise.
 
 When calling the THREE.Shape constructor I can pass an array of Vector2 objects as the first argument as a way to define the points of the 2d shape. So I can create a curve object with THREE.QuadraticBezierCurve, then use the getPoints method to get an array of Vector2 objects from that curve, which I can then use for this argument of THREE.Shape. Once I have the Shape Object I can then use that with HREE.ShapeGeometry to get a final buffer geometry which I can then in turn use with a mesh object.
 
