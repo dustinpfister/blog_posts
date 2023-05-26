@@ -5,8 +5,8 @@ tags: [git]
 layout: post
 categories: git
 id: 706
-updated: 2020-09-19 14:04:52
-version: 1.7
+updated: 2023-05-26 13:54:43
+version: 1.8
 ---
 
 I have some repositories that keep growing in size, so far this has not presented a problem for me, but I can not help but thing that at some point in the future it will sooner or later. So for now I thought I would take a moment tot just fool around with a test git folder, and do a little [research on how to know how big a git repository is](https://stackoverflow.com/questions/8185276/find-size-of-git-repository) to begin with at least. 
@@ -22,7 +22,7 @@ I often find that it might be best to start over with a test repository rather t
 
 ### 1.1 - create the test repo
 
-First off I create a new repository with the git init command in a new folder.
+First off I create a new repository with the [git init](/2019/07/05/git-init) command in a new folder.
 
 ```
 $ mkdir git_test
@@ -75,3 +75,8 @@ prune-packable: 0
 garbage: 0
 size-garbage: 0 bytes
 ```
+
+## Conclusion
+
+That will be it for now when it comes to the size of a git folder. There might be a great deal more to write about with this one when I get around to expanding on this subject a bit more.
+
