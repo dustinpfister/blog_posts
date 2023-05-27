@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2023-05-27 16:09:18
-version: 1.79
+updated: 2023-05-27 19:31:30
+version: 1.80
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class that is used to store the local position of an object3d class based object such as a Mesh, Camera, Group and so forth. This local position is relative to a parent object, rather than what is often referred to as a world space. In other words the values of the Vector3 object of the position property are deltas from the current position of the parent object, rather than an absolute world space location.
@@ -693,7 +693,7 @@ renderer.render(scene, camera);
 
 The end result here is then two curves one of which uses the default get alpha method that will give a similar result to the get points method. The other curve uses the get alpha method that makes use of the smoother step method that results in the points starting out space out closer together at first, then farther apart as the center of the curve is reached, at which pint the spacing goes back down again.
 
-## 4 – Positioning objects to the position attribute of geometry
+## 4 - Positioning objects to the position attribute of geometry
 
 When it comes to buffer geometry of any kind one of the most important attributes is the position attribute. This is the attribute that will contain the actual points in space that from the triangles of the geometry itself. As such this is a must have attribute even for geometries that are just going to be used with the THREE.Points, or THREE.Line objects.
 
