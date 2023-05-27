@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2023-05-27 15:23:00
-version: 1.78
+updated: 2023-05-27 16:09:18
+version: 1.79
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class that is used to store the local position of an object3d class based object such as a Mesh, Camera, Group and so forth. This local position is relative to a parent object, rather than what is often referred to as a world space. In other words the values of the Vector3 object of the position property are deltas from the current position of the parent object, rather than an absolute world space location.
@@ -782,6 +782,8 @@ renderer.render(scene, camera);
 ### 4.2 - Using the Vector3 lerp method to lerp back and forth between two buffer geometry objects
 
 In the first example of this section I worked out a basic helper function that will create a Vector3 object by way of a given buffer geometry, and an alpha \(0-1\) value. So then I can give any geometry and then an alpha value and then get a Vector3 object that is a position in that geometry, and I can then use that to set or update the position attribute of an object. In this example then I am not just setting the positions of mesh objects to a geometry, but I am also lerping between the two as well which can result in some pretty cool effects.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/hWG3N8ukEdE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ```js
