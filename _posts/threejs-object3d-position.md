@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2023-05-27 14:10:11
-version: 1.76
+updated: 2023-05-27 14:45:08
+version: 1.77
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class that is used to store the local position of an object3d class based object such as a Mesh, Camera, Group and so forth. This local position is relative to a parent object, rather than what is often referred to as a world space. In other words the values of the Vector3 object of the position property are deltas from the current position of the parent object, rather than an absolute world space location.
@@ -340,7 +340,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 2 - Setting the positions of a parent and child objects
+## 2 - Setting the positions of parent and child objects
 
 Things can get a little confusing when it comes to working with one or more nested objects that are children of another object. In such situations there is setting position relative to a parent object, and then there is setting an object relative to what is called world space. So then I think I should have a section in this post in which I go over at least a few examples that have to do with setting the position of objects by way of both local and world space which is one major thing that comes up when it comes to groups of objects, and setting position of children and parent objects in such situations.
 
@@ -349,47 +349,45 @@ Things can get a little confusing when it comes to working with one or more nest
 There is not just setting the position of a single object, but also all the children of a single object as well which can be called a  parent object. When I use the add method of a group object, or any object3d based object for that matter to add and object as a child of the parent object, the position of that child object will be relative to the parent object. The example here makes use of the [THREE.Group constructor](/2018/05/16/threejs-grouping-mesh-objects/) as a way to just create a kind of blank object that will just work as a wrapper of sorts for additional objects that I will be adding to the group that are mesh objects.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // CREATING A GROUP WITH CHILDREN
-    //-------- ----------
-    const group = new THREE.Group();
-    let i = 0, len = 30, radian, radius, x, y, z;
-    while(i < len){
-        const mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-        radian = Math.PI * 2 * 4 / len * i;
-        radius = 1;
-        x = Math.cos(radian) * radius;
-        y = 10 / 2 * -1 + 10 * ( i / len);
-        z = Math.sin(radian) * radius;
-        // SETTING THE POSITION OF JUST THIS MESH
-        mesh.position.set(x, y, z);
-        group.add(mesh);
-        i += 1;
-    }
-    scene.add(group);
-    // SETTING POSITION OF THE GROUP
-    group.position.set(-5,0,-5)
-    // POSITON AND ROTATION OF CAMERA
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 1, 0);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CREATING A GROUP WITH CHILDREN
+//-------- ----------
+const group = new THREE.Group();
+let i = 0, len = 30, radian, radius, x, y, z;
+while(i < len){
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    radian = Math.PI * 2 * 4 / len * i;
+    radius = 1;
+    x = Math.cos(radian) * radius;
+    y = 10 / 2 * -1 + 10 * ( i / len);
+    z = Math.sin(radian) * radius;
+    // SETTING THE POSITION OF JUST THIS MESH
+    mesh.position.set(x, y, z);
+    group.add(mesh);
+    i += 1;
+}
+scene.add(group);
+// SETTING POSITION OF THE GROUP
+group.position.set(-5,0,-5)
+// POSITON AND ROTATION OF CAMERA
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 1, 0);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 So then the situation here is that I am creating a group, and then adding a bunch of mesh objects to the group, and then I am adding the group to the scene object. The position values of the mesh objects are then relative to the position of the group, and then the group is relative to the position of the scene object. The scene object is also an object3d based object just like that of the group and mesh objects, so then this two has a position property. By default the position of the scene is at 0,0,0 but it too can be moved. When a scene objects is moved it is then relative to a final kind of world space then, which I will be getting into more later in this section.
@@ -401,71 +399,69 @@ When adding a child object to a group the position of each child object will be 
 To use this get world position method I need to create a new Vector3 object to copy the world position to first. Then I just call the get world position method of the Object3d based object such as a group that I would like to get the world position of, passing the new vector3 object that will get the values copied to. After that I then have the world position of the object, I can then add an additional value from there to get the world space position that would be relative to the group object rather than the scene, or rather world space and a scene object can also have its x and y values alerted to something other than 0,0.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10, 0x0000ff, 0xffffff));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // CREATING A GROUP WITH CHILDREN
-    //-------- ----------
-    const group = new THREE.Group();
-    group.add( new THREE.GridHelper(10,10, 0xff0000, 0x00ff00));
-    const len = 20;
-    let i = 0, radian, radius = 5, x, y = 0, z;
-    while(i < len){
-        const mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-        radian = Math.PI * 2 / len * i;
-        x = Math.cos(radian) * radius;
-        z = Math.sin(radian) * radius;
-        mesh.position.set(x, y, z);
-        mesh.lookAt(group.position);
-        group.add(mesh);
-        i += 1;
-    }
-    scene.add(group);
-    group.position.set(-12, 0, -7);
-    //-------- ----------
-    // WORLD SPACE VECTOR
-    //-------- ----------
-    const v_ws = new THREE.Vector3(1, 1.5, -1);
-    const mesh1 = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 3, 1),
-        new THREE.MeshStandardMaterial({color: 'red'}));
-    scene.add(mesh1);
-    mesh1.position.copy(v_ws);
-    const mesh2 = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 3, 1),
-        new THREE.MeshStandardMaterial({color: 'red'}));
-    scene.add(mesh2);
-    // get world position works
-    const v_ls = new THREE.Vector3()
-    group.getWorldPosition(v_ls);
-    v_ls.add(v_ws)
-    mesh2.position.copy( v_ls );
-    //-------- ----------
-    // LIGHT
-    //-------- ----------
-    const dl = new THREE.DirectionalLight(0xffffff, 1);
-    dl.position.set(1, 4, 2)
-    scene.add(dl);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    // camera position
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 1, 0);
-    // render
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10, 0x0000ff, 0xffffff));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CREATING A GROUP WITH CHILDREN
+//-------- ----------
+const group = new THREE.Group();
+group.add( new THREE.GridHelper(10,10, 0xff0000, 0x00ff00));
+const len = 20;
+let i = 0, radian, radius = 5, x, y = 0, z;
+while(i < len){
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+    radian = Math.PI * 2 / len * i;
+    x = Math.cos(radian) * radius;
+    z = Math.sin(radian) * radius;
+    mesh.position.set(x, y, z);
+    mesh.lookAt(group.position);
+    group.add(mesh);
+    i += 1;
+}
+scene.add(group);
+group.position.set(-12, 0, -7);
+//-------- ----------
+// WORLD SPACE VECTOR
+//-------- ----------
+const v_ws = new THREE.Vector3(1, 1.5, -1);
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 3, 1),
+    new THREE.MeshStandardMaterial({color: 'red'}));
+scene.add(mesh1);
+mesh1.position.copy(v_ws);
+const mesh2 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 3, 1),
+    new THREE.MeshStandardMaterial({color: 'red'}));
+scene.add(mesh2);
+// get world position works
+const v_ls = new THREE.Vector3()
+group.getWorldPosition(v_ls);
+v_ls.add(v_ws)
+mesh2.position.copy( v_ls );
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(1, 4, 2)
+scene.add(dl);
+//-------- ----------
+// RENDER
+//-------- ----------
+// camera position
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 1, 0);
+// render
+renderer.render(scene, camera);
 ```
 
 ## 3 - Setting Position With Curves
@@ -527,85 +523,83 @@ In this example I am using a few helper methods that I made while working on my 
 I then use these helpers to create the curve that I want at which point I can use it to get any point along the curve by using the get point method of the base curve class. The returned vector3 object can then be used to set the position of an object by just passing it as an argument to the copy method of the Vector3 class that is called off of the Vector3 object store at the position of the object3d based object that I would like to set to that given position.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(6, 6, 6);
-    camera.lookAt(0,0,0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS - from 'frink3' project in videoground-beta-world
-    //           ( https://github.com/dustinpfister/videoground-beta-world )
-    //-------- ----------
-    // just a short hand for THREE.QuadraticBezierCurve3
-    const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
-        let vs = x1;
-        let ve = y1;
-        let vc = z1;
-        if(arguments.length === 9){
-            vs = new THREE.Vector3(x1, y1, z1);
-            ve = new THREE.Vector3(x2, y2, z2);
-            vc = new THREE.Vector3(x3, y3, z3);
-        }
-        return new THREE.QuadraticBezierCurve3( vs, vc, ve );
-    };
-    // QBDelta helper using QBC3
-    // this works by giving deltas from the point that is half way between
-    // the two start and end points rather than a direct control point for x3, y3, and x3
-    const QBDelta = function(x1, y1, z1, x2, y2, z2, x3, y3, z3) {
-        const vs = new THREE.Vector3(x1, y1, z1);
-        const ve = new THREE.Vector3(x2, y2, z2);
-        // deltas
-        const vDelta = new THREE.Vector3(x3, y3, z3);
-        const vc = vs.clone().lerp(ve, 0.5).add(vDelta);
-        const curve = QBC3(vs, ve, vc);
-        return curve;
-    };
-    //-------- ----------
-    // CURVE
-    //-------- ----------
-    const curve = QBC3(0, 0, 5, 0, 0, -5, -20, 6, 4.5);
-    //-------- ----------
-    // OBJECTS
-    //-------- ----------
-    // mesh object that will be positioned along the curve
-    const MESH_COUNT = 10;
-    const POINT_COUNT = 100;
-    let i = 0;
-    while(i < MESH_COUNT){
-        const mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(0.75, 0.75, 0.75),
-            new THREE.MeshNormalMaterial({transparent: true, opacity: 0.5}));
-        const a1 = Math.round(i / MESH_COUNT * POINT_COUNT) / (POINT_COUNT - POINT_COUNT / MESH_COUNT );
-        const a2 = a1; //0.1 + a1 * 0.9;
-        // USING THE getPoint METHOD OF THE CURVE TO GET a Vector3
-        // OBJECT THAT I CAN THEN USE WITH THE COPY METHOD TO SET
-        // THE STATE OF THE POSITION OF THIS MESH OBJECT
-        const v3 =  curve.getPoint( a2);
-        mesh.position.copy( v3 );
-        mesh.lookAt(0, 0, 0);
-        scene.add(mesh);
-        i += 1;
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(6, 6, 6);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS - from 'frink3' project in videoground-beta-world
+//           ( https://github.com/dustinpfister/videoground-beta-world )
+//-------- ----------
+// just a short hand for THREE.QuadraticBezierCurve3
+const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
+    let vs = x1;
+    let ve = y1;
+    let vc = z1;
+    if(arguments.length === 9){
+        vs = new THREE.Vector3(x1, y1, z1);
+        ve = new THREE.Vector3(x2, y2, z2);
+        vc = new THREE.Vector3(x3, y3, z3);
     }
-    // grid helper
-    const grid = new THREE.GridHelper(10, 10);
-    scene.add(grid);
-    // points to get an indea of what the deal is with the curve
-    const points = new THREE.Points(
-        new THREE.BufferGeometry().setFromPoints( curve.getPoints(POINT_COUNT) ),
-        new THREE.PointsMaterial({size: 0.125, color: new THREE.Color(0, 1, 0)})
-    );
-    scene.add(points);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+    return new THREE.QuadraticBezierCurve3( vs, vc, ve );
+};
+// QBDelta helper using QBC3
+// this works by giving deltas from the point that is half way between
+// the two start and end points rather than a direct control point for x3, y3, and x3
+const QBDelta = function(x1, y1, z1, x2, y2, z2, x3, y3, z3) {
+    const vs = new THREE.Vector3(x1, y1, z1);
+    const ve = new THREE.Vector3(x2, y2, z2);
+    // deltas
+    const vDelta = new THREE.Vector3(x3, y3, z3);
+    const vc = vs.clone().lerp(ve, 0.5).add(vDelta);
+    const curve = QBC3(vs, ve, vc);
+    return curve;
+};
+//-------- ----------
+// CURVE
+//-------- ----------
+const curve = QBC3(0, 0, 5, 0, 0, -5, -20, 6, 4.5);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+// mesh object that will be positioned along the curve
+const MESH_COUNT = 10;
+const POINT_COUNT = 100;
+let i = 0;
+while(i < MESH_COUNT){
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(0.75, 0.75, 0.75),
+        new THREE.MeshNormalMaterial({transparent: true, opacity: 0.5}));
+    const a1 = Math.round(i / MESH_COUNT * POINT_COUNT) / (POINT_COUNT - POINT_COUNT / MESH_COUNT );
+    const a2 = a1; //0.1 + a1 * 0.9;
+    // USING THE getPoint METHOD OF THE CURVE TO GET a Vector3
+    // OBJECT THAT I CAN THEN USE WITH THE COPY METHOD TO SET
+    // THE STATE OF THE POSITION OF THIS MESH OBJECT
+    const v3 =  curve.getPoint( a2);
+    mesh.position.copy( v3 );
+    mesh.lookAt(0, 0, 0);
+    scene.add(mesh);
+    i += 1;
+}
+// grid helper
+const grid = new THREE.GridHelper(10, 10);
+scene.add(grid);
+// points to get an indea of what the deal is with the curve
+const points = new THREE.Points(
+    new THREE.BufferGeometry().setFromPoints( curve.getPoints(POINT_COUNT) ),
+    new THREE.PointsMaterial({size: 0.125, color: new THREE.Color(0, 1, 0)})
+);
+scene.add(points);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ### 3.3 - Curves, get point method, and get alpha methods
@@ -615,88 +609,86 @@ There is not just using a curve and the get points method, but also using a curv
 There is then looking into creating what I have come to call get alpha methods, there are methods that will return a value between 0 and 1 that can be used with the get point method of the curve base class to create an array of vector3 objects. In this example I have a get smoother helper function that is just a wrapper for the [MathUtils.getsmoother](https://threejs.org/docs/#api/en/math/MathUtils.smootherstep) method. Speaking of the [Math Utils object](/2022/04/11/threejs-math-utils/) that is a good place to start when it comes to getting an idea of what there is to work with with some of these kinds of methods.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    // grid helper
-    const grid = new THREE.GridHelper(10, 10);
-    scene.add(grid);
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(5, 7, 5);
-    camera.lookAt(0,0,0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // just a short hand for THREE.QuadraticBezierCurve3
-    const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
-        let vs = x1;
-        let ve = y1;
-        let vc = z1;
-        if(arguments.length === 9){
-            vs = new THREE.Vector3(x1, y1, z1);
-            ve = new THREE.Vector3(x2, y2, z2);
-            vc = new THREE.Vector3(x3, y3, z3);
-        }
-        return new THREE.QuadraticBezierCurve3( vs, vc, ve );
-    };
-    // create curve points
-    const createCurvePoints = (curve, point_count, point_size, point_color, get_alpha) => {
-        point_count = point_count === undefined ? 100 : point_count;
-        point_size = point_size === undefined ? 1 : point_size;
-        point_color = point_color || new THREE.Color(1, 1, 1);
-        get_alpha = get_alpha || function(a1){ return a1; };
-        const v3_array = [];
-        let i = 0;
-        while(i < point_count){
-            v3_array.push( curve.getPoint( get_alpha(i / point_count) ));
-            i += 1;
-        }
-        const points = new THREE.Points(
-            new THREE.BufferGeometry().setFromPoints( v3_array ),
-            new THREE.PointsMaterial({size: point_size, color: point_color})
-        );
-        return points;
-    };
-    // smooth get alpha
-    const getAlphaSmoother = (a1) => {
-        return THREE.MathUtils.smootherstep(a1, 0, 1);
-    };
-    // curve mesh objects helper
-    const addCurveMeshObjects = (parent, curve, mesh_count, get_alpha) => {
-        get_alpha = get_alpha || function(a1){ return a1; };
-        let i = 0;
-        while(i < mesh_count){
-            const mesh = new THREE.Mesh(
-                new THREE.BoxGeometry(0.5, 0.5, 0.5),
-                new THREE.MeshNormalMaterial({transparent: true, opacity: 0.5}));
-            const v3 =  curve.getPoint( get_alpha( i / mesh_count ) );
-            mesh.position.copy( v3 );
-            parent.add(mesh);
-            i += 1;
-        }
-    };
-    //-------- ----------
-    // CURVE
-    //-------- ----------
-    const curve1 = QBC3(-2, 0, 5, -2, 0, -5, 2, 0, 0);
-    const curve2 = QBC3(2, 0, 5, 2, 0, -5, 6, 0, 0);
-    //-------- ----------
-    // OBJECTS
-    //-------- ----------
-    addCurveMeshObjects(scene, curve1, 20);
-    scene.add( createCurvePoints(curve1, 40, 0.125, new THREE.Color(0,1,1) ) );
-    addCurveMeshObjects(scene, curve2, 20, getAlphaSmoother);
-    scene.add( createCurvePoints(curve2, 40, 0.125, new THREE.Color(0,1,0), getAlphaSmoother ) );
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+// grid helper
+const grid = new THREE.GridHelper(10, 10);
+scene.add(grid);
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(5, 7, 5);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// just a short hand for THREE.QuadraticBezierCurve3
+const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
+    let vs = x1;
+    let ve = y1;
+    let vc = z1;
+    if(arguments.length === 9){
+        vs = new THREE.Vector3(x1, y1, z1);
+        ve = new THREE.Vector3(x2, y2, z2);
+        vc = new THREE.Vector3(x3, y3, z3);
+    }
+    return new THREE.QuadraticBezierCurve3( vs, vc, ve );
+};
+// create curve points
+const createCurvePoints = (curve, point_count, point_size, point_color, get_alpha) => {
+    point_count = point_count === undefined ? 100 : point_count;
+    point_size = point_size === undefined ? 1 : point_size;
+    point_color = point_color || new THREE.Color(1, 1, 1);
+    get_alpha = get_alpha || function(a1){ return a1; };
+    const v3_array = [];
+    let i = 0;
+    while(i < point_count){
+        v3_array.push( curve.getPoint( get_alpha(i / point_count) ));
+        i += 1;
+    }
+    const points = new THREE.Points(
+        new THREE.BufferGeometry().setFromPoints( v3_array ),
+        new THREE.PointsMaterial({size: point_size, color: point_color})
+    );
+    return points;
+};
+// smooth get alpha
+const getAlphaSmoother = (a1) => {
+    return THREE.MathUtils.smootherstep(a1, 0, 1);
+};
+// curve mesh objects helper
+const addCurveMeshObjects = (parent, curve, mesh_count, get_alpha) => {
+    get_alpha = get_alpha || function(a1){ return a1; };
+    let i = 0;
+    while(i < mesh_count){
+        const mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.5, 0.5),
+            new THREE.MeshNormalMaterial({transparent: true, opacity: 0.5}));
+        const v3 =  curve.getPoint( get_alpha( i / mesh_count ) );
+        mesh.position.copy( v3 );
+        parent.add(mesh);
+        i += 1;
+    }
+};
+//-------- ----------
+// CURVE
+//-------- ----------
+const curve1 = QBC3(-2, 0, 5, -2, 0, -5, 2, 0, 0);
+const curve2 = QBC3(2, 0, 5, 2, 0, -5, 6, 0, 0);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+addCurveMeshObjects(scene, curve1, 20);
+scene.add( createCurvePoints(curve1, 40, 0.125, new THREE.Color(0,1,1) ) );
+addCurveMeshObjects(scene, curve2, 20, getAlphaSmoother);
+scene.add( createCurvePoints(curve2, 40, 0.125, new THREE.Color(0,1,0), getAlphaSmoother ) );
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 The end result here is then two curves one of which uses the default get alpha method that will give a similar result to the get points method. The other curve uses the get alpha method that makes use of the smoother step method that results in the points starting out space out closer together at first, then farther apart as the center of the curve is reached, at which pint the spacing goes back down again.
@@ -715,78 +707,76 @@ When I have a buffer geometry instance, and there is a position attribute to wor
 
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    camera.position.set(0, 8, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body ).appendChild( renderer.domElement );
-    //-------- ----------
-    // HELPER FUNCTIONS
-    //-------- ----------
-    // get a geo position vector3 by a given alpha value
-    const getGeoPosByAlpha = (geo, alpha) => {
-        const pos = geo.getAttribute('position');
-        const count = pos.count;
-        const index = Math.round( ( count - 1 ) * alpha );
-        const v = new THREE.Vector3();
-        v.x = pos.getX(index);
-        v.y = pos.getY(index);
-        v.z = pos.getZ(index);
-        return v;
-    };
-    // create a 'pointer' mesh object
-    const createPointerMesh = () => {
-        return new THREE.Mesh(
-            new THREE.SphereGeometry(0.2, 20, 20),
-            new THREE.MeshNormalMaterial()
-        );
-    };
-    //-------- ----------
-    // POSITION TO MESH OBJECTS
-    //-------- ----------
-    const material_posto = new THREE.MeshBasicMaterial({ wireframe: true, transparent: true, opacity: 0.15});
-    const group = new THREE.Group();
-    scene.add(group);
-    // sphere that will be the position property used
-    const mesh1 = new THREE.Mesh( new THREE.SphereGeometry(2, 14, 14), material_posto );
-    group.add(mesh1);
-    // torus that will be the position property used
-    const mesh2 = new THREE.Mesh( new THREE.TorusGeometry(1.5, 0.75, 14, 14), material_posto);
-    mesh2.position.set(-5, 0, 0);
-    mesh2.geometry.rotateX(Math.PI * 0.5)
-    group.add(mesh2);
-    // cone that will be the position property used
-    const mesh3 = new THREE.Mesh( new THREE.ConeGeometry(2, 4, 14, 14), material_posto);
-    mesh3.position.set(5, 0, -5);
-    group.add(mesh3);
-    //-------- ----------
-    // POINTER MESH OBJECTS
-    //-------- ----------
-    let i = 0;
-    const count = 16;
-    while(i < count){
-        const a1 = i / count;
-        group.children.forEach(( mesh ) => {
-            const mesh_pointer = createPointerMesh();
-            const v = getGeoPosByAlpha(mesh.geometry, a1);
-            mesh_pointer.position.copy(v).add(mesh.position);
-            scene.add(mesh_pointer);
-        });
-        i += 1;
-    }
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+camera.position.set(0, 8, 8);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild( renderer.domElement );
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+// get a geo position vector3 by a given alpha value
+const getGeoPosByAlpha = (geo, alpha) => {
+    const pos = geo.getAttribute('position');
+    const count = pos.count;
+    const index = Math.round( ( count - 1 ) * alpha );
+    const v = new THREE.Vector3();
+    v.x = pos.getX(index);
+    v.y = pos.getY(index);
+    v.z = pos.getZ(index);
+    return v;
+};
+// create a 'pointer' mesh object
+const createPointerMesh = () => {
+    return new THREE.Mesh(
+        new THREE.SphereGeometry(0.2, 20, 20),
+        new THREE.MeshNormalMaterial()
+    );
+};
+//-------- ----------
+// POSITION TO MESH OBJECTS
+//-------- ----------
+const material_posto = new THREE.MeshBasicMaterial({ wireframe: true, transparent: true, opacity: 0.15});
+const group = new THREE.Group();
+scene.add(group);
+// sphere that will be the position property used
+const mesh1 = new THREE.Mesh( new THREE.SphereGeometry(2, 14, 14), material_posto );
+group.add(mesh1);
+// torus that will be the position property used
+const mesh2 = new THREE.Mesh( new THREE.TorusGeometry(1.5, 0.75, 14, 14), material_posto);
+mesh2.position.set(-5, 0, 0);
+mesh2.geometry.rotateX(Math.PI * 0.5)
+group.add(mesh2);
+// cone that will be the position property used
+const mesh3 = new THREE.Mesh( new THREE.ConeGeometry(2, 4, 14, 14), material_posto);
+mesh3.position.set(5, 0, -5);
+group.add(mesh3);
+//-------- ----------
+// POINTER MESH OBJECTS
+//-------- ----------
+let i = 0;
+const count = 16;
+while(i < count){
+    const a1 = i / count;
+    group.children.forEach(( mesh ) => {
+        const mesh_pointer = createPointerMesh();
+        const v = getGeoPosByAlpha(mesh.geometry, a1);
+        mesh_pointer.position.copy(v).add(mesh.position);
+        scene.add(mesh_pointer);
+    });
+    i += 1;
+}
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ## 5 - Deterministic Animation examples
@@ -807,90 +797,88 @@ The main idea here with this one is to create a group of mesh objects and have t
 The end result of all of this is then to end up with a whole bunch of mesh objects that are moving from a start x position to another position that is a max delta from that start position, but at differing rates, and having them wrap around.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPER FUNCTIONS
-    //-------- ----------
-    // make a single mesh object
-    const MESH_GEO = new THREE.SphereGeometry(0.5, 20, 20);
-    const MESH_MATERIAL = new THREE.MeshNormalMaterial();
-    const makeMesh = () => {
-        const mesh = new THREE.Mesh(
-            MESH_GEO,
-            MESH_MATERIAL);
-        return mesh;
-    };
-    // make a group of mesh objects
-    const makeGroup = () => {
-       const group = new THREE.Group();
-        let i = 0;
-        const len = 9;
-        while(i < len){
-            const mesh = makeMesh();
-            mesh.position.x = -4;
-            mesh.position.z = -4 + i;
-            mesh.position.y =  0.5;
-            group.add(mesh);
-            i += 1;
-        }
-       return group;
-    };
-    // set a group by an alpha value
-    const setGroup = (group, alpha) => {
-        group.children.forEach((mesh, i) => {
-            mesh.position.x = -4 + THREE.MathUtils.euclideanModulo( 8 * ( i + 1 ) * alpha, 8 );
-        });
-    };
-    //-------- ----------
-    // SCENE CHILD OBJECTS
-    //-------- ----------
-    // create group
-    const group = makeGroup();
-    scene.add(group);
-    // camera pos
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    // ---------- ----------
-    // ANIMATION LOOP
-    // ---------- ----------
-    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 300;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const update = function(frame, frameMax){
-        // UPDATE GROUP
-        setGroup(group, frame / frameMax);
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+// make a single mesh object
+const MESH_GEO = new THREE.SphereGeometry(0.5, 20, 20);
+const MESH_MATERIAL = new THREE.MeshNormalMaterial();
+const makeMesh = () => {
+    const mesh = new THREE.Mesh(
+        MESH_GEO,
+        MESH_MATERIAL);
+    return mesh;
+};
+// make a group of mesh objects
+const makeGroup = () => {
+    const group = new THREE.Group();
+    let i = 0;
+    const len = 9;
+    while(i < len){
+        const mesh = makeMesh();
+        mesh.position.x = -4;
+        mesh.position.z = -4 + i;
+        mesh.position.y =  0.5;
+        group.add(mesh);
+        i += 1;
+    }
+    return group;
+};
+// set a group by an alpha value
+const setGroup = (group, alpha) => {
+    group.children.forEach((mesh, i) => {
+        mesh.position.x = -4 + THREE.MathUtils.euclideanModulo( 8 * ( i + 1 ) * alpha, 8 );
+    });
+};
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+// create group
+const group = makeGroup();
+scene.add(group);
+// camera pos
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    // UPDATE GROUP
+    setGroup(group, frame / frameMax);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ### 5.2 - Lerp method animation example
@@ -900,115 +888,113 @@ Now that I have a nice basic frame over max frame animation example, I can now s
 So then for this animation example I will have a collection of mesh objects that I move between a start and end Vector with the Lerp method and the use of that method will be the center point of this specific example. I will however also make use of a number of other features of the vector3 class such as the add method, as well as some Math utils methods to helper make things more interesting.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    // camera pos
-    camera.position.set(6, 9, 6);
-    camera.lookAt(1.4, 0, 1.4);
-    //-------- ----------
-    // HELPER FUNCTIONS
-    //-------- ----------
-    // get a value between 0 and 1 with the given numerator denominator and count
-    const getAlpha = (n, d, ct) => {
-        return THREE.MathUtils.euclideanModulo(n / d * ct, 1);
-    };
-    // getBias is like getAlpha but the value will 'pingpong', I often also refer to this as a 'bias' value
-    const getBias = (n, d, ct) => {
-        return THREE.MathUtils.pingpong(getAlpha(n, d, ct) - 0.5, 1) * 2;
-    };
-    // just passing a getBias call to THREE.MathUtils.smoothstep
-    const getSmoothBias = (n, d, ct) => {
-        return THREE.MathUtils.smoothstep(getBias(n, d, ct), 0, 1);
-    }
-    // make a single mesh object with custom user data
-    const MESH_GEO = new THREE.SphereGeometry(0.75, 20, 20);
-    const makeMesh = (opt) => {
-        opt = opt || {};
-        const mesh = new THREE.Mesh(
-            MESH_GEO,
-            new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.5 }));
-        const ud = mesh.userData;
-        ud.v_start = opt.v_start || new THREE.Vector3(-4, 0, -4);
-        ud.v_end = opt.v_end || new THREE.Vector3(4, 0, -4);
-        ud.v_add = opt.v_add || new THREE.Vector3(0, 0, 8);
-        return mesh;
-    };
-    const updateMesh = (mesh, opt) => {
-        opt = opt || {};
-        opt.alphaLerp = opt.alphaLerp === undefined ? 0 : opt.alphaLerp;
-        opt.alphaAdd = opt.alphaAdd === undefined ? 1 - getSmoothBias(opt.alphaLerp, 1, 1) : opt.alphaAdd;
-        //const alpha = getSmoothBias(frame, frameMax, 4);
-        const ud = mesh.userData;
-        const delta = ud.v_add.clone().multiplyScalar( opt.alphaAdd );
-        mesh.position.copy(ud.v_start).lerp(ud.v_end, opt.alphaLerp).add( delta );
-    }
-    //-------- ----------
-    // SCENE CHILD OBJECTS
-    //-------- ----------
-    const group = new THREE.Group();
-    const len = 18;
-    let i = 0;
-    while(i < len){
-        const alpha = i / len;
-        const mesh = makeMesh({
-            v_add: new THREE.Vector3(0, 4, 8)
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// camera pos
+camera.position.set(6, 9, 6);
+camera.lookAt(1.4, 0, 1.4);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+// get a value between 0 and 1 with the given numerator denominator and count
+const getAlpha = (n, d, ct) => {
+    return THREE.MathUtils.euclideanModulo(n / d * ct, 1);
+};
+// getBias is like getAlpha but the value will 'pingpong', I often also refer to this as a 'bias' value
+const getBias = (n, d, ct) => {
+    return THREE.MathUtils.pingpong(getAlpha(n, d, ct) - 0.5, 1) * 2;
+};
+// just passing a getBias call to THREE.MathUtils.smoothstep
+const getSmoothBias = (n, d, ct) => {
+    return THREE.MathUtils.smoothstep(getBias(n, d, ct), 0, 1);
+}
+// make a single mesh object with custom user data
+const MESH_GEO = new THREE.SphereGeometry(0.75, 20, 20);
+const makeMesh = (opt) => {
+    opt = opt || {};
+    const mesh = new THREE.Mesh(
+        MESH_GEO,
+        new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.5 }));
+    const ud = mesh.userData;
+    ud.v_start = opt.v_start || new THREE.Vector3(-4, 0, -4);
+    ud.v_end = opt.v_end || new THREE.Vector3(4, 0, -4);
+    ud.v_add = opt.v_add || new THREE.Vector3(0, 0, 8);
+    return mesh;
+};
+const updateMesh = (mesh, opt) => {
+    opt = opt || {};
+    opt.alphaLerp = opt.alphaLerp === undefined ? 0 : opt.alphaLerp;
+    opt.alphaAdd = opt.alphaAdd === undefined ? 1 - getSmoothBias(opt.alphaLerp, 1, 1) : opt.alphaAdd;
+    //const alpha = getSmoothBias(frame, frameMax, 4);
+    const ud = mesh.userData;
+    const delta = ud.v_add.clone().multiplyScalar( opt.alphaAdd );
+    mesh.position.copy(ud.v_start).lerp(ud.v_end, opt.alphaLerp).add( delta );
+}
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const group = new THREE.Group();
+const len = 18;
+let i = 0;
+while(i < len){
+    const alpha = i / len;
+    const mesh = makeMesh({
+        v_add: new THREE.Vector3(0, 4, 8)
+    });
+    group.add(mesh);
+    i += 1;
+}
+scene.add(group);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 800;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    group.children.forEach((mesh, i, arr)=>{
+        let alpha1 =  1 - getSmoothBias(frame, frameMax, 4),
+        alpha2 = getAlpha( alpha1 - 0.75 * ( i / arr.length ), 1, 1);
+        updateMesh(mesh, {
+            alphaLerp: alpha2,
+            alphaAdd: 1 - getSmoothBias(alpha2, 1, 2 * alpha1)
         });
-        group.add(mesh);
-        i += 1;
+        // opacity
+        let alphaEffect = 1 - getSmoothBias(alpha2, 1, 1);
+        mesh.material.opacity = alphaEffect;
+        // scale
+        let s = 0.25 + 0.75 * alphaEffect;
+        mesh.scale.set(s, s, s);
+    });
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
     }
-    scene.add(group);
-    // ---------- ----------
-    // ANIMATION LOOP
-    // ---------- ----------
-    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 800;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const update = function(frame, frameMax){
-        group.children.forEach((mesh, i, arr)=>{
-            let alpha1 =  1 - getSmoothBias(frame, frameMax, 4),
-            alpha2 = getAlpha( alpha1 - 0.75 * ( i / arr.length ), 1, 1);
-            updateMesh(mesh, {
-                alphaLerp: alpha2,
-                alphaAdd: 1 - getSmoothBias(alpha2, 1, 2 * alpha1)
-            });
-            // opacity
-            let alphaEffect = 1 - getSmoothBias(alpha2, 1, 1);
-            mesh.material.opacity = alphaEffect;
-            // scale
-            let s = 0.25 + 0.75 * alphaEffect;
-            mesh.scale.set(s, s, s);
-        });
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+};
+loop();
 ```
 
 ### 5.3 - Using a Curve to position a mesh object over time
@@ -1016,101 +1002,99 @@ So then for this animation example I will have a collection of mesh objects that
 Here I have an animation loop example based off the basic curve section example in which I am moving a mesh along a curve. This time I made a custom get alpha method that makes use of a method in the [Math Utils object](/2022/04/11/threejs-math-utils/) to get a smooth animation along the curve back and forth. A get alpha method is just a way to go about getting a value between 0 and 1 that will help with creating an argument value to use with the get point method of the base curve class.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(6, 6, 6);
-    camera.lookAt(0,0,0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS 
-    //-------- ----------
-    // just a short hand for THREE.QuadraticBezierCurve3
-    const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
-        let vs = x1;
-        let ve = y1;
-        let vc = z1;
-        if(arguments.length === 9){
-            vs = new THREE.Vector3(x1, y1, z1);
-            ve = new THREE.Vector3(x2, y2, z2);
-            vc = new THREE.Vector3(x3, y3, z3);
-        }
-        return new THREE.QuadraticBezierCurve3( vs, vc, ve );
-    };
-    // custom get alpha method
-    const getAlpha = (a1) => {
-        const a2 = THREE.MathUtils.pingpong(a1, 0.5);
-        return THREE.MathUtils.smoothstep(a2 * 2, 0, 1);
-    };
-    //-------- ----------
-    // CURVE
-    //-------- ----------
-    const curve = QBC3(0, 0, 5, 0, 0, -5, -15, 7, 2.5);
-    //-------- ----------
-    // OBJECTS
-    //-------- ----------
-    // grid helper
-    const grid = new THREE.GridHelper(10, 10);
-    scene.add(grid);
-    // mesh object that will be positioned along the curve
-    const mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1,1,1),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // points
-    const POINT_COUNT = 100;
-    let i = 0, v3Array = [];
-    while(i < POINT_COUNT){
-        const a2 = getAlpha( i / POINT_COUNT);
-        v3Array.push( curve.getPoint( a2 ) );
-        i += 1;
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(6, 6, 6);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS 
+//-------- ----------
+// just a short hand for THREE.QuadraticBezierCurve3
+const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
+    let vs = x1;
+    let ve = y1;
+    let vc = z1;
+    if(arguments.length === 9){
+        vs = new THREE.Vector3(x1, y1, z1);
+        ve = new THREE.Vector3(x2, y2, z2);
+        vc = new THREE.Vector3(x3, y3, z3);
     }
-    const points = new THREE.Points(
-        new THREE.BufferGeometry().setFromPoints( v3Array ),
-        new THREE.PointsMaterial({size: 0.15})
-    );
-    scene.add(points);
-    //-------- ----------
-    // ANIMATION LOOP
-    //-------- ----------
-    const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = POINT_COUNT;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const v_start = new THREE.Vector3(0, 0, 1);
-    const v_delta = new THREE.Vector3(0, 0, 3);
-    const update = function(frame, frameMax){
-        const a1 = frame / frameMax;
-        const a2 = getAlpha(a1);
-        const v3 = curve.getPoint( a2 );
-        mesh.position.copy( v3 );
-        mesh.lookAt(0, 0, 0);
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+    return new THREE.QuadraticBezierCurve3( vs, vc, ve );
+};
+// custom get alpha method
+const getAlpha = (a1) => {
+    const a2 = THREE.MathUtils.pingpong(a1, 0.5);
+    return THREE.MathUtils.smoothstep(a2 * 2, 0, 1);
+};
+//-------- ----------
+// CURVE
+//-------- ----------
+const curve = QBC3(0, 0, 5, 0, 0, -5, -15, 7, 2.5);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+// grid helper
+const grid = new THREE.GridHelper(10, 10);
+scene.add(grid);
+// mesh object that will be positioned along the curve
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1,1,1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// points
+const POINT_COUNT = 100;
+let i = 0, v3Array = [];
+while(i < POINT_COUNT){
+    const a2 = getAlpha( i / POINT_COUNT);
+    v3Array.push( curve.getPoint( a2 ) );
+    i += 1;
+}
+const points = new THREE.Points(
+    new THREE.BufferGeometry().setFromPoints( v3Array ),
+    new THREE.PointsMaterial({size: 0.15})
+);
+scene.add(points);
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
+const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = POINT_COUNT;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const v_start = new THREE.Vector3(0, 0, 1);
+const v_delta = new THREE.Vector3(0, 0, 3);
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = getAlpha(a1);
+    const v3 = curve.getPoint( a2 );
+    mesh.position.copy( v3 );
+    mesh.lookAt(0, 0, 0);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ### 5.4 - Video1 example
@@ -1121,82 +1105,80 @@ This is an example based on the first video that I made for this post. It is an 
 
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#202020');
-    scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0xffffff));
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(0, 6, 6);
-    camera.lookAt(0,0,0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // GROUP
-    //-------- ----------
-    var group1 = new THREE.Group();
-    var i = 0, h = 5, len = 30, radian, radius, x, y, z;
-    while(i < len){
-        var mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(0.5, 0.5, 0.5),
-            new THREE.MeshNormalMaterial({
-                transparent: true,
-                opacity: 1
-            })
-        );
-        radian = Math.PI * 2 * 4 / len * i;
-        radius = 1;
-        x = Math.cos(radian) * radius;
-        y = h / 2 * -1 + h * ( i / len);
-        z = Math.sin(radian) * radius;
-        // SETTING THE POSITION OF JUST THIS MESH
-        mesh.position.set(x, y, z);
-        mesh.userData.homePos = mesh.position.clone();
-        mesh.lookAt(0, 0, 0);
-        group1.add(mesh);
-        i += 1;
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#202020');
+scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0xffffff));
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(0, 6, 6);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// GROUP
+//-------- ----------
+const group1 = new THREE.Group();
+let i = 0, h = 5, len = 30, radian, radius, x, y, z;
+while(i < len){
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5, 0.5, 0.5),
+        new THREE.MeshNormalMaterial({
+            transparent: true,
+            opacity: 1
+        })
+    );
+    radian = Math.PI * 2 * 4 / len * i;
+    radius = 1;
+    x = Math.cos(radian) * radius;
+    y = h / 2 * -1 + h * ( i / len);
+    z = Math.sin(radian) * radius;
+    // SETTING THE POSITION OF JUST THIS MESH
+    mesh.position.set(x, y, z);
+    mesh.userData.homePos = mesh.position.clone();
+    mesh.lookAt(0, 0, 0);
+    group1.add(mesh);
+    i += 1;
+}
+scene.add(group1);
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
+const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+ // update
+const v_start = new THREE.Vector3(0, 0, 1);
+const v_delta = new THREE.Vector3(0, 0, 3);
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    group1.children.forEach(function(mesh, i){
+        const dy = -10 * (i / group1.children.length) * a2;
+        mesh.position.copy(mesh.userData.homePos).multiplyScalar(1 + a2 * 2).add(new THREE.Vector3(0, dy, 0))
+    });
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
     }
-    scene.add(group1);
-    //-------- ----------
-    // ANIMATION LOOP
-    //-------- ----------
-    const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 300;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const v_start = new THREE.Vector3(0, 0, 1);
-    const v_delta = new THREE.Vector3(0, 0, 3);
-    const update = function(frame, frameMax){
-        const a1 = frame / frameMax;
-        const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
-        group1.children.forEach(function(mesh, i){
-            var dy = -10 * (i / group1.children.length) * a2;
-            mesh.position.copy(mesh.userData.homePos).multiplyScalar(1 + a2 * 2).add(new THREE.Vector3(0, dy, 0))
-        });
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+};
+loop();
 ```
 
 ### 5.5 - Video2 example making use of Buffer geometry as a way to set position.
@@ -1208,206 +1190,204 @@ In other words I am moving mesh objects on a path that is defined my the order o
 On top of this I also have a mesh that is moving over time based on the state of a curve class instance as well. This is something that I think I should have going on for any and all demo videos moving forward because I think curves are a very important thing to be aware of when it comes to the subject of setting the position of objects in a scene.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#000000');
-    //scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0xffffff));
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(7, 7, 7);
-    camera.lookAt(0,0,0);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // LIGHT
-    //-------- ----------
-    const dl = new THREE.DirectionalLight(0xffffff, 1);
-    dl.position.set(2, 1, -3);
-    scene.add(dl);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // Make a single mesh object
-    const makeMesh = (color) => {
-        var mesh = new THREE.Mesh(
-            new THREE.SphereGeometry(0.5, 20, 20),
-            new THREE.MeshPhongMaterial({
-                color: color || new THREE.Color(1, 1, 1),
-                transparent: true,
-                opacity: 1
-            })
-        );
-        return mesh;
-    };
-    // Make a group of mesh objects
-    const makeGroup = (opt) => {
-        opt = opt || {};
-        opt.count = opt.count === undefined ? 10 : opt.count;
-        opt.color = opt.color || new THREE.Color(1, 1, 1);
-        const group = new THREE.Group();
-        let i = 0;
-        while(i < opt.count){
-            const mesh = makeMesh(opt.color);
-            group.add(mesh);
-            i+= 1;
-        };
-        return group;
-    };
-    // clamp helper
-    const clamp = (i, d) => {
-        i = i < 0 ? 0 : i;
-        i = i >= d ? d - 1 : i;
-        return i;
-    };
-    // position a group to a geometry helper
-    const positionGroupToGeometry = (group, geo, alpha) => {
-        const pos = geo.getAttribute('position');
-        const len1 = pos.count;
-        const len2 = group.children.length;
-        const a2 = len1  * alpha / len1;
-        const a3 = a2 % ( 1 / len1 ) * len1;
-        group.children.forEach( (mesh, mi) => {
-            const i = Math.floor( len1 * alpha);
-            const i2 = (i + mi) % len1;;
-            const v_c = new THREE.Vector3(pos.getX(i2), pos.getY(i2), pos.getZ(i2));
-            const i3 = (i2 + 1) % len1;
-            const v_n = new THREE.Vector3(pos.getX(i3), pos.getY(i3), pos.getZ(i3));
-            mesh.position.copy( v_c.lerp( v_n, a3) );
-        });
-    };
-    // just a short hand for THREE.QuadraticBezierCurve3
-    const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
-        let vs = x1;
-        let ve = y1;
-        let vc = z1;
-        if(arguments.length === 9){
-            vs = new THREE.Vector3(x1, y1, z1);
-            ve = new THREE.Vector3(x2, y2, z2);
-            vc = new THREE.Vector3(x3, y3, z3);
-        }
-        return new THREE.QuadraticBezierCurve3( vs, vc, ve );
-    };
-    // create curve points
-    const createCurvePoints = (curve, point_count, point_size, point_color, get_alpha) => {
-        point_count = point_count === undefined ? 100 : point_count;
-        point_size = point_size === undefined ? 1 : point_size;
-        point_color = point_color || new THREE.Color(1, 1, 1);
-        get_alpha = get_alpha || function(a1){ return a1; };
-        const v3_array = [];
-        let i = 0;
-        while(i < point_count){
-            v3_array.push( curve.getPoint( get_alpha(i / point_count) ));
-            i += 1;
-        }
-        const points = new THREE.Points(
-            new THREE.BufferGeometry().setFromPoints( v3_array ),
-            new THREE.PointsMaterial({size: point_size, color: point_color})
-        );
-        return points;
-    };
-    // smooth get alpha
-    const getAlphaSmoother = (a1) => {
-        return THREE.MathUtils.smootherstep(a1, 0, 1);
-    };
-    //-------- ----------
-    // GROUPS
-    //-------- ----------
-    const group1 = makeGroup({ count: 10, color: new THREE.Color(1, 0, 0) })
-    scene.add(group1);
-    const group2 = makeGroup({ count: 10, color: new THREE.Color(0, 1, 0)  })
-    scene.add(group2);
-    const group3 = makeGroup({ count: 10, color: new THREE.Color(0, 0, 1)  })
-    scene.add(group3);
-    // geometry used to update group1, group2, and group3
-    const geo1 = new THREE.SphereGeometry(4, 10, 10);
-    const geo2 = new THREE.BoxGeometry(2, 2, 2);
-    const geo3 = new THREE.TorusGeometry(6, 1, 10, 40);
-    geo3.rotateX(Math.PI * 0.5);
-    //-------- ----------
-    // MESH OBJECTS FOR UPDATE GEOS
-    //-------- ----------
-    const mesh1 = new THREE.Mesh(geo1, 
-        new THREE.MeshBasicMaterial({
-            color: new THREE.Color(1, 0, 0),
-            transparent: true, opacity: 0.2, wireframe: true, wireframeLinewidth: 2
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+//scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0xffffff));
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(7, 7, 7);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(2, 1, -3);
+scene.add(dl);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// Make a single mesh object
+const makeMesh = (color) => {
+    const mesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 20, 20),
+        new THREE.MeshPhongMaterial({
+            color: color || new THREE.Color(1, 1, 1),
+            transparent: true,
+            opacity: 1
         })
     );
-    scene.add(mesh1);
-    const mesh2 = new THREE.Mesh(geo2, 
-        new THREE.MeshBasicMaterial({
-            color: new THREE.Color(0, 1, 0),
-            transparent: true, opacity: 0.8, wireframe: true, wireframeLinewidth: 4
-        })
-    );
-    scene.add(mesh2);
-    const mesh3 = new THREE.Mesh(geo3, 
-        new THREE.MeshBasicMaterial({
-            color: new THREE.Color(0, 0, 1),
-            transparent: true, opacity: 0.2, wireframe: true, wireframeLinewidth: 1
-        })
-    );
-    scene.add(mesh3);
-    //-------- ----------
-    // CURVE
-    //-------- ----------
-    const curve1 = new THREE.CurvePath();
-    curve1.add( QBC3(5, 0, -5, 5, 0, 5, 10, -5, 2) );
-    curve1.add( QBC3(5, 0, 5, -5, 5, 0, -10, 2.5, 10) );
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    scene.add( createCurvePoints(curve1, 100, 0.125, new THREE.Color(1,1,1), getAlphaSmoother ) );
-    //-------- ----------
-    // MESH TO MOVE ALONG CURVE
-    //-------- ----------
-    const mesh_curve1 = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1), 
-        new THREE.MeshNormalMaterial({
-            transparent: true, opacity: 0.8
-        })
-    );
-    scene.add(mesh_curve1)
-    //-------- ----------
-    // ANIMATION LOOP
-    //-------- ----------
-    const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 800;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const v_start = new THREE.Vector3(0, 0, 1);
-    const v_delta = new THREE.Vector3(0, 0, 3);
-    const update = function(frame, frameMax){
-        const a1 = frame / frameMax;
-        const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
-        positionGroupToGeometry(group1, geo1, a1);
-        positionGroupToGeometry(group2, geo2, a2);
-        positionGroupToGeometry(group3, geo3, a2);
-        mesh_curve1.position.copy( curve1.getPoint( getAlphaSmoother(a1) ) );
-        mesh_curve1.lookAt(0, 0, 0);
+    return mesh;
+};
+// Make a group of mesh objects
+const makeGroup = (opt) => {
+    opt = opt || {};
+    opt.count = opt.count === undefined ? 10 : opt.count;
+    opt.color = opt.color || new THREE.Color(1, 1, 1);
+    const group = new THREE.Group();
+    let i = 0;
+    while(i < opt.count){
+        const mesh = makeMesh(opt.color);
+        group.add(mesh);
+        i+= 1;
     };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+    return group;
+};
+// clamp helper
+const clamp = (i, d) => {
+    i = i < 0 ? 0 : i;
+    i = i >= d ? d - 1 : i;
+    return i;
+};
+// position a group to a geometry helper
+const positionGroupToGeometry = (group, geo, alpha) => {
+    const pos = geo.getAttribute('position');
+    const len1 = pos.count;
+    const len2 = group.children.length;
+    const a2 = len1  * alpha / len1;
+    const a3 = a2 % ( 1 / len1 ) * len1;
+    group.children.forEach( (mesh, mi) => {
+        const i = Math.floor( len1 * alpha);
+        const i2 = (i + mi) % len1;;
+        const v_c = new THREE.Vector3(pos.getX(i2), pos.getY(i2), pos.getZ(i2));
+        const i3 = (i2 + 1) % len1;
+        const v_n = new THREE.Vector3(pos.getX(i3), pos.getY(i3), pos.getZ(i3));
+        mesh.position.copy( v_c.lerp( v_n, a3) );
+    });
+};
+// just a short hand for THREE.QuadraticBezierCurve3
+const QBC3 = function(x1, y1, z1, x2, y2, z2, x3, y3, z3){
+    let vs = x1;
+    let ve = y1;
+    let vc = z1;
+    if(arguments.length === 9){
+        vs = new THREE.Vector3(x1, y1, z1);
+        ve = new THREE.Vector3(x2, y2, z2);
+        vc = new THREE.Vector3(x3, y3, z3);
+    }
+    return new THREE.QuadraticBezierCurve3( vs, vc, ve );
+};
+// create curve points
+const createCurvePoints = (curve, point_count, point_size, point_color, get_alpha) => {
+    point_count = point_count === undefined ? 100 : point_count;
+    point_size = point_size === undefined ? 1 : point_size;
+    point_color = point_color || new THREE.Color(1, 1, 1);
+    get_alpha = get_alpha || function(a1){ return a1; };
+    const v3_array = [];
+    let i = 0;
+    while(i < point_count){
+        v3_array.push( curve.getPoint( get_alpha(i / point_count) ));
+        i += 1;
+    }
+    const points = new THREE.Points(
+        new THREE.BufferGeometry().setFromPoints( v3_array ),
+        new THREE.PointsMaterial({size: point_size, color: point_color})
+    );
+    return points;
+};
+// smooth get alpha
+const getAlphaSmoother = (a1) => {
+    return THREE.MathUtils.smootherstep(a1, 0, 1);
+};
+//-------- ----------
+// GROUPS
+//-------- ----------
+const group1 = makeGroup({ count: 10, color: new THREE.Color(1, 0, 0) })
+scene.add(group1);
+const group2 = makeGroup({ count: 10, color: new THREE.Color(0, 1, 0)  })
+scene.add(group2);
+const group3 = makeGroup({ count: 10, color: new THREE.Color(0, 0, 1)  })
+scene.add(group3);
+// geometry used to update group1, group2, and group3
+const geo1 = new THREE.SphereGeometry(4, 10, 10);
+const geo2 = new THREE.BoxGeometry(2, 2, 2);
+const geo3 = new THREE.TorusGeometry(6, 1, 10, 40);
+geo3.rotateX(Math.PI * 0.5);
+//-------- ----------
+// MESH OBJECTS FOR UPDATE GEOS
+//-------- ----------
+const mesh1 = new THREE.Mesh(geo1, 
+    new THREE.MeshBasicMaterial({
+        color: new THREE.Color(1, 0, 0),
+        transparent: true, opacity: 0.2, wireframe: true, wireframeLinewidth: 2
+    })
+);
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(geo2, 
+    new THREE.MeshBasicMaterial({
+        color: new THREE.Color(0, 1, 0),
+        transparent: true, opacity: 0.8, wireframe: true, wireframeLinewidth: 4
+    })
+);
+scene.add(mesh2);
+const mesh3 = new THREE.Mesh(geo3, 
+    new THREE.MeshBasicMaterial({
+        color: new THREE.Color(0, 0, 1),
+        transparent: true, opacity: 0.2, wireframe: true, wireframeLinewidth: 1
+    })
+);
+scene.add(mesh3);
+//-------- ----------
+// CURVE
+//-------- ----------
+const curve1 = new THREE.CurvePath();
+curve1.add( QBC3(5, 0, -5, 5, 0, 5, 10, -5, 2) );
+curve1.add( QBC3(5, 0, 5, -5, 5, 0, -10, 2.5, 10) );
+//-------- ----------
+// POINTS
+//-------- ----------
+scene.add( createCurvePoints(curve1, 100, 0.125, new THREE.Color(1,1,1), getAlphaSmoother ) );
+//-------- ----------
+// MESH TO MOVE ALONG CURVE
+//-------- ----------
+const mesh_curve1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1), 
+    new THREE.MeshNormalMaterial({
+        transparent: true, opacity: 0.8
+    })
+);
+scene.add(mesh_curve1)
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
+const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 800;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const v_start = new THREE.Vector3(0, 0, 1);
+const v_delta = new THREE.Vector3(0, 0, 3);
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+    positionGroupToGeometry(group1, geo1, a1);
+    positionGroupToGeometry(group2, geo2, a2);
+    positionGroupToGeometry(group3, geo3, a2);
+    mesh_curve1.position.copy( curve1.getPoint( getAlphaSmoother(a1) ) );
+    mesh_curve1.lookAt(0, 0, 0);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
