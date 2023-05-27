@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2023-05-27 12:31:17
-version: 1.75
+updated: 2023-05-27 14:10:11
+version: 1.76
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class that is used to store the local position of an object3d class based object such as a Mesh, Camera, Group and so forth. This local position is relative to a parent object, rather than what is often referred to as a world space. In other words the values of the Vector3 object of the position property are deltas from the current position of the parent object, rather than an absolute world space location.
@@ -56,13 +56,13 @@ When I first wrote this post I was using r135 of threejs, and the last time I ca
 
 ## 1 - Basic examples of the position property of Object3d
 
-To start things off, here are a few basic examples of the position property that involves just setting the position of a single mesh object as well as the camera. There are a whole lot of ways of doing this, and I will be outlining many of them here.
+To start things off, here are a few basic examples of the position property that involves just setting the position of a single mesh object as well as the camera. As with any threejs example I set up my [scene object](/2018/05/03/threejs-scene/), [camera](/2018/04/06/threejs-camera/), and [renderer](/2018/11/24/threejs-webglrenderer/). I also often add a [Grid helper](/2022/02/18/threejs-grid-helper/) to the scene as well to have a better idea of what is going on when I position things around. I then create one or more [mesh objects](/2018/05/04/threejs-mesh/) and when doing so I will need a [geometry](/2021/04/22/threejs-buffer-geometry/) and a [mesh material](/2018/04/30/threejs-materials/) for that. 
 
-As with any threejs example I set up my [scene object](/2018/05/03/threejs-scene/), [camera](/2018/04/06/threejs-camera/), and [renderer](/2018/11/24/threejs-webglrenderer/) and when doing so I also often add a [Grid helper](/2022/02/18/threejs-grid-helper/) to the scene as well to have a better idea of what is going on when I position things around. I then create one or more [mesh objects](/2018/05/04/threejs-mesh/) and when doing so I will need a [geometry](/2021/04/22/threejs-buffer-geometry/) and a [mesh material](/2018/04/30/threejs-materials/) for that. I will not be getting into all the options with that here of course as I have other posts on geometry and material options. So for these basic examples I will be just going with the normal material as well as built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) such as the [Box](/2021/04/26/threejs-box-geometry/) and [Sphere geometry](/2021/05/26/threejs-sphere/) constructor functions.
+For these basic examples I will be just going with the mesh normal material, which is a decent option to just get started with things without getting into light sources, textures, UV Mapping and so forth. When it comes to geometry I will be sticking with the built in geometry [constructor functions](/2019/02/27/js-javascript-constructor/) such as the [Box](/2021/04/26/threejs-box-geometry/) and [Sphere geometry](/2021/05/26/threejs-sphere/) constructors.
 
-### 1.1 - Using the x, y, and z properties of Vector3
+### 1.1 - Using the x, y, and z properties of the Vector3 Object
 
-Maybe one of the easiest ways of just getting started with setting position would be to just directly set, or step, the x, y, and z properties of the vector3 object stored at the position property of the object of interest. That is that I can just set the value of say the x property of the position property to a desired value and be done with it. There is also using the value itself in the expression I am using or make use of a javaScript operator such as \+\= or \-\= as a way to step the value.
+Maybe one of the easiest ways of just getting started with setting the position of an object would be to just directly set, or step, the x, y, and z properties of the vector3 object. That is that I can just set the value of say the x property of the position property to a desired value and be done with it. There is also using the value itself in the expression I am using, or make use of a javaScript operator such as \+\= or \-\= as a way to step the value.
 
 ```js
 //-------- ----------
@@ -97,13 +97,13 @@ camera.lookAt( 0, 0, 0 );
 renderer.render(scene, camera);
 ```
 
-This might be a great way to start, and also in many situations I do in fact still update positions this way. Often I might need to work out some kind of expression and I just wan to apply it to a single axis of the object while preserving the state of the other axis values. There are however a whole lot of other ways of setting the state of the position though so lets look at a few more options.
+This might be a great way to start, and also in many situations I do in fact still update positions this way. Often I might need to work out some kind of expression and I just want to apply it to a single axis of the object while preserving the state of the other axis values. However there are a lot of prototype methods in the Vector3 class that are great for setting the state of the vector3 object as well. So for the rest of the examples in this section I will be covering at least a few of these.
 
 ### 1.2 - Using the set method of Vector3
 
 The set method of the Vector3 instance would be another option to set object position to certain fixed values. With this method I can just call the set method off of the instance of Vector3 at the position property and pass number literals for a desired fixed position of the object. The first argument will be the value that I would like to set for x, followed by y and then z.
 
-On top of using the set method to set object3d position, an instance of Vector3 can be used as a value to give to the [Object3d.lookAt method](/2021/05/13/threejs-object3d-lookat/). Here I am making a clone of the position property of the mesh, and then using the add method of the copy of the Vector3 instance to translate the position for the camera to look at, making it a position that is slightly lower than the actual position of the mesh object.
+On top of using the set method to set object3d position, an instance of Vector3 can be used as a value to give to the [Object3d.lookAt method](/2021/05/13/threejs-object3d-lookat/). Here I am making a clone of the position property Vector3 of the mesh, and then using the add method of the copy of the Vector3 instance to translate the position for the camera to look at, making it a position that is slightly lower than the actual position of the mesh object.
 
 ```js
 
