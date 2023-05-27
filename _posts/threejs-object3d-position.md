@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2023-05-27 12:17:40
-version: 1.74
+updated: 2023-05-27 12:31:17
+version: 1.75
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class that is used to store the local position of an object3d class based object such as a Mesh, Camera, Group and so forth. This local position is relative to a parent object, rather than what is often referred to as a world space. In other words the values of the Vector3 object of the position property are deltas from the current position of the parent object, rather than an absolute world space location.
@@ -65,38 +65,36 @@ As with any threejs example I set up my [scene object](/2018/05/03/threejs-scene
 Maybe one of the easiest ways of just getting started with setting position would be to just directly set, or step, the x, y, and z properties of the vector3 object stored at the position property of the object of interest. That is that I can just set the value of say the x property of the position property to a desired value and be done with it. There is also using the value itself in the expression I am using or make use of a javaScript operator such as \+\= or \-\= as a way to step the value.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // SETTING POSITION OF THE MESH OBJECT WITH x,y,z props
-    mesh.position.x = 4;
-    mesh.position.y = 0.5;
-    mesh.position.z = 4;
-    // A Camera can also be set this way
-    camera.position.z = 8;
-    camera.position.y = 8;
-    // look at 0,0,0
-    camera.lookAt( 0, 0, 0 );
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// SETTING POSITION OF THE MESH OBJECT WITH x,y,z props
+mesh.position.x = 4;
+mesh.position.y = 0.5;
+mesh.position.z = 4;
+// A Camera can also be set this way
+camera.position.z = 8;
+camera.position.y = 8;
+// look at 0,0,0
+camera.lookAt( 0, 0, 0 );
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 This might be a great way to start, and also in many situations I do in fact still update positions this way. Often I might need to work out some kind of expression and I just wan to apply it to a single axis of the object while preserving the state of the other axis values. There are however a whole lot of other ways of setting the state of the position though so lets look at a few more options.
@@ -108,35 +106,34 @@ The set method of the Vector3 instance would be another option to set object pos
 On top of using the set method to set object3d position, an instance of Vector3 can be used as a value to give to the [Object3d.lookAt method](/2021/05/13/threejs-object3d-lookat/). Here I am making a clone of the position property of the mesh, and then using the add method of the copy of the Vector3 instance to translate the position for the camera to look at, making it a position that is slightly lower than the actual position of the mesh object.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // SETTING POSITION OF THE MESH OBJECT
-    mesh.position.set(-3, 0.5, 1);
-    // SETTNG POSITION OF THE CAMERA
-    camera.position.set(8, 4, 0);
-    // setting Rotation of the camera using clone, and add Vector3 methods off 
-    camera.lookAt( mesh.position.clone().add( new THREE.Vector3(0,-2,0) ) );
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 20);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// SETTING POSITION OF THE MESH OBJECT
+mesh.position.set(-3, 0.5, 1);
+// SETTNG POSITION OF THE CAMERA
+camera.position.set(8, 4, 0);
+// setting Rotation of the camera using clone, and add Vector3 methods off 
+camera.lookAt( mesh.position.clone().add( new THREE.Vector3(0,-2,0) ) );
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ### 1.3 - The Copy, and add methods of vector3
@@ -146,38 +143,36 @@ Often I might already have a Vector3 object and I would like to copy the state o
 For example, say that I want to copy the value of one Vector3 to a mesh object, and then also do the same for a camera, but then add another vector3 value that will serve as delta values from the position so that the camera is positioned anyway from the mesh object. This kind of thing can be done with the copy and add methods like so.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    // mesh
-    const mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    // SOME INSTANCES OF Vector3 THAT I would like to COPY to other Vector3 instances
-    const v1 = new THREE.Vector3(-4, -0.5, 4);
-    const v2 = new THREE.Vector3( 5, 5, 5);
-    // COPYING v1 TO THE POSITION OF THE MESH
-    mesh.position.copy(v1)
-    // COPYING V1 TO THE CAMERA AND THEN ADDING v2
-    camera.position.copy(v1).add(v2);
-    camera.lookAt(v1);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+// mesh
+const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// SOME INSTANCES OF Vector3 THAT I would like to COPY to other Vector3 instances
+const v1 = new THREE.Vector3(-4, -0.5, 4);
+const v2 = new THREE.Vector3( 5, 5, 5);
+// COPYING v1 TO THE POSITION OF THE MESH
+mesh.position.copy(v1)
+// COPYING V1 TO THE CAMERA AND THEN ADDING v2
+camera.position.copy(v1).add(v2);
+camera.lookAt(v1);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ### 1.4 - The lerp method, along with clone for positioning between two vectors
@@ -186,55 +181,53 @@ Say that I have two vectors that I would like to treat as start and end points i
 
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPER FUNCTIONS
-    //-------- ----------
-    const MESH_GEO = new THREE.SphereGeometry(0.5, 20, 20);
-    const MESH_MATERIAL = new THREE.MeshNormalMaterial({transparent: true, opacity: 0.8});
-    const makeMesh = () => {
-        const mesh = new THREE.Mesh(
-            MESH_GEO,
-            MESH_MATERIAL);
-        return mesh;
-    };
-    //-------- ----------
-    // SCENE CHILD OBJECTS
-    //-------- ----------
-    let i = 0;
-    const len = 20;
-    // STRT AND END VECTORS TO LERP TO AND FROM
-    const v_start = new THREE.Vector3(-25,-20, 0);
-    const v_end = new THREE.Vector3(6, 5, 0);
-    while(i < len){
-        const mesh = makeMesh();
-        const alpha = i / len;
-        // UISNG COPY AND LERP TO SET POSITION
-        mesh.position.copy(v_start).lerp(v_end, alpha);
-        // scale
-        const s = 5 - 4.75 * alpha;
-        mesh.scale.set(s, s, s);
-        // add to scene
-        scene.add(mesh);
-        i += 1;
-    }
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const MESH_GEO = new THREE.SphereGeometry(0.5, 20, 20);
+const MESH_MATERIAL = new THREE.MeshNormalMaterial({transparent: true, opacity: 0.8});
+const makeMesh = () => {
+    const mesh = new THREE.Mesh(
+        MESH_GEO,
+        MESH_MATERIAL);
+    return mesh;
+};
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+let i = 0;
+const len = 20;
+// START AND END VECTORS TO LERP TO AND FROM
+const v_start = new THREE.Vector3(-25,-20, 0);
+const v_end = new THREE.Vector3(6, 5, 0);
+while(i < len){
+    const mesh = makeMesh();
+    const alpha = i / len;
+    // UISNG COPY AND LERP TO SET POSITION
+    mesh.position.copy(v_start).lerp(v_end, alpha);
+    // scale
+    const s = 5 - 4.75 * alpha;
+    mesh.scale.set(s, s, s);
+    // add to scene
+    scene.add(mesh);
+    i += 1;
+}
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 Alpha values are something that seem to come up a lot when it comes to this sort of thing. There are many built in methods for creating alpha values in the [Math Utils object](/2022/04/11/threejs-math-utils/), and I have also made a number of projects in which I really start to explore some other options outside of the library with this. 
@@ -244,51 +237,49 @@ Alpha values are something that seem to come up a lot when it comes to this sort
 Now say that I am in a situation in which I want to adjust just the length of a vector without changing the direction, or I want to set direction of a vector one way but then adjust the length by another means. For these kinds of situations there is the [normalize method](/2021/06/14/threejs-vector3-normalize/) that will set the length of the vector to 1, but will preserve the direction of the vector. Once the unit length of the vector is one then I can just multiply one or more of the axis values by the desired vector unit length that is higher or lower than 1. If I just want to multiply all axis values by one single value there is the [multiply scalar method](/2022/03/23/threejs-vector3-multiply-scalar/) that can be used to do so.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPER FUNCTIONS
-    //-------- ----------
-    const MESH_GEO = new THREE.SphereGeometry(0.5, 10, 10);
-    const MESH_MATERIAL = new THREE.MeshNormalMaterial({transparent: true, opacity: 0.8});
-    const makeMesh = () => {
-        const mesh = new THREE.Mesh(
-            MESH_GEO,
-            MESH_MATERIAL);
-        return mesh;
-    };
-    //-------- ----------
-    // SCENE CHILD OBJECTS
-    //-------- ----------
-    let i = 0;
-    const len = 15;
-    while(i < len){
-        const mesh = makeMesh();
-        const alpha = i / len;
-        // SETTING MESH POSITION USING set, normalize, and multiplyScalar
-        // methods as a way to set a direction and unit length
-        const y = -2 + 5 * alpha;
-        const unitLength = -5.5 + 15 * alpha;
-        mesh.position.set(-5, y, 0).normalize().multiplyScalar(unitLength);
-        scene.add(mesh);
-        i += 1;
-    }
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const MESH_GEO = new THREE.SphereGeometry(0.5, 10, 10);
+const MESH_MATERIAL = new THREE.MeshNormalMaterial({transparent: true, opacity: 0.8});
+const makeMesh = () => {
+    const mesh = new THREE.Mesh(
+        MESH_GEO,
+        MESH_MATERIAL);
+    return mesh;
+};
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+let i = 0;
+const len = 15;
+while(i < len){
+    const mesh = makeMesh();
+    const alpha = i / len;
+    // SETTING MESH POSITION USING set, normalize, and multiplyScalar
+    // methods as a way to set a direction and unit length
+    const y = -2 + 5 * alpha;
+    const unitLength = -5.5 + 15 * alpha;
+    mesh.position.set(-5, y, 0).normalize().multiplyScalar(unitLength);
+    scene.add(mesh);
+    i += 1;
+}
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ### 1.6 - Apply Euler basic example
@@ -298,57 +289,55 @@ This time I will be using the [apply Euler method of the vector3 class](/2021/06
 So then I can use something like the set method to set a standard starting location from the origin, and then use the apply Euler method with an instance of the Euler class to preform a translation. I can then make sure that the unit length is one to begin with, or use the normalize method to do so, at which point I can use multiply scalar to adjust the vector unit length. This is then one way to set up a system of sorts where I can position things in a spherical kind of way.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(9, 9));
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
-    scene.add(camera);
-    const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPER FUNCTIONS
-    //-------- ----------
-    const makeMesh = () => {
-        const mesh = new THREE.Mesh(
-            new THREE.SphereGeometry(0.25, 20, 20),
-            new THREE.MeshNormalMaterial());
-        return mesh;
-    };
-    const setSpherePos = (mesh, a1, a2, radius) => {
-        const e = new THREE.Euler();
-        e.y = Math.PI * 2 * a1;
-        e.z = -Math.PI * 0.5 + Math.PI * a2;
-        mesh.position.set(1, 0, 0).applyEuler(e).multiplyScalar(radius);
-    }
-    //-------- ----------
-    // SCENE CHILD OBJECTS
-    //-------- ----------
-    let i = 0;
-    const len = 400;
-    const perRing = 40;
-    while(i < len){
-        const mesh = makeMesh();
-        const ri = Math.floor( i / perRing);
-        const mi = i % perRing;
-        const a1 = mi / perRing;
-        const a2 = (ri + 1) / (( len / perRing ) + 1);
-        setSpherePos(mesh, a1, a2, 5);
-        const a3 = 1 - Math.abs(0.5 - a2) / 0.5;
-        mesh.scale.multiplyScalar(0.25 + a3 * 1.25)
-        scene.add(mesh);
-        i += 1;
-    }
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+scene.add(camera);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const makeMesh = () => {
+    const mesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.25, 20, 20),
+        new THREE.MeshNormalMaterial());
+    return mesh;
+};
+const setSpherePos = (mesh, a1, a2, radius) => {
+    const e = new THREE.Euler();
+    e.y = Math.PI * 2 * a1;
+    e.z = -Math.PI * 0.5 + Math.PI * a2;
+    mesh.position.set(1, 0, 0).applyEuler(e).multiplyScalar(radius);
+};
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+let i = 0;
+const len = 400;
+const perRing = 40;
+while(i < len){
+    const mesh = makeMesh();
+    const ri = Math.floor( i / perRing);
+    const mi = i % perRing;
+    const a1 = mi / perRing;
+    const a2 = (ri + 1) / (( len / perRing ) + 1);
+    setSpherePos(mesh, a1, a2, 5);
+    const a3 = 1 - Math.abs(0.5 - a2) / 0.5;
+    mesh.scale.multiplyScalar(0.25 + a3 * 1.25)
+    scene.add(mesh);
+    i += 1;
+}
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ## 2 - Setting the positions of a parent and child objects
