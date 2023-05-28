@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2023-05-27 19:31:30
-version: 1.80
+updated: 2023-05-27 20:15:20
+version: 1.81
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class that is used to store the local position of an object3d class based object such as a Mesh, Camera, Group and so forth. This local position is relative to a parent object, rather than what is often referred to as a world space. In other words the values of the Vector3 object of the position property are deltas from the current position of the parent object, rather than an absolute world space location.
@@ -891,15 +891,90 @@ const loop = () => {
 loop();
 ```
 
+## 5 - Setting boundaries for the position of objects
 
-## 5 - Deterministic Animation examples
+When setting the boundaries for the position of objects there are two general ways of doing so, clamping and wrapping. That is to make it so that it is just not possible to go outside of a given set of boundaries in terms of a box like space, or a limit to the Vector unit length. In this section I will then be going over a few examples where I am outlining what there is to work with in threejs as well as some additional examples that make use of code outside of threejs.
+
+### 5.1 - The Vector3 Clamp method
+
+When it comes to clamping there is both a clamp, and clamp length method of the Vector3 class. Here I have one mesh object of a sphere that I am moving back and forth all over the scene on the x and z axis by setting a unit length up and down, and also using the apply Euler method to change direction. I am then just copying the position of this first mesh object to another, but I am also using the Vector3 clamp method to clamp this other mesh to a given min and max vector.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+//scene.add( new THREE.GridHelper(10, 10, 0x00ff00, 0xffffff));
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(7, 7, 7);
+camera.lookAt(0,0,0);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh1 = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 20, 20),
+    new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.5})
+);
+scene.add(mesh1);
+scene.add( new THREE.GridHelper(5, 5) );
+const mesh2 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial()
+);
+scene.add(mesh2);
+scene.add( new THREE.GridHelper(5, 5) );
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
+const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 800;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const V_MIN = new THREE.Vector3(-2, 0, -2);
+const V_MAX = new THREE.Vector3(2, 0, 2);
+const update = function(frame, frameMax){
+    const a1 = frame / frameMax;
+    const a2 = 1 - Math.abs(0.5 - (a1 * 8 % 1)) / 0.5;
+    const a3 = THREE.MathUtils.smootherstep(a2, 0, 1);
+    const unit_length = -8 + 16 * a3;
+    const e = new THREE.Euler();
+    e.y = Math.PI * 2 * a1;
+    mesh1.position.set(1,0,0).applyEuler(e).multiplyScalar(unit_length);
+    mesh2.position.copy(mesh1.position).clamp(V_MIN, V_MAX);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 6 - Deterministic Animation examples
 
 In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs one will want to work out a number of animations in which they are not just setting the position once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animation where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animations where randomness, and other factors such as user input are at play.
 
 For this section I will be sticking to just a few examples of a kind of Deterministic style, saving the alternative style for some other post or section outside of this one. Many of these examples here will then often be in the demo videos that I embed for this post then as I often start out such projects in this kind of section.
 
 
-### 5.1 - Just moving a bunch of mesh objects on the x axis by differing rates
+### 6.1 - Just moving a bunch of mesh objects on the x axis by differing rates
 
 To start out with animation of the position object3d property I have an example here where I now have an animation loop rather than just a single call of the render method of the webgl renderer. This is an animation loop example that I seem to keep copying and pasting from one example to another over and over again that allows for me to set differing values for a frames per second value.  I then have one FPS rate that will be used to set the target frame rate at which the update function is called, and the other can be used to set the current frame value that is used in the update method to update the state of things. This allows for me to set a low update frame rate while still going by a higher frame rate update when it comes to the movement of objects. This helps to conserve system resources while maintain a rate of movement that is consistent. In other words I can set thee update rate low which will result in choppy video, but use less CPU overhead, or a higher update rate which will result in smoother video but at the cost of eating up more CPU Overhead.
 
@@ -994,7 +1069,7 @@ const loop = () => {
 loop();
 ```
 
-### 5.2 - Lerp method animation example
+### 6.2 - Lerp method animation example
 
 Now that I have a nice basic frame over max frame animation example, I can now start to move into another example that makes use of many of the Vector3 class features that I wrote about in the basic section. One very useful method that I covered out of many others was the lerp method of the vector3 class which can be used in combination with the clone method as a great way to move an object back and from between a start and end vector.
 
@@ -1110,7 +1185,7 @@ const loop = () => {
 loop();
 ```
 
-### 5.3 - Using a Curve to position a mesh object over time
+### 6.3 - Using a Curve to position a mesh object over time
 
 Here I have an animation loop example based off the basic curve section example in which I am moving a mesh along a curve. This time I made a custom get alpha method that makes use of a method in the [Math Utils object](/2022/04/11/threejs-math-utils/) to get a smooth animation along the curve back and forth. A get alpha method is just a way to go about getting a value between 0 and 1 that will help with creating an argument value to use with the get point method of the base curve class.
 
@@ -1210,7 +1285,7 @@ const loop = () => {
 loop();
 ```
 
-### 5.4 - Video1 example
+### 6.4 - Video1 example
 
 This is an example based on the first video that I made for this post. It is an example where I just made a group of mesh objects and then moved them around using a home position that I stored in a user data object along with the use of some additional Vector3 class methods to move the mesh objects over time. I did not put a whole lot of thought into this one as I just wanted to make a quick place holder video for this post. I have sense then worked out some additional examples that make for a more interesting video than this.
 
@@ -1294,7 +1369,7 @@ const loop = () => {
 loop();
 ```
 
-### 5.5 - Video2 example making use of Buffer geometry as a way to set position.
+### 6.5 - Video2 example making use of Buffer geometry as a way to set position.
 
 This is the source code that I used to make my second demo video for this blog post that at the time of this writing is the latest video that I have up at the top of the blog post. This time around I made a video that is about using the [position attribute of a buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) to create a vector3 object using the getX, getY, and getZ methods of the buffer attribute class. Once I have my current vector3 object for a point in a geometry I can then mutate from that point using the [vector3 lerp method](/2022/05/17/threejs-vector3-lerp/) between the current point and the next point in the geometry. In the end I can then once again use the copy method to copy the state of this mutated Vector3 object to the position of a Mesh object.
 
