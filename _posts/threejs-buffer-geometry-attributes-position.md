@@ -5,36 +5,34 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2023-05-09 09:57:49
-version: 1.59
+updated: 2023-05-30 07:46:36
+version: 1.60
 ---
 
-When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that one can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh and by doing so They only need to worry about the state of the position attribute with these options for using a geometry.
+When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. 
 
-There is taking the time to create a blank instance of a Buffer geometry using the [THREE.BufferGeometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry) constructor and then create the position attribute from the ground up. However maybe a good starting point would be to study the results of one of the built in geometry constructors such as the [THREE.boxGeometry constructor](/2021/04/26/threejs-box-geometry/) to get an idea of what a position attribute is all about. There is also taking a look at some other features of a built in geometry instance such as the index property of a buffer geometry to gain a sense of what that is for when it comes to working with a set of triangles.
+However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute. The reason why I say that is because I can start out with using the THREE.Points, or THREE.Line constructor functions in place of the typical THREE.Mesh objects. When working with one of these alternatives to mesh objects I only need to worry about the state of the position attribute.
 
-So then this post might get a little involved when it comes to the position property of a geometry in threejs, but still the subject is only so complicated. When it comes to the position property alone as one might guess it is a typed array that holds all the values of each point in space, and that is all there is to it. However things can get a little confusing when it comes to the difference between the count value of a position, and the length of an array. Also there is the relationship between the position array and the index attribute of a buffer geometry instance.
+There is taking the time to create a blank instance of a Buffer geometry using the [THREE.BufferGeometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry) constructor and then create the position attribute from the ground up. However maybe a good starting point would be to study the results of one of the built in geometry constructors such as the [THREE.boxGeometry constructor](/2021/04/26/threejs-box-geometry/) to get an idea of what a position attribute is all about. There is also taking a look at some other features of a built in geometry instance such as the [index property of a buffer geometry](/2022/12/09/threejs-buffer-geometry-index/) to gain a sense of what that is for when it comes to working with a set of triangles.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/Z4kjKwmCEvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## The Attributes of a buffer geometry instance and what to know first
 
 This is a post on the position attribute of a buffer geometry instance in the javaScript library known as three.js. There is a great deal more that you show know at least a little about before hand, or else you might end up finding this post a little hard to follow. So I assume that you have at least some background with client side javaScript, and I also assume that you have worked out at least a few basic examples when it comes to [getting started with threejs](/2018/04/04/threejs-getting-started/). Still in this section I will be going over some things that you might want to read up more on if you find yourself overwhelmed.
 
-<iframe class="youtube_video"  src="https://www.youtube.com/embed/Z4kjKwmCEvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-### Read up more on buffer geometry in general
+### Read up more on Buffer Geometry
 
 There is a great deal more to write about when it comes to [buffer geometry](/2021/04/22/threejs-buffer-geometry/) in threejs. It might be best to start out with getting to know the various prototype methods of the buffer geometry class, and how to do simpler tasks such as translating, or [rotating an all ready made geometry](/2021/05/20/threejs-buffer-geometry-rotation/) before getting into a more advanced topic such as this.
-
-### There are the other core attributes that are needed for Mesh objects
 
 The position attribute is the first attribute that I would want to set up when making a custom geometry. However if I want to use the custom geometry with Mesh objects I will also want to set up at least a [normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/) and [uvs](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes for it as well. These additional attributes are very important when it comes to making lighting and textures look the way that they should, or to even work at all actually.
 
 ### Curves might be a cool tool to help make custom geometry
 
-I started a [threejs examples project that is a kind of curve module](/2022/11/18/threejs-examples-curves-module/). As of this writing this is something that I am using to set the position of objects in space, but I can see how curves can also be useful for creating custom geometry as well.
+I started a [threejs examples project that is a kind of curve module](/2022/11/18/threejs-examples-curves-module/). As of this writing this is something that I am using to set the position of objects in space, but I can see how curves can also be useful for creating custom geometry as well. There are a number of built in options of curve class based objects, and in some cases there is even going so far as to write ones own extensions of the curve class.
 
 ### Source is on Github
 
@@ -42,7 +40,7 @@ The examples here, and many others can be [found on my Github](https://github.co
 
 ### Version Numbers matter
 
-When I made these source code examples, and first wrote this post I was using revision 127 of threejs. I do come around to doing a little editing of these posts now and then, and the last time I check that everything was working okay I was using r146.
+When I made these source code examples, and first wrote this post I was using revision 127 of threejs. I do come around to doing a little editing of these posts now and then, and the last time I check that everything was working okay I was using r146. code breaking changes are made to threejs very often so always be aware of what revision you are using, and also what revision an author of code examples on the open web was using.
 
 ## 1 - Creating a custom triangle geometry from the ground up starting with position
 
