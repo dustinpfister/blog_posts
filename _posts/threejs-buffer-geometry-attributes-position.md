@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2023-05-30 08:02:17
-version: 1.62
+updated: 2023-05-30 08:49:25
+version: 1.63
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. 
@@ -703,11 +703,60 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 4 - Animation loop examples of buffer geometry position attribute mutation
+## 4 - Curves as a tool to help create position attributes
+
+Curves are a great tool for many various tasks that will come up when working on a project that makes use of threejs. They can come into play for things like defining a path in space that will be used as a way to set the position of an object, or a point of reference to have an object look at. However another sued case might be to use them as a way to define the position attribute of a buffer geometry. 
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER, GRID
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add( new THREE.GridHelper(10, 10));
+//-------- ----------
+// CURVE/DATA
+//-------- ----------
+const v_start = new THREE.Vector3(-5, 0, 0);
+const v_end = new THREE.Vector3(5, 0, 0);
+const v_controlA = v_start.clone().lerp(v_end, 0.25).add( new THREE.Vector3(0,8,0) );
+const v_controlB = v_start.clone().lerp(v_end, 0.75).add( new THREE.Vector3(0,-8,0) );
+const curve = new THREE.CubicBezierCurve3(v_start, v_controlA, v_controlB, v_end);
+const data = [];
+let i = 0, count = 100;
+while(i < count){
+    const a = i / ( count - 1 );
+    const v = curve.getPoint(a);
+    data.push(v.x, v.y, v.z)
+    i += 1;
+}
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.BufferAttribute( new Float32Array( data ), 3 ));
+geometry.center();
+//-------- ----------
+// POINTS
+//-------- ----------
+const points = new THREE.Points(geometry, new THREE.PointsMaterial({size: 0.25}));
+scene.add(points);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 8);
+camera.lookAt(points.position);
+renderer.render(scene, camera);
+```
+
+## 5 - Animation loop examples of buffer geometry position attribute mutation
 
 For this post I just have to make at least one, if not a few animation examples of the position attribute. In this section then I will be doing just that making animated forms of what I worked out for this post, as well as make use of what I worked out for many other posts including my [threejs examples collection posts](/2021/02/19/threejs-examples/).
 
-### 4.1 - Box Geometry Animation
+### 5.1 - Box Geometry Animation
 
 In this example I am going with what I worked out in the box geometry section of this post by using the set vertex and set triangle helpers to create an update box geometry helper. In this helper method I am doing the same thing that I did for my example on the set tri helper, only I worked out a way to do so in a while loop to update all the triangles of the geometry. The one major difference in this update method beyond that is that I can also pass a percent, or alpha values as it is some times called that can be used to set the state of an animation in terms of a value between 0 and 1.
 
@@ -792,7 +841,7 @@ loop();
 
 So then this animation works out the way that I would more or less expect it to the faces of each side of the cube move out from each other and then back again. There is the a whole bunch of other things that I could do when it comes to creating various other kinds of animations that are just slightly different use case of these basic helper functions.
 
-### 4.2 - Lerp Geometry position helper function
+### 5.2 - Lerp Geometry position helper function
 
 This example makes use of my [lerp geo function](/2022/07/01/threejs-examples-lerp-geo/) that I made for one of my many threejs examples. This is a little project that I made a while back that involves using the lerp method of the vector3 class as a way to transition all the points of a geometry between two sets of geometry to create a cool kind of transition effect. Here in this example I am using it to lerp all the points of a sphere geometry to that of a torus geometry and back again.
 
@@ -877,7 +926,7 @@ const loop = () => {
 loop();
 ```
 
-### 4.3 - Box Geometry Move Point example
+### 5.3 - Box Geometry Move Point example
 
 This is a quick animation form of the box geometry vert helper example in which I am moving a single point in a geometry that was created with the box geometry constructor. When I made this example I still not not have the best system worked out when it comes to working with an index attribute of a buffer geometry that has one.
 
