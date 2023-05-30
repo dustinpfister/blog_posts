@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2023-05-30 07:46:36
-version: 1.60
+updated: 2023-05-30 07:56:49
+version: 1.61
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. 
@@ -44,15 +44,15 @@ When I made these source code examples, and first wrote this post I was using re
 
 ## 1 - Creating a custom triangle geometry from the ground up starting with position
 
-For this section I will be creating an instance of buffer geometry by just using the THREE.BufferGeometry constructor alone rather than one of the built in constructors that will set everything up for me. When doing so the first and foremost attribute that must be added is the position attribute which will have to be set up by creating a float32 array and then pass that when calling the THREE.BufferAttribute constructor that will then be used to set the position attribute for the geometry.
+For this section I will be creating an instance of buffer geometry by just using the THREE.BufferGeometry constructor alone rather than one of the built in constructors that will set everything up for me. I am starting out the post with these kinds of examples, but in the next section I will be going over some examples that have to do with looking at a geometry created with one of the built in constructors. To create the position attribute I will have to first have a float32 array that contains all the data for each vertex, and then pass that when calling the THREE.BufferAttribute constructor that will then be used to set the position attribute for the geometry.
 
-To help keep things simple these examples will just involve three points in space.
+To help keep things simple these examples will just involve three points in space. 
 
 ### 1.1 - A position attribute only, and the THREE.Points Class
 
 In order to get a geometry to work well with Mesh objects I need more than just a position attribute, however when it comes to using the THREE.Points class all I need is a position attribute. So for this example I will be creating a buffer geometry that just has a position attribute and use that with the Points class rather than that of mesh. 
 
-The fist thing that I would do is call the THREE.BufferGeometry constructor function wit the new keyword, and then store the returned result to a variable that can be called something like geometry. I now have an instance of buffer geometry, but there is no data with it, so I will then need to add the position attribute. To do so I create a Float32 array and then set up numbers for each x, y, and z value for each point in space. Once I have that set up the way I like it I can pass that array as an argument when calling the THREE.BufferAttribite constrictor. The result of the BufferAttribjuute constructor can then be set for the position attribute of the buffer geometry by just using the set Attribute method of the class.
+The fist thing that I would do is call the THREE.BufferGeometry constructor function with the new keyword, and then store the returned result to a variable that can be called something like geometry. I now have an instance of buffer geometry, but there is no data with it, so I will then need to add the position attribute. To do so I create a Float32 array and then set up numbers for each x, y, and z value for each point in space. Once I have that set up the way I like it I can pass that array as an argument when calling the THREE.BufferAttribite constructor. The result of the BufferAttribute constructor can then be set for the position attribute of the buffer geometry by just using the set Attribute method, passing the string 'position' as the first argument, followed by the typed array.
 
 ```js
 //-------- ----------
@@ -93,7 +93,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Making it a geometry that will work okay with Mesh Objects
 
-Now that I have a basic example that is position only it is now time to work out an example that will also set up a normal and uv attribute so that I can use it with a mesh object. There are a number additional attributes, and properties of interest that may come up also, but the core set of attributes are these three which are once again position, normal, and uv.
+Now that I have an example that is position only out of the way it is now time to work out an example that will also set up a normal and uv attribute so that I can use it with a mesh object. There are a number additional attributes, and properties of interest that may come up also, but the core set of attributes are these three which are once again position, normal, and uv.
 
 One quick way to set up the normal attribute would be to just call the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) of the buffer geometry class. In some cases I will need to create this manually, or mutate the values, however getting deep into that might be outside the scope of this post, or at least this section to say the least. If I want to use textures with one or more of the maps that are used for the material I will also need to set up the uv attribute for the geometry also. The process for this is more or less the same as setting up position, but I will want to think in terms of two values for each vertex rather than three. These two values for each vertex are a kind of x and y offset for a source texture when it comes to mapping each face. Again I will not be getting into this subject in depth here, but I think I should just make a quick example of how to set up these other attributes for a very simple custom geometry like this.
 
