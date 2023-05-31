@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-26 07:29:38
-version: 1.40
+updated: 2023-05-31 08:31:29
+version: 1.41
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -510,7 +510,7 @@ let loop = function () {
         let path = new CustomSinCurve( 0.25 + 0.75 * bias, 0.25, 5 );
         let geo = new THREE.TubeGeometry( path, tubularSegments, radius, radialSegments, false );
         mesh.geometry.copy(geo);
-        renderer.render(scene, camera);      
+        renderer.render(scene, camera);
         lt = now;
         frame += Math.floor( fps * secs );
         frame %= frameMax;
