@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-31 11:46:57
-version: 1.44
+updated: 2023-05-31 12:09:43
+version: 1.45
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -432,7 +432,9 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 4.2 - 
+### 4.2 - 2D Curves and Lathe Geometry
+
+Another option for making a geometry to use with a mesh object with a 2d curve would be to make use of THREE.LatheGeometry. Think of a 2d object for a moment and then think of what happens when you spin that 2d object along on a axis, the end result is something that more or less looks like a kind of 3D object, and that is what the lathe geometry is all about. For this demo I am making use of the ArcCurve 2d curve class to create an arc. I can then use the get points method to create an array of vector2 objects that I then pass as the first argument of the LatheGeometry constructor, I can then pass another argument that is the number of segments that I want for the lathe geometry. The end result here is then a kind of Sphere like geometry, but with holes on the top and bottom of the geometry. I can then adjust the start and end radian values to close or expand the holes.
 
 ```js
 // ---------- ----------
@@ -446,15 +448,13 @@ renderer.setSize(640, 480, false);
 // ---------- ----------
 // CURVE
 // ---------- ----------
-const v_start = new THREE.Vector2(0, -2.5);
-const v_end = new THREE.Vector2(0, 2.5);
-const v_control = v_start.clone().lerp(v_end, 0.5).add( new THREE.Vector2(5, 7) );
-const curve = new THREE.QuadraticBezierCurve(v_start, v_control, v_end);
+const radian_start = Math.PI * 1.8;
+const radian_end = Math.PI * 0.2;
+const curve = new THREE.ArcCurve(0, 0, 5, radian_start, radian_end, false );
 // ---------- ----------
 // SHAPE/GEOMETRY
 // ---------- ----------
-const v2array = curve.getPoints(64);
-const geometry = new THREE.LatheGeometry( v2array, 40 );
+const geometry = new THREE.LatheGeometry( curve.getPoints(64), 40 );
 // ---------- ----------
 // SCENE CHILD OBJECTS
 // ---------- ----------
@@ -464,7 +464,7 @@ scene.add( new THREE.GridHelper(10, 10) );
 // ---------- ----------
 // RENDER
 // ---------- ----------
-camera.position.set(10, 10, 10);
+camera.position.set(8, 12, 8);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
