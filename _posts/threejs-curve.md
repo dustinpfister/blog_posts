@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-31 10:58:31
-version: 1.42
+updated: 2023-05-31 11:32:00
+version: 1.43
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -383,6 +383,22 @@ loop();
 
 Then end result of all of this is then a situation in which the spacing between the points will change from something that is similar to the use of the getPoints method to a custom spacing that is created with the smoother step method of the [math utils object](/2022/04/11/threejs-math-utils/).
 
+## 4 - Using 2D curves
+
+There are a number of built in options for curves, many of which are 3d curves, but there are also a few that are very much 2d curves. For example there is an EllipseCurve that will create a 2d curve of an ellipse and it can also be used to create 2d Arcs and circles, in fact ArcCurve is just an Alias for EllipseCurve. There are also a number of built in curve options that are there to work with in both 3D, and 2D form as well such as [CubicBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve3), and [CubicBezierCurve](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve).
+
+There are a number of little situations here and there where I might want to make use of a 2D curve rather than a 3D one. I often might be in a situation in which I will want to just have a simple 2D shape, and then make an extrude geometry of that shape. I will not be touching base on every little detail that might come up with 2d curves in this section as much of it might need to be a whole other topic in this post. However I think I should at least start out with some of the usual basic examples of 2d curves here.
+
+### 4.1 - 
+
+```js
+```
+
+### 4.2 - 
+
+```js
+```
+
 ## 3 - Curve Paths
 
 Often I will find myself in a situation in which I will want to make not just one curve, but a whole bunch of them, and link them all together into one sort of logical path. With that said there is the built in curve path class of threejs that can be used to create this kind of curve of curves. I can then use the get point method to get a single point along one of these curve paths. However if I want a collection of Vector3 objects I might want to go with the get spaced points method of the curve path class.
@@ -428,11 +444,11 @@ renderer.render(scene, camera);
 ```
 
 
-## 4 - The CustomSinCurve class Demos
+## 5 - The CustomSinCurve class Demos
 
 When I first started writing this post the main over all subject of the post was to extend the base curve class to create a custom curve class. This is then a number of older demos that have to do with making a custom Sin Curve class by extending the base class. They also have a lot to do with the TubeGeometry constructor. In time if I keep editing this post a little more now and then I might eventualy removed these demos. However for the most part I often prefer to just keep pushing older demos such as this down to the bottom of the every growing content.
 
-### 4.1 - CustomSinCurve Class Spiral example
+### 5.1 - CustomSinCurve Class Spiral example
 
 So now that I have a basic example out of the way that involves creating a custom curve class by extending the base curve class out of the way I think I will want to have at least one more example that involves something like a spiral of sorts. I then came up with this custom sin curve class as a way to further explore just making custom curve classes. I also wanted to start working out at least a few basic demos of the tube geometry constructor as well while I was at it with this sort of thing.
 
@@ -487,7 +503,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 4.1 - CustomSinCurve and the buffer geometry copy method to update geometry
+### 5.1 - CustomSinCurve and the buffer geometry copy method to update geometry
 
 Thus far I just have some static scene examples of this curve class out of the way, so then I should have at least one example that involves an animation loop then. One way to go about doing this might involve creating a new curve object with update arguments in the body of the loop that I can then use to make an updated geometry. In can then make use of the copy method of the buffer geometry instance in the mesh object to copy this update geometry to the geometry object instance of the mesh objects as a way to update the geometry.
 
