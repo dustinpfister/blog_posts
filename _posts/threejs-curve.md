@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-31 11:32:00
-version: 1.43
+updated: 2023-05-31 11:46:57
+version: 1.44
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -389,14 +389,84 @@ There are a number of built in options for curves, many of which are 3d curves, 
 
 There are a number of little situations here and there where I might want to make use of a 2D curve rather than a 3D one. I often might be in a situation in which I will want to just have a simple 2D shape, and then make an extrude geometry of that shape. I will not be touching base on every little detail that might come up with 2d curves in this section as much of it might need to be a whole other topic in this post. However I think I should at least start out with some of the usual basic examples of 2d curves here.
 
-### 4.1 - 
+### 4.1 - 2D curve Shape example
+
+One Basic use case example of a 2D curve might be to use one to create an instance of THREE.Shape. Once I have a Shape object I can  then pass that to something like THREE.ShapeGeometry or THREE.ExtrudeGeometry to create a geometry that I can then use with a Mesh object.
+
+The first step is to just create a 2D curve such as with the 2D form of the Quadratic Bezier Curve. Once I have the 2D curve I can then create an array of Vector2 objects by just calling the get Points method of the base curve class. This array of vector2 objects can then be passed as the first argument of the THREE.Shape constructor to create the Shape object. For this example I am then making a ShapeGeometry for a mesh object that will take a shape as the first argument. When using this geometry with a Mesh object I typically like to set the side option of the material to DoubleSide to make sure that both sides will render.
 
 ```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// CURVE
+// ---------- ----------
+const v_start = new THREE.Vector2(0, 0);
+const v_end = new THREE.Vector2(5, 3);
+const v_control = v_start.clone().lerp(v_end, 0.5).add( new THREE.Vector2(-2, 1) );
+const curve = new THREE.QuadraticBezierCurve(v_start, v_control, v_end);
+// ---------- ----------
+// SHAPE/GEOMETRY
+// ---------- ----------
+const v2array = curve.getPoints(50);
+v2array.push( new THREE.Vector2(5, 0) );
+const shape = new THREE.Shape( v2array  );
+const geometry = new THREE.ShapeGeometry(shape);
+// ---------- ----------
+// SCENE CHILD OBJECTS
+// ---------- ----------
+const mesh1 = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({  side: THREE.DoubleSide }));
+scene.add(mesh1);
+scene.add( new THREE.GridHelper(10, 10) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(0, 5, 10);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ### 4.2 - 
 
 ```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// CURVE
+// ---------- ----------
+const v_start = new THREE.Vector2(0, -2.5);
+const v_end = new THREE.Vector2(0, 2.5);
+const v_control = v_start.clone().lerp(v_end, 0.5).add( new THREE.Vector2(5, 7) );
+const curve = new THREE.QuadraticBezierCurve(v_start, v_control, v_end);
+// ---------- ----------
+// SHAPE/GEOMETRY
+// ---------- ----------
+const v2array = curve.getPoints(64);
+const geometry = new THREE.LatheGeometry( v2array, 40 );
+// ---------- ----------
+// SCENE CHILD OBJECTS
+// ---------- ----------
+const mesh1 = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({  side: THREE.DoubleSide }));
+scene.add(mesh1);
+scene.add( new THREE.GridHelper(10, 10) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 3 - Curve Paths
