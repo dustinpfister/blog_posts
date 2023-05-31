@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-31 08:31:29
-version: 1.41
+updated: 2023-05-31 10:58:31
+version: 1.42
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -34,7 +34,7 @@ I have the source code that I am writing about in this post also up on my [test 
 
 ### Version Numbers matter
 
-When I first started this post I was using r140 of threejs, and the last time I came around to do some editing of the post I was able to get all the exmaples working just fine with r146.
+When I first started this post I was using r140 of threejs, and the last time I came around to do some editing of the post I was able to get all the examples working just fine with r146.
 
 ## 1 - Basic Curve Examples
 
@@ -42,7 +42,7 @@ To start out with Curves in this section I will be going over some fairly simple
 
 ### 1.1 - Line Curve Example with Points
 
-There is a Line Curve 3 class that is one built in option for cretaign a curve. This is just making an instance of a curve that is just a line between two points, but it is still an instance of a curve. So then this can be used in any situautin that i need a curve object that is just a line actually. 
+There is a Line Curve 3 class that is one built in option for creating a curve. This is just making an instance of a curve that is just a line between two points, but it is still an instance of a curve. So then this can be used in any situation that i need a curve object that is just a line actually. 
 
 ```js
 //-------- ----------
@@ -174,17 +174,17 @@ camera.lookAt(0, 3, 0);
 renderer.render(scene, camera);
 ```
 
-## 2 - More on vector3 object arrays, and points with curves
+## 2 - More on Vector3 object arrays, Points and curves curves
 
-When it comes to the Base Curve class there are some key methods of intereset that are very usfule for createing an array of Vector3 objects, or getting a single Vector3 object at any point along a curve. I touched based on this topic in the Basic section of this blog post, but I have to say that this is without question a topic that I should expand on with the curve class to say the leat abount it.
+When it comes to the Base Curve class there are some key methods of interest that are very useful for creating an array of Vector3 objects, or getting a single Vector3 object at any point along a curve. I touched based on this topic in the Basic section of this blog post, but I have to say that this is without question a topic that I should expand on with the curve class to say the learn about it.
 
-There are a lot of reasons why I would want to create an array of Vector3 objects that are points along a curve, or get a single point along a curve. There is creating an instance of THREE.Points with a geometry that has a position attribute of vertices along the curve for exmaple. When doing so there is not just the question of getting a number of points along the curve, but also the spacing between each point when doing so. The getPoints method of the base curve class can get a number of points along a curve just fine, but it will always be a fixed delta value between each point. With that said there is also the getPoint method that will just give me a single Vector3 object along the curve by way of a given alpha value. This getPoint method can then be used to address problems with this fixed delta problem with the getPoints method.
+There are a lot of reasons why I would want to create an array of Vector3 objects that are points along a curve, or get a single point along a curve. There is creating an instance of THREE.Points with a geometry that has a position attribute of vertices along the curve for example. When doing so there is not just the question of getting a number of points along the curve, but also the spacing between each point when doing so. The getPoints method of the base curve class can get a number of points along a curve just fine, but it will always be a fixed delta value between each point. With that said there is also the getPoint method that will just give me a single Vector3 object along the curve by way of a given alpha value. This getPoint method can then be used to address problems with this fixed delta problem with the getPoints method.
 
 ### 2.1 - The curve.getPoints method and THREE.Points
 
-For this first example of Points and the base Curve class I will be using the GetPoints method to just get a fixed number of points along a curve. Once again this example is fairly simular to what I covered in the basic section all ready, but I would like to start off with an example such as this before moving on to more complex examples.
+For this first example of Points and the base Curve class I will be using the GetPoints method to just get a fixed number of points along a curve. Once again this example is fairly similar to what I covered in the basic section all ready, but I would like to start off with an example such as this before moving on to more complex examples.
 
-Once I have a curve class based object by any means I can call the getPoints method of the base curve class to get an array of Vector3 objects. Although this migth work okay for many situations in which I migth need to do somehting like this there is one draw back about using this and that is that the spacing between each point will be the same for each vector3 object along the curve.
+Once I have a curve class based object by any means I can call the getPoints method of the base curve class to get an array of Vector3 objects. Although this might work okay for many situations in which I might need to do something like this there is one draw back about using this and that is that the spacing between each point will be the same for each vector3 object along the curve.
 
 
 ```js
@@ -383,9 +383,58 @@ loop();
 
 Then end result of all of this is then a situation in which the spacing between the points will change from something that is similar to the use of the getPoints method to a custom spacing that is created with the smoother step method of the [math utils object](/2022/04/11/threejs-math-utils/).
 
-## 3 - Spiral example
+## 3 - Curve Paths
 
-So now that I have a basic example out of the way that involves creating a custom curve class by extending the base curve class out of the way I think I will want to have at least one more example that involves something like a spiral of sorts. This example is then very similar to the basic example I have starting out with, but now I am using sin and cos math methods for the expressions in the get point method.
+Often I will find myself in a situation in which I will want to make not just one curve, but a whole bunch of them, and link them all together into one sort of logical path. With that said there is the built in curve path class of threejs that can be used to create this kind of curve of curves. I can then use the get point method to get a single point along one of these curve paths. However if I want a collection of Vector3 objects I might want to go with the get spaced points method of the curve path class.
+
+### 3.1 - Basic Curve Path example using THREE.Points and CurvePath.getSpacedPoints
+
+One way to start out with these curve paths would be to create a collection of THREE.Points by using the getSpacedPoints method of the CurvePath class. However before doing that I will need a CurvePath to begin with, with at least one curve added to it. So there is just calling the THREE.CurvePath constructor to get a new CurvePath to start things off. Once I have the curve path stored to a variable I can then start adding other curves to it by just simply calling the add method and passing a curve that I would like to add to it. For this example I am just making use of some line curves and a single Quadratic Bezier Curve.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// CURVE PATH
+// ---------- ----------
+const v1 = new THREE.Vector3(-4, 0, 3);
+const v2 = new THREE.Vector3(3, 0, 3);
+const v3 = new THREE.Vector3(-4, 0, -5);
+const vc1 = v2.clone().lerp(v3, 0.5).add( new THREE.Vector3(4,0,-1) );
+const curve = new THREE.CurvePath();
+curve.add( new THREE.LineCurve3( v1, v2 ) );
+curve.add( new THREE.QuadraticBezierCurve3( v2, vc1, v3 ) );
+curve.add( new THREE.LineCurve3( v3, v1 ) );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const points1 = new THREE.Points(
+    new THREE.BufferGeometry().setFromPoints( curve.getSpacedPoints(50) ),
+    new THREE.PointsMaterial({ size: 0.4, color: 0xff0000 }));
+scene.add(points1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(10, 5, 7);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+
+## 4 - The CustomSinCurve class Demos
+
+When I first started writing this post the main over all subject of the post was to extend the base curve class to create a custom curve class. This is then a number of older demos that have to do with making a custom Sin Curve class by extending the base class. They also have a lot to do with the TubeGeometry constructor. In time if I keep editing this post a little more now and then I might eventualy removed these demos. However for the most part I often prefer to just keep pushing older demos such as this down to the bottom of the every growing content.
+
+### 4.1 - CustomSinCurve Class Spiral example
+
+So now that I have a basic example out of the way that involves creating a custom curve class by extending the base curve class out of the way I think I will want to have at least one more example that involves something like a spiral of sorts. I then came up with this custom sin curve class as a way to further explore just making custom curve classes. I also wanted to start working out at least a few basic demos of the tube geometry constructor as well while I was at it with this sort of thing.
 
 ```js
 //-------- ----------
@@ -438,7 +487,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 4 - The buffer geometry copy method an a basic animation example using a curve
+### 4.1 - CustomSinCurve and the buffer geometry copy method to update geometry
 
 Thus far I just have some static scene examples of this curve class out of the way, so then I should have at least one example that involves an animation loop then. One way to go about doing this might involve creating a new curve object with update arguments in the body of the loop that I can then use to make an updated geometry. In can then make use of the copy method of the buffer geometry instance in the mesh object to copy this update geometry to the geometry object instance of the mesh objects as a way to update the geometry.
 
@@ -518,6 +567,8 @@ let loop = function () {
 };
 loop();
 ```
+
+The use of the copy method might now always be the best way to go about updating geometry over time though. I have found that often the best way to update the state of geometry often involves mutation of the various buffer attributes of a geometry rather than copied a new one over each time. 
 
 ## Conclusion
 
