@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-31 12:09:43
-version: 1.45
+updated: 2023-05-31 14:10:14
+version: 1.46
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -513,12 +513,172 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
+## 5 - Using Curves to create functions that compute alpha values
 
-## 5 - The CustomSinCurve class Demos
+One thing that will come up all the time with threejs, as well as with computer programming in general is the concept of what is often referred to as an alpha value, or in other words a number in the range of 0 to 1. There are a whole lot of functions in various classes that expect one of these alpha values as an argument. In fact thus far in this post alone I have all ready covered a number of demos that use the getPoint curve class method that takes an alpha value as the first argument. There are a number of various typical expressions that can be used to create these kinds of values, also there are a lot of methods in the Math Utils object of threejs that help with these as well. However in this section I am going to explore using curves as a way to create these kinds of values.
+
+### 5.1 - Create Curve Alpha Function, draw Curve Graph, Quadratic Bezier Curve
+
+For this first demo of the alphas section of this post on curves in threejs I will want to work out at least some of the basic things that will be necessary to do this subject justice.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER, 2DCANVAS OVERLAY
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+scene.background = null;
+renderer.setClearColor(0x000000, 0)
+renderer.setSize(640, 480, false);
+const canvas_2d = document.createElement('canvas');
+const ctx = canvas_2d.getContext('2d');
+canvas_2d.width = 640;
+canvas_2d.height = 480;
+const canvas_3d = renderer.domElement;
+const container = document.getElementById('demo') || document.body;
+container.appendChild(canvas_2d);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+// create a curve alpha function
+const createCurveAlphaFunc = (curve, grain = 100) => {
+   const varray = curve.getPoints(grain);
+   const y_array = varray.map( (v) => { return v.y });
+   const y_min = Math.min.apply(null, y_array );
+   const y_max = Math.max.apply(null, y_array );
+   return function(n = 0, d = 1){
+      const alpha = n / d;
+      const v = curve.getPoint(alpha);
+      const range = y_max - y_min;
+      return 1 - ( Math.sqrt( Math.pow(v.y - y_max, 2) ) / range );
+   };
+};
+// draw a curve graph Line with a getApha function
+const drawCurveGraph = (ctx, getAlpha, a_pointer = 0.5, x = 460, y = 10, w = 160, h = 120, grain = 100 ) => {
+    // outline, background
+    ctx.beginPath();
+    ctx.rect(x, y, w, h);
+    ctx.fillStyle = 'rgba(0,0,0, 0.5)';
+    ctx.strokeStyle = 'white';
+    ctx.fill();
+    ctx.stroke();
+    ctx.beginPath();
+    // alpha line
+    let i = 0;
+    while(i < grain){
+        const a_pt = i / ( grain - 1);
+        const alpha = getAlpha( a_pt, 1 );
+        const x2 = x + w * a_pt;
+        const y2 = y + h - h * alpha;
+        if(i === 0){
+            ctx.moveTo(x2, y2);
+        }
+        if(i > 0){
+            ctx.lineTo(x2, y2);
+        }
+        i += 1;
+    }
+    ctx.stroke();
+    // draw pointer
+    ctx.fillStyle = 'white';
+    const alpha = getAlpha( a_pointer, 1 );
+    const cx = x + w * a_pointer;
+    const cy = y + h - h * alpha;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 5, 0, Math.PI * 2, false);
+    ctx.fill();
+
+};
+// ---------- ----------
+// CURVE ALPHA
+// ---------- ----------
+const v_start = new THREE.Vector2(0, 0);
+const v_end = new THREE.Vector2(1, 1);
+const v_control = v_start.clone().lerp(v_end, 0.25).add( new THREE.Vector2( 0, 2 ) );
+const curve = new THREE.QuadraticBezierCurve(v_start, v_control, v_end);
+const getAlpha = createCurveAlphaFunc(curve);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh1);
+// ---------- ----------
+// CONTROLS
+// ---------- ----------
+let controls = null;
+if(THREE.OrbitControls){
+    controls = new THREE.OrbitControls(camera, canvas_2d);
+}
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set( 2, 2, 2 );
+camera.lookAt( 0, 0, 0 );
+const sm = {
+   FPS_UPDATE: 24,     // fps rate to update ( low fps for low CPU use, but choppy video )
+   FPS_MOVEMENT: 24,   // fps rate to move object by that is independent of frame update rate
+   FRAME_MAX: 450,
+   secs: 0,
+   frame_frac: 0,      // 30.888 / 450
+   frame: 0,           // 30 / 450
+   tick: 0,            //  1 / 450 ( about 1 FPS then )
+   now: new Date(),
+   lt: new Date(),
+   a_frame: 0
+};
+// main update method for the scene
+const update = function(sm){
+    sm.a_frame = sm.frame / sm.FRAME_MAX;
+    sm.a_bias = 1 - Math.abs( 0.5 - sm.a_frame ) / 0.5;
+    sm.a_curve = getAlpha(sm.a_bias, 1);
+    mesh1.rotation.y = Math.PI * 2 * sm.a_curve;
+    mesh1.scale.set(2,2,2).multiplyScalar(sm.a_curve);
+};
+// 2d render layer
+const render2d = (sm) => {
+    ctx.clearRect(0,0, canvas_2d.width, canvas_2d.height);
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+    ctx.drawImage(canvas_3d, 0, 0, canvas_2d.width, canvas_2d.height);
+    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+    // draw the curve graph
+    drawCurveGraph(ctx, getAlpha, sm.a_bias)
+    // simple text info
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px monospace';
+    ctx.fillText('frame : ' + sm.frame + '/' + sm.FRAME_MAX, 5, 5);
+    ctx.fillText('a_curve : ' + sm.a_curve.toFixed(4), 5, 15);
+};
+const loop = () => {
+    sm.now = new Date();
+    sm.secs = (sm.now - sm.lt) / 1000;
+    requestAnimationFrame(loop);
+    if(sm.secs > 1 / sm.FPS_UPDATE){
+        // update, render to 3d canvas, and then render to 2d canvas
+        update(sm);
+        renderer.render(scene, camera);
+        render2d(sm);
+        // step frame
+        sm.frame_frac += sm.FPS_MOVEMENT * sm.secs;
+        sm.frame_frac %= sm.FRAME_MAX;
+        sm.frame = Math.floor(sm.frame_frac);
+        sm.tick = (sm.tick += 1) % sm.FRAME_MAX;
+        sm.lt = sm.now;
+    }
+};
+loop();
+```
+
+## 6 - The CustomSinCurve class Demos
 
 When I first started writing this post the main over all subject of the post was to extend the base curve class to create a custom curve class. This is then a number of older demos that have to do with making a custom Sin Curve class by extending the base class. They also have a lot to do with the TubeGeometry constructor. In time if I keep editing this post a little more now and then I might eventualy removed these demos. However for the most part I often prefer to just keep pushing older demos such as this down to the bottom of the every growing content.
 
-### 5.1 - CustomSinCurve Class Spiral example
+### 6.1 - CustomSinCurve Class Spiral example
 
 So now that I have a basic example out of the way that involves creating a custom curve class by extending the base curve class out of the way I think I will want to have at least one more example that involves something like a spiral of sorts. I then came up with this custom sin curve class as a way to further explore just making custom curve classes. I also wanted to start working out at least a few basic demos of the tube geometry constructor as well while I was at it with this sort of thing.
 
@@ -573,7 +733,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 5.1 - CustomSinCurve and the buffer geometry copy method to update geometry
+### 6.1 - CustomSinCurve and the buffer geometry copy method to update geometry
 
 Thus far I just have some static scene examples of this curve class out of the way, so then I should have at least one example that involves an animation loop then. One way to go about doing this might involve creating a new curve object with update arguments in the body of the loop that I can then use to make an updated geometry. In can then make use of the copy method of the buffer geometry instance in the mesh object to copy this update geometry to the geometry object instance of the mesh objects as a way to update the geometry.
 
