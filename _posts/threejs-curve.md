@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 993
-updated: 2023-05-31 14:10:14
-version: 1.46
+updated: 2023-05-31 18:55:14
+version: 1.47
 ---
 
 The [curve class in threejs](https://threejs.org/docs/#api/en/extras/core/Curve) is a way to go about creating a curve with a little javaScript logic when it comes to working directly with the curve base class. There is also a number of built in classes that extend the curve base class which might be the best starting point for this sort of thing actually. However there might end up being a situation now and then where I might want to create my own class that extends the curve base class. Also even if I just work with the built in options that extend the curve base class I still want to have a solid grasp on what there is to work with when it comes to the common methods of curves that can be found in this base curve class.
@@ -515,11 +515,13 @@ renderer.render(scene, camera);
 
 ## 5 - Using Curves to create functions that compute alpha values
 
-One thing that will come up all the time with threejs, as well as with computer programming in general is the concept of what is often referred to as an alpha value, or in other words a number in the range of 0 to 1. There are a whole lot of functions in various classes that expect one of these alpha values as an argument. In fact thus far in this post alone I have all ready covered a number of demos that use the getPoint curve class method that takes an alpha value as the first argument. There are a number of various typical expressions that can be used to create these kinds of values, also there are a lot of methods in the Math Utils object of threejs that help with these as well. However in this section I am going to explore using curves as a way to create these kinds of values.
+One thing that will come up all the time with threejs, as well as with computer programming in general is the concept of what is often referred to as an alpha value, at least in terms of threejs docs terminology at least. What I am really taking about here is  a number in the range of 0 to 1 [which can take on many names](https://english.stackexchange.com/questions/275734/a-word-for-a-value-between-0-and-1-inclusive). Other terms for this kind of value might be things like Unit Interval, normalized value, I often referred to them as percent values they are similar to that kind of range.
+
+There are a whole lot of functions in various classes in threejs that expect one of these alpha values as an argument. In fact thus far in this post alone I have all ready covered a number of demos that use the getPoint curve class method that takes an alpha value as the first argument. There are a number of various typical expressions that can be used to create these kinds of values, also there are a lot of methods in the [Math Utils object](/2022/04/11/threejs-math-utils/) of threejs that help with these as well. However in this section I am going to explore using curves as a way to create these kinds of values.
 
 ### 5.1 - Create Curve Alpha Function, draw Curve Graph, Quadratic Bezier Curve
 
-For this first demo of the alphas section of this post on curves in threejs I will want to work out at least some of the basic things that will be necessary to do this subject justice.
+For this first demo of the alphas section of this post on curves in threejs I will want to work out at least some of the basic things that will be necessary to do this subject justice. I have a create curve alpha funciton helper funciton that will return a get alpha funciton that uses a given curve. I then also made a draw curve graph helper funciton that will draw to a 2d canvas drawing context the current state of a given get alpha funciton.
 
 ```js
 // ---------- ----------
@@ -673,6 +675,8 @@ const loop = () => {
 };
 loop();
 ```
+
+There are all kinds of things that I can do with an alpha funciton of course, but for this example at least I am just using it to set the scale and rotation of a mesh object.
 
 ## 6 - The CustomSinCurve class Demos
 
