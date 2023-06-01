@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1045
-updated: 2023-06-01 11:37:57
-version: 1.1
+updated: 2023-06-01 11:44:24
+version: 1.2
 ---
 
 There are a number of built in options for extensions of the [base curve class](https://threejs.org/docs/#api/en/extras/core/Curve) of threejs such as [CubicBezierCurve3](/2023/02/10/threejs-curves-cubicbeziercurve3/) just to name one. There is also creating ones own curve classes by extending the base curve class as well. These curves can then be used for all sorts of various tasks such as moving an object along the curve, having an object face a point of reference along the curve, creating and updating custom geometries and so forth. So they are great for all kinds of various situations however there is also the idea of having a whole bunch of these curve objects form a single kind of logical curve, and with that this is where [curve paths](https://threejs.org/docs/#api/en/extras/core/CurvePath) come into play.
@@ -80,6 +80,8 @@ renderer.render(scene, camera);
 
 
 ### 1.2 - Move an object along a curve path
+
+For this demo I am now using a curve path as a way to move an object along the curve path. This example is then very similar to the first one of this section, but now I am adding a mesh object, as well as an animation loop.
 
 ```js
 // ---------- ----------
@@ -159,4 +161,6 @@ const loop = () => {
 loop();
 ```
 
+## Conclusion
 
+Curve paths are then a major part of doing a whole lot of interesting things with a threejs project. There is just creating static, fixed paths in spaces and moving objects along thous paths. There there are all kinds of projects where a stack of curves are being updated and used over  and over again in all kinds of differing ways. Paths are great for moving objects around, but they can also be used as a point of reference for setting the rotation of them as well. There are then all kinds of other various use case examples such as using them to create 2d shapes that can then be used to create an extrude geometry, and also working out interesting alpha values that can then be used to update just about  anything.
