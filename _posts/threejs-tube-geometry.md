@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1046
-updated: 2023-06-02 13:20:26
-version: 1.3
+updated: 2023-06-02 15:28:26
+version: 1.4
 ---
 
 In threejs there is the base curve class, along with a number of built in options that extend this base curve class to create paths in 2D and also very much 3D space. There are a whole lot of use case examples for these curves such as using them to move objects along a path, or use any point along a curve as a point of reference to have an object look at. However there is also using them to make geometry also by getting an array of Vectors for a 3d curve and then quickly creating a geometry with just a position attribute that will work fine with THREE.Points, or THREE.Line. However things can prove to get a little involved when it comes to making the kind of geometry that will work well with THREE.Mesh. There is working out some kind of project that has to do with using curves as a way to create a custom geometry, however maybe a good starting point for this sort of thing would be to just use the [THREE.TubeGeometry class](https://threejs.org/docs/#api/en/geometries/TubeGeometry).
@@ -35,7 +35,11 @@ The source code examples in this post can also be found in the [folder that corr
 
 When I first wrote this blog post I was [using r152 of threejs and thus was following the style rules that I set for myself for that revision](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) of threejs when first writing these demos. This means that I am using module type script tags, and import maps when it comes to my html code. 
 
-### 1.1 - Basic Tube Geometry Example
+## 1 - Basic Tube Geometry examples
+
+For this first section as always I will just be starting out with a few basic examples of Tube Geometry. Nothing fancy with curve paths, and updating the curve objects, and geometry over time. Just some simple, clean starting points.
+
+### 1.1 - Tube Geometry Arguments
 
 One has to start somewhere with everything, and when it comes to Tube Geometry apart from the usual objects that are needed for any threejs demo, I also need a curve to pass as the first argument. So with this first demo after creating the scene object, camera, and renderer I then create a curve object. For this curve object I went with [THREE.QuadraticBezierCurve3](/2022/10/21/threejs-curve-quadratic-bezier-curve3/) which is a nice built in curve class extension that takes a start point, end point, and a single control point as arguments.
 
@@ -76,6 +80,78 @@ const geometry = new THREE.TubeGeometry(curve, tubular_segments, radius, radial_
 // ---------- ----------
 scene.add( new THREE.GridHelper(10, 10) );
 const material = new THREE.MeshNormalMaterial({ side: THREE.DoubleSide });
+const mesh1 = new THREE.Mesh(geometry, material);
+scene.add(mesh1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(7, 2, 7);
+camera.lookAt(2, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.2 - Adding a texture
+
+One major improvement of using tube Geometry over that of THREE.Points, or THREE.Lines is that I can use the Mesh materials and all the various options of such materials. With that said in this example I am making a texture using a [canvas element](/2018/04/17/threejs-canvas-texture/) for the map option of the [Basic material](/2018/05/05/threejs-basic-material). When it comes to the code that I am using to draw the canvas it is just a little quick code for making a checkered pattern. I then just pass the canvas element to the THREE.CanvasTexture constructor and I then get a texture. I can then use this texture for options like the map option of the basic material.
+
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// TEXTURE
+// ---------- ----------
+const canvas = document.createElement('canvas');
+canvas.width = 64;
+canvas.height = 64;
+const ctx = canvas.getContext('2d');
+const w = 16;
+const size = canvas.width / w;
+const colors = 'white,red'.split(',');
+const len = w * w;
+let pi = 0;
+while(pi < len){
+    const gx = pi % w;
+    const gy = Math.floor(pi / w);
+    const x = size * gx;
+    const y = size * gy;
+    const ci = (pi + (gy % 2) ) % colors.length;
+    ctx.fillStyle = colors[ci];
+    ctx.fillRect(x, y, size, size );
+    pi += 1;
+}
+const texture = new THREE.CanvasTexture(canvas);
+texture.magFilter = THREE.NearestFilter;
+// ---------- ----------
+// CURVE
+// ---------- ----------
+const v_start = new THREE.Vector3(-5,0,0);
+const v_end = new THREE.Vector3(5,0,0);
+const v_control = v_start.clone().lerp(v_end, 0.5).add( new THREE.Vector3(-4,3,-5) );
+const curve = new THREE.QuadraticBezierCurve3(v_start, v_control, v_end);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const tubular_segments = 32;
+const radius = 0.75;
+const radial_segments = 16;
+const closed = false;
+const geometry = new THREE.TubeGeometry(curve, tubular_segments, radius, radial_segments, closed);
+// ---------- ----------
+// SCENE CHILD OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
 const mesh1 = new THREE.Mesh(geometry, material);
 scene.add(mesh1);
 // ---------- ----------
