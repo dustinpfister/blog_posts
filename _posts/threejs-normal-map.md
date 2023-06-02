@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2022-12-27 14:15:59
-version: 1.28
+updated: 2023-06-02 07:46:26
+version: 1.29
 ---
 
-In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) which will come into play when it comes to figuring out how light should effect a surface. The normal attribute is also used for things like finding out what side of triangle should be the front side. So then this normals attribute is an important part of creating a custom geometry which in my view is what I typical think of next after working out the [position attribute of a geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/). The position attribute as the name suggests is the actually points in space of the geometry. 
+In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) which will come into play when it comes to figuring out how light should effect a surface. The normal attribute is also used for things like finding out what side of triangle should be the front side so that one does not have to always render triangles on both sides thus wasting resources. So then this normals attribute is an important part of creating a custom geometry which in my view is what I typically think of next after working out the [position attribute of a geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/). The position attribute as the name suggests is the actually points in space of the geometry. 
 
-So then in todays post I will be writing about a special kind of texture map that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap). A normal map is just one of many options to work with when it comes to the various kinds of texture maps such as emissive maps, alpha maps, and just plain old color maps. I can not say that I use normal maps that often thus far, but this is still a topic of interest when it comes to threejs in general so I took a moment to work out some examples and write this post.
+So then in todays post I will be writing about a special kind of texture map that can be added to some materials that can be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap). A normal map is just one of many options to work with when it comes to the various kinds of texture maps such as emissive maps, alpha maps, and just plain old color maps. I can not say that I use normal maps that often thus far, but this is still a topic of interest when it comes to threejs in general so I took a moment to work out some examples and write this post.
 
 <!-- more -->
 
@@ -35,7 +35,7 @@ The normal map is a kind of map that effects lighting, so it does not make sense
 
 ### The source code here can be found on github
 
-The source code for these [examples can be found in the for post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-map) folder of my test threejs repository. If for some reason you want to make a pull request with one or the source code examples here that would be the place to do it. There is also the comments section of this blog post that can also be used as a way to bring something to my attention with this content.
+The source code for these [examples can be found in the for post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-map) folder of my test threejs repository along with the source code examples for [all my other blog posts on threejs](/categories/three-js/). If for some reason you want to make a pull request with one or the source code examples here that would be the place to do it. There is also the comments section of this blog post that can also be used as a way to bring something to my attention with this content.
 
 ### Be mindful of the version numbers used with three.js
 
