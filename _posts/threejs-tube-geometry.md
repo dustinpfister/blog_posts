@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1046
-updated: 2023-06-02 11:31:11
-version: 1.2
+updated: 2023-06-02 13:20:26
+version: 1.3
 ---
 
 In threejs there is the base curve class, along with a number of built in options that extend this base curve class to create paths in 2D and also very much 3D space. There are a whole lot of use case examples for these curves such as using them to move objects along a path, or use any point along a curve as a point of reference to have an object look at. However there is also using them to make geometry also by getting an array of Vectors for a 3d curve and then quickly creating a geometry with just a position attribute that will work fine with THREE.Points, or THREE.Line. However things can prove to get a little involved when it comes to making the kind of geometry that will work well with THREE.Mesh. There is working out some kind of project that has to do with using curves as a way to create a custom geometry, however maybe a good starting point for this sort of thing would be to just use the [THREE.TubeGeometry class](https://threejs.org/docs/#api/en/geometries/TubeGeometry).
@@ -82,6 +82,73 @@ scene.add(mesh1);
 // RENDER
 // ---------- ----------
 camera.position.set(7, 2, 7);
+camera.lookAt(2, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 2 - Curve Path Example
+
+For this example I started to explore the use of curve paths and tube geometry.  Two help make things simple I went with just one type of curve for each child of the curve path which is THREE.CubicBezierCurve3. This means that I will not have to bother checking the type for each child when making a more advanced example where I update the curves and the geometry of the tubes. Also this is a built in curve option where I have two control points to work with rather than just one.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPER FUNCTIONS
+// ---------- ----------
+const getCircleVector = (i = 0, id = 0, len = 4, radius = 4, y = 0) => {
+    const radian = Math.PI * 2 * ( (i + id) % len / len);
+    const x = Math.cos(radian) * radius,
+    z = Math.sin(radian) * radius;
+    return new THREE.Vector3( x, y, z );
+};
+// ---------- ----------
+// CURVE Path
+// ---------- ----------
+let i = 0;
+const len = 4;
+const curve_path = new THREE.CurvePath();
+const cp_radius = 4;
+while(i < len){
+    const a_child = i / len;
+    const y = -0.5 + 1 * a_child;
+    const v_start = getCircleVector(i, 0, len, cp_radius, y);
+    const v_end = getCircleVector(i, 1, len, cp_radius, y);
+    const c_radius = cp_radius * 1.0 + 2 * a_child;
+    const v_control1 = getCircleVector(i, 0.25, len, c_radius, y);
+    const v_control2 = getCircleVector(i, 0.75, len, c_radius, y);
+    curve_path.add(new THREE.CubicBezierCurve3(v_start, v_control1, v_control2, v_end));
+    i += 1;
+}
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const tubular_segments = 32;
+const radius = 0.75;
+const radial_segments = 16;
+const closed = true;
+const geometry = new THREE.TubeGeometry(curve_path, tubular_segments, radius, radial_segments, closed);
+// ---------- ----------
+// SCENE CHILD OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const material = new THREE.MeshNormalMaterial();
+const mesh1 = new THREE.Mesh(geometry, material);
+scene.add(mesh1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(8, 8, 8);
 camera.lookAt(2, 0, 0);
 renderer.render(scene, camera);
 ```
