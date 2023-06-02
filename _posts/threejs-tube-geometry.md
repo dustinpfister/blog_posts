@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1046
-updated: 2023-06-02 11:29:40
-version: 1.1
+updated: 2023-06-02 11:31:11
+version: 1.2
 ---
 
-In threejs there is the base curve class, along with a number of built in options that extend this base curve class to create paths in 2D and also very much 3D space. There are a whole lot of use case examples for these curves such as using them to move objects along a path, or use any point along a curve as a point of reference to have an object look at. However there is also using them to make geometry also by getting an array of Vectors for a 3d curve and then quickly creating a geometry with just a position attribute that will work fine with THREE.Points, or THREE.Line. However things can prove to get a little involved when it comes to making the kind of geometry that will work well with THREE.Mesh. There is working out some kind of project that has to do with using curves as a way to create a custom geometry, however maybe a good starting point for this sort of thing would be to just use the THREE.TubeGeometry class.
+In threejs there is the base curve class, along with a number of built in options that extend this base curve class to create paths in 2D and also very much 3D space. There are a whole lot of use case examples for these curves such as using them to move objects along a path, or use any point along a curve as a point of reference to have an object look at. However there is also using them to make geometry also by getting an array of Vectors for a 3d curve and then quickly creating a geometry with just a position attribute that will work fine with THREE.Points, or THREE.Line. However things can prove to get a little involved when it comes to making the kind of geometry that will work well with THREE.Mesh. There is working out some kind of project that has to do with using curves as a way to create a custom geometry, however maybe a good starting point for this sort of thing would be to just use the [THREE.TubeGeometry class](https://threejs.org/docs/#api/en/geometries/TubeGeometry).
 
 As the name suggests this built in geometry constructor will take a 3d curve as the first argument along with several other options arguments to create a geometry that is a kind of tube around a curve. As with many of the other built in options for geometry constructors it will also set up normal and uv attributes as well so one can quickly get up and running with this to create geometry around a curve. Also this kind of geometry can often serve as a nice replacement for THREE.Line or THREE.LineSegements as the full range options and features of mesh materials can be used, and also it can help to address the problem where line width will not always work on all platforms.
 
