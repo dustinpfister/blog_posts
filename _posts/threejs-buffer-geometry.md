@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-02-06 17:07:41
-version: 1.58
+updated: 2023-06-04 18:22:21
+version: 1.59
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -524,69 +524,64 @@ After calling the [to josn method](https://threejs.org/docs/#api/en/core/BufferG
 
 ## 8 - loading JSON text
 
-If I have a josn file to load that is formated the way as I have outline in the above example for doing so I can use the [buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/) to load the json text file. I just need to cerate an instance of the threejs buffer geometry loader, and then call the load method of the loader instance that is returned when calling the constructor function with the new keyword.
+If I have a josn file to load that is formatted the way as I have outline in the above example for doing so I can use the [buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/) to load the json text file. I just need to create an instance of the threejs buffer geometry loader, and then call the load method of the loader instance that is returned when calling the constructor function with the new keyword.
 
 ```js
-(function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(65, 4 / 3, 0.1, 100);
-    camera.position.set(10, 10, 10);
-    camera.lookAt(0, 0, 0);
- 
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var pl = new THREE.PointLight(0xffffff, 1, 100);
-    pl.position.set(5, 5, 5);
-    scene.add(pl);
- 
-    var frame = 0,
-    maxFrame = 200,
-    mesh;
-    var loop = function () {
-        var per = frame / maxFrame;
-        requestAnimationFrame(loop);
-        mesh.rotation.set(Math.PI / 2, Math.PI * 2 * per, 0);
-        // render the scene
-        renderer.render(scene, camera);
-        frame += 1;
-        frame %= maxFrame;
-    };
- 
-    // Loader
-    var loader = new THREE.BufferGeometryLoader();
- 
-    // load a resource
-    loader.load(
-        // resource URL
-        //'/forpost/threejs-buffer-geometry-loader/buffer-geo/three_2.json',
- 
-        '/json/static/box_house1_solid.json',
- 
-        // onLoad callback
-        function (geometry) {
-        // create a mesh with the geometry
-        // and a material, and add it to the scene
-        mesh = new THREE.Mesh(
-                geometry,
-                new THREE.MeshStandardMaterial({
-                    color: 0x00ff0000,
-                    emissive: 0x2a2a2a,
-                    side: THREE.DoubleSide
-                }));
-        scene.add(mesh);
-        loop();
-    });
- 
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(65, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo')  || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const pl = new THREE.PointLight(0xffffff, 1, 100);
+pl.position.set(5, 5, 5);
+scene.add(pl);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+let frame = 0,
+maxFrame = 200,
+mesh;
+const loop = function () {
+    const per = frame / maxFrame;
+    requestAnimationFrame(loop);
+    mesh.rotation.set(Math.PI / 2, Math.PI * 2 * per, 0);
+    renderer.render(scene, camera);
+    frame += 1;
+    frame %= maxFrame;
+};
+//-------- ----------
+// Loader
+//-------- ----------
+const loader = new THREE.BufferGeometryLoader();
+// load a resource
+loader.load(
+    // resource URL
+    '/json/static/box_house1_solid.json',
+    // onLoad callback
+    function (geometry) {
+    // create a mesh with the geometry
+    // and a material, and add it to the scene
+    mesh = new THREE.Mesh(
+            geometry,
+            new THREE.MeshStandardMaterial({
+                color: 0x00ff0000,
+                emissive: 0x2a2a2a,
+                side: THREE.DoubleSide
+            }));
+    scene.add(mesh);
+    loop();
+});
 ```
+
+Something like this might work okay if I just want to load a single JSON file. However there is a whole lot more to this sort of thing when it comes to how to go about parsing a large collection of files.
 
 ## 9 - Morph Attributes
 
