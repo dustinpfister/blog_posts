@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2023-06-04 10:34:22
-version: 1.64
+updated: 2023-06-04 12:49:25
+version: 1.65
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. 
@@ -706,6 +706,9 @@ renderer.render(scene, camera);
 ## 4 - Curves as a tool to help create position attributes
 
 [Curves are a great tool](/2022/06/17/threejs-curve/) for many various tasks that will come up when working on a threejs project. They can come into play for things like defining a path in space that will be used as a way to set the position of an object, or a point of reference to have an object look at. However another use case might be to use them as a way create and update a position attribute of a custom buffer geometry. In this section I will then be doing just that with built in extensions of the curve class and base curve class methods to create a position attribute for a buffer geometry object.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/biHkLTM5MRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 //-------- ----------
