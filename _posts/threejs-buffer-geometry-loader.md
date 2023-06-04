@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2023-05-30 11:48:55
-version: 1.34
+updated: 2023-06-04 17:50:25
+version: 1.35
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [threejs](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen. What is nice about the buffer geometry loader is that it is baked into the core of threejs itself, so there is no need to boter loading an additional file beyond that which is often the case with many other options.
@@ -421,6 +421,72 @@ const loader = new THREE.BufferGeometryLoader(manager);
 loader.load('/json/static/box_house1_solid.json', onBufferGeometryLoad);
 loader.load('/json/static/cube_thing.json', onBufferGeometryLoad);
 loader.load('/json/static/wheel.json', onBufferGeometryLoad);
+```
+
+### 4.3 - Return a promise helper function
+
+There is much more to this than just loading more than one json file of course. Often it seems that a lot of the problems that I run into have to do with things like how to go about parsing all of these json files into some kind of standard collection of objects to which I can then clone as needed in an over all project. However there are also things like just simply having some kind of helper function where I just pass an array of urls to each file that I want to load, and also have this helper function return a promise.
+
+In an over all project I might be in some kind of situation in which I have to make sure that all the files that I need are loaded until I move on to the next thing, and the way that I do so is to return a promise object. So then I just need some kind of helper function that will resolve in the onLoad method of the loading manager. Also when I resolve the promise I can also pass a scene object that contains a collection of mesh objects as children, and each mesh object contains of course the geometry of the JSON file that was loaded.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER
+//-------- ----------
+const loadBufferGeometryJSON = ( urls = [], material = new THREE.MeshNormalMaterial() ) => {
+    const scene_source = new THREE.Scene();
+    let object_index = 0;
+    // for each loaded geometry...
+    const onBufferGeometryLoad =  (geometry) => {
+        const mesh = new THREE.Mesh( geometry, material);
+        mesh.position.set(6 * object_index, 0, 1.8 * object_index);
+        scene_source.add(mesh);
+        object_index += 1;
+    };
+    return new Promise( ( resolve, reject ) => {
+        const manager = new THREE.LoadingManager();
+        manager.onLoad = () => {
+            resolve(scene_source);
+        };
+        const loader = new THREE.BufferGeometryLoader(manager);
+        urls.forEach( (url) => {
+           loader.load(url, onBufferGeometryLoad);
+        });
+    });
+};
+//-------- ----------
+// GRID/ LIGHT / CAMERA POS
+//-------- ----------
+const grid = new THREE.GridHelper(10, 10);
+scene.add(grid)
+const pl = new THREE.PointLight(0xffffff, 1, 100);
+pl.position.set(5, 5, 5);
+scene.add(pl);
+camera.position.set(-10, 15, 15);
+camera.lookAt(0,-1,0);
+//-------- ----------
+// BUFFER GEOMETRY LOADER
+//-------- ----------
+loadBufferGeometryJSON([
+   '/json/static/box_house1_solid.json',
+   '/json/static/cube_thing.json',
+   '/json/static/wheel.json'
+]).then( (scene_source) => {
+    console.log('JSON files are loaded!');
+    scene.add( scene_source );
+    renderer.render(scene, camera);
+}).catch( (e) => {
+    console.warn('No Good.');
+    console.warn(e);
+});
 ```
 
 ## Conclusion
