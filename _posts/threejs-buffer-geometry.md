@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-06-05 09:50:13
-version: 1.60
+updated: 2023-06-05 10:22:26
+version: 1.61
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -67,12 +67,12 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 // GEOMETRY, MESH
 //-------- ----------
-var geometry = new THREE.BufferGeometry();
-var vertices = new Float32Array([
-            -1, 0, 0,
-            1, 0, 0,
-            1, 1.25, 0
-        ]);
+const geometry = new THREE.BufferGeometry();
+const vertices = new Float32Array([
+    -1, 0, 0,
+     1, 0, 0,
+     1, 1, 0
+]);
 geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
 const mesh = new THREE.Mesh(
     geometry,
@@ -507,7 +507,11 @@ renderer.render(scene, camera)
 
 ## 5 - The Buffer Geometry loader
 
-If I have a josn file to load that is formatted the way as I have outline in the above example for doing so I can use the [buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/) to load the json text file. I just need to create an instance of the threejs buffer geometry loader, and then call the load method of the loader instance that is returned when calling the constructor function with the new keyword.
+If I have a josn file to load that is formatted the way as I have outline in the above example for doing so I can use the [buffer geometry loader](https://threejs.org/docs/#api/en/loaders/BufferGeometryLoader) to load the json text file. I just need to create an instance of the threejs buffer geometry loader, and then call the load method of the loader instance that is returned when calling the constructor function with the new keyword. Well at least that might be all that I need to do if I just need to load one file rather than a massive collection of these kinds of JSON files. When it comes to loading a lot of JSON files, and not just JSON files of geometry but all kinds of various assets, and having an over all progress bar and so on that is where this kind of thing can turn into a bit of a rabbit hole. Still it goes without saying that this is something that I should at least write a thing or two about in this general overview of buffer geometry. If you want to read more about what I have in terms of this kind of topic you might want to check out [my main blog post on the buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/).
+
+### 5.1 - Basic single file buffer geometry loader example
+
+The most basic form of this would be to just load a single JSON file that contains buffer geometry data with the Buffer Geometry loader. To do this I just need to create a single buffer geometry loader object by calling THREE.BufferGeometryLoader(). Once I have a buffer geometry loader instance I can then call the load method, and pass the url to the JSON file as the first argument. After passing the url, I will then also want to pass a function that I will want to fire when this file is done loading as the second argument. There are additional functions that I might want to pass after that, but for this basic example of the buffer geometry loader I might just keep it with that for now.
 
 ```js
 //-------- ----------
@@ -549,22 +553,97 @@ loader.load(
     // resource URL
     '/json/static/box_house1_solid.json',
     // onLoad callback
-    function (geometry) {
-    // create a mesh with the geometry
-    // and a material, and add it to the scene
-    mesh = new THREE.Mesh(
+    (geometry) => {
+        // create a mesh with the geometry
+        // and a material, and add it to the scene
+        mesh = new THREE.Mesh(
             geometry,
             new THREE.MeshStandardMaterial({
                 color: 0x00ff0000,
                 emissive: 0x2a2a2a,
                 side: THREE.DoubleSide
             }));
-    scene.add(mesh);
-    loop();
-});
+        scene.add(mesh);
+        loop();
+    }
+);
 ```
 
 Something like this might work okay if I just want to load a single JSON file. However there is a whole lot more to this sort of thing when it comes to how to go about parsing a large collection of files.
+
+### 5.2 - Loading more and one file with THREE.LoadingManager, and using Promsies.
+
+This is where things can start to get a little messy I have found thus far. However there are tools to work with in threejs, and also of course many native javaScript features that can help in the process of doing this sort of thing. For this example I am now making use of the [loading manager class](https://threejs.org/docs/#api/en/loaders/managers/LoadingManager) as a way to define some callbacks that I would like to fire when all of the files that I want to load are in fact done loading. On top of this I am also now making use of those additional call back functions that can be passed when calling the buffer geometry loader as well. The end result is a load buffer geometry JSON helper function that will load not just one url, but an array of urls, and if all goes well will resolve with a scene object where each child of the scene object contains the geometry of each file that was loaded.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER
+//-------- ----------
+const loadBufferGeometryJSON = ( urls = [], w = 2, scale = 5, material = new THREE.MeshNormalMaterial() ) => {
+    const scene_source = new THREE.Scene();
+    let i = 0;
+    const onBuffLoad =  (geometry) => {
+        const x = i % w;
+        const z = Math.floor( i / w);
+        const mesh = new THREE.Mesh( geometry, material);
+        mesh.position.set(x, 0, z).multiplyScalar(scale);
+        scene_source.add(mesh);
+        i += 1;
+    };
+    const onBuffProgress =  (geometry) => {};
+    return new Promise( ( resolve, reject ) => {
+        const manager = new THREE.LoadingManager();
+        manager.onLoad = () => {
+            resolve(scene_source);
+        };
+        const onBuffError =  (err) => {
+           reject(err);
+        };
+        const loader = new THREE.BufferGeometryLoader(manager);
+        urls.forEach(
+            (url) => {
+                loader.load(url, onBuffLoad, onBuffProgress, onBuffError);
+            }
+        );
+    });
+};
+//-------- ----------
+// GRID/ LIGHT / CAMERA POS
+//-------- ----------
+const grid = new THREE.GridHelper(100, 10);
+scene.add(grid)
+const pl = new THREE.PointLight(0xffffff, 1, 100);
+pl.position.set(5, 5, 5);
+scene.add(pl);
+camera.position.set(-10, 15, 15);
+camera.lookAt(0,-1,0);
+//-------- ----------
+// BUFFER GEOMETRY LOADER
+//-------- ----------
+const URLS = [
+   '/json/static/box_house1_solid.json',
+   '/json/static/cube_thing.json',
+   '/json/static/wheel.json'
+];
+loadBufferGeometryJSON(URLS, 2, 10)
+.then( (scene_source) => {
+    console.log('JSON files are loaded!');
+    scene.add( scene_source );
+    renderer.render(scene, camera);
+})
+.catch( (e) => {
+    console.warn('No Good.');
+    console.warn(e);
+});
+```
 
 ## 6 - Morph Attributes
 
