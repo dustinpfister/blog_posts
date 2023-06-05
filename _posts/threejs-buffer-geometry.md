@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-06-05 10:22:26
-version: 1.61
+updated: 2023-06-05 10:43:45
+version: 1.62
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -295,6 +295,56 @@ scene.add( new THREE.Mesh( geometry, materials) );
 // RENDER
 //-------- ----------
 camera.position.set(0, 0.5, 3);
+renderer.render(scene, camera);
+```
+
+### 1.5 - Basic example of adding an index to a geometry
+
+One thing that you should at least be aware of is if a [geometry has an index or not](/2022/12/09/threejs-buffer-geometry-index/). What this means is that of a geometry has an index that means that there are just a few points in the position attribute, and then there are many triangles being drawn from the same set of points. If there is no index, then that means that there needs to be a point for every triangle in the position attribute.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CUSTOM GEO WITH JUST A POSITION, AND NORMAL ATTRIBUTES
+//-------- ----------
+const geometry = new THREE.BufferGeometry();
+// position array of 4 points
+const pos = new THREE.BufferAttribute(
+    new Float32Array([
+        0,-3, 0,  // 0
+        0, 3, 0,  // 1
+       -5, 0, 0,  // 2
+        0, 0,-5   // 3
+    ]),
+    3    // 3 numbers for every item in the buffer attribute ( x, y, z)
+);
+geometry.setAttribute('position', pos);
+// using computeVertexNormals to create normal attribute
+geometry.computeVertexNormals();
+//-------- ----------
+//CREATING AN INDEX BY USING THE setIndex METHOD AND PASSING AN ARRAY
+//-------- ----------
+// drawing 2 trangles with just 4 points in the position attribute by giving an
+// array of index values for points in the position attribute to the setIndex method
+geometry.setIndex( [0,1,2,0,1,3] );
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({ side: THREE.DoubleSide }) );
+scene.add(mesh);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 5, 5);
+camera.lookAt(-2, 0, -2);
 renderer.render(scene, camera);
 ```
 
