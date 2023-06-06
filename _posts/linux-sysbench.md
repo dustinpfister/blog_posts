@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1047
-updated: 2023-06-06 11:03:43
-version: 1.1
+updated: 2023-06-06 11:13:07
+version: 1.2
 ---
 
 When it comes to using a raspberry PI as a Personal Computer I do end up running into a lot of roadblocks with various things. That is of course to be expected as the Single Board Computers do very much have there limitations. One issue of concern that comes up often seems to be with the read and write speeds of the sd card that is typically used to house the operating system image that is used with the raspberry pi. Often the typical sequential read speeds clock in at around 10MBs, which is still plenty fast sense most of the software used is very light weight to begin with. Still I remember having traditional hard disk speeds that are much faster than that, and this is solid state. This then brings up the question as to if it is possible to get faster disk io pref romance by way of the USB3 Ports of a raspberry pi 4 rather than that of the SD card. With that said if I do have a USB3 drive I would like to test and compare that to a test preformed with the sd card I will need some kind of program to preform such a test such as [sysbench](https://en.wikipedia.org/wiki/Sysbench)
@@ -17,9 +17,11 @@ There are a whole lot of other options of course, I see a lot of similar posts o
 
 ## 1 - Installing sysbench
 
+I am sure that Sysbench is often something that will come with an OS image, but rather be something that I will have to install by way of ATP or some other option. However some times that is not always the case, also often I will forget if I installed something or not, and so forth. So in this section I am just going over how to check if sysbench is installed to begin with and if not how to go about doing so.
+
 ### 1.1 - Check if it is installed all ready
 
-The first thing that I do before installing a command is to first check if by change the command is all ready installed. From one distro to the next what the os will come with will change. The basic tool that helps with this is the Linux type command that will tell me if I all ready have the command of interest or not.
+The first thing that I do before installing a command is to first check if by change the command is all ready installed. From one distro to the next what the os will come with will change. The basic tool that helps with this is the [Linux type command](/2021/02/11/linux-type/) that will tell me if I all ready have the command of interest or not.
 
 
 So if I have sysbench installed all ready I will get the locaion of the binary in the usr folder.
@@ -93,7 +95,7 @@ For this section I will be using sysbench to preform a random read test on my sd
 
 The first step is to prepare the files that will be used for the random read test. Sense I want to test my sd card first I will want to create these files at a file system location that is part of the sd card. So creating a folder at the home folder location will work just fine in this regard. However when it comes to testing the USB3 device of interest I will need to do this in the /media folder in raspberry pi os and I am sure that this kind of location will change a little from one distro to the next.
 
-Anyway once I have a location figured out I can cd to it, create a folder, cd into that and then call the sysbench with the options that I want and finish with the prepare command. I will want to make sure that I set 'fileio' for the --test option, and also 'rndrd' for the --file-test-mode option as I want to do a random read file io test. 
+Anyway once I have a location figured out I can [cd to it](/2021/02/10/linux-cd/), [create a folder](/2021/06/30/linux-mkdir/), cd into that and then call the sysbench with the options that I want and finish with the prepare command. I will want to make sure that I set 'fileio' for the --test option, and also 'rndrd' for the --file-test-mode option as I want to do a random read file io test. 
 
 Another thing that I might want to do is set the total size of the files to 32M rather than the default 2G as that will take a fair amount of time to set up. From what I have gathered thus far it seems like lower total sizes do not result in much of an impact in test results, at least as far as random read tests are concerned. I am sure that if I make the file sizes too small though that will make an impact if not with random read certainly other tests such as a sequential test.
 
@@ -154,7 +156,7 @@ Threads fairness:
 
 ### 2.3 - Clean up
 
-There is also a 'cleanup' command which might prove to be useful if running this command in a folder other than an empty folder that I set up just for this test. However sense I did not do that the other option would be to just delete the test folder by any means such as linux rm -r, or just doing it in a file manager normie style.
+There is also a 'cleanup' command which might prove to be useful if running this command in a folder other than an empty folder that I set up just for this test. However sense I did not do that the other option would be to just delete the test folder by any means such as [linux rm -r](/2021/07/05/linux-rm/), or just doing it in a file manager normie style.
 
 ```
 $ sysbench --test=fileio --file-test-mode=rndrd --file-total-size=32M cleanup
