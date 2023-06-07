@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1026
-updated: 2023-02-23 12:36:08
-version: 1.12
+updated: 2023-06-07 16:01:13
+version: 1.13
 ---
 
 The [morph attributes property of a buffer geometry instance](https://threejs.org/docs/#api/en/core/BufferGeometry.morphAttributes) will store an object which contains buffer attributes that are used to mutate the state of other buffer attributes of the geometry over time. Simply put it is a way to go about creating animation by having say additional position attributes for several other kinds of states for the points of a buffer geometry. These additional attributes that are used to morph a buffer geometry can contain absolute values foe each item, or they can be delta values that store a rate of change for each item as well.
@@ -20,6 +20,10 @@ The [morph attributes property of a buffer geometry instance](https://threejs.or
 ## Morph Attributes of buffer geometry and what to know first
 
 This is a blog post on more attributes of buffer geometry objects in the javaScript library known as threejs. If you are fairly new to threejs this post my prove to be a little too advanced as there is a whole lot to be aware of before getting into this sort of thing. For one thing there is knowing a thing or two about what buffer attributes of buffer geometry objects are to begin with. So in this section I will be writing about a few quick key things that you might want to read up a bit more on before counting to read the rest of thing post.
+
+### Position and normal attributes only for WebGl1, color attributes as well with WebGl2 only.
+
+Looking at the WebGlRenderer source code for threejs it would seem that position, normal, and color attributes are being updated by way of morph attributes. However if you are sticking with using webGl1 only, then it is just position and normals that will update.
 
 ### Read up more on Buffer Geometry in general
 
