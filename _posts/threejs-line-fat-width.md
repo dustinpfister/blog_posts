@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2022-12-29 11:25:37
-version: 1.30
+updated: 2023-06-07 08:24:26
+version: 1.31
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, any width other than the default value of 1 will not work. I have found that it will work on some of the Linux systems that I would with, but on Windows, and I assume many others it will now work.
@@ -611,6 +611,61 @@ When using the createFatLine helper I then also call my createFatLineGeometry he
     loop();
 }
     ());
+```
+
+
+## 3 - Basic Tube Geometry Example \( r152 demo \)
+
+Although The Fat Line with add on will work okay, and help at address the problems with THREE.Line where line width will not work on all platforms, there is also [THREE.TubeGeometry](/2023/06/02/threejs-tube-geometry/). What is great about TubeGeometry is that the geometry that is created with it can be used with mesh objects. So not only can a solid color, and vertex coloring be used, but all features of all mesh materials. One draw back though is that a curve is what is needed as the first argument, so one will need to learn at least a thing or two about curves in other to make use of these.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0, 1, 1);
+const camera = new THREE.PerspectiveCamera(50, 640 / 480, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// CURVE
+// ---------- ----------
+const v_start = new THREE.Vector3(-5,0,0);
+const v_end = new THREE.Vector3(5,0,0);
+const v_control = v_start.clone().lerp(v_end, 0.5).add( new THREE.Vector3(-4,3,-5) );
+const curve = new THREE.QuadraticBezierCurve3(v_start, v_control, v_end);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const tubular_segments = 32;
+const radius = 0.4;
+const radial_segments = 16;
+const closed = false;
+const geometry = new THREE.TubeGeometry(curve, tubular_segments, radius, radial_segments, closed);
+// ---------- ----------
+// SCENE CHILD OBJECTS
+// ---------- ----------
+// grid
+scene.add( new THREE.GridHelper(10, 10) );
+// light
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(7, -1.5, 3);
+scene.add(dl);
+// mesh
+const material = new THREE.MeshPhongMaterial({ side: THREE.DoubleSide });
+const mesh1 = new THREE.Mesh(geometry, material);
+scene.add(mesh1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(5.5, 2, 5.25);
+camera.lookAt(2, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## Conclusion
