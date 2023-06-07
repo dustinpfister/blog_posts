@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1048
-updated: 2023-06-07 11:28:46
-version: 1.4
+updated: 2023-06-07 11:45:31
+version: 1.5
 ---
 
 The [lathe geometry class](https://threejs.org/docs/#api/en/geometries/LatheGeometry) in threejs can be used to create a geometry using an array of 2d points that define a line that is to be repeated along an axis to form a solid shape. For example there is creating an array of vector2 objects that form an arc of a half circle and then using that as a way to form a sphere by passing this array of Vector2 object to the THREE.LatheGeometry constructor along with additional arguments that define the number of segments, and a start and length phi value.
@@ -39,7 +39,51 @@ When I first wrote this blog post I was using r152 of threejs.
 
 For this section I will be starting out with some very simply lathe geometry examples. The first step is to one way or another find a way to create the array of vector2 objects that are to be used to be used as I will want to have that to pass as the first argument. Once I have the vector2 array there is then just the question of what the additional arguments are and what I might want to adjust when it comes to those values.
 
-### 1.1 - Using an arc curve
+### 1.1 - Create a V2Array
+
+First things first, before I even call the Lath Geometry constructor function I will first need an array of Vector2 objects to pass as the first argument. For this example I am using array split, [array map](/2020/06/16/js-array-map/), and parseFloat as ways to create the data that I will then feed to a few calls of THREE.Vector2 to get the values that I want. This way if I want to start making more complex shapes this way is just a matter of punching in more values in the string that I am creating the v2 array from. If you find this to be a little to involved for a basic example no problem if you would like to just call THREE.Vector2 for each element and use the array literal syntax that will work just fine also.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// V2ARRAY
+// ---------- ----------
+const v2array = '0,2:1,0:0,-2'.split(':').map((str) => {
+    const a = str.split(',');
+    return new THREE.Vector2( parseFloat( a[0]), parseFloat( a[1] ) );
+});
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const segments_lathe = 20;
+const phi_start = 0;
+const phi_length = Math.PI * 2;
+const geometry = new THREE.LatheGeometry( v2array, segments_lathe, phi_start, phi_length );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const points1 = new THREE.Line(geometry);
+scene.add(points1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(4, 2, 4);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.2 - Using an arc curve
 
 For this example I am making use of an ArcCurve that is one of the built in options for 2d curves in threejs. When I use this Arc curve with certain values for the start and end radian values I can get a half circle. The use of the half circle as a way to create the Vector2 objects can then be used with the lathe geometry as another way to create a kind of [sphere geometry](/2021/05/26/threejs-sphere/).
 
@@ -84,7 +128,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 1.2 - using an Ellipse Curve
+### 1.3 - using an Ellipse Curve
 
 The ArcCurve class is actually just an abstraction for the Ellipse Curve class, so there is skipping the middle man and just working with that in place of the ArcCurve class. If I still want to make a sphere this way I can just set the same value for both radius values. However I can also of course use differing values to end up getting [Oblate spheroid](https://simple.wikipedia.org/wiki/Oblate_spheroid) shapes.
 
