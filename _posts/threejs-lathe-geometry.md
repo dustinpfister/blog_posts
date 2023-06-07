@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1048
-updated: 2023-06-07 11:03:05
-version: 1.1
+updated: 2023-06-07 11:06:00
+version: 1.2
 ---
 
 The [lathe geometry class](https://threejs.org/docs/#api/en/geometries/LatheGeometry) in threejs can be used to create a geometry using an array of 2d points that define a line that is to be repeated along an axis to form a solid shape. For example there is creating an array of vector2 objects that form an arc of a half circle and then using that as a way to form a sphere by passing this array of Vector2 object to the THREE.LatheGeometry constructor along with additional arguments that define the number of segments, and a start and length phi value.
@@ -17,7 +17,7 @@ There are all kinds of 3d shapes that can be formed by just coming up with a new
 
 ## Lathe Geometry and what to know first
 
-In other to get started with lathe geometry there is a whole lot of things that you might want to read up more on before getting into it. Also in any case there might be some closely related subjects that you might want to refresh on, or at least be prepared to do so to say the least.
+In other to get started with lathe geometry there is a whole lot of things that you might want to read up more on before getting into it. Also in any case there might be some closely related subjects that you might want to refresh on, or at least be prepared to do so to say the least. I have all ready wrote a blog post on [getting started with threejs](/2018/04/04/threejs-getting-started/) that I come around to edit a bit often so I will assume that you have the very basics down at least. So in this section I will just touch base on a few topics that are very relevant to Lathe Geometry alone.
 
 ### Read About the Vector2 class and vectors in general
 
