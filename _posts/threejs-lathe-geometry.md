@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1048
-updated: 2023-06-07 11:20:33
-version: 1.3
+updated: 2023-06-07 11:28:46
+version: 1.4
 ---
 
 The [lathe geometry class](https://threejs.org/docs/#api/en/geometries/LatheGeometry) in threejs can be used to create a geometry using an array of 2d points that define a line that is to be repeated along an axis to form a solid shape. For example there is creating an array of vector2 objects that form an arc of a half circle and then using that as a way to form a sphere by passing this array of Vector2 object to the THREE.LatheGeometry constructor along with additional arguments that define the number of segments, and a start and length phi value.
@@ -139,6 +139,6 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-The Late geometry class is then a very useful tool for quickly making just about any kind of shape that can be made from a 2d path that is then rotated around on an axis. 
+The Late geometry class is then a very useful tool for quickly making just about any kind of shape that can be made from a 2d path that is then rotated around on an axis. There are limitations though and I have a few ideas for another kind of geometry that is like lathe geometry only with more features that have to do with having custom phi values.
 
 
