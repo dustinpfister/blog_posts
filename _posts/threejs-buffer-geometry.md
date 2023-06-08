@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-06-05 10:43:45
-version: 1.62
+updated: 2023-06-08 12:14:44
+version: 1.63
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -573,48 +573,29 @@ const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo')  || document.body ).appendChild(renderer.domElement);
 //-------- ----------
-// LIGHT
+// GRID
 //-------- ----------
-const pl = new THREE.PointLight(0xffffff, 1, 100);
-pl.position.set(5, 5, 5);
-scene.add(pl);
-//-------- ----------
-// LOOP
-//-------- ----------
-camera.position.set(10, 10, 10);
-camera.lookAt(0, 0, 0);
-let frame = 0,
-maxFrame = 200,
-mesh;
-const loop = function () {
-    const per = frame / maxFrame;
-    requestAnimationFrame(loop);
-    mesh.rotation.set(Math.PI / 2, Math.PI * 2 * per, 0);
-    renderer.render(scene, camera);
-    frame += 1;
-    frame %= maxFrame;
-};
+scene.add( new THREE.GridHelper(10, 10) );
 //-------- ----------
 // Loader
 //-------- ----------
+camera.position.set(2,2,2);
+camera.lookAt(0, 2, 0);
 const loader = new THREE.BufferGeometryLoader();
 // load a resource
 loader.load(
     // resource URL
-    '/json/static/box_house1_solid.json',
+    '/json/vertcolor-trees/6tri/0.json',
     // onLoad callback
     (geometry) => {
-        // create a mesh with the geometry
-        // and a material, and add it to the scene
-        mesh = new THREE.Mesh(
+        const mesh = new THREE.Mesh(
             geometry,
-            new THREE.MeshStandardMaterial({
-                color: 0x00ff0000,
-                emissive: 0x2a2a2a,
+            new THREE.MeshBasicMaterial({
+                vertexColors: true, 
                 side: THREE.DoubleSide
             }));
         scene.add(mesh);
-        loop();
+        renderer.render(scene, camera);
     }
 );
 ```
@@ -639,14 +620,13 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 const loadBufferGeometryJSON = ( urls = [], w = 2, scale = 5, material = new THREE.MeshNormalMaterial() ) => {
     const scene_source = new THREE.Scene();
-    let i = 0;
-    const onBuffLoad =  (geometry) => {
+    const onBuffLoad =  (geometry, i) => {
         const x = i % w;
         const z = Math.floor( i / w);
         const mesh = new THREE.Mesh( geometry, material);
+        mesh.name = 'buffer_source_' + i;
         mesh.position.set(x, 0, z).multiplyScalar(scale);
         scene_source.add(mesh);
-        i += 1;
     };
     const onBuffProgress =  (geometry) => {};
     return new Promise( ( resolve, reject ) => {
@@ -658,11 +638,9 @@ const loadBufferGeometryJSON = ( urls = [], w = 2, scale = 5, material = new THR
            reject(err);
         };
         const loader = new THREE.BufferGeometryLoader(manager);
-        urls.forEach(
-            (url) => {
-                loader.load(url, onBuffLoad, onBuffProgress, onBuffError);
-            }
-        );
+        urls.forEach( (url, index) => {
+            loader.load(url, (geometry) => { onBuffLoad(geometry, index) }, onBuffProgress, onBuffError);
+        });
     });
 };
 //-------- ----------
@@ -674,16 +652,18 @@ const pl = new THREE.PointLight(0xffffff, 1, 100);
 pl.position.set(5, 5, 5);
 scene.add(pl);
 camera.position.set(-10, 15, 15);
-camera.lookAt(0,-1,0);
+camera.lookAt( 5, 0, 5);
 //-------- ----------
 // BUFFER GEOMETRY LOADER
 //-------- ----------
 const URLS = [
-   '/json/static/box_house1_solid.json',
-   '/json/static/cube_thing.json',
-   '/json/static/wheel.json'
+   '/json/vertcolor-trees/6tri/0.json',
+   '/json/vertcolor-trees/6tri/1.json',
+   '/json/vertcolor-trees/6tri/2.json',
+   '/json/vertcolor-trees/6tri/3.json'
 ];
-loadBufferGeometryJSON(URLS, 2, 10)
+const material = new THREE.MeshBasicMaterial({vertexColors: true, side: THREE.DoubleSide });
+loadBufferGeometryJSON(URLS, 2, 10, material)
 .then( (scene_source) => {
     console.log('JSON files are loaded!');
     scene.add( scene_source );
