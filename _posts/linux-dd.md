@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1049
-updated: 2023-06-08 11:46:02
-version: 1.3
+updated: 2023-06-08 12:04:00
+version: 1.4
 ---
 
 The man page for the Linux dd command just simply says that it is used to convert and copy files. In a nutshell that is more or less all that it does, but it seems that it comes up all the time when working out something in the command prompt. Also it is a command that I have found that I want to use with a degree of caution. The reason why is because if I get careless with it I can end up doing weird things to the file system. Still there is how to go about getting started with the dd command in a safe way by just learning how to use it in a safe way. There is just reading the man pages, various blogs, and other sources to know what to do, and what to avoid. As for this post I just wanted to have a place to park some notes on this command while I look into this one more. 
@@ -49,6 +49,13 @@ When I was looking into what there is to work with when it comes to file system 
 What is great about sysbench is that I can similar results with what I would get if I where to use dd when it comes to a sequential test. However I can also to a random test as well which is far more impotent when it comes to using a volume for a whole bunch of small files that I need to read and wrote to fast, such as a volume that contains an OS Image for example.
 
 
+## Conclusion
+
+There is a great deal more that can be done with the dd command of course beyond what I wrote about in this post. However a lot of what I am reading on other sources are examples that I can not help but thing might be better preformed with a command, tool, or even specialized operating system rather than dd. 
+
+In this post I wrote a bit about using dd for file system io bechmaking, and why it might be better to use a specialized tool such as sysbench. However it does not stop there when it comes to things that can be done with dd, but might be best done with something else. For example I have found posts in which [dd is being used to create and restore whole partitions of hard drives](https://linuxopsys.com/topics/linux-dd-command-with-examples). Sure dd might work just fine for that but why not use clonzilla, or an OS recommended disk utility tool for this sort of thing? Lots of posts going on about how dd can be used as a way to not just delete files, but also blank the area where the file was with zeros, or various random patterns over and over again. Sure again dd can be used to do this but there is also [DBAN](https://en.wikipedia.org/wiki/Darik's_Boot_and_Nuke) and a [whole lot of other similar tools](https://en.wikipedia.org/wiki/List_of_data-erasing_software) that might be better for that sort of thing.
+
+I am sure that dd still has its use case examples that might come in handy though. Also maybe some of the things that I mentioned might still be good ideas if I am in a situation in which I have no alternative. It is just that I think that I am going to be a little more reserved about expanding this post when it comes to any future edits that may or may not come to pass.
 
 
 
