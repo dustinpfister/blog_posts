@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1049
-updated: 2023-06-08 12:04:00
-version: 1.4
+updated: 2023-06-08 12:14:44
+version: 1.5
 ---
 
-The man page for the Linux dd command just simply says that it is used to convert and copy files. In a nutshell that is more or less all that it does, but it seems that it comes up all the time when working out something in the command prompt. Also it is a command that I have found that I want to use with a degree of caution. The reason why is because if I get careless with it I can end up doing weird things to the file system. Still there is how to go about getting started with the dd command in a safe way by just learning how to use it in a safe way. There is just reading the man pages, various blogs, and other sources to know what to do, and what to avoid. As for this post I just wanted to have a place to park some notes on this command while I look into this one more. 
+The man page for the [Linux dd command](https://man7.org/linux/man-pages/man1/dd.1.html) just simply says that it is used to convert and copy files. In a nutshell that is more or less all that it does, but it seems that it comes up all the time when working out something in the command prompt. Also it is a command that I have found that I want to use with a degree of caution. The reason why is because if I get careless with it I can end up doing weird things to the file system. Still there is how to go about getting started with the dd command in a safe way by just learning how to use it in a safe way. There is just reading the man pages, various blogs, and other sources to know what to do, and what to avoid. As for this post I just wanted to have a place to park some notes on this command while I look into this one more. 
 
 <!-- more -->
 
