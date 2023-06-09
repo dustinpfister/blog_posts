@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1050
-updated: 2023-06-09 07:59:55
-version: 1.2
+updated: 2023-06-09 11:28:50
+version: 1.3
 ---
 
 There are a number of Vector classes in threejs such as Vector3 that is a class for a 3D vector in space which is to be expected for such a library. However there is also a Vector4 class that comes up when starting to work with quaternion objects, and also a plain old Vector2 class as well. With that said in this post I am going to be writing a thing or two about the [Vector2 class](https://threejs.org/docs/#api/en/math/Vector2), and some typical situations in which this kind of class can prove to be useful.
@@ -41,7 +41,7 @@ For this first Basic section I will be starting out with a few examples in which
 
 ### 1.1 - When using the THREE.LatheGeometry Constructor
 
-The THREE.LatheGeometry constructor is a great way to make a 3D shape from an array of Vector2 objects that are created by one means or another.
+The THREE.LatheGeometry constructor is a great way to make a 3D shape from an array of Vector2 objects that are created by one means or another. So for this example I am doing just that by calling the THREE.Vector2 constructor, passing the x and y values that I want for the first vector2 object in the array, and then just replacing that for each element after that. Once I have an array of Vector2 objects I can then call the THREE.LatheGeometry constructor and pass the array as the first argument. After that additional arguments can be given to set the number of segments, as well as a start phi angle and phi length. The segment count just simply the amount of times this set of Vector2 objects are going to be used along an axis to create the 3d shape. So then this segments value, as well as the number of Vector2 objects in the array is how to go about controlling how over all dense the geometry is going to be in terms of the count of points in the position attribute as well as the various other relevant attributes.
 
 ```js
 // ---------- ----------
@@ -87,6 +87,8 @@ renderer.render(scene, camera);
 ### 1.2 - Making 2D curves and using them with THREE.LatheGeometry
 
 Another way to go about creating an array of vector2 objects would be to create a 2D curve, and then use the getPoints method of the curve to get the array. This will work fine as long as I am okay with having a fixed delta between each point alone the curve, and in the even that it is not there is using the get point method of the base curve class along with any custom logic that will give me the deltas that I want. However this is still very much a basic example so I will not be getting into any of that here.
+
+For this example I then created a whole bunch of Vector2 objects to serve as start and end points for an over all [curve path object](/2023/06/01/threejs-curve-path/). A curve path is actually a collection of curve objects created by various other curve classes that extend the base curve class. I could go on and on about curves, but for now there is just using THREE.LineCurve and THREE.QuadraticBezierCurve which are two decent options for built in 2d curves that will take these vector2 objects as arguments. I also made a few more Vector2 objects that will be used for control points in the curves that will be made with the THREE.QuadraticBezierCurve as that is a kind of curve that requires a single control point.
 
 ```js
 // ---------- ----------
@@ -143,6 +145,10 @@ camera.position.set(2, 2, 1);
 camera.lookAt(0, 0.2, 0);
 renderer.render(scene, camera);
 ```
+
+When it comes to making the control points I am making use of a number of prototype methods of the Vector2 class. The clone method is a quick way to create a new Vector2 object from an existing one, the lerp method is a way to mutate the state of a vector2 by moving it from its given location to another location that is another vector2 object and an alpha value that just used to set a point between those two points. So then what I am doing with these methods is just a fancy way of getting to a state that is midway the start and end points for the Quadratic Bezier Curves. From this middle point I can then use the add method as a way to move from there to the final location that I want to use as a control point for the curve. I could just punch in values like I did with the other Vector2 objects, but I wanted to outline a use case examples of some of the Vector2 class prototype methods here.
+
+The final outcome of this then is a kind of bowl like shape.
 
 ## Conclusion
 
