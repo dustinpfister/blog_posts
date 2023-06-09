@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2023-01-01 08:42:53
-version: 1.33
+updated: 2023-06-09 11:08:50
+version: 1.34
 ---
 
-When working with [materials in threejs](/2018/04/30/threejs-materials/) many of the materials support one or more types of maps for skinning a geometry. One such texture map option is a [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap) that is a gray scale texture that will be used to define the alpha transparency values for the material. So then the white areas of the texture will result in a face being fully opaque, black areas will result in the face being fully transparent, and values between the two will be used to set any alpha value between the two. 
+When working with [materials in threejs](/2018/04/30/threejs-materials/) many of the materials support one or more types of maps for skinning a geometry. One such texture map option is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap) that is a gray scale texture that will be used to define the alpha transparency values for the material. So then the white areas of the texture will result in a face being fully opaque, black areas will be fully transparent, and values between the two will be used to set any alpha value between the two. 
 
-Alpha maps will then come into play when it comes to working things out with [transparency in a threejs project](/2021/04/21/threejs-materials-transparent/). An alpha map is something more to add after working out the very basics of this with the transparency and opacity properties of a material. With that said the transparency option is used to turn transparency off and on, opacity is used to set an over all global alpha value, and alpha maps can the be used to set opacity values on a texture level.
+Alpha maps will then come into play when it comes to working things out with [transparency in a threejs project](/2021/04/21/threejs-materials-transparent/). An alpha map is something more to add after working out the very basics of this with the transparency and opacity properties of a material option that will work well for one or more objects. With that said the transparency option is used to turn transparency off and on, opacity is used to set an over all global alpha value, and alpha maps can the be used to set opacity values on a texture level.
 
 In this post I will be going over some examples of an alpha maps, and in order to do so I will also be touching base on how to go about creating a texture with a little javaScript code. One way to do so is to use [canvas elements and the THREE.CanvasTexture method](https://threejs.org/docs/#api/en/textures/CanvasTexture) as a way to create a texture to use as an alpha map. This kind of thing can also be used as a way to create textures in general for all kinds of other maps that can be used with a material.
 
@@ -22,11 +22,17 @@ In this post I will be going over some examples of an alpha maps, and in order t
 
 ## Alpha maps and what to know before hand
 
-This is a post on threejs the javaScript powered 3d modeling library, in addition it is on a very specific topic with threejs which is of course alpha maps. It is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/) or javaScript in general. I then assume that you have at least some background with these topics otherwise you are going to have a hard time getting anything of value from this post. Although I will not be getting into the very basics of threejs, in this section I will touch base on a few topics that I think you should know a thing or two about first before getting into alpha maps.
+This is a post on threejs, the javaScript powered 3d modeling library, in addition it is on the very specific topic of alpha maps. This is then not a [getting started post on threejs](/2018/04/04/threejs-getting-started/) or client side javaScript in general. I then assume that you have at least some background with these topics otherwise you are going to have a hard time getting anything of value from this post. Although I will not be getting into the very basics of threejs, in this section I will touch base on a few topics that I think you should know a thing or two about first before getting into alpha maps.
 
 ### You might want to brush up on textures
 
-In order to have an alpha map I need to have a texture, one way to have a texture is to [load an external image file and use that as a texture](/2021/06/21/threejs-texture-loader/). However another option would be to [use canvas elements as a way to create a texture](/2018/04/17/threejs-canvas-texture/) using a little javaScript code by way of the canvas 2d drawing context. There are a number of other ways to create texture objects such as making use of [data textures](/2022/04/15/threejs-data-texture/) as another way to create textures from raw data color channel data, or just directly working with the Texture class if you have some other way to create client side javaScript [Image Objects](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image). Getting into this subject would be a little off topic, but one way or another a texture is needed to have an alpha map. Also the texture needs to be in gray scale as that is what is used to set the transparency values of the material with the texture used as an alpha map.
+In order to have an alpha map I need to have a texture, one way to have a texture is to [load an external image file and use that as a texture](/2021/06/21/threejs-texture-loader/). However another option would be to [use canvas elements as a way to create a texture](/2018/04/17/threejs-canvas-texture/) using a little javaScript code by way of the canvas 2d drawing context. 
+
+There are a number of other ways to create texture objects such as making use of [data textures](/2022/04/15/threejs-data-texture/) as another way to create textures from raw data color channel data, or just directly working with the Texture class if you have some other way to create client side javaScript [Image Objects](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image). Getting into this subject would be a little off topic, but one way or another a texture is needed to have an alpha map. Also the texture needs to be in gray scale as that is what is used to set the transparency values of the material with the texture used as an alpha map.
+
+### I assume that you have worked out what needs to happen with UV mapping first
+
+Before even getting into not just alpha maps, but any kind of map option for that matter one will need to work out what needs to happen with UV mapping of the geometry that they want to use. In this post I am sticking with geometry that is created with the built in geometry constrcuotr functions which often have a UV attribuite set up to begin with. However even when it comes to sticking with these kinds of geomeries often I might want to adjust the values if the UV attribute to get a desired effect with the textures that I am using. In any case getting deep into this topic is outside the scopr of this post so if you have found you need to read more on this there is checking out my [main blog post on UV mapping](/2021/06/09/threejs-buffer-geometry-attributes-uv/).
 
 ### There are many other ways to control visibility in threejs.
 
