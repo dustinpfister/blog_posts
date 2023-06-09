@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1050
-updated: 2023-06-09 07:48:49
-version: 1.1
+updated: 2023-06-09 07:59:55
+version: 1.2
 ---
 
-There are a number of Vector classes in threejs such as Vector3 that is a class for a 3D vector in space which is to be expected for such a library. However there is also a Vector4 class that comes up when starting to work with quaternion objects, and also a plain old Vector2 class as well. With that said in this post I am going to be writing a thing or two about the Vector2 class, and some typical situations in which this kind of class can prove to be useful.
+There are a number of Vector classes in threejs such as Vector3 that is a class for a 3D vector in space which is to be expected for such a library. However there is also a Vector4 class that comes up when starting to work with quaternion objects, and also a plain old Vector2 class as well. With that said in this post I am going to be writing a thing or two about the [Vector2 class](https://threejs.org/docs/#api/en/math/Vector2), and some typical situations in which this kind of class can prove to be useful.
 
 <!-- more -->
 
@@ -37,7 +37,11 @@ When I first wrote this post I was using [r152 of threejs](https://github.com/du
 
 ## 1 - Basic examples of the Vector2 class
 
+For this first Basic section I will be starting out with a few examples in which I am making 3D shapes by making use of the Vector2 class. There are a number of built in options for making quick work of this kind of thing without having to work out any kind of custom solution with a blank buffer geometry class. There are a lot of other use cases of THREE.Vector2 that I might get to in other sections, but one has to start somewhere.
+
 ### 1.1 - When using the THREE.LatheGeometry Constructor
+
+The THREE.LatheGeometry constructor is a great way to make a 3D shape from an array of Vector2 objects that are created by one means or another.
 
 ```js
 // ---------- ----------
@@ -80,7 +84,9 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 1.2 - Making 2D curves
+### 1.2 - Making 2D curves and using them with THREE.LatheGeometry
+
+Another way to go about creating an array of vector2 objects would be to create a 2D curve, and then use the getPoints method of the curve to get the array. This will work fine as long as I am okay with having a fixed delta between each point alone the curve, and in the even that it is not there is using the get point method of the base curve class along with any custom logic that will give me the deltas that I want. However this is still very much a basic example so I will not be getting into any of that here.
 
 ```js
 // ---------- ----------
@@ -137,4 +143,8 @@ camera.position.set(2, 2, 1);
 camera.lookAt(0, 0.2, 0);
 renderer.render(scene, camera);
 ```
+
+## Conclusion
+
+That will be it for now when it comes to this general overview post of the Vector2 class. I am sure that I will be expand on this post a bot more now and then as I write new content, as well as edit older content that is relevant to the use of Vector2 Objects.
 
