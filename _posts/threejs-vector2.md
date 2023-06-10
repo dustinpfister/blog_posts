@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1050
-updated: 2023-06-10 12:47:43
-version: 1.4
+updated: 2023-06-10 14:24:02
+version: 1.5
 ---
 
 There are a number of Vector classes in threejs such as Vector3 that is a class for a 3D vector in space which is to be expected for such a library. However there is also a Vector4 class that comes up when starting to work with quaternion objects, and also a plain old Vector2 class as well. With that said in this post I am going to be writing a thing or two about the [Vector2 class](https://threejs.org/docs/#api/en/math/Vector2), and some typical situations in which this kind of class can prove to be useful.
@@ -19,7 +19,7 @@ I will not be getting into the [very basics of threejs](/2018/04/04/threejs-gett
 
 ### Check out THREE.Shape, THREE.ShapeGeometry, THREE.ExtrudeGeometry, and THREE.LatheGeometry
 
-There are a number of ways to go about making 3D geometry with 2D lines and curves that are created in part by using the THREE.Vector2 class. An array of Vector2 Objects can be passed to [THREE.Shape](/2021/06/01/threejs-shape/) as a way to make that kind of object which in turn can be passed to a built in geometry class like THREE.ShapeGeometry to create a kind of plain geometry of that shape. There is also the THREE.ExtrudeGeometry geometry that can also take that shape object and create and extrude geometry from it. Another real cool built in geometry constructor is [THREE.LatheGeometry](/2023/07/23/threejs-lathe-geometry/) that can be used to create a 3D shape by spinning the 2d shape along an axis of sorts by a given number of segments.
+There are a number of ways to go about making 3D geometry with 2D lines and curves that are created in part by using the THREE.Vector2 class. An array of Vector2 Objects can be passed to [THREE.Shape](/2021/06/01/threejs-shape/) as a way to make that kind of object which in turn can be passed to a built in geometry class like THREE.ShapeGeometry to create a kind of plain geometry of that shape. There is also the THREE.ExtrudeGeometry geometry that can also take that shape object and create and extrude geometry from it. Another real cool built in geometry constructor is [THREE.LatheGeometry](/2023/06/08/threejs-lathe-geometry/) that can be used to create a 3D shape by spinning the 2d shape along an axis of sorts by a given number of segments.
 
 I will be touching base on some of these features in this post of course. However it is still worth reading more about these in detail as there is a lot to be aware of with them. For example there is just using the THREE.ExtrudeGeometry to create a 3D object from a 2d Shape, but then there is getting into writing a custom UV generator for it.
 
