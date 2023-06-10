@@ -5,15 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2023-01-02 11:38:23
-version: 1.45
+updated: 2023-06-10 13:00:21
+version: 1.46
 ---
 
 When it comes to [threejs](https://threejs.org/) I thought I would write a quick post on the subject of [arrow helpers](https://threejs.org/docs/#api/en/helpers/ArrowHelper). In threejs there are a number of built in helper methods than can be used to quickly create objects that help to visualize what is going on with state of various components of a threejs project. The arrow helper is one of these such helper objects that can be used to find out what is going on with the direction of a [Vector3 class object](/2018/04/15/threejs-vector3/).
 
-These arrow helper obuects are [Object3d class](/2018/04/23/threejs-object3d/) based objects, so that means that they can be attached to the [scene object](/2018/05/03/threejs-scene/), but also just about anything that inherits from the object32 class. So they can also be attached to a [mesh object](/2018/05/04/threejs-mesh/), and instance of a [group](/2018/05/16/threejs-grouping-mesh-objects/), or any object3d based class for that matter.
+These arrow helper obuects are [Object3d class](/2018/04/23/threejs-object3d/) based objects, so that means that they can be attached to the [scene object](/2018/05/03/threejs-scene/), but also just about anything that inherits from the object32 class. So they can also be attached to a [mesh object](/2018/05/04/threejs-mesh/), an instance of a [group](/2018/05/16/threejs-grouping-mesh-objects/), or any object3d based class for that matter.
 
-So then in this post I will be going over some basic examples of arrow helpers, and the features to work with when it comes to such objects. In the process I will also be touching base on some other threejs related topics that have to do with making the code of a threejs project a little more organized so it is not such a thin post as there is only so much to write about when it comes to the arrow helper.
+In this post I will be going over some basic examples of arrow helpers, and the features to work with when it comes to such objects. In the process I will also be touching base on some other threejs related topics that have to do with making the code of a threejs project a little more organized so it is not such a thin post as there is only so much to write about when it comes to the arrow helper.
 
 <!-- more -->
 
@@ -34,13 +34,13 @@ If you have not done so before hand it might be a good idea to log some time get
 
 ### The source code examples in this post are on Github
 
-The source code examples that I am writing about in this post can also be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-arrow-helper).
+The source code examples that I am writing about in this post can also be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-arrow-helper). This is also where I parke the source code examples for all of [my other blog posts on threejs](/categories/three-js/) as well.
 
 ### Version numbers matter
 
-When I first started this post I was using revision 98 of three.js, which was released in late October 2018. The last time I edited this post I was using revision revision 135 of threejs, and when it comes to the arrow helper at least it would seem that not much has changed. 
+When I first started this post I was using revision 98 of threejs, which was released in late October 2018. The last time I edited this post I was using revision revision [146 of threejs, and updated the exmaples to be in line with the style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) that I have set for myself with that revision.
 
-Still three.js is a project that is being developed, and at a fairly fast rate with new revisions continuing out what seems like every month almost. Although not much has changed with the arrow helper, a great deal has changed elsewhere in the library when I first started this post, and many of my other posts, and these changes can often result in code breaking. So if the code examples here break the first thing you should check is the version number of threejs that you are using.
+Threejs is a project that is being developed at a fairly fast rate with new revisions coming out what seems like every month almost. Although not much has changed with the arrow helper, a great deal has changed elsewhere in the library when I first started this post, and many of my other posts, and these changes can often result in code breaking. So if the code examples here break the first thing you should check is the version number of threejs that you are using.
 
 
 ## 1 - Some Basic examples of Arrow helpers in threejs
