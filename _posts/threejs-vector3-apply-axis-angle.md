@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2023-05-08 13:05:49
-version: 1.33
+updated: 2023-06-10 13:06:16
+version: 1.34
 ---
 
 This week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defined with another vector that is the direction of the axis, and the second argument is then angle to apply with this given direction.
@@ -36,7 +36,7 @@ The source code examples that I am writing about in this post can also be [found
 
 ### Version Numbers matter
 
-When I wrote this post I was testing one the source code examples in r127 of threejs, and the last time I came around to do a little editing I was able to make updated examples that work well with r146. Always be mindful of the version of threejs you are using, and the version that the author of a source code examples was suing when it comes to threejs examples on the open web. This library is still moving very fast compare to many other projects, and code braking changes happen often.
+When I wrote this post I was testing one the source code examples in r127 of threejs, and the last time I came around to do a little editing I was able to make updated examples that work well with [r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Always be mindful of the version of threejs you are using, and the version that the author of a source code examples was suing when it comes to threejs examples on the open web. This library is still moving very fast compare to many other projects, and code braking changes happen often.
 
 ## 1 – Some Basic examples of the apply axis angle vector3 class method
 
