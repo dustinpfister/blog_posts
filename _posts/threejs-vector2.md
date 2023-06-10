@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1050
-updated: 2023-06-09 11:28:50
-version: 1.3
+updated: 2023-06-10 12:47:43
+version: 1.4
 ---
 
 There are a number of Vector classes in threejs such as Vector3 that is a class for a 3D vector in space which is to be expected for such a library. However there is also a Vector4 class that comes up when starting to work with quaternion objects, and also a plain old Vector2 class as well. With that said in this post I am going to be writing a thing or two about the [Vector2 class](https://threejs.org/docs/#api/en/math/Vector2), and some typical situations in which this kind of class can prove to be useful.
@@ -149,6 +149,127 @@ renderer.render(scene, camera);
 When it comes to making the control points I am making use of a number of prototype methods of the Vector2 class. The clone method is a quick way to create a new Vector2 object from an existing one, the lerp method is a way to mutate the state of a vector2 by moving it from its given location to another location that is another vector2 object and an alpha value that just used to set a point between those two points. So then what I am doing with these methods is just a fancy way of getting to a state that is midway the start and end points for the Quadratic Bezier Curves. From this middle point I can then use the add method as a way to move from there to the final location that I want to use as a control point for the curve. I could just punch in values like I did with the other Vector2 objects, but I wanted to outline a use case examples of some of the Vector2 class prototype methods here.
 
 The final outcome of this then is a kind of bowl like shape.
+
+
+## 2 - The prototype methods of the Vector2 class.
+
+As with most classes in threejs there are a lot of useful prototype methods to make use of when working with these objects. For various typical tasks such as finding the distance between two points, adding one vector to another, and so chances are there is a method to help worth it. So one should always check out what there is to work with here before looking into any kind of custom or third party solution for a problem with the Vector2 class. With that said in this section I am going to go over a few quick demos that center around various prototype methods of the Vector2 class.
+
+### 2.1 - The clone prototype method
+
+If I am ever in a situation in which I have a vector that I want to create a new vector from, I can just simply call the clone method off of that Vector.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// CURVE/V2ARRAY
+// ---------- ----------
+const v1 = new THREE.Vector2( 0, -1 );
+const v2 = new THREE.Vector2( 0.1, 1 );
+const vc1 = v2.clone().lerp(v2, 0.5).add( new THREE.Vector2(1, 0) );
+// using clone to create the control point
+const curve = new THREE.QuadraticBezierCurve(v1, vc1, v2)
+
+const v2array_1 = curve.getPoints(20)
+const v2array_2 = v2array_1.map( (v, i, arr) => {
+    const a_child = i / arr.length;
+    const a_2 = a_child * 8 % 1;
+    const radian = Math.PI * 0.25 * a_2;
+    const dx = Math.cos(radian) * 0.25;
+    const dy = a_child * -0.25;
+    return v.clone().add( new THREE.Vector2(dx, dy) );
+});
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const segments_lathe = 80;
+const phi_start = 0;
+const phi_length = Math.PI * 2;
+const geometry_1 = new THREE.LatheGeometry( v2array_1, segments_lathe, phi_start, phi_length );
+const geometry_2 = new THREE.LatheGeometry( v2array_2, segments_lathe, phi_start, phi_length );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 0.95);
+dl.position.set(1, 0, 3)
+scene.add(dl);
+scene.add( new THREE.AmbientLight(0xffffff, 0.01) );
+const material = new THREE.MeshPhongMaterial({ color: 0x00ff00, specular: 0x8a8a8a, side: THREE.DoubleSide });
+const mesh1 = new THREE.Mesh(geometry_1,  material);
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(geometry_2, material );
+mesh2.position.x = -2;
+scene.add(mesh2);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(-1, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 2.2 - The multiply scalar method
+
+Another useful method that I often fine myself using not just with the Vector2 class but with the Vector classes in general is the multiply scalar method. This method will multiply the current vector unit length by a given single number value. So it is a way to adjust the magnitude part of the vector while preserving the direction if that makes any sense. Often it would make sense to make sure that the unit length of the vector is one before doing anything with multiply scalar, however maybe getting into that one would be a matter for another demo.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// V2ARRAY
+// ---------- ----------
+const v2array_1 = [];
+let i = 0; 
+const len = 120;
+while(i < len){
+    const a_child = i / len;
+    const radian = Math.PI * 2 * a_child;
+    const x = Math.cos(radian);
+    const y = Math.sin(radian);
+    const m = 2 + Math.sin(Math.PI * 1.5 * (a_child * 8 % 1)  );
+    const v = new THREE.Vector2(x, y).multiplyScalar(m);
+    v2array_1.push(v);
+    i += 1;
+}
+// ---------- ----------
+// SHAPE/GEOMETRY
+// ---------- ----------
+const shape = new THREE.Shape(v2array_1);
+const geometry_1 = new THREE.ExtrudeGeometry( shape );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const material = new THREE.MeshNormalMaterial();
+const mesh1 = new THREE.Mesh(geometry_1,  material);
+scene.add(mesh1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 ## Conclusion
 
