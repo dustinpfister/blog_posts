@@ -1,12 +1,12 @@
 ---
-title: Texture offsets of buffer geometries in threejs with the uv attribute
+title: Texture offsets of buffer geometries in threejs with the UV attribute
 date: 2021-06-09 09:44:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2023-06-12 16:51:01
-version: 1.32
+updated: 2023-06-12 17:01:28
+version: 1.33
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing. 
@@ -42,7 +42,7 @@ The source code examples that I am writing about in this post can also be found 
 
 ### Always check your version numbers
 
-When I first wrote this post I was using r127 of threejs, and the last time I came around to do some editing I was using r146 of the library. The examples here where working okay with both versions of threejs on my end just fine. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post yet again.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to edit all of the demos I them all updated to the standards I set for r146. Also the last time I came around to edit this post a little I started some new r152 demos as well. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post yet again.
 
 ## 1 - Basic examples of the uv attribute of buffer geometry
 
@@ -208,9 +208,11 @@ I have found that a good way to gain a sense of what is going on with a UV attri
 
 ### 2.1 - Starting with just a Single triangle
 
+One has to start somewhere with this sort of thing so with this demo the goal is to just work out the core idea of what I want to do with just a single triangle. Simple enough, but even when it comes to that this can still prove to be a little involved. On top of having the usual renderer I alsl have a plain old 2d canvas that I will be drawing to with the dome element of the renderer. I will also be drawing this plain old main canvas with yet another 2d canvas that will be the texture that I will be using with the map option of the material of the mesh object. So this texture will be used to draw the current state of this mini map background, and then also be used with the material of the mesh object.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/CNLUqN7b2ew" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+I then have a wide range of helper functions for this demo then. One of which I am using to create the main mini map object, and another to draw the current state of this object. I also have methods that I use to create an array of vector2 objects from the geometry that I give it.
 
 ```js
 // ---------- ----------
