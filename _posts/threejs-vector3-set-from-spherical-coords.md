@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 957
-updated: 2023-01-02 12:43:30
-version: 1.25
+updated: 2023-06-12 09:04:11
+version: 1.26
 ---
 
-When it comes to working out all kinds of simple hello world type project examples using threejs for the sake of learning the basics of threejs, or just gaining a more solid understanding of the library regardless of experience, the Vector three Class might come up often when doing so. There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). 
+There is a [whole lot to write about when it comes to the Vector3 class](/2018/04/15/threejs-vector3/) such as things like [normalizing an instance of Vector3](/2021/06/14/threejs-vector3-normalize/), or getting the [distance between two instances of a Vector3 object](/2021/06/15/threejs-vector3-distance-to/). One thing that often want to do when making any kind of project with threejs is to position an object in terms of a spherical set of values in terms of a radius, and then two angles that have to do with coordinates similar to that of latitude and longitude. 
 
-One this that often want to do when making any kind of project with three.js is to position an object in terms of a spherical set of values in terms of a radius, and then two angles that have to do with coronets similar to that of latitude and longitude. Thus far I have made one [threejs project example that had to do with creating a module that is centered around the single purpose of positioning an object3d based object of one kind or another to the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/). That examples has to do not just with setting a position, but also setting a desired value for the rotation of an object3d based object such as a mesh or camera. The system I made for that example does seem for the most part to work okay, but I still think that there are more ways of doing the same thing, some of which might prove to be better for one reason or another. With that said while I was taking a second look at the Vector3 documentation I have found that there is a prototype method in the vector3 class that has to do with setting the values of a verctor3 instance using a radius, and two angles in radian values called [Vector3.setFromSphericalCoords](https://threejs.org/docs/#api/en/math/Vector3.setFromSphericalCoords). So then this method might also prove to be a helper fool for working out some kind of system like the one I made for the threejs project example example post, but to know for sure I have to make at least a few quick demos.
+Thus far I have made one [threejs project example that had to do with creating a module that is centered around the single purpose of positioning an object3d based object of one kind or another to the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/). That example has to do not just with setting a position, but also setting a desired value for the rotation of an object3d based object such as a mesh or camera. 
+
+The system I made for that example does seem for the most part to work okay, but I still think that there are more ways of doing the same thing, some of which might prove to be better for one reason or another. With that said while I was taking a second look at the Vector3 documentation I have found that there is a prototype method in the vector3 class that has to do with setting the values of a verctor3 instance using a radius, and two angles in radian values called [Vector3.setFromSphericalCoords](https://threejs.org/docs/#api/en/math/Vector3.setFromSphericalCoords). So then this method might also prove to be a helpful fool for working out some kind of system like the one I made for the threejs project example example post, but to know for sure I have to make at least a few quick demos.
 
 <!-- more -->
 
@@ -20,21 +22,25 @@ One this that often want to do when making any kind of project with three.js is 
 
 ## The basics of the set from spherical coords method and what else to know first
 
-In this section I will be starting out with a very basic example of just using the method directly with a few other threejs features. I assume that you know at least a thing or two when it comes to [getting started with a front end javaScript project](/2018/11/27/js-getting-started/), if not getting into things of that nature is outside the scope of this post. 
+In this post I will be starting out with a few very basic examples of just using the method directly with a few other threejs features. I assume that you know at least a thing or two when it comes to [getting started with a front end javaScript project](/2018/11/27/js-getting-started/), if not getting into things of that nature is outside the scope of this post. 
 
-Also all though I will be trying to keep the examples here fairly simple with threejs, there is still an awful lot to take in when it comes to everything there is to work with in the library. I have mentioned the Vector3 class of which I am writing a post about just one method in this class, there is then a wide range of other classes in the library that are major Classes to be aware of also. Such as Euler, and Object3d, just to name a hand full.
+Also all though I will be trying to keep the examples here fairly simple with threejs, there is still an awful lot to take in when it comes to everything there is to work with in the library. I have mentioned the Vector3 class of which I am writing a post about just one method in this class, there is then a wide range of other classes in the library that are major features to be aware of also. Such as Euler, and Object3d, just to name a hand full.
 
 ### Check out my position things to sphere surface threejs example
 
-I have made one of my [threejs project examples on a subject that has to do with the set from sphere coords method](/2021/05/14/threejs-examples-position-things-to-sphere-surface/). When it comes to that project I am not using the set from spherical coords method, but rather I am exploring what all the options are when it comes to this sort of thing and have found other options that I like better. This blog post will be mainly on this set from spherical coords method still, but in any case I think it is called for in this opening section to say that there are many alternatives to this method. The two main alternatives that come to mind are the [Apply Euler method](/2021/06/18/threejs-vector3-apply-euler) of the Vector3 class, and the [raycaster class](/2021/05/18/threejs-raycaster/). When it comes to vector3 class methods I find myself preferring the use of apply Euler, and the raycaster class is better for doing this sort of thing with any kind of geometry beyond just that of a sphere.
+I have made one of my [threejs project examples on a subject that has to do with the set from sphere coords method](/2021/05/14/threejs-examples-position-things-to-sphere-surface/). When it comes to that project I am not using the set from spherical coords method, but rather I am exploring what all the options are when it comes to this sort of thing and have found other options that I like better. 
+
+### The Vector3 apply EUler method, and Raycaster
+
+I think it is called for in this opening section to say that there are many alternatives to eb aware of beyond just this set from spherical coords method. The two main alternatives that come to mind are the [Apply Euler method](/2021/06/18/threejs-vector3-apply-euler) of the Vector3 class, and the [raycaster class](/2021/05/18/threejs-raycaster/). When it comes to vector3 class methods I find myself preferring the use of apply Euler of this method most of the time. Also if I want to position an object to the surface of just about any kind of geometry of a mesh object then I would want to use the raycaster class.
 
 ### Source code examples are on Github
 
-The source code examples that I am writing about in this post [can also be found up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-set-from-spherical-coords).
+The source code examples that I am writing about in this post [can also be found up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-set-from-spherical-coords). This is also where I park the source code examples for the many other [blog posts that I have wrote on threejs](/categories/three-js/) as well. Although many of the examples here are copy and paste friendly, cloning down the repo and getting this up and running on your end might be the best way to get some demos for certain posts working.
 
 ### Version Numbers matter
 
-The version of threejs that I was using for this example was r127 when I first wrote the post, and the last time I cam around to do a little editing I was using r146. Because of feedback that I have received about various things I have made a habit of always taking note of what version of threejs I was using when I made the examples in a blog post on threejs. The reason why is because threejs is a very fast moving library in terms of development, and code breaking changes are often made in each new revision.
+The version of threejs that I was using for this example was r127 when I first wrote the post, and the last time I cam around to do a little editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Because of feedback that I have received about various things I have made a habit of always taking note of what version of threejs I was using when I made the examples in a blog post on threejs. The reason why is because threejs is a very fast moving library in terms of development, and code breaking changes are often made in each new revision.
 
 ## 1 - Some basic getting started examples of the set from spherical coords method
 
@@ -115,9 +121,9 @@ mesh.position.setFromSphericalCoords(radius, phi, theta);
 renderer.render(scene, camera);
 ```
 
-## 2 - Animaiton loop examples
+## 2 - Animation loop examples
 
-In this section I will now be getting into at least one if not more video project examples for this post. As of this writing I have just the one video that is shown at the top of this post. However sooner or later I will come around to edit and expand this post more, so there will likley be more examples in this section at some point in the future.
+In this section I will now be getting into at least one if not more video project examples for this post. As of this writing I have just the one video that is shown at the top of this post. However sooner or later I will come around to edit and expand this post more, so there will likely be more examples in this section at some point in the future.
 
 ### 2.1 - Simple Video1 loop example
 
