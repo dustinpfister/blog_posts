@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2023-05-26 12:39:40
-version: 1.30
+updated: 2023-06-12 14:09:03
+version: 1.31
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing. 
@@ -202,7 +202,11 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 2 - Set Face method for Box Geometry
+## 2 - Minimap for help with UV mapping
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/CNLUqN7b2ew" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## 3 - Set Face method for Box Geometry
 
 This is a demo based on code that I wrote for my [ mutation of the uv attribute of a Box geometry threejs project example](/2022/11/04/threejs-examples-uvmap-cube-canvas-update/). The goal with that project was to make some code that I can use to quickly set the faces of a box geometry to given cells in a 2d image. So simply put I have this set face method that will take a uv attribute, face index, cell index, and order array, and a cell size as arguments and set the uv attribute with those values. So then I call the set face method, pass the uv and then the face index of the cube in the 0 - 5 range. I then pass a cell index that I want to use in the texture that I am using with the material, the value of which will differ based on the cell size argument that is given. The order array is then the order of the vertex to use when mapping the part of the image to the face.
 
@@ -367,7 +371,7 @@ const loop = () => {
 loop();
 ```
 
-## 3 - Updating uvs at run time in an Animation loop
+## 4 - Updating uvs at run time in an Animation loop
 
 Just because the array of uvs can be updated at run time that does not mean that doing so is a good idea. I think that generally uvs are something that should be set up once and only once and if I want to do something that involves more than one texture for a face it might be better to think in terms of more than one texture file and material and updating the textures used with materials rather than messing around with uvs.
 
