@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1051
-updated: 2023-06-13 11:36:21
-version: 1.3
+updated: 2023-06-13 16:25:03
+version: 1.4
 ---
 
 The [THREE.ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry) class in threejs is one of the built in geometry classes that can be used to create a buffer geometry from a [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) object. The other built in option to create a geometry form a shape is the [THREE.ShapeGeometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) class that is just a simple plain of the 2d shape.
@@ -145,7 +145,6 @@ This is then the demo that I have that is just a start point for this custom UV 
 // IMPORT - threejs and any addons I want to use
 // ---------- ----------
 import * as THREE from 'three';
-import { OrbitControls } from 'OrbitControls';
 // ---------- ----------
 // SCENE, CAMERA, RENDERER
 // ---------- ----------
@@ -201,7 +200,7 @@ const drawMinimap = (minimap, ctx) => {
     let i = 0;
     const len = minimap.v2array.length;
     ctx.strokeStyle = 'black';
-    ctx.fillStyle = 'rgba(0,255,255, 0.2)';
+    //ctx.fillStyle = 'rgba(0,255,255, 0.025)';
     ctx.lineWidth = 2;
     while(i < len){
         const v1 = getMiniMapV2(minimap, i);
@@ -213,7 +212,7 @@ const drawMinimap = (minimap, ctx) => {
         ctx.lineTo(v3.x, v3.y);
         ctx.closePath();
         ctx.stroke();
-        ctx.fill();
+        //ctx.fill();
         i += 3;
     }
     ctx.restore();
@@ -239,17 +238,17 @@ const texture = new THREE.CanvasTexture(canvas_texture);
 const UVGenerator = {
     generateTopUV: function ( geometry, vertices, indexA, indexB, indexC ) {
         return [
-            new THREE.Vector2( 0, 0),
-            new THREE.Vector2( 1, 0),
-            new THREE.Vector2( 1, 1),
+            new THREE.Vector2( 0.05, 0.45 ),
+            new THREE.Vector2( 0.05, 0.95 ),
+            new THREE.Vector2( 0.95, 0.45 ),
         ];
     },
     generateSideWallUV: function ( geometry, vertices, indexA, indexB, indexC, indexD ) {
         return [
-           new THREE.Vector2( 0, 0 ),
-           new THREE.Vector2( 1, 0 ),
-           new THREE.Vector2( 1, 1 ),
-           new THREE.Vector2( 0, 1 )
+           new THREE.Vector2( 0.05, 0.05 ),
+           new THREE.Vector2( 0.20, 0.05 ),
+           new THREE.Vector2( 0.20, 0.20 ),
+           new THREE.Vector2( 0.05, 0.05 )
         ];
     }
 };
@@ -257,11 +256,11 @@ const UVGenerator = {
 // SHAPE/GEOMETRY
 // ---------- ----------
 const shape = new THREE.Shape();
-shape.moveTo(0, -0.5);
-shape.lineTo(0.5,  0);
-shape.lineTo(0,  0.5);
-shape.lineTo(-0.5,  0);
-const geometry = new THREE.ExtrudeGeometry(shape, { UVGenerator: UVGenerator });
+shape.moveTo( 0.0, -0.5);
+shape.lineTo( 0.5,  0.0);
+shape.lineTo( 0.0,  0.5);
+shape.lineTo(-0.5,  0.0);
+const geometry = new THREE.ExtrudeGeometry(shape, { UVGenerator: UVGenerator, depth: 0.3 });
 // ---------- ----------
 // OBJECTS
 // ---------- ----------
@@ -274,66 +273,26 @@ const material = new THREE.MeshBasicMaterial({ side: THREE.DoubleSide, map:textu
 const mesh1 = new THREE.Mesh(geometry, material);
 scene.add(mesh1);
 // ---------- ----------
-// CONTROLS
-// ---------- ----------
-const controls = new OrbitControls(camera, canvas_2d);
-// ---------- ----------
-// ANIMATION LOOP
+// RENDER
 // ---------- ----------
 const minimap = createMiniMap( new THREE.Vector2(430, 10), 200, geometry );
-camera.position.set(1, 1, 2);
+camera.position.set(2, 1, 2);
 camera.lookAt(0.4,0.1,0);
-const sm = {
-   FPS_UPDATE: 30,     // fps rate to update ( low fps for low CPU use, but choppy video )
-   FPS_MOVEMENT: 30,   // fps rate to move object by that is independent of frame update rate
-   FRAME_MAX: 450,
-   secs: 0,
-   frame_frac: 0,      // 30.888 / 450
-   frame: 0,           // 30 / 450
-   tick: 0,            //  1 / 450 ( about 1 FPS then )
-   now: new Date(),
-   lt: new Date()
-};
-const update = function(sm){
-    const a_frame = sm.frame / sm.FRAME_MAX;
-    const a2 = 1 - Math.abs( 0.5 - a_frame ) / 0.5;
-    const a3 = 0.01 + 0.49 * a_frame;
-    setV2array(minimap, geometry);
-};
-const render2d = (sm) => {
-    // background
-    ctx.fillStyle = '#2a2a2a';
-    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
-    // draw dom element
-    ctx.drawImage(renderer.domElement, 0, 0, canvas_2d.width, canvas_2d.height);
-    // draw uv minimap
-    drawMinimap(minimap, ctx);
-    // text overlay
-    ctx.fillStyle = 'rgba(0,0,0,0.4)';
-    ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
-    ctx.fillStyle = 'white';
-    ctx.textBaseline = 'top';
-    ctx.font = '10px monospace';
-    ctx.fillText('frame : ' + sm.frame + '/' + sm.FRAME_MAX, 5, 5);
-};
-const loop = () => {
-    sm.now = new Date();
-    sm.secs = (sm.now - sm.lt) / 1000;
-    requestAnimationFrame(loop);
-    if(sm.secs > 1 / sm.FPS_UPDATE){
-        // update, render to 3d canvas, and then render to 2d canvas
-        update(sm);
-        renderer.render(scene, camera);
-        render2d(sm);
-        // step frame
-        sm.frame_frac += sm.FPS_MOVEMENT * sm.secs;
-        sm.frame_frac %= sm.FRAME_MAX;
-        sm.frame = Math.floor(sm.frame_frac);
-        sm.tick = (sm.tick += 1) % sm.FRAME_MAX;
-        sm.lt = sm.now;
-    }
-};
-loop();
+setV2array(minimap, geometry);
+renderer.render(scene, camera);
+// background
+ctx.fillStyle = '#2a2a2a';
+ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+// draw dom element
+ctx.drawImage(renderer.domElement, 0, 0, canvas_2d.width, canvas_2d.height);
+// draw uv minimap
+drawMinimap(minimap, ctx);
+// text overlay
+ctx.fillStyle = 'rgba(0,0,0,0.4)';
+ctx.fillRect(0,0, canvas_2d.width, canvas_2d.height);
+ctx.fillStyle = 'white';
+ctx.textBaseline = 'top';
+ctx.font = '10px monospace';
 ```
 
 ## Conclusuon
