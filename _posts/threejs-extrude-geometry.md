@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1051
-updated: 2023-06-13 09:57:22
-version: 1.0
+updated: 2023-06-13 10:32:55
+version: 1.1
 ---
 
 The [THREE.ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry) class in threejs is one of the built in geometry classes that can be used to create a buffer geometry from a [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) object. The other built in option to create a geometry form a shape is the [THREE.ShapeGeometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) class that is just a simple plain of the 2d shape.
@@ -15,6 +15,29 @@ Getting started with this feature of threejs is easy enough when it comes to jus
 
 <!-- more -->
 
+## THREE.Extrudegeometry and what to know first
+
+This is a blog post in which I am writing about THREE.Extrudegeometry and various other closely related feature of the javaScript library called threejs. I assume that you have at least a little background with [getting started with a threejs project](/2018/04/04/threejs-getting-started/) at least, if not you are going to have a hard time with applying what I am writing about here. I will not be getting into every little detail that you should know before hand here in this post. However I will write about a few things that you should learn or refresh on a little before reading the rest of this post.
+
+### Read more on THREE.Shape, and THREE.Path
+
+In order to create an istance of THREE.ExtrudeGeometry you will first need a [THREE.Shape instance](/2021/06/01/threejs-shape/) to pass as the first argument. I will be wriitng about THREE.Shape a little in this post as I have to, however you might still want to look into this feature of threejs a bit more. While you are at it there is also reading more on the [path class](https://threejs.org/docs/#api/en/extras/core/Path) as well sense that is the base class of Shape to which Shape extends from.
+
+### There are a few things to be aware of with the Vector2 class
+
+The [Vector2 class](/2023/06/09/threejs-vector2/) is also something that you might want to read more about as there are a lot of methods to work with in that class that and prove to be useful in the process of creating paths, or curves, than can then be used to make shapes that can then be used to make extrude geometry.
+
+### There is also the SVG loader
+
+The [SVG loader](/2022/09/16/threejs-svg-loader/) is an optional add on to the core threejs module that helps with the process of loading, and then parsing SVG files into Shape Objects that can then be used to create extrude geometry. Often I might want to create extrude geometry this way actually at least when it comes to the 2d shape part that will be used to create such a geometry.
+
+### Source code is up on Github
+
+The code exmaples that I made for this post can also be found in [my test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-extrude-geometry).
+
+### Version Numbers matter
+
+The version of threejs that I was using when I first wrote this blog post was [r152](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r152).
 
 ## 1 - Basic examples of Extrude Geometry
 
@@ -67,7 +90,7 @@ renderer.render(scene, camera);
 
 ### 1.1 - Create The Shape by way of using Paths
 
-Taking a look at the threejs source code for THREE.Shape it would seem that the Shape class does in fact extend the base THREE.Path class. So one way to create a shape object to use to make extrude geometry would very much be to pass an array of vector2 objects, however another way is to just create a blank THREE.Shape object and just start using these [Path class prototype methods](https://threejs.org/docs/#api/en/extras/core/Path).
+Taking a look at the threejs source code for THREE.Shape it would seem that the Shape class does in fact extend the base THREE.Path class. So one way to create a shape object to use to make extrude geometry would very much be to pass an array of vector2 objects, however another way is to just create a blank THREE.Shape object and just start using these Path class prototype methods.
 
 ```js
 // ---------- ----------
