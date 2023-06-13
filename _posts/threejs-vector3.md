@@ -5,17 +5,19 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2023-01-03 08:22:45
-version: 1.63
+updated: 2023-06-13 10:51:03
+version: 1.64
 ---
 
-In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having magnitude and direction. In [threejs](https://threejs.org/) the [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 class is then a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs. One major feature of interest in the [Object3d class](/2018/04/23/threejs-object3d/) is the position property of the Object3d class. The position property stores an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
+In [Vector space](https://en.wikipedia.org/wiki/Vector_space) a Vector can be used to represent position, but they are usually described as having a magnitude and direction component. In [threejs](https://threejs.org/) the [Vector3 class](https://threejs.org/docs/index.html#api/math/Vector3) is a class that is used to create an instance of a Vector that has three values, x, y, and z. This Vector3 object is then a major class of interest then when it comes to working with all kinds of various other classes, methods, and features of threejs. 
+
+One major feature of interest in the [Object3d base class](/2018/04/23/threejs-object3d/) is the position property of that kind of object. The position property stores an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
 
 Although an instance of Vector3 can very much be used to set a position of something it can also very much be used to set the direction of something also. This is where things might be a little confusing because when it comes to setting the orientation of something based off of Object3d there is the rotation property. This rotation property is not an instance of Vector3, but an Instance of the [Euler class](/2021/04/28/threejs-euler/). This Euler class is similar to that of Vector3, but the values given are in radians, and is then a more appropriate way of setting orientation of an object by rotating on the x, y, and z axis by given angles in the from of radian values. However there is also the concept of a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) that would be in the form of a normalized instance of Vector3 oddly enough. So then Vector3 can be used to set position, but it can also be used as a way to set orientation in the from of a direction using values between 0 and 1 for each axis.
 
-This post is then about the Vector3 constructor that is a useful class for various things in a three.js project. A 3d Vector3 Instance consists of an x, y, and z value which makes it useful for plotting a single point in 3d space, but these values can also be in the range of numbers between 0 and 1 which can then be raised by a multiplier, and in some ways can be translated to angles and directions that have to do with the rotation of an object rather than its position. There are all kinds of use cases that will come up here and there for Vector3 such as finding [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) via the length method of the Vector3 instance, which is the distance from the vector to the origin for example. 
+This post is then about the Vector3 constructor that is a useful class for various things in a threejs project. A 3d Vector3 Instance is useful for plotting a single point in 3d space, but these values can also be in the range of numbers between 0 and 1 which can then be raised by a multiplier, and in some ways can be translated to angles and directions that have to do with the rotation of an object rather than its position. There are all kinds of use cases that will come up here and there for Vector3 such as finding [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) via the length method of the Vector3 instance, which is the distance from the vector to the origin for example. 
 
-This will be a fairly lengthy post then as there is a lot of going to cover with this one, nut just when it comes to the class itself, bit how it can be applied when it comes to everything else there is to work with in threejs.
+This will be a fairly lengthy post then as there is a lot of ground to cover with this one. There is not just aspects of the class itself, but how it can be applied when it comes to everything else there is to work with in threejs that is related to the use of Vector3.
 
 <!-- more -->
 
@@ -24,17 +26,7 @@ This will be a fairly lengthy post then as there is a lot of going to cover with
 
 ## The THREE.Vector3 class and What to know first
 
-This is a post on threejs in which I am writing about the Vector3 constructor, and the various properties, methods of the class that there are to work with. There is then also going to be an awful lot of overlap between the Vetor3 class and various other features of threejs, so then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on threejs, or [javaScipt in general](/2018/11/27/js-getting-started/). I expect for you to have at least a little background when it comes to the very basics of setting up a threejs project when it comes to client side JavaScript. 
-
-### Threejs version numbers matter a lot.
-
-Threejs is a project where the version number matters a lot, more so then what you might have grown accustom to when it comes to other libraries. When I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r135 with the later examples that I am keep at the top of this content. I still have older examples here that i am now pushing down to the bottom of this text, and the latest version that I am using with them is r111, those code examples will break in late versions of threejs.
-
-When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
-
-### The source code examples in this post are on Github
-
-I have a for post folder set up in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3) where I will be keeping the source code examples for this post, as well as for my [many other posts on threejs](/categories/three-js/).
+This is a post on threejs in which I am writing about the Vector3 constructor, and the various properties, methods of the class that there are to work with. There is then also going to be an awful lot of overlap between the Vector3 class and various other features of threejs. So then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on threejs, or [javaScript in general](/2018/11/27/js-getting-started/). I then expect for you to have at least a little background when it comes to the very basics of setting up a threejs project when it comes to client side JavaScript. 
 
 ### There is also the Euler class for angles
 
@@ -43,6 +35,21 @@ In the introduction of this post I mentioned the [Euler class](/2021/04/28/three
 ### Check out arrow helpers also
 
 There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/11/10/threejs-arrow-helper/) that can be used to create and add a helper to a scene that will show the direction of a vector. This can be very useful to find out what the current state of affairs is with a single Vector3 class, and there are also many other useful helpers like that of the arrow helper.
+
+### There are other Vector classes such as Vector2 and Vector4
+
+The [Vector2 class](/2023/06/09/threejs-vector2/) is also there to work with when I just need a simple 2d Vector. Also the Vector4 class will come up when getting into some fairly advanced topics of threejs such as quaternion objects.
+
+### The source code examples in this post are on Github
+
+I have a for post folder set up in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3) where I will be keeping the source code examples for this post, as well as for my [many other posts on threejs](/categories/three-js/).
+
+### Threejs version numbers matter a lot.
+
+Threejs is a project where the version number matters a lot, more so then what you might have grown accustom to when it comes to other libraries. When I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r135 with the later examples that I am keep at the top of this content. I still have older examples here that i am now pushing down to the bottom of this text, and the latest version that I am using with them is r111, those code examples will break in late versions of threejs.
+
+When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
+
 
 ## 1 - Basic example of a THREE.Vector3 class instance
 
