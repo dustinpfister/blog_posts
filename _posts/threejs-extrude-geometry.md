@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1051
-updated: 2023-06-13 10:32:55
-version: 1.1
+updated: 2023-06-13 10:54:32
+version: 1.2
 ---
 
 The [THREE.ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry) class in threejs is one of the built in geometry classes that can be used to create a buffer geometry from a [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) object. The other built in option to create a geometry form a shape is the [THREE.ShapeGeometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) class that is just a simple plain of the 2d shape.
@@ -132,3 +132,6 @@ camera.lookAt(-0.3, 0, 0);
 renderer.render(scene, camera);
 ```
 
+## Conclusuon
+
+The Extrude geometry is then often the main constructor if interest that I might want to use when it comes to doing something with a Shape object that was created by one means or another. When it comes to a real project though there is a whole lot of other features of the library that I would want to use. Also things can get a little time consuming when it comes to certain advanced features of the extrude geometry class such as working out a custom UV Generator.
