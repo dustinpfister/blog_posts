@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1051
-updated: 2023-06-14 10:23:49
-version: 1.5
+updated: 2023-06-14 10:39:12
+version: 1.6
 ---
 
 The [THREE.ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry) class in threejs is one of the built in geometry classes that can be used to create a buffer geometry from a [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) object. The other built in option to create a geometry form a shape is the [THREE.ShapeGeometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) class that is just a simple plain of the 2d shape.
@@ -136,7 +136,7 @@ renderer.render(scene, camera);
 
 ## 2 - Working out a Custom UV Generator for use with THREE.ExtrudeGeometry
 
-I think that the most note worthy advanced feature of THREE.ExtrudeGeometry would be the UVGenerator option. To use this I need to give an object with two functions that both return an array of vector2 objects that will in turn be used to create the UV attribute for the buffer geometry that is created by THREE.ExtrudeGeometry. If you have no idea at all what a UV attribute is I have my main blog post on the subject in which I get into detail with this, but to save you a click the skinny is that it is a way to map a 2D image to a 3d object.
+I think that the most note worthy advanced feature of THREE.ExtrudeGeometry would be the UVGenerator option. To use this I need to give an object with two functions that both return an array of vector2 objects that will in turn be used to create the UV attribute for the buffer geometry that is created by THREE.ExtrudeGeometry. If you have no idea at all what a [UV attribute is I have my main blog post on the subject](/2021/06/09/threejs-buffer-geometry-attributes-uv/) in which I get into detail with this, but to save you a click the skinny is that it is a way to map a 2D image to a 3d object.
 
 I have found that the default UV Generator just about never works the way that I would like it to. So then it would make sense to take advantage of this option and see about making at least a few custom UV generators. Doing so is a little involved, and there are some tools that I would say help to make the process of working out logic for this sort of thing easier. In my main blog post on UV Mapping I have a whole section on some code that has to do with creating a kind of minimap that helps me get a way better idea of what is going on with the current state of the UV attribute. That feature will also be showing up in these demos as well.
 
