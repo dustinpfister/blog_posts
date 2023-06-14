@@ -5,15 +5,15 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2023-01-03 09:31:38
-version: 1.31
+updated: 2023-06-14 10:39:12
+version: 1.32
 ---
 
 When it comes to making a [threejs](https://threejs.org/) project it is typically the mesh object class that is used to create and add objects to a scene. However there are a few other options that can be used as a way to add content to a scene such as Points which can be used to just simply show the location of the points of a position attribute of buffer geometry, and then Lines. For this post I will be focusing more so on using Lines then as an alternative to using mesh objects as I have another post in which the main focus is on [points](/2018/05/12/threejs-points-material/).
 
 <!-- more -->
 
-There is only so much to write about with the [Line](https://threejs.org/docs/#api/en/objects/Line), and [LineSegments](https://threejs.org/docs/#api/en/objects/LineSegments) constructors in threejs, so to help keep this post from being to thin I will also be writing about other closly realted topucs such as how to come up with the points in the first place, and the Materials that can be used with Lines. With lines I can not use any of the mesh object materials as such I must stick with the [LineBasicMatreial](https://threejs.org/docs/index.html#api/materials/LineBasicMaterial) and [LineDashedMaterial](https://threejs.org/docs/index.html#api/en/materials/LineDashedMaterial). 
+There is only so much to write about with the [Line](https://threejs.org/docs/#api/en/objects/Line), and [LineSegments](https://threejs.org/docs/#api/en/objects/LineSegments) constructors in threejs, so to help keep this post from being too thin I will also be writing about other closly realted topics such as how to come up with the points in the first place, and the Materials that can be used with Lines. With lines I can not use any of the mesh object materials as such I must stick with the [LineBasicMatreial](https://threejs.org/docs/index.html#api/materials/LineBasicMaterial) and [LineDashedMaterial](https://threejs.org/docs/index.html#api/en/materials/LineDashedMaterial). Also there is a lot of ground to cover when it comes to the subject of how to create a v3array, or a curve to create such an array from, so forth and so on.
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/Cs5QXW0xldQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -22,13 +22,17 @@ There is only so much to write about with the [Line](https://threejs.org/docs/#a
 
 This is a post on just one little aspect of threejs which is a javaScript project that allows for doing things involving solid geometry. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or any additional aspects of [javaScript in general](/2018/11/27/js-getting-started/) that are required in order to work with the library. So then I will not be covering any basic things that one should know before reading the rest of this post, however I do often use the opening sections of these posts to write about some things that are closely related to the main over all topic of the post.
 
+### There is also Tube Geometry
+
+Lines are great, but they still do have there limitations that will cause one to want to create lines that are actually tubes. These tube line geometries will then contain not just a position attribute, but also normal, uvs, and index, and so forth that will allow them to work well with THREE.Mesh, and thus also Mesh Materials and thus all the features of such materials. For this kind of geometry there is looking into the [THREE.TubeGeometry](/2023/06/02/threejs-tube-geometry) class, and with that also the [THREE.Curve](/2022/06/17/threejs-curve/) base class to learn how to get started with that sort of thing.
+
 ### Vector3 and buffer geometry position attributes
 
 You will want to know about the [Vector3 constructor](/2018/04/15/threejs-vector3/) as that is what is used to define points in 3d space in threejs to begin with often. However when it really comes down to it what one will really want to learn about is the [position attribute of buffer geometry objects](/2021/06/07/threejs-buffer-geometry-attributes-position/) as this is what is used to define the paths of lines. 
 
 ### A word On Materials when working with lines.
 
-If you are just making lines, and nothing that will compose a solid object or face, then it does not make sense to use a material that is designed to be used with something that is just a string of points in space. So if you aim to just draw some lines, and not something that will compose a solid object there are two special materials in threejs that are intended to be used with just lines. There materials are the LineBasicMaterial, and the LineDashedMaterial materials.
+If you are just making lines, and nothing that will compose a solid object or face, then it does not make sense to use a material that is designed to be used with something that is just a string of points in space. So if you aim to just draw some lines, and not something that will compose a solid object there are two special materials in threejs that are intended to be used with just lines. The materials are the LineBasicMaterial, and the LineDashedMaterial materials. Apart from that most features in the [base material class](https://threejs.org/docs/#api/en/materials/Material) will still apply. So if you want to do something with vertex color attributes, transparency, or anything that involves the use of a feature in the base material class that should still work just fine.
 
 ### Using the Dashed Line material
 
@@ -89,11 +93,11 @@ scene.add(new THREE.Line(geometry, new THREE.LineBasicMaterial({
 
 ### Source code examples are up on Github
 
-The source code examples that I am written about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-line).
+The source code examples that I am writing about in this post can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-line). This is also where I place the [threejs source code examples for the many other blog posts](/categories/three-js/) that I ahve wrote over the years.
 
 ### Version Numbers matter
 
-As I say in every post of mine on threejs, the library is a project in which the version number matters big time. When I first wrote this post I was using [threejs r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited the post I was using r135. Sense then many code breaking changes have happened in threejs with all sorts of things. One major change is that when it comes to lines, and anything that works with geometry from that matter, the geometry now has to be an instance of Buffer Geometry.
+As I say in every post of mine on threejs, the library is a project in which the version number matters big time. When I first wrote this post I was using [threejs r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited the post I was using r146. Sense then many code breaking changes have happened in threejs with all sorts of things. One major change is that when it comes to lines, and anything that works with geometry from that matter, the geometry now has to be an instance of Buffer Geometry.
 
 ## 1 - Full basic line demo examples
 
