@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1051
-updated: 2023-06-13 16:25:03
-version: 1.4
+updated: 2023-06-14 10:23:49
+version: 1.5
 ---
 
 The [THREE.ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry) class in threejs is one of the built in geometry classes that can be used to create a buffer geometry from a [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) object. The other built in option to create a geometry form a shape is the [THREE.ShapeGeometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) class that is just a simple plain of the 2d shape.
@@ -45,7 +45,7 @@ For this Basic section I am going to just write about a few basic examples of ex
 
 ### 1.1 - Create the Shape from a vector2 array
 
-One way or another, in order to create an Extrude Geometry I first need to have a Shape object to pass as the first option. One way to create a shape object is to call THREE.Shape, and pass an array of vector2 objects as the first argument.
+One way or another, in order to create an Extrude Geometry I first need to have a Shape object to pass as the first argument. One way to create a shape object is to call THREE.Shape, and pass an array of vector2 objects as the first argument when calling that to create the shape. Once I have the shape I can then just pass that to THREE.ExtrudeGeometry to ge the geometry that I can then in turn use with the usual mesh object.
 
 ```js
 // ---------- ----------
@@ -88,9 +88,11 @@ camera.lookAt(-0.3, 0, 0);
 renderer.render(scene, camera);
 ```
 
+For this demo I am not going to do anything fancy when it comes to creating the array of Vector2 objects. This is after all the very first demo of this basic section so I am just directly calling THREE.Vector2 for each point that will compose the shape object. There are a lot of other ways to create this kind of array actually, but when it comes to just getting started this will do for now when it comes to just getting started. Also for this demo I have not got into any of the options of extrude geometry just yet, so lets take a look at some more basic, simple, static examples.
+
 ### 1.1 - Create The Shape by way of using Paths
 
-Taking a look at the threejs source code for THREE.Shape it would seem that the Shape class does in fact extend the base THREE.Path class. So one way to create a shape object to use to make extrude geometry would very much be to pass an array of vector2 objects, however another way is to just create a blank THREE.Shape object and just start using these Path class prototype methods.
+Taking a look at the [threejs source code for THREE.Shape](https://github.com/mrdoob/three.js/blob/r152/src/extras/core/Shape.js) it would seem that the Shape class does in fact extend the base THREE.Path class. So another way to create the shape to begin with is to just create a blank THREE.Shape object and just start using these Path class prototype methods by just calling them off of the shape object. This Path class is very similar to that of the paths of the 2D drawing context, so if you know how to use that this will be easy for you. Otherwise you start out by using the move to method to pick a start location for the path and then start using path prototype methods like lineTo and bezierCurveTo to create the path. Again once I have the shape set up just the way that I like it I can then just pass that to THREE.ExtrudeGeometry.
 
 ```js
 // ---------- ----------
@@ -134,11 +136,13 @@ renderer.render(scene, camera);
 
 ## 2 - Working out a Custom UV Generator for use with THREE.ExtrudeGeometry
 
-I think that the most note worthy advanced feature of THREE.ExtrudeGeometry would be the UVGenerator option. To use this I need to give an object with two functions that both return an array of vector2 objects that will in turn be used to create the uv attribute for the buffer geometry that is created by THREE.ExtrudeGeometry.
+I think that the most note worthy advanced feature of THREE.ExtrudeGeometry would be the UVGenerator option. To use this I need to give an object with two functions that both return an array of vector2 objects that will in turn be used to create the UV attribute for the buffer geometry that is created by THREE.ExtrudeGeometry. If you have no idea at all what a UV attribute is I have my main blog post on the subject in which I get into detail with this, but to save you a click the skinny is that it is a way to map a 2D image to a 3d object.
+
+I have found that the default UV Generator just about never works the way that I would like it to. So then it would make sense to take advantage of this option and see about making at least a few custom UV generators. Doing so is a little involved, and there are some tools that I would say help to make the process of working out logic for this sort of thing easier. In my main blog post on UV Mapping I have a whole section on some code that has to do with creating a kind of minimap that helps me get a way better idea of what is going on with the current state of the UV attribute. That feature will also be showing up in these demos as well.
 
 ### 2.1 - Getting started with a custom UV Generator
 
-This is then the demo that I have that is just a start point for this custom UV Generator feature.
+This is then the demo that I have that is just a start point for this custom UV Generator feature of extrude geometry. To start out with this I will just want to have a very basic shape, and I am also going to want to just have static UV values for each triangle.
 
 ```js
 // ---------- ----------
