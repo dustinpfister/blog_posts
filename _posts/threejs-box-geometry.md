@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2023-06-15 10:28:11
-version: 1.57
+updated: 2023-06-15 11:09:17
+version: 1.58
 ---
 
 In [threejs](https://threejs.org/) the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry) is one of many options for quickly creating a geometry for a project. To create a geometry this way I just need to call the THREE.BoxGeometry constructor function with the new keyword, and pass some arguments for the dimensions of the box area that I want. While I am at it I can also pass some additional arguments that have to do with how many additional sections the box should have to make it more dense. The returned result can then be stored to a variable, or directly passed as the geometry for a mesh object, or anything else that calls for a geometry.
@@ -32,7 +32,11 @@ The source code examples that I am writing about here can also be found on Githu
 
 When I first wrote this post I was using threejs r127, and many code breaking changes where made in recent revisions such as the removal of the THREE.Geometry class. The last time I came around to do some editing I have made new examples and have updated everything here to the [style rules that I have set for r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Still always take note of what version of threejs you are using when working with code on the open internet, it might be out of date, or the other way around if you are sticking with an older revision.
 
-## 1 - Basic Box Geometry example using Normal Material
+## 1 - Some Basic examples of Box Geometry
+
+In this section I will then be starting out with just a few very basic examples of THREE.BoxGeometry.
+
+### 1.1 - Basic Box Geometry example using Normal Material
 
 To create a basic box threejs example using the Box Geometry Constructor the First thing I am going to want to do is create a Mesh. This Mesh will accept a geometry as the first argument such as one that is created using the Box Geometry Constructor. However I am also going to want to pass a material as the second argument for the Mesh also. For this example I have choses to go with the Normal Material as this is a nice quick choice for skinning a Mesh because the default Basic material will just show the whole area as one solid color.
 
@@ -58,6 +62,52 @@ scene.add(mesh);
 //-------- ----------
 // RENDER
 //-------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.2 - Using THREE.Points, and additional arguments for section counts
+
+I will always want to give at leash a height, width, and depth for the box geometry. However in some cases I might also want to make use of the additional arguments that define the number of segments for each of these as well. Be default there will be just one segment each for height, width, and depth, so the next three arguments can be used to set a few or all of these to something other than one.
+
+There are some situations in which I might want to do this when working with mesh objects. However what comes to mind is some fairly complex stuff that has to do with morph attributes. So for the sake of keeping things basic, in this basic section of box geometry, I will just be using THREE.Points as a way to show what the deal is with these additional arguments.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(5, 5) );
+const material = new THREE.PointsMaterial( { size: 0.05, color: 0x00ff00 } );
+// 1
+const points1 = new THREE.Points(
+    new THREE.BoxGeometry(1, 1, 1, 1, 1, 1),
+    material );
+points1.position.set(-2, 0, 0);
+scene.add(points1);
+// 2
+const points2 = new THREE.Points(
+    new THREE.BoxGeometry(1, 1, 1, 6, 6, 6),
+    material );
+points2.position.set(0, 0, 0);
+scene.add(points2);
+// 3
+const points3 = new THREE.Points(
+    new THREE.BoxGeometry(1, 1, 1, 16, 4, 16),
+    material );
+points3.position.set(2, 0, 0);
+scene.add(points3);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
