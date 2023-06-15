@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2023-01-06 15:04:12
-version: 1.56
+updated: 2023-06-15 10:28:11
+version: 1.57
 ---
 
-In [threejs](https://threejs.org/) the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry) is one of many options for quickly creating a geometry of a box area. To create a geometry this way I just need to call the THREE.BoxGeometry constructor function with the new keyword, and pass some arguments for the dimensions of the box geometry. The returned result can then be stored to a variable, or directly passed as the geometry for a mesh object, or anything else that calls for a geometry.
+In [threejs](https://threejs.org/) the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry) is one of many options for quickly creating a geometry for a project. To create a geometry this way I just need to call the THREE.BoxGeometry constructor function with the new keyword, and pass some arguments for the dimensions of the box area that I want. While I am at it I can also pass some additional arguments that have to do with how many additional sections the box should have to make it more dense. The returned result can then be stored to a variable, or directly passed as the geometry for a mesh object, or anything else that calls for a geometry.
 
 Starting out with this built in geometry constructor function is simple enough, but then there is getting into how to go about skinning a cube with textures, and how to go about having one texture on just one side, and other on an other side. So then there is looking into how to go about using the [group property of buffer geometry](/2018/05/14/threejs-mesh-material-index/), and or the [UV attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) when it comes to this. With that said looking into the box geometry in depth is a good way to lean more about more advanced topics with geometry in general when it comes to the various features of a buffer geometry instance.
 
@@ -20,15 +20,17 @@ Starting out with this built in geometry constructor function is simple enough, 
 
 ## Box Geometry in thee.js and what to know first
 
-This is a post on the Box Geometry Constructor in three.js, and many little related topics that branch off from that specific constructor function in the javaScript library known as threejs. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), but many of the examples here will be not so far beyond that point. Still I assume that you know how to set up a basic client side javaScript project as I will not be getting into the very basics of setting things up. If however you have got your hello world example up and running but would like to learn more about just playing around with a cube, or box of some kind with threejs and a little javaScript code you might gain something of value from reading this post. In any case in this section I will be going over a few things that you might want to read up more before really getting into using the box geometry constructor, as well as the Mesh objects that are often used with such a geometry.
+This is a post on the Box Geometry Constructor in threejs, and many little related topics that branch off from that specific constructor function in the javaScript library. This is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), but many of the examples here will not be so far beyond that point. Still I assume that you know how to set up a basic client side javaScript project as I will not be getting into the very basics of setting things up here. 
+
+If however you have got your hello world example up and running but would like to learn more about just playing around with a cube, or box of some kind with threejs and a little javaScript code you might gain something of value from reading this post. In any case in this section I will be going over a few things that you might want to read up more before really getting into using the box geometry constructor, as well as the object3d class based objects that are often used with such a geometry.
 
 ### Source code examples are also up on Github
 
-The source code examples that I am writing about here can also be found on Github in my [test threejs reposatory](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-box-geometry).
+The source code examples that I am writing about here can also be found on Github in my [test threejs reposatory](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-box-geometry). This is also where I park the source code examples for all the [other blog posts that I have wrote on threejs](/categories/three-js/) as well.
 
 ### Version Numbers matter with threejs
 
-When I first wrote this post I was using threejs r127, and many code breaking changes where made in recent revisions such as the removal of the THREE.Geometry class. However the last time I came around to do some editing I have made new examples and have check that everything here is working just fine with r146. Still always take note of what version of threejs you are using.
+When I first wrote this post I was using threejs r127, and many code breaking changes where made in recent revisions such as the removal of the THREE.Geometry class. The last time I came around to do some editing I have made new examples and have updated everything here to the [style rules that I have set for r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Still always take note of what version of threejs you are using when working with code on the open internet, it might be out of date, or the other way around if you are sticking with an older revision.
 
 ## 1 - Basic Box Geometry example using Normal Material
 
