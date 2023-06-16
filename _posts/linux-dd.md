@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1049
-updated: 2023-06-08 12:14:44
-version: 1.5
+updated: 2023-06-15 20:10:37
+version: 1.6
 ---
 
 The man page for the [Linux dd command](https://man7.org/linux/man-pages/man1/dd.1.html) just simply says that it is used to convert and copy files. In a nutshell that is more or less all that it does, but it seems that it comes up all the time when working out something in the command prompt. Also it is a command that I have found that I want to use with a degree of caution. The reason why is because if I get careless with it I can end up doing weird things to the file system. Still there is how to go about getting started with the dd command in a safe way by just learning how to use it in a safe way. There is just reading the man pages, various blogs, and other sources to know what to do, and what to avoid. As for this post I just wanted to have a place to park some notes on this command while I look into this one more. 
@@ -47,6 +47,22 @@ foo
 When I was looking into what there is to work with when it comes to file system io benchmark software I saw a lot of blog posts that where outlining the use of dd as a way to do so. As I have covered in the first section of this post there is a output text in the standard error that shows the speed at which the dd operation was preformed. Although using this output as a way to bench file io might be okay with certain file sizes, and with the expectation of just having a sequential file io test, it is not at all a replacement for a decent benchmark program. Sequential read and write speed might be importantly, but depending on how a volume is to be used, often random read and write is of greater concern. For this reason I am not going to go on with examples for use of dd this way in this section. However I will write a thing or two about a program that I like to use thus far for file io bench making called [sysbench](/2023/06/06/linux-sysbench).
 
 What is great about sysbench is that I can similar results with what I would get if I where to use dd when it comes to a sequential test. However I can also to a random test as well which is far more impotent when it comes to using a volume for a whole bunch of small files that I need to read and wrote to fast, such as a volume that contains an OS Image for example.
+
+
+## 3 - Using cat, and \/dev\/random to create audio data for aplay
+
+The [aplay command](/2023/06/15/linux-aplay/) is pretty cool as it will play any binary data as audio sample data. So I can then use say the Linux cat command with the \/dev\/random device to generate random data, then pipe that into dd. I can then set the block size to 8000 and the count of blocks to 60. When doing so I will want to set the -iflag option of the dd command to fullblock to avoid a partial read error with this. After that I can pipe that into aplay, or in this case redirect into a file to play with aplay. When doing so I can make sure that the format is Unsigned 8 bit sample size, and 8000 herts which does mean 8000 samples per second. This is the default but it does not hurt to make it explicit for the sake of this example.
+
+I have found that this does result in about 60 seconds of random noise. I can then use differing formats, and sample rates to adjust the rate of the noise.
+
+```
+ $ cat /dev/random | dd bs=8000 count=60 iflag=fullblock > audiodata
+60+0 records in
+60+0 records out
+480000 bytes (480 kB, 469 KiB) copied, 0.0826348 s, 5.8 MB/s
+$ aplay -f U8 -r 8000 audiodata
+Playing raw data 'audiodata' : Unsigned 8 bit, Rate 8000 Hz, Mono
+```
 
 
 ## Conclusion
