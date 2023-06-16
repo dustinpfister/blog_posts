@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1052
-updated: 2023-06-15 20:10:37
-version: 1.3
+updated: 2023-06-16 09:44:35
+version: 1.4
 ---
 
 The [Linux aplay](https://linux.die.net/man/1/aplay) command of [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) is pretty cool as it can be used as a tool to play any kind of raw data as sound. This data can be [piped](/2020/10/09/linux-pipe/) into the standard input of the aplay command, or a file can be passed as a positional argument. Any kind of data can be used as sample data, but to really start using aplay by one way or another it would be best to fine ways to generate sample data.
@@ -54,4 +54,11 @@ So far I have been piping in data to aplay by way of using the linux cat command
 $ aplay -f U8 -r 8000 audiodata
 Playing raw data 'audiodata' : Unsigned 8 bit, Rate 8000 Hz, Mono
 ```
+
+## Conclusion
+
+The aplay command is then pretty cool as it allows for me to make noise with any kind of binary data, and there might be forms of data that will result in interesting sounds when it comes to just going ahead and using it that way. However if you do know a thing or two about a programming language or two there is doing all kinds of things with everything and anything that there is to work with in that programming environment to generate binary data to then pipe into aplay.
+
+
+
 
