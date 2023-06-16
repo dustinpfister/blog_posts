@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1052
-updated: 2023-06-16 11:11:48
-version: 1.5
+updated: 2023-06-16 11:12:57
+version: 1.6
 ---
 
 The [Linux aplay](https://linux.die.net/man/1/aplay) command of [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) is pretty cool as it can be used as a tool to play any kind of raw data as sound. This data can be [piped](/2020/10/09/linux-pipe/) into the standard input of the aplay command, or a file can be passed as a positional argument. Any kind of data can be used as sample data, but to really start using aplay by one way or another it would be best to fine ways to generate sample data.
@@ -105,7 +105,7 @@ This kind of thing will work okay for small use case examples that are about a s
 
 ### 5.3 - Redirection
 
-Thus far I have found that if I want to make a long noise I will want to create a large file, and then play that file with aplay. One way to do this would be to make use of redirection.
+Thus far I have found that if I want to make a long noise I will want to create a large file, and then play that file with aplay. One way to do this would be to make use of [redirection](/2020/10/02/linux-redirection).
 
 ```
 $ node wave 8000 10 800 0.5 binary > adata
