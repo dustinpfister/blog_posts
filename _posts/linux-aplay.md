@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1052
-updated: 2023-06-15 18:48:20
-version: 1.2
+updated: 2023-06-15 20:10:37
+version: 1.3
 ---
 
 The [Linux aplay](https://linux.die.net/man/1/aplay) command of [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) is pretty cool as it can be used as a tool to play any kind of raw data as sound. This data can be [piped](/2020/10/09/linux-pipe/) into the standard input of the aplay command, or a file can be passed as a positional argument. Any kind of data can be used as sample data, but to really start using aplay by one way or another it would be best to fine ways to generate sample data.
@@ -42,16 +42,16 @@ $ cat /dev/random | aplay -d 5 -f U8 -r 2000
 $ cat /dev/random | aplay -d 5 -f U8 -r 88000
 ```
 
-
 ## Using cat and dd to generate 8K bytes of random data for just one second of noise
 
-So far I have been piping in data to aplay by way of using the linux cat command with the use of /dev/random. However another major command I could pipe the random data into would be the [dd command](/2023/06/08/linux-dd/) which has the -bs option that can be used to set, say 8000 bytes blocks, and I can do 1 block, which would result in one second of random noise if the rate is still very much 8000 Hertz, and the format is still U8.
+So far I have been piping in data to aplay by way of using the linux cat command with the use of /dev/random. However another major command I could pipe the random data into would be the [dd command](/2023/06/08/linux-dd/) which has the -bs option that can be used to set, say 8000 bytes blocks, and I can do 60 blocks. This would then result in 60 seconds worth of audio data if it is still 8 Bit Sample Size, and 8000 hertz. However when doing so I will want to make sure that I set the iflag option to fullblock else the resulting file will end up being a bit light because of a partial read error.
 
 ```
-cat /dev/random | dd bs=8000 count=1 | aplay -r 8000 -f U8
-1+0 records in
-1+0 records out
-8000 bytes (8.0 kB, 7.8 KiB) copied, 0.0165417 s, 484 kB/s
-Playing raw data 'stdin' : Unsigned 8 bit, Rate 8000 Hz, Mono
+ $ cat /dev/random | dd bs=8000 count=60 iflag=fullblock > audiodata
+60+0 records in
+60+0 records out
+480000 bytes (480 kB, 469 KiB) copied, 0.0826348 s, 5.8 MB/s
+$ aplay -f U8 -r 8000 audiodata
+Playing raw data 'audiodata' : Unsigned 8 bit, Rate 8000 Hz, Mono
 ```
 
