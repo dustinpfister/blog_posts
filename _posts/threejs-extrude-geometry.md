@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1051
-updated: 2023-06-14 13:07:01
-version: 1.7
+updated: 2023-06-17 11:30:43
+version: 1.8
 ---
 
 The [THREE.ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry) class in threejs is one of the built in geometry classes that can be used to create a buffer geometry from a [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) object. The other built in option to create a geometry form a shape is the [THREE.ShapeGeometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) class that is just a simple plain of the 2d shape.
@@ -33,7 +33,7 @@ The [SVG loader](/2022/09/16/threejs-svg-loader/) is an optional add on to the c
 
 ### Source code is up on Github
 
-The code exmaples that I made for this post can also be found in [my test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-extrude-geometry).
+The code exmaples that I made for this post can also be found in [my test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-extrude-geometry). This is also where I place the source code examples for the [many other blog posts](/categories/three-js/) that I have wrote on threejs thus far.
 
 ### Version Numbers matter
 
@@ -142,7 +142,9 @@ I have found that the default UV Generator just about never works the way that I
 
 ### 2.1 - Getting started with a custom UV Generator
 
-This is then the demo that I have that is just a start point for this custom UV Generator feature of extrude geometry. To start out with this I will just want to have a very basic shape, and I am also going to want to just have static UV values for each triangle.
+This is then the demo that I have that is just a start point for this custom UV Generator feature of extrude geometry. For this first demo I will just want to have a very basic shape, and I am also going to want to just have static UV values for each triangle. This just seems like the best way to get started. Also in some cases it will also be more or less what it is that I will want to do anyway. If the nature of the texture is just this repeating pattern, and if it is okay for all triangles to make use of the same area of the texture something like this will work just fine and I can move on. In any case one needs to start somewhere with this, and if they are lucky this will also be the end of it as well.
+
+
 
 ```js
 // ---------- ----------
@@ -303,9 +305,11 @@ ctx.textBaseline = 'top';
 ctx.font = '10px monospace';
 ```
 
-### 2.2 - Better logic for top parts, start of a helper function
+### 2.2 - Decent logic for top parts, start of a helper function
 
-I wanted to start working out some better logic for the top parts, for now I think it will still be okay for both sides to overlap the same area. When and if I get to it I might further improve these demos when it comes to scaling and positioning the various parts of the uvs. 
+I wanted to start working out some decent logic for the top parts ate least for this next demo. For now I think it will still be okay for both sides of the shape to overlap the same area, however I would like for that to not be the case for each triangle of each shape at least. When and if I get to it I might further improve these demos when it comes to scaling and positioning the various parts of the uvs for the top part, as well as work out some logic for the side parts as well. 
+
+This time I now have a helper function that will create and return the object that will then be passed in the options object of the extrude geometry constructor.
 
 ```js
 // ---------- ----------
