@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1052
-updated: 2023-06-16 11:12:57
-version: 1.6
+updated: 2023-06-17 12:21:10
+version: 1.7
 ---
 
 The [Linux aplay](https://linux.die.net/man/1/aplay) command of [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) is pretty cool as it can be used as a tool to play any kind of raw data as sound. This data can be [piped](/2020/10/09/linux-pipe/) into the standard input of the aplay command, or a file can be passed as a positional argument. Any kind of data can be used as sample data, but to really start using aplay by one way or another it would be best to fine ways to generate sample data.
@@ -110,6 +110,68 @@ Thus far I have found that if I want to make a long noise I will want to create 
 ```
 $ node wave 8000 10 800 0.5 binary > adata
 $ aplay adata -f U8 -r 8000
+```
+
+## 6 - Live stream of sample data
+
+The above script that I started out with will work just fine when it comes to using redirection rather than piping. However it would be nice to work out a script that will work okay when it comes to generating data in real time that will then in turn be consumed by aplay. The problem with this is that doing so is a little tricky. I managed to work out something that seems to hold up okay, but this is very much a kind of place holder script that I have in place for now until I lean more about how to work with streams.
+
+The tricky part with this is making sure that the rate at which the script is generating sample data is on target with the rate at which aplay is consuming this data. Doing so in a way that will not result in underrun, or memory leakage is indeed the tricky part. If the script does not generate data fast enough that will result in an underrun condition in which aplay runs out of data to play resulting in an interuption, however if the rate is to high that will result in problems with eating up memory and drain event related issues.
+
+### 6.1 - A high low rate script
+
+A script that I have worked out that seems to work okay so far addresses this problem by setting a fast, or slow rate that is used when calling the setTimeout method. Yes this is indeed crude, and over the log run I still run into the occasional problem where the stream needs to drain and I loose audio for a bit. However if I set the fast rate high enough it takes a long time for this to happen, while still avoiding the under run problem  at least for the most part.
+
+```js
+// write a single sample to the given buffer
+const writeSample = (buff, a_sample = 0.5, wave_count = 1, amplitude = 0.3) => {
+    const a_waves = a_sample * wave_count % 1;
+    const n = Math.round( 127.5 - Math.sin( Math.PI * 2 * a_waves ) * (128 * amplitude) );
+    buff.write( n.toString(16), 0, 'hex');
+    return buff;
+};
+//-------- ----------
+// LOOP
+//-------- ----------
+const buff = Buffer.alloc(1);
+const frame_count = 60;
+let i_sample = 0;
+let i_frame = 0;
+const count_sample = 8000;
+let to_high = false;
+let last_time = new Date();
+const ms_fast = 985;
+const ms_slow = 5000;
+const loop = () => {
+    const t = setTimeout(loop, to_high ? ms_slow: ms_fast);
+    while( i_sample < count_sample){
+        // alphas
+        const a_sample = i_sample / count_sample;
+        const a_framecount = (i_frame / frame_count);
+        const a3 = a_framecount;
+        const a_wavecount = Math.sin( Math.PI * a3 );
+        // write sample to buffer
+        const wave_count = Math.floor(75 + 25 * a_wavecount);
+        writeSample(buff, a_sample, wave_count, 0.6);
+        to_high = !process.stdout.write(buff);
+        if(to_high){
+            break;
+        }
+        i_sample += 1;
+    }
+    i_sample %= count_sample;
+    i_frame += 1;
+    i_frame %= frame_count;
+};
+// drain event
+process.stdout.on('drain', () => {
+    const now = new Date();
+    const time = (now - last_time) / 1000 / 60;
+    last_time = now;
+    process.stderr.write('Needed to drain.\n');
+    process.stderr.write('Went ' + time.toFixed(2) + ' Minutes.\n\n');
+});
+loop();
 ```
 
 ## Conclusion
