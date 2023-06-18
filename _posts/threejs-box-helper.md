@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2023-06-18 13:24:34
-version: 1.48
+updated: 2023-06-18 14:53:58
+version: 1.49
 ---
 
 In [threejs](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help gain some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or potentially anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. I say potentially because it must be an object that has a buffer geometry, or in the case of groups child objects that do. Simply put, the box helper just draws a box outline around the area of an object that it is used with.
@@ -142,6 +142,9 @@ loop();
 ### 2.2 - The update method of the Box Helper class
 
 There is an update method of the box helper class also, and this in many cases might be what you will want to do actually in order to keep the geometry up to date of the helper. When adding the box helper of the object as a child to the object that might work okay if I just want to have a box around the object, and also have the box rotate with the object also. However often what is wanted is a box area that will not rotate but rather just resize and say in line with world space, or at least relative to the scene object for that matter assuming that it is still aligned with world space. 
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/xdrL60u098U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 So with that said there is using the update method of the box helper class as a way to keep the geometry up to date. To do this I will want to add the helper as a child of the scene object. Then as I move the object to which the box helper was create for I just call the update method each time as a way to keep this up to date.
 
