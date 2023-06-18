@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2023-06-18 12:39:42
-version: 1.47
+updated: 2023-06-18 13:24:34
+version: 1.48
 ---
 
 In [threejs](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help gain some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or potentially anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. I say potentially because it must be an object that has a buffer geometry, or in the case of groups child objects that do. Simply put, the box helper just draws a box outline around the area of an object that it is used with.
@@ -78,9 +78,15 @@ renderer.render(scene, camera);
 
 This is a nice simple example getting started type example of the box helper, but when using this in a real project of some kind there can be a lot going on. With that said what about resizing the helper, moving it relative to the mesh object or not actually. There is also updating the state of the box helper as needed when it comes to some kind of animation loop and so forth. So then it is called for to take a look at at least a few more examples of this kind of helper in threejs.
 
-## 2 - Moving an object with a Box Helper by making it a child of the object
+## 2 - Moveing the box helper to keep in up to date with the object
+
+One major isshue of concern is how to go about kepping the box helper up to date with the object that it was created for. There are a few ways to go about doing this so it would be a good idea to take a look at a few demos of doing just that.
+
+### 2.1 - Moving an object with a Box Helper by making it a child of the object
 
 When moving a box helper it is good to know if the box helper was added to a mesh, the scene, or some other object. If a mesh that a box helper was created for is moved, but the box helper is added to the scene or any object or group outside of that mesh, then the box helper will not move with the mesh but will stay relative to the group or object that it was added to. This is the same deal with just about any other kind of object3d based object in threejs actually, the positions that are set are relative to whatever the child object is.
+
+So one way to go about dealing with this would be to just make the box helper a child of the parent object which is what I am doing in this demo. However this might not be the best way to go about doing this sort of thing depeding on what you want to use the box helper for. Just thought I would get this one out of the way first.
 
 ```js
 //-------- ----------
@@ -124,6 +130,79 @@ const loop = function () {
         // rather than the scene
         mesh1.position.z = 2 * bias;
         mesh1.rotation.y = Math.PI * per;
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 2.2 - The update method of the Box Helper class
+
+There is an update method of the box helper class also, and this in many cases might be what you will want to do actually in order to keep the geometry up to date of the helper. When adding the box helper of the object as a child to the object that might work okay if I just want to have a box around the object, and also have the box rotate with the object also. However often what is wanted is a box area that will not rotate but rather just resize and say in line with world space, or at least relative to the scene object for that matter assuming that it is still aligned with world space. 
+
+So with that said there is using the update method of the box helper class as a way to keep the geometry up to date. To do this I will want to add the helper as a child of the scene object. Then as I move the object to which the box helper was create for I just call the update method each time as a way to keep this up to date.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 2, 3),
+        new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.5 }));
+scene.add(mesh1);
+// helper
+const helper1 = new THREE.BoxHelper(mesh1, 0xffffff);
+helper1.material.linewidth = 8;
+helper1.material.vertexColors = true;
+helper1.material.transparent = true;
+const data_color = [];
+const att_pos = helper1.geometry.getAttribute('position');
+let i = 0;
+while(i < att_pos.count){
+    const a_vertex = i / att_pos.count;
+    const a_opacity = (a_vertex * 4) % 1;
+    data_color.push(1 * a_vertex, 1, 1 - a_vertex, 0.8 * 0.9 * Math.random());
+    i += 1;
+}
+helper1.geometry.setAttribute('color', new THREE.BufferAttribute( new Float32Array( data_color ), 4));
+scene.add(helper1);
+// grid
+const grid = new THREE.GridHelper(10, 10);
+grid.material.linewidth = 4;
+scene.add(grid);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(7, 7, 7);
+camera.lookAt(0, -3, 0);
+let frame = 0, lt = new Date();
+const maxFrame = 900, fps = 30;
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000,
+    a_frame = frame / maxFrame,
+    a_z = Math.sin( Math.PI * (a_frame * 2 % 1) ),
+    a_x = Math.sin( Math.PI * (a_frame * 8 % 1) );
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        mesh1.position.x = -2  + 4 * a_x;
+        mesh1.position.z = -2  + 4 * a_z;
+        mesh1.rotation.y = Math.PI * (a_frame * 8 % 1);
+        mesh1.rotation.z = Math.PI * (a_frame * 24 % 1);
+        // using the update method as a way to update the geometry of the box
+        helper1.update();
         renderer.render(scene, camera);
         frame += fps * secs;
         frame %= maxFrame;
