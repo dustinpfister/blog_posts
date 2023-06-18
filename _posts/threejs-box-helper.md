@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2023-01-10 11:02:34
-version: 1.46
+updated: 2023-06-18 12:39:42
+version: 1.47
 ---
 
-In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help gain some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or potentially anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. I say potentially because it must be an object that has a buffer geometry, or in the case of groups child objects that do. Simply put, the box helper just draws a box outline around the area of an object that it is used with.
+In [threejs](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help gain some visual idea of what is going on with a [Mesh](/2018/05/04/threejs-mesh/), a [Group](/2018/05/16/threejs-grouping-mesh-objects/), or potentially anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object3d/) for that matter. I say potentially because it must be an object that has a buffer geometry, or in the case of groups child objects that do. Simply put, the box helper just draws a box outline around the area of an object that it is used with.
 
 There are maybe a few little problems here and there that might come up when using the box helper though. For example one might expect that when a mesh is moved or rotated that box will move and rotate with the mesh object, however this is not always the case. Typically I will want to add a box helper to the object that I have created it for as a child, so that when I move or rotate that object the box helper will move or rotate with it. Another way would be to use a method that can update the state of this box helper object by using a set from object method that is a prototype method of this box helper class. 
 
@@ -233,7 +233,7 @@ const loop = function () {
 loop();
 ```
 
-## 5 - using the set from object method as a way to update the box helper
+## 5 - Using the set from object method as a way to update the box helper
 
 In one above example I fixed issues that have to do with updating an object by making the box helper a child of the object to which I want to use the box helper with. Although this might work okay in most situations maybe the best way to go about handling this sort of thing would be to use the set from object method of the box helper class. This way I can just call this method each time I update an object, and I do not have to make the helper a child of the object when doing this. Also if I want to I can change what object I am using the helper with all together.
 
@@ -330,7 +330,6 @@ points.add( new THREE.BoxHelper(points, 0xffffff) );
 //-------- ----------
 renderer.render(scene, camera);
 ```
-
 
 ## Conclusion
 
