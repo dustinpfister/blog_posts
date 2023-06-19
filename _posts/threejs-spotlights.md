@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2023-06-19 12:38:59
-version: 1.50
+updated: 2023-06-19 12:43:18
+version: 1.51
 ---
 
 In this post will will be covering the subject of adding light to a scene in [threejs](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). When it comes to the [options to work with in threejs with lighting](/2022/02/25/threejs-light/) a spotlight is just one tool in the tool box along with many other options such as [point lights](/2019/06/02/threejs-point-light/), [directional light](/2019/06/04/threejs-directional-light/), and [ambient light](/2018/11/02/threejs-ambientlight/) just to name a few of them.
@@ -215,6 +215,10 @@ camera.position.set(5, 8, 12);
 camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
+
+## 4 - Animation Loop Examples of SpotLights
+
+For this section I will now be going over a few demos that are animation loops. Static scene examples are always a nice way to start out. However often a real over all project will involve updating the state of a scene over time. There are a number of things to be aware of when it comes to updating a spot light such as the state of the target object that is used for the spot light for the most part. However there are also a number of other features of a spot light that might also need to be updated in an animation loop as well so I should make at least a few demos to say the least about this.
 
 ### 4.1 - Changing the target of the spotlight
 
