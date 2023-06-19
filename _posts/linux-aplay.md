@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1052
-updated: 2023-06-17 12:21:10
-version: 1.7
+updated: 2023-06-19 12:53:33
+version: 1.8
 ---
 
 The [Linux aplay](https://linux.die.net/man/1/aplay) command of [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) is pretty cool as it can be used as a tool to play any kind of raw data as sound. This data can be [piped](/2020/10/09/linux-pipe/) into the standard input of the aplay command, or a file can be passed as a positional argument. Any kind of data can be used as sample data, but to really start using aplay by one way or another it would be best to fine ways to generate sample data.
@@ -118,7 +118,7 @@ The above script that I started out with will work just fine when it comes to us
 
 The tricky part with this is making sure that the rate at which the script is generating sample data is on target with the rate at which aplay is consuming this data. Doing so in a way that will not result in underrun, or memory leakage is indeed the tricky part. If the script does not generate data fast enough that will result in an underrun condition in which aplay runs out of data to play resulting in an interuption, however if the rate is to high that will result in problems with eating up memory and drain event related issues.
 
-### 6.1 - A high low rate script
+### 6.a - A high low rate script
 
 A script that I have worked out that seems to work okay so far addresses this problem by setting a fast, or slow rate that is used when calling the setTimeout method. Yes this is indeed crude, and over the log run I still run into the occasional problem where the stream needs to drain and I loose audio for a bit. However if I set the fast rate high enough it takes a long time for this to happen, while still avoiding the under run problem  at least for the most part.
 
@@ -140,7 +140,7 @@ let i_frame = 0;
 const count_sample = 8000;
 let to_high = false;
 let last_time = new Date();
-const ms_fast = 985;
+const ms_fast = 999;
 const ms_slow = 5000;
 const loop = () => {
     const t = setTimeout(loop, to_high ? ms_slow: ms_fast);
@@ -168,11 +168,23 @@ process.stdout.on('drain', () => {
     const now = new Date();
     const time = (now - last_time) / 1000 / 60;
     last_time = now;
-    process.stderr.write('Needed to drain.\n');
+    process.stderr.write('\nNeeded to drain.\n');
     process.stderr.write('Went ' + time.toFixed(2) + ' Minutes.\n\n');
 });
+process.stderr.write('\nScript started: ' + last_time + ' .\n\n');
 loop();
 ```
+
+## 6.1 - Starting the script
+
+For the most part it would seem that this works okay thus far. When the script first starts I do get an underrun from aplay, and I also also sure that if I let this run long enough it will still need to drain. However until I get a better idea of how to manage this, I would have to go with some code like this.
+
+```
+$ node live_highlow | aplay -f U8 -r 8000
+```
+
+At least I do understand what the problem is, and it is just the nature of streams which is what I am dealing with. What would be nice is to have a way to monitor what the current state of the standard output stream is, and throttle the rate at which I am generating sample data up and down as needed long before the high water mark is reached.
+
 
 ## Conclusion
 
