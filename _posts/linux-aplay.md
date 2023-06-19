@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1052
-updated: 2023-06-19 12:53:33
-version: 1.8
+updated: 2023-06-19 13:19:48
+version: 1.9
 ---
 
 The [Linux aplay](https://linux.die.net/man/1/aplay) command of [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) is pretty cool as it can be used as a tool to play any kind of raw data as sound. This data can be [piped](/2020/10/09/linux-pipe/) into the standard input of the aplay command, or a file can be passed as a positional argument. Any kind of data can be used as sample data, but to really start using aplay by one way or another it would be best to fine ways to generate sample data.
@@ -185,6 +185,104 @@ $ node live_highlow | aplay -f U8 -r 8000
 
 At least I do understand what the problem is, and it is just the nature of streams which is what I am dealing with. What would be nice is to have a way to monitor what the current state of the standard output stream is, and throttle the rate at which I am generating sample data up and down as needed long before the high water mark is reached.
 
+## 7 - Converting JSON data into sample data for aplay
+
+I am thinking that one way that I might want to get into creating sample data for aplay would involve writing scripts that generate JSON data in the form of arguments that will be used to call a funciton on a frame by frame basis. So then I would have code that generates this JSON data, and then I would also have code that will convert this JSON data to binary data that will then be used to create files that in turn can be played by way of the aplay command.
+
+### 7.a - JSON data example
+
+An exmaple of some json data that will create one second of sound would then look like this:
+
+```js
+{
+  "bytes_per_frame" : 1400,
+  "frames": [
+      [1, 40, 10],
+      [2, 40, 10],
+      [3, 40, 10],
+      [4, 40, 10],
+      [5, 40, 10],
+      [6, 40, 10],
+      [7, 40, 10],
+      [8, 40, 10],
+      [9, 40, 10],
+      [10, 40, 10],
+      [11, 40, 10],
+      [12, 40, 10],
+      [13, 39, 9],
+      [14, 38, 9],
+      [15, 37, 9],
+      [16, 36, 8],
+      [17, 35, 8],
+      [18, 34, 8],
+      [19, 33, 7],
+      [20, 32, 7],
+      [21, 31, 7],
+      [22, 30, 6],
+      [23, 29, 6],
+      [24, 28, 6],
+      [25, 25, 5],
+      [26, 22, 5],
+      [27, 18, 5],
+      [28, 16, 2],
+      [29, 10, 3],
+      [30, 8, 2]
+  ]
+}
+```
+
+### 7.b - Script to convert JSON data to binary data
+
+The script that I then use to convert this json data to binary data will then maybe look somehting like this:
+
+```js
+const fs = require('fs');
+const path = require('path');
+//-------- ----------
+// file uri, data object, buffer
+//-------- ----------
+const file_uri = path.resolve( process.argv[2] );
+const data = require(file_uri);
+const buff = Buffer.alloc(1);
+//-------- ----------
+// BYTES PER FRAME
+//-------- ----------
+// Sample rate  / Frame Rate = Bytes Per Frame
+//  2,010       / 30         =    67
+//  2,100       / 30         =    70
+//  8,100       / 30         =   270
+// 16,200       / 30         =   540
+// 42,000       / 30         = 1,400
+const bytes_per_frame = data.bytes_per_frame || 270;
+//-------- ----------
+// FOR EACH FRAME in data.frames...
+//-------- ----------
+data.frames.forEach( ( frameData ) => {
+    let i_byte = 0;
+    const count_wave = frameData[0];
+    const byte_bias = frameData[1];
+    const count_bias = frameData[2];
+    while(i_byte < bytes_per_frame){
+        const a_bytes = i_byte / bytes_per_frame;
+        const a2 = (a_bytes * count_bias % 1);
+        const a3 = Math.sin( Math.PI * a2 )
+        const a = i_byte / count_wave % 1;
+        const n = Math.round( ( 128 + Math.cos( Math.PI * a ) * ( byte_bias * a3 ) ) );
+        buff.write( n.toString(16), 0, 'hex');
+        process.stdout.write( buff );
+        i_byte += 1;
+    }
+});
+```
+
+### Using the JSON to binart script
+
+I would then call the script and redirect the output into a file. I can then play the file with aplay.
+
+```
+$ node sin2-frames.js fd1.json > adata
+$ aplay -f U8 -r 42000 adata
+```
 
 ## Conclusion
 
