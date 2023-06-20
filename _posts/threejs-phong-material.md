@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1020
-updated: 2023-01-11 16:12:24
-version: 1.11
+updated: 2023-06-20 10:45:34
+version: 1.12
 ---
 
 The [Phong material](https://threejs.org/docs/#api/en/materials/MeshPhongMaterial) is one of many built in material options in the core of the threejs JavaScript library. What stands out with this material is the support for specular highlights which can be adjusted by way of the shininess option. Although the material is called Phong it actually uses the [Blinn-Phong reflection model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model) rather than a pure [Phong Reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model). If real time performance is of concern then Phong might prove to be a better choice than that of the [standard material](/2021/04/27/threejs-standard-material/), and also I have found that I still like to use Phong over the standard material when it comes to just how things simply look regardless of performance also.
@@ -34,7 +34,7 @@ The source code examples that I write about in this post can also be found up on
 
 ### Version numbers matter
 
-When I first wrote this blog post I was using r146 of threejs.
+When I first wrote this blog post I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). With that said at the time of this writing there are a whole lot of code breaking changes that will be happening up ahead when it comes to future revisions of the library. Please always be aware of what revision you are using and if possible try to find out what revision an author of code examples was using at the time they wrote a post of possible as well. Threejs is still a very fast moving library in terms of development.
 
 ## 1 - Some basic examples of the Phong Material
 
