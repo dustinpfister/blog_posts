@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-06-20 10:14:30
-version: 1.45
+updated: 2023-06-20 10:34:36
+version: 1.46
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -381,9 +381,83 @@ renderer.render(scene, camera);
 There is one Material in three.js that can be used to display just the points in a geometry which can come in handy some times. If for some reason I want to create my own custom geometry in which I only care about points in space and nothing at all then I will want to have at least a [position attribute of the buffer geometry instance](/2021/06/07/threejs-buffer-geometry-attributes-position/) that I will the use with the THREE.Points constructor rather than the usual mesh constructor.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('blue');
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// POINTS MATERIAL
+//-------- ----------
+const material = new THREE.PointsMaterial( { color: 0x00afaf } );
+//-------- ----------
+// GEOETRY WITH JUST A POSITION ATTRIBUTE
+//-------- ----------
+const geometry = new THREE.BufferGeometry();
+const vertices = new Float32Array([
+    0, 0, 0,
+    1, 0, 0,
+    1, 1, 0
+]);
+geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const points = new THREE.Points(geometry, material);
+scene.add(points);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 For more on Points and the points material I have [written a post](/2018/05/12/threejs-points-material/) on the subject, it's fun to just play with points in space when you have some time.
+
+## 10 - Lines Material
+
+Another object to work with that is an alternative to a mesh object would be [THREE.Line](/2018/04/19/threejs-line/) or THREE.LineSegments. There are two material options to choose from when it comes to using these kinds of objects which include THREE.LineBasicMaterial and THREE.LineDashedMaterial. They work just like mesh objects in the sense that the first argument that is passed when making one is a geometry. Just like that of THREE.Points though it is just the position attribute of the geometry of these that matter. This is a good reason why as this the use of these kinds of objects help to simplify the process of creating custom geometry. However it is also one of the best reasons why not to use them as well. If you care about how the final product looks you might want to look into [curves and the tube geometry](/2023/06/02/threejs-tube-geometry/) class as an tentative to the use of these kinds of objects and materials.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LINE MATERIAL
+//-------- ----------
+const material = new THREE.LineBasicMaterial({
+    linewidth: 3,
+    color: new THREE.Color('lime'),
+    transparent: true,
+    opacity: 0.25
+});
+//-------- ----------
+// GEO, SCENE CHILD OBJECTS
+//-------- ----------
+const boxGeo = new THREE.BoxGeometry(1, 1, 1);
+const edgeGeo = new THREE.EdgesGeometry(boxGeo);
+const line = new THREE.LineSegments( edgeGeo, material );
+line.rotation.y = Math.PI / 180 * 12;
+scene.add(line);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 ## Conclusion
 
