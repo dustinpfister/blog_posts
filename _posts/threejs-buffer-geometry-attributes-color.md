@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1024
-updated: 2023-06-21 12:59:15
-version: 1.8
+updated: 2023-06-21 13:17:52
+version: 1.9
 ---
 
 One of the core features of the[ base material class](https://threejs.org/docs/#api/en/materials/Material.vertexColors) in threejs is a vertex colors Boolean that when set to true will cause the material to be rendered using color channel data stored in an attribute of the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) used. This feature should work with most materials, although some might require a light [source](/2022/02/25/threejs-light/) might still be needed or something to that effect. It will not work at all with certain materials such as the mesh normal material, however it is still very much a feature of the base material class. So then unless there is something else going on that will override this vertex color feature it should work many materials including line and point materials.
@@ -187,6 +187,48 @@ scene.add(line);
 // ---------- ----------
 // RENDER
 // ---------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.4 - Points and vertex colors
+
+[Points objects](/2023/02/23/threejs-points/) like that of lines can also prove to be a nice alternative to that of the usual mesh object when it comes to displaying the state of a geometry. Just like with lines the geometry needs to at least have a position attribute to display anything at all. Again just like with the liens materials the points material is also based off of the common material class, and sense vertex colors is a feature of the base material class they do indeed work when there is a color attribute in the geometry.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1.50, 20);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geo = new THREE.BoxGeometry( 4, 4, 4, 8, 8, 8 );
+const len = geo.getAttribute('position').count;
+const color_array = [];
+let i = 0;
+while(i < len){
+   const a1 = i / len;
+   const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
+   color_array.push(0, a2, 1 - a2);
+   i += 1;
+}
+const color_attribute = new THREE.BufferAttribute(new Float32Array(color_array), 3);
+geo.setAttribute('color', color_attribute)
+// ---------- ----------
+// POINTS
+// ---------- ----------
+const material = new THREE.PointsMaterial({ vertexColors: true, size: 0.25 });
+const points = new THREE.Points(geo, material);
+scene.add(points);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(5, 4, 5);
+camera.lookAt(0, -0.5, 0);
 renderer.render(scene, camera);
 ```
 
