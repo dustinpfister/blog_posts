@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1054
-updated: 2023-06-22 10:25:23
-version: 1.3
+updated: 2023-06-22 10:28:30
+version: 1.4
 ---
 
 In threejs buffer geometry objects are composed of at least one, but typically many instances of the [Buffer Attribute class](https://threejs.org/docs/#api/en/core/BufferAttribute). Each of the buffer attributes are used in the process of creating, and updating the [position of vertices](/2021/06/07/threejs-buffer-geometry-attributes-position/) in space, an [index to reuse such vertices](/2022/12/09/threejs-buffer-geometry-index/), [vertex normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/), [uv mapping values](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and much more actually. With that said having a solid grasp on what there is to work with, and be aware of in the buffer attribute class is necessary in order to create custom geometry, as well as update or extend, or debug problems with existing geometry.
@@ -124,4 +124,61 @@ scene.add(points1);
 camera.position.set( 1.5, 1, 1.7 );
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
+```
+
+### 1.3 - The needs update boolean of buffer attributes
+
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1, 4, 4, 4);
+const att_pos = geometry.getAttribute('position');
+// ---------- ----------
+// SCENE CHILD OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const points1 = new THREE.Points( geometry, new THREE.PointsMaterial({ size: 0.1, color: 0x00ff00 }));
+scene.add(points1);
+// ---------- ----------
+// LOOP
+// ---------- ----------
+camera.position.set( 1.5, 1, 1.7 );
+camera.lookAt(0, 0, 0);
+const update = () => {
+    let i = 0;
+    while(i < att_pos.count){
+        const v = new THREE.Vector3().fromBufferAttribute( att_pos, i );
+        v.normalize().multiplyScalar( 0.25 + 0.75 * Math.random() );
+        att_pos.setXYZ(i,  v.x, v.y, v.z );
+        att_pos.needsUpdate = true;
+        i += 1;
+    }
+};
+const FPS = 4;
+let lt = new Date();
+const loop = () => {
+    const now = new Date();
+    const secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs >= 1 / FPS){
+        update();
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
 ```
