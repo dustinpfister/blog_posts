@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1054
-updated: 2023-06-22 10:18:35
-version: 1.2
+updated: 2023-06-22 10:25:23
+version: 1.3
 ---
 
 In threejs buffer geometry objects are composed of at least one, but typically many instances of the [Buffer Attribute class](https://threejs.org/docs/#api/en/core/BufferAttribute). Each of the buffer attributes are used in the process of creating, and updating the [position of vertices](/2021/06/07/threejs-buffer-geometry-attributes-position/) in space, an [index to reuse such vertices](/2022/12/09/threejs-buffer-geometry-index/), [vertex normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/), [uv mapping values](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and much more actually. With that said having a solid grasp on what there is to work with, and be aware of in the buffer attribute class is necessary in order to create custom geometry, as well as update or extend, or debug problems with existing geometry.
@@ -38,7 +38,11 @@ For this first section of the post I will be starting out with just some basic e
 
 When it comes to just creating a blank buffer geometry object by calling THREE.BufferGeomety buffer attributes must be crated from the ground up and then added to the geometry by making use of the set attribute method of the buffer geometry class. In order to use the set attribute method I first need to know what kind of attribute I want to add to the geometry, and then I also need a buffer attribute object.
 
-For this demo I will just be creating a non indexed position attribute for a blank buffer geometry. When it comes to this kind of geometry it will not work so well with mesh objects, but it will work just fine with [THREE.Points](/2023/02/23/threejs-points/).
+For this demo I will just be creating a non indexed position attribute for a blank buffer geometry. When it comes to this kind of geometry it will not work so well with mesh objects, but it will work just fine with [THREE.Points](/2023/02/23/threejs-points/). In order to get a geometry to work well with a mesh object I will need more than just a position attribute.
+
+Anyway in order to create this buffer attribute I will first need an array of points in space. There are a whole lot of ways to go about creating this kind of array, but for this basic example I will just be punching in a few values into a plain old javaScript array literal. However when it comes to passing data to the THREE.BufferAttribute constructor I can not just pass a plain old javaScript array, but rather a typed array. The kind of typed array to use might differ from one kind of attribute to another, but for the most part a Float32Array array will work just fine.
+
+Once I have the array that I want to use together I can now call THREE.BufferAttribite, pass the array as the first argument, and then the item size of the attribute as the second argument. Sense this is a position attribute that I am creating I will want to pass the number 3 for the item size \( x,y,z \).
 
 ```js
 // ---------- ----------
