@@ -5,36 +5,44 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2023-06-22 11:07:54
-version: 1.70
+updated: 2023-06-22 11:24:45
+version: 1.71
 ---
 
-Every now and then I like to play around with [threejs](https://threejs.org/) a little, and when doing so I have found that one thing that is fun is working out expressions for handling the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). There are all kinds of ways to go about moving a camera such as having the position of the camera move around an object in a circular pattern while having the camera look at an object in the center over time in an animation loop.
+I work with [threejs](https://threejs.org/) a lot, and when doing so I have found that one thing that is fun is working out expressions for handling the movement of a [camera](/2018/04/06/threejs-camera/). There ae a number of options to work with when it comes to cameras but for the most part I end up using a [perspective camera](/2018/04/07/threejs-camera-perspective/). Apart from working out javaScript expressions for the x, y a,d z values of a position there are all kinds of ways to go about moving a camera such as having a camera move around of course, and must of this applies to objects in general actually
 
-Then there is also having the position and rotation of a camera be subject to event handlers that are attached for pointer events. In other words to control the camera with a mouse, and or keyboard which is nice when I am working on a project and I would like to see how things look from all kinds of different perspectives. There are some official controls that are in the threejs Github repository for this sort of thing in the form of [orbit controls](https://threejs.org/docs/#examples/en/controls/OrbitControls), and [fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls) for example. However there is also of course making ones own custom controls for a project which is often a required part of working out an over all user interface for some kind of real time project.
+There is also having the position and rotation of a camera be subject to event handlers that are attached for pointer events. In other words to control the camera with a mouse, and or keyboard which is nice when I am working on a project and I would like to see how things look from all kinds of different perspectives. There are some official controls that are in the threejs Github repository for this sort of thing in the form of [orbit controls](https://threejs.org/docs/#examples/en/controls/OrbitControls), and [fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls) for example. However there is also of course making ones own custom controls for a project which is often a required part of working out an over all user interface.
 
-So in this post I will be writing about some threejs examples that have to do with using the position and rotation properties of an instance of a camera along with some javaScript expressions as a way to move a camera around in a scene. What I work out here for a camera will also apply to just about anything in threejs that inherits from the [Object3d](https://threejs.org/docs/#api/en/core/Object3D) class as well. So much of this is just ways of moving and rotating objects in general actually, but still I will be keeping the emphasis on cameras alone for the most part here.
+So in this post I will be writing about some threejs examples that have to do with using the position and rotation properties of an instance of a camera along. This can involve working out expressions, but also there are a whole lot of threejs feature to work with also when it comes to this sort of thing as well when it comes to looking into everything there is to work with in the Vector3 class, as well as Curves just to name a few core features to be aware of. 
+
+What I work out here for a camera will also apply to just about anything in threejs that inherits from the [Object3d](https://threejs.org/docs/#api/en/core/Object3D) class as well. So much of this is just ways of moving and rotating objects in general actually, but still I will be keeping the emphasis on cameras alone for the most part here.
 
 <!-- more -->
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/ovlzYRxivjE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## Moving a camera in three.js and what to know first
+## Moving a camera in threejs and what to know first
 
-This is a post on how to move a camera in three.js a front end javaScript library that has to do with 3d modeling. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/) so I assume that you have at least some background on this to get started with, otherwise you might have a hard time gaining something of value from reading this content.
+This is a post on how to move a camera in threejs, a front end javaScript library that has to do with 3d modeling. This is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/) so I assume that you have at least some background on this to get started with, otherwise you might have a hard time gaining something of value from reading this content. In this section I will then be writing about a few things that you might want to read more about then when it comes to closely related topics that you might want to get solid with first.
 
-### You should really look into the Object3d class when it comes to movement of objects in general in three.js
+### You should really look into the Object3d class when it comes to movement of objects in general
 
-A camera in threejs inherits from a base class in threejs called [Object3d](/2018/04/23/threejs-object3d/), which is also the case with many other objects that will be part of a scene such as Mesh, Group objects, and many helper objects. So my learning how to work with the Object3d class you in turn learn how to work with everything to which is built on top of Object3d which includes cameras.
+A camera in threejs inherits from a base class in threejs called [Object3d](/2018/04/23/threejs-object3d/), which is also the case with many other objects that will be part of a scene such as Mesh, Group objects, and many helper objects. Also speaking of scene objects, yes even that is based off of the Object3d class as well, and it is possible to adjust the position of that can change its position relative to what is often refer to as world space. So by learning how to work with the Object3d class you in turn learn how to work with everything which is built on top of Object3d which includes cameras.
 
-The main property of interest with the Object3d class in the [position property](/2022/04/04/threejs-object3d-position/) which is an instance of a class known as [Vector3](/2018/04/15/threejs-vector3/), which in turn is another class of interest that applies to many things in three.js when it comes to positions of things. The set method of an instance of this Vector3 class is one way to set the position of a camera when it comes to the position property. However there is also changing the orientation of the camera when doing so, for this there is the rotation property that is also part of the Object3d class. This rotation property is an instance of the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) which is like Vector3, only we are taking angles rather than a matrix position. There is working with this instance of THREE.Euler directly, or there is making use of a method like the [Object3d.lookAt](/2021/05/13/threejs-object3d-lookat/) method.
+### Read More about the Vector3 class
 
-All of these classes are worth looking into in depth in order to really know how to move things around, not just cameras but many objects in general.
+The main property of interest with the Object3d class in the [position property](/2022/04/04/threejs-object3d-position/) which stores an instance of a class known as [Vector3](/2018/04/15/threejs-vector3/) as the value for this property. This Vector3 class in turn is another class of interest that applies to many things in threejs when it comes to positions of things. The set method of an instance of this Vector3 class is one way to set the position of a camera when it comes to the position property. 
+
+### There is also Object3d.lookAt, Euler, and Quaternion Objects for setting rotation
+
+There is also changing the orientation of the camera when setting the position, for this there is the rotation property that is also part of the Object3d class. This rotation property is an instance of the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) which is like Vector3, only we are taking angles rather than a local position. 
+
+There is working with the instance of THREE.Euler directly at camera.rotation, or there is making use of a method like the [Object3d.lookAt](/2021/05/13/threejs-object3d-lookat/) method as another way to go about setting the local rotation of the camera. There are also [quaternion objects](/2023/03/24/threejs-quaternion/) as well that prove to be a more professional way to go about stetting the local rotation of a camera also. All of these features are worth looking into in depth in order to really know how to move things around, and also adjust the rotation after doing so, not just cameras but many objects in general.
 
 ### You might want to check out the Orbit Controls, and other official controls as a way to move a camera by way of user input
 
-When it comes to moving a camera the first thing you might want to figure out is if you just want to move about in the scene using the mouse. I often use the Orbit Controls that are in the examples folder of the Three.js repository for many of my examples as a way to be able to have the basic typical movement right away. There are also a number of other options when it comes to official controls use in the official three.js examples, as well as many other useful libraries to work with in the examples folder.
+When it comes to moving a camera the first thing you might want to figure out is if you just want to move about in the scene using the mouse. I often use the Orbit Controls that are in the examples folder of the Three.js repository for many of my examples as a way to be able to have the basic typical movement right away. There are also a number of other options when it comes to official controls use in the official threejs examples, as well as many other useful libraries to work with in the examples folder.
 
 However when it comes to moving a camera by way of some kind of application loop, or working out custom controls that will work a little differently from that of the orbit controls. Then it would make sense t start working out some examples like the ones in this post here. Still of you think that the official orbit controls will work okay, and you just want to move on to other things you might want to check out my post on [orbit controls](/2018/04/13/threejs-orbit-controls/).
 
@@ -48,7 +56,7 @@ When I first wrote this post I was using r111 of threejs, and the last time I ed
 
 ## 1 - A Basic camera movement example with an animation loop function
 
-In this section I will be starting out with some basic threejs examples that has to do with moving a camera by way of an animation loop. So nothing major or fancy here, just a kind of hello world when it comes to moving a camera around in a threejs project along with some other tipical things that come up when doing so. If this sort of thing is new to you in general with front end javaScript you might want to start out looking into the [request animation frame](/2018/03/13/js-request-animation-frame/) method in client side javaScrit alone.
+In this section I will be starting out with some basic threejs examples that has to do with moving a camera by way of an animation loop. So nothing major or fancy here, just a kind of hello world when it comes to moving a camera around in a threejs project along with some other typical things that come up when doing so. If this sort of thing is new to you in general with front end javaScript you might want to start out looking into the [request animation frame](/2018/03/13/js-request-animation-frame/) method in client side javaScrit alone.
 
 ### 1.1 - World relative position of camera
 
