@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1024
-updated: 2023-06-21 13:17:52
-version: 1.9
+updated: 2023-06-22 11:29:30
+version: 1.10
 ---
 
 One of the core features of the[ base material class](https://threejs.org/docs/#api/en/materials/Material.vertexColors) in threejs is a vertex colors Boolean that when set to true will cause the material to be rendered using color channel data stored in an attribute of the [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) used. This feature should work with most materials, although some might require a light [source](/2022/02/25/threejs-light/) might still be needed or something to that effect. It will not work at all with certain materials such as the mesh normal material, however it is still very much a feature of the base material class. So then unless there is something else going on that will override this vertex color feature it should work many materials including line and point materials.
@@ -234,7 +234,7 @@ renderer.render(scene, camera);
 
 ## 2 - Updating a color attribute over time
 
-Just like all the other buffer attributes the process of updating the attribute of more or less the same. I just need to mutate the values in the array of the color buffer attribute and then make sure that the needs update Boolean is set to true.
+Just like all the other buffer attributes the process of updating the attribute is more or less the same. I just need to mutate the values in the array of the color buffer attribute and then make sure that the needs update Boolean is set to true. There might be a whole lot more to it when it comes to expanding on all of that, such as checking if there is a color attribute in the geometry to begin with maybe. Also there is working out some logic to create a color attribute in the first place to begin with as well with that said.
 
 ```js
 // ---------- ----------
