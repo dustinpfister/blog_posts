@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2023-06-22 12:31:14
-version: 1.63
+updated: 2023-06-22 12:34:39
+version: 1.64
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry) is one of many geometry [constructor functions](/2019/02/27/js-javascript-constructor/) built into the core of the threejs library itself. These various built in geometry functions are a way to create a geometry by way of a little javaScript code rather than loading an external file. Also it is a way to create geometry by just calling a function rather than making a custom geometry the hard way by working out logic to create the various attributes of a buffer geometry.
@@ -389,6 +389,8 @@ loop();
 Another way to create a sphere geometry, and many other shapes that are like that of a sphere would be to use the [Lathe Geometry class](/2023/06/07/threejs-lathe-geometry/). In order to use this kind of geometry though the first thing that one will need is a 2d [curve](/2022/06/17/threejs-curve/) to pass as the first argument when calling the constructor function. If one just wants a sphere like shape, then the arc curve can be used. However this is just an alias for the ellipse curve class, so that can be used also, and with that said the value of the lath geometry should be clear. Yes this can be used to create a sphere like shape, but it can also be used to create all kinds of shapes by working out differing kinds of 2d curves.
 
 ### 4.1 - Using An Arc Curve
+
+To create a shape that looks more or less the same as a sphere with the lath geometry I can just create a 2d curve by calling THREE.ArcCurve. I give 0,0 for the center position of the arc, and then the radius that I want, along with the start and end radian values for the 2d arc curve. This does not need to be a full circle, but rather a kind of half circle that will spin around to form the over all sphere like shape.
 
 ```js
 // ---------- ----------
