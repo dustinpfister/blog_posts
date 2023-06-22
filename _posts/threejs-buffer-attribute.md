@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1054
-updated: 2023-06-22 10:35:47
-version: 1.5
+updated: 2023-06-22 10:46:48
+version: 1.6
 ---
 
 In threejs buffer geometry objects are composed of at least one, but typically many instances of the [Buffer Attribute class](https://threejs.org/docs/#api/en/core/BufferAttribute). Each of the buffer attributes are used in the process of creating, and updating the [position of vertices](/2021/06/07/threejs-buffer-geometry-attributes-position/) in space, an [index to reuse such vertices](/2022/12/09/threejs-buffer-geometry-index/), [vertex normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/), [uv mapping values](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and much more actually. With that said having a solid grasp on what there is to work with, and be aware of in the buffer attribute class is necessary in order to create custom geometry, as well as update or extend, or debug problems with existing geometry.
@@ -128,7 +128,7 @@ renderer.render(scene, camera);
 
 ### 1.3 - The needs update boolean of buffer attributes
 
-The needs update boolean is what I will want to set to true when it comes to any kind of situation in which I am updating the state of an attribute and thus it will need to be resent to the GPU.
+The needs update boolean is what I will want to set to true when it comes to any kind of situation in which I am updating the state of an attribute and thus it will need to be resent to the GPU. So then this example is like the other example in this section in which I am adjusting the vector unit length of all the points in the position attribute. However now I am doing so in an animation loop, and thus I am making sure that I set the needs update boolen to true each time that I do so.
 
 ```js
 // ---------- ----------
