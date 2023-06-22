@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1054
-updated: 2023-06-22 10:53:01
-version: 1.7
+updated: 2023-06-22 11:07:54
+version: 1.8
 ---
 
 In threejs buffer geometry objects are composed of at least one, but typically many instances of the [Buffer Attribute class](https://threejs.org/docs/#api/en/core/BufferAttribute). Each of the buffer attributes are used in the process of creating, and updating the [position of vertices](/2021/06/07/threejs-buffer-geometry-attributes-position/) in space, an [index to reuse such vertices](/2022/12/09/threejs-buffer-geometry-index/), [vertex normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/), [uv mapping values](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and much more actually. With that said having a solid grasp on what there is to work with, and be aware of in the buffer attribute class is necessary in order to create custom geometry, as well as update or extend, or debug problems with existing geometry.
@@ -23,11 +23,11 @@ As I have mentioned a few times now at this point, buffer attribute objects can 
 
 ### Source code is up on Github
 
-The source code examples that I write about in this blog post can also be [found in my test threejs repository](/https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-attribute) on Github. This is also the location where I place all the source code examples for the many other [blog posts that I have wrote on threejs](/categories/three-js/) as well.
+The source code examples that I write about in this blog post can also be [found in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-attribute) on Github. This is also the location where I place all the source code examples for the many other [blog posts that I have wrote on threejs](/categories/three-js/) as well.
 
 ### Be Aware of Version Numbers
 
-When I first wrote this blog post I was using [r152 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md).
+When I first wrote this blog post I was using [r152 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md). This means that I am using javaScript module type script tags, and an import map for these demos as I am starting to get up to speed with certain future changes that are happening with the library when it comes to using this revision. Still it should not be to hard to make the changes needed to get these demos to work okay with older revisions and code styles.
 
 
 ## 1 - Basic Examples of Buffer Attribute Objects.
