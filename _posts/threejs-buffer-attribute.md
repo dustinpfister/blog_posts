@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1054
-updated: 2023-06-22 10:03:16
-version: 1.1
+updated: 2023-06-22 10:18:35
+version: 1.2
 ---
 
 In threejs buffer geometry objects are composed of at least one, but typically many instances of the [Buffer Attribute class](https://threejs.org/docs/#api/en/core/BufferAttribute). Each of the buffer attributes are used in the process of creating, and updating the [position of vertices](/2021/06/07/threejs-buffer-geometry-attributes-position/) in space, an [index to reuse such vertices](/2022/12/09/threejs-buffer-geometry-index/), [vertex normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/), [uv mapping values](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and much more actually. With that said having a solid grasp on what there is to work with, and be aware of in the buffer attribute class is necessary in order to create custom geometry, as well as update or extend, or debug problems with existing geometry.
@@ -31,3 +31,93 @@ When I first wrote this blog post I was using [r152 of threejs](https://github.c
 
 
 ## 1 - Basic Examples of Buffer Attribute Objects.
+
+For this first section of the post I will be starting out with just some basic examples of the buffer Attribute class. There are two general was of getting started with this kind of class, creating a custom geometry from the ground up, and mutation of a geometry that exists before hand. Sense this is very much a basic section custom geometries here will be very primitive and just contain a single attribute for the most part, mainly the position attribute. Other examples will involve working with buffer attributes that are contained in a buffer geometry object created with one of the many options when it comes to built in constructor functions such as the Sphere geometry constructor.
+
+### 1.1 - Create custom geometry with just a position attribute and THREE.Points
+
+When it comes to just creating a blank buffer geometry object by calling THREE.BufferGeomety buffer attributes must be crated from the ground up and then added to the geometry by making use of the set attribute method of the buffer geometry class. In order to use the set attribute method I first need to know what kind of attribute I want to add to the geometry, and then I also need a buffer attribute object.
+
+For this demo I will just be creating a non indexed position attribute for a blank buffer geometry. When it comes to this kind of geometry it will not work so well with mesh objects, but it will work just fine with [THREE.Points](/2023/02/23/threejs-points/).
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// BUFFER ATTRIBUTE
+// ---------- ----------
+const data_pos = [ 0,0,0,  0,1,0,  1,0,0 ];
+const array = new Float32Array( data_pos );
+const item_size = 3;
+const att_pos = new THREE.BufferAttribute( array, item_size );
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', att_pos);
+// ---------- ----------
+// SCENE CHILD OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const points1 = new THREE.Points( geometry, new THREE.PointsMaterial({ size: 0.25, color: 0x00ff00 }));
+scene.add(points1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set( 2, 2, 2 );
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.2 - The Vector3 from attribute method
+
+There are a number of methods of various classes in threejs that will allow one to set the values of an instance of such an object bu passing a buffer attribute object and an item index of the attribute. For example say that I want to create a Vector3 object that has the values of the first vertex of a position attribute. To do so I can call the from buffer attribute method off of an instance of the Vector3 class, then pass the position attribute, and then the number zero which should be the first point in the attribute. The end result will the be a  vector3 object with the x, y, and z values having the sample values as that first point in the position attribute of the geometry.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geometry = new THREE.SphereGeometry(0.25, 30, 30);
+const att_pos = geometry.getAttribute('position');
+let i = 0;
+while(i < att_pos.count){
+    const v = new THREE.Vector3().fromBufferAttribute( att_pos, i );
+    v.normalize().multiplyScalar( 0.25 + 0.75 * Math.random() );
+    att_pos.setXYZ(i,  v.x, v.y, v.z );
+    i += 1;
+}
+// ---------- ----------
+// SCENE CHILD OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const points1 = new THREE.Points( geometry, new THREE.PointsMaterial({ size: 0.1, color: 0x00ff00 }));
+scene.add(points1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set( 1.5, 1, 1.7 );
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
