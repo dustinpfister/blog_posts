@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1054
-updated: 2023-06-22 10:46:48
-version: 1.6
+updated: 2023-06-22 10:53:01
+version: 1.7
 ---
 
 In threejs buffer geometry objects are composed of at least one, but typically many instances of the [Buffer Attribute class](https://threejs.org/docs/#api/en/core/BufferAttribute). Each of the buffer attributes are used in the process of creating, and updating the [position of vertices](/2021/06/07/threejs-buffer-geometry-attributes-position/) in space, an [index to reuse such vertices](/2022/12/09/threejs-buffer-geometry-index/), [vertex normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/), [uv mapping values](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and much more actually. With that said having a solid grasp on what there is to work with, and be aware of in the buffer attribute class is necessary in order to create custom geometry, as well as update or extend, or debug problems with existing geometry.
@@ -183,3 +183,7 @@ const loop = () => {
 };
 loop();
 ```
+
+## Conclusion
+
+The Buffer attribute class is then how to go about creating, or updating the data of a buffer geometry object. There are a wide range of different types of attributes that are responsible for different aspects of an over all geometry. There is not just simply the points in space, but rather how many points and are they being reused or now when it comes to the use of an index. An index for a buffer geometry by the way is indeed a kind of buffer attribute as well. There is also the state of the normal attribute that is used to define an additional direction for each point in space that is used to find out what side of a triangle is the front side. There is then also the uv attribute that is used in the process of mapping a 2d texture to the 3d object of the geometry, vertex color attributes, morph attributes and so forth. Also there is getting into making custom attributes as well now and then when doing so is called for in some cases.
