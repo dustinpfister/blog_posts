@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1054
-updated: 2023-06-22 11:07:54
-version: 1.8
+updated: 2023-06-23 08:10:14
+version: 1.9
 ---
 
 In threejs buffer geometry objects are composed of at least one, but typically many instances of the [Buffer Attribute class](https://threejs.org/docs/#api/en/core/BufferAttribute). Each of the buffer attributes are used in the process of creating, and updating the [position of vertices](/2021/06/07/threejs-buffer-geometry-attributes-position/) in space, an [index to reuse such vertices](/2022/12/09/threejs-buffer-geometry-index/), [vertex normals](/2021/06/08/threejs-buffer-geometry-attributes-normals/), [uv mapping values](/2021/06/09/threejs-buffer-geometry-attributes-uv/), and much more actually. With that said having a solid grasp on what there is to work with, and be aware of in the buffer attribute class is necessary in order to create custom geometry, as well as update or extend, or debug problems with existing geometry.
@@ -20,6 +20,10 @@ This is a blog post on the subject of buffer attribute objects which is one of t
 ### Buffer Geometry Objects
 
 As I have mentioned a few times now at this point, buffer attribute objects can be found in buffer geometry objects. These buffer attributes objects store the state of a geometry in the form of arrays of data for things like the points in space to begin with, and also just about everything else. Although I will be writing about a lot of examples that have to do with geometry here, this is still not a post that serves as an over all review of [buffer geometry in general as I have all ready wrote a blog post](/2021/04/22/threejs-buffer-geometry/) when it comes to that.
+
+### Typed arrays
+
+A regular array can be used to store the data for starters, however when it comes to passing an array to THREE.BufferAttribite it should be a typed array. The kind of typed array will change from one type of attribute to another, however for the most part I would go with a [Float32Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array) for many of them. One exception though would be with an index for a position attribute, sense it is a collection  of indices a typed array like Uint16Array, or [Uint32Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array) should be used
 
 ### Source code is up on Github
 
