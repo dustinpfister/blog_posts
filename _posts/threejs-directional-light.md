@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2023-06-23 06:22:28
-version: 1.44
+updated: 2023-06-23 06:28:51
+version: 1.45
 ---
 
 In [threejs](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) as one of several types of light to choose from when [adding light to a scene](/2022/02/25/threejs-light/) object. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options.
@@ -28,7 +28,9 @@ If you still need to take a step back when it comes to the very basics of threej
 
 ### Know a thing or two about materials
 
-It is required to know that not all materials will respond to light sources. For example mesh material options such as the [mesh basic material](/2018/05/05/threejs-basic-material/), and the [mesh normal material](/2021/06/23/threejs-normal-material/) just to name a few that are not going to work with light. When I work with light I often go with the [standard material](/2021/04/27/threejs-standard-material/), but there are some additional options such as the [Lambert material](/2018/04/08/threejs-lambert-material/) and the [Phong material](/2022/12/29/threejs-phong-material/) that one should also take into account. Light is also a major thing to be aware of when it comes to getting into writing custom GLSL shaders with the [shader material](/2023/01/13/threejs-shader-material/) as well. Getting into every little detail with this would of course be way off topic though so there is checking out one or more of these materials or starting out with some kind of [main post on the subject of materials](/2018/04/30/threejs-materials/) if you feel as though you may need to research more on them first.
+Not all materials will respond to light sources, for example mesh material options such as the [mesh basic material](/2018/05/05/threejs-basic-material/), and the [mesh normal material](/2021/06/23/threejs-normal-material/) just to name a few. When I work with light I often go with the [standard material](/2021/04/27/threejs-standard-material/), but there are some additional options such as the [Lambert material](/2018/04/08/threejs-lambert-material/) and the [Phong material](/2022/12/29/threejs-phong-material/) that one should also take into account.
+
+Light is also a major thing to be aware of when it comes to getting into writing custom GLSL shaders with the [shader material](/2023/01/13/threejs-shader-material/) as well. Getting into every little detail with this would of course be way off topic though so there is checking out one or more of these materials or starting out with some kind of [main post on the subject of materials](/2018/04/30/threejs-materials/) if you feel as though you may need to research more on them first.
 
 ### The Vector3 class, and the object3d position property
 
@@ -44,7 +46,7 @@ When I made the code examples for this post I was using threejs revision 127, an
 
 ## 1 - Directional Light threejs example
 
-So here I have a basic example of a directional light as a way to have some light in a scene that will work with a material that responds to light such as the standard material. To create an instance of directional light in three js I just need to call the THREE.DirectionalLight constructor and add the resulting instance of that constructor to the scene object. When calling the constructor I can pass a [color](/2021/05/03/threejs-color/) as the fist argument, and an intensity level as a value between zero and one as the second argument.
+So here I have a basic example of a directional light as a way to have some light in a scene that will work with a material that responds to light such as the standard material. To create an instance of directional light in threejs I just need to call the THREE.DirectionalLight constructor and add the resulting instance of that constructor to the scene object. When calling the constructor I can pass a [color](/2021/05/03/threejs-color/) as the fist argument, and an intensity level as a value between zero and one as the second argument.
 
 ```js
 //-------- ----------
@@ -80,11 +82,11 @@ camera.lookAt(mesh.position);
 renderer.render(scene, camera);
 ```
 
-By default the position of the directional light is 0,1,0 and the target of the directional light is the origin at 0,0,0.
+By default the position of the directional light is 0,1,0 and the target of the directional light is the origin at 0,0,0. The position of the light can be changed by way of the Vector3 object stored at the position propery just as with any other object3d class based object. This will change the direction at which the light is coming from.
 
-## 2 - Moving a directional light
+## 2 - Moving a directional light over time
 
-A directional light like most lights and objects that are placed in a scene in threejs inherits from the object 3d class. So it has a position property than can be used to set the position of the directional light to a point other than that of the default position. However when it comes to directional light it is really just the direction and not the unit length, or distance from the origin that matters.
+A directional light like most lights and objects that are placed in a scene in threejs inherits from the object 3d class. So it has a position property than can be used to set the position of the directional light to a point other than that of the default position. However when it comes to directional light it is really just the direction and not the unit length, or distance from the origin that matters. I have found that the light does not seem to need to be normalized, but it would not hurt to do so anyway.
 
 ```js
 //-------- ----------
