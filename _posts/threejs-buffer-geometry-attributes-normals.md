@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 884
-updated: 2023-01-17 16:29:37
-version: 1.25
+updated: 2023-06-23 08:10:15
+version: 1.26
 ---
 
-Yesterday I wrote a [post on the position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. The values in this attribute are used to find out what the direction is of each point of each triangle in an instance of buffer geometry. These values are then used when it comes to rendering textures for various materials such as with the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), and they are also involve in effects with other materials such as with light and how it effects materials like the [standard material](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial).
+Yesterday I wrote a [post on the position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. The values in this attribute are used to find out what the direction is of each point in the position attribute. One major use for this attribute is to have a way to define what side of a triangle is the front side, which is the default side option for materials. These values are also used when it comes to rendering textures for various materials such as with the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), and they are also involve in effects with other materials such as with light and how it effects materials like the [standard material](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial).
 
-So then the position attribute is for setting the location of points for each triangle of a geometry, and that is of course a good starting point when it comes to making a custom geometry. However if there is no normal attribute for it, or if the normal value are mess up, then lighting is not going to work at all, or as expected. So creating a normal attribute might be considered the next thing that must be worked out after the position attribute when it comes to making a geometry.
+So then the position attribute is for setting the location of points for each triangle of a geometry, and that is of course a good starting point when it comes to making a custom geometry. However if there is no normal attribute for it, or if the normal values are mess up, then lighting is not going to work at all, or as expected. So creating a normal attribute might be considered the next thing that must be worked out after the position attribute when it comes to making a geometry.
 
 <!-- more -->
 
@@ -24,7 +24,11 @@ This is a post on the nature of the normal attribute in an instance of buffer ge
 
 ### Be sure to read up more on buffer geometry in general
 
-Be sore to read up more on the subject of [buffer geometry](/2021/04/22/threejs-buffer-geometry/) in general before getting into learning a thing or two about the normal attribute. When it comes to learning how to make a custom geometry the first step might be to create the position attribute first, so there is looking into how to go about doing that before getting into the normal attribute. Also there is a wide range of key features that have to do with the buffer geometry class that you should know about before hand.
+Be sure to read up more on the subject of [buffer geometry](/2021/04/22/threejs-buffer-geometry/) in general before getting into learning a thing or two about the normal attribute. When it comes to learning how to make a custom geometry the first step might be to create the position attribute first, so there is looking into how to go about doing that before getting into the normal attribute. Also there is a wide range of key features that have to do with the buffer geometry class that you should know about before hand.
+
+### There is reading more about the Buffer Attributes class in general
+
+In order to create a normal attribute from raw data I will need to call [THREE.BufferAttribute](/2023/06/22/threejs-buffer-attribute/), and pass a typed array and an item count when calling it. Speaking of THREE.BufferAttribite you might want to check out my main blog post on this subject as well. There are a lot of core features of the class that will come into play when making a normal attribute that I might not get into detail with here.
 
 ### Arrow helpers are your friend when it comes to normals
 
@@ -32,11 +36,11 @@ The normal attribute has to do with direction and not so much position which is 
 
 ### Source code is also up on Github
 
-I also have the source code examples in this post [up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-attributes-normals). This is also where I park the source code exmaples for my [many other threejs posts](/categories/three-js/).
+I also have the source code examples in this post [up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-attributes-normals). This is also where I park the source code examples for my [many other threejs posts](/categories/three-js/).
 
 ### Version numbers matter with threejs
 
-The version of threejs that I was using when I worked out these source code examples was threejs r127, and the last time I came around to edit a little I was using r146. If you have used threejs long enough you show be aware that code breaking changes are made to the library often, so always check what version you are using. Also I think that it is a good idea to always get into the happen of mentioning what version of threejs I am using when writing and updating my posts on threejs.
+The version of threejs that I was using when I worked out these source code examples was threejs r127, and the last time I came around to edit a little I was using [r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). If you have used threejs long enough you show be aware that code breaking changes are made to the library often, so always check what version you are using. Also I think that it is a good idea to always get into the happen of mentioning what version of threejs I am using when writing and updating my posts on threejs.
 
 ## 1 - Basic example of the normals attribute
 
