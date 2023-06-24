@@ -5,13 +5,15 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2023-06-24 09:59:47
-version: 1.35
+updated: 2023-06-24 10:01:31
+version: 1.36
 ---
 
-I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
+I have been toying around with [threejs](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beyond that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. 
 
-If you are just getting started with three.js you might be familiar with at least the [Mesh Basic Material](/2018/05/05/threejs-basic-material/), and that you use a Material with a [Buffer Geometry](/2021/04/22/threejs-buffer-geometry/) to make a Mesh object instance to which you can then add to a [scene object](/2018/05/03/threejs-scene/). However you might now be interested in working with [lights](/2022/02/25/threejs-light/), and having a material that will respond to a light source. If so the Lambert Material may be of interest as this is one option that will work with light while the basic material will not. The main material that I would use more often than not would be the standard material, but the Lambert material might prove to use a little less overhead then that material by loosing accuracy when it comes to lighting. So lets take a look at this material, and maybe some additional topics of interest surrounding it that may apply to materials and threejs in general.
+One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
+
+If you are just getting started with threejs you might be familiar with at least the [Mesh Basic Material](/2018/05/05/threejs-basic-material/), and that you use a Material with a [Buffer Geometry](/2021/04/22/threejs-buffer-geometry/) to make a Mesh object instance to which you can then add to a [scene object](/2018/05/03/threejs-scene/). However you might now be interested in working with [lights](/2022/02/25/threejs-light/), and having a material that will respond to a light source. If so the Lambert Material may be of interest as this is one option that will work with light while the basic material will not. The main material that I would use more often than not would be the standard material, but the Lambert material might prove to use a little less overhead then that material by loosing accuracy when it comes to lighting. So lets take a look at this material, and maybe some additional topics of interest surrounding it that may apply to materials and threejs in general.
 
 <!-- more -->
 
@@ -36,11 +38,9 @@ I often like to develop on systems like a raspberry pi that only has so much res
 
 First off the Lambert material needs a light source, unless I am going to just go with emissive maps, vertex colors or something to that effect. There is checking out my [main blog post on light sources](/2022/02/25/threejs-light/) in threejs as one way to get a better sense of what the options are.
 
-
 ### The source code examples here, as well as on all my other posts are on guthub
 
 The source code examples I am writing about in this post can be found on my [test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-lambert-material). This is also where I park the source code examples for the [many other blog posts](/categories/three-js/) that I have wrote on threejs as well.
-
 
 ### Version numbers matter
 
