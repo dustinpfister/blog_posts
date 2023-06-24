@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2023-06-24 09:53:40
-version: 1.34
+updated: 2023-06-24 09:59:47
+version: 1.35
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
@@ -34,35 +34,17 @@ I often like to develop on systems like a raspberry pi that only has so much res
 
 ### The Lambert Material needs a light source
 
-First off the Lambert material needs a light source, unless I am going to just go with emissive maps at least. If you use the material without any light source shining on it, and you have a black background, you may end up staring at a black screen when first getting started with this kind of material. So before we get into the material, lets just take a moment to touch base a lights just for a moment.
-
-```js
-// spotlight
-var spotLight = new THREE.SpotLight(0xffffff);
-spotLight.position.set(200, 400, 300);
-scene.add(spotLight);
-```
-
-There are many lights to work with in three.js, but in this demo I will be using a [spot light](https://threejs.org/docs/index.html#api/lights/SpotLight). This is a directional light that casts out light in the shape of a cone, it can also be used to case shadows. The spot light inherits some things from the base [Light class](https://threejs.org/docs/index.html#api/lights/Light), and the Light class inherits from [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) which means I can move it around, and work with it just like a camera, or any other object in three.js. However the Object3D.lookAt method will not work for changing the direction of the spot light, to change that you will need to use the target property of the spot light.
-
-```js
-// spotlight
-var spotLight = new THREE.SpotLight(0xffffff);
-spotLight.position.set(0, 350, 0);
-scene.add(spotLight);
-```
-
-I could get into spot lights more, but this post is on the Lambert Material, so that will have to wait for another day.
+First off the Lambert material needs a light source, unless I am going to just go with emissive maps, vertex colors or something to that effect. There is checking out my [main blog post on light sources](/2022/02/25/threejs-light/) in threejs as one way to get a better sense of what the options are.
 
 
 ### The source code examples here, as well as on all my other posts are on guthub
 
-The source code examples I am writing about in this post can be found on my [test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-lambert-material).
+The source code examples I am writing about in this post can be found on my [test threejs github repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-lambert-material). This is also where I park the source code examples for the [many other blog posts](/categories/three-js/) that I have wrote on threejs as well.
 
 
 ### Version numbers matter
 
-When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was using r135 when making sure that the examples still work okay. Always be mindful of what the version of threejs is that is being used in examples on the open web, threejs moves very fast with development, more so than many other projects. So code breaking changes come into play all the time, as such I have got into habit of mentioning what version I was using when I first wrote a post, and also when I edited the post last.
+When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) when making sure that the examples still work okay. Always be mindful of what the version of threejs is that is being used in examples on the open web, threejs moves very fast with development, more so than many other projects. So code breaking changes come into play all the time, as such I have got into habit of mentioning what version I was using when I first wrote a post, and also when I edited the post last.
 
 ## 1 - Basic Lambert Material Example
 
