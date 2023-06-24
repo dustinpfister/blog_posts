@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2023-01-18 09:56:54
-version: 1.33
+updated: 2023-06-24 09:53:40
+version: 1.34
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it, and even continue beynd that if I really get into this sort of thing. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the [standard material](/2021/04/27/threejs-standard-material/), and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/), [transparency](/2021/04/21/threejs-materials-transparent/), and so forth. One such option with materials would be the Mesh material known as the [Mesh Lambert Material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh object created with the [THREE.Mesh](/2018/05/04/threejs-mesh/) constructor function. In this post I will be getting into the specifics of this Lambert material a little to get a better sense of what it is all about compared to the many other options.
@@ -69,43 +69,35 @@ When I first wrote this post I was using threejs version r91, and the last time 
 For a simple example I put together a scene containing a cube, and plane both of which use the Lambert material. In order to see anything though I also added a spotLight, and positioned it away from the cube, and plane. This is because when it comes to just using the color property that will set a solid color for the material, but I will only see anything if there is a light source shining on it. There is getting into other properties such as the emissive property, and also using an ambient light source but for now maybe I will save that for another section later.
 
 ```js
-(function () {
-    // Scene
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
-    camera.position.set(500, 500, 500);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // MESH OF A BOX GEOMETRY AND THE LAMBERT MATERIAL
-    var cube = new THREE.Mesh(
-            new THREE.BoxGeometry(100, 100, 100),
-            new THREE.MeshLambertMaterial({
-                color: 0xff0000
-            }));
-    cube.position.set(0, 100, 0);
-    scene.add(cube);
-    // MESH OF A PLANE GEOMETRY AND THE LAMBERT MATERIAL
-    var plane = new THREE.Mesh(
-            new THREE.PlaneGeometry(1500, 1500, 8, 8),
-            new THREE.MeshLambertMaterial({
-                color: 0x00afaf,
-                side: THREE.DoubleSide
-            }));
-    plane.rotation.x = Math.PI / 2;
-    scene.add(plane);
-    // SPOTLIGHT
-    var spotLight = new THREE.SpotLight(0xffffff, 1, 300, Math.PI / 180 * 40, 1, 0),
-    spotLightHelper = new THREE.SpotLightHelper(spotLight);
-    spotLight.add(spotLightHelper);
-    scene.add(spotLight);
-    spotLight.position.set(150, 200, -100);
-    spotLightHelper.update();
-    // render
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
+var renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LAMBERT MATERIAL
+//-------- ----------
+const material = new THREE.MeshLambertMaterial({
+            color: 0x00afaf,
+            side: THREE.DoubleSide
+});
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const mesh = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material);
+scene.add(mesh);
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(1, 2, 3)
+scene.add(dl)
+//-------- ----------
+// RENDERER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 This results in reflection in a manner that is expected with light reflecting from areas where the spotlight is striking the surfaces of the cube, and plane.
@@ -117,38 +109,41 @@ Unlike materials like the [basic material](https://threejs.org/docs/index.html#a
 To set the color value that is not effected by light you will want to set the emissve property of the Lambert material, and use the color property to set the color that is to be reflected when effected by a light source. When doing so there is also the emissive Intensity property that can be used to adjust the intestacy of this emissive color.
 
 ```js
-(function () {
-    // Scene
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
-    camera.position.set(500, 500, 500);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // add plane to the scene
-    var plane = new THREE.Mesh(
-        new THREE.PlaneGeometry(1500, 1500, 8, 8),
-        new THREE.MeshLambertMaterial({
-            color: 0x00afaf,
-            emissive: 0x004a4a,
-            emissiveIntensity: 0.75,
-            side: THREE.DoubleSide
-    }));
-    plane.rotation.x = Math.PI / 2;
-    scene.add(plane);
-    // SPOTLIGHT
-    var spotLight = new THREE.SpotLight(0xffffff, 1, 300, Math.PI / 180 * 40, 1, 0),
-    spotLightHelper = new THREE.SpotLightHelper(spotLight);
-    spotLight.add(spotLightHelper);
-    scene.add(spotLight);
-    spotLight.position.set(150, 200, -100);
-    spotLightHelper.update();
-    // render
-    renderer.render(scene, camera);
- 
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LAMBERT MATERIAL
+//-------- ----------
+const material = new THREE.MeshLambertMaterial({
+    color: 0x00afaf,
+    emissive: 0x004a4a,
+    emissiveIntensity: 0.75,
+    side: THREE.DoubleSide
+});
+//-------- ----------
+// 
+//-------- ----------
+const plane = new THREE.Mesh( new THREE.PlaneGeometry(1500, 1500, 8, 8), material);
+plane.rotation.x = Math.PI / 2;
+scene.add(plane);
+const spotLight = new THREE.SpotLight(0xffffff, 1, 300, Math.PI / 180 * 40, 1, 0),
+spotLightHelper = new THREE.SpotLightHelper(spotLight);
+spotLight.add(spotLightHelper);
+scene.add(spotLight);
+spotLight.position.set(150, 200, -100);
+spotLightHelper.update();
+//-------- ----------
+// RENDER 
+//-------- ----------
+camera.position.set(500, 500, 500);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 This will make all the area of the plane that is not effected by the spot light a shade of gray, rather than the default which is black. In addition to being able to set the emissive color, the intensity can also be set from a 0 to one value, it is also possible to define a texture that will modulate with the emissive color using the emmsiveMap property. To set a texture that will function as the regular color map, you will want to use the plain old map property.
@@ -159,56 +154,63 @@ Like many other materials in threejs there are a number of options for adding te
 In threejs the THREE.DataTexture constructor is one of several options for creating a texture by way of some javaScript code rather that loading an image first. In order to use if first I need to create an instance of a uint8array, then it is just a matter of creating the color channel data for the array. For this example I just want to make a simple pseudo random gray scale texture so I am just creating a random value between 0 and 255 and setting that for read, green, and blue for each pixel, then always setting 255 for the alpha channel for a pixel. Once I have my data array all set I just need to pass that array as the first argument for the THREE.DataTexture constructor function, along with the width and height arguments. The return value of the constructor is then the texture which I can the use for that map property when creating an instance of the Lambert material.
 
 ```js
-(function () {
-    // Scene
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
-    camera.position.set(500, 500, 500);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // data texture
-    var width = 16,
-    height = 16;
-    var size = width * height;
-    var data = new Uint8Array(4 * size);
-    for (let i = 0; i < size; i++) {
-        var stride = i * 4;
-        var v = Math.floor(THREE.MathUtils.seededRandom() * 255);
-        data[stride] = v;
-        data[stride + 1] = v;
-        data[stride + 2] = v;
-        data[stride + 3] = 255;
-    }
-    var texture = new THREE.DataTexture(data, width, height);
-    texture.needsUpdate = true;
-    // add plane to the scene
-    var plane = new THREE.Mesh(
-            new THREE.PlaneGeometry(1500, 1500, 8, 8),
-            new THREE.MeshLambertMaterial({
-                color: 0xffffff,
-                map: texture,
-                emissive: 0x004a4a,
-                emissiveIntensity: 0.75,
-                side: THREE.DoubleSide
-            }));
-    plane.rotation.x = Math.PI / 2;
-    scene.add(plane);
-    scene.add( new THREE.AmbientLight(0xffffff, 0.05));
-    // SPOTLIGHT
-    var spotLight = new THREE.SpotLight(0xffffff, 1, 300, Math.PI / 180 * 40, 1, 0),
-    spotLightHelper = new THREE.SpotLightHelper(spotLight);
-    spotLight.add(spotLightHelper);
-    scene.add(spotLight);
-    spotLight.position.set(150, 200, -100);
-    spotLightHelper.update();
- 
-    // render
-    renderer.render(scene, camera);
- 
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// TEXTURE - creating one with THREE.DataTexture
+//-------- ----------
+const width = 16,
+height = 16;
+const size = width * height;
+const data = new Uint8Array(4 * size);
+for (let i = 0; i < size; i++) {
+    const stride = i * 4;
+    const v = Math.floor(THREE.MathUtils.seededRandom() * 255);
+    data[stride] = v;
+    data[stride + 1] = v;
+    data[stride + 2] = v;
+    data[stride + 3] = 255;
 }
-    ());
+const texture = new THREE.DataTexture(data, width, height);
+texture.needsUpdate = true;
+//-------- ----------
+// LAMBERT MATERIAL
+//-------- ----------
+const material = new THREE.MeshLambertMaterial({
+    color: 0xffffff,
+    map: texture,
+    emissive: 0x004a4a,
+    emissiveIntensity: 0.75,
+    side: THREE.DoubleSide
+});
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(1500, 1500, 8, 8),
+        material);
+plane.rotation.x = Math.PI / 2;
+scene.add(plane);
+scene.add(new THREE.AmbientLight(0xffffff, 0.05));
+// SPOTLIGHT
+const spotLight = new THREE.SpotLight(0xffffff, 1, 300, Math.PI / 180 * 40, 1, 0),
+spotLightHelper = new THREE.SpotLightHelper(spotLight);
+spotLight.add(spotLightHelper);
+scene.add(spotLight);
+spotLight.position.set(150, 200, -100);
+spotLightHelper.update();
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(500, 500, 500);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## Conclusion
