@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2023-01-31 11:36:53
-version: 1.19
+updated: 2023-06-25 08:55:25
+version: 1.20
 ---
 
-The process of creating a [custom buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of to get started at least. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after the position array is in a good idea to also work out what the deal should be with the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). 
+The process of creating a [custom buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after the position array it is a good idea to also work out the state of the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). 
 
-The normals attribute is one of many core attributes of a buffer geometry class that are needed in order to get geometry to look the way that one will typicaly want it to with mesh objects, rather than point or line objects. With points and lines all the one really needs are position attributes, and then maybe additional attributes that are used to mutate the position attribute. However with mesh objects there is a need to know what side of a face is the _front side_ of the face, and with that said the normals attribute is how to go about doing just this. In some cases I might have to work out the values of the normal attribute manually, however in most cases just calling the compute vertex normals method of the buffer geometry class will work just fine. With that said this post will be on the use of the compute vertex normals attribute method of the buffer geometry class in threejs.
+The normals attribute is one of many core attributes of a buffer geometry class that are needed in order to get geometry to look the way that one will typically want it to with mesh objects, rather than point or line objects. With points and lines all the one really needs are position attributes, and then maybe additional attributes that are used to mutate the position attribute. However with mesh objects there is a need to know what side of a face is the _front side_ of the face, and with that said the normals attribute is how to go about doing just this. 
+
+In some cases I might have to work out the values of the normal attribute manually, however in most cases just calling the compute vertex normals method of the buffer geometry class will work just fine. With that said this post will be on the use of the compute vertex normals attribute method of the buffer geometry class in threejs.
 
 <!-- more -->
 
@@ -28,7 +30,7 @@ This is a post on just one method of the over all greater class that is the buff
 
 ### The source code examples in this post are on Github
 
-The source code examples that I write about here in this post can be found in the for post folder of my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-compute-vertex-normals). This is also where I am parking the source code for my [many other post on threejs](/categories/three-js/), as well as many more demos that I also have parked there on all kinds of other topics that have to do with the over all librray that is threejs.
+The source code examples that I write about here in this post can be found in the for post folder of my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-compute-vertex-normals). This is also where I am parking the source code for my [many other post on threejs](/categories/three-js/), as well as many more demos that I also have parked there on all kinds of other topics that have to do with the over all library that is threejs.
 
 ### Version numbers matter with threejs
 
