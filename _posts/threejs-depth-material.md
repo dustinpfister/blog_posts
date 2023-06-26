@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2023-06-26 12:18:18
-version: 1.42
+updated: 2023-06-26 12:27:15
+version: 1.43
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render a texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering such a mesh object. 
@@ -131,7 +131,11 @@ loop();
 
 There is playing around with the position and rotation of the mesh object also, but this helps to gain what the deal is with the near and far values of a camera and how that can effect how a mesh with the depth material is effected by those values.
 
-## 3 - Custom depth material using basic material and data textures
+## 3 - CDepth Material Alternatives
+
+There is looking into how to go about working out some kind of alternative to that of the depth material. There is of course a wide range of ways to go about doing this sort of thing of course. Some ways of doing it might prove to be a bit complex such as working out something using the shader material, and some GLSL code. However there are also a number of ways of doing what i might wan to do with just a little javaScript code, and the features of the various other built in material options.
+
+### 3.1 - Using Data Textures to create a kind of depth material effect
 
 On thing that I wanted to find out is how to go about making some kind of custom depth material. Like many things in programming there is more than one way to go about doing this, but for this section I will be going over a way to get a desired effect by making use of [data textures](/2022/04/15/threejs-data-texture/) and various features of the mesh basic material.
 
