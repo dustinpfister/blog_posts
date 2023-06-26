@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2023-01-24 08:15:35
-version: 1.71
+updated: 2023-06-26 13:41:44
+version: 1.72
 ---
 
-The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
+The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [threejs](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project with the library. It is the base class of mesh objects, but also just about every other kind of object that would be added to a scene object such as cameras, groups, lights, various helper objects and so forth. Also speaking of scene objects they too are based on top of the object3d class as well. So then to learn a thing or two about object3d is also to learn a thing about all of those kinds of objects that I have mentioned. For example to set the position of a mesh object I need to use the the object3d position property to so so and the same is also true of cameras, groups, and so forth.
 
-In this post I will be going over many of the basics of what the Object3d class is all about in threejs, when it comes to working with the class directly. However more often than not it is a class that I am working with indirectly each time I want to move or rotate a camera, mesh object, or anything to that effect that is based off the the object3d base class. In the process of going over the Object3d class I will also be touching base on many other classes that are important also, such as the [Vector3](/2018/04/15/threejs-vector3/) class and the [Euler Class](/2021/04/28/threejs-euler/) that are used as the values for many note worthy properties of this major base class.
+In this post I will be going over many of the basics of what the Object3d class is all about in threejs, when it comes to working with the class directly. However more often than not it is a class that I am working with indirectly each time I want to move or rotate a camera, mesh object, or anything to that effect. In the process of going over the Object3d class I will also be touching base on many other classes that are important also, such as the [Vector3](/2018/04/15/threejs-vector3/) class and the [Euler Class](/2021/04/28/threejs-euler/) that are used as the values for many note worthy properties of this major base class.
 
 <!-- more -->
 
@@ -20,7 +20,9 @@ In this post I will be going over many of the basics of what the Object3d class 
 
 ## The Object3d class and what to know before hand
 
-This is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), or javaScript in general. So I assume that you are at least up to speed with getting a basic hello world style example of threejs up and working at least. However now that you have a very basic example working at least you might now be looking into what the next steps might be when it comes to learning more about the library. With that said the object3d class, and everything that branches off from this class might be a good thing to get solid with. Also even if you do have some experience with threejs learning a thing or two more about the object3d base class is still something that might need to happen now and then also as there is a lot to be aware of with this one.
+This is not a [getting started post on threejs](/2018/04/04/threejs-getting-started/), or javaScript in general. So I assume that you are at least up to speed with getting a basic hello world style example of threejs up and working at least. However if that is the case you might now be looking into what the next steps might be when it comes to learning more about the library. With that said the object3d class, and everything that branches off from this class might be a good thing to get solid with. 
+
+Also even if you do have some experience with threejs learning a thing or two more about the object3d base class is still something that might need to happen now and then also as there is a lot to be aware of with this one. I have been at this for years and there are still a few details here that there that I might still want to look into more with this one.
 
 ### Source code examples are up on Github
 
