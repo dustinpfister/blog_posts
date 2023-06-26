@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2023-01-19 10:27:14
-version: 1.41
+updated: 2023-06-26 12:18:18
+version: 1.42
 ---
 
-The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render a texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering such a mesh object. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object without having to bother with external image assets, code means to generate texture, or at least setting up a light source to show some depth. Often I find myself going with the [normal material](/2021/06/23/threejs-normal-material/) when it comes ot this kind of place holder material but the depth material would be another option.
+The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that will render a texture on the faces of the geometry of a mesh using the near and far values of the camera that is used when rendering such a mesh object. 
 
-When it comes to a final choice in materials I often like to go with the the [standard material](/2021/04/27/threejs-standard-material/) as it is a good over all choice for the most part when it comes to the various maps that it supports. However there are some good things to write about when it comes to the depth material, as well as some other options for materials that work right away without a light source. There is also what branches off from the use of the depth material when it comes to things like the arguments that are given when creating a camera for a scene, namely the near and far values.
+There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object without having to bother with external image assets, code generated textures, color attributes, or setting up a light source to show some depth. Often I find myself going with the [normal material](/2021/06/23/threejs-normal-material/) when it comes to this kind of place holder material but the depth material would be another option.
 
-So in this post I thought I would write about a few examples about this depth material, and in the process of doing so I think I will be touching base on some things that have to do with cameras also. For example there is adjusting the near and far values of a camera as a way to change how the depth material looks and when doing so a method needs to be called each time to update the projection matrix.
+When it comes to a final choice in materials I often like to go with the the [standard material](/2021/04/27/threejs-standard-material/) as it is a good over all choice for the most part when it comes to the various maps that it supports. However there are some good things to write about when it comes to the depth material, as well as some other options for materials that work right away without a light source. There is also what branches off from the use of the depth material when it comes to things like the arguments that are given when creating a camera, namely the near and far values.
 
 <!-- more -->
 
@@ -38,9 +38,7 @@ The source code examples on the depth material that I am writing about here can 
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using r127 of threejs, and the last time I cam around to doing a little editing of this post I was using r146. Always be aware of what version of threejs is being used in an example code braking changes are introduced with threejs often. I have been writing posts on threejs now and then sense r91, and from that point to now I do not think much has changed with the depth material alone. Still I have got into the habit of mentioning  this in every post from now on.
-
-
+When I first wrote this post I was using r127 of threejs, and the last time I cam around to doing a little editing of this post I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Always be aware of what version of threejs is being used in an example code braking changes are introduced with threejs often. I have been writing posts on threejs now and then sense r91, and from that point to now I do not think much has changed with the depth material alone. Still I have got into the habit of mentioning  this in every post from now on.
 
 ## 1 - Basic Depth Material example
 
