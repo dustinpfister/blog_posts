@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 963
-updated: 2023-01-18 10:06:36
-version: 1.32
+updated: 2023-06-26 07:00:30
+version: 1.33
 ---
 
 When making a [threejs](https://en.wikipedia.org/wiki/Three.js) project there will be at least some projects in which I might want to add one or more light sources to a [scene object](/2018/05/03/threejs-scene/). When adding mesh objects to a scene I have to give a material, and some materials will not show up at all if it just has say a color value and no light source. This is because the color property of a material is treated differently from one material to another and will not work the same way when compared to another. This is the case when comparing the [standard material](/2021/04/27/threejs-standard-material/) to that of the [basic material](/2018/05/05/threejs-basic-material/), the standard material will react to light sources while the basic material will not. 
@@ -155,11 +155,49 @@ scene.add(mesh1);
 renderer.render(scene, camera);
 ```
 
-## 4 - Animation loop examples
+## 4 - Point Lights
+
+Another great option for lighting is [point lights](/2019/06/02/threejs-point-light/) which as the name suggests will shine light outward in all directions.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1f1f1f);
+const camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// POINT LIGHT
+// ---------- ----------
+const pl = new THREE.PointLight(0xffffff, 1);
+pl.position.set(0, 0, 0);
+scene.add( pl );
+// ---------- ----------
+// MESH
+// ---------- ----------
+const mesh = new THREE.Mesh(
+     new THREE.TorusGeometry(1, 0.25, 150, 150),
+     new THREE.MeshPhongMaterial()
+);
+mesh.geometry.rotateX(Math.PI * 0.5);
+scene.add(mesh);
+camera.lookAt(mesh.position);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 3, 2);
+camera.lookAt(0,0,0);
+renderer.render(scene, camera);
+```
+
+## 5 - Animation loop examples
 
 In this section I will now be going over a few source code examples that involve the use of an animation loop rather than that of a static scene. There are a lot of features that are just best represented by way of a little animation rather than just a single rendered view of some objects after all.
 
-### 4.1 - Directional light animation example
+### 5.1 - Directional light animation example
 
 To gain a better sen of what is going on with directional light it might be a good idea to work in some controls that can be used to change the position of the directional light, or have some kind of animation loop. For this example I will be doing the latter and will also be writing about additional examples such when it comes to other light source examples in the post from here on out.
 
@@ -225,7 +263,7 @@ const loop = function () {
 loop();
 ```
 
-### 4.2 - SpotLights
+### 5.2 - SpotLights
 
 Spotlights are a pretty cool feature to play around with, and in certain projects I might want to use one or more of them. I have [wrote a post in which I get into spotlights in detail](/2018/04/11/threejs-spotlights/), with very simple getting started type examples upwards to examples that make use of most of the features to be aware f when using spotlights. For this post I will be going over a custom example that I made just for this post that I think covers all of the various feature that I would want to be aware of when making use of them when it comes to the argument values, and also updating what the target and helper values in an animation loop.
 
@@ -308,9 +346,9 @@ loop();
 
 One more additional feature that I like to use when adjusting things with a spot light is the spot light helper which will help to get a visual idea of what is going on with a spot light. There is also the update method of this kind of object that I will want to call when changing values of the spotlight instance over time.
 
-### 4.3 - Point lights
+### 5.3 - Point light Loop
 
-Another great option for lighting is [point lights](/2019/06/02/threejs-point-light/) which as the name suggests will shine light outward in all directions.
+For this demo I am now working out a loop example that will make use of point lights.
 
 ```js
 // ---------- ----------
