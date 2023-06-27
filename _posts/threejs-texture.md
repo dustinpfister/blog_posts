@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1055
-updated: 2023-06-27 11:29:34
-version: 1.3
+updated: 2023-06-27 12:10:34
+version: 1.4
 ---
 
 The [texture class in threejs](https://threejs.org/docs/#api/en/textures/Texture) is a way to go about creating the kind of object that is used for the various map options of materials. There are a number of ways to create this kind of object, such using the texture loader, or creating an image with javaScript code by way of canvas of data textures. In any case there are a lot of little details that one will need to be aware of when it comes to what there is to work with when it comes to th texture class alone. Also things can end up branching off into a wide range of other topics while we are at it when it comes to texture in general when it comes to how textures are used with mesh materials, backgrounds, and so forth.
@@ -91,3 +91,44 @@ renderer.render(scene, camera);
 ```
 
 One thing that is really nice about canvas texture is that I can use everything and anything in the 2d drawing context of canvas elements to create whatever kind of texture that I want. As such this might be one of the best ways to go if one needs to create textures by way of some javaScript code rather that external image assets.
+
+### 1.2 - Using the Texture loader
+
+The texture loader is then one way to go about loading in textures in the form of external image assets. There are a whole lot of other ways to go about loading textures this way of course. If you have any preferred way to load image files then the Image object can just be passed to THREE.texture. However if I just want to load images alone, and then do something else when it comes to geometry, materials and the state of objects then the texture loader is a good option for doing so.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any add-ons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(1, 1.5, 1);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LOAD TEXTURE, ADD MESH, RENDER
+//-------- ----------
+const loader = new THREE.TextureLoader();
+loader.load(
+    '/img/smile-face/smile_face_256.png',
+    (texture) => {
+        texture.magFilter = THREE.NearestFilter;
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            map: texture
+        });
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const mesh = new THREE.Mesh( geometry, material);
+        scene.add(mesh);
+        renderer.render(scene, camera);
+    }
+);
+```
+
+There Might be a lot more to get into when it comes to the texture loader, and loaders in general. However this is very much a basic section on textures alone. I have my [main blog post on the texture loader](/2021/06/21/threejs-texture-loader/) if you are interested in some examples that have to do with loading many images, and other various advanced features of the texture loader, and loading managers.
