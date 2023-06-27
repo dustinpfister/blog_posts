@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1055
-updated: 2023-06-27 12:18:39
-version: 1.5
+updated: 2023-06-27 12:44:02
+version: 1.6
 ---
 
 The [texture class in threejs](https://threejs.org/docs/#api/en/textures/Texture) is a way to go about creating the kind of object that is used for the various map options of materials. There are a number of ways to create this kind of object, such using the texture loader, or creating an image with javaScript code by way of canvas of data textures. In any case there are a lot of little details that one will need to be aware of when it comes to what there is to work with when it comes to th texture class alone. Also things can end up branching off into a wide range of other topics while we are at it when it comes to texture in general when it comes to how textures are used with mesh materials, backgrounds, and so forth.
@@ -132,6 +132,62 @@ loader.load(
 ```
 
 There Might be a lot more to get into when it comes to the texture loader, and loaders in general. However this is very much a basic section on textures alone. I have my [main blog post on the texture loader](/2021/06/21/threejs-texture-loader/) if you are interested in some examples that have to do with loading many images, and other various advanced features of the texture loader, and loading managers.
+
+## 2 - Features of the Texture Class
+
+For this section I will not want to go over a few demos of the various features of the texture class.
+
+### 2.1 - WrapS, WrapT, center, and repeat
+
+By default a texture will not repeat as the Wraps And WrapT properties of textures will default to the THREE.ClampToEdgeWrapping constant. However the tick to get this to work does not just simply involve setting WrapS and WrapT to THREE.RepeatWrapping as there are some additional features of the Texture class that will typically also need to be adjusted for this. These other features are the center and repeat properties of the texture both of which are instances of the [Vector2 class](/2023/06/09/threejs-vector2/). The center vector object will need to have th x and y values adjusted with values between 0 and 1 as a way to adjust where there center of the image should be each repeat. After that there is the values of the Vector2 for the repeat property which default to 1 for x, and y, these will need to be increase to whatever values you want for the number or repeats for each axis.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any add-ons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, .025, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS ELEMENT, 2D DRAWING CONTEXT
+//-------- ----------
+const canvas = document.createElement('canvas'), 
+ctx = canvas.getContext('2d');
+canvas.width = 32;
+canvas.height = 32;
+const gradient = ctx.createLinearGradient(0, 0, 32, 32);
+gradient.addColorStop(0.0, 'red');
+gradient.addColorStop(0.5, 'green');
+gradient.addColorStop(1.0, 'blue');
+ctx.fillStyle = gradient;
+ctx.fillRect(0,0, canvas.width, canvas.height);
+//-------- ----------
+// TEXTURE - Using wraps wrapt and other features for having a repeating background
+//-------- ----------
+const texture_bg = new THREE.Texture(canvas);
+texture_bg.needsUpdate = true;
+texture_bg.wrapS = THREE.RepeatWrapping;
+texture_bg.wrapT = THREE.RepeatWrapping;
+texture_bg.offset.set(0.5, 0.5);
+texture_bg.repeat.set(4, 4);
+//-------- ----------
+// USING TEXTURE AS BACKGROUND
+//-------- ----------
+scene.background = texture_bg;
+scene.add( new THREE.GridHelper(10, 10, 0xffffff, 0xffffff) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 ## Conclusion
 
