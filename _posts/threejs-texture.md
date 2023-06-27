@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1055
-updated: 2023-06-27 12:10:34
-version: 1.4
+updated: 2023-06-27 12:18:39
+version: 1.5
 ---
 
 The [texture class in threejs](https://threejs.org/docs/#api/en/textures/Texture) is a way to go about creating the kind of object that is used for the various map options of materials. There are a number of ways to create this kind of object, such using the texture loader, or creating an image with javaScript code by way of canvas of data textures. In any case there are a lot of little details that one will need to be aware of when it comes to what there is to work with when it comes to th texture class alone. Also things can end up branching off into a wide range of other topics while we are at it when it comes to texture in general when it comes to how textures are used with mesh materials, backgrounds, and so forth.
@@ -132,3 +132,8 @@ loader.load(
 ```
 
 There Might be a lot more to get into when it comes to the texture loader, and loaders in general. However this is very much a basic section on textures alone. I have my [main blog post on the texture loader](/2021/06/21/threejs-texture-loader/) if you are interested in some examples that have to do with loading many images, and other various advanced features of the texture loader, and loading managers.
+
+## Conclusion
+
+There is a great deal more to be aware of when it comes to textures, and all kinds of additional topics that will come up the branch off from the subject of textures as well of course. However that might have to be it for this blog post at least. Some additional subjects with textures have to do with geometry, and the various map options of the various materials. In the opening section I wrote about uv attributes, with that said I have a [threejs example post that is a kind of advanced subject with uv mapping](/2022/11/04/threejs-examples-uvmap-cube-canvas-update/) that you might want to check out with that. As of the various map options I have wrote posts on [alpha maps](/2019/06/06/threejs-alpha-map/), and [emissve maps](/2021/06/22/threejs-emissive-map) which are to great options for some materials beyond just the map option.
+
