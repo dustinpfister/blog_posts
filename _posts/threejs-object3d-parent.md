@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2023-06-27 14:28:30
-version: 1.32
+updated: 2023-06-27 14:48:56
+version: 1.33
 ---
 
 I have been taking another look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and have found that I should write a lot more about this class. For example one such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property of an object. That is where the children property is a collection of other objects that are children of an object, the parent property is, well the parent of the current object of course if there is one.
@@ -35,7 +35,7 @@ The source code examples in this post are also up on [Github in my test threejs 
 
 ### version numbers matter
 
-When I created these source code examples for the first time and wrote this post I was using threejs r127. This was a late version of threejs in the first half of 2021, so it is possible that at some point in the future these source code examples will break.
+When I created these source code examples for the first time and wrote this post I was using threejs r127. This was a late version of threejs in the first half of 2021. However sense I first wrote this post I have came around to edit this post at least once, and the last time I did I was using [r146 of the library](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md).
 
 ## 1 - Basic object3d parent example
 
@@ -44,30 +44,31 @@ For a basic example of this parent property I thought I would start out with som
 
 
 ```js
-// scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
 scene.add(new THREE.GridHelper(5, 5));
- 
-// adding a mesh
-var mesh = new THREE.Mesh(
+const mesh = new THREE.Mesh(
         new THREE.ConeGeometry(0.5, 1, 10, 10),
         new THREE.MeshNormalMaterial());
 mesh.position.set(0, 0.5, 0);
 scene.add(mesh);
- 
-// getting the parent of the mesh, and preforming an action on it
-var parent = mesh.parent;
-parent.rotation.x = Math.PI * 2 * Math.random();
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const mesh_parent = mesh.parent;
+mesh_parent.rotation.x = Math.PI * 2 * Math.random();
+//-------- ----------
+// RENDER
+//-------- ----------
 camera.position.set(4, 4, 4);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
-renderer.render(scene, camera);
-```
+renderer.render(scene, camera);```
 
 This might not be the most compelling example of the Object3d.parent property as I could just use the scene variable to do the same thing. However never the less this is a basic example, and as such you should get the basic idea. As one might expect the Object3d.parent property is just a reference to the parent object of an object of there is one. So now that I have this out of the way I can get into some real use case examples of the parent property.
 
@@ -78,11 +79,23 @@ Now that I have got a basic example out of the way when it comes to the parent p
 In this example I am also attaching an event handler to the canvas element of the renderer and in the body of the callback for the event handler I am making use of another useful feature of the object3d class for getting references to objects which is the and Object3d.traverse method. When I call this traverse method off of the scene object I can use it to loop over all instances of object3d that are children of the scene object. I can then pass each of the objects that are attached to scene to this process object helper function of mine.
 
 ```js
-var createGroup = function(gid){
-    var group = new THREE.Group();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.name = 'scene_myworld';
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createGroup = function(gid){
+    const group = new THREE.Group();
     group.name = 'group_' + gid;
     // adding a cone
-    var cone = new THREE.Mesh(
+    const cone = new THREE.Mesh(
         new THREE.ConeGeometry(0.5, 1, 10, 10),
         new THREE.MeshNormalMaterial());
     cone.geometry.rotateX(Math.PI * 0.5);
@@ -90,7 +103,7 @@ var createGroup = function(gid){
     cone.name = 'mesh_ ' + group.name + '_cone';
     group.add(cone);
     // adding a box
-    var box = new THREE.Mesh(
+    const box = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 3),
         new THREE.MeshNormalMaterial());
     box.position.set(0, 0, 0);
@@ -98,48 +111,38 @@ var createGroup = function(gid){
     group.add(box);  
     return group;
 };
- 
-var rndRad = function(){
+const rndRad = function(){
     return Math.PI * 2 * Math.random();
 };
- 
-var processObject = function(obj){
-    var nameArray = obj.name.split('_');
+const processObject = function(obj){
+    const nameArray = obj.name.split('_');
     if(nameArray[0] === 'mesh'){
        // USING OBJECT3D parent prop to get Group
-       var mesh = obj,
+       const mesh = obj,
        group = mesh.parent;
        console.log(group.name);
        group.rotation.set(rndRad(), rndRad(), rndRad());
     }
- 
 };
- 
-// scene
-var scene = new THREE.Scene();
-scene.name = 'scene_myworld';
-var grid = new THREE.GridHelper(9, 9);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const grid = new THREE.GridHelper(9, 9);
 grid.name = 'helper_grid_1';
 scene.add(grid);
- 
-var group = createGroup('0');
-scene.add(group);
-group.lookAt(-10, 10, -10);
- 
-group = createGroup('1');
-group.position.set(3, 1.5, 0);
-group.lookAt(3, 10, 0);
-scene.add(group);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const group1 = createGroup('0');
+scene.add(group1);
+group1.lookAt(-10, 10, -10);
+const group2 = createGroup('1');
+group2.position.set(3, 1.5, 0);
+group2.lookAt(3, 10, 0);
+scene.add(group2);
+//-------- ----------
+// RENDER
+//-------- ----------
 camera.position.set(5, 5, 5);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
- 
 renderer.domElement.addEventListener('click', function(){
     scene.traverse( function(obj){
         processObject(obj);
@@ -157,91 +160,84 @@ Another note worthy use case example of the object3d parent property might have 
 First off the main javaScript file of this example of the parent property where I am using the parent property in the update method that I worked out for this example.
 
 ```js
-var raycaster = new THREE.Raycaster();
-var mouse = new THREE.Vector2(1, 1);
- 
-// on mouse move
-var onMouseMove = function( event ) {
-    var canvas = event.target,
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// RAYCASTER / HELPER FUNCTIONS
+//-------- ----------
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2(1, 1);
+const onMouseMove = function( event ) {
+    const canvas = event.target,
     box = canvas.getBoundingClientRect(),
     x = event.clientX - box.left,
     y = event.clientY - box.top;
     mouse.x = ( x / canvas.scrollWidth ) * 2 - 1;
     mouse.y = - ( y / canvas.scrollHeight ) * 2 + 1;
 };
- 
-// update the picking ray with the camera and mouse position
-var update = function(cubeGroups, secs){
+const update = function(cubeGroups, secs){
     raycaster.setFromCamera( mouse, camera );
     cubeGroups.children.forEach(function(cubeGroup){
-        var intersects = raycaster.intersectObjects( cubeGroup.children, true );
+        const intersects = raycaster.intersectObjects( cubeGroup.children, true );
         if(intersects.length > 0){
-            var mesh = intersects[0].object,
+            const mesh = intersects[0].object,
             group = mesh.parent;
             group.userData.active = true;
         }
         CubeGroupMod.update(cubeGroup, secs);
     });
 };
- 
-// creating a scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
 scene.add(new THREE.GridHelper(9, 9));
- 
-var cubeGroups = new THREE.Group();
+const cubeGroups = new THREE.Group();
 scene.add(cubeGroups);
- 
-var cg = CubeGroupMod.create({
+const cg1 = CubeGroupMod.create({
    maxFrame: 30,
    yDelta: 0.5,
    xzDelta: 0.5
 });
-cg.position.x = 0;
-cubeGroups.add(cg);
- 
-var cg = CubeGroupMod.create({
+cg1.position.x = 0;
+cubeGroups.add(cg1);
+const cg2 = CubeGroupMod.create({
    maxFrame: 30,
    yDelta: 0.5,
    xzDelta: 0.5
 });
-cg.position.x = 3;
-cubeGroups.add(cg);
- 
-var cg = CubeGroupMod.create({
+cg2.position.x = 3;
+cubeGroups.add(cg2);
+const cg3 = CubeGroupMod.create({
    maxFrame: 30,
    yDelta: 0.5,
    xzDelta: 0.5
 });
-cg.position.x = -3;
-cubeGroups.add(cg);
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+cg3.position.x = -3;
+cubeGroups.add(cg3);
+//-------- ----------
+// LOOP
+//-------- ----------
 camera.position.set(5, 5, 5);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
 renderer.domElement.addEventListener( 'mousemove', onMouseMove, false );
- 
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
-// loop
-var lt = new Date(),
+let lt = new Date(),
 frame = 0,
 maxFrame = 300,
 fps = 30;
-var loop = function () {
-    var now = new Date(),
+const loop = function () {
+    const now = new Date(),
     per = frame / maxFrame,
     bias = 1 - Math.abs(per - 0.5) / 0.5,
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if (secs > 1 / fps) {
- 
         update(cubeGroups, secs);
- 
         renderer.render(scene, camera);
         frame += fps * secs;
         frame %= maxFrame;
