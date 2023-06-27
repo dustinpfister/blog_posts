@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2023-06-27 14:14:12
-version: 1.84
+updated: 2023-06-27 14:15:40
+version: 1.85
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class that is used to store the local position of an object3d class based object such as a Mesh, Camera, Group and so forth. This local position is relative to a parent object, rather than what is often referred to as a world space. In other words the values of the Vector3 object of the position property are deltas from the current position of the parent object, rather than an absolute world space location.
@@ -1283,6 +1283,8 @@ loop();
 The Box3 class will come up a lot when it comes to positioning an object. This box3 class can be created directly or end up being a property of a geometry when calling a buffer geometry method like the compute bounding box method. This box3 class can then be used to know size of a mesh object which can prove to be useful when it comes to not so much set position, but adjust it so that the bottom of the mesh will rest on a surface. However there are many other used for setting position, such as creating a box3 object that is an area to whichI want objects to be contained within.
 
 ### 7.1 - Seeded random demo of position  mesh objects inside a box3 object
+
+There is a seeded random method is the math utils object of threejs which is what I am using in the process of setting the position of objects in this demo of the box3 class.
 
 ```js
 //-------- ----------
