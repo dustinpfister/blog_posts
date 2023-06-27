@@ -5,13 +5,16 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1055
-updated: 2023-06-27 13:13:09
-version: 1.8
+updated: 2023-06-27 16:40:07
+version: 1.9
 ---
 
 The [texture class in threejs](https://threejs.org/docs/#api/en/textures/Texture) is a way to go about creating the kind of object that is used for the various map options of materials. There are a number of ways to create this kind of object, such using the texture loader, or creating an image with javaScript code by way of canvas of data textures. In any case there are a lot of little details that one will need to be aware of when it comes to what there is to work with when it comes to th texture class alone. Also things can end up branching off into a wide range of other topics while we are at it when it comes to texture in general when it comes to how textures are used with mesh materials, backgrounds, and so forth.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/0q21OFuhEXI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Textures and what to know first
 
