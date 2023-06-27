@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1055
-updated: 2023-06-27 11:19:19
-version: 1.2
+updated: 2023-06-27 11:29:34
+version: 1.3
 ---
 
 The [texture class in threejs](https://threejs.org/docs/#api/en/textures/Texture) is a way to go about creating the kind of object that is used for the various map options of materials. There are a number of ways to create this kind of object, such using the texture loader, or creating an image with javaScript code by way of canvas of data textures. In any case there are a lot of little details that one will need to be aware of when it comes to what there is to work with when it comes to th texture class alone. Also things can end up branching off into a wide range of other topics while we are at it when it comes to texture in general when it comes to how textures are used with mesh materials, backgrounds, and so forth.
@@ -34,3 +34,60 @@ I also have the source code examples that I am writing about here up on [my test
 
 When I first wrote this blog post I was [using r152](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) for the source code examples of the post.
 
+## 1 - Some Basic examples of Textures
+
+TO kick off this post I am going to want to start out with some very basic getting started type demos. For this section then I will be sticking to using just the basic material and map option. On top of that these will be just simple static, single frame renders that will not involve anything to advanced that will come up when getting into animation loops.
+
+### 1.1 - Basic example using canvas textures
+
+One way to go about creating a texture object with a little javaScript code would be to use [canvas textures](/2018/04/17/threejs-canvas-texture/). There is the THREE.CanvasTexture constructor, however it is also possible to use THREE.Texture as well, it is just that the needs update boolean of the texture will need to be set to true after creating the texture that way as I am doing in this demo.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any add-ons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, .025, 100);
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS ELEMENT, 2D DRAWING CONTEXT
+//-------- ----------
+const canvas = document.createElement('canvas'), 
+ctx = canvas.getContext('2d');
+canvas.width = 32;
+canvas.height = 32;
+ctx.fillStyle = '#0a0a0a';
+ctx.fillRect(0,0, canvas.width, canvas.height);
+ctx.lineWidth = 5;
+ctx.strokeStyle = '#ff0000';
+ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+//-------- ----------
+// TEXTURE - using a canvas element
+//-------- ----------
+const texture = new THREE.Texture(canvas);
+texture.needsUpdate = true;
+texture.magFilter = THREE.NearestFilter;
+texture.minFilter = THREE.NearestFilter;
+//-------- ----------
+// GEOMETRY, MATERIAL, MESH
+//-------- ----------
+const geo = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshBasicMaterial({ map: texture });
+const mesh = new THREE.Mesh( geo, material);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
+```
+
+One thing that is really nice about canvas texture is that I can use everything and anything in the 2d drawing context of canvas elements to create whatever kind of texture that I want. As such this might be one of the best ways to go if one needs to create textures by way of some javaScript code rather that external image assets.
