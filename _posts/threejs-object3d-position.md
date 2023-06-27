@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 975
-updated: 2023-05-30 12:05:23
-version: 1.82
+updated: 2023-06-27 14:09:32
+version: 1.83
 ---
 
 The [position property of the Object3d class in threejs](https://threejs.org/docs/index.html#api/en/core/Object3D.position) will hold a instance of the Vector3 class that is used to store the local position of an object3d class based object such as a Mesh, Camera, Group and so forth. This local position is relative to a parent object, rather than what is often referred to as a world space. In other words the values of the Vector3 object of the position property are deltas from the current position of the parent object, rather than an absolute world space location.
@@ -967,7 +967,7 @@ const loop = () => {
 loop();
 ```
 
-### 6.2 - Coming up with a Wrap Vector3 method
+### 5.2 - Coming up with a Wrap Vector3 method
 
 Although there is a clamp method to work with in the Vector3 class it would seem that there is no wrap method in the class. There are some tools to work with in the Math utils object that might help to address this isshue, but for this demo I am working with a wrap method based on the source code of a [threejs example project of a wrap module](/2022/09/09/threejs-examples-wrap-module/) that I made a while back when I ran into this problem.
 
@@ -1067,14 +1067,296 @@ const loop = () => {
 loop();
 ```
 
-## 6 - Deterministic Animation examples
+## 6 - The Raycaster class
+
+The [Raycaster class](/2021/05/18/threejs-raycaster/) is another major tool in threejs that can prove to be very useful in the process of positioning objects. Often one might be in a situation in which they have one mesh object, and they then need to position it to the surface of another method object. If the mesh that one needs to position to contains something like a sphere there might be a lot of ways to do so without having to use a raycaster. However if it is some kind of weird geometry with lots of hills and valleys then something like the ray caster class and prove to be useful.
+
+### 6.1 - Positioning an object to a torus
+
+For this demo I am using the raycaster class to position one mesh object on to the surface of a torus geometry.
+
+```js
+//-------- ----------
+// SPHERE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// set mesh position if we have a hit
+const setMeshIfHit = (raycaster, mesh, target, adjustAxis, adjustMulti) => {
+    adjustAxis = adjustAxis || 'z';
+    adjustMulti = adjustMulti === undefined ? 0.5 : adjustMulti;
+    const result = raycaster.intersectObject(target, false);
+    if(result.length > 0){
+        const hit = result[0];
+        mesh.geometry.computeBoundingBox();
+        let v_size = new THREE.Vector3();
+        mesh.geometry.boundingBox.getSize(v_size);
+        let hh = v_size[adjustAxis] * adjustMulti;
+        let d = hit.point.distanceTo(raycaster.ray.origin);
+        mesh.position.copy( hit.point ).lerp(raycaster.ray.origin, hh / d);
+        mesh.lookAt(raycaster.ray.origin);
+   }
+};
+// get dir
+const getDir = (v_origin, v_lookat) => {
+    const obj = new THREE.Object3D();
+    obj.position.copy(v_origin);
+    obj.lookAt(v_lookat);
+    const dir = new THREE.Vector3(0, 0, 1);
+    dir.applyEuler(obj.rotation).normalize();
+    return dir;
+};
+// get look at vector
+const getLookAt = (deg, radius) => {
+    let radian = Math.PI / 180 * deg;
+    return new THREE.Vector3(1, 0, 0).applyEuler( new THREE.Euler(0, radian, 0) ).multiplyScalar(radius);
+};
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+const torus_radius = 4;
+// the torus mesh
+const torus = new THREE.Mesh(
+        new THREE.TorusGeometry(torus_radius, 1.25, 40, 40),
+        new THREE.MeshNormalMaterial());
+torus.geometry.rotateX(Math.PI * 0.5);
+scene.add(torus);
+// raycaster point mesh
+const mesh_ray = new THREE.Mesh(
+    new THREE.ConeGeometry(0.25, 2, 10, 10),
+    new THREE.MeshNormalMaterial());
+mesh_ray.geometry.rotateX(Math.PI * 0.5);
+scene.add(mesh_ray);
+// create a mesh object
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(0.75, 2, 1.25),
+    new THREE.MeshNormalMaterial());
+mesh.geometry.rotateX(Math.PI * 0.5);
+scene.add(mesh);
+//-------- ----------
+// RAYCASTER
+//-------- ----------
+// create raycaster
+const raycaster = new THREE.Raycaster();
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(7, 7, 7);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 300;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+new THREE.OrbitControls(camera, renderer.domElement);
+const update = function(frame, frameMax){
+    let a = frame / frameMax;
+    let b = 1 - Math.abs(0.5 - a * 2 % 1 ) / 0.5;
+    // update raycaster
+    let v_lookat = getLookAt(360 * a, torus_radius);
+    let v_ray_origin = new THREE.Vector3(0, -5 + 10 * b, 0);
+    let v_ray_dir = getDir(v_ray_origin,  v_lookat);
+    raycaster.set(v_ray_origin, v_ray_dir);
+    // update mesh_ray to have the same position as the raycaster origin
+    mesh_ray.position.copy(v_ray_origin);
+    mesh_ray.lookAt(v_lookat);
+    // if we have a hit, update the mesh object
+    setMeshIfHit(raycaster, mesh, torus);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 6.2 - Mouse over demo of raycaster to set position
+
+Another major use case of the raycaster class is to fine out of a mesh object has been clicked or not. When doing so there is a vector3 object that is the position on the surface of a mesh that can then in turn be used to set the position of the mesh. OR in the case of this demo I can use it a s away to know if I should adjust the position of a mesh that has been clicked.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MOUSE OVER EVENT
+//-------- ----------
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2(-5, -5);
+const onDown = ( event ) => {
+    const canvas = event.target,
+    box = canvas.getBoundingClientRect(),
+    x = event.clientX - box.left,
+    y = event.clientY - box.top;
+    mouse.x = ( x / canvas.scrollWidth ) * 2 - 1;
+    mouse.y = - ( y / canvas.scrollHeight ) * 2 + 1;
+};
+renderer.domElement.addEventListener( 'pointermove', onDown, false );
+//-------- ----------
+// CHILD OBJECTS
+//-------- ----------
+const boxGroup = new THREE.Group();
+scene.add(boxGroup);
+// box 1
+let box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+box.position.set(0, 0, 0);
+boxGroup.add(box);
+// box 2
+box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+box.position.set(3, 0, 0);
+boxGroup.add(box);
+// box 3
+box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+box.position.set(-3, 0, 0);
+boxGroup.add(box);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+let lt = new Date();
+const fps = 30;
+const update = (group, secs) => {
+    raycaster.setFromCamera( mouse, camera );
+    const intersects = raycaster.intersectObjects(group.children, true );
+    if(intersects.length > 0){
+        const mesh = intersects[0].object;
+        mesh.position.y = 1;
+    }
+    group.children.forEach(function(obj){
+        let y = obj.position.y;
+        if(y > 0){
+            y -= 0.25 * secs;
+            obj.position.y = y;
+        }
+    });
+};
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // update
+        update(boxGroup, secs);
+        // render
+        renderer.render(scene, camera);
+        lt = now;
+    }
+}
+loop();
+```
+
+## 7 - The Box3 class as a way to set position of objects
+
+### 7.1 - Seeded random demo of position  mesh objects inside a box3 object
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+// set axis helper
+const setAxis = function(mesh, box3, axis, per){
+    const meshSize = new THREE.Vector3();
+    mesh.geometry.computeBoundingBox();
+    mesh.geometry.boundingBox.getSize(meshSize);
+    const boxSize = new THREE.Vector3();
+    box3.getSize(boxSize);
+    mesh.position[axis] = box3.min[axis] + meshSize[axis] / 2  + ( boxSize[axis] - meshSize[axis] ) * per;
+};
+// rnd
+const rnd = function(){
+    return THREE.MathUtils.seededRandom();
+};
+//-------- ----------
+// BOX3
+//-------- ----------
+// create a new box3 with helper
+const min = new THREE.Vector3(-2.0, -1.0, -1.0);
+const max = new THREE.Vector3(2.0, 1.0, 1.0);
+const box3 = new THREE.Box3(min, max);
+const box3Helper = new THREE.Box3Helper(box3, 0x00ff00);
+box3Helper.material.linewidth = 3;
+scene.add(box3Helper);
+//-------- ----------
+// MESH OBJECTS
+//-------- ----------
+// CREATE AND POSITION MESH OBJECTS IN THE BOX
+let i = 0; 
+const len = 80;
+while(i < len){
+    const w = 0.5 + 0.75 * rnd(),
+    h = 0.5 + 0.75 * rnd(),
+    d = 0.5 + 0.75 * rnd();
+    const mesh = new THREE.Mesh( 
+        new THREE.BoxGeometry(w, h, d), 
+        new THREE.MeshBasicMaterial({
+            transparent: true,
+            opacity: 0.1 + 0.4 * rnd(),
+            color: new THREE.Color(rnd(), rnd(), rnd())
+        }) 
+    );
+    setAxis(mesh, box3, 'x', rnd());
+    setAxis(mesh, box3, 'y', rnd());
+    setAxis(mesh, box3, 'z', rnd());
+    scene.add(mesh);
+    i += 1;
+};
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(-3, 2, 4);
+camera.lookAt(0, -0.5, 0);
+renderer.render(scene, camera);
+```
+
+## 8 - Deterministic Animation examples
 
 In order to really get a solid grasp on the subject of setting the position of object3d based objects in threejs one will want to work out a number of animations in which they are not just setting the position once, but a whole bunch of times over a length of time to create a kind of animation. When it comes to animation there are two general schools of thought that come to mind for me at least and that would be Deterministic, and Stochastic style animation. In other worlds there is having a Deterministic kind of animation where each frame over time is predicable, in other words think video rather than video game. Stochastic style animation is what I would often call the kinds of animations where randomness, and other factors such as user input are at play.
 
 For this section I will be sticking to just a few examples of a kind of Deterministic style, saving the alternative style for some other post or section outside of this one. Many of these examples here will then often be in the demo videos that I embed for this post then as I often start out such projects in this kind of section.
 
 
-### 6.1 - Just moving a bunch of mesh objects on the x axis by differing rates
+### 8.1 - Just moving a bunch of mesh objects on the x axis by differing rates
 
 To start out with animation of the position object3d property I have an example here where I now have an animation loop rather than just a single call of the render method of the webgl renderer. This is an animation loop example that I seem to keep copying and pasting from one example to another over and over again that allows for me to set differing values for a frames per second value.  I then have one FPS rate that will be used to set the target frame rate at which the update function is called, and the other can be used to set the current frame value that is used in the update method to update the state of things. This allows for me to set a low update frame rate while still going by a higher frame rate update when it comes to the movement of objects. This helps to conserve system resources while maintain a rate of movement that is consistent. In other words I can set thee update rate low which will result in choppy video, but use less CPU overhead, or a higher update rate which will result in smoother video but at the cost of eating up more CPU Overhead.
 
@@ -1169,7 +1451,7 @@ const loop = () => {
 loop();
 ```
 
-### 6.2 - Lerp method animation example
+### 8.2 - Lerp method animation example
 
 Now that I have a nice basic frame over max frame animation example, I can now start to move into another example that makes use of many of the Vector3 class features that I wrote about in the basic section. One very useful method that I covered out of many others was the lerp method of the vector3 class which can be used in combination with the clone method as a great way to move an object back and from between a start and end vector.
 
@@ -1285,7 +1567,7 @@ const loop = () => {
 loop();
 ```
 
-### 6.3 - Using a Curve to position a mesh object over time
+### 8.3 - Using a Curve to position a mesh object over time
 
 Here I have an animation loop example based off the basic curve section example in which I am moving a mesh along a curve. This time I made a custom get alpha method that makes use of a method in the [Math Utils object](/2022/04/11/threejs-math-utils/) to get a smooth animation along the curve back and forth. A get alpha method is just a way to go about getting a value between 0 and 1 that will help with creating an argument value to use with the get point method of the base curve class.
 
@@ -1385,7 +1667,7 @@ const loop = () => {
 loop();
 ```
 
-### 6.4 - Video1 example
+### 8.4 - Video1 example
 
 This is an example based on the first video that I made for this post. It is an example where I just made a group of mesh objects and then moved them around using a home position that I stored in a user data object along with the use of some additional Vector3 class methods to move the mesh objects over time. I did not put a whole lot of thought into this one as I just wanted to make a quick place holder video for this post. I have sense then worked out some additional examples that make for a more interesting video than this.
 
@@ -1469,7 +1751,7 @@ const loop = () => {
 loop();
 ```
 
-### 6.5 - Video2 example making use of Buffer geometry as a way to set position.
+### 8.5 - Video2 example making use of Buffer geometry as a way to set position.
 
 This is the source code that I used to make my second demo video for this blog post that at the time of this writing is the latest video that I have up at the top of the blog post. This time around I made a video that is about using the [position attribute of a buffer geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/) to create a vector3 object using the getX, getY, and getZ methods of the buffer attribute class. Once I have my current vector3 object for a point in a geometry I can then mutate from that point using the [vector3 lerp method](/2022/05/17/threejs-vector3-lerp/) between the current point and the next point in the geometry. In the end I can then once again use the copy method to copy the state of this mutated Vector3 object to the position of a Mesh object.
 
