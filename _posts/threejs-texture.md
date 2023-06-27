@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1055
-updated: 2023-06-27 12:44:02
-version: 1.6
+updated: 2023-06-27 13:11:04
+version: 1.7
 ---
 
 The [texture class in threejs](https://threejs.org/docs/#api/en/textures/Texture) is a way to go about creating the kind of object that is used for the various map options of materials. There are a number of ways to create this kind of object, such using the texture loader, or creating an image with javaScript code by way of canvas of data textures. In any case there are a lot of little details that one will need to be aware of when it comes to what there is to work with when it comes to th texture class alone. Also things can end up branching off into a wide range of other topics while we are at it when it comes to texture in general when it comes to how textures are used with mesh materials, backgrounds, and so forth.
@@ -185,6 +185,73 @@ scene.add( new THREE.GridHelper(10, 10, 0xffffff, 0xffffff) );
 // RENDER
 //-------- ----------
 camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 2.2 - The mag filter and canvas textures
+
+One thing that I have noticed with canvas textures with low resolutions is that they look blurry. The reason why this is has to do with the default value of the mag Filter option of the texture. The default value for Texture.magFilter is THREE.LinearFilter, however often I might want to use the THREE.NearestFilter option when using low res canvas textures to get a desired outcome.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any add-ons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, .025, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS ELEMENT, 2D DRAWING CONTEXT
+//-------- ----------
+const canvas = document.createElement('canvas'), 
+ctx = canvas.getContext('2d');
+ctx.translate(0.5, 0.5);
+canvas.width = 64;
+canvas.height = 64;
+ctx.lineWidth = 1;
+let i = 0;
+const len = 8;
+const color = new THREE.Color();
+while(i < len){
+    const r = 0.05 + 0.95 * (i / len);
+    const g = (1 - r)  * 0.1;
+    color.setRGB(r, g, 0);
+    ctx.strokeStyle = color.getStyle();
+    const a = 1 + 3 * i;
+    const s = canvas.width - a * 2
+    ctx.strokeRect(a, a, s, s);
+    i += 1;
+}
+//-------- ----------
+// TEXTURE - using a canvas element
+//-------- ----------
+const texture1 = new THREE.Texture(canvas);
+texture1.needsUpdate = true;
+const texture2 = texture1.clone();
+texture2.magFilter = THREE.NearestFilter;
+//-------- ----------
+// GEOMETRY, MATERIAL, MESH
+//-------- ----------
+const geo = new THREE.BoxGeometry(1, 1, 1);
+const material1 = new THREE.MeshBasicMaterial({ map: texture1 });
+const material2 = new THREE.MeshBasicMaterial({ map: texture2 });
+const mesh1 = new THREE.Mesh( geo, material1);
+mesh1.position.x = -0.6;
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh( geo, material2);
+mesh2.position.x = 0.6;
+scene.add(mesh2);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(0, 1, 2);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
