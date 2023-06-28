@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2023-01-25 12:00:03
-version: 1.24
+updated: 2023-06-28 05:35:55
+version: 1.25
 ---
 
-One major part of learning how to use threejs is to get a solid grasp on what there is to work with in the [object3d class](https://threejs.org/docs/#api/en/core/Object3D). There is not just the base object3d class itself, but also a whole lot of other objects that are based off of the object 3d class such as [mesh objects](/2018/05/04/threejs-mesh/), [groups](/2018/05/16/threejs-grouping-mesh-objects/), [cameras](/2018/04/06/threejs-camera/) and so forth. So once one gets an idea as to what the [position property of the Object3d class is all about](/2022/04/04/threejs-object3d-position/) for example, they can also apply that same understanding to a lot of typical objects that are used when composing any kind of of over all scene.
+One major part of learning how to use threejs is to get a solid grasp on what there is to work with in the [object3d class](https://threejs.org/docs/#api/en/core/Object3D). There is not just the base object3d class itself, but also a whole lot of other objects that are extended from this class such as [mesh objects](/2018/05/04/threejs-mesh/), [groups](/2018/05/16/threejs-grouping-mesh-objects/), [cameras](/2018/04/06/threejs-camera/) and even whole scene objects. So once one gets an idea as to what the [position property of the Object3d class is all about](/2022/04/04/threejs-object3d-position/) for example, they can also apply that same understanding to a lot of typical objects that are used when working out a scene.
 
-So there are all these different kinds, or types of objects in threejs that are all based off of object3d. With that said there should be some kind of standard way of finding out what type of object that I am working with when looping over all the objects attached to an object3d based object. As with any other kind of class in threejs there is of course using something like the instanceof operator to find out if I am dealing with a given class of object or not, and that might work okay. However there is also a type property of all these various types of objects that can also be used as a way to find out what type of object as well. With that said this post will be about just that how to go about figuring out what the type of a given object3d based object is in threejs.
+So there are all these different kinds, or types of objects in threejs that are all based off of object3d. With that said there should be some kind of standard way of finding out what type of object that I am working with when looping over all the objects attached to an root object of interest. As with any other kind of class in threejs there is of course using something like the instanceof operator to find out if I am dealing with a given class of object or not, and that might work okay. However there is also a type property of all these various types of objects that can also be used as a way to find out what type of object as well. With that said this post will be about just that how to go about figuring out what the type of a given object3d based object is in threejs.
 
 <!-- more -->
 
@@ -35,7 +35,7 @@ The source code examples that I am writing about here can be found in my [test t
 
 ### Version Numbers matter with threejs
 
-The version of threejs that I was using when I first wrote this post was r135, and the version that I used last time I came around to edit this post was r146. Threejs is a javaScript library that moves very fast in terms of the rate at which major code breaking changes are made. Each revision that is put out might contain major code breaking changes actually so be sore to always check what version number you are using when working with random code examples using threejs on the open internet.
+The version of threejs that I was using when I first wrote this post was r135, and the version that I used last time I came around to edit this post was [r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Threejs is a javaScript library that moves very fast in terms of the rate at which major code breaking changes are made. Each revision that is put out might contain major code breaking changes actually so be sore to always check what version number you are using when working with random code examples using threejs on the open internet.
 
 ## 1 - Some Basic examples of the type property
 
