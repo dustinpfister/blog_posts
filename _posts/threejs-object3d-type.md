@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 974
-updated: 2023-06-28 05:35:55
-version: 1.25
+updated: 2023-06-28 06:04:30
+version: 1.26
 ---
 
-One major part of learning how to use threejs is to get a solid grasp on what there is to work with in the [object3d class](https://threejs.org/docs/#api/en/core/Object3D). There is not just the base object3d class itself, but also a whole lot of other objects that are extended from this class such as [mesh objects](/2018/05/04/threejs-mesh/), [groups](/2018/05/16/threejs-grouping-mesh-objects/), [cameras](/2018/04/06/threejs-camera/) and even whole scene objects. So once one gets an idea as to what the [position property of the Object3d class is all about](/2022/04/04/threejs-object3d-position/) for example, they can also apply that same understanding to a lot of typical objects that are used when working out a scene.
+One major part of learning how to use threejs is to get a solid grasp on what there is to work with in the [object3d class](https://threejs.org/docs/#api/en/core/Object3D). There is not just the base object3d class itself, but also a whole lot of other objects that are extended from this class such as mesh objects, [groups](/2018/05/16/threejs-grouping-mesh-objects/), [cameras](/2018/04/06/threejs-camera/) and even whole scene objects. So once one gets an idea as to what the [position property of the Object3d class is all about](/2022/04/04/threejs-object3d-position/) for example, they can also apply that same understanding to a lot of typical objects that are used when working out a scene.
 
 So there are all these different kinds, or types of objects in threejs that are all based off of object3d. With that said there should be some kind of standard way of finding out what type of object that I am working with when looping over all the objects attached to an root object of interest. As with any other kind of class in threejs there is of course using something like the instanceof operator to find out if I am dealing with a given class of object or not, and that might work okay. However there is also a type property of all these various types of objects that can also be used as a way to find out what type of object as well. With that said this post will be about just that how to go about figuring out what the type of a given object3d based object is in threejs.
 
@@ -260,6 +260,62 @@ scene.traverse(function(obj){
 //-------- ----------
 // RENDER
 //-------- ----------
+renderer.render(scene, camera);
+```
+
+## Types of Object3d class based objects
+
+For this section I think that I will want to go over a number of demos that will be an overview of some of the various types of object3d class based objects that there are to work with. I will not be able to get to all of them of course, but when it comes to future edits I will add a new demo now and then. The real thing to do here is to just demo why the type property will prove to be useful when looping over objects. When doing so I might want to preform some logic for all objects of a given type, so that is what these demos are mainly about.
+
+### 3.1 - Mesh Objects
+
+A [Mesh object]](/2018/05/04/threejs-mesh/) will contain a geometry and a material. So when looping over all objects in a scene I might want to do something with say the material of all mesh objects. For example say I created a whole bunch of mesh objects that all share the same geometry, but they all have there own material. With that said I could change, say the color option of each material in each of these mesh objects after they where created. So I can use the traverse method to loop over the contents of the scene object, and set the color of each mesh by checking the type property to make sure it is indeed a mesh object.
+
+```js
+//-------- ----------
+// SCENE TYPE OBJECT, CAMERA TYPE OBJECT, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MESH OBJECTS
+//-------- ----------
+const geometry = new THREE.BoxGeometry();
+let i = 0;
+const len = 20;
+while(i < len){
+    const material = new THREE.MeshPhongMaterial();
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+    i += 1;
+}
+//-------- ----------
+// OTHER OBJECTS
+//-------- ----------
+const grid = new THREE.GridHelper(10, 10);
+scene.add( grid );
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(3, 2, 1);
+scene.add(dl);
+//-------- ----------
+// DOING SOMETHING FOR ALL TYPE MESH OBJECTS
+//-------- ----------
+scene.traverse( (obj) => {
+    if(obj.type === 'Mesh'){
+        const x = -5 + 10 * Math.random();
+        const z = -5 + 10 * Math.random();
+        obj.position.set(x, 0, z);
+        obj.material.color.setRGB(Math.random(), Math.random(), Math.random());
+    }
+});
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
