@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-06-20 10:34:36
-version: 1.46
+updated: 2023-06-28 06:32:54
+version: 1.47
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -455,6 +455,55 @@ scene.add(line);
 // RENDER
 //-------- ----------
 camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 11 - The Common Base Material class
+
+There are a number of options in the base material class that should work with all materials then, but there are some exceptions with some of these features.
+
+### 11.1 - Transparent and opacity options
+
+The transparent boolen can be used to set transparency on and off for a material. In the event that transparency is on the opacity value can be used to set the global alpha value of the transparency for the material. This feature seems to work okay for just about all mesh materials, and also for points and lines as well.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTION
+//-------- ----------
+const createCube = function (size, material, x, y, z) {
+    const geometry = new THREE.BoxGeometry(size, size, size, 8, 8, 8),
+    cube = new THREE.Mesh(geometry, material);
+    cube.position.set(x, y, z);
+    return cube;
+};
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+// mesh objects and mesh materails using opacity
+scene.add( createCube(1, new THREE.MeshNormalMaterial( { transparent: true, opacity: 0.4 } ), 0, 0, 0) );
+scene.add( createCube(1, new THREE.MeshBasicMaterial( { transparent: true, opacity: 0.7 } ), -1.4, -0.5, 0) );
+scene.add( createCube(1, new THREE.MeshPhongMaterial( { transparent: true, opacity: 0.2 } ), -0.4, -0.5, -2) );
+// points
+const material_points = new THREE.PointsMaterial({ size: 0.2, transparent: true, opacity: 0.05 });
+const points = new THREE.Points( new THREE.SphereGeometry(2, 20, 20), material_points );
+scene.add(points);
+// light
+const dl = new THREE.DirectionalLight();
+dl.position.set(3, 2, 1)
+scene.add(dl);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 3, 3);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
