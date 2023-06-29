@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1056
-updated: 2023-06-29 05:51:52
-version: 1.0
+updated: 2023-06-29 06:19:13
+version: 1.1
 ---
 
 The [Linux sudo command](https://linux.die.net/man/8/sudo) is used to run a command as another user while logged in as another. Typically this is used to run a command that would need to be done while logged in as the root user, but done instead from a regular user account that is set up to do this. Such as installing or updating software by way of the apt command. However sudo can also be used to run a command as any user, assuming that permission is set up for the current user to do so.
@@ -46,6 +46,54 @@ Looks like all the packages are up to date for now, but if there where updates I
 ```
 $ sudo apt full-upgrade
 ```
+
+## Setting up a new sudo user, the /etc/sudoers file, and visudo command
+
+The process of setting up a new user will have to involve editing a file in the etc folder at /etc/sudoers. As you might suspect, yes in order to edit, or even view this file you must have root permission to do so to begin with. I might not get into every detail about setting up a new user to use sudo here, as it would seem that much of that might be a matter for another post, or maybe a future edit of this one. However there is still at least being aware of what files need to be edited in order to set, change, or in this case just view the current status of users and the use of sudo.
+
+### Using the Linux cat command to view the contents
+
+Before Even geting into how to set up a new user as a sudoer one might want to just check out the state of the files that store data that is used by sudo to know if a user has permission to do admin stuff or not. Once typical command that is used to read the state of text files and spit it out to the standard output would be the [cat command](/2020/11/11/linux-cat). However if you do this without sudo, or without root permission by any means you will of course get a permission error.
+
+```
+$ cat /etc/sudoers
+cat: /etc/sudoers: Permission denied
+```
+
+If you are logged in as a user that is set up as a sudoer to begin with you can once agai use sudo with cat to read this restricted file.
+
+```
+$ sudo cat /etc/sudoers
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ 
+# Host alias specification
+ 
+# User alias specification
+ 
+# Cmnd alias specification
+ 
+# User privilege specification
+root	ALL=(ALL:ALL) ALL
+ 
+# Allow members of group sudo to execute any command
+%sudo	ALL=(ALL:ALL) ALL
+ 
+# See sudoers(5) for more information on "#include" directives:
+ 
+#includedir /etc/sudoers.d
+```
+
+Notice that the sudoers file says to use the visudo command to edit this file. After reading over the man page it would seem that it would be a good idea to use that command rather than editing this kind directly. Also you will notice that there is not just this file, but also a sudoers.d directory in the etc folder that will contain additional local files. So then it might be best to set up a new user by adding files there and leave this main sudoers file alone.
 
 ## Conclusion
 
