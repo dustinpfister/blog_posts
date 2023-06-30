@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2023-01-30 13:13:21
-version: 1.31
+updated: 2023-06-30 08:55:12
+version: 1.32
 ---
 
-If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the [scene object](/2018/05/03/threejs-scene/), or any object based off the object3d class for that matter, and pass a [callback function](/2019/02/27/js-javascript-constructor/) as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
+If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the [scene object](/2018/05/03/threejs-scene/), or any object based off the object3d class for that matter, and pass a [callback function](/2019/02/27/js-javascript-constructor/) as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse off of, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all nested child objects as well as the root oject itself.
 
 So then in this post I will be going over the use of the traverse method of the object3d class. In the process of doing so I will also be touching base on a wide range of other topics of interest that will branch off from the use of this method. There are things like the [type property](/2022/04/01/threejs-object3d-type/) of the object3d class that come to mind when it comes to checking out what kind of object it is that I am dealing with for example.
 
@@ -28,11 +28,11 @@ There is a lot to write about when it comes to the object3d class, and the trave
 
 ### Source code is up on Github
 
-The source code exmaples here [can also be found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-traverse) in my test threejs repo. This is also where I park the source code for my many other [blog posts on threejs](/categories/three-js/).
+The source code examples here [can also be found on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-object3d-traverse) in my test threejs repo. This is also where I park the source code for my many other [blog posts on threejs](/categories/three-js/).
 
 ### Check the version numbers, always
 
-This is something that I think that I just need to mentioning in ever post I write on threejs now, which is that I was using threejs version r127 when I made these code examples here. Also the last time that I came around to do some editing I was using r146. Threejs is a library that as of this writing is still moving very fast when it comes to development, and code breaking changes are made to the library often.
+This is something that I think that I just need to mention in every post I write on threejs, which is the version that I was using when I wrote this post. with that said when I frst wrote this post I was using r127. Sense then I edited this post a number of times here and there and the last time that I came around to do some editing I was [using r146 and thus updated the examples to a style](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) I set for that revision. Threejs is a library that as of this writing is still moving very fast when it comes to development, and code breaking changes are made to the library often.
 
 ## 1 - Basic examples of Object3d.traverse
 
