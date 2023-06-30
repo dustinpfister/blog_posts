@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2023-06-30 09:29:33
-version: 1.52
+updated: 2023-06-30 09:33:02
+version: 1.53
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object3d class based object, which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is a safe place to park custom, user defined key value pairs in an object3d based object. There is a similar kind of object in other kinds of classes in threejs such as geometry, and materials.
@@ -43,6 +43,8 @@ I get emails and blog comments that had to do with code breaking changes that ha
 For this first section I will be starting out with some basic examples of these user data objects. Even though I will be keeping these fairly simple I will still be making use of a lot of threejs features to do various things with data in the user data object though. The main thing here though is to use the user data objects as a way to store data that is for a given object, and the data should just be that data. It is not a good idea to store functions as that will not be cloned. However when it comes to any kind of Vector object, or number primitive, or anything to that effect the user data object can be used as a place to store that.
 
 ### 1.1 - Moving a Mesh object by way of a heading value in the user data object
+
+Here in this demo I am parking a vector3 object in the user data object that will be used as a heading value when updating the position of the object in an update loop. Each time the update loop is called this heading vector object is used as a way to set what the current delta should be for the next step in moment. I am then using the length method of the vector3 class as a way to know if the object moves beyond a given vector unit length and when it does I just set the position of the mesh back to the origin.
 
 ```js
 //-------- ----------
