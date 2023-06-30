@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2023-02-01 14:53:04
-version: 1.50
+updated: 2023-06-30 09:01:35
+version: 1.51
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the object3d class, which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is a safe place to park custom, user defined key value pairs in an object3d based object.
@@ -597,7 +597,7 @@ const loop = () => {
 loop();
 ```
 
-### 4.2 - A cube droup demo for Video2 
+### 4.2 - A cube drop demo for Video2 
 
 For a second video for this post that I made when doing a little updated of the code exmaples I wanted to make a quick little cube droup demo. This is a project where I have cubes just drop down until a y value is reached, at which point the y value is capped. However the cubes will then move along the x and x values at a givn rate until the go out of range, at which point they will continue to drop until they reach a min y value.
 
