@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2023-06-30 09:01:35
-version: 1.51
+updated: 2023-06-30 09:29:33
+version: 1.52
 ---
 
-In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object based off of the object3d class, which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is a safe place to park custom, user defined key value pairs in an object3d based object.
+In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a [mesh object](/2018/05/04/threejs-mesh/), and any other object3d class based object, which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). This is just an empty object that is not used by any internal logic of threejs itself, thus it is a safe place to park custom, user defined key value pairs in an object3d based object. There is a similar kind of object in other kinds of classes in threejs such as geometry, and materials.
 
 If I need to park some custom application data that has to do with a specific object, it is a good idea to do so by adding it to this user data object, as that will help to make sure that it is done in a safe way that will not conflict with anything internal with threejs. Many other libraries and frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object also, and it makes sense to use it as that is what it is there for. 
 
@@ -32,13 +32,63 @@ There is a whole lot more to write about when it comes to the [oject3d class in 
 
 ### The source code examples in this post are on Github
 
-The source code examples that I am writing about here in this post are up [on Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-userdata). So if there is something that you want to bring up there is the comments section at the bottom of this post, as well as making a pull request at the test threejs repo on Github.
+The source code examples that I am writing about here in this post are up [on Github in my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-userdata). So if there is something that you want to bring up there is the comments section at the bottom of this post, as well as making a pull request at the test threejs repo on Github. This test repo is also where I place the source code examples for all the [other blog posts](/categories/three-js/) that I have wrote over the years.
 
 ### Version numbers matter with three.js
 
-I get emails and blog comments that had to do with code breaking changes that happened in older source code examples. As such that tells me that I just need to mention in every post on threejs what version I was using. When I first wrote this post I was using r125 of threejs. The last time I came around to do a little editing I was using r146 and at that point at the source code examples seem to work fine on my end for what it is worth. Code breaking changes are made to threejs often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to editing the post.
+I get emails and blog comments that had to do with code breaking changes that happened in older source code examples. As such that tells me that I just need to mention in every post on threejs what version I was using. When I first wrote this post I was using r125 of threejs. The last time I came around to do a little editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) and at that point at the source code examples seem to work fine on my end for what it is worth. Code breaking changes are made to threejs often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to editing the post.
 
-## 1 - Basic User Data Object3d Example with rotating cubes
+## 1 - Basic examples of user data objects
+
+For this first section I will be starting out with some basic examples of these user data objects. Even though I will be keeping these fairly simple I will still be making use of a lot of threejs features to do various things with data in the user data object though. The main thing here though is to use the user data objects as a way to store data that is for a given object, and the data should just be that data. It is not a good idea to store functions as that will not be cloned. However when it comes to any kind of Vector object, or number primitive, or anything to that effect the user data object can be used as a place to store that.
+
+### 1.1 - Moving a Mesh object by way of a heading value in the user data object
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const mesh = new THREE.Mesh( new THREE.SphereGeometry(1, 20, 20), new THREE.MeshNormalMaterial() );
+mesh.userData.heading = new THREE.Vector3(0, 1, 0);
+scene.add(mesh);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+let lt = new Date();
+const fps = 24;
+const update = (secs) => {
+    const v_delta = mesh.userData.heading.clone().normalize().multiplyScalar( 1 / 0.25 * secs );
+    mesh.position.add( v_delta );
+    if(mesh.position.length() >= 5){
+        mesh.position.set(0,0,0);
+        mesh.userData.heading.random().sub( new THREE.Vector3(0.5, 0.5, 0.5) );
+    }
+};
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        update(secs);
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
+```
+
+### 1.2 - Basic User Data Object3d Example with rotating cubes
 
 In this example I have a create cube helper function that will create and return a mesh that uses the [Box geometry](/2021/04/26/threejs-box-geometry/), and the [normal material](/2021/06/23/threejs-normal-material/). While I am at it I add a value to the user data object of the mesh object that will be used to set what I want the rotation rates to be for the mesh object. In this create cube function I am using the user data object as a way to set some rotation rates for each angle in an instance of [THREE.Euler](/2021/04/28/threejs-euler/) in radians per second. These rotation rates as well as the starting position of the cube can be set by way of the create cube helper functions arguments also.
 
