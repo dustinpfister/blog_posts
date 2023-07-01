@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2023-07-01 11:19:08
-version: 1.55
+updated: 2023-07-01 11:36:02
+version: 1.56
 ---
 
 When it comes to [threejs](https://threejs.org/) the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor can be used to work with colors for various object properties that need a color value, as well as to just work with color in general. This [constructor function](/2019/02/27/js-javascript-constructor/) can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color and the fog color when it comes to scene objects, the color of various properties of a material such as the color and emissive values, and just about almost everything else that has to do with color.
@@ -42,7 +42,7 @@ The source code examples that I am writing about in this post, as well as for ma
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using r127 of threejs which was a late version of three.js in April of 2021. The last time I came around to doing editing with this post I was then using r146 of threejs when checking out the source code examples. Code breaking changes are made to threejs all the time, so be sure to always check the version that you are using relative to the dates of the code examples that you are looking at on the open web.
+When I first wrote this post I was using r127 of threejs which was a late version of three.js in April of 2021. The last time I came around to doing editing with this post I was then using [r146 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) when checking out the source code examples. Code breaking changes are made to threejs all the time, so be sure to always check the version that you are using relative to the dates of the code examples that you are looking at on the open web.
 
 ## 1 - Basic examples section of the THREE.Color class
 
@@ -162,13 +162,15 @@ There is also creating a texture to use as an emmisive map which can often be us
 
 ## 3 - Tetxures and the Color class
 
-## 3.1 - Using an Emmsive map, canvas textures and the THREE.Color.getStyle method
+One use case in which I have found that the Color class comes into a play a lot is when making textures by way of a little javaScript code rather than that of an external image asset. When doing so there are two general ways to do so with threejs, one is to use canvas textures, and the other way is to use data textures. With canvas textures I can make use of the 2d drawing context of image assets, where with data textures I work with raw color channel data. So in this section I think I will need to go over at least a few demos of this kind of use case with the Color Class.
 
-Getting into emissive maps might be a little off topic from the THREE.Color class, but yet again maybe not as it might prove to serve as a way to demonstrate a use case example for the get style method of THREE.Color. This get style method will return a string value like 'rgb\(255,0,0\)' from an instance of the color class like this new THREE.Color(1, 0, 0). So I can use the THREE.Color class not just for properties of materials and the scene object, but also to set the value of a style for an instance of the 2d drawing context of a canvas when creating a texture with a canvas element.
+## 3.1 - Using Canvas textures, emissive maps, and the THREE.Color.getStyle method
 
-You see in order to use the emissive map property of a material I will want to have a texture, and when it comes to having textures one way is to load an external file. However when it comes to examples of threejs I like to stick to solutions that just involve javaScript code only and not any more additional external files, so one way to go about creating textures with javaScript code alone would be to use canvas elements. I have wrote a [post on using canvas elements to create textures for materials in threejs](/2018/04/17/threejs-canvas-texture/) in detail, but for this example I am just gong to stick to using them to create a texture to use with the emissive map property.
+For this demo I will be getting into the user of [canvas textures](/2018/04/17/threejs-canvas-texture/) a s a way to create a texture by javaScript code. I will then be using the texture as a value for the emissive option of an instance of the standard material.
 
-Anyway when it comes to setting a fill style or stroke style I can not just use the THREE.Color object directly, however I can call the get style method of a THREE.Color instance and then use the resulting string to set such a value.
+Getting into emissive maps might be a little off topic from the THREE.Color class, but yet again maybe not as it might prove to serve as a way to demonstrate a use case example for the get style method. This get style method will return a string value like 'rgb\(255,0,0\)' from an instance of the color class like this new THREE.Color(1, 0, 0). So I can use the THREE.Color class not just for properties of materials and the scene object, but also to set the value of a style for an instance of the 2d drawing context of a canvas when creating a texture with a canvas element.
+
+Anyway for this demo I have a helper function that will create and return a new texture that is created with the THREE.CanvasTexture. However in order to call this canvas texture constructor function I first need to have a canvas element, and I also will want to draw to the canvas at some point, typically before passing the canvas. Inside this helper function I am doing so by way of a draw method that will be passed when calling the create canvas texture helper. In this custom draw method, when it comes to setting a fill style or stroke style I can not just use the THREE.Color object directly, however I can call the get style method of a THREE.Color instance and then use the resulting string to set such a value.
 
 ```js
 //-------- ----------
@@ -224,7 +226,97 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 4 - Background and Fog
+
+### 3.2 - For Pix method using Data Textures and THREE.Color
+
+Sense I first wrote this [blog post I wrote a blog post on data textures](/2022/04/15/threejs-data-texture/) which is another option when it comes to making a texture from javaScript code rather an external image asset. When working out what the color values should be for each pixel the THREE.Color class can come in handy for making some kind of abstraction where I can pass a function that will be called for each pixel location in a texture. In this section I am doing just that when making a create data texture helper function that will take a forPix function as one of the options. In the body of this for pix function I am passing an instance of THREE.Color as one of the arguments, and this is also the value that should be returned by the function.
+
+By default the forPix function will use the Seeded Random method of the Math utils object in threejs as a way to get a value between 0 and 255 that I then set for each color channel using the set rgb method of the color class.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// DATA TEXTURE HELPER
+//-------- ----------
+const createDataTexture = function(opt){
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16: opt.width; 
+    opt.height = opt.height === undefined ? 16: opt.height;
+    opt.forPix = opt.forPix || function(color, x, y, i, opt){
+        let v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
+        color.setRGB(v, v, v);
+        return color;
+    };
+    let size = opt.width * opt.height;
+    let data = new Uint8Array( 4 * size );
+    for ( let i = 0; i < size; i ++ ) {
+        let stride = i * 4,
+        x = i % opt.width,
+        y = Math.floor(i / opt.width),
+        color = opt.forPix( new THREE.Color(), x, y, i, opt);
+        data[ stride ] = color.r;
+        data[ stride + 1 ] = color.g;
+        data[ stride + 2 ] = color.b;
+        data[ stride + 3 ] = 255;
+    }
+    let texture = new THREE.DataTexture( data, opt.width, opt.height );
+    texture.needsUpdate = true;
+    return texture;
+};
+//-------- ----------
+// LIGHT
+//-------- ----------
+const pl = new THREE.PointLight(new THREE.Color(1, 1, 1));
+pl.position.set(1, 3, 2);
+scene.add(pl);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+const tex1 = createDataTexture();
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: tex1
+    })
+);
+scene.add(mesh1);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1, 1.5, 1);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+const update = function(frame, frameMax){
+    mesh1.material.map = createDataTexture();
+};
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 4.1 - Background and Fog
 
 Another use case example of the THREE.Color constructor would be to set the background color and or a [fog color](/2018/04/16/threejs-fog/). When doing so I typically will want to make the background color the same as the fog color, and I will also want to use the fog color for the color property of materials also. So it would make sense to have some kind of global, or constant local variable that is a fog color variable and set the color for that once with the THREE.Color Constructor. Then use that values for the scene.background property, as well as the value to pass to THREE.fogExp2 to create the value for scene.fog, and to use the color for mesh materials.
 
@@ -292,7 +384,7 @@ loop();
 
 In this example I am now making use of a loop that make used of the [requestiAnimationFrame method](/2018/03/13/js-request-animation-frame/) to call the render function of the web gl render over and over again. Each time I do so I update some things when it comes to the position and rotation of the box object. The effect is then that the box will disappear as it moves away from the camera and will gradually appear again as it comes back in range of the camera. When doing so I am using th set method of the [vector3](/2018/04/15/threejs-vector3/) instance when it comes to the position of the box, and a similar set method for the [Euler instance](/2021/04/28/threejs-euler/) when it comes to setting rotation. These classes are also worth checking out in detail if you have not done so before hand.
 
-## 5 - Random Color example
+### 5.1 - Random Color example
 
 Now for a random color example, for this I made a few helper method one of which is of course a random color helper. In there I just need to call Math.random for red, green and blue values of the THREE.Color Constructor. At least that is all I need to do in order to have a full range of possibles when it comes to random colors.
 
@@ -383,7 +475,7 @@ loop();
 
 When it comes to some kind of simple random color example such as this there are a great number of things that I might want to change when it comes to creating random colors. However for the most part it might be just playing around with the expressions that are used to create a color.
 
-## 6 - Mutation of color value over time
+### 6.1 - Mutation of color value over time
 
 So I have covered some example that have to do with creating an instance of color, and using that color when it comes to things like setting the background color of a scene object, or colors that can be used when drawing to a canvas element to be used for a texture in an emissive map. Now I am thinking that I will wan to make at least one of not more examples that have to do with mutation of a color object instance over time.
 
@@ -446,7 +538,7 @@ const loop = () => {
 loop();
 ```
 
-## 7 - Color add and equals methods
+### 7.1 - Color add and equals methods
 
 In this example I am using the add method of a color class instance of each material or each mesh in a group of mesh objects. I just get a reference to the material that I am using for a mesh, and then I can call the add method of that color to add the values of another instance of THREE.Color to that color. I can also use the equals method to find out of a color is fully white or not, and of so I can set a new random color using a random color helper.
 
@@ -546,94 +638,7 @@ const loop = () => {
 loop();
 ```
 
-## 8 - For Pix method using Data Textures and THREE.Color
 
-Sense I first wrote this [blog post I wrote a blog post on data textures](/2022/04/15/threejs-data-texture/) which is another option when it comes to making a texture from javaScript code rather an external image asset. When working out what the color values should be for each pixel the THREE.Color class can come in handy for making some kind of abstraction where I can pass a function that will be called for each pixel location in a texture. In this section I am doing just that when making a create data texture helper function that will take a forPix function as one of the options. In the body of this for pix function I am passing an instance of THREE.Color as one of the arguments, and this is also the value that should be returned by the function.
-
-By default the forPix function will use the Seeded Random method of the Math utils object in threejs as a way to get a value between 0 and 255 that I then set for each color channel using the set rgb method of the color class.
-
-```js
-//-------- ----------
-// SCENE, CAMERA, RENDERER
-//-------- ----------
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-const renderer = new THREE.WebGL1Renderer();
-renderer.setSize(640, 480, false);
-(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-//-------- ----------
-// DATA TEXTURE HELPER
-//-------- ----------
-const createDataTexture = function(opt){
-    opt = opt || {};
-    opt.width = opt.width === undefined ? 16: opt.width; 
-    opt.height = opt.height === undefined ? 16: opt.height;
-    opt.forPix = opt.forPix || function(color, x, y, i, opt){
-        let v = Math.floor( THREE.MathUtils.seededRandom() * 255 );
-        color.setRGB(v, v, v);
-        return color;
-    };
-    let size = opt.width * opt.height;
-    let data = new Uint8Array( 4 * size );
-    for ( let i = 0; i < size; i ++ ) {
-        let stride = i * 4,
-        x = i % opt.width,
-        y = Math.floor(i / opt.width),
-        color = opt.forPix( new THREE.Color(), x, y, i, opt);
-        data[ stride ] = color.r;
-        data[ stride + 1 ] = color.g;
-        data[ stride + 2 ] = color.b;
-        data[ stride + 3 ] = 255;
-    }
-    let texture = new THREE.DataTexture( data, opt.width, opt.height );
-    texture.needsUpdate = true;
-    return texture;
-};
-//-------- ----------
-// LIGHT
-//-------- ----------
-const pl = new THREE.PointLight(new THREE.Color(1, 1, 1));
-pl.position.set(1, 3, 2);
-scene.add(pl);
-//-------- ----------
-// OBJECTS
-//-------- ----------
-const tex1 = createDataTexture();
-const mesh1 = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: tex1
-    })
-);
-scene.add(mesh1);
-// ---------- ----------
-// ANIMATION LOOP
-// ---------- ----------
-camera.position.set(1, 1.5, 1);
-camera.lookAt(0, 0, 0);
-const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-FRAME_MAX = 900;
-let secs = 0,
-frame = 0,
-lt = new Date();
-const update = function(frame, frameMax){
-    mesh1.material.map = createDataTexture();
-};
-const loop = () => {
-    const now = new Date(),
-    secs = (now - lt) / 1000;
-    requestAnimationFrame(loop);
-    if(secs > 1 / FPS_UPDATE){
-        update( Math.floor(frame), FRAME_MAX);
-        renderer.render(scene, camera);
-        frame += FPS_MOVEMENT * secs;
-        frame %= FRAME_MAX;
-        lt = now;
-    }
-};
-loop();
-```
 
 ## Conclusion
 
