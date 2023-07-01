@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1022
-updated: 2023-02-08 17:15:00
-version: 1.15
+updated: 2023-07-01 12:56:04
+version: 1.16
 ---
 
 The [set from points method of the buffer geometry class in threejs](https://threejs.org/docs/#api/en/core/BufferGeometry.setFromPoints) is a way to create a new buffer geometry from an array of [vector3 class objects](/2018/04/15/threejs-vector3/). This new buffer geometry instance will just have a position attribute alone, which is okay when it comes to creating Points, or Lines, but not so much for Mesh objects. That is unless additional steps are taken to add the additional attributes that are needed to get the geometry to work well with mesh objects.
@@ -36,13 +36,17 @@ The array that is passed to the set from points method should be an array of [Ve
 
 ### Source code in also up on Github
 
-I have the source code examples that I am writing about here also up on Github in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-set-from-points).
+I have the source code examples that I am writing about here also up on Github in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry-set-from-points). This is also where I path the source code exmaples for [all the other blog posts that I have wrote on threejs](/categories/three-js/) over the years as well.
 
 ### Version Numbers matter
 
-When I first wrote this blog post I was using r146 of threejs.
+When I first wrote this blog post I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md), and this is also what I am still using as of the last edit in July of 2023. I have more up to date style rules, but I have not updated the source code examples to those new rules at that time. In any case there are a whole lot of code breaking changes coming up ahead, and I have found that I need to write a thing or two about versions in each post.
 
-## 1 - Getting started with the Set From Points method
+## 1 - Basic examples of the set from points method
+
+As with just about all of the other posts that I have wrote on threejs I like to start out with a basic section. When it comes to using the set from points method of the buffer geometry class the typical situation in that by one means or another I have an array of vector3 objects, and I would like to just quickly make a geometry with that array of vector3 objects. Starting with this is simple enough if I am to stick with THREE.Points, or THREE.Lines which is what I will be using in this section. Things get a bit more complex when it comes to turning a geometry made by this means into something that will work well with mesh objects though, and that is something that I will get to in more complex sections in this post.
+
+### 1.1 - Using set from points, and THREE.Points
 
 To get started with the set from points method one way or another I will need to create an array of Vector3 objects. Once I have that array of Vector3 objects I can then create a blank buffer geometry, call the set from points method, and pass the array of vector3 objects to the method. The end result will then be a buffer geometry with a position attribute that is set up using the array of Vector3 objects. This kind of geometry will not work so great with mesh objects, but will be good enough for say the THREE.Points class.
 
@@ -79,6 +83,52 @@ scene.add( new THREE.Points(geometry, material) );
 // ---------- ----------
 // RENDER
 // ---------- ----------
+renderer.render(scene, camera);
+```
+
+### 1.2 - Using Lines demo
+
+Another option for making use of a geometry that is just composed of a position attribute would be to use THREE.Line, or THREE.LineSegements. With that I would also make use of one of the Line material options to style these line objects.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// POINTS - array of Vector3 Objects
+// ---------- ----------
+const points_array = [
+    new THREE.Vector3( -1.0,  0.0,  1.0),
+    new THREE.Vector3( -1.0,  0.0, -1.0),
+    new THREE.Vector3( -1.0,  1.0, -1.0),
+    new THREE.Vector3(  1.0,  1.0, -1.0),
+    new THREE.Vector3(  1.0,  0.0, -1.0),
+    new THREE.Vector3(  1.0,  0.0,  1.0),
+    new THREE.Vector3(  1.0, -1.0,  1.0),
+    new THREE.Vector3( -1.0, -1.0,  1.0),
+    new THREE.Vector3( -1.0,  0.0,  1.0)
+];
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geometry = new THREE.BufferGeometry();
+geometry.setFromPoints(points_array);
+// ---------- ----------
+// Line
+// ---------- ----------
+const material = new THREE.LineBasicMaterial({ color: 0xffff00, linewidth: 3 });
+scene.add( new THREE.Line(geometry, material) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
