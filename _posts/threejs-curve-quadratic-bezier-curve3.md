@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1010
-updated: 2023-05-25 13:57:35
-version: 1.15
+updated: 2023-07-02 11:44:15
+version: 1.16
 ---
 
-In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point and end point along with a single control point that will effect the curve. This Can then be used for anything the requires a curve such as the tube geometry function. 
+In threejs there is a base [Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) as well as a number of classes that work on top of this Curve Class one of which is [THREE.QuadraticBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3). This [Quadratic Bezier Curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) class creates a Curve that defines a Curve between a start point, and end point, along with a single control point. This can then be used for anything the requires a curve such as the [tube geometry constructor](/2023/06/02/threejs-tube-geometry/) just to name one use case example.
 
 There are a number of other built in curve class methods to choose from, but more often than not one of the built in options will work just fine with what I want to do. Only in the event that I truly do need to work out some custom curve logic would I bother trying to make my own custom curve class. Thus far I can not say that I have found that I need to do that, so if this does not do what you want, look into some of the other built in options first before opening that can of worms.
 
@@ -49,7 +49,7 @@ The source code examples that I am writing about in this [post can also be found
 
 ### Version Numbers matter
 
-When I wrote this post I was using r140 of threejs.
+When I first wrote this post I was using r140 of threejs. However sense then I have came around to do some editing on this post a few times now, and in July of 2023 I updated the demos to by [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). There are a whole lot of code breaking changes with threejs up ahead, so be sure to always check what version you are using and if possible gain some sense as to what revision a developer was suing when authoring code examples when reading an online resource such as this one.
 
 ## 1 - Basic examples of THREE.QuadraticBezierCurve3
 
@@ -65,9 +65,7 @@ One has to start somewhere with this sort of thing and with that said here I hav
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-camera.position.set(7, 5, 10);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -90,12 +88,14 @@ scene.add(points);
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(7, 5, 10);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
 ### 1.2 - Making a tube geometry with a curve
 
-One thing that can be done with a curve is that it can be used as the first argument for the tube geometry constructor.
+One thing that can be done with a curve is that it can be used as the first argument for the tube geometry constructor. This is a kind of geometry where points are created along the path of a curve in space, such as one made with TREE.QuadraticBezierCurve3. There is also getting into not just having one curve object, but a collection of them, but I will save that for a more advanced section on the curve path class.
 
 ```js
 //-------- ----------
@@ -103,9 +103,7 @@ One thing that can be done with a curve is that it can be used as the first argu
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-camera.position.set(7, 5, 10);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -130,6 +128,8 @@ scene.add(mesh);
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(7, 5, 10);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -149,9 +149,7 @@ I can then use the Curve Path like that of any other Curve Object and as such al
 //-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
-camera.position.set(7, 5, 10);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
@@ -183,6 +181,8 @@ scene.add(points);
 //-------- ----------
 // RENDER
 //-------- ----------
+camera.position.set(7, 5, 10);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
@@ -197,95 +197,91 @@ So then the best way to go about showing this would be to create one or more ani
 For this first animation example I would like to create a helper function to quickly create a curve path with the Quadratic Bezier Curve class for each curve of the curve path. I can then use this helper function to create a curve path that will be used for the current position of a mesh object. I can then use the get points method to create an array of vector3 objects and I can use that to create a geometry that I will then use with the THREE.Points class to get a visual idea of what is going on with these points. Also I can make the length of the array the same as the count of frames for the animation so that I have a point in space for each frame for the mesh object. So then in my animation loop I can use the current frame number to get the current Vector3 object that I want for the mesh object.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(6, 6, 6);
-    camera.lookAt(0,0,0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    const createCurvePath = (data) => {
-        const curvePath = new THREE.CurvePath();
-        data.forEach((a)=>{
-            const v1 = new THREE.Vector3(a[0], a[1], a[2]);       // start
-            const v2 = new THREE.Vector3(a[3], a[4], a[5]);       // end
-            const vControl = new THREE.Vector3(a[6], a[7], a[8]); // control
-            curvePath.add( new THREE.QuadraticBezierCurve3( v1, vControl, v2) );
-        });
-        return curvePath;
-    };
-    //-------- ----------
-    // CURVE PATH
-    //-------- ----------
-    const POINT_COUNT = 300; // NUMBER OF POINTS
-    const cp_pos = createCurvePath([
-        [5,0,5, 0,2,-7,5,3,-5], // three each (x,y,z) for start, end, and control points
-        [0,2,-7,0,1.5,0,-2,4,3],
-        [0,1.5,0,3,1,1,5,-1,-4],
-        [3,1,1,-12,0,0,3,7,10]
-    ]);
-    const v3Array = cp_pos.getPoints(POINT_COUNT / cp_pos.curves.length);
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    scene.add( new THREE.GridHelper(10, 10) );
-    // you can just use getPoints as a way to create an array of vector3 objects
-    // which can be used with the set from points method
-    const geometry = new THREE.BufferGeometry();
-    geometry.setFromPoints(v3Array);
-    const points = new THREE.Points(geometry, new THREE.PointsMaterial({color: 0x00ff00, size: 0.125 }));
-    scene.add(points);
-    //-------- ----------
-    // MESH
-    //-------- ----------
-    const mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1,1,1),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    //-------- ----------
-    // ANIMATION LOOP
-    //-------- ----------
-    const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = POINT_COUNT;  // MADE THE FRAME MAX THE SAME AS THE POINT COUNT
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const v_start = new THREE.Vector3(0, 0, 1);
-    const v_delta = new THREE.Vector3(0, 0, 3);
-    const update = function(frame, frameMax){
-        const a = frame / frameMax;
-        const v1 = v3Array[ frame ];
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createCurvePath = (data) => {
+    const curvePath = new THREE.CurvePath();
+    data.forEach((a)=>{
+        const v1 = new THREE.Vector3(a[0], a[1], a[2]);       // start
+        const v2 = new THREE.Vector3(a[3], a[4], a[5]);       // end
+        const vControl = new THREE.Vector3(a[6], a[7], a[8]); // control
+        curvePath.add( new THREE.QuadraticBezierCurve3( v1, vControl, v2) );
+    });
+    return curvePath;
+};
+//-------- ----------
+// CURVE PATH
+//-------- ----------
+const POINT_COUNT = 300; // NUMBER OF POINTS
+const cp_pos = createCurvePath([
+    [5,0,5, 0,2,-7,5,3,-5], // three each (x,y,z) for start, end, and control points
+    [0,2,-7,0,1.5,0,-2,4,3],
+    [0,1.5,0,3,1,1,5,-1,-4],
+    [3,1,1,-12,0,0,3,7,10]
+]);
+const v3Array = cp_pos.getPoints(POINT_COUNT / cp_pos.curves.length);
+//-------- ----------
+// POINTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+// you can just use getPoints as a way to create an array of vector3 objects
+// which can be used with the set from points method
+const geometry = new THREE.BufferGeometry();
+geometry.setFromPoints(v3Array);
+const points = new THREE.Points(geometry, new THREE.PointsMaterial({color: 0x00ff00, size: 0.125 }));
+scene.add(points);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1,1,1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
+camera.position.set(6, 6, 6);
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = POINT_COUNT;  // MADE THE FRAME MAX THE SAME AS THE POINT COUNT
+let secs = 0,
+frame = 0,
+lt = new Date();
+const v_start = new THREE.Vector3(0, 0, 1);
+const v_delta = new THREE.Vector3(0, 0, 3);
+const update = function(frame, frameMax){
+    const a = frame / frameMax;
+    const v1 = v3Array[ frame ];
         mesh.position.copy(v1);
-        // looking at next in path
-        const v2 = v3Array[ ( frame + 1 ) % frameMax ];
-        mesh.lookAt(v2)
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+    // looking at next in path
+    const v2 = v3Array[ ( frame + 1 ) % frameMax ];
+    mesh.lookAt(v2)
+};
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 Although I have the basic idea of what I want working fine here, I would also like to do this for setting rotation as well. Also I might want to look into other ways of getting the points that might prove to be more efficient and also get the index values for the point along the curve in a way that is different from that of the get points method. So I am going to want to create and write about at least a few more animation loop examples here I think.
@@ -295,106 +291,102 @@ Although I have the basic idea of what I want working fine here, I would also li
 For this animation loop example I am doing more or less the same thing as the first one, only now I have to curve paths one of which I am using to set the position of a camera, and the other I am using to set the look at location for the camera. So then over time I can use these paths to define where an object will be, but also where it should be looking over time as well which is great. For this example I also expanding  the collection of helper functions to included methods that help with crating an array of vector3 objects as well as creating a collection of that help to show the state of the curve as well.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, and RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-    camera.position.set(6, 6, 6);
-    camera.lookAt(0,0,0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // make a curve path
-    const createCurvePath = (data) => {
-        const curvePath = new THREE.CurvePath();
-        data.forEach((a)=>{
-            const v1 = new THREE.Vector3(a[0], a[1], a[2]);       // start
-            const v2 = new THREE.Vector3(a[3], a[4], a[5]);       // end
-            const vControl = new THREE.Vector3(a[6], a[7], a[8]); // control
-            curvePath.add( new THREE.QuadraticBezierCurve3( v1, vControl, v2) );
-        });
-        return curvePath;
-    };
-    // create a v3 array
-    const createV3Array = (data, pointCount) => {
-        const cp = createCurvePath(data);
-        return cp.getPoints(pointCount / cp.curves.length);
-    };
-    // create points from v3 array
-    const createPoints = (v3Array, color) => {
-        color = color || 0xffffff;
-        const geometry = new THREE.BufferGeometry();
-        geometry.setFromPoints(v3Array);
-        return new THREE.Points(geometry, new THREE.PointsMaterial({color: color, size: 0.125 }));
-    };
-    //-------- ----------
-    // CURVE PATHS
-    //-------- ----------
-    const POINT_COUNT = 300; // NUMBER OF POINTS
-    const v3Array_pos = createV3Array([
-        [5,0,5, 0,2,-7,5,3,-5], // three each (x,y,z) for start, end, and control points
-        [0,2,-7,0,1.5,0,-2,4,3],
-        [0,1.5,0,3,1,1,5,-1,-4],
-        [3,1,1,-12,0,0,3,7,10]
-    ], POINT_COUNT);
-    const v3Array_look = createV3Array([
-        [-10,0,5,10,3,20,0,-3,0]
-    ], POINT_COUNT);
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    scene.add( createPoints( v3Array_pos, 0xff0000 ) );
-    scene.add( createPoints( v3Array_look, 0x00ff00 ) );
-    //-------- ----------
-    // GRID, MESH
-    //-------- ----------
-    scene.add( new THREE.GridHelper(10, 10) );
-    const mesh = new THREE.Mesh(
-        new THREE.BoxGeometry(1,1,1),
-        new THREE.MeshNormalMaterial());
-    scene.add(mesh);
-    //-------- ----------
-    // ANIMATION LOOP
-    //-------- ----------
-    const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = POINT_COUNT;  // MADE THE FRAME MAX THE SAME AS THE POINT COUNT
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const v_start = new THREE.Vector3(0, 0, 1);
-    const v_delta = new THREE.Vector3(0, 0, 3);
-    const update = function(frame, frameMax){
-        const a = frame / frameMax;
-        const v1 = v3Array_pos[ frame ];
-        const v2 = v3Array_look[ frame ];
-        camera.position.copy(v1);
-        camera.lookAt(v2);
-        mesh.position.copy(v2);
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// make a curve path
+const createCurvePath = (data) => {
+    const curvePath = new THREE.CurvePath();
+    data.forEach((a)=>{
+        const v1 = new THREE.Vector3(a[0], a[1], a[2]);       // start
+        const v2 = new THREE.Vector3(a[3], a[4], a[5]);       // end
+        const vControl = new THREE.Vector3(a[6], a[7], a[8]); // control
+        curvePath.add( new THREE.QuadraticBezierCurve3( v1, vControl, v2) );
+    });
+    return curvePath;
+};
+// create a v3 array
+const createV3Array = (data, pointCount) => {
+    const cp = createCurvePath(data);
+    return cp.getPoints(pointCount / cp.curves.length);
+};
+// create points from v3 array
+const createPoints = (v3Array, color) => {
+    color = color || 0xffffff;
+    const geometry = new THREE.BufferGeometry();
+    geometry.setFromPoints(v3Array);
+    return new THREE.Points(geometry, new THREE.PointsMaterial({color: color, size: 0.125 }));
+};
+//-------- ----------
+// CURVE PATHS
+//-------- ----------
+const POINT_COUNT = 300; // NUMBER OF POINTS
+const v3Array_pos = createV3Array([
+    [5,0,5, 0,2,-7,5,3,-5], // three each (x,y,z) for start, end, and control points
+    [0,2,-7,0,1.5,0,-2,4,3],
+    [0,1.5,0,3,1,1,5,-1,-4],
+    [3,1,1,-12,0,0,3,7,10]
+], POINT_COUNT);
+const v3Array_look = createV3Array([
+    [-10,0,5,10,3,20,0,-3,0]
+], POINT_COUNT);
+//-------- ----------
+// POINTS
+//-------- ----------
+scene.add( createPoints( v3Array_pos, 0xff0000 ) );
+scene.add( createPoints( v3Array_look, 0x00ff00 ) );
+//-------- ----------
+// GRID, MESH
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const mesh = new THREE.Mesh(
+     new THREE.BoxGeometry(1,1,1),
+     new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
+camera.position.set(6, 6, 6);
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 20,    // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;        // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = POINT_COUNT;  // MADE THE FRAME MAX THE SAME AS THE POINT COUNT
+let secs = 0,
+frame = 0,
+lt = new Date();
+const v_start = new THREE.Vector3(0, 0, 1);
+const v_delta = new THREE.Vector3(0, 0, 3);
+const update = function(frame, frameMax){
+    const a = frame / frameMax;
+    const v1 = v3Array_pos[ frame ];
+    const v2 = v3Array_look[ frame ];
+    camera.position.copy(v1);
+    camera.lookAt(v2);
+    mesh.position.copy(v2);
+};
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ### 3.3 - Get Points method along with get alpha methods
