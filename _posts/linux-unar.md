@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1057
-updated: 2023-07-03 09:45:22
-version: 1.0
+updated: 2023-07-03 09:50:49
+version: 1.1
 ---
 
 The [rar file format](https://en.wikipedia.org/wiki/RAR_%28file_format%29) is a proprietary data compression archive file format. Often I will end up comming accross this kind of archive file and would like to extract it in a Linux system without having to boot to windows, or by one means or another using [winrar to do so](https://en.wikipedia.org/wiki/WinRAR). The good news here is that there is a popular linux deal that can be used to make quick work of this [called unar](https://linux.die.net/man/1/unrar). On the Debian based distros that I work with thus far it would seem that this is not backed into the OS image, however it can easly be added by way of apt.
@@ -87,7 +87,9 @@ Successfully extracted to "./20 Synth Soundfonts".
 
 ## Conclusion
 
-What is great about unar is that it is pretty brainless to use once installed, so far it does that what I need it to do. So then there might only be so much to write about with this one. I looks like there are a whole lot of other formats that unar will work great for when it comes to extracting at least with with other formats such as 7zip and so forth. However there might be more to write about when it comes to making a compressed file rather than extracting one in the rar format.
+What is great about unar is that it is pretty brainless to use once installed, so far it does that what I need it to do. So then there might only be so much to write about with this one. I looks like there are a whole lot of other formats that unar will work great for when it comes to extracting at least with with other formats such as 7zip and so forth. 
+
+There might be more to write about when it comes to making a compressed file rather than extracting one in the rar format. With that said there might be some addtional options to look for. There is the general [tar command](/2021/11/26/linux-tar) to look into when it comes to making these kinds of files in other fomats.
 
 
 
