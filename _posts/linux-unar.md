@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1057
-updated: 2023-07-03 09:50:49
-version: 1.1
+updated: 2023-07-03 09:53:01
+version: 1.2
 ---
 
 The [rar file format](https://en.wikipedia.org/wiki/RAR_%28file_format%29) is a proprietary data compression archive file format. Often I will end up comming accross this kind of archive file and would like to extract it in a Linux system without having to boot to windows, or by one means or another using [winrar to do so](https://en.wikipedia.org/wiki/WinRAR). The good news here is that there is a popular linux deal that can be used to make quick work of this [called unar](https://linux.die.net/man/1/unrar). On the Debian based distros that I work with thus far it would seem that this is not backed into the OS image, however it can easly be added by way of apt.
@@ -84,6 +84,8 @@ $ unar 20-synth-sf.rar
   20 Synth Soundfonts/  (dir)... OK.
 Successfully extracted to "./20 Synth Soundfonts".
 ```
+
+So that works when it really comes down to it for this one at least. There migth be a few more things to write about with the various options and so forth. However all I wanted is to just extract a rar file, and if that is all I care about this works just fine.
 
 ## Conclusion
 
