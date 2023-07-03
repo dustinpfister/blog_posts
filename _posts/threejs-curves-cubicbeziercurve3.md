@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1027
-updated: 2023-02-11 10:56:42
-version: 1.10
+updated: 2023-07-03 08:57:53
+version: 1.11
 ---
 
-I would like to expand more on the use of curves in threejs and maybe part of doing that will involve taking another look at what there is to work with when it comes to built in options with curves. I have all [ready wrote a blog post on the THREE.QuadraticBezierCurve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3) so for this post I will be writing about a few quick examples using the [THREE.CubicBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve3) class. Both of these options are built on top of [the base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) of course, so in any case there are Curve class prototype methods that are very useful such as the get point method. However one thing that is nice about this Cubic Bezier Curve Class is that it will allow for two control points rather than just one. This might be one of the major reasons why I see a lot of developers choosing the Cubic option over Quadratic as this will allow for a greater degree of flexibility when creating curves for a project.
+I would like to expand more on the use of curves in threejs and maybe part of doing that will involve taking another look at what there is to work with when it comes to built in options with curves. I have all [ready wrote a blog post on the THREE.QuadraticBezierCurve3 class](/2022/10/21/threejs-curve-quadratic-bezier-curve3) so for this post I will be writing about a few quick examples using the [THREE.CubicBezierCurve3](https://threejs.org/docs/#api/en/extras/curves/CubicBezierCurve3) class. 
+
+Both the Quadratic and Cubic Bezier curve options extend from [the base Curve class](https://threejs.org/docs/#api/en/extras/core/Curve) of course. So in any case there are Curve class prototype methods that are very useful such as the get point method just to name one, and both options can be used when working out curve paths. However one thing that is nice about this Cubic Bezier Curve Class is that it will allow for two control points rather than just one. This might be one of the major reasons why I see a lot of developers choosing the Cubic option over Quadratic as this will allow for a greater degree of flexibility when creating curves for a project.
 
 <!-- more -->
 
@@ -23,6 +25,10 @@ In this blog post I am writing about one of the built in options for creating an
 ### Check out the base Curve class in detail if you have not done so.
 
 The [base curve class](/2022/06/17/threejs-curve/) is packed with a bunch of useful methods and features that one should be aware of before getting into what the built in options are that extend the class. There are methods like that get points method that will return an array of Vector3 objects. There is also an option for just getting a single point along the line of a curve as well.
+
+### Also Check out curve paths if you have not done so yet
+
+There is choosing to go with Quadratic or Cubice Bezier curves, but there is also not choosing between the two but rather going with one or another or more when working out a [Curve Path](/2023/06/01/threejs-curve-path/). A curve path is a kind of curve object that is actually a collection of curve objects rather than just a single curve. When making these kinds of objects there is just making all of the curves in the collection cubic bezier curves, which is not such a bad idea. However there is also making use of all of the options as needed here and there. In any case curve paths are what will need to be worked out when it comes to making any kind of real project using curves, as often I will want to have not just one but a whole bunch of these.
 
 ### Source code is also up on Github
 
