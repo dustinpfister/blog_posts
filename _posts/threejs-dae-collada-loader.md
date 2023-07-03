@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2023-02-15 15:54:56
-version: 1.38
+updated: 2023-07-03 09:13:59
+version: 1.39
 ---
 
 I would like to look into the various external file formats more that I can use with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file format. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is a format option that I can use out of the box in [blender](https://www.blender.org/) to export files, so it would seem to be a good choice just for that reason alone for starters. Aside from easy exporting, and importing with blender, this DAE format uses an XML schema as a way to store data for the state of an over all scene export as well. For me that is another good reason why I should go with this one as it is a plain text file format that means that in a pinch I can edit a few things here and there with a plain old text editor if I need to for some reason. Also it allows for me to structure things in a way in which I can reused textures and so forth rather than having everything packed together in a single binary format.
@@ -26,9 +26,11 @@ This is a post on using the ColladaLoader which can be added on top of three.js 
 
 In order to create a dea file a program like blender has to be used to create and export such a file. You do not have to learn everything about using it at this point, exporting the default cube that is added when first starting blender will work as a starting file to load. However the whole point of doing this is to get into the swing of creating files in blender that can then be loaded into a three.js project.
 
-### You will need additional javaScript files beyond just that of three.js
+### You will need additional javaScript files beyond just that of threejs
 
-On top of loading the usual three.js file, the Collada file loader will also need to be loaded first before any additional javaScript that makes use of three.js and the Collada loader. In many of these examples I am also using the Orbit Controls file which is yet another external files that can be located in the examples folder. On top of all of this there is also the dae files themselves along with any additional texture files that will also need to be loaded along with that f the dae file.
+On top of loading the usual threejs file, the Collada file loader will also need to be loaded first before any additional javaScript that makes use of threejs and the Collada loader. Where these files can be found and what kind of file you will need will change depending on what revision number of threejs you are using. In revisions of threejs that are at r147 and older there should be a js folder in the examples folder of the threejs github repo which is where one will find the plain js file version of the DAE loader that are to be used with text/javascript mime type script tags. However as of r146 the js folder has been removed, and now one must use module type script tags, and with that the JSM version of the DAE loader.
+
+In many of these examples I am also using the Orbit Controls file which is yet another external files that can be located in the examples folder. On top of all of this there is also the dae files themselves along with any additional texture files that will also need to be loaded along with that f the dae file.
 
 ### I am running this example by way of http rather the the file protocol
 
@@ -40,13 +42,13 @@ This post has to do with a few examples involving working with the dae file load
 
 ### The source code examples in this post are on Github
 
-The source code examples that I am write about in this post can be [found up on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-dae-collada-loader) in my text threejs repository.
+The source code examples that I am write about in this post can be [found up on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-dae-collada-loader) in my text threejs repository. This is also where I am placing all the various source code examples that I have made for all my [other blog posts on threejs](/categories/three-js/) over the years as well.
 
 ### Version Numbers matter with three.js
 
-When I wrote this post I was using r127 of three.js, and the last time I got around to doing a little editing I was using r146. In the future this code might break on later versions as code breaking changes are made to the library often. So if the code breaks the first thing you should check is what version of three.js you are using, it really matters a lot, more so than other libraries where the code is just more or less being maintained at a fixed state in terms of the state of the public API.
+When I wrote this post I was using r127 of three.js, and the last time I got around to doing a little editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). In the future this code might break on later versions as code breaking changes are made to the library often. So if the code breaks the first thing you should check is what version of three.js you are using, it really matters a lot, more so than other libraries where the code is just more or less being maintained at a fixed state in terms of the state of the public API.
 
- I try to do a half way decent job of editing files, but I have a lot of pots boiling when it comes to all the other various posts on threejs as well as whole other topics completely. 
+I try to do a half way decent job of editing files, but I have a lot of pots boiling when it comes to all the other various posts on threejs as well as whole other topics completely. 
 
 ## 1 - Some basic examples of the DAE loader
 
