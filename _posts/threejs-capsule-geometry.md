@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2023-07-04 12:21:08
-version: 1.30
+updated: 2023-07-04 12:26:16
+version: 1.31
 ---
 
 There are many built in geometry [constructors](/2019/02/27/js-javascript-constructor/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) by way of calling a function and passing a few arguments to define certain aspects of the geometry. One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder resulting in as the name suggests a kind of capsule like shape.
@@ -38,7 +38,7 @@ If you are thinking about using the capsule geometry as a crude alternative to c
 
 ### Source code can also be found on Github
 
-The source code examples that I am writing about in this post as well as my [many other posts on threejs](/categories/three-js/) can be found in [my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-capsule-geometry).
+The source code examples that I am writing about in this post as well as my [many other posts on threejs](/categories/three-js/) can be found in [my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-capsule-geometry). This is also where I keep notes I what I might want to do next in any and all possible future edits of this post.
 
 ### Version Numbers matter
 
@@ -84,7 +84,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Making a Sphere with capsule geometry
 
-If I set the length to zero then the capsule geometry can be used as a another way to create a kind of sphere like shape. So then it would seem that this constructor can be used as yet another way to go about making a geometry that is a kind of sphere. 
+If I set the length to zero then the capsule geometry can be used as a another way to create a kind of sphere like shape. So then it would seem that this constructor can be used as yet another way to go about making a geometry that is a kind of sphere. I am not saying that this is a good way to go about making a sphere, it is just that a value of 0 can be given for the length that will of course result in the formation of that kind of shape. There is also skipping the middle man sort of speak, and using the lathe geometry with an arc curve, but getting into that might need to be a matter for another section later in this post.
 
 ```js
 //-------- ----------
