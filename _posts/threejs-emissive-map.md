@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2023-02-19 11:01:48
-version: 1.47
+updated: 2023-07-04 11:19:57
+version: 1.48
 ---
 
 There are a lot of texture maps that can be used with the various materials in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic diffuse color map with the [basic material](/2018/05/05/threejs-basic-material/), or an [alpha map](/2019/06/06/threejs-alpha-map/) to set transparent areas. I am not sure if I will ever get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others, and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps).
@@ -46,7 +46,7 @@ The source code examples that I am writing about in this post can be found in my
 
 ### Version numbers matter
 
-When I wrote this post for the first time I was using r127 of threejs which was a late version of threejs that was released in early 2021. The last time that I came around to do a little editing of this post I was using r146 of threejs and the old examples as well as the new one I made at that point on data texture worked fine with that version of threejs. Still code breaking changes are made to threejs often so always be mindful of the version number that you are using.
+When I wrote this post for the first time I was using r127 of threejs which was a late version of threejs that was released in early 2021. The last time that I came around to do a little editing of this post I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) and the old examples as well as the new one I made at that point on data texture worked fine with that version of threejs. Still code breaking changes are made to threejs often so always be mindful of the version number that you are using.
 
 ## 1 - Some basic examples of emsiive maps
 
