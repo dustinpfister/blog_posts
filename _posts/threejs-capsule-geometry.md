@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2023-02-16 15:38:18
-version: 1.27
+updated: 2023-07-04 10:55:05
+version: 1.28
 ---
 
 There are many built in geometry [constructors](/2019/02/27/js-javascript-constructor/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) by way of calling a function and passing a few arguments to define certain aspects of the geometry. One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder resulting in as the name suggests a kind of capsule like shape.
 
-The nature of the capsule geometry is interesting as with a little code it can maybe be used as an alternative to tube geometry that often presents itself as a road block of sorts when learning how to use these various geometry constructors. One major reason why is because in order to use the tube geometry one will need to create an [instance of a curve](/2022/06/17/threejs-curve/) which is needed as the first argument when calling the tube geometry constructor. This might prove to be a little hard to work with as it is a way to create a 3d path by way of javaScript code purely by way of some logic, rather than say data for each point in space. There are some built in curve classes that help make working with tube geometry easier, but again this capsule geometry can be used to create a kind of crude alternative to that.
+The nature of the capsule geometry is interesting as with a little code it can maybe be used as an alternative to tube geometry that often presents itself as a road block of sorts when learning how to use these various geometry constructors. One major reason why is because in order to use the tube geometry one will need to create an [instance of a curve](/2022/06/17/threejs-curve/) which is needed as the first argument when calling the tube geometry constructor. This might prove to be a little hard to work with as it is a way to create a 3d path by way of javaScript code purely by way of some logic, rather than say data for each point in space. There are some built in curve classes that help make working with tube geometry easier, but again this capsule geometry can be used to create a kind of crude alternative.
 
-In this post I will be going over a basic getting started type example of the capsule geometry, but I will then also be looking into how to go about drawing a 3d path in space using a group of mesh objects where each mesh object contains a capsule geometry.
+In this post I will be going over a few basic getting started type examples of the capsule geometry as always. I will then also be looking into how to go about drawing a 3d path in space using a group of mesh objects where each mesh object contains a capsule geometry. I will also then be touching base on some additional advanced topics that are related to that of the capsule geometry as well.
 
 <!-- more -->
 
@@ -22,7 +22,7 @@ In this post I will be going over a basic getting started type example of the ca
 
 ## Capsule Geometry and what to know first
 
-This is not a [getting started with threejs](/2018/04/04/threejs-getting-started/), let alone with [javaScript in general](/2018/11/27/js-getting-started/) as well. So I assume that you have at least some background with threejs to begin with, if not you might find this post hard to follow. Even if you have some background with threejs you might want to read up more on some additional topics before continuing with the rest of this post. In the opening of this post I mentioned the curve class as well as the tube geometry, which is one of many ways to go about drawing something that is like a line in 3d space. However there are a number of other ways to do so that are also worth looking into when it comes to this sort of thing, some of which I will be briefly covering in this section.
+This is not a [getting started with threejs](/2018/04/04/threejs-getting-started/), let alone with [javaScript in general](/2018/11/27/js-getting-started/) as well. So I assume that you have at least some background with threejs to begin with, if not you might find this post hard to follow. Even if you have some background with threejs you might want to read up more on some additional topics before continuing with the rest of this post. In the opening of this post I mentioned the curve class as well as the tube geometry, which is one of many ways to go about drawing something that is like that of a line in 3d space. However there are a number of other ways to do so that are also worth looking into when it comes to this sort of thing, some of which I will be briefly covering in this section.
 
 ### Read up more on the Vector3 class, and the object3d class
 
@@ -32,15 +32,19 @@ In the more advance examples that I am writing about in this post I am making he
 
 Another option for drawing lines in space would be the [THREE.Line constructor](/2018/04/19/threejs-line/) that can easily be used to draw a line in space with an array of points rather that an instance of the curve class. However one major drawback of this is that it will only work with line materials rather than mesh materials. So if I want to add texture and various maps and make use of other features in the various mesh materials I will want to use tube geometry. Or make use of some kind of solution that involves a collection of mesh objects using the capsule geometry.
 
+### Just learn a thing or two about curves and Tube Geometry
+
+If you are thinking about using the capsule geometry as a crude alternative to curves and tube geometry, it might work okay most of the time, however I would still use the word crude to describe this. It might very well be best to just learn how to work with curves and tube geometry as a way to create lines in space over that of the other alternatives that I mentioned in this section as well as groups of capsules. With that said there is checking out my [main blog post on tube geometry](/2023/06/02/threejs-tube-geometry/), as well as my post on [curve paths](/2023/06/01/threejs-curve-path/).
+
 ### Source code can also be found on Github
 
 The source code examples that I am writing about in this post as well as my [many other posts on threejs](/categories/three-js/) can be found in [my test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-capsule-geometry).
 
 ### Version Numbers matter
 
-This capsule geometry constructor is still a fairly new feature in threejs and as such the source code examples here will break on any version of theejs that is older than [r139 as that is the revision at which this capsule geometry feature was added to the core of treejs](https://github.com/mrdoob/three.js/releases/tag/r139).
+This capsule geometry constructor is a feature in threejs that was [added in r139](https://github.com/mrdoob/three.js/releases/tag/r139). So it would go without saying that if you are using a revision that is older than that, this will not work. However there is the lathe geometry constructor that should still be there to work with unless you are using a very old revision.
 
-When I first wrote this post I was using r140 of threejs with the source code examples. The last time I cam around to do a little editing and expanding of this post I was using r146. Things where working fine on my end with the versions of the library that i was using at this time. 
+When I first wrote this post I was using r140. The last time I came around to do a little editing and expanding of this post I was using [r146 and as such updated the demos to the style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) that I have set for that revision. Things where working fine on my end with the versions of the library that I was using at this time. 
 
 
 ## 1 - Basic examples of capsule geometry
