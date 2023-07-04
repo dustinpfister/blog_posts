@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2023-07-04 11:14:59
-version: 1.29
+updated: 2023-07-04 12:21:08
+version: 1.30
 ---
 
 There are many built in geometry [constructors](/2019/02/27/js-javascript-constructor/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) by way of calling a function and passing a few arguments to define certain aspects of the geometry. One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder resulting in as the name suggests a kind of capsule like shape.
@@ -379,6 +379,62 @@ camera.position.set(3, 3, 3);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+## 5 - Lathe Geometry as a more flexible alternative
+
+The capsule geometry is great of you are in a situation in which you just need that kind of geometry and want a quick way to go about creating it an move on. However once you learn a thing or two about the [lathe geometry constructor](/2023/06/07/threejs-lathe-geometry/), the capsule geometry seems very restrictive and redundant. If you take a moment to look into reading the threejs source code you will find that the capsule geometry is just a simple extension of the lathe geometry class. With that said it is possible to create a collection of [vector2 objects](/2023/06/09/threejs-vector2/) that are the 2d shape that is needed, and then just pass that to the lathe geometry to get a similar result. Not only that but one can tweak how it is to create this kind of path to end up with all kinds of interesting shapes.
+
+### 5.1 - Basic Capsule geometry demo using Lathe Geometry
+
+For this demo I am making a curve path and adding a few child curves to it using quadratic curves, and line curves. This results in a 2d path of sorts to which I can then create an array of vector2 objects by just simply calling the get spaced points method of the curve path class. Once I have the array of vector2 objects I can then pass that as the first argument for the THREE.LatheGeometry function along with an additional argument that is the number of sections that I want when it comes to spinning this 2d path along an axis. In other words the number of vector2 objects in the array, and this additional argument is what I can use to set the number of sections, or density of the geometry of you prefer.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// curve
+//-------- ----------
+const v1 = new THREE.Vector2(  0.0, -1.0 );
+const v2 = new THREE.Vector2(  1.0, -0.5 );
+const v3 = new THREE.Vector2(  1.0,  0.5 );
+const v4 = new THREE.Vector2(  0.0,  1.0 );
+const c1 = v1.clone().lerp(v2, 0.5).add( new THREE.Vector2(  0.35, -0.35 ) );
+const c2 = v3.clone().lerp(v4, 0.5).add( new THREE.Vector2(  0.35,  0.35 ) );
+// curve path and child curves
+const curve = new THREE.CurvePath();
+curve.add( new THREE.QuadraticBezierCurve( v1, c1, v2 ) );
+curve.add( new THREE.LineCurve( v2, v3 ) );
+curve.add( new THREE.QuadraticBezierCurve( v3, c2, v4 ) );
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const lathe_segments = 50;
+const v2_array = curve.getSpacedPoints(200);
+const geometry = new THREE.LatheGeometry(v2_array, lathe_segments);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const material = new THREE.MeshNormalMaterial();
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+//-------- ----------
+// RENDER THE SCENE
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+The advantages with lathe geometry at this point should be clear. However if not then I will say that this allows for getting the same shape, but with far greater flexibility. I am using curves to create the array of vector2 objects, but if I prefer to work out some code and just directly create and push vector2 objects into an array I can. I have control over adjusting the length, but also the curves of the caps at the end. I might have used quadratic bezier curves, but if I want to switch to cubic bezier curves and do something with two control points for the end cap curves I can.
+
+Also it goes without saying that there are all kinds of additional shapes that can be bade by working out any 2d path for that matter.
 
 ## Conclusion
 
