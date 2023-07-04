@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 997
-updated: 2023-07-04 10:55:05
-version: 1.28
+updated: 2023-07-04 11:14:59
+version: 1.29
 ---
 
 There are many built in geometry [constructors](/2019/02/27/js-javascript-constructor/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) that can be used to create an instance of [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) by way of calling a function and passing a few arguments to define certain aspects of the geometry. One such option that I will be writing about today is the [capsule geometry constructor](https://threejs.org/docs/#api/en/geometries/CapsuleGeometry). This is a geometry that is like the cylinder geometry, but with a half sphere like cap on each side of the cylinder resulting in as the name suggests a kind of capsule like shape.
@@ -84,7 +84,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Making a Sphere with capsule geometry
 
-If I set the length to zero then the capsule geometry can be used as a another way to create a kind of sphere shape.
+If I set the length to zero then the capsule geometry can be used as a another way to create a kind of sphere like shape. So then it would seem that this constructor can be used as yet another way to go about making a geometry that is a kind of sphere. 
 
 ```js
 //-------- ----------
@@ -329,7 +329,7 @@ Although this seems to work okay the capsules start to look more like weird oval
 
 ## 4 - Material index values and groups
 
-One thing I often try to find out is it I can make groups for a geometry made wuith one of these constructors if one is not there to begin with. I was able to get somewhere with this at least, but I hit a wall.
+One thing I often try to find out is if I can make groups for a geometry made with one of these constructors if one is not there to begin with. When it comes to capsule geometry it would seem that there are now groups built into the geometry itself, so I will need to add groups if I need them. I was able to get somewhere with this at least, but I hit a wall. For those of you that have no idea what I am writing about here, groups are a way to add objects that contain a material index value, and a start and end call range to use the material of the given index. In other words groups are something that will come into play when you want to use more than one material by passing an array of materials when making a mesh object. I have wrote a [blog post on material index values](/2018/05/14/threejs-mesh-material-index/) a while back on this subject in which I get into this in depth.
 
 ```js
 //-------- ----------
@@ -382,4 +382,6 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-The capsule geometry is then yet another built in way to go about creating a geometry for a mesh object. Although there may be some drawbacks with doing so I have found that the capsule geometry works okay for creating a tube like path in 3d space, but I am still thinking that the best way to go about doing this sort of thing would be to use curves and tube geometry, or some kind of solution for doing so. 
+The capsule geometry is then yet another built in way to go about creating a geometry for a mesh object. Although there may be some drawbacks with doing so I have found that the capsule geometry works okay for creating a tube like path in 3d space, but I am still thinking that the best way to go about doing this sort of thing would be to use curves and tube geometry.
+
+Also I have found that it is not so hard to create the same kind of shape by directly working with the lathe geometry constructor function. Also the lathe geometry does allow for a great deal of flexibility when it comes to making all kinds of other shapes by just tweaking the values use to create the 2d curves used. In fact the capsule geometry is very much an extension of the lathe geometry class as you will find when it comes to looking as the source code of the capsule geometry.
