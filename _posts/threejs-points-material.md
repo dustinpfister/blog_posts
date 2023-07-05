@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2023-02-23 11:30:15
-version: 1.36
+updated: 2023-07-05 12:06:57
+version: 1.37
 ---
 
 The use of the [Vector3](/2018/04/15/threejs-vector3/) class instances in [threejs](https://threejs.org/) is a major part of the process of doing much of anything in threejs. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the [position property in the Object3d class](/2022/04/04/threejs-object3d-position/) is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -51,7 +51,7 @@ scene.add(
 
 ### Source code examples are up on Github
 
-The source code examples that I am writing about in this post can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-points-material).
+The source code examples that I am writing about in this post can also be found in my [test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-points-material). This is also where I park the source code examples for my [many other blog posts on threejs](/categories/three-js/) that I have wrote over the years.
 
 ### Version Numbers matter with three.js
 
@@ -69,29 +69,31 @@ The THREE.Points class is then just a different kind of Mesh that is used to jus
 The points constructor is like that Mesh constructor only it is just the position attribute of a Buffer Geometry instance that will be mainly what is used in rendering. This geometry that I give the THREE.Points constructor could be a custom geometry like the one on the documentation page of the THREE.Points constrictor on the three.js website. However it can also be one of the geometries that is created and returned by one of the Built in geometry constructors such as the THREE.SphereGeomerty constructor.
 
 ```js
-(function () {
-    // scene
-    var scene = new THREE.Scene();
-    // geometry
-    var geometry = new THREE.SphereGeometry(1, 10, 60);
-    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
-    var pt = new THREE.Points(
-            geometry,
-            new THREE.PointsMaterial({
-                color: 0x00afaf,
-                size: 0.025
-            }));
-    scene.add(pt);
-    // camera and renderer
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000); // camera
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer(); // render
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000); // camera
+const renderer = new THREE.WebGL1Renderer(); // render
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// POINTS
+//-------- ----------
+const geometry = new THREE.SphereGeometry(1, 10, 60);
+const pt = new THREE.Points(
+        geometry,
+        new THREE.PointsMaterial({
+            color: 0x00afaf,
+            size: 0.05
+        }));
+scene.add(pt);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 So in other words the points constructor is just a more primitive kind of mesh, that can only be used with a special points material, but aside from that an instance of THREE.Points is very similar to that of THREE.Mesh instances. Just like the that of A mesh and Instance of Points is based on the Object3d class, so when it comes to positioning and rotating the Points instance all of that is more or less the same as Mesh. Also it is still and instance of buffer geometry that is passed as the first argument, that can be created by using the Buffer Geometry constructor directly, or by using one of the built in constructors, it is just that many of the attributes that would be used in the Mesh constructor are ignored.
@@ -103,46 +105,45 @@ Although I might often want to just pass a buffer geometry that I all ready have
 The general process of doing this would be to create a typed array from the array of vector3 class instances that I can then use with the set attribute method of the Buffer geometry class to create the position attribute for the geometry. However that would be the hard way of doing so with this, a less complex way of getting this done would be to make use of the set from points method of the buffer geometry class.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    // ARRAY of VECTOR3 CLASS INSTANCES
-    const v3Array = [
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(1, 0, 0),
-        new THREE.Vector3(0, 1, 0),
-        new THREE.Vector3(0, 0, 1),
-        new THREE.Vector3(2, 0, 0),
-        new THREE.Vector3(0, 2, 0),
-        new THREE.Vector3(0, 0, 2),
-        new THREE.Vector3(3, 0, 0),
-        new THREE.Vector3(0, 3, 0),
-        new THREE.Vector3(0, 0, 3)
-    ];
-    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
-    scene.add(
-        new THREE.Points(
-            new THREE.BufferGeometry().setFromPoints(v3Array),
-            new THREE.PointsMaterial({
-                color: 0x00afaf,
-                size: 0.25
-            })));
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// POINTS
+//-------- ----------
+// ARRAY of VECTOR3 CLASS INSTANCES
+const v3Array = [
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(1, 0, 0),
+    new THREE.Vector3(0, 1, 0),
+    new THREE.Vector3(0, 0, 1),
+    new THREE.Vector3(2, 0, 0),
+    new THREE.Vector3(0, 2, 0),
+    new THREE.Vector3(0, 0, 2),
+    new THREE.Vector3(3, 0, 0),
+    new THREE.Vector3(0, 3, 0),
+    new THREE.Vector3(0, 0, 3)
+];
+// THREE.Points INSTANCE UISNG THREE.PointsMaterial
+scene.add(
+    new THREE.Points(
+        new THREE.BufferGeometry().setFromPoints(v3Array),
+        new THREE.PointsMaterial({
+            color: 0x00afaf,
+            size: 0.25
+        })));
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 The nice thing about Points is that it is just the position attribute that I care about with this. When it comes to mesh objects there is also the normal, and uv attributes that I would want to set up. However this is a post on the points material so I will not be getting into any of that here. However I do in any case see the position attribute as the first attribute of interest in creating a custom geometry so this is always a good starting point.
@@ -154,63 +155,62 @@ Okay so I covered an example in which I create a buffer geometry from an array o
 Once I have my array of vector3 class instances I can loop over them and use methods like normalize, applyEuler, and multiplyScalar just to name a few to mutate the values. I can then do the same as before with the methods I covered before hand to crate a buffer geometry instance from this array of mutated vector3 objects.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // Buffer Geometry from v3Array
-    const Vector3ArrayToGeometry = (v3Array) => {
-        return new THREE.BufferGeometry().setFromPoints(v3Array);
-    };
-    // Vector3 array from geometry
-    const Vector3ArrayFromGeometry = (geometry) => {
-        const pos = geometry.getAttribute('position');
-        let i = 0;
-        const len = pos.count, v3Array = [];
-        while(i < len){
-            const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// Buffer Geometry from v3Array
+const Vector3ArrayToGeometry = (v3Array) => {
+    return new THREE.BufferGeometry().setFromPoints(v3Array);
+};
+// Vector3 array from geometry
+const Vector3ArrayFromGeometry = (geometry) => {
+    const pos = geometry.getAttribute('position');
+    let i = 0;
+    const len = pos.count,
+    v3Array = [];
+    while (i < len) {
+        const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
             v3Array.push(v);
-            i += 1;
-        }
-        return v3Array;
-    };
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    // Geometry created with the Torus Geometry Constructor
-    const geometry = new THREE.TorusGeometry(2, 0.75, 30, 60);
-    geometry.rotateX(Math.PI / 180 * 90);
-    // array of Vector3 class instances
-    const v3Array = Vector3ArrayFromGeometry(geometry);
-    // do somehting to the v3 array
-    v3Array.forEach((v) => {
-        const vd = new THREE.Vector3();
-        vd.copy(v).normalize().multiplyScalar(0.75 * THREE.MathUtils.seededRandom())
-        v.add(vd);
-    });
-    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
-    scene.add(
-        new THREE.Points(
-            Vector3ArrayToGeometry(v3Array),
-            new THREE.PointsMaterial({
-                color: 0x00afaf,
-                size: 0.125
-            })));
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+        i += 1;
+    }
+    return v3Array;
+};
+//-------- ----------
+// POINTS
+//-------- ----------
+// Geometry created with the Torus Geometry Constructor
+const geometry = new THREE.TorusGeometry(2, 0.75, 30, 60);
+geometry.rotateX(Math.PI / 180 * 90);
+// array of Vector3 class instances
+const v3Array = Vector3ArrayFromGeometry(geometry);
+// do somehting to the v3 array
+v3Array.forEach((v) => {
+    const vd = new THREE.Vector3();
+    vd.copy(v).normalize().multiplyScalar(0.75 * THREE.MathUtils.seededRandom())
+    v.add(vd);
+});
+// THREE.Points INSTANCE UISNG THREE.PointsMaterial
+scene.add(
+    new THREE.Points(
+        Vector3ArrayToGeometry(v3Array),
+        new THREE.PointsMaterial({
+            color: 0x00afaf,
+            size: 0.125
+        })));
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 2 - The Points Material and creating a custom geometry with the Buffer Geometry Constructor, and Rand Float Spread
@@ -220,43 +220,44 @@ Now that I have covered the basics of the TREE.Point constructor, and how it com
 In this example I am using the THREE.Math.randFloatSpread function to create values between zero and a given max range. I then will want to create an instance of the Buffer Geometry constructor, and create a position attribute for the geometry. The array or points will then be passed to the set attribute method of the buffer geometry instance. After that it is just a matter of passing the instance of buffer geometry to the THREE.Point constructor as the value for the first argument, followed by an instance of the Points material.
 
 ```js
-(function () {
-    // scene
-    var scene = new THREE.Scene();
- 
-    // geometry
-    var i = 0,
-    verts = [];
-    while (i < 500) {
-        var pt = new THREE.Vector3();
-        pt.set(
-            THREE.Math.randFloatSpread(45),
-            THREE.Math.randFloatSpread(45),
-            THREE.Math.randFloatSpread(45));
-        verts.push(pt.x, pt.y, pt.z);
-        i += 1;
-    }
-    var geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
-    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
-    scene.add(
-        new THREE.Points(
-            geometry,
-            new THREE.PointsMaterial({
-                color: 0x00afaf
-            })));
- 
-    // renderer and camera
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(50, 50, 50);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// POINTS
+//-------- ----------
+// geometry
+let i = 0;
+const verts = [];
+while (i < 500) {
+    const pt = new THREE.Vector3();
+    pt.set(
+        THREE.MathUtils.randFloatSpread(45),
+        THREE.MathUtils.randFloatSpread(45),
+        THREE.MathUtils.randFloatSpread(45));
+    verts.push(pt.x, pt.y, pt.z);
+    i += 1;
 }
-    ());
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
+// THREE.Points INSTANCE UISNG THREE.PointsMaterial
+scene.add(
+    new THREE.Points(
+        geometry,
+        new THREE.PointsMaterial({
+            color: 0x00afaf
+        })));
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(50, 50, 50);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 3 - A spiral example of THREE.Points and THREE.PointsMatreial
@@ -264,56 +265,56 @@ In this example I am using the THREE.Math.randFloatSpread function to create val
 The next step with this is starting to experiment with creating custom geometries, and just looking at the state of the points alone.  With that said there is starting to work out expressions for creating the array of values to be used just for the position attribute of an instance of Buffer Geometry. The full process of making a geometry instance that will work well with THREE.Mesh is a little involves, and working out the position array is just one part of the process. However when it comes to just using the THREE.Points constructor and the Points material I can just focus on the points in space, and that is all. In this example I was paying around with some expressions that result in the formation of a spiral like pattern of points.
 
 ```js
-(function () {
-    // scene
-    var scene = new THREE.Scene();
- 
-    // geometry
-    var i = 0,
-    iMax = 50,
-    rotationCount = 4,
-    vert,
-    vertices = [],
-    per,
-    r;
-    while (i < iMax) {
-        // percent
-        per = i / iMax;
-        // radian
-        r = Math.PI * 2 * rotationCount * per;
-        r %= Math.PI * 2;
-        // current vertex
-        vert = new THREE.Vector3();
-        vert.x = Math.cos(r) * (1 + 5 * per);
-        vert.y = -10 + 15 * per;
-        vert.z = Math.sin(r) * (1 + 5 * per);
-        vertices.push(vert.x, vert.y, vert.z);
-        i += 1;
-    }
-    var geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
- 
-    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
-    var points = new THREE.Points(
-            // geometry as first argument
-            geometry,
-            // then Material
-            new THREE.PointsMaterial({
-                size: .05
-            }));
-    scene.add(points);
- 
-    // camera and renderer
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(10, 10, 10);
-    camera.lookAt(0, 0, 0);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.render(scene, camera);
- 
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// POINTS
+//-------- ----------
+// GEOMETRY
+let i = 0,
+vert,
+per,
+r;
+const iMax = 200,
+rotationCount = 4,
+vertices = [];
+while (i < iMax) {
+    // percent
+    per = i / iMax;
+    // radian
+    r = Math.PI * 2 * rotationCount * per;
+    r %= Math.PI * 2;
+    // current vertex
+    vert = new THREE.Vector3();
+    vert.x = Math.cos(r) * (1 + 5 * per);
+    vert.y = -10 + 15 * per;
+    vert.z = Math.sin(r) * (1 + 5 * per);
+    vertices.push(vert.x, vert.y, vert.z);
+    i += 1;
 }
-    ());
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+// POINTS
+const points = new THREE.Points(
+        // geometry as first argument
+        geometry,
+        // then Material
+        new THREE.PointsMaterial({
+            size: 0.5
+        }));
+scene.add(points);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 There is a great deal more to look into when it comes to making a solid custom geometry, however maybe one of the first things that should be worked out is the position of the vertices. Just working out that logic with the use of the Points constructor is then a good starting point, and then from there it is just a question of adding all the additional properties that are needs when it comes to drawing triangles between the points, and setting material index values as well as a uv array.
@@ -325,47 +326,46 @@ The points material will work just fine for situations in which I just want to g
 To go about creating a mesh for each point in a geometry I will want to find a way to create an array of Vector3 instances from the position property of a geometry, or use methods like getX, getY, and getZ of the position attribute along with the use of the count property of the position attribute. For this example I am doing the later of these two to create Vector3 instances as needed. And for each vector3 instance that I create I copy that Vector to the position property of a new mesh object that I am making for each point. When doing so I can use any geometry I want for each point, such as the Sphere geometry constructor, also I can use any material that I want including potions that respond to light sources.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000); // camera
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer(); // render
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // LIGHT
-    //-------- ----------
-    const dl = new THREE.DirectionalLight(0xffffff, 1);
-    dl.position.set(2,1,-2)
-    scene.add(dl);
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    const geometry = new THREE.SphereGeometry(1.28, 60, 10);
-    const pos = geometry.getAttribute('position');
-    let i = 0;
-    const len = pos.count;
-    while(i < len){
-        const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000); // camera
+const renderer = new THREE.WebGL1Renderer(); // render
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(2, 1, -2)
+scene.add(dl);
+//-------- ----------
+// POINTS
+//-------- ----------
+const geometry = new THREE.SphereGeometry(1.28, 60, 10);
+const pos = geometry.getAttribute('position');
+let i = 0;
+const len = pos.count;
+while (i < len) {
+    const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
         const mesh = new THREE.Mesh(
             new THREE.SphereGeometry(0.075, 10, 10),
             new THREE.MeshPhongMaterial({
                 color: 0xff0000,
                 emissive: 0xffffff,
-                emissiveIntensity: 0.15}))
+                emissiveIntensity: 0.15
+            }))
         mesh.position.copy(v);
-        scene.add(mesh);
-        i += 1;
-    }
-    //-------- ----------
-    // RENDER
-    //-------- ----------
-    renderer.render(scene, camera);
-}());
+    scene.add(mesh);
+    i += 1;
+}
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 5 - Animation example
@@ -373,110 +373,111 @@ To go about creating a mesh for each point in a geometry I will want to find a w
 Working with just the position attribute of buffer geometry along with the Points and Points Material can be kind of fun. That is once one gets past all the dull stuff to start creating interesting artful work and animations. For this example I made a little animation loop in which I take a Torus Geometry and explode it outward into all kinds of various points, and then back again.
 
 ```js
-(function () {
-    //-------- ----------
-    // SCENE, CAMERA, RENDERER
-    //-------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(6, 6, 6);
-    camera.lookAt(0, 0, 0);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPERS
-    //-------- ----------
-    // Vector3 Array to Typed Array
-    const Vector3ArrayToTyped = (v3Array) => {
-        let i = 0, len = v3Array.length, vertArray = [];
-        while(i < len){
-            let v = v3Array[i];
-            vertArray.push(v.x, v.y, v.z);
-            i += 1;
-        }
-        return new THREE.Float32BufferAttribute(vertArray, 3)
-    };
-    // Buffer Geometry from v3Array
-    const Vector3ArrayToGeometry = (v3Array) => {
-        const typedArray = Vector3ArrayToTyped(v3Array);
-        const geometry = new THREE.BufferGeometry();
-        return geometry.setAttribute('position', typedArray);
-    };
-    // Vector3 array from geometry
-    const Vector3ArrayFromGeometry = (geometry) => {
-        const pos = geometry.getAttribute('position');
-        let i = 0;
-        const len = pos.count, v3Array = [];
-        while(i < len){
-            const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// Vector3 Array to Typed Array
+const Vector3ArrayToTyped = (v3Array) => {
+    let i = 0,
+    len = v3Array.length,
+    vertArray = [];
+    while (i < len) {
+        let v = v3Array[i];
+        vertArray.push(v.x, v.y, v.z);
+        i += 1;
+    }
+    return new THREE.Float32BufferAttribute(vertArray, 3)
+};
+// Buffer Geometry from v3Array
+const Vector3ArrayToGeometry = (v3Array) => {
+    const typedArray = Vector3ArrayToTyped(v3Array);
+    const geometry = new THREE.BufferGeometry();
+    return geometry.setAttribute('position', typedArray);
+};
+// Vector3 array from geometry
+const Vector3ArrayFromGeometry = (geometry) => {
+    const pos = geometry.getAttribute('position');
+    let i = 0;
+    const len = pos.count,
+    v3Array = [];
+    while (i < len) {
+        const v = new THREE.Vector3(pos.getX(i), pos.getY(i), pos.getZ(i))
             v3Array.push(v);
-            i += 1;
-        }
-        return v3Array;
-    };
-    // lerp two vector3 arrays
-    const Vector3ArrayLerp = (v3Array_1, v3Array_2, alpha) => {
-        return v3Array_1.map((v, i) => {
-            return v.clone().lerp( v3Array_2[i], alpha )
-        });
-    };
-    //-------- ----------
-    // POINTS
-    //-------- ----------
-    // Geometry created with the Torus Geometry Constructor
-    const geometry = new THREE.TorusGeometry(2, 0.75, 30, 60);
-    geometry.rotateX(Math.PI / 180 * 90);
-    // array of Vector3 class instances
-    const v3Array_1 = Vector3ArrayFromGeometry(geometry);
-    // do somehting to the v3 array
-    const v3Array_2 = v3Array_1.map((v) => {
+        i += 1;
+    }
+    return v3Array;
+};
+// lerp two vector3 arrays
+const Vector3ArrayLerp = (v3Array_1, v3Array_2, alpha) => {
+    return v3Array_1.map((v, i) => {
+        return v.clone().lerp(v3Array_2[i], alpha)
+    });
+};
+//-------- ----------
+// POINTS
+//-------- ----------
+// Geometry created with the Torus Geometry Constructor
+const geometry = new THREE.TorusGeometry(2, 0.75, 30, 60);
+geometry.rotateX(Math.PI / 180 * 90);
+// array of Vector3 class instances
+const v3Array_1 = Vector3ArrayFromGeometry(geometry);
+// do somehting to the v3 array
+const v3Array_2 = v3Array_1.map((v) => {
         const vd = new THREE.Vector3();
         vd.copy(v).normalize().multiplyScalar(2 + 3 * THREE.MathUtils.seededRandom())
         return v.clone().add(vd);
     });
-    const v3Array_3 = Vector3ArrayLerp(v3Array_1, v3Array_2, 0);
-    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
-    const points = new THREE.Points(
+const v3Array_3 = Vector3ArrayLerp(v3Array_1, v3Array_2, 0);
+// THREE.Points INSTANCE UISNG THREE.PointsMaterial
+const points = new THREE.Points(
         Vector3ArrayToGeometry(v3Array_3),
         new THREE.PointsMaterial({
-        color: 0x00afaf,
-        size: 0.125
-    }));
-    scene.add(points);
-    // ---------- ----------
-    // ANIMATION LOOP
-    // ---------- ----------
-    const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
-    FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
-    FRAME_MAX = 120;
-    let secs = 0,
-    frame = 0,
-    lt = new Date();
-    // update
-    const update = function(frame, frameMax){
-        const p = frame / frameMax;
-        const a = 1 - THREE.MathUtils.pingpong(p - 0.5, 1) * 2
+            color: 0x00afaf,
+            size: 0.125
+        }));
+scene.add(points);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(6, 6, 6);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30; // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 120;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function (frame, frameMax) {
+    const p = frame / frameMax;
+    const a = 1 - THREE.MathUtils.pingpong(p - 0.5, 1) * 2
         const v3Array = Vector3ArrayLerp(v3Array_1, v3Array_2, a);
-        points.geometry.copy( Vector3ArrayToGeometry( v3Array) )
-    };
-    // loop
-    const loop = () => {
-        const now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if(secs > 1 / FPS_UPDATE){
-            // update, render
-            update( Math.floor(frame), FRAME_MAX);
-            renderer.render(scene, camera);
-            // step frame
-            frame += FPS_MOVEMENT * secs;
-            frame %= FRAME_MAX;
-            lt = now;
-        }
-    };
-    loop();
-}());
+    points.geometry.copy(Vector3ArrayToGeometry(v3Array))
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / FPS_UPDATE) {
+        // update, render
+        update(Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
