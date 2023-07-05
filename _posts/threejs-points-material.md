@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2023-07-05 12:06:57
-version: 1.37
+updated: 2023-07-05 12:09:27
+version: 1.38
 ---
 
 The use of the [Vector3](/2018/04/15/threejs-vector3/) class instances in [threejs](https://threejs.org/) is a major part of the process of doing much of anything in threejs. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the [position property in the Object3d class](/2022/04/04/threejs-object3d-position/) is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -55,7 +55,7 @@ The source code examples that I am writing about in this post can also be found 
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post back in May of 2018 I was using version r91 of three.js, and the last time I got around to editing this post I was using r140. Sense then a number of code breaking changes have happened when it comes to using the geometry constructor rather than the Buffer Geometry constructor. The old Geometry constructor has been removed from three.js as of version r125, so the examples here have been updated to work with the buffer geometry constructor as well as versions other chances that have happened sense then.
+When I first wrote this post back in May of 2018 I was using version r91 of threejs. The last time I got around to editing this post I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md), and thus updated the demos to the code style I set for that revision. Sense then a number of code breaking changes have happened when it comes to using the geometry constructor rather than the Buffer Geometry constructor. The old Geometry constructor has been removed from three.js as of version r125, so the examples here have been updated to work with the buffer geometry constructor as well as versions other chances that have happened sense then.
 
 
 ## 1 - The basics of Points and the Point material vs Mesh Constructors, and basic Three.Points Constructor example
