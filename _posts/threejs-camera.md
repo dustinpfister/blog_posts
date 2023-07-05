@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2023-07-05 11:27:43
-version: 1.36
+updated: 2023-07-05 11:47:52
+version: 1.37
 ---
 
-If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor function options, once an instance of a camera is obtained it does not need to be added to the [scene object](/2018/05/03/threejs-scene/), although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a [render method](/2018/11/24/threejs-webglrenderer) in order to view anything in a scene.
+If you want to make a [threejs](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A camera must be created with one of several constructor function options, once an instance of a camera is obtained it does not need to be added to the [scene object](/2018/05/03/threejs-scene/), although doing so might still generally be a good idea in some situations. In any case at least one camera needs to be created so that we have something that can be used with a [render method](/2018/11/24/threejs-webglrenderer) of the WebGL rendreer, or whatever renderer option you might be using
 
-In three.js there are a few cameras to work with, but typically you will want to work with a perspective camera most of the time, at least that is the one that I actually used in most projects thus far. A camera like many other objects in three.js inherits from the object3d class, which contains properties that can be used to set the position and orientation of the camera. In this post is about the camera class that is shared across all cameras, and can be thought of as a kind of home base for all content on cameras in three.js content on my site here at github pages.
+In threejs there are a few cameras to work with, but typically you will want to work with a perspective camera most of the time, at least that is the one that I actually used in most projects thus far. A camera like many other objects in threejs inherits from the object3d class, which contains properties that can be used to set the position and orientation of the camera. This post is then about the base camera class that is shared across all cameras, the various camera options, and so forth. In other words this can be thought of as a kind of home base for all content on cameras in threejs content on my site here at github pages.
 
 <!-- more -->
 
@@ -20,23 +20,23 @@ In three.js there are a few cameras to work with, but typically you will want to
 
 ## Camera Objects in three.js and what to know first
 
-This is a post on cameras in general when working with three.js in a client side javaScript environment. There is a great deal more to be aware of beyond just that of working with cameras when it comes to working out even some basic examples of three.js, so if you are still pretty new to three.js it might be best to start out with some kind of getting started with three.js type post. I will not be going over every little detail about three.js in general here though, but I will be going over some of the core things to be aware of with cameras. In this section I will be outlining some things you should be aware of before getting into cameras in greater detail.
+This is a post on cameras in general when working with threejs in a client side javaScript environment. There is a great deal more to be aware of beyond just that of working with cameras when it comes to working out even some basic examples of threejs, so if you are still pretty new it might be best to start out with some kind of [getting started with threejs type post](/2018/04/04/threejs-getting-started/). I will not be going over every little detail about threejs in general here then, but I will be going over some of the core things to be aware of that are relevant to that of cameras.
 
 ### The Camera Class
 
-The actual [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera) is the base Class for all camera used in three.js. This class just gives a few properties and methods for doing things like cloning the camera. I never use is directly, but it is the base class for all cameras in threejs.
+The actual [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera) is the base Class for all camera used in threejs. This class just gives a few properties and methods for doing things like cloning the camera. I never use is directly, but it is the base class for all cameras in threejs.
 
 ### Camera Class is based on the Object3D CLass
 
-All instances of Camera gain a whole bunch of common properties and methods from The Object3D class, that is also a class that is worth checking out and learning about in detail. This allows for me to easily work with the camera by using methods like lookAt to set the orientation of a camera to look at a point in world space. There is bunch of other methods and properties that apply to the use of cameras, but also many other objects that come compose a scene object in three.js. So learning about the Object3d class applies to use use of cameras but also a whole range of other objects to work with when making a project.
+All instances of Camera gain a whole bunch of common properties and methods from The [Object3D class](/2018/04/23/threejs-object3d/), that is also a class that is worth checking out and learning about in detail. This allows for me to easily work with the camera by using methods like [lookAt](/2021/05/13/threejs-object3d-lookat/) to set the orientation of a camera to look at a point in world space. There is bunch of other methods and properties that apply to the use of cameras, but also many other objects that come compose a scene object in threejs. So learning about the Object3d class applies to use use of cameras but also a whole range of other objects to work with when making a project.
 
 ### Source code examples are also up on Github
 
-The full collection of source code examples that I am writing about here can also be fond in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera) on Github
+The full collection of source code examples that I am writing about here can also be fond in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera) on Github. This is also where I place the source code examples for all the [other blog posts on threejs](/categories/three-js/) that I have wrote thus far.
 
 ### Always check your version numbers when using three.js
 
-When I first wrote this post I was using three.js version r91, and the last time I came around to do a little editing I was using r140.
+When I first wrote this post I was using threejs version r91, which is now a pretty old revision of threejs. However the last time I came around to edit this post I updated all the demos to [my r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) at least. I do have a more up to date style rules option, but thus far I am sticking with that one for now as the default when updating these older blog posts.
 
 ## 1 - Perspective Camera
 
@@ -205,6 +205,8 @@ renderer.render(scene, camera);
 
 ## 3 - Moving a Camera Around
 
+The process of moving a camera around in a scene is where things can end up turning into a total time consuming black hole as there are all kinds of ways of doing this sort of thing of course. The good news is that just getting started is simple enough. The even better news is that what you learn that has to do with moving the camera around also very much applies to objects in general as well. I have wrote a main blog post on the subject of [moving the camera around](/2019/12/17/threejs-camera-move/) that you might want to read if you want to see a whole lot more on this topic. There is also the [post that I wrote on the position property of the object3d class](/2022/04/04/threejs-object3d-position/) in which I really went off the rails with this, and have still failed at even scratching the surface.
+Still for this general overview of cameras type post I should go over at least one or two demos that have to do with the movement of cameras.
 ### 3.1 - Basic move camera example
 
 One of the basic things that a developer would like to know how to do when first getting started with threejs is to move a camera. The Camera base class inherits from the object3d class so it has a position and rotation property just like any other object in threejs. The position property is what can be used to change the position of the camera, however you also typically want to use this in conjunction with the rotation property or a method like look at to set the rotation to a desired point of interest also.
