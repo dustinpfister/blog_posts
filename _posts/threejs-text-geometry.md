@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1058
-updated: 2023-07-05 12:48:08
-version: 1.3
+updated: 2023-07-05 12:52:18
+version: 1.4
 ---
 
 When it comes to adding text to threejs projects there might be a number of ways to do so. There is thinking in terms of adding text in the form of canvas textures that are then used with some geometry as a way to add text. There is also working out something where I just have a plain old fashion 2d canvas drawing context and then draw to it with the dom element property of the WebGl Renderer, and then while I am at it use the 2d drawing context to draw some text on top of that which is what I often like to do these days. However todays post will be on the [text geometry class](/https://threejs.org/docs/#examples/en/geometries/TextGeometry) that can be added in with a project by way of an additional add in module alone with the core library of threejs itself.
@@ -19,6 +19,13 @@ Using the text geometry constructor is a little involved as it will not just req
 
 I assume that you have at least a fair amount of background with client side javaScript, and have also worked out at least a few demos of your own with threejs at this point. If not you might want to take a step back because this is not a [post for people that are totally new to threejs](/2018/04/04/threejs-getting-started/) and client side javaScrit in general.
 
+### Source code is also up on Github
+
+I also have the souce code examples for this post up on my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-text-geometry) on Github. This is also where I place the source code examples for my [many other blog posts on threejs](/categories/three-js/) as well.
+
+### Version Numbers matter
+
+When I first wrote this blog post I was following my [r152 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) when getting the source code demos together. This means that I am using javaScipt module type script tags.
 
 ## 1 - Basic Text Geometry Example
 
