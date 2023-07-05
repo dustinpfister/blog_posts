@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2023-02-21 11:16:54
-version: 1.35
+updated: 2023-07-05 11:27:43
+version: 1.36
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor function options, once an instance of a camera is obtained it does not need to be added to the [scene object](/2018/05/03/threejs-scene/), although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a [render method](/2018/11/24/threejs-webglrenderer) in order to view anything in a scene.
@@ -47,40 +47,37 @@ The most commonly used camera might be the [perspective camera](/2018/04/07/thre
 When it comes to using the perspective camera class I just need to call the THREE.perspectiveCamera constructor when doing so i will want to pass a few arguments to the constructor function. The first value is a field of view value, followed by an aspect ratio number, then near and far values for the camera when it comes to the render distance.
 
 ```js
-(function () {
-    //******** **********
-    // CAMERA
-    //******** **********
-    var fieldOfView = 40,
-    width = 4 * 160,
-    height = 3 * 160,
-    aspectRatio = 4 / 3,
-    near = 1,
-    far = 1000,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
-    //******** **********
-    // SCENE, RENDERER
-    //******** **********
-    var scene = new THREE.Scene();
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(width, height);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //******** **********
-    // MESH
-    //******** **********
-    var cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
-    scene.add(cube);
-    cube.position.set(0, 0, 0);
-    //******** **********
-    // RENDER SCENE WITH CAMERA
-    //******** **********
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// CAMERA
+//-------- ----------
+const fieldOfView = 40,
+width = 4 * 160,
+height = 3 * 160,
+aspectRatio = 4 / 3,
+near = 1,
+far = 1000,
+camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+//-------- ----------
+// SCENE, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(width, height, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const cube = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(cube);
+cube.position.set(0, 0, 0);
+//-------- ----------
+// RENDER SCENE WITH CAMERA
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
 ### 1.2 - Changing aspect and field of view in a loop
@@ -88,81 +85,75 @@ When it comes to using the perspective camera class I just need to call the THRE
 One thing that I might want to do now and then is adjust the aspect ratio and field of view of a perspective camera in a loop. To do so I can just set the values for the aspect and fov properties of the camera instance, however there is one additional step that I must do after changing those values which is to call the update projection matrix method. Calling this update projection matrix method is something that must be preformed when it comes to changing just several other static values when it comes to a camera.
 
 ```js
-(function () {
-    //******** **********
-    // CAMERA
-    //******** **********
-    var fieldOfView = 45,
-    aspectRatio = 16 / 9,
-    near = 1,
-    far = 1000,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
-    //******** **********
-    // SCENE, RENDERER
-    //******** **********
-    var scene = new THREE.Scene();
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //******** **********
-    // INIT, UPDATE, and LOOP 
-    //******** **********
-    var init = function () {
-        // add plane to the scene
-        var plane = new THREE.Mesh(
-                new THREE.PlaneBufferGeometry(500, 500, 8, 8),
-                new THREE.MeshBasicMaterial({
-                    color: 0x00afaf,
-                    side: THREE.DoubleSide
-                }));
-        plane.rotation.x = Math.PI / 2;
-        scene.add(plane);
-        // add a cube to the scene
-        var cube = new THREE.Mesh(
-                new THREE.BoxGeometry(200, 200, 200),
-                new THREE.MeshNormalMaterial({}));
-        cube.position.set(0, 100, 0);
-        scene.add(cube);
-        // setting position of the camera
-        // position is a property of Object3D
-        // and the value is an instance of Vector3
-        camera.position.set(400, 400, 400);
-        camera.lookAt(0, 0, 0);
-        // setting a background color
-        scene.background = new THREE.Color(.7, .7, .7);
-        // 16:9 aspect ratio canvas
-        renderer.setSize(640, 480);
-    };
-    // update method
-    var update = function (per) {
-        var bias = 1 - Math.abs(.5 - per) / .5;
-        // changing aspect, and field of view
-        camera.aspect = .5 + 1.5 * bias;
-        camera.fov = 50 + 25 * bias;
-        // I must call this to get it to work
-        camera.updateProjectionMatrix();
-    };
-    // loop
-    var frame = 0,
-    frameMax = 30 * 10,
-    fps = 30,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            update(frame / frameMax);
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    // call init, and start loop
-    init();
-    loop();
-}
-    ());
+//-------- ----------
+// CAMERA
+//-------- ----------
+const fieldOfView = 45,
+aspectRatio = 16 / 9,
+near = 1,
+far = 1000,
+camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+//-------- ----------
+// SCENE, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+// add plane to the scene
+const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(500, 500, 8, 8),
+        new THREE.MeshBasicMaterial({
+            color: 0x00afaf,
+            side: THREE.DoubleSide
+        }));
+plane.rotation.x = Math.PI / 2;
+scene.add(plane);
+// add a cube to the scene
+const cube = new THREE.Mesh(
+        new THREE.BoxGeometry(200, 200, 200),
+        new THREE.MeshNormalMaterial({}));
+cube.position.set(0, 100, 0);
+scene.add(cube);
+// setting position of the camera
+// position is a property of Object3D
+// and the value is an instance of Vector3
+camera.position.set(400, 400, 400);
+camera.lookAt(0, 0, 0);
+// setting a background color
+scene.background = new THREE.Color(.7, .7, .7);
+// 16:9 aspect ratio canvas
+
+
+// loop
+let frame = 0,
+frameMax = 30 * 10,
+fps = 30,
+lt = new Date();
+const update = function (per) {
+    const bias = 1 - Math.abs(.5 - per) / .5;
+    // changing aspect, and field of view
+    camera.aspect = .5 + 1.5 * bias;
+    camera.fov = 50 + 25 * bias;
+    // I must call this to get it to work
+    camera.updateProjectionMatrix();
+};
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        update(frame / frameMax);
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## 2 - Orthographic camera
@@ -174,47 +165,70 @@ Another option when it comes to cameras that I might actually use in a project i
 When calling the Orthographic camera constructor function the set of arguments differ from the perspective camera. In place of giving values that have to do with field of view, aspect ration and so forth I am giving values that define a cube like area in which the camera will view.
 
 ```js
-(function () {
-    // CAMERA
-    var left = -3.2,
-    right = 3.2,
-    top = 2.4,
-    bottom = -2.4,
-    near = 0.01,
-    far = 100,
-    camera = new THREE.OrthographicCamera(
-            left,
-            right,
-            top,
-            bottom,
-            near,
-            far);
-    camera.position.set(2, 2, 2); // position camera
-    camera.lookAt(0, 0, 0);       // have camera look at 0,0,0
- 
-    // scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    // mesh
-    scene.add(new THREE.Mesh(
+//-------- ----------
+// CAMERA
+//-------- ----------
+const left = -3.2,
+right = 3.2,
+top2 = 2.4,
+bottom = -2.4,
+near = 0.01,
+far = 100,
+camera = new THREE.OrthographicCamera(
+        left,
+        right,
+        top2,
+        bottom,
+        near,
+        far);
+camera.position.set(2, 2, 2); // position camera
+camera.lookAt(0, 0, 0); // have camera look at 0,0,0
+//-------- ----------
+// SCENE, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGL1Renderer();
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+renderer.setSize(640, 480, false);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+scene.add(new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial()));
-    // renderer
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(640, 480);
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// RENDER
+//-------- ----------
+renderer.render(scene, camera);
 ```
 
-## 3 - Basic move camera example
+## 3 - Moving a Camera Around
+
+### 3.1 - Basic move camera example
 
 One of the basic things that a developer would like to know how to do when first getting started with threejs is to move a camera. The Camera base class inherits from the object3d class so it has a position and rotation property just like any other object in threejs. The position property is what can be used to change the position of the camera, however you also typically want to use this in conjunction with the rotation property or a method like look at to set the rotation to a desired point of interest also.
 
 ```js
-var moveCamera = function (camera, per) {
-    var rad = Math.PI * 2 * per,
+//-------- ----------
+// CAMERA, SCENE, RENDERER
+//-------- ----------
+const width = 640,
+height = 480,
+fieldOfView = 40,
+aspectRatio = width / height,
+near = 0.1,
+far = 1000,
+camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGL1Renderer();
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+renderer.setSize(width, height, false);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const moveCamera = function (camera, per) {
+    const rad = Math.PI * 2 * per,
     x = Math.cos(rad) * 3,
     y = -3 + 6 * (1 - Math.abs(per - 0.5) / 0.5),
     z = Math.sin(rad) * 3;
@@ -225,41 +239,34 @@ var moveCamera = function (camera, per) {
     // can be used to set rotation
     camera.lookAt(0, 0, 0);
 };
- 
-// CAMERA
-var width = 360,
-height = 180,
-fieldOfView = 40,
-aspectRatio = width / height,
-near = 0.1,
-far = 1000,
-camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
- 
-// SCENE
-var scene = new THREE.Scene();
- 
-// RENDER
-var renderer = new THREE.WebGLRenderer();
-document.getElementById('demo').appendChild(renderer.domElement);
-renderer.setSize(width, height);
- 
-// MESH
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
 scene.add(new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshBasicMaterial({
             color: 0xff0000,
             wireframe: true
         })));
- 
-// APP
-var frame = 0,
-frameMax = 100;
-var loop = function () {
+//-------- ----------
+// LOOP
+//-------- ----------
+let frame = 0,
+frameMax = 100,
+lt = new Date();
+const fps = 12;
+const loop = function () {
+    const now = new Date();
+    const secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
-    moveCamera(camera, frame / frameMax);
-    renderer.render(scene, camera);
-    frame += 1;
-    frame %= frameMax;
+    if (secs > 1 / fps) {
+        moveCamera(camera, frame / frameMax);
+        renderer.render(scene, camera);
+        frame += 1;
+        frame %= frameMax;
+        lt = now;
+    }
 };
 loop();
 ```
@@ -275,71 +282,64 @@ Another thing that might come up when it comes to working with a camera is what 
 The depth material is a special kind of materials that will render in different ways depending on the distance of the camera and an object in the scene, but also the near and far values of the camera will also impact the rendering of the textures for mesh objects that make use of this depth material.
 
 ```js
-(function () {
-    // a scene
-    var scene = new THREE.Scene();
-    scene.background = new THREE.Color(0.7, 0.7, 0.7);
- 
-    // setting the values of the perspective camera
-    var fieldOfView = 45,
-    aspectRatio = 4 / 3,
-    near = 0.1,
-    far = 100,
-    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
- 
-    // render
-    var renderer = new THREE.WebGLRenderer();
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // initialize method
-    var init = function () {
-        // add plane to the scene
-        var plane = new THREE.Mesh(
-                new THREE.PlaneBufferGeometry(4, 4),
-                new THREE.MeshDepthMaterial({
-                    side: THREE.DoubleSide
-                }));
-        plane.rotation.x = Math.PI / 2;
-        scene.add(plane);
-        // add a cube to the scene
-        cube = new THREE.Mesh(
-                new THREE.BoxGeometry(1, 1, 1),
-                new THREE.MeshDepthMaterial({}));
-        cube.position.set(0, 0.5, 0);
-        scene.add(cube);
-        camera.position.set(3.5, 4.5, 3.5);
-        camera.lookAt(0, 0, 0);
-        renderer.setSize(640, 480);
-    };
-    // update method
-    var update = function (per) {
-        var bias = 1 - Math.abs(.5 - per) / 0.5;
-        camera.far = 4.5 + 8.5 * bias;
-        camera.near = 0.1 + 8.9 * bias;
-        camera.updateProjectionMatrix();
-    };
-    // loop
-    var frame = 0,
-    frameMax = 30 * 10,
-    fps = 30,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / fps) {
-            update(frame / frameMax);
-            renderer.render(scene, camera);
-            frame += fps * secs;
-            frame %= frameMax;
-            lt = now;
-        }
-    };
-    // call init, and start loop
-    init();
-    loop();
- 
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0.7, 0.7, 0.7);
+const fieldOfView = 45,
+aspectRatio = 4 / 3,
+near = 0.1,
+far = 100,
+camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(4, 4),
+        new THREE.MeshDepthMaterial({
+            side: THREE.DoubleSide
+        }));
+plane.rotation.x = Math.PI / 2;
+scene.add(plane);
+// add a cube to the scene
+const cube = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshDepthMaterial({}));
+cube.position.set(0, 0.5, 0);
+scene.add(cube);
+camera.position.set(3.5, 4.5, 3.5);
+camera.lookAt(0, 0, 0);
+
+//-------- ----------
+// LOOP
+//-------- ----------
+let frame = 0,
+frameMax = 30 * 10,
+fps = 30,
+lt = new Date();
+const update = function (per) {
+    const bias = 1 - Math.abs(.5 - per) / 0.5;
+    camera.far = 4.5 + 8.5 * bias;
+    camera.near = 0.1 + 8.9 * bias;
+    camera.updateProjectionMatrix();
+};
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        update(frame / frameMax);
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= frameMax;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
