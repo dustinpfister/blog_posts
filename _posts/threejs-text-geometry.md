@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1058
-updated: 2023-07-05 12:41:15
-version: 1.1
+updated: 2023-07-05 12:45:05
+version: 1.2
 ---
 
 When it comes to adding text to threejs projects there might be a number of ways to do so. There is thinking in terms of adding text in the form of canvas textures that are then used with some geometry as a way to add text. There is also working out something where I just have a plain old fashion 2d canvas drawing context and then draw to it with the dom element property of the WebGl Renderer, and then while I am at it use the 2d drawing context to draw some text on top of that which is what I often like to do these days. However todays post will be on the [text geometry class](/https://threejs.org/docs/#examples/en/geometries/TextGeometry) that can be added in with a project by way of an additional add in module alone with the core library of threejs itself.
@@ -36,7 +36,7 @@ So for my set up in the test threejs repo I am using an import map when I am loa
 <script type="module" src="/forpost/threejs-text-geometry/s1-1-basic/main.js"></script>
 ```
 
-The the mian javaScript file I import the core threejs library as well as the additional add-ons that I need for this demo. For the text geometry loader I will need the FontLoader, and TextGeometry. Now that I have all of that at the ready, I can set up the usual collection of objects that I will want to have when it comes to any threejs project when it comes to the scene, camera, and renderer. After that I can then use the font loader to load the additional font file that I want to use, and then once I have that I can finally create a text geometry object.
+The the main javaScript file I import the core threejs library as well as the additional add-ons that I need for this demo. For the text geometry loader I will need the FontLoader, and TextGeometry. Now that I have all of that at the ready, I can set up the usual collection of objects that I will want to have when it comes to any threejs project when it comes to the scene, camera, and renderer. After that I can then use the font loader to load the additional font file that I want to use, and then once I have that I can finally create a text geometry object.
 
 ```js
 // ---------- ----------
@@ -81,3 +81,7 @@ loader.load( '/json/fonts/threejs/helvetiker_regular.typeface.json', function ( 
     renderer.render(scene, camera);
 } );
 ```
+
+## Conclusion
+
+There is a whole lot of let work in order to get the text geometry class up and running but all of these does very much make sense. The core threejs library is all ready a little bloated to begin with without all of this baked into the core. There is not just the javaScript code for the text geometry class, but also the font loader. Then on top of all of that the data for at least one font would have to be baked into the library as well. So then it makes sense for all of this to be pulled out into these additional optional files.
