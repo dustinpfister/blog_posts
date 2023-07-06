@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2023-02-24 17:15:37
-version: 1.51
+updated: 2023-07-06 10:57:26
+version: 1.52
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but still there might end up being problems with rendering. One major problem has to do with line width not working on certain platforms. So then another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
@@ -34,7 +34,7 @@ The source code examples that I am writing about here can also be found in my [t
 
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using r111 of threejs, and the last time I cam around to do a little editing of this content I was testing things out on r140. Code breaking changes are introduced to threejs all the time, so I need to repeat this in every threejs post regardless of what the post might be on. When it comes to just using the wire frame mode boolean of a material I can not say that has changed much, but other aspects of these examples might break in future versions of three.js.
+When I first wrote this post I was using r111 of threejs, and the last time I cam around to do a little editing of this content I was testing things out and updated the code to my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Code breaking changes are introduced to threejs all the time, so I need to repeat this in every threejs post regardless of what the post might be on. When it comes to just using the wire frame mode boolean of a material I can not say that has changed much, but other aspects of these examples might break in future versions of three.js.
 
 ## 1 - Basic examples of wire frame mode
 
@@ -393,3 +393,4 @@ loop();
 ## Conclusion
 
 For the most part just setting the wire frame property of a material to true will work just fine, however if I want a more custom look then I am going to need to do something with textures. The wire frame look is great for when I am just trying to work out a geometry and do not care about the final look of an object just yet. However when it comes to skinning a mesh object I am going to want to start making some textures by one way or another. There is creating textures with just javaScript code using canvas elements, and then there is creating some custom textures with an image editor and using the texture loader as a way to get into skinning mesh object materials.
+
