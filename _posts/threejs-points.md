@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1029
-updated: 2023-07-06 09:44:18
-version: 1.10
+updated: 2023-07-06 10:07:41
+version: 1.11
 ---
 
-When it comes to adding content to a scene for the most part one will want to make use of Mesh objects, and with that geometry and materials that work well with such objects. However when it comes to first starting out learning how to make custom geometry, and for other various reasons one might want to make use of an alternative such as [THREE.Points](https://threejs.org/docs/#api/en/objects/Points). The THREE.Points class is a way to create a content object with a geometry that can just have a position attribute and nothing else. The position attribute is the first and foremost attribute that one will want to work out when making a custom geometry as it is the actual points in space. So often I might start out using THREE.Points when making a custom geometry when starting out. Once I have the position attribute worked out well I can then move on to working out the various other attributes that will get the geometry to work well with Mesh Objects.
+When it comes to adding content to a scene for the most part one will want to make use of Mesh objects, and with that geometry and materials that work well with such objects. However when it comes to first starting out learning how to make custom geometry, and for other various reasons one might want to make use of an alternative such as [THREE.Points](https://threejs.org/docs/#api/en/objects/Points). The THREE.Points class is a way to create a content object that will work well with a geometry that might just have a position attribute and nothing else. 
+
+The [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) is the first and foremost attribute that one will want to work out when making a custom geometry as it is the actual points in space. So often I might start out using THREE.Points when making a custom geometry as the first steps is just figuring out the position and order of the points in space. Once I have the position attribute worked out well I can then move on to working out the various other attributes that will get the geometry to work well with Mesh Objects.
 
 There are a number of other reasons why one might want to use the THREE.Points class. One thing that I find myself using it for all the time is to get a visual idea of what is going on with the state of a Curve Path for example. In any case in this post I will be writing about a general overview of the THREE.Points class, and while I am at it write about a lot of other things that will come up in the process such as position attributes of buffer geometry objects.
 
@@ -20,11 +22,13 @@ There are a number of other reasons why one might want to use the THREE.Points c
 
 ## The THREE.Points class and what to know first
 
-This is a blog post on the THREE.Points class and a whole bunch of related topics in the javaScript library known as threejs. There is a whole lot more that you should know before hand before reading a post such as this that have the do with the basics of threejs, and also client side javaScript in general. I will of course not be getting into detail about what all of this is here in this post, as with any or my other posts on threejs. I have all ready wrote blog posts on [getting started with threejs](/2018/04/04/threejs-getting-started/) and [javaScript in general](/2018/11/27/js-getting-started/) a long time ago that i do get around to edit now and then so you can check those out if you are still very new. I will however take a moment to wrote about a few things that you might want to get solid before reading this post though.
+This is a blog post on the THREE.Points class and a whole bunch of related topics in the javaScript library known as threejs. There is a whole lot more that you should know before hand before reading a post such as this that have the do with the basics of threejs, and also client side javaScript in general. I will of course not be getting into detail about what all of this is here in this post, as with any or my other posts on threejs. I have all ready wrote blog posts on [getting started with threejs](/2018/04/04/threejs-getting-started/) and [javaScript in general](/2018/11/27/js-getting-started/) a long time ago that I do get around to edit now and then so you can check those out if you are still very new. I will however take a moment to wrote about a few things that you might want to get solid before reading this post though.
 
 ### Read more on Buffer Geometry
 
-The THREE.Points class is a great way to get started with making custom [buffer geometry objects](/2021/04/22/threejs-buffer-geometry/), the class of which one might want to read a whole lot more about. I say that because when it comes to making a custom geometry work well with THREE.Mesh there is not just working out a position attribute, but also normals, and uv attributes as well in order to get everything looking okay. However when it comes to THREE.Points it is just the position attribute alone that is of interest which does help to simply things. However there is still a lot to be aware of even when it comes to just position attributes alone such as adding an index or not, and maybe getting into adding morph attributes, and so forth.
+The THREE.Points class is a great way to get started with making custom [buffer geometry objects](/2021/04/22/threejs-buffer-geometry/), the class of which one might want to read a whole lot more about. I say that because when it comes to making a custom geometry work well with THREE.Mesh there is not just working out a position attribute, but also [normals](/2021/06/08/threejs-buffer-geometry-attributes-normals), and [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) as well in order to get everything looking okay when it just comes to a simple static model. 
+
+However when it comes to THREE.Points it is just the position attribute alone that is of interest which does help to simply things. Again if I just want to work out a simple static model that will work okay with THREE.Points at least. There are additional attributes that I might want to add on top of these such as a color attribute, and also there is still getting into morph attributes with these kinds of geometry objects when it comes to looking into how to animate things.
 
 ### Source Code examples are up on Github
 
@@ -106,7 +110,9 @@ renderer.render(scene, camera);
 
 ### 1.3 - The Points Material
 
-One of the draw backs with using THREE.Points is that I can not use the various mesh materials as this is a Points object rather than a Mesh object. When it comes to material options with points there is just one option which is the [THREE.PointsMaterial](/2018/05/12/threejs-points-material/). As with any material there is knowing what there is to work with when it comes to the [base material class](https://threejs.org/docs/#api/en/materials/Material) such as the transparent and opacity options. There are a few options on top of the base material class when it comes to what the Points Material adds on top of it. For the most part the two main options of interest are size and color.
+One of the draw backs with using THREE.Points is that I can not use the various mesh materials as this is a Points object rather than a Mesh object. When it comes to material options with points there is just one option which is the [THREE.PointsMaterial](/2018/05/12/threejs-points-material/). As with any material there is knowing what there is to work with when it comes to the [base material class](https://threejs.org/docs/#api/en/materials/Material) such as the [transparent and opacity options](/2021/04/21/threejs-materials-transparent/). 
+
+There are a few options on top of the base material class when it comes to what the Points Material adds on top of it. For the most part the two main options of interest are size and color. With that said in this demo I am just creating two materials, one of which I am setting the color to red, and also setting some values for opacity as well. The other material I am setting to a lime color, with a smaller size. I am then creating two points objects that make use of two geometries for the sake of comparison.
 
 ```js
 // ---------- ----------
@@ -145,12 +151,14 @@ camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
 
+There are a lot more features to write about when it comes to the points material, as well as base material class features that will still work with the points material. However this is very much the basic section, much of what there is to cover with that will need to be explored in another section, or whole other post.
+
 
 ### 1.4 - Starting out with the position attribute
 
 Now that I have covered a lot of basic hello world type examples of THREE.Points I think I should have at least one basic example involving the position attribute of a buffer geometry. Nothing to advanced yet as this is still very much a basic section, but I think I should at least mention a thing or two about the position attribute here. As I covered in the very first example in this section, it looks like there are eight points in a geometry created with the THREE.BoxGeometry class. However if you take the time to inspect the Box geometries position attribute you will find that there are actually 24 points. Getting into depth as to why that is might prove to be a bot to much for a basic example, however I think that I should at least have a little code example that shows that this is indeed the case.
 
-So then for this example I once again create a Box Geometry, with th same set of arguments as in the first basic example. However now I am going to use the get attribute method of the buffer geometry class to get a reference to the position attribute of the geometry. If one takes a look at the count of the position attribute they will find that the count of points is indeed 24 if the segments argument are left to the default as I am doing in this example. I can then use this count value as a way to know how many points there are to loop over when making say a while loop to do so. In such situations I can use buffer attribute methods such as getX or setX to get and set values for each axis of each point in the position attribute. For this example I just want to change the x values to make it clear that there are in fact way more points then eight in the geometry.
+So then for this example I once again create a Box Geometry, with the same set of arguments as in the first basic example. However now I am going to use the get attribute method of the buffer geometry class to get a reference to the position attribute of the geometry. If one takes a look at the count of the position attribute they will find that the count of points is indeed 24 if the segments argument are left to the default as I am doing in this example. I can then use this count value as a way to know how many points there are to loop over when making say a while loop to do so. In such situations I can use buffer attribute methods such as getX or setX to get and set values for each axis of each point in the position attribute. For this example I just want to change the x values to make it clear that there are in fact way more points then eight in the geometry.
 
 ```js
 // ---------- ----------
@@ -364,7 +372,7 @@ For each of my blog posts on threejs I like to make at least one if not more sho
 
 ### 5.1 - Morph attriburtes anc vertex color
 
-I would like for my first video for this post to make use of morph attribites and vertex colors.
+I would like for my first video for this post to make use of morph attributes and vertex colors. With that said I worked out this quick demo based on the source code from one of the [official threejs examples on morph attributes](https://github.com/mrdoob/three.js/blob/master/examples/webgl_morphtargets.html). This is a pretty cool demo in which the geometry of a box geometry is being mutated into a sphere like shape and then back again by adding a position key to the morph attributes property of the box geometry that will contain an array. There is then creating an attribute that will be the new set of position values to morph to.
 
 ```js
 // ---------- ----------
