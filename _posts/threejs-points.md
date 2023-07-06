@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1029
-updated: 2023-07-06 10:07:41
-version: 1.11
+updated: 2023-07-06 10:40:28
+version: 1.12
 ---
 
 When it comes to adding content to a scene for the most part one will want to make use of Mesh objects, and with that geometry and materials that work well with such objects. However when it comes to first starting out learning how to make custom geometry, and for other various reasons one might want to make use of an alternative such as [THREE.Points](https://threejs.org/docs/#api/en/objects/Points). The THREE.Points class is a way to create a content object that will work well with a geometry that might just have a position attribute and nothing else. 
@@ -364,6 +364,53 @@ const loop = () => {
     }
 };
 loop();
+```
+
+## 3 - Using an array of materials with THREE.Points
+
+A more advanced topic with geometry in general would be the groups property of a geometry which is not to be confused with the THREE.Group class as that is a kind of object3d class based object for grouping objects like THREE.Points and many others into a single parent object. The groups property of buffer geometry however is what will come into play when I am in a situation in which I will want to use more than one material for an object. When it comes to mesh objects for example I might want to use the Lambert material for a wood surface, but the phong material for a metal surface. Although this sort of thing might come up more often with mesh objects the same can very much be done with points as well. In other words there is not just giving a single instance of THREE.PointsMatreial when calling THREE.Points but rather an array of materials.
+
+When working with an array of materials there must be some kind of way to set what material index value should be used for what range of points in the geometry. With that said that is where this groups property, and the use of various other related buffer geometry class methods will come into play. The groups property is a collection of objects that contain a material index value and then additional values that can be used to set a range to use this material index. I have wrote a main blog post on this subject of [material index vlaues and groups](/2018/05/14/threejs-mesh-material-index/), however I think I should have at least a few demos in this post as well.
+
+### 3.1 - Getting started with a box geometry.
+
+There is once again starting out with just a simple box geometry, but now just use an array of materials rather than just one. What is nice about the Box geometry class is that the geometry that is created all ready has a group property set up for me. This then makes getting started with this all the more easy as I really do just need to give an array of materials and that is it. For this kind of situation I can then give six materials, one for each side, and the end result is that I can adjust the color, size, and any other materials options on a side by side basis.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geometry = new THREE.BoxGeometry(6, 6, 6, 8, 8, 8);
+// ---------- ----------
+// MATERIAL
+// ---------- ----------
+const materials = [
+    new THREE.PointsMaterial( { color: 0xff0000, size: 0.4 } ),
+    new THREE.PointsMaterial( { color: 0xffffff, size: 0.8 } ),
+    new THREE.PointsMaterial( { color: 0x0000ff, size: 0.4 } ),
+    new THREE.PointsMaterial( { color: 0x888888, size: 0.8 } ),
+    new THREE.PointsMaterial( { color: 0xff00ff, size: 0.4 } ),
+    new THREE.PointsMaterial( { color: 0x444444, size: 0.8 } )
+];
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const points1 = new THREE.Points(geometry, materials);
+scene.add(points1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(8, 4, 8);
+camera.lookAt( 0, -0.7, 0 );
+renderer.render(scene, camera);
 ```
 
 ## 5 - Animaiton loop examples
