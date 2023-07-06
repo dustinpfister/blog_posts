@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2023-07-06 10:57:26
-version: 1.52
+updated: 2023-07-06 10:59:48
+version: 1.53
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but still there might end up being problems with rendering. One major problem has to do with line width not working on certain platforms. So then another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
@@ -77,7 +77,7 @@ Some people might not like the outcome of this though when it comes to having a 
 
 ### 1.2 - Setting the line width ( will not work on all platforms )
 
-There is a wire frame line width option, but this feature will not work on all platforms. There is also a simular problem when it comes to using lines in general also. This is then one of the major reasons why it might be better to create a custom shader material, or somehting to that effect with rendering this kind of look.
+There is a wire frame line width option, but this feature will not work on all platforms. There is also a simular problem when it comes to using lines in general also. This is then one of the major reasons why it might be better to create a custom [shader material](/2023/01/13/threejs-shader-material/), or exploring other options to get a kind of look that is desired.
 
 ```js
 //-------- ----------
