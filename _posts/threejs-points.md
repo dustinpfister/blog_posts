@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1029
-updated: 2023-02-23 14:36:15
-version: 1.9
+updated: 2023-07-06 09:44:18
+version: 1.10
 ---
 
-When it comes to adding content to a scene for the most part one will want to make use of Mesh objects, and with that geometry and materials that work with such objects. However when it comes to first starting out learning how to make custom geometry, and for other various reasons one might want to make use of an alternative such as THREE.Points. The THREE.Points class is a way to create a content object with a geometry that can just have a position attribute and nothing else. The position attribute is the first and foremost attribute that one will want to work out when making a custom geometry as it is the actual points in space. So often I might start out using THREE.Points when making a custom geometry when starting out. Once I have the position attribute worked out well I can then move on to working out the various other attributes that will get the geometry to work well with Mesh Objects.
+When it comes to adding content to a scene for the most part one will want to make use of Mesh objects, and with that geometry and materials that work well with such objects. However when it comes to first starting out learning how to make custom geometry, and for other various reasons one might want to make use of an alternative such as [THREE.Points](https://threejs.org/docs/#api/en/objects/Points). The THREE.Points class is a way to create a content object with a geometry that can just have a position attribute and nothing else. The position attribute is the first and foremost attribute that one will want to work out when making a custom geometry as it is the actual points in space. So often I might start out using THREE.Points when making a custom geometry when starting out. Once I have the position attribute worked out well I can then move on to working out the various other attributes that will get the geometry to work well with Mesh Objects.
 
 There are a number of other reasons why one might want to use the THREE.Points class. One thing that I find myself using it for all the time is to get a visual idea of what is going on with the state of a Curve Path for example. In any case in this post I will be writing about a general overview of the THREE.Points class, and while I am at it write about a lot of other things that will come up in the process such as position attributes of buffer geometry objects.
 
@@ -32,7 +32,7 @@ The source code exmaples that I write about in this post can be found in the [co
 
 ### Version Numbers matter
 
-When I first wrote this blog post I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r146) and I am using three.min.js rather than three.module.js. There is a lot that will be changing up ahead when it comes to future revisions of threejs, also if you are all ready using JSM over old script tags these examples will not work all ready. Because threejs is a fast moving project where things are always being removed or changed it is a very good idea to always be mindful of what revision of threejs is being used and how when studying source code examples on the open web.
+When I first wrote this blog post I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) and I am using three.min.js rather than three.module.js. There is a lot that will be changing up ahead when it comes to future revisions of threejs, also if you are all ready using JSM over old script tags these examples will not work all ready. Because threejs is a fast moving project where things are always being removed or changed it is a very good idea to always be mindful of what revision of threejs is being used and how when studying source code examples on the open web.
 
 ## 1 - Some basic examples of THREE.Points
 
