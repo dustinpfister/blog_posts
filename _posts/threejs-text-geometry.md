@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1058
-updated: 2023-07-06 11:33:42
-version: 1.6
+updated: 2023-07-06 11:41:11
+version: 1.7
 ---
 
 When it comes to adding text to threejs projects there might be a number of ways to do so. There is thinking in terms of adding text in the form of [canvas textures](/2018/04/17/threejs-canvas-texture) that are then used with some geometry as a way to add text. There is also working out something where I just have a plain old fashion 2d canvas drawing context and then draw to it with the dom element property of the WebGl Renderer, and then while I am at it use the 2d drawing context to draw some text on top of that which is what I often like to do these days. However todays post will be on the [text geometry class](https://threejs.org/docs/#examples/en/geometries/TextGeometry) that can be added in with a project by way of an additional add in module alone with the core library of threejs itself.
@@ -18,6 +18,10 @@ Using the text geometry constructor is a little involved as it will not just req
 ## Text Geometry and what to know first
 
 I assume that you have at least a fair amount of background with client side javaScript, and have also worked out at least a few demos of your own with threejs at this point. If not you might want to take a step back because this is not a [post for people that are totally new to threejs](/2018/04/04/threejs-getting-started/) and client side javaScrit in general.
+
+### Where to get fonts
+
+I this post I am just using the fonts that I have found in the threejs repo that can be [found here](https://github.com/mrdoob/three.js/tree/r152/examples/fonts). There is also taking a moment to see how to go about making a font file the hard way. If you are up for the task doing so would be not all that much more difficult than doing something similar with SVG. However there is also ways of converting a font that you want to use to a JSON format as well by making use of a javaScript library to do so called [facetype.js](https://gero3.github.io/facetype.js/)
 
 ### Source code is also up on Github
 
