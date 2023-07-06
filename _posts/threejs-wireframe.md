@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2023-07-06 10:59:48
-version: 1.53
+updated: 2023-07-06 11:19:58
+version: 1.54
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the [Basic material](/2018/05/05/threejs-basic-material/) have a [wire frame property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in as a wire frame. The built in wire frame mode will work okay for the most part, but many might not care for the look of it, so there is a need to look for [additional ways to create a wire frame such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). This alternative to the wire frame mode of materials will work fine most of the time, but still there might end up being problems with rendering. One major problem has to do with line width not working on certain platforms. So then another solution might involve creating custom textures using canvas elements or data textures that can then be applied to another property of a material such as the map property.
@@ -106,6 +106,58 @@ scene.add(mesh);
 //-------- ----------
 camera.position.set(1.5, 1.25, 2);
 camera.lookAt(0, -0.2, 0);
+renderer.render(scene, camera);
+```
+
+### 1.3 - Using Vertex colors with wireframe mode
+
+There is also adding a [color attribute](/2023/01/20/threejs-buffer-geometry-attributes-color/) to a geometry that is then used with a mesh and a material set into wireframe mode. When doing so there is not just simply setting the vertex color Boolean of the material to true as well, but rather what I will end up doing when it comes to some logic for stetting  the color channel data for each vertex of interest.
+
+The main reason why I bring this up is because wireframe mode is often used as a way to get a good idea os what is going on with the state of a geometry. However often I have found that I can not just simply use wireframe mode alone as a way to debug what is going on. Vertex colors are then another way to go about styling the lines of the wireframe, and with the right logic can also help to do things like add depth to the lines, or highlight a given area of the geometry and so forth.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('blue');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY - adding a color attribute
+//-------- ----------
+const geometry = new THREE.BoxGeometry(2, 2, 2, 8, 8, 8);
+const att_pos = geometry.getAttribute('position');
+const data_color = [];
+let i = 0;
+while(i < att_pos.count){
+   const a_point = i / att_pos.count;
+   const a_sinpoint = Math.sin( Math.PI * a_point ) * 4 % 1;
+   data_color.push(1 - a_point, a_sinpoint, a_point);
+   i += 1;
+}
+geometry.setAttribute('color', new THREE.BufferAttribute( new Float32Array(data_color) , 3) );
+//-------- ----------
+// MESH, MATREIAL - in wireframe mode
+//-------- ----------
+const mesh = new THREE.Mesh(
+    geometry,
+    new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        vertexColors: true,
+        wireframe: true,
+        wireframeLinewidth: 4
+    })
+);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 2, 3);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
