@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1058
-updated: 2023-07-05 12:54:54
-version: 1.5
+updated: 2023-07-06 11:33:42
+version: 1.6
 ---
 
 When it comes to adding text to threejs projects there might be a number of ways to do so. There is thinking in terms of adding text in the form of [canvas textures](/2018/04/17/threejs-canvas-texture) that are then used with some geometry as a way to add text. There is also working out something where I just have a plain old fashion 2d canvas drawing context and then draw to it with the dom element property of the WebGl Renderer, and then while I am at it use the 2d drawing context to draw some text on top of that which is what I often like to do these days. However todays post will be on the [text geometry class](https://threejs.org/docs/#examples/en/geometries/TextGeometry) that can be added in with a project by way of an additional add in module alone with the core library of threejs itself.
@@ -96,3 +96,6 @@ loader.load( '/json/fonts/threejs/helvetiker_regular.typeface.json', function ( 
 ## Conclusion
 
 There is a whole lot of let work in order to get the text geometry class up and running but all of these does very much make sense. The core threejs library is all ready a little bloated to begin with without all of this baked into the core. There is not just the javaScript code for the text geometry class, but also the font loader. Then on top of all of that the data for at least one font would have to be baked into the library as well. So then it makes sense for all of this to be pulled out into these additional optional files.
+
+As I have said there are a lot of ways to go about adding text to a threejs project, and the text geometry is just a way to go about doing so by way of some json data for a font along with some additional javaScript code resources. Often I might not always want or need 3d like text, but just simple plain old 2d text as an overlay, or as a texture that will be used for one of the map options of a material. When it comes to my [threejs examples](/2021/02/19/threejs-examples/) collection I made [one project where I was working out a simple for scrolling text textures](/2022/10/14/threejs-examples-text-plane/).
+ 
