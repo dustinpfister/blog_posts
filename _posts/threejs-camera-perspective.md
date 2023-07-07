@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2023-07-07 10:06:43
-version: 1.59
+updated: 2023-07-07 11:04:06
+version: 1.60
 ---
 
 One of the most important things to understand when making a [threejs](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in threejs that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world. So then the perspective camera it is the typical choice for most projects, and for the most part it is a good one to start with also.
@@ -556,6 +556,9 @@ loop();
 ### 4.3 - Using a Perspective Camera to create a mirror texture
 
 For this loop demo I am using two Perspective Cameras, one of them is to function as the usual view point of the scene, and the other is to help create a texture for a mesh that will be a kind of mirror. So then this mirror camera will be positioned below the mesh that contains plane geometry and it will be looking up threw the plane. I then have objects moving around this plane, and the camera will be used to get a view of these objects from under the plane that will then in turn be used to render a texture that will then me used for the map option of the material that is used with the plane mesh.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/br7wdPPWDY4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 //-------- ----------
