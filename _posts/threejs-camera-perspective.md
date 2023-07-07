@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2023-07-07 08:32:14
-version: 1.58
+updated: 2023-07-07 10:06:43
+version: 1.59
 ---
 
 One of the most important things to understand when making a [threejs](https://threejs.org/) project, is working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera) which will be needed in order to draw a scene object with a renderer. There are other types of cameras to work with in threejs that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world. So then the perspective camera it is the typical choice for most projects, and for the most part it is a good one to start with also.
@@ -530,11 +530,135 @@ lt = new Date();
 const update = function (frame, frameMax) {
     const a1 = frame / frameMax;
     const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
-
     mesh_plane_1.position.z = 8.9 - a2 * 8.9;
     group.position.y = 1;
     group.position.z = 10 - 20 * a2;
     group.rotation.y = Math.PI / 180 * 45 * a2;
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 4.3 - Using a Perspective Camera to create a mirror texture
+
+For this loop demo I am using two Perspective Cameras, one of them is to function as the usual view point of the scene, and the other is to help create a texture for a mesh that will be a kind of mirror. So then this mirror camera will be positioned below the mesh that contains plane geometry and it will be looking up threw the plane. I then have objects moving around this plane, and the camera will be used to get a view of these objects from under the plane that will then in turn be used to render a texture that will then me used for the map option of the material that is used with the plane mesh.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.05, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// BACKGROUND
+//-------- ----------
+scene.background = new THREE.Color('#006f6f');
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(3, -2, 1);
+scene.add(dl);
+const pl = new THREE.DirectionalLight(0xffffff, 1);
+pl.position.set(4, 8, 4);
+scene.add(pl);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const renderer_mirror = new THREE.WebGL1Renderer();
+renderer_mirror.setSize(256, 256, false);
+const camera_mirror = new THREE.PerspectiveCamera(45, 1 / 1, 0.05, 1000);
+camera_mirror.zoom = 0.42;
+camera_mirror.updateProjectionMatrix();
+// things to look at
+const group = new THREE.Group();
+scene.add(group);
+const mesh_sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(0.75, 20, 20),
+    new THREE.MeshPhongMaterial({
+        color: 0xff0000
+    })
+);
+group.add( mesh_sphere );
+mesh_sphere.position.set(0, 6, 0);
+const mesh_box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshPhongMaterial({
+        color: 0x00ff00
+    })
+);
+group.add( mesh_box );
+mesh_box.position.set(0, -6, 0);
+const mesh_cone = new THREE.Mesh(
+    new THREE.ConeGeometry(0.75, 3, 20, 20),
+    new THREE.MeshPhongMaterial({
+        color: 0x0000ff
+    })
+);
+group.add( mesh_cone );
+mesh_cone.position.set(0, 0, -6);
+const mesh_torus = new THREE.Mesh(
+    new THREE.TorusGeometry(1, 0.25, 20, 20),
+    new THREE.MeshPhongMaterial({
+        color: 0xff00ff
+    })
+);
+group.add( mesh_torus );
+mesh_torus.position.set(0, 0, 6);
+// the plane
+const mesh_plane = new THREE.Mesh(
+    new THREE.PlaneGeometry(10, 10),
+    new THREE.MeshPhongMaterial({
+        emissive: 0x2f2f2f,
+        map: new THREE.CanvasTexture( renderer_mirror.domElement )
+    })
+);
+mesh_plane.geometry.rotateX( Math.PI * 1.5 );
+mesh_plane.geometry.rotateY( Math.PI * 1.0 );
+scene.add(mesh_plane);
+// helper
+//const helper = new THREE.CameraHelper(camera_mirror);
+//scene.add(helper);
+// position and rotation of camera_mirror
+camera_mirror.position.copy(mesh_plane.position).add( new THREE.Vector3( 0, -5, 0 ) );
+camera_mirror.lookAt( mesh_plane.position );
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
+camera.position.set( 10, 5, 10 );
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update method
+const update = function (frame, frameMax) {
+    const a_frame = frame / frameMax;
+    const a_group = a_frame * 8 % 1;
+    const a2 = 1 - Math.abs(0.5 - a_frame) / 0.5;
+    group.rotation.x = Math.PI * 2 * a_group;
+    group.rotation.y = Math.PI * 2 * a_frame;
+    renderer_mirror.render(scene, camera_mirror);
+    mesh_plane.material.map.needsUpdate = true;
 };
 // loop
 const loop = () => {
