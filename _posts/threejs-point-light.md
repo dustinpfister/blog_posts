@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2023-07-07 08:32:14
-version: 1.32
+updated: 2023-07-07 10:12:51
+version: 1.33
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a [number of options when it comes to light sources](/2022/02/25/threejs-light/) for materials that respond to light. One of my favorite options for the most part would be the [point light](https://threejs.org/docs/#api/en/lights/PointLight). This point lighting option can be sued to shine light in all directions from a single given point in space so it is a light source where direction matters, but it is not restricted to a cone like area as with a [spot light](/2018/04/11/threejs-spotlights/). Also unlike with the directional light the unit length of the vector that is set for the point light also matters. However i would not say that it is a replacement for directional light, or spot lights by any means.
@@ -80,7 +80,9 @@ renderer.render(scene, camera);
 
 ### 1.2 - Using the point light helper
 
-Light with just about every object in threejs there is a helper class for point lights. This will help to give a visual idea of what is going on with a point light as it is moved around in an over all scene. There are a whole lot of other options with helpers, another one that i am using in this example is the grid helper.
+Just about every Light option there is to work with has a helper class that can help give a visual idea of what the status is with the light option and the point light is no exception. To make use of this all I need to do is call THREE.PointLightHelper and pass the point light that I want a helper for. The returned result is then a point light helper object, which is yet another object3d class based object so I can then add it as a child of the scene or any other objet3d class based object as needed.
+
+The end result of this is then a bunch of lines that will help me to just know where the location of the point light is. There are a number of other ways of how to go about doing this sort of thing though. Often I might want to use some kind of mesh object as a replacement for this sort of thing. However in any case if I just want to know where the point light is this will work just fine.
 
 ```js
 // ---------- ----------
