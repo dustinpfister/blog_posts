@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2023-07-07 10:12:51
-version: 1.33
+updated: 2023-07-07 10:19:55
+version: 1.34
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a [number of options when it comes to light sources](/2022/02/25/threejs-light/) for materials that respond to light. One of my favorite options for the most part would be the [point light](https://threejs.org/docs/#api/en/lights/PointLight). This point lighting option can be sued to shine light in all directions from a single given point in space so it is a light source where direction matters, but it is not restricted to a cone like area as with a [spot light](/2018/04/11/threejs-spotlights/). Also unlike with the directional light the unit length of the vector that is set for the point light also matters. However i would not say that it is a replacement for directional light, or spot lights by any means.
@@ -26,7 +26,11 @@ The examples in this post are a little involved but so is any threejs project wh
 
 ## Read up more on materials
 
-There is not just adding a light source to a scene, but also knowing a thing or two about what [your options are with materials](/2018/04/30/threejs-materials/). Not all materials will respond to light sources, so make sure that you are making use of a material that will do so.
+There is not just adding a light source to a scene, but also knowing a thing or two about what [your options are with materials](/2018/04/30/threejs-materials/). Not all materials will respond to light sources, so make sure that you are making use of a material that will do so. Often these days I light to go with the [Phong material](/2022/12/29/threejs-phong-material/) as this will allow for features like that of specular highlights which is often a nice feature that can also be adjusted with a number of options.
+
+### There are many other light options of course
+
+It should go without saying that there are many other options when it comes to light sources [as such you might want to check out my post on light in general](/2022/02/25/threejs-light). However the main light sources that I find myself using the most often would be directional light and ambient light. Other light sources that I might used once in a while end up being spot lights, and yes the point lights that I will be writing about mainly in this post.
 
 ### Source code is on Github
 
