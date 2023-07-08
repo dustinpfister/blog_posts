@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2023-07-08 07:58:24
-version: 1.49
+updated: 2023-07-08 08:02:54
+version: 1.50
 ---
 
-In [threejs](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
+In [threejs](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
 
 I often do use the perspective camera as with most of the projects I work on I want to use a camera that works like that of the human eye, but the main other camera of interest outside of that would be the orthographic camera first and foremost. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera. There might be a few situations in which I might want to use this kind of camera here and there. In any case thought it is also a good idea to work out at least a few examples with a camera option other than the perspective camera just for the sake of getting a little more solid with what there is to work with in threejs.
 
@@ -519,7 +519,7 @@ loop();
 
 ## Conclusion
 
-In just about all three.js projects I am typicality going to want to go with the perspective camera actually when it comes to features of three.js that I am actually using most of the time. Still if I am going to use a camera other that the perspective camera I would say that the orthographic camera is at the top if the list. It does result in a cool kind of visual look that I think will also prove to be useful for certain games, and animations that I might choose to make from time to time.
+In just about all threejs projects I am typicality going to want to go with the perspective camera actually when it comes to features of threejs that I am actually using most of the time. Still if I am going to use a camera other that the perspective camera I would say that the orthographic camera is at the top if the list. It does result in a cool kind of visual look that I think will also prove to be useful for certain games, and animations that I might choose to make from time to time.
 
 However in any case I think the coolest thing that I made while working on this post was this cube stack module that I might want to come back to again and again every once in a while. In fact I think it might be a good idea to crate another threejs project example in which I am creating and working with a grid of these with different settings when it comes to the count of cube in each cube stack.
 
