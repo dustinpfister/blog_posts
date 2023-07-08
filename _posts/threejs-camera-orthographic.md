@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2023-07-08 09:26:08
-version: 1.51
+updated: 2023-07-08 09:30:24
+version: 1.52
 ---
 
 In [threejs](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
@@ -80,7 +80,9 @@ After setting up the camera the way I want it I then created a scene object, add
 
 ### 1.2 - Moving the camera around
 
-I have wrote a main blog post on the subject of [moving a camera around](/2019/12/17/threejs-camera-move), however what this really about is the [position property of object3d class based objects](/2022/04/04/threejs-object3d-position) in general.
+I have wrote a main blog post on the subject of [moving a camera around](/2019/12/17/threejs-camera-move), however what this really about is the [position property of object3d class based objects](/2022/04/04/threejs-object3d-position) in general. It would be best to read those posts if you really want to learn a thing or two about moving cameras, and object3d class based objects in general around. However I will of course write about a basic example of this sort of thing here.
+
+The position property of the camera stores a an instance of the vector3 class as the value, and the state of this vector3 objects is very much the current position. There are a whole lot of methods in the vector3 class that are useful for updating the position of the camera over time. However there is also just working our some expressions for a given axis value like I am doing here.
 
 ```js
 //-------- ----------
