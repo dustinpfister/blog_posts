@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2023-07-08 08:02:54
-version: 1.50
+updated: 2023-07-08 09:26:08
+version: 1.51
 ---
 
 In [threejs](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
@@ -38,9 +38,13 @@ The [source code examples](https://github.com/dustinpfister/test_threejs/tree/ma
 
 When I first wrote this post back in May of 2018 I as using revision r91 of three.js. As of this writing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) of threejs last time I came around to doing a little editing with this post as well. It would seem that not to much has change with cameras over that time, at least not with the camera options that I have been sticking with. However that does not mean that code breaking changes are not made to the library often, as that is indeed the case. If any example here is not working be sure to check what version you are using first.
 
-## 1 - A basic example of the Orthographic Camera
+## 1 - Basic Examples of the Orthographic Camera
 
-First off it would be best to just start out with a simple getting started type example with the orthographic camera. So in this example I am just creating an instance of the orthographic camera with the THREE.OrthographicCamera [constructor function](/2019/02/27/js-javascript-constructor/), and storing the returned instance of the camera to a variable called camera. When doing so the set of arguments that I pass to the constructor will differ a little from the usual perspective camera constructor as the arguments are used to define a box like area. In other words in place of values that have to do with field of view, aspect ratio and so forth there are values for setting the left, right, top, and bottom values of a box like shape in space rather than that of a pyramid. After that there is just setting the near and far render distance values just like with the perspective camera to define a render distance as always.
+First off it would be best to just start out with a few simple getting started type examples with the orthographic camera. So in this Section I will be doing just that where the main focus will just be on some very simple hello world type code examples where this type of camera is being used. The main focus here in this section then will just be on the THREE.OrthographicCamera constructor itself then, and with the options that one will need to be aware of when calling it to create an instance of this kind of camera in the first place. After that there is maybe just a few more demos that have to do with various basic features of this kind of camera, and also object3d based objects in general when it comes to things like moving the camera around and so forth.
+
+### 1.1 - Using the THREE.OrthographicCamera constructor
+
+In this example I am just creating an instance of the orthographic camera with the THREE.OrthographicCamera [constructor function](/2019/02/27/js-javascript-constructor/), and storing the returned instance of the camera to a variable called camera. When doing so the set of arguments that I pass to the constructor will differ a little from the usual perspective camera constructor as the arguments are used to define a box like area. In other words in place of values that have to do with field of view, aspect ratio and so forth there are values for setting the left, right, top, and bottom values of a box like shape in space rather than that of a pyramid. After that there is just setting the near and far render distance values just like with the perspective camera to define a render distance as always.
 
 ```js
 //-------- ----------
@@ -73,6 +77,51 @@ renderer.render(scene, camera);
 Once I have my instance of the orthographic camera I can use camera and object3d base classes and properties as with any other camera. For example I can use the instance of vector3 stored at the position property to set the position of the camera in space, and the look at method as a way to set rotation both of which are object3d features.
 
 After setting up the camera the way I want it I then created a scene object, added a mesh to look at and also set up the renderer that i want to use for the example. I can now use the render method of the renderer with a scene object, and my camera object to draw the contents of the scene using the orthographic camera.
+
+### 1.2 - Moving the camera around
+
+I have wrote a main blog post on the subject of [moving a camera around](/2019/12/17/threejs-camera-move), however what this really about is the [position property of object3d class based objects](/2022/04/04/threejs-object3d-position) in general.
+
+```js
+//-------- ----------
+// SCENE, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGL1Renderer();
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+renderer.setSize(640, 480, false);
+//-------- ----------
+// CAMERA
+//-------- ----------
+const camera = new THREE.OrthographicCamera(-4, 4, 4, -4, 0.01, 1000);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial()
+) 
+scene.add( mesh);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(0, 4, 4);
+camera.lookAt(0, 0, 0);
+let frame = 0;
+const frameMax = 300;
+const loop = () => {
+    const a_frame = frame / frameMax;
+    const a_cam = Math.sin( Math.PI * 2 * a_frame );
+    requestAnimationFrame(loop);
+    renderer.render(scene, camera);
+    camera.position.x = -2 + 4 * a_cam;
+    camera.lookAt( mesh.position );
+    frame += 1;
+    frame %= frameMax;
+};
+loop();
+```
 
 ## 2 - A Orthographic Camera example involving a fun little code stack module
 
