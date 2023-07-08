@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2023-03-02 14:11:37
-version: 1.48
+updated: 2023-07-08 07:58:24
+version: 1.49
 ---
 
 In [threejs](https://threejs.org/) there are [a few cameras to work with](https://threejs.org/docs/#api/en/cameras/Camera), typically in most cases I would use the [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera). With this  orthographic camera an object size will remain the same regardless of this distance in which the object is from the camera, as compared to the perspective camera which will change the size as the distance from the camera goes up. 
@@ -36,7 +36,7 @@ The [source code examples](https://github.com/dustinpfister/test_threejs/tree/ma
 
 ### Version numbers matter in three.js
 
-When I first wrote this post back in May of 2018 I as using revision r91 of three.js. As of this writing I was using r135 of threejs last time I came around to doing a little editing with this post as well. It would seem that not to much has change with cameras over that time, at least not with the camera options that I have been sticking with. However that does not mean that code breaking changes are not made to the library often, as that is indeed the case. If any example here is not working be sure to check what version you are using first.
+When I first wrote this post back in May of 2018 I as using revision r91 of three.js. As of this writing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) of threejs last time I came around to doing a little editing with this post as well. It would seem that not to much has change with cameras over that time, at least not with the camera options that I have been sticking with. However that does not mean that code breaking changes are not made to the library often, as that is indeed the case. If any example here is not working be sure to check what version you are using first.
 
 ## 1 - A basic example of the Orthographic Camera
 
