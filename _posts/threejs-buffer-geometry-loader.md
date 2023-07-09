@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2023-07-09 19:34:27
-version: 1.38
+updated: 2023-07-09 19:40:42
+version: 1.39
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [threejs](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen. What is nice about the buffer geometry loader is that it is baked into the core of threejs itself, so there is no need to boter loading an additional file beyond that which is often the case with many other options.
@@ -322,7 +322,9 @@ renderer.render(scene, camera);
 
 ### 3.2 - Hand Coded json in the javaScript file
 
-One great way to learn a lot about buffer geometry is to hand code buffer geometry, and then use the parse method of the buffer geometry loader to get a workable object.
+One great way to learn a lot about buffer geometry is to hand code buffer geometry, and then use the parse method of the buffer geometry loader to get a workable object. If I use backticks I can just directly key in some human readable JSON data, and just mainly punch in data for each vertex that I want. For this first demo like this I am just creating a position attribute, and now an index as well for this. 
+
+Once I have my JSON text I can then do what all ready works as I have found above by using the JSON.parse method to create an object from this text. Once I have a plain object I can then pass that to the parse method of the buffer geometry loader to get a geometry object that I can then use with THREE.Lines.
 
 ```js
 //-------- ----------
