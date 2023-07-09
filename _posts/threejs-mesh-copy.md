@@ -5,15 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2023-03-06 11:46:55
-version: 1.42
+updated: 2023-07-09 09:04:03
+version: 1.43
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
 
-The process of copying an object in general can be tricky business, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as with my post on [copying an array](/2020/09/03/js-array-copy/) with just vanilla javaScript array prototype methods. When doing so there are two general ways of thinking about the process of copying an object, shallow cloning, and deep cloning. Shallow cloning is creating an new object where it is more or less just the properties of the object itself that are copied, and not anything when it comes to nested objects that are values of the source object. Deep cloning then is then the general term for getting into the subject of what should and should not be copied when it comes to looping over all the nested properties of an object. Things can prove to get a little complex with that in some situations though, for example some objects I might want to copy, while others I might just want to reference.
+The process of copying an object in general can be tricky business, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as with my post on [copying an array](/2020/09/03/js-array-copy/) with just vanilla javaScript array prototype methods. When doing so there are two general ways of thinking about the process of copying an object, shallow cloning, and deep cloning. 
 
-If I am making a threejs project and I want to shallow copy of a mesh object then I just need to use the [clone method of a mesh](https://threejs.org/docs/#api/en/objects/Mesh.clone) instance. Once I have a shallow copy it is then a question of what additional steps I might want to take when it comes to cloning additional nested objects of the mesh object. This will then be a post on the mesh clone method, and while I am at it also address some of the issues that might come up when making copies of mesh objects, and cloning objects in general. While I am at it it might touch base on a few other topics here and there, but that will be the focal point today.
+Shallow cloning is creating an new object where it is more or less just the properties of the object itself that are copied, and not anything when it comes to nested objects that are values of the source object. Deep cloning then is then the general term for getting into the subject of what should and should not be copied when it comes to looping over all the nested properties of an object. Things can prove to get a little complex with that in some situations though, for example some objects I might want to copy, while others I might just want to reference.
+
+If I am making a threejs project and I want to shallow copy of a mesh object then I just need to use the [clone method of a mesh](https://threejs.org/docs/#api/en/objects/Mesh.clone) instance. Once I have a shallow copy it is then a question of what additional steps I might want to take when it comes to cloning additional nested objects of the mesh object. This will then be a post on the mesh clone method, and while I am at it also address some of the issues that might come up when making copies of mesh objects, and cloning objects in general.
 
 <!-- more -->
 
@@ -34,11 +36,11 @@ The source code examples that I am writing about in this post can be [found on G
 
 ### Version Numbers matter big time with three.js
 
-When I first write this post I was using version r111 of threejs, and the last time I edited this post I was using r146 when I came around to doing a little editing. I can not say much has changed with the mesh clone method at least between these two versions, however a lot has changed to many other threejs features, and these changes can often result in code breaking. always be mindful of the version of threejs that you are using, and the version that was used when a code example was authored and published to the web.
+When I first write this post I was using version r111 of threejs, and the last time I edited this post I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) when I came around to doing a little editing. I can not say much has changed with the mesh clone method at least between these two versions, however a lot has changed to many other threejs features, and these changes can often result in code breaking. always be mindful of the version of threejs that you are using, and the version that was used when a code example was authored and published to the web.
 
 ## 1 - Some Basic examples of the Mesh Clone method
 
-To start out this post I will be going over a number of basic getting started type examples of the clone method of the mesh class.
+To start out this post I will be going over a number of basic getting started type examples of the clone method of the mesh class. Just simply calling the clone method of a mesh object is simple enough. Also if I am in a situaiton in which all the clones that I make can share the same material and geometry, then that will also often be the end of it as well. However often I might want to make clones of some of the nested objects as well, so I should have a few examples in this seciton on that topic as well.
 
 ### 1.1 - Mesh copy basic example
 
