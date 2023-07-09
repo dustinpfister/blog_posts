@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2023-06-08 12:27:16
-version: 1.37
+updated: 2023-07-09 19:34:27
+version: 1.38
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [threejs](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen. What is nice about the buffer geometry loader is that it is baked into the core of threejs itself, so there is no need to boter loading an additional file beyond that which is often the case with many other options.
@@ -281,7 +281,11 @@ loader.load(
 );
 ```
 
-### 3 - To JSON text and back
+## The JSON Format
+
+For this section I am now looking at a few examples that have to do with creating json text from geometry, and also creating buffer geometry objects from json text.
+
+### 3.1 - To JSON text and back
 
 To create JSON text from a buffer geometry instance I will first want to call the to non indexed method of the buffer geometry class, and then call the to json method to get an object that is formatted the way that I want it. If I do not call the non index method I can end up with a format that will not work well with the parser of the buffer geometry loader as of r140. Anyway once I have the object that looks good I can then just pass that to the JSON.stringify method to get the text that can then in turn be saved as a json file that will then work with the parser.
 
@@ -314,6 +318,69 @@ const geo2 = loader.parse( obj );
 const mesh = new THREE.Mesh(geo2)
 scene.add(mesh)
 renderer.render(scene, camera);
+```
+
+### 3.2 - Hand Coded json in the javaScript file
+
+One great way to learn a lot about buffer geometry is to hand code buffer geometry, and then use the parse method of the buffer geometry loader to get a workable object.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// TEXT
+//-------- ----------
+const text_buffgeo = `{
+  "metadata":{
+    "version":4.5,
+    "type":"BufferGeometry",
+    "generator":"Hand Coded"
+  },
+  "type":"BufferGeometry",
+  "data":{
+    "attributes":{
+      "position":{
+        "itemSize":3,
+        "type":"Float32Array",
+        "array":[
+            -8, 2,-8,     0, -1,-8,    8, 0,-8,
+            -8, 4, 0,     0, 0, 0,    8, 0, 0,
+            -8, 2, 8,     0, -2, 8,    8, 0, 8
+        ],
+        "normalized":false
+      }
+    },
+    "index":{
+      "type": "Uint16Array",
+      "array": [
+          1,0,3,  3,4,1,
+          4,3,6,  6,7,4,
+          5,4,7,  7,8,5,
+          2,1,4,  4,5,2
+      ]
+    }
+  }
+}
+`
+//-------- ----------
+// SCENE CHILD OBJECTS - Using THREE.BufferGeometryLoader parse method
+//-------- ----------
+const loader = new THREE.BufferGeometryLoader();
+const geometry = loader.parse( JSON.parse(text_buffgeo) );
+const line = new THREE.Line(geometry, new THREE.LineBasicMaterial());
+scene.add(line);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(20, 10, 20);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera)
 ```
 
 ## 4 - Using the Loading Manager
