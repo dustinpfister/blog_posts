@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2023-07-09 09:04:03
-version: 1.43
+updated: 2023-07-09 09:33:58
+version: 1.44
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a [mesh object](/2018/05/04/threejs-mesh/). When doing so there is the idea of just copying the own properties of the mesh object, but often I will also need clones of all the child objects as well, there is also the [geometry](/2021/04/22/threejs-buffer-geometry/), and [material](/2018/04/30/threejs-materials/) that is used by the mesh that I might want to clone while I am at it.
@@ -204,9 +204,13 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 2 - Using a create helper to create stand alone mesh objects with there own geometry and material
+## 2 - Create method helper and just calling THREE.Mesh to begin with
 
 Using the clone method might be the way that I would want to go about creating a whole much of copies of some kind of main mesh object because doing so results in just copying the mesh and the children of the mesh. This results in a more efficient way of creating a whole bunch of mesh objects that all share the same geometry and materials. Often it might just be mesh objects level property values that I will want to change up a little here and there, so this kind of approach will not result in a problem. However in some cases I will want each mesh to have its own geometry and material values. So when it comes to this kind of situation I often just drop the use of the mesh clone method all together and just create stand alone mesh objects one at a time, as well as stand alone geometry, and material objects for each mesh.
+
+### 2.1 - Using a create helper to create stand alone mesh objects with there own geometry and material
+
+So the idea here then is that in place of calling the clone method of a mesh there is just working out some logic that has to do with just calling THREE.Mesh to begin with. When it comes to passing the geometry and materials to use I can then create a new geometry and material each time. One simple way to do this is to just have a simple helper function that when called will do just this.
 
 ```js
 //-------- ----------
@@ -260,6 +264,71 @@ while (i < 10) {
 }
 // changing the color of the main box ONLY EFFECTS THE MAIN BOX
 mainBox.material.color.setRGB(0, 1, 0);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 5, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+So for this demo each time I call the createBox helper it will create a new mesh, and with it also a new geometry and material as well.
+
+### 2.2 - Having options for geometry, and share boolean options
+
+Although the first demo works well when it comes to always having a whole new mesh with geometry and materials there is also having some options in which I can pass the geometry and material that I want to use. Also while I am at it there is having options that can be set to true or false if I want the objects to all share the given geometry and or material or not.
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+scene.add(new THREE.GridHelper(10, 10));
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createMesh = function( opt ){
+    opt = opt || {};
+    opt.geometry = opt.geometry || new THREE.SphereGeometry(1, 20, 20);
+    opt.material = opt.material || new THREE.MeshNormalMaterial();
+    opt.shareGeo = opt.shareGeo || false;
+    opt.shareMat = opt.shareMat || false;
+    const geometry = opt.shareGeo ? opt.geometry : opt.geometry.clone();
+    const material = opt.shareMat ? opt.material : opt.material.clone();
+    const mesh = new THREE.Mesh(geometry, material);
+    return mesh;
+};
+//-------- ----------
+// GEOMETRY, MATERIAL
+//-------- ----------
+const geometry = new THREE.BoxGeometry( 1, 1, 1);
+const material = new THREE.MeshBasicMaterial({ color: new THREE.Color(1, 0, 0 ) });
+//-------- ----------
+// GROUP
+//-------- ----------
+const group = new THREE.Group();
+scene.add(group);
+let i = 0;
+const len = 20;
+while (i < len) {
+    const a_child = i / len;
+    const share = a_child < 0.5 ? false : true;
+    const mesh = createMesh({
+        geometry: geometry,
+        material: material,
+        shareGeo: share,
+        shareMat: share
+    });
+    const e = new THREE.Euler( 0, Math.PI * 2 * a_child, 0 );
+    mesh.position.set(1, 0, 0).applyEuler(e).multiplyScalar(4);
+    mesh.material.color.setRGB(0, a_child, 1 - a_child);
+    group.add(mesh);
+    i += 1;
+}
 //-------- ----------
 // RENDER
 //-------- ----------
