@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2023-07-09 19:40:42
-version: 1.39
+updated: 2023-07-09 19:46:25
+version: 1.40
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in [threejs](https://threejs.org/) the popular javaScript library for working with 3D objects. The Buffer Geometry Loader is one of several options in threejs when it comes to external asset loaders, some of which might prove to be a better option depending on what needs to happen. What is nice about the buffer geometry loader is that it is baked into the core of threejs itself, so there is no need to boter loading an additional file beyond that which is often the case with many other options.
@@ -283,7 +283,9 @@ loader.load(
 
 ## The JSON Format
 
-For this section I am now looking at a few examples that have to do with creating json text from geometry, and also creating buffer geometry objects from json text.
+For this section I am now looking at a few examples that have to do with creating json text from geometry, and also creating buffer geometry objects from JSON text. There are a number of methods of various classes and also native javaScript features. There is the toJSON method of the buffer geometry class, the JSON.parse method, JSON.stringify method and the parse method of the buffer geometry loader.
+
+Most of the time I will want to load the JSON in the form of an external file. However there are situations in which I might want to parse some text that is going to be obtained by some other means. Also it makes sense to work out a few examples such as this to get a better sense of how to create buffer geometry by just hand coding data. This might not be the best idea in the long run of course, but if I keep the geometry super low poly it is not so bad.
 
 ### 3.1 - To JSON text and back
 
