@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2023-06-15 11:09:17
-version: 1.58
+updated: 2023-07-10 15:27:53
+version: 1.59
 ---
 
 In [threejs](https://threejs.org/) the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry) is one of many options for quickly creating a geometry for a project. To create a geometry this way I just need to call the THREE.BoxGeometry constructor function with the new keyword, and pass some arguments for the dimensions of the box area that I want. While I am at it I can also pass some additional arguments that have to do with how many additional sections the box should have to make it more dense. The returned result can then be stored to a variable, or directly passed as the geometry for a mesh object, or anything else that calls for a geometry.
 
-Starting out with this built in geometry constructor function is simple enough, but then there is getting into how to go about skinning a cube with textures, and how to go about having one texture on just one side, and other on an other side. So then there is looking into how to go about using the [group property of buffer geometry](/2018/05/14/threejs-mesh-material-index/), and or the [UV attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) when it comes to this. With that said looking into the box geometry in depth is a good way to lean more about more advanced topics with geometry in general when it comes to the various features of a buffer geometry instance.
+Starting out with this built in geometry constructor function is simple enough, but then there is getting into how to go about skinning a cube with textures, and how to go about having one texture on just one side, and other on an other side. So then there is looking into how to go about using the [group property of buffer geometry](/2018/05/14/threejs-mesh-material-index/), and or the uv attribute when it comes to this. With that said looking into the box geometry in depth is a good way to lean more about more advanced topics with geometry in general when it comes to the various features of a buffer geometry instance.
 
 <!-- more -->
 
@@ -554,6 +554,234 @@ renderer.render(scene, camera);
 ```
 
 There might be a number of other ways to go about creating a wire frame look rather than just making use of the wire fame mode of mesh materials. I would say that this is not the end all solution for this sort of thing because there is one draw back when it comes to setting the line width. It would seem that I can not set the thickness of the lines to anything other that 1, so maybe there is yet another way to do something like this that might have to involve some kind of custom geometry or other advanced use case.
+
+## 6 - UV Mapping and Box Geometry
+
+The box geometry might prove to me a good built in geometry not just for the sake of getting started with group objects when it comes to more than one material, but also mutation of the [UV attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) of the geometry as well. The groups object is just for doing things with more than one material, but other times I might just want to use one material it is just that I want to change what the offsets are for the areas of the texture to use. The UV attribute is the attribute of interest that I will want to create, or in this case update in order to set what the offsets are for each point in the geometry.
+
+### 6.1 - Basic Mutation of The UV Attribute of the box geometry
+
+Just as with groups a UV attribute is also set up for me when I call the Box Geometry constructor. It is just that by default the uv attribute is set up to use all of the texture for each face. In many situations this might very well be what I want for this kind fo situation. However if the texture that I am using is a kind of sprite sheet of sorts, then I will want to find a way to just run threw and update the values in the uv attribute so that the cell that I want for each face is used.
+
+This will then be a basic example of the mutation of the uv attribute of a buffer geometry object where I am just going to set one face in a sheet of sorts that was created using a canvas element.
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY - mutation of uv attribute data for one face
+//-------- ----------
+const geometry = new THREE.BoxGeometry( 1, 1, 1);
+const att_uv = geometry.getAttribute('uv');
+att_uv.setXY(0, 0.25, 1.00);
+att_uv.setXY(1, 0.25, 0.75);
+att_uv.setXY(2, 0.50, 1.00);
+att_uv.setXY(3, 0.50, 0.75);
+//-------- ----------
+// TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = canvas.height = 128;
+document.body.appendChild(canvas);
+ctx.fillStyle = 'white';
+ctx.fillRect( 0, 0, canvas.width, canvas.height);
+const w = 4;
+const s = canvas.width / 4;
+['red','lime','blue','yellow','cyan','purple'].forEach( (style, i) => {
+    const gx = i % w;
+    const gy = Math.floor( i / w );
+    const x = gx * s;
+    const y = gy * s;
+    ctx.fillStyle = style;
+    ctx.fillRect(x, y, s, s);
+});
+const texture = new THREE.CanvasTexture(canvas);
+texture.magFilter = THREE.NearestFilter;
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0.4, side: THREE.DoubleSide });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set( 1.2, 1.4, 1.2 );
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
+```
+
+### 6.2 - Set face demo
+
+Once I have the basic idea of what needs to happen in order to set what texture to what side then I just need to create some more logic in terms of helper funcitons and so forth in order to set any side to any cell.
+
+```js
+//-------- ----------
+// SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xafafaf);
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCITONS
+//-------- ----------
+// get a uvData array for a given uv face index and cell index
+const getUVData = (faceIndex, cellIndex, gridSize) => {
+    faceIndex = faceIndex === undefined ? 0: faceIndex;
+    cellIndex = cellIndex === undefined ? 0: cellIndex;
+    gridSize = gridSize === undefined ? 4: gridSize;
+    const cellX = cellIndex % gridSize;
+    const cellY = Math.floor(cellIndex / gridSize);
+    // for each set of uvs for the face
+    let di = 0;
+    const uvd = 1 / gridSize;
+    let uvData = [];
+    while(di < 4){
+        const i = faceIndex * 4 + di;
+        const x = di % 2;
+        const y = 1 - 1 * Math.floor(di / 2);
+        // get u and v using cellX and cellY
+        const u = uvd * cellX + x * uvd;
+        const v = 1 - uvd * ( cellY + 1 ) + y * uvd;
+        uvData.push({i:i,u:u,v:v});
+        di += 1;
+    }
+    return uvData;
+};
+// set uvs with the uvData, and order arrays
+const setUVData = (uv, uvData, order ) => {
+    order = order || [0, 1, 2, 3]; // normal
+    uvData.forEach((a, di, uvData) => {
+        const b = uvData[ order[di] ]
+        uv.setXY(a.i, b.u, b.v);
+    });
+    uv.needsUpdate = true;
+};
+// main helper
+const setUVFace = (uv, faceIndex, cellIndex, order, gridSize) => {
+    const uvData = getUVData(faceIndex, cellIndex, gridSize);
+    setUVData(uv, uvData, order );
+};
+//-------- ---------- 
+// CANVAS
+//-------- ----------
+const CELL_SIZE = 4;
+const canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+// set canvas native size
+canvas.width = 128;
+canvas.height = 128;
+// draw to canvas
+let i = 0;
+const len = CELL_SIZE * 2;
+const cellsize = canvas.width / CELL_SIZE;
+const COLORS = 'red,lime,blue,yellow,purple,cyan'.split(',');
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.font = '32px arial';
+while(i < len){
+    const gx = i % CELL_SIZE;
+    const gy = Math.floor( i / CELL_SIZE );
+    const x = cellsize * gx;
+    const y = cellsize * gy 
+    // gradient for background
+    const gradient = ctx.createLinearGradient(x, y, x + cellsize, y + cellsize);
+    gradient.addColorStop(0.00, 'black');
+    gradient.addColorStop(0.50, COLORS[i] || '#888888');
+    gradient.addColorStop(1.00, 'black');
+    // Set the fill style and draw a rectangle
+    ctx.fillStyle = gradient;
+    ctx.fillRect(x, y, cellsize, cellsize);
+    ctx.fillStyle = 'white';
+    ctx.fillText(i + 1, x  + cellsize / 2, y + cellsize / 2);
+    i += 1;
+}
+// draw to cells
+//-------- ---------- 
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const att_uv = geometry.getAttribute('uv');
+//-------- ---------- 
+// texture
+//-------- ----------
+const texture = new THREE.CanvasTexture(canvas);
+texture.magFilter = THREE.NearestFilter;
+//-------- ---------- 
+// MATERIAL
+//-------- ----------
+const material = new THREE.MeshBasicMaterial({
+    map: texture
+});
+//-------- ---------- 
+// MESH
+//-------- ----------
+const mesh1 = new THREE.Mesh(
+    geometry,
+    material
+);
+scene.add(mesh1);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+// constant values and state for main app loop
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 20,     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 900,
+CLOCK = new THREE.Clock(true); // USING THREE.Clock in place of new Date() or Date.now()
+let secs = 0,
+frame = 0,
+lt = CLOCK.getElapsedTime();
+// update
+const ORDERS = [
+   [0,1,2,3],
+   [0,2,1,3],
+   [2,3,0,1],
+   [3,1,2,0]
+];
+const update = (frame, frameMax) => {
+    const a1 = frame / frameMax;
+    mesh1.rotation.y = Math.PI * 2 * a1;
+    mesh1.rotation.x = Math.PI * 8 * a1;
+    if(frame % 30 === 0){
+        let index_face = 0;
+        while(index_face < 6){
+            const index_cell = Math.floor( Math.random() * 6 );
+            const order = ORDERS[ Math.floor( ORDERS.length * Math.random() ) ];
+            setUVFace(att_uv, index_face, index_cell, order, CELL_SIZE);
+            index_face += 1;
+        }
+    }
+};
+// loop
+const loop = () => {
+    const now = CLOCK.getElapsedTime(),
+    secs = (now - lt);
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
 
 ## Conclusion
 
