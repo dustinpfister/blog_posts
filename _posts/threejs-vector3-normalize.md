@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2023-03-07 12:43:51
-version: 1.39
+updated: 2023-07-10 10:02:21
+version: 1.40
 ---
 
-The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. 
+The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the distance of the vector from the origin to a vector unit length of one. 
 
 A Vector with a [euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) of one is often referred to as a [unit vector](https://en.wikipedia.org/wiki/Unit_vector), and what is nice about this kind of vector is that it can quickly be scaled up by just simply multiplying the values of the normalized vector by a desired magnitude that is any value other than one to result in any vector that is along a given line that is the direction of the vector.
 
@@ -36,14 +36,16 @@ On my GitHub account I have a repository in which I am parking all the source co
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r127 of threejs which was a late version of threejs as or min 2021, and the last time I cam around to do some edited I was testing these examples out on r146. I have made a habit of mentioning what version of threejs I am using when writing new threejs posts, and also add a section like this to older posts when I get around to doing a little editing. Maybe this is something that I should do with just about any javaScript library actually, but threejs seems to be moving along real fast compared to other javaScript projects where development is very slow.
+When I first wrote this post I was using r127 of threejs which was a late version of threejs as or min 2021, and the last time I came around to do some editing all the demos are updated to my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). 
+
+I have made a habit of mentioning what version of threejs I am using when writing new threejs posts, and also add a section like this to older posts when I get around to doing a little editing. Maybe this is something that I should do with just about any javaScript library actually, but threejs seems to be moving along real fast compared to other javaScript projects where development is very slow.
 
 
 ## 1 - Some Basic examples of Vector3 normalize
 
 Like with all my other posts on threejs I like to start out with some very basic getting started type examples of the threejs feature. In this case the normalize method of the Vector3 class. So these examples will just involve static scenes, and I will be doing my best to not go to overboard with the over all volume of code. The focus here thine will mainly be just on the vector3 method itself, and to a lesser extent other closely related features.
 
-### 1.1 - getting started with the normalize method
+### 1.1 - Getting started with the normalize method
 
 For this first example I just want to normalize a vector and that is it. However in order to have something to look at I will need to still set up the usual collection of objects when it comes to the scene object, camera, and renderer. After that I create an instance of Vector3 and when doing so I can set any values that I want when it comes to the position. Tokeep things simple I am going to start with a position like 0,0,18 and after calling the normalize method of this new vector I end up with a position of 0,0,1. 
 
