@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2023-07-10 10:02:21
-version: 1.40
+updated: 2023-07-10 10:32:48
+version: 1.41
 ---
 
 The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the distance of the vector from the origin to a vector unit length of one. 
@@ -178,9 +178,6 @@ scene.add( new THREE.GridHelper(6, 6) );
 const mesh1 = new THREE.Mesh( new THREE.SphereGeometry(0.1, 10, 10) );
 mesh1.position.set(3, 0.5, 0);
 scene.add(mesh1);
-//-------- ----------
-// RENDER
-//-------- ----------
 // using the length method to get the unit length of mesh1
 // using normalize to get a vector with a length of one from that position
 // and using the vector3 lerp method to get vector3 objects between the two
@@ -199,6 +196,58 @@ while(i < count){
 //-------- ----------
 camera.position.set(5, 5, 5);
 camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.5 - The clone method of Vector3 while using normalize
+
+The clone method is another vector3 prototype method that I think I should write about in this section as well, sense that is another method that I find myself using often when doing something with the normalize method. Simply put if I am ever in a situation in which I would just like to have a copy of a vector3 object that there is all ready there to work with I can call the clone method to get a new vector3 object with the same values from this preexisting vector3 object.
+
+For example say that I have this source mesh object and I would like to create a whole bunch of new mesh objects around the local position of this source mesh. I can just call the clone method off of the position property of this source mesh object, then I can normalize it, and use additional methods like apply Euler and so forth. This will all be relative to the parent object of the mesh though, in this case the scene object, however I can then use the add method to add the position of the source mesh again to get things where I need them to be again.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(6, 6) );
+const mesh_source = new THREE.Mesh(
+    new THREE.SphereGeometry(0.5, 20, 20),
+    new THREE.MeshNormalMaterial({
+        transparent: true, opacity: 0.4
+    })
+);
+mesh_source.position.set(-1,0.25,2);
+scene.add( mesh_source );
+let i = 0;
+const len = 10;
+while(i < len){
+    const a_len = i / len;
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(0.25, 0.25, 0.25),
+        new THREE.MeshNormalMaterial()
+    );
+    const e = new THREE.Euler();
+    e.y = Math.PI * 2 * a_len;
+    e.z = Math.PI / 180 * 180 * a_len;
+    const v = mesh_source.position.clone().normalize().applyEuler(e).add( mesh_source.position );
+    mesh.position.copy( v );
+    mesh.lookAt( mesh_source.position );
+    scene.add( mesh );
+    i += 1;
+}
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(0.25, 0.5, 0);
+camera.lookAt( mesh_source.position.clone().add( new THREE.Vector3(0,-0.25,0) ) );
 renderer.render(scene, camera);
 ```
 
