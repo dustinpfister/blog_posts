@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2023-03-08 11:59:56
-version: 1.42
+updated: 2023-07-11 10:24:29
+version: 1.43
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values or wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3) prototype when it comes to clamping values. However I think that I should also have at least a few examples that have to do with wrapping vector3 objects as well.
@@ -32,7 +32,7 @@ The source code examples that I am writing about in this post can be found in my
 
 ### Version numbers matter with threejs
 
-When I first wrote this post I was using threejs r127, and the last time I came around to do some editing I was using r146 when it comes to testing out the source code examples. I have got into the habit of making sure that I always mention the version of threejs that I am using when it comes to writing a post on threejs. The main reason why is because threejs is still a very fast moving project in terms of development and code breaking changes are happening all the time with it as a result.
+When I first wrote this post I was using threejs r127, and the last time I came around to do some editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) when it comes to testing out the source code examples. I have got into the habit of making sure that I always mention the version of threejs that I am using when it comes to writing a post on threejs. The main reason why is because threejs is still a very fast moving project in terms of development and code breaking changes are happening all the time with it as a result.
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/-5vH7bGHHvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -116,7 +116,7 @@ The subject of clamping a vector by length goes hand in hand with many other rel
 
 ## 2 - Wrapping rather than clamping a vector3 object
 
-There is clamping a vector3 object to a box like space, but then there is also the other general way of dealing with boundaries which is to wrap them back ground. I have wrote a [whole other blog post on the subject of wrapping](/2022/09/02/threejs-vector3-wrap/) rather than clamping vector3 objects. However for this post I still think I should write about a few examples of this also.
+There is clamping a vector3 object to a box like space, but then there is also the other general way of dealing with boundaries which is to wrap them back ground. I have wrote a [whole other blog post on the subject of wrapping](/2022/09/02/threejs-vector3-wrap/) rather than clamping vector3 objects. It would be best to read that post on the subject when it comes to this as the demos I have in this section might not really do the subject justice. There are a number of ways to go about doing this sort of thing which is very much the case, I am just covering a few ways of doing so here. The main thing or concern with this is how the modulo operator works in core javaScript when dealing with negative numbers.
 
 ### 2.1 - Basic wrap single number demo
 
@@ -180,7 +180,7 @@ const loop = () => {
 loop();
 ```
 
-### 2.2 - A wrap method helpers 
+### 2.2 - A wrap method helper
 
 Now that I have a basic example of wrapping out of the way it is now just a question of doing this for all axis values. The solution that I would out for this is a little involved, but I managed to make ground with it by just thinking in terms of what I need to do on a axis by axis bases.
 
@@ -279,6 +279,82 @@ const update = function(frame, frameMax){
     const a1 = frame / frameMax;
     const a2 = 1 - Math.abs(0.5 - a1) / 0.5;
     updateGroup(group, 0.025, a2);
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 2.3 - wraping vector unit length
+
+There is not just wrapping the axis values of a vector, but also wrapping the unit length of a vector. In other words there is doing the same thing as the clamp length method that I covered in the basic section of this post, only just wrapping the value around rather than clamping it. For this demo then I am doing just that by once again using the THREE.MathUtils.euclideanModulo method of the math utils object to create an alpha value in the range of 0 to 1. I can then use this in the process of setting the length of the vector of the position of a mesh.
+
+Speaking of setting the length of a vector to do so I am setting a starting position of the mesh that has a unit length of 1. I am then using the apply Euler method of the vector3 class as a way to adjust the direction rather than unit length of the vector. Anyway if I have a vector with a unit length of one I can then use the multiply scalar method to set the current vector length that I want. In this case it is a value created by way of an expression that uses the alpha value made with the help of the THREE.MathUtils.euclideanModulo method.
+
+```js
+//-------- ----------
+// SCENE, CAMERA RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// mod method that wraps THREE.MathUtils.euclideanModulo
+const mod = function (a, b) {
+    return THREE.MathUtils.euclideanModulo(a, b);
+};
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(4, 4));
+const mesh1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1,1,1),
+    new THREE.MeshNormalMaterial({ transparent: true, opacity: 1 })
+);
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(
+    new THREE.SphereGeometry(2, 20, 20),
+    new THREE.MeshBasicMaterial({ wireframe: true, transparent: true, opacity: 0.2, wireframeLinewidth: 3 })
+);
+mesh2.geometry.rotateX( Math.PI * 1.5 );
+scene.add(mesh2);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20,
+FPS_MOVEMENT = 30;
+FRAME_MAX = 900;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a_frame = frame / frameMax;
+    const a_length = mod(32 * a_frame, 1);
+    const vectorLength = 1.5 * a_length;
+    const e = new THREE.Euler(0, Math.PI * 2 * a_frame, Math.PI * 8 * a_frame);
+    mesh1.position.set(1, 0, 0).applyEuler(e).multiplyScalar( vectorLength );
+    mesh1.lookAt(0, 0, 0);
 };
 // loop
 const loop = () => {
