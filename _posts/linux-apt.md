@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1059
-updated: 2023-07-11 11:13:34
-version: 1.1
+updated: 2023-07-11 11:52:32
+version: 1.2
 ---
 
 The Advanced package tool, or [apt for short command in Linux](https://en.wikipedia.org/wiki/APT_%28software%29) is the standard go to software package manager in Debian Linux as well as just about any Linux Distribution Based off of Debian. For the most part if I want to install, uninstall, or update software in a Debian Based system I will want to do so at least in park by way of apt.
@@ -96,8 +96,38 @@ Reading state information... Done
 All packages are up to date.
 ```
 
-In this case all the packages are up to date. However if there where some updates to install I would want to use full-upgrade to do so.
+In this case all the packages are up to date. However if there where some updates to install I would want to use full-upgrade to do so. There is also the upgrade option as well. However full-upgrade will also remove software as well if that is what is needed in order to [fully upgrade the system](https://forums.raspberrypi.com/viewtopic.php?t=264816).
 
 ```
 $ sudo apt full-upgrade
 ```
+
+## Install if you know the package to install
+
+If you know the name of the package that you want to insatll in apt, doing so is often just a matter of calling apt install and then just typing in the name of the package.
+
+```
+$ sudo apt install package-name
+```
+
+However what if you do not know what the package name is? Well for that there is the apt search, apt list, or using one of the many options out there when it comes to front ends for apt such as aptitude which is a nice command line option for that. Just about every Debian Base Linux distribution comes with some kind of front end as a way to browse. You might have noticed that in this post I am using Raspberry PI OS and for that one there is pi-packages. This can be used by clicking Add / Remove software in Preferences menu, for whatever distribution you are using there is just making use of whatever front end it comes with to browse that way.
+
+## Using the apt search command to kind packges
+
+Although it might be best to use some kind of front end to search for what there is to install, there are of course CLI tools to do this sort of thing. One useful command might prove to be the [apt search command](https://askubuntu.com/questions/160897/how-do-i-search-for-available-packages-from-the-command-line). For this I can type apt search, and then give one or more keywords to look for. The search will then be preformed on names of the package itself, as well as any text in the description as well.
+
+```
+ $ apt search "python3 Documentation"
+Sorting... Done
+Full Text Search... Done
+python3-sbml5-doc/oldstable 5.17.2+dfsg-3 all
+  System Biology Markup Language library - Python3 documentation
+```
+
+## Conclusion
+
+Although apt is a great tool for installing and update software it does have a few draw backs, at least when it comes to how it is set up to begin with at least. One major thing that I have found is that software is often out of date, however that might not always be such a bad thing in some cases. New versions of Debian come out every few years, and it would seem that packages get frozen at a certain point and stay fixed at those version numbers until a new major version of Debian comes out. Often the versions of the packages still wok just fine until it is time to update to a new major version of Debian, or in my case a Debian based system. 
+
+If I really need a newer version there is looking into other options for installing software, or figuring out how to built from source. In some cases I can even find pre compiled binaries from trusted sources, but that is not often the case. 
+
+
