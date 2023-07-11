@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2021-06-28 14:22:26
-version: 1.21
+updated: 2023-07-11 16:12:53
+version: 1.22
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment that the command is called. Helpful information about each process running in a selection is included in the output including a process id that can be used with other commands such as the kill command to halt a process.
@@ -75,7 +75,11 @@ $ ps -U pi -o %mem,comm
 
 This will give memory usage for each process in a query, but it will do so as percentage values. However the percentage values can be compared to values that are obtained from the Linux fee command to get an idea of how much memory it is in bytes.
 
-## 2 - Example 1 of Linux ps and making a custom array of command names and process ids with nodejs
+## 2 - Nodejs scripts
+
+Although I have found that I can do almost anything that I want to to with bash scripts, there are some situations in which I will need to do something in a more robust programming environment. With that said in this section I will be working out at least one if not more nodejs examples that call the ps command by way of the child process module.
+
+### 2.1 - Example 1 of Linux ps and making a custom array of command names and process ids with nodejs
 
 In this example I am using the spawn child process module method in nodejs to call the ps command from within a nodejs script. I am using the -o option to change the formating so that it just displays command names alone and then process ids next. I then used event handlers for the data event of the standard output to build a string, and then then end event of that stream to know that the list is done. Once I have the list I then used Array.filter and Array.map to build an array of arrays where each first element is a process name and each second index is a process id.
 
@@ -105,7 +109,7 @@ ps.stdout.on('end', (data) => {
 
 Not a practical example at least in its current state, but depending on what it is that I am trying to work out with Shell Scripting something like this could turn into something piratical of course. For example say I want to check if a process is not running first, and if not start it. Also say that I want to count the number of instances of that process that are currently running and if necessary call a kill command. In that case something like this would be a good starting point right?
 
-## 3 - Conclusion
+## Conclusion
 
 So the Linux ps command is the basic tool to use when it comes to checking out what is going on with processes. There are a number of other options that might be worth checking out one of which would be the [top command](/2021/06/28/linux-top/). 
 
