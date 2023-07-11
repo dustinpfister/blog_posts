@@ -5,13 +5,17 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2023-07-11 16:20:50
-version: 1.23
+updated: 2023-07-11 16:30:35
+version: 1.24
 ---
 
-So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment that the command is called. Helpful information about each process running in a selection is included in the output including a process id that can be used with other commands such as the kill command to halt a process.
+So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment that the command is called. Helpful information about each process running in a selection is included in the output including a process id that can be used with other commands such as the kill command to halt a process. There are also ways of changing what the format of this output, and there are also a number of ways to set what processes to select as well.
 
-There are many options for the command that can be used to control selection of which process to print to the standard output, and formating of the output when it comes to what I want to know about processes. In this post I will be going over some typical examples of the Linux ps command, that have to do with selecting all process, processes for a user, and just instances of a single command. I will also be going over some examples that have to do with creating a custom output of the command, and a use case example with nodejs while I am at it.
+Although the ps command is like that of the task manager in windows it does not have all the functionality that you might expect. For example if you want to kill a process that is hanging you can not do that with the ps command. However you can use the ps command to get a pid that you can then use with the [kill command](/2020/10/12/linux-kill/) to end that hanging process.
+
+The ps command is then a great basic tool to help in the process of learning a thing or two about all of the software that is running on your Linux system. Again just like that of using the task manager in windows to see the names of the process you can then research more on what each of those process dames actually do.
+
+In this post I will be going over some typical examples of the Linux ps command, that have to do with selecting all process, processes for a user, and just instances of a single command. I will also then want to write about any and all additional topics that might come up while I am at it because this is major deal kind of command.
 
 <!-- more -->
 
