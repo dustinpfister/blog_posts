@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1059
-updated: 2023-07-11 11:52:32
-version: 1.2
+updated: 2023-07-11 14:42:31
+version: 1.3
 ---
 
 The Advanced package tool, or [apt for short command in Linux](https://en.wikipedia.org/wiki/APT_%28software%29) is the standard go to software package manager in Debian Linux as well as just about any Linux Distribution Based off of Debian. For the most part if I want to install, uninstall, or update software in a Debian Based system I will want to do so at least in park by way of apt.
@@ -99,7 +99,7 @@ All packages are up to date.
 In this case all the packages are up to date. However if there where some updates to install I would want to use full-upgrade to do so. There is also the upgrade option as well. However full-upgrade will also remove software as well if that is what is needed in order to [fully upgrade the system](https://forums.raspberrypi.com/viewtopic.php?t=264816).
 
 ```
-$ sudo apt full-upgrade
+$ sudo apt -y full-upgrade
 ```
 
 ## Install if you know the package to install
@@ -111,6 +111,36 @@ $ sudo apt install package-name
 ```
 
 However what if you do not know what the package name is? Well for that there is the apt search, apt list, or using one of the many options out there when it comes to front ends for apt such as aptitude which is a nice command line option for that. Just about every Debian Base Linux distribution comes with some kind of front end as a way to browse. You might have noticed that in this post I am using Raspberry PI OS and for that one there is pi-packages. This can be used by clicking Add / Remove software in Preferences menu, for whatever distribution you are using there is just making use of whatever front end it comes with to browse that way.
+
+## List packages that are to be upgraded
+
+Often I might want to get a list of the packages that are to be upgraded after doing an apt update call. With that said this is one of the use cases for the apt list -u command.
+
+```
+$ sudo apt update
+Hit:1 http://archive.raspberrypi.org/debian buster InRelease
+Get:2 http://raspbian.raspberrypi.org/raspbian buster InRelease [15.0 kB]
+Get:3 http://raspbian.raspberrypi.org/raspbian buster/main armhf Packages [13.0 MB]
+Fetched 13.0 MB in 26s (496 kB/s)                                              
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+5 packages can be upgraded. Run 'apt list --upgradable' to see them.
+```
+
+```
+$ sudo apt list -u
+Listing... Done
+erlang-base/oldstable 1:22.2.7+dfsg-1+deb10u1 armhf [upgradable from: 1:21.2.6+dfsg-1]
+erlang-crypto/oldstable 1:22.2.7+dfsg-1+deb10u1 armhf [upgradable from: 1:21.2.6+dfsg-1]
+erlang-syntax-tools/oldstable 1:22.2.7+dfsg-1+deb10u1 armhf [upgradable from: 1:21.2.6+dfsg-1]
+erlang-wx/oldstable 1:22.2.7+dfsg-1+deb10u1 armhf [upgradable from: 1:21.2.6+dfsg-1]
+erlang-xmerl/oldstable 1:22.2.7+dfsg-1+deb10u1 armhf [upgradable from: 1:21.2.6+dfsg-1]
+```
+
+```
+$ sudo apt -y full-upgrade
+```
 
 ## Using the apt search command to kind packges
 
