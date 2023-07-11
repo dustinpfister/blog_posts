@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2023-07-11 16:12:53
-version: 1.22
+updated: 2023-07-11 16:20:50
+version: 1.23
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment that the command is called. Helpful information about each process running in a selection is included in the output including a process id that can be used with other commands such as the kill command to halt a process.
@@ -74,6 +74,15 @@ $ ps -U pi -o %mem,comm
 ```
 
 This will give memory usage for each process in a query, but it will do so as percentage values. However the percentage values can be compared to values that are obtained from the Linux fee command to get an idea of how much memory it is in bytes.
+
+### 1.6 - Get a count or process running
+
+There is the [wc command](/2020/10/13/linux-wc/) that can be used to get a word count of things, but it can also be used to count a number of lines also when used with the -l option. So then I can use the ps command with the -e option to selecet all processes and then use custom formatting to make sure that there is no header. There is then just piping the output of that into the wc -l command and the end result will be a count or processes for all users.
+
+```
+$ ps -e -o "%p%U%c" | wc -l
+180
+```
 
 ## 2 - Nodejs scripts
 
