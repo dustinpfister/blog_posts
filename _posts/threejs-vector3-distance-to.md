@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2023-03-13 13:52:27
-version: 1.35
+updated: 2023-07-12 16:45:47
+version: 1.36
 ---
 
-When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two of them in space. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting distance which should work fine.
+When it comes to vectors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two of them. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo). This distance to method can be used as a built in way to go about getting distance between the current vector from which the method is called, and another vector3 object that is passed as the first argument.
 
-So this post will be on the use of the distance to method of the vector3 class. However it will not just be about the distance to method of course though. I will be touching base on a whole bunch of other methods to work with in the Vector3 class, as well as a whole bunch of other aspects of the threejs library. There are many use case examples that will come up when it comes to using this sort of method, any many of them will involve not just getting the distance of course. I will not be getting into every little detail with the Vector3 class of course, but the focal point here will of course be the distance to method.
+This post will not just be about the distance to method of course though as when it comes to that alone there is only so much to say about it. So then I will be touching base on a whole bunch of other methods to work with in the Vector3 class as well that are closely related to the use of this method.
 
 <!-- more -->
 
@@ -32,11 +32,11 @@ Another Major class to work with in threejs is the [obejct3d class](/2018/04/23/
 
 ### Source code examples are on Github
 
-The source code examples that I am writing about in this post can also be found in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-distance-to) on Github.
+The source code examples that I am writing about in this post can also be found in my [test threejs repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-vector3-distance-to) on Github. This is also where I place the source code examples for my [many other blog posts on threejs](/categories/three-js/).
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r127 of threejs and the last time I came around to doing some editing I was using r146 of the library. Code breaking changes are made to threejs often, also there are some major changes coming up ahead with later revisions of threejs that I do not care to get into detail with here. Simply put version numbers matter big time with threejs and not just with respect to the revision number but many more other things deeper down in the software layers as well. If you are running into problems with these source code examples check the revision you are using, also be aware of what your graphics card is capable of, what drivers you are using with them and so forth.
+When I first wrote this post I was using r127 of threejs and the last time I came around to doing some editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) of the library. Code breaking changes are made to threejs often, also there are some major changes coming up ahead with later revisions of threejs that I do not care to get into detail with here. Simply put version numbers matter big time with threejs and not just with respect to the revision number but many more other things deeper down in the software layers as well. If you are running into problems with these source code examples check the revision you are using, also be aware of what your graphics card is capable of, what drivers you are using with them and so forth.
 
 ## 1 - Basic Vector3 distance to method examples
 
@@ -195,30 +195,30 @@ const newRandomStartPos = function (maxLength) {
     maxLength = maxLength === undefined ? 10 : maxLength;
     return new THREE.Vector3().random().subScalar(0.5).normalize().multiplyScalar(maxLength);
 };
-
-// cubes
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
 const cube1 = createCube();
 cube1.position.set(0.001, 0, 0);
 scene.add(cube1);
 const cube2 = createCube();
 cube2.position.copy(newRandomStartPos());
 scene.add(cube2);
-
+//-------- ----------
+// LOOP
+//-------- ----------
 camera.position.set(8, 10, 8);
 camera.lookAt(0, 0, 0);
-
-
 const update = function () {
     moveObjByDistDiff(cube2, cube1.position, 2, 0.125);
     if (minDistCheck(cube2, cube1.position, 0.25)) {
         cube2.position.copy(newRandomStartPos());
     }
 };
-
-var lt = new Date(),
+let lt = new Date(),
 fps = 30;
-var loop = function () {
-    var now = new Date(),
+const loop = function () {
+    const now = new Date(),
     secs = (now - lt) / 1000;
     requestAnimationFrame(loop);
     if (secs > 1 / fps) {
