@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2023-07-12 11:53:16
-version: 1.23
+updated: 2023-07-12 13:18:40
+version: 1.24
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries in terms of the possible range of values. There are two general ideas that come to mind with this clamping and wrapping.
@@ -712,7 +712,7 @@ const loop = function () {
 loop();
 ```
 
-## 5 - Animaiton Loop Demos
+## 5 - Animation Loop Demos
 
 For this section I will not be going over the source code examples of a few animaiton loop demos that make use of the various wrapping features that I have wrote about this far in this post.
 
@@ -819,6 +819,9 @@ loop();
 ### 5.2 - Wrap Grid Demo
 
 A while back I made a threejs project example that I just called [object grid wrap](/2022/05/20/threejs-examples-object-grid-wrap) because I am very bad at names. Anyway the project is a fairly complex way of creating a grid of objects that I then move around by way of two offset values, and then they, well wrap around when the go out of bounds. The project works okay, but there are for sure a few ruff edges with it at least as of this writing anyway. To cut to the chase here I might get around to making a new revision of that project at some point and to help address some of the problems I am seeing with it I thought I would try to make a very simple form of what I want here as an animation loop demo.
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/sDK9Uv205tQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ```js
 // ---------- ---------- ----------
