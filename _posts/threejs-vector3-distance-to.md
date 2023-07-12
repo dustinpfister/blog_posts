@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2023-07-12 16:45:47
-version: 1.36
+updated: 2023-07-12 17:10:22
+version: 1.37
 ---
 
 When it comes to vectors in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two of them. In the [Vector3 class](/2018/04/15/threejs-vector3/) there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo). This distance to method can be used as a built in way to go about getting distance between the current vector from which the method is called, and another vector3 object that is passed as the first argument.
@@ -42,7 +42,50 @@ When I first wrote this post I was using r127 of threejs and the last time I cam
 
 As always for each of my posts on threejs features I like to start out with at least a few basic examples of the topic at hand. When it comes to these examples I do my best to try to keep them fairly simple, copy and paste friendly, and avoid anything that might made the code to long. So nothing fancy with animation loops, custom shader materials and so forth. Just some simple hello world program style examples of the distance to method of the vector3 class.
 
-### 1.1 - Setting scale of one mesh by way of distance to another
+### 1.1 - Getting started with distance to
+
+For this demo I am using the distance to method to get the distance between two vectors. I am then using that value to set a number of mesh objects to create. I can then use the copy, and lerp methods of the vector3 class to set the positions of new mesh objects inside the body of a loop. Maybe not the best example, sure but you have to start somewhere and this is very much a basic section of this post after all.
+
+```js
+//-------- ---------
+// SCENE, CAMERA, RNEDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ---------
+// VECTORS
+//-------- ----------
+const v1 = new THREE.Vector3(-4, 0, 2);
+const v2 = new THREE.Vector3( 3, 0, 0);
+//-------- ---------
+// DISTANCE
+//-------- ----------
+const d = v1.distanceTo( v2 );
+console.log(d); // 6
+//-------- ---------
+// OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const len = Math.ceil(d);
+let i = 0;
+while(i < len){
+   const mesh = new THREE.Mesh( new THREE.SphereGeometry(0.2) );
+   mesh.position.copy(v1).lerp(v2, i / len);
+   scene.add(mesh);
+   i += 1;
+}
+//-------- ---------
+// RENDER
+//-------- ----------
+camera.position.set( 5, 5, 5 );
+camera.lookAt( 0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.2 - Setting scale of one mesh by way of distance to another
 
 So for now it might be a good idea to just start out with a basic example of the distance to method using the position properties of some Mesh objects which are of course instances of the Vector3 class. In this example I just have a single create cube helper method that will create and return a mesh object that uses the box geometry and the mesh normal material. I am then calling this create cube method twice and adding two cubes to the scene. After creating the mesh objects I will want to use the set method, or whatever means to change the positions of mesh objects objects.
 
@@ -95,7 +138,7 @@ renderer.render(scene, camera);
 
 This might not be the most interesting example in the worked when it comes to the distance to method, however this is of course a basic example and that is often the case with these kinds of examples. I just wanted to start with something very simple for this post, and with that said the basic idea of the distance to method is there. 
 
-### 1.2 - The vector3 length method
+### 1.3 - The vector3 length method
 
 The length method of the vector3 class is another method that is similar to that of the distance to method in that in a way it is a distance of sorts, however it is less versatile. The length method will return the vector unit length of the vector3 object. That is that a vector is of course a direction, and a magnitude along this direction as such the value returned by length is the magnitude part of the vector. In other words, simply put, the length is the distance of the x,y and z position from 0,0,0.
 
