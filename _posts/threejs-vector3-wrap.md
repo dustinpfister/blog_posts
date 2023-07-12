@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1003
-updated: 2023-03-09 14:32:38
-version: 1.22
+updated: 2023-07-12 11:53:16
+version: 1.23
 ---
 
 Often I might be in a situation with a [threejs project](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in which I would like to apply some kind of rules for [Vector3 class instances](/2018/04/15/threejs-vector3/) that have to do with boundaries in terms of the possible range of values. There are two general ideas that come to mind with this clamping and wrapping.
@@ -18,6 +18,7 @@ Sense I have all ready wrote a post on the subject of clamping Vector3 objects I
 <!-- more -->
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/ytQb0VdhTcw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Wrapping Vector3 class instances in threejs, and what to know first
 
@@ -45,7 +46,7 @@ The source code examples that I am writing about here can also be found in my [t
 
 ### Version numbers matter
 
-I was using r140 of threejs when I first wrote this post, and the last time I came around to do some editing I was using r146.
+I was using r140 of threejs when I first wrote this post, and the last time I came around to do some editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md).
 
 
 <iframe class="youtube_video"  src="https://www.youtube.com/embed/ytZkhOnqHCA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -136,26 +137,103 @@ loop();
 
 However even though things are working the way that I want them to with the euclidean modulo method it is still working in a way that is relative to zero forward rather than in a way that can work with a range that might go into negative numbers. Still the general idea of wrapping is there, from here forward I just need to find ways to adjust the range.
 
-## 2 - A Wrap Axis method 
+## 2 - A Wrap Values method 
 
-The process of making a wrap method from the ground up might prove to be a little involved, at least when it comes to making one from the ground up without looking into what is out there on the open Internet at least. In any case there is taking an approach in which I am figuring out that I need to do on a axis by axis bases which just seems like the thing to do. Wjat is good about this is that once I figure out something that works well for one axis, then it is generally just a mater of applying the same logic to all other axis values, at least that would seem to be the case with this anyway with respect to the way that I want to do it.
+The process of making a wrap method from the ground up might prove to be a little involved, at least when it comes to making one from the ground up without looking into what is out there on the open internet at least. In any case there is taking an approach in which I am figuring out that I need to do on a axis by axis bases which just seems like the thing to do. What is good about this is that once I figure out something that works well for one axis, then it is generally just a mater of applying the same logic to all other axis values, at least that would seem to be the case with this anyway with respect to the way that I want to do it.
 
-### 2.1 - Using the distance to method along with euclidean modulo
+However I would not just want to use a wrap method with vectors alone mind you. So then this post will be on making a wrap method in general to begin with.
 
-The code that I worked out for this solution involves making two instances of the Vector2 class and then calling the distance to method of each to get an idea of what the max distance from 0 is as well as the current distance is. Once I have these two values I can use them with the euclidean modulo method to get how mush I need to add to the min vector or subtract from the max vector for the current axis.
+### 2.1 - Using MathUtils.euclideanModulo to create a wrap method
+
+The basic idea of what I want does work very much so with the MathUtils.euclideanModulo method. However I want to have a wrap method where I pass a value, and then a min and max value rather than just two values. So then a wrap method can be made by just using the Math.max and Math.min methods with the a, and b values that are given after the first value. These min and max values can then be used to get a range which in turn can then be used to figure an alpha value by using THREE.MathUtils.euclideanModulo and then divining that over the range.
 
 ```js
 //-------- ----------
 // SCENE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10));
 const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// mod method that just wraps THREE.MathUtils.euclideanModulo
+const mod = function (a, b) {
+    return THREE.MathUtils.euclideanModulo(a, b);
+};
+// wrap method using THREE.MathUtils.euclideanModulo mod
+const wrap = function (value, a, b){
+    const max = Math.max(a, b);
+    const min = Math.min(a, b);
+    if(max === 0 && min === 0){
+        return 0;
+    }
+    const range = max - min;
+    const a_range = mod(value + Math.abs(min), range) / range;
+    return min + range * a_range; 
+};
+// wrap and axis
+const wrapAxis = function(vec, vecMin, vecMax, axis){
+    axis = axis || 'x';
+    vec[axis] = wrap( vec[axis], vecMin[axis], vecMax[axis] );
+    return vec;
+};
+//-------- ----------
+// MESH
+//-------- ----------
+scene.add(new THREE.GridHelper(3, 3));
+const mesh1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+mesh1.position.set(0, 0, 0);
+scene.add(mesh1);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+const vMin = new THREE.Vector3(-1.0, 0, 0),
+vMax  = new THREE.Vector3(1.0, 0, 0);
+let frame = 0,
+lt = new Date();
+const maxFrame = 900,
+fps = 20;
+const loop = function () {
+    const now = new Date(),
+    secs = (now - lt) / 1000,
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // warp one axis
+        mesh1.position.x += (-5 + 10 * bias) * secs
+        wrapAxis(mesh1.position, vMin, vMax, 'x');
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+```
 
+I have not battle tested this mind you, however thus far it seems to work fine.
 
+### 2.2 - Using the distance to method along with euclidean modulo
+
+The code that I worked out for this solution involves making two instances of the Vector2 class and then calling the distance to method of each to get an idea of what the max distance from 0 is as well as the current distance is. Once I have these two values I can use them with the euclidean modulo method to get how mush I need to add to the min vector or subtract from the max vector for the current axis. Once again I did not battle test this, but also once again it seems to give me a desired result thus far to say the least.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // HELPERS
 //-------- ----------
@@ -182,6 +260,7 @@ const wrapAxis = function(vec, vecMin, vecMax, axis){
 //-------- ----------
 // MESH
 //-------- ----------
+scene.add(new THREE.GridHelper(3, 3));
 const mesh1 = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
@@ -192,11 +271,11 @@ scene.add(mesh1);
 //-------- ----------
 camera.position.set(5, 5, 5);
 camera.lookAt(0, 0, 0);
-const vMin = new THREE.Vector3(-2, 0, 0),
-vMax  = new THREE.Vector3(2, 0, 0);
+const vMin = new THREE.Vector3(-1.0, 0, 0),
+vMax  = new THREE.Vector3(1.0, 0, 0);
 let frame = 0,
 lt = new Date();
-const maxFrame = 300,
+const maxFrame = 900,
 fps = 20;
 const loop = function () {
     const now = new Date(),
@@ -217,18 +296,17 @@ const loop = function () {
 loop();
 ```
 
-### 2.2 - Wrap Axis method based off the Math.Wrap method from Phaser
+### 2.3 - Wrap Axis method based off the Math.Wrap method from Phaser
 
-I have wrote a blog post or two on the game framework called Phaser in the past and I remember that the math object of the [framework has a wrap method](https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js). This method does seem to work the way that I would want it to, but with a few exceptions one of which has to do with NaN values when given the value 0 for the min or max values of the range that i would like to wrap to. This can be fixed fairly easily though of course by just adding some code that will return 0 for such a case of course. While I am at it there is also making use of the Math.min and Math.max methods to I do not have to worry so much about the order of the arguments when calling the method.
+I have wrote a blog post or two on the game framework called Phaser in the past and I remember that the math object of the [framework has a wrap method](https://github.com/photonstorm/phaser/blob/v3.55.2/src/math/Wrap.js). This method does seem to work the way that I would want it to, but with a few exceptions one of which has to do with NaN values when given the value 0 for the min or max values of the range that I would like to wrap to. This can be fixed fairly easily though of course by just adding some code that will return 0 for such a case of course.
 
-The end result is a warp method that I like better that the more complex solution involving the distance to method, that still seems to give the same end results for the [domain that I given the function](/2021/07/27/js-function-domain/) thus far.
+The end result is a warp method that I like better that the more complex solution involving the distance to method, that still seems to give the same end results for the [domain that I given the function](/2021/07/27/js-function-domain/) thus far. Also sense this is based on code from the popular game framework I am pretty sure this will work well for just about any values that I throw at it. What is also nice about this wrap method is that it is also very much a vanilla javaScript solution then as I am just using javaScript alone in the body of the wrap function.
 
 ```js
 //-------- ----------
 // SCENE, CAMERA, RENDERER
 //-------- ----------
 const scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(10, 10));
 const camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
@@ -261,6 +339,7 @@ const wrapAxis = function(vec, vecMin, vecMax, axis){
 //-------- ----------
 // MESH
 //-------- ----------
+scene.add(new THREE.GridHelper(3, 3));
 const mesh1 = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
@@ -271,8 +350,8 @@ scene.add(mesh1);
 //-------- ----------
 camera.position.set(5, 5, 5);
 camera.lookAt(0, 0, 0);
-const vMin = new THREE.Vector3(-2, 0, 0),
-vMax  = new THREE.Vector3(2, 0, 0);
+const vMin = new THREE.Vector3(-1, 0, 0),
+vMax  = new THREE.Vector3(1, 0, 0);
 let frame = 0,
 maxFrame = 300,
 fps = 20,
@@ -633,7 +712,11 @@ const loop = function () {
 loop();
 ```
 
-## 5 - Wrapping Vector unit length animation loop example
+## 5 - Animaiton Loop Demos
+
+For this section I will not be going over the source code examples of a few animaiton loop demos that make use of the various wrapping features that I have wrote about this far in this post.
+
+### 5.1 - Wrapping Vector unit length animation loop example
 
 Here I have an animation loop example that is the basic for one of my videos for this blog post. The first video that I made was based on one of the module examples that I made with the wrap axis methods. For this example I wanted to just make something that has to do with wrapping vector unit length. I also wanted to make something that is a little more interesting than just a single mesh object having the length wrapped so I went a little overboard with expressions and so forth.
 
@@ -714,6 +797,135 @@ const update = function(frame, frameMax){
         mesh.lookAt(0,0,0);
         mesh.rotation.y = Math.PI * 2 * ( (a2 + a2) * 64 % 1);
     });
+};
+// loop
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+### 5.2 - Wrap Grid Demo
+
+A while back I made a threejs project example that I just called [object grid wrap](/2022/05/20/threejs-examples-object-grid-wrap) because I am very bad at names. Anyway the project is a fairly complex way of creating a grid of objects that I then move around by way of two offset values, and then they, well wrap around when the go out of bounds. The project works okay, but there are for sure a few ruff edges with it at least as of this writing anyway. To cut to the chase here I might get around to making a new revision of that project at some point and to help address some of the problems I am seeing with it I thought I would try to make a very simple form of what I want here as an animation loop demo.
+
+```js
+// ---------- ---------- ----------
+// SCENE, CAMERA, and RENDERER
+// ---------- ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1, 1000);
+const renderer = THREE.WebGL1Renderer ? new THREE.WebGL1Renderer() : new THREE.WebGLRenderer;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// mod method that just wraps THREE.MathUtils.euclideanModulo
+const mod = function (a, b) {
+    return THREE.MathUtils.euclideanModulo(a, b);
+};
+// wrap method using THREE.MathUtils.euclideanModulo mod
+const wrap = function (value, a, b){
+    const max = Math.max(a, b);
+    const min = Math.min(a, b);
+    if(max === 0 && min === 0){
+        return 0;
+    }
+    const range = max - min;
+    const a_range = mod(value + Math.abs(min), range) / range;
+    return min + range * a_range; 
+};
+// position a group of child objects to a grid
+const groupToGrid = function(group, size = 5, divisions = 5, offset = new THREE.Vector2( 0.5, 0.5 ), forChild ){
+    let i = 0;
+    const len = size * size;
+    while(i < len){
+        const obj = group.children[i];
+        const gx = i % size;
+        const gz = Math.floor( i / size );
+        obj.position.x = size / 2 * -1 + gx + offset.x;
+        obj.position.z = size / 2 * -1 + gz + offset.y;
+        obj.position.x = wrap(obj.position.x, size / 2 * -1, size / 2);
+        obj.position.z = wrap(obj.position.z, size / 2 * -1, size / 2);
+        if(forChild){
+            let a_dist = obj.position.distanceTo(group.position) / ( size / 2 );
+            a_dist = s_dist = THREE.MathUtils.clamp(a_dist, 0, 1);
+            forChild(obj, i, gx, gz, a_dist, group);
+        }
+        i += 1;
+    }
+};
+// opacity for child effect
+const forChild_opacity = (function(){
+    const curve_path = new THREE.CurvePath();
+    const v1 = new THREE.Vector2(0.00, 1.00);
+    const v2 = new THREE.Vector2(0.80, 1.00);
+    const v3 = new THREE.Vector2(1.00, 0.00);
+    const c1 = v2.clone().lerp(v3, 0.5).add( new THREE.Vector2( 0.0, 1.00) );
+    curve_path.add( new THREE.LineCurve( v1, v2 ) );
+    curve_path.add( new THREE.QuadraticBezierCurve( v2, c1, v3 ) );
+    return (obj, i, gx, gz, a_dist, group) => {
+        const v = curve_path.getPoint(a_dist);
+        //obj.material.opacity = 1 - a_dist;
+        obj.material.opacity = v.y;
+    };
+}());
+// ---------- ----------
+// GROUP OF OBJECTS
+// ---------- ----------
+const size = 10, divisions = 10;
+const group = new THREE.Group();
+scene.add(group);
+let i = 0;
+const len = size * size;
+while(i < len){
+    const a_x = (i % size) / size;
+    const a_y = Math.floor(i / size) / size;
+    const mesh = new THREE.Mesh(
+        new THREE.BoxGeometry( 1, 1, 1 ),
+        new THREE.MeshBasicMaterial({
+            color: new THREE.Color(1 - a_x, 0.25, a_y),
+            transparent: true
+        })
+    );
+    group.add(mesh);
+    i += 1;
+}
+// ---------- ----------
+// GRID HELPER
+// ---------- ----------
+scene.add( new THREE.GridHelper( size, divisions ) );
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set( -8, 8, -8 );
+camera.lookAt(0,0,0);
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 90;
+let secs = 0,
+frame = 0,
+lt = new Date();
+// update
+const update = function(frame, frameMax){
+    const a_frame = frame / frameMax;
+    const a_y = Math.sin( Math.PI * 2 * a_frame );
+    const v_offset = new THREE.Vector2(0, 0);
+    v_offset.x = 0.5 + size * a_frame;
+    v_offset.y = 0.5 + size * a_y;
+    groupToGrid( group, size, divisions, v_offset, forChild_opacity );
 };
 // loop
 const loop = () => {
