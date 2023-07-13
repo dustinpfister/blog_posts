@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2023-03-16 11:06:37
-version: 1.32
+updated: 2023-07-13 08:15:28
+version: 1.33
 ---
 
 I have wrote a number of posts on the various helpers in threejs that can be used to get a better idea of what the visual state of things is with something in a threejs project such as with the [arrow helper](/2018/11/10/threejs-arrow-helper/) for example. However thus far I have not wrote one on the [grid helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -34,7 +34,7 @@ The source code examples that I am writing about in this post can be found in my
 
 ### Version numbers matter
 
-When I first wrote this post I was using [r135 of threejs](https://github.com/mrdoob/three.js/releases/tag/r135), and the last time I came around to do a little editing I updated the code examples to my r146 code style. At time time of this writing there are a lot of code breaking changes that will be coming up in the future when it comes to making use of plain old script tags rather than JSM.
+When I first wrote this post I was using [r135 of threejs](https://github.com/mrdoob/three.js/releases/tag/r135), and the last time I came around to do a little editing I updated the code examples to my [r146 code style](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). At time time of this writing there are a lot of code breaking changes that will be coming up in the future when it comes to making use of plain old script tags rather than JSM.
 
 ## 1 - Some Basic examples of the GridHelper
 
