@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2023-07-13 08:15:29
-version: 1.31
+updated: 2023-07-13 08:20:06
+version: 1.32
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -115,11 +115,11 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 2 - The copy method
+## 2 - The copy method, and other Vector3 class methods
 
-The copy method of the Vector 3 class allows for me to copy the values of one instance of Vector3 over to another instance. The normalize method of the Vector3 class is also a very useful one that will set the length of a vector to 1 while preserving the direction of the vector. So then I can create a new Instance of Vector3, then copy that to another such as the position object of a mesh, and the normalize the position to a length of one with the same direction of the vector that I copied from. Sense the length is now one, I can then use the multiply scalar method to set a desired length from there easily.
+The copy method of the Vector 3 class allows for me to copy the values of one instance of Vector3 over to another instance. The normalize method of the Vector3 class is also a very useful one that will set the length of a vector to 1 while preserving the direction of the vector. So then I can create a new instance of Vector3, then copy that to another such as the position object of a mesh, and then normalize the position to a length of one with the same direction of the vector that I copied from. Sense the length is now one, I can then use the multiply scalar method to set a desired length from there easily.
 
-This is where things might start to get a little complex, but for the most part this is just a section where I am now pulling in the use of the copy method as a way to set the starting state of a vector.
+This is where things might start to get a little complex, but for the most part this is just a section where I am now pulling in the use of the copy method as a way to set the starting state of a vector. Also While I am at it I will also want to write a fair amount on many of the other useful methods in the vector3 class that go hand in hand with the use of the multiply scalar method.
 
 ### 2.1 - Copy and normalize, then use scalar
 
