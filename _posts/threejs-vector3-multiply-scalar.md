@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2023-07-13 08:41:36
-version: 1.33
+updated: 2023-07-13 11:51:27
+version: 1.34
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
@@ -215,7 +215,9 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 2.3 - Using curves 
+### 2.3 - Using curves for start points
+
+Another use case of the copy and multiply scalar vector3 class methods would be to create a curve, and then use the get point method of the base curve class to get a vector along the curve. Once again a point along the curve can be passed to the copy method of a vector that I want to set the position with. There is then using additional vetor3 class methods including multiply scalar to set another position relative to that point.
 
 ```js
 //-------- ----------
@@ -351,11 +353,11 @@ loop();
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 ```
 
-## 4 - Animtion loops examples of Vector3.multiplyScalar
+## 4 - Animation loops examples of Vector3.multiplyScalar
 
 Like always I will want to make at least a few animation loop examples for this post.
 
-### 4.1 - Art Animaiton loop example for video one
+### 4.1 - Art Animation loop example for video one
 
 I think I have the basic idea of the multiply scalar method covered now and then some when it comes to some additional methods that will often come into play along with it. In this example I want to make a kind of art project type thing where the goal is to just make a collection of mesh objects that look interesting when they move around in the scene. As with by apply Euler example in this post I am once gain using that helper function that I worked out in that example, but now with some additional helper functions that can be used to create and update a standard kind of group object.
 
