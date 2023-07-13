@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2023-07-13 08:15:28
-version: 1.33
+updated: 2023-07-13 12:07:02
+version: 1.34
 ---
 
 I have wrote a number of posts on the various helpers in threejs that can be used to get a better idea of what the visual state of things is with something in a threejs project such as with the [arrow helper](/2018/11/10/threejs-arrow-helper/) for example. However thus far I have not wrote one on the [grid helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -38,7 +38,7 @@ When I first wrote this post I was using [r135 of threejs](https://github.com/mr
 
 ## 1 - Some Basic examples of the GridHelper
 
-In this basic section I will just be writing about a few quick, basic examples of the Grid helper. There is just setting up a basic set of ushual suspect objects, createing an instance of a grid helper, and then adding that to the scene object. When doing so there is covering what the options are with arguments. Also there is maybe going a bit beyond that to write about things like setting the line width as well. Doing so has to do with setting options for the material that is used for the grid helper, also line width will not work on all platforms which is one reason why one might want to do with some other option if the over all look is of concern.
+In this basic section I will just be writing about a few quick, basic examples of the Grid helper. There is just setting up a basic set of usual suspect objects, creating an instance of a grid helper, and then adding that to the scene object. When doing so there is covering what the options are with arguments. Also there is maybe going a bit beyond that to write about things like setting the line width as well. Doing so has to do with setting options for the material that is used for the grid helper, also line width will not work on all platforms which is one reason why one might want to do with some other option if the over all look is of concern.
 
 ### 1.1 - A Basic grid helper example
 
@@ -138,7 +138,7 @@ A lot of other things can be changed by way of just changing options for the mat
 
 ## 2 - Animation loop examples
 
-I should make at least one if not more animation loop demos that make use of the grid helper.
+I should make at least one if not more animation loop demos that make use of the grid helper. Some of these will involve the mutation of properties of objects other than that of the grid helper. However at least some of them should involve mutation of various aspects of the grid helper as this is a post on the subject of course. It is just that when it comes to real life use of this threejs feature the grid helper is often used as a way to just get an idea of what is going on when it comes to the state of things, but at pone pointer or another the grid helper will be removed. However it is not to say that there are not things that can be done to adjust the look and size of a grid helper over time.
 
 ### 2.1 - Moving a camera around a scene animation example
 
