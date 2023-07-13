@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 961
-updated: 2023-07-13 12:07:02
-version: 1.34
+updated: 2023-07-13 12:08:47
+version: 1.35
 ---
 
 I have wrote a number of posts on the various helpers in threejs that can be used to get a better idea of what the visual state of things is with something in a threejs project such as with the [arrow helper](/2018/11/10/threejs-arrow-helper/) for example. However thus far I have not wrote one on the [grid helper](https://threejs.org/docs/#api/en/helpers/GridHelper), so todays post will be just a few examples of using this kind of helper in a threejs project.
@@ -240,7 +240,7 @@ loop();
 
 ### 2.1 - Opacity of the material changed over time
 
-The material that is used for the gird helper is an instance of the line segments material. There are a lot of limitations for this kind of material compared to many of the mesh materials. However one feature that does work is opacity.
+The material that is used for the gird helper is an instance of the line segments material. There are a lot of limitations for this kind of material compared to many of the mesh materials. However one feature that does work is transparency and with the the opacity option of the base material class that can be used to adjust the global opacity of the material.
 
 ```js
 // ---------- ---------- ----------
