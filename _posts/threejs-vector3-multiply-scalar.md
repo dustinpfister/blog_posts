@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 971
-updated: 2023-07-13 11:51:27
-version: 1.34
+updated: 2023-07-13 12:02:39
+version: 1.35
 ---
 
 One major part of doing anything interesting with threejs is learning how to go about positioning things when it comes to working with the Vector3 class in the library. There are the very basics with this class when it comes to starting out with the set, and copy methods for example. However there are also a number of other useful methods in this class including methods like the [multiply scalar method](https://threejs.org/docs/#api/en/math/Vector3.multiplyScalar) which will be the main focal point of this post today.
 
-The multiply scalar method is a way to adjust the unit length of the vector without changing anything with the direction of the vector. In other words it is a way to change the position of the vector, but only along a ray that comes out from an origin that is found by way of the current values of the Vector. I often use this multiply scalar method in combination with other Vector3 methods such as the normalize method that will set the unit length of the vector to that of one, which would be a good starting point before using a method like the multiply scalar.
+The multiply scalar method is a way to adjust the unit length of the vector, without changing anything with the direction. In other words it is a way to change the position of the vector, but only along a line that passes threw the origin that is found by way of the current values of the Vector. I often use this multiply scalar method in combination with other Vector3 methods such as the normalize method that will set the unit length of the vector to that of one, which would be a good starting point before using a method like the multiply scalar. There are also a wide range of other vector3 class methods that have to do with adjusting the direction in combination of the length so I will be writing about those as well here of course.
 
 <!-- more -->
 
@@ -38,7 +38,7 @@ I have the source code examples in this post up on [my test threejs Github Repos
 
 The version of threejs that I was using when I first wrote this post was r135, and the last time I came around to do some editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Code breaking changes are made to threejs often so check your version numbers first and for most if any of these code examples are breaking on versions of threejs later than r146.
 
-## Some Basic examples of multiply scalar
+## 1 - Some Basic examples of multiply scalar
 
 As always I will be start tout off this post with a few basic examples to get things started. These examples will be just simple static scenes, and in general I will try to keep things as simple, and to the point as possible. The main thing to focus on here I think though is not just the multiply scalar method, but also some other closely related vector class methods as well that are all closely tied to the nature of vectors.
 
@@ -217,7 +217,7 @@ renderer.render(scene, camera);
 
 ### 2.3 - Using curves for start points
 
-Another use case of the copy and multiply scalar vector3 class methods would be to create a curve, and then use the get point method of the base curve class to get a vector along the curve. Once again a point along the curve can be passed to the copy method of a vector that I want to set the position with. There is then using additional vetor3 class methods including multiply scalar to set another position relative to that point.
+Another use case of the copy and multiply scalar vector3 class methods would be to create [a curve](/2022/06/17/threejs-curve/), and then use the get point method of the base curve class to get a vector along the curve. Once again a point along the curve can be passed to the copy method of a vector that I want to set the position with. There is then using additional vetor3 class methods including multiply scalar to set another position relative to that point.
 
 ```js
 //-------- ----------
@@ -355,7 +355,7 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 ## 4 - Animation loops examples of Vector3.multiplyScalar
 
-Like always I will want to make at least a few animation loop examples for this post.
+Like always I will want to make at least a few animation loop examples for this post. So these examples will continue with various things that where covered in the above sections, but now the focus is more so on working out some interesting animations. Many of these will just involve the mutation of the [position property of the objects](/2022/04/04/threejs-object3d-position/) over time. However much of what is being done here can also be applied to things like the [position attributes of buffer geometry objects](/2021/06/07/threejs-buffer-geometry-attributes-position/) as well.
 
 ### 4.1 - Art Animation loop example for video one
 
