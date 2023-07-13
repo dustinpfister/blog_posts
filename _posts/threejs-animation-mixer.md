@@ -5,14 +5,28 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-13 13:08:21
-version: 1.1
+updated: 2023-07-13 13:27:55
+version: 1.2
 ---
 
-The animation mixer in threejs is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing.
+The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
 
 <!-- more -->
 
+## Animation Mixer objects and what to know first
+
+This is a blog post on the use of Animation Mixer objects in the javaScript library known as threejs. If you are new to what these things are then you might want to start with some kind of [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or maybe even on [client side javaScript in general](/2018/11/27/js-getting-started/). Even if you have a fair amount of experience with these topics you might still want to read up on a few topics before hand that are relevant to this topic of animation mixer objects.
+
+### The Vector3 class, and the position property of object3d class based objects
+
+I think that a good starting point for key frame tracks to use with a mixer would be to use vector key frame track objects. If you have no idea what these are that is okay as this will be covered in the very first example of the basic section. However I am still assuming that you know at least a thing or two about [Vector3 class objects](/2018/04/15/threejs-vector3/), and the [position property of object3d class based objects](/2022/04/04/threejs-object3d-position/) such as mesh objects.
+
+### Source Code is also up on Github
+
+The source code examples that I am writing about in this post can also be found in my [test threejs project](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-animation-mixer) up on Github. This is also where I have placed all the other source code examples for the [many other blog posts on threejs](/categories/three-js/) that I have wrote over the years.
+### Version Numbers Matter
+
+When I first wrote this blog post I was following the [r152 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) that I set for myself. The major change here is the use of module type script tags over that of old school text/javaScript type tags. If you do not know what these means, sorry, getting into that is outside the scope of this post. In general though if you see the use of import at the top of the code examples, then module type tags are being used.
 
 ## 1 - Basic Examples of the Animation Mixer
 
