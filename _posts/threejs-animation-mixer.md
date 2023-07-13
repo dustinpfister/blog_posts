@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-13 13:27:55
-version: 1.2
+updated: 2023-07-13 13:31:57
+version: 1.3
 ---
 
 The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
@@ -29,6 +29,8 @@ The source code examples that I am writing about in this post can also be found 
 When I first wrote this blog post I was following the [r152 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) that I set for myself. The major change here is the use of module type script tags over that of old school text/javaScript type tags. If you do not know what these means, sorry, getting into that is outside the scope of this post. In general though if you see the use of import at the top of the code examples, then module type tags are being used.
 
 ## 1 - Basic Examples of the Animation Mixer
+
+This will then be a basic section of the animation mixer objects of threejs.
 
 ### 1.1 - Single Vector key frame track used with the position attribute
 
@@ -101,3 +103,7 @@ const loop = () => {
 };
 loop();
 ```
+
+## Conclusion
+
+So then there is a lot more ground to cover when it comes to animation mixer objects in threejs, as well as all the various other closley related objects that are needed in order to do anything at all with this kind of threejs feature.
