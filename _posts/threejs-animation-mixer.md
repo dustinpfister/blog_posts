@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-13 13:31:57
-version: 1.3
+updated: 2023-07-14 08:54:23
+version: 1.4
 ---
 
 The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
@@ -103,6 +103,193 @@ const loop = () => {
 };
 loop();
 ```
+
+## 2 - Examples using JSON file assets from my 'tri12' project
+
+I started a collection of JSON files that I have called just simply tri12 which as the name suggests is a collection of assets where I am creating models that are composed of no more than 12 triangles. In this section I will then be going over some Animation Mixer examples that make use of these files. With that said there are a few options when it comes to loading JSON format files, and also there are several differing formats of course. For example there is having a JSON file that just contains data for a buffer geometry object alone, but then there is a JSON format for loading one or more whole objects with geometry, materials, and animation data.
+
+There are a lot of options when it comes to external data for geometry, and otger data that has to do with over all objects. However I think that JSON is maybe one of the best options when it comes to learning about the THREEJS animation system to begin with. The loaders of interest are built into the core of threejs itself rather than in an additional add on loader. Also the process of converting workable objects to JSON strings and vis versa is just a matter of using the JOSN.stringify, and JSON.parse methods built into client side javaScript itself. Yet another good reason for going with this format is that when it comes creating models by hand coding data with a text editor rather than using a program like blender a plain text format like JSON makes the process of doing so easier.
+
+### 2.a - The Buffer Geometry JSON Format
+
+```json
+{
+  "metadata":{
+    "version":4.5,
+    "type":"BufferGeometry",
+    "generator":"Hand Coded"
+  },
+  "type":"BufferGeometry",
+  "data":{
+    "attributes":{
+      "position":{
+        "itemSize":3,
+        "type":"Float32Array",
+        "array":[
+          0.0, 0.0, 0.0,
+         -1.0, 2.0, 0.0,
+         -1.0, 0.5, 0.0,
+          1.0, 2.0, 0.0,
+          1.0, 0.5, 0.0,
+         -0.7,-1.0, 0.0,
+         -0.7,-0.1, 0.0,
+          0.7,-1.0, 0.0,
+          0.7,-0.1, 0.0
+        ],
+        "normalized":false
+      },
+      "normal":{
+        "itemSize":3,
+        "type":"Float32Array",
+        "array":[
+          0,0,1,
+          0,0,1,
+          0,0,1,
+          0,0,1,
+          0,0,1,
+          0,0,1,
+          0,0,1,
+          0,0,1,
+          0,0,1
+        ],
+        "normalized":false
+      },
+      "uv":{
+        "itemSize":2,
+        "type":"Float32Array",
+        "array":[
+          0,0,
+          1,0,
+          1,1,
+          1,0,
+          1,1,
+          1,0,
+          1,1,
+          1,0,
+          1,1
+        ],
+        "normalized":false
+      },
+      "color":{
+        "itemSize":3,
+        "type":"Float32Array",
+        "array":[
+          1,0,0,
+          0.7,0.5,0,
+          0.7,0.5,0,
+          0.7,0.5,0,
+          0.7,0.5,0,
+          0.9,0.5,0,
+          0.9,0.5,0,
+          0.9,0.5,0,
+          0.9,0.5,0
+        ],
+        "normalized":false
+      }
+    },
+    "index":{ 
+        "type": "Uint16Array",
+        "array": [
+          0,1,2,
+          0,4,3,
+          0,6,5,
+          0,7,8
+        ]
+    },
+    "morphTargetsRelative": true,
+    "morphAttributes": {
+      "position": [
+        {
+          "itemSize":3,
+          "type":"Float32Array",
+          "array":[
+            0.0, 0.0, 0.0,
+            0.0, 0.0,-0.8,
+            0.0, 0.0,-0.8,
+            0.0, 0.0,-0.8,
+            0.0, 0.0,-0.8,
+            0.0, 0.0,-0.4,
+            0.0, 0.0,-0.4,
+            0.0, 0.0,-0.4,
+            0.0, 0.0,-0.4
+          ],
+          "normalized":false
+        }
+      ]
+    }
+  }
+}
+```
+
+### 2.1 - Creating an animation clip using buffer geometry format JSON that has a morph attribute
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(65, 4 / 3, 0.1, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo')  || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0.5, 0);
+const state = {
+   mesh: null,
+   mixer: null
+};
+// loop
+let frame = 0;
+const frame_max = 30;
+const loop = () => {
+    requestAnimationFrame(loop);
+    const a1 = frame / frame_max;
+    state.mixer.setTime(1 * a1);
+    renderer.render(scene, camera);
+    frame += 1;
+    frame %= frame_max;
+};
+//-------- ----------
+// BUFFER GEOMETY LOADER
+//-------- ----------
+const loader = new THREE.BufferGeometryLoader();
+// load a resource
+loader.load(
+    // resource URL
+    '/json/tri12-butterfly/set1-buffergeometry/0.json',
+    // onLoad callback
+    (geometry) => {
+        // add mesh
+        state.mesh = new THREE.Mesh(
+            geometry,
+            new THREE.MeshBasicMaterial({
+                vertexColors: true, 
+                side: THREE.DoubleSide
+            })
+        );
+        scene.add(state.mesh);
+        // creating a Number Key Frame Track, clip, mixer, and action
+        const track = new THREE.NumberKeyframeTrack('.morphTargetInfluences[0]', 
+           [ 0, 0.25, 0.5, 0.75, 1],
+           [ 0, 0.30, 0.5, 0.15, 0]
+        );
+        const clip = new THREE.AnimationClip('flap', -1, [ track ] );
+        state.mixer = new THREE.AnimationMixer(state.mesh);
+        const action = state.mixer.clipAction( clip );
+        action.play();
+        // start loop
+        loop();
+    }
+);
+```
+
 
 ## Conclusion
 
