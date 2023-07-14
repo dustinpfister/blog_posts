@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-14 09:28:22
-version: 1.6
+updated: 2023-07-14 11:46:51
+version: 1.7
 ---
 
 The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
@@ -229,7 +229,7 @@ The buffer geometry JSON format that will then be used with the [THREE.BufferGeo
 
 ### 2.1 - Creating an animation clip using buffer geometry format JSON that has a morph attribute
 
-For this demo then I am loading the above JSON data in the buffer geometry format, and then creating an animation clip for it by using hard coded data in the javaScript file rather than loading additional JSON data.
+For this demo then I am loading the above JSON data in the buffer geometry format, and then creating an animation keyframe track from it by using hard coded data in the javaScript file rather than loading additional JSON data. When it comes to the option that I use to do this I am using the new THREE.NumberKeyframeTrack class as the property that I want to mutate is the value of the first element of the morphTargetInfluences property of the mesh object that I will be using for the geometry. Once I have the key frame track I can then created the animation clip, the animation mixer, and then create the animation action by calling the clipAction method of the mixer.
 
 ```js
 // ---------- ----------
