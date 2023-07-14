@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-14 12:20:56
-version: 1.8
+updated: 2023-07-14 12:27:38
+version: 1.9
 ---
 
 The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
@@ -396,4 +396,10 @@ loader.load(
 
 ## Conclusion
 
-So then there is a lot more ground to cover when it comes to animation mixer objects in threejs, as well as all the various other closley related objects that are needed in order to do anything at all with this kind of threejs feature.
+So then there is a lot more ground to cover when it comes to animation mixer objects in threejs, as well as all the various other closely related objects that are needed in order to do anything at all with this kind of threejs feature. Still I have found that once that I have worked out just a very simple hello type example that just involves moving a mesh across an area the bulk of the hard work is all ready out of the way.
+
+When it comes to KeyFrameTracks it is good that there are options for vectors, and quaternion for the sake of local rotation. However often I think that what I will be using for many of the use case examples will in fact just be the plain old Number Key frame tracks, as I am sure that many of the animations that I will be working out will make use of morph attributes and with those I just need to set what the alpha values are over time.
+
+I am sure that I will be coming back to edit this post a few times now and then as I write more content on animation topics as this is still an area where I need to wrote more on for sure.
+
+
