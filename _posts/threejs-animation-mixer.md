@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-14 09:16:45
-version: 1.5
+updated: 2023-07-14 09:28:22
+version: 1.6
 ---
 
 The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
@@ -21,6 +21,10 @@ This is a blog post on the use of Animation Mixer objects in the javaScript libr
 
 I think that a good starting point for key frame tracks to use with a mixer would be to use vector key frame track objects. If you have no idea what these are that is okay as this will be covered in the very first example of the basic section. However I am still assuming that you know at least a thing or two about [Vector3 class objects](/2018/04/15/threejs-vector3/), and the [position property of object3d class based objects](/2022/04/04/threejs-object3d-position/) such as mesh objects.
 
+### Morph attributes, and attributes in general
+
+When it comes to creating and loading external buffer geometry data that is a whole lot to say that I will not be getting into detail here of course. There are a whole lot of file formats to choose from, and with that both built in and add on loaders to load such files into a threejs project. However the main thing of interest here is to make sure that the geometry data has some [morph attributes](/2023/02/03/threejs-buffer-geometry-morph-attributes/) at least. Morph attributes are ways off adding additional sets of data in ether absolute data, or deltas for other main buffer geometry attributes of interest, mainly the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal attributes](/2021/06/08/threejs-buffer-geometry-attributes-normals/).
+
 ### Source Code is also up on Github
 
 The source code examples that I am writing about in this post can also be found in my [test threejs project](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-animation-mixer) up on Github. This is also where I have placed all the other source code examples for the [many other blog posts on threejs](/categories/three-js/) that I have wrote over the years.
@@ -30,7 +34,7 @@ When I first wrote this blog post I was following the [r152 style rules](https:/
 
 ## 1 - Basic Examples of the Animation Mixer
 
-This will then be a basic section of the animation mixer objects of threejs.
+This will then be a basic section of the animation mixer objects of threejs, or at least as basic as I can make it for what it is worth. There are a whole lot of features that one will need to be aware of even when it comes to a very simple hello world type example of this sort of thing. Still the goal in this section is to keep things as striped down as possible while keeping the more advanced examples that have to do with morph attributes and various file formats, loaders and so forth at the later, more advanced sections of this post.
 
 ### 1.1 - Single Vector key frame track used with the position attribute
 
@@ -108,11 +112,11 @@ loop();
 
 I started a collection of JSON files that I have called just simply tri12 which as the name suggests is a collection of assets where I am creating models that are composed of no more than 12 triangles. In this section I will then be going over some Animation Mixer examples that make use of these files. With that said there are a few options when it comes to loading JSON format files, and also there are several differing formats of course. For example there is having a JSON file that just contains data for a buffer geometry object alone, but then there is a JSON format for loading one or more whole objects with geometry, materials, and animation data.
 
-There are a lot of options when it comes to external data for geometry, and otger data that has to do with over all objects. However I think that JSON is maybe one of the best options when it comes to learning about the THREEJS animation system to begin with. The loaders of interest are built into the core of threejs itself rather than in an additional add on loader. Also the process of converting workable objects to JSON strings and vis versa is just a matter of using the JOSN.stringify, and JSON.parse methods built into client side javaScript itself. Yet another good reason for going with this format is that when it comes creating models by hand coding data with a text editor rather than using a program like blender a plain text format like JSON makes the process of doing so easier.
+There are a lot of options when it comes to external data for geometry, and other data that has to do with over all objects. However I think that JSON is maybe one of the best options when it comes to learning about the THREEJS animation system to begin with. The loaders of interest are built into the core of threejs itself rather than in an additional add on loader. Also the process of converting workable objects to JSON strings and vis versa is just a matter of using the JOSN.stringify, and JSON.parse methods built into client side javaScript itself. Yet another good reason for going with this format is that when it comes creating models by hand coding data with a text editor rather than using a program like blender a plain text format like JSON makes the process of doing so easier.
 
 ### 2.a - The Buffer Geometry JSON Format
 
-The buffer geometry JSON format that will then be used with the THREE.BufferGeometry loader can be created by calling the toJSON method of a buffer geometry object to get a general sense of how that data is structured. However the geometry to which it is created form might not have one or more morph attributes. Morph attributes are a way to update the position, and normal attributes of a buffer geometry over time by giving additional data for these buffer geometry attributes. The data can be absolute values for each position, or in the case of the files that I am using in this section delta values from the original states of the attributes by setting the morphTargetsRelative boolean to true.
+The buffer geometry JSON format that will then be used with the [THREE.BufferGeometry loader](/2018/04/12/threejs-buffer-geometry-loader/) can be created by calling the toJSON method of a buffer geometry object to get a general sense of how that data is structured. However the geometry to which it is created form might not have one or more morph attributes. Morph attributes are a way to update the position, and normal attributes of a buffer geometry over time by giving additional data for these buffer geometry attributes. The data can be absolute values for each position, or in the case of the files that I am using in this section delta values from the original states of the attributes by setting the morphTargetsRelative boolean to true.
 
 ```json
 {
