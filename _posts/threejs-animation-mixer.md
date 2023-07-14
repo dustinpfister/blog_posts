@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-14 12:27:38
-version: 1.9
+updated: 2023-07-14 14:14:06
+version: 1.10
 ---
 
 The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
@@ -203,13 +203,159 @@ loop();
 
 Another thing that I have done here in this demo is having two tracks for the animation clip actually. This is another thing that will typically come up when making some real models for real projects. For this basic example I have two tracks that will effect both the scale and the position for the object over time. However when making one of these for a custom geometry with morph attributes there is having one track that will effect, say a walk cycle, and another tack that will move the arms of a figure.
 
-## 2 - Examples using JSON file assets from my 'tri12' project
+## 2 - Single Triangle Demos of Full Objects JSON Strings
+
+In this Section I am now going to continue with what I started in one of the basic section examples that has to do with writing hand coded JSON data. However now I am going to be doing the whole nine yards when it comes to JSON data by going with the full object syntax for this kind of thing. I will then be using the parse method of the Object Loader as a way to parse this JSON data into a workable object. This json data will then contain all the data for a scene object along with geometry, scene child objects, materials, and yes animations as well.
+
+These examples will then prove to be far more involved then the basic section examples. However in order to help keep things fairly simple though the complexity of the geometry will just be a single triangle. Also the geometry will just contain a position attribute. This will not be such great geometries for mesh objects, but they will work just fine for THREE.Points. I will then be working out morph attributes for the geometry, and then with that also animation clips that make use of these morph attributes.
+
+### 2.1 - The Core idea Object Demo
+
+For this first example then I just wanted to get the core idea of what I hand in mode for this up an running then. So there is creating a single geometry object for the JSON that has just three points in the position attribute. I am then also creating a single morph attribute with deltas to mutate the state of that position attribute to have it so that all of the points of the triangle converge into a single point.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// CAMERA, RENDERER
+// ---------- ----------
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// SCENE
+// ---------- ----------
+const str_json = `{
+    "metadata": {
+        "version": 4.3,
+        "type": "Object",
+        "generator": "Hand Coded"
+    },
+    "textures": [],
+    "images": [],
+    "geometries": [
+        {
+            "uuid": "bce89f32-4cab-41c8-b3f6-15e04b1dd68e",
+            "type": "BufferGeometry",
+            "data": {
+                "attributes": {
+                    "position": {
+                        "itemSize": 3,
+                        "type": "Float32Array",
+                        "array": [0,0,0, 4,0,0, 0,0,4 ],
+                        "normalized": false
+                    }
+                },
+                "morphTargetsRelative": true,
+                "morphAttributes": {
+                    "position": [
+                        {
+                            "itemSize":3,
+                            "type":"Float32Array",
+                            "array":[
+                                0.0, 3.0, 0.0,
+                               -4.0, 3.0, 0.0,
+                                0.0, 3.0,-4.0
+                            ],
+                            "normalized":false
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "materials": [
+        {
+            "uuid": "0246dafa-bf34-4460-a7eb-f5098b2120af",
+            "type": "PointsMaterial",
+            "size": 1,
+            "color": 65280
+        }
+    ],
+    "animations": [
+        {
+            "name": "converge",
+            "duration": 1,
+            "tracks": [
+                {
+                    "name": ".morphTargetInfluences[0]",
+                    "times": [0, 0.5, 1],
+                    "values": [0, 1, 0],
+                    "type": "number"
+                }
+            ],
+            "uuid": "584702c7-efb2-4fa1-ae37-43d18b5f7fb5",
+            "blendMode": 2500
+        }
+    ],
+    "object": {
+        "uuid": "ad1ecebd-b665-4e10-9ead-6d0205bec011",
+        "type": "Scene",
+        "matrix": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
+        "children": [
+            {
+                "uuid": "6b95325d-5bcc-4f85-a330-fbca8f271287",
+                "name": "tri_one",
+                "type": "Points",
+                "geometry": "bce89f32-4cab-41c8-b3f6-15e04b1dd68e",
+                "material": "0246dafa-bf34-4460-a7eb-f5098b2120af",
+                "matrix": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
+                "animations": ["584702c7-efb2-4fa1-ae37-43d18b5f7fb5"]
+            }
+        ]
+    }
+}`;
+const scene = new THREE.ObjectLoader().parse( JSON.parse( str_json ) );
+const points = scene.getObjectByName('tri_one');
+const mixer = new THREE.AnimationMixer( points );
+const action = mixer.clipAction( points.animations[0] );
+action.play();
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+// constant values and state for main app loop
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30,     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 90,
+CLOCK = new THREE.Clock(true); // USING THREE.Clock in place of new Date() or Date.now()
+let secs = 0,
+frame = 0,
+lt = CLOCK.getElapsedTime();
+// update
+const update = (frame, frameMax) => {
+    const a1 = frame / frameMax;
+    mixer.setTime(a1);
+};
+// loop
+const loop = () => {
+    const now = CLOCK.getElapsedTime(),
+    secs = (now - lt);
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 3 - Examples using JSON file assets from my 'tri12' project
 
 I started a collection of JSON files that I have called just simply tri12 which as the name suggests is a collection of assets where I am creating models that are composed of no more than 12 triangles. In this section I will then be going over some Animation Mixer examples that make use of these files. With that said there are a few options when it comes to loading JSON format files, and also there are several differing formats of course. For example there is having a JSON file that just contains data for a buffer geometry object alone, but then there is a JSON format for loading one or more whole objects with geometry, materials, and animation data.
 
 There are a lot of options when it comes to external data for geometry, and other data that has to do with over all objects. However I think that JSON is maybe one of the best options when it comes to learning about the THREEJS animation system to begin with. The loaders of interest are built into the core of threejs itself rather than in an additional add on loader. Also the process of converting workable objects to JSON strings and vis versa is just a matter of using the JOSN.stringify, and JSON.parse methods built into client side javaScript itself. Yet another good reason for going with this format is that when it comes creating models by hand coding data with a text editor rather than using a program like blender a plain text format like JSON makes the process of doing so easier.
 
-### 2.a - The Buffer Geometry JSON Format
+### 3.a - The Buffer Geometry JSON Format
 
 The buffer geometry JSON format that will then be used with the [THREE.BufferGeometry loader](/2018/04/12/threejs-buffer-geometry-loader/) can be created by calling the toJSON method of a buffer geometry object to get a general sense of how that data is structured. However the geometry to which it is created form might not have one or more morph attributes. Morph attributes are a way to update the position, and normal attributes of a buffer geometry over time by giving additional data for these buffer geometry attributes. The data can be absolute values for each position, or in the case of the files that I am using in this section delta values from the original states of the attributes by setting the morphTargetsRelative boolean to true.
 
@@ -322,7 +468,7 @@ The buffer geometry JSON format that will then be used with the [THREE.BufferGeo
 }
 ```
 
-### 2.1 - Creating an animation clip using buffer geometry format JSON that has a morph attribute
+### 3.1 - Creating an animation clip using buffer geometry format JSON that has a morph attribute
 
 For this demo then I am loading the above JSON data in the buffer geometry format, and then creating an animation keyframe track from it by using hard coded data in the javaScript file rather than loading additional JSON data. When it comes to the option that I use to do this I am using the new THREE.NumberKeyframeTrack class as the property that I want to mutate is the value of the first element of the morphTargetInfluences property of the mesh object that I will be using for the geometry. Once I have the key frame track I can then created the animation clip, the animation mixer, and then create the animation action by calling the clipAction method of the mixer.
 
