@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-14 11:46:51
-version: 1.7
+updated: 2023-07-14 12:20:56
+version: 1.8
 ---
 
 The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
@@ -107,6 +107,101 @@ const loop = () => {
 };
 loop();
 ```
+
+### 1.2 - Parse a Clip from JSON data string demo
+
+Although I will not be getting into external file formats in this section, maybe a good starting point would be to use the parse method of the Animation Clip class as a way to create an animation clip form a hard coded string of JSON. In a real project this JSON data will typical be in an external file that will need to be loaded in. However there might still be some situations in which I will need to parse an animation clip from an object that was parse from some JSON data that was obtained from some other source other than what is typical. Also it is a good idea to just work out one or more demos like this just for the sake of getting a better idea of how this JSON data is formated.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// CLIP
+// ---------- ----------
+const str_json = `{
+  "name":"scale",
+  "duration":3,
+  "tracks":[
+    {
+      "name":".scale",
+      "times":[0,1.5,3],
+      "values":[ 1,1,1, 0.5,3,0.5, 1,1,1],
+      "type":"vector"
+    },
+    {
+      "name":".position",
+      "times":[0, 0.5, 1.5, 2.5, 3],
+      "values":[ 0,0.5,0, 2,1.5,0, -2,1.5,0, -2,1.5,2, 0,0.5,0],
+      "type":"vector"
+    }
+  ],
+  "uuid":"eff507b6-8c41-47d4-a62e-77119a5ee288",
+  "blendMode":2500
+}`;
+const clip = THREE.AnimationClip.parse( JSON.parse( str_json ) );
+// ---------- ----------
+// OBJECT
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// ---------- ----------
+// MIXER/ACTION
+// ---------- ----------
+const mixer = new THREE.AnimationMixer( mesh );
+const action = mixer.clipAction( clip );
+//action.startAt(1);
+action.play();
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+// constant values and state for main app loop
+const FPS_UPDATE = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30,     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 90,
+CLOCK = new THREE.Clock(true); // USING THREE.Clock in place of new Date() or Date.now()
+let secs = 0,
+frame = 0,
+lt = CLOCK.getElapsedTime();
+// update
+const update = (frame, frameMax) => {
+    const a1 = frame / frameMax;
+    // when it comes to video projects I will often want to use setTime over update
+    mixer.setTime( 3 * a1 );
+};
+// loop
+const loop = () => {
+    const now = CLOCK.getElapsedTime(),
+    secs = (now - lt);
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        // update, render
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+Another thing that I have done here in this demo is having two tracks for the animation clip actually. This is another thing that will typically come up when making some real models for real projects. For this basic example I have two tracks that will effect both the scale and the position for the object over time. However when making one of these for a custom geometry with morph attributes there is having one track that will effect, say a walk cycle, and another tack that will move the arms of a figure.
 
 ## 2 - Examples using JSON file assets from my 'tri12' project
 
