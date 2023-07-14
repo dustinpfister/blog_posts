@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-14 08:54:23
-version: 1.4
+updated: 2023-07-14 09:16:45
+version: 1.5
 ---
 
 The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
@@ -111,6 +111,8 @@ I started a collection of JSON files that I have called just simply tri12 which 
 There are a lot of options when it comes to external data for geometry, and otger data that has to do with over all objects. However I think that JSON is maybe one of the best options when it comes to learning about the THREEJS animation system to begin with. The loaders of interest are built into the core of threejs itself rather than in an additional add on loader. Also the process of converting workable objects to JSON strings and vis versa is just a matter of using the JOSN.stringify, and JSON.parse methods built into client side javaScript itself. Yet another good reason for going with this format is that when it comes creating models by hand coding data with a text editor rather than using a program like blender a plain text format like JSON makes the process of doing so easier.
 
 ### 2.a - The Buffer Geometry JSON Format
+
+The buffer geometry JSON format that will then be used with the THREE.BufferGeometry loader can be created by calling the toJSON method of a buffer geometry object to get a general sense of how that data is structured. However the geometry to which it is created form might not have one or more morph attributes. Morph attributes are a way to update the position, and normal attributes of a buffer geometry over time by giving additional data for these buffer geometry attributes. The data can be absolute values for each position, or in the case of the files that I am using in this section delta values from the original states of the attributes by setting the morphTargetsRelative boolean to true.
 
 ```json
 {
@@ -222,6 +224,8 @@ There are a lot of options when it comes to external data for geometry, and otge
 ```
 
 ### 2.1 - Creating an animation clip using buffer geometry format JSON that has a morph attribute
+
+For this demo then I am loading the above JSON data in the buffer geometry format, and then creating an animation clip for it by using hard coded data in the javaScript file rather than loading additional JSON data.
 
 ```js
 // ---------- ----------
