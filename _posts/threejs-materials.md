@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-06-28 06:32:54
-version: 1.47
+updated: 2023-07-15 18:02:49
+version: 1.48
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -70,13 +70,17 @@ The source for these examples is [also on Github](https://github.com/dustinpfist
 
 Threejs is a project in which the version number matters a whole lot as older posts on three.js often contain examples that will break on newer revisions and vise versa. When I first started writing this post I was using [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91). However the last time I came around to edit this post I updated all of the demos to what I have layed down for my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md).
 
-### Mesh Materials
+## 2 - Overview of Mesh Material Options
 
-The most used materials should be the ones that are used with a Mesh to bring style to the faces of a shape. There are a number of other kinds of materials that can be used to just draw the points of a geometry and there are also line materials as well.
+There might be points and lines, but for the most part just about every threejs project will make use of Mesh objects, or a similar kind of objects that will also make use of one of the Mesh Material Options. There is a whole lot to be aware of with these so it is called for to run over each of them and at least write a thing or two about that each material is good for and why.
 
-## 1 - Mesh Basic Material
+Keep in mind that if you feel that you are getting overwhelmed with all of this the most important thing is application. If you want to go with a certain style the involves low poly models, a simple color map, and not bother at all with light in any capacity then just going with the MeshBasicMaterial might prove to work okay. Things just get a little complex when you start pulling light into the mix, or you need to do some kind of weird custom rendering to which even none of these might work okay and as such you might need to go with the shader material and some custom GLSL code. However getting into that is a whole other matter for now.. 
 
-The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is as the name suggests, it is the kind of material that I would use if I do not aim to do anything special with shading, shadows and so forth. The basic material will not respond to a light source, and the faces will be filled with a solid color, or a given texture when it comes to the map attribute.
+### 2.1 - Mesh Basic Material
+
+The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is as the name suggests, it is the kind of material that I would use if I do not aim to do anything special with light. The basic material will not respond to a light source, and the faces will be filled with a solid color, or a given texture when it comes to the use of the map option. So with that said the way to get something other than a solid mass of color on the screen with this one would require the use of adding textures. There is then doing some shading when drawing the textures themselves that are to be used with the geometry that is worked out.
+
+Another option would involve adding a child object of some kind such as lines that use a geometry that is created by pissing the geometry of the parent object into the edge geometry constructor. There are a whole lot of other options for maps and other features that are supported by the basic material, and also there are some common material class features that can be used with this such as vertex colors. However for now I think I should just work out a basic example of this and move on.
 
 
 ```js
@@ -110,7 +114,7 @@ renderer.render(scene, camera); // render
 
 This comes in handy when I just want to quickly add some solid color to a mesh, but one draw back is that it will always show the geometry as one bug blob of color. In order to show and kind of sense of depth it is called for to add some texture to the mesh object by way of some kind of texture. There are a number of ways of going about doing this such as using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in a texture from an external image, but there are also a number of ways of doing so that will involve the use of some javaScript code to create a texture. Once option would be to use [canvas elements](/2018/04/17/threejs-canvas-texture/), and another would be to make use of the [data texture constructor](/2022/04/15/threejs-data-texture/) as a way to create a texture from raw color channel data.
 
-## 2 - Mesh Depth Material
+### 2.2 - Mesh Depth Material
 
 This is another basic material that is not used for anything advanced involving a light source, and shadows. The [depth material](/2021/05/04/threejs-depth-material/) can be used to show some depth to a mesh, rather than just having a solid color painted on each face like with the basic material without a texture map.
 
@@ -155,7 +159,7 @@ const material = new THREE.MeshDepthMaterial({
 });
 ```
 
-## 3 - The Lambert material
+### 2.3 - The Lambert material
 
 Read my [full post](/2018/04/08/threejs-lambert-material/) on the Lambert material
 
@@ -197,7 +201,7 @@ renderer.render(scene, camera); ;
 
 the main thing to understand here is when just setting a solid color, the color that is set with the color property is actually the color that will show up when a white light source shines on it. The emissive property is what is used to set a solid color that is to show up no matter what, which differs from you might be used to with the basic material that you might have started with like I did.
 
-## 4 - Mesh Normal Material
+### 2.4 - Mesh Normal Material
 
 The [normal material](/2021/06/23/threejs-normal-material/) has to do with [vector normals](https://en.wikipedia.org/wiki/Normal_%28geometry%29) that exist in the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) that is used with the mesh object. Coloring of the shape is based on the direction of the vector normals then, but the material does not take into account anything that is going on with light in a scene unlike other materials that make use of the normal attribute of the geometry.
 
@@ -229,7 +233,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 5 - Mesh Phong Material
+### 2.5 - Mesh Phong Material
 
 The [phong material](/2022/12/29/threejs-phong-material/) is another option for a material that will respond to a light source. Unlike the Lambert material this is a better option for specular highlights making it a good choice for any kind of surface that should be shiny like metal or varnished wood.
 
@@ -268,7 +272,7 @@ renderer.render(scene, camera);
 
 To get this material working great It might be best to use some kind of directional light source such as a spotlight. The specular property can be used to set the color of the shine, by default it is a very dark gray.
 
-## 6 - Mesh Standard Material
+### 2.6 - Mesh Standard Material
 
 The [standard material](/2021/04/27/threejs-standard-material/) might be the best option for most surfaces if a more realistic rather than speedy rendering is desired when it comes to doing something with light. The standard material will also work with a wide range of various texture maps, and is somewhat of an industry standard, thus the name standard material. I tend to like to go with this material as it is generally a great all around material that results in a decent look when it comes to working on a final result.
 
@@ -308,7 +312,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 7 - Mesh Physical 
+### 2.7 - Mesh Physical 
 
 Another two materials in three.js that can be used with a mesh are the [Physical](https://threejs.org/docs/index.html#api/materials/MeshPhysicalMaterial), and [Toon](https://threejs.org/docs/index.html#api/materials/MeshToonMaterial) materials. Both of these materials are like that of the standard material, and phong materials respectfully, but with additional features. The physical material is like the standard material but gives a greater deal of control over reflectivity, while the toon material is just like phong only with toon shading.
 
@@ -342,7 +346,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 8 - Toon Physical
+### 2.8 - Toon Physical
 
 Demo of toon material
 
@@ -376,7 +380,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 9 - The Points Material
+## 3 - The Points Material
 
 There is one Material in three.js that can be used to display just the points in a geometry which can come in handy some times. If for some reason I want to create my own custom geometry in which I only care about points in space and nothing at all then I will want to have at least a [position attribute of the buffer geometry instance](/2021/06/07/threejs-buffer-geometry-attributes-position/) that I will the use with the THREE.Points constructor rather than the usual mesh constructor.
 
@@ -420,7 +424,7 @@ renderer.render(scene, camera);
 
 For more on Points and the points material I have [written a post](/2018/05/12/threejs-points-material/) on the subject, it's fun to just play with points in space when you have some time.
 
-## 10 - Lines Material
+## 4 - Lines Material
 
 Another object to work with that is an alternative to a mesh object would be [THREE.Line](/2018/04/19/threejs-line/) or THREE.LineSegments. There are two material options to choose from when it comes to using these kinds of objects which include THREE.LineBasicMaterial and THREE.LineDashedMaterial. They work just like mesh objects in the sense that the first argument that is passed when making one is a geometry. Just like that of THREE.Points though it is just the position attribute of the geometry of these that matter. This is a good reason why as this the use of these kinds of objects help to simplify the process of creating custom geometry. However it is also one of the best reasons why not to use them as well. If you care about how the final product looks you might want to look into [curves and the tube geometry](/2023/06/02/threejs-tube-geometry/) class as an tentative to the use of these kinds of objects and materials.
 
@@ -459,11 +463,11 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 11 - The Common Base Material class
+## 5 - The Common Base Material class
 
 There are a number of options in the base material class that should work with all materials then, but there are some exceptions with some of these features.
 
-### 11.1 - Transparent and opacity options
+### 5.1 - Transparent and opacity options
 
 The transparent boolen can be used to set transparency on and off for a material. In the event that transparency is on the opacity value can be used to set the global alpha value of the transparency for the material. This feature seems to work okay for just about all mesh materials, and also for points and lines as well.
 
