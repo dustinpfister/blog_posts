@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2023-07-15 13:13:02
-version: 1.16
+updated: 2023-07-15 13:42:14
+version: 1.17
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -40,8 +40,60 @@ The source code examples that I am writing about here, as well as the SVG assets
 
 When I first wrote this post I was using r140 of threejs which was released in May of 2022. Also the last time I came around to do some editing I updated the source code examples of all demos to my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) which at the time is the oldest style rules I am observing at the time. There are a whole lot of code breaking changes coming up ahead. Also I think that I should state that with the source code examples here I am using the plain javaScript file form of the SVG loader as well as with various other asserts like the buffer geometry utils and so forth. This is because with my r146 style rules I observe that these files are still there to work with, while that is not the case with more up to date style rules that I have in the works.
 
+## 1 - Basic Shape SVGLoader demos
 
-## 1 - Basic Shapes example of SVG Loader
+As with all of my posts on threejs I like to start out with some simple getting started type examples. So in this section I will eb starting out with a few demos that will make use of THREE.SvgLoader, and also THREE.ShapeGeometry. Although I will be doing what I can to make these demos simple there is still a lot to take in with this. Not just with the SVG loader but also additional skills that might be required when it comes to how to go about creating SVG data to begin with.
+
+### 1.1 - Parse a hard coded SVG String
+
+Although real projects will typically involve loading an external SVG file, if you are wondering if there is a way to load a text string using THREE.SvgLoader there is. The general process of doing so would be to create an instance of the svg loader, but then use the parse method rather than the load method. When calling the parse method I just pass the string that contains the svg data. The end result is then an object that will contain paths data, this can then be used with the create shapes method of the SVG loader to create shape objects. Once I have a shape object I can then use that with TREE.ShapeGeometry.
+
+```js
+
+//-------- ----------
+// SCENE, CAMERA, RENDERER, LIGHT
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#000000');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// SVG STRING
+//-------- ----------
+const str_svg = `
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="0.333333in" height="0.333333in"
+     viewBox="0 0 100 100">
+  <path id="Unnamed"
+        fill="none" stroke="black" stroke-width="1"
+        d="M 0,0
+           Q -5,2.5   0,5
+           Q  2.5,5   5,0
+        "
+   />
+</svg>`
+//-------- ----------
+// SVG LOADER PARSE, CREATE SHAPE, SHAPE GEOMETRY, MESH
+//-------- ----------
+const data = new THREE.SVGLoader().parse( str_svg );
+const shape = THREE.SVGLoader.createShapes( data.paths[0] );
+const geometry = new THREE.ShapeGeometry(shape);
+const material = new THREE.MeshNormalMaterial( { side: THREE.DoubleSide });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add( mesh );
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(10, 5, 10);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.2 - Using the load method and THREE.ShapeGeometry
 
 Often I will want to use the Shape Geometry constructor as a way to go about adding svg to a threejs project. So then one way or another I will need to crate one or more Shape objects from the SVG data when loading an SVG file. The good news with this is that there is a static method of the SVG loader to help with this process.
 
