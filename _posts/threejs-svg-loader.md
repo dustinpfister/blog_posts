@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2023-07-15 13:42:14
-version: 1.17
+updated: 2023-07-15 13:42:47
+version: 1.18
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -30,7 +30,7 @@ In these examples I am using more than one extral file beyond just that of the c
 
 ## There are also my posts on my SVG tools, and SVG movement threejs project examples
 
-I have made a number of threejs project example posts and two projects that are relatavent to using the SVG loader are my [SVG movement](/2022/09/23/threejs-examples-svg-movement/), and my [SVG tools](/2023/03/17/threejs-examples-svg-tools/) projects. The SVG movement has to do with using svg files as a way to define paths in space that are used to move objects around. The SVG tools project is a more generic module that has to do with using SVG in general to create Logos and such.
+I have made a number of threejs project example posts and two projects that are relevant to using the SVG loader are my [SVG movement](/2022/09/23/threejs-examples-svg-movement/), and my [SVG tools](/2023/03/17/threejs-examples-svg-tools/) projects. The SVG movement has to do with using svg files as a way to define paths in space that are used to move objects around. The SVG tools project is a more generic module that has to do with using SVG in general to create Logos and such.
 
 ### Source code and SVG assets are up on my Github
 
