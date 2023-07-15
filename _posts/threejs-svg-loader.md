@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1005
-updated: 2023-03-17 09:27:48
-version: 1.14
+updated: 2023-07-15 13:07:10
+version: 1.15
 ---
 
 There are a number of options for additional asset loaders in the Github Repository of threejs, one of which is the [SVG Loader](https://threejs.org/docs/index.html#examples/en/loaders/SVGLoader). Which is a way to go about loading a SVG file asset as an external file into a threejs project as a collection of paths that can then in turn be used to make [Shapes](https://threejs.org/docs/index.html#api/en/extras/core/Shape). These shapes can then be used with somehting like the [Shape Geometry](https://threejs.org/docs/#api/en/geometries/ShapeGeometry) or the [Extrude Geometry constructors](https://threejs.org/docs/index.html#api/en/geometries/ExtrudeGeometry).
@@ -34,11 +34,11 @@ I have made a number of threejs project example posts and two projects that are 
 
 ### Source code and SVG assets are up on my Github
 
-The source code examples that I am writing about here, as well as the SVG assets, and additional notes and files [can be found in my test threejs repository up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-svg-loader).
+The source code examples that I am writing about here, as well as the SVG assets, and additional notes and files [can be found in my test threejs repository up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-svg-loader). This is also where I place the source code examples for the [many other blog posts that I have wrote on threejs](/categories/three-js/) over the years.
 
 ### Version Numbers Matter
 
-When I first wrote this post I was using r140 of threejs which was released in May of 2022.
+When I first wrote this post I was using r140 of threejs which was released in May of 2022. Also the last time I came around to do some editing I updated the source code examples of all demos to my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) which at the time is the oldest style rules I am observing at the time. There are a whole lot of code breaking changes coming up ahead. Also I think that I should state that with the source code examples here I am using the plain javaScript file form of the SVG loader as well as with various other asserts like the buffer geometry utils and so forth. This is because with my r146 style rules I observe that these files are still there to work with, while that is not the case with more up to date style rules that I have in the works.
 
 
 ## 1 - Basic Shapes example of SVG Loader
