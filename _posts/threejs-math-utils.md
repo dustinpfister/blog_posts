@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2023-07-15 12:04:07
-version: 1.33
+updated: 2023-07-15 12:13:40
+version: 1.34
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. There are a lot of other great methods that help with the process of creating what is often referred to as an alpha value as well \( a number between 0 and 1 \).
@@ -427,6 +427,8 @@ loop();
 ## 7 - The generateUUID method
 
 Each time I create a geometry, material, mesh object, or just about anything to that effect a UUID is generated for the object each time for me. There are only so many reasons why I would even use these IDS to begin with, one of which might be to use the get by id method of the object3d class. I can not say that I use that though, as I prefer to use the get by name method. However I have found that there is one use case in which I would maybe want to call this method and that would be when working out any kind of logic that involves generating JSON string data in the [object format](https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4). This Object format is what I would want to use if I am to use the parse method of the Object Loader to create the JSON text into a workable object.
+
+This example is based on source code that I worked out for my example on the animation mixer as I would like to gain a better sense of how the JSON data is formated for scene objects that will contain lots of geometry, materials, animations and so forth. Anyway the use of the generateUUID method would come into play when it comes to creating the uuid keys of course for the various types of objects.
 
 ```js
 // ---------- ----------
