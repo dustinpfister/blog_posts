@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 977
-updated: 2023-03-15 13:25:44
-version: 1.32
+updated: 2023-07-15 12:04:07
+version: 1.33
 ---
 
 Baked into threejs there are a number of [Math utilities](https://threejs.org/docs/#api/en/math/MathUtils) that can be used to help with various tasks such as clamping values for one example. Other things that can be done with the various methods include things such as converting a degree value to a radian value, or getting pseudo random values by way of the seeded random method. There are a lot of other great methods that help with the process of creating what is often referred to as an alpha value as well \( a number between 0 and 1 \).
@@ -32,14 +32,13 @@ I have wrote a [blog post on this subject of wrapping Vectors and primitives in 
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/TQMbcHB89RY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
 ### Source code example in this post are on Github
 
 The source code examples that I am writing about in this post [are up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-math-utils). This is also where I am parking the source code examples for all [my other various posts on threejs](/categories/three-js/).
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r135, and the last time I came around to do some editing of this post I made sure all the examples where still working okay with r146. Always check what version you are using when reproducing things on you end, as code breaking changes are made to threejs often.
+When I first wrote this post I was using r135 of threejs. The last time I came around to do some editing of this post I made sure all the examples where still working okay with [r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md), and thus I was following the style rules I set for that revision. Always check what version you are using when reproducing things on you end, as code breaking changes are made to threejs often.
 
 ## 1 - Basic example of threejs math utilities using degree to radian method when setting the position of a mesh
 
@@ -80,7 +79,7 @@ renderer.render(scene, camera);
 
 ## 2 - The clamp and rand float methods
 
-One thing that seems to come up a lot with threejs, and many javaScript projects in general actually is the subject of [clamping and wrapping values](/2018/07/22/phaser-math-wrap-and-clamp/). With that said here in threejs there is a clamp method that will clamp a given value to a given range that is all given by way of function arguments. On top of that there is also the subject of [random numbers in javaScript](/2020/04/21/js-math-random/) also, and with that said there is also a number of methods in this math utils object that have to dow with that also. So in this example I am also using the rand float method of the math utils to get random numbers in a range, and then using the clamp method to make sure that when using these values to set the position of mesh objects they say in a given area.
+One thing that seems to come up a lot with threejs, and many javaScript projects in general actually is the subject of [clamping and wrapping values](/2018/07/22/phaser-math-wrap-and-clamp/). With that said here in threejs there is a clamp method that will clamp a given value to a given range that is all given by way of function arguments. On top of that there is also the subject of [random numbers in javaScript](/2020/04/21/js-math-random/) also, and with that said there is also a number of methods in this math utils object that have to do with that also. So in this example I am also using the rand float method of the math utils to get random numbers in a range, and then using the clamp method to make sure that when using these values to set the position of mesh objects they say in a given area.
 
 ```js
 //-------- ----------
@@ -417,6 +416,144 @@ const loop = () => {
         update( Math.floor(frame), FRAME_MAX);
         renderer.render(scene, camera);
         // step frame
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 7 - The generateUUID method
+
+Each time I create a geometry, material, mesh object, or just about anything to that effect a UUID is generated for the object each time for me. There are only so many reasons why I would even use these IDS to begin with, one of which might be to use the get by id method of the object3d class. I can not say that I use that though, as I prefer to use the get by name method. However I have found that there is one use case in which I would maybe want to call this method and that would be when working out any kind of logic that involves generating JSON string data in the [object format](https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4). This Object format is what I would want to use if I am to use the parse method of the Object Loader to create the JSON text into a workable object.
+
+```js
+// ---------- ----------
+//-------- ----------
+// CAMERA, RENDERER
+//-------- ----------
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SCENE
+//-------- ----------
+const uuid_geometry = THREE.MathUtils.generateUUID();
+const uuid_material = THREE.MathUtils.generateUUID();
+const uuid_animation = THREE.MathUtils.generateUUID();
+const uuid_scene = THREE.MathUtils.generateUUID();
+const uuid_child = THREE.MathUtils.generateUUID();
+// creating a json string with uuids for geometry, materials, animations, so forth...
+const str_json = `{
+    "metadata": {
+        "version": 4.3,
+        "type": "Object",
+        "generator": "Hand Coded"
+    },
+    "textures": [],
+    "images": [],
+    "geometries": [
+        {
+            "uuid": "` + uuid_geometry + `",
+            "type": "BufferGeometry",
+            "data": {
+                "attributes": {
+                    "position": {
+                        "itemSize": 3,
+                        "type": "Float32Array",
+                        "array": [0,0,0, 4,0,0, 0,0,4 ],
+                        "normalized": false
+                    }
+                },
+                "morphTargetsRelative": true,
+                "morphAttributes": {
+                    "position": [
+                        {
+                            "itemSize":3,
+                            "type":"Float32Array",
+                            "array":[
+                                0.0, 3.0, 0.0,
+                               -4.0, 3.0, 0.0,
+                                0.0, 3.0,-4.0
+                            ],
+                            "normalized":false
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "materials": [
+        {
+            "uuid": "` + uuid_material + `",
+            "type": "PointsMaterial",
+            "size": 1,
+            "color": 65280
+        }
+    ],
+    "animations": [
+        {
+            "name": "converge",
+            "duration": 1,
+            "tracks": [
+                {
+                    "name": ".morphTargetInfluences[0]",
+                    "times": [0, 0.5, 1],
+                    "values": [0, 1, 0],
+                    "type": "number"
+                }
+            ],
+            "uuid": "` + uuid_animation + `",
+            "blendMode": 2500
+        }
+    ],
+    "object": {
+        "uuid": "` + uuid_scene + `",
+        "type": "Scene",
+        "matrix": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
+        "children": [
+            {
+                "uuid": "` + uuid_child + `",
+                "name": "tri_one",
+                "type": "Points",
+                "geometry": "` + uuid_geometry + `",
+                "material": "` + uuid_material + `",
+                "matrix": [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ],
+                "animations": ["` + uuid_animation + `"]
+            }
+        ]
+    }
+}`;
+const scene = new THREE.ObjectLoader().parse( JSON.parse( str_json ) );
+const points = scene.getObjectByName('tri_one');
+const mixer = new THREE.AnimationMixer( points );
+const action = mixer.clipAction( points.animations[0] );
+action.play();
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 30,
+FPS_MOVEMENT = 30,
+FRAME_MAX = 90,
+CLOCK = new THREE.Clock(true);
+let secs = 0,
+frame = 0,
+lt = CLOCK.getElapsedTime();
+const update = (frame, frameMax) => {
+    const a1 = frame / frameMax;
+    mixer.setTime(a1);
+};
+const loop = () => {
+    const now = CLOCK.getElapsedTime(),
+    secs = (now - lt);
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
         frame += FPS_MOVEMENT * secs;
         frame %= FRAME_MAX;
         lt = now;
