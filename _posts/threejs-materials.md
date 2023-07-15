@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-15 18:02:49
-version: 1.48
+updated: 2023-07-15 18:07:59
+version: 1.49
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -69,6 +69,38 @@ The source for these examples is [also on Github](https://github.com/dustinpfist
 ### Version number matters with three.js
 
 Threejs is a project in which the version number matters a whole lot as older posts on three.js often contain examples that will break on newer revisions and vise versa. When I first started writing this post I was using [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91). However the last time I came around to edit this post I updated all of the demos to what I have layed down for my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md).
+
+## 1 - First Things First, A Basic Mesh example
+
+One of the best ways to get started is to just create a box geometry to create a mesh object. When it comes to a mesh material option that will help show some depth without a light source a good one for that would be the mesh normal material. I will be going over what all the mesh materiel options are in a section later in this post, but for now there is just getting that very first simple demo up and working.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('blue');
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// INSTANCE OF THE NORMAL MATERIAL
+//-------- ----------
+const material = new THREE.MeshNormalMaterial();
+//-------- ----------
+// MESH with Box Geometry with the 
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+scene.add(new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material ));
+scene.add( new THREE.GridHelper(10, 10) )
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.3, 1.5, 1.3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 ## 2 - Overview of Mesh Material Options
 
