@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-06-08 12:14:44
-version: 1.63
+updated: 2023-07-16 13:49:43
+version: 1.64
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -42,11 +42,13 @@ When I first wrote this post I was using r127 of threejs, and the last time I ca
 
 ## 1 - Basic custom buffer geometry examples
 
-For thsi first section on the general topic of buffer geometry I will be going over a number of examples that have to do with the creation of custom buffer geometry objects.
+For this first section on the general topic of buffer geometry I will be going over a number of examples that have to do with the creation of custom buffer geometry objects. The very first step with this is to work out the state of the position attribute of the geometry. That is the state of each point, the order of each point, and also if an index will be used with this or not. In some cases it is just the position attribute that will be needed, but there are some additional core attributes that are important for the sake of textures, and shading.
 
 ### 1.1 - The Position attribute of buffer geometry
 
 This first example is not all that different from that of the example that I have found at the official three.js documentation website. However I made an effort to try to make the example yet even more easy to follow by having the geometry be just a single triangle. The first and for most step is to come up with the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/), there is also the normal and uv attributes that are important when it comes to light and textures, but for this basic example it is just the position attribute that I am going to care about for now.
+
+The position attribute, as the name suggests, is the attribute that contains the values that will be the actual points in space. However there is not just the position of each point of each triangle, but also the order in which they are placed in the array as well that comes into play. It turns out that the order of the points of each triangle is what is used to set which side of a triangle is in fact the front side of the triangle.
 
 I started out by just calling the Buffer Geometry constructor with the new keyword to create a new clean instance of the buffer geometry. The next step is to add some points or vertices as they are often called for the geometry. To do this I will want to create an instance of a Float32Array which is one of the many kinds of type arrays to work with in javaScript now these days. 
 
@@ -157,7 +159,7 @@ camera.lookAt( 0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-This might prove to be a good start at least, but in order to really know what is going on with face normals I might need to use some kind of helper to see what the direction of each normal vector is. With that said in this example I am making use of the THREE.VertextNormalsHelper which I can add to a project on top of the threejs file. This file should be located in the examples folder of the threejs Github repository. When using the normals helper it is clear that the normals attribute is what is used to find out what side of a triable is the front side of it which is why I am using the THREE.BackSide and THREE.FrontSide values for the side values of the materials that I am using for these mesh objects.
+This might prove to be a good start at least, but in order to really know what is going on with face normals I might need to use some kind of helper to see what the direction of each normal vector is. With that said in this example I am making use of the THREE.VertextNormalsHelper which I can add to a project on top of the threejs file. This file should be located in the examples folder of the threejs Github repository. 
 
 ### 1.3 - The uv attribute
 
