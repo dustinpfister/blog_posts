@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-16 15:38:49
-version: 1.50
+updated: 2023-07-16 16:18:23
+version: 1.51
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -69,7 +69,11 @@ The source for these examples is [also on Github](https://github.com/dustinpfist
 
 Threejs is a project in which the version number matters a whole lot as older posts on three.js often contain examples that will break on newer revisions and vise versa. When I first started writing this post I was using [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91). However the last time I came around to edit this post I updated all of the demos to what I have layed down for my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md).
 
-## 1 - First Things First, A Basic Mesh example
+## 1 - Basic getting started type exmaples of matreials
+
+There is a whole lot to say about materials in general, so this is going to be a very lengthy post. However there is just going over a few very basic examples of materials that should help to address most general concerns when first getting started with threejs. The main focus in this post then will just be one the fact that there is more than one kind of material for more than one kind of object. That is that there are mesh objects, and other options like lines, and that any one material will have its own options, as well a common options that are shared across all materials.
+
+### 1.1 - First Things First, A Basic Mesh example
 
 One of the best ways to get started is to just create a box geometry to create a mesh object. When it comes to a mesh material options that will help show some depth without a light source a good one for that would be the mesh normal material. I will be going over what all the mesh material options are in a section later in this post, but for now there is just getting that very first simple demo up and working.
 
@@ -84,7 +88,7 @@ scene.background = new THREE.Color('blue');
 const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
-document.getElementById('demo').appendChild(renderer.domElement);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
 // INSTANCE OF THE NORMAL MATERIAL
 //-------- ----------
@@ -94,7 +98,49 @@ const material = new THREE.MeshNormalMaterial();
 //-------- ----------
 scene.add( new THREE.GridHelper(10, 10) );
 scene.add(new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material ));
-scene.add( new THREE.GridHelper(10, 10) )
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.3, 1.5, 1.3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.2 - More than one kind of object, so more than one kind of material
+
+Most of the time I do very much use mesh objects, but there are also line and point objects as well that can be used as a way to display some content. For this example then I am creating a mesh and using the basic material for the mesh. This will often result in just a solid mass of color in the canvas when just used with the color option and nothing else. There is of course using a texture as a way to show some depth with this kind of material, but another way would be to add points, lines or both in this case as child objects of the mesh.
+
+When it comes to using a line I must use the LineBasicMaterial or the LineBasicMaterial. When it comes to points there is just the point material alone that can be used to add style to these kinds of objects. There are some options that are just for each kind of material alone. For example the size option is just for points, and the lineWidth options is just for lines. However there are common options as well such as color in this example.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('blue');
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MATERIALS
+//-------- ----------
+const material_mesh = new THREE.MeshBasicMaterial({ color: 0x00ffff });
+const material_line = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 6});
+const material_points = new THREE.PointsMaterial({ color: 0xff0000, size: 0.25 });
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const geometry_edge = new THREE.EdgesGeometry( geometry );
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const mesh = new THREE.Mesh( geometry, material_mesh );
+mesh.add( new THREE.LineSegments( geometry_edge, material_line ) );
+mesh.add( new THREE.Points( geometry_edge, material_points ) );
+scene.add(mesh);
 //-------- ----------
 // RENDER
 //-------- ----------
