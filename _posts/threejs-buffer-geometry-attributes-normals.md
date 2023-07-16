@@ -5,11 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 884
-updated: 2023-06-23 08:10:15
-version: 1.26
+updated: 2023-07-16 12:49:34
+version: 1.27
 ---
 
-Yesterday I wrote a [post on the position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. The values in this attribute are used to find out what the direction is of each point in the position attribute. One major use for this attribute is to have a way to define what side of a triangle is the front side, which is the default side option for materials. These values are also used when it comes to rendering textures for various materials such as with the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), and they are also involve in effects with other materials such as with light and how it effects materials like the [standard material](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial).
+Yesterday I wrote a [post on the position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. The values in this attribute are used to set an addtional direction for each point that is indepednadt of the direction of the coresponding point in the position attribute. This addtional direction is then used in the process of shading.
+
+These values are also used when it comes to rendering for various materials such as with the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), and they are also involve in effects with other materials such as with light and how it effects materials like the [standard material](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial).
+
+For a while I got it stuck in my head that normals are also used to set what side of a trinagle is the 'front side' of the triangle. However I have found that this is not the case and it is in fact the order of the points of the triangle in the position attribute that are used to set this.
 
 So then the position attribute is for setting the location of points for each triangle of a geometry, and that is of course a good starting point when it comes to making a custom geometry. However if there is no normal attribute for it, or if the normal values are mess up, then lighting is not going to work at all, or as expected. So creating a normal attribute might be considered the next thing that must be worked out after the position attribute when it comes to making a geometry.
 
@@ -44,7 +48,7 @@ The version of threejs that I was using when I worked out these source code exam
 
 ## 1 - Basic example of the normals attribute
 
-First off I think I should start out with a very basic example of thee normal attribute that involves just playing around with the normal attribute that will be set up to begin with when using one of the built in geometry constructors such as the box geometry constructor. I have found that the best way to learn abut these attributes is to just study the results of a geometry that has all ready been made and then mutate the values of them to see what the effect is.
+First off I think I should start out with a very basic example of the normal attribute that involves just playing around with the normal attribute that will be set up to begin with when using one of the built in geometry constructors such as the box geometry constructor. I have found that the best way to learn abut these attributes is to just study the results of a geometry that has all ready been made and then mutate the values of them to see what the effect is.
 
 So in this basic example I just create a scene object, and then I intend to create and add a Mesh object to the scene that uses a geometry created with the THREE.BoxGeometry constructor, and uses the THREE.MeshNormalMaterial as a way to go about skinning the geometry. The only thing that I am going to do out of the usual here is to create an instance of THREE.ArrowHelper and then use the values in the normal and position attributes to set the position and direction of the arrow helper for the first vertex of the first triangle of the geometry.
 
