@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-16 16:18:23
-version: 1.51
+updated: 2023-07-16 17:11:29
+version: 1.52
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -145,6 +145,54 @@ scene.add(mesh);
 // RENDER
 //-------- ----------
 camera.position.set(1.3, 1.5, 1.3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.3 - Just getting started with texture and materials
+
+One of the first things that many will want to figure out right away is how to go about getting started with textures and how to apply these textures to objects. Of course there is a great deal to cover when it comes to this, and not just with respect to the lengthy volume of options for materials that will take a texture as the value. There is a great deal of overlap with geometry as well when it comes to advanced topics surrounding the uv attribute of geometry and so forth. Still one has to start somewhere when it comes to textures and materials, so lets start out with a basic example of that then.
+
+Although there is a lot to say about the geometry on top of the material option used, for this demo the focus is just going to be on how to get a texture to begin with. There is of course loading one or more images and then using those images as a way to create texture object. However there is also the subject of how to go about creating textures by way of some javaScript code. With that said the best way to go about doing that might very well be by way of canvas textures. This is a way to go about creating a texture object by passing a canvas element, and when it comes to creating the content of that canvas one can use everything there is to work with when it comes to the 2d drawing context, or any context for that matter.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, .025, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS ELEMENT, 2D DRAWING CONTEXT
+//-------- ----------
+const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
+canvas.width = 32; canvas.height = 32;
+ctx.lineWidth = 5;
+ctx.strokeStyle = '#ff0000';
+ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+//-------- ----------
+// CANVAS TEXTURE
+//-------- ----------
+const texture = new THREE.CanvasTexture(canvas);
+texture.magFilter = THREE.NearestFilter;
+texture.minFilter = THREE.NearestFilter;
+//-------- ----------
+// MATERIAL - using basic material with the map option
+//-------- ----------
+const material = new THREE.MeshBasicMaterial({ map: texture });
+//-------- ----------
+// GEOMETRY, MESH
+//-------- ----------
+const geo = new THREE.BoxGeometry(1, 1, 1);
+const mesh = new THREE.Mesh( geo, material);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.25, 1.25, 1.25);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
