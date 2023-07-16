@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-15 18:07:59
-version: 1.49
+updated: 2023-07-16 15:38:49
+version: 1.50
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -61,7 +61,6 @@ var planeMaterial = new THREE.MeshBasicMaterial({
 
 In this post I am writing about what there is to work with mainly in terms of built in materials. However in some cases the only way to do what one wants to do with a material will have to involve finding, or writing one or more custom shaders. Maybe the best way to get started with this sort of thing would be to start reading a thing or two about [THREE.ShaderMaterial](/2023/01/13/threejs-shader-material/) rather than THREE.RawShaderMaterial as a lot of things are set up to begin with that allow one to not have to write all the GLSL code from the ground up. 
 
-
 ### Source is also on Github
 
 The source for these examples is [also on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-materials) in my test threejs repo. This is also where I place all the source code that I work out for my many [other blog posts on various threejs topics](/categories/three-js/).
@@ -72,7 +71,9 @@ Threejs is a project in which the version number matters a whole lot as older po
 
 ## 1 - First Things First, A Basic Mesh example
 
-One of the best ways to get started is to just create a box geometry to create a mesh object. When it comes to a mesh material option that will help show some depth without a light source a good one for that would be the mesh normal material. I will be going over what all the mesh materiel options are in a section later in this post, but for now there is just getting that very first simple demo up and working.
+One of the best ways to get started is to just create a box geometry to create a mesh object. When it comes to a mesh material options that will help show some depth without a light source a good one for that would be the mesh normal material. I will be going over what all the mesh material options are in a section later in this post, but for now there is just getting that very first simple demo up and working.
+
+So after setting up the usual collection of objects when it comes to things like the main scene object, camera, and renderer I then create an instance of the mesh normal material. When doing so I am not going to bother with any options at all. There are of course options for the mesh normal material, as well as base material class options as well as a whole lot about geometry as well. However much of that will have to come up in the more advanced sections of this post.
 
 ```js
 //-------- ----------
