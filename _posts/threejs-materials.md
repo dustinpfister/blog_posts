@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-16 17:11:29
-version: 1.52
+updated: 2023-07-16 17:40:52
+version: 1.53
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -196,6 +196,45 @@ camera.position.set(1.25, 1.25, 1.25);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+### 1.4 - Arrays of materials
+
+One of the many subjects that I see being overlooked in other blog posts on materials in general in threejs is the subject of using an array of materials. This subject alone can quickly turn into a time consuming black hole if one lets it become that and I have many times off an on over the years. There is a lot of overlap with this subject as there is not just simply passing an array of materials but also adding or chaning the state of the groups propety of the geometry. For the sake of this basic section demo though there is just using the box geometry constructor as this has a groups property set up to begin with. Also on top of that the groups are set up to make use of six materials one for each side of the box which would often be the case when doing this sort of thing. So to get starte with this as least one will just need to pass an array of six materials rather than just one when making the mesh object that will use the box geometry.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) ); 
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    [
+        new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: 0.5, side: THREE.DoubleSide }),
+        new THREE.MeshBasicMaterial({ color: 0x00ff00, transparent: true, opacity: 1.0, side: THREE.DoubleSide }),
+        new THREE.MeshBasicMaterial({ color: 0x0000ff, transparent: true, opacity: 0.5, side: THREE.DoubleSide }),
+        new THREE.MeshBasicMaterial({ color: 0xffff00, transparent: true, opacity: 1.0, side: THREE.DoubleSide }),
+        new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5, side: THREE.DoubleSide }),
+        new THREE.MeshBasicMaterial({ color: 0x00ffff, transparent: true, opacity: 1.0, side: THREE.DoubleSide })
+    ]
+);
+scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(0.75, 1, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+Do not let this fool you though if you thing that this is how to add texture to 3d objects. The first and foremost way to do this would typically be to use just one material, with one texture, and a well worked out uv attributive for the geometry. However some times there are in fact situations in which it would be a good idea to use more than one material for a mesh, and this is how to get started with it. Once again the groups are set up to begin with in this demo though, so when it comes to working on an asset of some kind one might need to work out the state of the groups array.
 
 ## 2 - Overview of Mesh Material Options
 
