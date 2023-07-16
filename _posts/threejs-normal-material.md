@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2023-07-16 11:29:04
-version: 1.52
+updated: 2023-07-16 12:39:52
+version: 1.53
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources. This is not the case when using the [basic material](/2018/05/05/threejs-basic-material/), which is the default material for a mesh, as it is just going to show up as a solid blob of color when just the color option is used. Other options such as the [standard material](/2021/04/27/threejs-standard-material/) will require a [light source](/2022/02/25/threejs-light/) in order to show some depth. However there are still a few other options for the task of having a simple place holder material such as the [depth material](/2021/05/04/threejs-depth-material/), or doing some kind of quick trick with lines as a child object or something to that effect.
@@ -94,7 +94,13 @@ renderer.render(scene, camera);
 
 So now that I have my scene object, camera, renderer, and mesh object all set up just the way I like it now I just need to call the render method off of the renderer object. When doing so I pass the scene object as the first argument and the camera as the second argument.
 
-## 2 - Mutating the normal attribute to see how that changes the appearance when using the Normal Material
+## 2 - Mutation of the normal attribute
+
+In this section I will be going over a few examples that have to do with the mutation of a normal attribute. This means creating a geometry with one of the built in geometry constructor options and then just mutate the values to see what kind of effect that has when using the normal material. The process of doing so will help me to know what to look for when something is a little off with the state of the normal material, as the material should look a certain way when the normals are set in a way that makes sense. However in order to know what to look for I also need to know what something that is not so great looks like also. 
+
+Messing around with this also helped me to learn more not just with respect what the normals attribute is used for but also what it is not used for as well. For example for a long time I assumed that the normal attribute was not just used for shading, but was also used to find out what side of a triangle is the front side. However it is actually the order of the points in the position attribute that is used to set that actually.
+
+### 2.1 - Mutating the normal attribute to see how that changes the appearance when using the Normal Material
 
 The normals are set up the way that they should be typically when using a built in geometry constructor such as the Box Geometry constructor that I am using in these examples. However when it comes to debugging problems with the normal attribute of a geometry there is knowing how it should look. To gain a sense of what this looks like there is taking a moment to just mutate a few values in the normal attribute of the geometry, just for the sake of seeing what happens when the normals are not in a state in which they should be in.
 
@@ -129,6 +135,93 @@ renderer.render(scene, camera);
 ```
 
 Although this example might help to show what happens when the normals are not set in a way in which they should be maybe, using the normal material alone might not be the best way to debug problems with the state of the normal material. There are a few additional tools in the core of the threejs library as well as some additional files in the repository that can be used as a way to really get to the bottom of what is going on with the state of this attribute of a buffer geometry instance.
+
+### 2.2 - Inverting the normals of a sphere in and out
+
+For this demo I am inverting the directions of the normals of a sphere in and out to see what the effect is. The end result is that the rendering of the material does very much change, but the sides of the triangles stays very much the same. What I have found out with this demo is that the normals are used in the process of shading when it comes to the used of the normal material, and various other materials the work with light sources. However that is it, what side of a triangle is the front side or not is figured out by the order of the points in the position attribute.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MATERIAL
+// ---------- ----------
+const material = new THREE.MeshNormalMaterial();
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10, 10 ) );
+const mesh_sphere = new THREE.Mesh( new THREE.SphereGeometry(0.5, 16, 16), material);
+scene.add(mesh_sphere);
+let helper = null
+if(THREE.VertexNormalsHelper){
+    helper = new THREE.VertexNormalsHelper( mesh_sphere, 0.1, 0x00ff00 );
+    scene.add(helper);
+}
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1.4, 0.25, 1.5);
+camera.lookAt(0,0,0);
+const sm = {
+   FPS_UPDATE: 20,     // fps rate to update ( low fps for low CPU use, but choppy video )
+   FPS_MOVEMENT: 30,  // fps rate to move object by that is independent of frame update rate
+   FRAME_MAX: 900,
+   secs: 0,
+   frame_frac: 0,    // 30.888 / 450
+   frame: 0,         // 30 / 450
+   tick: 0,           //  1 / 450 ( about 1 FPS then )
+   now: new Date(),
+   lt: new Date(),
+   v_delta: new THREE.Vector3(0, 1, 0),
+   att_normal : mesh_sphere.geometry.getAttribute('normal'),
+   att_normal_home : mesh_sphere.geometry.getAttribute('normal').clone()
+};
+const update = function(sm){
+    const a_frame = sm.frame / sm.FRAME_MAX;
+    const a_framebias = 1 - Math.abs( 0.5 - a_frame ) / 0.5;
+    const a_framebias2 = 1 - Math.abs( 0.5 - (a_frame * 2 % 1) ) / 0.5;
+    let i = 0;
+    const count = sm.att_normal.count;
+    while(i < count){
+        const v_home = new THREE.Vector3();
+        v_home.x = sm.att_normal_home.getX(i);
+        v_home.y = sm.att_normal_home.getY(i);
+        v_home.z = sm.att_normal_home.getZ(i);
+        const v_negate = v_home.clone().negate();
+        const v = v_home.clone().lerp(v_negate, a_framebias).lerp( sm.v_delta, a_framebias2 );
+        sm.att_normal.setXYZ(i, v.x, v.y, v.z);
+        i += 1;
+    }
+    sm.att_normal.needsUpdate = true;
+    if(helper){
+        helper.update();
+    }
+    camera.position.x = 1.4 - 2.8 * a_framebias;
+    camera.lookAt( 0, 0, 0 );
+};
+const loop = () => {
+    sm.now = new Date();
+    sm.secs = (sm.now - sm.lt) / 1000;
+    requestAnimationFrame(loop);
+    if(sm.secs > 1 / sm.FPS_UPDATE){
+        update(sm);
+        renderer.render(scene, camera);
+        sm.frame_frac += sm.FPS_MOVEMENT * sm.secs;
+        sm.frame_frac %= sm.FRAME_MAX;
+        sm.frame = Math.floor(sm.frame_frac);
+        sm.tick = (sm.tick += 1) % sm.FRAME_MAX;
+        sm.lt = sm.now;
+    }
+};
+loop();
+```
 
 ## 3 - The vertex normals helper
 
@@ -192,7 +285,10 @@ loop();
 
 ## 4 - The side property of materials and normals
 
-One thing to be aware of when it comes to normals and a material such as the normal material is the side property of a material. When it comes to the side property the default value is the value of the THREE.FrontSide constant in the threejs library. That is that it will only be the front side of each face that will be renderered. There is setting the side property to that of something like THREE.BackSide, or THREE.DoubleSide. However in any case the question might come up as to how to go about defining what side is the front side to begin with. Well the way to do so will be to change the values of the of the normal attribute which would be the alternative to changing what the value of the side property is.
+One thing to be aware of when it comes to normals and a material such as the normal material is the side property of a material. When it comes to the side property the default value is the value of the THREE.FrontSide constant in the threejs library. That is that it will only be the front side of each face that will be renderered. There is setting the side property to that of something like THREE.BackSide, or THREE.DoubleSide. 
+
+The question might come up as to how to go about defining what side is the front side to begin with, and one might assume that the normals attribute is used to find that out. However it turns out that it is in fact the [order of the points in the position attribute that are used to find out what side is the front side](https://discourse.threejs.org/t/indexed-buffergeometry-front-and-back-side-assignment-normals-or-order-of-indices/36380) actually 
+
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/u67-NFiWfcg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
