@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 980
-updated: 2023-06-25 09:06:19
-version: 1.21
+updated: 2023-07-16 12:55:44
+version: 1.22
 ---
 
 The process of creating a [custom buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry), or mutating a built in geometry in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) might be a little involved, but still there is only so much to be aware of. The first step might be to work out the [positions attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) which is the values for the actual points in space. However after the position array it is a good idea to also work out the state of the [normals attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/). 
 
-The normals attribute is one of many core attributes of a buffer geometry class that are needed in order to get geometry to look the way that one will typically want it to with mesh objects, rather than point or line objects. With points and lines all the one really needs are position attributes, and then maybe additional attributes that are used to mutate the position attribute. However with mesh objects there is a need to know what side of a face is the _front side_ of the face, and with that said the normals attribute is how to go about doing just this. 
+The normals attribute is one of many core attributes of a buffer geometry class that are needed in order to get geometry to look the way that one will typically want it to with mesh objects, rather than point or line objects. With points and lines all the one really needs are position attributes, and then maybe additional attributes that are used to mutate the position attribute. However with mesh objects there is a lot more to be concerned with when it comes to the rendering of the triangles and as such normals are a big part of that.
 
 In some cases I might have to work out the values of the normal attribute manually, however in most cases just calling the compute vertex normals method of the buffer geometry class will work just fine. With that said this post will be on the use of the compute vertex normals attribute method of the buffer geometry class in threejs.
 
