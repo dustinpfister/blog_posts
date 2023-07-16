@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2023-03-20 12:17:37
-version: 1.50
+updated: 2023-07-16 08:39:50
+version: 1.51
 ---
 
-One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources. This is not the case when using the [basic material](/2018/05/05/threejs-basic-material/) that is just going to show up as a solid blob of color, or [standard material](/2021/04/27/threejs-standard-material/) which will require a [light source](/2022/02/25/threejs-light/). However there are still a few other options the task of having a simple place holder material such as the [depth material](/2021/05/04/threejs-depth-material/).
+One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources. This is not the case when using the [basic material](/2018/05/05/threejs-basic-material/), which is the default material for a mesh, as it is just going to show up as a solid blob of color when just the color option is used. Other options such as the [standard material](/2021/04/27/threejs-standard-material/) will require a [light source](/2022/02/25/threejs-light/) in order to show some depth. However there are still a few other options for the task of having a simple place holder material such as the [depth material](/2021/05/04/threejs-depth-material/), or doing some kind of quick trick with lines as a child object or somehting to that effect.
 
 The normal material will render colors to the faces of a geometry by way of the state of the [normal attribute of the buffer geometry geometry instance](https://stackoverflow.com/questions/35204824/three-buffergeometry-vertex-normals-and-face-normals) used with the [mesh object](/2018/05/04/threejs-mesh/). The normal attribute is an array of values that corresponds with the position attribute that is used to set an alternative direction independent of the state of position attribute of a geometry that holds the state of the actual points in space. The normal attribute is a must have attribute when it comes to using any material that has to do with light such as with the standard material, but it is also needed for a material such as the normal material which will help show what the deal is with the state of this kind of attribute.
 
@@ -52,7 +52,7 @@ The source code examples that I am writing about in this post can be found in my
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r127 of threejs, and the last time I came around to doing a little editing here I was using r146. There are a lot of code breaking changes that are often made from one revision to the next. Also it looks like things are going in the direction of using JSM over that of traditional script tags as well. Concerns over version numbers do not end with threejs also, it is also important to be mindful of the browser vender and version that you are using as well as your computers support for openGL.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to do a little editing here I was [using r146 and thus followed the style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) I have set for that revision. There are a lot of code breaking changes that are often made from one revision to the next. Also it looks like things are going in the direction of using JSM over that of traditional script tags as well. Concerns over version numbers do not end with threejs also, it is also important to be mindful of the browser vendor and version that you are using as well as your computers support for OpenGL.
 
 
 ## 1 - Basic example using the normal material
