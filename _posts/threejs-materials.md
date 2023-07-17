@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-16 17:40:52
-version: 1.53
+updated: 2023-07-17 10:07:50
+version: 1.54
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -674,6 +674,62 @@ scene.add(dl);
 // RENDER
 //-------- ----------
 camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 5.2 - Blending
+
+It would seem that the blending property of the base material class is it itself just one feature of the class that deserves its own section in this post, and maybe even a whole other deep dive content piece actually. In any case for the sake of this one demo in this over all base material class section it goes without saying that I should have at least one demo on this subject here to touch base on this at least. 
+
+For now I worked out this demo where I am setting the blending value of all materials used to the THREE.NoBlending constant over that of what the default is for materials which is THREE.NormalBlending.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, and RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MATERIALS
+//-------- ----------
+// array of materials for a box geometry where each 
+// material is using THREE.NoBlending over the default of THREE.NormalBlending
+const materials_box = [
+    new THREE.MeshBasicMaterial({ blending: THREE.NoBlending, color: 0x00ffff, transparent: true, opacity: 0.10 } ),
+    new THREE.MeshBasicMaterial({ blending: THREE.NoBlending, color: 0x00ff00, transparent: true, opacity: 0.10 } ),
+    new THREE.MeshBasicMaterial({ blending: THREE.NoBlending, color: 0xffff00, transparent: true, opacity: 0.10 } ),
+    new THREE.MeshBasicMaterial({ blending: THREE.NoBlending, color: 0xff0000, transparent: true, opacity: 0.10 } ),
+    new THREE.MeshBasicMaterial({ blending: THREE.NoBlending, color: 0xff00ff, transparent: true, opacity: 0.10 } ),
+    new THREE.MeshBasicMaterial({ blending: THREE.NoBlending, color: 0xffffff, transparent: true, opacity: 0.10 } )
+];
+// line material for grid. Also using THREE.NoBlending
+const material_grid = new THREE.LineBasicMaterial({
+    blending: THREE.NoBlending,
+    vertexColors: true,
+    linewidth: 8,
+    transparent: true,
+    opacity: 0.1
+});
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const mesh_box = new THREE.Mesh(geometry, materials_box);
+scene.add(mesh_box);
+const grid = new THREE.GridHelper( 10, 10, 0x00ff00, 0x00ff00 );
+grid.material = material_grid;
+scene.add(grid);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.5, 1, 2);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
