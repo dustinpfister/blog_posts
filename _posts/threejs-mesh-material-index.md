@@ -1,15 +1,15 @@
 ---
-title: Using an array of materials, and setting material index values in three.js
+title: Arrays of materials, and material index values in threejs
 date: 2018-05-14 09:54:00
 tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2023-03-17 13:44:54
-version: 1.42
+updated: 2023-07-17 12:56:40
+version: 1.43
 ---
 
-When working with a [Mesh Object](/2018/05/04/threejs-mesh/) in [threejs](https://threejs.org/) a single instance of a material can be passed to the mesh constructor as the second argument, after the geometry. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. Often just the use of one material is fine as the state of the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) of the [buffered geometry instance](/2021/04/22/threejs-buffer-geometry/) is in a state in which it will work well with the textures that I am using with one or more of the material map options. However another option might be to not have just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry.
+When working with a [Mesh Object](/2018/05/04/threejs-mesh/) in [threejs](https://threejs.org/) a single instance of a material can be passed to the mesh constructor as the second argument, after the geometry. This is fine if I am okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise I might want to do something else. Often just the use of one material is fine as the state of the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) of the [buffered geometry instance](/2021/04/22/threejs-buffer-geometry/) is in a state in which it will work well with the textures that I am using with one or more of the material map options. However another option might be to not have just one material, but an array of [materials](/2018/04/30/threejs-materials/) and then have a way to set what the material index value is for each face in the geometry. Also an array of materials might need to be used in conjugation with uv mapping as well as I might want some surfaces to be effected by one material, while using another for the rest.
 
 When working with an array of materials there is a property of a [face3](/2018/05/11/threejs-face3/) instance in the geometry of the mesh that is of interest when setting the material index property of the faces, or at least that was the case with the old Geometry Constructor that was removed in r125 of threejs. So then there is how to go about setting material index values with an instance of the [Buffered Geometry constructor](https://threejs.org/docs/#api/en/core/BufferGeometry.groups) that is still part of the core of the three.js library in late versions of threejs. In this post then I will be touching base on this topic of working with an array of materials in a threejs project then, rather than alternatives to doing so such as uv mapping, or having [groups of objects](/2018/05/16/threejs-grouping-mesh-objects/) which would be yet another option for this sort of thing.
 
@@ -40,7 +40,7 @@ The source code examples that I am writing about in this post as well as for my 
 
 ### Version Numbers matter big time with three.js
 
-Threejs has been, and as of this writing still is, a fast moving target of a library when it comes to development. When I first wrote this post back in May of 2018 I was using r91 of threejs, and I used r146 last time I edited this post. Between these two versions of threejs a whole lot of code breaking changes have happened, and this will likely continue to be the case moving forward. Always be mindful of the revision number of threejs that you are using when reading about threejs examples on the open web, much of the content is out dated.
+Threejs has been, and as of this writing still is, a fast moving target of a library when it comes to development. When I first wrote this post back in May of 2018 I was using r91 of threejs, and I used [r146 last time I edited this post](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Between these two versions of threejs a whole lot of code breaking changes have happened, and this will likely continue to be the case moving forward. Always be mindful of the revision number of threejs that you are using when reading about threejs examples on the open web, much of the content is out dated.
 
 ## 1 - Basic static example of an array of materials with a Box Geometry ( r125+ )
 
@@ -96,6 +96,10 @@ renderer.render(scene, camera);
 ```
 
 So far so good, but what if I want to change what the material index values are for each face? With that said lets look at a few more examples of arrays of materials with mesh objects.
+
+## 2 - Working with the groups array
+
+Starting out with arrays of materials is easy enough when using something like THREE.BoxGeometry as that is a situation in which the groups array is set up to begin with. However there is the question of how to go about doing the same thing but with only two materials and then set what the index values are for each side of the box using just those two materials rather than six. There is then maybe adjusting the draw call range for one or more materials, and then there is how to go about adding groups to a geometry that does not have one to begin with. So with that said in this section I will be writing a thing or two about how to work with the groups property of geometry.
 
 ### 2.1 - New example with groups array using ( r125+ )
 
