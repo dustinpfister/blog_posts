@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-17 17:48:46
-version: 1.57
+updated: 2023-07-17 18:34:57
+version: 1.58
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -755,6 +755,75 @@ scene.add(grid);
 camera.position.set(1.5, 1, 2);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
+```
+
+## 6 - Blending options 
+
+I covered one demo of the blending option in the above section in which I go over many of the features of the main material class. However I would say that the blending option does very much deserve a section of its own.
+
+### 6.1 - No Blending compared to default normal blending
+
+I have all ready covered one demo of the no blending value for the blending option. However there are some things that I should do different in this section of blending in depth. To start oput this section I am once again going to go with a demo that makes use of the no blending option over that of the default blending mode which is normal blending. However this time I am going to have two objects with two materials to have something to compare to. 
+
+Also I am doing something out of the usual when it comes to rendering in this example and will also be doing so for the rest of these demos. The thing that I am doing different here is that I am using a canvas element that I draw to with the plain old 2d drawing content as the element that I am appending to my hard coded HTML. I am then drawing to this plain old 2d canvas with the drawImage method of the 2d canvas and I am passing the canvas of the webgl renderer as the image to draw with. This then allows me to use the 2d drawing context to draw a background that will show up when the canvas of the webgl renderer is transparent.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER, 2D CANVAS
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+canvas.style.display = 'block';
+canvas.width = 640;
+canvas.height = 480;
+(document.getElementById('demo') || document.body).appendChild(canvas);
+//-------- ----------
+// MATERIAL
+//-------- ----------
+const material = new THREE.MeshBasicMaterial({ 
+    blending: THREE.NoBlending, 
+    color: 0xff0000,
+    transparent: true,
+    opacity: 0.1
+});
+const material_compare = new THREE.MeshBasicMaterial({ 
+    blending: THREE.NormalBlending,
+    color: 0x00ff00,
+    transparent: true,
+    opacity: 0.1
+});
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.SphereGeometry( 1, 60, 60 );
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const mesh_1 = new THREE.Mesh(geometry, material);
+mesh_1.position.x = -1.25;
+scene.add(mesh_1);
+const mesh_2 = new THREE.Mesh(geometry, material_compare);
+mesh_2.position.x = 1.25;
+scene.add(mesh_2);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(0, 3, 3);
+camera.lookAt(0, 0, 0);
+scene.background = 0x000000;
+renderer.setClearColor(0x000000, 0.75);
+renderer.render(scene, camera);
+const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+gradient.addColorStop(0, "black");
+gradient.addColorStop(0.5, "white");
+gradient.addColorStop(1, "black");
+ctx.fillStyle = gradient;
+ctx.fillRect(0,0, canvas.width, canvas.height);
+ctx.drawImage(renderer.domElement, 0,0, canvas.width, canvas.height );
 ```
 
 ## 7 - The Material loader, and other loader related concerns
