@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-17 12:13:50
-version: 1.56
+updated: 2023-07-17 17:48:46
+version: 1.57
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -753,6 +753,55 @@ scene.add(grid);
 // RENDER
 //-------- ----------
 camera.position.set(1.5, 1, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 7 - The Material loader, and other loader related concerns
+
+
+Creating a material by calling one of the constructor functions as a way to obtained a material is one thing. However when it comes to starting to work on real projects I will want to have a way to pack a lot of the data that has to do with one or more materials into some kind of external file format. With that said baked into the core of threejs itself is the MatreialLoader. However there are also a lot of other options for loading not just a material but other objects that compose one or more whole objects, even a whole scene. There is then a lot to say about how to go about loading materials, as well as everything else that one would want to load into a project by way of some external data as well. So in this section I will be writing a thing or two about loaders and materials.
+
+### 7.1 - Parse a JSON string of a material using THREE.MaterialLoader
+
+The toJSON method of a material can be used to convert a material to a JSON object format, that Object can then be passed to JSON.stringify to create a JSON text form that can then be used with the THREE.MaterialLoader. However for this demo I am hand coding a string of json and I would like to parse it into a workable material that I can then use with a mesh object. To create a material from one of these strings I can pass the string threw the JSON.parse method to get an object to which I can then pass to the parse method of an instance of the material loader. The end result of the call of the parse method is then  a material that I can then use with a mesh object just like with any other.
+
+So then it would look like the JSON string of this demo could then be saved as a json file, and this JSON file can then also be loaded with the material loader as well.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MATERIAL JSON AS HARD CODED STRING
+// ---------- ----------
+const str_material = `{
+  "metadata":
+    {
+      "version":4.5,
+      "type":"Material",
+      "generator":"Hand Coded"
+    },
+    "uuid":"3106bcfd-f862-49cd-9f87-d4807d818af2",
+    "type":"MeshBasicMaterial",
+    "color":16711680
+}`;
+const material = new THREE.MaterialLoader().parse( JSON.parse(str_material) );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material );
+scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
