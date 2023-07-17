@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-17 11:35:19
-version: 1.55
+updated: 2023-07-17 12:13:50
+version: 1.56
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -654,7 +654,7 @@ renderer.render(scene, camera);
 
 ## 5 - The Common Base Material class
 
-There are a number of options in the base material class that should work with all materials then, but there are some exceptions with some of these features.
+There are a number of options in the base material class that should work with all materials, but there are some exceptions with some of these features. For example the side option is very much a part of the base material class, but this option has no effect when used with line or point materials. Still there are lots of options in the base material class that do work with more or less all materials and in this section I will be going over a few key examples of these base material class features.
 
 ### 5.1 - Transparent and opacity options
 
