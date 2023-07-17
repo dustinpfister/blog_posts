@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2023-03-21 15:36:46
-version: 1.48
+updated: 2023-07-17 13:15:48
+version: 1.49
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [threejs](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a threejs project. It can contain cameras, lights, mesh objects composed of a geometry and material, along with any other [object3d base class](/2018/04/23/threejs-object3d/) object. The scene object can then be passed to the render function of a renderer such as the [Webgl renderer](/2018/11/24/threejs-webglrenderer/) along with a [camera](/2018/04/06/threejs-camera/) to render a view of the scene from the perspective of the given camera object.
@@ -602,7 +602,46 @@ loop();
 
 ### 5.3 - Position of a scene object relative to world space
 
-There is a lot that could be written about this, and how it applies the a scene object, but one interesting thing is that if I play with the instance of [Vector3](/2018/04/15/threejs-vector3/) that is stored in the position property of my scene instance this will change the position of the whole Scene, and everything in it that is added relative to the scene.
+There is a lot that could be written about this, and how it applies the a scene object, but one interesting thing is that if I play with the instance of [Vector3](/2018/04/15/threejs-vector3/) that is stored in the position property of my scene instance this will change the position of the whole Scene, and everything in it that is added relative to the scene. The main thing here is that the values of the position property are a local position that is relative to the parent object. When it comes to a scene object though that has no parent object which is often the case then the scene object is relative to something that is called world space. World space is then a kind of fixed, absolute kind of position rather than that of the relative local kind of position. There are then methods that can be used to get this world position value, but that is never really the case with the scene object, unless it is a scene object that for one reason or another is a child of another object.
+
+Anyway for this demo I am moving the scene around randomly by setting random values for unit length and direction. The end result is a kind of scene shake like effect.
+
+```js
+//-------- ----------
+// CREATE A SCENE
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+const mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ----------
+// LOOP - update method with crude scene shake effect
+//-------- ----------
+camera.position.set(2, 1, 2);
+camera.lookAt(0, 0, 0);
+let frame = 0,
+maxFrame = 50;
+const update = () => {
+    const v_length = 0.1 + 0.1 * Math.random();
+    const v_dir = new THREE.Vector3(Math.random(), Math.random(), Math.random()).normalize();
+    // setting the position of the whole scene
+    scene.position.copy(v_dir).multiplyScalar(v_length);
+};
+const loop = () => {
+    const per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+    requestAnimationFrame(loop);
+    update();
+    renderer.render(scene, camera);
+    frame += 1;
+    frame %= maxFrame;
+};
+loop();
+```
 
 ## Conclusion
 
