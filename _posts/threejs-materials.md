@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-17 10:07:50
-version: 1.54
+updated: 2023-07-17 11:35:19
+version: 1.55
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -514,7 +514,7 @@ renderer.render(scene, camera);
 
 ### 2.8 - Toon Physical
 
-Demo of toon material
+The toon material seems to shade with a limited number of tones. This feature can be adjusted by making use of a texture for the gradientMap option which would seem to be a unique texture map option for this material. When working out this kind of texture the colors of the texture should be in gray scale.
 
 ```js
 //-------- ----------
@@ -527,9 +527,32 @@ const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 document.getElementById('demo').appendChild(renderer.domElement);
 //-------- ----------
+// CANVAS ELEMENT for gradientMap used in toon material
+//-------- ----------
+const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
+canvas.width = 64; canvas.height = 64;
+const s = 8;
+const len = s * s;
+const ps = canvas.width / s;
+let i = 0;
+while( i < len ){
+    const x = i % s;
+    const y = Math.floor( i / s );
+    let gValue = ( x / s + y / s ) / 2;
+    ctx.fillStyle = new THREE.Color( gValue, gValue, gValue).getStyle();
+    ctx.fillRect(x * ps, y * ps, ps, ps);
+    i += 1;
+}
+//-------- ----------
+// CANVAS TEXTURE
+//-------- ----------
+const texture = new THREE.CanvasTexture(canvas);
+texture.magFilter = THREE.NearestFilter;
+texture.minFilter = THREE.NearestFilter;
+//-------- ----------
 // INSTANCE OF THE TOON MATERIAL
 //-------- ----------
-const material = new THREE.MeshToonMaterial({ color: 0xff0000 });
+const material = new THREE.MeshToonMaterial({ color: 0xff0000, gradientMap: texture });
 //-------- ----------
 // SCENE CHILD OBJECTS
 //-------- ----------
