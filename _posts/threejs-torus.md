@@ -5,18 +5,20 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2023-03-22 07:40:31
-version: 1.32
+updated: 2023-07-18 10:10:59
+version: 1.33
 ---
 
-Today I thought I world write another post on a built in geometry constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
+Today I thought I would write another post on a built in geometry constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a doughnut like shape.
+
+There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this. One argument is the radius from the origin to the center of the tube that will form the over all doughnut shape, and then the other is the radius for each circle along this path as well. After that there are some additional arguments of concern that have to do with the number of sides for each circle, and the number of circles that will effect the over all point density of the geometry.
 
 <!-- more -->
 
 <iframe class="youtube_video" src="https://www.youtube.com/embed/GRlJjfzq_lk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-## A donut or torus geometry in threejs and what to know first
+## A doughnut or torus geometry in threejs and what to know first
 
 This is a post on the Torus Geometry constructor in the javaScript library known as threejs. In addition to the constructor function itself I will also be making use of a whole bunch of other features of the threejs library in these code examples. So I trust that you have at least some background when it comes to the very basic of how to get up and running with a three.js project, if not you might want to start out with some kind of [getting started guide on threejs](/2018/04/04/threejs-getting-started/).
 
@@ -34,7 +36,7 @@ The source code examples that I am writing about in this post are [also on Githu
 
 ### Version Numbers matter with three.js
 
-When I first made the source code for these examples and wrote this post I was using r127 of three.js, and the last time I came around to do some editing I was using r146. I do not think a lot of changes have been made to the torus geometry constructor that will case code breaking changes, but still in the future many such changes might happen to other features of the library that I am using.
+When I first made the source code for these examples and wrote this post I was using r127 of three.js, and the last time I came around to do some editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). I do not think a lot of changes have been made to the torus geometry constructor that will case code breaking changes, but still in the future many such changes might happen to other features of the library that I am using.
 
 ## Some Basic examples
 
@@ -60,11 +62,11 @@ const radius = 1,
 tubeRadius = 0.25,
 radialSegments = 16,
 tubeSegments = 32;
-const donut = new THREE.Mesh(
+const doughnut = new THREE.Mesh(
         new THREE.TorusGeometry(radius, tubeRadius, radialSegments, tubeSegments),
         new THREE.MeshNormalMaterial());
 
-scene.add(donut); // add mesh to scene
+scene.add(doughnut); // add mesh to scene
 //-------- ----------
 // RENDER
 //-------- ----------
@@ -90,8 +92,8 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 // HELPERS
 //-------- ----------
-// create a donut geo
-const createDonutGeo = (opt) => {
+// create a doughnut geo
+const createdoughnutGeo = (opt) => {
     opt = opt || {};
     opt.r = opt.r === undefined ? 0.5 : opt.r;
     opt.tr = opt.tr === undefined ? 0.25 : opt.tr;
@@ -101,23 +103,23 @@ const createDonutGeo = (opt) => {
     geo.rotateX(Math.PI * 0.5);
     return geo;
 };
-// create a donut Mesh
-const createDonutMesh = (opt) => {
+// create a doughnut Mesh
+const createdoughnutMesh = (opt) => {
     opt = opt || {};
-    const geo = createDonutGeo(opt)
+    const geo = createdoughnutGeo(opt)
     // create mesh
-    const donut = new THREE.Mesh(
+    const doughnut = new THREE.Mesh(
         geo,
         opt.material || new THREE.MeshNormalMaterial());
-    return donut;
+    return doughnut;
 };
 
 //-------- ----------
 // ADD MESH TO SCENE
 //-------- ----------
-const mesh1 = createDonutMesh({});
+const mesh1 = createdoughnutMesh({});
 scene.add(mesh1);
-const mesh2 = createDonutMesh({});
+const mesh2 = createdoughnutMesh({});
 mesh2.position.x = -2;
 scene.add(mesh2);
 //-------- ----------
@@ -137,10 +139,10 @@ const loop = function(){
     requestAnimationFrame(loop);
     if(secs > 1 / fps){
         // copying new geos to old geo of mesh objects
-        mesh1.geometry.copy( createDonutGeo({
+        mesh1.geometry.copy( createdoughnutGeo({
             rs: 3 + 27 * bias, 
             ts: 3 + 27 * bias}));
-        mesh2.geometry.copy( createDonutGeo({
+        mesh2.geometry.copy( createdoughnutGeo({
             r: 0.75 + 0.125 * bias,
             tr: 0.25 - 0.125 * bias }));
         // render step
@@ -177,10 +179,10 @@ const radius = 1,
 tubeRadius = 0.25,
 radialSegments = 64,
 tubeSegments = 256;
-const donut = new THREE.Points(
+const doughnut = new THREE.Points(
         new THREE.TorusGeometry(radius, tubeRadius, radialSegments, tubeSegments),
         new THREE.PointsMaterial({size: 0.0125, color: 0x00ff00}));
-scene.add(donut); // add mesh to scene
+scene.add(doughnut); // add mesh to scene
 //-------- ----------
 // RENDER
 //-------- ----------
@@ -353,25 +355,25 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 // HELPERS
 //-------- ----------
-const createDonutChild = function(index, len){
+const createdoughnutChild = function(index, len){
     const per = index / len,
     radius = 0.6,
     tubeRadius = 0.25,
     radialSegments = 4 + Math.round(20 * per),
     tubeSegments = 4 + Math.round(20 * per);
-    const donut = new THREE.Mesh(
+    const doughnut = new THREE.Mesh(
         new THREE.TorusGeometry(radius, tubeRadius, radialSegments, tubeSegments),
         new THREE.MeshNormalMaterial({wireframe:true}));
-    return donut;
+    return doughnut;
 };
-const createDonutGroup = function(){
+const createdoughnutGroup = function(){
     let i = 0;
     const len = 10,
     group = new THREE.Group();
     while(i < len){
-        const donut = createDonutChild(i, len);
-        donut.position.set(0, 0, 4 - i * 1.125);
-        group.add(donut);
+        const doughnut = createdoughnutChild(i, len);
+        doughnut.position.set(0, 0, 4 - i * 1.125);
+        group.add(doughnut);
         i += 1;
     }
     return group;
@@ -379,7 +381,7 @@ const createDonutGroup = function(){
 //-------- ----------
 // ADD GROUP TO SCENE
 //-------- ----------
-const group = createDonutGroup();
+const group = createdoughnutGroup();
 scene.add(group);
 //-------- ----------
 // RENDER SCENE
