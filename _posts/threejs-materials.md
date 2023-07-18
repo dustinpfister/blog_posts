@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-17 18:34:57
-version: 1.58
+updated: 2023-07-18 09:59:04
+version: 1.59
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -235,6 +235,89 @@ renderer.render(scene, camera);
 ```
 
 Do not let this fool you though if you thing that this is how to add texture to 3d objects. The first and foremost way to do this would typically be to use just one material, with one texture, and a well worked out uv attributive for the geometry. However some times there are in fact situations in which it would be a good idea to use more than one material for a mesh, and this is how to get started with it. Once again the groups are set up to begin with in this demo though, so when it comes to working on an asset of some kind one might need to work out the state of the groups array.
+
+### 1.5 - Uvmapping and textures
+
+Although an array of materials can be used as a way to skin each side of a Box Geometry, this is not the way to go about skinning a geometry in general. The first and foremost way to skin a Box Geometry, or any geometry for that matter is to create, or in this case mutate the values of the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/). This attribute of a geometry contains offset values for each point in the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of the geometry which is the actual points in space.
+
+Anyway when it comes to a box geometry the UV attribute is set up for us to begin with. However by default the values are set in such a way that all of the content of the texture will be used for all of the faces of the box. Often this might very well be what I would want to happen when creating this kind of geometry anyway. However in some cases I might want to map just one area of a texture to one face, and then another area to another face and so forth. To do that I will need to write a little logic to set the values of the uv attributes to what I want for that kind of situation which is what I am doing in this demo.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, .025, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS ELEMENT, 2D DRAWING CONTEXT, TEXTURE - Whole Bunch of cells
+//-------- ----------
+const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
+canvas.width = 1024; canvas.height = 1024;
+ctx.fillStyle = '#ffffff';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+const w = 8;
+const wp = canvas.width / w;
+const len = w * w;
+let i = 0;
+ctx.textBaseline = 'middle';
+ctx.textAlign = 'center';
+ctx.font = '100px arial';
+ctx.lineWidth = 3;
+while( i  < len ){
+    const a_cell = (i + 5) / (len + 15);
+    const x = i % w;
+    const y = Math.floor( i / w );
+    ctx.fillStyle = new THREE.Color(0, a_cell, 1 - a_cell).getStyle();
+    ctx.fillRect(x * wp, y * wp, wp, wp);
+    ctx.fillStyle = 'white';
+    ctx.strokeStyle = '#5f5f5f';
+    ctx.fillText(i, x * wp + wp / 2, y * wp + wp / 2);
+    ctx.strokeText(i, x * wp + wp / 2, y * wp + wp / 2);
+    i += 1;
+}
+const texture = new THREE.CanvasTexture(canvas);
+texture.magFilter = THREE.NearestFilter;
+texture.minFilter = THREE.NearestFilter;
+//-------- ----------
+// MATERIAL - using basic material with the map option and the texture from canvas
+//-------- ----------
+const material = new THREE.MeshBasicMaterial({
+    map: texture
+});
+//-------- ----------
+// GEOMETRY - mutation of uv attribute
+//-------- ----------
+const geo = new THREE.BoxGeometry(1, 1, 1);
+const att_uv = geo.getAttribute('uv');
+const cellX = 5, cellY = 3; // cellX and cellY can be used to set the cell to draw in the texture
+const cx = 1 / w * cellX;
+const cy = 1 / w * cellY;
+const faceIndex = 2; // the face index to use
+const i2 = faceIndex * 4;
+att_uv.setXY(i2,     0.000 + cx, 1.000 - cy);
+att_uv.setXY(i2 + 1, 0.125 + cx, 1.000 - cy);
+att_uv.setXY(i2 + 2, 0.000 + cx, 0.875 - cy);
+att_uv.setXY(i2 + 3, 0.125 + cx, 0.875 - cy);
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh( geo, material);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+So what is going on with this demo on basic UV mapping and materials is that once again I am just passing a texture for the map option of an instance of the Basic Material. However this time when it comes to the nature of the texture I have worked out a little logic where I am drawing a whole bunch of cells in the texture. I will then want to have a way to draw a given cell in the texture to a given face index, and that is what I am doing with the additional logic that has to do with the mutation of the UV attribute values.
+
+There is a whole lot more to write about this sort of subject of course that I will have to get into more later in this post in the texture section. However I wanted to work out at least one basic section demo of this along with the material array index values demo just to make it clear right away that an array of materials and the groups array is just one tool that is not a replacement for UV mapping.
 
 ## 2 - Overview of Mesh Material Options
 
