@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1023
-updated: 2023-06-21 10:38:57
-version: 1.14
+updated: 2023-07-18 15:55:14
+version: 1.15
 ---
 
 The [Shader material](https://threejs.org/docs/#api/en/materials/ShaderMaterial) in threejs is one way to go about getting started with custom shaders in threejs, the other general option would be to look into the [raw shader material](https://threejs.org/docs/#api/en/materials/RawShaderMaterial). The main difference between the two has to do with built-in uniforms and attributes when it comes to the starting state of the GLSL \( [openGL Shader Language](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) \) code. For this reason it might be best to start out with the Shader material rather than the raw shader material as there are some built in values that I will not have to worry about setting up myself when it comes to the raw shader material. Yet again it is a bit of a toss up with that as if one wants to learn a thing or two about GLSL alone then the raw material might prove to be a better starting point actually.
@@ -52,7 +52,7 @@ Anyway not just for your sake, but very much for my own sake as well, this will 
 
 ### 1.1 - Custom Shader hello world with gl_Position and gl_FragColor
 
-To create an instance of the Shader material I will need to pass an object that contains three properties, unifroms, vertexShader, and fragmentShader. The uniforms property contains a set of values that will be the same for for all vertices, for this getting started example I am dealing with just one uniform value that is a diffuse color. Each value of the uniforms object should itself be an object and the value property of this nested object is how to go about setting a value for the uniform value. The vertexShader and fragmentShader properties should both contain string values, and each string value should contain GLSL code for the vertex and fragment shaders that will provide the custom rendering logic.
+To create an instance of the Shader material I will need to pass an object that contains three properties, unifroms, vertexShader, and fragmentShader. The uniforms property contains a set of values that will be the same for all vertices, for this getting started example I am dealing with just one uniform value that is a diffuse color. Each value of the uniforms object should itself be an object and the value property of this nested object is how to go about setting a value for the uniform value. The vertexShader and fragmentShader properties should both contain string values, and each string value should contain GLSL code for the vertex and fragment shaders that will provide the custom rendering logic.
 
 The vertex shader runs first and the main job of this shader is to set the value of gl\_Position. After the vertex shader there is the fragment shader there is the fragment shader which is what is used to set what the color should be for each pixel location. The main job of this fragment shader then is to set what the color should be for the gl\_FragColor value.
 
@@ -70,31 +70,19 @@ renderer.setSize(640, 480, false);
 // ---------- ----------
 // SHADER MATERIAL
 // ---------- ----------
-const shader_basic = {};
-// unifrom values for basic shader
-shader_basic.uniforms = {
-    diffuse: { value: new THREE.Color(0x1a1a1a) }
-};
-// vertex shader for basic shader
-shader_basic.vertexShader = [
-    'void main() {',
-    '    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
-    '}'
-].join('\n');
-// fragment shader for hatching shader
-shader_basic.fragmentShader = [
-    'uniform vec3 diffuse;',
-    'void main() {',
-    '    gl_FragColor = vec4( diffuse, 1.0 );',
-    '}'
-].join('\n');
-// ---------- ----------
-// SHADER MATERIAL
-// ---------- ----------
 const material1 = new THREE.ShaderMaterial({
-    uniforms: THREE.UniformsUtils.clone(shader_basic.uniforms),
-    vertexShader: shader_basic.vertexShader,
-    fragmentShader: shader_basic.fragmentShader
+    uniforms: {
+        diffuse: { value: new THREE.Color(0xffffff) }
+    },
+    vertexShader: `
+        void main() {
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        }`,
+    fragmentShader: `
+        uniform vec3 diffuse;
+        void main() {
+            gl_FragColor = vec4( diffuse, 1.0 );
+        }`
 });
 material1.uniforms.diffuse.value = new THREE.Color(0,1,0);
 // ---------- ----------
@@ -161,7 +149,7 @@ That makes things for more concise, but it also totally defeats the purpose of b
 
 ### 1.3 - Full code from THREE.ShaderChunk example
 
-So then in the last basic example I made use of the THREE.ShaderChunk object to create a material that is more or less about the same as the basic material. However I did so by just simply referencing the GLSL code. In this example I am doing the same thing, but now I am passing the GLSL code into the actually code of the example, rather than just referencing what is there.
+So then in the last basic example I made use of the THREE.ShaderChunk object to create a material that is more or less about the same as the basic material. However I did so by just simply referencing the GLSL code. In this example I am doing the same thing, but now I am passing the GLSL code into the actually code of the example, rather than just referencing what is there. There is more than one way to do this however when it comes to the shader material \#include can be used to import segements of GLSL code from the shader chunk library. This way if I just want to include the GLSL code that is baked into the core of threejs for somehting I can just go ahead and do so.
 
 ```js
 // ---------- ----------
@@ -184,97 +172,95 @@ const shdaer_basic =  {
     },
     // just using the same code from 'MeshBasicMaterial' for
     // vertex and fragment shaders but now I am puling the actual shader code in
-    vertexShader: [
-        '#include <common>',
-        '#include <uv_pars_vertex>', 
-        '#include <uv2_pars_vertex>', 
-        '#include <envmap_pars_vertex>', 
-        '#include <color_pars_vertex>', 
-        '#include <fog_pars_vertex>',
-        '#include <morphtarget_pars_vertex>', 
-        '#include <skinning_pars_vertex>',
-        '#include <logdepthbuf_pars_vertex>', 
-        '#include <clipping_planes_pars_vertex>', 
-        'void main() {',
-        '    #include <uv_vertex>', 
-        '    #include <uv2_vertex>', 
-        '    #include <color_vertex>', 
-        '    #include <morphcolor_vertex>',
-        '    #if defined ( USE_ENVMAP ) || defined ( USE_SKINNING )', 
-        '        #include <beginnormal_vertex>',
-        '        #include <morphnormal_vertex>', 
-        '        #include <skinbase_vertex>',
-        '        #include <skinnormal_vertex>', 
-        '        #include <defaultnormal_vertex>', 
-        '    #endif',
-        '    #include <begin_vertex>', 
-        '    #include <morphtarget_vertex>', 
-        '    #include <skinning_vertex>',
-        '    #include <project_vertex>', 
-        '    #include <logdepthbuf_vertex>', 
-        '    #include <clipping_planes_vertex>', 
-        '    #include <worldpos_vertex>',
-        '    #include <envmap_vertex>',
-        '    #include <fog_vertex>',
-        '}'
-    ].join('\n'),
-    fragmentShader: [
-        'uniform vec3 diffuse;',
-        'uniform float opacity;',
-        '#ifndef FLAT_SHADED',
-        '    varying vec3 vNormal;',
-        '#endif',
-        '#include <common>',
-        '#include <dithering_pars_fragment>',
-        '#include <color_pars_fragment>',
-        '#include <uv_pars_fragment>',
-        '#include <uv2_pars_fragment>',
-        '#include <map_pars_fragment>',
-        '#include <alphamap_pars_fragment>',
-        '#include <alphatest_pars_fragment>',
-        '#include <aomap_pars_fragment>',
-        '#include <lightmap_pars_fragment>',
-        '#include <envmap_common_pars_fragment>',
-        '#include <envmap_pars_fragment>',
-        '#include <fog_pars_fragment>',
-        '#include <specularmap_pars_fragment>',
-        '#include <logdepthbuf_pars_fragment>',
-        '#include <clipping_planes_pars_fragment>',
-        'void main() {',
-        '    #include <clipping_planes_fragment>',
-        '    vec4 diffuseColor = vec4( diffuse, opacity );',
-        '    #include <logdepthbuf_fragment>',
-        '    #include <map_fragment>',
-        '    #include <color_fragment>',
-        '    #include <alphamap_fragment>',
-        '    #include <alphatest_fragment>',
-        '    #include <specularmap_fragment>',
-        '    ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );',
-        '    #ifdef USE_LIGHTMAP',
-        '        vec4 lightMapTexel = texture2D( lightMap, vUv2 );',
-        '        reflectedLight.indirectDiffuse += lightMapTexel.rgb * lightMapIntensity * RECIPROCAL_PI;',
-        '    #else',
-        '        reflectedLight.indirectDiffuse += vec3( 1.0 );',
-        '    #endif',
-        '    #include <aomap_fragment>',
-        '    reflectedLight.indirectDiffuse *= diffuseColor.rgb;',
-        '    vec3 outgoingLight = reflectedLight.indirectDiffuse;',
-        '    #include <envmap_fragment>',
-        '    #include <output_fragment>',
-        '    #include <tonemapping_fragment>',
-        '    #include <encodings_fragment>',
-        '    #include <fog_fragment>',
-        '    #include <premultiplied_alpha_fragment>',
-        '    #include <dithering_fragment>',
-        '}'
-    ].join('\n')
+    vertexShader: `
+        #include <common>
+        #include <uv_pars_vertex>
+        #include <uv2_pars_vertex>
+        #include <envmap_pars_vertex>
+        #include <color_pars_vertex>
+        #include <fog_pars_vertex>
+        #include <morphtarget_pars_vertex>
+        #include <skinning_pars_vertex>
+        #include <logdepthbuf_pars_vertex>
+        #include <clipping_planes_pars_vertex>
+        void main() {
+            #include <uv_vertex>
+            #include <uv2_vertex>
+            #include <color_vertex>
+            #include <morphcolor_vertex>
+            #if defined ( USE_ENVMAP ) || defined ( USE_SKINNING )
+                #include <beginnormal_vertex>
+                #include <morphnormal_vertex>
+                #include <skinbase_vertex>
+                #include <skinnormal_vertex>
+                #include <defaultnormal_vertex>
+            #endif
+            #include <begin_vertex>
+            #include <morphtarget_vertex>
+            #include <skinning_vertex>
+            #include <project_vertex>
+            #include <logdepthbuf_vertex>
+            #include <clipping_planes_vertex>
+            #include <worldpos_vertex>
+            #include <envmap_vertex>
+            #include <fog_vertex>
+        }
+    `,
+    fragmentShader: `
+        uniform vec3 diffuse;
+        uniform float opacity;
+        #ifndef FLAT_SHADED
+            varying vec3 vNormal;
+        #endif
+        #include <common>
+        #include <dithering_pars_fragment>
+        #include <color_pars_fragment>
+        #include <uv_pars_fragment>
+        #include <uv2_pars_fragment>
+        #include <map_pars_fragment>
+        #include <alphamap_pars_fragment>
+        #include <alphatest_pars_fragment>
+        #include <aomap_pars_fragment>
+        #include <lightmap_pars_fragment>
+        #include <envmap_common_pars_fragment>
+        #include <envmap_pars_fragment>
+        #include <fog_pars_fragment>
+        #include <specularmap_pars_fragment>
+        #include <logdepthbuf_pars_fragment>
+        #include <clipping_planes_pars_fragment>
+        void main() {
+            #include <clipping_planes_fragment>
+            vec4 diffuseColor = vec4( diffuse, opacity );
+            #include <logdepthbuf_fragment>
+            #include <map_fragment>
+            #include <color_fragment>
+            #include <alphamap_fragment>
+            #include <alphatest_fragment>
+            #include <specularmap_fragment>
+            ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
+            #ifdef USE_LIGHTMAP
+                vec4 lightMapTexel = texture2D( lightMap, vUv2 );
+                reflectedLight.indirectDiffuse += lightMapTexel.rgb * lightMapIntensity * RECIPROCAL_PI;
+            #else
+                reflectedLight.indirectDiffuse += vec3( 1.0 );
+            #endif
+            #include <aomap_fragment>
+            reflectedLight.indirectDiffuse *= diffuseColor.rgb;
+            vec3 outgoingLight = reflectedLight.indirectDiffuse;
+            #include <envmap_fragment>
+            #include <output_fragment>
+            #include <tonemapping_fragment>
+            #include <encodings_fragment>
+            #include <fog_fragment>
+            #include <premultiplied_alpha_fragment>
+            #include <dithering_fragment>
+        }
+    `
 };
-//console.log(THREE.ShaderChunk[ 'meshbasic_frag' ])
 // ---------- ----------
 // SHADER MATERIAL
 // ---------- ----------
 const material = new THREE.ShaderMaterial(shdaer_basic);
-console.log(material.vertexShader);
 // ---------- ----------
 // GEOMETRY, MESH
 // ---------- ----------
