@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2023-07-18 10:10:59
-version: 1.33
+updated: 2023-07-18 10:47:04
+version: 1.34
 ---
 
 Today I thought I would write another post on a built in geometry constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a doughnut like shape.
@@ -92,8 +92,8 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 // HELPERS
 //-------- ----------
-// create a doughnut geo
-const createdoughnutGeo = (opt) => {
+// create a Doughnut geo
+const createDoughnutGeo = (opt) => {
     opt = opt || {};
     opt.r = opt.r === undefined ? 0.5 : opt.r;
     opt.tr = opt.tr === undefined ? 0.25 : opt.tr;
@@ -103,23 +103,22 @@ const createdoughnutGeo = (opt) => {
     geo.rotateX(Math.PI * 0.5);
     return geo;
 };
-// create a doughnut Mesh
-const createdoughnutMesh = (opt) => {
+// create a donut Mesh
+const createDoughnutMesh = (opt) => {
     opt = opt || {};
-    const geo = createdoughnutGeo(opt)
+    const geo = createDoughnutGeo(opt)
     // create mesh
     const doughnut = new THREE.Mesh(
         geo,
         opt.material || new THREE.MeshNormalMaterial());
     return doughnut;
 };
-
 //-------- ----------
 // ADD MESH TO SCENE
 //-------- ----------
-const mesh1 = createdoughnutMesh({});
+const mesh1 = createDoughnutMesh({});
 scene.add(mesh1);
-const mesh2 = createdoughnutMesh({});
+const mesh2 = createDoughnutMesh({});
 mesh2.position.x = -2;
 scene.add(mesh2);
 //-------- ----------
@@ -139,10 +138,10 @@ const loop = function(){
     requestAnimationFrame(loop);
     if(secs > 1 / fps){
         // copying new geos to old geo of mesh objects
-        mesh1.geometry.copy( createdoughnutGeo({
+        mesh1.geometry.copy( createDoughnutGeo({
             rs: 3 + 27 * bias, 
             ts: 3 + 27 * bias}));
-        mesh2.geometry.copy( createdoughnutGeo({
+        mesh2.geometry.copy( createDoughnutGeo({
             r: 0.75 + 0.125 * bias,
             tr: 0.25 - 0.125 * bias }));
         // render step
@@ -355,7 +354,7 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 // HELPERS
 //-------- ----------
-const createdoughnutChild = function(index, len){
+const createDoughnutChild = function(index, len){
     const per = index / len,
     radius = 0.6,
     tubeRadius = 0.25,
@@ -366,12 +365,12 @@ const createdoughnutChild = function(index, len){
         new THREE.MeshNormalMaterial({wireframe:true}));
     return doughnut;
 };
-const createdoughnutGroup = function(){
+const createDoughnutGroup = function(){
     let i = 0;
     const len = 10,
     group = new THREE.Group();
     while(i < len){
-        const doughnut = createdoughnutChild(i, len);
+        const doughnut = createDoughnutChild(i, len);
         doughnut.position.set(0, 0, 4 - i * 1.125);
         group.add(doughnut);
         i += 1;
@@ -381,13 +380,58 @@ const createdoughnutGroup = function(){
 //-------- ----------
 // ADD GROUP TO SCENE
 //-------- ----------
-const group = createdoughnutGroup();
+const group = createDoughnutGroup();
 scene.add(group);
 //-------- ----------
 // RENDER SCENE
 //-------- ----------
 camera.position.set(6, 4, 4.5);
 camera.lookAt(0, 0, 0.5);
+renderer.render(scene, camera);
+```
+
+## 4 - The Lathe Goemetry and using that to create a Torus
+
+I assumed that the Torus Geometry constructor might very well extent the [LatheGeometry class](/2023/06/07/threejs-lathe-geometry/), however after taking a look at the source code it would seem that is not the case. In reality the Torusgeometry class is its own thing that extends diretcly from the BufferGeometry class. Still I think that I should have a section on the Lathe Goemetry class in this post as it is possible to make simular shapes with that.
+
+### 4.1 - Basic Tours shape with Lathe Geometry
+
+The Lathe Geometry works by passing an array of vector2 objects that will form a 2d shape that will then be used to create a 3d shapes around an axis. So to make a torus like shape with this I just need to create a curve of a circle, and then just offset the center position of that circle from the origin. This offset would then be like the radius argument that is the one from the origin, and then it would be the radius of the circle that would then be the other radius value of interest with this. After that there is how many Vector2 points that would be how many sides of each circle sense I am using a curve here that would be the value that I given when calling the get points method of the base curve class. The last value of interest when it comes to point density would be the segments value when calling the Lathe geometry constructor function.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// CURVE
+// ---------- ----------
+const radius_origin = 4;
+const radius_tube = 1.00;
+const curve = new THREE.ArcCurve(radius_origin, 0, radius_tube, 0, Math.PI * 2, false);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const segments_curve = 50;
+const v2array = curve.getPoints(segments_curve);
+const segments_lathe = 50;
+const phi_start = 0;
+const phi_length = Math.PI * 2;
+const geometry = new THREE.LatheGeometry( v2array, segments_lathe, phi_start, phi_length );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const mesh1 = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
+scene.add(mesh1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
