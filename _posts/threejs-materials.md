@@ -1,12 +1,12 @@
 ---
-title: Materials in three.js a general overview of the options
+title: Materials in threejs an overview options and features
 date: 2018-04-30 09:14:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-18 09:59:04
-version: 1.59
+updated: 2023-07-18 16:03:02
+version: 1.60
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
