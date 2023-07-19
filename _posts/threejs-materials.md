@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-19 12:02:01
-version: 1.61
+updated: 2023-07-19 12:12:43
+version: 1.62
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -960,9 +960,15 @@ renderer.render(scene, camera);
 
 ## 8 - Textures
 
-In the basic section I covered a simple getting started type example of the use of textures and materials. However there is of course a whole lot more to write about when it comes to textures, and how they overlap with geometry, and yes mesh material options that require a texture as the value to be given. In the basic example I was using the map option for the texture which is a good start but there are of course many other options from one material to another. So in this section the focus is going to be more so on textures, but while I am at it I will of curse need to focus on features of buffer geometry objects as well, mainly the uv attribute. However this is still very much a section on the subject of materials in general with threejs. So there will still be a lot to say about the various options when it comes to the kinds of maps there are to work with from one material to another.
+In the basic section I covered a simple getting started type example of the use of textures and materials. However there is of course a whole lot more to write about [when it comes to textures](/2023/06/27/threejs-texture), and how they overlap with geometry, and yes mesh material options that require a texture as the value to be given. In the basic example I was using the map option for the texture which is a good start but there are of course many other options from one material to another. So in this section the focus is going to be more so on textures, but while I am at it I will of curse need to focus on features of buffer geometry objects as well, mainly the uv attribute. I will also have to at least touch base on mnay other various features of threejs that are relevant to the use of textures with materials such as light sources.
 
-### 8.1 - Set UVmapping of BoxGeometry, diffuse and emissive maps
+However this is still very much a section on the subject of materials in general with threejs. So there will still be a lot to say about the various options when it comes to the kinds of maps there are to work with from one material to another.
+
+### 8.1 - Light, standard material, Set UVmapping of BoxGeometry, diffuse and emissive maps
+
+This example features a helper function that can be called over and over again to create not one, but many textures using canvas elements. I am then using this create canvas texture helper to create not one but two textures. One texture will be used for the map option of an instance of the standard material, and the other texture will be used for the emissive map of the material. 
+
+As I have covered in the mesh materials section the standard material is an example of the kind of material that will respond to a light source. As such the map option does not work the same way as it does in say the basic material as the texture will only show up when some light is shining on it. There is however the emissive color, and with that the emissive map that will work like what one might be used to when it comes to the use of the basic material. So for the instance of the standard material in this demo I am using one texture for the map option, and another for the emissive map option. I am also using the emissive option to set what the emissive color is as I will want it to be something other than the default black color, and there is also the emissive intensity option that will of course adjust the intestacy of the emissive effect.
 
 ```js
 //-------- ----------
