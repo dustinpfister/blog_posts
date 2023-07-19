@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2023-06-04 13:06:54
-version: 1.66
+updated: 2023-07-19 13:05:08
+version: 1.67
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. 
@@ -188,6 +188,89 @@ scene.add(mesh2);
 camera.position.set(2, 2, 2);
 camera.lookAt(mesh2.position);
 renderer.render(scene, camera);
+```
+
+### 1.3 - The order of the points does very much matter
+
+When it comes to the side option of a material that is used with a mesh the default value for this option is the THREE.FrontSide constant. Other options are then THREE.BackSide, and THREE.DoubleSide that do what the same say they do with this. However this does bring up an interesting question as to how the front side of a triangle determined to begin with? Well it has a whole lot to do with the order of the points of the triangle actually and this demo helps to show just that.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER, GRID
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+// 1
+const geometry_1 = new THREE.BufferGeometry();
+const data_pos_1 = new Float32Array([
+            0.0, 1.0, 0.0, // 0
+            -1.0, -1.0, 0.0, // 1
+            1.0, -1.0, 0.0 // 2
+        ]);
+geometry_1.setAttribute('position', new THREE.BufferAttribute(data_pos_1, 3));
+//2
+const geometry_2 = new THREE.BufferGeometry();
+const data_pos_2 = new Float32Array([
+            0.0, 1.0, 0.0, // 0
+            1.0, -1.0, 0.0, // 2
+            -1.0, -1.0, 0.0, // 1
+        ]);
+geometry_2.setAttribute('position', new THREE.BufferAttribute(data_pos_2, 3));
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10));
+// mesh objects with material set in THREE.FrontSide for side property
+const material_mesh = new THREE.MeshBasicMaterial({
+        side: THREE.FrontSide
+    });
+const mesh_1 = new THREE.Mesh(geometry_1, material_mesh);
+mesh_1.position.x = -1.25;
+scene.add(mesh_1);
+const mesh_2 = new THREE.Mesh(geometry_2, material_mesh);
+mesh_2.position.x = 1.25;
+scene.add(mesh_2);
+// points
+const material_points = new THREE.PointsMaterial({
+        size: 0.25,
+        color: new THREE.Color(0, 1, 0)
+    });
+const points_1 = new THREE.Points(geometry_1, material_points);
+points_1.position.copy(mesh_1.position);
+scene.add(points_1);
+const points_2 = new THREE.Points(geometry_2, material_points);
+points_2.position.copy(mesh_2.position);
+scene.add(points_2);
+//-------- ----------
+// RENDER
+//-------- ----------
+const e = new THREE.Euler(0, 0, 0);
+let f = 0;
+let lt = new Date();
+const fps = 30;
+const fm = 300;
+const loop = () => {
+    requestAnimationFrame(loop);
+    const a_frame = f / fm;
+    const now = new Date();
+    const secs = (now - lt) / 1000;
+    if (secs > 1 / fps) {
+        e.y = Math.PI * 2 * a_frame;
+        camera.position.set(0, 1, 1).normalize().applyEuler(e).multiplyScalar(6);
+        camera.lookAt(0, 0, 0);
+        renderer.render(scene, camera);
+        f += 1;
+        f %= fm;
+        lt = now;
+    }
+}
+loop();
 ```
 
 ## 2 - Mutation of box geometry examples
