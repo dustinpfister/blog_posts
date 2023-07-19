@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2023-07-19 13:05:08
-version: 1.67
+updated: 2023-07-19 13:08:54
+version: 1.68
 ---
 
 When getting into the subject of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch such as the position attribute which is the state of the points to begin with. On top of the position attribute there are additional core attributes such as the normals, and the UV attribute that has to do with figuring out what side of a face is the front size, lighting, and texture mapping. 
@@ -193,6 +193,8 @@ renderer.render(scene, camera);
 ### 1.3 - The order of the points does very much matter
 
 When it comes to the side option of a material that is used with a mesh the default value for this option is the THREE.FrontSide constant. Other options are then THREE.BackSide, and THREE.DoubleSide that do what the same say they do with this. However this does bring up an interesting question as to how the front side of a triangle determined to begin with? Well it has a whole lot to do with the order of the points of the triangle actually and this demo helps to show just that.
+
+For this demo I have two geometries created with two position attributes where the values of each point in terms of the x,y and z values are very much the same. However one difference between the two is the order of the indices of the points in the array of the position attribute. The end result is that the front sides between the two are flipped.
 
 ```js
 //-------- ----------
