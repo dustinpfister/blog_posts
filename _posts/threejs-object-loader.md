@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1061
-updated: 2023-07-20 14:17:27
-version: 1.5
+updated: 2023-07-20 14:32:04
+version: 1.6
 ---
 
 The [Object Loader](https://threejs.org/docs/#api/en/loaders/ObjectLoader) in threejs is a loader option that is built into the core of the library itself that can be used to load JSON files that follow the [object format](https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4). Many other loaders for object formats must be added to threejs by making use of an additional add on file beyond just threejs itself so this alone is one reason why one might be interested in the format. However another nice thing about it is that it is also easy to work with when it comes to creating this kind of json data as just simply calling the toJSON method of the object that I want to convert will create the data in an object format, and then I can just pass that to the JSON.stringify method.
@@ -88,9 +88,6 @@ const mesh_json = `
     "object": {
         "uuid": "` + uuid_mesh + `",
         "type": "Mesh",
-        "layers": 1,
-        "matrix": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-        "up": [0, 1, 0],
         "geometry": "` + uuid_geometry + `",
         "material": "` + uuid_material + `"
     }
@@ -160,6 +157,84 @@ renderer.render(scene, camera);
 For this demo I am creating a scene object, along with a mesh object, and a point light. I am then positioning the point light away from the mesh object and then calling the toJSON method off of the scene object. Now for the most part this works fine, but with one little problem it would seem that the change to the position attribute that I made is not being stored into the json data. So the way that I had to fix that here when it comes to converting the JSON string back to an object was to get a reference to the point light, and then set the position again.
 
 The good news here is that if I aim to use the object loader to load one object at a time, and then do something else to position things then this way of creating the json data will work just fine. However if I want to create a whole static scene with a bunch of child objects all over the place this presets a problem. The good news though is that this is a limitation of the Object3d.toJSON generator and not the parse method of the Object loader. When I look at the source code for the Object loader it does look like it will process a key value pair for the position. However if the position is key is not there, or if it is there but a matrix key is there then it will not work.
+
+### 1.3 - A load one JSON file Demo
+
+Well I have wrote a thing or two about the parse method of the Object Loader, and also some ways of how to go about creating the JSON data to begin with. However there Object loader is very much, well a loader, so I should have at east one example where I am loading an external JOSN file then. For this demo then I came up with a JSON file that is a hacked over export of what I worked out in the above example with the scene where I have a bunch of objects that form a very basic scene object. I cleaned up things with the geometry, materials, and well all of the objects really. 
+
+However the major change that I did is I removed the matrix keys and in place of those I uses simple position keys rather than bothering with Matrix4 objects. This is very much a basic section after all, and also I often prefer to go with the use of the actually. I can see why things are set up this way though as Matrix4 objects can be used as a way to store position, rotation and scale all in one array of values.
+
+```json
+{
+    "metadata": {
+        "version": 4.5,
+        "type": "Object",
+        "generator": "Hacked Over Object3D.toJSON Export"
+    },
+    "geometries": [{
+            "uuid": "5f3a2c7e-e238-4f8c-a68b-fe2190c4d7e5",
+            "type": "BoxGeometry",
+            "width": 1,
+            "height": 1,
+            "depth": 1
+        }
+    ],
+    "materials": [{
+            "uuid": "e12a0bbf-4405-4fb8-a000-f417d24c01c6",
+            "type": "MeshPhongMaterial",
+            "color": 16711680,
+            "emissive": 16777215,
+            "emissiveIntensity": 0.05,
+            "specular": 1118481,
+            "shininess": 30
+        }
+    ],
+    "object": {
+        "uuid": "d9157825-c7c5-4bd9-9c8c-21d21087f883",
+        "type": "Scene",
+        "position": [0,0,0],
+        "children": [{
+                "uuid": "87313a12-d689-403f-88d2-ad29743e7d2c",
+                "type": "Mesh",
+                "position": [0,0,0],
+                "geometry": "5f3a2c7e-e238-4f8c-a68b-fe2190c4d7e5",
+                "material": "e12a0bbf-4405-4fb8-a000-f417d24c01c6"
+            }, {
+                "uuid": "953c384f-755c-4658-94cd-a5bd246e8df7",
+                "type": "PointLight",
+                "position": [3,2,1],
+                "color": 16777215,
+                "intensity": 1
+            }
+        ]
+    }
+}
+```
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// LOAD, RENDER
+// ---------- ----------
+const loader = new THREE.ObjectLoader();
+const url = '/forpost/threejs-object-loader/s1-3-basic-load-one/scene.json';
+const on_done = (obj) => {
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    renderer.render(obj, camera);
+};
+loader.load(url, on_done);
+```
 
 ## Conclusion
 
