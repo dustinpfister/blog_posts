@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1061
-updated: 2023-07-20 10:57:32
-version: 1.4
+updated: 2023-07-20 14:17:27
+version: 1.5
 ---
 
 The [Object Loader](https://threejs.org/docs/#api/en/loaders/ObjectLoader) in threejs is a loader option that is built into the core of the library itself that can be used to load JSON files that follow the [object format](https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4). Many other loaders for object formats must be added to threejs by making use of an additional add on file beyond just threejs itself so this alone is one reason why one might be interested in the format. However another nice thing about it is that it is also easy to work with when it comes to creating this kind of json data as just simply calling the toJSON method of the object that I want to convert will create the data in an object format, and then I can just pass that to the JSON.stringify method.
@@ -36,7 +36,7 @@ When I first wrote the blog post I was following my [r152 style rules](https://g
 
 ## 1 - Some Basic Examples of the Object Loader in threejs
 
-To start out with the Object Loader in this section I will be going over a few basic examples. There are several ways to go about getting started with this, but the first thing is to find out how to go about creating JSON data to begin with. So many of the examples here will be focusing on that and the use of the parse method of the Object Loader as a way to parse this JSON data into an object that can then be used in a project.
+To start out with the Object Loader in this section I will be going over a few basic examples. There are several ways to go about getting started with this, but the first thing is to find out how to go about creating JSON data to begin with. So many of the examples here will be focusing on that and the use of the parse method of the Object Loader as a way to parse this JSON data into an object that can then be used in a project. Because we are talking about a plain text format here this is a good format to get started with as just hand coded raw text is one way to get started. However in the long run it would be best to make use of options that can be used to generate the json data by just calling the toJSON method of the source object that I want to convert to this standard.
 
 ### 1.1 - Creating an object from a hard coded JSON string using the parse method
 
@@ -107,6 +107,59 @@ renderer.render(scene, camera);
 ```
 
 Now we come to the part of the JSON string that will be the Object3D class based object to store this way. For now this object is just a Single Mesh Object, however there is getting into children for this mesh object, and yes the type of the Object can be Scene rather than mesh. However this is still just the very first example of this basic section of the post, so lets refrain from anything fancy for the moment.
+
+### 1.2 - The toJSON method of Objects
+
+So hand coding JSON files is all find and good, but lets get real here this is not how to go about creating these kinds of assets right? Well no there is of course the toJSON method that can be called off of any object3d class based object to which I want an object in the format that is used for the object loader, and then I can pass that to JSON.stringify. However I have found that the results that this kind of generator creates is not always what I might want, so it still seems like I need to hack over it a little. However depending on how you aim to use the object loader you might not need to bother with that. In this demo I will write about one issue that I have fond when it comes to the position of objects and the use of the Object3d.toJSON generator.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// SOURCE SCENE OBJECT
+// ---------- ----------
+const scene_source = new THREE.Scene();
+const geometry = new THREE.BufferGeometry();
+geometry.copy( new THREE.BoxGeometry(1,1,1) );
+const material = new THREE.MeshPhongMaterial({ color: 0xff0000, emissive: 0xffffff, emissiveIntensity: 0.05 });
+const mesh_source = new THREE.Mesh( geometry, material );
+scene_source.add(mesh_source);
+const light_source = new THREE.PointLight(0xffffff, 1);
+light_source.position.set( 1, 3, 2);
+light_source.name = 'point_light'
+scene_source.add(light_source);
+const scene_json = JSON.stringify( scene_source.toJSON() );
+// logging the JSON text
+console.log( scene_json );
+// ---------- ----------
+// CREATING A SCENE OBJECT FROM THE JSON TEXT
+// ---------- ----------
+// creating a new mesh from the JSON text
+const scene = new THREE.ObjectLoader().parse( JSON.parse( scene_json ) );
+// !!! looks like the 'position' prop of child objects is not getting stored.
+// that is a problem
+const pl = scene.getObjectByName('point_light');
+pl.position.set(1, 3, 2);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+For this demo I am creating a scene object, along with a mesh object, and a point light. I am then positioning the point light away from the mesh object and then calling the toJSON method off of the scene object. Now for the most part this works fine, but with one little problem it would seem that the change to the position attribute that I made is not being stored into the json data. So the way that I had to fix that here when it comes to converting the JSON string back to an object was to get a reference to the point light, and then set the position again.
+
+The good news here is that if I aim to use the object loader to load one object at a time, and then do something else to position things then this way of creating the json data will work just fine. However if I want to create a whole static scene with a bunch of child objects all over the place this presets a problem. The good news though is that this is a limitation of the Object3d.toJSON generator and not the parse method of the Object loader. When I look at the source code for the Object loader it does look like it will process a key value pair for the position. However if the position is key is not there, or if it is there but a matrix key is there then it will not work.
 
 ## Conclusion
 
