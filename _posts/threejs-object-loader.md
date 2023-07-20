@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1061
-updated: 2023-07-20 10:51:05
-version: 1.3
+updated: 2023-07-20 10:57:32
+version: 1.4
 ---
 
 The [Object Loader](https://threejs.org/docs/#api/en/loaders/ObjectLoader) in threejs is a loader option that is built into the core of the library itself that can be used to load JSON files that follow the [object format](https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4). Many other loaders for object formats must be added to threejs by making use of an additional add on file beyond just threejs itself so this alone is one reason why one might be interested in the format. However another nice thing about it is that it is also easy to work with when it comes to creating this kind of json data as just simply calling the toJSON method of the object that I want to convert will create the data in an object format, and then I can just pass that to the JSON.stringify method.
@@ -108,4 +108,7 @@ renderer.render(scene, camera);
 
 Now we come to the part of the JSON string that will be the Object3D class based object to store this way. For now this object is just a Single Mesh Object, however there is getting into children for this mesh object, and yes the type of the Object can be Scene rather than mesh. However this is still just the very first example of this basic section of the post, so lets refrain from anything fancy for the moment.
 
+## Conclusion
+
+That will be it for the Object Loader thus far between now and then next time I do a little editing for this post. Although there are a lot of options for loaders not just built in but also with respect to add on loaders such as the [DAE Loader](/2021/04/30/threejs-dae-collada-loader/) just to name one, I do like the built in object loader for many reasons. For one reason it is a plain text format which is nice because although it might be time consuming to do so, the data can be created and edited with any plain text editor. However it is not just that it is a plain text format, it is also because the plain text is JSON rather than some other plain text format like XML.
 
