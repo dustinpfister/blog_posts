@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1060
-updated: 2023-07-14 14:14:06
-version: 1.10
+updated: 2023-07-20 15:18:54
+version: 1.11
 ---
 
 The [animation mixer in threejs](https://threejs.org/docs/#api/en/animation/AnimationMixer) is what can be used to play animations for a given object. There is however a whole lot of other classes and features that one will also need to be aware of even to just create a very basic hello world type example of this sort of thing. As such it should go without saying that this is one of the more advanced topics when it comes to using threejs, but still it is only so complex and I have found that once I have got a basic hello world style example up and running the more complex use case examples end up getting a whole lot easier to follow.
@@ -494,7 +494,6 @@ const state = {
    mesh: null,
    mixer: null
 };
-// loop
 let frame = 0;
 const frame_max = 30;
 const loop = () => {
@@ -530,9 +529,12 @@ loader.load(
            [ 0, 0.30, 0.5, 0.15, 0]
         );
         const clip = new THREE.AnimationClip('flap', -1, [ track ] );
+        state.mesh.animations.push( clip );
         state.mixer = new THREE.AnimationMixer(state.mesh);
-        const action = state.mixer.clipAction( clip );
+        const action = state.mixer.clipAction( state.mesh.animations[0] );
         action.play();
+        // LOGGING OIT THE JSON FOR THIS TO USE WITH OBJECT LOADER
+        console.log( JSON.stringify( state.mesh.toJSON()) );
         // start loop
         loop();
     }
