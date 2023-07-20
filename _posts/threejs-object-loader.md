@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1061
-updated: 2023-07-20 10:15:09
-version: 1.2
+updated: 2023-07-20 10:51:05
+version: 1.3
 ---
 
 The [Object Loader](https://threejs.org/docs/#api/en/loaders/ObjectLoader) in threejs is a loader option that is built into the core of the library itself that can be used to load JSON files that follow the [object format](https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4). Many other loaders for object formats must be added to threejs by making use of an additional add on file beyond just threejs itself so this alone is one reason why one might be interested in the format. However another nice thing about it is that it is also easy to work with when it comes to creating this kind of json data as just simply calling the toJSON method of the object that I want to convert will create the data in an object format, and then I can just pass that to the JSON.stringify method.
@@ -36,9 +36,15 @@ When I first wrote the blog post I was following my [r152 style rules](https://g
 
 ## 1 - Some Basic Examples of the Object Loader in threejs
 
+To start out with the Object Loader in this section I will be going over a few basic examples. There are several ways to go about getting started with this, but the first thing is to find out how to go about creating JSON data to begin with. So many of the examples here will be focusing on that and the use of the parse method of the Object Loader as a way to parse this JSON data into an object that can then be used in a project.
+
 ### 1.1 - Creating an object from a hard coded JSON string using the parse method
 
-One way to get started with this Object Loader, and also to get familiar with the format, would be to use the parse method of the loader to create an object from a hard coded JSON string.
+One way to get started with this Object Loader, and also to get familiar with the format, would be to just start hand coding a JSON string by just studied the format of the JSON and then doing it that way. One thing about this is that I will need to have a way to generate UUID strings for the uuid keys of the various objects. For this task there is the generateUUID method in the [MathUtils object of threejs](/2022/04/11/threejs-math-utils/) which I can call for each ID that I need. 
+
+So now I can work out what the main JSON object will be by just using back ticks so I can just go ahead and have End Of Line chars in the JSON string. The format should include a metadata object and I will want to go with version 4.5 as of this writing. The type key for the metadata object should be \"Object\", and for the generator key I just typed \"Hand Coded\" just to make it clear as to how this data was created. After the meta data object I will then want to add a geometries, and materials arrays that will contain data for all the geometry and materials used for the main object as well as all the children as well. However for this very first demo I am not going to do anything that advanced and just stick with making a single mesh object that make used of just one geometry and material.
+
+When it comes to working out a geometry for the object I can use one of the built in constructor function options for this such as [BoxGeometry](/2021/04/26/threejs-box-geometry/) by just setting that as the value for the type key in place of BufferGeometry. This way I can just pass some key values that will be used for the various parameters when calling the constructor function for that. For the material I am just setting the type key to the [MeshNormalMaterial](/2021/06/23/threejs-normal-material/) as that is a nice option that does not require anything fancy with light and textures to show depth.
 
 ```js
 // ---------- ----------
@@ -90,7 +96,6 @@ const mesh_json = `
     }
 }
 `
-
 const mesh = new THREE.ObjectLoader().parse( JSON.parse( mesh_json ) );
 scene.add(mesh);
 // ---------- ----------
@@ -100,3 +105,7 @@ camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+Now we come to the part of the JSON string that will be the Object3D class based object to store this way. For now this object is just a Single Mesh Object, however there is getting into children for this mesh object, and yes the type of the Object can be Scene rather than mesh. However this is still just the very first example of this basic section of the post, so lets refrain from anything fancy for the moment.
+
+
