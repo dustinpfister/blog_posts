@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1061
-updated: 2023-07-20 14:32:04
-version: 1.6
+updated: 2023-07-20 14:45:14
+version: 1.7
 ---
 
 The [Object Loader](https://threejs.org/docs/#api/en/loaders/ObjectLoader) in threejs is a loader option that is built into the core of the library itself that can be used to load JSON files that follow the [object format](https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4). Many other loaders for object formats must be added to threejs by making use of an additional add on file beyond just threejs itself so this alone is one reason why one might be interested in the format. However another nice thing about it is that it is also easy to work with when it comes to creating this kind of json data as just simply calling the toJSON method of the object that I want to convert will create the data in an object format, and then I can just pass that to the JSON.stringify method.
@@ -107,7 +107,7 @@ Now we come to the part of the JSON string that will be the Object3D class based
 
 ### 1.2 - The toJSON method of Objects
 
-So hand coding JSON files is all find and good, but lets get real here this is not how to go about creating these kinds of assets right? Well no there is of course the toJSON method that can be called off of any object3d class based object to which I want an object in the format that is used for the object loader, and then I can pass that to JSON.stringify. However I have found that the results that this kind of generator creates is not always what I might want, so it still seems like I need to hack over it a little. However depending on how you aim to use the object loader you might not need to bother with that. In this demo I will write about one issue that I have fond when it comes to the position of objects and the use of the Object3d.toJSON generator.
+So hand coding JSON files is all find and good, but lets get real here this is not how to go about creating these kinds of assets right? Well no there is of course the toJSON method that can be called off of any object3d class based object to which I want an object in the format that is used for the object loader, and then I can pass that to JSON.stringify. However I have found that the results that this kind of generator creates is not always what I might want, so it still seems like I need to hack over it a little. However depending on how you aim to use the object loader you might not need to bother with that. In this demo I will write about one issue that I have found when it comes to the position of objects and the use of the Object3d.toJSON generator. Well for some it might be an issue, but for others its just the way it should be done, I'll explain.
 
 ```js
 // ---------- ----------
@@ -156,7 +156,7 @@ renderer.render(scene, camera);
 
 For this demo I am creating a scene object, along with a mesh object, and a point light. I am then positioning the point light away from the mesh object and then calling the toJSON method off of the scene object. Now for the most part this works fine, but with one little problem it would seem that the change to the position attribute that I made is not being stored into the json data. So the way that I had to fix that here when it comes to converting the JSON string back to an object was to get a reference to the point light, and then set the position again.
 
-The good news here is that if I aim to use the object loader to load one object at a time, and then do something else to position things then this way of creating the json data will work just fine. However if I want to create a whole static scene with a bunch of child objects all over the place this presets a problem. The good news though is that this is a limitation of the Object3d.toJSON generator and not the parse method of the Object loader. When I look at the source code for the Object loader it does look like it will process a key value pair for the position. However if the position is key is not there, or if it is there but a matrix key is there then it will not work.
+The good news here is that if I aim to use the object loader to load one object at a time, and then do something else to position things then this way of creating the json data will work just fine. However if I want to create a whole static scene with a bunch of child objects all over the place this presets a problem. The good news though is that this is a limitation of the Object3d.toJSON generator and not the parse method of the Object loader. When I look at the source code for the Object loader it does look like it will process a key value pair for the position. However if the position is key is not there, or if it is there but a matrix key is there then it will not work. Also additional good news is that this is not even a problem at all if one is willing to get into how to work with Matrix4 objects as they can be used to store position, rotation, and scale as one array of values. It would seem that is what is expected rather than the use of verctor3 objects for position and scale, and Euler objects for rotation.
 
 ### 1.3 - A load one JSON file Demo
 
@@ -211,6 +211,9 @@ However the major change that I did is I removed the matrix keys and in place of
 }
 ```
 
+
+So now that I have a JSON file to load I can then use the Object Loader to load that JSON file and parse it into a scene object. To do that I just need to create an instance of the Object Loader, and then call the load method off of that instance. When I call the load method I will just need to parse the URL to the json file as the first argument, and then a call back function that I want to run when that file is done loading.
+
 ```js
 // ---------- ----------
 // IMPORT - threejs and any addons I want to use
@@ -235,6 +238,8 @@ const on_done = (obj) => {
 };
 loader.load(url, on_done);
 ```
+
+There is a whole lot more to write about when it comes this this topic of course as a lot of things will pop up when it comes to things like loading more than one file, and displaying process. Much of that has to do with loaders in general though, and I am thinking that maybe much of that should be handing in a section on the loading manager or maybe even a whole other blog post on that topic.
 
 ## Conclusion
 
