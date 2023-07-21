@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-21 11:02:48
-version: 1.64
+updated: 2023-07-21 14:30:36
+version: 1.65
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1216,6 +1216,70 @@ scene.add(new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material ));
 // RENDER
 //-------- ----------
 camera.position.set(2, 1, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 10 - Shadows
+
+For this section I will be taking a look at the use of shadows with materials. There are a lot of details to be aware of when it comes to getting these up and running with a project. There is not just what one should be aware of when it comes to materials mind you, but also the various other typical features of the project. For example there is checking if the renderer that you are using will even support shades to begin with, when t comes to that the webGl Renderer seems to do so just fine, but the shadow map setting might need to be set to true first. There are also a lot of other properties at the mesh object level, and also with the light sources that one is using as well that need to be addressed.
+
+### 10.1 - Spotlight Example of Shadows
+
+For this example I worked out a bAsic hello world kind of example with shadows. When setting up the renderer I need to make sure shadow map is set to true for it. After that there are the castShadow and receive shadow booleans of the mesh objects that I also want to make sure are set to true as well. When it comes to the spot light that I am using there are a whole bunch of properties that I might want to adjust as well. However when it comes to the materials uses it would seem that there is not that much that I need to bother with, at least when it comes to the basics with this when using the standard material, and phong material at least. One thing that I have noticed thus far is that the material option used for an object that is casting a shadow might not matter that much, but the object that is receiving a shadow does very much matter. Although much of this has to do with the renderer, mesh, and light source objects the material used still does need to support these shadow effects as well.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.shadowMap.enabled = true;
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// MESH OBJECTS
+// ---------- ----------
+const cube = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshStandardMaterial({
+            color: 0xff0000
+       }));
+cube.position.set(0, 0.5, 0);
+cube.castShadow = true;
+scene.add(cube);
+const plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(10, 10, 8, 8),
+        new THREE.MeshPhongMaterial({
+            color: 0x00afaf
+        }));
+plane.geometry.rotateX(Math.PI * 1.5)
+plane.receiveShadow = true; // the plane will receive a shadow
+scene.add(plane);
+// ---------- ----------
+// SPOTLIGHT
+// ---------- ----------
+const spotLight = new THREE.SpotLight(0xffffff);
+// I must at least set the caseShadow boolean
+// of the spotLight to true
+spotLight.castShadow = true;
+// additional shadow properties of interest
+spotLight.shadow.mapSize.width = 1024;
+spotLight.shadow.mapSize.height = 1024;
+spotLight.shadow.camera.near = 1;
+spotLight.shadow.camera.far = 1000;
+// additional spotlight properties of interest
+spotLight.intensity = 2;
+spotLight.penumbra = .5;
+spotLight.angle = Math.PI / 2.5;
+spotLight.distance = 1000;
+spotLight.position.set(-2.5, 2.5, 2.5);
+scene.add(spotLight);
+// ---------- ----------
+// CALLING RENDER OF RENDERER
+// ---------- ----------
+camera.position.set(4, 4, 4);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
