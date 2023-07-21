@@ -5,13 +5,11 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2023-03-23 06:57:16
-version: 1.110
+updated: 2023-07-21 10:32:40
+version: 1.111
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to working with materials in [threejs](https://threejs.org/). That is that when it comes to the various kinds of maps there are to work with in a material, such as diffuse maps, [alpha maps](/2019/06/06/threejs-alpha-map/), [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth, one way or another I need to load or create a texture. One way to add a texture to a material would be to use the [built in texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a [canvas element](/2017/05/17/canvas-getting-started/), the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor
-
-So canvas elements are a nice way to get started with textures in three.js that involve the use of additional javaScript code rather than loading external binary image files. Also because I am creating textures with code, this allows me to create textures that are the result of some kind of pure function, or [stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) rather than a fixed static image. I can update the state of this texture by just drawing to the canvas element again allowing me to have animated textures. Also I have a wide range of methods to work with in the 2d drawing context which is a plus compared to other options for creating textures with javaScript code such as [data textures](https://threejs.org/docs/#api/en/textures/DataTexture).
 
 There is a whole lot of ground to cover when it comes to getting into this sort of thing if you do not have much experience working with canvas elements yet. The process of creating a texture with a canvas element is simple enough when it comes to the fact that I just need to pass the canvas element to a constructor function and the desired texture object is returned. However there are a whole bunch of other topics that branch off from this that have to do with canvas elements in detail, as well as other closely related threejs topics such as the uv attributes of buffer geometry instances that are used in conjuration with one or more materials.
 
@@ -49,14 +47,9 @@ In other words something like this:
 
 There is of course a great deal more to the 2d drawing context, and the various other client side javaScript features for creating textures with canvas. I have wrote a post on [getting started with canvas](/2017/05/17/canvas-getting-started/) that might be worth checking out if you are totally new to canvas elements.
 
-### The source code examples here can be found on Github
+## Other options for crating textures with javaScript code
 
-The [source code examples in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-canvas-texture) can be found in my test threejs repo, along with all the other examples of all the [other posts I have wrote on threejs thus far](/categories/three-js/). This is a repository that I keep working on a little fairly often when it comes to writing new content on threejs, as well as editing older content such as this post which I have edited many times thus far. If there is something that does not sit right with you about the source code examples here, there is making a comment in this post, but if you want to make a pull request my test threejs repository is where to go about doing that.
-
-### Version numbers matter with threejs
-
-When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was using r140. I do make an effort to come around and edit my threejs posts now and then to fix anything that might brake in late versions of threejs. The library still moves pretty fast in terms of development compared to other projects where progress is kind of slow, so always be mindful of the version of threejs that is being used and how old content on the web might be.
-
+Another option for creating a texture with a little javaScript code would be to use [data textures](https://threejs.org/docs/#api/en/textures/DataTexture). This is a way to create a texture from raw color channel data rather than using a context of a canvas element. There are also ways to convert back and form from this kind of state.
 
 ### Creating a texture with canvas using THREE.CanvasTexture or just THREE.Texture
 
@@ -111,6 +104,14 @@ So now that we have the basics when it comes to making a material with a texture
 ### There is also loading external images, and dae files with textures
 
 Using canvas elements might be fun, but I am more of the mind set that I should just use static image files to skin objects these days. When doing so there is the [built in texture loader in threejs](/2021/06/21/threejs-texture-loader/) that is one way to go about loading an external image, and create a texture with that image. However if you have a preferred way to go about loading one or more images in a client side javaScript project another option would be to use the THREE.Texture constructor directly. However there is also yet even another option that I think is the best so far when it comes to starting to create external assets with a program like blender and that is to [have dae files with external textures](/2021/06/25/threejs-examples-dae-tools/) that also need to be loaded with them.
+
+### The source code examples here can be found on Github
+
+The [source code examples in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-canvas-texture) can be found in my test threejs repo, along with all the other examples of all the [other posts I have wrote on threejs thus far](/categories/three-js/). This is a repository that I keep working on a little fairly often when it comes to writing new content on threejs, as well as editing older content such as this post which I have edited many times thus far. If there is something that does not sit right with you about the source code examples here, there is making a comment in this post, but if you want to make a pull request my test threejs repository is where to go about doing that.
+
+### Version numbers matter with threejs
+
+When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was using r140. I do make an effort to come around and edit my threejs posts now and then to fix anything that might brake in late versions of threejs. The library still moves pretty fast in terms of development compared to other projects where progress is kind of slow, so always be mindful of the version of threejs that is being used and how old content on the web might be.
 
 ## 1 - Some Basic Examples of canvas elements as textures in threejs
 
@@ -1489,5 +1490,7 @@ What is great about using built in geometry constructors like the THREE.BoxGeome
 ## Conclusion
 
 That about does it when it comes to the basics, and a little beyond just the basics at least when it comes to using canvas elements to create textures in three.js. Of course there is much more to write about when it comes to working with textures, maps, materials, and [material index values](/2018/05/14/threejs-mesh-material-index/) but maybe all of those things are matters for other posts on three.js.
+
+So canvas elements are a nice way to get started with textures in threejs that involve the use of additional javaScript code rather than loading external binary image files. Also because I am creating textures with code, this allows me to create textures that are the result of some kind of pure function, or [stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) rather than a fixed static image. I can update the state of this texture by just drawing to the canvas element again allowing me to have animated textures. Also I have a wide range of methods to work with in the 2d drawing context which is a plus compared to other options for creating textures with javaScript code such as data textures.
 
 This is a post that I do come around to edit now and then, and with that said it is only a matter of time until I get around to expanding this post even more when it comes to this topic.
