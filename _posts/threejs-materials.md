@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-20 12:58:28
-version: 1.63
+updated: 2023-07-21 11:02:48
+version: 1.64
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1174,6 +1174,48 @@ scene.add(mesh);
 // RENDER
 //-------- ----------
 camera.position.set(1.25, 1.25, 1.25);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+## 9 - Light and Materials
+
+Of course I am going to need to write at least a few things about light sources and materials in general in threejs. The first thing that people that are new to threejs should know is that not all materials will work with light sources to begin with. Another major thing is that some of the options of materials will work a little differently between certain materials. I would say that this is the case with the color option of the basic material compared to that of a material that will work with light such as the standard material. So in this section I will be focusing on at least some of these basic details about light. You might want to check out my [main blog post on light in threejs](/2022/02/25/threejs-light/) if you would like to read up more on this subject though.
+
+### 9.1 - Getting started with Directional Light
+
+A good option to start with I think would be directional light as a light source. This is a kind of object where I just set the direction part of the Vector of the position property of the directional light object to create a situation in which light is moving in an even, parallel direction along the direction part alone of the position. Sense it is just the direction part of the vector that matters with this light option I might choose to [normalize the vector](/2021/06/14/threejs-vector3-normalize/) to a length of 1.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(3, 2, 1).normalize();
+scene.add(dl);
+//-------- ----------
+// INSTANCE OF THE STANDARD MATERIAL
+//-------- ----------
+const material = new THREE.MeshStandardMaterial({
+    color: 0xff0000
+});
+//-------- ----------
+// GRID AND MESH
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+scene.add(new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material ));
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 1, 3);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
