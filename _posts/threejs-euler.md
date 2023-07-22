@@ -5,15 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2023-03-25 10:22:56
-version: 1.39
+updated: 2023-07-22 11:37:15
+version: 1.40
 ---
 
 In [threejs](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is an option for setting the local rotation of an object. The use of this class of object will also come into play for a wide range of other tasks that pop up now and then such as when using the [apply euler method of the vector3 class](/2021/06/18/threejs-vector3-apply-euler/).
 
 The [rotation property of the Object3d class](/2022/04/08/threejs-object3d-rotation/) is an instance of Euler, and the [Object3d class](/2018/04/23/threejs-object3d/) is a base Class for many objects in threejs including things like Mesh, Group, and Camera objects just to name a few examples. Speaking of Scene objects that too is an example of an object that is based off of the Object3d Class and thus also has a rotation property that is an instance of Euler.
 
-The Euler class goes hand in hand with the [Vector3 Class](/2018/04/15/threejs-vector3/) as the Euler class has to do with angles, while Vector3 has to do with a position. A great deal of what is done in threejs has to do with moving and rotating objects around, so Vector3 is what can be used to set a position, while Euler is a way to set the orientation of the object. There are however shortcommings with the Euler class, and as such there are a number of other options for setting orentation as well that I shoud mention in this post.
+The Euler class goes hand in hand with the [Vector3 Class](/2018/04/15/threejs-vector3/) as the Euler class has to do with angles, while Vector3 has to do with a position. A great deal of what is done in threejs has to do with moving and rotating objects around, so Vector3 is what can be used to set a position, while Euler is a way to set the orientation of the object. There are however shortcomings with the Euler class, and as such there are a number of other options for setting orientation as well that I should mention in this post.
+
+Euler Objects are easy to work with, but they do still have there limitations. As such sooner or later one will need to look into other threejs features for handing rotations, mainly quaternions and matrix4 objects. However if you are new to threejs I would highly recommend starting with Eulers before progressing into reading more on these alternatives.
 
 <!-- more -->
 
@@ -22,7 +24,7 @@ The Euler class goes hand in hand with the [Vector3 Class](/2018/04/15/threejs-v
 
 ## The Euler Class in threejs and what to know first
 
-This is a post on the Euler Class in threejs, as such I trust that you have at least some background when it comes to the basics of threejsthreejs-getting-started and javaScript in general. So if you are new to threejs you might want to start with some kind of [getting started post on threejs](/2018/04/04/threejs-getting-started/) in general as a basic starting point for the basics of setting up a scene and so forth.
+This is a post on the Euler Class in threejs, as such I trust that you have at least some background when it comes to the basics of getting started with threejs and javaScript. So if you are new to threejs you might want to start with some kind of [getting started post on threejs](/2018/04/04/threejs-getting-started/) in general. Although I will not be getting into every little key detail that you should know before hand here, I still do like to use these opening sections to write about some closely related topics to the over all theme of the post.
 
 ### There is also the Object3d look at method
 
@@ -42,7 +44,7 @@ The source code examples for this post can be found in my [test threejs Github r
 
 ### Version Numbers Matter with threejs
 
-In this post I was using [threejs r127](https://github.com/mrdoob/three.js/releases/tag/r127), and the last time I cam around to do a little editing I was using r146. Make sure that you are using that version if the code examples here are breaking for you. I can not say that much has changed with the Euler class specifically sense I started using threejs many years ago now, but that is certainly not the case with everything else in the library.
+In this post I was using [threejs r127](https://github.com/mrdoob/three.js/releases/tag/r127), and the last time I cam around to do a little editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Make sure that you are using that version if the code examples here are breaking for you. I can not say that much has changed with the Euler class specifically sense I started using threejs many years ago now, but that is certainly not the case with everything else in the library.
 
 ## 1 - Some basic Examples of the Euler class in threejs
 
