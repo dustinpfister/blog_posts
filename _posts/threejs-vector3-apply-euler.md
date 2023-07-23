@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2023-03-25 11:33:03
-version: 1.51
+updated: 2023-07-23 08:44:28
+version: 1.52
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -38,7 +38,7 @@ The source code examples that I am writing about in this post can also be found 
 
 ### Version Numbers matter with threejs
 
-When I wrote this post I was using r127 of threejs, and the last time I came around to do a little editing I was using r146 of the library. I have made a habit of making sure that I always mentioning what version I was using when writing a post like this because of code breaking changes that are made to the library often.
+When I wrote this post I was using r127 of threejs, and the last time I came around to do a little editing I was using [r146 of the library](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). I have made a habit of making sure that I always mentioning what version I was using when writing a post like this because of code breaking changes that are made to the library often.
 
 ## 1 - Some basics examples of the Apply Euler method
 
