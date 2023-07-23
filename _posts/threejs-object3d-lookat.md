@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2023-07-23 08:42:26
-version: 1.60
+updated: 2023-07-23 08:44:28
+version: 1.61
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), after all for the most part I just call the method, pass a Vector3 object or three numbers that is the position in space I want and object to face, and that's it. However it turns out that there is a little more to it that just that with many little cases that will pop up from time ot time. 
@@ -46,7 +46,7 @@ The source code examples that I am writing about here can also be found in [my t
 
 ### Version numbers matter with three.js
 
-When I first wrote this post I was using three.js version r127 which was a late version of three.js as of April of 2021, and the last time I came around to do some editing I was testing out the source code examples on r140. I do not think much has changed with the look at method from the point that I started write posts on three.js back in 2018 when I was using r91. Still it is possible that code breaking changed will be made to three.js that might effect other parts of the code examples that I am writing about here. So always take care when reading about three.js code examples on the open web, more so than usual with three.js as this is still a very fast moving library in terms of development.
+When I first wrote this post I was using three.js version r127 which was a late version of three.js as of April of 2021, and the last time I came around to do some editing I was [testing out the source code examples on r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). I do not think much has changed with the look at method from the point that I started write posts on three.js back in 2018 when I was using r91. Still it is possible that code breaking changed will be made to three.js that might effect other parts of the code examples that I am writing about here. So always take care when reading about three.js code examples on the open web, more so than usual with three.js as this is still a very fast moving library in terms of development.
 
 ## 1 - Some Basic examples of the Object3d.lookAt method
 
