@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2023-07-24 13:46:22
-version: 1.40
+updated: 2023-07-24 13:48:52
+version: 1.41
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. It works by passing a geometry to which I want the edges from and returns a new geometry that will be just the edges from the given source geometry. There is just one more additional argument when calling the constructor that is a threshold angle.
@@ -80,7 +80,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-Although this might work it does not give me the kind of result that I was hoping for. The reason way is that although the geometry I am working with will work well for Mesh objects it might not be set up just right for Lines, or Line Segments. So then there is making use of the Edge Geometry Constructor to see if that can be used to get the kind of end result that I want.
+Although this might work it does not give me the kind of result that I was hoping for. The reason why is that although the geometry I am working with will work well for Mesh objects it might not be set up just right for Lines, or Line Segments. So then there is making use of the Edge Geometry Constructor to see if that can be used to get the kind of end result that I want for that kind of use case.
 
 ### 1.2 - Using the Edge geometry constructor
 
