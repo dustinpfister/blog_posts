@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2023-03-28 07:24:54
-version: 1.35
+updated: 2023-07-24 10:35:04
+version: 1.36
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores a instance of the THREE.Euler class for the current local rotation of an object. What is nice about Euler objects is that they are easy to work with compared to some alternative options such a [Quaternion objects](https://threejs.org/docs/#api/en/math/Quaternion), however it is possible to run into problems like [Gimbal Lock](https://en.wikipedia.org/wiki/Gimbal_lock) that can be addressed with such alternatives.
@@ -50,7 +50,7 @@ The source code examples that I am writing about in this post [are up on Gitub](
 
 ### Be mindful of version numbers with threejs
 
-When I first wrote this post I was using r135 of threejs, which was still a fairly new version of threejs at the time I started this post. The last time I came around to do some editing I made sure all the examples are still working fine with r146. I take a moment to always mention what version I was using when wrote a post on threejs because I have been using it long enough to know that code breaking changes are made to the library often.
+When I first wrote this post I was using r135 of threejs, which was still a fairly new version of threejs at the time I started this post. The last time I came around to do some editing I made sure all the examples are still [working fine with r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). I take a moment to always mention what version I was using when wrote a post on threejs because I have been using it long enough to know that code breaking changes are made to the library often.
 
 ## 1 - Basic example of the rotation property of Object3d
 
