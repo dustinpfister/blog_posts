@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-24 13:32:40
-version: 1.68
+updated: 2023-07-24 13:37:50
+version: 1.69
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1352,7 +1352,7 @@ I thought that I should start a section on the [subject of FOG and materials](/2
 
 ### 12.1 - EXP2 FOG
 
-Here I have an animation loop demo of THREE.FogExp2.
+Here I have an animation loop demo of THREE.FogExp2 where I pass the color I want to use as the first argument and then a density value for the fog. I then this fog object as the value for scene.fog, and then any material that supports fog will then be effected by it such as with the mesh basic material which is what I am using in this demo here. I will also more often than not want to set the background color to that of the fig color as well as the fog will just effect materials and not much of anything else. So If I am not going to add additional mesh objects to serve as background in the scene that will also be effected by the fog I will want to set the style of my solid background to work well with what I want to do here.
 
 ```js
 //-------- ----------
