@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2023-07-24 10:35:03
-version: 1.39
+updated: 2023-07-24 13:46:22
+version: 1.40
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. It works by passing a geometry to which I want the edges from and returns a new geometry that will be just the edges from the given source geometry. There is just one more additional argument when calling the constructor that is a threshold angle.
@@ -34,7 +34,7 @@ Once A geometry is passed to the Edges geometry constrictor another geometry is 
 
 ### The Object3d class is also worth looking into more also.
 
-The line segments constructor that is used with the geometry that is returned by the edges geometry constrictor is based on a class known as object3d. If you have not done so take a moment to look into this class in great detail, there is a lot to know about it and it apples to a whole lot of objects in three.js. In this post it is mainly the Line Segments instance to which a knowledge of Object3d applies, but there is also the camera, and the scene object also that are other examples of objects that are based off of Object3d. There are also a wide range of other topics that branch off from object3d that are worth looking into more also, such as the Euler class that is used when it comes to the rotation property of a line segments object, and the Vector3 class that is used with the position property.
+The line segments constructor that is used with the geometry that is returned by the edges geometry constrictor is based on a [class known as object3d](/2018/04/23/threejs-object3d/). If you have not done so take a moment to look into this class in great detail, there is a lot to know about it and it apples to a whole lot of objects in three.js. In this post it is mainly the Line Segments instance to which a knowledge of Object3d applies, but there is also the camera, and the scene object also that are other examples of objects that are based off of Object3d. There are also a wide range of other topics that branch off from object3d that are worth looking into more also, such as the Euler class that is used when it comes to the rotation property of a line segments object, and the Vector3 class that is used with the position property.
 
 ### Source code examples for this post and many others are up on Github
 
