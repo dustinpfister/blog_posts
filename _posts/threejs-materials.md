@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-24 13:16:34
-version: 1.67
+updated: 2023-07-24 13:32:40
+version: 1.68
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1345,6 +1345,70 @@ loop();
 ```
 
 There are a lot of other ways of branching off from this point such as using more than six materials and what one might want to do with that kind of situation. There is updating the material index values over time to switch to whatever material I want to use for whatever side at any given moment. However there is also increasing the point density of the box geometry and creating a whole new groups array from the ground up by leaning how to use the various buffer geometry class methods that there are to work with when it comes to this sort of thing.
+
+## 12 - Fog and materials
+
+I thought that I should start a section on the [subject of FOG and materials](/2018/04/16/threejs-fog), and have at least one demo that I might expand on more as there is a great deal to be aware of when it comes to this subject. When it comes to the options for Fog Objects to set to the scene.fog property there are two options [THREE.FogExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog). More often than not I like to go with THREE.FogExp2 over that of THREE.Fog as I like the exponential effects rather than the similar linear effect of THREE.Fog.
+
+### 12.1 - EXP2 FOG
+
+Here I have an animation loop demo of THREE.FogExp2.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.025, 20);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// ADDING BACKGROUND AND FOG
+//-------- ----------
+const fog_color = new THREE.Color(0xffffff);
+scene.background = fog_color;
+scene.fog = new THREE.FogExp2(fog_color, 0.5);
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        color: 0xff0000
+    })
+);
+scene.add(mesh);
+// ---------- ----------
+// ANIMATION LOOP
+// ---------- ----------
+camera.position.set(1.5, 0.75, 1.5);
+camera.lookAt(0, 0, 0);
+const FPS_UPDATE = 20, // fps rate to update ( low fps for low CPU use, but choppy video )
+FPS_MOVEMENT = 30;     // fps rate to move object by that is independent of frame update rate
+FRAME_MAX = 400;
+let secs = 0,
+frame = 0,
+lt = new Date();
+const update = function(frame, frameMax){
+    const per = frame / frameMax,
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+    mesh.position.z = 1 + 4 * bias;
+    mesh.rotation.x = Math.PI * 2 * 4 * per;
+    mesh.rotation.y = Math.PI * 2 * 2 * per;
+    camera.lookAt(mesh.position);
+};
+const loop = () => {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / FPS_UPDATE){
+        update( Math.floor(frame), FRAME_MAX);
+        renderer.render(scene, camera);
+        frame += FPS_MOVEMENT * secs;
+        frame %= FRAME_MAX;
+        lt = now;
+    }
+};
+loop();
+```
 
 ## Conclusion
 
