@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-21 14:30:36
-version: 1.65
+updated: 2023-07-24 13:10:27
+version: 1.66
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1283,6 +1283,66 @@ camera.position.set(4, 4, 4);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+## 11 - Using Arrays of Materials and the Groups property of Buffer Geometry Objects
+
+For this section I will not be getting more into the subject of using an [array of materials](/2018/05/14/threejs-mesh-material-index/) rather than just one for a display object.
+
+### 11.1 - Cube Example Revisited
+
+In the Basic Section I covered a simple example of the use of an array of materials using an instance of the Box Geometry. The Box geometry is one example of a geometry cerated with a built in geometry constructor where the groups property is set up to begin with. So demos that involve this kind of geometry often serve as a good start point for this sort of thing for that reason. With that said for this first demo on my arrays of materials section here I will once again be starting out with that, but this time I will be looping over the array of groups objects and setting the values of the material index properties of each group object.
+
+So then this time I will not just be passing an array fo six materials, but rather an array of only three materials. Sense the total number of materials is less than the number of groups one way to work with this would be to set each material index value of each group to the material index value that I want fir each side.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) ); 
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MESH - Using BoxGeometry and an Array of Materials
+//-------- ----------
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    [
+        new THREE.MeshBasicMaterial({ color: 0xff0000 }),
+        new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        new THREE.MeshBasicMaterial({ color: 0x0000ff })
+    ]
+);
+scene.add(mesh);
+//-------- ----------
+// MUTATION OF MATERIAL INDEX VALUES OF GROUP OBEJCTS THAT ARE ALL READY IN PLACE
+//-------- ----------
+const geometry = mesh.geometry;
+let i = 0;
+const len_groups = geometry.groups.length;
+const len_materials = mesh.material.length;
+while( i < len_groups ){
+    const group = geometry.groups[i];
+    group.materialIndex = i % len_materials;
+    i += 1;
+}
+// ---------- ----------
+// LOOP
+// ---------- ----------
+camera.position.set(1, 1, 2);
+camera.lookAt(0, 0, 0);
+const loop = () => {
+    requestAnimationFrame(loop);
+    mesh.rotation.y += Math.PI / 180 * 5;
+    mesh.rotation.y %= Math.PI * 2;
+    renderer.render(scene, camera);
+};
+loop();
+```
+
+There are a lot of other ways of branching off from this point such as using more than six materials and what one might want to do with that kind of situation. There is updating the material index values over time to switch to whatever material I want to use for whatever side at any given moment. However there is also increasing the point density of the box geometry and creating a whole new groups array from the ground up by leaning how to use the various buffer geometry class methods that there are to work with when it comes to this sort of thing.
 
 ## Conclusion
 
