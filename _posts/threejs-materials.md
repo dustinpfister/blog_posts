@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-24 13:10:27
-version: 1.66
+updated: 2023-07-24 13:16:34
+version: 1.67
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1286,7 +1286,9 @@ renderer.render(scene, camera);
 
 ## 11 - Using Arrays of Materials and the Groups property of Buffer Geometry Objects
 
-For this section I will not be getting more into the subject of using an [array of materials](/2018/05/14/threejs-mesh-material-index/) rather than just one for a display object.
+For this section I will not be getting more into the subject of using an [array of materials](/2018/05/14/threejs-mesh-material-index/) rather than just one for a display object. When it comes to older versions of threejs this would involve the use of the now defunct face3 class. I will not be getting into the use of that class of course, however I am still seeing a lot of outdated threejs source code examples pop up in Google search when it comes to this so be aware of that when looking elsewhere with this.
+
+The general process of doing this will not always just involving passing an array of materials and then moving on with ones life. If you are lucky the groups property is all ready set up just the way that you want it and maybe that will in fact actually be the case. However more often that not one will need to update, or even create to begin with the groups property of the geometry that is used with the over all display object.
 
 ### 11.1 - Cube Example Revisited
 
