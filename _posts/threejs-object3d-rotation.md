@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 976
-updated: 2023-07-24 10:35:04
-version: 1.36
+updated: 2023-07-24 10:56:34
+version: 1.37
 ---
 
 The [rotation property of the object3d class in threejs](https://threejs.org/docs/#api/en/core/Object3D.rotation) stores a instance of the THREE.Euler class for the current local rotation of an object. What is nice about Euler objects is that they are easy to work with compared to some alternative options such a [Quaternion objects](https://threejs.org/docs/#api/en/math/Quaternion), however it is possible to run into problems like [Gimbal Lock](https://en.wikipedia.org/wiki/Gimbal_lock) that can be addressed with such alternatives.
@@ -225,7 +225,11 @@ camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
 
-## 4 - Setting position from rotation with the apply Euler method of the Vector3 class
+## 4 - The Vector3 class and roation of objects
+
+There is a lot of overlap between setting position of objects and setting the rotation of them. The Vector3 class is generally used for position, but it is also use for scale, and in general it can be used for many tasks that involve three number values. In any case I should have a section here in this post about the Vector3 class as there are many features of that class that are closely tied to that of the rotation of objects.
+
+### 4.1 - Setting position from rotation with the apply Euler method of the Vector3 class
 
 A really cool and useful method in the Vector3 class is the apply Euler method which is the usual go to method for setting the state of a vector3 class based on the state of a Euler class such as the one at the rotation property of a an object3d class based object such as a mesh object. 
 
@@ -307,7 +311,7 @@ const loop = () => {
 loop();
 ```
 
-## 5 - Setting rotation from position using the set from Vector3 Euler class method
+### 4.2 - Setting rotation from position using the set from Vector3 Euler class method
 
 Okay so there is using the apply Euler method of the Vector3 class to set position based on rotation, but what if I want to do the inverse of that? In other words to set the rotation of an object based on the state of a Vector3 class instance. In the Euler class there is a set from Vector3 method, so there you go the name says it all.
 
@@ -388,11 +392,11 @@ const loop = () => {
 loop();
 ```
 
-## 6 - Using Quaternion objects as an altertaive to Euler Objects
+## 5 - Using Quaternion objects as an altertaive to Euler Objects
 
 There are limitations to using Euler objects, and the look at method. I will not be getting into to much detail about them here but if you spend enough time playing around with threejs you will find out what they are first hand I am sure. In this section I am going over just a few quick examples of using Quaternion objects as an alternative to using Euler objects. In other words using the object3d.quaternion property to set local rotation over that of object3d.rotation.
 
-### 6.1 - Basic Quaternion demo using the set from axis angle method
+### 5.1 - Basic Quaternion demo using the set from axis angle method
 
 The best way to get started with with Quaternion would be to make use of the set from axis angle method. This method works by passing a normalized Vector3 object that will be used to define an axis. The second argument is then a radian value that will be used to rotate the object on this axis. These quaternion objects are often described as having a vector part, and a scalar part, and this method is more or less one way how to go about setting those two parts.
 
@@ -434,7 +438,7 @@ camera.lookAt(0,0,0);
 renderer.render(scene, camera);
 ```
 
-### 6.2 - Demo Showing the deal with the Euler Gimbal Lock and how Quaternion can be used to address it
+### 5.2 - Demo Showing the deal with the Euler Gimbal Lock and how Quaternion can be used to address it
 
 This is a demo in which I am showing what the deal is with Gimbal Lock, which is something that happens with Euler objects, and how Quaternion can be used to break free from it. I have two objects that are both created from the same helper function that form what looks like a crude kind of airplane type object. I then have not one but two update methods one of which updates the rotation of one of these objects by way of Euler angles, and the other buy way of Quaternion. Both update methods work find when I yaw the objects back and forth, however when I pitch up 90, the object that is using the Euler update method ends up rolling rather than yawing. On the other hand the update method that uses Quaternion works as exspected.
 
