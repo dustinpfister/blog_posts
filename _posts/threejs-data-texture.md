@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 978
-updated: 2023-03-30 07:26:50
-version: 1.36
+updated: 2023-07-25 09:46:16
+version: 1.37
 ---
 
 [Data textures](https://threejs.org/docs/#api/en/textures/DataTexture) are a way to go about creating textures in threejs that can then be used for one of the various map options for materials. When it comes to using data textures as a way to add textures with javaScrript code in I just need to know how to produce the texture that I want in terms of a [Unit8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) with a set of four values, one for each color channel and a single alpha transparency channel. That is that I need to create an array with integer values between and including the range of 0 to 255 for red, green, blue and alpha for each pixel. Once I have that I can just pass that array, along with a width and height value to the THREE.DataTexture constructor function and the returned result will be a texture that I can then use for the various maps of a material such as the standard material that in turn can be used with a geometry to skin a mesh object.
@@ -29,13 +29,14 @@ The main focus in this post is to just simply create textures using raw color ch
 ### Canvas elements can also be used to create textures with javaScript code
 
 I have wrote a [number of posts on the use of canvas elements](/2020/03/23/canvas-example/), and also a post on [using canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture/) for the materials that are used for mesh objects in threejs. For the most part I prefer to use canvas elements as I have the whole 2d drawing context to work with that can be used to make quick work of creating textures.
+
 ### The source code in this post is up on Github
 
 The source code examples that I am writing about in this post can be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-data-texture). This is also where I park the source code for my many other [blog posts on threejs](/categories/three-js/) as well.
 
 ### version numbers matter
 
-The version of threejs that I was using when I first wrote this post was r135, and the last time I came around to do some editing I was using r146.  Still code breaking changes might be made at some point in the future so one should always be mindful of the version of threejs that they are using when reading about and using threejs source code examples on the open web.
+The version of threejs that I was using when I first wrote this post was r135, and the last time I came around to do some editing I was [using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md).  Still code breaking changes might be made at some point in the future so one should always be mindful of the version of threejs that they are using when reading about and using threejs source code examples on the open web.
 
 ## 1 - Basic examples of data textures
 
