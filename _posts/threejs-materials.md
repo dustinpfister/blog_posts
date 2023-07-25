@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-24 13:37:50
-version: 1.69
+updated: 2023-07-25 14:00:32
+version: 1.70
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1408,6 +1408,50 @@ const loop = () => {
     }
 };
 loop();
+```
+
+## 13 - Shader Materials
+
+First thing is first and that is that chances are what it is that you want to do can be done with one of the built in material options. However there might be a situation here and there where you might want to work out some kind of custom material by writing a little bot of original GLSL code that will then be used for the the vertex for fragment shaders that are needed to [create an instance of the THREE.ShaderMaterial](/2023/01/13/threejs-shader-material/).
+
+### 13.1 - Shader Material Hello World
+
+For this very first demo in this shader material section I will be starting out with a very simple hello world type example of this sort of thing to at least get the ball rolling with this. Nothing fancy here at all just getting to a point where we have a solid mass of color on the screen and that is it. When it comes to this there is working out just two values of interest which is gl\_position in the vertex shader, and gl\_FragColor in the fragment shader.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// SHADER MATERIAL
+// ---------- ----------
+const material1 = new THREE.ShaderMaterial({
+    vertexShader: `
+        void main() {
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        }`,
+    fragmentShader: `
+        void main() {
+            gl_FragColor = vec4( 255, 255, 255, 1.0 );
+        }`
+});
+// ---------- ----------
+// GEOMETRY, MESH
+// ---------- ----------
+const geometry = new THREE.SphereGeometry( 1, 80, 80);
+const mesh = new THREE.Mesh(geometry, material1);
+scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## Conclusion
