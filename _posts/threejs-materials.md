@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-25 14:00:32
-version: 1.70
+updated: 2023-07-26 14:09:37
+version: 1.71
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1446,6 +1446,66 @@ const material1 = new THREE.ShaderMaterial({
 const geometry = new THREE.SphereGeometry( 1, 80, 80);
 const mesh = new THREE.Mesh(geometry, material1);
 scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 13.2 - Uniform values
+
+A [uniform value IN GLSL](https://www.khronos.org/opengl/wiki/Uniform_%28GLSL%29) is a global Shader variable declared with the "uniform" [storage qualifier](https://www.khronos.org/opengl/wiki/Type_Qualifier_%28GLSL%29#Storage_qualifier). These kinds of values are values that can be passed to the shader program by the user. For example there is setting the color option, or the opacity option of the Mesh basic Material. 
+
+With this example then I made a custom kind of Depth Material by studying the GLSL source code of the Mesh Depth Material which is where I found out that I can use gl\_FragCoord.z over the higher precision values that are used in the Depth Material. One feature that I would like to add while making this is to have a kind of base color optiin for the depth material that is then effected by the depth values.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 1.8, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// SHADER MATERIAL
+// ---------- ----------
+const material1 = new THREE.ShaderMaterial({
+    uniforms: {
+        baseColor : { value: new THREE.Color('cyan') },
+        opacity: { value: 1 }
+    },
+    vertexShader: `
+        varying vec2 vHighPrecisionZW;
+        void main() {
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        }`,
+    fragmentShader: `
+        uniform vec3 baseColor;
+        uniform float opacity;
+        uniform float depthAlpha;
+        varying vec2 vHighPrecisionZW;
+        void main() {
+            float d = (1.0 - gl_FragCoord.z);
+            gl_FragColor = vec4( baseColor * d, opacity );
+        }`
+});
+// ---------- ----------
+// GEOMETRY, MESH
+// ---------- ----------
+const geometry = new THREE.BoxGeometry( 1, 1, 1);
+const mesh1 = new THREE.Mesh(geometry, material1);
+mesh1.rotation.y = Math.PI / 180 * 20;
+scene.add(mesh1);
+const material2 = material1.clone();
+material2.uniforms.baseColor.value = new THREE.Color('lime');
+console.log(material2);
+const mesh2 = new THREE.Mesh(geometry, material2);
+mesh2.position.set(-1, 0, 1)
+mesh2.rotation.y = Math.PI / 180 * 20;
+scene.add(mesh2);
 // ---------- ----------
 // RENDER
 // ---------- ----------
