@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1008
-updated: 2023-03-30 08:49:54
-version: 1.15
+updated: 2023-07-26 14:09:36
+version: 1.16
 ---
 
 With the buffer geometry class in threejs there is a bounding box property that stores an instance of the Box3 class, and the [compute bounding box method of the buffer geometry class](https://threejs.org/docs/#api/en/core/BufferGeometry.computeBoundingBox) is what can be used to create or update this instance of Box3. This bounding box can then be used to help with things like getting the size of the area in which the object takes up, and as such it can often be helpful when positioning objects to the surface of another object.
@@ -34,7 +34,7 @@ The source code examples that I am writing about here can also be [found on Gith
 
 ### Version Numbers
 
-When I first wrote this post I was using r140 of threejs, and the last time I came around to do a little editing I was using r146.
+When I first wrote this post I was using r140 of threejs. The last time I came around to do a little editing I was [using r146 and thus updated the source code demos to the style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) I set for that revision.
 
 ## 1 - Basic Compute Bounding Box examples
 
