@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2023-03-30 15:08:46
-version: 1.52
+updated: 2023-07-26 14:09:37
+version: 1.53
 ---
 
 I have been wanting to write a series of posts on [threejs](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with threejs in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various features of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also learn a thing or two about using [blender](https://www.blender.org/) as a way to go about [making external files](/2021/04/30/threejs-dae-collada-loader/) that I can then load into a scene.
@@ -46,15 +46,13 @@ In my [test threejs Github repository I have the source code examples that I am 
 
 ### A word about threejs versions
 
-This is one of the first blog posts that I have wrote on threejs way back in 2018, at that time I was using [r91 of the library](https://github.com/mrdoob/three.js/tree/r91). The last time I came around to do a little editing I made some major changes to the examples here and they are working fine with r140 of the library. Although I do what I can to keep my content on threejs up to date, many of the posts might still be a bit dated. Always be mindful of what version of threejs you are using as this is still a fast moving project.
+This is one of the first blog posts that I have wrote on threejs way back in 2018, at that time I was using [r91 of the library](https://github.com/mrdoob/three.js/tree/r91). The last time I came around to do a little editing I made some major changes to the examples here and they are [working fine with r146 of the library](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). 
 
-It seems like new revisions come out as often as once a month, and when they do there are a whole lot of changes. So I decided to structure things in a way in which I can make demos for each revision when I am working out my source code demos in my git hub repo where I store the source ode examples for this post.
+Although I do what I can to keep my content on threejs up to date, many of the posts might still be a bit dated. Always be mindful of what version of threejs you are using as this is still a fast moving project. It seems like new revisions come out as often as once a month, and when they do there are a whole lot of changes. So I decided to structure things in a way in which I can make demos for each revision when I am working out my source code demos in my git hub repo where I store the source ode examples for this post.
 
 ## 1 - A basic overview of how to make a three.js project
 
-Threejs will contain a whole lot of constructors that each have a certain importance. There is no way that I can even touch base on all of them, let alone do them justice without having this starting to resemble a dissertation rather than a blog post.
-
-However it is possible to touch base on all of the constructors that will be in use in just about any three.js project, including the most basic examples.
+Threejs will contain a whole lot of constructors that each have a certain importance. There is no way that I can even touch base on all of them, let alone do them justice without having this starting to resemble a dissertation rather than a blog post. However it is possible to touch base on all of the constructors that will be in use in just about any three.js project, including the most basic examples.
 
 As such a three.js project will typically always contain at least one of the following:
 
