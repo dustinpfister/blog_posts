@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2023-07-26 14:09:37
-version: 1.53
+updated: 2023-07-26 14:25:39
+version: 1.54
 ---
 
 I have been wanting to write a series of posts on [threejs](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with threejs in the past, but never really got into it, that is until now. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with. Also there is not just what there is to know about the various features of the library, but also what there is to known when it comes to working with 3d in general. For example when it comes to really getting into 3d at some point sooner or later I am going to want to also learn a thing or two about using [blender](https://www.blender.org/) as a way to go about [making external files](/2021/04/30/threejs-dae-collada-loader/) that I can then load into a scene.
@@ -46,9 +46,9 @@ In my [test threejs Github repository I have the source code examples that I am 
 
 ### A word about threejs versions
 
-This is one of the first blog posts that I have wrote on threejs way back in 2018, at that time I was using [r91 of the library](https://github.com/mrdoob/three.js/tree/r91). The last time I came around to do a little editing I made some major changes to the examples here and they are [working fine with r146 of the library](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). 
+This is one of the first blog posts that I have wrote on threejs way back in 2018, at that time I was using [r91 of the library](https://github.com/mrdoob/three.js/tree/r91). The last time I came around to do a little editing I made some major changes to the many examples here and they are [working fine with r146 of the library and thus followed the style rules I set for that revision](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). There is also one exception to this though as I now also have one demo that follows [my r152 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md). At this time I think I should have at least one getting started type demo on the use of module type script tags rather than the default text/javaScript type tags. There are a whole lot of major changes up ahead so sooner or later you are going to want to learn a thing or two about JSM.
 
-Although I do what I can to keep my content on threejs up to date, many of the posts might still be a bit dated. Always be mindful of what version of threejs you are using as this is still a fast moving project. It seems like new revisions come out as often as once a month, and when they do there are a whole lot of changes. So I decided to structure things in a way in which I can make demos for each revision when I am working out my source code demos in my git hub repo where I store the source ode examples for this post.
+Although I do what I can to keep my content on threejs up to date, many of the posts might still be a bit dated compared to what you might be using now. Always be mindful of what version of threejs you are using as this is still a fast moving project. It seems like new revisions come out as often as once a month, and when they do there are a whole lot of changes, some of which do very much break code. So I decided to structure things in a way in which I can make demos for each revision when I am working out my source code demos in my git hub repo where I store the source ode examples for this post.
 
 ## 1 - A basic overview of how to make a three.js project
 
@@ -61,11 +61,19 @@ As such a three.js project will typically always contain at least one of the fol
 * There will need to be a renderer such as with [THREE.WebGLRenderer](/2018/11/24/threejs-webglrenderer/)
 * A [Mesh](/2018/05/04/threejs-mesh/) that will contain a [Geometry](/2018/04/14/threejs-geometry/), and a [Material](/2018/04/30/threejs-materials/). Such as with THREE.Mesh, THREE.BoxGeometry, and THREE.MeshBasicMaterial.
 
-### 1.a - HTML
-
 In any case you want to get three.js available in the browser one way or another, including the plain old simple way of having a script tag linking to the location of three.js. In addition you might want some kind of container element in your layout where you will inject the dom element created by the renderer that is used, unless you are okay with just appending to body.
 
-As such the html of one of my demos looks like this for the moment.
+The [Scene](/2018/05/03/threejs-scene/) is the space in which everything will go, your objects, cameras, and anything else that would be placed in a scene like a light source. Once you have a scene we will want to add things into it, like an object of some kind to look at with a camera. To do this I will want to call the Object3D add method, and give it a [Mesh](https://threejs.org/docs/index.html#api/en/objects/Mesh), that is composed of a [Geometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry), and a [Material](https://threejs.org/docs/index.html#api/en/materials/Material). I will touch base on all of that, because you should have at least a basic knowledge of all of those things, but not get into depth here, as each of these things could use there own posts.
+
+There is a core class Called [Camera](/2018/04/06/threejs-camera/) that has some methods and properties that are shared across all camera types that are used in three.js. Like most objects in three.js, a Camera inherits from Object3D which gives it methods to help make changing the position, and orientation of the Camera pretty easy. There are then four camera types to choose from, in this post I am only briefly covering the [perspective camera](https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera).
+
+To make some kind of object to look at I need it's geometry, I will also want to skin that geometry with some kind Of Material, and I will want to tie those two things together into a Mesh. In the example in this Post I used BoxGeometry to quickly create a Cube, and Just a [basic Material](/2018/05/05/threejs-basic-material/) with a [Mesh](/2018/05/04/threejs-mesh/).
+
+In order to see anything I will need to render it using something like Canvas, or webGL. In this post I just used the webGL renderer, but there are additional renderer's available in three.js, such as the canvas renderer that uses the 2d drawing context. That will be a lot slower, but it will give greater support on platforms that do not support webGL that well.
+
+### 1.1 - The basic three.js cube example
+
+A very typical example for getting started with three.js indeed, but still it works to cover the basics of everything if you are new to three.js. Every project will involve a scene, a camera, at least one Object to look at which will be a mesh composed of a geometry, and a material. Also in order to actually see anything you will also need a render as well. That may seem like a lot at first, but once you get into this it all starts to make sense. Trust be this is one of the easiest ways to get into working with 3d objects, and can become a whole lot of fun if you give it a chance.
 
 ```html
 <html>
@@ -100,37 +108,6 @@ As such the html of one of my demos looks like this for the moment.
 </body>
 </html>
 ```
-
-### 1.b - The Scene
-
-Full post on [Scene](/2018/05/03/threejs-scene/)
-
-The [Scene](https://threejs.org/docs/index.html#api/en/scenes/Scene) is the space in which everything will go, your objects, cameras, and anything else that would be placed in a scene like a light source. Once you have a scene we will want to add things into it, like an object of some kind to look at with a camera. 
-
-To do this I will want to call the Object3D add method, and give it a [Mesh](https://threejs.org/docs/index.html#api/en/objects/Mesh), that is composed of a [Geometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry), and a [Material](https://threejs.org/docs/index.html#api/en/materials/Material). I will touch base on all of that, because you should have at least a basic knowledge of all of those things, but not get into depth here, as each of these things could use there own posts.
-
-### 1.c - The Camera
-
-Full post on [Camera](/2018/04/06/threejs-camera/)
-
-There is a core class Called [Camera](https://threejs.org/docs/index.html#api/en/cameras/Camera) that has some methods and properties that are shared across all camera types that are used in three.js. 
-
-Like most objects in three.js, a Camera inherits from Object3D which gives it methods to help make changing the position, and orientation of the Camera pretty easy.
-
-There are then four camera types to choose from, in this post I am only briefly covering the [perspective camera](https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera).
-
-### 1.d - Geometry, Material, and Mesh.
-
-To make some kind of object to look at I need it's geometry, I will also want to skin that geometry with some kind Of Material, and I will want to tie those two things together into a Mesh. In the example in this Post I used BoxGeometry to quickly create a Cube, and Just a [basic Material](/2018/05/05/threejs-basic-material/) with a [Mesh](/2018/05/04/threejs-mesh/).
-
-### 1.e - Renderer
-
-In order to see anything I will need to render it using something like Canvas, or webGL. In this post I just used the webGL renderer, but there are additional renderer's available in three.js, such as the canvas renderer that uses the 2d drawing context. That will be a lot slower, but it will give greater support on platforms that do not support webGL that well.
-
-
-### 1.1 - The basic three.js cube example
-
-A very typical example for getting started with three.js indeed, but still it works to cover the basics of everything if you are new to three.js. Every project will involve a scene, a camera, at least one Object to look at which will be a mesh composed of a geometry, and a material. Also in order to actually see anything you will also need a render as well. That may seem like a lot at first, but once you get into this it all starts to make sense. Trust be this is one of the easiest ways to get into working with 3d objects, and can become a whole lot of fun if you give it a chance.
 
 ```js
 // ---------- ---------- ----------
@@ -176,6 +153,55 @@ renderer.render(scene, camera);
 ```
 
 This example will just draw a cube on the screen. So lets have a break down on everything that is going on here.
+
+### 1.2 - Using the JavaScript Module of plain text/javaScript script tags \(  r152 style demo \)
+
+Plain javaScript mime type files of add ons where removed from the threejs github repository as of r148, and it looks like it is only a matter of time until three.js, and three.min.js will no longer be rendered in future revisions of threejs as well. Which means sooner or later three.module.js will need to be used in place of these options. Also if you want to make use of any official add one files from the Github repository such as Orbit Controls, the DAE file loader, so forth and so on, you will also need to use JSM as these files are no longer there for any revision of threejs that is at r148 or later.
+
+To use the JSM I will want to load my main javaScript file of a project by setting the type attribute of the script tag that I use to "module" rather than leaving it at the default "text\/javaScript" mimie type.
+
+```html
+<script type="importmap">
+    {
+        "imports": {
+            "three": "/js/threejs/0.152.0/three.module.js",
+            "OrbitControls": "/js/threejs/0.152.0/controls/OrbitControls.js"
+        }
+    }
+</script>
+<script type="module" src="/forpost/threejs-getting-started/s1-2-jsm/main.js"></script>
+```
+
+I will the want to use import at the top of my javaScript file as a way to load in the core threejs library to use with the project. I will then also want to do this with any add on files as well as any of my own modules that are authored in this javaScript module fromat.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any add ons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.querySelector('#demo') || document.body ).appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial());
+scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 
 ## 2 - Animation loop examples
