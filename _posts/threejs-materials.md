@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-27 14:03:32
-version: 1.72
+updated: 2023-07-27 14:04:54
+version: 1.73
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -961,7 +961,7 @@ renderer.render(scene, camera);
 
 ### 7.2 - One loader to rule them all \( THREE.ObjectLoader \)
 
-The material loader might be the first option one might go with to go about loading materials, and if I just need to load materials and not much of anything else that will often work fine. However I have found that what often makes things a little tricky is the question of how to go about loading external image files that I wan tot use with the various material options that need a texture object. Also the material loader is just simply that, so with that said what about geometry, objects, animations and so on. So then I am of the mindset that the object loader is a good option for having some kind of plain text format to work with that can then be loader with a loader option that is baked into the core of the threejs library alone.
+The material loader might be the first option one might go with to go about loading materials, and if I just need to load materials and not much of anything else that will often work fine. However I have found that what often makes things a little tricky is the question of how to go about loading external image files that I wan tot use with the various material options that need a texture object. Also the material loader is just simply that, so with that said what about geometry, objects, animations and so on. So then I am of the mindset that [the object loader](/2023/07/19/threejs-object-loader/) is a good option for having some kind of plain text format to work with that can then be loader with a loader option that is baked into the core of the threejs library alone.
 
 ```js
 // ---------- ----------
