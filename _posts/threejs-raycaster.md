@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2023-04-03 12:51:47
-version: 1.34
+updated: 2023-07-27 14:42:58
+version: 1.35
 ---
 
 When making a [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) project there might be situations in which it would be nice to have a way to click on a [mesh object](/2018/05/04/threejs-mesh/). When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of run time script. To do this I need a way to cast a ray from the [camera](/2018/04/06/threejs-camera/) that I am using outward based on a 2d location of the canvas element of the [renderer](/2018/11/24/threejs-webglrenderer/). Then I need to get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into threejs itself and it is called the [THREE.RayCaster Class](https://threejs.org/docs/#api/en/core/Raycaster).
@@ -34,7 +34,7 @@ The source code examples that I am wiring about here as well as additional draft
 
 ### version Numbers matter with threejs
 
-When I made these examples and wrote this post I was using r127 of threejs which was still a fairly later version of threejs as of this writing. The last time I cam around to do a little editing, and expand with new examples I was using r146 of the library. Code breaking changes are always made with threejs as new revisions come out so if you run into problems with getting this to work on your end that might be the first thing you should check actually.
+When I made these examples and wrote this post I was using r127 of threejs which was still a fairly later version of threejs as of this writing. The last time I cam around to do a little editing, and expand with new examples I was [using r146 of the library](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Code breaking changes are always made with threejs as new revisions come out so if you run into problems with getting this to work on your end that might be the first thing you should check actually.
 
 ## 1 - Basic examples of the Raycaster class
 
