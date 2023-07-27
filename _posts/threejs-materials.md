@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-26 14:09:37
-version: 1.71
+updated: 2023-07-27 14:03:32
+version: 1.72
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -911,8 +911,9 @@ ctx.drawImage(renderer.domElement, 0,0, canvas.width, canvas.height );
 
 ## 7 - The Material loader, and other loader related concerns
 
+Creating a material by calling one of the constructor functions as a way to obtained a material is one thing. However when it comes to starting to work on real projects I will want to have a way to pack a lot of the data that has to do with one or more materials into some kind of external file format. With that said baked into the core of threejs itself is the [Material Loader](/2023/07/27/threejs-materials-loader/) which is one option for doing this sort of thing. 
 
-Creating a material by calling one of the constructor functions as a way to obtained a material is one thing. However when it comes to starting to work on real projects I will want to have a way to pack a lot of the data that has to do with one or more materials into some kind of external file format. With that said baked into the core of threejs itself is the MatreialLoader. However there are also a lot of other options for loading not just a material but other objects that compose one or more whole objects, even a whole scene. There is then a lot to say about how to go about loading materials, as well as everything else that one would want to load into a project by way of some external data as well. So in this section I will be writing a thing or two about loaders and materials.
+However there are also a lot of other options for loading not just a material but other objects that compose one or more whole objects, even a whole scene. There is then a lot to say about how to go about loading materials, as well as everything else that one would want to load into a project by way of some external data as well. So in this section I will be writing a thing or two about loaders and what the options are for at least materials, but maybe also a few that help with more than just that.
 
 ### 7.1 - Parse a JSON string of a material using THREE.MaterialLoader
 
@@ -949,6 +950,63 @@ const material = new THREE.MaterialLoader().parse( JSON.parse(str_material) );
 // ---------- ----------
 scene.add( new THREE.GridHelper( 10,10 ) );
 const mesh = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material );
+scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 7.2 - One loader to rule them all \( THREE.ObjectLoader \)
+
+The material loader might be the first option one might go with to go about loading materials, and if I just need to load materials and not much of anything else that will often work fine. However I have found that what often makes things a little tricky is the question of how to go about loading external image files that I wan tot use with the various material options that need a texture object. Also the material loader is just simply that, so with that said what about geometry, objects, animations and so on. So then I am of the mindset that the object loader is a good option for having some kind of plain text format to work with that can then be loader with a loader option that is baked into the core of the threejs library alone.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// JSON STRING IN OBJECT FORMAT
+// ---------- ----------
+const uuid_geometry = new THREE.MathUtils.generateUUID();
+const uuid_material = new THREE.MathUtils.generateUUID();
+const uuid_mesh = new THREE.MathUtils.generateUUID();
+const mesh_json = `
+{
+    "metadata": {
+        "version": 4.5,
+        "type": "Object",
+        "generator": "Hand Coded"
+    },
+    "geometries": [{
+            "uuid": "` + uuid_geometry + `",
+            "type": "BoxGeometry",
+            "width": 1,
+            "height": 1,
+            "depth": 1
+        }
+    ],
+    "materials": [{
+            "uuid": "` + uuid_material + `",
+            "type": "MeshNormalMaterial"
+        }
+    ],
+    "object": {
+        "uuid": "` + uuid_mesh + `",
+        "type": "Mesh",
+        "geometry": "` + uuid_geometry + `",
+        "material": "` + uuid_material + `"
+    }
+}
+`
+const mesh = new THREE.ObjectLoader().parse( JSON.parse( mesh_json ) );
 scene.add(mesh);
 // ---------- ----------
 // RENDER
