@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2023-04-04 13:05:15
-version: 1.47
+updated: 2023-07-27 14:42:58
+version: 1.48
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/). This geometry can then be used in a [mesh object](/2018/05/04/threejs-mesh/), or with anything else that needs a geometry such as with THREE.Points or THREE.LineSegmenets. The shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended with a little depth.
@@ -34,7 +34,7 @@ The Source code that I am writing about here [can also be found on Github in my 
 
 ### Version Numbers matter with threejs
 
-I have got into the habit of mentioning this is every post I write on threejs these days, so here it goes once again. When I first wrote this post I was using threejs revision 127, which was a late version of threejs in early 2021.
+I have got into the habit of mentioning this is every post I write on threejs these days, so here it goes once again. When I first wrote this post I was using threejs revision 127, which was a late version of threejs in early 2021. I have come around to edit this post a few times sense then, and with that said the examples in this post now conform to [my r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md).
 
 ## 1 - The Basics of getting started with THREE.Shape 
 
