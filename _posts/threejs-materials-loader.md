@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1063
-updated: 2023-07-27 13:13:03
-version: 1.0
+updated: 2023-07-27 13:38:22
+version: 1.1
 ---
 
 There are a number of loaders built into the core of threejs that extend from the common base loader class, one such option is the materials loader which will be the main theme of this post. There might be a situation or two in which I might want to use the material loader in conjunction with the texture loader, and buffer geometry loader, then create the final scene object with all of these assets. However I have found that I might prefer to go with the Object Loader as a way to bake everything into a single JSON file format and just start creating assets that way.
@@ -15,6 +15,25 @@ There is also of course starting to look into the long list of options when it c
 
 <!-- more -->
 
+## The Material Loader in threejs and what to know first
+
+In this blog post I am writing about a few source code examples that make use of the Material Loader that is baked into the core of threejs. Although I do try to keep these examples easy to follow for people that are new to threejs, this is still not a [getting started type post on the library](/2018/04/04/threejs-getting-started/). I then assume that you at least know a few basic things that have to do with the very core basics of threejs projects. However I will still write about a few things that you might want to read more on first in this into section.
+
+### Read More about materials in general first
+
+I have my [main blog post on the subject of materials](/2018/04/30/threejs-materials/) in general that I started a long time ago, and have edited over and over again and still do on occasion. This would then be a good read when it comes to looking over everything that there is to be aware of when it comes to materials in general.
+
+### The Object Loader
+
+The material loader works okay, but it does have some limitations. For example there is the concern when it comes to textures that are used with a material and how to go about loading them in. Also materials are just imply that, which then raises concerns with other forms of data that are needed when it comes to geometry, and the various objects that will from an over all scene. There might be ways of addressing all of these concerns involving the use of additional loaders such as the texture loader, and the buffer geometry loader. However I have found that as of late I like to just go with [the object loader](/2023/07/19/threejs-object-loader/) as a way to not just pull in materials, but also textures, geometry, animations and so forth.
+
+### Source Code is up on Github
+
+The source code examples that I am writing about here can also be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-materials-loader) on github. This is also where I park additional notes on various resources used, what the plans are for future edits of the post, and so forth. This repo is also where I place such things for [every other blog post that I have wrote on threejs](/categories/three-js/) over the years as well.
+
+### Version Numbers Matter
+
+When I first started this blog post I was using [r152 of threejs and thus followed that style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) I have set for that revision. You can check out my readme on this but if you want me to save you a click this means that I am using an import map, and setting the type attribute of the script tags to module rather than leaving it to the default text/javaScript mime type. It should also go without saying that I am using r152 here, so if you are using an older or newer revision the code examples here might break for that reason.
 
 ## 1 - Some Basic Examples of the Material Loader
 
@@ -161,7 +180,7 @@ loader.load('/forpost/threejs-materials-loader/s1-3-basic-load/material.json', (
 
 ## 2 - Loading Shader Materials
 
-I have wrote a main blog post on the subject of using the [shader material](/2023/01/13/) as a way to create custom materials by writing a little GLSL code on top of what there is to work with in the shader library baked into the core of threejs. If I am going to ever use the material loader in any capacity in a real project I am fairly sure that I am going to want to make sure that I can use it to load these kinds of materials. Also I am sure that working out what I am doing here will also apply to the materials key of the JSON data that I use with the object loader as well.
+I have wrote a main blog post on the subject of using the [shader material](/2023/01/13/threejs-shader-material) as a way to create custom materials by writing a little GLSL code on top of what there is to work with in the shader library baked into the core of threejs. If I am going to ever use the material loader in any capacity in a real project I am fairly sure that I am going to want to make sure that I can use it to load these kinds of materials. Also I am sure that working out what I am doing here will also apply to the materials key of the JSON data that I use with the object loader as well.
 
 ### 2.1 - Very simple getting started parse string example
 
