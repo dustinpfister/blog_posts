@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-28 12:22:14
-version: 1.74
+updated: 2023-07-28 12:58:56
+version: 1.75
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -961,9 +961,9 @@ ctx.drawImage(renderer.domElement, 0,0, canvas.width, canvas.height );
 
 ## 7 - The Material loader, and other loader related concerns
 
-Creating a material by calling one of the constructor functions as a way to obtained a material is one thing. However when it comes to starting to work on real projects I will want to have a way to pack a lot of the data that has to do with one or more materials into some kind of external file format. With that said baked into the core of threejs itself is the [Material Loader](/2023/07/27/threejs-materials-loader/) which is one option for doing this sort of thing. 
+Creating a material by calling one of the constructor functions as a way to obtain a material is one thing. However when it comes to starting to work on real projects I will want to have a way to pack a lot of the data that has to do with one or more materials into some kind of external file format. With that said baked into the core of threejs itself is the [Material Loader](/2023/07/27/threejs-materials-loader/) which is one option for doing this sort of thing. 
 
-However there are also a lot of other options for loading not just a material but other objects that compose one or more whole objects, even a whole scene. There is then a lot to say about how to go about loading materials, as well as everything else that one would want to load into a project by way of some external data as well. So in this section I will be writing a thing or two about loaders and what the options are for at least materials, but maybe also a few that help with more than just that.
+However there are also a lot of other options for loading not just a material but other data that is needed to create final display objects. There is then a lot to say about how to go about loading materials, as well as everything else that one would want to load into a project by way of some external data as well such as textures to use with such materials. So in this section I will be writing a thing or two about loaders and what the options are for at least materials, but maybe also a few that help with more than just that.
 
 ### 7.1 - Parse a JSON string of a material using THREE.MaterialLoader
 
@@ -1011,7 +1011,7 @@ renderer.render(scene, camera);
 
 ### 7.2 - One loader to rule them all \( THREE.ObjectLoader \)
 
-The material loader might be the first option one might go with to go about loading materials, and if I just need to load materials and not much of anything else that will often work fine. However I have found that what often makes things a little tricky is the question of how to go about loading external image files that I wan tot use with the various material options that need a texture object. Also the material loader is just simply that, so with that said what about geometry, objects, animations and so on. So then I am of the mindset that [the object loader](/2023/07/19/threejs-object-loader/) is a good option for having some kind of plain text format to work with that can then be loader with a loader option that is baked into the core of the threejs library alone.
+The material loader might be the first option one might go with to go about loading materials, and if I just need to load materials and not much of anything else that will often work fine. However I have found that what often makes things a little tricky is the question of how to go about loading external image files that I want to use with the various material options that need a texture object. Also the material loader is just simply that, so with that said what about geometry, objects, animations and so on. So then I am of the mindset that [the object loader](/2023/07/19/threejs-object-loader/) is a good option for having some kind of plain text format to work with that can then be loader with a loader option that is baked into the core of the threejs library alone.
 
 ```js
 // ---------- ----------
