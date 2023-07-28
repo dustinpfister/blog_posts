@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-27 14:04:54
-version: 1.73
+updated: 2023-07-28 12:22:14
+version: 1.74
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -837,6 +837,56 @@ scene.add(grid);
 //-------- ----------
 camera.position.set(1.5, 1, 2);
 camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 5.3 - Vertex colors
+
+One major base material class feature would be the vertex colors Boolean that when set to true will cause the material to use the color attribute of the geometry if it has one. Although this is a base material class feature it will not work with all materials, some will not make use of the base class feature such as the MeshNormalMaterial. However it does work with most mesh material options such as basic, standard, and phong just to name a s few. This feature also works with line materials and the points materials as well as a great way to style those materials when they are used.
+
+If the geometry does not have a color attribute then one will need to be created for the geometry. If you would like to read more about his topic you might want to check out my [main blog post on color attributes](/2023/01/20/threejs-buffer-geometry-attributes-color/) in buffer geometry objects.
+
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(0, 5, 10);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geo = new THREE.SphereGeometry( 4, 20, 20 );
+const len = geo.getAttribute('position').count;
+const color_array = [];
+let i = 0;
+while(i < len){
+   const a_vert = i / len;
+   const a_blue = Math.sin( Math.PI * (16 * a_vert % 1) );
+   color_array.push(a_vert, 1 - a_vert, a_blue );
+   i += 1;
+}
+const color_attribute = new THREE.BufferAttribute(new Float32Array( color_array ), 3);
+geo.setAttribute('color', color_attribute);
+// ---------- ----------
+// MATERIAL - using vertex colors
+// ---------- ----------
+const material1 = new THREE.MeshBasicMaterial({
+    vertexColors: true
+});
+// ---------- ----------
+// MESH
+// ---------- ----------
+const mesh1 = new THREE.Mesh(geo, material1);
+scene.add(mesh1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
 renderer.render(scene, camera);
 ```
 
