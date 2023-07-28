@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1034
-updated: 2023-04-01 11:37:25
-version: 1.10
+updated: 2023-07-28 09:02:37
+version: 1.11
 ---
 
 The [premultiply method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.premultiply) comes in handy when I find myself in a situation in which I need to preform not one but two rotations. Say that I have a sphere and I want to rotate the sphere on an axis that is say 45 degrees so that the top and bottom of the sphere geometry is aligned with the sphere, and on top of that I want to rotate the sphere on this axis. So in a way I actually have two axis vectors and two angles. One set of axis and angle is aligned with the geometry to begin with, and the other is to adjust the geometry to an additional orientation that I want. In this post then I will be going over a number of code examples that make use of this method as this is a major part of working with quaternion objects for setting the orientation of objects.
@@ -38,7 +38,7 @@ The [source code examples that I am writing about in this post](https://github.c
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r146 of threejs and the examples here where working just fine on my end with that revision number. However code breaking changes are made to the library all the time.
+When I first wrote this post I was [using r146 of threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-quaternion-premultiply) and the examples here where working just fine on my end with that revision number. However code breaking changes are made to the library all the time, so be aware of what version you are using.
 
 ## 1 - Basic examples of the premultiply method in the quaternion class
 
@@ -481,6 +481,6 @@ const loop = () => {
 loop();
 ```
 
-## 3 - Conclusion
+## Conclusion
 
 The premultiply method is one or the core set of quaternion methods that I will want to work with in order to use these kinds of objects to set orientation of object3d class based objects in threejs. There is knowing how to set the state of just one of these quaternion objects first and foremost though and for that there is the set from axis angle method. There is also knowing how to just directly mutate the public values of one of these objects but doing that is not as easy as what one might be used to with Euler objects. Anyway once one knows how to set the orientation of one quaternion object, there is doing so with another, and then using both of those to set an orientation of yet another and one way to do so is with premultiply.
