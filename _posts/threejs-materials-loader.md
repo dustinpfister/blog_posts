@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1063
-updated: 2023-07-27 13:38:22
-version: 1.1
+updated: 2023-07-28 10:22:00
+version: 1.2
 ---
 
 There are a number of loaders built into the core of threejs that extend from the common base loader class, one such option is the materials loader which will be the main theme of this post. There might be a situation or two in which I might want to use the material loader in conjunction with the texture loader, and buffer geometry loader, then create the final scene object with all of these assets. However I have found that I might prefer to go with the Object Loader as a way to bake everything into a single JSON file format and just start creating assets that way.
@@ -41,7 +41,11 @@ As always with these posts on threejs I like to start out with just a few very b
 
 ### 1.1 - Parse a Hand Coded JSON String
 
-For this first example I am going to start out by just making a hand coded form of the JSON data to the use with the parse method of the material loader.
+For this first example I am going to start out by just making a hand coded form of the JSON data to the use with the parse method of the material loader. Hand coding the JSON from the ground up is one option, and when doing so I have found that I can leave a lot out as the blanks for everything will just be filled in with whatever the defaults are. Of course there are other was of generating the JSON data to begin with though that I will be getting to in the next examples. I just want to make it clear that this is very much one way to get started with this.
+
+When doing so I will want to start out by using backtricks to create the string value. After that at a bare bones minimum I am going to want to have a metadata object in which I set the version number of the object standard I am using such as 4.5, make sure that the type key for this is set to 'Material', and also give a generator key as well. The generator key will give some indication as to what was used to create this JSON data such as the Material.toJSON method that I will be getting to, sense this is hand coded text I am just punching that in for this. After the metadata object I will want to at least give a type key to set what material option to use such as the MeshNormalMaterial which strokes me a s a good start for this.
+
+Once I have the string value that I want to use I can pass that to the JSON.pase method to create an object from the string data. This object can then be passed to the parse method of an instances of the MaterialLoader, and the end result is an instance of the MeshNormalMaterial that I can then use with a Mesh.
 
 ```js
 // ---------- ----------
@@ -84,9 +88,11 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
+So far this is just a very complex way of creating an instance of the MeshNormalMatreial, but this is the very first example of the basic example so I want to start one with a very simple clean example. In any case the core idea should all ready be clear with this as there are a whole lot more public keys to a material other than just the type of course.
+
 ### 1.2 - Create A JSON string from a Material Object
 
-For this example I am going to touch base on how to go about generating JSON data of a material object that you all ready have to work with in code.
+For this example I am going to touch base on how to go about generating JSON data of a material object that you all ready have to work with in code. For now I am just going to log the text to the javaScript console, but then also use the same text to create a material again as I have all ready covered. So if I am ready have a material option and I want to generate a JSON object from that material I cna just call the toJSON method of the material. To convert this object to a string from of the object I can then just pass the object to the JSON.stringify method. Now that I have that text I can save that as a JSON file, or I can convert it back to a material object same as before.
 
 ```js
 // ---------- ----------
@@ -124,7 +130,9 @@ renderer.render(scene, camera);
 
 ### 1.3 - Load a Material in JSON file form
 
-Now that I have covered a number of examples that have to do with using the parse method with a JSON string, I think I should have at least one example of using the load method of the loader to pull in material data stored in an external JSON file.
+So there are two general ways of creating the JSON data of a material to begin with, one of which is to just hand coded the data from the ground up in an editor, or some similar kind of means if there is no material to begin with. However if there is a material object to begin with then the toJSON method of the material class can be used to convert this material to an object than can then be converted to the text. One way or another there is getting that text format of the JSON, and although it can be stored in the from of a hard coded string in a JSON file to then be loaded with the parse method, typically it is an external JSON file that is to be created. With that aid in the event that I have a JSON file of a material stored in a location of a project, I will of course want to load that into it by using the load method of the Material Loader.
+
+So say that I have this JSON file text stored in the same location of my javaScript file as material.json.
 
 ```json
 {
@@ -149,6 +157,8 @@ Now that I have covered a number of examples that have to do with using the pars
     "stencilZPass": 7680
 }
 ```
+
+I will then want to load that material by calling the load method of an instance of THREE.MaterialLoader. When calling the load method I will want to pass the URL of the JSON file as the first argument, and then a callback function that will fire when the material is done loading.
 
 ```js
 // ---------- ----------
