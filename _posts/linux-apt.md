@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1059
-updated: 2023-07-11 14:42:31
-version: 1.3
+updated: 2023-07-28 09:45:07
+version: 1.4
 ---
 
 The Advanced package tool, or [apt for short command in Linux](https://en.wikipedia.org/wiki/APT_%28software%29) is the standard go to software package manager in Debian Linux as well as just about any Linux Distribution Based off of Debian. For the most part if I want to install, uninstall, or update software in a Debian Based system I will want to do so at least in park by way of apt.
@@ -18,9 +18,32 @@ The Advanced package tool, or [apt for short command in Linux](https://en.wikipe
 
 When I learn about a new command that I would like to look into more the first thing that I like to do is find out if the command is installed to begin with. If the command is installed to begin with I would also like to find out what the version number of that command might in fact be as well. If the command is not installed at all I might want to to check if it is available by way of the Linux Apt command, and if so install it. In the event that it is not available by way of apt I can look into other ways to get the software installed. So then in this section I will be going over a few things that have to do with a command that I always want to have installed and updated in a Linux system and that would be node.js.
 
+## List packages to see if they are installed
+
+Some times I might want to check if some packages that follow a given patter name are installed or not to begin with. For example I have [read this post that says that the GNOME virtual file system causes kernel panics](https://reprage.com/posts/2016-09-01-how-to-improve-the-stability-of-a-raspberry-pi/). The post says that I should purge the packages gvfs-backends gvfs-fuse. At the time of this writing I have not tested this out, or looked into it further just yet, so I will not be writing about doing that just yet here. However this caused me to look into other ways to check if a package is installed or not to begin with becuase using the type bash built in is not always the best way to do so if the package is a librray, or anything other than a command.
+
+```
+$ apt list gvfs-*
+Listing... Done
+gvfs-backends/oldstable,now 1.38.1-5 armhf [installed]
+gvfs-bin/oldstable 1.38.1-5 armhf
+gvfs-common/oldstable,now 1.38.1-5 all [installed,automatic]
+gvfs-daemons/oldstable,now 1.38.1-5 armhf [installed,automatic]
+gvfs-fuse/oldstable,now 1.38.1-5 armhf [installed]
+gvfs-libs/oldstable,now 1.38.1-5 armhf [installed,automatic]
+```
+
+Uisng type will not work great for checking if what needs to get purged is installed to begin with as these are not commands.
+
+```
+$ type gvfs-fuse
+bash: type: gvfs-fuse: not found
+```
+
+
 ### Using the type bash built in command to check if a command is installed
 
-The [Linux type command](/2021/02/11/linux-type/) which is one of the many commands that come with Linux bash can be used to find out if a command is installed or not to begin with. So in this case I can use the type command to check what the deal is with node.
+The [Linux type command](/2021/02/11/linux-type/) which is one of the many commands that come with Linux bash can be used to find out if a command is installed or not to begin with. So in this case I can use the type command to check what the deal is with node. Keep in mind that this is only good for checking if a command is installed to begin with, and not just any package as some packages are things like libries and plug ins thus you should use the list sub command of apt, or a command like dpkg-query.
 
 ```
 $ type node
