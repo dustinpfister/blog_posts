@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1063
-updated: 2023-07-28 10:22:00
-version: 1.2
+updated: 2023-07-28 12:04:39
+version: 1.3
 ---
 
 There are a number of loaders built into the core of threejs that extend from the common base loader class, one such option is the materials loader which will be the main theme of this post. There might be a situation or two in which I might want to use the material loader in conjunction with the texture loader, and buffer geometry loader, then create the final scene object with all of these assets. However I have found that I might prefer to go with the Object Loader as a way to bake everything into a single JSON file format and just start creating assets that way.
@@ -245,6 +245,134 @@ camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+## 3 - The Deal with textures and the Material Loader
+
+One major headache with the material loader I have found is the deal with textures which is one major reason why I like the Object Loader as that helps to have everything in one package. However where there is a will there is a way when it comes to getting this to work, and with that said the key method here is the set textures method of the material loader. The threejs docs do not give much help in terms of how to format the object that I am to give when calling it, but after taking a look at the source code of the material loader it would seem that what needs to be passed is an object where each key is the value of the option to which I want to set the texture for in the JSON of the material.
+
+### 3.1 - Demo using a canvas texture and the setTextures method of the material loader
+
+For this demo I am using a hard coded JSON String for the material, and then creating a texture with a canvas element by using THREE.CanvasTexture. With this one before I call the parse method I will want to call the set textures method of the material loader and then pass an object with the textures I want to use with the material. The trick here is to make sure that each key name for each texture will match up with the key value of the option in the material JSON data.
+
+```
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// CANVAS ELEMENT AND TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d');
+canvas.width = 32; canvas.height = 32;
+ctx.lineWidth = 5;
+ctx.strokeStyle = '#ff0000';
+ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+const texture = new THREE.CanvasTexture(canvas); 
+texture.magFilter = THREE.NearestFilter;
+texture.minFilter = THREE.NearestFilter;
+// ---------- ----------
+// MATERIAL LOADER - loading json with map option with key value of 'diffuse_one' that is then given by setTextures method
+// ---------- ----------
+const str_material = `
+{
+  "metadata":{
+    "version":4.5,
+    "type":"Material",
+    "generator":"Hacked over Material.toJSON Export setting key value of map option"
+  },
+  "uuid":"a5ce8212-1239-49d2-b564-0dfb6d84441f",
+  "type":"MeshBasicMaterial",
+  "color":16777215,
+  "map":"diffuse_one",
+  "reflectivity":1,
+  "refractionRatio":0.98,
+  "depthFunc":3,
+  "depthTest":true,
+  "depthWrite":true,
+  "colorWrite":true,
+  "stencilWrite":false,
+  "stencilWriteMask":255,
+  "stencilFunc":519,
+  "stencilRef":0,
+  "stencilFuncMask":255,
+  "stencilFail":7680,
+  "stencilZFail":7680,
+  "stencilZPass":7680
+}
+`;
+const loader =  new THREE.MaterialLoader();
+loader.setTextures({
+    diffuse_one: texture
+});
+const material = loader.parse( JSON.parse(str_material) );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material );
+scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 3.2 - Texture Loader Demo
+
+The process of using the texture loader to load an image that will then be used for one of the options of the material loaded with the material loader is a bit of a convoluted process. This is one of the major reasons why I like the object loader as it allows for me to package everything into a single json file by making use of DATA urls. Still there might be some reasons why a developer might want to break things down, as such they might want to load materials and with that also the textures used with said materials, and then do whatever needs to be done in terms of geometry and scene objects. With that said there is a way to do this but there are some issues of course.
+
+One major pain is with the texture loader, it will load images files and then create a new texture object. This presents a problem if the uuids of the textures or rather at least the keys of the textures object passed to the setTextures method much match up with the key values of the options in the material json that use the textures. Each time an image is loaded with the texture loader a new textures object will be created for it, and with that a new uuid. One way to solve this is maybe to use uuids for the file names of the textures, then set the uuids of the textures to the uuid of the file name, and then also make sure that this is set for the key of the textures object as well.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MATERIAL LOADER
+// ---------- ----------
+
+const textures = {};
+
+const loader = new THREE.TextureLoader();
+const uuid = 'c3ad2169-e7e1-435c-90f3-81bdc4ba6283';
+const url = uuid + '.png';
+loader.load( url, (texture) => {
+    texture.uuid = uuid;
+    textures[uuid] = texture;
+    const loader = new THREE.MaterialLoader();
+    loader.setTextures(textures)
+    loader.load('/forpost/threejs-materials-loader/s3-2-texture-load/material.json', (material) => {
+        scene.add( new THREE.GridHelper( 10,10 ) );
+        const mesh = new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material );
+        scene.add(mesh);
+        // RENDER
+        camera.position.set(2, 2, 2);
+        camera.lookAt(0, 0, 0);
+        renderer.render(scene, camera);
+    });
+});
+```
+
+Although this might work with just this one file for this one option in the JSON data there are a lot of issues here. Still the core of the idea is working with this never the less. The most important part here is that the key value set for the textures object matches up with what is being used in the material json data. So I could alternatively use whatever file names I want given that I set the file names as the uuid values in the material JSON data.
 
 ## Conclusion
 
