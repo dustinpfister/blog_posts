@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-28 12:58:56
-version: 1.75
+updated: 2023-07-29 13:20:07
+version: 1.76
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -318,6 +318,58 @@ renderer.render(scene, camera);
 So what is going on with this demo on basic UV mapping and materials is that once again I am just passing a texture for the map option of an instance of the Basic Material. However this time when it comes to the nature of the texture I have worked out a little logic where I am drawing a whole bunch of cells in the texture. I will then want to have a way to draw a given cell in the texture to a given face index, and that is what I am doing with the additional logic that has to do with the mutation of the UV attribute values.
 
 There is a whole lot more to write about this sort of subject of course that I will have to get into more later in this post in the texture section. However I wanted to work out at least one basic section demo of this along with the material array index values demo just to make it clear right away that an array of materials and the groups array is just one tool that is not a replacement for UV mapping.
+
+### 1.6 - A Basic Starting example of light and a material that will work with light
+
+There is a whole lot of get into when it comes to the subject of adding light to a scene, and using materials that will work with one or more light sources. With that said I do very much have an advanced section in this post in which I get into this subject in depth. However this is still very much the basic section  of the post so if you just simply want to get started with light the demo I have here should be just that.
+
+First off not all mesh material options will even work with a light source to begin with. So if you are using say the MeshBasicMaterial and wondering why it is that the light source you added is not working that is why. I have a section in this post in which I go over the various options for mesh materials, including the ones that will work with light, but for now I am just going to go with the Phong Material.
+
+When working with a material that will respond to light sources the color option of the material will be the color that will show up to one extent or another depending on what the situation is with lighting. If you are wondering if there is another kind of material option that will define a color that will always show up regardless of what is going on with light the typical option for that in most mesh material options is the emissive color option. Be default this is set to black, so you might want to set it to something other than black if you want to use this color option. There is then also adjusting that by way of the emissive Intesnity option. The Phong material has a few other options that are relevant to the use of light such as the specular color and the shininess options.
+
+There is then the question of what kind of light source to add. I will not be getting into depth here with that of course, so for now I think a good starting option for that might be directional light.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, .025, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MATERIAL
+//-------- ----------
+const material = new THREE.MeshPhongMaterial({
+    color: 0xff0000,
+    emissive: 0x2a2a2a,
+    emissiveIntensity: 0.15,
+    specular: 0x8f8f8f,
+    shininess: 12
+});
+//-------- ----------
+// LIGHT SOURCE
+//-------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(3, 4, -2).normalize();
+scene.add(dl);
+//-------- ----------
+// GEOMETRY / MESH
+//-------- ----------
+const geo = new THREE.SphereGeometry(1, 60, 60);
+const mesh = new THREE.Mesh( geo, material);
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+So this might be a good starting point for light but there is still a whole lot more to read about when it comes to the various material options that a relevant to the use of light. There are a number of various texture map options for example, and also various little details from one mesh object to the next. If you want to read more on this there is the advanced light section later in this post in which I will be expanding more on this topic.
 
 ## 2 - Overview of Mesh Material Options
 
