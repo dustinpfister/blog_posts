@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-30 04:58:30
-version: 1.80
+updated: 2023-07-30 05:20:56
+version: 1.81
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -910,6 +910,49 @@ scene.add(mesh1);
 // RENDER
 // ---------- ----------
 renderer.render(scene, camera);
+```
+
+### 5.4 - Side
+
+The side option will set what side of a face is to be rendered which by default is set to the THREE.FontSide constant. Often I might want to set this to THREE.DoubleSide, and in a few rare cases THREE.BackSide. If you are wondering how the side of a face is determined it has to do with the order of the points in the position attribute of the geometry, or the index of it.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+camera.position.set(0, 5, 10);
+camera.lookAt(0, 0, 0);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MATERIAL
+// ---------- ----------
+const material = new THREE.MeshBasicMaterial({
+    side: THREE.DoubleSide
+});
+// ---------- ----------
+// GEOMETRY MESH
+// ---------- ----------
+const geo = new THREE.PlaneGeometry(5, 5, 1, 1);
+const mesh = new THREE.Mesh(geo, material);
+scene.add(mesh);
+// ---------- ----------
+// LOOP
+// ---------- ----------
+let frame = 0;
+const maxFrame = 120;
+const loop = () => {
+    requestAnimationFrame(loop);
+    const a_frame = frame / maxFrame;
+    mesh.rotation.y = Math.PI * 2 * a_frame;
+    renderer.render(scene, camera);
+    frame += 1;
+    frame %= maxFrame;
+};
+loop();
 ```
 
 ## 6 - Blending options 
