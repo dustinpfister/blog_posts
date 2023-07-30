@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-30 04:42:13
-version: 1.78
+updated: 2023-07-30 04:53:50
+version: 1.79
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -22,13 +22,17 @@ This post will serve as a general overview of the mesh materials in general in t
 
 ## Materials in threejs and what to know first
 
-This is not my [getting started post on threejs](/2018/04/04/threejs-getting-started/), if you are new to three.js you might choose to start with a post in which the basic of the library are covered. This is a post on three.js in which I assume you have basic knowledge of how to make a three.js project, and now only seek to have a deeper understanding of materials to work with when it comes to creating mesh objects.
+This is not my [getting started post on threejs](/2018/04/04/threejs-getting-started/), if you are new to threejs you might choose to start with a post in which the basics of the library are covered. I assume you have basic knowledge of how to make a threejs project, and now only seek to have a deeper understanding of materials to work with when it comes to creating mesh objects. Also even if you have some experience with threejs there is a whole lot of other topics that branch off from the use of materials of course. So in this section I will be writing about a few things that you might want to read up more on regardless of experience.
 
 ### The color class, and the color and emissive options of materials
 
 The [Color class](/2021/05/03/threejs-color) can prove to be useful for creating color values for the various material options that expect a color for the value. Also it is a helpful tool for working with color in general. For example it can be used in the process of creating a color from some expressions that compute values for each color channel and then the get style method can be used to get a string values that can be used to set the fill or stroke style when drawing to a canvas element
 
 Speaking of color many materials have a way to set a color option for the material, but how this works will change a little from one material to another. For example the basic material will not do anything with light, so when a solid color is set for the basic material that will just be the solid color for all the faces of the geometry used in the mesh. So then one might assume that will be the case in all other materials, but that is not true. The color property in the standard material is more or less the same thing, but it works in conjunction with what is going on when it comes to light in a scene. So if I set a solid color for an instance of a standard material, but do not add light to a scene, then I will not see anything. So when it comes to the standard material there is another property that comes into play called the emissive property. It is this emissive property that I use to set a color that will always show up not matter what when it comes to what might be going on with light.
+
+### Lots of overlap with Materials and Geometry
+
+There is a lot of overlap between materials and geometry of course so you might want to read more on the [subject of geometry in general](/2021/04/22/threejs-buffer-geometry/) then. For example certain features of materials will not work at all of corresponding attributes of the geometry are not there such as the Vertex Colors options of the material begin set to true not working because there is no color attribute in the geometry. Speaking of buffer geometry attributes it might not be such a bad idea to look into what the position, normal, and [uv](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes of a geometry are if you have not done so at this time.
 
 ### Source is also on Github
 
