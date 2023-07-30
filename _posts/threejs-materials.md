@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-30 04:29:32
-version: 1.77
+updated: 2023-07-30 04:42:13
+version: 1.78
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -24,42 +24,11 @@ This post will serve as a general overview of the mesh materials in general in t
 
 This is not my [getting started post on threejs](/2018/04/04/threejs-getting-started/), if you are new to three.js you might choose to start with a post in which the basic of the library are covered. This is a post on three.js in which I assume you have basic knowledge of how to make a three.js project, and now only seek to have a deeper understanding of materials to work with when it comes to creating mesh objects.
 
-### The Material base Class
+### The color class, and the color and emissive options of materials
 
-All materials inherit from the [Material base class](https://threejs.org/docs/index.html#api/materials/Material). This base class contains a lot of properties some of which are superseded by properties in a certain material. I will not be getting into the Base class in detail here, as I still need to write more demos with many of the properties. Also This post is going to be pretty lengthy to begin with anyway. However I think I should at least cover some of the most important properties to be aware of in the base material class that I have dealt with thus far.
+The [Color class](/2021/05/03/threejs-color) can prove to be useful for creating color values for the various material options that expect a color for the value. Also it is a helpful tool for working with color in general. For example it can be used in the process of creating a color from some expressions that compute values for each color channel and then the get style method can be used to get a string values that can be used to set the fill or stroke style when drawing to a canvas element
 
-### The color, and emissive properties of materials
-
-Many materials have a way to set a solid color property for the material, but how this works will change a little from one material to another. For example the basic material will not do anything with light, so when a solid color is set for the basic material that will just be the solid color for all the faces of the geometry used in the mesh. So then one might assume that will be the case in all other materials, but that is not true. The color property in the standard material is more or less the same thing, but it works in conjunction with what is going on when it comes to light in a scene. So if I set a solid color for an instance of a standard material, but do not add light to a scene, then I will not see anything. So when it comes to the standard materials there is another property that comes into play called the emissive property. It is this emissive property that I use to set a color that will always show up not matter what when it comes to what might be going on with light.
-
-### The Material.side property
-
-When dealing with a material that will be used on a mesh in which faces will be viewed from both sides, the side property of the material base class may be of interest.
-
-```js
-var planeMaterial = new THREE.MeshBasicMaterial({
-    color: 0x00ffff,
-    side: THREE.DoubleSide
-});
-```
-As you might guess this will make it so the material is used on both sides of the faces used in a mesh. By default it is the THREE.FrontSide constant, there is also a THREE.BackSide constant as well.
-
-### Material.transparent, and Material.opacity
-
-These two properties have to do with the opacity of the material. The transparent property expects a boolean value, which will turn transparency on or off depending on the value. If it is set true, and you do not see any opacity effect it could be because the default value for material.opacity is 1 which means fully opaque. Set the opacity property to a value between 0 and 1 to set the opacity of the material of transparency is enabled.
-
-```js
-var planeMaterial = new THREE.MeshBasicMaterial({
-    color: 0x00ffff,
-    side: THREE.DoubleSide,
-    transparent: true,
-    opacity: .4
-});
-```
-
-### Writing custom shaders
-
-In this post I am writing about what there is to work with mainly in terms of built in materials. However in some cases the only way to do what one wants to do with a material will have to involve finding, or writing one or more custom shaders. Maybe the best way to get started with this sort of thing would be to start reading a thing or two about [THREE.ShaderMaterial](/2023/01/13/threejs-shader-material/) rather than THREE.RawShaderMaterial as a lot of things are set up to begin with that allow one to not have to write all the GLSL code from the ground up. 
+Speaking of color many materials have a way to set a color option for the material, but how this works will change a little from one material to another. For example the basic material will not do anything with light, so when a solid color is set for the basic material that will just be the solid color for all the faces of the geometry used in the mesh. So then one might assume that will be the case in all other materials, but that is not true. The color property in the standard material is more or less the same thing, but it works in conjunction with what is going on when it comes to light in a scene. So if I set a solid color for an instance of a standard material, but do not add light to a scene, then I will not see anything. So when it comes to the standard material there is another property that comes into play called the emissive property. It is this emissive property that I use to set a color that will always show up not matter what when it comes to what might be going on with light.
 
 ### Source is also on Github
 
