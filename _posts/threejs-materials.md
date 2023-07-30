@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-29 13:20:07
-version: 1.76
+updated: 2023-07-30 04:29:32
+version: 1.77
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -462,9 +462,7 @@ const material = new THREE.MeshDepthMaterial({
 
 ### 2.3 - The Lambert material
 
-Read my [full post](/2018/04/08/threejs-lambert-material/) on the Lambert material
-
-This is the first material I started working with when getting into the use of lights and shadows. In some ways the [Lambert material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial) is a good choice for a reflective material as the algorithm used for reflecting light is more efficient compared to the other options, although I might not say that it is th best looking compared to the alternatives.
+This is the first material I started working with when getting into the use of lights and shadows. In some ways the [Lambert material](/2018/04/08/threejs-lambert-material/) is a good choice for a reflective material as the algorithm used for reflecting light is more efficient compared to the other options. This might then be a good choise for situations in which frame rate will need to be improved but in a way in which the material will still work with light sources.
 
 ```js
 //-------- ----------
@@ -499,8 +497,6 @@ camera.position.set(1.3, 1.5, 1.3);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera); ;
 ```
-
-the main thing to understand here is when just setting a solid color, the color that is set with the color property is actually the color that will show up when a white light source shines on it. The emissive property is what is used to set a solid color that is to show up no matter what, which differs from you might be used to with the basic material that you might have started with like I did.
 
 ### 2.4 - Mesh Normal Material
 
@@ -1676,6 +1672,6 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-So far I have just only scratched the surface when it comes to materials in threejs as there is a whole lot more to cover when it comes to additional things that branch off from the topic of just materials. it should go without saying that there is a great deal more to write about when it comes to th finer points of each mesh material. In addition there is more to say about the base material class, and other matters with materials such as using an array of materials with a mesh object rather than just one and how to set up or change material index values.
+That covers just about everything, but I would still not go so far as to say that this post is truly comprehensive on the subject of materials in threejs. Many of these sections could still use further expansion and revilement. Also when it comes to getting into the subject of the shader material and with that what there is to work with in the shader library the sky is kind of the limit it would seem. There are all the little chunks of the shader lib to use to help add various common parts of materials to a custom material. Also there is the subject of using the Raw shader material and with that using raw GLSL code to create a material from the ground up. So yes there is a whole other language to learn when it comes to getting proficient with that.
 
-This is one of my oldest posts on threejs that I wrote, and when I first started the source code examples I was using r91 which was what I was using back in 2018. Sense then a whole lot has changed with threejs in terms of features that have changed and in some cases have been out right remove completely. As such I do get around to editing my content now and then, and I all ready have some plans in place when it comes to future edits of this post.
+This is one of my oldest blog posts on threejs that I have of course edited a number of times sense I first started it. I will of course come around to edit this post some more now and then in an effort to try my best to really do this subject justice. 
