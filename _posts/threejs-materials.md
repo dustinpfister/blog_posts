@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-30 04:53:50
-version: 1.79
+updated: 2023-07-30 04:58:30
+version: 1.80
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -40,7 +40,8 @@ The source for these examples is [also on Github](https://github.com/dustinpfist
 
 ### Version number matters with three.js
 
-Threejs is a project in which the version number matters a whole lot as older posts on three.js often contain examples that will break on newer revisions and vise versa. When I first started writing this post I was using [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91). However the last time I came around to edit this post I updated all of the demos to what I have layed down for my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md).
+Threejs is a project in which the version number matters a whole lot as older posts on threejs often contain examples that will break on newer revisions and vise versa. When I first started writing this post I was using [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91). However the last time I came around to edit this post I updated all of the demos to what I have layed down for my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). This means that for the demos in this post I am still using plain javaScript script tags over that of modules type script tags. However this will be the last revision in which I will be doing that. There are a whole lot of code breaking changes up ahead that I will not be getting into detail about here. However I will say that it is as always very important to know what revision you are using, and also what revision an author of content might have used when writing a post such as this.
+
 
 ## 1 - Basic getting started type exmaples of matreials
 
