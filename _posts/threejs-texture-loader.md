@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2023-04-11 11:31:20
-version: 1.37
+updated: 2023-07-31 08:54:20
+version: 1.38
 ---
 
 When it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) can be used load external image assets in the form of image files such as PNG files. Once the images are loaded they can then bee used a as textures for the various maps of a material such as a color map, or emissive map just to name a few as the final object that is furnished is an instance of the [Texture class](https://threejs.org/docs/#api/en/textures/Texture).
@@ -20,6 +20,10 @@ When it comes to my various threejs examples that I make for these posts I often
 ## The texture loader in threejs and what to know first
 
 This is a post on the texture loader in threejs and as such I assume that you have at least a little background when it comes to the [basics of threejs](/2018/04/04/threejs-getting-started/), and [client side javaScript in general](/2018/11/27/js-getting-started/). Although there is no way that I will be covering every little detail with these subjects here, in this section I will be going over a few things you should know about before continuing to read the rest of this post.
+
+### There is also the Object Loader
+
+One of the draw backs of using the texture loader is that it is just a simple extension of the Image loader that will create a new instance of a Texture object. If I am in a situation in which I have some JSON data for a texture that I want to load and parse into a texture object then the texture loader is not much help. I could take a moment to create my own loader that extends from the base loader class that will do what i think the texture loader should do. However I have found that a better way to do what I want with texture data, as well as just about everything else that I care about would be to just use the [object loader](/2023/07/19/threejs-object-loader/).
 
 ### There are many other ways to load files, and the THREE.Texture constructor can be used directly.
 
@@ -37,7 +41,7 @@ On top of being able to use canvas elements and everything there is to work with
 
 ### Version Numbers matter
 
-When I wrote this post and the examples for this post I was using r127 of threejs, and the last time I came around to doing some editing I was using r140 of the library. I have got into the habit of making sure I always make note of the version of threejs that I am using since there are always code breaking changes being made to the library.
+When I wrote this post and the examples for this post I was using r127 of threejs, and the last time I came around to doing some editing I was using r146 of the library and so the demos where updated to [my style rules for r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). I have got into the habit of making sure I always make note of the version of threejs that I am using since there are always code breaking changes being made to the library.
 
 ### The source code examples in this post are on Github
 
