@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-31 05:51:03
-version: 1.82
+updated: 2023-07-31 13:13:25
+version: 1.83
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -353,10 +353,11 @@ Keep in mind that if you feel that you are getting overwhelmed with all of this 
 
 ### 2.1 - Mesh Basic Material
 
-The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is as the name suggests, it is the kind of material that I would use if I do not aim to do anything special with light. The basic material will not respond to a light source, and the faces will be filled with a solid color, or a given texture when it comes to the use of the map option. So with that said the way to get something other than a solid mass of color on the screen with this one would require the use of adding textures. There is then doing some shading when drawing the textures themselves that are to be used with the geometry that is worked out.
+The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the kind of material that I would use if I do not aim to do anything special with light. The basic material will not respond to any light sources, and the faces will be filled with a solid color, a given texture when it comes to the use of the map option, or vertex coloring can be used if there is a color attribute to work with in the geometry. So with that said the way to get something other than a solid mass of color on the screen with this one would require the use of adding textures, color attributes, groups, or child objects that are points or lines.
 
-Another option would involve adding a child object of some kind such as lines that use a geometry that is created by pissing the geometry of the parent object into the edge geometry constructor. There are a whole lot of other options for maps and other features that are supported by the basic material, and also there are some common material class features that can be used with this such as vertex colors. However for now I think I should just work out a basic example of this and move on.
+As I said one option to help show some depth would involve adding a child object of some kind such as lines that use a geometry that is created by passing the geometry of the parent object into the edge geometry constructor. There are a whole lot of other options for maps and other features that are supported by the basic material, and also there are some common material class features that can be used with this such as vertex colors.
 
+If using textures to show depth there is then doing some shading when drawing the textures themselves that are to be used with the geometry that is worked out.
 
 ```js
 //-------- ----------
