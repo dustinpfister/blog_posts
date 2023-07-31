@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-07-30 05:20:56
-version: 1.81
+updated: 2023-07-31 05:51:03
+version: 1.82
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1392,6 +1392,57 @@ camera.position.set(2, 1, 3);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+### 9.2 - Ambient Light and Emissive color
+
+There is the ambient light option that when added to the scene object will result in a base intensity of light being applied to all materials that will work with light sources. When calling the THREE.AmbientLight constructor I can give a color as the first argument followed by a starting intensity value of the light. 
+
+There is also the emissive color, and the emissive intensity options that are typically found in materials that respond to light sources that can also be used to get a base amount of color. By default the emissive color is black, so often I might want to set the emissive color to something other than black. After that another option of interest would be the emissive intensity option. This emissive intensity option can be adjusted along with the intensity of the ambient light to change the base intensity of the emissive and color options of the matreial.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// LIGHT
+//-------- ----------
+const al = new THREE.AmbientLight(0xffffff, 0.25);
+scene.add(al);
+//-------- ----------
+// MATERAILS
+//-------- ----------
+const material_1 = new THREE.MeshStandardMaterial({
+    color: 0xff0000
+});
+const material_2 = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    emissive: 0x00ff00,
+    emissiveIntensity: 1
+});
+//-------- ----------
+// GRID AND MESH
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const geo = new THREE.BoxGeometry(1, 1, 1);
+const mesh_1 = new THREE.Mesh( geo, material_1 );
+mesh_1.position.x = -0.7;
+scene.add( mesh_1 );
+const mesh_2 = new THREE.Mesh( geo, material_2 );
+mesh_2.position.x = 0.7;
+scene.add( mesh_2 );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 1, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
 
 ## 10 - Shadows
 
