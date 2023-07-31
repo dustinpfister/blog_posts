@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1048
-updated: 2023-06-10 14:24:02
-version: 1.8
+updated: 2023-07-31 10:44:50
+version: 1.9
 ---
 
 The [lathe geometry class](https://threejs.org/docs/#api/en/geometries/LatheGeometry) in threejs can be used to create a geometry using an array of 2d points that define a line that is to be repeated along an axis to form a solid shape. For example there is creating an array of vector2 objects that form an arc of a half circle and then using that as a way to form a sphere by passing this array of Vector2 object to the THREE.LatheGeometry constructor along with additional arguments that define the number of segments, and a start and length phi value.
@@ -14,6 +14,9 @@ The [lathe geometry class](https://threejs.org/docs/#api/en/geometries/LatheGeom
 There are all kinds of 3d shapes that can be formed by just coming up with a new 2d path of some kind, and passing it to the lathe geometry constructor. In fact the threejs core built in [capsule geometry](/2022/07/22/threejs-capsule-geometry/) class is just an extension of the Lathe Geometry class. When it comes to making an array of vector2 objects there is just working out some expressions and helper functions to create the array of THREE.Vector2 objects, or there is using a 2d curve and calling the getPoints method or some other means when working with curves.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/6by7fIcSfJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Lathe Geometry and what to know first
 
@@ -33,7 +36,7 @@ The source code examples that I am writing about for this post can also be found
 
 ### Version Numbers matter
 
-When I first wrote this blog post I was using r152 of threejs.
+When I first wrote this blog post I was [using r152 of threejs and this was following the style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) that I set for that revision.
 
 ## 1 - Basic Lathe Geometry examples
 
@@ -128,7 +131,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 1.3 - using an Ellipse Curve
+### 1.3 - Using an Ellipse Curve
 
 The ArcCurve class is actually just an abstraction for the Ellipse Curve class, so there is skipping the middle man and just working with that in place of the ArcCurve class. If I still want to make a sphere this way I can just set the same value for both radius values. However I can also of course use differing values to end up getting [Oblate spheroid](https://simple.wikipedia.org/wiki/Oblate_spheroid) shapes.
 
@@ -178,6 +181,66 @@ scene.add(mesh1);
 // ---------- ----------
 camera.position.set(9, 6, 9);
 camera.lookAt(0, -1, 0);
+renderer.render(scene, camera);
+```
+
+### 1.4 - Using Curve Paths
+
+I do not have to just go with one kind of curve or another mind you, there is also curve path objects as well. This allows for me to make a curve of curves using such options as LineCurve and QuadraticBezierCurve to create for example a kind of bowl like shape.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// CURVE/V2ARRAY
+// ---------- ----------
+const v1 = new THREE.Vector2( 0, 0 );
+const v2 = new THREE.Vector2( 0.5, 0 );
+const v3 = new THREE.Vector2( 0.5, 0.5);
+const v4 = new THREE.Vector2( 0.4, 0.5);
+const v5 = new THREE.Vector2( 0.2, 0.1);
+const v6 = new THREE.Vector2( 0, 0.1);
+const vc1 = v2.clone().lerp(v3, 0.5).add( new THREE.Vector2(0.25,-0.1) );
+const vc2 = v4.clone().lerp(v5, 0.5).add( new THREE.Vector2(0.25, 0) );
+const curve = new THREE.CurvePath();
+curve.add( new THREE.LineCurve( v1, v2 ) );
+curve.add( new THREE.QuadraticBezierCurve(v2, vc1, v3) );
+curve.add( new THREE.LineCurve( v3, v4 ) );
+curve.add( new THREE.QuadraticBezierCurve( v4, vc2, v5 ) );
+curve.add( new THREE.LineCurve( v5, v6 ) );
+const v2array = curve.getPoints(20);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const segments_lathe = 80;
+const phi_start = 0;
+const phi_length = Math.PI * 2;
+const geometry = new THREE.LatheGeometry( v2array, segments_lathe, phi_start, phi_length );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const dl = new THREE.DirectionalLight(0xffffff, 0.95);
+dl.position.set(1, 0, 3)
+scene.add(dl);
+scene.add( new THREE.AmbientLight(0xffffff, 0.01) );
+const mesh1 = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ color: 0xff0000, specular: 0x8a8a8a, side: THREE.FrontSide }) );
+scene.add(mesh1);
+mesh1.scale.set(2,2,2)
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 1);
+camera.lookAt(0, 0.2, 0);
 renderer.render(scene, camera);
 ```
 
