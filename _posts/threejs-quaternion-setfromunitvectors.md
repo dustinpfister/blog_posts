@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1035
-updated: 2023-04-07 15:05:27
-version: 1.3
+updated: 2023-07-31 08:43:25
+version: 1.4
 ---
 
-As of late I have been working on demos that have to do with [Quaternion objects](https://threejs.org/docs/#api/en/math/Quaternion) in order to gain a better understanding of them. Thus far I have found that there is a core set of prototype methods that I am going to want to use to start working with these. Maybe the very first method that one will want to get solid with is the set from axis angle method, but I have found that the set from unit vectors method is also often fairly useful as well. With that said todays post will be on this set from unit vectors method of the quaternion class.
+As of late I have been working on demos that have to do with [Quaternion objects](https://threejs.org/docs/#api/en/math/Quaternion) in order to gain a better understanding of them. Thus far I have found that there is a core set of prototype methods that I am going to want to use to start working with these. Maybe the very first method that one will want to get solid with is the set from axis angle method, but I have found that the set from unit vectors method is also often fairly useful as well as a tool for just setting the state of one of these objects to begin with. I say that because often I will want to set a starting orientation to begin with, and then from the preform one or more additional rotations. With that said todays post will be on this set from unit vectors method of the quaternion class.
 
 <!-- more -->
 
@@ -35,7 +35,7 @@ The source code examples that I am writing about here, as well as additional not
 
 ### Version Numbers matter
 
-When I first wrote this blog post I was using r146 of threejs.
+When I first wrote this blog post I was [using r146 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) and thus I follwed the style rules that I have set for that revision.
 
 ## 1 - Basic getting started examples of the Set From Unit Vectors method
 
@@ -164,7 +164,7 @@ renderer.render(scene, camera);
 
 ## 2 - Animation loop demos
 
-Often I think that in order to really gain a sense of what a threejs feature is really useful for I need to work out at least one or more animation loop examples.
+Often I think that in order to really gain a sense of what a threejs feature is really useful for I need to work out at least one or more animation loop examples. So then in this section I will be doing just that with a few demos that involve a main animation loop function and result in mutation of quaternion object values over time using mainly the set From Unit Vectors method.
 
 ### 2.1 - Vector3 array demo
 
