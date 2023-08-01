@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1033
-updated: 2023-04-14 09:22:43
-version: 1.22
+updated: 2023-08-01 13:44:09
+version: 1.23
 ---
 
 There is a lot of ground to cover when it comes to [quaternions in threejs](https://threejs.org/docs/#api/en/math/Quaternion), but one has to start somewhere with them so here we are. Quaternions and prove to be very confusing at first compared to what you might be used to for setting rotations, but with a little effort some of that confusion can be addressed to get to at least a basic, functional , level of understanding. They are far more complex than Euler objects, but that complexly is justified for some situations that can come up when working on projects.
@@ -28,12 +28,13 @@ If you are still fairly new to threejs and you have not looked into things like 
 
 ### The source code examples here are also on github
 
-I have the source code examples that I am writing about here up on my test threejs repository on Github. This is also where I park all the source code examples for my many other blog posts on threejs as well. In addition cloning down the repo, installing the packages, and starting the server might be the fastest way to get these examples as well as the many others working on your end.
+I have the source code examples that I am writing about here up on my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-quaternion). This is also where I park all the source code examples for my [many other blog posts on threejs](/categories/three-js/) as well. In addition cloning down the repo, installing the packages, and starting the server might be the fastest way to get these examples as well as the many others working on your end.
 
 ### Version Numbers matter
 
-When I first wrote this post I was using r146 of threejs, and as such the examples follow the style rules that I have set for that revision.
-With that said I am still using old script tags over that of JSM with these examples. There are a lot of other little details with this revision and the direction that threejs is going. However in any case I have found that I just need to always have a little section such as this to make it clear what the deal is with this sort of thing. If you used threejs as long as I have then you know what the deal is, if not threejs is a fast moving project and code breaking changes are made to if often. 
+When I first wrote this post I was using [r146 of threejs, and as such the examples follow the style rules that I have set for that revision](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). With that said I am still using old script tags over that of JSM with these examples. There are a lot of other little details with this revision, why I am not moving forward with newer revisions at this time at least with editing older content, and the direction that threejs is going in general. I will not be getting into those details in depth here of course however in any case I have found that I just need to always have a little section such as this to make it clear what the deal is with this sort of thing.
+
+If you used threejs as long as I have then you know what the deal is, if not threejs is a fast moving project and code breaking changes are made to if often. Always be aware of what revision you are using and of possible what revision an author of content on threejs was suing when they wrote or updated the post last.
 
 ## 1 - Some basic getting started examples of Quaternion objects
 
