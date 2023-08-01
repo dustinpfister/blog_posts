@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2023-08-01 14:44:54
-version: 1.34
+updated: 2023-08-01 14:47:12
+version: 1.35
 ---
 
 When working out a [custom geometry](/2021/04/22/threejs-buffer-geometry/) or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes of interest if the geometry is to be used with a mesh object. When it comes to using THREE.Points or THREE.Line I just need to worry about the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/). However when it comes to mesh objects I am also going to want to have a [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attribute that has to do with the direction that points of the position attribute are facing. 
@@ -42,7 +42,7 @@ The source code examples that I am writing about in this post can also be found 
 
 ### Always check your version numbers
 
-When I first wrote this post I was using r127 of threejs, and the last time I came around to edit all of the demos I them all updated to the standards I set for r146. Also the last time I came around to edit this post a little I started some new r152 demos as well. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post yet again.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to edit all of the demos I them all updated to the [standards I set for r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). Also the last time I came around to edit this post a little I started some new r152 demos as well. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post yet again.
 
 ## 1 - Basic examples of the uv attribute of buffer geometry
 
