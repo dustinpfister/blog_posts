@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2023-04-13 09:29:21
-version: 1.53
+updated: 2023-08-01 09:35:36
+version: 1.54
 ---
 
 In [threejs](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh. One of these is built in geometry constructors can be used to make geometry of a plane. That is just a flat simple 2d plane, which is a desired geometry for most simple projects.
@@ -34,9 +34,8 @@ The source code examples that I am writing about in this post can also be found 
 
 ### Version Numbers matter
 
-When I first wrote this post I was using three.js revision r104, and the last time I came around to do a little editing of this post I was using r146. Sense then some code breaking changes have been introduced that will cause some of these examples to break when it comes to having a checkerboard pattern on a plane depending on what version you are using. I am generally keeping the newer code examples to the top of the post, and leaving the older examples at the bottom for the sake of historical reasons, or if for some reason you are still using an older versions of three.js.
+When I first wrote this post I was using three.js revision r104, and the last time I came around to do a little editing of this post I was updated most of the demos to my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). There is one exception to this where I am using r111 which is a face3 class demo that I am using in what is now the old section. Code breaking changes to threejs can happen with each new revision that comes out, so always be mindful of what revision you are using and also if possible what revision and author was using when they wrote a post on threejs such as this one.
 
-As of this writing I have all of the new examples working well with r140. The one old section on the face3 class at the bottom of this post was still working on r111 and at this time I am only going to be interested in maintaining the examples that are newer.
 
 ## 1 - Basic examples of plane geometry
 
@@ -184,57 +183,54 @@ renderer.render(scene, camera);
 
 Often I might want to use more than one material when it comes to skinning a plane geometry. For starers there is just passing an array of two materials rather than just a single material instance object to the mesh constructor that I use with the plane geometry. However that might just be a first step, as with late versions of three.js there will be no groups added by default by just calling the plane geometry constructor. The groups must be added then by calling the [add group](https://threejs.org/docs/#api/en/core/BufferGeometry.addGroup) method of the buffer geometry class. When doing so I need to give a vertex index value as the first argument, followed by a count of vertex index values from that start point, followed by a material index value. If you still find that confusing maybe it would be best to learn by doing and just start playing around with a code example of this.
 
-### 2.1 - Basic Gorups example
+### 2.1 - Basic Groups example
 
 To start out with this there is just getting together a basic example where I am just making a few calls of the add group method to create groups that way. When it comes to really getting into this sort of thing I will want to do so in a loop and work out some logic for the arguments that I pass to the add group method, but for now I will just be starting out with a basic example of this.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10));
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // MESH - ADDING GROUPS
-    // ---------- ----------
-    // An Array of materials
-    const materialArray = [
-        new THREE.MeshBasicMaterial({
-            color: 0xe0e0e0,
-            side: THREE.DoubleSide
-        }),
-        new THREE.MeshBasicMaterial({
-            color: 0x505050,
-            side: THREE.DoubleSide
-        })
-    ];
-    // PLANE
-    const plane = new THREE.Mesh(
+
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MESH - ADDING GROUPS
+// ---------- ----------
+// An Array of materials
+const materialArray = [
+    new THREE.MeshBasicMaterial({
+        color: 0xe0e0e0,
+        side: THREE.DoubleSide
+    }),
+    new THREE.MeshBasicMaterial({
+        color: 0x505050,
+        side: THREE.DoubleSide
+    })
+];
+// PLANE
+const plane = new THREE.Mesh(
         new THREE.PlaneGeometry(7, 7, 1, 2),
         materialArray);
-    // USING ADD GROUP METHOD TO SET MATERIAL
-    // INDEX VLAUES
-    plane.geometry.addGroup(0, 3, 0);
-    plane.geometry.addGroup(3, 3, 1);
-    plane.geometry.addGroup(6, 3, 1);
-    plane.geometry.addGroup(9, 3, 0);
-    plane.geometry.rotateX(Math.PI * 0.5);
-    scene.add(plane);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+// USING ADD GROUP METHOD TO SET MATERIAL
+// INDEX VLAUES
+plane.geometry.addGroup(0, 3, 0);
+plane.geometry.addGroup(3, 3, 1);
+plane.geometry.addGroup(6, 3, 1);
+plane.geometry.addGroup(9, 3, 0);
+plane.geometry.rotateX(Math.PI * 0.5);
+scene.add(plane);
+// ---------- ----------
+// CALLING RENDER OF RENDERER
+// ---------- ----------
+renderer.render(scene, camera);
 ```
 
 In this example I am calling the add group method a total of four times, one time for each triangle in this plane geometry that is 1 by 2 in terms of the dimensions of the sections. I could call the the add group method just two times with a different set of values for the start vertex and count of vertex points. And there is also changing up what the material index values are for these add group calls also when it comes to the third argument. Once you get a fell for what the situation is with these arguments and the effect that they end up having, it is time to move on to working out some functions that can help with creating groups and setting material index values.
@@ -248,53 +244,51 @@ I worked out two helper method for this example by making a function that will c
 I can then just call my mkChekcer function that will create and return the plane geometry with the groups and material index values set up for me. I then just need to add the returned mesh object to the scene, and the effect seems to work more or less as I would expect it to for just about any values that I set the the width and height of the sections.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, -2, 0);
-    scene.add(camera);
-    // render
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // HELPER FUNCTIONS
-    // ---------- ----------
-    // make just a geo with groups set up
-    const mkCheckerGeo = function (w, h, sw, sh) {
-        w = w === undefined ? 16 : w;
-        h = h === undefined ? 16 : h;
-        sw = sw === undefined ? 8 : sw;
-        sh = sh === undefined ? 8 : sh;
-        const planeGeo = new THREE.PlaneGeometry(w, h, sw, sh),
-        len = sw * sh;
-        let tileIndex = 0,
-        mi,
-        y,
-        i;
-        while(tileIndex < len){
-            i = tileIndex * 6;
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -2, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// HELPER FUNCTIONS
+// ---------- ----------
+// make just a geo with groups set up
+const mkCheckerGeo = function (w, h, sw, sh) {
+    w = w === undefined ? 16 : w;
+    h = h === undefined ? 16 : h;
+    sw = sw === undefined ? 8 : sw;
+    sh = sh === undefined ? 8 : sh;
+    const planeGeo = new THREE.PlaneGeometry(w, h, sw, sh),
+    len = sw * sh;
+    let tileIndex = 0,
+    mi,
+    y,
+    i;
+    while (tileIndex < len) {
+        i = tileIndex * 6;
+        mi = tileIndex % 2;
+        if (sw % 2) {
             mi = tileIndex % 2;
-            if (sw % 2) {
-                mi = tileIndex % 2;
-            } else {
-                y = Math.floor(tileIndex / sw);
-                mi = y % 2 ? 1 - tileIndex % 2 : tileIndex % 2
-            }
-            planeGeo.addGroup(i, 3, mi);
-            planeGeo.addGroup(i + 3, 3, mi);
-            tileIndex += 1;
+        } else {
+            y = Math.floor(tileIndex / sw);
+            mi = y % 2 ? 1 - tileIndex % 2 : tileIndex % 2
         }
-        return planeGeo;
-    };
-    // set up a mesh
-    const mkChecker = function (opt) {
-        opt = opt || {};
-        opt.materials = opt.materials || [
+        planeGeo.addGroup(i, 3, mi);
+        planeGeo.addGroup(i + 3, 3, mi);
+        tileIndex += 1;
+    }
+    return planeGeo;
+};
+// set up a mesh
+const mkChecker = function (opt) {
+    opt = opt || {};
+    opt.materials = opt.materials || [
             new THREE.MeshBasicMaterial({
                 color: 0xe0e0e0,
                 side: THREE.DoubleSide
@@ -304,29 +298,27 @@ I can then just call my mkChekcer function that will create and return the plane
                 side: THREE.DoubleSide
             })
         ];
-        // add a plane
-        const plane = new THREE.Mesh(
+    // add a plane
+    const plane = new THREE.Mesh(
             mkCheckerGeo(opt.w, opt.h, opt.sw, opt.sh),
             opt.materials);
-        plane.geometry.rotateX( Math.PI * 0.5 );
-        return plane;
-    };
-    // ---------- ----------
-    // MESH - 
-    // ---------- ----------
-    var check = mkChecker({
+    plane.geometry.rotateX(Math.PI * 0.5);
+    return plane;
+};
+// ---------- ----------
+// MESH -
+// ---------- ----------
+const check = mkChecker({
         w: 10,
         h: 10,
         sw: 12,
         sh: 12
     });
-    scene.add(check);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+scene.add(check);
+// ---------- ----------
+// CALLING RENDER OF RENDERER
+// ---------- ----------
+renderer.render(scene, camera);
 ```
 
 Although this seems to work okay, I think that it might be even better to pull the logic that has to do with setting material index values out of the function that created the geometry, and have a module where there are a few options for setting material index values.
@@ -342,86 +334,82 @@ There are a number of ways to go about loading textures into a threejs project s
 Here I have a getting started example of textures and plane geometry where I am creating textures using javaScript code with the helper of some functions from my blog post on the subject of data textures. For this example at least I am not going to do anything fancy when it comes to mutation of the uv attribute of the plane geometry over time or anything to that effect. For now I will just use the helper function  to create a data texture and just use that with the map property of an instance of the basic material. So just a regular color map this time and that is all.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(6, 6, 6);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPER FUNCTIONS - based off of what I have in my threejs-data-texture post
-    //                    https://dustinpfister.github.io/2022/04/15/threejs-data-texture/
-    //-------- ----------
-    const createData = function(opt){
-        opt = opt || {};
-        opt.width = opt.width === undefined ? 16: opt.width; 
-        opt.height = opt.height === undefined ? 16: opt.height;
-        // DEFAULT FOR PIX METOD IS A CHECKER PATTERN HERE
-        opt.forPix = opt.forPix || function(color, x, y, i, opt){
-            color.setRGB(255, 255, 255);
-            if(y % 2 === 0 && x % 2 === 0){
-               color.setRGB(32, 32, 32);
-            }
-            if(y % 2 != 0 && x % 2 != 0){
-               color.setRGB(64, 64, 64);
-            }
-            return color;
-        };
-        let size = opt.width * opt.height;
-        let data = new Uint8Array( 4 * size );
-        for ( let i = 0; i < size; i ++ ) {
-            let stride = i * 4,
-            x = i % opt.width,
-            y = Math.floor(i / opt.width),
-            color = opt.forPix( new THREE.Color(), x, y, i, opt);
-            data[ stride ] = color.r;
-            data[ stride + 1 ] = color.g;
-            data[ stride + 2 ] = color.b;
-            data[ stride + 3 ] = 255;
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+camera.position.set(6, 6, 6);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS - based off of what I have in my threejs-data-texture post
+//                    https://dustinpfister.github.io/2022/04/15/threejs-data-texture/
+//-------- ----------
+const createData = function (opt) {
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16 : opt.width;
+    opt.height = opt.height === undefined ? 16 : opt.height;
+    // DEFAULT FOR PIX METOD IS A CHECKER PATTERN HERE
+    opt.forPix = opt.forPix || function (color, x, y, i, opt) {
+        color.setRGB(255, 255, 255);
+        if (y % 2 === 0 && x % 2 === 0) {
+            color.setRGB(32, 32, 32);
         }
-        return data;
+        if (y % 2 != 0 && x % 2 != 0) {
+            color.setRGB(64, 64, 64);
+        }
+        return color;
     };
-    // create data texture
-    const createDataTexture = function(opt){
-        opt = opt || {};
-        opt.width = opt.width === undefined ? 16: opt.width; 
-        opt.height = opt.height === undefined ? 16: opt.height;
-        const data = createData(opt);
-        let texture = new THREE.DataTexture( data, opt.width, opt.height );
-        texture.needsUpdate = true;
-        return texture;
-    };
-    // ---------- ----------
-    // TEXTURE
-    // ---------- ----------
-    const texture_checker = createDataTexture();
-    // ---------- ----------
-    // MESH - 
-    // ---------- ----------
-    // material
-    const material = new THREE.MeshBasicMaterial({
+    let size = opt.width * opt.height;
+    let data = new Uint8Array(4 * size);
+    for (let i = 0; i < size; i++) {
+        let stride = i * 4,
+        x = i % opt.width,
+        y = Math.floor(i / opt.width),
+        color = opt.forPix(new THREE.Color(), x, y, i, opt);
+        data[stride] = color.r;
+        data[stride + 1] = color.g;
+        data[stride + 2] = color.b;
+        data[stride + 3] = 255;
+    }
+    return data;
+};
+// create data texture
+const createDataTexture = function (opt) {
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16 : opt.width;
+    opt.height = opt.height === undefined ? 16 : opt.height;
+    const data = createData(opt);
+    let texture = new THREE.DataTexture(data, opt.width, opt.height);
+    texture.needsUpdate = true;
+    return texture;
+};
+// ---------- ----------
+// TEXTURE
+// ---------- ----------
+const texture_checker = createDataTexture();
+// ---------- ----------
+// MESH -
+// ---------- ----------
+// material
+const material = new THREE.MeshBasicMaterial({
         side: THREE.DoubleSide,
         map: texture_checker
     });
-    const mesh1 = new THREE.Mesh(
+const mesh1 = new THREE.Mesh(
         new THREE.PlaneGeometry(10, 10, 1, 1),
         material);
-    mesh1.geometry.rotateX( Math.PI * 0.5 );
-    mesh1.position.set(0, 0, 0);
-    scene.add(mesh1);
-    // ---------- ----------
-    // RENDER
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+mesh1.geometry.rotateX(Math.PI * 0.5);
+mesh1.position.set(0, 0, 0);
+scene.add(mesh1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+renderer.render(scene, camera);
 ```
 
 ### 3.2 - Updating textures and random example of data texture
@@ -429,148 +417,142 @@ Here I have a getting started example of textures and plane geometry where I am 
 So I have some code that seems to work great so far when it comes to using the default, built in for pixel function. In this example I will make some custom for pixel functions to creating and updating the data textures. Also speaking of updating data textures yes I will now want to include an update data texture helper function while I am at it.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(8, 6, 8);
-    camera.lookAt(0, -1.5, 0);
-    scene.add(camera);
-    // render
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    //-------- ----------
-    // HELPER FUNCTIONS - based off of what I have in my threejs-data-texture post
-    //                    https://dustinpfister.github.io/2022/04/15/threejs-data-texture/
-    //-------- ----------
-    const createData = function(opt){
-        opt = opt || {};
-        opt.width = opt.width === undefined ? 16: opt.width; 
-        opt.height = opt.height === undefined ? 16: opt.height;
-        // DEFAULT FOR PIX METOD IS A CHECKER PATTERN HERE
-        opt.forPix = opt.forPix || function(color, x, y, i, opt){
-            color.setRGB(255, 255, 255);
-            if(y % 2 === 0 && x % 2 === 0){
-               color.setRGB(32, 32, 32);
-            }
-            if(y % 2 != 0 && x % 2 != 0){
-               color.setRGB(64, 64, 64);
-            }
-            return color;
-        };
-        let size = opt.width * opt.height;
-        let data = new Uint8Array( 4 * size );
-        for ( let i = 0; i < size; i ++ ) {
-            let stride = i * 4,
-            x = i % opt.width,
-            y = Math.floor(i / opt.width),
-            color = opt.forPix( new THREE.Color(), x, y, i, opt);
-            data[ stride ] = color.r;
-            data[ stride + 1 ] = color.g;
-            data[ stride + 2 ] = color.b;
-            data[ stride + 3 ] = 255;
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+camera.position.set(8, 6, 8);
+camera.lookAt(0, -1.5, 0);
+scene.add(camera);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS - based off of what I have in my threejs-data-texture post
+//                    https://dustinpfister.github.io/2022/04/15/threejs-data-texture/
+//-------- ----------
+const createData = function (opt) {
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16 : opt.width;
+    opt.height = opt.height === undefined ? 16 : opt.height;
+    // DEFAULT FOR PIX METOD IS A CHECKER PATTERN HERE
+    opt.forPix = opt.forPix || function (color, x, y, i, opt) {
+        color.setRGB(255, 255, 255);
+        if (y % 2 === 0 && x % 2 === 0) {
+            color.setRGB(32, 32, 32);
         }
-        return data;
-    };
-    // create data texture
-    const createDataTexture = function(opt){
-        opt = opt || {};
-        opt.width = opt.width === undefined ? 16: opt.width; 
-        opt.height = opt.height === undefined ? 16: opt.height;
-        const data = createData(opt);
-        let texture = new THREE.DataTexture( data, opt.width, opt.height );
-        texture.needsUpdate = true;
-        return texture;
-    };
-    // update a texture
-    const updateTexture = (texture, opt) => {
-        // just updating data array only
-        const data = createData(opt);
-        texture.image.data = data;
-        texture.needsUpdate = true;
-    };
-    // ---------- ----------
-    // TEXTURE
-    // ---------- ----------
-    // options object with hacked over checker default
-    // allowing for an alpha value to adjust color
-    const opt_data_texture = {
-        alpha: 1,
-        forPix: function(color, x, y, i, opt){
-            color.setRGB(0, 50 + 100 * opt.alpha + 100 * opt.alpha * Math.random(), 0);
-            let v = 0;
-            if(y % 2 === 0 && x % 2 === 0){
-               v = 25 + 50 * (1 - opt.alpha) + 25 * Math.random();
-               color.setRGB(v, 0, v);
-            }
-            if(y % 2 != 0 && x % 2 != 0){
-               v = 50 + 100 * (1 - opt.alpha) + 50 * Math.random();
-               color.setRGB(v, 0, v);
-            }
-            return color;
+        if (y % 2 != 0 && x % 2 != 0) {
+            color.setRGB(64, 64, 64);
         }
+        return color;
     };
-    const texture_checker = createDataTexture(opt_data_texture);
-    // random texture options
-    const opt_data_texture_rnd = {
-        forPix: function(color, x, y, i, opt){
-            color.r = 32 + 200 * Math.random();
-            color.g = 32 + 200 * Math.random();
-            color.b = 32 + 200 * Math.random();
-            return color;
+    let size = opt.width * opt.height;
+    let data = new Uint8Array(4 * size);
+    for (let i = 0; i < size; i++) {
+        let stride = i * 4,
+        x = i % opt.width,
+        y = Math.floor(i / opt.width),
+        color = opt.forPix(new THREE.Color(), x, y, i, opt);
+        data[stride] = color.r;
+        data[stride + 1] = color.g;
+        data[stride + 2] = color.b;
+        data[stride + 3] = 255;
+    }
+    return data;
+};
+// create data texture
+const createDataTexture = function (opt) {
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16 : opt.width;
+    opt.height = opt.height === undefined ? 16 : opt.height;
+    const data = createData(opt);
+    let texture = new THREE.DataTexture(data, opt.width, opt.height);
+    texture.needsUpdate = true;
+    return texture;
+};
+// update a texture
+const updateTexture = (texture, opt) => {
+    // just updating data array only
+    const data = createData(opt);
+    texture.image.data = data;
+    texture.needsUpdate = true;
+};
+// ---------- ----------
+// TEXTURE
+// ---------- ----------
+// options object with hacked over checker default
+// allowing for an alpha value to adjust color
+const opt_data_texture = {
+    alpha: 1,
+    forPix: function (color, x, y, i, opt) {
+        color.setRGB(0, 50 + 100 * opt.alpha + 100 * opt.alpha * Math.random(), 0);
+        let v = 0;
+        if (y % 2 === 0 && x % 2 === 0) {
+            v = 25 + 50 * (1 - opt.alpha) + 25 * Math.random();
+            color.setRGB(v, 0, v);
         }
-    };
-    const texture_rnd = createDataTexture(opt_data_texture_rnd);
-    // ---------- ----------
-    // MESH - 
-    // ---------- ----------
-    const mesh1 = new THREE.Mesh(
+        if (y % 2 != 0 && x % 2 != 0) {
+            v = 50 + 100 * (1 - opt.alpha) + 50 * Math.random();
+            color.setRGB(v, 0, v);
+        }
+        return color;
+    }
+};
+const texture_checker = createDataTexture(opt_data_texture);
+// random texture options
+const opt_data_texture_rnd = {
+    forPix: function (color, x, y, i, opt) {
+        color.r = 32 + 200 * Math.random();
+        color.g = 32 + 200 * Math.random();
+        color.b = 32 + 200 * Math.random();
+        return color;
+    }
+};
+const texture_rnd = createDataTexture(opt_data_texture_rnd);
+// ---------- ----------
+// MESH -
+// ---------- ----------
+const mesh1 = new THREE.Mesh(
         new THREE.PlaneGeometry(5, 5, 1, 1),
         new THREE.MeshBasicMaterial({
             side: THREE.DoubleSide,
             map: texture_checker
-        })
-    );
-    mesh1.geometry.rotateX( Math.PI * 0.5 );
-    mesh1.position.set(3, 0, 0);
-    scene.add(mesh1);
-    const mesh2 = new THREE.Mesh(
+        }));
+mesh1.geometry.rotateX(Math.PI * 0.5);
+mesh1.position.set(3, 0, 0);
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(
         new THREE.PlaneGeometry(5, 5, 1, 1),
         new THREE.MeshBasicMaterial({
             side: THREE.DoubleSide,
             map: texture_rnd
-        })
-    );
-    mesh2.geometry.rotateX( Math.PI * 0.5 );
-    mesh2.position.set(-3, 0, 0);
-    scene.add(mesh2);
-    // ---------- ----------
-    // LOOP
-    // ---------- ----------
-    const fps_move = 30, fps_update = 12;
-    let f = 0, fm = 300, lt = new Date();
-    const loop = () => {
-        const now = new Date();
-        const secs = (now - lt) / 1000;
-        const a = f / fm;
-        const b = 1 - Math.abs( 0.5 - a ) / 0.5;
-        requestAnimationFrame(loop);
-        if(secs >= 1 / fps_update){
-            opt_data_texture.alpha = b;
-            updateTexture(texture_checker, opt_data_texture);
-            updateTexture(texture_rnd, opt_data_texture_rnd);
-            f += fps_move * secs;
-            f %= fm;
-            renderer.render(scene, camera);
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+        }));
+mesh2.geometry.rotateX(Math.PI * 0.5);
+mesh2.position.set(-3, 0, 0);
+scene.add(mesh2);
+// ---------- ----------
+// LOOP
+// ---------- ----------
+const fps_move = 30, fps_update = 12;
+let f = 0, fm = 300, lt = new Date();
+const loop = () => {
+    const now = new Date();
+    const secs = (now - lt) / 1000;
+    const a = f / fm;
+    const b = 1 - Math.abs(0.5 - a) / 0.5;
+    requestAnimationFrame(loop);
+    if (secs >= 1 / fps_update) {
+        opt_data_texture.alpha = b;
+        updateTexture(texture_checker, opt_data_texture);
+        updateTexture(texture_rnd, opt_data_texture_rnd);
+        f += fps_move * secs;
+        f %= fm;
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## 4 - Plane Geometry and Buffer Attributes
@@ -582,53 +564,53 @@ When it comes to plane geometry, and geometry in general for that matter there a
 If I want to change the state of the position attribute I can use methods like the setY method of the buffer attribute class as one way to do so. When calling the setY method the first argument that i need to give is a point index, followed by the desired value for y for that point in the plane. When it comes to knowing the count of points there is the count property of the position buffer attribute that I can use as a way to know then end of the loop.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper(10, 10));
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    // render
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // PLANE GEOMETRY
-    // ---------- ----------
-    const geo = new THREE.PlaneGeometry(10, 10, 5, 5);
-    geo.rotateX(Math.PI * 1.5);
-    geo.translate(0,-1,0);
-    // ---------- ----------
-    // POSITION ATTRIBUTE OF PLANE GEOMETRY
-    // ---------- ----------
-    const pos = geo.getAttribute('position');
-    let i = 0;
-    const len = pos.count;
-    // for each point adjusting y value
-    while(i < len){
-        pos.setY(i, -2 + 4 * Math.random());
-        i += 1;
-    }
-    pos.needsUpdate = true;
-    // recompute the 'normals' attribute
-    geo.computeVertexNormals()
-    // ---------- ----------
-    // MESH
-    // ---------- ----------
-    const mesh = new THREE.Mesh(
-        geo,
-        new THREE.MeshNormalMaterial({ side: THREE.DoubleSide }));
-    scene.add(mesh);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER
-    // ---------- ----------
-    renderer.render(scene, camera);
+
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// PLANE GEOMETRY
+// ---------- ----------
+const geo = new THREE.PlaneGeometry(10, 10, 5, 5);
+geo.rotateX(Math.PI * 1.5);
+geo.translate(0, -1, 0);
+// ---------- ----------
+// POSITION ATTRIBUTE OF PLANE GEOMETRY
+// ---------- ----------
+const pos = geo.getAttribute('position');
+let i = 0;
+const len = pos.count;
+// for each point adjusting y value
+while (i < len) {
+    console.log(pos.getY(i))
+    pos.setY(i, -2 + 4 * Math.random());
+    i += 1;
 }
-    ());
+pos.needsUpdate = true;
+// recompute the 'normals' attribute
+geo.computeVertexNormals()
+// ---------- ----------
+// MESH
+// ---------- ----------
+const mesh = new THREE.Mesh(
+        geo,
+        new THREE.MeshNormalMaterial({
+            side: THREE.DoubleSide
+        }));
+scene.add(mesh);
+// ---------- ----------
+// CALLING RENDER OF RENDERER
+// ---------- ----------
+renderer.render(scene, camera);
 ```
 
 ### 4.2 - The Normals Attribute
@@ -638,64 +620,62 @@ The normals attribute of a buffer geometry such as a plane geometry is used to s
 If I want to get a visual idea of what is going on with the state of a normal attribute I will want to use [the vertex Normals helper](https://threejs.org/docs/#examples/en/helpers/VertexNormalsHelper). This is not added to the core of the threejs library but must be added on top of it by linking to the additional file that can be found in the examples folder of the threejs github folder.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, -2, 0);
-    scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // PLANE GEOMETRY
-    // ---------- ----------
-    const geo = new THREE.PlaneGeometry(10, 10, 20, 20);
-    geo.rotateX(Math.PI * 1.5);
-    // ---------- ----------
-    // NORMAL ATTRIBUTE OF PLANE GEOMETRY
-    // ---------- ----------
-    const normal = geo.getAttribute('normal');
-    let i = 0;
-    const len = normal.count;
-    while(i < len){
-        const dx = -2 + 4 * Math.random(),
-        dy = -2 + 4 * Math.random(),
-        dz = -2 + 4 * Math.random();
-        normal.setXYZ(i,
-            normal.getX(i) +  Math.random() *  dx,
-            normal.getY(i) +  Math.random() *  dy,
-            normal.getZ(i) +  Math.random() *  dz
-        );
-        i += 1;
-    }
-    normal.needsUpdate = true;
-    // ---------- ----------
-    // MESH
-    // ---------- ----------
-    const mesh = new THREE.Mesh( geo,
-        new THREE.MeshNormalMaterial({ side: THREE.DoubleSide }));
-    scene.add(mesh);
-    if(THREE.VertexNormalsHelper){
-        const helper = new THREE.VertexNormalsHelper( mesh, 1, 0x00af00 );
-        scene.add(helper);
-    }
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER
-    // ---------- ----------
-    renderer.render(scene, camera);
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -2, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// PLANE GEOMETRY
+// ---------- ----------
+const geo = new THREE.PlaneGeometry(10, 10, 20, 20);
+geo.rotateX(Math.PI * 1.5);
+// ---------- ----------
+// NORMAL ATTRIBUTE OF PLANE GEOMETRY
+// ---------- ----------
+const normal = geo.getAttribute('normal');
+let i = 0;
+const len = normal.count;
+while (i < len) {
+    const dx = -2 + 4 * Math.random(),
+    dy = -2 + 4 * Math.random(),
+    dz = -2 + 4 * Math.random();
+    normal.setXYZ(i,
+        normal.getX(i) + Math.random() * dx,
+        normal.getY(i) + Math.random() * dy,
+        normal.getZ(i) + Math.random() * dz);
+    i += 1;
 }
-    ());
+normal.needsUpdate = true;
+// ---------- ----------
+// MESH
+// ---------- ----------
+const mesh = new THREE.Mesh(geo,
+        new THREE.MeshNormalMaterial({
+            side: THREE.DoubleSide
+        }));
+scene.add(mesh);
+if (THREE.VertexNormalsHelper) {
+    const helper = new THREE.VertexNormalsHelper(mesh, 1, 0x00af00);
+    scene.add(helper);
+}
+// ---------- ----------
+// CALLING RENDER OF RENDERER
+// ---------- ----------
+renderer.render(scene, camera);
 ```
 
 ## 5 - Tile index module example
 
 The example where I am just setting a checker board like pattern is a good start, but now I think I should make a module where there is just creating the groups like that, but pulling the logic that has to do with setting material index values out into a function of its own. There is then experimenting with creating at least a few functions that have to do with setting material index values in different ways.
 
-### 5.0 - The tile module
+### 5.a - The tile module
 
 For this example then I started to make a kind of tile index module that i can use to create and return a mesh object that has a plane geometry with groups set up in a grid like pattern. However the material index values will be set to zero by default for all of the sections, so then there uis having a few additional functions that will set material index values for the mesh objects that I create with this module.
 
@@ -802,47 +782,43 @@ For this example then I started to make a kind of tile index module that i can u
 Now it is time to test out this module to see if what I worked out is working the way that I would like it to, and it would seem that it is.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(8, 8, 8);
-    camera.lookAt(0, -2, 0);
-    scene.add(camera);
-    // render
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // MESH - Making Mesh Object with TileMod module r0
-    // ---------- ----------
-    const plane = TileMod.create({
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+camera.position.set(8, 8, 8);
+camera.lookAt(0, -2, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MESH - Making Mesh Object with TileMod module r0
+// ---------- ----------
+const plane = TileMod.create({
         w: 10,
         h: 10,
         sw: 4,
         sh: 4
     });
-    // set checkerBoard material index values
-    TileMod.setCheckerBoard(plane);
-    scene.add(plane);
-    const plane2 = TileMod.create({
+// set checkerBoard material index values
+TileMod.setCheckerBoard(plane);
+scene.add(plane);
+const plane2 = TileMod.create({
         w: 10,
         h: 10,
         sw: 8,
         sh: 8
     });
-    // set checkerBoard material index values
-    TileMod.setBoxBoard(plane2);
-    plane.position.set(-11, 0, 0);
-    scene.add(plane2);
-    // ---------- ----------
-    // CALLING RENDER OF RENDERER
-    // ---------- ----------
-    renderer.render(scene, camera);
-}
-    ());
+// set checkerBoard material index values
+TileMod.setBoxBoard(plane2);
+plane.position.set(-11, 0, 0);
+scene.add(plane2);
+// ---------- ----------
+// CALLING RENDER OF RENDERER
+// ---------- ----------
+renderer.render(scene, camera);
 ```
 
 There is then coming up with additional methods for setting the index values in a whole bunch of different ways, and also making such functions that will take some arguments. However there is not just the material index values of course there is also working out new ways to add the groups in different ways also. never the less after working out this example I now have a decent grasp on how to go about  adding groups and setting material index values for plane geometries. Also much of what I have worked out here of course applies to buffered geometry in general also.
@@ -858,98 +834,103 @@ The first video that I made for this blog post made use of r0 of [my object grid
 <iframe class="youtube_video" src="https://www.youtube.com/embed/PvBaddSz-xs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(8, 6, 8);
-    camera.lookAt(0, -1.5, 0);
-    scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // LIGHT
-    // ---------- ----------
-    const dl = new THREE.DirectionalLight();
-    scene.add(dl);
-    // ---------- ----------
-    // HELPERS
-    // ---------- ----------
-    // make a data texture
-    const mkDataTexture = function (data, w) {
-        data = data || [];
-        w = w || 0;
-        const width = w,
-        height = data.length / 4 / w;
-        const texture = new THREE.DataTexture(data, width, height);
-        texture.needsUpdate = true;
-        return texture;
-    };
-    // simple gray scale seeded random texture
-    const seededRandom = function (w, h, rPer, gPer, bPer, range) {
-        w = w === undefined ? 5 : w,
-        h = h === undefined ? 5 : h;
-        rPer = rPer === undefined ? 1 : rPer;
-        gPer = gPer === undefined ? 1 : gPer;
-        bPer = bPer === undefined ? 1 : bPer;
-        range = range || [0, 255]
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+camera.position.set(8, 6, 8);
+camera.lookAt(0, -1.5, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight();
+scene.add(dl);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+// make a data texture
+const mkDataTexture = function (data, w) {
+    data = data || [];
+    w = w || 0;
+    const width = w,
+    height = data.length / 4 / w;
+    const texture = new THREE.DataTexture(data, width, height);
+    texture.needsUpdate = true;
+    return texture;
+};
+// simple gray scale seeded random texture
+const seededRandom = function (w, h, rPer, gPer, bPer, range) {
+    w = w === undefined ? 5 : w,
+    h = h === undefined ? 5 : h;
+    rPer = rPer === undefined ? 1 : rPer;
+    gPer = gPer === undefined ? 1 : gPer;
+    bPer = bPer === undefined ? 1 : bPer;
+    range = range || [0, 255]
         const size = w * h;
-        const data = new Uint8Array(4 * size);
-        for (let i = 0; i < size; i++) {
-            const stride = i * 4;
-            const v = Math.floor(range[0] + THREE.MathUtils.seededRandom() * (range[1] - range[0]));
-            data[stride] = v * rPer;
-            data[stride + 1] = v * gPer;
-            data[stride + 2] = v * bPer;
-            data[stride + 3] = 255;
-        }
-        return mkDataTexture(data, w);
-    };
-    //-------- ----------
-    // TEXTURES
-    //-------- ----------
-    const textureRND1 = seededRandom(80, 80, 1, 1, 1, [130, 250]);
-    const textureRND2 = seededRandom(160, 160, 1, 1, 1, [64, 170]);
-    //-------- ----------
-    // MATERIALS
-    //-------- ----------
-    const MATERIALS = [
-        new THREE.MeshStandardMaterial({
-            color: 0x00ff00,
-            map: textureRND1,
-            side: THREE.DoubleSide
-        }),
-        new THREE.MeshStandardMaterial({
-            color: 0x00aa00,
-            map: textureRND2,
-            side: THREE.DoubleSide
-        })
-    ];
-    //-------- ----------
-    // GRID SOURCE OBJECTS
-    //-------- ----------
-    const tw = 5,
-    th = 5,
-    space = 3.1;
-    const ground = TileMod.create({w: 3, h: 3, sw: 2, sh: 2, materials: MATERIALS});
-    TileMod.setCheckerBoard(ground)
-    const array_source_objects = [
-        ground
-    ];
-    const array_oi = [],
-    len = tw * th;
-    let i = 0;
-    while(i < len){
-        array_oi.push( Math.floor( array_source_objects.length * THREE.MathUtils.seededRandom() ) );
-        i += 1;
+    const data = new Uint8Array(4 * size);
+    for (let i = 0; i < size; i++) {
+        const stride = i * 4;
+        const v = Math.floor(range[0] + THREE.MathUtils.seededRandom() * (range[1] - range[0]));
+        data[stride] = v * rPer;
+        data[stride + 1] = v * gPer;
+        data[stride + 2] = v * bPer;
+        data[stride + 3] = 255;
     }
-    //-------- ----------
-    // CREATE GRID
-    //-------- ----------
-    const grid = ObjectGridWrap.create({
+    return mkDataTexture(data, w);
+};
+//-------- ----------
+// TEXTURES
+//-------- ----------
+const textureRND1 = seededRandom(80, 80, 1, 1, 1, [130, 250]);
+const textureRND2 = seededRandom(160, 160, 1, 1, 1, [64, 170]);
+//-------- ----------
+// MATERIALS
+//-------- ----------
+const MATERIALS = [
+    new THREE.MeshStandardMaterial({
+        color: 0x00ff00,
+        map: textureRND1,
+        side: THREE.DoubleSide
+    }),
+    new THREE.MeshStandardMaterial({
+        color: 0x00aa00,
+        map: textureRND2,
+        side: THREE.DoubleSide
+    })
+];
+//-------- ----------
+// GRID SOURCE OBJECTS
+//-------- ----------
+const tw = 5,
+th = 5,
+space = 3.1;
+const ground = TileMod.create({
+        w: 3,
+        h: 3,
+        sw: 2,
+        sh: 2,
+        materials: MATERIALS
+    });
+TileMod.setCheckerBoard(ground)
+const array_source_objects = [
+    ground
+];
+const array_oi = [],
+len = tw * th;
+let i = 0;
+while (i < len) {
+    array_oi.push(Math.floor(array_source_objects.length * THREE.MathUtils.seededRandom()));
+    i += 1;
+}
+//-------- ----------
+// CREATE GRID
+//-------- ----------
+const grid = ObjectGridWrap.create({
         space: space,
         tw: tw,
         th: th,
@@ -957,30 +938,28 @@ The first video that I made for this blog post made use of r0 of [my object grid
         sourceObjects: array_source_objects,
         objectIndices: array_oi
     });
-    scene.add(grid);
-    // ---------- ----------
-    // LOOP
-    // ---------- ----------
-    const fps_move = 30, fps_update = 8;
-    let f = 0, fm = 300, lt = new Date();
-    const loop = () => {
-        const now = new Date();
-        const secs = (now - lt) / 1000;
-        const a = f / fm;
-       //const b = 1 - Math.abs( 0.5 - a ) / 0.5;
-        requestAnimationFrame(loop);
-        if(secs >= 1 / fps_update){
-            ObjectGridWrap.setPos(grid, 1 - a, 0 );
-            ObjectGridWrap.update(grid);
-            f += fps_move * secs;
-            f %= fm;
-            renderer.render(scene, camera);
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+scene.add(grid);
+// ---------- ----------
+// LOOP
+// ---------- ----------
+const fps_move = 30, fps_update = 8;
+let f = 0, fm = 300, lt = new Date();
+const loop = () => {
+    const now = new Date();
+    const secs = (now - lt) / 1000;
+    const a = f / fm;
+    //const b = 1 - Math.abs( 0.5 - a ) / 0.5;
+    requestAnimationFrame(loop);
+    if (secs >= 1 / fps_update) {
+        ObjectGridWrap.setPos(grid, 1 - a, 0);
+        ObjectGridWrap.update(grid);
+        f += fps_move * secs;
+        f %= fm;
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
 ```
 
 ### 6.2 - Video2 project using r2 of objects grid wrap, oacity2 and custom flip effects, and animated data textures
@@ -988,170 +967,188 @@ The first video that I made for this blog post made use of r0 of [my object grid
 I have made a second video for this post which at the time of this writing is the top video in this post. Like before I am using an array of materials, but I am also using some new helper functions for creating data textures as well. There is not just using an array fo materials to get a desired look but also just creating a single texture that is the way that I like it also. There is getting into uv mapping as a way to get things working well with a single material, but maybe that is something I will get to in a future animation example here.
 
 ```js
-(function () {
-    // ---------- ----------
-    // SCENE, CAMERA, AND RENDERER
-    // ---------- ----------
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
-    camera.position.set(10, 10, 10);
-    camera.lookAt(0, -1.5, 0);
-    scene.add(camera);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480, false);
-    (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-    // ---------- ----------
-    // LIGHT
-    // ---------- ----------
-    const dl = new THREE.DirectionalLight();
-    dl.position.set(0,3,3)
-    scene.add(dl);
-    // ---------- ----------
-    // HELPERS
-    // ---------- ----------
-    const createData = function(opt){
-        opt = opt || {};
-        opt.width = opt.width === undefined ? 16: opt.width; 
-        opt.height = opt.height === undefined ? 16: opt.height;
-        // DEFAULT FOR PIX METOD IS A CHECKER PATTERN HERE
-        opt.forPix = opt.forPix || function(color, x, y, i, opt){
-            color.setRGB(255, 255, 255);
-            if(y % 2 === 0 && x % 2 === 0){
-               color.setRGB(32, 32, 32);
-            }
-            if(y % 2 != 0 && x % 2 != 0){
-               color.setRGB(64, 64, 64);
-            }
-            return color;
-        };
-        let size = opt.width * opt.height;
-        let data = new Uint8Array( 4 * size );
-        for ( let i = 0; i < size; i ++ ) {
-            let stride = i * 4,
-            x = i % opt.width,
-            y = Math.floor(i / opt.width),
-            color = opt.forPix( new THREE.Color(), x, y, i, opt);
-            data[ stride ] = color.r;
-            data[ stride + 1 ] = color.g;
-            data[ stride + 2 ] = color.b;
-            data[ stride + 3 ] = 255;
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, -1.5, 0);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+const dl = new THREE.DirectionalLight();
+dl.position.set(0, 3, 3)
+scene.add(dl);
+// ---------- ----------
+// HELPERS
+// ---------- ----------
+const createData = function (opt) {
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16 : opt.width;
+    opt.height = opt.height === undefined ? 16 : opt.height;
+    // DEFAULT FOR PIX METOD IS A CHECKER PATTERN HERE
+    opt.forPix = opt.forPix || function (color, x, y, i, opt) {
+        color.setRGB(255, 255, 255);
+        if (y % 2 === 0 && x % 2 === 0) {
+            color.setRGB(32, 32, 32);
         }
-        return data;
-    };
-    // create data texture
-    const createDataTexture = function(opt){
-        opt = opt || {};
-        opt.width = opt.width === undefined ? 16: opt.width; 
-        opt.height = opt.height === undefined ? 16: opt.height;
-        const data = opt.data || createData(opt);
-        let texture = new THREE.DataTexture( data, opt.width, opt.height );
-        texture.needsUpdate = true;
-        return texture;
-    };
-    // update a texture
-    const updateTexture = (texture, opt) => {
-        // just updating data array only
-        const data = createData(opt);
-        texture.image.data = data;
-        texture.needsUpdate = true;
-    };
-    //-------- ----------
-    // TEXTURES
-    //-------- ----------
-    const opt_data_texture = {
-        alpha: 1,
-        forPix: function(color, x, y, i, opt){
-            const roll = Math.random();
-            if(roll < 0.05){
-                color.setRGB(255,255,255);
-                return color;
-            }
-            let v = 50 + 100 * opt.alpha + 100 * opt.alpha * Math.random();
-            color.setRGB(0, v, 0);
-            if(y % 2 === 0 && x % 2 === 0){
-               v = 25 + 50 * (1 - opt.alpha) + 25 * Math.random();
-               color.setRGB(0, v, 0);
-            }
-            if(y % 2 != 0 && x % 2 != 0){
-               v = 50 + 100 * (1 - opt.alpha) + 50 * Math.random();
-               color.setRGB(0, v, 0);
-            }
-            return color;
+        if (y % 2 != 0 && x % 2 != 0) {
+            color.setRGB(64, 64, 64);
         }
+        return color;
     };
-    const texture_checker = createDataTexture(opt_data_texture);
-    // random texture options
-    const opt_data_texture_rnd = {
-        forPix: function(color, x, y, i, opt){
-            const v = 32 + 200 * Math.random();
-            const roll = Math.random();
-            if(roll < 0.80){
-                color.g = v;
-                return color;
-            }
-            color.setRGB(v, v, v);
-            return color;
-        }
-    };
-    const texture_rnd = createDataTexture(opt_data_texture_rnd);
-    //-------- ----------
-    // MATERIALS
-    //-------- ----------
-    const MATERIALS = [
-        new THREE.MeshStandardMaterial({
-            color: 0xffffff,
-            map: texture_checker,
-            side: THREE.DoubleSide
-        }),
-        new THREE.MeshStandardMaterial({
-            color: 0xffffff,
-            map: texture_rnd,
-            side: THREE.DoubleSide
-        })
-    ];
-    //-------- ----------
-    // GRID SOURCE OBJECTS
-    //-------- ----------
-    const tw = 8,
-    th = 8,
-    space = 3.1;
-    const ground1 = TileMod.create({w: 3, h: 3, sw: 4, sh: 4, materials: MATERIALS[0]});
-    TileMod.setCheckerBoard(ground1);
-    const ground2 = TileMod.create({w: 3, h: 3, sw: 4, sh: 4, materials: MATERIALS});
-    TileMod.setCheckerBoard(ground2);
-    const ground3 = TileMod.create({w: 3, h: 3, sw: 4, sh: 4, materials: MATERIALS[1]});
-    TileMod.setCheckerBoard(ground3);
-    const array_source_objects = [
-        ground1,
-        ground2,
-        ground3
-    ];
-    const array_oi = [],
-    len = tw * th;
-    let i = 0;
-    // random index values for source objects?
-    while(i < len){
-        array_oi.push( Math.floor( array_source_objects.length * THREE.MathUtils.seededRandom() ) );
-        i += 1;
+    let size = opt.width * opt.height;
+    let data = new Uint8Array(4 * size);
+    for (let i = 0; i < size; i++) {
+        let stride = i * 4,
+        x = i % opt.width,
+        y = Math.floor(i / opt.width),
+        color = opt.forPix(new THREE.Color(), x, y, i, opt);
+        data[stride] = color.r;
+        data[stride + 1] = color.g;
+        data[stride + 2] = color.b;
+        data[stride + 3] = 255;
     }
-    //-------- ----------
-    // EFFECT
-    //-------- ----------
-    (function(){
-        ObjectGridWrap.load( {
-            EFFECTS : {
-                flip : function(grid, obj, objData, ud){
-                    const startFlip = grid.userData.startFlip === undefined ? -45: grid.userData.startFlip;
-                    const maxFlipDelta = grid.userData.maxFlipDelta === undefined ? 90: grid.userData.maxFlipDelta;
-                    obj.rotation.x = Math.PI / 180 * startFlip  + Math.PI / 180 * maxFlipDelta * objData.b;
-                }
+    return data;
+};
+// create data texture
+const createDataTexture = function (opt) {
+    opt = opt || {};
+    opt.width = opt.width === undefined ? 16 : opt.width;
+    opt.height = opt.height === undefined ? 16 : opt.height;
+    const data = opt.data || createData(opt);
+    let texture = new THREE.DataTexture(data, opt.width, opt.height);
+    texture.needsUpdate = true;
+    return texture;
+};
+// update a texture
+const updateTexture = (texture, opt) => {
+    // just updating data array only
+    const data = createData(opt);
+    texture.image.data = data;
+    texture.needsUpdate = true;
+};
+//-------- ----------
+// TEXTURES
+//-------- ----------
+const opt_data_texture = {
+    alpha: 1,
+    forPix: function (color, x, y, i, opt) {
+        const roll = Math.random();
+        if (roll < 0.05) {
+            color.setRGB(255, 255, 255);
+            return color;
+        }
+        let v = 50 + 100 * opt.alpha + 100 * opt.alpha * Math.random();
+        color.setRGB(0, v, 0);
+        if (y % 2 === 0 && x % 2 === 0) {
+            v = 25 + 50 * (1 - opt.alpha) + 25 * Math.random();
+            color.setRGB(0, v, 0);
+        }
+        if (y % 2 != 0 && x % 2 != 0) {
+            v = 50 + 100 * (1 - opt.alpha) + 50 * Math.random();
+            color.setRGB(0, v, 0);
+        }
+        return color;
+    }
+};
+const texture_checker = createDataTexture(opt_data_texture);
+// random texture options
+const opt_data_texture_rnd = {
+    forPix: function (color, x, y, i, opt) {
+        const v = 32 + 200 * Math.random();
+        const roll = Math.random();
+        if (roll < 0.80) {
+            color.g = v;
+            return color;
+        }
+        color.setRGB(v, v, v);
+        return color;
+    }
+};
+const texture_rnd = createDataTexture(opt_data_texture_rnd);
+//-------- ----------
+// MATERIALS
+//-------- ----------
+const MATERIALS = [
+    new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        map: texture_checker,
+        side: THREE.DoubleSide
+    }),
+    new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        map: texture_rnd,
+        side: THREE.DoubleSide
+    })
+];
+//-------- ----------
+// GRID SOURCE OBJECTS
+//-------- ----------
+const tw = 8,
+th = 8,
+space = 3.1;
+const ground1 = TileMod.create({
+        w: 3,
+        h: 3,
+        sw: 4,
+        sh: 4,
+        materials: MATERIALS[0]
+    });
+TileMod.setCheckerBoard(ground1);
+const ground2 = TileMod.create({
+        w: 3,
+        h: 3,
+        sw: 4,
+        sh: 4,
+        materials: MATERIALS
+    });
+TileMod.setCheckerBoard(ground2);
+const ground3 = TileMod.create({
+        w: 3,
+        h: 3,
+        sw: 4,
+        sh: 4,
+        materials: MATERIALS[1]
+    });
+TileMod.setCheckerBoard(ground3);
+const array_source_objects = [
+    ground1,
+    ground2,
+    ground3
+];
+const array_oi = [],
+len = tw * th;
+let i = 0;
+// random index values for source objects?
+while (i < len) {
+    array_oi.push(Math.floor(array_source_objects.length * THREE.MathUtils.seededRandom()));
+    i += 1;
+}
+//-------- ----------
+// EFFECT
+//-------- ----------
+(function () {
+    ObjectGridWrap.load({
+        EFFECTS: {
+            flip: function (grid, obj, objData, ud) {
+                const startFlip = grid.userData.startFlip === undefined ? -45 : grid.userData.startFlip;
+                const maxFlipDelta = grid.userData.maxFlipDelta === undefined ? 90 : grid.userData.maxFlipDelta;
+                obj.rotation.x = Math.PI / 180 * startFlip + Math.PI / 180 * maxFlipDelta * objData.b;
             }
-        });
-    }());
-    //-------- ----------
-    // CREATE GRID
-    //-------- ----------
-    const grid = ObjectGridWrap.create({
+        }
+    });
+}
+    ());
+//-------- ----------
+// CREATE GRID
+//-------- ----------
+const grid = ObjectGridWrap.create({
         space: space,
         tw: tw,
         th: th,
@@ -1159,35 +1156,33 @@ I have made a second video for this post which at the time of this writing is th
         sourceObjects: array_source_objects,
         objectIndices: array_oi
     });
-    scene.add(grid);
-    // ---------- ----------
-    // LOOP
-    // ---------- ----------
-    const fps_move = 30, fps_update = 20;
-    let f = 0, fm = 300, lt = new Date();
-    const loop = () => {
-        const now = new Date();
-        const secs = (now - lt) / 1000;
-        const a = f / fm;
-        const b = 1 - Math.abs( 0.5 - a ) / 0.5;
-        requestAnimationFrame(loop);
-        if(secs >= 1 / fps_update){
-            grid.userData.startFlip = -180 * b;
-            grid.userData.maxFlipDelta = 360 * b;
-            opt_data_texture.alpha = b;
-            updateTexture(texture_checker, opt_data_texture);
-            updateTexture(texture_rnd, opt_data_texture_rnd);
-            ObjectGridWrap.setPos(grid, 1 - a, 0 );
-            ObjectGridWrap.update(grid);
-            f += fps_move * secs;
-            f %= fm;
-            renderer.render(scene, camera);
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+scene.add(grid);
+// ---------- ----------
+// LOOP
+// ---------- ----------
+const fps_move = 30, fps_update = 20;
+let f = 0, fm = 300, lt = new Date();
+const loop = () => {
+    const now = new Date();
+    const secs = (now - lt) / 1000;
+    const a = f / fm;
+    const b = 1 - Math.abs(0.5 - a) / 0.5;
+    requestAnimationFrame(loop);
+    if (secs >= 1 / fps_update) {
+        grid.userData.startFlip = -180 * b;
+        grid.userData.maxFlipDelta = 360 * b;
+        opt_data_texture.alpha = b;
+        updateTexture(texture_checker, opt_data_texture);
+        updateTexture(texture_rnd, opt_data_texture_rnd);
+        ObjectGridWrap.setPos(grid, 1 - a, 0);
+        ObjectGridWrap.update(grid);
+        f += fps_move * secs;
+        f %= fm;
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
 ```
 
 
