@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-01 13:21:35
-version: 1.84
+updated: 2023-08-02 12:32:53
+version: 1.85
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -677,7 +677,13 @@ renderer.render(scene, camera);
 
 ## 3 - The Points Material
 
-There is one Material in three.js that can be used to display just the points in a geometry which can come in handy some times. If for some reason I want to create my own custom geometry in which I only care about points in space and nothing at all then I will want to have at least a [position attribute of the buffer geometry instance](/2021/06/07/threejs-buffer-geometry-attributes-position/) that I will the use with the THREE.Points constructor rather than the usual mesh constructor.
+There is one Material in threejs that can be used to display just the points in a geometry which can come in handy some times. One major use case with this has to do with creating custom geometry from the ground up as this helps to keep things simple as I only need to worry about the position attribute of the geometry.
+
+### 3.1 - The Points Material
+
+If for some reason I want to create my own custom geometry in which I only care about points in space and nothing at all then I will want to have at least a [position attribute of the buffer geometry instance](/2021/06/07/threejs-buffer-geometry-attributes-position/) that I will the use with the THREE.Points constructor rather than the usual mesh constructor. So for this example I am creating a blank buffer geometry object and then I will want to create a typed array that will contain the values for each axis of each point. For now I will be keeping this simple by just adding points for a single triangle in space. However when it comes to using points if I want I could make this even more basic by just setting a single point for the typed array. Anyway once I have my data worked out for this I can call the Buffer Attribute constructor and pass the array as the first argument and then the item size which in the case is 3 as there is x, y, and z for each point. This buffer attribute object can then be used when calling the set attribute method of the blank buffer geometry object to create the position attribute of the geometry.
+
+When it comes to creating an instance of the Points material I will just be creating a single instance of this material, and just set a color option for it. 
 
 ```js
 //-------- ----------
@@ -718,6 +724,52 @@ renderer.render(scene, camera);
 ```
 
 For more on Points and the points material I have [written a post](/2018/05/12/threejs-points-material/) on the subject, it's fun to just play with points in space when you have some time.
+
+### 3.2 - Size Attenuation and The Points Material
+
+By default the Size Attenuation option of the points material is set to true. What this means is out of the box the side of the points will get smaller or bigger depending on the distance of the point from the camera. In some cases I might want to set this option to false if I want to just have a single size for each point in the geometry.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// POINTS MATERIAL
+//-------- ----------
+const material1 = new THREE.PointsMaterial({
+    color: 0x00ff00,
+    size: 0.8,
+    sizeAttenuation: true
+});
+const material2 = new THREE.PointsMaterial({
+    color: 0xff0000,
+    size: 10,
+    sizeAttenuation: false,
+    transparent: true,
+    opacity: 0.2
+});
+//-------- ----------
+// GEOMETRY / SCENE CHILD OBJECTS
+//-------- ----------
+const geometry = new THREE.BoxGeometry(7, 7, 7, 3, 3, 3);
+const points1 = new THREE.Points(geometry, material1);
+scene.add(points1);
+const points2 = new THREE.Points(geometry, material2);
+scene.add(points2);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(9, 9, 9);
+camera.lookAt(0, -1.0, 0);
+renderer.render(scene, camera);
+```
 
 ## 4 - Lines Material
 
