@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 1036
-updated: 2023-04-14 10:22:41
-version: 1.6
+updated: 2023-08-02 11:12:18
+version: 1.7
 ---
 
 The [slerp method of the quaternion class in threejs](https://threejs.org/docs/#api/en/math/Quaternion.slerp) is a way to go about transitioning from one quaternion state to another. The method can be called off of an instance of a quaternion object, then another quaternion object to transition to can be given as the first argument, followed by an alpha value. The alpha value is then a number between 0 and 1 that is used to transition the quaternion object. This slerp method will mutate in place, however it can be used in conjunction with other methods like copy and clone to address that.
@@ -31,7 +31,7 @@ The source code examples that I am [writing about here can also be found up on g
 
 ### Version Numbers matter
 
-When I first wrote this blog post I was using r146 of threejs. There is a whole lot that has changed from older revisions of threejs, and also looking forward it would seem that many more code breaking changes will also happen in the future as well. Always be mindful of what the revision number of threejs is being used when looking at source code examples on various resources as this is a very fast moving project still.
+When I first wrote this blog post I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). There is a whole lot that has changed from older revisions of threejs, and also looking forward it would seem that many more code breaking changes will also happen in the future as well. Always be mindful of what the revision number of threejs is being used when looking at source code examples on various resources as this is a very fast moving project still.
 
 ## 1 - Basic example of the slerp method
 
