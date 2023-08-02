@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2023-07-07 10:19:55
-version: 1.34
+updated: 2023-08-02 11:10:10
+version: 1.35
 ---
 
-In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a [number of options when it comes to light sources](/2022/02/25/threejs-light/) for materials that respond to light. One of my favorite options for the most part would be the [point light](https://threejs.org/docs/#api/en/lights/PointLight). This point lighting option can be sued to shine light in all directions from a single given point in space so it is a light source where direction matters, but it is not restricted to a cone like area as with a [spot light](/2018/04/11/threejs-spotlights/). Also unlike with the directional light the unit length of the vector that is set for the point light also matters. However i would not say that it is a replacement for directional light, or spot lights by any means.
+In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a [number of options when it comes to light sources](/2022/02/25/threejs-light/) for materials that respond to light. One of my favorite options for the most part would be the [point light](https://threejs.org/docs/#api/en/lights/PointLight). This point lighting option can be sued to shine light in all directions from a single given point in space so it is a light source where direction matters, but it is not restricted to a cone like area as with a [spot light](/2018/04/11/threejs-spotlights/). Also unlike with the directional light the unit length of the vector that is set for the point light also matters. However I would not say that it is a replacement for directional light, or spot lights by any means.
 
 I often like to combine a point light with [ambient light](/2018/11/02/threejs-ambientlight/) as a way to have a base line amount of light for all materials, while still having a sense of depth that can be obtained by still having some kind of directional light source such as with a point light. Speaking of [directional light](/2019/06/04/threejs-directional-light/) that is yet another kind of lighting option that one might consider.
 
