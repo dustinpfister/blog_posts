@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-02 12:32:53
-version: 1.85
+updated: 2023-08-02 19:35:29
+version: 1.86
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -810,11 +810,88 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 5 - The Common Base Material class
+## 5 - The Sprite Material
+
+There are also sprite objects and with that the sprite material. These sprite objects are a way to add a texture to a scene that will always face the camera. I can then also adjust the scale and position values of the sprite objects to move them around in the scene and adjust the size. However there are also a number of options for the material, and also some relevant base material class features to write about with these.
+
+### 5.1 - Crosshair example Sprite Material using depthTest, and  sizeAttenuation options
+
+There are a number of options that can be set to make these sprite objects work as a kind of crosshair that will always show up over everything else by setting the depth test option to false. Like with the Points material there is also a size attenuation option that I will want to set to false for this kind of application. After that I can use the object2d features of the sprite object to do things like adjust the scale, and the position of the sprite in the scene.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// create a texture for the sprite
+const createTexture = () => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const w = 32, h = 32;
+    canvas.width = w; canvas.height = h;
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.strokeStyle = '#ffff00';
+    ctx.lineWidth = 3;
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.arc(w / 2, h / 2, w / 2 - 2, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fill();
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo( 0, 0);
+    ctx.lineTo( w, h);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo( w, 0);
+    ctx.lineTo( 0, h);
+    ctx.stroke();
+    const texture = new THREE.CanvasTexture( canvas );
+    return texture;
+};
+// create a sprite object using the THREE.SpriteMaterial
+const createCursorSprite = () => {
+    const material = new THREE.SpriteMaterial({
+        map: createTexture(),
+        sizeAttenuation: false,
+        depthTest: false,
+        transparent: true,
+        opacity: 1
+    });
+    const sprite = new THREE.Sprite(  material );
+    return sprite;
+};
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const sprite = createCursorSprite();
+sprite.scale.set(0.1, 0.1, 0.1);
+sprite.position.set(0.5, 0, 0);
+scene.add( sprite );
+scene.add( new THREE.GridHelper(10, 10) );
+scene.add( new THREE.Mesh( new THREE.BoxGeometry( 1, 1, 1 ), new THREE.MeshNormalMaterial()  ) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+
+## 6 - The Common Base Material class
 
 There are a number of options in the base material class that should work with all materials, but there are some exceptions with some of these features. For example the side option is very much a part of the base material class, but this option has no effect when used with line or point materials. Still there are lots of options in the base material class that do work with more or less all materials and in this section I will be going over a few key examples of these base material class features.
 
-### 5.1 - Transparent and opacity options
+### 6.1 - Transparent and opacity options
 
 The transparent boolen can be used to set transparency on and off for a material. In the event that transparency is on the opacity value can be used to set the global alpha value of the transparency for the material. This feature seems to work okay for just about all mesh materials, and also for points and lines as well.
 
@@ -859,7 +936,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 5.2 - Blending
+### 6.2 - Blending
 
 It would seem that the blending property of the base material class is it itself just one feature of the class that deserves its own section in this post, and maybe even a whole other deep dive content piece actually. In any case for the sake of this one demo in this over all base material class section it goes without saying that I should have at least one demo on this subject here to touch base on this at least. 
 
@@ -915,7 +992,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 5.3 - Vertex colors
+### 6.3 - Vertex colors
 
 One major base material class feature would be the vertex colors Boolean that when set to true will cause the material to use the color attribute of the geometry if it has one. Although this is a base material class feature it will not work with all materials, some will not make use of the base class feature such as the MeshNormalMaterial. However it does work with most mesh material options such as basic, standard, and phong just to name a s few. This feature also works with line materials and the points materials as well as a great way to style those materials when they are used.
 
@@ -965,7 +1042,7 @@ scene.add(mesh1);
 renderer.render(scene, camera);
 ```
 
-### 5.4 - Side
+### 6.4 - Side
 
 The side option will set what side of a face is to be rendered which by default is set to the THREE.FontSide constant. Often I might want to set this to THREE.DoubleSide, and in a few rare cases THREE.BackSide. If you are wondering how the side of a face is determined it has to do with the order of the points in the position attribute of the geometry, or the index of it.
 
@@ -1008,11 +1085,11 @@ const loop = () => {
 loop();
 ```
 
-## 6 - Blending options 
+## 7 - Blending options 
 
 I covered one demo of the blending option in the above section in which I go over many of the features of the main material class. However I would say that the blending option does very much deserve a section of its own.
 
-### 6.1 - No Blending compared to default normal blending
+### 7.1 - No Blending compared to default normal blending
 
 I have all ready covered one demo of the no blending value for the blending option. However there are some things that I should do different in this section of blending in depth. To start oput this section I am once again going to go with a demo that makes use of the no blending option over that of the default blending mode which is normal blending. However this time I am going to have two objects with two materials to have something to compare to. 
 
@@ -1077,13 +1154,13 @@ ctx.fillRect(0,0, canvas.width, canvas.height);
 ctx.drawImage(renderer.domElement, 0,0, canvas.width, canvas.height );
 ```
 
-## 7 - The Material loader, and other loader related concerns
+## 8 - The Material loader, and other loader related concerns
 
 Creating a material by calling one of the constructor functions as a way to obtain a material is one thing. However when it comes to starting to work on real projects I will want to have a way to pack a lot of the data that has to do with one or more materials into some kind of external file format. With that said baked into the core of threejs itself is the [Material Loader](/2023/07/27/threejs-materials-loader/) which is one option for doing this sort of thing. 
 
 However there are also a lot of other options for loading not just a material but other data that is needed to create final display objects. There is then a lot to say about how to go about loading materials, as well as everything else that one would want to load into a project by way of some external data as well such as textures to use with such materials. So in this section I will be writing a thing or two about loaders and what the options are for at least materials, but maybe also a few that help with more than just that.
 
-### 7.1 - Parse a JSON string of a material using THREE.MaterialLoader
+### 8.1 - Parse a JSON string of a material using THREE.MaterialLoader
 
 The toJSON method of a material can be used to convert a material to a JSON object format, that Object can then be passed to JSON.stringify to create a JSON text form that can then be used with the THREE.MaterialLoader. However for this demo I am hand coding a string of json and I would like to parse it into a workable material that I can then use with a mesh object. To create a material from one of these strings I can pass the string threw the JSON.parse method to get an object to which I can then pass to the parse method of an instance of the material loader. The end result of the call of the parse method is then  a material that I can then use with a mesh object just like with any other.
 
@@ -1127,7 +1204,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 7.2 - One loader to rule them all \( THREE.ObjectLoader \)
+### 8.2 - One loader to rule them all \( THREE.ObjectLoader \)
 
 The material loader might be the first option one might go with to go about loading materials, and if I just need to load materials and not much of anything else that will often work fine. However I have found that what often makes things a little tricky is the question of how to go about loading external image files that I want to use with the various material options that need a texture object. Also the material loader is just simply that, so with that said what about geometry, objects, animations and so on. So then I am of the mindset that [the object loader](/2023/07/19/threejs-object-loader/) is a good option for having some kind of plain text format to work with that can then be loader with a loader option that is baked into the core of the threejs library alone.
 
@@ -1184,13 +1261,13 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 8 - Textures
+## 9 - Textures
 
 In the basic section I covered a simple getting started type example of the use of textures and materials. However there is of course a whole lot more to write about [when it comes to textures](/2023/06/27/threejs-texture), and how they overlap with geometry, and yes mesh material options that require a texture as the value to be given. In the basic example I was using the map option for the texture which is a good start but there are of course many other options from one material to another. So in this section the focus is going to be more so on textures, but while I am at it I will of course need to focus on features of buffer geometry objects as well, mainly the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/) which I would say that you would want to look into more at some point.
 
  I will also have to at least touch base on many other various features of threejs that are relevant to the use of textures with materials such as light sources. However this is still very much a section on the subject of materials in general with threejs. So there will still be a lot to say about the various options when it comes to the kinds of maps there are to work with from one material to another.
 
-### 8.1 - Repeating The WrapS and WrapT properties of textures
+### 9.1 - Repeating The WrapS and WrapT properties of textures
 
 One thing that might come up when dealing with a texture, geometry, and the material that is being used with a mesh is a situation that will happen when dealing with uv attributes values that will go out of range of the texture. I have found that it is a good practice to try to keep the uv attributes values in a range between 0, and 1. However that is more of a guild line than a rule it would seem on my part as I see a lot of uv generator code that does very much result in UV values that go out of that range. This might not present much of a problem though as long as you know about what the deal is with the wrapS and wrapT values of the texture object mind you.
 
@@ -1270,7 +1347,7 @@ camera.lookAt( 0, -0.5, 0 );
 renderer.render(scene, camera);
 ```
 
-### 8.2 - Light, standard material, Set UVmapping of BoxGeometry, diffuse and emissive maps
+### 9.2 - Light, standard material, Set UVmapping of BoxGeometry, diffuse and emissive maps
 
 This example features a helper function that can be called over and over again to create not one, but many textures using canvas elements. I am then using this create canvas texture helper to create not one but two textures. One texture will be used for the map option of an instance of the standard material, and the other texture will be used for the emissive map of the material. 
 
@@ -1404,7 +1481,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 8.3 - Rotation of UV values demo
+### 9.3 - Rotation of UV values demo
 
 For this demo I worked out another demo that has to do with the mutation of the uv attribute to change what the state is when it comes to mapping the 2d texture to the 3D geometry. With this demo I am once again just using the Mesh Basic Material with the map option and I am once again using a canvas texture to create a simple texture with a little javaScript code. This time I am also once again mutating the state of the uv attribute but now I am doing so in a way that will result in a rotation kind of effect with a very simple plain geometry once again.
 
@@ -1530,11 +1607,11 @@ const loop = () => {
 loop();
 ```
 
-## 9 - Light and Materials
+## 10 - Light and Materials
 
 Of course I am going to need to write at least a few things about light sources and materials in general in threejs. The first thing that people that are new to threejs should know is that not all materials will work with light sources to begin with. Another major thing is that some of the options of materials will work a little differently between certain materials. I would say that this is the case with the color option of the basic material compared to that of a material that will work with light such as the standard material. So in this section I will be focusing on at least some of these basic details about light. You might want to check out my [main blog post on light in threejs](/2022/02/25/threejs-light/) if you would like to read up more on this subject though.
 
-### 9.1 - Getting started with Directional Light
+### 10.1 - Getting started with Directional Light
 
 A good option to start with I think would be directional light as a light source. This is a kind of object where I just set the direction part of the Vector of the position property of the directional light object to create a situation in which light is moving in an even, parallel direction along the direction part alone of the position. Sense it is just the direction part of the vector that matters with this light option I might choose to [normalize the vector](/2021/06/14/threejs-vector3-normalize/) to a length of 1.
 
@@ -1572,7 +1649,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 9.2 - Ambient Light and Emissive color
+### 10.2 - Ambient Light and Emissive color
 
 There is the ambient light option that when added to the scene object will result in a base intensity of light being applied to all materials that will work with light sources. When calling the THREE.AmbientLight constructor I can give a color as the first argument followed by a starting intensity value of the light. 
 
@@ -1623,11 +1700,11 @@ renderer.render(scene, camera);
 ```
 
 
-## 10 - Shadows
+## 11 - Shadows
 
 For this section I will be taking a look at the use of shadows with materials. There are a lot of details to be aware of when it comes to getting these up and running with a project. There is not just what one should be aware of when it comes to materials mind you, but also the various other typical features of the project. For example there is checking if the renderer that you are using will even support shades to begin with, when t comes to that the webGl Renderer seems to do so just fine, but the shadow map setting might need to be set to true first. There are also a lot of other properties at the mesh object level, and also with the light sources that one is using as well that need to be addressed.
 
-### 10.1 - Spotlight Example of Shadows
+### 11.1 - Spotlight Example of Shadows
 
 For this example I worked out a bAsic hello world kind of example with shadows. When setting up the renderer I need to make sure shadow map is set to true for it. After that there are the castShadow and receive shadow booleans of the mesh objects that I also want to make sure are set to true as well. When it comes to the spot light that I am using there are a whole bunch of properties that I might want to adjust as well. However when it comes to the materials uses it would seem that there is not that much that I need to bother with, at least when it comes to the basics with this when using the standard material, and phong material at least. One thing that I have noticed thus far is that the material option used for an object that is casting a shadow might not matter that much, but the object that is receiving a shadow does very much matter. Although much of this has to do with the renderer, mesh, and light source objects the material used still does need to support these shadow effects as well.
 
@@ -1687,13 +1764,13 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 11 - Using Arrays of Materials and the Groups property of Buffer Geometry Objects
+## 12 - Using Arrays of Materials and the Groups property of Buffer Geometry Objects
 
 For this section I will not be getting more into the subject of using an [array of materials](/2018/05/14/threejs-mesh-material-index/) rather than just one for a display object. When it comes to older versions of threejs this would involve the use of the now defunct face3 class. I will not be getting into the use of that class of course, however I am still seeing a lot of outdated threejs source code examples pop up in Google search when it comes to this so be aware of that when looking elsewhere with this.
 
 The general process of doing this will not always just involving passing an array of materials and then moving on with ones life. If you are lucky the groups property is all ready set up just the way that you want it and maybe that will in fact actually be the case. However more often that not one will need to update, or even create to begin with the groups property of the geometry that is used with the over all display object.
 
-### 11.1 - Cube Example Revisited
+### 12.1 - Cube Example Revisited
 
 In the Basic Section I covered a simple example of the use of an array of materials using an instance of the Box Geometry. The Box geometry is one example of a geometry cerated with a built in geometry constructor where the groups property is set up to begin with. So demos that involve this kind of geometry often serve as a good start point for this sort of thing for that reason. With that said for this first demo on my arrays of materials section here I will once again be starting out with that, but this time I will be looping over the array of groups objects and setting the values of the material index properties of each group object.
 
@@ -1749,11 +1826,11 @@ loop();
 
 There are a lot of other ways of branching off from this point such as using more than six materials and what one might want to do with that kind of situation. There is updating the material index values over time to switch to whatever material I want to use for whatever side at any given moment. However there is also increasing the point density of the box geometry and creating a whole new groups array from the ground up by leaning how to use the various buffer geometry class methods that there are to work with when it comes to this sort of thing.
 
-## 12 - Fog and materials
+## 13 - Fog and materials
 
 I thought that I should start a section on the [subject of FOG and materials](/2018/04/16/threejs-fog), and have at least one demo that I might expand on more as there is a great deal to be aware of when it comes to this subject. When it comes to the options for Fog Objects to set to the scene.fog property there are two options [THREE.FogExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog). More often than not I like to go with THREE.FogExp2 over that of THREE.Fog as I like the exponential effects rather than the similar linear effect of THREE.Fog.
 
-### 12.1 - EXP2 FOG
+### 13.1 - EXP2 FOG
 
 Here I have an animation loop demo of THREE.FogExp2 where I pass the color I want to use as the first argument and then a density value for the fog. I then this fog object as the value for scene.fog, and then any material that supports fog will then be effected by it such as with the mesh basic material which is what I am using in this demo here. I will also more often than not want to set the background color to that of the fig color as well as the fog will just effect materials and not much of anything else. So If I am not going to add additional mesh objects to serve as background in the scene that will also be effected by the fog I will want to set the style of my solid background to work well with what I want to do here.
 
@@ -1813,11 +1890,11 @@ const loop = () => {
 loop();
 ```
 
-## 13 - Shader Materials
+## 14 - Shader Materials
 
 First thing is first and that is that chances are what it is that you want to do can be done with one of the built in material options. However there might be a situation here and there where you might want to work out some kind of custom material by writing a little bot of original GLSL code that will then be used for the the vertex for fragment shaders that are needed to [create an instance of the THREE.ShaderMaterial](/2023/01/13/threejs-shader-material/).
 
-### 13.1 - Shader Material Hello World
+### 14.1 - Shader Material Hello World
 
 For this very first demo in this shader material section I will be starting out with a very simple hello world type example of this sort of thing to at least get the ball rolling with this. Nothing fancy here at all just getting to a point where we have a solid mass of color on the screen and that is it. When it comes to this there is working out just two values of interest which is gl\_position in the vertex shader, and gl\_FragColor in the fragment shader.
 
@@ -1857,7 +1934,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 13.2 - Uniform values
+### 14.2 - Uniform values
 
 A [uniform value IN GLSL](https://www.khronos.org/opengl/wiki/Uniform_%28GLSL%29) is a global Shader variable declared with the "uniform" [storage qualifier](https://www.khronos.org/opengl/wiki/Type_Qualifier_%28GLSL%29#Storage_qualifier). These kinds of values are values that can be passed to the shader program by the user. For example there is setting the color option, or the opacity option of the Mesh basic Material. 
 
