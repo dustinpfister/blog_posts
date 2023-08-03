@@ -5,16 +5,34 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1065
-updated: 2023-08-02 12:02:07
-version: 1.0
+updated: 2023-08-03 09:45:37
+version: 1.1
 ---
 
-As of late I have wrote a new post on the object loader in threejs, and I noticed that when using the toJSON method of an object3d class based object a matrix key is created. In addition there are no keys for position, rotation, quaternion, or scale in this output. This is because all of this can be stored as a single array value that in turn can be used to create an instance of the [Matrix4 class](https://threejs.org/docs/#api/en/math/Matrix4) which is the value for the matrix property of an object3d class based object.
+As of late I have wrote a new post on the [object loader](https://threejs.org/docs/#api/en/loaders/ObjectLoader) in threejs, and I noticed that when using the toJSON method of an object3d class based object a matrix key is created. In addition there are no keys for position, rotation, quaternion, or scale in this output. This is because all of this can be stored as a single array value that in turn can be used to create an instance of the [Matrix4 class](https://threejs.org/docs/#api/en/math/Matrix4) which is the value for the matrix property of an object3d class based object.
 
 Turns out that I have not played around with these matrix4 objects much just yet, so I thought that it would be good form to at least start a blog post on this subject to start with.
 
 
 <!-- more -->
+
+## Matrix4 objects and what to know before getting started
+
+In this post I am writing a thing or two just about the Matrix4 class for the most part along with some closely related topics while I am at it. I would say that the subject of Matrix4 objects is a more advanced topic of interest when it comes to the use of threejs, so there are some things that you might want to read up on more before hand if you have not done so. It should go without saying but yes this is not a post for people that are new to threejs, let along client side javaScript in general
+
+### Vector3 class, Object3d.position, and Object3d.scale
+
+### Euler Objects, Quaternion, Object3d.rotation, and Object3d.quaternion
+
+### The Object Loader and Object3d.toJSON
+
+### Source code is also up on Github
+
+In my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-matrix4) there are also copies of the demos that I am writing about in this post. With that said this repo is also where I have all the other demos for every [other threejs post that I have wrote](/categories/three-js/) over the last few years. In some cases the versions of the examples there might be more up to date than what is here. In nay case this is also where I place additional notes where I outline plans for future edits of this post if any, and so forth.
+
+### Version Numbers matter
+
+When I first wrote the demos for this post I was following my r152 style rules, and with that I was also using that revision alone when testing these out. You can check out my [README on the details of my r152](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) style rules, but to save you a click the main thing about this is that I am now using three.module.js and with that module type script tags. It is not to hard to get these working with some older revisions of threejs, but there will be a point at which the examples will break. Also at some point in the future the demos where will also break with new revisions as well as threejs is still a very fast moving project.
 
 ## 1 - Basic Matrix4 Examples
 
@@ -60,3 +78,7 @@ camera.position.set( 2, 2, 2 );
 camera.lookAt( mesh_box.position );
 renderer.render(scene, camera);
 ```
+
+## Conclusion
+
+
