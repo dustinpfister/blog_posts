@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1065
-updated: 2023-08-03 10:19:26
-version: 1.2
+updated: 2023-08-03 12:38:56
+version: 1.3
 ---
 
 As of late I have wrote a new post on the [object loader](https://threejs.org/docs/#api/en/loaders/ObjectLoader) in threejs, and I noticed that when using the toJSON method of an object3d class based object a matrix key is created. In addition there are no keys for position, rotation, quaternion, or scale in this output. This is because all of this can be stored as a single array value that in turn can be used to create an instance of the [Matrix4 class](https://threejs.org/docs/#api/en/math/Matrix4) which is the value for the matrix property of an object3d class based object.
@@ -18,7 +18,7 @@ Turns out that I have not played around with these matrix4 objects much just yet
 
 ## Matrix4 objects and what to know before getting started
 
-In this post I am writing a thing or two just about the Matrix4 class for the most part along with some closely related topics while I am at it. I would say that the subject of Matrix4 objects is a more advanced topic of interest when it comes to the use of threejs, so there are some things that you might want to read up on more before hand if you have not done so. It should go without saying but yes this is not a post for people that are new to threejs, let along client side javaScript in general
+In this post I am writing a thing or two just about the Matrix4 class for the most part along with some closely related topics while I am at it. I would say that the subject of Matrix4 objects is a more advanced topic of interest when it comes to the use of threejs, so there are some things that you might want to read up on more before hand if you have not done so. It should go without saying but yes this is not a [post for people that are new to threejs](/2018/04/04/threejs-getting-started/), let along client side javaScript in general
 
 ### Vector3 class, Object3d.position, and Object3d.scale
 
@@ -26,7 +26,7 @@ A Matrix4 object can be used to store position and scale of objects and when it 
 
 ### Euler Objects, Quaternion, Object3d.rotation, and Object3d.quaternion
 
-On top of storing position and scale, Matrix4 objects also store the orientation of objects as well in the form of a Quaternion component. If you have no idea what a Quaternion Object is then it would be a very good idea to [look into the Quaternion class](/2023/03/24/threejs-quaternion/) at this point. Also if you experience thus far with setting orientation is just using the [Obejct3d.lookAt method](/2021/05/13/threejs-object3d-lookat/), then it might be best to look into the [Euler class](/2021/04/28/threejs-euler) first before reading about Quaternion Objects. This all has to do with setting the local rotation of objects of course and with that said there is the Object3d.rotaiton property that stores the local rotation of the object in the from of a Euler Object. There is also the Object3d.quaternion property that stores the local rotation in the from of Quaternion as well.
+On top of storing position and scale, Matrix4 objects also store the orientation of objects as well in the form of a Quaternion component. If you have no idea what a Quaternion Object is then it would be a very good idea to [look into the Quaternion class](/2023/03/24/threejs-quaternion/) at this point. Also if you experience thus far with setting orientation is just using the [Obejct3d.lookAt method](/2021/05/13/threejs-object3d-lookat/), then it might be best to look into the [Euler class](/2021/04/28/threejs-euler) first before reading about Quaternion Objects. This all has to do with setting the local rotation of objects of course and with that said there is the Object3d.rotation property that stores the local rotation of the object in the from of a Euler Object. There is also the Object3d.quaternion property that stores the local rotation in the from of Quaternion as well.
 
 ### The Object Loader and Object3d.toJSON
 
@@ -44,9 +44,93 @@ When I first wrote the demos for this post I was following my r152 style rules, 
 
 One will need to start somewhere when it comes to these Matrix4 objects, and with that said this section will be just that for this general threejs topic. There are just a few methods and features that are needed to get started that I will at least be touching base on here. Also I will be doing my best to keep these examples as simple as possible, leaving more advanced examples for later sections in the post.
 
-### 1.1 - Getting started with Matrix4 with the compose method, and Object3d.applyMatrix4
+### 1.1 - Directly mutate the matrix property
 
-Thus far I think the best way to get started with this is to use the compose method of the Matrix4 class. This compose method can be used to set the state of a Matrix4 object by passing a Vector3 object as the first argument that will be the position value, a quatrenion object as the second argument that will be orientation, and a final Vector3 object that will be the scale of the object. Once I create a new Matrix4 object I can call this compose method and then pass the arguments that I want to set the matrix state that I want. Then I will want to do something with that matrix4 object such as using it to set position, orientation, and scale of an Object3d class based object such as a mesh object. For this task I can use the apply matrix4 method of the object3d class to so just that.
+If you directly mutate the matrix property the end result will not be the same as you might expect when it comes to directly mutating other object3d class based objects. To resolve this you just need to set the matrix auto update property of the object to false. If you do not do this then the matrix will be recalculated from the other values, doing away form any manual changes that where made.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild( renderer.domElement );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const mesh_box = new THREE.Mesh( new THREE.BoxGeometry( 1, 1, 1 ), new THREE.MeshNormalMaterial() );
+scene.add(mesh_box);
+// ---------- ----------
+// MATRIX4
+// ---------- ----------
+const v3_pos = new THREE.Vector3(0, 0.8, 0);
+const q_ori = new THREE.Quaternion().setFromEuler( new THREE.Euler( 1, -0.5, 0) );
+const v3_scale = new THREE.Vector3( 1, 0.1, 1 );
+mesh_box.matrix.compose(v3_pos, q_ori, v3_scale);
+mesh_box.matrixAutoUpdate = false;
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set( 2, 2, 2 );
+camera.lookAt( mesh_box.position );
+renderer.render(scene, camera);
+```
+
+### 1.2 - Manually update the Matrix
+
+Another way to update is to do so manually.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild( renderer.domElement );
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const mesh_box = new THREE.Mesh( new THREE.BoxGeometry( 1, 1, 1 ), new THREE.MeshNormalMaterial() );
+scene.add(mesh_box);
+// ---------- ----------
+// RENDER FIRST TIME
+// ---------- ----------
+camera.position.set( 2, 2, 2 );
+camera.lookAt( mesh_box.position );
+renderer.render(scene, camera);
+// ---------- ----------
+// MATRIX4 UPDATE and RENDER
+// ---------- ----------
+mesh_box.position.set(-1, 0, -1);
+mesh_box.rotation.x = Math.PI / 180 * 45;
+mesh_box.scale.set( 2, 2, 2);
+mesh_box.matrixAutoUpdate = false;
+setTimeout(() => {
+    mesh_box.updateMatrix();
+    camera.lookAt( mesh_box.position );
+    renderer.render(scene, camera);
+}, 1000);
+```
+
+### 1.3 - Set Form new Matrix4 object with Object3d.applyMatrix4
+
+Thus far I think the best way to get started with this is to use the compose method of the Matrix4 class. This compose method can be used to set the state of a Matrix4 object by passing a Vector3 object as the first argument that will be the position value, a quaternion object as the second argument that will be orientation, and a final Vector3 object that will be the scale of the object. 
+
+Once I create a new Matrix4 object I can call this compose method and then pass the arguments that I want to set the matrix state that I want. Then I will want to do something with that matrix4 object such as using it to set position, orientation, and scale of an Object3d class based object such as a mesh object. For this task I can use the apply matrix4 method of the object3d class to so just that.
 
 ```js
 // ---------- ----------
