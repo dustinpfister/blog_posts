@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2023-05-07 12:42:41
-version: 1.62
+updated: 2023-08-03 13:02:30
+version: 1.63
 ---
 
 Adding fog to a Scene object in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) generally means just creating an instance of [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog) or [THREE.ForExp2](https://threejs.org/docs/#api/en/scenes/FogExp2), and setting that to the fog property of a [scene object](/2018/05/03/threejs-scene/). However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material for example. There are also other basic getting started type things that come up such as making sure that the background color of a scene should be same color used for the color of the fog.
@@ -60,7 +60,7 @@ The source code examples that I am writing about here can be found on my [test t
 
 ### Version numbers matter with three.js
 
-The version of threejs is something that is important when writing post on it, often many code breaking changes are introduced that will result in older examples no longer working. When I first started writing this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited this [post I as using r146](https://github.com/mrdoob/three.js/tree/r146). It would seem that not much of anything has changed with fog alone at least thus far, but still this is always something that a developer should be aware of when it comes to the fact that three.js is a fairly fast moving target in terms of development.
+The version of threejs is something that is important when writing post on it, often many code breaking changes are introduced that will result in older examples no longer working. When I first started writing this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited this [post I as using r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). It would seem that not much of anything has changed with fog alone at least thus far, but still this is always something that a developer should be aware of when it comes to the fact that three.js is a fairly fast moving target in terms of development.
 
 
 ## 1 - Basic fog examples
