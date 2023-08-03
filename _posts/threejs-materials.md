@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-03 13:34:07
-version: 1.88
+updated: 2023-08-03 13:58:52
+version: 1.89
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -370,8 +370,17 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 // INSTANCE OF THE BASIC MATERIAL
 //-------- ----------
+const data = [
+    100,100,100,255,  150,150,150,255,  150,150,150,255,  100,100,100,255,
+    150,150,150,255,  200,200,200,255,  200,200,200,255,  150,150,150,255,
+    150,150,150,255,  200,200,200,255,  200,200,200,255,  150,150,150,255,
+    100,100,100,255,  150,150,150,255,  150,150,150,255,  100,100,100,255
+];
+const texture = new THREE.DataTexture(new Uint8Array( data ), 4, 4);
+texture.needsUpdate = true;
 const material = new THREE.MeshBasicMaterial({
-    color: 0xff0000
+    color: 0xffffff,
+    map: texture
 });
 //-------- ----------
 // SCENE CHILD OBJECTS
@@ -381,12 +390,12 @@ scene.add(new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material));
 //-------- ----------
 // RENDER
 //-------- ----------
-camera.position.set(1.3, 1.5, 1.3);
-camera.lookAt(0, 0, 0);
+camera.position.set(0.75, 1.2, 1.5);
+camera.lookAt(0, -0.10, 0);
 renderer.render(scene, camera); // render
 ```
 
-There are a number of ways of going about using the map option all of which will involve getting a texture object one way or another, such as using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in a texture from an external image, but there are also a number of ways of doing so that will involve the use of some javaScript code to create a texture. Once option would be to use [canvas elements](/2018/04/17/threejs-canvas-texture/), and another would be to make use of the [data texture constructor](/2022/04/15/threejs-data-texture/) as a way to create a texture from raw color channel data.
+There are a number of ways of going about using the map option all of which will involve getting a texture object one way or another, such as using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in a texture from an external image, but there are also a number of ways of doing so that will involve the use of some javaScript code to create a texture. Once option would be to use [canvas elements](/2018/04/17/threejs-canvas-texture/), and another would be to make use of the [data texture constructor](/2022/04/15/threejs-data-texture/) as a way to create a texture from raw color channel data as I went with in this demo.
 
 ### 2.2 - Mesh Depth Material
 
