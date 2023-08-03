@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-02 19:35:29
-version: 1.86
+updated: 2023-08-03 13:24:07
+version: 1.87
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1083,6 +1083,42 @@ const loop = () => {
     frame %= maxFrame;
 };
 loop();
+```
+
+## 6.5 - The depth test property to making something show up on top of everything else
+
+Now and then I might end up running into a problem in which I will need to make sure that a certain object will always render on top of everything else regardless of what the status might be in terms of that objects depth relative to the camera and any other objects between such an object and the camera. One way of doing this would be to work out some kind of system for layering, that is to have more than one renderer and therefor canvas element, and then just set the render order of all of these canvas elements in such a way that what I need rendering on top will be drawn to a final canvas element last. Doing something such as that will work of course, but one way to get a desired outcome with a single canvas and  renderer might be to set the depth test option of the material of the object that i want to render on top to false.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MATERIAL
+// ---------- ----------
+const material_mesh = new THREE.MeshNormalMaterial();
+const material_points = new THREE.PointsMaterial({
+    size: 5,
+    sizeAttenuation: false,
+    depthTest: false
+});
+// ---------- ----------
+// GEOMETRY MESH
+// ---------- ----------
+const geo = new THREE.BoxGeometry(1, 1, 1, 8, 8, 8);
+scene.add( new THREE.Mesh(geo, material_mesh) );
+scene.add( new THREE.Points(geo, material_points) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(1, 0.75, 1.5);
+camera.lookAt(0, -0.15, 0);
+renderer.render(scene, camera);
 ```
 
 ## 7 - Blending options 
