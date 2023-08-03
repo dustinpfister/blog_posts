@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2023-04-25 16:27:52
-version: 1.32
+updated: 2023-08-03 13:02:30
+version: 1.33
 ---
 
 As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Threejs](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It was still possible to use it as an add on file but as of late versions of threejs it would seem that is no longer the case. There once was a time where webGL support was not so great, however that was then, and now when comes to modern web browsers webgl support is pretty good.
@@ -35,7 +35,7 @@ The source code examples that I am writing about here can also be [found up on G
 
 ### Version numbers matter
 
-When writing this post for the first time I was using [revision 104 of three.js](https://github.com/mrdoob/three.js/tree/r104), and the last time I cam around to do some editing I was using r146 of threejs. So a lot has changed between those two revision numbers, far more that I can write about when it comes to this single little blog post on the subject. However I will say that as of revision r141+ it is now assumed that a client has webgl2 support, which will case erros when working on a project on a client system that does not. So I find myself using the WebGl1Renderer now as my default go to renderer that is built into the threejs core.
+When writing this post for the first time I was using [revision 104 of three.js](https://github.com/mrdoob/three.js/tree/r104), and the last time I cam around to do some editing I was using [r146 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). So a lot has changed between those two revision numbers, far more that I can write about when it comes to this single little blog post on the subject. However I will say that as of revision r141+ it is now assumed that a client has webgl2 support, which will case erros when working on a project on a client system that does not. So I find myself using the WebGl1Renderer now as my default go to renderer that is built into the threejs core.
 
 On top of all of this I am also using some additional assets in the renderer's folder of the js folder in the examples folder of the three.js repo. When it comes to rendering a three js scene with a renderer other than the built in webGL renderer additional assets must be used to provide that additional way of rendering. To further complicate matters there the options of what there are to work with in terms of software rendering will differ from one revision to the next. When it came to r104 the 2d canvas renderer was still an option when added as an additional external file which was called the software-renderer.js file. However in later revisions of threejs it would seem the best option would be to use the SVGRenderer as of r146+.
 
