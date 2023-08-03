@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1065
-updated: 2023-08-03 09:45:37
-version: 1.1
+updated: 2023-08-03 10:19:26
+version: 1.2
 ---
 
 As of late I have wrote a new post on the [object loader](https://threejs.org/docs/#api/en/loaders/ObjectLoader) in threejs, and I noticed that when using the toJSON method of an object3d class based object a matrix key is created. In addition there are no keys for position, rotation, quaternion, or scale in this output. This is because all of this can be stored as a single array value that in turn can be used to create an instance of the [Matrix4 class](https://threejs.org/docs/#api/en/math/Matrix4) which is the value for the matrix property of an object3d class based object.
@@ -22,9 +22,15 @@ In this post I am writing a thing or two just about the Matrix4 class for the mo
 
 ### Vector3 class, Object3d.position, and Object3d.scale
 
+A Matrix4 object can be used to store position and scale of objects and when it comes to the Object3d.position and Object3d.scale properties of Objecrt3d class based objects such as Mesh objects the values of these properties are Vector3 objects. There is a lot that one should be aware of when it comes to [Vector3 objects](/2018/04/15/threejs-vector3/) as well as with Vectors in general such as the Vector2 and Vector4 classes.
+
 ### Euler Objects, Quaternion, Object3d.rotation, and Object3d.quaternion
 
+On top of storing position and scale, Matrix4 objects also store the orientation of objects as well in the form of a Quaternion component. If you have no idea what a Quaternion Object is then it would be a very good idea to [look into the Quaternion class](/2023/03/24/threejs-quaternion/) at this point. Also if you experience thus far with setting orientation is just using the [Obejct3d.lookAt method](/2021/05/13/threejs-object3d-lookat/), then it might be best to look into the [Euler class](/2021/04/28/threejs-euler) first before reading about Quaternion Objects. This all has to do with setting the local rotation of objects of course and with that said there is the Object3d.rotaiton property that stores the local rotation of the object in the from of a Euler Object. There is also the Object3d.quaternion property that stores the local rotation in the from of Quaternion as well.
+
 ### The Object Loader and Object3d.toJSON
+
+For me what got me into Matrix3 objects is the fact that the toJSON method of the Object3d class will create JSON.stringify friendly objects that have a matrix property, and this property alone. The toJSON method then works that way rather than having a position, scale, and then rotation or quaternion key. So then there is learning a thing or two about matrix4 objects, or writing my own toJSON method that creates the alternative set of keys. The toJSON method of the Object3d class is one way to generate JSON data that will play nice with the [THREE.ObjectLoader class](/2023/07/19/threejs-object-loader/). What I like about this loader is that it is a way to load external data for objects and with that everything else of interest that built into the core of the threejs library itself.
 
 ### Source code is also up on Github
 
