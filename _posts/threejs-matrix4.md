@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1065
-updated: 2023-08-03 12:38:56
-version: 1.3
+updated: 2023-08-03 12:45:59
+version: 1.4
 ---
 
 As of late I have wrote a new post on the [object loader](https://threejs.org/docs/#api/en/loaders/ObjectLoader) in threejs, and I noticed that when using the toJSON method of an object3d class based object a matrix key is created. In addition there are no keys for position, rotation, quaternion, or scale in this output. This is because all of this can be stored as a single array value that in turn can be used to create an instance of the [Matrix4 class](https://threejs.org/docs/#api/en/math/Matrix4) which is the value for the matrix property of an object3d class based object.
@@ -85,7 +85,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Manually update the Matrix
 
-Another way to update is to do so manually.
+Another way to update is to do so manually by calling the update matrix method of the object3d class. That is to using the values methods of the various types of objects that are used to store the local position rotation, and scale, then set the matrix auto update boolean to false. At a later point when ready one can then call the update matrix method to apply those changes to the matrix.
 
 ```js
 // ---------- ----------
@@ -171,4 +171,4 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-
+This will be it for now when it comes to Matrix4 objects as one will have to start somewhere with this. Thus far I can see why this is often the preferred way to store an over all transformation of an object. It is nice to store all data that has to do with local position, rotation, and scale in a single array of values.
