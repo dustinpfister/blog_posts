@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-03 13:24:07
-version: 1.87
+updated: 2023-08-03 13:34:07
+version: 1.88
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -173,7 +173,7 @@ renderer.render(scene, camera);
 
 ### 1.4 - Arrays of materials
 
-One of the many subjects that I see being overlooked in other blog posts on materials in general in threejs is the subject of using an array of materials. This subject alone can quickly turn into a time consuming black hole if one lets it become that and I have many times off an on over the years. There is a lot of overlap with this subject as there is not just simply passing an array of materials but also adding or chaning the state of the groups propety of the geometry. For the sake of this basic section demo though there is just using the box geometry constructor as this has a groups property set up to begin with. Also on top of that the groups are set up to make use of six materials one for each side of the box which would often be the case when doing this sort of thing. So to get starte with this as least one will just need to pass an array of six materials rather than just one when making the mesh object that will use the box geometry.
+One of the many subjects that I see being overlooked in other blog posts on materials in general in threejs is the subject of using an array of materials. This subject alone can quickly turn into a time consuming black hole if one lets it become that and I have many times off an on over the years. There is a lot of overlap with this subject as there is not just simply passing an array of materials but also adding or chaining the state of the groups property of the geometry. For the sake of this basic section demo though there is just using the box geometry constructor as this has a groups property set up to begin with. Also on top of that the groups are set up to make use of six materials one for each side of the box which would often be the case when doing this sort of thing. So to get started with this as least one will just need to pass an array of six materials rather than just one when making the mesh object that will use the box geometry.
 
 ```js
 //-------- ----------
@@ -210,7 +210,7 @@ renderer.render(scene, camera);
 
 Do not let this fool you though if you thing that this is how to add texture to 3d objects. The first and foremost way to do this would typically be to use just one material, with one texture, and a well worked out uv attributive for the geometry. However some times there are in fact situations in which it would be a good idea to use more than one material for a mesh, and this is how to get started with it. Once again the groups are set up to begin with in this demo though, so when it comes to working on an asset of some kind one might need to work out the state of the groups array.
 
-### 1.5 - Uvmapping and textures
+### 1.5 - UV mapping and textures
 
 Although an array of materials can be used as a way to skin each side of a Box Geometry, this is not the way to go about skinning a geometry in general. The first and foremost way to skin a Box Geometry, or any geometry for that matter is to create, or in this case mutate the values of the [uv attribute](/2021/06/09/threejs-buffer-geometry-attributes-uv/). This attribute of a geometry contains offset values for each point in the [position attribute](/2021/06/07/threejs-buffer-geometry-attributes-position/) of the geometry which is the actual points in space.
 
@@ -353,11 +353,9 @@ Keep in mind that if you feel that you are getting overwhelmed with all of this 
 
 ### 2.1 - Mesh Basic Material
 
-The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the kind of material that I would use if I do not aim to do anything special with light. The basic material will not respond to any light sources, and the faces will be filled with a solid color, a given texture when it comes to the use of the map option, or vertex coloring can be used if there is a color attribute to work with in the geometry. So with that said the way to get something other than a solid mass of color on the screen with this one would require the use of adding textures, color attributes, groups, or child objects that are points or lines.
+The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the kind of material that I would use if I do not aim to do anything special with light. The basic material will not respond to any light sources, and the faces will be filled with a solid color if it is just the color option alone that will be used with it. However there are a lot of options whe it comes to doing things to show some depth, one option would be to create a texture by one means or another and use that with the map option. Another option would be to add a color attribute to the geometry that is used, and then set the vertex color boolean of the material to true. Do not let the name fool you with this one, the Basic material is not so basic, you still have everything that there is to work with in the common base material class, as well as a lot of features with the Basic material itself.
 
-As I said one option to help show some depth would involve adding a child object of some kind such as lines that use a geometry that is created by passing the geometry of the parent object into the edge geometry constructor. There are a whole lot of other options for maps and other features that are supported by the basic material, and also there are some common material class features that can be used with this such as vertex colors.
-
-If using textures to show depth there is then doing some shading when drawing the textures themselves that are to be used with the geometry that is worked out.
+Yet another option for seeing some depth would be involve adding a child object of some kind such as lines that use a geometry that is created by passing the geometry of the parent object into the edge geometry constructor. If using textures to show depth there is then doing some shading when drawing the textures themselves that are to be used with the geometry that is worked out. With this said this is often the typical use case when it comes to using this material in an actual project.
 
 ```js
 //-------- ----------
@@ -388,7 +386,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera); // render
 ```
 
-This comes in handy when I just want to quickly add some solid color to a mesh, but one draw back is that it will always show the geometry as one bug blob of color. In order to show and kind of sense of depth it is called for to add some texture to the mesh object by way of some kind of texture. There are a number of ways of going about doing this such as using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in a texture from an external image, but there are also a number of ways of doing so that will involve the use of some javaScript code to create a texture. Once option would be to use [canvas elements](/2018/04/17/threejs-canvas-texture/), and another would be to make use of the [data texture constructor](/2022/04/15/threejs-data-texture/) as a way to create a texture from raw color channel data.
+There are a number of ways of going about using the map option all of which will involve getting a texture object one way or another, such as using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in a texture from an external image, but there are also a number of ways of doing so that will involve the use of some javaScript code to create a texture. Once option would be to use [canvas elements](/2018/04/17/threejs-canvas-texture/), and another would be to make use of the [data texture constructor](/2022/04/15/threejs-data-texture/) as a way to create a texture from raw color channel data.
 
 ### 2.2 - Mesh Depth Material
 
