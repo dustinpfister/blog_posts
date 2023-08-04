@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2023-05-07 13:40:56
-version: 1.38
+updated: 2023-08-04 09:56:32
+version: 1.39
 ---
 
 When it comes to getting a reference to a [mesh object](/2018/05/04/threejs-mesh/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model in client side javaScript alone. When it comes to html elements there is setting an id to an element, and then having the option to [get a reference to that element by id](/2018/12/27/js-document-getelementbyid/) later in a body of javaScript code. There are also a number of other options such as selecting by class, tag, and so forth as well.
@@ -34,7 +34,7 @@ The source code examples that I am writing about here in this post can also be [
 
 ### Version Numbers are a big deal with three.js
 
-When I wrote this post I was using three.js revision r127 of three.js which was a late version of three.js in May of 2021. Also I do get around to editing my content on threejs every now and then and with that said the lat time I came around to edit this I got all the source code examples working just fine with r146 of threejs. As of r141+ I am now using the WebGL1 renderer so the code examples may now break on older versions of threejs, but one might just only need to make changes with that to get them working.
+When I first wrote this post I was using threejs revision r127 of three.js which was a late version of three.js in May of 2021. Also I do get around to editing my content on threejs every now and then and with that said the lat time I came around to edit this I got all the source code examples working just fine with [r146 of threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/demos/r146/README.md). As of r141+ I am now using the WebGL1 renderer so the code examples may now break on older versions of threejs, but one might just only need to make changes with that to get them working.
 
 In the future code breaking changes might be made that will cause these code examples to no longer work, and such changes might happen sooner rather than later. Three.js is a project that is moving fairly fast when it comes to development so always be mindful of what the revision number was that a person might have been using when reading something on the open web that has to do with threejs.
 
@@ -43,39 +43,53 @@ In the future code breaking changes might be made that will cause these code exa
 I should start off with a basic getting started type example with the name property and the get object by name method of the object3d class. In this example I create a group using the THREE.Group constructor which is also based on the Object3d class, so I set a name property for it. I then add two mesh objects to this group, each of them I also set a name for called just simply box1 and box2. Later on in the example I can then call the get object by name method off of the group to get the first box object in the group. I can then do something simple to that mesh object such as changing the rotation of the object.
 
 ```js
-// creating a group
-var group = new THREE.Group();
-group.name = 'boxGroup';
-// adding two boxes to the group with names
-var box = new THREE.Mesh(
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// CREATEING A GROUP AND MESH OBJECTS WITH NAMES
+//-------- ----------
+(function(){
+    // this is all local to this IIFE, so I can
+    // not use the varibles outside of this. HOWEVER
+    // I AM SETTING NAMES AND ADDING THEM AS CHILDREN
+    // OF THE SCENE OBJECT
+    const group = new THREE.Group();
+    group.name = 'boxGroup';
+    const box1 = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
-box.position.set(0, 0, 0);
-box.name = 'box1';
-group.add(box);
-var box = new THREE.Mesh(
+    box1.position.set(0, 0, 0);
+    box1.name = 'box1';
+    group.add(box1);
+    const box2 = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
-box.position.set(-2, 0, 0);
-box.name = 'box2';
-group.add(box);
-// box helper
-group.add(new THREE.BoxHelper(group));
-group.position.set(0, 0, 0);
-// scene
-var scene = new THREE.Scene();
-scene.add(new THREE.GridHelper(5, 5));
-scene.add(group);
-// GETTING BOX1 BY THE NAME
-var box = group.getObjectByName('box1');
+    box2.position.set(-2, 0, 0);
+    box2.name = 'box2';
+    group.add(box2);
+    group.add(new THREE.BoxHelper(group));
+    group.position.set(0, 0, 0);
+    scene.add(group);
+}());
+//-------- ----------
+// GET BY NAME
+//-------- ----------
+// GETTING GROUP AND BOX1 BY THE NAMES OUTSIDE OF THE IIFE
+const group = scene.getObjectByName('boxGroup');
+const box = group.getObjectByName('box1');
 box.rotation.set(Math.PI / 180 * 45, 0, 0);
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+//-------- ----------
+// RENDER
+//-------- ----------
 camera.position.set(4, 4, 4);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
@@ -88,13 +102,25 @@ Now that I have the basic idea of what the name property is used for it is time 
 In this example I have a method that just creates and returns a group of mesh objects and when doing so it sets a name for each mesh object. I then have a method that positions these mesh objects into positions that are along the circumference of a circle. However the real method here is my create object method that makes use use of both of these helper functions to set things up and running here. I am then using the names set with the create box group method to adjust some things to make a kind of whole object using just box geometries.
 
 ```js
+//-------- ----------
+// SCENE, CAMERA, AND RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(7, 7));
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELEPRS
+//-------- ----------
 // creating a group
-var createBoxGroup = function(count){
-    var group = new THREE.Group();
+const createBoxGroup = function(count){
+    const group = new THREE.Group();
     group.name = 'boxGroup';
-    var i = 0,
-    box,
-    len = count;
+    let i = 0,
+    box;
+    const len = count;
     while(i < len){
         box = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
@@ -106,65 +132,54 @@ var createBoxGroup = function(count){
     }
     return group;
 };
- 
 // SETTING SCALE OF BOX GROUP AND GETTING BOX OBJECTS BY NAME
 // WHEN DOING SO
-var createObject1 = function(){
-    var group = createBoxGroup(4);
+const createObject1 = function(){
+    const group = createBoxGroup(4);
     // set cube zero to a bigger scale than the others
     // this should be the front
-    var box = group.getObjectByName('box_0');
-    box.scale.set(1, 1, 3);
-    box.position.set(0, 0, 1);
+    const box1 = group.getObjectByName('box_0');
+    box1.scale.set(1, 1, 3);
+    box1.position.set(0, 0, 1);
     // side box objects
-    box = group.getObjectByName('box_1');
-    box.scale.set(1, 1, 1);
-    box.position.set(2, 0, 0);
-    box = group.getObjectByName('box_2');
-    box.scale.set(1, 1, 1);
-    box.position.set(-2, 0, 0);
+    const box2 = group.getObjectByName('box_1');
+    box2.scale.set(1, 1, 1);
+    box2.position.set(2, 0, 0);
+    const box3 = group.getObjectByName('box_2');
+    box3.scale.set(1, 1, 1);
+    box3.position.set(-2, 0, 0);
     // rear
-    box = group.getObjectByName('box_3');
-    box.scale.set(1, 1, 1);
-    box.position.set(0, 0, -2);
+    const box4 = group.getObjectByName('box_3');
+    box4.scale.set(1, 1, 1);
+    box4.position.set(0, 0, -2);
     return group
 };
- 
-// create a group
-var group = createObject1();
-// box helper
+//-------- ----------
+// CREATE OBJECTS
+//-------- ----------
+const group = createObject1();
 group.add(new THREE.BoxHelper(group));
-// scene
-var scene = new THREE.Scene();
-// grid helper
-scene.add(new THREE.GridHelper(7, 7));
-// add group
 scene.add(group);
-// dir mesh
-var dir = new THREE.Mesh(
+const dir = new THREE.Mesh(
     new THREE.BoxGeometry(0.25, 0.25, 0.25), 
     new THREE.MeshBasicMaterial());
 scene.add(dir);
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+//-------- ----------
+// USE ORBIT CONTROLS IF THERE
+//-------- ----------
+if(THREE.OrbitControls){
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+}
+//-------- ----------
+// LOOP
+//-------- ----------
 camera.position.set(5, 5, 5);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
-// loop
-var lt = new Date(),
-frame = 0,
-maxFrame = 600,
-r = 0,
-x, 
-z,
-fps = 30;
-var loop = function(){
-    var now = new Date(),
+const maxFrame = 600, fps = 30;
+let lt = new Date(),
+frame = 0, r = 0, x, z;
+const loop = function(){
+    const now = new Date(),
     per = frame / maxFrame,
     bias = 1 - Math.abs(per - 0.5) / 0.5,
     secs = (now - lt) / 1000;
@@ -197,15 +212,13 @@ The logic that I first worked out in my previous example is now pulled into its 
 
 ```js
 (function (api) {
- 
     // CREATE A BOX GROUP HELPERS
- 
     // creating a group
-    var createBoxGroup = function (count, groupNamePrefix, groupNameCount, childNamePrefix) {
-        var group = new THREE.Group();
+    const createBoxGroup = function (count, groupNamePrefix, groupNameCount, childNamePrefix) {
+        const group = new THREE.Group();
         // SETTING A NAME FOR THE GROUP
         group.name = groupNamePrefix + '_' + groupNameCount;
-        var i = 0,
+        let i = 0,
         box,
         len = count;
         while (i < len) {
@@ -220,29 +233,28 @@ The logic that I first worked out in my previous example is now pulled into its 
         }
         return group;
     };
- 
     // position children
-    var positionChildren = function (group) {
-        var prefix = group.name + '_' + 'box_'
-            // front
-            var box = group.getObjectByName(prefix + '0');
-        box.scale.set(1, 1, 3);
-        box.position.set(0, 0, 1);
+    const positionChildren = function (group) {
+        const prefix = group.name + '_' + 'box_';
+        // front
+        const box1 = group.getObjectByName(prefix + '0');
+        box1.scale.set(1, 1, 3);
+        box1.position.set(0, 0, 1);
         // side box objects
-        box = group.getObjectByName(prefix + '1');
-        box.scale.set(1, 1, 1);
-        box.position.set(2, 0, 0);
-        box = group.getObjectByName(prefix + '2');
-        box.scale.set(1, 1, 1);
-        box.position.set(-2, 0, 0);
+        const box2 = group.getObjectByName(prefix + '1');
+        box2.scale.set(1, 1, 1);
+        box2.position.set(2, 0, 0);
+        const box3 = group.getObjectByName(prefix + '2');
+        box3.scale.set(1, 1, 1);
+        box3.position.set(-2, 0, 0);
         // rear
-        box = group.getObjectByName(prefix + '3');
-        box.scale.set(1, 1, 1);
-        box.position.set(0, 0, -2);
+        const box4 = group.getObjectByName(prefix + '3');
+        box4.scale.set(1, 1, 1);
+        box4.position.set(0, 0, -2);
     };
     // create user data object
-    var createUserData = function (wrap, group) {
-        var ud = wrap.userData;
+    const createUserData = function (wrap, group) {
+        const ud = wrap.userData;
         ud.group = group;
         ud.heading = 0; // heading 0 - 359
         ud.pitch = 0; // pitch -180 - 180
@@ -252,37 +264,36 @@ The logic that I first worked out in my previous example is now pulled into its 
                 new THREE.MeshNormalMaterial());
         wrap.add(ud.dir);
     };
- 
     // CREATE A BOX GROUP
-    var groupCount = 0;
+    let groupCount = 0;
+    // main update method
     api.create = function () {
-        var wrap = new THREE.Group();
-        var group = createBoxGroup(4, 'boxgroup', groupCount, 'box');
+        const wrap = new THREE.Group();
+        const group = createBoxGroup(4, 'boxgroup', groupCount, 'box');
         wrap.add(group);
         positionChildren(group);
         createUserData(wrap, group);
         api.update(wrap);
-        group.add(new THREE.BoxHelper(group, 0xffffff));
+        //group.add(new THREE.BoxHelper(group, 0xffffff));
         // step group count
         groupCount += 1;
         return wrap;
     };
- 
     // UPDATE A BOX GROUP
- 
     api.update = function (wrap) {
-        var ud = wrap.userData,
+        const ud = wrap.userData,
         group = ud.group;
-        var headingRadian = Math.PI / 180 * ud.heading;
-        var x = Math.cos(headingRadian) * 5,
+        const headingRadian = Math.PI / 180 * ud.heading;
+        const x = Math.cos(headingRadian) * 5,
         z = Math.sin(headingRadian) * 5,
         // might light to work out a better expression for pitch
         y = Math.abs(ud.pitch) / 180 * 5 * (ud.pitch < 0 ? -1 : 1);
         ud.dir.position.set(x, y, z);
         // look at is relative to world space, so this needs to be adjusted for that
-        group.lookAt(ud.dir.getWorldPosition());
+        const v = new THREE.Vector3();
+        ud.dir.getWorldPosition(v)
+        group.lookAt(v);
     };
- 
 }
     (this['BoxGroup'] = {}));
 ```
@@ -292,36 +303,38 @@ The logic that I first worked out in my previous example is now pulled into its 
 Now that I have my code that has to do with the creation and mutation of these model objects pulled into an additional separate file the main javaScript file is now a little lighter. I can now just create a scene and then start creating and adding these groups of objects to the scene by calling the create method of the module.
 
 ```js
-// scene
-var scene = new THREE.Scene();
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(5, 5)); // grid helper
- 
-// create some of these groups with the BoxGroup Module
-var group1 = BoxGroup.create();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// GROUPS
+//-------- ----------
+const group1 = BoxGroup.create();
 group1.position.set(-15, 0, 0);
 scene.add(group1);
-var group2 = BoxGroup.create();
+const group2 = BoxGroup.create();
 group2.position.set(-15, 0, -15);
 scene.add(group2);
-var group3 = BoxGroup.create();
+const group3 = BoxGroup.create();
 console.log(group3.name);
 scene.add(group3); // add group
- 
-// camera and renderer
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+//-------- ----------
+// LOOP
+//-------- ----------
 camera.position.set(10, 5, 5);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
-// loop
-var lt = new Date(),
-frame = 0,
-maxFrame = 600,
+let lt = new Date(),
+frame = 0;
+const maxFrame = 600,
 fps = 30;
-var loop = function () {
-    var now = new Date(),
+const loop = function () {
+    const now = new Date(),
     per = frame / maxFrame,
     bias = 1 - Math.abs(per - 0.5) / 0.5,
     secs = (now - lt) / 1000;
