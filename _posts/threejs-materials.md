@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-03 13:58:52
-version: 1.89
+updated: 2023-08-04 08:36:23
+version: 1.90
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -344,6 +344,61 @@ renderer.render(scene, camera);
 ```
 
 So this might be a good starting point for light but there is still a whole lot more to read about when it comes to the various material options that a relevant to the use of light. There are a number of various texture map options for example, and also various little details from one mesh object to the next. If you want to read more on this there is the advanced light section later in this post in which I will be expanding more on this topic.
+
+### 1.7 - Getting started with textures and Materials
+
+If you just simply want to get started with textures and materials without having to read about every little fine grain detail to be aware of with this sort of thing that will be what this demo is all about here. There are a whole lot of ways to get started with texture, but I think one of the best ways would be to use the plain old 2d drawing context of canvas elements and then pass the canvas element to the THREE.CanvasTexture constructor as a quick way to create some texture with javaScript code rather than an external image. Once one has a texture a good starting material option might be the map option of the basic material.
+
+```js
+//-------- ----------
+// SCENE CAMERA RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// TEXTURE
+//-------- ----------
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = 4;
+canvas.height = 4;
+[
+   0.10, 0.20, 0.20, 0.10,
+   0.20, 1.00, 1.00, 0.20,
+   0.20, 1.00, 1.00, 0.20,
+   0.10, 0.20, 0.20, 0.10
+].forEach( (a, i) => {
+    const x = i % canvas.width;
+    const y = Math.floor( i / canvas.width );
+    ctx.fillStyle = new THREE.Color( a, a , a).getStyle();
+    ctx.fillRect( x, y, 1, 1);
+});
+const texture = new THREE.CanvasTexture(canvas);
+texture.magFilter = THREE.NearestFilter;
+//-------- ----------
+// BASIC MATERIAL USING A TEXTURE FOR THE MAP OPTION
+//-------- ----------
+const material = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    map: texture
+});
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add(new THREE.GridHelper(10, 10))
+scene.add(new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material));
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(0.75, 1.2, 1.5);
+camera.lookAt(0, -0.10, 0);
+renderer.render(scene, camera); // render
+```
+
+Although a demo like this might be a good start there is a whole lot more to be aware of when it comes to textures, features of geometry objects such as the UV attribute, and of course a massive amount of things to be aware of when it comes to material options and textures. What there is to work with in terms of material options will change form one material to the next. Also the way that options work will change form material to material as well including this map option as it will not work the same way as with the Basic Material in other mesh material options such as the Phong material. Be sore to read on with my Mesh Materials section and the textures section in this post for more details with this.
 
 ## 2 - Overview of Mesh Material Options
 
