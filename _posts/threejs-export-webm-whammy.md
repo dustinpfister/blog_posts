@@ -5,15 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2023-08-04 09:38:52
-version: 1.33
+updated: 2023-08-04 09:47:39
+version: 1.34
 ---
 
 When I am playing around with [threejs](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. 
 
 Now there may be a great number of ways to go about doing this sort of thing actually on [stack overflow I saw an example the makes use of some built in browser features](https://stackoverflow.com/questions/50681683/how-to-save-canvas-animation-as-gif-or-webm) as a way to go about capturing video from a canvas element on the fly. However what I have in mind is something where I can create a video on a frame by frame basis rather than recording for an amount of time which is not what I am after here.
 
-To help with this I have come across a project called [whammy](https://github.com/antimatter15/whammy) that seems to work okay for the sake of making a webm file on a frame by frame basis, or at least it did until code breaking changes where made in chrome. I am not sure what to do with this post when it comes to additional future edits at this point. However every now and then I do come around to this topic and will likely expand on this when I find other ways to export other than what I have worked out here that no longer works on late versions of chrome.
+To help with this I have come across a project called [whammy](https://github.com/antimatter15/whammy) that seems to work okay for the sake of making a webm file on a frame by frame basis, or at least it did until code breaking changes where made in chrome. Also last time I checked the project is very much dead as no new commits where made sense 2018. I am not sure what to do with this post when it comes to additional future edits at this point. However every now and then I do come around to this topic and will likely expand on this when I find other ways to export other than what I have worked out here that no longer works on late versions of chrome.
 
 <!-- more -->
 
