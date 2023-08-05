@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-04 08:36:23
-version: 1.90
+updated: 2023-08-05 15:57:28
+version: 1.91
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -1357,6 +1357,117 @@ scene.add(mesh);
 camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
+```
+
+### 8.3 - Texture data can be baked into the object format also by way of data urls
+
+Another great thing that I like about the Object Loader over that of the material loader is that I can bake image data directly into the JSON data by way of data URL values. It is possible to get textures working with the material loader, but as one would expect it involves loading the images, and then creating a special object where each key of the textures object is the value to set for each material option key that is to use the texture in the JSON data. This way I can just bake everything that has to do with a single object, into just one file. Not just the material, and the material option values, but also all the additional values of the texture objects, and with that the image data used for each texture object.
+
+Again with the material loader if I use the texture loader that will just create a new texture with the image that UI load. If for example I need to load a texture with all kinds of custom values for the image I can not do that with the texture loader. I am sure that there are ways of dealing with these issues and also there are things about going that way that will help to keep me from repeating data, but still over all this just makes things a lot easier.
+
+For example everything that I want for a single object can be baked into a json file like this:
+
+```json
+{
+  "metadata":{
+    "version":4.5,
+    "type":"Object",
+    "generator": "Object3D.toJSON"
+   },
+  "geometries":[
+    {
+      "uuid":"2edf3239-f3e2-42f1-b5f1-4d73f83ec1fe",
+      "type":"BoxGeometry",
+      "width":1,
+      "height":1,
+      "depth":1,
+      "widthSegments":1,
+      "heightSegments":1,
+      "depthSegments":1
+    }
+  ],
+  "materials":[
+    {
+      "uuid":"20a1a759-2af8-4ac7-8475-531cd36230b2",
+      "type":"MeshBasicMaterial",
+      "color":16777215,
+      "map":"09e8941e-b83b-478e-976b-7b3c53ee8298",
+      "reflectivity":1,
+      "refractionRatio":0.98,
+      "depthFunc":3,
+      "depthTest":true,
+      "depthWrite":true,
+      "colorWrite":true,
+      "stencilWrite":false,
+      "stencilWriteMask":255,
+      "stencilFunc":519,
+      "stencilRef":0,
+      "stencilFuncMask":255,
+      "stencilFail":7680,
+      "stencilZFail":7680,
+      "stencilZPass":7680
+    }
+  ],
+  "textures":[
+    {
+      "uuid":"09e8941e-b83b-478e-976b-7b3c53ee8298",
+      "name":"",
+      "image":"234825b5-4883-4f89-bc44-96428108b48b",
+      "mapping":300,
+      "repeat":[1,1],
+      "offset":[0,0],
+      "center":[0,0],
+      "rotation":0,
+      "wrap":[1001,1001],
+      "format":1023,
+      "type":1009,
+      "encoding":3000,
+      "minFilter":1008,
+      "magFilter":1003,
+      "anisotropy":1,
+      "flipY":true,
+      "premultiplyAlpha":false,
+      "unpackAlignment":4
+    }
+  ],
+  "images":[
+    {
+      "uuid":"234825b5-4883-4f89-bc44-96428108b48b",
+      "url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAACJJREFUGFdjZPgPhHgAI1gBI1AFujKoGEQBQRPooIASRwIAF0kT+UaQEawAAAAASUVORK5CYII="
+    }
+  ],
+  "object":{
+    "uuid":"e5b75f7f-e1de-41f1-bff5-1d4ef7b5c944",
+    "type":"Mesh",
+    "layers":1,
+    "matrix":[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+    "geometry":"2edf3239-f3e2-42f1-b5f1-4d73f83ec1fe",
+    "material":"20a1a759-2af8-4ac7-8475-531cd36230b2"
+  }
+}
+```
+
+Then I can load that file with the load method of the THREE.ObjectLoader class.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// LOAD JSON FILE - that is in the object format with geometry, material, and texture
+// ---------- ----------
+const loader = new THREE.ObjectLoader();
+loader.load('./demo.json', ( mesh ) => {
+    scene.add(mesh)
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    renderer.render(scene, camera);
+});
 ```
 
 ## 9 - Textures
