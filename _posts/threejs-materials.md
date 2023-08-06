@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-06 14:53:52
-version: 1.92
+updated: 2023-08-06 15:20:14
+version: 1.93
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of solid mesh objects. There is also the shader material that is a good way to get started with raw GLSL code that is used to author custom shaders, and thus do just about everything g that can be done with materials in a web browser by way of WebGL.
@@ -401,6 +401,64 @@ renderer.render(scene, camera); // render
 ```
 
 Although a demo like this might be a good start there is a whole lot more to be aware of when it comes to textures, features of geometry objects such as the UV attribute, and of course a massive amount of things to be aware of when it comes to material options and textures. What there is to work with in terms of material options will change form one material to the next. Also the way that options work will change form material to material as well including this map option as it will not work the same way as with the Basic Material in other mesh material options such as the Phong material. Be sore to read on with my Mesh Materials section and the textures section in this post for more details with this.
+
+## 1.8 - Common Base Materials class features
+
+I have read a lot of posts on materials on materials in threejs over the years, and continue to do so, and one thing that I see authors failing to do over and over again is to emphasize the importance of being aware of what there is to work with in the common base materials class. All mesh materials, as well as the various other materials that are used with other display objects all extent from the common material class. There is a whole lot to be aware of just in the base class alone, as such I have a whole section in this post on the subjects of the Material class.
+
+For this demo alone though in the basic section of this post I will just be going over a quick example of the vertex colors feature of the base material class. This is just simply a Boolean value that can be set for any material that will cause the  material to use vertex coloring. Now this feature might not work for all materials mind you as just because something is a base materials class feature that does not mean that it will work in all materials. For this vertex color option for example it will not work with materials such as the Mesh Normal Material for example. Never the less this is very much a base material class feature that will work in most materials.
+
+This vertex coloring is  a way to show depth by way of an additional buffer attribute that can  be added to a geometry that contains color channel data for each point in the position attribute of the geometry that is used.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// MATERIALS
+//-------- ----------
+const material_mesh = new THREE.MeshBasicMaterial({ vertexColors: true });
+const material_line = new THREE.LineBasicMaterial({ vertexColors: true, linewidth: 2});
+const material_points = new THREE.PointsMaterial({ vertexColors: true, size: 0.25 });
+//-------- ----------
+// GEOMETRY - with color
+//-------- ----------
+const geometry = new THREE.SphereGeometry( 1, 16, 16 );
+const len = geometry.getAttribute('position').count;
+const color_array = [];
+let i = 0;
+while(i < len){
+   const a_len = i / len;
+   color_array.push(a_len, 0,  0 );
+   i += 1;
+}
+const color_attribute = new THREE.BufferAttribute(new Float32Array( color_array ), 3);
+geometry.setAttribute('color', color_attribute);
+//-------- ----------
+// OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const points = new THREE.Points( geometry, material_points );
+points.position.x = 2;
+scene.add(points);
+const line = new THREE.Line( geometry, material_line );
+line.position.x = 0;
+scene.add(line);
+const mesh = new THREE.Mesh( geometry, material_mesh );
+mesh.position.x = -2;
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 ## 2 - Overview of Mesh Material Options
 
