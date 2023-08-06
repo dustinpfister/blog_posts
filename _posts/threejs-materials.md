@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-06 15:20:14
-version: 1.93
+updated: 2023-08-06 15:28:06
+version: 1.94
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of solid mesh objects. There is also the shader material that is a good way to get started with raw GLSL code that is used to author custom shaders, and thus do just about everything g that can be done with materials in a web browser by way of WebGL.
@@ -2265,6 +2265,6 @@ renderer.render(scene, camera);
 
 ## Conclusion
 
-That covers just about everything, but I would still not go so far as to say that this post is truly comprehensive on the subject of materials in threejs. Many of these sections could still use further expansion and revilement. Also when it comes to getting into the subject of the shader material and with that what there is to work with in the shader library the sky is kind of the limit it would seem. There are all the little chunks of the shader lib to use to help add various common parts of materials to a custom material. Also there is the subject of using the Raw shader material and with that using raw GLSL code to create a material from the ground up. So yes there is a whole other language to learn when it comes to getting proficient with that.
+That covers just about everything when it comes to materials, but I would still not go so far as to say that this post is truly comprehensive on the subject of materials in threejs. Many of these sections could still use further expansion and refinement. Also when it comes to getting into the subject of the shader material, and with that what there is to work with in the shader library, the sky might very will be the limit with materials. There are all the little chunks of the shader lib to use to help add various common parts of materials to a custom material. Also there is the subject of using the Raw shader material and with that using raw GLSL code to create a material from the ground up. So yes there is a whole other language to learn when it comes to getting truly proficient with materials in threejs. I have been at this for years off and on and I am still just scratching the surface on this subject alone with threejs, and there is still every other little part of the library to look into.
 
-This is one of my oldest blog posts on threejs that I have of course edited a number of times sense I first started it. I will of course come around to edit this post some more now and then in an effort to try my best to really do this subject justice. 
+This is one of my oldest blog posts on threejs that I have of course edited a number of times sense I first started it. I will of course come around to edit this post some more now and then in an effort to try my best to really do this subject justice.
