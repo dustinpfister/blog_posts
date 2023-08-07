@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-07 12:40:21
-version: 1.95
+updated: 2023-08-07 13:43:14
+version: 1.96
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of solid mesh objects. There is also the shader material that is a good way to get started with raw GLSL code that is used to author custom shaders, and thus do just about everything g that can be done with materials in a web browser by way of WebGL.
@@ -2035,7 +2035,7 @@ renderer.render(scene, camera);
 
 ## 12 - Using Arrays of Materials and the Groups property of Buffer Geometry Objects
 
-For this section I will not be getting more into the subject of using an [array of materials](/2018/05/14/threejs-mesh-material-index/) rather than just one for a display object. When it comes to older versions of threejs this would involve the use of the now defunct face3 class. I will not be getting into the use of that class of course, however I am still seeing a lot of outdated threejs source code examples pop up in Google search when it comes to this so be aware of that when looking elsewhere with this.
+For this section I will now be getting more into the subject of using an [array of materials](/2018/05/14/threejs-mesh-material-index/) rather than just one for a display object. When it comes to older versions of threejs this would involve the use of the now defunct face3 class. I will not be getting into the use of that class of course, however I am still seeing a lot of outdated threejs source code examples pop up in Google search when it comes to this so be aware of that when looking elsewhere when it comes to this topic. I have my own posts on face3 mind you, but the difference is that I keep up with editing, and thus inform people visiting that it is an outdated feature of the library.
 
 The general process of doing this will not always just involving passing an array of materials and then moving on with ones life. If you are lucky the groups property is all ready set up just the way that you want it and maybe that will in fact actually be the case. However more often that not one will need to update, or even create to begin with the groups property of the geometry that is used with the over all display object.
 
@@ -2096,6 +2096,12 @@ loop();
 There are a lot of other ways of branching off from this point such as using more than six materials and what one might want to do with that kind of situation. There is updating the material index values over time to switch to whatever material I want to use for whatever side at any given moment. However there is also increasing the point density of the box geometry and creating a whole new groups array from the ground up by leaning how to use the various buffer geometry class methods that there are to work with when it comes to this sort of thing.
 
 ### 12.2 - Material for each side of a plane, getting started with the add group method
+
+So when it comes to working with a geometry in which the groups property is worked out for me to begin with, often I might just need to give an array of materials that I want to use and that is it. In other cases I might need to loop over the array of group objects and adjust the material index values, but not mess with anything that has to do with the start and count properties of these group objects.
+
+However often I might need to adjust things with the start and count values of these kinds of objects. Of course this will be the case when working out custom geometry in the form of an external asset, or a custom geometry constructor that extends from one of the buffer geometry classes. As far as we are concerned with this demo at least here I am just starting with a plane geometry which I would say is a good way to get started with this aspect of buffer geometry objects, and with that arrays of materials Unlike the box geometry the plane geometry does not have a group property set up to begin with, it must be added to the geometry by making use of the add group method of the buffer geometry class.
+
+One thing to watch out for here is to check if the geometry that is being used is an indexed geometry or not. This is of course a whole other ball of wax when it comes to overlap between materials, geometry objects, and the object3d class based mesh objects that wrap up everything together. However getting back to the matter at hand here at least, by default the geometry that is returned after calling the plane geometry constructor is an indexed geometry. So then I will want to look at the index of the geometry for values that will help me to know what the range is with the start, and count values to use when calling the add group method. When it comes to non indexed geometry there is just looking at the count of points in the position attribute. I made a helper for this demo that seems to work okay for both cases with plane geometry though. So this is just an For Your information type deal when it comes to dealing with geometry other than than of plane geometry that may or may not be indexed.
 
 ```js
 //-------- ----------
