@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2023-05-08 14:07:58
-version: 1.45
+updated: 2023-08-07 14:53:36
+version: 1.46
 ---
 
 After writing a lot of demos in [threejs](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in threejs, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models in the form of external files. 
@@ -38,7 +38,7 @@ The source code examples that I am writing about in this post can be found in [m
 
 ### Version numbers matter
 
-I also often try to mention that three.js is a project where the version number matters a great deal as code breaking changes are made all the time.  With that said when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91). When it comes to the last time I came around to doing a little editing of this post I was able to still get all these examples to work okay with [r146 as well](https://github.com/mrdoob/three.js/releases/tag/r146).
+I also often try to mention that three.js is a project where the version number matters a great deal as code breaking changes are made all the time.  With that said when I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/releases/tag/r91). When it comes to the last time I came around to doing a little editing of this post I was able to still get all these examples to work okay with [r146 as well](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md).
 
 ## 1 - Basic examples of Groups of Mesh objects in threejs
 
