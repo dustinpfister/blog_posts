@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-06 15:28:06
-version: 1.94
+updated: 2023-08-07 12:40:21
+version: 1.95
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of solid mesh objects. There is also the shader material that is a good way to get started with raw GLSL code that is used to author custom shaders, and thus do just about everything g that can be done with materials in a web browser by way of WebGL.
@@ -2094,6 +2094,61 @@ loop();
 ```
 
 There are a lot of other ways of branching off from this point such as using more than six materials and what one might want to do with that kind of situation. There is updating the material index values over time to switch to whatever material I want to use for whatever side at any given moment. However there is also increasing the point density of the box geometry and creating a whole new groups array from the ground up by leaning how to use the various buffer geometry class methods that there are to work with when it comes to this sort of thing.
+
+### 12.2 - Material for each side of a plane, getting started with the add group method
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) ); 
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER
+//-------- ----------
+const addPlaneGroups = ( geometry ) => {
+    const pos = geometry.getAttribute('position');
+    let count = pos.count;
+    if(geometry.index){
+        count = geometry.index.count;
+    }
+    geometry.addGroup(0, count, 0);
+    geometry.addGroup(0, count, 1);
+};
+//-------- ----------
+// MATERIALS
+//-------- ----------
+const materials = [
+    new THREE.MeshBasicMaterial({ color: 0xff0000, side: THREE.FrontSide }),
+    new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.BackSide })
+];
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.PlaneGeometry(2, 2, 2).toNonIndexed();
+addPlaneGroups(geometry);
+//-------- ----------
+// MESH 
+//-------- ----------
+const mesh = new THREE.Mesh( geometry, materials );
+scene.add(mesh);
+// ---------- ----------
+// LOOP
+// ---------- ----------
+camera.position.set(3, 2, 3);
+camera.lookAt(0, 0, 0);
+const loop = () => {
+    requestAnimationFrame(loop);
+    mesh.rotation.y += Math.PI / 180 * 5;
+    mesh.rotation.y %= Math.PI * 2;
+    renderer.render(scene, camera);
+};
+loop();
+```
 
 ## 13 - Fog and materials
 
