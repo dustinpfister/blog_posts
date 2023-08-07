@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-07 13:43:14
-version: 1.96
+updated: 2023-08-07 14:49:57
+version: 1.97
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of solid mesh objects. There is also the shader material that is a good way to get started with raw GLSL code that is used to author custom shaders, and thus do just about everything g that can be done with materials in a web browser by way of WebGL.
@@ -2222,7 +2222,11 @@ loop();
 
 ## 14 - Shader Materials
 
-First thing is first and that is that chances are what it is that you want to do can be done with one of the built in material options. However there might be a situation here and there where you might want to work out some kind of custom material by writing a little bot of original GLSL code that will then be used for the the vertex for fragment shaders that are needed to [create an instance of the THREE.ShaderMaterial](/2023/01/13/threejs-shader-material/).
+First thing is first and that is that chances are what it is that you want to do can be done with one of the built in material options. If you think that what you want to do can only be done with a custom shader, thing again, take a step back, and make sure because this is where things really start to get time consuming when it comes to materials.
+
+After looking over everything there is to work with the built in materials then there might be a situation here and there where you might want to work out some kind of custom material by writing a little bit of original GLSL code that will then be used for the the vertex and fragment shaders that are needed to [create an instance of the THREE.ShaderMaterial](/2023/01/13/threejs-shader-material/). This is without queation the best way to get started with this because with the THREE.ShaderMatreial there is the whole of the threejs shader library to work with to make quick work of just adding in certain features of the built in materials such as a diffuse color map just to give one example.
+
+So then there are a number of things that you will need to look into more before even getting started with this, if you are in fact up for the task. With this there is not just looking into what there is to work with in threejs, there is also a whole other language that is used to crate these custom shaders Called GLSL which is short for openGL Shader Language. Mind you that you will not need to write everything from the ground up with GLSL with THREE.ShaderMaterial, but you will still need to lean enough to hack over things a little.
 
 ### 14.1 - Shader Material Hello World
 
