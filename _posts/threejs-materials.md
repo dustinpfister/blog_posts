@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-07 17:50:18
-version: 1.98
+updated: 2023-08-07 17:54:35
+version: 1.99
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
 
 There are materials that will respond to a light source, and then there are materials that will not. When it comes to materials that respond to light some will preform a little better than others, but will result in a less than desirable look compared to others that are a little more resource heavy but deliver in the looks department. When it comes to mesh materials that will not respond to a light source there are materials like the basic mesh material that is a good choice when it comes to just having a simple color map for the mesh. There are a few other materials that render textures based on the state of the normal attribute of the geometry used, or based on the depth in terms of a distance from the camera.
 
-There is a whole lot to take in when it comes to materials, so this post will serve as a general overview of the mesh materials in general in threejs then, not just as a starting point, but also as a fairly comprehensive post on the subject. However this will not be a truly comprehensive post on materials alone in threejs mind you as once one gets into custom shaders you will start to understand that even this post is not a even a drop in the bucket.
+There is a whole lot to take in when it comes to materials, so this post will serve as a general overview of the materials in general in threejs then, not just as a starting point, but also as a fairly comprehensive post on the subject. However this will not be a truly comprehensive post on materials alone in threejs mind you as once one gets into custom shaders you will start to understand that even this post is not a even a drop in the bucket with this subject. As I have stated, just above there is the matter of GLSL code which is short for openGL Shader Language, so in other worlds when it comes to getting into THREE.ShaderMaterial, and THREE.RawShaderMaterial there is a whole language to learn.
 
 I will start out this post with a whole lot of basic examples that at least touch base on various materials related subjects to be begin with. For example there is just simply having a simple “I am bender, please insert girder” type example of just simply adding texture to a material, but then also have a whole section in this post on just the subject of textures alone with materials.
 
