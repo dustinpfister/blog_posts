@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-08 12:45:51
-version: 1.101
+updated: 2023-08-08 13:26:47
+version: 1.102
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -2396,11 +2396,15 @@ renderer.setSize(640, 480, false);
 // SHADER MATERIAL
 // ---------- ----------
 const material1 = new THREE.ShaderMaterial({
+    uniforms: {
+        intensity: { value: 3.0 }
+    },
     vertexShader: `
+        uniform float intensity;
         varying vec3 v_color;
         void main() {
             gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-            v_color = position * 2.00;
+            v_color = position * intensity;
         }`,
     fragmentShader: `
         varying vec3 v_color;
@@ -2419,7 +2423,18 @@ scene.add(mesh1);
 // ---------- ----------
 camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
-renderer.render(scene, camera);
+let frame = 0;
+const frameMax = 900;
+const loop = () => {
+    const a_frame = frame / frameMax;
+    a_inten = Math.sin( Math.PI * (a_frame * 9 % 1) );
+    requestAnimationFrame(loop);
+    material1.uniforms.intensity.value = 1 + (1 + 7 * a_frame) * a_inten;
+    renderer.render(scene, camera);
+    frame += 1;
+    frame %= frameMax;
+};
+loop();
 ```
 
 ## Conclusion
