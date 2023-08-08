@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-07 17:54:35
-version: 1.99
+updated: 2023-08-08 09:49:55
+version: 1.100
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -15,7 +15,7 @@ There are materials that will respond to a light source, and then there are mate
 
 There is a whole lot to take in when it comes to materials, so this post will serve as a general overview of the materials in general in threejs then, not just as a starting point, but also as a fairly comprehensive post on the subject. However this will not be a truly comprehensive post on materials alone in threejs mind you as once one gets into custom shaders you will start to understand that even this post is not a even a drop in the bucket with this subject. As I have stated, just above there is the matter of GLSL code which is short for openGL Shader Language, so in other worlds when it comes to getting into THREE.ShaderMaterial, and THREE.RawShaderMaterial there is a whole language to learn.
 
-I will start out this post with a whole lot of basic examples that at least touch base on various materials related subjects to be begin with. For example there is just simply having a simple “I am bender, please insert girder” type example of just simply adding texture to a material, but then also have a whole section in this post on just the subject of textures alone with materials.
+I will start out this post with a whole lot of basic examples that at least touch base on various materials related subjects to be begin with. For example there is just simply having a simple \"I am bender, please insert girder\" type example of just simply adding texture to a material, but then also have a whole section in this post on just the subject of textures alone with materials.
 
 <!-- more -->
 
@@ -24,25 +24,32 @@ I will start out this post with a whole lot of basic examples that at least touc
 
 ## Materials in threejs and what to know first
 
-This is not my [getting started post on threejs](/2018/04/04/threejs-getting-started/), if you are new to threejs you might choose to start with a post in which the basics of the library are covered. I assume you have basic knowledge of how to make a threejs project, and now only seek to have a deeper understanding of materials to work with when it comes to creating mesh objects. Also even if you have some experience with threejs there is a whole lot of other topics that branch off from the use of materials of course. So in this section I will be writing about a few things that you might want to read up more on regardless of experience.
+This is not my [getting started post on threejs](/2018/04/04/threejs-getting-started/), if you are new to threejs you might choose to start with a post in which the basics of the library are covered. I assume you have basic knowledge of how to make a threejs project, and now only seek to have a deeper understanding of materials to work with when it comes to creating mesh objects. Also even if you have some experience with threejs there is a whole lot of other topics that branch off from the use of materials of course, much of which I will at least touch base on in this post. Still in this section I will be writing about a few things that you might want to read up more on regardless of experience, before reading this post in part or full.
 
 ### The color class, and the color and emissive options of materials
 
 The [Color class](/2021/05/03/threejs-color) can prove to be useful for creating color values for the various material options that expect a color for the value. Also it is a helpful tool for working with color in general. For example it can be used in the process of creating a color from some expressions that compute values for each color channel and then the get style method can be used to get a string values that can be used to set the fill or stroke style when drawing to a canvas element
 
-Speaking of color many materials have a way to set a color option for the material, but how this works will change a little from one material to another. For example the basic material will not do anything with light, so when a solid color is set for the basic material that will just be the solid color for all the faces of the geometry used in the mesh. So then one might assume that will be the case in all other materials, but that is not true. The color property in the standard material is more or less the same thing, but it works in conjunction with what is going on when it comes to light in a scene. So if I set a solid color for an instance of a standard material, but do not add light to a scene, then I will not see anything. So when it comes to the standard material there is another property that comes into play called the emissive property. It is this emissive property that I use to set a color that will always show up not matter what when it comes to what might be going on with light.
+Speaking of color many materials have a way to set a color option for the material, but how this works will change a little from one material to another. For example the basic material will not do anything with light, so when a solid color is set for the basic material that will just be the solid color for all the faces of the geometry used in the mesh. This might lead one to assume that will be the case in all other materials, but that is not true. The color property in the standard material is more or less the same thing, but it works in conjunction with what is going on when it comes to light in a scene. So if I set a solid color for an instance of a standard material, but do not add light to a scene, then I will not see anything. So when it comes to the standard material there is another property that comes into play called the emissive property. It is this emissive property that I use to set a color that will always show up not matter what when it comes to what might be going on with light.
 
 ### Lots of overlap with Materials and Geometry
 
-There is a lot of overlap between materials and geometry of course so you might want to read more on the [subject of geometry in general](/2021/04/22/threejs-buffer-geometry/) then. For example certain features of materials will not work at all of corresponding attributes of the geometry are not there such as the Vertex Colors options of the material begin set to true not working because there is no color attribute in the geometry. Speaking of buffer geometry attributes it might not be such a bad idea to look into what the position, normal, and [uv](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes of a geometry are if you have not done so at this time.
+There is a lot of overlap between materials and geometry of course so you might want to read more on the [subject of geometry in general](/2021/04/22/threejs-buffer-geometry/) then. For example certain features of materials will not work at all if corresponding attributes of the geometry are not there such as the Vertex Colors options of the base material class which will not work if there is no color attribute in the geometry.
+
+Speaking of buffer geometry attributes it might not be such a bad idea to look into what the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/), [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals), and [uv](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes of a geometry are if you have not done so at this time.
 
 ### Source is also on Github
 
-The source for these examples is [also on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-materials) in my test threejs repo. This is also where I place all the source code that I work out for my many [other blog posts on various threejs topics](/categories/three-js/).
+The source for these examples is [also on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-materials) in my test threejs repo. In the specific folder for this post I also have additional notes when it comes to future edits, as well as links to additional resources and so forth. 
+
+
+This test threejs repo is also where I place all the source code that I work out for my many [other blog posts on various threejs topics](/categories/three-js/) as well.
 
 ### Version number matters with three.js
 
-Threejs is a project in which the version number matters a whole lot as older posts on threejs often contain examples that will break on newer revisions and vise versa. When I first started writing this post I was using [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91). However the last time I came around to edit this post I updated all of the demos to what I have layed down for my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). This means that for the demos in this post I am still using plain javaScript script tags over that of modules type script tags. However this will be the last revision in which I will be doing that. There are a whole lot of code breaking changes up ahead that I will not be getting into detail about here. However I will say that it is as always very important to know what revision you are using, and also what revision an author of content might have used when writing a post such as this.
+Threejs is a project in which the version number matters a whole lot as older posts on threejs often contain examples that will break on newer revisions and vise versa. When I first started writing this post I was using [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91). However the last time I came around to edit this post I updated all of the demos to what I have layed down for my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). This means that for the demos in this post I am still using plain javaScript script tags over that of modules type script tags. 
+
+However r146 will be the last revision in which I will be using plain text/javaScript mime type script tags as future code style rules will observe the use of module type script tags. There are a whole lot of code breaking changes up ahead that I will not be getting into detail about here. However I will say that it is as always very important to know what revision you are using, and also what revision an author of content might have used when writing a post such as this.
 
 
 ## 1 - Basic getting started type exmaples of matreials
