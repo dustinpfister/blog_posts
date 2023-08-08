@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-08 13:26:47
-version: 1.102
+updated: 2023-08-08 14:59:56
+version: 1.103
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -19,12 +19,15 @@ I will start out this post with a whole lot of basic examples that at least touc
 
 <!-- more -->
 
-<iframe class="youtube_video" src="https://www.youtube.com/embed/EouYzHldZd8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="youtube_video" src="https://www.youtube.com/embed/J7iGSqVXyzM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## Materials in threejs and what to know first
 
 This is not my [getting started post on threejs](/2018/04/04/threejs-getting-started/), if you are new to threejs you might choose to start with a post in which the basics of the library are covered. I assume you have basic knowledge of how to make a threejs project, and now only seek to have a deeper understanding of materials to work with when it comes to creating mesh objects. Also even if you have some experience with threejs there is a whole lot of other topics that branch off from the use of materials of course, much of which I will at least touch base on in this post. Still in this section I will be writing about a few things that you might want to read up more on regardless of experience, before reading this post in part or full.
+
+<iframe class="youtube_video" src="https://www.youtube.com/embed/EouYzHldZd8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ### The color class, and the color and emissive options of materials
 
