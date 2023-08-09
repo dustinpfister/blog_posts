@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-08 14:59:56
-version: 1.103
+updated: 2023-08-09 06:21:40
+version: 1.104
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -57,13 +57,13 @@ However r146 will be the last revision in which I will be using plain text/javaS
 
 ## 1 - Basic getting started type exmaples of matreials
 
-There is a whole lot to say about materials in general, so this is going to be a very lengthy post. However there is just going over a few very basic examples of materials that should help to address most general concerns when first getting started with threejs. The main focus in this post then will just be one the fact that there is more than one kind of material for more than one kind of object. That is that there are mesh objects, and other options like lines, and that any one material will have its own options, as well a common options that are shared across all materials.
+There is a whole lot to say about materials in general, so this is going to be a very lengthy post. However there is just going over a few very basic examples of materials that should help to address most general concerns when first getting started with materials. There are for example a number of options for mesh materials that will help to show depth right away without getting too in depth with lights and various more advanced options. However there is still getting into some of those more advanced options just in a simple striped down way. There are also a lot of things that I would like to at least touch base on here that I will then expand more with in later more advanced sections in this post.
 
 ### 1.1 - First Things First, A Basic Mesh example
 
-One of the best ways to get started is to just create a box geometry to create a mesh object. When it comes to a mesh material options that will help show some depth without a light source a good one for that would be the mesh normal material. I will be going over what all the mesh material options are in a section later in this post, but for now there is just getting that very first simple demo up and working.
+One of the best ways to get started is to just create a geometry with one of the built in geometry class constructor functions such as THREE.BoxGeometry to create the geometry for a mesh object. When it comes to a mesh material options that will help show some depth without a light source a good one for that would be the mesh normal material. I will be going over what all the mesh material options are in a section later in this post, but for now there is just getting this very first simple demo up and working.
 
-So after setting up the usual collection of objects when it comes to things like the main scene object, camera, and renderer I then create an instance of the mesh normal material. When doing so I am not going to bother with any options at all. There are of course options for the mesh normal material, as well as base material class options as well as a whole lot about geometry as well. However much of that will have to come up in the more advanced sections of this post.
+So after setting up the usual collection of objects when it comes to things like the main scene object, camera, and renderer I then create an instance of the mesh normal material. When doing so I am not going to bother with any options at all. There are of course options for the mesh normal material, as well as base material class options as well as a whole lot about geometry as well. However much of that will have to come up in later examples in this section and post over all.
 
 ```js
 //-------- ----------
@@ -94,9 +94,9 @@ renderer.render(scene, camera);
 
 ### 1.2 - More than one kind of object, so more than one kind of material
 
-Most of the time I do very much use mesh objects, but there are also line and point objects as well that can be used as a way to display some content. For this example then I am creating a mesh and using the basic material for the mesh. This will often result in just a solid mass of color in the canvas when just used with the color option and nothing else. There is of course using a texture as a way to show some depth with this kind of material, but another way would be to add points, lines or both in this case as child objects of the mesh.
+Most of the time I do very much use mesh objects, but there are also line and point objects as well that can be used as a way to display some content. For this example then I am creating a mesh and using the basic material for the mesh. This will often result in just a solid mass of color in the canvas when just used with the color option and nothing else. There are ways of dealing with this such as using a texture as a way to show some depth with this kind of material, but another way would be to add points, lines or both in this case as child objects of the mesh which is the main focus of this demo.
 
-When it comes to using a line I must use the LineBasicMaterial or the LineBasicMaterial. When it comes to points there is just the point material alone that can be used to add style to these kinds of objects. There are some options that are just for each kind of material alone. For example the size option is just for points, and the lineWidth options is just for lines. However there are common options as well such as color in this example.
+When it comes to using a line I must use the LineBasicMaterial or the LineBasicMaterial. When it comes to points there is just the point material alone that can be used to add style to these kinds of objects. There are some options that are just for each kind of material alone. For example the size option is just for points, and the lineWidth options is just for lines. However there are common options as well such as color in this example that are gained from the common base material class.
 
 ```js
 //-------- ----------
@@ -185,7 +185,9 @@ renderer.render(scene, camera);
 
 ### 1.4 - Arrays of materials
 
-One of the many subjects that I see being overlooked in other blog posts on materials in general in threejs is the subject of using an array of materials. This subject alone can quickly turn into a time consuming black hole if one lets it become that and I have many times off an on over the years. There is a lot of overlap with this subject as there is not just simply passing an array of materials but also adding or chaining the state of the groups property of the geometry. For the sake of this basic section demo though there is just using the box geometry constructor as this has a groups property set up to begin with. Also on top of that the groups are set up to make use of six materials one for each side of the box which would often be the case when doing this sort of thing. So to get started with this as least one will just need to pass an array of six materials rather than just one when making the mesh object that will use the box geometry.
+One of the many subjects that I see being overlooked in other blog posts on materials in general is the subject of using an array of materials rather than just one for a display object. This subject alone can quickly turn into a time consuming black hole if one lets it become that and I have many times done just that over the years. There is a lot of overlap with this subject as there is not just simply passing an array of materials but also adding or changing the state of the groups property of the geometry.
+
+For the sake of this basic section demo though there is just using the box geometry constructor as this has a groups property set up to begin with. Also on top of that the groups are set up to make use of six materials one for each side of the box which would often be the case when doing this sort of thing. So to get started with this as least one will just need to pass an array of six materials rather than just one when making the mesh object that will use the box geometry.
 
 ```js
 //-------- ----------
@@ -220,7 +222,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-Do not let this fool you though if you thing that this is how to add texture to 3d objects. The first and foremost way to do this would typically be to use just one material, with one texture, and a well worked out uv attributive for the geometry. However some times there are in fact situations in which it would be a good idea to use more than one material for a mesh, and this is how to get started with it. Once again the groups are set up to begin with in this demo though, so when it comes to working on an asset of some kind one might need to work out the state of the groups array.
+Do not let this fool you though if you thing that this is how to add texture to 3d objects. The first and foremost way to do this would typically be to use just one material, with one texture, and a well worked out uv attributive for the geometry. However some times there are in fact situations in which it would be a good idea to use more than one material, and this is how to get started with it. Once again the groups are set up to begin with in this demo though, so when it comes to working on an asset of some kind one might need to work out the state of the groups array. I have a more advanced section in this post where I get into this subject more in depth, with demos that make use of the add group method of the buffer geometry class for example.
 
 ### 1.5 - UV mapping and textures
 
@@ -1295,7 +1297,7 @@ renderer.render(scene, camera);
 
 ## 7 - Blending options 
 
-I covered one demo of the blending option in the above section in which I go over many of the features of the main material class. However I would say that the blending option does very much deserve a section of its own.
+I covered one demo of the blending option in the above section in which I go over many of the features of the main material class. However I would say that the blending option does very much deserve a section of its own. So I will at least start this section to say the least, and then expand more with additional future edits as I look into this subject about threejs materials more so.
 
 ### 7.1 - No Blending compared to default normal blending
 
@@ -2272,7 +2274,7 @@ loop();
 
 ## 14 - Shader Materials
 
-First thing is first and that is that chances are what it is that you want to do can be done with one of the built in material options. If you think that what you want to do can only be done with a custom shader, thing again, take a step back, and make sure because this is where things really start to get time consuming when it comes to materials.
+First thing is first and that is that chances are what it is that you want to do can be done with one of the built in material options. If you think that what you want to do can only be done with a custom shader, think again, take a step back, and make sure because this is where things really start to get time consuming when it comes to materials.
 
 After looking over everything there is to work with the built in materials then there might be a situation here and there where you might want to work out some kind of custom material by writing a little bit of original GLSL code that will then be used for the the vertex and fragment shaders that are needed to [create an instance of the THREE.ShaderMaterial](/2023/01/13/threejs-shader-material/). This is without queation the best way to get started with this because with the THREE.ShaderMatreial there is the whole of the threejs shader library to work with to make quick work of just adding in certain features of the built in materials such as a diffuse color map just to give one example.
 
