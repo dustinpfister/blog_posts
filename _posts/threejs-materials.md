@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-09 06:21:40
-version: 1.104
+updated: 2023-08-09 06:30:50
+version: 1.105
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -514,15 +514,17 @@ renderer.render(scene, camera);
 
 ## 2 - Overview of Mesh Material Options
 
-There might be points and lines, but for the most part just about every threejs project will make use of Mesh objects, or a similar kind of objects that will also make use of one of the Mesh Material Options. There is a whole lot to be aware of with these so it is called for to run over each of them and at least write a thing or two about that each material is good for and why.
+There might be points and lines, but for the most part just about every threejs project will make use of Mesh objects, or a similar kind of object that will also make use of one of the Mesh Material Options. There is a whole lot to be aware of with these so it is called for to run over each of them and at least write a thing or two about that each material is good for and why.
 
-Keep in mind that if you feel that you are getting overwhelmed with all of this the most important thing is application. If you want to go with a certain style the involves low poly models, a simple color map, and not bother at all with light in any capacity then just going with the MeshBasicMaterial might prove to work okay. Things just get a little complex when you start pulling light into the mix, or you need to do some kind of weird custom rendering to which even none of these might work okay and as such you might need to go with the shader material and some custom GLSL code. However getting into that is a whole other matter for now.. 
+Keep in mind that if you feel that you are getting overwhelmed with all of this the most important thing is application. If you want to go with a certain style the involves low poly models, a simple color map, and not bother at all with light in any capacity then just going with the MeshBasicMaterial might prove to work okay. Things just get a little complex when you start pulling light into the mix, or you need to do some kind of weird custom rendering to which even none of these might work okay and as such you might need to go with the shader material and some custom GLSL code. However getting into that is a matter for a later more advanced section in this post.
 
 ### 2.1 - Mesh Basic Material
 
-The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the kind of material that I would use if I do not aim to do anything special with light. The basic material will not respond to any light sources, and the faces will be filled with a solid color if it is just the color option alone that will be used with it. However there are a lot of options whe it comes to doing things to show some depth, one option would be to create a texture by one means or another and use that with the map option. Another option would be to add a color attribute to the geometry that is used, and then set the vertex color boolean of the material to true. Do not let the name fool you with this one, the Basic material is not so basic, you still have everything that there is to work with in the common base material class, as well as a lot of features with the Basic material itself.
+The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the kind of material that I would use if I do not aim to do anything special with light. The basic material will not respond to any light sources, and the faces will be filled with a solid color if it is just the color option alone that will be used with it. However there are a lot of options when it comes to doing things to show some depth, one option would be to create a texture by one means or another and use that with the map option. Another option would be to add a color attribute to the geometry that is used, and then set the vertex color boolean of the material to true.
 
-Yet another option for seeing some depth would be involve adding a child object of some kind such as lines that use a geometry that is created by passing the geometry of the parent object into the edge geometry constructor. If using textures to show depth there is then doing some shading when drawing the textures themselves that are to be used with the geometry that is worked out. With this said this is often the typical use case when it comes to using this material in an actual project.
+Do not let the name fool you with this one, as that is a mistake I see other authors of content like this make over and over again. The Basic material is not so basic, you still have everything that there is to work with in the common base material class, as well as a lot of features with the Basic material itself. Not to mention that there is also adding an additional child object of some kind such as lines that use a geometry that is created by passing the geometry of the parent object into the edge geometry constructor. Then adding the line object as a child of the mesh object as yet another way to show some depth as I covered back in the basic section of this post.
+
+If using textures to show depth there is then doing some shading when drawing the textures themselves that are to be used with the geometry that is worked out. With this said this is often the typical use case when it comes to using this material in an actual project.
 
 ```js
 //-------- ----------
