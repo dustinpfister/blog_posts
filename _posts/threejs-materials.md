@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-09 06:30:50
-version: 1.105
+updated: 2023-08-09 08:09:30
+version: 1.106
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -949,8 +949,11 @@ renderer.render(scene, camera);
 
 ## 4 - Lines Material
 
-Another object to work with that is an alternative to a mesh object would be [THREE.Line](/2018/04/19/threejs-line/) or THREE.LineSegments. There are two material options to choose from when it comes to using these kinds of objects which include THREE.LineBasicMaterial and THREE.LineDashedMaterial. They work just like mesh objects in the sense that the first argument that is passed when making one is a geometry. Just like that of THREE.Points though it is just the position attribute of the geometry of these that matter. This is a good reason why as this the use of these kinds of objects help to simplify the process of creating custom geometry. However it is also one of the best reasons why not to use them as well. If you care about how the final product looks you might want to look into [curves and the tube geometry](/2023/06/02/threejs-tube-geometry/) class as an tentative to the use of these kinds of objects and materials.
+Another object to work with that is an alternative to a mesh object would be [THREE.Line](/2018/04/19/threejs-line/) or THREE.LineSegments. There are two material options to choose from when it comes to using these kinds of objects which include THREE.LineBasicMaterial and THREE.LineDashedMaterial. They work just like mesh objects in the sense that the first argument that is passed when making one is a geometry. Just like that of THREE.Points though it is just the position attribute of the geometry of these that matter. This is a good reason why as this the use of these kinds of objects help to simplify the process of creating custom geometry. However it is also one of the best reasons why not to use them as well. 
 
+### 4.1 - Using the Edge Geometry constructor and the Line Basic Material
+
+For this demo I am using the Edge Geometry constructor to create a geometry from another geometry made with the box geometry constructor. The end result geometry is then what I am using for the geometry that will be used with THREE.Line. When it comes to materials I am going with the Line Basic Material here, and I am also making use of a few common base material class features as I can also do with mesh and point materials.
 
 ```js
 //-------- ----------
@@ -965,7 +968,6 @@ renderer.setSize(640, 480, false);
 // LINE MATERIAL
 //-------- ----------
 const material = new THREE.LineBasicMaterial({
-    linewidth: 3,
     color: new THREE.Color('lime'),
     transparent: true,
     opacity: 0.25
@@ -985,6 +987,61 @@ camera.position.set(1.5, 1.5, 1.5);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+### 4.2 - Setting the width of lines, and Tube Geometry as a possible alternative
+
+If you care about how the final product looks you might want to look into [curves and the tube geometry](/2023/06/02/threejs-tube-geometry/) class as an alternative to the use of these kinds of objects and materials. Lines and Line materials are okay when I just simply want to draw a line in space and be done with it. However if I care mouse about how the final product looks, and also try to get it to work on a wide range of clients I am generally not going to want to use lines in part because of a problem with line width. There is an option for changing the wide of course, but I have found that it will not work on a lot of clients, however using tube geometry and with that mesh materials will work on these clients of concern.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// MATERIALS
+//-------- ----------
+const material_line = new THREE.LineBasicMaterial({
+    linewidth: 6,
+    color: new THREE.Color('lime'),
+    transparent: true,
+    opacity: 0.25
+});
+const material_mesh = new THREE.MeshNormalMaterial({
+    side: THREE.DoubleSide
+});
+//-------- ----------
+// CURVE
+//-------- ----------
+const v1 = new THREE.Vector3(5, 0, 5);
+const v2 = new THREE.Vector3(5, 0, -5);
+const v_c1 = v1.clone().lerp(v2, 0.5).add( new THREE.Vector3( -10, 0, 0 ) );
+const curve = new THREE.QuadraticBezierCurve3( v1, v_c1, v2);
+//-------- ----------
+// GEOMETRY / LINE
+//-------- ----------
+const geometry_line = new THREE.BufferGeometry().setFromPoints( curve.getPoints( 20 ) );
+const line = new THREE.Line( geometry_line, material_line );
+line.position.x = 0;
+scene.add(line);
+//-------- ----------
+// GEOMETRY / MESH
+//-------- ----------
+const geometry_mesh = new THREE.TubeGeometry( curve, 30, 0.25, 30 );
+const mesh = new THREE.Mesh( geometry_mesh, material_mesh );
+mesh.position.x = -2;
+scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 5, 5);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
 
 ## 5 - The Sprite Material
 
