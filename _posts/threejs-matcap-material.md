@@ -5,14 +5,35 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1066
-updated: 2023-08-10 13:45:58
-version: 1.0
+updated: 2023-08-10 14:41:25
+version: 1.1
 ---
 
 The [Matcap material](https://threejs.org/docs/#api/en/materials/MeshMatcapMaterial) is a mesh material option that can be used to have a model with baked in lighting. The way that this is done is by making use of the main option of interest with this material which I would say is the matcap option. The value of this mapcap option should be a drawing of a shaded sphere and it is this shaded sphere texture that will be used as a way to define the direction and intensity of the light. The texture of the mapcap option can also contain color data, but there is also a map option with this material that can be used as a way to separate these concerns.
 
 <!-- more -->
 
+## The Matcap material and what to know first
+
+This is a post on just one material option for mesh objects in the javaScript library known as threejs. This is not in any way a getting started post on threejs, let alone additional skills that are needed before learning about any javaScript library for that matter. As always with this post on threejs I am taking some liberties and assuming that you know what you should know before hand. However I do still like to use these opening sections of my blog posts on threejs to write about a few topics that you might want to read up on a bit more in any case before reading the rest of this post.
+
+### There is a whole lot more to be aware of when it comes to materials
+
+I am just writing about topics that have to do with just one mesh material option, but there are of course many others. Also there is a whole lot to be aware of when it comes to [materials in general as such you might want to read my deep dive post on that subject](/2018/04/30/threejs-materials). Much of what I get into in detail in that post will of course apply here as well when it comes to things like the various options that can be used to create textures with a little javaScript code, and common base material class features.
+
+### Textures
+
+One can just create an instance of the matcap material without giving any options. However more often than not the matcap option will need to be used, and in order to do that you [need a texture](/2023/06/27/threejs-texture). There are a number of ways to get the kind of texture that is needed such as creating one in a paint program and then loading it in with the texture loader. However there are also a number of options for creating this kind of texture with a little javaScript code by way of [canvas textures](/2018/04/17/threejs-canvas-texture/), and [data textures](/2022/04/15/threejs-data-texture/). In any case there are a lot of common texture class features that might need to be adjusted.
+
+### Source code is up on Github
+
+The source code examples that I write about here can also be found in the [folder that coresponds with this post in my test threejs repo on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-matcap-material). With that said yes this is also where I park source code exmaples, notes, and various other assets for my [many other blog posts that I have wrote on threejs](/categories/three-js/) thus far.
+
+### Version Numbers Matter
+
+When I first wrote this blog post I was using [r152 of threejs](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) when testing out if the demos here work okay on my end at least. Thus I am following the style rules that I have set for myself when it comes to using that revision of threejs. This means that I am now using javaScript module type script tags over that of the default, and with that an import map as well. If you do not know what I am talking about with this I sugest that you take a moment to try to get up to speed with javascript modules as this is the direciton that things are very much going when it comes to future revisions of threejs.
+
+On another note the matcap material was [added to the core of threejs in r97](https://github.com/mrdoob/three.js/releases/tag/r97). So unless you are using what is now a very old revision of threejs the matcap material should be there to work with.
 
 ## 1 - Basic MapCap Material demos
 
