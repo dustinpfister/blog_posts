@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-09 08:09:30
-version: 1.106
+updated: 2023-08-10 12:40:39
+version: 1.107
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -847,6 +847,56 @@ scene.add(dl);
 // RENDER
 //-------- ----------
 camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 2.8 - MatCap Material
+
+The mapcap material is a way to add baked in lighting using what is called a mapcap or lit sphere. Sense it is this mapcap option that is used to add baked in lighting then this is another material that will not work with light sources as this is the way to do about adding depth to the material. This matmap option can also then be used to add color to the material as well, but there is also a map option as well for this one. There is also the color option as always that is set to a default of white which in most cases is what one would want to leave this one on as well.
+
+A good way to get started with this material would be to work out a quick demo involving sphere geometry and with that also a texture that is of a shaded sphere. There is a way to make quick work of this by using canvas textures, and with that the create Radial Gradient method of the 2d canvas drawing API. When using this method as a way to create the texture there is playing around with the values that are used to set the position and radius of the second circle of the radial gradient. It would seem that this is a way to change what the direction and intensity of the light is for this kind of map.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// CANVAS / TEXTURE
+// ---------- ----------
+const canvas = document.createElement('canvas');
+canvas.width = 512;
+canvas.height = 512;
+const ctx = canvas.getContext('2d');
+const r1 = canvas.width / 2;
+const x1 = r1, y1 = r1, x2 = r1 * 1.35, y2 = r1 * 1.10, r2 = r1 / 8;
+const gradient = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2);
+gradient.addColorStop(0, 'black');
+gradient.addColorStop(1, 'white');
+ctx.fillStyle = gradient;
+ctx.fillRect(0,0, canvas.width, canvas.height);
+const texture = new THREE.CanvasTexture( canvas );
+texture.colorSpace = THREE.SRGBColorSpace;
+texture.magFilter = THREE.NearestFilter;
+// ---------- ----------
+// MATERIAL
+// ---------- ----------
+const material = new THREE.MeshMatcapMaterial({ matcap: texture });
+// ---------- ----------
+// GEOMETRY, MESH
+// ---------- ----------
+const geometry = new THREE.SphereGeometry(1, 30, 30);
+const mesh = new THREE.Mesh( geometry, material );
+scene.add(mesh);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
