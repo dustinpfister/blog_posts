@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1066
-updated: 2023-08-10 14:41:25
-version: 1.1
+updated: 2023-08-10 15:14:20
+version: 1.2
 ---
 
 The [Matcap material](https://threejs.org/docs/#api/en/materials/MeshMatcapMaterial) is a mesh material option that can be used to have a model with baked in lighting. The way that this is done is by making use of the main option of interest with this material which I would say is the matcap option. The value of this mapcap option should be a drawing of a shaded sphere and it is this shaded sphere texture that will be used as a way to define the direction and intensity of the light. The texture of the mapcap option can also contain color data, but there is also a map option with this material that can be used as a way to separate these concerns.
@@ -90,6 +90,68 @@ scene.add(mesh);
 // ---------- ----------
 camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 1.2 - Using a data texture
+
+Another way to go about creating the kind of texture needed might involve the use of a data texture to do so. This is another way to create a texture by way of some javaScript code rather than loading an external image asset. This way of doing it involves directly creating color channel data rather than using the 2d drawing context of canvas elements.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+//-------- ----------
+// SCENE CAMERA RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// DATA 
+//-------- ----------
+const size = 32;
+const index_max = 9;
+const v2_center = new THREE.Vector2(size * 0.5, size * 0.5);
+const data_indexed = [ ];
+let i = 0;
+const len = size * size;
+while(i < len){
+    const v2 = new THREE.Vector2( i % size, Math.floor( i / size) );
+    const d = v2.distanceTo( v2_center );
+    const a_dist = d / (size / 2);
+    let color_index = 1 - a_dist;
+    color_index = color_index < 0 ? 0 : color_index;
+    color_index = color_index > index_max ? index_max : color_index;
+    data_indexed.push( color_index );
+    i += 1;
+}
+const data = data_indexed.map( ( color_index ) => {
+    const v = Math.round(color_index / index_max * 255);
+    return [ v, v, v, 255];
+}).flat();
+const texture = new THREE.DataTexture( new Uint8Array( data ), size, size );
+texture.needsUpdate = true;
+//-------- ----------
+// MATCAP MATERIAL
+//-------- ----------
+const material = new THREE.MeshMatcapMaterial({
+    color: 0xffffff,
+    matcap: texture
+});
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10))
+scene.add( new THREE.Mesh( new THREE.SphereGeometry(1, 30, 30), material ) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt(0, -0.10, 0);
 renderer.render(scene, camera);
 ```
 
