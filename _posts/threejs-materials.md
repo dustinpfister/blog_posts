@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-11 14:51:32
-version: 1.108
+updated: 2023-08-11 15:36:27
+version: 1.109
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -182,6 +182,8 @@ camera.position.set(1.25, 1.25, 1.25);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+Although a demo like this might be a good start there is a whole lot more to be aware of when it comes to textures, features of geometry objects such as the UV attribute, and of course a massive amount of things to be aware of when it comes to material options and textures. What there is to work with in terms of material options will change form one material to the next. Also the way that options work will change form material to material as well including this map option as it will not work the same way as with the Basic Material in other mesh material options such as the Phong material. Be sore to read on with my Mesh Materials section and the textures section in this post for more details with this.
 
 ### 1.4 - Arrays of materials
 
@@ -359,9 +361,11 @@ renderer.render(scene, camera);
 
 So this might be a good starting point for light but there is still a whole lot more to read about when it comes to the various material options that a relevant to the use of light. There are a number of various texture map options for example, and also various little details from one mesh object to the next. If you want to read more on this there is the advanced light section later in this post in which I will be expanding more on this topic.
 
-### 1.7 - Getting started with textures and Materials
+### 1.7 - More than one map option when it comes to textures
 
-If you just simply want to get started with textures and materials without having to read about every little fine grain detail to be aware of with this sort of thing that will be what this demo is all about here. There are a whole lot of ways to get started with texture, but I think one of the best ways would be to use the plain old 2d drawing context of canvas elements and then pass the canvas element to the THREE.CanvasTexture constructor as a quick way to create some texture with javaScript code rather than an external image. Once one has a texture a good starting material option might be the map option of the basic material.
+In this section I all ready covered a basic example of getting started with texture. However that demo would just make use of the map option of the mesh basic material. Just using that map option of that material alone is not such a bad idea mind you, that can prove to be a simple way of just getting what I want to do done and then move on with things. However now that I covered a demo in this section that has to do with light I can now write about the emissive map option that is often found in materials that work with light sources. While I am at it I should also maybe make this demo about another typical map option that is found in most materials such as the alpha map option.
+
+You see when using the basic material the texture that I give by way of the map option will just show up, but when I give such a texture to a material like the standard material the map texture will only should up for parts of the mesh where light it hitting the surface. So then this is where the emissive map comes into play, and with that the emissive color option and other standard material options such as emissive intensity. This emissive map will show up regardless of what is going on with light, however I will want to make sure that I am setting the color to something other than the default black color, and I might also want to adjust the intensity when using these kinds of maps. 
 
 ```js
 //-------- ----------
@@ -373,36 +377,69 @@ const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
-// TEXTURE
+// HELPERS
 //-------- ----------
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = 4;
-canvas.height = 4;
-[
+const canvas_texture_grid = ( grid, size = 4, palette = null ) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = size;
+    canvas.height = size;
+    grid.forEach( (a, i) => {
+        const x = i % canvas.width;
+        const y = Math.floor( i / canvas.width );
+        if(palette){
+            ctx.fillStyle = palette[a];
+        }
+        if(!palette){
+            ctx.fillStyle = new THREE.Color( a, a, a).getStyle();
+        }
+        ctx.fillRect( x, y, 1, 1);
+    });
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.NearestFilter;
+    return texture;
+};
+//-------- ----------
+// TEXTURES
+//-------- ----------
+const texture_map = canvas_texture_grid([
+   0, 0, 0, 0,
+   0, 1, 1, 1,
+   0, 1, 2, 2,
+   0, 1, 2, 2
+], 4, [ 'red', 'green', 'blue' ]);
+const texture_emissive = canvas_texture_grid([
    0.10, 0.20, 0.20, 0.10,
-   0.20, 1.00, 1.00, 0.20,
-   0.20, 1.00, 1.00, 0.20,
+   0.20, 0.80, 0.80, 0.20,
+   0.20, 0.80, 0.80, 0.20,
    0.10, 0.20, 0.20, 0.10
-].forEach( (a, i) => {
-    const x = i % canvas.width;
-    const y = Math.floor( i / canvas.width );
-    ctx.fillStyle = new THREE.Color( a, a , a).getStyle();
-    ctx.fillRect( x, y, 1, 1);
-});
-const texture = new THREE.CanvasTexture(canvas);
-texture.magFilter = THREE.NearestFilter;
+], 4);
+const texture_alpha = canvas_texture_grid([
+    0.00, 1.00, 1.00,0.00,
+    1.00, 0.25, 1.00,1.00,
+    1.00, 1.00, 0.25,1.00,
+    0.00, 1.00, 1.00,0.00
+], 4);
 //-------- ----------
 // BASIC MATERIAL USING A TEXTURE FOR THE MAP OPTION
 //-------- ----------
-const material = new THREE.MeshBasicMaterial({
+const material = new THREE.MeshStandardMaterial({
     color: 0xffffff,
-    map: texture
+    map: texture_map,
+    emissive: 0xffffff,
+    emissiveMap: texture_emissive,
+    emissiveIntensity: 0.75,
+    alphaMap: texture_alpha,
+    transparent: true,
+    side: THREE.DoubleSide
 });
 //-------- ----------
 // SCENE CHILD OBJECTS
 //-------- ----------
-scene.add(new THREE.GridHelper(10, 10))
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(6, 2, 1);
+scene.add(dl);
+scene.add(new THREE.GridHelper(10, 10));
 scene.add(new THREE.Mesh( new THREE.BoxGeometry(1, 1, 1), material));
 //-------- ----------
 // RENDER
@@ -412,7 +449,7 @@ camera.lookAt(0, -0.10, 0);
 renderer.render(scene, camera); // render
 ```
 
-Although a demo like this might be a good start there is a whole lot more to be aware of when it comes to textures, features of geometry objects such as the UV attribute, and of course a massive amount of things to be aware of when it comes to material options and textures. What there is to work with in terms of material options will change form one material to the next. Also the way that options work will change form material to material as well including this map option as it will not work the same way as with the Basic Material in other mesh material options such as the Phong material. Be sore to read on with my Mesh Materials section and the textures section in this post for more details with this.
+Another map of interest might be the alpha map, this is a way to define what the transparency effect should be for one part of a texture compared to another. The texture that I will want to give with this one should be in gray scale and the value of the gray scale will be what the opacity value should be for that part of the texture.
 
 ## 1.8 - Common Base Materials class features
 
