@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-11 15:40:03
-version: 1.110
+updated: 2023-08-11 19:27:52
+version: 1.111
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -551,9 +551,9 @@ renderer.render(scene, camera);
 
 ## 2 - Overview of Mesh Material Options
 
-There might be points and lines, but for the most part just about every threejs project will make use of Mesh objects, or a similar kind of object that will also make use of one of the Mesh Material Options. There is a whole lot to be aware of with these so it is called for to run over each of them and at least write a thing or two about that each material is good for and why.
+There might be points, lines, and sprites, but for the most part just about every threejs project will make use of Mesh objects, or a similar kind of object that will also make use of one of the Mesh Materials that there are to work with. There is a whole lot to be aware of with these so it is called for in a post such as this to go over each of the mesh material options and write a thing or two about what each of them are good at, and also there limitations of course.
 
-Keep in mind that if you feel that you are getting overwhelmed with all of this the most important thing is application. If you want to go with a certain style the involves low poly models, a simple color map, and not bother at all with light in any capacity then just going with the MeshBasicMaterial might prove to work okay. Things just get a little complex when you start pulling light into the mix, or you need to do some kind of weird custom rendering to which even none of these might work okay and as such you might need to go with the shader material and some custom GLSL code. However getting into that is a matter for a later more advanced section in this post.
+Keep in mind that if you feel that you are getting overwhelmed with all of this the most important thing is application. If you want to go with a certain style the involves low poly models, a simple color map, and not bother at all with light in any capacity then just going with the Mesh Basic Material might prove to work okay. Things just get a little complex when you start pulling light into the mix, or you need to do some kind of weird custom rendering to which even none of these might work okay and as such you might need to go with the shader material and some custom GLSL code. However getting into that is a matter for a later more advanced section in this post.
 
 ### 2.1 - The not so basic, basic material that is THREE.MeshBasicMaterial
 
@@ -601,11 +601,13 @@ camera.lookAt(0, -0.10, 0);
 renderer.render(scene, camera); // render
 ```
 
-There are a number of ways of going about using the map option all of which will involve getting a texture object one way or another, such as using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in a texture from an external image, but there are also a number of ways of doing so that will involve the use of some javaScript code to create a texture. Once option would be to use [canvas elements](/2018/04/17/threejs-canvas-texture/), and another would be to make use of the [data texture constructor](/2022/04/15/threejs-data-texture/) as a way to create a texture from raw color channel data as I went with in this demo.
+There are a number of ways of going about using the map option all of which will involve getting a texture object one way or another, such as using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in a texture from an external image, but there are also a number of ways of doing so that will involve the use of some javaScript code to create a texture. One option would be to use [canvas elements](/2018/04/17/threejs-canvas-texture/), and another would be to make use of the [data texture constructor](/2022/04/15/threejs-data-texture/) as a way to create a texture from raw color channel data as I went with in this demo.
 
 ### 2.2 - THREE.MeshDepthMaterial
 
-This is another basic material that is not used for anything advanced involving a light source, and shadows. The [depth material](/2021/05/04/threejs-depth-material/) can be used to show some depth to a mesh, rather than just having a solid color painted on each face like with the basic material without a texture map.
+Another mesh material option that will not respond to light sources would be the [depth material](/2021/05/04/threejs-depth-material/) that will shade a geometry of a mesh based on the distance of the mesh object from the current position of the camera. Speaking of cameras there is the near and far values of camera objects such as the perspective camera that are a major part of getting this material to look right. With that said that is one good use case of using this material now and then as it makes me thing in terms of what the values should be for those properties of a camera object.
+
+There does not appear to be much to write about in terms of other properties to know about with this one aside from the fact that the depth packing encoding can be changed from the default which is basic depth packing. The only other constant seems to be THREE.RGBADepthPacking apart from what the default if for this option which would be THREE.BasicDepthPacking. All the other options that are not Base material class options are options that I see in other materials.
 
 ```js
 //-------- ----------
@@ -623,7 +625,9 @@ renderer.setSize(640, 480, false);
 //-------- ----------
 // INSTANCE OF THE DEPTH MATERIAL
 //-------- ----------
-const material = new THREE.MeshDepthMaterial();
+const material = new THREE.MeshDepthMaterial({
+    depthPacking: THREE.RGBADepthPacking
+});
 //-------- ----------
 // SCENE CHILD OBJECTS
 //-------- ----------
@@ -638,15 +642,6 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-Depth is based off the near, and far plane of the camera when can be set when creating the camera, and can also be changed in a loop by calling a special update method. White areas indicate that an area of the mesh is closer to the camera, while darker areas indicate that the area of the mesh is farther away.
-
-There does not appear to be much to write about in terms of other properties to know about with this one aside from the fact that the depth packing encoding can be changed from the default which is basic depth packing. The only other constant seems to be rgba packing.
-
-```js
-const material = new THREE.MeshDepthMaterial({
-    depthPacking: THREE.RGBADepthPacking
-});
-```
 
 ### 2.3 - The THREE.MeshLambertMaterial
 
