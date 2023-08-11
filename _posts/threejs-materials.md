@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-11 15:36:27
-version: 1.109
+updated: 2023-08-11 15:40:03
+version: 1.110
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -555,7 +555,7 @@ There might be points and lines, but for the most part just about every threejs 
 
 Keep in mind that if you feel that you are getting overwhelmed with all of this the most important thing is application. If you want to go with a certain style the involves low poly models, a simple color map, and not bother at all with light in any capacity then just going with the MeshBasicMaterial might prove to work okay. Things just get a little complex when you start pulling light into the mix, or you need to do some kind of weird custom rendering to which even none of these might work okay and as such you might need to go with the shader material and some custom GLSL code. However getting into that is a matter for a later more advanced section in this post.
 
-### 2.1 - Mesh Basic Material
+### 2.1 - The not so basic, basic material that is THREE.MeshBasicMaterial
 
 The [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) is the kind of material that I would use if I do not aim to do anything special with light. The basic material will not respond to any light sources, and the faces will be filled with a solid color if it is just the color option alone that will be used with it. However there are a lot of options when it comes to doing things to show some depth, one option would be to create a texture by one means or another and use that with the map option. Another option would be to add a color attribute to the geometry that is used, and then set the vertex color boolean of the material to true.
 
@@ -603,7 +603,7 @@ renderer.render(scene, camera); // render
 
 There are a number of ways of going about using the map option all of which will involve getting a texture object one way or another, such as using the [texture loader](/2021/06/21/threejs-texture-loader/) to load in a texture from an external image, but there are also a number of ways of doing so that will involve the use of some javaScript code to create a texture. Once option would be to use [canvas elements](/2018/04/17/threejs-canvas-texture/), and another would be to make use of the [data texture constructor](/2022/04/15/threejs-data-texture/) as a way to create a texture from raw color channel data as I went with in this demo.
 
-### 2.2 - Mesh Depth Material
+### 2.2 - THREE.MeshDepthMaterial
 
 This is another basic material that is not used for anything advanced involving a light source, and shadows. The [depth material](/2021/05/04/threejs-depth-material/) can be used to show some depth to a mesh, rather than just having a solid color painted on each face like with the basic material without a texture map.
 
@@ -648,7 +648,7 @@ const material = new THREE.MeshDepthMaterial({
 });
 ```
 
-### 2.3 - The Lambert material
+### 2.3 - The THREE.MeshLambertMaterial
 
 This is the first material I started working with when getting into the use of lights and shadows. In some ways the [Lambert material](/2018/04/08/threejs-lambert-material/) is a good choice for a reflective material as the algorithm used for reflecting light is more efficient compared to the other options. This might then be a good choise for situations in which frame rate will need to be improved but in a way in which the material will still work with light sources.
 
@@ -686,7 +686,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera); ;
 ```
 
-### 2.4 - Mesh Normal Material
+### 2.4 - THREE.MeshNormalMaterial
 
 The [normal material](/2021/06/23/threejs-normal-material/) has to do with [vector normals](https://en.wikipedia.org/wiki/Normal_%28geometry%29) that exist in the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) that is used with the mesh object. Coloring of the shape is based on the direction of the vector normals then, but the material does not take into account anything that is going on with light in a scene unlike other materials that make use of the normal attribute of the geometry.
 
@@ -718,7 +718,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 2.5 - Mesh Phong Material
+### 2.5 - THREE.MeshPhongMaterial
 
 The [phong material](/2022/12/29/threejs-phong-material/) is another option for a material that will respond to a light source. Unlike the Lambert material this is a better option for specular highlights making it a good choice for any kind of surface that should be shiny like metal or varnished wood.
 
@@ -757,7 +757,7 @@ renderer.render(scene, camera);
 
 To get this material working great It might be best to use some kind of directional light source such as a spotlight. The specular property can be used to set the color of the shine, by default it is a very dark gray.
 
-### 2.6 - Mesh Standard Material
+### 2.6 - THREE.MeshStandardMaterial
 
 The [standard material](/2021/04/27/threejs-standard-material/) might be the best option for most surfaces if a more realistic rather than speedy rendering is desired when it comes to doing something with light. The standard material will also work with a wide range of various texture maps, and is somewhat of an industry standard, thus the name standard material. I tend to like to go with this material as it is generally a great all around material that results in a decent look when it comes to working on a final result.
 
@@ -797,7 +797,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 2.7 - Mesh Physical 
+### 2.7 - THREE.MeshPhysicalMaterial 
 
 Another two materials in three.js that can be used with a mesh are the [Physical](https://threejs.org/docs/index.html#api/materials/MeshPhysicalMaterial), and [Toon](https://threejs.org/docs/index.html#api/materials/MeshToonMaterial) materials. Both of these materials are like that of the standard material, and phong materials respectfully, but with additional features. The physical material is like the standard material but gives a greater deal of control over reflectivity, while the toon material is just like phong only with toon shading.
 
@@ -831,7 +831,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 2.8 - Toon Physical
+### 2.8 - THREE.MeshToonMaterial
 
 The toon material seems to shade with a limited number of tones. This feature can be adjusted by making use of a texture for the gradientMap option which would seem to be a unique texture map option for this material. When working out this kind of texture the colors of the texture should be in gray scale.
 
@@ -888,7 +888,7 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-### 2.8 - MatCap Material
+### 2.8 - Baked in lighting with THREE.MeshMatcapMaterial
 
 The mapcap material is a way to add baked in lighting using what is called a mapcap or lit sphere. Sense it is this mapcap option that is used to add baked in lighting then this is another material that will not work with light sources as this is the way to do about adding depth to the material. This matmap option can also then be used to add color to the material as well, but there is also a map option as well for this one. There is also the color option as always that is set to a default of white which in most cases is what one would want to leave this one on as well.
 
