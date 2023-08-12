@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-11 19:27:52
-version: 1.111
+updated: 2023-08-12 11:44:45
+version: 1.112
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -645,7 +645,7 @@ renderer.render(scene, camera);
 
 ### 2.3 - The THREE.MeshLambertMaterial
 
-This is the first material I started working with when getting into the use of lights and shadows. In some ways the [Lambert material](/2018/04/08/threejs-lambert-material/) is a good choice for a reflective material as the algorithm used for reflecting light is more efficient compared to the other options. This might then be a good choise for situations in which frame rate will need to be improved but in a way in which the material will still work with light sources.
+In some ways the [Lambert material](/2018/04/08/threejs-lambert-material/) is a good choice for having a general use case material that will work with light sources. It might prove to eat up the least amount of overhead compared to a lot of the other options so it might be a good idea to start with this one in any kind of real time project such as a game. However there is also the way that the end result looks when it comes to this kind of material and because this material lacks secular highlight features, it might not prove to be the best choice for certain types of surfaces such as metal, or any kind of polished surface. It will still look just fine with many surfaces though such as untreated wood, stone, dirt, and most fabrics.
 
 ```js
 //-------- ----------
@@ -683,7 +683,11 @@ renderer.render(scene, camera); ;
 
 ### 2.4 - THREE.MeshNormalMaterial
 
-The [normal material](/2021/06/23/threejs-normal-material/) has to do with [vector normals](https://en.wikipedia.org/wiki/Normal_%28geometry%29) that exist in the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) that is used with the mesh object. Coloring of the shape is based on the direction of the vector normals then, but the material does not take into account anything that is going on with light in a scene unlike other materials that make use of the normal attribute of the geometry.
+The [normal material](/2021/06/23/threejs-normal-material/) has to do with [vector normals](https://en.wikipedia.org/wiki/Normal_%28geometry%29) that exist in the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) that is used with the mesh object. Coloring of the shape is based on the direction of the vector normals then, but the material does not take into account anything that is going on with light in a scene unlike other materials that make use of the normal attribute of the geometry. 
+
+This material then might serve well as a kind of debugging tool when working out any kind of problem that might be going on with the normals of a geometry as the final result should have a certain look when the normals are set in such a way that is typically what is desired with these values. However I would say that the mesh normal material is just one tool in the toolbox with that sort of thng and there are other add on features that I would say have more weight for that kind of task, mainly the [VertexNormalsHelper](https://threejs.org/docs/#examples/en/helpers/VertexNormalsHelper).
+
+I do often use this material for many of my demos in posts such as this one, the main reason why is that it is a nice quick way to show some depth without having to do something a bit advanced with things like adding light sources, color attributes, textures and so forth.
 
 ```js
 //-------- ----------
@@ -715,7 +719,7 @@ renderer.render(scene, camera);
 
 ### 2.5 - THREE.MeshPhongMaterial
 
-The [phong material](/2022/12/29/threejs-phong-material/) is another option for a material that will respond to a light source. Unlike the Lambert material this is a better option for specular highlights making it a good choice for any kind of surface that should be shiny like metal or varnished wood.
+The [phong material](/2022/12/29/threejs-phong-material/) is another option for a material that will respond to a light source. Unlike the Lambert material the Phong material dos support secular highlights which makes it a better choice for polished shiny surfaces. However I might still want to go with Lambert all around if it is a real time project, or add some features for allowing users to change what material is used for certain objects in display settings when it comes to working out features that might help to improve FPS.
 
 ```js
 //-------- ----------
