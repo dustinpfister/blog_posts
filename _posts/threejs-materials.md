@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-12 11:44:45
-version: 1.112
+updated: 2023-08-12 12:22:06
+version: 1.113
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -721,6 +721,8 @@ renderer.render(scene, camera);
 
 The [phong material](/2022/12/29/threejs-phong-material/) is another option for a material that will respond to a light source. Unlike the Lambert material the Phong material dos support secular highlights which makes it a better choice for polished shiny surfaces. However I might still want to go with Lambert all around if it is a real time project, or add some features for allowing users to change what material is used for certain objects in display settings when it comes to working out features that might help to improve FPS.
 
+To get this material working great it might be best to use some kind of directional light source such as the directional light I am using in this demo. The specular property can be used to set the color of the shine is, by default it is a very dark gray so often that is something that I adjust when using this material. There is then also the shininess option that I might care to adjust as well with this one that has a default value of 30. There is also the specular map option of the phong material which is a way that one can adjust the intensity of the specular effect by way of a gray scale texture. The white areas of the texture will be full specular intensity where black areas will be areas of the material in which there is no specular effect at all.
+
 ```js
 //-------- ----------
 // SCENE, CAMERA, RENDERER
@@ -732,18 +734,38 @@ const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 document.getElementById('demo').appendChild(renderer.domElement);
 //-------- ----------
+// SPECULAR TEXTURE
+//-------- ----------
+const data = [
+   0,0,0,0,0,0,
+   9,9,9,9,9,9,
+   6,7,8,9,9,9,
+   3,3,3,3,3,3,
+   2,2,2,2,2,2,
+   1,1,1,1,1,1
+].map( (a) => {
+    const v = Math.round( 255 * (a / 9) );
+    return [ v, v, v, 255 ];
+}).flat();
+const texture_specular = new THREE.DataTexture( new Uint8Array(data), 6, 6 );
+texture_specular.needsUpdate = true;
+//-------- ----------
 // INSTANCE OF THE PHONG MATERIAL
 //-------- ----------
 const material = new THREE.MeshPhongMaterial({
+    specular: 0xffffff,
+    specularMap: texture_specular,
+    shininess: 80,
     color: 0xff0000,
-    shininess: 120
+    emissive: 0x220000,
+    emissiveIntensity: 0.5
 });
 //-------- ----------
 // SCENE CHILD OBJECTS
 //-------- ----------
 scene.add( new THREE.GridHelper(10, 10) );
 const dl = new THREE.DirectionalLight(0xffffff, 1.0);
-dl.position.set(4, 2, 1);
+dl.position.set(1, 5, -3);
 scene.add(dl);
 scene.add(new THREE.Mesh( new THREE.SphereGeometry(1, 30, 30), material ));
 //-------- ----------
@@ -753,8 +775,6 @@ camera.position.set(3, 3, 3);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
-
-To get this material working great It might be best to use some kind of directional light source such as a spotlight. The specular property can be used to set the color of the shine, by default it is a very dark gray.
 
 ### 2.6 - THREE.MeshStandardMaterial
 
@@ -832,7 +852,7 @@ renderer.render(scene, camera);
 
 ### 2.8 - THREE.MeshToonMaterial
 
-The toon material seems to shade with a limited number of tones. This feature can be adjusted by making use of a texture for the gradientMap option which would seem to be a unique texture map option for this material. When working out this kind of texture the colors of the texture should be in gray scale.
+The toon material seems to shade with a limited number of tones which is a nice feature to have for certain projects and styles. This feature can be adjusted by making use of a texture for the gradientMap option which would seem to be a unique texture map option for this material. When working out this kind of texture the colors of the texture should be in gray scale like many similar map options such as the specular map in the phong material, or the alpha map which seems to be a feature in most mesh materials.
 
 ```js
 //-------- ----------
