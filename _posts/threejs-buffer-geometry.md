@@ -5,15 +5,16 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-07-16 13:49:43
-version: 1.64
+updated: 2023-08-12 12:29:36
+version: 1.65
 ---
 
-As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
 
 The basic example of a [buffer Geometry in the three.js documentation works okay](https://threejs.org/docs/index.html#api/en/core/BufferGeometry.groups) as a starting point, but it does not cover every little detail when it comes to what I should be aware of when making a custom geometry. There is not just creating the positions attribute of a geometry, but also the normal, and uv attributes for a geometry as well that are also of importance when it comes to using custom geometries with various materials that use textures and respond to light sources. There are also a whole bunch of other details such as working out an array of groups, and material index values.
 
 So in this post I will be going over the basic examples that I have worked out thus far when it comes to just working with some very simple starting points with a custom geometry using the buffer geometry constructor rather than the plain old geometry constructor. Also in this post I will be going over some examples that are just examples of the various prototype methods and features that one should know about when it comes to working with buffer geometry in general, regardless of what it was made.
+
+
 
 <!-- more -->
 
@@ -38,7 +39,10 @@ The source code for these examples can be found in my test [threejs github repo]
 
 ### Version Numbers matter with threejs.
 
-When I first wrote this post I was using r127 of threejs, and the last time I came around to doing a little editing I was using r146 and found that these examples are still working okay with that revision as well. Still at some point in the future the code here may very well break on older or newer version of threejs. I do try to do my best to keep my threejs content up to date, but at times it might be a while between edits.
+When I first wrote this post I was using r127 of threejs, and the last time I came around to doing a little editing I was using [r146 and thus updated the demos to the style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) I set for that revision. Still at some point in the future the code here may very well break on older or newer version of threejs. I do try to do my best to keep my threejs content up to date, but at times it might be a while between edits.
+
+As of [revision 125 of threejs](https://github.com/mrdoob/three.js/releases/tag/r125) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples out on the open web. There where some nice things to say about this class, and maybe in some ways it helped to make things easier. However now that I know how to work with the buffer geometry class well, I have to say that I do not miss it.
+
 
 ## 1 - Basic custom buffer geometry examples
 
