@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-12 12:29:36
-version: 1.65
+updated: 2023-08-12 12:54:26
+version: 1.66
 ---
 
 
@@ -100,7 +100,7 @@ This might be okay when it comes to just starting out, but there is a great deal
 
 ### 1.2 - Creating a normal attribute and using the normal material
 
-So if I take my basic example that I worked out above and switch to the normal material rather than the basic material, then I get nothing. That should be what is expected sense there is no [normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) for the geometry just yet. There might be [more then one way to go about making a normals attribute](https://stackoverflow.com/questions/29202480/three-js-calculating-vertex-normals), but the quick and simple way might be to just call the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) of the geometry.
+So if I take my basic example that I worked out above and switch to the normal material rather than the basic material, then I get nothing. That should be what is expected sense there is no [normal attribute](/2021/06/08/threejs-buffer-geometry-attributes-normals/) for the geometry just yet. For this demo I am making the normal attribute in more or less the same way as the position attribute in the sense that I often use the same kind of typed array and once again the item count here is 3. What will differ is that I will be setting a value of 'normal' when calling the set Attribute method of the buffer geometry object, and also the values of the normals themselves of course. By default I often start out by pointing them all up \( 0, 1, 0 \), and then adjust from there if I am to do this sort of thing manually like in this demo. However there are of course methods that help to automate this, and more often than not they work okay.
 
 ```js
 //-------- ----------
@@ -112,22 +112,23 @@ const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 ( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
 //-------- ----------
-// START GEOMETRY / POSITION ATTRIBUTE
+// START GEOMETRY / POSITION ATTRIBUTE / NORMAL ATTRIBUTE
 //-------- ----------
 const geometry = new THREE.BufferGeometry();
-const vertices = new Float32Array([
-    0,0,0,
-    1,0,0,
-    1,1,0
-]);
-// create position property
-geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+const data_pos = [
+    0, 0, 0,
+    1, 0, 0,
+    1, 1, 0
+];
+geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array( data_pos), 3) );
+const data_normal = [
+   0, -0, 1,
+   0, -0, 1,
+   0, -0, 1
+];
+geometry.setAttribute('normal', new THREE.BufferAttribute(new Float32Array( data_normal ), 3) );
 //-------- ----------
-// NORMALS ATTRIBUTE
-//-------- ----------
-geometry.computeVertexNormals();
-//-------- ----------
-// GRID/ MESH OBJECTS
+// GRID / MESH OBJECTS
 //-------- ----------
 scene.add( new THREE.GridHelper(10, 10) );
 const mesh1 = new THREE.Mesh(
@@ -136,24 +137,13 @@ const mesh1 = new THREE.Mesh(
             side: THREE.FrontSide
         }));
 mesh1.rotateY(Math.PI * 0.15);
-mesh1.position.x  = 0.50;
 scene.add(mesh1);
-const mesh2 = new THREE.Mesh(
-        geometry,
-        new THREE.MeshNormalMaterial({
-            side: THREE.BackSide
-        }));
-mesh2.rotateY(Math.PI * 0.75);
-mesh2.position.x  = -0.50;
-scene.add(mesh2);
 //-------- ----------
 // VERTEX HELPERS IF THERE
 //-------- ----------
 if(THREE.VertexNormalsHelper){
-     const vertHelper1 = new THREE.VertexNormalsHelper(mesh1, 0.5, 0x00ff00);
-     scene.add(vertHelper1);
-     const vertHelper2 = new THREE.VertexNormalsHelper(mesh2, 0.5, 0x00ff00);
-     scene.add(vertHelper2);
+    const vertHelper1 = new THREE.VertexNormalsHelper(mesh1, 0.5, 0x00ff00);
+    scene.add(vertHelper1);
 }
 //-------- ----------
 // RENDER
@@ -163,7 +153,9 @@ camera.lookAt( 0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-This might prove to be a good start at least, but in order to really know what is going on with face normals I might need to use some kind of helper to see what the direction of each normal vector is. With that said in this example I am making use of the THREE.VertextNormalsHelper which I can add to a project on top of the threejs file. This file should be located in the examples folder of the threejs Github repository. 
+This might prove to be a good start at least, but in order to really know what is going on with face normals I might need to use some kind of helper to see what the direction of each normal vector is. With that said in this example I am making use of the THREE.VertextNormalsHelper which I can add to a project on top of the threejs file. This file should be located in the examples folder of the threejs Github repository. However depeding on what revision you are using the type of file that you need might not be there anymore. If you are using the module form of threejs you will need to use the JSM file, if you are still using an older version of threejs the js folder might still be there.
+
+There might be [more then one way to go about making a normals attribute](https://stackoverflow.com/questions/29202480/three-js-calculating-vertex-normals), but the quick and simple way might be to just call the [compute vertex normals method](/2022/04/22/threejs-buffer-geometry-compute-vertex-normals/) of the geometry.
 
 ### 1.3 - The uv attribute
 
