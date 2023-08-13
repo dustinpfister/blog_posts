@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-12 13:10:33
-version: 1.67
+updated: 2023-08-13 12:30:38
+version: 1.68
 ---
 
 
@@ -348,84 +348,57 @@ renderer.render(scene, camera);
 
 ## 2 - Working with light
 
-Now it is time to see how a custom geometry works with a situation involving a little light, and the use of a materials that will respond to light. With that said this one might prove to be a little bit of a work in progress at least at the point that I started writing this post anyway. When I have this example up and running it seems to work okay, but the colors do not always look the way that I think they should as I move them around. A quick fix for this was to just add a little ambient light rather than just having a point light like I typically do in many of my examples.
+Now it is time to see how a custom geometry works with a situation involving a few light sources, and how the use of a materials that will respond to light will work with the custom geometry as well. So then in this section I will be going over code in which I am working out some simple custom geometry, and then using one or more light sources in the scene as well while I am at it. For the most part it is just the position attribute and the normal attribute that is of concern if I only care about solid color shading for each triangle. However the uv attribute will very much be needed as well if I want to add color maps, and also of course all the various other maps that are used for applying texture as well.
+
+### 2.1 - Simple two triangle demo with Directional light
+
+For this demo I am making a non indexed geometry that is just composed of two triangles. The only main thing that I want to make sure I am doing with this is to just make sure that these two trainees are not on the same plane. After that I just need to set up the normal attribute for this one I am just calling the compute vertex normal method to do so.
 
 ```js
+//-------- ----------
 // SCENE, CAMERA, RENDERER
+//-------- ----------
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
 const renderer = new THREE.WebGL1Renderer();
 renderer.setSize(640, 480, false);
 (document.getElementById('demo') || document.body).appendChild(renderer.domElement);
-const materials = [
-    new THREE.MeshStandardMaterial({
-        color: 'red',
-        side: THREE.DoubleSide
-    }),
-    new THREE.MeshStandardMaterial({
-        color: 'lime',
-        side: THREE.DoubleSide
-    })
-];
+//-------- ----------
+// MATERIALS
+//-------- ----------
+const materials = new THREE.MeshStandardMaterial({
+    color: 0xff0000,
+    side: THREE.FrontSide
+});
+//-------- ----------
 // GEOMETRY
+//-------- ----------
 const geometry = new THREE.BufferGeometry();
 const vertices = new Float32Array([
-    0, 0, 0, // triangle 1
-    1, 0, 0,
-    1, 1, 0,
-    0, 0, 0, // triangle 2
-    0, 1, 0,
-    1, 1, 0
+    0.00,  0.00,  0.00,
+    1.00,  0.00,  0.00,
+    0.50,  1.00, -0.50,
+    1.00,  0.00,  0.00,
+    0.75,  0.00, -1.00,
+    0.50,  1.00, -0.50
 ]);
-// create position property
 geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-// compute vertex normals
 geometry.computeVertexNormals();
-// add groups, and set material index values
-geometry.addGroup(0, 3, 0);
-geometry.addGroup(3, 3, 1);
-// MESH with GEOMETRY, and Normal MATERIAL
-const custom = new THREE.Mesh( geometry, materials);
-scene.add(custom);
-const box = new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        materials);
-box.position.set(-1, 0, 0);
-box.geometry.groups.forEach(function (face, i) {
-    face.materialIndex = i % materials.length;
-});
-scene.add(box);
-// ADD A POINT LIGHT
-const pl = new THREE.PointLight(0xffffff);
-pl.position.set(4, 2, 4);
-scene.add(pl);
-// add AmbientLight
-const al = new THREE.AmbientLight(0xffffff);
-al.intensity = 0.2;
-scene.add(al);
- 
+//-------- ----------
+// SCENE CHILD OBJECTS - GRID, MESH, AND LIGHTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const mesh1 = new THREE.Mesh( geometry, materials);
+scene.add(mesh1);
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.position.set(4, 2, 4);
+scene.add(dl);
+//-------- ---------- 
 // LOOP
-camera.position.set(1, 2, 4);
+//-------- ----------
+camera.position.set(2, 1, 2);
 camera.lookAt(0, 0, 0);
-let frame = 0, lt = new Date();
-const maxFrame = 200,
-fps_target = 24;
-const loop = function () {
-    const now = new Date(),
-    secs = (now - lt) / 1000;
-    requestAnimationFrame(loop);
-    if (secs >= 1 / fps_target) {
-        const per = frame / maxFrame,
-        bias = Math.abs(.5 - per) / .5,
-        r = -Math.PI * 2 * per;
-        custom.rotation.set(0, Math.PI * 2 * per, 0);
-        renderer.render(scene, camera);
-        frame += 1;
-        frame %= maxFrame;
-        lt = now;
-    }
-};
-loop();
+renderer.render(scene, camera);
 ```
 
 ## 3 - Prototype methods of the Buffer Geometry class
