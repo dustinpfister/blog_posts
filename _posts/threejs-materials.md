@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-12 12:22:06
-version: 1.113
+updated: 2023-08-13 10:32:55
+version: 1.114
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -1225,6 +1225,82 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
+### 5.2 - The rotation option of the sprite material
+
+The rotation option of the sprite material is a way to go about setting what the rotation should be used for the sprite. It would seem that this is generally what it is that I will want to use in place of the various features that have to do with the local rotation of the sprite object.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.5, 10);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+// create a texture for the sprite
+const createTexture = () => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const w = 32, h = 32;
+    canvas.width = w; canvas.height = h;
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo( 0, 0);
+    ctx.lineTo( w, h);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo( w, 0);
+    ctx.lineTo( 0, h);
+    ctx.stroke();
+    return new THREE.CanvasTexture( canvas );
+};
+const createSprite = () => {
+    const material = new THREE.SpriteMaterial({
+        map: createTexture(),
+        sizeAttenuation: true,
+        depthTest: false,
+        transparent: true,
+        rotation: 0,
+        opacity: 1
+    });
+    const sprite = new THREE.Sprite(  material );
+    return sprite;
+};
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const sprite = createSprite();
+scene.add( sprite );
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.5, 1.5, 1.5);
+camera.lookAt(0, 0, 0);
+let deg = 0;
+const dps = 20;  // degrees per second
+const fps = 12;  // frames per second
+let lt = new Date();
+const loop = () => {
+    const now = new Date();
+    const secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps){
+        deg += dps * secs;
+        deg %= 360;
+        sprite.material.rotation = Math.PI / 180 * deg;
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
+```
 
 ## 6 - The Common Base Material class
 
