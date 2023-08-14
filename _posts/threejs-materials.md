@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-13 10:32:55
-version: 1.114
+updated: 2023-08-14 13:11:57
+version: 1.115
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -959,13 +959,19 @@ renderer.render(scene, camera);
 
 ## 3 - The Points Material
 
-There is one Material in threejs that can be used to display just the points in a geometry which can come in handy some times. One major use case with this has to do with creating custom geometry from the ground up as this helps to keep things simple as I only need to worry about the position attribute of the geometry.
+For more on Points and the points material I have [written a post on the points material](/2018/05/12/threejs-points-material/), I have also wrote one on [Points in general](/2023/02/23/threejs-points/) at this time as well. However I can also save you a click by covering some key demos of features here.
+
+There is one Material in threejs that can be used to display just the points of the position attribute in a geometry which can come in handy some times. One major use case with this has to do with creating custom geometry from the ground up as this helps to keep things simple as I only need to worry about the actual points in space alone and nothing else. Things will of course become far more complex when it comes to working out custom geometry that will work as expected with mesh objects of course and not just because of the additional attributes that are required. Even with the position attribute there is not just the position of each vertex but also the order of the points that also comes into play when figuring out what each side of a triangle is the front side. Still points are a great place to get started, and then worry about all of these sorts of things when it comes to moving on to mesh objects.
+
+Anyway this is still very much a post on materials in general in threejs, so in this section the focus will be one many of the features of the points material. There are a number of features with the points material alone, but there is also writing about key features within the common materials class also that work well with the points material as well.
 
 ### 3.1 - The Points Material
 
-If for some reason I want to create my own custom geometry in which I only care about points in space and nothing at all then I will want to have at least a [position attribute of the buffer geometry instance](/2021/06/07/threejs-buffer-geometry-attributes-position/) that I will the use with the THREE.Points constructor rather than the usual mesh constructor. So for this example I am creating a blank buffer geometry object and then I will want to create a typed array that will contain the values for each axis of each point. For now I will be keeping this simple by just adding points for a single triangle in space. However when it comes to using points if I want I could make this even more basic by just setting a single point for the typed array. Anyway once I have my data worked out for this I can call the Buffer Attribute constructor and pass the array as the first argument and then the item size which in the case is 3 as there is x, y, and z for each point. This buffer attribute object can then be used when calling the set attribute method of the blank buffer geometry object to create the position attribute of the geometry.
+If for some reason I want to create my own custom geometry in which I only care about points in space and nothing at all then I will want to have at least a [position attribute of the buffer geometry instance](/2021/06/07/threejs-buffer-geometry-attributes-position/). I will then pass this geometry to the THREE.Points constructor rather than the usual THREE.Mesh constructor. So for this example I am creating a blank buffer geometry object and then I will want to create a typed array that will contain the values for each axis of each point in space. For now I will be keeping this simple by just adding points for a single triangle, however when it comes to using points if I want I could make this even more basic by just setting a single point for the typed array actually.
 
-When it comes to creating an instance of the Points material I will just be creating a single instance of this material, and just set a color option for it. 
+Anyway once I have my data worked out for this I can call the Buffer Attribute constructor and pass the array as the first argument and then the item size which in the case is 3 as there is x, y, and z for each point. This buffer attribute object can then be used when calling the set attribute method of the blank buffer geometry object to create the position attribute of the geometry.
+
+When it comes to creating an instance of the Points material I will just be creating a single instance of this material, and just set a color option for it. This will result in all points to be the given color rather than the default white color. However there are some additional options for styling the points, it is just for this dmeo at least I just want to keep things fairly simple.
 
 ```js
 //-------- ----------
@@ -1004,8 +1010,6 @@ camera.position.set(3, 3, 3);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
-
-For more on Points and the points material I have [written a post](/2018/05/12/threejs-points-material/) on the subject, it's fun to just play with points in space when you have some time.
 
 ### 3.2 - Size Attenuation and The Points Material
 
