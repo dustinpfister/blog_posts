@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-14 13:11:57
-version: 1.115
+updated: 2023-08-14 13:24:05
+version: 1.116
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -1013,7 +1013,7 @@ renderer.render(scene, camera);
 
 ### 3.2 - Size Attenuation and The Points Material
 
-By default the Size Attenuation option of the points material is set to true. What this means is out of the box the side of the points will get smaller or bigger depending on the distance of the point from the camera. In some cases I might want to set this option to false if I want to just have a single size for each point in the geometry.
+By default the Size Attenuation option of the points material is set to true. What this means is out of the box the size of the points will get smaller or bigger depending on the distance of the point from the camera. In some cases I might want to set this option to false if I want to just have a single size for each point in the geometry.
 
 
 ```js
@@ -1057,9 +1057,13 @@ camera.lookAt(0, -1.0, 0);
 renderer.render(scene, camera);
 ```
 
+If I want to apply some custom logic for the size of the points, on a point by point basis then that is something that might only be able to be done by way of a custom shader.
+
 ## 4 - Lines Material
 
-Another object to work with that is an alternative to a mesh object would be [THREE.Line](/2018/04/19/threejs-line/) or THREE.LineSegments. There are two material options to choose from when it comes to using these kinds of objects which include THREE.LineBasicMaterial and THREE.LineDashedMaterial. They work just like mesh objects in the sense that the first argument that is passed when making one is a geometry. Just like that of THREE.Points though it is just the position attribute of the geometry of these that matter. This is a good reason why as this the use of these kinds of objects help to simplify the process of creating custom geometry. However it is also one of the best reasons why not to use them as well. 
+Another object to work with that is an alternative to a mesh object would be [THREE.Line](/2018/04/19/threejs-line/) or THREE.LineSegments. There are two material options to choose from when it comes to using these kinds of objects which include THREE.LineBasicMaterial and THREE.LineDashedMaterial. They work just like mesh objects in the sense that the first argument that is passed when making one is a geometry. Just like that of THREE.Points though it is just the position attribute of the geometry of these that only really matters. Also because one only has to worry about the position attribute for these it is also a good starting point for making custom geometry as well.
+
+There are however some very good reasons why one would refrain from using Lines as well though. One major reason why is because certain features such as line width will not work so great on many platforms. There are other ways of drawing lines of sorts in space that will look better such as getting into curves and using tube geometry with mesh objects. Still they work okay when I just want to draw a 3d line and be done with it, so in this section I will be writing about some features of line materials.
 
 ### 4.1 - Using the Edge Geometry constructor and the Line Basic Material
 
