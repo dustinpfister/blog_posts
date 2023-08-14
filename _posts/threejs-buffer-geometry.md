@@ -5,16 +5,14 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-13 12:30:38
-version: 1.68
+updated: 2023-08-14 13:29:45
+version: 1.69
 ---
 
 
 The basic example of a [buffer Geometry in the three.js documentation works okay](https://threejs.org/docs/index.html#api/en/core/BufferGeometry.groups) as a starting point, but it does not cover every little detail when it comes to what I should be aware of when making a custom geometry. There is not just creating the positions attribute of a geometry, but also the normal, and uv attributes for a geometry as well that are also of importance when it comes to using custom geometries with various materials that use textures and respond to light sources. There are also a whole bunch of other details such as working out an array of groups, and material index values.
 
 So in this post I will be going over the basic examples that I have worked out thus far when it comes to just working with some very simple starting points with a custom geometry using the buffer geometry constructor rather than the plain old geometry constructor. Also in this post I will be going over some examples that are just examples of the various prototype methods and features that one should know about when it comes to working with buffer geometry in general, regardless of what it was made.
-
-
 
 <!-- more -->
 
@@ -403,7 +401,7 @@ renderer.render(scene, camera);
 
 ## 3 - Prototype methods of the Buffer Geometry class
 
-There are a number of methods to work with off of the buffer geometry class prototype. In this section then I will be writing about at least a few of these buffer geometry class prototype methods. We have all ready covered a number of them in the basic section of course such as the setAttribute method of course. However there are a whole lot more that prove to be useful for various things that will pop up now and then.
+There are a number of methods to work with in the buffer geometry class prototype that one should be aware of. In this section then I will be writing about at least a few of these buffer geometry class prototype methods. We have all ready covered a number of them in the basic section of course such as the setAttribute method that is used to define attributes for a blank geometry object. However there are a whole lot more that prove to be useful for various things that will pop up now and then.
 
 ### 3.1 - Rotation Methods
 
