@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-14 13:24:05
-version: 1.116
+updated: 2023-08-15 08:23:13
+version: 1.117
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -1159,7 +1159,7 @@ renderer.render(scene, camera);
 
 ## 5 - The Sprite Material
 
-There are also sprite objects and with that the sprite material. These sprite objects are a way to add a texture to a scene that will always face the camera. I can then also adjust the scale and position values of the sprite objects to move them around in the scene and adjust the size. However there are also a number of options for the material, and also some relevant base material class features to write about with these.
+There are also sprite objects and with that the sprite material to skin these objects. These sprite objects are a way to add a texture to a scene that will always face the camera. I can then also adjust the scale and position values of the sprite objects to move them around in the scene and adjust the size. However there are also a number of options for the material, and also some relevant base material class features to write about with these.
 
 ### 5.1 - Crosshair example Sprite Material using depthTest, and  sizeAttenuation options
 
@@ -1235,7 +1235,7 @@ renderer.render(scene, camera);
 
 ### 5.2 - The rotation option of the sprite material
 
-The rotation option of the sprite material is a way to go about setting what the rotation should be used for the sprite. It would seem that this is generally what it is that I will want to use in place of the various features that have to do with the local rotation of the sprite object.
+The rotation option of the sprite material is a way to go about setting what the rotation should be used for the sprite. It would seem that this is generally what it is that I will want to use in place of the various features that have to do with the local rotation of the sprite object. In other words I want to use the rotation property of the sprite material, and not the various object3d class features to rotate the sprite such as the rotation, and quaternion properties.
 
 
 ```js
