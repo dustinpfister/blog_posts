@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-15 08:23:13
-version: 1.117
+updated: 2023-08-15 08:37:24
+version: 1.118
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -1308,6 +1308,54 @@ const loop = () => {
     }
 };
 loop();
+```
+
+### 5.3 - Vertex Colors the and Points Material
+
+A solid color for all the points in never really what is wanted when dealing with a geometry with a lot of points. The good news with this though is that the vertex colors option of the base material class works just fine with the points material. So I can just set vertex colors to true, and then add a color attribute to the geometry to get differing colors for each point.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 100);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+document.getElementById('demo').appendChild(renderer.domElement);
+//-------- ----------
+// POINTS MATERIAL
+//-------- ----------
+const material1 = new THREE.PointsMaterial({
+    vertexColors: true,
+    size: 0.8,
+    sizeAttenuation: true
+});
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BoxGeometry(7, 7, 7, 5, 5, 5);
+const pos = geometry.getAttribute('position');
+const data_color = [];
+let i = 0;
+while(i < pos.count){
+    const a_count = i / pos.count;
+    const r = 0, g = a_count, b = 1 - a_count;
+    data_color.push( r, g, b)
+    i += 1;
+}
+geometry.setAttribute('color', new THREE.BufferAttribute( new Float32Array( data_color ), 3 ) );
+//-------- ----------
+// MESH
+//-------- ----------
+const points1 = new THREE.Points(geometry, material1);
+scene.add(points1);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(9, 9, 9);
+camera.lookAt(0, -1.0, 0);
+renderer.render(scene, camera);
 ```
 
 ## 6 - The Common Base Material class
