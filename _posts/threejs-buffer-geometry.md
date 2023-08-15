@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-14 13:29:45
-version: 1.69
+updated: 2023-08-15 09:50:41
+version: 1.70
 ---
 
 
@@ -522,6 +522,52 @@ scene.add(mesh);
 camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera)
+```
+
+### 3.3 - The Compute vertex normals method
+
+A very useful method in the buffer geometry class that can often make quick work of setting up a normal attribute would be the compute vertex normals method. This method will work fine in most cases when it comes to looking into ways to automate this process, however I am sure there are some cases in which I will still need to work this out manually. To make sure that the normals are set up the way that they should be be sure to still make use of tools like the MeshNormalMaterial, and better yet the Vertex Normals Helper to still make sure that things are as they should be with the normal attribute.
+
+```js
+//-------- ----------
+// SCENE, CAMERA
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// START GEOMETRY / POSITION ATTRIBUTE / NORMAL ATTRIBUTE
+//-------- ----------
+const geometry = new THREE.BufferGeometry();
+const data_pos = [ -1, 0.1, 0,   1, 0.1, 0,   0, 1.1, 0 ];
+geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array( data_pos), 3) );
+// USING COMPUTE VERTEX NORMALS TO ADD A NORMAL ATTRIBUTE
+geometry.computeVertexNormals();
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+scene.add( new THREE.GridHelper(10, 10) );
+const mesh1 = new THREE.Mesh(
+        geometry,
+        new THREE.MeshNormalMaterial({
+            side: THREE.FrontSide
+        }));
+scene.add(mesh1);
+//-------- ----------
+// VERTEX HELPERS IF THERE
+//-------- ----------
+if(THREE.VertexNormalsHelper){
+    const vertHelper1 = new THREE.VertexNormalsHelper(mesh1, 0.5, 0x00ff00);
+    scene.add(vertHelper1);
+}
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(0.5, 1, 2);
+camera.lookAt( 0, 0.5, 0);
+renderer.render(scene, camera);
 ```
 
 ## 4 - The Buffer Geometry loader
