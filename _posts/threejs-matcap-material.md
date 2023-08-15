@@ -5,13 +5,16 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1066
-updated: 2023-08-15 10:05:53
-version: 1.3
+updated: 2023-08-15 11:53:52
+version: 1.4
 ---
 
 The [Matcap material](https://threejs.org/docs/#api/en/materials/MeshMatcapMaterial) is a mesh material option that can be used to have a model with baked in lighting. The way that this is done is by making use of the main option of interest with this material which I would say is the matcap option. The value of this mapcap option should be a drawing of a shaded sphere and it is this shaded sphere texture that will be used as a way to define the direction and intensity of the light. The texture of the mapcap option can also contain color data, but there is also a map option with this material that can be used as a way to separate these concerns.
 
 <!-- more -->
+
+<iframe class="youtube_video"  src="https://www.youtube.com/embed/ZmVjX_nTfYU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## The Matcap material and what to know first
 
