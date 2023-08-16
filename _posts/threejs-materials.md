@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-16 10:57:39
-version: 1.119
+updated: 2023-08-16 11:17:54
+version: 1.120
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -1411,9 +1411,9 @@ Here I am using the transparent and opacity options in the normal, basic, and ph
 
 ### 6.2 - Blending
 
-It would seem that the blending property of the base material class is it itself just one feature of the class that deserves its own section in this post, and maybe even a whole other deep dive content piece actually. In any case for the sake of this one demo in this over all base material class section it goes without saying that I should have at least one demo on this subject here to touch base on this at least. 
+It would seem that the blending property of the base material class is in itself just one feature of the class that deserves its own section in this post, and maybe even a whole other deep dive content piece actually. The reason why I say this is because there is not just the blending option, but also a whole lot of other options that come into play depending on the value that is set for the option. For example setting the THREE.CustomBlending constant value for this blending option will pull some additional options in to play, such as  blendSrc, blendDst or blendEquation options.
 
-For now I worked out this demo where I am setting the blending value of all materials used to the THREE.NoBlending constant over that of what the default is for materials which is THREE.NormalBlending.
+For now I worked out this demo where I am setting the blending value of all materials used to the THREE.NoBlending constant over that of what the default is for materials which is THREE.NormalBlending. There is then just setting the values to other blending options, or back to the default to just gain some sense as to what this is about for now. The main thing to keep in mind here is that if you run into a situation in which one object, or face behind another is not rendering the way that you expect it to, addressing that might involve blending.
 
 ```js
 //-------- ----------
@@ -1467,7 +1467,7 @@ renderer.render(scene, camera);
 
 ### 6.3 - Vertex colors
 
-One major base material class feature would be the vertex colors Boolean that when set to true will cause the material to use the color attribute of the geometry if it has one. Although this is a base material class feature it will not work with all materials, some will not make use of the base class feature such as the MeshNormalMaterial. However it does work with most mesh material options such as basic, standard, and phong just to name a s few. This feature also works with line materials and the points materials as well as a great way to style those materials when they are used.
+One major common feature would be the vertex colors Boolean that when set to true will cause the material to use the color attribute of the geometry if it has one. Although this is a base material class feature it will not work with all materials, some will not make use of the base class feature such as the MeshNormalMaterial. However it does work with most mesh material options such as basic, standard, and phong just to name a s few. This feature also works with line materials and the points materials as well as a great way to style those materials when they are used.
 
 If the geometry does not have a color attribute then one will need to be created for the geometry. If you would like to read more about his topic you might want to check out my [main blog post on color attributes](/2023/01/20/threejs-buffer-geometry-attributes-color/) in buffer geometry objects.
 
@@ -1517,7 +1517,7 @@ renderer.render(scene, camera);
 
 ### 6.4 - Side
 
-The side option will set what side of a face is to be rendered which by default is set to the THREE.FontSide constant. Often I might want to set this to THREE.DoubleSide, and in a few rare cases THREE.BackSide. If you are wondering how the side of a face is determined it has to do with the order of the points in the position attribute of the geometry, or the index of it.
+The side option will set what side of a face is to be rendered which by default is set to the THREE.FontSide constant. Often I might want to set this to THREE.DoubleSide, and in a few rare cases THREE.BackSide. If you are wondering how the side of a face is determined it has to do with the order of the points in the [position attribute of the geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/), or the [index](/2022/12/09/threejs-buffer-geometry-index/) of it.
 
 ```js
 // ---------- ----------
@@ -1560,7 +1560,7 @@ loop();
 
 ## 6.5 - The depth test property to making something show up on top of everything else
 
-Now and then I might end up running into a problem in which I will need to make sure that a certain object will always render on top of everything else regardless of what the status might be in terms of that objects depth relative to the camera and any other objects between such an object and the camera. One way of doing this would be to work out some kind of system for layering, that is to have more than one renderer and therefor canvas element, and then just set the render order of all of these canvas elements in such a way that what I need rendering on top will be drawn to a final canvas element last. Doing something such as that will work of course, but one way to get a desired outcome with a single canvas and  renderer might be to set the depth test option of the material of the object that i want to render on top to false.
+Now and then I might end up running into a problem in which I will need to make sure that a certain object will always render on top of everything else regardless of what the status might be in terms of that objects depth relative to the camera and any other objects between such an object and the camera. One way of doing this would be to work out some kind of system for layering, that is to have more than one renderer and therefor canvas element, and then just set the render order of all of these canvas elements in such a way that what I need rendering on top will be drawn to a final canvas element last. Doing something such as that will work of course, but one way to get a desired outcome with a single renderer might be to set the depth test option of the material of the object that I want to render on top to false.
 
 ```js
 // ---------- ----------
@@ -1593,6 +1593,8 @@ camera.position.set(1, 0.75, 1.5);
 camera.lookAt(0, -0.15, 0);
 renderer.render(scene, camera);
 ```
+
+There still might be some issues when it comes to z order when it comes to a collection of objects, I might also still want to do laying with some projects, but the main thing here is that this disables the threejs internal feature that has to do with the objects position in space relative to the camera.
 
 ## 7 - Blending options 
 
