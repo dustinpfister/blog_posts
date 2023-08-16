@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-15 08:37:24
-version: 1.118
+updated: 2023-08-16 10:57:39
+version: 1.119
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -1360,11 +1360,11 @@ renderer.render(scene, camera);
 
 ## 6 - The Common Base Material class
 
-There are a number of options in the base material class that should work with all materials, but there are some exceptions with some of these features. For example the side option is very much a part of the base material class, but this option has no effect when used with line or point materials. Still there are lots of options in the base material class that do work with more or less all materials and in this section I will be going over a few key examples of these base material class features.
+There are a number of options in the base material class that should work with all materials, to some extend that is the case, but there are some exceptions. For example the side option is very much a part of the base material class, but this option has no effect when used with line or point materials as one would expect. Still there are lots of options in the material class that do work with all materials, or at least most of them to say the least. Maybe one good example would be vertex colors, but even then there are a few mesh material options in which they will not work. In any case there is a lot to be aware of here, and with that said when learning about a specific material option it is a good idea to not just look into the features of the material class, but also the base material class from which it is extended.
 
 ### 6.1 - Transparent and opacity options
 
-The transparent boolen can be used to set transparency on and off for a material. In the event that transparency is on the opacity value can be used to set the global alpha value of the transparency for the material. This feature seems to work okay for just about all mesh materials, and also for points and lines as well.
+The transparent boolean can be used to set transparency on and off for a material, and after that there are a number of other options that can come into play such as the opacity options that can be used to adjust the global alpha values of the material. With some materials there will be even more options such as alpha maps, but for this section I will be sticking mainly with what there is in the core material class. With that said there is working out a demo that involves just the transparent and opacity options then.
 
 ```js
 //-------- ----------
@@ -1387,7 +1387,7 @@ const createCube = function (size, material, x, y, z) {
 //-------- ----------
 // SCENE CHILD OBJECTS
 //-------- ----------
-// mesh objects and mesh materails using opacity
+// mesh objects and mesh materials using opacity
 scene.add( createCube(1, new THREE.MeshNormalMaterial( { transparent: true, opacity: 0.4 } ), 0, 0, 0) );
 scene.add( createCube(1, new THREE.MeshBasicMaterial( { transparent: true, opacity: 0.7 } ), -1.4, -0.5, 0) );
 scene.add( createCube(1, new THREE.MeshPhongMaterial( { transparent: true, opacity: 0.2 } ), -0.4, -0.5, -2) );
@@ -1406,6 +1406,8 @@ camera.position.set(3, 3, 3);
 camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
+
+Here I am using the transparent and opacity options in the normal, basic, and phong mesh materials which all work just fine with this feature. However this also works well in not just other mesh materials, but also line and points material options as well. Sense this is a base material class feature it should work in just about all of them of course, unless there is some reason why not. One exceptions might be the Shader Material if the GLSL code does not make use of it, but that is a matter for a whole other section.
 
 ### 6.2 - Blending
 
