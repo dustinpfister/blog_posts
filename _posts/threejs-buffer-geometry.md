@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-15 09:50:41
-version: 1.70
+updated: 2023-08-16 12:06:35
+version: 1.71
 ---
 
 
@@ -567,6 +567,41 @@ if(THREE.VertexNormalsHelper){
 //-------- ----------
 camera.position.set(0.5, 1, 2);
 camera.lookAt( 0, 0.5, 0);
+renderer.render(scene, camera);
+```
+
+### 3.4 - Apply Quaternion
+
+The apply quaternion method can be used to rotate the geometry by way of a quaternion object rather than using the various rotate methods. These [quaternion objects](/2023/03/24/threejs-quaternion/) are something that you will want to look into more at some point sooner or later as they are very helpful when working out problems that have to do with setting orations of objects, and also in this case geometry.
+
+```js
+//-------- ----------
+// SCENE, CAMERA
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY - rotation by way of quaternion object
+//-------- ----------
+const geometry = new THREE.CylinderGeometry(0, 1, 5, 40, 40);
+const q = new THREE.Quaternion();
+q.setFromAxisAngle( new THREE.Vector3( 0, 0, 1), 45 );
+geometry.applyQuaternion(q);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const material = new THREE.PointsMaterial( { size: 0.1} );
+const points = new THREE.Points( geometry, material );
+scene.add(points);
+scene.add( new THREE.GridHelper( 10, 10 ) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(5, 1, 5);
+camera.lookAt( 0, 0.0, 0);
 renderer.render(scene, camera);
 ```
 
