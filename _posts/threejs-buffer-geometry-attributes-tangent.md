@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1067
-updated: 2023-08-17 05:35:31
-version: 1.1
+updated: 2023-08-17 05:46:40
+version: 1.2
 ---
 
 The tangents attribute of [buffer geometry objects in threejs] can be added to a geometry by calling the compute tangents method of a geometry object instance. I have been piecing together some things as to what this is for, and thus far it would seem that this is something that will come into play when making use of normal maps as a way to address a problem that will come up for indexed geometry. You see when making use of an index to reuse points in the position attribute this will result in also only having as many vertex normals as there are position attribute points. This issue can then result in an typically undesired outcome with shading with materials that use light sources, or materials like the normal material. So then there are two general ways of addressing this, one of which is to not use an index, then other is to use a normal map. So with that said in order to use this normal map I will likely want to have a tangent attribute.
@@ -22,6 +22,10 @@ This is then a blog post on the subject of tangent attributes in buffer geometry
 ### There is the normal map option, and the various other options of mesh materials
 
 Thus far it would seem that the use of tangent attributes will come into play when working out [normal maps](/2021/06/24/threejs-normal-map/) to be used with one of the mesh materials. Speaking of which there is my [main blog post on materials in general](/2018/04/30/threejs-materials/) that you might want to check out if you want to learn more about materials in general. However for the sake of staying on topic, there is just using the [mesh normal material](/2021/06/23/threejs-normal-material/) as that supports the features that I want in order to make use of a normal map and with that the tangent attribute of a geometry.
+
+### A texture will be needed for the normal map
+
+In order to use the normal map option of a material I will need a texture. There is creating a texture in an image editor and loading it in with the texture loader. However for this posts I typically like to use [canvas textures](/2018/04/17/canvas-texture/) and [data textures](/2022/04/15/threejs-data-texture/) as they are a way to create texture with a little javaScript code, or hard coded data that I can work into a nice copy and paste friendly demo.
 
 ### Buffer Geometry objects have a lot more going on
 
@@ -41,7 +45,7 @@ As always I like to start out my post with at least one if not more basic exampl
 
 ### 1.1 - The Compute Tangents method to add a tangent attribute, and normal maps
 
-For this demo I am working out a simple custom geometry that is a kind of Tetrahedron Geometry in that it is just four triangles. The way that I am doing it though is by adding an index, and thus using the same four points in the position attribute rather than having a non indexed geometry of 12 points. So when I call compute vertex normals I end up with four vertex normals as well, which presents a problem. So then in order to address this I can call the compute tangents method to create a tangent attribute after setting up the uv attribute. Now that I have that I can use a normal map to address this, but first I need a texture.
+For this demo I am working out a simple custom geometry that is a kind of Tetrahedron Geometry in that it is just four triangles. The way that I am doing it though is by adding an index, and thus using the same four points in the position attribute rather than having a non indexed geometry of 12 points. So when I call compute vertex normals I end up with four vertex normals as well, which presents a problem. So then in order to address this I can call the compute tangents method to create a tangent attribute after setting up the uv attribute. Now that I have that I can use a normal map to address this, but first I need a texture. So with that said I set up a data texture to just have somehting to work with to find out what the effect is with this.
 
 ```js
 
@@ -105,6 +109,11 @@ const loop = () => {
 loop();
 ```
 
+It is then clear that by working out what the propper RGB values are for the texture I can then adjust the shading to get the object to look the way that it should if it where not indexed.
+
 ## Conclusion
 
-That will be it then for tangent attributes of buffer geometry objects in threejs for now then.
+That will be it then for tangent attributes of buffer geometry objects in threejs for now then. I might get around to expanding this post more at some point if I gain more ground in this area. I do however have a lot of other posts on threejs that I aim to expand on more so, and I can not say that this is something that comes up that much for me thus far. In any case I do at least have the general idea of what this is about worked out to say the least, tangent attributes have a lot to do with normal maps, and normal maps are something of interest when I work out an indexed geometry.
+
+
+
