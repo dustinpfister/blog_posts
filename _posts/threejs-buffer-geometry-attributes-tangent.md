@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1067
-updated: 2023-08-17 05:15:34
-version: 1.0
+updated: 2023-08-17 05:35:31
+version: 1.1
 ---
 
 The tangents attribute of [buffer geometry objects in threejs] can be added to a geometry by calling the compute tangents method of a geometry object instance. I have been piecing together some things as to what this is for, and thus far it would seem that this is something that will come into play when making use of normal maps as a way to address a problem that will come up for indexed geometry. You see when making use of an index to reuse points in the position attribute this will result in also only having as many vertex normals as there are position attribute points. This issue can then result in an typically undesired outcome with shading with materials that use light sources, or materials like the normal material. So then there are two general ways of addressing this, one of which is to not use an index, then other is to use a normal map. So with that said in order to use this normal map I will likely want to have a tangent attribute.
@@ -35,6 +35,76 @@ The source code examples that I have made for this post can be found in the [fol
 
 The revision number that I was using for the demos in this post was [r152, and thus followed the style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) I have set for that revision. 
 
+## 1 - Basic Examples of Tangent attributes
+
+As always I like to start out my post with at least one if not more basic examples of the main subject of the post. With that said in this section I will be starting out with just that. One way to quickly get started would be to just call the compute tangents method, and if I do so with a built in geometry this will often work as the various attributes are there with maybe a few exceptions. When it comes to custom geometry though I will need a position, normal, uv, and index buffer attributes set up first.
+
+### 1.1 - The Compute Tangents method to add a tangent attribute, and normal maps
+
+For this demo I am working out a simple custom geometry that is a kind of Tetrahedron Geometry in that it is just four triangles. The way that I am doing it though is by adding an index, and thus using the same four points in the position attribute rather than having a non indexed geometry of 12 points. So when I call compute vertex normals I end up with four vertex normals as well, which presents a problem. So then in order to address this I can call the compute tangents method to create a tangent attribute after setting up the uv attribute. Now that I have that I can use a normal map to address this, but first I need a texture.
+
+```js
+
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+import { OrbitControls } from 'OrbitControls';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geometry = new THREE.BufferGeometry();
+const data_pos = [ 0,1,0,    0,0,1,    1,0,-1,    -1,0,-1 ];
+geometry.setAttribute('position', new THREE.BufferAttribute( new Float32Array( data_pos ), 3 ) );
+geometry.setIndex( [0,1,2,0,2,3,0,3,1,1,3,2] );
+geometry.computeVertexNormals();
+const data_uv = [ 0.5, 0.5,    0,0,    1,1,    0,1];
+geometry.setAttribute('uv', new THREE.BufferAttribute( new Float32Array( data_uv ), 2 ) );
+geometry.computeTangents();
+// ---------- ----------
+// TEXTURE FOR NORMAL MAP
+// ---------- ----------
+const data_normalmap = [
+    255,0,0,255,    0,0,0,255,    0,0,0,255,    0,0,0,255,
+    0,255,0,255,    0,255,0,255,  0,0,0,255,    0,0,0,255,
+    0,0,0,255,    0,255,0,255,  0,255,0,255,  0,0,0,255,
+    0,255,0,255,    0,255,0,255,  0,255,0,255,  0,255,0,255
+];
+const texture_normal = new THREE.DataTexture( new Uint8Array( data_normalmap ), 4,  4 );
+texture_normal.needsUpdate = true;
+// ---------- ----------
+// MATERIAL
+// ---------- ----------
+const material = new THREE.MeshNormalMaterial({
+    normalMap: texture_normal
+});
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+scene.add( new THREE.GridHelper( 10,10 ) );
+const mesh = new THREE.Mesh( geometry, material);
+scene.add(mesh);
+// ---------- ----------
+// LOOP
+// ---------- ----------
+const contorls = new OrbitControls(camera, renderer.domElement);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+const loop = () => {
+    requestAnimationFrame(loop);
+    renderer.render(scene, camera);
+};
+loop();
+```
+
 ## Conclusion
 
-
+That will be it then for tangent attributes of buffer geometry objects in threejs for now then.
