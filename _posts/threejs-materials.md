@@ -1,12 +1,12 @@
 ---
-title: Materials in threejs an overview options and features
+title: Materials in threejs an overview of options and features
 date: 2018-04-30 09:14:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-16 11:17:54
-version: 1.120
+updated: 2023-08-17 13:44:27
+version: 1.121
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -1598,13 +1598,13 @@ There still might be some issues when it comes to z order when it comes to a col
 
 ## 7 - Blending options 
 
-I covered one demo of the blending option in the above section in which I go over many of the features of the main material class. However I would say that the blending option does very much deserve a section of its own. So I will at least start this section to say the least, and then expand more with additional future edits as I look into this subject about threejs materials more so.
+I covered one demo of the blending option in the above section in which I go over many of the features of the main base material class from which all other materials extend. However I would say that the blending option does very much deserve a section of its own. So I will at least start this section to say the least, and then expand more with additional future edits as I look into this subject about threejs materials more.
 
 ### 7.1 - No Blending compared to default normal blending
 
-I have all ready covered one demo of the no blending value for the blending option. However there are some things that I should do different in this section of blending in depth. To start oput this section I am once again going to go with a demo that makes use of the no blending option over that of the default blending mode which is normal blending. However this time I am going to have two objects with two materials to have something to compare to. 
+I have all ready covered one demo of the no blending value for the blending option. However there are some things that I should do different in this section of blending in depth. To start out this section I am once again going to go with a demo that makes use of the no blending option over that of the default blending mode which is normal blending. However this time I am going to have two objects with two materials to have something to compare to.
 
-Also I am doing something out of the usual when it comes to rendering in this example and will also be doing so for the rest of these demos. The thing that I am doing different here is that I am using a canvas element that I draw to with the plain old 2d drawing content as the element that I am appending to my hard coded HTML. I am then drawing to this plain old 2d canvas with the drawImage method of the 2d canvas and I am passing the canvas of the webgl renderer as the image to draw with. This then allows me to use the 2d drawing context to draw a background that will show up when the canvas of the webgl renderer is transparent.
+Also I am doing something out of the usual when it comes to rendering in this example which is that I am using a canvas element that I draw to with the plain old 2d drawing content as the element that I am appending to my hard coded HTML. I am then drawing to this plain old 2d canvas with the drawImage method of the 2d canvas and I am passing the canvas of the webgl renderer as the image to draw with. This then allows me to use the 2d drawing context to draw a background that will show up when the canvas of the webgl renderer is transparent.
 
 ```js
 //-------- ----------
@@ -1664,6 +1664,8 @@ ctx.fillStyle = gradient;
 ctx.fillRect(0,0, canvas.width, canvas.height);
 ctx.drawImage(renderer.domElement, 0,0, canvas.width, canvas.height );
 ```
+
+When this is up and running the mesh with the material that is using THREE.NoBlending will not blend with the background as one might expect. This is true even thought transparency is set to true, and opacity is lower than one. However the material that is using the default THREE.NormalBlending, which is being made explicit here does blend with the background. So then it would seem that no blending means just simply that, the object will just render over whatever it it that is behind it, and this will always be the case, even if transparency is in effect.
 
 ## 8 - The Material loader, and other loader related concerns
 
