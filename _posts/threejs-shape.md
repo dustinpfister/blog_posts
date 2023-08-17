@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2023-07-27 14:42:58
-version: 1.48
+updated: 2023-08-17 11:15:18
+version: 1.49
 ---
 
 Today I thought I would look into making a few quick examples of the [Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry to create a [buffer geometry](/2021/04/22/threejs-buffer-geometry/). This geometry can then be used in a [mesh object](/2018/05/04/threejs-mesh/), or with anything else that needs a geometry such as with THREE.Points or THREE.LineSegmenets. The shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended with a little depth.
@@ -127,6 +127,48 @@ renderer.render(scene, camera);
 ```
 
 There may be a great deal more to cover when it comes to the THREE.ExtrudeGeometry constructor, but maybe that is all something that I should save for another post.
+
+### 1.3 - Arrays of Shapes
+
+Both the shape and extrude geometry constructors can take an array of shapes rather than just one single shape object. This is important because often the shape class is worked with when using the SVG loader, and when it comes to that often an SVG image will be composed of not just one, but many shapes. This can turn into a complex subject mind you when it comes to setting the z values for each shape, but that might be a matter for another section, or even a whole other post. For the sake of this basic section though there is just simply starting out by passing an array fo shape objects rather than just one shape object.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(4, 4));
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// SHAPES
+//-------- ----------
+const shape1 = new THREE.Shape();
+shape1.moveTo(0, -0.5);
+shape1.lineTo(1, -2);
+shape1.lineTo(-1, -2);
+const shape2 = new THREE.Shape();
+shape2.moveTo(0, 0.5);
+shape2.lineTo(1, 2);
+shape2.lineTo(-1, 2);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.ExtrudeGeometry( [shape1, shape2] );
+//-------- ----------
+// MESH
+//-------- ----------
+const mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
+scene.add(mesh);
+//-------- ---------- 
+// RENDER
+//-------- ----------
+camera.position.set(2, 3, 4);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
 
 ## The Path Class
 
