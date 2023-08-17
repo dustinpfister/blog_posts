@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2023-07-16 12:39:52
-version: 1.53
+updated: 2023-08-17 06:02:29
+version: 1.54
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial), in fact I often seem to use if for that kind of task. One nice thing about it is that it is a way to quickly show some depth without having to do much of anything with textures and light sources. This is not the case when using the [basic material](/2018/05/05/threejs-basic-material/), which is the default material for a mesh, as it is just going to show up as a solid blob of color when just the color option is used. Other options such as the [standard material](/2021/04/27/threejs-standard-material/) will require a [light source](/2022/02/25/threejs-light/) in order to show some depth. However there are still a few other options for the task of having a simple place holder material such as the [depth material](/2021/05/04/threejs-depth-material/), or doing some kind of quick trick with lines as a child object or something to that effect.
@@ -36,7 +36,11 @@ There are also additional attributes that have to do with using [vertex colors](
 
 ### Read more about Buffer Geometry, and Buffer Attributes in general
 
-There is also a wide range of additional prototype methods and properties of a [buffer geometry instance](/2021/04/22/threejs-buffer-geometry/) that are also worth looking into more at some point sooner or later. Attributes to very much play a major part, and spekaing of that there is knowing a thing or two about the [buffer attribute class](/2023/06/22/threejs-buffer-attribute/). However there are a whole lot of buffer geometry class features to be aware of also that have to do with rotation, translation, cloning and so forth.
+There is also a wide range of additional prototype methods and properties of a [buffer geometry instance](/2021/04/22/threejs-buffer-geometry/) that are also worth looking into more at some point sooner or later. Attributes bo very much play a major part, and spekaing of that there is knowing a thing or two about the [buffer attribute class](/2023/06/22/threejs-buffer-attribute/) and with that the normal attribute of geometry that is needed to make use of the normal material. However there are a whole lot of buffer geometry class features to be aware of also that have to do with rotation, translation, cloning and so forth.
+
+### Buffer Geometry tangent attributes and normal maps
+
+There is also the [normal map option](/2021/06/24/threejs-normal-map/) of the mesh normal material and with that also [tangent attributes of buffer geometry](/2023/08/17/threejs-buffer-geometry-attributes-tangent/) objects. These will often need to be used when working with an indexed geometry.
 
 ### Computing the vertex normals attribute
 
