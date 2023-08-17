@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2023-08-17 13:44:27
-version: 1.121
+updated: 2023-08-17 14:29:26
+version: 1.122
 ---
 
 In [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same common base [Material class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, and sprites that stand out from the various materials that are used to change the look of of the typical mesh object. There is also the shader material that is a good way to get started with raw GLSL code, but with training wheels thanks to the shader lib of threejs, that is used to author custom shaders, and thus do just about everything that can be done with materials in a web browser by way of full power that is WebGL. There is then also the Raw Shader material in which one will drop kick the shader lib to the curb and just work directly with GLSL by itself.
@@ -1666,6 +1666,50 @@ ctx.drawImage(renderer.domElement, 0,0, canvas.width, canvas.height );
 ```
 
 When this is up and running the mesh with the material that is using THREE.NoBlending will not blend with the background as one might expect. This is true even thought transparency is set to true, and opacity is lower than one. However the material that is using the default THREE.NormalBlending, which is being made explicit here does blend with the background. So then it would seem that no blending means just simply that, the object will just render over whatever it it that is behind it, and this will always be the case, even if transparency is in effect.
+
+### 7.2 - Additive Blending
+
+This is a way to add one material on top of what is going on behind the material.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER, 2D CANVAS
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild( renderer.domElement );
+//-------- ----------
+// MATERIAL
+//-------- ----------
+const material = new THREE.MeshNormalMaterial({ 
+    blending: THREE.AdditiveBlending, 
+    transparent: true,
+    opacity: 0.5
+});
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.SphereGeometry( 1, 60, 60 );
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+const mesh_1 = new THREE.Mesh(geometry, material);
+mesh_1.position.x = 0;
+scene.add(mesh_1);
+const mesh_2 = new THREE.Mesh(geometry, material);
+mesh_2.position.set( 0,-2, -3 );
+scene.add(mesh_2);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(0, 3, 3);
+camera.lookAt(0, 0, 0);
+scene.background = 0x000000;
+renderer.setClearColor(0x000000, 1);
+renderer.render(scene, camera);
+```
 
 ## 8 - The Material loader, and other loader related concerns
 
