@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1067
-updated: 2023-08-17 05:46:40
-version: 1.2
+updated: 2023-08-17 06:02:29
+version: 1.3
 ---
 
 The tangents attribute of [buffer geometry objects in threejs] can be added to a geometry by calling the compute tangents method of a geometry object instance. I have been piecing together some things as to what this is for, and thus far it would seem that this is something that will come into play when making use of normal maps as a way to address a problem that will come up for indexed geometry. You see when making use of an index to reuse points in the position attribute this will result in also only having as many vertex normals as there are position attribute points. This issue can then result in an typically undesired outcome with shading with materials that use light sources, or materials like the normal material. So then there are two general ways of addressing this, one of which is to not use an index, then other is to use a normal map. So with that said in order to use this normal map I will likely want to have a tangent attribute.
@@ -25,7 +25,7 @@ Thus far it would seem that the use of tangent attributes will come into play wh
 
 ### A texture will be needed for the normal map
 
-In order to use the normal map option of a material I will need a texture. There is creating a texture in an image editor and loading it in with the texture loader. However for this posts I typically like to use [canvas textures](/2018/04/17/canvas-texture/) and [data textures](/2022/04/15/threejs-data-texture/) as they are a way to create texture with a little javaScript code, or hard coded data that I can work into a nice copy and paste friendly demo.
+In order to use the normal map option of a material I will need a texture. There is creating a texture in an image editor and loading it in with the texture loader. However for this posts I typically like to use [canvas textures](/2018/04/17/threejs-canvas-texture/) and [data textures](/2022/04/15/threejs-data-texture/) as they are a way to create texture with a little javaScript code, or hard coded data that I can work into a nice copy and paste friendly demo.
 
 ### Buffer Geometry objects have a lot more going on
 
