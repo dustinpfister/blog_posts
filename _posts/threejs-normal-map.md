@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2023-06-02 08:12:05
-version: 1.30
+updated: 2023-08-17 06:02:29
+version: 1.31
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) which will come into play when it comes to figuring out how light should effect a surface. The normal attribute is also used for things like finding out what side of triangle should be the front side so that one does not have to always render triangles on both sides thus wasting resources. So then this normals attribute is an important part of creating a custom geometry which in my view is what I typically think of next after working out the [position attribute of a geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/). The position attribute as the name suggests is the actually points in space of the geometry. 
@@ -24,7 +24,10 @@ This is not a [getting started type post on threejs](/2018/04/04/threejs-getting
 In order to do anything with a normal map, or any kind of texture map for that matter I am going to want a texture to use for the map. One way to go about getting a texture to work with would be to use the [threejs built in texture loader](/2021/06/21/threejs-texture-loader/), and another way would be to load images by some other means and then use the texture constructor to create a texture object to be used in a material. 
 
 However there are ways to go about creating textures with just javaScript code alone without having to bother with external images, and one way would be to use [canvas elements, and the THREE.Canvas Texture](/2018/04/17/threejs-canvas-texture/) constructor. This is the way that I am making textures for the examples here in this post. There are some additional options when it comes to making textres by way of javaScript code though, one other favorite option of mine would be the [data texture constructor](/2022/04/15/threejs-data-texture/).
-### Some times issues with UV mapping will need to be addressed
+
+### Some times Tangent attribute, UV mapping, and other geometry related concerns will need to be addressed
+
+I might need to [create a tangent attribute](/2023/08/17/threejs-buffer-geometry-attributes-tangent/) for a geometry if there is not one to begin with.
 
 In this post I am sticking with built in geometry constructors that have the UV map set up for me to begin with. However even so I might need to adjust the values of the UV attribute to change how the texture is mapped to the 3d object. Getting into uv mapping might prove to be a little to far outside the scope of this post, but I have wrote a main [post on this topic of UV mapping](/2021/06/09/threejs-buffer-geometry-attributes-uv/).
 
