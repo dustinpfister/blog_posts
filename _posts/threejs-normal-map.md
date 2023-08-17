@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2023-08-17 06:02:29
-version: 1.31
+updated: 2023-08-17 06:07:36
+version: 1.32
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) which will come into play when it comes to figuring out how light should effect a surface. The normal attribute is also used for things like finding out what side of triangle should be the front side so that one does not have to always render triangles on both sides thus wasting resources. So then this normals attribute is an important part of creating a custom geometry which in my view is what I typically think of next after working out the [position attribute of a geometry](/2021/06/07/threejs-buffer-geometry-attributes-position/). The position attribute as the name suggests is the actually points in space of the geometry. 
@@ -45,7 +45,7 @@ The source code for these [examples can be found in the for post](https://github
 
 ### Be mindful of the version numbers used with three.js
 
-When I wrote this post I was using r127 of threejs which was a later version of threejs in early 2021, and the last time I came around to doing a little editing I have found that the examples are still working okay with r135. As time goes by yet even more code breaking changes might be made to the library that will cause the source code examples here to no longer work.
+When I wrote this post I was using r127 of threejs which was a later version of threejs in early 2021, and the last time I came around to doing a little editing I have found that the examples are still [working okay with r146](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). As time goes by yet even more code breaking changes might be made to the library that will cause the source code examples here to no longer work.
 
 ## 1 - Basic normal map example
 
@@ -54,16 +54,26 @@ In order to make even a basic getting started type example of the use of a norma
 I then have a create normal map helper that will create and return a texture that I want by calling my create canvas texture helper and passing the draw function to use. The next helper function that I worked out just creates and returns a Mesh object that uses the box geometry constructor for the geometry, and the standard materials for a material which of course supports normal maps. When creating the instance of the standard material in this helper I of course call my create normal map helper and just set the resulting texture as the value for the normal map property of the material.
 
 ```js
-var createCanvasTexture = function (draw) {
-    var canvas = document.createElement('canvas'),
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPERS
+//-------- ----------
+const createCanvasTexture = function (draw) {
+    const canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
     canvas.width = 32;
     canvas.height = 32;
     draw(ctx, canvas);
     return new THREE.CanvasTexture(canvas);
 };
- 
-var createNormalMap = function(){
+const createNormalMap = function(){
     return createCanvasTexture(function (ctx, canvas) {
         ctx.lineWidth = 1;
         ctx.fillStyle = new THREE.Color(1.0, 1.0, 1.0).getStyle();
@@ -74,8 +84,7 @@ var createNormalMap = function(){
         ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
     });
 };
- 
-var createNormalMapCube = function(){
+const createNormalMapCube = function(){
     return new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshStandardMaterial({
@@ -83,26 +92,21 @@ var createNormalMapCube = function(){
             normalMap: createNormalMap()
         }));
 };
- 
-// scene
-var scene = new THREE.Scene();
- 
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
 // mesh
-var box = createNormalMapCube();
-scene.add(box);
- 
+const mesh1 = createNormalMapCube();
+scene.add(mesh1);
 // light
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
-light.position.set(8, 6, 2);
-scene.add(light);
- 
-// camera, render
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const pl = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
+pl.position.set(8, 6, 2);
+scene.add(pl);
+//-------- ----------
+// RENDER
+//-------- ----------
 camera.position.set(1, 1, 1);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
@@ -113,8 +117,19 @@ In order to gain a better sense of what kind of effect the normal map has to the
 So for this example I started out with my basic example, but I made some changes so that I can call the draw method over and over again in a loop rather than just once, and being done with it. So my create canvas texture helper function now returns an object that contains the texture as a property of the object, and also references to the canvas element, and the 2d drawing context.
 
 ```js
-var createCanvasTexture = function (draw) {
-    var canvas = document.createElement('canvas'),
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// HELPER FUNCTIONS
+//-------- ----------
+const createCanvasTexture = function (draw) {
+    const canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
     canvas.width = 64;
     canvas.height = 64;
@@ -125,22 +140,17 @@ var createCanvasTexture = function (draw) {
         ctx: ctx
     };
 };
- 
-var draw = function (ctx, canvas, x, y, color) {
+const draw = function (ctx, canvas, x, y, color) {
     x = x === undefined ? 1 : x;
     y = y === undefined ? 1 : y;
     color = color === undefined ? new THREE.Color(1.0, 1.0, 0.0) : color;
     ctx.lineWidth = 1;
     ctx.fillStyle = new THREE.Color(1.0, 1.0, 1.0).getStyle();
     ctx.fillRect(0, 0, canvas.width, canvas.height);
- 
     ctx.strokeStyle = color.getStyle();
     ctx.strokeRect(x, y, canvas.width - ( x * 2 ), canvas.height - ( y * 2));
 };
- 
-var canvasObj = createCanvasTexture(draw);
- 
-var createNormalMapCube = function(){
+const createNormalMapCube = function(canvasObj){
     return new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshStandardMaterial({
@@ -148,43 +158,38 @@ var createNormalMapCube = function(){
             normalMap: canvasObj.texture
         }));
 };
- 
-// scene
-var scene = new THREE.Scene();
- 
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
 // mesh
-var box = createNormalMapCube();
-scene.add(box);
- 
+const canvasObj = createCanvasTexture(draw);
+const mesh1 = createNormalMapCube(canvasObj);
+scene.add(mesh1);
 // light
-var light = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
-light.position.set(8, 6, 2);
-scene.add(light);
- 
+const pl = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
+pl.position.set(8, 6, 2);
+scene.add(pl);
+//-------- ----------
+// ANIMATION LOOP
+//-------- ----------
 // camera, render
-var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(1, 1, 1);
 camera.lookAt(0, 0, 0);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(640, 480);
-document.getElementById('demo').appendChild(renderer.domElement);
- 
 // UPDATE
-var update = function(secs, per, bias, frame, maxFrame){
-    var a = 1 + Math.round(15 * bias),
+const update = function(secs, per, bias, frame, maxFrame){
+    const a = 1 + Math.round(15 * bias),
     color = new THREE.Color(1.0, bias, 0.0);
     draw(canvasObj.ctx, canvasObj.canvas, a, a, color);
     canvasObj.texture.needsUpdate = true;
     renderer.render(scene, camera);
 };
- 
 // LOOP
-var fps = 30,
-lt = new Date(),
-frame = 0,
+const fps = 30,
 maxFrame = 90;
-var loop = function () {
-    var now = new Date(),
+let lt = new Date(),
+frame = 0;
+const loop = function () {
+    const now = new Date(),
     per = frame / maxFrame,
     bias = 1 - Math.abs(per - 0.5) / 0.5,
     secs = (now - lt) / 1000;
