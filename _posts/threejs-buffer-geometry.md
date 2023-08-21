@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-16 12:06:35
-version: 1.71
+updated: 2023-08-21 11:48:49
+version: 1.72
 ---
 
 
@@ -602,6 +602,48 @@ scene.add( new THREE.GridHelper( 10, 10 ) );
 //-------- ----------
 camera.position.set(5, 1, 5);
 camera.lookAt( 0, 0.0, 0);
+renderer.render(scene, camera);
+```
+
+### 3.5 - The center method
+
+If I just want to quickly center a geometry based on the current state of the bound box property of the geometry I can just simply call the center method. If the bound box property is not there, then it will be created or updated. Also this should go without saying, but yes I will need a position attribute first of course. So then in this demo I am just creating a few points in a position attribute and then drawing two triangles with an index. I am then creating the normals attribute by calling the compute vertex normals method, and then after that I am centering the geometry as the points are all positive for this and I want them to be centered. This is a nice quick way to just center, but it is not at all a replacement for the translate method.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.BufferGeometry();
+const vertices = new Float32Array([ 0,0,0,    2,0,0,    0,2,0,    2,2,0 ]);
+geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+geometry.setIndex([0,1,2,1,3,2]);
+geometry.computeVertexNormals();
+geometry.center();
+//-------- ----------
+// MESH, MATERIAL
+//-------- ----------
+const mesh = new THREE.Mesh(
+    geometry,
+    new THREE.MeshNormalMaterial({
+        side: THREE.DoubleSide
+    })
+);
+scene.add(mesh);
+camera.lookAt(mesh.position)
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(0, 1, 4);
+camera.lookAt( 0, 0.5, 0 );
 renderer.render(scene, camera);
 ```
 
