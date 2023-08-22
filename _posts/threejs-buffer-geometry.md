@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-21 11:48:49
-version: 1.72
+updated: 2023-08-22 11:19:36
+version: 1.73
 ---
 
 
@@ -346,7 +346,9 @@ renderer.render(scene, camera);
 
 ## 2 - Working with light
 
-Now it is time to see how a custom geometry works with a situation involving a few light sources, and how the use of a materials that will respond to light will work with the custom geometry as well. So then in this section I will be going over code in which I am working out some simple custom geometry, and then using one or more light sources in the scene as well while I am at it. For the most part it is just the position attribute and the normal attribute that is of concern if I only care about solid color shading for each triangle. However the uv attribute will very much be needed as well if I want to add color maps, and also of course all the various other maps that are used for applying texture as well.
+Now it is time to see how a custom geometry works with a situation involving a few light sources, and how the use of a materials that will respond to light will work with the custom geometry as well. So then in this section I will be going over code in which I am working out some simple custom geometry, and then using one or more light sources in the scene. For the most part it is just the position attribute and the normal attribute that is of concern if I only care about solid color shading for each triangle. There are some exceptions to this though when it comes to getting into indexed geometry, and with that tangent attributes and normal maps that will be used with the material.
+
+The uv attribute will very much be needed as well if I want to add color maps, and also of course all the various other maps that are used for applying texture such as the normal maps that are used to address problems with indexed geometry. With all of that said I think that it is called for to have a whole section in this post on the subject of light, and with that overlap between light, geometry, and materials.
 
 ### 2.1 - Simple two triangle demo with Directional light
 
