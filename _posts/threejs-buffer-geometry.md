@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-22 12:12:54
-version: 1.74
+updated: 2023-08-23 12:58:49
+version: 1.75
 ---
 
 
@@ -732,6 +732,52 @@ camera.lookAt(mesh.position)
 // RENDER
 //-------- ----------
 camera.position.set(0, 1, 4);
+camera.lookAt( 0, 0.5, 0 );
+renderer.render(scene, camera);
+```
+
+### 3.6 - Translate Geometry
+
+The translate method of the buffer geometry class can be used to move around the geometry relative to the origin. This can be used in conjunction with the position property of the object 3d class that is used to set the position of the containing object rather that the geometry. Sense the act or translating a geometry can often result in the use of more overhead translation of geometry is typicality done just one to adjust things and then object3c lass level feature are used from there.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry_source = new THREE.BufferGeometry();
+const vertices = new Float32Array([ -1,-1,0,    1,-1,0,    -1,1,0,    1,1,0 ]);
+geometry_source.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+geometry_source.setIndex([0,1,2,1,3,2]);
+geometry_source.computeVertexNormals();
+//-------- ----------
+// MESH, MATERIAL
+//-------- ----------
+[ [0,1,0], [1,0,-1], [0,1,-4], ].forEach( (pos, i, arr) => {
+    const geometry = geometry_source.clone().translate( pos[0], pos[1], pos[2]);
+    const mesh = new THREE.Mesh(
+        geometry,
+        new THREE.MeshBasicMaterial({
+            side: THREE.FrontSide,
+            transparent: true,
+            opacity: 0.5
+        })
+    );
+    mesh.renderOrder = arr.length - i;
+    scene.add(mesh);
+});
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(-0.25, 1, 4);
 camera.lookAt( 0, 0.5, 0 );
 renderer.render(scene, camera);
 ```
