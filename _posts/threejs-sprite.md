@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1068
-updated: 2023-08-23 12:01:43
-version: 1.1
+updated: 2023-08-23 12:12:24
+version: 1.2
 ---
 
 There are [Sprite objects](https://threejs.org/docs/#api/en/objects/Sprite) in threejs that are a special kind of Object3d class based object that is a simple 2d image that always faces the camera. These kinds of objects will then come into play with certain kinds of tasks in which they might be called for such as making a 2d overlay, or making the lowest resource heavy kind of state of an object when working out Level Of Detail objects. These kinds of objects will not work with the usual mesh materials, as such there is a special kind of material that needs to be used called just simply the sprite material. There are then a lot of little features to be aware of when it comes to using these objects, and with that the material that is used with them. So I thought I would start at least one post on this subject to write about a few things that I have worked out thus far on the topic of sprite objects in threejs.
@@ -45,8 +45,11 @@ When I first wrote this blog post I was using [r152 of threejs](https://github.c
 
 ## 1 - Some Basic Sprite Object demos
 
+As always I like to start out my blog posts on threejs topics with a basic section at the very least. That is to have a few very simple demos of the subject which in this case is sprite objects. With that said in this first section I will be doing just that, nothing fancy or two complex. Just nice, simple getting started type examples. So then these demos here will mainly just involve a single sprite object, and maybe a few other objects in the scene as well. There is also touching base on at least a few simple features of the sprite material such as the map option, and with that ways to create textures with a little javaScript code rather than loading an external asset.
 
 ### 1.1 - Sprite Object Hello World with data textures
+
+For this first demo I am create a texture by way of Three.DataTexture, and then using that with the map option of a sprite material. I then create the sprite object by just calling THREE.Sprite, and then pass the sprite material as the first and only argument when doing so. I count make this example yet even more basic by just calling the sprite material constructor with no options at all and use just the color option of the material. However I am sure that most people will want to get started with textures right away with these as well and the use of data textures is a nice way to bake th texture into the code examples with something like this.
 
 ```js
 // ---------- ----------
@@ -99,6 +102,7 @@ renderer.render(scene, camera);
 
 ### 1.2 - Canvas Textures and depth test option of the sprite material
 
+Another way to go about creating a texture with a little JavaScript code would be to make use of canvas textures. In many ways one might prefer to create textures this was as there is everything to work with in the 2d drawing context of canvas elements to sue to create the state of the texture. However another major part of this demo is the use of the depth test option of the common material class. This is a way to make it so that no depth test is preferred with the object which results in the sprite being rendered on top of everything else in the scene always. This is then useful if for example I want to use sprite objects as a way to define a simple 2d cursor that will always render on top of everything else in the scene.
 
 ```js
 // ---------- ----------
@@ -174,6 +178,8 @@ renderer.render(scene, camera);
 ```
 
 ### 1.3 - Rotation
+
+There is then the question of how to rotate these kinds of objects, with that said there is the rotation option of the sprite material that seems to work well with this kind of task.
 
 ```js
 // ---------- ----------
