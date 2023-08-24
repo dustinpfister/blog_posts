@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-23 12:58:49
-version: 1.75
+updated: 2023-08-24 12:13:28
+version: 1.76
 ---
 
 
@@ -779,6 +779,53 @@ geometry_source.computeVertexNormals();
 //-------- ----------
 camera.position.set(-0.25, 1, 4);
 camera.lookAt( 0, 0.5, 0 );
+renderer.render(scene, camera);
+```
+
+### 3.7 - The Set from points method
+
+Say that you are in a situation in which you have an array of vector3 objects and you just simply want to create a geometry from this array of vector3 objects. One way to do so would be to just simply create a blank buffer geometry object, and then call the [set from points method](/2023/01/05/threejs-buffer-geometry-set-from-points/) and pass the array of vector3 objects. This will result in a position attribute being added to the buffer geometry that has the values of the vector3 objects as the values for each vertex.
+
+There is a whole lot more to write about when it comes to how to get a geometry that is created this way to work well with mesh objects mind you. There is not just the positions of each vertex but the order of each vertex, or the order of the position attribute index values that you given for an index property of a geometry that very much matter. Also there is much more that just the position attribute that matters when it comes to making geometry that will work well with mesh objects. However this is very much a first step, and also when it comes to using an alternative to mesh objects such as Points it can even prove to be a done deal depending on what you are trying to accomplish.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// POINTS - array of Vector3 Objects
+// ---------- ----------
+const points_array = [
+    new THREE.Vector3( -1, -1,  1),
+    new THREE.Vector3( -1, -1, -1),
+    new THREE.Vector3(  1, -1,  1),
+    new THREE.Vector3(  1, -1, -1),
+    new THREE.Vector3( -1,  1,  1),
+    new THREE.Vector3( -1,  1, -1),
+    new THREE.Vector3(  1,  1,  1),
+    new THREE.Vector3(  1,  1, -1),
+];
+// ---------- ----------
+// GEOMETRY - using the setFromPoints method to create one from points_array
+// ---------- ----------
+const geometry = new THREE.BufferGeometry();
+geometry.setFromPoints(points_array);
+// ---------- ----------
+// Points - using geometry with THREE.Points rather than THREE.Mesh
+// ---------- ----------
+const material = new THREE.PointsMaterial({ color: 0xffff00, size: 0.25 });
+scene.add( new THREE.Points(geometry, material) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 3, 4);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
