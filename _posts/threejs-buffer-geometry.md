@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-24 12:13:28
-version: 1.76
+updated: 2023-08-28 09:43:31
+version: 1.77
 ---
 
 
@@ -821,6 +821,40 @@ geometry.setFromPoints(points_array);
 // ---------- ----------
 const material = new THREE.PointsMaterial({ color: 0xffff00, size: 0.25 });
 scene.add( new THREE.Points(geometry, material) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 3, 4);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 3.8 - The Clone Method for making quick copies
+
+If I am ever in a situation in which I just need to make a new buffer geometry object that is a clone of another I can always just call the clone method and then do whatever I need to do with this clone. When doing so it will not effect the source geometry form which I have made the clone from. In this demo I am making a clone of a cone geometry, I am then rotating and translate the clone. In then make another clone of which is the same as the source geometry as the changes that I made only effect the clone and not the source.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geo_source = new THREE.ConeGeometry(0.5, 1, 20, 20);
+const geo1 = geo_source.clone().rotateX( Math.PI / 180 * 45 ).translate(-2,0,0);
+const geo2 = geo_source.clone();
+// ---------- ----------
+// MATERIAL, MESH, GRID
+// ---------- ----------
+const material = new THREE.MeshNormalMaterial();
+const mesh1 = new THREE.Mesh(geo1, material);
+const mesh2 = new THREE.Mesh(geo2, material);
+scene.add(mesh1, mesh2, new THREE.GridHelper(10,10) );
 // ---------- ----------
 // RENDER
 // ---------- ----------
