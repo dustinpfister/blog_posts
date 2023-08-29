@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-28 09:43:31
-version: 1.77
+updated: 2023-08-29 12:23:04
+version: 1.78
 ---
 
 
@@ -85,7 +85,6 @@ const mesh = new THREE.Mesh(
     })
 );
 scene.add(mesh);
-camera.lookAt(mesh.position)
 //-------- ----------
 // RENDER
 //-------- ----------
@@ -863,11 +862,55 @@ camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
-## 4 - The Buffer Geometry loader
+## 4 - Built in Geometry Constructor functions
+
+Although in time it might be best to work out custom geometry by way to modeling things out in an external program and then exporting by one of the many options for loading geometry in the form on an external asset, there is also creating geometry by way of some javaScript code also. I have all ready covered a number of ways to do so but there is still a number of built in geometry construction functions built into the threejs library itself. There is just making use of these when it is just a simple shape that is needed. Also there is looking into how to make ones own geometry constructor functions by extending from one of these, in fact some of them are just that. This might need to be a hole other subject maybe, but for now in this section I will be going over a few of the built in options to begin with.
+
+### 4.1 - The Box Geometry
+
+The [Box Geometry constructor](/2021/04/26/threejs-box-geometry) when called can take the first three arguments as width height and depth for an over all size of a box shape. There is then an additional set of three arguments that can also be given after this that can be used to set the point density of the over all geometry that comes into play in some cases such as when using it with TREE.Points.
+
+You might thing that is all there is to it then, just give  it a few arguments and you are done. However there is a whole lot more to be aware of with this one. Such as the fact that a groups property will come set up with it, and can be sued right away when using an array of materials. Another major thing about this geometry though I have found is the nature of the index. It is not fully indexed as some might expect, this might be so that it can be used right away with out having to get into working out a normal map for it which would end up being the case for a fully indexed geometry like this. It is not fully non indexed also though as you will come to find when it comes to writing code that has to do with mutation of the position attribute over time.
+
+For most practical purposes though the Box geometry class built into threejs itself will work just fine. It is only a few rare, weird edges cases where one might want to write an alternative to this.
+
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const w=1, h=3, d=2;
+const ws = 8, hs=16, ds = 32;
+const geometry = new THREE.BoxGeometry(w, h, d, ws, hs, ds);
+//-------- ----------
+// POINTS, GRID HELPER
+//-------- ----------
+const material = new THREE.PointsMaterial({ size: 0.05, color: 0x00ffff });
+const points = new THREE.Points(geometry, material);
+scene.add(points);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 2, 3);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
+```
+
+
+## 5 - The Buffer Geometry loader
 
 If I have a josn file to load that is formatted the way as I have outline in the above example for doing so I can use the [buffer geometry loader](https://threejs.org/docs/#api/en/loaders/BufferGeometryLoader) to load the json text file. I just need to create an instance of the threejs buffer geometry loader, and then call the load method of the loader instance that is returned when calling the constructor function with the new keyword. Well at least that might be all that I need to do if I just need to load one file rather than a massive collection of these kinds of JSON files. When it comes to loading a lot of JSON files, and not just JSON files of geometry but all kinds of various assets, and having an over all progress bar and so on that is where this kind of thing can turn into a bit of a rabbit hole. Still it goes without saying that this is something that I should at least write a thing or two about in this general overview of buffer geometry. If you want to read more about what I have in terms of this kind of topic you might want to check out [my main blog post on the buffer geometry loader](/2018/04/12/threejs-buffer-geometry-loader/).
 
-### 4.1 - Basic single file buffer geometry loader example
+### 5.1 - Basic single file buffer geometry loader example
 
 The most basic form of this would be to just load a single JSON file that contains buffer geometry data with the Buffer Geometry loader. To do this I just need to create a single buffer geometry loader object by calling THREE.BufferGeometryLoader(). Once I have a buffer geometry loader instance I can then call the load method, and pass the url to the JSON file as the first argument. After passing the url, I will then also want to pass a function that I will want to fire when this file is done loading as the second argument. There are additional functions that I might want to pass after that, but for this basic example of the buffer geometry loader I might just keep it with that for now.
 
@@ -910,7 +953,7 @@ loader.load(
 
 Something like this might work okay if I just want to load a single JSON file. However there is a whole lot more to this sort of thing when it comes to how to go about parsing a large collection of files.
 
-### 4.2 - Loading more and one file with THREE.LoadingManager, and using Promsies.
+### 5.2 - Loading more and one file with THREE.LoadingManager, and using Promsies.
 
 This is where things can start to get a little messy I have found thus far. However there are tools to work with in threejs, and also of course many native javaScript features that can help in the process of doing this sort of thing. For this example I am now making use of the [loading manager class](https://threejs.org/docs/#api/en/loaders/managers/LoadingManager) as a way to define some callbacks that I would like to fire when all of the files that I want to load are in fact done loading. On top of this I am also now making use of those additional call back functions that can be passed when calling the buffer geometry loader as well. The end result is a load buffer geometry JSON helper function that will load not just one url, but an array of urls, and if all goes well will resolve with a scene object where each child of the scene object contains the geometry of each file that was loaded.
 
@@ -983,11 +1026,11 @@ loadBufferGeometryJSON(URLS, 2, 10, material)
 });
 ```
 
-## 5 - Morph Attributes
+## 6 - Morph Attributes
 
 In the opening sections of this post I wrote a thing or two about the various attributes that are used to compose a buffer geometry object. There is the position attribute that is the actual points in space which can be index, or not indexed. Then there is the normal attribute that can be used to define what side of a face is the front side of a face and is also used in the process of rendering with many materials. There is also the uv attribute which is what it is used to define what the offsets are in a texture when it comes to mapping a 2d texture to a 3d object. However in this section I will now be writing about [morph attributes](/2023/02/03/threejs-buffer-geometry-morph-attributes) where are a way to go about defining an array of attributes for each of these attributes each of which is a state for all of them. These morph attributes can then be used to change from one state to another, not just with the position attribute but all of the various attributes.
 
-### 5.1 - Basic example on morph attributes
+### 6.1 - Basic example on morph attributes
 
 This is a basic example on morph attributes that I copied over from my post on the subject that is based on one of the official examples on morph attributes that can be [found here](https://github.com/mrdoob/three.js/blob/r146/examples/webgl_morphtargets.html). It involves just creating a buffer geometry with the built in box geometry constructor function. Then one just needs to start out by creating an empty array for the position attribute in the morph attributes property of the returned geometry. After that it is a matter of adding at least one or more elements to this array that are other states to morph to from the starting box geometry state. For this there is some code that will create a new position attribute that is a sphere like state to transition to for each point in this box geometry. 
 
