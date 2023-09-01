@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-08-31 13:02:47
-version: 1.80
+updated: 2023-09-01 15:20:23
+version: 1.81
 ---
 
 
@@ -968,6 +968,76 @@ scene.add( new THREE.GridHelper(10, 10) );
 // RENDER
 //-------- ----------
 camera.position.set(4, 2, 3);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
+```
+
+### 4.4 - The cone geometry
+
+The [cone geometry](/2019/07/31/threejs-cone/) class can be used to create a cone geometry by giving a first argument that is the radius of the base of the cone, followed by the section argument that will be the length of the cone. After that there are additional arguments that have to do with the number of divisions that will result in a denser geometry with higher values. One thing that I have notices with this is that if I want to use the look at method of the object3d class based object that will be used with the geometry I will often want to use the rotate methods to adjust the geometry so that the point of the cone will face the point in space that is given with the look at method.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.ConeGeometry(0.75, 3, 40, 40);
+geometry.rotateX(Math.PI * 1.5);
+geometry.rotateY(Math.PI * 1.0);
+//-------- ----------
+// POINTS, GRID HELPER
+//-------- ----------
+const material = new THREE.MeshNormalMaterial({  });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+mesh.lookAt( 0, 0, 1);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
+```
+
+### 4.5 - The cylinder geometry
+
+The [cylinder geometry](/2022/08/12/threejs-cylinder-geometry/) can be used to create a geometry of the cylinder or can like shape if you prefer. However it can also be used to create a lot of other shapes and also can be used as another way to create a cone like shape as well as I am doing in this demo. The reason why is because I can give a radius for both sides of the cylinder so by giving a radius value of zero for one side I can then use the other radius value to create the base of a cone. There is then the length argument and then once again additional argument that will set the density of the geometry as well.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.CylinderGeometry(0, 0.75, 4, 40, 40);
+geometry.rotateX(Math.PI * 1.5);
+geometry.rotateY(Math.PI * 1.0);
+//-------- ----------
+// POINTS, GRID HELPER
+//-------- ----------
+const material = new THREE.MeshNormalMaterial({  });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+mesh.lookAt( 0, 0, 1);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
 camera.lookAt( 0, 0, 0 );
 renderer.render(scene, camera);
 ```
