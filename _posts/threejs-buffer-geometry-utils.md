@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1069
-updated: 2023-09-01 14:56:39
-version: 1.2
+updated: 2023-09-02 09:56:30
+version: 1.3
 ---
 
 There is the core threejs library itself and then there is a whole lot of additional tools to work with as well that can be pulled from the threejs Gitbub repository. One of the manly assets that there are to make use of there is the [buffer geometry utilities module](https://threejs.org/docs/#examples/en/utils/BufferGeometryUtils). This module is packed with a wide range of utility methods that are bot backed into the buffer geometry class itself, but might still prove to be useful for many various cases. One method that I have used thus far is the merge Geometries method which as the name suggests is just simply a way to create a single geometry from an array of geometry objects. There are of course a whole lot of other tools in this module a such a I have started this blog post as a way to park some notes on this subject.
@@ -63,6 +63,49 @@ const geometry = BufferGeometryUtils.mergeGeometries([ new THREE.SphereGeometry(
 //-------- ----------
 const mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial() );
 scene.add(mesh);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 1, 3);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
+```
+
+### 1.2 - Estimate Bytes Used
+
+There is a method that can be used to Estimate the number of bytes that is used by the geometry. The Docs say that this will just estimate the amount of space that the attributes used up, so it would stand to reason that the over all geometry will take up some more space beyond that depending on what else is added in the various propert8es of the geometry. Still this tool will help to get a ruff idea at least for starters.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+import * as BufferGeometryUtils from 'BufferGeometryUtils';
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry_1 = new THREE.PlaneGeometry(1, 1, 1, 1);
+const geometry_2 = new THREE.PlaneGeometry(1, 1, 10, 10);
+console.log( BufferGeometryUtils.estimateBytesUsed( geometry_1 ) ); // 140
+console.log( BufferGeometryUtils.estimateBytesUsed( geometry_2 ) ); // 5072
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const material = new THREE.MeshNormalMaterial({ wireframe: true, wireframeLinewidth: 3 });
+const mesh1 = new THREE.Mesh( geometry_1, material);
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh( geometry_2, material);
+mesh2.position.x = -2;
+scene.add(mesh2);
 //-------- ----------
 // RENDER
 //-------- ----------
