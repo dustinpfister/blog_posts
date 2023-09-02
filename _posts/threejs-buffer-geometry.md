@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-01 15:20:23
-version: 1.81
+updated: 2023-09-02 13:36:05
+version: 1.82
 ---
 
 
@@ -1041,6 +1041,42 @@ camera.position.set(2, 2, 2);
 camera.lookAt( 0, 0, 0 );
 renderer.render(scene, camera);
 ```
+
+### 4.6 - Dodecahedron
+
+A Dodecahedron just simply means 12 sides, and by default that is what this geometry option will give you. There is then two arguments that can be given one of which is a radius, and the second one is a detail value. This detail value can then be used to increases the number of points which will then result in a geometry that is no longer a Dodecahedron. It would then seem that this is another way to go about creating a kind of sphere like geometry then. In some cases this might be what one would want to use actually sense the sphere geometry has a very different process of creating a kind of sphere like shape.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const radius = 1;
+const detail = 0;
+const geometry = new THREE.DodecahedronGeometry(radius, detail);
+//-------- ----------
+// MESH, GRID HELPER
+//-------- ----------
+const material = new THREE.MeshNormalMaterial({  });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+mesh.lookAt( 0, 0, 1);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(2, 2, 2);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
+```
+
 
 ## 5 - The Buffer Geometry loader
 
