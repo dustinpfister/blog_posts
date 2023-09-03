@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1069
-updated: 2023-09-02 09:56:30
-version: 1.3
+updated: 2023-09-03 11:23:23
+version: 1.4
 ---
 
 There is the core threejs library itself and then there is a whole lot of additional tools to work with as well that can be pulled from the threejs Gitbub repository. One of the manly assets that there are to make use of there is the [buffer geometry utilities module](https://threejs.org/docs/#examples/en/utils/BufferGeometryUtils). This module is packed with a wide range of utility methods that are bot backed into the buffer geometry class itself, but might still prove to be useful for many various cases. One method that I have used thus far is the merge Geometries method which as the name suggests is just simply a way to create a single geometry from an array of geometry objects. There are of course a whole lot of other tools in this module a such a I have started this blog post as a way to park some notes on this subject.
@@ -33,7 +33,7 @@ When I first wrote this post I was using [r152 of threejs, and with that I was f
 
 ## 1 - Basic Examples of Buffer Geometry Utils
 
-For this section I will be starting out with just a few basic examples of what there is to work with in the buffer geometry utils module.
+For this section I will be starting out with just a few basic examples of what there is to work with in the buffer geometry utils module. Some of the tools to work with might require a lot of additional aspects of things to be aware of so I will not be getting to everything here. Even with the features that I will be getting to in this section there might end up being additional issues that will have to be addressed. For example there is just merging two geometries together as one, however I am sure there will be a lot of situations in which you will still want to edit things a bit more beyond that.
 
 ### 1.1 - The Merge Method
 
