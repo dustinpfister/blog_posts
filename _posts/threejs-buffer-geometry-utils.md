@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1069
-updated: 2023-09-03 11:23:23
-version: 1.4
+updated: 2023-09-03 12:42:12
+version: 1.5
 ---
 
 There is the core threejs library itself and then there is a whole lot of additional tools to work with as well that can be pulled from the threejs Gitbub repository. One of the manly assets that there are to make use of there is the [buffer geometry utilities module](https://threejs.org/docs/#examples/en/utils/BufferGeometryUtils). This module is packed with a wide range of utility methods that are bot backed into the buffer geometry class itself, but might still prove to be useful for many various cases. One method that I have used thus far is the merge Geometries method which as the name suggests is just simply a way to create a single geometry from an array of geometry objects. There are of course a whole lot of other tools in this module a such a I have started this blog post as a way to park some notes on this subject.
@@ -113,6 +113,66 @@ camera.position.set(2, 1, 3);
 camera.lookAt( 0, 0, 0 );
 renderer.render(scene, camera);
 ```
+
+## 2 - Indexed geometry and the to Triangles Draw Mode Method
+
+One of the many methods I would like to look into more in this utilties module is the to triangles draw modle method. This will return a new indexed geometry from the given buffer geometry, and one of two options for triangle mode constants. Like always the threejs docs do not expand a lot on these methods and the related topics such as the constant options. So then it makes sense to try to look into these things more elsewhere, and also learn by doing by working out a few demos.
+
+### 2.1 - Getting started with to triangles draw mode
+
+For this demo I just started to get a crude idea of how this method works. The basic use of it is simple enough, just call the method, pass a geometry as the first argument, and then one of the two options for triangle mode constants. The two options for the triangle mode options are THREE.TriangleStripDrawMode, and THREE.TriangleStripDrawMode. One thing that I have found thus far is although the threejs docs say that this returns a new geometry, it does still mutate the one that is given by way of the argument by adding an index to it. So to deal with this I just call the clone method off of the source geometry so it mutates a copy of the source geometry.
+
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+import * as BufferGeometryUtils from 'BufferGeometryUtils';
+//-------- ----------
+// SCENE, CAMERA, RENDERER, GRID
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add( new THREE.GridHelper(10, 10));
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geo_source_indexed = new THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
+const geo_source = geo_source_indexed.clone().toNonIndexed();
+const geometry1 = BufferGeometryUtils.toTrianglesDrawMode(geo_source.clone(), THREE.TriangleStripDrawMode )
+const geometry2 = BufferGeometryUtils.toTrianglesDrawMode(geo_source.clone(), THREE.TriangleStripDrawMode );
+geometry1.computeVertexNormals();
+geometry2.computeVertexNormals();
+console.log( geo_source_indexed.index.count ); // 36
+console.log( geo_source.index ); // null
+console.log( geometry1.index.count );  // 102
+console.log( geometry2.index.count );  // 102
+//-------- ----------
+// POINTS
+//-------- ----------
+const material =  new THREE.MeshNormalMaterial();
+const mesh = new THREE.Mesh(geo_source, material);
+scene.add(mesh);
+const mesh1 = new THREE.Mesh(geometry1, material);
+mesh1.position.set(-1, 0, 1.5);
+scene.add(mesh1);
+const mesh2 = new THREE.Mesh(geometry2, material);
+mesh2.position.set(1, 0, 1.5);
+scene.add(mesh2);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(4, 3, 3);
+camera.lookAt(mesh.position);
+renderer.render(scene, camera);
+```
+
+The good news is that this method does very much create an index for a geometry in the event that it odes have one. The bad news is that thus far this does not seem to work out so well when compared to what is set up to begin with in the box geometry I used here. The count of triangles is way higher, and also the end result does not look so great. This might very much be a user error on my part, I will have to look into this a bit more to be sure if I get some time to do so. However thus far I am thinking that this is not a magic wand when it comes to working out an index for a geometry. In some cases there will need to be custom logic for a geometry, or maybe even something that needs to be done manually in an editor.
+
 
 ## Conclusion
 
