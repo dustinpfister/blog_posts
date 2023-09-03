@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-02 13:36:05
-version: 1.82
+updated: 2023-09-03 13:01:25
+version: 1.83
 ---
 
 
@@ -1077,6 +1077,39 @@ camera.lookAt( 0, 0, 0 );
 renderer.render(scene, camera);
 ```
 
+### 4.7 - Edges and Line Segements
+
+The [Edges geometry](/2021/05/31/threejs-edges-geometry/) is another options that you might want to make use of in some select use cases. One use case would be if I want to create a geometry that will work well with Line Segments objects from another geometry that exists before hand. In fact thus far this seems like the typical use case for this geometry constructor With that aid in order to use it at all you first need a geometry to begin with as that is what needs to be passed as the first argument. For this demo I am just creating a box geometry, and then passing that as the first argument. After that I can give an angle threshold that might prove to be useful for some cases, but as far as this demo is concerned the default value of 1 for this works just fine.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geo_source = new THREE.BoxGeometry();
+const threshold_angle = 1;
+const geometry = new THREE.EdgesGeometry( geo_source, threshold_angle);
+//-------- ----------
+// MESH, GRID HELPER
+//-------- ----------
+const material = new THREE.LineBasicMaterial({ linewidth: 6 });
+const line = new THREE.LineSegments(geometry, material);
+scene.add(line);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1, 2, 4);
+camera.lookAt( line.position );
+renderer.render(scene, camera);
+```
 
 ## 5 - The Buffer Geometry loader
 
