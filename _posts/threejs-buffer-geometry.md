@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-03 13:01:25
-version: 1.83
+updated: 2023-09-04 10:00:21
+version: 1.84
 ---
 
 
@@ -1108,6 +1108,49 @@ scene.add( new THREE.GridHelper(10, 10) );
 //-------- ----------
 camera.position.set(1, 2, 4);
 camera.lookAt( line.position );
+renderer.render(scene, camera);
+```
+
+### 4.8 - Extrude Geometry
+
+When dealing with shape objects there is very much the shape geometry, however often I will want to go with the [extrude geometry](/2023/06/13/threejs-extrude-geometry/) when using shape objects in the process of creating 3d geometry. There are a number of ways to go about certaing one or more shapes to begin with, in this demo I am using the built in path options to create a simple shape and be done with it. There are also ways of creating shapes by way of an array of vector2 objects, however the typical way that one might end up with these kinds of objects to begin with would be when using the SVG Loader. However getting into all of this though might be needed in a more advanced section in this topic or a whole other post completely even as there is a lot to cover when it comes to SVG.
+
+For now in this demo there is just making note of the fact that the first argument is the shape object to use. After that there is an options object that can be passed for setting various settings for this that have to do with things like the nature of the bevel, and even a custom UV generator if need be.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// SHAPE / PATH
+// ---------- ----------
+const shape = new THREE.Shape();
+shape.moveTo(  0,-1 );
+shape.bezierCurveTo( 0.25,-0.25,    0.25,0,    1,0 );
+shape.lineTo(  1,1 );
+shape.lineTo( -1,1 );
+shape.bezierCurveTo(-2,0,   -2,-1,   0,-1 );
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const geometry = new THREE.ExtrudeGeometry(shape);
+//-------- ----------
+// MESH, GRID HELPER
+//-------- ----------
+const material = new THREE.MeshNormalMaterial({  });
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1, 2, 4);
+camera.lookAt( mesh.position );
 renderer.render(scene, camera);
 ```
 
