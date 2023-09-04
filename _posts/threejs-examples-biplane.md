@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2022-07-28 13:02:00
-version: 1.23
+updated: 2023-09-04 09:45:53
+version: 1.24
 ---
 
-When it comes to [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project. 
+When it comes to [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with threejs when it comes to making some kind of actual project. 
 
-With that said there is the prim and proper way of going about creating a 3d model of something, and that is all fine and good, but it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a [Biplane](https://en.wikipedia.org/wiki/Biplane) using just the built in three.js geometry constructors mainly the [box geometry](/2021/04/26/threejs-box-geometry/) constructor and [groups](/2018/05/16/threejs-grouping-mesh-objects/).
+With that said there is the prim and proper way of going about creating a 3d model of something, and that is all fine and good, but it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a [Biplane](https://en.wikipedia.org/wiki/Biplane) using just the built in threejs geometry constructors mainly the [box geometry](/2021/04/26/threejs-box-geometry/) constructor and [groups](/2018/05/16/threejs-grouping-mesh-objects/).
 
-This example will involve create a bunch of mesh objects, combining them into a group, and then positioning and skinning things to make something that looks like a little plane. It would then be fun to add a few more models to create a plane, and a main world object for a crude scene of some kind. For now I think I would like to have just one plane, and have it fly around in a circle, and move the camera around to have a nice neat looping animation.
+This example will involve creating a bunch of mesh objects, combining them into a group, and then positioning and skinning things to make something that looks like a little plane. It would then be fun to add a few more models to create a plane, and a main world object for a crude scene of some kind. For now I think I would like to have just one plane, and have it fly around in a circle, and move the camera around to have a nice neat looping animation.
 
 <!-- more -->
 
@@ -24,15 +24,17 @@ This is a post on a full working three.js project example of a little looping an
 <iframe class="youtube_video" src="https://www.youtube.com/embed/7XCiF36z0n8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-### Version Numbers matter with three.js
-
-When I first wrote this post I was using r125 of three.js and I have also been doing a fare about or editing of this post as i continue to refine this basic three.js model. The last time I edited this post then I was using three.js version r127. I have made a habit of mentioning what version numbers I am using in every three.js post that I write, and also make note of it as I edit older posts also. Code braking changes are made to three.js all the time, so I think doing so is called for.
-
 ### Source code up on Github
 
-The source code that I have together for this [post thus far is up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-biplane/).
+The source code that I have together for this [post thus far is up on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-biplane/). This is also where I have the source code examples for the [many other posts on threejs](/categories/three-js/) that I have made thus far as well.
 
-## 1 - The biplane module
+### Version Numbers matter with three.js
+
+When I first wrote this post I was using r125 of threejs and I have also been doing a fare amount or editing of this post as I continue to refine this code a little now and then. With that said the last time I edited this post then I was using threejs version r146 when updating the style of the mainjs file of what I am now calling the world section. So not all of the code in this example is updated to my r146 style rules just yet when it comes to the module itself, but that will be the style standard from here on put with any future edits at this point.
+
+I have made a habit of mentioning what version numbers I am using in every threejs post that I write, and also make note of it as I edit older posts also. Code braking changes are made to threejs all the time, so I think doing so is called for.
+
+### The biplane module
 
 The idea here is to create a javaScript module that will create and return an instance of a [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) which is just a way to pack a whole bunch of Mesh objects into a single group. An instance of THREE.Group like a Mesh object also inherits from the [Object3d class](/2018/04/23/threejs-object3d/), and as such also has a userData object which is the standard object that is to be used to place app specific data. Such as the current radian value for a prop on a biplane.
 
@@ -41,7 +43,6 @@ So then in this module I just have a bunch of helper methods that create and ret
 
 ```js
 var Biplane = (function () {
- 
     var materials = {
         plane: new THREE.MeshStandardMaterial({
             color: 0x88afaf
@@ -53,9 +54,7 @@ var Biplane = (function () {
             color: 0x404040
         })
     };
- 
     var api = {};
- 
     // create a wing
     var createWing = function(opt, y){
         var wing = new THREE.Mesh(
@@ -65,7 +64,6 @@ var Biplane = (function () {
         wing.position.y = y;
         return wing;
     };
- 
     // create a body
     var createBody = function(opt){
         var body = new THREE.Mesh(
@@ -75,7 +73,6 @@ var Biplane = (function () {
         body.position.x = -2;
         return body;
     };
- 
     // create a body
     var createTail = function(opt){
         var body = new THREE.Mesh(
@@ -86,7 +83,6 @@ var Biplane = (function () {
         body.position.y = 2;
         return body;
     };
- 
     // create guy
     var createGuy = function(){
         var guy = new THREE.Mesh(
@@ -97,7 +93,6 @@ var Biplane = (function () {
         guy.position.y = 1.5;
         return guy;
     };
- 
     // create prop
     var createProp = function(){
         var prop = new THREE.Mesh(
@@ -108,12 +103,10 @@ var Biplane = (function () {
         prop.position.x = 3.25;
         return prop;
     };
- 
     // main create method
     api.create = function(opt){
         opt = opt || {};
         opt.materials = opt.materials || {};
- 
         var plane = new THREE.Group();
         // body and tail
         plane.add(createBody(opt));
@@ -131,16 +124,71 @@ var Biplane = (function () {
         plane.userData.propRPS = 0.25;
         return plane;
     };
- 
     api.update = function(bi, per){
         var ud = bi.userData;
         ud.propRadian = Math.PI * 64 * per;
         ud.prop.rotation.set(ud.propRadian,0,0)
     };
- 
     return api;
 }
     ());
+```
+
+## 1 - Basic Demos section
+
+It would seem that when I first wrote this post I just made a single demo for this module that is way more complex that it should be for just a single demo. So at this time I have started a basic section for this post where I am just using the biplane module alone. 
+
+### 1.1 - Hover demo
+
+For this first basic section demo I just wanted to have a single instance of the biplane, add a directional light to the demo, and just move the prop and position of the plane up and down. I am using the biplane module update method for the updating of the prop, and I am then just setting the state of the position property of the main root object to move the biplane up and down.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// STATE
+//-------- ----------
+const state = {
+    lt: new Date(),
+    fps: 30,
+    frame: 0,
+    maxFrame: 900,
+    bi: Biplane.create(),
+    dl: new THREE.DirectionalLight(0xffffff, 1)
+};
+scene.add( state.dl );
+scene.add( state.bi );
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(15, 15, 15);
+camera.lookAt(0, 0, 0);
+function loop() {
+    const now = new Date(),
+    secs = (now - state.lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / state.fps) {
+
+        const a_frame = state.frame / state.maxFrame;
+        const a_prop = a_frame * 2 % 1;
+        const a_hover = 1 - ( Math.sin( Math.PI * 2 *  (a_frame * 9 % 1) ) / Math.PI );
+        Biplane.update(state.bi, a_prop);
+        state.bi.position.y = -2 + 4 * a_hover;
+
+
+        renderer.render(scene, camera);
+        state.lt = now;
+        state.frame += state.fps * secs;
+        state.frame %= state.maxFrame;
+    }
+};
+loop();
 ```
 
 ## 2 - An example making use of the biplane model so far
@@ -149,15 +197,13 @@ So then now it is just a question of having a main javaScript file where I am ma
 
 So then in this section I will be going over all the additional files that I am using to do something interesting with this biplane module.
 
-### 2.1 - A utils module
+### 3.a - A utils module
 
 I have a general utility module for this example that I am using in the main world module, and any additional areas in the over all example. Here in this module I have a get per values method that will create and return a collection of values that I use to update the position and rotation of objects by a frame over max frame values.
 
 ```js
 var utils = {};
- 
 utils.pi2 = Math.PI * 2;
- 
 utils.getPerValues = function (frame, maxFrame, base) {
     frame = frame === undefined ? 0 : frame;
     maxFrame = maxFrame === undefined ? 100 : maxFrame;
@@ -174,24 +220,21 @@ utils.getPerValues = function (frame, maxFrame, base) {
         biasLog: Math.log(1 + bias * (base - 1)) / Math.log(base)
     };
 };
- 
 // mathematical modulo
 utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
- 
 utils.normalizeRadian = function (radian) {
     return utils.mod(radian, utils.pi2);
 };
 ```
 
-### 2.2 - a Tile Index module
+### 3.b -  a Tile Index module
 
 This is a tile index module that I borrowed from [my post on the plane geometry constructor](/2019/06/05/threejs-plane/). This tile index module is a nice little module that I can use to quickly create a plane geometry with a checkered texture. As you might suspect I will be using this module to create a geometry and mesh that will serve as the ground of this little animation loop example of this biplane.
 
 ```js
 (function (api) {
- 
     var MATERIALS = [
         new THREE.MeshStandardMaterial({
             color: 0xffffff,
@@ -206,7 +249,6 @@ This is a tile index module that I borrowed from [my post on the plane geometry 
             side: THREE.DoubleSide
         })
     ];
- 
     var planeTileGeo = function (w, h, sw, sh) {
         w = w === undefined ? 16 : w;
         h = h === undefined ? 16 : h;
@@ -227,7 +269,6 @@ This is a tile index module that I borrowed from [my post on the plane geometry 
         }
         return planeGeo;
     };
- 
     // create and return a plane with tile groups
     api.create = function (opt) {
         opt = opt || {};
@@ -239,7 +280,6 @@ This is a tile index module that I borrowed from [my post on the plane geometry 
         plane.rotation.set(-Math.PI / 2, 0, 0);
         return plane;
     };
- 
     // set checkerBoard material index values
     api.setCheckerBoard = function (plane) {
         var w = plane.geometry.parameters.widthSegments,
@@ -262,7 +302,6 @@ This is a tile index module that I borrowed from [my post on the plane geometry 
             tileIndex += 1;
         }
     };
- 
     // set checkerBoard material index values
     api.setBoxBoard = function (plane) {
         var w = plane.geometry.parameters.widthSegments,
@@ -288,12 +327,11 @@ This is a tile index module that I borrowed from [my post on the plane geometry 
             tileIndex += 1;
         }
     };
- 
 }
     (this['TileMod'] = {}));
 ```
 
-### 2.3 - A world module
+### 3.c -  A world module
 
 I will then want a main world module that will be used to wrap everything together. So then this is a situation in which I have a main world group object and then a whole bunch more objects that helper to create an over all world to look at beyond just that of the little biplane model.
 
@@ -355,50 +393,46 @@ I will then want a main world module that will be used to wrap everything togeth
     (this['worldMod'] = {}));
 ```
 
-### 2.4 - The main JavaScript file
+### 3.1 - The main JavaScript file
 
 Now I just need a little additional javaScript code to make use of the main world module and everythjng that it is built on top of, including of course the biplane module.
 
 ```js
-(function () {
-    // Scene
-    var scene = new THREE.Scene();
-    scene.background = new THREE.Color('cyan');
-    // create state
-    var state = {
-        lt: new Date(),
-        fps: 30,
-        frame: 0,
-        maxFrame: 600,
-        world: worldMod.create() // create the world
-    };
-    scene.add(state.world);
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // loop
-    function loop() {
-        var now = new Date(),
-        secs = (now - state.lt) / 1000,
-        wud = state.world.userData;
-        requestAnimationFrame(loop);
-        if (secs > 1 / state.fps) {
-            worldMod.update(state.world, state.frame, state.maxFrame);
-            renderer.render(scene, state.world.userData.camera);
-            state.lt = now;
-            state.frame += state.fps * secs;
-            state.frame %= state.maxFrame;
-        }
-    };
-    loop();
-}
-    ());
+// Scene
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('cyan');
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// create state
+const state = {
+    lt: new Date(),
+    fps: 30,
+    frame: 0,
+    maxFrame: 600,
+    world: worldMod.create()
+};
+scene.add( state.world );
+// loop
+function loop() {
+    const now = new Date(),
+    secs = (now - state.lt) / 1000,
+    wud = state.world.userData;
+    requestAnimationFrame(loop);
+    if (secs > 1 / state.fps) {
+        worldMod.update( state.world, state.frame, state.maxFrame );
+        renderer.render(scene, state.world.userData.camera);
+        state.lt = now;
+        state.frame += state.fps * secs;
+        state.frame %= state.maxFrame;
+    }
+};
+loop();
 ```
 
 The result of all of this then is having two biplane models one is the default lime color, and the other I made red. The props spin at two different speeds, and that is just about it for now. the next step would be to create another project where I am making use of this model, and maybe a few more just like it to create some kind of scene.
 
-## 3 - Conclusion
+## Conclusion
 
 I like to make models this way, I can just slap something together and it just works. I am sure that in a real project I might run into problems sooner or later. However yet again maybe not if the final project is some kind of video rather than a game. What really matters is how things look, and this kind of very low poly look is kind of nice I think.
 
