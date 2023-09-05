@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-05 09:46:59
-version: 1.85
+updated: 2023-09-05 10:01:05
+version: 1.86
 ---
 
 
@@ -1046,6 +1046,8 @@ renderer.render(scene, camera);
 
 A Dodecahedron just simply means 12 sides, and by default that is what this geometry option will give you. There is then two arguments that can be given one of which is a radius, and the second one is a detail value. This detail value can then be used to increases the number of points which will then result in a geometry that is no longer a Dodecahedron. It would then seem that this is another way to go about creating a kind of sphere like geometry then. In some cases this might be what one would want to use actually sense the sphere geometry has a very different process of creating a kind of sphere like shape.
 
+ I assumed that this kind of geometry must just be a clever extension of one of the other geometrys and after taking a look at the source code it would seem that this time around at least I have assumed correctly. This Icosahedron geometry is an extnesion of the Polyhedron Geometry class.
+
 ```js
 //-------- ----------
 // SCENE, CAMERA, RENDERER
@@ -1156,7 +1158,7 @@ renderer.render(scene, camera);
 
 ### 4.9 - Icosahedron Geometry
 
-This is yet another option for creating a sphere like shape.
+This is yet another option for creating a sphere like shape, this time by way of a fancy term for a a polyhedron with 20 faces rather than 12. Once again this has both a radius and detail argument where the default value for detail is 0, and any value greater than that will add points and thus turn this into an object that is no longer a Icosahedron. Like that of the Dodecahedron geometry this class is also a extension of the PolyhedronGeometry class, but dont just take my word for it [check the source code for yourself](https://github.com/mrdoob/three.js/blob/r146/src/geometries/DodecahedronGeometry.js). There is reading posts such as this, but there is also taking a moment to read source code as well.
 
 ```js
 //-------- ----------
