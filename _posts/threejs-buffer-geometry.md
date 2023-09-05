@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-04 10:00:21
-version: 1.84
+updated: 2023-09-05 09:46:59
+version: 1.85
 ---
 
 
@@ -1150,6 +1150,40 @@ scene.add( new THREE.GridHelper(10, 10) );
 // RENDER
 //-------- ----------
 camera.position.set(1, 2, 4);
+camera.lookAt( mesh.position );
+renderer.render(scene, camera);
+```
+
+### 4.9 - Icosahedron Geometry
+
+This is yet another option for creating a sphere like shape.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const radius = 1;
+const detail = 0;
+const geometry = new THREE.IcosahedronGeometry(radius, detail);
+//-------- ----------
+// MESH, GRID HELPER
+//-------- ----------
+const material = new THREE.MeshNormalMaterial();
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 1, 2);
 camera.lookAt( mesh.position );
 renderer.render(scene, camera);
 ```
