@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2022-07-28 13:44:43
-version: 1.34
+updated: 2023-09-05 09:06:49
+version: 1.35
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. 
@@ -25,11 +25,21 @@ This is a post on a three.js example where I am creating a Group of Groups, or [
 <iframe class="youtube_video" src="https://www.youtube.com/embed/Mq37hBHx-Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+### Source code is also on Github
+
+The Source code examples that I am writing about here are also [on Github in my test threejs repo](https://github.com/dustinpfister/test_threejs/blob/master/views/forpost/threejs-examples-biplane-group/README.md). This is also where I park the [source code for all the oter posts that I have wrote on threejs](/categories/three-js/) thus far as well.
+
 ### Version Numbers matter with three.js
 
-When I first wrote this post I was using r125 of three.js, and the last time I cam around to do a little editing I was using r127 of three.js which was a late version of three.js in April of 2021. Code breaking changes are made to three.js all the time so when working with code examples on the open web make sure that what you are working with is up to date.
+When I first wrote this post I was using r125 of threejs, and the last time I cam around to do a little editing I was using [r146 of the library and thus updated tha main js file of the first demo to my style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md) for that demo. I did not get around ro updating the mousle code though, or make any new revisions of the module so much of the code here is still in an older style.
 
-## 1 - Biplane Group model
+Code breaking changes are made to threejs all the time so when working with code examples on the open web make sure that you keep that in mind. If you are using a late revision of threejs there is a good change that much of the code here will not work.
+
+## 1 - Biplane Group model R0 and demo
+
+For this section I am writing about R0 of the biplane group and the biplane module.
+
+## 1.a - Biplane Group model R0
 
 First off is the biplane group that will create a group of groups where each nested group is an instance of my biplane model. I wrote a post on that yesterday, but I will be getting to the copy of the model in the next section also anyway even though not much has changed with that for this example. So then in this section I will then be covering this new model that is actually just a collection of models where each model is one of my little biplane models.
 
@@ -127,7 +137,7 @@ var BiplaneGroup = (function () {
 There is a great deal that I could do when it comes to working out what the logic should be when it comes to updating the position of each plane relative to the origin of the bi plane group. However I think for now I will do something simple were each biplane just moves up and down a little, and also have each first child of the group do a rotation. When it comes to making this kind of model I think what really matters first and foremost is to get the biplane model solid, and then this kind of module will change a little from one animation to the next.
 
 
-## 2 - Biplane model
+### 1.b - Biplane model
 
 Here is the source code of the biplane model that I am using in the biplane group model. The source code for this is not all that different from what I worked out in yesterdays post. It is just a way of creating a threejs group that is a collection of mesh objects each using the box geometry constructor to just slap something together that looks like a little bi plane. Just like many other modules like this I have a main create method that i can use to create just one group of mesh objects that will be one of the biplanes. I then have a number of methods that I can use to update the state of one of a given biplane.
 
@@ -254,7 +264,7 @@ var Biplane = (function () {
     ());
 ```
 
-## 3 - The main javaScript file
+### 1.1 - A flyby basi demo of thre biplane group module
 
 Now for some additional javaScript to make use of this new biplane group model. I start off with a scene and a camera like always with just about any of these examples like always. However with this example I am using materials that will respond to light so in this example I will want a light source, and when it comes to adding a light source I went with a [point light](/2019/06/02/threejs-point-light) and I also wanted to add at least a little [ambient light](/2018/11/02/threejs-ambientlight/) also. This is a typical situation with light where I have a baseline amount of light and then something like a point light to help show some depth with the materials that I am using with the biplanes.
 
@@ -263,83 +273,72 @@ I then went ahead and made a collection of these bi plane group models so there 
 I then set up my renderer and also a main application loop. It is inside this animation loop that I am going over the collection of bi plane groups and updating the position of each group. For now I am thinking that I should just have each group move from one side of the scene over to another side and then just have a way so that they reposition back on the starting side once they pass a given range.
 
 ```js
-(function () {
- 
-    // Scene
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(1000, 100, 0xff0000, 0x4a4a00));
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 1000);
-    camera.position.set(80, 80, 80);
- 
-    // light
-    var pointLight = new THREE.PointLight('white');
-    pointLight.position.set(28, 20, 40);
-    pointLight.add(new THREE.Mesh(
-            new THREE.SphereGeometry(1, 10, 10),
-            new THREE.MeshBasicMaterial({
-                color: 'white'
-            })));
-    scene.add(pointLight);
- 
-    // add AmbientLight
-    var light = new THREE.AmbientLight(0xffffff);
-    light.intensity = 0.1;
-    scene.add(light);
- 
-    var biGroups = new THREE.Group();
-    scene.add(biGroups);
- 
-    var i = 0,
-    group;
-    while (i < 9) {
-        group = BiplaneGroup.create();
-        group.position.z = -50 + 50 * (i % 3);
-        group.position.y = 50 - 50 * Math.floor(i / 3);
-        group.rotation.y = Math.PI * 0.5;
-        biGroups.add(group);
-        i += 1;
-    }
- 
-    // Render
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // loop
-    var lt = new Date();
-    function animate() {
-        var now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(animate);
-        biGroups.children.forEach(function (biGroup) {
-            BiplaneGroup.update(biGroup, secs);
-            if (!biGroup.userData.active) {
-                biGroup.position.x = -200;
-                biGroup.userData.pps = 32 + Math.round(64 * Math.random());
-                biGroup.userData.active = true;
-            } else {
-                biGroup.position.x += biGroup.userData.pps * secs;
-                if (biGroup.position.x >= 200) {
-                    biGroup.userData.active = false;
-                }
-            }
-        });
-        controls.update();
-        renderer.render(scene, camera);
-        lt = now;
-    };
- 
-    animate();
- 
+//-------- ----------
+// SCENE, RENDERER, CAMERA
+//-------- ----------
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+const camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 1000);
+//-------- ----------
+// SCENE CHILD OBJECTS
+//-------- ----------
+// grid
+scene.add(new THREE.GridHelper(1000, 100, 0xff0000, 0x4a4a00));
+// biplane groups
+const biGroups = new THREE.Group();
+scene.add(biGroups);
+let i = 0;
+while (i < 9) {
+    const  group = BiplaneGroup.create();
+    group.position.z = -50 + 50 * (i % 3);
+    group.position.y = 50 - 50 * Math.floor(i / 3);
+    group.rotation.y = Math.PI * 0.5;
+    biGroups.add(group);
+    i += 1;
 }
-    ());
+// light
+const dl = new THREE.DirectionalLight(0xffffff, 0.9);
+const al = new THREE.AmbientLight(0xffffff, 0.1);
+scene.add(dl);
+scene.add(al);
+//-------- ----------
+// CONTROLS
+//-------- ----------
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+//-------- ----------
+// LOOP
+//-------- ----------
+camera.position.set(80, 80, 80);
+let lt = new Date();
+function loop() {
+    const now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    biGroups.children.forEach(function (biGroup) {
+        BiplaneGroup.update(biGroup, secs);
+        if (!biGroup.userData.active) {
+            biGroup.position.x = -200;
+            biGroup.userData.pps = 32 + Math.round(64 * Math.random());
+            biGroup.userData.active = true;
+        } else {
+            biGroup.position.x += biGroup.userData.pps * secs;
+            if (biGroup.position.x >= 200) {
+                biGroup.userData.active = false;
+            }
+        }
+    });
+    controls.update();
+    renderer.render(scene, camera);
+    lt = now;
+};
+loop();
 ```
 
 The final result of all of this is having a cool little animation of sorts where there are all these bi plane groups moving from one side of the scene over to the other side at various speeds. I might want to add and change a whole lot of things here and there when it doe come to the idea of putting even more time into this one. However for now I think that this is more or less what I had in mind for this example that was just a little exercise of sorts and that is about it.
 
-## 4 - Conclusion
+## Conclusion
 
 This was a fun quick little side project where I continued with another quick simple side project with the biplane model. Still if I can not think of some kind of long term project with this, or something like this I do not think I will be putting to much time into something like this. I have a whole lot of other little side projects like this and some of them should get more attention. 
 
