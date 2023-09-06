@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 998
-updated: 2022-07-29 13:44:58
-version: 1.16
+updated: 2023-09-06 05:44:23
+version: 1.17
 ---
 
 A while back I wrote a [blog post on the lerp method](/2022/05/17/threejs-vector3-lerp/) of the [Vector3 class](https://threejs.org/docs/#api/en/math/Vector3.lerp) in the javaScript library known as [threejs](https://en.wikipedia.org/wiki/Three.js). The lerp method can be used to move a vector from one state to another given state in the form of another instance of the vector3, and an alpha value as a number between 0 and 1. This method alone works well, when it comes to simple linear lerping. In other words moving a vector from one point to another in the from of a kind of straight line between the two points of interest. Also when doing the typical index over length value as a way to create an alpha value the rate at which the point moves does so in a fixed, single delta value. These limitations then give rise in an interest to find, or develop some kind of advanced lerping module that builds on top of the vector3 method.
@@ -34,13 +34,13 @@ The source code that I am writing about here can also be found in [my test three
 
 ### Version numbers matter
 
-When I first started this post I was using r140 of threejs
+When I first started this post I was using r140 of threejs. However the last time I came around to do some editing I updated the demos to my r146 style rules.
 
 ## 1 - The first version of my apLerp javaScript module that runs on top of threejs
 
 This might prove to be the kind of project where I will end up making at least a few revisions, but not mater what there is always the starting point. So then in this section I will be outlining what I have thus far in the first version \( r0 \) of my advance lerp module. There is going over the state of the module itself, but also taking a look at a number of demos of the module also just for the sake of testing out that the module works okay and that I am getting the kinds of results that I would like to have when using it in some kind of actual project. I have some planes when it comes to the use of this module as a foundation for many additional projects so I would like to try my best to get this fairly solid right away.
 
-### 1.1 - The ap lerp module
+### 1.a - The ap lerp module
 
 The advanced lerp module returns three public methods as of r0, one of which is the lerp method that works in a similar way to that of the vector3 lerp method but with additional options that can be passed. Another method can be used to create and return an array of vector3 class instances that are between two vectors, which also makes use of the same internal lerp helper function. A final third public method can be used to quickly create a group of mesh objects that use the sphere geometry and normal material as a way to get a sense of what is going on when using the ap lerp method when making a few demos of it.
 
@@ -145,7 +145,7 @@ var apLerp = (function () {
     ());
 ```
 
-### 1.2 - Basic demo of the core features of apLerp
+### 1.1 - Basic demo of the core features of apLerp
 
 Now that I have my module in a state that is looking good at least I will want to make at least one, if not a few demos of the module just for the sake of making sure that it is working okay. For this first basic demo of the advanced lerp module I am creating a basic scene as always and then testing out the lerp method of the module by just calling it with some vectors and options and just longing the results to the console. When using the simp and pow one method that vectors that are being returned look good, so but I will want to test out the other methods as well here.
 
@@ -153,72 +153,68 @@ So then I am using the create sphere group method that also makes use of the oth
 
 ```js
 // demo of r0 of aplerp.js for threejs-examples-aplerp
-(function () {
-    //******** **********
-    // SCENE, CAMERA, RENDERER
-    //******** **********
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    scene.background = new THREE.Color('black');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
-    camera.position.set(8, 4, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //******** **********
-    // TESTING OUT apLerp.lerp
-    //******** **********
-    var v1 = new THREE.Vector3(1, 1, 1),
-    v2 = new THREE.Vector3(2, 1, 1),
-    alpha = 0.5;
-    // testing 'simp' get alpha method 
-    var opt = { getAlpha: 'simp'};
-    console.log( apLerp.lerp(v1, v2, alpha, opt) ); // {x: 1.5, y: 1, z: 1}
-    // testing out pow2 get alpha method
-    var opt = { 
-        getAlpha: 'pow1',
-        gaParam: {base: 1.25, e: 14}
-    };
-    console.log( apLerp.lerp(v1, v2, alpha, opt) ); // {x: 1.2097152, y: 1, z: 1}
-    //******** **********
-    // POINTS 1 EXAMPLE USING SIMP GET ALPHA METHOD
-    //******** **********
-    var v1 = new THREE.Vector3(-5, 0, 0);
-    var v2 = new THREE.Vector3(5, 0, 0);
-    var group1 = apLerp.createSpheresGroup({
-        v1: v1,
-        v2: v2,
-        count: 40,
-        include: true,
-        getAlpha: 'simp'
-    });
-    scene.add(group1);
-    //******** **********
-    // POINTS 2 EXAMPLE USING POW1 GET ALPHA METHOD
-    //******** **********
-    var v1 = new THREE.Vector3(-5, 0, 0);
-    var v2 = new THREE.Vector3(5, 0, 0);
-    var group2 = apLerp.createSpheresGroup({
-        v1: v1,
-        v2: v2,
-        count: 40,
-        include: true,
-        getAlpha: 'pow1',
-        gaParam: {
-            base: 6,
-            e: 3
-        }
-    });
-    group2.position.z = 1;
-    scene.add(group2);
-    //******** **********
-    // RENDER
-    //******** **********
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(new THREE.GridHelper(10, 10));
+//-------- ----------
+// TESTING OUT apLerp.lerp
+//-------- ----------
+const v1 = new THREE.Vector3(1, 1, 1),
+v2 = new THREE.Vector3(2, 1, 1),
+alpha = 0.5;
+// testing 'simp' get alpha method 
+const opt1 = { getAlpha: 'simp'};
+console.log( apLerp.lerp(v1, v2, alpha, opt1) ); // {x: 1.5, y: 1, z: 1}
+// testing out pow2 get alpha method
+const opt2 = { 
+    getAlpha: 'pow1',
+    gaParam: {base: 1.25, e: 14}
+};
+console.log( apLerp.lerp(v1, v2, alpha, opt2) ); // {x: 1.2097152, y: 1, z: 1}
+//-------- ----------
+// POINTS 1 EXAMPLE USING SIMP GET ALPHA METHOD
+//-------- ----------
+const v3 = new THREE.Vector3(-5, 0, 0);
+const v4 = new THREE.Vector3(5, 0, 0);
+const group1 = apLerp.createSpheresGroup({
+    v1: v3,
+    v2: v4,
+    count: 40,
+    include: true,
+    getAlpha: 'simp'
+});
+scene.add(group1);
+//-------- ----------
+// POINTS 2 EXAMPLE USING POW1 GET ALPHA METHOD
+//-------- ----------
+const v5 = new THREE.Vector3(-5, 0, 0);
+const v6 = new THREE.Vector3(5, 0, 0);
+const group2 = apLerp.createSpheresGroup({
+    v1: v5,
+    v2: v6,
+    count: 40,
+    include: true,
+    getAlpha: 'pow1',
+    gaParam: {
+        base: 6,
+        e: 3
+    }
+});
+group2.position.z = 1;
+scene.add(group2);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 4, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ### 1.2 - More on the pow built in get alpha method
@@ -228,49 +224,45 @@ I would like to make another demo for r0 of the advanced lerp module where I am 
 ```js
 // demo of r0 of aplerp.js for threejs-examples-aplerp
 // making a few groups with the pow1 built in
-(function () {
-    //******** **********
-    // SCENE, CAMERA, RENDERER
-    //******** **********
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    scene.background = new THREE.Color('black');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
-    camera.position.set(8, 4, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //******** **********
-    // USING POW1 GET ALPHA METHOD
-    //******** **********
-    var i = 0, len = 25;
-    while(i < len){
-        var per = i / len;
-        var v1 = new THREE.Vector3(-5, 0, 0);
-        var v2 = new THREE.Vector3(5, 0, 0);
-        var group = apLerp.createSpheresGroup({
-            v1: v1,
-            v2: v2,
-            count: 60 - Math.floor(50 * per),
-            include: true,
-            getAlpha: 'pow1',
-            gaParam: {
-                base: 10,
-                e: 1.75 + 8 * per
-            }
-        });
-        group.position.z = -5 + 10 * per;
-        scene.add(group);
-        i += 1;
-    }
-    //******** **********
-    // RENDER
-    //******** **********
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(new THREE.GridHelper(10, 10));
+//-------- ----------
+// USING POW1 GET ALPHA METHOD
+//-------- ----------
+let i = 0, len = 25;
+while(i < len){
+    const per = i / len;
+    const v1 = new THREE.Vector3(-5, 0, 0);
+    const v2 = new THREE.Vector3(5, 0, 0);
+    const group = apLerp.createSpheresGroup({
+        v1: v1,
+        v2: v2,
+        count: 60 - Math.floor(50 * per),
+        include: true,
+        getAlpha: 'pow1',
+        gaParam: {
+            base: 10,
+            e: 1.75 + 8 * per
+        }
+    });
+    group.position.z = -5 + 10 * per;
+    scene.add(group);
+    i += 1;
 }
-    ());
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 4, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ### 1.3 - A parabola get alpha method prototype
@@ -281,53 +273,49 @@ This is another demo in which I am creating a prototype of a get alpha method ba
 // demo of r0 of aplerp.js for threejs-examples-aplerp
 // making a custom getAlpha method based on an expression
 // for a parabola
-(function () {
-    //******** **********
-    // SCENE, CAMERA, RENDERER
-    //******** **********
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    scene.background = new THREE.Color('black');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
-    camera.position.set(8, 4, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //******** **********
-    // PARABOLA
-    //******** **********
-    var parabola = function(x, h, k){
-        return Math.pow(x - h, 2) + k;
-    };
-    var parabolaGetAlpha = function(state, param){
-        var h = 0.5, k = 0;
-        var x = state.p;
-        var y = parabola(x, h, k);
-        var s = x <= 0.5 ? 1 : -1;
-        var b = parabola(1, h, k);
-        var a = state.p + (y / b) * s;
-        return a;
-    };
-    var v1 = new THREE.Vector3(-5, 0, 0);
-    var v2 = new THREE.Vector3(5, 0, 0);
-    var group = apLerp.createSpheresGroup({
-            v1: v1,
-            v2: v2,
-            count: 80,
-            include: true,
-            getAlpha: parabolaGetAlpha,
-            gaParam: {
-            }
-        });
-    scene.add(group);
-    //******** **********
-    // RENDER
-    //******** **********
-    renderer.render(scene, camera);
-}
-    ());
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(new THREE.GridHelper(10, 10));
+//-------- ----------
+// PARABOLA
+//-------- ----------
+const parabola = function(x, h, k){
+    return Math.pow(x - h, 2) + k;
+};
+const parabolaGetAlpha = function(state, param){
+    const h = 0.5, k = 0;
+    const x = state.p;
+    const y = parabola(x, h, k);
+    const s = x <= 0.5 ? 1 : -1;
+    const b = parabola(1, h, k);
+    const a = state.p + (y / b) * s;
+    return a;
+};
+const v1 = new THREE.Vector3(-5, 0, 0);
+const v2 = new THREE.Vector3(5, 0, 0);
+const group = apLerp.createSpheresGroup({
+    v1: v1,
+    v2: v2,
+    count: 80,
+    include: true,
+    getAlpha: parabolaGetAlpha,
+    gaParam: {
+    }
+});
+scene.add(group);
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 4, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ### 1.4 - Making a get alpha method with Math.sin
@@ -339,65 +327,61 @@ One of the main things about this is that I want to move objects in a way in whi
 ```js
 // demo of r0 of aplerp.js for threejs-examples-aplerp
 // making a custom getAlpha method based on Math.sin
-(function () {
-    //******** **********
-    // SCENE, CAMERA, RENDERER
-    //******** **********
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    scene.background = new THREE.Color('black');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
-    camera.position.set(8, 4, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    //******** **********
-    // MATH.SIN
-    //******** **********
-    var sinGetAlpha = function(state, param){
-        param.piM = param.piM === undefined ? 2 : param.piM;
-        param.bMulti = param.bMulti=== undefined ? 0.1 : param.bMulti;
-        param.aOffset = param.aOffset=== undefined ? 0.5 : param.aOffset;
-        var r = Math.PI * param.piM * state.p;
-        var b = Math.sin( r );
-        var a = state.p + b * param.bMulti;
-        // apply aOffset
-        a += param.aOffset;
-        a %= 1;
-        // clamp
-        a = a < 0 ? 0 : a;
-        a = a > 1 ? 1 : a;
-        return a;
-    };
-    var v1 = new THREE.Vector3(-5, 0, 0);
-    var v2 = new THREE.Vector3(5, 0, 0);
-    var i = 0, len = 20;
-    while(i < len){
-        var per = i / len;
-        var group = apLerp.createSpheresGroup({
-                v1: v1,
-                v2: v2,
-                count: 40,
-                include: true,
-                getAlpha: sinGetAlpha,
-                gaParam: {
-                    piM: 2,
-                    bMulti: 0.4 - 0.399 * per,
-                    aOffset: 0.0
-                }
-            });
-        group.position.z = -5 + 10 * per;
-        scene.add(group);
-        i += 1;
-    }
-    //******** **********
-    // RENDER
-    //******** **********
-    renderer.render(scene, camera);
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+scene.add(new THREE.GridHelper(10, 10));
+//-------- ----------
+// MATH.SIN
+//-------- ----------
+const sinGetAlpha = function(state, param){
+    param.piM = param.piM === undefined ? 2 : param.piM;
+    param.bMulti = param.bMulti=== undefined ? 0.1 : param.bMulti;
+    param.aOffset = param.aOffset=== undefined ? 0.5 : param.aOffset;
+    const r = Math.PI * param.piM * state.p;
+    const b = Math.sin( r );
+    let a = state.p + b * param.bMulti;
+    // apply aOffset
+    a += param.aOffset;
+    a %= 1;
+    // clamp
+    a = a < 0 ? 0 : a;
+    a = a > 1 ? 1 : a;
+    return a;
+};
+const v1 = new THREE.Vector3(-5, 0, 0);
+const v2 = new THREE.Vector3(5, 0, 0);
+let i = 0, len = 20;
+while(i < len){
+    const per = i / len;
+    const group = apLerp.createSpheresGroup({
+            v1: v1,
+            v2: v2,
+            count: 40,
+            include: true,
+            getAlpha: sinGetAlpha,
+            gaParam: {
+                piM: 2,
+                bMulti: 0.4 - 0.399 * per,
+                aOffset: 0.0
+            }
+        });
+    group.position.z = -5 + 10 * per;
+    scene.add(group);
+    i += 1;
 }
-    ());
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(8, 4, 8);
+camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
 ```
 
 ## Conclusion
