@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1070
-updated: 2023-09-07 12:08:30
-version: 1.0
+updated: 2023-09-07 12:22:48
+version: 1.1
 ---
 
 There is always working out my own UI controls for a threejs project. However if I want to quickly create typical types of controls there are a number of official options for this that can be pulled from the examples folder in the github repository. I have all ready wrote posts on the orbit and fly controls way back in the day that I come around to edit once in a while. However I still have not got around to covering all the the official options just yet and with that said this post will be on the [drag controls](https://threejs.org/docs/#examples/en/controls/DragControls).
@@ -14,3 +14,126 @@ There is always working out my own UI controls for a threejs project. However if
 Just like with all the other kinds of official controls the drag controls and not baked into the core of the threejs library itself. Rather it must be added along with the core library. If you are still using an older revision of threejs such as r147 or older you still have the js folder and with that plain old javaScript tag type forms of the drag controls to use if you navigate to the revision you are using. However if you are using r148 or later you will need to use the JSM form of the drag controls, or hack over the code to get it to work for you.
 
 <!-- more -->
+
+
+### 1.1 - Simple form of the offical drag controls example
+
+There is maybe starting out by looking at the source code of the [official threejs example on the subject of drag controls](https://github.com/mrdoob/three.js/blob/r152/examples/misc_controls_drag.html). However I have found that this example is a little to busy for a getting started demo. So I hacked over things a lot with that to make a var more basic getting started type example of that demo. This still results in a bunch of mesh objects with random position, rotation, and  scale along with random color. The positioning is a bit different, but I was able to reduce the number of lines a lot.
+
+Anyway the basic idea here is that I pass an array of objects that I want to be the subjects of the drag controls as the first argument when calling the main DragControls constructor. After that I pass a reference to the camera object that I want to use, and then the element to attacked the control events to.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+import { DragControls } from 'DragControls';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(70, 32 / 24, 0.1, 500);
+const container = document.querySelector('#demo') || document.body;
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+container.appendChild(renderer.domElement);
+// ---------- ----------
+// LIGHT
+// ---------- ----------
+scene.add(new THREE.AmbientLight(0xaaaaaa, 0.1));
+const dl = new THREE.DirectionalLight(0xffffff, 1);
+scene.add(dl);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const geometry = new THREE.BoxGeometry();
+const objects = [];
+for (let i = 0; i < 100; i++) {
+    const material = new THREE.MeshPhongMaterial({
+        color: Math.random() * 0xffffff
+    });
+    const object = new THREE.Mesh(geometry, material);
+    object.position.randomDirection().multiplyScalar(10);
+    object.scale.random().multiplyScalar(3).add( new THREE.Vector3(0.5, 0.5, 0.5) );
+    object.quaternion.random();
+    scene.add(object);
+    objects.push(object);
+}
+// ---------- ----------
+// RENDER
+// ---------- ----------
+function render() {
+    renderer.render(scene, camera);
+};
+// ---------- ----------
+// CONTROLS / SETUP
+// ---------- ----------
+const controls = new DragControls(objects, camera, renderer.domElement);
+controls.addEventListener('drag', render);
+camera.position.z = 30;
+render();
+```
+
+### 1.2 - Lock objects along an axis and the drag start event
+
+For this demo I am not working with an even more basic starting point that is just a single mesh object. Also I am now using the mesh normal material which is a nice option to help show some depth without the need for a light source. The main event with this demo though is the use of the drag start event along with the drag event. You see the event objects will contain a reference to the object that is being dragged here. Also on top of that the drag start event will fire before the drag event. This can then prove to be useful if I want to do something that involves locking the drag action to just one or to axes. I can use the drag start to set the current value of a vector of the object, and then in the drag event I can set one or more axes in that vector to the vector of the position property of the object.
+
+```js
+// ---------- ----------
+// IMPORT - threejs and any addons I want to use
+// ---------- ----------
+import * as THREE from 'three';
+import { DragControls } from 'DragControls';
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(70, 32 / 24, 0.1, 500);
+const container = document.querySelector('#demo') || document.body;
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+container.appendChild(renderer.domElement);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const geometry = new THREE.BoxGeometry();
+const objects = [];
+const material = new THREE.MeshNormalMaterial();
+const object = new THREE.Mesh(geometry, material);
+object.position.set( 0, 0, 0)
+scene.add(object);
+objects.push(object);
+scene.add( new THREE.GridHelper(10, 10) );
+// ---------- ----------
+// RENDER
+// ---------- ----------
+const render = function() {
+    renderer.render(scene, camera);
+};
+// ---------- ----------
+// CONTROLS / SETUP
+// ---------- ----------
+camera.position.set(4, 4, 4);
+camera.lookAt( 0, 0, 0 );
+const controls = new DragControls(objects, camera, renderer.domElement);
+const v_locked = new THREE.Vector3( 1,1,0);
+const v_lockedAt = new THREE.Vector3();
+controls.addEventListener('dragstart', (evnt) => {
+    const obj = evnt.object;
+    v_lockedAt.copy( obj.position );
+});
+controls.addEventListener('drag', (evnt) => {
+    const obj = evnt.object;
+    if(v_locked.x){
+        obj.position.x = v_lockedAt.x;
+    }
+    if(v_locked.y){
+        obj.position.y = v_lockedAt.y;
+    }
+    if(v_locked.z){
+        obj.position.z = v_lockedAt.z;
+    }
+    render();
+});
+render();
+```
