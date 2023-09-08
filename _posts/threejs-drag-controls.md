@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1070
-updated: 2023-09-07 12:22:48
-version: 1.1
+updated: 2023-09-08 09:30:00
+version: 1.2
 ---
 
 There is always working out my own UI controls for a threejs project. However if I want to quickly create typical types of controls there are a number of official options for this that can be pulled from the examples folder in the github repository. I have all ready wrote posts on the orbit and fly controls way back in the day that I come around to edit once in a while. However I still have not got around to covering all the the official options just yet and with that said this post will be on the [drag controls](https://threejs.org/docs/#examples/en/controls/DragControls).
@@ -14,6 +14,17 @@ There is always working out my own UI controls for a threejs project. However if
 Just like with all the other kinds of official controls the drag controls and not baked into the core of the threejs library itself. Rather it must be added along with the core library. If you are still using an older revision of threejs such as r147 or older you still have the js folder and with that plain old javaScript tag type forms of the drag controls to use if you navigate to the revision you are using. However if you are using r148 or later you will need to use the JSM form of the drag controls, or hack over the code to get it to work for you.
 
 <!-- more -->
+
+## Drag Controls in threejs and what to know first
+
+### Source is up on Github
+
+The source code examples that I am writing about here can also be found in my [test threejs repository on GitHub](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-drag-controls). This is also where I park the examples for the many other [posts that I have wrote on threejs](/categories/three-js/) thus far as well.
+
+### Version Numbers matter
+
+When I first wrote this post I was following my [r152 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) that I have set for myself. This means that I am using module type script tags over that of ye old text\/javaScript mime type script tags. This needs to be the case sense r148+ at this time sense the js folder in the examples folder of the threejs GitHub repository is no longer being rendered. If you want to use the plain JavaScript form files you will need to use r147- to get that working.
+
 
 
 ### 1.1 - Simple form of the offical drag controls example
