@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1052
-updated: 2023-06-19 13:19:48
-version: 1.9
+updated: 2023-09-08 10:56:31
+version: 1.10
 ---
 
 The [Linux aplay](https://linux.die.net/man/1/aplay) command of [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) is pretty cool as it can be used as a tool to play any kind of raw data as sound. This data can be [piped](/2020/10/09/linux-pipe/) into the standard input of the aplay command, or a file can be passed as a positional argument. Any kind of data can be used as sample data, but to really start using aplay by one way or another it would be best to fine ways to generate sample data.
@@ -24,7 +24,7 @@ Playing raw data 'stdin' : Unsigned 8 bit, Rate 8000 Hz, Mono
 
 I can set -d option to 0, or just not give any -d option at all sense that is the default which will result in aplay just continuing to play random data as sound until I do a control+c or end the process by whatever means.
 
-## 2 - Formats
+## 2 - Sample Formats
 
 By default the format that is used is U8 which is unsigned 8 bit audio. There are a number of other formats that often can be used, however the full list of formats will change from one sound card to another. For the most part thus far I have just been sticking to unsigned 8 bit mono audio
 
@@ -42,7 +42,16 @@ $ cat /dev/random | aplay -d 5 -f U8 -r 2000
 $ cat /dev/random | aplay -d 5 -f U8 -r 88000
 ```
 
-## 4 - Using cat and dd to generate 8K bytes of random data for just one second of noise
+## 4 - The file format option
+
+When I use aplay to play a wave file, the aplay command will read the header data for the wave file, and then set the various values for sample depth, rate, and number of channels based on the values of the header. This is great if I just simple want to play back a wave file from the command line however there might be some cases where I will want to play back the file as raw data. To do that I will want to use the -t option and then give the raw value for that option like so.
+
+```
+$ aplay allrighty.wav -t raw -f S16_LE -c 2 -r 80000
+Playing raw data 'allrighty.wav' : Signed 16 bit Little Endian, Rate 80000 Hz, Stereo
+```
+
+## 5 - Using cat and dd to generate 8K bytes of random data for just one second of noise
 
 So far I have been piping in data to aplay by way of using the linux cat command with the use of /dev/random. However another major command I could pipe the random data into would be the [dd command](/2023/06/08/linux-dd/) which has the -bs option that can be used to set, say 8000 bytes blocks, and I can do 60 blocks. This would then result in 60 seconds worth of audio data if it is still 8 Bit Sample Size, and 8000 hertz. However when doing so I will want to make sure that I set the iflag option to fullblock else the resulting file will end up being a bit light because of a partial read error.
 
@@ -55,11 +64,11 @@ $ aplay -f U8 -r 8000 audiodata
 Playing raw data 'audiodata' : Unsigned 8 bit, Rate 8000 Hz, Mono
 ```
 
-## 5 - Start Using nodejs to create data to then use with aplay
+## 6 - Start Using nodejs to create data to then use with aplay
 
 Piping random data into aplay is a nice start, there is also looking into other ways to pipe in all kinds of other not so random data as well. However there is also getting into at least a little programming in order to start getting into the full, fine grain control when it comes to the idea of generating sample data. For this section then I will be doing just that by making use of [nodejs and a little javaScript](/2017/04/05/nodejs-helloworld/) code.
 
-### 5.1 - The waves.js file to use with nodejs
+### 6.1 - The waves.js file to use with nodejs
 
 If I am to use nodejs to create some sample data I will want to use [process.stdout.write](/2021/03/18/nodejs-process-stdout/) over that of console.log so that I have control over having an End Of Line or not in the output. I then also make use of a buffer as a way to create an output mode that will be the binary data rather than text data that I will want to then pipe or redirect into aplay. I have found that thus far I mostly want to redirect into a file and then use aplay until I figure out how to address an issue with data that is lost when piping. More on that when we get into the actually usage in the bash prompt.
 
@@ -93,7 +102,7 @@ while(i_sample < COUNT_SAMPLES){
 }
 ```
 
-### 5.2 - Pipe into aplay with default settings
+### 6.2 - Pipe into aplay with default settings
 
 One way to get started with this is to just pipe the data that this script generates with default settings into aplay with default settings.
 
@@ -103,7 +112,7 @@ $ node wave | aplay
 
 This kind of thing will work okay for small use case examples that are about a second or so, but I loose data if I make the tone too long. Not a big deal with this script, but if I really get into this it will become a problem. I am sure that there is a way to address this, must have something to do with the chuck size with the nodejs script maybe. However in any case regardless if I address this or not there are other ways of doing this.
 
-### 5.3 - Redirection
+### 6.3 - Redirection
 
 Thus far I have found that if I want to make a long noise I will want to create a large file, and then play that file with aplay. One way to do this would be to make use of [redirection](/2020/10/02/linux-redirection).
 
@@ -112,13 +121,13 @@ $ node wave 8000 10 800 0.5 binary > adata
 $ aplay adata -f U8 -r 8000
 ```
 
-## 6 - Live stream of sample data
+## 7 - Live stream of sample data
 
 The above script that I started out with will work just fine when it comes to using redirection rather than piping. However it would be nice to work out a script that will work okay when it comes to generating data in real time that will then in turn be consumed by aplay. The problem with this is that doing so is a little tricky. I managed to work out something that seems to hold up okay, but this is very much a kind of place holder script that I have in place for now until I lean more about how to work with streams.
 
 The tricky part with this is making sure that the rate at which the script is generating sample data is on target with the rate at which aplay is consuming this data. Doing so in a way that will not result in underrun, or memory leakage is indeed the tricky part. If the script does not generate data fast enough that will result in an underrun condition in which aplay runs out of data to play resulting in an interuption, however if the rate is to high that will result in problems with eating up memory and drain event related issues.
 
-### 6.a - A high low rate script
+### 7.a - A high low rate script
 
 A script that I have worked out that seems to work okay so far addresses this problem by setting a fast, or slow rate that is used when calling the setTimeout method. Yes this is indeed crude, and over the log run I still run into the occasional problem where the stream needs to drain and I loose audio for a bit. However if I set the fast rate high enough it takes a long time for this to happen, while still avoiding the under run problem  at least for the most part.
 
@@ -175,7 +184,7 @@ process.stderr.write('\nScript started: ' + last_time + ' .\n\n');
 loop();
 ```
 
-## 6.1 - Starting the script
+## 7.1 - Starting the script
 
 For the most part it would seem that this works okay thus far. When the script first starts I do get an underrun from aplay, and I also also sure that if I let this run long enough it will still need to drain. However until I get a better idea of how to manage this, I would have to go with some code like this.
 
@@ -185,11 +194,11 @@ $ node live_highlow | aplay -f U8 -r 8000
 
 At least I do understand what the problem is, and it is just the nature of streams which is what I am dealing with. What would be nice is to have a way to monitor what the current state of the standard output stream is, and throttle the rate at which I am generating sample data up and down as needed long before the high water mark is reached.
 
-## 7 - Converting JSON data into sample data for aplay
+## 8 - Converting JSON data into sample data for aplay
 
 I am thinking that one way that I might want to get into creating sample data for aplay would involve writing scripts that generate JSON data in the form of arguments that will be used to call a funciton on a frame by frame basis. So then I would have code that generates this JSON data, and then I would also have code that will convert this JSON data to binary data that will then be used to create files that in turn can be played by way of the aplay command.
 
-### 7.a - JSON data example
+### 8.a - JSON data example
 
 An exmaple of some json data that will create one second of sound would then look like this:
 
@@ -231,7 +240,7 @@ An exmaple of some json data that will create one second of sound would then loo
 }
 ```
 
-### 7.b - Script to convert JSON data to binary data
+### 8.b - Script to convert JSON data to binary data
 
 The script that I then use to convert this json data to binary data will then maybe look somehting like this:
 
