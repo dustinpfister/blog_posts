@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1070
-updated: 2023-09-08 09:51:41
-version: 1.3
+updated: 2023-09-08 09:56:40
+version: 1.4
 ---
 
 There is always working out my own UI controls for a threejs project. However if I want to quickly create typical types of controls there are a number of official options for this that can be pulled from the examples folder in the github repository. I have all ready wrote posts on the orbit and fly controls way back in the day that I come around to edit once in a while. However I still have not got around to covering all the the official options just yet and with that said this post will be on the [drag controls](https://threejs.org/docs/#examples/en/controls/DragControls).
@@ -31,7 +31,9 @@ The source code examples that I am writing about here can also be found in my [t
 
 When I first wrote this post I was following my [r152 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md) that I have set for myself. This means that I am using module type script tags over that of ye old text\/javaScript mime type script tags. This needs to be the case sense r148+ at this time sense the js folder in the examples folder of the threejs GitHub repository is no longer being rendered. If you want to use the plain JavaScript form files you will need to use r147- to get that working.
 
+## 1 - Some basic demos of Drag Controls
 
+One will very much have to start somewhere with these controls, and with that said this is what this section will be all about. I have found that the official threejs demo is actually a bit to complex for a getting started type demo which seems to often be the case with them. Often what is needed is to start with one of those and then take a hatchet to the bulk of the code that distracts from the most simplistic hello world style starting point which is what I did for the very first demo of this section. After that there is then maybe going beyond that a tad with some things, but this will very much be a getting started section so nothing to fancy.
 
 ### 1.1 - Simple form of the offical drag controls example
 
