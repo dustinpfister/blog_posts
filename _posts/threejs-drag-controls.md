@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1070
-updated: 2023-09-08 09:30:00
-version: 1.2
+updated: 2023-09-08 09:51:41
+version: 1.3
 ---
 
 There is always working out my own UI controls for a threejs project. However if I want to quickly create typical types of controls there are a number of official options for this that can be pulled from the examples folder in the github repository. I have all ready wrote posts on the orbit and fly controls way back in the day that I come around to edit once in a while. However I still have not got around to covering all the the official options just yet and with that said this post will be on the [drag controls](https://threejs.org/docs/#examples/en/controls/DragControls).
@@ -16,6 +16,12 @@ Just like with all the other kinds of official controls the drag controls and no
 <!-- more -->
 
 ## Drag Controls in threejs and what to know first
+
+There are a lot of things that you should be up to speed with before hand that I am not going to get into detail with here. I assume that you have at least a little experience with threejs and client side javaScript in general. If not this is not a post for you and I suggest that you start with some kind of [post that is a starting point for threejs](/2018/04/04/threejs-getting-started/) or [javaScript in general](/2018/11/27/js-getting-started/). I will as always with these kind of post write about at least a few things that you might want to be aware of though here in this opening section of the post.
+
+### There are a lot of other official controls to check out
+
+As I have said in the intro of this post there are a few other official options for controls. With that said I have wrote a post on the subject or [Orbit controls](/2018/04/13/threejs-orbit-controls/) all ready. Also in addition to that there is also my post on [fly controls](/2021/05/05/threejs-fly-controls/) as well. There are a number of additional options beyond all of these as well that at this time I have not wrote posts on.
 
 ### Source is up on Github
 
@@ -148,3 +154,7 @@ controls.addEventListener('drag', (evnt) => {
 });
 render();
 ```
+
+## Conclusion
+
+The Drag controls can then prove to be a useful tool to quickly create the kind of typical UI controls that one will want to have in many projects that one would want to have this kind of control of objects. Often there might need to be some additional coded added in the from of some logic for one or more of the events such as the case with the lock to axis methods. However The core, basic functionally that is needed is very much there and it is just a little touch up work that will need to be added beyond that when making the oval all final controls for a project.
