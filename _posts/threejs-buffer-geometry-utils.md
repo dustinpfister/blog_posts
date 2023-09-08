@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1069
-updated: 2023-09-03 12:42:12
-version: 1.5
+updated: 2023-09-08 09:59:00
+version: 1.6
 ---
 
 There is the core threejs library itself and then there is a whole lot of additional tools to work with as well that can be pulled from the threejs Gitbub repository. One of the manly assets that there are to make use of there is the [buffer geometry utilities module](https://threejs.org/docs/#examples/en/utils/BufferGeometryUtils). This module is packed with a wide range of utility methods that are bot backed into the buffer geometry class itself, but might still prove to be useful for many various cases. One method that I have used thus far is the merge Geometries method which as the name suggests is just simply a way to create a single geometry from an array of geometry objects. There are of course a whole lot of other tools in this module a such a I have started this blog post as a way to park some notes on this subject.
@@ -16,7 +16,7 @@ There is the core threejs library itself and then there is a whole lot of additi
 
 ## Buffer Geometry Utils and what to know first
 
-In this post I am writing about some features that have to do with the buffer geometry utilities module which is one of many additional JavaScript modules that can be found in the Github repository of the JavaScript library. So then this is not just on threejs itself, but an additional file that must be added on top of threejs alone. I also assume that you have a lot of background with the basics of threejs and client side JavaScript in general as well. If not sorry I can not cover every little detail that should be known before hand here. However I will write about a few things that you might want to look into more in this opening section if you have not done so before hand.
+In this post I am writing about some features that have to do with the buffer geometry utilities module which is one of many additional JavaScript modules that can be found in the Github repository of the JavaScript library. So then this is not just on threejs itself, but an additional file that must be added on top of threejs alone. I also assume that you have a lot of background with the [basics of threejs](/2018/04/04/threejs-getting-started/) and client side [JavaScript in general](/2018/11/27/js-getting-started/) then. If not sorry I can not cover every little detail that should be known before hand here. However I will write about a few things that you might want to look into more in this opening section if you have not done so before hand.
 
 ### Read more about Buffer Geometry in general
 
