@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-06 05:56:25
-version: 1.87
+updated: 2023-09-08 10:29:09
+version: 1.88
 ---
 
 
@@ -1243,6 +1243,81 @@ mesh1.scale.set(2,2,2)
 // ---------- ----------
 camera.position.set(2, 2, 1);
 camera.lookAt(0, 0.2, 0);
+renderer.render(scene, camera);
+```
+
+### 4.11 - Octahedron Geometry
+
+This is yet another extension of the Polyhedron Geometry this time it is for a Octahedron Geometry Class or 8 sides rather than 12 or 20. Again there is just working with the Polyhedron Geometry as a way to make this kind of shape and also all the others as well by just knowing how to set the proper arguments for each. Still it is very much one of the built in options and if I want this section to be comprehensive I need to get this one out of the way. As with the other extensions of Polyhedron Geometry the two arguments are radius and detail.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const radius = 3;
+const detail = 0;
+const geometry = new THREE.OctahedronGeometry(radius, detail);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const mesh1 = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({ wireframe: true }) );
+scene.add(mesh1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 1, 8);
+camera.lookAt(0, 0.2, 0);
+renderer.render(scene, camera);
+```
+
+### 4.12 - Plane Geometry
+
+This is then a good one that I find myself using in a lot of projects, and also might be a good starting option for learning a lot about geometry which is of course the [Plane geometry class](/2019/06/05/threejs-plane/). The first two arguments of this class will set the width and height of the plane geometry, and then there are an additional two arguments that can set the number of sections in the plane. Sections will come into play when I want to do something with THREE.Points, THREE.Lines or the usual THREE.Mesh if I for example want to do something with groups or draw calls.
+
+This is then often a good kind of geometry to start with when it comes to starting to look into all kinds of advanced features such as the groups property of geometry that is used when working with an array of materials. Unlike other built in options the groups option is not set up for me so I must use the add group method to define the areas for each material index. This is also a good choice when it comes to doing things like mutation of the position attribute, add morph attributes, and so forth.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, AND RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 64 / 48, 0.5, 100);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// MESH - 
+// ---------- ----------
+// shared material in wire frame mode
+const material = new THREE.MeshBasicMaterial( { wireframe: true, wireframeLinewidth: 3 });
+// 5 by 5 size, but just 1 by 1 with segments ( DEFAULT ) 
+const mesh2 = new THREE.Mesh(
+    new THREE.PlaneGeometry(5, 5),
+    material);
+mesh2.geometry.rotateX( Math.PI * 0.5 );
+mesh2.position.set(-3, 0, 0);
+scene.add(mesh2);
+// 5 by 5 size, and 10 by 10 with segments
+const mesh3 = new THREE.Mesh(
+    new THREE.PlaneGeometry(5, 5, 10, 10),
+    material);
+mesh3.geometry.rotateX( Math.PI * 0.5 );
+mesh3.position.set(3, 0, 0);
+scene.add(mesh3);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(6, 6, 6);
+camera.lookAt(0.75, -2, 0);
 renderer.render(scene, camera);
 ```
 
