@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-08 10:29:09
-version: 1.88
+updated: 2023-09-09 06:39:04
+version: 1.89
 ---
 
 
@@ -1318,6 +1318,48 @@ scene.add(mesh3);
 // ---------- ----------
 camera.position.set(6, 6, 6);
 camera.lookAt(0.75, -2, 0);
+renderer.render(scene, camera);
+```
+
+### 4.13 - Polyhedron Geometry
+
+So I have covered a number of built in geometry constructors thus far that are extensions of the Polyhedron class such as the Icosahedron Geometry to name just one. Now it is time to write a thing about the main class of off of them all when it comes to directly working with the Polyhedron class.
+
+```js
+// ---------- ----------
+// SCENE, CAMERA, RENDERER
+// ---------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 32 / 24, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.querySelector('#demo') || document.body).appendChild(renderer.domElement);
+// ---------- ----------
+// GEOMETRY
+// ---------- ----------
+const vertices = [
+    1,1,1,    -1,1,1,    1,-1,1,   1,1,-1
+];
+const indices_of_faces = [
+    0,1,2,
+    0,3,1,
+    0,2,3,
+    1,2,3
+];
+
+const radius = 1;
+const detail = 3;
+const geometry = new THREE.PolyhedronGeometry(vertices, indices_of_faces, radius, detail);
+// ---------- ----------
+// OBJECTS
+// ---------- ----------
+const mesh1 = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({ side: THREE.DoubleSide, wireframe: true}) );
+scene.add(mesh1);
+// ---------- ----------
+// RENDER
+// ---------- ----------
+camera.position.set(2, 1, 2);
+camera.lookAt(0, 0.2, 0);
 renderer.render(scene, camera);
 ```
 
