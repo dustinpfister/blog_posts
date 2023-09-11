@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 999
-updated: 2022-08-05 15:38:22
-version: 1.7
+updated: 2023-09-11 09:18:22
+version: 1.8
 ---
 
 This week I started a new [threejs project example](/2021/02/19/threejs-examples/) that I am calling camera kit, that aims to be my module for parking all kinds of methods that has to do with updating the position and target location of a camera such as a [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera). The idea for this project came to me when working on last weeks threejs example which was my aplerp module which is a project that has to do with creating values to use for the alpha argument of the [lerp method of the vector3 class](). 
@@ -39,7 +39,7 @@ There is bypassing the use of the aplerp method that I made and just working dir
 
 ### source code is also up on github
 
-I also have the source code of camera kit, all demos, and additional assets located in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-camera-kit).
+I also have the source code of camera kit, all demos, and additional assets located in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-camera-kit). This is also where I park the source code for all the [other posts that I have wrote on threejs](/categories/three-js/) thus far.
 
 ### Version numbers matter
 
@@ -279,7 +279,8 @@ The circle around method helps with another typical task that I find myself doin
 
 ## Conclusion
 
-When working on my various video projects that I am making so that I have some videos to embed for these posts I find myself repeating code over and over again for various tasks that have to do with camera movement and other camera update related tasks. So it makes total sense to at least start and revise a module such as this that I can make part of my personal stack of modules that I then use over and over again from one video to the next. There seems to be a growing list of modules such as this, one of which would be my [object grid wrap module](/2022/05/20/threejs-examples-object-grid-wrap/), as well as another module in which I built on top of that [module that has to do with creating a kind of land scene](/2022/07/15/threejs-examples-object-grid-wrap-land/). I am thinking that this camera kit module might prove to be another example of this kind of threejs example that I actually use, so then there is a good chance that there will be future revisions of this.
+When working on my various video projects that I am making so that I have some videos to embed for these posts I find myself repeating code over and over again for various tasks that have to do with camera movement and other camera update related tasks. So it makes total sense to at least start and revise a module such as this that I can make part of my personal stack of modules that I then use over and over again from one video to the next. There seems to be a growing list of modules such as this, one of which would be my [object grid wrap module](/2022/05/20/threejs-examples-object-grid-wrap/), as well as another module in which I built on top of that [module that has to do with creating a kind of land scene](/2022/07/15/threejs-examples-object-grid-wrap-land/).
+ I am thinking that this camera kit module might prove to be another example of this kind of threejs example that I actually use, so then there is a good chance that there will be future revisions of this.
 
 I have a lot of ideas for additional methods, and maybe some kind of standard format of an object that I can create and use with methods that work just with that kind of object. There is not just updating the position and rotation of a camera of course there is also playing around with the various parameters of a perspective camera such as the feild of view value, and doing a bunch of other things that might helper to create an over all kind of style for my video projects.
 
