@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 999
-updated: 2023-09-11 09:18:22
-version: 1.8
+updated: 2023-09-11 09:40:28
+version: 1.9
 ---
 
-This week I started a new [threejs project example](/2021/02/19/threejs-examples/) that I am calling camera kit, that aims to be my module for parking all kinds of methods that has to do with updating the position and target location of a camera such as a [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera). The idea for this project came to me when working on last weeks threejs example which was my aplerp module which is a project that has to do with creating values to use for the alpha argument of the [lerp method of the vector3 class](). 
+This week I started a new [threejs project example](/2021/02/19/threejs-examples/) that I am calling camera kit, that aims to be my module for parking all kinds of methods that has to do with updating the position and target location of a camera such as a [perspective camera](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera). The idea for this project came to me when working on last weeks threejs example which was my [aplerp module](/2022/07/29/threejs-examples-aplerp/) which is a project that has to do with creating values to use for the alpha argument of the [lerp method of the vector3 class](/2022/05/17/threejs-vector3-lerp/). 
 
 The aplerp module has to do with moving a point in space from one point to another in a way that is not so linear, that is not a fixed delta for each frame when updating a vector. So for this project I will be building on top of the aplerp module to create another module that is centered around tasks that have to do with updating a camera.
 
@@ -43,13 +43,13 @@ I also have the source code of camera kit, all demos, and additional assets loca
 
 ### Version numbers matter
 
-When I wrote this post I was using r140 of theejs and everything was working fine for me with that revision of threejs.
+When I wrote this post I was using r140 of theejs, and the last time I came around to do some editing I updated the demos to my [r146 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r146/README.md). If things are not working for you on your end I would first check what revision you are using. On top of that this is also an example that will only work with plain javaScript mime type builds of threejs, not JSM. As I write this I have a more up to date set of style rules, but I am not at this time updating everything to work with JSM.
 
 ## 1 - First version of the camera kit module and demos
 
 For the very first version of camera kit I started out with just a few methods that will work with any camera, and in fact any object that is based off of the object3d class actually. This will likely change with future revisions of the module, but for now I will just be writing about the first state of this threejs example. This will include a general overview of the module itself, as well as a few demos that make use of the public methods of the module. Once again I will not be getting into the aplerp module that I am using for the sin lerp method as I have covered that all ready in an older post.
 
-### 1.1 - The source code of camera kit r0
+### 1.a - The source code of camera kit r0
 
 I went with the tired yet true IIFE pattern as a way to make a javaScript module as I typically do for these sorts of things, and will be returning a public api to a single variable that may or may not be global depending on how I go about packing this when using it in a project. Thus far I have three public methods and a single private function that I am using for the apLerp lperp method as a get alpha function. The get alpha function is a big deal when it comes to using the aplerp method as this is a function that will create an alpha value that will then be used with vector3 lerp method in the internal code of the aplerp module.
 
@@ -126,155 +126,131 @@ var cameraKit = (function () {
     ());
 ```
 
-### 1.2 - Plain lerp method demo
+### 1.1 - Plain lerp method demo
 
 The plain lerp method of the camera kit module was added to just have a simple abstraction of a plain, normal, linear lerp movement 0f a camera from one Vector3 to another. This is the kind of camera movement that I have been doing thus far for many of my videos that I have been making for these posts on threejs. It would be nice to have a custom cut abstraction for a few lines of code that I find myself writing over and over again.
 
 ```js
-// demo of camera-kit
-(function () {
-    //******** **********
-    // SCENE, CAMERA, RENDERER
-    //******** **********
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    scene.background = new THREE.Color('black');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
-    camera.position.set(8, 4, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    
-    // ********** **********
-    // ANIMATION LOOP
-    // ********** **********
-    var frame = 0,
-    maxFrame = 90,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        per = frame / maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5,
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / 24) {
-            var v1 = new THREE.Vector3(8, 4, 8);
-            var v2 = new THREE.Vector3(-8, -4, 8);
-            cameraKit.plainLerp(camera, v1, v2, bias);
-            var v3 = new THREE.Vector3(0, 0, 0);
-            camera.lookAt(v3);
-            // draw
-            renderer.render(scene, camera);
-            frame += 20 * secs;
-            frame %= maxFrame;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ********** **********
+// ANIMATION LOOP
+// ********** **********
+let frame = 0,
+lt = new Date();
+const maxFrame = 90;
+const loop = function () {
+    const now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / 24) {
+        const v1 = new THREE.Vector3(8, 4, 8);
+        const v2 = new THREE.Vector3(-8, -4, 8);
+        cameraKit.plainLerp(camera, v1, v2, bias);
+        const v3 = new THREE.Vector3(0, 0, 0);
+        camera.lookAt(v3);
+        renderer.render(scene, camera);
+        frame += 20 * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
 ```
 
-### 1.3 - Sin Lerp method demo
+### 1.2 - Sin Lerp method demo
 
 Now that I have the plain lerp method example out of the way it is now time for a quick demo of the first method that really makes camera kit a little interesting which would be the sin lerp method. When using this method I might want to adjust the bMulti option a little which is a value that is used to adjust the spacing of points. When used well with tweaked values I get a nice effect where the camera starts out moving fast but slows down as the camera reaches a half way point, then picks up speed again.
 
 ```js
-// demo of camera-kit
-(function () {
-    //******** **********
-    // SCENE, CAMERA, RENDERER
-    //******** **********
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    scene.background = new THREE.Color('black');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
-    camera.position.set(8, 4, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    
-    // ********** **********
-    // ANIMATION LOOP
-    // ********** **********
-    var frame = 0,
-    maxFrame = 90,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        per = frame / maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5,
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / 24) {
-            var v1 = new THREE.Vector3(8, 4, 8);
-            var v2 = new THREE.Vector3(-8, -4, 8);
-            cameraKit.sinLerp(camera, v1, v2, bias, { bMulti: 0.2 } );
-            var v3 = new THREE.Vector3(0, 0, 0);
-            camera.lookAt(v3);
-            // draw
-            renderer.render(scene, camera);
-            frame += 20 * secs;
-            frame %= maxFrame;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ********** **********
+// ANIMATION LOOP
+// ********** **********
+let frame = 0,
+lt = new Date();
+const maxFrame = 90;
+const loop = function () {
+    const now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / 24) {
+        const v1 = new THREE.Vector3(8, 4, 8);
+        const v2 = new THREE.Vector3(-8, -4, 8);
+        cameraKit.sinLerp(camera, v1, v2, bias, { bMulti: 0.2 } );
+        const v3 = new THREE.Vector3(0, 0, 0);
+        camera.lookAt(v3);
+        renderer.render(scene, camera);
+        frame += 20 * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
 ```
 
-### 1.4 - The circle around method demo
+### 1.3 - The circle around method demo
 
 The circle around method helps with another typical task that I find myself doing often which is to just move the camera around a fixed target location from a given starting point.
 
 ```js
-// demo of camera-kit
-(function () {
-    //******** **********
-    // SCENE, CAMERA, RENDERER
-    //******** **********
-    var scene = new THREE.Scene();
-    scene.add(new THREE.GridHelper(10, 10));
-    scene.background = new THREE.Color('black');
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
-    camera.position.set(8, 4, 8);
-    camera.lookAt(0, 0, 0);
-    scene.add(camera);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(640, 480);
-    document.getElementById('demo').appendChild(renderer.domElement);
-    // ********** **********
-    // ANIMATION LOOP
-    // ********** **********
-    var frame = 0,
-    maxFrame = 90,
-    lt = new Date();
-    var loop = function () {
-        var now = new Date(),
-        per = frame / maxFrame,
-        bias = 1 - Math.abs(0.5 - per) / 0.5,
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(loop);
-        if (secs > 1 / 24) {
-            // using circle around method
-            var v1 = new THREE.Vector3(8, 8, 8);
-            var vTarget = new THREE.Vector3(0, 0, 0);
-            cameraKit.circleAround(camera, vTarget, v1, per, 0.25);
-            // draw
-            renderer.render(scene, camera);
-            frame += 20 * secs;
-            frame %= maxFrame;
-            lt = now;
-        }
-    };
-    loop();
-}
-    ());
+//******** **********
+// SCENE, CAMERA, RENDERER
+//******** **********
+const scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+scene.background = new THREE.Color('black');
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000);
+scene.add(camera);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+( document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+// ********** **********
+// ANIMATION LOOP
+// ********** **********
+let frame = 0,
+lt = new Date();
+const maxFrame = 90;
+const loop = function () {
+    const now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(0.5 - per) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / 24) {
+        const v1 = new THREE.Vector3(8, 8, 8);
+        const vTarget = new THREE.Vector3(0, 0, 0);
+        cameraKit.circleAround(camera, vTarget, v1, per, 0.25);
+        renderer.render(scene, camera);
+        frame += 20 * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
 ```
 
 ## Conclusion
