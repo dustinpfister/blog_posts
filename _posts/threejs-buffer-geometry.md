@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-11 09:52:25
-version: 1.91
+updated: 2023-09-12 09:12:46
+version: 1.92
 ---
 
 
@@ -1395,6 +1395,52 @@ scene.add( new THREE.GridHelper(10, 10) );
 //-------- ----------
 camera.position.set(3, 2, 3);
 camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
+```
+
+### 4.15 - Shape Geometry
+
+There is the ShapeGeometry built in geometry option that is one of two options for creating a geometry from a [shape object](/2021/06/01/threejs-shape/). There are a number of ways to create the shape object to being with, for this demo I am making use of the path class from which shape extends from to create a heart shape. Other ways of creating a shape involve creating an array of vector2 objects, or a 2d curve that can then be used to create this v2 array to pass to the shape construction. However maybe the main way to which one will end up working with shapes is by way of the SVG loader.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+const camera = new THREE.PerspectiveCamera(60, 64 / 48, 0.1, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body ).appendChild(renderer.domElement);
+//-------- ----------
+// SHAPE
+//-------- ----------
+const heartShape = new THREE.Shape();
+heartShape.moveTo( 2.5, 2.5 );
+heartShape.bezierCurveTo( 2.5, 2.5, 2.0, 0, 0, 0 );
+heartShape.bezierCurveTo( - 3.0, 0, - 3.0, 3.5, - 3.0, 3.5 );
+heartShape.bezierCurveTo( - 3.0, 5.5, - 1.0, 7.7, 2.5, 9.5 );
+heartShape.bezierCurveTo( 6.0, 7.7, 8.0, 5.5, 8.0, 3.5 );
+heartShape.bezierCurveTo( 8.0, 3.5, 8.0, 0, 5.0, 0 );
+heartShape.bezierCurveTo( 3.5, 0, 2.5, 2.5, 2.5, 2.5 );
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.ShapeGeometry( heartShape );
+geometry.rotateX(Math.PI);
+geometry.rotateY(Math.PI);
+geometry.center();
+//-------- ----------
+// MESH
+//-------- ----------
+const material = new THREE.MeshNormalMaterial({ side: THREE.DoubleSide });
+const mesh = new THREE.Mesh( geometry, material );
+scene.add(mesh);
+//-------- ---------- 
+// RENDER
+//-------- ----------
+camera.position.set(8, 5, 8);
+camera.lookAt(0, 0, 0);
 renderer.render(scene, camera);
 ```
 
