@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-12 09:12:46
-version: 1.92
+updated: 2023-09-13 11:55:15
+version: 1.93
 ---
 
 
@@ -1441,6 +1441,41 @@ scene.add(mesh);
 //-------- ----------
 camera.position.set(8, 5, 8);
 camera.lookAt(0, 0, 0);
+renderer.render(scene, camera);
+```
+
+### 4.16 - Sphere Geometry
+
+There is a [Sphere Geometry](/2021/05/26/threejs-sphere/) that works by giving width and height segments to do so. There are a number of other arguments that have to do with starting and ending angles as well so it can also be used to make a number of other similar shapes like domes.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const radius = 2,
+width_segments = 30,
+height_segments = 30;
+const geometry = new THREE.SphereGeometry(radius, width_segments, height_segments);
+//-------- ----------
+// POINTS, GRID HELPER
+//-------- ----------
+const material = new THREE.PointsMaterial({ size: 0.20, color: 0x00ffff });
+const points = new THREE.Points(geometry, material);
+scene.add(points);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(4, 2, 3);
+camera.lookAt( 0, 0, 0 );
 renderer.render(scene, camera);
 ```
 
