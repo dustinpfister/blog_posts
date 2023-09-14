@@ -5,14 +5,29 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1071
-updated: 2023-09-14 09:26:51
-version: 1.2
+updated: 2023-09-14 10:36:06
+version: 1.3
 ---
 
-There are a number of built in geometry classes that extend from the base geometry class such as BoxGeometry and SphereGeometry. There are also a number of such built in geometry classes that are an extension of an extension in this regard then as well. With that said and Dodecahedron, Icosahedron, Octahedron, and Tetrahedron are all extensions of the Polyhedron Geometry class. These geometry class work by passing a radius and a level of detail, but with one exception which is the root class of them all, Polyhedron Geometry, which takes additional arguments that are used to define the nature of the Polyhedron.
+There are a number of built in geometry classes that extend from the base geometry class such as BoxGeometry and SphereGeometry. There are also a number of such built in geometry classes that are an extension of an extension in this regard then as well. With that said and Dodecahedron, Icosahedron, Octahedron, and Tetrahedron are all extensions of the [Polyhedron Geometry](https://threejs.org/docs/#api/en/geometries/PolyhedronGeometry) class. These geometry class work by passing a radius and a level of detail, but with one exception which is the root class of them all, Polyhedron Geometry, which takes additional arguments that are used to define the nature of the Polyhedron.
 
 <!-- more -->
 
+## The Polyheadron Geometry and what to know first.
+
+This is a post on the Polyhedron Geometry class in the client side javaScript library called threejs. I then assume that you have worked out at least a few basics when it comes to [getting started with threejs](/2018/04/04/threejs-getting-started/). I also assume that you know at least a thing or two about [client side javaScript in general](/2018/11/27/js-getting-started/) as well. If not sorry but much of what I am writing about here is outside the scope of certain things that you should know before hand. However there are a lot of things that I should at least touch base on regardless of background, as such I will be doing that in this opening section.
+
+### Read more about geometry to begin with
+
+The Polyhedron Geometry class is just one extension of the common buffer geometry class. There is a great deal to be aware of when it comes to geometry in general then when it comes to all kinds of geometry objects. I am of course not going to be getting into every little detail here but there is checking out my [main blog post on buffer geometry objects](/2021/04/22/threejs-buffer-geometry/). Also maybe another post that is relevant to the use of the Polyhedron Geometry would be the subject of [position attributes of buffer geometry objects](/2021/06/07/threejs-buffer-geometry-attributes-position/) as well.
+
+### The Source code is up on Github also
+
+The source code examples that I write about here can also be found in my [test threejs repository on Github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-polyhedron-geometry). This is also where I have all the examples of my many [other posts on threejs](/categories/three-js/) that I have slapped together over the years.
+
+### Version Numbers Matter
+
+When I first wrote this post I was following [my r152 style rules](https://github.com/dustinpfister/test_threejs/blob/master/views/demos/r152/README.md). In sort this means that I am now using JSM over that of old school plain JavaScript mime type script tags. In additional also things like an import map, and with that also the use of the impost keyword at the top of the demos in this post. If you have no idea what I am taking about it is possible that you might still be using plain JavaScript type tags and with that one of the plain JavaScript tag friendly builds of threejs rather than the JSM module form of threejs. At this time it should not be to hard to get these examples working, just remove the import calls at the top of the demos, and make sure you are linking to a three.js or three.min.js file, and not a three.module.js \(JSM\) file. Still sooner of later you will need to learn a thing or two about JSM as this is the direction things are going with the project.
 
 ## 1 - Basic example of a Polyhedron
 
