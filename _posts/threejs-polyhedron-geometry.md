@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1071
-updated: 2023-09-14 09:12:59
-version: 1.1
+updated: 2023-09-14 09:26:51
+version: 1.2
 ---
 
 There are a number of built in geometry classes that extend from the base geometry class such as BoxGeometry and SphereGeometry. There are also a number of such built in geometry classes that are an extension of an extension in this regard then as well. With that said and Dodecahedron, Icosahedron, Octahedron, and Tetrahedron are all extensions of the Polyhedron Geometry class. These geometry class work by passing a radius and a level of detail, but with one exception which is the root class of them all, Polyhedron Geometry, which takes additional arguments that are used to define the nature of the Polyhedron.
@@ -62,6 +62,8 @@ renderer.render(scene, camera);
 ```
 
 ## 2 - Built in Extensions of Polyhedron Geometry
+
+There are a number of built in geometry constructor functions in threejs that are extensions of the Polyhedron Geometry. These are great for at least two general reasons, for one the make things a whole lot easier by just passing a radius and optional level of detail, and the other is that they are a great resources for learning how to use the Polyhedron Geometry directly by studying the source code. With that said in this section I will be going over a few of these built in classes, and maybe also some code that has to do with creating the same kind of geometry but with the Polyhedron Geometry directly so that you have some sense as to what the situation is with this sort of thing.
 
 ### 2.1 - Dodecahedron Geometry
 
@@ -137,4 +139,9 @@ camera.position.set(5, 2, 5);
 camera.lookAt(0, 0.2, 0);
 renderer.render(scene, camera);
 ```
+
+## Conclusion
+
+The Polyhedron Geometry then does very much give a greater degree of control when it comes to creating these kinds of geometry objects. However it is of course also a bit of a pain to work with as well compared to the extensions where I can just pass a radius and optional level of detail while sipping on a juice box. In other words yes working with the extensions is easy, but maybe a bit to easy, by using them in a way I do myself a bit of an injustice as it does not allow for me to understand the underlaying complexity of what is going on behind the scenes sort of speak. If this bothers you then it makes sense to look into how to work with the Polyhedron Geometry directly, and maybe even go so far as making some of your own extensions of this class.
+
 
