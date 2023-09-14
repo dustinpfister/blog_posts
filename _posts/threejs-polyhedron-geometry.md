@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 1071
-updated: 2023-09-14 05:57:57
-version: 1.0
+updated: 2023-09-14 09:12:59
+version: 1.1
 ---
 
 There are a number of built in geometry classes that extend from the base geometry class such as BoxGeometry and SphereGeometry. There are also a number of such built in geometry classes that are an extension of an extension in this regard then as well. With that said and Dodecahedron, Icosahedron, Octahedron, and Tetrahedron are all extensions of the Polyhedron Geometry class. These geometry class work by passing a radius and a level of detail, but with one exception which is the root class of them all, Polyhedron Geometry, which takes additional arguments that are used to define the nature of the Polyhedron.
@@ -15,6 +15,10 @@ There are a number of built in geometry classes that extend from the base geomet
 
 
 ## 1 - Basic example of a Polyhedron
+
+To start out with the Polyhedron geometry I first need an array of vertices and also a collection of index values of these vertices to from the faces of the Polyhedron. So even when it comes to a basic example of this, things are all ready a little hard to follow when it comes to this. So then it does make sense to have all of these extensions of the Polyhedron class so that all one has to do is pass a radius and level of detail. Still if you want full control over how the nature of a Polyhedron is defined, then one will need to work out what these values should be and work directly with the Polyhedron geometry Constructor.
+
+The official example in the threejs docs uses gives a set of values to define a cube. However for this basic example I think I should start with some values that define the most basic Polyhedron form which is a tetrahedron.
 
 ```js
 // ---------- ----------
@@ -61,6 +65,7 @@ renderer.render(scene, camera);
 
 ### 2.1 - Dodecahedron Geometry
 
+A dodecahedron is any polyhedron with twelve faces, and with that said there is a built in class that extends Polyhedron Geometry to create thins kind of geometry. For this example I am creating two mesh objects one of which is created with this dodecahedron extension of the Polyhedron Geometry, and the other is doing so directly with the  Polyhedron Geometry. The way that I ended up with the values for vertices and in indices is by just pulling these values directly form the source code of the dodecahedron Geometry.
 
 ```js
 // ---------- ----------
@@ -132,3 +137,4 @@ camera.position.set(5, 2, 5);
 camera.lookAt(0, 0.2, 0);
 renderer.render(scene, camera);
 ```
+
