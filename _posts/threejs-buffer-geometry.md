@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2023-09-14 10:36:06
-version: 1.94
+updated: 2023-09-15 07:00:48
+version: 1.95
 ---
 
 
@@ -1475,6 +1475,71 @@ scene.add( new THREE.GridHelper(10, 10) );
 // RENDER
 //-------- ----------
 camera.position.set(4, 2, 3);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
+```
+
+### 4.17 - Tetrahedron Geometry
+
+Once again we have an extenstion of Polyhedron Geometry this time a [Tetrahedron](/2022/12/02/threejs-tetrahedron/).
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const radius=1, detail=0;
+const geometry = new THREE.TetrahedronGeometry(radius, detail);
+//-------- ----------
+// MESH, GRID HELPER
+//-------- ----------
+const material = new THREE.MeshNormalMaterial();
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(1.2, 1.2, 1);
+camera.lookAt( 0, 0, 0 );
+renderer.render(scene, camera);
+```
+
+### 4.18 - Torus
+
+A [Torus is a Doughnut like shape](/2021/05/27/threejs-torus/), so then the first two arguments have to do with setting the radius from the center to the inner point of the tube, and then the other one has to do with the tube radius. There are then an additional two arguments that have to do with setting the density of the geometry as usual.
+
+```js
+//-------- ----------
+// SCENE, CAMERA, RENDERER
+//-------- ----------
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+const renderer = new THREE.WebGL1Renderer();
+renderer.setSize(640, 480, false);
+(document.getElementById('demo') || document.body).appendChild(renderer.domElement);
+//-------- ----------
+// GEOMETRY
+//-------- ----------
+const geometry = new THREE.TorusGeometry(1, 0.25, 20, 80);
+//-------- ----------
+// POINTS, GRID HELPER
+//-------- ----------
+const material = new THREE.PointsMaterial({ size: 0.05, color: 0x00ffff });
+const points = new THREE.Points(geometry, material);
+scene.add(points);
+scene.add( new THREE.GridHelper(10, 10) );
+//-------- ----------
+// RENDER
+//-------- ----------
+camera.position.set(3, 2, 3);
 camera.lookAt( 0, 0, 0 );
 renderer.render(scene, camera);
 ```
