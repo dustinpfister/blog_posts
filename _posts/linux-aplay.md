@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 1052
-updated: 2023-09-08 10:56:31
-version: 1.10
+updated: 2023-10-26 16:37:40
+version: 1.11
 ---
 
 The [Linux aplay](https://linux.die.net/man/1/aplay) command of [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture) is pretty cool as it can be used as a tool to play any kind of raw data as sound. This data can be [piped](/2020/10/09/linux-pipe/) into the standard input of the aplay command, or a file can be passed as a positional argument. Any kind of data can be used as sample data, but to really start using aplay by one way or another it would be best to fine ways to generate sample data.
@@ -129,7 +129,7 @@ The tricky part with this is making sure that the rate at which the script is ge
 
 ### 7.a - A high low rate script
 
-A script that I have worked out that seems to work okay so far addresses this problem by setting a fast, or slow rate that is used when calling the setTimeout method. Yes this is indeed crude, and over the log run I still run into the occasional problem where the stream needs to drain and I loose audio for a bit. However if I set the fast rate high enough it takes a long time for this to happen, while still avoiding the under run problem  at least for the most part.
+A script that I have worked out that seems to work okay so far addresses this problem by setting a fast, or slow rate that is used when calling the setTimeout method. Yes this is indeed crude, and over the long run I still run into the occasional problem where the stream needs to drain and I loose audio for a bit. However if I set the fast rate high enough it takes a long time for this to happen, while still avoiding the under run problem at least for the most part.
 
 ```js
 // write a single sample to the given buffer
